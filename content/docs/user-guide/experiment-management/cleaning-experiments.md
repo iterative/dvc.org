@@ -59,7 +59,7 @@ Supplying `--workspace` flag to `dvc exp gc` causes all experiments to be
 removed **except** those in the current workspace.
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 main:
    exp-aaa000
    exp-aaa111
@@ -78,7 +78,7 @@ branches in this example.
 
 ```dvc
 $ dvc exp gc --workspace
-$ dvc exp list --all
+$ dvc exp list --all-commits
 main:
    exp-abc000
    exp-abc111
