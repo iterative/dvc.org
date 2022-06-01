@@ -101,4 +101,4 @@ Each team will have its own views dashboard, and the views that you create in
 the team's dashboard will be accessible to all members of the team.
 
 To add more than 2 collaborators in your team, you can
-[upgrade it to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+[upgrade into the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
