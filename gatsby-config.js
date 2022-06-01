@@ -188,9 +188,9 @@ const plugins = [
             return await Promise.all(
               allBlogPost.nodes.map(async node => {
                 console.log({ node })
-                const html = makeFeedHtml(
+                const html = await makeFeedHtml(
                   await node.htmlAst,
-                  site.siteMetadata.siteUrl
+                  await site.siteMetadata.siteUrl
                 )
                 console.log({ html })
                 return Object.assign(
