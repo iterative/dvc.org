@@ -84,7 +84,7 @@ This command will also try to [push](/doc/command-reference/push) all
 Let's say we have run 3 experiments in our project:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 11-bigrams-experiment:
         exp-e6c97
         exp-1dad0
