@@ -96,14 +96,8 @@
         "slug": "ci-cd-for-machine-learning",
         "label": "CI/CD for Machine Learning"
       },
-      {
-        "slug": "ml-experiment-tracking",
-        "label": "ML Experiment Tracking"
-      },
-      {
-        "slug": "ml-model-registry",
-        "label": "ML Model Registry"
-      }
+      "ml-experiment-tracking",
+      "ml-model-registry"
     ]
   },
   {
@@ -506,7 +500,6 @@
   },
   {
     "slug": "cml",
-    "label": "CML",
     "icon": "cml",
     "url": "https://cml.dev/doc",
     "type": "external"
@@ -576,7 +569,6 @@
       },
       {
         "slug": "ml-frameworks",
-        "label": "ML Frameworks",
         "children": [
           "catalyst",
           {
@@ -613,7 +605,6 @@
       },
       {
         "slug": "api-reference",
-        "label": "API Reference",
         "children": [
           {
             "slug": "live",
