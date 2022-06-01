@@ -27,7 +27,7 @@ With MLEM ML teams get a single tool to **run your models anywhere** that
 strikes to cover all model productionization scenarios you have.
 
 MLEM enables this via **model metadata codification**: saving all information
-that is required to use a model later. Beside packaging a model for deployment
+that is required to use a model later. Besides packaging a model for deployment
 it can be used for many things, including search and documentation. To make it
 even more convenient, MLEM uses human-readable YAML files for that.
 
