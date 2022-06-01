@@ -12,13 +12,11 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    <Link
-      href="https://studio.iterative.ai"
-      tabIndex={collapsed ? -1 : undefined}
-    >
-      Iterative Studio
+    Our new tool for deployment,{' '}
+    <Link href="https://mlem.ai" tabIndex={collapsed ? -1 : undefined}>
+      MLEM
     </Link>
-    , the online UI for DVC, is live!{' '}
+    , has been released!
   </div>
 )
 
