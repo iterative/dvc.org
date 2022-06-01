@@ -77,10 +77,42 @@ Then click the `+ Container` button at the top of the new page and you'll see a
 right sidebar open. In the name field, type `bikedata` and then click `Create`.
 Now we have everything set up for the blob storage to work.
 
-### Get your credentials
+### Authenticate your Azure account
 
 You'll need some credentials to connect this remote storage to your machine
-learning project.
+learning project. You can take advantage of the
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) to do
+this.
+
+Run the following command to authenticate with Azure.
+
+```dvc
+$ az login
+A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "some-id",
+    "id": "some-id",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure subscription 1",
+    "state": "Enabled",
+    "tenantId": "some-id",
+    "user": {
+      "name": "test@test.com",
+      "type": "user"
+    }
+  }
+]
+```
+
+This should open a window that looks like this where you can enter your login
+credentials.
+
+![Azure CLI authentication page](/uploads/images/2022-06-22/azure_auth_page.png)
+
+With our Azure account authenticated, let's set up the project!
 
 ## Set up a DVC project
 
@@ -88,7 +120,7 @@ First, add DVC as a requirement to your project with the following installation
 command:
 
 ```dvc
-$ pip install 'dvc[s3]'
+$ pip install 'dvc[azure]'
 ```
 
 Then you can initialize DVC in your own project with the following command:
@@ -99,47 +131,36 @@ $ dvc init
 
 This will add all of the DVC internals needed to start versioning your data and
 tracking experiments. Now we need to set up the remote to connect our project
-data stored in AWS to the DVC repo.
+data stored in Azure to the DVC repo.
 
 ### Create a default remote
 
 Now we can add a default to the project with the following command:
 
 ```dvc
-$ dvc remote add -d bikes s3://updatedbikedata
+$ dvc remote add -d bikes azure://bikedata
 ```
 
-This creates a default remote called `bikes` that connects to the
-`updatedbikedata` bucket we made earlier which is where the training data for
-the model will be stored.
+This creates a default remote called `bikes` that connects to the `bikedata`
+container we made earlier which is where the training data for the model will be
+stored.
 
-### Add AWS credentials
+### Add Azure credentials
 
 In order for DVC to be able to push and pull data from the remote, you need to
-have valid AWS credentials.
+have valid Azure credentials.
 
-By default, DVC authenticates using your AWS CLI configuration, if it has been
-set. You can do that with the `aws configure` command like in this example:
-
-```dvc
-$ aws configure
-AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
-AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-Default region name [None]:
-Default output format [None]:
-```
-
-You can check out more details on this command
-[here in the AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+By default, DVC authenticates using your Azure CLI configuration, which we
+handled earlier. You can check out more details on this command
+[here in the Azure docs](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
 
 If you want to
-[use a different authentication method](https://dvc.org/doc/command-reference/remote/modify#amazon-s3)
-or if you run into issues with the credentials, you can manually add them with
-the following commands:
+[use a different authentication method](https://dvc.org/doc/command-reference/remote/modify#microsoft-azure-blob-storage).
+You will need to manually define the storage account name with the following
+command:
 
 ```dvc
-$ dvc remote modify --local bikes access_key_id 'mykey'
-$ dvc remote modify --local bikes secret_access_key 'mysecret'
+$ dvc remote modify bikes account_name 'bicycleproject'
 ```
 
 ### Push and pull data with DVC
@@ -159,9 +180,9 @@ command:
 $ dvc push
 ```
 
-Here's what the data might look like in your AWS bucket.
+Here's what the data might look like in your Azure container.
 
-![data in AWS bucket](/uploads/images/2022-05-17/aws_bucket.png)
+![data in Azure container](/uploads/images/2022-06-22/azure_auth_page.png)
 
 Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by cloning or forking the project repo and running:
@@ -181,7 +202,7 @@ data from.
 
 ---
 
-That’s it! Now you can connect any DVC project to an AWS S3 bucket. If you run
-into any issues, makes sure to check that your credentials are valid, check if
-your user has MFA enabled, and check that the user has the right level of
-permissions.
+That’s it! Now you can connect any DVC project to an Azure blob storage
+container. If you run into any issues, makes sure to check that your credentials
+are valid, check if your user has MFA enabled, and check that the user has the
+right level of permissions.
