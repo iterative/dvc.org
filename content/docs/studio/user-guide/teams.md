@@ -31,7 +31,7 @@ Then, click the `Create team` button on the top right corner.
 The next step is to invite the team members (or collaborators) for your team.
 You can also choose to skip adding collaborators at this point. For this, click
 on `Skip and Close` on the top right corner. You will be able to add
-collaborators by accessing team settings later.
+collaborators by accessing [team settings] later.
 
 If you wish to add collaborators now, enter their email addresses. An email
 invite will be sent to each invitee, and they will have to join using their
@@ -43,6 +43,8 @@ about the roles. ![](https://static.iterative.ai/img/studio/team_roles.png)
 
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
+
+[team settings]: /doc/studio/user-guide/teams#settings
 
 ## Roles
 
@@ -115,9 +117,9 @@ view is the same as that for adding personal views
 
 ## Settings
 
-In the team settings page, you can change the team name, add credentials for the
-data remotes, and delete the team. Note that these settings are applicable to
-the team and are thus different from
+In the [team settings] page, you can change the team name, add credentials for
+the data remotes, and delete the team. Note that these settings are applicable
+to the team and are thus different from
 [view settings](/doc/studio/user-guide/views/view-settings).
 
 Additionally, you can also

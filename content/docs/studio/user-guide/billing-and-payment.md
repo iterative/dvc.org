@@ -27,10 +27,11 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 ## How to sign up for the Team or Enterprise plan
 
 When you sign up, you're on the **Free plan** by default. To switch to the
-**Team plan**, [create a team] first, then go to the [team's settings] and click
+**Team plan**, [create a team] first, then go to the [team settings] and click
 on `Change plan` in the `Plan and billing` section. switch to the **Enterprise
 plan**, please [contact us].
 
+[team settings]: /doc/studio/user-guide/teams#settings
 [contact us]: /doc/studio/troubleshooting#support
 
 ## How total price is calculated
@@ -103,11 +104,11 @@ Studio.
 
 Your account's primary email address will be notified after each failed payment.
 Payments may be retried up to 4 times. To provide a new payment method, go to
-the `Plan and billing` section of your team's settings page and click on
+the `Plan and billing` section of your [team settings] page and click on
 `Add payment method`.
 
 After the grace period expires, you and all your team members will lose access
-to your team's views. You will continue to have access to your team's Settings
+to your team's views. You will continue to have access to your team settings
 page. Access to the team's views will be restored once you clear the pending
 balance.
 
@@ -120,12 +121,12 @@ are PCI compliant and your payment information is handled securely by Stripe.
 We accept the following cards: Visa, Mastercard, American Express, Discover,
 Diners Club and JCB. You can change your payment method and billing address for
 the Team plan at any time by going to the `Plan and billing` section of your
-team's Settings. You will be redirected to Stripe to make these changes.
+team settings. You will be redirected to Stripe to make these changes.
 
 ## Accessing your payment history and invoices
 
-You can find a link to your dashboard on Stripe on your team's settings page.
-Here you see your payment history and get a copy of your invoices.
+You can find a link to your dashboard on Stripe on your team settings page. Here
+you see your payment history and get a copy of your invoices.
 
 ## Other questions
 

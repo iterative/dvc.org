@@ -12,7 +12,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
    <admon>
 
    When you sign up, you're on the **Free plan** by default. To switch to the
-   **Team plan**, [create a team] first, then go to the [team's settings] and
+   **Team plan**, [create a team] first, then go to the [team settings] and
    click on `Change plan` in the `Plan and billing` section.
 
    To sign up for the **Enterprise plan**, please [schedule a call].
@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
    > See [pricing details] to compare the different plans.
 
    [create a team]: /doc/studio/user-guide/teams
-   [team's settings]: /doc/studio/user-guide/teams#settings
+   [team settings]: /doc/studio/user-guide/teams#settings
    [schedule a call]: https://calendly.com/gtm-2/studio-introduction
    [pricing details]: https://studio.iterative.ai/pricing
 

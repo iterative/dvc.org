@@ -16,7 +16,7 @@ In this page, you learn how to:
 ## Change your team plan
 
 To change the plan for your team, go to the `Plan and billing` section within
-Team settings. Then, within the `Current plan` card, click on `Change plan`.
+[team settings]. Then, within the `Current plan` card, click on `Change plan`.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing.png)
 
@@ -25,6 +25,8 @@ different plans in Iterative Studio. Your current plan will be marked with a
 `Current plan` label.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features.png)
+
+[team settings]: /doc/studio/user-guide/teams#settings
 
 ### If you are currently on the Free plan
 
@@ -54,10 +56,11 @@ pending invite, or increase the number of seats.
 
 </admon>
 
-- **To upgrade to the Enterprise plan**, click on the `Contact Us` button and
-  you will be redirected to a Calendly form where you can schedule a call with
-  our in-house experts who will try to understand your needs and suggest a
-  suitable plan and pricing.
+- **To upgrade to the Enterprise plan**, click on the `Contact Us` button to
+  [schedule a call] with our in-house experts who will try to understand your
+  needs and suggest a suitable plan and pricing.
+
+  [schedule a call]: https://calendly.com/gtm-2/studio-introduction
 
 ### If you are currently on the Team plan
 
@@ -90,7 +93,7 @@ To change the number of seats in your team,
 ### If you are currently on the Team plan
 
 To change the number of seats in your team, go to the `Plan and billing` section
-within Team settings. Then, within the `Current plan` card, click on
+within [team settings]. Then, within the `Current plan` card, click on
 `Change seats`. Then, select the desired number of seats.
 
 - **If you are increasing the number of seats**, you will have to pay for the
