@@ -68,7 +68,7 @@ You can downgrade to the Free plan or upgrade to the Enterprise plan.
 
   When you downgrade, you will receive a refund based on the number of days
   remaining in the billing period. If there are any discrepancies in the
-  refunded amount, please [contact us](mailto:support@iterative.ai).
+  refunded amount, please [contact us](/doc/studio/troubleshooting#support).
 
 - **To upgrade to the Enterprise plan**, click on the `Contact Us` button.
 

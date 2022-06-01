@@ -30,6 +30,8 @@ When you sign up, you're on the **Free plan** by default. To switch to the
 on `Change plan` in the `Plan and billing` section. switch to the **Enterprise
 plan**, please [contact us].
 
+[contact us]: /doc/studio/troubleshooting#support
+
 ## How total price is calculated
 
 For Team plans, invoice amount is calculated based on the number of seats in the
@@ -59,25 +61,23 @@ you will be charged for only 5 days of the 2 new seats. In the following billing
 period, the 2 additional seats will be charged for the entire billing period.
 
 If you reduce the number of seats, you will receive an account credit for the
-prorated difference. You can apply it on your next payment.
+prorated difference. You can apply it for a future payment.
 
 ## Downgrading a plan
 
-At any point during your subscription, you can reduce the number of seats in
-your plan.
+You can reduce the number of seats in your plan at any point, as explained in
+the previous section.
 
-To cancel the Team plan and move to the Free plan, reduce the number of seats in
-the team to 1 or 2 and click on Downgrade. When you reduce the number of seats
-in the team, a credit balance will be computed based on the number of days
-remaining in the billing period. This credit balance can be used in future
-payments.
+To cancel the Team plan and move back to the Free plan, reduce the number of
+seats in the team to 1 or 2 and click on `Downgrade`. A prorated credit will be
+added to your account for the remaining days in the billing period. You can
+apply for a future payment.
 
 When you downgrade from the Team plan to the Free plan, you will receive a
-refund based on the number of days remaining in the billing period. For any
-inquiries about refunds, please [contact us](mailto:support@iterative.ai).
+prorated refund for the days remaining in the billing period. For inquiries
+about refunds, please [contact us].
 
-To upgrade to or downgrade from an Enterprise plan, please
-[contact us](mailto:support@iterative.ai).
+To upgrade to or downgrade from an Enterprise plan, please [contact us].
 
 ## Billing period, auto-renewal of team plan, and grace period for non-payment
 
@@ -132,4 +132,4 @@ history.
 You can find answers to some frequently asked questions, including questions
 related to price calculations and payment methods, in the Iterative Studio
 [FAQ page](https://studio.iterative.ai/faq). If you have any other questions,
-please [contact us](/doc/studio/troubleshooting#support).
+please [contact us].

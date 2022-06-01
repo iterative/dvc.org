@@ -30,7 +30,7 @@ do the following:
 Once the connection is successful, all the repositories in this GitLab server
 will become available when you try to create a view in your team workspace. If
 you have any trouble setting up the connection to your GitLab server, please
-[contact us](https://dvc.org/doc/studio/troubleshooting#support).
+[contact us](/doc/studio/troubleshooting#support).
 
 <admon type ="info">
 
