@@ -10,10 +10,11 @@ billing and payment for them.
 
 - [Difference between Free, Team, and Enterprise plans](#difference-between-free-team-and-enterprise-plans)
 - [How to sign up for the Team or Enterprise plan](#how-to-sign-up-for-the-team-or-enterprise-plan)
-- [How total price is calculated](#how-total-price-is-calculated)
-- [How increasing or decreasing the number of seats affects price](#how-increasing-or-decreasing-the-number-of-seats-affects-price)
+- [How total price is calculated](#how-total-price-is-calculated), including
+  effects of making changes to the plan during the billing period.
 - [Downgrading a plan](#downgrading-a-plan)
-- [Billing period, auto-renewal of team plan, and grace period for non-payment](#billing-period-auto-renewal-of-team-plan-and-grace-period-for-non-payment)
+- [Billing period and auto-renewal of team plans](#billing-period-and-auto-renewal-of-team-plans)
+- [Grace period for non-payment](#grace-period-for-non-payment)
 - [Payment processor and accepted payment methods](#payment-processor-and-accepted-payment-methods)
 - [Accessing your payment history and invoices](#accessing-your-payment-history-and-invoices)
 - [Frequently asked questions](#frequently-asked-questions)
@@ -48,7 +49,7 @@ in pro-rated amount calculation (see the next section for an example).
 For Enterprise plans, all invoice amounts are calculated based on the agreement
 between you and Iterative.
 
-## How increasing or decreasing the number of seats affects price
+### How increasing or decreasing the number of seats affects price
 
 If you add members to available seats or remove members without reducing the
 number of seats in your team, there will be no price impact.
@@ -79,34 +80,36 @@ about refunds, please [contact us].
 
 To upgrade to or downgrade from an Enterprise plan, please [contact us].
 
-## Billing period, auto-renewal of Team plan, and grace period for non-payment
+## Billing period and auto-renewal of Team plans
 
 The billing period for each team plan subscription starts on the date of the
 subscription and is one month long. For example, if your subscription date is
 the 15th of May, your next billing period will start on the 15th of June.
 
-All Team plan subscriptions are renewed automatically at the end of the billing
-period.
+Team plan subscriptions are renewed automatically for one more month at the end
+of each billing period.
 
-Seven (7) days before the end of your billing period (month), you will receive
-an email notification indicating that the end date is approaching. You should
-maintain a valid payment method so that we can process your payment and
-auto-renew your subscription at the end of the billing period.
+Seven (7) days before the end of your billing period you will receive an email
+notification indicating that the end date is approaching. You should maintain a
+valid payment method so that we can process your payment and auto-renew your
+subscription at the end of the billing period.
 
-At the end of your billing period, if we were unable to renew your payment, you
-will enter a grace period of 5 days, during which you must ensure payment.
-During the grace period, you will continue to be able to use Iterative Studio in
-full capacity. After the grace period expires, you and all your team members
-will lose access to your team's views. You will continue to have access to your
-team's Settings page. The access to the team's views will be restored once you
-clear the pending payment.
+## Grace period for non-payment
+
+At the end of your billing period, if we were unable to process your payment,
+you will enter a grace period of 5 days during which you must provide valid
+payment. During this time you will continue to have full access to Iterative
+Studio.
 
 Your account's primary email address will be notified after each failed payment.
-Payments may be retried up to 4 times within the next billing period. After
-this, if the payment does not succeed, you will lose access to your team's
-views. To restore the access, go to the `Plan and billing` section of your
-team's settings page. Then, click on `Add payment method` to submit a valid
-payment method so that the payment succeeds.
+Payments may be retried up to 4 times. To provide a new payment method, go to
+the `Plan and billing` section of your team's settings page and click on
+`Add payment method`.
+
+After the grace period expires, you and all your team members will lose access
+to your team's views. You will continue to have access to your team's Settings
+page. Access to the team's views will be restored once you clear the pending
+balance.
 
 ## Payment processor and accepted payment methods
 
