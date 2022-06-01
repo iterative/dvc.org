@@ -1,6 +1,6 @@
 ---
 title: Productionize your models with MLEM in a Git-native way
-date: 2022-05-24
+date: 2022-06-01
 description: >
   Introducing MLEM - one tool to run your models anywhere.
 descriptionLong: >
@@ -11,15 +11,16 @@ descriptionLong: >
   model information for deployment into downstream production apps and services.
   MLEM easily connects to solutions like Heroku to dramatically decrease model
   deployment time.
-picture: 2022-05-24/mlem-rocket.png
+picture: 2022-06-01/mlem-rocket.png
 author: aguschin
-# commentsUrl: TODO
+commentsUrl: https://discuss.dvc.org/t/introducing-mlem/1198
 tags:
   - Machine Learning
   - Serving
   - Deployment
   - Model Registry
   - MLOps
+  - Productionization
 ---
 
 With MLEM ML teams get a single tool to **run your models anywhere** that
@@ -37,27 +38,21 @@ to GitOps.
 
 We built MLEM to address issues that MLOps teams have around managing model
 information as they move them from training and development to production and,
-ultimately, retirement. MLEM is meant to help teams automate the collection of
-information around how the model was trained, what the model is for, and
-operational requirements around deployment.
-
-Just like all our [other](https://dvc.org) [tools](https://cml.dev), MLEM uses
-your Git service to store model information and connects with CI/CD solutions
-for deployment (like Heroku). This Git-based model
+ultimately, retirement. The Git-based model
 ([one of our core philosophies](https://iterative.ai/why-iterative/)) aligns
 model operations and deployment with software development teams – information
-and automation is all based on familiar DevOps tools – so that deploying any
+and automation are all based on familiar DevOps tools – so that deploying any
 model into production is that much faster.
 
 # Model metadata codification
 
-Capturing model-specific information requires the understanding of the
+Capturing model-specific information requires an understanding of the
 Programming language and ML frameworks they're created with. That's why MLEM is
-a Python-specific tool. To provide developer-first experience, MLEM exposes
+a Python-specific tool. To provide a developer-first experience, MLEM exposes
 carefully designed CLI to help you manage DevOps parts of the workflow from CLI
 and Python API to handle model productionization programmatically.
 
-It's easy to start using MLEM, since it integrates nicely in your existing
+It's easy to start using MLEM, since it integrates nicely into your existing
 training workflows by adding a couple of lines:
 
 ```python
@@ -135,42 +130,17 @@ requirements:
 
 To make ML model development Git-native, MLEM can work with DVC to manage
 versions of a model stored remotely in the cloud. Committing both model
-metainformation (`mlem-model.mlem`) and pointer to the model binary
-(`mlem-model.dvc` or `dvc.lock` if you train it in DVC pipeline) to Git allows
+metainformation (`mlem-model.mlem`) and a pointer to the model binary
+(`mlem-model.dvc` or `dvc.lock` if you train it in a DVC pipeline) to Git allows
 you to enable GitFlow and other Software Engineering best practices like GitOps.
-
-<!-- If you train your model with
-DVC pipelines, DVC will handle this for you when you run a pipeline:
-
-```yaml
-# dvc.yaml
-stages:
-  train:
-    cmd: python train.py
-    deps:
-      - train.py
-    outs:
-      - mlem-model
-      - mlem-model.mlem:
-          cache: false
-```
-
-And if you don't use DVC pipelines, you can just track your model binary with
-DVC:
-
-```shell
-$ dvc add mlem-model
-Now tracking `mlem-model` with DVC.
-Run `git add mlem-model.dvc` and then `git commit`.
-``` -->
 
 # Running your models anywhere
 
-The main goal of MLEM is to provide you a single tool that enables any kind of
-model productionization scenarios. For MLEM, there are three main groups of
+The main goal of MLEM is to provide you with a single tool that enables any kind
+of model productionization scenarios. For MLEM, there are three main groups of
 those scenarios:
 
-- **Use** a model direcly with MLEM.
+- **Use** a model directly with MLEM.
 - **Export** a model to a format that can be used by other tools.
 - **Deploy** a model to a production environment or cloud provider.
 
@@ -204,7 +174,7 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 ```
 
-The second one allows you to package your models as a Python package, build a
+The second one allows you to export your models as a Python package, build a
 Docker Image, or export it as some special format (like `.onnx` which is coming
 soon).
 
@@ -318,7 +288,7 @@ For more information, visit our
 ⭐ **Star [MLEM on GitHub](https://github.com/iterative/mlem)** and let us know
 what you think!
 
-![Umbrella dog](/uploads/images/2022-05-24/mlem-repo-umbrella-dog.gif 'Machine Learning should be mlemming!')
+![Umbrella dog](/uploads/images/2022-06-01/mlem-repo-umbrella-dog.gif 'Machine Learning should be mlemming!')
 
 Machine Learning should be mlemming! 🚀
 
@@ -328,3 +298,16 @@ Resources:
 - [MLEM website](https://mlem.ai)
 - [MLEM on GitHub](https://github.com/iterative/mlem)
 - [Building an ML model registry](https://iterative.ai/model-registry/)
+
+---
+
+_Have something great to say about our tools? We'd love to hear it! Head to
+[this page](https://testimonial.to/iterative-open-source-community-shout-outs)
+to record or write a Testimonial! Join our
+[Wall of Love ❤️](https://testimonial.to/iterative-open-source-community-shout-outs/all)_
+
+_Do you have any use case questions or need support? Join us in
+[Discord](https://discord.com/invite/dvwXA2N)!_
+
+_Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
+best practices._
