@@ -82,34 +82,30 @@ For any changes to the plan, please contact your focal point at Iterative.
 
 ## Change your team size
 
-You can also change the size of your team within the Team or Enterprise plan at
-any point during your subscription.
+You can change the size of your team within the Team or Enterprise plans at any
+point.
 
-### If you are currently on the Free plan
+### If you are on the Free plan
 
-To change the number of seats in your team,
-[upgrade to the Team or Enterprise plan](#change-your-team-plan).
+To change the number of seats in your team beyond 2,
+[upgrade to the Team or Enterprise plans](#change-your-team-plan).
 
-### If you are currently on the Team plan
+### If you are on the Team plan
 
 To change the number of seats in your team, go to the `Plan and billing` section
-within [team settings]. Then, within the `Current plan` card, click on
-`Change seats`. Then, select the desired number of seats.
+within [team settings]. Then click on `Change seats` (under `Current plan`) and
+select the desired number of seats.
 
-- **If you are increasing the number of seats**, you will have to pay for the
-  additional seats. The payable amount is pro-rated based on the number of days
+- **If you are increasing the number of seats** you will have to pay for the
+  additional seats. The payable amount is prorated based on the number of days
   remaining in the billing period.
-- **If you are decreasing the number of seats**, a credit balance will be
-  computed based on the number of days remaining in the billing period. This
-  credit balance will be used in future payments.
+- **If you are decreasing the number of seats** a prorated credit will be added
+  to your account for the remaining days in the billing period. You can apply
+  for a future payment.
 
-The total payable amount and any changes to your credit balance will be
-displayed after you select the number of seats.
+The total payable amount or credit balance will be displayed for you to
+`Confirm`.
 
-To make the payment (or accept the credit balance) and increase/decrease the
-number of seats, click on `Confirm`.
+### If you are on the Enterprise plan
 
-### If you are currently on the Enterprise plan
-
-To change the number of seats in your team, please contact your focal point at
-Iterative.
+For any changes to the plan, please contact your focal point at Iterative.

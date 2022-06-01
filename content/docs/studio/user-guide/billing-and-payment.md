@@ -9,7 +9,7 @@ These are paid plans, and in this page you will learn how to manage billing and
 payment for them.
 
 - [Difference between Free, Team, and Enterprise plans](#difference-between-free-team-and-enterprise-plans)
-- [How to sign up for the Team or Enterprise plan](#how-to-sign-up-for-the-team-or-enterprise-plan)
+- [How to sign up for the Team or Enterprise plans](#how-to-sign-up-for-the-team-or-enterprise-plans)
 - [How total price is calculated](#how-total-price-is-calculated), including
   effects of making changes to the plan during the billing period.
 - [Downgrading a plan](#downgrading-a-plan)
@@ -24,7 +24,7 @@ payment for them.
 A detailed comparison of the different plans can be found in the Iterative
 Studio [pricing page](https://studio.iterative.ai/pricing).
 
-## How to sign up for the Team or Enterprise plan
+## How to sign up for the Team or Enterprise plans
 
 When you sign up, you're on the **Free plan** by default. To switch to the
 **Team plan**, [create a team] first, then go to the [team settings] and click
@@ -45,7 +45,7 @@ For example, suppose you have a team with 5 seats. At a monthly rate of $40 per
 seat, the total payable amount for the team would be $40 x 5 = $200 per month.
 
 Increasing or decreasing the number of seats during a billing period will result
-in pro-rated amount calculation (see the next section for an example).
+in prorated amount calculation (see the next section for an example).
 
 For Enterprise plans, all invoice amounts are calculated based on the agreement
 between you and Iterative.
@@ -62,15 +62,15 @@ to the 14th of this month, then, if you add 2 seats on the 10th of this month,
 you will be charged for only 5 days of the 2 new seats. In the following billing
 period, the 2 additional seats will be charged for the entire billing period.
 
-If you reduce the number of seats, you will receive an account credit for the
+If you decrease the number of seats, you will receive an account credit for the
 prorated difference. You can apply it for a future payment.
 
 ## Downgrading a plan
 
-You can reduce the number of seats in your plan at any point, as explained in
+You can decrease the number of seats in your plan at any point, as explained in
 the previous section.
 
-To cancel the Team plan and move back to the Free plan, reduce the number of
+To cancel the Team plan and move back to the Free plan, decrease the number of
 seats in the team to 1 or 2 and click on `Downgrade`. A prorated credit will be
 added to your account for the remaining days in the billing period. You can
 apply for a future payment.

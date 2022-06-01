@@ -144,7 +144,8 @@ members.
 
 The number of collaborators in your team depends on your team plan. By default,
 all teams are on the Free plan, and can have 2 collaborators. To add more
-collaborators, [upgrade to the Team or Enterprise plan](#change-your-team-plan).
+collaborators,
+[upgrade to the Team or Enterprise plans](#change-your-team-plan).
 
 All collaborators and pending invites get counted in the subscription. Suppose
 you have subscribed for a 10 member team. If you have 5 members who have
@@ -163,7 +164,7 @@ Team or Enterprise plans. A detailed comparison of the different plans can be
 found in the Iterative Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
-- **To upgrade** from the Free plan to the Team or Enterprise plan or to
+- **To upgrade** from the Free plan to the Team or Enterprise plans or to
   downgrade your team plan, refer to
   [Change your plan](/doc/studio/user-guide/change-team-plan-and-size#change-your-team-plan).
 
