@@ -183,13 +183,16 @@ const plugins = [
               }
             }
           `,
-          serialize: async ({ query: { site, allBlogPost } }) =>
-            await Promise.all(
+          serialize: async ({ query: { site, allBlogPost } }) => {
+            console.log({ site, allBlogPost })
+            return await Promise.all(
               allBlogPost.nodes.map(async node => {
+                console.log({ node })
                 const html = makeFeedHtml(
                   await node.htmlAst,
                   site.siteMetadata.siteUrl
                 )
+                console.log({ html })
                 return Object.assign(
                   {},
                   {
@@ -203,7 +206,8 @@ const plugins = [
                   }
                 )
               })
-            ),
+            )
+          },
           title
         }
       ],
