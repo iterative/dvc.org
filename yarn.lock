@@ -2409,10 +2409,10 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@dvcorg/gatsby-theme-iterative@^0.1.5-beta.2":
-  version "0.1.5-beta.2"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.5-beta.2.tgz#dbda0318652358fa65a384483ecc0d300a9d0360"
-  integrity sha512-NCxcvwalwCWRbVbPAgnGrgSB3KoCDYhJr8PhjfHSo88FGXzqAFJ4Fu12nhKFxEesqvtbg48utwVlnnyriXn32g==
+"@dvcorg/gatsby-theme-iterative@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.6.tgz#dbd84f25075cae260050205f99b22481c1091508"
+  integrity sha512-Dx5oBW1Fv9sZPtR/zqpsBBnqf/PLW4b0R7Otm/7fyo2LB/iOLvt1mfJengKOgpMnQNCDLvxvIQwNwuVtIDIwTw==
   dependencies:
     "@reach/portal" "^0.17.0"
     "@reach/router" "^1.3.4"

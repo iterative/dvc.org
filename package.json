@@ -37,7 +37,7 @@
     "node": ">=14.x <=16.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.5-beta.2",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.6",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^4.8.0",
     "@reach/portal": "^0.17.0",
