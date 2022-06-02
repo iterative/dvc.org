@@ -36,20 +36,22 @@ environment, type `jupyter notebook` in our terminal, and head over to
 http://localhost:8888. We're good to go and ready to start prototyping!
 
 This usage has one major downside, however: we're limited by the specs of our
-local machine. While my laptop won't struggle too much training a classifier for
-the IRIS dataset, it might become a limiting factor when working on an
-alternative to GPT-3. And probably a little while before a project of that
-scope.
+local machine. While my laptop won't struggle training a classifier for the
+[Iris dataset](https://www.kaggle.com/datasets/uciml/iris), it will become a
+limiting factor when working on an alternative to
+[GPT-3](https://github.com/openai/gpt-3).
 
-The apparent solution to bypassing the limitations of our local machine is to
-move our notebooks to the cloud. When running a notebook on AWS or Azure, we can
+The solution to bypassing the limitations of our local machine is to move our
+notebooks to the cloud. When running a notebook on AWS or Azure, we can
 provision as beefy an instance as needed for our project. However, the downside
 to cloud-hosted notebooks is that they're more challenging to get up and
 running. And any time spent setting up our development environment is time we
 can't spend on our actual ML project.
 
 "Now wait a minute," you might say, "hasn't this problem long been solved by
-SaaS solutions like Google Colab and Amazon SageMaker Studio?"
+SaaS solutions like
+[Google Colab](https://colab.research.google.com/?utm_source=scs-index) and
+[Amazon SageMaker Studio](https://aws.amazon.com/sagemaker/studio/)?"
 
 To which I'd reply: "To an extent: yes. But while they certainly have their
 merits, these solutions often have their own limitations which can become
@@ -64,22 +66,24 @@ SageMaker:
   difficult and sometimes impossible to use infrastructure components from
   different vendors in conjunction with each other.
 - **Hardware limitations:** they may still put a limit on the hardware available
-  to you. Colab, for example, is capped at 25GB of RAM.
+  to you. Colab, for example, is capped at 25GB of RAM and caps uptime at 12
+  hours.
 
 Iterative provides an alternative to these services in the form of
 [TPI (Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative).
-This [Terraform](https://www.terraform.io/) plugin lets us quickly launch
-Jupyter workspaces on any cloud provider without needing to be a cloud expert.
+This [Terraform](https://www.terraform.io/) plugin lets us quickly launch tasks
+such as Jupyter workspaces on any cloud provider without needing to be a cloud
+expert.
 
 Here are four benefits to TPI that might pique your interest:
 
-- **Free and open:** TPI is entirely open source and free to use
+- **Free and open:** TPI is entirely open source and free to use.
 - **Lower cloud costs:** TPI automatically cleans up unused instances. It also
-  allows you to use spot instances, reducing your per-hour costs
+  allows you to use spot instances, reducing your per-hour costs.
 - **Modular:** TPI can be used with a variety of cloud vendors, meaning you can
-  use it regardless of what the rest of your stack looks like
+  use it regardless of what the rest of your stack looks like.
 - **Developer-first experience:** {{is this really a benefit for target audience
-  i.e. data scientists?}}
+  i.e. data scientists?}}.
 
 The guide below will explore how to launch a Jupyter server using TPI, allowing
 you to run notebooks on cloud instances. While we will be using AWS in our
@@ -195,14 +199,14 @@ Azure, for example.
 Of particular interest here is the `spot = 0`, which tells TPI to provision spot
 instances instead of on-demand ones. At the time of writing, the on-demand
 hourly rate for this type of instance is $0.526. On the other hand, spot
-instances are only $0.15 per hour. With little to no effort, TPI allows us to reduce
-our cloud costs by 70%!
+instances are only $0.15 per hour. With little to no effort, TPI allows us to
+reduce our cloud costs by 70%!
 
 <admon type="tip">
 
-We could also set an upper limit to the hourly price we are willing to pay (e.g.,
-`spot = 0.12`), and TPI would hold off on provisioning until instances are
-available at that price. Disabling spot pricing (`spot = -1`) would make TPI
+We could also set an upper limit to the hourly price we are willing to pay
+(e.g., `spot = 0.12`), and TPI would hold off on provisioning until instances
+are available at that price. Disabling spot pricing (`spot = -1`) would make TPI
 provision on-demand instances.
 
 </admon>
@@ -263,7 +267,6 @@ provisioned. These are CLI commands as you would run them in your local
 terminal. We won't discuss every individual line, but in broad strokes, the
 script does the following:
 
-1. Run a few configuration commands
 1. Install the dependencies we will be needing
 1. Start an ngrok tunnel so that we can easily access the server through our
    browser
