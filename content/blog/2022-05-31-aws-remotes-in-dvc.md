@@ -18,7 +18,7 @@ tags:
   - Collaboration
 ---
 
-404 LINK: https://developer.mozilla.org/en-US/404-page
+[404 LINK](https://developer.mozilla.org/en-US/404-page)
 
 When you’re working on a data science project that has huge datasets, it’s
 common to store them in cloud storage. You’ll also be working with different
