@@ -5,7 +5,7 @@ description: >
   We're going to set up an Azure Blob Storage remote in a DVC project.
 descriptionLong: >
   Setting up a remote to make data versioning easier with DVC is a common need
-  so we're going to go through a tutorial for doing this with AWS.
+  so we're going to go through a tutorial for doing this with Azure.
 picture: 2022-06-22/dvc-azure.png
 pictureComment: Using Azure Blob Storage in DVC
 author: milecia_mcgregor
@@ -186,15 +186,15 @@ $ dvc remote modify bikes account_name 'bicycleproject'
 
 ### Push and pull data with DVC
 
-Now you can push data from your local machine to the AWS remote! First, add the
-data you want DVC to track with the following command:
+Now you can push data from your local machine to the Azure remote! First, add
+the data you want DVC to track with the following command:
 
 ```dvc
 $ dvc add data
 ```
 
 This will allow DVC to track the entire `data` directory so it will note when
-any changes are made. Then you can push that data to your AWS remote with this
+any changes are made. Then you can push that data to your Azure remote with this
 command:
 
 ```dvc
