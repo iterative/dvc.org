@@ -77,42 +77,32 @@ Then click the `+ Container` button at the top of the new page and you'll see a
 right sidebar open. In the name field, type `bikedata` and then click `Create`.
 Now we have everything set up for the blob storage to work.
 
-### Authenticate your Azure account
+### Set the right roles for your Azure account
 
-You'll need some credentials to connect this remote storage to your machine
-learning project. You can take advantage of the
-[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) to do
-this.
+You'll need the right roles on your storage account and your container in order
+to connect this remote storage to your machine learning project.
 
-Run the following command to authenticate with Azure.
+On the page for your `bicycleproject` storage account, go to the
+`Access Control (IAM)` in the left sidebar.
 
-```dvc
-$ az login
-A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
-[
-  {
-    "cloudName": "AzureCloud",
-    "homeTenantId": "some-id",
-    "id": "some-id",
-    "isDefault": true,
-    "managedByTenants": [],
-    "name": "Azure subscription 1",
-    "state": "Enabled",
-    "tenantId": "some-id",
-    "user": {
-      "name": "test@test.com",
-      "type": "user"
-    }
-  }
-]
-```
+![update roles for storage account](/uploads/images/2022-06-22/storage_account_iam.png)
 
-This should open a window that looks like this where you can enter your login
-credentials.
+On this page, you'll click `Add role assignment` and get directed to the page
+with all of the roles.
 
-![Azure CLI authentication page](/uploads/images/2022-06-22/azure_auth_page.png)
+![update roles for storage account](/uploads/images/2022-06-22/storage_account_role.png)
 
-With our Azure account authenticated, let's set up the project!
+Select the `Storage Queue Data Contributor` role and click `Next`
+
+![update roles for storage account](/uploads/images/2022-06-22/storage_account_member.png)
+
+Then you can click `+ Select members` to add this role to your user.
+
+You'll also need to go through this exact flow for your `bikedata` container, so
+make sure you do this immediately after your storage account is updated.
+
+Since our Azure storage account and container have the correct roles now, let's
+set up the project!
 
 ## Set up a DVC project
 
@@ -150,14 +140,45 @@ stored.
 In order for DVC to be able to push and pull data from the remote, you need to
 have valid Azure credentials.
 
-By default, DVC authenticates using your Azure CLI configuration, which we
-handled earlier. You can check out more details on this command
-[here in the Azure docs](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
+By default, DVC authenticates using your
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+configuration.
 
+Run the following command to authenticate with Azure.
+
+```dvc
+$ az login
+A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "some-id",
+    "id": "some-id",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure subscription 1",
+    "state": "Enabled",
+    "tenantId": "some-id",
+    "user": {
+      "name": "test@test.com",
+      "type": "user"
+    }
+  }
+]
+```
+
+This should open a window that looks like this where you can enter your login
+credentials.
+
+![Azure CLI authentication page](/uploads/images/2022-06-22/azure_auth_page.png)
+
+You can check out more details on this command
+[here in the Azure docs](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
 If you want to
 [use a different authentication method](https://dvc.org/doc/command-reference/remote/modify#microsoft-azure-blob-storage).
-You will need to manually define the storage account name with the following
-command:
+
+You will also need to manually define the storage account name with the
+following command:
 
 ```dvc
 $ dvc remote modify bikes account_name 'bicycleproject'
@@ -182,7 +203,7 @@ $ dvc push
 
 Here's what the data might look like in your Azure container.
 
-![data in Azure container](/uploads/images/2022-06-22/azure_auth_page.png)
+![data in Azure container](/uploads/images/2022-06-22/data_in_azure.png)
 
 Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by cloning or forking the project repo and running:
