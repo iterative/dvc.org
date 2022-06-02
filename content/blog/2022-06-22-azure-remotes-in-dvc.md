@@ -63,19 +63,21 @@ leave all the default settings in place and click `Review + create`.
 ![storage account details](/uploads/images/2022-06-22/storage_account_details.png)
 
 Azure will run validation on the account and then you'll be able to click
-`Create` and it will generate the storage account. You'll get redirected to a
-page like this and you should click the `Go to resource` button.
+`Create` and it will generate the storage account.
 
 ![created storage account](/uploads/images/2022-06-22/created_storage_account.png)
 
-Now you should see all of the details for your storage account. In the left
-sidebar, click on `Containers` under the `Data storage` section.
+You'll get redirected to a new page and you should click the `Go to resource`
+button. Now you should see all of the details for your storage account. In the
+left sidebar, got to on `Data storage` > `Containers`.
 
 ![bicycle project account](/uploads/images/2022-06-22/bicycle_project_account.png)
 
 Then click the `+ Container` button at the top of the new page and you'll see a
 right sidebar open. In the name field, type `bikedata` and then click `Create`.
 Now we have everything set up for the blob storage to work.
+
+![new container for bike data](/uploads/images/2022-06-22/bikedata_container.png)
 
 ### Set the right roles for your Azure account
 
@@ -92,7 +94,7 @@ with all of the roles.
 
 ![update roles for storage account](/uploads/images/2022-06-22/storage_account_role.png)
 
-Select the `Storage Queue Data Contributor` role and click `Next`
+Select the `Storage Blob Data Contributor` role and click `Next`
 
 ![update roles for storage account](/uploads/images/2022-06-22/storage_account_member.png)
 
@@ -174,8 +176,8 @@ credentials.
 
 You can check out more details on this command
 [here in the Azure docs](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
-If you want to
-[use a different authentication method](https://dvc.org/doc/command-reference/remote/modify#microsoft-azure-blob-storage).
+If you want to use a different authentication method with DVC, check out
+[our docs here](https://dvc.org/doc/command-reference/remote/modify#microsoft-azure-blob-storage).
 
 You will also need to manually define the storage account name with the
 following command:
