@@ -132,14 +132,14 @@ and retry the DVC command. Specifically, one of:
 [shallow clones](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
 Local Git repositories can be unshallowed with `git fetch --unshallow`.
 
-Typically, however, this occurs in transient remote environments such as
-Continuous Integration jobs, which use shallow clones by default. In those
+This often occurs in transient remote environments such as
+Continuous Integration (CI) jobs, which use shallow clones by default. In those
 cases, change their configuration to avoid shallow cloning. Common examples:
 
 <toggle>
 <tab title="CML">
 
-[CML](https://cml.dev/doc) has a convenient `--unshallow` option for it's
+[CML](https://cml.dev) has a convenient `--unshallow` option for its
 [`ci`](https://cml.dev/doc/ref/ci) command:
 
 ```cli
