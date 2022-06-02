@@ -11,6 +11,7 @@ import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/sr
 import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 
 import * as styles from './styles.module.css'
+import menuData from '../data/menu'
 
 const docsPage = getFirstPage()
 
@@ -30,7 +31,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
   const handleClose = useCallback(() => setOpened(false), [opened])
 
   const handleItemClick = useCallback(
-    item => (): void => {
+    (item?: string) => (): void => {
       handleClose()
       if (item) {
         logEvent('Hamburger Menu', { Item: item })
@@ -123,76 +124,24 @@ export const HamburgerMenu: React.FC<
             Community
           </Link>
           <ul className={styles.subSections}>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#meet"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-community.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Meet Us</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#contribute"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-contribute.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Contribute</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#learn"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-learn.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Learn</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#events"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-events.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Events</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link
-                href="/community#testimonial"
-                className={styles.subSectionLink}
-                onClick={() => handleItemClick('community')}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-community.svg"
-                  alt=""
-                />
-                <span className={styles.subSectionLinkTitle}>Testimonials</span>
-              </Link>
-            </li>
+            {menuData.community.map(item => (
+              <li className={styles.subSection} key={item.href}>
+                <Link
+                  href={item.href}
+                  className={styles.subSectionLink}
+                  onClick={() => handleItemClick('community')}
+                >
+                  <img
+                    className={styles.subSectionLinkImage}
+                    src={item.img}
+                    alt={item.imgAlt}
+                  />
+                  <span className={styles.subSectionLinkTitle}>
+                    {item.title}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </li>
         <li className={styles.section}>
@@ -261,49 +210,20 @@ export const HamburgerMenu: React.FC<
         <li className={styles.section}>
           <p className={styles.sectionHeading}>All Tools</p>
           <ul className={styles.subSections}>
-            <li className={styles.subSection}>
-              <Link
-                href="https://studio.iterative.ai/"
-                className={styles.subSectionLink}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/studio_icon-color--square_vector.svg"
-                  alt="Studio logo"
-                />
-                <span className={styles.subSectionLinkTitle}>Studio</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link href="/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/dvc_icon-color--square_vector.svg"
-                  alt="DVC logo"
-                />
-                <span className={styles.subSectionLinkTitle}>DVC</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link href="https://cml.dev/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/cml_icon-color--square_vector.svg"
-                  alt="CML logo"
-                />
-                <span className={styles.subSectionLinkTitle}>CML</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link href="https://mlem.ai/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/mlem-icon.svg"
-                  alt="MLEM logo"
-                />
-                <span className={styles.subSectionLinkTitle}>MLEM</span>
-              </Link>
-            </li>
+            {menuData.products.map(item => (
+              <li className={styles.subSection} key={item.href}>
+                <Link href={item.href} className={styles.subSectionLink}>
+                  <img
+                    className={styles.subSectionLinkImage}
+                    src={item.img}
+                    alt={item.imgAlt}
+                  />
+                  <span className={styles.subSectionLinkTitle}>
+                    {item.title}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </li>
       </ul>

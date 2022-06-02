@@ -2,37 +2,30 @@ import React from 'react'
 import cn from 'classnames'
 
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import {
-  OtherToolsPopup,
-  CommunityPopup,
-  OtherPopup,
-  IPopupProps
-} from '../Popup'
+import { IPopupProps } from '../Popup'
 
 import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
 
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 import usePopup, {
   IUsePopupReturn
 } from '../../../../../../gatsby/hooks/usePopup'
 
-const docsPage = getFirstPage()
-
 import * as styles from './styles.module.css'
 import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
+import menuData from '../../../data/menu'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 
-interface INavLinkData {
+export interface INavLinkData {
   href: string
   eventType: string
   text: string
   className?: string
 }
 
-interface INavLinkPopupData {
+export interface INavLinkPopupData {
   text: string | typeof EllipsisIcon
   popupName: PopupName
   ariaLabel?: string
@@ -40,52 +33,6 @@ interface INavLinkPopupData {
   className?: string
   href?: string
 }
-
-export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
-  {
-    href: '/features',
-    eventType: 'features',
-    text: 'Features'
-  },
-  {
-    href: docsPage,
-    eventType: 'doc',
-    text: 'Doc'
-  },
-  {
-    href: '/blog',
-    eventType: 'blog',
-    text: 'Blog'
-  },
-  {
-    href: 'https://learn.iterative.ai/',
-    eventType: 'course',
-    text: 'Course'
-  },
-  {
-    text: 'Community',
-    Popup: CommunityPopup,
-    href: '/community',
-    popupName: 'communityPopup'
-  },
-  {
-    href: '/support',
-    eventType: 'support',
-    text: 'Support'
-  },
-  {
-    text: 'Other Tools',
-    popupName: 'otherToolsPopup',
-    Popup: OtherToolsPopup
-  },
-  {
-    text: EllipsisIcon,
-    ariaLabel: 'Show options',
-    popupName: 'otherPopup',
-    Popup: OtherPopup,
-    className: styles.other
-  }
-]
 
 const isPopup = (
   item: INavLinkData | INavLinkPopupData
@@ -104,7 +51,7 @@ const LinkItems: React.FC = () => {
 
   return (
     <ul className={styles.linksList}>
-      {navLinkItemsData.map((item, i) => {
+      {menuData.nav.map((item, i) => {
         const popup = isPopup(item) ? popups[item.popupName] : undefined
         return (
           <li

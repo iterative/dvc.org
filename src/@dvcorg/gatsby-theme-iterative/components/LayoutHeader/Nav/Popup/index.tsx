@@ -3,60 +3,11 @@ import cn from 'classnames'
 
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import { navLinkItemsData } from '../LinkItems'
 
 import { ReactComponent as ExternalLinkIcon } from '../../../../../../../static/img/external-link-icon.svg'
 
 import * as styles from './styles.module.css'
-
-interface IOtherToolsLinkData {
-  href: string
-  title: string
-  description: string
-  iconClass: string
-  target?: '_blank'
-}
-
-interface ICommunityLinkData {
-  href: string
-  text: string
-}
-
-const communityPopupData: Array<ICommunityLinkData> = [
-  { text: 'Meet the Community', href: '/community' },
-  { text: 'Testimonials', href: '/community#testimonial' },
-  { text: 'Contribute', href: '/community#contribute' },
-  { text: 'Learn', href: '/community#learn' },
-  { text: 'Events', href: '/community#events' }
-]
-
-const otherToolsPopupData: Array<IOtherToolsLinkData> = [
-  {
-    title: 'Studio',
-    iconClass: styles.studioIcon,
-    description: 'Track experiments and share insights from ML projects',
-    href: 'https://studio.iterative.ai/'
-  },
-  {
-    title: 'DVC',
-    iconClass: styles.dvcIcon,
-    description: 'Open-source version control system for ML projects',
-    href: '/'
-  },
-  {
-    title: 'CML',
-    iconClass: styles.cmlIcon,
-    description: 'Open-source CI/CD for ML projects',
-    href: 'https://cml.dev/'
-  },
-  {
-    title: 'MLEM',
-    iconClass: styles.mlemIcon,
-    description:
-      'Open-source model registry and deployment tool for ML projects',
-    href: 'https://mlem.ai/'
-  }
-]
+import menuData from '../../../data/menu'
 
 export interface IPopupProps {
   isVisible: boolean
@@ -77,7 +28,7 @@ export const CommunityPopup: React.FC<IPopupProps> = ({
   closePopup
 }) => (
   <BasePopup className={styles.communityPopup} isVisible={isVisible}>
-    {communityPopupData.map(({ text, href }, i) => (
+    {menuData.community.map(({ text, title, href }, i) => (
       <Link
         className={styles.link}
         href={href}
@@ -87,7 +38,7 @@ export const CommunityPopup: React.FC<IPopupProps> = ({
           closePopup()
         }}
       >
-        {text}
+        {text || title}
       </Link>
     ))}
   </BasePopup>
@@ -98,7 +49,7 @@ export const OtherPopup: React.FC<IPopupProps> = ({
   closePopup
 }) => (
   <BasePopup className={styles.otherPopup} isVisible={isVisible}>
-    {navLinkItemsData.map(
+    {menuData.nav.map(
       ({ text, href }, i) =>
         href && (
           <Link
@@ -119,7 +70,7 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
   closePopup
 }) => (
   <BasePopup className={styles.otherToolsPopup} isVisible={isVisible}>
-    {otherToolsPopupData.map(
+    {menuData.products.map(
       ({ title, iconClass, description, href, target }, i) => (
         <Link
           className={styles.link}
