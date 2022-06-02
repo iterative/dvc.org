@@ -184,21 +184,26 @@ const plugins = [
             }
           `,
           serialize: ({ query: { site, allBlogPost } }) => {
-            return allBlogPost.nodes.map(node => {
-              const html = makeFeedHtml(node.htmlAst, site.siteMetadata.siteUrl)
-              return Object.assign(
-                {},
-                {
-                  /* eslint-disable-next-line @typescript-eslint/naming-convention */
-                  custom_elements: [{ 'content:encoded': html }],
-                  title: node.title,
-                  date: node.date,
-                  description: node.description,
-                  guid: site.siteMetadata.siteUrl + node.slug,
-                  url: site.siteMetadata.siteUrl + node.slug
-                }
-              )
-            })
+            return Promise.all(
+              allBlogPost.nodes.map(async node => {
+                const html = await makeFeedHtml(
+                  node.htmlAst,
+                  site.siteMetadata.siteUrl
+                )
+                return Object.assign(
+                  {},
+                  {
+                    /* eslint-disable-next-line @typescript-eslint/naming-convention */
+                    custom_elements: [{ 'content:encoded': html }],
+                    title: node.title,
+                    date: node.date,
+                    description: node.description,
+                    guid: site.siteMetadata.siteUrl + node.slug,
+                    url: site.siteMetadata.siteUrl + node.slug
+                  }
+                )
+              })
+            )
           },
           title
         }
