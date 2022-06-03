@@ -58,8 +58,8 @@ workshop.
 
 # Features
 
-Here are the main features that are available when you install
-the extension right now:
+Here are the main features that are available when you install the extension
+right now:
 
 ## DVC View: experiments, parameters, metrics, and plots
 
@@ -95,17 +95,14 @@ will guide you along all required details.
 ![Use the command palette to quickly find DVC
 features](/uploads/images/2022-06-14/command-palette.gif)
 
-<!--
-TODO: seems to overlap with Source control management; can we safely remove this?
-
-## Tracked resources
+## DVC tracked explorer
 
 Resources tracked by DVC can be viewed and managed through the tracked explorer
-view. See at a glance which datasets and models have been changed, and use
-`push` and `pull` to synchronize with your remote:
+view. See at a glance which datasets and models have been changed, and navigate
+through all files contained in the DVC project(s) of your workspace.
 
 ![Tracked resources in the explorer
-view](/uploads/images/2022-06-14/tracked-resources.png) -->
+view](/uploads/images/2022-06-14/tracked-resources.png)
 
 # What's next?
 
