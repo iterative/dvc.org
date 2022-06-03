@@ -33,8 +33,7 @@ With this extension you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets, run experiments, view
 metrics, create plots, and much more. All in one place in your IDE.
 
-[Install the DVC extension from the marketplace to get
-started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why an extension?
 
@@ -44,11 +43,10 @@ it can be more difficult for those less familiar with CLI tools to get
 accustomed to using DVC. Moreover, while DVC provides many useful
 visualizations, a CLI tool can only take things so far.
 
-Therefore we wanted to incorporate DVC's functionality into a graphical interface.
-[VS Code is the IDE of choice for
-many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
-including most of us here at Iterative. It seemed like the natural choice
-for a platform to make DVC more versatile, accessible, and useful.
+Therefore we wanted to incorporate DVC's functionality in a graphical interface.
+[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+including most of us here at Iterative. It seemed like the natural choice for a
+platform to make DVC more versatile, accessible, and useful.
 
 With this extension, we want to achieve the following:
 
@@ -154,8 +152,7 @@ possible:
 
 Want to read more about the extension? Check out the following pages:
 
-- [DVC extension on the VS Code
-  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
