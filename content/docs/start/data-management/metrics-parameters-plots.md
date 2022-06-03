@@ -290,5 +290,32 @@ file:///Users/dvc/example-get-started/plots.html
 > [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 > names) to compare.
 
+## Badges
+
+Since metrics are stored in
+[JSON or YAML 1.2 files](/doc/command-reference/metrics#supported-file-formats),
+it is easy to parse values for use in other services. One example use case is
+adding badges to a
+[repository's README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes).
+The format for a [dynamic badge](https://shields.io/#dynamic-badge) is:
+
+```
+https://img.shields.io/badge/dynamic/{json,xml}\
+  ?url=https://{github,gitlab}.com/<repo>/raw/<branch>/<metrics_file>\
+  &query=<...>&label=<...>
+```
+
+So a GitHub markdown example for
+[iterative/example-get-started@main/evaluation.json](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
+would be:
+
+```md
+[![DVC-metrics](https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737)](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
+```
+
+[![DVC-metrics](https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737)](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
+
+---
+
 On the next page, you can learn advanced ways to track, organize, and compare
 more experiment iterations.

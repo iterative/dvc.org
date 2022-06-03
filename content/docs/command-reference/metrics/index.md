@@ -92,6 +92,16 @@ DVC itself does not ascribe any specific meaning for these numbers. Usually they
 are produced by the model training or model evaluation code and serve as a way
 to compare and pick the best performing experiment.
 
+<admon type="tip">
+
+See
+[the guide on metrics badges](/doc/start/data-management/metrics-parameters-plots#badges)
+for prettifying a repository's with an automatically updated badge like this:
+
+[![DVC-metrics](https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737)](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
+
+</admon>
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
