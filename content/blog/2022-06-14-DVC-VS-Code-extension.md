@@ -58,8 +58,7 @@ workshop.
 
 # Features
 
-Our first priority was to include all DVC features related to data management
-and experiments. Here are the main features that are available when you install
+Here are the main features that are available when you install
 the extension right now:
 
 ## DVC View: experiments, parameters, metrics, and plots
