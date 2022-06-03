@@ -4,11 +4,10 @@ title: >
   extension
 date: 2022-06-14
 description: >
-  Today we are
-  releasing the DVC extension, which brings a full ML experimentation platform
-  to VS Code.
+  Today we are releasing the DVC extension, which brings a full ML
+  experimentation platform to VS Code.
 descriptionLong: >
-  VS Code has become the IDE of choice for many data scientists. Today we are
+  Today we are
   releasing the DVC extension, which brings a full ML experimentation platform
   to VS Code. Manage your data, run experiments, compare metrics, and visualize
   plots, all from the comfort of your IDE.
