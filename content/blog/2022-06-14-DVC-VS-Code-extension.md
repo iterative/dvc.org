@@ -56,22 +56,6 @@ With this extension, we want to achieve the following:
 As data scientists, DVC is our toolbox. This extension turns VS Code into our
 workshop.
 
-<!-- # Why Visual Studio Code
-
-One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
-that our products should couple tightly with existing tools and processes for
-data science projects.
-[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
-including many of us at Iterative. Here are a few reasons why we really like it:
-
-VS Code...
-
-- is open source and lightweight
-- has excellent support for Git workflows
-- supports Jupyter Notebooks
-- comes with remote development and execution built-in
-- has a rich ecosystem of extensions -->
-
 # Features
 
 Our first priority was to include all DVC features related to data management
