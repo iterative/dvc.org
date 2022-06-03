@@ -112,10 +112,10 @@ view](/uploads/images/2022-06-14/tracked-resources.png) -->
 
 # What's next?
 
-We're excited that version 1.0 is live and available to the public! From here on
-out, we plan on making the extension even better with new features such as
-pipeline (DAG) support, TPI integration for remote execution, autocomplete for
-`dvc.yaml`, and parallel coordinate plots.
+We're excited that our VS Code extension is live and available to the public!
+From here on out, we plan on making the extension even better with new features
+such as pipeline (DAG) support, TPI integration for remote execution,
+autocomplete for `dvc.yaml`, and parallel coordinate plots.
 
 Of course, we'd love to hear what you are most looking forward to. Make sure to
 give us feedback on what you'd like to see next!
