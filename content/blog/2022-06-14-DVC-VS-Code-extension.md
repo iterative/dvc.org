@@ -58,8 +58,8 @@ workshop.
 
 # Features
 
-Here are the main features that are available when you install
-the extension right now:
+Here are the main features that are available when you install the extension
+right now:
 
 ## DVC View: experiments, parameters, metrics, and plots
 
