@@ -552,46 +552,30 @@
     ]
   },
   {
-    "label": "Studio",
     "slug": "studio",
-    "source": "studio/index.md",
     "icon": "studio",
     "children": [
-      {
-        "label": "How It Works",
-        "slug": "overview"
-      },
+      "how-it-works",
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
-        "source": "user-guide/index.md",
+        "source": false,
         "children": [
+          "prepare-your-repositories",
           {
-            "label": "Prepare Your Repositories",
-            "slug": "prepare-repositories"
-          },
-          {
-            "label": "Views and Experiments",
-            "slug": "views",
+            "slug": "views-and-experiments",
             "source": false,
             "children": [
               "what-is-a-view",
               "create-view",
+              "configure-a-view",
+              "explore-ml-experiments",
               {
-                "label": "Configure View",
-                "slug": "view-settings"
-              },
-              {
-                "label": "Explore ML Experiments",
-                "slug": "explore-experiments"
-              },
-              {
-                "label": "Visualize and Compare",
-                "slug": "visualize-experiments"
+                "slug": "visualize-experiments",
+                "label": "Visualize and Compare"
               },
               "run-experiments",
-              "share-view"
+              "share-a-view"
             ]
           },
           "teams",
