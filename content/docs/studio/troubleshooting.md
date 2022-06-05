@@ -30,9 +30,9 @@ Otherwise, you will get this message when you try to create a view:
 `We could not find data to visualize in this repo`.
 
 For more details, refer to the section on
-[how to prepare your Git repositories for use with Iterative Studio](/doc/studio/user-guide/prepare-repositories).
+[how to prepare your Git repositories for use with Iterative Studio](/doc/studio/user-guide/prepare-your-repositories).
 Instructions on how to specify custom files can be found
-[here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
+[here](/doc/studio/user-guide/views-and-experiments/create-a-view#configuring-view-settings).
 
 ## Error: No DVC repo was found at the root
 
@@ -51,7 +51,7 @@ To solve this, you can either:
   want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
+[here](/doc/studio/user-guide/views-and-experiments/create-a-view#configuring-view-settings).
 
 ## Error: Non-DVC sub-directory of a monorepo
 
@@ -74,7 +74,7 @@ To solve this, you can either:
   want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
+[here](/doc/studio/user-guide/views-and-experiments/create-a-view#configuring-view-settings).
 
 ## Error: No commits were found for the sub-directory
 
@@ -89,7 +89,7 @@ If you did not intend to work with a DVC repo, you can also specify custom files
 that contain the metrics and hyperparameters that you want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
+[here](/doc/studio/user-guide/views-and-experiments/create-a-view#configuring-view-settings).
 
 ## View got created, but does not contain any data
 
@@ -101,7 +101,7 @@ metrics or hyperparameters that you want to visualize.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
-[here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
+[here](/doc/studio/user-guide/views-and-experiments/create-a-view#configuring-view-settings).
 
 ## View does not contain the columns that I want
 
@@ -110,7 +110,7 @@ There are two possible reasons for this:
 1. **The required columns were not imported:** Iterative Studio will import up
    to 200 columns (metrics, hyperparameters and files) from your Git repository.
    If your repository has more than 200 columns, you should
-   [select the columns that are mandatory to import](/doc/studio/user-guide/views/view-settings#mandatory-columns).
+   [select the columns that are mandatory to import](/doc/studio/user-guide/views-and-experiments/create-a-view#mandatory-columns).
    Iterative Studio will also import the unselected columns, but only up to a
    maximum of 200 columns.
 
@@ -122,7 +122,7 @@ There are two possible reasons for this:
    can create a new view that is limited to that subdirectory.
 
    To create views for subdirectories,
-   [specify the project directory in view settings](/doc/studio/user-guide/views/view-settings#project-directory).
+   [specify the project directory in view settings](/doc/studio/user-guide/views-and-experiments/create-a-view#project-directory).
 
    If this solution does not work for your use case, please create a support
    ticket in the
@@ -160,7 +160,7 @@ else in your team.
 
 You can unhide commits/branches to display them in your view. For details, refer
 to
-[Display preferences -> Hide commits](/doc/studio/user-guide/views/explore-experiments#hide-commits).
+[Display preferences -> Hide commits](/doc/studio/user-guide/views-and-experiments/explore-ml-experiments#hide-commits).
 However, if the missing commit/branch is not in the hidden commits list, then
 please [raise a support request](#support).
 

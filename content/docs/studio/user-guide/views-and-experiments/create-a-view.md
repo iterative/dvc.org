@@ -63,15 +63,16 @@ for more details.
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
 > you can configure the view settings after the view has been created. So, you
 > can `Skip and Continue` now. Refer to the
-> [View Settings](/doc/studio/user-guide/views/view-settings) section for more
-> details.
+> [View Settings](/doc/studio/user-guide/views-and-experiments/create-a-view)
+> section for more details.
 
 You should now see that a view has been added in your dashboard.
 
 5. If your project requires any of the additional settings, then remember to
    configure them by opening the
-   [view settings](/doc/studio/user-guide/views/view-settings). Otherwise, your
-   view may not work as expected. To go to view settings, click on the
+   [view settings](/doc/studio/user-guide/views-and-experiments/create-a-view).
+   Otherwise, your view may not work as expected. To go to view settings, click
+   on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the view. In the menu that opens up, click on `Settings`.
 
@@ -88,9 +89,10 @@ for multiple ML projects. If you want to create views for each of those ML
 projects, simply create multiple views for this monorepo, and for each view,
 specify a different sub-directory.
 
-Refer to the [View Settings](/doc/studio/user-guide/views/view-settings) section
-for more details on how to configure different settings (and sub-directories)
-for the views.
+Refer to the
+[View Settings](/doc/studio/user-guide/views-and-experiments/create-a-view)
+section for more details on how to configure different settings (and
+sub-directories) for the views.
 
 ## Create views shared across a team
 

@@ -110,15 +110,16 @@ This is the views dashboard for the team. All the views on this dashboard are
 accessible to all members (collaborators) of the team.
 
 To add a view to this dashboard, click on `Add a view`. The process for adding a
-view is the same as that for adding personal views
-([instructions](/doc/studio/user-guide/views/create-view)).
+view is the same as that for adding personal views (see [instructions]).
+
+[instructions](/doc/studio/user-guide/views-and-experiments/create-a-view)
 
 ## Settings
 
 In the team settings page, you can change the team name, add credentials for the
 data remotes, and delete the team. Note that these settings are applicable to
 the team and are thus different from
-[view settings](/doc/studio/user-guide/views/view-settings).
+[view settings](/doc/studio/user-guide/views-and-experiments/create-a-view).
 
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),

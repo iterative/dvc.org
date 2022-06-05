@@ -35,5 +35,5 @@ Git repositories in two ways:
    either manually or using some ML tracking tools, then you can create a view
    for this project by specifying the file (within your Git repo) which contains
    your saved metrics. Refer to the section on
-   [view settings](/doc/studio/user-guide/views/view-settings#non-dvc-repositories)
+   [view settings](/doc/studio/user-guide/views-and-experiments/create-a-view#non-dvc-repositories)
    to learn how to specify the custom files.

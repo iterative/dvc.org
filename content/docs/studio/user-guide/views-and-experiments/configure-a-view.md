@@ -25,12 +25,13 @@ Additionally, you can also configure view settings to
 
 ### Non-DVC repositories
 
-In the section on
-[preparing your repositories](/doc/studio/user-guide/prepare-repositories), you
-saw that you can use Iterative Studio with DVC as well as non-DVC repositories.
-If you are connecting to a non-DVC repository, then you will need to
-[specify the custom files](#custom-metrics-and-parameters) that contain the
-metrics and hyperparameters that you want to visualize.
+In the section on [preparing your repositories], you saw that you can use
+Iterative Studio with DVC as well as non-DVC repositories. If you are connecting
+to a non-DVC repository, then you will need to [specify the custom files] that
+contain the metrics and hyperparameters that you want to visualize.
+
+[preparing your repositories]: /doc/studio/user-guide/prepare-your-repositories
+[specify the custom files]: #custom-metrics-and-parameters
 
 ### Monorepo
 
@@ -119,7 +120,7 @@ a maximum of 200.
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
 view, you can do so in the view itself. For this, refer to
-[Display preferences -> Columns](/doc/studio/user-guide/views/explore-experiments#columns).
+[Display preferences -> Columns](/doc/studio/user-guide/views-and-experiments/explore-ml-experiments#columns).
 
 If your view is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections to understand why this

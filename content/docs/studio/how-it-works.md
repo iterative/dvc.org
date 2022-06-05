@@ -1,6 +1,6 @@
 # How Iterative Studio Works
 
-[`Iterative Studio`](https://studio.iterative.ai/) works with the data, metrics
+[Iterative Studio](https://studio.iterative.ai/) works with the data, metrics
 and hyperparameters that you add to your ML project Git repositories. It works
 very closely with your Git ecosystem. Using DVC and Git, you will push all your
 ML experiments to your GitHub, GitLab or Bitbucket repositories as Git commits.

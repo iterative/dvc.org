@@ -70,33 +70,35 @@ more views._
 > repository, if your metrics are in some custom files, if you are connecting to
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
 > you can configure the view settings after the view has been created. So, you
-> can `Skip and Continue` now. Refer to the
-> [View Settings](/doc/studio/user-guide/views/view-settings) section for more
+> can `Skip and Continue` now. Refer to the [View Settings] section for more
 > details.
 
 You should now see that a view has been added in your dashboard.
 
 7. If your project requires any of the additional settings, then remember to
-   configure them by opening the
-   [view settings](/doc/studio/user-guide/views/view-settings). Otherwise, your
-   view may not work as expected. To go to view settings, click on the
+   configure them by opening the [view settings]. Otherwise, your view may not
+   work as expected. To go to view settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the view. In the menu that opens up, click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/view_open_settings.png)
 
-8. You can also
-   [create multiple views from a single Git repository](/doc/studio/user-guide/views/create-view#create-multiple-views-from-a-single-git-repository).
+8. You can also [create multiple views from a single Git repository].
 
-9. After creating a view, you can use it to
-   [explore the ML experiments](/doc/studio/user-guide/explore-experiments) as
-   well as
-   [submit new experiments from Iterative Studio](/doc/studio/user-guide/run-experiments).
+9. After creating a view, you can use it to [explore the ML experiments] as well
+   as [submit new experiments] from Iterative Studio.
 
-10. You can also make the view public by
-    [sharing it on the web](/doc/studio/user-guide/views/share-view).
+10. You can also make the view public by [sharing it on the web].
 
-11. You can [create a team](/doc/studio/user-guide/teams) and invite
-    collaborators. Each team will have its own views dashboard. To create teams
-    with more than 2 team members,
+11. You can [create a team] and invite collaborators. Each team will have its
+    own views dashboard. To create teams with more than 2 team members,
     [sign up for the **Team** plan or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+
+[view settings]: /doc/studio/user-guide/views-and-experiments/create-a-view
+[create multiple views from a single git repository]:
+  /doc/studio/user-guide/views-and-experiments/create-a-view#create-multiple-views-from-a-single-git-repository
+[explore the ml experiments]: /doc/studio/user-guide/explore-ml-experiments
+[submit new experiments]: /doc/studio/user-guide/run-experiments
+[sharing it on the web]:
+  /doc/studio/user-guide/views-and-experiments/share-a-view
+[create a team]: /doc/studio/user-guide/teams
