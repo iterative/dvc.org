@@ -83,6 +83,7 @@
   "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/views-and-experiments/create-a-view",
   "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/views-and-experiments/configure-a-view",
   "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/views-and-experiments/explore-ml-experiments",
+  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/views-and-experiments/visualize-and-compare",
   "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/views-and-experiments/share-a-view",
   "^/doc/studio/user-guide/views(/.*)?$                                                   /doc/studio/user-guide/views-and-experiments$1",
   "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",

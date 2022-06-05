@@ -570,10 +570,7 @@
               "create-a-view",
               "configure-a-view",
               "explore-ml-experiments",
-              {
-                "slug": "visualize-experiments",
-                "label": "Visualize and Compare"
-              },
+              "visualize-and-compare",
               "run-experiments",
               "share-a-view"
             ]
