@@ -555,7 +555,6 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "how-it-works",
       "get-started",
       {
         "slug": "user-guide",

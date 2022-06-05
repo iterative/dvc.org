@@ -6,14 +6,7 @@ and models, and to run, visualize, and share machine learning experiments. This
 is possible with the power of DVC and CML, our leading open-source tools for
 data science.
 
-Iterative Studio works with the data, metrics and hyperparameters that you add
-to your ML project repositories.
-
 <cards>
-
-  <card href="/doc/studio/how-it-works" heading="How Iterative Studio works">
-    Learn how Iterative Studio works closely with the Git ecosystem
-  </card>
 
   <card href="/doc/studio/get-started" heading="Get started">
     A step-by-step tutorial to get started with Iterative Studio
@@ -23,13 +16,28 @@ to your ML project repositories.
     Non-exhaustive list things you can do with Iterative Studio
   </card>
 
-  <card href="/doc/studio/troubleshooting" heading="Troubleshooting">
-    Learn how to troubleshoot some common problem scenarios
-  </card>
-
 </cards>
 
-**Why Iterative Studio?**
+## How Studio works
+
+Iterative Studio works with the data, metrics, and hyperparameters in your ML
+project repositories. Using DVC and the existing Git ecosystem, you will push
+all your ML experiments to GitHub, GitLab, or Bitbucket as Git commits.
+
+https://www.youtube.com/watch?v=5xM5az78Lrg
+
+When you connect DVC repos to Studio, the `dvc.yaml` file is used to identify
+all the data, models, etc. available. If you're not using DVC, you can add these
+artifacts to Git repos manually.
+
+Studio then creates a [View], which is an interactive and tabular representation
+of your project. You can also [run new ML experiments] from Studio using your
+regular CI/CD setup (e.g. GitHub Actions).
+
+[view]: /doc/studio/user-guide/views-and-experiments/what-is-a-view
+[run new ml experiments]: /doc/studio/user-guide/run-experiments
+
+## Why use Studio?
 
 - Simplify ML experiment tracking, visualization, and collaboration on top of
   Git.

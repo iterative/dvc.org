@@ -77,8 +77,8 @@
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
-  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
-  "^/doc/studio/overview$                                                                 /doc/studio/user-guide/views/how-it-works",
+  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views-and-experiments/configure-a-view",
+  "^/doc/studio/overview$                                                                 /doc/studio",
   "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
   "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/views-and-experiments/create-a-view",
   "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/views-and-experiments/configure-a-view",
