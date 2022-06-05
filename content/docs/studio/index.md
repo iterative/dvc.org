@@ -6,9 +6,6 @@ and models, and to run, visualize, and share machine learning experiments. This
 is possible with the power of DVC and CML, our leading open-source tools for
 data science.
 
-Iterative Studio works with the data, metrics and hyperparameters that you add
-to your ML project repositories.
-
 <cards>
 
   <card href="/doc/studio/how-it-works" heading="How Iterative Studio works">
