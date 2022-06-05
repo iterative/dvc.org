@@ -567,7 +567,7 @@
             "source": false,
             "children": [
               "what-is-a-view",
-              "create-view",
+              "create-a-view",
               "configure-a-view",
               "explore-ml-experiments",
               {
