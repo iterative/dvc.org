@@ -35,7 +35,7 @@ of your project. You can also [run new ML experiments] from Studio using your
 regular CI/CD setup (e.g. GitHub Actions).
 
 [view]: /doc/studio/user-guide/views-and-experiments/what-is-a-view
-[run new ml experiments]: /doc/studio/user-guide/run-experiments
+[run new ml experiments]: /doc/studio/user-guide/ml-experiments/run-experiments
 
 ## Why use Studio?
 

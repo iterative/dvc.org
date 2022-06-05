@@ -113,6 +113,6 @@ The table also contains buttons to visualize, compare and run experiments.
   your browser window.
 - **Compare:** Compare different experiments side by side.
 - **Run:** Run experiments by selecting any one commit. Refer
-  [here](/doc/studio/user-guide/run-experiments) for details on how to run
-  experiments.
+  [here](/doc/studio/user-guide/ml-experiments/run-experiments) for more
+  details.
 - **Trends:** Generate trend charts to show metric evolution over time.

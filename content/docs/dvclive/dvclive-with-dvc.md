@@ -120,11 +120,13 @@ you call `Live.make_report()` directly.
 ### Iterative Studio
 
 [Iterative Studio](/doc/studio) will automatically parse the outputs generated
-by DVCLive, allowing to
-[compare and visualize](/doc/studio/user-guide/visualize-experiments)
-experiments using DVCLive in Iterative Studio.
+by DVCLive, allowing to [compare and visualize experiments] using DVCLive in
+Iterative Studio.
 
 ![](/img/dvclive-studio-plots.png)
+
+[compare and visualize experiments]:
+  /doc/studio/user-guide/ml-experiments/visualize-experiments
 
 ### Checkpoints
 

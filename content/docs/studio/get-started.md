@@ -98,7 +98,7 @@ You should now see that a view has been added in your dashboard.
 [create multiple views from a single git repository]:
   /doc/studio/user-guide/views-and-experiments/create-a-view#create-multiple-views-from-a-single-git-repository
 [explore the ml experiments]: /doc/studio/user-guide/explore-ml-experiments
-[submit new experiments]: /doc/studio/user-guide/run-experiments
+[submit new experiments]: /doc/studio/user-guide/ml-experiments/run-experiments
 [sharing it on the web]:
   /doc/studio/user-guide/views-and-experiments/share-a-view
 [create a team]: /doc/studio/user-guide/teams

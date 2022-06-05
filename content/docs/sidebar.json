@@ -561,17 +561,14 @@
         "source": false,
         "children": [
           "prepare-your-repositories",
+          "studio-views",
           {
-            "slug": "views-and-experiments",
+            "slug": "ml-experiments",
             "source": false,
             "children": [
-              "what-is-a-view",
-              "create-a-view",
-              "configure-a-view",
               "explore-ml-experiments",
               "visualize-and-compare",
-              "run-experiments",
-              "share-a-view"
+              "run-experiments"
             ]
           },
           "teams",
