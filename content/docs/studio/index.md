@@ -8,11 +8,11 @@ data science.
 
 <cards>
 
-  <card href="/doc/studio/get-started" heading="Get started">
+  <card href="/doc/studio/get-started" heading="Get Started">
     A step-by-step tutorial to get started with Iterative Studio
   </card>
 
-  <card href="/doc/studio/user-guide" heading="User guide">
+  <card href="/doc/studio/user-guide" heading="User Guide">
     Non-exhaustive list things you can do with Iterative Studio
   </card>
 
