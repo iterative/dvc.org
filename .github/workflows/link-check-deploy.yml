@@ -19,4 +19,4 @@ jobs:
           cache: 'yarn'
       - name: Check
         id: check
-        run: yarn link-check-diff -f
+        run: 'yarn link-check-diff -f -r "${{ github.event.deployment.payload.web_url }}"'
