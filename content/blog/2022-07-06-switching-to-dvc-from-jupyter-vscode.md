@@ -21,6 +21,19 @@ tags:
   - Juptyer Notebooks
 ---
 
+For many machine learning engineers, the starting point of a project is a
+Jupyter notebook. This is fine for running a few experiments, but there comes a
+point where you need to scale the project to accomodate hundreds or even
+thousands more experiments. It will also be important to track the experiments
+you run so that when you find an exceptional model, you'll be able to reproduce
+it and get it ready for production.
+
+In this tutorial, we're going to run a few experiments in our Juptyer notebook
+in VSCode. Then we'll convert it to DVC to make reproducible experiments and use
+the DVC VSCode extension to run new experiments and compare them all.
+[Here's the project](https://github.com/iterative/stale-model-example/tree/jupyter-to-dvc)
+we'll be working with.
+
 ## Start training with the notebook
 
 ## Integrate with DVC
