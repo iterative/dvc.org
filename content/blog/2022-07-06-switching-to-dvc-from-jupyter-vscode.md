@@ -1,5 +1,5 @@
 ---
-title: Using the DVC VSCode Extension with a Jupyter Notebook
+title: Converting a Jupyter Notebook to a DVC Project
 date: 2022-07-06
 description: >
   Working with notebooks is common in machine learning. That's why we're
