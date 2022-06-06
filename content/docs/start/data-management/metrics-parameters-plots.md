@@ -310,10 +310,10 @@ So a GitHub markdown example for
 would be:
 
 ```md
-[![DVC-metrics](https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737)](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
+[![DVC-metrics](https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737&logo=DVC)](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
 ```
 
-[![DVC-metrics](https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737)](https://github.com/iterative/example-get-started/raw/main/evaluation.json)
+<a href="https://github.com/iterative/example-get-started/raw/main/evaluation.json"><img alt="DVC-metrics" src="https://img.shields.io/badge/dynamic/json?url=https://github.com/iterative/example-get-started/raw/main/evaluation.json&query=avg_prec&label=Average%20Precision&colorA=grey&colorB=F46737&logo=DVC"/></a>
 
 ---
 
