@@ -92,7 +92,7 @@
     "s3-client": "^4.4.2",
     "scroll": "^3.0.1",
     "serve-handler": "^6.1.2",
-    "sharp": "^0.29.3",
+    "sharp": "^0.30.5",
     "slick-carousel": "^1.8.1",
     "title-case": "^3.0.2",
     "unist-util-visit": "2.0.2",
