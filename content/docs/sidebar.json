@@ -143,6 +143,11 @@
         ]
       },
       {
+        "label": "Pipelines",
+        "slug": "pipelines",
+        "source": "pipelines/index.md"
+      },
+      {
         "slug": "how-to",
         "source": false,
         "children": [
