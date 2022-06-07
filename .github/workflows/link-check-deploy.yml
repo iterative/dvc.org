@@ -16,8 +16,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install
-        run: 'yarn add repo-link-check'
       - name: Check Links
         id: check
-        run: 'yarn link-check-diff -f -r "${{ github.event.deployment.payload.web_url }}"'
+        run: 'npx repo-link-check -c config/link-check/config.yml -d master -f -r "${{ github.event.deployment.payload.web_url }}"'
