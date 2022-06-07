@@ -1,5 +1,5 @@
 ---
-title: Pipelines Management in DVC
+title: DVC Pipelines
 ---
 
 # What is a (DVC) pipeline?
