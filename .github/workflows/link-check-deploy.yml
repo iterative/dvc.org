@@ -18,4 +18,4 @@ jobs:
           node-version: 16
       - name: Check Links
         id: check
-        run: 'npx repo-link-check -c config/link-check/config.yml -d master -f -r "${{ github.event.deployment.payload.web_url }}" | tee $GITHUB_STEP_SUMMARY'
+        run: 'npx repo-link-check -c config/link-check/config.yml -d master -f -r "${{ github.event.deployment.payload.web_url }}"'
