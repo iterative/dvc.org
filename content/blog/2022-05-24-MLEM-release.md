@@ -26,6 +26,16 @@ tags:
 With MLEM ML teams get a single tool to **run your models anywhere** that
 strikes to cover all model productionization scenarios you have.
 
+[full good link](https://www.google.com) [short good link](www.google.com)
+[shorter good link](google.com)
+[full bad link](https://www.google.com/adddddbnbe)
+[short bad link](www.google.com/adddddbnbe)
+[shorter bad link](google.com/adddddbnbe)
+
+https://www.google.com
+
+https://www.google.com/adbbne
+
 MLEM enables this via **model metadata codification**: saving all information
 that is required to use a model later. Besides packaging a model for deployment
 it can be used for many things, including search and documentation. To make it
