@@ -16,11 +16,11 @@ commands with complex relationships.
 
 ## Stages
 
-A pipeline is a collection of stages. At each stage, we define a (shell) command
-to run and specify the inputs and outputs for this stage. By defining stage
-input and outputs, we can find the order to run the stages. If an output of
-stage `A` is fed as an input to stage `B`, then DVC infers to run `A` before
-`B`.
+A DVC pipeline is a collection of connected <abbr>stages</abbr>. At each stage, we define a shell command
+to run, and specify its inputs and outputs (if any). By defining
+outputs that feed into future inputs, we can determine the stages' execution order, e.g. if an output of
+stage X is fed as an input to stage Y, then DVC infers to run X before
+Y.
 
 `dvc stage` set of commands are used to create a pipeline by defining its
 stages. Each stage requires a `name`, and a `command`. Additionally it describes
