@@ -70,6 +70,53 @@ First, we need to install the `MLEM` package with:
 $ pip install mlem
 ```
 
+Then, inside of the `train.py` script, we need to add the MLEM import to save
+the models as we experiment.
+
+```python
+# train.py
+
+import os
+import pickle
+import sys
+import yaml
+
+from mlem.api import save
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+
+...
+```
+
+Then you can add the `save` function to the end of the training script.
+
+```python
+# train.py
+
+...
+clf = RandomForestClassifier(
+    n_estimators=n_est, min_samples_split=min_split, n_jobs=2, random_state=seed
+)
+
+clf.fit(x, labels)
+
+save(
+    clf,
+    "clf",
+    sample_data=x,
+    description="Random Forest Classifier",
+)
+```
+
+Note: You can also run this training script and the evaluation script with
+`dvc exp run`. If you want to see what is happening in the DVC pipeline, check
+out the `dvc.yaml` file in the project.
+
+There will be two new files in your repo: `clf` and `clf.mlem`. You'll be able
+to load the model file into the evaluation script and make sure it gives you the
+performance you need. Once you've validated the model, which we've done by
+looking at that table earlier, it's ready to go to production.
+
 ## Serve the model to production
 
 ## Conclusion
