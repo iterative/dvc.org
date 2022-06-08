@@ -219,7 +219,8 @@ This will get any data from your remote and download it to your local machine.
 <admon type="info">
 
 Authentication has to be setup locally on any machine you need to pull or push
-data from.
+data from. That means running the `az login` command on any other machine. You
+don't need to go through the DVC setup again.
 
 </admon>
 
