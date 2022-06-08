@@ -78,7 +78,8 @@ const menuData: IMenuData = {
       ariaLabel: 'Show options',
       popupName: 'otherPopup',
       Popup: OtherPopup,
-      className: styles.other
+      className: styles.other,
+      hideDropdown: true
     }
   ],
   community: [

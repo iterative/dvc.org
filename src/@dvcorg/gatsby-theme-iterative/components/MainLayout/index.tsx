@@ -11,10 +11,7 @@ import * as styles from './styles.module.css'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import { useLocation } from '@reach/router'
 
-export {
-  LayoutComponent,
-  LayoutModifiers
-} from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+export * from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 
 const MainLayout: LayoutComponent = ({
   className,

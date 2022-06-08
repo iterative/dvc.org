@@ -32,6 +32,7 @@ export interface INavLinkPopupData {
   Popup: React.FC<IPopupProps>
   className?: string
   href?: string
+  hideDropdown?: boolean
 }
 
 const isPopup = (
@@ -73,12 +74,16 @@ const LinkItems: React.FC = () => {
                   )}
                 >
                   {typeof item.text === 'string' ? item.text : <item.text />}
-                  <ArrowDownSVG
-                    className={cn(styles.linkIcon, styles.arrowDownIcon)}
-                  />
-                  <ArrowUpSVG
-                    className={cn(styles.linkIcon, styles.arrowUpIcon)}
-                  />
+                  {!item.hideDropdown && (
+                    <>
+                      <ArrowDownSVG
+                        className={cn(styles.linkIcon, styles.arrowDownIcon)}
+                      />
+                      <ArrowUpSVG
+                        className={cn(styles.linkIcon, styles.arrowUpIcon)}
+                      />
+                    </>
+                  )}
                 </button>
                 <item.Popup isVisible={popup.isOpen} closePopup={popup.close} />
               </>
