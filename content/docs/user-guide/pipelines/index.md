@@ -41,10 +41,21 @@ stages:
       - data/preprocessed
 ```
 
-Essentially the command creates the stage by writing to `dvc.yaml`file. If you
-are creating the pipeline for the first time, adding the stages by
-`dvc stage add` may be easier. If you're editing the pipeline though, working
-with the YAML file might be easier.
+In the following sections, we'll see how to build this file with it many
+features.
+
+The alternative to editing `dvc.yaml` is using `dvc stage` set of commands. The
+command checks the required elements of stages, and modifies the file in the
+format accepted by DVC. For example the above stage is defined with the
+following command.
+
+```dvc
+$ dvc stage add --name preprocess \
+                --deps src/preprocess.py \
+                --deps data/raw \
+                --outs data/preprocessed \
+                python src/preprocess.py
+```
 
 <admon type="tip">
 
