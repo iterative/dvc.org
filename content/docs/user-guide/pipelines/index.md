@@ -9,10 +9,10 @@ materials input to a factory and processed at each step to achieve a final
 product, a machine learning pipeline gets the data as an input, processes it in
 every stage and outputs a model.
 
-If you are repeating a set of commands to get to the final artifacts (models,
-results), then you already have a pipeline, albeit in a manual fashion. DVC
-allows to automate your workflow, be it comprised of a single command or many
-commands with complex relationships.
+If you are using a sequence of commands to get the final artifacts (models,
+results), then you already have a pipeline, albeit manually. DVC allows to
+automate your workflow, be it comprised of a single command or many commands
+with complex relationships.
 
 ## Stages
 
