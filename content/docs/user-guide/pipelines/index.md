@@ -196,6 +196,32 @@ is invalidated.
 
 ### Hyperparameter Dependencies
 
+Machine learning models depend various parameters that affect the _production_
+process and models. These are called _hyperparameters_ to differ them from the
+internal parameters. Learning rate for optimizers, the number of epochs for deep
+learning models, or the maximum depth for random forest classifiers are examples
+of hyperparameters.
+
+DVC assumes hyperparameters are kept in a text file separate from the rest of
+source files. As hyperparameters typically affect multiple stages in the
+pipeline, that's a natural assumption.
+
+It's possible to see the hyperparameters file, e.g., `params.yaml` as yet
+another text file dependency. In this case, if any parameter changes, all
+dependent stages become invalidated. However, this is usually not we want from
+hyperparameter dependencies.
+
+If the `train` stage depends on `learning_rate` parameter in `params.yaml`, but
+no other parameters, we don't want it to be invalidated by other parameters from
+the file. Support for hyperparameters allows this kind of granular dependencies.
+
+In order to create an hyperparameter dependency, we define the file and the name
+of parameter in `dvc.yaml`:
+
+```yaml
+
+```
+
 ### URL Dependencies
 
 ## Outputs
