@@ -34,7 +34,7 @@ metrics, create plots, and much more. All in one place in your IDE.
 
 [Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
-# Why an extension?
+# Why a VS Code extension?
 
 We built DVC to expand upon the Git workflow. This approach has made it a
 powerful tool that can easily be picked up by users familiar with Git. However,
