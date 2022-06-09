@@ -19,7 +19,7 @@ with complex relationships.
 A DVC pipeline is a collection of connected <abbr>stages</abbr>. At each stage,
 we define a shell command to run, and specify its inputs and outputs (if any).
 By defining outputs that feed into future inputs, we can determine the stages'
-execution order, e.g. if an output of stage X is fed as an input to stage Y,
+execution order, e.g. if an output of stage X is used as an input in stage Y,
 then DVC infers to run X before Y.
 
 `dvc stage` set of commands are used to create a pipeline by defining its
