@@ -123,10 +123,10 @@ are brought forward by dependency definitions.
 
 DVC has more than one type of dependency: The basic one, that we call only
 `dependency` is either a file or a directory. A stage that depends on a file or
-directory is invalidated when this file or directory _contents_ changes.
+directory is invalidated when this file or directory's _content_ changes.
 
 <admon type="note">
-DVC doesn't only check the timestamp of files, it actually calculates the hash
+DVC doesn't only check the timestamp of files, it calculates the hash
 of their contents to invalidate the dependent stages. This is one of the
 distinctive features over other build tools like  `make`. 
 </admon>
