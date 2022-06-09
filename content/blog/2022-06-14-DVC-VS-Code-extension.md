@@ -68,7 +68,8 @@ shop for everything related to your machine learning experiments. You can run
 new experiments from here, manage parameters, and compare both metrics and plots
 for different models. Never has it been easier to analyze the results of your
 experiments and find the best model.
-<!-- 
+
+<!--
 ![Experiment tables to compare different
 experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
 
