@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 

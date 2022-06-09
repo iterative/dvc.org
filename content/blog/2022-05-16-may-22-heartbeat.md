@@ -38,7 +38,7 @@ tags:
 
 # AI/ML News
 
-![Designing Machine Learning Systems](/uploads/images/2022-05-16/chip-huyen.jpeg 'Designing Machine Learning Systems :wrap-left ==200')
+![Designing Machine Learning Systems](/uploads/images/2022-05-16/chip-huyen.jpeg 'Designing Machine Learning Systems :wrap-left =200')
 
 ## Chip Huyen: Designing Machine Learning Systems
 

@@ -1,0 +1,6 @@
+@custom-media --xxs-scr (max-width: 376px);
+@custom-media --xs-scr (max-width: 572px);
+@custom-media --sm-scr (max-width: 768px);
+@custom-media --md-scr (max-width: 1004px);
+@custom-media --lg-scr (min-width: 1005px);
+@custom-media --xl-scr (min-width: 1200px);

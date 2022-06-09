@@ -16,7 +16,7 @@
   color: var(--color-purple);
 
   svg path {
-    fill: currentColor;
+    fill: currentcolor;
   }
 
   &:hover,
