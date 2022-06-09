@@ -68,17 +68,34 @@ shop for everything related to your machine learning experiments. You can run
 new experiments from here, manage parameters, and compare both metrics and plots
 for different models. Never has it been easier to analyze the results of your
 experiments and find the best model.
-<!-- 
+
+<!--
 ![Experiment tables to compare different
 experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
 
 ![Plots to visualize your
 experiments](/uploads/images/2022-06-14/dvc-view-plots.png) -->
 
-<video controlslist="nodownload" preload="metadata" autoplay muted loop controls="controls" style="width:100%;">
+<video controlslist="nodownload" preload="metadata" autoplay muted loop style="width:100%;">
+  <source src="/uploads/images/2022-06-14/run-experiment.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+_Quickly run new ML experiments and view them in the experiments table._
+
+<video controlslist="nodownload" preload="metadata" autoplay muted loop style="width:100%;">
+  <source src="/uploads/images/2022-06-14/compare-experiments.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+_Compare experiments with each other._
+
+<video controlslist="nodownload" preload="metadata" autoplay muted loop style="width:100%;">
   <source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+
+_Live updates to plots when using DVCLive._
 
 ## Source control management
 
@@ -97,18 +114,12 @@ Resources tracked by DVC can be viewed and managed through the tracked explorer
 view. See at a glance which datasets and models have been changed, and navigate
 through all files contained in the DVC project(s) of your workspace.
 
-![Tracked resources in the explorer
-view](/uploads/images/2022-06-14/tracked-resources.png)
-
 ## Command palette
 
 The DVC extension makes extensive use of the Command Palette, reducing the need
 to learn syntax by heart. Want to run a new experiment or pull data from your
 remote repository? Give the word in the Command Palette and the DVC extension
 will guide you along all required details.
-
-![Use the command palette to quickly find DVC
-features](/uploads/images/2022-06-14/command-palette.gif)
 
 # What's next?
 
