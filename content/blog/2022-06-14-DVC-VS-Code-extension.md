@@ -38,8 +38,7 @@ metrics, create plots, and much more. All in one place in your IDE.
 
 We built DVC to expand upon the Git workflow. This approach has made it a
 powerful tool that can easily be picked up by users familiar with Git. However,
-it can be more difficult for those less familiar with CLI tools to get
-accustomed to using DVC. Moreover, while DVC provides many useful
+a terminal does not always provide the most accessible user experience. Moreover, while DVC provides many useful
 visualizations, a CLI tool can only take things so far.
 
 Therefore we wanted to incorporate DVC's functionality in a graphical interface.
