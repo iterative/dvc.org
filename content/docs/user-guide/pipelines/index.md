@@ -22,26 +22,13 @@ By defining outputs that feed into future inputs, we can determine the stages'
 execution order, e.g. if an output of stage X is used as an input in stage Y,
 then DVC infers to run X before Y.
 
-`dvc stage` set of commands are used to create a pipeline by defining its
-stages. Each stage requires a `name`, and a `command`. Additionally it describes
-a set of dependencies and outputs. When these outputs are missing or the
-dependencies are newer than the outputs, the command is run.
+There are two ways to define stages. The first and more general method is
+editing `dvc.yaml` files, and the other is by using `dvc stage add` helper
+command that basically edits this file with supplied arguments.
 
-There are two equally valid ways to describe stages. The first is using
-`dvc stage add` command, and the other is by editing `dvc.yaml`.
-
-For example, to add a stage named `preprocess` depending on `preprocess.py`
-
-```dvc
-$ dvc stage add --name preprocess \
-                --deps src/preprocess.py \
-                --deps data/raw \
-                --outs data/preprocessed \
-                python src/preprocess.py
-```
-
-The other way to define a stage is through editing `dvc.yaml`. You could create
-the file with the following content to create the above stage:
+The following YAML snippet defines a pipeline that runs
+`python src/preprocess.py`. The command depends on `data/raw` directory and the
+script file, and produces `data/preprocessed` directory.
 
 ```yaml
 stages:
