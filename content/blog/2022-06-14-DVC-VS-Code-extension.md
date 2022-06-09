@@ -38,8 +38,9 @@ metrics, create plots, and much more. All in one place in your IDE.
 
 We built DVC to expand upon the Git workflow. This approach has made it a
 powerful tool that can easily be picked up by users familiar with Git. However,
-a terminal does not always provide the most accessible user experience. Moreover, while DVC provides many useful
-visualizations, a CLI tool can only take things so far.
+a terminal does not always provide the most accessible user experience.
+Moreover, while DVC provides many useful visualizations, a CLI tool can only
+take things so far.
 
 Therefore we wanted to incorporate DVC's functionality in a graphical interface.
 [VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
@@ -84,6 +85,15 @@ changed, and synchronize versions with your remote repository. Use `checkout`,
 ![Get a quick overview of changes to your data in the source control
 panel](/uploads/images/2022-06-14/source-control.png)
 
+## DVC tracked explorer
+
+Resources tracked by DVC can be viewed and managed through the tracked explorer
+view. See at a glance which datasets and models have been changed, and navigate
+through all files contained in the DVC project(s) of your workspace.
+
+![Tracked resources in the explorer
+view](/uploads/images/2022-06-14/tracked-resources.png)
+
 ## Command palette
 
 The DVC extension makes extensive use of the Command Palette, reducing the need
@@ -94,21 +104,13 @@ will guide you along all required details.
 ![Use the command palette to quickly find DVC
 features](/uploads/images/2022-06-14/command-palette.gif)
 
-## DVC tracked explorer
-
-Resources tracked by DVC can be viewed and managed through the tracked explorer
-view. See at a glance which datasets and models have been changed, and navigate
-through all files contained in the DVC project(s) of your workspace.
-
-![Tracked resources in the explorer
-view](/uploads/images/2022-06-14/tracked-resources.png)
-
 # What's next?
 
 We're excited that our VS Code extension is live and available to the public!
 From here on out, we plan on making the extension even better with new features
-such as pipeline (DAG) support, [TPI](https://github.com/iterative/terraform-provider-iterative) integration for remote execution,
-autocomplete for `dvc.yaml`, and parallel coordinate plots.
+such as pipeline (DAG) support,
+[TPI](https://github.com/iterative/terraform-provider-iterative) integration for
+remote execution, autocomplete for `dvc.yaml`, and parallel coordinate plots.
 
 Of course, we'd love to hear what you are most looking forward to. Make sure to
 give us feedback on what you'd like to see next!
