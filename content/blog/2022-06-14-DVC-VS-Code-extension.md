@@ -121,6 +121,10 @@ to learn syntax by heart. Want to run a new experiment or pull data from your
 remote repository? Give the word in the Command Palette and the DVC extension
 will guide you along all required details.
 
+---
+
+https://media.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif
+
 # What's next?
 
 We're excited that our VS Code extension is live and available to the public!
@@ -132,7 +136,7 @@ remote execution, autocomplete for `dvc.yaml`, and parallel coordinate plots.
 Of course, we'd love to hear what you are most looking forward to. Make sure to
 give us feedback on what you'd like to see next!
 
-# Thank you!
+# Thank you! ❤️
 
 We would like to sincerely thank everyone who has helped make this project
 possible:
