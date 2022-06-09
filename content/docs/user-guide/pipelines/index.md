@@ -131,20 +131,21 @@ of their contents to invalidate the dependent stages. This is one of the
 distinctive features over other build tools like  `make`. 
 </admon>
 
-The second type of dependencies is _hyperparameters._ The hyperparameters are
+The second type of dependency is _hyperparameters._ The hyperparameters are
 values in YAML, JSON or Python files that affect stage commands in some way. For
 example, if you have a `train.py` script to build deep learning model, it can
 read certain parameters from such a file to change training attributes. DVC can
 keep track of these dependencies as separate dependencies. If you have multiple
 parameters in `params.yaml` file that changes behavior of multiple stages, when
 you change a certain parameter, only the dependent stages are invalidated and
-rerun. This is much more granular than making the whole of `params.yaml` as a
-file dependency.
+rerun. This is more granular than making the whole of `params.yaml` as a file
+dependency.
 
-Another kind of dependency is _URL dependencies._ Instead of files that reside
-in local disk, you can `dvc import-url` a dependency from the web. DVC will
-check whether the contents of this URL changed, and invalidate the dependent
-stage if so.
+Another kind of dependency is _URL dependency._ Instead of files that reside in
+local disk, you can `dvc import-url` a dependency from the web. DVC will check
+whether the contents of this URL changed, and invalidate the dependent stage if
+so.
+
 
 File and directory stages are defined using `--deps / -d` option of
 `dvc stage add`:
