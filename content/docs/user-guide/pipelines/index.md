@@ -204,6 +204,11 @@ is invalidated.
 - How?
 
 ## Reproduction
+### File, Directory and Model Outputs
+
+### Metrics Outputs
+
+### Plots Outputs
 
 - Why?
 - How?
