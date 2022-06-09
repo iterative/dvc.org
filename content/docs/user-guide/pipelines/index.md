@@ -146,6 +146,7 @@ local disk, you can `dvc import-url` a dependency from the web. DVC will check
 whether the contents of this URL changed, and invalidate the dependent stage if
 so.
 
+### File and Directory Dependencies
 
 File and directory stages are defined using `--deps / -d` option of
 `dvc stage add`:
@@ -163,8 +164,35 @@ associated with the stage has to be run.
 Note that we also added the source file as a dependency, so that when we update
 the code that trains the model, the stage will be run again.
 
-- Why?
-- How?
+Files are invalidated when their _content_ changes. Content of files and
+directories are tracked by DVC using their MD5 hashes, and are kept in
+`dvc.lock` file in the project root. When a pipeline is run, the dependencies'
+MD5 hashes are calculated to check whether they have changed and compared with
+their hashes in `dvc.lock`.
+
+Normally, you should never need to see the internals of `dvc.lock`. The
+following snippet shows what kind of information is kept.
+
+```yaml
+schema: '2.0'
+stages:
+  train:
+    cmd: python3 src/train.py
+    deps:
+      - path: data
+        md5: 687552951726b99c2eee15d29b4ccf0e.dir
+        size: 17397976
+        nfiles: 3
+      - path: src
+        md5: 51627ab6d865c51a634959dbc4914d24.dir
+        size: 14623
+        nfiles: 4
+```
+
+Note that, the number of files in directories are also kept in `dvc.lock` and
+their content are kept in corresponding `.dir` files in DVC cache. This means,
+if any file is added to or removed from the directory, the directory dependency
+is invalidated.
 
 ## Outputs
 
