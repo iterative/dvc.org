@@ -77,8 +77,11 @@ experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
 
 ## Source control management
 
-On top of Git version control for your code, the source control view now lets you
-manage datasets and models tracked by DVC without using the terminal. The DVC panel shows you the state of the workspace, similarly to the familiar Git panel. From here you can track artifacts and synchronize versions with your remote repository.
+On top of Git version control for your code, the source control view now lets
+you manage datasets and models tracked by DVC without using the terminal. The
+DVC panel shows you the state of the workspace, similarly to the familiar Git
+panel. From here you can track artifacts and synchronize versions with your
+remote repository.
 
 ![Get a quick overview of changes to your data in the source control
 panel](/uploads/images/2022-06-14/source-control.png)
