@@ -68,12 +68,17 @@ shop for everything related to your machine learning experiments. You can run
 new experiments from here, manage parameters, and compare both metrics and plots
 for different models. Never has it been easier to analyze the results of your
 experiments and find the best model.
-
+<!-- 
 ![Experiment tables to compare different
 experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
 
 ![Plots to visualize your
-experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
+experiments](/uploads/images/2022-06-14/dvc-view-plots.png) -->
+
+<video controlslist="nodownload" preload="metadata" autoplay muted loop controls="controls" style="width:100%;">
+  <source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Source control management
 
