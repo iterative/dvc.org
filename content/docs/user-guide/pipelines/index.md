@@ -194,6 +194,10 @@ their content are kept in corresponding `.dir` files in DVC cache. This means,
 if any file is added to or removed from the directory, the directory dependency
 is invalidated.
 
+### Hyperparameter Dependencies
+
+### URL Dependencies
+
 ## Outputs
 
 - Why?
