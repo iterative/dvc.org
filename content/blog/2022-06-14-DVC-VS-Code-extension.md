@@ -33,7 +33,12 @@ your machine learning projects. You can control datasets and models, run
 experiments, view metrics, create plots, and much more. All in one place in your
 IDE.
 
-[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+<external-link 
+href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc" 
+title="Download the DVC extension" 
+description="Install the DVC extension from the VS Code marketplace to get started. Manage your data, run experiments,
+  compare metrics, and visualize plots, all from the comfort of your IDE."
+link="marketplace.visualstudio.com" />
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/overview.mp4" type="video/mp4">
@@ -66,10 +71,10 @@ workshop.
 
 Our extension introduces the DVC view, which is your one-stop shop for
 everything related to your ML experiments. You can run new experiments from
-here, manage parameters, and compare metrics and plots for different
-models.
+here, manage parameters, and compare metrics and plots for different models.
 
-The extension also adds panes to the _Explorer_ and _Source Control_ views for managing all datasets and models in your DVC repository.
+The extension also adds panes to the _Explorer_ and _Source Control_ views for
+managing all datasets and models in your DVC repository.
 
 ## Experiment bookkeeping
 
@@ -114,11 +119,11 @@ Your browser does not support the video tag. </video>
 
 On top of Git version control for your code, the _Source Control_ view now lets
 you manage datasets and models tracked by DVC without using the terminal. The
-DVC panel shows you the state of the workspace. From here you can track artifacts and synchronize versions with your
-remote repository.
+DVC panel shows you the state of the workspace. From here you can track
+artifacts and synchronize versions with your remote repository.
 
-You can also use the DVC tracked panel in the _Explorer_ view to quickly navigate
-the files in the DVC project(s) in your workspace.
+You can also use the DVC tracked panel in the _Explorer_ view to quickly
+navigate the files in the DVC project(s) in your workspace.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/data-management.mp4" type="video/mp4">
