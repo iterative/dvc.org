@@ -123,8 +123,6 @@ panel](/uploads/images/2022-06-14/source-control.png)
 
 ---
 
-https://media.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif
-
 # What's next?
 
 We're excited that our VS Code extension is live and available to the public!
@@ -135,6 +133,8 @@ remote execution, autocomplete for `dvc.yaml`, and parallel coordinate plots.
 
 Of course, we'd love to hear what you are most looking forward to. Make sure to
 give us feedback on what you'd like to see next!
+
+https://media.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif
 
 # Thank you! ❤️
 
