@@ -33,19 +33,17 @@ your machine learning projects. You can control datasets and models, run
 experiments, view metrics, create plots, and much more. All in one place in your
 IDE.
 
-[Install the DVC extension from the marketplace to get
-started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why a VS Code extension?
 
 We built DVC to expand upon the Git workflow to make it well-suited for ML
-experimentation. This approach brought us independence from the infrastructure and
-provided a natural connection to best practices from software engineering. 
-However, a pure CLI tool can only take things so far when
-it comes to visualizing experiments or displaying large tables.
+experimentation. This approach brought us independence from the infrastructure
+and provided a natural connection to best practices from software engineering.
+However, a pure CLI tool can only take things so far when it comes to
+visualizing experiments or displaying large tables.
 
-[VS Code is the IDE of choice for
-many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment)
+[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment)
 and was a natural choice for a platform to add a graphical interface to DVC.
 
 With this extension, we want to:
@@ -58,54 +56,58 @@ With this extension, we want to:
 As data scientists, DVC is our toolbox. This extension turns VS Code into our
 workshop.
 
+---
+
 # Features
+
+Our extension introduces the DVC view, which is your one-stop shop for
+everything related to your ML experiments. You can run new experiments from
+here, manage parameters, and compare both metrics and plots for different
+models. Never has it been easier to analyze the results of your experiments and
+find the best model.
 
 Here are the main features that are available when you install the extension
 right now:
 
-## DVC View: experiments, parameters, metrics, and plots
+## Experiment bookkeeping
 
-The main feature of our extension is the DVC view, which provides a one-stop
-shop for everything related to your machine learning experiments. You can run
-new experiments from here, manage parameters, and compare both metrics and plots
-for different models. Never has it been easier to analyze the results of your
-experiments and find the best model.
-
-<!--
-![Experiment tables to compare different
-experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
-
-![Plots to visualize your
-experiments](/uploads/images/2022-06-14/dvc-view-plots.png) -->
+Quickly run new experiments and compare their resulting metrics in the
+experiments table. Use the command palette or buttons to run new experiments, or
+add them to the queue for later.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
-style="width:100%;">
+style="width:100%;"><source src="/uploads/images/2022-06-14/run-experiment.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
 
-  <source src="/uploads/images/2022-06-14/run-experiment.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+## Interactive plots
 
-_Quickly run new ML experiments and view them in the experiments table._
-
-<video controlslist="nodownload" preload="metadata" autoplay muted loop
-style="width:100%;">
-
-  <source src="/uploads/images/2022-06-14/compare-experiments.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
-
-_Compare experiments with each other._
+Select experiments to compare and visualize their performance in interactive
+plots. You can export these plots to PNG or SVG for use elsewhere.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
-style="width:100%;">
+style="width:100%;"><source src="/uploads/images/2022-06-14/compare-experiments.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
 
-  <source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+## Live tracking
 
-_Live updates to plots when using DVCLive._
+Get insight into the training process of your models with live tracking of
+metrics. Add checkpoints to your training stage, and the plots will
+automatically be updated.
 
-## Source control management
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;"><source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
+
+## Reproducibility
+
+Click _Apply to workspace_ to reproduce any past experiment. DVC will restore
+all artifacts for that experiment, and you can run it again or use it as a base
+for a new experiment.
+
+![Get a quick overview of changes to your data in the source control
+panel](/uploads/images/2022-06-14/source-control.png)
+
+## Data management
 
 On top of Git version control for your code, the source control view now lets
 you manage datasets and models tracked by DVC without using the terminal. The
@@ -113,21 +115,11 @@ DVC panel shows you the state of the workspace, similarly to the familiar Git
 panel. From here you can track artifacts and synchronize versions with your
 remote repository.
 
+You can also use the DVC tracked panel in the explorer view to quickly navigate
+the files in the DVC project(s) in your workspace.
+
 ![Get a quick overview of changes to your data in the source control
 panel](/uploads/images/2022-06-14/source-control.png)
-
-## DVC tracked explorer
-
-Resources tracked by DVC can be viewed and managed through the tracked explorer
-view. See at a glance which datasets and models have been changed, and navigate
-through all files contained in the DVC project(s) of your workspace.
-
-## Command palette
-
-The DVC extension makes extensive use of the Command Palette, reducing the need
-to learn syntax by heart. Want to run a new experiment or pull data from your
-remote repository? Give the word in the Command Palette and the DVC extension
-will guide you along all required details.
 
 ---
 
@@ -154,16 +146,14 @@ possible:
   tweets
 - [Sid Unnithan](https://www.linkedin.com/in/siddhanthunnithan/), for his review
   and help in getting the word out there
-- [The VS Code developer
-  community](https://vscode-dev-community.slack.com/join/shared_invite/zt-zq9w7ddw-VD1NVQ4p2XLT7vh_kO7bJA#/shared-invite/email)
+- [The VS Code developer community](https://vscode-dev-community.slack.com/join/shared_invite/zt-zq9w7ddw-VD1NVQ4p2XLT7vh_kO7bJA#/shared-invite/email)
 - Everyone who has beta-tested the extension and provided their feedback!
 
 # Resources
 
 Want to read more about the extension? Check out the following pages:
 
-- [DVC extension on the VS Code
-  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
