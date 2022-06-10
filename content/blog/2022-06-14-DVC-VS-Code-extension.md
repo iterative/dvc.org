@@ -66,12 +66,10 @@ workshop.
 
 Our extension introduces the DVC view, which is your one-stop shop for
 everything related to your ML experiments. You can run new experiments from
-here, manage parameters, and compare both metrics and plots for different
-models. Never has it been easier to analyze the results of your experiments and
-find the best model.
+here, manage parameters, and compare metrics and plots for different
+models.
 
-Here are the main features that are available when you install the extension
-right now:
+The extension also adds panes to the _Explorer_ and _Source Control_ views for managing all datasets and models in your DVC repository.
 
 ## Experiment bookkeeping
 
@@ -114,18 +112,18 @@ Your browser does not support the video tag. </video>
 
 ## Data management
 
-On top of Git version control for your code, the source control view now lets
+On top of Git version control for your code, the _Source Control_ view now lets
 you manage datasets and models tracked by DVC without using the terminal. The
-DVC panel shows you the state of the workspace, similarly to the familiar Git
-panel. From here you can track artifacts and synchronize versions with your
+DVC panel shows you the state of the workspace. From here you can track artifacts and synchronize versions with your
 remote repository.
 
-You can also use the DVC tracked panel in the explorer view to quickly navigate
+You can also use the DVC tracked panel in the _Explorer_ view to quickly navigate
 the files in the DVC project(s) in your workspace.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/data-management.mp4" type="video/mp4">
 Your browser does not support the video tag. </video>
+
 ---
 
 # What's next?
