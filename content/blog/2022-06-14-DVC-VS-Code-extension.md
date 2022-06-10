@@ -35,6 +35,10 @@ IDE.
 
 [Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;"><source src="/uploads/images/2022-06-14/overview.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
+
 # Why a VS Code extension?
 
 We built DVC to expand upon the Git workflow to make it well-suited for ML
@@ -104,8 +108,9 @@ Click _Apply to workspace_ to reproduce any past experiment. DVC will restore
 all artifacts for that experiment, and you can run it again or use it as a base
 for a new experiment.
 
-![Get a quick overview of changes to your data in the source control
-panel](/uploads/images/2022-06-14/source-control.png)
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;"><source src="/uploads/images/2022-06-14/apply-to-workspace.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
 
 ## Data management
 
@@ -118,9 +123,9 @@ remote repository.
 You can also use the DVC tracked panel in the explorer view to quickly navigate
 the files in the DVC project(s) in your workspace.
 
-![Get a quick overview of changes to your data in the source control
-panel](/uploads/images/2022-06-14/source-control.png)
-
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;"><source src="/uploads/images/2022-06-14/data-management.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
 ---
 
 # What's next?
