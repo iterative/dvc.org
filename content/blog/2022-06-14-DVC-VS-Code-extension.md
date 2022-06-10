@@ -125,7 +125,6 @@ panel](/uploads/images/2022-06-14/source-control.png)
 
 # What's next?
 
-We're excited that our VS Code extension is live and available to the public!
 From here on out, we plan on making the extension even better with new features
 such as pipeline (DAG) support,
 [TPI](https://github.com/iterative/terraform-provider-iterative) integration for
