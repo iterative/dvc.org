@@ -29,29 +29,31 @@ Today we are proud to launch a new product that extends how ML teams can use
 DVC: our extension for Visual Studio Code.
 
 With this extension you get a full VS Code-native experimentation platform for
-your machine learning projects. You can control datasets and models, run experiments, view
-metrics, create plots, and much more. All in one place in your IDE.
+your machine learning projects. You can control datasets and models, run
+experiments, view metrics, create plots, and much more. All in one place in your
+IDE.
 
-[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get
+started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why a VS Code extension?
 
-We built DVC to expand upon the Git workflow. This approach has made it a
-powerful tool that can easily be picked up by users familiar with Git. However,
-a terminal does not always provide the most accessible user experience.
-Moreover, while DVC provides many useful visualizations, a CLI tool can only
-take things so far.
+We built DVC to expand upon the Git workflow to make it well-suited for ML
+experimentation. This approach brought us independence from the infrastructure and
+provided a natural connection to best practices from software engineering. 
+However, a pure CLI tool can only take things so far when
+it comes to visualizing experiments or displaying large tables.
 
-Therefore we wanted to incorporate DVC's functionality in a graphical interface.
-[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
-including most of us here at Iterative. It seemed like the natural choice for a
-platform to make DVC more versatile, accessible, and useful.
+[VS Code is the IDE of choice for
+many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment)
+and was a natural choice for a platform to add a graphical interface to DVC.
 
-With this extension, we want to achieve the following:
+With this extension, we want to:
 
 - Move the ML experimentation workflow into your IDE
-- Enhance existing visualizations and provide new ones
-- Make DVC more accessible by hiding the complexity of the CLI
+- Provide interactive plots and tables for analyzing ML experiments
+- Make DVC more accessible by providing an alternative to the complexity of the
+  CLI
 
 As data scientists, DVC is our toolbox. This extension turns VS Code into our
 workshop.
@@ -76,21 +78,27 @@ experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
 ![Plots to visualize your
 experiments](/uploads/images/2022-06-14/dvc-view-plots.png) -->
 
-<video controlslist="nodownload" preload="metadata" autoplay muted loop style="width:100%;">
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;">
+
   <source src="/uploads/images/2022-06-14/run-experiment.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 _Quickly run new ML experiments and view them in the experiments table._
 
-<video controlslist="nodownload" preload="metadata" autoplay muted loop style="width:100%;">
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;">
+
   <source src="/uploads/images/2022-06-14/compare-experiments.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
 _Compare experiments with each other._
 
-<video controlslist="nodownload" preload="metadata" autoplay muted loop style="width:100%;">
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;">
+
   <source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
@@ -146,14 +154,16 @@ possible:
   tweets
 - [Sid Unnithan](https://www.linkedin.com/in/siddhanthunnithan/), for his review
   and help in getting the word out there
-- [The VS Code developer community](https://vscode-dev-community.slack.com/join/shared_invite/zt-zq9w7ddw-VD1NVQ4p2XLT7vh_kO7bJA#/shared-invite/email)
+- [The VS Code developer
+  community](https://vscode-dev-community.slack.com/join/shared_invite/zt-zq9w7ddw-VD1NVQ4p2XLT7vh_kO7bJA#/shared-invite/email)
 - Everyone who has beta-tested the extension and provided their feedback!
 
 # Resources
 
 Want to read more about the extension? Check out the following pages:
 
-- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code
+  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
