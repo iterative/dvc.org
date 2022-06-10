@@ -126,6 +126,7 @@ the files in the DVC project(s) in your workspace.
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/data-management.mp4" type="video/mp4">
 Your browser does not support the video tag. </video>
+
 ---
 
 # What's next?
