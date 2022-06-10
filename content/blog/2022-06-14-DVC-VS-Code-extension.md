@@ -29,7 +29,7 @@ Today we are proud to launch a new product that extends how ML teams can use
 DVC: our extension for Visual Studio Code.
 
 With this extension you get a full VS Code-native experimentation platform for
-your machine learning projects. You can control datasets, run experiments, view
+your machine learning projects. You can control datasets and models, run experiments, view
 metrics, create plots, and much more. All in one place in your IDE.
 
 [Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
@@ -146,7 +146,7 @@ possible:
   tweets
 - [Sid Unnithan](https://www.linkedin.com/in/siddhanthunnithan/), for his review
   and help in getting the word out there
-- The VS Code developer community
+- [The VS Code developer community](https://vscode-dev-community.slack.com/join/shared_invite/zt-zq9w7ddw-VD1NVQ4p2XLT7vh_kO7bJA#/shared-invite/email)
 - Everyone who has beta-tested the extension and provided their feedback!
 
 # Resources
