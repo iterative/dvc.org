@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import useStars from '../../../../gatsby/hooks/stars'
 
 import * as styles from './styles.module.css'

@@ -82,16 +82,16 @@ silently.
 them, from the array's objects. For example, `val_loss` is one of the field
 names in the `train` array below:
 
-```
+```json
 {
   "train": [
-    {"val_accuracy": 0.9665, "val_loss": 0.10757},
-    {"val_accuracy": 0.9764, "val_loss": 0.07324},
-    {"val_accuracy": 0.8770, "val_loss": 0.08136},
-    {"val_accuracy": 0.8740, "val_loss": 0.09026},
-    {"val_accuracy": 0.8795, "val_loss": 0.07640},
-    {"val_accuracy": 0.8803, "val_loss": 0.07608},
-    {"val_accuracy": 0.8987, "val_loss": 0.08455}
+    { "val_accuracy": 0.9665, "val_loss": 0.10757 },
+    { "val_accuracy": 0.9764, "val_loss": 0.07324 },
+    { "val_accuracy": 0.877, "val_loss": 0.08136 },
+    { "val_accuracy": 0.874, "val_loss": 0.09026 },
+    { "val_accuracy": 0.8795, "val_loss": 0.0764 },
+    { "val_accuracy": 0.8803, "val_loss": 0.07608 },
+    { "val_accuracy": 0.8987, "val_loss": 0.08455 }
   ]
 }
 ```

@@ -6,7 +6,7 @@ Signals that the current step has ended and increases step value by 1 (one).
 def next_step()
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
@@ -28,17 +28,19 @@ You can use `Live.next_step()` to increase the `step` by 1 (one).
 Each metric logged in between `Live.next_step()` (or `Live.set_step()`) calls
 will be associated to the updated `step` value.
 
+<admon type="info">
+
+Each `Live.next_step()` will call `Live.make_report()` internally by default
+(unless `report` is passed to `Live()` with a value other than `"html"`).
+
+</admon>
+
 ### DVC integration
 
 When `dvclive` is used alongside `DVC`, each `Live.next_step()` call will have
 additional effects.
 
-By default, on each `Live.next_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with the
-[metrics history](/doc/dvclive/get-started#history).
-
-In addition, when
-[checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
-the <abbr>pipeline</abbr>, `DVC` will
+When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
+enabled in the <abbr>pipeline</abbr>, DVC will
 [create a new checkpoint](/doc/dvclive/dvclive-with-dvc#checkpoints) on each
 `Live.next_step()` call.

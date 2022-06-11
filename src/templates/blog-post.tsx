@@ -2,14 +2,18 @@ import { graphql } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import Post from '../components/Blog/Post'
 
-import { ISocialIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
+import { ISocialIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
 import { isProduction } from '../server/utils'
 
 export interface IBlogPostHeroPic {
-  picture?: IGatsbyImageData
+  picture?: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
+  }
   pictureComment?: string
 }
 
@@ -25,14 +29,18 @@ export interface IBlogPostData {
   commentsUrl?: string
   tags?: string[]
   picture?: {
-    gatsbyImageData: IGatsbyImageData
-    fields: { sourcePath: string }
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+      fields: { sourcePath: string }
+    }
   }
   pictureComment?: string
   author: {
     name: string
     avatar: {
-      gatsbyImageData: IGatsbyImageData
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData
+      }
     }
     links: Array<ISocialIcon>
   }
@@ -61,11 +69,11 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
         image={
           picture &&
           (isProduction
-            ? `/blog/${picture.fields.sourcePath}`
-            : picture.gatsbyImageData)
+            ? `/blog/${picture.childImageSharp.fields.sourcePath}`
+            : picture.childImageSharp.gatsbyImageData)
         }
-        imageHeight={picture?.gatsbyImageData.height}
-        imageWidth={picture?.gatsbyImageData.width}
+        imageHeight={picture?.childImageSharp.gatsbyImageData.height}
+        imageWidth={picture?.childImageSharp.gatsbyImageData.width}
         meta={[
           {
             name: 'twitter:card',
@@ -112,19 +120,23 @@ export const pageQuery = graphql`
           site
         }
         avatar {
-          gatsbyImageData(
-            width: 40
-            height: 40
-            transformOptions: { cropFocus: CENTER }
-            layout: FIXED
-          )
+          childImageSharp {
+            gatsbyImageData(
+              width: 40
+              height: 40
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
+          }
         }
       }
       picture {
-        fields {
-          sourcePath
+        childImageSharp {
+          fields {
+            sourcePath
+          }
+          gatsbyImageData(width: 850, quality: 90)
         }
-        gatsbyImageData(width: 850, quality: 90)
       }
       pictureComment
     }

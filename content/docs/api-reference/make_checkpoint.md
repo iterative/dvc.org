@@ -9,7 +9,7 @@ def make_checkpoint()
 [checkpoint]:
   /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
 
-#### Usage:
+## Usage
 
 ```py
 from dvc.api import make_checkpoint

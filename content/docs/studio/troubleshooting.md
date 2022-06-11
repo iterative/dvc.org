@@ -12,13 +12,15 @@ Iterative Studio.
 - [View contains columns that I did not import](#view-contains-columns-that-i-did-not-import)
 - [View does not contain some of my commits or branches](#view-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+- [Questions or problems with billing and payment](#questions-or-problems-with-billing-and-payment)
 
 ## Support
 
 If you need further help, please send us a message using `Help` on the
-[project website](https://studio.iterative.ai). You can also create a support
-ticket on [GitHub](https://github.com/iterative/studio-support) or join the
-discussion in [Discord](https://discord.com/invite/dvwXA2N).
+[project website](https://studio.iterative.ai). You can also
+[email us](mailto:support@iterative.ai), create a support ticket on
+[GitHub](https://github.com/iterative/studio-support) or join the discussion in
+[Discord](https://discord.com/invite/dvwXA2N).
 
 ## Error: No data found to visualize
 
@@ -131,7 +133,7 @@ There are two possible reasons for this:
    make sure you have not hidden it. The following video shows how you can
    show/hide columns. Once you show/hide columns, remember to save the changes.
 
-   ###### Show/hide columns
+   #### Show/hide columns
 
    ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
 
@@ -182,3 +184,9 @@ please check:
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
+
+## Questions or problems with billing and payment
+
+Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
+see if your questions have already been answered. If you still have problems,
+please [contact us](#support).

@@ -2,14 +2,14 @@ import React, { useRef, useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
 import TwoRowsButton from '../TwoRowsButton'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
-import isClient from 'gatsby-theme-iterative-docs/src/utils/front/isClient'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import isClient from '@dvcorg/gatsby-theme-iterative/src/utils/front/isClient'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
-const VERSION = `2.10.2`
+const VERSION = `2.11.0`
 
 enum OS {
   UNKNOWN = 'unknown',

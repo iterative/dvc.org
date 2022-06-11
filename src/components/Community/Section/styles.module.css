@@ -39,7 +39,7 @@
   width: 100%;
   background-color: transparent;
   border: none;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
 }
 
 .title {
@@ -61,7 +61,7 @@
       margin-left: 10px;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
-      border-top: 12px solid currentColor;
+      border-top: 12px solid currentcolor;
       transition: transform 200ms;
     }
 

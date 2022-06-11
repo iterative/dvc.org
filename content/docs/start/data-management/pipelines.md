@@ -289,16 +289,20 @@ stages:
     cmd: python src/prepare.py data/data.xml
     deps:
       - path: data/data.xml
-        md5: a304afb96060aad90176268345e10355
+        md5: 22a1a2931c8370d3aeedd7183606fd7f
+        size: 14445097
       - path: src/prepare.py
-        md5: 285af85d794bb57e5d09ace7209f3519
+        md5: f09ea0c15980b43010257ccb9f0055e2
+        size: 1576
     params:
       params.yaml:
         prepare.seed: 20170428
         prepare.split: 0.2
     outs:
       - path: data/prepared
-        md5: 20b786b6e6f80e2b3fcf17827ad18597.dir
+        md5: 153aad06d376b6595932470e459ef42a.dir
+        size: 8437363
+        nfiles: 2
 ```
 
 > `dvc status` command can be used to compare this state with an actual state of

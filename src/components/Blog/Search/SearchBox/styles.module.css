@@ -9,7 +9,7 @@
 }
 
 .searchInput {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   box-sizing: border-box;
   display: flex;
   flex: 1;

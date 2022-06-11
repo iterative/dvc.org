@@ -9,7 +9,6 @@ Contains a helper command to set the <abbr>cache</abbr> directory location:
 usage: dvc cache [-h] [-q] [-v] {dir} ...
 
 positional arguments:
-  COMMAND
     dir          Configure cache directory location.
 ```
 

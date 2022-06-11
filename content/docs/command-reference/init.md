@@ -37,9 +37,7 @@ files, `.dvc/` directory is created the same way as in the default mode. This
 way multiple <abbr>DVC projects</abbr> can be initialized in a single Git
 repository, providing isolation between projects.
 
-#### When is this useful?
-
-This option is mostly useful in the scenario of a
+This is mostly useful in the scenario of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo) (Git repo split into several
 project directories), but can also be used with other patterns when such
 isolation is needed. `dvc init --subdir` mitigates possible limitations of
@@ -60,16 +58,17 @@ initializing DVC in the Git repo root:
 - Commands such as `dvc status` and `dvc metrics show` would produce unexpected
   results if not constrained to a single project scope.
 
+<details>
+
 #### How does it affect DVC commands?
 
 The <abbr>project</abbr> root is found by DVC by looking for `.dvc/` from the
-current working directory, up. It defines the scope of action for most DVC
-commands (e.g. `dvc repro`, `dvc pull`, `dvc metrics diff`, etc.) meaning that
-only `dvc.yaml`, `.dvc` files, etc. inside the project are usable by the
-commands.
+current working directory, up. With `--subdir`, the project root will be found
+before the Git root.
 
-With `--subdir`, the project root will be found before the Git root, causing the
-scope of DVC commands run here is constrained to this project alone.
+This defines the scope of action for most DVC commands (e.g. `dvc repro`,
+`dvc pull`, `dvc metrics diff`, etc.). Only `dvc.yaml`, `.dvc` files, etc.
+inside the sub-dir project are reachable by them.
 
 If there are multiple `--subdir` projects, but not nested, e.g.:
 
@@ -108,6 +107,8 @@ project-A
 Nothing changes for the inner projects. And any DVC command run in the outer one
 actively ignores the nested project directories. For example, using `dvc pull`
 in `project-A` wouldn't download data for the `data-B.dvc` file.
+
+</details>
 
 ### Initializing DVC without Git
 

@@ -53,7 +53,7 @@
 }
 
 .dropdownItem {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   min-height: 36px;
   line-height: 1.29;
   padding: 0 17px;

@@ -22,11 +22,13 @@ export default function posts(): Array<IResultBlogPostData> {
           date
           commentsUrl
           picture {
-            gatsbyImageData(
-              width: 160
-              height: 160
-              transformOptions: { fit: COVER, cropFocus: CENTER }
-            )
+            childImageSharp {
+              gatsbyImageData(
+                width: 160
+                height: 160
+                transformOptions: { fit: COVER, cropFocus: CENTER }
+              )
+            }
           }
         }
       }
@@ -38,7 +40,8 @@ export default function posts(): Array<IResultBlogPostData> {
     return {
       commentsUrl,
       date,
-      pictureUrl: getSrc(picture as IGatsbyImageDataParent),
+      pictureUrl:
+        picture && getSrc(picture.childImageSharp as IGatsbyImageDataParent),
       title,
       url: slug
     }

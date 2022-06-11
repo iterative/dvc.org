@@ -1,8 +1,5 @@
 const markdownParentFields = require('../markdown-content/fields.js')
-const {
-  resolvePostAuthor,
-  resolvePostPicture
-} = require('../../utils/resolvers')
+const { resolvePostAuthor } = require('../../utils/resolvers')
 
 async function createSchemaCustomization(api) {
   const {
@@ -20,8 +17,17 @@ async function createSchemaCustomization(api) {
           resolve: resolvePostAuthor
         },
         picture: {
-          type: 'ImageSharp',
-          resolve: resolvePostPicture
+          type: 'File',
+          resolve: (source, args, context) =>
+            context.nodeModel.findOne({
+              type: 'File',
+              query: {
+                filter: {
+                  sourceInstanceName: { eq: 'images' },
+                  relativePath: { eq: source.picture }
+                }
+              }
+            })
         }
       }
     })
