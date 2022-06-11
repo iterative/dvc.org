@@ -19,14 +19,13 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 ## Description
 
 This command helps you get started with DVC Experiments quickly. It reduces
-repetitive DVC procedures by creating a necessary `dvc.yaml` file that assumes
+repetitive DVC procedures by creating a necessary `dvc.yaml` file, which assumes
 standard locations of your inputs (data, <abbr>parameters</abbr>, and source
-code) and outputs (models, <abbr>metrics</abbr> and
+code) and outputs (models, <abbr>metrics</abbr>, and
 [plots](/doc/command-reference/plots)).
 
 These locations can be customized through the [command options](#options) or via
-[configuration](/doc/command-reference/config#exp). Default project structure
-assumed:
+[configuration](/doc/command-reference/config#exp). Default project structure:
 
 ```
 ├── data/
@@ -37,10 +36,10 @@ assumed:
 └── src/
 ```
 
-You must always provide the terminal command that runs your experiment(s). It
-can be given either directly [as an argument](#the-command-argument), or by
-using the `--interactive` (`-i`) mode, which will prompt you for it. The command
-will be wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
+The only required argument is the terminal command that runs your experiment(s).
+It can be provided directly [as an argument](#the-command-argument) or by using
+the `--interactive` (`-i`) mode (which will prompt for it). The command will be
+wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
 <admon type="tip">
 
@@ -49,9 +48,9 @@ A special deep learning `--type` of stage is supported (`dl`), which uses
 
 </admon>
 
-`dvc exp init` also generates parts of the boilerplate repo structure: only
-input files and directories by default, or all locations determined in
-interactive mode.
+`dvc exp init` also generates the boilerplate project structure, including input
+files/directories and directories needed for future outputs, or any locations
+determined in interactive mode.
 
 <admon type="info">
 
