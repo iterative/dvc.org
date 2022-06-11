@@ -34,7 +34,7 @@
 }
 
 .title {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   max-width: 438px;
   min-height: 44px;
   margin: 0 auto;
@@ -65,7 +65,7 @@
   padding: 0 21px;
   border-radius: 4px;
   border: solid 2px rgb(255 255 255 / 30%);
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;

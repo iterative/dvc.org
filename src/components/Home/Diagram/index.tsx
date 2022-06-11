@@ -2,9 +2,9 @@ import React, { forwardRef } from 'react'
 import Slider from 'react-slick'
 import cn from 'classnames'
 
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
-import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'

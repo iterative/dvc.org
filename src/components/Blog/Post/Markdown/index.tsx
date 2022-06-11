@@ -1,6 +1,6 @@
 import React from 'react'
 import rehypeReact from 'rehype-react'
-import Admonition from 'gatsby-theme-iterative-docs/src/components/Documentation/Markdown/Admonition'
+import Admonition from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Markdown/Admonition'
 
 import * as styles from './styles.module.css'
 

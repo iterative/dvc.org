@@ -78,6 +78,8 @@ optimizes memory usage.
   mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
   `open()`.
 
+[experiment name]: /doc/command-reference/exp/run#-n
+
 ## Exceptions
 
 - `dvc.exceptions.FileMissingError` - file in `path` is missing from `repo`.

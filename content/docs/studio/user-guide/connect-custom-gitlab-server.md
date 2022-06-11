@@ -9,7 +9,8 @@ self-hosted GitLab servers.
 To connect to your self-hosted GitLab server, you will need the following:
 
 - A URL for your GitLab server. The URL should either be publicly accessible, or
-  in the same private network as Studio if Studio is deployed on-premises.
+  in the same private network as Iterative Studio if Iterative Studio is
+  deployed on-premises.
 - A personal access token with the following roles: `api`, `read_user`,
   `read_repository`. If you do not have a personal access token yet, you can
   create one at
@@ -45,6 +46,6 @@ have the connection.
 <admon type ="info">
 
 Custom GitLab server support is available only within a team workspace, and is
-available to all Studio teams (free and paid).
+available to all Iterative Studio teams (free and paid).
 
 </admon>

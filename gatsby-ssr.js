@@ -1,8 +1,6 @@
 /* eslint-env node */
 const React = require('react')
 
-const PageWrapper = require('./src/components/PageWrapper').default
-
 const onRenderBody = ({ setHeadComponents }) => {
   return setHeadComponents([
     <script
@@ -15,5 +13,4 @@ const onRenderBody = ({ setHeadComponents }) => {
   ])
 }
 
-exports.wrapPageElement = PageWrapper
 exports.onRenderBody = onRenderBody

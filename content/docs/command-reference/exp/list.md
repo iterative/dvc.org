@@ -67,7 +67,7 @@ Let's say we have run 3 experiments in our project. You can quickly list the
 available experiments with this command:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 10-bigrams-experiment:
         exp-e6c97
         exp-1dad0
@@ -80,7 +80,7 @@ $ dvc exp list --all
 You can also list experiments in any DVC repo with `dvc exp list`:
 
 ```dvc
-$ dvc exp list --all git@github.com:iterative/example-get-started.git
+$ dvc exp list --all-commits git@github.com:iterative/example-get-started.git
 10-bigrams-experiment:
         exp-e6c97
         exp-86dd6
@@ -96,7 +96,7 @@ name instead:
 ```dvc
 $ git remote -v
 origin  git@github.com:iterative/example-get-started.git
-$ dvc exp list --all origin
+$ dvc exp list --all-commits origin
 10-bigrams-experiment:
         exp-e6c97
         exp-86dd6

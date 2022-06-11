@@ -1,9 +1,9 @@
 import React from 'react'
-import { getItemByPath } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
+import { getItemByPath } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 
-import Documentation from 'gatsby-theme-iterative-docs/src/components/Documentation/WithJSX'
+import Documentation from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX'
 
 interface IJSXDocPageProps {
   title?: string

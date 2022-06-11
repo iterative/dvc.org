@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
-import { screens } from '../../../../config/postcss/media'
+import { screens } from '@dvcorg/gatsby-theme-iterative/config/postcss/media'
 
 import * as styles from './styles.module.css'
 
