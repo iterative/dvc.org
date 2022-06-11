@@ -159,7 +159,9 @@ Set `fetch-depth` to `0` in the `actions/checkout` action:
 
 <admon type="info">
 
-See the [GitHub Actions docs](https://github.com/actions/checkout#fetch-all-history-for-all-tags-and-branches) for more information.
+See the
+[GitHub Actions docs](https://github.com/actions/checkout#fetch-all-history-for-all-tags-and-branches)
+for more information.
 
 </admon>
 
@@ -175,7 +177,9 @@ variables:
 
 <admon type="info">
 
-See the [GitLab CI/CD docs](https://docs.gitlab.com/ee/ci/large_repositories/#shallow-cloning) for more information.
+See the
+[GitLab CI/CD docs](https://docs.gitlab.com/ee/ci/large_repositories/#shallow-cloning)
+for more information.
 
 </admon>
 
