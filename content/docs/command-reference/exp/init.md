@@ -174,6 +174,7 @@ Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: n
 
 Creating dependencies: src/train.py and params.yaml
+Creating output directories: models
 Creating train stage in dvc.yaml
 
 Ensure your experiment command creates metrics.json and models/predict.h5.
