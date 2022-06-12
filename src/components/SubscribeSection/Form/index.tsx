@@ -9,7 +9,7 @@ const Form: React.FC = () => {
   const hiddenInputRef = useRef<HTMLInputElement>(null)
   const honeypotNameRef = useRef(nanoid())
   const sendGAEvent = useCallback(
-    e => {
+    (e: React.FormEvent) => {
       if (hiddenInputRef.current?.value) {
         // It's a bot.
         return e.preventDefault()

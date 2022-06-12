@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { getItemByPath } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
 import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
@@ -12,7 +12,7 @@ interface IJSXDocPageProps {
   headings: []
 }
 
-const JSXDocPage: React.FC<IJSXDocPageProps> = ({
+const JSXDocPage: React.FC<PropsWithChildren<IJSXDocPageProps>> = ({
   title,
   description,
   children,
