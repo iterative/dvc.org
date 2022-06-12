@@ -69,7 +69,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
         image={
           picture &&
           (isProduction
-            ? `/blog/${picture.childImageSharp.fields.sourcePath}`
+            ? `/blog/images/${picture.childImageSharp.fields.sourcePath}`
             : picture.childImageSharp.gatsbyImageData)
         }
         imageHeight={picture?.childImageSharp.gatsbyImageData.height}
