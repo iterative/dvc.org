@@ -112,7 +112,6 @@
     "@types/react-instantsearch-dom": "^6.12.3",
     "@types/react-popover": "^0.5.3",
     "@types/react-slick": "^0.23.8",
-    "@types/rehype-react": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
     "autoprefixer": "^10.4.7",
