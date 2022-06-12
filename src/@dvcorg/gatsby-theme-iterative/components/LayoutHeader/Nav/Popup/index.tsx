@@ -60,7 +60,7 @@ export const OtherPopup: React.FC<IPopupProps> = ({
             key={i}
             onClick={closePopup}
           >
-            {text}
+            {text as React.ReactNode}
           </Link>
         )
     )}
