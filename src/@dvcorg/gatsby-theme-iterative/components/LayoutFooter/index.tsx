@@ -126,6 +126,12 @@ const footerListsData: Array<IFooterListData> = [
         text: 'MLEM',
         icon: <MlemSVG className={styles.productIcon} />,
         target: '_blank'
+      },
+      {
+        href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
+        text: 'VS Code Extension',
+        icon: <LogoSVG className={styles.productIcon} />,
+        target: '_blank'
       }
     ]
   }
