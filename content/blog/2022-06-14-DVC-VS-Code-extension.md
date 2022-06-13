@@ -80,8 +80,8 @@ views for managing all datasets and models in your DVC repository.
 ## Experiment bookkeeping
 
 Quickly run new experiments and compare their resulting metrics in the
-experiments table. Use the command palette or buttons to reproduce old experiments, run new ones, or
-add them to the queue for later.
+experiments table. Use the command palette or buttons to reproduce old
+experiments, run new ones, or add them to the queue for later.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/experiment-bookkeeping.mp4" type="video/mp4">
@@ -122,7 +122,7 @@ Use the DVC tracked panel in the
 [_Explorer_](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout)
 view to quickly navigate the files in the DVC project(s) in your workspace.
 
-In the
+The
 [_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol)
 view now lets you manage datasets and models tracked by DVC without using the
 terminal. The DVC panel shows you the state of the workspace. From here, you can
