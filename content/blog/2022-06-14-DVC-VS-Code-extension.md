@@ -122,8 +122,7 @@ Use the DVC tracked panel in the
 [_Explorer_](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout)
 view to quickly navigate the files in the DVC project(s) in your workspace.
 
-The
-[_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol)
+The [_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol)
 view now lets you manage datasets and models tracked by DVC without using the
 terminal. The DVC panel shows you the state of the workspace. From here, you can
 track artifacts and synchronize versions with your remote repository. Just like
