@@ -173,6 +173,6 @@ remote and running:
 `$ dvc pull`
 
 That’s it! Now you can connect any DVC project to a GCP storage bucket. If you
-run into any issues, makes sure to check that your credentials are valid, check
+run into any issues, make sure to check that your credentials are valid, check
 if your user has MFA enabled, and check that the user has the right level of
 permissions.
