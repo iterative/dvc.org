@@ -17,10 +17,10 @@ refs/tags/baseline-experiment:
 ```
 
 If you want to list all the experiments in the repo regardless of their parent
-commit, use the `--all` flag.
+commit, use the `--all-commits` (`-A`) flag.
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list -A
 refs/tags/baseline-experiment:
         cnn-64
         cnn-128
@@ -42,8 +42,8 @@ refs/tags/baseline-experiment:
 ```
 
 This command lists remote experiments based on that repo's `HEAD`. You can use
-`--all` to list all experiments, or add any other supported option to the remote
-`dvc exp list` command.
+`--all-commits` (`-A`) to list all experiments, or add any other supported
+option to the remote `dvc exp list` command.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -51,12 +51,14 @@ This command lists remote experiments based on that repo's `HEAD`. You can use
 
 `dvc exp list` may be printing too much information when it comes to feed its
 output to other commands. You can get only the names of the experiments via the
-`--name-only` flag. For example, to get all the experiment names from a remote
-(`origin`):
+`--name-only` flag. For example, to download the model files from all
+experiments in a remote:
 
 ```dvc
-$ for experiment in $(dvc exp list origin --name-only --all) ; do
-  dvc exp pull "${experiment}"
+$ for name in $(dvc exp list origin --name-only -A); do
+    dvc get --rev ${name} \
+            git@github.com:iterative/example-dvc-experiments.git \
+            models/model.h5 -o exps/${name}.h5
 done
 ```
 
@@ -108,7 +110,8 @@ $ dvc exp show
 ```
 
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
-can use `--all` flag to show all the experiments in the project instead.
+can use `--all-commits` (`-A`) flag to show all the experiments in the project
+instead.
 
 Note that [queued experiments] will be marked with an asterisk `*`.
 
@@ -486,7 +489,8 @@ have dictionaries as values. `metrics` and `params` dictionaries have keys for
 each of the metrics or parameters files, and for each file metrics and
 parameters are listed as keys.
 
-As an example, we can get only a specific metric with [jq]:
+As an example, we can get only a specific metric with
+[jq](https://stedolan.github.io/jq/):
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'

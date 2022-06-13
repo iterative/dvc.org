@@ -1,6 +1,6 @@
 # exp pull
 
-Download an [experiment](/doc/command-reference/exp) from a Git remote, and its
+Download [experiments](/doc/command-reference/exp) from a Git remote, and their
 data from a `dvc remote`.
 
 ## Synopsis
@@ -8,7 +8,7 @@ data from a `dvc remote`.
 ```usage
 usage: dvc exp pull [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
                     [--no-cache] [-r <name>] [-j <number>] [--run-cache]
-                    git_remote experiment
+                    git_remote [experiment ...]
 
 positional arguments:
   git_remote          Git remote name or Git URL
@@ -27,15 +27,15 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 > `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
-an `experiment` name or hash (see `dvc exp run`) to pull.
+one or more `experiment` names or hashes (see `dvc exp run`) to pull.
 
-The first action of `dvc exp pull` is to download the `experiment` so it's
+The first action of `dvc exp pull` is to download the `experiments` so they are
 available in the local repository (equivalent to
 `git fetch <git_remote> refs/exps/<experiment>`). Use `dvc exp show` to explore
 your local experiments.
 
 By default, this command will also try to [pull](/doc/command-reference/pull)
-all <abbr>cached</abbr> data associated with the experiment to DVC
+all <abbr>cached</abbr> data associated with the experiments to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
 
 > 💡 Note that `git push <git_remote> --delete <experiment>` can be used to
@@ -89,7 +89,7 @@ Let's say we have cloned a DVC repository, and would like to fetch an experiment
 that someone else shared (see also `dvc exp list`).
 
 ```dvc
-$ dvc exp list --all origin
+$ dvc exp list --all-commits origin
 master:
         exp-e6c97
 $ dvc exp pull origin exp-e6c97
@@ -99,7 +99,7 @@ Pulled experiment 'exp-e6c97' from Git remote 'origin'.
 We can now see that the experiment exists in the local repo:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 master:
         exp-e6c97
 ```

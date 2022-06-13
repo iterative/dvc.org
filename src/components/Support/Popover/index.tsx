@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactPopover, { PopoverProps } from 'react-popover'
 
-import { isTriggeredFromKB } from 'gatsby-theme-iterative-docs/src/utils/front/keyboard'
+import { isTriggeredFromKB } from '@dvcorg/gatsby-theme-iterative/src/utils/front/keyboard'
 
 import './styles.module.css'
 
