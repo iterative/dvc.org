@@ -33,6 +33,10 @@ your machine learning projects. You can control datasets and models, run
 experiments, view metrics, create plots, and much more, all from the comfort of
 your IDE.
 
+<video controlslist="nodownload" preload="metadata" autoplay muted loop
+style="width:100%;"><source src="/uploads/images/2022-06-14/overview.mp4" type="video/mp4">
+Your browser does not support the video tag. </video>
+
 <external-link 
 href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc" 
 title="Download the DVC extension" 
@@ -40,10 +44,6 @@ description="Install the DVC extension from the VS Code marketplace to get start
   compare metrics, and visualize plots, all from the comfort of your IDE."
 link="marketplace.visualstudio.com"
 image="/uploads/images/2022-06-14/vscode-logo.png" />
-
-<video controlslist="nodownload" preload="metadata" autoplay muted loop
-style="width:100%;"><source src="/uploads/images/2022-06-14/overview.mp4" type="video/mp4">
-Your browser does not support the video tag. </video>
 
 # Why a VS Code extension?
 
