@@ -12,7 +12,7 @@ descriptionLong: >
   compare metrics, and visualize plots, all from the comfort of your IDE.
 picture: 2022-06-14/header.png
 author: rob_dewit
-# commentsUrl:
+commentsUrl: https://discuss.dvc.org/t/release-dvc-extension-for-visual-studio-code/1211
 tags:
   - VS Code
   - DVC
@@ -30,7 +30,8 @@ DVC: our extension for Visual Studio Code.
 
 With this extension you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets and models, run
-experiments, view metrics, create plots, and much more; all from the comfort of your IDE.
+experiments, view metrics, create plots, and much more; all from the comfort of
+your IDE.
 
 <external-link 
 href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc" 
@@ -98,7 +99,8 @@ Your browser does not support the video tag. </video>
 ## Live tracking
 
 Get insight into the training process of your models with live tracking of
-metrics. As soon as your metrics change, your plots will be updated automatically.
+metrics. As soon as your metrics change, your plots will be updated
+automatically.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
