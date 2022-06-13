@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Features from '../components/Features'
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 
 const FeaturesPage: React.FC = () => (
   <>

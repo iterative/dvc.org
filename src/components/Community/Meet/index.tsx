@@ -2,18 +2,18 @@ import React, { useCallback } from 'react'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import { ICommunitySectionTheme } from '../'
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Block from '../Block'
 import Section from '../Section'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import {
   useIssues,
   useTopics,
   IGithubIssue,
   IDiscussTopic
-} from 'gatsby-theme-iterative-docs/src/utils/front/api'
+} from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
 
 import { useCommunityData } from '../../../utils/front/community'
 import * as sharedStyles from '../styles.module.css'

@@ -179,7 +179,7 @@ to compare. You'll see a new file gets generated in the `dvc_plots` directory in
 your project. That's where you'll find the `index.html` file you should open in
 your browser. You'll see something similar to this.
 
-![plots comparing the accuracy, validation accuracy, loss, and validation loss for all epochs of each experiment](2021-10-05/with-cats-data.png)
+![plots comparing the accuracy, validation accuracy, loss, and validation loss for all epochs of each experiment](/uploads/images/2021-10-05/with-cats-data.png)
 
 There's a huge difference in the accuracy of our model after we've added this
 additional data. Let's see if we can make it even better by adding the `dogs`
@@ -244,7 +244,7 @@ both the `cats` and `dogs` data.
 $ dvc plots diff exp-23593 exp-54e8a exp-82f70
 ```
 
-![plot of differences between model with just cats data and model with both cats and dogs data](2021-10-05/with-cats-and-dogs-data.png)
+![plot of differences between model with just cats data and model with both cats and dogs data](/uploads/images/2021-10-05/with-cats-and-dogs-data.png)
 
 The results you see line up with what is expected for the validation metrics
 based on how we added the data to the training set. Now you can keep running

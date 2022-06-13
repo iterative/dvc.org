@@ -420,9 +420,12 @@ lr = params['train']['lr']
 epochs = params['train']['epochs']
 ```
 
-> Note that the popular PyYAML library does not support YAML 1.2. The
-> ruamel.yaml library should be used instead to avoid subtle differences in
-> number handling.
+<admon>
+
+We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
+1.2 (unlike the more popular PyYAML).
+
+</admon>
 
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See
