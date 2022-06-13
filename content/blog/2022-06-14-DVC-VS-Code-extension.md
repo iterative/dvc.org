@@ -99,8 +99,7 @@ Your browser does not support the video tag. </video>
 ## Live tracking
 
 Get insight into the training process of your models with live tracking of
-metrics. Add checkpoints to your training stage, and the plots will
-automatically be updated.
+metrics. As soon as your metrics change, your plots will be updated automatically.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/live-metrics.mp4" type="video/mp4">
