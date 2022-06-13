@@ -9,7 +9,7 @@ descriptionLong: >
 picture: 2022-06-13/dvc-azure.png
 pictureComment: Using Azure Blob Storage in DVC
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
+commentsUrl: https://discuss.dvc.org/t/syncing-data-to-azure-blob-storage/1212
 tags:
   - MLOps
   - DVC
