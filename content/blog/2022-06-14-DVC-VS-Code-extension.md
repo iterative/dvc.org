@@ -84,7 +84,7 @@ experiments table. Use the command palette or buttons to run new experiments, or
 add them to the queue for later.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
-style="width:100%;"><source src="/uploads/images/2022-06-14/run-experiment.mp4" type="video/mp4">
+style="width:100%;"><source src="/uploads/images/2022-06-14/experiment-bookkeeping.mp4" type="video/mp4">
 Your browser does not support the video tag. </video>
 
 ## Interactive plots
