@@ -80,7 +80,7 @@ views for managing all datasets and models in your DVC repository.
 ## Experiment bookkeeping
 
 Quickly run new experiments and compare their resulting metrics in the
-experiments table. Use the command palette or buttons to run new experiments, or
+experiments table. Use the command palette or buttons to reproduce old experiments, run new ones, or
 add them to the queue for later.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
