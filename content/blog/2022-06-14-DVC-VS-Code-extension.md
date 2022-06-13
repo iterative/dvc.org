@@ -28,9 +28,9 @@ tools.
 Today we are proud to launch a new product that extends how ML teams can use
 DVC: our extension for Visual Studio Code.
 
-With this extension you get a full VS Code-native experimentation platform for
+With this extension, you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets and models, run
-experiments, view metrics, create plots, and much more; all from the comfort of
+experiments, view metrics, create plots, and much more, all from the comfort of
 your IDE.
 
 <external-link 
@@ -70,7 +70,7 @@ workshop.
 
 # Features
 
-Our extension introduces the DVC view, which is your one-stop shop for
+Our extension introduces the DVC view, your one-stop-shop for
 everything related to your ML experiments. You can run new experiments from
 here, manage parameters, and compare metrics and plots for different models.
 
@@ -109,7 +109,7 @@ Your browser does not support the video tag. </video>
 ## Reproducibility
 
 Click _Apply to workspace_ to reproduce any past experiment. DVC will restore
-all artifacts for that experiment, and you can run it again or use it as a base
+all artifacts for that experiment, and you can rerun it or use it as a base
 for a new experiment.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
@@ -120,7 +120,7 @@ Your browser does not support the video tag. </video>
 
 On top of Git version control for your code, the _Source Control_ view now lets
 you manage datasets and models tracked by DVC without using the terminal. The
-DVC panel shows you the state of the workspace. From here you can track
+DVC panel shows you the state of the workspace. From here, you can track
 artifacts and synchronize versions with your remote repository.
 
 You can also use the DVC tracked panel in the _Explorer_ view to quickly
@@ -139,15 +139,13 @@ such as pipeline (DAG) support,
 [TPI](https://github.com/iterative/terraform-provider-iterative) integration for
 remote execution, autocomplete for `dvc.yaml`, and parallel coordinate plots.
 
-Of course, we'd love to hear what you are most looking forward to. Make sure to
-give us feedback on what you'd like to see next!
+Of course, we'd love to hear what you look forward to most. Please give us feedback on what you'd like to see next!
 
 https://media.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif
 
 # Thank you! ❤️
 
-We would like to sincerely thank everyone who has helped make this project
-possible:
+We would sincerely like to thank everyone who has helped make this project possible:
 
 - [Henning Dieterichs](https://github.com/hediet), for helping us get started
 - [Paige Bailey](https://twitter.com/DynamicWebPaige), for her support and warm
