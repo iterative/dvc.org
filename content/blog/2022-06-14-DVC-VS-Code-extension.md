@@ -10,7 +10,7 @@ descriptionLong: >
   Today we are releasing the DVC extension, which brings a full ML
   experimentation platform to VS Code. Manage your data, run experiments,
   compare metrics, and visualize plots, all from the comfort of your IDE.
-picture: 2022-06-14/header.png
+picture: 2022-06-14/header-vs-code-release.png
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/release-dvc-extension-for-visual-studio-code/1211
 tags:
@@ -70,9 +70,9 @@ workshop.
 
 # Features
 
-Our extension introduces the DVC view, your one-stop-shop for
-everything related to your ML experiments. You can run new experiments from
-here, manage parameters, and compare metrics and plots for different models.
+Our extension introduces the DVC view, your one-stop-shop for everything related
+to your ML experiments. You can run new experiments from here, manage
+parameters, and compare metrics and plots for different models.
 
 The extension also adds panes to the _Explorer_ and _Source Control_ views for
 managing all datasets and models in your DVC repository.
@@ -109,8 +109,8 @@ Your browser does not support the video tag. </video>
 ## Reproducibility
 
 Click _Apply to workspace_ to reproduce any past experiment. DVC will restore
-all artifacts for that experiment, and you can rerun it or use it as a base
-for a new experiment.
+all artifacts for that experiment, and you can rerun it or use it as a base for
+a new experiment.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/apply-to-workspace.mp4" type="video/mp4">
@@ -139,13 +139,15 @@ such as pipeline (DAG) support,
 [TPI](https://github.com/iterative/terraform-provider-iterative) integration for
 remote execution, autocomplete for `dvc.yaml`, and parallel coordinate plots.
 
-Of course, we'd love to hear what you look forward to most. Please give us feedback on what you'd like to see next!
+Of course, we'd love to hear what you look forward to most. Please give us
+feedback on what you'd like to see next!
 
 https://media.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif
 
 # Thank you! ❤️
 
-We would sincerely like to thank everyone who has helped make this project possible:
+We would sincerely like to thank everyone who has helped make this project
+possible:
 
 - [Henning Dieterichs](https://github.com/hediet), for helping us get started
 - [Paige Bailey](https://twitter.com/DynamicWebPaige), for her support and warm
