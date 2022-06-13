@@ -53,8 +53,10 @@ const MainLayout: LayoutComponent = ({
         id="layoutContent"
         //  className={styles.pageContent}
       >
-        {!pageContext.isDocs && <SkipNavContent id="main-content" />}
-        {children}
+        <>
+          {!pageContext.isDocs && <SkipNavContent id="main-content" />}
+          {children}
+        </>
       </div>
       <LayoutFooter />
     </div>
