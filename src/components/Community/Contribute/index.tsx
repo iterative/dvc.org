@@ -113,6 +113,23 @@ const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               blog posts, or hosting meetups.
             </CommunityBlock>
           </div>
+          <div className={sharedStyles.item}>
+            <CommunityBlock
+              title="Contributing to DVC"
+              action={
+                <Link
+                  className={sharedStyles.button}
+                  style={theme}
+                  href="/doc/contributing/core"
+                  onClick={logAmbassador}
+                >
+                  Docs!
+                </Link>
+              }
+            >
+              See the Contributing to the Documentation guide if you want to fix or update the documentation or this website.
+            </CommunityBlock>
+          </div>
         </div>
       </CommunitySection>
     </LayoutWidthContainer>
