@@ -1,12 +1,12 @@
 ---
 title: Syncing Data to Azure Blob Storage
-date: 2022-06-22
+date: 2022-06-13
 description: >
   We're going to set up an Azure Blob Storage remote in a DVC project.
 descriptionLong: >
   Setting up a remote to make data versioning easier with DVC is a common need
   so we're going to go through a tutorial for doing this with Azure.
-picture: 2022-06-22/dvc-azure.png
+picture: 2022-06-13/dvc-azure.png
 pictureComment: Using Azure Blob Storage in DVC
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
@@ -43,41 +43,41 @@ Make sure that you already have a
 [Microsoft Azure account](https://azure.microsoft.com/en-us/features/azure-portal/).
 When you log in, you should see a page like this.
 
-![initial Azure page](/uploads/images/2022-06-22/initial_azure.png)
+![initial Azure page](/uploads/images/2022-06-13/initial_azure.png)
 
 Search for `storage accounts` in the search bar and click `Storage accounts`
 under `Services`. Make sure you don't click the "classic" option.
 
-![search for storage account](/uploads/images/2022-06-22/storage_account_search.png)
+![search for storage account](/uploads/images/2022-06-13/storage_account_search.png)
 
 This will bring you to the `Storage accounts` page where you'll need click the
 `Create storage account` button.
 
-![storage accounts page](/uploads/images/2022-06-22/storage_account_page.png)
+![storage accounts page](/uploads/images/2022-06-13/storage_account_page.png)
 
 Now you need to enter a `Resource group` and name for the account. You can
 create a new resource group right here, like we do, and call it
 `BicycleProject`. We'll name this storage account `bicycleproject`. Then you can
 leave all the default settings in place and click `Review + create`.
 
-![storage account details](/uploads/images/2022-06-22/storage_account_details.png)
+![storage account details](/uploads/images/2022-06-13/storage_account_details.png)
 
 Azure will run validation on the account and then you'll be able to click
 `Create` and it will generate the storage account.
 
-![created storage account](/uploads/images/2022-06-22/created_storage_account.png)
+![created storage account](/uploads/images/2022-06-13/created_storage_account.png)
 
 You'll get redirected to a new page and you should click the `Go to resource`
 button. Now you should see all of the details for your storage account. In the
 left sidebar, got to on `Data storage` > `Containers`.
 
-![bicycle project account](/uploads/images/2022-06-22/bicycle_project_account.png)
+![bicycle project account](/uploads/images/2022-06-13/bicycle_project_account.png)
 
 Then click the `+ Container` button at the top of the new page and you'll see a
 right sidebar open. In the name field, type `bikedata` and then click `Create`.
 Now we have everything set up for the blob storage to work.
 
-![new container for bike data](/uploads/images/2022-06-22/bikedata_container.png)
+![new container for bike data](/uploads/images/2022-06-13/bikedata_container.png)
 
 ### Set the right roles for your Azure account
 
@@ -87,16 +87,16 @@ to connect this remote storage to your machine learning project.
 On the page for your `bicycleproject` storage account, go to the
 `Access Control (IAM)` in the left sidebar.
 
-![update roles for storage account](/uploads/images/2022-06-22/storage_account_iam.png)
+![update roles for storage account](/uploads/images/2022-06-13/storage_account_iam.png)
 
 On this page, you'll click `Add role assignment` and get directed to the page
 with all of the roles.
 
-![update roles for storage account](/uploads/images/2022-06-22/storage_account_role.png)
+![update roles for storage account](/uploads/images/2022-06-13/storage_account_role.png)
 
 Select the `Storage Blob Data Contributor` role and click `Next`
 
-![update roles for storage account](/uploads/images/2022-06-22/storage_account_member.png)
+![update roles for storage account](/uploads/images/2022-06-13/storage_account_member.png)
 
 Then you can click `+ Select members` to add this role to your user.
 
@@ -172,7 +172,7 @@ A web browser has been opened at https://login.microsoftonline.com/organizations
 This should open a window that looks like this where you can enter your login
 credentials.
 
-![Azure CLI authentication page](/uploads/images/2022-06-22/azure_auth_page.png)
+![Azure CLI authentication page](/uploads/images/2022-06-13/azure_auth_page.png)
 
 You can check out more details on this command
 [here in the Azure docs](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli).
@@ -205,7 +205,7 @@ $ dvc push
 
 Here's what the data might look like in your Azure container.
 
-![data in Azure container](/uploads/images/2022-06-22/data_in_azure.png)
+![data in Azure container](/uploads/images/2022-06-13/data_in_azure.png)
 
 Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by cloning or forking the project repo and running:
