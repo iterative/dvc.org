@@ -74,7 +74,7 @@ Our extension introduces the DVC view, your one-stop-shop for everything related
 to your ML experiments. You can run new experiments from here, manage
 parameters, and compare metrics and plots for different models.
 
-The extension also adds panes to the _Explorer_ and _Source Control_ views for
+The extension also adds panes to the [_Explorer_](https://code.visualstudio.com/docs/getstarted/userinterface#_explorer) and [_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol) views for
 managing all datasets and models in your DVC repository.
 
 ## Experiment bookkeeping
@@ -118,12 +118,12 @@ Your browser does not support the video tag. </video>
 
 ## Data management
 
-On top of Git version control for your code, the _Source Control_ view now lets
+On top of Git version control for your code, the [_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol) view now lets
 you manage datasets and models tracked by DVC without using the terminal. The
 DVC panel shows you the state of the workspace. From here, you can track
 artifacts and synchronize versions with your remote repository.
 
-You can also use the DVC tracked panel in the _Explorer_ view to quickly
+You can also use the DVC tracked panel in the [_Explorer_](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout) view to quickly
 navigate the files in the DVC project(s) in your workspace.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
