@@ -30,8 +30,7 @@ DVC: our extension for Visual Studio Code.
 
 With this extension you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets and models, run
-experiments, view metrics, create plots, and much more. All in one place in your
-IDE.
+experiments, view metrics, create plots, and much more; all from the comfort of your IDE.
 
 <external-link 
 href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc" 
