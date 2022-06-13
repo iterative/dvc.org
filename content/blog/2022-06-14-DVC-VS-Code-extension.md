@@ -66,8 +66,6 @@ With this extension, we want to:
 As data scientists, DVC is our toolbox. This extension turns VS Code into our
 workshop.
 
----
-
 # Features
 
 Our extension introduces the DVC view, your one-stop-shop for everything related
