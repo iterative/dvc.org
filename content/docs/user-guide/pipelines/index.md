@@ -227,6 +227,48 @@ invalidates the stages that depend on this parameter.
 
 ### URL Dependencies
 
+Other than local dependencies, DVC allows to define dependencies described by
+their URLs. There are two types of such dependencies.
+
+* Dependencies that are found in other DVC repositories. 
+* Dependencies that are in arbitrary URLs. 
+
+The first kind of these is defined by `dvc import`, and the second kind is via
+`dvc import-url`.
+
+When you have resources in other DVC projects that you want to employ in the
+current one, you add them to the project as follows.
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started \
+             data/data.xml
+Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
+-> 'data.xml'
+```
+
+This adds a `data.xml.dvc` file to the project you use, with the respective
+links to the other project. When that linked resource is changed, any stage
+that depends on the file are invalidated too. This feature allows to define
+pipelines spanning more than one DVC project. 
+
+The second kind of URL dependencies don't even have this requirement to have
+the files in a DVC project. You can add any resource as a dependency with its
+URL.
+
+```dvc
+$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
+```
+
+This creates a `data.xml.dvc` file in the current folder that's linked to the
+given URL.
+
+<admon type="info">
+DVC supports many different kinds of URLs, please see `dvc import-url`
+reference for the full list.
+</admon>
+
+
+
 ## Outputs
 
 - Why?
