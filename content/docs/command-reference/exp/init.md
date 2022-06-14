@@ -12,7 +12,7 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
                     [--explicit] [--name NAME] [--code CODE]
                     [--data DATA] [--models MODELS] [--params PARAMS]
                     [--metrics METRICS] [--plots PLOTS] [--live LIVE]
-                    [--type {default,dl}]
+                    [--type {default,checkpoint}]
                     [command]
 ```
 
@@ -100,7 +100,7 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   `dvc exp run`).
 
 - `--type` - selects the type of the stage to create. Currently it provides two
-  alternatives: `dl` and `default` (no need to specify this one).
+  alternatives: `checkpoint` and `default` (no need to specify this one).
 
   `dl` stages are intended for use in deep-learning scenarios, where metrics and
   plots are tracked with [DVCLive](/doc/dvclive). This also supports logging
