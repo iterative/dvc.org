@@ -124,7 +124,7 @@ Your browser does not support the video tag. </video>
 ## Data management
 
 Use the DVC tracked panel in the
-[_Explorer_](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout)
+[_Explorer_](https://code.visualstudio.com/docs/getstarted/userinterface#_explorer)
 view to quickly navigate the files in the DVC project(s) in your workspace.
 
 The [_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol)
