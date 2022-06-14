@@ -47,9 +47,9 @@ Now you're ready to DVC!
 
 <admon icon="fire">
 
-**New!** Once you set up your DVC project, you can interact with it from [Visual
-Studio Code] or using [Iterative Studio], the online UI that integrates DVC and
-our other data science tools. Check out [this live demo]!
+**New!** Once you set up a DVC project, you can work on it from the [Visual
+Studio Code] IDE, or online with [Iterative Studio], the web UI that integrates
+all of our data science tools. Check out [this live demo]!
 
 [visual studio code]: /doc/vs-code-extension
 [iterative studio]: /doc/studio
