@@ -43,8 +43,8 @@ wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
 <admon type="tip">
 
-A special deep learning `--type` of stage is supported (`dl`), which uses
-[DVCLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
+A special `--type` of stage is supported (`checkpoint`), which monitors
+[checkpoints] during training of ML models.
 
 </admon>
 
