@@ -8,8 +8,9 @@ description: >
   experimentation platform to Visual Studio Code.
 descriptionLong: >
   Today we are releasing the DVC extension, which brings a full machine learning
-  experimentation platform to Visual Studio Code. Manage your data, run experiments,
-  compare metrics, and visualize plots, all from the comfort of your IDE.
+  experimentation platform to Visual Studio Code. Manage your data, run
+  experiments, compare metrics, and visualize plots, all from the comfort of
+  your IDE.
 picture: 2022-06-14/header-vs-code-release.png
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/release-dvc-extension-for-visual-studio-code/1211
@@ -30,7 +31,7 @@ teams can use DVC:
 [our extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 With this extension, you get a full VS Code-native experimentation platform for
-your machine learning projects. You can control datasets and models, run
+your machine learning projects. Control your datasets and models, run
 experiments, view metrics, create plots, and much more. You can do this all from
 the comfort of your IDE, without the need for external services or logins. The
 only thing you need is a
@@ -145,8 +146,8 @@ such as pipeline (DAG) support,
 [TPI](https://github.com/iterative/terraform-provider-iterative) integration for
 remote execution, autocomplete for `dvc.yaml`, and parallel coordinate plots.
 
-Of course, we'd love to hear what you look forward to most. Please give us
-feedback on what you'd like to see next!
+Of course, we would love to hear what you look forward to most. Please give us
+feedback on what you would like to see next!
 
 https://media.giphy.com/media/cEYFeE4wJ6jdDVBiiIM/giphy.gif
 
