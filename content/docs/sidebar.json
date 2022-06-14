@@ -528,35 +528,6 @@
     "type": "external"
   },
   {
-    "label": "CML",
-    "slug": "cml",
-    "source": "cml/index.md",
-    "icon": "cml",
-    "children": [
-      {
-        "label": "Get Started (GitHub)",
-        "slug": "start-github"
-      },
-      {
-        "label": "Get Started (GitLab)",
-        "slug": "start-gitlab"
-      },
-      "usage",
-      {
-        "label": "CML with DVC",
-        "slug": "cml-with-dvc"
-      },
-      {
-        "label": "Self-hosted Runners",
-        "slug": "self-hosted-runners"
-      },
-      {
-        "label": "Install as a Package",
-        "slug": "cml-with-npm"
-      }
-    ]
-  },
-  {
     "label": "Studio",
     "slug": "studio",
     "source": "studio/index.md",
