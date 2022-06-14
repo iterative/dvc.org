@@ -185,6 +185,8 @@ Thanks for this question @evergreengt!
 
 ---
 
+https://media.giphy.com/media/VInc9GYelUbHf5QhNR/giphy.gif
+
 At our December Office Hours Meetup we will be doing a new feature demo you
 won't want to miss!
 [RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/)
