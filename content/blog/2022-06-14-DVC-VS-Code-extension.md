@@ -174,3 +174,5 @@ Want to read more about DVC or the extension? Check out the following pages:
 - [Dave Berenbaum's post on DVC's experiment versioning](https://dvc.org/blog/ml-experiment-versioning)
 - [Alex Kim's guide on setting up an ML pipeline](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
 - [Iterative community on Discord](https://dvc.org/chat)
+
+https://youtu.be/LHi3SWGD9nc
