@@ -1,13 +1,13 @@
 ---
 title: >
-  Turn Visual Studio Code into an ML experimentation platform with the DVC
+  Turn Visual Studio Code into a machine learning experimentation platform with the DVC
   extension
 date: 2022-06-14
 description: >
   Today we are releasing the DVC extension, which brings a full ML
   experimentation platform to VS Code.
 descriptionLong: >
-  Today we are releasing the DVC extension, which brings a full ML
+  Today we are releasing the DVC extension, which brings a full machine learning
   experimentation platform to VS Code. Manage your data, run experiments,
   compare metrics, and visualize plots, all from the comfort of your IDE.
 picture: 2022-06-14/header-vs-code-release.png
@@ -25,7 +25,7 @@ science teams. Its data versioning capabilities, reproducible pipelines, and
 experiment tracking features are at the core of our ecosystem of open MLOps
 tools.
 
-Today we are proud to launch a new product that extends how ML teams can use
+Today we are proud to launch a new product that extends how machine learning teams can use
 DVC: our extension for Visual Studio Code.
 
 With this extension, you get a full VS Code-native experimentation platform for
