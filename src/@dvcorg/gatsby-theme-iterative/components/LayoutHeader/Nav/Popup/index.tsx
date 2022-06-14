@@ -73,7 +73,7 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
 }) => (
   <BasePopup className={styles.otherToolsPopup} isVisible={isVisible}>
     {menuData.products.map(
-      ({ title, iconClass, description, href, target }, i) => (
+      ({ title, iconClass, description, href, target, titleImgClass }, i) => (
         <Link
           className={styles.link}
           href={href}
@@ -84,8 +84,11 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
           <div className={cn(styles.linkIcon, iconClass)} />
           <p className={styles.title}>
             {title}
+            {titleImgClass && (
+              <span className={cn(styles.titleIcon, titleImgClass)}></span>
+            )}
             {/^https?:\/\//.test(href) && (
-              <ExternalLinkIcon className={styles.titleIcon} />
+              <ExternalLinkIcon className={styles.titleExternalIcon} />
             )}
           </p>
           <p className={styles.description}>{description}</p>

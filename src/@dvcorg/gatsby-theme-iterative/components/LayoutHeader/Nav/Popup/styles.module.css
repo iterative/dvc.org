@@ -49,6 +49,10 @@
   background-image: url("../../../../../../../static/img/mlem-icon.svg");
 }
 
+.vscodeIcon {
+  background-image: url("../../../../../../../static/img/vscode-icon.svg");
+}
+
 .communityPopup {
   row-gap: 4px;
   width: 260px;
@@ -69,7 +73,7 @@
     grid-template-columns: 32px 216px;
     column-gap: 16px;
 
-    &:hover .titleIcon {
+    &:hover .titleExternalIcon {
       opacity: 1;
     }
 
@@ -90,9 +94,18 @@
       line-height: 24px;
       display: flex;
       align-items: center;
+
+      &Icon {
+        margin-left: 4px;
+        margin-bottom: 2px;
+        width: 14px;
+        height: 14px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
 
-    .titleIcon {
+    .titleExternalIcon {
       opacity: 0;
       width: 16px;
       height: 16px;

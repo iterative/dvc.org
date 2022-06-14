@@ -19,8 +19,9 @@ interface ICommunityData {
 
 interface IProductsData {
   title: string
+  titleImgClass?: string
   description: string
-  iconClass: string
+  iconClass: string | null
   href: string
   img: string
   imgAlt: string
@@ -133,6 +134,15 @@ const menuData: IMenuData = {
       description: 'Open-source version control system for ML projects',
       iconClass: styles.dvcIcon,
       href: '/',
+      img: '/img/dvc_icon-color--square_vector.svg',
+      imgAlt: 'DVC logo'
+    },
+    {
+      title: 'VS Code Extension',
+      titleImgClass: styles.vscodeIcon,
+      description: 'Local ML model development and experiment tracking',
+      iconClass: null,
+      href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
       img: '/img/dvc_icon-color--square_vector.svg',
       imgAlt: 'DVC logo'
     },
