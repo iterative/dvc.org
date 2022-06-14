@@ -523,6 +523,11 @@
     "type": "external"
   },
   {
+    "label": "VS Code Extension",
+    "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+    "type": "external"
+  },
+  {
     "label": "CML",
     "slug": "cml",
     "source": "cml/index.md",
