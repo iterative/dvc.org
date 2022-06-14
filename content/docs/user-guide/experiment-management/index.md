@@ -31,13 +31,13 @@ approaches:
 
   <admon icon="fire">
 
-  **New!** DVC Experiments can be used directly [from the Visual Studio Code
-  IDE] or online with [Iterative Studio], the web UI that integrates all of our
-  data science tools.
+  **New!** DVC Experiments can be used directly [from the VS Code IDE] or online
+  with [Iterative Studio], the web UI that integrates all of our data science
+  tools.
 
   </admon>
 
-[from the visual studio code ide]: /doc/vs-code-extension
+[from the vs code ide]: /doc/vs-code-extension
 [iterative studio]: /doc/studio
 
 - Generate [checkpoints] at runtime to keep track of the internal progress of
