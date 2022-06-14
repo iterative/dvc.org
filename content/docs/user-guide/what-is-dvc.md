@@ -16,8 +16,7 @@ can version experiments, manage large datasets, and make projects reproducible.
 
 ## Core Features
 
-- DVC is a [free](https://github.com/iterative/dvc/blob/master/LICENSE),
-  open-source [command line](/doc/command-reference) tool.
+- DVC is a [free], open-source [VS Code Extension] and [command line] tool.
 
 - DVC works **on top of Git repositories** and has a similar command line
   interface and flow as Git. DVC can also work stand-alone, but without
@@ -48,6 +47,10 @@ can version experiments, manage large datasets, and make projects reproducible.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
+
+[free]: https://github.com/iterative/dvc/blob/master/LICENSE
+[vs code extension]: /doc/vs-code-extension
+[command line]: /doc/command-reference
 
 ## DVC does not replace Git!
 
