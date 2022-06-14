@@ -26,12 +26,15 @@ experiment tracking features are at the core of our ecosystem of open MLOps
 tools.
 
 Today we are proud to launch a new product that extends how machine learning
-teams can use DVC: our extension for Visual Studio Code.
+teams can use DVC:
+[our extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 With this extension, you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets and models, run
 experiments, view metrics, create plots, and much more. You can do this all from
-the comfort of your IDE, without the need for external services or logins.
+the comfort of your IDE, without the need for external services or logins. The
+only thing you need is a
+[DVC pipeline](https://dvc.org/doc/start/data-management/pipelines#get-started-data-pipelines).
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/overview.mp4" type="video/mp4">
@@ -47,11 +50,12 @@ image="/uploads/images/2022-06-14/vscode-logo.png" />
 
 # Why a VS Code extension?
 
-We built DVC to expand upon the Git workflow to [make it well-suited for ML
-experimentation](https://dvc.org/blog/ml-experiment-versioning). This approach brought us independence from the infrastructure
-and provided a natural connection to best practices from software engineering.
-However, a pure CLI tool can only take things so far when it comes to
-visualizing experiments or displaying large tables.
+We built DVC to expand upon the Git workflow to
+[make it well-suited for ML experimentation](https://dvc.org/blog/ml-experiment-versioning).
+This approach brought us independence from the infrastructure and provided a
+natural connection to best practices from software engineering. However, a pure
+CLI tool can only take things so far when it comes to visualizing experiments or
+displaying large tables.
 
 [VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment)
 and was a natural choice for a platform to add a graphical interface to DVC.
@@ -165,6 +169,7 @@ Want to read more about DVC or the extension? Check out the following pages:
 
 - [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
-- [Dave Berenbaum's post on how DVC does experiment versioning](https://dvc.org/blog/ml-experiment-versioning)
+- [Dave Berenbaum's post on DVC's experiment versioning](https://dvc.org/blog/ml-experiment-versioning)
+- [Alex Kim's guide on setting up an ML pipeline](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
