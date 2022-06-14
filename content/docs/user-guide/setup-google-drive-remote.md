@@ -111,9 +111,7 @@ We highly recommend this for heavy use and advanced needs because:
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
 to your Google Drive. This requires a Google Cloud _project_ that allows Drive
-API connections, and its
-[OAuth](https://developers.google.com/identity/protocols/OAuth2) credentials
-(**client ID** and **client secret**).
+API connections.
 
 1. Sign into the [Google API Console](https://console.developers.google.com).
 
@@ -140,22 +138,6 @@ API connections, and its
    and click **Create** to proceed with a default client name.
 
    ![](/img/gdrive-create-credentials.png)
-
-6. The newly generated **client ID** and **client secret** should be shown to
-   you now, and you can always come back to **Credentials** to fetch them.
-
-✅ It should be safe to share **client ID** and **client secret** among your
-team. These credentials are only used to generate the
-[authorization](#authorization) URL you'll need to visit later in order to
-connect to the Google Drive.
-
-Finally, use the `dvc remote modify` command to set the credentials (for each
-GDrive remote), for example:
-
-```dvc
-$ dvc remote modify myremote gdrive_client_id 'client-id'
-$ dvc remote modify myremote gdrive_client_secret 'client-secret'
-```
 
 > Note that Google Drive API usage limits/quotas apply per _project_ client and
 > can be reviewed in the
