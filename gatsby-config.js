@@ -84,7 +84,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-catch-links',
     options: {
-      excludePattern: /\/doc\/cml/
+      excludePattern: /\/doc/
     }
   },
   {
