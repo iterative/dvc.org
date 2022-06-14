@@ -12,11 +12,11 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    Our new tool for deployment,{' '}
+    Our new model deployment tool,{' '}
     <Link href="https://mlem.ai" tabIndex={collapsed ? -1 : undefined}>
       MLEM
     </Link>
-    , has been released!
+    , has been publicly released!
   </div>
 )
 
