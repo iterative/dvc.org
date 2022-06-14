@@ -167,8 +167,8 @@ GCP.
 ![data in GCP](/uploads/images/2022-06-07/data_in_gcp.png)
 
 Then if you move to a different machine or someone else needs to use that data,
-it can be accessed by cloning or forking the project repo, setting up the
-remote and running:
+it can be accessed by cloning or forking the project repo, setting up the remote
+and running:
 
 `$ dvc pull`
 
