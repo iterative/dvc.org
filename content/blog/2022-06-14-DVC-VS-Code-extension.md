@@ -30,8 +30,8 @@ teams can use DVC: our extension for Visual Studio Code.
 
 With this extension, you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets and models, run
-experiments, view metrics, create plots, and much more. You can do this all from the comfort of
-your IDE, without the need for external services or logins.
+experiments, view metrics, create plots, and much more. You can do this all from
+the comfort of your IDE, without the need for external services or logins.
 
 <video controlslist="nodownload" preload="metadata" autoplay muted loop
 style="width:100%;"><source src="/uploads/images/2022-06-14/overview.mp4" type="video/mp4">
@@ -47,8 +47,8 @@ image="/uploads/images/2022-06-14/vscode-logo.png" />
 
 # Why a VS Code extension?
 
-We built DVC to expand upon the Git workflow to make it well-suited for ML
-experimentation. This approach brought us independence from the infrastructure
+We built DVC to expand upon the Git workflow to [make it well-suited for ML
+experimentation](https://dvc.org/blog/ml-experiment-versioning). This approach brought us independence from the infrastructure
 and provided a natural connection to best practices from software engineering.
 However, a pure CLI tool can only take things so far when it comes to
 visualizing experiments or displaying large tables.
@@ -161,9 +161,10 @@ possible:
 
 # Resources
 
-Want to read more about the extension? Check out the following pages:
+Want to read more about DVC or the extension? Check out the following pages:
 
 - [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
+- [Dave Berenbaum's post on how DVC does experiment versioning](https://dvc.org/blog/ml-experiment-versioning)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
