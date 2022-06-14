@@ -170,7 +170,7 @@ Want to read more about DVC or the extension? Check out the following pages:
 
 - [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
+- [DVC docs](https://dvc.org/)
 - [Dave Berenbaum's post on DVC's experiment versioning](https://dvc.org/blog/ml-experiment-versioning)
 - [Alex Kim's guide on setting up an ML pipeline](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
-- [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
