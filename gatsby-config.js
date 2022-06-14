@@ -82,10 +82,7 @@ const plugins = [
   },
   'community-page',
   {
-    resolve: 'gatsby-plugin-catch-links',
-    options: {
-      excludePattern: /\/doc/
-    }
+    resolve: 'gatsby-plugin-catch-links'
   },
   {
     resolve: `gatsby-plugin-algolia`,
