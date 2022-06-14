@@ -51,14 +51,14 @@ It's essentially a local backup for data tracked by DVC.
 
 </details>
 
-```dvc
+```cli
 $ dvc remote add -d myremote /path/to/remote
 Setting 'myremote' as a default remote.
 ```
 
 And now the list of remotes should look like:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	/path/to/remote
 ```

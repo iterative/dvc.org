@@ -41,7 +41,7 @@ files. Unlike its `dvc plots` counterpart, `dvc metrics diff` can report the
 numeric difference between the metrics in different experiments, for example an
 `AUC` metrics that is `0.801807` and gets increase by `+0.037826`:
 
-```dvc
+```cli
 $ dvc metrics diff
 Path          Metric    HEAD      workspace  Change
 metrics.json  AUC       0.763981  0.801807   0.037826
@@ -106,7 +106,7 @@ to compare and pick the best performing experiment.
 First, let's imagine we have a simple [stage](/doc/command-reference/run) that
 produces an `eval.json` metrics file:
 
-```dvc
+```cli
 $ dvc stage add -n evaluate -d code/evaluate.py -M eval.json \
                 python code/evaluate.py
 
@@ -120,7 +120,7 @@ $ dvc repro
 Now let's print metrics values that we are tracking in this
 <abbr>project</abbr>, using `dvc metrics show`:
 
-```dvc
+```cli
 $ dvc metrics show
         eval.json:
                 AUC: 0.66729
@@ -131,7 +131,7 @@ $ dvc metrics show
 When there are metrics file changes (before committing them with Git), the
 `dvc metrics diff` command shows the difference between metrics values:
 
-```dvc
+```cli
 $ dvc metrics diff
 
 Path       Metric    HEAD     workspace  Change

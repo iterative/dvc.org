@@ -84,7 +84,7 @@ epoch,accuracy,loss
 4,0.9882333278656006,0.041892342269420624
 ```
 
-```dvc
+```cli
 $ dvc plots show logs.csv
 file:///Users/usr/src/myclassifier/logs.html
 ```
@@ -93,7 +93,7 @@ file:///Users/usr/src/myclassifier/logs.html
 
 Changing the y-axis to _accuracy_:
 
-```dvc
+```cli
 $ dvc plots modify logs.csv -y accuracy
 $ dvc plots show logs.csv
 file:///Users/usr/src/myclassifier/logs.html
@@ -113,7 +113,7 @@ plots:
 
 Changing the plot `title` and `x-label`:
 
-```dvc
+```cli
 $ dvc plots modify logs.csv --title Accuracy -x epoch --x-label Epoch
 $ dvc plots show logs.csv
 file:///Users/usr/src/myclassifier/logs.html
@@ -137,7 +137,7 @@ plots:
 Something like `dvc stage add --plots file.csv ...` assigns the default
 template, which needs to be changed in many cases. This command can do so:
 
-```dvc
+```cli
 $ dvc plots modify classes.csv --template confusion
 ```
 
@@ -147,7 +147,7 @@ Let's take an example `evaluate` stage which has `logs.csv` as an output. We can
 use `dvc plots modify` to convert the `logs.csv` output file into a plots file,
 and then confirm the changes that happened in `dvc.yaml`:
 
-```dvc
+```cli
 $ dvc plots modify logs.csv
 ```
 
