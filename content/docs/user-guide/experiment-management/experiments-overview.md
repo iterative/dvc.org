@@ -74,9 +74,9 @@ begin using DVC Experiments. Now you can move on to [running experiments][run]
 
 ## Work with DVC Experiments from a GUI
 
-DVC Experiments can be used directly [from the Visual Studio Code IDE], or
-online with [Iterative Studio] -- the web UI that integrates all of our data
-science tools.
+DVC Experiments can be used directly [from the Visual Studio Code IDE] or online
+with [Iterative Studio], the web UI that integrates all of our data science
+tools.
 
 [from the visual studio code ide]: /doc/vs-code-extension
 [iterative studio]: /doc/studio
