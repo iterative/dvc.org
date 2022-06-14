@@ -212,7 +212,7 @@ dependent stages become invalidated. However, this is usually not we want from
 hyperparameter dependencies.
 
 If the `train` stage depends on `learning_rate` parameter in `params.yaml`, but
-no other parameters, we don't want it to be invalidated by other parameters from
+no other parameters, we don't want it to be invalidated by other changes in
 the file. Support for hyperparameters allows this kind of granular dependencies.
 
 In order to create an hyperparameter dependency, we define the file and the name
@@ -221,6 +221,9 @@ of parameter in `dvc.yaml`:
 ```yaml
 
 ```
+
+Now, when you change the value of `learning_rate` in `params.yaml`, DVC
+invalidates the stages that depend on this parameter. 
 
 ### URL Dependencies
 
@@ -244,5 +247,17 @@ of parameter in `dvc.yaml`:
 
 ## Experiments with Pipelines
 
-- Why?
-- How?
+DVC 2.0 introduced experiment management with `dvc exp` set of commands. We
+have a dedicated part in the user's guide for [experiment management]. Here, we
+briefly touch the relationship between experiments and pipelines. 
+
+[experiment management]: 
+
+DVC uses pipelines machinery to run the experiments. Experiments have a special
+mechanism to modify the hyperparameter dependencies with `--set-param` option.
+After running them, experiment outputs are collected in a special Git commit. 
+
+If your workflow has more than one pipeline runs by modifying hyperparameters,
+you're better served with [experiment][experiment management] features, which
+automates most of the boilerplate.
+
