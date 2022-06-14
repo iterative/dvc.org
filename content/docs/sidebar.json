@@ -552,6 +552,10 @@
     ]
   },
   {
+    "slug": "vs-code-extension",
+    "label": "VS Code Extension"
+  },
+  {
     "label": "Studio",
     "slug": "studio",
     "source": "studio/index.md",
