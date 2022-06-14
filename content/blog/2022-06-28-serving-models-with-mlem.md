@@ -178,7 +178,7 @@ _Note:_ There is an experimental option to
 [deploy the model directly to Heroku](https://mlem.ai/doc/get-started/deploying)
 although this functionality is experimental and may have breaking changes.
 
-### Custom API
+### Custom Python package
 
 Let's take a look at making a Python package and importing it into a
 [Flask](https://flask.palletsprojects.com/en/2.1.x/) app. To make the Python
