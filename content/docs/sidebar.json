@@ -16,6 +16,11 @@
       "windows",
       "linux",
       {
+        "label": "Virtual Studio Code",
+        "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+        "type": "external"
+      },
+      {
         "label": "Pre-release Version",
         "slug": "pre-release"
       },
@@ -23,7 +28,10 @@
         "label": "Shell Completion",
         "slug": "completion"
       },
-      "plugins"
+      {
+        "label": "IDE Plugins",
+        "slug": "ide-plugins"
+      }
     ]
   },
   {
