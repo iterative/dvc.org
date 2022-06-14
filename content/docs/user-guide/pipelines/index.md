@@ -212,8 +212,8 @@ dependent stages become invalidated. However, this is usually not we want from
 hyperparameter dependencies.
 
 If the `train` stage depends on `learning_rate` parameter in `params.yaml`, but
-no other parameters, we don't want it to be invalidated by other changes in
-the file. Support for hyperparameters allows this kind of granular dependencies.
+no other parameters, we don't want it to be invalidated by other changes in the
+file. Support for hyperparameters allows this kind of granular dependencies.
 
 In order to create an hyperparameter dependency, we define the file and the name
 of parameter in `dvc.yaml`:
@@ -223,15 +223,15 @@ of parameter in `dvc.yaml`:
 ```
 
 Now, when you change the value of `learning_rate` in `params.yaml`, DVC
-invalidates the stages that depend on this parameter. 
+invalidates the stages that depend on this parameter.
 
 ### URL Dependencies
 
 Other than local dependencies, DVC allows to define dependencies described by
 their URLs. There are two types of such dependencies.
 
-* Dependencies that are found in other DVC repositories. 
-* Dependencies that are in arbitrary URLs. 
+- Dependencies that are found in other DVC repositories.
+- Dependencies that are in arbitrary URLs.
 
 The first kind of these is defined by `dvc import`, and the second kind is via
 `dvc import-url`.
@@ -247,13 +247,12 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 ```
 
 This adds a `data.xml.dvc` file to the project you use, with the respective
-links to the other project. When that linked resource is changed, any stage
-that depends on the file are invalidated too. This feature allows to define
-pipelines spanning more than one DVC project. 
+links to the other project. When that linked resource is changed, any stage that
+depends on the file are invalidated too. This feature allows to define pipelines
+spanning more than one DVC project.
 
-The second kind of URL dependencies don't even have this requirement to have
-the files in a DVC project. You can add any resource as a dependency with its
-URL.
+The second kind of URL dependencies don't even have this requirement to have the
+files in a DVC project. You can add any resource as a dependency with its URL.
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
@@ -266,8 +265,6 @@ given URL.
 DVC supports many different kinds of URLs, please see `dvc import-url`
 reference for the full list.
 </admon>
-
-
 
 ## Outputs
 
@@ -289,17 +286,16 @@ reference for the full list.
 
 ## Experiments with Pipelines
 
-DVC 2.0 introduced experiment management with `dvc exp` set of commands. We
-have a dedicated part in the user's guide for [experiment management]. Here, we
-briefly touch the relationship between experiments and pipelines. 
+DVC 2.0 introduced experiment management with `dvc exp` set of commands. We have
+a dedicated part in the user's guide for [experiment management]. Here, we
+briefly touch the relationship between experiments and pipelines.
 
-[experiment management]: 
+[experiment management]:
 
 DVC uses pipelines machinery to run the experiments. Experiments have a special
 mechanism to modify the hyperparameter dependencies with `--set-param` option.
-After running them, experiment outputs are collected in a special Git commit. 
+After running them, experiment outputs are collected in a special Git commit.
 
 If your workflow has more than one pipeline runs by modifying hyperparameters,
 you're better served with [experiment][experiment management] features, which
 automates most of the boilerplate.
-
