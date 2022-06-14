@@ -3,16 +3,18 @@
 require('dotenv').config()
 const path = require('path')
 
-require('./config/prismjs/dvc')
-require('./config/prismjs/usage')
-require('./config/prismjs/dvctable')
+const makeFeedHtml = require('@dvcorg/gatsby-theme-iterative/plugins/utils/makeFeedHtml')
 
-const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
-const makeFeedHtml = require('./plugins/utils/makeFeedHtml')
-const { BLOG } = require('./src/consts')
-const { linkIcon } = require('./static/icons')
+
+const autoprefixer = require('autoprefixer')
+const customMedia = require('postcss-custom-media')
+const customProperties = require('postcss-custom-properties')
+const mixins = require('postcss-mixins')
+const colorMod = require('postcss-color-mod-function')
+
+const mixinsConfig = require('@dvcorg/gatsby-theme-iterative/config/postcss/mixins')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -27,130 +29,58 @@ const keywords = [
 ]
 
 const plugins = [
-  {
-    resolve: `gatsby-plugin-typescript`,
-    options: {
-      isTSX: true,
-      allExtensions: true
-    }
-  },
-  'gatsby-plugin-postcss',
-  'gatsby-plugin-react-helmet',
-  'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
   {
-    resolve: 'gatsby-theme-iterative-docs',
+    resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
-      remark: false
-    }
-  },
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'content',
-      path: path.join(__dirname, 'content')
+      remark: false,
+      simpleLinkerTerms: require('./content/linked-terms'),
+      cssBase: require.resolve(
+        './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
+      ),
+      postCssPlugins: [
+        require('postcss-nested'),
+        customMedia({
+          importFrom: './src/styles/media.css'
+        }),
+        mixins(mixinsConfig),
+        customProperties({
+          importFrom: [
+            './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
+          ],
+          disableDeprecationNotice: true
+        }),
+        colorMod({
+          importFrom: [
+            './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
+          ]
+        }),
+        autoprefixer
+      ]
     }
   },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'images',
-      path: path.join(__dirname, 'static', 'uploads')
+      path: path.join(__dirname, 'static', 'img')
     }
   },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
-      name: 'img',
-      path: path.join(__dirname, 'static')
+      name: 'images',
+      path: path.join(__dirname, 'static', 'uploads', 'images')
     }
   },
-  'gatsby-plugin-image',
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'avatars',
+      path: path.join(__dirname, 'static', 'uploads', 'avatars')
+    }
+  },
   'community-page',
-  {
-    resolve: 'gatsby-transformer-remark',
-    options: {
-      plugins: [
-        {
-          resolve: 'gatsby-remark-embedder',
-          options: {
-            customTransformers: [customYoutubeTransformer]
-          }
-        },
-        'gatsby-remark-dvc-linker',
-        {
-          resolve: 'gatsby-remark-args-linker',
-          options: {
-            icon: linkIcon,
-            // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
-            pathname: 'docs/command-reference'
-          }
-        },
-        {
-          resolve: 'gatsby-remark-prismjs',
-          options: {
-            noInlineHighlight: true,
-            languageExtensions: [
-              {
-                language: 'text',
-                definition: {}
-              }
-            ]
-          }
-        },
-        {
-          resolve: 'gatsby-remark-smartypants',
-          options: {
-            quotes: false
-          }
-        },
-        {
-          resolve: 'gatsby-remark-embed-gist',
-          options: {
-            includeDefaultCss: true
-          }
-        },
-        'gatsby-remark-relative-images',
-        'gatsby-remark-copy-linked-files',
-        'gatsby-remark-external-links',
-        {
-          resolve: 'gatsby-remark-autolink-headers',
-          options: {
-            enableCustomId: true,
-            isIconAfterHeader: true,
-            icon: linkIcon
-          }
-        },
-        {
-          resolve: 'gatsby-remark-images',
-          options: {
-            maxWidth: BLOG.imageMaxWidth,
-            withWebp: true,
-            quality: 90,
-            loading: 'auto'
-          }
-        },
-        'gatsby-remark-responsive-iframe',
-        'resize-image-plugin',
-        'external-link-plugin'
-      ]
-    }
-  },
-  {
-    resolve: 'gatsby-plugin-svgr',
-    options: {
-      ref: true
-    }
-  },
-  'gatsby-transformer-sharp',
-  {
-    resolve: 'gatsby-plugin-sharp',
-    options: {
-      defaults: {
-        placeholder: 'blurred'
-      }
-    }
-  },
   {
     resolve: 'gatsby-plugin-catch-links',
     options: {
@@ -254,21 +184,26 @@ const plugins = [
             }
           `,
           serialize: ({ query: { site, allBlogPost } }) => {
-            return allBlogPost.nodes.map(node => {
-              const html = makeFeedHtml(node.htmlAst, site.siteMetadata.siteUrl)
-              return Object.assign(
-                {},
-                {
-                  /* eslint-disable-next-line @typescript-eslint/naming-convention */
-                  custom_elements: [{ 'content:encoded': html }],
-                  title: node.title,
-                  date: node.date,
-                  description: node.description,
-                  guid: site.siteMetadata.siteUrl + node.slug,
-                  url: site.siteMetadata.siteUrl + node.slug
-                }
-              )
-            })
+            return Promise.all(
+              allBlogPost.nodes.map(async node => {
+                const html = await makeFeedHtml(
+                  node.htmlAst,
+                  site.siteMetadata.siteUrl
+                )
+                return Object.assign(
+                  {},
+                  {
+                    /* eslint-disable-next-line @typescript-eslint/naming-convention */
+                    custom_elements: [{ 'content:encoded': html }],
+                    title: node.title,
+                    date: node.date,
+                    description: node.description,
+                    guid: site.siteMetadata.siteUrl + node.slug,
+                    url: site.siteMetadata.siteUrl + node.slug
+                  }
+                )
+              })
+            )
           },
           title
         }
@@ -286,29 +221,6 @@ const plugins = [
           }
     `
     }
-  },
-  {
-    resolve: 'gatsby-plugin-sentry',
-    options: {
-      dsn: process.env.SENTRY_DSN,
-      environment: process.env.NODE_ENV,
-      release: process.env.SOURCE_VERSION,
-      enabled: process.env.NODE_ENV === 'production',
-      ignoreErrors: [
-        /* When we deploy new version we delete assets which were generated for
-        the previous deployed version, but users can have opened old version in 
-        their browsers. If they hover some link on the page Gatsby.js will try
-        fetch old chunks and will get ChunkLoadError, but then will load static
-        page from the new deployed version and all will be ok. So we can just
-        ignore these type of errors */
-        'ChunkLoadError'
-      ],
-      /* There are some common urls which recomment to ignore. It's even 
-      mentioned in the official documentation: https://docs.sentry.io/platforms/javascript/#decluttering-sentry
-      In our case we just ignore all errors from the browser's extensions,
-      because we can't influence on then somehow. */
-      blacklistUrls: [/extensions\//i, /^chrome:\/\//i]
-    }
   }
 ]
 
@@ -319,6 +231,7 @@ if (process.env.ANALYZE) {
 }
 
 module.exports = {
+  trailingSlash: 'never',
   plugins,
   siteMetadata: {
     description,

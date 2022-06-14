@@ -1,6 +1,6 @@
 # exp init
 
-Quickly setup any project to use [DVC Experiments].
+Quickly create or prepare any project to use [DVC Experiments].
 
 > Requires a <abbr>DVC repository</abbr>, created with `git init` and
 > `dvc init`.
@@ -18,38 +18,46 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 
 ## Description
 
-`dvc exp init` helps you get started with DVC Experiments quickly. It reduces
-boilerplate DVC procedures by creating a `dvc.yaml` file that assumes standard
-locations of your input data, <abbr>parameters</abbr>, source code, models,
-<abbr>metrics</abbr> and [plots](/doc/command-reference/plots). These locations
-can be customized through the [options](#options) below or via
-[configuration](/doc/command-reference/config#exp).
+This command helps you get started with DVC Experiments quickly. It reduces
+repetitive DVC procedures by creating a necessary `dvc.yaml` file, which assumes
+standard locations of your inputs (data, <abbr>parameters</abbr>, and source
+code) and outputs (models, <abbr>metrics</abbr>, and
+[plots](/doc/command-reference/plots)).
 
-Repository structure assumed by default:
+These locations can be customized through the [command options](#options) or via
+[configuration](/doc/command-reference/config#exp). Default project structure:
 
 ```
 ├── data/
 ├── metrics.json
 ├── models/
-├── params.yaml  # required
+├── params.yaml
 ├── plots/
 └── src/
 ```
 
-> Note that `dvc exp init` expects at least a `params.yaml` file present. DVC
-> reads it to find parameters to include in the [stage definition]. It can
-> however be omitted when using the `--explicit` and/or `-i` flags.
-
-You must always provide a command that runs your experiment(s). It can be given
-either directly [as an argument](#the-command-argument), or by using the
-`--interactive` (`-i`) mode which will prompt you for it. This command will be
+The only required argument is the terminal command that runs your experiment(s).
+It can be provided directly [as an argument](#the-command-argument) or by using
+the `--interactive` (`-i`) mode (which will prompt for it). The command will be
 wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
-Different types of stages are supported, such as `dl` (deep learning) which uses
-[DVCLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
+<admon type="tip">
 
-> `dvc exp init` is intended as a quick way to start running [DVC Experiments].
-> See the `dvc.yaml` specification for complex data pipelines.
+A special `--type` of stage is supported (`checkpoint`), which monitors
+[checkpoints] during training of ML models.
+
+</admon>
+
+`dvc exp init` also generates the boilerplate project structure, including input
+files/directories and directories needed for future outputs, or any locations
+determined in interactive mode.
+
+<admon type="info">
+
+`dvc exp init` is intended as a quick way to start running [DVC Experiments].
+See the `dvc.yaml` specification for more complex data pipelines.
+
+</admon>
 
 [stage definition]:
   /doc/user-guide/project-structure/pipelines-files#stage-entries
@@ -107,9 +115,6 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   </abbr>parameters</abbr> that your experiment depends on can be found.
   Overrides other configuration and default value (`params.yaml`).
 
-  > Note that `dvc exp init` will fail if the params file does not exist. This
-  > is because DVC reads it to find params to include in the [stage definition].
-
 - `--data` - set the path to the data file or directory that your experiment
   depends on can be found (if any). Overrides other configuration and default
   value (`data/`).
@@ -153,26 +158,24 @@ The easiest route is using interactive mode and answering a few questions:
 
 ```dvc
 $ dvc exp init --interactive
-This command will guide you to set up a train stage in dvc.yaml...
-
 Command to execute: python src/train.py
 
-Enter the paths for dependencies and outputs of the command.
-DVC assumes the following workspace structure:
-├── data
-├── metrics.json
-├── models
-├── params.yaml
-├── plots
-└── src
-
+Enter experiment dependencies.
 Path to a code file/directory [src, n to omit]: src/train.py
 Path to a data file/directory [data, n to omit]: data/features
-Path to a model file/directory [models, n to omit]: models/predict.h5
 Path to a parameters file [params.yaml, n to omit]:
+
+Enter experiment outputs.
+Path to a model file/directory [models, n to omit]: models/predict.h5
 Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: n
-...
+
+Creating dependencies: src/train.py and params.yaml
+Creating output directories: models
+Creating train stage in dvc.yaml
+
+Ensure your experiment command creates metrics.json and models/predict.h5.
+You can now run your experiment using "dvc exp run".
 ```
 
 In this example the code, data, and model locations were specified above to
@@ -190,7 +193,7 @@ train:
     - data/features
     - src/train.py
   params:
-    - epochs
+    - params.yaml:
   outs:
     - models/predict.h5
   metrics:

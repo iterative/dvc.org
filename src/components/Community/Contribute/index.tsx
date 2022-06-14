@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { ICommunitySectionTheme } from '../'
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import { useCommunityData } from '../../../utils/front/community'
 import * as sharedStyles from '../styles.module.css'
