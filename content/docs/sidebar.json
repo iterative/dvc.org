@@ -533,7 +533,8 @@
   {
     "label": "VS Code Extension",
     "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
-    "type": "external"
+    "type": "external",
+    "icon": "vscode"
   },
   {
     "label": "Studio",
