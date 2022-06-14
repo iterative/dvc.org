@@ -553,7 +553,8 @@
   },
   {
     "slug": "vs-code-extension",
-    "label": "VS Code Extension"
+    "label": "VS Code Extension",
+    "children": ["dvc-experiments", "data-management"]
   },
   {
     "label": "Studio",
