@@ -39,6 +39,10 @@ Make sure that you already have a
 to create a new account. Once you’re logged into your account, you should see a
 screen like this with some of the services GCP offers.
 
+_Note:_ Remember, GCP does have a
+[free tier](https://cloud.google.com/free/docs/gcp-free-tier) if you just want
+to try it out.
+
 ![GCP initial page](/uploads/images/2022-06-07/gcp_initial_page.png)
 
 From here, you'll need to create a new project. Search for "create a project"
@@ -78,7 +82,16 @@ Click the `Create Service Account` button to create a new service account that
 you'll use to connect to the DVC project in a bit. Now you can add the name and
 ID for this service account and keep all the default settings. We've chosen
 `bicycle-service-account` for the name and `bicycle-account` for the ID. Click
-`Done` and you'll be redirected to the `Service accounts` page.
+`Create and Continue` and it will show the permissions settings. Select `Owner`
+in the dropdown and click `Continue`.
+
+![service account permissions](/uploads/images/2022-06-07/gcp_service_account_permissions.png)
+
+Then add your user to have access to the service account and click `Done`.
+
+![service account user access](/uploads/images/2022-06-07/gcp_service_account_user_access.png)
+
+Finally, you'll be redirected to the `Service accounts` page.
 
 ![service account with name and ID](/uploads/images/2022-06-07/gcp_create_service_account.png)
 
@@ -127,12 +140,22 @@ model will be stored.
 In order for DVC to be able to push and pull data from the remote, you need to
 have valid GCP credentials.
 
-If you are using the GCP CLI already, you should be able to run
-`gcloud auth application-default login`. You can also authenticate with the
-service account we created earlier in a couple of ways with that credentials
-file we downloaded.
+If you are using the
+[GCP CLI (google-cloud-sdk)](https://cloud.google.com/sdk/docs/install-sdk)
+already, you should be able to run `gcloud auth application-default login`. This
+method doesn't require a service account.
 
-You can set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point
+You can also authenticate with the service account we created earlier in a
+couple of ways with that credentials file we downloaded.
+
+You can run the following command with your service account email.
+
+```dvc
+$ gcloud auth activate-service-account bicycle-service-account@tonal-history-154018.iam.gserviceaccount.com --key-file=../tonal-history-154018-e62a79baf90f.json
+```
+
+If you don't have the GCP CLI installed and you want to use the service account,
+you can set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point
 to the credentials file, like this:
 
 ```dvc
@@ -171,6 +194,10 @@ it can be accessed by cloning or forking the project repo, setting up the remote
 and running:
 
 `$ dvc pull`
+
+_Note:_ Depending on the authentication method being used, there might be some
+required extra steps, such as making sure users actually have the permissions
+read/write to the bucket.
 
 That’s it! Now you can connect any DVC project to a GCP storage bucket. If you
 run into any issues, make sure to check that your credentials are valid, check
