@@ -82,6 +82,8 @@ The extension also adds panes to the
 and [_Source Control_](https://code.visualstudio.com/Docs/editor/versioncontrol)
 views for managing all datasets and models in your DVC repository.
 
+[_Check out the feature video on Youtube!_](https://youtu.be/LHi3SWGD9nc)
+
 ## Experiment bookkeeping
 
 Quickly run new experiments and compare their resulting metrics in the
