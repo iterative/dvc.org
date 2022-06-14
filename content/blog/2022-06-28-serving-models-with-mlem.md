@@ -79,7 +79,7 @@ pretty good. So we'll take this model and get it ready to serve to production.
 First, we need to install the `MLEM` package with:
 
 ```dvc
-$ pip install mlem
+$ pip install 'mlem[fastapi]'
 ```
 
 Then, inside of the `train.py` script, we need to add the MLEM import to save
