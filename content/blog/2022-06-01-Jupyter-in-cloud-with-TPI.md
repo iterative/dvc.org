@@ -323,11 +323,11 @@ What makes TPI so powerful, is that it provides massive configurability without
 a vast amount of prerequisite knowledge.
 
 Once we are done with our prototyping, it would be particularly interesting to
-transform our notebook into an experiment pipeline [which we can move to the
-cloud with TPI](https://dvc.org/blog/local-experiments-to-cloud-with-tpi). A
-full-fledged pipeline makes it easier to run successive experiments and find the
-best performing model. Jupyter Notebook is a great tool for prototyping, but has
-its limits when it comes to versioning and reproducibility. Or,
+transform our notebook into an experiment pipeline
+[which we can move to the cloud with TPI](https://dvc.org/blog/local-experiments-to-cloud-with-tpi).
+A full-fledged pipeline makes it easier to run successive experiments and find
+the best performing model. Jupyter Notebook is a great tool for prototyping, but
+has its limits when it comes to versioning and reproducibility. Or,
 [as Andrey Cheptsov puts it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
 "Notebooks and MLOps; choose one."
 
