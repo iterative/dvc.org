@@ -196,9 +196,11 @@ from generic types (e.g., `s`/`m`/`l`/`xl`) to specific cloud machine types.
 This allows us to generalize these configurations and quickly switch from AWS to
 Azure, for example.
 
-Of particular interest here is the `spot = 0`, which tells TPI to provision spot
-instances instead of on-demand ones. At the time of writing, the on-demand
-hourly rate for this type of instance is $0.526. On the other hand, spot
+Of particular interest here is the `spot = 0`, which tells TPI to provision [spot
+instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) instead of on-demand ones. These instances use spare capacity from the cloud provider. While it may take longer for spot instances to become available, their cost is always lower than on-demand instances.
+
+At the time of writing, the on-demand
+hourly rate for the specified type of instance is $0.526. On the other hand, spot
 instances are only $0.15 per hour. With little to no effort, TPI allows us to
 reduce our cloud costs by 70%!
 
