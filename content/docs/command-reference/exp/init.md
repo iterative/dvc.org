@@ -102,10 +102,9 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `--type` - selects the type of the stage to create. Currently it provides two
   alternatives: `checkpoint` and `default` (no need to specify this one).
 
-  `dl` stages are intended for use in deep-learning scenarios, where metrics and
-  plots are tracked with [DVCLive](/doc/dvclive). This also supports logging
+  `checkpoint` supports logging
   [checkpoints](/doc/command-reference/exp/run#checkpoints) during the training
-  of DL models.
+  of models.
 
 - `--code` - set the path to the file or directory where the source code that
   your experiment depends on can be found (if any). Overrides other
@@ -135,7 +134,8 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 - `--live` - set the path to the directory where the metrics and plots
   [produced by DVCLive](https://dvc.org/doc/dvclive/dvclive-with-dvc#outputs)
-  will be found.
+  will be found. If `--live` is provided, it will override the default values
+  for `--metrics` and `--plots`.
 
 - `--explicit` - do not assume default locations of project dependencies and
   outputs. You'll have to provide specific locations via other options or
