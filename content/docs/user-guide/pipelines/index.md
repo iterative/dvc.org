@@ -212,8 +212,8 @@ dependent stages become invalidated. However, this is usually not we want from
 hyperparameter dependencies.
 
 If the `train` stage depends on `learning_rate` parameter in `params.yaml`, but
-no other parameters, we don't want it to be invalidated by other changes in
-the file. Support for hyperparameters allows this kind of granular dependencies.
+no other parameters, we don't want it to be invalidated by other changes in the
+file. Support for hyperparameters allows this kind of granular dependencies.
 
 In order to create an hyperparameter dependency, we define the file and the name
 of parameter in `dvc.yaml`:
@@ -223,21 +223,21 @@ of parameter in `dvc.yaml`:
 ```
 
 Now, when you change the value of `learning_rate` in `params.yaml`, DVC
-invalidates the stages that depend on this parameter. 
+invalidates the stages that depend on this parameter.
 
 ### URL Dependencies
 
 Other than local dependencies, DVC allows to define dependencies described by
 their URLs. There are two types of such dependencies.
 
-* Dependencies that are found in other DVC repositories. 
-* Dependencies that are in arbitrary URLs. 
+- Dependencies that are found in other DVC repositories.
+- Dependencies that are in arbitrary URLs.
 
 The first kind of these is defined by `dvc import`, and the second kind is via
 `dvc import-url`.
 
-When you have resources in other DVC projects that you want to employ in the
-current one, you add them to the project as follows.
+When you have files in other DVC projects that you want to employ in the current
+one, you add them to the project as follows.
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started \
@@ -247,13 +247,12 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 ```
 
 This adds a `data.xml.dvc` file to the project you use, with the respective
-links to the other project. When that linked resource is changed, any stage
-that depends on the file are invalidated too. This feature allows to define
-pipelines spanning more than one DVC project. 
+links to the other project. When that linked resource is changed, any stage that
+depends on the file are invalidated too. This feature allows to define pipelines
+spanning more than one DVC project.
 
-The second kind of URL dependencies don't even have this requirement to have
-the files in a DVC project. You can add any resource as a dependency with its
-URL.
+The second kind of URL dependencies don't even have this requirement to have the
+files in a DVC project. You can add any resource as a dependency with its URL.
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
@@ -267,16 +266,36 @@ DVC supports many different kinds of URLs, please see `dvc import-url`
 reference for the full list.
 </admon>
 
-
-
 ## Outputs
 
-- Why?
-- How?
+A pipeline is built to create outputs like models, intermediate data, plots, or
+metrics. These outputs define the connection between stages and if a stage's
+dependencies are newer than its outputs, the stage is considered invalid.
 
-### File, Directory and Model Outputs
+Outputs are produced using stage commands. DVC doesn't make any assumption
+regarding how these outputs are produced so you can use any shell command to
+produce outputs.
 
-### Metrics Outputs
+From more general to more specific, the types of outputs are as follows:
+
+- **Files and Directories**: Both data to feed to intermediate stages, and
+  models that are produced as final outputs are within this type. DVC tracks the
+  changes in these files but doesn't make any assumptions regarding their use.
+
+- **Metrics**: DVC pipelines has special support for metrics files. These files
+  contain model comparison metrics that are output after training, validation or
+  testing phases of model production. DVC allows to compare produced metrics
+  with one another using `dvc metrics diff` and presents the results as a table
+  with `dvc metrics show`.
+
+- **Plots**: A more specialized kind of metrics files can be used to create plot
+  graphs. In contrast to metrics files, plots are used to present progression of
+  more than one training step, like epochs in deep learning projects. DVC
+  supports to supply plots files to Vega-Lite and present them on browser with
+  `dvc plots show`.
+
+- **Image Plots**: Another kind of output is plots produced by the commands.
+  These are standard image files that can be shown on browsers.
 
 ### Plots Outputs
 
@@ -289,17 +308,16 @@ reference for the full list.
 
 ## Experiments with Pipelines
 
-DVC 2.0 introduced experiment management with `dvc exp` set of commands. We
-have a dedicated part in the user's guide for [experiment management]. Here, we
-briefly touch the relationship between experiments and pipelines. 
+DVC 2.0 introduced experiment management with `dvc exp` set of commands. We have
+a dedicated part in the user's guide for [experiment management]. Here, we
+briefly touch the relationship between experiments and pipelines.
 
-[experiment management]: 
+[experiment management]:
 
 DVC uses pipelines machinery to run the experiments. Experiments have a special
 mechanism to modify the hyperparameter dependencies with `--set-param` option.
-After running them, experiment outputs are collected in a special Git commit. 
+After running them, experiment outputs are collected in a special Git commit.
 
 If your workflow has more than one pipeline runs by modifying hyperparameters,
 you're better served with [experiment][experiment management] features, which
 automates most of the boilerplate.
-
