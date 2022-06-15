@@ -196,13 +196,15 @@ from generic types (e.g., `s`/`m`/`l`/`xl`) to specific cloud machine types.
 This allows us to generalize these configurations and quickly switch from AWS to
 Azure, for example.
 
-Of particular interest here is the `spot = 0`, which tells TPI to provision [spot
-instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html) instead of on-demand ones. These instances use spare capacity from the cloud provider. While it may take longer for spot instances to become available, their cost is always lower than on-demand instances.
+Of particular interest here is the `spot = 0`, which tells TPI to provision
+[spot instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
+instead of on-demand ones. These instances use spare capacity from the cloud
+provider. While it may take longer for spot instances to become available, their
+cost is always lower than on-demand instances.
 
-At the time of writing, the on-demand
-hourly rate for the specified type of instance is $0.526. On the other hand, spot
-instances are only $0.15 per hour. With little to no effort, TPI allows us to
-reduce our cloud costs by 70%!
+At the time of writing, the on-demand hourly rate for the specified type of
+instance is $0.526. On the other hand, spot instances are only $0.15 per hour.
+With little to no effort, TPI allows us to reduce our cloud costs by 70%!
 
 <admon type="tip">
 
@@ -289,7 +291,7 @@ instead, simply remove or modify
 
 As you can see, the possibilities for the scripts we can run through TPI are
 extensive. We could add commands to clone a Git repository, for example. Or we
-could pull data in from a [DVC](https://dvc.org/) remote. This flexibility
+could pull data in from a [DVC remote](https://dvc.org/doc/command-reference/remote#remote). This flexibility
 allows us to tailor the instance TPI provisions precisely to our needs.
 
 ```hcl
