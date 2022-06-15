@@ -1,23 +1,32 @@
 ---
 title: 'Get Started: Data and Model Versioning'
-description: 'Get started with data and model versioning in DVC. Learn how to use a
-regular Git workflow for datasets and ML models, without storing large files in
-Git.'
+description: 'Get started with data and model versioning in DVC. Learn how to
+use a regular Git workflow for datasets and ML models, without storing large
+files in Git.'
 ---
 
 # Get Started: Data Versioning
 
 How cool would it be to make Git handle arbitrarily large files and directories
-with the same performance it has with small code files? Imagine doing a
-`git clone` and seeing data files and machine learning models in the workspace.
+with the same performance it has with small code files? Imagine cloning a
+repository and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
-`git checkout`.
-
-The foundation of DVC consists of a few commands you can run along with `git` to
-track large files, directories, or ML model files. Think "Git for data". Read on
-or watch our video to learn about versioning data with DVC!
+`git checkout`. Think "Git for data".
 
 https://youtu.be/kLKBcPonMYw
+
+<admon icon="fire">
+
+**New!** You can manage you data and ML models with DVC directly [from Visual
+Studio Code], a leading IDE in the industry.
+
+[from visual studio code]: /doc/vs-code-extension
+
+</admon>
+
+The foundation of DVC consists of a few commands you can run along with `git` to
+track large files, directories, or ML model files. Read on or watch the video
+above to learn more!
 
 <details>
 
