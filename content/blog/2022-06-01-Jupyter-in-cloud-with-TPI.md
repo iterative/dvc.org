@@ -71,9 +71,10 @@ SageMaker:
 
 Iterative provides an alternative to these services in the form of
 [TPI (Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative).
-This [Terraform](https://www.terraform.io/) plugin lets us quickly launch tasks
-such as Jupyter workspaces on any cloud provider without needing to be a cloud
-expert.
+This [Terraform](https://www.terraform.io/) plugin lets you extend the
+capabilities of your laptop by connecting it to endless cloud resources. We can
+use TPI to launch a wide variety of tasks without needing to be a cloud expert.
+Launching Jupyter workspaces is one such an application.
 
 Here are four benefits to TPI that might pique your interest:
 
@@ -291,8 +292,10 @@ instead, simply remove or modify
 
 As you can see, the possibilities for the scripts we can run through TPI are
 extensive. We could add commands to clone a Git repository, for example. Or we
-could pull data in from a [DVC remote](https://dvc.org/doc/command-reference/remote#remote). This flexibility
-allows us to tailor the instance TPI provisions precisely to our needs.
+could pull data in from a
+[DVC remote](https://dvc.org/doc/command-reference/remote#remote). This
+flexibility allows us to tailor the instance TPI provisions precisely to our
+needs.
 
 ```hcl
 output "urls" {
@@ -306,64 +309,33 @@ tunnel URLs and inject them into an output value. Terraform will print these
 outputs whenever we `refresh`. In this case, we get URLs to access the Jupyter
 server.
 
-# Next steps: rethink this approach
+# Conclusions
 
 Great! After going through this guide, we know how to use TPI to launch Jupyter
 servers with just a few commands. This means we are no longer limited by the
-constraints of our local machine for prototyping machine learning projects!
+constraints of our local machine for prototyping machine learning projects.
 
-"So, where do we take this limitless work of wonder from here on out?"
+"So, where do we go from here?"
 
-This is the point at which I'm afraid I'll have to rain on our parade a little
-bit. In all honesty, I would generally disadvise from running Jupyter Notebooks
-in this manner.
+Now that we know how to use TPI for provisioning Jupyter workspaces, we can use
+the same approach to launch any other cloud tasks related to machine learning.
+What makes TPI so powerful, is that it provides massive configurability without
+a vast amount of prerequisite knowledge.
 
-<admon type="tip">
-
-The following section is quite opinionated! In the end, you are the person who's
-best able to decide whether Jupyter Notebooks in a cloud instance make sense in
-your context. No hard feelings if you completely ignore me from here on out!
-
-</admon>
-
-Jupyter Notebooks are an excellent tool for quick and easy prototyping. They do,
-however, have a few downsides. For one, they are difficult to version properly.
-As a result, it can be challenging to collaborate on one project without model
-versions running out of sync. Moreover, _runs_ of the project are not
-sufficiently reproducible: they require too many manual actions.
-[As Andrey Cheptsov puts it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
+Once we are done with our prototyping, it would be particularly interesting to
+transform our notebook into an experiment pipeline [which we can move to the
+cloud with TPI](https://dvc.org/blog/local-experiments-to-cloud-with-tpi). A
+full-fledged pipeline makes it easier to run successive experiments and find the
+best performing model. Jupyter Notebook is a great tool for prototyping, but has
+its limits when it comes to versioning and reproducibility. Or,
+[as Andrey Cheptsov puts it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
 "Notebooks and MLOps; choose one."
 
-These downsides don't matter too much while only prototyping. But prototyping is
-something that is typically done on our local machine. Once we get to a point
-where our needs exceed the capacity of our laptop, the project is likely to be
-of such a scope that we would benefit from an automated, well-versioned,
-reproducible pipeline.
-
-That's why I recommend the following: rather than take the effort (however
-small, thanks to TPI) to set up a Jupyter server, take the effort to transform
-the Notebook into an automated pipeline. This will make it much easier to do
-multiple runs and compare results against each other. Once we have that
-pipeline, we can use TPI to move it to the cloud!
-
-"How do I go about this?" you ask?
-
-We've got you covered! The
+If you want to learn how to transform your notebook into an experiment pipeline,
+we've got you covered! The
 [Iterative Tools for Data Scientists & Analysts](https://learn.iterative.ai/course/data-scientist-path)
-course covers this transformation extensively and is entirely free to follow.
-It's easier to accomplish than it may seem at first.
-
-Of course, this whole exercise wasn't for naught. We still explored how to use
-TPI to significant effect, and there are many use cases in which it will be
-helpful as a tool.
-[This one](https://dvc.org/blog/local-experiments-to-cloud-with-tpi), for
-example, where we use TPI to move local machine learning experiments to the
-cloud. You can follow that guide to get an idea of moving pipelines to the
-cloud!
-
-Do you vehemently disagree with me about running Jupyter on a cloud instance? Am
-I just not understanding how it's the perfect solution? Let me know in the
-comments! 😄
+course covers this topic extensively and is entirely free to follow. It's easier
+to accomplish than it may seem at first.
 
 <!-- ## Downsides to Google Colab
 
