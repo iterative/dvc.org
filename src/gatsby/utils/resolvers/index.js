@@ -55,25 +55,6 @@ function sourcePathResolver({
   }
 }
 
-// Re-used field components
-
-// This function defines a filter that operates on `fields` instead of the
-// node's root. It's useful for nodes we don't fully control, like ImageSharp.
-function makeFieldsFilter(sourcePath) {
-  return {
-    fields: {
-      sourcePath: {
-        eq: sourcePath
-      }
-    }
-  }
-}
-
-const imageResolverSettings = {
-  type: 'ImageSharp',
-  makeFilter: makeFieldsFilter
-}
-
 // Pre-made fields
 
 const resolvePostAuthor = sourcePathResolver({
@@ -81,19 +62,7 @@ const resolvePostAuthor = sourcePathResolver({
   resolvePath: value => path.join('authors', value) + '.md'
 })
 
-const resolvePostPicture = sourcePathResolver({
-  resolvePath: value => path.join('images', value),
-  ...imageResolverSettings
-})
-
-const resolveAuthorAvatar = sourcePathResolver({
-  resolvePath: value => path.join('avatars', value),
-  ...imageResolverSettings
-})
-
 module.exports = {
   sourcePathResolver,
-  resolveAuthorAvatar,
-  resolvePostPicture,
   resolvePostAuthor
 }

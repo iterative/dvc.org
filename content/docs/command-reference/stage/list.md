@@ -6,7 +6,7 @@ List <abbr>stages</abbr> in the project.
 
 ```usage
 usage: dvc stage list [-h] [-q | -v]
-                      [-R] [--all] [--fail] [--names-only]
+                      [-R] [--all] [--fail] [--name-only]
                       [targets ...]
 
 positional arguments:
@@ -20,7 +20,7 @@ positional arguments:
 ## Description
 
 Prints a list of stages including their names and a one-line description (which
-can be omitted using `--names-only`). This command is useful for discovering or
+can be omitted using `--name-only`). This command is useful for discovering or
 reviewing what stages are present in the project without having to examine
 `dvc.yaml` files manually.
 
@@ -42,7 +42,7 @@ important characteristics (dependencies, outputs, or metrics).
   - `dvc stage list modeling/dvc.yaml:prepare`: Stage(s) from a specific
     `dvc.yaml` file
 
-- `--names-only` - only lists stage names. Useful for scripting purposes (DVC
+- `--name-only` - only lists stage names. Useful for scripting purposes (DVC
   uses it for shell tab completion).
 
 - `-R`, `--recursive` - determines the files to list by searching each target

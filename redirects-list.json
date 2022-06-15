@@ -34,6 +34,8 @@
   "^/download/linux-rpm/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
+  "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
+
   "^/doc/get-started(/.*)?$                                                               /doc/start",
   "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
   "^/doc/start/data-access$                                                               /doc/start/data-and-model-access",
@@ -41,7 +43,7 @@
   "^/doc/start/data-and-model-access(/.*)?$                                               /doc/start/data-management/access$1 302",
   "^/doc/start/data-pipelines(/.*)?$                                                      /doc/start/data-management/pipelines$1 302",
   "^/doc/start/metrics-parameters-plots(/.*)?$                                            /doc/start/data-management/metrics-parameters-plots$1 302",
-  "^/doc/start/sharing-data-and-model-files$                                              /doc/start/data-and-model-versioning#storing-and-sharing 303",
+  "^/doc/start/sharing-data-and-model-files$                                              /doc/start/data-and-model-versioning#storing-and-sharing 302",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
   "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-model-files/tutorial",
@@ -49,6 +51,8 @@
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/use-cases/shared-development-server$                                             /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
+  "^/doc/use-cases/data-registries$                                                       /doc/use-cases/data-registry",
+
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",
@@ -61,6 +65,7 @@
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
   "^/doc/user-guide/contributing(/.*)$                                                    /doc/contributing$1",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
+
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
   "^/doc/command-reference/completion$                                                    /doc/install/completion 302",
   "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",
@@ -73,6 +78,8 @@
   "^/doc/command-reference/ls$                                                            /doc/command-reference/list 302",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
+
+  "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
   "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",

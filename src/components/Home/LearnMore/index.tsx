@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import {
   scrollIntoLayout,
   ease
-} from 'gatsby-theme-iterative-docs/src/utils/front/scroll'
+} from '@dvcorg/gatsby-theme-iterative/src/utils/front/scroll'
 
 import * as styles from './styles.module.css'
 
