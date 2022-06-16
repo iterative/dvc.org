@@ -13,7 +13,7 @@ def params_show(
 ) -> Dict:
 ```
 
-#### Usage:
+## Usage:
 
 ```py
 import dvc.api
@@ -55,7 +55,7 @@ See the options below to restrict the <abbr>params</abbr> retrieved.
 - **`deps`**: (bool, optional): Whether to retrieve only <abbr>params</abbr>
   that are <abbr>stage</abbr> dependencies or not. Defaults to `False`.
 
-## Example: No arguments.
+## Example: default behavior (no filters)
 
 > Working on https://github.com/iterative/example-get-started
 
@@ -84,7 +84,7 @@ print(json.dumps(params, indent=4))
 }
 ```
 
-## Example: Filtering with `stages`.
+## Example: Filter by `stages`
 
 > Working on https://github.com/iterative/example-get-started
 
@@ -129,7 +129,7 @@ print(json.dumps(params, indent=2))
 }
 ```
 
-## Example: Using `rev`.
+## Example: Specify a project version
 
 > Working on https://github.com/iterative/example-get-started
 
@@ -158,12 +158,12 @@ print(json.dumps(params, indent=2))
 }
 ```
 
-## Example: Using `targets`.
+## Example: Filter by parameter files
 
-> Working on `multi-params-files` folder of
-> https://github.com/iterative/pipeline-conifguration
+> Working on
+> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
 
-You can pass a single target:
+You can pass a single param file as target:
 
 ```py
 import json
@@ -229,7 +229,7 @@ print(json.dumps(params, indent=2))
 }
 ```
 
-## Example: Git URL as `repo`.
+## Example: Show parameters from a remote DVC repository
 
 ```py
 import json
