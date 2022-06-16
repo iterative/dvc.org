@@ -489,6 +489,10 @@
     "source": "api-reference/index.md",
     "children": [
       {
+        "slug": "params_show",
+        "label": "params_show()"
+      },
+      {
         "slug": "get_url",
         "label": "get_url()"
       },

@@ -424,14 +424,12 @@ $ dvc run -n train \
           python train_model.py 20200105 model.p
 ```
 
-`train_model.py` will include some code to open and parse the parameters:
+`train_model.py` can use the `dvc.api.params_show()` to parse the parameters:
 
 ```py
-from ruamel.yaml import YAML
+import dvc.api
 
-with open("params.yaml", 'r') as fd:
-    yaml = YAML()
-    params = yaml.load(fd)
+params = dvc.api.params_show()
 
 seed = params['seed']
 lr = params['train']['lr']
