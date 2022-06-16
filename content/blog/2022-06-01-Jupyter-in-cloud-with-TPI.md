@@ -328,24 +328,3 @@ we've got you covered! The
 [Iterative Tools for Data Scientists & Analysts](https://learn.iterative.ai/course/data-scientist-path)
 course covers this topic extensively and is entirely free to follow. It's easier
 to accomplish than it may seem at first.
-
-<!-- ## Downsides to Google Colab
-
-https://analyticsindiamag.com/explained-5-drawback-of-google-colab/#:~:text=Limited%20Space%20%26%20Time%3A%20The%20Google,the%20complex%20functions%20to%20execute.
-https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemaker-to-saturn-cloud-675f0a51ece1
-
-- Closed environment, only pre-approved packages
-- Storage constraints: coopts Google Drive storage
-- Entire GDrive accessible in Colab, so sharing exposes a lot of data
-- Pricing https://colab.research.google.com/signup#
-- Limits to specifications wrt memory and processing power
-- Reproducibility/versioning difficult
-- Not really Jupyter; renamed stuff
-- No real-time collaboration
-
-## Downsides to Amazon SageMaker
-
-https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemaker-to-saturn-cloud-675f0a51ece1
-
-- All data stored on S3 (problem with large datasets, e.g. images or videos)
-- Download data for every training instance (100Gb takes 20 minutes) -->
