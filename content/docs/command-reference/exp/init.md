@@ -100,8 +100,9 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   `dvc exp run`).
 
 - `--type` - selects the type of the stage to create. Currently it provides two
-  alternatives: `checkpoint` and `default` (no need to specify this one).
-
+  alternatives: `checkpoint` (supports logging
+  [checkpoints](/doc/command-reference/exp/run#checkpoints) during model
+  training) and `default` (no need to specify this).
 
 - `--code` - set the path to the file or directory where the source code that
   your experiment depends on can be found (if any). Overrides other
