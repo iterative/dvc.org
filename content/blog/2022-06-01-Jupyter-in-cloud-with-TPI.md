@@ -7,9 +7,9 @@ description: >
 descriptionLong: >
   We can use TPI to quickly and cheaply provision cloud instances. This guide
   will explore how to use TPI to launch a Jupyter server on an Amazon Web
-  Services EC2 instance at the lowest possible cost. With minor modifications,
-  you can also launch instances on Google Cloud Platform, Microsoft Azure, or
-  Kubernetes.
+  Services EC2 instance at the lowest possible cost. This bring-your-own-cloud
+  approach can launch instances on Google Cloud, Microsoft Azure, or Kubernetes
+  with minor modifications.
 picture: 2022-06-01/tpi-jupyter-cover.jpeg
 author: rob_dewit
 # commentsUrl: TODO
@@ -63,7 +63,7 @@ SageMaker:
 - **Cost:** they are expensive to use. You're not only paying for the hardware
   but also for using the platform.
 - **Walled garden:** they tend to be baked into the vendor's ecosystem. It's
-  difficult and sometimes impossible to use infrastructure components from
+  difficult and sometimes impossible to use infrastructure components such as databases and VPSs from
   different vendors in conjunction with each other.
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM and caps uptime at 12
@@ -111,15 +111,18 @@ involved. Make sure you
 [understand AWS pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome
 charges to your credit card.
 
-</admon>
+You can use AWS EC2's `t2.micro` instances with `machine = "s"`. These instances
+are included in the 12 months free tier. </admon>
 
 # Guide
 
 Once we have cloned the repository and navigated to it in our terminal, we only
-need to run two commands. First, we use `terraform init` to initialize our
-configuration files. After that, we simply run `terraform apply` to launch our
-Jupyter server. That's all there is to it. TPI works its magic, and within a few
-minutes, we will have our Jupyter environment ready.
+need to run three commands. First, we use `terraform init` to initialize our
+configuration files. Then, although strictly speaking optional, we use
+`export TF_LOG_PROVIDER=INFO` to get better progress logging in our terminal.
+After that, we simply run `terraform apply` to launch our Jupyter server. That's
+all there is to it. TPI works its magic, and within a few minutes, we will have
+our Jupyter environment ready.
 
 "But wait, how do we access it?"
 
@@ -191,8 +194,9 @@ resource "iterative_task" "jupyter_server" {
 
 The second part of the configuration is perhaps the most interesting. Here we
 provide the specifications for the instance Terraform should provision for us.
-In this case, we would like a medium CPU and an NVIDIA T4 GPU, along with a
-125GB disk. Because machine types vary between cloud vendors,
+In this case, we would like a medium CPU and an
+[NVIDIA T4 GPU](https://aws.amazon.com/blogs/aws/now-available-ec2-instances-g4-with-nvidia-t4-tensor-core-gpus/),
+along with a 125GB disk. Because machine types vary between cloud vendors,
 [TPI does some translation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
 from generic types (e.g., `s`/`m`/`l`/`xl`) to specific cloud machine types.
 This allows us to generalize these configurations and quickly switch from AWS to
