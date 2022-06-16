@@ -229,26 +229,13 @@ directory.
 
 ```bash
 #!/bin/bash
-set -euo pipefail
-if test "$GITHUB_USER" != username; then
-  # SSH debugging
-  trap 'echo script error: waiting for debugging over SSH. Run \"terraform destroy\" to stop waiting; sleep inf' ERR
-  mkdir -p "$HOME/.ssh"
-  curl -fsSL "https://github.com/$GITHUB_USER.keys" >> "$HOME/.ssh/authorized_keys"
-fi
-export CUDACXX=/usr/local/cuda/bin/nvcc
-export DEBIAN_FRONTEND=noninteractive
-sed -ri 's#^(APT::Periodic::Unattended-Upgrade).*#\1 "0";#' /etc/apt/apt.conf.d/20auto-upgrades
-dpkg-reconfigure unattended-upgrades
 # install dependencies
-pip3 install $${QUIET:+-q} jupyterlab notebook matplotlib ipywidgets tensorflow==2.8.0 tensorboard tensorflow_datasets
-(curl -fsSL https://deb.nodesource.com/setup_16.x | bash -) >/dev/null
-apt-get install -y $${QUIET:+-qq} nodejs
+pip install jupyterlab notebook matplotlib ipywidgets tensorflow tensorboard tensorflow_datasets
+apt-get install -yq nodejs
+npm i ngrok
 
 # start tunnel
 export JUPYTER_TOKEN="$(uuidgen)"
-pushd "$(mktemp -d --suffix dependencies)"
-npm i ngrok
 npx ngrok authtoken "$NGROK_TOKEN"
 (node <<TUNNEL
 const fs = require('fs');
