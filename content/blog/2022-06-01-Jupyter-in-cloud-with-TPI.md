@@ -88,7 +88,8 @@ Here are four benefits to TPI that might pique your interest:
 
 The guide below will explore how to launch a Jupyter server using TPI, allowing
 you to run notebooks on cloud instances. While we will be using AWS in our
-example, you can use Azure or GCP with minor modifications.
+example, you can use Azure or GCP with
+[minor modifications](https://github.com/iterative/blog-tpi-jupyter/tree/generic).
 
 # Prerequisites
 
