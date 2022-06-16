@@ -102,7 +102,6 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `--type` - selects the type of the stage to create. Currently it provides two
   alternatives: `checkpoint` and `default` (no need to specify this one).
 
-
 - `--code` - set the path to the file or directory where the source code that
   your experiment depends on can be found (if any). Overrides other
   configuration and default value (`src/`).
