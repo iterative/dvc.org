@@ -28,7 +28,7 @@ Retrieves the <abbr>params</abbr> tracked in a <abbr>DVC repository</abbr>.
 Without arguments, this function will retrieve all <abbr>params</abbr> from all
 parameter files, for the current revision.
 
-See the options bellow to restrict the <abbr>params</abbr> retrieved.
+See the options below to restrict the <abbr>params</abbr> retrieved.
 
 ## Parameters
 
@@ -46,10 +46,11 @@ See the options bellow to restrict the <abbr>params</abbr> retrieved.
   retrieve <abbr>params</abbr> from. Defaults to `None`. If no stages are
   provided, all parameters from all stages will be retrieved.
 
-- **`rev`**: (str, optional): Name of the `Git revision`\_ to retrieve
-  <abbr>params</abbr> from. Example of git revision can be a branch or tag name,
-  a commit hash or a dvc experiment name. Defaults to `HEAD`. If `repo` is not a
-  Git repo, this option is ignored.
+- **`rev`**: (str, optional): Name of the Git
+  [revision](https://git-scm.com/docs/revisions) to retrieve <abbr>params</abbr>
+  from. Example of git revision can be a branch or tag name, a commit hash or a
+  dvc experiment name. Defaults to `HEAD`. If `repo` is not a Git repo, this
+  option is ignored.
 
 - **`deps`**: (bool, optional): Whether to retrieve only <abbr>params</abbr>
   that are <abbr>stage</abbr> dependencies or not. Defaults to `False`.
@@ -93,7 +94,7 @@ print(json.dumps(params, indent=4))
 import json
 import dvc.api
 params = dvc.api.get_params(stages="prepare")
-print(json.dumps(params, indent=4))
+print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -111,7 +112,7 @@ Or an iterable of strings:
 import json
 import dvc.api
 params = dvc.api.get_params(stages=["prepare", "train"])
-print(json.dumps(params, indent=4))
+print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -136,7 +137,7 @@ print(json.dumps(params, indent=4))
 import json
 import dvc.api
 params = dvc.api.get_params(rev="tune-hyperparams")
-print(json.dumps(params, indent=4))
+print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -167,9 +168,8 @@ You can pass a single target:
 ```py
 import json
 import dvc.api
-params = dvc.api.params_show(
-  "params.yaml")
-print(json.dumps(params, indent=4))
+params = dvc.api.params_show("params.yaml")
+print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -197,7 +197,7 @@ import json
 import dvc.api
 params = dvc.api.params_show(
   "configs/params_dev.yaml", "configs/params_prod.yaml")
-print(json.dumps(params, indent=4))
+print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -236,7 +236,7 @@ import json
 import dvc.api
 params = dvc.api.get_params(
     repo="https://github.com/iterative/demo-fashion-mnist")
-print(json.dumps(params, indent=4))
+print(json.dumps(params, indent=2))
 ```
 
 ```json
