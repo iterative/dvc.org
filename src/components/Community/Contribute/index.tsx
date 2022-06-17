@@ -127,7 +127,8 @@ const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                 </Link>
               }
             >
-              See the Contributing to the Documentation guide if you want to fix or update the documentation or this website.
+              See the Contributing to the Documentation guide if you want to fix
+              or update the documentation or this website.
             </CommunityBlock>
           </div>
         </div>
