@@ -233,6 +233,9 @@ print(json.dumps(params, indent=2))
 
 ## Example: Show parameters from a remote DVC repository
 
+You can use the `repo` argument to retrieve parameters from a <abbr>DVC
+repository</abbr> without the need of cloning it and/or navigate to it locally:
+
 ```py
 import json
 import dvc.api
