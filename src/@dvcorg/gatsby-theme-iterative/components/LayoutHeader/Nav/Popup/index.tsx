@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import cn from 'classnames'
 
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
@@ -14,10 +14,12 @@ export interface IPopupProps {
   closePopup: () => void
 }
 
-export const BasePopup: React.FC<{
-  className?: string
-  isVisible: boolean
-}> = ({ children, isVisible, className }) => (
+export const BasePopup: React.FC<
+  PropsWithChildren<{
+    className?: string
+    isVisible: boolean
+  }>
+> = ({ children, isVisible, className }) => (
   <div className={cn(styles.popup, isVisible && styles.visible, className)}>
     {children}
   </div>
@@ -58,7 +60,7 @@ export const OtherPopup: React.FC<IPopupProps> = ({
             key={i}
             onClick={closePopup}
           >
-            {text}
+            {text as React.ReactNode}
           </Link>
         )
     )}
@@ -71,7 +73,7 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
 }) => (
   <BasePopup className={styles.otherToolsPopup} isVisible={isVisible}>
     {menuData.products.map(
-      ({ title, iconClass, description, href, target }, i) => (
+      ({ title, iconClass, description, href, target, titleImgClass }, i) => (
         <Link
           className={styles.link}
           href={href}
@@ -82,8 +84,11 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
           <div className={cn(styles.linkIcon, iconClass)} />
           <p className={styles.title}>
             {title}
+            {titleImgClass && (
+              <span className={cn(styles.titleIcon, titleImgClass)}></span>
+            )}
             {/^https?:\/\//.test(href) && (
-              <ExternalLinkIcon className={styles.titleIcon} />
+              <ExternalLinkIcon className={styles.titleExternalIcon} />
             )}
           </p>
           <p className={styles.description}>{description}</p>

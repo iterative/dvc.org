@@ -34,6 +34,21 @@
   flex-basis: 311px;
   padding: 0 10px;
   margin-bottom: 63px;
+
+  &:first-child {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 110px;
+
+    @media (--xs-scr) {
+      align-items: flex-start;
+      padding: 0 10px;
+      text-align: left;
+    }
+  }
 }
 
 .featureIcon {

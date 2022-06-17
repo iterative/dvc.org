@@ -1,16 +1,32 @@
 # Using DVC Commands
 
-DVC is a command line tool. Here we provide the specifications, complete
-descriptions, and comprehensive usage examples for `dvc` commands. For a list of
-commands, type `dvc -h`.
+The core of DVC is a command line tool. These pages contain the specifications,
+self-contained descriptions, and comprehensive usage examples for `dvc`
+commands. Use `dvc -h` to list them.
 
-💡 To execute any DVC command in a different directory, use
-`dvc --cd <path> ...` before the actual command and its options/arguments (this
-does not change directories in your terminal).
+<admon type="tip">
+
+To run DVC commands in a specific directory, use `dvc --cd <path> ...` before
+the actual command and its options/arguments (this does not change directories
+in your terminal).
+
+</admon>
+
+<admon icon="fire">
+
+**New!** DVC is also available [for the VS Code IDE], which adds many DVC
+operations [to the Command Palette].
+
+[for the vs code ide]: /doc/vs-code-extension
+[to the command palette]:
+  https://github.com/iterative/vscode-dvc#useful-commands
+
+</admon>
 
 ## Typical DVC workflow
 
-- Initialize a <abbr>DVC project</abbr> in a Git repo with `dvc init`.
+- Initialize a <abbr>DVC project</abbr> in a Git repo with `dvc init` or
+  `dvc exp init`.
 - Copy data files or dataset directories for modeling into the project and use
   `dvc add` to tell DVC to <abbr>cache</abbr> and track them.
 - Create a simple `dvc.yaml` file to codify a data processing

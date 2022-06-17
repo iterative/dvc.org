@@ -22,6 +22,22 @@ const FeaturesPage: React.FC = () => (
           <div className={styles.feature}>
             <img
               className={styles.featureIcon}
+              src="/img/features/icons/cluster.svg"
+              alt="cluster"
+            />
+            <h3 className={styles.featureName}>VS Code Extension</h3>
+            <div className={styles.featureDescription}>
+              Manage your data, run experiments, compare metrics, and visualize
+              plots, all in VS Code. Extend DVC capabilities and your ML
+              experimentation workflows directly into your IDE.{' '}
+              <Link href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc">
+                Start using it now
+              </Link>
+            </div>
+          </div>
+          <div className={styles.feature}>
+            <img
+              className={styles.featureIcon}
               src="/img/features/icons/git-icon.svg"
               alt="Git compatible"
             />

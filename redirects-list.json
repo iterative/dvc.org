@@ -34,6 +34,8 @@
   "^/download/linux-rpm/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
+  "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
+
   "^/doc/get-started(/.*)?$                                                               /doc/start",
   "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
   "^/doc/start/data-access$                                                               /doc/start/data-and-model-access",
@@ -76,6 +78,8 @@
   "^/doc/command-reference/ls$                                                            /doc/command-reference/list 302",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
+
+  "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
   "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
