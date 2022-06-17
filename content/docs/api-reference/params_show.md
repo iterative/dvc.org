@@ -25,35 +25,34 @@ params = dvc.api.params_show()
 
 Retrieves the <abbr>params</abbr> tracked in a <abbr>DVC repository</abbr>.
 
-Without arguments, this function will retrieve all <abbr>params</abbr> from all
-parameter files, for the current revision.
+Without arguments, this function will retrieve all params from all tracked
+parameter files, for the current working tree.
 
-See the options below to restrict the <abbr>params</abbr> retrieved.
+See the options below to restrict the params retrieved.
 
 ## Parameters
 
-- **`*targets`** (str, optional): Names of the parameter files to retrieve
-  <abbr>params</abbr> from. If no `targets` are provided, all parameter files
-  will be used. Note that targets don't necessarily have to be defined in
-  `dvc.yaml`
+- `*targets` - names of the parameter files to retrieve params from. For
+  example, "params.py, myparams.toml". If no `targets` are provided, all
+  parameter files tracked in `dvc.yaml` will be used. Note that targets don't
+  necessarily have to be defined in `dvc.yaml`.
 
-- **`repo`** (str, optional): location of the <abbr>DVC repository</abbr>.
-  Defaults to the current project (found by walking up from thecurrent working
-  directory tree). It can be a URL or a file system path. Both HTTP and SSH
-  protocols are supported for online Git repos (e.g. [user@]server:project.git).
+- `repo` - specifies the location of the DVC project. It can be a URL or a file
+  system path. Both HTTP and SSH protocols are supported for online Git repos
+  (e.g. `[user@]server:project.git`). _Default_: The current project (found by
+  walking up from the current working directory tree).
 
-- **`stages`** (Union[str, Iterable[str]], optional): Name(s) of the stages to
-  retrieve <abbr>params</abbr> from. Defaults to `None`. If no stages are
-  provided, all parameters from all stages will be retrieved.
+- `stages` - name or names of the stages to retrieve params from. If `None`, all
+  parameters from all stages will be retrieved. _Default_: `None`.
 
-- **`rev`**: (str, optional): Name of the Git
-  [revision](https://git-scm.com/docs/revisions) to retrieve <abbr>params</abbr>
-  from. Example of git revision can be a branch or tag name, a commit hash or a
-  dvc experiment name. Defaults to `HEAD`. If `repo` is not a Git repo, this
-  option is ignored.
+- `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
+  a branch or tag name, a commit hash or an
+  [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
+  this option is ignored. If `None`, current working tree will be used.
+  _Default_: `None`
 
-- **`deps`**: (bool, optional): Whether to retrieve only <abbr>params</abbr>
-  that are <abbr>stage</abbr> dependencies or not. Defaults to `False`.
+- `deps` - whether to retrieve only params that are stage dependencies or not.
+  _Default_: `False`
 
 ## Example: default behavior (no filters)
 
@@ -132,6 +131,9 @@ print(json.dumps(params, indent=2))
 ## Example: Specify a project version
 
 > Working on https://github.com/iterative/example-get-started
+
+You can also retrieve params from arbitrary Git
+[revisions](https://git-scm.com/docs/revisions):
 
 ```py
 import json
