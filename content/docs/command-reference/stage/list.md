@@ -66,7 +66,7 @@ important characteristics (dependencies, outputs, or metrics).
 
 The default behavior is to list stages from `./dvc.yaml`:
 
-```dvc
+```cli
 $ dvc stage list
 prepare    Outputs data/prepared
 featurize  Outputs data/features

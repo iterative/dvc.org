@@ -75,7 +75,7 @@ like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 `dvc stage add` itself. Use single quotes `'` instead if there are environment
 variables in it that should be evaluated dynamically. Examples:
 
-```dvc
+```cli
 $ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
 $ dvc stage add -n second_stage './another_script.sh $MYENVVAR'
 ```
@@ -89,7 +89,7 @@ that connects them, i.e. the output of a stage becomes the input of another, and
 so on (see `dvc dag`). This graph can be restored by DVC later to modify or
 [reproduce](/doc/command-reference/repro) the full pipeline. For example:
 
-```dvc
+```cli
 $ dvc stage add -n printer -d write.sh -o pages ./write.sh
 $ dvc stage add -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
