@@ -28,10 +28,8 @@ and returns a JSON structure such as:
 
 ```json
 {
-  "prepare": {
-    "split": 0.2,
-    "seed": 20170428
-  }
+  "split": 0.2,
+  "seed": 20170428
 }
 ```
 
