@@ -57,8 +57,7 @@ The function parameters (below) let you restrict what's retrieved.
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, a commit hash or an
   [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
-  this option is ignored. If `None`, current working tree will be used.
-  _Default_: `None`
+  this option is ignored. _Default_: `None` (current working tree will be used)
 
 - `deps` - whether to retrieve only params that are stage dependencies or not.
   Accepts `True` or `False` (_default_).
