@@ -28,8 +28,10 @@ and returns a JSON structure such as:
 
 ```json
 {
-  "split": 0.2,
-  "seed": 20170428
+  "prepare": {
+    "split": 0.2,
+    "seed": 20170428
+  }
 }
 ```
 
@@ -61,55 +63,26 @@ The function parameters (below) let you restrict what's retrieved.
   _Default_: `None`
 
 - `deps` - whether to retrieve only params that are stage dependencies or not.
-  _Default_: `False`
+  Accepts `True` or `False` (_default_).
 
-## Example: default behavior (no filters)
+## Example: Filter by stage name(s)
 
 > Working on https://github.com/iterative/example-get-started
+
+`stages` can be a single name (string):
 
 ```py
 import json
 import dvc.api
-params = dvc.api.get_params()
-print(json.dumps(params, indent=4))
-```
-
-```json
-{
-  "prepare": {
-    "split": 0.2,
-    "seed": 20170428
-  },
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  },
-  "train": {
-    "seed": 20170428,
-    "n_est": 50,
-    "min_split": 0.01
-  }
-}
-```
-
-## Example: Filter by `stages`
-
-> Working on https://github.com/iterative/example-get-started
-
-`stages` can a single string:
-
-```py
-import json
-import dvc.api
-params = dvc.api.get_params(stages="prepare")
+params = dvc.api.get_params(stages="featurize")
 print(json.dumps(params, indent=2))
 ```
 
 ```json
 {
-  "prepare": {
-    "split": 0.2,
-    "seed": 20170428
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
   }
 }
 ```
@@ -119,15 +92,15 @@ Or an iterable of strings:
 ```py
 import json
 import dvc.api
-params = dvc.api.get_params(stages=["prepare", "train"])
+params = dvc.api.get_params(stages=["featurize", "train"])
 print(json.dumps(params, indent=2))
 ```
 
 ```json
 {
-  "prepare": {
-    "split": 0.2,
-    "seed": 20170428
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
   },
   "train": {
     "seed": 20170428,
