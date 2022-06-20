@@ -110,51 +110,6 @@ print(json.dumps(params, indent=2))
     ...
 ```
 
-## Example: Filter by stage name(s)
-
-> Working on https://github.com/iterative/example-get-started
-
-`stages` can be a single name (string):
-
-```py
-import json
-import dvc.api
-params = dvc.api.get_params(stages="featurize")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  }
-}
-```
-
-Or an iterable of strings:
-
-```py
-import json
-import dvc.api
-params = dvc.api.get_params(stages=["featurize", "train"])
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  },
-  "train": {
-    "seed": 20170428,
-    "n_est": 50,
-    "min_split": 0.01
-  }
-}
-```
-
 ## Example: Specify a project version
 
 > Working on
@@ -209,6 +164,51 @@ print(json.dumps(params, indent=2))
     "num_epochs": 10,
     "lr": 0.001,
     "conv_activation": "relu"
+  }
+}
+```
+
+## Example: Filter by stage name(s)
+
+> Working on https://github.com/iterative/example-get-started
+
+`stages` can be a single name (string):
+
+```py
+import json
+import dvc.api
+params = dvc.api.get_params(stages="featurize")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
+  }
+}
+```
+
+Or an iterable of strings:
+
+```py
+import json
+import dvc.api
+params = dvc.api.get_params(stages=["featurize", "train"])
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
+  },
+  "train": {
+    "seed": 20170428,
+    "n_est": 50,
+    "min_split": 0.01
   }
 }
 ```
