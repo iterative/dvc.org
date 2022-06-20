@@ -109,10 +109,10 @@ print(json.dumps(params, indent=2))
 
 ## Example: Specify a project version
 
-> Working on https://github.com/iterative/example-get-started
+> Working on
+> https://github.com/iterative/example-get-started/tree/tune-hyperparams
 
-You can also retrieve params from arbitrary Git
-[revisions](https://git-scm.com/docs/revisions):
+You can retrieve params from arbitrary Git commits, for example a branch name:
 
 ```py
 import json
