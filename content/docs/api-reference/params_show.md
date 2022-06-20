@@ -41,7 +41,7 @@ The function parameters (below) let you restrict what's retrieved.
 
 ## Parameters
 
-- `*targets` - names of one or more valid parameter file to retrieve params
+- `*targets` - paths to one or more valid parameter file(s) to retrieve params
   from. For example, `"params.py, myparams.toml"`. If no `targets` are provided,
   all param files tracked in any `dvc.yaml` will be used by default. Note that
   explicit targets don't have to be used in a `dvc.yaml` (unless `deps=True`).
@@ -61,6 +61,54 @@ The function parameters (below) let you restrict what's retrieved.
 
 - `deps` - whether to retrieve only params that are stage dependencies. Accepts
   `True` or `False` (_default_).
+
+## Example: Filter by parameter file(s)s
+
+> Working on
+> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
+
+You can pass a single param file path as target:
+
+```py
+import json
+import dvc.api
+params = dvc.api.params_show("params.yaml")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "run_mode": "prod",
+  "configs": {
+    "dev": "configs/params_dev.yaml",
+    ...
+  },
+  "evaluate": {
+    "dataset": "micro",
+    ...
+```
+
+Or multiple targets:
+
+```py
+import json
+import dvc.api
+params = dvc.api.params_show(
+  "configs/params_dev.yaml", "configs/params_prod.yaml")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "configs/params_prod.yaml:run_mode": "prod",
+  "configs/params_prod.yaml:config_file": "configs/params_prod.yaml",
+  "configs/params_prod.yaml:data_load": {
+    ...
+  "configs/params_dev.yaml:run_mode": "dev",
+  "configs/params_dev.yaml:config_file": "configs/params_dev.yaml",
+  "configs/params_dev.yaml:data_load": {
+    ...
+```
 
 ## Example: Filter by stage name(s)
 
@@ -135,77 +183,6 @@ print(json.dumps(params, indent=2))
     "seed": 20170428,
     "n_est": 100,
     "min_split": 8
-  }
-}
-```
-
-## Example: Filter by parameter files
-
-> Working on
-> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
-
-You can pass a single param file as target:
-
-```py
-import json
-import dvc.api
-params = dvc.api.params_show("params.yaml")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "run_mode": "prod",
-  "configs": {
-    "dev": "configs/params_dev.yaml",
-    "test": "configs/params_test.yaml",
-    "prod": "configs/params_prod.yaml"
-  },
-  "evaluate": {
-    "dataset": "micro",
-    "size": 5000,
-    "metrics": ["f1", "roc-auc"],
-    "metrics_file": "reports/metrics.json",
-    "plots_cm": "reports/plot_confusion_matrix.png"
-  }
-}
-```
-
-Or multiple targets:
-
-```py
-import json
-import dvc.api
-params = dvc.api.params_show(
-  "configs/params_dev.yaml", "configs/params_prod.yaml")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "configs/params_prod.yaml:run_mode": "prod",
-  "configs/params_prod.yaml:config_file": "configs/params_prod.yaml",
-  "configs/params_prod.yaml:data_load": {
-    "dataset": "large",
-    "sampling": {
-      "enable": true,
-      "size": 50000
-    }
-  },
-  "configs/params_prod.yaml:train": {
-    "epochs": 1000
-  },
-  "configs/params_dev.yaml:run_mode": "dev",
-  "configs/params_dev.yaml:config_file": "configs/params_dev.yaml",
-  "configs/params_dev.yaml:data_load": {
-    "dataset": "development",
-    "sampling": {
-      "enable": true,
-      "size": 1000
-    }
-  },
-  "configs/params_dev.yaml:train": {
-    "epochs": 10
   }
 }
 ```
