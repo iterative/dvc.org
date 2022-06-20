@@ -1,11 +1,11 @@
 # dvc.api.params_show()
 
-Load <abbr>parameters</abbr> (name and values) tracked in a
-<abbr>DVC project</abbr>.
+Load <abbr>parameters</abbr> (name and values) tracked in a <abbr>DVC
+project</abbr>.
 
 ```py
 def params_show(
-    *targets: str,
+    *targets: str,  # Optional
     repo: Optional[str] = None,
     stages: Optional[Union[str, Iterable[str]]] = None,
     rev: Optional[str] = None,
@@ -32,10 +32,10 @@ See the options below to restrict the params retrieved.
 
 ## Parameters
 
-- `*targets` - names of the parameter files to retrieve params from. For
-  example, "params.py, myparams.toml". If no `targets` are provided, all
-  parameter files tracked in `dvc.yaml` will be used. Note that targets don't
-  necessarily have to be defined in `dvc.yaml`.
+- `*targets` - names of the parameter file(s) to retrieve params from. For
+  example, `"params.py, myparams.toml"`. If no `targets` are provided, all param
+  files tracked in any `dvc.yaml` will be used by default. Note that explicit
+  targets don't necessarily have to be defined in `dvc.yaml`, however.
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
