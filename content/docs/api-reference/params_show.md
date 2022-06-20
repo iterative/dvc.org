@@ -1,7 +1,7 @@
 # dvc.api.params_show()
 
-Returns all the <abbr>params</abbr> associated with the given <abbr>DVC
-repository</abbr>.
+Load <abbr>parameters</abbr> (name and values) tracked in a
+<abbr>DVC project</abbr>.
 
 ```py
 def params_show(
