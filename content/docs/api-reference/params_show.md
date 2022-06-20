@@ -142,10 +142,10 @@ print(json.dumps(params, indent=2))
 }
 ```
 
-## Example: Show parameters from a remote DVC repository
+## Example: Use a remote DVC repository
 
-You can use the `repo` argument to retrieve parameters from a <abbr>DVC
-repository</abbr> without the need of cloning it and/or navigate to it locally:
+You can use the `repo` argument to retrieve parameters from any <abbr>DVC
+repository</abbr> without having to clone it locally.
 
 ```py
 import json
@@ -161,11 +161,7 @@ print(json.dumps(params, indent=2))
     "batch_size": 128,
     "hidden_units": 64,
     "dropout": 0.4,
-    "num_epochs": 10,
-    "lr": 0.001,
-    "conv_activation": "relu"
-  }
-}
+    ...
 ```
 
 ## Example: Filter by stage name(s)
