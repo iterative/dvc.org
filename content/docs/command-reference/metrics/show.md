@@ -70,7 +70,7 @@ Let's imagine we have a simple [stage](/doc/command-reference/run) that produces
 an `eval.json` metrics file. The basic use case shows the values in the current
 workspace:
 
-```dvc
+```cli
 $ dvc metrics show
         eval.json:
                 AUC: 0.66729
@@ -81,7 +81,7 @@ $ dvc metrics show
 To see the history of the metrics starting with the workspace and down the Git
 history use `--all-commits` option:
 
-```dvc
+```cli
 $ dvc metrics show --all-commits
 workspace:
         eval.json:
@@ -102,7 +102,7 @@ c7bef5524541dabf8556ed504fd02f55231f875e:
 
 Metrics from different branches can be shown by `--all-branches` (`-a`) option:
 
-```dvc
+```cli
 $ dvc metrics show -a
 workspace:
         eval.json:
