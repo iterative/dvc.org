@@ -51,8 +51,8 @@ The function parameters (below) let you restrict what's retrieved.
   (e.g. `[user@]server:project.git`). _Default_: The current project (found by
   walking up from the current working directory tree).
 
-- `stages` - name or names of the stages to retrieve params from. If `None`, all
-  parameters from all stages will be retrieved. _Default_: `None`.
+- `stages` - one or more names of the stage(s) to retrieve params from.
+  _Default_: `None` (all parameters from all stages will be retrieved).
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, a commit hash or an
