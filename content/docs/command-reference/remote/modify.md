@@ -67,13 +67,13 @@ The following config options are available for all remote types:
   For example, for an Amazon S3 remote (see more details in the S3 section
   below):
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url s3://mybucket/new/path
   ```
 
   Or a _local remote_ (a directory in the file system):
 
-  ```dvc
+  ```cli
   $ dvc remote modify localremote url /home/user/dvcstore
   ```
 
@@ -83,7 +83,7 @@ The following config options are available for all remote types:
   import`, `dvc update`, `dvc add --to-remote`, `dvc gc
   -c`, etc.). Accepts positive integers. The default is `4 \* cpu_count()`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote jobs 8
   ```
 
@@ -94,7 +94,7 @@ The following config options are available for all remote types:
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote verify true
   ```
 
@@ -109,13 +109,13 @@ options:
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url s3://mybucket/path
   ```
 
 - `region` - change S3 remote region:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote region us-east-2
   ```
 
@@ -123,7 +123,7 @@ options:
   when attempting to read from a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote read_timeout 300
   ```
 
@@ -131,7 +131,7 @@ options:
   when attempting to make a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote connect_timeout 300
   ```
 
@@ -139,7 +139,7 @@ options:
   when attempting to read from a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote read_timeout 300
   ```
 
@@ -147,7 +147,7 @@ options:
   when attempting to make a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote connect_timeout 300
   ```
 
@@ -162,13 +162,13 @@ parameters to customize the authentication method:
 
 - `profile` - credentials profile name to access S3:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote profile myprofile
   ```
 
 - `credentialpath` - S3 credentials file path:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote credentialpath /path/to/creds
   ```
 
@@ -177,7 +177,7 @@ parameters to customize the authentication method:
   The default AWS CLI config file path (e.g. `~/.aws/config`) is used if this
   parameter isn't set.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote configpath /path/to/config
   ```
 
@@ -187,21 +187,21 @@ parameters to customize the authentication method:
 
 - `endpointurl` - endpoint URL to access S3:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote endpointurl https://myendpoint.com
   ```
 
 - `access_key_id` - AWS Access Key ID. May be used (along with
   `secret_access_key`) instead of `credentialpath`:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote access_key_id 'mykey'
   ```
 
 - `secret_access_key` - AWS Secret Access Key. May be used (along with
   `access_key_id`) instead of `credentialpath`:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
         secret_access_key 'mysecret'
   ```
@@ -211,13 +211,13 @@ parameters to customize the authentication method:
   session token. May be used (along with `access_key_id` and
   `secret_access_key`) instead of `credentialpath` when MFA is required:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote session_token my-session-token
   ```
 
 - `use_ssl` - whether or not to use SSL. By default, SSL is used.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote use_ssl false
   ```
 
@@ -226,7 +226,7 @@ parameters to customize the authentication method:
   [AWS CLI config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings)
   (if any) are used by default.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ssl_verify false
   # or
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
@@ -242,14 +242,14 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote listobjects true
   ```
 
 - `sse` - server-side encryption algorithm to use (e.g. AES256, aws:kms). By
   default, no encryption is used.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote sse AES256
   ```
 
@@ -258,7 +258,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   parameter will be passed directly to AWS S3 functions, so DVC supports any
   value that S3 supports, including both key ids and aliases.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
   ```
 

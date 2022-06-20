@@ -56,7 +56,7 @@ that order).
 
 ## Example: Using relative path
 
-```dvc
+```cli
 $ dvc cache dir ../dir
 $ cat .dvc/config
 ...
@@ -70,7 +70,7 @@ $ cat .dvc/config
 
 ## Example: Using absolute path
 
-```dvc
+```cli
 $ dvc cache dir /path/to/dir
 $ cat .dvc/config
 ...
@@ -83,7 +83,7 @@ Absolute path `/path/to/dir` saved as is.
 
 ## Example: Getting current cache directory
 
-```dvc
+```cli
 $ dvc cache dir
 /home/user/dvc/.dvc/cache
 ```
