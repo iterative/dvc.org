@@ -44,7 +44,7 @@ The function parameters (below) let you restrict what's retrieved.
 - `*targets` - names of one or more valid parameter file to retrieve params
   from. For example, `"params.py, myparams.toml"`. If no `targets` are provided,
   all param files tracked in any `dvc.yaml` will be used by default. Note that
-  explicit targets don't have to be used in a `dvc.yaml`, however.
+  explicit targets don't have to be used in a `dvc.yaml` (unless `deps=True`).
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
@@ -59,8 +59,8 @@ The function parameters (below) let you restrict what's retrieved.
   [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
   this option is ignored. _Default_: `None` (current working tree will be used)
 
-- `deps` - whether to retrieve only params that are stage dependencies or not.
-  Accepts `True` or `False` (_default_).
+- `deps` - whether to retrieve only params that are stage dependencies. Accepts
+  `True` or `False` (_default_).
 
 ## Example: Filter by stage name(s)
 
