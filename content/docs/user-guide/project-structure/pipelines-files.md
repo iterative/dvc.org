@@ -408,6 +408,35 @@ validation and auto-completion.
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.
 
+## Plots definitions
+
+The list of plots contains one or more user-defined
+[plots](/doc/command-reference/plots#standalone-plots). Here's an example that
+tells DVC that `auc.json` is viable for visualization:
+
+```yaml
+stages:
+  build:
+    cmd: python train.py
+    deps:
+      - features.csv
+    outs:
+      - model.pt
+      - auc.json
+    metrics:
+      - accuracy.txt:
+          cache: false
+plots:
+  auc.json:
+    x: fpr
+    y: tpr
+```
+
+Note that in this example we don't have to specify `auc.json` as a plot output.
+Plots definitions accept any file from repository. Refer to the plots  
+[documentation](/doc/command-reference/plots#syntax) for more information on
+plots syntax.
+
 ## dvc.lock file
 
 > ⚠️ Avoid editing these files. DVC will create and update them for you.

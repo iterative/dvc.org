@@ -1,10 +1,11 @@
 # plots modify
 
-Modify display properties of [plot metrics](/doc/command-reference/plots) files.
+Modify display properties of
+[plot outputs](/doc/command-reference/plots#stage-plots) files.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
 > on image-type plots. See
-> [Types of metrics](/doc/command-reference/plots#types-of-metrics).
+> [Types of plots](/doc/command-reference/plots#description).
 
 ## Synopsis
 

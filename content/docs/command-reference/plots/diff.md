@@ -122,11 +122,11 @@ file:///Users/usr/src/dvc_plots/index.html
 Compare two specific versions (commit hashes, tags, or branches):
 
 ```cli
-$ dvc plots diff HEAD 0135527 --targets logs.csv
+$ dvc plots diff HEAD^ 0135527 --targets logs.csv
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
-![](/img/plots_diff.svg)
+![](/img/plots_diff_two_revs.svg)
 
 ## Example: Confusion matrix
 
