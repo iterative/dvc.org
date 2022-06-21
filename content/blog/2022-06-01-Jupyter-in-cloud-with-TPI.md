@@ -27,9 +27,10 @@ Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-on
 
 </admon>
 
-Jupyter Notebook is one of -- if not the -- most-used tools in data science. It
-provides an intuitive and feature-packed developer experience and, for many
-people, is an indispensable tool when working on machine learning projects.
+[Jupyter Notebook](https://jupyter.org/) is one of -- if not the -- most-used
+tools in data science. It provides an intuitive and feature-packed developer
+experience and, for many people, is an indispensable tool when working on
+machine learning projects.
 
 The most straightforward use is on a local machine. We switch to a virtual
 environment, type `jupyter notebook` in our terminal, and head over to
@@ -42,11 +43,11 @@ limiting factor when working on an alternative to
 [GPT-3](https://github.com/openai/gpt-3).
 
 The solution to bypassing the limitations of our local machine is to move our
-notebooks to the cloud. When running a notebook on AWS or Azure, we can
-provision as beefy an instance as needed for our project. However, the downside
-to cloud-hosted notebooks is that they're more challenging to get up and
-running. And any time spent setting up our development environment is time we
-can't spend on our actual ML project.
+notebooks to the cloud. When running a notebook on provisioned hardware, we can
+use as beefy an instance as needed for our project. However, the downside to
+cloud-hosted notebooks is that they're more challenging to get up and running.
+And any time spent setting up our development environment is time we can't spend
+on our actual ML project.
 
 "Now wait a minute," you might say, "hasn't this problem long been solved by
 SaaS solutions like [Google
@@ -63,10 +64,12 @@ SageMaker:
 - **Cost:** they are expensive to use. You're not only paying for the hardware
   but also for using the platform.
 - **Vendor lock-in:** they tend to be baked into the vendor's ecosystem. It's
-  difficult and sometimes impossible to use infrastructure components such as
-  databases and VPSs from different vendors in conjunction with each other.
+  difficult and sometimes impossible to use infrastructure components from
+  different vendors in conjunction with each other, such as a virtual machine
+  from one vendor with a storage bucket from another.
 - **Hardware limitations:** they may still limit the hardware available to you.
-  Colab, for example, is capped at 25GB of RAM and caps uptime at 12 hours.
+  Colab, for example, has a maximum of 25GB of memory and caps uptime at 12
+  hours.
 
 Iterative provides an alternative to these services in the form of [TPI
 (Terraform Provider
@@ -81,7 +84,9 @@ Here are some benefits to using TPI that might pique your interest:
 
 - **Lower cloud costs:** TPI is a free and open application that helps you
   reduce your cloud expenses. It automatically cleans up unused instances and
-  allows you to use spot instances, reducing per-hour costs.
+  allows you to use [spot
+  instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html),
+  reducing per-hour costs.
 - **Modular:** TPI is compatible with a variety of cloud vendors and easily lets
   you switch between them. You aren't locked into one vendor's ecosystem.
 - **Limitless hardware:** TPI lets you provision precisely the hardware you
@@ -89,13 +94,14 @@ Here are some benefits to using TPI that might pique your interest:
 - **Ease of use:** TPI doesn't require you to set up CI/CD to work in the cloud.
   You only need one configuration file and you are good to go.
 
-In the guide below we will explore how to launch a Jupyter server using TPI, allowing us to run notebooks on cloud instances. While we will be using AWS in our example,
-you can use Azure or GCP with [minor
+In the guide below we will explore how to launch a Jupyter server in the cloud
+using TPI. While we will be using Amazon Web Services (AWS) in our example, you
+can use Microsoft Azure or Google Cloud Platform (GCP) with [minor
 modifications](https://github.com/iterative/blog-tpi-jupyter/tree/generic).
 
 # Prerequisites
 
-Before you get started, make sure to take care of the following:
+Before we get started, make sure you take care of the following:
 
 1. [Download the Terraform CLI tool](https://www.terraform.io/downloads)
 1. [Set up an AWS Account](https://aws.amazon.com/)
@@ -116,8 +122,13 @@ involved. Make sure you [understand AWS
 pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome charges to your
 credit card.
 
-You can use AWS EC2's `t2.micro` instances with `machine = "s"`. These instances
-are included in the 12 months free tier.
+</admon>
+
+<admon type="tip">
+
+You can use AWS EC2's `t2.micro` instances with `machine = "s"`. With the [free
+tier](https://aws.amazon.com/ec2/?did=ft_card&trk=ft_card) you get 750 hours of
+these per month during your first year using AWS.
 
 </admon>
 
@@ -158,7 +169,7 @@ it.
 Once we have accomplished everything we want to do in our notebook, we can
 terminate the instance with `terraform destroy`. This ensures that we won't have
 idle instances racking up our credit card bill. Terraform will download the
-files stored there (updated notebooks, save model files, etc.) to the shared
+files stored there (updated notebooks, saved model files, etc.) to the shared
 directory on our local machine when terminating the instance.
 
 # Under the hood
@@ -292,10 +303,11 @@ instead, simply remove or modify [the relevant line in
 </admon>
 
 As you can see, the possibilities for the scripts we can run through TPI are
-extensive. We could add commands to clone a Git repository, for example. Or we
-could pull data in from a [DVC
+extensive. Basically everything we can do on our local machine through our
+terminal, we can do on our cloud instance with TPI. We could add commands to
+clone a Git repository, for example, or we could pull data in from a [DVC
 remote](https://dvc.org/doc/command-reference/remote#remote). This flexibility
-allows us to tailor the instance TPI provisions precisely to our needs.
+allows us to tailor our cloud instance precisely to our needs.
 
 ```hcl
 output "urls" {
