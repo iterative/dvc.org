@@ -9,7 +9,14 @@ enable IDE syntax checks and auto-completion.
 
 ## Visual Studio Code
 
-To make `dvc.lock` and `.dvc` files recognized as YAML, add the following in
+Install the [DVC Extension] for VS Code to use DVC right from your IDE!
+
+<admon type="tip">
+
+Enable enhanced [IntelliSense] on `dvc.yaml` files by installing the [YAML
+extension].
+
+To make `dvc.lock` and `.dvc` files recognized as YAML, add this to
 `settings.json`:
 
 ```json
@@ -19,10 +26,12 @@ To make `dvc.lock` and `.dvc` files recognized as YAML, add the following in
 }
 ```
 
-Enable enhanced
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense), on
-`dvc.yaml` files by installing the
-[YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+</admon>
+
+[dvc extension]: /doc/vs-code-extension
+[intellisense]: https://code.visualstudio.com/docs/editor/intellisense
+[yaml extension]:
+  https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
 
 ## JetBrain IDEs (PyCharm, Intellij IDEA, etc.)
 

@@ -76,7 +76,7 @@ weekend -- without fear of bugs/regressions.
 **Metrics (Model Validation)**: Whenever a change is committed, DVC can check
 that the [pipeline](/doc/start/data-pipelines) (including data, parameters,
 code, and metrics) is up to date, thereby ensuring that Git commits and model
-artefacts are in sync. DVC can also run benchmarks against previously deployed
+artifacts are in sync. DVC can also run benchmarks against previously deployed
 models before a new one is
 [released into production](/doc/use-cases/data-registry). CML provides useful
 tools to make this process easy -- including reporting metric changes with

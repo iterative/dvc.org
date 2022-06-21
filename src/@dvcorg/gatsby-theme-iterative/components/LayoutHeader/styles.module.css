@@ -115,6 +115,25 @@
     height: 0;
     transform: translateY(-100%);
   }
+
+  .text {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0 16px;
+  }
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  span {
+    height: 22px;
+    margin-right: 8px;
+  }
 }
 
 .gitHubAlertLink {

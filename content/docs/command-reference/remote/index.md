@@ -87,7 +87,7 @@ It's essentially a local backup for data tracked by DVC.
 
 We use the `-d` (`--default`) option of `dvc remote add` for this:
 
-```dvc
+```cli
 $ dvc remote add -d myremote /path/to/remote
 ```
 
@@ -102,7 +102,7 @@ remote = myremote
 
 ## Example: List all remotes in the project
 
-```dvc
+```cli
 $ dvc remote list
 myremote	/path/to/remote
 newremote	s3://mybucket/path
@@ -113,7 +113,7 @@ newremote	s3://mybucket/path
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add newremote s3://mybucket/path
 $ dvc remote modify newremote endpointurl https://object-storage.example.com
 ```
@@ -135,12 +135,12 @@ endpointurl = https://object-storage.example.com
 `dvc remote modify` can't change the name of a DVC remote, but there's a
 specific subcommand for this:
 
-```dvc
+```cli
 $ dvc remote rename oldremote newremote
 ```
 
 ## Example: Remove a remote
 
-```dvc
+```cli
 $ dvc remote remove oldremote
 ```
