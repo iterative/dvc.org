@@ -14,7 +14,7 @@ releases, you can install it from our code repository GitHub.
 $ pip install git+https://github.com/iterative/dvc
 
 # With cloud storage support, add `egg=dvc[option]`,
-# e.g. `s3` for AWS S3, `all` - to support all availabe remote storages.
+# e.g. `s3` for AWS S3, `all` - to support all available remote storages.
 # See full list in the `extras_require` section here:
 # https://github.com/iterative/dvc/blob/main/setup.cfg
 $ pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"

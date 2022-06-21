@@ -16,7 +16,7 @@ fully compatible with DVC. You can
   </card>
 
   <card href="/doc/dvclive/ml-frameworks" heading="ML Frameworks">
-    Use DVCLive alonside your favorite ML Framework
+    Use DVCLive alongside your favorite ML Framework
   </card>
 
   <card href="/doc/dvclive/api-reference" heading="API Reference">
