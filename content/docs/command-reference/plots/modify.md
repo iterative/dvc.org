@@ -1,10 +1,11 @@
 # plots modify
 
-Modify display properties of [plot metrics](/doc/command-reference/plots) files.
+Modify display properties of
+[stage plots](/doc/command-reference/plots#stage-plots) files.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
-> on image-type plots. See
-> [Types of metrics](/doc/command-reference/plots#types-of-metrics).
+> on image-type plots and standalone plots. See
+> [Types of plots](/doc/command-reference/plots#description).
 
 ## Synopsis
 
@@ -16,7 +17,7 @@ usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                         target
 
 positional arguments:
-  target                Metrics file to set properties to
+  target                Stage plot to set properties to.
 ```
 
 ## Description
