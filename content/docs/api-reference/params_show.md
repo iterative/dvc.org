@@ -107,7 +107,7 @@ print(json.dumps(params, indent=2))
 }
 ```
 
-## Example: Load specific parameter file(s)s
+## Example: Load specific parameter file(s)
 
 > Working on
 > https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
@@ -180,8 +180,7 @@ print(json.dumps(params, indent=2))
 
 ## Example: Specify a project version
 
-> Working on
-> https://github.com/iterative/example-get-started/tree/tune-hyperparams
+> Working on https://github.com/iterative/example-get-started
 
 You can retrieve params from arbitrary Git commits, for example a branch name:
 
