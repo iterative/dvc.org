@@ -75,7 +75,7 @@ like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 `dvc stage add` itself. Use single quotes `'` instead if there are environment
 variables in it that should be evaluated dynamically. Examples:
 
-```dvc
+```cli
 $ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
 $ dvc stage add -n second_stage './another_script.sh $MYENVVAR'
 ```
@@ -89,7 +89,7 @@ that connects them, i.e. the output of a stage becomes the input of another, and
 so on (see `dvc dag`). This graph can be restored by DVC later to modify or
 [reproduce](/doc/command-reference/repro) the full pipeline. For example:
 
-```dvc
+```cli
 $ dvc stage add -n printer -d write.sh -o pages ./write.sh
 $ dvc stage add -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
@@ -193,13 +193,13 @@ data science experiments.
   output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). This
   makes the stage incompatible with `dvc repro`.
 
-- `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
-  of [parameter dependencies](/doc/command-reference/params) the stage depends
-  on, from a parameters file. This is done by sending a comma separated list as
-  argument, e.g. `-p learning_rate,epochs`. The default parameters file name is
-  `params.yaml`, but this can be redefined with a prefix in the argument sent to
-  this option, e.g. `-p parse_params.yaml:threshold`. See `dvc params` to learn
-  more about parameters.
+- `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
+  or more [parameter dependencies](/doc/command-reference/params) from a
+  parameters file `path` (`./params.yaml` by default). This is done by sending a
+  comma separated list (`params_list`) as argument, e.g.
+  `-p learning_rate,epochs`. A custom params file can be defined with a prefix,
+  e.g. `-p params.json:threshold`. Or use the prefix alone with `:` to use all
+  the parameters found in that file, e.g. `-p myparams.toml:`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
@@ -409,15 +409,23 @@ $ dvc stage add -n train \
 `train_model.py` will include some code to open and parse the parameters:
 
 ```py
-import yaml
+from ruamel.yaml import YAML
 
 with open("params.yaml", 'r') as fd:
-    params = yaml.safe_load(fd)
+    yaml = YAML()
+    params = yaml.load(fd)
 
 seed = params['seed']
 lr = params['train']['lr']
 epochs = params['train']['epochs']
 ```
+
+<admon>
+
+We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
+1.2 (unlike the more popular PyYAML).
+
+</admon>
 
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See

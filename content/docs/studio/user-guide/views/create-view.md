@@ -1,5 +1,13 @@
 # Create a View
 
+In this section, you will learn how to:
+
+- [Connect to a Git repository and create a view](#connect-to-a-git-repository-and-create-a-view)
+- [Create multiple views from a single Git repository)](#create-multiple-views-from-a-single-git-repository)
+- [Create views shared across a team](#create-views-shared-across-a-team)
+
+## Connect to a Git repository and create a view
+
 To create a new view, follow these steps.
 
 1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
@@ -83,3 +91,14 @@ specify a different sub-directory.
 Refer to the [View Settings](/doc/studio/user-guide/views/view-settings) section
 for more details on how to configure different settings (and sub-directories)
 for the views.
+
+## Create views shared across a team
+
+You can [create teams](/doc/studio/user-guide/teams) with one or more team
+members, also called collaborators.
+
+Each team will have its own views dashboard, and the views that you create in
+the team's dashboard will be accessible to all members of the team.
+
+To add more than 2 collaborators in your team, you can
+[upgrade it to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).

@@ -22,7 +22,7 @@
 .title {
   /* padding-right: 2em; */
   padding-right: 30px;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 40px;
   font-weight: 500;
   color: var(--color-gray-hover);

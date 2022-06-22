@@ -1,6 +1,8 @@
 import React from 'react'
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
-import MainLayout, { LayoutComponent } from '../../MainLayout'
+import { Script } from 'gatsby'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
+import { LayoutComponent } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+import MainLayout from '../../../@dvcorg/gatsby-theme-iterative/components/MainLayout'
 
 import * as styles from './styles.module.css'
 
@@ -20,7 +22,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => (
       keywords={keywords}
       pageInfo={restProps.pageContext.pageInfo}
     >
-      <script async src="//embed.redditmedia.com/widgets/platform.js" />
+      <Script async src="//embed.redditmedia.com/widgets/platform.js" />
     </SEO>
     {children}
   </MainLayout>

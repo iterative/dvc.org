@@ -1,5 +1,5 @@
 import React from 'react'
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Section from '../Section'
 import IframeResizer from 'iframe-resizer-react'
 

@@ -1,23 +1,32 @@
 ---
 title: 'Get Started: Data and Model Versioning'
-description: 'Get started with data and model versioning in DVC. Learn how to use a
-regular Git workflow for datasets and ML models, without storing large files in
-Git.'
+description: 'Get started with data and model versioning in DVC. Learn how to
+use a regular Git workflow for datasets and ML models, without storing large
+files in Git.'
 ---
 
 # Get Started: Data Versioning
 
 How cool would it be to make Git handle arbitrarily large files and directories
-with the same performance it has with small code files? Imagine doing a
-`git clone` and seeing data files and machine learning models in the workspace.
+with the same performance it has with small code files? Imagine cloning a
+repository and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
-`git checkout`.
-
-The foundation of DVC consists of a few commands you can run along with `git` to
-track large files, directories, or ML model files. Think "Git for data". Read on
-or watch our video to learn about versioning data with DVC!
+`git checkout`. Think "Git for data".
 
 https://youtu.be/kLKBcPonMYw
+
+<admon icon="fire">
+
+**New!** You can manage you data and ML models with DVC directly [from Visual
+Studio Code], a leading IDE in the industry.
+
+[from visual studio code]: /doc/vs-code-extension
+
+</admon>
+
+The foundation of DVC consists of a few commands you can run along with `git` to
+track large files, directories, or ML model files. Read on or watch the video
+above to learn more!
 
 <details>
 
@@ -69,17 +78,17 @@ should look like this:
 
 ```
 .dvc/cache
-└── a3
-    └── 04afb96060aad90176268345e10355
+└── 22
+    └── a1a2931c8370d3aeedd7183606fd7f
 ```
 
-The hash value of the `data.xml` file we just added (`a304afb...`) determines
+The hash value of the `data.xml` file we just added (`22a1a29...`) determines
 the cache path shown above. And if you check `data/data.xml.dvc`, you will find
 it there too:
 
 ```yaml
 outs:
-  - md5: a304afb96060aad90176268345e10355
+  - md5: 22a1a2931c8370d3aeedd7183606fd7f
     path: data.xml
 ```
 
@@ -154,8 +163,8 @@ set up earlier. The remote storage directory should look like this:
 
 ```
 .../dvcstore
-└── a3
-    └── 04afb96060aad90176268345e10355
+└── 22
+    └── a1a2931c8370d3aeedd7183606fd7f
 ```
 
 </details>

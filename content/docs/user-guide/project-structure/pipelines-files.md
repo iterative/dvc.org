@@ -51,8 +51,21 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 ### Parameter dependencies
 
 [Parameters](/doc/command-reference/params) are a special type of stage
-dependency. They consist of a name/value pair to find in a YAML, JSON, TOML, or
-Python parameters file (`params.yaml` by default). Example:
+dependency. They consist of a list of params to track in one of these formats:
+
+1. A param key/value pair that can be found in `params.yaml` (default params
+   file);
+2. A dictionary named by the file path to a custom params file, and with a list
+   of param key/value pairs to find in it;
+3. An empty set (give no value or use `null`) named by the file path to a params
+   file: to track all the params in it dynamically.
+
+<admon type="info">
+
+Note that file paths used must be to valid YAML, JSON, TOML, or Python
+parameters file.
+
+</admon>
 
 ```yaml
 stages:
@@ -61,8 +74,11 @@ stages:
     deps:
       - raw.txt
     params:
-      - threshold
+      - threshold # track specific param (from params.yaml)
       - passes
+      - myparams.yaml: # track specific params from custom file
+          - epochs
+      - config.json: # track all parameters in this file
     outs:
       - clean.txt
 ```
@@ -384,10 +400,10 @@ validation and auto-completion.
 | Field        | Description                                                                                                                                                                                                                                                                       |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                      |
-| `remote`     | (Optional) name of the remote to use for pushing/fetching.                                                                                                                                                                                                                        |
-| `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                                                                                                                        |
+| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
+| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
 | `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
+| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.

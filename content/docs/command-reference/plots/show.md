@@ -120,7 +120,7 @@ train:
 DVC identifies and plots JSON objects from the first JSON array found in the
 file (`train`):
 
-```dvc
+```cli
 $ dvc plots show train.json
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -131,7 +131,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 Use the `-y` option to change the field to plot:
 
-```dvc
+```cli
 $ dvc plots show -y accuracy train.json
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -176,7 +176,7 @@ epoch    accuracy    loss    val_accuracy    val_loss
 
 By default, this command plots the last column of the table (see `-y` option):
 
-```dvc
+```cli
 $ dvc plots show logs.csv
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -185,7 +185,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 Use the `-y` option to change the column to plot:
 
-```dvc
+```cli
 $ dvc plots show logs.csv -y loss
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -197,7 +197,7 @@ file:///Users/usr/src/dvc_plots/index.html
 A tabular data file without headers can be plotted with `--no-header` option. A
 column can be specified with `-y` by it's numeric position (starting with `0`):
 
-```dvc
+```cli
 $ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -212,7 +212,7 @@ or JPEG, or to include it differently into a web/mobile app. The `--show-vega`
 option prevents wrapping this plot spec in HTML, printing the resulting JSON to
 standard output instead:
 
-```dvc
+```cli
 $ dvc plots show --show-vega logs.csv -y accuracy
 ```
 

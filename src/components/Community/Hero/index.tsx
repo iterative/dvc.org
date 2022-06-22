@@ -1,10 +1,10 @@
 import React from 'react'
 
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
-import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { useCommunityData } from '../../../utils/front/community'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 

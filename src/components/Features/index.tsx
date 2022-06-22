@@ -1,9 +1,9 @@
 import React from 'react'
 
 import PageContent from '../PageContent'
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import HeroSection from '../HeroSection'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import PromoSection from '../PromoSection'
 
 import * as styles from './styles.module.css'
@@ -19,6 +19,22 @@ const FeaturesPage: React.FC = () => (
       </HeroSection>
       <LayoutWidthContainer>
         <div className={styles.features}>
+          <div className={styles.feature}>
+            <img
+              className={styles.featureIcon}
+              src="/img/features/icons/cluster.svg"
+              alt="cluster"
+            />
+            <h3 className={styles.featureName}>VS Code Extension</h3>
+            <div className={styles.featureDescription}>
+              Manage your data, run experiments, compare metrics, and visualize
+              plots, all in VS Code. Extend DVC capabilities and your ML
+              experimentation workflows directly into your IDE.{' '}
+              <Link href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc">
+                Start using it now
+              </Link>
+            </div>
+          </div>
           <div className={styles.feature}>
             <img
               className={styles.featureIcon}

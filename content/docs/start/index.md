@@ -13,14 +13,9 @@ running `dvc init` inside a Git project:
 
 ### ⚙️ Expand to prepare the project.
 
-In expandable sections that start with the ⚙️ emoji, we'll be providing more
-information for those trying to run the commands. It's up to you to pick the
-best way to read the material — read the text (skip sections like this, and it
-should be enough to understand the idea of DVC), or try to run them and get the
-first hand experience.
-
 We'll be building an NLP project from scratch together. The end result is
-published on [GitHub](https://github.com/iterative/example-get-started).
+published on [GitHub](https://github.com/iterative/example-get-started) -- feel
+free to clone the repo.
 
 Let's start with `git init`:
 
@@ -49,6 +44,19 @@ $ git commit -m "Initialize DVC"
 ```
 
 Now you're ready to DVC!
+
+<admon icon="fire">
+
+**New!** Once you set up a DVC project, you can work on it [from the VS Code
+IDE] or online with [Iterative Studio], the web UI that integrates all of our
+data science tools. Check out [this live demo]!
+
+[from the vs code ide]: /doc/vs-code-extension
+[iterative studio]: /doc/studio
+[this live demo]:
+  https://studio.iterative.ai/team/Iterative/views/example-get-started-zde16i6c4g
+
+</admon>
 
 DVC's features can be grouped into functional components. You can explore them
 in two independent trails:
@@ -84,8 +92,3 @@ in two independent trails:
 - [**Visualization**](/doc/start/experiments/visualization) compare experiment
   results visually, track your plots and generate them with library
   integrations.
-
-**New!** Once you set up your DVC repository, you can also interact with it
-using Iterative Studio, the online UI for DVC.
-[Here's a demo](https://studio.iterative.ai/team/Iterative/views/example-get-started-zde16i6c4g)
-of how that looks like!
