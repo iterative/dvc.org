@@ -24,7 +24,7 @@ params = dvc.api.params_show()
 ## Description
 
 Retrieves <abbr>params</abbr> keys and values from a <abbr>DVC project</abbr>
-and returns a JSON structure such as:
+and returns a dictionary, such as:
 
 ```json
 {
