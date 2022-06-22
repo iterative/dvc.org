@@ -62,10 +62,10 @@ The function parameters (below) let you restrict what's retrieved.
 - `deps` - whether to retrieve only params that are stage dependencies. Accepts
   `True` or `False` (_default_).
 
-## Example: Filter by parameter file(s)s
+## Example: Filter by parameter file(s)
 
 > Working on
-> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
+> https://github.com/iterative/pipeline-configuration/tree/main/multi-params-files
 
 You can pass a single param file path as target:
 
@@ -113,7 +113,7 @@ print(json.dumps(params, indent=2))
 ## Example: Specify a project version
 
 > Working on
-> https://github.com/iterative/example-get-started/tree/tune-hyperparams
+> https://github.com/iterative/example-get-started
 
 You can retrieve params from arbitrary Git commits, for example a branch name:
 
