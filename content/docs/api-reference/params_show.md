@@ -62,108 +62,6 @@ The function parameters (below) let you restrict what's retrieved.
 - `deps` - whether to retrieve only params that are stage dependencies. Accepts
   `True` or `False` (_default_).
 
-## Example: Filter by parameter file(s)s
-
-> Working on
-> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
-
-You can pass a single param file path as target:
-
-```py
-import json
-import dvc.api
-params = dvc.api.params_show("params.yaml")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "run_mode": "prod",
-  "configs": {
-    "dev": "configs/params_dev.yaml",
-    ...
-  },
-  "evaluate": {
-    "dataset": "micro",
-    ...
-```
-
-Or multiple targets:
-
-```py
-import json
-import dvc.api
-params = dvc.api.params_show(
-  "configs/params_dev.yaml", "configs/params_prod.yaml")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "configs/params_prod.yaml:run_mode": "prod",
-  "configs/params_prod.yaml:config_file": "configs/params_prod.yaml",
-  "configs/params_prod.yaml:data_load": {
-    ...
-  "configs/params_dev.yaml:run_mode": "dev",
-  "configs/params_dev.yaml:config_file": "configs/params_dev.yaml",
-  "configs/params_dev.yaml:data_load": {
-    ...
-```
-
-## Example: Specify a project version
-
-> Working on
-> https://github.com/iterative/example-get-started/tree/tune-hyperparams
-
-You can retrieve params from arbitrary Git commits, for example a branch name:
-
-```py
-import json
-import dvc.api
-params = dvc.api.get_params(rev="tune-hyperparams")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "prepare": {
-    "split": 0.2,
-    "seed": 20170428
-  },
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  },
-  "train": {
-    "seed": 20170428,
-    "n_est": 100,
-    "min_split": 8
-  }
-}
-```
-
-## Example: Use a remote DVC repository
-
-You can use the `repo` argument to retrieve parameters from any <abbr>DVC
-repository</abbr> without having to clone it locally.
-
-```py
-import json
-import dvc.api
-params = dvc.api.get_params(
-    repo="https://github.com/iterative/demo-fashion-mnist")
-print(json.dumps(params, indent=2))
-```
-
-```json
-{
-  "train": {
-    "batch_size": 128,
-    "hidden_units": 64,
-    "dropout": 0.4,
-    ...
-```
-
 ## Example: Filter by stage name(s)
 
 > Working on https://github.com/iterative/example-get-started
@@ -205,6 +103,109 @@ print(json.dumps(params, indent=2))
     "seed": 20170428,
     "n_est": 50,
     "min_split": 0.01
+  }
+}
+```
+
+## Example: Load specific parameter file(s)s
+
+> Working on
+> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
+
+You can pass any valid param file path as target to load all of the parameters
+defined in it:
+
+```py
+import json
+import dvc.api
+params = dvc.api.params_show("params.yaml")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "run_mode": "prod",
+  "configs": {
+    "dev": "configs/params_dev.yaml",
+    ...
+  },
+  "evaluate": {
+    "dataset": "micro",
+    ...
+```
+
+Or multiple path targets:
+
+```py
+import json
+import dvc.api
+params = dvc.api.params_show(
+  "configs/params_dev.yaml", "configs/params_prod.yaml")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "configs/params_prod.yaml:run_mode": "prod",
+  "configs/params_prod.yaml:config_file": "configs/params_prod.yaml",
+  "configs/params_prod.yaml:data_load": {
+    ...
+  "configs/params_dev.yaml:run_mode": "dev",
+  "configs/params_dev.yaml:config_file": "configs/params_dev.yaml",
+  "configs/params_dev.yaml:data_load": {
+    ...
+```
+
+## Example: Use a remote DVC repository
+
+You can use the `repo` argument to retrieve parameters from any <abbr>DVC
+repository</abbr> without having to clone it locally.
+
+```py
+import json
+import dvc.api
+params = dvc.api.get_params(
+    repo="https://github.com/iterative/demo-fashion-mnist")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "train": {
+    "batch_size": 128,
+    "hidden_units": 64,
+    "dropout": 0.4,
+    ...
+```
+
+## Example: Specify a project version
+
+> Working on
+> https://github.com/iterative/example-get-started/tree/tune-hyperparams
+
+You can retrieve params from arbitrary Git commits, for example a branch name:
+
+```py
+import json
+import dvc.api
+params = dvc.api.get_params(rev="tune-hyperparams")
+print(json.dumps(params, indent=2))
+```
+
+```json
+{
+  "prepare": {
+    "split": 0.2,
+    "seed": 20170428
+  },
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
+  },
+  "train": {
+    "seed": 20170428,
+    "n_est": 100,
+    "min_split": 8
   }
 }
 ```
