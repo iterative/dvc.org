@@ -15,15 +15,14 @@ const description =
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => (
   <MainLayout {...restProps} className={styles.layoutBlog}>
+    <Script src="//embed.redditmedia.com/widgets/platform.js" />
     <SEO
       title="Blog"
       defaultMetaTitle
       description={description}
       keywords={keywords}
       pageInfo={restProps.pageContext.pageInfo}
-    >
-      <Script async src="//embed.redditmedia.com/widgets/platform.js" />
-    </SEO>
+    />
     {children}
   </MainLayout>
 )
