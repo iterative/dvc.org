@@ -44,7 +44,7 @@ options below).
 - `-A, --all-commits` - list all experiments in the repository (overrides
   `--rev` and `--num`).
 
-- `--name-only` - print only the names of the experiments without their parent
+- `--name-only` - print only the [names of the experiments] without their parent
   Git commit.
 
 - `-h`, `--help` - shows the help message and exit.
@@ -54,6 +54,9 @@ options below).
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+[names of the experiments]:
+  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
 
 ## Examples
 

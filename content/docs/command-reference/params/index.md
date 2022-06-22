@@ -55,8 +55,8 @@ versioned directly with Git.
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
 inside params files (see [Examples](#examples)). DVC will interpret param names
 as the tree path to find those values. Supported types are: string, integer,
-float, and arrays (groups of params). Note that DVC does not ascribe any
-specific meaning to these values.
+float, boolean, and arrays (groups of params). Note that DVC does not ascribe
+any specific meaning to these values.
 
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage

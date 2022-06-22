@@ -15,7 +15,7 @@ To add more than 2 collaborators in your team, you can
 ## Make a view public
 
 To share a view on the web (i.e., to make the view public), click on the button
-labelled `Private` next to the name of the view. In the menu that pops up, turn
+labeled `Private` next to the name of the view. In the menu that pops up, turn
 on `Share to Web`.
 
 ![](https://static.iterative.ai/img/studio/view_share.png)
