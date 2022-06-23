@@ -1,7 +1,5 @@
 name: DVC docs issue
 description: Issues about the dvc.org website (including DVC docs)
-title: ""
-labels: []
 body:
   - type: markdown
     attributes:
