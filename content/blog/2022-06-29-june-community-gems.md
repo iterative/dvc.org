@@ -3,13 +3,13 @@ title: June '22 Community Gems
 date: 2022-06-29
 description: >
   A roundup of technical Q&A's from the DVC and CML communities. This month:
-  working with CML and GCP, DVC data and remotes, DVC pipelines and setups, and
-  more.
+  working with the DVC cache, DVC data and remotes, using DVC programmatically,
+  and more.
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML communities. This month:
-  working with CML and GCP, DVC data and remotes, DVC pipelines and setups, and
-  more.
-picture: 2022-06-29/may-community-gems.png
+  working with the DVC cache, DVC data and remotes, using DVC programmatically,
+  and more.
+picture: 2022-06-29/june-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/may-22-community-gems/1184
 tags:
@@ -35,7 +35,7 @@ added data. If you're working with remotes using the `--to-remote` option, you
 can skip the local cache entirely and move the file contents directly to your
 remote storage.
 
-## [How can I connect Iterative Studio to my remote repo on private network, like a GitLab server?](https://discord.com/channels/485586884165107732/563406153334128681/981543978644172830)
+## [How can I connect Iterative Studio to a remote repo on a private network, like a GitLab server?](https://discord.com/channels/485586884165107732/563406153334128681/981543978644172830)
 
 Good question about [Iterative Studio](https://studio.iterative.ai/) from
 @LilDataScientist!
@@ -76,7 +76,7 @@ the cache is the `.dir` hash that DVC uses internally as the directory tree
 representation.
 
 In summary, the image file is only stored in the shared cache once unless it's
-modified.
+modified in one of the directories.
 
 ## [Is it possible to limit which columns show for experiments in the metrics table?](https://discord.com/channels/485586884165107732/563406153334128681/985448515402616842)
 
@@ -94,13 +94,13 @@ example, if you have a table like this:
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-you could clean it up with a command like this:
+You could clean it up with a command like this:
 
 ```dvc
 $ dvc exp show --drop 'Created|train.seed|./clf|./data/*|./src/train.py|src/evaluate.py'
 ```
 
-and get a table like this:
+Then get a table like this:
 
 ```dvctable
  ─────────────────────────────────────────────────────────────────
@@ -132,11 +132,9 @@ from dvc.repo import Repo
 
 repo = Repo(".")
 
-repo.add("file_name_here")
+repo.add("test_dataset.csv")
 
 repo.push()
-
-repo.repro()
 ```
 
 Keep in mind that `dvc.repo.Repo` is not an official public API, so there is no
@@ -157,7 +155,7 @@ For example, if you run a command like:
 $ cml pr --squash train.py
 ```
 
-it will run `git add train.py`, commit the change, create a new branch, open a
+It will run `git add train.py`, commit the change, create a new branch, open a
 pull request, and squash and merge it.
 
 ## [Is there a way to programmatically update the content of `params.py`?](https://discord.com/channels/485586884165107732/563406153334128681/987004036995764304)
@@ -192,7 +190,7 @@ with modify_py("params.py") as d:
 
 ---
 
-https://media.giphy.com/media/bg1MQ6IUVoVOM/giphy.gif
+https://media.giphy.com/media/pdSncNyYgaH0wqaCqp/giphy.gif
 
 At our July Office Hours Meetup we will be ...! Make sure you join us to find
 out what it is! [RSVP for the Meetup here]() to stay up to date with specifics
