@@ -33,7 +33,7 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--rev <commit>` - remove experiments derived from the specified `<commit>` as
   baseline.
 
-- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+- `-n <num>`, `--num <num>` - remove experiments from the last `num` commits
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 

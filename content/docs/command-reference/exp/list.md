@@ -37,7 +37,7 @@ options below).
 - `--rev <commit>` - list experiments derived from the specified `<commit>` as
   baseline (HEAD by default).
 
-- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+- `-n <num>`, `--num <num>` - list experiments from the last `num` commits
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
