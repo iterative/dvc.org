@@ -95,8 +95,9 @@ $ git commit -m "config external/shared DVC cache"
 <admon type="warn">
 
 Using `dvc gc` with a shared cache may delete data needed in another project!
-See more info. about
-[cleaning a shared cache](/doc/command-reference/gc#cleaning-shared-cache-or-shared-remote)
-safely.
+See more info. about [cleaning a shared cache] safely.
+
+[cleaning a shared cache]:
+  /doc/command-reference/gc#cleaning-shared-cache-or-remote
 
 </admon>

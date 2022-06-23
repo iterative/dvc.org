@@ -56,7 +56,7 @@ all the current metrics (without comparisons).
   When specifying arguments for `--targets` before `revisions`, you should use
   `--` after this option's arguments (POSIX terminals), e.g.:
 
-  ```dvc
+  ```cli
   $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
@@ -91,7 +91,7 @@ all the current metrics (without comparisons).
 Start by creating a metrics file and commit it (see the `-M` option of
 `dvc stage add` for more details):
 
-```dvc
+```cli
 $ dvc stage add -n eval -M metrics.json \
                 'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
 
@@ -106,7 +106,7 @@ $ git commit -m "Add metrics file"
 
 Now let's simulate a change in our AUC metric:
 
-```dvc
+```cli
 $ echo '{"AUC":0.9671, "TP":531}' > metrics.json
 
 $ git diff
@@ -119,7 +119,7 @@ To see the change, let's run `dvc metrics diff`. This compares our current
 <abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
 had in the latest commit (`HEAD`):
 
-```dvc
+```cli
 $ dvc metrics diff
 Path          Metric    HEAD    workspace  Change
 metrics.json  AUC       0.9643  0.9671     0.0028
@@ -131,7 +131,7 @@ metrics.json  TP        527     531        4
 Metrics files committed with Git can be compared by referencing the commits (any
 two [revisions](https://git-scm.com/docs/revisions)):
 
-```dvc
+```cli
 $ dvc metrics diff --targets metrics.json -- 305fb8b c7bef55
 Path          Metric    305fb8b  c7bef55  Change
 metrics.json  AUC       0.9643   0.9743   0.0100

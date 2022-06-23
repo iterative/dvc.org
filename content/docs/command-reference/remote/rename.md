@@ -53,12 +53,12 @@ DVC remote, respectively.
 
 Add Amazon S3 remote:
 
-```dvc
+```cli
 $ dvc remote add myremote s3://mybucket/path
 ```
 
 Rename it:
 
-```dvc
+```cli
 $ dvc remote rename myremote s3remote
 ```

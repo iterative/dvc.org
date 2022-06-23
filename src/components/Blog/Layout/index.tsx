@@ -1,4 +1,5 @@
 import React from 'react'
+import { Script } from 'gatsby'
 import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import { LayoutComponent } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 import MainLayout from '../../../@dvcorg/gatsby-theme-iterative/components/MainLayout'
@@ -14,15 +15,14 @@ const description =
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => (
   <MainLayout {...restProps} className={styles.layoutBlog}>
+    <Script src="//embed.redditmedia.com/widgets/platform.js" />
     <SEO
       title="Blog"
       defaultMetaTitle
       description={description}
       keywords={keywords}
       pageInfo={restProps.pageContext.pageInfo}
-    >
-      <script async src="//embed.redditmedia.com/widgets/platform.js" />
-    </SEO>
+    />
     {children}
   </MainLayout>
 )

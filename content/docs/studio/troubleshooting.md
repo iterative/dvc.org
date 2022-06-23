@@ -93,7 +93,7 @@ Instructions on how to specify the sub-directory or custom files can be found
 
 ## View got created, but does not contain any data
 
-If you initiatlized a DVC repository, but did make any commit with data, metrics
+If you initialized a DVC repository, but did make any commit with data, metrics
 or hyperparameters, then you will be able to connect to this repository and
 create a view. However, the view will be empty. To solve this, either make
 relevant commits to your DVC repository. Or, specify custom files with the
