@@ -295,7 +295,8 @@ From more general to more specific, the types of outputs are as follows:
   `dvc plots show`.
 
 - **Image Plots**: Another kind of output is plots produced by the commands.
-  These are standard image files that can be shown on browsers.
+  These are standard image files that can be shown on browsers. DVC helps to add
+  show these as well with `dvc plots show`.
 
 ### Plots Outputs
 
@@ -312,7 +313,7 @@ DVC 2.0 introduced experiment management with `dvc exp` set of commands. We have
 a dedicated part in the user's guide for [experiment management]. Here, we
 briefly touch the relationship between experiments and pipelines.
 
-[experiment management]:
+[experiment management]: /doc/user-guide/experiment-management
 
 DVC uses pipelines machinery to run the experiments. Experiments have a special
 mechanism to modify the hyperparameter dependencies with `--set-param` option.
