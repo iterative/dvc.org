@@ -350,8 +350,6 @@ From more general to more specific, the types of outputs are as follows:
   These are standard image files that can be shown on browsers. DVC helps to add
   show these as well with `dvc plots show`.
 
-### Plots Outputs
-
 ## Experiments with Pipelines
 
 DVC 2.0 introduced experiment management with `dvc exp` set of commands. We have
