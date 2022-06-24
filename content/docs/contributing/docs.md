@@ -155,7 +155,7 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
   > plugin for help with this.
 
 - You can see the configuration of our formatter tool (Prettier)
-  [here](https://github.com/iterative/dvc.org/blob/master/.prettierrc). You may
+  [here](https://github.com/iterative/dvc.org/blob/main/.prettierrc). You may
   also run the formatting [commands](#all-commands) manually.
   ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn prettier ...`)
