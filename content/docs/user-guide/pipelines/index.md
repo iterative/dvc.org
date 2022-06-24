@@ -300,12 +300,57 @@ From more general to more specific, the types of outputs are as follows:
 
 ### Plots Outputs
 
-## Running Pipelines
+## Running and Reproducing Pipelines
 
-- Why?
-- How?
+The reason we describe the relationship between stages is to ensure that
+pipeline is reproducible. Having a pipeline allows to run the stages when
+needed.
 
-## Multiple Pipelines
+After you define a pipeline by editing `dvc.yaml`, you can run it with
+`dvc repro`. The name of the command is `reproduce` because running a pipeline
+once and reproducing is the same operation in DVC.
+
+The command checks whether the dependencies are invalidated. It only runs a
+stage if its dependencies are invalid.
+
+```dvc
+$ dvc repro
+'data.dvc' didn't change, skipping
+Stage 'train' didn't change, skipping
+Data and pipelines are up to date.
+```
+
+You can force to run a pipeline if its dependencies are valid with `--force`
+flag. `dvc repro` runs the stages in topological order. It runs dependencies
+before dependents. It doesn't run the stages in parallel if they are separate in
+the pipeline DAG.
+
+It shows the command output in the same terminal the command is issued. If you
+want to redirect the command output, you can modify the commands in `dvc.yaml`.
+
+DVC runs the `dvc.yaml` in the current directory by default.  
+If the directory you are in doesn't contain a `dvc.yaml` file, you can specify
+the directory with `--cd` option to `dvc`.
+
+```
+$ dvc --cd $HOME/myproject repro
+```
+
+You can have multiple pipelines distributed to multiple `dvc.yaml` files in
+different directories. You can run all of them at once with `--all-pipelines`
+flag. This works even if you're in a child directory in the project.
+
+```dvc
+$ dvc repro --all-pipelines
+```
+
+If you want to run the pipelines only in the child directories, you can also use
+`--recursive` flag. Instead of all pipelines in the project, it runs the
+pipeline in the current directory and its descendants.
+
+<admon type="warn">
+Note that DVC doesn't try to sort or find dependency relationship of multiple pipelines. 
+</admon>
 
 ## Experiments with Pipelines
 
