@@ -109,9 +109,6 @@ print(json.dumps(params, indent=2))
 
 ## Example: Load specific parameter file(s)
 
-> Working on
-> https://github.com/iterative/pipeline-conifguration/tree/main/multi-params-files
-
 You can pass any valid param file path as target to load all of the parameters
 defined in it:
 
@@ -127,10 +124,6 @@ print(json.dumps(params, indent=2))
   "run_mode": "prod",
   "configs": {
     "dev": "configs/params_dev.yaml",
-    ...
-  },
-  "evaluate": {
-    "dataset": "micro",
     ...
 ```
 
@@ -148,12 +141,10 @@ print(json.dumps(params, indent=2))
 {
   "configs/params_prod.yaml:run_mode": "prod",
   "configs/params_prod.yaml:config_file": "configs/params_prod.yaml",
-  "configs/params_prod.yaml:data_load": {
-    ...
+  ...
   "configs/params_dev.yaml:run_mode": "dev",
   "configs/params_dev.yaml:config_file": "configs/params_dev.yaml",
-  "configs/params_dev.yaml:data_load": {
-    ...
+  ...
 ```
 
 ## Example: Use a remote DVC repository
