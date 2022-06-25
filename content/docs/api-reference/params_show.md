@@ -6,8 +6,8 @@ project</abbr>.
 ```py
 def params_show(
     *targets: str,  # Optional
-    repo: Optional[str] = None,
     stages: Optional[Union[str, Iterable[str]]] = None,
+    repo: Optional[str] = None,
     rev: Optional[str] = None,
     deps: bool = False,
 ) -> Dict:
