@@ -64,24 +64,26 @@ The function parameters (below) let you restrict what's retrieved.
 
 ## Example: Filter by stage name(s)
 
-> Working on https://github.com/iterative/example-get-started
+> Working on https://github.com/iterative/example-get-started, file
+> `src/featurization.py`.
 
 `stages` can be a single name (string):
 
-```py
-import json
-import dvc.api
-params = dvc.api.get_params(stages="featurize")
-print(json.dumps(params, indent=2))
-```
+```git
++import json
+-import yaml
 
-```json
-{
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  }
-}
+-params = yaml.safe_load(open("params.yaml"))["featurize"]
++import dvc.api
++
++params = dvc.api.get_params(stages="featurize")
++params = json.dumps(params, indent=2)
+
+ ...
+-max_features = params["max_features"]
+-ngrams = params["ngrams"]
++max_features = params["featurize"]["max_features"]
++ngrams = params["featurize"]["ngrams"]
 ```
 
 Or an iterable of strings:
@@ -90,7 +92,6 @@ Or an iterable of strings:
 import json
 import dvc.api
 params = dvc.api.get_params(stages=["featurize", "train"])
-print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -116,7 +117,6 @@ defined in it:
 import json
 import dvc.api
 params = dvc.api.params_show("params.yaml")
-print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -134,7 +134,6 @@ import json
 import dvc.api
 params = dvc.api.params_show(
   "configs/params_dev.yaml", "configs/params_prod.yaml")
-print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -157,7 +156,6 @@ import json
 import dvc.api
 params = dvc.api.get_params(
     repo="https://github.com/iterative/demo-fashion-mnist")
-print(json.dumps(params, indent=2))
 ```
 
 ```json
@@ -179,7 +177,6 @@ You can retrieve params from arbitrary Git commits, for example a branch name:
 import json
 import dvc.api
 params = dvc.api.get_params(rev="tune-hyperparams")
-print(json.dumps(params, indent=2))
 ```
 
 ```json
