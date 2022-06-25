@@ -262,6 +262,23 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
   ```
 
+- `sse_customer_key` - key to encrypt data uploaded when using customer-provided
+  encryption keys
+  ([SSE-C](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)).
+  instead of `sse`. The value should be a base64-encoded 256 bit key.
+
+  ```dvc
+  $ dvc remote modify --local myremote sse_customer_key 'mysecret'
+  ```
+
+- `sse_customer_algorithm` - server-side encryption algorithm to use with
+  `sse_customer_key`. This parameter will be passed directly to AWS S3, so DVC
+  supports any value that S3 supports. `AES256` by default.
+
+  ```dvc
+  $ dvc remote modify myremote sse_customer_algorithm 'AES256'
+  ```
+
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
 

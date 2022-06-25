@@ -60,7 +60,8 @@ optimizes memory usage.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, commit hash, or [experiment name]). If `repo` is not a
-  Git repo, this option is ignored. _Default_: `HEAD`.
+  Git repo, this option is ignored. _Default_: `None` (current working tree will
+  be used)
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
   the target data. _Default_: The
