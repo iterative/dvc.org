@@ -22,11 +22,11 @@ tags:
   - Collaboration
 ---
 
-Training a machine learning model is only one step in the process of getting
-something useful out to the end users. The goal of machine learning projects to
+Training an ML model is only one step in the process of getting
+something useful out to the end users. The goal of machine learning projects is to
 make an accurate model that provides predictions based on the data received from
-a production environment. That could mean making predictions on data coming from
-an API or do some batch predictions.
+a production environment. That could mean data coming from
+an API or batch processing, for example.
 
 Either way, you'll need to save your trained and validated model in format
 that's consumable by other systems. That's why we'll be covering how to serve
