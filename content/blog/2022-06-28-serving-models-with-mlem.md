@@ -1,5 +1,5 @@
 ---
-title: Serving Models with MLEM
+title: Serving ML Models with MLEM
 date: 2022-06-28
 description: >
   Once you have a machina learning model that's ready for production, getting it out can be
