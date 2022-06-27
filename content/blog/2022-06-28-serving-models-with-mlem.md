@@ -6,10 +6,10 @@ description: >
   complicated. In this tutorial, we're going to use MLEM to deploy a model
   to an API.
 descriptionLong: >
-  Getting models out to our end users is usually a difficult task. You have to
+  Getting a machine learning model out to our end users can be a difficult task. You have to
   make sure it's in the correct format for the environment and for the way it
   will be consumed. We're going to walk through how you can use MLEM to save
-  your model and serve it through an API.
+  your model and serve it with a web API.
 picture: 2022-06-28/mlem-deploys.png
 pictureComment: Serving Models with MLEM
 author: milecia_mcgregor
