@@ -2,8 +2,8 @@
 title: Serving Models with MLEM
 date: 2022-06-28
 description: >
-  Once you have a model that's ready for production, getting it out can be a
-  complicated step. In this tutorial, we're going to use MLEM to deploy a model
+  Once you have a machina learning model that's ready for production, getting it out can be
+  complicated. In this tutorial, we're going to use MLEM to deploy a model
   to an API.
 descriptionLong: >
   Getting models out to our end users is usually a difficult task. You have to
