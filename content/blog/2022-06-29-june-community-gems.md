@@ -24,10 +24,19 @@ tags:
 
 Thanks for the question @Ramnath T!
 
-With DVC, when you run `dvc add <file name or folder name>`, the data will be
-added to your local cache and no commit is needed. This is how we make DVC aware
-of any new data we want versioned. You'll still need to remember to commit any
-other changes you've made to Git as well.
+While there isn't a single command to handle this, you can get similar behavior
+with DVC with an alias, like the following:
+
+```dvc
+$ alias dvc-add-commit='dvc add . & dvc commit'
+```
+
+When you run `dvc add <file name or folder name>`, the data will be added to
+your local cache and no commit is needed. This is how we make DVC aware of any
+new data we want versioned. If you already have data tracked by DVC, the
+`dvc commit` command adds all the changes to those files or directories without
+having to name each target. You'll still need to remember to commit any other
+changes you've made to Git as well.
 
 When you run `dvc add`, a file hash will be calculated, the file content will be
 moved to the cache, and a `.dvc` file will be created to start tracking the
@@ -55,7 +64,9 @@ This is an awesome question from @Gema Parreno!
 
 When you run `dvc get-url`, it downloads the file/directory to your local file
 system. It's _not_ tracking the downloaded data with a `.dvc` file. It's just
-pulling that data from some source to your file system.
+pulling that data from some source to your file system. If you want to download
+a file or directory without needing a DVC project, you can use the `dvc get-url`
+command.
 
 On the other hand, when you run `dvc import-url`, the local `cache` folder
 inside of `.dvc` will be updated. This is similar to running `dvc get-url` and
@@ -111,6 +122,8 @@ Then get a table like this:
  ─────────────────────────────────────────────────────────────────
 ```
 
+You can also look at these tables with the
+[DVC VS Code extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)!
 If you're interested in more advanced visualizations, you should try out
 [Iterative Studio](https://studio.iterative.ai/#features).
 
@@ -177,7 +190,9 @@ Here's an example of what that might look like:
 $ dvc exp run --set-param params.py:TrainTestSplit.SPLIT_METHOD="proportional"
 ```
 
-_Note:_ It may not be able to update Python parameters correctly.
+_Note:_
+[It may not be able to update Python parameters correctly](https://dvc.org/doc/command-reference/params#examples-python-parameters-file).
+Because of this, we recommend you use `params.yaml` files.
 
 If you need a pure Python solution, you could try something like this:
 
