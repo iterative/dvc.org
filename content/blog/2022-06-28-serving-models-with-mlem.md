@@ -30,9 +30,10 @@ an API or batch processing, for example.
 
 Either way, you'll need to save your trained and validated model in format
 that's consumable by other systems. That's why we'll be covering how to serve
-models through an endpoint with [MLEM](https://mlem.ai/). We'll start by
-training a simple model. You can get the repo we're working with
-[here](https://github.com/iterative/stale-model-example/tree/mlem-serve).
+models through a [REST](https://restfulapi.net/) endpoint with [MLEM](https://mlem.ai/).
+
+> You can get the repo we're working with
+> [here](https://github.com/iterative/stale-model-example/tree/mlem-serve).
 
 ## Train a model
 
