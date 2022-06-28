@@ -49,6 +49,8 @@ description="Install the DVC extension from the VS Code marketplace to get start
 link="marketplace.visualstudio.com"
 image="/uploads/images/2022-06-14/vscode-logo.png" />
 
+Fake link => https://dvc.org/doc/not-real-link
+
 # Why a VS Code extension?
 
 We built DVC to expand upon the Git workflow to
