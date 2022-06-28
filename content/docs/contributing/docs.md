@@ -28,7 +28,7 @@ To contribute documentation, these are the relevant locations:
   (`content/docs/sidebar.json`): Edit it to add or change entries in the
   navigation sidebar.
 
-Merging the appropriate changes to these files into the main branch is enough to
+Merging the appropriate changes to these files into the `main` branch is enough to
 update the docs and redeploy the website.
 
 ## Submitting changes
