@@ -95,12 +95,12 @@ is built with Node.js + React, including the documentation engine (built
 in-house).
 
 Each documentation page is a static Markdown file in the repository, e.g.
-[example here](https://github.com/iterative/dvc.org/blob/master/content/docs/command-reference/index.md).
+[example here](https://github.com/iterative/dvc.org/blob/main/content/docs/command-reference/index.md).
 It is rendered dynamically in the browser, no preprocessing is required. It
 means that tech writers or contributors need to write/edit a Markdown file,
 create a pull request and merge it into the master branch of the
 [repository.](https://github.com/iterative/dvc.org) The complete
-[documentation contributing guide](https://github.com/iterative/dvc.org/blob/master/README.md#contributing)
+[documentation contributing guide](https://github.com/iterative/dvc.org/blob/main/README.md#contributing)
 describes the directory structure and locations for the different documentation
 parts.
 
@@ -113,7 +113,7 @@ review process which is the same for documentation and code. A technical writer
 would be trained in working with our current development process. It generally
 means that tech writers or contributors need to write/edit a Markdown file, use
 git and Github to create a pull request and publish it. The documentation
-[contributing guide](https://github.com/iterative/dvc.org/blob/master/README.md#contributing)
+[contributing guide](https://github.com/iterative/dvc.org/blob/main/README.md#contributing)
 includes style conventions and other details. Documentation is considered of the
 same importance as code. Engineering team has a policy to write or update the
 relevant sections if something new is released. If it’s something too involved

@@ -17,7 +17,7 @@ as you add new content.
 
 Create a Markdown file in the `content/blog` folder. The file name must follow
 this pattern: `YYYY-MM-DD-my-post-title.md`. After merging this file into the
-`master` branch, the blog post will be published at `/blog/my-post-title`
+`main` branch, the blog post will be published at `/blog/my-post-title`
 automatically.
 
 Write front matter in the following format:
