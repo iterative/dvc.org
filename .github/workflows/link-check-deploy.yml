@@ -12,9 +12,10 @@ jobs:
       github.event.deployment.ref != 'master' &&
       github.event.deployment_status.state == 'success'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v3
       - id: build_check
         uses: LouisBrunner/checks-action@v1.0.0
         with:
