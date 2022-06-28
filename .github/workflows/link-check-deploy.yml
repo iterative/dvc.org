@@ -16,6 +16,9 @@ jobs:
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
       - id: build_check
         uses: LouisBrunner/checks-action@v1.0.0
         with:
