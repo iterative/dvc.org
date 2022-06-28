@@ -23,7 +23,7 @@ jobs:
           status: queued
       - name: Run Link Check
         id: check
-        uses: iterative/link-check.action@v0.11
+        uses: iterative/link-check.action@v0.12
         with:
           diff: master
           configFile: config/link-check/config.yml
