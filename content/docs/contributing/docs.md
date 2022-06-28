@@ -17,19 +17,19 @@ and then **Commit changes** from the bottom of the page.
 
 To contribute documentation, these are the relevant locations:
 
-- [Content](https://github.com/iterative/dvc.org/tree/master/content/docs)
+- [Content](https://github.com/iterative/dvc.org/tree/main/content/docs)
   (`content/docs/`):
   [Markdown](https://guides.github.com/features/mastering-markdown/) files. One
   file — one page of the documentation.
-- [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
+- [Images](https://github.com/iterative/dvc.org/tree/main/static/img)
   (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
   Markdown files like this: `![](/img/<filename>.gif)`.
-- [Navigation](https://github.com/iterative/dvc.org/tree/master/content/docs/sidebar.json)
+- [Navigation](https://github.com/iterative/dvc.org/tree/main/content/docs/sidebar.json)
   (`content/docs/sidebar.json`): Edit it to add or change entries in the
   navigation sidebar.
 
-Merging the appropriate changes to these files into the master branch is enough
-to update the docs and redeploy the website.
+Merging the appropriate changes to these files into the main branch is enough to
+update the docs and redeploy the website.
 
 ## Submitting changes
 
@@ -190,7 +190,7 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
-> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/content/docs/user-guide/contributing/docs.md).
+> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/main/content/docs/user-guide/contributing/docs.md).
 
 ## General language guidelines
 
