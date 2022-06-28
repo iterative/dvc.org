@@ -11,7 +11,7 @@ descriptionLong: >
   and more.
 picture: 2022-06-29/june-community-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/may-22-community-gems/1184
+commentsUrl: https://discuss.dvc.org/t/june-22-community-gems/1226
 tags:
   - DVC Remotes
   - Pipelines
@@ -122,7 +122,7 @@ Then get a table like this:
  ─────────────────────────────────────────────────────────────────
 ```
 
-You can also look at these tables with the
+You can also look at/edit these tables with the
 [DVC VS Code extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)!
 If you're interested in more advanced visualizations, you should try out
 [Iterative Studio](https://studio.iterative.ai/#features).
@@ -207,9 +207,12 @@ with modify_py("params.py") as d:
 
 https://media.giphy.com/media/pdSncNyYgaH0wqaCqp/giphy.gif
 
-At our July Office Hours Meetup we will be ...! Make sure you join us to find
-out what it is! [RSVP for the Meetup here]() to stay up to date with specifics
-as we get closer to the event!
+Keep an eye out for our next Office Hours Meetup! Make sure you stay up to date
+with us to find out what it is!
+[Join our group](https://www.meetup.com/machine-learning-engineer-community-virtual-meetups/)
+to stay up to date with specifics as we get closer to the event!
 
-[Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
-CML questions answered!
+Check out [our docs](/doc) to get all your DVC and CML questions answered!
+
+[Join us in Discord](https://discord.com/invite/dvwXA2N) to chat with the
+community!
