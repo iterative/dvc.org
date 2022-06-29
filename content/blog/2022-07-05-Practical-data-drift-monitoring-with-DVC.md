@@ -9,9 +9,10 @@ descriptionLong: >
   important step in the ML system, as we already discussed in [Preventing Stale
   Models in Production](https://dvc.org/blog/stale-models). We will go deeper in
   this blog post and set up an automatic drift detector as part of the ML
-  pipeline. Quite a few libraries, even open-source, provide  users with drift detection
-  capabilities. We will show how we may integrate  them into the ML system with
-  DVC and how, in general, DVC features are  beneficial for data drift detection.
+  pipeline. Quite a few libraries, even open-source, provide  users with drift
+  detection capabilities. We will show how we may integrate  them into the ML
+  system with DVC and how, in general, DVC features are  beneficial for data
+  drift detection.
 picture: TODO
 author: dan_martinec
 commentsUrl: TODO
