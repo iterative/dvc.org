@@ -1,42 +1,40 @@
 ---
-title: 
-  'Practical data drift monitoring with DVC'
-date: 2022-07-05 
+title: 'Practical data drift monitoring with DVC'
+date: 2022-07-05
 description: >
   Showing how to implement data drift detection with DVC.
 
 descriptionLong: >
   Detection of data drift has recently been put in the spotlight as a very
-  important step in the ML system, as we already discussed
-  in [Preventing Stale Models in Production](https://dvc.org/blog/stale-models).
-  We will go deeper in this blog post and set up an automatic drift detector as
-  part of the ML pipeline. Quite a few libraries, even open-source, provide 
-  users with drift detection capabilities. We will show how we may integrate 
-  them into the ML system with DVC and how, in general, DVC features are 
-  beneficial for data drift detection.
-picture:  TODO
+  important step in the ML system, as we already discussed in [Preventing Stale
+  Models in Production](https://dvc.org/blog/stale-models). We will go deeper in
+  this blog post and set up an automatic drift detector as part of the ML
+  pipeline. Quite a few libraries, even open-source, provide  users with drift detection
+  capabilities. We will show how we may integrate  them into the ML system with
+  DVC and how, in general, DVC features are  beneficial for data drift detection.
+picture: TODO
 author: dan_martinec
 commentsUrl: TODO
 
 tags:
-- Data Validation
-- Machine Learning
-- MLOps
-- Productionization
-
+  - Data Validation
+  - Machine Learning
+  - MLOps
+  - Productionization
 ---
 
 # Introduction
+
 ## Data distribution shift
 
 There is a large boom of ML systems deployed to production these days. This
 brings many demands to ML engineers. ML pipeline automation is possibly the most
 important one. However, there is also one less known but very important aspect.
 That is the validation of inputs and outputs of the ML system. In fact, data
-validation is listed as one of
-the [hidden technical debts in machine learning systems](https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf). 
-There is a long history of projects that end up in a disaster and that could
-be most likely saved by a proper data validation process.
+validation is listed as one of the
+[hidden technical debts in machine learning systems](https://proceedings.neurips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf).
+There is a long history of projects that end up in a disaster and that could be
+most likely saved by a proper data validation process.
 
 One of the common problems is a data distribution shift. In short, the data the
 model uses has significantly changed over time. This results in poor performance
@@ -50,24 +48,24 @@ can see a significant change of pattern in the afternoon hours.
 
 ![Example of concept drift](/uploads/images/2022-07-05/example_of_concept_drift.png '=800')
 
-Data validation is a vast topic to cover. We refer
-to an excellent [Data Distribution Shifts and Monitoring post](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html)
+Data validation is a vast topic to cover. We refer to an excellent
+[Data Distribution Shifts and Monitoring post](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html)
 for a detailed overview and precise definition of covariate shift and concept
 drift.
 
 ## Project description
 
-We demonstrate the data validation concept on
-a [bike-sharing dataset](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset) 
-(same as in [Preventing Stale Models in Production](https://dvc.org/blog/stale-models))
-from a bike-rental company. The tricky part about this project is that it is
-highly correlated to the environmental and seasonal settings. This makes both
-the ML model and the drift detector training rather complicated as the input
-data is changing all the time, and we need to consider it during ML system
-design.
+We demonstrate the data validation concept on a
+[bike-sharing dataset](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)
+(same as in
+[Preventing Stale Models in Production](https://dvc.org/blog/stale-models)) from
+a bike-rental company. The tricky part about this project is that it is highly
+correlated to the environmental and seasonal settings. This makes both the ML
+model and the drift detector training rather complicated as the input data is
+changing all the time, and we need to consider it during ML system design.
 
 | Timestamp        | temp | hum  | windspeed | hour | weekday | season | holiday | workingday | cnt |
-|------------------|------|------|-----------|------|---------|--------|---------|------------|-----|
+| ---------------- | ---- | ---- | --------- | ---- | ------- | ------ | ------- | ---------- | --- |
 | 2012-01-01 00:00 | 0.36 | 0.66 | 0         | 0    | 0       | 1      | 0       | 0          | 48  |
 | 2012-01-01 01:00 | 0.36 | 0.66 | 0.1343    | 1    | 0       | 1      | 0       | 0          | 93  |
 | 2012-01-01 02:00 | 0.32 | 0.76 | 0         | 2    | 0       | 1      | 0       | 0          | 75  |
@@ -80,8 +78,8 @@ three in our case.
 The first pattern we need to watch for is the training/test dataset split during
 the training of the ML model. Although the test dataset is usually smaller than
 the training dataset, we need to ensure that those datasets are similar. A
-significantly different feature distribution, the
-so-called **[covariate shift](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html#covariate-shift)**
+significantly different feature distribution, the so-called
+**[covariate shift](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html#covariate-shift)**
 , would either cause bad performance of the model or imprecise evaluation of the
 test dataset.
 
@@ -90,8 +88,8 @@ that working days have two peeks of rented bikes, one in the morning and one in
 the afternoon. The non-working days, on the other hand, have a peak in the
 afternoon hours. In the figures below, you can see the pattern of March and
 April data. The ML model should learn these patterns and also should be
-monitored for any change. If these patterns change,
-then **[concept drift](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html#concept-drift)**
+monitored for any change. If these patterns change, then
+**[concept drift](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html#concept-drift)**
 happens, and our model accuracy significantly drops.
 
 ![Daily patterns of rented bikes](/uploads/images/2022-07-05/rented_bikes_days.png)
@@ -100,17 +98,22 @@ happens, and our model accuracy significantly drops.
 
 ## Drift detectors
 
-We choose to use an open-source
-library [Alibi-detect](https://docs.seldon.io/projects/alibi-detect/en/latest/)
-for the drift detection. This library provides a unified API for various drift 
-and outlier detection algorithms. Picking the suitable one depends on the 
-type of input data and on the pattern we would like to detect. This library 
-supports both structured and unstructured data.
+We choose to use an open-source library
+[Alibi-detect](https://docs.seldon.io/projects/alibi-detect/en/latest/) for the
+drift detection. This library provides a unified API for various drift and
+outlier detection algorithms. Picking the suitable one depends on the type of
+input data and on the pattern we would like to detect. This library supports
+both structured and unstructured data.
 
 We will use two different algorithms in our pipeline:
 
-- The [MMD drift detector](https://docs.seldon.io/projects/alibi-detect/en/latest/cd/methods/mmddrift.html) for the detection of covariate shift (train/test split validation) as it is easy to use and gave us good results.
-- The [Seq2Seq detector](https://docs.seldon.io/projects/alibi-detect/en/latest/examples/od_seq2seq_ecg.html) for the detection of concept drift in working and non-working days.
+- The
+  [MMD drift detector](https://docs.seldon.io/projects/alibi-detect/en/latest/cd/methods/mmddrift.html)
+  for the detection of covariate shift (train/test split validation) as it is
+  easy to use and gave us good results.
+- The
+  [Seq2Seq detector](https://docs.seldon.io/projects/alibi-detect/en/latest/examples/od_seq2seq_ecg.html)
+  for the detection of concept drift in working and non-working days.
 
 We need to note that the Seq2Seq detector is not a drift detector per se; the
 Alibi-detect library categorizes it as an outlier detector. It works with
@@ -122,10 +125,10 @@ outlier/non-outlier, and if we see multiple subsequent outliers, it may signal
 that the underlying pattern has changed. This way, we will use an outlier
 detector to check for concept drift.
 
-In fact, one of the main difficulties in the drift/outlier
-detection is that usually, we can’t use the detection algorithms out of the box
-as in our case. But we need to understand what is in the data and apply the
-algorithm accordingly.
+In fact, one of the main difficulties in the drift/outlier detection is that
+usually, we can’t use the detection algorithms out of the box as in our case.
+But we need to understand what is in the data and apply the algorithm
+accordingly.
 
 ## DVC pipeline
 
@@ -136,9 +139,9 @@ trained detector for later use.
 
 Although these steps can be done ‘manually’, for example, in a Jupyter notebook,
 it quickly becomes challenging to manage the whole process. Particularly if we
-would like to use the same training dataset for the ML model and the
-detectors. Fortunately, we have a tool called DVC that is a great helper for
-these scenarios as we can utilize its three core features. That is:
+would like to use the same training dataset for the ML model and the detectors.
+Fortunately, we have a tool called DVC that is a great helper for these
+scenarios as we can utilize its three core features. That is:
 
 ### 1) Create an ML system pipeline
 
@@ -258,15 +261,14 @@ rented bikes daily. The other lines show the reconstructed patterns from the
 detector. The more significant the difference between the input and output, the
 less accurate the detector is.
 
-
 ![Effect of various latent_dim values on concept drift detector](/uploads/images/2022-07-05/training_concept_drift.png)
 
 # Detection of concept drift in data
 
 At this point, we have trained both the ML model and drift detectors and we are
 ready to deploy them. A detailed description of how to deploy these models is
-beyond scope of this blog post but you may find inspiration in
-the [MLEM blog post](https://dvc.org/blog/MLEM-release). To show how the concept
+beyond scope of this blog post but you may find inspiration in the
+[MLEM blog post](https://dvc.org/blog/MLEM-release). To show how the concept
 drift detector performs on the ‘production’ data, we have prepared another DVC
 pipeline that is shown in the diagram below. This pipeline has only two stages.
 In the first stage, we prepare data that shall mimic production data. In the
@@ -297,11 +299,11 @@ $ dvc dag concept_drift_demo/dvc.yaml
 
 This pipeline shall represent the following imaginary business scenario. We
 train our ML model on January-April data, and it seems to work fine. Let’s
-modify the original dataset to simulate the following business scenario: *A new
+modify the original dataset to simulate the following business scenario: _A new
 competitor in the area starts to offer significant discounts for afternoon hours
 during weekends. This will have a tremendous effect on the number of rented
-bikes. Estimate says that this decreased the number of rented bikes by 70%.*
-We can reproduce this scenario by running:
+bikes. Estimate says that this decreased the number of rented bikes by 70%._ We
+can reproduce this scenario by running:
 
 ```bash
 $ dvc repro concept_drift_demo/dvc.yaml
@@ -315,8 +317,7 @@ detector’s threshold. Therefore, we would detect that there is a concept drift
 ![Effect of various latent_dim values on concept drift detector](/uploads/images/2022-07-05/concept_drift_effect.png)
 
 You can further see how this drift affects the error of ML model prediction. It
-is almost doubled.
-![ML error](/uploads/images/2022-07-05/ML_error.png)
+is almost doubled. ![ML error](/uploads/images/2022-07-05/ML_error.png)
 
 # Conclusion
 
@@ -324,8 +325,8 @@ In this blog post, we showed an example of monitoring data for two cases of data
 distribution shift: covariate shift and concept drift. We demonstrated how drift
 might affect the data in a possible business scenario. The pivot of the post was
 about how DVC is beneficial in drift detection. We saw that we can integrate the
-drift detector into the DVC pipeline. This way, as new data will be coming and we
-will be re-training the ML model, we will automatically detect if there is a
+drift detector into the DVC pipeline. This way, as new data will be coming and
+we will be re-training the ML model, we will automatically detect if there is a
 drift in it. Another benefit of DVC was that we could easily performance of
 detectors for various configurations. This will be also important in the future
 if we would have to retrain the drift detector.
