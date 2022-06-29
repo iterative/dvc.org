@@ -33,8 +33,8 @@ code.
 1. Data series files, which can be JSON, YAML, CSV or TSV.
 2. Image files in JPEG, GIF, or PNG format.
 
-DVC generates visualizations as static HTML webpages that can be open with a web
-browser. They can also be saved as SVG or PNG image files from the browser.
+DVC generates plots as static HTML webpages that can be open with a web browser.
+They can also be saved as SVG or PNG image files from the browser.
 
 Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
 rendering (declarative JSON grammar for defining graphics). Images are rendered
