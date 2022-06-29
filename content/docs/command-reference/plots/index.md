@@ -372,7 +372,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_spec_simple_custom.svg)
 
-## Example: multiple data-series plot definition:
+## Example: multiple data-series plot definition
 
 Data in `training_data.csv`:
 
