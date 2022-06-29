@@ -77,8 +77,7 @@ The function parameters (below) let you restrict what's retrieved.
 -params = yaml.safe_load(open("params.yaml"))["featurize"]
 +import dvc.api
 +
-+params = dvc.api.get_params(stages="featurize")
-+params = json.dumps(params, indent=2)
++params = dvc.api.params_show(stages="featurize")
 
  ...
 -max_features = params["max_features"]
@@ -92,7 +91,7 @@ Or an iterable of strings:
 ```py
 import json
 import dvc.api
-params = dvc.api.get_params(stages=["featurize", "train"])
+params = dvc.api.params_show(stages=["featurize", "train"])
 ```
 
 ```json
@@ -177,7 +176,7 @@ You can retrieve params from arbitrary Git commits, for example a branch name:
 ```py
 import json
 import dvc.api
-params = dvc.api.get_params(rev="tune-hyperparams")
+params = dvc.api.params_show(rev="tune-hyperparams")
 ```
 
 ```json
