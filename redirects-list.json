@@ -81,10 +81,13 @@
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
-  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
-  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
-  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
-  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
+  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/projects/project-settings",
+  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/projects/explore-experiments",
+  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/projects/visualize-experiments",
+  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/projects/run-experiments",
+
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings",
+  "^/doc/studio/user-guide/views/(.*)$                                                    /doc/studio/user-guide/projects/$1",
 
   "^/(.+)/$                                                                               /$1"
 ]

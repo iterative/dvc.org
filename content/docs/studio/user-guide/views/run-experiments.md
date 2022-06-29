@@ -20,10 +20,10 @@ refer to [CML](https://cml.dev). You can use any cloud or Kubernetes for the
 model training process. CML also generates a report after the CI/CD setup
 executes.
 
-> Due to access restrictions, you cannot run experiments on the demo view
+> Due to access restrictions, you cannot run experiments on the demo project
 > (`example-get-started`) that is provided to you by default. Once you create
-> views for your ML project repositories, you can follow the instructions given
-> below to run experiments directly from Iterative Studio.
+> projects for your ML project repositories, you can follow the instructions
+> given below to run experiments directly from Iterative Studio.
 
 ## Submit a new experiment
 
@@ -67,7 +67,7 @@ on `Commit changes`.
 
 ![](https://static.iterative.ai/img/studio/cml_commit.png)
 
-At this point, the new experiment appears in the view table. If you just
+At this point, the new experiment appears in the project table. If you just
 committed to a new branch, then a new pull request will also have been created
 from the new branch to the base branch.
 
@@ -80,11 +80,11 @@ more details on how to set up
 refer to [CML](https://cml.dev). You can also create CML reports with metrics,
 plots or other details at the end of each experiment run.
 
-Once the experiment completes, its metrics will be available in the view table.
-You can then generate plots and trend charts for it, or compare it with the
-other experiments. If a CML report has been defined in your CI/CD flow, you can
-access the report by clicking on the CML report icon next to the Git commit
-message in the view table. The `CML Report` tooltip appears over the CML report
-icon on mouse hover.
+Once the experiment completes, its metrics will be available in the project
+table. You can then generate plots and trend charts for it, or compare it with
+the other experiments. If a CML report has been defined in your CI/CD flow, you
+can access the report by clicking on the CML report icon next to the Git commit
+message in the project table. The `CML Report` tooltip appears over the CML
+report icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)

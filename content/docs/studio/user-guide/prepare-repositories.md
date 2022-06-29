@@ -1,6 +1,6 @@
 # Prepare Your Repositories
 
-Iterative Studio creates views by identifying datasets, metrics and
+Iterative Studio creates projects by identifying datasets, metrics and
 hyperparameters defined in your Git repositories. These values are stored in
 your Git repositories as JSON or YAML files. You can add these values to your
 Git repositories in two ways:
@@ -29,11 +29,11 @@ Git repositories in two ways:
    [ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
 
 2. **Specify custom files with your metrics and parameters**: If you are working
-   with a non-DVC repository, you can still create views for it provided that
-   the metrics and hyperparameters are stored in JSON or YAML files. For
-   instance, if you have an ML project for which you generate and save metrics
-   either manually or using some ML tracking tools, then you can create a view
-   for this project by specifying the file (within your Git repo) which contains
-   your saved metrics. Refer to the section on
-   [view settings](/doc/studio/user-guide/views/view-settings#non-dvc-repositories)
+   with a non-DVC repository, you can add the project provided that the metrics
+   and hyperparameters are stored in JSON or YAML files. For instance, if you
+   have an ML project for which you generate and save metrics either manually or
+   using some ML tracking tools, then you can add this project by specifying the
+   file (within your Git repo) which contains your saved metrics. Refer to the
+   section on
+   [project settings](/doc/studio/user-guide/projects/project-settings#non-dvc-repositories)
    to learn how to specify the custom files.
