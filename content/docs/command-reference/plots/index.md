@@ -104,11 +104,11 @@ DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
 create visualizations out of users data. Pre-defined specifications are called
 templates.
 
-DVC has few built in templates. They are stored within
+DVC has a few built-in templates. They are stored within
 [`dvc-render`](https://github.com/iterative/dvc-render) library. The default one
 is called `linear`. It can be changed with the `--template` (`-t`) option of
 `dvc plots show` and `dvc plots diff`. The argument provided to `--template`
-option can be either a built-in template name or path to a JSON specification.
+can be either a built-in template name or path to a JSON specification.
 For templates stored in the `.dvc/plots/` directory, the path and the json
 extension are not required: user can specify only the base name e.g.
 `--template scatter`.
