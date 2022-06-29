@@ -1,4 +1,4 @@
-## plot templates
+# plot templates
 
 Dump plot templates.
 
