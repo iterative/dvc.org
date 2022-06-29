@@ -9,10 +9,11 @@ build their own templates from zero.
 ## Synopsis
 
 ```usage
-usage: dvc plots templates [-h] [-q | -v] [-o <path>] [{simple,linear,confusion,confusion_normalized,scatter,smooth}]
+usage: dvc plots templates [-h] [-q | -v] [-o <path>]
+       [{simple,linear,confusion,confusion_normalized,scatter,smooth}]
 
 positional arguments:
- template
+ TEMPLATE
                         Template to write. Writes all templates by default.
 ```
 
@@ -24,7 +25,7 @@ generating plots in the style that best fits their needs. This keeps <abbr>DVC
 projects</abbr> programming language agnostic, as it's independent from user
 display configuration and visualization code.
 
-To make creation of custom plots easier, DVC provides `templates` command that
+To make creation of custom plots easier, DVC provides the `templates` command that
 can dump one or all templates used by DVC.
 
 `templates` command dumps the templates to `.dvc/plots` by default.
@@ -44,10 +45,10 @@ inject the plot values.
   above).
 
 - `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
-  with the `--title` option of the `dvc plot` subcommands.
+  with the `--title` option of the `dvc plots` subcommands.
 
 - `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
-  defined with the `-x` option of the `dvc plot` subcommands. The auto-generated
+  defined with the `-x` option of the `dvc plots` subcommands. The auto-generated
   `step` field (explained above) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
@@ -63,9 +64,9 @@ inject the plot values.
 
 - `-o <path>`, `--out <path>` - Directory to save templates to.
 
-## Example: Modyfing simple template
+## Example: Modifying simple template
 
-We will modify the `simple` template to show bars instead of line. Lets take
+We will modify the `simple` template to show bars instead of lines. Lets take
 sample `data.csv` file:
 
 ```
