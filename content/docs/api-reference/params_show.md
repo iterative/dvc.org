@@ -23,7 +23,7 @@ params = dvc.api.params_show()
 
 ## Description
 
-Retrieves <abbr>params</abbr> keys and values from a <abbr>DVC project</abbr>
+Retrieves <abbr>parameter</abbr> keys and values from a <abbr>DVC project</abbr>
 and returns a dictionary, such as:
 
 ```json
@@ -33,18 +33,19 @@ and returns a dictionary, such as:
 }
 ```
 
-Without arguments, this function will retrieve all params from all tracked
-parameter files (used in any `dvc.yaml` file). This applies to the current
-project version when using Git (including any changes in the working tree).
+Without arguments, this function will retrieve all parameters from all tracked
+param files (used in any `dvc.yaml` file). This applies to the current project
+version when using Git (including any changes in the working tree).
 
 The function parameters (below) let you restrict what's retrieved.
 
 ## Parameters
 
-- `*targets` - paths to one or more valid parameter file(s) to retrieve params
-  from. For example, `"params.py, myparams.toml"`. If no `targets` are provided,
-  all param files tracked in any `dvc.yaml` will be used by default. Note that
-  explicit targets don't have to be used in a `dvc.yaml` (unless `deps=True`).
+- `*targets` - one or more separate path(s) to valid parameter file(s) to
+  retrieve params from, for example `"params.py", "feat/params.toml"`. If no
+  `targets` are provided, all param files tracked in any `dvc.yaml` will be
+  targeted by default. Note that explicit targets don't have to be in a
+  `dvc.yaml` (unless `deps=True`).
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
