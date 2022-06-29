@@ -2,14 +2,14 @@
 title: Serving ML Models with MLEM
 date: 2022-06-28
 description: >
-  Once you have a machina learning model that's ready for production, getting it out can be
-  complicated. In this tutorial, we're going to use MLEM to deploy a model
-  to an API.
+  Once you have a machina learning model that's ready for production, getting it
+  out can be complicated. In this tutorial, we're going to use MLEM to deploy a
+  model to an API.
 descriptionLong: >
-  Getting a machine learning model out to our end users can be a difficult task. You have to
-  make sure it's in the correct format for the environment and for the way it
-  will be consumed. We're going to walk through how you can use MLEM to save
-  your model and serve it with a web API.
+  Getting a machine learning model out to our end users can be a difficult task.
+  You have to make sure it's in the correct format for the environment and for
+  the way it will be consumed. We're going to walk through how you can use MLEM
+  to save your model and serve it with a web API.
 picture: 2022-06-28/mlem-deploys.png
 pictureComment: Serving Models with MLEM
 author: milecia_mcgregor
@@ -22,15 +22,16 @@ tags:
   - Collaboration
 ---
 
-Training an ML model is only one step in the process of getting
-something useful out to the end users. The goal of machine learning projects is to
-make an accurate model that provides predictions based on the data received from
-a production environment. That could mean data coming from
-an API or batch processing, for example.
+Training an ML model is only one step in the process of getting something useful
+out to the end users. The goal of machine learning projects is to make an
+accurate model that provides predictions based on the data received from a
+production environment. That could mean data coming from an API or batch
+processing, for example.
 
 Either way, you'll need to save your trained and validated model in format
 that's consumable by other systems. That's why we'll be covering how to serve
-models through a [REST](https://restfulapi.net/) endpoint with [MLEM](https://mlem.ai/).
+models through a [REST](https://restfulapi.net/) endpoint with
+[MLEM](https://mlem.ai/).
 
 > You can get the repo we're working with
 > [here](https://github.com/iterative/stale-model-example/tree/mlem-serve).
