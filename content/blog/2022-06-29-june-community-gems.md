@@ -93,7 +93,7 @@ modified in one of the directories.
 
 Nice question from @DylanTF!
 
-You can use `dvc exp --drop` (or `--keep`) to decide what to hide (or show). For
+You can use `dvc exp show --drop` (or `--keep`) to decide what to hide (or show). For
 example, if you have a table like this:
 
 ```dvctable
