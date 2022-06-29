@@ -16,27 +16,21 @@ tags:
   - DVC Remotes
   - Pipelines
   - CML
-  - GCP
+  - DVC Cache
   - Community
 ---
 
-## [Is there something like `git add-commit -m "some message"` for DVC?](https://discord.com/channels/485586884165107732/563406153334128681/981498675689828362)
+## [Is there a shorthand command to commit changes to all modified files in DVC without manually adding them all individually?](https://discord.com/channels/485586884165107732/563406153334128681/981498675689828362)
 
 Thanks for the question @Ramnath T!
 
-While there isn't a single command to handle this, you can get similar behavior
-with DVC with an alias, like the following:
+If you already have data tracked by DVC, the `dvc commit` command adds all the
+changes to those files or directories without having to name each target. You'll
+still need to remember to commit any other changes you've made to Git as well.
 
-```dvc
-$ alias dvc-add-commit='dvc add . & dvc commit'
-```
-
-When you run `dvc add <file name or folder name>`, the data will be added to
-your local cache and no commit is needed. This is how we make DVC aware of any
-new data we want versioned. If you already have data tracked by DVC, the
-`dvc commit` command adds all the changes to those files or directories without
-having to name each target. You'll still need to remember to commit any other
-changes you've made to Git as well.
+If you don't have data tracked by DVC, run `dvc add <file name or folder name>`
+and the data will be added to your local cache and no commit is needed. This is
+how we make DVC aware of any new data we want versioned.
 
 When you run `dvc add`, a file hash will be calculated, the file content will be
 moved to the cache, and a `.dvc` file will be created to start tracking the
@@ -70,7 +64,9 @@ command.
 
 On the other hand, when you run `dvc import-url`, the local `cache` folder
 inside of `.dvc` will be updated. This is similar to running `dvc get-url` and
-`dvc add` together.
+`dvc add` together except that `dvc import-url` also saves a link to the
+original file/directory location so that if it changes, you can download the
+updated data.
 
 There is one more option to bypass the local cache and transfer data directly to
 your remote storage using `dvc import-url <url> --to-remote`. This doesn't
@@ -120,6 +116,24 @@ Then get a table like this:
   workspace           -         -   300           75
   mlem-serve    0.76681   0.38867   300           75
  ─────────────────────────────────────────────────────────────────
+```
+
+Alternatively, you can run the following command to only show the columns that
+have changed in the experiment run:
+
+```dvc
+$ dvc exp show --only-changed
+```
+
+This will produce a table similar to this one:
+
+```dvctable
+ ─────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**   neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**  param:**train.n_est**   dep:**src/train.py**
+ ─────────────────────────────────────────────────────────────────────────────
+  workspace    -                     -         -   325           94279e0
+  mlem-serve   Jun 16, 2022    0.76681   0.38867   300           bdc3fe9
+ ─────────────────────────────────────────────────────────────────────────────
 ```
 
 You can also look at/edit these tables with the
