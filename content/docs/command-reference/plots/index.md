@@ -97,9 +97,10 @@ under `plots` key.
 
 ## Plots definitions
 
-Plots defined in `dvc.yaml` under the `plots` key are especially useful when users want to compare
-data from different data sources residing on the same version of the project.
-For example, comparing training versus test results on current branch.
+Plots defined in `dvc.yaml` under the `plots` key are especially useful when
+users want to compare data from different data sources residing on the same
+version of the project. For example, comparing training versus test results on
+current branch.
 
 ### Syntax
 
