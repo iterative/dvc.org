@@ -101,7 +101,7 @@ names in the `train` array below:
 ## Plot templates (data series only)
 
 DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
-create visualizations out of users data. Pre-defined specifications are called
+create visualizations out of users' data. Pre-defined specifications are called
 templates.
 
 DVC has a few built-in templates. They are stored within
