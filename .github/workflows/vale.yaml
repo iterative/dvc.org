@@ -11,4 +11,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          files: '["content/docs/start", "content/docs/use-cases"]'
+          files: "content/docs"
