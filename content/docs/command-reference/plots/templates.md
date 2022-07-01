@@ -25,8 +25,8 @@ generating plots in the style that best fits their needs. This keeps <abbr>DVC
 projects</abbr> programming language agnostic, as it's independent from user
 display configuration and visualization code.
 
-To make creation of custom plots easier, DVC provides the `templates` command that
-can dump one or all templates used by DVC.
+To make creation of custom plots easier, DVC provides the `templates` command
+that can dump one or all templates used by DVC.
 
 `templates` command dumps the templates to `.dvc/plots` by default.
 
@@ -48,8 +48,8 @@ inject the plot values.
   with the `--title` option of the `dvc plots` subcommands.
 
 - `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
-  defined with the `-x` option of the `dvc plots` subcommands. The auto-generated
-  `step` field (explained above) is the default.
+  defined with the `-x` option of the `dvc plots` subcommands. The
+  auto-generated `step` field (explained above) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
   defined with the `-y` option of the `dvc plot` subcommands. It defaults to the
