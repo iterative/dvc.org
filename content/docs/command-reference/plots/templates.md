@@ -25,40 +25,13 @@ generating plots in the style that best fits their needs. This keeps <abbr>DVC
 projects</abbr> programming language agnostic, as it's independent from user
 display configuration and visualization code.
 
-To make creation of custom plots easier, DVC provides the `templates` command that
-can dump one or all templates used by DVC.
+To make creation of custom plots easier, DVC provides the `templates` command
+that can dump one or all templates used by DVC.
 
 `templates` command dumps the templates to `.dvc/plots` by default.
 
 Note that templates can only be used with
 [data-series plots](/doc/command-reference/plots#description).
-
-### DVC template anchors
-
-Plot templates are [Vega-Lite](https://vega.github.io/vega-lite/) JSON
-specifications. They use predefined DVC anchors as placeholders for DVC to
-inject the plot values.
-
-- `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
-  files is converted to a single JSON array, and injected instead of this
-  anchor. Two additional fields will be added: `step` and `rev` (explained
-  above).
-
-- `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
-  with the `--title` option of the `dvc plots` subcommands.
-
-- `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
-  defined with the `-x` option of the `dvc plots` subcommands. The auto-generated
-  `step` field (explained above) is the default.
-
-- `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
-  defined with the `-y` option of the `dvc plot` subcommands. It defaults to the
-  last header of the metrics file: the last column for CSV/TSV, or the last
-  field for JSON/YAML.
-
-- `<DVC_METRIC_X_LABEL>` (optional) - field name to display as the X axis label
-
-- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the Y axis label
 
 ## Options
 
@@ -66,7 +39,7 @@ inject the plot values.
 
 ## Example: Modifying simple template
 
-We will modify the `simple` template to show bars instead of lines. Lets take
+We will modify the `simple` template to show bars instead of line. Lets take
 sample `data.csv` file:
 
 ```

@@ -77,8 +77,8 @@ epoch, AUC, loss
 Hierarchical file formats such as JSON and YAML consists of an array of
 consistent objects (sharing a common structure): All objects should contain the
 fields used for the X and Y axis of the plot (see
-[DVC template anchors](#dvc-template-anchors)); Extra elements will be ignored
-silently.
+[DVC template anchors](/doc/command-reference/plots#custom-templates)); Extra
+elements will be ignored silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
 them, from the array's objects. For example, `val_loss` is one of the field
@@ -104,18 +104,23 @@ DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
 create visualizations out of users' data. Pre-defined specifications are called
 templates.
 
-DVC has a few built-in templates. They are stored within
-[`dvc-render`](https://github.com/iterative/dvc-render) library. The default one
-is called `linear`. It can be changed with the `--template` (`-t`) option of
-`dvc plots show` and `dvc plots diff`. The argument provided to `--template`
-can be either a built-in template name or path to a JSON specification.
-For templates stored in the `.dvc/plots/` directory, the path and the json
+The `linear` template is the default. It can be changed with the `--template`
+(`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
+`--template` can be a (built-in) template name or a path to a
+[custom template](https://dvc.org/doc/command-reference/plots/templates).
+
+<admon type="tip">
+For templates stored in `.dvc/plots`, the path and the json
 extension are not required: user can specify only the base name e.g.
 `--template scatter`.
+</admon>
 
 DVC has the following built-in plot templates:
 
-- `linear` - linear plot, used by default
+- `linear` - linear plot (default)
+- `simple` - simplest linear template, good base for creating custom template
+  and learning how to work with
+  [`templates`](/doc/command-reference/plots/templates) command
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
   [example](/doc/command-reference/plots#example-smooth-plot)
@@ -123,8 +128,40 @@ DVC has the following built-in plot templates:
   [example](/doc/command-reference/plots#example-confusion-matrix)
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
-- `simple` - simplest linear template, good for learning how to work with
-  [`templates`](/doc/command-reference/plots/templates) command
+
+Note that in the case of CSV/TSV metrics files, column names from the table
+header (first row) are equivalent to field names.
+
+### Custom templates
+
+Plot templates are [Vega-Lite](https://vega.github.io/vega-lite/) JSON
+specifications. They use predefined DVC anchors as placeholders for DVC to
+inject the plot values.
+
+- `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
+  files is converted to a single JSON array, and injected instead of this
+  anchor. Two additional fields will be added: `step` and `rev` (explained
+  above).
+
+- `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
+  with the `--title` option of the `dvc plots` subcommands.
+
+- `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
+  defined with the `-x` option of the `dvc plots` subcommands. The
+  auto-generated `step` field (explained above) is the default.
+
+- `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
+  defined with the `-y` option of the `dvc plots` subcommands. It defaults to
+  the last header of the metrics file: the last column for CSV/TSV, or the last
+  field for JSON/YAML.
+
+- `<DVC_METRIC_X_LABEL>` (optional) - field name to display as the X axis label
+
+- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the Y axis label
+
+<details>
+
+### Expand to check how DVC modifies plot data before rendering.
 
 File targets given to `dvc plots show` and `dvc plots diff` are treated as
 separate data series, each to be injected into a template file. There are two
@@ -136,14 +173,10 @@ important fields that DVC adds to the plot data:
 - `rev` - This field helps distinguish between data sourced from different
   revisions, files or columns.
 
-Note that in the case of CSV/TSV metrics files, column names from the table
-header (first row) are equivalent to field names.
+</details>
 
-### Custom templates
-
-Users can create their own templates. Refer to
-[`templates`](/doc/command-reference/plots/templates) command for more
-information.
+Refer to [`templates`](/doc/command-reference/plots/templates) command for more
+information on how to prepare your own template from pre-defined ones.
 
 ## HTML templates
 
