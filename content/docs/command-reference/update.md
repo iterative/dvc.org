@@ -1,7 +1,7 @@
 # update
 
-Update files or directories imported from external <abbr>DVC
-repositories</abbr> or URLs, and the corresponding import `.dvc` files.
+Update files or directories imported from external <abbr>DVC repositories</abbr>
+or URLs, and the corresponding import `.dvc` files.
 
 ## Synopsis
 
