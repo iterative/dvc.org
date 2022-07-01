@@ -1,8 +1,8 @@
 # update
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
-or [URLs](/doc/command-reference/import-url#description),
-and the corresponding import `.dvc` files.
+or [URLs](/doc/command-reference/import-url#description), and the corresponding
+import `.dvc` files.
 
 ## Synopsis
 
