@@ -1,7 +1,7 @@
 # update
 
 Update files or directories imported from external <abbr>DVC
-repositories</abbr>, and the corresponding import `.dvc` files.
+repositories</abbr> or URLs, and the corresponding import `.dvc` files.
 
 ## Synopsis
 
@@ -18,7 +18,7 @@ positional arguments:
 
 After creating import stages (`.dvc` files) with `dvc import` or
 `dvc import-url`, the data source can change. Use `dvc update` to bring these
-imported file or directory up to date.
+imported files or directories up to date.
 
 To indicate which import stages to update, we can specify the corresponding
 `.dvc` file `targets` as command arguments.
