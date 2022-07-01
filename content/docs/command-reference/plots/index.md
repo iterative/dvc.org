@@ -141,14 +141,14 @@ inject the plot values.
 - `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
   files is converted to a single JSON array, and injected instead of this
   anchor. Two additional fields will be added: `step` and `rev` (explained
-  above).
+  below).
 
 - `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
   with the `--title` option of the `dvc plots` subcommands.
 
 - `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
   defined with the `-x` option of the `dvc plots` subcommands. The
-  auto-generated `step` field (explained above) is the default.
+  auto-generated `step` field (explained below) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
   defined with the `-y` option of the `dvc plots` subcommands. It defaults to
