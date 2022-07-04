@@ -493,16 +493,20 @@
         "label": "get_url()"
       },
       {
+        "slug": "make_checkpoint",
+        "label": "make_checkpoint()"
+      },
+      {
         "slug": "open",
         "label": "open()"
       },
       {
-        "slug": "read",
-        "label": "read()"
+        "slug": "params_show",
+        "label": "params_show()"
       },
       {
-        "slug": "make_checkpoint",
-        "label": "make_checkpoint()"
+        "slug": "read",
+        "label": "read()"
       }
     ]
   },
