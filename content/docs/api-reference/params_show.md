@@ -65,8 +65,6 @@ The function parameters (below) let you restrict what's retrieved.
 
 ## Example: Filter by stage name(s)
 
-> Working on https://github.com/iterative/example-get-started
-
 `stages` can be a single name (string):
 
 ```py
