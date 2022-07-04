@@ -69,19 +69,26 @@ The function parameters (below) let you restrict what's retrieved.
 
 ```py
 import dvc.api
-params = dvc.api.params_show(stages="featurize")
+params = dvc.api.params_show(stages="train")
 ```
 
 ```py
 {
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  }
+  "n_est": 50,
+  "min_split": 0.01
 }
 ```
 
-Or an iterable of strings:
+The returned dictionary can be used inside the stage:
+
+```py
+clf = RandomForestClassifier(
+    n_estimators=params["n_est"],
+    min_samples_split=params["min_split"]
+)
+```
+
+`stages` can also be an iterable of strings:
 
 ```py
 import dvc.api
@@ -90,15 +97,10 @@ params = dvc.api.params_show(stages=["featurize", "train"])
 
 ```py
 {
-  "featurize": {
-    "max_features": 200,
-    "ngrams": 2
-  },
-  "train": {
-    "seed": 20170428,
-    "n_est": 50,
-    "min_split": 0.01
-  }
+  "max_features": 200,
+  "ngrams": 2
+  "n_est": 50,
+  "min_split": 0.01
 }
 ```
 
