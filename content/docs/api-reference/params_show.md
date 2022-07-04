@@ -79,7 +79,7 @@ params = dvc.api.params_show(stages="train")
 }
 ```
 
-`stages` can also be an iterable of strings:
+Or an iterable of strings:
 
 ```py
 import dvc.api
