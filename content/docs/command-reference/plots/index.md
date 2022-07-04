@@ -192,7 +192,7 @@ field.
   be the path to the data source. String, or list elements will be the names of
   data columns or fields withing the source file. If this field is a dictionary,
   it is assumed that its keys are paths to data sources. The values have to be
-  either strings or lists, and are treted as column(s)/field(s) within
+  either strings or lists, and are treated as column(s)/field(s) within
   respective files.
 - `x_label` - X axis label. The X field name is the default.
 - `y_label` - Y axis label. If all provided Y entries have the same field name,
