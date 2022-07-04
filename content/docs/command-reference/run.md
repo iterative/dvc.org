@@ -209,7 +209,7 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
   field inside the `dvc.yaml` stage. Metrics are usually small, human readable
-  files (JSON or YAML) with scalar numbers or other simple information that
+  files (JSON, TOML, or YAML) with scalar numbers or other simple information that
   describes a model (or any other data artifact). See `dvc metrics` to learn
   more about _metrics_.
 
