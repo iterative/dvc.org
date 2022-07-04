@@ -182,7 +182,7 @@ In this case we will plot `accuracy` field from both `train_logs.csv` and
 `test_logs.csv` against the `epoch`. Note that both files have to have `epoch`
 field.
 
-#### Avialable configuration fields
+#### Available configuration fields
 
 - `x` - field name from which the X axis data comes from. An auto-generated
   _step_ field is used by default. It has to be a string.
