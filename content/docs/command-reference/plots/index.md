@@ -95,8 +95,8 @@ under `plots` key.
 ### Standalone plots
 
 Plots defined in `dvc.yaml` under the `plots` key are especially useful when
-users want to compare data from different data sources residing on the same
-version of the project. For example, comparing training versus test results on
+users want to combine data from different file paths in a single plot.
+For example, comparing training versus test results on
 current branch.
 
 #### Syntax
