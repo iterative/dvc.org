@@ -79,15 +79,6 @@ params = dvc.api.params_show(stages="train")
 }
 ```
 
-The returned dictionary can be used inside the stage:
-
-```py
-clf = RandomForestClassifier(
-    n_estimators=params["n_est"],
-    min_samples_split=params["min_split"]
-)
-```
-
 `stages` can also be an iterable of strings:
 
 ```py
@@ -102,6 +93,15 @@ params = dvc.api.params_show(stages=["featurize", "train"])
   "n_est": 50,
   "min_split": 0.01
 }
+```
+
+The returned dictionary can be used inside the stage:
+
+```py
+clf = RandomForestClassifier(
+    n_estimators=params["n_est"],
+    min_samples_split=params["min_split"]
+)
 ```
 
 ## Example: Load specific parameter file(s)
