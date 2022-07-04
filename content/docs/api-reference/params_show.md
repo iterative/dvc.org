@@ -65,36 +65,32 @@ The function parameters (below) let you restrict what's retrieved.
 
 ## Example: Filter by stage name(s)
 
-> Working on https://github.com/iterative/example-get-started, file
-> `src/featurization.py`.
+> Working on https://github.com/iterative/example-get-started
 
 `stages` can be a single name (string):
 
-```git
-+import json
--import yaml
+```py
+import dvc.api
+params = dvc.api.params_show(stages="featurize")
+```
 
--params = yaml.safe_load(open("params.yaml"))["featurize"]
-+import dvc.api
-+
-+params = dvc.api.params_show(stages="featurize")
-
- ...
--max_features = params["max_features"]
--ngrams = params["ngrams"]
-+max_features = params["featurize"]["max_features"]
-+ngrams = params["featurize"]["ngrams"]
+```py
+{
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
+  }
+}
 ```
 
 Or an iterable of strings:
 
 ```py
-import json
 import dvc.api
 params = dvc.api.params_show(stages=["featurize", "train"])
 ```
 
-```json
+```py
 {
   "featurize": {
     "max_features": 200,
@@ -114,9 +110,8 @@ You can pass any valid param file path as target to load all of the parameters
 defined in it:
 
 ```py
-import json
 import dvc.api
-params = dvc.api.params_show("params.yaml")
+params = dvc.api.params_show( "configs/params_dev.yaml")
 ```
 
 ```json
@@ -130,7 +125,6 @@ params = dvc.api.params_show("params.yaml")
 Or multiple path targets:
 
 ```py
-import json
 import dvc.api
 params = dvc.api.params_show(
   "configs/params_dev.yaml", "configs/params_prod.yaml")
@@ -152,19 +146,27 @@ You can use the `repo` argument to retrieve parameters from any <abbr>DVC
 repository</abbr> without having to clone it locally.
 
 ```py
-import json
 import dvc.api
-params = dvc.api.get_params(
-    repo="https://github.com/iterative/demo-fashion-mnist")
+params = dvc.api.params_show(
+    repo="https://github.com/iterative/example-get-started")
 ```
 
 ```json
 {
+  "prepare": {
+    "split": 0.2,
+    "seed": 20170428
+  },
+  "featurize": {
+    "max_features": 200,
+    "ngrams": 2
+  },
   "train": {
-    "batch_size": 128,
-    "hidden_units": 64,
-    "dropout": 0.4,
-    ...
+    "seed": 20170428,
+    "n_est": 50,
+    "min_split": 0.01
+  }
+}
 ```
 
 ## Example: Specify a project version
