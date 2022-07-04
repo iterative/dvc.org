@@ -99,7 +99,7 @@ users want to combine data from different file paths in a single plot.
 For example, comparing training versus test results on
 current branch.
 
-#### Syntax
+#### Syntax (data-series only)
 
 In order to define the plot users need to provide data and an optional
 configuration for the plot. The plots should be defined in `dvc.yaml` file under
