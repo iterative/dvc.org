@@ -171,8 +171,6 @@ params = dvc.api.params_show(
 
 ## Example: Specify a project version
 
-> Working on https://github.com/iterative/example-get-started
-
 You can retrieve params from arbitrary Git commits, for example a branch name:
 
 ```py
