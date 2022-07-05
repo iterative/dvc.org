@@ -1,0 +1,10 @@
+---
+extends: substitution
+message: Consider using '%s' instead of '%s'.
+ignorecase: true
+level: warning
+action:
+  name: replace
+swap:
+  'Note that' : an <admon> block
+ 
