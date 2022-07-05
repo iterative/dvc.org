@@ -42,3 +42,150 @@ experiment task will continue to be run in the background.
 - `-q`, `--quiet` - do not write anything to standard output.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Examples
+
+> This is based on our [Get Started](/doc/start/experiments), where you can find
+> the actual source code.
+
+<details>
+
+### Expand to prepare the example ML project
+
+Clone the DVC repo and download the data it <abbr>depends</abbr> on:
+
+```dvc
+$ git clone git@github.com:iterative/example-get-started.git
+$ cd example-get-started
+$ dvc pull
+```
+
+Let's also install the Python requirements:
+
+> We **strongly** recommend creating a
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+> first.
+
+```dvc
+$ pip install -r src/requirements.txt
+```
+
+</details>
+
+Let's say we have previously run some experiments:
+
+```dvc
+$ dvc queue status
+Task     Name    Created    Status
+192a13c          04:15 PM   Failed
+753b005          04:01 PM   Success
+0bbb118          04:01 PM   Success
+1ae8b65          04:01 PM   Success
+
+Worker status: 0 active, 0 idle
+```
+
+We can view the output for both failed and successfully completed experiment
+tasks:
+
+```dvc
+$ dvc queue logs 192a13c
+'data/data.xml.dvc' didn't change, skipping
+Running stage 'prepare':
+> python src/prepare.py data/data.xml
+Traceback (most recent call last):
+  File "/Users/pmrowla/git/example-get-started/.dvc/tmp/exps/tmp217n0tjv/src/prepare.py", line 10, in <module>
+    raise AssertionError
+AssertionError
+ERROR: failed to reproduce 'prepare': failed to run: python src/prepare.py data/data.xml, exited with 1
+```
+
+```dvc
+$ dvc queue logs 0bbb118
+'data/data.xml.dvc' didn't change, skipping
+Stage 'prepare' is cached - skipping run, checking out outputs
+Updating lock file 'dvc.lock'
+
+Stage 'featurize' is cached - skipping run, checking out outputs
+Updating lock file 'dvc.lock'
+
+Stage 'train' is cached - skipping run, checking out outputs
+Updating lock file 'dvc.lock'
+
+Stage 'evaluate' is cached - skipping run, checking out outputs
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+    git add dvc.yaml scores.json roc.json params.yaml data/prepared data/data.xml prc.json src/featurization.py data/features src/evaluate.py model.pkl dvc.lock src/train.py src/prepare.py
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+```
+
+Let's queue a new experiment and view the output while it is running:
+
+```dvc
+$ dvc exp run --queue -S prepare.split=0.40 -S featurize.max_features=4000
+Queued experiment '93cfa70' for future execution.
+$ dvc queue start
+Started '1' new experiments task queue worker.
+$ dvc queue logs 93cfa70                                                                                                                       ⏎
+'data/data.xml.dvc' didn't change, skipping
+Running stage 'prepare':
+> python src/prepare.py data/data.xml
+Updating lock file 'dvc.lock'
+
+Running stage 'featurize':
+> python src/featurization.py data/prepared data/features
+```
+
+We can see that by default, `dvc queue logs` displays any available output and
+then exits. In this case, our `featurize` stage is still running, so no
+additional output is available at this time.
+
+Now let's use the `--follow` option to continue viewing all live output from the
+running experiment task, until it has completed:
+
+```dvc
+$ dvc queue logs -f 93cfa70
+Following logs for experiment '93cfa70'. Use Ctrl+C to stop following logs (experiment execution will continue).
+
+'data/data.xml.dvc' didn't change, skipping
+Running stage 'prepare':
+> python src/prepare.py data/data.xml
+Updating lock file 'dvc.lock'
+
+Running stage 'featurize':
+> python src/featurization.py data/prepared data/features
+The input data frame data/prepared/train.tsv size is (14945, 3)
+The output matrix data/features/train.pkl size is (14945, 4002) and data type is float64
+The input data frame data/prepared/test.tsv size is (10055, 3)
+The output matrix data/features/test.pkl size is (10055, 4002) and data type is float64
+Updating lock file 'dvc.lock'
+
+Running stage 'train':
+> python src/train.py data/features model.pkl
+Input matrix size (14945, 4002)
+X matrix size (14945, 4000)
+Y matrix size (14945,)
+Updating lock file 'dvc.lock'
+
+Running stage 'evaluate':
+> python src/evaluate.py model.pkl data/features scores.json prc.json roc.json
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+    git add prc.json model.pkl roc.json params.yaml src/train.py src/prepare.py data/features src/evaluate.py data/data.xml data/prepared dvc.yaml dvc.lock scores.json src/featurization.py
+
+To enable auto staging, run:
+
+        dvc config core.autostage true
+```
+
+We can see that output for the full experiment pipeline is displayed. We are
+also notified that we can safely use `Ctrl+C` if we want to exit the
+`dvc queue logs` command, without affecting the execution of our running
+experiment task.
