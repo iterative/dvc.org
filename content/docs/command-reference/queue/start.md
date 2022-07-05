@@ -28,6 +28,10 @@ the `--jobs` option.
 > a number of jobs that your environment can handle (no more than the CPU
 > cores).
 
+> Note that since queued experiments are run isolated from each other, common
+> stages may sometimes be executed several times depending on the state of the
+> [run-cache] at that time.
+
 ## Options
 
 - `-j <number>`, `--<number>` - start up to this number of workers in parallel.
