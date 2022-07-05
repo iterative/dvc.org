@@ -119,7 +119,7 @@ Queued experiment '4109ead' for future execution.
 Queued experiments are managed using [dvc-task] and [Celery].
 
 [dvc-task]: https://github.com/iterative/dvc-task
-[Celery]: https://docs.celeryq.dev/en/stable/index.html
+[celery]: https://docs.celeryq.dev/en/stable/index.html
 
 </details>
 

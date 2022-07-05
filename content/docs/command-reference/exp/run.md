@@ -35,8 +35,8 @@ Use the `--set-param` (`-S`) option as a shortcut to change
 
 It's possible to [queue experiments] for later execution with the `--queue`
 flag. Queued experiments can be run using `dvc queue start`, refer to th
-`dvc queue` documentation for more information on managing the experiment
-task queue.
+`dvc queue` documentation for more information on managing the experiment task
+queue.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
@@ -96,9 +96,9 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   > [run-cache] at that time.
 
   > ⚠️ `dvc exp run --run-all [--jobs]` is now a shortcut for
-  > `dvc queue start [--jobs]` followed by `dvc queue logs -f`.
-  > The `--run-all` and `--jobs` options will likely be deprecated and removed
-  > in a future DVC release. It is recommended to migrate your workflows to use
+  > `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
+  > and `--jobs` options will likely be deprecated and removed in a future DVC
+  > release. It is recommended to migrate your workflows to use
   > `dvc queue start` and `dvc queue logs`. Refer to the `dvc queue`
   > documentation for more details.
 
