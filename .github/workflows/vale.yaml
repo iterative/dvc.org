@@ -13,3 +13,4 @@ jobs:
         with:
           files: "content/docs"
           fail_on_error: false
+          reporter: github-check
