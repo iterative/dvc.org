@@ -197,7 +197,7 @@ and running:
 
 _Note:_ Depending on the authentication method being used, there might be some
 required extra steps, such as making sure users actually have the permissions
-read/write to the bucket.
+to read/write to the bucket.
 
 That’s it! Now you can connect any DVC project to a GCP storage bucket. If you
 run into any issues, make sure to check that your credentials are valid, check
