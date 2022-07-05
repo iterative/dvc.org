@@ -2,7 +2,7 @@
 
 If you are using a GitHub account, you will have to install the Iterative Studio
 GitHub app on the GitHub repositories/organizations that you want to use with
-Iterative Studio. When you try to create a project, if the app is not already
+Iterative Studio. When you try to add a project, if the app is not already
 installed, Iterative Studio will not be able to fetch the list of your GitHub
 repositories. In this case, you will be prompted to configure Git integrations
 as shown below.

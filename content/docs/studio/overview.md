@@ -10,8 +10,8 @@ When you connect to these repositories from Iterative Studio, the project's
 experiments. If you are not using DVC, you can also add the metrics and
 hyperparameters to your Git repositories manually.
 
-Iterative Studio then creates a project, which is an interactive, tabular
-representation of all the identified values. You can also
+Iterative Studio then creates an interactive, tabular representation of all the
+identified values. You can also
 [run new experiments](/doc/studio/user-guide/run-experiments) from Iterative
 Studio using your regular CI/CD setup (e.g. GitHub Actions).
 

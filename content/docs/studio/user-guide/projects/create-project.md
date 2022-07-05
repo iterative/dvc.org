@@ -17,33 +17,18 @@ To add a new project, follow these steps.
 2. Click on `Add a Project`. All the organizations that you have access to will
    be listed.
 
-> If you do not see your desired organizations or Git repositories, make sure
-> that
-> [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
-
-> To create projects from your GitHub repositories, you must install the
-> Iterative Studio GitHub app. Refer to the section on
-> [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
-> details.
-
-> To create projects from repositories on your self-hosted GitLab server, you
-> must first add a connection to this server and create a team. Refer to the
-> section on
-> [self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
-> for more details.
-
 <admon type="info">
 
 If you do not see your desired organizations or Git repositories, make sure that
 [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
 
-To create projects from your GitHub repositories, you must install the Iterative
-Studio GitHub app. Refer to the section on
+To connect to your GitHub repositories, you must install the Iterative Studio
+GitHub app. Refer to the section on
 [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
 details.
 
-To create projects from repositories on your self-hosted GitLab server, you must
-first add a connection to this server and create a team. Refer to the section on
+To connect to repositories on your self-hosted GitLab server, you must first add
+a connection to this server and create a team. Refer to the section on
 [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
 for more details.
 
@@ -80,19 +65,21 @@ You should now see that a project has been added in your dashboard.
 
 ## Create multiple projects from a single Git repository
 
-You can also create multiple projects from a single Git repository and apply
-different settings to them.
+You can also create multiple projects in Iterative Studio from a single Git
+repository and apply different settings to them.
 
 One use case for this is if you have a
-[monorepo](https://en.wikipedia.org/wiki/Monorepo) that contains sub-directories
-for multiple ML projects. If you want to create projects for each of those ML
-projects, simply create multiple projects for this monorepo, and for each
-project, specify a different sub-directory.
+[monorepo](https://en.wikipedia.org/wiki/Monorepo) with multiple ML projects,
+each one in a different sub-directory.
 
-Refer to the
-[Project Settings](/doc/studio/user-guide/projects/project-settings) section for
-more details on how to configure different settings (and sub-directories) for
-the projects.
+For each ML project in the monorepo, follow the
+[above process](#connect-to-a-git-repository-and-add-a-project) to connect to
+the Git repository. Then go to
+[project settings](/doc/studio/user-guide/projects/project-settings#project-directory),
+and specify the sub-directory in which the desired ML project resides.
+
+This way, you will have multiple Iterative Studio projects for your single Git
+repository, with each project presenting values from a different sub-directory.
 
 ## Create projects shared across a team
 

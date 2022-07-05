@@ -86,6 +86,7 @@
   "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/projects/visualize-experiments",
   "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/projects/run-experiments",
 
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects/create-project",
   "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings",
   "^/doc/studio/user-guide/views/(.*)$                                                    /doc/studio/user-guide/projects/$1",
 

@@ -4,7 +4,7 @@ You can configure additional settings for your projects. Some of these settings,
 such as project name, are optional. Some other settings, such as data remotes,
 may be required depending on how your Git repository has been set up.
 
-## Scenarios when projects settings are required
+## Scenarios where projects settings are required
 
 If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize
@@ -13,7 +13,7 @@ it without configuring additional settings.
 Alternatively, you could create projects from:
 
 - Non-DVC repositories
-- Project sub-directories in a monorepo
+- Sub-directories in a monorepo
 - Custom files in your repository or remote/cloud storage
 
 In each of these scenarios, you will need to configure additional settings for
@@ -34,12 +34,12 @@ metrics and hyperparameters that you want to visualize.
 
 ### Monorepo
 
-Depending on how you have set up your Git repositories, your DVC repo (for which
-you are trying to create the project) may not be in the root of your Git repo.
-Instead, it could be in a sub-directory of a
+Depending on how you have set up your Git repositories, your DVC repo (to which
+you are trying to connect from Iterative Studio) may not be in the root of your
+Git repo. Instead, it could be in a sub-directory of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo). If this is the case, you
-will need to specify the full path to the sub-directory that you want to use
-with your project.
+will need to specify the full path to the sub-directory that contains the data
+you want to visualize in Iterative Studio.
 
 ### Data remotes (cloud/remote storage)
 
@@ -65,8 +65,8 @@ To change the project name, enter the new name for your project as shown below.
 ### Project directory
 
 If you have connected to a [monorepo](https://en.wikipedia.org/wiki/Monorepo),
-then specify the full path to the sub-directory that contains the DVC repo for
-which you want to create the project.
+then specify the full path to the sub-directory that contains the DVC repo to
+which you are trying to connect.
 
 ![](https://static.iterative.ai/img/studio/view_settings_sub_directory.png)
 
@@ -118,8 +118,8 @@ to a maximum of 200.
 
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
-project, you can do so in the project itself. For this, refer to
-[Display preferences -> Columns](/doc/studio/user-guide/projects/explore-experiments#columns).
+project, you can do so in the project's
+[Display preferences](/doc/studio/user-guide/projects/explore-experiments#columns).
 
 If your project is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections to understand why this

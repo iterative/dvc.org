@@ -35,8 +35,7 @@ on `Skip and Close` on the top right corner. You will be able to add
 collaborators by accessing team settings later.
 
 If you wish to add collaborators now, enter their email addresses. An email
-invite will be sent to each invitee, and they will have to join using their
-GitHub, GitLab or Bitbucket account.
+invite will be sent to each invitee.
 
 You can add multiple collaborators. Each collaborator can be assigned the Admin,
 Edit, or View role. Refer to the [Roles](#roles) section below for more details

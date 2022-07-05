@@ -1,13 +1,13 @@
-# What Is a Project
+# What Is a Project in Iterative Studio
 
-A project is an interactive representation of the information stored in your Git
-repository.
+A project in Iterative Studio is an interactive representation of the
+information stored in your Git repository.
 
 When you connect to your Git repository from Iterative Studio, the experiments
 committed in the repository are parsed to identify all the data, metrics and
-hyperparameters. These values are then presented in a table with each experiment
-(Git commit) in a row and the corresponding values for the data, metrics and
-hyperparameters in columns. This tabular representation is called a project.
+hyperparameters. These values are then presented in an experiment table with
+each experiment (Git commit) in a row and the corresponding values for the data,
+metrics and hyperparameters in columns.
 
 ![](https://static.iterative.ai/img/studio/view_components.png) _A project
 presents information stored in your Git repository in an interactive table._
@@ -18,7 +18,7 @@ This dashboard opens up whenever you login to Iterative Studio.
 ![](https://static.iterative.ai/img/studio/views_dashboard.png) _All the
 projects that you create are presented in a projects dashboard for easy access._
 
-In the project, you can:
+Within a project, you can:
 
 - Explore all the details of the experiments that you have pushed to your Git
   repository.

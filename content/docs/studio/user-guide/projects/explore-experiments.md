@@ -6,22 +6,21 @@ shown in your Iterative Studio dashboard to explore all the ML experiments,
 visualize and compare them, and run new experiments. For this, open the project
 by clicking the project name (in this case, `example-get-started`).
 
-A project table will be generated as shown below. This includes metrics,
-hyperparameters and information about the datasets. All these values are
-flattened and neatly presented for you.
+An experiments table for the project will be generated as shown below. This
+includes metrics, hyperparameters and information about the datasets. All these
+values are flattened and neatly presented for you.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
 ## Components of a project
 
-The tabular display has different components that show you the complete
-experiment history as well as enable to you to generate plots, compare
-experiments, run new experiments, etc. The major components of a project table
-are:
+The experiments table of the project has different components that show you the
+complete experiment history as well as enable to you to generate plots, compare
+experiments, run new experiments, etc. The major components of the table are:
 
 - [Git history](#git-history) - represents your experimentation history.
 - [Display preferences](#display-preferences) - show/hide branches, commits and
-  columns, and re-arrange your project.
+  columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 
@@ -74,15 +73,15 @@ may have happened.
 #### Hide commits:
 
 The following functionality are available for you to hide irrelevant commits
-from your projects in Iterative Studio.
+from the table.
 
 - **Iterative Studio auto-hides irrelevant commits:** Iterative Studio
   identifies commits where metrics, files and hyperparameters did not change and
   hides them automatically.
 - **Hide commits and branches manually:** You can selectively hide commits and
-  branches. This can be useful useful if there are commits that do not add much
-  value in your project. To hide a commit or branch, click on the 3-dot menu
-  next to the commit or branch name and click on `Hide commit` or `Hide branch`.
+  branches. This can be useful if there are commits that do not add much value
+  in your project. To hide a commit or branch, click on the 3-dot menu next to
+  the commit or branch name and click on `Hide commit` or `Hide branch`.
 - **Unhide commits:** You can unhide commits as needed, so that you don't lose
   any experimentation history. To display all hidden commits, click on the
   `Show hidden commits` toggle (refer [the above gif](#display-preferences)).

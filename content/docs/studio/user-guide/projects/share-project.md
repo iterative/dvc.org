@@ -18,14 +18,28 @@ To share a project on the web (i.e., to make the project public), click on the
 button labeled `Private` next to the name of the project. In the menu that pops
 up, turn on `Share to Web`.
 
+<admon>
+
+This will not change the settings of your connected Git repository; if the Git
+repository is private, it will continue to remain private.
+
+</admon>
+
 ![](https://static.iterative.ai/img/studio/view_share.png)
 
-You can change a shared (public) project and make it private by turning off
-`Share to web`.
+A shared (public) project can be made private by turning off `Share to web`.
+
+<admon>
+
+This will not change the settings of your connected Git repository; if the Git
+repository is public, it will continue to remain public.
+
+</admon>
 
 Projects that are shared on the web can be opened by anyone, including people
 who are not logged in to Iterative Studio. These anonymous users have the
-`Visitor` role. Their access is limited to opening the project, applying
-filters, and showing/hiding columns for themselves without making permanent
-changes to the project. Refer to the [Roles](/doc/studio/user-guide/teams#roles)
-section for details on the features available for different roles.
+`Visitor` role. Their access is limited to opening the project's experiment
+table, applying filters, and showing/hiding columns for themselves without
+saving any changes permanently. Refer to the
+[Roles](/doc/studio/user-guide/teams#roles) section for details on the features
+available for different roles.

@@ -24,8 +24,8 @@ different plans, check out our
 
 2. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` project that connects to an example
-   DVC project. Use this project to explore the features that Iterative Studio
-   has to offer.
+   DVC repository. Use this project to explore the features that Iterative
+   Studio has to offer.
 
 ![](https://static.iterative.ai/img/studio/login_home.png) _When you first
 login, an example project is already created for you to explore, and you can add
@@ -35,8 +35,8 @@ more projects._
    identified in your Git repository. In the figure above, you can see that
    `avg_prec` and `roc_auc` metrics are displayed.
 
-4. To create a new project, click on `Add a Project`. All the organizations that
-   you have access to will be listed.
+4. To connect to a new repository, click on `Add a Project`. All the
+   organizations that you have access to will be listed.
 
     <admon type="info">
 
@@ -44,14 +44,13 @@ more projects._
    that
    [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
 
-   To create projects from your GitHub repositories, you must install the
-   Iterative Studio GitHub app. Refer to the section on
+   To connect to your GitHub repositories, you must install the Iterative Studio
+   GitHub app. Refer to the section on
    [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
    details.
 
-   To create projects from repositories on your self-hosted GitLab server, you
-   must first add a connection to this server and create a team. Refer to the
-   section on
+   To connect to repositories on your self-hosted GitLab server, you must first
+   add a connection to this server and create a team. Refer to the section on
    [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
    for more details.
 

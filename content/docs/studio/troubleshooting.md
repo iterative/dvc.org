@@ -9,7 +9,7 @@ Iterative Studio.
 - [Error: No commits were found for the sub-directory](#error-no-commits-were-found-for-the-sub-directory)
 - [Project got created, but does not contain any data](#project-got-created-but-does-not-contain-any-data)
 - [Project does not contain the columns that I want](#project-does-not-contain-the-columns-that-i-want)
-- [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-import)
+- [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 - [Questions or problems with billing and payment](#questions-or-problems-with-billing-and-payment)
@@ -17,7 +17,7 @@ Iterative Studio.
 ## Support
 
 If you need further help, please send us a message using `Help` on the
-[project website](https://studio.iterative.ai). You can also
+[Iterative Studio website](https://studio.iterative.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
 [Discord](https://discord.com/invite/dvwXA2N).
@@ -26,7 +26,7 @@ If you need further help, please send us a message using `Help` on the
 
 If you have connected to a non-DVC repository, then you need to specify custom
 files that contain the metrics and hyperparameters that you want to visualize.
-Otherwise, you will get this message when you try to create a project:
+Otherwise, you will get this message when you try to add a project:
 `We could not find data to visualize in this repo`.
 
 For more details, refer to the section on
@@ -36,7 +36,7 @@ Instructions on how to specify custom files can be found
 
 ## Error: No DVC repo was found at the root
 
-If you get this message when you try to create a project:
+If you get this message when you try to add a project:
 `No DVC repo was found at the root`, then it means that you have connected to a
 Git repository which contains a DVC repository in some sub-directory but not at
 the root.
@@ -55,7 +55,7 @@ Instructions on how to specify the sub-directory or custom files can be found
 
 ## Error: Non-DVC sub-directory of a monorepo
 
-If you get this message when you try to create a project:
+If you get this message when you try to add a project:
 `Non-DVC sub-directory of a monorepo`, then it means that you have connected to
 a Git repository which contains a DVC repository in some sub-directory, but you
 have selected the incorrect sub-directory.
@@ -78,7 +78,7 @@ Instructions on how to specify the sub-directory or custom files can be found
 
 ## Error: No commits were found for the sub-directory
 
-If you get this message when you try to create a project:
+If you get this message when you try to add a project:
 `No commits were found for the sub-directory`, then it means that you have
 specified an empty or non-existent sub-directory.
 
@@ -94,10 +94,10 @@ Instructions on how to specify the sub-directory or custom files can be found
 ## Project got created, but does not contain any data
 
 If you initialized a DVC repository, but did make any commit with data, metrics
-or hyperparameters, then you will be able to connect to this repository and
-create a project. However, the project will be empty. To solve this, either make
-relevant commits to your DVC repository. Or, specify custom files with the
-metrics or hyperparameters that you want to visualize.
+or hyperparameters, then you will be able to connect to this repository.
+However, the project will appear empty in Iterative Studio. To solve this,
+either make relevant commits to your DVC repository. Or, specify custom files
+with the metrics or hyperparameters that you want to visualize.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
@@ -119,7 +119,8 @@ There are two possible reasons for this:
    more than 200 mandatory columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
    multiple subdirectories in your git repository. For each subdirectory, you
-   can create a new project that is limited to that subdirectory.
+   can create a new project in Iterative Studio and limit it to that
+   subdirectory.
 
    To create projects for subdirectories,
    [specify the project directory in project settings](/doc/studio/user-guide/projects/project-settings#project-directory).
@@ -128,10 +129,11 @@ There are two possible reasons for this:
    ticket in the
    [Iterative Studio support GitHub repository](https://github.com/iterative/studio-support).
 
-2. **The required columns are hidden:** In the project, you can hide the columns
-   that you do not want to display. If any column that you want is not visible,
-   make sure you have not hidden it. The following video shows how you can
-   show/hide columns. Once you show/hide columns, remember to save the changes.
+2. **The required columns are hidden:** In the project's experiment table, you
+   can hide the columns that you do not want to display. If any column that you
+   want is not visible, make sure you have not hidden it. The following video
+   shows how you can show/hide columns. Once you show/hide columns, remember to
+   save the changes.
 
    #### Show/hide columns
 
@@ -158,8 +160,7 @@ can also manually hide commits and branches. So, it is possible that the commits
 or branches you do not see in your project were manually hidden by you or
 someone else in your team.
 
-You can unhide commits/branches to display them in your project. For details,
-refer to
+You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits](/doc/studio/user-guide/projects/explore-experiments#hide-commits).
 However, if the missing commit/branch is not in the hidden commits list, then
 please [raise a support request](#support).
@@ -175,8 +176,8 @@ please check:
   whitelisting policy in place which limits access to the organization's
   resources.
 - Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
-  are experiencing service disruptions. In case of an on-prem deployment, please
-  check with your administrator.
+  are experiencing service disruptions. In case of an on-premises deployment,
+  please check with your administrator.
 
 [gh-status]: https://www.githubstatus.com/
 [gl-status]: https://status.gitlab.com/
