@@ -247,6 +247,77 @@ experiments or projects use a similar structure.
 
 - `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
 
+### parsing
+
+- `parsing.bool` - Controls the templating syntax for boolean values when used
+  in
+  [dict unpacking](/doc/user-guide/project-structure/pipelines-files#dict-unpacking).
+
+  Valid values are `"store_true"` (default) and `"boolean_optional"`, named
+  after
+  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+
+  Given the following `params.yaml`:
+
+  ```yaml
+  dict:
+    bool-true: true
+    bool-false: false
+  ```
+
+  And corresponding `dvc.yaml`:
+
+  ```yaml
+  stages:
+    foo:
+      cmd: python foo.py ${dict}
+  ```
+
+  When using `store_true`, `cmd` will be:
+
+  ```shell
+  python foo.py --bool-true
+  ```
+
+  Whereas when using `boolean_optional`, `cmd` will be:
+
+  ```shell
+  python foo.py --bool-true --no-bool-false
+  ```
+
+- `parsing.list` - Controls the templating syntax for list values when used in
+  [dict unpacking](/doc/user-guide/project-structure/pipelines-files#dict-unpacking).
+
+  Valid values are `"nargs"` (default) and `"append"`, named after
+  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+
+  Given the following `params.yaml`:
+
+  ```yaml
+  dict:
+    list: [1, 2, 'foo']
+  ```
+
+  And corresponding `dvc.yaml`:
+
+  ```yaml
+  stages:
+    foo:
+      cmd: python foo.py ${dict}
+  ```
+
+  When using `nargs`, `cmd` will be:
+
+  ```shell
+  python foo.py --list 1 2 'foo'
+  ```
+
+  Whereas when using `append`, `cmd` will be:
+
+  ```shell
+  python foo.py --list 1 --list 2 --list 'foo'
+  ```
+
 ### plots
 
 - `plots.html_template` - sets a
