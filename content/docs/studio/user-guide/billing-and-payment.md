@@ -1,3 +1,12 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
 # Billing and Payment
 
 Studio is free for individuals and teams with up to 2 members. The Free plan is

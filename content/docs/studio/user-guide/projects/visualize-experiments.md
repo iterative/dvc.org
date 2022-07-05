@@ -1,3 +1,12 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
 # Visualize and Compare Experiments
 
 You can visualize and compare experiments using using plots, images, charts,

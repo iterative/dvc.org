@@ -1,3 +1,12 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
 # How Iterative Studio Works
 
 [`Iterative Studio`](https://studio.iterative.ai/) works with the data, metrics

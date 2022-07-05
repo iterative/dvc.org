@@ -1,3 +1,12 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
 # User Guide
 
 In this user guide, you will find step by step instructions for all the things
