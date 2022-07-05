@@ -30,7 +30,7 @@ how you can add DVC to your project, and finally, we’ll make updates to the
 dataset with DVC commands. We’ll be working with
 [this repo](https://github.com/iterative/stale-model-example) if you want an
 example to play with. By the time you finish, you should be able to create this
-setup for any machine learning project using an GCP remote.
+setup for any machine learning project using a GCP remote.
 
 ## Set up a GCP storage bucket
 
