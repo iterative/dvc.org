@@ -24,14 +24,37 @@ tags:
 
 Great question on how DVC handles data tracking from @NgHoangDat!
 
-Because you had already tracked folder data via dvc add data, when you add a new
-file into it what you need is to update it. In this case, you can use either dvc
-add data or dvc commit to update it.
+Since you already track the `data`, when you add a new file into it all you need
+to do is update it. You can use either `dvc add data` or `dvc commit` to start
+tracking the new file.
 
-You will only need to recalculate those changed files. If you only add/modify
-some small files in that folder. The calculation will not take too much time.
+DVC will also only recalculate the changed files. If you only add or modify a
+small number of files in that folder, the update will not take very long.
 
-## [Is it be possible to limit the maximum number of webdav connection?]()
+## [What would be the best method to get the remote URL of a given dataset inside a Python environment?](https://discord.com/channels/485586884165107732/485596304961962003/984870485668008007)
+
+Wonderful question from @come_arvis!
+
+You can use the `get_url` method of the
+[DVC Python API](https://dvc.org/doc/api-reference) to do this. Here's an
+example of a script you might run to get the remote URL.
+
+```python
+import dvc.api
+
+resource_url = dvc.api.get_url(
+    'get-started/data.xml',
+    repo='https://github.com/iterative/dataset-registry'
+    )
+
+print(resource_url)
+
+# https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355
+```
+
+This URL is built with the project configuration file, `.dvc/config`, and the
+`md5` file hashed stored in the `.dvc` file corresponding to the data file or
+directory you want the storage location of.
 
 ## []()
 
