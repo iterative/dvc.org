@@ -74,10 +74,10 @@ project we want to clear.
   workspace. This option is enabled automatically with the other scope options
   (below).
 
-- `--rev` - Keep cached data referenced in the specified `<commit>`, as well as
+- `--rev` - keep cached data referenced in the specified `<commit>`, as well as
   in the workspace (implying `-w`).
 
-- `-n`, `--num` - Keep cached data referenced in the last `--num` commits,
+- `-n`, `--num` - keep cached data referenced in the last `--num` commits,
   starting from the `--rev` `<commit>`, as well as in the workspace (implying
   `-w`).
 
