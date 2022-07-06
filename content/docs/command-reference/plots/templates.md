@@ -81,7 +81,7 @@ line):
 $ cat bars_template.json
 ```
 
-````git
+```git
  {
    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
    ...
@@ -91,7 +91,8 @@ $ cat bars_template.json
    },
    "encoding": { ...
    ...
- }```
+ }
+```
 
 And this is how the data looks like using our custom template:
 
