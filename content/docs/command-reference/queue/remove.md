@@ -21,9 +21,9 @@ Removes the specified queued or completed experiment tasks from the queue. For
 completed tasks, this will also remove any associated output logs.
 
 > ⚠️ Note that for successfully completed tasks, this command is not the same as
-> `dvc exp remove`. This command not remove any Git or DVC data associated with
-> a successful DVC experiment. It only removes the task queue entry and any
-> associated output logs for that task.
+> `dvc exp remove`. `dvc queue remove` does not remove any Git or DVC data
+> associated with a successful DVC experiment. It only removes the task queue
+> entry and any associated output logs for that task.
 
 ## Options
 

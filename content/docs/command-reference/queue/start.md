@@ -12,8 +12,8 @@ usage: dvc queue start [-h] [-q | -v] [-j <number>]
 
 ## Description
 
-Starts the task queue worker process. The worker process will consume and
-execute one queued experiment task at a time in the background, until either
+Starts one or more task queue worker processes. Each worker process will consume
+and execute one queued experiment task at a time in the background, until either
 `dvc queue stop` is used or the queue is empty.
 
 > For performance reasons, when the queue is empty, the worker will idle for up

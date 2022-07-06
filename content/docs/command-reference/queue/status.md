@@ -78,7 +78,6 @@ And verify the queue status:
 ```dvc
 $ dvc queue status
 Task     Name    Created    Status
-Task     Name    Created    Status
 753b005          04:01 PM   Queued
 0bbb118          04:01 PM   Queued
 1ae8b65          04:01 PM   Queued
@@ -93,7 +92,7 @@ parallel:
 $ dvc queue start -j 2
 Started '2' new experiments task queue workers.
 $ dvc queue status
-$ Task     Name    Created    Status
+Task     Name    Created    Status
 753b005          04:01 PM   Running
 0bbb118          04:01 PM   Running
 1ae8b65          04:01 PM   Queued

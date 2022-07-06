@@ -35,7 +35,7 @@ experiment task will continue to be run in the background.
   > always match the encoding of your system terminal.
 
 - `-f`, `--follow` - attach to task and follow additional live output. Only
-  applicable of the task is still running.
+  applicable if the task is still running.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -72,7 +72,7 @@ $ pip install -r src/requirements.txt
 
 </details>
 
-Let's say we have previously run some experiments:
+Let's say we have previously run some queued experiment tasks:
 
 ```dvc
 $ dvc queue status
