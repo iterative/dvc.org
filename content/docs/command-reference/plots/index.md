@@ -100,32 +100,35 @@ names in the `train` array below:
 
 ## Plot templates (data series only)
 
-DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
-create visualizations out of users' data. Pre-defined specifications are called
-templates.
+DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications
+to create plots from user data. A set of built-in _plot templates_ are included.
 
 The `linear` template is the default. It can be changed with the `--template`
 (`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
 `--template` can be a (built-in) template name or a path to a
-[custom template](https://dvc.org/doc/command-reference/plots/templates).
+[custom template].
 
 <admon type="tip">
-For templates stored in `.dvc/plots`, the path and the json
-extension are not required: user can specify only the base name e.g.
-`--template scatter`.
+
+For templates stored in `.dvc/plots` (default location for custom templates),
+the path and the json extension are not required: you can specify only the
+base name, e.g. `--template scatter`.
+
 </admon>
 
 DVC has the following built-in plot templates:
 
-- `linear` - linear plot (default)
-- `simple` - simplest linear template, good base for creating custom template
-  and learning how to work with
-  [`templates`](/doc/command-reference/plots/templates) command
+- `linear` - basic linear plot including cursor interactivity (default)
+- `simple` - simplest linear template (not interactive); Good base to create
+  [custom templates].
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
   [example](/doc/command-reference/plots#example-smooth-plot)
 - `confusion` - confusion matrix, see
   [example](/doc/command-reference/plots#example-confusion-matrix)
+
+[custom template]: https://dvc.org/doc/command-reference/plots/templates
+
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
 
@@ -161,7 +164,7 @@ inject the plot values.
 
 <details>
 
-### Expand to check how DVC modifies plot data before rendering.
+### Expand to learn how DVC modifies plot data for rendering.
 
 File targets given to `dvc plots show` and `dvc plots diff` are treated as
 separate data series, each to be injected into a template file. There are two
