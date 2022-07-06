@@ -39,6 +39,9 @@ executes.
 Watch this video for an overview of how you can run experiments from Iterative
 Studio, or read below for details.
 
+> Note that we have renamed DVC Studio to Iterative Studio and Views to
+> Projects.
+
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
 To run experiments from Iterative Studio, first you need to determine the Git
