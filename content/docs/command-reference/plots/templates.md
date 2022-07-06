@@ -1,10 +1,7 @@
 # plot templates
 
-Dump plot templates.
+Dump built-in plot templates to JSON files you can customize.
 
-Sometimes users need to customize the way project data is visualized. This
-command allows dumping templates used by DVC, so that the users don't have to
-build their own templates from zero.
 
 ## Synopsis
 
@@ -13,26 +10,32 @@ usage: dvc plots templates [-h] [-q | -v] [-o <path>]
        [{simple,linear,confusion,confusion_normalized,scatter,smooth}]
 
 positional arguments:
- TEMPLATE
-                        Template to write. Writes all templates by default.
+ TEMPLATE    Template to write. Writes all templates by default.
 ```
 
 ## Description
 
-Users have the ability to change the way data-series plots are displayed by
-modifying the [Vega-Lite specification](https://vega.github.io/vega-lite/), thus
-generating plots in the style that best fits their needs. This keeps <abbr>DVC
-projects</abbr> programming language agnostic, as it's independent from user
-display configuration and visualization code.
+Some times you may need to customize the way `dvc plots` are rendered beyond
+what the built-in [plot templates] allow.`dvc plots templates` can dump these templates
+to JSON files for you use as base for new templates. To modify them, use
+any valid elements of the [Vega-Lite specification].
 
-To make creation of custom plots easier, DVC provides the `templates` command
-that can dump one or all templates used by DVC.
+You can dump a specific built-in template by providing it's name as
+argument, for example `dvc plots templates confusion`. Template
+files are written to `.dvc/plots` by default, but any location can be
+set with the `--out` (`-o`) option.
 
-`templates` command dumps the templates to `.dvc/plots` by default.
+<admon type="note">
 
 Note that templates can only be used with
-[data-series plots](/doc/command-reference/plots#description).
+[data-series plots](/doc/command-reference/plots#types-of-metrics).
 
+</admon>
+
+[plot templates]:
+  https://dvc.org/doc/command-reference/plots#plot-templates-data-series-only
+[Vega-Lite specification]: https://vega.github.io/vega-lite/
+  
 ## Options
 
 - `-o <path>`, `--out <path>` - Directory to save templates to.
