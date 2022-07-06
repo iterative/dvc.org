@@ -16,6 +16,7 @@
   "^https://man\\.dvc\\.org(.*)?                                                          https://dvc.org/doc/command-reference$1 303",
   "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/troubleshooting#$1 303",
   "^https://(code|data|remote)\\.dvc\\.org/(.+)                                           https://s3-us-east-2.amazonaws.com/dvc-public/$1/$2 303",
+  "^https://bench.dvc.org(.*)?                                                            https://iterative.github.io/dvc-bench$1",
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                https://dvc.org/doc/user-guide/experiment-management/running-experiments$1 302",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                   https://dvc.org/doc/user-guide/experiment-management/$1 302",
