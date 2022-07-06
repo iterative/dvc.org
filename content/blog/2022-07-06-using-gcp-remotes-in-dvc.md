@@ -9,7 +9,7 @@ descriptionLong: >
 picture: 2022-07-06/dvc-gcp.png
 pictureComment: Using GCP Remotes in DVC
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/preventing-stale-models-in-production/1137
+commentsUrl: https://discuss.dvc.org/t/syncing-data-to-gcp-storage/1237
 tags:
   - MLOps
   - DVC
