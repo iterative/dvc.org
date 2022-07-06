@@ -39,7 +39,7 @@ Where:
 
 - `{Live.dir}` is the
   [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
-- `{split}` can be either `train` or `eval`.
+- `{split}` can be either `train` or `valid`.
 - `{metric}` is the name provided by the framework.
 
 <admon type="tip">
