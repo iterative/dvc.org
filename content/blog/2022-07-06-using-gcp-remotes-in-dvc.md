@@ -1,12 +1,12 @@
 ---
 title: Syncing Data to GCP Storage Buckets
-date: 2022-06-27
+date: 2022-07-06
 description: >
   We're going to set up an GCP storage bucket remote in a DVC project.
 descriptionLong: >
   Setting up a remote to make data versioning easier with DVC is a common need
   so we're going to go through a tutorial for doing this with GCP.
-picture: 2022-06-27/dvc-gcp.png
+picture: 2022-07-06/dvc-gcp.png
 pictureComment: Using GCP Remotes in DVC
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/preventing-stale-models-in-production/1137
@@ -43,7 +43,7 @@ _Note:_ Remember, GCP does have a
 [free tier](https://cloud.google.com/free/docs/gcp-free-tier) if you just want
 to try it out.
 
-![GCP initial page](/uploads/images/2022-06-27/gcp_initial_page.png)
+![GCP initial page](/uploads/images/2022-07-06/gcp_initial_page.png)
 
 From here, you'll need to create a new project. Search for "create a project"
 and click the "IAM & Admin" option. You'll enter the name of the project, which
@@ -51,24 +51,24 @@ is `Bicycle Project`, and choose the organization and location and click the
 `Create` button. This will take you to your project dashboard and show you all
 of the stats and settings you have available.
 
-![create a new GCP project](/uploads/images/2022-06-27/gcp_new_project.png)
+![create a new GCP project](/uploads/images/2022-07-06/gcp_new_project.png)
 
 Then you need to go to `Cloud Storage` in the left sidebar to create a bucket to
 store the data. When you get to the Cloud Storage page, you should see something
 similar to this and you’ll click the `Create Bucket` button.
 
-![create_gcp_bucket.png](/uploads/images/2022-06-27/create_gcp_bucket.png)
+![create_gcp_bucket.png](/uploads/images/2022-07-06/create_gcp_bucket.png)
 
 The Bucket page will have a lot of configurations you can set, but you can leave
 the settings in the default state if there’s nothing you need to customize. We
 have named this example bucket `updatedbikedata` as you can see below.
 
-![gcp_bucket_options.png](/uploads/images/2022-06-27/gcp_bucket_options.png)
+![gcp_bucket_options.png](/uploads/images/2022-07-06/gcp_bucket_options.png)
 
 Now you can save your changes and you’ll be redirected to the `Bucket Details`
 page and you’ll see the bucket you just created.
 
-![created_gcp_bucket.png](/uploads/images/2022-06-27/created_gcp_bucket.png)
+![created_gcp_bucket.png](/uploads/images/2022-07-06/created_gcp_bucket.png)
 
 ### Get your credentials
 
@@ -76,7 +76,7 @@ Since you have the bucket created, we need to get the credentials to connect the
 GCP remote to the project. Go to the `IAM & Admin` service and go to
 `Service Accounts` in the left sidebar.
 
-![no service accounts](/uploads/images/2022-06-27/gcp_empty_service_account.png)
+![no service accounts](/uploads/images/2022-07-06/gcp_empty_service_account.png)
 
 Click the `Create Service Account` button to create a new service account that
 you'll use to connect to the DVC project in a bit. Now you can add the name and
@@ -85,26 +85,26 @@ ID for this service account and keep all the default settings. We've chosen
 `Create and Continue` and it will show the permissions settings. Select `Owner`
 in the dropdown and click `Continue`.
 
-![service account permissions](/uploads/images/2022-06-27/gcp_service_account_permissions.png)
+![service account permissions](/uploads/images/2022-07-06/gcp_service_account_permissions.png)
 
 Then add your user to have access to the service account and click `Done`.
 
-![service account user access](/uploads/images/2022-06-27/gcp_service_account_user_access.png)
+![service account user access](/uploads/images/2022-07-06/gcp_service_account_user_access.png)
 
 Finally, you'll be redirected to the `Service accounts` page.
 
-![service account with name and ID](/uploads/images/2022-06-27/gcp_create_service_account.png)
+![service account with name and ID](/uploads/images/2022-07-06/gcp_create_service_account.png)
 
 You’ll see your service account and you’ll be able to click on `Actions` and go
 to where you `Manage keys` for this service account.
 
-![manage keys on service account](/uploads/images/2022-06-27/gcp_service_account.png)
+![manage keys on service account](/uploads/images/2022-07-06/gcp_service_account.png)
 
 Once you’ve been redirected, click the `Add Key` button and this will bring up
 the credentials you need to authenticate your GCP account with your project. Go
 ahead and download the credentials file and store it somewhere safe.
 
-![gcp_key.png](/uploads/images/2022-06-27/gcp_key.png)
+![gcp_key.png](/uploads/images/2022-07-06/gcp_key.png)
 
 That’s it for setting up your storage bucket and getting the credentials you
 need! Now let’s add DVC to our demo repo and set up the remote.
@@ -187,7 +187,7 @@ command:
 Here's what that data will look like when it has been successfully uploaded to
 GCP.
 
-![data in GCP](/uploads/images/2022-06-27/data_in_gcp.png)
+![data in GCP](/uploads/images/2022-07-06/data_in_gcp.png)
 
 Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by cloning or forking the project repo, setting up the remote
