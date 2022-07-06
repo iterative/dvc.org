@@ -400,6 +400,37 @@
         "slug": "push"
       },
       {
+        "label": "queue",
+        "slug": "queue",
+        "source": "queue/index.md",
+        "children": [
+          {
+            "label": "queue kill",
+            "slug": "kill"
+          },
+          {
+            "label": "queue logs",
+            "slug": "logs"
+          },
+          {
+            "label": "queue start",
+            "slug": "start"
+          },
+          {
+            "label": "queue status",
+            "slug": "status"
+          },
+          {
+            "label": "queue stop",
+            "slug": "stop"
+          },
+          {
+            "label": "queue remove",
+            "slug": "remove"
+          }
+        ]
+      },
+      {
         "label": "remote",
         "slug": "remote",
         "source": "remote/index.md",
