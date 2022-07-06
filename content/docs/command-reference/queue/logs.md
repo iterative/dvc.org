@@ -72,6 +72,8 @@ $ pip install -r src/requirements.txt
 
 </details>
 
+## Example: View logs for completed experiment tasks
+
 Let's say we have previously run some queued experiment tasks:
 
 ```dvc
@@ -124,6 +126,8 @@ To enable auto staging, run:
         dvc config core.autostage true
 ```
 
+## Example: View logs for running experiment tasks
+
 Let's queue a new experiment and view the output while it is running:
 
 ```dvc
@@ -145,47 +149,12 @@ We can see that by default, `dvc queue logs` displays any available output and
 then exits. In this case, our `featurize` stage is still running, so no
 additional output is available at this time.
 
-Now let's use the `--follow` option to continue viewing all live output from the
-running experiment task, until it has completed:
+If we wanted to continuously view live output from the running task (until it
+completes) we also could have used the `--follow` option:
 
-```dvc
-$ dvc queue logs -f 93cfa70
-Following logs for experiment '93cfa70'. Use Ctrl+C to stop following logs (experiment execution will continue).
+![](/img/queue-logs-follow.gif)
 
-'data/data.xml.dvc' didn't change, skipping
-Running stage 'prepare':
-> python src/prepare.py data/data.xml
-Updating lock file 'dvc.lock'
-
-Running stage 'featurize':
-> python src/featurization.py data/prepared data/features
-The input data frame data/prepared/train.tsv size is (14945, 3)
-The output matrix data/features/train.pkl size is (14945, 4002) and data type is float64
-The input data frame data/prepared/test.tsv size is (10055, 3)
-The output matrix data/features/test.pkl size is (10055, 4002) and data type is float64
-Updating lock file 'dvc.lock'
-
-Running stage 'train':
-> python src/train.py data/features model.pkl
-Input matrix size (14945, 4002)
-X matrix size (14945, 4000)
-Y matrix size (14945,)
-Updating lock file 'dvc.lock'
-
-Running stage 'evaluate':
-> python src/evaluate.py model.pkl data/features scores.json prc.json roc.json
-Updating lock file 'dvc.lock'
-
-To track the changes with git, run:
-
-    git add prc.json model.pkl roc.json params.yaml src/train.py src/prepare.py data/features src/evaluate.py data/data.xml data/prepared dvc.yaml dvc.lock scores.json src/featurization.py
-
-To enable auto staging, run:
-
-        dvc config core.autostage true
-```
-
-We can see that output for the full experiment pipeline is displayed. We are
-also notified that we can safely use `Ctrl+C` if we want to exit the
-`dvc queue logs` command, without affecting the execution of our running
-experiment task.
+We can see that output for the full experiment pipeline is displayed when using
+`--follow`. We are also notified that we can safely use `Ctrl+C` if we want to
+exit the `dvc queue logs` command, without affecting the execution of our
+running experiment task.
