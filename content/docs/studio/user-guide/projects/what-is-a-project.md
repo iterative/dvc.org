@@ -24,7 +24,7 @@ presents information stored in your Git repository in an interactive table._
 All the projects that you have created are presented in a central dashboard.
 This dashboard opens up whenever you login to Iterative Studio.
 
-![](https://static.iterative.ai/img/studio/views_dashboard.png) _All the
+![](https://static.iterative.ai/img/studio/projects_dashboard.png) _All the
 projects that you create are presented in a projects dashboard for easy access._
 
 Within a project, you can:

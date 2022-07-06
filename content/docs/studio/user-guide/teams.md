@@ -28,11 +28,11 @@ In this section, you will learn about:
 To create a team, click on the drop down next to `Personal`. All the teams that
 you have created so far will be listed within "Teams" in the drop down menu. If
 you have not created any team so far, this list will be empty. Now, click on
-`Create a team`. ![](https://static.iterative.ai/img/studio/team_create.png)
+`Create a team`. ![](https://static.iterative.ai/img/studio/team_create_v3.png)
 
 You will be asked to enter the URL namespace for your team. Enter a unique name.
 The URL for your team will be formed using this name.
-![](https://static.iterative.ai/img/studio/team_enter_name.png)
+![](https://static.iterative.ai/img/studio/team_enter_name_v3.png)
 
 Then, click the `Create team` button on the top right corner.
 
@@ -48,7 +48,7 @@ invite will be sent to each invitee.
 
 You can add multiple collaborators. Each collaborator can be assigned the Admin,
 Edit, or View role. Refer to the [Roles](#roles) section below for more details
-about the roles. ![](https://static.iterative.ai/img/studio/team_roles.png)
+about the roles. ![](https://static.iterative.ai/img/studio/team_roles_v3.png)
 
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
@@ -108,7 +108,7 @@ same as that of any other collaborator who has been assigned the `Admin` role.
 
 Once you have created the team, the team's workspace opens up.
 
-![](https://static.iterative.ai/img/studio/team_page_v3.png)
+![](https://static.iterative.ai/img/studio/team_page_v6.png)
 
 In this workspace, there are 2 pages - [Projects](#projects) and
 [Settings](#settings).

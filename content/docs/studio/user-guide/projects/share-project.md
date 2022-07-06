@@ -34,7 +34,7 @@ repository is private, it will continue to remain private.
 
 </admon>
 
-![](https://static.iterative.ai/img/studio/view_share.png)
+![](https://static.iterative.ai/img/studio/project_share.png)
 
 A shared (public) project can be made private by turning off `Share to web`.
 

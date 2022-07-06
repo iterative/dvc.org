@@ -46,11 +46,11 @@ for more details.
 3. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.
 
-   ![](https://static.iterative.ai/img/studio/select_repo.png)
+   ![](https://static.iterative.ai/img/studio/select_repo_v3.png)
 
 4. Specify additional connection settings if required.
 
-   ![](https://static.iterative.ai/img/studio/view_settings.png)
+   ![](https://static.iterative.ai/img/studio/project_settings.png)
 
 > Project settings must be configured if you are connecting to a non-DVC
 > repository, if your metrics are in some custom files, if you are connecting to
@@ -70,7 +70,7 @@ You should now see that a project has been added in your dashboard.
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the project. In the menu that opens up, click on `Settings`.
 
-![](https://static.iterative.ai/img/studio/view_open_settings.png)
+![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
 ## Create multiple projects from a single Git repository
 

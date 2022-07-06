@@ -69,7 +69,7 @@ the project. In the menu that opens up, click on `Settings`.
 
 To change the project name, enter the new name for your project as shown below.
 
-![](https://static.iterative.ai/img/studio/view_settings_view_name.png)
+![](https://static.iterative.ai/img/studio/project_settings_view_name.png)
 
 ### Project directory
 
@@ -77,7 +77,7 @@ If you have connected to a [monorepo](https://en.wikipedia.org/wiki/Monorepo),
 then specify the full path to the sub-directory that contains the DVC repo to
 which you are trying to connect.
 
-![](https://static.iterative.ai/img/studio/view_settings_sub_directory.png)
+![](https://static.iterative.ai/img/studio/project_settings_sub_directory.png)
 
 ### Data remotes / cloud storage credentials
 
@@ -99,7 +99,7 @@ Depending on the provider, you will be asked for more details such as the
 credentials name, username, password etc. Note that for each supported storage
 type, the required details may be different.
 
-![](https://static.iterative.ai/img/studio/s3_remote_settings.png)
+![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
 
 You will also have to ensure that the credentials you enter have the required
 permissions on the cloud / remote storage. In the DVC documentation on
@@ -123,7 +123,7 @@ project. In the settings for "Mandatory columns", You can select which columns
 are mandatory to import. Iterative Studio will also import unselected columns up
 to a maximum of 200.
 
-![](https://static.iterative.ai/img/studio/view_settings_mandatory_columns.png)
+![](https://static.iterative.ai/img/studio/project_settings_mandatory_columns.png)
 
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
@@ -145,4 +145,4 @@ If you want to connect custom files, you can add them by clicking the `Add file`
 button. Enter the full file path within your Git repository, and specify whether
 the file is for `Metrics` or `Parameters`.
 
-![](https://static.iterative.ai/img/studio/view_settings_custom_files.png)
+![](https://static.iterative.ai/img/studio/project_settings_custom_files.png)

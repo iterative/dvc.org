@@ -30,7 +30,7 @@ different plans, check out our
    DVC repository. Use this project to explore the features that Iterative
    Studio has to offer.
 
-![](https://static.iterative.ai/img/studio/login_home.png) _When you first
+![](https://static.iterative.ai/img/studio/login_home_v3.png) _When you first
 login, an example project is already created for you to explore, and you can add
 more projects._
 
@@ -62,11 +62,11 @@ more projects._
 5. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.
 
-   ![](https://static.iterative.ai/img/studio/select_repo.png)
+   ![](https://static.iterative.ai/img/studio/select_repo_v3.png)
 
 6. Specify additional connection settings if required.
 
-   ![](https://static.iterative.ai/img/studio/view_settings.png)
+   ![](https://static.iterative.ai/img/studio/project_settings.png)
 
 > Project settings must be configured if you are connecting to a non-DVC
 > repository, if your metrics are in some custom files, if you are connecting to
@@ -86,7 +86,7 @@ You should now see that a project has been added in your dashboard.
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the project. In the menu that opens up, click on `Settings`.
 
-![](https://static.iterative.ai/img/studio/view_open_settings.png)
+![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
 8. You can also
    [create multiple projects from a single Git repository](/doc/studio/user-guide/projects/create-project#create-multiple-projects-from-a-single-git-repository).
