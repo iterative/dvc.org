@@ -5,7 +5,7 @@ Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
+usage: dvc gc [-h] [-q | -v] [-w] [--rev <commit>] [-n <num>] [-a] [-T] [-A]
               [--all-experiments] [-c] [-r <name>] [-f] [-j <number>]
               [-p [<path> [<path> ...]]]
 ```
@@ -73,6 +73,13 @@ project we want to clear.
 - `-w`, `--workspace` - keep _only_ files and directories referenced in the
   workspace. This option is enabled automatically with the other scope options
   (below).
+
+- `--rev` - Keep cached data referenced in the specified `<commit>`, as well as
+  in the workspace (implying `-w`).
+
+- `-n`, `--num` - Keep cached data referenced in the last `--num` commits,
+  starting from the `--rev` `<commit>`, as well as in the workspace (implying
+  `-w`).
 
 - `-a`, `--all-branches` - keep cached data referenced in all Git branches, as
   well as in the workspace (implying `-w`). Useful if branches are used to track
