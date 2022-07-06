@@ -16,10 +16,11 @@ Starts one or more task queue worker processes. Each worker process will consume
 and execute one queued experiment task at a time in the background, until either
 `dvc queue stop` is used or the queue is empty.
 
-> For performance reasons, when the queue is empty, the worker will idle for up
-> to 60 seconds before exiting. If new experiment tasks are added to the queue
-> during this time, the worker will resume processing tasks. Otherwise, the
-> worker will exit after the 60 second idle timeout.
+> Due to Celery worker implementation details, when the queue is empty, a worker
+> process may idle for up to 10 seconds before exiting automatically. If new
+> experiment tasks are added to the queue during this time, the worker will
+> resume processing tasks instead of exiting. Otherwise, the worker will exit
+> after the 10 second idle timeout.
 
 Queued tasks are run sequentially by default, but can be run in parallel using
 the `--jobs` option.
