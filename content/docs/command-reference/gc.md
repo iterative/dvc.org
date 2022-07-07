@@ -5,7 +5,7 @@ Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
+usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits] [--date <commit_date>]
               [--all-experiments] [-c] [-r <name>] [-f] [-j <number>]
               [-p [<path> [<path> ...]]]
 ```
@@ -95,6 +95,9 @@ project we want to clear.
   be stored in the project's cache).
 
   > \* Not including [DVC experiments]
+
+- `--date` - Keep cacheed data referenced in all commits after ( inclusive ) a
+  certain time. Date must match the extended ISO 8601 format (YYYY-MM-DD).
 
 - `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's
