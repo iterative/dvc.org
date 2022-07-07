@@ -100,19 +100,18 @@ names in the `train` array below:
 
 ## Plot templates (data series only)
 
-DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications
-to create plots from user data. A set of built-in _plot templates_ are included.
+DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
+create plots from user data. A set of built-in _plot templates_ are included.
 
 The `linear` template is the default. It can be changed with the `--template`
 (`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
-`--template` can be a (built-in) template name or a path to a
-[custom template].
+`--template` can be a (built-in) template name or a path to a [custom template].
 
 <admon type="tip">
 
 For templates stored in `.dvc/plots` (default location for custom templates),
-the path and the json extension are not required: you can specify only the
-base name, e.g. `--template scatter`.
+the path and the json extension are not required: you can specify only the base
+name, e.g. `--template scatter`.
 
 </admon>
 
