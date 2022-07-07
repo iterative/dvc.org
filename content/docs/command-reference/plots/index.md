@@ -101,7 +101,7 @@ project. For example, comparing training versus test results on current branch.
 
 ### Stage plots
 
-When using `dvc run` or `dvc stage add`, instead of using
+When using `dvc stage add`, instead of using
 `--outs/--outs-no-cache` particular outputs can be marked with
 `--plots/--plots-no-cache`. This will tell DVC that they are intended for
 visualizations.
