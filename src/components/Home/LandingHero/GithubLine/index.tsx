@@ -4,6 +4,8 @@ import useStars from '../../../../gatsby/hooks/stars'
 
 import * as styles from './styles.module.css'
 
+const formatter = Intl.NumberFormat('en-US')
+
 const GithubLine: React.FC = () => {
   const stars = useStars()
 
@@ -19,7 +21,7 @@ const GithubLine: React.FC = () => {
         //  className={styles.starCount}
         >
           <img className={styles.starIcon} src="/img/star_small.svg" alt="" />
-          <span className={styles.count}>{stars}</span>
+          <span className={styles.count}>{formatter.format(stars)}</span>
         </span>
       )}
     </div>
