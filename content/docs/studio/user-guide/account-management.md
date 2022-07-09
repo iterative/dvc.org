@@ -1,9 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-</admon>
-
 # Account Management
 
 To manage your user account, click on your avatar on the top right corner of
@@ -83,17 +77,11 @@ In this section, you can,
 Here, you can see all the credentials you have added for your cloud / data
 remotes. You can also add new credentials as well as edit or delete existing
 credentials. The credentials that you add here will become available to use with
-your projects in Iterative Studio.
+your views.
 
 ## Delete account
 
-You can delete your account. However, this will permanently delete all the
-projects you own and the links that you have shared. So, click on
-`Delete my account` only if you are absolutely sure that you do not need those
-projects or links anymore.
-
-<admon>
-
-Deleting your account in Iterative Studio does not delete your Git repositories.
-
-</admon>
+You can delete your account. However, this will permanently delete all the views
+you own and the links that you have shared. So, click on `Delete my account`
+only if you are absolutely sure that you do not need those views or links
+anymore.
