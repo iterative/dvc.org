@@ -1,12 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
-settings_ are now called _Project settings_; and so on.
-
-</admon>
-
 # Run Experiments
 
 You can change your hyperparameters or select a different dataset and re-run
@@ -29,18 +20,15 @@ refer to [CML](https://cml.dev). You can use any cloud or Kubernetes for the
 model training process. CML also generates a report after the CI/CD setup
 executes.
 
-> Due to access restrictions, you cannot run experiments on the demo project
-> (`example-get-started`) that is provided to you by default. Once you connect
-> to your ML project repositories, you can follow the instructions given below
-> to run experiments directly from Iterative Studio.
+> Due to access restrictions, you cannot run experiments on the demo view
+> (`example-get-started`) that is provided to you by default. Once you create
+> views for your ML project repositories, you can follow the instructions given
+> below to run experiments directly from Iterative Studio.
 
 ## Submit a new experiment
 
 Watch this video for an overview of how you can run experiments from Iterative
 Studio, or read below for details.
-
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
 
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
@@ -52,16 +40,16 @@ types of inputs that you can change:
 
 1. **Input data files**: You can change datasets that are used for model
    training. The list of files that you can change will depend on your ML
-   project. For instance, in the `example-get-started` ML project, you can
-   change the `data.xml` file. Iterative Studio identifies all the files used in
-   your ML project, which means that if you select the
+   project. For instance, in the `example-get-started` project, you can change
+   the `data.xml` file. Iterative Studio identifies all the files used in your
+   project, which means that if you select the
    `Show all input parameters (including hidden)` option, then you can also
    change the hidden files such as the `model.pkl` model file and the
    `scores.json` metrics file. You can also choose not to change any input data
    files if you only wish to change the values of one or more hyperparameters.
 2. **Hyperparameters**: Iterative Studio lists all the hyperparameters of your
-   ML project and you can change their values as per the new experiment that you
-   want to run. For instance, in the `example-get-started` ML project, you can
+   project and you can change their values as per the new experiment that you
+   want to run. For instance, in the `example-get-started` project, you can
    change `max_features` (the maximum number of features that the model uses),
    `ngrams`, etc. You can also choose not to change any hyperparameters if you
    only wish to change one or more input data files.
@@ -79,11 +67,11 @@ on `Commit changes`.
 
 ![](https://static.iterative.ai/img/studio/cml_commit.png)
 
-At this point, the new experiment appears in the project's experiment table. If
-you just committed to a new branch, then a new pull request will also have been
-created from the new branch to the base branch.
+At this point, the new experiment appears in the view table. If you just
+committed to a new branch, then a new pull request will also have been created
+from the new branch to the base branch.
 
-If your ML project is integrated with a CI/CD setup (e.g. GitHub Actions), the
+If your project is integrated with a CI/CD setup (e.g. GitHub Actions), the
 CI/CD setup will get invoked. If this setup includes a model training process,
 it will be triggered, which means that your ML experiment will run
 automatically. The model training can happen on any cloud or Kubernetes. For
@@ -92,11 +80,11 @@ more details on how to set up
 refer to [CML](https://cml.dev). You can also create CML reports with metrics,
 plots or other details at the end of each experiment run.
 
-Once the experiment completes, its metrics will be available in the project's
-experiment table. You can then generate plots and trend charts for it, or
-compare it with the other experiments. If a CML report has been defined in your
-CI/CD flow, you can access the report by clicking on the CML report icon next to
-the Git commit message in the table. The `CML Report` tooltip appears over the
-CML report icon on mouse hover.
+Once the experiment completes, its metrics will be available in the view table.
+You can then generate plots and trend charts for it, or compare it with the
+other experiments. If a CML report has been defined in your CI/CD flow, you can
+access the report by clicking on the CML report icon next to the Git commit
+message in the view table. The `CML Report` tooltip appears over the CML report
+icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
