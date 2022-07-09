@@ -1,27 +1,36 @@
-# Configure a View
+<admon>
 
-You can configure additional settings for your views. Some of these settings,
-such as view name, are optional. Some other settings, such as data remotes, may
-be required depending on how your Git repository has been set up.
+**We have renamed Views to Projects in Iterative Studio.**
 
-## Scenarios when views settings are required
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
+# Configure a Project
+
+You can configure additional settings for your projects. Some of these settings,
+such as project name, are optional. Some other settings, such as data remotes,
+may be required depending on how your Git repository has been set up.
+
+## Scenarios where projects settings are required
 
 If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize
 it without configuring additional settings.
 
-Alternatively, you could create views from:
+Alternatively, you could create projects from:
 
 - Non-DVC repositories
-- Project sub-directories in a monorepo
+- Sub-directories in a monorepo
 - Custom files in your repository or remote/cloud storage
 
 In each of these scenarios, you will need to configure additional settings for
 Iterative Studio to be able to access the data required for visualization.
 
-Additionally, you can also configure view settings to
-[change the name](#view-name) of your view and to
-[select mandatory columns](#mandatory-columns) to import in your view.
+Additionally, you can also configure project settings to
+[change the name](#project-name) of your project and to
+[select mandatory columns](#mandatory-columns) to import in your project.
 
 ### Non-DVC repositories
 
@@ -34,50 +43,50 @@ metrics and hyperparameters that you want to visualize.
 
 ### Monorepo
 
-Depending on how you have set up your Git repositories, your DVC repo (for which
-you are trying to create the view) may not be in the root of your Git repo.
-Instead, it could be in a sub-directory of a
+Depending on how you have set up your Git repositories, your DVC repo (to which
+you are trying to connect from Iterative Studio) may not be in the root of your
+Git repo. Instead, it could be in a sub-directory of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo). If this is the case, you
-will need to specify the full path to the sub-directory that you want to use
-with your view.
+will need to specify the full path to the sub-directory that contains the data
+you want to visualize in Iterative Studio.
 
 ### Data remotes (cloud/remote storage)
 
-The metrics and parameters that you want to include in the view may also be
+The metrics and parameters that you want to include in the project may also be
 present in a [data remote](/doc/command-reference/remote#description) (cloud
 storage or another location outside the Git repo). If you want to include such
-data in your views, then you will have to grant Iterative Studio access to the
-data remote.
+data in your projects, then you will have to grant Iterative Studio access to
+the data remote.
 
-## Configuring view settings
+## Configuring project settings
 
-You can configure a view's settings at any time after creating the view. For
-this, click on the
+You can configure a project's settings at any time after creating the project.
+For this, click on the
 ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon in
-the view. In the menu that opens up, click on `Settings`.
+the project. In the menu that opens up, click on `Settings`.
 
-### View name
+### Project name
 
-To change the view name, enter the new name for your view as shown below.
+To change the project name, enter the new name for your project as shown below.
 
-![](https://static.iterative.ai/img/studio/view_settings_view_name.png)
+![](https://static.iterative.ai/img/studio/project_settings_view_name.png)
 
 ### Project directory
 
 If you have connected to a [monorepo](https://en.wikipedia.org/wiki/Monorepo),
-then specify the full path to the sub-directory that contains the DVC repo for
-which you want to create the view.
+then specify the full path to the sub-directory that contains the DVC repo to
+which you are trying to connect.
 
-![](https://static.iterative.ai/img/studio/view_settings_sub_directory.png)
+![](https://static.iterative.ai/img/studio/project_settings_sub_directory.png)
 
 ### Data remotes / cloud storage credentials
 
 If you need to provide credentials for
 [DVC data remotes](/doc/command-reference/remote#description), you will need to
-do it after your view has been created. First, create your view without
-specifying the data remotes. Once your view is created, open its settings. Open
-the `Data remotes / cloud storage credentials` section. The data remotes that
-are used in your DVC repo will be listed.
+do it after your project has been created. First, create your project without
+specifying the data remotes. Once your project is created, open its settings.
+Open the `Data remotes / cloud storage credentials` section. The data remotes
+that are used in your DVC repo will be listed.
 
 ![](https://static.iterative.ai/img/studio/view_settings_credentials.png)
 
@@ -90,7 +99,7 @@ Depending on the provider, you will be asked for more details such as the
 credentials name, username, password etc. Note that for each supported storage
 type, the required details may be different.
 
-![](https://static.iterative.ai/img/studio/s3_remote_settings.png)
+![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
 
 You will also have to ensure that the credentials you enter have the required
 permissions on the cloud / remote storage. In the DVC documentation on
@@ -109,24 +118,24 @@ in not used in your Git repository.
 ##### (Tracking scope)
 
 If your repository exceeds 200 columns, Iterative Studio will import a subset.
-The columns that are not imported will not be available to display in your view.
-In the settings for "Mandatory columns", You can select which columns are
-mandatory to import. Iterative Studio will also import unselected columns up to
-a maximum of 200.
+The columns that are not imported will not be available to display in your
+project. In the settings for "Mandatory columns", You can select which columns
+are mandatory to import. Iterative Studio will also import unselected columns up
+to a maximum of 200.
 
-![](https://static.iterative.ai/img/studio/view_settings_mandatory_columns.png)
+![](https://static.iterative.ai/img/studio/project_settings_mandatory_columns.png)
 
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
-view, you can do so in the view itself. For this, refer to
-[Display preferences -> Columns](/doc/studio/user-guide/views/explore-experiments#columns).
+project, you can do so in the project's
+[Display preferences](/doc/studio/user-guide/projects/explore-experiments#columns).
 
-If your view is missing some required columns or includes columns that you do
+If your project is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections to understand why this
 may have happened.
 
-- [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
-- [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
+- [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
+- [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
 
 Note: The **Mandatory columns** section was earlier called **Tracking scope**.
 
@@ -136,4 +145,4 @@ If you want to connect custom files, you can add them by clicking the `Add file`
 button. Enter the full file path within your Git repository, and specify whether
 the file is for `Metrics` or `Parameters`.
 
-![](https://static.iterative.ai/img/studio/view_settings_custom_files.png)
+![](https://static.iterative.ai/img/studio/project_settings_custom_files.png)
