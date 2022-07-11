@@ -18,18 +18,17 @@ and execute one queued experiment task at a time in the background, until either
 
 <admon type="info">
 
-Due to [internal limitations], when the queue is empty a worker
-may be idle for up to 10 seconds before exiting. If new
-experiment tasks are added to the queue during this time, the idle worker will
-resume processing them instead.
+Due to [internal limitations], when the queue is empty a worker may be idle for
+up to 10 seconds before exiting. If new experiment tasks are added to the queue
+during this time, the idle worker will resume processing them instead.
 
 [implementation limitations]:
   /doc/user-guide/experiment-management/running-experiments#how-are-experiments-queued
 
 </admon>
 
-Queued experiment tasks are run sequentially by default, but can be run in parallel by using
-the `--jobs` option to start  more than one worker.
+Queued experiment tasks are run sequentially by default, but can be run in
+parallel by using the `--jobs` option to start more than one worker.
 
 > ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
 > a number of jobs that your environment can handle (no more than the CPU
