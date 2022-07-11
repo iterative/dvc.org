@@ -38,22 +38,20 @@ for epoch in range(NUM_EPOCHS):
     live.next_step()
 ```
 
-Let's use `dvc stage add` to create a stage to wrap this code (don't forget to
+Let's use `dvc exp init` to create a stage to wrap this code (don't forget to
 `dvc init` first):
 
 ```dvc
-$ dvc stage add \
---name train \
---deps train.py \
---metrics-no-cache training_metrics.json \
---plots-no-cache training_metrics/scalars \
+$ dvc exp init \
+--code "train.py" \
+--live "training_metrics" \
 python train.py
 ```
 
-<admon type="warn">
+<admon type="info">
 
-Note that the paths indicated in the `metrics` and `plots` options match the
-`path` passed to `Live()` in the Python code (`"training_metrics"`).
+Note that the path passed to the `live` option matches the `path` passed to
+`Live()` in the Python code (`"training_metrics"`).
 
 </admon>
 
@@ -79,6 +77,18 @@ Run the training with `dvc repro` or `dvc exp run`:
 ```dvc
 $ dvc repro train
 ```
+
+<admon type="warn">
+
+When using [DVC Checkpoints](/doc/user-guide/experiment-management/checkpoints)
+and/or enabling DVCLive's [`resume`](/doc/dvclive/api-reference/live#parameters)
+you need to add the flag
+[`persist: true`](/doc/user-guide/project-structure/pipelines-files#output-subfields)
+to all DVCLive outputs.
+
+Passing `--type checkpoint` to `dvc exp init` will take care of doing this.
+
+</admon>
 
 ## Outputs
 
