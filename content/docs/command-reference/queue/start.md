@@ -28,8 +28,8 @@ resume processing them instead.
 
 </admon>
 
-Queued tasks are run sequentially by default, but can be run in parallel using
-the `--jobs` option.
+Queued experiment tasks are run sequentially by default, but can be run in parallel by using
+the `--jobs` option to start  more than one worker.
 
 > ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
 > a number of jobs that your environment can handle (no more than the CPU
