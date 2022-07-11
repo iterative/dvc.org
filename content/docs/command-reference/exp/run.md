@@ -92,8 +92,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   is processed serially).
 
   > Note that since queued experiments are run isolated from each other, common
-  > stages may sometimes be executed several times depending on the state of the
-  > [run-cache] at that time.
 
   > ⚠️ `dvc exp run --run-all [--jobs]` is now a shortcut for
   > `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
