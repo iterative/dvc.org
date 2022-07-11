@@ -91,8 +91,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
 
-  > Note that since queued experiments are run isolated from each other, common
-
   > ⚠️ `dvc exp run --run-all [--jobs]` is now a shortcut for
   > `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
   > and `--jobs` options will likely be deprecated and removed in a future DVC
