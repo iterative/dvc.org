@@ -12,7 +12,8 @@ task queue: [start](/doc/command-reference/queue/start),
 ## Synopsis
 
 ```usage
-usage: dvc queue [-h] [-q | -v] {start,stop,status,logs,remove,kill} ...
+usage: dvc queue [-h] [-q | -v]
+                 {start,stop,status,logs,remove,kill} ...
 
 positional arguments:
   COMMAND
