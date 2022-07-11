@@ -92,11 +92,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   is processed serially).
 
   <admon type="warn">
-  
+
   `dvc exp run --run-all [--jobs]` is now a shortcut for
   `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
-  and `--jobs` options will be deprecated in a future DVC
-  release.
+  and `--jobs` options will be deprecated in a future DVC release.
 
   </admon>
 

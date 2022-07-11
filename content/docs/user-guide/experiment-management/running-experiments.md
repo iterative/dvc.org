@@ -131,7 +131,8 @@ $ dvc queue start
 ```
 
 > Note that in most cases, experiment tasks will be executed in the order that
-> they were added to the queue (First In, First Out), but this is not guaranteed.
+> they were added to the queue (First In, First Out), but this is not
+> guaranteed.
 
 Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
