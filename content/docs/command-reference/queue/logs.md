@@ -135,7 +135,7 @@ $ dvc exp run --queue -S prepare.split=0.40 -S featurize.max_features=4000
 Queued experiment '93cfa70' for future execution.
 $ dvc queue start
 Started '1' new experiments task queue worker.
-$ dvc queue logs 93cfa70                                                                                                                       ⏎
+$ dvc queue logs 93cfa70
 'data/data.xml.dvc' didn't change, skipping
 Running stage 'prepare':
 > python src/prepare.py data/data.xml
