@@ -27,9 +27,11 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-  > ⚠️ `dvc exp remove --queue` is now an alias for `dvc queue remove --queued`.
-  > The `--queue` option will likely be deprecated and removed in a future DVC
-  > release. Refer to the `dvc queue` documentation for more details.
+  <admon type="warn">
+
+  `dvc exp remove --queue` is now an alias for `dvc queue remove --queued`.
+
+  </admon>
 
 - `-A`, `--all` - remove all experiments that have been run. Use
   `dvc queue remove` to remove queued experiment tasks.
