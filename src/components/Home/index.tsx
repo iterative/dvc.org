@@ -1,6 +1,5 @@
 import React, { useRef, useCallback } from 'react'
 
-import WhatsNewModal from './WhatsNewModal'
 import HeroSection from '../HeroSection'
 import SubscribeSection from '../SubscribeSection'
 import PromoSection from '../PromoSection'
@@ -27,7 +26,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <WhatsNewModal />
       <HeroSection className={styles.heroSection}>
         <LandingHero scrollToRef={useCasesSectionRef} />
         <LearnMore scrollToRef={diagramSectionRef} />

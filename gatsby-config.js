@@ -3,8 +3,6 @@
 require('dotenv').config()
 const path = require('path')
 
-const makeFeedHtml = require('@dvcorg/gatsby-theme-iterative/plugins/utils/makeFeedHtml')
-
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
@@ -66,36 +64,9 @@ const plugins = [
       path: path.join(__dirname, 'static', 'img')
     }
   },
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'images',
-      path: path.join(__dirname, 'static', 'uploads', 'images')
-    }
-  },
-  {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'avatars',
-      path: path.join(__dirname, 'static', 'uploads', 'avatars')
-    }
-  },
   'community-page',
   {
     resolve: 'gatsby-plugin-catch-links'
-  },
-  {
-    resolve: `gatsby-plugin-algolia`,
-    options: {
-      appId: process.env.GATSBY_ALGOLIA_APP_ID || 'B87HVF62EF',
-      apiKey: process.env.ALGOLIA_ADMIN_KEY,
-      skipIndexing:
-        process.env.CI && process.env.ALGOLIA_ADMIN_KEY ? false : true,
-      queries: require('./src/utils/algolia-queries.js'),
-      enablePartialUpdates:
-        process.env.ALGOLIA_FULL_UPDATE === true ? false : true,
-      matchFields: ['slug', 'modified']
-    }
   },
   {
     resolve: 'gatsby-plugin-manifest',
@@ -156,67 +127,6 @@ const plugins = [
         }
       ]
       /* eslint-enable @typescript-eslint/naming-convention */
-    }
-  },
-  {
-    resolve: `gatsby-plugin-feed`,
-    options: {
-      feeds: [
-        {
-          description,
-          output: '/blog/rss.xml',
-          query: `
-            {
-              allBlogPost(
-                sort: { fields: [date], order: DESC }
-              ) {
-                nodes {
-                  htmlAst
-                  slug
-                  title
-                  date
-                  description
-                }
-              }
-            }
-          `,
-          serialize: ({ query: { site, allBlogPost } }) => {
-            return Promise.all(
-              allBlogPost.nodes.map(async node => {
-                const html = await makeFeedHtml(
-                  node.htmlAst,
-                  site.siteMetadata.siteUrl
-                )
-                return Object.assign(
-                  {},
-                  {
-                    /* eslint-disable-next-line @typescript-eslint/naming-convention */
-                    custom_elements: [{ 'content:encoded': html }],
-                    title: node.title,
-                    date: node.date,
-                    description: node.description,
-                    guid: site.siteMetadata.siteUrl + node.slug,
-                    url: site.siteMetadata.siteUrl + node.slug
-                  }
-                )
-              })
-            )
-          },
-          title
-        }
-      ],
-      query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-    `
     }
   }
 ]

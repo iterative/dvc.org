@@ -3,7 +3,7 @@ import React from 'react'
 import * as styles from './styles.module.css'
 
 interface ICommunityBlockProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   title?: React.ReactNode
   action?: React.ReactNode
   icon?: string
@@ -22,7 +22,7 @@ const Block: React.FC<ICommunityBlockProps> = ({
         {icon && <img className={styles.icon} src={icon} alt="" />}
       </div>
     )}
-    <div className={styles.content}>{children}</div>
+    {children ? <div className={styles.content}>{children}</div> : null}
     {action && <div className={styles.action}>{action}</div>}
   </div>
 )
