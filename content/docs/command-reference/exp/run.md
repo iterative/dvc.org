@@ -91,12 +91,14 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
 
-  > ⚠️ `dvc exp run --run-all [--jobs]` is now a shortcut for
-  > `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
-  > and `--jobs` options will likely be deprecated and removed in a future DVC
-  > release. It is recommended to migrate your workflows to use
-  > `dvc queue start` and `dvc queue logs`. Refer to the `dvc queue`
-  > documentation for more details.
+  <admon type="warn">
+  
+  `dvc exp run --run-all [--jobs]` is now a shortcut for
+  `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
+  and `--jobs` options will be deprecated in a future DVC
+  release.
+
+  </admon>
 
 - `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
