@@ -186,8 +186,9 @@ stages:
 And DVC will _unpack_ the values inside `dict`, creating the following `cmd`
 call:
 
-```shell
-python train.py --foo 'foo' --bar 2 --bool --nested.foo 'bar' --list 1 2 'foo'
+```cli
+$ python train.py --foo 'foo' --bar 2 --bool \
+                  --nested.foo 'bar' --list 1 2 'foo'
 ```
 
 This can be useful for avoiding to write every argument passed to the `cmd` or
