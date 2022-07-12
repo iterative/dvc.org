@@ -77,9 +77,9 @@ project we want to clear.
 - `--rev <commit>` - keep cached data referenced in the specified `<commit>`, as
   well as in the workspace (implying `-w`).
 
-- `-n`, `--num` - keep cached data referenced in the last `--num` commits,
-  starting from the `--rev` `<commit>`, as well as in the workspace (implying
-  `-w`).
+- `-n <num>`, `--num <num>` - keep cached data referenced in the last `--num`
+  commits starting from a `--rev <commit>` (required), as well as in the workspace
+  (implying `-w`).
 
 - `-a`, `--all-branches` - keep cached data referenced in all Git branches, as
   well as in the workspace (implying `-w`). Useful if branches are used to track
