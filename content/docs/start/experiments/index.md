@@ -14,6 +14,15 @@ ones that we need to Git.
 
 https://youtu.be/FHQq_zZz5ms
 
+<admon icon="fire">
+
+**New!** You can track and compare you ML experiments with DVC directly [from
+Visual Studio Code], a leading IDE in the industry.
+
+[from visual studio code]: /doc/vs-code-extension
+
+</admon>
+
 In this section, we explore the basic features of DVC experiment management with
 the [`example-dvc-experiments`][ede] project.
 
