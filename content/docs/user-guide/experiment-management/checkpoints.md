@@ -101,13 +101,13 @@ $ dvc exp init \
 python train.py
 ```
 
-We use the `--model` and `--type` flags to define the checkpoint file or
+We use the `--model` and `--type` options to define the checkpoint file or
 directory. The checkpoint file, _model.pt_, is an output from one checkpoint
 that becomes a dependency for the next checkpoint, such as the model weights
 file.
 
-The rest of the `dvc exp init` flags set up our dependencies for running the
-training code, which parameters we want to track (by default all inside
+The rest of the `dvc exp init` options set up our dependencies for running the
+training code, whose parameters we want to track (by default all inside
 _params.yaml_), and configures [DVCLive](/doc/dvclive) to be
 [used alongside DVC](/doc/dvclive/dvclive-with-dvc).
 
