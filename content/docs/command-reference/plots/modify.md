@@ -4,8 +4,7 @@ Modify display properties of
 [stage plots](/doc/command-reference/plots#stage-plots) files.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
-> on image-type plots and standalone plots. See
-> [Types of plots](/doc/command-reference/plots#description).
+> on image-type plots and standalone plots.
 
 ## Synopsis
 
