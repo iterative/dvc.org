@@ -6,7 +6,7 @@ Remove unnecessary experiments from the <abbr>project</abbr>.
 
 ```usage
 usage: dvc exp gc [-h] [-q | -v] [-w]
-                  [-a] [-T] [-A] [--date <commit_date>]
+                  [-a] [-T] [-A] [--date <YYYY-MM-DD>]
                   [--queued] [-f]
 ```
 
@@ -45,8 +45,8 @@ separately to delete it.
   as from the last commit (implies `-w`). This is mainly needed when clearing
   `--queued` experiments (below).
 
-- `--date <YYYY-MM-DD>` - Keep experiments from any commits on of after a
-  certain date. Argument `<YYYY-MM-DD>` expects a date in the
+- `--date <YYYY-MM-DD>` - Keep cached data referenced in the commits on of after
+  a certain date. Argument `<YYYY-MM-DD>` expects a date in the
   [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format
   (YYYY-MM-DD).
 

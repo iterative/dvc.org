@@ -6,7 +6,7 @@ Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 
 ```usage
 usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
-              [--date <commit_date>] [--all-experiments]
+              [--date <YYYY-MM-DD>] [--all-experiments]
               [-c] [-r <name>] [-f] [-j <number>]
               [-p [<path> [<path> ...]]]
 ```
