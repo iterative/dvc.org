@@ -10,7 +10,10 @@ import Section from '../Section'
 
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
+import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
 import { useCommunityData } from '../../../utils/front/community'
+import getPosts from '../../../queries/posts'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
 
 import * as sharedStyles from '../styles.module.css'
 import * as styles from './styles.module.css'
@@ -23,6 +26,70 @@ const logBlog = (eventType: string) => log('Blog', eventType)
 const logDoc = (eventType: string): void => log('Doc', eventType)
 const logUserContent = (eventType: string): void =>
   log('User Content', eventType)
+
+interface ICommunityBlogPost {
+  color: string
+  commentsUrl?: string
+  pictureUrl?: string
+  date: string
+  title: string
+  url: string
+}
+
+const BlogPost: React.FC<ICommunityBlogPost> = ({
+  url,
+  title,
+  date,
+  color,
+  commentsUrl,
+  pictureUrl
+}) => {
+  if (!commentsUrl) {
+    return null
+  }
+
+  const logPost = useCallback(() => logBlog(title), [title])
+
+  const { error, ready, result } = useCommentsCount(commentsUrl)
+
+  return (
+    <div className={cn(sharedStyles.line, sharedStyles.image)} key={url}>
+      {pictureUrl && (
+        <Link href={url} target="_blank" onClick={logPost}>
+          <img className={styles.image} src={pictureUrl} alt="" />
+        </Link>
+      )}
+      <div>
+        <Link
+          className={sharedStyles.link}
+          style={{ color }}
+          href={url}
+          target="_blank"
+          onClick={logPost}
+        >
+          {title}
+        </Link>
+        <div className={sharedStyles.meta}>
+          {ready && !error && (
+            <>
+              <Link
+                className={sharedStyles.commentsLink}
+                href={commentsUrl}
+                target="_blank"
+              >
+                {pluralizeComments(result || 0)}
+              </Link>
+              {' • '}
+            </>
+          )}
+          <span className={sharedStyles.nbsp}>
+            {format(new Date(date), 'MMM, d')}
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export interface ICommunityUserContentProps {
   author: string
@@ -107,6 +174,7 @@ const Documentation: React.FC<ICommunityDocumentationProps> = ({
 }
 
 const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
+  const posts = getPosts()
   const {
     rest: {
       documentation,
@@ -172,16 +240,22 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                 </Link>
               }
               action={
-                <Link
-                  className={sharedStyles.button}
-                  style={theme}
-                  href="https://iterative.ai/blog"
-                  onClick={() => logBlog('all')}
-                >
-                  See all Posts
-                </Link>
+                posts && (
+                  <Link
+                    className={sharedStyles.button}
+                    style={theme}
+                    href="https://iterative.ai/blog"
+                    onClick={() => logBlog('all')}
+                  >
+                    See all Posts
+                  </Link>
+                )
               }
-            ></Block>
+            >
+              {posts.map(post => (
+                <BlogPost {...post} key={post.url} color={theme.color} />
+              ))}
+            </Block>
           </div>
           <div className={sharedStyles.item}>
             <Block title="User Content">

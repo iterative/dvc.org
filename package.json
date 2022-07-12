@@ -59,6 +59,7 @@
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-image": "^2.15.0",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
+    "gatsby-source-rss-feed": "^1.2.2",
     "github-markdown-css": "^5.1.0",
     "http-proxy-middleware": "^2.0.6",
     "iso-url": "^1.2.1",

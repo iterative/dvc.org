@@ -69,6 +69,14 @@ const plugins = [
     resolve: 'gatsby-plugin-catch-links'
   },
   {
+    resolve: `gatsby-source-rss-feed`,
+    options: {
+      // TODO use related feed
+      url: `https://iterative-ai-migrate-bl-mxb05i.herokuapp.com/blog/rss.xml`,
+      name: `IterativeBlog`
+    }
+  },
+  {
     resolve: 'gatsby-plugin-manifest',
     options: {
       /* eslint-disable @typescript-eslint/naming-convention */
