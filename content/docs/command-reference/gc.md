@@ -97,8 +97,8 @@ project we want to clear.
 
   > \* Not including [DVC experiments]
 
-- `--date <commit_date>` - Keep experiments from any commits on of after a
-  certain date. Argument `<commit_date>` expects a date in the
+- `--date <YYYY-MM-DD>` - Keep experiments from any commits on of after a
+  certain date. Argument `<YYYY-MM-DD>` expects a date in the
   [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format
   (YYYY-MM-DD).
 
