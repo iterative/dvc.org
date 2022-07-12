@@ -5,8 +5,9 @@ Remove unnecessary experiments from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc exp gc [-h] [-q | -v] [-w] [-a] [-T] [-A]
-                  [--date <commit_date>] [--queued] [-f]
+usage: dvc exp gc [-h] [-q | -v] [-w]
+                  [-a] [-T] [-A] [--date <commit_date>]
+                  [--queued] [-f]
 ```
 
 ## Description
