@@ -63,7 +63,8 @@ all the current plots, without comparisons.
   ```
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
-  containing the plots (`dvc_plots/` by default).
+  containing the plots. The default is `dvc_plots/` unless
+  [`plots.out_dir`](/doc/command-reference/config#plots). config option is set.
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
