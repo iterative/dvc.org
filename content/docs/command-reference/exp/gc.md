@@ -44,8 +44,10 @@ separately to delete it.
   as from the last commit (implies `-w`). This is mainly needed when clearing
   `--queued` experiments (below).
 
-- `--date` - Keep experiments from the commits after (inclusive) a certain date.
-  Date must match the extended ISO 8601 format (YYYY-MM-DD).
+- `--date <commit_date>` - Keep experiments from any commits on of after a
+  certain date. Argument `<commit_date>` expects a date in the
+  [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+  format (YYYY-MM-DD).
 
 - `--queued` - keep also experiments that haven't been run yet (defined via
   `dvc exp run --queue`). Another scope option (`-w`, `-a`, etc.) is required
