@@ -256,8 +256,9 @@ experiments or projects use a similar structure.
   [custom HTML template](/doc/command-reference/plots#html-templates) for
   `dvc plots`. Accepts a path relative to the `.dvc/` folder.
 
-- `plots.out_dir` - sets the value to use as default for the `--out` flag of
-  `dvc plots show` / `dvc plots diff`. If not set, `dvc_plots` is used.
+- `plots.out_dir` - changes the default value for
+  `dvc plots show --outs` and `dvc plots diff --out`. The original default
+  value is `dvc_plots`.
 
 ### state
 
