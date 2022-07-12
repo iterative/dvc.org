@@ -51,6 +51,15 @@ Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
 rendering (declarative JSON grammar for defining graphics). Image-type plots are
 rendered using `<img>` tags directly.
 
+<admon icon="fire">
+
+**New!** DVC Plots are available [inside the VS Code IDE], a quick and intuitive
+UI for DVC Experiments.
+
+[inside the vs code ide]: /doc/vs-code-extension
+
+</admon>
+
 ## Supported file formats
 
 Image-type plots are included in HTML as-is, without additional processing.
