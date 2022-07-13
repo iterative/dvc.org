@@ -192,8 +192,9 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 ```
 
-Then, when you go to the local URL, you'll see the documentation for how to use
-the model you created.
+Then, when you go to the local URL, you'll see the
+[documentation](https://fastapi.tiangolo.com/features/#automatic-docs)
+for how to use the model you created.
 
 ![FastAPI ML model deployment](/uploads/images/2022-07-05/fastapi_docs.png)
 
