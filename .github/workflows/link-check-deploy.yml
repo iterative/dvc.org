@@ -37,5 +37,5 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Link Check Report
-            ${{ steps.build.outputs.build-log }}
+            ${{ steps.check.outputs.report }}
           edit-mode: replace
