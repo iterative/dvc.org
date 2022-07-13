@@ -90,14 +90,14 @@ save(
 <admon type="tip">
 
 You don't have to do these steps as we already have a model available, but if
-you want to see the training and evaluation steps in action, you can run a few
-experiments with:
+you want to see the training and evaluation steps in action, you reproduce
+the DVC pipeline with:
 
 ```dvc
-$ dvc exp run
+$ dvc repro
 ```
 
-This will execute the DVC pipeline and you can check out what is happening in
+You can check out what is happening in
 that pipeline by looking at the `dvc.yaml` file in the project.
 
 You can also see where we load the model into the `src/evaluate.py` script. To
