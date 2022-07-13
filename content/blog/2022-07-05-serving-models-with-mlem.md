@@ -172,7 +172,7 @@ serve your model quickly using FastAPI with this command.
 $ mlem serve clf fastapi
 ```
 
-This will run a local server and spin up an API for you so you can quickly test
+This will run a local server and spin up a web API for you so you can quickly test
 out your model without needing a development team to work on the API initially.
 
 You'll see an output like this in your terminal:
