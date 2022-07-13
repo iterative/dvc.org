@@ -13,9 +13,12 @@ usage: dvc plots [-h] [-q | -v] {show,diff,modify,templates} ...
 
 positional arguments:
   COMMAND
-    show        Generate plots from target files or plots definitions from `dvc.yaml` file.
-    diff        Show multiple versions of plot data by plotting them in a single image.
-    modify      Modify display properties of data-series stage plots (has no effect on image-type plots).
+    show      Generate plots from target files or from `plots`
+                definitions in `dvc.yaml`.
+    diff      Show multiple versions of a plot by overlaying them
+                in a single image.
+    modify    Modify display properties of data-series plots
+                defined in stages (has no effect on image plots).
     templates   Write built-in plots templates to a directory (.dvc/plots by default).
 ```
 
