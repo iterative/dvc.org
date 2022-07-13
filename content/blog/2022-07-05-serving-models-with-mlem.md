@@ -150,14 +150,14 @@ $ git add clf.mlem
 ```
 
 This is so that the metadata is in your repo and ready to use with other MLEM
-commands. Now we can finally take the model file and ship it to production.
+commands. Now we can finally take the model file and ship it to production!
 
-## Serve the model to production
+## Deploy the model to production
 
 There are a couple of ways you can do this with MLEM:
 
-- Serve the model with [FastAPI](https://fastapi.tiangolo.com/)
-- Create a Python package
+- Serve the model with [FastAPI](https://fastapi.tiangolo.com/).
+- Create a Python package (and use or distribute it).
 
 _Note:_ There is an experimental option to
 [deploy the model directly to Heroku](https://mlem.ai/doc/get-started/deploying)
