@@ -1,7 +1,7 @@
 # plots
 
-A set of commands to visualize and compare data series or images from ML projects:
-[show](/doc/command-reference/plots/show),
+A set of commands to visualize and compare data series or images from ML
+projects: [show](/doc/command-reference/plots/show),
 [diff](/doc/command-reference/plots/diff),
 [modify](/doc/command-reference/plots/modify) and
 [templates](/doc/command-reference/plots/templates).
@@ -115,10 +115,9 @@ project. For example, comparing training versus test results on current branch.
 
 ### Stage plots
 
-When using `dvc stage add`, instead of using
-`--outs/--outs-no-cache` particular outputs can be marked with
-`--plots/--plots-no-cache`. This will tell DVC that they are intended for
-visualizations.
+When using `dvc stage add`, instead of using `--outs/--outs-no-cache` particular
+outputs can be marked with `--plots/--plots-no-cache`. This will tell DVC that
+they are intended for visualizations.
 
 Upon running `dvc plots show/diff` DVC will collect stage plots alongside the
 standalone plots and display them conforming to their configuration. Note, that
