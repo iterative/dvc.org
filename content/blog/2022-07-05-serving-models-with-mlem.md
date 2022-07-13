@@ -204,7 +204,7 @@ external service quickly using MLEM!
 ### Custom Python package
 
 Let's take a look at making a Python package and importing it into a
-[Flask](https://flask.palletsprojects.com/en/2.1.x/) app. To make the Python
+[Flask](https://flask.palletsprojects.com/en/2.1.x/) web app. To make the Python
 package, we'll run the following MLEM command.
 
 ```dvc
