@@ -20,4 +20,22 @@ jobs:
           cache: yarn
       - name: Run Link Check
         id: check
-        run: 'npx repo-link-check -c config/link-check/config.yml -r ${{ github.event.deployment.payload.web_url }} > link_check_output'
+        run: 'echo "::set-output report=Link Check Report\\n\\n$(npx repo-link-check -d -c config/link-check/config.yml) -r ${{ github.event.deployment.payload.web_url }}"'
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Link Check Report
+  
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Link Check Report
+            ${{ steps.build.outputs.build-log }}
+          edit-mode: replace
