@@ -6,8 +6,11 @@ individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
 (forming a _dependency graph_, see `dvc dag`). Refer to
 [Get Started: Data Pipelines](/doc/start/data-pipelines).
 
-> Note that a helper command, `dvc stage`, is available to create and list
-> stages.
+<admon type="tip">
+
+A helper command, `dvc stage`, is available to create and list stages.
+
+</admon>
 
 `dvc.yaml` files can be versioned with Git.
 
@@ -15,8 +18,12 @@ These files use the [YAML 1.2](https://yaml.org/) file format, and a
 human-friendly schema explained below. We encourage you to get familiar with it
 so you may modify, write, or generate stages and pipelines on your own.
 
-> Note that we use [GNU/Linux](https://www.gnu.org/software/software.html) in
-> most of our examples.
+<admon type="info">
+
+We use [GNU/Linux](https://www.gnu.org/software/software.html) in most of our
+examples.
+
+</admon>
 
 ## Stages
 
@@ -51,8 +58,21 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 ### Parameter dependencies
 
 [Parameters](/doc/command-reference/params) are a special type of stage
-dependency. They consist of a name/value pair to find in a YAML, JSON, TOML, or
-Python parameters file (`params.yaml` by default). Example:
+dependency. They consist of a list of params to track in one of these formats:
+
+1. A param key/value pair that can be found in `params.yaml` (default params
+   file);
+2. A dictionary named by the file path to a custom params file, and with a list
+   of param key/value pairs to find in it;
+3. An empty set (give no value or use `null`) named by the file path to a params
+   file: to track all the params in it dynamically.
+
+<admon type="info">
+
+Note that file paths used must be to valid YAML, JSON, TOML, or Python
+parameters file.
+
+</admon>
 
 ```yaml
 stages:
@@ -61,8 +81,11 @@ stages:
     deps:
       - raw.txt
     params:
-      - threshold
+      - threshold # track specific param (from params.yaml)
       - passes
+      - myparams.yaml: # track specific params from custom file
+          - epochs
+      - config.json: # track all parameters in this file
     outs:
       - clean.txt
 ```
@@ -107,9 +130,6 @@ in the YAML structure itself. These sources can be
 [parameters files](/doc/command-reference/params), or `vars` defined in
 `dvc.yaml` instead.
 
-> Note that this parameterization feature is only supported via manual editing
-> of `dvc.yaml` and incompatible with `dvc run`.
-
 Let's say we have `params.yaml` (default params file) with the following
 contents:
 
@@ -140,6 +160,50 @@ stages:
 DVC will track simple param values (numbers, strings, etc.) used in `${}` (they
 will be listed by `dvc params diff`).
 
+### Dict Unpacking
+
+Only inside the `cmd` entries, you can also reference a dictionary inside `${}`
+and DVC will _unpack_ it. For example, given the following `params.yaml`:
+
+```yaml
+dict:
+  foo: foo
+  bar: 2
+  bool: true
+  nested:
+    foo: bar
+  list: [1, 2, 'foo']
+```
+
+You can reference `dict` in the `cmd` section of a `dvc.yaml`:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py ${dict}
+```
+
+And DVC will _unpack_ the values inside `dict`, creating the following `cmd`
+call:
+
+```cli
+$ python train.py --foo 'foo' --bar 2 --bool \
+                  --nested.foo 'bar' --list 1 2 'foo'
+```
+
+This can be useful for avoiding to write every argument passed to the `cmd` or
+having to modify the `dvc.yaml` when adding or removing arguments.
+
+<admon type="tip">
+
+The [parsing](/doc/command-reference/config#parsing) section of `dvc config` can
+be used to customize the syntax used for some ambiguous types like booleans and
+lists.
+
+</admon>
+
+### Vars
+
 Alternatively, values for substitution can be listed as top-level `vars` like
 this:
 
@@ -156,7 +220,11 @@ stages:
     cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-> Note that values from `vars` are not tracked like parameters.
+<admon type="warn">
+
+Values from `vars` are not tracked like parameters.
+
+</admon>
 
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
@@ -362,7 +430,6 @@ These are the fields that are accepted in each stage:
 | `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
-| `live`           | (Optional) [Dvclive](/doc/dvclive/dvclive-with-dvc) configuration field                                                                                                                                                                                                                   |
 
 [changed]: /doc/command-reference/status#local-workspace-status
 
@@ -385,10 +452,10 @@ validation and auto-completion.
 | Field        | Description                                                                                                                                                                                                                                                                       |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                      |
-| `remote`     | (Optional) name of the remote to use for pushing/fetching.                                                                                                                                                                                                                        |
-| `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                                                                                                                        |
+| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
+| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
 | `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
+| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.

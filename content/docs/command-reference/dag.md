@@ -6,7 +6,9 @@ connected [stages](/doc/command-reference/run).
 ## Synopsis
 
 ```usage
-usage: dvc dag [-h] [-q | -v] [--dot] [--full] [target]
+usage: dvc dag [-h] [-q | -v] [-o] [--full]
+               [--md] [--mermaid] [--dot]
+               [target]
 
 positional arguments:
   target          Stage or output to show pipeline for (optional)
@@ -53,31 +55,40 @@ is not available (e.g. on Windows), the output is simply printed out.
 ### Providing a custom pager
 
 It's possible to override the default pager via the `DVC_PAGER` environment
-variable. For example, the following command will replace the default pager with
-[`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
+variable. Set it to a program found in `PATH` or give a full path to it. For
+example on Linux shell:
 
 ```dvc
-$ DVC_PAGER=more dvc dag
+$ DVC_PAGER=more dvc exp show  # Use more as pager once.
+...
+
+$ export DVC_PAGER=more  # Set more as pager for all commands.
+$ dvc exp show ...
 ```
 
-For a persistent change, define `DVC_PAGER` in the shell configuration. For
-example in Bash, we could add the following line to `~/.bashrc`:
-
-```dvc
-$ export DVC_PAGER=more
-```
+> For a persistent change, set `DVC_PAGER` in the shell configuration, for
+> example in `~/.bashrc` for Bash.
 
 ## Options
+
+- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
+  stages themselves. The graph may be significantly different.
 
 - `--full` - show full DAG that the `target` stage belongs to, instead of
   showing only its ancestors.
 
+- `--md` - show DAG in `--mermaid` format, wrapped inside a Markdown
+  [fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+
+  This can be used to combine `dvc dag` with
+  [`cml send-comment`](https://cml.dev/doc/ref/send-comment)
+
+- `--mermaid` - show DAG in [Mermaid](https://mermaid-js.github.io) format. It
+  can be passed to third party visualization utilities.
+
 - `--dot` - show DAG in
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
-
-- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
-  stages themselves. The graph may be significantly different.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -144,3 +155,42 @@ $ dvc dag --outs
       | scores.json |            | prc.json |
       +-------------+            +----------+
 ```
+
+## Example: Mermaid flowchart
+
+The `--mermaid` flag will generate a
+[flowchart in Mermaid format](https://mermaid-js.github.io/mermaid/#/flowchart):
+
+```dvc
+$ dvc dag --mermaid
+flowchart TD
+        node1["data/data.xml.dvc"]
+        node2["evaluate"]
+        node3["featurize"]
+        node4["prepare"]
+        node5["train"]
+        node1-->node4
+        node3-->node2
+        node3-->node5
+        node4-->node3
+        node5-->node2
+```
+
+When the `--md` flag is passed, the mermaid output will be wrapped inside a
+Markdown
+[fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+Note that this output is automatically rendered as a diagram
+[in GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+and [in GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid).
+
+<admon type="tip">
+
+You can combine `dvc dag --md` with the
+[`cml send-comment`](https://cml.dev/doc/ref/send-comment) of CML:
+
+```dvc
+dvc dag --md >> dag.md
+cml send-comment dag.md
+```
+
+</admon>

@@ -34,10 +34,16 @@
   "^/download/linux-rpm/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
+  "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
+
   "^/doc/get-started(/.*)?$                                                               /doc/start",
   "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
   "^/doc/start/data-access$                                                               /doc/start/data-and-model-access",
-  "^/doc/start/sharing-data-and-model-files$                                              /doc/start/data-and-model-versioning#storing-and-sharing 303",
+  "^/doc/start/data-and-model-versioning(/.*)?$                                           /doc/start/data-management$1 302",
+  "^/doc/start/data-and-model-access(/.*)?$                                               /doc/start/data-management/access$1 302",
+  "^/doc/start/data-pipelines(/.*)?$                                                      /doc/start/data-management/pipelines$1 302",
+  "^/doc/start/metrics-parameters-plots(/.*)?$                                            /doc/start/data-management/metrics-parameters-plots$1 302",
+  "^/doc/start/sharing-data-and-model-files$                                              /doc/start/data-and-model-versioning#storing-and-sharing 302",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
   "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-model-files/tutorial",
@@ -45,6 +51,8 @@
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/use-cases/shared-development-server$                                             /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
+  "^/doc/use-cases/data-registries$                                                       /doc/use-cases/data-registry",
+
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",
@@ -55,7 +63,9 @@
   "^/doc/user-guide/dvc-files/.dvc$                                                       /doc/user-guide/project-structure/dvc-files",
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
+  "^/doc/user-guide/contributing(/.*)$                                                    /doc/contributing$1",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
+
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
   "^/doc/command-reference/completion$                                                    /doc/install/completion 302",
   "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",
@@ -69,10 +79,16 @@
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
-  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
-  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
-  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
-  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
+  "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
+
+  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/projects/project-settings",
+  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/projects/explore-experiments",
+  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/projects/visualize-experiments",
+  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/projects/run-experiments",
+
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects/create-project",
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings",
+  "^/doc/studio/user-guide/views/(.*)$                                                    /doc/studio/user-guide/projects/$1",
 
   "^/(.+)/$                                                                               /$1"
 ]

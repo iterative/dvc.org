@@ -1,9 +1,9 @@
-import React from 'react'
-import { getItemByPath } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
+import React, { PropsWithChildren } from 'react'
+import { getItemByPath } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 
-import Documentation from 'gatsby-theme-iterative-docs/src/components/Documentation/WithJSX'
+import Documentation from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX'
 
 interface IJSXDocPageProps {
   title?: string
@@ -12,7 +12,7 @@ interface IJSXDocPageProps {
   headings: []
 }
 
-const JSXDocPage: React.FC<IJSXDocPageProps> = ({
+const JSXDocPage: React.FC<PropsWithChildren<IJSXDocPageProps>> = ({
   title,
   description,
   children,

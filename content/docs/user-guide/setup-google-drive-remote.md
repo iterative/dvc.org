@@ -163,45 +163,16 @@ $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 > Please keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
-## Using service accounts
-
-A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
-Google account associated with your GCP project, and not a specific user. They
-are intended for scenarios where your code needs to access data on its own, e.g.
-running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
-authentication is needed.
-
-> This requires having your own
-> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
-> as explained above.
-
-1. To
-   [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
-   navigate to **IAM & Admin** in the left sidebar, and select **Service
-   Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
-   **Service account name** e.g. "My DVC project", and click **Create**. Select
-   **Continue** at the next **Service account permissions** page, click at **+
-   CREATE KEY**, select **JSON** and **Create**. Download the generated `.json`
-   key file to a safe location.
-
-   ⚠️ Be careful about sharing the key file with others.
-
-2. Configure the remote to use the service account and tell if where to find the
-   key file:
-
-   ```dvc
-   $ dvc remote modify myremote gdrive_use_service_account true
-   $ dvc remote modify myremote --local \
-                 gdrive_service_account_json_file_path path/to/file.json
-   ```
-
-3. Share the Google Drive folders that you want to use with the service account.
-   Navigate to your Google Drive folder's sharing options and add the service
-   account as an editor (read/write) or viewer (read-only):
-
-![](/img/gdrive-share-with-service-account.png)
-
 ## Authorization
+
+<admon type="info">
+
+This covers simple authentication, which gives DVC access to GDrive on behalf of
+a user account. This is ideal to use to run DVC locally, for example. If some
+automation is needed (e.g. CI/CD) we recommend
+[using a service account](#using-service-accounts) instead.
+
+</admon>
 
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
 example when trying to `dvc push` tracked data for the first time, DVC will
@@ -240,7 +211,55 @@ Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass user credentials
 in CI/CD systems, production setup, read-only file systems, etc. The content of
 this variable should be a string with JSON that has the same format as in the
 credentials files described above, and usually you get it going through the same
-authentication process. DVC reads this variable first, before the credentials
-file.
+authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
+`gdrive_user_credentials_file` value (if provided) is ignored.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+## Using service accounts
+
+A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
+Google account associated with your GCP project, and not a specific user. They
+are intended for scenarios where your code needs to access data on its own, e.g.
+running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
+authentication is needed.
+
+> This requires having your own
+> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+> as explained above.
+
+1. To
+   [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
+   navigate to **IAM & Admin** in the left sidebar, and select **Service
+   Accounts**. Click **+ CREATE SERVICE ACCOUNT**, enter a **Service account
+   name** e.g. "My DVC project", and optionally provide a custom **Service
+   account ID** and description. Then click **CREATE AND CONTINUE**. You can
+   skip the two optional sections. Click **DONE** and you will be returned to
+   the overview page. Select your service account and go to the **Keys** tab.
+   Under **Add key** select **Create new key**, choose **JSON**, and click
+   **CREATE**. Download the generated `.json` key file to a safe location.
+
+   ⚠️ Be careful about sharing the key file with others.
+
+2. Configure the remote to use the service account and tell if where to find the
+   key file:
+
+   ```dvc
+   $ dvc remote modify myremote gdrive_use_service_account true
+   $ dvc remote modify myremote --local \
+                 gdrive_service_account_json_file_path path/to/file.json
+   ```
+
+   Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass service account
+   key in CI/CD systems, production setup, read-only file systems, etc. The
+   content of this variable should be a string with JSON that has the same
+   format as in the keys file described above. If both this variable and
+   `gdrive_service_account_json_file_path` are provided,
+   `GDRIVE_CREDENTIALS_DATA` takes priority and
+   `gdrive_service_account_json_file_path` is ignored.
+
+3. Share the Google Drive folders that you want to use with the service account.
+   Navigate to your Google Drive folder's sharing options and add the service
+   account as an editor (read/write) or viewer (read-only):
+
+![](/img/gdrive-share-with-service-account.png)

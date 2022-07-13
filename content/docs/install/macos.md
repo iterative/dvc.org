@@ -1,7 +1,20 @@
 # Installation on macOS
 
-> To use DVC [as a Python library](/doc/api-reference), please
-> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+<admon type="tip">
+
+To use DVC [as a Python library](/doc/api-reference), please install
+[with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
+
+</admon>
+
+<admon type="warn">
+
+To use DVC on ARM (Apple Silicon) macOS, you must install
+[with homebrew](#install-with-homebrew) or [with `pip`](#install-with-pip). The
+PKG binary and `conda` installation methods can only be used on x86 (Intel)
+macOS.
+
+</admon>
 
 ## Install with brew
 
@@ -43,7 +56,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 `[gdrive]`, `[gs]`, `[azure]`, `[ssh]`, `[hdfs]`, `[webdav]`, `[oss]`. Use
 `[all]` to include them all.
 
-<details>
+<details id="example-pip-with-support-for-amazon-s3-storage">
 
 ### Example: with support for Amazon S3 storage
 
@@ -69,7 +82,7 @@ Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
 `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
 
-<details>
+<details id="example-conda-with-support-for-amazon-s3-storage">
 
 ### Example: with support for Amazon S3 storage
 

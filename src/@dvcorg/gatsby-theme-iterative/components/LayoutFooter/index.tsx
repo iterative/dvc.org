@@ -1,0 +1,244 @@
+import React from 'react'
+import cn from 'classnames'
+
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import SocialIcon, {
+  ISocialIcon
+} from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
+
+import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
+import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
+import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
+import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
+import { ReactComponent as CmlSVG } from '../../../../../static/img/cml_icon-color--square_vector.svg'
+import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_icon-color--square_vector.svg'
+import { ReactComponent as IterativeSVG } from '../../../../../static/img/iterative_icon-color--square_vector.svg'
+import { ReactComponent as MlemSVG } from '../../../../../static/img/mlem-icon.svg'
+
+import * as styles from './styles.module.css'
+
+const docsPage = getFirstPage()
+
+interface IFooterLinkData {
+  href: string
+  text: string
+  icon?: JSX.Element
+  target?: '_blank'
+}
+
+interface IFooterListData {
+  header: string
+  links: Array<IFooterLinkData>
+}
+
+const footerListsData: Array<IFooterListData> = [
+  {
+    header: 'Product',
+    links: [
+      {
+        href: '/',
+        text: 'Overview'
+      },
+      {
+        href: '/features',
+        text: 'Features'
+      }
+    ]
+  },
+  {
+    header: 'Help',
+    links: [
+      { href: '/support', text: 'Support' },
+      { href: '/doc/start', text: 'Get started' },
+      { href: '/community', text: 'Community' },
+      { href: docsPage, text: 'Documentation' }
+    ]
+  },
+  {
+    header: 'Community',
+    links: [
+      {
+        href: 'https://twitter.com/DVCorg',
+        text: 'Twitter',
+        icon: <TwitterSVG className={styles.icon} />,
+        target: '_blank'
+      },
+      {
+        href: 'https://github.com/iterative/dvc',
+        text: 'Github',
+        icon: <GithubSVG className={styles.icon} />,
+        target: '_blank'
+      },
+      {
+        href: '/chat',
+        text: 'Discord',
+        icon: <DiscordSVG className={styles.icon} />
+      }
+    ]
+  },
+  {
+    header: 'Company',
+    links: [
+      {
+        href: '/blog',
+        text: 'Blog'
+      },
+      {
+        href: '/doc/user-guide/privacy',
+        text: 'Privacy Policy'
+      },
+      {
+        href: 'https://iterative.ai/about#career',
+        text: 'Career',
+        target: '_blank'
+      },
+      {
+        href: 'https://iterative.ai/brand',
+        text: 'Media Kit'
+      }
+    ]
+  },
+  {
+    header: 'Other Tools',
+    links: [
+      {
+        href: '/',
+        text: 'DVC',
+        icon: <LogoSVG className={styles.productIcon} />
+      },
+      {
+        href: 'https://cml.dev/',
+        text: 'CML',
+        icon: <CmlSVG className={styles.productIcon} />,
+        target: '_blank'
+      },
+      {
+        href: 'https://studio.iterative.ai/',
+        text: 'Studio',
+        icon: <StudioSVG className={styles.productIcon} />,
+        target: '_blank'
+      },
+      {
+        href: 'https://mlem.ai/',
+        text: 'MLEM',
+        icon: <MlemSVG className={styles.productIcon} />,
+        target: '_blank'
+      },
+      {
+        href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
+        text: 'VS Code Extension',
+        icon: <LogoSVG className={styles.productIcon} />,
+        target: '_blank'
+      }
+    ]
+  }
+]
+
+const footerSocialIconsData: Array<ISocialIcon> = [
+  {
+    site: 'github',
+    label: 'DVC Github Page',
+    url: 'https://github.com/iterative/dvc'
+  },
+  {
+    site: 'twitter',
+    label: 'DVC Twitter',
+    url: 'https://twitter.com/DVCorg'
+  },
+  {
+    site: 'youtube',
+    label: 'DVC.org Youtube Channel',
+    url: 'https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ'
+  },
+  {
+    site: 'linkedinNoBg',
+    label: 'Iterative LinkedIn',
+    url: 'https://www.linkedin.com/company/iterative-ai'
+  },
+  {
+    site: 'discord',
+    label: 'DVC Discord chat',
+    url: 'https://www.dvc.org/chat'
+  }
+]
+
+const FooterLists: React.FC = () => (
+  <div className={styles.columns}>
+    {footerListsData.map(({ header, links }, index) => (
+      <div className={styles.column} key={index}>
+        <h2 className={styles.heading}>{header}</h2>
+        <ul className={styles.links}>
+          {links.map(({ text, target, href, icon }, i) => (
+            <li
+              // className={styles.linkItem}
+              key={i}
+            >
+              <Link target={target} href={href} className={styles.link}>
+                {icon}
+                {text}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+)
+
+const FooterSocialIcons: React.FC = () => (
+  <div className={styles.socialIcons}>
+    {footerSocialIconsData.map(({ site, label, url }, index) => (
+      <SocialIcon
+        key={index}
+        site={site}
+        label={label}
+        url={url}
+        className={cn(styles.link, styles.socialIcon)}
+      />
+    ))}
+  </div>
+)
+
+const LayoutFooter: React.FC = () => (
+  <footer className={styles.wrapper}>
+    <LayoutWidthContainer className={cn(styles.container)} wide>
+      <div
+      //  className={styles.top}
+      >
+        <Link className={styles.logo} href="/" title="dvc.org">
+          <LogoSVG />
+        </Link>
+      </div>
+      <FooterLists />
+      <div className={styles.bottomRow}>
+        <p className={styles.companyLabel}>
+          By{' '}
+          <Link
+            className={styles.companyName}
+            href="https://iterative.ai/"
+            target="_blank"
+          >
+            <IterativeSVG className={styles.companyLogo} />
+            iterative.ai
+          </Link>
+          <span className={styles.companyDescription}>
+            <ShowOnly as="span" on="desktop">
+              {' '}
+              - an open platform to operationalize AI
+            </ShowOnly>
+            <ShowOnly as="span" on="mobile">
+              {' '}
+              An open platform to operationalize AI
+            </ShowOnly>
+          </span>
+        </p>
+        <FooterSocialIcons />
+      </div>
+    </LayoutWidthContainer>
+  </footer>
+)
+
+export default LayoutFooter

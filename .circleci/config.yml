@@ -22,10 +22,10 @@ commands:
       # CircleCI breaks master branch which affects format check below. See
       # https://discuss.circleci.com/t/checkout-script-adds-commits-to-master-from-circle-branch/14194
       - run:
-          name: restore master
+          name: restore main
           command: |
-            git checkout master
-            git reset --hard origin/master
+            git checkout main
+            git reset --hard origin/main
             git checkout -
 
       # Download cached dependencies.
@@ -76,6 +76,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - test_full

@@ -1,9 +1,16 @@
 # DVC Documentation
 
-Data Version Control, or DVC, is a data and ML
-[experiment management](/doc/user-guide/experiment-management) tool that takes
-advantage of the existing engineering toolset that you're already familiar with
-(Git, CI/CD, etc.).
+**Data Version Control** is a data and ML [experiment management] tool that
+takes advantage of the existing engineering toolset that you're already familiar
+with (Git, your IDE, CI/CD, etc).
+
+**DVC** is available [for Virtual Studio Code], on any [system terminal], and as
+a [Python library].
+
+[experiment management]: /doc/user-guide/experiment-management
+[for virtual studio code]: /doc/vs-code-extension
+[system terminal]: /doc/install
+[python library]: /doc/api-reference
 
 <cards>
 

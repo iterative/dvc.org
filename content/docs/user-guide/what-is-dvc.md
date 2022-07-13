@@ -3,9 +3,9 @@
 **Data Version Control** is a new type of data versioning, workflow, and
 [experiment management](/doc/user-guide/experiment-management) software, that
 builds upon [Git](https://git-scm.com/) (although it can work stand-alone). DVC
-reduces the gap between established engineering tool sets and data science
-needs, allowing users to take advantage of new [features](#core-features) while
-reusing existing skills and intuition.
+reduces the gap between established engineering toolsets and data science needs,
+allowing users to take advantage of new [features](#core-features) while reusing
+existing skills and intuition.
 
 ![](/img/reproducibility.png) _DVC codifies data and ML experiments_
 
@@ -16,8 +16,7 @@ can version experiments, manage large datasets, and make projects reproducible.
 
 ## Core Features
 
-- DVC is a [free](https://github.com/iterative/dvc/blob/master/LICENSE),
-  open-source [command line](/doc/command-reference) tool.
+- DVC is a [free], open-source [VS Code Extension] and [command line] tool.
 
 - DVC works **on top of Git repositories** and has a similar command line
   interface and flow as Git. DVC can also work stand-alone, but without
@@ -48,6 +47,10 @@ can version experiments, manage large datasets, and make projects reproducible.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
+
+[free]: https://github.com/iterative/dvc/blob/master/LICENSE
+[vs code extension]: /doc/vs-code-extension
+[command line]: /doc/command-reference
 
 ## DVC does not replace Git!
 

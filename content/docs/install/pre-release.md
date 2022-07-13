@@ -10,16 +10,11 @@ releases, you can install it from our code repository GitHub.
 > (on Python 3.7+) to encapsulate your local environment.
 
 ```dvc
-# Should be installed before DVC. See details below.
-$ pip install gitpython
-
-# Basic version.
+# Plain DVC
 $ pip install git+https://github.com/iterative/dvc
 
-# With cloud storage support, add `egg=dvc[option]`,
-# e.g. `s3` for AWS S3, `all` - to support all availabe remote storages.
-# See full list in the `extras_require` section here:
-# https://github.com/iterative/dvc/blob/main/setup.cfg
+# For cloud storage support, add `egg=dvc[option]` e.g. `s3`.
+# Use `all` to include all available clouds.
 $ pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
 ```
 
