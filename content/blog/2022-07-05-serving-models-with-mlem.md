@@ -23,10 +23,11 @@ tags:
 ---
 
 Training a machine learning model is only one step in the process of getting
-something useful out to end-users. There are many goals for machine learning
-projects and we need accurate models that provide us with information based on
-the data received from a production environment. That could mean data coming
-from an API or batch processing, for example.
+something useful out to end-users. When it's time to deploy the model to
+production, there are a number of approaches you can take depending on the goal
+of the machine learning project. That might mean getting the model ready to
+respond to real-time queries coming from an API or batch processing predictions,
+for example.
 
 Either way, you'll need to save your trained and validated model in a format
 that's consumable by other systems. That's why we'll be covering how to serve
