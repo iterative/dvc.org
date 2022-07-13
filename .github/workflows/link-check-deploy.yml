@@ -20,4 +20,4 @@ jobs:
           cache: yarn
       - name: Run Link Check
         id: check
-        run: 'yarn link-check-diff -r ${{ github.event.deployment.payload.web_url }}'
+        run: 'npx repo-link-check -c config/link-check/config.yml -r ${{ github.event.deployment.payload.web_url }} > link_check_output'
