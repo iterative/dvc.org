@@ -1,7 +1,7 @@
 # plots modify
 
-Modify display properties of
-[stage plots](/doc/command-reference/plots#stage-plots) files.
+Modify display properties of data-series
+[plots](/doc/command-reference/plots) defined in <abbr>stages</abbr>.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
 > on image-type plots and standalone plots.
