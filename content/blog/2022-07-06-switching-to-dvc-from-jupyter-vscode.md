@@ -63,3 +63,6 @@ stages that DVC tracks for you.
 ## Look at metrics from experiments
 
 ## Conclusion
+
+When your project gets to the point you need to go back to old experiments, it's
+probably time to start using something more complex than Jupyter notebooks.
