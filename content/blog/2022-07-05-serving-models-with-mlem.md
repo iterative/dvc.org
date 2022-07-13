@@ -91,15 +91,15 @@ save(
 <admon type="tip">
 
 You don't have to do these steps as we already have a model available, but if
-you want to see the training and evaluation steps in action, you can run a few
-experiments with:
+you want to see the training and evaluation steps in action, you reproduce the
+DVC pipeline with:
 
 ```dvc
-$ dvc exp run
+$ dvc repro
 ```
 
-This will execute the DVC pipeline and you can check out what is happening in
-that pipeline by looking at the `dvc.yaml` file in the project.
+You can check out what is happening in that pipeline by looking at the
+`dvc.yaml` file in the project.
 
 You can also see where we load the model into the `src/evaluate.py` script. To
 do that, you'll need to add the following import.
@@ -151,14 +151,14 @@ $ git add clf.mlem
 ```
 
 This is so that the metadata is in your repo and ready to use with other MLEM
-commands. Now we can finally take the model file and ship it to production.
+commands. Now we can finally take the model file and ship it to production!
 
-## Serve the model to production
+## Deploy the model to production
 
 There are a couple of ways you can do this with MLEM:
 
-- Serve the model with [FastAPI](https://fastapi.tiangolo.com/)
-- Create a Python package
+- Serve the model with [FastAPI](https://fastapi.tiangolo.com/).
+- Create a Python package (and use or distribute it).
 
 _Note:_ There is an experimental option to
 [deploy the model directly to Heroku](https://mlem.ai/doc/get-started/deploying)
@@ -173,8 +173,9 @@ serve your model quickly using FastAPI with this command.
 $ mlem serve clf fastapi
 ```
 
-This will run a local server and spin up an API for you so you can quickly test
-out your model without needing a development team to work on the API initially.
+This will run a local server and spin up a web API for you so you can quickly
+test out your model without needing a development team to work on the API
+initially.
 
 You'll see an output like this in your terminal:
 
@@ -193,8 +194,9 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 ```
 
-Then, when you go to the local URL, you'll see the documentation for how to use
-the model you created.
+Then, when you go to the local URL, you'll see the
+[documentation](https://fastapi.tiangolo.com/features/#automatic-docs) for how
+to use the model you created.
 
 ![FastAPI ML model deployment](/uploads/images/2022-07-05/fastapi_docs.png)
 
@@ -204,7 +206,7 @@ external service quickly using MLEM!
 ### Custom Python package
 
 Let's take a look at making a Python package and importing it into a
-[Flask](https://flask.palletsprojects.com/en/2.1.x/) app. To make the Python
+[Flask](https://flask.palletsprojects.com/en/2.1.x/) web app. To make the Python
 package, we'll run the following MLEM command.
 
 ```dvc
