@@ -90,15 +90,15 @@ save(
 <admon type="tip">
 
 You don't have to do these steps as we already have a model available, but if
-you want to see the training and evaluation steps in action, you reproduce
-the DVC pipeline with:
+you want to see the training and evaluation steps in action, you reproduce the
+DVC pipeline with:
 
 ```dvc
 $ dvc repro
 ```
 
-You can check out what is happening in
-that pipeline by looking at the `dvc.yaml` file in the project.
+You can check out what is happening in that pipeline by looking at the
+`dvc.yaml` file in the project.
 
 You can also see where we load the model into the `src/evaluate.py` script. To
 do that, you'll need to add the following import.
@@ -172,8 +172,9 @@ serve your model quickly using FastAPI with this command.
 $ mlem serve clf fastapi
 ```
 
-This will run a local server and spin up a web API for you so you can quickly test
-out your model without needing a development team to work on the API initially.
+This will run a local server and spin up a web API for you so you can quickly
+test out your model without needing a development team to work on the API
+initially.
 
 You'll see an output like this in your terminal:
 
@@ -193,8 +194,8 @@ INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 ```
 
 Then, when you go to the local URL, you'll see the
-[documentation](https://fastapi.tiangolo.com/features/#automatic-docs)
-for how to use the model you created.
+[documentation](https://fastapi.tiangolo.com/features/#automatic-docs) for how
+to use the model you created.
 
 ![FastAPI ML model deployment](/uploads/images/2022-07-05/fastapi_docs.png)
 
