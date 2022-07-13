@@ -166,8 +166,9 @@ although this functionality is experimental and may have breaking changes.
 
 ### Serve with FastAPI
 
-If you don't have an API to work with and don't need a Python package, you can
-serve your model quickly using FastAPI with this command.
+If you don't have an API to work with and don't need a Python package, like if
+you're just testing a model, you can serve your model quickly using FastAPI with
+this command.
 
 ```dvc
 $ mlem serve clf fastapi
@@ -279,9 +280,10 @@ long as you remember to include and install the model package.
 
 ## Conclusion
 
-You can use this same process to train and serve any model through an API
-endpoint very quickly. This can help with validation, collaborating with team
-members, and it can help you see if there are any underlying issues in your
-overall deployment process before you hear about them from users. MLEM can also
-be used to create a model registry so you can store and switch between models
-whenever you need to.
+In this post, we learned how easy it can be to deploy a model through FastAPI or
+through a Python package with MLEM. You can use this same process to train and
+serve any model through an API endpoint very quickly. This can help with
+validation, collaborating with team members, and it can help you see if there
+are any underlying issues in your overall deployment process before you hear
+about them from users. MLEM can also be used to create a model registry so you
+can store and switch between models whenever you need to.
