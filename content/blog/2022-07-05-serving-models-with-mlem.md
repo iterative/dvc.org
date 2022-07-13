@@ -4,7 +4,7 @@ date: 2022-07-05
 description: >
   Once you have a machine learning model that's ready for production, getting it
   out can be complicated. In this tutorial, we're going to use MLEM to deploy a
-  model to an API.
+  model as a web API.
 descriptionLong: >
   Getting a machine learning model out to our end users can be an involved task.
   You have to make sure it's in the correct format for the environment and for
