@@ -1,6 +1,6 @@
 # plots
 
-A set of commands to visualize and compare _plot data_:
+A set of commands to visualize and compare data series or images from ML projects:
 [show](/doc/command-reference/plots/show),
 [diff](/doc/command-reference/plots/diff),
 [modify](/doc/command-reference/plots/modify) and
