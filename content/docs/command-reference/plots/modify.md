@@ -1,7 +1,7 @@
 # plots modify
 
-Modify display properties of data-series
-[plots](/doc/command-reference/plots) defined in <abbr>stages</abbr>.
+Modify display properties of data-series [plots](/doc/command-reference/plots)
+defined in <abbr>stages</abbr>.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
 > on image-type plots and standalone plots.
@@ -25,9 +25,9 @@ positional arguments:
 It might be not convenient for users or automation systems to specify all the
 _display properties_ (such as `y-label`, `template`, `title`, etc.) each time
 plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
-(or unsets) default display properties for a specific metrics file.
+(or unsets) default display properties for a specific plots file.
 
-The path to the metrics file `target` is required. It must be listed in a
+The path to the plots file `target` is required. It must be listed in a
 `dvc.yaml` file (see the `--plots` option of `dvc stage add`).
 `dvc plots modify` adds the display properties to `dvc.yaml`.
 
