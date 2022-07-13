@@ -16,7 +16,8 @@ usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                         target
 
 positional arguments:
-  target                Stage plot to set properties to.
+  target                Plot file to set properties for
+                        (defined at the stage level)
 ```
 
 ## Description
