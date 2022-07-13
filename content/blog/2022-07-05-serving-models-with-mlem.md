@@ -41,7 +41,8 @@ with [MLEM](https://mlem.ai/).
 There are instructions in the project
 [README](https://github.com/iterative/stale-model-example/tree/mlem-serve#readme)
 on how to get everything you need installed and running. This is a simple ML
-project that uses DVC for data versioning and experiment tracking.
+project that uses [DVC](https://dvc.org/) for data versioning and experiment
+tracking.
 
 After you have the repo set up, you'll already have the `MLEM` package
 installed. This project already has a model that's been trained and validated so
