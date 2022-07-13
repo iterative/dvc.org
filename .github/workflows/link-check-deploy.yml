@@ -21,4 +21,3 @@ jobs:
       - name: Run Link Check
         id: check
         run: 'yarn link-check-diff -r ${{ github.event.deployment.payload.web_url }}'
-        uses: iterative/link-check.action@v0.12
