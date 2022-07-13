@@ -1,6 +1,6 @@
 # plots show
 
-Generate [plot](/doc/command-reference/plots) from a metrics file.
+Generate [plot](/doc/command-reference/plots) from a plots file.
 
 ## Synopsis
 
@@ -12,15 +12,15 @@ usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [targets [targets ...]]
 
 positional arguments:
-  targets               Metrics files to visualize.
+  targets               Plot files or plot id's from `dvc.yaml` to visualize.
                         Shows all plots by default.
 ```
 
 ## Description
 
 This command provides a quick way to visualize
-[certain metrics](/doc/command-reference/plots#supported-file-formats) such as
-loss functions, AUC curves, confusion matrices, etc.
+[certain data](/doc/command-reference/plots#supported-file-formats) such as loss
+functions, AUC curves, confusion matrices, etc.
 
 All plots defined in `dvc.yaml` are used by default, but specific plots files
 can be specified as `targets` (note that targets don't necessarily have to be
@@ -28,11 +28,11 @@ defined in `dvc.yaml`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about metrics file formats and templates
-please see `dvc plots`.
+`--template` option. To learn more about plots file formats and templates please
+see `dvc plots`.
 
-> Note that the default behavior of this command can be modified per metrics
-> file with `dvc plots modify`.
+> Note that the default behavior of this command can be modified per plots file
+> with `dvc plots modify`.
 
 ## Options
 
@@ -48,11 +48,11 @@ please see `dvc plots`.
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
   information on this `index` field. Column names or numbers are expected for
-  tabular metrics files.
+  tabular plots files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `targets` is used by default. Column names or numbers are
-  expected for tabular metrics files.
+  expected for tabular plots files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
