@@ -5,7 +5,7 @@ description: >
   What a couple months it's been! This month you will find lots that's happening
   in IRL  conferences again and in case you missed it, we've had some new,
   exciting releases! In addtion you'll find a guide to migrate from Git-LFS to
-  DVC, , Welcome to July!
+  DVC, the first Community piece on MLEM, and demo videos. Welcome to July!
 
 descriptionLong: |
   This month you will find:
@@ -14,9 +14,11 @@ descriptionLong: |
 
     🚀 MLEM Release,
 
-    🔥 DVC extension for VS Code
+    🔥 DVC extension for VS Code,
     
-    🥰 Guide to migrating from Git-LFS to DVC
+    🥰 Guide to migrating from Git-LFS to DVC,
+
+    ✍🏼 New Docs and Blog content,
 
     🚀 New demo videos, and more!
 picture: 2022-07-15/june-heartbeat-cover.png
@@ -30,6 +32,7 @@ tags:
   - MLOps World
   - Git
   - Git-LFS
+  - MyMLOps.com
 ---
 
 <details>
