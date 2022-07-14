@@ -83,7 +83,7 @@ DVC takes care of arranging `dvc exp` experiments and the data
 until your experiments are made [persistent].
 
 [`foreach` stages]:
-  /doc/user-guide/project-structure/pipelines-files#foreach-stages
+  /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Run Cache: Automatic Log of Stage Runs

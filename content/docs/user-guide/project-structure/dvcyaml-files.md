@@ -1,9 +1,9 @@
-# Pipelines Files (`dvc.yaml`)
+# `dvc.yaml`
 
 You can construct data science or machine learning pipelines by defining
-individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
-(or _pipelines files_). Stages form a pipeline when they connect with each other
-(forming a _dependency graph_, see `dvc dag`). Refer to
+individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files.
+Stages form a pipeline when they connect with each other (forming a _dependency
+graph_, see `dvc dag`). Refer to
 [Get Started: Data Pipelines](/doc/start/data-pipelines).
 
 <admon type="tip">
