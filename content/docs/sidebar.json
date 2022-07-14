@@ -143,7 +143,14 @@
           "checkpoints"
         ]
       },
-      "data-pipelines",
+      {
+        "slug": "data-pipelines",
+        "children": [
+          "defining-pipelines",
+          "reproducing-pipelines",
+          "experimental-pipelines"
+        ]
+      },
       {
         "slug": "how-to",
         "source": false,
