@@ -1,29 +1,26 @@
 # Pipelines Files (`dvc.yaml`)
 
-You can construct data science or machine learning pipelines by defining
-individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
-(or _pipelines files_). Stages form a pipeline when they connect with each other
-(forming a _dependency graph_, see `dvc dag`). Refer to
-[Get Started: Data Pipelines](/doc/start/data-pipelines).
+You can construct machine learning pipelines by defining individual
+[stages](/doc/command-reference/run) in one or more `dvc.yaml` files (or
+_pipelines files_). Stages constitute a pipeline when they connect with each
+other (forming a [dependency graph], see `dvc dag`).
 
 <admon type="tip">
 
-A helper command, `dvc stage`, is available to create and list stages.
+See [Get Started: Data Pipelines](/doc/start/data-pipelines) for a follow-along
+walkthrough.
 
 </admon>
 
-`dvc.yaml` files can be versioned with Git.
+`dvc.yaml` uses the [YAML 1.2](https://yaml.org/) format and a human-friendly
+schema explained below. We encourage you to get familiar with it so you may
+modify, write, or generate them by your own means.
 
-These files use the [YAML 1.2](https://yaml.org/) file format, and a
-human-friendly schema explained below. We encourage you to get familiar with it
-so you may modify, write, or generate stages and pipelines on your own.
+`dvc.yaml` files are designed to be small enough so you can easily version them
+with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
 
-<admon type="info">
-
-We use [GNU/Linux](https://www.gnu.org/software/software.html) in most of our
-examples.
-
-</admon>
+[dependency graph]:
+  /doc/user-guide/data-pipelines#directed-acyclic-graph-dag-click-to-learn-more
 
 ## Stages
 
@@ -40,11 +37,22 @@ stages:
       - columns.txt
 ```
 
-> See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
+<admon type="tip">
 
-The most important part of a stage it's the terminal command(s) it executes
+A helper command, `dvc stage`, is available to create and list stages.
+
+</admon>
+
+The most important part of a stage it's the shell\* command(s) it executes
 (`cmd` field). This is what DVC runs when the stage is reproduced (see
 `dvc repro`).
+
+<admon type="info">
+
+\* We use [GNU/Linux](https://www.gnu.org/software/software.html) in our
+examples, but Windows or other shells can be used too.
+
+</admon>
 
 If a command reads input files, these (or their directory locations) can be
 defined as <abbr>dependencies</abbr> (`deps`). DVC will check whether they have
