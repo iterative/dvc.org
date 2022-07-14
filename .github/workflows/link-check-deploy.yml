@@ -7,6 +7,7 @@ jobs:
   run:
     name: Run
     runs-on: ubuntu-latest
+    continue-on-error: true
     if:
       github.event.deployment.ref != 'main' &&
       github.event.deployment_status.state == 'success'
@@ -16,28 +17,37 @@ jobs:
           fetch-depth: 0
       - name: Run Link Check
         id: check
-        run: >-
-          echo "::set-output
-          report=Link Check Report\\n\\n$(npx
-          repo-link-check
-          -d
-          -c config/link-check/config.yml
-          -r ${{ github.event.deployment.payload.web_url }})"
+        run: |
+          body="$(
+            npx repo-link-check \
+            -d -c config/link-check/config.yml \
+            -r ${{ github.event.deployment.payload.web_url }})"
+          body="${body//$'\n'/'%0A'}"
+          echo "::set-output report=Link Check Report%0A%0A$body"
+
+      - name: Find PR associated with deployment
+        uses: actions/github-script@v6
+        id: pr-number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const findPR = require('./.github/workflows/deployment-report.js')
+            return await findPR({ github, context, core })
 
       - name: Find Existing Link Check Report Comment
         uses: peter-evans/find-comment@v2
         id: fc
         with:
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ steps.pr-number.outputs.result }}
           comment-author: 'github-actions[bot]'
           body-includes: Link Check Report
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
-        if: always()
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ steps.pr-number.outputs.result }}
           body: |
             Link Check Report
             ${{ steps.check.outputs.report }}
