@@ -60,7 +60,7 @@ https://media.giphy.com/media/CzbiCJTYOzHTW/giphy.gif
 ## MLEM Release
 
 On June 1st we released our latest open source tool in the Iterative ecosystem.
-MLEM is a model registry and deployment tool connected to your git repo.  
+MLEM is a model registry and deployment tool connected to your Git repo.  
 Together with [DVC](https://dvc.org) and [GTO](https://github.com/iterative/gto)
 (Git Tag Ops), MLEM helps you maintain a model registry right in your git
 repository. Now we have one more step in the process of fully syncing together
@@ -85,11 +85,10 @@ I started writing this Heartbeat on the plane heading back from
 [MLOps World](https://mlopsworld.com/) in Toronto. This conference was a real
 treat! It was wonderful to meet so many Community members already using DVC and
 also to see conference talks advocating for our tools that we didn't even know
-were going to happen! Many thanks to
+were going to happen! Many thanks to [Interos'](https://www.interos.ai/)
 [**Stephen Brown**](https://www.linkedin.com/in/stephanrb3/) and
-[**Amy Bachir**](https://www.linkedin.com/in/amybachir/) from
-[Interos](https://www.interos.ai/) for sharing about DVC and CML in the talk, _A
-GitOps Approach to Machine Learning._
+[**Amy Bachir**](https://www.linkedin.com/in/amybachir/) for sharing about DVC
+and CML in the talk, _A GitOps Approach to Machine Learning._
 
 Additionally, it was great to finally meet in person all the people from the
 greater MLOps Community that I'd previously only known virtually including
@@ -169,7 +168,7 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 You will find in this extension:
 
 - tons of experiment tracking and table functionality over your regular CLI
-- Live metrics tracking
+- live metrics tracking
 - the ability to run and queue experiments directly from the experiment table or
   the command tree
 - sorting, drag and drop column and group movement
@@ -221,8 +220,8 @@ _Thanks for the shout-out Alex!
 diagram for your MLOps Stack. There's no about page there or indication of who
 made this for the greater MLOps Community, which is frankly a bit sus.
 Nevertheless, we were excited to see DVC included in the section of Experiment
-Tracking as should! We know there are other great experiment tracking tools out
-there, and we are content to see that the larger Community is starting to
+Tracking as it should! We know there are other great experiment tracking tools
+out there, and we are content to see that the larger Community is starting to
 recognize this capability with DVC! We like to think of it as taking a step
 beyond tracking to versioning. To learn more about experiment versioning,
 [visit this blog piece](https://dvc.org/blog/ml-experiment-versioning) from
@@ -331,7 +330,7 @@ Additional conferences we will be attending this year:
 
 - [ODSC West](https://odsc.com/california/) in San Francisco
 - [Deep Learning World](https://deeplearningworld.de/) - Berlin
-- [MLOps Summit - Rework](https://www.re-work.co/events/mlops-summit-2022) -
+- [MLOps Summit - Re-work](https://www.re-work.co/events/mlops-summit-2022) -
   London
 - [Toronto Machine Learning Summit](https://www.torontomachinelearning.com/)-
   Toronto
