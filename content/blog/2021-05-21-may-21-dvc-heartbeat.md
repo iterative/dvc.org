@@ -39,7 +39,7 @@ Interested in versioning your data AND your notebooks?
 [Steve Purves](https://twitter.com/stevejpurves) CTO and co-founder of
 [Curvenote](https://curvenote.com/) gave a three-part tutuorial on integrating
 DVC and Curvenote for creating reproducible, collaborative version control for
-data scientists. The videos are beginner accessbile with tips for intermediate
+data scientists. The videos are beginner accessible with tips for intermediate
 git users.
 [Access the videos here.](https://www.youtube.com/watch?v=OnNVbIEIO7A)
 
@@ -50,7 +50,7 @@ for the version control win!_
 
 Next up, [Puneeth Pai](https://www.linkedin.com/in/puneeth-pai-b3b299a1/) of
 [Thoughtworks](https://www.thoughtworks.com/) wrote a two-part blog series with
-a how-to for acheiving continuous machine learning using DVC pipelines with
+a how-to for achieving continuous machine learning using DVC pipelines with
 Jenkins and DAGsHub. Quoted in the article is our own
 [David Ortega](https://github.com/DavidGOrtega),
 

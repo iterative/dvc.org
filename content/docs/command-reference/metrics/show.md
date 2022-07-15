@@ -70,53 +70,30 @@ Let's imagine we have a simple [stage](/doc/command-reference/run) that produces
 an `eval.json` metrics file. The basic use case shows the values in the current
 workspace:
 
-```dvc
+```cli
 $ dvc metrics show
-        eval.json:
-                AUC: 0.66729
-                error: 0.16982
-                TP: 516
+Path       AUC      TP    error
+eval.json  0.66729  516   0.16982
 ```
 
 To see the history of the metrics starting with the workspace and down the Git
 history use `--all-commits` option:
 
-```dvc
+```cli
 $ dvc metrics show --all-commits
-workspace:
-        eval.json:
-                AUC: 0.66729
-                error: 0.16982
-                TP: 516
-cf5e7f87b72028e42e7ea05f17915b68645e93dc:
-        eval.json:
-                AUC: 0.65115
-                error: 0.17304
-                TP: 528
-c7bef5524541dabf8556ed504fd02f55231f875e:
-        eval.json:
-                AUC: 0.65115
-                error: 0.17304
-                TP: 528
+Revision                                  Path       AUC      TP    error
+workspace                                 eval.json  0.66729  516   0.16982
+85acdb826754d175c2981510e183625bc817b2e6  eval.json  0.66524  521   0.17074
+0335250a77cc9c196a40ff7fff1f53300a849ead  eval.json  0.66729  516   0.16982
+fe0af34f66bb713d5a0ae8d8affeb8bda1512d00  eval.json  0.65115  528   0.17304
+a9918370c0761e78a12d9a7b7fa7ededb073937d  eval.json  0.65115  528   0.17304
 ```
 
 Metrics from different branches can be shown by `--all-branches` (`-a`) option:
 
-```dvc
+```cli
 $ dvc metrics show -a
-workspace:
-        eval.json:
-                AUC: 0.66729
-                error: 0.16982
-                TP: 516
-master:
-        eval.json:
-                AUC: 0.65115
-                error: 0.17304
-                TP: 528
-increase_bow:
-        eval.json:
-                AUC: 0.66524
-                error: 0.17074
-                TP: 521
+Revision      Path       AUC      TP    error
+increase_bow  eval.json  0.66524  521   0.17074
+main          eval.json  0.66729  516   0.16982
 ```

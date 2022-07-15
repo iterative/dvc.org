@@ -37,14 +37,14 @@ options below).
 - `--rev <commit>` - list experiments derived from the specified `<commit>` as
   baseline (HEAD by default).
 
-- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+- `-n <num>`, `--num <num>` - list experiments from the last `num` commits
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
 - `-A, --all-commits` - list all experiments in the repository (overrides
   `--rev` and `--num`).
 
-- `--name-only` - print only the names of the experiments without their parent
+- `--name-only` - print only the [names of the experiments] without their parent
   Git commit.
 
 - `-h`, `--help` - shows the help message and exit.
@@ -54,6 +54,9 @@ options below).
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+[names of the experiments]:
+  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
 
 ## Examples
 

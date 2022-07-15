@@ -95,7 +95,7 @@ The following are the types of remote storage (protocols) supported:
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
@@ -125,7 +125,7 @@ configure the `endpointurl` parameter. For example, let's set up a DigitalOcean
 "space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
 region:
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mystore/path
 $ dvc remote modify myremote endpointurl \
                              https://nyc3.digitaloceanspaces.com
@@ -145,7 +145,7 @@ they're effective depends on each storage platform.
 
 ### Microsoft Azure Blob Storage
 
-```dvc
+```cli
 $ dvc remote add -d myremote azure://mycontainer/path
 $ dvc remote modify myremote account_name 'myuser'
 ```
@@ -172,7 +172,7 @@ To start using a GDrive remote, first add it with a
 use any DVC command that needs to connect to it (e.g. `dvc pull` or `dvc push`
 once there's tracked data to synchronize). For example:
 
-```dvc
+```cli
 $ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push  # Assuming there's data to push
 
@@ -204,7 +204,7 @@ modified.
 > 💡 Before adding a GC Storage remote, be sure to
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
-```dvc
+```cli
 $ dvc remote add -d myremote gs://mybucket/path
 ```
 
@@ -227,7 +227,7 @@ First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
 for OSS storage, and configure the
 [endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
 
-```dvc
+```cli
 $ dvc remote add -d myremote oss://mybucket/path
 $ dvc remote modify myremote oss_endpoint endpoint
 ```
@@ -236,7 +236,7 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 `dvc remote modify` as show below. Use the `--local` option to avoid committing
 your secrets to Git:
 
-```dvc
+```cli
 $ dvc remote modify --local myremote oss_key_id 'mykey'
 $ dvc remote modify --local myremote oss_key_secret 'mysecret'
 ```
@@ -246,7 +246,7 @@ $ dvc remote modify --local myremote oss_key_secret 'mysecret'
 Start a container running an OSS emulator, and set up the environment variables,
 for example:
 
-```dvc
+```cli
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
 $ docker image build -t oss:1.0 oss-emulator
 $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
@@ -265,7 +265,7 @@ $ export OSS_ACCESS_KEY_SECRET='mysecret'
 
 ### SSH
 
-```dvc
+```cli
 $ dvc remote add -d myremote ssh://user@example.com/path
 ```
 
@@ -293,7 +293,7 @@ should be installed.
 💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
 API. Read more about it by expanding the WebHDFS section below.
 
-```dvc
+```cli
 $ dvc remote add -d myremote hdfs://user@example.com/path
 ```
 
@@ -312,7 +312,7 @@ If your cluster is secured, then WebHDFS is commonly used with Kerberos and
 HTTPS. To enable these for the DVC remote, set `use_https` and `kerberos` to
 `true`.
 
-```dvc
+```cli
 $ dvc remote add -d myremote webhdfs://example.com/path
 $ dvc remote modify myremote use_https true
 $ dvc remote modify myremote kerberos true
@@ -333,7 +333,7 @@ active kerberos session.
 
 ### HTTP
 
-```dvc
+```cli
 $ dvc remote add -d myremote https://example.com/path
 ```
 
@@ -345,7 +345,7 @@ $ dvc remote add -d myremote https://example.com/path
 
 ### WebDAV
 
-```dvc
+```cli
 $ dvc remote add -d myremote \
                     webdavs://example.com/owncloud/remote.php/dav
 ```
@@ -353,7 +353,7 @@ $ dvc remote add -d myremote \
 If your remote is located in a subfolder of your WebDAV server e.g.
 `files/myuser`, this path may be appended to the base URL:
 
-```dvc
+```cli
 $ dvc remote add -d myremote \
       webdavs://example.com/owncloud/remote.php/dav/files/myuser
 ```
@@ -376,7 +376,7 @@ with the `--local` option of `dvc remote` (and other config) commands!
 
 Using an absolute path (recommended):
 
-```dvc
+```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ cat .dvc/config
   ...
@@ -390,7 +390,7 @@ $ cat .dvc/config
 Using a relative path. It will be resolved against the current working
 directory, but saved **relative to the config file location**:
 
-```dvc
+```cli
 $ dvc remote add -d myremote ../dvcstore
 $ cat .dvc/config
   ...

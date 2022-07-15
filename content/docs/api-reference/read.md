@@ -50,9 +50,9 @@ These are loaded to memory directly (without using any disc space).
   (the current working directory tree is walked up to find it).
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, a commit hash or an
-  [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
-  this option is ignored. _Default_: `HEAD`.
+  a branch or tag name, commit hash, or [experiment name]). If `repo` is not a
+  Git repo, this option is ignored. _Default_: `None` (current working tree will
+  be used)
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
   the target data. _Default_: The
@@ -69,6 +69,8 @@ These are loaded to memory directly (without using any disc space).
   to decode the file contents to a string. This should only be used in text
   mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
   `open()`.
+
+[experiment name]: /doc/command-reference/exp/run#-n
 
 ## Exceptions
 

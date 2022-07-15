@@ -55,8 +55,8 @@ versioned directly with Git.
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
 inside params files (see [Examples](#examples)). DVC will interpret param names
 as the tree path to find those values. Supported types are: string, integer,
-float, and arrays (groups of params). Note that DVC does not ascribe any
-specific meaning to these values.
+float, boolean, and arrays (groups of params). Note that DVC does not ascribe
+any specific meaning to these values.
 
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
@@ -70,7 +70,7 @@ The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
 
 💡 Parameters can also be used for
-[templating](/doc/user-guide/project-structure/pipelines-files#templating)
+[templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
 `dvc.yaml` itself.
 
 ## Options
@@ -102,7 +102,7 @@ Using `dvc stage add`, define a [stage](/doc/command-reference/run) that depends
 on params `lr`, `layers`, and `epochs` from the params file above. Full paths
 should be used to specify `layers` and `epochs` from the `train` group:
 
-```dvc
+```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
                 -p lr,train.epochs,train.layers \
                 python train.py
@@ -112,14 +112,12 @@ $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
 > Python parameters files.
 
 The `train.py` script will have some code to parse and load the needed
-parameters. For example:
+parameters. For example, you can use `dvc.api.params_show()`:
 
 ```py
-from ruamel.yaml import YAML
+import dvc.api
 
-with open("params.yaml", 'r') as fd:
-    yaml = YAML()
-    params = yaml.load(fd)
+params = dvc.api.params_show()
 
 lr = params['lr']
 epochs = params['train']['epochs']
@@ -155,7 +153,7 @@ stages:
 Alternatively, the entire group of parameters `train` can be referenced, instead
 of specifying each of the params separately:
 
-```dvc
+```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
                 -p lr,train \
                 python train.py
@@ -172,7 +170,7 @@ In the examples above, the default parameters file name `params.yaml` was used.
 Note that this file name can be redefined using a prefix in the `-p` argument of
 `dvc stage add`. In our case:
 
-```dvc
+```cli
 $ dvc stage add -n train -d train.py -d logs/ -o users.csv -f \
                 -p parse_params.yaml:threshold,classes_num \
                 python train.py
@@ -183,7 +181,7 @@ $ dvc stage add -n train -d train.py -d logs/ -o users.csv -f \
 Following the previous example, we can use `dvc params diff` to list all of the
 param values available in the <abbr>workspace</abbr>:
 
-```dvc
+```cli
 $ dvc params diff
 Path         Param           HEAD  workspace
 params.yaml  lr              —     0.0041
@@ -242,7 +240,7 @@ class TestConfig:
 The following [stage](/doc/command-reference/run) depends on params `BOOL`,
 `INT`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
 
-```dvc
+```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
                 -p params.py:BOOL,INT,TrainConfig.EPOCHS,TrainConfig.layers \
                 python train.py
@@ -291,7 +289,7 @@ can be referenced
 ([dictionaries](https://docs.python.org/3/library/stdtypes.html#dict) are also
 supported), instead of the parameters in it:
 
-```dvc
+```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
                 -p params.py:BOOL,INT,TestConfig \
                 python train.py

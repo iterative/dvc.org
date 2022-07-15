@@ -1,0 +1,13 @@
+name: DVC docs issue
+description: Issues about the dvc.org website (including DVC docs)
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please report issues about DVC itself to the https://github.com/iterative/dvc repo instead.
+  - type: textarea
+    id: report
+    attributes:
+      label: Report
+    validations:
+      required: true
