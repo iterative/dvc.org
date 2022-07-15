@@ -114,12 +114,14 @@ The conference talks were great. I was able to attend three:
   (who was lucky enough to take home her very own DeeVee, see below), Data
   Science Manager at Kinaxis; with
   [**Nahla Salem**](https://www.linkedin.com/in/nahlags/), Senior Product
-  Manager at [Yelp](https://www.yelp.com/); [**Anneya Golub**](), Staff Data
-  Scientist at [Shopify](https://www.shopify.com/), and [**Phillip Gorniki**](),
-  St. Product Manager at [Kinaxis](https://www.kinaxis.com/en). A particular
-  quote that was a stand out for me from this panel from Nahla, was, "If
-  everything is a priority, nothing is a priority." That was a lesson I needed
-  to take to heart, hence a bumped Heartbeat. 😢
+  Manager at [Yelp](https://www.yelp.com/);
+  [**Anneya Golob**](https://www.linkedin.com/in/anneya-golob/), Staff Data
+  Scientist at [Shopify](https://www.shopify.com/), and
+  [**Phillip Gorniki**](https://www.linkedin.com/in/phillipgornicki/), St.
+  Product Manager at [Kinaxis](https://www.kinaxis.com/en). A particular quote
+  that was a stand out for me from this panel from Nahla, was, "If everything is
+  a priority, nothing is a priority." That was a lesson I needed to take to
+  heart, hence a bumped Heartbeat. 😢
 
 ![Jessie Lamontagne](/uploads/images/2022-07-15/jessie-lamontagne.png '=800')
 _Jessie Lamontagne of Kinaxis with DeeVee!
@@ -238,9 +240,10 @@ diagram generator from MyMLOps.com ([Source link](https://mymlops.com/))_
 
 ### **Samson Zhang**: MLOps: How DVC smartly manages your data sets for training your machine learning models on top of Git
 
-[**Samson Zhang**]() of [LittleBigCode](www.littlebigcode.fr) writes an in-depth
-article in [Medium](https://medium.com) on how DVC aptly manages large datasets.
-He discusses why DVC is needed and how it is a better option compared to MLFlow
+[**Samson Zhang**](https://www.linkedin.com/in/samson-zhang-887135115/) of
+[LittleBigCode](www.littlebigcode.fr) writes an in-depth article in
+[Medium](https://medium.com) on how DVC aptly manages large datasets. He
+discusses why DVC is needed and how it is a better option compared to MLFlow
 because MLflow does not optimize storage for file duplication like DVC does, as
 well as Git-LFS for the same reasons mentioned by Alex Strick van Linschoten in
 the piece mentioned above. Samson goes through a very thorough overview of the
