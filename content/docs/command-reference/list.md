@@ -101,7 +101,7 @@ src
 
 If you open the
 [example-get-started](https://github.com/iterative/example-get-started)
-project's page, you will see a similar list but the `model.pkl` file. It's
+project's page, you will see a similar list but not the `model.pkl` file. It's
 tracked by DVC and not visible to Git. It's exported in the `dvc.yaml` file as
 an output of the `train` stage (in the `outs` field).
 

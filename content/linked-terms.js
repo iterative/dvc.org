@@ -1,11 +1,11 @@
 module.exports = [
   {
     matches: 'dvc.yaml',
-    url: '/doc/user-guide/project-structure/pipelines-files'
+    url: '/doc/user-guide/project-structure/dvcyaml-files'
   },
   {
     matches: 'dvc.lock',
-    url: '/doc/user-guide/project-structure/pipelines-files#dvclock-file'
+    url: '/doc/user-guide/project-structure/dvcyaml-files#dvclock-file'
   },
   {
     matches: '.dvc',

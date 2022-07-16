@@ -112,8 +112,8 @@
         "source": "project-structure/index.md",
         "children": [
           {
-            "label": "Pipelines Files (dvc.yaml)",
-            "slug": "pipelines-files"
+            "label": "dvc.yaml Files",
+            "slug": "dvcyaml-files"
           },
           {
             "label": ".dvc Files",
@@ -364,6 +364,10 @@
           {
             "label": "plots modify",
             "slug": "modify"
+          },
+          {
+            "label": "plots templates",
+            "slug": "templates"
           }
         ]
       },
@@ -537,15 +541,15 @@
             "slug": "prepare-repositories"
           },
           {
-            "label": "Views and Experiments",
-            "slug": "views",
+            "label": "Projects and Experiments",
+            "slug": "projects",
             "source": false,
             "children": [
-              "what-is-a-view",
-              "create-view",
+              "what-is-a-project",
+              "create-project",
               {
-                "label": "Configure View",
-                "slug": "view-settings"
+                "label": "Configure Project",
+                "slug": "project-settings"
               },
               {
                 "label": "Explore ML Experiments",
@@ -556,7 +560,7 @@
                 "slug": "visualize-experiments"
               },
               "run-experiments",
-              "share-view"
+              "share-project"
             ]
           },
           "teams",
