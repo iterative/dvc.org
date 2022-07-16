@@ -47,8 +47,7 @@ separately to delete it.
 
 - `--date <YYYY-MM-DD>` - Keep cached data referenced in the commits on of after
   a certain date. Argument `<YYYY-MM-DD>` expects a date in the
-  [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format
-  (YYYY-MM-DD).
+  [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
 
 - `--queued` - keep also experiments that haven't been run yet (defined via
   `dvc exp run --queue`). Another scope option (`-w`, `-a`, etc.) is required
