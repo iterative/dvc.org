@@ -106,8 +106,8 @@ by the training process) will go. `--type 'checkpoint'` is used to enable DVC
 checkpoints. The checkpoint file, specified with `--model 'model.pt'`, is an
 output from one checkpoint that becomes a dependency for the next checkpoint.
 The other options (`--data` and `--code`) set up our dependencies for running
-the training code, whose parameters we want to track (by default all inside
-`params.yaml`).
+the training code, whose parameters we want to track (by default everything
+inside `params.yaml`).
 
 After running the command above to setup your _train_ stage, your _dvc.yaml_
 should have the following code.
