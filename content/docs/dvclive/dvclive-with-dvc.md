@@ -50,8 +50,8 @@ python train.py
 
 <admon type="info">
 
-Note that the path passed to the `--live` option matches the `path` passed to
-`Live()` in the Python code (`"training_metrics"`).
+Note that the path passed to the `--live` option (`"training_metrics"`) matches the
+`path` passed to `Live()` in the Python code.
 
 </admon>
 
