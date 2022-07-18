@@ -1,6 +1,6 @@
 ---
 title: Serving Machine Learning Models with MLEM
-date: 2022-07-05
+date: 2022-07-19
 description: >
   Once you have a machine learning model that's ready for production, getting it
   out can be complicated. In this tutorial, we're going to use MLEM to deploy a
@@ -10,10 +10,10 @@ descriptionLong: >
   You have to make sure it's in the correct format for the environment and for
   the way it will be consumed. We're going to walk through how you can use MLEM
   to save your model and serve it with a web API.
-picture: 2022-07-05/serve_mlem_models.png
+picture: 2022-07-19/serve_mlem_models.png
 pictureComment: Serving Machine Models with MLEM
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
+commentsUrl: https://discuss.dvc.org/t/serving-machine-learning-models-with-mlem/1253
 tags:
   - MLOps
   - DVC
@@ -199,7 +199,7 @@ Then, when you go to the local URL, you'll see the
 [documentation](https://fastapi.tiangolo.com/features/#automatic-docs) for how
 to use the model you created.
 
-![FastAPI ML model deployment](/uploads/images/2022-07-05/fastapi_docs.png)
+![FastAPI ML model deployment](/uploads/images/2022-07-19/fastapi_docs.png)
 
 That's it! Now you know how to train a model, save it, and deploy to some
 external service quickly using MLEM!
