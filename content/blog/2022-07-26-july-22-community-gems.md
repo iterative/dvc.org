@@ -56,13 +56,123 @@ This URL is built with the project configuration file, `.dvc/config`, and the
 `md5` file hashed stored in the `.dvc` file corresponding to the data file or
 directory you want the storage location of.
 
-## []()
+## [I'm excited about MLEM helping expose API endpoints to our model, but heard it was experimental. Where can I learn more about how to deploy models with this tool?](https://discord.com/channels/485586884165107732/563406153334128681/992517466662117386)
 
-## []()
+Great question from @raveman^2!
 
-## []()
+There are a few ways you can use expose API endpoints to your model:
 
-## []()
+- Run `mlem serve` to generate a FastAPI endpoint with your model.
+- Export the model as a Python package for your own custom-built API.
+- The experimental deploy to Heroku.
+
+You can find more details here in the MLEM docs: https://mlem.ai/doc/get-started
+
+You can also see an example of deploying a model with MLEM in this
+[blog post tutorial](https://dvc.org/blog/serving-models-with-mlem).
+
+## [How do I revert a `dvc add` command that I just run to stop tracking data?](https://discord.com/channels/485586884165107732/563406153334128681/993111134896918599)
+
+This is a good question from @Nwoke!
+
+If you have accidentally added the wrong directory or files for DVC to track,
+you can easily do this with the `dvc remove` command. This is used to remove the
+`.dvc` file and ensure that the original data file is no longer being tracked.
+Here's an example of this command being used:
+
+```dvc
+$ dvc remove data.csv.dvc
+```
+
+Sometimes when you stop tracking data, you also want to remove it from your
+cache. You can do this with the `dvc gc` command. If you want to remove all of
+the data and its previous versions from the cache, you can do that with the
+following command:
+
+```dvc
+$ dvc gc -w
+```
+
+The `-w` option only keeps the files and directories referenced in the
+workspace, so once you have removed the data you don't want to track, this is
+how DVC knows what to keep and what to discard.
+
+You can learn more about removing tracked data in
+[the docs here](https://dvc.org/doc/user-guide/how-to/stop-tracking-data).
+
+## [Is it normal for the `outs` of a stage to be removed when `dvc repro` is run?](https://discord.com/channels/485586884165107732/563406153334128681/993781745524691087)
+
+Fantastic question from @Nish!
+
+This is the expected behavior of DVC. It removed the `outs` of a stage unless
+the `persist:true` value is set for that output. You can learn more about how
+this works in
+[our docs here](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#output-subfields).
+Here's an example of what a stage with the `persist` value set.
+
+```yaml
+stages:
+  train:
+    cmd: date > data/external/date
+    outs:
+      - data/external:
+          persist: true
+```
+
+Even if you don't persist your `outs`, you can still check out an older version
+of the pipeline to get reproduce older `outs` with `dvc checkout`. This is based
+on what's in the `dvc.lock` and `.dvc` files and it will update your workspace
+to match the experiment you check out. This is usually run after checking out a
+different Git branch. So the flow might look like:
+
+```dvc
+$ git checkout experiment-branch
+$ dvc checkout
+```
+
+These commands allow you to get the `dvc.lock` and `.dvc` files for the
+experiment you want to go back to from your Git history. Then it uses DVC to get
+your data to the version and reproduce your entire experiment. You can learn
+more about these details in
+[the `dvc checkout` docs here](https://dvc.org/doc/command-reference/checkout).
+
+## [Is there a way to have a plot with multiple y-axes?](https://discord.com/channels/485586884165107732/485596304961962003/994685566698410055)
+
+Wonderful question from @shortcipher3!
+
+There are a few different ways you can create multiple y-axes in your metrics
+reports. You can
+[make a custom template](https://dvc.org/doc/command-reference/plots#custom-templates)
+with Vega Lite and here's an
+[example Vega Lite template](https://vega.github.io/vega-lite/examples/layer_dual_axis.html)
+with 2 y-axes that may help you get started.
+
+If you update DVC to version `2.12.1` and higher, you should be able to define
+multiple y-axes in your DVC pipeline stages. Here's an example of how this may
+look in a stage:
+
+```yaml
+# dvc.yaml
+stages: ...
+plots:
+  some_file.csv:
+    x: x_column_name
+    y: [col1, col2, col3]
+  # alternative 1:
+  multiple_rocs:
+    x: x_column_name
+    y:
+      some_file.csv: [col1, col2, col3]
+  # in case of multiple files:
+  multiple_rocs_from_multiple_files:
+    x: x_column_name
+    y:
+      file1.csv: [col1, col2]
+      file2.csv: [col3]
+```
+
+A quick note, make sure that `plots` is on the same level as `stages` in your
+`dvc.yaml` file.
 
 ## []()
 
