@@ -246,7 +246,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   $ dvc remote modify myremote listobjects true
   ```
 
-- `sse` - server-side encryption algorithm to use (e.g. AES256, aws:kms). By
+- `sse` - server-side encryption algorithm to use: `AES256` or `aws:kms`. By
   default, no encryption is used.
 
   ```cli
@@ -254,9 +254,9 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   ```
 
 - `sse_kms_key_id` - identifier of the key to encrypt data uploaded when using
-  SSE-KMS. Required when the `sse` parameter (above) is set to `aws:kms`. This
-  parameter will be passed directly to AWS S3 functions, so DVC supports any
-  value that S3 supports, including both key ids and aliases.
+  [SSE-KMS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+  (see `sse`). This parameter will be passed directly to AWS S3, so DVC supports
+  any value that S3 supports, including both key IDs and aliases.
 
   ```cli
   $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'

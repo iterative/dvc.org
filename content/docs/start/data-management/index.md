@@ -17,7 +17,7 @@ https://youtu.be/kLKBcPonMYw
 
 <admon icon="fire">
 
-**New!** You can manage you data and ML models with DVC directly [from Visual
+**New!** You can manage your data and ML models with DVC directly [from Visual
 Studio Code], a leading IDE in the industry.
 
 [from visual studio code]: /doc/vs-code-extension

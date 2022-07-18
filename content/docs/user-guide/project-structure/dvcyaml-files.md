@@ -1,9 +1,9 @@
-# Pipelines Files (`dvc.yaml`)
+# `dvc.yaml`
 
 You can construct data science or machine learning pipelines by defining
-individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
-(or _pipelines files_). Stages form a pipeline when they connect with each other
-(forming a _dependency graph_, see `dvc dag`). Refer to
+individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files.
+Stages form a pipeline when they connect with each other (forming a _dependency
+graph_, see `dvc dag`). Refer to
 [Get Started: Data Pipelines](/doc/start/data-pipelines).
 
 <admon type="tip">
@@ -186,8 +186,9 @@ stages:
 And DVC will _unpack_ the values inside `dict`, creating the following `cmd`
 call:
 
-```shell
-python train.py --foo 'foo' --bar 2 --bool --nested.foo 'bar' --list 1 2 'foo'
+```cli
+$ python train.py --foo 'foo' --bar 2 --bool \
+                  --nested.foo 'bar' --list 1 2 'foo'
 ```
 
 This can be useful for avoiding to write every argument passed to the `cmd` or

@@ -60,7 +60,7 @@ See the `dvc.yaml` specification for more complex data pipelines.
 </admon>
 
 [stage definition]:
-  /doc/user-guide/project-structure/pipelines-files#stage-entries
+  /doc/user-guide/project-structure/dvcyaml-files#stage-entries
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 
