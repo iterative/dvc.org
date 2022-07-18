@@ -40,11 +40,11 @@ Otherwise, you will get this message when you try to add a project:
 
 For more details, refer to the section on how to [prepare your Git repositories]
 for use with Iterative Studio. Instructions on how to specify custom files can
-be found [here].
+be found [here][project-settings].
 
 [prepare your git repositories]:
   /doc/studio/user-guide/prepare-your-repositories
-[here]:
+[project-settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#configuring-project-settings
 
 ## Error: No DVC repo was found at the root
@@ -64,7 +64,7 @@ To solve this, you can either:
   want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here].
+[here][project-settings].
 
 ## Error: Non-DVC sub-directory of a monorepo
 
@@ -87,7 +87,7 @@ To solve this, you can either:
   want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here].
+[here][project-settings].
 
 ## Error: No commits were found for the sub-directory
 
@@ -102,7 +102,7 @@ If you did not intend to work with a DVC repo, you can also specify custom files
 that contain the metrics and hyperparameters that you want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here].
+[here][project-settings].
 
 ## Project got created, but does not contain any data
 
@@ -114,7 +114,7 @@ with the metrics or hyperparameters that you want to visualize.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
-[here].
+[here][project-settings].
 
 ## Project does not contain the columns that I want
 
