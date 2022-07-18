@@ -1,4 +1,4 @@
-# Iterative Studio GitHub App
+# Install the Iterative Studio GitHub App
 
 If you are using a GitHub account, you can install the Iterative Studio App on
 the repositories or organizations that you want to use it with.
