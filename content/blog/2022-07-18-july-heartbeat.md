@@ -141,7 +141,7 @@ this year, you should definitely put it on your radar for next, or attend their
 November! Plus Toronto was fun! Check out our team dinner the last night from
 the CN Tower.
 
-![Team Dinner at the CN Tower](/uploads/images/2022-07-18/team-toronto.jpg '=800')
+![Team Dinner at the CN Tower](/uploads/images/2022-07-18/team-toronto.jpeg '=800')
 _Team dinner at the CN Tower - Pictured L to R: Gabriella Caraballo, Stephanie
 Roy, Mike Moynihan, Jorge Orpinel Perez (forward), me, Mikhail Sveshnikov,
 Milecia McGregor (forward), Max Aginsky, Alex Kim (forward), and Dmitry Petrov)_
@@ -256,7 +256,7 @@ _DVC workflow, cache, and storage
 
 ### **Dror Atariah**: Getting to Know MLEM
 
-![Awesome MLEM](/uploads/images/2022-07-18/awesome.png 'Getting to Know MLEM :wrap-left =150')
+![Awesome MLEM](/uploads/images/2022-07-18/awesome.png 'Getting to Know MLEM :wrap-left =100')
 [**Dror Atariah**](https://www.linkedin.com/in/atariah/) is the first Community
 member to write about MLEM! 🎉 In
 [his piece](http://drorata.github.io/posts/2022/Jun/17/getting-to-know-mlem/) he
