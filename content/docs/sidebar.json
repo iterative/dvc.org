@@ -38,9 +38,6 @@
     "slug": "start",
     "label": "Get Started",
     "source": "start/index.md",
-    "tutorials": {
-      "katacoda": "https://katacoda.com/dvc/courses/get-started"
-    },
     "children": [
       {
         "slug": "data-management",
@@ -49,24 +46,15 @@
         "children": [
           {
             "label": "Data and Model Access",
-            "slug": "access",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
-            }
+            "slug": "access"
           },
           {
             "label": "Data Pipelines",
-            "slug": "pipelines",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
-            }
+            "slug": "pipelines"
           },
           {
             "label": "Metrics, Parameters, and Plots",
-            "slug": "metrics-parameters-plots",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-            }
+            "slug": "metrics-parameters-plots"
           }
         ]
       },
@@ -74,16 +62,10 @@
         "slug": "experiments",
         "label": "Experiments",
         "source": "experiments/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        },
         "children": [
           {
             "label": "Visualization",
-            "slug": "visualization",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-            }
+            "slug": "visualization"
           }
         ]
       }
@@ -130,8 +112,8 @@
         "source": "project-structure/index.md",
         "children": [
           {
-            "label": "Pipelines Files (dvc.yaml)",
-            "slug": "pipelines-files"
+            "label": "dvc.yaml Files",
+            "slug": "dvcyaml-files"
           },
           {
             "label": ".dvc Files",
@@ -139,10 +121,7 @@
           },
           {
             "label": ".dvcignore Files",
-            "slug": "dvcignore-files",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
-            }
+            "slug": "dvcignore-files"
           },
           {
             "label": "Internal Files",
@@ -301,10 +280,7 @@
       },
       {
         "label": "fetch",
-        "slug": "fetch",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
-        }
+        "slug": "fetch"
       },
       {
         "label": "freeze",
@@ -388,6 +364,10 @@
           {
             "label": "plots modify",
             "slug": "modify"
+          },
+          {
+            "label": "plots templates",
+            "slug": "templates"
           }
         ]
       },
@@ -493,16 +473,20 @@
         "label": "get_url()"
       },
       {
+        "slug": "make_checkpoint",
+        "label": "make_checkpoint()"
+      },
+      {
         "slug": "open",
         "label": "open()"
       },
       {
-        "slug": "read",
-        "label": "read()"
+        "slug": "params_show",
+        "label": "params_show()"
       },
       {
-        "slug": "make_checkpoint",
-        "label": "make_checkpoint()"
+        "slug": "read",
+        "label": "read()"
       }
     ]
   },
@@ -557,15 +541,15 @@
             "slug": "prepare-repositories"
           },
           {
-            "label": "Views and Experiments",
-            "slug": "views",
+            "label": "Projects and Experiments",
+            "slug": "projects",
             "source": false,
             "children": [
-              "what-is-a-view",
-              "create-view",
+              "what-is-a-project",
+              "create-project",
               {
-                "label": "Configure View",
-                "slug": "view-settings"
+                "label": "Configure Project",
+                "slug": "project-settings"
               },
               {
                 "label": "Explore ML Experiments",
@@ -576,7 +560,7 @@
                 "slug": "visualize-experiments"
               },
               "run-experiments",
-              "share-view"
+              "share-project"
             ]
           },
           "teams",
