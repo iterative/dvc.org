@@ -70,7 +70,7 @@ The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
 
 💡 Parameters can also be used for
-[templating](/doc/user-guide/project-structure/pipelines-files#templating)
+[templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
 `dvc.yaml` itself.
 
 ## Options

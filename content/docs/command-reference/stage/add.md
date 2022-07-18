@@ -204,9 +204,9 @@ data science experiments.
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
   field inside the `dvc.yaml` stage. Metrics are usually small, human readable
-  files (JSON or YAML) with scalar numbers or other simple information that
-  describes a model (or any other data artifact). See `dvc metrics` to learn
-  more about _metrics_.
+  files (JSON, TOML, or YAML) with scalar numbers or other simple information
+  that describes a model (or any other data artifact). See `dvc metrics` to
+  learn more about _metrics_.
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that DVC
   does not track the metrics file (same as with `-O` above). This means that
