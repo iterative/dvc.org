@@ -100,7 +100,7 @@ You should now see that a project has been added in your dashboard.
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
 [create multiple projects from a single git repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
-[explore the ml experiments]: /doc/studio/user-guide/explore-ml-experiments
+[explore the ml experiments]: /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
 [submit new experiments]: /doc/studio/user-guide/projects-and-experiments/run-experiments
 [sharing it on the web]:
   /doc/studio/user-guide/projects-and-experiments/share-a-project
