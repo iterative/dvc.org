@@ -4,7 +4,7 @@
 
 </admon>
 
-# Prepare your Repositories
+# Prepare Your Repositories
 
 Iterative Studio creates projects by identifying datasets, metrics and
 hyperparameters defined in your Git repositories. These values are stored in
