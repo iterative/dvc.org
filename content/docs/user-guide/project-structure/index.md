@@ -5,9 +5,9 @@ project</abbr>, including the internal `.dvc/` directory. From there on, you
 will create and manage different DVC files and populate the <abbr>cache</abbr>
 as you use DVC and work on your data science experiments.
 
-- `dvc.yaml` _pipelines files_ define stages that form the pipeline(s) of a
-  project. All stage-based features such as `dvc params`, `dvc metrics`, and
-  `dvc plots` are specified here.
+- `dvc.yaml` files define stages that form the pipeline(s) of a project. All
+  stage-based features such as `dvc params`, `dvc metrics`, and `dvc plots` are
+  specified here.
 
 - `.dvc` files ("dot DVC files") are placeholders to track data files and
   directories.

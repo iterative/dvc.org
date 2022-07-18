@@ -19,7 +19,7 @@
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                https://dvc.org/doc/user-guide/experiment-management/running-experiments$1 302",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                   https://dvc.org/doc/user-guide/experiment-management/$1 302",
-  "^https://s\\.dvc\\.org/g/pipeline-files$                                              https://dvc.org/doc/user-guide/project-structure/pipelines-files 302",
+  "^https://s\\.dvc\\.org/g/pipeline-files$                                              https://dvc.org/doc/user-guide/project-structure/dvcyaml-files 302",
   "^https://s\\.dvc\\.org/g/(.*)?$                                                       https://dvc.org/doc/user-guide/$1 302",
   "^https://s\\.dvc\\.org/s/(.*)?$                                                       https://dvc.org/doc/start/$1 302",
   "^https://s\\.dvc\\.org/c/(.*)?$                                                       https://dvc.org/doc/use-cases/$1 302",
@@ -60,6 +60,7 @@
   "^/doc/user-guide/dvc-files$                                                            /doc/user-guide/project-structure",
   "^/doc/user-guide/dvc-files/dvc-yaml$                                                   /doc/user-guide/project-structure",
   "^/doc/user-guide/dvc-files/advanced-dvc-yaml$                                          /doc/user-guide/project-structure/pipelines-files",
+  "^/doc/user-guide/project-structure/pipelines-files$                                    /doc/user-guide/project-structure/dvcyaml-files",
   "^/doc/user-guide/dvc-files/.dvc$                                                       /doc/user-guide/project-structure/dvc-files",
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
@@ -81,10 +82,14 @@
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
-  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
-  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
-  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
-  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
+  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/projects/project-settings",
+  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/projects/explore-experiments",
+  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/projects/visualize-experiments",
+  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/projects/run-experiments",
+
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects/create-project",
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings",
+  "^/doc/studio/user-guide/views/(.*)$                                                    /doc/studio/user-guide/projects/$1",
 
   "^/(.+)/$                                                                               /$1"
 ]
