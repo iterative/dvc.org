@@ -25,7 +25,7 @@ jobs:
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
           body="${body//$'\r'/'%0D'}"
-          echo "::set-output report=$body"
+          echo "::set-output name=report::$body"
 
       - name: Find PR associated with deployment
         uses: actions/github-script@v6
