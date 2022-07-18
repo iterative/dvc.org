@@ -174,7 +174,7 @@ different plans can be found in the Iterative Studio
 
 - **To upgrade** from the Free plan to the Team or Enterprise plan or to
   downgrade your team plan, refer to the section on
-  [changing your team plan](/doc/studio/user-guide/change-team-plan-and-size#change-team-plan).
+  [changing your team plan](/doc/studio/user-guide/change-team-plan-and-size#change-the-plan-your-team-is-on).
 
 - **To change the number of seats** in your Team plan, refer to the section on
-  [changing your team size](/doc/studio/user-guide/change-team-plan-and-size#change-team-size).
+  [changing your team size](/doc/studio/user-guide/change-team-plan-and-size#change-the-size-of-your-team).

@@ -32,8 +32,8 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 
 When you sign up, you're on the Free plan by default. Plans are managed at the
 team level. You can
-[change the plan](/doc/studio/change-team-plan-or-size#change-team-plan) in a
-team's settings page. Each team is on its own plan and needs to be managed
+[change the plan](/doc/studio/change-team-plan-or-size#change-the-plan-your-team-is-on)
+in a team's settings page. Each team is on its own plan and needs to be managed
 separately.
 
 ## How total price is calculated
