@@ -23,7 +23,7 @@ descriptionLong: |
     🚀 New demo videos, and more!
 picture: 2022-07-18/june-heartbeat-cover.png
 author: jeny_defigueiredo
-commentsUrl: hhttps://discuss.dvc.org/t/july-22-heartbeat/1256?
+commentsUrl: https://discuss.dvc.org/t/july-22-heartbeat/1256?
 tags:
   - Heartbeat
   - DVC
