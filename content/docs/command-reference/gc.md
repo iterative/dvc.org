@@ -5,10 +5,11 @@ Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-w] [--rev <commit>] [-n <num>] [-a] [-T] [-A]
+usage: dvc gc [-h] [-q | -v]
+              [-w] [--rev <commit>] [-n <num>] [-a] [-T] [-A]
               [--date <YYYY-MM-DD>] [--all-experiments]
-              [-c] [-r <name>] [-f] [-j <number>]
               [-p [<path> [<path> ...]]]
+              [-c] [-r <name>] [-j <number>] [-f]
 ```
 
 ## Description
