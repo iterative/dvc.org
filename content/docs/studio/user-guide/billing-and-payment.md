@@ -31,9 +31,8 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 ## How to sign up for the Team or Enterprise plan
 
 When you sign up, you're on the Free plan by default. Plans are managed at the
-team level. You can
-[change the plan] in a team's settings page. Each team is on its own plan and
-needs to be managed separately.
+team level. You can [change the plan] in a team's settings page. Each team is on
+its own plan and needs to be managed separately.
 
 [change the plan]:
   /doc/studio/user-guide/change-team-plan-and-size#change-the-plan-your-team-is-on
