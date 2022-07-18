@@ -1,4 +1,4 @@
-# Custom GitLab Server Connection
+# Connect a Custom GitLab Server
 
 If your team’s Git repositories are on a self-hosted GitLab server, you can set
 up a connection to this server such that all your team members can connect to
