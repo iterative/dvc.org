@@ -8,7 +8,7 @@ details.
 > experimentation, you may want to check the basics in
 > [Get Started: Experiments](/doc/start/experiments/) first.
 
-## Pipelines files
+## `dvc.yaml` files
 
 DVC relies on `dvc.yaml` files that contain the commands to run the
 experiment(s). These files codify _pipelines_ that specify one or more

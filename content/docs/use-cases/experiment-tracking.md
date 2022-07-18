@@ -22,7 +22,7 @@ revisions. DVC's approach guarantees reproducibility by working on top of Git
 instead, and not as a separate system.
 
 [experiment management]: /doc/user-guide/experiment-management
-[codified with dvc]: /doc/user-guide/project-structure/pipelines-files
+[codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
 [versioning everything]: /doc/use-cases/versioning-data-and-model-files
 
 ```dvctable
@@ -78,16 +78,18 @@ unchanged and you control where data is saved and [shared]. DVC also improves
 storage efficiency and saves you time via <abbr>caching</abbr>, preventing
 repetitive data transfers or having to retrain models on-the-fly.
 
-|                   | DVC Experiments   | Existing tools                |
-| ----------------- | ----------------- | ----------------------------- |
-| **UI**            | Terminal + [web]  | Web (usually SaaS)            |
-| **Logging**       | Git-based         | Custom formats                |
-| **Storage**       | [Data versioning] | Logging artifacts and metrics |
-| **Execution**     | `dvc exp run`     | Code API (usually Python)     |
-| **Collaboration** | Distributed       | Centralized                   |
+|                   | DVC Experiments              | Existing tools                |
+| ----------------- | ---------------------------- | ----------------------------- |
+| **UI**            | [Web], [IDE], and [terminal] | Web (usually SaaS)            |
+| **Logging**       | Git-based                    | Custom formats                |
+| **Storage**       | [Data versioning]            | Logging artifacts and metrics |
+| **Execution**     | `dvc exp run`                | Code API (usually Python)     |
+| **Collaboration** | Distributed                  | Centralized                   |
 
 [data versioning]: /doc/use-cases/versioning-data-and-model-files
 [web]: /doc/studio
+[ide]: /doc/vs-code-extension
+[terminal]: /doc/command-reference
 
 > 💡 Note that other experiment tracking tools can be complementary to DVC, for
 > example for detailed experiment environment logging with specialized

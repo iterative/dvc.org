@@ -49,7 +49,7 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
 - `--rev <commit>` - pull experiments derived from the specified `<commit>` as
   baseline.
 
-- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+- `-n <num>`, `--num <num>` - pull experiments from the last `num` commits
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 

@@ -8,7 +8,7 @@ jobs:
     name: Initialize
     runs-on: ubuntu-latest
     if:
-      github.event.deployment.ref != 'master' &&
+      github.event.deployment.ref != 'main' &&
       github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v2

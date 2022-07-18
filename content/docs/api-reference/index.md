@@ -1,8 +1,10 @@
 # Python API
 
-DVC can be used as a Python library, simply [install](/doc/install) with `pip`
-or `conda`. This reference provides the details about the functions in the API
-module `dvc.api`, which can be imported any regular way, for example:
+When you [install](/doc/install) DVC with `pip` or `conda`, it can be used as a
+Python library.
+
+This reference provides the details about the functions in the `dvc.api` module,
+which can be loaded in any regular way, for example:
 
 ```py
 import dvc.api

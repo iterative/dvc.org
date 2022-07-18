@@ -8,7 +8,11 @@ import SearchBox from './SearchBox'
 import SearchResult from './SearchResult'
 import useOnClickOutside from '../../../gatsby/hooks/useOnClickOutside'
 
-export default function Search({ indices }: { indices: Array<any> }) {
+export default function Search({
+  indices
+}: {
+  indices: Array<{ name: string }>
+}) {
   const rootRef = useRef<HTMLDivElement>(null)
   const [query, setQuery] = useState('')
   const [hasFocus, setFocus] = useState(false)
