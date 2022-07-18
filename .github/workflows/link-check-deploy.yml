@@ -18,12 +18,14 @@ jobs:
       - name: Run Link Check
         id: check
         run: |
-          body="$(
+          body="# Link Check Report\n\n$(
             npx repo-link-check \
             -d -c config/link-check/config.yml \
             -r ${{ github.event.deployment.payload.web_url }})"
+          body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
-          echo "::set-output report=Link Check Report%0A%0A$body"
+          body="${body//$'\r'/'%0D'}"
+          echo "::set-output report=$body"
 
       - name: Find PR associated with deployment
         uses: actions/github-script@v6
@@ -41,7 +43,7 @@ jobs:
         with:
           issue-number: ${{ steps.pr-number.outputs.result }}
           comment-author: 'github-actions[bot]'
-          body-includes: Link Check Report
+          body-includes: "# Link Check Report"
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
