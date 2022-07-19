@@ -14,9 +14,9 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
    <admon>
 
-   When you sign up, you're on the **Free plan** by default. To switch to the
-   **Team plan**, [create a team] first, then go to the [team settings] and
-   click on `Change plan` in the `Plan and billing` section.
+   When you sign up, you're on the **Free plan**. To switch to the **Team plan**
+   [create a team] first, then go to the [team settings] and click on
+   `Change plan` in the `Plan and billing` section.
 
    To sign up for the **Enterprise plan**, please [schedule a call].
 
