@@ -210,8 +210,8 @@ stages:
           y: tpr
 ```
 
-In this scenario, the `prc.json` and `roc.json` files are not being tracked by
-DVC because of the `cache: false` value. Since these files aren't tracked by
+In this scenario, the `prc.json` and `roc.json` files are **not** being tracked
+by DVC because of the `cache: false` value. Since these files aren't tracked by
 DVC, they aren't saved to a remote storage location outside of Git, like data
 files are. So if you have `cache: false` on a file that you want to keep track
 of, you'll need to Git commit them to your project.
