@@ -45,19 +45,6 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-<admon icon="tip">
-
-**New!** Once you set up a DVC project, you can work on it [from the VS Code
-IDE] or online with [Iterative Studio], the web UI that integrates all of our
-data science tools. Check out [this live demo]!
-
-[from the vs code ide]: /doc/vs-code-extension
-[iterative studio]: /doc/studio
-[this live demo]:
-  https://studio.iterative.ai/team/Iterative/views/example-get-started-zde16i6c4g
-
-</admon>
-
 DVC's features can be grouped into functional components. You can explore them
 in two independent trails:
 

@@ -14,7 +14,7 @@ ones that we need to Git.
 
 https://youtu.be/FHQq_zZz5ms
 
-<admon icon="tip">
+<admon type="tip">
 
 **New!** You can track and compare you ML experiments with DVC directly [from
 Visual Studio Code], a leading IDE in the industry.

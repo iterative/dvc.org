@@ -29,7 +29,7 @@ approaches:
   you compare and share them. 📖 More info in the [Experiments
   Overview][experiments].
 
-  <admon icon="tip">
+  <admon type="tip">
 
   **New!** DVC Experiments can be used directly [from the VS Code IDE] or online
   with [Iterative Studio], the web UI that integrates all of our data science
