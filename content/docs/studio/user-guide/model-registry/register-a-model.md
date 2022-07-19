@@ -16,6 +16,17 @@ https://www.youtube.com/watch?v=hKf4twg832g
    that connects to this Git repository. If your model file resides in a remote
    storage (eg, S3, GCS, etc.), select the project whose Git repository you want
    to add the model to.
+
+   <admon>
+
+   Only repositories that you have connected to Iterative Studio are available
+   in the `Add a model` form. To connect your desired repository to Iterative
+   Studio, go to the `Projects` tab and
+   [create a project that connects to this Git repository](/doc/studio/user-guide/projects-and-experiments/create-a-project).
+   Then you can come back to the model registry and add the model.
+
+   </admon>
+
 3. Enter the path of the model file. If the model file is in the Git repository,
    enter the relative path of the model from the repository root. If the model
    file is in a remote storage but is DVC-tracked, enter the path of the DVC

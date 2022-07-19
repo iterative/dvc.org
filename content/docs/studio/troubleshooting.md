@@ -12,6 +12,8 @@ settings_ are now called _Project settings_; and so on.
 Here we provide help for some of the problems that you may encounter when using
 Iterative Studio.
 
+**Projects and experiments**
+
 - [Error: No data found to visualize](#error-no-data-found-to-visualize)
 - [Error: No DVC repo was found at the root](#error-no-dvc-repo-was-found-at-the-root)
 - [Error: Non-DVC sub-directory of a monorepo](#error-non-dvc-sub-directory-of-a-monorepo)
@@ -21,6 +23,10 @@ Iterative Studio.
 - [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+  **Model registry**
+- [I cannot find my desired Git repository in the form to add a model]()
+- [Model registry does not display the models in my Git repositories]()
+  **Billing and payment**
 - [Questions or problems with billing and payment](#questions-or-problems-with-billing-and-payment)
 
 ## Support
@@ -206,8 +212,26 @@ please check:
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
 
+## I cannot find my desired Git repository in the form to add a model
+
+Only repositories that you have connected to Iterative Studio are available in
+the `Add a model` form. To connect your desired repository to Iterative Studio,
+go to the `Projects` tab and
+[create a project that connects to this Git repository](/doc/studio/user-guide/projects-and-experiments/create-a-project).
+Then you can come back to the model registry and add the model.
+
+## Model registry does not display the models in my Git repositories
+
+For a model to be displayed in the model registry, it has to be registered using
+[GTO]. You can register the model
+[from Iterative Studio](/doc/studio/user-guide/model-registry/register-a-model),
+which uses [GTO] under the hood to create the necessary Git commits.
+Alternately, you can also use the [GTO] CLI.
+
 ## Questions or problems with billing and payment
 
 Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
+
+[gto]: https://github.com/iterative/gto
