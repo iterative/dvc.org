@@ -88,7 +88,7 @@
   "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
   "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects/create-project 302",
   "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings 302",
-  "^/doc/studio/user-guide/views(/.*)$                                                    /doc/studio/user-guide/projects$1 302",
+  "^/doc/studio/user-guide/views(/.*)?$                                                    /doc/studio/user-guide/projects$1 302",
 
   "^/(.+)/$                                                                               /$1"
 ]
