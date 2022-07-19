@@ -5,7 +5,7 @@ different deployment environments you have in your organization (such as
 `development`, `staging`, `production`, etc.). These deployment environments are
 represented by `stages` in the model registry. To assign a stage to a model
 version, Studio creates a Git tag with the specified stage and version number.
-Refer here [GTO docs] to see the exact format of the Git tag.
+Refer the [GTO docs] to see the exact format of the Git tag.
 
 You can write CI/CD actions that can actually deploy the models to the different
 deployment environments upon the creation of a new Git tag for stage assignment.
@@ -23,8 +23,10 @@ https://www.youtube.com/watch?v=hKf4twg832g
    be initiated from the models dashboard or from the related project’s
    experiment table as shown below.
 
-[Gif showing the promotion entry points in the model details page, models
-dashboard and experiment table]
+**_TODO: Replace the below with the Gif showing promotion entry points in the
+model details page, models dashboard and experiment table_**
+
+![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
 2. Select the version that you want to promote.
 3. Enter the stage name (eg, `development`, `staging`, `production`). Note that
@@ -48,3 +50,5 @@ dashboard and experiment table]
    available in the model `History` section as well as in the `Stages` section.
 7. If you go to your Git repository, you will see that the new Git tag has been
    created.
+
+[gto docs]: https://github.com/iterative/gto

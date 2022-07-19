@@ -16,7 +16,7 @@ actions:
 - [Add your projects](#add-your-projects)
 - [Explore and share your projects](#explore-and-share-your-projects)
 - [Use model registry](#use-model-registry)
-- [Create and manage teams](#use-model-registry)
+- [Create and manage teams](#create-and-manage-teams)
 
 ## Sign up / sign in
 
@@ -112,17 +112,25 @@ You should now see that a project has been added in your dashboard.
 
 ## Use model registry
 
-1. Click on the `Models` tab to open the [central models dashboard]() of your
-   Model Registry. If any of your projects contain GTO_annotated models, they
-   will be displayed in this dashboard.
+1. Click on the `Models` tab to open the
+   [central models dashboard](/doc/studio/user-guide/model-registry/view-models#models-dashboard)
+   of your Model Registry. If any of your projects contain GTO_annotated models,
+   they will be displayed in this dashboard.
 
-2. You can [add new models]() to the model registry by clicking on the
-   `Add a model` button and following on-screen instructions.
+2. You can
+   [add new models](/doc/studio/user-guide/model-registry/register-a-model) to
+   the model registry by clicking on the `Add a model` button and following
+   on-screen instructions.
 
-3. To [view the details]() of a model, click on the name of the model.
+3. To
+   [view the details](/doc/studio/user-guide/model-registry/view-models#model-details-page)
+   of a model, click on the name of the model.
 
-4. You can [register new versions]() of the models and
-   [promote them to different stages]() (eg, development, staging, production).
+4. You can
+   [register new versions](/doc/studio/user-guide/model-registry/version-models)
+   of the models and
+   [promote them to different stages](/doc/studio/user-guide/model-registry/promote-models)
+   (eg, development, staging, production).
 
 ## Create and manage teams
 

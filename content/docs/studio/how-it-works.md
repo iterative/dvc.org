@@ -17,8 +17,10 @@ Iterative Studio then creates an interactive, tabular representation of all the
 identified values. You can also
 [run new experiments](/doc/studio/user-guide/run-experiments) from Iterative
 Studio using your regular CI/CD setup (e.g. GitHub Actions). All identified
-models are included in an interactive models dashboard and individual model
-details pages.
+models are included in an interactive
+[models dashboard](/doc/studio/user-guide/model-registry/view-models#models-dashboard)
+and individual
+[model details pages](/doc/studio/user-guide/model-registry/view-models#model-details-page).
 
 This video illustrates how Iterative Studio works closely with your Git
 ecosystem.
