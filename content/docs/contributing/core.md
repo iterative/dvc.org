@@ -46,7 +46,11 @@ Make sure that you have Python 3.7 or higher installed. On macOS, we recommend
 using `brew` to install Python. For Windows, we recommend an official
 [python.org release](https://www.python.org/downloads/windows/).
 
-> ℹ️ Note that `pip` version 20.3+ is required.
+<admon type="info">
+
+Note that `pip` version 20.3+ is required.
+
+</admon>
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
 do that, we **strongly** recommend creating a
