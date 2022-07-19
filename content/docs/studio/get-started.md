@@ -8,6 +8,18 @@ Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
+The rest of this page provides quick instructions to perform the following
+actions:
+
+- [Sign up/ sign in](#sign-up--sign-in)
+- [Explore demo project](#explore-demo-project)
+- [Add your projects](#add-your-projects)
+- [Explore and share your projects](#explore-and-share-your-projects)
+- [Use model registry](#use-model-registry)
+- [Create and manage teams](#use-model-registry)
+
+## Sign up / sign in
+
 1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
@@ -25,7 +37,9 @@ different plans, check out our
 
 </admon>
 
-2. If this is the first time you are signing in to Iterative Studio, you will
+## Explore demo project
+
+1. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` project that connects to an example
    DVC repository. Use this project to explore the features that Iterative
    Studio has to offer.
@@ -34,11 +48,13 @@ different plans, check out our
 login, an example project is already created for you to explore, and you can add
 more projects._
 
-3. Each project on this dashboard displays the metrics that Iterative Studio
+2. Each project on this dashboard displays the metrics that Iterative Studio
    identified in your Git repository. In the figure above, you can see that
    `avg_prec` and `roc_auc` metrics are displayed.
 
-4. To connect to a new repository, click on `Add a Project`. All the
+## Add your projects
+
+1. To connect to a new repository, click on `Add a Project`. All the
    organizations that you have access to will be listed.
 
     <admon type="info">
@@ -59,12 +75,12 @@ more projects._
 
     </admon>
 
-5. Open the organization whose repository you want to connect to. You can also
+2. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.
 
    ![](https://static.iterative.ai/img/studio/select_repo_v3.png)
 
-6. Specify additional connection settings if required.
+3. Specify additional connection settings if required.
 
    ![](https://static.iterative.ai/img/studio/project_settings.png)
 
@@ -77,7 +93,7 @@ more projects._
 
 You should now see that a project has been added in your dashboard.
 
-7. If your project requires any of the additional settings, then remember to
+4. If your project requires any of the additional settings, then remember to
    configure them by opening the [project settings]. Otherwise, your project may
    not work as expected. To go to project settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
@@ -85,16 +101,34 @@ You should now see that a project has been added in your dashboard.
 
 ![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
-8. You can also [create multiple projects from a single Git repository].
+5. You can also [create multiple projects from a single Git repository].
 
-9. After creating a project, you can use it to [explore the ML experiments] as
+## Explore and share your projects
+
+1. After creating a project, you can use it to [explore the ML experiments] as
    well as [submit new experiments] from Iterative Studio.
 
-10. You can also make the project public by [sharing it on the web].
+2. You can also make the project public by [sharing it on the web].
 
-11. You can [create a team] and invite collaborators. Each team will have its
-    own projects dashboard. To create teams with more than 2 team members, [sign
-    up for the **Team** plan or **Enterprise** plan].
+## Use model registry
+
+1. Click on the `Models` tab to open the [central models dashboard]() of your
+   Model Registry. If any of your projects contain GTO_annotated models, they
+   will be displayed in this dashboard.
+
+2. You can [add new models]() to the model registry by clicking on the
+   `Add a model` button and following on-screen instructions.
+
+3. To [view the details]() of a model, click on the name of the model.
+
+4. You can [register new versions]() of the models and
+   [promote them to different stages]() (eg, development, staging, production).
+
+## Create and manage teams
+
+1. You can [create a team] and invite collaborators. Each team will have its own
+   projects dashboard. To create teams with more than 2 team members, [sign up
+   for the **Team** plan or **Enterprise** plan].
 
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project

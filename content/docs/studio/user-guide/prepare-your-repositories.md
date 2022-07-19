@@ -6,10 +6,17 @@
 
 # Prepare Your Repositories
 
-Iterative Studio creates projects by identifying datasets, metrics and
-hyperparameters defined in your Git repositories. These values are stored in
-your Git repositories as JSON or YAML files. You can add these values to your
-Git repositories in two ways:
+Iterative Studio creates projects by identifying datasets, metrics,
+hyperparameters and models defined in your Git repositories. These values are
+stored in your Git repositories as JSON or YAML files. Model information may be
+available in Git tags as well.
+
+Model information can be added directly from the `Models` tab in Iterative
+Studio after creating the project. You can also use
+[GTO](https://github.com/iterative/gto) and [MLEM](https://mlem.ai/) CLI/API.
+
+To add datasets, metrics and hyperparameters to your Git repositories, there are
+two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
    version your code, data and models all within your Git repositories. Data
