@@ -18,6 +18,8 @@ jobs:
       - name: Run Link Check
         id: check
         run: |
+          set +e
+
           body="# Link Check Report
 
           $(
