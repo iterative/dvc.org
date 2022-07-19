@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run Link Check
+        continue-on-error: true
         id: check
         run: |
           body="# Link Check Report
@@ -40,6 +41,7 @@ jobs:
             return await findPR({ github, context, core })
 
       - name: Find Existing Link Check Report Comment
+        continue-on-error: true
         uses: peter-evans/find-comment@v2
         id: fc
         with:
