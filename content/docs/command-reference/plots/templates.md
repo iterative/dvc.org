@@ -24,7 +24,7 @@ for example `dvc plots templates confusion`. Template files are written to
 `.dvc/plots` by default, but any location can be set with the `--out` (`-o`)
 option.
 
-<admon type="info">
+<admon type="note">
 
 Note that templates can only be used with [data-series plots].
 
