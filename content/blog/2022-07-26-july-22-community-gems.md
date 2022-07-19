@@ -174,9 +174,47 @@ plots:
 A quick note, make sure that `plots` is on the same level as `stages` in your
 `dvc.yaml` file.
 
-## []()
+## [How do you structure the `dvc.yaml` file to run in stages in a specific order?](https://discord.com/channels/485586884165107732/563406153334128681/991000853278232616)
 
-## []()
+Awesome question from @srb302!
+
+You would need to set up outputs and dependencies for each stage. So a stage
+that is run first would generate an output and the stage that is suppose to run
+second would use the first stage's output as a dependency.
+
+Otherwise, DVC does not guarantee any particular execution order for stages
+which are independent of each other. DVC determines the structure of your DAG
+based on file outputs and dependencies and there isn't another way to enforce
+order of stage execution in DVC DVC expects your stage command to generate all
+outputs each time the command is run and will remove all existing outputs before
+it runs a stage.
+
+## [How do I know when I should track a file with Git or DVC?](https://discord.com/channels/485586884165107732/485596304961962003/993120910095699978)
+
+This is a really good question from @vadim.sukhov!
+
+Let's take a look at an example `dvc.yaml`.
+
+```yaml
+stages:
+  evaluate:
+    ...
+    plots:
+      - prc.json:
+          cache: false
+          x: recall
+          y: precision
+      - roc.json:
+          cache: false
+          x: fpr
+          y: tpr
+```
+
+In this scenario, the `prc.json` and `roc.json` files are not being tracked by
+DVC because of the `cache: false` value. Since these files aren't tracked by
+DVC, they aren't saved to a remote storage location outside of Git, like data
+files are. So if you have `cache: false` on a file that you want to keep track
+of, you'll need to Git commit them to your project.
 
 ---
 
