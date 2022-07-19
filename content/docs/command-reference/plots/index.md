@@ -44,12 +44,17 @@ DVC can work with two types of plots files:
 1. Data series files, which can be JSON, YAML, CSV or TSV.
 2. Image files in JPEG, GIF, or PNG format.
 
-DVC generates plots as static HTML webpages that can be open with a web browser.
-They can also be saved as SVG or PNG image files from the browser.
+DVC generates plots as static HTML webpages you can open with a web browser
+(they can be saved as SVG or PNG image files from there). You can also visualize
+DVC plots from the VS Code Extension, which includes a special [Plots Dashboard]
+that corresponds to the features in the `dvc plots` commands.
 
 Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
 rendering (declarative JSON grammar for defining graphics). Image-type plots are
 rendered using `<img>` tags directly.
+
+[plots dashboard]:
+  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 
 ## Supported file formats
 
