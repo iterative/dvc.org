@@ -45,7 +45,7 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-<admon icon="fire">
+<admon icon="tip">
 
 **New!** Once you set up a DVC project, you can work on it [from the VS Code
 IDE] or online with [Iterative Studio], the web UI that integrates all of our

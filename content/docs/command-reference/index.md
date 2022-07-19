@@ -12,7 +12,7 @@ in your terminal).
 
 </admon>
 
-<admon icon="fire">
+<admon icon="tip">
 
 **New!** DVC is also available [for the VS Code IDE], which adds many DVC
 operations [to the Command Palette].
