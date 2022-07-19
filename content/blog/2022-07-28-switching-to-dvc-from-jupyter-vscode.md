@@ -127,17 +127,19 @@ with the DVC VSCode extension.
 
 ```dvctable
 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────>
-  Experiment                Created        avg_prec   roc_auc   train.seed   train.n_est   train.min_split   >
+  neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   >
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────>
-  workspace                 -               0.76681   0.38867   20210428     300           75                >
-  jupyter-to-dvc            Jul 18, 2022    0.76681   0.38867   20210428     300           75                >
+  **workspace**                 **-**               **0.76681**   **0.38867**   **20210428**     **300**           **75**                >
+  **jupyter-to-dvc**            **Jul 18, 2022**    **0.76681**   **0.38867**   **20210428**     **300**           **75**                >
   └── 4a070a7 [exp-b8925]   Jul 18, 2022    0.76681   0.38867   20210428     300           75                >
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────>
 ```
 
 _with CLI tool_
 
-![metrics in DVC VSCode extension]() _with DVC VSCode extension_
+![metrics in DVC VSCode extension]()
+
+_with DVC VSCode extension_
 
 ## Conclusion
 
