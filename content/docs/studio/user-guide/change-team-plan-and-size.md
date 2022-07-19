@@ -1,8 +1,8 @@
 # Change Team Plan and Size
 
-When you sign up, you're on the **Free plan** by default. This plan is
-designed for teams that are starting out: you can invite one other team member
-and import as many repositories as you want.
+When you sign up, you're on the **Free plan** by default. This plan is designed
+for teams that are starting out: you can invite one other team member and import
+as many repositories as you want.
 
 For more advanced collaboration, you can switch to the Team or Enterprise plans.
 A detailed comparison of the different plans can be found in the Iterative

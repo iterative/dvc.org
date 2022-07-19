@@ -34,8 +34,8 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 
 When you sign up, you're on the **Free plan** by default. To switch to the
 **Team plan**, [create a team] first, then go to the [team settings] and click
-on `Change plan` in the `Plan and billing` section. To switch to the **Enterprise
-plan**, please [contact us].
+on `Change plan` in the `Plan and billing` section. To switch to the
+**Enterprise plan**, please [contact us].
 
 [team settings]: /doc/studio/user-guide/teams#settings
 [contact us]: /doc/studio/troubleshooting#support
