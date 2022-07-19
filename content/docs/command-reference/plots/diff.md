@@ -58,7 +58,7 @@ all the current plots, without comparisons.
   When specifying arguments for `--targets` before `revisions`, you should use
   `--` after this option's arguments, e.g.:
 
-  ```dvc
+  ```cli
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
   ```
 
@@ -110,7 +110,7 @@ all the current plots, without comparisons.
 
 To compare uncommitted changes of a metrics file and its last committed version:
 
-```dvc
+```cli
 $ dvc plots diff --targets logs.csv --x-label x
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -121,7 +121,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 Compare two specific versions (commit hashes, tags, or branches):
 
-```dvc
+```cli
 $ dvc plots diff HEAD 0135527 --targets logs.csv
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -151,7 +151,7 @@ The predefined confusion matrix
 `.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 
-```dvc
+```cli
 $ dvc plots diff -t confusion --targets classes.csv -x predicted
 file:///Users/usr/src/test/dvc_plots/index.html
 ```

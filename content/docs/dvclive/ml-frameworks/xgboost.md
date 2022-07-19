@@ -13,7 +13,7 @@ You just need to add the
 to the callbacks list passed to the `xgboost.train` call:
 
 ```git
-+from dvclive.xgboost import DvcLiveCallback
++from dvclive.xgb import DvcLiveCallback
 
 . . .
 

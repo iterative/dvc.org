@@ -2,19 +2,21 @@
 
 A set of commands to visualize and compare _plot metrics_:
 [show](/doc/command-reference/plots/show),
-[diff](/doc/command-reference/plots/diff), and
-[modify](/doc/command-reference/plots/modify).
+[diff](/doc/command-reference/plots/diff),
+[modify](/doc/command-reference/plots/modify) and
+[templates](/doc/command-reference/plots/templates).
 
 ## Synopsis
 
 ```usage
-usage: dvc plots [-h] [-q | -v] {show,diff,modify} ...
+usage: dvc plots [-h] [-q | -v] {show,diff,modify,templates} ...
 
 positional arguments:
   COMMAND
     show         Generate plot from a metrics file.
     diff         Plot differences in metrics between commits.
     modify       Modify display properties of data-series plots (has no effect on image-type plots).
+    templates    Write built-in plots templates to a directory (.dvc/plots by default).
 ```
 
 ## Types of metrics
@@ -49,6 +51,15 @@ Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
 rendering (declarative JSON grammar for defining graphics). Image-type plots are
 rendered using `<img>` tags directly.
 
+<admon icon="fire">
+
+**New!** DVC Plots are available [inside the VS Code IDE], a quick and intuitive
+UI for DVC Experiments.
+
+[inside the vs code ide]: /doc/vs-code-extension
+
+</admon>
+
 ## Supported file formats
 
 Image-type plots are included in HTML as-is, without additional processing.
@@ -75,8 +86,8 @@ epoch, AUC, loss
 Hierarchical file formats such as JSON and YAML consists of an array of
 consistent objects (sharing a common structure): All objects should contain the
 fields used for the X and Y axis of the plot (see
-[DVC template anchors](#dvc-template-anchors)); Extra elements will be ignored
-silently.
+[DVC template anchors](/doc/command-reference/plots#custom-templates)); Extra
+elements will be ignored silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
 them, from the array's objects. For example, `val_loss` is one of the field
@@ -98,72 +109,85 @@ names in the `train` array below:
 
 ## Plot templates (data series only)
 
-Users have the ability to change the way data-series plots are displayed by
-modifying the [Vega-Lite specification](https://vega.github.io/vega-lite/), thus
-generating plots in the style that best fits the their needs. This keeps
-<abbr>DVC projects</abbr> programming language agnostic, as it's independent
-from user display configuration and visualization code.
+DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
+create plots from user data. A set of built-in _plot templates_ are included.
 
-Built-in _plot templates_ are stored in the `.dvc/plots/` directory. The default
-one is called `default.json`. It can be changed with the `--template` (`-t`)
-option of `dvc plots show` and `dvc plots diff`. For templates in the
-`.dvc/plots/` directory, the path and the json extension are not required: you
-can specify only the base name e.g. `--template scatter`.
+The `linear` template is the default. It can be changed with the `--template`
+(`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
+`--template` can be a (built-in) template name or a path to a [custom template].
+
+<admon type="tip">
+
+For templates stored in `.dvc/plots` (default location for custom templates),
+the path and the json extension are not required: you can specify only the base
+name, e.g. `--template scatter`.
+
+</admon>
 
 DVC has the following built-in plot templates:
 
-- `default` - linear plot
+- `linear` - basic linear plot including cursor interactivity (default)
+- `simple` - simplest linear template (not interactive); Good base to create
+  [custom templates].
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
   [example](/doc/command-reference/plots#example-smooth-plot)
 - `confusion` - confusion matrix, see
   [example](/doc/command-reference/plots#example-confusion-matrix)
 
-### Custom templates
+[custom template]: https://dvc.org/doc/command-reference/plots/templates
 
-Plot template files are [Vega-Lite](https://vega.github.io/vega-lite/) files
-that use predefined DVC anchors as placeholders for DVC to inject the plot
-values. You can create a custom template from scratch, or modify an existing one
-from `.dvc/plots/`.
-
-💡 Note that custom templates can be safely added to the template directory.
-
-All metrics files given to `dvc plots show` and `dvc plots diff` as input are
-combined together into a single data array for injection into a template file.
-There are two important fields that DVC adds to the plot data:
-
-- `index` - zero-based counter for the data rows/values. In many cases it
-  corresponds to a machine learning training epoch or step number.
-
-- `rev` - Git commit hash, tag, or branch of the metrics file. This helps
-  distinguish between different versions when using the `dvc plots diff`
-  command.
+- `confusion_normalized` - confusion matrix with values normalized to <0, 1>
+  range
 
 Note that in the case of CSV/TSV metrics files, column names from the table
 header (first row) are equivalent to field names.
 
-### DVC template anchors
+### Custom templates
+
+Plot templates are [Vega-Lite](https://vega.github.io/vega-lite/) JSON
+specifications. They use predefined DVC anchors as placeholders for DVC to
+inject the plot values.
 
 - `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
   files is converted to a single JSON array, and injected instead of this
-  anchor. Two additional fields will be added: `index` and `rev` (explained
-  above).
+  anchor. Two additional fields will be added: `step` and `rev` (explained
+  below).
 
 - `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
-  with the `--title` option of the `dvc plot` subcommands.
+  with the `--title` option of the `dvc plots` subcommands.
 
 - `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
-  defined with the `-x` option of the `dvc plot` subcommands. The auto-generated
-  `index` field (explained above) is the default.
+  defined with the `-x` option of the `dvc plots` subcommands. The
+  auto-generated `step` field (explained below) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
-  defined with the `-y` option of the `dvc plot` subcommands. It defaults to the
-  last header of the metrics file: the last column for CSV/TSV, or the last
+  defined with the `-y` option of the `dvc plots` subcommands. It defaults to
+  the last header of the metrics file: the last column for CSV/TSV, or the last
   field for JSON/YAML.
 
 - `<DVC_METRIC_X_LABEL>` (optional) - field name to display as the X axis label
 
-- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the X axis label
+- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the Y axis label
+
+<details>
+
+### Expand to learn how DVC modifies plot data for rendering.
+
+File targets given to `dvc plots show` and `dvc plots diff` are treated as
+separate data series, each to be injected into a template file. There are two
+important fields that DVC adds to the plot data:
+
+- `step` - zero-based counter for the data rows/values. In many cases it
+  corresponds to a machine learning training epoch number.
+
+- `rev` - This field helps distinguish between data sourced from different
+  revisions, files or columns.
+
+</details>
+
+Refer to [`templates`](/doc/command-reference/plots/templates) command for more
+information on how to prepare your own template from pre-defined ones.
 
 ## HTML templates
 

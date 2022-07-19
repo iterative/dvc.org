@@ -19,7 +19,7 @@
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                https://dvc.org/doc/user-guide/experiment-management/running-experiments$1 302",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                   https://dvc.org/doc/user-guide/experiment-management/$1 302",
-  "^https://s\\.dvc\\.org/g/pipeline-files$                                              https://dvc.org/doc/user-guide/project-structure/pipelines-files 302",
+  "^https://s\\.dvc\\.org/g/pipeline-files$                                              https://dvc.org/doc/user-guide/project-structure/dvcyaml-files 302",
   "^https://s\\.dvc\\.org/g/(.*)?$                                                       https://dvc.org/doc/user-guide/$1 302",
   "^https://s\\.dvc\\.org/s/(.*)?$                                                       https://dvc.org/doc/start/$1 302",
   "^https://s\\.dvc\\.org/c/(.*)?$                                                       https://dvc.org/doc/use-cases/$1 302",
@@ -33,6 +33,8 @@
   "^/download/linux-deb/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/deb/pool/stable/d/dv/dvc_$1_amd64.deb 303",
   "^/download/linux-rpm/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
+
+  "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",
   "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
@@ -58,10 +60,11 @@
   "^/doc/user-guide/dvc-files$                                                            /doc/user-guide/project-structure",
   "^/doc/user-guide/dvc-files/dvc-yaml$                                                   /doc/user-guide/project-structure",
   "^/doc/user-guide/dvc-files/advanced-dvc-yaml$                                          /doc/user-guide/project-structure/pipelines-files",
+  "^/doc/user-guide/project-structure/pipelines-files$                                    /doc/user-guide/project-structure/dvcyaml-files",
   "^/doc/user-guide/dvc-files/.dvc$                                                       /doc/user-guide/project-structure/dvc-files",
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
-  "^/doc/user-guide/contributing(/.*)$                                                    /doc/contributing$1",
+  "^/doc/user-guide/contributing(/.*)?$                                                   /doc/contributing$1",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
 
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
@@ -77,17 +80,22 @@
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
-  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views-and-experiments/configure-a-view",
-  "^/doc/studio/overview$                                                                 /doc/studio",
+  "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
+
+  "^/doc/studio/overview$                                                                 /doc/studio/how-it-works",
+  "^/doc/studio/how-it-works$                                                             /doc/studio",
+  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
   "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
-  "^/doc/studio/user-guide/views/what-is-a-view$                                          /doc/studio/user-guide/studio-views",
-  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/studio-views#create-a-view",
-  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/studio-views#configuration",
-  "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/studio-views#sharing",
+  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
+  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
+  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
+  "^/doc/studio/user-guide/views/what-is-a-view$                                          /doc/studio/user-guide/projects",
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects#create-a-project",
+  "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects#sharing",
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects#configuration",
   "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/ml-experiments/explore-ml-experiments",
   "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/ml-experiments/visualize-and-compare",
-  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/ml-experiments/visualize-experiments",
-  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/ml-experiments/run-experiments",
+  "^/doc/studio/user-guide/views/run-experiments$                                         /doc/studio/user-guide/ml-experiments/run-experiments",
 
   "^/(.+)/$                                                                               /$1"
 ]

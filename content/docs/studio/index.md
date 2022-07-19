@@ -1,10 +1,11 @@
 # Iterative Studio
 
 [Iterative Studio](https://studio.iterative.ai/) is a web application that you
-can access online or even host on-prem. It enables you to seamlessly manage data
-and models, and to run, visualize, and share machine learning experiments. This
-is possible with the power of DVC and CML, our leading open-source tools for
-data science.
+can access online or even host on-prem. It works with the data, metrics, and
+hyperparameters that you add to your ML project repositories. Using the power of
+leading open-source tools DVC, [CML](https://cml.dev), and Git, it enables you
+to seamlessly manage data and models, run and track experiments, and visualize
+and share results.
 
 <cards>
 
@@ -30,11 +31,11 @@ When you connect DVC repos to Studio, the `dvc.yaml` file is used to identify
 all the data, models, etc. available. If you're not using DVC, you can add these
 artifacts to Git repos manually.
 
-Studio then creates a [View], which is an interactive and tabular representation
-of your project. You can also [run new ML experiments] from Studio using your
-regular CI/CD setup (e.g. GitHub Actions).
+Studio then creates a [Project], which is an interactive and tabular
+representation of your project. You can also [run new ML experiments] from
+Studio using your regular CI/CD setup (e.g. GitHub Actions).
 
-[view]: /doc/studio/user-guide/views-and-experiments/what-is-a-view
+[project]: /doc/studio/user-guide/projects
 [run new ml experiments]: /doc/studio/user-guide/ml-experiments/run-experiments
 
 ## Why use Studio?

@@ -1,3 +1,9 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+</admon>
+
 # Billing and Payment
 
 Studio is free for individuals and teams with up to 2 members. The Free plan is
@@ -25,10 +31,11 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 ## How to sign up for the Team or Enterprise plan
 
 When you sign up, you're on the Free plan by default. Plans are managed at the
-team level. You can
-[change the plan](/doc/studio/change-team-plan-or-size#change-team-plan) in a
-team's settings page. Each team is on its own plan and needs to be managed
-separately.
+team level. You can [change the plan] in a team's settings page. Each team is on
+its own plan and needs to be managed separately.
+
+[change the plan]:
+  /doc/studio/user-guide/change-team-plan-and-size#change-the-plan-your-team-is-on
 
 ## How total price is calculated
 
@@ -102,14 +109,14 @@ At the end of your billing period, if we were unable to renew your payment, you
 will enter a grace period of 5 days, during which you must ensure payment.
 During the grace period, you will continue to be able to use Iterative Studio in
 full capacity. After the grace period expires, you and all your team members
-will lose access to your team's views. You will continue to have access to your
-team's Settings page. The access to the team's views will be restored once you
-clear the pending payment.
+will lose access to your team's projects. You will continue to have access to
+your team's Settings page. The access to the team's projects will be restored
+once you clear the pending payment.
 
 Your account's primary email address will be notified after each failed payment.
 Payments may be retried up to 4 times within the next billing period. After
 this, if the payment does not succeed, you will lose access to your team's
-views. To restore the access, go to the `Plan and billing` section of your
+projects. To restore the access, go to the `Plan and billing` section of your
 team's settings page. Then, click on `Add payment method` to submit a valid
 payment method so that the payment succeeds.
 

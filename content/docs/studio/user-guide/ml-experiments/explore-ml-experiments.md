@@ -1,26 +1,35 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
 # Explore ML Experiments
 
-When you create a view by connecting to a Git repository, the view is added to
-your Iterative Studio dashboard. You can dive deep into the views shown in your
-Iterative Studio dashboard to explore all the ML experiments, visualize and
-compare them, and run new experiments. For this, open the view by clicking the
-view name (in this case, `example-get-started`).
+When you create a project by connecting to a Git repository, the project is
+added to your Iterative Studio dashboard. You can dive deep into the projects
+shown in your Iterative Studio dashboard to explore all the ML experiments,
+visualize and compare them, and run new experiments. For this, open the project
+by clicking the project name (in this case, `example-get-started`).
 
-A table will be generated as shown below. This includes metrics, hyperparameters
-and information about the datasets. All these values are flattened and neatly
-presented for you.
+An experiments table for the project will be generated as shown below. This
+includes metrics, hyperparameters and information about the datasets. All these
+values are flattened and neatly presented for you.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
-## Components of a view
+## Components of a project
 
-The tabular display has different components that show you the complete
-experiment history as well as enable to you to generate plots, compare
-experiments, run new experiments, etc. The major components of a view are:
+The experiments table of the project has different components that show you the
+complete experiment history as well as enable to you to generate plots, compare
+experiments, run new experiments, etc. The major components of the table are:
 
 - [Git history](#git-history) - represents your experimentation history.
 - [Display preferences](#display-preferences) - show/hide branches, commits and
-  columns, and re-arrange your view.
+  columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 
@@ -63,25 +72,25 @@ Select the columns you want to display and hide the rest.
 Additionally, you can click and drag the columns in the table to rearrange them
 as per your preferences.
 
-If your view is missing some required columns or includes columns that you do
+If your project is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections to understand why this
 may have happened.
 
-- [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
-- [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
+- [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
+- [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
 
 #### Hide commits:
 
 The following functionality are available for you to hide irrelevant commits
-from your views in Iterative Studio.
+from the table.
 
 - **Iterative Studio auto-hides irrelevant commits:** Iterative Studio
   identifies commits where metrics, files and hyperparameters did not change and
   hides them automatically.
 - **Hide commits and branches manually:** You can selectively hide commits and
-  branches. This can be useful useful if there are commits that do not add much
-  value in your view. To hide a commit or branch, click on the 3-dot menu next
-  to the commit or branch name and click on `Hide commit` or `Hide branch`.
+  branches. This can be useful if there are commits that do not add much value
+  in your project. To hide a commit or branch, click on the 3-dot menu next to
+  the commit or branch name and click on `Hide commit` or `Hide branch`.
 - **Unhide commits:** You can unhide commits as needed, so that you don't lose
   any experimentation history. To display all hidden commits, click on the
   `Show hidden commits` toggle (refer [the above gif](#display-preferences)).
@@ -102,7 +111,7 @@ Toggle between absolute values and difference from the first row.
 Save your filters or column display preferences so that these preferences remain
 intact even after you log out of Iterative Studio and log back in later.
 
-### Visualize, compare and run experiments.
+### Visualize, compare, and run experiments.
 
 The table also contains buttons to visualize, compare and run experiments.
 

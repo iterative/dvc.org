@@ -23,7 +23,7 @@ You can query/set/replace/unset the _default remote_ using the options of this
 command. If the `name` of the remote is not provided and `--unset` is not
 specified, this command returns the name of the default remote.
 
-```dvc
+```cli
 $ dvc remote default myremote
 ```
 
@@ -74,13 +74,13 @@ that order).
 
 Set `myremote` as default remote:
 
-```dvc
+```cli
 $ dvc remote default myremote
 ```
 
 Get default remote:
 
-```dvc
+```cli
 $ dvc remote default
 
 myremote
@@ -88,7 +88,7 @@ myremote
 
 Change default remote value:
 
-```dvc
+```cli
 $ dvc remote default mynewremote
 ```
 
@@ -102,6 +102,6 @@ remote = mynewremote
 
 Clear/unset default remote value:
 
-```dvc
+```cli
 $ dvc remote default -u
 ```

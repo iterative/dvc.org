@@ -54,7 +54,7 @@ specified with the `--targets` option.
   When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
   use `--` after this option's arguments (POSIX terminals), e.g.:
 
-  ```dvc
+  ```cli
   $ dvc params diff --targets m1.json m2.yaml -- HEAD v1
   ```
 
@@ -94,7 +94,7 @@ process:
 Define a pipeline [stage](/doc/command-reference/run) with parameter
 dependencies:
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -d train.py -d users.csv -o model.pkl \
                 -p lr,train \
@@ -104,7 +104,7 @@ $ dvc stage add -n train \
 Let's now print parameter values that we are tracking in this
 <abbr>project</abbr>:
 
-```dvc
+```cli
 $ dvc params diff
 Path         Param           HEAD   workspace
 params.yaml  lr              —      0.0041
@@ -122,7 +122,7 @@ In a project with parameters file history (params present in various Git
 commits), you will see both `HEAD` and `workspace` values. However, the
 parameters won't be shown if there are no changes:
 
-```dvc
+```cli
 $ dvc params diff
 Path         Param         HEAD    workspace
 params.yaml  lr            0.0041  0.0043
@@ -132,7 +132,7 @@ params.yaml  train.epochs  70      110
 
 Specify `--all` option to see all the parameters including not changed ones:
 
-```dvc
+```cli
 $ dvc params diff --all
 Path         Param           HEAD    workspace
 params.yaml  lr              0.0041  0.0043
@@ -146,7 +146,7 @@ To compare parameters with a specific commit, a tag or any
 [revision](https://git-scm.com/docs/revisions) can be specified, as an
 additional command line parameter:
 
-```dvc
+```cli
 $ dvc params diff e12b167
 Path         Param         HEAD    e12b167
 params.yaml  lr            0.0038  0.0043
@@ -159,7 +159,7 @@ changed between the current version in the workspace and the given one
 
 To see the difference between two specific commits, both need to be specified:
 
-```dvc
+```cli
 $ dvc params diff e12b167 HEAD^
 Path         Param         e12b167  HEAD^
 params.yaml  lr            0.0038   0.0041

@@ -73,7 +73,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   file (`params.yaml` by default). This will override the param values coming
   from the params file.
 
-- `-n <name>`, `--name <name>` - specify a unique name for this experiment. A
+- `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will generated otherwise, such as `exp-f80g4` (based on the
   experiment's hash).
 
@@ -118,6 +118,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[unique name]:
+  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples

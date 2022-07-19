@@ -16,6 +16,11 @@
       "windows",
       "linux",
       {
+        "label": "Virtual Studio Code",
+        "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+        "type": "external"
+      },
+      {
         "label": "Pre-release Version",
         "slug": "pre-release"
       },
@@ -23,16 +28,16 @@
         "label": "Shell Completion",
         "slug": "completion"
       },
-      "plugins"
+      {
+        "label": "IDE Plugins",
+        "slug": "ide-plugins"
+      }
     ]
   },
   {
     "slug": "start",
     "label": "Get Started",
     "source": "start/index.md",
-    "tutorials": {
-      "katacoda": "https://katacoda.com/dvc/courses/get-started"
-    },
     "children": [
       {
         "slug": "data-management",
@@ -41,24 +46,15 @@
         "children": [
           {
             "label": "Data and Model Access",
-            "slug": "access",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
-            }
+            "slug": "access"
           },
           {
             "label": "Data Pipelines",
-            "slug": "pipelines",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
-            }
+            "slug": "pipelines"
           },
           {
             "label": "Metrics, Parameters, and Plots",
-            "slug": "metrics-parameters-plots",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-            }
+            "slug": "metrics-parameters-plots"
           }
         ]
       },
@@ -66,16 +62,10 @@
         "slug": "experiments",
         "label": "Experiments",
         "source": "experiments/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        },
         "children": [
           {
             "label": "Visualization",
-            "slug": "visualization",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-            }
+            "slug": "visualization"
           }
         ]
       }
@@ -122,8 +112,8 @@
         "source": "project-structure/index.md",
         "children": [
           {
-            "label": "Pipelines Files (dvc.yaml)",
-            "slug": "pipelines-files"
+            "label": "dvc.yaml Files",
+            "slug": "dvcyaml-files"
           },
           {
             "label": ".dvc Files",
@@ -131,10 +121,7 @@
           },
           {
             "label": ".dvcignore Files",
-            "slug": "dvcignore-files",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
-            }
+            "slug": "dvcignore-files"
           },
           {
             "label": "Internal Files",
@@ -293,10 +280,7 @@
       },
       {
         "label": "fetch",
-        "slug": "fetch",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
-        }
+        "slug": "fetch"
       },
       {
         "label": "freeze",
@@ -380,6 +364,10 @@
           {
             "label": "plots modify",
             "slug": "modify"
+          },
+          {
+            "label": "plots templates",
+            "slug": "templates"
           }
         ]
       },
@@ -485,16 +473,20 @@
         "label": "get_url()"
       },
       {
+        "slug": "make_checkpoint",
+        "label": "make_checkpoint()"
+      },
+      {
         "slug": "open",
         "label": "open()"
       },
       {
-        "slug": "read",
-        "label": "read()"
+        "slug": "params_show",
+        "label": "params_show()"
       },
       {
-        "slug": "make_checkpoint",
-        "label": "make_checkpoint()"
+        "slug": "read",
+        "label": "read()"
       }
     ]
   },
@@ -523,33 +515,10 @@
     "type": "external"
   },
   {
-    "label": "CML",
-    "slug": "cml",
-    "source": "cml/index.md",
-    "icon": "cml",
-    "children": [
-      {
-        "label": "Get Started (GitHub)",
-        "slug": "start-github"
-      },
-      {
-        "label": "Get Started (GitLab)",
-        "slug": "start-gitlab"
-      },
-      "usage",
-      {
-        "label": "CML with DVC",
-        "slug": "cml-with-dvc"
-      },
-      {
-        "label": "Self-hosted Runners",
-        "slug": "self-hosted-runners"
-      },
-      {
-        "label": "Install as a Package",
-        "slug": "cml-with-npm"
-      }
-    ]
+    "label": "VS Code Extension",
+    "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+    "type": "external",
+    "icon": "vscode"
   },
   {
     "slug": "studio",
@@ -561,7 +530,7 @@
         "source": false,
         "children": [
           "prepare-your-repositories",
-          "studio-views",
+          "projects",
           {
             "slug": "ml-experiments",
             "source": false,

@@ -1,11 +1,6 @@
-# Change Team Plan and Team Size
+# Change Team Plan and Size
 
-In this section, you learn how to:
-
-- [Change team plan](#change-team-plan)
-- [Change team size](#change-team-size)
-
-## Change Team Plan
+## Change the plan your Team is on
 
 When you create a team, it is on the Free plan by default. This plan is designed
 for teams just starting out with collaboration: you can invite one other team
@@ -76,7 +71,7 @@ You can downgrade to the Free plan or upgrade to the Enterprise plan.
 
 For any changes to the plan, please contact your focal point at Iterative.
 
-## Change Team Size
+## Change the size of your Team
 
 You can also change the size of your team within the Team or Enterprise plan at
 any point during your subscription.
@@ -84,7 +79,7 @@ any point during your subscription.
 ### If you are currently on the Free plan
 
 To change the number of seats in your team,
-[upgrade to the Team or Enterprise plan](#change-team-plan).
+[upgrade to the Team or Enterprise plan](#change-the-plan-your-team-is-on).
 
 ### If you are currently on the Team plan
 

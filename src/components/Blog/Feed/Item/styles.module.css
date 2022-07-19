@@ -47,8 +47,8 @@
 
 .picture {
   display: block;
-  width: 300px;
-  height: 250px;
+  width: calc(650px / 13 * 6);
+  height: calc(450px / 13 * 6);
   background-color: #dee8ed;
 
   @media (--md-scr) {
