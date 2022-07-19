@@ -69,7 +69,7 @@ you will be charged for only 5 days of the 2 new seats. In the following billing
 period, the 2 additional seats will be charged for the entire billing period.
 
 If you decrease the number of seats, you will receive an account credit for the
-prorated difference. You can apply it for a future payment.
+prorated difference. It will be applied automatically for future payment.
 
 ## Downgrading a plan
 
@@ -78,8 +78,8 @@ the previous section.
 
 To cancel the Team plan and move back to the Free plan, decrease the number of
 seats in the team to 1 or 2 and click on `Downgrade`. A prorated credit will be
-added to your account for the remaining days in the billing period. You can
-apply for a future payment.
+added to your account for the remaining days in the billing period. It will be
+applied automatically for future payment.
 
 When you downgrade from the Team plan to the Free plan, you will receive a
 prorated refund for the days remaining in the billing period. For inquiries

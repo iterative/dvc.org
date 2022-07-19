@@ -100,8 +100,8 @@ select the desired number of seats.
   additional seats. The payable amount is prorated based on the number of days
   remaining in the billing period.
 - **If you are decreasing the number of seats** a prorated credit will be added
-  to your account for the remaining days in the billing period. You can apply
-  for a future payment.
+  to your account for the remaining days in the billing period. It will be
+  applied automatically for future payment.
 
 The total payable amount or credit balance will be displayed for you to
 `Confirm`.
