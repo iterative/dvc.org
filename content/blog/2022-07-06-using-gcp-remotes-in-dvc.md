@@ -18,9 +18,6 @@ tags:
   - Collaboration
 ---
 
-[good google](https://google.com) [bad google](https://google.com/notarealpage)
-[badder google](http://ggggggggooooogle.com)
-
 When you’re working on a data science project that has huge datasets, it’s
 common to store them in cloud storage. You’ll also be working with different
 versions of the same datasets to train a model, so it’s crucial to have a tool
