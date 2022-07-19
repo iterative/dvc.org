@@ -23,10 +23,14 @@ Iterative Studio.
 - [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
-  **Model registry**
+
+**Model registry**
+
 - [I cannot find my desired Git repository in the form to add a model]()
 - [Model registry does not display the models in my Git repositories]()
-  **Billing and payment**
+
+**Billing and payment**
+
 - [Questions or problems with billing and payment](#questions-or-problems-with-billing-and-payment)
 
 ## Support
