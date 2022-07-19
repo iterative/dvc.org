@@ -45,13 +45,13 @@ on how to get everything you need installed and running. This is a simple ML
 project that uses [DVC](https://dvc.org/) for data versioning and experiment
 tracking.
 
-After you have the repo set up, you'll already have the `MLEM` package
+After you have the repo set up, you'll already have the `mlem` package
 installed. This project already has a model that's been trained and validated so
 we can move on to saving this model.
 
 ## Save the model
 
-Inside the `train.py` script, we need to add the `MLEM` import to save the
+Inside the `train.py` script, we need to add the `mlem` import to save the
 models as we experiment. We don't have to worry about running the training
 script for this project since we have the model, but it's good to know what's
 happening under the hood.
@@ -107,14 +107,9 @@ do that, you'll need to add the following import.
 ```python
 # evaluate.py
 
-import json
-import math
-import os
-import sys
-
+...
 import pickle5 as pickle
 import sklearn.metrics as metrics
-import numpy as np
 from mlem.api import apply
 ...
 ```
@@ -146,7 +141,7 @@ After you run an experiment, there will be two new files in your repo: `clf` and
 `clf.mlem`. Make sure you add the `clf.mlem` file to your Git history with the
 following command:
 
-```dvc
+```cli
 $ git add clf.mlem
 ```
 
@@ -170,7 +165,7 @@ If you don't have an API to work with and don't need a Python package, like if
 you're just testing a model, you can serve your model quickly using FastAPI with
 this command.
 
-```dvc
+```cli
 $ mlem serve clf fastapi
 ```
 
@@ -180,8 +175,8 @@ initially.
 
 You'll see an output like this in your terminal:
 
-```dvc
-(.venv) milecia@Milecias-MacBook-Pro-2 stale-model-example % mlem serve clf fastapi
+```cli
+$ mlem serve clf fastapi
 ⏳️ Loading model from clf.mlem
 Starting fastapi server...
 💅 Adding route for /predict
@@ -210,7 +205,7 @@ Let's take a look at making a Python package and importing it into a
 [Flask](https://flask.palletsprojects.com/en/2.1.x/) web app. To make the Python
 package, we'll run the following MLEM command.
 
-```dvc
+```cli
 $ mlem build clf pip -c target=build/ -c package_name=bike_predictor
 ```
 
@@ -222,14 +217,14 @@ independent Python package.
 To build the package, you'll need to run the following command in the `build`
 directory.
 
-```dvc
+```cli
 $ python -m build --wheel
 ```
 
 Then go back to the top-level directory and run the following command to install
 your new model package.
 
-```dvc
+```cli
 $ pip install ./build/dist/bike_predictor-0.0.0-py3-none-any.whln
 ```
 
@@ -270,7 +265,7 @@ bike_predictor.predict(new_event)
 
 Then you can test this API out locally by running the following command:
 
-```dvc
+```cli
 $ python src/api.py
 ```
 
