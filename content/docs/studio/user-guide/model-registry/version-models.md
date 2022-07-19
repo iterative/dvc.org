@@ -15,12 +15,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
 1. On the model details page, click on `Register new version`. The registration
    action can also be initiated from the models dashboard or from the related
-   project’s experiment table as shown below.
-
-**_TODO: Replace the below with the Gif showing register new version entry
-points in the model details page, models dashboard and experiment table_**
-
-![](https://static.iterative.ai/img/studio/view_components_1.gif)
+   project’s experiment table as shown in the above video.
 
 2. Select the Git commit which corresponds to the new version of your model. If
    the desired commit does not appear in the commit picker, type in the

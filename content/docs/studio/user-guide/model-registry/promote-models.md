@@ -21,12 +21,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
 1. On the model details page, click on `Promote`. The promotion action can also
    be initiated from the models dashboard or from the related project’s
-   experiment table as shown below.
-
-**_TODO: Replace the below with the Gif showing promotion entry points in the
-model details page, models dashboard and experiment table_**
-
-![](https://static.iterative.ai/img/studio/view_components_1.gif)
+   experiment table as shown in the above video.
 
 2. Select the version that you want to promote.
 3. Enter the stage name (eg, `development`, `staging`, `production`). Note that
