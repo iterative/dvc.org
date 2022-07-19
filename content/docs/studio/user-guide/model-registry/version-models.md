@@ -1,12 +1,15 @@
 # Version models
 
 You can register new versions of the registered models by specifying the Git
-commit which corresponds to the new version. To register a new version of a
-model, Iterative Studio uses GTO to create an [annotated Git tag][git tag] with
-the specified version number. Refer the [GTO docs] to see the exact format of
-the Git tag. If you are using the GTO command line tool, you can register
-versions from the CLI. To register versions using Iterative Studio, watch this
-tutorial video or read on below:
+commit which corresponds to the new version.
+
+To register a new version of a model, Iterative Studio uses [GTO] to create an
+[annotated Git tag][git tag] with the specified version number. Refer the [GTO
+docs][gto] to see the exact format of the Git tag.
+
+You can register versions using the [GTO] command line interface (CLI). To
+register versions using Iterative Studio, watch this tutorial video or read on
+below:
 
 **_TODO: Replace the below with the tutorial video on registering a new version
 of a model_**
@@ -34,9 +37,9 @@ https://www.youtube.com/watch?v=hKf4twg832g
 6. At this point, if you reload the model details page, you will see that a new
    version for your model has been registered. This information is available in
    the model `History` section as well as in the versions drop down.
-7. If you go to your Git repository, you will see that the new Git tag has been
-   created.
+7. If you go to your Git repository, you will see that a new Git tag referencing
+   the selected commit has been created, indicating the new version.
 
-[gto docs]: https://github.com/iterative/gto
+[gto]: https://github.com/iterative/gto
 [semver]: https://semver.org/
 [git tag]: https://git-scm.com/docs/git-tag

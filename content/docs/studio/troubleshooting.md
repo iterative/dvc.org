@@ -228,7 +228,7 @@ Then you can come back to the model registry and add the model.
 
 For a model to be displayed in the model registry, it has to be registered using
 [GTO]. You can register the model
-[from Iterative Studio](/doc/studio/user-guide/model-registry/register-a-model),
+[from Iterative Studio](/doc/studio/user-guide/model-registry/add-a-model),
 which uses [GTO] under the hood to create the necessary Git commits.
 Alternately, you can also use the [GTO] CLI.
 

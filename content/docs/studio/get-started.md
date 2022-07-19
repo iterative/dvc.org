@@ -117,9 +117,8 @@ You should now see that a project has been added in your dashboard.
    of your Model Registry. If any of your projects contain GTO-annotated models,
    they will be displayed in this dashboard.
 
-2. You can
-   [add new models](/doc/studio/user-guide/model-registry/register-a-model) to
-   the model registry by clicking on the `Add a model` button and following
+2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
+   to the model registry by clicking on the `Add a model` button and following
    on-screen instructions.
 
 3. To

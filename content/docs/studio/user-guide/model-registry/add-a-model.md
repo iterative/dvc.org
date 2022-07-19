@@ -1,4 +1,4 @@
-# Register a model
+# Add a model
 
 You can add (register) models from any ML project to the model registry. To add
 a model to your model registry, Iterative Studio creates an annotation for it in
@@ -41,9 +41,12 @@ https://www.youtube.com/watch?v=hKf4twg832g
    commit to either the base branch or a new branch. Iterative Studio will
    commit the changes to the selected branch. If you commit to a new branch,
    Iterative Studio will also create a Git pull request from the new branch to
-   the base branch. Now, click on Commit changes.
-7. At this point, the new model appears in the models dashboard. If you just
-   committed to a new branch, then a new pull request will also have been
+   the base branch.
+7. Now, click on Commit changes.
+8. At this point, the new model appears in the models dashboard.
+9. In your Git repository, you will find that an entry for the new model has
+   been created in the `artifacts.yaml` file in the repository's root. If you
+   had committed to a new branch, then a new pull request will also have been
    created from the new branch to the base branch.
 
 [gto]: https://github.com/iterative/gto

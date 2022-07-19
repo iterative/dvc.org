@@ -1,5 +1,11 @@
 # View models
 
+You can find all your models in the [models dashboard](#models-dashboard). Each
+model also has a separate [model details page](#model-details-page). Also, all
+models from a given Git repository are also included as
+[`model` columns in the experiment tables](#model-columns-in-the-projects-experiment-table)
+of those projects that connect to this Git repository.
+
 ## Models dashboard:
 
 The models in your model registry are organized in a central dashboard that
@@ -12,12 +18,12 @@ You can sort the models in the dashboard by the `Last updated` timestamp.
 Iterative Studio consolidates the stages of all the models in the registry, and
 provides a way to filter models by stages.
 
-Iterative Studio consolidates the frameworks of all the models in the registry,
-and provides a way to filter models by framework. Note that the framework of a
-model is identified by Iterative’s model deployment tool [MLEM]. If you have not
-used MLEM, then Iterative Studio will use a generic framework label (`G`) to
-indicate that the model framework was not identified, and that the model was
-registered using GTO.
+Iterative Studio also consolidates the frameworks of all the models in the
+registry, and provides a way to filter models by framework. Note that the
+framework of a model is identified by Iterative’s model deployment tool [MLEM].
+If you have not used MLEM, then Iterative Studio will use a generic framework
+label (`G`) to indicate that the model framework was not identified, and that
+the model was registered using [GTO].
 
 ## Model details page:
 
@@ -42,13 +48,13 @@ A model details page is divided into the following sections:
   can use to switch between different registered versions of the model. For the
   selected version, the left section shows
   - a button to
-    [promote the version to a stage](/doc/studio/user-guide/model-registry/promote-models)
+    [promote the version to a stage](/doc/studio/user-guide/model-registry/promote-models),
+  - the path to the model,
   - the version description,
   - labels, and
   - model methods. Note that the methods of a model are identified by
     Iterative’s model deployment tool [MLEM]. If you have not used MLEM, then
     Iterative Studio will not display any methods for the model.
-  - The path to a model
 - Right section: The right section contains information that is applicable
   across all the versions of the model. In particular, it displays
   - the assigned stages for the different versions, and
@@ -63,3 +69,4 @@ belongs.
 ![](https://static.iterative.ai/img/studio/model-columns-in-experiment-table.png)
 
 [mlem]: https://mlem.ai/
+[gto]: https://github.com/iterative/gto

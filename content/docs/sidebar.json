@@ -550,7 +550,7 @@
             "source": false,
             "children": [
               "what-is-a-model-registry",
-              "register-a-model",
+              "add-a-model",
               "view-models",
               "version-models",
               "promote-models"
