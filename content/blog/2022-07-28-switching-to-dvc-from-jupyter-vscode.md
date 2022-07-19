@@ -1,6 +1,6 @@
 ---
 title: Converting a Jupyter Notebook to a DVC Project
-date: 2022-07-06
+date: 2022-07-28
 description: >
   Working with notebooks is common in machine learning. That's why we're
   covering some tools that make it easy to do more with a complex project.
@@ -9,7 +9,7 @@ descriptionLong: >
   can't save each experiment. Now, if you're using the Jupyter VSCode extension,
   we can show you how to make those experiments reproducible with the addition
   of the DVC VSCode extension.
-picture: 2022-07-06/jupyter-to-dvc.png
+picture: 2022-07-28/jupyter-to-dvc.png
 pictureComment: Using the DVC VSCode Extension with a Jupyter Notebook
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
@@ -58,7 +58,11 @@ like DVC.
 ## Refactor the notebook to use DVC
 
 You can take your existing Jupyter notebooks and break them out in files and
-stages that DVC tracks for you.
+stages that DVC tracks for you. First, make sure that you have the following
+files to define the main steps in your experimentation. The `train.py` file to
+define the process that takes in data and saves the model for testing. The
+`evaluate.py` file to define the testing script that will record the resulting
+metrics.
 
 ## Look at metrics from experiments
 
