@@ -34,7 +34,7 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 
 When you sign up, you're on the **Free plan** by default. To switch to the
 **Team plan**, [create a team] first, then go to the [team settings] and click
-on `Change plan` in the `Plan and billing` section. switch to the **Enterprise
+on `Change plan` in the `Plan and billing` section. To switch to the **Enterprise
 plan**, please [contact us].
 
 [team settings]: /doc/studio/user-guide/teams#settings
@@ -79,7 +79,7 @@ the previous section.
 To cancel the Team plan and move back to the Free plan, decrease the number of
 seats in the team to 1 or 2 and click on `Downgrade`. A prorated credit will be
 added to your account for the remaining days in the billing period. You can
-apply for a future payment.
+apply the credit for a future payment.
 
 When you downgrade from the Team plan to the Free plan, you will receive a
 prorated refund for the days remaining in the billing period. For inquiries
@@ -132,7 +132,7 @@ team settings. You will be redirected to Stripe to make these changes.
 ## Accessing your payment history and invoices
 
 You can find a link to your dashboard on Stripe on your team settings page. Here
-you see your payment history and get a copy of your invoices.
+you can see your payment history and get a copy of your invoices.
 
 ## Other questions
 

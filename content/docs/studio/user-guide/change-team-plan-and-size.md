@@ -1,6 +1,6 @@
 # Change Team Plan and Size
 
-When you sign up, you're on the **Free plan** by default. This plan is plan is
+When you sign up, you're on the **Free plan** by default. This plan is
 designed for teams that are starting out: you can invite one other team member
 and import as many repositories as you want.
 
@@ -101,7 +101,7 @@ select the desired number of seats.
   remaining in the billing period.
 - **If you are decreasing the number of seats** a prorated credit will be added
   to your account for the remaining days in the billing period. You can apply
-  for a future payment.
+  this credit for a future payment.
 
 The total payable amount or credit balance will be displayed for you to
 `Confirm`.
