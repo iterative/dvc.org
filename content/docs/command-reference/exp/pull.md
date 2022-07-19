@@ -49,7 +49,7 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
 - `--rev <commit>` - pull experiments derived from the specified `<commit>` as
   baseline.
 
-- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+- `-n <num>`, `--num <num>` - pull experiments from the last `num` commits
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
@@ -89,7 +89,7 @@ Let's say we have cloned a DVC repository, and would like to fetch an experiment
 that someone else shared (see also `dvc exp list`).
 
 ```dvc
-$ dvc exp list --all origin
+$ dvc exp list --all-commits origin
 master:
         exp-e6c97
 $ dvc exp pull origin exp-e6c97
@@ -99,7 +99,7 @@ Pulled experiment 'exp-e6c97' from Git remote 'origin'.
 We can now see that the experiment exists in the local repo:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 master:
         exp-e6c97
 ```

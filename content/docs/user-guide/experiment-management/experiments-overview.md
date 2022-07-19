@@ -71,3 +71,19 @@ begin using DVC Experiments. Now you can move on to [running experiments][run]
 
 [sane defaults]: /doc/command-reference/exp/init#description
 [interactive mode]: /doc/command-reference/exp/init#example-interactive-mode
+
+## Work with DVC Experiments from a GUI
+
+DVC Experiments can be used directly [from the VS Code IDE] or online with
+[Iterative Studio], the web UI that integrates all of our data science tools.
+
+[from the vs code ide]: /doc/vs-code-extension
+[iterative studio]: /doc/studio
+
+### Iterative Studio
+
+https://www.youtube.com/watch?v=hKf4twg832g
+
+### VS Code Extension
+
+https://www.youtube.com/watch?v=LHi3SWGD9nc

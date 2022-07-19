@@ -2,8 +2,8 @@ import React, { forwardRef } from 'react'
 import YoutubeVideo from './Video'
 import CollapsibleText from './CollapsibleText'
 
-import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
-import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 
 import * as styles from './styles.module.css'
 

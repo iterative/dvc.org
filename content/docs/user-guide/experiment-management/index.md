@@ -16,18 +16,29 @@ quantitative measures of your results.
 
 _New in DVC 2.0 (see `dvc version`)_
 
-DVC experiment management features build on top of base DVC features to form a
-comprehensive framework to organize, execute, manage, and share ML experiments.
-They support these main approaches:
+DVC experiment management features conform a comprehensive framework to
+organize, execute, manage, and share ML experiments. They support these main
+approaches:
 
-- Compare parameters and metrics of existing project versions (for example
-  different Git branches) against each other or against new, uncommitted results
-  in your workspace. One tool to do so is `dvc exp diff`.
+- Compare parameters and metrics of existing project versions (for example Git
+  branches) against each other or against new results in the workspace. See for
+  example `dvc exp diff`.
 
 - [Run and capture] multiple experiments (derived from any project version as
   baseline) without polluting your Git history. DVC tracks them for you, letting
   you compare and share them. 📖 More info in the [Experiments
   Overview][experiments].
+
+  <admon icon="fire">
+
+  **New!** DVC Experiments can be used directly [from the VS Code IDE] or online
+  with [Iterative Studio], the web UI that integrates all of our data science
+  tools.
+
+  </admon>
+
+[from the vs code ide]: /doc/vs-code-extension
+[iterative studio]: /doc/studio
 
 - Generate [checkpoints] at runtime to keep track of the internal progress of
   deeper experiments. DVC captures [live metrics](/doc/dvclive), which you can
@@ -72,7 +83,7 @@ DVC takes care of arranging `dvc exp` experiments and the data
 until your experiments are made [persistent].
 
 [`foreach` stages]:
-  /doc/user-guide/project-structure/pipelines-files#foreach-stages
+  /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Run Cache: Automatic Log of Stage Runs

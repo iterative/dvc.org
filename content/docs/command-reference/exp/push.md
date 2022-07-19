@@ -46,7 +46,7 @@ This command will also try to [push](/doc/command-reference/push) all
 - `--rev <commit>` - push experiments derived from the specified `<commit>` as
   baseline.
 
-- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+- `-n <num>`, `--num <num>` - push experiments from the last `num` commits
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
@@ -84,7 +84,7 @@ This command will also try to [push](/doc/command-reference/push) all
 Let's say we have run 3 experiments in our project:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 11-bigrams-experiment:
         exp-e6c97
         exp-1dad0

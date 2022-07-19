@@ -1,7 +1,20 @@
 # Installation on macOS
 
-> To use DVC [as a Python library](/doc/api-reference), please
-> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+<admon type="tip">
+
+To use DVC [as a Python library](/doc/api-reference), please install
+[with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
+
+</admon>
+
+<admon type="warn">
+
+To use DVC on ARM (Apple Silicon) macOS, you must install
+[with homebrew](#install-with-homebrew) or [with `pip`](#install-with-pip). The
+PKG binary and `conda` installation methods can only be used on x86 (Intel)
+macOS.
+
+</admon>
 
 ## Install with brew
 

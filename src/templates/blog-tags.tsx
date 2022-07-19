@@ -6,7 +6,7 @@ import {
   IPaginatorLocationContextValue,
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import { IPaginatorPageInfo } from '../components/Paginator'
 import BlogTags from '../components/Blog/Tags'
 import { IBlogFeedPostList } from '../components/Blog/Feed'

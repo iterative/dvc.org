@@ -489,7 +489,8 @@ have dictionaries as values. `metrics` and `params` dictionaries have keys for
 each of the metrics or parameters files, and for each file metrics and
 parameters are listed as keys.
 
-As an example, we can get only a specific metric with [jq]:
+As an example, we can get only a specific metric with
+[jq](https://stedolan.github.io/jq/):
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'

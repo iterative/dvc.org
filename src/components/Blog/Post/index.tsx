@@ -5,15 +5,15 @@ import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { IBlogPostData } from '../../../templates/blog-post'
 
-import { useCommentsCount } from 'gatsby-theme-iterative-docs/src/utils/front/api'
-import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
-import tagToSlug from 'gatsby-theme-iterative-docs/src/utils/shared/tagToSlug'
-import useCustomYtEmbeds from 'gatsby-theme-iterative-docs/src/utils/front/useCustomYtEmbeds'
+import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
+import tagToSlug from '@dvcorg/gatsby-theme-iterative/src/utils/shared/tagToSlug'
+import useCustomYtEmbeds from '@dvcorg/gatsby-theme-iterative/src/utils/front/useCustomYtEmbeds'
 
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import PseudoButton from '../../PseudoButton'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import PseudoButton from '@dvcorg/gatsby-theme-iterative/src/components/PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
 import PageContent from '../../PageContent'
@@ -85,10 +85,7 @@ const Post: React.FC<IBlogPostData> = ({
               />
             </div>
           </div>
-          <HeroPic
-            picture={picture?.gatsbyImageData}
-            pictureComment={pictureComment}
-          />
+          <HeroPic picture={picture} pictureComment={pictureComment} />
 
           <div className={styles.content}>
             <Markdown htmlAst={htmlAst} />

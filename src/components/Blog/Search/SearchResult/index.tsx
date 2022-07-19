@@ -55,7 +55,7 @@ const SearchResult = ({
   indices,
   show
 }: {
-  indices: Array<any>
+  indices: Array<{ name: string }>
   show: boolean
 }) => (
   <div className={cn(styles.searchResult, show && styles.searchResultShow)}>

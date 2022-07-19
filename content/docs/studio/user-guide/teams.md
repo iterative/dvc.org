@@ -1,15 +1,25 @@
+<admon>
+
+**We have renamed Views to Projects in Iterative Studio.**
+
+Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
+settings_ are now called _Project settings_; and so on.
+
+</admon>
+
 # Teams
 
 You can create teams with one or more team members. The team members are also
-called collaborators, and you can assign different roles to them. The views that
-you create in your team's page will be accessible to all members of the team.
+called collaborators, and you can assign different roles to them. The projects
+that you create in your team's page will be accessible to all members of the
+team.
 
 In this page, you will learn about:
 
 - [How to create a team](#create-a-team)
 - [How to invite collaborators (team members)](#invite-collaborators)
 - [The privileges (access permissions) of different roles](#roles)
-- [How to manage the team and its views](#manage-your-team-and-its-views)
+- [How to manage the team and its projects](#manage-your-team-and-its-projects)
 - [How to manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers)
 - [Why and how to change your team plan and team size](#change-your-team-plan-and-team-size)
 
@@ -18,11 +28,11 @@ In this page, you will learn about:
 To create a team, click on the drop down next to `Personal`. All the teams that
 you have created so far will be listed within "Teams" in the drop down menu. If
 you have not created any team so far, this list will be empty. Now, click on
-`Create a team`. ![](https://static.iterative.ai/img/studio/team_create.png)
+`Create a team`. ![](https://static.iterative.ai/img/studio/team_create_v3.png)
 
 You will be asked to enter the URL namespace for your team. Enter a unique name.
 The URL for your team will be formed using this name.
-![](https://static.iterative.ai/img/studio/team_enter_name.png)
+![](https://static.iterative.ai/img/studio/team_enter_name_v3.png)
 
 Then, click the `Create team` button on the top right corner.
 
@@ -34,12 +44,11 @@ on `Skip and Close` on the top right corner. You will be able to add
 collaborators by accessing [team settings] later.
 
 If you wish to add collaborators now, enter their email addresses. An email
-invite will be sent to each invitee, and they will have to join using their
-GitHub, GitLab or Bitbucket account.
+invite will be sent to each invitee.
 
 You can add multiple collaborators. Each collaborator can be assigned the Admin,
 Edit, or View role. Refer to the [Roles](#roles) section below for more details
-about the roles. ![](https://static.iterative.ai/img/studio/team_roles.png)
+about the roles. ![](https://static.iterative.ai/img/studio/team_roles_v3.png)
 
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
@@ -49,9 +58,9 @@ Once you have added the people that you wish to add to your team, click on
 ## Roles
 
 Team members or collaborators can have the View, Edit or Admin roles. Viewers
-have read-only access to the views created by other team members. Editors can
-create and edit the team's views. And admins have full access to the team's
-views and settings. They can add (invite) and remove collaborators as well as
+have read-only access to the projects created by other team members. Editors can
+create and edit the team's projects. And admins have full access to the team's
+projects and settings. They can add (invite) and remove collaborators as well as
 change team settings such as cloud credentials (data remotes).
 
 Iterative Studio does not have the concept of an `Owner` role. The user who
@@ -59,30 +68,30 @@ creates the team has the `Admin` role. The privileges of such an admin is the
 same as that of any other collaborator who has been assigned the `Admin` role.
 
 > An additional role `Visitor` exists for anonymous users who can open a public
-> view.
+> project.
 
-### Privileges to create, open and access the team's views
+### Privileges to create, open and access the team's projects
 
-| Feature                                    | Visitor | Viewer | Editor | Admin |
-| ------------------------------------------ | ------- | ------ | ------ | ----- |
-| Open a team's view                         | Yes\*   | Yes    | Yes    | Yes   |
-| Apply filters                              | Yes\*   | Yes    | Yes    | Yes   |
-| Show / hide columns                        | Yes\*   | Yes    | Yes    | Yes   |
-| Save the view filters and columns settings | No      | No     | Yes    | Yes   |
-| Run experiments                            | No      | No     | Yes    | Yes   |
-| View CML reports                           | No      | No     | Yes    | Yes   |
-| Share a view                               | No      | No     | Yes    | Yes   |
-| Add a new view                             | No      | No     | Yes    | Yes   |
-| Force repository import                    | No      | No     | Yes    | Yes   |
-| Delete a view                              | No      | No     | Yes    | Yes   |
+| Feature                                       | Visitor | Viewer | Editor | Admin |
+| --------------------------------------------- | ------- | ------ | ------ | ----- |
+| Open a team's project                         | Yes\*   | Yes    | Yes    | Yes   |
+| Apply filters                                 | Yes\*   | Yes    | Yes    | Yes   |
+| Show / hide columns                           | Yes\*   | Yes    | Yes    | Yes   |
+| Save the project filters and columns settings | No      | No     | Yes    | Yes   |
+| Run experiments                               | No      | No     | Yes    | Yes   |
+| View CML reports                              | No      | No     | Yes    | Yes   |
+| Share a project                               | No      | No     | Yes    | Yes   |
+| Add a new project                             | No      | No     | Yes    | Yes   |
+| Force repository import                       | No      | No     | Yes    | Yes   |
+| Delete a project                              | No      | No     | Yes    | Yes   |
 
-\*Visitors can access only the public views of the team.
+\*Visitors can access only the public projects of the team.
 
-### Privileges to manage view settings
+### Privileges to manage project settings
 
 | Feature                                      | Visitor | Viewer | Editor | Admin |
 | -------------------------------------------- | ------- | ------ | ------ | ----- |
-| Change view name                             | No      | No     | Yes    | Yes   |
+| Change project name                          | No      | No     | Yes    | Yes   |
 | Specify project directory                    | No      | No     | Yes    | Yes   |
 | Use existing cloud / data remote credentials | No      | No     | Yes    | Yes   |
 | Configure cloud / data remote credentials    | No      | No     | No     | Yes   |
@@ -97,35 +106,36 @@ same as that of any other collaborator who has been assigned the `Admin` role.
 | Manage team collaborators | No      | No     | No     | Yes   |
 | Delete a team             | No      | No     | No     | Yes   |
 
-## Manage your team and its views
+## Manage your team and its projects
 
 Once you have created the team, the team's workspace opens up.
 
-![](https://static.iterative.ai/img/studio/team_page_v3.png)
+![](https://static.iterative.ai/img/studio/team_page_v6.png)
 
-In this workspace, there are 2 pages - [Views](#views) and
+In this workspace, there are 2 pages - [Projects](#projects) and
 [Settings](#settings).
 
-## Views
+## Projects
 
-This is the views dashboard for the team. All the views on this dashboard are
-accessible to all members (collaborators) of the team.
+This is the projects dashboard for the team. All the projects on this dashboard
+are accessible to all members (collaborators) of the team.
 
-To add a view to this dashboard, click on `Add a view`. The process for adding a
-view is the same as that for adding personal views
-([instructions](/doc/studio/user-guide/views/create-view)).
+To add a project to this dashboard, click on `Add a project`. The process for
+adding a project is the same as that for adding personal projects
+([instructions](/doc/studio/user-guide/projects/create-project)).
 
 ## Settings
 
 In the [team settings] page, you can change the team name, add credentials for
 the data remotes, and delete the team. Note that these settings are applicable
-to the team and are thus different from
-[view settings](/doc/studio/user-guide/views/view-settings).
+to the team and are thus different from [project settings].
 
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),
 [edit collaborators](#edit-collaborators) and
 [change your team plan](#change-your-team-plan).
+
+[project settings]: /doc/studio/user-guide/projects/project-settings
 
 ### Manage connections to self-hosted GitLab servers
 

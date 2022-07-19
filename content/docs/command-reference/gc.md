@@ -5,9 +5,11 @@ Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
-              [--all-experiments] [-c] [-r <name>] [-f] [-j <number>]
+usage: dvc gc [-h] [-q | -v]
+              [-w] [--rev <commit>] [-n <num>] [-a] [-T] [-A]
+              [--date <YYYY-MM-DD>] [--all-experiments]
               [-p [<path> [<path> ...]]]
+              [-c] [-r <name>] [-j <number>] [-f]
 ```
 
 ## Description
@@ -74,6 +76,13 @@ project we want to clear.
   workspace. This option is enabled automatically with the other scope options
   (below).
 
+- `--rev <commit>` - keep cached data referenced in the specified `<commit>`, as
+  well as in the workspace (implying `-w`).
+
+- `-n <num>`, `--num <num>` - keep cached data referenced in the last `--num`
+  commits starting from a `--rev <commit>` (required), as well as in the
+  workspace (implying `-w`).
+
 - `-a`, `--all-branches` - keep cached data referenced in all Git branches, as
   well as in the workspace (implying `-w`). Useful if branches are used to track
   different experiments. Note that this can be combined with `-T` below, for
@@ -95,6 +104,10 @@ project we want to clear.
   be stored in the project's cache).
 
   > \* Not including [DVC experiments]
+
+- `--date <YYYY-MM-DD>` - Keep experiments from any commits on of after a
+  certain date. Argument `<YYYY-MM-DD>` expects a date in the
+  [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
 
 - `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's

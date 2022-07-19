@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import Support from '../components/Support'
 
 const SupportPage: React.FC = () => (
