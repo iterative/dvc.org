@@ -16,7 +16,6 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run Link Check
-        continue-on-error: true
         id: check
         run: |
           body="# Link Check Report
@@ -24,11 +23,13 @@ jobs:
           $(
             npx repo-link-check \
             -d -c config/link-check/config.yml \
-            -r ${{ github.event.deployment.payload.web_url }})"
+            -r ${{ github.event.deployment.payload.web_url }}
+          )"
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
           body="${body//$'\r'/'%0D'}"
           echo "::set-output name=report::$body"
+          exit 0
 
       - name: Find PR associated with deployment
         uses: actions/github-script@v6
@@ -41,7 +42,6 @@ jobs:
             return await findPR({ github, context, core })
 
       - name: Find Existing Link Check Report Comment
-        continue-on-error: true
         uses: peter-evans/find-comment@v2
         id: fc
         with:
