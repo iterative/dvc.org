@@ -59,14 +59,91 @@ like DVC.
 
 You can take your existing Jupyter notebooks and break them out in files and
 stages that DVC tracks for you. First, make sure that you have the following
-files to define the main steps in your experimentation. The `train.py` file to
-define the process that takes in data and saves the model for testing. The
-`evaluate.py` file to define the testing script that will record the resulting
-metrics.
+files to define the main steps in your experimentation, `train.py` and
+`evaluate.py`.
+
+The `train.py` file takes the `Get params`, `Load training data`, `Train model`,
+and `Save model` cells from the notebook so that we can version all of the steps
+in our training process. Then `evaluate.py` takes the `Set test variables`,
+`Load model and test data`, `Get model predictions`,
+`Calculate model performance metrics`, and `Save model performance metrics`
+cells.
+
+That's it! Now you have all of the steps that you executed in your Jupyter
+notebook in a couple of files that you can easily edit and track across all of
+your experiments. This is a great time to commit these changes to your Git repo
+with the following commands:
+
+```cli
+$ git add train.py evaluate.py
+$ git commit -m "converted notebook to DVC project
+```
 
 ## Look at metrics from experiments
 
+Now can create a DVC pipeline that executes these scripts to get the metrics for
+your experiments. If you look in the project's `dvc.yaml`, you'll see the stages
+we execute on an experiment run.
+
+```yaml
+stages:
+  train:
+    cmd: python src/train.py ./data/ ./models/model.pkl
+    deps:
+      - ./data/train.pkl
+      - ./src/train.py
+    params:
+      - train.seed
+      - train.n_est
+      - train.min_split
+    outs:
+      - ./models/model.pkl
+  evaluate:
+    cmd:
+      python ./src/evaluate.py ./models/model.pkl ./data scores.json prc.json
+      roc.json
+    deps:
+      - ./data
+      - ./models/model.pkl
+      - ./src/evaluate.py
+    metrics:
+      - scores.json:
+          cache: false
+    plots:
+      - prc.json:
+          cache: false
+          x: recall
+          y: precision
+      - roc.json:
+          cache: false
+          x: fpr
+          y: tpr
+```
+
+This runs everything in the same order that the Jupyter notebook did with a
+trackable structure. Now when you run `dvc exp run` to conduct an experiment,
+you can check out your metrics with either the CLI command `dvc exp show` or
+with the DVC VSCode extension.
+
+```dvctable
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────>
+  Experiment                Created        avg_prec   roc_auc   train.seed   train.n_est   train.min_split   >
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────>
+  workspace                 -               0.76681   0.38867   20210428     300           75                >
+  jupyter-to-dvc            Jul 18, 2022    0.76681   0.38867   20210428     300           75                >
+  └── 4a070a7 [exp-b8925]   Jul 18, 2022    0.76681   0.38867   20210428     300           75                >
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────>
+```
+
+_with CLI tool_
+
+![metrics in DVC VSCode extension]() _with DVC VSCode extension_
+
 ## Conclusion
 
-When your project gets to the point you need to go back to old experiments, it's
-probably time to start using something more complex than Jupyter notebooks.
+In this post, we covered how to convert your Jupyter notebook into a DVC
+project. When your project gets to the point you need to go back to old
+experiments, it's probably time to consider using something more complex than
+Jupyter notebooks. Keeping track of data versions across experiments along with
+the code that was used to run them can get messy quickly so it's good to know
+about tools that can make it easier for you.
