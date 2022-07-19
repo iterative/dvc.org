@@ -19,8 +19,7 @@ jobs:
         id: check
         run: |
           set +e
-
-          body="# Link Check Report
+          body="<h1 id=\"link-check\">Link Check Report</h1>
 
           $(
             npx repo-link-check \
@@ -49,7 +48,7 @@ jobs:
         with:
           issue-number: ${{ steps.pr-number.outputs.result }}
           comment-author: 'github-actions[bot]'
-          body-includes: "# Link Check Report"
+          body-includes: "<h1 id=\"link-check\">Link Check Report</h1>"
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
