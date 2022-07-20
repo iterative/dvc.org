@@ -1,13 +1,8 @@
 # Machine Learning Pipelines
 
-Machine learning _pipelines_ start with one or more data inputs. These are then
-processed in one or more [stages](#stages) (producing intermediate artifacts).
-They finally output a dataset or an ML model, usually along with its performance
-metadata.
+A typical ML workflow could involve:
 
-For example, a typical ML workflow could involve:
-
-1. Gathering data and for training and validation (once)
+1. Gathering data and for training and validation
 2. Extracting useful features from the training dataset
 3. (Re)training an ML model
 4. Evaluating the results against the validation set
