@@ -34,11 +34,7 @@ stages:
       - columns.txt
 ```
 
-<admon type="tip">
-
-A helper command, `dvc stage`, is available to create and list stages.
-
-</admon>
+> See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
 
 The most important part of a stage it's the shell\* command(s) it executes
 (`cmd` field). This is what DVC runs when the stage is reproduced (see

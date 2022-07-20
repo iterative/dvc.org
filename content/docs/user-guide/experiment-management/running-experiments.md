@@ -133,11 +133,7 @@ $ dvc exp run --run-all
 ...
 ```
 
-<admon type="info">
-
-Note that the order of execution is independent of their queueing order.
-
-</admon>
+> Note that the order of execution is independent of their creation order.
 
 Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
