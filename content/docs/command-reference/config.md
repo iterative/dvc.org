@@ -251,7 +251,7 @@ experiments or projects use a similar structure.
 
 - `parsing.bool` - Controls the templating syntax for boolean values when used
   in
-  [dict unpacking](/doc/user-guide/project-structure/pipelines-files#dict-unpacking).
+  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking).
 
   Valid values are `"store_true"` (default) and `"boolean_optional"`, named
   after
@@ -286,7 +286,7 @@ experiments or projects use a similar structure.
   ```
 
 - `parsing.list` - Controls the templating syntax for list values when used in
-  [dict unpacking](/doc/user-guide/project-structure/pipelines-files#dict-unpacking).
+  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking).
 
   Valid values are `"nargs"` (default) and `"append"`, named after
   [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).

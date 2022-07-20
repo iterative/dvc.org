@@ -1,9 +1,9 @@
-# Pipelines Files (`dvc.yaml`)
+# `dvc.yaml`
 
 You can construct machine learning pipelines by defining individual
-[stages](/doc/command-reference/run) in one or more `dvc.yaml` files (or
-_pipelines files_). Stages constitute a pipeline when they connect with each
-other (forming a [dependency graph], see `dvc dag`).
+[stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
+constitute a pipeline when they connect with each other (forming a [dependency
+graph], see `dvc dag`).
 
 <admon type="tip">
 

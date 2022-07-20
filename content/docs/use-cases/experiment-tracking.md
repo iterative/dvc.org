@@ -22,7 +22,7 @@ revisions. DVC's approach guarantees reproducibility by working on top of Git
 instead, and not as a separate system.
 
 [experiment management]: /doc/user-guide/experiment-management
-[codified with dvc]: /doc/user-guide/project-structure/pipelines-files
+[codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
 [versioning everything]: /doc/use-cases/versioning-data-and-model-files
 
 ```dvctable
