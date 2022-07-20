@@ -28,7 +28,7 @@ actual,predicted
 > predictions.
 
 Running the experiment with `dvc exp run` will produce `plots/confusion.csv`.
-You can run `dvc plots show` on you Terminal to generate and embed them in an
+You can run `dvc plots show` on your Terminal to generate and embed them in an
 HTML file you can open in the browser (shown below). Or you can load your
 project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
 visualize them.
