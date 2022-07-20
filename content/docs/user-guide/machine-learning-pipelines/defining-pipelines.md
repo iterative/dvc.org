@@ -27,6 +27,8 @@ order in which stages are found in `dvc.yaml`.
 
 </admon>
 
+[specification]: /doc/user-guide/project-structure/dvcyaml-files#stage-entries
+
 ## Directed acyclic graph (DAG)
 
 DVC represents a pipeline internally as a graph where the nodes are stages and
@@ -44,6 +46,12 @@ Use `dvc dag` to visualize (or export) pipeline DAGs.
 There are two ways to define <abbr>stages</abbr>. The first and recommended
 method is by writing `dvc.yaml` files directly (`stages` list). The other one is
 via `dvc stage add`, a limited command-line interface to stage setup.
+
+<admon type="tip">
+
+See the full [specification] of `stage` entries.
+
+</admon>
 
 Let's look at a sample `preprocess` stage that runs command
 `python src/preprocess.py`. It depends on the corresponding Python script and on
