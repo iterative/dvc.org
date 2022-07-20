@@ -145,11 +145,7 @@
       },
       {
         "slug": "machine-learning-pipelines",
-        "children": [
-          "defining-pipelines",
-          "reproducing-pipelines",
-          "experimental-pipelines"
-        ]
+        "children": ["defining-pipelines"]
       },
       {
         "slug": "how-to",
