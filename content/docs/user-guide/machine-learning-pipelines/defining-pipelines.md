@@ -159,9 +159,9 @@ previous section's example).
 ### External dependencies: click to learn more.
 
 A less common kind of dependency is a _URL dependency_. Instead of files in a
-local disk, you can `dvc import-url` data from outside the
-<abbr>workspace</abbr> (even remote locations). These establish relationships
-between different projects and systems.
+local disk, you can `dvc import` data from another <abbr>DVC project</abbr> (for
+example hosted on GitHub). External dependencies establish relationships between
+different projects or systems (see `dvc import-url`).
 [Get all the details](/doc/user-guide/external-dependencies).
 
 <admon type="info">
