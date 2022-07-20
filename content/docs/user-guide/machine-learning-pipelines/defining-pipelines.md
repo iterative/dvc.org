@@ -1,11 +1,13 @@
 # Defining Pipelines
 
-DVC helps codify such workflows so that you or anyone can reliably **reproduce**
+DVC helps define your ML workflows so that anyone can reliably **reproduce**
 them later. This way you can ensure that steps are followed when necessary (and
 only when necessary).
 
-Pipelines are defined as a set of `stages` in
-[`dvc.yaml` metafiles](#dvcyaml-metafiles).
+Specifically, pipelines are written as a set of `stages` in
+[`dvc.yaml` metafiles](#dvcyaml-metafiles). This _codification_ has the added
+benefit of bringing your pipelining process onto standard Git workflows
+(GitOps).
 
 ## Stages
 
@@ -93,9 +95,8 @@ always available this way.
 [tracked with dvc]: /doc/start/data-management
 [templating]: /doc/user-guide/project-structure/pipelines-files#templating
 
-DVC writes lock files (`dvc.lock`) to complement `dvc.yaml` operations.
-Versioning both files with Git brings your pipelining process onto standard Git
-workflows.
+DVC writes lock files (`dvc.lock`) to complement `dvc.yaml` operations. Both are
+small text files that can be versioned with Git.
 
 <details>
 

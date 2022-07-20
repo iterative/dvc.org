@@ -144,7 +144,7 @@
         ]
       },
       {
-        "slug": "data-pipelines",
+        "slug": "machine-learning-pipelines",
         "children": [
           "defining-pipelines",
           "reproducing-pipelines",
