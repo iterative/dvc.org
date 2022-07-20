@@ -30,9 +30,9 @@ Most of the other [options](#options) help with defining different kinds of
 remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
 become the required [`command` argument](#the-command-argument).
 
-Stages whose dependencies are outputs from other stages form
-[pipelines](/doc/command-reference/dag). `dvc repro` can be used to rebuild
-their dependency graph, and execute them.
+Stages whose outputs become dependencies for other stages form
+<abbr>pipelines</abbr>. `dvc repro` can be used to rebuild this [dependency
+graph] and execute them.
 
 <details>
 
