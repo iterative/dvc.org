@@ -1,7 +1,9 @@
 ---
-name: Pipeline (DAG)
-match: [DAG, pipeline, 'data pipeline', 'data pipelines']
+name: Pipeline
+match: [pipeline, 'data pipeline', 'data pipelines']
 tooltip: >-
-  A set of inter-dependent stages. This is also called a [dependency
-  graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+  A set of inter-dependent stages defined in
+  [`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files). Its implemented
+  as a [dependency
+  graph](/doc/user-guide/machine-learning-pipelines/defining-pipelines).
 ---

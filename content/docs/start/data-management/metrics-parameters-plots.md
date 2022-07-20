@@ -183,10 +183,9 @@ featurize:
 
 ### ⚙️ Expand to recall how it was generated.
 
-The `featurize` stage
-[was created](/doc/start/data-pipelines#dependency-graphs-dags) with this
-`dvc run` command. Notice the argument sent to the `-p` option (short for
-`--params`):
+The `featurize` stage [was created](/doc/start/data-pipelines#dependency-graphs)
+with this `dvc run` command. Notice the argument sent to the `-p` option (short
+for `--params`):
 
 ```dvc
 $ dvc run -n featurize \

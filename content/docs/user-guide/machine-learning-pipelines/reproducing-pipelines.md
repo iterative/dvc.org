@@ -20,8 +20,8 @@ Data and pipelines are up to date.
 
 You can force to run a pipeline if its dependencies are valid with `--force`
 flag. `dvc repro` runs the stages in topological order. It runs dependencies
-before dependents. It doesn't run the stages in parallel if they are separate in
-the pipeline DAG.
+before dependents. It doesn't run the stages in parallel if they are not
+connected in a pipeline.
 
 It shows the command output in the same terminal the command is issued. If you
 want to redirect the command output, you can modify the commands in `dvc.yaml`.

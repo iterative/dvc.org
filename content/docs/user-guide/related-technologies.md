@@ -64,8 +64,7 @@ bringing best practices from software engineering into the data science field
 
 ## Workflow management systems
 
-Pipelines and dependency graphs
-([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) such as _Airflow_,
+Systems to manage data pipelines and [dependency graphs] such as _Airflow_,
 _Luigi_, etc.
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
@@ -79,6 +78,9 @@ _Luigi_, etc.
 
 - See also our sister project, [CML](https://cml.dev/), that helps fill some of
   these gaps.
+
+[dependency graphs]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines
 
 ## Experiment management software
 
@@ -112,11 +114,9 @@ _Luigi_, etc.
     avoid recomputing all dependency file hashes, which would be highly
     problematic when working with large files (multiple GB).
 
-- DVC utilizes a
-  [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
-  (DAG):
+- DVC utilizes a [directed acyclic graph][dependency graphs] (DAG):
 
-  - The DAG or dependency graph is defined implicitly by the connections between
+  - The dependency graph is defined implicitly by the connections between
     [stages](/doc/command-reference/run), based on their
     <abbr>dependencies</abbr> and <abbr>outputs</abbr>.
 

@@ -22,10 +22,9 @@ positional arguments:
 
 ## Description
 
-Provides a way to regenerate data pipeline results, by restoring the dependency
-graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
-defined by the stages listed in `dvc.yaml`. The commands defined in these stages
-are then executed in the correct order.
+Provides a way to regenerate data pipeline results, by restoring the [dependency
+graph] implicitly defined by the stages listed in `dvc.yaml`. The commands
+defined in these stages are then executed in the correct order.
 
 For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
@@ -69,6 +68,8 @@ It stores all the data files, intermediate or final results in the
 hash values of changed dependencies and outputs in the `dvc.lock` and `.dvc`
 files.
 
+[dependency graph]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines
 [always changed]: /doc/command-reference/status#local-workspace-status
 
 ### Parallel stage execution
