@@ -18,29 +18,26 @@ outputs (if any).
 Stage execution order is determined by defining outputs that feed into
 subsequent stage inputs, e.g. if an output of stage X is used as an input in
 stage Y, then DVC deduces that X should be run before Y. Technically, this is
-called a _dependency graph_ (specifically a
-[DAG](#directed-acyclic-graph-dag-click-to-learn-more)).
-
-<details>
-
-### Click to learn more about **directed acyclic graphs** (DAG)
-
-Internally, DVC represents the pipeline as a graph where the nodes are stages
-and the edges are _directed_ dependencies (e.g. B requires A). In order for DVC
-to execute the pipeline reliably, the graph should be _acyclic_ -- because
-executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. Use
-`dvc dag` to visualize/export pipeline DAGs.
-
-[dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-
-</details>
+called a _dependency graph_ (specifically a DAG).
 
 <admon type="info">
 
-Note that the order of execution is entirely based on the DAG, and not on the
+Note that the order of execution is entirely based on their DAG, and not on the
 order in which stages are found in `dvc.yaml`.
 
 </admon>
+
+## Directed acyclic graph (DAG)
+
+DVC represents a pipeline internally as a graph where the nodes are stages and
+the edges are _directed_ dependencies (e.g. A before B). In order for DVC to
+execute the pipeline reliably, its topology should be _acyclic_ -- because
+executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. [More
+about DAGs].
+
+Use `dvc dag` to visualize (or export) pipeline DAGs.
+
+[more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
 ## `dvc.yaml` metafiles
 
@@ -72,8 +69,8 @@ requirements.
 
 </admon>
 
-You can write the `dvc.yaml` file above directly, or DVC can do it with the
-following call:
+You can write the `dvc.yaml` file above directly, or DVC can do it for you with
+the following call:
 
 ```dvc
 $ dvc stage add --name preprocess \

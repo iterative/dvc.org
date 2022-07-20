@@ -19,9 +19,6 @@ modify, write, or generate them by your own means.
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
 
-[dependency graph]:
-  /doc/user-guide/data-pipelines#directed-acyclic-graph-dag-click-to-learn-more
-
 ## Stages
 
 The list of `stages` contains one or more user-defined stages. Here's a simple
