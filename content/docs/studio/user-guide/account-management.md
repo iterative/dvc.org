@@ -6,21 +6,18 @@
 
 # Account Management
 
-To manage your user account, click on your avatar on the top right corner of
-Iterative Studio. In the menu that comes up, click on `Profile`. Your user
-profile page will open. This page has multiple sections that are described
-below.
+To manage your user account, click on your user icon on the top right corner of
+Iterative Studio, and go to your `Profile`. This page has multiple sections
+which are described below.
 
 <admon>
 
-Account management does not include the management of your team plan (Free, Team
-or Enterprise). The team plan is defined for each of your teams separately. To
-manage the team plan, go to the desired team's
-[settings page](/doc/studio/user-guide/teams#settings) and scroll to the
-`Plan and billing` section.
+This does not include managing your team plan (Free, Team, or Enterprise). Team
+plans are defined for each team separately. To manage them, go to the [team
+settings] page and scroll to the `Plan and billing` section. You can change
+plans there and increase or decrease the number of seats in it.
 
-Managing your team plan includes changing the plan as well as increasing or
-decreasing the number of seats in the team.
+[team settings]: /doc/studio/user-guide/teams#settings
 
 </admon>
 
@@ -71,7 +68,7 @@ In this section, you can,
   this section. If you want to connect to a self-hosted GitLab server, you
   should create a team and
   [set up the GitLab server connection](/doc/studio/user-guide/connect-custom-gitlab-server)
-  in the team settings.
+  in the [team settings].
 
 - Disconnect from your GitHub, GitLab, or Bitbucket accounts.
 - Configure your GitHub account connection. That is, install the Iterative
