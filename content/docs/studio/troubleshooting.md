@@ -26,8 +26,9 @@ Iterative Studio.
 
 **Model registry**
 
-- [I cannot find my desired Git repository in the form to add a model]()
-- [Model registry does not display the models in my Git repositories]()
+- [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
+- [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
+- [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
 
 **Billing and payment**
 
@@ -231,6 +232,19 @@ For a model to be displayed in the model registry, it has to be registered using
 [from Iterative Studio](/doc/studio/user-guide/model-registry/add-a-model),
 which uses [GTO] under the hood to create the necessary Git commits.
 Alternately, you can also use the [GTO] CLI.
+
+## How can I un-assign stages from model versions
+
+To un-assign any stage from a model, open the corresponding Git repository (in
+GitHub, GitLab or Bitbucket). Then, remove the Git tag pertaining to the stage
+that you want to un-assign.
+
+After removing the Git tag, reparse the repository. To do this, open the project
+in Iterative Studio and then click on `Force import` as shown below.
+
+![Showing and hiding columns](https://static.iterative.ai/img/studio/force_import.gif)
+
+Currently, you cannot un-assign stages from the Iterative Studio user interface.
 
 ## Questions or problems with billing and payment
 
