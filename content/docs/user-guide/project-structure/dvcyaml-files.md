@@ -99,9 +99,9 @@ which can be versioned directly with Git. See also `dvc params`.
 
 ### Metrics and plot outputs
 
-Like [common outputs](#outputs), <abbr>metrics</abbr> and <abbr>plots</abbr>
-files are produced by the stage `cmd`. However, their purpose is different.
-Typically they contain metadata to evaluate pipeline processes. Example:
+Like common outputs, <abbr>metrics</abbr> and <abbr>plots</abbr> files are
+produced by the stage `cmd`. However, their purpose is different. Typically they
+contain metadata to evaluate pipeline processes. Example:
 
 ```yaml
 stages:
@@ -129,19 +129,19 @@ metrics and plots.
 
 These are the fields that are accepted in each stage:
 
-| Field            | Description                                                                                                                                                                                                                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
-| `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
-| `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
-| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
-| `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
-| `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
-| `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
-| `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
-| `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
-| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
-| `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
+| Field            | Description                                                                                                                                                                                                                                                                                          |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). `cmd` values may use [dictionary substitution](#dictionary-unpacking) from param files. Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`). |
+| `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                                     |
+| `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                            |
+| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                             |
+| `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                                    |
+| `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                                       |
+| `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`.            |
+| `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                                |
+| `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                          |
+| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                                      |
+| `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                                  |
 
 [changed]: /doc/command-reference/status#local-workspace-status
 
@@ -211,39 +211,40 @@ stages:
 DVC will track simple param values (numbers, strings, etc.) used in `${}` (they
 will be listed by `dvc params diff`).
 
-### Dict Unpacking
+<details>
+
+### Dictionary unpacking
 
 Only inside the `cmd` entries, you can also reference a dictionary inside `${}`
-and DVC will _unpack_ it. For example, given the following `params.yaml`:
+and DVC will _unpack_ it. This can be useful to avoid writing every argument
+passed to the command, or having to modify `dvc.yaml` when arguments change.
+
+For example, given the following `params.yaml`:
 
 ```yaml
-dict:
+mydict:
   foo: foo
-  bar: 2
+  bar: 1
   bool: true
   nested:
-    foo: bar
-  list: [1, 2, 'foo']
+    baz: bar
+  list: [2, 3, 'qux']
 ```
 
-You can reference `dict` in the `cmd` section of a `dvc.yaml`:
+You can reference `mydict` in a stage command like this:
 
 ```yaml
 stages:
   train:
-    cmd: python train.py ${dict}
+    cmd: python train.py ${mydict}
 ```
 
-And DVC will _unpack_ the values inside `dict`, creating the following `cmd`
-call:
+DVC will unpack `mydict`, creating the following `cmd` call:
 
 ```cli
-$ python train.py --foo 'foo' --bar 2 --bool \
-                  --nested.foo 'bar' --list 1 2 'foo'
+$ python train.py --foo 'foo' --bar 1 --bool \
+                  --nested.baz 'bar' --list 2 3 'qux'
 ```
-
-This can be useful for avoiding to write every argument passed to the `cmd` or
-having to modify the `dvc.yaml` when adding or removing arguments.
 
 <admon type="tip">
 
@@ -253,10 +254,12 @@ lists.
 
 </admon>
 
-### Vars
+</details>
 
-Alternatively, values for substitution can be listed as top-level `vars` like
-this:
+### Variables
+
+Alternatively (to relying on parameter files), values for substitution can be
+listed as top-level `vars` like this:
 
 ```yaml
 vars:
@@ -280,9 +283,6 @@ Values from `vars` are not tracked like parameters.
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
 
-> Params file paths will be evaluated based on [`wdir`](#stage-entries), if
-> specified.
-
 ```yaml
 vars:
   - params.json
@@ -290,7 +290,13 @@ vars:
   - config/myapp.yaml
 ```
 
-ℹ️ Note that the default `params.yaml` file is always loaded first, if present.
+<admon type="info" title="Notes">
+
+The default `params.yaml` file is always loaded first, if present.  
+Param file paths will be evaluated based on [`wdir`](#stage-entries), if
+specified.
+
+</admon>
 
 It's also possible to specify what to include from additional params files, with
 a `:` colon:
@@ -327,12 +333,16 @@ DVC merges values from params files and `vars` in each scope when possible. For
 example, `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
 `{"grp": {"a": 7}}`.
 
-⚠️ Known limitations of local `vars`:
+<admon type="warn">
+
+Known limitations of local `vars`:
 
 - [`wdir`](#stage-entries) cannot use values from local `vars`, as DVC uses the
   working directory first (to load any values from params files listed in
   `vars`).
 - `foreach` is also incompatible with local `vars` at the moment.
+
+</admon>
 
 The substitution expression supports these forms:
 
@@ -342,8 +352,12 @@ ${param.key} # Nested values through . (period)
 ${param.list[0]} # List elements via index in [] (square brackets)
 ```
 
-> To use the expression literally in `dvc.yaml` (so DVC does not replace it for
-> a value), escape it with a backslash, e.g. `\${...`.
+<admon type="info">
+
+To use the expression literally in `dvc.yaml` (so DVC does not replace it for a
+value), escape it with a backslash, e.g. `\${...`.
+
+</admon>
 
 ## `foreach` stages
 
