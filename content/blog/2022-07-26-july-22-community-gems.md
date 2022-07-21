@@ -2,13 +2,11 @@
 title: July '22 Community Gems
 date: 2022-07-26
 description: >
-  A roundup of technical Q&A's from the DVC and CML communities. This month:
-  working with the DVC cache, DVC data and remotes, using DVC programmatically,
-  and more.
+  A roundup of technical Q&A's from the DVC community. This month: deploying
+  models MLEM, DVC data and remotes, DVC stages and plots, and more.
 descriptionLong: >
-  A roundup of technical Q&A's from the DVC and CML communities. This month:
-  working with the DVC cache, DVC data and remotes, using DVC programmatically,
-  and more.
+  A roundup of technical Q&A's from the DVC community. This month: deploying
+  models MLEM, DVC data and remotes, DVC stages and plots, and more.
 picture: 2022-07-26/july-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/july-22-community-gems/1226
@@ -24,12 +22,12 @@ tags:
 
 Great question on how DVC handles data tracking from @NgHoangDat!
 
-Since you already track the `data`, when you add a new file into it all you need
-to do is update it. You can use either `dvc add data` or `dvc commit` to start
-tracking the new file.
+Since you already track the `data` folder, when you add a new file into it, all
+you need to do is update your DVC history. You can use either `dvc add data` or
+`dvc commit` to start tracking the new file.
 
-DVC will also only recalculate the changed files. If you only add or modify a
-small number of files in that folder, the update will not take very long.
+DVC will also only recalculate the changed files. If you add or modify a small
+number of files in that folder, the update will not take very long.
 
 ## [What would be the best method to get the remote URL of a given dataset inside a Python environment?](https://discord.com/channels/485586884165107732/485596304961962003/984870485668008007)
 
@@ -53,7 +51,7 @@ print(resource_url)
 ```
 
 This URL is built with the project configuration file, `.dvc/config`, and the
-`md5` file hashed stored in the `.dvc` file corresponding to the data file or
+`md5` file hashes stored in the `.dvc` file corresponding to the data file or
 directory you want the storage location of.
 
 ## [I'm excited about MLEM helping expose API endpoints to our model, but heard it was experimental. Where can I learn more about how to deploy models with this tool?](https://discord.com/channels/485586884165107732/563406153334128681/992517466662117386)
@@ -71,14 +69,14 @@ You can find more details here in the MLEM docs: https://mlem.ai/doc/get-started
 You can also see an example of deploying a model with MLEM in this
 [blog post tutorial](https://dvc.org/blog/serving-models-with-mlem).
 
-## [How do I revert a `dvc add` command that I just run to stop tracking data?](https://discord.com/channels/485586884165107732/563406153334128681/993111134896918599)
+## [How do I revert a `dvc add` command to stop tracking data?](https://discord.com/channels/485586884165107732/563406153334128681/993111134896918599)
 
 This is a good question from @Nwoke!
 
 If you have accidentally added the wrong directory or files for DVC to track,
-you can easily do this with the `dvc remove` command. This is used to remove the
-`.dvc` file and ensure that the original data file is no longer being tracked.
-Here's an example of this command being used:
+you can easily remove them with the `dvc remove` command. This is used to remove
+the `.dvc` file and ensure that the original data file is no longer being
+tracked. Here's an example of this command being used:
 
 ```dvc
 $ dvc remove data.csv.dvc
@@ -104,11 +102,11 @@ You can learn more about removing tracked data in
 
 Fantastic question from @Nish!
 
-This is the expected behavior of DVC. It removed the `outs` of a stage unless
+This is the expected behavior of DVC. It removes the `outs` of a stage unless
 the `persist:true` value is set for that output. You can learn more about how
 this works in
 [our docs here](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#output-subfields).
-Here's an example of what a stage with the `persist` value set.
+Here's an example of a stage with the `persist` value set.
 
 ```yaml
 stages:
@@ -132,8 +130,8 @@ $ dvc checkout
 
 These commands allow you to get the `dvc.lock` and `.dvc` files for the
 experiment you want to go back to from your Git history. Then it uses DVC to get
-your data to the version and reproduce your entire experiment. You can learn
-more about these details in
+your data to the version you want and reproduce your entire experiment. You can
+learn more about these details in
 [the `dvc checkout` docs here](https://dvc.org/doc/command-reference/checkout).
 
 ## [Is there a way to have a plot with multiple y-axes?](https://discord.com/channels/485586884165107732/485596304961962003/994685566698410055)
@@ -185,7 +183,7 @@ second would use the first stage's output as a dependency.
 Otherwise, DVC does not guarantee any particular execution order for stages
 which are independent of each other. DVC determines the structure of your DAG
 based on file outputs and dependencies and there isn't another way to enforce
-order of stage execution in DVC DVC expects your stage command to generate all
+order of stage execution in DVC. DVC expects your stage command to generate all
 outputs each time the command is run and will remove all existing outputs before
 it runs a stage.
 
