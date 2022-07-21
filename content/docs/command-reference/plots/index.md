@@ -28,7 +28,7 @@ DVC provides a set of commands to visualize data produced by machine learning
 projects. Usual plots include AUC curves, loss functions, or confusion matrices,
 for example. Plots are a great alternative to `dvc metrics` when working with
 multi-dimensional performance data. They also help you present and compare
-[[experiments]](https://github.com/iterative/dvc.org/pull/3691#pullrequestreview-1024053543) effectively.
+[experiments] effectively.
 
 DVC can work with two types of plots files:
 
