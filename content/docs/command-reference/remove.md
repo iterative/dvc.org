@@ -81,7 +81,7 @@ the <abbr>workspace</abbr>:
 
 ```yaml
 train:
-  cmd: python train.py data.py
+  cmd: python train.py data.csv
   deps:
     - data.csv
     - train.py
