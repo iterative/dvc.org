@@ -38,13 +38,12 @@ for epoch in range(NUM_EPOCHS):
     live.next_step()
 ```
 
-Let's use `dvc exp init` to create a stage to wrap this code (don't forget to
-`dvc init` first):
+Let's use `dvc exp init --live` to create a stage to wrap this code (don't forget
+to `dvc init` first):
 
 ```dvc
-$ dvc exp init \
+$ dvc exp init --live "training_metrics" \
 --code "train.py" \
---live "training_metrics" \
 python train.py
 ```
 

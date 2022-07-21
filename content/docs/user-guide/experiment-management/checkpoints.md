@@ -89,13 +89,12 @@ the training process. To enable this, you will need to set up a
 Now we need to add a training stage to `dvc.yaml` including `checkpoint: true`
 in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
 to use to resume the experiment later (a circular dependency). We'll do this
-with `dvc exp init`.
+with `dvc exp init --live`.
 
 ```dvc
-$ dvc exp init \
+$ dvc exp init --live 'dvclive' \
 --data 'data/MNIST' \
 --code 'train.py' \
---live 'dvclive' \
 --model 'model.pt' \
 --type 'checkpoint' \
 python train.py
