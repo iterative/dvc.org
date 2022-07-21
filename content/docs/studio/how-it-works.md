@@ -12,7 +12,7 @@ ecosystem.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
-## How your project data is saved:
+## How your project data is saved
 
 - Using [DVC] and [Git], you will push all your ML experiments to your GitHub,
   GitLab or Bitbucket repositories as Git commits.
@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
   and possibly [MLEM], you will push all your ML model details to the Git
   repositories as Git commits and Git tags.
 
-## How Iterative Studio extracts your project data:
+## How Iterative Studio extracts your project data
 
 - When you connect to these Git repositories from Iterative Studio, the
   project's `dvc.yaml` is used to identify all the data, metrics and
@@ -30,7 +30,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 - Details of your ML models, including versions and stage assignments, are
   extracted from the Git commits and tags.
 
-## How Iterative Studio presents your project data:
+## How Iterative Studio presents your project data
 
 - Iterative Studio creates an
   [interactive, tabular representation](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#components-of-a-project)
@@ -42,7 +42,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
   and individual
   [model details pages](/doc/studio/user-guide/model-registry/view-models#model-details-page).
 
-## How Iterative Studio saves updates to your ML projects:
+## How Iterative Studio saves updates to your ML projects
 
 - When you
   [run new experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments)
