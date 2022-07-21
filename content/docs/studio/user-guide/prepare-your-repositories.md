@@ -11,12 +11,14 @@ hyperparameters and models defined in your Git repositories. These values are
 stored in your Git repositories as JSON or YAML files. Model information may be
 available in Git tags as well.
 
-Model information can be added directly from the `Models` tab in Iterative
-Studio after creating the project. You can also use
-[GTO](https://github.com/iterative/gto) and [MLEM](https://mlem.ai/) CLI/API.
+New ML model metadata can be added directly from the **Models** tab after
+[creating a project]. You can also use [GTO] or [MLEM].
 
-To add datasets, metrics and hyperparameters to your Git repositories, there are
-two ways:
+[creating a project]: doc/studio/user-guide/projects-and-experiments/create-a-project
+[gto]: https://github.com/iterative/gto
+[mlem]: https://mlem.ai/
+
+Datasets, metrics, and hyperparameters can be added to a project in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
    version your code, data and models all within your Git repositories. Data

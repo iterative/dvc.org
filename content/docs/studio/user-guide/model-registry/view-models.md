@@ -2,7 +2,7 @@
 
 You can find all your models in the [models dashboard](#models-dashboard). Each
 model also has a separate [model details page](#model-details-page). Also, all
-models from a given Git repository are also included as
+models from a given Git repository are included as
 [`model` columns in the experiment tables](#model-columns-in-the-projects-experiment-table)
 of those projects that connect to this Git repository.
 
@@ -62,7 +62,7 @@ A model details page is divided into the following sections:
 
 ## Model columns in the project’s experiment table:
 
-The models will also appear in the `model` columns in the experiment tables of
+The models will also appear as `model` columns in the experiment tables of
 those projects that have been created from the Git repository to which the model
 belongs.
 

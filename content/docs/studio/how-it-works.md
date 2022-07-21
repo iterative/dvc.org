@@ -11,7 +11,7 @@ When you connect to these repositories from Iterative Studio, the project's
 `dvc.yaml` is used to identify all the data, metrics and hyperparameters in your
 experiments. If you are not using DVC, you can also add the metrics and
 hyperparameters to your Git repositories manually. Iterative Studio also
-extracts model details from the Git commits and tags.
+extracts ML model details from the Git commits and tags.
 
 Iterative Studio then creates an interactive, tabular representation of all the
 identified values. You can also

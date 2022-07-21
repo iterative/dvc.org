@@ -1,8 +1,8 @@
 # Add a model
 
-You can add (register) models from any ML project to the model registry. To add
+You can add models from any ML project to the model registry. To add
 a model to your model registry, Iterative Studio creates an annotation for it in
-a special file `artifacts.yaml` in your Git repository. If you are using the GTO
+an `artifacts.yaml` file in your Git repository. If you are using the GTO
 command line tool, you can also add models from the [CLI][gto]. To add models
 using Iterative Studio, watch this tutorial video or read on below:
 
@@ -32,8 +32,8 @@ https://www.youtube.com/watch?v=hKf4twg832g
    file is in a remote storage but is DVC-tracked, enter the path of the DVC
    file for your model. If the model file is in a remote storage and is not
    DVC-tracked, enter the absolute path of the model file.
-4. Provide labels for your model. For example, if your model is about “review
-   sentiment analysis using natural language processing”, one of the labels may
+4. Provide labels for your model. For example, if your model is about reviewing
+   sentiment analysis using natural language processing, one of the labels may
    be `nlp`. You can provide multiple labels as a comma separated list. Eg,
    `nlp, sentiment_analysis`.
 5. Optionally, add a brief description for your model.
@@ -46,7 +46,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
 8. At this point, the new model appears in the models dashboard.
 9. In your Git repository, you will find that an entry for the new model has
    been created in the `artifacts.yaml` file in the repository's root. If you
-   had committed to a new branch, then a new pull request will also have been
-   created from the new branch to the base branch.
+   had committed to a new branch, a new pull request will also have been
+   created to merge the new branch into the base branch.
 
 [gto]: https://github.com/iterative/gto

@@ -112,10 +112,12 @@ You should now see that a project has been added in your dashboard.
 
 ## Use model registry
 
-1. Click on the `Models` tab to open the
-   [central models dashboard](/doc/studio/user-guide/model-registry/view-models#models-dashboard)
-   of your Model Registry. If any of your projects contain GTO-annotated models,
-   they will be displayed in this dashboard.
+1. Click on the `Models` tab to open the central
+   [Models dashboard](/doc/studio/user-guide/model-registry/view-models#models-dashboard).
+   If any of your projects contain [GTO-annotated models], they will be listed
+   here automatically.
+
+   [gto-annotated models]: /doc/studio/user-guide/model-registry/add-a-model
 
 2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
    to the model registry by clicking on the `Add a model` button and following
@@ -129,7 +131,7 @@ You should now see that a project has been added in your dashboard.
    [register new versions](/doc/studio/user-guide/model-registry/version-models)
    of the models and
    [promote them to different stages](/doc/studio/user-guide/model-registry/promote-models)
-   (eg, development, staging, production).
+   (e.g., development, staging, production).
 
 ## Create and manage teams
 

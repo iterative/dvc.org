@@ -545,7 +545,6 @@
             ]
           },
           {
-            "label": "Model Registry",
             "slug": "model-registry",
             "source": false,
             "children": [
