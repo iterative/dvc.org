@@ -41,31 +41,6 @@ the required [`command` argument](#the-command-argument).
 
 `dvc run` executes stage commands, unless the `--no-exec` option is used.
 
-<details>
-
-### 💡 Avoiding unexpected behavior
-
-We don't want to tell anyone how to write their code or what programs to use!
-However, please be aware that in order to prevent unexpected results when DVC
-reproduces pipeline stages, the underlying code should ideally follow these
-rules:
-
-- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
-  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
-
-- Completely rewrite outputs. Do not append or edit.
-
-- Stop reading and writing files when the `command` exits.
-
-Also, if your pipeline reproducibility goals include consistent output data, its
-code should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
-the same output for any given input): avoid code that increases
-[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
-time functions, hardware dependencies, etc.).
-
-</details>
-
 ### Dependencies and outputs
 
 By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
@@ -255,7 +230,7 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   run with the same dependencies and outputs (see the
   [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
   for example if the stage command/s is/are non-deterministic
-  ([not recommended](#avoiding-unexpected-behavior)).
+  ([not recommended](/doc/user-guide/machine-learning-pipelines/defining-pipelines#avoiding-unexpected-behavior)).
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
