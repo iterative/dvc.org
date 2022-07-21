@@ -96,7 +96,7 @@ which can be versioned directly with Git. See also `dvc params`.
 [parameters]:
   /doc/user-guide/machine-learning-pipelines/defining-pipelines#parameter-dependencies
 
-### Metrics and plot outputs
+### Metrics and Plots outputs
 
 Like [common outputs](#outputs), <abbr>metrics</abbr> and <abbr>plots</abbr>
 files are produced by the stage `cmd`. However, their purpose is different.

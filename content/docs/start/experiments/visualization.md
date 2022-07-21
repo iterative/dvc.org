@@ -105,5 +105,5 @@ workflow:
 - [DVCLive] integrations can produce plots automatically during training.
 
 [plot outputs]:
-  /doc/user-guide/project-structure/dvcyaml-files#metrics-and-plot-outputs
+  /doc/user-guide/project-structure/dvcyaml-files#metrics-and-plots-outputs
 [dvclive]: /doc/dvclive/dvclive-with-dvc
