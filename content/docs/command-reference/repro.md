@@ -164,7 +164,7 @@ up-to-date and only execute the final stage.
   with the same dependencies and outputs (see the
   [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
   for example if the stage command/s is/are non-deterministic
-  ([not recommended](/doc/command-reference/run#avoiding-unexpected-behavior)).
+  ([not recommended](/doc/user-guide/machine-learning-pipelines/defining-pipelines#avoiding-unexpected-behavior)).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
