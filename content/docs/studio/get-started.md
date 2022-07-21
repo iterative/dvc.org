@@ -8,16 +8,6 @@ Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-The rest of this page provides quick instructions to perform the following
-actions:
-
-- [Sign up/ sign in](#sign-up--sign-in)
-- [Explore demo project](#explore-demo-project)
-- [Add your projects](#add-your-projects)
-- [Explore and share your projects](#explore-and-share-your-projects)
-- [Use model registry](#use-model-registry)
-- [Create and manage teams](#create-and-manage-teams)
-
 ## Sign up / sign in
 
 1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard

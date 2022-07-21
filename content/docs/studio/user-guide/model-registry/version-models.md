@@ -1,7 +1,7 @@
 # Version models
 
-You can register new versions of registered models by specifying the Git
-commit which corresponds to the new version.
+You can register new versions of registered models by specifying the Git commit
+which corresponds to the new version.
 
 To register a new version of a model, Iterative Studio uses [GTO] to create an
 [annotated Git tag][git tag] with the specified version number. Refer the [GTO
@@ -22,10 +22,10 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
 2. Select the Git commit which corresponds to the new version of your model. If
    the desired commit does not appear in the commit picker, type in the
-   7-character SHA of the commit.
+   40-character sha-1 hash of the commit.
 3. Enter a version name. Version names must start with the letter `v` and should
-   follow the [SemVer] format after the letter `v`. Below are some examples of valid and
-   invalid version names:
+   follow the [SemVer] format after the letter `v`. Below are some examples of
+   valid and invalid version names:
 
    - Valid: v0.0.1, v1.0.0, v12.5.7
    - Invalid: 0.0.1 (missing `v` in the beginning), v1.0 (missing the patch

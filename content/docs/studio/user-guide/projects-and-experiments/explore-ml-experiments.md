@@ -36,7 +36,7 @@ experiments, run new experiments, etc. The major components of the table are:
 ### Git history
 
 The branches and commits in your Git repository are displayed along with the
-corresponding metrics, hyperparameters, files and models .
+corresponding models, metrics, hyperparameters and DVC-tracked files.
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
