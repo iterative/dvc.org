@@ -239,7 +239,11 @@ vars:
   - config/myapp.yaml
 ```
 
-ℹ️ Note that the default `params.yaml` file is always loaded first, if present.
+<admon type="info">
+
+Note that the default `params.yaml` file is always loaded first, if present.
+
+</admon>
 
 It's also possible to specify what to include from additional params files, with
 a `:` colon:
