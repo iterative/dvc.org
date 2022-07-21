@@ -9,7 +9,7 @@ descriptionLong: >
   models MLEM, DVC data and remotes, DVC stages and plots, and more.
 picture: 2022-07-26/july-community-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/july-22-community-gems/1226
+commentsUrl: https://discuss.dvc.org/t/july-22-community-gems/1261
 tags:
   - DVC Remotes
   - Pipelines
