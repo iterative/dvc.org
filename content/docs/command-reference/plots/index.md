@@ -28,7 +28,7 @@ DVC provides a set of commands to visualize data produced by machine learning
 projects. Usual plots include AUC curves, loss functions, or confusion matrices,
 for example. Plots are a great alternative to `dvc metrics` when working with
 multi-dimensional performance data. They also help you present and compare
-[experiments](/doc/command-reference/exp) effectively.
+[[experiments]](https://github.com/iterative/dvc.org/pull/3691#pullrequestreview-1024053543) effectively.
 
 DVC can work with two types of plots files:
 
@@ -48,6 +48,9 @@ using `<img>` tags directly.
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
+
+[experiments]:
+  /doc/user-guide/experiment-management/experiments-overview
 
 ### Supported file formats
 
