@@ -51,8 +51,7 @@ UI for DVC Experiments.
 
 </admon>
 
-[experiments]:
-  /doc/user-guide/experiment-management/experiments-overview
+[experiments]: /doc/user-guide/experiment-management/experiments-overview
 
 ### Supported file formats
 
