@@ -41,8 +41,8 @@ different plans, check out our
 
 1. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` project that connects to an example
-   DVC repository. Use this project to explore the features that Iterative
-   Studio has to offer.
+   repository. Use this project to explore the features that Iterative Studio
+   has to offer.
 
 ![](https://static.iterative.ai/img/studio/login_home_v3.png) _When you first
 login, an example project is already created for you to explore, and you can add

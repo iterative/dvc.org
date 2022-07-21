@@ -6,15 +6,17 @@
 
 # Prepare Your Repositories
 
-Iterative Studio creates projects by identifying datasets, metrics,
-hyperparameters and models defined in your Git repositories. These values are
-stored in your Git repositories as JSON or YAML files. Model information may be
-available in Git tags as well.
+Iterative Studio creates [projects] by identifying machine learning models,
+datasets, metrics and hyperparameters defined in your Git repositories. These
+values are found in JSON or YAML files in the repository. Additionally, model
+information may be available as Git tags.
 
 New ML model metadata can be added directly from the **Models** tab after
 [creating a project]. You can also use [GTO] or [MLEM].
 
-[creating a project]: doc/studio/user-guide/projects-and-experiments/create-a-project
+[projects]: /doc/studio/user-guide/projects-and-experiments/what-is-a-project
+[creating a project]:
+  doc/studio/user-guide/projects-and-experiments/create-a-project
 [gto]: https://github.com/iterative/gto
 [mlem]: https://mlem.ai/
 

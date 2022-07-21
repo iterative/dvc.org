@@ -250,3 +250,4 @@ see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
 [gto]: https://github.com/iterative/gto
+[register the model]: /doc/studio/user-guide/model-registry/add-a-model

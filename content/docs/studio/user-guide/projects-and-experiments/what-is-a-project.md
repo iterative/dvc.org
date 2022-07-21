@@ -28,8 +28,13 @@ dashboard. This dashboard opens up whenever you login to Iterative Studio.
 ![](https://static.iterative.ai/img/studio/projects_dashboard.png) _All the
 projects that you create are presented in a projects dashboard for easy access._
 
-Models are also presented in a model registry. You can learn more about model
-registry [here](/doc/studio/user-guide/model-registry/).
+<admon type="tip">
+
+ML models across all your projects are presented in a [Model Registry].
+
+[model registry]: /doc/studio/user-guide/model-registry/
+
+</admon>
 
 Within a project, you can:
 
