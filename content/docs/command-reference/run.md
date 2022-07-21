@@ -73,7 +73,7 @@ input of another, and so on (see `dvc dag`). This graph can be restored by DVC
 later to modify or [reproduce](/doc/command-reference/repro) the full pipeline.
 For example:
 
-```dvc
+```cli
 $ dvc run -n printer -d write.sh -o pages ./write.sh
 $ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```

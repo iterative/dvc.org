@@ -88,10 +88,8 @@ $ mv keras.h5 model.h5
 ```
 
 > Note that, often the output of a stage is a dependency in another stage,
-> creating a
-> [dependency graph](/doc/command-reference/run#dependencies-and-outputs). In
-> this case, you may want to also update the `path` in the `deps` field of
-> `dvc.yaml`.
+> creating a [dependency graph]. In this case, you may want to also update the
+> `path` in the `deps` field of `dvc.yaml`.
 
 Finally, we run `dvc commit` with the `-f` option to force save the changes to
 <abbr>cache</abbr>:
@@ -99,6 +97,9 @@ Finally, we run `dvc commit` with the `-f` option to force save the changes to
 ```dvc
 $ dvc commit -f
 ```
+
+[dependency graph]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines
 
 ## Options
 
