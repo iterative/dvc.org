@@ -488,8 +488,9 @@ plots:
 ```
 
 Note that we didn't have to specify `auc.json` as a plot in the stage. In fact,
-top-level `plots` can use any file in the <abbr>project</abbr>. [top-level
-`plots`]: /doc/command-reference/plots#top-level-plot-definitions
+[top-level `plots`] can use any file in the <abbr>project</abbr>.
+
+[top-level `plots`]: /doc/command-reference/plots#top-level-plot-definitions
 
 ## dvc.lock file
 
