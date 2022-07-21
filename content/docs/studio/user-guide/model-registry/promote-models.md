@@ -18,8 +18,9 @@ Studio, watch this tutorial video or read on below:
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-1. On the model details page, click on `Promote`. The promotion action can also
-   be initiated from the models dashboard or from the related project’s
+1. On the models dashboard, open the 3-dot menu for the model whose version you
+   want to promote. Then, click on `Promote to stage`. The promotion action can
+   also be initiated from the model details page or from the related project’s
    experiment table as shown in the above video.
 
 2. Select the version that you want to promote.
@@ -44,10 +45,11 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
 4. Optionally, provide a Git tag message.
 5. Click on `Promote version`.
-6. At this point, if you reload the model details page, you will see that your
-   model version has been promoted to (assigned) the stage. This information is
-   available in the model `History` section as well as in the `Stages` section.
-7. If you go to your Git repository, you will see that a new Git tag referencing
+6. Once the action is successful, the promotion will show up in the `Stages`
+   column of the models dashboard.
+7. If you open the model details page, the promotion will be visible in the
+   model `History` section as well as in the `Stages` section.
+8. If you go to your Git repository, you will see that a new Git tag referencing
    the selected version and stage has been created, indicating the stage
    assignment.
 
