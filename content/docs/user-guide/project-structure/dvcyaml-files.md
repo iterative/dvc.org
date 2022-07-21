@@ -14,8 +14,9 @@ with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
 
 ## Stages
 
-The list of `stages` contains one or more user-defined stages. Here's a simple
-one named `transpose`:
+The list of `stages` is typically the most important part of a `dvc.yaml` file.
+It contains one or more user-defined <abbr>stages</abbr>. Here's a simple one
+named `transpose`:
 
 ```yaml
 stages:
@@ -33,25 +34,27 @@ A helper command, `dvc stage`, is available to create and list stages.
 
 </admon>
 
-The most important part of a stage it's the shell\* command(s) it executes
-(`cmd` field). This is what DVC runs when the stage is reproduced (see
-`dvc repro`).
+The only required part of a stage it's the shell command(s) it executes (`cmd`
+field). This is what DVC runs when the stage is reproduced (see `dvc repro`).
 
 <admon type="info">
 
-\* We use [GNU/Linux](https://www.gnu.org/software/software.html) in our
-examples, but Windows or other shells can be used too.
+We use [GNU/Linux](https://www.gnu.org/software/software.html) in our examples,
+but Windows or other shells can be used too.
 
 </admon>
 
-If a command reads input files, these (or their directory locations) can be
-defined as <abbr>dependencies</abbr> (`deps`). DVC will check whether they have
-changed to decide whether the stage requires re-execution (see `dvc status`).
+If a command reads input files, these can be defined as
+<abbr>dependencies</abbr> (`deps`). You can also define an entire directory as a
+stage dependency (for example if the command uses several files in it. DVC will
+check whether their contents have changed to decide whether the stage requires
+re-execution (see `dvc status`).
 
-If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
-(`outs`). DVC will track them going forward (similar to using `dvc add`).
+If it writes files or directories, these can be defined as <abbr>outputs</abbr>
+(`outs`). DVC will track them going forward (similar to using `dvc add` on
+them).
 
-> See the full stage entry [specification](#stage-entries).
+The full [stage entry](#stage-entries) specification can be found further down.
 
 ### Parameter dependencies
 
@@ -118,6 +121,53 @@ stages:
 
 The commands in `dvc metrics` and `dvc plots` help you display and compare
 metrics and plots.
+
+## Stage entries
+
+These are the fields that are accepted in each stage:
+
+| Field            | Description                                                                                                                                                                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
+| `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
+| `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
+| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
+| `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
+| `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
+| `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
+| `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
+| `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
+| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
+| `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
+
+[changed]: /doc/command-reference/status#local-workspace-status
+
+`dvc.yaml` files also support `# comments`.
+
+Note that we maintain a `dvc.yaml`
+[schema](https://github.com/iterative/dvcyaml-schema) that can be used by
+editors like [VSCode](/doc/install/plugins#visual-studio-code) or
+[PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
+validation and auto-completion.
+
+> See also
+> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+
+### Output subfields
+
+> These include a subset of the fields in `.dvc` file
+> [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
+
+| Field        | Description                                                                                                                                                                                                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                      |
+| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
+| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
+| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
+| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
+
+⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
+`dvc repro`.
 
 ## Templating
 
@@ -410,53 +460,6 @@ stages:
 
 > Note that this feature is not compatible with [templating](#templating) at the
 > moment.
-
-## Stage entries
-
-These are the fields that are accepted in each stage:
-
-| Field            | Description                                                                                                                                                                                                                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
-| `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
-| `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
-| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
-| `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
-| `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
-| `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
-| `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
-| `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
-| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
-| `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
-
-[changed]: /doc/command-reference/status#local-workspace-status
-
-`dvc.yaml` files also support `# comments`.
-
-Note that we maintain a `dvc.yaml`
-[schema](https://github.com/iterative/dvcyaml-schema) that can be used by
-editors like [VSCode](/doc/install/plugins#visual-studio-code) or
-[PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
-validation and auto-completion.
-
-> See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
-
-### Output subfields
-
-> These include a subset of the fields in `.dvc` file
-> [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
-
-| Field        | Description                                                                                                                                                                                                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                      |
-| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
-| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
-| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
-
-⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
-`dvc repro`.
 
 ## dvc.lock file
 
