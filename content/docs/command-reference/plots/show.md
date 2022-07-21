@@ -195,6 +195,219 @@ $ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
+## Example: Smooth plot
+
+In some cases we would like to smooth our plot. In this example we will use a
+noisy plot with 100 data points:
+
+```dvc
+$ dvc plots show data.csv
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_no_smooth.svg)
+
+We can use the `-t` option and `smooth` template to make it less noisy:
+
+```dvc
+$ dvc plots show -t smooth data.csv
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_smooth.svg)
+
+## Example: Confusion matrix
+
+We'll use `classes.csv` for this example:
+
+```
+actual,predicted
+cat,cat
+cat,cat
+cat,cat
+cat,dog
+cat,dinosaur
+cat,dinosaur
+cat,bird
+turtle,dog
+turtle,cat
+...
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show classes.csv --template confusion -x actual -y predicted
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_confusion.svg)
+
+> A confusion matrix [template](/doc/command-reference/plots#plot-templates) is
+> predefined in DVC.
+
+We can use `confusion_normalized` template to normalize the results:
+
+```dvc
+$ dvc plots show classes.csv --template confusion_normalized -x actual -y predicted
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_confusion_normalized.svg)
+
+## Example: Top-level plots
+
+### Simple plot definition
+
+Let's use the `logs.csv` data:
+
+```
+# logs.csv
+epoch,loss,accuracy
+1,0.19,0.81
+2,0.11,0.89
+3,0.07,0.93
+4,0.04,0.96
+```
+
+Minimal plot configuration we can put in `dvc.yaml` is simply data source path
+relative to `dvc.yaml` file:
+
+```yaml
+# dvc.yaml
+stages:
+  train:
+    cmd: echo "Training the model..."
+
+plots:
+  logs.csv:
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_default.svg)
+
+We can customize it:
+
+```yaml
+# dvc.yaml
+stages:
+  train:
+    cmd: echo "Training the model..."
+
+plots:
+  logs.csv:
+    x: epoch
+    y: accuracy
+    title: Displaying accuracy
+    x_label: This is epoch
+    y_label: This is accuracy
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_simple_custom.svg)
+
+### Multiple data series plot
+
+Data in `training_data.csv`:
+
+```csv
+epoch,train_loss,test_loss
+1,0.33,0.4
+2,0.3,0.28
+3,0.2,0.25
+4,0.1,0.23
+```
+
+```yaml
+# dvc.yaml
+stages:
+  train:
+    cmd: echo "Training the model..."
+
+plots:
+  test_vs_train_loss:
+    x: epoch
+    y:
+      training_data.csv: [test_loss, train_loss]
+    title: Compare loss training versus test
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_multiple_columns.svg)
+
+### Sourcing data from different files
+
+Lets prepare comparison for confusion matrix data between test set and training
+set:
+
+```csv
+# train_classes.csv
+actual_class,predicted_class
+dog,dog
+dog,dog
+dog,dog
+dog,bird
+cat,cat
+cat,cat
+cat,cat
+cat,dog
+bird,bird
+bird,bird
+bird,bird
+bird,dog
+```
+
+```csv
+# test_classes.csv
+actual_class,predicted_class
+dog,dog
+dog,dog
+dog,cat
+bird,bird
+bird,bird
+bird,cat
+cat,cat
+cat,cat
+cat,bird
+```
+
+```yaml
+# dvc.yaml
+stages:
+  train:
+    cmd: echo "Training the model..."
+
+plots:
+  test_vs_train_confusion:
+    x: actual_class
+    y:
+      train_classes.csv: predicted_class
+      test_classes.csv: predicted_class
+    title: Compare test vs train confusion matrix
+    template: confusion
+    x_label: Actual class
+    y_label: Predicted class
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_conf_train_test.svg)
+
 ## Example: Vega-Lite specification file
 
 In many automation scenarios (like

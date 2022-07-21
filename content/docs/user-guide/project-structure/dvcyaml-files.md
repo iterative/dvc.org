@@ -466,8 +466,8 @@ validation and auto-completion.
 ## Top-level plot definitions
 
 The list of plots contains one or more user-defined
-[plots](/doc/command-reference/plots#standalone-plots). Here's an example that
-tells DVC that `auc.json` is viable for visualization:
+[plots](/doc/command-reference/plots#top-level-plot-definitions). Here's an
+example that tells DVC that `auc.json` is viable for visualization:
 
 ```yaml
 stages:
