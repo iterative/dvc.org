@@ -13,7 +13,8 @@ facilitates search and discovery.
 
 ![](https://static.iterative.ai/img/studio/models-dashboard.png)
 
-You can sort the models in the dashboard by the `Last updated` timestamp.
+You can sort the models in the dashboard by several criteria, including model
+framework, repository, etc.
 
 Iterative Studio consolidates the stages of all the models in the registry, and
 provides a way to filter models by stages.
