@@ -32,7 +32,7 @@ become the required [`command` argument](#the-command-argument).
 
 Stages whose outputs become dependencies for other stages form
 <abbr>pipelines</abbr>. `dvc repro` can be used to rebuild this [dependency
-graph] and execute them.
+graph] and execute stages.
 
 <details>
 
