@@ -163,6 +163,35 @@ stages:
 
 </details>
 
+## Stage commands
+
+The command(s) defined in the `stages` (`cmd` field) can be anything your system
+terminal would accept and run directly, for example a shell built-in, an
+expression, or a binary found in `PATH`.
+
+Surround the command with double quotes `"` if it includes special characters
+like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
+variables in it that should be evaluated dynamically.
+
+The same applies to `dvc` helpers -- otherwise they would apply to the DVC call
+itself:
+
+```cli
+$ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc exp init './another_script.sh $MYENVVAR'
+```
+
+<admon type="warn">
+
+While DVC is platform-agnostic, commands defined in `dvc.yaml` (`cmd` field) may
+only work on some operating systems and require certain software packages or
+libraries in the environment.
+
+</admon>
+
+Commands are executed sequentially until all are finished or until one of them
+fails (see `dvc repro`).
+
 ## Simple dependencies
 
 There's more than one type of stage dependency: A simple dependency is a file or

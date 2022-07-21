@@ -426,7 +426,7 @@ These are the fields that are accepted in each stage:
 
 | Field            | Description                                                                                                                                                                                                                                                                               |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
+| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). [Learn more].                                                                                                                                                                        |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
 | `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
 | `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
@@ -438,6 +438,8 @@ These are the fields that are accepted in each stage:
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 
+[learn more]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
 [changed]: /doc/command-reference/status#local-workspace-status
 
 `dvc.yaml` files also support `# comments`.
