@@ -58,8 +58,8 @@ The full [stage entry](#stage-entries) specification can be found further down.
 
 ### Parameter dependencies
 
-[Parameters](/doc/command-reference/params) are a special type of stage
-dependency. They consist of a list of params to track in one of these formats:
+[Parameters] are a special type of stage dependency. They consist of a list of
+params to track in one of these formats:
 
 1. A param key/value pair that can be found in `params.yaml` (default params
    file);
@@ -91,10 +91,13 @@ stages:
       - clean.txt
 ```
 
-This allows several stages to depend on values of a shared structured file
-(which can be versioned directly with Git). See also `dvc params diff`.
+This allows several stages to depend on values of a (shared) structured file,
+which can be versioned directly with Git. See also `dvc params`.
 
-### Metrics and Plots outputs
+[parameters]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#parameter-dependencies
+
+### Metrics and plot outputs
 
 Like [common outputs](#outputs), <abbr>metrics</abbr> and <abbr>plots</abbr>
 files are produced by the stage `cmd`. However, their purpose is different.

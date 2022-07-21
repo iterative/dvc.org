@@ -5,5 +5,6 @@ tooltip: >-
   Pipeline stages (defined in `dvc.yaml`) can depend on specific values inside
   an arbitrary YAML, JSON, TOML, or Python file (`params.yaml` by default).
   Stages are invalid (considered outdated) when any of their parameter values
-  change. See [`dvc params`](/doc/command-reference/params).
+  change. [Learn
+  more](/doc/user-guide/machine-learning-pipelines/defining-pipelines#parameter-dependencies).
 ---
