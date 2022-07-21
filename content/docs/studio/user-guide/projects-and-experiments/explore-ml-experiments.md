@@ -16,8 +16,7 @@ visualize and compare them, and run new experiments. For this, open the project
 by clicking the project name (in this case, `example-get-started`).
 
 An experiments table for the project will be generated as shown below. This
-includes metrics, hyperparameters and information about datasets and models. All
-these values are flattened and neatly presented for you.
+includes metrics, hyperparameters and information about datasets and models.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 

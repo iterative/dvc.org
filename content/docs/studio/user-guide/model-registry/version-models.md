@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
    version for your model has been registered. This information is available in
    the model `History` section as well as in the versions drop down.
 7. If you go to your Git repository, you will see that a new Git tag referencing
-   the selected commit has been created, indicating the new version.
+   the selected commit has been created, representing the new version.
 
 [gto]: https://github.com/iterative/gto
 [semver]: https://semver.org/
