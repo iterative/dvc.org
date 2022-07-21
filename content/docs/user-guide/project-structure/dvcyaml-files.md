@@ -363,6 +363,12 @@ value), escape it with a backslash, e.g. `\${...`.
 
 _New in DVC 2.0 (see `dvc version`)_
 
+<admon type="warn">
+
+This feature cannot be combined with [templating](#templating) at the moment.
+
+</admon>
+
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
@@ -475,12 +481,7 @@ stages:
         - ${item.prop2}
 ```
 
-> Note that this feature is not compatible with [templating](#templating) at the
-> moment.
-
 ## dvc.lock file
-
-> ⚠️ Avoid editing these files. DVC will create and update them for you.
 
 To record the state of your pipeline(s) and help track its <abbr>outputs</abbr>,
 DVC will maintain a `dvc.lock` file for each `dvc.yaml`. Their purposes include:
@@ -492,6 +493,12 @@ DVC will maintain a `dvc.lock` file for each `dvc.yaml`. Their purposes include:
   files.
 - Needed for several DVC commands to operate, such as `dvc checkout` or
   `dvc get`.
+
+<admon type="warn">
+
+Avoid editing these files. DVC will create and update them for you.
+
+</admon>
 
 Here's an example:
 
