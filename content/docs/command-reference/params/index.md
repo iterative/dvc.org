@@ -124,7 +124,7 @@ epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-<admon>
+<admon type="info">
 
 We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 1.2 (unlike the more popular PyYAML).
