@@ -49,7 +49,7 @@ A model details page is divided into the following sections:
   can use to switch between different registered versions of the model. For the
   selected version, the left section shows
   - a button to
-    [promote the version to a stage](/doc/studio/user-guide/model-registry/promote-models),
+    [assign a stage to the version](/doc/studio/user-guide/model-registry/assign-stage),
   - the path to the model,
   - the version description,
   - labels, and
@@ -59,7 +59,7 @@ A model details page is divided into the following sections:
 - Right section: The right section contains information that is applicable
   across all the versions of the model. In particular, it displays
   - the assigned stages for the different versions, and
-  - the history of all version registration and promotion actions.
+  - the history of all version registration and stage assignment actions.
 
 ## Model columns in the project’s experiment table:
 

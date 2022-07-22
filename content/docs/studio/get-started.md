@@ -120,7 +120,7 @@ You should now see that a project has been added in your dashboard.
 4. You can
    [register new versions](/doc/studio/user-guide/model-registry/version-models)
    of the models and
-   [promote them to different stages](/doc/studio/user-guide/model-registry/promote-models)
+   [assign stages to them](/doc/studio/user-guide/model-registry/assign-stage)
    (e.g., development, staging, production).
 
 ## Create and manage teams

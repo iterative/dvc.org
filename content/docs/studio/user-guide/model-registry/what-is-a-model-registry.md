@@ -15,7 +15,7 @@ open-source Git-based tools [GTO] and [MLEM].
 
 - [GTO] enables [semantic versioning] and stage transitions of artifacts. It
   creates metadata files and Git tags to register models and their versions and
-  to promote the models to different stages (e.g. development, staging, production).
+  to assign stages (e.g. development, staging, production) to them.
 - [MLEM] parses ML models and extracts model metadata including framework,
   methods, input / output data schema, and requirements. These metadata files
   contain your models’ details and point to the models’ file paths which could
@@ -42,7 +42,7 @@ You can perform the following actions to the models in your model registry:
 
 - [Add models to the registry](/doc/studio/user-guide/model-registry/add-a-model)
 - [Register new versions of the models](/doc/studio/user-guide/model-registry/version-models)
-- [Promote model versions to different stages](/doc/studio/user-guide/model-registry/promote-models)
+- [Assign stages to model versions](/doc/studio/user-guide/model-registry/assign-stage)
 
 Note that while you can get the basic Model Registry functionality within
 Iterative Studio, there are more things you can do using the [MLEM] and [GTO]

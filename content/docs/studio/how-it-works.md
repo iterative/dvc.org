@@ -56,7 +56,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 - When you
   [register new versions](/doc/studio/user-guide/model-registry/version-models)
   of your ML models or
-  [assign stages](/doc/studio/user-guide/model-registry/promote-models) to them,
+  [assign stages](/doc/studio/user-guide/model-registry/assign-stage) to them,
   Iterative Studio creates annotated Git tags representing the actions.
 
 [dvc]: https://dvc.org/
