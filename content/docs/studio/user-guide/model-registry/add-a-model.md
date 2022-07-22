@@ -27,11 +27,18 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
    </admon>
 
-3. Enter the path of the model file. If the model file is in the Git repository,
-   enter the relative path of the model from the repository root. If the model
-   file is in a remote storage but is DVC-tracked, enter the path of the DVC
-   file for your model. If the model file is in a remote storage and is not
-   DVC-tracked, enter the absolute path of the model file.
+3. Enter the path of the model file as follows:
+
+   - If the model file is in the Git repository, enter the relative path of the
+     model from the repository root.
+   - If the model file is in a remote storage but is DVC-tracked, enter the path
+     of the DVC file for your model.
+   - If the model file is in a remote storage and is not DVC-tracked, enter the
+     absolute path of the model file.
+   - If you use [MLEM] to save your model, use the path to the binary file that
+     MLEM generates. Iterative Studio will parse the `.mlem` file to extract
+     model metadata.
+
 4. Provide labels for your model. For example, if your model is about reviewing
    sentiment analysis using natural language processing, one of the labels may
    be `nlp`. You can provide multiple labels as a comma separated list. Eg,
@@ -42,7 +49,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
    commit the changes to the selected branch. If you commit to a new branch,
    Iterative Studio will also create a Git pull request from the new branch to
    the base branch.
-7. Now, click on Commit changes.
+7. Now, click on `Commit changes`.
 8. At this point, the new model appears in the models dashboard.
 9. In your Git repository, you will find that an entry for the new model has
    been created in the `artifacts.yaml` file in the repository's root. If you
@@ -51,3 +58,4 @@ https://www.youtube.com/watch?v=hKf4twg832g
    base branch.
 
 [gto]: https://github.com/iterative/gto
+[mlem]: https://mlem.ai/
