@@ -609,6 +609,17 @@ more details.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
+- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potential
+  malware. Files identified as
+  [abusive](https://support.google.com/docs/answer/148505) (malware, etc.) are
+  only downloadable by the owner. Consider using this option if you see a
+  `This file has been identified as malware or spam and cannot be downloaded`
+  error.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_acknowledge_abuse true
+  ```
+
 **For service accounts:**
 
 A service account is a Google account associated with your GCP project, and not
