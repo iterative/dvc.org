@@ -98,7 +98,7 @@ names in the `train` array below:
 }
 ```
 
-## Configuring a plot
+## Defining a plot
 
 In order to create visualizations, users need to provide the data and
 (optionally) configuration that will help customize the plot. DVC provides two
@@ -236,8 +236,9 @@ field.
   - Top-level plots: `path/to/dvc.yaml::plot_id`
   - Plot outputs: Path to the file.
 
-Refer to the [examples](/doc/command-reference/plots#top-level-plots) for more
-syntax insight.
+Refer to the [`show` command] documentation for examples.
+
+[`show` command]: /doc/command-reference/plots/show#example-top-level-plots
 
 ## Plot templates (data-series only)
 

@@ -1,6 +1,9 @@
 # plots show
 
-Generate [plot](/doc/command-reference/plots) from a plots file.
+Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
+[top-level definition] from `dvc.yaml`.
+
+[top-level definition]: /doc/command-reference/plots#top-level-plot-definitions
 
 ## Synopsis
 
@@ -22,9 +25,11 @@ This command provides a quick way to visualize
 [certain data](/doc/command-reference/plots#supported-file-formats) such as loss
 functions, AUC curves, confusion matrices, etc.
 
-All plots defined in `dvc.yaml` are used by default, but specific plots files
-can be specified as `targets` (note that targets don't necessarily have to be
-defined in `dvc.yaml`).
+All plots defined in `dvc.yaml` are used by default, but specific plots files or
+[top-level plots] id's can be specified as `targets` (note that target files
+don't necessarily have to be defined in `dvc.yaml`).
+
+[top-level plots]: /doc/command-reference/plots#top-level-plot-definitions
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
