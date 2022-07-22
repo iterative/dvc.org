@@ -15,7 +15,8 @@ open-source Git-based tools [GTO] and [MLEM].
 
 - [GTO] enables [semantic versioning] and stage transitions of artifacts. It
   creates metadata files and Git tags to register models and their versions and
-  to promote the models to different stages (e.g. development, staging, production).
+  to promote the models to different stages (e.g. development, staging,
+  production).
 - [MLEM] parses ML models and extracts model metadata including framework,
   methods, input / output data schema, and requirements. These metadata files
   contain your models’ details and point to the models’ file paths which could
