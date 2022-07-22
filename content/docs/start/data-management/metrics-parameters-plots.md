@@ -132,7 +132,7 @@ Modifying stage 'evaluate' in 'dvc.yaml'
 
 ```
 
-Now let's view the plots. You can run `dvc plots show` on you Terminal (shown
+Now let's view the plots. You can run `dvc plots show` on you terminal (shown
 below), which generates an HTML file you can open in a browser. Or you can load
 your project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
 visualize them.
