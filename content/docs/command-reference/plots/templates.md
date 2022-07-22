@@ -33,7 +33,7 @@ Note that templates can only be used with [data-series plots].
 [plot templates]:
   https://dvc.org/doc/command-reference/plots#plot-templates-data-series-only
 [vega-lite specification]: https://vega.github.io/vega-lite/
-[data-series plots]: /doc/command-reference/plots#types-of-metrics
+[data-series plots]: /doc/command-reference/plots#description
 
 ## Options
 

@@ -15,16 +15,6 @@ positional arguments:
     diff                Show changes in metrics between commits.
 ```
 
-## Types of metrics
-
-DVC has two concepts for metrics, that represent different results of machine
-learning training or data processing:
-
-1. `dvc metrics` represent **scalar numbers** such as AUC, _true positive rate_,
-   etc.
-2. `dvc plots` can be used to visualize **data series** such as AUC curves, loss
-   functions, confusion matrices, etc.
-
 ## Description
 
 In order to follow the performance of machine learning experiments, DVC has the
