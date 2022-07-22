@@ -12,18 +12,22 @@ https://www.youtube.com/watch?v=hKf4twg832g
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
-<admon type="info">
+   <admon>
 
-When you sign up, you're on the **Free plan** by default. To sign up for the
-**Team plan**, you should first [create a team](/doc/studio/user-guide/teams).
-Then go to the [team's settings page](/doc/studio/user-guide/teams#settings) and
-in the `Plan and billing` section, click on `Change plan`. To sign up for the
-**Enterprise plan**,
-[contact us](https://calendly.com/gtm-2/studio-introduction). To compare the
-different plans, check out our
-[pricing details](https://studio.iterative.ai/pricing).
+   When you sign up, you're on the **Free plan**. To switch to the **Team plan**
+   [create a team] first, then go to the [team settings] and click on
+   `Change plan` in the `Plan and billing` section.
 
-</admon>
+   To sign up for the **Enterprise plan**, please [schedule a call].
+
+   > See [pricing details] to compare the different plans.
+
+   [create a team]: /doc/studio/user-guide/teams
+   [team settings]: /doc/studio/user-guide/teams#settings
+   [schedule a call]: https://calendly.com/gtm-2/studio-introduction
+   [pricing details]: https://studio.iterative.ai/pricing
+
+   </admon>
 
 2. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` project that connects to an example
@@ -72,17 +76,16 @@ more projects._
 > repository, if your metrics are in some custom files, if you are connecting to
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
 > you can configure the project settings after the project has been created. So,
-> you can `Skip and Continue` now. Refer to the
-> [Project Settings](/doc/studio/user-guide/projects/project-settings) section
-> for more details.
+> you can `Skip and Continue` now. Refer to the [Project Settings] section for
+> more details.
+>
+> [project settings]: /doc/studio/user-guide/projects/project-settings
 
 You should now see that a project has been added in your dashboard.
 
 7. If your project requires any of the additional settings, then remember to
-   configure them by opening the
-   [project settings](/doc/studio/user-guide/projects/project-settings).
-   Otherwise, your project may not work as expected. To go to project settings,
-   click on the
+   configure them by opening the [project settings]. Otherwise, your project may
+   not work as expected. To go to project settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the project. In the menu that opens up, click on `Settings`.
 
@@ -99,7 +102,6 @@ You should now see that a project has been added in your dashboard.
 10. You can also make the project public by
     [sharing it on the web](/doc/studio/user-guide/projects/share-project).
 
-11. You can [create a team](/doc/studio/user-guide/teams) and invite
-    collaborators. Each team will have its own projects dashboard. To create
-    teams with more than 2 team members,
-    [sign up for the **Team** plan or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+11. You can [create a team] and invite collaborators. Each team will have its
+    own projects dashboard. To create teams with more than 2 team members,
+    [upgrade into the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
