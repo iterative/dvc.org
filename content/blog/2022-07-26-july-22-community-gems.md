@@ -50,9 +50,9 @@ print(resource_url)
 # https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355
 ```
 
-This URL is built with the remote URL from the project configuration file, `.dvc/config`, and the
-`md5` file hashes stored in the `.dvc` file corresponding to the data file or
-directory you want the storage location of.
+This URL is built with the remote URL from the project configuration file,
+`.dvc/config`, and the `md5` file hashes stored in the `.dvc` file corresponding
+to the data file or directory you want the storage location of.
 
 ## [I'm excited about MLEM helping expose API endpoints to our model, but heard it was experimental. Where can I learn more about how to deploy models with this tool?](https://discord.com/channels/485586884165107732/563406153334128681/992517466662117386)
 
@@ -118,10 +118,10 @@ stages:
 ```
 
 Even if you don't persist your `outs`, you can still check out an older version
-of the pipeline to get older `outs` with `dvc checkout`. This is based
-on what's in the `dvc.lock` and `.dvc` files and it will update your workspace
-to match the experiment you check out. This is usually run after checking out a
-different Git branch. So the flow might look like:
+of the pipeline to get older `outs` with `dvc checkout`. This is based on what's
+in the `dvc.lock` and `.dvc` files and it will update your workspace to match
+the experiment you check out. This is usually run after checking out a different
+Git branch. So the flow might look like:
 
 ```dvc
 $ git checkout experiment-branch
@@ -146,8 +146,8 @@ with Vega Lite and here's an
 with 2 y-axes that may help you get started.
 
 If you update DVC to version `2.12.1` and higher, you should be able to define
-multiple y-axes in your DVC pipeline. Here's an example of how this may
-look in a `dvc.yaml`:
+multiple y-axes in your DVC pipeline. Here's an example of how this may look in
+a `dvc.yaml`:
 
 ```yaml
 # dvc.yaml
@@ -183,7 +183,7 @@ second would use the first stage's output as a dependency.
 Otherwise, DVC does not guarantee any particular execution order for stages
 which are independent of each other. DVC determines the structure of your DAG
 based on file outputs and dependencies and there isn't another way to enforce
-order of stage execution in DVC. 
+order of stage execution in DVC.
 
 ## [How do I know when I should track a file with Git or DVC?](https://discord.com/channels/485586884165107732/485596304961962003/993120910095699978)
 
