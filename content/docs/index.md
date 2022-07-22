@@ -8,7 +8,7 @@ with (Git, your IDE, CI/CD, etc).
 a [Python library].
 
 [experiment management]: /doc/user-guide/experiment-management
-[visual studio code]: /doc/vs-code-extension
+[for visual studio code]: /doc/vs-code-extension
 [system terminal]: /doc/install
 [python library]: /doc/api-reference
 
