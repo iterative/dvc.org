@@ -118,7 +118,7 @@ stages:
 ```
 
 Even if you don't persist your `outs`, you can still check out an older version
-of the pipeline to get reproduce older `outs` with `dvc checkout`. This is based
+of the pipeline to get older `outs` with `dvc checkout`. This is based
 on what's in the `dvc.lock` and `.dvc` files and it will update your workspace
 to match the experiment you check out. This is usually run after checking out a
 different Git branch. So the flow might look like:
