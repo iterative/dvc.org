@@ -586,9 +586,8 @@ for a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
-  access Google Drive data.
-  `$CACHE_HOME/pydrive2fs/$client_id/default.json` by default, where
-  `CACHE_HOME` is:
+  access Google Drive data. `$CACHE_HOME/pydrive2fs/$client_id/default.json` by
+  default, where `CACHE_HOME` is:
 
   | macOS location     | Linux location (typical\*) | Windows location        |
   | ------------------ | -------------------------- | ----------------------- |
