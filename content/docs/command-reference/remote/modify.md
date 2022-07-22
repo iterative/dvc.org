@@ -609,7 +609,7 @@ more details.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
-- `gdrive_acknowledge_abuse` -  acknowledge the risk of downloading potential
+- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potential
   malware. Files identified as
   [abusive](https://support.google.com/docs/answer/148505) (malware, etc.) are
   only downloadable by the owner. Consider using this option if you see a
