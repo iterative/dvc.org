@@ -551,8 +551,8 @@
               "what-is-a-model-registry",
               "add-a-model",
               "view-models",
-              "version-models",
-              "promote-models"
+              "register-version",
+              "assign-stage"
             ]
           },
           "teams",

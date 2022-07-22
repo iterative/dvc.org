@@ -40,7 +40,7 @@ A model details page is divided into the following sections:
   - a link to the model’s Git repository,
   - latest registered version of the model,
   - a button to
-    [register a new version](/doc/studio/user-guide/model-registry/version-models),
+    [register a new version](/doc/studio/user-guide/model-registry/register-version),
     and
   - information about how many projects in Iterative Studio have been created
     from the model’s Git repository.

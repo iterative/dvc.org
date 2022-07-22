@@ -118,7 +118,7 @@ You should now see that a project has been added in your dashboard.
    of a model, click on the name of the model.
 
 4. You can
-   [register new versions](/doc/studio/user-guide/model-registry/version-models)
+   [register new versions](/doc/studio/user-guide/model-registry/register-version)
    of the models and
    [assign stages to them](/doc/studio/user-guide/model-registry/assign-stage)
    (e.g., development, staging, production).

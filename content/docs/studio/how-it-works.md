@@ -54,7 +54,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
   upon the creation of Git commits, tags or pull requests. You can use [CML] in
   your CI/CD actions for continuous machine learning.
 - When you
-  [register new versions](/doc/studio/user-guide/model-registry/version-models)
+  [register new versions](/doc/studio/user-guide/model-registry/register-version)
   of your ML models or
   [assign stages](/doc/studio/user-guide/model-registry/assign-stage) to them,
   Iterative Studio creates annotated Git tags representing the actions.
