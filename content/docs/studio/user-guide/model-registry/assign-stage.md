@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
 1. On the models dashboard, open the 3-dot menu for the model whose version you
    want to assign the stage to. Then, click on `Assign stage`. This action can
    also be initiated from the model details page or from the related project’s
-   experiment table as shown in the above video.
+   experiment table - look for the `Assign stage` button or icon.
 
 2. Select the version to which you want to assign the stage.
 3. Enter the stage name (eg, `development`, `staging`, `production`).

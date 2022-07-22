@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=hKf4twg832g
 1. On the models dashboard, open the 3-dot menu for the model whose version you
    want to register. Then, click on `Register new version`. The registration
    action can also be initiated from the model details page or from the related
-   project’s experiment table as shown in the above video.
+   project’s experiment table - look for the `Register version` button or icon.
 
 2. Select the Git commit which corresponds to the new version of your model. If
    the desired commit does not appear in the commit picker, type in the
