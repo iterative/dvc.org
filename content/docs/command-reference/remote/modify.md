@@ -586,15 +586,30 @@ for a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
-  access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
+  access Google Drive data. `$CACHE_HOME/pydrive2fs/$client_id/default.json` by
+  default, where `CACHE_HOME` is:
+
+  | macOS location     | Linux location (typical\*) | Windows location        |
+  | ------------------ | -------------------------- | ----------------------- |
+  | `~/Library/Caches` | `~/.cache/`                | `%CSIDL_LOCAL_APPDATA%` |
+
+  Also, see `profile` config option below.
 
   ```dvc
   $ dvc remote modify myremote \
-        gdrive_user_credentials_file .dvc/tmp/mycredentials.json
+        gdrive_user_credentials_file /path/to/mycredentials.json
   ```
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
+
+- `profile` - credentials cache profile name. By default, credentials will be
+  cached per `client_id`, but if you are using multiple users you might want to
+  use ‘profile’ to avoid accidentally using someone else’s cached credentials.
+
+  ```cli
+  $ dvc remote modify --local myremote profile myprofile
+  ```
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
   [trash](https://developers.google.com/drive/api/v2/reference/files/trash)

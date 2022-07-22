@@ -228,9 +228,9 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 > the Google account.
 
 To avoid tests flow interruption by manual login, perform authorization once and
-backup the obtained Google Drive access token, which is stored by default under
-`.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
-from backup for any new DVC repo setup to avoid manual login.
+DVC will automatically cache the obtained Google Drive access token in a global
+file (e.g. by default `~/.cache/pydrive2fs/$client_id/default.json` on Linux) to
+avoid manual login next time.
 
 Or add the contents of that file to your env (use encryption for CI setup):
 
