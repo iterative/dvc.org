@@ -183,9 +183,7 @@ second would use the first stage's output as a dependency.
 Otherwise, DVC does not guarantee any particular execution order for stages
 which are independent of each other. DVC determines the structure of your DAG
 based on file outputs and dependencies and there isn't another way to enforce
-order of stage execution in DVC. DVC expects your stage command to generate all
-outputs each time the command is run and will remove all existing outputs before
-it runs a stage.
+order of stage execution in DVC. 
 
 ## [How do I know when I should track a file with Git or DVC?](https://discord.com/channels/485586884165107732/485596304961962003/993120910095699978)
 
