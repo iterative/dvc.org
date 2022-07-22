@@ -50,7 +50,7 @@ print(resource_url)
 # https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355
 ```
 
-This URL is built with the project configuration file, `.dvc/config`, and the
+This URL is built with the remote URL from the project configuration file, `.dvc/config`, and the
 `md5` file hashes stored in the `.dvc` file corresponding to the data file or
 directory you want the storage location of.
 
