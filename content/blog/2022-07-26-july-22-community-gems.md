@@ -146,8 +146,8 @@ with Vega Lite and here's an
 with 2 y-axes that may help you get started.
 
 If you update DVC to version `2.12.1` and higher, you should be able to define
-multiple y-axes in your DVC pipeline stages. Here's an example of how this may
-look in a stage:
+multiple y-axes in your DVC pipeline. Here's an example of how this may
+look in a `dvc.yaml`:
 
 ```yaml
 # dvc.yaml
