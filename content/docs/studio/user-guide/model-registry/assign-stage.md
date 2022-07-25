@@ -16,7 +16,7 @@ Studio, watch this tutorial video or read on below:
 
 **_TODO: Replace the below with the tutorial video on assigning stages_**
 
-https://www.youtube.com/watch?v=hKf4twg832g
+https://youtu.be/Vrp1O5lkWBo
 
 1. On the models dashboard, open the 3-dot menu for the model whose version you
    want to assign the stage to. Then, click on `Assign stage`. This action can

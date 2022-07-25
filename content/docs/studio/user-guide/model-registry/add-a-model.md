@@ -8,7 +8,7 @@ Iterative Studio, watch this tutorial video or read on below:
 
 **_TODO: Replace the below with the tutorial video on adding a model to MR_**
 
-https://www.youtube.com/watch?v=hKf4twg832g
+https://youtu.be/szzv4ZXmYAs
 
 1. Click on `Add a model`
 2. Select the project to which you want to add the model. If your model file or

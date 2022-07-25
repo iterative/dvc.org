@@ -14,7 +14,7 @@ below:
 **_TODO: Replace the below with the tutorial video on registering a new version
 of a model_**
 
-https://www.youtube.com/watch?v=hKf4twg832g
+https://youtu.be/eA70puzOp1o
 
 1. On the models dashboard, open the 3-dot menu for the model whose version you
    want to register. Then, click on `Register new version`. The registration
