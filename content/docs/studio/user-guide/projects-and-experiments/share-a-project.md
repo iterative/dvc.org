@@ -19,7 +19,7 @@ will have its own projects dashboard. All the projects that you create in the
 team's dashboard will be accessible to all members (collaborators) of the team.
 
 To add more than 2 collaborators in your team, you can
-[upgrade it to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+[upgrade to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
 
 ## Make a project public
 

@@ -132,7 +132,10 @@ Modifying stage 'evaluate' in 'dvc.yaml'
 
 ```
 
-Now let's view the plots:
+Now let's view the plots. You can run `dvc plots show` on you terminal (shown
+below), which generates an HTML file you can open in a browser. Or you can load
+your project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
+visualize them.
 
 ```dvc
 $ dvc plots show
@@ -155,6 +158,11 @@ Later we will see how to
 [compare and visualize different pipeline iterations](#comparing-iterations).
 For now, let's see how can we capture another important piece of information
 which will be useful for comparison: parameters.
+
+[plots dashboard]:
+  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
+[dvc extension]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 
 ## Defining stage parameters
 

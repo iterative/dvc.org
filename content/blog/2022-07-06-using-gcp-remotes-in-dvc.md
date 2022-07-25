@@ -16,6 +16,7 @@ tags:
   - Git
   - DVC Remotes
   - Collaboration
+  - GCP
 ---
 
 When you’re working on a data science project that has huge datasets, it’s
@@ -114,11 +115,15 @@ need! Now let’s add DVC to our demo repo and set up the remote.
 First, add DVC as a requirement to your project with the following installation
 command:
 
-`$ pip install 'dvc[gs]'`
+```dvc
+$ pip install 'dvc[gs]'
+```
 
 Then you can initialize DVC in your own project with the following command:
 
-`$ dvc init`
+```dvc
+$ dvc init
+```
 
 This will add all of the DVC internals needed to start versioning your data and
 tracking experiments. Now we need to set up the remote to connect our project
@@ -129,7 +134,9 @@ data stored in GCP to the DVC repo.
 Now we can make the GCP storage the default remote for the project with the
 following command:
 
-`$ dvc remote add -d bikes gs://updatedbikedata`
+```dvc
+$ dvc remote add -d bikes gs://updatedbikedata
+```
 
 This creates a default remote called `bikes` that connects to the
 `updatedbikedata` bucket we made earlier which is where the any data for the
@@ -176,13 +183,17 @@ You can check out more about authentication
 Now you can push data from your local machine to the GCP remote! First, add the
 data you want DVC to track with the following command:
 
-`$ dvc add data`
+```dvc
+$ dvc add data
+```
 
 This will allow DVC to track the entire `data` directory so it will note when
 any changes are made. Then you can push that data to your GCP remote with this
 command:
 
-`$ dvc push`
+```dvc
+$ dvc push
+```
 
 Here's what that data will look like when it has been successfully uploaded to
 GCP.
@@ -193,7 +204,9 @@ Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by cloning or forking the project repo, setting up the remote
 and running:
 
-`$ dvc pull`
+```dvc
+$ dvc pull
+```
 
 _Note:_ Depending on the authentication method being used, there might be some
 required extra steps, such as making sure users actually have the permissions to

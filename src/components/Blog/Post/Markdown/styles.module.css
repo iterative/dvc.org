@@ -354,7 +354,9 @@
           color: rgb(204 204 204);
         }
 
-        .token.dvc {
+        .token.dvc,
+        .token.cml,
+        .token.mlem {
           font-weight: bold;
         }
 
@@ -445,7 +447,9 @@
         color: #0086b3;
       }
 
-      .token.dvc {
+      .token.dvc,
+      .token.cml,
+      .token.mlem {
         color: #56b1d0;
       }
 

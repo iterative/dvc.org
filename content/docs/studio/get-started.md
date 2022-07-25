@@ -14,18 +14,22 @@ https://www.youtube.com/watch?v=hKf4twg832g
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
-<admon type="info">
+   <admon>
 
-When you sign up, you're on the **Free plan** by default. To sign up for the
-**Team plan**, you should first [create a team](/doc/studio/user-guide/teams).
-Then go to the [team's settings page](/doc/studio/user-guide/teams#settings) and
-in the `Plan and billing` section, click on `Change plan`. To sign up for the
-**Enterprise plan**,
-[contact us](https://calendly.com/gtm-2/studio-introduction). To compare the
-different plans, check out our
-[pricing details](https://studio.iterative.ai/pricing).
+   When you sign up, you're on the **Free plan**. To switch to the **Team plan**
+   [create a team] first, then go to the [team settings] and click on
+   `Change plan` in the `Plan and billing` section.
 
-</admon>
+   To sign up for the **Enterprise plan**, please [schedule a call].
+
+   > See [pricing details] to compare the different plans.
+
+   [create a team]: /doc/studio/user-guide/teams
+   [team settings]: /doc/studio/user-guide/teams#settings
+   [schedule a call]: https://calendly.com/gtm-2/studio-introduction
+   [pricing details]: https://studio.iterative.ai/pricing
+
+   </admon>
 
 ## Explore demo project
 
