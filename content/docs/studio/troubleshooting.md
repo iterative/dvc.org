@@ -179,10 +179,10 @@ or branches you do not see in your project were manually hidden by you or
 someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
-[Display preferences -> Hide commits]. However, if the missing commit/branch is
+Display preferences -> [Hide commits]. However, if the missing commit/branch is
 not in the hidden commits list, then please [raise a support request](#support).
 
-[display preferences -> hide commits]:
+[hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
 
 ## Error: Failed to push experiment to repository
