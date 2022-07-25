@@ -14,8 +14,6 @@ For that, you can leverage any ML model deployment tool, such as MLEM.
 You can assign stages using the [GTO] CLI. To assign stages using Iterative
 Studio, watch this tutorial video or read on below:
 
-**_TODO: Replace the below with the tutorial video on assigning stages_**
-
 https://youtu.be/Vrp1O5lkWBo
 
 1. On the models dashboard, open the 3-dot menu for the model whose version you
