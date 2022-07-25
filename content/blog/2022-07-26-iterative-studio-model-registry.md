@@ -181,5 +181,5 @@ support or share feedback, you can [email me] or create a support ticket on
 [mlem]: (https://github.com/iterative/gto)
 [semver]: https://semver.org/
 [docs]: https://dvc.org/doc/studio/user-guide/model-registry
-[email me]: tapa@iterative.ai
+[email me]: mailto:tapa@iterative.ai
 [github support repo]: https://github.com/iterative/studio-support
