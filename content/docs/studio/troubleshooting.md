@@ -208,6 +208,7 @@ If you get this error and none of the above applies, please
 
 ## Questions or problems with billing and payment
 
-Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
-see if your questions have already been answered. If you still have problems,
-please [contact us](#support).
+If your questions are not answered by
+[Billing and Payment ](/doc/studio/user-guide/billing-and-payment) or by the
+Iterative Studio [FAQ page](https://studio.iterative.ai/faq), please
+[contact us](#support).

@@ -217,5 +217,5 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 - ⚠️ Important warnings or disclaimers related to advanced DVC usage
 - 💡 Useful notes and tips, often related to external tools and integrations
 
-> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐⚙️(ℹ️) (among
+> Some other emojis currently in use here and there: ⚡ ✅ 🙏 🐛 ⭐ ⚙️ ℹ️ (among
 > others).

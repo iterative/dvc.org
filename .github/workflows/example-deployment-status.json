@@ -1,0 +1,11 @@
+{
+  "deployment": {
+    "ref": "test-branch",
+    "payload": {
+      "web_url": "localhost:8000"
+    }
+  },
+  "deployment_status": {
+    "state": "success"
+  }
+}
