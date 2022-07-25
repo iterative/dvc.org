@@ -28,6 +28,7 @@ Iterative Studio.
 
 - [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
 - [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
+- [How can I remove models from my model registry](#how-can-i-remove-models-from-my-model-registry)
 - [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
 
 **Billing and payment**
@@ -53,6 +54,10 @@ For more details, refer to the section on how to [prepare your Git repositories]
 for use with Iterative Studio. Instructions on how to specify custom files can
 be found [here][project-settings].
 
+Note that if you're connecting to a repository just to fetch models for the
+model registry, and you are not working with DVC repositories, you can ignore
+this error.
+
 [prepare your git repositories]:
   /doc/studio/user-guide/prepare-your-repositories
 [project-settings]:
@@ -76,6 +81,10 @@ To solve this, you can either:
 
 Instructions on how to specify the sub-directory or custom files can be found
 [here][project-settings].
+
+Note that if you're connecting to a repository just to fetch models for the
+model registry, and you are not working with DVC repositories, you can ignore
+this error.
 
 ## Error: Non-DVC sub-directory of a monorepo
 
@@ -126,6 +135,11 @@ with the metrics or hyperparameters that you want to visualize.
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
 [here][project-settings].
+
+Note that if you're connecting to a repository just to fetch models for the
+model registry, and your repository is not expected to contain experiment data,
+metrics or hyperparameters, your project will appear empty. This is ok - you
+will still be able to work with your models in the model registry.
 
 ## Project does not contain the columns that I want
 
@@ -229,6 +243,11 @@ Then you can come back to the model registry and add the model.
 
 For a model to be displayed in the model registry, it has to be registered using
 [GTO]. You can [register the model] from Iterative Studio or with GTO's CLI.
+
+## How can I remove models from my model registry
+
+To remove models from the model registry, you should remove the associated
+project from your projects dashboard.
 
 ## How can I un-assign stages from model versions
 
