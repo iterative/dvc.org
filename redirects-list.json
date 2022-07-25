@@ -82,7 +82,7 @@
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
-  "^/doc/studio/overview$                                                                 /doc/studio/how-it-works",
+  "^/doc/studio/overview$                                                                 /doc/studio/how-it-works 302",
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
   "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
   "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
