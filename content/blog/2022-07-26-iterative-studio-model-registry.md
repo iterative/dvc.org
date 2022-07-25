@@ -178,7 +178,7 @@ support or share feedback, you can [email me] or create a support ticket on
 [dvc]: https://dvc.org/
 [cml]: https://cml.dev
 [gto]: https://github.com/iterative/gto
-[mlem]: (https://github.com/iterative/gto)
+[mlem]: https://mlem.ai/
 [semver]: https://semver.org/
 [docs]: https://dvc.org/doc/studio/user-guide/model-registry
 [email me]: mailto:tapa@iterative.ai
