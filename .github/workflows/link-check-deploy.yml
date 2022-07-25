@@ -36,15 +36,15 @@ jobs:
         id: findComment
         continue-on-error: true
         with:
-          issue-number: ${{ steps.findComment.outputs.comment-id }}
+          issue-number: ${{ steps.findPr.outputs.pr }}
           comment-author: 'github-actions[bot]'
-          body-includes: "<h1 id=\"link-check\">Link Check Report</h1>"
+          body-includes: <h1 id="link-check">Link Check Report</h1>
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          comment-id: ${{ steps.findComment.outputs.comment-id }}
           issue-number: ${{ steps.findPr.outputs.pr }}
+          comment-id: ${{ steps.findComment.outputs.comment-id }}
           body: |
             <h1 id="link-check">Link Check Report</h1>
 
