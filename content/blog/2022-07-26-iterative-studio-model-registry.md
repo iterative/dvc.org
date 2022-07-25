@@ -43,7 +43,7 @@ or a Notion page with the list of all your models, their changes, deployment
 history, and so on. But this is highly error-prone and will probably get
 out-of-date very quickly. Or maybe you upload all your models to a cloud bucket
 and “attach” text reports to them. Not very maintainable or searchable either.
-We’ve even seen people use sticky notes, or better yet, rely on their memory 😀
+We’ve even seen people use sticky notes, or better yet, rely on their memory 😀.
 
 Some of the more organized folks use Model Registries - tools created
 specifically to organize models into a central, searchable repository. While
@@ -97,9 +97,10 @@ Git-based tools [GTO] and [MLEM].
 
 ## UI of your choice
 
-Iterative Studio Model Registry can be used through your favorite interface,
-whether you’re a data scientist who likes APIs,a manager who prefers a web UI,
-or a DevOps engineer who works best with the command line interface (CLI).
+Iterative Model Studio Registry meets you where you are, through your favorite
+interface. Whether you like APIs, prefer a web interface, or work best in the
+command line; whatever your role or preference, we've got you covered so your
+team can be most efficient.
 
 ## Models can reside anywhere
 
