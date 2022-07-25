@@ -38,10 +38,14 @@ files that contain the metrics and hyperparameters that you want to visualize.
 Otherwise, you will get this message when you try to add a project:
 `We could not find data to visualize in this repo`.
 
-For more details, refer to the section on
-[how to prepare your Git repositories for use with Iterative Studio](/doc/studio/user-guide/prepare-repositories).
-Instructions on how to specify custom files can be found
-[here](/doc/studio/user-guide/projects/project-settings#configuring-project-settings).
+For more details, refer to the section on how to [prepare your Git repositories]
+for use with Iterative Studio. Instructions on how to specify custom files can
+be found [here][project-settings].
+
+[prepare your git repositories]:
+  /doc/studio/user-guide/prepare-your-repositories
+[project-settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#configuring-project-settings
 
 ## Error: No DVC repo was found at the root
 
@@ -60,7 +64,7 @@ To solve this, you can either:
   want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here](/doc/studio/user-guide/projects/project-settings#configuring-project-settings).
+[here][project-settings].
 
 ## Error: Non-DVC sub-directory of a monorepo
 
@@ -83,7 +87,7 @@ To solve this, you can either:
   want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here](/doc/studio/user-guide/projects/project-settings#configuring-project-settings).
+[here][project-settings].
 
 ## Error: No commits were found for the sub-directory
 
@@ -98,7 +102,7 @@ If you did not intend to work with a DVC repo, you can also specify custom files
 that contain the metrics and hyperparameters that you want to visualize.
 
 Instructions on how to specify the sub-directory or custom files can be found
-[here](/doc/studio/user-guide/projects/project-settings#configuring-project-settings).
+[here][project-settings].
 
 ## Project got created, but does not contain any data
 
@@ -110,7 +114,7 @@ with the metrics or hyperparameters that you want to visualize.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
-[here](/doc/studio/user-guide/projects/project-settings#configuring-project-settings).
+[here][project-settings].
 
 ## Project does not contain the columns that I want
 
@@ -118,10 +122,9 @@ There are two possible reasons for this:
 
 1. **The required columns were not imported:** Iterative Studio will import up
    to 200 columns (metrics, hyperparameters and files) from your Git repository.
-   If your repository has more than 200 columns, you should
-   [select the columns that are mandatory to import](/doc/studio/user-guide/projects/project-settings#mandatory-columns).
-   Iterative Studio will also import the unselected columns, but only up to a
-   maximum of 200 columns.
+   If your repository has more than 200 columns, you should [select the columns
+   that are mandatory to import]. Iterative Studio will also import the
+   unselected columns, but only up to a maximum of 200 columns.
 
    **What if there are more than 200 mandatory columns?** Currently Iterative
    Studio cannot import over 200 columns. If you have a large repository (with
@@ -131,12 +134,18 @@ There are two possible reasons for this:
    can create a new project in Iterative Studio and limit it to that
    subdirectory.
 
-   To create projects for subdirectories,
-   [specify the project directory in project settings](/doc/studio/user-guide/projects/project-settings#project-directory).
+   To create projects for subdirectories, [specify the project directory in
+   project settings].
 
    If this solution does not work for your use case, please create a support
-   ticket in the
-   [Iterative Studio support GitHub repository](https://github.com/iterative/studio-support).
+   ticket in the [Iterative Studio support GitHub repository].
+
+[select the columns that are mandatory to import]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#mandatory-columns
+[specify the project directory in project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#project-directory
+[iterative studio support github repository]:
+  https://github.com/iterative/studio-support
 
 2. **The required columns are hidden:** In the project's experiment table, you
    can hide the columns that you do not want to display. If any column that you
@@ -170,9 +179,11 @@ or branches you do not see in your project were manually hidden by you or
 someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
-[Display preferences -> Hide commits](/doc/studio/user-guide/projects/explore-experiments#hide-commits).
-However, if the missing commit/branch is not in the hidden commits list, then
-please [raise a support request](#support).
+Display preferences -> [Hide commits]. However, if the missing commit/branch is
+not in the hidden commits list, then please [raise a support request](#support).
+
+[hide commits]:
+  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
 
 ## Error: Failed to push experiment to repository
 

@@ -34,12 +34,13 @@ Additionally, you can also configure project settings to
 
 ### Non-DVC repositories
 
-In the section on
-[preparing your repositories](/doc/studio/user-guide/prepare-repositories), you
-saw that you can use Iterative Studio with DVC as well as non-DVC repositories.
-If you are connecting to a non-DVC repository, then you will need to
-[specify the custom files](#custom-metrics-and-parameters) that contain the
-metrics and hyperparameters that you want to visualize.
+In the section on [preparing your repositories], you saw that you can use
+Iterative Studio with DVC as well as non-DVC repositories. If you are connecting
+to a non-DVC repository, then you will need to [specify the custom files] that
+contain the metrics and hyperparameters that you want to visualize.
+
+[preparing your repositories]: /doc/studio/user-guide/prepare-your-repositories
+[specify the custom files]: #custom-metrics-and-parameters
 
 ### Monorepo
 
@@ -127,8 +128,7 @@ to a maximum of 200.
 
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
-project, you can do so in the project's
-[Display preferences](/doc/studio/user-guide/projects/explore-experiments#columns).
+project, you can do so in the project's [Display preferences].
 
 If your project is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections to understand why this
@@ -138,6 +138,9 @@ may have happened.
 - [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
 
 Note: The **Mandatory columns** section was earlier called **Tracking scope**.
+
+[display preferences]:
+  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#columns
 
 ### Custom metrics and parameters
 

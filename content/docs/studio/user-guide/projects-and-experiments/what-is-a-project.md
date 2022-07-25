@@ -7,7 +7,7 @@ settings_ are now called _Project settings_; and so on.
 
 </admon>
 
-# What Is a Project in Iterative Studio
+# What is a Project in Iterative Studio
 
 A project in Iterative Studio is an interactive representation of the
 information stored in your Git repository.

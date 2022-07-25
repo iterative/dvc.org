@@ -75,11 +75,9 @@ more projects._
 > Project settings must be configured if you are connecting to a non-DVC
 > repository, if your metrics are in some custom files, if you are connecting to
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
-> you can configure the project settings after the project has been created. So,
+> you can configure the project settings after the project has been created. So
 > you can `Skip and Continue` now. Refer to the [Project Settings] section for
 > more details.
->
-> [project settings]: /doc/studio/user-guide/projects/project-settings
 
 You should now see that a project has been added in your dashboard.
 
@@ -91,17 +89,27 @@ You should now see that a project has been added in your dashboard.
 
 ![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
-8. You can also
-   [create multiple projects from a single Git repository](/doc/studio/user-guide/projects/create-project#create-multiple-projects-from-a-single-git-repository).
+8. You can also [create multiple projects from a single Git repository].
 
-9. After creating a project, you can use it to
-   [explore the ML experiments](/doc/studio/user-guide/explore-experiments) as
-   well as
-   [submit new experiments from Iterative Studio](/doc/studio/user-guide/run-experiments).
+9. After creating a project, you can use it to [explore the ML experiments] as
+   well as [submit new experiments] from Iterative Studio.
 
-10. You can also make the project public by
-    [sharing it on the web](/doc/studio/user-guide/projects/share-project).
+10. You can also make the project public by [sharing it on the web].
 
 11. You can [create a team] and invite collaborators. Each team will have its
-    own projects dashboard. To create teams with more than 2 team members,
-    [upgrade into the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+    own projects dashboard. To create teams with more than 2 team members, [sign
+    up for the **Team** plan or **Enterprise** plan].
+
+[project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project
+[create multiple projects from a single git repository]:
+  /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
+[explore the ml experiments]:
+  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
+[submit new experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
+[sharing it on the web]:
+  /doc/studio/user-guide/projects-and-experiments/share-a-project
+[create a team]: /doc/studio/user-guide/teams
+[sign up for the **team** plan or **enterprise** plan]:
+  /doc/studio/user-guide/change-team-plan-and-size

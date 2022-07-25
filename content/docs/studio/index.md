@@ -1,15 +1,15 @@
 # Iterative Studio
 
-[`Iterative Studio`](https://studio.iterative.ai/) is a web application that you
-can [access online](https://studio.iterative.ai/) or even host on-prem. It works
-with the data, metrics and hyperparameters that you add to your ML project
-repositories. Using the power of leading open-source tools DVC,
-[CML](https://cml.dev) and Git, it enables you to seamlessly manage data and
-models, run and track experiments, and visualize and share results.
+[Iterative Studio](https://studio.iterative.ai/) is a web application that you
+can access online or even host on-prem. It works with the data, metrics, and
+hyperparameters that you add to your ML project repositories. Using the power of
+leading open-source tools DVC, [CML](https://cml.dev), and Git, it enables you
+to seamlessly manage data and models, run and track experiments, and visualize
+and share results.
 
 <cards>
 
-  <card href="/doc/studio/overview" heading="How Iterative Studio works">
+  <card href="/doc/studio/how-it-works" heading="How Iterative Studio works">
     Learn how Iterative Studio works closely with the Git ecosystem
   </card>
 

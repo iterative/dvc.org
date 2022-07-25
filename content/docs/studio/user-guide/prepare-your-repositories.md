@@ -40,6 +40,7 @@ Git repositories in two ways:
    have an ML project for which you generate and save metrics either manually or
    using some ML tracking tools, then you can add this project by specifying the
    file (within your Git repo) which contains your saved metrics. Refer to the
-   section on
-   [project settings](/doc/studio/user-guide/projects/project-settings#non-dvc-repositories)
-   to learn how to specify the custom files.
+   section [on project settings] to learn how to specify the custom files.
+
+[on project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories
