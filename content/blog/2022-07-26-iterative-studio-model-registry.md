@@ -82,8 +82,7 @@ Iterative Studio Model Registry is built on top of Git, which means:
 
 A core philosophy at Iterative is open MLOps - we build tools that work with
 your infrastructure. Our toolstack is modular, so you can build your model
-registry on top of your existing cloud and DevOps infrastructure and avoid
-vendor lock-in.
+registry on top of your existing cloud and DevOps infrastructure.
 
 Under the hood, Iterative Studio Model Registry uses Iterative’s open-source
 Git-based tools [GTO] and [MLEM].
