@@ -14,7 +14,7 @@ picture: 2022-07-26/model-management-chaos.png
 pictureComment:
   Without the right tools, model management can easily turn chaotic
 author: tapa_dipti_sitaula
-commentsUrl: https://discuss.dvc.org/t/serving-machine-learning-models-with-mlem/1253
+commentsUrl: https://discuss.dvc.org/t/iterative-studio-model-registry/1267
 tags:
   - Model Registry
   - MLOps
