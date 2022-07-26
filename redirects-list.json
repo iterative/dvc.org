@@ -93,9 +93,9 @@
   "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects#create-a-project",
   "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects#sharing",
   "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects#configuration",
-  "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/ml-experiments/explore-ml-experiments",
-  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/ml-experiments/visualize-and-compare",
-  "^/doc/studio/user-guide/views/run-experiments$                                         /doc/studio/user-guide/ml-experiments/run-experiments",
+  "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/ml-experiments/explore-ml-experiments 302",
+  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/ml-experiments/visualize-and-compare 302",
+  "^/doc/studio/user-guide/views/run-experiments$                                         /doc/studio/user-guide/ml-experiments/run-experiments 302",
 
   "^/(.+)/$                                                                               /$1"
 ]
