@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/iterative/dvc.org#readme",
   "engines": {
-    "node": ">=14.x <=16.x"
+    "node": ">=14.x <=18.x"
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.1.11",
