@@ -15,8 +15,8 @@ usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [targets [targets ...]]
 
 positional arguments:
-  targets               Plot files or plot id's from `dvc.yaml` to visualize.
-                        Shows all plots by default.
+  targets               Plots files or plot id's from `dvc.yaml` to
+                        visualize. Shows all plots by default.
 ```
 
 ## Description
