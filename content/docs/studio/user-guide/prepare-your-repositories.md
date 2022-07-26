@@ -6,10 +6,21 @@
 
 # Prepare Your Repositories
 
-Iterative Studio creates projects by identifying datasets, metrics and
-hyperparameters defined in your Git repositories. These values are stored in
-your Git repositories as JSON or YAML files. You can add these values to your
-Git repositories in two ways:
+Iterative Studio creates [projects] by identifying machine learning models,
+datasets, metrics and hyperparameters defined in your Git repositories. These
+values are found in JSON or YAML files in the repository. Additionally, model
+information may be available as Git tags.
+
+New ML model metadata can be added directly from the **Models** tab after
+[creating a project]. You can also use [GTO] or [MLEM].
+
+[projects]: /doc/studio/user-guide/projects-and-experiments/what-is-a-project
+[creating a project]:
+  /doc/studio/user-guide/projects-and-experiments/create-a-project
+[gto]: https://github.com/iterative/gto
+[mlem]: https://mlem.ai/
+
+Datasets, metrics, and hyperparameters can be added to a project in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
    version your code, data and models all within your Git repositories. Data
@@ -40,6 +51,7 @@ Git repositories in two ways:
    have an ML project for which you generate and save metrics either manually or
    using some ML tracking tools, then you can add this project by specifying the
    file (within your Git repo) which contains your saved metrics. Refer to the
-   section on
-   [project settings](/doc/studio/user-guide/projects/project-settings#non-dvc-repositories)
-   to learn how to specify the custom files.
+   section [on project settings] to learn how to specify the custom files.
+
+[on project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories

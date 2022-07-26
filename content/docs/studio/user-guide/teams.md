@@ -122,7 +122,7 @@ are accessible to all members (collaborators) of the team.
 
 To add a project to this dashboard, click on `Add a project`. The process for
 adding a project is the same as that for adding personal projects
-([instructions](/doc/studio/user-guide/projects/create-project)).
+([instructions][project settings]).
 
 ## Settings
 
@@ -135,7 +135,8 @@ Additionally, you can also
 [edit collaborators](#edit-collaborators) and
 [change your team plan](#change-your-team-plan).
 
-[project settings]: /doc/studio/user-guide/projects/project-settings
+[project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project
 
 ### Manage connections to self-hosted GitLab servers
 
@@ -174,9 +175,13 @@ Team or Enterprise plans. A detailed comparison of the different plans can be
 found in the Iterative Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
-- **To upgrade** from the Free plan to the Team or Enterprise plans or to
-  downgrade your team plan, refer to
-  [Change your plan](/doc/studio/user-guide/change-team-plan-and-size#change-your-team-plan).
+- **To upgrade** from the Free plan to the Team or Enterprise plan or to
+  downgrade your team plan, refer to the section on [changing your team plan].
 
-- **To change the number of seats** in your Team plan, refer to
-  [Change your team size](/doc/studio/user-guide/change-team-plan-and-size#change-your-team-size).
+- **To change the number of seats** in your Team plan, refer to the section on
+  [changing your team size].
+
+[changing your team plan]:
+  /doc/studio/user-guide/change-team-plan-and-size#change-the-plan-your-team-is-on
+[changing your team size]:
+  /doc/studio/user-guide/change-team-plan-and-size#change-the-size-of-your-team
