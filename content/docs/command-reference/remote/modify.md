@@ -585,8 +585,8 @@ for a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
-- `gdrive_user_credentials_file` - global path where DVC stores OAuth credentials to
-  access Google Drive, by default
+- `gdrive_user_credentials_file` - global path where DVC stores OAuth
+  credentials to access Google Drive, by default
   `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (see also
   `profile` below), where the`CACHE_HOME` location per platform is:
 
