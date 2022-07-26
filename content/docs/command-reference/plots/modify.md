@@ -4,7 +4,10 @@ Modify display properties of data-series [plots](/doc/command-reference/plots)
 defined in <abbr>stages</abbr>.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
-> on image-type plots and top-level plot definitions.
+> on image-type plots or any [top-level plot definitions].
+
+[top-level plot definitions]:
+  /doc/command-reference/plots#top-level-plot-definitions
 
 ## Synopsis
 
