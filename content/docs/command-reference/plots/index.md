@@ -261,7 +261,7 @@ DVC has the following built-in plot templates:
 
 - `linear` - basic linear plot including cursor interactivity (default)
 - `simple` - simplest linear template (not interactive); Good base to create
-  [custom template].
+  [custom templates].
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
   [example](/doc/command-reference/plots#example-smooth-plot)
