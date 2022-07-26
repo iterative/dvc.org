@@ -193,8 +193,7 @@ these credentials with others**. Each team member should go through this process
 individually.
 
 If you use multiple GDrive remotes, by default they will be sharing the same
-cached credentials. This can be overridden with
-`dvc remote modify`:
+cached credentials. This can be overridden with `dvc remote modify`:
 
 ```dvc
 $ dvc remote modify myremote --local \
