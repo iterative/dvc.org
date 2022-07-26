@@ -5,7 +5,6 @@ jobs:
   run:
     name: Run
     runs-on: ubuntu-latest
-    continue-on-error: true
     if:
       github.event.deployment.ref != 'main' &&
       github.event.deployment_status.state == 'success'
@@ -17,9 +16,7 @@ jobs:
         id: check
         run: |
           set +e
-          body="<h1 id=\"link-check\">Link Check Report</h1>
-
-          $(
+          body="$(
             npx repo-link-check \
             -d -c config/link-check/config.yml \
             -r ${{ github.event.deployment.payload.web_url }}
@@ -30,28 +27,26 @@ jobs:
           echo "::set-output name=report::$body"
           exit 0
 
-      - name: Find PR associated with deployment
-        uses: actions/github-script@v6
-        id: pr-number
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          script: |
-            const findPR = require('./.github/workflows/deployment-report.js')
-            return await findPR({ github, context, core })
+      - name: Find Current Pull Request
+        id: findPr
+        uses: jwalton/gh-find-current-pr@v1.3.0
 
       - name: Find Existing Link Check Report Comment
         uses: peter-evans/find-comment@v2
-        id: fc
+        id: findComment
+        continue-on-error: true
         with:
-          issue-number: ${{ steps.pr-number.outputs.result }}
+          issue-number: ${{ steps.findPr.outputs.pr }}
           comment-author: 'github-actions[bot]'
-          body-includes: "<h1 id=\"link-check\">Link Check Report</h1>"
+          body-includes: <h1 id="link-check">Link Check Report</h1>
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
         with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          body: ${{ steps.check.outputs.report }}
+          issue-number: ${{ steps.findPr.outputs.pr }}
+          comment-id: ${{ steps.findComment.outputs.comment-id }}
+          body: |
+            <h1 id="link-check">Link Check Report</h1>
+
+            ${{ steps.check.outputs.report }}
           edit-mode: replace

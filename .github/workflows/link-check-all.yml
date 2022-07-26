@@ -10,9 +10,7 @@ jobs:
     env:
       NODE_OPTIONS: '--max-http-header-size=65536'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run Link Check
-        uses: 'iterative/link-check.action@v0.12'
-        with:
-          configFile: 'config/link-check/config.yml'
-          output: consoleLog
+        id: check
+        run: npx repo-link-check -d -c config/link-check/config.yml
