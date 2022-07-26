@@ -12,6 +12,8 @@ settings_ are now called _Project settings_; and so on.
 Here we provide help for some of the problems that you may encounter when using
 Iterative Studio.
 
+**Projects and experiments**
+
 - [Error: No data found to visualize](#error-no-data-found-to-visualize)
 - [Error: No DVC repo was found at the root](#error-no-dvc-repo-was-found-at-the-root)
 - [Error: Non-DVC sub-directory of a monorepo](#error-non-dvc-sub-directory-of-a-monorepo)
@@ -21,6 +23,16 @@ Iterative Studio.
 - [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+
+**Model registry**
+
+- [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
+- [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
+- [How can I remove models from my model registry](#how-can-i-remove-models-from-my-model-registry)
+- [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
+
+**Billing and payment**
+
 - [Questions or problems with billing and payment](#questions-or-problems-with-billing-and-payment)
 
 ## Support
@@ -41,6 +53,10 @@ Otherwise, you will get this message when you try to add a project:
 For more details, refer to the section on how to [prepare your Git repositories]
 for use with Iterative Studio. Instructions on how to specify custom files can
 be found [here][project-settings].
+
+Note that if you're connecting to a repository just to fetch models for the
+model registry, and you are not working with DVC repositories, you can ignore
+this error.
 
 [prepare your git repositories]:
   /doc/studio/user-guide/prepare-your-repositories
@@ -65,6 +81,10 @@ To solve this, you can either:
 
 Instructions on how to specify the sub-directory or custom files can be found
 [here][project-settings].
+
+Note that if you're connecting to a repository just to fetch models for the
+model registry, and you are not working with DVC repositories, you can ignore
+this error.
 
 ## Error: Non-DVC sub-directory of a monorepo
 
@@ -115,6 +135,11 @@ with the metrics or hyperparameters that you want to visualize.
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
 [here][project-settings].
+
+Note that if you're connecting to a repository just to fetch models for the
+model registry, and your repository is not expected to contain experiment data,
+metrics or hyperparameters, your project will appear empty. This is ok - you
+will still be able to work with your models in the model registry.
 
 ## Project does not contain the columns that I want
 
@@ -179,10 +204,10 @@ or branches you do not see in your project were manually hidden by you or
 someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
-Display preferences -> [Hide commits]. However, if the missing commit/branch is
+[Display preferences -> Hide commits]. However, if the missing commit/branch is
 not in the hidden commits list, then please [raise a support request](#support).
 
-[hide commits]:
+[display preferences -> hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
 
 ## Error: Failed to push experiment to repository
@@ -206,9 +231,42 @@ please check:
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
 
+## I cannot find my desired Git repository in the form to add a model
+
+Only repositories that you have connected to Iterative Studio are available in
+the `Add a model` form. To connect your desired repository to Iterative Studio,
+go to the `Projects` tab and
+[create a project that connects to this Git repository](/doc/studio/user-guide/projects-and-experiments/create-a-project).
+Then you can come back to the model registry and add the model.
+
+## Model registry does not display the models in my Git repositories
+
+For a model to be displayed in the model registry, it has to be registered using
+[GTO]. You can [register the model] from Iterative Studio or with GTO's CLI.
+
+## How can I remove models from my model registry
+
+To remove models from the model registry, you should remove the associated
+project from your projects dashboard.
+
+## How can I un-assign stages from model versions
+
+To un-assign any stage from a model, open the corresponding Git repository (in
+GitHub, GitLab or Bitbucket). Then, remove the Git tag pertaining to the stage
+that you want to un-assign.
+
+After removing the Git tag, reparse the repository. To do this, open the project
+in Iterative Studio and then click on `Force import` as shown below.
+
+![Showing and hiding columns](https://static.iterative.ai/img/studio/force_import.gif)
+
+Currently, you cannot un-assign stages from the Iterative Studio user interface.
+
 ## Questions or problems with billing and payment
 
-If your questions are not answered by
-[Billing and Payment ](/doc/studio/user-guide/billing-and-payment) or by the
-Iterative Studio [FAQ page](https://studio.iterative.ai/faq), please
-[contact us](#support).
+Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
+see if your questions have already been answered. If you still have problems,
+please [contact us](#support).
+
+[gto]: https://github.com/iterative/gto
+[register the model]: /doc/studio/user-guide/model-registry/add-a-model

@@ -544,6 +544,20 @@
               "share-a-project"
             ]
           },
+          {
+            "slug": "model-registry",
+            "source": false,
+            "children": [
+              {
+                "label": "What is a Model Registry",
+                "slug": "what-is-a-model-registry"
+              },
+              "add-a-model",
+              "view-models",
+              "register-version",
+              "assign-stage"
+            ]
+          },
           "teams",
           "change-team-plan-and-size",
           "account-management",
