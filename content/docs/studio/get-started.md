@@ -106,9 +106,9 @@ You should now see that a project has been added in your dashboard.
 
 ## Use model registry
 
-1. Click on the `Models` tab to open the central
-   [Models dashboard]. If any of your projects contain [GTO-annotated models],
-   they will be listed here automatically.
+1. Click on the `Models` tab to open the central [Models dashboard]. If any of
+   your projects contain [GTO-annotated models], they will be listed here
+   automatically.
 
    [models dashboard]:
      /doc/studio/user-guide/model-registry/view-models#models-dashboard
