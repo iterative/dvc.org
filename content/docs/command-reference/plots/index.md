@@ -48,7 +48,6 @@ using `<img>` tags directly.
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
-
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
 
 ### Supported file formats
