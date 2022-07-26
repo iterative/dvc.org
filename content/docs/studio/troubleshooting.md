@@ -178,10 +178,10 @@ or branches you do not see in your project were manually hidden by you or
 someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
-[Display preferences -> Hide commits]. However, if the missing commit/branch is
+Display preferences -> [Hide commits]. However, if the missing commit/branch is
 not in the hidden commits list, then please [raise a support request](#support).
 
-[display preferences -> hide commits]:
+[hide commits]:
   /doc/studio/user-guide/ml-experiments/explore-ml-experiments#hide-commits
 
 ## Error: Failed to push experiment to repository
@@ -207,6 +207,7 @@ If you get this error and none of the above applies, please
 
 ## Questions or problems with billing and payment
 
-Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
-see if your questions have already been answered. If you still have problems,
-please [contact us](#support).
+If your questions are not answered by
+[Billing and Payment ](/doc/studio/user-guide/billing-and-payment) or by the
+Iterative Studio [FAQ page](https://studio.iterative.ai/faq), please
+[contact us](#support).

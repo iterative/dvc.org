@@ -6,9 +6,10 @@
 
 # Prepare Your Repositories
 
-Iterative Studio creates [Projects]() by identifying datasets, metrics and
-hyperparameters defined in your Git repositories. These values are stored in
-repos as JSON or YAML files. You can add them in two ways:
+Iterative Studio creates [Projects](/doc/studio/user-guide/projects) by
+identifying datasets, metrics and hyperparameters defined in your Git
+repositories. These values are stored in repos as JSON or YAML files. You can
+add them in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) to version
    your code, data, and machine learning models together using Git. Large files
@@ -30,6 +31,7 @@ repos as JSON or YAML files. You can add them in two ways:
 
 [store and share data and models]:
   /doc/start/data-and-model-versioning#storing-and-sharing
+[create data registries]: /doc/use-cases/data-registry
 [codify data pipelines]: /doc/start/data-pipelines
 [ci/cd]: /doc/use-cases/ci-cd-for-machine-learning
 [ml experiments]: /doc/user-guide/experiment-management/experiments-overview

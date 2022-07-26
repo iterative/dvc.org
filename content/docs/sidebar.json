@@ -16,7 +16,7 @@
       "windows",
       "linux",
       {
-        "label": "Virtual Studio Code",
+        "label": "Visual Studio Code",
         "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
         "type": "external"
       },

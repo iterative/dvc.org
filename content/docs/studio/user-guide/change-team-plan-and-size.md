@@ -2,105 +2,99 @@
 
 ## Change the plan your Team is on
 
-When you create a team, it is on the Free plan by default. This plan is designed
-for teams just starting out with collaboration: you can invite one other team
-member and import as many repositories as you want. For more advanced
-collaboration functionality, you can upgrade to the Team or Enterprise plans. A
-detailed comparison of the different plans can be found in the Iterative Studio
-[pricing page](https://studio.iterative.ai/pricing).
-
 To change the plan for your team, go to the `Plan and billing` section within
-Team settings. Then, within the `Current plan` card, click on `Change plan`.
+[team settings]. Then click on `Change plan` (under `Current plan`).
 
 ![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing.png)
 
-A plan comparison page will open. This page provides detailed comparison of the
-different plans in Iterative Studio. Your current plan will be marked with a
-`Current plan` label.
+An Iterative Studio plan comparison page will open. Your current plan will be
+marked.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features.png)
 
-### If you are currently on the Free plan
+[team settings]: /doc/studio/user-guide/teams#settings
+
+### If you are on the Free plan
 
 You can upgrade to the Team plan or to the Enterprise plan.
 
-- **To upgrade to the Team plan**, click on the `Upgrade` button. Then, select
-  the number of seats (collaborators) you want in your team.
+**To upgrade to the Team plan**, click on the `Upgrade` button. Then select the
+number of seats (collaborators) you need in your team.
 
 ![](https://static.iterative.ai/img/studio/team_settings_select_seats.png)
 
-The total payable amount will be shown. For details of how the payable amount is
-calculated, refer to
-[billing and payment](/doc/studio/user-guide/billing-and-payment).
+The total payable amount will be shown. See
+[Billing and Payment](/doc/studio/user-guide/billing-and-payment) for details.
 
-To make the payment and upgrade the plan, click on `Confirm`. You will be
-redirected to our payment processor, [Stripe](https://stripe.com/), for making
-the payment. Once your payment is successful, you will be redirected back to the
-team settings page in Iterative Studio. Here, you will see that your team is now
-in the Team plan.
+Click on `Confirm` to provide payment and upgrade the plan. You will be
+redirected to our payment processor, [Stripe](https://stripe.com/). Once your
+payment is successful, you will be redirected back to the team settings page in
+Iterative Studio. Here you can confirm your updated plan.
 
 <admon>
 
-Each collaborator and pending invite takes up a seat in the team. For example,
-if you have 5 seats in your team which has 3 collaborators and 2 pending
-invites, you cannot add any more members until you remove a collaborator or
-pending invite, or increase the number of seats.
+Each collaborator and pending invite takes up a seat in your team. For example,
+if you have 5 seats, with 3 collaborators and 2 pending invites, you cannot add
+more members until you remove a collaborator or pending invite, or increase the
+number of seats.
 
 </admon>
 
-- **To upgrade to the Enterprise plan**, click on the `Contact Us` button and
-  you will be redirected to a Calendly form where you can schedule a call with
-  our in-house experts who will try to understand your needs and suggest a
-  suitable plan and pricing.
+**To upgrade to the Enterprise plan**, click on the `Contact Us` button to
+[schedule a call] with our in-house experts. They will try to understand your
+needs and suggest a suitable plan and
+[pricing](https://studio.iterative.ai/pricing).
 
-### If you are currently on the Team plan
+[schedule a call]: https://calendly.com/gtm-2/studio-introduction
+
+### If you are on the Team plan
 
 You can downgrade to the Free plan or upgrade to the Enterprise plan.
 
-- **To downgrade to the Free plan**, you must first make sure that your team
-  does not have more than 2 collaborators or pending invites. Then, click on the
-  `Downgrade` button.
+**To downgrade to the Free plan** you must first make sure that your team has
+only 1 or 2 collaborators or pending invites. Then click on the `Downgrade`
+button.
 
-  When you downgrade, you will receive a refund based on the number of days
-  remaining in the billing period. If there are any discrepancies in the
-  refunded amount, please [contact us](mailto:support@iterative.ai).
+When you downgrade, you will receive a prorated refund for the days remaining in
+the billing period. For inquiries about refunds, please [contact us].
 
-- **To upgrade to the Enterprise plan**, click on the `Contact Us` button.
+[contact us]: /doc/studio/troubleshooting#support
 
-### If you are currently on the Enterprise plan
+**To upgrade to the Enterprise plan**, click on the `Contact Us` button to
+[schedule a call] with our in-house experts. They will try to understand your
+needs and suggest a suitable plan and
+[pricing](https://studio.iterative.ai/pricing).
+
+### If you are on the Enterprise plan
 
 For any changes to the plan, please contact your focal point at Iterative.
 
 ## Change the size of your Team
 
-You can also change the size of your team within the Team or Enterprise plan at
-any point during your subscription.
+You can change the size of your team within the Team or Enterprise plans at any
+point.
 
-### If you are currently on the Free plan
+### If you are on the Free plan
 
 To change the number of seats in your team,
 [upgrade to the Team or Enterprise plan](#change-the-plan-your-team-is-on).
 
-### If you are currently on the Team plan
+### If you are on the Team plan
 
 To change the number of seats in your team, go to the `Plan and billing` section
-within Team settings. Then, within the `Current plan` card, click on
-`Change seats`. Then, select the desired number of seats.
+within [team settings]. Then click on `Change seats` (under `Current plan`) and
+select the desired number of seats.
 
-- **If you are increasing the number of seats**, you will have to pay for the
-  additional seats. The payable amount is pro-rated based on the number of days
+- **If you are increasing the number of seats** you will have to pay for the
+  additional seats. The payable amount is prorated based on the number of days
   remaining in the billing period.
-- **If you are decreasing the number of seats**, a credit balance will be
-  computed based on the number of days remaining in the billing period. This
-  credit balance will be used in future payments.
+- **If you are decreasing the number of seats** a prorated credit will be added
+  to your account for the remaining days in the billing period. It will be
+  applied automatically for future payment.
 
-The total payable amount and any changes to your credit balance will be
-displayed after you select the number of seats.
+The total payable amount or credit balance will be displayed for you to
+`Confirm`.
 
-To make the payment (or accept the credit balance) and increase/decrease the
-number of seats, click on `Confirm`.
+### If you are on the Enterprise plan
 
-### If you are currently on the Enterprise plan
-
-To change the number of seats in your team, please contact your focal point at
-Iterative.
+For any changes to the plan, please contact your focal point at Iterative.
