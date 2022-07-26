@@ -604,8 +604,8 @@ more details.
 
 - `profile` - name for the GDrive credentials cache directory (part of the
   global `gdrive_user_credentials_file` path). By default, credentials are cached
-  per `gdrive_client_id `, but you can set a custom ‘profile’ instead, for example
-  to avoid using the wrong user's credentials accidentally.
+  per `gdrive_client_id `, but you can set a custom profile name instead, for
+  example to avoid using the wrong user's credentials accidentally.
 
   ```cli
   $ dvc remote modify --local myremote profile myprofile
