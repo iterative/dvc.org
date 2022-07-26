@@ -57,9 +57,6 @@ makes collaboration far more time consuming than it should be.
 Some even implement in-house systems, and maybe you are also planning to do so.
 But these can get expensive to develop and maintain.
 
-This is a common problem, and deserves a robust, intuitive and scalable
-solution.
-
 **We built the Iterative Studio Model Registry to solve these problems.**
 
 Iterative Studio Model Registry enables ML teams to collaborate on models by
@@ -75,8 +72,8 @@ Iterative Studio Model Registry is built on top of Git, which means:
   with code, data, experiment pipelines, and deployment statuses.
 - You can use GitOps for model deployment, and trigger model deployment from
   Iterative Studio, which you can also use to run your ML experiments.
-- Your DS/ML folks and Software/DevOps folks can work together more easily,
-  because they utilize the same tools and infrastructure.
+- DS/ML folks and Software/DevOps folks can work together more easily, because
+  they utilize the same tools and infrastructure.
 
 ## Open MLOps
 
@@ -108,12 +105,6 @@ any other of your remote (or local) storages. Then, add them to the model
 registry in a non-intrusive, no-code fashion **without modifying your ML
 training code**. This saves you hours of valuable time.
 
-## Create model versions and stages from any Git commit
-
-For registering versions, select the commit and provide the version number. To
-assign stages, select the version and provide the stage name. It is as simple as
-that.
-
 ## Collaborate across multiple projects
 
 A central dashboard of all your models facilitates transparency and discovery
@@ -125,6 +116,12 @@ And on the model details page, you’ll find that information about the model is
 automatically detected and its history tracked.
 
 ![All models have separate model detail pages](/uploads/images/2022-07-26/model-details-page.png)
+
+## Create model versions and stages from any Git commit
+
+For registering versions, select the commit and provide the version number. To
+assign stages, select the version and provide the stage name. It is as simple as
+that.
 
 ## Git remains the single source of truth for all your ML projects
 
@@ -142,8 +139,9 @@ image-synthesis-model:
   type: model
 ```
 
-The Git tag `image-classifier-model@v2.0.0` indicates that you created version
-`2.0.0` of your `image-classifier-model` from the Git commit `6c0fc85`.
+In the following example, the Git tag `image-classifier-model@v2.0.0` indicates
+that you created version `2.0.0` of your `image-classifier-model` from the Git
+commit `6c0fc85`.
 
 The Git tag `image-classifier-model#production#3` indicates that you assigned
 the `production` stage to version `2.0.0` of your model.
@@ -163,11 +161,9 @@ With the Iterative Studio Model Registry, your ML model (dis)organization is not
 in chaos anymore. Collaborating on your ML projects becomes faster and your ML
 team members’ lives become much easier.
 
-Start using [Iterative Studio Model Registry] today. And answer questions like
-these directly from the information in your Git repository:
-
-- Which model version is currently in production?
-- When was the last time this model was updated?
+Start using [Iterative Studio Model Registry] today. And answer all the who,
+what, why, where and when questions of your team's model production directly
+from the information in your Git repository.
 
 Refer to the [documentation and tutorials][docs] to get started. To request
 support or share feedback, you can [email me] or create a support ticket on
