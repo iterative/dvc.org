@@ -586,26 +586,26 @@ for a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
-  access Google Drive data. `$CACHE_HOME/pydrive2fs/$client_id/default.json` by
-  default, where `CACHE_HOME` is:
+  access Google Drive, by default
+  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (see also
+  `profile` below), where the`CACHE_HOME` location per platform is:
 
-  | macOS location     | Linux location (typical\*) | Windows location        |
-  | ------------------ | -------------------------- | ----------------------- |
-  | `~/Library/Caches` | `~/.cache/`                | `%CSIDL_LOCAL_APPDATA%` |
-
-  Also, see `profile` config option below.
+  | macOS              | Linux  (\*typical) | Windows                 |
+  | ------------------ | ------------------ | ----------------------- |
+  | `~/Library/Caches` | `~/.cache`         | `%CSIDL_LOCAL_APPDATA%` |
 
   ```dvc
   $ dvc remote modify myremote \
-        gdrive_user_credentials_file /path/to/mycredentials.json
+        gdrive_user_credentials_file path/to/mycredentials.json
   ```
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
 
-- `profile` - credentials cache profile name. By default, credentials will be
-  cached per `client_id`, but if you are using multiple users you might want to
-  use ‘profile’ to avoid accidentally using someone else’s cached credentials.
+- `profile` - name for the credentials cache (part of the default
+  `gdrive_user_credentials_file` path). By default, credentials will be cached
+  per `gdrive_client_id `, but if you have multiple system users, you can set a
+  custom ‘profile’ name to avoid using someone else's credentials accidentally.
 
   ```cli
   $ dvc remote modify --local myremote profile myprofile
@@ -624,12 +624,10 @@ more details.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
-- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potential
-  malware. Files identified as
-  [abusive](https://support.google.com/docs/answer/148505) (malware, etc.) are
-  only downloadable by the owner. Consider using this option if you see a
-  `This file has been identified as malware or spam and cannot be downloaded`
-  error.
+- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potentially
+  [abusive](https://support.google.com/docs/answer/148505). Files identified
+  as such (malware, personal info., etc.) can only be downloaded by their
+  owner.
 
   ```dvc
   $ dvc remote modify myremote gdrive_acknowledge_abuse true

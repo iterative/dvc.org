@@ -182,15 +182,19 @@ to sign into a Google account with the needed access to the GDrive
 [auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
 you to grant DVC the necessary permissions, and produce a verification code
 needed for DVC to complete the connection. On success, the necessary credentials
-will be cached and they will be used automatically next time you run DVC.
+will be cached (see `gdrive_user_credentials_file` in the [GDrive remote
+params]) and used automatically next time DVC needs them.
+
+[gdrive remote params]:
+  https://dvc.org/doc/command-reference/remote/modify#google-drive
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
 these credentials with others**. Each team member should go through this process
 individually.
 
 If you use multiple GDrive remotes, by default they will be sharing the same
-cached credentials file. It can be overridden with the
-`gdrive_user_credentials_file` parameter:
+cached credentials. This can be overridden with
+`dvc remote modify`:
 
 ```dvc
 $ dvc remote modify myremote --local \
@@ -202,9 +206,9 @@ commit** this file with Git. Instead, add it into `.gitignore` and never share
 it with other people.
 
 If you wish to change the user you have authenticated with, or for
-troubleshooting misc. token errors, simply remove the user credentials JSON file
-and authorize again. You might also want to use `profile` parameter to make DVC
-cache your credentials per-`profile` instead of per-`client_id`:
+troubleshooting misc. token errors, you can remove the user credentials file
+and authorize again. Alternatively you can use a custom `profile`-based
+credential cache (instead of the default, `gdrive_client_id`-based one):
 
 ```
 $ dvc remote modify --local myremote profile myuser
