@@ -169,12 +169,7 @@ Refer to the [documentation and tutorials][docs] to get started. To request
 support or share feedback, you can [email me] or create a support ticket on
 [GitHub][github support repo].
 
-<external-link
-href="https://www.youtube.com/watch?v=DYeVI-QrHGI"
-title="Iterative Studio Model Registry"
-description="As Machine Learning projects and teams grow, keeping track of all the models and their production status gets increasingly complex..."
-link="youtube.com"
-image="/uploads/images/2022-07-26/video_thumbnail.png"/>
+https://www.youtube.com/watch?v=DYeVI-QrHGI
 
 [iterative studio model registry]: https://studio.iterative.ai/
 [git]: https://git-scm.com/
