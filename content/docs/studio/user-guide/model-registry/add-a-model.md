@@ -6,7 +6,7 @@ your model registry, Iterative Studio creates an annotation for it in an
 line tool, you can also add models from the [CLI][gto]. To add models using
 Iterative Studio, watch this tutorial video or read on below:
 
-https://youtu.be/szzv4ZXmYAs
+https://www.youtube.com/watch?v=szzv4ZXmYAs
 
 1. Click on `Add a model`
 2. Select the project to which you want to add the model. If your model file or

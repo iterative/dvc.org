@@ -11,7 +11,7 @@ You can register versions using the [GTO] command line interface (CLI). To
 register versions using Iterative Studio, watch this tutorial video or read on
 below:
 
-https://youtu.be/eA70puzOp1o
+https://www.youtube.com/watch?v=eA70puzOp1o
 
 1. On the models dashboard, open the 3-dot menu for the model whose version you
    want to register. Then, click on `Register new version`. The registration

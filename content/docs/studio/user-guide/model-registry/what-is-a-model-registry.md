@@ -6,7 +6,7 @@ organization, discovery, versioning, lineage (tracing the origin of the model)
 and the ability to manage production statuses (eg, development, staging,
 production, etc.) of your models on top of Git.
 
-https://www.youtube.com/watch?v=hKf4twg832g
+https://www.youtube.com/watch?v=DYeVI-QrHGI
 
 Iterative Studio Model Registry is built on top of Git, and uses Iterative’s
 open-source Git-based tools [GTO] and [MLEM].
