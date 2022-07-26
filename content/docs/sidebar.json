@@ -219,6 +219,17 @@
         "slug": "dag"
       },
       {
+        "label": "data",
+        "slug": "data",
+        "source": "data/index.md",
+        "children": [
+          {
+            "label": "data status",
+            "slug": "status"
+          }
+        ]
+      },
+      {
         "label": "destroy",
         "slug": "destroy"
       },
