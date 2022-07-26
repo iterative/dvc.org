@@ -126,9 +126,9 @@ adding a project is the same as that for adding personal projects
 
 ## Settings
 
-In the team settings page, you can change the team name, add credentials for the
-data remotes, and delete the team. Note that these settings are applicable to
-the team and are thus different from [project settings].
+In the [team settings] page, you can change the team name, add credentials for
+the data remotes, and delete the team. Note that these settings are applicable
+to the team and are thus different from [project settings].
 
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),

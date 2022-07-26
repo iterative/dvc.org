@@ -84,16 +84,16 @@
 
   "^/doc/studio/overview$                                                                 /doc/studio/how-it-works",
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
+  "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
   "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
   "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
   "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
-  "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
-  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects-and-experiments/create-a-project",
-  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects-and-experiments/configure-a-project",
-  "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments",
-  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare",
-  "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects-and-experiments/share-a-projects",
-  "^/doc/studio/user-guide/views(/.*)?$                                                   /doc/studio/user-guide/projects-and-experiments$1",
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects-and-experiments/create-a-project 302",
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects-and-experiments/configure-a-project 302",
+  "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments 302",
+  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare 302",
+  "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects-and-experiments/share-a-project 302",
+  "^/doc/studio/user-guide/views(/.*)?$                                                   /doc/studio/user-guide/projects-and-experiments$1 302",
 
   "^/(.+)/$                                                                               /$1"
 ]
