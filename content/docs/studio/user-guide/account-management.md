@@ -1,6 +1,6 @@
-<admon>
+<admon type="info">
 
-**We have renamed Views to Projects in Iterative Studio.**
+We have renamed Views to Projects in Iterative Studio.
 
 </admon>
 
