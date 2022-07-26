@@ -35,8 +35,8 @@ https://youtu.be/szzv4ZXmYAs
      absolute path of the model file.
    - If you use [MLEM] to save your model, use the path to the binary file that
      MLEM generates. After you have run
-     [`mlem init`](https://mlem.ai/doc/command-reference/init), Iterative
-     Studio will be able to parse the `.mlem` file to extract model metadata.
+     [`mlem init`](https://mlem.ai/doc/command-reference/init), Iterative Studio
+     will be able to parse the `.mlem` file to extract model metadata.
 
 4. Provide labels for your model. For example, if your model is about reviewing
    sentiment analysis using natural language processing, one of the labels may
