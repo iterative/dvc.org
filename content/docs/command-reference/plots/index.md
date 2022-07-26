@@ -48,7 +48,6 @@ using `<img>` tags directly.
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
-
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
 
 ### Supported file formats
@@ -268,7 +267,7 @@ DVC has the following built-in plot templates:
 - `confusion` - confusion matrix, see
   [example](/doc/command-reference/plots#example-confusion-matrix)
 
-[custom template]: https://dvc.org/doc/command-reference/plots/templates
+[custom templates]: https://dvc.org/doc/command-reference/plots/templates
 
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
