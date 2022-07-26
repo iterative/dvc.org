@@ -16,7 +16,7 @@ New ML model metadata can be added directly from the **Models** tab after
 
 [projects]: /doc/studio/user-guide/projects-and-experiments/what-is-a-project
 [creating a project]:
-  doc/studio/user-guide/projects-and-experiments/create-a-project
+  /doc/studio/user-guide/projects-and-experiments/create-a-project
 [gto]: https://github.com/iterative/gto
 [mlem]: https://mlem.ai/
 
