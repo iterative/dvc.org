@@ -42,7 +42,7 @@ stages:
 
 > See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
 
-The most important part of a stage it's the terminal command(s) it executes
+The most important part of a stage is the terminal command(s) it executes
 (`cmd` field). This is what DVC runs when the stage is reproduced (see
 `dvc repro`).
 
