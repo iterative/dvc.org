@@ -392,3 +392,66 @@ $ dvc config plots.html_template plots/mypage.html
 
 Note that the path supplied to `dvc config plots.html_template` is relative to
 `.dvc/` directory.
+
+## Example: Smooth plot
+
+In some cases we would like to smooth our plot. In this example we will use a
+noisy plot with 100 data points:
+
+```dvc
+$ dvc plots show data.csv
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_no_smooth.svg)
+
+We can use the `-t` (`--template`) option and `smooth` template to make it less
+noisy:
+
+```dvc
+$ dvc plots show -t smooth data.csv
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_smooth.svg)
+
+## Example: Confusion matrix
+
+We'll use `classes.csv` for this example:
+
+```
+actual,predicted
+cat,cat
+cat,cat
+cat,cat
+cat,dog
+cat,dinosaur
+cat,dinosaur
+cat,bird
+turtle,dog
+turtle,cat
+...
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show classes.csv --template confusion \
+                             -x actual -y predicted
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_confusion.svg)
+
+> A confusion matrix [template](/doc/command-reference/plots#plot-templates) is
+> predefined in DVC.
+
+We can use `confusion_normalized` template to normalize the results:
+
+```dvc
+$ dvc plots show classes.csv -t confusion_normalized
+                             -x actual -y predicted
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_confusion_normalized.svg)
