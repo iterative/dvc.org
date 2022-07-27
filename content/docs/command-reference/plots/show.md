@@ -34,7 +34,7 @@ option. To learn more about plots file formats and templates, see `dvc plots`.
 
 <admon type="tip">
 
-The default behavior of this command can be modified per [stage plot] with
+The default behavior of this command can be modified per [stage plot] file with
 `dvc plots modify`.
 
 </admon>

@@ -112,27 +112,23 @@ outputs can be marked with `--plots/--plots-no-cache`. This will tell DVC that
 they are intended for visualizations.
 
 Upon running `dvc plots show/diff` DVC will collect stage plots alongside the
-[top-level plot definitions] and display them conforming to their configuration.
-Note, that if there are stage plots in the project and they are also used in
-some top-level definitions, DVC will create separate rendering for the stage
-plots and all definitions using them.
+[top-level plots](#top-level-plots) and display them conforming to their
+configuration. Note, that if there are stage plots in the project and they are
+also used in some top-level definitions, DVC will create separate rendering for
+the stage plots and all definitions using them.
 
 This special type of outputs might come in hand if users want to visually
 compare experiments results with other experiments versions and not bother with
-writing top-level plot definitions into the `dvc.yaml`.
-
-[top-level plot definitions]: #top-level-plots
+writing top-level plot definitions in `dvc.yaml`.
 
 ### Top-level plots
 
 Plots can also be defined in a top-level `plots` key in `dvc.yaml`. Unlike
-[stage plots], these definitions let you overlay plots from different data
-sources, for example training vs. test results (on the current project version).
-Conversely, you can create multiple plots from a single source file. You can
-also any plot file in the project, regardless of whether it's a stage outputs.
-This creates a separation between visualization and outputs.
-
-[stage plots]: #stage-plots
+[stage plots](#stage-plots), these definitions let you overlay plots from
+different data sources, for example training vs. test results (on the current
+project version). Conversely, you can create multiple plots from a single source
+file. You can also any plot file in the project, regardless of whether it's a
+stage outputs. This creates a separation between visualization and outputs.
 
 In order to define the plot users need to provide data and an optional
 configuration for the plot. The plots should be defined in `dvc.yaml` file under
