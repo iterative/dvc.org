@@ -98,24 +98,12 @@ names in the `train` array below:
 }
 ```
 
-## Defining a plot
+## Defining plots
 
 In order to create visualizations, users need to provide the data and
 (optionally) configuration that will help customize the plot. DVC provides two
-ways to configure visualizations. Users can mark specific <abbr>stage</abbr>
-<abbr>outputs</abbr> as plot or define plot configuration inside `dvc.yaml`
-under `plots` key.
-
-### Top-level plot definitions
-
-Plots can be defined in `dvc.yaml` under the `plots` key. Unlike [stage plots],
-these are especially useful when users want to compare data from different data
-sources residing on the same version of the project. For example, comparing
-training versus test results on current branch. They also allow to visualize
-data from files that are not [stage plots]. They are an abstraction separating
-visualization from particular stage output.
-
-[stage plots]: #stage-plots
+ways to configure visualizations. Users can mark specific stage
+<abbr>outputs</abbr> as plots or define top-level `plots` in `dvc.yaml`.
 
 ### Stage plots
 
@@ -124,16 +112,27 @@ outputs can be marked with `--plots/--plots-no-cache`. This will tell DVC that
 they are intended for visualizations.
 
 Upon running `dvc plots show/diff` DVC will collect stage plots alongside the
-top-level plot definitions and display them conforming to their configuration.
+[top-level plot definitions] and display them conforming to their configuration.
 Note, that if there are stage plots in the project and they are also used in
 some top-level definitions, DVC will create separate rendering for the stage
 plots and all definitions using them.
 
 This special type of outputs might come in hand if users want to visually
 compare experiments results with other experiments versions and not bother with
-writing top-level plots definitions into the `dvc.yaml`.
+writing top-level plot definitions into the `dvc.yaml`.
 
-### Syntax (top-level plot definitions only)
+[top-level plot definitions]: #top-level-plots
+
+### Top-level plots
+
+Plots can be defined in `dvc.yaml` under the `plots` key. Unlike [stage plots],
+these are especially useful when users want to compare data from different data
+sources residing on the same version of the project, for example comparing
+training versus test results on current branch. They also allow to visualize
+data from files that are not [stage plots]. These are an abstraction separating
+visualization from particular stage output. Let's look at their syntax next.
+
+[stage plots]: #stage-plots
 
 In order to define the plot users need to provide data and an optional
 configuration for the plot. The plots should be defined in `dvc.yaml` file under
@@ -146,10 +145,10 @@ stages: ...
 plots: ...
 ```
 
-Every plots has to have its own id. Configuration, if provided, should be a
+Every plots has to have its own ID. Configuration, if provided, should be a
 dictionary.
 
-In simplest use case, user can provide file path as the plot id and don't
+In simplest use case, user can provide file path as the plot ID and don't
 provide configuration at all:
 
 ```yaml
@@ -177,7 +176,7 @@ plots:
     template: confusion
 ```
 
-In this case we provided `confusion_matrix` as a plot id. It will be displayed
+In this case we provided `confusion_matrix` as a plot ID. It will be displayed
 in the plot as a title, unless we override it with `title` field. In this case
 we provided data source in `y` axis definition. Data will be sourced from
 `confusion_matrix_data.csv`. As `y` axis we will use `predicted_class` field. On
@@ -223,7 +222,7 @@ field.
 
 - `y` - field name from which the Y axis data comes from.
   - Top-level plots: It can be a string, list or dictionary. If its a string or
-    list, it is assumed that plot id will be the path to the data source.
+    list, it is assumed that plot ID will be the path to the data source.
     String, or list elements will be the names of data columns or fields withing
     the source file. If this field is a dictionary, it is assumed that its keys
     are paths to data sources. The values have to be either strings or lists,
