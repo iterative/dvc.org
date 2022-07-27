@@ -208,10 +208,9 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ### Simple plot definition
 
-Let's use the `logs.csv` data:
+Let's work with the following `logs.csv` data:
 
 ```
-# logs.csv
 epoch,loss,accuracy
 1,0.19,0.81
 2,0.11,0.89
@@ -219,14 +218,12 @@ epoch,loss,accuracy
 4,0.04,0.96
 ```
 
-Minimal plot configuration we can put in `dvc.yaml` is simply data source path
-relative to `dvc.yaml` file:
+The minimal plot configuration we can put in `dvc.yaml` is the data source path:
 
 ```yaml
-# dvc.yaml
 stages:
   train:
-    cmd: echo "Training the model..."
+    cmd: ...
 
 plots:
   logs.csv:
@@ -239,14 +236,9 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_spec_default.svg)
 
-We can customize it:
+We can also customize it:
 
 ```yaml
-# dvc.yaml
-stages:
-  train:
-    cmd: echo "Training the model..."
-
 plots:
   logs.csv:
     x: epoch
@@ -275,12 +267,9 @@ epoch,train_loss,test_loss
 4,0.1,0.23
 ```
 
-```yaml
-# dvc.yaml
-stages:
-  train:
-    cmd: echo "Training the model..."
+Plot definition in `dvc.yaml`:
 
+```yaml
 plots:
   test_vs_train_loss:
     x: epoch
@@ -298,11 +287,10 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ### Sourcing data from different files
 
-Lets prepare comparison for confusion matrix data between test set and training
-set:
+Lets prepare a comparison for confusion matrix data between the
+`train_classes.csv` and a `test_classes.csv` datasets (below):
 
 ```csv
-# train_classes.csv
 actual_class,predicted_class
 dog,dog
 dog,dog
@@ -319,7 +307,6 @@ bird,dog
 ```
 
 ```csv
-# test_classes.csv
 actual_class,predicted_class
 dog,dog
 dog,dog
@@ -332,12 +319,9 @@ cat,cat
 cat,bird
 ```
 
-```yaml
-# dvc.yaml
-stages:
-  train:
-    cmd: echo "Training the model..."
+In `dvc.yaml`:
 
+```yaml
 plots:
   test_vs_train_confusion:
     x: actual_class

@@ -477,8 +477,11 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined `dvc plots`. Here's an
-example that makes output `auc.json` viable for visualization:
+The list of `plots` contains one or more user-defined `dvc plots` (paths
+relative to the location of `dvc.yaml`).
+
+This example that makes output `auc.json` viable for visualization, configuring
+keys `fpr` and `tpr` as X and Y axis, respectively:
 
 ```yaml
 stages:
@@ -498,10 +501,10 @@ plots:
     y: tpr
 ```
 
-Note that we didn't have to specify `auc.json` as a [plot in the stage]. In
-fact, [top-level plots] can use any file in the <abbr>project</abbr>.
+Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
+In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
 
-[plot in the stage]: /doc/command-reference/plots#stage-plots
+[plot output]: /doc/command-reference/plots#stage-plots
 
 ## dvc.lock file
 
