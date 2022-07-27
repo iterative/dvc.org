@@ -117,7 +117,7 @@ configuration. Note, that if there are stage plots in the project and they are
 also used in some top-level definitions, DVC will create separate rendering for
 the stage plots and all definitions using them.
 
-This special type of outputs might come in hand if users want to visually
+This special type of outputs might come in handy if users want to visually
 compare experiments results with other experiments versions and not bother with
 writing top-level plot definitions in `dvc.yaml`.
 
