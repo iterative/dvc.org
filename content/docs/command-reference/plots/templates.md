@@ -1,4 +1,4 @@
-# plot templates
+# plots templates
 
 Dump built-in plot templates to JSON files you can customize.
 
