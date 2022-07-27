@@ -125,12 +125,12 @@ writing top-level plot definitions into the `dvc.yaml`.
 
 ### Top-level plots
 
-Plots can be defined in `dvc.yaml` under the `plots` key. Unlike [stage plots],
-these are especially useful when users want to compare data from different data
-sources residing on the same version of the project, for example comparing
-training versus test results on current branch. They also allow to visualize
-data from files that are not [stage plots]. These are an abstraction separating
-visualization from particular stage output. Let's look at their syntax next.
+Plots can also be defined in a top-level `plots` key in `dvc.yaml`. Unlike
+[stage plots], these definitions let you overlay plots from different data
+sources, for example training vs. test results (on the current project version).
+Conversely, you can create multiple plots from a single source file. You can
+also any plot file in the project, regardless of whether it's a stage outputs.
+This creates a separation between visualization and outputs.
 
 [stage plots]: #stage-plots
 
