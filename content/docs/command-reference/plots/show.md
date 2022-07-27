@@ -15,7 +15,7 @@ usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [targets [targets ...]]
 
 positional arguments:
-  targets               Plots files or plot id's from `dvc.yaml` to
+  targets               Plots files or plot IDs from `dvc.yaml` to
                         visualize. Shows all plots by default.
 ```
 
@@ -29,15 +29,19 @@ All plots defined in `dvc.yaml` are used by default, but specific plots files or
 [top-level plot] IDs can be specified as `targets` (note that target files don't
 necessarily have to be defined in `dvc.yaml`).
 
+The plot style can be customized with [plot templates], using the `--template`
+option. To learn more about plots file formats and templates, see `dvc plots`.
+
+<admon type="tip">
+
+The default behavior of this command can be modified per [stage plot] with
+`dvc plots modify`.
+
+</admon>
+
+[plot templates]: /doc/command-reference/plots#plot-templates
 [top-level plot]: /doc/command-reference/plots#top-level-plots
-
-The plot style can be customized with
-[plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about plots file formats and templates please
-see `dvc plots`.
-
-> Note that the default behavior of this command can be modified per plots file
-> with `dvc plots modify`.
+[stage plot]: /doc/command-reference/plots#stage-plots
 
 ## Options
 
