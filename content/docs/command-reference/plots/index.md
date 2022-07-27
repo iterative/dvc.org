@@ -141,10 +141,10 @@ stages: ...
 plots: ...
 ```
 
-Every plots has to have its own ID. Configuration, if provided, should be a
+Every plot has to have its own ID. Configuration, if provided, should be a
 dictionary.
 
-In simplest use case, user can provide file path as the plot ID and don't
+In the simplest use case, a user can provide the file path as the plot ID and not
 provide configuration at all:
 
 ```yaml
