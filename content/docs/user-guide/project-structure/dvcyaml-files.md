@@ -480,7 +480,7 @@ validation and auto-completion.
 The list of `plots` contains one or more user-defined `dvc plots` (paths
 relative to the location of `dvc.yaml`).
 
-This example that makes output `auc.json` viable for visualization, configuring
+This example makes output `auc.json` viable for visualization, configuring
 keys `fpr` and `tpr` as X and Y axis, respectively:
 
 ```yaml
