@@ -34,6 +34,49 @@ this topic and show how CML works in conjunction with Bitbucket's CI/CD.
 
 In this guide, we will explore how to we can use CML to:
 
-- Provision an AWS EC2 instance from a Bitbucket pipeline
+- Provision an EC2 instance on Amazon Web Services (AWS) from a Bitbucket
+  pipeline
 - Train a machine learning model on the provisioned instance
 - Export the resulting model to our Bitbucket repository
+
+This approach allows us to integrate our model (re)training into our CI/CD.
+While we could use Bitbucket's own runners for our model training, those have
+[their
+limits](https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/)
+when it comes to memory, storage, and processing power. Self-hosted runners on
+provisioned cloud instances let us work around these limitations: we can get a
+runner with specifications that are tailored to our computing needs.
+
+A major benefit to using CML is that it can provision spot instances. This way
+we can leverage cloud resources at the cheapest possible rates.
+
+# Before we start
+
+If you want to follow along with this guide, it's probably worth taking a look
+at the [Getting started section of the CML
+docs](https://cml.dev/doc/start/bitbucket). The docs cover the following
+prerequisite steps you'll need to take if you want to follow along with this
+blogpost:
+
+1. [Generate a `REPO_TOKEN` and set it as a repository
+   variable](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token).
+2. [Install the _Pull Request Commit Links app_ in your Bitbucket
+   workspace](https://cml.dev/doc/ref/send-comment#bitbucket)
+
+Additionally, you will need to take the following steps to allow Bitbucket to
+provision AWS EC2 on your behalf:
+
+1. [Create an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on
+   AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
+2. [Add the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as repository
+   variables](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/)
+
+<admon type="warn">
+
+In this example we are provisioning a `t2.micro` [AWS EC2
+instance](https://aws.amazon.com/ec2/instance-types/). At the time of writing
+this is included in the AWS free tier. Make sure that you qualify for this free
+usage to prevent unexpected spending. When you specify a bulkier
+<code>cloud-type</code>, your expenses will rise.
+
+</admon>
