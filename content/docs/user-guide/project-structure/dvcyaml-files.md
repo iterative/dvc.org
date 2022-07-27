@@ -425,7 +425,7 @@ These are the fields that are accepted in each stage:
 | `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
 | `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
-| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields). Any output is viable data source for [top-level plots](/doc/command-reference/plots#top-level-plot-definitions).                                 |
+| `outs`           | List of stage <abbr>output</abbr> paths (relative to `wdir`). These can contain optional [subfields](#output-subfields). Some output may be viable data sources for [top-level plots].                                                                                                    |
 | `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
@@ -447,6 +447,8 @@ validation and auto-completion.
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
 
+[top-level plots]: /doc/command-reference/plots#top-level-plots
+
 ### Output subfields
 
 > These include a subset of the fields in `.dvc` file
@@ -465,9 +467,8 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of plots contains one or more user-defined
-[plots](/doc/command-reference/plots#top-level-plot-definitions). Here's an
-example that tells DVC that `auc.json` is viable for visualization:
+The list of `plots` contains one or more user-defined `dvc plots`. Here's an
+example that makes output `auc.json` viable for visualization:
 
 ```yaml
 stages:
@@ -487,10 +488,10 @@ plots:
     y: tpr
 ```
 
-Note that we didn't have to specify `auc.json` as a plot in the stage. In fact,
-[top-level `plots`] can use any file in the <abbr>project</abbr>.
+Note that we didn't have to specify `auc.json` as a [plot in the stage]. In
+fact, [top-level plots] can use any file in the <abbr>project</abbr>.
 
-[top-level `plots`]: /doc/command-reference/plots#top-level-plot-definitions
+[plot in the stage]: /doc/command-reference/plots#stage-plots
 
 ## dvc.lock file
 
