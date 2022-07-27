@@ -52,11 +52,12 @@ we can leverage cloud resources at the cheapest possible rates.
 
 # Before we start
 
-If you want to follow along with this guide, it's probably worth taking a look
-at the [Getting started section of the CML
-docs](https://cml.dev/doc/start/bitbucket). The docs cover the following
-prerequisite steps you'll need to take if you want to follow along with this
-blogpost:
+You can clone the repository for this guide [here]().
+
+If you want to follow along, it's probably worth taking a look at the [Getting
+started section of the CML docs](https://cml.dev/doc/start/bitbucket) first. The
+docs cover the following prerequisite steps you'll need to take if you want to
+follow along with this blogpost:
 
 1. [Generate a `REPO_TOKEN` and set it as a repository
    variable](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token).
@@ -80,3 +81,70 @@ usage to prevent unexpected spending. When you specify a bulkier
 <code>cloud-type</code>, your expenses will rise.
 
 </admon>
+
+# Implementing the CML Bitbucket pipeline
+
+The main point of interest in the project repository is the
+`bitbucket-pipelines.yml` file. Bitbucket will automatically recognize this file
+as the one containing our pipeline configuration. In our case, we have defined
+one pipeline (named `default`) that consists of two steps.
+
+## Launch self-hosted runner
+
+In the first step we specify the runner we want to provision. We use CML as our
+image, and configure a runner on an `m5.2xlarge` machine, based in the `us-west`
+region. Of particular interest here is the `--cloud-spot` option, which ensures
+that CML will provision a spot instance rather than an on-demand one.
+
+At the time of writing, a spot instance costs $0.xx per hour, whereas an
+on-demand instance costs $0.xx per hour. Profit!
+
+```yaml
+- step:
+        image: iterativeai/cml:0-dvc2-base1
+        script:
+          - |
+            cml runner \
+                --cloud=aws \
+                --cloud-region=us-west \
+                --cloud-type=m5.2xlarge \ # TODO: change
+                --cloud-spot \
+                --labels=cml
+```
+
+## Train model on self-hosted runner
+
+The second step in our pipeline defines the model training task. We specify that
+this step should run on the `[self.hosted, cml]` runner we provisioned above.
+From here, our script defines the individual commands as we could also run them
+in our local terminal.
+
+```yaml
+- step:
+        runs-on: [self.hosted, cml]
+        image: iterativeai/cml:0-dvc2-base1
+        # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
+        script:
+          - pip install -r requirements.txt
+          - python get_data.py
+          - python train.py
+          # Create pull request
+          - cml pr model/random_forest.joblib
+
+          # Create CML report
+          - cat model/metrics.txt > report.md
+          - cml publish model/confusion_matrix.png --md --title="Confusion Matrix" >> report.md
+          - cml send-comment --pr --update report.md
+```
+
+First we install our requirements, and then we run our data loading and model
+training scripts. At this point, our runner contains our newly trained model. We
+need to take a few extra steps to do something with that model, however.
+Otherwise our results would be lost when CML terminates the instance upon
+completion of our pipeline.
+
+To save our model, we create a pull request with `cml pr`. We then also create a
+CML report that displays the model performance in that pull request. `cml
+publish` adds the confusion matrix created in `train.py` to the pull request,
+and `cml send-comment` updates the description of the pull request to the
+contents of `report.md` (i.e., our `metrics.txt`).
