@@ -52,8 +52,8 @@ epoch, AUC, loss
 Hierarchical file formats such as JSON and YAML consists of an array of
 consistent objects (sharing a common structure): All objects should contain the
 fields used for the X and Y axis of the plot (see
-[DVC template anchors](/doc/user-guide/plots#custom-templates)); Extra
-elements will be ignored silently.
+[DVC template anchors](/doc/user-guide/plots#custom-templates)); Extra elements
+will be ignored silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
 them, from the array's objects. For example, `val_loss` is one of the field
@@ -131,8 +131,8 @@ plots:
 
 In that case the default behavior will be applied. DVC will take data from
 `logs.csv` file and apply `linear` plot
-[template](/doc/user-guide/plots#plot-templates) to the last found column
-(CSV, TSV files) or field (JSON, YAML).
+[template](/doc/user-guide/plots#plot-templates) to the last found column (CSV,
+TSV files) or field (JSON, YAML).
 
 We can customize the plot by adding appropriate fields to the configuration:
 
@@ -303,8 +303,8 @@ container where DVC will inject plots it generates.
 
 The only requirement for this HTML file is to specify the place to inject plots
 with a `{plot_divs}` marker. See an
-[example](/doc/user-guide/plots#example-offline-html-template) that uses
-this feature to render DVC plots without an Internet connection, below.
+[example](/doc/user-guide/plots#example-offline-html-template) that uses this
+feature to render DVC plots without an Internet connection, below.
 
 ## Example: Offline HTML Template
 
