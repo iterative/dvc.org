@@ -75,11 +75,11 @@ provision AWS EC2 on your behalf:
 
 <admon type="warn">
 
-In this example we are provisioning a `t2.micro` [AWS EC2
-instance](https://aws.amazon.com/ec2/instance-types/). At the time of writing
-this is included in the AWS free tier. Make sure that you qualify for this free
-usage to prevent unexpected spending. When you specify a bulkier
-<code>cloud-type</code>, your expenses will rise.
+In this example we will be provisioning a `m5.2xlarge` [AWS EC2
+instance](https://aws.amazon.com/ec2/instance-types/). Be aware that this
+instance is not included in the free tier, and Amazon will charge you for your
+usage. CML will automatically terminate the instance upon completion of the
+pipeline, however.
 
 </admon>
 
@@ -149,6 +149,10 @@ CML report that displays the model performance in that pull request. `cml
 publish` adds the confusion matrix created in `train.py` to the pull request,
 and `cml send-comment` updates the description of the pull request to the
 contents of `report.md` (i.e., our `metrics.txt`).
+
+That's all there is to it! Once the pull request has been created, we can merge
+it on Bitbucket. CML will automatically terminate the provisioned instance upon
+completion of the pipeline, thus preventing us from racking up our AWS expenses.
 
 # Conclusions
 
