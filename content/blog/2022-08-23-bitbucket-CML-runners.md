@@ -32,7 +32,7 @@ release](https://github.com/iterative/cml/releases/tag/v0.16.0) incorporated
 support for self-hosted runners in Bitbucket Pipelines: a good excuse to revisit
 this topic and show how CML works in conjunction with Bitbucket's CI/CD.
 
-In this guide, we will explore how to we can use CML to:
+In this guide, we will explore how we can use CML to:
 
 - Provision an EC2 instance on Amazon Web Services (AWS) from a Bitbucket
   pipeline
@@ -58,7 +58,7 @@ You can clone the repository for this guide
 If you want to follow along, it's probably worth taking a look at the [Getting
 started section of the CML docs](https://cml.dev/doc/start/bitbucket) first. The
 docs cover the following prerequisite steps you'll need to take if you want to
-follow along with this blogpost:
+follow along with this blog post:
 
 1. [Generate a `REPO_TOKEN` and set it as a repository
    variable](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token).
@@ -75,7 +75,7 @@ provision AWS EC2 on your behalf:
 
 <admon type="warn">
 
-In this example we will be provisioning a `m5.2xlarge` [AWS EC2
+In this example, we will be provisioning a `m5.2xlarge` [AWS EC2
 instance](https://aws.amazon.com/ec2/instance-types/). Be aware that this
 instance is not included in the free tier, and Amazon will charge you for your
 usage. CML will automatically terminate the instance upon completion of the
@@ -92,7 +92,7 @@ one pipeline (named `default`) that consists of two steps.
 
 ## Launch self-hosted runner
 
-In the first step we specify the runner we want to provision. We use CML as our
+In the first step, we specify the runner we want to provision. We use CML as our
 image, and configure a runner on an `m5.2xlarge` machine, based in the `us-west`
 region. Of particular interest here is the `--cloud-spot` option, which ensures
 that CML will provision a spot instance rather than an on-demand one.
@@ -138,10 +138,10 @@ in our local terminal.
           - cml send-comment --pr --update report.md
 ```
 
-First we install our requirements, and then we run our data loading and model
+First, we install our requirements, and then we run our data loading and model
 training scripts. At this point, our runner contains our newly trained model. We
 need to take a few extra steps to do something with that model, however.
-Otherwise our results would be lost when CML terminates the instance upon
+Otherwise, our results would be lost when CML terminates the instance upon
 completion of our pipeline.
 
 To save our model, we create a pull request with `cml pr`. We then also create a
