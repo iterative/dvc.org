@@ -602,10 +602,10 @@ for a full guide on using Google Drive as DVC remote storage.
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
 
-- `profile` - name for the GDrive credentials cache directory (part of the
-  global `gdrive_user_credentials_file` path). By default, credentials are cached
-  per `gdrive_client_id `, but you can set a custom profile name instead, for
-  example to avoid using the wrong user's credentials accidentally.
+- `profile` - name for the GDrive credentials file (see also
+  `gdrive_user_credentials_file` above). By default, credentials are cached per
+  client ID but you can set a custom profile name instead, for example to avoid
+  using the wrong user's credentials accidentally.
 
   ```cli
   $ dvc remote modify --local myremote profile myprofile
