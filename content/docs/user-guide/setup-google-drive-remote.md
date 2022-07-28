@@ -205,9 +205,9 @@ commit** this file with Git. Instead, add it into `.gitignore` and never share
 it with other people.
 
 If you wish to change the user you have authenticated with, or for
-troubleshooting misc. token errors, you can remove the user credentials file
-and authorize again. Alternatively you can use a custom `profile`-based
-credential cache (instead of the default, `gdrive_client_id`-based one):
+troubleshooting misc. token errors, you can remove the user credentials file and
+authorize again. Alternatively you can use a custom `profile`-based credential
+cache (instead of the default, `gdrive_client_id`-based one):
 
 ```
 $ dvc remote modify --local myremote profile myuser
