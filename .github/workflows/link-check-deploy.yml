@@ -1,52 +1,6 @@
 name: Check new links against deployment
 on:
-  - deployment_status
+  deployment_status:
 jobs:
   run:
-    name: Run
-    runs-on: ubuntu-latest
-    if:
-      github.event.deployment.ref != 'main' &&
-      github.event.deployment_status.state == 'success'
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Run Link Check
-        id: check
-        run: |
-          set +e
-          body="$(
-            npx repo-link-check \
-            -d -c config/link-check/config.yml \
-            -r ${{ github.event.deployment.payload.web_url }}
-          )"
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
-          echo "::set-output name=report::$body"
-          exit 0
-
-      - name: Find Current Pull Request
-        id: findPr
-        uses: jwalton/gh-find-current-pr@v1.3.0
-
-      - name: Find Existing Link Check Report Comment
-        uses: peter-evans/find-comment@v2
-        id: findComment
-        continue-on-error: true
-        with:
-          issue-number: ${{ steps.findPr.outputs.pr }}
-          comment-author: 'github-actions[bot]'
-          body-includes: <h1 id="link-check">Link Check Report</h1>
-
-      - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          issue-number: ${{ steps.findPr.outputs.pr }}
-          comment-id: ${{ steps.findComment.outputs.comment-id }}
-          body: |
-            <h1 id="link-check">Link Check Report</h1>
-
-            ${{ steps.check.outputs.report }}
-          edit-mode: replace
+    uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@v0.13.0
