@@ -590,9 +590,9 @@ for a full guide on using Google Drive as DVC remote storage.
   `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (see also `profile`
   below), where the`CACHE_HOME` location per platform is:
 
-  | macOS              | Linux  (\*typical) | Windows                 |
-  | ------------------ | ------------------ | ----------------------- |
-  | `~/Library/Caches` | `~/.cache`         | `%CSIDL_LOCAL_APPDATA%` |
+  | macOS              | Linux (\*typical) | Windows                 |
+  | ------------------ | ----------------- | ----------------------- |
+  | `~/Library/Caches` | `~/.cache`        | `%CSIDL_LOCAL_APPDATA%` |
 
   ```dvc
   $ dvc remote modify myremote \
