@@ -56,7 +56,7 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 
 Output files may be viable data sources for [top-level plots].
 
-[top-level plots]: /doc/command-reference/plots#top-level-plots
+[top-level plots]: /doc/user-guide/plots#top-level-plots
 
 </admon>
 
@@ -477,7 +477,7 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined `dvc plots` (paths
+The list of `plots` contains one or more user-defined [top-level plots] (paths
 relative to the location of `dvc.yaml`).
 
 This example makes output `auc.json` viable for visualization, configuring keys
@@ -504,7 +504,8 @@ plots:
 Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
 In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
 
-[plot output]: /doc/command-reference/plots#stage-plots
+[top-level plots]: /doc/user-guide/plots#top-level-plots
+[plot output]: /doc/user-guide/plots#stage-plots
 
 ## dvc.lock file
 

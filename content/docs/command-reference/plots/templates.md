@@ -31,9 +31,9 @@ Note that templates can only be used with [data-series plots].
 </admon>
 
 [plot templates]:
-  https://dvc.org/doc/command-reference/plots#plot-templates-data-series-only
+  https://dvc.org/doc/user-guide/plots#plot-templates-data-series-only
 [vega-lite specification]: https://vega.github.io/vega-lite/
-[data-series plots]: /doc/command-reference/plots#description
+[data-series plots]: /doc/user-guide/plots#description
 
 ## Options
 

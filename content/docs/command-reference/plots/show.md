@@ -3,7 +3,7 @@
 Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
 [top-level definition] from `dvc.yaml`.
 
-[top-level definition]: /doc/command-reference/plots#top-level-plots
+[top-level definition]: /doc/user-guide/plots#top-level-plots
 
 ## Synopsis
 
@@ -22,7 +22,7 @@ positional arguments:
 ## Description
 
 This command provides a quick way to visualize
-[certain data](/doc/command-reference/plots#supported-file-formats) such as loss
+[certain data](/doc/user-guide/plots#supported-file-formats) such as loss
 functions, AUC curves, confusion matrices, etc.
 
 All plots defined in `dvc.yaml` are used by default, but specific plots files or
@@ -39,9 +39,9 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
-[plot templates]: /doc/command-reference/plots#plot-templates
-[top-level plot]: /doc/command-reference/plots#top-level-plots
-[stage plot]: /doc/command-reference/plots#stage-plots
+[plot templates]: /doc/user-guide/plots#plot-templates
+[top-level plot]: /doc/user-guide/plots#top-level-plots
+[stage plot]: /doc/user-guide/plots#stage-plots
 
 ## Options
 
@@ -50,13 +50,13 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/command-reference/plots#plot-templates) to be injected
+  [plot template](/doc/user-guide/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
-  [Custom templates](/doc/command-reference/plots#custom-templates) for more
+  [Custom templates](/doc/user-guide/plots#custom-templates) for more
   information on this `index` field. Column names or numbers are expected for
   tabular plots files.
 
@@ -80,7 +80,7 @@ The default behavior of this command can be modified per [stage plot] file with
   A 0-based numeric index can be used to identify each column instead of names.
 
 - `--html-template <path>` - path to a
-  [custom HTML template](/doc/command-reference/plots#html-templates).
+  [custom HTML template](/doc/user-guide/plots#html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
