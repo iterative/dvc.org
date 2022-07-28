@@ -127,8 +127,8 @@ Plots can also be defined in a top-level `plots` key in `dvc.yaml`. Unlike
 [stage plots](#stage-plots), these definitions let you overlay plots from
 different data sources, for example training vs. test results (on the current
 project version). Conversely, you can create multiple plots from a single source
-file. You can also use any plot file in the project, regardless of whether it's a
-stage outputs. This creates a separation between visualization and outputs.
+file. You can also use any plot file in the project, regardless of whether it's
+a stage outputs. This creates a separation between visualization and outputs.
 
 In order to define the plot users need to provide data and an optional
 configuration for the plot. The plots should be defined in `dvc.yaml` file under
@@ -144,8 +144,8 @@ plots: ...
 Every plot has to have its own ID. Configuration, if provided, should be a
 dictionary.
 
-In the simplest use case, a user can provide the file path as the plot ID and not
-provide configuration at all:
+In the simplest use case, a user can provide the file path as the plot ID and
+not provide configuration at all:
 
 ```yaml
 # dvc.yaml
