@@ -56,21 +56,21 @@ for more details.
 > repository, if your metrics are in some custom files, if you are connecting to
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
 > you can configure the project settings after the project has been created. So,
-> you can `Skip and Continue` now. Refer to the
-> [Project Settings](/doc/studio/user-guide/projects/project-settings) section
-> for more details.
+> you can `Skip and Continue` now. Refer to the [Project Settings] section for
+> more details.
 
 You should now see that a project has been added in your dashboard.
 
 5. If your project requires any of the additional settings, then remember to
-   configure them by opening the
-   [project settings](/doc/studio/user-guide/projects/project-settings).
-   Otherwise, your project may not work as expected. To go to project settings,
-   click on the
+   configure them by opening the [project settings]. Otherwise, your project may
+   not work as expected. To go to project settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the project. In the menu that opens up, click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/project_open_settings.png)
+
+[project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project
 
 ## Create multiple projects from a single Git repository
 
@@ -83,12 +83,14 @@ each one in a different sub-directory.
 
 For each ML project in the monorepo, follow the
 [above process](#connect-to-a-git-repository-and-add-a-project) to connect to
-the Git repository. Then go to
-[project settings](/doc/studio/user-guide/projects/project-settings#project-directory),
-and specify the sub-directory in which the desired ML project resides.
+the Git repository. Then go to the project settings, and [specify the
+sub-directory] in which the desired ML project resides.
 
 This way, you will have multiple Iterative Studio projects for your single Git
 repository, with each project presenting values from a different sub-directory.
+
+[specify the sub-directory]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#project-directory
 
 ## Create projects shared across a team
 

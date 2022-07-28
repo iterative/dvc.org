@@ -1,11 +1,11 @@
-# Iterative Studio GitHub App Installation
+# Install the Iterative Studio GitHub App
 
-If you are using a GitHub account, you will have to install the Iterative Studio
-GitHub app on the GitHub repositories/organizations that you want to use with
-Iterative Studio. When you try to add a project, if the app is not already
-installed, Iterative Studio will not be able to fetch the list of your GitHub
-repositories. In this case, you will be prompted to configure Git integrations
-as shown below.
+If you are using a GitHub account, you can install the Iterative Studio App on
+the repositories or organizations that you want to use it with.
+
+When you try to create a project, if the app is not already installed, Iterative
+Studio will not be able to fetch the list of your GitHub repositories. In this
+case, you will be prompted to configure Git integrations as shown below.
 
 ![](https://static.iterative.ai/img/studio/configure_git_integrations_v2.png)
 

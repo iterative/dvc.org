@@ -27,12 +27,11 @@ actual,predicted
 > We added a [loop] comparing the results to generate this file from the
 > predictions.
 
-[loop]:
-  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L123
-[confusion matrix]: https://en.wikipedia.org/wiki/Confusion_matrix
-
 Running the experiment with `dvc exp run` will produce `plots/confusion.csv`.
-Use `dvc plots show` to present it as an HTML file, and open it in the browser:
+You can run `dvc plots show` on your terminal to generate and embed them in an
+HTML file you can open in the browser (shown below). Or you can load your
+project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
+visualize them.
 
 ```dvc
 $ dvc plots show plots/confusion.csv --template confusion \
@@ -41,6 +40,14 @@ file:///.../example-dvc-experiments/plots/confusion.json.html
 ```
 
 ![confusion matrix](/img/start_visualization_confusion1.png)
+
+[confusion matrix]: https://en.wikipedia.org/wiki/Confusion_matrix
+[loop]:
+  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L123
+[plots dashboard]:
+  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
+[dvc extension]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 
 ## Displaying user-generated plot images
 
@@ -55,7 +62,7 @@ project.][misclassified-example-code]
   https://github.com/iterative/example-dvc-experiments/blob/48b1e5078c957f71674c00f416290eaa3b20b559/src/util.py#L49
 
 ```dvc
-$ dvc plots show plots/misclassified.png
+$ dvc plots show --open plots/misclassified.png
 ```
 
 ![Misclassification table](/img/start_visualization_misclassification.png)
