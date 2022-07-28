@@ -26,7 +26,7 @@ positional arguments:
 
 It might be not convenient for users or automation systems to specify all the
 _display properties_ (such as `y-label`, `template`, `title`, etc.) each time
-plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
+plots are generated with `dvc plots show` or `dvc plots diff`. This command sets
 (or unsets) default display properties for a specific plots file.
 
 The path to the plots file `target` is required. It must be listed in a

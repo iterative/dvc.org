@@ -319,7 +319,7 @@ information on how to prepare your own template from pre-defined ones.
 
 ## Custom HTML templates
 
-It's possible to supply an HTML file to `dvc plot show` and `dvc plot diff` by
+It's possible to supply an HTML file to `dvc plots show` and `dvc plots diff` by
 using the the `--html-template` option. This allows you to customize the
 container where DVC will inject plots it generates.
 

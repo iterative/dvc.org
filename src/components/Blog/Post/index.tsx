@@ -20,6 +20,7 @@ import PageContent from '../../PageContent'
 import SubscribeSection from '../../SubscribeSection'
 
 import * as styles from './styles.module.css'
+import patchHtmlAst from '@dvcorg/gatsby-theme-iterative/src/utils/front/patchHtmlAst'
 
 const Post: React.FC<IBlogPostData> = ({
   htmlAst,
@@ -35,6 +36,7 @@ const Post: React.FC<IBlogPostData> = ({
   author: { name, avatar, links },
   slug
 }) => {
+  const patchedHtmlAst = patchHtmlAst(htmlAst)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const { width, height } = useWindowSize()
   const { y } = useWindowScroll()
@@ -88,7 +90,7 @@ const Post: React.FC<IBlogPostData> = ({
           <HeroPic picture={picture} pictureComment={pictureComment} />
 
           <div className={styles.content}>
-            <Markdown htmlAst={htmlAst} />
+            <Markdown htmlAst={patchedHtmlAst} />
           </div>
           {tags && (
             <div className={styles.tags}>

@@ -5,12 +5,4 @@ on:
     - cron: '0 0 * * *'
 jobs:
   run:
-    name: Link Check All
-    runs-on: ubuntu-latest
-    env:
-      NODE_OPTIONS: '--max-http-header-size=65536'
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Link Check
-        id: check
-        run: npx repo-link-check -d -c config/link-check/config.yml
+    uses: iterative/link-check/.github/workflows/link-check-all.yml@v0.13.0
