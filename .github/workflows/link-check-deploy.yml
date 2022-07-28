@@ -1,59 +1,6 @@
 name: Check new links against deployment
-# This workflow "triggers" and skips on deployment because GitHub Actions /
-# Checks refuses to show the check on deployment_status
 on:
-  - deployment_status
+  deployment_status:
 jobs:
   run:
-    name: Run
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    if:
-      github.event.deployment.ref != 'main' &&
-      github.event.deployment_status.state == 'success'
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Run Link Check
-        id: check
-        run: |
-          set +e
-          body="<h1 id=\"link-check\">Link Check Report</h1>
-
-          $(
-            npx repo-link-check \
-            -d -c config/link-check/config.yml \
-            -r ${{ github.event.deployment.payload.web_url }}
-          )"
-          body="${body//'%'/'%25'}"
-          body="${body//$'\n'/'%0A'}"
-          body="${body//$'\r'/'%0D'}"
-          echo "::set-output name=report::$body"
-          exit 0
-
-      - name: Find PR associated with deployment
-        uses: actions/github-script@v6
-        id: pr-number
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          script: |
-            const findPR = require('./.github/workflows/deployment-report.js')
-            return await findPR({ github, context, core })
-
-      - name: Find Existing Link Check Report Comment
-        uses: peter-evans/find-comment@v2
-        id: fc
-        with:
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          comment-author: 'github-actions[bot]'
-          body-includes: "<h1 id=\"link-check\">Link Check Report</h1>"
-
-      - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          body: ${{ steps.check.outputs.report }}
-          edit-mode: replace
+    uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@v0.13.0

@@ -54,7 +54,19 @@ If it writes files or directories, these can be defined as <abbr>outputs</abbr>
 (`outs`). DVC will track them going forward (similar to using `dvc add` on
 them).
 
-The full [stage entry](#stage-entries) specification can be found further down.
+<admon type="tip">
+
+Output files may be viable data sources for [top-level plots].
+
+[top-level plots]: /doc/command-reference/plots#top-level-plots
+
+</admon>
+
+<admon type="info">
+
+See the full stage entry [specification](#stage-entries).
+
+</admon>
 
 ### Parameter dependencies
 
@@ -480,6 +492,40 @@ stages:
       outs:
         - ${item.prop2}
 ```
+
+> Note that this feature is not compatible with [templating](#templating) at the
+> moment.
+
+## Top-level plot definitions
+
+The list of `plots` contains one or more user-defined `dvc plots` (paths
+relative to the location of `dvc.yaml`).
+
+This example makes output `auc.json` viable for visualization, configuring keys
+`fpr` and `tpr` as X and Y axis, respectively:
+
+```yaml
+stages:
+  build:
+    cmd: python train.py
+    deps:
+      - features.csv
+    outs:
+      - model.pt
+      - auc.json
+    metrics:
+      - accuracy.txt:
+          cache: false
+plots:
+  auc.json:
+    x: fpr
+    y: tpr
+```
+
+Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
+In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
+
+[plot output]: /doc/command-reference/plots#stage-plots
 
 ## dvc.lock file
 

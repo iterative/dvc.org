@@ -36,9 +36,9 @@ These locations can be customized through the [command options](#options) or via
 └── src/
 ```
 
-The only required argument is the terminal command that runs your experiment(s).
-It can be provided directly [as an argument](#the-command-argument) or by using
-the `--interactive` (`-i`) mode (which will prompt for it). The command will be
+The only required argument is the terminal `command` that runs your
+experiment(s). It can be provided directly [as an argument] or by using the
+`--interactive` (`-i`) mode (which will prompt for it). The command will be
 wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
 <admon type="tip">
@@ -63,28 +63,8 @@ See the `dvc.yaml` specification for more complex data pipelines.
   /doc/user-guide/project-structure/dvcyaml-files#stage-entries
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
-
-### The `command` argument
-
-The command given to `dvc exp init` can be anything your system terminal would
-accept and run directly, for example a shell built-in, an expression, or a
-binary found in `PATH`. Please note that any flags sent after the `command`
-argument will normally become part of that command itself and ignored by
-`dvc exp init` (so provide it last).
-
-⚠️ While DVC is platform-agnostic, commands defined in `dvc.yaml` (`cmd` field)
-may only work on some operating systems and require certain software packages or
-libraries in the environment.
-
-Surround the command with double quotes `"` if it includes special characters
-like `|` or `<`, `>` -- otherwise they would apply to `dvc exp init` itself. Use
-single quotes `'` instead if there are environment variables in it that should
-be evaluated dynamically.
-
-```dvc
-$ dvc exp init "./a_script.sh > /dev/null 2>&1"
-$ dvc exp init './another_script.sh $MYENVVAR'
-```
+[as an argument]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
 
 ## Options
 

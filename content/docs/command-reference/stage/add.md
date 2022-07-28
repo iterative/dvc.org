@@ -27,8 +27,15 @@ update an existing stage, overwrite it with the `-f` (`--force`) option.
 A stage name is required and can be provided using the `-n` (`--name`) option.
 Most of the other [options](#options) help with defining different kinds of
 [dependencies and outputs](#dependencies-and-outputs) for the stage. The
-remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
-become the required [`command` argument](#the-command-argument).
+remaining terminal input provided to `dvc stage add` after any options/flags
+will become the required [`command` argument].
+
+<admon type="info">
+
+`-`/`--` flags sent after the `command` become part of the command itself and
+are ignored by `dvc stage add`.
+
+</admon>
 
 Stages whose outputs become dependencies for other stages form
 <abbr>pipelines</abbr>. `dvc repro` can be used to rebuild this [dependency
@@ -43,26 +50,8 @@ See the guide on [defining pipeline stages] for more details.
 
 </admon>
 
-### The `command` argument
-
-The `command` sent to `dvc stage add` can be anything your terminal would accept
-and run directly, for example a shell built-in, expression, or binary found in
-`PATH`. Please remember that any flags sent after the `command` are considered
-part of the command itself, not of `dvc stage add`.
-
-⚠️ While DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/dag) stages may only work on some operating
-systems and require certain software packages to be installed.
-
-Wrap the command with double quotes `"` if there are special characters in it
-like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc stage add` itself. Use single quotes `'` instead if there are environment
-variables in it that should be evaluated dynamically. Examples:
-
-```cli
-$ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc stage add -n second_stage './another_script.sh $MYENVVAR'
-```
+[`command` argument]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
 
 ### Dependencies and outputs
 

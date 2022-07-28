@@ -1,6 +1,9 @@
 # plots show
 
-Generate [plot](/doc/command-reference/plots) from a metrics file.
+Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
+[top-level definition] from `dvc.yaml`.
+
+[top-level definition]: /doc/command-reference/plots#top-level-plots
 
 ## Synopsis
 
@@ -12,32 +15,39 @@ usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [targets [targets ...]]
 
 positional arguments:
-  targets               Metrics files to visualize.
-                        Shows all plots by default.
+  targets               Plots files or plot IDs from `dvc.yaml` to
+                        visualize. Shows all plots by default.
 ```
 
 ## Description
 
 This command provides a quick way to visualize
-[certain metrics](/doc/command-reference/plots#supported-file-formats) such as
-loss functions, AUC curves, confusion matrices, etc.
+[certain data](/doc/command-reference/plots#supported-file-formats) such as loss
+functions, AUC curves, confusion matrices, etc.
 
-All plots defined in `dvc.yaml` are used by default, but specific plots files
-can be specified as `targets` (note that targets don't necessarily have to be
-defined in `dvc.yaml`).
+All plots defined in `dvc.yaml` are used by default, but specific plots files or
+[top-level plot] IDs can be specified as `targets` (note that target files don't
+necessarily have to be defined in `dvc.yaml`).
 
-The plot style can be customized with
-[plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about metrics file formats and templates
-please see `dvc plots`.
+The plot style can be customized with [plot templates], using the `--template`
+option. To learn more about plots file formats and templates, see `dvc plots`.
 
-> Note that the default behavior of this command can be modified per metrics
-> file with `dvc plots modify`.
+<admon type="tip">
+
+The default behavior of this command can be modified per [stage plot] file with
+`dvc plots modify`.
+
+</admon>
+
+[plot templates]: /doc/command-reference/plots#plot-templates
+[top-level plot]: /doc/command-reference/plots#top-level-plots
+[stage plot]: /doc/command-reference/plots#stage-plots
 
 ## Options
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
-  containing the plots (`dvc_plots/` by default).
+  containing the plots. The default is `dvc_plots` or the value set with the
+  [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
@@ -48,11 +58,11 @@ please see `dvc plots`.
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
   information on this `index` field. Column names or numbers are expected for
-  tabular metrics files.
+  tabular plots files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `targets` is used by default. Column names or numbers are
-  expected for tabular metrics files.
+  expected for tabular plots files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
@@ -143,15 +153,11 @@ file:///Users/usr/src/dvc_plots/index.html
 We'll use tabular metrics file `logs.csv` for these examples:
 
 ```
-epoch,accuracy,loss,val_accuracy,val_loss
-0,0.9418667,0.19958884770199656,0.9679,0.10217399864746257
-1,0.9763333,0.07896138601688048,0.9768,0.07310650711813942
-2,0.98375,0.05241111190887168,0.9788,0.06665669009438716
-3,0.98801666,0.03681169906261687,0.9781,0.06697812260198989
-4,0.99111664,0.027362171787042946,0.978,0.07385754839298315
-5,0.9932333,0.02069501801203781,0.9771,0.08009233058886166
-6,0.9945,0.017702101902437668,0.9803,0.07830339228538505
-7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
+epoch,loss,accuracy
+1,0.19,0.81
+2,0.11,0.89
+3,0.07,0.93
+4,0.04,0.96
 ```
 
 <details>
@@ -161,15 +167,11 @@ epoch,accuracy,loss,val_accuracy,val_loss
 Here's a corresponding `train.tsv` metrics file:
 
 ```
-epoch    accuracy    loss    val_accuracy    val_loss
-0    0.9418667    0.19958884770199656     0.9679    0.10217399864746257
-1    0.9763333    0.07896138601688048     0.9768    0.07310650711813942
-2    0.98375      0.05241111190887168     0.9788    0.06665669009438716
-3    0.988016     0.03681169906261687     0.9781    0.06697812260198989
-4    0.991116     0.027362171787042946    0.978     0.07385754839298315
-5    0.9932333    0.02069501801203781     0.9771    0.08009233058886166
-6    0.9945       0.017702101902437668    0.9803    0.07830339228538505
-7    0.9954       0.01396906608727198     0.9802    0.07247738889862157
+epoch	loss	accuracy
+1	0.19	0.81
+2	0.11	0.89
+3	0.07	0.93
+4	0.04	0.96
 ```
 
 </details>
@@ -201,6 +203,143 @@ column can be specified with `-y` by it's numeric position (starting with `0`):
 $ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/dvc_plots/index.html
 ```
+
+## Example: Top-level plots
+
+### Simple plot definition
+
+Let's work with the following `logs.csv` data:
+
+```
+epoch,loss,accuracy
+1,0.19,0.81
+2,0.11,0.89
+3,0.07,0.93
+4,0.04,0.96
+```
+
+The minimal plot configuration we can put in `dvc.yaml` is the data source path:
+
+```yaml
+stages:
+  train:
+    cmd: ...
+
+plots:
+  logs.csv:
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_default.svg)
+
+We can also customize it:
+
+```yaml
+plots:
+  logs.csv:
+    x: epoch
+    y: accuracy
+    title: Displaying accuracy
+    x_label: This is epoch
+    y_label: This is accuracy
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_simple_custom.svg)
+
+### Multiple data series plot
+
+Data in `training_data.csv`:
+
+```csv
+epoch,train_loss,test_loss
+1,0.33,0.4
+2,0.3,0.28
+3,0.2,0.25
+4,0.1,0.23
+```
+
+Plot definition in `dvc.yaml`:
+
+```yaml
+plots:
+  test_vs_train_loss:
+    x: epoch
+    y:
+      training_data.csv: [test_loss, train_loss]
+    title: Compare loss training versus test
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_multiple_columns.svg)
+
+### Sourcing data from different files
+
+Lets prepare a comparison for confusion matrix data between the
+`train_classes.csv` and a `test_classes.csv` datasets (below):
+
+```csv
+actual_class,predicted_class
+dog,dog
+dog,dog
+dog,dog
+dog,bird
+cat,cat
+cat,cat
+cat,cat
+cat,dog
+bird,bird
+bird,bird
+bird,bird
+bird,dog
+```
+
+```csv
+actual_class,predicted_class
+dog,dog
+dog,dog
+dog,cat
+bird,bird
+bird,bird
+bird,cat
+cat,cat
+cat,cat
+cat,bird
+```
+
+In `dvc.yaml`:
+
+```yaml
+plots:
+  test_vs_train_confusion:
+    x: actual_class
+    y:
+      train_classes.csv: predicted_class
+      test_classes.csv: predicted_class
+    title: Compare test vs train confusion matrix
+    template: confusion
+    x_label: Actual class
+    y_label: Predicted class
+```
+
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_conf_train_test.svg)
 
 ## Example: Vega-Lite specification file
 

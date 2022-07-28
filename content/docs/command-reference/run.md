@@ -36,10 +36,20 @@ helper to define stages. Use `dvc repro` to execute them.
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mostly meant to describe different
 kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
-remaining terminal input provided to `dvc run` after `-`/`--` flags will become
-the required [`command` argument](#the-command-argument).
+remaining terminal input provided to `dvc run` after any options/flags will
+become the required [`command` argument].
+
+<admon type="info">
+
+`-`/`--` flags sent after the `command` become part of the command itself and
+are ignored by `dvc stage add`.
+
+</admon>
 
 `dvc run` executes stage commands, unless the `--no-exec` option is used.
+
+[`command` argument]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
 
 ### Dependencies and outputs
 
@@ -114,27 +124,6 @@ and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
 `--plots-no-cache` options), are also supported. Metrics and plots files have
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
-
-### The `command` argument
-
-The `command` sent to `dvc run` can be anything your terminal would accept and
-run directly, for example a shell built-in, expression, or binary found in
-`PATH`. Please remember that any flags sent after the `command` are interpreted
-by the command itself, not by `dvc run`.
-
-⚠️ While DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/dag) stages may only work on some operating
-systems and require certain software packages to be installed.
-
-Wrap the command with double quotes `"` if there are special characters in it
-like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc run` itself. Use single quotes `'` instead if there are environment
-variables in it that should be evaluated dynamically. Examples:
-
-```dvc
-$ dvc run -n first_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc run -n second_stage './another_script.sh $MYENVVAR'
-```
 
 ## Options
 
