@@ -82,8 +82,7 @@ params to track in one of these formats:
 
 <admon type="info">
 
-Note that file paths used must be to valid YAML, JSON, TOML, or Python
-parameters file.
+File paths used must be to valid YAML, JSON, TOML, or Python parameters file.
 
 </admon>
 
@@ -159,14 +158,23 @@ These are the fields that are accepted in each stage:
 
 `dvc.yaml` files also support `# comments`.
 
-Note that we maintain a `dvc.yaml`
-[schema](https://github.com/iterative/dvcyaml-schema) that can be used by
-editors like [VSCode](/doc/install/plugins#visual-studio-code) or
-[PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
-validation and auto-completion.
+<admon type="tip">
 
-> See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+We maintain a `dvc.yaml` [schema] that can be used by editors like [VSCode] or
+[PyCharm] to enable automatic syntax validation and auto-completion.
+
+[schema]: https://github.com/iterative/dvcyaml-schema
+[vscode]: /doc/install/plugins#visual-studio-code
+[pycharm]: /doc/install/plugins#pycharmintellij
+
+</admon>
+
+<admon type="info">
+
+See also
+[How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+
+</admon>
 
 ### Output subfields
 
@@ -181,8 +189,11 @@ validation and auto-completion.
 | `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
 | `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
 
-⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
-`dvc repro`.
+<admon type="warn">
+
+Using the `checkpoint` field in `dvc.yaml` is not compatible with `dvc repro`.
+
+</admon>
 
 ## Templating
 
@@ -492,9 +503,6 @@ stages:
       outs:
         - ${item.prop2}
 ```
-
-> Note that this feature is not compatible with [templating](#templating) at the
-> moment.
 
 ## Top-level plot definitions
 
