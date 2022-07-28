@@ -52,7 +52,8 @@ we can leverage cloud resources at the cheapest possible rates.
 
 # Before we start
 
-You can clone the repository for this guide [here]().
+You can clone the repository for this guide
+[here](https://bitbucket.org/iterative-ai/example_model_export_cml/src/main/).
 
 If you want to follow along, it's probably worth taking a look at the [Getting
 started section of the CML docs](https://cml.dev/doc/start/bitbucket) first. The
@@ -148,3 +149,11 @@ CML report that displays the model performance in that pull request. `cml
 publish` adds the confusion matrix created in `train.py` to the pull request,
 and `cml send-comment` updates the description of the pull request to the
 contents of `report.md` (i.e., our `metrics.txt`).
+
+# Conclusions
+
+CML allows us to incorporate our model training into our Bitbucket CI/CD. We can
+define a pipeline to provision a cloud instance that meets our requirements, and
+then use that instance to train our model. The resulting model can be pushed to
+our Git repository, along with an elaborate report on our model's performance.
+
