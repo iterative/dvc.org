@@ -625,7 +625,7 @@ more details.
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 - `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potentially
-  [abusive](https://support.google.com/docs/answer/148505) data. Files
+  [abusive](https://support.google.com/docs/answer/148505) files. Anything
   identified as such (malware, personal info., etc.) can only be downloaded by
   their owner (with this param enabled).
 
