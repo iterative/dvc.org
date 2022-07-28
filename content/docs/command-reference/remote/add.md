@@ -105,7 +105,7 @@ By default, DVC authenticates using your AWS CLI
 authentication method, use the parameters described in `dvc remote modify`.
 
 Make sure you have the following permissions enabled: `s3:ListBucket`,
-`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
+`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject` and `s3:HeadObject`. This enables the S3 API
 methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 `head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
 
