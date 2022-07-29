@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Download Link Checker
+      - name: Run Lychee
         uses: lycheeverse/lychee-action@v1.0.8
         with:
           args:
@@ -21,7 +21,8 @@ jobs:
             /download/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - uses: actions/github-script@v6
+      - name: Find latest open Link Check issue
+        uses: actions/github-script@v6
         id: set-result
         with:
           script: |
@@ -40,7 +41,7 @@ jobs:
             if(latestLinkCheckIssue) return latestLinkCheckIssue.number
 
       - name: Create or Update Issue
-        uses: peter-evans/create-issue-from-file@v3
+        uses: peter-evans/create-issue-from-file@v4
         with:
           title: DVC Download Link Checker Report
           content-filepath: ./lychee/out.md
