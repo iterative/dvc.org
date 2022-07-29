@@ -219,10 +219,10 @@ token errors, you can remove the user credentials file and authorize again.
 
 Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass user credentials
 in CI/CD systems, production setup, read-only file systems, etc. The content of
-this variable should be a JSON string with the same content as credentials file
-described above, and usually you get it going through the same authentication
-process. If `GDRIVE_CREDENTIALS_DATA` is set, the `gdrive_user_credentials_file`
-value (if provided) is ignored.
+this variable should be a string with JSON that has the same format as in the
+credentials files described above, and usually you get it going through the same
+authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
+`gdrive_user_credentials_file` value (if provided) is ignored.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
