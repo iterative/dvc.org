@@ -199,19 +199,18 @@ for different remotes:
 $ dvc remote modify --local myremote profile myprofile
 ```
 
-You can also overwrite the cached credentials file location completely, for
-example to have it inside your project directory:
+You can also overwrite the cached credentials file location per remote, for
+example to have it in your home directory:
 
 ```dvc
 $ dvc remote modify myremote --local \
-      gdrive_user_credentials_file .dvc/tmp/myremote-credentials.json
+      gdrive_user_credentials_file ~/.gdrive/myremote-credentials.json
 ```
 
 <admin type="warn">
 
-If the file is inside a Git repo, **do not commit it** to Git in order to
-prevent unauthorized access to your Google Drive. Add it to `.gitignore` to be
-sure.
+If the file is in a Git repo, consider it a secret and **do not commit it**. Add
+it to `.gitignore` to be sure.
 
 </admin>
 
