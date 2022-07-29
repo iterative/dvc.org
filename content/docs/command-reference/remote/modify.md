@@ -163,7 +163,7 @@ parameters to customize the authentication method:
 - `profile` - credentials profile name to access S3:
 
   ```cli
-  $ dvc remote modify --local myremote profile myprofile
+  $ dvc remote modify --local myremote profile myuser
   ```
 
 - `credentialpath` - S3 credentials file path:
@@ -585,10 +585,18 @@ for a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
-- `gdrive_user_credentials_file` - global path where DVC stores OAuth
-  credentials to access Google Drive, by default
-  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (see also `profile`
-  below), where the`CACHE_HOME` location per platform is:
+- `profile` - name used to cache OAuth credentials. Useful to avoid passing the
+  wrong credentials, for example when using multiple GDrive remotes. The default
+  value is `default`.
+
+  ```cli
+  $ dvc remote modify --local myremote profile myuser
+  ```
+
+- `gdrive_user_credentials_file` - specific file path to cache OAuth
+  credentials. The default is
+  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/{profile}.json`, where
+  the`CACHE_HOME` location per platform is:
 
   | macOS              | Linux (\*typical) | Windows                 |
   | ------------------ | ----------------- | ----------------------- |
@@ -601,15 +609,6 @@ for a full guide on using Google Drive as DVC remote storage.
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
-
-- `profile` - name for the GDrive credentials file (see also
-  `gdrive_user_credentials_file` above). By default, credentials are cached per
-  client ID but you can set a custom profile name instead, for example to avoid
-  using the wrong user's credentials accidentally.
-
-  ```cli
-  $ dvc remote modify --local myremote profile myprofile
-  ```
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
   [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
