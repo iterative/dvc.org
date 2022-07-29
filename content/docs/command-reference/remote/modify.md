@@ -585,9 +585,9 @@ for a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
-- `profile` - name used to cache OAuth credentials. Useful to avoid passing the
-  wrong credentials, for example when using multiple GDrive remotes. The default
-  value is `default`.
+- `profile` - name used to cache OAuth credentials. Helpful to avoid using the
+  wrong credentials when multiple GDrive remotes use the same
+  `gdrive_client_id`. The default value is `default`.
 
   ```cli
   $ dvc remote modify --local myremote profile myprofile
