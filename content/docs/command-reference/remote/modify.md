@@ -163,7 +163,7 @@ parameters to customize the authentication method:
 - `profile` - credentials profile name to access S3:
 
   ```cli
-  $ dvc remote modify --local myremote profile myuser
+  $ dvc remote modify --local myremote profile myprofile
   ```
 
 - `credentialpath` - S3 credentials file path:
@@ -590,7 +590,7 @@ for a full guide on using Google Drive as DVC remote storage.
   value is `default`.
 
   ```cli
-  $ dvc remote modify --local myremote profile myuser
+  $ dvc remote modify --local myremote profile myprofile
   ```
 
 - `gdrive_user_credentials_file` - specific file path to cache OAuth
@@ -1178,7 +1178,7 @@ Setting 'myremote' as a default remote.
 Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote profile myuser
+$ dvc remote modify myremote profile myprofile
 ```
 
 Now the project config file should look like this:

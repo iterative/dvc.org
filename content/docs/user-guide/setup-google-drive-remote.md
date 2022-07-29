@@ -196,7 +196,7 @@ credentials. To isolate them, you can use custom profile names for different
 remotes:
 
 ```
-$ dvc remote modify --local myremote profile 'myuser'
+$ dvc remote modify --local myremote profile myprofile
 ```
 
 You can also overwrite the cached credentials file location completely, for
