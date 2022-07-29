@@ -8,7 +8,7 @@ Run or resume a
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
                    { repro options ... } [-n <name>]
-                   [-S [<filename>:]<params_list>]
+                   [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]
                    [targets [targets ...]]
@@ -67,11 +67,14 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 > In addition to the following, `dvc exp run` accepts the options in `dvc repro`
 > except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
-- `-S [<filename>:]<param_name>=<param_value>`,
-  `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
-  existing `dvc params` for this experiment. `filename` can be any valid params
-  file (`params.yaml` by default). This will override the param values coming
-  from the params file.
+- `-S [<filename>:]<override_pattern>`,
+  `--set-param [<filename>:]<override_pattern>` - set the value of existing
+  `dvc params` for this experiment. `filename` can be any valid params file
+  (`params.yaml` by default). This will override the param values coming from
+  the params file.
+
+  Valid `override_pattern` values are defined in the
+  [Hydra Override syntax](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will generated otherwise, such as `exp-f80g4` (based on the
