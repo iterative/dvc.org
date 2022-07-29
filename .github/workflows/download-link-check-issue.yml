@@ -44,14 +44,13 @@ jobs:
               creator: "github-actions[bot]",
               sort: "created"
             }
-            console.log(options)
             const issues = await github.rest.issues.listForRepo(options)
-            const latestLinkCheckIssue = issues.data.find(
+            const latestOpenLinkCheckIssue = issues.data.find(
               (issue)=>(
                 issue.title === "DVC Download Link Checker Report"
               )
             )
-            if(latestLinkCheckIssue) return latestLinkCheckIssue.number
+            if(latestOpenLinkCheckIssue) return latestLinkCheckIssue.number
 
       - name: Create or Update Issue
         uses: peter-evans/create-issue-from-file@v4

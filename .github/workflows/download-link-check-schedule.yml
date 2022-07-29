@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check_links_and_make_issue:
+  check:
     uses: './.github/workflows/download-link-check-issue.yml'
     with:
       owner: "${{ github.event.repository.owner.login }}"
