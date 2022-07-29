@@ -25,7 +25,6 @@ jobs:
         id: set-result
         with:
           script: |
-            console.log(context.payload.repository)
             const issues = await github.rest.issues.listForRepo({
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
@@ -40,5 +39,10 @@ jobs:
             )
             if(latestLinkCheckIssue) return latestLinkCheckIssue.number
 
-      - name: Get result
-        run: echo "${{steps.set-result.outputs.result}}"
+      - name: Create or Update Issue
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: DVC Download Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: website, link-checker
+          issue-number: ${{ steps.set-result.outputs.result }}
