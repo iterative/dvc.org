@@ -1,8 +1,7 @@
 name: DVC Download Link Check
 
 on:
-  schedule:
-    - cron: '0 0-23 * * *'
+  pull_request:
 
 jobs:
   run:
@@ -18,9 +17,19 @@ jobs:
             /download/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Create Issue From File
-        uses: peter-evans/create-issue-from-file@v3
+      - uses: actions/github-script@v6
+        id: set-result
         with:
-          title: DVC Download Link Checker Report
-          content-filepath: ./lychee/out.md
-          labels: website, link-checker
+          script: |
+            console.log(context)
+            const issues = await octokit.rest.issues.listForRepo({
+              owner: "iterative",
+              repo: "dvc.org",
+              state: "open",
+              creator: "github-actions[bot]",
+              sort: "created"
+            })
+            console.log(issues)
+
+      - name: Get result
+        run: echo "${{steps.set-result.outputs.result}}"
