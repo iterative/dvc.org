@@ -12,10 +12,6 @@ on:
         type: string
         default: "${{ github.event.repository.name }}"
 
-concurrency:
-  group: scheduled-download-link-check-${{ github.head_ref }}
-  cancel-in-progress: true
-
 jobs:
   check_links_and_make_issue:
     name: Check Download Links and Raise Issue
