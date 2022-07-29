@@ -31,11 +31,15 @@ jobs:
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
         id: set-result
+        env:
+          OWNER: inputs.owner
+          REPO: inputs.repo
         with:
           script: |
+            const { OWNER, REPO } = process.env
             const options = {
-              owner: core.getInput('owner'),
-              repo: core.getInput('repo'),
+              owner: OWNER,
+              repo: REPO,
               state: "open",
               creator: "github-actions[bot]",
               sort: "created"
