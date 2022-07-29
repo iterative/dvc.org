@@ -16,7 +16,7 @@
       "windows",
       "linux",
       {
-        "label": "Virtual Studio Code",
+        "label": "Visual Studio Code",
         "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
         "type": "external"
       },
@@ -521,46 +521,41 @@
     "icon": "vscode"
   },
   {
-    "label": "Studio",
     "slug": "studio",
-    "source": "studio/index.md",
     "icon": "studio",
     "children": [
-      {
-        "label": "How It Works",
-        "slug": "overview"
-      },
+      "how-it-works",
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
-        "source": "user-guide/index.md",
+        "source": false,
         "children": [
+          "prepare-your-repositories",
           {
-            "label": "Prepare Your Repositories",
-            "slug": "prepare-repositories"
-          },
-          {
-            "label": "Projects and Experiments",
-            "slug": "projects",
+            "slug": "projects-and-experiments",
             "source": false,
             "children": [
               "what-is-a-project",
-              "create-project",
-              {
-                "label": "Configure Project",
-                "slug": "project-settings"
-              },
-              {
-                "label": "Explore ML Experiments",
-                "slug": "explore-experiments"
-              },
-              {
-                "label": "Visualize and Compare",
-                "slug": "visualize-experiments"
-              },
+              "create-a-project",
+              "configure-a-project",
+              "explore-ml-experiments",
+              "visualize-and-compare",
               "run-experiments",
-              "share-project"
+              "share-a-project"
+            ]
+          },
+          {
+            "slug": "model-registry",
+            "source": false,
+            "children": [
+              {
+                "label": "What is a Model Registry",
+                "slug": "what-is-a-model-registry"
+              },
+              "add-a-model",
+              "view-models",
+              "register-version",
+              "assign-stage"
             ]
           },
           "teams",

@@ -28,12 +28,11 @@ $ dvc add data
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
+Your browser has been opened to visit:
 
-Go to the following link in your browser:
+    https://accounts.google.com/o/oauth2/auth...
 
-    https://accounts.google.com/o/oauth2/auth # ... copy this link
-
-Enter verification code: # <- enter resulting code
+Authentication successful.
 ```
 
 See [Authorization](#authorization) for more details.

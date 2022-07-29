@@ -42,9 +42,8 @@ stages:
 
 > See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
 
-The most important part of a stage it's the terminal command(s) it executes
-(`cmd` field). This is what DVC runs when the stage is reproduced (see
-`dvc repro`).
+The most important part of a stage is the terminal command(s) it executes (`cmd`
+field). This is what DVC runs when the stage is reproduced (see `dvc repro`).
 
 If a command reads input files, these (or their directory locations) can be
 defined as <abbr>dependencies</abbr> (`deps`). DVC will check whether they have
@@ -53,7 +52,19 @@ changed to decide whether the stage requires re-execution (see `dvc status`).
 If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 (`outs`). DVC will track them going forward (similar to using `dvc add`).
 
-> See the full stage entry [specification](#stage-entries).
+<admon type="tip">
+
+Output files may be viable data sources for [top-level plots].
+
+[top-level plots]: /doc/command-reference/plots#top-level-plots
+
+</admon>
+
+<admon type="info">
+
+See the full stage entry [specification](#stage-entries).
+
+</admon>
 
 ### Parameter dependencies
 
@@ -426,7 +437,7 @@ These are the fields that are accepted in each stage:
 | `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
 | `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
-| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
+| `outs`           | List of stage <abbr>output</abbr> paths (relative to `wdir`). These can contain optional [subfields](#output-subfields).                                                                                                                                                                  |
 | `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
@@ -463,6 +474,37 @@ validation and auto-completion.
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.
+
+## Top-level plot definitions
+
+The list of `plots` contains one or more user-defined `dvc plots` (paths
+relative to the location of `dvc.yaml`).
+
+This example makes output `auc.json` viable for visualization, configuring keys
+`fpr` and `tpr` as X and Y axis, respectively:
+
+```yaml
+stages:
+  build:
+    cmd: python train.py
+    deps:
+      - features.csv
+    outs:
+      - model.pt
+      - auc.json
+    metrics:
+      - accuracy.txt:
+          cache: false
+plots:
+  auc.json:
+    x: fpr
+    y: tpr
+```
+
+Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
+In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
+
+[plot output]: /doc/command-reference/plots#stage-plots
 
 ## dvc.lock file
 

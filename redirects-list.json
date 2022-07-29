@@ -64,7 +64,7 @@
   "^/doc/user-guide/dvc-files/.dvc$                                                       /doc/user-guide/project-structure/dvc-files",
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
-  "^/doc/user-guide/contributing(/.*)?$                                                    /doc/contributing$1",
+  "^/doc/user-guide/contributing(/.*)?$                                                   /doc/contributing$1",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
 
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
@@ -82,13 +82,18 @@
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
+  "^/doc/studio/overview$                                                                 /doc/studio/how-it-works 302",
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
+  "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
   "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
   "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
   "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
-  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects/create-project 302",
-  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings 302",
-  "^/doc/studio/user-guide/views(/.*)?$                                                    /doc/studio/user-guide/projects$1 302",
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects-and-experiments/create-a-project 302",
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects-and-experiments/configure-a-project 302",
+  "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments 302",
+  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare 302",
+  "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects-and-experiments/share-a-project 302",
+  "^/doc/studio/user-guide/views(/.*)?$                                                   /doc/studio/user-guide/projects-and-experiments$1 302",
 
   "^/(.+)/$                                                                               /$1"
 ]
