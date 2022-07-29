@@ -1,4 +1,4 @@
-name: Scheduled DVC Download Link Check
+name: Scheduled Download Link Check
 
 on:
   pull_request:
@@ -10,44 +10,5 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run:
-    name: Check Download Links
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Run Lychee
-        uses: lycheeverse/lychee-action@v1.0.8
-        with:
-          args:
-            --verbose https://dvc.org/ --base https://dvc.org/ --include
-            /download/
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Find latest open Link Check issue
-        uses: actions/github-script@v6
-        id: set-result
-        with:
-          script: |
-            const issues = await github.rest.issues.listForRepo({
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              state: "open",
-              creator: "github-actions[bot]",
-              sort: "created"
-            })
-            const latestLinkCheckIssue = issues.data.find(
-              (issue)=>(
-                issue.title === "DVC Download Link Checker Report"
-              )
-            )
-            if(latestLinkCheckIssue) return latestLinkCheckIssue.number
-
-      - name: Create or Update Issue
-        uses: peter-evans/create-issue-from-file@v4
-        with:
-          title: DVC Download Link Checker Report
-          content-filepath: ./lychee/out.md
-          labels: website, link-checker
-          issue-number: ${{ steps.set-result.outputs.result }}
+  check_links_and_make_issue:
+    uses: './.github/workflows/download-link-check-issue.yml'
