@@ -33,7 +33,7 @@ jobs:
               creator: "github-actions[bot]",
               sort: "created"
             })
-            const latestLinkCheckIssue = issues.find(
+            const latestLinkCheckIssue = issues.data.find(
               (issue)=>(
                 issue.title === "DVC Download Link Checker Report"
               )
