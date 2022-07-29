@@ -51,7 +51,7 @@ jobs:
                 issue.title === "DVC Download Link Checker Report"
               )
             )
-            if(latestOpenLinkCheckIssue) return latestLinkCheckIssue.number
+            if(latestOpenLinkCheckIssue) return latestOpenLinkCheckIssue.number
 
       - name: Create or Update Issue
         uses: peter-evans/create-issue-from-file@v4
