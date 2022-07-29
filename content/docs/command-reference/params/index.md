@@ -70,7 +70,7 @@ The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
 
 💡 Parameters can also be used for
-[templating](/doc/user-guide/project-structure/pipelines-files#templating)
+[templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
 `dvc.yaml` itself.
 
 ## Options
@@ -112,21 +112,19 @@ $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
 > Python parameters files.
 
 The `train.py` script will have some code to parse and load the needed
-parameters. For example:
+parameters. For example, you can use `dvc.api.params_show()`:
 
 ```py
-from ruamel.yaml import YAML
+import dvc.api
 
-with open("params.yaml", 'r') as fd:
-    yaml = YAML()
-    params = yaml.load(fd)
+params = dvc.api.params_show()
 
 lr = params['lr']
 epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-<admon>
+<admon type="info">
 
 We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 1.2 (unlike the more popular PyYAML).

@@ -1,13 +1,16 @@
-# Pipelines Files (`dvc.yaml`)
+# `dvc.yaml`
 
 You can construct data science or machine learning pipelines by defining
-individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
-(or _pipelines files_). Stages form a pipeline when they connect with each other
-(forming a _dependency graph_, see `dvc dag`). Refer to
+individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files.
+Stages form a pipeline when they connect with each other (forming a _dependency
+graph_, see `dvc dag`). Refer to
 [Get Started: Data Pipelines](/doc/start/data-pipelines).
 
-> Note that a helper command, `dvc stage`, is available to create and list
-> stages.
+<admon type="tip">
+
+A helper command, `dvc stage`, is available to create and list stages.
+
+</admon>
 
 `dvc.yaml` files can be versioned with Git.
 
@@ -15,8 +18,12 @@ These files use the [YAML 1.2](https://yaml.org/) file format, and a
 human-friendly schema explained below. We encourage you to get familiar with it
 so you may modify, write, or generate stages and pipelines on your own.
 
-> Note that we use [GNU/Linux](https://www.gnu.org/software/software.html) in
-> most of our examples.
+<admon type="info">
+
+We use [GNU/Linux](https://www.gnu.org/software/software.html) in most of our
+examples.
+
+</admon>
 
 ## Stages
 
@@ -35,9 +42,8 @@ stages:
 
 > See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
 
-The most important part of a stage it's the terminal command(s) it executes
-(`cmd` field). This is what DVC runs when the stage is reproduced (see
-`dvc repro`).
+The most important part of a stage is the terminal command(s) it executes (`cmd`
+field). This is what DVC runs when the stage is reproduced (see `dvc repro`).
 
 If a command reads input files, these (or their directory locations) can be
 defined as <abbr>dependencies</abbr> (`deps`). DVC will check whether they have
@@ -46,7 +52,19 @@ changed to decide whether the stage requires re-execution (see `dvc status`).
 If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 (`outs`). DVC will track them going forward (similar to using `dvc add`).
 
-> See the full stage entry [specification](#stage-entries).
+<admon type="tip">
+
+Output files may be viable data sources for [top-level plots].
+
+[top-level plots]: /doc/command-reference/plots#top-level-plots
+
+</admon>
+
+<admon type="info">
+
+See the full stage entry [specification](#stage-entries).
+
+</admon>
 
 ### Parameter dependencies
 
@@ -123,9 +141,6 @@ in the YAML structure itself. These sources can be
 [parameters files](/doc/command-reference/params), or `vars` defined in
 `dvc.yaml` instead.
 
-> Note that this parameterization feature is only supported via manual editing
-> of `dvc.yaml` and incompatible with `dvc run`.
-
 Let's say we have `params.yaml` (default params file) with the following
 contents:
 
@@ -156,6 +171,50 @@ stages:
 DVC will track simple param values (numbers, strings, etc.) used in `${}` (they
 will be listed by `dvc params diff`).
 
+### Dict Unpacking
+
+Only inside the `cmd` entries, you can also reference a dictionary inside `${}`
+and DVC will _unpack_ it. For example, given the following `params.yaml`:
+
+```yaml
+dict:
+  foo: foo
+  bar: 2
+  bool: true
+  nested:
+    foo: bar
+  list: [1, 2, 'foo']
+```
+
+You can reference `dict` in the `cmd` section of a `dvc.yaml`:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py ${dict}
+```
+
+And DVC will _unpack_ the values inside `dict`, creating the following `cmd`
+call:
+
+```cli
+$ python train.py --foo 'foo' --bar 2 --bool \
+                  --nested.foo 'bar' --list 1 2 'foo'
+```
+
+This can be useful for avoiding to write every argument passed to the `cmd` or
+having to modify the `dvc.yaml` when adding or removing arguments.
+
+<admon type="tip">
+
+The [parsing](/doc/command-reference/config#parsing) section of `dvc config` can
+be used to customize the syntax used for some ambiguous types like booleans and
+lists.
+
+</admon>
+
+### Vars
+
 Alternatively, values for substitution can be listed as top-level `vars` like
 this:
 
@@ -172,7 +231,11 @@ stages:
     cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-> Note that values from `vars` are not tracked like parameters.
+<admon type="warn">
+
+Values from `vars` are not tracked like parameters.
+
+</admon>
 
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
@@ -187,7 +250,11 @@ vars:
   - config/myapp.yaml
 ```
 
-ℹ️ Note that the default `params.yaml` file is always loaded first, if present.
+<admon type="info">
+
+Note that the default `params.yaml` file is always loaded first, if present.
+
+</admon>
 
 It's also possible to specify what to include from additional params files, with
 a `:` colon:
@@ -370,7 +437,7 @@ These are the fields that are accepted in each stage:
 | `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
 | `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
-| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
+| `outs`           | List of stage <abbr>output</abbr> paths (relative to `wdir`). These can contain optional [subfields](#output-subfields).                                                                                                                                                                  |
 | `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
@@ -407,6 +474,37 @@ validation and auto-completion.
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.
+
+## Top-level plot definitions
+
+The list of `plots` contains one or more user-defined `dvc plots` (paths
+relative to the location of `dvc.yaml`).
+
+This example makes output `auc.json` viable for visualization, configuring keys
+`fpr` and `tpr` as X and Y axis, respectively:
+
+```yaml
+stages:
+  build:
+    cmd: python train.py
+    deps:
+      - features.csv
+    outs:
+      - model.pt
+      - auc.json
+    metrics:
+      - accuracy.txt:
+          cache: false
+plots:
+  auc.json:
+    x: fpr
+    y: tpr
+```
+
+Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
+In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
+
+[plot output]: /doc/command-reference/plots#stage-plots
 
 ## dvc.lock file
 

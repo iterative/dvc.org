@@ -29,7 +29,7 @@ approaches:
   you compare and share them. 📖 More info in the [Experiments
   Overview][experiments].
 
-  <admon icon="fire">
+  <admon type="tip">
 
   **New!** DVC Experiments can be used directly [from the VS Code IDE] or online
   with [Iterative Studio], the web UI that integrates all of our data science
@@ -83,7 +83,7 @@ DVC takes care of arranging `dvc exp` experiments and the data
 until your experiments are made [persistent].
 
 [`foreach` stages]:
-  /doc/user-guide/project-structure/pipelines-files#foreach-stages
+  /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Run Cache: Automatic Log of Stage Runs

@@ -8,7 +8,7 @@ details.
 > experimentation, you may want to check the basics in
 > [Get Started: Experiments](/doc/start/experiments/) first.
 
-## Pipelines files
+## `dvc.yaml` files
 
 DVC relies on `dvc.yaml` files that contain the commands to run the
 experiment(s). These files codify _pipelines_ that specify one or more
@@ -130,9 +130,13 @@ $ dvc queue start
 ...
 ```
 
+<admon type="info">
+
 > Note that in most cases, experiment tasks will be executed in the order that
 > they were added to the queue (First In, First Out), but this is not
 > guaranteed.
+
+</admon>
 
 Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
