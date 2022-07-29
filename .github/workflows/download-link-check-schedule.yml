@@ -12,6 +12,3 @@ concurrency:
 jobs:
   check:
     uses: './.github/workflows/download-link-check-issue.yml'
-    with:
-      owner: "${{ github.event.repository.owner.login }}"
-      repo: "${{ github.event.repository.name }}"
