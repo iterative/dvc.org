@@ -33,13 +33,15 @@ jobs:
         id: set-result
         with:
           script: |
-            const issues = await github.rest.issues.listForRepo({
+            const options = {
               owner: core.getInput('owner'),
               repo: core.getInput('repo'),
               state: "open",
               creator: "github-actions[bot]",
               sort: "created"
-            })
+            }
+            console.log(options)
+            const issues = await github.rest.issues.listForRepo(options)
             const latestLinkCheckIssue = issues.data.find(
               (issue)=>(
                 issue.title === "DVC Download Link Checker Report"
