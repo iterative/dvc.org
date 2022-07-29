@@ -6,11 +6,11 @@ on:
       owner:
         required: false
         type: string
-        default: "${{ context.payload.repository.owner.login }}"
+        default: "${{ github.event.repository.owner.login }}"
       repo:
         required: false
         type: string
-        default: "${{ context.payload.repository.name }}"
+        default: "${{ github.event.repository.name }}"
 
 concurrency:
   group: scheduled-download-link-check-${{ github.head_ref }}
