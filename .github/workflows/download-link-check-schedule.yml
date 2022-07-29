@@ -5,7 +5,7 @@ on:
 
 jobs:
   run:
-    name: Initialize
+    name: Check Download Links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
         with:
           script: |
             console.log(context)
-            const issues = await octokit.rest.issues.listForRepo({
+            const issues = await github.rest.issues.listForRepo({
               owner: "iterative",
               repo: "dvc.org",
               state: "open",
