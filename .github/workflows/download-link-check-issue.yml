@@ -32,8 +32,8 @@ jobs:
         uses: actions/github-script@v6
         id: set-result
         env:
-          OWNER: inputs.owner
-          REPO: inputs.repo
+          OWNER: ${{ inputs.owner }}
+          REPO: ${{ inputs.repo }}
         with:
           script: |
             const { OWNER, REPO } = process.env
