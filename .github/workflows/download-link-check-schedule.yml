@@ -1,7 +1,11 @@
-name: DVC Download Link Check
+name: Scheduled DVC Download Link Check
 
 on:
   pull_request:
+
+concurrency:
+  group: scheduled-download-link-check-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   run:
@@ -21,15 +25,20 @@ jobs:
         id: set-result
         with:
           script: |
-            console.log(context)
+            console.log(context.payload.repository)
             const issues = await github.rest.issues.listForRepo({
-              owner: "iterative",
-              repo: "dvc.org",
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
               state: "open",
               creator: "github-actions[bot]",
               sort: "created"
             })
-            console.log(issues)
+            const latestLinkCheckIssue = issues.find(
+              (issue)=>(
+                issue.title === "DVC Download Link Checker Report"
+              )
+            )
+            if(latestLinkCheckIssue) return latestLinkCheckIssue.number
 
       - name: Get result
         run: echo "${{steps.set-result.outputs.result}}"
