@@ -50,7 +50,7 @@ jobs:
 
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
-        id: set-result
+        id: find-existing-comment
         env:
           OWNER: ${{ inputs.owner }}
           REPO: ${{ inputs.repo }}
@@ -78,4 +78,4 @@ jobs:
           title: ${{ inputs.title }}
           content-filepath: ./lychee/out.md
           labels: ${{ inputs.labels }}
-          issue-number: ${{ steps.set-result.outputs.result }}
+          issue-number: ${{ steps.find-existing-comment.outputs.result }}
