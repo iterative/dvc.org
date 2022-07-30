@@ -17,13 +17,13 @@ on:
         required: false
         type: string
         default: "${{ github.event.repository.name }}"
-      tag:
-        description: The tag that will be used to identify existing link-check reports to edit
+      label:
+        description: The label that will be used to identify existing link-check reports to edit
         required: false
         type: string
         default: link-check
-      tags:
-        description: The tags that will be assigned to issues created by this workflow
+      labels:
+        description: The labels that will be assigned to issues created by this workflow
         required: false
         type: string
         default: link-check
@@ -54,14 +54,14 @@ jobs:
         env:
           OWNER: ${{ inputs.owner }}
           REPO: ${{ inputs.repo }}
-          TAG: ${{ inputs.tag }}
+          LABEL: ${{ inputs.label }}
         with:
           script: |
-            const { OWNER, REPO, TAG } = process.env
+            const { OWNER, REPO, LABEL } = process.env
             const options = {
               owner: OWNER,
               repo: REPO,
-              labels: TAG,
+              labels: LABEL,
               state: "open",
               creator: "github-actions[bot]",
               sort: "created"
