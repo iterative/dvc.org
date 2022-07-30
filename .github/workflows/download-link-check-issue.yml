@@ -8,22 +8,27 @@ on:
         required: true
         type: string
       owner:
-        description: The owner of repository to operate on if the event doesn't include it
+        description:
+          The owner of repository to operate on if the event doesn't include it
         required: false
         type: string
-        default: "${{ github.event.repository.owner.login }}"
+        default: '${{ github.event.repository.owner.login }}'
       repo:
-        description: The repository to operate on if the event doesn't include it
+        description:
+          The repository to operate on if the event doesn't include it
         required: false
         type: string
-        default: "${{ github.event.repository.name }}"
+        default: '${{ github.event.repository.name }}'
       label:
-        description: The label that will be used to identify existing link-check reports to edit
+        description:
+          The label that will be used to identify existing link-check reports to
+          edit
         required: false
         type: string
         default: link-checker
       labels:
-        description: The labels that will be assigned to issues created by this workflow
+        description:
+          The labels that will be assigned to issues created by this workflow
         required: false
         type: string
         default: link-checker
@@ -31,7 +36,7 @@ on:
         description: The title of the issue created by this workflow
         required: false
         type: string
-        default: "Download Link Checker Report"
+        default: 'Download Link Checker Report'
 jobs:
   check_links_and_make_issue:
     name: Check Download Links and Raise Issue
@@ -45,10 +50,10 @@ jobs:
           mkdir ./lychee
           echo "\
           ## This is a test failure for an update of link-check!
-          
+
           Nothing to see here\
           " > ./lychee/out.md
-          echo 
+          echo ::set-output name=exit_code::1
 
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
@@ -84,7 +89,9 @@ jobs:
 
       - name: Close if Check Passes
         uses: peter-evans/close-issue@v2.0.0
-        if: steps.lychee.outputs.exit_code == 0
+        if: >-
+          steps.lychee.outputs.exit_code == 0 &&
+          steps.find-existing-comment.outputs.result
         with:
           issue-number: ${{ steps.find-existing-comment.outputs.result }}
           comment: The most recent link check passed!
