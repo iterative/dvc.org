@@ -40,13 +40,15 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Dummy Run Lychee
+        id: lychee
         run: |
           mkdir ./lychee
           echo "\
-          \#\# This is a test failure for an update of link-check!
+          ## This is a test failure for an update of link-check!
           
           Nothing to see here\
           " > ./lychee/out.md
+          echo 
 
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
@@ -67,15 +69,22 @@ jobs:
               sort: "created"
             }
             const issues = await github.rest.issues.listForRepo(options)
-            console.log(issues)
             if(issues && issues.data && issues.data[0]) {
               return issues.data[0].number
             }
 
       - name: Create or Update Issue
         uses: peter-evans/create-issue-from-file@v4
+        if: steps.lychee.outputs.exit_code != 0
         with:
+          issue-number: ${{ steps.find-existing-comment.outputs.result }}
           title: ${{ inputs.title }}
           content-filepath: ./lychee/out.md
           labels: ${{ inputs.labels }}
+
+      - name: Close if Check Passes
+        uses: peter-evans/close-issue@v2.0.0
+        if: steps.lychee.outputs.exit_code == 0
+        with:
           issue-number: ${{ steps.find-existing-comment.outputs.result }}
+          comment: The most recent link check passed!
