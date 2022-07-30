@@ -67,6 +67,7 @@ jobs:
               sort: "created"
             }
             const issues = await github.rest.issues.listForRepo(options)
+            console.log(issues)
             if(issues && issues.data && issues.data[0]) {
               return issues.data[0].number
             }
@@ -76,5 +77,5 @@ jobs:
         with:
           title: ${{ inputs.title }}
           content-filepath: ./lychee/out.md
-          labels: website, link-checker
+          labels: ${{ inputs.labels }}
           issue-number: ${{ steps.set-result.outputs.result }}
