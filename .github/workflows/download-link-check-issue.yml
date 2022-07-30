@@ -39,12 +39,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run Lychee
-        uses: lycheeverse/lychee-action@v1.0.8
-        with:
-          args: ${{ inputs.lychee_args }}
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Dummy Run Lychee
+        run: |
+          echo "## This is a test failure for an update of link-check!" > ./lychee/out.md
 
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
