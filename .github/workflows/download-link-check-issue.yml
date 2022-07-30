@@ -3,6 +3,10 @@ name: Scheduled DVC Download Link Check
 on:
   workflow_call:
     inputs:
+      lychee_args:
+        description: The args to provide to lychee-action
+        required: true
+        type: string
       owner:
         description: The owner of repository to operate on if the event doesn't include it
         required: false
@@ -38,9 +42,7 @@ jobs:
       - name: Run Lychee
         uses: lycheeverse/lychee-action@v1.0.8
         with:
-          args:
-            --verbose https://dvc.org/ --base https://dvc.org/ --include
-            /download/
+          args: ${{ inputs.lychee_args }}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

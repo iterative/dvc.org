@@ -14,3 +14,5 @@ jobs:
     uses: './.github/workflows/download-link-check-issue.yml'
     with:
       title: 'DVC Download Link Checker Report'
+      lychee_args: >-
+        --verbose https://dvc.org/ --base https://dvc.org/ --include /download/
