@@ -12,3 +12,5 @@ concurrency:
 jobs:
   check:
     uses: './.github/workflows/download-link-check-issue.yml'
+    with:
+      title: 'DVC Download Link Checker Report'
