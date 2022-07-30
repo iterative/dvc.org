@@ -21,7 +21,12 @@ on:
         description: The label that will be used to identify existing link-check reports to edit
         required: false
         type: string
-        default: link-check
+        default: link-checker
+      labels:
+        description: The labels that will be assigned to issues created by this workflow
+        required: false
+        type: string
+        default: link-checker
       title:
         description: The title of the issue created by this workflow
         required: false
@@ -38,8 +43,8 @@ jobs:
         run: |
           mkdir ./lychee
           echo "\
-          \#\# This is a test failure for an update of link-check!\n\
-          \n\
+          \#\# This is a test failure for an update of link-check!
+          
           Nothing to see here\
           " > ./lychee/out.md
 
@@ -66,3 +71,11 @@ jobs:
             if(issues && issues.data && issues.data[0]) {
               return issues.data[0].number
             }
+
+      - name: Create or Update Issue
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: ${{ inputs.title }}
+          content-filepath: ./lychee/out.md
+          labels: ${{ inputs.labels }}
+          issue-number: ${{ steps.find-existing-comment.outputs.result }}
