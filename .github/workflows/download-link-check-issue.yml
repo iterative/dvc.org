@@ -44,16 +44,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Dummy Run Lychee
+      - name: Run Lychee
         id: lychee
-        run: |
-          mkdir ./lychee
-          echo "\
-          ## This is a test failure for an update of link-check!
-
-          Nothing to see here\
-          " > ./lychee/out.md
-          echo ::set-output name=exit_code::0
+        uses: lycheeverse/lychee-action@v1.0.8
+        with:
+          args: ${{ inputs.lychee_args }}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
