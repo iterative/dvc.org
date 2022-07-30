@@ -36,7 +36,7 @@ on:
         description: The title of the issue created by this workflow
         required: false
         type: string
-        default: 'Download Link Checker Report'
+        default: 'Link Checker Report'
 jobs:
   check_links_and_make_issue:
     name: Check Download Links and Raise Issue
