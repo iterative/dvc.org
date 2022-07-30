@@ -53,7 +53,7 @@ jobs:
 
           Nothing to see here\
           " > ./lychee/out.md
-          echo ::set-output name=exit_code::1
+          echo ::set-output name=exit_code::0
 
       - name: Find latest open Link Check issue
         uses: actions/github-script@v6
