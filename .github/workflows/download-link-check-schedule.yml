@@ -1,7 +1,7 @@
 name: Scheduled Download Link Check
 
 on:
-  pull_request:
+  workflow_dispatch:
   schedule:
     - cron: '0 0-23 * * *'
 
@@ -14,5 +14,7 @@ jobs:
     uses: './.github/workflows/download-link-check-issue.yml'
     with:
       title: 'DVC Download Link Checker Report'
+      owner: 'iterative'
+      repo: 'dvc.org'
       lychee_args: >-
         --verbose https://dvc.org/ --base https://dvc.org/ --include /download/
