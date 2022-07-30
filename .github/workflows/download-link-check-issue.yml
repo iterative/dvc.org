@@ -41,6 +41,7 @@ jobs:
 
       - name: Dummy Run Lychee
         run: |
+          mkdir ./lychee
           echo "## This is a test failure for an update of link-check!" > ./lychee/out.md
 
       - name: Find latest open Link Check issue
