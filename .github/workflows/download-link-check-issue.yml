@@ -65,7 +65,9 @@ jobs:
               sort: "created"
             }
             const issues = await github.rest.issues.listForRepo(options)
-            if(issues && issues.data) return issues.data[0]
+            if(issues && issues.data && issues.data[0]) {
+              return issues.data[0].number
+            }
 
       - name: Create or Update Issue
         uses: peter-evans/create-issue-from-file@v4
