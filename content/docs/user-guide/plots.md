@@ -26,7 +26,7 @@ using `<img>` tags directly.
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
 
-### Supported file formats
+## Supported file formats
 
 Images are included in HTML as-is, without additional processing.
 
