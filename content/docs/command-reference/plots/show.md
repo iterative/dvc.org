@@ -50,9 +50,9 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/plots#plot-templates-data-series-only) to be injected with
-  data. The default template is `.dvc/plots/default.json`. See more details in
-  `dvc plots`.
+  [plot template](/doc/user-guide/plots#plot-templates-data-series-only) to be
+  injected with data. The default template is `.dvc/plots/default.json`. See
+  more details in `dvc plots`.
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See

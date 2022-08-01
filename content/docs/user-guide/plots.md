@@ -131,8 +131,8 @@ plots:
 
 In that case the default behavior will be applied. DVC will take data from
 `logs.csv` file and apply `linear` plot
-[template](/doc/user-guide/plots#plot-templates-data-series-only) to the last found column (CSV,
-TSV files) or field (JSON, YAML).
+[template](/doc/user-guide/plots#plot-templates-data-series-only) to the last
+found column (CSV, TSV files) or field (JSON, YAML).
 
 We can customize the plot by adding appropriate fields to the configuration:
 
@@ -217,7 +217,8 @@ create plots from user data. A set of built-in _plot templates_ are included.
 
 The `linear` template is the default. It can be changed with the `--template`
 (`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
-`--template` can be a (built-in) template name or a path to a [custom template](#custom-templates).
+`--template` can be a (built-in) template name or a path to a
+[custom template](#custom-templates).
 
 <admon type="tip">
 
