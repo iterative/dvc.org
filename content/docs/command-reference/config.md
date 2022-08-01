@@ -249,13 +249,11 @@ experiments or projects use a similar structure.
 
 ### parsing
 
-- `parsing.bool` - Controls the templating syntax for boolean values when used
-  in
-  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking).
+- `parsing.bool` - Controls the templating syntax for boolean values used in
+  [`dict` unpacking].
 
-  Valid values are `"store_true"` (default) and `"boolean_optional"`, named
-  after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  Valid values are `"store_true"` (default) and `"boolean_optional"`, based on
+  [Python `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -286,10 +284,10 @@ experiments or projects use a similar structure.
   ```
 
 - `parsing.list` - Controls the templating syntax for list values when used in
-  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking).
+  [`dict` unpacking].
 
-  Valid values are `"nargs"` (default) and `"append"`, named after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  Valid values are `"nargs"` (default) and `"append"`, named after [Python
+  `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -317,6 +315,11 @@ experiments or projects use a similar structure.
   ```shell
   python foo.py --list 1 --list 2 --list 'foo'
   ```
+
+[`dict` unpacking]:
+  /doc/user-guide/project-structure/pipelines-files#dict-unpacking
+[python `argparse` actions]:
+  https://docs.python.org/3/library/argparse.html#action
 
 ### plots
 
