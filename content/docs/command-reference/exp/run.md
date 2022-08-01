@@ -208,8 +208,7 @@ appending or removing parameters.
 You can optionally provide a prefix `[<filename>:]` in order to edit a specific
 params file. If not provided, `params.yaml` will be used as default.
 
-You can use the different syntaxes of `<override_pattern>` for modifying the
-parameters:
+`<override_pattern>` supports different syntaxes for modifying the parameters:
 
 - `<param_name>=<param_value>`
 
