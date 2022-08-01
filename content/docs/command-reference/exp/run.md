@@ -242,7 +242,7 @@ Path         Param              HEAD    workspace
 params.yaml  prepare.new_param  -       foo
 ```
 
-- `~<param_name>=<param_value>`
+- `~<param_name>`
 
 Removes existing parameters:
 
