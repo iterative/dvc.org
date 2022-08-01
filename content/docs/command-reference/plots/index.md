@@ -25,9 +25,9 @@ positional arguments:
 
 ## Description
 
-`dvc plots` subcommands help you visualize and compare data or images
-produced by machine learning projects, letting you fully customize graph
-settings and style.
+`dvc plots` subcommands help you visualize and compare data or images produced
+by machine learning projects, letting you fully customize graph settings and
+style.
 
 📖 See [Plots Configuration and Visualization](/doc/user-guide/plots) for more
 info.
