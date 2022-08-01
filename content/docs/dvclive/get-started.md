@@ -109,17 +109,20 @@ not.
 
 See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
 
-### HTML report
+### Report
 
-If and when `step` is updated, DVCLive generates or updates an HTML report in
-`dvclive/report.html` which will contain all the logged data.
+If and when `step` is updated, DVCLive generates or updates a report in
+`dvclive/report.{format}` which will contain all the logged data.
 
 ![](/img/dvclive-html.gif)
 
+The `format` is determied by the `report` argument passed to
+[`Live()`](/doc/dvclive/api-reference/live#parameters).
+
 <admon type="info">
 
-If you don't update the step number, the HTML report won't be generated unless
-you call `Live.make_report()` directly.
+If you don't update the step number, the report won't be generated unless you
+call `Live.make_report()` directly.
 
 </admon>
 
