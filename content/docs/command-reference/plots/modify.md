@@ -44,7 +44,7 @@ Note that a secondary use of this command is to convert output or simple
 ## Options
 
 - `-t <name_or_path>, --template <name_or_path>` - set a default
-  [plot template](/doc/user-guide/plots#plot-templates).
+[plot template](/doc/user-guide/plots#plot-templates-data-series-only).
 
 - `-x <field>` - set a default field or column name (or number) from which the X
   axis data comes from.

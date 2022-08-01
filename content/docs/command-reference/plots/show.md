@@ -39,7 +39,7 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
-[plot templates]: /doc/user-guide/plots#plot-templates
+[plot templates]: /doc/user-guide/plots#plot-templates-data-series-only
 [top-level plot]: /doc/user-guide/plots#top-level-plots
 [stage plot]: /doc/user-guide/plots#stage-plots
 
@@ -50,7 +50,7 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/plots#plot-templates) to be injected with
+  [plot template](/doc/user-guide/plots#plot-templates-data-series-only) to be injected with
   data. The default template is `.dvc/plots/default.json`. See more details in
   `dvc plots`.
 
@@ -80,7 +80,7 @@ The default behavior of this command can be modified per [stage plot] file with
   A 0-based numeric index can be used to identify each column instead of names.
 
 - `--html-template <path>` - path to a
-  [custom HTML template](/doc/user-guide/plots#html-templates).
+  [custom HTML template](/doc/user-guide/plots#custom-html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
