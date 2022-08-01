@@ -26,9 +26,13 @@ directories, etc.
 `dvc exp run` has the same general behavior as `dvc repro` when it comes to
 `targets` and stage execution (restores the dependency graph, etc.).
 
-> This includes committing any changed data <abbr>dependencies</abbr> to the
-> <abbr>DVC cache</abbr> when preparing the experiment, which can take some
-> time. See the [Options](#options) section for the differences.
+<admon type="info">
+
+This includes committing any changed data <abbr>dependencies</abbr> to the
+<abbr>DVC cache</abbr> when preparing the experiment, which can take some time.
+See the [Options](#options) section for the differences.
+
+</admon>
 
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
@@ -38,15 +42,22 @@ flag. To actually run them, use `dvc exp run --run-all`. Queued experiments are
 run sequentially by default, but can be run in parallel using the `--jobs`
 option.
 
-> ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
-> a number of jobs that your environment can handle (no more than the CPU
-> cores).
+<admon type="warn">
+
+Parallel runs are experimental and may be unstable. Make sure you're using a
+number of jobs that your environment can handle (no more than the CPU cores).
+
+</admon>
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
 options have special uses for these.
 
-> 📖 See the [Running Experiments] guide for more details on all these features.
+<admon type="info">
+
+See the [Running Experiments] guide for more details on all these features.
+
+</admon>
 
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
@@ -70,11 +81,11 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-S [<filename>:]<override_pattern>`,
   `--set-param [<filename>:]<override_pattern>` - set the value of existing
   `dvc params` for this experiment. `filename` can be any valid params file
-  (`params.yaml` by default). This will override the param values coming from
-  the params file.
+  (`params.yaml` by default). This will override the param file before running
+  the experiment.
 
-  Valid `override_pattern` values are defined in the
-  [Hydra Override syntax](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
+  Check the [examples](#example-modify-parameters-on-the-fly) for valid values
+  of `<override_pattern>`.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will generated otherwise, such as `exp-f80g4` (based on the
@@ -186,25 +197,85 @@ experiment we just ran (`exp-44136`).
 `dvc exp run--set-param` (`-S`) saves you the need to manually edit the params
 file before running an experiment.
 
+<admon type="warn">
+
+Note that `--set-param` doesn't update your `dvc.yaml`. If you are tracking each
+parameter individually, make sure to update your `dvc.yaml` accordingly when
+appending or removing parameters.
+
+</admon>
+
+You can optionally provide a prefix `[<filename>:]` in order to edit a specific
+params file. If not provided, `params.yaml` will be used as default.
+
+You can use the different syntaxes of `<override_pattern>` for modifying the
+parameters:
+
+- `<param_name>=<param_value>`
+
+Overrides existing parameters:
+
 ```dvc
 $ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
 ...
-Reproduced experiment(s): exp-18bf6
 ```
-
-To see the results, you can use `dvc exp diff`. It compares both params and
-metrics to the previous project version:
 
 ```dvc
-$ dvc exp diff
-Path         Metric    Value    Change
-scores.json  avg_prec  0.58187  -0.022184
-scores.json  roc_auc   0.93634  -0.024464
-
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  2000     -1000
-params.yaml  prepare.split           0.25     0.05
+$ dvc params diff
+Path         Param                   HEAD    workspace
+params.yaml  featurize.max_features  1000    2000
+params.yaml  prepare.split           0.20    0.25
 ```
 
-> Notice that experiments run as a series don't build up on each other. They are
-> all based on `HEAD`.
+- `+<param_name>=<param_value>`
+
+Appends new parameters:
+
+```dvc
+$ dvc exp run -S +prepare.new_param=foo
+...
+```
+
+```dvc
+$ dvc params diff
+Path         Param              HEAD    workspace
+params.yaml  prepare.new_param  -       foo
+```
+
+- `~<param_name>=<param_value>`
+
+Removes existing parameters:
+
+```dvc
+$ dvc exp run -S ~prepare.seed
+...
+```
+
+```dvc
+$ dvc params diff
+Path         Param         HEAD      workspace
+params.yaml  prepare.seed  20170428  -
+```
+
+- `++<param_name>=<param_value>`
+
+Appends or overrides parameters:
+
+```dvc
+$ dvc exp run -S ++prepare.new_param=foo ++prepare_split=0.1
+...
+```
+
+```dvc
+$ dvc params diff
+Path         Param              HEAD    workspace
+params.yaml  prepare.new_param  -       foo
+params.yaml  prepare.split      0.2     0.1
+```
+
+<admon type="tip">
+
+Experiments run as a series don't build up on each other. They are all based on
+`HEAD`.
+
+</admon>
