@@ -262,7 +262,7 @@ stages:
     cmd: python train.py ${mydict}
 ```
 
-DVC will unpack `mydict`, creating the following `cmd` call:
+DVC will unpack the values inside `mydict`, creating the following `cmd` call:
 
 ```cli
 $ python train.py --foo 'foo' --bar 1 --bool \
@@ -271,9 +271,8 @@ $ python train.py --foo 'foo' --bar 1 --bool \
 
 <admon type="tip">
 
-The [parsing](/doc/command-reference/config#parsing) section of `dvc config` can
-be used to customize the syntax used for some ambiguous types like booleans and
-lists.
+`dvc config parsing` can be used to customize the syntax used for ambiguous
+types like booleans and lists.
 
 </admon>
 
