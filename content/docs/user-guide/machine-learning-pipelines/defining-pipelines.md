@@ -194,7 +194,7 @@ fails (see `dvc repro`).
 
 ## Simple dependencies
 
-There's more than one type of stage dependency: A simple dependency is a file or
+There's more than one type of stage dependency. A simple dependency is a file or
 directory needed for the stage `cmd` to run successfully. When it's contents
 have changed, DVC "invalidates" the stage -- it knows that it needs to run
 again.
