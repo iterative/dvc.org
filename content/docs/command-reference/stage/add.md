@@ -37,54 +37,43 @@ are ignored by `dvc stage add`.
 
 </admon>
 
-Stages whose outputs become dependencies for other stages form
-<abbr>pipelines</abbr>. `dvc repro` can be used to rebuild this [dependency
-graph] and execute stages.
+Stages whose <abbr>outputs</abbr> become <abbr>dependencies</abbr> for other
+stages form <abbr>pipelines</abbr>. For example:
 
-<admon type="info">
-
-See the guide on [defining pipeline stages] for more details.
-
-[defining pipeline stages]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#dvcyaml-metafiles
-
-</admon>
-
-[`command` argument]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
-
-### Dependencies and outputs
-
-By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
-<abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can create a
-[dependency graph] that connects them, i.e. the output of a stage becomes the
-input of another, and so on (see `dvc dag`). This graph can be restored by DVC
-later to modify or [reproduce](/doc/command-reference/repro) the full pipeline.
-For example:
-
-```cli
+```dvc
 $ dvc stage add -n printer -d write.sh -o pages ./write.sh
 $ dvc stage add -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
 
+📖 See the guide on [defining pipeline stages] for more details.
+
+`dvc repro` can be used to rebuild this [dependency graph] and run stages.
+
+[`command` argument]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
+[defining pipeline stages]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#dvcyaml-metafiles
+[dependency graph]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+
+### Dependencies and outputs
+
 Stage dependencies can be any file or directory, either untracked, or more
 commonly tracked by DVC or Git. Outputs will be tracked and <abbr>cached</abbr>
 by DVC when the stage is run. Every output version will be cached when the stage
-is reproduced (see also `dvc gc`).
-
-Relevant notes:
+is reproduced (see also `dvc gc`). Relevant notes:
 
 - Typically, scripts to run (or possibly a directory containing the source code)
   are included among the specified `-d` dependencies. This ensures that when the
   source code changes, DVC knows that the stage needs to be reproduced. (You can
   chose whether to do this.)
 
-- `dvc stage add` checks the dependency graph integrity before creating a new
+- `dvc stage add` checks the [dependency graph] integrity before creating a new
   stage. For example: two stage cannot specify the same output or overlapping
   output paths, there should be no cycles, etc.
 
 - DVC does not feed dependency files to the command being run. The program will
-  have to read by itself the files specified with `-d`.
+  have to read the files itself.
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
   which generates a single `.dir` entry in the cache (refer to
@@ -95,24 +84,19 @@ Relevant notes:
   [external outputs](/doc/user-guide/managing-external-data) (outside of the
   <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
-- Outputs are deleted from the workspace before executing the command (including
-  at `dvc repro`) if their paths are found as existing files/directories (unless
-  `--outs-persist` is used). This also means that the stage command needs to
-  recreate any directory structures defined as outputs every time its executed
-  by DVC.
+- Stage commands need to recreate any directory structures defined as outputs
+  every time its executed by DVC.
 
 - In some situations, we have previously executed a stage, and later notice that
-  some of the files/directories used by the stage as dependencies, or created as
-  outputs are missing from `dvc.yaml`. It is possible to
-  [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
-  without having to execute it again.
+  some of the dependencies or outputs are missing from `dvc.yaml`. It is
+  possible to [add them to an existing stage].
 
 - Renaming dependencies or outputs requires a
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
 
-[dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+[add them to an existing stage]:
+  /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
 
 ### For displaying and comparing data science experiments
 
