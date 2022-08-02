@@ -57,10 +57,10 @@ See the guide on [defining pipeline stages] for more details.
 
 By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
 <abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can create a
-_dependency graph_ ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
-that connects them, i.e. the output of a stage becomes the input of another, and
-so on (see `dvc dag`). This graph can be restored by DVC later to modify or
-[reproduce](/doc/command-reference/repro) the full pipeline. For example:
+[dependency graph] that connects them, i.e. the output of a stage becomes the
+input of another, and so on (see `dvc dag`). This graph can be restored by DVC
+later to modify or [reproduce](/doc/command-reference/repro) the full pipeline.
+For example:
 
 ```cli
 $ dvc stage add -n printer -d write.sh -o pages ./write.sh
@@ -110,6 +110,9 @@ Relevant notes:
 - Renaming dependencies or outputs requires a
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
+
+[dependency graph]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines
 
 ### For displaying and comparing data science experiments
 
