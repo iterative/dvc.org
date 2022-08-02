@@ -36,7 +36,7 @@ command will halt the remaining stage execution, and raises an error.
 
 `dvc repro` is similar to [Make](https://www.gnu.org/software/make/) in software
 build automation, but DVC captures build requirements
-([dependencies and outputs](/doc/command-reference/stage/add#dependencies-and-outputs))
+([dependencies and outputs](/doc/command-reference/run#dependencies-and-outputs))
 and <abbr>caches</abbr> the pipeline's <abbr>outputs</abbr> along the way.
 
 💡 For convenience, a Git hook is available to remind you to `dvc repro` when
