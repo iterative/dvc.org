@@ -55,12 +55,12 @@ are ignored by `dvc stage add`.
 
 By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
 <abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can create a
-[dependency graph] that connects them, i.e. the output of a stage becomes the
-input of another, and so on (see `dvc dag`). This graph can be restored by DVC
-later to modify or [reproduce](/doc/command-reference/repro) the full pipeline.
-For example:
+_dependency graph_ ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
+that connects them, i.e. the output of a stage becomes the input of another, and
+so on (see `dvc dag`). This graph can be restored by DVC later to modify or
+[reproduce](/doc/command-reference/repro) the full pipeline. For example:
 
-```cli
+```dvc
 $ dvc run -n printer -d write.sh -o pages ./write.sh
 $ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
@@ -70,10 +70,7 @@ commonly tracked by DVC or Git. Outputs will be tracked and <abbr>cached</abbr>
 by DVC when the stage is run. Every output version will be cached when the stage
 is reproduced (see also `dvc gc`).
 
-[dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
-
-ℹ️ Relevant notes:
+Relevant notes:
 
 - Typically, scripts being run (or possibly a directory containing the source
   code) are included among the specified `-d` dependencies. This ensures that
