@@ -127,11 +127,4 @@ then exits. In this case, our `featurize` stage is still running, so no
 additional output is available at this time.
 
 If we wanted to continuously view live output from the running task (until it
-completes) we also could have used the `--follow` option:
-
-![](/img/queue-logs-follow.gif)
-
-We can see that output for the full experiment pipeline is displayed when using
-`--follow`. We are also notified that we can safely use `Ctrl+C` if we want to
-exit the `dvc queue logs` command, without affecting the execution of our
-running experiment task.
+completes) we also could have used the `--follow` option.
