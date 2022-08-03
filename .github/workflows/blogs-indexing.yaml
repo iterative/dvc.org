@@ -21,7 +21,7 @@ jobs:
       GATSBY_ALGOLIA_INDEX_NAME: ${{ secrets.GATSBY_ALGOLIA_INDEX_NAME }}
       ALGOLIA_FULL_UPDATE: ${{ github.event.inputs.fullUpdate }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Node.js and use yarn
         uses: actions/setup-node@v2
         with:
