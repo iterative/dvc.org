@@ -21,8 +21,12 @@ to complete before gracefully stopping any queue workers. The `--kill` option
 can be used to kill any currently running experiment tasks and stop the queue
 workers immediately.
 
-> ⚠️ Note that killed experiment tasks will be considered failed runs and will
-> not be re-added to the queue for future execution.
+<admon type="warn">
+
+Note that killed experiment tasks will be considered failed runs and will
+not be re-added to the queue for future execution.
+
+</admon>
 
 ## Options
 

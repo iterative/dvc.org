@@ -30,9 +30,13 @@ experiment task will continue to be run in the background.
 - `-e <encoding>`, `--encoding <encoding>` - text encoding for log output.
   Defaults to the system locale encoding.
 
-  > ⚠️ Note that this option is used to specify the encoding of the experiment
-  > task output (i.e. the output of pipeline stage commands), which may not
-  > always match the encoding of your system terminal.
+  <admon type="warn">
+
+  Note that this option is used to specify the encoding of the experiment
+  task output (i.e. the output of pipeline stage commands), which may not
+  always match the encoding of your system terminal.
+
+  </admon>
 
 - `-f`, `--follow` - attach to task and follow additional live output. Only
   applicable if the task is still running.

@@ -30,28 +30,36 @@ during this time, the idle worker will resume processing them instead.
 Queued experiment tasks are run sequentially by default, but can be run in
 parallel by using the `--jobs` option to start more than one worker.
 
-> ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
-> a number of jobs that your environment can handle (no more than the CPU
-> cores).
+<admon type="warn">
 
-> Note that since queued experiments are run isolated from each other, common
-> stages may sometimes be executed several times depending on the state of the
-> [run-cache] at that time.
+Parallel runs are experimental and may be unstable. Make sure you're using
+ number of jobs that your environment can handle (no more than the CPU
+cores).
+
+Note that since queued experiments are run isolated from each other, common
+stages may sometimes be executed several times depending on the state of the
+[run-cache] at that time.
+
+</admon>
 
 ## Options
 
 - `-j <number>`, `--<number>` - start up to this number of workers in parallel.
   Defaults to 1 (the task queue is processed serially).
 
-  > Note that if any queue worker processes have already been started, this
-  > command will not start additional processes unless `number` is greater than
-  > the number of existing workers (`number` is treated as the maximum allowed
-  > concurrency value).
+  <admon type="info">
 
-  > If `number` is less than the number of existing worker processes, this
-  > command will not stop any existing worker processes. To reduce worker
-  > concurrency, `dvc queue stop` must first be used to stop queue processing,
-  > before running `dvc queue run` with the desired number of `--jobs`.
+  Note that if any queue worker processes have already been started, this
+  command will not start additional processes unless `number` is greater than
+  the number of existing workers (`number` is treated as the maximum allowed
+  concurrency value).
+
+  If `number` is less than the number of existing worker processes, this
+  command will not stop any existing worker processes. To reduce worker
+  concurrency, `dvc queue stop` must first be used to stop queue processing,
+  before running `dvc queue run` with the desired number of `--jobs`.
+
+  </admon>
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
