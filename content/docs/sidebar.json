@@ -155,6 +155,7 @@
         ]
       },
       "setup-google-drive-remote",
+      "set-up-s3-remote",
       "large-dataset-optimization",
       "external-dependencies",
       {
