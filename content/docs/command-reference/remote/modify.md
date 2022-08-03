@@ -585,8 +585,8 @@ for a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
-- `profile` - name used to cache OAuth credentials. Helpful to avoid using the
-  wrong credentials when multiple GDrive remotes use the same
+- `profile` - file basename used to cache OAuth credentials. Helpful to avoid
+  using the wrong credentials when multiple GDrive remotes use the same
   `gdrive_client_id`. The default value is `default`.
 
   ```cli
@@ -595,8 +595,8 @@ for a full guide on using Google Drive as DVC remote storage.
 
 - `gdrive_user_credentials_file` - specific file path to cache OAuth
   credentials. The default is
-  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/{profile}.json`, where
-  the`CACHE_HOME` location per platform is:
+  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (unless `profile` is
+  specified), where the `CACHE_HOME` location per platform is:
 
   | macOS              | Linux (\*typical) | Windows                 |
   | ------------------ | ----------------- | ----------------------- |
