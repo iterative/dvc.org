@@ -180,7 +180,9 @@ to sign into a Google account with the needed access to the GDrive
 [URL](#url-format) in question. The [auth process] will ask you to grant DVC the
 necessary permissions, and produce a verification code needed for DVC to
 complete the connection. On success, the necessary credentials will be cached
-globally ([see `gdrive_user_credentials_file`]) and used automatically next time
+globally, for example in
+`~/Library/Caches/pydrive2fs/{gdrive_client_id}/default.json` for macOS
+([see `gdrive_user_credentials_file`]), and used automatically next time
 DVC needs them.
 
 <admin type="warn">
