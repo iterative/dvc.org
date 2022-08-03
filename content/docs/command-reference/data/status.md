@@ -14,7 +14,7 @@ usage: dvc data status [-h] [-q | -v]
 
 ## Description
 
-Shows changes that have differences between the last commit (`HEAD`) and
+Shows changes that have differences between the last Git commit (`HEAD`) and
 committed data specified in [metafiles](/doc/user-guide/project-structure)
 files, uncommitted changes that have differences between that specified in the
 metafiles and the <abbr>workspace</abbr>, and the changes that are not in the
@@ -48,7 +48,7 @@ The `dvc data status` displays changes in multiple categories such as:
 The categories will only be displayed when there are changes related to those
 categories.
 
-The _DVC committed changes_ and _DVC committed changes_ shows more detailed
+The _DVC committed changes_ and _DVC uncommitted changes_ shows more detailed
 state the files are in: _added_, _modified_, and _deleted_.
 
 ## Options
@@ -103,7 +103,7 @@ Following on from the above example, using `--granular` will show file-level
 information for the changes:
 
 ```dvc
-$ dvc data status
+$ dvc data status --granular
 Not in cache:
   (use "dvc pull <file>..." to update your local storage)
         data/data.xml
