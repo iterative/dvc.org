@@ -219,6 +219,7 @@
         "slug": "dag"
       },
       {
+        "label": "data",
         "slug": "data",
         "children": [
           {

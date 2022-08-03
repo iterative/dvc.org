@@ -20,7 +20,7 @@ files, uncommitted changes that have differences between that specified in the
 metafiles and the <abbr>workspace</abbr>, and the changes that are not in the
 cache but is specified in those metafiles.
 
-The first change shows what is already committed to dvc via `dvc add` or
+The first change shows what is already committed to DVC via `dvc add` or
 `dvc commit` or `dvc repro` but the metafiles are not committed to git yet. The
 second change shows the new changes to the data that is not tracked by DVC yet
 or what you could `dvc commit`. The third change shows the files that are
@@ -54,7 +54,7 @@ state the files are in: _added_, _modified_, and _deleted_.
 ## Options
 
 - `--granular` - Show granular, file-level information for the changes for
-  dvc-tracked directories. By default, DVC only shows the changes at the level
+  DVC-tracked directories. By default, DVC only shows the changes at the level
   where the data is being tracked at.
 
 - `--untracked-files` - Show files that are not being tracked by DVC and Git.
@@ -114,7 +114,7 @@ DVC committed changes:
 
 DVC uncommitted changes:
   (use "dvc commit <file>..." to track changes)
-        modified: data/data.xml
+        deleted: model.pkl
 (there are other changes not tracked by dvc, use "git status" to see)
 ```
 
