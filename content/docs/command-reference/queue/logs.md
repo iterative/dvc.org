@@ -32,9 +32,9 @@ experiment task will continue to be run in the background.
 
   <admon type="warn">
 
-  Note that this option is used to specify the encoding of the experiment
-  task output (i.e. the output of pipeline stage commands), which may not
-  always match the encoding of your system terminal.
+  Note that this option is used to specify the encoding of the experiment task
+  output (i.e. the output of pipeline stage commands), which may not always
+  match the encoding of your system terminal.
 
   </admon>
 

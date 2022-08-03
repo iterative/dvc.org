@@ -33,8 +33,7 @@ parallel by using the `--jobs` option to start more than one worker.
 <admon type="warn">
 
 Parallel runs are experimental and may be unstable. Make sure you're using
- number of jobs that your environment can handle (no more than the CPU
-cores).
+number of jobs that your environment can handle (no more than the CPU cores).
 
 Note that since queued experiments are run isolated from each other, common
 stages may sometimes be executed several times depending on the state of the
@@ -54,10 +53,10 @@ stages may sometimes be executed several times depending on the state of the
   the number of existing workers (`number` is treated as the maximum allowed
   concurrency value).
 
-  If `number` is less than the number of existing worker processes, this
-  command will not stop any existing worker processes. To reduce worker
-  concurrency, `dvc queue stop` must first be used to stop queue processing,
-  before running `dvc queue run` with the desired number of `--jobs`.
+  If `number` is less than the number of existing worker processes, this command
+  will not stop any existing worker processes. To reduce worker concurrency,
+  `dvc queue stop` must first be used to stop queue processing, before running
+  `dvc queue run` with the desired number of `--jobs`.
 
   </admon>
 
