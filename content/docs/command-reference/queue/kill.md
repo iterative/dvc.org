@@ -27,8 +27,8 @@ To kill all running experiment tasks and also stop queue processing, you can use
 
 <admon type="warn">
 
-Note that killed experiment tasks will be considered failed runs and will
-not be re-added to the queue for future execution.
+Note that killed experiment tasks will be considered failed runs and will not be
+re-added to the queue for future execution.
 
 </admon>
 
