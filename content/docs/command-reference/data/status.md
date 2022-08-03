@@ -1,7 +1,7 @@
 # data status
 
-Show changes in data tracked by DVC between the last commit, the dvcfiles and
-the workspace.
+Show changes in data tracked by DVC between the last Git commit, the metafiles
+and the workspace.
 
 ## Synopsis
 
@@ -15,8 +15,8 @@ usage: dvc data status [-h] [-q | -v]
 ## Description
 
 Shows changes that have differences between the last Git commit (`HEAD`) and
-committed data specified in [metafiles](/doc/user-guide/project-structure)
-files, uncommitted changes that have differences between that specified in the
+committed data specified in [metafiles](/doc/user-guide/project-structure),
+uncommitted changes that have differences between that specified in the
 metafiles and the <abbr>workspace</abbr>, and the changes that are not in the
 cache but is specified in those metafiles.
 
@@ -53,16 +53,16 @@ state the files are in: _added_, _modified_, and _deleted_.
 
 ## Options
 
-- `--granular` - Show granular, file-level information for the changes for
+- `--granular` - show granular, file-level information for the changes for
   DVC-tracked directories. By default, DVC only shows the changes at the level
   where the data is being tracked at.
 
-- `--untracked-files` - Show files that are not being tracked by DVC and Git.
+- `--untracked-files` - show files that are not being tracked by DVC and Git.
   This option can also take values: `no` and `all`. With `--untracked-files=no`,
   this change is not shown and is a default. `--untracked-files=all` or just
   `--untracked-files` will show untracked files.
 
-- `--unchanged` - Show unchanged DVC-tracked files.
+- `--unchanged` - show unchanged DVC-tracked files.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable output.
