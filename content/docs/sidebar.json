@@ -385,28 +385,28 @@
         "source": "queue/index.md",
         "children": [
           {
-            "label": "queue kill",
-            "slug": "kill"
-          },
-          {
-            "label": "queue logs",
-            "slug": "logs"
-          },
-          {
             "label": "queue start",
             "slug": "start"
-          },
-          {
-            "label": "queue status",
-            "slug": "status"
           },
           {
             "label": "queue stop",
             "slug": "stop"
           },
           {
+            "label": "queue status",
+            "slug": "status"
+          },
+          {
+            "label": "queue logs",
+            "slug": "logs"
+          },
+          {
             "label": "queue remove",
             "slug": "remove"
+          },
+          {
+            "label": "queue kill",
+            "slug": "kill"
           }
         ]
       },
