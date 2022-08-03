@@ -25,33 +25,6 @@ for started queue worker processes.
 
 ## Examples
 
-> This is based on our [Get Started](/doc/start/experiments), where you can find
-> the actual source code.
-
-<details>
-
-### Expand to prepare the example ML project
-
-Clone the DVC repo and download the data it <abbr>depends</abbr> on:
-
-```dvc
-$ git clone git@github.com:iterative/example-get-started.git
-$ cd example-get-started
-$ dvc pull
-```
-
-Let's also install the Python requirements:
-
-> We **strongly** recommend creating a
-> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-> first.
-
-```dvc
-$ pip install -r src/requirements.txt
-```
-
-</details>
-
 Before adding any experiments to the task queue and before starting the queue
 worker process, we can verify the queue status:
 
