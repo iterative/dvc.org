@@ -183,6 +183,13 @@ From a Portuguese speaking community member in Finland...
 > years. It won't be long before DVC is as common as Scikit-Learn in ML / DS
 > projects with high maturity. 👏🏼👏🏼👏🏼"
 
+O [@DVCorg](https://twitter.com/DVCorg) seguramente está entre as melhores
+ferramentas do ecossistema dos últimos 3 anos. Não vai demorar para o DVC ser
+tão comum quanto o Scikit-Learn em projetos de ML/DS com alta maturidade. 👏👏👏
+https://t.co/nnfecYoTQv
+
+— Flávio Clésio March 3, 2021
+
 We think so too! 🙌🏼 You're all caught up! See you at the next Community Gems 💎!
 
 ---
