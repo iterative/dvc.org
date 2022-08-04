@@ -1,8 +1,8 @@
 # Defining Pipelines
 
-DVC helps define your ML workflows so that anyone can reliably **reproduce**
-them later. This way you can ensure that steps are followed when necessary (and
-only when necessary).
+DVC helps define programmatic workflows so that anyone can reliably
+**reproduce** them later. This way you can ensure that steps are followed when
+necessary (and only when necessary).
 
 Specifically, pipelines are written as a set of `stages` in
 [`dvc.yaml` metafiles](#dvcyaml-metafiles). This _codification_ has the added
@@ -234,10 +234,11 @@ changed for the purpose of stage invalidation.
 
 ## Parameter dependencies
 
-A more ML-specific type of dependency is the _hyperparameter_ (`params` field).
-These are simple values used inside your code to tune data processing, modeling
-attributes, or that determine stage execution in any other way. For example, a
-[random forest classifier] may require a _maximum depth_ value.
+A more narrow type of dependency is the parameter (`params` field), or
+_hyperparameters_ in machine learning. These are simple values used inside your
+code to tune data processing, modeling attributes, or that determine stage
+execution in any other way. For example, a [random forest classifier] may
+require a _maximum depth_ value.
 
 Instead of hard-coding it, your code can read param values from a parameters
 file. `dvc params` can track any key/value pair inside structured YAML, JSON,

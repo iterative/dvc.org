@@ -1,11 +1,11 @@
-# Machine Learning Pipelines
+# Data Pipelines
 
 If you find yourself repeating sequence of actions to get or update the results
-of an ML project, then you may already have a pipeline. DVC helps you make it
+of your project, then you may already have a pipeline. DVC helps you make it
 more manageable and consistent by [defining it] in a standard format
 (`dvc.yaml`).
 
-A typical ML workflow could involve:
+A typical data science workflow could involve:
 
 1. Gathering data and for training and validation
 2. Extracting useful features from the training dataset

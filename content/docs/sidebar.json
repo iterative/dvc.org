@@ -144,7 +144,7 @@
         ]
       },
       {
-        "slug": "machine-learning-pipelines",
+        "slug": "data-pipelines",
         "children": ["defining-pipelines"]
       },
       {
