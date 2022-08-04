@@ -117,8 +117,7 @@ If and when `step` is updated, DVCLive generates or updates a report in
 ![](/img/dvclive-html.gif)
 
 The `format` can be HTML) or Markdown depending on the value of the `report`
-argument passed to
-[`Live()`](/doc/dvclive/api-reference/live#parameters).
+argument passed to [`Live()`](/doc/dvclive/api-reference/live#parameters).
 
 <admon type="info">
 
