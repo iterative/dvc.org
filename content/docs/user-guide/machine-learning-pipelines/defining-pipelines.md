@@ -54,7 +54,7 @@ time functions, hardware dependencies, etc.).
 
 </details>
 
-## Directed acyclic graph (DAG)
+## Directed Acyclic Graph (DAG)
 
 DVC represents a pipeline internally as a graph where the nodes are stages and
 the edges are _directed_ dependencies (e.g. A before B). In order for DVC to

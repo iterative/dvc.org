@@ -17,12 +17,15 @@ positional arguments:
 
 ## Description
 
-Displays the [dependency graph]\(s) of the stages in one or more pipelines, as
-defined in the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a
-`target` stage name to show the pipeline up to that point.
+DVC represents a pipeline internally as a **Directed Acyclic Graph** (DAG) where
+the nodes are stages and the edges are dependencies.
 
-[dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+`dvc dag` displays this dependency graph in one or more pipelines, as defined in
+the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a `target` stage
+name to show the pipeline up to that point.
+
+[directed acyclic graph]:
+  /doc/user-guide/machine-learning-pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Paginating the output
 

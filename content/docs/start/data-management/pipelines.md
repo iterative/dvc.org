@@ -151,12 +151,12 @@ along with `git commit` to version DVC metafiles).
 
 [to remote storage]: /doc/start/data-and-model-versioning#storing-and-sharing
 
-## Dependency graphs
+## Dependency graphs (DAG)
 
-By using `dvc stage add` multiple times, and specifying <abbr>outputs</abbr> of
-a stage as <abbr>dependencies</abbr> of another one, we can describe a sequence
-of commands which gets to a desired result. This is what we call a [dependency
-graph] and it's what forms a cohesive pipeline.
+By using `dvc stage add` multiple times to use <abbr>outputs</abbr> of a stage
+as <abbr>dependencies</abbr> of another one, we can describe a sequence of
+connected commands that gets to a desired result. This [dependency graph] (a
+Directed Acyclic Graph or DAG) is what forms a cohesive pipeline.
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
