@@ -113,7 +113,7 @@ The [metrics summary](/doc/dvclive/api-reference/live/log#description) in
 The [metrics history](/doc/dvclive/api-reference/live/log#step-updates)
 `training_metrics/scalars` can be visualized with `dvc plots`.
 
-The [metrics report](/doc/dvclive/api-reference/live/make_report#description) in
+The [metrics report](/doc/dvclive/api-reference/live/make_report) in
 `training_metrics/report.html` will contain all the logged data and will be
 automatically updated during training on each `step` update!
 

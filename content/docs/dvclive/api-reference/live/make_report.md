@@ -21,7 +21,8 @@ live.make_report()
 On each call, DVCLive will collect all the data logged in `{Live.dir}`, generate
 a report and save it in `{Live.dir}/report.{format}`.
 
-The `format` is determied by the `report` argument passed to
+The `format` can be HTML) or Markdown depending on the value of the `report`
+argument passed to
 [`Live()`](/doc/dvclive/api-reference/live#parameters).
 
 ![](/img/dvclive-html.gif)
