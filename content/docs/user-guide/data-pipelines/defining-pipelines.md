@@ -246,9 +246,10 @@ TOML, or Python files (see also `dvc.api.params_show()`). DVC will keep track of
 params as granular dependencies: it will only invalidate the stage if that part
 of the file has changed.
 
-Parameters are defined under the `params` set of `dvc.yaml`. Each entry is the
-key string to look for the param value in the default params file, `params.yaml.
-Sub-list under custom params file names can also be included.
+Parameters are defined under `params` fields in `dvc.yaml` stages. Each entry is
+the key string to look for a param value or group in the default params file,
+`params.yaml`. You may also track all the params in any params file by ending
+the entry in `:`. Or provide a sub-list to include specific params from there.
 
 ```yaml
 stages:
@@ -257,6 +258,7 @@ stages:
     ...
     params:
       - learning_rate  # from params.yaml
+      - configuration.json:  # all params from here
       - deep_learning.json:
           - epochs     # from custom deep_learning.json file
 ```
