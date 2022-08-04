@@ -109,7 +109,7 @@ not.
 
 See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
 
-### Report
+### Metrics report
 
 If and when `step` is updated, DVCLive generates or updates a report in
 `dvclive/report.{format}` which will contain all the logged data.
