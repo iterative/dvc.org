@@ -175,17 +175,7 @@ image="/uploads/images/2021-03-15/arxiv.png"/>
 
 ![ScienceMindBlown](https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif)
 
-## Tweet Love ❤️
-
-From a Porutguese speaking community member in Finland...
-
-> "The @DVCorg surely it is among the best tools of the ecosystem of the last 3
-> years. It won't be long before DVC is as common as Scikit-Learn in ML / DS
-> projects with high maturity. 👏🏼👏🏼👏🏼"
-
-https://twitter.com/flavioclesio/status/1367187054749224961
-
-We think so too! 🙌🏼 You're all caught up! See you at the next Community Gems 💎!
+You're all caught up! See you at the next Community Gems 💎!
 
 ---
 
