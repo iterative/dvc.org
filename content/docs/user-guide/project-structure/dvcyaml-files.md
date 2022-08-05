@@ -493,8 +493,8 @@ plots:
 
 In that case the default behavior will be applied. DVC will take data from
 `logs.csv` file and apply `linear` plot
-[template](/doc/user-guide/plots#plot-templates) to the last found column (CSV,
-TSV files) or field (JSON, YAML).
+[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) to
+the last found column (CSV, TSV files) or field (JSON, YAML).
 
 We can customize the plot by adding appropriate fields to the configuration:
 

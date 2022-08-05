@@ -3,7 +3,7 @@
 Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
 [top-level definition] from `dvc.yaml`.
 
-[top-level definition]: /doc/user-guide/plots#top-level-plots
+[top-level definition]: /doc/user-guide/visualizing-plots#top-level-plots
 
 ## Synopsis
 
@@ -22,8 +22,8 @@ positional arguments:
 ## Description
 
 This command provides a quick way to visualize
-[certain data](/doc/user-guide/plots#supported-file-formats) such as loss
-functions, AUC curves, confusion matrices, etc.
+[certain data](/doc/user-guide/visualizing-plots#supported-file-formats) such as
+loss functions, AUC curves, confusion matrices, etc.
 
 All plots defined in `dvc.yaml` are used by default, but specific plots files or
 [top-level plot] IDs can be specified as `targets` (note that target files don't
@@ -39,9 +39,10 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
-[plot templates]: /doc/user-guide/plots#plot-templates
-[top-level plot]: /doc/user-guide/plots#top-level-plots
-[stage plot]: /doc/user-guide/plots#stage-plots
+[plot templates]:
+  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
+[top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
+[stage plot]: /doc/user-guide/visualizing-plots#stage-plots
 
 ## Options
 
@@ -50,15 +51,15 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/plots#plot-templates) to be injected with
-  data. The default template is `.dvc/plots/default.json`. See more details in
-  `dvc plots`.
+  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  to be injected with data. The default template is `.dvc/plots/default.json`.
+  See more details in `dvc plots`.
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
-  [Custom templates](/doc/user-guide/plots#custom-templates) for more
-  information on this `index` field. Column names or numbers are expected for
-  tabular plots files.
+  [Custom templates](/doc/command-ref/plots/templates) for more information on
+  this `index` field. Column names or numbers are expected for tabular plots
+  files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `targets` is used by default. Column names or numbers are
@@ -79,8 +80,7 @@ The default behavior of this command can be modified per [stage plot] file with
 - `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
   A 0-based numeric index can be used to identify each column instead of names.
 
-- `--html-template <path>` - path to a
-  [custom HTML template](/doc/user-guide/plots#html-templates).
+- `--html-template <path>` - path to a [custom HTML template](#html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -372,12 +372,12 @@ using the the `--html-template` option. This allows you to customize the
 container where DVC will inject plots it generates.
 
 > ⚠️ This is a separate feature from
-> [custom Vega-Lite templates](/doc/user-guide/plots#custom-templates).
+> [custom Vega-Lite templates](/doc/command-reference/plots/templates).
 
 The only requirement for this HTML file is to specify the place to inject plots
-with a `{plot_divs}` marker. See an
-[example](/doc/user-guide/plots#example-offline-html-template) that uses this
-feature to render DVC plots without an Internet connection, below.
+with a `{plot_divs}` marker. See an [example](#example-offline-html-template)
+that uses this feature to render DVC plots without an Internet connection,
+below.
 
 ## Example: Offline HTML Template
 
@@ -479,8 +479,9 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_confusion.svg)
 
-> A confusion matrix [template](/doc/user-guide/plots#plot-templates) is
-> predefined in DVC.
+> A confusion matrix
+> [template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+> is predefined in DVC.
 
 We can use `confusion_normalized` template to normalize the results:
 

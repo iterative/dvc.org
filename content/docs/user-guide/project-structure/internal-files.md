@@ -32,7 +32,7 @@ operation.
 - `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
 - `.dvc/plots`: Directory for
-  [plot templates](/doc/command-reference/plots#plot-templates)
+  [plot templates](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 

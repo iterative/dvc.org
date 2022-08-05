@@ -28,8 +28,7 @@ positional arguments:
 `dvc plots` subcommands configure and visualize data and images produced by
 machine learning projects.
 
-📖 See [Plots Configuration and Visualization](/doc/user-guide/plots) for more
-info.
+📖 See [Visualizing Plots](/doc/user-guide/visualizing-plots) for more info.
 
 ## Options
 

@@ -52,7 +52,7 @@ epoch, AUC, loss
 Hierarchical file formats such as JSON and YAML consists of an array of
 consistent objects (sharing a common structure): All objects should contain the
 fields used for the X and Y axis of the plot (see
-[DVC template anchors](/doc/user-guide/visualizing-plots#custom-templates));
+[DVC template anchors](/doc/command-ref/plots/templates#custom-templates));
 Extra elements will be ignored silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
@@ -256,11 +256,10 @@ DVC has the following built-in plot templates:
   [custom templates].
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
-  [example](/doc/user-guide/plots#example-smooth-plot)
-- `confusion` - confusion matrix, see
-  [example](/doc/user-guide/plots#example-confusion-matrix)
+  [example](#example-smooth-plot)
+- `confusion` - confusion matrix, see [example](#example-confusion-matrix)
 
-[custom templates]: https://dvc.org/doc/command-reference/plots/templates
+[custom templates]: /doc/command-reference/plots/templates
 
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
@@ -321,8 +320,8 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_confusion.svg)
 
-> A confusion matrix [template](/doc/user-guide/plots#plot-templates) is
-> predefined in DVC.
+> A confusion matrix [template](#plot-templates-data-series-only) is predefined
+> in DVC.
 
 We can use `confusion_normalized` template to normalize the results:
 
