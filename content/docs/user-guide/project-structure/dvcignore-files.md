@@ -34,7 +34,7 @@ produced by a pipeline [stage](/doc/command-reference/run), they can be lost
 permanently.
 
 Keep in mind that when you add `.dvcignore` patterns that affect an existing
-<abbr>output</abbr>, its status will change and DVC will behave as if that
+<abbr>output</abbr>, its status will change and DVC will behave as if the
 affected files were deleted.
 
 💡 Note that you can use the `dvc check-ignore` command to check whether given
@@ -91,9 +91,12 @@ b026324c6904b2a9cb4b88d6d61c81d1  data/data1
 26ab0db90d72e28ad0ba1e22ee510510  data/data2
 ```
 
-Only the cache entries of the `data/` directory itself and one file have been
-stored. Checking the hash value of the data files manually, we can see that
-`data2` was cached. This means that `dvc add` did ignore `data1`.
+There are only 2 cache entries, and one of them (the one starting with `ad` and
+ending in `.dir`) is for the `data/` directory itself. Checking the hash value
+of the data files manually, we can see that the other cache entry (the one
+starting with `26`) is for `data2`. There is no cache entry for the `data1` file
+(whose hash value starts with `ab`). This means that `dvc add` did ignore
+`data1`.
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
@@ -112,8 +115,17 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-`dvc status` ignores `data1`. Modifications on a tracked file produce a
-different output:
+`dvc status` ignores `data1`.
+
+Similarly, deleting a dvc ignored file also does not affect `dvc status`:
+
+```dvc
+$ rm data/data1
+$ dvc status
+Data and pipelines are up to date.
+```
+
+Modifications/deletions on a tracked file produce a different output:
 
 ```dvc
 $ echo "345" >> data/data2
@@ -144,8 +156,9 @@ data/data1
 $ dvc add data
 ```
 
-If we move not ignored data, DVC will behave as if we modified data directory by
-adding new file:
+If we move the ignored file to a new file within the `data` directory (which is
+not dvc ignored), DVC will behave as if we modified the directory by adding a
+new file:
 
 ```dvc
 $ dvc status
@@ -213,4 +226,4 @@ dir2/data2.dvc:
 ```
 
 Only the second file is displayed because DVC now ignores `data1.dvc` and
-`data1`.
+`dir1`.

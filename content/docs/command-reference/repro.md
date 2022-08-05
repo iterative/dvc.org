@@ -7,9 +7,11 @@ correct order.
 ## Synopsis
 
 ```usage
-usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
-                 [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
-                 [--no-commit] [--downstream] [--pull] [--glob]
+usage: dvc repro [-h] [-q | -v] [-f] [-i]
+                 [-s] [-p] [-P] [-R] [-m]
+                 [--downstream] [--force-downstream]
+                 [--pull] [--dry]
+                 [--glob] [--no-commit] [--no-run-cache]
                  [targets [<target> ...]]
 
 positional arguments:

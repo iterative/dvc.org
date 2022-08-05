@@ -1,14 +1,14 @@
 # exp push
 
-Upload an [experiment](/doc/command-reference/exp) to a Git remote, and its data
+Upload [experiments](/doc/command-reference/exp) to a Git remote, and their data
 to a `dvc remote`.
 
 ## Synopsis
 
 ```usage
-usage: dvc exp push [-h] [-q | -v] [-f] [--no-cache]
-                    [-r <name>] [-j <number>] [--run-cache]
-                    git_remote experiment
+usage: dvc exp push [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
+                    [--no-cache] [-r <name>] [-j <number>] [--run-cache]
+                    git_remote [experiment ...]
 
 positional arguments:
   git_remote          Git remote name or Git URL
@@ -27,18 +27,28 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 > `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
-an `experiment` name or hash (see `dvc exp run`) to push.
+one or more `experiment` names or hashes (see `dvc exp run`) to push.
 
-The first action of `dvc exp push` is to upload the `experiment` to the Git
-remote so it can be pulled later from other repo clones (equivalent to
+The first action of `dvc exp push` is to upload the `experiments` to the Git
+remote so they can be pulled later from other repo clones (equivalent to
 `git push <git_remote> refs/exps/<experiment>`). Use `dvc exp list <git_remote>`
 to see experiments in the remote.
 
 This command will also try to [push](/doc/command-reference/push) all
-<abbr>cached</abbr> data associated with the experiment to DVC
+<abbr>cached</abbr> data associated with the experiments to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
 
 ## Options
+
+- `-A`, `--all-commits` - push all experiments in the repository (overrides
+  `--rev` and `--num`).
+
+- `--rev <commit>` - push experiments derived from the specified `<commit>` as
+  baseline.
+
+- `-n <num>`, `--num <num>` - push experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
   Git remote. Equivalent to `git push --force` (rewrites history)
@@ -74,7 +84,7 @@ This command will also try to [push](/doc/command-reference/push) all
 Let's say we have run 3 experiments in our project:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 11-bigrams-experiment:
         exp-e6c97
         exp-1dad0

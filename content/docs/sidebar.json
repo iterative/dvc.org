@@ -16,6 +16,11 @@
       "windows",
       "linux",
       {
+        "label": "Visual Studio Code",
+        "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+        "type": "external"
+      },
+      {
         "label": "Pre-release Version",
         "slug": "pre-release"
       },
@@ -23,48 +28,46 @@
         "label": "Shell Completion",
         "slug": "completion"
       },
-      "plugins"
+      {
+        "label": "IDE Plugins",
+        "slug": "ide-plugins"
+      }
     ]
   },
   {
     "slug": "start",
     "label": "Get Started",
     "source": "start/index.md",
-    "tutorials": {
-      "katacoda": "https://katacoda.com/dvc/courses/get-started"
-    },
     "children": [
       {
-        "slug": "data-and-model-versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
-        }
-      },
-      {
-        "slug": "data-and-model-access",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
-        }
-      },
-      {
-        "slug": "data-pipelines",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
-        }
-      },
-      {
-        "label": "Metrics, Parameters, and Plots",
-        "slug": "metrics-parameters-plots",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-        }
+        "slug": "data-management",
+        "label": "Data Management",
+        "source": "data-management/index.md",
+        "children": [
+          {
+            "label": "Data and Model Access",
+            "slug": "access"
+          },
+          {
+            "label": "Data Pipelines",
+            "slug": "pipelines"
+          },
+          {
+            "label": "Metrics, Parameters, and Plots",
+            "slug": "metrics-parameters-plots"
+          }
+        ]
       },
       {
         "slug": "experiments",
         "label": "Experiments",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        }
+        "source": "experiments/index.md",
+        "children": [
+          {
+            "label": "Visualization",
+            "slug": "visualization"
+          }
+        ]
       }
     ]
   },
@@ -92,7 +95,8 @@
         "slug": "fast-data-caching-hub"
       },
       "experiment-tracking",
-      "data-registries"
+      "model-registry",
+      "data-registry"
     ]
   },
   {
@@ -108,8 +112,8 @@
         "source": "project-structure/index.md",
         "children": [
           {
-            "label": "Pipelines Files (dvc.yaml)",
-            "slug": "pipelines-files"
+            "label": "dvc.yaml Files",
+            "slug": "dvcyaml-files"
           },
           {
             "label": ".dvc Files",
@@ -117,10 +121,7 @@
           },
           {
             "label": ".dvcignore Files",
-            "slug": "dvcignore-files",
-            "tutorials": {
-              "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
-            }
+            "slug": "dvcignore-files"
           },
           {
             "label": "Internal Files",
@@ -150,8 +151,7 @@
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
           "merge-conflicts",
-          "share-a-dvc-cache",
-          "share-many-experiments"
+          "share-a-dvc-cache"
         ]
       },
       "setup-google-drive-remote",
@@ -161,25 +161,7 @@
         "label": "Managing External Data",
         "slug": "managing-external-data"
       },
-      {
-        "label": "Contributing",
-        "slug": "contributing",
-        "source": false,
-        "children": [
-          {
-            "label": "DVC Core Project",
-            "slug": "core"
-          },
-          {
-            "label": "Docs and Website",
-            "slug": "docs"
-          },
-          {
-            "label": "Writing Blog Posts",
-            "slug": "blog"
-          }
-        ]
-      },
+
       "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
@@ -298,10 +280,7 @@
       },
       {
         "label": "fetch",
-        "slug": "fetch",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
-        }
+        "slug": "fetch"
       },
       {
         "label": "freeze",
@@ -385,6 +364,10 @@
           {
             "label": "plots modify",
             "slug": "modify"
+          },
+          {
+            "label": "plots templates",
+            "slug": "templates"
           }
         ]
       },
@@ -395,6 +378,37 @@
       {
         "label": "push",
         "slug": "push"
+      },
+      {
+        "label": "queue",
+        "slug": "queue",
+        "source": "queue/index.md",
+        "children": [
+          {
+            "label": "queue start",
+            "slug": "start"
+          },
+          {
+            "label": "queue stop",
+            "slug": "stop"
+          },
+          {
+            "label": "queue status",
+            "slug": "status"
+          },
+          {
+            "label": "queue logs",
+            "slug": "logs"
+          },
+          {
+            "label": "queue remove",
+            "slug": "remove"
+          },
+          {
+            "label": "queue kill",
+            "slug": "kill"
+          }
+        ]
       },
       {
         "label": "remote",
@@ -490,16 +504,39 @@
         "label": "get_url()"
       },
       {
+        "slug": "make_checkpoint",
+        "label": "make_checkpoint()"
+      },
+      {
         "slug": "open",
         "label": "open()"
       },
       {
-        "slug": "read",
-        "label": "read()"
+        "slug": "params_show",
+        "label": "params_show()"
       },
       {
-        "slug": "make_checkpoint",
-        "label": "make_checkpoint()"
+        "slug": "read",
+        "label": "read()"
+      }
+    ]
+  },
+  {
+    "label": "Contributing",
+    "slug": "contributing",
+    "source": false,
+    "children": [
+      {
+        "label": "DVC Core Project",
+        "slug": "core"
+      },
+      {
+        "label": "Docs and Website",
+        "slug": "docs"
+      },
+      {
+        "label": "Writing Blog Posts",
+        "slug": "blog"
       }
     ]
   },
@@ -509,80 +546,55 @@
     "type": "external"
   },
   {
-    "label": "CML",
-    "slug": "cml",
-    "source": "cml/index.md",
-    "icon": "cml",
-    "children": [
-      {
-        "label": "Get Started (GitHub)",
-        "slug": "start-github"
-      },
-      {
-        "label": "Get Started (GitLab)",
-        "slug": "start-gitlab"
-      },
-      "usage",
-      {
-        "label": "CML with DVC",
-        "slug": "cml-with-dvc"
-      },
-      {
-        "label": "Self-hosted Runners",
-        "slug": "self-hosted-runners"
-      },
-      {
-        "label": "Install as a Package",
-        "slug": "cml-with-npm"
-      }
-    ]
+    "label": "VS Code Extension",
+    "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+    "type": "external",
+    "icon": "vscode"
   },
   {
-    "label": "Studio",
     "slug": "studio",
-    "source": "studio/index.md",
     "icon": "studio",
     "children": [
-      {
-        "label": "How It Works",
-        "slug": "overview"
-      },
+      "how-it-works",
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
-        "source": "user-guide/index.md",
+        "source": false,
         "children": [
+          "prepare-your-repositories",
           {
-            "label": "Prepare Your Repositories",
-            "slug": "prepare-repositories"
-          },
-          {
-            "label": "Views and Experiments",
-            "slug": "views",
+            "slug": "projects-and-experiments",
             "source": false,
             "children": [
-              "what-is-a-view",
-              "create-view",
-              {
-                "label": "Configure View",
-                "slug": "view-settings"
-              },
-              {
-                "label": "Explore ML Experiments",
-                "slug": "explore-experiments"
-              },
-              {
-                "label": "Visualize and Compare",
-                "slug": "visualize-experiments"
-              },
+              "what-is-a-project",
+              "create-a-project",
+              "configure-a-project",
+              "explore-ml-experiments",
+              "visualize-and-compare",
               "run-experiments",
-              "share-view"
+              "share-a-project"
+            ]
+          },
+          {
+            "slug": "model-registry",
+            "source": false,
+            "children": [
+              {
+                "label": "What is a Model Registry",
+                "slug": "what-is-a-model-registry"
+              },
+              "add-a-model",
+              "view-models",
+              "register-version",
+              "assign-stage"
             ]
           },
           "teams",
+          "change-team-plan-and-size",
           "account-management",
-          "install-github-app"
+          "billing-and-payment",
+          "install-github-app",
+          "connect-custom-gitlab-server"
         ]
       },
       "troubleshooting"
@@ -602,7 +614,6 @@
         "slug": "dvclive-with-dvc"
       },
       {
-        "label": "ML Frameworks",
         "slug": "ml-frameworks",
         "source": "dvclive/ml-frameworks/index.md",
         "children": [
@@ -649,7 +660,6 @@
         ]
       },
       {
-        "label": "API Reference",
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
@@ -669,6 +679,10 @@
               {
                 "slug": "log_plot",
                 "label": "log_plot()"
+              },
+              {
+                "slug": "make_report",
+                "label": "make_report()"
               },
               {
                 "slug": "get_step",

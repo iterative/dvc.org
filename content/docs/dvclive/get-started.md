@@ -3,8 +3,12 @@
 DVCLive is a Python library for logging machine learning metrics and other
 metadata in simple file formats, which is fully compatible with DVC.
 
-> If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks),
-> you can jump directly to it's corresponding page.
+<admon type="tip">
+
+If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
+can jump directly to its corresponding page.
+
+</admon>
 
 ## Workflow
 
@@ -104,6 +108,20 @@ the type of data you have logged and whether you have updated the step value or
 not.
 
 See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
+
+### HTML report
+
+If and when `step` is updated, DVCLive generates or updates an HTML report in
+`dvclive/report.html` which will contain all the logged data.
+
+![](/img/dvclive-html.gif)
+
+<admon type="info">
+
+If you don't update the step number, the HTML report won't be generated unless
+you call `Live.make_report()` directly.
+
+</admon>
 
 ## What next?
 

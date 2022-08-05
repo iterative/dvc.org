@@ -25,12 +25,27 @@ learn.fit_one_cycle(
 +  cbs=[DvcLiveCallback()])
 ```
 
-This will generate the outputs as described in the
-[Get Started](/docs/dvclive/get-started#outputs).
+The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
+`{metric}` will be stored in:
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+```py
+{Live.dir}/scalars/{split}/{metric}.tsv
+```
+
+Where:
+
+- `{Live.dir}` is the
+  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{split}` can be either `train` or `eval`.
+- `{metric}` is the name provided by the framework.
+
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 

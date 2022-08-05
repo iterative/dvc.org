@@ -9,10 +9,11 @@ class Live:
         self,
         path: Optional[str] = None,
         resume: bool = False,
+        report: Optional[str] = "html",
     ):
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
@@ -25,17 +26,23 @@ live = Live()
 A `Live()` instance is required in order to log machine learning metrics and
 other metadata.
 
-⚠️ `Live()` will remove all existing DVCLive related files under `path` unless
+<admon type="warn">
+
+`Live()` will remove all existing DVCLive related files under `path` unless
 `resume=True`.
+
+</admon>
 
 ## Attributes
 
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/get-started#outputs).
-- `summary_path` - Location of the
-  [summary](/doc/dvclive/api-reference/live/#parameters).
-- `html_path` - Location of the
-  [html report](/doc/dvclive/dvclive-with-dvc#html-report).
+
+- `summary_path` - `{dir}.json`. Location of the
+  [summary](/doc/dvclive/api-reference/live/log#description).
+
+- `html_path` - `{dir}/report.html`. Location of the
+  [html report](/doc/dvclive/api-reference/live/make_report#description).
 
 ## Parameters
 
@@ -48,20 +55,25 @@ other metadata.
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `path` directory and start from that point. _Default_: `False`.
 
-  ⚠️ If you are not using steps, don't set to `True` since DVCLive will preserve
-  previous run's files and assume that `step` has been enabled.
+  <admon type="info">
 
-## Exceptions
+  If you are not using steps, don't set `resume=True` since DVCLive will
+  preserve previous run's files and assume that `step` has been enabled.
 
-- `dvclive.error.ConfigMismatchError` - thrown if the provided `path` does not
-  match with the one set in DVC (see
-  [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc))
+  </admon>
+
+- `report` - If `html`, DVCLive will call `Live.make_report()` on each step
+  update. _Default_: `html`.
+
+- `auto_open` - If `True`, on the first `Live.make_report()` call, DVCLive will
+  automatically open `html_path` in a browser. _Default_: `False`.
 
 ## Methods
 
 - `Live.log()`
 - `Live.log_image()`
 - `Live.log_plot()`
+- `Live.make_report()`
 - `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

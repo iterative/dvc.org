@@ -6,7 +6,7 @@ Saves the given image `val` to the output file `name`.
 def log_image(name: str, val):
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
@@ -40,7 +40,11 @@ $ tree
         └── pil.png
 ```
 
-💡 Images can be visualized with `dvc plots`.
+<admon type="tip">
+
+The logged images can be visualized with `dvc plots`.
+
+</admon>
 
 ### Step updates
 

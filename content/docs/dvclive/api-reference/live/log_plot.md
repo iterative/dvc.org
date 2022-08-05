@@ -8,7 +8,7 @@ saves the data in `{path}/plots/{name}.json`.
 def log_plot(self, name: str, labels, predictions, **kwargs):
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
@@ -27,7 +27,11 @@ live.log_plot("confusion_matrix", y_true, y_pred)
 Uses `name` to determine which plot should be generated. See
 [supported plots](#supported-plots).
 
-💡 The generated `{path}/plots/{name}.json` can be visualized with `dvc plots`.
+<admon type="tip">
+
+The generated `{path}/plots/{name}.json` can be visualized with `dvc plots`.
+
+</admon>
 
 ### Step updates
 

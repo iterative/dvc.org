@@ -107,16 +107,16 @@ is the address of that directory.
 ### [Q: I heard there's a new CML feature using Terraform to provision runners. When is this coming out?](https://discord.com/channels/485586884165107732/728693131557732403/812069229473562624)
 
 You're in luck, because we just shared this feature as part of the CML 0.3.0
-pre-release! The pre-release introduced a new function, `cml-runner`, which
+pre-release! The pre-release introduced a new function, `cml runner`, which
 upgraded our
 [previous method for launching instances in the cloud from a CI workflow using Docker Machine](https://github.com/iterative/cml_cloud_case/blob/b76aba13791ce18c5715f464f58877ffa10d4cfa/.github/workflows/cml.yaml).
-In the new `cml-runner` function built on Terraform, you can deploy instances in
+In the new `cml runner` function built on Terraform, you can deploy instances in
 AWS and Azure with a single command (it used to take about 30 lines of code!).
 For example, to launch a `t2.micro` instance on AWS from your GitHub Actions or
 GitLab CI workflow, you'll run:
 
 ```bash
-cml-runner \
+cml runner \
 	--cloud aws \
 	--cloud-region us-west \
 	--cloud-type=t2.micro \
@@ -132,7 +132,7 @@ to get started.
 
 By default, files that are created in a GitHub Actions or GitLab CI workflow
 only exist on the runner- as soon as the runner turns off, they vanish.
-Functions like `cml-publish` and `cml-send-comment` create persistent links to
+Functions like `cml publish` and `cml send-comment` create persistent links to
 data visualizations, tables, and other outputs of your workflow so you can view
 them long after your run ends. However, by design, CML doesn't commit files to
 your repository (not all users want this!)

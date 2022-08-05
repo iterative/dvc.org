@@ -25,12 +25,28 @@ to your
  trainer.fit(model)
 ```
 
-This will generate the outputs as described in the
-[Get Started](/docs/dvclive/get-started#outputs).
+The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
+`{metric}` will be stored in:
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+```py
+{Live_dir}/scalars/{split}/{iter_type}/{metric}.tsv
+```
+
+Where:
+
+- `{Live.dir}` is the
+  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{split}` can be either `train` or `eval`.
+- `{iter_type}` can be either `epoch` or `step`.
+- `{metric}` is the name provided by the framework.
+
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -62,7 +78,11 @@ trainer = Trainer(
 trainer.fit(model)
 ```
 
-> 📖 By default, PyTorch Lightning creates a directory to store checkpoints
-> using the logger's name (`DvcLiveLogger`). You can change the checkpoint path
-> or disable checkpointing at all as described in the
-> [PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
+<admon type="info">
+
+By default, PyTorch Lightning creates a directory to store checkpoints using the
+logger's name (`DvcLiveLogger`). You can change the checkpoint path or disable
+checkpointing at all as described in the
+[PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
+
+</admon>

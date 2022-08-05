@@ -2,24 +2,40 @@ import React, { useRef, useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
 import TwoRowsButton from '../TwoRowsButton'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
-import isClient from 'gatsby-theme-iterative-docs/src/utils/front/isClient'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
+import { OS, useUserOS } from '../../utils/front/useUserOS'
 
-const VERSION = `2.9.4`
+const VERSION = `2.15.0`
 
-enum OS {
-  UNKNOWN = 'unknown',
-  OSX = 'osx',
-  WINDOWS = 'win',
-  LINUX = 'linux',
-  LINUX_RPM = 'linux_rpm'
+const dropdownItems = [
+  OS.UNKNOWN,
+  null,
+  OS.OSX,
+  OS.WINDOWS,
+  OS.LINUX,
+  OS.LINUX_RPM
+]
+
+interface IDownloadButtonDropdownItemsProps {
+  userOS: OS
+  onClick: (os: OS) => void
 }
 
-const itemsByOs = {
+interface IDownloadButtonProps {
+  openTop?: boolean
+}
+
+interface IOSDescription {
+  title: string
+  url: string
+  download: boolean
+}
+
+const itemsByOs: Record<OS, IOSDescription> = {
   [OS.UNKNOWN]: {
     title: 'pip, conda, brew',
     url: `/doc/install`,
@@ -45,37 +61,6 @@ const itemsByOs = {
     url: `/download/linux-rpm/dvc-${VERSION}`,
     download: true
   }
-}
-const dropdownItems = [
-  OS.UNKNOWN,
-  null,
-  OS.OSX,
-  OS.WINDOWS,
-  OS.LINUX,
-  OS.LINUX_RPM
-]
-
-interface IDownloadButtonDropdownItemsProps {
-  userOS: OS
-  onClick: (os: OS) => void
-}
-
-interface IDownloadButtonProps {
-  openTop?: boolean
-}
-
-const userAgentIs = (value: string): boolean =>
-  navigator.userAgent.indexOf(value) !== -1
-
-const getUserOS = (): OS => {
-  let OSName = OS.UNKNOWN
-
-  if (!isClient) return OSName
-  if (userAgentIs('Win')) OSName = OS.WINDOWS
-  if (userAgentIs('Mac')) OSName = OS.OSX
-  if (userAgentIs('Linux')) OSName = OS.LINUX
-
-  return OSName
 }
 
 const DownloadButtonDropdownItems: React.FC<
@@ -119,11 +104,11 @@ const DownloadButtonDropdownItems: React.FC<
 }
 
 const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
-  const userOS = useRef(getUserOS())
+  const userOS = useUserOS()
+  const currentOS = itemsByOs[userOS]
   const containerRef = useRef<HTMLDivElement>(null)
   const [isOpened, setOpened] = useState(false)
   const [isClicked, setClicked] = useState(false)
-  const currentOS = itemsByOs[userOS.current]
   const toggle = useCallback(
     () =>
       setOpened(prev => {
@@ -136,6 +121,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
       }),
     [isOpened, isClicked]
   )
+
   const download = (os: OS): void => {
     setOpened(false)
     logEvent('Download Button', { OS: os })
@@ -157,10 +143,11 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
     <span className={styles.container} ref={containerRef}>
       <TwoRowsButton
         mode="purple"
-        className={`${cn(
+        className={cn(
+          'btn-with-focus',
           styles.button,
           isOpened && styles.opened
-        )} btn-with-focus`}
+        )}
         title="Download"
         active={isOpened}
         description={`(${currentOS.title})`}
@@ -182,10 +169,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
           openTop && styles.openTop
         )}
       >
-        <DownloadButtonDropdownItems
-          onClick={download}
-          userOS={userOS.current}
-        />
+        <DownloadButtonDropdownItems onClick={download} userOS={userOS} />
       </div>
     </span>
   )

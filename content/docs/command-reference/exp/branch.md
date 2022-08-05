@@ -10,18 +10,23 @@ usage: dvc exp branch [-h] [-q | -v] experiment branch
 
 positional arguments:
   experiment     Experiment to turn into a branch
-  branch         Git branch name to use
+  branch         Name for the new Git branch
 ```
 
 ## Description
 
-Makes a given Git [`branch`] containing the target `experiment`. This makes the
-experiment into a [regular commit], or several in the case of [checkpoint
-experiments] (one per checkpoint).
+Creates a new [Git branch] containing the target `experiment`. The given
+`branch` name will be used. It will stem from the experiment's baseline (`HEAD`
+at the time the experiment was run).
 
-The new `branch` will be based on the experiment's parent commit (`HEAD` at the
-time that the experiment was run). Note that DVC **does not** switch into the
-new `branch` automatically.
+This turns the experiment into one or more [regular commits] (one per checkpoint
+in the case of [checkpoint experiments]).
+
+<admon type="info">
+
+Note that DVC **does not** switch into the new `branch` automatically.
+
+</admon>
 
 `dvc exp branch` is useful to make an experiment persistent without modifying
 the workspace so they can be continued, [stored and shared] in a normal Git +
@@ -31,9 +36,9 @@ To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
 use `git merge branch` and `dvc repro` to combine it with your current project
 version.
 
-[`branch`]:
+[git branch]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
-[regular commit]: /doc/user-guide/experiment-management/persisting-experiments
+[regular commits]: /doc/user-guide/experiment-management/persisting-experiments
 [checkpoint experiments]: /doc/command-reference/exp/run#checkpoints
 [stored and shared]: /doc/start/data-and-model-versioning#storing-and-sharing
 

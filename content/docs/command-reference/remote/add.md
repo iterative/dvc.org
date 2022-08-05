@@ -90,12 +90,12 @@ The following are the types of remote storage (protocols) supported:
 
 <details>
 
-### Click for Amazon S3
+### Amazon S3
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
@@ -115,7 +115,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 
 <details>
 
-### Click for S3-compatible storage
+### S3-compatible storage
 
 For object storage that supports an S3-compatible API (e.g.
 [Minio](https://min.io/),
@@ -125,7 +125,7 @@ configure the `endpointurl` parameter. For example, let's set up a DigitalOcean
 "space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
 region:
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mystore/path
 $ dvc remote modify myremote endpointurl \
                              https://nyc3.digitaloceanspaces.com
@@ -143,9 +143,9 @@ they're effective depends on each storage platform.
 
 <details>
 
-### Click for Microsoft Azure Blob Storage
+### Microsoft Azure Blob Storage
 
-```dvc
+```cli
 $ dvc remote add -d myremote azure://mycontainer/path
 $ dvc remote modify myremote account_name 'myuser'
 ```
@@ -165,14 +165,14 @@ To use a custom authentication method, use the parameters described in
 
 <details>
 
-### Click for Google Drive
+### Google Drive
 
 To start using a GDrive remote, first add it with a
 [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format). Then
 use any DVC command that needs to connect to it (e.g. `dvc pull` or `dvc push`
 once there's tracked data to synchronize). For example:
 
-```dvc
+```cli
 $ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push  # Assuming there's data to push
 
@@ -199,12 +199,12 @@ modified.
 
 <details>
 
-### Click for Google Cloud Storage
+### Google Cloud Storage
 
 > 💡 Before adding a GC Storage remote, be sure to
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
-```dvc
+```cli
 $ dvc remote add -d myremote gs://mybucket/path
 ```
 
@@ -221,13 +221,13 @@ parameters, use the parameters described in `dvc remote modify`.
 
 <details>
 
-### Click for Aliyun OSS
+### Aliyun OSS
 
 First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
 for OSS storage, and configure the
 [endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
 
-```dvc
+```cli
 $ dvc remote add -d myremote oss://mybucket/path
 $ dvc remote modify myremote oss_endpoint endpoint
 ```
@@ -236,7 +236,7 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 `dvc remote modify` as show below. Use the `--local` option to avoid committing
 your secrets to Git:
 
-```dvc
+```cli
 $ dvc remote modify --local myremote oss_key_id 'mykey'
 $ dvc remote modify --local myremote oss_key_secret 'mysecret'
 ```
@@ -246,7 +246,7 @@ $ dvc remote modify --local myremote oss_key_secret 'mysecret'
 Start a container running an OSS emulator, and set up the environment variables,
 for example:
 
-```dvc
+```cli
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
 $ docker image build -t oss:1.0 oss-emulator
 $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
@@ -263,9 +263,9 @@ $ export OSS_ACCESS_KEY_SECRET='mysecret'
 
 <details>
 
-### Click for SSH
+### SSH
 
-```dvc
+```cli
 $ dvc remote add -d myremote ssh://user@example.com/path
 ```
 
@@ -281,7 +281,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 <details>
 
-### Click for HDFS
+### HDFS
 
 ⚠️ Using HDFS with a Hadoop cluster might require additional setup. Our
 assumption is that the client is set up to use it. Specifically, [`libhdfs`]
@@ -293,7 +293,7 @@ should be installed.
 💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
 API. Read more about it by expanding the WebHDFS section below.
 
-```dvc
+```cli
 $ dvc remote add -d myremote hdfs://user@example.com/path
 ```
 
@@ -303,7 +303,7 @@ $ dvc remote add -d myremote hdfs://user@example.com/path
 
 <details>
 
-### Click for WebHDFS
+### WebHDFS
 
 ⚠️ Using WebHDFS requires to enable REST API access in the cluster: set the
 config property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
@@ -312,7 +312,7 @@ If your cluster is secured, then WebHDFS is commonly used with Kerberos and
 HTTPS. To enable these for the DVC remote, set `use_https` and `kerberos` to
 `true`.
 
-```dvc
+```cli
 $ dvc remote add -d myremote webhdfs://example.com/path
 $ dvc remote modify myremote use_https true
 $ dvc remote modify myremote kerberos true
@@ -331,9 +331,9 @@ active kerberos session.
 
 <details>
 
-### Click for HTTP
+### HTTP
 
-```dvc
+```cli
 $ dvc remote add -d myremote https://example.com/path
 ```
 
@@ -343,9 +343,9 @@ $ dvc remote add -d myremote https://example.com/path
 
 <details>
 
-### Click for WebDAV
+### WebDAV
 
-```dvc
+```cli
 $ dvc remote add -d myremote \
                     webdavs://example.com/owncloud/remote.php/dav
 ```
@@ -353,7 +353,7 @@ $ dvc remote add -d myremote \
 If your remote is located in a subfolder of your WebDAV server e.g.
 `files/myuser`, this path may be appended to the base URL:
 
-```dvc
+```cli
 $ dvc remote add -d myremote \
       webdavs://example.com/owncloud/remote.php/dav/files/myuser
 ```
@@ -364,7 +364,7 @@ $ dvc remote add -d myremote \
 
 <details>
 
-### Click for local remote
+### local remote
 
 A "local remote" is a directory in the machine's file system. Not to be confused
 with the `--local` option of `dvc remote` (and other config) commands!
@@ -376,7 +376,7 @@ with the `--local` option of `dvc remote` (and other config) commands!
 
 Using an absolute path (recommended):
 
-```dvc
+```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ cat .dvc/config
   ...
@@ -390,7 +390,7 @@ $ cat .dvc/config
 Using a relative path. It will be resolved against the current working
 directory, but saved **relative to the config file location**:
 
-```dvc
+```cli
 $ dvc remote add -d myremote ../dvcstore
 $ cat .dvc/config
   ...

@@ -1,17 +1,19 @@
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
 
 import * as styles from './styles.module.css'
 import SocialIcon, {
   ISocialIcon
-} from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
+} from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
 
 interface IBlogFeedMetaProps {
   avatar: {
-    gatsbyImageData: IGatsbyImageData
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
   }
   commentsUrl?: string
   commentsCount?: number
@@ -32,11 +34,13 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <GatsbyImage
-        alt=""
-        image={avatar.gatsbyImageData}
-        className={styles.avatar}
-      />
+      {avatar && (
+        <GatsbyImage
+          alt=""
+          image={avatar.childImageSharp.gatsbyImageData}
+          className={styles.avatar}
+        />
+      )}
       <ul className={styles.list}>
         <li className={styles.segment}>{name}</li>
         {links && (

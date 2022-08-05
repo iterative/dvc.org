@@ -54,10 +54,10 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
     title,
     author,
     description,
-    descriptionLong: markdownToHtml(descriptionLong),
+    descriptionLong: await markdownToHtml(descriptionLong),
     commentsUrl,
     picture,
-    pictureComment: markdownToHtml(pictureComment),
+    pictureComment: await markdownToHtml(pictureComment),
     sourcePath: relativePath,
     gitDateTime
   }
@@ -72,7 +72,7 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
     }
   }
 
-  if (isProduction) {
+  if (isProduction && picture) {
     await mkdirp(path.join(__basedir, 'public', 'blog', 'images'), {
       recursive: true
     })

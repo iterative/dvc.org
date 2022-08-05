@@ -50,7 +50,7 @@ outs:
 If we move the data file regularly, with something like `mv data.csv other.csv`,
 DVC wouldn't know that we changed the `path` of `data.csv` to `other.csv`, as
 the old location is still found in the corresponding `.dvc` file. `dvc move`
-updates that `path`, saves users from manual editing it:
+updates that `path`, saves users from manually editing it:
 
 ```dvc
 $ dvc move data.csv other.csv

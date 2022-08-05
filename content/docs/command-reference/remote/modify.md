@@ -67,23 +67,23 @@ The following config options are available for all remote types:
   For example, for an Amazon S3 remote (see more details in the S3 section
   below):
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url s3://mybucket/new/path
   ```
 
   Or a _local remote_ (a directory in the file system):
 
-  ```dvc
+  ```cli
   $ dvc remote modify localremote url /home/user/dvcstore
   ```
 
 - `jobs` - change the default number of processes for
   [remote storage](/doc/command-reference/remote) synchronization operations
-  (see the `--jobs` option of dvc push`, `dvc pull`, `dvc get`, `dvc
-  import`, `dvc update`, `dvc add --to-remote`, `dvc gc
-  -c`, etc.). Accepts positive integers. The default is `4 \* cpu_count()`.
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc get`, `dvc import`,
+  `dvc update`, `dvc add --to-remote`, `dvc gc -c`, etc.). Accepts positive
+  integers. The default is `4 \* cpu_count()`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote jobs 8
   ```
 
@@ -94,7 +94,7 @@ The following config options are available for all remote types:
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote verify true
   ```
 
@@ -105,17 +105,17 @@ options:
 
 <details>
 
-### Click for Amazon S3
+### Amazon S3
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url s3://mybucket/path
   ```
 
 - `region` - change S3 remote region:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote region us-east-2
   ```
 
@@ -123,7 +123,7 @@ options:
   when attempting to read from a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote read_timeout 300
   ```
 
@@ -131,7 +131,7 @@ options:
   when attempting to make a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote connect_timeout 300
   ```
 
@@ -139,7 +139,7 @@ options:
   when attempting to read from a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote read_timeout 300
   ```
 
@@ -147,7 +147,7 @@ options:
   when attempting to make a connection (60 by default). Let's set it to 5
   minutes for example:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote connect_timeout 300
   ```
 
@@ -162,13 +162,13 @@ parameters to customize the authentication method:
 
 - `profile` - credentials profile name to access S3:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote profile myprofile
   ```
 
 - `credentialpath` - S3 credentials file path:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote credentialpath /path/to/creds
   ```
 
@@ -177,7 +177,7 @@ parameters to customize the authentication method:
   The default AWS CLI config file path (e.g. `~/.aws/config`) is used if this
   parameter isn't set.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote configpath /path/to/config
   ```
 
@@ -187,21 +187,21 @@ parameters to customize the authentication method:
 
 - `endpointurl` - endpoint URL to access S3:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote endpointurl https://myendpoint.com
   ```
 
 - `access_key_id` - AWS Access Key ID. May be used (along with
   `secret_access_key`) instead of `credentialpath`:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote access_key_id 'mykey'
   ```
 
 - `secret_access_key` - AWS Secret Access Key. May be used (along with
   `access_key_id`) instead of `credentialpath`:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
         secret_access_key 'mysecret'
   ```
@@ -211,13 +211,13 @@ parameters to customize the authentication method:
   session token. May be used (along with `access_key_id` and
   `secret_access_key`) instead of `credentialpath` when MFA is required:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote session_token my-session-token
   ```
 
 - `use_ssl` - whether or not to use SSL. By default, SSL is used.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote use_ssl false
   ```
 
@@ -226,7 +226,7 @@ parameters to customize the authentication method:
   [AWS CLI config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings)
   (if any) are used by default.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ssl_verify false
   # or
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
@@ -242,24 +242,41 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote listobjects true
   ```
 
-- `sse` - server-side encryption algorithm to use (e.g. AES256, aws:kms). By
+- `sse` - server-side encryption algorithm to use: `AES256` or `aws:kms`. By
   default, no encryption is used.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote sse AES256
   ```
 
 - `sse_kms_key_id` - identifier of the key to encrypt data uploaded when using
-  SSE-KMS. Required when the `sse` parameter (above) is set to `aws:kms`. This
-  parameter will be passed directly to AWS S3 functions, so DVC supports any
-  value that S3 supports, including both key ids and aliases.
+  [SSE-KMS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+  (see `sse`). This parameter will be passed directly to AWS S3, so DVC supports
+  any value that S3 supports, including both key IDs and aliases.
+
+  ```cli
+  $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
+  ```
+
+- `sse_customer_key` - key to encrypt data uploaded when using customer-provided
+  encryption keys
+  ([SSE-C](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)).
+  instead of `sse`. The value should be a base64-encoded 256 bit key.
 
   ```dvc
-  $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
+  $ dvc remote modify --local myremote sse_customer_key 'mysecret'
+  ```
+
+- `sse_customer_algorithm` - server-side encryption algorithm to use with
+  `sse_customer_key`. This parameter will be passed directly to AWS S3, so DVC
+  supports any value that S3 supports. `AES256` by default.
+
+  ```dvc
+  $ dvc remote modify myremote sse_customer_algorithm 'AES256'
   ```
 
 - `acl` - set object level access control list (ACL) such as `private`,
@@ -333,7 +350,7 @@ For more on the supported env vars, please see the
 
 <details>
 
-### Click for S3-compatible storage
+### S3-compatible storage
 
 - `endpointurl` - URL to connect to the S3-compatible storage server or service
   (e.g. [Minio](https://min.io/),
@@ -352,7 +369,7 @@ storage. Whether they're effective depends on each storage platform.
 
 <details>
 
-### Click for Microsoft Azure Blob Storage
+### Microsoft Azure Blob Storage
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -535,7 +552,7 @@ can propagate from an Azure configuration file (typically managed with
 
 <details>
 
-### Click for Google Drive
+### Google Drive
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -568,12 +585,26 @@ for a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
-- `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
-  access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
+- `profile` - file basename used to cache OAuth credentials. Helpful to avoid
+  using the wrong credentials when multiple GDrive remotes use the same
+  `gdrive_client_id`. The default value is `default`.
+
+  ```cli
+  $ dvc remote modify --local myremote profile myprofile
+  ```
+
+- `gdrive_user_credentials_file` - specific file path to cache OAuth
+  credentials. The default is
+  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (unless `profile` is
+  specified), where the `CACHE_HOME` location per platform is:
+
+  | macOS              | Linux (\*typical) | Windows                 |
+  | ------------------ | ----------------- | ----------------------- |
+  | `~/Library/Caches` | `~/.cache`        | `%CSIDL_LOCAL_APPDATA%` |
 
   ```dvc
   $ dvc remote modify myremote \
-        gdrive_user_credentials_file .dvc/tmp/mycredentials.json
+        gdrive_user_credentials_file path/to/mycredentials.json
   ```
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
@@ -591,6 +622,15 @@ more details.
   ```
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potentially
+  [abusive](https://support.google.com/docs/answer/148505) files. Anything
+  identified as such (malware, personal info., etc.) can only be downloaded by
+  their owner (with this param enabled).
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_acknowledge_abuse true
+  ```
 
 **For service accounts:**
 
@@ -638,7 +678,7 @@ more information.
 
 <details>
 
-### Click for Google Cloud Storage
+### Google Cloud Storage
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -685,7 +725,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 
 <details>
 
-### Click for Aliyun OSS
+### Aliyun OSS
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -731,7 +771,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <details>
 
-### Click for SSH
+### SSH
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -824,7 +864,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <details>
 
-### Click for HDFS
+### HDFS
 
 💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about by expanding the WebHDFS section in
@@ -858,7 +898,7 @@ Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebHDFS
+### WebHDFS
 
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
@@ -947,7 +987,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for HTTP
+### HTTP
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1039,7 +1079,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebDAV
+### WebDAV
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1138,7 +1178,7 @@ Setting 'myremote' as a default remote.
 Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote profile myuser
+$ dvc remote modify myremote profile myprofile
 ```
 
 Now the project config file should look like this:

@@ -176,7 +176,7 @@ model metrics instead of code. We made a video about how to do this in CML!
 
 https://youtu.be/xPncjKH6SPk
 
-### [Q: In the function `cml-publish`, it looks like you're uploading published files to `https://asset.cml.dev`. Why don't you just save images in the Git repository?](https://discordapp.com/channels/485586884165107732/728693131557732403/745168931521822740)
+### [Q: In the function `cml publish`, it looks like you're uploading published files to `https://asset.cml.dev`. Why don't you just save images in the Git repository?](https://discordapp.com/channels/485586884165107732/728693131557732403/745168931521822740)
 
 If an image file is created as part of your workflow, it's ephemeral- it doesn't
 exist outside of your CI runner, and will disappear when your runner is shut
@@ -190,5 +190,5 @@ store to share the file with you.
 
 This covers a lot of cases, but if the files you wish to publish can't be shared
 with our service for security or privacy reasons, you can emulate the
-`cml-publish` function with your own storage. You would push your file to
+`cml publish` function with your own storage. You would push your file to
 storage and include a link to its address in your markdown report.

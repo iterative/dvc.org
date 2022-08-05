@@ -94,7 +94,7 @@ Examples: `dvc push`, `dvc pull`, `dvc get`, `dvc import`, etc.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
-generated for each file in he same location. This may be helpful to save time
+generated for each file in the same location. This may be helpful to save time
 adding several data files grouped in a structural directory, but it's
 undesirable for data directories with a large number of files.
 

@@ -91,8 +91,8 @@ $ rm -f data.zip
 > repository</abbr> (and [stored remotely](/doc/command-reference/remote)). It's
 > like `wget`, but for DVC or Git repos. In this case we use our
 > [dataset registry](https://github.com/iterative/dataset-registry) repo as the
-> data source (refer to [Data Registries](/doc/use-cases/data-registries) for
-> more info.)
+> data source (refer to [Data Registry](/doc/use-cases/data-registry) for more
+> info.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -315,7 +315,7 @@ command (`python train.py`) that was run to produce the result.
 > stage and its outputs to the repository.
 
 `dvc repro` will run the `train` stage if any of its dependencies (`-d`)
-changed. For example, when we added new images to built the second version of
+changed. For example, when we added new images to build the second version of
 our model, that was a dependency change. It also updates outputs and puts them
 into the <abbr>cache</abbr>.
 

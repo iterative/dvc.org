@@ -19,10 +19,10 @@ pipeline is [codified with DVC].
 Other tools tend to focus on experiment navigation by saving metrics and
 artifacts that result from your pipelines, along with fragile links to code
 revisions. DVC's approach guarantees reproducibility by working on top of Git
-instead, and not as a parallel system.
+instead, and not as a separate system.
 
 [experiment management]: /doc/user-guide/experiment-management
-[codified with dvc]: /doc/user-guide/project-structure/pipelines-files
+[codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
 [versioning everything]: /doc/use-cases/versioning-data-and-model-files
 
 ```dvctable
@@ -78,16 +78,18 @@ unchanged and you control where data is saved and [shared]. DVC also improves
 storage efficiency and saves you time via <abbr>caching</abbr>, preventing
 repetitive data transfers or having to retrain models on-the-fly.
 
-|                   | DVC Experiments   | Existing tools                |
-| ----------------- | ----------------- | ----------------------------- |
-| **UI**            | Terminal + [web]  | Web (usually SaaS)            |
-| **Logging**       | Git-based         | Custom formats                |
-| **Storage**       | [Data versioning] | Logging artifacts and metrics |
-| **Execution**     | `dvc exp run`     | Code API (usually Python)     |
-| **Collaboration** | Distributed       | Centralized                   |
+|                   | DVC Experiments              | Existing tools                |
+| ----------------- | ---------------------------- | ----------------------------- |
+| **UI**            | [Web], [IDE], and [terminal] | Web (usually SaaS)            |
+| **Logging**       | Git-based                    | Custom formats                |
+| **Storage**       | [Data versioning]            | Logging artifacts and metrics |
+| **Execution**     | `dvc exp run`                | Code API (usually Python)     |
+| **Collaboration** | Distributed                  | Centralized                   |
 
 [data versioning]: /doc/use-cases/versioning-data-and-model-files
 [web]: /doc/studio
+[ide]: /doc/vs-code-extension
+[terminal]: /doc/command-reference
 
 > 💡 Note that other experiment tracking tools can be complementary to DVC, for
 > example for detailed experiment environment logging with specialized
@@ -98,11 +100,11 @@ whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 ---
 
-To complete your stack, we also offer [DVC Studio], an advanced web interface to
-collaborate on DVC projects online, including full experiment management
-support. You can also integrate with CI/CD using [CML], and run your experiments
-there straight from Studio!
+To complete your stack, we also offer [Iterative Studio], an advanced web
+interface to collaborate on DVC projects online, including full experiment
+management support. You can also integrate with CI/CD using [CML], and run your
+experiments there straight from Studio!
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[dvc studio]: /doc/studio
+[iterative studio]: /doc/studio
 [cml]: https://cml.dev/

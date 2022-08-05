@@ -19,11 +19,8 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "alwaysStrict": true,
-    "paths": {
-      "gatsby-theme-iterative-docs/*": [
-        "./plugins/gatsby-theme-iterative-docs/*"
-      ]
-    }
+    "noEmit": true
   },
-  "include": ["./src/**/*", "./*.js"]
+  "include": ["./src/**/*", "./*.js"],
+  "exclude": ["./node_modules/**/*"]
 }

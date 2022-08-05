@@ -1,7 +1,7 @@
 # plots diff
 
-Show multiple versions of [plot metrics](/doc/command-reference/plots) by
-overlaying them in a single image. This allows to compare them easily.
+Show multiple versions of [plots](/doc/command-reference/plots) by overlaying
+them in a single image. This allows to compare them easily.
 
 ## Synopsis
 
@@ -58,12 +58,13 @@ all the current plots, without comparisons.
   When specifying arguments for `--targets` before `revisions`, you should use
   `--` after this option's arguments, e.g.:
 
-  ```dvc
+  ```cli
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
   ```
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
-  containing the plots (`dvc_plots/` by default).
+  containing the plots. The default is `dvc_plots` or the value set with the
+  [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
@@ -110,7 +111,7 @@ all the current plots, without comparisons.
 
 To compare uncommitted changes of a metrics file and its last committed version:
 
-```dvc
+```cli
 $ dvc plots diff --targets logs.csv --x-label x
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -121,12 +122,12 @@ file:///Users/usr/src/dvc_plots/index.html
 
 Compare two specific versions (commit hashes, tags, or branches):
 
-```dvc
-$ dvc plots diff HEAD 0135527 --targets logs.csv
+```cli
+$ dvc plots diff HEAD^ 0135527 --targets logs.csv
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
-![](/img/plots_diff.svg)
+![](/img/plots_diff_two_revs.svg)
 
 ## Example: Confusion matrix
 
@@ -151,7 +152,7 @@ The predefined confusion matrix
 `.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 
-```dvc
+```cli
 $ dvc plots diff -t confusion --targets classes.csv -x predicted
 file:///Users/usr/src/test/dvc_plots/index.html
 ```

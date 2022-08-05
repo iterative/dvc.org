@@ -8,7 +8,7 @@
   max-width: 610px;
   min-height: 185px;
   margin: 0 auto;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 40px;
   font-weight: 500;
   line-height: 1.4;
@@ -34,6 +34,21 @@
   flex-basis: 311px;
   padding: 0 10px;
   margin-bottom: 63px;
+
+  &:first-child {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 110px;
+
+    @media (--xs-scr) {
+      align-items: flex-start;
+      padding: 0 10px;
+      text-align: left;
+    }
+  }
 }
 
 .featureIcon {
@@ -46,7 +61,7 @@
   min-height: 28px;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 20px;
   font-weight: 500;
   color: var(--color-gray-hover);

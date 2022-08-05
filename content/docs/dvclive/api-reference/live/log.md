@@ -6,7 +6,7 @@ Logs the given scalar `val` associating it with the given `name`.
  def log(name: str, val: float):
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
@@ -30,8 +30,12 @@ $ cat dvclive.json
 }
 ```
 
-💡 The summary `{path}.json` is usable by `dvc metrics` and
+<admon type="tip">
+
+The summary `{path}.json` is usable by `dvc metrics` and
 `dvc exp show`/`dvc exp diff`.
+
+</admon>
 
 ### Step updates
 
@@ -55,7 +59,11 @@ $ tree
 └── dvclive.json
 ```
 
-💡 The metrics history (`{path}/scalars/{name}.tsv`) is usable by `dvc plots`.
+<admon type="tip">
+
+The metrics history (`{path}/scalars/{name}.tsv`) is usable by `dvc plots`.
+
+</admon>
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.

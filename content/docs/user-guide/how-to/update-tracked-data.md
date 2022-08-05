@@ -10,6 +10,8 @@ Updating tracked files or directories may mean either
 [modifying](#modifying-content) some of the data contents, or completely
 [replacing](#replacing-files) them (under the same file name).
 
+> See also `dvc move`.
+
 When the `cache.type` config option is set to `symlink` or `hardlink` (not the
 default, see `dvc config cache` for more info.), updating tracked files has to
 be carried out with caution, to avoid data corruption. This is due to the way in

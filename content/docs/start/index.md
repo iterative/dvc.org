@@ -13,14 +13,9 @@ running `dvc init` inside a Git project:
 
 ### ⚙️ Expand to prepare the project.
 
-In expandable sections that start with the ⚙️ emoji, we'll be providing more
-information for those trying to run the commands. It's up to you to pick the
-best way to read the material — read the text (skip sections like this, and it
-should be enough to understand the idea of DVC), or try to run them and get the
-first hand experience.
-
 We'll be building an NLP project from scratch together. The end result is
-published on [GitHub](https://github.com/iterative/example-get-started).
+published on [GitHub](https://github.com/iterative/example-get-started) -- feel
+free to clone the repo.
 
 Let's start with `git init`:
 
@@ -50,8 +45,10 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-DVC's features can be grouped into functional components. We'll explore them one
-by one in the next few pages:
+DVC's features can be grouped into functional components. You can explore them
+in two independent trails:
+
+### Data Management Trail
 
 - [**Data and model versioning**](/doc/start/data-and-model-versioning) (try
   this next) is the base layer of DVC for large files, datasets, and machine
@@ -72,12 +69,13 @@ by one in the next few pages:
   be attached to pipelines. These let you capture, navigate, and evaluate ML
   projects without leaving Git. Think "Git for machine learning".
 
+### Experiments Trail
+
 - [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
   comparison across many ML experiments. Track your experiments with automatic
   versioning and checkpoint logging. Compare differences in parameters, metrics,
   code, and data. Apply, drop, roll back, resume, or share any experiment.
 
-**New!** Once you set up your DVC repository, you can also interact with it
-using DVC Studio, the online UI for DVC.
-[Here's a demo](https://studio.iterative.ai/team/Iterative/views/example-get-started-zde16i6c4g)
-of how that looks like!
+- [**Visualization**](/doc/start/experiments/visualization) compare experiment
+  results visually, track your plots and generate them with library
+  integrations.

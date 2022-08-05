@@ -5,24 +5,25 @@ import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { IBlogPostData } from '../../../templates/blog-post'
 
-import { useCommentsCount } from 'gatsby-theme-iterative-docs/src/utils/front/api'
-import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
-import tagToSlug from 'gatsby-theme-iterative-docs/src/utils/shared/tagToSlug'
-import useCustomYtEmbeds from 'gatsby-theme-iterative-docs/src/utils/front/useCustomYtEmbeds'
+import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
+import tagToSlug from '@dvcorg/gatsby-theme-iterative/src/utils/shared/tagToSlug'
+import useCustomYtEmbeds from '@dvcorg/gatsby-theme-iterative/src/utils/front/useCustomYtEmbeds'
 
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import PseudoButton from '../../PseudoButton'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import PseudoButton from '@dvcorg/gatsby-theme-iterative/src/components/PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
 import PageContent from '../../PageContent'
 import SubscribeSection from '../../SubscribeSection'
 
 import * as styles from './styles.module.css'
+import patchHtmlAst from '@dvcorg/gatsby-theme-iterative/src/utils/front/patchHtmlAst'
 
 const Post: React.FC<IBlogPostData> = ({
-  html,
+  htmlAst,
   timeToRead,
   title,
   date,
@@ -35,10 +36,10 @@ const Post: React.FC<IBlogPostData> = ({
   author: { name, avatar, links },
   slug
 }) => {
+  const patchedHtmlAst = patchHtmlAst(htmlAst)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const { width, height } = useWindowSize()
   const { y } = useWindowScroll()
-
   useCustomYtEmbeds()
 
   const isFixed = useMemo(() => {
@@ -86,13 +87,10 @@ const Post: React.FC<IBlogPostData> = ({
               />
             </div>
           </div>
-          <HeroPic
-            picture={picture?.gatsbyImageData}
-            pictureComment={pictureComment}
-          />
+          <HeroPic picture={picture} pictureComment={pictureComment} />
 
           <div className={styles.content}>
-            <Markdown html={html} />
+            <Markdown htmlAst={patchedHtmlAst} />
           </div>
           {tags && (
             <div className={styles.tags}>

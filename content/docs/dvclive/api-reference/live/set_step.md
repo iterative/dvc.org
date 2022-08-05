@@ -6,7 +6,7 @@ Signals that the current step has ended and sets step to the given value.
 def set_step(step: int):
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
@@ -29,18 +29,20 @@ You can use `Live.set_step()` to set `step` to any value.
 Each metric logged in between `Live.set_step()` (or `Live.next_step()`) calls
 will be associated to the provided `step` value.
 
+<admon type="info">
+
+Each `Live.set_step()` will call `Live.make_report()` internally by default
+(unless `report` is passed to `Live()` with a value other than `"html"`).
+
+</admon>
+
 ### DVC integration
 
 When `dvclive` is used alongside `DVC`, each `Live.set_step()` call will have
 additional effects.
 
-By default, on each `Live.set_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with the
-[metrics history](/doc/dvclive/get-started#lhistory).
-
-In addition, when
-[checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
-the <abbr>pipeline</abbr>, `DVC` will
+When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
+enabled in the <abbr>pipeline</abbr>, DVC will
 [create a new checkpoint](/doc/dvclive/dvclive-with-dvc#checkpoints) on each
 `Live.set_step()` call.
 

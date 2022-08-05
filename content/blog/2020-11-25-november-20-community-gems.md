@@ -189,7 +189,7 @@ $ sudo docker run --name myrunner -d --gpus all \
   -e RUNNER_REPO=$CI_SERVER_UR \
   -e repo_token=$REGISTRATION_TOKEN \
   -e RUNNER_DRIVER=gitlab \
-  dvcorg/cml-py3
+  iterativeai/cml:0-dvc2-base1-gpu runner
 ```
 
 We did this so you'll avoid running up GPU hours and a big bill. If you're not

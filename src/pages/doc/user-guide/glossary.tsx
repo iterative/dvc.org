@@ -1,8 +1,8 @@
 import React from 'react'
 
 import DocWithJsx from '../../../templates/doc-jsx'
-import AutoLinkElement from 'gatsby-theme-iterative-docs/src/components/Documentation/WithJSX/AutoLinkElement'
-import useGlossary from 'gatsby-theme-iterative-docs/src/utils/front/glossary'
+import AutoLinkElement from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX/AutoLinkElement'
+import useGlossary from '@dvcorg/gatsby-theme-iterative/src/utils/front/glossary'
 
 const Glossary: React.FC = () => {
   const { contents } = useGlossary()

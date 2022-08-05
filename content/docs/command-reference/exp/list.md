@@ -5,8 +5,8 @@ List experiments in a <abbr>DVC repository</abbr> (remote or local).
 ## Synopsis
 
 ```usage
-usage: dvc exp list [-h] [-q | -v] [--rev <rev>]
-                    [--all] [--names-only]
+usage: dvc exp list [-h] [-q | -v] [-A] [--rev <commit>]
+                    [-n <num>] [--name-only]
                     [git_remote]
 
 positional arguments:
@@ -34,12 +34,17 @@ options below).
 
 ## Options
 
-- `--rev <commit>` - list experiments derived from the specified Git commit
-  (instead of `HEAD`).
+- `--rev <commit>` - list experiments derived from the specified `<commit>` as
+  baseline (HEAD by default).
 
-- `--all` - list all experiments in the repository (overrides `--rev`).
+- `-n <num>`, `--num <num>` - list experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
-- `--names-only` - print only the names of the experiments without their parent
+- `-A, --all-commits` - list all experiments in the repository (overrides
+  `--rev` and `--num`).
+
+- `--name-only` - print only the [names of the experiments] without their parent
   Git commit.
 
 - `-h`, `--help` - shows the help message and exit.
@@ -50,6 +55,9 @@ options below).
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
 
+[names of the experiments]:
+  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+
 ## Examples
 
 > This example is based on our [Get Started](/doc/start/experiments), where you
@@ -59,7 +67,7 @@ Let's say we have run 3 experiments in our project. You can quickly list the
 available experiments with this command:
 
 ```dvc
-$ dvc exp list --all
+$ dvc exp list --all-commits
 10-bigrams-experiment:
         exp-e6c97
         exp-1dad0
@@ -72,7 +80,7 @@ $ dvc exp list --all
 You can also list experiments in any DVC repo with `dvc exp list`:
 
 ```dvc
-$ dvc exp list --all git@github.com:iterative/example-get-started.git
+$ dvc exp list --all-commits git@github.com:iterative/example-get-started.git
 10-bigrams-experiment:
         exp-e6c97
         exp-86dd6
@@ -88,7 +96,7 @@ name instead:
 ```dvc
 $ git remote -v
 origin  git@github.com:iterative/example-get-started.git
-$ dvc exp list --all origin
+$ dvc exp list --all-commits origin
 10-bigrams-experiment:
         exp-e6c97
         exp-86dd6

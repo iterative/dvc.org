@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import safeLocalStorage from '@dvcorg/gatsby-theme-iterative/src/utils/front/safeLocalStorage'
 
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 import * as styles from './styles.module.css'
 
@@ -12,7 +13,7 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
   const [hasUserGivenConsent, setHasUserGivenConsent] = useState(false)
 
   useEffect(() => {
-    const givenConsent = Boolean(localStorage.getItem('yt-embed-consent'))
+    const givenConsent = Boolean(safeLocalStorage.getItem('yt-embed-consent'))
 
     setHasUserGivenConsent(givenConsent)
   }, [])
@@ -20,7 +21,7 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
   const watchVideo = useCallback(() => {
     logEvent('Button', { Item: 'video' })
     setWatching(true)
-    localStorage.setItem('yt-embed-consent', 'true')
+    safeLocalStorage.setItem('yt-embed-consent', 'true')
   }, [])
 
   return (
@@ -33,7 +34,6 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
                 mode="azure"
                 title="Watch video"
                 description="How it works"
-                className={styles.button}
                 icon={
                   <img
                     className={styles.buttonIcon}

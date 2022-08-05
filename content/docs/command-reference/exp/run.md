@@ -7,7 +7,7 @@ Run or resume a
 
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
-                   [repro_options ...]
+                   { repro options ... } [-n <name>]
                    [-S [<filename>:]<params_list>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]
@@ -34,13 +34,9 @@ Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
 It's possible to [queue experiments] for later execution with the `--queue`
-flag. To actually run them, use `dvc exp run --run-all`. Queued experiments are
-run sequentially by default, but can be run in parallel using the `--jobs`
-option.
-
-> ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
-> a number of jobs that your environment can handle (no more than the CPU
-> cores).
+flag. Queued experiments can be run using `dvc queue start`, refer to the
+`dvc queue` documentation for more information on managing the experiment task
+queue.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
@@ -64,9 +60,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Options
 
-> In addition to the following, `dvc exp run` accepts all the options in
-> `dvc repro`, with the exception of `--glob`, `--no-commit`, and
-> `--no-run-cache`.
+> In addition to the following, `dvc exp run` accepts the options in `dvc repro`
+> except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
 - `-S [<filename>:]<param_name>=<param_value>`,
   `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
@@ -74,7 +69,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   file (`params.yaml` by default). This will override the param values coming
   from the params file.
 
-- `-n <name>`, `--name <name>` - specify a unique name for this experiment. A
+- `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will generated otherwise, such as `exp-f80g4` (based on the
   experiment's hash).
 
@@ -83,8 +78,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   runs.
 
 - `--queue` - place this experiment at the end of a line for future execution,
-  but don't actually run it yet. Use `dvc exp run --run-all` to process the
-  queue.
+  but don't actually run it yet. Use `dvc queue start` to process the queue.
 
   > For checkpoint experiments, this implies `--reset` unless a `--rev` is
   > provided.
@@ -97,9 +91,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
 
-  > Note that since queued experiments are run isolated from each other, common
-  > stages may sometimes be executed several times depending on the state of the
-  > [run-cache] at that time.
+  <admon type="warn">
+
+  `dvc exp run --run-all [--jobs]` is now a shortcut for
+  `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
+  and `--jobs` options will be deprecated in a future DVC release.
+
+  </admon>
 
 - `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
@@ -119,6 +117,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[unique name]:
+  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples

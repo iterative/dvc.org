@@ -17,10 +17,14 @@ const SubscribeSection: React.FC = () => (
       <div className={styles.subscribeContainer}>
         <SubscribeForm />
       </div>
+      <div className={styles.rssLink}>
+        Keep updated on blog posts with{' '}
+        <a href="/blog/rss.xml">our RSS Feed!</a>
+      </div>
     </div>
     <img
       src={Glyph2Src}
-      className={cn(styles.glyph, styles.rigthbottom)}
+      className={cn(styles.glyph, styles.rightbottom)}
       alt=""
     />
   </div>
