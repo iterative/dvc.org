@@ -155,8 +155,7 @@
         ]
       },
       {
-        "label": "Plots Configuration and Visualization",
-        "slug": "plots"
+        "slug": "visualizing-plots"
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
