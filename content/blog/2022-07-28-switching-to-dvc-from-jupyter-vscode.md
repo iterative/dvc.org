@@ -6,18 +6,18 @@ description: >
   covering some tools that make it easy to do more with a complex project.
 descriptionLong: >
   Once you've run some experiments in a Jupyter notebook, you know that you
-  can't save each experiment. Now, if you're using the Jupyter VSCode extension,
-  we can show you how to make those experiments reproducible with the addition
-  of the DVC VSCode extension.
+  can't save each experiment. Now, if you're using the Jupyter VS Code
+  extension, we can show you how to make those experiments reproducible with the
+  addition of the DVC VS Code extension.
 picture: 2022-07-28/jupyter-to-dvc.png
-pictureComment: Using the DVC VSCode Extension with a Jupyter Notebook
+pictureComment: Using the DVC VS Code Extension with a Jupyter Notebook
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
 tags:
   - MLOps
   - DVC
   - Git
-  - VSCode
+  - VS Code
   - Juptyer Notebooks
 ---
 
@@ -28,19 +28,20 @@ thousands more experiments. It will also be important to track the experiments
 you run so that when you find an exceptional model, you'll be able to reproduce
 it and get it ready for production.
 
-In this tutorial, we're going to start a project with a Juptyer notebook in
-VSCode. Then we'll convert it to DVC to make reproducible experiments and use
-the DVC VSCode extension to run new experiments and see how to compare them all.
+In this tutorial, we're going to start a project with a Juptyer notebook in VS
+Code. Then we'll convert it to a DVC pipeline to make reproducible experiments
+and use the DVC VS Code extension to run new experiments and see how to compare
+them all.
 [Here's the project](https://github.com/iterative/stale-model-example/tree/jupyter-to-dvc)
 we'll be working with.
 
 ## Start training with the notebook
 
-Many times you'll start an ML project with a few cells in a notebook just to
-test out some thoughts you might have. So you might have a simple notebook where
-you set some hyperparameters, load your data, train a model and evaluate its
-metrics, and then save the model. That's what we're doing in the
-`bicycle_experiments.ipynb` file.
+Many times you'll start a machine learning (ML) project with a few cells in a
+notebook just to test out some thoughts you might have. So you might have a
+simple notebook where you set some hyperparameters, load your data, train a
+model and evaluate its metrics, and then save the model. That's what we're doing
+in the `bicycle_experiments.ipynb` file.
 
 ![Jupyter notebook cells](/uploads/images/2022-07-28/jupyter-notebook.png)
 
@@ -126,7 +127,7 @@ This runs everything in the same order that the Jupyter notebook did with a
 trackable structure. Now when you run `dvc exp run` to conduct an experiment,
 you can check out your metrics with either the CLI command `dvc exp show` or
 with
-[the DVC VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
+[the DVC VS Code extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 ```dvctable
 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────>
@@ -140,15 +141,16 @@ with
 
 _with CLI tool_
 
-![metrics in DVC VSCode extension](/uploads/images/2022-07-28/dvc-exp-in-vscode.png)
+![metrics in DVC VS Code extension](/uploads/images/2022-07-28/dvc-exp-in-VS
+Code.png)
 
-_with DVC VSCode extension_
+_with DVC VS Code extension_
 
 ## Conclusion
 
 In this post, we covered how to convert your Jupyter notebook into a DVC
 project. When your project gets to the point you need to go back to old
-experiments, it's probably time to consider using something more complex than
+experiments, it's probably time to consider using something more advanced than
 Jupyter notebooks. Keeping track of data versions across experiments along with
 the code that was used to run them can get messy quickly so it's good to know
 about tools that can make it easier for you.
