@@ -585,12 +585,26 @@ for a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
-- `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
-  access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
+- `profile` - file basename used to cache OAuth credentials. Helpful to avoid
+  using the wrong credentials when multiple GDrive remotes use the same
+  `gdrive_client_id`. The default value is `default`.
+
+  ```cli
+  $ dvc remote modify --local myremote profile myprofile
+  ```
+
+- `gdrive_user_credentials_file` - specific file path to cache OAuth
+  credentials. The default is
+  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (unless `profile` is
+  specified), where the `CACHE_HOME` location per platform is:
+
+  | macOS              | Linux (\*typical) | Windows                 |
+  | ------------------ | ----------------- | ----------------------- |
+  | `~/Library/Caches` | `~/.cache`        | `%CSIDL_LOCAL_APPDATA%` |
 
   ```dvc
   $ dvc remote modify myremote \
-        gdrive_user_credentials_file .dvc/tmp/mycredentials.json
+        gdrive_user_credentials_file path/to/mycredentials.json
   ```
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
@@ -608,6 +622,15 @@ more details.
   ```
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potentially
+  [abusive](https://support.google.com/docs/answer/148505) files. Anything
+  identified as such (malware, personal info., etc.) can only be downloaded by
+  their owner (with this param enabled).
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_acknowledge_abuse true
+  ```
 
 **For service accounts:**
 
@@ -1155,7 +1178,7 @@ Setting 'myremote' as a default remote.
 Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote profile myuser
+$ dvc remote modify myremote profile myprofile
 ```
 
 Now the project config file should look like this:

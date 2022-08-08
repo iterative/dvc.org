@@ -38,16 +38,9 @@ Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
 It's possible to [queue experiments] for later execution with the `--queue`
-flag. To actually run them, use `dvc exp run --run-all`. Queued experiments are
-run sequentially by default, but can be run in parallel using the `--jobs`
-option.
-
-<admon type="warn">
-
-Parallel runs are experimental and may be unstable. Make sure you're using a
-number of jobs that your environment can handle (no more than the CPU cores).
-
-</admon>
+flag. Queued experiments can be run using `dvc queue start`, refer to the
+`dvc queue` documentation for more information on managing the experiment task
+queue.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
@@ -97,8 +90,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   runs.
 
 - `--queue` - place this experiment at the end of a line for future execution,
-  but don't actually run it yet. Use `dvc exp run --run-all` to process the
-  queue.
+  but don't actually run it yet. Use `dvc queue start` to process the queue.
 
   > For checkpoint experiments, this implies `--reset` unless a `--rev` is
   > provided.
@@ -111,9 +103,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
 
-  > Note that since queued experiments are run isolated from each other, common
-  > stages may sometimes be executed several times depending on the state of the
-  > [run-cache] at that time.
+  <admon type="warn">
+
+  `dvc exp run --run-all [--jobs]` is now a shortcut for
+  `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
+  and `--jobs` options will be deprecated in a future DVC release.
+
+  </admon>
 
 - `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.

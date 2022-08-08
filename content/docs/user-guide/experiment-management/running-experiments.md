@@ -116,25 +116,25 @@ Queued experiment '4109ead' for future execution.
 
 ### How are experiments queued?
 
-Queued experiments are created similar to
-[Git stash](https://www.git-scm.com/docs/git-stash). The last experiment queued
-is found in `.git/refs/exps`, and earlier ones are in its [reflog].
+Queued experiments are managed using [dvc-task] and [Celery].
 
-[reflog]:
-  https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefreflogareflog
+[dvc-task]: https://github.com/iterative/dvc-task
+[celery]: https://docs.celeryq.dev/en/stable/index.html
 
 </details>
 
-Run them all with the `--run-all` flag:
+Run them all with `dvc queue start`:
 
 ```dvc
-$ dvc exp run --run-all
+$ dvc queue start
 ...
 ```
 
 <admon type="info">
 
-Note that the order of execution is independent of their queueing order.
+> Note that in most cases, experiment tasks will be executed in the order that
+> they were added to the queue (First In, First Out), but this is not
+> guaranteed.
 
 </admon>
 
@@ -168,10 +168,11 @@ committing unwanted files into Git (e.g. once successful experiments are
 
 </details>
 
-💡 To clear the experiments queue and start over, use `dvc exp remove --queue`.
+💡 To clear the experiments queue and start over, use
+`dvc queue remove --queued`.
 
-> 📖 See the `dvc exp run` reference for more options related to experiments
-> queue, such as running them in parallel with `--jobs`.
+> 📖 See the `dvc exp run` and `dvc queue` references for more options related
+> to the experiments queue, such as running them in parallel with `--jobs`.
 
 ## Checkpoint experiments
 
