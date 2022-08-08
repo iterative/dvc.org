@@ -20,7 +20,7 @@ live.log("acc", 0.9)
 ## Description
 
 On each `live.log(name, val)` call DVCLive will create or update the `name`
-entry in `{path.json}` with the corresponding `val`:
+entry in `{Live.dir}.json` with the corresponding `val`:
 
 ```dvc
 $ cat dvclive.json
@@ -32,7 +32,7 @@ $ cat dvclive.json
 
 <admon type="tip">
 
-The summary `{path}.json` is usable by `dvc metrics` and
+The summary `{Live.dir}.json` is usable by `dvc metrics` and
 `dvc exp show`/`dvc exp diff`.
 
 </admon>
@@ -40,7 +40,7 @@ The summary `{path}.json` is usable by `dvc metrics` and
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
-create a _metrics history_ file in `{path}/scalars/{name}.tsv`:
+create a _metrics history_ file in `{Live.dir}/scalars/{name}.tsv`:
 
 ```
 timestamp step  loss
@@ -48,7 +48,7 @@ timestamp step  loss
 ```
 
 Each subsequent call to `live.log(name, val)` will add a new row to
-`{path}/scalars/{name}.tsv`.
+`{Live.dir}/scalars/{name}.tsv`.
 
 ```dvc
 $ tree
@@ -61,13 +61,13 @@ $ tree
 
 <admon type="tip">
 
-The metrics history (`{path}/scalars/{name}.tsv`) is usable by `dvc plots`.
+The metrics history (`{Live.dir}/scalars/{name}.tsv`) is usable by `dvc plots`.
 
 </admon>
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.
-`{path}/scalars/train/loss.tsv`).
+`{Live.dir}/scalars/train/loss.tsv`).
 
 ## Parameters
 
