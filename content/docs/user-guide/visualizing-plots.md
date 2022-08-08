@@ -40,7 +40,7 @@ plots:
 
 To generate the data files for plots, you can:
 
-1. Use [DVCLive](doc/dvclive/dvclive-with-dvc) in your Python code to log the
+1. Use [DVCLive](/doc/dvclive/dvclive-with-dvc) in your Python code to log the
    data in the expected format for you.
 2. Save data yourself in one of the
    [supported file formats](#supported-file-formats).
@@ -87,7 +87,7 @@ epoch, AUC, loss
 Hierarchical file formats such as JSON and YAML consists of an array of
 consistent objects (sharing a common structure): All objects should contain the
 fields used for the X and Y axis of the plot (see
-[DVC template anchors](/doc/command-ref/plots/templates#custom-templates));
+[DVC template anchors](/doc/command-reference/plots/templates#custom-templates));
 Extra elements will be ignored silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
