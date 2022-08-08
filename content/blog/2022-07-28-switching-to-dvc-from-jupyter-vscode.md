@@ -66,7 +66,7 @@ to handle the model training stage of the experiment. This file will have the
 `Get params`, `Load training data`, `Train model`, and `Save model` cells from
 the earlier notebook.
 
-Next, we'll make a `evaluate.py` file that will take a saved model and get the
+Next, we'll make an `evaluate.py` file that will take a saved model and get the
 metrics for how well it performs. This file will have the `Set test variables`,
 `Load model and test data`, `Get model predictions`,
 `Calculate model performance metrics`, and `Save model performance metrics`
