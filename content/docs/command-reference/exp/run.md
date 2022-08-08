@@ -84,8 +84,9 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   (`params.yaml` by default). This will override the param file before running
   the experiment.
 
-  Check the [examples](#example-modify-parameters-on-the-fly) for valid values
-  of `<override_pattern>`.
+  Valid `<override_pattern>` values are defined in the
+  [Hydra Override syntax](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
+  Patterns modifying hydra's defaults list are not supported.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will generated otherwise, such as `exp-f80g4` (based on the
@@ -195,86 +196,36 @@ experiment we just ran (`exp-44136`).
 ## Example: Modify parameters on-the-fly
 
 `dvc exp run--set-param` (`-S`) saves you the need to manually edit the params
-file before running an experiment.
+file before running an experiment. It can override (`foo.bar=value`), append
+(`+foo.bar=value`), or remove (`~foo.bar`) parameters.
 
-<admon type="warn">
+<admon type="tip">
 
-Note that `--set-param` doesn't update your `dvc.yaml`. If you are tracking each
-parameter individually, make sure to update your `dvc.yaml` accordingly when
-appending or removing parameters.
+DVC supports the
+[Hydra Override Grammar](https://hydra.cc/docs/advanced/override_grammar/basic/),
+with the exception of patterns that modify Hydra's defaults list.
 
 </admon>
 
 You can optionally provide a prefix `[<filename>:]` in order to edit a specific
-params file. If not provided, `params.yaml` will be used as default.
-
-`<override_pattern>` supports different syntaxes for modifying the parameters:
-
-- `<param_name>=<param_value>`
-
-Overrides existing parameters:
+`dvc params` file. If not provided, `params.yaml` will be used as default.
 
 ```dvc
-$ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
+$ dvc exp run -S custom_file.json:+newparam=foo
 ...
 ```
 
 ```dvc
 $ dvc params diff
-Path         Param                   HEAD    workspace
-params.yaml  featurize.max_features  1000    2000
-params.yaml  prepare.split           0.20    0.25
+Path              Param      HEAD    workspace
+custom_file.json  new_param  -       foo
 ```
 
-- `+<param_name>=<param_value>`
+<admon type="warn">
 
-Appends new parameters:
-
-```dvc
-$ dvc exp run -S +prepare.new_param=foo
-...
-```
-
-```dvc
-$ dvc params diff
-Path         Param              HEAD    workspace
-params.yaml  prepare.new_param  -       foo
-```
-
-- `~<param_name>`
-
-Removes existing parameters:
-
-```dvc
-$ dvc exp run -S ~prepare.seed
-...
-```
-
-```dvc
-$ dvc params diff
-Path         Param         HEAD      workspace
-params.yaml  prepare.seed  20170428  -
-```
-
-- `++<param_name>=<param_value>`
-
-Appends or overrides parameters:
-
-```dvc
-$ dvc exp run -S ++prepare.new_param=foo ++prepare_split=0.1
-...
-```
-
-```dvc
-$ dvc params diff
-Path         Param              HEAD    workspace
-params.yaml  prepare.new_param  -       foo
-params.yaml  prepare.split      0.2     0.1
-```
-
-<admon type="tip">
-
-Experiments run as a series don't build up on each other. They are all based on
-`HEAD`.
+Note that `--set-param` doesn't update your `dvc.yaml`. When appending or
+removing <abbr>parameters</abbr>, make sure to update the
+[`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies)
+of your `dvc.yaml` accordingly.
 
 </admon>
