@@ -47,7 +47,7 @@ dependency (e.g. a config file), and any change in it invalidates all of them
 (see `dvc status`), causing unnecessary re-executions upon `dvc repro`.
 
 The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
-JSON, TOML, or [Python](#examples-python-parameters-file) files can be used
+JSON, TOML 1.0, or [Python](#examples-python-parameters-file) files can be used
 additionally (listed under `params:` as shown in the sample above). These files
 are typically written manually (or they can be generated) and they can be
 versioned directly with Git.
