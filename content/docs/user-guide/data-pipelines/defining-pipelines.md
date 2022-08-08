@@ -117,8 +117,8 @@ $ dvc stage add --name preprocess \
 
 One advantage of using `dvc stage add` is that it will verify the validity of
 the arguments provided (otherwise they won't be checked until execution). A
-disadvantage is that advanced pipelining features such as [templating] are not
-always available this way.
+disadvantage is that some advanced pipelining features such as [templating] are
+not available this way.
 
 </admon>
 
