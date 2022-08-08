@@ -1,10 +1,53 @@
 # Visualizing Plots
 
-DVC can visualize data and images produced by machine learning projects. Usual
-plots include AUC curves, loss functions, or confusion matrices, for example.
-Plots are a great alternative to `dvc metrics` when working with
-multi-dimensional performance data. They also help you present and compare
-[experiments] effectively.
+A typical workflow for DVC plots is:
+
+1. Save data to a [supported file format](#supported-file-formats).
+
+```csv
+fpr,tpr,threshold
+0.0,0.0,1.5
+1.0,1.0,0.0
+```
+
+2. [Define plots](#defining-plots), optionally using
+   [templates](#plot-templates-data-series-only) to configure how to visualize
+   the data.
+
+```yaml
+plots:
+  auc.tsv:
+    x: fpr
+    y: tpr
+```
+
+3. [Show](/doc/command-reference/plots/show) all plots in a single view or
+   report.
+
+![](/img/plots_prc_get_started_show.svg)
+![](/img/plots_roc_get_started_show.svg)
+![](/img/plots_importance_get_started_show.png '=300 :wrap-left')
+![](/img/plots_cm_get_started_show.svg)
+
+4. Run [experiments](/doc/user-guide/experiment-management/experiments-overview)
+   and [compare](/doc/command-reference/plots/diff) plots.
+
+![](/img/plots_prc_get_started_diff.svg)
+![](/img/plots_roc_get_started_diff.svg)
+![](/img/plots_importance_get_started_diff.png)
+
+## Generating plots files
+
+To generate the data files for plots, you can:
+
+1. Use [DVCLive](doc/dvclive/dvclive-with-dvc) in your Python code to log the
+   data in the expected format for you.
+2. Save data yourself in one of the
+   [supported file formats](#supported-file-formats).
+3. Save an image file of the visualization (helpful for custom visualizations
+   that would be hard to configure in DVC).
+
+## Supported file formats
 
 DVC can work with two types of plots files:
 
@@ -19,14 +62,6 @@ Dashboard] that corresponds to the features in the `dvc plots` commands.
 Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
 rendering (declarative JSON grammar for defining graphics). Images are rendered
 using `<img>` tags directly.
-
-[vs code extension]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[plots dashboard]:
-  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
-[experiments]: /doc/user-guide/experiment-management/experiments-overview
-
-## Supported file formats
 
 Images are included in HTML as-is, without additional processing.
 
@@ -332,3 +367,19 @@ file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_confusion_normalized.svg)
+
+## Comparing plots
+
+When you run [experiments] or otherwise update the data in the plots files,those
+updates will be automatically reflected in your visualizations. To compare
+between experiments or Git [revisions], you can use `dvc plots diff` or the
+[plots dashboard] from the [VS Code Extension].
+
+![](/img/plots_compare_vs_code.png)
+
+[vs code extension]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+[plots dashboard]:
+  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
+[experiments]: /doc/user-guide/experiment-management/experiments-overview
+[revisions]: https://git-scm.com/docs/revisions
