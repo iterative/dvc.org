@@ -39,7 +39,14 @@ for item in Repo.ls(
   print(os.path.join("/path/to/dir", item["path"]))
 ```
 
-## []()
+## [How can I mock the execution of certain stages in `dvc repro`?](https://discord.com/channels/485586884165107732/563406153334128681/1004408394888777738)
+
+Nice question from @JesusCerquides!
+
+You should be able to run `dvc commit` in this case. It provides a way to
+complete `dvc repro` when it has been used with the `--no-commit` or `--no-exec`
+options. Those options cause the command to skip certain stages so you can move
+to another stage without executing all of them.
 
 ## []()
 
