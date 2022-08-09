@@ -24,9 +24,11 @@ tags:
 For many machine learning engineers, the starting point of a project is a
 Jupyter notebook. This is fine for running a few experiments, but there comes a
 point where you need to scale the project to accomodate hundreds or even
-thousands more experiments. It will also be important to track the experiments
-you run so that when you find an exceptional model, you'll be able to reproduce
-it and get it ready for production.
+thousands more experiments. These experiments for your model will include
+different hyperparameter values, different code, and potentially different
+resources. It will be important to track the experiments you run so that when
+you find an exceptional model, you'll be able to reproduce it and get it ready
+for production.
 
 In this tutorial, we're going to start a project with a Juptyer notebook in VS
 Code. Then we'll convert it to a DVC pipeline to make reproducible experiments
@@ -43,7 +45,62 @@ simple notebook where you set some hyperparameters, load your data, train a
 model and evaluate its metrics, and then save the model. That's what we're doing
 in the `bicycle_experiments.ipynb` file.
 
-![Jupyter notebook cells](/uploads/images/2022-07-28/jupyter-notebook.png)
+```ipynb
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bike experiment notebook"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Install packages"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "import os\n",
+    "import pickle\n",
+    "import sys\n",
+    "\n",
+    "import numpy as np\n",
+    "import yaml\n",
+    "from sklearn.ensemble import RandomForestClassifier\n",
+    "import sklearn.metrics as metrics"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Get params"
+   ]
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": [
+    "print(\"Works\")\n",
+    "\n",
+    "params = yaml.safe_load(open(\"params.yaml\"))[\"train\"]\n",
+    "\n",
+    "input = \"./data/\"\n",
+    "output = \"./models/model.pkl\"\n",
+    "\n",
+    "seed = params[\"seed\"]\n",
+    "n_est = params[\"n_est\"]\n",
+    "min_split = params[\"min_split\"]"
+   ]
+  },
+...
+```
 
 We have all of the cells in place so we can start running experiments. This is
 usually fine for training models for a while. Although there will eventually be
