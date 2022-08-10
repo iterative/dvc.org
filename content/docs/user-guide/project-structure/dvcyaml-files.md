@@ -54,9 +54,7 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 
 <admon type="tip">
 
-Output files may be viable data sources for [top-level plots].
-
-[top-level plots]: /doc/command-reference/plots#top-level-plots
+Output files may be viable data sources for [top-level plots](#top-level-plots).
 
 </admon>
 
@@ -477,34 +475,98 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined `dvc plots` (paths
+The list of `plots` contains one or more user-defined top-level plots (paths
 relative to the location of `dvc.yaml`).
 
-This example makes output `auc.json` viable for visualization, configuring keys
-`fpr` and `tpr` as X and Y axis, respectively:
+Every plot has to have its own ID. Configuration, if provided, should be a
+dictionary.
+
+In the simplest use case, a user can provide the file path as the plot ID and
+not provide configuration at all:
 
 ```yaml
-stages:
-  build:
-    cmd: python train.py
-    deps:
-      - features.csv
-    outs:
-      - model.pt
-      - auc.json
-    metrics:
-      - accuracy.txt:
-          cache: false
+# dvc.yaml
+---
 plots:
-  auc.json:
-    x: fpr
-    y: tpr
+  logs.csv:
 ```
 
-Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
-In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
+In that case the default behavior will be applied. DVC will take data from
+`logs.csv` file and apply `linear` plot
+[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) to
+the last found column (CSV, TSV files) or field (JSON, YAML).
 
-[plot output]: /doc/command-reference/plots#stage-plots
+We can customize the plot by adding appropriate fields to the configuration:
+
+```yaml
+# dvc.yaml
+---
+plots:
+  confusion_matrix:
+    y:
+      confusion_matrix_data.csv: predicted_class
+    x: actual_class
+    template: confusion
+```
+
+In this case we provided `confusion_matrix` as a plot ID. It will be displayed
+in the plot as a title, unless we override it with `title` field. In this case
+we provided data source in `y` axis definition. Data will be sourced from
+`confusion_matrix_data.csv`. As `y` axis we will use `predicted_class` field. On
+`x` axis we will have `actual_class` field. Note that DVC will assume that
+`actual_class` is inside `confusion_matrix_data.csv`.
+
+We can provide multiple columns/fields from the same file:
+
+```yaml
+#dvc.yaml
+---
+plots:
+  multiple_series:
+    y:
+      logs.csv: [accuracy, loss]
+    x: epoch
+```
+
+In this case, we will take `accuracy` and `loss` fields and display them agains
+`epoch` column, all coming from `logs.csv` file.
+
+We can source the data from multiple files too:
+
+```yaml
+#dvc.yaml
+---
+plots:
+  multiple_files:
+    y:
+      train_logs.csv: accuracy
+      test_logs.csv: accuracy
+    x: epoch
+```
+
+In this case we will plot `accuracy` field from both `train_logs.csv` and
+`test_logs.csv` against the `epoch`. Note that both files have to have `epoch`
+field.
+
+### Available configuration fields
+
+- `x` - field name from which the X axis data comes from. An auto-generated
+  _step_ field is used by default. It has to be a string.
+
+- `y` - field name from which the Y axis data comes from.
+  - Top-level plots: It can be a string, list or dictionary. If its a string or
+    list, it is assumed that plot ID will be the path to the data source.
+    String, or list elements will be the names of data columns or fields withing
+    the source file. If this field is a dictionary, it is assumed that its keys
+    are paths to data sources. The values have to be either strings or lists,
+    and are treated as column(s)/field(s) within respective files.
+  - Plot outputs: It is a field name from which the Y axis data comes from.
+- `x_label` - X axis label. The X field name is the default.
+- `y_label` - Y axis label. If all provided Y entries have the same field name,
+  this name will be the default, `y` string otherwise.
+- `title` - Plot title. Defaults:
+  - Top-level plots: `path/to/dvc.yaml::plot_id`
+  - Plot outputs: Path to the file.
 
 ## dvc.lock file
 

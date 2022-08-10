@@ -6,7 +6,7 @@ defined in <abbr>stages</abbr>.
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
 > on image-type plots or any [top-level plot] definitions.
 
-[top-level plot]: /doc/command-reference/plots#top-level-plots
+[top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
 
 ## Synopsis
 
@@ -44,7 +44,7 @@ Note that a secondary use of this command is to convert output or simple
 ## Options
 
 - `-t <name_or_path>, --template <name_or_path>` - set a default
-  [plot template](/doc/command-reference/plots#plot-templates).
+  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only).
 
 - `-x <field>` - set a default field or column name (or number) from which the X
   axis data comes from.

@@ -91,9 +91,9 @@ $ dvc plots show 'dvclive/plots/calibration.json' \
 Generates a [confusion matrix](https://en.wikipedia.org/wiki/Confusion_matrix)
 plot.
 
-Stores the abels and predictions in `{Live.dir}/plots/confusion_matrix.json`,
+Stores the labels and predictions in `{Live.dir}/plots/confusion_matrix.json`,
 with the format expected by the confusion matrix
-[template](/doc/command-reference/plots#plot-templates-data-series-only) of
+[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) of
 `dvc plots`.
 
 ```py
