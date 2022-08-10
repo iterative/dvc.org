@@ -132,10 +132,15 @@ stored in Git:
   model is stored in an `S3` bucket.
 
 ```yaml
-image-synthesis-model:
+image-classifier-model:
+  description:
+    This model is used to classify images of different objects submitted by
+    users. This version of the model has an accuracy of 95%.
   labels:
-    - image_synthesis
-  path: s3://models_bucket/image-synthesis-model.h5
+    - Random Forest
+    - image classification
+    - sklearn
+  path: .mlem/model/image-classifier-model
   type: model
 ```
 

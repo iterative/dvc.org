@@ -2,7 +2,7 @@
 
 Generates a
 [scikit learn plot](https://scikit-learn.org/stable/visualizations.html) and
-saves the data in `{path}/plots/{name}.json`.
+saves the data in `{Live.dir}/plots/{name}.json`.
 
 ```py
 def log_plot(self, name: str, labels, predictions, **kwargs):
@@ -29,7 +29,7 @@ Uses `name` to determine which plot should be generated. See
 
 <admon type="tip">
 
-The generated `{path}/plots/{name}.json` can be visualized with `dvc plots`.
+The generated `{Live.dir}/plots/{name}.json` can be visualized with `dvc plots`.
 
 </admon>
 
@@ -63,8 +63,8 @@ plot.
 
 Calls
 [sklearn.calibration.calibration_curve](https://scikit-learn.org/stable/modules/generated/sklearn.calibration.calibration_curve.html)
-and stores the data at `{path}/plots/calibratrion.json` in a format compatible
-with `dvc plots`.
+and stores the data at `{Live.dir}/plots/calibratrion.json` in a format
+compatible with `dvc plots`.
 
 ```py
 y_true = [0, 0, 1, 1]
@@ -91,8 +91,8 @@ $ dvc plots show 'dvclive/plots/calibration.json' \
 Generates a [confusion matrix](https://en.wikipedia.org/wiki/Confusion_matrix)
 plot.
 
-Stores the abels and predictions in `{path}/plots/confusion_matrix.json`, with
-the format expected by the confusion matrix
+Stores the labels and predictions in `{Live.dir}/plots/confusion_matrix.json`,
+with the format expected by the confusion matrix
 [template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) of
 `dvc plots`.
 
@@ -122,7 +122,7 @@ plot.
 
 Calls
 [sklearn.metrics.det_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.det_curve.html)
-and stores the data at `{path}/plots/det.json` in a format compatible with
+and stores the data at `{Live.dir}/plots/det.json` in a format compatible with
 `dvc plots`.
 
 ```py
@@ -151,7 +151,7 @@ plot.
 
 Calls
 [sklearn.metrics.precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)
-and stores the data at `{path}/plots/precision_recall.json` in a format
+and stores the data at `{Live.dir}/plots/precision_recall.json` in a format
 compatible with `dvc plots`.
 
 ```py
@@ -180,7 +180,7 @@ plot.
 
 Calls
 [sklearn.metrics.roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve)
-and stores the data at `{path}/plots/roc.json` in a format compatible with
+and stores the data at `{Live.dir}/plots/roc.json` in a format compatible with
 `dvc plots`.
 
 ```py
