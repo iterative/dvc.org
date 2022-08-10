@@ -57,9 +57,9 @@ The default behavior of this command can be modified per [stage plot] file with
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
-  [Custom templates](/doc/command-ref/plots/templates) for more information on
-  this `index` field. Column names or numbers are expected for tabular plots
-  files.
+  [Custom templates](/doc/command-reference/plots/templates) for more
+  information on this `index` field. Column names or numbers are expected for
+  tabular plots files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `targets` is used by default. Column names or numbers are
