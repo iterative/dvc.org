@@ -48,9 +48,26 @@ complete `dvc repro` when it has been used with the `--no-commit` or `--no-exec`
 options. Those options cause the command to skip certain stages so you can move
 to another stage without executing all of them.
 
-## []()
+## [How can I change the dataset for a DVC pipeline that runs completely with `dvc repro`?](https://discord.com/channels/485586884165107732/563406153334128681/1004432985052942396)
 
-## []()
+Great question from @5216!
+
+You could replace the dataset in place and run `dvc repro` again. If the dataset
+is at some other path, you could instead update `dvc.yaml` to use that new path
+instead of the original dataset path.
+
+## [When I trigger a GitHub event, I use `pull_request: types: [labeled]` and it seems to cause the runner to use the wrong SHA. How can I fix this?](https://discord.com/channels/485586884165107732/728693131557732403/1001003933159915550)
+
+Thanks for the good question @hyojoo!
+
+Git/GitHub changed some things with SHAs which caused a lot of chaos. We've
+updated https://cml.dev/doc/start/github to include a fix:
+
+```yaml
+- uses: actions/checkout@v3
+  with:
+    ref: ${{ github.event.pull_request.head.sha }}
+```
 
 ## []()
 
