@@ -276,6 +276,8 @@ The `linear` template is the default. It can be changed with the `--template`
 (`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
 `--template` can be a (built-in) template name or a path to a [custom template].
 
+[custom templates]: /doc/command-reference/plots/templates
+
 <admon type="tip">
 
 For templates stored in `.dvc/plots` (default location for custom templates),

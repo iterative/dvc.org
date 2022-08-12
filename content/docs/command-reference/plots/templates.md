@@ -1,28 +1,27 @@
 # plots templates
 
-Dump built-in plot templates to JSON files you can customize.
+List built-in plots templates or show JSON specification for one so that you can
+save and customize it.
 
 ## Synopsis
 
 ```usage
-usage: dvc plots templates [-h] [-q | -v] [-o <path>]
-       [{simple,linear,confusion,confusion_normalized,scatter,smooth}]
+usage: dvc plots templates [-h] [-q | -v] [template]
 
 positional arguments:
- TEMPLATE    Template to write. Writes all templates by default.
+ template    Template for which to show JSON specification.
+             List all template names by default.
 ```
 
 ## Description
 
-Some times you may need to customize the way `dvc plots` are rendered beyond
-what the built-in [plot templates] allow.`dvc plots templates` can dump these
-templates to JSON files for you use as base for new templates. To modify them,
-use any valid elements of the [Vega-Lite specification].
+By default, lists the names of all available built-in templates.
 
-You can dump a specific built-in template by providing it's name as argument,
-for example `dvc plots templates confusion`. Template files are written to
-`.dvc/plots` by default, but any location can be set with the `--out` (`-o`)
-option.
+Some times you may need to customize the way `dvc plots` are rendered beyond
+what the built-in [plot templates] allow. You can get the JSON specification for
+a specific built-in template by providing it's name as argument, for example
+`dvc plots templates confusion`. To modify them, use any valid elements of the
+[Vega-Lite specification].
 
 <admon type="note">
 
@@ -78,10 +77,6 @@ important fields that DVC adds to the plot data:
 [vega-lite specification]: https://vega.github.io/vega-lite/
 [data-series plots]: /doc/user-guide/visualizing-plots
 
-## Options
-
-- `-o <path>`, `--out <path>` - Directory to save templates to.
-
 ## Example: Modifying the `simple` template
 
 The built-in `simple` template can be an ideal base for custom templates because
@@ -107,14 +102,10 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_templates_show_unmodified.svg)
 
-Let's dump the `simple` template to the current working directory and rename it
-appropriately:
+Let's dump the `simple` template to `bars_template.json`:
 
 ```dvc
-$ dvc plots templates simple -o .
-Templates have been written into '.'.
-
-$ mv simple.json bars_template.json
+$ dvc plots templates simple > bars_template.json
 ```
 
 Now, let's modify the `bars_template.json` file to display the bars (instead of
