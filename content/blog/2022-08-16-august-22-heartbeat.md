@@ -43,8 +43,8 @@ tags:
 ---
 
 Welcome to the August Heartbeat! As we all soak in the remaining summer days,
-swing along in your hammock and take in all the great news from the
-Iterative Community!
+swing along in your hammock and take in all the great news from the Iterative
+Community!
 
 https://media.giphy.com/media/2uI9paIuAWgaqfyX0Q/giphy.gif
 
@@ -65,10 +65,10 @@ about challenges, danger zones, and issues that we all need to be aware of in
 the field. Recently Hugo started a new podcast,
 [Vanishing Gradients](https://vanishinggradients.fireside.fm/). This newer
 endeavor is in a somewhat different format than DataFramed, but still with
-Hugo's characteristic deep dive into all the challenges that come up when working
-with data. Hugo uses a long-format conversation approach with many leaders and
-great thinkers in the data science/machine learning/AI space. In episodes,
-[seven](https://vanishinggradients.fireside.fm/7) and
+Hugo's characteristic deep dive into all the challenges that come up when
+working with data. Hugo uses a long-format conversation approach with many
+leaders and great thinkers in the data science/machine learning/AI space. In
+episodes, [seven](https://vanishinggradients.fireside.fm/7) and
 [eight](https://vanishinggradients.fireside.fm/8) Hugo has a fascinating chat
 with [**Peter Wang**](https://twitter.com/pwang), CEO of Anaconda, in which they
 talk about a number of topics including how Python became so big in Data
@@ -91,9 +91,9 @@ and use the more mature way of creating reproducible ML results by using DVC
 
 He notes that notebooks are really bad to compare changes between runs. Instead,
 he suggests developing a workflow where for every major experiment type,
-creating a branch - experimenting in each and persisting the best and most notable
-outcomes (good and bad). The best results are then submitted to Kaggle. You can
-find more about his workflow in
+creating a branch - experimenting in each and persisting the best and most
+notable outcomes (good and bad). The best results are then submitted to Kaggle.
+You can find more about his workflow in
 [his repo for the project.](https://github.com/mikolajkania/kaggle-03-house-prices)
 
 ![Using DVC for Kaggle Competition](/uploads/images/2022-08-16/kaggle-dvc.png '=800')
@@ -103,8 +103,9 @@ _DVC with Kaggle
 Mikołaj explains how DVC's project structure ensures reproducible results and
 develops habits on best practices. One drawback he noted was the lack of an
 experimentation UI, but we just introduced the DVC extension for VS Code to help
-with that, and there’s always Iterative Studio. Look out for improvement to the experiment features in both tools in the coming months! Also, experimenting with DVC
-in Kaggle may give you some good practice for things we are cooking up
+with that, and there’s always Iterative Studio. Look out for improvement to the
+experiment features in both tools in the coming months! Also, experimenting with
+DVC in Kaggle may give you some good practice for things we are cooking up
 internally! 😉🤫
 
 ## **Shambhavi Mishra** - Searching for Semantic Similarity
@@ -112,8 +113,9 @@ internally! 😉🤫
 [**Shambhavi Mishra**](https://twitter.com/ShambhaviCodes) in her post
 [Searching for Semantic Similarity](https://medium.com/towards-artificial-intelligence/searching-for-semantic-similarity-cfbff2388d04)
 details the steps of her NLP project on similarity algorithms. She mainly
-focuses on cosine similarity using a Stackoverflow questions dataset. The end-to-end project uses Sentence BERT, Fast Text, DVC, DAGsHub, Streamlit and deploys
-the web app on an AWS EC2 instance.
+focuses on cosine similarity using a Stackoverflow questions dataset. The
+end-to-end project uses Sentence BERT, Fast Text, DVC, DAGsHub, Streamlit and
+deploys the web app on an AWS EC2 instance.
 
 Once you follow all the steps you will have computed the similarity between a
 search query and a database of texts and rank all the data by their similarity
@@ -125,8 +127,8 @@ _Understanding Cosine Similarity
 
 ## **Evgenii Munin** - Run S3 Locally With MinIO for the DVC Machine Learning Pipeline
 
-If you are in need of object storage to work with data through an API, but
-need to do so in a private network,
+If you are in need of object storage to work with data through an API, but need
+to do so in a private network,
 [**Evgenii Munin**](https://www.linkedin.com/in/evgenii-munin-01932a143/) shows
 how to set up MinIO as remote storage with DVC to do just that
 [in this piece in Medium](https://betterprogramming.pub/run-s3-locally-with-minio-for-dvc-machine-learning-pipeline-7fa3d240d3ab).
@@ -162,8 +164,8 @@ https://media.giphy.com/media/xUNd9DLukkavmhybAs/giphy.gif
 - Github Goodness alert for
   [Visual Data Preparation (VDP),](xhttps://github.com/instill-ai/vdp) an
   open-source visual data ETL tool to streamline the end-to-end visual data
-  processing pipeline. Among the highlights: a fast way to build end-to-end visual
-  data pipelines, pre-built ETL data connectors, and integration with DVC
+  processing pipeline. Among the highlights: a fast way to build end-to-end
+  visual data pipelines, pre-built ETL data connectors, and integration with DVC
 - [**Jillian Rowe**](https://twitter.com/jillianerowe) gave a shout-out to DVC
   on a
   [recent podcast](https://topenddevs.com/podcasts/adventures-in-devops/episodes/the-intersection-of-data-and-devops-devops-124)
@@ -199,10 +201,10 @@ participated in the 48-hour computer vision challenge classifying dogs, cats,
 croissants and muffins. Part of the objective was to familiarize ourselves and
 test a new tool that we are expecting to release later this year. Eight teams
 competed for prizes for the best outcome, but also for the best integrations
-with other tools, the best dog, cat, croissant, and muffin photos from team members,
-and the best notes from the experience. I think the notes of our newest DevRel
-[**Gema Perreño Piqueras**](https://twitter.com/SoyGema) are in good running for
-the prize. (Learn more about Gema in the New Hires section below!)
+with other tools, the best dog, cat, croissant, and muffin photos from team
+members, and the best notes from the experience. I think the notes of our newest
+DevRel [**Gema Perreño Piqueras**](https://twitter.com/SoyGema) are in good
+running for the prize. (Learn more about Gema in the New Hires section below!)
 
 ![Gema Perreño Piqueras' Hackathon notes](/uploads/images/2022-08-16/gema-hackathon-notes.jpeg '=800')
 _Gema Perreño Piqueras' Hackathon notes
@@ -210,9 +212,9 @@ _Gema Perreño Piqueras' Hackathon notes
 
 See the members of the winning teams below. Team members
 [**Daniel Kharitonov**](https://www.linkedin.com/in/danielkharitonov/) and
-[**Jon Burdo**](https://www.linkedin.com/in/jon-burdo-59730a83/) organized the whole
-event and put together an extremely comprehensive document to help guide the
-teams. We are looking forward to more of these events in the future!
+[**Jon Burdo**](https://www.linkedin.com/in/jon-burdo-59730a83/) organized the
+whole event and put together an extremely comprehensive document to help guide
+the teams. We are looking forward to more of these events in the future!
 
 ![Winners of the First Iterative Hackathon](/uploads/images/2022-08-16/winners.jpg '=800')
 _Winners of the first Iterative Internal Hackathon, Source: Dmitry Petrov_
@@ -239,10 +241,10 @@ his popular talk or workshop entitled
 [Making MLOps Uncool Again](https://www.youtube.com/watch?v=J6fduKE1j1g), you
 can now catch it on our very own
 [YouTube channel](https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ)! In
-this presentation you will learn how to build an MLOps workflow by extending
-the power of Git and GitHub with open-source tools DVC and CML. In the end, you
-will have an automated workflow that covers the entire lifecycle of an ML model,
-from data labeling to monitoring predictions.
+this presentation you will learn how to build an MLOps workflow by extending the
+power of Git and GitHub with open-source tools DVC and CML. In the end, you will
+have an automated workflow that covers the entire lifecycle of an ML model, from
+data labeling to monitoring predictions.
 [Find the repo for the project here.](https://github.com/iterative/workshop-uncool-mlops)
 And the
 [solution here](https://github.com/iterative/workshop-uncool-mlops-solution).
@@ -254,14 +256,13 @@ https://www.youtube.com/watch?v=J6fduKE1j1g
 [**Gema Perreño Piqueras**](https://twitter.com/SoyGema) joins our team from
 Madrid, Spain as a Developer Advocate. You may have already been familiar with
 Gema if you've been taking our [online course](https://learn.iterative.ai) this
-summer because of the 
-[gorgeous notes](https://twitter.com/SoyGema/status/1558135976698028034?s=20&t=pJAfd-S4aoKGf4UhsnlgCw) 
-she contributed per module. Gema was born
-and raised as an Architect (of buildings) but switched to tech a while back.
-She had her own video game start-up and has also worked as a Data Scientist in the
-Financial Industry. She has contributed to open source StarCraft II ML project.
-Gema loves indie games, puzzles, and croquettes! She makes the 4th teammate from
-Spain! ¡Viva España! 🇪🇸
+summer because of the
+[gorgeous notes](https://twitter.com/SoyGema/status/1558135976698028034?s=20&t=pJAfd-S4aoKGf4UhsnlgCw)
+she contributed per module. Gema was born and raised as an Architect (of
+buildings) but switched to tech a while back. She had her own video game
+start-up and has also worked as a Data Scientist in the Financial Industry. She
+has contributed to open source StarCraft II ML project. Gema loves indie games,
+puzzles, and croquettes! She makes the 4th teammate from Spain! ¡Viva España! 🇪🇸
 
 [**Marcin Jasion**](https://www.linkedin.com/in/marcinjasion/) joins the team as
 a Senior Platform Engineer from Poland. He has been friends with team member,
@@ -271,9 +272,9 @@ part of meetings! 🐈
 
 [**Domas Monkus**](https://www.linkedin.com/in/domasmonkus/) joins the CML team
 as an engineer from Lithuania. Before joining us at Iterative, Domas spent 10
-years at Canonical working on juju, livepatch, and many internal projects. He's a
-husband and father with a house outside the hustle and bustle of the city, so he
-mentioned that lawn mowing is one of his main free time activities. 🏡
+years at Canonical working on juju, livepatch, and many internal projects. He's
+a husband and father with a house outside the hustle and bustle of the city, so
+he mentioned that lawn mowing is one of his main free time activities. 🏡
 
 ## Upcoming Events
 
@@ -290,7 +291,8 @@ Additional conferences we will be attending this year:
   1st for the [LATAM AI Conference](https://www.latam-ai.com/). Gema will give a
   presentation on experimentation in our new
   [DVC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
-- [Southern Data Science Conference](https://www.southerndatascience.com/) in Atlanta, GA on September 8-9th.
+- [Southern Data Science Conference](https://www.southerndatascience.com/) in
+  Atlanta, GA on September 8-9th.
 - [ODSC West](https://odsc.com/california/) in San Francisco
 - [Deep Learning World](https://deeplearningworld.de/) - Berlin
 - [MLOps Summit - Re-work](https://www.re-work.co/events/mlops-summit-2022) -
@@ -306,7 +308,9 @@ We also will be reviving our virtual meetups this fall so be sure to
 ## Open Positions
 
 [Use this link](https://iterative.notion.site/Iterative-ai-is-Hiring-852cb978129645e1906e2c9a878a4d22)
-to find details of all the open positions. Please share with anyone looking to have a lot of fun building the next generation of machine learning to production tools! 🚀
+to find details of all the open positions. Please share with anyone looking to
+have a lot of fun building the next generation of machine learning to production
+tools! 🚀
 
 ![Iterative.ai is Hiring](/uploads/images/2022-08-16/hiring.jpeg '=800')
 _Iterative is Hiring
@@ -323,10 +327,12 @@ _Iterative is Hiring
 ### ✍🏼 Blog post
 
 - 💎 Don't miss
-  [July's Community Gems](https://dvc.org/blog/july-22-community-gems) is full of great questions from the Community.
+  [July's Community Gems](https://dvc.org/blog/july-22-community-gems) is full
+  of great questions from the Community.
 - [**Milecia McGregor**](https://twitter.com/FlippedCoding) provides a new
   tutorial for
-  [Serving Machine Learning Models with MLEM.](https://dvc.org/blog/serving-models-with-mlem) Don't miss it!
+  [Serving Machine Learning Models with MLEM.](https://dvc.org/blog/serving-models-with-mlem)
+  Don't miss it!
 
 ## Tweet Love ❤️
 
