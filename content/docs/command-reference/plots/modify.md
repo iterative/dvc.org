@@ -1,10 +1,12 @@
 # plots modify
 
-Modify display properties of [plot metrics](/doc/command-reference/plots) files.
+Modify display properties of data-series [plots](/doc/command-reference/plots)
+defined in <abbr>stages</abbr>.
 
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
-> on image-type plots. See
-> [Types of metrics](/doc/command-reference/plots#types-of-metrics).
+> on image-type plots or any [top-level plot] definitions.
+
+[top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
 
 ## Synopsis
 
@@ -16,17 +18,18 @@ usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                         target
 
 positional arguments:
-  target                Metrics file to set properties to
+  target                Plots file to set properties for
+                        (defined at the stage level)
 ```
 
 ## Description
 
 It might be not convenient for users or automation systems to specify all the
 _display properties_ (such as `y-label`, `template`, `title`, etc.) each time
-plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
-(or unsets) default display properties for a specific metrics file.
+plots are generated with `dvc plots show` or `dvc plots diff`. This command sets
+(or unsets) default display properties for a specific plots file.
 
-The path to the metrics file `target` is required. It must be listed in a
+The path to the plots file `target` is required. It must be listed in a
 `dvc.yaml` file (see the `--plots` option of `dvc stage add`).
 `dvc plots modify` adds the display properties to `dvc.yaml`.
 
@@ -41,7 +44,7 @@ Note that a secondary use of this command is to convert output or simple
 ## Options
 
 - `-t <name_or_path>, --template <name_or_path>` - set a default
-  [plot template](/doc/command-reference/plots#plot-templates).
+  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only).
 
 - `-x <field>` - set a default field or column name (or number) from which the X
   axis data comes from.

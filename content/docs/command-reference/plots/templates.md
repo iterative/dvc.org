@@ -1,4 +1,4 @@
-# plot templates
+# plots templates
 
 Dump built-in plot templates to JSON files you can customize.
 
@@ -30,10 +30,53 @@ Note that templates can only be used with [data-series plots].
 
 </admon>
 
+### Custom templates
+
+Plot templates are [Vega-Lite](https://vega.github.io/vega-lite/) JSON
+specifications. They use predefined DVC anchors as placeholders for DVC to
+inject the plot values.
+
+- `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
+  files is converted to a single JSON array, and injected instead of this
+  anchor. Two additional fields will be added: `step` and `rev` (explained
+  below).
+
+- `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
+  with the `--title` option of the `dvc plots` subcommands.
+
+- `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
+  defined with the `-x` option of the `dvc plots` subcommands. The
+  auto-generated `step` field (explained below) is the default.
+
+- `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
+  defined with the `-y` option of the `dvc plots` subcommands. It defaults to
+  the last header of the metrics file: the last column for CSV/TSV, or the last
+  field for JSON/YAML.
+
+- `<DVC_METRIC_X_LABEL>` (optional) - field name to display as the X axis label
+
+- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the Y axis label
+
+<details>
+
+### Expand to learn how DVC modifies plot data for rendering.
+
+File targets given to `dvc plots show` and `dvc plots diff` are treated as
+separate data series, each to be injected into a template file. There are two
+important fields that DVC adds to the plot data:
+
+- `step` - zero-based counter for the data rows/values. In many cases it
+  corresponds to a machine learning training epoch number.
+
+- `rev` - This field helps distinguish between data sourced from different
+  revisions, files or columns.
+
+</details>
+
 [plot templates]:
-  https://dvc.org/doc/command-reference/plots#plot-templates-data-series-only
+  https://dvc.org/doc/user-guide/visualizing-plots#plot-templates-data-series-only
 [vega-lite specification]: https://vega.github.io/vega-lite/
-[data-series plots]: /doc/command-reference/plots#types-of-metrics
+[data-series plots]: /doc/user-guide/visualizing-plots
 
 ## Options
 
