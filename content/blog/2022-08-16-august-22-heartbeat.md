@@ -162,7 +162,7 @@ https://media.giphy.com/media/xUNd9DLukkavmhybAs/giphy.gif
 ## Just a few other things...
 
 - Github Goodness alert for
-  [Visual Data Preparation (VDP),](xhttps://github.com/instill-ai/vdp) an
+  [Visual Data Preparation (VDP),](https://github.com/instill-ai/vdp) an
   open-source visual data ETL tool to streamline the end-to-end visual data
   processing pipeline. Among the highlights: a fast way to build end-to-end
   visual data pipelines, pre-built ETL data connectors, and integration with DVC
