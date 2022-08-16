@@ -27,28 +27,55 @@ tags:
 
 A while ago, [I wrote about](https://dvc.org/blog/CML-runners-saving-models-1)
 training models on cloud instances and saving those models to a Git repository.
-We did so using CML and GitHub Actions. A [recent CML
+We did so using [CML and GitHub Actions](https://cml.dev/doc/start/github).
+GitLab is also supported, and a [recent CML
 release](https://github.com/iterative/cml/releases/tag/v0.16.0) incorporated
 support for self-hosted runners in Bitbucket Pipelines: a good excuse to revisit
 this topic and show how CML works in conjunction with Bitbucket's CI/CD.
 
-In this guide, we will explore how we can use CML to:
+Using CML to provision cloud instances for our model (re)training has a number
+of benefits:
 
-- Provision an EC2 instance on Amazon Web Services (AWS) from a Bitbucket
-  pipeline
-- Train a machine learning model on the provisioned instance
-- Export the resulting model to our Bitbucket repository
+- Spot instances: CML can leverage cloud resources at the cheapest possible
+  rates
+- Auto-recovery: if a spot instance is terminated, CML will recover when spot
+  instances become available again
+- Auto-termination: CML automatically terminates instances once they are no
+  longer being used, reducing idle time (and costs)
+- Cloud abstraction: CML handles the interaction with our cloud provider,
+  meaning we could switch providers by changing a single parameter
 
-This approach allows us to integrate our model (re)training into our CI/CD.
+# What we'll be doing
+
+In this guide, we will explore how we can use CML (re)train models from one of
+our Bitbucket pipelines. We will:
+
+1. Provision an EC2 instance on Amazon Web Services (AWS) from a Bitbucket
+   pipeline
+1. Train a machine learning model on the provisioned instance
+1. Push the resulting model to our Bitbucket repository
+
 While we could use Bitbucket's own runners for our model training, those have
 [their
 limits](https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/)
 when it comes to memory, storage, and processing power. Self-hosted runners on
-provisioned cloud instances let us work around these limitations: we can get a
-runner with specifications that are tailored to our computing needs.
+CML-orchestrated cloud instances let us work around these limitations: we can
+get a runner with specifications that are tailored to our computing needs.
 
-A major benefit to using CML is that it can provision spot instances. This way
-we can leverage cloud resources at the cheapest possible rates.
+Moreover, if our data is hosted by our cloud provider, using a runner on the
+same cloud would be a logical approach to minimize data transfer costs and time.
+
+<admon type="tip">
+
+While we'll be using AWS in this guide, CML works just as well with [Google
+Cloud](https://cloud.google.com/), [Microsoft
+Azure](https://azure.microsoft.com/en-us/), and on-premise compute. Of course
+CML would need the appropriate credentials, but otherwise it takes care of the
+differing configuration for us. [Take a look at the documentation if you're
+interested in using another cloud
+provider](https://cml.dev/doc/self-hosted-runners#cloud-compute-resource-credentials).
+
+</admon>
 
 # Before we start
 
@@ -75,11 +102,11 @@ provision AWS EC2 on your behalf:
 
 <admon type="warn">
 
-In this example, we will be provisioning a `m5.2xlarge` [AWS EC2
+In this example, we will be provisioning an `m5.2xlarge` [AWS EC2
 instance](https://aws.amazon.com/ec2/instance-types/). Be aware that this
 instance is not included in the free tier, and Amazon will charge you for your
-usage. CML will automatically terminate the instance upon completion of the
-pipeline, however.
+usage. To minimize cost, CML always terminates the instance upon completion of
+the pipeline.
 
 </admon>
 
@@ -110,6 +137,7 @@ on-demand instance costs $0.xx per hour. Profit!
                 --cloud-region=us-west \
                 --cloud-type=m5.2xlarge \ # TODO: change
                 --cloud-spot \
+                --reuse \
                 --labels=cml
 ```
 
