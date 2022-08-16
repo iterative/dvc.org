@@ -203,11 +203,11 @@ test a new tool that we are expecting to release later this year. Eight teams
 competed for prizes for the best outcome, but also for the best integrations
 with other tools, the best dog, cat, croissant, and muffin photos from team
 members, and the best notes from the experience. I think the notes of our newest
-DevRel [**Gema Perreño Piqueras**](https://twitter.com/SoyGema) are in good
+DevRel [**Gema Parreño Piqueras**](https://twitter.com/SoyGema) are in good
 running for the prize. (Learn more about Gema in the New Hires section below!)
 
-![Gema Perreño Piqueras' Hackathon notes](/uploads/images/2022-08-16/gema-hackathon-notes.jpeg '=800')
-_Gema Perreño Piqueras' Hackathon notes
+![Gema Parreño Piqueras' Hackathon notes](/uploads/images/2022-08-16/gema-hackathon-notes.jpeg '=800')
+_Gema Parreño Piqueras' Hackathon notes
 ([Source link](https://twitter.com/SoyGema/status/1558135976698028034?s=20&t=lXyAWLISwf8gUl8SZS84AQ))_
 
 See the members of the winning teams below. Team members
@@ -253,7 +253,7 @@ https://www.youtube.com/watch?v=J6fduKE1j1g
 
 ## New hires
 
-[**Gema Perreño Piqueras**](https://twitter.com/SoyGema) joins our team from
+[**Gema Parreño Piqueras**](https://twitter.com/SoyGema) joins our team from
 Madrid, Spain as a Developer Advocate. You may have already been familiar with
 Gema if you've been taking our [online course](https://learn.iterative.ai) this
 summer because of the
@@ -262,7 +262,7 @@ she contributed per module. Gema was born and raised as an Architect (of
 buildings) but switched to tech a while back. She had her own video game
 start-up and has also worked as a Data Scientist in the Financial Industry. She
 has contributed to open source StarCraft II ML project. Gema loves indie games,
-puzzles, and croquettes! She makes the 4th teammate from Spain! ¡Viva España! 🇪🇸
+puzzles, and croquettes! She makes the 4th teammate from España! 🇪🇸
 
 [**Marcin Jasion**](https://www.linkedin.com/in/marcinjasion/) joins the team as
 a Senior Platform Engineer from Poland. He has been friends with team member,
@@ -286,7 +286,7 @@ our tools throughout the day.
 
 Additional conferences we will be attending this year:
 
-- [**Gema Perreño Piqueras**]() and our lead docs writer,
+- [**Gema Parreño Piqueras**]() and our lead docs writer,
   [**Jorge Orpinel Perez**]() will be heading to Mexico City August 31-September
   1st for the [LATAM AI Conference](https://www.latam-ai.com/). Gema will give a
   presentation on experimentation in our new
