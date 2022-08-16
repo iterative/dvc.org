@@ -68,8 +68,8 @@ endeavor is in a somewhat different format than DataFramed, but still with
 Hugo's characteristic deep dive into all the challenges that come up when
 working with data. Hugo uses a long-format conversation approach with many
 leaders and great thinkers in the data science/machine learning/AI space. In
-episodes, [seven](https://vanishinggradients.fireside.fm/7) and
-[eight](https://vanishinggradients.fireside.fm/8) Hugo has a fascinating chat
+episodes [seven](https://vanishinggradients.fireside.fm/7) and
+[eight,](https://vanishinggradients.fireside.fm/8) Hugo has a fascinating chat
 with [**Peter Wang**](https://twitter.com/pwang), CEO of Anaconda, in which they
 talk about a number of topics including how Python became so big in Data
 Science, the emergence of open source collaborative environments, and things
@@ -113,7 +113,7 @@ internally! 😉🤫
 [**Shambhavi Mishra**](https://twitter.com/ShambhaviCodes) in her post
 [Searching for Semantic Similarity](https://medium.com/towards-artificial-intelligence/searching-for-semantic-similarity-cfbff2388d04)
 details the steps of her NLP project on similarity algorithms. She mainly
-focuses on cosine similarity using a Stackoverflow questions dataset. The
+focuses on cosine similarity using a Stack Overflow questions dataset. The
 end-to-end project uses Sentence BERT, Fast Text, DVC, DAGsHub, Streamlit and
 deploys the web app on an AWS EC2 instance.
 
@@ -151,17 +151,18 @@ in [KD Nuggets](https://www.kdnuggets.com). He provides four examples of real-
 world projects and defines what portions of the project are data science and
 what are ML engineering. In all what we find is that machine learning
 engineering is all the tasks that need to happen to get the model the data
-scientists create into production applications. He goes on to dive deeper into
-one of the examples and shows the promise in some tools that bridge the gap
-between machine learning and software engineering where he highlights DVC and
-Huggingface. This is a good piece to read if you are grappling with the
-difference!
+scientists create into production applications.
+
+He goes on to dive deeper into one of the examples and shows the promise in some
+tools that bridge the gap between machine learning and software engineering
+where he highlights DVC and Huggingface. This is a good piece to read if you are
+grappling with the difference!
 
 https://media.giphy.com/media/xUNd9DLukkavmhybAs/giphy.gif
 
 ## Just a few other things...
 
-- Github Goodness alert for
+- GitHub Goodness alert for
   [Visual Data Preparation (VDP),](https://github.com/instill-ai/vdp) an
   open-source visual data ETL tool to streamline the end-to-end visual data
   processing pipeline. Among the highlights: a fast way to build end-to-end
@@ -199,12 +200,14 @@ https://www.youtube.com/watch?v=DYeVI-QrHGI
 Last week we had our very first internal Hackathon! The entire company
 participated in the 48-hour computer vision challenge classifying dogs, cats,
 croissants and muffins. Part of the objective was to familiarize ourselves and
-test a new tool that we are expecting to release later this year. Eight teams
-competed for prizes for the best outcome, but also for the best integrations
-with other tools, the best dog, cat, croissant, and muffin photos from team
-members, and the best notes from the experience. I think the notes of our newest
-DevRel [**Gema Parreño Piqueras**](https://twitter.com/SoyGema) are in good
-running for the prize. (Learn more about Gema in the New Hires section below!)
+test a new tool that we are expecting to release later this year.
+
+Eight teams competed for prizes for the best outcome, but also for the best
+integrations with other tools, the best dog, cat, croissant, and muffin photos
+from team members, and the best notes from the experience. I think the notes of
+our newest DevRel [**Gema Parreño Piqueras**](https://twitter.com/SoyGema) are
+in good running for the prize. (Learn more about Gema in the New Hires section
+below!)
 
 ![Gema Parreño Piqueras' Hackathon notes](/uploads/images/2022-08-16/gema-hackathon-notes.jpeg '=800')
 _Gema Parreño Piqueras' Hackathon notes
@@ -286,9 +289,10 @@ our tools throughout the day.
 
 Additional conferences we will be attending this year:
 
-- [**Gema Parreño Piqueras**]() and our lead docs writer,
-  [**Jorge Orpinel Perez**]() will be heading to Mexico City August 31-September
-  1st for the [LATAM AI Conference](https://www.latam-ai.com/). Gema will give a
+- [**Gema Parreño Piqueras**](https://twitter.com/SoyGema) and our lead docs
+  writer, [**Jorge Orpinel Perez**](https://twitter.com/JorgeOrpinel) will be
+  heading to Mexico City August 31-September 1st for the
+  [LATAM AI Conference](https://www.latam-ai.com/). Gema will give a
   presentation on experimentation in our new
   [DVC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 - [Southern Data Science Conference](https://www.southerndatascience.com/) in
