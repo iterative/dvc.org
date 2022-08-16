@@ -3,14 +3,9 @@ title:
   Provision cloud instances for model training in Bitbucket Pipelines with CML
 date: 2022-05-06
 description:
-  Use CML to automatically retrain a model on a provisioned AWS EC2 instance and
-  export the model to a DVC remote storage on Google Drive.
+  Use CML from a Bitbucket pipeline to provision an AWS EC2 instance and (re)train a machine learning model.
 descriptionLong: >
-  We can use CML to automatically retrain models whenever data, model code, or
-  parameters change. In this guide we show how to create a pipeline that
-  provisions an AWS EC2 instance to retrain a model and save the output on a
-  regular basis. In this part 2 we cover how to export the model to a DVC remote
-  on Google Drive.
+  We can use CML to cheaply provision a cloud instance to train our model, push the model to our repository, and automatically terminate the instance afterwards. In this guide, we will be exploring how to do so in conjunction with a Bitbucket repository and pipeline.
 picture: 2022-05-06/saving-models-2-cover.jpeg
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
@@ -129,16 +124,16 @@ on-demand instance costs $0.xx per hour. Profit!
 
 ```yaml
 - step:
-        image: iterativeai/cml:0-dvc2-base1
-        script:
-          - |
-            cml runner \
-                --cloud=aws \
-                --cloud-region=us-west \
-                --cloud-type=m5.2xlarge \ # TODO: change
-                --cloud-spot \
-                --reuse \
-                --labels=cml
+    image: iterativeai/cml:0-dvc2-base1
+    script:
+      - |
+        cml runner \
+            --cloud=aws \
+            --cloud-region=us-west \
+            --cloud-type=m5.2xlarge \ # TODO: change
+            --cloud-spot \
+            --reuse \
+            --labels=cml
 ```
 
 ## Train model on self-hosted runner
@@ -150,20 +145,21 @@ in our local terminal.
 
 ```yaml
 - step:
-        runs-on: [self.hosted, cml]
-        image: iterativeai/cml:0-dvc2-base1
-        # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
-        script:
-          - pip install -r requirements.txt
-          - python get_data.py
-          - python train.py
-          # Create pull request
-          - cml pr model/random_forest.joblib
+    runs-on: [self.hosted, cml]
+    image: iterativeai/cml:0-dvc2-base1
+    # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
+    script:
+      - pip install -r requirements.txt
+      - python get_data.py
+      - python train.py
+      # Create pull request
+      - cml pr model/random_forest.joblib
 
-          # Create CML report
-          - cat model/metrics.txt > report.md
-          - cml publish model/confusion_matrix.png --md --title="Confusion Matrix" >> report.md
-          - cml send-comment --pr --update report.md
+      # Create CML report
+      - cat model/metrics.txt > report.md
+      - cml publish model/confusion_matrix.png --md --title="Confusion Matrix"
+        >> report.md
+      - cml send-comment --pr --update report.md
 ```
 
 First, we install our requirements, and then we run our data loading and model
@@ -188,4 +184,3 @@ CML allows us to incorporate our model training into our Bitbucket CI/CD. We can
 define a pipeline to provision a cloud instance that meets our requirements, and
 then use that instance to train our model. The resulting model can be pushed to
 our Git repository, along with an elaborate report on our model's performance.
-
