@@ -38,22 +38,19 @@ for epoch in range(NUM_EPOCHS):
     live.next_step()
 ```
 
-Let's use `dvc stage add` to create a stage to wrap this code (don't forget to
-`dvc init` first):
+Let's use `dvc exp init --live` to create a stage to wrap this code (don't
+forget to `dvc init` first):
 
 ```dvc
-$ dvc stage add \
---name train \
---deps train.py \
---metrics-no-cache training_metrics.json \
---plots-no-cache training_metrics/scalars \
+$ dvc exp init --live "training_metrics" \
+--code "train.py" \
 python train.py
 ```
 
-<admon type="warn">
+<admon type="info">
 
-Note that the paths indicated in the `metrics` and `plots` options match the
-`path` passed to `Live()` in the Python code (`"training_metrics"`).
+Note that the path passed to the `--live` option (`"training_metrics"`) matches
+the `path` passed to `Live()` in the Python code.
 
 </admon>
 
@@ -80,6 +77,18 @@ Run the training with `dvc repro` or `dvc exp run`:
 $ dvc repro train
 ```
 
+<admon type="warn">
+
+When using [DVC Checkpoints](/doc/user-guide/experiment-management/checkpoints)
+and/or enabling DVCLive's [`resume`](/doc/dvclive/api-reference/live#parameters)
+you need to add the flag
+[`persist: true`](/doc/user-guide/project-structure/pipelines-files#output-subfields)
+to all DVCLive outputs.
+
+Passing `--type checkpoint` to `dvc exp init` will take care of doing this.
+
+</admon>
+
 ## Outputs
 
 After that's finished, you should see the following content in the project:
@@ -104,7 +113,7 @@ The [metrics summary](/doc/dvclive/api-reference/live/log#description) in
 The [metrics history](/doc/dvclive/api-reference/live/log#step-updates)
 `training_metrics/scalars` can be visualized with `dvc plots`.
 
-The [HTML report](/doc/dvclive/api-reference/live/make_report#description) in
+The [metrics report](/doc/dvclive/api-reference/live/make_report) in
 `training_metrics/report.html` will contain all the logged data and will be
 automatically updated during training on each `step` update!
 
@@ -112,8 +121,8 @@ automatically updated during training on each `step` update!
 
 <admon type="info">
 
-If you don't update the step number, the HTML report won't be generated unless
-you call `Live.make_report()` directly.
+If you don't update the step number, the report won't be generated unless you
+call `Live.make_report()` directly.
 
 </admon>
 

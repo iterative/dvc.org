@@ -15,15 +15,6 @@ Or switching to a different version of a 100Gb file in less than a second with a
 
 https://youtu.be/kLKBcPonMYw
 
-<admon icon="fire">
-
-**New!** You can manage you data and ML models with DVC directly [from Visual
-Studio Code], a leading IDE in the industry.
-
-[from visual studio code]: /doc/vs-code-extension
-
-</admon>
-
 The foundation of DVC consists of a few commands you can run along with `git` to
 track large files, directories, or ML model files. Read on or watch the video
 above to learn more!

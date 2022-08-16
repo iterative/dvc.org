@@ -57,7 +57,7 @@ the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
 Make sure you have [Python](https://www.python.org/downloads/) 3.7+, a recent
-LTS version of [Node.js](https://nodejs.org/en/) (`>=14.0.0`, `<=16.x`), and
+LTS version of [Node.js](https://nodejs.org/en/) (`>=14.0.0`, `<=18.x`), and
 install [Yarn](https://yarnpkg.com/):
 
 > In Windows, you may need to install [Visual Studio Build Tools], and the
@@ -217,5 +217,5 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 - ⚠️ Important warnings or disclaimers related to advanced DVC usage
 - 💡 Useful notes and tips, often related to external tools and integrations
 
-> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐⚙️(ℹ️) (among
+> Some other emojis currently in use here and there: ⚡ ✅ 🙏 🐛 ⭐ ⚙️ ℹ️ (among
 > others).
