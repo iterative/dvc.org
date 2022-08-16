@@ -3,9 +3,13 @@ title:
   Provision cloud instances for model training in Bitbucket Pipelines with CML
 date: 2022-05-06
 description:
-  Use CML from a Bitbucket pipeline to provision an AWS EC2 instance and (re)train a machine learning model.
+  Use CML from a Bitbucket pipeline to provision an AWS EC2 instance and
+  (re)train a machine learning model.
 descriptionLong: >
-  We can use CML to cheaply provision a cloud instance to train our model, push the model to our repository, and automatically terminate the instance afterwards. In this guide, we will be exploring how to do so in conjunction with a Bitbucket repository and pipeline.
+  We can use CML to cheaply provision a cloud instance to train our model, push
+  the model to our repository, and automatically terminate the instance
+  afterwards. In this guide, we will be exploring how to do so in conjunction
+  with a Bitbucket repository and pipeline.
 picture: 2022-05-06/saving-models-2-cover.jpeg
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
@@ -13,11 +17,10 @@ tags:
   - CML
   - DVC
   - Git
-  - Pipelines
+  - Bitbucket Pipelines
   - Self-hosted runners
   - Cloud training
   - AWS
-  - Google Drive
 ---
 
 A while ago, [I wrote about](https://dvc.org/blog/CML-runners-saving-models-1)
@@ -184,3 +187,8 @@ CML allows us to incorporate our model training into our Bitbucket CI/CD. We can
 define a pipeline to provision a cloud instance that meets our requirements, and
 then use that instance to train our model. The resulting model can be pushed to
 our Git repository, along with an elaborate report on our model's performance.
+
+Because CML handles the interaction with our cloud provider of choice, we can
+switch between different providers with a single parameter. Moreover, CML
+automatically brings down our cloud expenses by using spot instances and
+automatically terminating instances upon completion of our pipeline.
