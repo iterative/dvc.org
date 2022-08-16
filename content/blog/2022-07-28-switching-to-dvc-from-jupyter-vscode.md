@@ -45,69 +45,17 @@ simple notebook where you set some hyperparameters, load your data, train a
 model and evaluate its metrics, and then save the model. That's what we're doing
 in the `bicycle_experiments.ipynb` file.
 
-```ipynb
-{
- "cells": [
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "# Bike experiment notebook"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## Install packages"
-   ]
-  },
-  {
-   "cell_type": "raw",
-   "metadata": {},
-   "source": [
-    "import os\n",
-    "import pickle\n",
-    "import sys\n",
-    "\n",
-    "import numpy as np\n",
-    "import yaml\n",
-    "from sklearn.ensemble import RandomForestClassifier\n",
-    "import sklearn.metrics as metrics"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "## Get params"
-   ]
-  },
-  {
-   "cell_type": "raw",
-   "metadata": {},
-   "source": [
-    "print(\"Works\")\n",
-    "\n",
-    "params = yaml.safe_load(open(\"params.yaml\"))[\"train\"]\n",
-    "\n",
-    "input = \"./data/\"\n",
-    "output = \"./models/model.pkl\"\n",
-    "\n",
-    "seed = params[\"seed\"]\n",
-    "n_est = params[\"n_est\"]\n",
-    "min_split = params[\"min_split\"]"
-   ]
-  },
-...
-```
+![Jupyter notebook cells](/uploads/images/2022-07-28/jupyter-notebook.png)
 
 We have all of the cells in place so we can start running experiments. This is
-usually fine for training models for a while. Although there will eventually be
-a point where you are powering through experiments for the day and you want to
-compare metrics across experiments. You might also end up with a great model,
-but you have no idea what code you used or which data was used to train this
-model.
+usually fine for training models for a while. Then it turns into a situation
+where you have cells all over the place and some aren't useful after a certain
+point, but they stay in the notebook.
+
+Although there will eventually be a point where you are powering through
+experiments for the day and you want to compare metrics across experiments. You
+might also end up with a great model, but you have no idea what code you used or
+which data was used to train this model.
 
 That makes reproducing the experiment impossible and you're left with a great
 model you may not be able to use in production. Once you reach the point where
