@@ -1,26 +1,20 @@
-name: DVC Download Link Check
+name: Scheduled Download Link Check
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 0-23 * * *'
 
+concurrency:
+  group: scheduled-download-link-check-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
-  run:
-    name: Initialize
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download Link Checker
-        uses: lycheeverse/lychee-action@v1.0.8
-        with:
-          args:
-            --verbose https://dvc.org/ --base https://dvc.org/ --include
-            /download/
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Create Issue From File
-        uses: peter-evans/create-issue-from-file@v3
-        with:
-          title: DVC Download Link Checker Report
-          content-filepath: ./lychee/out.md
-          labels: website, link-checker
+  check:
+    uses: './.github/workflows/download-link-check-issue.yml'
+    with:
+      title: 'DVC Download Link Checker Report'
+      owner: 'iterative'
+      repo: 'dvc.org'
+      lychee_args: >-
+        --verbose https://dvc.org/ --base https://dvc.org/ --include /download/
