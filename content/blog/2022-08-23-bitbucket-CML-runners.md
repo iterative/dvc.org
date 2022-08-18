@@ -1,6 +1,5 @@
 ---
-title:
-  CML cloud runners for model training in Bitbucket Pipelines
+title: CML cloud runners for model training in Bitbucket Pipelines
 date: 2022-05-06
 description:
   Use CML from a Bitbucket pipeline to provision an AWS EC2 instance and
@@ -8,7 +7,7 @@ description:
 descriptionLong: >
   We can use CML to cheaply provision a cloud instance to train our model, push
   the model to our repository, and automatically terminate the instance
-  afterwards. In this guide, we will be exploring how to do so in conjunction
+  afterward. In this guide, we will be exploring how to do so in conjunction
   with a Bitbucket repository and pipeline.
 picture: 2022-05-06/saving-models-2-cover.jpeg
 author: rob_dewit
@@ -44,8 +43,8 @@ of benefits:
 
 # What we'll be doing
 
-In this guide, we will explore how we can use CML (re)train models from one of
-our Bitbucket pipelines. We will:
+This guide will explore how we can use CML (re)train models from one of our
+Bitbucket pipelines. We will:
 
 1. Provision an EC2 instance on Amazon Web Services (AWS) from a Bitbucket
    pipeline
@@ -55,9 +54,9 @@ our Bitbucket pipelines. We will:
 While we could use Bitbucket's own runners for our model training, those have
 [their
 limits](https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/)
-when it comes to memory, storage, and processing power. Self-hosted runners on
+regarding memory, storage, and processing power. Self-hosted runners on
 CML-orchestrated cloud instances let us work around these limitations: we can
-get a runner with specifications that are tailored to our computing needs.
+get a runner with specifications tailored to our computing needs.
 
 Moreover, if our data is hosted by our cloud provider, using a runner on the
 same cloud would be a logical approach to minimize data transfer costs and time.
@@ -66,8 +65,8 @@ same cloud would be a logical approach to minimize data transfer costs and time.
 
 While we'll be using AWS in this guide, CML works just as well with [Google
 Cloud](https://cloud.google.com/), [Microsoft
-Azure](https://azure.microsoft.com/en-us/), and on-premise compute. Of course
-CML would need the appropriate credentials, but otherwise it takes care of the
+Azure](https://azure.microsoft.com/en-us/), and on-premise compute. Of course,
+CML would need the appropriate credentials, but otherwise, it takes care of the
 differing configuration for us. [Take a look at the documentation if you're
 interested in using another cloud
 provider](https://cml.dev/doc/self-hosted-runners#cloud-compute-resource-credentials).
@@ -79,10 +78,10 @@ provider](https://cml.dev/doc/self-hosted-runners#cloud-compute-resource-credent
 You can clone the repository for this guide
 [here](https://bitbucket.org/iterative-ai/example_model_export_cml/src/main/).
 
-If you want to follow along, it's probably worth taking a look at the [Getting
-started section of the CML docs](https://cml.dev/doc/start/bitbucket) first. The
-docs cover the following prerequisite steps you'll need to take if you want to
-follow along with this blog post:
+If you want to follow along, it's probably worth looking at the [Getting started
+section of the CML docs](https://cml.dev/doc/start/bitbucket) first. The docs
+cover the following prerequisite steps you'll need to take if you want to follow
+along with this blog post:
 
 1. [Generate a `REPO_TOKEN` and set it as a repository
    variable](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token).
@@ -117,8 +116,8 @@ one pipeline (named `default`) that consists of two steps.
 ## Launch self-hosted runner
 
 In the first step, we specify the runner we want to provision. We use CML as our
-image, and configure a runner on an `m5.2xlarge` machine, based in the `us-west`
-region. Of particular interest here is the `--cloud-spot` option, which ensures
+image and configure a runner on an `m5.2xlarge` machine, based in the `us-west`
+region. The `--cloud-spot` option is of particular interest here, which ensures
 that CML will provision a spot instance rather than an on-demand one.
 
 At the time of writing, a spot instance costs $0.xx per hour, whereas an
@@ -164,8 +163,8 @@ in our local terminal.
 ```
 
 First, we install our requirements, and then we run our data loading and model
-training scripts. At this point, our runner contains our newly trained model. We
-need to take a few extra steps to do something with that model, however.
+training scripts. At this point, our runner contains our newly trained model.
+However, we need to take a few extra steps to do something with that model.
 Otherwise, our results would be lost when CML terminates the instance upon
 completion of our pipeline.
 
@@ -175,7 +174,7 @@ request. We add the metrics and the confusion matrix created in `train.py` to
 the report, and `cml send-comment` updates the description of the pull request
 to the contents of `report.md` (i.e., our `metrics.txt` and confusion matrix).
 
-That's all there is to it! Once the pull request has been created, we can merge
+That's all there is to it! Once CML has created the pull request, we can merge
 it on Bitbucket. CML will automatically terminate the provisioned instance upon
 completion of the pipeline, thus preventing us from racking up our AWS expenses.
 
@@ -184,9 +183,9 @@ completion of the pipeline, thus preventing us from racking up our AWS expenses.
 CML allows us to incorporate our model training into our Bitbucket CI/CD. We can
 define a pipeline to provision a cloud instance that meets our requirements, and
 then use that instance to train our model. The resulting model can be pushed to
-our Git repository, along with an elaborate report on our model's performance.
+our Git repository, along with a detailed report on our model's performance.
 
 Because CML handles the interaction with our cloud provider of choice, we can
 switch between different providers with a single parameter. Moreover, CML
 automatically brings down our cloud expenses by using spot instances and
-automatically terminating instances upon completion of our pipeline.
+terminating instances upon our pipeline completion.
