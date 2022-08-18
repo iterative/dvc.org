@@ -74,7 +74,7 @@ Let's say we have the following project, and have just
 `HEAD` of `master`):
 
 ```dvc
-$ dvc exp show --all-commits --include-params=featurize
+$ dvc exp show --all-commits
 ```
 
 ```dvctable
@@ -109,7 +109,7 @@ Removed 4 experiments. To remove unused cache files use 'dvc gc'.
 We can confirm that all the previous experiments are gone:
 
 ```dvc
-$ dvc exp show --all-commits --include-params=featurize
+$ dvc exp show --all-commits
 ```
 
 ```dvctable
