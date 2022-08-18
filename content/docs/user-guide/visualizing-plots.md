@@ -16,9 +16,16 @@ fpr,tpr,threshold
 
 ```yaml
 plots:
-  auc.tsv:
+  evaluation/test/plots/confusion_matrix.json: # Configure template and axes.
+    template: confusion
+    x: actual
+    y: predicted
+  ROC: # Combine multiple data sources.
     x: fpr
-    y: tpr
+    y:
+      evaluation/train/plots/roc.json: tpr
+      evaluation/test/plots/roc.json: tpr
+  evaluation/importance.png: # Plot an image.
 ```
 
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
