@@ -1,6 +1,6 @@
 ---
 title: CML cloud runners for model training in Bitbucket Pipelines
-date: 2022-05-06
+date: 2022-08-23
 description:
   Use CML from a Bitbucket pipeline to provision an AWS EC2 instance and
   (re)train a machine learning model.
@@ -25,10 +25,11 @@ tags:
 A while ago, [I wrote about](https://dvc.org/blog/CML-runners-saving-models-1)
 training models on cloud instances and saving those models to a Git repository.
 We did so using [CML and GitHub Actions](https://cml.dev/doc/start/github).
-GitLab is also supported, and a [recent CML
-release](https://github.com/iterative/cml/releases/tag/v0.16.0) incorporated
-support for self-hosted runners in Bitbucket Pipelines: a good excuse to revisit
-this topic and show how CML works in conjunction with Bitbucket's CI/CD.
+GitLab is also supported, and a
+[recent CML release](https://github.com/iterative/cml/releases/tag/v0.16.0)
+incorporated support for self-hosted runners in Bitbucket Pipelines: a good
+excuse to revisit this topic and show how CML works in conjunction with
+Bitbucket's CI/CD.
 
 Using CML to provision cloud instances for our model (re)training has a number
 of benefits:
@@ -52,8 +53,7 @@ Bitbucket pipelines. We will:
 1. Open a pull request that adds the resulting model to our Bitbucket repository
 
 While we could use Bitbucket's own runners for our model training, those have
-[their
-limits](https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/)
+[their limits](https://janosmiko.com/blog/2021-09-18-demystifying-bitbucket-pipelines-memory-limits/)
 regarding memory, storage, and processing power. Self-hosted runners on
 CML-orchestrated cloud instances let us work around these limitations: we can
 get a runner with specifications tailored to our computing needs.
@@ -63,13 +63,12 @@ same cloud would be a logical approach to minimize data transfer costs and time.
 
 <admon type="tip">
 
-While we'll be using AWS in this guide, CML works just as well with [Google
-Cloud](https://cloud.google.com/), [Microsoft
-Azure](https://azure.microsoft.com/en-us/), and on-premise compute. Of course,
-CML would need the appropriate credentials, but otherwise, it takes care of the
-differing configuration for us. [Take a look at the documentation if you're
-interested in using another cloud
-provider](https://cml.dev/doc/self-hosted-runners#cloud-compute-resource-credentials).
+While we'll be using AWS in this guide, CML works just as well with
+[Google Cloud](https://cloud.google.com/),
+[Microsoft Azure](https://azure.microsoft.com/en-us/), and on-premise compute.
+Of course, CML would need the appropriate credentials, but otherwise, it takes
+care of the differing configuration for us.
+[Take a look at the documentation if you're interested in using another cloud provider](https://cml.dev/doc/self-hosted-runners#cloud-compute-resource-credentials).
 
 </admon>
 
@@ -78,31 +77,27 @@ provider](https://cml.dev/doc/self-hosted-runners#cloud-compute-resource-credent
 You can clone the repository for this guide
 [here](https://bitbucket.org/iterative-ai/example_model_export_cml/src/main/).
 
-If you want to follow along, it's probably worth looking at the [Getting started
-section of the CML docs](https://cml.dev/doc/start/bitbucket) first. The docs
-cover the following prerequisite steps you'll need to take if you want to follow
-along with this blog post:
+If you want to follow along, it's probably worth looking at the
+[Getting started section of the CML docs](https://cml.dev/doc/start/bitbucket)
+first. The docs cover the following prerequisite steps you'll need to take if
+you want to follow along with this blog post:
 
-1. [Generate a `REPO_TOKEN` and set it as a repository
-   variable](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token).
-2. [Install the _Pull Request Commit Links app_ in your Bitbucket
-   workspace](https://cml.dev/doc/ref/send-comment#bitbucket)
+1. [Generate a `REPO_TOKEN` and set it as a repository variable](https://cml.dev/doc/self-hosted-runners?tab=Bitbucket#personal-access-token).
+2. [Install the _Pull Request Commit Links app_ in your Bitbucket workspace](https://cml.dev/doc/ref/send-comment#bitbucket)
 
 Additionally, you will need to take the following steps to allow Bitbucket to
 provision AWS EC2 on your behalf:
 
-1. [Create an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on
-   AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
-2. [Add the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as repository
-   variables](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/)
+1. [Create an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
+2. [Add the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as repository variables](https://support.atlassian.com/bitbucket-cloud/docs/variables-and-secrets/)
 
 <admon type="warn">
 
-In this example, we will be provisioning an `m5.2xlarge` [AWS EC2
-instance](https://aws.amazon.com/ec2/instance-types/). Be aware that this
-instance is not included in the free tier, and Amazon will charge you for your
-usage. To minimize cost, CML always terminates the instance upon completion of
-the pipeline.
+In this example, we will be provisioning an `m5.2xlarge`
+[AWS EC2 instance](https://aws.amazon.com/ec2/instance-types/). Be aware that
+this instance is not included in the free tier, and Amazon will charge you for
+your usage. To minimize cost, CML always terminates the instance upon completion
+of the pipeline.
 
 </admon>
 
