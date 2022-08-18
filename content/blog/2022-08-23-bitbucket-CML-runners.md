@@ -34,10 +34,10 @@ this topic and show how CML works in conjunction with Bitbucket's CI/CD.
 Using CML to provision cloud instances for our model (re)training has a number
 of benefits:
 
-- Spot instances: CML can leverage cloud resources at the cheapest possible
-  rates
-- Auto-recovery: if a spot instance is terminated, CML will recover when spot
-  instances become available again
+- Spot instances: CML can provision spot instances, reducing your cloud expenses
+  compared to on-demand instances
+- Auto-recovery: if a job is interrupted on a spot instance, CML will
+  automatically restart it
 - Auto-termination: CML automatically terminates instances once they are no
   longer being used, reducing idle time (and costs)
 - Cloud abstraction: CML handles the interaction with our cloud provider,
@@ -51,7 +51,7 @@ our Bitbucket pipelines. We will:
 1. Provision an EC2 instance on Amazon Web Services (AWS) from a Bitbucket
    pipeline
 1. Train a machine learning model on the provisioned instance
-1. Push the resulting model to our Bitbucket repository
+1. Open a pull request that adds the resulting model to our Bitbucket repository
 
 While we could use Bitbucket's own runners for our model training, those have
 [their
@@ -133,9 +133,8 @@ on-demand instance costs $0.xx per hour. Profit!
         cml runner \
             --cloud=aws \
             --cloud-region=us-west \
-            --cloud-type=m5.2xlarge \ # TODO: change
+            --cloud-type=m5.2xlarge \
             --cloud-spot \
-            --reuse \
             --labels=cml
 ```
 
@@ -148,21 +147,22 @@ in our local terminal.
 
 ```yaml
 - step:
-    runs-on: [self.hosted, cml]
-    image: iterativeai/cml:0-dvc2-base1
-    # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
-    script:
-      - pip install -r requirements.txt
-      - python get_data.py
-      - python train.py
-      # Create pull request
-      - cml pr model/random_forest.joblib
+        runs-on: [self.hosted, cml.runner]
+        image: iterativeai/cml:0-dvc2-base1
+        # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
+        script:
+          - pip install -r requirements.txt
+          - python get_data.py
+          - python train.py
+          # Create pull request
+          - cml pr model/random_forest.joblib
 
-      # Create CML report
-      - cat model/metrics.txt > report.md
-      - cml publish model/confusion_matrix.png --md --title="Confusion Matrix"
-        >> report.md
-      - cml send-comment --pr --update report.md
+          # Create CML report
+          - cat model/metrics.txt > report.md
+          - echo "" >> report.md
+          - echo "![Confusion Matrix](model/confusion_matrix.png >> report.md
+          - cml send-comment --pr --update --publish report.md
+
 ```
 
 First, we install our requirements, and then we run our data loading and model
@@ -171,11 +171,13 @@ need to take a few extra steps to do something with that model, however.
 Otherwise, our results would be lost when CML terminates the instance upon
 completion of our pipeline.
 
-To save our model, we create a pull request with `cml pr`. We then also create a
-CML report that displays the model performance in that pull request. `cml
-publish` adds the confusion matrix created in `train.py` to the pull request,
-and `cml send-comment` updates the description of the pull request to the
-contents of `report.md` (i.e., our `metrics.txt`).
+To add our model to our repository, we create a pull request with `cml pr`. We
+then also create a CML report that displays the model performance in that pull
+request. We add the metrics and the confusion matrix created in `train.py` to
+the report, and `cml send-comment` updates the description of the pull request
+to the contents of `report.md` (i.e., our `metrics.txt` and confusion matrix).
+
+
 
 That's all there is to it! Once the pull request has been created, we can merge
 it on Bitbucket. CML will automatically terminate the provisioned instance upon
