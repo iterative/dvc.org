@@ -56,7 +56,7 @@ or `dvc exp diff`, and before committing it to Git (making it [persistent].
 Let's say we have run 3 experiments in our project:
 
 ```dvc
-$ dvc exp show --include-params=featurize
+$ dvc exp show
 ```
 
 ```dvctable
@@ -123,7 +123,7 @@ $ git commit -m "persist exp-e6c97"
 We can now see that the experiment is the new tip of our master branch:
 
 ```dvc
-$ dvc exp show --include-params=featurize
+$ dvc exp show
 ```
 
 ```dvctable

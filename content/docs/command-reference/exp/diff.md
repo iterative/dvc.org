@@ -81,7 +81,7 @@ all the current experiments (without comparisons).
 Let's say we have run 3 experiments in our project:
 
 ```dvc
-$ dvc exp show --include-params=featurize
+$ dvc exp show
 ```
 
 ```dvctable

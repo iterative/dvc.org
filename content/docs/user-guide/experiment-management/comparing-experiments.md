@@ -124,60 +124,30 @@ The table output may become cluttered if you have a large number of metrics,
 parameters and dependencies. `dvc exp show` provides several options to select
 the columns to be shown in the table.
 
-The `--include-params` and `--include-metrics` options take a list of
-comma-separated parameter or metrics names (defined in `dvc.yaml`).
+As a quick way of reducing noise, `dvc exp show --only-changed` will drop any
+column with values that do not change across experiments:
 
 ```dvc
-$ dvc exp show --include-params train.epochs --include-metrics auc,precision
+$ dvc exp show --only-changed
 ```
 
 ```dvctable
- ────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**
- ────────────────────────────────────────────────────────────────────────
-  workspace               -              0.23657   0.9127   10
-  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10
-  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10
-  └── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10
- ────────────────────────────────────────────────────────────────────────
+ ───────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**            metric:**loss**      metric:**acc**    param:**model.conv_units**
+ ───────────────────────────────────────────────────────────────────────────────
+  workspace               -               0.03332   0.9888    16
+  baseline-experiment     Jan 14, 2022    0.03332   0.9888    16
+  ├── 38d6c53 [cnn-64]    Jan 19, 2022   0.038246    0.988    64
+  └── bc0faf5 [cnn-128]   Jan 19, 2022   0.038325    0.989    128
+ ───────────────────────────────────────────────────────────────────────────────
 ```
 
-Alternatively, you can exclude certain parameters and metrics from the table by
-`--exclude-params` and `--exclude-metrics` options. These also take a
-comma-separated list.
+In addition, you can exclude certain columns from the table by using the
+`dvc exp show --drop` option. The `dvc exp show --keep` option has the final
+word and can be used to prevent any of the other flags from excluding columns.
 
-```dvc
-$ dvc exp show --exclude-params train.epochs --exclude-metrics auc
-```
-
-```dvctable
- ──────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**           metric:**acc**   param:**model.conv_units**
- ──────────────────────────────────────────────────────────────────
-  workspace               -              0.9127   16
-  baseline-experiment     Sep 06, 2021   0.9127   16
-  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.9153   64
-  └── 69503c6 [cnn-128]   Sep 09, 2021    0.916   128
- ──────────────────────────────────────────────────────────────────
-```
-
-By default, `dvc exp show` also has a column for the timestamp. You may want to
-hide it with `--no-timestamp` option.
-
-```dvc
-$ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metrics=loss
-```
-
-```dvctable
- ───────────────────────────────────────────────────
-  neutral:**Experiment**                 metric:**acc**   param:**model.conv_units**
- ───────────────────────────────────────────────────
-  workspace               0.9127   16
-  baseline-experiment     0.9127   16
-  ├── 6d13f33 [cnn-64]    0.9153   64
-  └── 69503c6 [cnn-128]    0.916   128
- ───────────────────────────────────────────────────
-```
+See more examples in the
+[command reference](/doc/command-reference/exp/show#examples).
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
 the metrics or parameters columns by the option `--sort-by` and `--sort-order`.

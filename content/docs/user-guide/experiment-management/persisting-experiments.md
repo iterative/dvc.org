@@ -11,7 +11,7 @@ You can use `dvc exp branch` to create a new branch from an experiment, and keep
 all its code and artifacts separate from your current <abbr>workspace</abbr>.
 
 ```dvc
-$ dvc exp show --include-params=my_param
+$ dvc exp show
 ```
 
 ```dvctable
@@ -55,7 +55,7 @@ to a specific one. In this case, you can restore a previous experiment's results
 with `dvc exp apply`. Let's see an example:
 
 ```dvc
-$ dvc exp show --include-params=my_param
+$ dvc exp show
 ```
 
 ```dvctable

@@ -92,7 +92,7 @@ Queued experiment '8de9a6c' for future execution.
 
 $ dvc exp remove e41d5b4 split16
 
-$ dvc exp show --include-params=train.min_split --no-pager
+$ dvc exp show
 ```
 
 ```dvctable
