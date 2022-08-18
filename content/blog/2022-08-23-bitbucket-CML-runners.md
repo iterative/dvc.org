@@ -1,6 +1,6 @@
 ---
 title:
-  Provision cloud instances for model training in Bitbucket Pipelines with CML
+  CML cloud runners for model training in Bitbucket Pipelines
 date: 2022-05-06
 description:
   Use CML from a Bitbucket pipeline to provision an AWS EC2 instance and
@@ -34,10 +34,9 @@ this topic and show how CML works in conjunction with Bitbucket's CI/CD.
 Using CML to provision cloud instances for our model (re)training has a number
 of benefits:
 
-- Spot instances: CML can provision spot instances, reducing your cloud expenses
-  compared to on-demand instances
-- Auto-recovery: if a job is interrupted on a spot instance, CML will
-  automatically restart it
+- Spot instance recovery: CML can provision spot instances, reducing your cloud
+  expenses compared to on-demand instances. If a job is interrupted on a spot
+  instance, CML will automatically restart it
 - Auto-termination: CML automatically terminates instances once they are no
   longer being used, reducing idle time (and costs)
 - Cloud abstraction: CML handles the interaction with our cloud provider,
@@ -147,22 +146,21 @@ in our local terminal.
 
 ```yaml
 - step:
-        runs-on: [self.hosted, cml.runner]
-        image: iterativeai/cml:0-dvc2-base1
-        # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
-        script:
-          - pip install -r requirements.txt
-          - python get_data.py
-          - python train.py
-          # Create pull request
-          - cml pr model/random_forest.joblib
+    runs-on: [self.hosted, cml.runner]
+    image: iterativeai/cml:0-dvc2-base1
+    # GPU not yet supported, see https://github.com/iterative/cml/issues/1015
+    script:
+      - pip install -r requirements.txt
+      - python get_data.py
+      - python train.py
+      # Create pull request
+      - cml pr model/random_forest.joblib
 
-          # Create CML report
-          - cat model/metrics.txt > report.md
-          - echo "" >> report.md
-          - echo "![Confusion Matrix](model/confusion_matrix.png >> report.md
-          - cml send-comment --pr --update --publish report.md
-
+      # Create CML report
+      - cat model/metrics.txt > report.md
+      - echo "" >> report.md
+      - echo "![Confusion Matrix](model/confusion_matrix.png >> report.md
+      - cml send-comment --pr --update --publish report.md
 ```
 
 First, we install our requirements, and then we run our data loading and model
@@ -176,8 +174,6 @@ then also create a CML report that displays the model performance in that pull
 request. We add the metrics and the confusion matrix created in `train.py` to
 the report, and `cml send-comment` updates the description of the pull request
 to the contents of `report.md` (i.e., our `metrics.txt` and confusion matrix).
-
-
 
 That's all there is to it! Once the pull request has been created, we can merge
 it on Bitbucket. CML will automatically terminate the provisioned instance upon
