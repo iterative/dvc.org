@@ -16,7 +16,7 @@
       "windows",
       "linux",
       {
-        "label": "Virtual Studio Code",
+        "label": "Visual Studio Code",
         "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
         "type": "external"
       },
@@ -153,6 +153,9 @@
           "merge-conflicts",
           "share-a-dvc-cache"
         ]
+      },
+      {
+        "slug": "visualizing-plots"
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
@@ -380,6 +383,37 @@
         "slug": "push"
       },
       {
+        "label": "queue",
+        "slug": "queue",
+        "source": "queue/index.md",
+        "children": [
+          {
+            "label": "queue start",
+            "slug": "start"
+          },
+          {
+            "label": "queue stop",
+            "slug": "stop"
+          },
+          {
+            "label": "queue status",
+            "slug": "status"
+          },
+          {
+            "label": "queue logs",
+            "slug": "logs"
+          },
+          {
+            "label": "queue remove",
+            "slug": "remove"
+          },
+          {
+            "label": "queue kill",
+            "slug": "kill"
+          }
+        ]
+      },
+      {
         "label": "remote",
         "slug": "remote",
         "source": "remote/index.md",
@@ -521,46 +555,41 @@
     "icon": "vscode"
   },
   {
-    "label": "Studio",
     "slug": "studio",
-    "source": "studio/index.md",
     "icon": "studio",
     "children": [
-      {
-        "label": "How It Works",
-        "slug": "overview"
-      },
+      "how-it-works",
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
-        "source": "user-guide/index.md",
+        "source": false,
         "children": [
+          "prepare-your-repositories",
           {
-            "label": "Prepare Your Repositories",
-            "slug": "prepare-repositories"
-          },
-          {
-            "label": "Projects and Experiments",
-            "slug": "projects",
+            "slug": "projects-and-experiments",
             "source": false,
             "children": [
               "what-is-a-project",
-              "create-project",
-              {
-                "label": "Configure Project",
-                "slug": "project-settings"
-              },
-              {
-                "label": "Explore ML Experiments",
-                "slug": "explore-experiments"
-              },
-              {
-                "label": "Visualize and Compare",
-                "slug": "visualize-experiments"
-              },
+              "create-a-project",
+              "configure-a-project",
+              "explore-ml-experiments",
+              "visualize-and-compare",
               "run-experiments",
-              "share-project"
+              "share-a-project"
+            ]
+          },
+          {
+            "slug": "model-registry",
+            "source": false,
+            "children": [
+              {
+                "label": "What is a Model Registry",
+                "slug": "what-is-a-model-registry"
+              },
+              "add-a-model",
+              "view-models",
+              "register-version",
+              "assign-stage"
             ]
           },
           "teams",

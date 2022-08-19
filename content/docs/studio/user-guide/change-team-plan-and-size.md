@@ -1,19 +1,6 @@
 # Change Team Plan and Size
 
-When you sign up, you're on the **Free plan**. This plan is plan is designed for
-teams that are starting out: you can invite one other team member and import as
-many repositories as you want.
-
-For more advanced collaboration, you can switch to the Team or Enterprise plans.
-A detailed comparison of the different plans can be found in the Iterative
-Studio [pricing page](https://studio.iterative.ai/pricing).
-
-In this page, you learn how to:
-
-- [Change your team plan](#change-your-team-plan)
-- [Change your team size](#change-your-team-size)
-
-## Change your team plan
+## Change the plan your Team is on
 
 To change the plan for your team, go to the `Plan and billing` section within
 [team settings]. Then click on `Change plan` (under `Current plan`).
@@ -80,15 +67,15 @@ needs and suggest a suitable plan and pricing.
 
 For any changes to the plan, please contact your focal point at Iterative.
 
-## Change your team size
+## Change the size of your Team
 
 You can change the size of your team within the Team or Enterprise plans at any
 point.
 
 ### If you are on the Free plan
 
-To change the number of seats in your team beyond 2,
-[upgrade to the Team or Enterprise plans](#change-your-team-plan).
+To change the number of seats in your team,
+[upgrade to the Team or Enterprise plan](#change-the-plan-your-team-is-on).
 
 ### If you are on the Team plan
 

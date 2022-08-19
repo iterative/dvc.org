@@ -99,15 +99,6 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href="/blog"
-            className={styles.sectionHeading}
-            onClick={() => handleItemClick('blog')}
-          >
-            Blog
-          </Link>
-        </li>
-        <li className={styles.section}>
-          <Link
             href="https://learn.iterative.ai/"
             className={styles.sectionHeading}
             onClick={() => handleItemClick('course')}

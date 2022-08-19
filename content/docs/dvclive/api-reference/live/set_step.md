@@ -32,7 +32,7 @@ will be associated to the provided `step` value.
 <admon type="info">
 
 Each `Live.set_step()` will call `Live.make_report()` internally by default
-(unless `report` is passed to `Live()` with a value other than `"html"`).
+(unless `report=None` is passed to `Live()`).
 
 </admon>
 

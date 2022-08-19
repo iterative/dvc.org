@@ -3,15 +3,16 @@
   "^https://discuss\\.dataversioncontrol\\.com(.*)?                                       https://discuss.dvc.org$1",
   "^https://blog\\.dataversioncontrol\\.com/data-version-control-tutorial-9146715eda46    https://dvc.org/doc/start",
   "^https://blog\\.dataversioncontrol\\.com/data-version-control-beta-release-iterative-machine-learning-a7faf7c8be67 https://dvc.org/doc/start",
-  "^https://blog\\.dataversioncontrol\\.com/dvc-heartbeat-6301aebf5c96                    https://dvc.org/blog/march-19-dvc-heartbeat",
-  "^https://blog\\.dataversioncontrol\\.com/april19-dvc-heartbeat-296c71a59be4            https://dvc.org/blog/april-19-dvc-heartbeat",
+  "^https://blog\\.dataversioncontrol\\.com/dvc-heartbeat-6301aebf5c96                    https://iterative.ai/blog/march-19-dvc-heartbeat",
+  "^https://blog\\.dataversioncontrol\\.com/april19-dvc-heartbeat-296c71a59be4            https://iterative.ai/blog/april-19-dvc-heartbeat",
   "^https://blog\\.dataversioncontrol\\.com/dvc-0-8-5-release-f66ef3b10684                https://github.com/iterative/dvc/releases",
-  "^https://blog\\.dataversioncontrol\\.com(.+)-[a-z0-9]{12}$                             https://dvc.org/blog$1",
-  "^https://blog\\.dataversioncontrol.com(.*)?                                            https://dvc.org/blog$1",
+  "^https://blog\\.dataversioncontrol\\.com(.+)-[a-z0-9]{12}$                             https://iterative.ai/blog$1",
+  "^https://blog\\.dataversioncontrol.com(.*)?                                            https://iterative.ai/blog$1",
   "/blog/how-a-data-scientist-can-improve-his-productivity                                /blog/how-data-scientists-can-improve-their-productivity",
 
-  "^https://blog\\.dvc\\.org/blog/(.*)?$                                                  https://dvc.org/blog/$1",
-  "^https://blog\\.dvc\\.org(.*)?$                                                        https://dvc.org/blog$1",
+  "^https://dvc\\.org/blog(.*)?                                                           https://iterative.ai/blog$1 302",
+  "^https://blog\\.dvc\\.org/blog/(.*)?$                                                  https://iterative.ai/blog/$1",
+  "^https://blog\\.dvc\\.org(.*)?$                                                        https://iterative.ai/blog$1",
   "^https://www\\.dvc\\.org(.*)?                                                          https://dvc.org$1",
   "^https://man\\.dvc\\.org(.*)?                                                          https://dvc.org/doc/command-reference$1 303",
   "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/troubleshooting#$1 303",
@@ -64,7 +65,7 @@
   "^/doc/user-guide/dvc-files/.dvc$                                                       /doc/user-guide/project-structure/dvc-files",
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
-  "^/doc/user-guide/contributing(/.*)?$                                                    /doc/contributing$1",
+  "^/doc/user-guide/contributing(/.*)?$                                                   /doc/contributing$1",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
 
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
@@ -82,13 +83,18 @@
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
+  "^/doc/studio/overview$                                                                 /doc/studio/how-it-works 302",
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
+  "^/doc/studio/user-guide/prepare-repositories$                                          /doc/studio/user-guide/prepare-your-repositories",
   "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
   "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
   "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
-  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects/create-project 302",
-  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects/project-settings 302",
-  "^/doc/studio/user-guide/views(/.*)?$                                                    /doc/studio/user-guide/projects$1 302",
+  "^/doc/studio/user-guide/views/create-view$                                             /doc/studio/user-guide/projects-and-experiments/create-a-project 302",
+  "^/doc/studio/user-guide/views/view-settings$                                           /doc/studio/user-guide/projects-and-experiments/configure-a-project 302",
+  "^/doc/studio/user-guide/views/explore-experiments$                                     /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments 302",
+  "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare 302",
+  "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects-and-experiments/share-a-project 302",
+  "^/doc/studio/user-guide/views(/.*)?$                                                   /doc/studio/user-guide/projects-and-experiments$1 302",
 
   "^/(.+)/$                                                                               /$1"
 ]

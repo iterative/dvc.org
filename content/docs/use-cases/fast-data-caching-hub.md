@@ -1,9 +1,9 @@
 # Fast and Secure Data Caching Hub
 
 Datasets used in data science tend to exceed typical storage and networking
-capacities. Storage needs expand rapidly as more people acquire the same data,
-creating duplication (increasing cost). Valuable time is wasted waiting for
-downloads in each environment.
+capacities. Storage needs to expand rapidly as more people acquire the same
+data, creating duplication (increasing cost). Valuable time is wasted waiting
+for downloads in each environment.
 
 ![](/img/dataset-copies.png) _Users wait for repeated transfers and produce
 multiple data copies locally._
