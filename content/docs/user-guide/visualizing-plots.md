@@ -16,25 +16,29 @@ fpr,tpr,threshold
 
 ```yaml
 plots:
-  auc.tsv:
+  evaluation/test/plots/confusion_matrix.json: # Configure template and axes.
+    template: confusion
+    x: actual
+    y: predicted
+  ROC: # Combine multiple data sources.
     x: fpr
-    y: tpr
+    y:
+      evaluation/train/plots/roc.json: tpr
+      evaluation/test/plots/roc.json: tpr
+  evaluation/importance.png: # Plot an image.
 ```
 
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
    report.
 
-![](/img/plots_prc_get_started_show.svg)
-![](/img/plots_roc_get_started_show.svg)
-![](/img/plots_importance_get_started_show.png '=300 :wrap-left')
-![](/img/plots_cm_get_started_show.svg)
+![](/img/guide_plots_intro_show_confusion.svg)
+![](/img/guide_plots_intro_show_importance.png '=400 :wrap-left')
+![](/img/guide_plots_intro_show_roc.svg)
 
 4. Run [experiments](/doc/user-guide/experiment-management/experiments-overview)
    and [compare](/doc/command-reference/plots/diff) plots.
 
-![](/img/plots_prc_get_started_diff.svg)
-![](/img/plots_roc_get_started_diff.svg)
-![](/img/plots_importance_get_started_diff.png)
+![](/img/guide_plots_intro_compare.png)
 
 ## Generating plots files
 
