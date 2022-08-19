@@ -188,7 +188,7 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 
 ## Example: What happens in the cache?
 
-https://youtu.be/pqnxQIORp-4
+https://www.youtube.com/watch?v=FYmmiAz81G4
 
 Let's take a detailed look at what happens to the
 [cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
