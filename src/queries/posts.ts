@@ -1,11 +1,22 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { getSrc } from 'gatsby-plugin-image'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
 
-import { IBlogPostData } from '../templates/blog-post'
+export interface IFeedPostData {
+  link: string
+  title: string
+  pubDate: string
+  comments?: string
+  picture?: {
+    relativePath: string
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
+  }
+}
 
 interface IResultBlogPostData {
-  commentsUrl?: string
+  comments?: string
   date: string
   pictureUrl?: string
   title: string
@@ -13,14 +24,13 @@ interface IResultBlogPostData {
 }
 
 export default function posts(): Array<IResultBlogPostData> {
-  const { allBlogPost } = useStaticQuery(graphql`
+  const { allFeedIterativeBlog } = useStaticQuery(graphql`
     query Posts {
-      allBlogPost(sort: { fields: [date], order: DESC }, limit: 3) {
+      allFeedIterativeBlog(sort: { fields: [isoDate], order: DESC }, limit: 3) {
         nodes {
-          slug
+          link
           title
-          date
-          commentsUrl
+          pubDate
           picture {
             childImageSharp {
               gatsbyImageData(
@@ -30,20 +40,21 @@ export default function posts(): Array<IResultBlogPostData> {
               )
             }
           }
+          comments
         }
       }
     }
   `)
-  const nodes: Array<IBlogPostData> = allBlogPost.nodes
+  const nodes: Array<IFeedPostData> = allFeedIterativeBlog.nodes
 
-  return nodes.map(({ slug, title, date, commentsUrl, picture }) => {
+  return nodes.map(({ link, title, pubDate, comments, picture }) => {
     return {
-      commentsUrl,
-      date,
+      commentsUrl: comments,
+      date: pubDate,
       pictureUrl:
         picture && getSrc(picture.childImageSharp as IGatsbyImageDataParent),
       title,
-      url: slug
+      url: link
     }
   })
 }
