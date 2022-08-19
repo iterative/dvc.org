@@ -71,8 +71,7 @@ const plugins = [
   {
     resolve: `gatsby-source-rss-feed`,
     options: {
-      // TODO use related feed
-      url: `https://iterative-ai-migrate-bl-sfsi41.herokuapp.com/blog/rss.xml`,
+      url: `https://iterative.ai/blog/rss.xml`,
       name: `IterativeBlog`
     }
   },
