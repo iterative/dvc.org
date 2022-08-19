@@ -12,7 +12,7 @@ descriptionLong: >
 picture: 2022-08-24/jupyter-to-dvc.png
 pictureComment: Using the DVC VS Code Extension with a Jupyter Notebook
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
+commentsUrl: https://discuss.dvc.org/t/converting-a-jupyter-notebook-to-a-dvc-project/1305
 tags:
   - MLOps
   - DVC
