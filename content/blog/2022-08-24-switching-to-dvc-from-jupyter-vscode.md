@@ -1,6 +1,6 @@
 ---
 title: Converting a Jupyter Notebook to a DVC Project
-date: 2022-07-28
+date: 2022-08-24
 description: >
   Working with notebooks is common in machine learning. That's why we're
   covering some tools that make it easy to do more with a complex project.
@@ -9,7 +9,7 @@ descriptionLong: >
   can't save each experiment. Now, if you're using the Jupyter VS Code
   extension, we can show you how to make those experiments reproducible with the
   addition of the DVC VS Code extension.
-picture: 2022-07-28/jupyter-to-dvc.png
+picture: 2022-08-24/jupyter-to-dvc.png
 pictureComment: Using the DVC VS Code Extension with a Jupyter Notebook
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
@@ -47,7 +47,7 @@ with other models, have different versions of the same cells, or anything else
 because you had more thoughts you want to test out. That's similar to what we're
 doing in the `bicycle_experiments.ipynb` file.
 
-![Jupyter notebook cells](/uploads/images/2022-07-28/jupyter-notebook.png)
+![Jupyter notebook cells](/uploads/images/2022-08-24/jupyter-notebook.png)
 
 We have all of the cells in place so we can start running experiments. This is
 usually fine for training models for a while. Then it turns into a situation
@@ -68,8 +68,9 @@ tool like DVC.
 We're going to take the existing Jupyter notebook and break the cells out into
 files and stages that DVC tracks for you. First, we'll create a `train.py` file
 to handle the model training stage of the experiment. This file will have the
-`Get params`, `Load training data`, `Train model`, and `Save model` cells from
-the earlier notebook.
+`Get params`, `Load training data`, and `Train model` cells from the earlier
+notebook. We've added another step to save the model as part of making the
+experiment reproducible.
 
 ```python
 # train.py
@@ -186,8 +187,13 @@ with open(roc_file, "w") as fd:
 
 Now you have all of the steps that you executed in your Jupyter notebook in a
 couple of files that you can easily edit and track across all of your
-experiments. This is a great time to commit these changes to your Git repo with
-the following commands:
+experiments. This might take some time as you'll need to go through your
+notebook and identify relevant cells, refactor code, add new functions, or
+import different libraries to make working scripts. But the big pay-off is that
+you'll now have a reproducible way to train your models.
+
+This is a great time to commit these changes to your Git repo with the following
+commands:
 
 ```cli
 $ git add train.py evaluate.py
@@ -256,20 +262,20 @@ either the CLI command `dvc exp show` or with
   neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   >
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────>
   **workspace**                 **-**               **0.76681**   **0.38867**   **20210428**     **300**           **75**                >
-  **jupyter-to-dvc**            **Jul 18, 2022**    **0.76681**   **0.38867**   **20210428**     **300**           **75**                >
-  └── 4a070a7 [exp-b8925]   Jul 18, 2022    0.76681   0.38867   20210428     300           75                >
+  **jupyter-to-dvc**            **Aug 18, 2022**    **0.76681**   **0.38867**   **20210428**     **300**           **75**                >
+  └── 4a070a7 [exp-b8925]   Ayg 18, 2022    0.76681   0.38867   20210428     300           75                >
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────>
 ```
 
 _with CLI tool_
 
-![metrics in DVC VS Code extension](/uploads/images/2022-07-28/dvc-exp-in-vscode.png)
+![metrics in DVC VS Code extension](/uploads/images/2022-08-24/dvc-exp-in-vscode.png)
 
 _with DVC VS Code extension_
 
 You can also run experiments directly using the DVC VS Code extension.
 
-![run experiments in DVC VS Code extension](/uploads/images/2022-07-28/experiments-in-extension.png)
+![run experiments in DVC VS Code extension](/uploads/images/2022-08-24/experiments-in-extension.png)
 
 ## Conclusion
 
