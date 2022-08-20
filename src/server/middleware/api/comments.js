@@ -20,7 +20,7 @@ const getCommentCount = async (req, res) => {
     query: { url }
   } = req
 
-  if (!url.startsWith(FORUM_URL)) {
+  if (!url || !url.startsWith(FORUM_URL)) {
     res.status(400)
 
     return
