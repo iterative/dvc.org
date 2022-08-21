@@ -158,6 +158,9 @@
           "share-a-dvc-cache"
         ]
       },
+      {
+        "slug": "visualizing-plots"
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",

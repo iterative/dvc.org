@@ -22,7 +22,7 @@ Due to [internal limitations], when the queue is empty a worker may be idle for
 up to 10 seconds before exiting. If new experiment tasks are added to the queue
 during this time, the idle worker will resume processing them instead.
 
-[implementation limitations]:
+[internal limitations]:
   /doc/user-guide/experiment-management/running-experiments#how-are-experiments-queued
 
 </admon>
@@ -37,7 +37,7 @@ number of jobs that your environment can handle (no more than the CPU cores).
 
 Note that since queued experiments are run isolated from each other, common
 stages may sometimes be executed several times depending on the state of the
-[run-cache] at that time.
+<abbr>run-cache</abbr> at that time.
 
 </admon>
 
