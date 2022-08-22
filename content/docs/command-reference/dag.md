@@ -25,7 +25,7 @@ the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a `target` stage
 name to show the pipeline up to that point.
 
 [directed acyclic graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#directed-acyclic-graph-dag
+  /doc/user-guide/data-pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Paginating the output
 

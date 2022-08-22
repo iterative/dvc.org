@@ -4,113 +4,75 @@ DVC helps define programmatic workflows so that anyone can reliably
 **reproduce** them later. This way you can ensure that steps are followed when
 necessary (and only when necessary).
 
-Specifically, pipelines are written as a set of `stages` in
-[`dvc.yaml` metafiles](#dvcyaml-metafiles). This _codification_ has the added
-benefit of bringing your pipelining process onto standard Git workflows
-(GitOps).
-
-## Stages
-
-A pipeline is a collection of data processing stages related to one another.
-Stages wrap around an executable shell command and specify its inputs and
-outputs (if any).
-
-Stage execution order is determined by defining outputs that feed into
-subsequent stage inputs, e.g. if an output of stage X is used as an input in
-stage Y, then DVC deduces that X should be run before Y. Technically, this is
-called a _dependency graph_ (specifically a DAG).
-
-<admon type="info">
-
-Note that the order of execution is entirely based on their DAG, and not on the
-order in which stages are found in `dvc.yaml`.
-
-</admon>
-
-[specification]: /doc/user-guide/project-structure/dvcyaml-files#stage-entries
-
-<details>
-
-### Avoiding unexpected behavior
-
-We don't want to tell anyone how to write their code or what programs to use!
-However, please be aware that in order to prevent unexpected results when DVC
-reproduces pipeline stages, the underlying code should ideally follow these
-rules:
-
-- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
-  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
-
-- Completely rewrite outputs. Do not append or edit.
-
-- Stop reading and writing files when the `command` exits.
-
-Also, if your pipeline reproducibility goals include consistent output data, its
-code should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
-the same output for any given input): avoid code that increases
-[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
-time functions, hardware dependencies, etc.).
-
-</details>
-
-## Directed Acyclic Graph (DAG)
-
-DVC represents a pipeline internally as a graph where the nodes are stages and
-the edges are _directed_ dependencies (e.g. A before B). In order for DVC to
-execute the pipeline reliably, its topology should be _acyclic_ -- because
-executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. [More
-about DAGs].
-
-Use `dvc dag` to visualize (or export) pipeline DAGs.
-
-[more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-
-## `dvc.yaml` metafiles
-
-There are two ways to define <abbr>stages</abbr>. The first and recommended
-method is by writing `dvc.yaml` files directly (`stages` list). The other one is
-via `dvc stage add`, a limited command-line interface to stage setup.
-
-<admon type="tip">
-
-See the full [specification] of `stage` entries.
-
-</admon>
-
-Let's look at a sample `preprocess` stage that runs command
-`python src/preprocess.py`. It depends on the corresponding Python script and on
-a raw data file (ideally already [tracked with DVC]).
+Pipelines are written as collections of connected <abbr>stages</abbr> in
+`dvc.yaml` metafiles. Here's a sample 3-stage structure:
 
 ```yaml
 stages:
-  preprocess:
-    cmd: python src/preprocess.py
+  extract: ... # stage 1 definition
+  load: ... # stage 3 definition
+  transform: ... # stage 2 definition
+```
+
+This _codification_ has the added benefit of allowing you to bring your
+pipelining process onto standard Git workflows (GitOps).
+
+## Stages
+
+<admon type="tip">
+
+See the full [specification] of stage entries.
+
+[specification]: /doc/user-guide/project-structure/dvcyaml-files#stage-entries
+
+</admon>
+
+Each stage wraps around an executable shell [command](#stage-commands) and
+specifies the necessary inputs as well as expected outputs (if any). Let's look
+at an example that depends on a script file it runs and on a raw data directory
+(ideally already [tracked by DVC]):
+
+```yaml
+stages:
+  extract:
+    cmd: source src/cleanup.sh
     deps:
+      - src/cleanup.sh
       - data/raw
-      - src/preprocess.py
     outs:
-      - data/preprocessed
+      - data/clean.csv
 ```
 
 <admon type="info">
 
-We use [GNU/Linux](https://www.gnu.org/software/software.html) in our examples,
-but Windows or other shells can be used too. Note that while DVC is
-platform-agnostic, the commands you define may have environment-specific
-requirements.
+We use [GNU/Linux](https://www.gnu.org/software/software.html) in these
+examples, but Windows or other shells can be used too.
 
 </admon>
 
-You can write the `dvc.yaml` file above directly, or DVC can do it for you with
-the following call:
+Besides writing `dvc.yaml` files manually (recommended), you can also create
+stages with `dvc stage add` -- a limited command-line interface to setup
+pipelines. Let's add another stage this way and look at the resulting `dvc.yaml`
+file:
 
 ```dvc
-$ dvc stage add --name preprocess \
-                --deps src/preprocess.py \
-                --deps data/raw \
-                --outs data/preprocessed \
-                python src/preprocess.py
+$ dvc stage add --name transform \
+                --deps src/process.py \
+                --deps data/clean.csv \
+                --outs data/features.dat \
+                python src/process.py data/clean.csv
+```
+
+```yaml
+stages:
+  extract: ...
+  transform:
+    cmd: python src/process.py data/clean.csv
+    deps:
+      - src/preprocess.py
+      - data/clean.csv
+    outs:
+      - data/features.dat
 ```
 
 <admon type="tip">
@@ -120,54 +82,41 @@ the arguments provided (otherwise they won't be checked until execution). A
 disadvantage is that some advanced pipelining features such as [templating] are
 not available this way.
 
-</admon>
-
-[tracked with dvc]: /doc/start/data-management
 [templating]: /doc/user-guide/project-structure/pipelines-files#templating
 
-DVC writes lock files (`dvc.lock`) to complement `dvc.yaml` operations. Both are
-small text files that can be versioned with Git.
+</admon>
 
-<details>
+Notice that the new `transform` stage [depends](#simple-dependencies) on the
+output from stage `extract` (`data/clean.csv`). A pipeline is formed by feeding
+stage outputs into other stages as inputs. Technically, this is called a
+_dependency graph_ (a DAG).
 
-### `dvc.lock` files: click to learn more.
+[tracked by dvc]: /doc/start/data-management
+
+## Directed Acyclic Graph (DAG)
+
+DVC represents a pipeline internally as a _graph_ where the nodes are stages and
+the edges are _directed_ dependencies (e.g. A before B). In order for DVC to
+execute the pipeline reliably, its topology should be _acyclic_ -- because
+executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. [More
+about DAGs].
+
+Use `dvc dag` to visualize (or export) pipeline DAGs.
 
 <admon type="info">
 
-You should never need to see the contents `dvc.lock` for regular DVC work.
+Stage execution order will be determined entirely by the DAG, not by the order
+in which stages are found in `dvc.yaml`.
 
 </admon>
 
-Lock files help DVC fix the state of the pipeline as it was last executed in
-order to compare it against the current state of the <abbr>workspace</abbr>. The
-following sample shows the kind of details saved.
-
-```yaml
-schema: '2.0'
-stages:
-  preprocess:
-    cmd: src/preprocess.py
-    deps:
-      - path: data/raw
-        md5: 687552951726b99c2eee15d29b4ccf0e
-        size: 17397976
-      - path: src/preprocess.py
-        md5: 51627ab6d865c51a634959dbc4914d24
-        size: 14623
-    outs:
-      - path: data/preprocessed
-        md5: 21188b73b5661d4730d769f795462485.dir
-        size: 154683
-        nfiles: 312
-```
-
-</details>
+[more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
 ## Stage commands
 
 The command(s) defined in the `stages` (`cmd` field) can be anything your system
-terminal would accept and run directly, for example a shell built-in, an
-expression, or a binary found in `PATH`.
+terminal would accept and run, for example a shell built-in, an expression, or a
+binary found in `PATH`.
 
 Surround the command with double quotes `"` if it includes special characters
 like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
@@ -177,7 +126,7 @@ The same applies to `dvc` helpers -- otherwise they would apply to the DVC call
 itself:
 
 ```cli
-$ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
 $ dvc exp init './another_script.sh $MYENVVAR'
 ```
 
@@ -188,9 +137,6 @@ only work on some operating systems and require certain software packages or
 libraries in the environment.
 
 </admon>
-
-Commands are executed sequentially until all are finished or until one of them
-fails (see `dvc repro`).
 
 ## Simple dependencies
 

@@ -20,8 +20,8 @@ so you may modify, write, or generate stages and pipelines on your own.
 
 <admon type="info">
 
-We use [GNU/Linux](https://www.gnu.org/software/software.html) in most of our
-examples.
+We use [GNU/Linux](https://www.gnu.org/software/software.html) in these
+examples, but Windows or other shells can be used too.
 
 </admon>
 
@@ -103,7 +103,7 @@ This allows several stages to depend on values of a (shared) structured file,
 which can be versioned directly with Git. See also `dvc params`.
 
 [parameters]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#parameter-dependencies
+  /doc/user-guide/data-pipelines/defining-pipelines#parameter-dependencies
 
 ### Metrics and Plots outputs
 
@@ -447,8 +447,7 @@ These are the fields that are accepted in each stage:
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 
-[learn more]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
+[learn more]: /doc/user-guide/data-pipelines/defining-pipelines#stage-commands
 [changed]: /doc/command-reference/status#local-workspace-status
 
 `dvc.yaml` files also support `# comments`.

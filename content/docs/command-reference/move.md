@@ -98,8 +98,7 @@ Finally, we run `dvc commit` with the `-f` option to force save the changes to
 $ dvc commit -f
 ```
 
-[dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
 
 ## Options
 

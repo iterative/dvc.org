@@ -6,5 +6,5 @@ tooltip: >-
   of a stage (in `dvc.yaml`) or `.dvc` file file. See `dvc run`. Stages are
   invalidated (considered outdated) when any of their dependencies change.
   [Learn
-  more](/doc/user-guide/machine-learning-pipelines/defining-pipelines#simple-dependencies)
+  more](/doc/user-guide/data-pipelines/defining-pipelines#simple-dependencies)
 ---

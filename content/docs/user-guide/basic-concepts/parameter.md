@@ -6,5 +6,5 @@ tooltip: >-
   an arbitrary YAML, JSON, TOML, or Python file (`params.yaml` by default).
   Stages are invalid (considered outdated) when any of their parameter values
   change. [Learn
-  more](/doc/user-guide/machine-learning-pipelines/defining-pipelines#parameter-dependencies).
+  more](/doc/user-guide/data-pipelines/defining-pipelines#parameter-dependencies).
 ---
