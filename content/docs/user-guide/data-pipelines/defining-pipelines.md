@@ -77,7 +77,7 @@ examples, but Windows or other shells can be used too.
 
 Besides writing `dvc.yaml` files manually (recommended), you can also create
 stages with `dvc stage add` -- a limited command-line interface to setup
-pipelines. Let's add another one this way and look at the resulting `dvc.yaml`
+pipelines. Let's add another stage this way and look at the resulting `dvc.yaml`
 file:
 
 ```dvc
@@ -106,9 +106,9 @@ stages:
 <admon type="tip">
 
 One advantage of using `dvc stage add` is that it will verify the validity of
-the arguments provided (otherwise they won't be checked until execution). A
-disadvantage is that some advanced pipelining features such as [templating] are
-not available this way.
+the arguments provided (otherwise stage definition won't be checked until
+execution). A disadvantage is that some advanced features such as [templating]
+are not available this way.
 
 [templating]: /doc/user-guide/project-structure/pipelines-files#templating
 
@@ -116,7 +116,7 @@ not available this way.
 
 Notice that the new `transform` stage [depends](#simple-dependencies) on the
 output from stage `extract` (`data/clean.csv`), forming the
-[DAG](directed-acyclic-graph-dag).
+[DAG](#directed-acyclic-graph-dag).
 
 [tracked by dvc]: /doc/start/data-management
 
