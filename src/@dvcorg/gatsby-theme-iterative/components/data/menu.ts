@@ -49,6 +49,11 @@ const menuData: IMenuData = {
       text: 'Doc'
     },
     {
+      href: 'https://iterative.ai/blog/',
+      eventType: 'blog',
+      text: 'Blog'
+    },
+    {
       href: 'https://learn.iterative.ai/',
       eventType: 'course',
       text: 'Course'
