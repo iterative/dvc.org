@@ -1,7 +1,9 @@
 # Defining Pipelines
 
-DVC pipelines are written as collections of <abbr>stages</abbr> in `dvc.yaml`
-metafiles. Here's a sample 3-stage structure:
+DVC pipelines are written as collections of data processing <abbr>stages</abbr>
+in `dvc.yaml` files. These represent data workflows that you want to
+**reproduce** reliably later. Here's a sample 3-stage structure (in alphabetical
+order):
 
 ```yaml
 stages:
@@ -10,9 +12,35 @@ stages:
   transform: ... # stage 2 definition
 ```
 
-These represent data processing workflows that you or others will want to
-**reproduce** reliably. Their _codification_ has the added benefit of allowing
-you to develop pipelines on standard Git workflows (GitOps).
+<admon>
+
+This _codification_ has the added benefit of allowing you to develop pipelines
+on standard Git workflows (GitOps).
+
+</admon>
+
+A pipeline is formed by making stages inter-dependent, meaning that the output
+of one becomes the input of another, and so on. Technically, this is called a
+_dependency graph_ (DAG).
+
+## Directed Acyclic Graph (DAG)
+
+DVC represents a pipeline internally as a _graph_ where the nodes are stages and
+the edges are _directed_ dependencies (e.g. A before B). In order for DVC to
+execute the pipeline reliably, its topology should be _acyclic_ -- because
+executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. [More
+about DAGs].
+
+<admon type="info">
+
+Stage execution will be determined entirely by the DAG, not by the order in
+which stages are found in `dvc.yaml`.
+
+</admon>
+
+Use `dvc dag` to visualize (or export) pipeline DAGs.
+
+[more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
 ## Stages
 
@@ -27,7 +55,7 @@ See the full [specification] of stage entries.
 Each stage wraps around an executable shell [command](#stage-commands) and
 specifies the necessary inputs as well as expected outputs (if any). Let's look
 at an example that depends on a script file it runs and on a raw data directory
-(ideally already [tracked by DVC]):
+(ideally [tracked by DVC] already):
 
 ```yaml
 stages:
@@ -49,7 +77,7 @@ examples, but Windows or other shells can be used too.
 
 Besides writing `dvc.yaml` files manually (recommended), you can also create
 stages with `dvc stage add` -- a limited command-line interface to setup
-pipelines. Let's add another stage this way and look at the resulting `dvc.yaml`
+pipelines. Let's add another one this way and look at the resulting `dvc.yaml`
 file:
 
 ```dvc
@@ -62,7 +90,10 @@ $ dvc stage add --name transform \
 
 ```yaml
 stages:
-  extract: ...
+  extract:
+    ...
+    outs:
+      - data/clean.csv
   transform:
     cmd: python src/process.py data/clean.csv
     deps:
@@ -84,30 +115,10 @@ not available this way.
 </admon>
 
 Notice that the new `transform` stage [depends](#simple-dependencies) on the
-output from stage `extract` (`data/clean.csv`). A pipeline is formed by feeding
-stage outputs into other stages as inputs. Technically, this is called a
-_dependency graph_ (a DAG).
+output from stage `extract` (`data/clean.csv`), forming the
+[DAG](directed-acyclic-graph-dag).
 
 [tracked by dvc]: /doc/start/data-management
-
-## Directed Acyclic Graph (DAG)
-
-DVC represents a pipeline internally as a _graph_ where the nodes are stages and
-the edges are _directed_ dependencies (e.g. A before B). In order for DVC to
-execute the pipeline reliably, its topology should be _acyclic_ -- because
-executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. [More
-about DAGs].
-
-Use `dvc dag` to visualize (or export) pipeline DAGs.
-
-<admon type="info">
-
-Stage execution order will be determined entirely by the DAG, not by the order
-in which stages are found in `dvc.yaml`.
-
-</admon>
-
-[more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
 ## Stage commands
 
