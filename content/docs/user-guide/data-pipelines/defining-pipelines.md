@@ -1,11 +1,7 @@
 # Defining Pipelines
 
-DVC helps define programmatic workflows so that anyone can reliably
-**reproduce** them later. This way you can ensure that steps are followed when
-necessary (and only when necessary).
-
-Pipelines are written as collections of connected <abbr>stages</abbr> in
-`dvc.yaml` metafiles. Here's a sample 3-stage structure:
+DVC pipelines are written as collections of <abbr>stages</abbr> in `dvc.yaml`
+metafiles. Here's a sample 3-stage structure:
 
 ```yaml
 stages:
@@ -14,8 +10,9 @@ stages:
   transform: ... # stage 2 definition
 ```
 
-This _codification_ has the added benefit of allowing you to bring your
-pipelining process onto standard Git workflows (GitOps).
+These represent data processing workflows that you or others will want to
+**reproduce** reliably. Their _codification_ has the added benefit of allowing
+you to develop pipelines on standard Git workflows (GitOps).
 
 ## Stages
 
