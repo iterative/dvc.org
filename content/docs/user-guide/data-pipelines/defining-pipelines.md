@@ -19,9 +19,9 @@ on standard Git workflows (GitOps).
 
 </admon>
 
-A pipeline is formed by making stages inter-dependent, meaning that the output
-of one becomes the input of another, and so on. Technically, this is called a
-_dependency graph_ (DAG).
+A pipeline is formed by making [stages](#stages) interdependent, meaning that
+the output of one becomes the input of another, and so on. Technically, this is
+called a _dependency graph_ (DAG).
 
 ## Directed Acyclic Graph (DAG)
 
