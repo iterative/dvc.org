@@ -2,8 +2,7 @@
 
 DVC pipelines are written as collections of data processing <abbr>stages</abbr>
 in `dvc.yaml` files. These represent data workflows that you want to
-**reproduce** reliably later. Here's a sample 3-stage structure (in alphabetical
-order):
+**reproduce** reliably later. Here's a sample 3-stage structure:
 
 ```yaml
 stages:
