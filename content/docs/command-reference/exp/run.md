@@ -77,6 +77,9 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   (`params.yaml` by default). This will override the param file before running
   the experiment.
 
+  For example, to override the value an existing param, you can use
+  `--set-param <param_name>=<param_value>`.
+
   Valid `<override_pattern>` values are defined in the
   [Hydra Override syntax](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
   Patterns modifying hydra's defaults list are not supported.
