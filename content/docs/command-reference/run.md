@@ -47,7 +47,7 @@ are ignored by `dvc stage add`.
 `dvc run` executes stage commands, unless the `--no-exec` option is used.
 
 [`command` argument]:
-  /doc/user-guide/data-pipelines/defining-pipelines#stage-commands
+  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 
 ### Dependencies and outputs
 

@@ -10,7 +10,7 @@ science workflow could involve:
 4. Evaluating the results against the validation set
 
 DVC helps you [define] these stages in a standard YAML format (`dvc.yaml`),
-making your pipeline more manageable and consistent to reproduce.
+making your <abbr>pipeline</abbr> more manageable and consistent to reproduce.
 
 See [Get Started: Data Pipelines](/doc/start/data-management/pipelines) for a
 hands-on introduction to this topic.

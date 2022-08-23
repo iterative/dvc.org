@@ -435,7 +435,7 @@ These are the fields that are accepted in each stage:
 
 | Field            | Description                                                                                                                                                                                                                                                                               |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). [Learn more].                                                                                                                                                                        |
+| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). [Learn more](#stage-commands).                                                                                                                                                       |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
 | `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
 | `outs`           | List of stage <abbr>output</abbr> paths (relative to `wdir`). These can contain optional [subfields](#output-subfields).                                                                                                                                                                  |
@@ -447,7 +447,6 @@ These are the fields that are accepted in each stage:
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 
-[learn more]: /doc/user-guide/data-pipelines/defining-pipelines#stage-commands
 [changed]: /doc/command-reference/status#local-workspace-status
 
 `dvc.yaml` files also support `# comments`.
@@ -460,6 +459,32 @@ validation and auto-completion.
 
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+
+### Stage commands
+
+The command(s) defined in the `stages` (`cmd` field) can be anything your system
+terminal would accept and run, for example a shell built-in, an expression, or a
+binary found in `PATH`.
+
+Surround the command with double quotes `"` if it includes special characters
+like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
+variables in it that should be evaluated dynamically.
+
+The same applies to the `command` argument for helper commands (`dvc stage add`,
+`dvc exp init`), otherwise they would apply to the DVC call itself:
+
+```cli
+$ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc exp init './another_script.sh $MYENVVAR'
+```
+
+<admon type="warn">
+
+While DVC is platform-agnostic, commands defined in `dvc.yaml` (`cmd` field) may
+only work on some operating systems and require certain software packages or
+libraries in the environment.
+
+</admon>
 
 ### Output subfields
 

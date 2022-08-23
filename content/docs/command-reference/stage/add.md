@@ -51,7 +51,7 @@ See the guide on [defining pipeline stages] for more details.
 </admon>
 
 [`command` argument]:
-  /doc/user-guide/data-pipelines/defining-pipelines#stage-commands
+  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 
 ### Dependencies and outputs
 

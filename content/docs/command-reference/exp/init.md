@@ -94,7 +94,7 @@ See the [Pipelines guide] for more on that topic.
 [stage definition]:
   /doc/user-guide/project-structure/dvcyaml-files#stage-entries
 [shell `command`]:
-  /doc/user-guide/data-pipelines/defining-pipelines#stage-commands
+  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 [pipelines guide]: /doc/user-guide/data-pipelines/defining-pipelines
