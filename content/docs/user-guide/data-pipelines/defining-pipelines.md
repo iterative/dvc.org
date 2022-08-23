@@ -7,9 +7,9 @@ order):
 
 ```yaml
 stages:
-  extract: ... # stage 1 definition
-  load: ... # stage 3 definition
-  transform: ... # stage 2 definition
+  prepare: ... # stage 1 definition
+  train: ... # stage 2 definition
+  evaluate: ... # stage 3 definition
 ```
 
 <admon>
@@ -59,7 +59,7 @@ at an example that depends on a script file it runs and on a raw data directory
 
 ```yaml
 stages:
-  extract:
+  prepare:
     cmd: source src/cleanup.sh
     deps:
       - src/cleanup.sh
@@ -81,26 +81,26 @@ pipelines. Let's add another stage this way and look at the resulting `dvc.yaml`
 file:
 
 ```dvc
-$ dvc stage add --name transform \
-                --deps src/process.py \
+$ dvc stage add --name train \
+                --deps src/model.py \
                 --deps data/clean.csv \
-                --outs data/features.dat \
-                python src/process.py data/clean.csv
+                --outs data/predict.dat \
+                python src/model.py data/clean.csv
 ```
 
 ```yaml
 stages:
-  extract:
+  prepare:
     ...
     outs:
       - data/clean.csv
-  transform:
-    cmd: python src/process.py data/clean.csv
+  train:
+    cmd: python src/model.py data/model.csv
     deps:
-      - src/preprocess.py
+      - src/model.py
       - data/clean.csv
     outs:
-      - data/features.dat
+      - data/predict.dat
 ```
 
 <admon type="tip">
@@ -114,8 +114,8 @@ are not available this way.
 
 </admon>
 
-Notice that the new `transform` stage [depends](#simple-dependencies) on the
-output from stage `extract` (`data/clean.csv`), forming the
+Notice that the new `train` stage [depends](#simple-dependencies) on the output
+from stage `prepare` (`data/clean.csv`), forming the
 [DAG](#directed-acyclic-graph-dag).
 
 [tracked by dvc]: /doc/start/data-management
