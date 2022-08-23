@@ -1,18 +1,18 @@
 # Data Pipelines
 
 If you find yourself repeating sequence of actions to get or update the results
-of your project, then you may already have a pipeline. DVC helps you make it
-more manageable and consistent by [defining it] in a standard format
-(`dvc.yaml`).
-
-A typical data science workflow could involve:
+of your project, then you may already have a pipeline. For example, a data
+science workflow could involve:
 
 1. Gathering data for training and validation
 2. Extracting useful features from the training dataset
 3. (Re)training an ML model
 4. Evaluating the results against the validation set
 
+DVC helps you [define] these stages in a standard YAML format (`dvc.yaml`),
+making your pipeline more manageable and consistent to reproduce.
+
 See [Get Started: Data Pipelines](/doc/start/data-management/pipelines) for a
 hands-on introduction to this topic.
 
-[defining it]: /doc/user-guide/data-pipelines/defining-pipelines
+[define]: /doc/user-guide/data-pipelines/defining-pipelines
