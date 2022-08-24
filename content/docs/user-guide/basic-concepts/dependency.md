@@ -3,8 +3,7 @@ name: Dependency
 match: [dependency, dependencies, depends, input]
 tooltip: >-
   A file or directory (possibly tracked by DVC) recorded in the `deps` section
-  of a stage (in `dvc.yaml`) or `.dvc` file file. See `dvc run`. Stages are
-  invalidated (considered outdated) when any of their dependencies change.
-  [Learn
-  more](/doc/user-guide/data-pipelines/defining-pipelines#simple-dependencies)
+  of a stage (in `dvc.yaml`) or `.dvc` file file. Stages are invalidated
+  (considered outdated) when any of their dependencies change. See `dvc stage
+  add`, `dvc repro`, among others. See also `dvc params`.
 ---
