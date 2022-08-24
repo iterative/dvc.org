@@ -5,37 +5,20 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-To start using DVCLive you just need to add a few lines to your training code in
-**any** [XGBoost](https://xgboost.ai/) project.
-
-You just need to add the
+Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)
-to the callbacks list passed to the `xgboost.train` call:
+in the callbacks list passed to the `xgboost.train` call:
 
-```git
-+from dvclive.xgb import DvcLiveCallback
+```python
+from dvclive.xgb import DvcLiveCallback
 
 ...
 
 xgboost.train(
-    param,
-    dtrain,
--   num_round=5)
-+   num_round=5,
-+   callbacks=[DvcLiveCallback("eval_data")],
-+   evals=[(dval, "eval_data")])
+    param, dtrain, num_round=5, evals=[(dval, "eval_data")]
+    callbacks=[DvcLiveCallback("eval_data")],
+)
 ```
-
-This will generate the outputs as described in the
-[Get Started](/docs/dvclive/get-started#outputs).
-
-<admon type="tip">
-
-Without requiring additional modifications to your training code, you can use
-DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
-more info.
-
-</admon>
 
 ## Parameters
 

@@ -5,24 +5,20 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-To start using DVCLive, add a few lines to your training code in **any**
-[Fast.ai](https://docs.fast.ai/) project.
-
 Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/fastai.py)
-int the callbacks list passed to your
+in the callbacks list passed to your
 [`Learner`](https://docs.fast.ai/learner.html#Learner):
 
-```git
-+from dvclive.fastai import DvcLiveCallback
+```python
+from dvclive.fastai import DvcLiveCallback
 
 ...
 
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
--  n_epoch=2)
-+  n_epoch=2,
-+  cbs=[DvcLiveCallback()])
+    n_epoch=2,
+    cbs=[DvcLiveCallback()])
 ```
 
 The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
@@ -38,14 +34,6 @@ Where:
   [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
 - `{split}` can be either `train` or `eval`.
 - `{metric}` is the name provided by the framework.
-
-<admon type="tip">
-
-Without requiring additional modifications to your training code, you can use
-DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
-more info.
-
-</admon>
 
 ## Parameters
 

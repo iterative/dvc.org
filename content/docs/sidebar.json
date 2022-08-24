@@ -623,10 +623,6 @@
         "slug": "get-started"
       },
       {
-        "label": "DVCLive with DVC",
-        "slug": "dvclive-with-dvc"
-      },
-      {
         "slug": "ml-frameworks",
         "source": "dvclive/ml-frameworks/index.md",
         "children": [
@@ -669,6 +665,21 @@
           {
             "slug": "xgboost",
             "label": "XGBoost"
+          }
+        ]
+      },
+      {
+        "label": "How To",
+        "source": false,
+        "slug": "how-to",
+        "children": [
+          {
+            "slug": "outputs",
+            "label": "Track DVCLive outputs"
+          },
+          {
+            "slug": "checkpoints",
+            "label": "Integrate with DVC checkpoints"
           }
         ]
       },

@@ -5,32 +5,21 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-To start using the DVCLive, add the following line to your config file of
-**any** [OpenMMlab](https://github.com/open-mmlab) project:
+Register the
+[`DvcliveLoggerHook`](https://github.com/iterative/dvclive/blob/master/dvclive/mmcv.py)
+the following in the config file of your
+[OpenMMlab](https://github.com/open-mmlab) project:
 
-```git
+```python
 log_config = dict(
     interval=100,
     hooks=[
--        dict(type='TextLoggerHook')
-+        dict(type='TextLoggerHook'),
-+        dict(type='DvcliveLoggerHook')
+       dict(type='TextLoggerHook')
+        dict(type='TextLoggerHook'),
+        dict(type='DvcliveLoggerHook')
     ]
 )
 ```
-
-This will use the registered
-[`DvcliveLoggerHook`](https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/logger/dvclive.py)
-to generate outputs as described in the
-[Get Started](/docs/dvclive/get-started#outputs).
-
-<admon type="tip">
-
-Without requiring additional modifications to your training code, you can use
-DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
-more info.
-
-</admon>
 
 ## Parameters
 

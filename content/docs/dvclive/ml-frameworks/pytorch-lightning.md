@@ -5,9 +5,6 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-To start using DVCLive, add a few lines to your training code in **any**
-[PyTorch Lightning](https://www.pytorchlightning.ai/) project.
-
 Pass the
 [`DvcLiveLogger`](https://github.com/iterative/dvclive/blob/master/dvclive/lightning.py)
 to your
@@ -39,14 +36,6 @@ Where:
 - `{split}` can be either `train` or `eval`.
 - `{iter_type}` can be either `epoch` or `step`.
 - `{metric}` is the name provided by the framework.
-
-<admon type="tip">
-
-Without requiring additional modifications to your training code, you can use
-DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
-more info.
-
-</admon>
 
 ## Parameters
 
