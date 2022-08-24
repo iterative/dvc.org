@@ -122,9 +122,9 @@ Notice that the new `train` stage depends on the output from stage `prepare`
 ## Simple dependencies
 
 There's more than one type of stage dependency. A simple dependency is a file or
-directory needed for the stage `cmd` to run successfully.When it's contents have
-changed, DVC "invalidates" the stage -- it knows that it needs to run again.
-This in turn may cause a chain reaction in which subsequent stages of the
+directory used as input by the stage command. When it's contents have changed,
+DVC "invalidates" the stage -- it knows that it needs to run again. This in turn
+may cause a chain reaction in which subsequent stages of the
 <abbr>pipeline</abbr> are also reproduced.
 
 <admon type="info">
@@ -197,3 +197,41 @@ See [more details] about this syntax.
   https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
 [more details]:
   /doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies
+
+## Outputs
+
+Stage outputs are files written by <abbr>pipelines</abbr> such as machine
+learning models, intermediate artifacts, as well as data [plots] and performance
+[metrics]. These files are <abbr>cached</abbr> by DVC automatically, and tracked
+with the help of `dvc.lock` files (or `.dvc` files, see `dvc add`).
+
+Output definitions can connect stages to one another (as explained earlier). So
+when they change, DVC may need to reproduce subsequent stages as well (handled
+automatically).
+
+The types of outputs are:
+
+- Files and directories: Typically data to feed to intermediate stages, as well
+  as the final results of a pipeline (e.g. a dataset or an ML model).
+
+- [Metrics]: DVC supports small text files that usually contain model
+  performance metrics from the evaluation, validation, or testing phases of the
+  ML lifecycle. DVC allows to compare produced metrics with one another using
+  `dvc metrics diff` and presents the results as a table with
+  `dvc metrics show`.
+
+- [Plots]: Different kinds of data that can be visually graphed. For example
+  contrast ML performance statistics or continuous metrics from multiple
+  experiments. `dvc plots show` can generate charts for certain data files or
+  render custom image files for you.
+
+[plots]: /doc/user-guide/visualizing-plots
+[metrics]: /doc/command-reference/metrics
+
+<admon type="info">
+
+Outputs are produced by [stage commands][command]. DVC does not make any
+assumption regarding this process; they should just match the path specified in
+`dvc.yaml`.
+
+</admon>

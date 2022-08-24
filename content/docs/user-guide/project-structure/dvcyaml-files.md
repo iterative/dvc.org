@@ -109,9 +109,9 @@ generated) and they can be versioned directly with Git.
 
 ### Metrics and Plots outputs
 
-Like [common outputs](#outputs), <abbr>metrics</abbr> and <abbr>plots</abbr>
-files are produced by the stage `cmd`. However, their purpose is different.
-Typically they contain metadata to evaluate pipeline processes. Example:
+Like common output files, <abbr>metrics</abbr> and <abbr>plots</abbr> files are
+produced by the stage `cmd`. However, their purpose is different. Typically they
+contain metadata to evaluate pipeline processes. Example:
 
 ```yaml
 stages:
