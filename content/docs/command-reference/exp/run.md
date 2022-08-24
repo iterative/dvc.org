@@ -210,14 +210,14 @@ You can optionally provide a prefix `[<filename>:]` in order to edit a specific
 `dvc params` file. If not provided, `params.yaml` will be used as default.
 
 ```dvc
-$ dvc exp run -S custom_file.json:+train.weight_decay=0.001
+$ dvc exp run -S train_config.json:+train.weight_decay=0.001
 ...
 ```
 
 ```dvc
 $ dvc params diff
-Path              Param      HEAD    workspace
-custom_file.json  new_param  -       foo
+Path              Param               HEAD    workspace
+train_config.json  train.weight_decay  -       0.001
 ```
 
 <admon type="warn">
