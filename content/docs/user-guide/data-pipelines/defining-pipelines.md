@@ -51,10 +51,10 @@ See the full [specification] of stage entries.
 
 </admon>
 
-Each stage wraps around an executable shell [command](#stage-commands) and
-specifies the necessary inputs as well as expected outputs (if any). Let's look
-at an example that depends on a script file it runs and on a raw data directory
-(ideally [tracked by DVC] already):
+Each stage wraps around an executable shell [command] and specifies the
+necessary inputs as well as expected [outputs](#outputs) (if any). Let's look at
+a sample stage that [depends](#simple-dependencies) on a script file it runs as
+well as on a raw data directory it processes (ideally [tracked by DVC] already):
 
 ```yaml
 stages:
@@ -76,8 +76,8 @@ examples, but Windows or other shells can be used too.
 
 Besides writing `dvc.yaml` files manually (recommended), you can also create
 stages with `dvc stage add` -- a limited command-line interface to setup
-pipelines. Let's add another stage this way and look at the resulting `dvc.yaml`
-file:
+pipelines. Let's add another stage this way and look at the resulting
+`dvc.yaml`:
 
 ```dvc
 $ dvc stage add --name train \
@@ -109,22 +109,23 @@ the arguments provided (otherwise stage definition won't be checked until
 execution). A disadvantage is that some advanced features such as [templating]
 are not available this way.
 
+[command]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 [templating]: /doc/user-guide/project-structure/pipelines-files#templating
 
 </admon>
 
-Notice that the new `train` stage [depends](#simple-dependencies) on the output
-from stage `prepare` (`data/clean.csv`), forming the
-[DAG](#directed-acyclic-graph-dag).
+Notice that the new `train` stage depends on the output from stage `prepare`
+(`data/clean.csv`), forming the [DAG](#directed-acyclic-graph-dag).
 
 [tracked by dvc]: /doc/start/data-management
 
 ## Simple dependencies
 
 There's more than one type of stage dependency. A simple dependency is a file or
-directory needed for the stage `cmd` to run successfully. When it's contents
-have changed, DVC "invalidates" the stage -- it knows that it needs to run
-again.
+directory needed for the stage `cmd` to run successfully.When it's contents have
+changed, DVC "invalidates" the stage -- it knows that it needs to run again.
+This in turn may cause a chain reaction in which subsequent stages of the
+<abbr>pipeline</abbr> are also reproduced.
 
 <admon type="info">
 
@@ -136,9 +137,9 @@ This is a distinctive mechanism over traditional build tools like `make`.
 
 </admon>
 
-File system-level dependencies are defined in the `deps` list of `dvc.yaml`;
-Alternatively, using the `--deps` (`-d`) option of `dvc stage add` (see the
-previous section's example).
+File system-level dependencies are defined in the `deps` list of `dvc.yaml`
+stages; Alternatively, using the `--deps` (`-d`) option of `dvc stage add` (see
+the previous section's example).
 
 <details>
 
