@@ -162,34 +162,38 @@ changed for the purpose of stage invalidation.
 
 ## Parameter dependencies
 
-A more narrow type of dependency is the parameter (`params` field), or
-_hyperparameters_ in machine learning. These are simple values used inside your
-code to tune data processing, modeling attributes, or that determine stage
-execution in any other way. For example, a [random forest classifier] may
-require a _maximum depth_ value.
+A more narrow type of dependency is the parameter (`params` list in `dvc.yaml`
+stages), or _hyperparameters_ in machine learning. These represent simple values
+used inside your code to tune data processing, modeling attributes, or that
+determine stage execution in any other way. For example, a [random forest
+classifier] may require a _maximum depth_ value.
 
-Instead of hard-coding it, your code can read param values from a parameters
-file. `dvc params` can track any key/value pair inside structured YAML, JSON,
-TOML, or Python files (see also `dvc.api.params_show()`). DVC will keep track of
-params as granular dependencies: it will only invalidate the stage if that part
-of the file has changed.
-
-Parameters are defined under `params` fields in `dvc.yaml` stages. Each entry is
-the key string to look for a param value or group in the default params file,
-`params.yaml`. You may also track all the params in any params file by ending
-the entry in `:`. Or provide a sub-list to include specific params from there.
+Instead of hard-coding param values, your code can read them from a parameters
+file. `dvc params` can track any key/value pair inside structured YAML 1.2,
+JSON, TOML 1.0, or Python files (see also `dvc.api.params_show()`). DVC
+considers params as granular dependencies: it only invalidates stages when the
+corresponding part of the params file has changed.
 
 ```yaml
 stages:
-  featurize:
+  train:
     cmd: ...
-    ...
+    deps: ...
     params:
-      - learning_rate  # from params.yaml
-      - configuration.json:  # all params from here
+      - learning_rate # from params.yaml
       - deep_learning.json:
-          - epochs     # from custom deep_learning.json file
+          - epochs # from deep_learning.json
+      - config.json: # all params in config.json
+    outs: ...
 ```
+
+<admon type="info">
+
+See [more details] about this syntax.
+
+</admon>
 
 [random forest classifier]:
   https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
+[more details]:
+  /doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies

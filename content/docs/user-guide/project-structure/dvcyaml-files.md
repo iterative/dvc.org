@@ -66,8 +66,10 @@ See the full stage entry [specification](#stage-entries).
 
 ### Parameter dependencies
 
-[Parameters] are a special type of stage dependency. They consist of a list of
-params to track in one of these formats:
+<abbr>Parameters</abbr> are a special type of stage dependency. The supported
+parameters file formats are YAML 1.2, JSON, TOML 1.0, and Python.
+
+The list of `params` in `dvc.yaml` should contain one of these:
 
 1. A param key/value pair that can be found in `params.yaml` (default params
    file);
@@ -75,13 +77,6 @@ params to track in one of these formats:
    of param key/value pairs to find in it;
 3. An empty set (give no value or use `null`) named by the file path to a params
    file: to track all the params in it dynamically.
-
-<admon type="info">
-
-Note that file paths used must be to valid YAML, JSON, TOML, or Python
-parameters file.
-
-</admon>
 
 ```yaml
 stages:
@@ -102,8 +97,15 @@ stages:
 This allows several stages to depend on values of a (shared) structured file,
 which can be versioned directly with Git. See also `dvc params`.
 
-[parameters]:
-  /doc/user-guide/data-pipelines/defining-pipelines#parameter-dependencies
+<admon type="info">
+
+Parameter values should be organized in tree-like hierarchies inside params
+files. DVC will interpret param names as dot-separated tree paths to locate
+param values. Supported types are: string, integer, float, boolean, and arrays
+(groups of params). Parameter files are typically written manually (or
+generated) and they can be versioned directly with Git.
+
+</admon>
 
 ### Metrics and Plots outputs
 
