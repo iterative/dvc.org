@@ -81,11 +81,11 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   `--set-param <param_name>=<param_value>`.
 
   Valid `<override_pattern>` values are defined in the
-  [Hydra Override syntax](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
-  Patterns modifying hydra's defaults list are not supported.
+  [Hydra Override Grammar](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
+  Patterns modifying Hydra's defaults list are not supported.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will generated otherwise, such as `exp-f80g4` (based on the
+  default one will be generated otherwise, such as `exp-f80g4` (based on the
   experiment's hash).
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
@@ -194,9 +194,9 @@ experiment we just ran (`exp-44136`).
 
 ## Example: Modify parameters on-the-fly
 
-`dvc exp run--set-param` (`-S`) saves you the need to manually edit the params
-file before running an experiment. It can override (`foo.bar=value`), append
-(`+foo.bar=value`), or remove (`~foo.bar`) parameters.
+`dvc exp run --set-param` (`-S`) saves you the need to manually edit the params
+file before running an experiment. It can override (`train.epochs=10`), append
+(`+train.weight_decay=0.01`), or remove (`~model.dropout`) parameters.
 
 <admon type="tip">
 
@@ -210,7 +210,7 @@ You can optionally provide a prefix `[<filename>:]` in order to edit a specific
 `dvc params` file. If not provided, `params.yaml` will be used as default.
 
 ```dvc
-$ dvc exp run -S custom_file.json:+newparam=foo
+$ dvc exp run -S custom_file.json:+train.weight_decay=0.001
 ...
 ```
 
@@ -222,8 +222,8 @@ custom_file.json  new_param  -       foo
 
 <admon type="warn">
 
-Note that `--set-param` doesn't update your `dvc.yaml`. When appending or
-removing <abbr>parameters</abbr>, make sure to update the
+Note that `exp run --set-param` (`-S`) doesn't update your `dvc.yaml`. When
+appending or removing <abbr>parameters</abbr>, make sure to update the
 [`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies)
 of your `dvc.yaml` accordingly.
 
