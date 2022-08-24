@@ -106,7 +106,7 @@ within:
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
-- [`plots`](#plots) - contains an option to set custom HTML templates.
+- [`plots`](#plots) - options for configurin `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
 - [`index`](#index) - see [Internal directories and files][internals] to learn
@@ -351,6 +351,12 @@ experiments or projects use a similar structure.
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
   when using DVC on NFS or other mounted volumes.
+
+### hydra
+
+- `hydra.config_dir` - location of the directory containing Hydra config files.
+- `hydra.config_name` - name of the Hydra config file containing defaults,
+  located inside `hydra.config_dir`, without the .yaml extension.
 
 ## Example: Add an S3 remote, and set it as default
 
