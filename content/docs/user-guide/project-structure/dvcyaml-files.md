@@ -45,9 +45,10 @@ stages:
 The most important part of a stage is the terminal command(s) it executes (`cmd`
 field). This is what DVC runs when the stage is reproduced (see `dvc repro`).
 
-If a command reads input files, these (or their directory locations) can be
-defined as <abbr>dependencies</abbr> (`deps`). DVC will check whether they have
-changed to decide whether the stage requires re-execution (see `dvc status`).
+If a [stage command](#stage-commands) reads input files, these (or their
+directory locations) can be defined as <abbr>dependencies</abbr> (`deps`). DVC
+will check whether they have changed to decide whether the stage requires
+re-execution (see `dvc status`).
 
 If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 (`outs`). DVC will track them going forward (similar to using `dvc add`).
@@ -63,6 +64,24 @@ Output files may be viable data sources for [top-level plots](#top-level-plots).
 See the full stage entry [specification](#stage-entries).
 
 </admon>
+
+### Stage commands
+
+The command(s) defined in the `stages` (`cmd` field) can be anything your system
+terminal would accept and run, for example a shell built-in, an expression, or a
+binary found in `PATH`.
+
+Surround the command with double quotes `"` if it includes special characters
+like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
+variables in it that should be evaluated dynamically.
+
+The same applies to the `command` argument for helper commands (`dvc stage add`,
+`dvc exp init`), otherwise they would apply to the DVC call itself:
+
+```cli
+$ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc exp init './another_script.sh $MYENVVAR'
+```
 
 ### Parameter dependencies
 
@@ -461,24 +480,6 @@ validation and auto-completion.
 
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
-
-### Stage commands
-
-The command(s) defined in the `stages` (`cmd` field) can be anything your system
-terminal would accept and run, for example a shell built-in, an expression, or a
-binary found in `PATH`.
-
-Surround the command with double quotes `"` if it includes special characters
-like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
-variables in it that should be evaluated dynamically.
-
-The same applies to the `command` argument for helper commands (`dvc stage add`,
-`dvc exp init`), otherwise they would apply to the DVC call itself:
-
-```cli
-$ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc exp init './another_script.sh $MYENVVAR'
-```
 
 <admon type="warn">
 
