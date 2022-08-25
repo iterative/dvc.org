@@ -17,15 +17,14 @@ positional arguments:
 
 ## Description
 
-Removes the specified queued or completed experiment tasks from the queue. For
-completed tasks, this will also remove any associated output logs.
+Removes the specified queued or completed experiment `task`(s) from the queue.
+For completed tasks, this will also remove any associated output logs.
 
 <admon type="warn">
 
 Note that for successfully completed tasks, this command is not the same as
-`dvc exp remove`. `dvc queue remove` does not remove any Git or DVC data
-associated with a successful DVC experiment. It only removes the task queue
-entry and any associated output logs for that task.
+`dvc exp remove`, which does not remove any data associated with a the
+experiment, only the queue entry and any output logs for that task.
 
 </admon>
 
