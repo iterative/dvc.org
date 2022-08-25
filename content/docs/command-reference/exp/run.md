@@ -8,7 +8,7 @@ Run or resume a
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
                    { repro options ... } [-n <name>]
-                   [-S [<filename>:]<params_list>]
+                   [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]
                    [targets [targets ...]]
@@ -26,9 +26,13 @@ directories, etc.
 `dvc exp run` has the same general behavior as `dvc repro` when it comes to
 `targets` and stage execution (restores the dependency graph, etc.).
 
-> This includes committing any changed data <abbr>dependencies</abbr> to the
-> <abbr>DVC cache</abbr> when preparing the experiment, which can take some
-> time. See the [Options](#options) section for the differences.
+<admon type="info">
+
+This includes committing any changed data <abbr>dependencies</abbr> to the
+<abbr>DVC cache</abbr> when preparing the experiment, which can take some time.
+See the [Options](#options) section for the differences.
+
+</admon>
 
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
@@ -42,7 +46,11 @@ It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
 options have special uses for these.
 
-> 📖 See the [Running Experiments] guide for more details on all these features.
+<admon type="info">
+
+See the [Running Experiments] guide for more details on all these features.
+
+</admon>
 
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
@@ -63,14 +71,21 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 > In addition to the following, `dvc exp run` accepts the options in `dvc repro`
 > except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
-- `-S [<filename>:]<param_name>=<param_value>`,
-  `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
-  existing `dvc params` for this experiment. `filename` can be any valid params
-  file (`params.yaml` by default). This will override the param values coming
-  from the params file.
+- `-S [<filename>:]<override_pattern>`,
+  `--set-param [<filename>:]<override_pattern>` - set the value of existing
+  `dvc params` for this experiment. `filename` can be any valid params file
+  (`params.yaml` by default). This will override the param file before running
+  the experiment.
+
+  For example, to override the value an existing param, you can use
+  `--set-param <param_name>=<param_value>`.
+
+  Valid `<override_pattern>` values are defined in the
+  [Hydra Override Grammar](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
+  Patterns modifying Hydra's defaults list are not supported.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will generated otherwise, such as `exp-f80g4` (based on the
+  default one will be generated otherwise, such as `exp-f80g4` (based on the
   experiment's hash).
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
@@ -179,28 +194,37 @@ experiment we just ran (`exp-44136`).
 
 ## Example: Modify parameters on-the-fly
 
-`dvc exp run--set-param` (`-S`) saves you the need to manually edit the params
-file before running an experiment.
+`dvc exp run --set-param` (`-S`) saves you the need to manually edit the params
+file before running an experiment. It can override (`train.epochs=10`), append
+(`+train.weight_decay=0.01`), or remove (`~model.dropout`) parameters.
+
+<admon type="tip">
+
+DVC supports the
+[Hydra Override Grammar](https://hydra.cc/docs/advanced/override_grammar/basic/),
+with the exception of patterns that modify Hydra's defaults list.
+
+</admon>
+
+You can optionally provide a prefix `[<filename>:]` in order to edit a specific
+`dvc params` file. If not provided, `params.yaml` will be used as default.
 
 ```dvc
-$ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
+$ dvc exp run -S train_config.json:+train.weight_decay=0.001
 ...
-Reproduced experiment(s): exp-18bf6
 ```
-
-To see the results, you can use `dvc exp diff`. It compares both params and
-metrics to the previous project version:
 
 ```dvc
-$ dvc exp diff
-Path         Metric    Value    Change
-scores.json  avg_prec  0.58187  -0.022184
-scores.json  roc_auc   0.93634  -0.024464
-
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  2000     -1000
-params.yaml  prepare.split           0.25     0.05
+$ dvc params diff
+Path              Param               HEAD    workspace
+train_config.json  train.weight_decay  -       0.001
 ```
 
-> Notice that experiments run as a series don't build up on each other. They are
-> all based on `HEAD`.
+<admon type="warn">
+
+Note that `exp run --set-param` (`-S`) doesn't update your `dvc.yaml`. When
+appending or removing <abbr>parameters</abbr>, make sure to update the
+[`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies)
+of your `dvc.yaml` accordingly.
+
+</admon>
