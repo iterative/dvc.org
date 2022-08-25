@@ -32,6 +32,9 @@ during this time, workers will resume processing them instead.
 
 Use `dvc queue kill` to stop specific experiments that are currently running.
 
+`dvc queue logs` lets you to see the console output from any experiments run in
+the background with this command (for example for debugging).
+
 </admon>
 
 ## Options
