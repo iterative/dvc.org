@@ -132,9 +132,8 @@ $ dvc queue start
 
 <admon type="info">
 
-> Note that in most cases, experiment tasks will be executed in the order that
-> they were added to the queue (First In, First Out), but this is not
-> guaranteed.
+Note that in most cases, experiment tasks will be executed in the order that
+they were added to the queue (First In, First Out), but this is not guaranteed.
 
 </admon>
 
@@ -168,11 +167,14 @@ committing unwanted files into Git (e.g. once successful experiments are
 
 </details>
 
-💡 To clear the experiments queue and start over, use
-`dvc queue remove --queued`.
+<admon type="tip">
 
-> 📖 See the `dvc exp run` and `dvc queue` references for more options related
-> to the experiments queue, such as running them in parallel with `--jobs`.
+To clear the experiments queue and start over, use `dvc queue remove --queued`.
+
+</admon>
+
+📖 See the `dvc exp run` and `dvc queue` references for more options related to
+the experiments queue, such as running them in parallel with `--jobs`.
 
 ## Checkpoint experiments
 
