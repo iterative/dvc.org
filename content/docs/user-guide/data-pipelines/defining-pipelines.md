@@ -1,8 +1,9 @@
 # Defining Pipelines
 
-DVC pipelines are written as collections of data processing <abbr>stages</abbr>
-in `dvc.yaml` files. These represent data workflows that you want to
-**reproduce** reliably later. Here's a sample 3-stage structure:
+Pipelines represent data workflows that you want to **reproduce** reliably -- so
+the results are consistent. They contain a set of data processing
+<abbr>stages</abbr>, which are captured in `dvc.yaml` files. Here's a sample
+3-stage structure:
 
 ```yaml
 stages:
@@ -11,24 +12,25 @@ stages:
   evaluate: ... # stage 3 definition
 ```
 
-<admon>
+<admon type="info">
 
-This _codification_ has the added benefit of allowing you to develop pipelines
-on standard Git workflows (GitOps).
+We call this file-based definition (YAML format in our case) _codification_, and
+it has the added benefit of allowing you to develop pipelines on standard Git
+workflows (GitOps).
 
 </admon>
 
-A pipeline is formed by making [stages](#stages) interdependent, meaning that
-the output of one becomes the input of another, and so on. Technically, this is
-called a _dependency graph_ (DAG).
+Most stage take some data and runs some code, which produces an output (e.g. an
+ML model). The pipeline is formed by making [stages](#stages) interdependent,
+meaning that the output of one becomes the input of another, and so on.
+Technically, this is called a _dependency graph_ (DAG).
 
 ## Directed Acyclic Graph (DAG)
 
 DVC represents a pipeline internally as a _graph_ where the nodes are stages and
-the edges are _directed_ dependencies (e.g. A before B). In order for DVC to
-execute the pipeline reliably, its topology should be _acyclic_ -- because
-executing cycles (e.g. A -> B -> C -> A ...) would continue indefinitely. [More
-about DAGs].
+the edges are _directed_ dependencies (e.g. A before B). And in order for DVC to
+run a pipeline, its topology should be _acyclic_ -- because executing cycles
+(e.g. A -> B -> C -> A ...) would continue indefinitely. [More about DAGs].
 
 <admon type="info">
 
@@ -37,7 +39,11 @@ which stages are found in `dvc.yaml`.
 
 </admon>
 
-Use `dvc dag` to visualize (or export) pipeline DAGs.
+It's important to note that while each pipeline is a DAG, this doesn't have to
+match a single `dvc.yaml` file in the <abbr>projects</abbr>. DVC checks the
+entire project tree and validates all such files to find stages, rebuilding all
+the pipelines that these may define. Use `dvc dag` to visualize (or export)
+them.
 
 [more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
@@ -137,7 +143,7 @@ This is a distinctive mechanism over traditional build tools like `make`.
 
 </admon>
 
-File system-level dependencies are defined in the `deps` list of `dvc.yaml`
+File system-level dependencies are defined in the `deps` field of `dvc.yaml`
 stages; Alternatively, using the `--deps` (`-d`) option of `dvc stage add` (see
 the previous section's example).
 
@@ -162,11 +168,11 @@ changed for the purpose of stage invalidation.
 
 ## Parameter dependencies
 
-A more narrow type of dependency is the parameter (`params` list in `dvc.yaml`
-stages), or _hyperparameters_ in machine learning. These represent simple values
-used inside your code to tune data processing, or that affect stage execution in
-any other way. For example, a [random forest classifier] may require a _maximum
-depth_ value.
+A more narrow type of dependency is the parameter (`params` field of
+`dvc.yaml`), or _hyperparameters_ in machine learning. These represent simple
+values used inside your code to tune data processing, or that affect stage
+execution in any other way. For example, a [random forest classifier] may
+require a _maximum depth_ value.
 
 Instead of hard-coding param values, your code can read them from a parameters
 file. `dvc params` can track any key/value pair inside structured YAML 1.2,
