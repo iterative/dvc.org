@@ -164,9 +164,9 @@ changed for the purpose of stage invalidation.
 
 A more narrow type of dependency is the parameter (`params` list in `dvc.yaml`
 stages), or _hyperparameters_ in machine learning. These represent simple values
-used inside your code to tune data processing, modeling attributes, or that
-determine stage execution in any other way. For example, a [random forest
-classifier] may require a _maximum depth_ value.
+used inside your code to tune data processing, or that affect stage execution in
+any other way. For example, a [random forest classifier] may require a _maximum
+depth_ value.
 
 Instead of hard-coding param values, your code can read them from a parameters
 file. `dvc params` can track any key/value pair inside structured YAML 1.2,
