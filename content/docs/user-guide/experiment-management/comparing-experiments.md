@@ -142,8 +142,8 @@ $ dvc exp show --only-changed
  ───────────────────────────────────────────────────────────────────────────────
 ```
 
-You can also exclude unwanted columns from the table by using the `--drop` option.
-Or make sure that the table includes important columns with `--keep`.
+You can also exclude unwanted columns from the table by using the `--drop`
+option. Or make sure that the table includes important columns with `--keep`.
 
 See more examples in the
 [`dvc exp show` reference](/doc/command-reference/exp/show#examples).
