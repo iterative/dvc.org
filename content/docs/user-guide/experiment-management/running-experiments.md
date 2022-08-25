@@ -1,8 +1,7 @@
 # Running Experiments
 
-We explain how to execute DVC Experiments, setting their parameters, using
-multiple jobs to run them in parallel, and running them in queues, among other
-details.
+We explain how to execute DVC Experiments, setting their parameters, queueing
+them for future execution, running them in parallel, among other details.
 
 > 📖 If this is the first time you are introduced into data science
 > experimentation, you may want to check the basics in
@@ -132,14 +131,29 @@ $ dvc queue start
 
 <admon type="info">
 
-Note that in most cases, experiment tasks will be executed in the order that
-they were added to the queue (First In, First Out), but this is not guaranteed.
+In most cases, experiment tasks will be executed in the order that they were
+added to the queue (First In, First Out), but this is not guaranteed.
 
 </admon>
 
 Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
 the time it was queued.
+
+Queued experiments are processed serially by default, but can be run in parallel
+by using more than one `--jobs` (to `dvc queue start` more than one worker).
+
+<admon type="warn">
+
+Parallel runs (using `--jobs` > 1) are experimental and may be unstable. Make
+sure you're using number of jobs that your environment can handle (no more than
+the CPU cores).
+
+Note that since queued experiments are run isolated from each other, common
+stages may be executed multiple times depending on the state of the
+<abbr>run-cache</abbr> at that time.
+
+</admon>
 
 <details>
 
@@ -172,9 +186,6 @@ committing unwanted files into Git (e.g. once successful experiments are
 To clear the experiments queue and start over, use `dvc queue remove --queued`.
 
 </admon>
-
-📖 See the `dvc exp run` and `dvc queue` references for more options related to
-the experiments queue, such as running them in parallel with `--jobs`.
 
 ## Checkpoint experiments
 

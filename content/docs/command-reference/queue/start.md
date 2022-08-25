@@ -1,8 +1,9 @@
 ## queue start
 
-Start the
-[DVC experiments](/doc/user-guide/experiment-management/experiments-overview)
-task queue worker process.
+Start running all [queued experiments], possibly in parallel.
+
+[queued experiments]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Synopsis
 
@@ -12,39 +13,25 @@ usage: dvc queue start [-h] [-q | -v] [-j <number>]
 
 ## Description
 
-Starts one or more task queue worker processes. Each worker process will consume
-and execute one queued experiment task at a time in the background, until either
-`dvc queue stop` is used or the queue is empty.
+Starts one or more workers (`--jobs`) to process experiments. Each worker will
+consume and execute one queued experiment tasks at a time in the background,
+until either `dvc queue stop` is used or the queue is empty.
 
 <admon type="info">
 
 Due to [internal limitations], when the queue is empty a worker may be idle for
 up to 10 seconds before exiting. If new experiment tasks are added to the queue
-during this time, the idle worker will resume processing them instead.
+during this time, workers will resume processing them instead.
 
 [internal limitations]:
   /doc/user-guide/experiment-management/running-experiments#how-are-experiments-queued
 
 </admon>
 
-Queued experiment tasks are run sequentially by default, but can be run in
-parallel by using the `--jobs` option to start more than one worker.
-
-<admon type="warn">
-
-Parallel runs are experimental and may be unstable. Make sure you're using
-number of jobs that your environment can handle (no more than the CPU cores).
-
-Note that since queued experiments are run isolated from each other, common
-stages may sometimes be executed several times depending on the state of the
-<abbr>run-cache</abbr> at that time.
-
-</admon>
-
 ## Options
 
-- `-j <number>`, `--<number>` - start up to this number of workers in parallel.
-  Defaults to 1 (the task queue is processed serially).
+- `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
+  parallel. Defaults to 1 (the task queue is processed serially).
 
   <admon type="info">
 

@@ -38,9 +38,8 @@ Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
 It's possible to [queue experiments] for later execution with the `--queue`
-flag. Queued experiments can be run using `dvc queue start`, refer to the
-`dvc queue` documentation for more information on managing the experiment task
-queue.
+flag. Queued experiments can be run with `dvc queue start` and managed with
+other `dvc queue` commands.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
