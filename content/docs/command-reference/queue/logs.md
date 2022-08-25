@@ -1,8 +1,9 @@
 ## queue logs
 
-Show output logs for running and completed tasks in the
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview)
-task queue.
+Show output logs for running and completed tasks in the [DVC Experiment] task
+queue.
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 

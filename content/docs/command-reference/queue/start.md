@@ -28,6 +28,12 @@ during this time, workers will resume processing them instead.
 
 </admon>
 
+<admon type="tip">
+
+Use `dvc queue kill` to stop specific experiments that are currently running.
+
+</admon>
+
 ## Options
 
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in

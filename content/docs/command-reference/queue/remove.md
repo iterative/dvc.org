@@ -1,8 +1,8 @@
 ## queue remove
 
-Remove queued and completed tasks from the
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview)
-task queue.
+Remove queued and completed tasks from the [DVC Experiment] task queue.
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 

@@ -1,8 +1,8 @@
 ## queue status
 
-Show status of tasks and workers for the
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview)
-task queue.
+Show status of tasks and workers for the [DVC Experiment] task queue.
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 

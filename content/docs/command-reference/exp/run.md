@@ -1,7 +1,8 @@
 # exp run
 
-Run or resume a
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview).
+Run or resume a [DVC experiment].
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
