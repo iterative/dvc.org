@@ -27,8 +27,13 @@ positional arguments:
 
 ## Description
 
-`dvc queue` subcommands provide specialized ways to manage queued experiment
-tasks.
+You can use `dvc exp run --queue` to queue ML experiments. `dvc queue` provides
+an interface to run and manage these queued tasks.
+
+📖 See [this guide] for more information on experiment queues.
+
+[this guide]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Options
 
