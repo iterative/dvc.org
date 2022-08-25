@@ -51,15 +51,14 @@ once.
 
 Parameters represent simple values used inside your code to tune modeling
 attributes, or that affect experiment results in any other way. For example, a
-[random forest classifier] may require a _maximum depth_ value.
+[random forest classifier] may require a _maximum depth_ value. Machine learning
+experimentation often involves defining and searching hyperparameter spaces to
+improve the resulting model metrics.
 
-Machine learning experimentation often involves defining and searching
-hyperparameter spaces to improve the resulting model metrics.
-
-Your source code should read params from structured files (`params.yaml` by
-default). Define them with the `params` field of `dvc.yaml` for DVC to track
-them. When a param value has changed, `dvc exp run` invalidates any stages that
-depend on it, and reproduces them.
+Your source code should read params from structured [parameters files]
+(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
+for DVC to track them. When a param value has changed, `dvc exp run` invalidates
+any stages that depend on it, and reproduces them.
 
 > 📖 See `dvc params` for more details.
 
@@ -83,6 +82,8 @@ $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
 
 [random forest classifier]:
   https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
+[parameters files]:
+  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
 
 ## Experiment results
 

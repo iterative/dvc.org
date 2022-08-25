@@ -40,7 +40,11 @@ stages:
       - columns.txt
 ```
 
-> See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
+<admon type="tip">
+
+See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
+
+</admon>
 
 The most important part of a stage is the terminal command(s) it executes (`cmd`
 field). This is what DVC runs when the stage is reproduced (see `dvc repro`).
@@ -83,19 +87,23 @@ $ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
 $ dvc exp init './another_script.sh $MYENVVAR'
 ```
 
-### Parameter dependencies
+### Parameters
 
-<abbr>Parameters</abbr> are a special type of stage dependency. The supported
-parameters file formats are YAML 1.2, JSON, TOML 1.0, and Python.
+<abbr>Parameters</abbr> are simple key/value pairs consumed by the `command`
+code from a structured [parameters file](#parameters-files). They are defined
+per-stage in the `params` field of `dvc.yaml` and should contain one of these:
 
-The list of `params` in `dvc.yaml` should contain one of these:
-
-1. A param key/value pair that can be found in `params.yaml` (default params
-   file);
+1. A param name that can be found in `params.yaml` (default params file);
 2. A dictionary named by the file path to a custom params file, and with a list
    of param key/value pairs to find in it;
 3. An empty set (give no value or use `null`) named by the file path to a params
    file: to track all the params in it dynamically.
+
+<admon type="info">
+
+Dot-separated param names become tree paths to locate values in the params file.
+
+</admon>
 
 ```yaml
 stages:
@@ -105,7 +113,7 @@ stages:
       - raw.txt
     params:
       - threshold # track specific param (from params.yaml)
-      - passes
+      - nn.batch_size
       - myparams.yaml: # track specific params from custom file
           - epochs
       - config.json: # track all parameters in this file
@@ -113,16 +121,29 @@ stages:
       - clean.txt
 ```
 
-This allows several stages to depend on values of a (shared) structured file,
-which can be versioned directly with Git. See also `dvc params`.
+<admon type="tip">
 
-<admon type="info">
+Params are a more granular type of stage dependency: multiple `stages` can use
+the same params file, but only certain values will affect their state (see
+`dvc status`).
 
-Parameter values should be organized in tree-like hierarchies inside params
-files. DVC will interpret param names as dot-separated tree paths to locate
-param values. Supported types are: string, integer, float, boolean, and arrays
-(groups of params). Parameter files are typically written manually (or
-generated) and they can be versioned directly with Git.
+</admon>
+
+#### Parameters files
+
+The supported params file formats are YAML 1.2, JSON, TOML 1.0, [and Python].
+[Parameter](#parameters) key/value pairs should be organized in tree-like
+hierarchies inside. Supported value types are: string, integer, float, boolean,
+and arrays (groups of params).
+
+These files are typically written manually (or generated) and they can be
+versioned directly with Git along with other <abbr>workspace</abbr> files.
+
+[and python]: /doc/command-reference/params#examples-python-parameters-file
+
+<admon type="tip">
+
+See also `dvc params diff` to compare params across project version.
 
 </admon>
 

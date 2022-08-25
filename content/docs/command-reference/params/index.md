@@ -1,6 +1,6 @@
 # params
 
-Contains a command to show changes in parameters:
+Contains a command to show changes in <abbr>parameters</abbr>:
 [diff](/doc/command-reference/params/diff).
 
 ## Synopsis
@@ -16,11 +16,15 @@ positional arguments:
 
 ## Description
 
-<abbr>Parameters</abbr> are a special type of <abbr>dependency</abbr> to track
-simple key/value pairs from a structured YAML 1.2, JSON, TOML 1.0,
-[or Python](#examples-python-parameters-file) file (`params.yaml` by default).
-Multiple stages can use the same params file, but only certain values will
-affect each stage. Params usually have simple names like `epochs`,
+Parameters are simple values used inside your code to influence the results
+(e.g. machine learning [hyperparameters]). DVC can track these as key/value
+pairs from structured YAML 1.2, JSON, TOML 1.0,
+[or Python](#examples-python-parameters-file) files (`params.yaml` by default),
+from which your code should also read them.
+
+Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
+<abbr>dependency</abbr>, but only certain values will affect each
+<abbr>stage</abbr>. Params usually have simple names like `epochs`,
 `learning-rate`, `batch_size`, etc. Example:
 
 ```yaml
@@ -30,17 +34,17 @@ tuning:
   - max_depth: 7
 ```
 
-To start tracking param values, list their names under the `params` field of
-`dvc.yaml` stages (manually or with the the `-p`/`--params` option of
-`dvc stage add`). For example:
+To start tracking parameters, list their names under the `params` field of
+`dvc.yaml` (manually or with the the `-p`/`--params` option of `dvc stage add`).
+For example:
 
 ```yaml
 stages:
   learn:
     cmd: python deep.py
     params:
-      - epochs # specific params from params.yaml
-      - tuning.learning-rate
+      - epochs # specific param from params.yaml
+      - tuning.learning-rate # from params.yaml
       - myparams.toml:
           - batch_size # specific param from custom file
       - config.json: # all params in this file
@@ -69,8 +73,11 @@ DVC does not pass the parameter values to [stage commands]. The commands
 executed by DVC should load them by itself, for example using
 `dvc.api.params_show()`.
 
-[more details]:
-  /doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies
+[hyperparameters]:
+  /doc/user-guide/experiment-management/running-experiments#tuning-hyperparameters
+[use the same params file]:
+  /doc/user-guide/data-pipelines/defining-pipelines#parameter-dependencies
+[more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
 [templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
 [stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 

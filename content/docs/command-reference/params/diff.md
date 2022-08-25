@@ -1,8 +1,7 @@
 # params diff
 
-Show changes in [parameters](/doc/command-reference/params) between commits in
-the <abbr>DVC repository</abbr>, or between a commit and the
-<abbr>workspace</abbr>.
+Show changes in `dvc params` between commits in the <abbr>DVC repository</abbr>,
+or between a commit and the <abbr>workspace</abbr>.
 
 > Requires that Git is being used to version the project.
 
@@ -21,12 +20,15 @@ positional arguments:
 
 ## Description
 
-Provides a quick way to compare parameter values among experiments in the
+Provides a quick way to compare <abbr>parameters</abbr> among experiments in the
 repository history. The differences shown by this command include the old and
 new param values, along with the param name.
 
-> Parameter dependencies are defined in the `params` field of `dvc.yaml` (e.g.
-> with the the `-p` (`--params`) option of `dvc stage add`).
+<admon type="info">
+
+Parameters are defined in the `params` field of `dvc.yaml`. See `dvc params`.
+
+</admon>
 
 Without arguments, `dvc params diff` compares parameters currently present in
 the <abbr>workspace</abbr> (uncommitted changes) with the latest committed

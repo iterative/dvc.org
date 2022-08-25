@@ -129,9 +129,9 @@ Notice that the new `train` stage depends on the output from stage `prepare`
 
 There's more than one type of stage dependency. A simple dependency is a file or
 directory used as input by the stage command. When it's contents have changed,
-DVC "invalidates" the stage -- it knows that it needs to run again. This in turn
-may cause a chain reaction in which subsequent stages of the
-<abbr>pipeline</abbr> are also reproduced.
+DVC "invalidates" the stage -- it knows that it needs to run again (see
+`dvc status`). This in turn may cause a chain reaction in which subsequent
+stages of the <abbr>pipeline</abbr> are also reproduced.
 
 <admon type="info">
 
@@ -171,25 +171,24 @@ changed for the purpose of stage invalidation.
 A more narrow type of dependency is the parameter (`params` field of
 `dvc.yaml`), or _hyperparameters_ in machine learning. These represent simple
 values used inside your code to tune data processing, or that affect stage
-execution in any other way. For example, a [random forest classifier] may
-require a _maximum depth_ value.
+execution in any other way. For example, training a [Neural Network] usually
+requires _batch size_ and _epoch_ values.
 
-Instead of hard-coding param values, your code can read them from a parameters
-file. `dvc params` can track any key/value pair inside structured YAML 1.2,
-JSON, TOML 1.0, or Python files (see also `dvc.api.params_show()`). DVC
-considers params as granular dependencies: it only invalidates stages when the
-corresponding part of the params file has changed.
+Instead of hard-coding param values, your code can read them from a structured
+file (e.g. YAML format). DVC can track any key/value pair in a supported
+[parameters file] (`params.yaml` by default). Params are granular dependencies
+because DVC only invalidates stages when the corresponding part of the params
+file has changed.
 
 ```yaml
 stages:
   train:
     cmd: ...
     deps: ...
-    params:
-      - learning_rate # from params.yaml
-      - deep_learning.json:
-          - epochs # from deep_learning.json
-      - config.json: # all params in config.json
+    params: # from params.yaml
+      - learning_rate
+      - nn.epochs
+      - nn.batch_size
     outs: ...
 ```
 
@@ -199,10 +198,13 @@ See [more details] about this syntax.
 
 </admon>
 
-[random forest classifier]:
-  https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
-[more details]:
-  /doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies
+Use `dvc params diff` to compare parameters across project versions.
+
+[parameters file]:
+  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
+[neural network]:
+  https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/
+[more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
 
 ## Outputs
 

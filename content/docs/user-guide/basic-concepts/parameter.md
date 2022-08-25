@@ -1,8 +1,9 @@
 ---
-name: 'Parameter Dependency'
-match: [parameter, parameters, param, params, hyperparameter, hyperparameters]
+name: 'Parameters'
+match: [parameter, parameters]
 tooltip: >-
-  Pipeline stages (defined in `dvc.yaml`) can depend on specific values inside a
-  structured file (`params.yaml` by default). Stages are invalid (considered
-  outdated) when any of their parameter values change. See `dvc params`.
+  Project code can depend on simple values loaded from a a structured file
+  (`params.yaml` by default). DVC can track them as granular dependencies for
+  pipeline stages (defined in `dvc.yaml`). These are especially useful for
+  machine learning hyperparameter tuning. See `dvc params`.
 ---
