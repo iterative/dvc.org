@@ -20,7 +20,7 @@ log_config = dict(
 ```
 
 This will use the registered
-[`DvcliveLoggerHook`](https://github.com/iterative/dvclive/blob/master/dvclive/mmcv.py)
+[`DvcliveLoggerHook`](https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/logger/dvclive.py)
 to generate outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
