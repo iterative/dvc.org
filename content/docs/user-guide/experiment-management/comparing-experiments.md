@@ -142,12 +142,11 @@ $ dvc exp show --only-changed
  ───────────────────────────────────────────────────────────────────────────────
 ```
 
-In addition, you can exclude certain columns from the table by using the
-`dvc exp show --drop` option. The `dvc exp show --keep` option has the final
-word and can be used to prevent any of the other flags from excluding columns.
+You can also exclude unwanted columns from the table by using the `--drop` option.
+Or make sure that the table includes important columns with `--keep`.
 
 See more examples in the
-[command reference](/doc/command-reference/exp/show#examples).
+[`dvc exp show` reference](/doc/command-reference/exp/show#examples).
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
 the metrics or parameters columns by the option `--sort-by` and `--sort-order`.
