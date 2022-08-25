@@ -102,10 +102,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   workspace (in `.dvc/tmp/exps`). Use `-j` to execute them
   [in parallel](#queueing-and-parallel-execution).
 
-- `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
-  parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
-  is processed serially).
-
   <admon type="warn">
 
   `dvc exp run --run-all [--jobs]` is now a shortcut for
@@ -113,6 +109,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   and `--jobs` options will be deprecated in a future DVC release.
 
   </admon>
+
+- `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
+  parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
+  is processed serially).
 
 - `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
