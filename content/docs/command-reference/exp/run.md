@@ -224,7 +224,7 @@ train_config.json  train.weight_decay  -       0.001
 
 Note that `exp run --set-param` (`-S`) doesn't update your `dvc.yaml`. When
 appending or removing <abbr>parameters</abbr>, make sure to update the
-[`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameters)
+[`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameter-dependencies)
 of your `dvc.yaml` accordingly.
 
 </admon>

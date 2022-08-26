@@ -20,8 +20,8 @@ experiment(s). These files codify _pipelines_ that specify one or more
 
 ### Running the pipeline(s)
 
-You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
-`./dvc.yaml` (in the current directory) by default.
+You can run the experiment pipeline using `dvc exp run`. It uses `./dvc.yaml`
+(in the current directory) by default.
 
 ```dvc
 $ dvc exp run
@@ -45,20 +45,19 @@ once.
 > 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
 
 [reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/command-reference/dag#directed-acyclic-graph
 
 ## Tuning (hyper)parameters
 
-Parameters represent simple values used inside your code to tune modeling
-attributes, or that affect experiment results in any other way. For example, a
-[random forest classifier] may require a _maximum depth_ value. Machine learning
-experimentation often involves defining and searching hyperparameter spaces to
-improve the resulting model metrics.
+Parameters are the values that modify the behavior of coded processes -- in this
+case producing different experiment results. Machine learning experimentation
+often involves defining and searching hyperparameter spaces to improve the
+resulting model metrics.
 
-Your source code should read params from structured [parameters files]
-(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
-for DVC to track them. When a param value has changed, `dvc exp run` invalidates
-any stages that depend on it, and reproduces them.
+In DVC project source code, <abbr>parameters</abbr> should be read from _params
+files_ (`params.yaml` by default) and defined in `dvc.yaml`. When a tracked
+param value has changed, `dvc exp run` invalidates any stages that depend on it,
+and reproduces them.
 
 > 📖 See `dvc params` for more details.
 
@@ -79,11 +78,6 @@ $ dvc exp run --set-param model.learning_rate=0.0002
 $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
 ...
 ```
-
-[random forest classifier]:
-  https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
-[parameters files]:
-  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
 
 ## Experiment results
 
