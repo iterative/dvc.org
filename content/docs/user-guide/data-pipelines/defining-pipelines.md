@@ -26,6 +26,8 @@ We call this file-based definition _codification_ (YAML format in our case). It
 has the added benefit of allowing you to develop pipelines on standard Git
 workflows ([GitOps]).
 
+[gitops]: /doc/use-cases/versioning-data-and-model-files
+
 </admon>
 
 Stages usually take some data and run some code, producing an output (e.g. an ML
@@ -33,7 +35,6 @@ model). The pipeline is formed by making them interdependent, meaning that the
 output of a stage becomes the input of another, and so on. Technically, this is
 called a _dependency graph_ (DAG).
 
-[gitops]: /doc/use-cases/versioning-data-and-model-files
 [data management]: /doc/start/data-management
 [metrics]: /doc/command-reference/metrics
 [plots]: /doc/user-guide/visualizing-plots
