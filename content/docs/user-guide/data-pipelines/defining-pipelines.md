@@ -1,29 +1,42 @@
 # Defining Pipelines
 
 Pipelines represent data workflows that you want to **reproduce** reliably -- so
-the results are consistent. They contain a set of data processing
-<abbr>stages</abbr>, which are captured in `dvc.yaml` files. Here's a sample
-3-stage structure:
+the results are consistent. The regular pipelining process involves:
 
-```yaml
-stages:
-  prepare: ... # stage 1 definition
-  train: ... # stage 2 definition
-  evaluate: ... # stage 3 definition
-```
+- Obtain and `dvc add` the project's initial data requirements (see [Data
+  Management]). This <abbr>caches</abbr> the data and generates `.dvc` files.
+
+- Define the pipeline [stages](#stages) in `dvc.yaml` files (more details
+  later). Example structure:
+
+  ```yaml
+  stages:
+    prepare: ... # stage 1 definition
+    train: ... # stage 2 definition
+    evaluate: ... # stage 3 definition
+  ```
+
+- Capture other useful metadata such as runtime
+  [parameters](#parameter-dependencies), performance [metrics], and [plots] to
+  visualize. DVC supports multiple file formats for these.
 
 <admon type="info">
 
-We call this file-based definition (YAML format in our case) _codification_, and
-it has the added benefit of allowing you to develop pipelines on standard Git
-workflows (GitOps).
+We call this file-based definition _codification_ (YAML format in our case). It
+has the added benefit of allowing you to develop pipelines on standard Git
+workflows ([GitOps]).
 
 </admon>
 
-Most stage take some data and runs some code, which produces an output (e.g. an
-ML model). The pipeline is formed by making [stages](#stages) interdependent,
-meaning that the output of one becomes the input of another, and so on.
-Technically, this is called a _dependency graph_ (DAG).
+Stages usually take some data and run some code, producing an output (e.g. an ML
+model). The pipeline is formed by making them interdependent, meaning that the
+output of a stage becomes the input of another, and so on. Technically, this is
+called a _dependency graph_ (DAG).
+
+[gitops]: /doc/use-cases/versioning-data-and-model-files
+[data management]: /doc/start/data-management
+[metrics]: /doc/command-reference/metrics
+[plots]: /doc/user-guide/visualizing-plots
 
 ## Directed Acyclic Graph (DAG)
 
@@ -39,11 +52,10 @@ which stages are found in `dvc.yaml`.
 
 </admon>
 
-It's important to note that while each pipeline is a DAG, this doesn't have to
-match a single `dvc.yaml` file in the <abbr>projects</abbr>. DVC checks the
-entire project tree and validates all such files to find stages, rebuilding all
-the pipelines that these may define. Use `dvc dag` to visualize (or export)
-them.
+Note that while each pipeline is a DAG, this doesn't mean a single `dvc.yaml`
+file. DVC checks the entire <abbr>project</abbr> tree and validates all such
+files to find stages, rebuilding all the pipelines that these may define. Use
+`dvc dag` to visualize (or export) them.
 
 [more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
@@ -57,10 +69,10 @@ See the full [specification] of stage entries.
 
 </admon>
 
-Each stage wraps around an executable shell [command] and specifies the
-necessary inputs as well as expected [outputs](#outputs) (if any). Let's look at
-a sample stage that [depends](#simple-dependencies) on a script file it runs as
-well as on a raw data directory it processes (ideally [tracked by DVC] already):
+Each stage wraps around an executable shell [command] and specifies any
+file-based [dependencies](#simple-dependencies) as well as [outputs](#outputs).
+Let's look at a sample stage: it depends on a script file it runs as well as on
+a raw data input (ideally [tracked by DVC][data management] already):
 
 ```yaml
 stages:
@@ -123,8 +135,6 @@ are not available this way.
 Notice that the new `train` stage depends on the output from stage `prepare`
 (`data/clean.csv`), forming the [DAG](#directed-acyclic-graph-dag).
 
-[tracked by dvc]: /doc/start/data-management
-
 ## Simple dependencies
 
 There's more than one type of stage dependency. A simple dependency is a file or
@@ -168,7 +178,7 @@ changed for the purpose of stage invalidation.
 
 ## Parameter dependencies
 
-A more narrow type of dependency is the parameter (`params` field of
+A more granular type of dependency is the parameter (`params` field of
 `dvc.yaml`), or _hyperparameters_ in machine learning. These represent simple
 values used inside your code to tune data processing, or that affect stage
 execution in any other way. For example, training a [Neural Network] usually
@@ -232,9 +242,6 @@ The types of outputs are:
   contrast ML performance statistics or continuous metrics from multiple
   experiments. `dvc plots show` can generate charts for certain data files or
   render custom image files for you.
-
-[plots]: /doc/user-guide/visualizing-plots
-[metrics]: /doc/command-reference/metrics
 
 <admon type="info">
 
