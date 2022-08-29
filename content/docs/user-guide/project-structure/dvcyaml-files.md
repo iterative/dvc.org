@@ -140,7 +140,7 @@ stages:
     outs:
       - model.pt
     metrics:
-      - accuracy.txt:
+      - accuracy.json:
           cache: false
     plots:
       - auc.json:
