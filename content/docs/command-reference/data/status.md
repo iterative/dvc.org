@@ -1,7 +1,6 @@
 # data status
 
-Show changes in data tracked by DVC between the last Git commit, the metafiles
-and the workspace.
+Show changes in the data tracked by DVC in the workspace.
 
 ## Synopsis
 
@@ -14,42 +13,56 @@ usage: dvc data status [-h] [-q | -v]
 
 ## Description
 
-Shows changes that have differences between the last Git commit (`HEAD`) and
-committed data specified in [metafiles](/doc/user-guide/project-structure),
-uncommitted changes that have differences between that specified in the
-metafiles and the <abbr>workspace</abbr>, and the changes that are not in the
-cache but is specified in those metafiles.
+The `data status` command displays the state of the working directory and the
+committed changes with respect to the last Git commit (`HEAD`).
 
-The first change shows what is already committed to DVC via `dvc add` or
-`dvc commit` or `dvc repro` but the metafiles are not committed to git yet. The
-second change shows the new changes to the data that is not tracked by DVC yet
-or what you could `dvc commit`. The third change shows the files that are
-missing from the cache. Some of those could be pulled from the remote.
+It shows you what the new changes have been committed to DVC, which haven't been
+committed, which files aren't being tracked by DVC and Git, and what files are
+missing from the cache. It shows you what's been going on with `dvc add`,
+`dvc commit` and `dvc repro` commands.
 
-Using `--untracked-files`, it'll show the files that are not being tracked by
-DVC or Git.
+The `dvc data status` command only outputs information, it won't modify or
+change anything in your working directory. It's a good practice to check the
+state of your repository before doing `git commit` so that you don't
+accidentally commit something you don't mean to.
 
-By default, `dvc data status` shows changes in the level the file/directory is
-being tracked in. With `--granular`, it will show changes in file-level.
+An example output might look something like follows:
 
-The `--unchanged` option will list all of the files that aren't listed in
-committed changes or uncommitted changes.
+```dvc
+$ dvc data status
+Not in cache:
+  (use "dvc pull <file>..." to download files)
+        data/data.xml
 
-### Output
+DVC committed changes:
+  (git commit the corresponding dvc files to update the repo)
+        modified: data/features/
 
-The `dvc data status` displays changes in multiple categories such as:
+DVC uncommitted changes:
+  (use "dvc commit <file>..." to track changes)
+        deleted: model.pkl
+(there are other changes not tracked by dvc, use "git status" to see)
+```
 
-- _Not in cache_
-- _DVC committed changes_
-- _DVC uncommitted changes_
-- _Untracked files_
-- _DVC unchanged files_
+As shown above, the `dvc data status` displays changes in multiple categories:
 
-The categories will only be displayed when there are changes related to those
-categories.
+- _Not in cache_ indicates that the hash for files are recorded in `dvc.lock`
+  and `.dvc` files but the corresponding cache files are missing.
+- _DVC committed changes_ indicates that there are changes that are committed
+  that differs with the last Git commit. There might be more detailed state on
+  how each of those files changed: _added_, _modified_, and _deleted_.
+- _DVC uncommitted changes_ indicates that there are changes in the working
+  directory that are not `dvc commit`-ed yet. Same as _DVC committed changes_,
+  there might be more detailed state on how each of those files changed.
+- _Untracked files_ shows the files that are not being tracked by DVC and Git.
+  This is disabled by default, unless [`--untracked-files`](#--untracked-files)
+  is specified.
+- _DVC Unchanged files_ shows the files that are not changed. This is not shown
+  by default, unless [`--unchanged`](#--unchanged) is specified.
 
-The _DVC committed changes_ and _DVC uncommitted changes_ shows more detailed
-state the files are in: _added_, _modified_, and _deleted_.
+By default, `dvc data status` shows changes to tracked files and directories.
+With [`--granular`](#--granular), it will show changes in individual files
+inside those directories.
 
 ## Options
 
@@ -92,7 +105,7 @@ This shows that the `data/data.xml` is missing from the cache, `data/features/`
 a directory, has changes that are being tracked by DVC but is not git-committed
 yet, and a file `model.pkl` has been deleted from the workspace. The
 `data/features/` directory is modified, but there is no further details to what
-changed inside. The `--granular` flag can provide more information on that.
+changed inside. The `--granular` option can provide more information on that.
 
 ## Example: Granular output
 

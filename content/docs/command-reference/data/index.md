@@ -10,7 +10,7 @@ usage: dvc data [-h] [-q | -v] {status} ...
 
 positional arguments:
   COMMAND
-    status         Show changes between the last git commit, the dvcfiles and the workspace.
+    status         Show changes in the data tracked by DVC in the workspace.
 ```
 
 ## Description
