@@ -28,15 +28,14 @@ plots:
   evaluation/importance.png: # Plot an image.
 ```
 
-3. [Show](/doc/command-reference/plots/show) all plots in a single view or
-   report.
+3. `dvc plots show` to see all plots in a single view or report.
 
 ![](/img/guide_plots_intro_show_confusion.svg)
 ![](/img/guide_plots_intro_show_importance.png '=400 :wrap-left')
 ![](/img/guide_plots_intro_show_roc.svg)
 
 4. Run [experiments](/doc/user-guide/experiment-management/experiments-overview)
-   and [compare](/doc/command-reference/plots/diff) plots.
+   and [compare](#comparing-plots) plots.
 
 ![](/img/guide_plots_intro_compare.png)
 
@@ -44,12 +43,12 @@ plots:
 
 To generate the data files for plots, you can:
 
-1. Use [DVCLive](/doc/dvclive/dvclive-with-dvc) in your Python code to log the
-   data in the expected format for you.
-2. Save data yourself in one of the
-   [supported file formats](#supported-file-formats).
-3. Save an image file of the visualization (helpful for custom visualizations
-   that would be hard to configure in DVC).
+- Use [DVCLive](/doc/dvclive/dvclive-with-dvc) in your Python code to log the
+  data in the expected format for you.
+- Save data yourself in one of the
+  [supported file formats](#supported-file-formats).
+- Save an image file of the visualization (helpful for custom visualizations
+  that would be hard to configure in DVC).
 
 ## Supported file formats
 
