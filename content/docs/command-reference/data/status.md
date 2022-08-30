@@ -14,9 +14,9 @@ usage: dvc data status [-h] [-q | -v]
 ## Description
 
 The `data status` command displays the state of the working directory and the
-committed changes with respect to the last Git commit (`HEAD`).
+changes with respect to the last Git commit (`HEAD`).
 
-It shows you what the new changes have been committed to DVC, which haven't been
+It shows you what new changes have been committed to DVC, which haven't been
 committed, which files aren't being tracked by DVC and Git, and what files are
 missing from the cache. It shows you what's been going on with `dvc add`,
 `dvc commit` and `dvc repro` commands.
@@ -48,7 +48,7 @@ As shown above, the `dvc data status` displays changes in multiple categories:
 
 - _Not in cache_ indicates that the hash for files are recorded in `dvc.lock`
   and `.dvc` files but the corresponding cache files are missing.
-- _DVC committed changes_ indicates that there are changes that are committed
+- _DVC committed changes_ indicates that there are changes that are `dvc-commit`-ed
   that differs with the last Git commit. There might be more detailed state on
   how each of those files changed: _added_, _modified_, and _deleted_.
 - _DVC uncommitted changes_ indicates that there are changes in the working
