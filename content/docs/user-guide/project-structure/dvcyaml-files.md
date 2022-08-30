@@ -475,14 +475,19 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined top-level plots (paths
-relative to the location of `dvc.yaml`).
-
-Every plot has to have its own ID. Configuration, if provided, should be a
-dictionary.
+The list of `plots` contains one or more user-defined top-level plots. Every
+plot has to have a unique identifiear, which may be either a file path (relative
+to the location of `dvc.yaml`) or an arbitrary string. Optional configuration
+can be given as a dictionary.
 
 In the simplest use case, a user can provide the file path as the plot ID and
 not provide configuration at all:
+
+In the simplest use, you can provide the plot's file path and no configuration.
+In that case, the default behavior will be applied. In the example below, DVC
+will take data from `logs.csv` and apply the `linear` plot
+[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) to
+the last found column:
 
 ```yaml
 # dvc.yaml
@@ -491,12 +496,13 @@ plots:
   logs.csv:
 ```
 
-In that case the default behavior will be applied. DVC will take data from
-`logs.csv` file and apply `linear` plot
-[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) to
-the last found column (CSV, TSV files) or field (JSON, YAML).
-
-We can customize the plot by adding appropriate fields to the configuration:
+We can customize the plot by adding appropriate fields to the configuration.
+Below, we provided `confusion_matrix` as a plot ID. It will be displayed in the
+plot as a title, unless we override it with `title` field. We also provided the
+data source in the `y` axis definition. Data will be sourced from
+`confusion_matrix_data.csv`. As `y` axis we will use `predicted_class` field. On
+the `x` axis we will have the `actual_class` field. Note that DVC will assume
+that `actual_class` is inside `confusion_matrix_data.csv`:
 
 ```yaml
 # dvc.yaml
@@ -509,14 +515,9 @@ plots:
     template: confusion
 ```
 
-In this case we provided `confusion_matrix` as a plot ID. It will be displayed
-in the plot as a title, unless we override it with `title` field. In this case
-we provided data source in `y` axis definition. Data will be sourced from
-`confusion_matrix_data.csv`. As `y` axis we will use `predicted_class` field. On
-`x` axis we will have `actual_class` field. Note that DVC will assume that
-`actual_class` is inside `confusion_matrix_data.csv`.
-
-We can provide multiple columns/fields from the same file:
+We can provide multiple columns/fields from the same file. In this case, we will
+take `accuracy` and `loss` fields and display them against the `epoch` column,
+all coming from the `logs.csv` file:
 
 ```yaml
 #dvc.yaml
@@ -528,10 +529,9 @@ plots:
     x: epoch
 ```
 
-In this case, we will take `accuracy` and `loss` fields and display them agains
-`epoch` column, all coming from `logs.csv` file.
-
-We can source the data from multiple files too:
+We can source the data from multiple files too. In this case we will plot the
+`accuracy` field from both `train_logs.csv` and `test_logs.csv` against the
+`epoch`. Note that both files have to have the `epoch` field:
 
 ```yaml
 #dvc.yaml
@@ -543,10 +543,6 @@ plots:
       test_logs.csv: accuracy
     x: epoch
 ```
-
-In this case we will plot `accuracy` field from both `train_logs.csv` and
-`test_logs.csv` against the `epoch`. Note that both files have to have `epoch`
-field.
 
 ### Available configuration fields
 
