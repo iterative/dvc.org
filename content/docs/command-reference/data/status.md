@@ -48,9 +48,10 @@ As shown above, the `dvc data status` displays changes in multiple categories:
 
 - _Not in cache_ indicates that the hash for files are recorded in `dvc.lock`
   and `.dvc` files but the corresponding cache files are missing.
-- _DVC committed changes_ indicates that there are changes that are `dvc-commit`-ed
-  that differs with the last Git commit. There might be more detailed state on
-  how each of those files changed: _added_, _modified_, and _deleted_.
+- _DVC committed changes_ indicates that there are changes that are
+  `dvc-commit`-ed that differs with the last Git commit. There might be more
+  detailed state on how each of those files changed: _added_, _modified_, and
+  _deleted_.
 - _DVC uncommitted changes_ indicates that there are changes in the working
   directory that are not `dvc commit`-ed yet. Same as _DVC committed changes_,
   there might be more detailed state on how each of those files changed.
