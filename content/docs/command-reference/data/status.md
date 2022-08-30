@@ -53,14 +53,11 @@ state the files are in: _added_, _modified_, and _deleted_.
 
 ## Options
 
-- `--granular` - show granular, file-level information for the changes for
+- `--granular` - show granular, file-level information of the changes for
   DVC-tracked directories. By default, DVC only shows the changes at the level
   where the data is being tracked at.
 
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
-  This option can also take values: `no` and `all`. With `--untracked-files=no`,
-  this change is not shown and is a default. `--untracked-files=all` or just
-  `--untracked-files` will show untracked files.
 
 - `--unchanged` - show unchanged DVC-tracked files.
 
@@ -78,7 +75,7 @@ state the files are in: _added_, _modified_, and _deleted_.
 ```dvc
 $ dvc data status
 Not in cache:
-  (use "dvc pull <file>..." to update your local storage)
+  (use "dvc pull <file>..." to download files)
         data/data.xml
 
 DVC committed changes:
@@ -105,7 +102,7 @@ information for the changes:
 ```dvc
 $ dvc data status --granular
 Not in cache:
-  (use "dvc pull <file>..." to update your local storage)
+  (use "dvc pull <file>..." to download files)
         data/data.xml
 
 DVC committed changes:
