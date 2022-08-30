@@ -236,9 +236,9 @@ project version). Conversely, you can create multiple plots from a single source
 file. You can also use any plots file in the project, regardless of whether it's
 a stage outputs. This creates a separation between visualization and outputs.
 
-In order to define the plot users need to provide data and an optional
-configuration for the plot. The plots should be defined in `dvc.yaml` file under
-`plots` key.
+In order to define the plot, users need to provide data and an optional
+configuration for the plot. The plots should be defined in a `dvc.yaml`, file
+under the top-level `plots` field.
 
 ```yaml
 # dvc.yaml

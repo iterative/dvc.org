@@ -475,9 +475,10 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined top-level plots (paths
-relative to the location of `dvc.yaml`). Every plot needs a unique file path as
-identifier. Optional configuration can be given as a dictionary.
+The list of `plots` contains one or more user-defined `dvc plots`
+configurations. Every plot needs a unique file path (relative to the location of
+`dvc.yaml`) as identifier. Optional
+[configuration fields](#available-configuration-fields) can be provided as well.
 
 In the simplest use, you only need to provide the plot's file path. In the
 example below, DVC will take data from `logs.csv` and use the default plotting
@@ -492,11 +493,11 @@ logs.csv:
 
 [template]: /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
-You can customize plots with different configuration fields. Below we use
-`confusion_matrix` as a plot ID (displayed in the plot as a title, unless we
-override it with a `title` field). We also specify columns within the data
-source (`confusion_matrix_data.csv`) for the `y` and `x` axes. Finally, the
-built-in template for confusion matrices is set.
+For customization, we can use a plot ID (`confusion_matrix` below). This is
+displayed in as title, unless we override it with a `title` value. We also
+specify columns within the data source file (`confusion_matrix_data.csv`) for
+the `y` and `x` axes. Finally, the built-in template for confusion matrices is
+set.
 
 ```yaml
 # dvc.yaml
