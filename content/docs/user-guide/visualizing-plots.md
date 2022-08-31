@@ -30,7 +30,8 @@ workflow is:
      evaluation/importance.png: # Plot an image.
    ```
 
-3. Use `dvc plots show` to see all plots in a single view or report.
+3. [Show](/doc/command-reference/plots/show) all plots in a single view or
+   report.
 
    ![](/img/guide_plots_intro_show_confusion.svg)
    ![](/img/guide_plots_intro_show_importance.png '=400 :wrap-left')
