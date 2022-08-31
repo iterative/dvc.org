@@ -1,4 +1,4 @@
-# Data Pipelines
+# Pipelines
 
 If you find yourself repeating sequence of actions to get or update the results
 of your project, then you may already have a pipeline. For example, a data

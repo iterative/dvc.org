@@ -144,7 +144,7 @@
         ]
       },
       {
-        "slug": "data-pipelines",
+        "slug": "pipelines",
         "children": ["defining-pipelines"]
       },
       {

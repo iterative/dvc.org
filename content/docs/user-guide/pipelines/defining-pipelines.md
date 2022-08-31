@@ -3,10 +3,11 @@
 Pipelines represent data workflows that you want to **reproduce** reliably -- so
 the results are consistent. The regular pipelining process involves:
 
-- Obtain and `dvc add` the project's initial data requirements (see [Data
-  Management]). This <abbr>caches</abbr> the data and generates `.dvc` files.
+- Obtain and `dvc add` or `dvc import` the project's initial data requirements
+  (see [Data Management]). This <abbr>caches</abbr> the data and generates
+  `.dvc` files.
 
-- Define the pipeline [stages](#stages) in `dvc.yaml` files (more details
+- Define the pipeline [stages](#stages) in `dvc.yaml` files (more on this
   later). Example structure:
 
   ```yaml
@@ -35,6 +36,10 @@ model). The pipeline is formed by making them interdependent, meaning that the
 output of a stage becomes the input of another, and so on. Technically, this is
 called a _dependency graph_ (DAG).
 
+Note that while each pipeline is a graph, this doesn't mean a single `dvc.yaml`
+file. DVC checks the entire <abbr>project</abbr> tree and validates all such
+files to find stages, rebuilding all the pipelines that these may define.
+
 [data management]: /doc/start/data-management
 [metrics]: /doc/command-reference/metrics
 [plots]: /doc/user-guide/visualizing-plots
@@ -53,10 +58,7 @@ which stages are found in `dvc.yaml`.
 
 </admon>
 
-Note that while each pipeline is a DAG, this doesn't mean a single `dvc.yaml`
-file. DVC checks the entire <abbr>project</abbr> tree and validates all such
-files to find stages, rebuilding all the pipelines that these may define. Use
-`dvc dag` to visualize (or export) them.
+Use `dvc dag` to visualize (or export) them.
 
 [more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
@@ -134,7 +136,7 @@ are not available this way.
 </admon>
 
 Notice that the new `train` stage depends on the output from stage `prepare`
-(`data/clean.csv`), forming the [DAG](#directed-acyclic-graph-dag).
+(`data/clean.csv`), forming the pipeline ([DAG](#directed-acyclic-graph-dag)).
 
 ## Simple dependencies
 
