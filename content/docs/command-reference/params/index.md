@@ -16,7 +16,7 @@ positional arguments:
 
 ## Description
 
-Parameters are simple values used inside your code to influence the results
+Parameters can be any values used inside your code to influence the results
 (e.g. machine learning [hyperparameters]). DVC can track these as key/value
 pairs from structured YAML 1.2, JSON, TOML 1.0,
 [or Python](#examples-python-parameters-file) files (`params.yaml` by default),

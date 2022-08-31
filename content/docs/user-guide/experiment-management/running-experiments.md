@@ -49,9 +49,9 @@ once.
 
 ## Tuning (hyper)parameters
 
-Parameters represent simple values used inside your code to tune modeling
-attributes, or that affect experiment results in any other way. For example, a
-[random forest classifier] may require a _maximum depth_ value. Machine learning
+Parameters are any values used inside your code to tune modeling attributes, or
+that affect experiment results in any other way. For example, a [random forest
+classifier] may require a _maximum depth_ value. Machine learning
 experimentation often involves defining and searching hyperparameter spaces to
 improve the resulting model metrics.
 
