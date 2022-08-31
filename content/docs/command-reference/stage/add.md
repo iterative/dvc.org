@@ -425,7 +425,7 @@ We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 
 </admon>
 
-You can also parse parameters directly from `params.yaml` into the command that 
+You can also parse parameters directly from `params.yaml` into the command that
 DVC executes in a stage:
 
 ```yaml
@@ -433,14 +433,14 @@ stages:
   train:
     cmd: python train_model.py ${seed} model.p
     deps:
-    - train_model.py
-    - matrix-train.p
+      - train_model.py
+      - matrix-train.p
     params:
-    - seed
-    - train.lr
-    - train.epochs
+      - seed
+      - train.lr
+      - train.epochs
     outs:
-    - model.p
+      - model.p
 ```
 
 DVC will keep an eye on these param values (same as with the regular dependency
