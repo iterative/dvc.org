@@ -4,7 +4,7 @@ DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
 1. Save some data, for example in CSV format. This may be an output file from
-   your [ML pipeline].
+   your [ML pipeline][pipelines].
 
    ```csv
    fpr, tpr,  threshold
@@ -44,7 +44,7 @@ workflow is:
 
    This can be done in VS Code via the [Plots Dashboard] of the [DVC Extension].
 
-[ml pipeline]: /doc/start/data-management/pipelines
+[pipelines]: /doc/start/data-management/pipelines
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
@@ -212,30 +212,14 @@ In order to create visualizations, users need to provide the data and
 ways to configure visualizations. Users can mark specific stage
 <abbr>outputs</abbr> as plots or define top-level `plots` in `dvc.yaml`.
 
-### Stage plots
-
-When using `dvc stage add`, instead of using `--outs/--outs-no-cache` particular
-outputs can be marked with `--plots/--plots-no-cache`. This will tell DVC that
-they are intended for visualizations.
-
-Upon running `dvc plots show/diff` DVC will collect stage plots alongside the
-[top-level plots](#top-level-plots) and display them conforming to their
-configuration. Note, that if there are stage plots in the project and they are
-also used in some top-level definitions, DVC will create separate rendering for
-the stage plots and all definitions using them.
-
-This special type of outputs might come in handy if users want to visually
-compare experiments results with other experiments versions and not bother with
-writing top-level plot definitions in `dvc.yaml`.
-
 ### Top-level plots
 
-Plots can also be defined in a top-level `plots` key in `dvc.yaml`. Unlike
-[stage plots](#stage-plots), these definitions let you overlay plots from
-different data sources, for example training vs. test results (on the current
-project version). Conversely, you can create multiple plots from a single source
-file. You can also use any plots file in the project, regardless of whether it's
-a stage outputs. This creates a separation between visualization and outputs.
+Plots can also be defined in a top-level `plots` key in `dvc.yaml`. These let
+you overlay plots from different data sources, for example training vs. test
+results (on the current project version). Conversely, you can create multiple
+plots from a single source file. You can also use any plots file in the project,
+regardless of whether it's a stage outputs. This creates a separation between
+visualization and outputs.
 
 In order to define the plot, users need to provide data and an optional
 configuration for the plot. The plots should be defined in a `dvc.yaml`, file
@@ -277,6 +261,29 @@ examples.
 
 [full format specification]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
+
+### Stage plots
+
+When defining [pipelines], some <abbr>outputs</abbr> can be placed under a
+`plots` list for the corresponding stage. This will tell DVC that they are
+intended for visualization.
+
+<admon type="info">
+
+When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
+`--outs/--outs-no-cache`.
+
+</admon>
+
+Upon running `dvc plots show/diff` DVC will collect stage plots alongside the
+[top-level plots](#top-level-plots) and display them conforming to their
+configuration. Note, that if there are stage plots in the project and they are
+also used in some top-level definitions, DVC will create separate rendering for
+the stage plots and all definitions using them.
+
+This special type of outputs might come in handy if users want to visually
+[compare](#comparing-plots) experiments results with other experiments versions
+without writing top-level `plots` definitions in `dvc.yaml`.
 
 ## Plot templates (data-series only)
 
