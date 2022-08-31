@@ -11,7 +11,7 @@ etc.), and download it to the local project, or make a copy in
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [-j <number>] [--file <filename>]
-                      [--no-exec] [--to-remote] [-r <name>]
+                      [--no-exec | --no-download] [--to-remote] [-r <name>]
                       [--desc <text>]
                       url [out]
 
@@ -134,11 +134,16 @@ produces a regular stage in `dvc.yaml`.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
-  that the data source is valid). This is useful if you need to define the
-  project imports quickly, and download everything later (use `dvc update` to
-  finish the operation(s)); or if the target data already exist locally and you
-  want to "DVCfy" this state of the project (see also `dvc commit`).
+- `--no-exec` - create the import `.dvc` file but don't download `url` or get
+  checksums (assumes that the data source is valid). This is useful if you need
+  to define the project imports quickly, and import the data later (use
+  `dvc update` to finish the operation(s)).
+
+- `--no-download` - create the import `.dvc` with data checksums but without
+  downloading the associated data. This is useful if you need track changes in
+  remote data but do not (yet) need to download data to the local workspace.
+  Data can be later downloaded using `dvc pull`, but will fail if the data
+  matching the checksum is no longer available.
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
