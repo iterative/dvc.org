@@ -3,8 +3,8 @@
 DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
-1. Save some data, for example in CSV format. This may be an output file from
-   your [ML pipeline][pipelines].
+1. Save some data, for example in CSV format. This may be an
+   [ML pipeline output](#stage-plots).
 
    ```csv
    fpr, tpr,  threshold
@@ -44,7 +44,6 @@ workflow is:
 
    This can be done in VS Code via the [Plots Dashboard] of the [DVC Extension].
 
-[pipelines]: /doc/start/data-management/pipelines
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
@@ -209,8 +208,16 @@ file:///Users/usr/src/dvc_plots/index.html
 
 In order to create visualizations, users need to provide the data and
 (optionally) configuration that will help customize the plot. DVC provides two
-ways to configure visualizations. Users can mark specific stage
-<abbr>outputs</abbr> as plots or define top-level `plots` in `dvc.yaml`.
+ways to configure visualizations. Users can define top-level `plots` in
+`dvc.yaml`, or mark specific stage <abbr>outputs</abbr> as plots.
+
+<admon type="info">
+
+DVC will collect both types and display everything conforming to each plot
+configuration. If any stage plot files are also used in a top-level definitions,
+DVC will create separate rendering for each type.
+
+</admon>
 
 ### Top-level plots
 
@@ -256,7 +263,7 @@ plots:
 Note that we didn't have to specify `auc.json` as a plot output in the stage. In
 fact, top-level plots can use any file found in the <abbr>project</abbr>.
 
-📖 Refer to the [full format specification] and to `dvc plots show` for more
+📖 Refer to the [full format specification] and `dvc plots show` for details and
 examples.
 
 [full format specification]:
@@ -275,15 +282,11 @@ When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
 
 </admon>
 
-Upon running `dvc plots show/diff` DVC will collect stage plots alongside the
-[top-level plots](#top-level-plots) and display them conforming to their
-configuration. Note, that if there are stage plots in the project and they are
-also used in some top-level definitions, DVC will create separate rendering for
-the stage plots and all definitions using them.
+Plotting stage outputs might come in handy if users want to visually
+[compare](#comparing-plots) different experiments results without having to
+write top-level `plots` definitions in `dvc.yaml`.
 
-This special type of outputs might come in handy if users want to visually
-[compare](#comparing-plots) experiments results with other experiments versions
-without writing top-level `plots` definitions in `dvc.yaml`.
+[pipelines]: /doc/start/data-management/pipelines
 
 ## Plot templates (data-series only)
 
@@ -292,7 +295,8 @@ create plots from user data. A set of built-in _plot templates_ are included.
 
 The `linear` template is the default. It can be changed with the `--template`
 (`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
-`--template` can be a (built-in) template name or a path to a [custom template].
+`--template` can be a (built-in) template name or a path to a
+[custom template](#custom-templates).
 
 <admon type="tip">
 
@@ -311,17 +315,14 @@ DVC has the following built-in plot templates:
 - `smooth` - linear plot with LOESS smoothing, see
   [example](#example-smooth-plot)
 - `confusion` - confusion matrix, see [example](#example-confusion-matrix)
-
-[custom templates]: /doc/command-reference/plots/templates
-
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
 
 Note that in the case of CSV/TSV metrics files, column names from the table
 header (first row) are equivalent to field names.
 
-Refer to [`templates`](/doc/command-reference/plots/templates) command for more
-information on how to prepare your own template from pre-defined ones.
+Refer to [`templates`](#custom-templates) command for more information on how to
+prepare your own template from pre-defined ones.
 
 <details>
 

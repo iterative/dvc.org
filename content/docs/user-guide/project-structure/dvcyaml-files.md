@@ -491,8 +491,6 @@ plots:
 logs.csv:
 ```
 
-[template]: /doc/user-guide/visualizing-plots#plot-templates-data-series-only
-
 For customization, we can use a plot ID (`confusion_matrix` below). This is
 displayed in as title, unless we override it with a `title` value. We also
 specify columns within the data source file (`confusion_matrix_data.csv`) for
@@ -548,6 +546,8 @@ plots:
 In this case both files should have matching `epoch` series.
 
 </admon>
+
+[template]: /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ### Available configuration fields
 
