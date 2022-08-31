@@ -62,7 +62,8 @@ As shown above, the `dvc data status` displays changes in multiple categories:
   by default, unless [`--unchanged`](#--unchanged) is specified.
 
 By default, `dvc data status` does not show individual changes inside the
-tracked directories, which can be enabled with [`--granular`](#--granular) option.
+tracked directories, which can be enabled with [`--granular`](#--granular)
+option.
 
 ## Options
 
