@@ -475,79 +475,14 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined `dvc plots`
-configurations. Every plot needs a unique file path (relative to the location of
-`dvc.yaml`) as identifier. Optional
-[configuration fields](#available-configuration-fields) can be provided as well.
+The `plots` dictionary contains one or more user-defined `dvc plots`
+configurations. Every plot needs a unique ID, which may be either a file path
+(relative to the location of `dvc.yaml`) or an arbitrary string. Optional
+configuration fields can be provided as well.
 
-In the simplest use, you only need to provide the plot's file path. In the
-example below, DVC will take data from `logs.csv` and use the default plotting
-behavior (apply the `linear` plot [template] to the last found column):
+📖 Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
-```yaml
-# dvc.yaml
----
-plots:
-logs.csv:
-```
-
-For customization, we can use a plot ID (`confusion_matrix` below). This is
-displayed in as title, unless we override it with a `title` value. We also
-specify columns within the data source file (`confusion_matrix_data.csv`) for
-the `y` and `x` axes. Finally, the built-in template for confusion matrices is
-set.
-
-```yaml
-# dvc.yaml
----
-plots:
-  confusion_matrix:
-    y:
-      confusion_matrix_data.csv: predicted_class
-    x: actual_class
-    template: confusion
-```
-
-<admon type="info">
-
-DVC will assume that `actual_class` is also inside `confusion_matrix_data.csv`
-above.
-
-</admon>
-
-You can also provide multiple columns/fields for a single axis:
-
-```yaml
-#dvc.yaml
----
-plots:
-  multiple_series:
-    y:
-      logs.csv: [accuracy, loss]
-    x: epoch
-```
-
-A great advantage of top-level plot definitions is that you can even source data
-from multiple files:
-
-```yaml
-#dvc.yaml
----
-plots:
-  multiple_files:
-    y:
-      train_logs.csv: accuracy
-      test_logs.csv: accuracy
-    x: epoch
-```
-
-<admon type="info">
-
-In this case both files should have matching `epoch` series.
-
-</admon>
-
-[template]: /doc/user-guide/visualizing-plots#plot-templates-data-series-only
+[visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
 
 ### Available configuration fields
 
@@ -564,13 +499,14 @@ In this case both files should have matching `epoch` series.
 
   - Plot outputs: column/field name found in the source plots file.
 
-- `x_label` (string) - X axis label. Defaults to "x".
+- `x_label` (string) - X axis label. Defaults to the X field name.
 
 - `y_label` (string) - Y axis label. If all `y` data sources have the same field
   name, that will be the default. Otherwise, it's "y".
 
-- `title` (string) - header for the plot(s). Uses the plot path and/or ID by
-  default.
+- `title` (string) - header for the plot(s). Defaults:
+  - Top-level plots: `path/to/dvc.yaml::plot_id`
+  - Plot outputs: `path/to/data.csv`
 
 ## dvc.lock file
 

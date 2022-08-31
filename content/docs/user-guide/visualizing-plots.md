@@ -33,21 +33,12 @@ workflow is:
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
    report.
 
-   ![](/img/guide_plots_intro_show_confusion.svg)
-   ![](/img/guide_plots_intro_show_importance.png '=400 :wrap-left')
-   ![](/img/guide_plots_intro_show_roc.svg)
+   ![](/img/guide_plots_intro_show.png)
 
 4. Run [experiments](/doc/user-guide/experiment-management/experiments-overview)
    and [compare](#comparing-plots) the resulting plots.
 
    ![](/img/guide_plots_intro_compare.png)
-
-   This can be done in VS Code via the [Plots Dashboard] of the [DVC Extension].
-
-[plots dashboard]:
-  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
-[dvc extension]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 
 ## Supported plot file formats
 
@@ -59,8 +50,9 @@ To create valid plots files, you can:
 - Save an JPEG, GIF, or PNG image file to render directly in your reports
   (helpful for custom visualizations that would be hard to configure in DVC).
 
-DVC generates plots as static HTML webpages you can open with a web browser
-(they can be saved as SVG or PNG image files from there).
+DVC generates plots as static HTML webpages you can open with a web browser or
+view in VS Code via the [Plots Dashboard] of the [DVC Extension]. (they can be
+saved as SVG or PNG image files from there).
 
 Images are rendered using `<img>` tags directly, without additional processing.
 
@@ -69,6 +61,10 @@ Images are rendered using `<img>` tags directly, without additional processing.
 We recommend [tracking] image files with DVC instead of Git, to prevent the
 repository from bloating.
 
+[plots dashboard]:
+  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
+[dvc extension]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [tracking]: /doc/start/data-management
 
 </admon>
@@ -83,11 +79,11 @@ subcommands can produce plots for a specified column or a set of them. For
 example, `epoch`, `AUC`, and `loss` are the column names below:
 
 ```
-epoch,  AUC,      loss
-34,     0.91935,  0.0317345
-35,     0.91913,  0.0317829
-36,     0.92256,  0.0304632
-37,     0.92302,  0.0299015
+epoch, AUC, loss
+34, 0.91935, 0.0317345
+35, 0.91913, 0.0317829
+36, 0.92256, 0.0304632
+37, 0.92302, 0.0299015
 ```
 
 Hierarchical file formats (JSON and YAML) should contain an array of consistent
@@ -225,11 +221,11 @@ Plots can also be defined in a top-level `plots` key in `dvc.yaml`. These let
 you overlay plots from different data sources, for example training vs. test
 results (on the current project version). Conversely, you can create multiple
 plots from a single source file. You can also use any plots file in the project,
-regardless of whether it's a stage outputs. This creates a separation between
+regardless of whether it's a stage output. This creates a separation between
 visualization and outputs.
 
 In order to define the plot, users need to provide data and an optional
-configuration for the plot. The plots should be defined in a `dvc.yaml`, file
+configuration for the plot. The plots should be defined in a `dvc.yaml` file
 under the top-level `plots` field.
 
 ```yaml
@@ -263,13 +259,66 @@ plots:
 Note that we didn't have to specify `auc.json` as a plot output in the stage. In
 fact, top-level plots can use any file found in the <abbr>project</abbr>.
 
-📖 Refer to the [full format specification] and `dvc plots show` for details and
-examples.
+In the simplest use, you only need to provide the plot's file path. In the
+example below, DVC will take data from `logs.csv` and use the default plotting
+behavior (apply the `linear` plot [template] to the last found column):
 
+```yaml
+# dvc.yaml
+---
+plots:
+  logs.csv:
+```
+
+For customization, we can use a plot ID (`multiple_series` below). This is
+displayed as the title, unless we override it with a `title` value. We specify
+the data source (`logs.csv`) as a key to the `y` axis. We also specify one or
+more columns for the `y` and `x` axes:
+
+```yaml
+#dvc.yaml
+---
+plots:
+  multiple_series:
+    y:
+      logs.csv: [accuracy, loss]
+    x: epoch
+```
+
+<admon type="info">
+
+DVC will assume that `epoch` is also inside `logs.csv` above.
+
+</admon>
+
+A great advantage of top-level plot definitions is that you can even source data
+from multiple files:
+
+```yaml
+#dvc.yaml
+---
+plots:
+  multiple_files:
+    y:
+      train_logs.csv: accuracy
+      test_logs.csv: accuracy
+    x: epoch
+```
+
+<admon type="info">
+
+In this case both files should have matching `epoch` series.
+
+</admon>
+
+📖 Refer to the [full format specification] and `dvc plots show` for more
+details.
+
+[template]: #plot-templates-data-series-only
 [full format specification]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
 
-### Stage plots
+### Plot Outputs
 
 When defining [pipelines], some <abbr>outputs</abbr> can be placed under a
 `plots` list for the corresponding stage. This will tell DVC that they are
@@ -282,9 +331,8 @@ When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
 
 </admon>
 
-Plotting stage outputs might come in handy if users want to visually
-[compare](#comparing-plots) different experiments results without having to
-write top-level `plots` definitions in `dvc.yaml`.
+Plotting stage outputs are convenient for defining plots within the stage
+without having to write top-level `plots` definitions in `dvc.yaml`.
 
 [pipelines]: /doc/start/data-management/pipelines
 
