@@ -61,9 +61,8 @@ As shown above, the `dvc data status` displays changes in multiple categories:
 - _DVC Unchanged files_ shows the files that are not changed. This is not shown
   by default, unless [`--unchanged`](#--unchanged) is specified.
 
-By default, `dvc data status` shows changes to tracked files and directories.
-With [`--granular`](#--granular), it will show changes in individual files
-inside those directories.
+By default, `dvc data status` does not show individual changes inside the
+tracked directories, which can be enabled with [`--granular`](#--granular) option.
 
 ## Options
 
