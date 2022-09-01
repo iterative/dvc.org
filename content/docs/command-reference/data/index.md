@@ -1,6 +1,6 @@
 # data
 
-Contains a command that shows changes in data tracked by dvc:
+Contains a command that shows changes in data tracked by DVC:
 [status](/doc/command-reference/data/status).
 
 ## Synopsis

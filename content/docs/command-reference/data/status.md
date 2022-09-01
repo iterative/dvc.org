@@ -14,12 +14,10 @@ usage: dvc data status [-h] [-q | -v]
 ## Description
 
 The `data status` command displays the state of the working directory and the
-changes with respect to the last Git commit (`HEAD`).
-
-It shows you what new changes have been committed to DVC, which haven't been
-committed, which files aren't being tracked by DVC and Git, and what files are
-missing from the cache. It shows you what's been going on with `dvc add`,
-`dvc commit` and `dvc repro` commands.
+changes with respect to the last Git commit (`HEAD`). It shows you what new
+changes have been committed to DVC, which haven't been committed, which files
+aren't being tracked by DVC and Git, and what files are missing from the
+<abbr>cache</abbr>.
 
 The `dvc data status` command only outputs information, it won't modify or
 change anything in your working directory. It's a good practice to check the
@@ -50,8 +48,8 @@ As shown above, the `dvc data status` displays changes in multiple categories:
   and `.dvc` files but the corresponding cache files are missing.
 - _DVC committed changes_ indicates that there are changes that are
   `dvc-commit`-ed that differs with the last Git commit. There might be more
-  detailed state on how each of those files changed: _added_, _modified_, and
-  _deleted_.
+  detailed state on how each of those files changed: _added_, _modified_,
+  _deleted_ and _unknown_.
 - _DVC uncommitted changes_ indicates that there are changes in the working
   directory that are not `dvc commit`-ed yet. Same as _DVC committed changes_,
   there might be more detailed state on how each of those files changed.
@@ -68,8 +66,8 @@ option.
 ## Options
 
 - `--granular` - show granular, file-level information of the changes for
-  DVC-tracked directories. By default, DVC only shows the changes at the level
-  where the data is being tracked at.
+  DVC-tracked directories. By default, `dvc data status` does not show
+  individual changes for files inside the tracked directories.
 
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
@@ -103,7 +101,7 @@ DVC uncommitted changes:
 ```
 
 This shows that the `data/data.xml` is missing from the cache, `data/features/`
-a directory, has changes that are being tracked by DVC but is not git-committed
+a directory, has changes that are being tracked by DVC but is not Git committed
 yet, and a file `model.pkl` has been deleted from the workspace. The
 `data/features/` directory is modified, but there is no further details to what
 changed inside. The `--granular` option can provide more information on that.
