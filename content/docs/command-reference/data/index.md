@@ -15,10 +15,10 @@ positional arguments:
 
 ## Description
 
-DVC discovers data tracked by DVC using the file path and the file hash
-specified in the `.dvc` and `dvc.lock` files, and builds an index out of it.
+DVC tracks data by saving contents to it's cache, and records its `path` and
+hash value in `.dvc` and `dvc.lock` metafiles.
 
-This is used by DVC, for example, to show `dvc data status`, by comparing
-different versions of the index. DVC uses <abbr>cache</abbr> to compare between
-the specified hashes, the workspace and the actual file present in the cache to
-see if they have changed.
+This is used, for example, to show the changes in `dvc data status` -- by
+comparing between the hash value between last version committed to Git and the
+one present in the `.dvc` and `dvc.lock` files in the workspace, against what is
+currently checked-out in the workspace.

@@ -21,8 +21,8 @@ aren't being tracked by DVC and Git, and what files are missing from the
 
 The `dvc data status` command only outputs information, it won't modify or
 change anything in your working directory. It's a good practice to check the
-state of your repository before doing `git commit` so that you don't
-accidentally commit something you don't mean to.
+state of your repository before doing `dvc commit` or `git commit` so that you
+don't accidentally commit something you don't mean to.
 
 An example output might look something like follows:
 
