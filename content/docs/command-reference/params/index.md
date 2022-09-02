@@ -28,6 +28,9 @@ epochs: 900
 tuning:
   - learning-rate: 0.945
   - max_depth: 7
+paths:
+  - labels: 'materials/labels'
+  - truth: 'materials/ground'
 ```
 
 <admon type="tip">
@@ -53,9 +56,10 @@ stages:
     cmd: python deep.py
     params:
       - epochs # specific param from params.yaml
-      - tuning.learning-rate # from params.yaml
+      - tuning.learning-rate # nested param from params.yaml
+      - paths # entire group from params.yaml
       - myparams.toml:
-          - batch_size # specific param from custom file
+          - batch_size # param from custom file
       - config.json: # all params in this file
 ```
 
@@ -65,14 +69,14 @@ See [more details] about this syntax.
 
 </admon>
 
-The `dvc params diff` command is available to show parameter changes, displaying
-their current and previous values.
-
 <abbr type="tip">
 
 Parameters can also be used for [templating] `dvc.yaml` itself.
 
 </abbr>
+
+The `dvc params diff` command is available to show parameter changes, displaying
+their current and previous values.
 
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
