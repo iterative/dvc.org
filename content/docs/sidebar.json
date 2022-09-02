@@ -221,6 +221,7 @@
       {
         "label": "data",
         "slug": "data",
+        "source": false,
         "children": [
           {
             "label": "data status",
