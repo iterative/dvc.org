@@ -29,7 +29,7 @@ An example output might look something like follows:
 ```dvc
 $ dvc data status
 Not in cache:
-  (use "dvc pull <file>..." to download files)
+  (use "dvc fetch <file>..." to download files)
         data/data.xml
 
 DVC committed changes:
@@ -38,6 +38,7 @@ DVC committed changes:
 
 DVC uncommitted changes:
   (use "dvc commit <file>..." to track changes)
+  (use "dvc checkout <file>..." to discard changes)
         deleted: model.pkl
 (there are other changes not tracked by dvc, use "git status" to see)
 ```
@@ -87,7 +88,7 @@ option.
 ```dvc
 $ dvc data status
 Not in cache:
-  (use "dvc pull <file>..." to download files)
+  (use "dvc fetch <file>..." to download files)
         data/data.xml
 
 DVC committed changes:
@@ -96,6 +97,7 @@ DVC committed changes:
 
 DVC uncommitted changes:
   (use "dvc commit <file>..." to track changes)
+  (use "dvc checkout <file>..." to discard changes)
         deleted: model.pkl
 (there are other changes not tracked by dvc, use "git status" to see)
 ```
@@ -114,7 +116,7 @@ information for the changes:
 ```dvc
 $ dvc data status --granular
 Not in cache:
-  (use "dvc pull <file>..." to download files)
+  (use "dvc fetch <file>..." to download files)
         data/data.xml
 
 DVC committed changes:
@@ -123,6 +125,7 @@ DVC committed changes:
 
 DVC uncommitted changes:
   (use "dvc commit <file>..." to track changes)
+  (use "dvc checkout <file>..." to discard changes)
         deleted: model.pkl
 (there are other changes not tracked by dvc, use "git status" to see)
 ```
