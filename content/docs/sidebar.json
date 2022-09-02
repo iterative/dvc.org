@@ -220,6 +220,17 @@
         "slug": "dag"
       },
       {
+        "label": "data",
+        "slug": "data",
+        "source": false,
+        "children": [
+          {
+            "label": "data status",
+            "slug": "status"
+          }
+        ]
+      },
+      {
         "label": "destroy",
         "slug": "destroy"
       },
