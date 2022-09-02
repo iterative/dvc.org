@@ -19,13 +19,9 @@ positional arguments:
 Parameters can be any values used inside your code to influence the results
 (e.g. machine learning [hyperparameters]). DVC can track these as key/value
 pairs from structured YAML 1.2, JSON, TOML 1.0,
-[or Python](#examples-python-parameters-file) files (`params.yaml` by default),
-from which your code should also read them.
-
-Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
-<abbr>dependency</abbr>, but only certain values will affect each
-<abbr>stage</abbr>. Params usually have simple names like `epochs`,
-`learning-rate`, `batch_size`, etc. Example:
+[or Python](#examples-python-parameters-file) files (`params.yaml` by default).
+Params usually have simple names like `epochs`, `learning-rate`, `batch_size`,
+etc. Example:
 
 ```yaml
 epochs: 900
@@ -33,6 +29,19 @@ tuning:
   - learning-rate: 0.945
   - max_depth: 7
 ```
+
+<admon type="tip">
+
+DVC does not pass the param values to [stage commands]. Your code should load
+them internally, which can be done with `dvc.api.params_show()` in Python.
+
+[stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
+
+</admon>
+
+Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
+<abbr>dependency</abbr>, but only certain values will affect each
+<abbr>stage</abbr>.
 
 To start tracking parameters, list their names under the `params` field of
 `dvc.yaml` (manually or with the the `-p`/`--params` option of `dvc stage add`).
@@ -69,17 +78,12 @@ DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
 is outdated upon `dvc repro` (or `dvc status`).
 
-DVC does not pass the parameter values to [stage commands]. The commands
-executed by DVC should load them by itself, for example using
-`dvc.api.params_show()`.
-
 [hyperparameters]:
   /doc/user-guide/experiment-management/running-experiments#tuning-hyperparameters
 [use the same params file]:
   /doc/user-guide/data-pipelines/defining-pipelines#parameter-dependencies
 [more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
 [templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
-[stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 
 ## Options
 
@@ -306,9 +310,3 @@ $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
                 -p params.py:BOOL,INT,TestConfig \
                 python train.py
 ```
-
-<admon type="tip">
-
-See also `dvc.api.params_show()` to load parameters in Python code.
-
-</admon>
