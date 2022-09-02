@@ -87,6 +87,13 @@ $ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
 $ dvc exp init './another_script.sh $MYENVVAR'
 ```
 
+<admon type="tip">
+
+See also [Templating](#templating) (and **Dict Unpacking**) for useful ways to
+parametrize `cmd` strings.
+
+</admon>
+
 ### Parameters
 
 <abbr>Parameters</abbr> are simple key/value pairs consumed by the `command`
@@ -195,7 +202,8 @@ models:
 ```
 
 Those values can be used anywhere in `dvc.yaml` with the `${}` _substitution
-expression_:
+expression_, for example to pass parameters as command-line arguments to a
+[stage command](#stage-command):
 
 <!-- prettier-ignore-start -->
 ```yaml

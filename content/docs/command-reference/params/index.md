@@ -33,19 +33,6 @@ paths:
   - truth: 'materials/ground'
 ```
 
-<admon type="tip">
-
-DVC does not pass the param values to [stage commands]. Your code should load
-them internally, which can be done with `dvc.api.params_show()` in Python.
-
-[stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
-
-</admon>
-
-Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
-<abbr>dependency</abbr>, but only certain values will affect each
-<abbr>stage</abbr>.
-
 To start tracking parameters, list their names under the `params` field of
 `dvc.yaml` (manually or with the the `-p`/`--params` option of `dvc stage add`).
 For example:
@@ -53,7 +40,7 @@ For example:
 ```yaml
 stages:
   learn:
-    cmd: python deep.py
+    cmd: python deep.py # reads params.yaml internally
     params:
       - epochs # specific param from params.yaml
       - tuning.learning-rate # nested param from params.yaml
@@ -69,11 +56,14 @@ See [more details] about this syntax.
 
 </admon>
 
-<abbr type="tip">
+Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
+<abbr>dependency</abbr>, but only certain values will affect each
+<abbr>stage</abbr>.
 
-Parameters can also be used for [templating] `dvc.yaml` itself.
-
-</abbr>
+Parameters can also be used for [templating] `dvc.yaml` itself (see also **Dict
+Unpacking**), which means you can pass them to your [stage commands] as
+command-line arguments. You can also load them in Python code with
+`dvc.api.params_show()`.
 
 The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
@@ -88,6 +78,7 @@ is outdated upon `dvc repro` (or `dvc status`).
   /doc/user-guide/data-pipelines/defining-pipelines#parameter-dependencies
 [more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
 [templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
+[stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 
 ## Options
 
@@ -114,9 +105,9 @@ process:
   bow: 15000
 ```
 
-Using `dvc stage add`, define a [stage](/doc/command-reference/run) that depends
-on params `lr`, `layers`, and `epochs` from the params file above. Full paths
-should be used to specify `layers` and `epochs` from the `train` group:
+Using `dvc stage add`, define a <abbr>stage</abbr> that depends on params `lr`,
+`layers`, and `epochs` from the params file above. Full paths should be used to
+specify `layers` and `epochs` from the `train` group:
 
 ```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
@@ -257,8 +248,8 @@ class TestConfig:
     METRICS = ['metric']
 ```
 
-The following [stage](/doc/command-reference/run) depends on params `BOOL`,
-`INT`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
+The following <abbr>stage</abbr> depends on params `BOOL`, `INT`, as well as
+`TrainConfig`'s `EPOCHS` and `layers`:
 
 ```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
