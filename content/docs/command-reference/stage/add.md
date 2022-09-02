@@ -425,23 +425,13 @@ We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 
 </admon>
 
-You can also parse parameters directly from `params.yaml` into the command that
-DVC executes in a stage:
+<admon type="tip">
 
-```yaml
-stages:
-  train:
-    cmd: python train_model.py ${seed} model.p
-    deps:
-      - train_model.py
-      - matrix-train.p
-    params:
-      - seed
-      - train.lr
-      - train.epochs
-    outs:
-      - model.p
-```
+You can also [use templating]
+(https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#templating) to 
+parse parameters directly from `params.yaml` into the pipeline stage.
+
+</admon>
 
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See
