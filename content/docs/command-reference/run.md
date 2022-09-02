@@ -111,16 +111,19 @@ Relevant notes:
 
 ### For displaying and comparing data science experiments
 
-[parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
-special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML, JSON, TOML, or Python parameters files
-(e.g. `params.yaml`). This allows tracking experimental hyperparameters easily.
+[parameters][param-deps] (`-p`/`--params` option) are a special type of
+key/value dependencies. Multiple params can be specified from within one or more
+structured files (`params.yaml` by default). This allows tracking experimental
+hyperparameters easily in ML.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
 `--plots-no-cache` options), are also supported. Metrics and plots files have
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
+
+[param-deps]:
+  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
 
 ## Options
 
@@ -165,12 +168,12 @@ data science experiments.
   makes the stage incompatible with `dvc repro`. Implies `--no-exec`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
-  or more [parameter dependencies](/doc/command-reference/params) from a
-  parameters file `path` (`./params.yaml` by default). This is done by sending a
-  comma separated list (`params_list`) as argument, e.g.
-  `-p learning_rate,epochs`. A custom params file can be defined with a prefix,
-  e.g. `-p params.json:threshold`. Or use the prefix alone with `:` to use all
-  the parameters found in that file, e.g. `-p myparams.toml:`.
+  or more [parameter dependencies][param-deps] from a structured file `path`
+  (`./params.yaml` by default). This is done by sending a comma separated list
+  (`params_list`) as argument, e.g. `-p learning_rate,epochs`. A custom params
+  file can be defined with a prefix, e.g. `-p params.json:threshold`. Or use the
+  prefix alone with `:` to use all the parameters found in that file, e.g.
+  `-p myparams.toml:`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
