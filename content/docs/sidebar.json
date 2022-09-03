@@ -94,7 +94,15 @@
       },
       "experiment-tracking",
       "model-registry",
-      "data-registry"
+      {
+        "slug": "data-registry",
+        "children": [
+          {
+            "label": "Tutorial 👩‍💻",
+            "slug": "tutorial"
+          }
+        ]
+      }
     ]
   },
   {
