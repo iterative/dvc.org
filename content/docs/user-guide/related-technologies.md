@@ -12,8 +12,7 @@ bringing best practices from software engineering into the data science field
   versions of data, data pipelines, and experiments.
 
 - DVC is not fundamentally bound to Git, and can work without it (except
-  [versioning-related](/doc/use-cases/versioning-data-and-model-files)
-  features).
+  [versioning-related](/doc/use-cases/versioning-data-and-models) features).
 
 ## Git-LFS (Large File Storage)
 

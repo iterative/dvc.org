@@ -23,7 +23,7 @@ ML model registries give your team key capabilities:
   without touching the applications that consume them.
 - For security, control who can manage models, and audit their usage trails.
 
-[versions]: /doc/use-cases/versioning-data-and-model-files
+[versions]: /doc/use-cases/versioning-data-and-models
 [mp]: /doc/start/metrics-parameters-plots
 [experiments]: /doc/user-guide/experiment-management
 
