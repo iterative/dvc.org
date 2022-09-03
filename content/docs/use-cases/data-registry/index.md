@@ -4,8 +4,8 @@ One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
 DVC also enables cross-project [reusability](/doc/start/data-and-model-access)
 of these <abbr>data artifacts</abbr>. This means that your projects can depend
-on data from other DVC repositories — like a **package management system for
-data science**.
+on data from other repositories — like a **package management system for data
+science**.
 
 ![](/img/data-registry.png) _Data management middleware_
 
@@ -33,6 +33,11 @@ cloud storage. Advantages:
   endpoints (e.g. an HTTP server) to prevent data deletions or alterations.
 
 [remote storage]: /doc/command-reference/remote
+
+👩‍💻 Intrigued? Try our [registry tutorial] to learn how DVC looks and feels
+firsthand.
+
+[registry tutorial]: /doc/use-cases/data-registry/tutorial
 
 <admon type="info">
 
