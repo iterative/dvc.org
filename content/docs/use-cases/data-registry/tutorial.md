@@ -133,7 +133,7 @@ scenarios such as a _model zoo_.
 
 See also the `dvc.api.read()` and `dvc.api.get_url()` functions.
 
-## Maintaining registries
+## Updating registries
 
 Datasets evolve, and DVC is prepared to handle it. Just change the data in the
 registry, and apply the updates by running `dvc add` again:
