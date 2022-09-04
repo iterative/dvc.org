@@ -31,8 +31,8 @@ the data, [restore](/doc/command-reference/checkout) previous versions,
 [metrics](/doc/command-reference/metrics), and more!
 
 👩‍💻 **Intrigued?** Try our
-[versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-to learn how DVC looks and feels firsthand.
+[versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial) to
+learn how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
 [cached](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
