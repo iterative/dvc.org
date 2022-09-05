@@ -10,7 +10,7 @@
     "doc": "LIMIT_BLOG_PAGES=1 gatsby develop",
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
-    "start": "node ./src/server/index.js",
+    "start": "node ./src/server.js",
     "heroku-postbuild": "./scripts/heroku-deploy.sh",
     "test": "jest",
     "format-staged": "pretty-quick --staged --no-restage --bail --pattern '**/*.{js,jsx,md,tsx,ts,json}'",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.1.14",
+    "@dvcorg/websites-server": "^0.0.1",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^5.0.0",
     "@reach/portal": "^0.17.0",
