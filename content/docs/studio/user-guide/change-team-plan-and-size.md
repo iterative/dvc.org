@@ -1,6 +1,6 @@
 # Change Team Plan and Size
 
-## Change the plan your Team is on
+## Change the plan your team is on
 
 To change the plan for your team, go to the `Plan and billing` section within
 [team settings]. Then click on `Change plan` (under `Current plan`).
@@ -67,7 +67,7 @@ needs and suggest a suitable plan and pricing.
 
 For any changes to the plan, please contact your focal point at Iterative.
 
-## Change the size of your Team
+## Change the size of your team
 
 You can change the size of your team within the Basic, Teams or Enterprise plans
 at any point.
