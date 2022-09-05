@@ -107,11 +107,11 @@ $ tree
 └── dvclive.json
 ```
 
-The contents of the `dvclive` folder and `dvclive.json` will vary depending on
-the type of data you have logged and whether you have updated the step value or
-not.
+The outputs will vary depending on the type of data you have logged and whether
+you have updated the step value or not.
 
-See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
+See `Live.log()` (`dvclive/scalars` and `dvclive.json`), `Live.log_image()`
+(`dvclive/images`) and `Live.log_plot()` (`dvclive/plots`) for more details.
 
 ### Metrics report
 
