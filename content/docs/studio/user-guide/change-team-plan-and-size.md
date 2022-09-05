@@ -5,12 +5,12 @@
 To change the plan for your team, go to the `Plan and billing` section within
 [team settings]. Then click on `Change plan` (under `Current plan`).
 
-![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing.png)
+![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing_v2.png)
 
 An Iterative Studio plan comparison page will open. Your current plan will be
 marked.
 
-![](https://static.iterative.ai/img/studio/team_settings_plans_and_features.png)
+![](https://static.iterative.ai/img/studio/team_settings_plans_and_features_v2.png)
 
 [team settings]: /doc/studio/user-guide/teams#settings
 

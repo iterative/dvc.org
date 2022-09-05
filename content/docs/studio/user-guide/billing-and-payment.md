@@ -19,7 +19,7 @@ manage billing and payment for them.
 - [How total price is calculated](#how-total-price-is-calculated), including
   effects of making changes to the plan during the billing period.
 - [Downgrading a plan](#downgrading-a-plan)
-- [Billing period and auto-renewal of basic plans](#billing-period-and-auto-renewal-of-basic-plans)
+- [Billing period and auto-renewal of Basic plans](#billing-period-and-auto-renewal-of-basic-plans)
 - [Grace period for non-payment](#grace-period-for-non-payment)
 - [Payment processor and accepted payment methods](#payment-processor-and-accepted-payment-methods)
 - [Accessing your payment history and invoices](#accessing-your-payment-history-and-invoices)
