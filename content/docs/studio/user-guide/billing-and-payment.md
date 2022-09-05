@@ -10,40 +10,40 @@ Studio is free for individuals and teams with up to 2 members. The Free plan is
 designed for teams that are starting out: you can invite one other team member
 and import as many repositories as you want.
 
-For more advanced collaboration, you can switch to the Team or Enterprise plans.
-These are paid plans, and in this page you will learn how to manage billing and
-payment for them.
+For more advanced collaboration, you can switch to the Basic, Teams or
+Enterprise plans. These are paid plans, and in this page you will learn how to
+manage billing and payment for them.
 
-- [Difference between Free, Team, and Enterprise plans](#difference-between-free-team-and-enterprise-plans)
-- [How to sign up for the Team or Enterprise plans](#how-to-sign-up-for-the-team-or-enterprise-plans)
+- [Difference between Free, Basic, Teams, and Enterprise plans](#difference-between-free-basic-teams-and-enterprise-plans)
+- [How to sign up for the Basic, Teams or Enterprise plans](#how-to-sign-up-for-the-basic-teams-or-enterprise-plans)
 - [How total price is calculated](#how-total-price-is-calculated), including
   effects of making changes to the plan during the billing period.
 - [Downgrading a plan](#downgrading-a-plan)
-- [Billing period and auto-renewal of team plans](#billing-period-and-auto-renewal-of-team-plans)
+- [Billing period and auto-renewal of basic plans](#billing-period-and-auto-renewal-of-basic-plans)
 - [Grace period for non-payment](#grace-period-for-non-payment)
 - [Payment processor and accepted payment methods](#payment-processor-and-accepted-payment-methods)
 - [Accessing your payment history and invoices](#accessing-your-payment-history-and-invoices)
 - [Other questions](#other-questions)
 
-## Difference between Free, Team, and Enterprise plans
+## Difference between Free, Basic, Teams, and Enterprise plans
 
 A detailed comparison of the different plans can be found in the Iterative
 Studio [pricing page](https://studio.iterative.ai/pricing).
 
-## How to sign up for the Team or Enterprise plans
+## How to sign up for the Basic, Teams or Enterprise plans
 
-When you sign up, you're on the **Free plan**. To switch to the **Team plan**
+When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 [create a team] first, then go to the [team settings] and click on `Change plan`
-in the `Plan and billing` section. To switch to the **Enterprise plan**, please
-[contact us].
+in the `Plan and billing` section. To switch to the **Teams** or **Enterprise**
+plan, please [contact us].
 
 [team settings]: /doc/studio/user-guide/teams#settings
 [contact us]: /doc/studio/troubleshooting#support
 
 ## How total price is calculated
 
-For Team plans, invoice amount is calculated based on the number of seats in the
-team. All invoice amounts are calculated for one billing period at a time. A
+For Basic plans, invoice amount is calculated based on the number of seats in
+the team. All invoice amounts are calculated for one billing period at a time. A
 billing period is one month long. The price per seat can be found in the
 Iterative Studio [pricing page](https://studio.iterative.ai/pricing).
 
@@ -53,8 +53,8 @@ seat, the total payable amount for the team would be $40 x 5 = $200 per month.
 Increasing or decreasing the number of seats during a billing period will result
 in prorated amount calculation (see the next section for an example).
 
-For Enterprise plans, all invoice amounts are calculated based on the agreement
-between you and Iterative.
+For Teams and Enterprise plans, all invoice amounts are calculated based on the
+agreement between you and Iterative.
 
 ### How increasing or decreasing the number of seats affects price
 
@@ -76,24 +76,24 @@ prorated difference. It will be applied automatically for future payment.
 You can decrease the number of seats in your plan at any point, as explained in
 the previous section.
 
-To cancel the Team plan and move back to the Free plan, decrease the number of
+To cancel the Basic plan and move back to the Free plan, decrease the number of
 seats in the team to 1 or 2 and click on `Downgrade`. A prorated credit will be
 added to your account for the remaining days in the billing period. It will be
 applied automatically for future payment.
 
-When you downgrade from the Team plan to the Free plan, you will receive a
+When you downgrade from the Basic plan to the Free plan, you will receive a
 prorated refund for the days remaining in the billing period. For inquiries
 about refunds, please [contact us].
 
-To upgrade to or downgrade from an Enterprise plan, please [contact us].
+To upgrade to or downgrade from Teams or Enterprise plan, please [contact us].
 
-## Billing period and auto-renewal of Team plans
+## Billing period and auto-renewal of Basic plans
 
-The billing period for each team plan subscription starts on the date of the
+The billing period for each Basic plan subscription starts on the date of the
 subscription and is one month long. For example, if your subscription date is
 the 15th of May, your next billing period will start on the 15th of June.
 
-Team plan subscriptions are renewed automatically for one more month at the end
+Basic plan subscriptions are renewed automatically for one more month at the end
 of each billing period.
 
 Seven (7) days before the end of your billing period you will receive an email
@@ -120,13 +120,13 @@ balance.
 
 ## Payment processor and accepted payment methods
 
-We rely on [Stripe](https://stripe.com/) to process (Team plan) payments. We do
+We rely on [Stripe](https://stripe.com/) to process (Basic plan) payments. We do
 not handle your payment information (including credit card details) directly. We
 are PCI compliant and your payment information is handled securely by Stripe.
 
 We accept the following cards: Visa, Mastercard, American Express, Discover,
 Diners Club and JCB. You can change your payment method and billing address for
-the Team plan at any time by going to the `Plan and billing` section of your
+the Basic plan at any time by going to the `Plan and billing` section of your
 team settings. You will be redirected to Stripe to make these changes.
 
 ## Accessing your payment history and invoices
