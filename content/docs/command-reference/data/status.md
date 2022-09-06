@@ -57,7 +57,7 @@ As shown above, the `dvc data status` displays changes in multiple categories:
 - _Untracked files_ shows the files that are not being tracked by DVC and Git.
   This is disabled by default, unless [`--untracked-files`](#--untracked-files)
   is specified.
-- _DVC Unchanged files_ shows the files that are not changed. This is not shown
+- _DVC unchanged files_ shows the files that are not changed. This is not shown
   by default, unless [`--unchanged`](#--unchanged) is specified.
 
 By default, `dvc data status` does not show individual changes inside the
