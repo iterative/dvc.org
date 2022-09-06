@@ -1,6 +1,6 @@
 # data status
 
-Show changes in the data tracked by DVC in the workspace.
+Show changes to the files and directories tracked by DVC.
 
 ## Synopsis
 
