@@ -43,26 +43,31 @@ DVC uncommitted changes:
 (there are other changes not tracked by dvc, use "git status" to see)
 ```
 
-As shown above, the `dvc data status` displays changes in multiple categories:
+`dvc data status` displays changes in multiple categories:
 
-- _Not in cache_ indicates that the hash for files are recorded in `dvc.lock`
-  and `.dvc` files but the corresponding cache files are missing.
-- _DVC committed changes_ indicates that there are changes that are
-  `dvc-commit`-ed that differs with the last Git commit. There might be more
-  detailed state on how each of those files changed: _added_, _modified_,
-  _deleted_ and _unknown_.
-- _DVC uncommitted changes_ indicates that there are changes in the working
-  directory that are not `dvc commit`-ed yet. Same as _DVC committed changes_,
-  there might be more detailed state on how each of those files changed.
-- _Untracked files_ shows the files that are not being tracked by DVC and Git.
-  This is disabled by default, unless [`--untracked-files`](#--untracked-files)
-  is specified.
-- _DVC unchanged files_ shows the files that are not changed. This is not shown
-  by default, unless [`--unchanged`](#--unchanged) is specified.
+- `Not in cache` indicates that there are file records (hashes) in `.dvc` or
+  `dvc.lock` files, but the corresponding <abbr>cache</abbr> files are missing.
+  This may happen after cloning a DVC repository but before using `dvc pull` (or
+  `dvc fetch`) to download the data; or after using `dvc gc`.
+
+- `Committed changes` are new, modified, or deleted tracked files or directories
+  that have been [committed to DVC]. These may be ready for committing to Git.
+
+- `Uncommitted changes` are new, modified, or deleted tracked files or
+  directories that have not been [committed to DVC] yet. You can `dvc add` or
+  `dvc commit` these.
+
+- `Untracked files` have not been added to DVC (nor Git). Only shown if the
+  `--untracked-files` flag is used.
+
+- `Unchanged files` have no modifications. Only shown if the `--unchanged` flag
+  is used.
 
 By default, `dvc data status` does not show individual changes inside the
 tracked directories, which can be enabled with [`--granular`](#--granular)
 option.
+
+[committed to dvc]: /doc/command-reference/commit
 
 ## Options
 
