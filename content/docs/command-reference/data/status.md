@@ -50,8 +50,9 @@ DVC uncommitted changes:
   This may happen after cloning a DVC repository but before using `dvc pull` (or
   `dvc fetch`) to download the data; or after using `dvc gc`.
 
-- `DVC committed changes` are new, modified, or deleted tracked files or directories
-  that have been [committed to DVC]. These may be ready for committing to Git.
+- `DVC committed changes` are new, modified, or deleted tracked files or
+  directories that have been [committed to DVC]. These may be ready for
+  committing to Git.
 
 - `DVC uncommitted changes` are new, modified, or deleted tracked files or
   directories that have not been [committed to DVC] yet. You can `dvc add` or
