@@ -427,9 +427,10 @@ We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 
 <admon type="tip">
 
-You can also [use templating]
-(https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#templating) to
-parse parameters directly from `params.yaml` into the pipeline stage.
+You can also [use templating] to parse parameters directly from `params.yaml`
+into the stage.
+
+[use templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
 
 </admon>
 
