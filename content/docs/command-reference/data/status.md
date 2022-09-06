@@ -63,17 +63,17 @@ DVC uncommitted changes:
 - `Unchanged files` have no modifications. Only shown if the `--unchanged` flag
   is used.
 
-By default, `dvc data status` does not show individual changes inside the
-tracked directories, which can be enabled with [`--granular`](#--granular)
-option.
+Individual changes to files inside [directories tracked as a whole] are not
+shown by default but this can be enabled with the `--granular` flag.
 
 [committed to dvc]: /doc/command-reference/commit
+[directories tracked as a whole]:
+  /doc/command-reference/add#adding-entire-directories
 
 ## Options
 
-- `--granular` - show granular, file-level information of the changes for
-  DVC-tracked directories. By default, `dvc data status` does not show
-  individual changes for files inside the tracked directories.
+- `--granular` - show granular file-level changes inside DVC-tracked
+  directories. Not included by default
 
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
