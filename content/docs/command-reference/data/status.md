@@ -88,6 +88,29 @@ shown by default but this can be enabled with the `--granular` flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+## Examples
+
+```dvc
+$ dvc data status
+Not in cache:
+  (use "dvc fetch <file>..." to download files)
+        data/data.xml
+DVC committed changes:
+  (git commit the corresponding dvc files to update the repo)
+        modified: data/features/
+DVC uncommitted changes:
+  (use "dvc commit <file>..." to track changes)
+  (use "dvc checkout <file>..." to discard changes)
+        deleted: model.pkl
+(there are other changes not tracked by dvc, use "git status" to see)
+```
+
+This shows that the `data/data.xml` is missing from the cache, `data/features/`
+a directory, has changes that are being tracked by DVC but is not Git committed
+yet, and a file `model.pkl` has been deleted from the workspace. The
+`data/features/` directory is modified, but there is no further details to what
+changed inside. The `--granular` option can provide more information on that.
+
 ## Example: Granular output
 
 Following on from the above example, using `--granular` will show file-level
