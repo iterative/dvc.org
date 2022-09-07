@@ -1,7 +1,7 @@
 # Defining Pipelines
 
 Pipelines represent data workflows that you want to **reproduce** reliably -- so
-the results are consistent. The regular pipelining process involves:
+the results are consistent. The typical pipelining process involves:
 
 - Obtain and `dvc add` or `dvc import` the project's initial data requirements
   (see [Data Management]). This <abbr>caches</abbr> the data and generates
@@ -44,6 +44,8 @@ files to find stages, rebuilding all the pipelines that these may define.
 [metrics]: /doc/command-reference/metrics
 [plots]: /doc/user-guide/visualizing-plots
 
+<details>
+
 ## Directed Acyclic Graph (DAG)
 
 DVC represents a pipeline internally as a _graph_ where the nodes are stages and
@@ -51,16 +53,11 @@ the edges are _directed_ dependencies (e.g. A before B). And in order for DVC to
 run a pipeline, its topology should be _acyclic_ -- because executing cycles
 (e.g. A -> B -> C -> A ...) would continue indefinitely. [More about DAGs].
 
-<admon type="info">
-
-Stage execution will be determined entirely by the DAG, not by the order in
-which stages are found in `dvc.yaml`.
-
-</admon>
-
 Use `dvc dag` to visualize (or export) them.
 
 [more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
+
+</details>
 
 ## Stages
 
@@ -137,6 +134,13 @@ are not available this way.
 
 Notice that the new `train` stage depends on the output from stage `prepare`
 (`data/clean.csv`), forming the pipeline ([DAG](#directed-acyclic-graph-dag)).
+
+<admon type="info">
+
+Stage execution sequences will be determined entirely by the DAG, not by the
+order in which stages are found in `dvc.yaml`.
+
+</admon>
 
 ## Simple dependencies
 
@@ -221,13 +225,14 @@ Use `dvc params diff` to compare parameters across project versions.
 
 ## Outputs
 
-Stage outputs are files written by <abbr>pipelines</abbr> such as machine
-learning models, intermediate artifacts, as well as data [plots] and performance
-[metrics]. These files are <abbr>cached</abbr> by DVC automatically, and tracked
-with the help of `dvc.lock` files (or `.dvc` files, see `dvc add`).
+Stage outputs are files (or directories) written by <abbr>pipelines</abbr>, for
+example machine learning models, intermediate artifacts, as well as data [plots]
+and performance [metrics]. These files are <abbr>cached</abbr> by DVC
+automatically, and tracked with the help of `dvc.lock` files (or `.dvc` files,
+see `dvc add`).
 
-Output definitions can connect stages to one another (as explained earlier). So
-when they change, DVC may need to reproduce subsequent stages as well (handled
+Outputs can be dependencies of subsequent stages (as explained earlier). So when
+they change, DVC may need to reproduce downstream stages as well (handled
 automatically).
 
 The types of outputs are:
@@ -238,13 +243,14 @@ The types of outputs are:
 - [Metrics]: DVC supports small text files that usually contain model
   performance metrics from the evaluation, validation, or testing phases of the
   ML lifecycle. DVC allows to compare produced metrics with one another using
-  `dvc metrics diff` and presents the results as a table with
-  `dvc metrics show`.
+  `dvc metrics diff` and presents the results as a table with `dvc metrics show`
+  or `dvc exp show`.
 
 - [Plots]: Different kinds of data that can be visually graphed. For example
   contrast ML performance statistics or continuous metrics from multiple
   experiments. `dvc plots show` can generate charts for certain data files or
-  render custom image files for you.
+  render custom image files for you, or you can compare different ones with
+  `dvc plots diff`.
 
 <admon type="info">
 
