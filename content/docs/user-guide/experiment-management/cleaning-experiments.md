@@ -233,7 +233,7 @@ $ dvc exp show
 ```
 
 ```dvc
-$ dvc queue remove --queued
+$ dvc exp remove --queue
 $ dvc exp show
 ```
 
