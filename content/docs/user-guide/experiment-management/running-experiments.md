@@ -45,7 +45,8 @@ once.
 > 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
 
 [reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]: /doc/command-reference/dag#directed-acyclic-graph
+[dependency graph]:
+  /doc/user-guide/data-pipelines/defining-pipelines#directed-acyclic-graph
 
 ## Tuning (hyper)parameters
 

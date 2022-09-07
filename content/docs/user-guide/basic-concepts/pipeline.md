@@ -1,7 +1,11 @@
 ---
-name: Pipeline (DAG)
-match: [DAG, pipeline, 'data pipeline', 'data pipelines']
+name: Pipeline
+match: [pipeline, pipelines, 'data pipeline', 'data pipelines']
 tooltip: >-
-  A set of inter-dependent stages. This is also called a [dependency
-  graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+  DVC pipelines describe data processing workflows in a standard declarative
+  YAML format ([`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files)).
+  This guarantees DVC can reproduce them consistently. DVC also helps automate
+  their execution and caches their results. See [Defining
+  Pipelines](/doc/user-guide/data-pipelines/defining-pipelines) for more
+  details.
 ---
