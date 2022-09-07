@@ -3,13 +3,16 @@
 DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
-1. Save some data, for example in CSV format. This may be an
+1. Save some data, for example in JSON format. This may be an
    [ML pipeline output](#stage-plots).
 
-   ```csv
-   fpr, tpr,  threshold
-   0.0, 0.0,  1.5
-   1.0, 1.0,  0.0
+   ```json
+   [
+       {
+           "actual": "0",
+           "predicted": "0"
+       },
+   ...
    ```
 
 2. [Define plots](#defining-plots), optionally using
@@ -54,8 +57,6 @@ DVC generates plots as static HTML webpages you can open with a web browser or
 view in VS Code via the [Plots Dashboard] of the [DVC Extension]. (they can be
 saved as SVG or PNG image files from there).
 
-Images are rendered using `<img>` tags directly, without additional processing.
-
 <admon type="tip">
 
 We recommend [tracking] image files with DVC instead of Git, to prevent the
@@ -74,48 +75,11 @@ _float numbers_) in the file. These are rendered using
 [Vega-Lite](https://vega.github.io/vega-lite/) (declarative grammar for defining
 graphics).
 
+### Tabular data
+
 In tabular file formats (CSV and TSV), each column is an array. `dvc plots`
 subcommands can produce plots for a specified column or a set of them. For
-example, `epoch`, `AUC`, and `loss` are the column names below:
-
-```
-epoch, AUC, loss
-34, 0.91935, 0.0317345
-35, 0.91913, 0.0317829
-36, 0.92256, 0.0304632
-37, 0.92302, 0.0299015
-```
-
-Hierarchical file formats (JSON and YAML) should contain an array of consistent
-objects (sharing a common structure): All objects should contain the fields used
-for the X and Y axis of the plot (see [DVC template anchors]); Extra elements
-will be ignored silently.
-
-`dvc plots` subcommands can produce plots for a specified field or a set of
-them, from the array's objects. For example, `val_loss` is one of the field
-names in the `train` array below:
-
-```json
-{
-  "train": [
-    { "val_accuracy": 0.9665, "val_loss": 0.10757 },
-    { "val_accuracy": 0.9764, "val_loss": 0.07324 },
-    { "val_accuracy": 0.877, "val_loss": 0.08136 },
-    { "val_accuracy": 0.874, "val_loss": 0.09026 },
-    { "val_accuracy": 0.8795, "val_loss": 0.0764 },
-    { "val_accuracy": 0.8803, "val_loss": 0.07608 },
-    { "val_accuracy": 0.8987, "val_loss": 0.08455 }
-  ]
-}
-```
-
-[dvc template anchors]: /doc/command-reference/plots/templates#custom-templates
-
-<details>
-
-### Example: Tabular data (CSV, TSV)
-
-We'll use tabular metrics file `logs.csv` for these examples:
+example, `epoch`, `loss`, and `accuracy` are the column names below:
 
 ```
 epoch,loss,accuracy
@@ -125,36 +89,25 @@ epoch,loss,accuracy
 4,0.04,0.96
 ```
 
-<admon type="info">
-
-Here's a corresponding `logs.tsv` metrics file:
-
-```
-epoch	loss	accuracy
-1	0.19	0.81
-2	0.11	0.89
-3	0.07	0.93
-4	0.04	0.96
-```
-
-</admon>
-
-By default, this command plots the last column of the table (see `-y` option):
+You can configure how DVC visualizes the data (see `dvc plots show`):
 
 ```cli
-$ dvc plots show logs.csv
+$ dvc plots show logs.csv -x epoch -y loss
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
-![](/img/plots_show.svg)
+![](/img/plots_show_field.svg)
 
-</details>
+### Hierarchical data
 
-<details>
+Hierarchical file formats (JSON and YAML) should contain an array of consistent
+objects (sharing a common structure): All objects should contain the fields used
+for the X and Y axis of the plot (see [DVC template anchors]); Extra elements
+will be ignored silently.
 
-### Example: Hierarchical data (JSON, YAML)
-
-We'll use tabular metrics file `train.json` for this example:
+`dvc plots` subcommands can produce plots for a specified field or a set of
+them, from the array's objects. For example, `loss` is one of the field names in
+the `train` array below:
 
 ```json
 {
@@ -170,35 +123,16 @@ We'll use tabular metrics file `train.json` for this example:
 }
 ```
 
-<admon type="info">
-
-Here's a corresponding `train.yaml` metrics file:
-
-```yaml
-train:
-  - accuracy: 0.96658
-    loss: 0.10757
-  - accuracy: 0.97641
-    loss: 0.07324
-  - accuracy: 0.87707
-    loss: 0.08136
-  - accuracy: 0.87402
-    loss: 0.09026
-```
-
-</admon>
-
-DVC identifies and plots JSON objects from the first JSON array found in the
-file (`train`):
+You can configure how DVC visualizes the data (see `dvc plots show`):
 
 ```cli
-$ dvc plots show train.json
+$ dvc plots show train.json -y loss
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_json.svg)
 
-</details>
+[dvc template anchors]: /doc/command-reference/plots/templates#custom-templates
 
 ## Defining plots
 
@@ -217,47 +151,8 @@ DVC will create separate rendering for each type.
 
 ### Top-level plots
 
-Plots can also be defined in a top-level `plots` key in `dvc.yaml`. These let
-you overlay plots from different data sources, for example training vs. test
-results (on the current project version). Conversely, you can create multiple
-plots from a single source file. You can also use any plots file in the project,
-regardless of whether it's a stage output. This creates a separation between
-visualization and outputs.
-
-In order to define the plot, users need to provide data and an optional
-configuration for the plot. The plots should be defined in a `dvc.yaml` file
-under the top-level `plots` field.
-
-```yaml
-# dvc.yaml
-stages: ...
-
-plots: ...
-```
-
-This example makes output `auc.json` viable for visualization, configuring keys
-`fpr` and `tpr` as X and Y axis, respectively:
-
-```yaml
-stages:
-  build:
-    cmd: python train.py
-    deps:
-      - features.csv
-    outs:
-      - model.pt
-      - auc.json
-    metrics:
-      - accuracy.txt:
-          cache: false
-plots:
-  auc.json:
-    x: fpr
-    y: tpr
-```
-
-Note that we didn't have to specify `auc.json` as a plot output in the stage. In
-fact, top-level plots can use any file found in the <abbr>project</abbr>.
+Plots can be defined in a top-level `plots` key in `dvc.yaml`. Top-level plots
+can use any file found in the <abbr>project</abbr>.
 
 In the simplest use, you only need to provide the plot's file path. In the
 example below, DVC will take data from `logs.csv` and use the default plotting
@@ -266,50 +161,54 @@ behavior (apply the `linear` plot [template] to the last found column):
 ```yaml
 # dvc.yaml
 ---
+stages:
+  build:
+    cmd: python train.py
+    outs:
+      - logs.csv
+  ...
 plots:
   logs.csv:
 ```
 
-For customization, we can use a plot ID (`multiple_series` below). This is
-displayed as the title, unless we override it with a `title` value. We specify
-the data source (`logs.csv`) as a key to the `y` axis. We also specify one or
-more columns for the `y` and `x` axes:
-
-```yaml
-#dvc.yaml
----
-plots:
-  multiple_series:
-    y:
-      logs.csv: [accuracy, loss]
-    x: epoch
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
-<admon type="info">
+![](/img/plots_show_spec_default.svg)
 
-DVC will assume that `epoch` is also inside `logs.csv` above.
+For customization, we can:
 
-</admon>
-
-A great advantage of top-level plot definitions is that you can even source data
-from multiple files:
+- Use a plot ID (`test_vs_train_confusion`) that is not a file path.
+- Specify one or more columns for the `x` (`actual_class`) and `y`
+  (`predicted_class`) axes.
+- Specify one or more data sources (`train_classes.csv` and `test_classes.csv`)
+  as keys to the `y` axis.
+- Specify any other available configuration field (`title`, `template`,
+  `x_label`, `y_label`).
 
 ```yaml
-#dvc.yaml
+# dvc.yaml
 ---
 plots:
-  multiple_files:
+  test_vs_train_confusion:
+    x: actual_class
     y:
-      train_logs.csv: accuracy
-      test_logs.csv: accuracy
-    x: epoch
+      train_classes.csv: predicted_class
+      test_classes.csv: predicted_class
+    title: Compare test vs train confusion matrix
+    template: confusion
+    x_label: Actual class
+    y_label: Predicted class
 ```
 
-<admon type="info">
+```dvc
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
 
-In this case both files should have matching `epoch` series.
-
-</admon>
+![](/img/plots_show_spec_conf_train_test.svg)
 
 📖 Refer to the [full format specification] and `dvc plots show` for more
 details.
@@ -331,8 +230,22 @@ When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
 
 </admon>
 
+```yaml
+# dvc.yaml
+---
+stages:
+  build:
+    cmd: python train.py
+    plots:
+      - logs.csv:
+        x: epoch
+        y: loss
+  ...
+```
+
 Plotting stage outputs are convenient for defining plots within the stage
-without having to write top-level `plots` definitions in `dvc.yaml`.
+without having to write top-level `plots` definitions in `dvc.yaml`. They do not
+support custom plot IDs or multiple data sources.
 
 [pipelines]: /doc/start/data-management/pipelines
 
@@ -343,8 +256,8 @@ create plots from user data. A set of built-in _plot templates_ are included.
 
 The `linear` template is the default. It can be changed with the `--template`
 (`-t`) option of `dvc plots show` and `dvc plots diff`. The argument provided to
-`--template` can be a (built-in) template name or a path to a
-[custom template](#custom-templates).
+`--template` can be a (built-in) template name or a path to a [custom
+template][custom templates].
 
 <admon type="tip">
 
@@ -361,98 +274,26 @@ DVC has the following built-in plot templates:
   [custom templates].
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
-  [example](#example-smooth-plot)
-- `confusion` - confusion matrix, see [example](#example-confusion-matrix)
+  [example](/doc/command-reference/plots/show#example-smooth-plot)
+- `confusion` - confusion matrix, see
+  [example](/doc/command-reference/plots/show#example-confusion-matrix)
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
 
 Note that in the case of CSV/TSV metrics files, column names from the table
 header (first row) are equivalent to field names.
 
-Refer to [`templates`](#custom-templates) command for more information on how to
-prepare your own template from pre-defined ones.
+Refer to `dvc plots templates` for more information on how to prepare your own
+template from pre-defined ones.
 
-<details>
-
-### Example: Smooth plot
-
-In some cases we would like to smooth our plot. In this example we will use a
-noisy plot with 100 data points:
-
-```dvc
-$ dvc plots show data.csv
-file:///Users/usr/src/dvc_plots/index.html
-```
-
-![](/img/plots_show_no_smooth.svg)
-
-We can use the `-t` (`--template`) option and `smooth` template to make it less
-noisy:
-
-```dvc
-$ dvc plots show -t smooth data.csv
-file:///Users/usr/src/dvc_plots/index.html
-```
-
-![](/img/plots_show_smooth.svg)
-
-</details>
-
-<details>
-
-### Example: Confusion matrix
-
-We'll use `classes.csv` for this example:
-
-```
-actual,predicted
-cat,cat
-cat,cat
-cat,cat
-cat,dog
-cat,dinosaur
-cat,dinosaur
-cat,bird
-turtle,dog
-turtle,cat
-...
-```
-
-Let's visualize it:
-
-```dvc
-$ dvc plots show classes.csv --template confusion \
-                             -x actual -y predicted
-file:///Users/usr/src/dvc_plots/index.html
-```
-
-![](/img/plots_show_confusion.svg)
-
-<admon type="info">
-
-A confusion matrix [template](#plot-templates-data-series-only) is predefined in
-DVC.
-
-</admon>
-
-We can use `confusion_normalized` template to normalize the results:
-
-```dvc
-$ dvc plots show classes.csv -t confusion_normalized
-                             -x actual -y predicted
-file:///Users/usr/src/dvc_plots/index.html
-```
-
-![](/img/plots_show_confusion_normalized.svg)
-
-</details>
+[custom templates]: /doc/command-reference/plots/templates#custom-templates
 
 ## Comparing plots
 
-When you run [experiments] or otherwise update the data in the plots files,those
-updates will be automatically reflected in your visualizations. To compare
+When you run [experiments] or otherwise update the data in the plots files,
+those updates will be automatically reflected in your visualizations. To compare
 between experiments or Git [revisions], you can use `dvc plots diff` or the
-[plots dashboard] from the [VS Code Extension].
+[plots dashboard] from the [VS Code Extension][dvc extension].
 
 ![](/img/plots_compare_vs_code.png)
 

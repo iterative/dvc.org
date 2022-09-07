@@ -505,8 +505,14 @@ configuration fields can be provided as well.
   name, that will be the default. Otherwise, it's "y".
 
 - `title` (string) - header for the plot(s). Defaults:
+
   - Top-level plots: `path/to/dvc.yaml::plot_id`
   - Plot outputs: `path/to/data.csv`
+
+- `template` (string) - [plot template]. Defaults to `linear`.
+
+[plot template]:
+  https://dvc.org/doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ## dvc.lock file
 

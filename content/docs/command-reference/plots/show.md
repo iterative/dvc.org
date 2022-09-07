@@ -91,7 +91,7 @@ The default behavior of this command can be modified per [stage plot] file with
 
 ## Example: Hierarchical data
 
-We'll use tabular metrics file `train.json` for this example:
+We'll use hierarchical metrics file `train.json` for this example:
 
 ```json
 {
