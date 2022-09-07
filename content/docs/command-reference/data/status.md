@@ -64,12 +64,11 @@ DVC uncommitted changes:
 - _Unchanged files_ have no modifications. Only shown if the `--unchanged` flag
   is used.
 
-Individual changes to files inside [directories tracked as a whole] are not
-shown by default but this can be enabled with the `--granular` flag.
+Individual changes to files inside [tracked directories] are not shown by
+default but this can be enabled with the `--granular` flag.
 
 [committed to dvc]: /doc/command-reference/commit
-[directories tracked as a whole]:
-  /doc/command-reference/add#adding-entire-directories
+[tracked directories]: /doc/command-reference/add#adding-entire-directories
 
 ## Options
 
