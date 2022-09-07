@@ -259,8 +259,6 @@ The `linear` template is the default. It can be changed with the `--template`
 `--template` can be a (built-in) template name or a path to a [custom
 template][custom templates].
 
-[custom templates]: /doc/command-reference/plots/templates
-
 <admon type="tip">
 
 For templates stored in `.dvc/plots` (default location for custom templates),

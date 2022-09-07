@@ -1,7 +1,7 @@
 # plots templates
 
-List built-in plots templates or show JSON specification for one so that you can
-save and customize it.
+List built-in plots templates, or show JSON specification for one so that you
+can save and customize it.
 
 ## Synopsis
 
@@ -17,9 +17,9 @@ positional arguments:
 
 By default, lists the names of all available built-in templates.
 
-Some times you may need to customize the way `dvc plots` are rendered beyond
-what the built-in [plot templates] allow. You can get the JSON specification for
-a specific built-in template by providing it's name as argument, for example
+Sometimes you may need to customize the way `dvc plots` are rendered beyond what
+the built-in [plot templates] allow. You can get the JSON specification for a
+specific built-in template by providing it's name as argument, for example
 `dvc plots templates confusion`. To modify them, use any valid elements of the
 [Vega-Lite specification].
 
@@ -110,10 +110,6 @@ $ dvc plots templates simple > bars_template.json
 
 Now, let's modify the `bars_template.json` file to display the bars (instead of
 a line):
-
-```cli
-$ cat bars_template.json
-```
 
 ```git
  {
