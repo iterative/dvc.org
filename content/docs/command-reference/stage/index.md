@@ -24,3 +24,6 @@ organize data science projects, or build detailed machine learning pipelines.
 `dvc stage add` can be used to create/update stages in the `dvc.yaml` file. Use
 `dvc stage list` or `dvc dag` to discover existing stages without having to
 examine `dvc.yaml` files manually.
+
+Learn more about
+[defining stages](/doc/user-guide/data-pipelines/defining-pipelines#stages).

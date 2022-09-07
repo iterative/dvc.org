@@ -192,7 +192,7 @@ featurize:
 ### ⚙️ Expand to recall how it was generated.
 
 The `featurize` stage
-[was created](/doc/start/data-pipelines#dependency-graphs-dags) with this
+[was created](/doc/start/data-pipelines#dependency-graphs-dag) with this
 `dvc run` command. Notice the argument sent to the `-p` option (short for
 `--params`):
 

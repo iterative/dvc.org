@@ -21,9 +21,8 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize
-[certain data](/doc/user-guide/visualizing-plots#supported-file-formats) such as
-loss functions, AUC curves, confusion matrices, etc.
+This command provides a quick way to visualize [certain data] such as loss
+functions, AUC curves, confusion matrices, etc.
 
 All plots defined in `dvc.yaml` are used by default, but specific plots files or
 [top-level plot] IDs can be specified as `targets` (note that target files don't
@@ -39,6 +38,7 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
+[certain data]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
 [plot templates]:
   /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 [top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
@@ -91,7 +91,7 @@ The default behavior of this command can be modified per [stage plot] file with
 
 ## Example: Hierarchical data
 
-We'll use tabular metrics file `train.json` for this example:
+We'll use hierarchical metrics file `train.json` for this example:
 
 ```json
 {

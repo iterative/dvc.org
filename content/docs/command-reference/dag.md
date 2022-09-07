@@ -1,7 +1,7 @@
 # dag
 
-Visualize the <abbr>pipeline</abbr>(s) in `dvc.yaml` as one or more graph(s) of
-connected [stages](/doc/command-reference/run).
+Visualize <abbr>pipelines</abbr> as one or more <abbr>stage</abbr> dependency
+graphs.
 
 ## Synopsis
 
@@ -17,28 +17,15 @@ positional arguments:
 
 ## Description
 
-Displays the stages of a pipeline up to the `target` stage. If the `target` is
-omitted, it will show the full project DAG.
+DVC represents a pipeline internally as a **Directed Acyclic Graph** (DAG) where
+the nodes are stages and the edges are dependencies.
 
-### Directed acyclic graph
+`dvc dag` displays this dependency graph in one or more pipelines, as defined in
+the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a `target` stage
+name to show the pipeline up to that point.
 
-A data pipeline, in general, is a series of data processing
-[stages](/doc/command-reference/run) (for example, console commands that take an
-input and produce an outcome). The connections between stages are formed by the
-<abbr>output</abbr> of one turning into the <abbr>dependency</abbr> of another.
-A pipeline may produce intermediate data, and has a final result.
-
-Data science and machine learning pipelines typically start with large raw
-datasets, include intermediate featurization and training stages, and produce a
-final model, as well as accuracy [metrics](/doc/command-reference/metrics).
-
-In DVC, pipeline stages and commands, their data I/O, interdependencies, and
-results (intermediate or final) are specified in `dvc.yaml`, which can be
-written manually or built using the helper command `dvc stage add`. This allows
-DVC to restore one or more pipelines later (see `dvc repro`).
-
-> DVC builds a dependency graph
-> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.
+[directed acyclic graph]:
+  /doc/user-guide/data-pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Paginating the output
 
