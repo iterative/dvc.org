@@ -20,7 +20,7 @@ learning models, and you want to
 
 - track and save data and machine learning models the same way you capture code;
 - create and switch between
-  [versions of data and ML models](/doc/use-cases/versioning-data-and-model-files)
+  [versions of data and ML models](/doc/use-cases/versioning-data-and-models)
   easily;
 - understand how datasets and ML artifacts were built in the first place;
 - compare model metrics among <abbr>experiments</abbr>;

@@ -76,9 +76,7 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data and Models",
-        "slug": "versioning-data-and-model-files",
-        "source": "versioning-data-and-model-files/index.md",
+        "slug": "versioning-data-and-models",
         "children": [
           {
             "label": "Tutorial 👩‍💻",
@@ -96,7 +94,15 @@
       },
       "experiment-tracking",
       "model-registry",
-      "data-registry"
+      {
+        "slug": "data-registry",
+        "children": [
+          {
+            "label": "Tutorial 👩‍💻",
+            "slug": "tutorial"
+          }
+        ]
+      }
     ]
   },
   {
@@ -154,9 +160,7 @@
           "share-a-dvc-cache"
         ]
       },
-      {
-        "slug": "visualizing-plots"
-      },
+      "visualizing-plots",
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -164,7 +168,6 @@
         "label": "Managing External Data",
         "slug": "managing-external-data"
       },
-
       "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
@@ -217,6 +220,17 @@
       {
         "label": "dag",
         "slug": "dag"
+      },
+      {
+        "label": "data",
+        "slug": "data",
+        "source": false,
+        "children": [
+          {
+            "label": "data status",
+            "slug": "status"
+          }
+        ]
       },
       {
         "label": "destroy",

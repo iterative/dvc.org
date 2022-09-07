@@ -10,7 +10,7 @@ Download a file or directory tracked by another DVC or Git repository into the
 ```usage
 usage: dvc import [-h] [-q | -v] [-j <number>]
                   [-o <path>] [--file <filename>]
-                  [--rev <commit>] [--no-exec] [--desc <text>]
+                  [--rev <commit>] [--no-exec | --no-download] [--desc <text>]
                   url path
 
 positional arguments:
@@ -105,9 +105,13 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 
 - `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
   that the data source is valid). This is useful if you need to define the
-  project imports quickly, and download everything later (use `dvc update` to
-  finish the operation(s)); or if the target data already exist locally and you
-  want to "DVCfy" this state of the project (see also `dvc commit`).
+  project imports quickly, and import the data later (use `dvc update` to finish
+  the operation(s)).
+
+- `--no-download` - create the import `.dvc` with data checksums but without
+  downloading the associated data. This is useful if you need track changes in
+  remote data but do not (yet) need to download data to the local workspace.
+  Data can be later downloaded using `dvc pull`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
@@ -217,7 +221,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > Used in our
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
+> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial)
 
 Or
 

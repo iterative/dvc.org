@@ -49,9 +49,9 @@ For details about how DVC caches your files and directories, see [Structure of
 the cache directory]. If you're completely new to DVC, see our
 [Get Started](/doc/start) pages to get familiar with the main features that
 structured storage and
-[data versioning](/doc/use-cases/versioning-data-and-model-files) allow. And
-check out the following example for a specific solution provided by a layered
-storage architecture.
+[data versioning](/doc/use-cases/versioning-data-and-models) allow. And check
+out the following example for a specific solution provided by a layered storage
+architecture.
 
 [structure of the cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
