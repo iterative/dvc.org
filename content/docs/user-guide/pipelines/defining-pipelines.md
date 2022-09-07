@@ -44,6 +44,8 @@ files to find stages, rebuilding all the pipelines that these may define.
 [metrics]: /doc/command-reference/metrics
 [plots]: /doc/user-guide/visualizing-plots
 
+<details>
+
 ## Directed Acyclic Graph (DAG)
 
 DVC represents a pipeline internally as a _graph_ where the nodes are stages and
@@ -51,16 +53,11 @@ the edges are _directed_ dependencies (e.g. A before B). And in order for DVC to
 run a pipeline, its topology should be _acyclic_ -- because executing cycles
 (e.g. A -> B -> C -> A ...) would continue indefinitely. [More about DAGs].
 
-<admon type="info">
-
-Stage execution will be determined entirely by the DAG, not by the order in
-which stages are found in `dvc.yaml`.
-
-</admon>
-
 Use `dvc dag` to visualize (or export) them.
 
 [more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
+
+</details>
 
 ## Stages
 
@@ -137,6 +134,13 @@ are not available this way.
 
 Notice that the new `train` stage depends on the output from stage `prepare`
 (`data/clean.csv`), forming the pipeline ([DAG](#directed-acyclic-graph-dag)).
+
+<admon type="info">
+
+Stage execution sequences will be determined entirely by the DAG, not by the
+order in which stages are found in `dvc.yaml`.
+
+</admon>
 
 ## Simple dependencies
 
