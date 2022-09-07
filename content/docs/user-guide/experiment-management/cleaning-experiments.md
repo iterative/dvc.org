@@ -218,7 +218,7 @@ $ dvc exp run --queue -S param=10
 Queued experiment '7b83744' for future execution.
 $ dvc exp run --queue -S param=20
 Queued experiment '68808d5' for future execution.
-$ dvc queue start
+$ dvc exp show
 ```
 
 ```dvctable
