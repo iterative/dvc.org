@@ -11,7 +11,7 @@
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > to encapsulate your local environment.
 
-> ⚠️ Note that Python 3.7+ is needed to get the latest version of DVC.
+> ⚠️ Note that Python 3.8+ is needed to get the latest version of DVC.
 
 ```dvc
 $ pip install dvc

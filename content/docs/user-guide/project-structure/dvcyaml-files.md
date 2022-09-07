@@ -117,7 +117,7 @@ stages:
     outs:
       - model.pt
     metrics:
-      - accuracy.txt:
+      - accuracy.json:
           cache: false
     plots:
       - auc.json:
@@ -475,98 +475,44 @@ validation and auto-completion.
 
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined top-level plots (paths
-relative to the location of `dvc.yaml`).
+The `plots` dictionary contains one or more user-defined `dvc plots`
+configurations. Every plot needs a unique ID, which may be either a file path
+(relative to the location of `dvc.yaml`) or an arbitrary string. Optional
+configuration fields can be provided as well.
 
-Every plot has to have its own ID. Configuration, if provided, should be a
-dictionary.
+📖 Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
-In the simplest use case, a user can provide the file path as the plot ID and
-not provide configuration at all:
-
-```yaml
-# dvc.yaml
----
-plots:
-  logs.csv:
-```
-
-In that case the default behavior will be applied. DVC will take data from
-`logs.csv` file and apply `linear` plot
-[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) to
-the last found column (CSV, TSV files) or field (JSON, YAML).
-
-We can customize the plot by adding appropriate fields to the configuration:
-
-```yaml
-# dvc.yaml
----
-plots:
-  confusion_matrix:
-    y:
-      confusion_matrix_data.csv: predicted_class
-    x: actual_class
-    template: confusion
-```
-
-In this case we provided `confusion_matrix` as a plot ID. It will be displayed
-in the plot as a title, unless we override it with `title` field. In this case
-we provided data source in `y` axis definition. Data will be sourced from
-`confusion_matrix_data.csv`. As `y` axis we will use `predicted_class` field. On
-`x` axis we will have `actual_class` field. Note that DVC will assume that
-`actual_class` is inside `confusion_matrix_data.csv`.
-
-We can provide multiple columns/fields from the same file:
-
-```yaml
-#dvc.yaml
----
-plots:
-  multiple_series:
-    y:
-      logs.csv: [accuracy, loss]
-    x: epoch
-```
-
-In this case, we will take `accuracy` and `loss` fields and display them agains
-`epoch` column, all coming from `logs.csv` file.
-
-We can source the data from multiple files too:
-
-```yaml
-#dvc.yaml
----
-plots:
-  multiple_files:
-    y:
-      train_logs.csv: accuracy
-      test_logs.csv: accuracy
-    x: epoch
-```
-
-In this case we will plot `accuracy` field from both `train_logs.csv` and
-`test_logs.csv` against the `epoch`. Note that both files have to have `epoch`
-field.
+[visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
 
 ### Available configuration fields
 
-- `x` - field name from which the X axis data comes from. An auto-generated
-  _step_ field is used by default. It has to be a string.
+- `x` (string) - column/field name from which the X axis data comes from. An
+  auto-generated _step_ field is used by default.
 
-- `y` - field name from which the Y axis data comes from.
-  - Top-level plots: It can be a string, list or dictionary. If its a string or
-    list, it is assumed that plot ID will be the path to the data source.
-    String, or list elements will be the names of data columns or fields withing
-    the source file. If this field is a dictionary, it is assumed that its keys
-    are paths to data sources. The values have to be either strings or lists,
-    and are treated as column(s)/field(s) within respective files.
-  - Plot outputs: It is a field name from which the Y axis data comes from.
-- `x_label` - X axis label. The X field name is the default.
-- `y_label` - Y axis label. If all provided Y entries have the same field name,
-  this name will be the default, `y` string otherwise.
-- `title` - Plot title. Defaults:
+- `y` - source from which the Y axis data comes from:
+
+  - Top-level plots: Accepts string, list, or dictionary. For strings and lists,
+    the plot ID is used as path to the data source. List elements will be the
+    names of columns/fields within the source file. For dictionaries, the keys
+    are used as paths to data sources. The values (strings or lists) are treated
+    as the source column/field names.
+
+  - Plot outputs: column/field name found in the source plots file.
+
+- `x_label` (string) - X axis label. Defaults to the X field name.
+
+- `y_label` (string) - Y axis label. If all `y` data sources have the same field
+  name, that will be the default. Otherwise, it's "y".
+
+- `title` (string) - header for the plot(s). Defaults:
+
   - Top-level plots: `path/to/dvc.yaml::plot_id`
-  - Plot outputs: Path to the file.
+  - Plot outputs: `path/to/data.csv`
+
+- `template` (string) - [plot template]. Defaults to `linear`.
+
+[plot template]:
+  https://dvc.org/doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ## dvc.lock file
 

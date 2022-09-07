@@ -23,8 +23,8 @@ track and version data outside of the <abbr>project</abbr>.
 ## How external outputs work
 
 External <abbr>outputs</abbr> will be tracked by DVC for
-[versioning](/doc/use-cases/versioning-data-and-model-files), detecting when
-they change (reported by `dvc status`, for example).
+[versioning](/doc/use-cases/versioning-data-and-models), detecting when they
+change (reported by `dvc status`, for example).
 
 To use existing files or directories in an external location as outputs, give
 their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`

@@ -24,7 +24,7 @@ perfect solution, but here are some ideas:
   [good performance](https://itigic.com/wsl-vs-wsl2-performance-in-windows-10-update/)
   (and can even
   [access GPUs](https://channel9.msdn.com/Shows/Tabs-vs-Spaces/GPU-Accelerated-Machine-Learning-with-WSL-2)).
-- The full [Cmder](https://cmder.net/) console emulator is another good option.
+- The full [Cmder](https://cmder.app/) console emulator is another good option.
   It combines several useful tools like [ConEmu](https://conemu.github.io/)
   terminal and [Git for Windows](https://gitforwindows.org/) (Git Bash), among
   [other shells](https://github.com/cmderdev/cmder/blob/master/README.md#features).

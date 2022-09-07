@@ -66,8 +66,8 @@ abstraction/codification and require no external services.
 **Data Validation**: It is common practice for tests to be triggered each time a
 code change is pushed to a repository branch. DVC can be used in a similar
 manner to checkout
-[different data versions](/doc/use-cases/versioning-data-and-model-files) for
-the purposes of testing and running sanity checks. Mistakes can be caught
+[different data versions](/doc/use-cases/versioning-data-and-models) for the
+purposes of testing and running sanity checks. Mistakes can be caught
 automatically without requiring contributors to set up complicated tests
 locally. Instead, embrace agile development so you can confidently package,
 deploy and deliver new versions several times a day -- and even before the

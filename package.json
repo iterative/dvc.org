@@ -39,7 +39,7 @@
     "node": ">=14.x <=18.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.12",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.14",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^5.0.0",
     "@reach/portal": "^0.17.0",
@@ -60,6 +60,7 @@
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-image": "^2.19.0",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
+    "gatsby-source-rss-feed": "^1.2.2",
     "github-markdown-css": "^5.1.0",
     "http-proxy-middleware": "^2.0.6",
     "iso-url": "^1.2.1",
