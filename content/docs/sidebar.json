@@ -76,9 +76,7 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data and Models",
-        "slug": "versioning-data-and-model-files",
-        "source": "versioning-data-and-model-files/index.md",
+        "slug": "versioning-data-and-models",
         "children": [
           {
             "label": "Tutorial 👩‍💻",
@@ -96,7 +94,15 @@
       },
       "experiment-tracking",
       "model-registry",
-      "data-registry"
+      {
+        "slug": "data-registry",
+        "children": [
+          {
+            "label": "Tutorial 👩‍💻",
+            "slug": "tutorial"
+          }
+        ]
+      }
     ]
   },
   {

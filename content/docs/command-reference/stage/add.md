@@ -403,6 +403,15 @@ We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 
 </admon>
 
+<admon type="tip">
+
+You can also [use templating] to parse parameters directly from `params.yaml`
+into the stage.
+
+[use templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
+
+</admon>
+
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See
 `dvc params` for more details.
