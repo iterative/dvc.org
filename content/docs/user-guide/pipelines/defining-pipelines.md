@@ -186,10 +186,10 @@ changed for the purpose of stage invalidation.
 ## Parameter dependencies
 
 A more granular type of dependency is the parameter (`params` field of
-`dvc.yaml`), or _hyperparameters_ in machine learning. These represent simple
-values used inside your code to tune data processing, or that affect stage
-execution in any other way. For example, training a [Neural Network] usually
-requires _batch size_ and _epoch_ values.
+`dvc.yaml`), or _hyperparameters_ in machine learning. These are any values used
+inside your code to tune data processing, or that affect stage execution in any
+other way. For example, training a [Neural Network] usually requires _batch
+size_ and _epoch_ values.
 
 Instead of hard-coding param values, your code can read them from a structured
 file (e.g. YAML format). DVC can track any key/value pair in a supported
@@ -228,7 +228,8 @@ Use `dvc params diff` to compare parameters across project versions.
 Stage outputs are files (or directories) written by <abbr>pipelines</abbr>, for
 example machine learning models, intermediate artifacts, as well as data [plots]
 and performance [metrics]. These files are <abbr>cached</abbr> by DVC
-automatically, and tracked with the help of `dvc.lock` files.
+automatically, and tracked with the help of `dvc.lock` files (or `.dvc` files,
+see `dvc add`).
 
 Outputs can be dependencies of subsequent stages (as explained earlier). So when
 they change, DVC may need to reproduce downstream stages as well (handled
