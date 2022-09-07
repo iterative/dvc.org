@@ -1,7 +1,7 @@
 # Defining Pipelines
 
 Pipelines represent data workflows that you want to **reproduce** reliably -- so
-the results are consistent. The regular pipelining process involves:
+the results are consistent. The typical pipelining process involves:
 
 - Obtain and `dvc add` or `dvc import` the project's initial data requirements
   (see [Data Management]). This <abbr>caches</abbr> the data and generates
