@@ -45,23 +45,23 @@ DVC uncommitted changes:
 
 `dvc data status` displays changes in multiple categories:
 
-- `Not in cache` indicates that there are file records (hashes) in `.dvc` or
+- _Not in cache_ indicates that there are file records (hashes) in `.dvc` or
   `dvc.lock` files, but the corresponding <abbr>cache</abbr> files are missing.
   This may happen after cloning a DVC repository but before using `dvc pull` (or
   `dvc fetch`) to download the data; or after using `dvc gc`.
 
-- `DVC committed changes` are new, modified, or deleted tracked files or
+- _DVC committed changes_ are new, modified, or deleted tracked files or
   directories that have been [committed to DVC]. These may be ready for
   committing to Git.
 
-- `DVC uncommitted changes` are new, modified, or deleted tracked files or
+- _DVC uncommitted changes_ are new, modified, or deleted tracked files or
   directories that have not been [committed to DVC] yet. You can `dvc add` or
   `dvc commit` these.
 
-- `Untracked files` have not been added to DVC (nor Git). Only shown if the
+- _Untracked files_ have not been added to DVC (nor Git). Only shown if the
   `--untracked-files` flag is used.
 
-- `Unchanged files` have no modifications. Only shown if the `--unchanged` flag
+- _Unchanged files_ have no modifications. Only shown if the `--unchanged` flag
   is used.
 
 Individual changes to files inside [directories tracked as a whole] are not
