@@ -1,7 +1,8 @@
 # exp run
 
-Run or resume a
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview).
+Run or resume a [DVC experiment].
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
@@ -38,9 +39,8 @@ Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
 It's possible to [queue experiments] for later execution with the `--queue`
-flag. Queued experiments can be run using `dvc queue start`, refer to the
-`dvc queue` documentation for more information on managing the experiment task
-queue.
+flag. Queued experiments can be run with `dvc queue start` and managed with
+other `dvc queue` commands.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
@@ -102,10 +102,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   workspace (in `.dvc/tmp/exps`). Use `-j` to execute them
   [in parallel](#queueing-and-parallel-execution).
 
-- `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
-  parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
-  is processed serially).
-
   <admon type="warn">
 
   `dvc exp run --run-all [--jobs]` is now a shortcut for
@@ -113,6 +109,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   and `--jobs` options will be deprecated in a future DVC release.
 
   </admon>
+
+- `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
+  parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
+  is processed serially).
 
 - `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.

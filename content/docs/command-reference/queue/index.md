@@ -1,13 +1,14 @@
 # queue
 
-A set of commands to manage the
-[DVC experiments](/doc/user-guide/experiment-management/experiments-overview)
-task queue: [start](/doc/command-reference/queue/start),
+A set of commands to manage the [DVC experiments] task queue:
+[start](/doc/command-reference/queue/start),
 [stop](/doc/command-reference/queue/stop),
 [status](/doc/command-reference/queue/status),
 [logs](/doc/command-reference/queue/logs),
 [remove](/doc/command-reference/queue/remove),
 [kill](/doc/command-reference/queue/kill)
+
+[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
@@ -27,8 +28,13 @@ positional arguments:
 
 ## Description
 
-`dvc queue` subcommands provide specialized ways to manage queued experiment
-tasks.
+You can use `dvc exp run --queue` to queue ML experiments. `dvc queue` provides
+an interface to process and manage these queued tasks.
+
+📖 See [this guide] for more information on experiment queues.
+
+[this guide]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Options
 
