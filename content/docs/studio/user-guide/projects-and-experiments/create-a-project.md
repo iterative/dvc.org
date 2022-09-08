@@ -101,4 +101,4 @@ Each team will have its own projects dashboard, and the projects that you create
 in the team's dashboard will be accessible to all members of the team.
 
 To add more than 2 collaborators in your team, you can
-[upgrade to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+[upgrade to the **Basic**, **Teams** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
