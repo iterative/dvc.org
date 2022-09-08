@@ -508,7 +508,7 @@ editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 validation and auto-completion.
 
 > See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+> [How to Merge Conflicts](/doc/user-guide/how-to/resolve-merge-conflicts#dvcyaml).
 
 <admon type="warn">
 
