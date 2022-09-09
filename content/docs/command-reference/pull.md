@@ -124,7 +124,8 @@ used to see what files `dvc pull` would download.
 
 - `--glob` - allows pulling files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
-  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`. Only
+  matches against files present in the workspace.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
