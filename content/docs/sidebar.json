@@ -521,6 +521,10 @@
     "source": "api-reference/index.md",
     "children": [
       {
+        "slug": "dvcfs",
+        "label": "DvcFileSystem"
+      },
+      {
         "slug": "get_url",
         "label": "get_url()"
       },
