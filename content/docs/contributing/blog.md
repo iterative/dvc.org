@@ -53,8 +53,9 @@ tags:
 - `picture` (optional) - cover image, relative to `static/uploads/images`
 - `pictureComment` (optional) - cover image comment. Supports basic Markdown
   markup.
-- `author` (**required**) - base name of the file in `content/authors`
-  representing this post's author. See
+- `authors` (**required**) - list of filenames from `content/authors`
+  representing the post's authors. The first author is shown most prominently.
+  Even if there is only one author, this field must be a list. See
   [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
   new author.
 - `commentsUrl` (optional) - link to the [DVC forum](https://discuss.dvc.org)
