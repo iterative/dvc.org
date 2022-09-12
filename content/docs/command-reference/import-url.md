@@ -141,13 +141,13 @@ produces a regular stage in `dvc.yaml`.
   the operation(s)).
 
 - `--no-download` - create the import `.dvc` file including
-  [hash values](/doc/user-guide/project-structure/dvc-files#output-entries)
-  for the remote file but without downloading the associated data. This is
-  useful if you need track changes in remote data but do not (yet) need to
-  download data to the local workspace. Data can be later downloaded using
-  `dvc pull`, but will fail if the data matching the file's hash values is no
-  longer available. When remote data changes, file hashes in the `.dvc` file can
-  be updated using `dvc update --no-download`.
+  [hash values](/doc/user-guide/project-structure/dvc-files#output-entries) for
+  the remote file but without downloading the associated data. This is useful if
+  you need track changes in remote data but do not (yet) need to download data
+  to the local workspace. Data can be later downloaded using `dvc pull`, but
+  will fail if the data matching the file's hash values is no longer available.
+  When remote data changes, file hashes in the `.dvc` file can be updated using
+  `dvc update --no-download`.
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
