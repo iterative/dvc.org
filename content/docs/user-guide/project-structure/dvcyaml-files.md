@@ -59,7 +59,8 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 
 <admon type="tip">
 
-Output files may be viable data sources for [top-level plots](#top-level-plots).
+Output files may be viable data sources for
+[top-level plots](#top-level-plot-definitions).
 
 </admon>
 
