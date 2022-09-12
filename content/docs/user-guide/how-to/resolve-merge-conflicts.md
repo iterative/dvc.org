@@ -84,8 +84,7 @@ versions, then you can follow this process:
 
 If you have an "append-only" dataset (where people only add new
 files/directories) DVC provides a [Git merge driver] that can automatically
-resolve merge conflicts into a parent branch. To use it, first set it up in your
-Git repo:
+resolve merge conflicts for you. To use it, first set it up in your Git repo:
 
 ```dvc
 $ git config merge.dvc.name 'DVC merge driver'
