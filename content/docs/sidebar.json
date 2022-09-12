@@ -160,7 +160,7 @@
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
+          "resolve-merge-conflicts",
           "share-a-dvc-cache"
         ]
       },

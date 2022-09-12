@@ -31,7 +31,7 @@ human-friendly schema described below. We encourage you to get familiar with it
 so you may modify, write, or generate `.dvc` files on your own.
 
 > See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvc-files).
+> [How to Merge Conflicts](/doc/user-guide/how-to/resolve-merge-conflicts#dvc-files).
 
 ## Specification
 
