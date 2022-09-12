@@ -33,8 +33,8 @@ can version experiments, manage large datasets, and make projects reproducible.
   transfer large datasets or share a GPU-trained model with others.
 
 - DVC makes data science projects **reproducible** by creating lightweight
-  [pipelines](/doc/command-reference/dag) using implicit dependency graphs, and
-  by codifying the data and artifacts involved.
+  [pipelines] using implicit dependency graphs, and by codifying the data and
+  artifacts involved.
 
 - DVC is **platform agnostic**: It runs on all major operating systems (Linux,
   macOS, and Windows), and works independently of the programming languages
@@ -51,6 +51,7 @@ can version experiments, manage large datasets, and make projects reproducible.
 [free]: https://github.com/iterative/dvc/blob/master/LICENSE
 [vs code extension]: /doc/vs-code-extension
 [command line]: /doc/command-reference
+[pipelines]: /doc/user-guide/data-pipelines
 
 ## DVC does not replace Git!
 

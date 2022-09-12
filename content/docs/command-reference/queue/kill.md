@@ -1,8 +1,8 @@
 ## queue kill
 
-Kill actively running
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview)
-tasks.
+Kill actively running [DVC experiment] tasks (see `dvc queue start`).
+
+[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
@@ -15,22 +15,21 @@ positional arguments:
 
 ## Description
 
-Forcefully stops execution of the specified (running) experiment tasks. Killed
-tasks will be considered as failed runs.
-
-This command does not stop the queue worker process. After the specified task
-has been killed, the worker process will consume and execute the next experiment
-task in the queue.
-
-To kill all running experiment tasks and also stop queue processing, you can use
-`dvc queue stop --kill`.
+Forcefully stops execution of the specified (running) experiment tasks.
 
 <admon type="warn">
 
-Note that killed experiment tasks will be considered failed runs and will not be
+Note that killed experiments will be considered failed runs and will not be
 re-added to the queue for future execution.
 
 </admon>
+
+This command does not stop the `dvc queue start` worker(s). After the specified
+task has been killed, a worker will move on to process the next experiment task
+in the queue.
+
+To kill all running experiments and also stop processing the queue, use
+`dvc queue stop --kill`.
 
 ## Options
 

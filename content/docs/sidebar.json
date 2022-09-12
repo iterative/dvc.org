@@ -150,13 +150,17 @@
         ]
       },
       {
+        "slug": "pipelines",
+        "children": ["defining-pipelines"]
+      },
+      {
         "slug": "how-to",
         "source": false,
         "children": [
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
+          "resolve-merge-conflicts",
           "share-a-dvc-cache"
         ]
       },

@@ -25,11 +25,20 @@ positional arguments:
 
 ## Description
 
-`dvc plots` subcommands help you visualize and compare data or images produced
-by machine learning projects, letting you fully customize graph settings and
-style.
+You can visualize and compare JSON, YAML 1.2, CSV, TSV data files or JPEG, GIF,
+PNG images found in your project. Typically these are artifacts of an [ML
+pipeline] or performance logs produced by [DVCLive].
 
-📖 See [Visualizing Plots](/doc/user-guide/visualizing-plots) for more info.
+`dvc plots` subcommands help you customize and generate these plots.
+
+📖 See [Visualizing Plots] as well as the top-level plots definition
+[specification] for more details.
+
+[ml pipeline]: /doc/start/data-management/pipelines
+[dvclive]: /doc/dvclive/dvclive-with-dvc
+[visualizing plots]: /doc/user-guide/visualizing-plots
+[specification]:
+  /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
 
 ## Options
 

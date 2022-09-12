@@ -22,10 +22,9 @@ positional arguments:
 
 ## Description
 
-Provides a way to regenerate data pipeline results, by restoring the dependency
-graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
-defined by the stages listed in `dvc.yaml`. The commands defined in these stages
-are then executed in the correct order.
+Provides a way to regenerate data pipeline results, by restoring the [dependency
+graph] implicitly defined by the stages listed in `dvc.yaml`. The commands
+defined in these stages are then executed in the correct order.
 
 For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
@@ -69,6 +68,7 @@ It stores all the data files, intermediate or final results in the
 hash values of changed dependencies and outputs in the `dvc.lock` and `.dvc`
 files.
 
+[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
 [always changed]: /doc/command-reference/status#local-workspace-status
 
 ### Parallel stage execution
@@ -163,7 +163,7 @@ up-to-date and only execute the final stage.
   with the same dependencies and outputs (see the
   [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
   for example if the stage command/s is/are non-deterministic
-  ([not recommended](/doc/command-reference/run#avoiding-unexpected-behavior)).
+  ([not recommended](/doc/user-guide/data-pipelines/defining-pipelines#avoiding-unexpected-behavior)).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
