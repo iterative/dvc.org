@@ -110,13 +110,13 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   the operation(s)).
 
 - `--no-download` - create the import `.dvc` file including
-  [hash values](/doc/user-guide/project-structure/dvc-files#output-entries)
-  for the remote file but without downloading the associated data. This is
-  useful if you need track changes in remote data but do not (yet) need to
-  download data to the local workspace. Data can be later downloaded using
-  `dvc pull`, but will fail if the data matching the file's hash values is no
-  longer available. When remote data changes, file hashes in the `.dvc` file can
-  be updated using `dvc update --no-download`.
+  [hash values](/doc/user-guide/project-structure/dvc-files#output-entries) for
+  the remote file but without downloading the associated data. This is useful if
+  you need track changes in remote data but do not (yet) need to download data
+  to the local workspace. Data can be later downloaded using `dvc pull`, but
+  will fail if the data matching the file's hash values is no longer available.
+  When remote data changes, file hashes in the `.dvc` file can be updated using
+  `dvc update --no-download`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
