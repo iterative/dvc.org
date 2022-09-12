@@ -110,7 +110,7 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   the operation(s)).
 
 - `--no-download` - create the import `.dvc` file including
-  [hash values](https://dvc.org/doc/user-guide/project-structure/dvc-files#output-entries)
+  [hash values](/doc/user-guide/project-structure/dvc-files#output-entries)
   for the remote file but without downloading the associated data. This is
   useful if you need track changes in remote data but do not (yet) need to
   download data to the local workspace. Data can be later downloaded using
