@@ -113,7 +113,7 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   [hash values](/doc/user-guide/project-structure/dvc-files#output-entries) for
   the remote file but without downloading the associated data. This is useful if
   you need track changes in remote data without using local storage space (yet).
-  the data can be downloaded later using `dvc pull`, but this will fail if the
+  The data can be downloaded later using `dvc pull`, but this will fail if the
   `url` no longer matches the hash values. File hashes can be updated using
   `dvc update --no-download`.
 
