@@ -45,9 +45,9 @@ DVC uncommitted changes:
 
 `dvc data status` displays changes in multiple categories:
 
-- _Not in cache_ indicates that there are file records (hashes) in `.dvc` or
-  `dvc.lock` files, but the corresponding <abbr>cache</abbr> files are missing.
-  This may happen after cloning a DVC repository but before using `dvc pull` (or
+- _Not in cache_ indicates that there are file hashes in `.dvc` or `dvc.lock`
+  files, but the corresponding <abbr>cache</abbr> files are missing. This may
+  happen after cloning a DVC repository but before using `dvc pull` (or
   `dvc fetch`) to download the data; or after using `dvc gc`.
 
 - _DVC committed changes_ are new, modified, or deleted tracked files or
