@@ -20,8 +20,7 @@ positional arguments:
 
 ## Description
 
-This command is a way to visualize the "difference" between
-[certain metrics](/doc/user-guide/visualizing-plots#supported-file-formats)
+This command is a way to visualize the "difference" between [certain metrics]
 among versions of the <abbr>repository</abbr>, by overlaying them in a single
 plot.
 
@@ -39,16 +38,19 @@ all of them in a single image).
 All plots defined in `dvc.yaml` are used by default, but specific files can be
 specified with the `--targets` option (any valid plots file is accepted).
 
-The plot style can be customized with
-[plot templates](/doc/user-guide/visualizing-plots#plot-templates-data-series-only),
-using the `--template` option. To learn more about plots files and templates
-please see `dvc plots`.
+The plot style can be customized with [plot templates], using the `--template`
+option. To learn more about plots files and templates please see `dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
 > file with `dvc plots modify`.
 
 Another way to display plots is the `dvc plots show` command, which just lists
 all the current plots, without comparisons.
+
+[certain metrics]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
+
+[plot templates]
+/doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ## Options
 

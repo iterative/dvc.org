@@ -1,8 +1,7 @@
 # Running Experiments
 
-We explain how to execute DVC Experiments, setting their parameters, using
-multiple jobs to run them in parallel, and running them in queues, among other
-details.
+We explain how to execute DVC Experiments, setting their parameters, queueing
+them for future execution, running them in parallel, among other details.
 
 > 📖 If this is the first time you are introduced into data science
 > experimentation, you may want to check the basics in
@@ -20,8 +19,8 @@ experiment(s). These files codify _pipelines_ that specify one or more
 
 ### Running the pipeline(s)
 
-You can run the experiment pipeline using `dvc exp run`. It uses `./dvc.yaml`
-(in the current directory) by default.
+You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
+`./dvc.yaml` (in the current directory) by default.
 
 ```dvc
 $ dvc exp run
@@ -45,19 +44,20 @@ once.
 > 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
 
 [reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]: /doc/command-reference/dag#directed-acyclic-graph
+[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
 
 ## Tuning (hyper)parameters
 
-Parameters are the values that modify the behavior of coded processes -- in this
-case producing different experiment results. Machine learning experimentation
-often involves defining and searching hyperparameter spaces to improve the
-resulting model metrics.
+Parameters are any values used inside your code to tune modeling attributes, or
+that affect experiment results in any other way. For example, a [random forest
+classifier] may require a _maximum depth_ value. Machine learning
+experimentation often involves defining and searching hyperparameter spaces to
+improve the resulting model metrics.
 
-In DVC project source code, <abbr>parameters</abbr> should be read from _params
-files_ (`params.yaml` by default) and defined in `dvc.yaml`. When a tracked
-param value has changed, `dvc exp run` invalidates any stages that depend on it,
-and reproduces them.
+Your source code should read params from structured [parameters files]
+(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
+for DVC to track them. When a param value has changed, `dvc exp run` invalidates
+any stages that depend on it, and reproduces them.
 
 > 📖 See `dvc params` for more details.
 
@@ -78,6 +78,11 @@ $ dvc exp run --set-param model.learning_rate=0.0002
 $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
 ...
 ```
+
+[random forest classifier]:
+  https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
+[parameters files]:
+  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
 
 ## Experiment results
 
@@ -132,15 +137,29 @@ $ dvc queue start
 
 <admon type="info">
 
-> Note that in most cases, experiment tasks will be executed in the order that
-> they were added to the queue (First In, First Out), but this is not
-> guaranteed.
+In most cases, experiment tasks will be executed in the order that they were
+added to the queue (First In, First Out), but this is not guaranteed.
 
 </admon>
 
 Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
 the time it was queued.
+
+Queued experiments are processed serially by default, but can be run in parallel
+by using more than one `--jobs` (to `dvc queue start` more than one worker).
+
+<admon type="warn">
+
+Parallel runs (using `--jobs` > 1) are experimental and may be unstable. Make
+sure you're using number of jobs that your environment can handle (no more than
+the CPU cores).
+
+Note that since queued experiments are run isolated from each other, common
+stages may be executed multiple times depending on the state of the
+<abbr>run-cache</abbr> at that time.
+
+</admon>
 
 <details>
 
@@ -168,11 +187,11 @@ committing unwanted files into Git (e.g. once successful experiments are
 
 </details>
 
-💡 To clear the experiments queue and start over, use
-`dvc queue remove --queued`.
+<admon type="tip">
 
-> 📖 See the `dvc exp run` and `dvc queue` references for more options related
-> to the experiments queue, such as running them in parallel with `--jobs`.
+To clear the experiments queue and start over, use `dvc queue remove --queued`.
+
+</admon>
 
 ## Checkpoint experiments
 

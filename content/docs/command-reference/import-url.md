@@ -10,9 +10,10 @@ etc.), and download it to the local project, or make a copy in
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [-j <number>] [--file <filename>]
-                      [--no-exec | --no-download] [--to-remote] [-r <name>]
-                      [--desc <text>]
+usage: dvc import-url [-h] [-q | -v] [--file <filename>]
+		      [--to-remote] [-r <name>]
+                      [--no-exec | --no-download]
+                      [-j <number>] [--desc <text>]
                       url [out]
 
 positional arguments:

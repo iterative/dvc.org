@@ -16,11 +16,12 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
    <admon>
 
-   When you sign up, you're on the **Free plan**. To switch to the **Team plan**
-   [create a team] first, then go to the [team settings] and click on
+   When you sign up, you're on the **Free plan**. To switch to the **Basic
+   plan** [create a team] first, then go to the [team settings] and click on
    `Change plan` in the `Plan and billing` section.
 
-   To sign up for the **Enterprise plan**, please [schedule a call].
+   To sign up for the **Teams** or **Enterprise** plan, please [schedule a
+   call].
 
    > See [pricing details] to compare the different plans.
 
@@ -132,7 +133,7 @@ You should now see that a project has been added in your dashboard.
 
 1. You can [create a team] and invite collaborators. Each team will have its own
    projects dashboard. To create teams with more than 2 team members, [sign up
-   for the **Team** plan or **Enterprise** plan].
+   for the **Basic**, **Teams** or **Enterprise** plan].
 
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
@@ -145,5 +146,5 @@ You should now see that a project has been added in your dashboard.
 [sharing it on the web]:
   /doc/studio/user-guide/projects-and-experiments/share-a-project
 [create a team]: /doc/studio/user-guide/teams
-[sign up for the **team** plan or **enterprise** plan]:
+[sign up for the **basic**, **teams** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size

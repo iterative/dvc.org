@@ -8,9 +8,10 @@ Download a file or directory tracked by another DVC or Git repository into the
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-j <number>]
-                  [-o <path>] [--file <filename>]
-                  [--rev <commit>] [--no-exec | --no-download] [--desc <text>]
+usage: dvc import [-h] [-q | -v] [--file <filename>]
+                  [-o <path>] [--rev <commit>]
+                  [--no-exec | --no-download]
+                  [-j <number>] [--desc <text>]
                   url path
 
 positional arguments:
