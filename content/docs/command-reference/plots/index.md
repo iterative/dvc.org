@@ -19,8 +19,9 @@ positional arguments:
                 in a single image.
     modify      Modify display properties of data-series plots
                 defined in stages (has no effect on image plots).
-    templates   Write built-in plots templates to a directory
-                (.dvc/plots by default).
+
+    templates   List built-in plots templates or show JSON
+                specification for one.
 ```
 
 ## Description
