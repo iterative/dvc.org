@@ -97,9 +97,11 @@ $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
         data/data.xml
+
 DVC committed changes:
   (git commit the corresponding dvc files to update the repo)
         modified: data/features/
+
 DVC uncommitted changes:
   (use "dvc commit <file>..." to track changes)
   (use "dvc checkout <file>..." to discard changes)
