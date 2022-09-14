@@ -349,7 +349,8 @@ $ dvc exp show --all-branches --pcp --sort-by roc_auc
 
 ![](/img/ref_pcp_filter.png) _Excluded avg_prec column_
 
-📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
-an introduction to parameters, metrics, plots.
+📖 See
+[Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
+for an introduction to parameters, metrics, plots.
 
 [regex]: https://regexone.com/

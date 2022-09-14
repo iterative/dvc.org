@@ -50,23 +50,24 @@ in two independent trails:
 
 ### Data Management
 
-- [**Data and model versioning**](/doc/start/data-and-model-versioning) (try
-  this next) is the base layer of DVC for large files, datasets, and machine
-  learning models. Use a regular Git workflow, but without storing large files
-  in the repo (think "Git for data"). Data is stored separately, which allows
-  for efficient sharing.
+- [**Data and model versioning**](/doc/start/data-management) (try this next) is
+  the base layer of DVC for large files, datasets, and machine learning models.
+  Use a regular Git workflow, but without storing large files in the repo (think
+  "Git for data"). Data is stored separately, which allows for efficient
+  sharing.
 
-- [**Data and model access**](/doc/start/data-and-model-access) shows how to use
-  data artifacts from outside of the project and how to import data artifacts
-  from another DVC project. This can help to download a specific version of an
-  ML model to a deployment server or import a model to another project.
+- [**Data and model access**](/doc/start/data-management/data-and-model-access)
+  shows how to use data artifacts from outside of the project and how to import
+  data artifacts from another DVC project. This can help to download a specific
+  version of an ML model to a deployment server or import a model to another
+  project.
 
-- [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
-  data artifacts are built, and provide an efficient way to reproduce them.
-  Think "Makefiles for data and ML projects" done right.
+- [**Data pipelines**](/doc/start/data-management/data-pipelines) describe how
+  models and other data artifacts are built, and provide an efficient way to
+  reproduce them. Think "Makefiles for data and ML projects" done right.
 
-- [**Metrics, parameters, and plots**](/doc/start/metrics-parameters-plots) can
-  be attached to pipelines. These let you capture, navigate, and evaluate ML
+- [**Metrics, parameters, and plots**](/doc/start/data-management/metrics-parameters-plots)
+  can be attached to pipelines. These let you capture, navigate, and evaluate ML
   projects without leaving Git. Think "Git for machine learning".
 
 ### Experimentation

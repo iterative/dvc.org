@@ -51,7 +51,7 @@ more details.
 ### Managing remote storage
 
 > For an intro on DVC remote usage see
-> [Storing and sharing data](/doc/start/data-and-model-versioning#storing-and-sharing).
+> [Storing and sharing data](/doc/start/data-management#storing-and-sharing).
 
 The [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
