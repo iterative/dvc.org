@@ -210,12 +210,16 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_spec_conf_train_test.svg)
 
-📖 Refer to the [full format specification] and `dvc plots show` for more
-details.
-
 [template]: #plot-templates-data-series-only
+
+<admon icon="book">
+
+Refer to the [full format specification] and `dvc plots show` for more details.
+
 [full format specification]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
+
+</admon>
 
 ### Plot Outputs
 

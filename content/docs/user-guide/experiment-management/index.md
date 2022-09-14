@@ -26,8 +26,13 @@ approaches:
 
 - [Run and capture] multiple experiments (derived from any project version as
   baseline) without polluting your Git history. DVC tracks them for you, letting
-  you compare and share them. 📖 More info in the [Experiments
-  Overview][experiments].
+  you compare and share them.
+
+  <admon icon="book">
+
+  More info in the [Experiments Overview][experiments].
+
+  </admon>
 
   <admon type="tip">
 

@@ -541,9 +541,13 @@ configurations. Every plot needs a unique ID, which may be either a file path
 (relative to the location of `dvc.yaml`) or an arbitrary string. Optional
 configuration fields can be provided as well.
 
-📖 Refer to [Visualizing Plots] and `dvc plots show` for examples.
+<admon icon="book">
+
+Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
 [visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
+
+</admon>
 
 ### Available configuration fields
 

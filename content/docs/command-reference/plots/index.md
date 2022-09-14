@@ -31,14 +31,19 @@ pipeline] or performance logs produced by [DVCLive].
 
 `dvc plots` subcommands help you customize and generate these plots.
 
-📖 See [Visualizing Plots] as well as the top-level plots definition
-[specification] for more details.
-
 [ml pipeline]: /doc/start/data-management/pipelines
 [dvclive]: /doc/dvclive/dvclive-with-dvc
+
+<admon icon="book">
+
+See [Visualizing Plots] as well as the top-level plots definition
+[specification] for more details.
+
 [visualizing plots]: /doc/user-guide/visualizing-plots
 [specification]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
+
+</admon>
 
 ## Options
 
