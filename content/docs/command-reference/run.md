@@ -216,10 +216,8 @@ data science experiments.
   asking for confirmation.
 
 - `--no-run-cache` - execute the stage command(s) even if they have already been
-  run with the same dependencies and outputs (see the
-  [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
-  for example if the stage command/s is/are non-deterministic
-  ([not recommended](/doc/user-guide/pipelines/defining-pipelines#avoiding-unexpected-behavior)).
+  run with the same dependencies and outputs (see the [details]). Useful for
+  example if the stage command/s is/are non-deterministic ([not recommended]).
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
@@ -231,7 +229,7 @@ data science experiments.
   when reproducing the pipeline.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
+  [Managing External Data].
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
@@ -242,6 +240,11 @@ data science experiments.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[details]: /doc/user-guide/project-structure/internal-files#run-cache
+[not recommended]:
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+[managing external data]: /doc/user-guide/managing-external-data
 
 ## Examples
 
