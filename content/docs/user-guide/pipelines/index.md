@@ -16,4 +16,4 @@ consistent to reproduce.
 See [Get Started: Data Pipelines](/doc/start/data-management/pipelines) for a
 hands-on introduction to this topic.
 
-[define]: /doc/user-guide/data-pipelines/defining-pipelines
+[define]: /doc/user-guide/pipelines/defining-pipelines

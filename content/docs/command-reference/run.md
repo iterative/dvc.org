@@ -107,7 +107,7 @@ Relevant notes:
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
 
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 ### For displaying and comparing data science experiments
 
@@ -219,7 +219,7 @@ data science experiments.
   run with the same dependencies and outputs (see the
   [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
   for example if the stage command/s is/are non-deterministic
-  ([not recommended](/doc/user-guide/data-pipelines/defining-pipelines#avoiding-unexpected-behavior)).
+  ([not recommended](/doc/user-guide/pipelines/defining-pipelines#avoiding-unexpected-behavior)).
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
