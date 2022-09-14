@@ -37,9 +37,11 @@
   {
     "slug": "start",
     "label": "Get Started",
+    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
+        "source": "data-management/index.md",
         "children": [
           "data-and-model-access",
           "data-pipelines",
@@ -51,6 +53,7 @@
       },
       {
         "slug": "experiments",
+        "source": "experiments/index.md",
         "children": ["visualization"]
       }
     ]
