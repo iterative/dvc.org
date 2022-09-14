@@ -168,4 +168,4 @@ run-cache to remote storage for sharing and/or as a back up.
 > [Avoiding unexpected behavior]).
 
 [avoiding unexpected behavior]:
-  /doc/user-guide/data-pipelines/defining-pipelines#avoiding-unexpected-behavior
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
