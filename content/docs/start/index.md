@@ -48,7 +48,7 @@ Now you're ready to DVC!
 DVC's features can be grouped into functional components. You can explore them
 in two independent trails:
 
-### Data Management Trail
+### Data Management
 
 - [**Data and model versioning**](/doc/start/data-and-model-versioning) (try
   this next) is the base layer of DVC for large files, datasets, and machine
@@ -69,7 +69,7 @@ in two independent trails:
   be attached to pipelines. These let you capture, navigate, and evaluate ML
   projects without leaving Git. Think "Git for machine learning".
 
-### Experiments Trail
+### Experimentation
 
 - [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
   comparison across many ML experiments. Track your experiments with automatic
