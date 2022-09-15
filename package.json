@@ -39,7 +39,7 @@
     "node": ">=14.x <=18.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.14",
+    "@dvcorg/gatsby-theme-iterative": "^0.1.15",
     "@dvcorg/websites-server": "^0.0.3",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^5.0.0",
