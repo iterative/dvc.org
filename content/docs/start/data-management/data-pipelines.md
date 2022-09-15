@@ -171,7 +171,7 @@ $ dvc stage add -n featurize \
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
-[dag]: /doc/user-guide/data-pipelines/defining-pipelines
+[dag]: /doc/user-guide/pipelines/defining-pipelines
 
 <details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
