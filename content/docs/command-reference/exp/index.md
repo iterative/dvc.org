@@ -49,6 +49,7 @@ science/ machine learning experiments.
 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 info.
 
+<!-- prettier-ignore -->
 > ⚠️ Note that DVC assumes that experiments are deterministic (see [Avoiding
 > unexpected behavior]).
 
