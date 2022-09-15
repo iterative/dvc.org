@@ -1,31 +1,59 @@
 # DvcFileSystem
 
-DvcFileSystem provides a pythonic file interface (aka
-[fsspec](https://filesystem-spec.readthedocs.io/)) for a DVC repo and provides a
-read-only filesystem-like operations like `ls`, `du`, `glob`, `get`, `download`,
-etc.
+_New in DVC 2.26_
 
-DvcFileSystem provides a single view of all the files/directories in your
+DvcFileSystem provides a pythonic file interface (
+[fsspec-compatible](https://filesystem-spec.readthedocs.io/)) for a DVC repo. It
+is a read-only filesystem, hence it does not support any write operations, like
+`put_file`, `cp`, `rm`, `mv`, `mkdir` etc.
+
+DvcFileSystem provides a unified view of all the files/directories in your
 repository, be it Git-tracked or DVC-tracked, or untracked (in case of a local
-repository). DvcFileSystem is smart to reuse the files in your cache directory
-(if present) and can otherwise stream/fetch the files from your default remote.
-
-### Basic Usage
+repository). It can reuse the files in DVC <abbr>cache</abbr> and can otherwise
+stream from
+[supported remote storage](/doc/command-reference/remote/add#supported-storage-types).
 
 ```py
->>> from dvc.fs.dvc import _DvcFileSystem as DvcFileSystem
+>>> from dvc.api import DvcFileSystem
 # opening a local repository
 >>> fs = DvcFileSystem("/path/to/local/repository")
 # opening a remote repository
->>> remote_fs = DvcFileSystem("https://github.com/iterative/example-get-started.git", rev="main")
+>>> url = "https://github.com/iterative/example-get-started.git"
+>>> fs = DvcFileSystem(url, rev="main")
 ```
 
-## Examples
+The optional positional argument can be a URL or a local path to the DVC
+project. If unspecified, the DVC project in current working directory is used.
 
-### Listing all DVC-tracked files
+The optional `rev` argument can be passed to open a filesystem from a certain
+Git commit (any [revision](https://git-scm.com/docs/revisions) such as a branch
+or a tag name, a commit hash, or an [experiment name]).
+
+[experiment name]: /doc/command-reference/exp/run#-n
+
+## Opening a file
 
 ```py
->>> fs = DvcFileSystem("https://github.com/iterative/example-get-started.git", rev="main")
+>>> with fs.open("model.pkl") as fobj:
+        model = pickle.load(fobj)
+```
+
+This is similar to `dvc.api.open()` which returns a file-like object. Note that,
+unlike `dvc.api.open()`, the `mode` defaults to binary mode, i.e. `"rb"`. You
+can also specify `encoding` argument in case of text mode (`"r"`).
+
+## Reading a file
+
+```py
+>>> contents = fs.cat_file("get-started/data.xml")
+```
+
+This is similar to `dvc.api.read()`, but it returns the contents of the file as
+bytes instead of a string.
+
+## Listing all DVC-tracked files recursively
+
+```py
 >>> fs.find("/", detail=False, dvc_only=True)
 [
     '/data/data.xml',
@@ -38,10 +66,43 @@ repository). DvcFileSystem is smart to reuse the files in your cache directory
 ]
 ```
 
-### Downloading a file or a directory
+This is similar to `dvc ls --recursive --dvc-only` CLI command. Note that the
+`"/"` is considered as the root of the Git repo. You can specify sub-paths to
+only return entries in that directory. Similarly, there is `fs.ls()` that is
+non-recursive.
+
+## Listing all files (including Git-tracked)
 
 ```py
->>> fs = DvcFileSystem("https://github.com/iterative/example-get-started.git", rev="main")
+>>> fs.find("/", detail=False)
+[
+    ...
+    '/.gitignore',
+    '/README.md',
+    '/data/.gitignore',
+    '/data/data.xml',
+    '/data/features/test.pkl',
+    '/data/features/train.pkl',
+    '/data/prepared/test.tsv',
+    '/data/prepared/train.tsv',
+    ...
+    '/evaluation/.gitignore',
+    '/evaluation/importance.png',
+    '/evaluation/plots/confusion_matrix.json',
+    '/evaluation/plots/precision_recall.json',
+    '/evaluation/plots/roc.json',
+    '/model.pkl',
+    ...
+]
+```
+
+This is similar to `dvc ls --recursive` CLI command. It returns all of the files
+tracked by DVC and Git and if filesystem is opened locally, it also includes the
+local untracked files.
+
+## Downloading a file or a directory
+
+```py
 >>> fs.get_file("data/data.xml", "data.xml")
 ```
 
@@ -50,7 +111,6 @@ This downloads "data/data.xml" file to the current working directory as
 exists or may get streamed from the remote.
 
 ```py
->>> fs = DvcFileSystem("https://github.com/iterative/example-get-started.git", rev="main")
 >>> fs.get("data", "data", recursive=True)
 ```
 

@@ -521,7 +521,7 @@
     "source": "api-reference/index.md",
     "children": [
       {
-        "slug": "dvcfs",
+        "slug": "dvcfilesystem",
         "label": "DvcFileSystem"
       },
       {
