@@ -78,7 +78,7 @@ _Luigi_, etc.
 - See also our sister project, [CML](https://cml.dev/), that helps fill some of
   these gaps.
 
-[dependency graphs]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graphs]: /doc/user-guide/pipelines/defining-pipelines
 
 ## Experiment management software
 
@@ -133,4 +133,4 @@ _Luigi_, etc.
 > technical details (Linux).
 
 [directed acyclic graph]:
-  /doc/user-guide/data-pipelines/defining-pipelines#directed-acyclic-graph-dag
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
