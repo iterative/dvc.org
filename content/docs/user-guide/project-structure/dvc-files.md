@@ -3,8 +3,7 @@
 You can use `dvc add` to track data files or directories located in your current
 <abbr>workspace</abbr>\*. Additionally, `dvc import` and `dvc import-url` let
 you bring data from external locations to your project, and start tracking it
-locally. See [Data Versioning](/doc/start/data-and-model-versioning) for more
-info.
+locally. See [Data Versioning](/doc/start/data-management) for more info.
 
 > \* Certain [external locations](/doc/user-guide/managing-external-data) are
 > also supported.

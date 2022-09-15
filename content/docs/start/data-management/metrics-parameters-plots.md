@@ -17,7 +17,7 @@ https://youtu.be/bu3l75eQlQo
 
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
-[pipeline from before](/doc/start/data-pipelines):
+[pipeline from before](/doc/start/data-management/data-pipelines):
 
 ```dvc
 $ dvc run -n evaluate \
@@ -192,9 +192,9 @@ featurize:
 ### ⚙️ Expand to recall how it was generated.
 
 The `featurize` stage
-[was created](/doc/start/data-pipelines#dependency-graphs-dag) with this
-`dvc run` command. Notice the argument sent to the `-p` option (short for
-`--params`):
+[was created](/doc/start/data-management/data-pipelines#dependency-graphs-dag)
+with this `dvc run` command. Notice the argument sent to the `-p` option (short
+for `--params`):
 
 ```dvc
 $ dvc run -n featurize \

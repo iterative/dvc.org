@@ -14,8 +14,9 @@ experiment(s). These files codify _pipelines_ that specify one or more
 <abbr>stages</abbr> of the experiment workflow (code, <abbr>dependencies</abbr>,
 <abbr>outputs</abbr>, etc.).
 
-> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
-> to this topic.
+> 📖 See
+> [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) for
+> an intro to this topic.
 
 ### Running the pipeline(s)
 
