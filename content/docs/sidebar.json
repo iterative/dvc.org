@@ -51,9 +51,9 @@
         ]
       },
       {
-        "slug": "experiments",
-        "source": "experiments/index.md",
-        "children": ["visualization"]
+        "slug": "experimentation",
+        "source": "experimentation/index.md",
+        "children": ["experiments", "visualization"]
       }
     ]
   },
