@@ -46,7 +46,7 @@ graph] and execute them.
 See the guide on [defining pipeline stages] for more details.
 
 [defining pipeline stages]:
-  /doc/user-guide/data-pipelines/defining-pipelines#pipelines
+  /doc/user-guide/pipelines/defining-pipelines#pipelines
 
 </admon>
 
@@ -111,7 +111,7 @@ Relevant notes:
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
 
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 ### For displaying and comparing data science experiments
 

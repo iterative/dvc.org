@@ -94,6 +94,29 @@ parametrize `cmd` strings.
 
 </admon>
 
+<details>
+
+### 💡 Avoiding unexpected behavior
+
+We don't want to tell anyone how to write their code or what programs to use!
+However, please be aware that in order to prevent unexpected results when DVC
+reproduces pipeline stages, the underlying code should ideally follow these
+rules:
+
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+- Completely rewrite outputs. Do not append or edit.
+- Stop reading and writing files when the `command` exits.
+
+Also, if your pipeline reproducibility goals include consistent output data, its
+code should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
+the same output for any given input): avoid code that increases
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
+time functions, hardware dependencies, etc.).
+
+</details>
+
 ### Parameters
 
 <abbr>Parameters</abbr> are simple key/value pairs consumed by the `command`
