@@ -106,7 +106,7 @@ within:
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
-- [`plots`](#plots) - options for configurin `dvc plots`.
+- [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
 - [`index`](#index) - see [Internal directories and files][internals] to learn
@@ -356,11 +356,10 @@ experiments or projects use a similar structure.
 
 - `hydra.enabled` - enables
   [Hydra Integration](/docs/user-guide/hydra-integration).
-- `hydra.config_dir` - location of the directory containing Hydra config files.
+- `hydra.config_dir` - location of the directory containing Hydra Config Groups.
   Defaults to `conf`.
-- `hydra.config_name` - name of the Hydra config file containing defaults,
-  located inside `hydra.config_dir`, without the .yaml extension. Defaults to
-  `config`.
+- `hydra.config_name` - name of file with top-level Hydra Defaults List, located
+  inside `hydra.config_dir`, without the .yaml extension. Defaults to `config`.
 
 ## Example: Add an S3 remote, and set it as default
 
