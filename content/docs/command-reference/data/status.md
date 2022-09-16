@@ -13,11 +13,20 @@ usage: dvc data status [-h] [-q | -v]
 
 ## Description
 
+<admon type="info">
+
+For [pipelines](/user-guide/pipelines) status, use `dvc status`.
+
+</admon>
+
 The `data status` command displays the state of the working directory and the
 changes with respect to the last Git commit (`HEAD`). It shows you what new
 changes have been committed to DVC, which haven't been committed, which files
 aren't being tracked by DVC and Git, and what files are missing from the
 <abbr>cache</abbr>.
+
+`data status` can be used as a companion to `git status`. When used together,
+this pair of commands shows the status of all paths in a repository.
 
 The `dvc data status` command only outputs information, it won't modify or
 change anything in your working directory. It's a good practice to check the
@@ -107,6 +116,41 @@ a directory, has changes that are being tracked by DVC but is not Git committed
 yet, and a file `model.pkl` has been deleted from the workspace. The
 `data/features/` directory is modified, but there is no further details to what
 changed inside. The `--granular` option can provide more information on that.
+
+## Example: Combine with Git status
+
+```dvc
+$ dvc data status
+Not in cache:
+  (use "dvc fetch <file>..." to download files)
+        data/data.xml
+
+DVC committed changes:
+  (git commit the corresponding dvc files to update the repo)
+        modified: data/features/
+
+DVC uncommitted changes:
+  (use "dvc commit <file>..." to track changes)
+  (use "dvc checkout <file>..." to discard changes)
+        deleted: model.pkl
+(there are other changes not tracked by dvc, use "git status" to see)
+
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   dvc.lock
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+`dvc data status` and `git status` combined show you the full status of a
+repository. `dvc data status` shows you changes to DVC data, and `git status`
+shows changes to the corresponding `dvc.lock` or `.dvc` files (as well as
+unrelated changes to your Git repository).
 
 ## Example: Granular output
 
