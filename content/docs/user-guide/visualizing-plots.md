@@ -247,7 +247,7 @@ Plotting stage outputs are convenient for defining plots within the stage
 without having to write top-level `plots` definitions in `dvc.yaml`. They do not
 support custom plot IDs or multiple data sources.
 
-[pipelines]: /doc/start/data-management/pipelines
+[pipelines]: /doc/start/data-management/data-pipelines
 
 ## Plot templates (data-series only)
 
