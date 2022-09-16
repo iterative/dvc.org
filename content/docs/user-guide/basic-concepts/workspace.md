@@ -16,10 +16,10 @@ Adding versioning needs and dependency management can easily turn this near
 impossible.
 
 A <abbr>DVC project</abbr> structure is simplified by encapsulating
-[data versioning](/doc/start/data-and-model-versioning) and
-[pipelining](/doc/start/data-pipelines) (e.g. machine learning workflows), among
-other features. This leaves a _workspace_ directory with a clean view of your
-working raw data, source code, data artifacts, etc. and a few
+[data versioning](/doc/start/data-management) and
+[pipelining](/doc/start/data-management/data-pipelines) (e.g. machine learning
+workflows), among other features. This leaves a _workspace_ directory with a
+clean view of your working raw data, source code, data artifacts, etc. and a few
 [metafiles](/doc/user-guide/project-structure) that enable these features. A
 single version of the project is visible at a time.
 

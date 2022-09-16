@@ -24,7 +24,7 @@ ML model registries give your team key capabilities:
 - For security, control who can manage models, and audit their usage trails.
 
 [versions]: /doc/use-cases/versioning-data-and-models
-[mp]: /doc/start/metrics-parameters-plots
+[mp]: /doc/start/data-management/metrics-parameters-plots
 [experiments]: /doc/user-guide/experiment-management
 
 Many of these benefits are built into DVC: Your [modeling process] and
@@ -57,8 +57,8 @@ process into [GitOps]. This means you can manage and deliver ML models with
 software engineering methods such as continuous integration (CI/CD), which can
 sync with the state of the artifacts in your registry.
 
-[modeling process]: /doc/start/data-pipelines
+[modeling process]: /doc/start/data-management/data-pipelines
 [remote storage]: /doc/command-reference/remote
-[sharing]: /doc/start/data-and-model-access
+[sharing]: /doc/start/data-management/data-and-model-access
 [via cml]: https://cml.dev/doc/cml-with-dvc
 [gitops]: https://www.gitops.tech/

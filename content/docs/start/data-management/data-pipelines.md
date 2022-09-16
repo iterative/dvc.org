@@ -77,7 +77,7 @@ want to run (`python src/prepare.py data/data.xml`), its
 
 DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
-[manually](/doc/start/data-and-model-versioning).
+[manually](/doc/start/data-management).
 
 <details id="stage-expand-to-see-what-happens-under-the-hood">
 
@@ -90,9 +90,9 @@ The command options used above mean the following:
 
 - `-p prepare.seed,prepare.split` defines special types of dependencies —
   [parameters](/doc/command-reference/params). We'll get to them later in the
-  [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) page,
-  but the idea is that the stage can depend on field values from a parameters
-  file (`params.yaml` by default):
+  [Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
+  page, but the idea is that the stage can depend on field values from a
+  parameters file (`params.yaml` by default):
 
 ```yaml
 prepare:
@@ -149,7 +149,7 @@ Once you added a stage, you can run the pipeline with `dvc repro`. Next, you can
 use `dvc push` if you wish to save all the data [to remote storage] (usually
 along with `git commit` to version DVC metafiles).
 
-[to remote storage]: /doc/start/data-and-model-versioning#storing-and-sharing
+[to remote storage]: /doc/start/data-management#storing-and-sharing
 
 ## Dependency graphs (DAG)
 

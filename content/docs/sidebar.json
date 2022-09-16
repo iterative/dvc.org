@@ -37,21 +37,13 @@
   {
     "slug": "start",
     "label": "Get Started",
-    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
-        "label": "Data Management",
         "source": "data-management/index.md",
         "children": [
-          {
-            "label": "Data and Model Access",
-            "slug": "access"
-          },
-          {
-            "label": "Data Pipelines",
-            "slug": "pipelines"
-          },
+          "data-and-model-access",
+          "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
             "slug": "metrics-parameters-plots"
@@ -60,14 +52,8 @@
       },
       {
         "slug": "experiments",
-        "label": "Experiments",
         "source": "experiments/index.md",
-        "children": [
-          {
-            "label": "Visualization",
-            "slug": "visualization"
-          }
-        ]
+        "children": ["visualization"]
       }
     ]
   },

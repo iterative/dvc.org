@@ -34,7 +34,7 @@ pipeline] or performance logs produced by [DVCLive].
 📖 See [Visualizing Plots] as well as the top-level plots definition
 [specification] for more details.
 
-[ml pipeline]: /doc/start/data-management/pipelines
+[ml pipeline]: /doc/start/data-management/data-pipelines
 [dvclive]: /doc/dvclive/dvclive-with-dvc
 [visualizing plots]: /doc/user-guide/visualizing-plots
 [specification]:
