@@ -36,7 +36,9 @@ See the [Options](#options) section for the differences.
 </admon>
 
 Use the `--set-param` (`-S`) option as a shortcut to change
-<abbr>parameter</abbr> values [on-the-fly] before running the experiment.
+<abbr>parameter</abbr> values [on-the-fly] before running the experiment. DVC
+uses Hydra internally and supports the [Hydra Override Grammar] for parsing
+values passed to `--set-param`.
 
 It's possible to [queue experiments] for later execution with the `--queue`
 flag. Queued experiments can be run with `dvc queue start` and managed with
@@ -73,16 +75,22 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-S [<filename>:]<override_pattern>`,
   `--set-param [<filename>:]<override_pattern>` - set the value of existing
-  `dvc params` for this experiment. `filename` can be any valid params file
-  (`params.yaml` by default). This will override the param file before running
-  the experiment.
+  `dvc params` for this experiment.
 
-  For example, to override the value an existing param, you can use
-  `--set-param <param_name>=<param_value>`.
+  This will update the param file **before** running the experiment.
 
-  Valid `<override_pattern>` values are defined in the
-  [Hydra Override Grammar](https://hydra.cc/docs/advanced/override_grammar/basic/#modifying-the-config-object).
-  Patterns modifying Hydra's defaults list are not supported.
+  For example, to modify the value of an existing param, you can use
+  `-S <name>=<value>`.
+
+  You can optionally provide a prefix `[<filename>:]` in order to edit a
+  specific `dvc params` file. If not provided, `params.yaml` will be used as
+  default.
+
+  Valid `<override_pattern>` values are defined in the [Hydra Override Grammar].
+
+  Using
+  [Hydra's Sweep overrides](https://hydra.cc/docs/advanced/override_grammar/extended/#sweeps)
+  requires the `--queue` option to be also provided.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will be generated otherwise, such as `exp-f80g4` (based on the
@@ -195,19 +203,13 @@ experiment we just ran (`exp-44136`).
 ## Example: Modify parameters on-the-fly
 
 `dvc exp run --set-param` (`-S`) saves you the need to manually edit the params
-file before running an experiment. It can override (`train.epochs=10`), append
-(`+train.weight_decay=0.01`), or remove (`~model.dropout`) parameters.
+file before running an experiment.
 
-<admon type="tip">
+It can override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or
+remove (`~model.dropout`) parameters.
 
-DVC supports the
-[Hydra Override Grammar](https://hydra.cc/docs/advanced/override_grammar/basic/),
-with the exception of patterns that modify Hydra's defaults list.
-
-</admon>
-
-You can optionally provide a prefix `[<filename>:]` in order to edit a specific
-`dvc params` file. If not provided, `params.yaml` will be used as default.
+For example, we can combine this syntax with the `[<filename>:]` prefix in order
+to appen a new parameter to a custom parameters file (`train_config.json`):
 
 ```dvc
 $ dvc exp run -S train_config.json:+train.weight_decay=0.001
@@ -227,4 +229,8 @@ appending or removing <abbr>parameters</abbr>, make sure to update the
 [`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameters)
 of your `dvc.yaml` accordingly.
 
+Alternatively, you can track all the parameters in the file being modified.
+
 </admon>
+
+[hydra override grammar]: https://hydra.cc/docs/advanced/override_grammar/basic/

@@ -46,44 +46,6 @@ once.
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
 
-## Tuning (hyper)parameters
-
-Parameters are any values used inside your code to tune modeling attributes, or
-that affect experiment results in any other way. For example, a [random forest
-classifier] may require a _maximum depth_ value. Machine learning
-experimentation often involves defining and searching hyperparameter spaces to
-improve the resulting model metrics.
-
-Your source code should read params from structured [parameters files]
-(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
-for DVC to track them. When a param value has changed, `dvc exp run` invalidates
-any stages that depend on it, and reproduces them.
-
-> 📖 See `dvc params` for more details.
-
-You could manually edit a params file and run an experiment using those as
-inputs. Since this is a common sequence, the built-in option
-`dvc exp run --set-param` (`-S`) is provided as a shortcut. It takes an existing
-param name and value, and updates the file on-the-fly before execution.
-
-```dvc
-$ cat params.yaml
-model:
-  learning_rate: 0.001
-  units=64
-
-$ dvc exp run --set-param model.learning_rate=0.0002
-...
-
-$ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
-...
-```
-
-[random forest classifier]:
-  https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
-[parameters files]:
-  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
-
 ## Experiment results
 
 The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
@@ -192,6 +154,75 @@ committing unwanted files into Git (e.g. once successful experiments are
 To clear the experiments queue and start over, use `dvc queue remove --queued`.
 
 </admon>
+
+## Tuning (hyper)parameters
+
+Parameters are any values used inside your code to tune modeling attributes, or
+that affect experiment results in any other way. For example, a [random forest
+classifier] may require a _maximum depth_ value. Machine learning
+experimentation often involves defining and searching hyperparameter spaces to
+improve the resulting model metrics.
+
+Your source code should read params from structured [parameters files]
+(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
+for DVC to track them. When a param value has changed, `dvc exp run` invalidates
+any stages that depend on it, and reproduces them.
+
+> 📖 See `dvc params` for more details.
+
+You could manually edit a params file and run an experiment using those as
+inputs. Since this is a common sequence, the built-in option
+`dvc exp run --set-param` (`-S`) is provided as a shortcut. It takes an existing
+param name and value, and updates the file on-the-fly before execution.
+
+```dvc
+$ cat params.yaml
+model:
+  learning_rate: 0.001
+  units=64
+
+$ dvc exp run --set-param model.learning_rate=0.0002
+...
+
+$ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
+...
+```
+
+### Grid Search
+
+When combined with the `dvc exp run --queue` option, you cann add multiple
+experiments to the queue by providing a list of choices and/or a custom range:
+
+```dvc
+$ dvc exp run \
+-S units=32,128 \
+-S learning_rate=range(0.001, 0.003, 0.001) \
+--queue
+
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.001']}'.
+Queued experiment 'ed3b4ef' for future execution.
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.002']}'.
+Queued experiment '7a10d54' for future execution.
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.003']}'.
+Queued experiment '0b443d8' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.001']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.002']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.003']}'.
+Queued experiment '0a5f20e' for future execution.
+```
+
+And run the grid search with:
+
+```dvc
+$ dvc queue start
+```
+
+[random forest classifier]:
+  https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
+[parameters files]:
+  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
 
 ## Checkpoint experiments
 

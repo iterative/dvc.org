@@ -354,9 +354,13 @@ experiments or projects use a similar structure.
 
 ### hydra
 
+- `hydra.enabled` - enables
+  [Hydra Integration](/docs/user-guide/hydra-integration).
 - `hydra.config_dir` - location of the directory containing Hydra config files.
+  Defaults to `conf`.
 - `hydra.config_name` - name of the Hydra config file containing defaults,
-  located inside `hydra.config_dir`, without the .yaml extension.
+  located inside `hydra.config_dir`, without the .yaml extension. Defaults to
+  `config`.
 
 ## Example: Add an S3 remote, and set it as default
 
