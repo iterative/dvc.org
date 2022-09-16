@@ -209,7 +209,7 @@ It can override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or
 remove (`~model.dropout`) parameters.
 
 For example, we can combine this syntax with the `[<filename>:]` prefix in order
-to appen a new parameter to a custom parameters file (`train_config.json`):
+to append a new parameter to a custom parameters file (`train_config.json`):
 
 ```dvc
 $ dvc exp run -S train_config.json:+train.weight_decay=0.001
