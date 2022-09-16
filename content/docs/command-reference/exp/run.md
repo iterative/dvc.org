@@ -74,7 +74,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 > except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
 - `-S [<filename>:]<override_pattern>`,
-  `--set-param [<filename>:]<override_pattern>` - set the value of existing
+  `--set-param [<filename>:]<override_pattern>` - set the value of
   `dvc params` for this experiment.
 
   This will update the param file **before** running the experiment.
