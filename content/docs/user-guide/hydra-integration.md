@@ -185,7 +185,7 @@ train_params = dvc.api.params_show("train")
 ...
 ```
 
-## Runing experiments
+## Running experiments
 
 We can now trigger use `dvc exp run --set-param` to modify the Hydra
 Composition:
