@@ -522,7 +522,7 @@
     "children": [
       {
         "slug": "dvcfilesystem",
-        "label": "DvcFileSystem"
+        "label": "DVCFileSystem"
       },
       {
         "slug": "get_url",

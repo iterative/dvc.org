@@ -1,25 +1,25 @@
-# DvcFileSystem
+# DVCFileSystem
 
 _New in DVC 2.26_
 
-DvcFileSystem provides a pythonic file interface (
+DVCFileSystem provides a pythonic file interface (
 [fsspec-compatible](https://filesystem-spec.readthedocs.io/)) for a DVC repo. It
 is a read-only filesystem, hence it does not support any write operations, like
 `put_file`, `cp`, `rm`, `mv`, `mkdir` etc.
 
-DvcFileSystem provides a unified view of all the files/directories in your
+DVCFileSystem provides a unified view of all the files/directories in your
 repository, be it Git-tracked or DVC-tracked, or untracked (in case of a local
 repository). It can reuse the files in DVC <abbr>cache</abbr> and can otherwise
 stream from
 [supported remote storage](/doc/command-reference/remote/add#supported-storage-types).
 
 ```py
->>> from dvc.api import DvcFileSystem
+>>> from dvc.api import DVCFileSystem
 # opening a local repository
->>> fs = DvcFileSystem("/path/to/local/repository")
+>>> fs = DVCFileSystem("/path/to/local/repository")
 # opening a remote repository
 >>> url = "https://github.com/iterative/example-get-started.git"
->>> fs = DvcFileSystem(url, rev="main")
+>>> fs = DVCFileSystem(url, rev="main")
 ```
 
 The optional positional argument can be a URL or a local path to the DVC
@@ -120,7 +120,7 @@ remote if they don't exist in the cache.
 
 ## API Reference
 
-As DvcFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
+As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
 it is compatible with most of the APIs that it offers. Please check the fsspec's
 [API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem)
 for more details.
