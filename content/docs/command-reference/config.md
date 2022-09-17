@@ -359,7 +359,7 @@ experiments or projects use a similar structure.
 - `hydra.config_dir` - location of the directory containing Hydra Config Groups.
   Defaults to `conf`.
 - `hydra.config_name` - name of file with top-level Hydra Defaults List, located
-  inside `hydra.config_dir`, without the .yaml extension. Defaults to `config`.
+  inside `hydra.config_dir`. Defaults to `config`.
 
 ## Example: Add an S3 remote, and set it as default
 
