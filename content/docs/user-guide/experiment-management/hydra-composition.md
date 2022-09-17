@@ -1,4 +1,4 @@
-# Hydra Integration
+# Hydra Composition
 
 _New in DVC 2.25.0 (see `dvc version`)_
 
@@ -78,15 +78,15 @@ so we can instead rely on a single file: `params.yaml`.
 
 ## Setting up DVC
 
-We can enable the DVC and Hydra integration by running:
+We can enable the Hydra composition by running:
 
 ```dvc
 $ dvc config hydra.enabled True
 ```
 
-### Testing the integration
+### Testing the composition
 
-To check how the integration works, we can create a dummy `dvc.yaml` that prints
+To check how the composition works, we can create a dummy `dvc.yaml` that prints
 the contents of `params.yaml`:
 
 ```yaml

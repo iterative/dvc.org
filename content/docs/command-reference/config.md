@@ -355,7 +355,7 @@ experiments or projects use a similar structure.
 ### hydra
 
 - `hydra.enabled` - enables
-  [Hydra Integration](/docs/user-guide/hydra-integration).
+  [Hydra Composition](/docs/user-guide/experiment-management/hydra-composition).
 - `hydra.config_dir` - location of the directory containing Hydra Config Groups.
   Defaults to `conf`.
 - `hydra.config_name` - name of file with top-level Hydra Defaults List, located

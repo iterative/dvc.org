@@ -142,7 +142,7 @@
         "children": [
           "experiments-overview",
           "running-experiments",
-          "hydra-integration",
+          "hydra-composition",
           "comparing-experiments",
           "sharing-experiments",
           "persisting-experiments",
