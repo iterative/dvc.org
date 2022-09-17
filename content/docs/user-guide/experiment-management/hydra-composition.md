@@ -95,7 +95,7 @@ stages:
     cmd: cat params.yaml
 ```
 
-Now, if we run an experiment, we will see how the composed configuration looks:
+Now, if we run an experiment, we will see the composed configuration printed:
 
 ```dvc
 $ dvc exp run
