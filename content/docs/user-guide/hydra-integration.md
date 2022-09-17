@@ -2,8 +2,8 @@
 
 _New in DVC 2.25.0 (see `dvc version`)_
 
-In this guide we explain how to enable and use the DVC and
-[Hydra](https://hydra.cc/) integration.
+In this guide we explain how to use [Hydra](https://hydra.cc/) composition for
+configuring DVC <abbr>experiments</abbr>.
 
 ## How it works
 
@@ -11,16 +11,12 @@ On each `dvc exp run` call, DVC will use Hydra to **compose** a single
 configuration object and **dump** it to `params.yaml`. This will happen
 **before** the experiment starts running.
 
-Instead of relying on the
-[`@hydra.main`](https://hydra.cc/docs/tutorials/basic/your_first_app/simple_cli/)
-Python decorator for composing the config object, we can now parse a single
-file: `params.yaml`.
-
 This allows to combine Hydra composition and DVC <abbr>parameters</abbr> in
-order to configure DVC <abbr>pipelines</abbr> (running multiple steps of
-different shell commands, instead of a single Python script) and use features
-like [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
-and [`foreach`](/doc/user-guide/project-structure/dvcyaml-files#foreach).
+order to configure DVC <abbr>pipelines</abbr>. DVC pipelines can run multiple
+steps of different shell commands, instead of a single Python script, and use
+features like
+[Templating](/doc/user-guide/project-structure/dvcyaml-files#templating) and
+[`foreach`](/doc/user-guide/project-structure/dvcyaml-files#foreach).
 
 ## Setting up Hydra
 
@@ -62,7 +58,8 @@ Along with a file defining the top-level
 $ cat conf/config.yaml
 defaults:
   - dataset: imagenette
-  - train: baseline
+  - train/model: resnet
+  - train/optimizer: SGD
 ```
 
 <admon type="info">
@@ -73,14 +70,11 @@ _Defaults List_.
 
 </admon>
 
-In this example, we also have a nested Defaults List:
-
-```dvc
-$ cat conf/train/baseline.yaml
-defaults:
-  - model: resnet
-  - optimizer: sgd
-```
+The main difference with the official tutorial is that, instead of relying on
+the
+[`@hydra.main`](https://hydra.cc/docs/tutorials/basic/your_first_app/simple_cli/)
+Python decorator, DVC will take care of composing and dumping the configuration
+so we can instead rely on a single file: `params.yaml`.
 
 ## Setting up DVC
 
@@ -185,7 +179,7 @@ train_params = dvc.api.params_show("train")
 ...
 ```
 
-## Running experiments
+## Runing experiments
 
 We can now trigger use `dvc exp run --set-param` to modify the Hydra
 Composition:
