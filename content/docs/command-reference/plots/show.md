@@ -518,10 +518,6 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_bar_horizontal.svg)
 
-<!-- > A confusion matrix
-> [template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
-> is predefined in DVC. -->
-
 When using the `bar_horizontal` template the plot is sorted by the vertical axis
 (in our example this means alphabetically, by feature name).
 
