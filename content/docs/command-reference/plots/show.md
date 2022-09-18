@@ -525,7 +525,7 @@ If you want it to be sorted by the horizontal axis (by feature importance in the
 example) you can use the `bar_horizontal_sorted` template instead:
 
 ```dvc
-$ dvc plots show importances.csv -t bar_horizontal_sorted
+$ dvc plots show importances.csv -t bar_horizontal_sorted \
                              -x feature_importance -y feature_name
 file:///Users/usr/src/dvc_plots/index.html
 ```
