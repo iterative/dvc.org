@@ -486,7 +486,7 @@ file:///Users/usr/src/dvc_plots/index.html
 We can use `confusion_normalized` template to normalize the results:
 
 ```dvc
-$ dvc plots show classes.csv -t confusion_normalized
+$ dvc plots show classes.csv -t confusion_normalized \
                              -x actual -y predicted
 file:///Users/usr/src/dvc_plots/index.html
 ```
