@@ -143,32 +143,21 @@ avoid hardcoding the <abbr>output</abbr> paths.
 The second stage trains a model using the downloaded dataset and depends on the
 rest of parameters:
 
+<toggle>
+<tab title="Python API">
+
+We can use the `dvc.api.params_show()` method in order to load all the required
+parameters inside the stage:
+
 ```yaml
   ...
   train:
-    cmd: python train.py ${train}
+    cmd: python train.py
     deps:
       - ${dataset.output_folder}
+    params:
+      - train
 ```
-
-We use
-[Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking)
-in order to pass our configuration as
-[argparse](https://docs.python.org/3/library/argparse.html) arguments.
-
-<admon type="tip">
-
-[Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking)
-can be also used with other languages. For example, we could use
-[R argparse](https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html)
-, [Julia ArgParse](https://argparsejl.readthedocs.io/en/latest/argparse.html) or
-any other shell command that accepts argparse-like syntax.
-
-</admon>
-
-As an alternative, we could (only for Python scripts) use the
-`dvc.api.params_show()` method in order to load all the required parameters
-inside the stage:
 
 ```python
 # train.py
@@ -178,6 +167,32 @@ train_params = dvc.api.params_show("train")
 
 ...
 ```
+
+</tab>
+<tab title="Language Agnostic">
+
+We can use
+[Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking),
+in order to pass our configuration as
+[argparse](https://docs.python.org/3/library/argparse.html) arguments.
+
+```yaml
+  ...
+  train:
+    cmd: python train.py ${train}
+    deps:
+      - ${dataset.output_folder}
+```
+
+[Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking)
+and [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating) can
+be also used with other languages. For example, we could use
+[R argparse](https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html)
+, [Julia ArgParse](https://argparsejl.readthedocs.io/en/latest/argparse.html) or
+any other shell command that accepts argparse-like syntax.
+
+</tab>
+</toggle>
 
 ## Runing experiments
 
@@ -207,7 +222,7 @@ Running stage 'train':
 ...
 ```
 
-### Grid Search
+## Grid Search
 
 We can use the `dvc queue` in order to run a grid search with different
 _Defaults List_ values:
@@ -235,8 +250,8 @@ $ dvc queue start
 One of the benefits of using DVC Pipelines is that stages are cached, so they
 will not be re-run unless its dependencies and/or parameters change.
 
-In the above example, the experiment with `'optimizer=sgd', 'model=resnet'` will
-not waste computing because all stages are already in the cache:
+In the above example, the experiment with `['optimizer=sgd', 'model=resnet']`
+will not waste computing because all stages are already in the cache:
 
 ```
 $ dvc queue logs 0b443d8
