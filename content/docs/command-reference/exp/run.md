@@ -42,7 +42,7 @@ other `dvc queue` commands.
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment. DVC
 supports Hydra's [Basic Override syntax] for parsing values passed to
-`--set-param`. Hydra's
+`--set-param`. In addition,
 [Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
 and/or
 [Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
