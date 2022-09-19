@@ -34,8 +34,8 @@ or a tag name, a commit hash, or an [experiment name]).
 ## Opening a file
 
 ```py
->>> with fs.open("model.pkl") as fobj:
-        model = pickle.load(fobj)
+>>> with fs.open("model.pkl") as f:
+        model = pickle.load(f)
 ```
 
 This is similar to `dvc.api.open()` which returns a file-like object. Note that,

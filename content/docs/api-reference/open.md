@@ -19,8 +19,8 @@ import dvc.api
 with dvc.api.open(
         'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
-        ) as fd:
-    # ... fd is a file descriptor that can be processed normally.
+        ) as f:
+    # ... f is a file-like object that can be processed normally.
 ```
 
 ## Description
@@ -104,8 +104,8 @@ from mymodule import mySAXHandler
 with dvc.api.open(
         'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
-        ) as fd:
-    parse(fd, mySAXHandler)
+        ) as f:
+    parse(f, mySAXHandler)
 ```
 
 Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
@@ -139,7 +139,7 @@ import dvc.api
 with dvc.api.open(
         'features.dat',
         repo='git@server.com:path/to/repo.git'
-        ) as fd:
+        ) as f:
     # ... Process 'features'
 ```
 
@@ -157,8 +157,8 @@ import dvc.api
 with dvc.api.open(
         'clean.csv',
         rev='v1.1.0'
-        ) as fd:
-    reader = csv.reader(fd)
+        ) as f:
+    reader = csv.reader(f)
     # ... Process 'clean' data from version 1.1.0
 ```
 
@@ -181,8 +181,8 @@ with dvc.api.open(
         'activity.log',
         repo='location/of/dvc/project',
         remote='my-s3-bucket'
-        ) as fd:
-    for line in fd:
+        ) as f:
+    for line in f:
         match = re.search(r'user=(\w+)', line)
         # ... Process users activity log
 ```
@@ -196,6 +196,6 @@ import dvc.api
 
 with dvc.api.open(
         'data/nlp/words_ru.txt',
-        encoding='koi8_r') as fd:
+        encoding='koi8_r') as f:
     # ... Process Russian words
 ```
