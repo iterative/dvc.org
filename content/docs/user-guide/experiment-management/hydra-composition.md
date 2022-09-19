@@ -194,7 +194,7 @@ any other shell command that accepts argparse-like syntax.
 </tab>
 </toggle>
 
-## Runing experiments
+## Running experiments
 
 We can now trigger use `dvc exp run --set-param` to modify the Hydra
 Composition:

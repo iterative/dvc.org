@@ -264,7 +264,7 @@ See more in `dvc exp apply` and `dvc exp show`
 
 </admon>
 
-## Example: Modify parameters of custom files
+## Example: Append parameters from custom files
 
 Given a `dvc.yaml` that uses a custom parameters file:
 
