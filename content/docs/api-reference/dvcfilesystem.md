@@ -66,7 +66,7 @@ bytes instead of a string.
 ]
 ```
 
-This is similar to `dvc ls --recursive --dvc-only` CLI command. Note that the
+This is similar to `dvc list --recursive --dvc-only` CLI command. Note that the
 `"/"` is considered as the root of the Git repo. You can specify sub-paths to
 only return entries in that directory. Similarly, there is `fs.ls()` that is
 non-recursive.
@@ -96,7 +96,7 @@ non-recursive.
 ]
 ```
 
-This is similar to `dvc ls --recursive` CLI command. It returns all of the files
+This is similar to `dvc list --recursive` CLI command. It returns all of the files
 tracked by DVC and Git and if filesystem is opened locally, it also includes the
 local untracked files.
 
