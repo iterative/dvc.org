@@ -212,18 +212,80 @@ file before running an experiment.
 It can override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or
 remove (`~model.dropout`) parameters.
 
-For example, we can combine this syntax with the `[<filename>:]` prefix in order
-to append a new parameter to a custom parameters file (`train_config.json`):
+You can modify multiple parameters at the same time:
 
 ```dvc
-$ dvc exp run -S train_config.json:+train.weight_decay=0.001
+dvc exp run -S 'prepare.split=0.1' -S 'featurize.max_features=100'
 ...
 ```
 
+## Example: Grid Search
+
+Combining `--set-param` and `--queue`, we can perform a
+[Grid search](https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search)
+for tuning hyperparameters.
+
+DVC supports Hydra's
+[Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
+and
+[Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
+syntax for adding multiple experiments to the queue.
+
+This syntax can be used for multiple parameters at the same time, adding all
+combinations to the queue:
+
 ```dvc
+$ dvc exp run -S 'train.min_split=2,8,64' -S 'train.n_est=100,200' --queue
+Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=100']}'.
+Queued experiment 'ed3b4ef' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=100']}'.
+Queued experiment '7a10d54' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=100']}'.
+Queued experiment '0b443d8' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=200']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=200']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=200']}'.
+Queued experiment '0a5f20e' for future execution.
+$ dvc queue start
+...
+```
+
+We can then find and apply the best experiment:
+
+```dvc
+$ dvc exp apply $(dvc exp show --no-pager --sort-by avg_prec | tail -n 2 | head -n 1 | grep -o 'exp-\w*')
+```
+
+<admon type="tip">
+
+See more in `dvc exp apply` and `dvc exp show`
+
+</admon>
+
+## Example: Modify parameters of custom files
+
+Given a `dvc.yaml` that uses a custom parameters file:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    params:
+      - train_config.json: # tracks all params in this file
+```
+
+We can add the `[<filename>:]` prefix in order modify parameters of arbitrary
+files. For example, to append a new parameter to `train_config.json`:
+
+```dvc
+$ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'
+...
+
 $ dvc params diff
-Path              Param               HEAD    workspace
-train_config.json  train.weight_decay  -       0.001
+Path               Param                HEAD    workspace
+train_config.json  train.weight_decay   -       0.001
 ```
 
 <admon type="warn">
@@ -233,7 +295,8 @@ appending or removing <abbr>parameters</abbr>, make sure to update the
 [`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameters)
 of your `dvc.yaml` accordingly.
 
-Alternatively, you can track all the parameters in the file being modified.
+Alternatively, you can track all the parameters in the file being modified, as
+shown in the `dvc.yaml` above.
 
 </admon>
 
