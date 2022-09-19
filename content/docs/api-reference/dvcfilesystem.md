@@ -96,9 +96,9 @@ non-recursive.
 ]
 ```
 
-This is similar to `dvc list --recursive` CLI command. It returns all of the files
-tracked by DVC and Git and if filesystem is opened locally, it also includes the
-local untracked files.
+This is similar to `dvc list --recursive` CLI command. It returns all of the
+files tracked by DVC and Git and if filesystem is opened locally, it also
+includes the local untracked files.
 
 ## Downloading a file or a directory
 
