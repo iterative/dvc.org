@@ -35,14 +35,19 @@ See the [Options](#options) section for the differences.
 
 </admon>
 
-Use the `--set-param` (`-S`) option as a shortcut to change
-<abbr>parameter</abbr> values [on-the-fly] before running the experiment. DVC
-uses Hydra internally and supports the [Hydra Override Grammar] for parsing
-values passed to `--set-param`.
-
 It's possible to [queue experiments] for later execution with the `--queue`
 flag. Queued experiments can be run with `dvc queue start` and managed with
 other `dvc queue` commands.
+
+Use the `--set-param` (`-S`) option as a shortcut to change
+<abbr>parameter</abbr> values [on-the-fly] before running the experiment. DVC
+supports Hydra's [Basic Override syntax] for parsing values passed to
+`--set-param`. Hydra's
+[Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
+and/or
+[Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
+syntax can be combined with `--queue` in order to add multiple experiments to
+the queue.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
@@ -79,18 +84,17 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
   This will update the param file **before** running the experiment.
 
-  For example, to modify the value of an existing param, you can use
-  `-S <name>=<value>`.
+  Valid `<override_pattern>` values are defined in Hydra's [Basic Override
+  syntax]. In addition to the basic override syntax, the
+  [Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
+  and
+  [Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
+  syntax are supported for defining sweeps, but both require the `--queue`
+  option to be also provided.
 
   You can optionally provide a prefix `[<filename>:]` in order to edit a
   specific `dvc params` file. If not provided, `params.yaml` will be used as
   default.
-
-  Valid `<override_pattern>` values are defined in the [Hydra Override Grammar].
-
-  Using
-  [Hydra's Sweep overrides](https://hydra.cc/docs/advanced/override_grammar/extended/#sweeps)
-  requires the `--queue` option to be also provided.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will be generated otherwise, such as `exp-f80g4` (based on the
@@ -233,4 +237,4 @@ Alternatively, you can track all the parameters in the file being modified.
 
 </admon>
 
-[hydra override grammar]: https://hydra.cc/docs/advanced/override_grammar/basic/
+[basic override syntax]: https://hydra.cc/docs/advanced/override_grammar/basic/
