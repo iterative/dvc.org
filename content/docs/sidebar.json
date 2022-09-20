@@ -52,7 +52,7 @@
       },
       {
         "slug": "experimentation",
-        "source": "experimentation/index.md",
+        "source": false,
         "children": ["experiments", "visualization"]
       }
     ]
