@@ -1,8 +1,8 @@
 ## queue status
 
-Show status of tasks and workers for the
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview)
-task queue.
+Show status of tasks and workers for the [DVC experiment] task queue.
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
@@ -12,8 +12,17 @@ usage: dvc queue status [-h] [-q | -v]
 
 ## Description
 
-Shows status of queued and running tasks in the task queue, as well as status
-for started queue worker processes.
+Shows the status of queued and running experiments in the queue, as well as the
+status of running workers (see `dvc queue start`).
+
+```dvc
+$ dvc queue status
+Task     Name    Created    Status
+753b005          04:01 PM   Running
+1ae8b65          04:01 PM   Queued
+
+Worker status: 1 active, 0 idle
+```
 
 ## Options
 

@@ -37,21 +37,13 @@
   {
     "slug": "start",
     "label": "Get Started",
-    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
-        "label": "Data Management",
         "source": "data-management/index.md",
         "children": [
-          {
-            "label": "Data and Model Access",
-            "slug": "access"
-          },
-          {
-            "label": "Data Pipelines",
-            "slug": "pipelines"
-          },
+          "data-and-model-access",
+          "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
             "slug": "metrics-parameters-plots"
@@ -60,14 +52,8 @@
       },
       {
         "slug": "experiments",
-        "label": "Experiments",
         "source": "experiments/index.md",
-        "children": [
-          {
-            "label": "Visualization",
-            "slug": "visualization"
-          }
-        ]
+        "children": ["visualization"]
       }
     ]
   },
@@ -76,9 +62,7 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data and Models",
-        "slug": "versioning-data-and-model-files",
-        "source": "versioning-data-and-model-files/index.md",
+        "slug": "versioning-data-and-models",
         "children": [
           {
             "label": "Tutorial 👩‍💻",
@@ -96,7 +80,15 @@
       },
       "experiment-tracking",
       "model-registry",
-      "data-registry"
+      {
+        "slug": "data-registry",
+        "children": [
+          {
+            "label": "Tutorial 👩‍💻",
+            "slug": "tutorial"
+          }
+        ]
+      }
     ]
   },
   {
@@ -144,13 +136,17 @@
         ]
       },
       {
+        "slug": "pipelines",
+        "children": ["defining-pipelines"]
+      },
+      {
         "slug": "how-to",
         "source": false,
         "children": [
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
+          "resolve-merge-conflicts",
           "share-a-dvc-cache"
         ]
       },
@@ -214,6 +210,17 @@
       {
         "label": "dag",
         "slug": "dag"
+      },
+      {
+        "label": "data",
+        "slug": "data",
+        "source": false,
+        "children": [
+          {
+            "label": "data status",
+            "slug": "status"
+          }
+        ]
       },
       {
         "label": "destroy",
@@ -499,6 +506,10 @@
     "label": "Python API Reference",
     "source": "api-reference/index.md",
     "children": [
+      {
+        "slug": "dvcfilesystem",
+        "label": "DVCFileSystem"
+      },
       {
         "slug": "get_url",
         "label": "get_url()"

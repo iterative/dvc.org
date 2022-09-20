@@ -8,9 +8,10 @@ Download a file or directory tracked by another DVC or Git repository into the
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-j <number>]
-                  [-o <path>] [--file <filename>]
-                  [--rev <commit>] [--no-exec | --no-download] [--desc <text>]
+usage: dvc import [-h] [-q | -v] [--file <filename>]
+                  [-o <path>] [--rev <commit>]
+                  [--no-exec | --no-download]
+                  [-j <number>] [--desc <text>]
                   url path
 
 positional arguments:
@@ -65,8 +66,8 @@ data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC to efficiently determine whether the local copy is out of date.
 
-To actually [version the data](/doc/start/data-and-model-versioning), `git add`
-(and `git commit`) the import `.dvc` file.
+To actually [version the data](/doc/start/data-management), `git add` (and
+`git commit`) the import `.dvc` file.
 
 ⚠️ Relevant notes and limitation:
 
@@ -221,7 +222,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > Used in our
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
+> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial)
 
 Or
 

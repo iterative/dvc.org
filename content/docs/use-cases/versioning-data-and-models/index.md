@@ -31,8 +31,8 @@ the data, [restore](/doc/command-reference/checkout) previous versions,
 [metrics](/doc/command-reference/metrics), and more!
 
 👩‍💻 **Intrigued?** Try our
-[versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-to learn how DVC looks and feels firsthand.
+[versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial) to
+learn how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
 [cached](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
@@ -65,7 +65,7 @@ Benefits of our approach include:
 - **Collaboration**: Easily distribute your project development and share its
   data [internally](/doc/user-guide/how-to/share-a-dvc-cache) and
   [remotely](/doc/command-reference/remote), or
-  [reuse](/doc/start/data-and-model-access) it in other places.
+  [reuse](/doc/start/data-management/data-and-model-access) it in other places.
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).

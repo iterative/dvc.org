@@ -22,10 +22,9 @@ positional arguments:
 
 ## Description
 
-Provides a way to regenerate data pipeline results, by restoring the dependency
-graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
-defined by the stages listed in `dvc.yaml`. The commands defined in these stages
-are then executed in the correct order.
+Provides a way to regenerate data pipeline results, by restoring the [dependency
+graph] implicitly defined by the stages listed in `dvc.yaml`. The commands
+defined in these stages are then executed in the correct order.
 
 For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
@@ -69,6 +68,7 @@ It stores all the data files, intermediate or final results in the
 hash values of changed dependencies and outputs in the `dvc.lock` and `.dvc`
 files.
 
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 [always changed]: /doc/command-reference/status#local-workspace-status
 
 ### Parallel stage execution
@@ -160,10 +160,8 @@ up-to-date and only execute the final stage.
   option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage command(s) even if they have already been run
-  with the same dependencies and outputs (see the
-  [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
-  for example if the stage command/s is/are non-deterministic
-  ([not recommended](/doc/command-reference/run#avoiding-unexpected-behavior)).
+  with the same dependencies and outputs (see the [details]). Useful for example
+  if the stage command/s is/are non-deterministic ([not recommended]).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -185,11 +183,8 @@ up-to-date and only execute the final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - attempts to download outputs of stages found in the
-  [run-cache](/doc/user-guide/project-structure/internal-files#run-cache) during
-  reproduction. Uses the
-  [default remote storage](/doc/command-reference/remote/default). See also
-  `dvc pull`
+- `--pull` - attempts to download outputs of stages found in the [run-cache]
+  during reproduction. Uses the [default remote storage]. See also `dvc pull`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -200,10 +195,16 @@ up-to-date and only execute the final stage.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[details]: /doc/user-guide/project-structure/internal-files#run-cache
+[not recommended]:
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
+[default remote storage]: /doc/command-reference/remote/default
+
 ## Examples
 
 > To get hands-on experience with data science and machine learning pipelines,
-> see [Get Started: Data Pipelines](/doc/start/data-pipelines).
+> see [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines).
 
 Let's build and reproduce a simple pipeline. It takes this `text.txt` file:
 

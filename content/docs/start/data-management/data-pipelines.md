@@ -77,7 +77,7 @@ want to run (`python src/prepare.py data/data.xml`), its
 
 DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
-[manually](/doc/start/data-and-model-versioning).
+[manually](/doc/start/data-management).
 
 <details id="stage-expand-to-see-what-happens-under-the-hood">
 
@@ -90,9 +90,9 @@ The command options used above mean the following:
 
 - `-p prepare.seed,prepare.split` defines special types of dependencies —
   [parameters](/doc/command-reference/params). We'll get to them later in the
-  [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) page,
-  but the idea is that the stage can depend on field values from a parameters
-  file (`params.yaml` by default):
+  [Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
+  page, but the idea is that the stage can depend on field values from a
+  parameters file (`params.yaml` by default):
 
 ```yaml
 prepare:
@@ -149,15 +149,14 @@ Once you added a stage, you can run the pipeline with `dvc repro`. Next, you can
 use `dvc push` if you wish to save all the data [to remote storage] (usually
 along with `git commit` to version DVC metafiles).
 
-[to remote storage]: /doc/start/data-and-model-versioning#storing-and-sharing
+[to remote storage]: /doc/start/data-management#storing-and-sharing
 
-## Dependency graphs (DAGs)
+## Dependency graphs (DAG)
 
-By using `dvc stage add` multiple times, and specifying <abbr>outputs</abbr> of
-a stage as <abbr>dependencies</abbr> of another one, we can describe a sequence
-of commands which gets to a desired result. This is what we call a _data
-pipeline_ or
-[_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+By using `dvc stage add` multiple times to use <abbr>outputs</abbr> of a stage
+as <abbr>dependencies</abbr> of another, we can describe a sequence of commands
+that gets to a desired result. This is what we call a _data pipeline_ or
+dependency graph (a [DAG]).
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
@@ -171,6 +170,8 @@ $ dvc stage add -n featurize \
 ```
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
+
+[dag]: /doc/user-guide/pipelines/defining-pipelines
 
 <details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
@@ -275,8 +276,8 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 ### 💡 Expand to see what happens under the hood.
 
-`dvc repro` relies on the <abbr>DAG</abbr> definition from `dvc.yaml`, and uses
-`dvc.lock` to determine what exactly needs to be run.
+`dvc repro` relies on the [DAG] defined in `dvc.yaml`, and uses `dvc.lock` to
+determine what exactly needs to be run.
 
 The `dvc.lock` file is similar to a `.dvc` file — it captures hashes (in most
 cases `md5`s) of the dependencies and values of the parameters that were used.

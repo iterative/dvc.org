@@ -165,4 +165,7 @@ run.
 run-cache to remote storage for sharing and/or as a back up.
 
 > Note that the run-cache assumes that stage commands are deterministic (see
-> **Avoiding unexpected behavior** in `dvc run`).
+> [Avoiding unexpected behavior]).
+
+[avoiding unexpected behavior]:
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior

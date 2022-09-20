@@ -14,21 +14,38 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
                     [--metrics METRICS] [--plots PLOTS] [--live LIVE]
                     [--type {default,checkpoint}]
                     [command]
+
+positional arguments:
+  command               Shell command to runs the experiment(s)
 ```
 
 ## Description
 
 This command helps you get started with DVC Experiments quickly. It reduces
-repetitive DVC procedures by creating a necessary `dvc.yaml` file, which assumes
-standard locations of your inputs (data, <abbr>parameters</abbr>, and source
-code) and outputs (models, <abbr>metrics</abbr>, and
+repetitive DVC procedures by creating a `dvc.yaml` file. It assumes standard
+locations of your inputs (data, <abbr>parameters</abbr>, and source code) and
+outputs (models, <abbr>metrics</abbr>, and
 [plots](/doc/command-reference/plots)).
 
-These locations can be customized through the [command options](#options) or via
-[configuration](/doc/command-reference/config#exp). Default project structure:
+The only required argument is a [shell `command`] to run your experiment(s). It
+can be provided directly as an argument (see example below) or by using the
+`--interactive` (`-i`) mode, which will prompt for it.
+
+```cli
+$ dvc exp init "python src/train.py"
+Creating dependencies: src, data and params.yaml
+Creating output directories: plots and models
+Creating train stage in dvc.yaml
+```
+
+`dvc exp init` also generates the boilerplate project structure, including input
+files/directories and directories needed for future outputs. These locations can
+also be customized via [CLI options](#options) or interactive mode, or with
+[configuration](/doc/command-reference/config#exp). Default structure:
 
 ```
 ├── data/
+├── dvc.yaml
 ├── metrics.json
 ├── models/
 ├── params.yaml
@@ -36,10 +53,33 @@ These locations can be customized through the [command options](#options) or via
 └── src/
 ```
 
-The only required argument is the terminal command that runs your experiment(s).
-It can be provided directly [as an argument](#the-command-argument) or by using
-the `--interactive` (`-i`) mode (which will prompt for it). The command will be
-wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
+Inside `dvc.yaml`, the experiment is wrapped as a <abbr>stage</abbr> that
+`dvc exp run` can execute.
+
+<details>
+
+### Click to see `dvc.yaml` example
+
+```yaml
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+      - data
+      - src
+    params:
+      - params.yaml:
+    outs:
+      - models
+    metrics:
+      - metrics.json:
+          cache: false
+    plots:
+      - plots:
+          cache: false
+```
+
+</details>
 
 <admon type="tip">
 
@@ -48,43 +88,16 @@ A special `--type` of stage is supported (`checkpoint`), which monitors
 
 </admon>
 
-`dvc exp init` also generates the boilerplate project structure, including input
-files/directories and directories needed for future outputs, or any locations
-determined in interactive mode.
-
-<admon type="info">
-
-`dvc exp init` is intended as a quick way to start running [DVC Experiments].
-See the `dvc.yaml` specification for more complex data pipelines.
-
-</admon>
+📖 `dvc exp init` is intended as a quick way to start running [DVC Experiments].
+See the [Pipelines guide] for more on that topic.
 
 [stage definition]:
   /doc/user-guide/project-structure/dvcyaml-files#stage-entries
+[shell `command`]:
+  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
-
-### The `command` argument
-
-The command given to `dvc exp init` can be anything your system terminal would
-accept and run directly, for example a shell built-in, an expression, or a
-binary found in `PATH`. Please note that any flags sent after the `command`
-argument will normally become part of that command itself and ignored by
-`dvc exp init` (so provide it last).
-
-⚠️ While DVC is platform-agnostic, commands defined in `dvc.yaml` (`cmd` field)
-may only work on some operating systems and require certain software packages or
-libraries in the environment.
-
-Surround the command with double quotes `"` if it includes special characters
-like `|` or `<`, `>` -- otherwise they would apply to `dvc exp init` itself. Use
-single quotes `'` instead if there are environment variables in it that should
-be evaluated dynamically.
-
-```dvc
-$ dvc exp init "./a_script.sh > /dev/null 2>&1"
-$ dvc exp init './another_script.sh $MYENVVAR'
-```
+[pipelines guide]: /doc/user-guide/pipelines/defining-pipelines
 
 ## Options
 

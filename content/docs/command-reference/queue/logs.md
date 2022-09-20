@@ -1,8 +1,8 @@
 ## queue logs
 
-Show output logs for running and completed tasks in the
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview)
-task queue.
+Show console output logs for [DVC experiment] tasks (see `dvc queue start`).
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
@@ -15,15 +15,20 @@ positional arguments:
 
 ## Description
 
-Shows output logs for the specified running or completed experiment task.
+Shows the console output logs for the specified running or completed experiment
+`task`.
 
-By default, this command will show any available log data and then exit. For
-tasks which are still running, the `--follow` option can be used to attach to
-the task and continuously show live log output, until the task has completed.
+By default, this command will show any existing logs and then exit. For running
+tasks, the `--follow` option can be used to attach to the task and show live
+logs (until the task has completed).
 
-When using the `--follow` option, it is safe to stop following output using
-`Ctrl+C` (or `SIGINT`). This will only cause the logs command to exit, and the
-experiment task will continue to be run in the background.
+<admon type="tip">
+
+It is safe to interrupt the `--follow` process, with `Ctrl+C` (or `SIGINT`) for
+example. This will only cause the `dvc queue logs` command to exit, but the
+experiment continue to run in the background.
+
+</admon>
 
 ## Options
 
@@ -46,8 +51,6 @@ experiment task will continue to be run in the background.
 - `-q`, `--quiet` - do not write anything to standard output.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-## Examples
 
 ## Example: View logs for completed experiment tasks
 

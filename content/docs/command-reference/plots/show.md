@@ -21,9 +21,8 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize
-[certain data](/doc/user-guide/visualizing-plots#supported-file-formats) such as
-loss functions, AUC curves, confusion matrices, etc.
+This command provides a quick way to visualize [certain data] such as loss
+functions, AUC curves, confusion matrices, etc.
 
 All plots defined in `dvc.yaml` are used by default, but specific plots files or
 [top-level plot] IDs can be specified as `targets` (note that target files don't
@@ -39,6 +38,7 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
+[certain data]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
 [plot templates]:
   /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 [top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
@@ -91,7 +91,7 @@ The default behavior of this command can be modified per [stage plot] file with
 
 ## Example: Hierarchical data
 
-We'll use tabular metrics file `train.json` for this example:
+We'll use hierarchical metrics file `train.json` for this example:
 
 ```json
 {
@@ -486,9 +486,48 @@ file:///Users/usr/src/dvc_plots/index.html
 We can use `confusion_normalized` template to normalize the results:
 
 ```dvc
-$ dvc plots show classes.csv -t confusion_normalized
+$ dvc plots show classes.csv -t confusion_normalized \
                              -x actual -y predicted
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_confusion_normalized.svg)
+
+## Example: Horizontal bar plot
+
+This is a simple bar plot useful for example in visualizing model feature
+importances.
+
+We'll use `importances.csv` for this example:
+
+```
+feature_name,feature_importance
+petal_width,0.4
+petal_length,0.33
+sepal_width,0.24
+sepal_length,0.03
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show importances.csv --template bar_horizontal \
+                             -x feature_importance -y feature_name
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_bar_horizontal.svg)
+
+When using the `bar_horizontal` template the plot is sorted by the vertical axis
+(in our example this means alphabetically, by feature name).
+
+If you want it to be sorted by the horizontal axis (by feature importance in the
+example) you can use the `bar_horizontal_sorted` template instead:
+
+```dvc
+$ dvc plots show importances.csv -t bar_horizontal_sorted \
+                             -x feature_importance -y feature_name
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_bar_horizontal_sorted.svg)

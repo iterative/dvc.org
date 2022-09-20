@@ -27,67 +27,40 @@ update an existing stage, overwrite it with the `-f` (`--force`) option.
 A stage name is required and can be provided using the `-n` (`--name`) option.
 Most of the other [options](#options) help with defining different kinds of
 [dependencies and outputs](#dependencies-and-outputs) for the stage. The
-remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
-become the required [`command` argument](#the-command-argument).
+remaining terminal input provided to `dvc stage add` after any options/flags
+will become the required [`command` argument].
 
-Stages whose dependencies are outputs from other stages form
-[pipelines](/doc/command-reference/dag). `dvc repro` can be used to rebuild
-their dependency graph, and execute them.
+<admon type="info">
 
-<details>
+`-`/`--` flags sent after the `command` become part of the command itself and
+are ignored by `dvc stage add`.
 
-### 💡 Avoiding unexpected behavior
+</admon>
 
-We don't want to tell anyone how to write their code or what programs to use!
-However, please be aware that in order to prevent unexpected results when DVC
-reproduces pipeline stages, the underlying code should ideally follow these
-rules:
+Stages whose outputs become dependencies for other stages form
+<abbr>pipelines</abbr>. `dvc repro` can be used to rebuild this [dependency
+graph] and execute them.
 
-- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
-  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+<admon type="info">
 
-- Completely rewrite outputs. Do not append or edit.
+See the guide on [defining pipeline stages] for more details.
 
-- Stop reading and writing files when the `command` exits.
+[defining pipeline stages]:
+  /doc/user-guide/pipelines/defining-pipelines#pipelines
 
-Also, if your pipeline reproducibility goals include consistent output data, its
-code should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
-the same output for any given input): avoid code that increases
-[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
-time functions, hardware dependencies, etc.).
+</admon>
 
-</details>
-
-### The `command` argument
-
-The `command` sent to `dvc stage add` can be anything your terminal would accept
-and run directly, for example a shell built-in, expression, or binary found in
-`PATH`. Please remember that any flags sent after the `command` are considered
-part of the command itself, not of `dvc stage add`.
-
-⚠️ While DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/dag) stages may only work on some operating
-systems and require certain software packages to be installed.
-
-Wrap the command with double quotes `"` if there are special characters in it
-like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc stage add` itself. Use single quotes `'` instead if there are environment
-variables in it that should be evaluated dynamically. Examples:
-
-```cli
-$ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc stage add -n second_stage './another_script.sh $MYENVVAR'
-```
+[`command` argument]:
+  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 
 ### Dependencies and outputs
 
 By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
 <abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can create a
-_dependency graph_ ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
-that connects them, i.e. the output of a stage becomes the input of another, and
-so on (see `dvc dag`). This graph can be restored by DVC later to modify or
-[reproduce](/doc/command-reference/repro) the full pipeline. For example:
+[dependency graph] that connects them, i.e. the output of a stage becomes the
+input of another, and so on (see `dvc dag`). This graph can be restored by DVC
+later to modify or [reproduce](/doc/command-reference/repro) the full pipeline.
+For example:
 
 ```cli
 $ dvc stage add -n printer -d write.sh -o pages ./write.sh
@@ -138,18 +111,23 @@ Relevant notes:
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
 
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+
 ### For displaying and comparing data science experiments
 
-[parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
-special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML, JSON, TOML, or Python parameters files
-(e.g. `params.yaml`). This allows tracking experimental hyperparameters easily.
+[parameters][param-deps] (`-p`/`--params` option) are a special type of
+key/value dependencies. Multiple params can be specified from within one or more
+structured files (`params.yaml` by default). This allows tracking experimental
+hyperparameters easily in ML.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
 `--plots-no-cache` options), are also supported. Metrics and plots files have
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
+
+[param-deps]:
+  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
 
 ## Options
 
@@ -194,12 +172,12 @@ data science experiments.
   makes the stage incompatible with `dvc repro`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
-  or more [parameter dependencies](/doc/command-reference/params) from a
-  parameters file `path` (`./params.yaml` by default). This is done by sending a
-  comma separated list (`params_list`) as argument, e.g.
-  `-p learning_rate,epochs`. A custom params file can be defined with a prefix,
-  e.g. `-p params.json:threshold`. Or use the prefix alone with `:` to use all
-  the parameters found in that file, e.g. `-p myparams.toml:`.
+  or more [parameter dependencies][param-deps] from a structured file `path`
+  (`./params.yaml` by default). This is done by sending a comma separated list
+  (`params_list`) as argument, e.g. `-p learning_rate,epochs`. A custom params
+  file can be defined with a prefix, e.g. `-p params.json:threshold`. Or use the
+  prefix alone with `:` to use all the parameters found in that file, e.g.
+  `-p myparams.toml:`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
@@ -422,6 +400,15 @@ epochs = params['train']['epochs']
 
 We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 1.2 (unlike the more popular PyYAML).
+
+</admon>
+
+<admon type="tip">
+
+You can also [use templating] to parse parameters directly from `params.yaml`
+into the stage.
+
+[use templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
 
 </admon>
 

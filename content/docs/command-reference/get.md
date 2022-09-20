@@ -149,7 +149,7 @@ file or directory from. It also has the `--out` option to specify the location
 to place the target data within the workspace. Combining these two options
 allows us to do something we can't achieve with the regular `git checkout` +
 `dvc checkout` process – see for example the
-[Get Older Data Version](/doc/start/data-and-model-versioning#switching-between-versions)
+[Get Older Data Version](/doc/start/data-management#switching-between-versions)
 chapter of our _Get Started_.
 
 Let's use the

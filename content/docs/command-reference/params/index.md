@@ -1,6 +1,6 @@
 # params
 
-Contains a command to show changes in parameters:
+Contains a command to show changes in <abbr>parameters</abbr>:
 [diff](/doc/command-reference/params/diff).
 
 ## Synopsis
@@ -16,62 +16,69 @@ positional arguments:
 
 ## Description
 
-In order to track parameters and hyperparameters associated to machine learning
-experiments in <abbr>DVC projects</abbr>, DVC provides a different type of
-dependencies: _parameters_. They usually have simple names like `epochs`,
-`learning-rate`, `batch_size`, etc.
+Parameters can be any values used inside your code to influence the results
+(e.g. machine learning [hyperparameters]). DVC can track these as key/value
+pairs from structured YAML 1.2, JSON, TOML 1.0,
+[or Python](#examples-python-parameters-file) files (`params.yaml` by default).
+Params usually have simple names like `epochs`, `learning-rate`, `batch_size`,
+etc. Example:
 
-To start tracking parameters, list them under the `params` field of `dvc.yaml`
-stages (manually or with the the `-p`/`--params` option of `dvc stage add`). For
-example:
+```yaml
+epochs: 900
+tuning:
+  - learning-rate: 0.945
+  - max_depth: 7
+paths:
+  - labels: 'materials/labels'
+  - truth: 'materials/ground'
+```
+
+To start tracking parameters, list their names under the `params` field of
+`dvc.yaml` (manually or with the the `-p`/`--params` option of `dvc stage add`).
+For example:
 
 ```yaml
 stages:
   learn:
-    cmd: ./deep.py
+    cmd: python deep.py # reads params.yaml internally
     params:
-      - epochs # track specific parameter (from params.yaml)
-      - tuning.learning-rate
-      - myparams.toml: # track specific params from custom file
-          - batch_size
-      - config.json: # track all parameters in this file
+      - epochs # specific param from params.yaml
+      - tuning.learning-rate # nested param from params.yaml
+      - paths # entire group from params.yaml
+      - myparams.toml:
+          - batch_size # param from custom file
+      - config.json: # all params in this file
 ```
 
-In contrast to a regular <abbr>dependency</abbr>, a parameter dependency is not
-a file or directory. Instead, it consists of a _parameter name_ (or key) in a
-_parameters file_, where the _parameter value_ should be found. This allows you
-to define [stage](/doc/command-reference/run) dependencies more granularly:
-changes to other parts of the params file will not affect the stage. Parameter
-dependencies also prevent situations where several stages share a regular
-dependency (e.g. a config file), and any change in it invalidates all of them
-(see `dvc status`), causing unnecessary re-executions upon `dvc repro`.
+<admon type="info">
 
-The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
-JSON, TOML 1.0, or [Python](#examples-python-parameters-file) files can be used
-additionally (listed under `params:` as shown in the sample above). These files
-are typically written manually (or they can be generated) and they can be
-versioned directly with Git.
+See [more details] about this syntax.
 
-**Parameter values** should be organized in tree-like hierarchies (dictionaries)
-inside params files (see [Examples](#examples)). DVC will interpret param names
-as the tree path to find those values. Supported types are: string, integer,
-float, boolean, and arrays (groups of params). Note that DVC does not ascribe
-any specific meaning to these values.
+</admon>
+
+Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
+<abbr>dependency</abbr>, but only certain values will affect each
+<abbr>stage</abbr>.
+
+Parameters can also be used for [templating] `dvc.yaml` itself (see also **Dict
+Unpacking**), which means you can pass them to your [stage commands] as
+command-line arguments. You can also load them in Python code with
+`dvc.api.params_show()`.
+
+The `dvc params diff` command is available to show parameter changes, displaying
+their current and previous values.
 
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
 is outdated upon `dvc repro` (or `dvc status`).
 
-> Note that DVC does not pass the parameter values to stage commands. The
-> commands executed by DVC will have to load and parse the parameters file by
-> itself.
-
-The `dvc params diff` command is available to show parameter changes, displaying
-their current and previous values.
-
-💡 Parameters can also be used for
-[templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
-`dvc.yaml` itself.
+[hyperparameters]:
+  /doc/user-guide/experiment-management/running-experiments#tuning-hyperparameters
+[use the same params file]:
+  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
+[more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
+[templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
+[stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 
 ## Options
 
@@ -98,9 +105,9 @@ process:
   bow: 15000
 ```
 
-Using `dvc stage add`, define a [stage](/doc/command-reference/run) that depends
-on params `lr`, `layers`, and `epochs` from the params file above. Full paths
-should be used to specify `layers` and `epochs` from the `train` group:
+Using `dvc stage add`, define a <abbr>stage</abbr> that depends on params `lr`,
+`layers`, and `epochs` from the params file above. Full paths should be used to
+specify `layers` and `epochs` from the `train` group:
 
 ```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
@@ -112,7 +119,7 @@ $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
 > Python parameters files.
 
 The `train.py` script will have some code to parse and load the needed
-parameters. For example, you can use `dvc.api.params_show()`:
+parameters. You can use `dvc.api.params_show()` for this:
 
 ```py
 import dvc.api
@@ -197,9 +204,13 @@ previous version, which is why all `Old` values are `—`.
 
 ## Examples: Python parameters file
 
-> ⚠️ Note that complex expressions (unsupported by
-> [ast.literal_eval](https://docs.python.org/3/library/ast.html#ast.literal_eval))
-> won't be parsed as DVC parameters.
+<admon type="warn">
+
+See Note that complex expressions (unsupported by
+[ast.literal_eval](https://docs.python.org/3/library/ast.html#ast.literal_eval))
+won't be parsed as DVC parameters.
+
+</admon>
 
 Consider this Python parameters file named `params.py`:
 
@@ -237,8 +248,8 @@ class TestConfig:
     METRICS = ['metric']
 ```
 
-The following [stage](/doc/command-reference/run) depends on params `BOOL`,
-`INT`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
+The following <abbr>stage</abbr> depends on params `BOOL`, `INT`, as well as
+`TrainConfig`'s `EPOCHS` and `layers`:
 
 ```cli
 $ dvc stage add -n train -d train.py -d users.csv -o model.pkl \

@@ -40,8 +40,7 @@ part of your infrastructure; provisioned depending on data access speed and cost
 requirements. You have the flexibility to switch storage providers at any time,
 without having to change the directory structures or code of your projects.
 
-[share data and ml models]:
-  /doc/start/data-and-model-versioning#storing-and-sharing
+[share data and ml models]: /doc/start/data-management#storing-and-sharing
 
 ### What's next?
 
@@ -49,9 +48,9 @@ For details about how DVC caches your files and directories, see [Structure of
 the cache directory]. If you're completely new to DVC, see our
 [Get Started](/doc/start) pages to get familiar with the main features that
 structured storage and
-[data versioning](/doc/use-cases/versioning-data-and-model-files) allow. And
-check out the following example for a specific solution provided by a layered
-storage architecture.
+[data versioning](/doc/use-cases/versioning-data-and-models) allow. And check
+out the following example for a specific solution provided by a layered storage
+architecture.
 
 [structure of the cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
