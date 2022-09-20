@@ -51,7 +51,7 @@
         ]
       },
       {
-        "slug": "experimentation",
+        "slug": "experiment-management",
         "source": false,
         "children": ["experiments", "visualization"]
       }
