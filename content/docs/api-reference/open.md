@@ -17,10 +17,10 @@ def open(path: str,
 import dvc.api
 
 with dvc.api.open(
-        'get-started/data.xml',
-        repo='https://github.com/iterative/dataset-registry'
-        ) as fd:
-    # ... fd is a file descriptor that can be processed normally.
+    'get-started/data.xml',
+    repo='https://github.com/iterative/dataset-registry'
+) as f:
+    # ... f is a file-like object that can be processed normally.
 ```
 
 ## Description
@@ -102,10 +102,10 @@ import dvc.api
 from mymodule import mySAXHandler
 
 with dvc.api.open(
-        'get-started/data.xml',
-        repo='https://github.com/iterative/dataset-registry'
-        ) as fd:
-    parse(fd, mySAXHandler)
+    'get-started/data.xml',
+    repo='https://github.com/iterative/dataset-registry'
+) as f:
+    parse(f, mySAXHandler)
 ```
 
 Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
@@ -121,8 +121,8 @@ usage), and is typically faster than loading the whole data into memory.
 > from xml.dom.minidom import parse
 > import dvc.api
 >
-> xmldata = dvc.api.read('get-started/data.xml',
->     repo='https://github.com/iterative/dataset-registry')
+> url = 'https://github.com/iterative/dataset-registry'
+> xmldata = dvc.api.read('get-started/data.xml', repo=url)
 > xmldom = parse(xmldata)
 > ```
 
@@ -137,9 +137,9 @@ locally):
 import dvc.api
 
 with dvc.api.open(
-        'features.dat',
-        repo='git@server.com:path/to/repo.git'
-        ) as fd:
+    'features.dat',
+    repo='git@server.com:path/to/repo.git'
+) as f:
     # ... Process 'features'
 ```
 
@@ -154,11 +154,8 @@ CSV dataset:
 import csv
 import dvc.api
 
-with dvc.api.open(
-        'clean.csv',
-        rev='v1.1.0'
-        ) as fd:
-    reader = csv.reader(fd)
+with dvc.api.open('clean.csv', rev='v1.1.0') as f:
+    reader = csv.reader(f)
     # ... Process 'clean' data from version 1.1.0
 ```
 
@@ -177,12 +174,8 @@ providing a `remote` argument:
 ```py
 import dvc.api
 
-with dvc.api.open(
-        'activity.log',
-        repo='location/of/dvc/project',
-        remote='my-s3-bucket'
-        ) as fd:
-    for line in fd:
+with dvc.api.open('activity.log', remote='my-s3-bucket') as f:
+    for line in f:
         match = re.search(r'user=(\w+)', line)
         # ... Process users activity log
 ```
@@ -194,8 +187,6 @@ To chose which codec to open a text file with, send an `encoding` argument:
 ```py
 import dvc.api
 
-with dvc.api.open(
-        'data/nlp/words_ru.txt',
-        encoding='koi8_r') as fd:
+with dvc.api.open('data/nlp/words_ru.txt', encoding='koi8_r') as f:
     # ... Process Russian words
 ```

@@ -95,7 +95,7 @@ $ git config merge.dvc.driver \
 And add this line to your `.gitattributes` (in the root of your git repo):
 
 ```
-mydataset.dvc merge=dvc
+*.dvc merge=dvc
 ```
 
 Now, when a merge conflict occurs, DVC will simply combine data from both

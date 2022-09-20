@@ -508,6 +508,10 @@
     "source": "api-reference/index.md",
     "children": [
       {
+        "slug": "dvcfilesystem",
+        "label": "DVCFileSystem"
+      },
+      {
         "slug": "get_url",
         "label": "get_url()"
       },
