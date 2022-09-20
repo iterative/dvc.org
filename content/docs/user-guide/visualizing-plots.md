@@ -217,7 +217,7 @@ details.
 [full format specification]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
 
-### Plot Outputs
+### Plot outputs
 
 When defining [pipelines], some <abbr>outputs</abbr> (both files and
 directories) can be placed under a `plots` list for the corresponding stage.
