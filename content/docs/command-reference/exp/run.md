@@ -35,19 +35,13 @@ See the [Options](#options) section for the differences.
 
 </admon>
 
+Use the `--set-param` (`-S`) option as a shortcut to change
+<abbr>parameter</abbr> values [on-the-fly] before running the experiment. See
+the [option description](#-S) for details regarding the syntax.
+
 It's possible to [queue experiments] for later execution with the `--queue`
 flag. Queued experiments can be run with `dvc queue start` and managed with
 other `dvc queue` commands.
-
-Use the `--set-param` (`-S`) option as a shortcut to change
-<abbr>parameter</abbr> values [on-the-fly] before running the experiment. DVC
-supports Hydra's [Basic Override syntax] for parsing values passed to
-`--set-param`. In addition,
-[Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
-and/or
-[Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
-syntax can be combined with `--queue` in order to add multiple experiments to
-the queue.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
@@ -92,9 +86,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   syntax are supported for defining sweeps, but both require the `--queue`
   option to be also provided.
 
-  You can optionally provide a prefix `[<filename>:]` in order to edit a
-  specific `dvc params` file. If not provided, `params.yaml` will be used as
-  default.
+  You can optionally provide a prefix `[<filename>:]` to edit a specific
+  `dvc params` file. If not provided, `params.yaml` will be used as default.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will be generated otherwise, such as `exp-f80g4` (based on the
@@ -105,7 +98,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   runs.
 
 - `--queue` - place this experiment at the end of a line for future execution,
-  but don't actually run it yet. Use `dvc queue start` to process the queue.
+  but don't run it yet. Use `dvc queue start` to process the queue.
 
   > For checkpoint experiments, this implies `--reset` unless a `--rev` is
   > provided.
@@ -135,7 +128,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
 
-- `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exits.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
@@ -276,8 +269,8 @@ stages:
       - train_config.json: # tracks all params in this file
 ```
 
-We can add the `[<filename>:]` prefix in order modify parameters of arbitrary
-files. For example, to append a new parameter to `train_config.json`:
+We can add the
+`[<filename>`:]`prefix to modify the parameters of arbitrary files. For example, to append a new parameter to`train_config.json`:
 
 ```dvc
 $ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'

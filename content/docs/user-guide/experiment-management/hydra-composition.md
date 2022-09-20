@@ -2,7 +2,7 @@
 
 _New in DVC 2.25.0 (see `dvc version`)_
 
-In this guide we explain how to use [Hydra](https://hydra.cc/) composition for
+In this guide, we explain how to use [Hydra](https://hydra.cc/) composition for
 configuring DVC <abbr>experiments</abbr>.
 
 ## How it works
@@ -11,12 +11,11 @@ On each `dvc exp run` call, DVC will use Hydra to **compose** a single
 configuration object and **dump** it to `params.yaml`. This will happen
 **before** the experiment starts running.
 
-This allows to combine Hydra composition and DVC <abbr>parameters</abbr> in
-order to configure DVC <abbr>pipelines</abbr>. DVC pipelines can run multiple
-steps of different shell commands, instead of a single Python script, and use
-features like
-[Templating](/doc/user-guide/project-structure/dvcyaml-files#templating) and
-[`foreach`](/doc/user-guide/project-structure/dvcyaml-files#foreach).
+This allows to combine Hydra composition and DVC <abbr>parameters</abbr> to
+configure DVC <abbr>pipelines</abbr>. DVC pipelines can run multiple steps of
+different shell commands, instead of a single Python script, and use features
+like [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
+and [`foreach`](/doc/user-guide/project-structure/dvcyaml-files#foreach).
 
 ## Setting up Hydra
 
@@ -27,8 +26,8 @@ Learn more about setting up Hydra in the
 
 </admon>
 
-In order to start using Hydra composition capabilities it is required to have a
-directory of
+To start using Hydra composition capabilities it is required to have a directory
+of
 [Hydra Config Groups](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/)
 (`conf`):
 
@@ -74,7 +73,9 @@ The main difference with the official tutorial is that, instead of relying on
 the
 [`@hydra.main`](https://hydra.cc/docs/tutorials/basic/your_first_app/simple_cli/)
 Python decorator, DVC will take care of composing and dumping the configuration
-so we can instead rely on a single file: `params.yaml`.
+so we can instead rely on a single file: `params.yaml`. See the
+[example below](#building-a-pipeline) to find different options on how to use
+this file.
 
 ## Setting up DVC
 
@@ -137,16 +138,16 @@ stages:
 ```
 
 We use [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
-in order to configure our shell commands (`mkdir`, `tar` and `wget`) and to
-avoid hardcoding the <abbr>output</abbr> paths.
+to configure our shell commands (`mkdir`, `tar` and `wget`) and to avoid
+hardcoding the <abbr>output</abbr> paths.
 
 The second stage trains a model using the downloaded dataset and depends on the
-rest of parameters:
+rest of the parameters:
 
 <toggle>
 <tab title="Python API">
 
-We can use the `dvc.api.params_show()` method in order to load all the required
+We can use the `dvc.api.params_show()` method to load all the required
 parameters inside the stage:
 
 ```yaml
@@ -171,9 +172,13 @@ train_params = dvc.api.params_show("train")
 </tab>
 <tab title="Language Agnostic">
 
-We can use
+Because the composed config will be dumped to `params.yaml`, we can use a YAML
+parser library (there is at least one available for most languages) to load the
+configuration.
+
+Alternatively, we can use
 [Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking),
-in order to pass our configuration as
+to pass our configuration as
 [argparse](https://docs.python.org/3/library/argparse.html) arguments.
 
 ```yaml
@@ -184,9 +189,7 @@ in order to pass our configuration as
       - ${dataset.output_folder}
 ```
 
-[Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking)
-and [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating) can
-be also used with other languages. For example, we could use
+This approach can be used in other languages. For example, we can use
 [R argparse](https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html)
 , [Julia ArgParse](https://argparsejl.readthedocs.io/en/latest/argparse.html) or
 any other shell command that accepts argparse-like syntax.
@@ -224,8 +227,8 @@ Running stage 'train':
 
 ## Grid Search
 
-We can use the `dvc queue` in order to run a grid search with different
-_Defaults List_ values:
+We can use the `dvc queue` to run a grid search with different _Defaults List_
+values:
 
 ```dvc
 $ dvc exp run \
@@ -248,7 +251,7 @@ $ dvc queue start
 ```
 
 One of the benefits of using DVC Pipelines is that stages are cached, so they
-will not be re-run unless its dependencies and/or parameters change.
+will not be re-run unless their dependencies and/or parameters change.
 
 In the above example, the experiment with `['optimizer=sgd', 'model=resnet']`
 will not waste computing because all stages are already in the cache:

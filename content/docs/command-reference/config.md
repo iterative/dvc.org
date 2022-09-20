@@ -356,10 +356,12 @@ experiments or projects use a similar structure.
 
 - `hydra.enabled` - enables
   [Hydra Composition](/docs/user-guide/experiment-management/hydra-composition).
-- `hydra.config_dir` - location of the directory containing Hydra Config Groups.
+- `hydra.config_dir` - location of the directory containing
+  [Hydra Config Groups](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
   Defaults to `conf`.
-- `hydra.config_name` - name of file with top-level Hydra Defaults List, located
-  inside `hydra.config_dir`. Defaults to `config`.
+- `hydra.config_name` - the name of the file containing top-level
+  [Hydra Defaults List](https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/),
+  located inside `hydra.config_dir`. Defaults to `config`.
 
 ## Example: Add an S3 remote, and set it as default
 
