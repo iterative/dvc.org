@@ -254,7 +254,7 @@ One of the benefits of using DVC Pipelines is that stages are cached, so they
 will not be re-run unless their dependencies and/or parameters change.
 
 In the above example, the experiment with `['optimizer=sgd', 'model=resnet']`
-will not waste computing because all stages are already in the cache:
+will not waste computing because the results are already in the cache:
 
 ```
 $ dvc queue logs 0b443d8
