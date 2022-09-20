@@ -251,7 +251,7 @@ Plotting stage outputs are convenient for defining plots within the stage
 without having to write top-level `plots` definitions in `dvc.yaml`. They do not
 support custom plot IDs or multiple data sources.
 
-[pipelines]: /doc/start/data-management/pipelines
+[pipelines]: /doc/start/data-management/data-pipelines
 
 ## Plot templates (data-series only)
 
@@ -283,6 +283,9 @@ DVC has the following built-in plot templates:
   [example](/doc/command-reference/plots/show#example-confusion-matrix)
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
+- `bar_horizontal` - horizontal bar plot, see
+  [example](/doc/command-reference/plots/show#example-horizontal-bar-plot)
+- `bar_horizontal_sorted` - horizontal bar plot sorted by bar size
 
 Note that in the case of CSV/TSV metrics files, column names from the table
 header (first row) are equivalent to field names.

@@ -55,8 +55,11 @@ info.
 
 <admon type="warn">
 
-> ⚠️ Note that DVC assumes that experiments are deterministic (see **Avoiding
-> unexpected behavior** in `dvc stage add`).
+Note that DVC assumes that experiments are deterministic (see [Avoiding
+unexpected behavior]).
+
+[avoiding unexpected behavior]:
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
 
 </admon>
 

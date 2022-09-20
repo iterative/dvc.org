@@ -56,7 +56,7 @@ once.
 </admon>
 
 [reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 ## Tuning (hyper)parameters
 
