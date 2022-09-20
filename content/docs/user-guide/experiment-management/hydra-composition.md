@@ -58,7 +58,7 @@ $ cat conf/config.yaml
 defaults:
   - dataset: imagenette
   - train/model: resnet
-  - train/optimizer: SGD
+  - train/optimizer: sgd
 ```
 
 <admon type="info">
