@@ -19,7 +19,6 @@ positional arguments:
                 in a single image.
     modify      Modify display properties of data-series plots
                 defined in stages (has no effect on image plots).
-
     templates   List built-in plots templates or show JSON
                 specification for one.
 ```
