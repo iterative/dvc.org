@@ -19,8 +19,8 @@ positional arguments:
                 in a single image.
     modify      Modify display properties of data-series plots
                 defined in stages (has no effect on image plots).
-    templates   Write built-in plots templates to a directory
-                (.dvc/plots by default).
+    templates   List built-in plots templates or show JSON
+                specification for one.
 ```
 
 ## Description
@@ -34,7 +34,7 @@ pipeline] or performance logs produced by [DVCLive].
 📖 See [Visualizing Plots] as well as the top-level plots definition
 [specification] for more details.
 
-[ml pipeline]: /doc/start/data-management/pipelines
+[ml pipeline]: /doc/start/data-management/data-pipelines
 [dvclive]: /doc/dvclive/dvclive-with-dvc
 [visualizing plots]: /doc/user-guide/visualizing-plots
 [specification]:

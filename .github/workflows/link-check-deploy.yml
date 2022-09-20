@@ -3,4 +3,4 @@ on:
   deployment_status:
 jobs:
   run:
-    uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@v0.13.0
+    uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@v0.13.1

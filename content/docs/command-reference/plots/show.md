@@ -486,9 +486,48 @@ file:///Users/usr/src/dvc_plots/index.html
 We can use `confusion_normalized` template to normalize the results:
 
 ```dvc
-$ dvc plots show classes.csv -t confusion_normalized
+$ dvc plots show classes.csv -t confusion_normalized \
                              -x actual -y predicted
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_confusion_normalized.svg)
+
+## Example: Horizontal bar plot
+
+This is a simple bar plot useful for example in visualizing model feature
+importances.
+
+We'll use `importances.csv` for this example:
+
+```
+feature_name,feature_importance
+petal_width,0.4
+petal_length,0.33
+sepal_width,0.24
+sepal_length,0.03
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show importances.csv --template bar_horizontal \
+                             -x feature_importance -y feature_name
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_bar_horizontal.svg)
+
+When using the `bar_horizontal` template the plot is sorted by the vertical axis
+(in our example this means alphabetically, by feature name).
+
+If you want it to be sorted by the horizontal axis (by feature importance in the
+example) you can use the `bar_horizontal_sorted` template instead:
+
+```dvc
+$ dvc plots show importances.csv -t bar_horizontal_sorted \
+                             -x feature_importance -y feature_name
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_bar_horizontal_sorted.svg)

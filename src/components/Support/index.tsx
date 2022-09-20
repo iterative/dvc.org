@@ -47,7 +47,6 @@ const SupportPage: React.FC = () => (
                       src="https://discordapp.com/widget?id=485586884165107732&theme=light"
                       width="350"
                       height="500"
-                      allowTransparency
                       frameBorder="0"
                     />
                   }
