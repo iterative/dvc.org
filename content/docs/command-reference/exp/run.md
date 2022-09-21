@@ -269,8 +269,8 @@ stages:
       - train_config.json: # tracks all params in this file
 ```
 
-We can add the
-`[<filename>:]` prefix to modify the parameters of arbitrary files. For example, to append a new parameter to`train_config.json`:
+We can add the `[<filename>:]` prefix to modify the parameters of arbitrary
+files. For example, to append a new parameter to`train_config.json`:
 
 ```dvc
 $ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'
