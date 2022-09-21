@@ -77,7 +77,7 @@ want to run (`python src/prepare.py data/data.xml`), its
 
 DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
-[manually](/doc/start/data-management).
+[manually](/doc/start/data-management/data-versioning).
 
 <details id="stage-expand-to-see-what-happens-under-the-hood">
 
@@ -149,7 +149,8 @@ Once you added a stage, you can run the pipeline with `dvc repro`. Next, you can
 use `dvc push` if you wish to save all the data [to remote storage] (usually
 along with `git commit` to version DVC metafiles).
 
-[to remote storage]: /doc/start/data-management#storing-and-sharing
+[to remote storage]:
+  /doc/start/data-management/data-versioning#storing-and-sharing
 
 ## Dependency graphs (DAG)
 

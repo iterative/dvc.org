@@ -42,26 +42,32 @@ DVC supports several types of remote storage: local file system, SSH, Amazon S3,
 Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
 more details.
 
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+<admon type="info">
+
+If you installed DVC via `pip` and plan to use cloud services as remote storage,
+you might need to install these optional dependencies: `[s3]`, `[azure]`,
+`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
+all. The command should look like this: `pip install "dvc[s3]"`. (This example
+installs `boto3` library along with DVC to support S3 storage.)
+
+</admon>
 
 ### Managing remote storage
 
-> For an intro on DVC remote usage see
-> [Storing and sharing data](/doc/start/data-management#storing-and-sharing).
+<admon type="info">
 
-The [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) subcommands read or modify DVC
-[config files](/doc/command-reference/config), where DVC remotes are set up.
-Alternatively, `dvc config` can be used, or the config files can be edited
-manually.
+For an intro on DVC remote usage see [Storing and sharing data].
+
+[storing and sharing data]:
+  /doc/start/data-management/data-versioning#storing-and-sharing
+
+</admon>
+
+`dvc remote` subcommands read or modify DVC [config files], where DVC remotes
+are set up. Alternatively, `dvc config` can be used, or the config files can be
+edited manually.
+
+[config files]: /doc/command-reference/config
 
 ## Options
 
