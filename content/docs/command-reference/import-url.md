@@ -193,9 +193,8 @@ $ git checkout 3-config-remote
 
 ## Example: Tracking a file from the web
 
-An advanced alternate to the intro of the
-[Versioning Basics](/doc/start/data-management) part of the _Get Started_ is to
-use `dvc import-url`:
+An advanced alternate to the intro of the [Versioning Basics] part of the _Get
+Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
@@ -230,6 +229,8 @@ allows DVC to determine whether it's necessary to download it again.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
+
+[versioning basics]: /doc/start/data-management/data-versioning
 
 ## Example: Detecting external file changes
 
@@ -281,15 +282,16 @@ directory we created previously. (Its `path` has the URL for the data store.)
 And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
-Let's now manually reproduce the
-[data processing part](/doc/start/data-management/data-pipelines) of the _Get
-Started_. Download the example source code archive and unzip it:
+Let's now manually reproduce the [data processing section] of the _Get Started_.
+Download the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 ```
+
+[data processing section]: /doc/start/data-management/data-pipelines
 
 <details>
 

@@ -66,8 +66,8 @@ data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC to efficiently determine whether the local copy is out of date.
 
-To actually [version the data](/doc/start/data-management), `git add` (and
-`git commit`) the import `.dvc` file.
+To actually [version the data], `git add` (and `git commit`) the import `.dvc`
+file.
 
 ⚠️ Relevant notes and limitation:
 
@@ -82,6 +82,8 @@ To actually [version the data](/doc/start/data-management), `git add` (and
 - Note that `dvc repro` doesn't check or update import `.dvc` files (see
   `dvc freeze`), use `dvc update` to bring the import up to date from the data
   source.
+
+[version the data]: /doc/start/data-management/data-versioning
 
 ## Options
 

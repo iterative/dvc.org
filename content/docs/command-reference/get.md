@@ -144,18 +144,16 @@ hash.
 ## Example: Compare different versions of data or model
 
 `dvc get` provides the `--rev` option to specify which
-[commit](https://git-scm.com/docs/revisions) of the repository to download the
-file or directory from. It also has the `--out` option to specify the location
-to place the target data within the workspace. Combining these two options
-allows us to do something we can't achieve with the regular `git checkout` +
-`dvc checkout` process – see for example the
-[Get Older Data Version](/doc/start/data-management#switching-between-versions)
-chapter of our _Get Started_.
+[Git commit](https://git-scm.com/docs/revisions) of the repository to download
+the file or directory from. It also has the `--out` option to specify the
+location to place the target data within the workspace. Combining these two
+options allows us to do something we can't achieve with the regular
+`git checkout` + `dvc checkout` process – see for example the [Switching between
+versions] chapter of our _Get Started_.
 
-Let's use the
-[get started example repo](https://github.com/iterative/example-get-started)
-again, like in the previous example. But this time, clone it first to see
-`dvc get` in action inside a <abbr>DVC project</abbr>.
+Let's use the [get started example repo] again, like in the previous example.
+But this time, clone it first to see `dvc get` in action inside a <abbr>DVC
+project</abbr>.
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -202,3 +200,7 @@ Untracked files:
 	model.bigrams.pkl
 	model.monograms.pkl
 ```
+
+[get started example repo]: https://github.com/iterative/example-get-started
+[switching between versions]:
+  /doc/start/data-management/data-versioning#switching-between-versions

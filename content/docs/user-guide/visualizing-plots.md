@@ -66,7 +66,7 @@ repository from bloating.
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[tracking]: /doc/start/data-management
+[tracking]: /doc/start/data-management/data-versioning
 
 </admon>
 
