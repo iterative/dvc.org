@@ -42,6 +42,7 @@
         "slug": "data-management",
         "source": "data-management/index.md",
         "children": [
+          "data-versioning",
           "data-and-model-access",
           "data-pipelines",
           {
