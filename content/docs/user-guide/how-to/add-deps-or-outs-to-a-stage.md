@@ -35,8 +35,8 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 +    - data/validate
 ```
 
-> We could also use `dvc stage add` with `-f` to add another
-> dependency/output to the stage:
+> We could also use `dvc stage add` with `-f` to add another dependency/output
+> to the stage:
 >
 > ```dvc
 > $ dvc stage add -n prepare \
