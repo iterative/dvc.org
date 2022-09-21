@@ -4,6 +4,12 @@ Show changes in the <abbr>project</abbr> [pipelines](/user-guide/pipelines), as
 well as file mismatches either between the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, or between the cache and remote storage.
 
+<admon type="info">
+
+For an equivalent to `git status`, use `dvc data status`.
+
+</admon>
+
 ## Synopsis
 
 ```usage
@@ -17,12 +23,6 @@ positional arguments:
 ```
 
 ## Description
-
-<admon type="info">
-
-For an equivalent to `git status`, use `dvc data status`.
-
-</admon>
 
 Searches for changes in the existing tracked data and pipelines. In local mode,
 it shows which files or directories have changed in the <abbr>workspace</abbr>

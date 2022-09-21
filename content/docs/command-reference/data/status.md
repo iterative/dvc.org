@@ -1,6 +1,12 @@
 # data status
 
-Show changes in the data tracked by DVC in the workspace.
+Show changes in the data tracked by DVC in the <abbr>workspace</abbr>.
+
+<admon type="info">
+
+For [pipelines](/user-guide/pipelines) status, use `dvc status`.
+
+</admon>
 
 ## Synopsis
 
@@ -13,14 +19,8 @@ usage: dvc data status [-h] [-q | -v]
 
 ## Description
 
-<admon type="info">
-
-For [pipelines](/user-guide/pipelines) status, use `dvc status`.
-
-</admon>
-
-The `data status` command displays the state of the working directory and the
-changes with respect to the last Git commit (`HEAD`). It shows you what new
+The `data status` command displays the state of the <abbr>workspace</abbr> and
+the changes with respect to the last Git commit (`HEAD`). It shows you what new
 changes have been committed to DVC, which haven't been committed, which files
 aren't being tracked by DVC and Git, and what files are missing from the
 <abbr>cache</abbr>.
@@ -29,9 +29,9 @@ aren't being tracked by DVC and Git, and what files are missing from the
 this pair of commands shows the status of all paths in a repository.
 
 The `dvc data status` command only outputs information, it won't modify or
-change anything in your working directory. It's a good practice to check the
-state of your repository before doing `dvc commit` or `git commit` so that you
-don't accidentally commit something you don't mean to.
+change anything in your <abbr>workspace</abbr>. It's a good practice to check
+the state of your repository before doing `dvc commit` or `git commit` so that
+you don't accidentally commit something you don't mean to.
 
 An example output might look something like follows:
 
@@ -60,9 +60,10 @@ As shown above, the `dvc data status` displays changes in multiple categories:
   `dvc-commit`-ed that differs with the last Git commit. There might be more
   detailed state on how each of those files changed: _added_, _modified_,
   _deleted_ and _unknown_.
-- _DVC uncommitted changes_ indicates that there are changes in the working
-  directory that are not `dvc commit`-ed yet. Same as _DVC committed changes_,
-  there might be more detailed state on how each of those files changed.
+- _DVC uncommitted changes_ indicates that there are changes in the
+  <abbr>workspace</abbr> that are not `dvc commit`-ed yet. Same as _DVC
+  committed changes_, there might be more detailed state on how each of those
+  files changed.
 - _Untracked files_ shows the files that are not being tracked by DVC and Git.
   This is disabled by default, unless [`--untracked-files`](#--untracked-files)
   is specified.
@@ -113,11 +114,12 @@ DVC uncommitted changes:
 
 This shows that the `data/data.xml` is missing from the cache, `data/features/`
 a directory, has changes that are being tracked by DVC but is not Git committed
-yet, and a file `model.pkl` has been deleted from the workspace. The
-`data/features/` directory is modified, but there is no further details to what
-changed inside. The `--granular` option can provide more information on that.
+yet, and a file `model.pkl` has been deleted from the <abbr>workspace</abbr>.
+The `data/features/` directory is modified, but there is no further details to
+what changed inside. The `--granular` option can provide more information on
+that.
 
-## Example: Combine with Git status
+## Example: Full repository status (including Git)
 
 ```dvc
 $ dvc data status
