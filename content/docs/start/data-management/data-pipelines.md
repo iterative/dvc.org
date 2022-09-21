@@ -210,8 +210,8 @@ The changes to the `dvc.yaml` should look like this:
 
 ### ⚙️ Expand to add more stages.
 
-Let's add the training itself. Nothing new this time; just the same `dvc run`
-command with the same set of options:
+Let's add the training itself. Nothing new this time; just the same 
+`dvc stage add` command with the same set of options:
 
 ```dvc
 $ dvc stage add -n train \
