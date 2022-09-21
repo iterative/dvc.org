@@ -234,7 +234,7 @@ $ type %TEMP%\data.xml >> data\data.xml
 </details>
 
 ```dvc
-$ dvc add data/data.xml
+$ dvc commit data/data.xml
 ```
 
 Usually you would also run `git commit` and `dvc push` to save the changes:
