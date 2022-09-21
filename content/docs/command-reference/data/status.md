@@ -15,7 +15,7 @@ usage: dvc data status [-h] [-q | -v]
 
 <admon type="info">
 
-For [pipelines](/user-guide/pipelines) status, use `dvc status`.
+For [pipelines](/doc/user-guide/pipelines) status, use `dvc status`.
 
 </admon>
 
