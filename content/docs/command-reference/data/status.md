@@ -4,7 +4,7 @@ Show changes in the data tracked by DVC in the <abbr>workspace</abbr>.
 
 <admon type="info">
 
-For [pipelines](/user-guide/pipelines) status, use `dvc status`.
+For [pipelines](/doc/user-guide/pipelines) status, use `dvc status`.
 
 </admon>
 
