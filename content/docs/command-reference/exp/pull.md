@@ -82,8 +82,14 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
 
 ## Examples
 
-> This example is based on our [Get Started](/doc/start/experiments), where you
-> can find the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 Let's say we have cloned a DVC repository, and would like to fetch an experiment
 that someone else shared (see also `dvc exp list`).

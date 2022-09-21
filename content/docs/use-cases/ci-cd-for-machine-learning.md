@@ -90,8 +90,8 @@ a regularly updated source, checkout a pre-existing model, and then deploy an
 updated model refined on the additional data.
 
 **Experiment in the Cloud**: Alternatively, DVC and CML can be used to do
-research and run [experiments](/doc/start/experiments) in the cloud -- such as
-an entire hyperparameter search!
+research and run [experiments](/doc/start/experiment-management/experiments) in
+the cloud -- such as an entire hyperparameter search!
 
 <img src="https://static.iterative.ai/logo/dvc.svg" alt="DVC" width="24px" style="vertical-align: text-top"/> +
 <img src="https://static.iterative.ai/logo/cml.svg" alt="CML" width="24px" style="vertical-align: text-top"/>

@@ -138,8 +138,14 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Examples
 
-> This is based on our [Get Started](/doc/start/experiments), where you can find
-> the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 <details>
 
