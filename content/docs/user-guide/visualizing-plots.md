@@ -4,7 +4,7 @@ DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
 1. Save some data, for example in JSON format. This may be an
-   [ML pipeline output](#stage-plots).
+   [ML pipeline output](#plot-outputs).
 
    ```json
    [
