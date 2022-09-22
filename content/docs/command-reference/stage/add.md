@@ -192,12 +192,11 @@ data science experiments.
   is typically desirable with _metrics_ because they are small enough to be
   tracked with Git directly.
 
-- `--plots <path>` - specify a plot metrics file produces by this stage. This
-  option behaves like `-o` but registers the file in a `plots` field inside the
-  `dvc.yaml` stage. Plot metrics are data series stored in tabular (CSV or TSV)
-  or hierarchical (JSON or YAML) files, with complex information that describes
-  a model (or any other data artifact). See `dvc plots` to learn more about
-  plots.
+- `--plots <path>` - specify a plots file or directory produced by this stage.
+  This option behaves like `-o` but registers the file or directory in a `plots`
+  field inside the `dvc.yaml` stage. Plots outputs are either data series stored
+  in tabular (CSV or TSV) or hierarchical (JSON or YAML) files, or image (JPEG,
+  GIF, or PNG) files. See [Visualizing Plots] to learn more about plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots file (same as with `-O` and `-M` above). This may be desirable
@@ -228,6 +227,8 @@ data science experiments.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[visualizing plots]: /doc/user-guide/visualizing-plots
 
 ## Examples
 

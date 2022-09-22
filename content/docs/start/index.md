@@ -68,7 +68,7 @@ trail below to see an overview of all features from that perspective:
   you capture, navigate, and evaluate ML projects without leaving Git. Think
   "Git for machine learning".
 
-[data and model versioning]: /doc/start/data-management
+[data and model versioning]: /doc/start/data-management/data-versioning
 [data and model access]: /doc/start/data-management/data-and-model-access
 [data pipelines]: /doc/start/data-management/data-pipelines
 [metrics, parameters, and plots]:

@@ -40,7 +40,8 @@ version.
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [regular commits]: /doc/user-guide/experiment-management/persisting-experiments
 [checkpoint experiments]: /doc/command-reference/exp/run#checkpoints
-[stored and shared]: /doc/start/data-management#storing-and-sharing
+[stored and shared]:
+  /doc/start/data-management/data-versioning#storing-and-sharing
 
 ## Options
 

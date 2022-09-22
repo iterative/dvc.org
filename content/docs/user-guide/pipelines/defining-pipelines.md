@@ -4,7 +4,7 @@ Pipelines represent data workflows that you want to **reproduce** reliably -- so
 the results are consistent. The typical pipelining process involves:
 
 - Obtain and `dvc add` or `dvc import` the project's initial data requirements
-  (see [Data Management]). This <abbr>caches</abbr> the data and generates
+  (see [Data Versioning]). This <abbr>caches</abbr> the data and generates
   `.dvc` files.
 
 - Define the pipeline [stages](#stages) in `dvc.yaml` files (more on this
@@ -40,7 +40,7 @@ Note that while each pipeline is a graph, this doesn't mean a single `dvc.yaml`
 file. DVC checks the entire <abbr>project</abbr> tree and validates all such
 files to find stages, rebuilding all the pipelines that these may define.
 
-[data management]: /doc/start/data-management
+[data versioning]: /doc/start/data-management/data-versioning
 [metrics]: /doc/command-reference/metrics
 [plots]: /doc/user-guide/visualizing-plots
 

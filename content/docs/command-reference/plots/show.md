@@ -42,7 +42,7 @@ The default behavior of this command can be modified per [stage plot] file with
 [plot templates]:
   /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 [top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
-[stage plot]: /doc/user-guide/visualizing-plots#stage-plots
+[stage plot]: /doc/user-guide/visualizing-plots
 
 ## Options
 

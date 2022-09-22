@@ -40,7 +40,7 @@ Datasets, metrics, and hyperparameters can be added to a project in two ways:
    repository.
 
    [store and share your data and model files]:
-     /doc/start/data-management#storing-and-sharing
+     /doc/start/data-management/data-versioning#storing-and-sharing
    [create data registries]: /doc/use-cases/data-registry
    [create data pipelines]: /doc/start/data-management/data-pipelines
    [ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
