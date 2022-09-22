@@ -8,7 +8,7 @@ with or without executing them."
 
 To add <abbr>dependencies</abbr> or <abbr>outputs</abbr> to a
 [stage](/doc/command-reference/run), edit the `dvc.yaml` file (by hand or using
-`dvc run` with the `-f --no-exec` flags). `dvc repro` will execute it and
+`dvc stage add` with the `-f` flag). `dvc repro` will execute it and
 <abbr>cache</abbr> the output files when ready.
 
 If the stage has already been executed it and the desired outputs are present in
@@ -35,12 +35,12 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 +    - data/validate
 ```
 
-> We could also use `dvc run` with `-f` and `--no-exec` to add another
-> dependency/output to the stage:
+> We could also use `dvc stage add` with `-f` to add another dependency/output
+> to the stage:
 >
 > ```dvc
-> $ dvc run -n prepare \
->           -f --no-exec \
+> $ dvc stage add -n prepare \
+>           -f \
 >           -d src/prepare.py \
 >           -d data/raw.csv \
 >           -o data/train \
@@ -48,8 +48,7 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 >           python src/prepare.py data/raw.csv
 > ```
 >
-> `-f` overwrites the stage in `dvc.yaml`, while `--no-exec` updates the stage
-> without executing it.
+> `-f` overwrites the stage in `dvc.yaml`.
 
 If the `data/raw.csv` or `data/validate` files already exist, we can use
 `dvc commit` to cache the newly specified outputs (and to update the `deps` and

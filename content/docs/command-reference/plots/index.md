@@ -29,21 +29,23 @@ You can visualize and compare JSON, YAML 1.2, CSV, TSV data files or JPEG, GIF,
 PNG images found in your project. Typically these are artifacts of an [ML
 pipeline] or performance logs produced by [DVCLive].
 
-`dvc plots` subcommands help you customize and generate these plots.
+Plots have to be defined either at the stage level, or at the pipeline level in
+`dvc.yaml`.
 
 [ml pipeline]: /doc/start/data-management/pipelines
 [dvclive]: /doc/dvclive/dvclive-with-dvc
 
 <admon icon="book">
 
-See [Visualizing Plots] as well as the top-level plots definition
-[specification] for more details.
+See [Visualizing Plots] and [Top-level plot definitions] for more details
 
 [visualizing plots]: /doc/user-guide/visualizing-plots
-[specification]:
+[top-level plot definitions]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
 
 </admon>
+
+`dvc plots` subcommands help you customize and generate these plots.
 
 ## Options
 

@@ -19,7 +19,7 @@ jobs:
           echo "::set-output name=version::$version"
       - name: Create PR
         if: ${{ steps.update.outputs.changes != '' }}
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           commit-message: dvc ${{ steps.update.outputs.version }}
           title: dvc ${{ steps.update.outputs.version }}

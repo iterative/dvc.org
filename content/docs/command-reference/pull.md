@@ -33,7 +33,7 @@ to `dvc config cache.type`).
 > Note that pulling data does not affect code, `dvc.yaml`, or `.dvc` files.
 > Those should be downloaded with `git pull`.
 
-[data sharing]: /doc/start/data-management#storing-and-sharing
+[data sharing]: /doc/start/data-management/data-versioning#storing-and-sharing
 
 It has the same effect as running `dvc fetch` and `dvc checkout`:
 

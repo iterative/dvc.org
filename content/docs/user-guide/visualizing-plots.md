@@ -66,7 +66,7 @@ repository from bloating.
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[tracking]: /doc/start/data-management
+[tracking]: /doc/start/data-management/data-versioning
 
 </admon>
 
@@ -144,8 +144,8 @@ ways to configure visualizations. Users can define top-level `plots` in
 <admon type="info">
 
 DVC will collect both types and display everything conforming to each plot
-configuration. If any stage plot files are also used in a top-level definitions,
-DVC will create separate rendering for each type.
+configuration. If any stage plot files or directories are also used in a
+top-level definition, DVC will create separate rendering for each type.
 
 </admon>
 
@@ -221,11 +221,11 @@ Refer to the [full format specification] and `dvc plots show` for more details.
 
 </admon>
 
-### Plot Outputs
+### Plot outputs
 
-When defining [pipelines], some <abbr>outputs</abbr> can be placed under a
-`plots` list for the corresponding stage. This will tell DVC that they are
-intended for visualization.
+When defining [pipelines], some <abbr>outputs</abbr> (both files and
+directories) can be placed under a `plots` list for the corresponding stage.
+This will tell DVC that they are intended for visualization.
 
 <admon type="info">
 
@@ -247,9 +247,9 @@ stages:
   ...
 ```
 
-Plotting stage outputs are convenient for defining plots within the stage
-without having to write top-level `plots` definitions in `dvc.yaml`. They do not
-support custom plot IDs or multiple data sources.
+Plotting stage outputs is convenient for working with plots at the stage level,
+without having to write top-level `plots` definitions in `dvc.yaml`. However,
+stage-level plots do not support custom plot IDs or multiple data sources.
 
 [pipelines]: /doc/start/data-management/data-pipelines
 
