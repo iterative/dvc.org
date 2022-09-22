@@ -5,8 +5,8 @@ title: 'Get Started: Visualization with Plots'
 # Get Started: Visualization with Plots
 
 In this section, we'll add visualization to the [`example-dvc-experiments`]
-project (explored [previously]). If you would like to try these yourself,
-please refer to the project [README] on how to install.
+project (explored [previously]). If you would like to try these yourself, please
+refer to the project [README] on how to install.
 
 [`example-dvc-experiments`]:
   https://github.com/iterative/example-dvc-experiments
