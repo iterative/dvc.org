@@ -198,7 +198,11 @@ $ del data\data.xml
 $ dvc pull
 ```
 
-> 📖 See `dvc remote` for more information on remote storage.
+<admon icon="book">
+
+See `dvc remote` for more information on remote storage.
+
+</admon>
 
 ## Making changes
 
