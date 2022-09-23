@@ -23,8 +23,8 @@ live = Live()
 
 ## Description
 
-A `Live()` instance is required in order to log machine learning metrics and
-other metadata.
+A `Live()` instance is required in order to log machine learning parameters,
+metrics and other metadata.
 
 <admon type="warn">
 
@@ -72,6 +72,8 @@ other metadata.
 ## Methods
 
 - `Live.log()`
+- `Live.log_param()`
+- `Live.log_params()`
 - `Live.log_image()`
 - `Live.log_plot()`
 - `Live.make_report()`
