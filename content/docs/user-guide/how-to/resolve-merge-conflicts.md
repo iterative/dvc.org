@@ -80,11 +80,11 @@ versions, then you can follow this process:
 3. Merge it by-hand;
 4. Finally, run `dvc add data.xml` to overwrite the conflicted `.dvc` file.
 
-### Append-only directories
+### Directories
 
-If you have an "append-only" dataset (where people only add new
-files/directories) DVC provides a [Git merge driver] that can automatically
-resolve merge conflicts for you. To use it, first set it up in your Git repo:
+If you have a directory, DVC provides a [Git merge driver] that can
+automatically resolve many merge conflicts for you. To use it, first set it up
+in your Git repo:
 
 ```dvc
 $ git config merge.dvc.name 'DVC merge driver'
