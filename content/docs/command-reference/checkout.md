@@ -12,7 +12,7 @@ usage: dvc checkout [-h] [-q | -v] [--summary] [-d] [-R] [-f]
 
 positional arguments:
   targets       Limit command scope to these tracked files/directories,
-                .dvc files, or stage names.
+                .dvc files and stage or foreach-group names.
 ```
 
 ## Description

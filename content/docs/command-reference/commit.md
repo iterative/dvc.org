@@ -9,7 +9,8 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
+  targets        Limit command scope to these tracked files/directories,
+                 .dvc files and stage or foreach-group names.
                  Using -R, directories to search for stages or .dvc
                  files can also be given.
 ```

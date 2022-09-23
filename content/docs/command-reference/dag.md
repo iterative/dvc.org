@@ -11,7 +11,7 @@ usage: dvc dag [-h] [-q | -v] [-o] [--full]
                [target]
 
 positional arguments:
-  target          Stage or output to show pipeline for (optional)
+  target          Stage name, foreach-group name output to show pipeline for.
                   Uses all stages in the workspace by default.
 ```
 
