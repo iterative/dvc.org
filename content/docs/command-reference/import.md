@@ -125,9 +125,9 @@ file.
 
 - `--desc <text>` - user description of the data.
 
-- `--type <str>` - user assigned type of the data.
+- `--type <str>` - user-assigned type of the data.
 
-- `--label <text>` - user assigned label(s) to add to the data.
+- `--label <text>` - user-assigned label(s) to add to the data.
 
 - `--meta key=value` - custom metadata to add to the data.
 
