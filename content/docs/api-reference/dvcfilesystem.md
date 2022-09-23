@@ -45,11 +45,17 @@ can also specify `encoding` argument in case of text mode (`"r"`).
 ## Reading a file
 
 ```py
->>> contents = fs.cat_file("get-started/data.xml")
+>>> text = fs.read_text("get-started/data.xml", encoding="utf-8")
 ```
 
-This is similar to `dvc.api.read()`, but it returns the contents of the file as
-bytes instead of a string.
+This is similar to `dvc.api.read()`, which returns the contents of the file as a
+string.
+
+To get the binary contents of the file, you can use `read_bytes()`.
+
+```py
+>>> contents = fs.read_bytes("get-started/data.xml")
+```
 
 ## Listing all DVC-tracked files recursively
 
