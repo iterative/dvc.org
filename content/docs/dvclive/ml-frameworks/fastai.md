@@ -16,7 +16,7 @@ int the callbacks list passed to your
 ```git
 +from dvclive.fastai import DvcLiveCallback
 
-. . .
+...
 
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
