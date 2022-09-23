@@ -59,8 +59,8 @@ stages:
           checkpoint: true
 ```
 
-The code in `train.py` will train a model upto certain epochs. At every 100
-iterations, it saves the model to `model`, evaluates it and makes a checkpoint
+The code in `train.py` will train a model up to a number of epochs. Every 100
+iterations, it saves the `model`, evaluates it, and makes a checkpoint
 for [DVC experiments]:
 
 [dvc experiments]: /doc/user-guide/experiment-management#experiments
