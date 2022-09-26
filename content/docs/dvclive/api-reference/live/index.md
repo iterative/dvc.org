@@ -71,12 +71,12 @@ metrics and other metadata.
 
 ## Methods
 
+- `Live.get_step()`
 - `Live.log()`
+- `Live.log_image()`
 - `Live.log_param()`
 - `Live.log_params()`
-- `Live.log_image()`
 - `Live.log_plot()`
 - `Live.make_report()`
-- `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`
