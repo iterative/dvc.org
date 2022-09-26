@@ -82,6 +82,14 @@ versions, then you can follow this process:
 
 ### Directories
 
+<admon type="warn">
+
+If the same file was added or changed in both branches, the merge driver will
+fail unless the changes are the same. If the same file was deleted in both
+branches, the merge driver will fail.
+
+</admon>
+
 If you have a directory, DVC provides a [Git merge driver] that can
 automatically resolve many merge conflicts for you. To use it, first set it up
 in your Git repo:
