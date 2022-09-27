@@ -32,7 +32,7 @@ into a [stage](/doc/command-reference/stage):
 
 ### ⚙️ Expand to download example code.
 
-Get the sample code like this:
+Get the sample code, initialize DVC, and save everything to Git:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -47,6 +47,10 @@ $ tree
     ├── prepare.py
     ├── requirements.txt
     └── train.py
+
+$ git init  # if needed
+$ dvc init
+$ git commit .dvc params.yaml src
 ```
 
 Now let's install the requirements:
@@ -57,9 +61,8 @@ Now let's install the requirements:
 
 ```dvc
 $ pip install -r src/requirements.txt
+$ git commit 
 ```
-
-Please also add or commit the source code directory with Git at this point.
 
 </details>
 
