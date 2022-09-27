@@ -150,7 +150,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 Let's save this iteration, so we can compare it later:
 
 ```dvc
-$ git add scores.json prc.json roc.json
+$ git add dvc.lock dvc.yaml scores.json prc.json roc.json
 $ git commit -a -m "Create evaluation stage"
 ```
 
