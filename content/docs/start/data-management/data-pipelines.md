@@ -61,7 +61,7 @@ Now let's install the requirements:
 
 ```dvc
 $ pip install -r src/requirements.txt
-$ git commit 
+$ git commit
 ```
 
 </details>
