@@ -1,9 +1,14 @@
 # status
 
-Show changes in the <abbr>project</abbr>
-[pipelines](/doc/command-reference/dag), as well as file mismatches either
-between the <abbr>cache</abbr> and <abbr>workspace</abbr>, or between the cache
-and remote storage.
+Show changes in the <abbr>project</abbr> [pipelines](/doc/user-guide/pipelines),
+as well as file mismatches either between the <abbr>cache</abbr> and
+<abbr>workspace</abbr>, or between the cache and remote storage.
+
+<admon type="info">
+
+For an equivalent to `git status`, use `dvc data status`.
+
+</admon>
 
 ## Synopsis
 
