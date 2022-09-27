@@ -30,9 +30,13 @@ When writing (a `value` is given or `--unset` is used), the new value is written
 to the project-level config file by default (`.dvc/config`). Options `--system`,
 `--global` and `--local` can be used to write to that location instead.
 
-⚠️ Note that `.dvc/config` is meant to be tracked by Git and should not contain
+<admon type="warn">
+
+`.dvc/config` is meant to be tracked by Git and should not contain
 sensitive user info or secrets (passwords, SSH keys, etc). Use `--local` when in
 doubt.
+
+</admon>
 
 | Flag                          | Priority | Config file location |
 | ----------------------------- | -------- | -------------------- |
