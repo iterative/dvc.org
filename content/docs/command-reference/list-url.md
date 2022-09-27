@@ -89,7 +89,7 @@ inside `data`.
 ### local
 
 ```dvc
-$ dvc get-url /local/path/to/data
+$ dvc ls-url /local/path/to/data
 ```
 
 The above command will list the `/local/path/to/data` directory.
