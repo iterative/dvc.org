@@ -44,22 +44,33 @@ tags:
 ```
 
 - `title` (**required**) - title of the post.
+
 - `date` (**required**) - publication date in the `YYYY-MM-DD` format. Will be
   used to sort posts and in RSS.
+
 - `description` (**required**) - short description to show in the feed.
+
 - `descriptionLong` (optional) - long description to show before the image on
   the post page. If not set, `description` will be used instead. Supports basic
   Markdown markup.
+
 - `picture` (optional) - cover image, relative to `static/uploads/images`
+
 - `pictureComment` (optional) - cover image comment. Supports basic Markdown
   markup.
+
 - `authors` (**required**) - list of filenames from `content/authors`
   representing the post's authors. The first author is shown most prominently.
   Even if there is only one author, this field must be a list. See
   [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
   new author.
+
+  Alternatively, the `author` shorthand field can be used as to specify as a
+  string what would otherwise be a single-item list in `authors`
+
 - `commentsUrl` (optional) - link to the [DVC forum](https://discuss.dvc.org)
   topic. It will contain comments for the post.
+
 - `tags` (optional) - list of tags.
 
 ## Content guidelines
