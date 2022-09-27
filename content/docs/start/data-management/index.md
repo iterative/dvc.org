@@ -15,3 +15,7 @@ We can also build and version pipelines to capture our data workflows stage by
 stage, from raw data and its pre-processing, through feature engineering and ML
 model training, and up to evaluation (performance metrics), visualization, or
 other post-processing.
+
+## How to use the Get Started
+
+...
