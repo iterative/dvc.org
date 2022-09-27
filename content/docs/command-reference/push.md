@@ -32,7 +32,7 @@ the most common use cases for these commands.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
 
-[data sharing]: /doc/start/data-and-model-versioning#storing-and-sharing
+[data sharing]: /doc/start/data-management/data-versioning#storing-and-sharing
 
 The `dvc remote` used is determined in order, based on
 

@@ -37,21 +37,14 @@
   {
     "slug": "start",
     "label": "Get Started",
-    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
-        "label": "Data Management",
         "source": "data-management/index.md",
         "children": [
-          {
-            "label": "Data and Model Access",
-            "slug": "access"
-          },
-          {
-            "label": "Data Pipelines",
-            "slug": "pipelines"
-          },
+          "data-versioning",
+          "data-and-model-access",
+          "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
             "slug": "metrics-parameters-plots"
@@ -59,15 +52,9 @@
         ]
       },
       {
-        "slug": "experiments",
-        "label": "Experiments",
-        "source": "experiments/index.md",
-        "children": [
-          {
-            "label": "Visualization",
-            "slug": "visualization"
-          }
-        ]
+        "slug": "experiment-management",
+        "source": false,
+        "children": ["experiments", "visualization"]
       }
     ]
   },
@@ -142,6 +129,7 @@
         "children": [
           "experiments-overview",
           "running-experiments",
+          "hydra-composition",
           "comparing-experiments",
           "sharing-experiments",
           "persisting-experiments",
@@ -160,7 +148,7 @@
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
+          "resolve-merge-conflicts",
           "share-a-dvc-cache"
         ]
       },
@@ -520,6 +508,10 @@
     "label": "Python API Reference",
     "source": "api-reference/index.md",
     "children": [
+      {
+        "slug": "dvcfilesystem",
+        "label": "DVCFileSystem"
+      },
       {
         "slug": "get_url",
         "label": "get_url()"

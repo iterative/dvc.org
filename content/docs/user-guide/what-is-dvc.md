@@ -51,7 +51,7 @@ can version experiments, manage large datasets, and make projects reproducible.
 [free]: https://github.com/iterative/dvc/blob/master/LICENSE
 [vs code extension]: /doc/vs-code-extension
 [command line]: /doc/command-reference
-[pipelines]: /doc/user-guide/data-pipelines
+[pipelines]: /doc/user-guide/pipelines
 
 ## DVC does not replace Git!
 

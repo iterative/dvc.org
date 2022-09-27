@@ -2,7 +2,7 @@
 
 const path = require('path')
 const s3 = require('s3-client')
-const { s3Prefix, s3Bucket } = require('../src/server/config')
+const { s3Prefix, s3Bucket } = require('@dvcorg/websites-server/src/config')
 const { remove, ensureDir } = require('fs-extra')
 
 const {

@@ -8,9 +8,10 @@ Download a file or directory tracked by another DVC or Git repository into the
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-j <number>]
-                  [-o <path>] [--file <filename>]
-                  [--rev <commit>] [--no-exec | --no-download] [--desc <text>]
+usage: dvc import [-h] [-q | -v] [--file <filename>]
+                  [-o <path>] [--rev <commit>]
+                  [--no-exec | --no-download]
+                  [-j <number>] [--desc <text>]
                   url path
 
 positional arguments:
@@ -65,8 +66,8 @@ data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC to efficiently determine whether the local copy is out of date.
 
-To actually [version the data](/doc/start/data-and-model-versioning), `git add`
-(and `git commit`) the import `.dvc` file.
+To actually [version the data], `git add` (and `git commit`) the import `.dvc`
+file.
 
 ⚠️ Relevant notes and limitation:
 
@@ -81,6 +82,8 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 - Note that `dvc repro` doesn't check or update import `.dvc` files (see
   `dvc freeze`), use `dvc update` to bring the import up to date from the data
   source.
+
+[version the data]: /doc/start/data-management/data-versioning
 
 ## Options
 

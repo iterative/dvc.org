@@ -342,16 +342,16 @@ very convenient having to remember to do so every time the dataset changes.
 Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
 handy. We touched on it briefly when we described `dvc run` and `dvc repro`. The
 next step would be splitting the script into two parts and utilizing pipelines.
-See [Get Started: Data Pipelines](/doc/start/data-pipelines) to get hands-on
-experience with pipelines, and try to apply it here. Don't hesitate to join our
-[community](/chat) and ask any questions!
+See [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) to
+get hands-on experience with pipelines, and try to apply it here. Don't hesitate
+to join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See
 `dvc metrics`,
-[Comparing Changes](/doc/start/metrics-parameters-plots#comparing-iterations),
+[Comparing Changes](/doc/start/data-management/metrics-parameters-plots#comparing-iterations),
 and
 [Comparing Many Experiments](/doc/start/experiments#comparing-many-experiments)
 to learn more about managing metrics with DVC.

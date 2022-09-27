@@ -14,8 +14,9 @@ experiment(s). These files codify _pipelines_ that specify one or more
 <abbr>stages</abbr> of the experiment workflow (code, <abbr>dependencies</abbr>,
 <abbr>outputs</abbr>, etc.).
 
-> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
-> to this topic.
+> 📖 See
+> [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) for
+> an intro to this topic.
 
 ### Running the pipeline(s)
 
@@ -44,7 +45,24 @@ once.
 > 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
 
 [reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+
+## Experiment results
+
+The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
+They are stored and tracked internally by DVC.
+
+To display and compare multiple experiments along with their
+<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
+`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
+[Reviewing and Comparing Experiments][reviewing] for more details.
+
+Use `dvc exp apply` to restore the results of any other experiment instead. See
+[Bring experiment results to your workspace][apply] for more info.
+
+[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
+[apply]:
+  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
 
 ## Tuning (hyper)parameters
 
@@ -83,23 +101,6 @@ $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
   https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
 [parameters files]:
   /doc/user-guide/project-structure/dvcyaml-files#parameters-files
-
-## Experiment results
-
-The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
-They are stored and tracked internally by DVC.
-
-To display and compare multiple experiments along with their
-<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
-`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
-[Reviewing and Comparing Experiments][reviewing] for more details.
-
-Use `dvc exp apply` to restore the results of any other experiment instead. See
-[Bring experiment results to your workspace][apply] for more info.
-
-[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
-[apply]:
-  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
 
 ## The experiments queue
 
@@ -192,6 +193,37 @@ committing unwanted files into Git (e.g. once successful experiments are
 To clear the experiments queue and start over, use `dvc queue remove --queued`.
 
 </admon>
+
+### Grid Search
+
+When combined with the `dvc exp run --set-param` option, you cann add multiple
+experiments to the queue by providing a list of choices and/or a custom range:
+
+```dvc
+$ dvc exp run \
+-S units=32,128 \
+-S learning_rate=range(0.001, 0.003, 0.001) \
+--queue
+
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.001']}'.
+Queued experiment 'ed3b4ef' for future execution.
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.002']}'.
+Queued experiment '7a10d54' for future execution.
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.003']}'.
+Queued experiment '0b443d8' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.001']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.002']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.003']}'.
+Queued experiment '0a5f20e' for future execution.
+```
+
+And run the grid search with:
+
+```dvc
+$ dvc queue start
+```
 
 ## Checkpoint experiments
 

@@ -3,8 +3,8 @@
 require('dotenv').config()
 const path = require('path')
 
-const apiMiddleware = require('./src/server/middleware/api')
-const redirectsMiddleware = require('./src/server/middleware/redirects')
+const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
+const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
 
 const autoprefixer = require('autoprefixer')
 const customMedia = require('postcss-custom-media')
@@ -135,7 +135,8 @@ const plugins = [
       ]
       /* eslint-enable @typescript-eslint/naming-convention */
     }
-  }
+  },
+  '@sentry/gatsby'
 ]
 
 if (process.env.ANALYZE) {

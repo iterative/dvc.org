@@ -4,7 +4,7 @@ You can construct data science or machine learning pipelines by defining
 individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files.
 Stages form a pipeline when they connect with each other (forming a _dependency
 graph_, see `dvc dag`). Refer to
-[Get Started: Data Pipelines](/doc/start/data-pipelines).
+[Get Started: Data Pipelines](/doc/start/data-management/data-pipelines).
 
 <admon type="tip">
 
@@ -59,7 +59,8 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 
 <admon type="tip">
 
-Output files may be viable data sources for [top-level plots](#top-level-plots).
+Output files may be viable data sources for
+[top-level plots](#top-level-plot-definitions).
 
 </admon>
 
@@ -93,6 +94,29 @@ See also [Templating](#templating) (and **Dict Unpacking**) for useful ways to
 parametrize `cmd` strings.
 
 </admon>
+
+<details>
+
+### 💡 Avoiding unexpected behavior
+
+We don't want to tell anyone how to write their code or what programs to use!
+However, please be aware that in order to prevent unexpected results when DVC
+reproduces pipeline stages, the underlying code should ideally follow these
+rules:
+
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+- Completely rewrite outputs. Do not append or edit.
+- Stop reading and writing files when the `command` exits.
+
+Also, if your pipeline reproducibility goals include consistent output data, its
+code should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
+the same output for any given input): avoid code that increases
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
+time functions, hardware dependencies, etc.).
+
+</details>
 
 ### Parameters
 
@@ -508,7 +532,7 @@ editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 validation and auto-completion.
 
 > See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+> [How to Merge Conflicts](/doc/user-guide/how-to/resolve-merge-conflicts#dvcyaml).
 
 <admon type="warn">
 
@@ -537,9 +561,9 @@ libraries in the environment.
 ## Top-level plot definitions
 
 The `plots` dictionary contains one or more user-defined `dvc plots`
-configurations. Every plot needs a unique ID, which may be either a file path
-(relative to the location of `dvc.yaml`) or an arbitrary string. Optional
-configuration fields can be provided as well.
+configurations. Every plot needs a unique ID, which may be either a file or
+directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
+Optional configuration fields can be provided as well.
 
 📖 Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
