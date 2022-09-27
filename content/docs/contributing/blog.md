@@ -61,9 +61,8 @@ tags:
 
 - `authors` (**required**) - a list of filenames from files in `content/authors`
   that represent the post's authors. The first author is shown most prominently.
-  Even if there is only one author, this field must be a list. The `author`
-  field can be used as an alternative to specify as a string what would
-  otherwise be a single-item list in `authors`.
+  The `author` field can be used as an alternative to specify as a string what
+  would otherwise be a single-item list in `authors`.
 
   See [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add
   a new author.
