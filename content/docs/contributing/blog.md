@@ -33,7 +33,9 @@ descriptionLong: |
   text (supports _basic_ [Markdown](link))
 picture: 2015-05-01/post-image.jpeg
 pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
-author: author_filename
+authors:
+  - author_filename
+  - other_author_filename
 tags:
   - Open Source
   - Machine Learning
