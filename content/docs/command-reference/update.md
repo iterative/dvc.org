@@ -7,8 +7,9 @@ import `.dvc` files.
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R] [--no-download]
-                  [--to-remote] [-r <name>] [-j <number>]
+usage: dvc update [-h] [-q | -v] [-R] [--rev <commit>]
+                  [--to-remote] [-r <name>]
+                  [--no-download] [-j <number>]
                   targets [targets ...]
 
 positional arguments:
