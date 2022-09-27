@@ -59,14 +59,14 @@ tags:
 - `pictureComment` (optional) - cover image comment. Supports basic Markdown
   markup.
 
-- `authors` (**required**) - list of filenames from `content/authors`
-  representing the post's authors. The first author is shown most prominently.
-  Even if there is only one author, this field must be a list. See
-  [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
-  new author.
+- `authors` (**required**) - a list of filenames from files in `content/authors`
+  that represent the post's authors. The first author is shown most prominently.
+  Even if there is only one author, this field must be a list. The `author`
+  field can be used as an alternative to specify as a string what would
+  otherwise be a single-item list in `authors`.
 
-  Alternatively, the `author` shorthand field can be used as to specify as a
-  string what would otherwise be a single-item list in `authors`
+  See [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add
+  a new author.
 
 - `commentsUrl` (optional) - link to the [DVC forum](https://discuss.dvc.org)
   topic. It will contain comments for the post.
