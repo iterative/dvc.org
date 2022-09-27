@@ -50,7 +50,8 @@ $ tree
 
 $ git init  # if needed
 $ dvc init
-$ git commit .dvc params.yaml src
+$ git commit -a -m "Create evaluation stage"
+$ dvc pull data/data.xml
 ```
 
 Now let's install the requirements:
