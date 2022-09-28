@@ -50,6 +50,7 @@ $ tree
 
 $ git init  # if needed
 $ dvc init
+$ git add .
 $ git commit -a -m "Create evaluation stage"
 $ dvc pull data/data.xml
 ```
