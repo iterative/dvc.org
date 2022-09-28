@@ -45,20 +45,22 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-DVC's multiple feature sets are best understood from different angles. Pick a
-trail below to see an overview of all features from that perspective:
+The value of DVC's many feature sets is best understood from different angles.
+Pick a trail below to see an overview of all features from that perspective:
 
 ### Data Management
+
+- [Introduction](/doc/start/data-management)
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
   datasets, and machine learning models. Use a regular Git workflow, but without
   storing large files in the repo (think "Git for data"). Data is stored
   separately, which allows for efficient sharing.
 
-- **[Data and model access]** shows how to use data artifacts from outside of
-  the project and how to import data artifacts from another DVC project. This
-  can help to download a specific version of an ML model to a deployment server
-  or import a model to another project.
+- **[Data and model access]** goes over using data artifacts from outside of the
+  project and importing them from another DVC project. This can help to download
+  a specific version of an ML model to a deployment server or import a model to
+  another project.
 
 - **[Data pipelines]** describe how models and other data artifacts are built,
   and provide an efficient way to reproduce them. Think "Makefiles for data and
@@ -76,10 +78,12 @@ trail below to see an overview of all features from that perspective:
 
 ### Experimentation
 
-- **[Experiments]** enable exploration, iteration, and comparison across many ML
-  experiments. Track your experiments with automatic versioning and checkpoint
-  logging. Compare differences in parameters, metrics, code, and data. Apply,
-  drop, roll back, resume, or share any experiment.
+- [Introduction](/doc/start/experiment-management)
+
+- **[Experiments]** enable exploration, iteration, and comparison across many
+  trials in ML projects. Track your experiments with automatic versioning and
+  checkpoint logging. Compare differences in parameters, metrics, code, and
+  data. Apply, drop, roll back, resume, or share any experiment.
 
 - **[Visualization]** compare experiment results visually, track your plots and
   generate them with library integrations.
