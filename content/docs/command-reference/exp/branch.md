@@ -55,8 +55,14 @@ version.
 
 ## Example: Make a persistent branch from an experiment
 
-> This example is based on our [Get Started](/doc/start/experiments), where you
-> can find the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 Let's say we have run 3 experiments in our project:
 

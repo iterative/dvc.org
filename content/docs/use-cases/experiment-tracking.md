@@ -70,7 +70,13 @@ Major benefits of tracking experiment with DVC:
 
 <br/>
 
-> 📖 Ready to dive in? [Get started with experiments](/doc/start/experiments)!
+<admon icon="book">
+
+Ready to dive in? [Get started with experiments]!
+
+[get started with experiments]: /doc/start/experiment-management/experiments
+
+</admon>
 
 Among other differentiators (below), DVC Experiments are unique in the space in
 that they provides a simple yet flexible, local-first experience. Your code is
