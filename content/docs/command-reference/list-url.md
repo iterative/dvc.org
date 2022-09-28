@@ -1,24 +1,32 @@
 # list-url
 
-> Aliased to `dvc ls-url`
+<admon type="info">
+
+Aliased to `dvc ls-url`
+
+</admon>
 
 List contents from a supported URL (for example `s3://`, `ssh://`, and other
 protocols).
 
-> Useful to find data to `dvc get-url` or `dvc import-url`.
+<admon type="tip">
+
+Useful to find data to `dvc get-url` or `dvc import-url`.
+
+</admon>
 
 ## Synopsis
 
 ```usage
-usage: dvc ls-url [-h] [-q | -v] [-R] url
+usage: dvc list-url [-h] [-q | -v] [-R] url
 
 positional arguments:
-  url              See `dvc get-url` for full list of supported URLs.
+  url              (See supported URLs in the description)
 ```
 
 ## Description
 
-Lists files and directories from an external location. `dvc ls-url` is
+Lists files and directories from an external location. `dvc list-url` is
 equivalent to a wrapper providing a uniform interface around various listing
 commands such as `aws s3 ls` or `ssh user@host ls -a`.
 
@@ -33,11 +41,15 @@ several kinds of external data sources:
 | `ssh`   | SSH server                   | `ssh://user@example.com/path/to/data` |
 | `local` | Local path                   | `/path/to/local/data`                 |
 
-> If you installed DVC via `pip` and plan to access cloud services as external
-> data sources, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include
-> them all. The command should look like this: `pip install "dvc[s3]"`. (This
-> example installs `boto3` library along with DVC to support S3 storage.)
+<admon type="info">
+
+If you installed DVC via `pip` and plan to access cloud services as external
+data sources, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
+all. The command should look like this: `pip install "dvc[s3]"`. (This example
+installs `boto3` library along with DVC to support S3 storage.)
+
+</admon>
 
 Only the root directory is listed by default, but the `-R` option can be used to
 list files recursively.
@@ -62,7 +74,7 @@ list files recursively.
 This command will list objects and common prefixes under the specified path:
 
 ```dvc
-$ dvc ls-url s3://bucket/path
+$ dvc list-url s3://bucket/path
 ```
 
 DVC expects that AWS CLI is already
@@ -76,7 +88,7 @@ DVC will use the AWS credentials file to access S3.
 ### SSH
 
 ```dvc
-$ dvc ls-url ssh://user@example.com/path/to/data
+$ dvc list-url ssh://user@example.com/path/to/data
 ```
 
 Using default SSH credentials, the above command lists files and directories
@@ -89,7 +101,7 @@ inside `data`.
 ### local
 
 ```dvc
-$ dvc ls-url /local/path/to/data
+$ dvc list-url /local/path/to/data
 ```
 
 The above command will list the `/local/path/to/data` directory.
