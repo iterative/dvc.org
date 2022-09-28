@@ -31,7 +31,9 @@ you can click on to expand:
 
 ### Click for an example!
 
-You'll find useful notes and tips throughout our docs such as this one:
+You'll find useful notes and tips throughout our docs such as the onw below.
+
+</details>
 
 <admon type="tip">
 
@@ -43,10 +45,6 @@ any of it's [tags] to explore further.
 [tags]: https://github.com/iterative/example-get-started/tags
 
 </admon>
-
-Click again to close these details again.
-
-</details>
 
 <cards>
 

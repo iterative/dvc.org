@@ -27,7 +27,9 @@ you can click on to expand:
 
 ### Click for an example!
 
-You'll find useful notes and tips throughout our docs such as this one:
+You'll find useful notes and tips throughout our docs such as the onw below.
+
+</details>
 
 <admon type="tip">
 
@@ -39,10 +41,6 @@ The steps and results of these chapters are captured in our
 [tags]: https://github.com/iterative/example-dvc-experiments/tags
 
 </admon>
-
-Click again to close these details again.
-
-</details>
 
 <cards>
 
