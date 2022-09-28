@@ -47,7 +47,7 @@ It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
 options have special uses for these.
 
-<admon type="info">
+<admon icon="book">
 
 See the [Running Experiments] guide for more details on all these features.
 

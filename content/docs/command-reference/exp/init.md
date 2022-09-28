@@ -88,8 +88,12 @@ A special `--type` of stage is supported (`checkpoint`), which monitors
 
 </admon>
 
-📖 `dvc exp init` is intended as a quick way to start running [DVC Experiments].
+<admon icon="book">
+
+`dvc exp init` is intended as a quick way to start running [DVC Experiments].
 See the [Pipelines guide] for more on that topic.
+
+</admon>
 
 [stage definition]:
   /doc/user-guide/project-structure/dvcyaml-files#stage-entries
