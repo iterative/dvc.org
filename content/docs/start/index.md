@@ -84,5 +84,5 @@ trail below to see an overview of all features from that perspective:
 - **[Visualization]** compare experiment results visually, track your plots and
   generate them with library integrations.
 
-[experiments]: /doc/start/experiments
-[visualization]: /doc/start/experiments/visualization
+[experiments]: /doc/start/experiment-management/experiments
+[visualization]: /doc/start/experiment-management/visualization
