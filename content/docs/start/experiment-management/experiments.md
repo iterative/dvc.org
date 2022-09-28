@@ -1,5 +1,8 @@
 ---
 title: 'Get Started: Experiments'
+description: 'Get started with experiment management in DVC. Learn how to
+capture multiple project versions automatically without bloating the Git repo.
+Iterate quickly by comparing them easily and finding best performers.'
 ---
 
 # Get Started: Experiments

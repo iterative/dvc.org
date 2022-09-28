@@ -52,9 +52,9 @@
         ]
       },
       {
-        "slug": "experiments",
-        "source": "experiments/index.md",
-        "children": ["visualization"]
+        "slug": "experiment-management",
+        "source": false,
+        "children": ["experiments", "visualization"]
       }
     ]
   },

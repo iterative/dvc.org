@@ -53,8 +53,14 @@ approaches:
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
-> 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
-> introduction to DVC experiments.
+<admon type="">
+
+See 👨‍💻 [Get Started: Experiments] for a hands-on introduction to DVC
+experiments.
+
+</admon>
+
+[get started: experiments]: /doc/start/experiment-management/experiments
 
 ### Organization patterns
 

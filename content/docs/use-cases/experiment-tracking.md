@@ -72,7 +72,9 @@ Major benefits of tracking experiment with DVC:
 
 <admon icon="book">
 
-Ready to dive in? [Get started with experiments](/doc/start/experiments)!
+Ready to dive in? [Get started with experiments]!
+
+[get started with experiments]: /doc/start/experiment-management/experiments
 
 </admon>
 

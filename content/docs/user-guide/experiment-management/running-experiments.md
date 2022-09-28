@@ -6,8 +6,9 @@ them for future execution, running them in parallel, among other details.
 <admon icon="book">
 
 If this is the first time you are introduced into data science experimentation,
-you may want to check the basics in
-[Get Started: Experiments](/doc/start/experiments/) first.
+you may want to check the basics in [Get Started: Experiments] first.
+
+[get started: experiments]: /doc/start/experiment-management/experiments
 
 </admon>
 

@@ -52,42 +52,29 @@ Let's consider the following `dvc.yaml` file:
 
 ```yaml
 stages:
-  every100:
-    cmd: python iterate.py
+  train:
+    cmd: python train.py
     outs:
-      - int.txt:
+      - model:
           checkpoint: true
 ```
 
-The code in `iterate.py` will execute continuously increment an integer number
-saved in `int.txt` (starting at 0). At 0 and every 100 loops, it makes a
-checkpoint for [DVC experiments]:
+The code in `train.py` will train a model up to a number of epochs. Every 100
+iterations, it saves the `model`, evaluates it, and makes a checkpoint for [DVC
+experiments]:
 
 [dvc experiments]: /doc/user-guide/experiment-management#experiments
 
 ```py
-import os
-
 from dvc.api import make_checkpoint
 
-while True:
-    try:
-        if os.path.exists("int.txt"):
-            with open("int.txt", "r") as f:
-                i_ = int(f.read()) + 1
-        else:
-            i_ = 0
+for epoch in range(epochs):
+    train(model, x_train, y_train)
 
-        # ... do something meaningful
-
-        with open("int.txt", "w") as f:
-            f.write(f"{i_}")
-
-        if i_ % 100 == 0:
-            make_checkpoint()
-
-    except KeyboardInterrupt:
-        exit()
+    if epoch % 100 == 0:
+        save_model(model, "model")
+        evaluate(model, x_test, y_test)
+        make_checkpoint()
 ```
 
 Since `checkpoint` outputs in effect implement a circular dependency,
@@ -115,15 +102,8 @@ Experiment results have been applied to your workspace.
 > DVC checkpoints to behave as expected.
 
 In this example we killed the process (with `[Ctrl] C`) after 3 checkpoints (at
-0, 100, and 200 `i_`). The <abbr>cache</abbr> will contain those 3 versions of
-`int.txt`.
-
-```dvc
-$ cat int.txt
-200
-$ ls .dvc/cache
-36  cf  f8
-```
+0, 100, and 200 epochs). The <abbr>cache</abbr> will contain those 3 versions of
+`model`.
 
 `dvc exp show` will display these checkpoints as an experiment branch:
 
