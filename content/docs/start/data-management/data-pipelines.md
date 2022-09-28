@@ -32,7 +32,18 @@ into a [stage](/doc/command-reference/stage):
 
 ### ⚙️ Expand to download example code.
 
-Get the sample code, initialize DVC, and save everything to Git:
+
+<admon type="info">
+
+To actually try this example, begin after following the
+[Data Versioning](/doc/start/data-management/data-versioning) chapter.
+You can get there by cloning the `2-track-data` tag of our
+[example-get-started](https://github.com/iterative/example-get-started)
+repo.
+
+</admon>
+
+Get the sample code like this:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -47,12 +58,6 @@ $ tree
     ├── prepare.py
     ├── requirements.txt
     └── train.py
-
-$ git init  # if needed
-$ dvc init
-$ git add .
-$ git commit -a -m "Create evaluation stage"
-$ dvc pull data/data.xml
 ```
 
 Now let's install the requirements:
@@ -63,7 +68,6 @@ Now let's install the requirements:
 
 ```dvc
 $ pip install -r src/requirements.txt
-$ git commit
 ```
 
 </details>
