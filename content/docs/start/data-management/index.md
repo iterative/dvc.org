@@ -18,11 +18,10 @@ other post-processing.
 
 ## Following the Get Started
 
-Each page in this trail is an independent chapter you can go to directly,
-although they are presented in a good order if you plan to cover them all. There
-may be linked notes and references about other chapters or docs, but you can
-skip them and still get a good idea of the features in question, even by only
-reading page sections.
+Although presented in a logical order, each page in this trail is an independent
+chapter you can go to directly. There may be references to other chapters or
+docs, but you can skip them and still get a good idea of the features in
+question, even by only reading page sections.
 
 For better learning, you can also try each step yourself and get to similar
 results. Some of the required steps for this may be inside collapsed sections
@@ -32,8 +31,20 @@ you can click on to expand:
 
 ### Click for an example!
 
-This is just an example of a collapsed details section. Click again to close it
-back.
+You'll find useful notes and tips throughout our docs such as this one:
+
+<admon type="tip">
+
+The steps and results of some of these chapters are captured in our
+[example-get-started] repo on GitHub. Feel free to clone it and `git checkout`
+any of it's [tags] to explore further.
+
+[example-get-started]: https://github.com/iterative/example-get-started
+[tags]: https://github.com/iterative/example-get-started/tags
+
+</admon>
+
+Click again to close these details again.
 
 </details>
 

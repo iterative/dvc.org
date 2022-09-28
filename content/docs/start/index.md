@@ -11,19 +11,23 @@ running `dvc init` inside a Git project:
 
 <details>
 
-### ⚙️ Expand to prepare the project.
+### ⚙️ Expand to prepare a project.
 
-We'll be building an NLP project from scratch together. The end result is
-published on [GitHub](https://github.com/iterative/example-get-started) -- feel
-free to clone the repo.
-
-Let's start with `git init`:
+Imagine we want to building an ML project from scratch. Let's start by creating
+a Git repository:
 
 ```dvc
 $ mkdir example-get-started
 $ cd example-get-started
 $ git init
 ```
+
+<admon type="info">
+
+This name is actually used in our
+[example-get-started](https://github.com/iterative/example-get-started) repo.
+
+</admon>
 
 </details>
 
