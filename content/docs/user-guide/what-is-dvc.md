@@ -43,14 +43,15 @@
 
 ## DVC does not replace Git!
 
-DVC files such as `dvc.yaml` and `.dvc` files serve as placeholders to track
-large data files and directories for versioning (among other
-[purposes](/doc/user-guide/project-structure)). These metafiles change along
-with your data, and you can use Git to place them under
-[version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-as a proxy to the actual data versions, which are stored in the <abbr>DVC
-cache</abbr> (outside of Git). This does not replace features of Git.
+[DVC metafiles] change along with your data, and you can use Git to place them
+under distributed [version control] as a proxy to the actual data versions,
+which are stored in the <abbr>DVC cache</abbr> (outside of Git). DVC does not
+replace features of Git, but rather extends on them for ML-specific needs.
 
-DVC does, however, provide several commands similar to Git such as `dvc init`,
-`dvc add`, `dvc checkout`, or `dvc push`, which interact with the underlying Git
-repo (if one is being used, which is not required).
+DVC does provide several commands similar to those in `git`, such as `dvc init`,
+`dvc add`, `dvc checkout`, and `dvc push`. DVC operations interact with the
+underlying Git repo (if one is being used, which is not required).
+
+[dvc metafiles]: /doc/user-guide/project-structure
+[version control]:
+  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
