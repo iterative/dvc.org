@@ -94,12 +94,9 @@
   },
   {
     "slug": "user-guide",
-    "source": "user-guide/index.md",
+    "source": false,
     "children": [
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
+      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
@@ -162,7 +159,6 @@
       },
       "running-dvc-on-windows",
       "troubleshooting",
-      "related-technologies",
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
