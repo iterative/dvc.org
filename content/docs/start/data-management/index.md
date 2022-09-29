@@ -31,7 +31,7 @@ you can click on to expand:
 
 ### Click for an example!
 
-You'll find useful notes and tips throughout our docs such as the onw below.
+You'll find useful notes and tips throughout our docs such as the one below.
 
 </details>
 
