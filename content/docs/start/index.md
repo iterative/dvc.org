@@ -51,8 +51,8 @@ trail below to see an overview of all features from that perspective:
 ### Data Management
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
-  datasets, and machine learning models. Use a regular Git workflow, but without
-  storing large files in the repo (think "Git for data"). Data is stored
+  datasets, and machine learning models. Use a standard Git workflow, but
+  without storing large files in the repo (think "Git for data"). Data is stored
   separately, which allows for efficient sharing.
 
 - **[Data and model access]** shows how to use data artifacts from outside of

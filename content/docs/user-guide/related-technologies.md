@@ -51,10 +51,10 @@ bringing best practices from software engineering into the data science field
 > means that editing a reflinked file is always safe as all the other links to
 > the file will reflect the changes.
 
-## Git workflows/methodologies such as Gitflow
+## Git workflows such as Gitflow
 
 - DVC enables a new experimentation methodology that integrates easily with
-  existing Git workflows. For example, a separate branch can be created for each
+  standard Git workflows. For example, a separate branch can be created for each
   experiment, with a subsequent merge of the branch if the experiment is
   successful.
 
