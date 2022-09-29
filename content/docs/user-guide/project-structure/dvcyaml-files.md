@@ -500,6 +500,13 @@ stages:
         - ${item.prop2}
 ```
 
+<admon type="tip">
+
+Both individual foreach stages (`train@1`) and groups of foreach stages
+(`train`) may be used in commands that accept stage targets.
+
+</admon>
+
 > Note that this feature is not compatible with [templating](#templating) at the
 > moment.
 
