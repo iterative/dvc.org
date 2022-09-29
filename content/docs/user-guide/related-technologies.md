@@ -1,8 +1,7 @@
 # Comparison with Related Technologies
 
 DVC combines a number of existing ideas into a single tool, with the goal of
-bringing best practices from software engineering into the data science field
-(refer to [What is DVC?](/doc/user-guide/what-is-dvc) for more details).
+bringing best practices from software engineering into the data science field.
 
 ## Git
 
