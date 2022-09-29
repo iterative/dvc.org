@@ -2,15 +2,15 @@
 
 ## Core Features
 
-- DVC codifies data and ML experiments:
-
-  ![](/img/reproducibility.png)
-
 - DVC is a [free], open-source [VS Code Extension] and [command line] tool.
 
 - DVC works **on top of Git repositories** and has a similar command line
   interface and flow as Git. DVC can also work stand-alone, but without
   [versioning](/doc/use-cases/versioning-data-and-models) capabilities.
+
+- DVC codifies data and ML experiments:
+
+  ![](/img/reproducibility.png)
 
 - **Data versioning** is enabled by replacing large files, dataset directories,
   machine learning models, etc. with small
@@ -46,23 +46,6 @@
 [vs code extension]: /doc/vs-code-extension
 [command line]: /doc/command-reference
 [pipelines]: /doc/user-guide/pipelines
-
-<!--
-## DVC does not replace Git!
-
-[DVC metafiles] change along with your data, and you can use Git to place them
-under distributed [version control] as a proxy to the actual data versions,
-which are stored in the <abbr>DVC cache</abbr> (outside of Git). DVC does not
-replace features of Git, but rather extends on them for ML-specific needs.
-
-DVC does provide several commands similar to those in `git`, such as `dvc init`,
-`dvc add`, `dvc checkout`, and `dvc push`. DVC operations interact with the
-underlying Git repo (if one is being used, which is not required).
-
-[dvc metafiles]: /doc/user-guide/project-structure
-[version control]:
-  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
--->
 
 ## Comparison with Related Technologies
 
