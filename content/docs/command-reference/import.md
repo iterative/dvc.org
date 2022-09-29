@@ -109,8 +109,8 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   project imports quickly, and import the data later (use `dvc update` to finish
   the operation(s)).
 
-- `--no-download` - create the import `.dvc` file including the
-  [version](https://git-scm.com/docs/revisions) for the external dependency but
+- `--no-download` - create the import `.dvc` file including the source data
+  [version](https://git-scm.com/docs/revisions) but
   without downloading the associated data. This is useful if you need track
   changes in remote data without using local storage space (yet). The data can
   be downloaded later using `dvc pull`, but this will fail if the `url` no
