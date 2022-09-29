@@ -1,8 +1,8 @@
 # What Is DVC?
 
-![](/img/reproducibility.png) _DVC codifies data and ML experiments_
+- DVC codifies data and ML experiments:
 
-## Core Features
+  ![](/img/reproducibility.png)
 
 - DVC is a [free], open-source [VS Code Extension] and [command line] tool.
 
