@@ -2,11 +2,6 @@
 
 ![](/img/reproducibility.png) _DVC codifies data and ML experiments_
 
-Data science experiment sharing and collaboration can be done through a regular
-Git flow (commits, branching, pull requests, etc.), the same way it works for
-software engineers. Using Git and DVC, data science and machine learning teams
-can version experiments, manage large datasets, and make projects reproducible.
-
 ## Core Features
 
 - DVC is a [free], open-source [VS Code Extension] and [command line] tool.
