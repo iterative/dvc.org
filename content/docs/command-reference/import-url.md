@@ -14,6 +14,7 @@ usage: dvc import-url [-h] [-q | -v] [--file <filename>]
                       [--to-remote] [-r <name>]
                       [--no-exec | --no-download]
                       [-j <number>] [--desc <text>]
+                      [--type <str>] [--label <str>] [--meta key=value]
                       url [out]
 
 positional arguments:
@@ -161,8 +162,13 @@ produces a regular stage in `dvc.yaml`.
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
 
-- `--desc <text>` - user description of the data (optional). This doesn't  
-  affect any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

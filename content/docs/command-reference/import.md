@@ -12,6 +12,7 @@ usage: dvc import [-h] [-q | -v] [--file <filename>]
                   [-o <path>] [--rev <commit>]
                   [--no-exec | --no-download]
                   [-j <number>] [--desc <text>]
+                  [--type <str>] [--label <str>] [--meta key=value]
                   url path
 
 positional arguments:
@@ -122,8 +123,13 @@ file.
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
 
-- `--desc <text>` - user description of the data (optional). This doesn't affect
-  any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
