@@ -25,7 +25,7 @@ the results are consistent. The typical pipelining process involves:
 
 We call this file-based definition _codification_ (YAML format in our case). It
 has the added benefit of allowing you to develop pipelines on standard Git
-workflows ([GitOps]).
+workflows (and [GitOps]).
 
 [gitops]: /doc/use-cases/versioning-data-and-model-files
 
