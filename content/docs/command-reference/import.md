@@ -110,12 +110,10 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   the operation(s)).
 
 - `--no-download` - create the import `.dvc` file including the source data
-  [version](https://git-scm.com/docs/revisions) but
-  without downloading the associated data. This is useful if you need track
-  changes in remote data without using local storage space (yet). The data can
-  be downloaded later using `dvc pull`, but this will fail if the `url` no
-  longer matches the hash values. File hashes can be updated using
-  `dvc update --no-download`.
+  [version](https://git-scm.com/docs/revisions) but without downloading the
+  associated data. This is useful if you need track changes in remote data
+  without using local storage space (yet). The data can be downloaded later
+  using `dvc pull`. File hashes can be updated using `dvc update --no-download`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
