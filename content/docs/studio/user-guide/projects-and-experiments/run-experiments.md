@@ -79,9 +79,11 @@ on `Commit changes`.
 
 ![](https://static.iterative.ai/img/studio/cml_commit.png)
 
-At this point, the new experiment appears in the project's experiment table. If
-you just committed to a new branch, then a new pull request will also have been
-created from the new branch to the base branch.
+## What happens after you submit a new experiment
+
+The new experiment appears in the project's experiment table. If you had
+specified a new branch to commit the changes to, then a new pull request will
+also have been created from the new branch to the base branch.
 
 If your ML project is integrated with a CI/CD setup (e.g. GitHub Actions), the
 CI/CD setup will get invoked. If this setup includes a model training process,
@@ -100,3 +102,25 @@ the Git commit message in the table. The `CML Report` tooltip appears over the
 CML report icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
+
+## Generate real-time (live) metrics for experiments
+
+In your model training CI action, you can use [DVCLive] to send real-time
+updates to metrics and plots back to Iterative Studio, without writing them to
+your Git repository. For more details, refer to the
+[next section](/doc/studio/user-guide/projects-and-experiments/live-metrics).
+
+The project table displays the number of new updates to real-time metrics and
+plots. It also highlights the row for the experiment that has new updates. And
+you can apply a filter to display only the running experiments (ie, those
+experiments for which Iterative Studio expects to receive live metrics).
+
+An experiment can have one of the following statuses:
+
+- Running - Iterative Studio expects to receive live metrics for these
+  experiments.
+- Completed - Iterative Studio does expect to receive any more updates for these
+  experiments.
+- Stopped/Error - These experiments stopped due to some error.
+
+[dvclive]: /doc/dvclive

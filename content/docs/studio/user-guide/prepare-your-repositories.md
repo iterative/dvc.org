@@ -8,24 +8,14 @@
 
 Iterative Studio creates [projects] by identifying machine learning models,
 datasets, metrics and hyperparameters defined in your Git repositories. These
-values are found in JSON or YAML files in the repository. Additionally, model
-information may be available as Git tags.
+values can be added to a project in two ways:
 
-New ML model metadata can be added directly from the **Models** tab after
-[creating a project]. You can also use [GTO] or [MLEM].
+1. **Initialize DVC in your repositories**: You can use [DVC](https://dvc.org/)
+   and Git to version your code, data and models all within your Git
+   repositories.
 
-[projects]: /doc/studio/user-guide/projects-and-experiments/what-is-a-project
-[creating a project]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project
-[gto]: https://github.com/iterative/gto
-[mlem]: https://mlem.ai/
-
-Datasets, metrics, and hyperparameters can be added to a project in two ways:
-
-1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
-   version your code, data and models all within your Git repositories. Data
-   Version Control, or DVC, is a data and ML experiment management tool that
-   takes advantage of the existing engineering toolset that you're already
+   Data Version Control, or DVC, is a data and ML experiment management tool
+   that takes advantage of the existing engineering toolset that you're already
    familiar with (Git, CI/CD, etc.). By using DVC, you can be sure not to bloat
    your repositories with large volumes of data or huge models. These large
    assets reside in the cloud or other remote storage locations. You will simply

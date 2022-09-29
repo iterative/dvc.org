@@ -19,6 +19,9 @@ hyperparameters and models. These values are then presented in an experiment
 table with each experiment (Git commit) in a row and the corresponding values
 for the data, metrics, hyperparameters and models in columns.
 
+Real-time metrics that you [send to Iterative Studio][live-metrics] using
+[DVCLive] are also included in the project table.
+
 <admon>
 
 For Iterative Studio to extract the required values from your Git repositories,
@@ -28,7 +31,8 @@ the values must be stored as described in the section about
 </admon>
 
 ![](https://static.iterative.ai/img/studio/view_components.png) _A project
-presents information stored in your Git repository in an interactive table._
+presents information stored in your Git repository and real-time metrics in an
+interactive table._
 
 All the projects that you have created are presented in a central projects
 dashboard. This dashboard opens up whenever you login to Iterative Studio.
@@ -52,6 +56,11 @@ Within a project, you can:
 - Compare experiments.
 - Run new experiments by submitting new Git commits directly from Iterative
   Studio.
+- [Track real-time metrics][live-metrics] by sending them to Iterative Studio by
+  using [DVCLive].
 
 In the following sections, you will see how to create, configure and share
 projects.
+
+[live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
+[dvclive]: /doc/dvclive

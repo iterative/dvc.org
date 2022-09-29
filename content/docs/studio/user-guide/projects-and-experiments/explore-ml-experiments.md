@@ -20,24 +20,35 @@ includes metrics, hyperparameters, and information about datasets and models.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
+TODO: Replace this screenshot with one that contains live metrics
+
 ## Components of a project
 
 The experiments table of the project has different components that show you the
 complete experiment history as well as enable to you to generate plots, compare
 experiments, run new experiments, etc. The major components of the table are:
 
-- [Git history](#git-history) - represents your experimentation history.
+- [Git history and live metrics](#git-history-and-live-metrics) - view your
+  experimentation history as well as real-time metrics for running experiments.
 - [Display preferences](#display-preferences) - show/hide branches, commits and
   columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 
-### Git history
+### Git history and live metrics
 
 The branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
+Any real-time metrics that you send using [DVCLive] are also displayed alongside
+the corresponding experiment commits.
+
+The number of recent updates to the real-time metrics are displayed in the
+`Live` icon as shown below.
+
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
+
+TODO: Replace this gif with one that contains live metrics
 
 ### Display preferences
 
@@ -121,6 +132,8 @@ The table also contains buttons to visualize, compare and run experiments.
   your browser window.
 - **Compare:** Compare different experiments side by side.
 - **Run:** Run experiments by selecting any one commit. Refer
-  [here](/doc/studio/user-guide/run-experiments) for details on how to run
-  experiments.
+  [here][run-experiments] for details on how to run experiments and track
+  metrics in real-time.
 - **Trends:** Generate trend charts to show metric evolution over time.
+
+[run-experiments]: /doc/studio/user-guide/run-experiments

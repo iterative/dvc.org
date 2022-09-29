@@ -1,12 +1,14 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use Iterative
+The following two videos provide you a quick overview of how to use Iterative
 Studio.
 
 > Note that we have renamed DVC Studio to Iterative Studio and Views to
 > Projects.
 
 https://www.youtube.com/watch?v=hKf4twg832g
+
+TODO: Add a video about live metrics tracking
 
 ## Sign up / sign in
 
@@ -105,6 +107,14 @@ You should now see that a project has been added in your dashboard.
 
 2. You can also make the project public by [sharing it on the web].
 
+## Submit experiments and track real-time metrics
+
+1. You can also use your project to [submit new experiments] from Iterative
+   Studio.
+
+2. For the experiments that you submit from Iterative Studio, you can [track
+   real-time metrics][live-metrics] by using [DVCLive].
+
 ## Use model registry
 
 1. Click on the `Models` tab to open the central [Models dashboard]. If any of
@@ -148,3 +158,5 @@ You should now see that a project has been added in your dashboard.
 [create a team]: /doc/studio/user-guide/teams
 [sign up for the **basic**, **teams** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
+[live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
+[dvclive]: /doc/dvclive
