@@ -94,12 +94,8 @@
   },
   {
     "slug": "user-guide",
-    "source": "user-guide/index.md",
+    "source": false,
     "children": [
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
