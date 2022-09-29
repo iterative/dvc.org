@@ -11,7 +11,7 @@ etc.), and download it to the local project, or make a copy in
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>]
-		      [--to-remote] [-r <name>]
+                      [--to-remote] [-r <name>]
                       [--no-exec | --no-download]
                       [-j <number>] [--desc <text>]
                       url [out]
@@ -135,16 +135,18 @@ produces a regular stage in `dvc.yaml`.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url` or get
-  checksums (assumes that the data source is valid). This is useful if you need
-  to define the project imports quickly, and import the data later (use
-  `dvc update` to finish the operation(s)).
+- `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
+  that the data source is valid). This is useful if you need to define the
+  project imports quickly, and import the data later (use `dvc update` to finish
+  the operation(s)).
 
-- `--no-download` - create the import `.dvc` with data checksums but without
-  downloading the associated data. This is useful if you need track changes in
-  remote data but do not (yet) need to download data to the local workspace.
-  Data can be later downloaded using `dvc pull`, but will fail if the data
-  matching the checksum is no longer available.
+- `--no-download` - create the import `.dvc` file including
+  [hash values](/doc/user-guide/project-structure/dvc-files#dependency-entries)
+  for the external dependency but without downloading the associated data. This
+  is useful if you need track changes in remote data without using local storage
+  space (yet). The data can be downloaded later using `dvc pull`, but this will
+  fail if the `url` no longer matches the hash values. File hashes can be
+  updated using `dvc update --no-download`.
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to

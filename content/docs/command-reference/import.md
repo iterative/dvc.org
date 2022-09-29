@@ -106,15 +106,16 @@ file.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+- `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
   that the data source is valid). This is useful if you need to define the
   project imports quickly, and import the data later (use `dvc update` to finish
   the operation(s)).
 
-- `--no-download` - create the import `.dvc` with data checksums but without
-  downloading the associated data. This is useful if you need track changes in
-  remote data but do not (yet) need to download data to the local workspace.
-  Data can be later downloaded using `dvc pull`.
+- `--no-download` - create the import `.dvc` file including the source data
+  [version](https://git-scm.com/docs/revisions) but without downloading the
+  associated data. This is useful if you need track changes in remote data
+  without using local storage space (yet). The data can be downloaded later
+  using `dvc pull`. File hashes can be updated using `dvc update --no-download`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
