@@ -56,7 +56,7 @@ list files recursively.
 
 ## Options
 
-- `-R`, `--recursive` - recursively list files of all subdirectories.
+- `-R`, `--recursive` - recursively list files in all subdirectories.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
