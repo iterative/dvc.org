@@ -686,6 +686,14 @@
                 "label": "log_image()"
               },
               {
+                "slug": "log_param",
+                "label": "log_param()"
+              },
+              {
+                "slug": "log_params",
+                "label": "log_params()"
+              },
+              {
                 "slug": "log_plot",
                 "label": "log_plot()"
               },

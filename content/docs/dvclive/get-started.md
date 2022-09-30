@@ -1,7 +1,7 @@
 # Get Started
 
-DVCLive is a Python library for logging machine learning metrics and other
-metadata in simple file formats, which is fully compatible with DVC.
+DVCLive is a Python library for logging machine learning parameters, metrics and
+other metadata in simple file formats, which is fully compatible with DVC.
 
 <admon type="tip">
 
@@ -21,6 +21,34 @@ live = Live()
 ```
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
+
+### (Optionally) Log parameters
+
+<toggle>
+<tab title="Single parameter">
+
+```python
+live.log_param("num_classes", 10)
+```
+
+See `Live.log_param()`.
+
+</tab>
+<tab title="Multiple parameters">
+
+```python
+params = {
+    "num_classes": 10,
+    "metrics": ["accuracy", "mae"],
+    "optimizer": "adam"
+}
+live.log_params(params)
+```
+
+See `Live.log_params()`.
+
+</tab>
+</toggle>
 
 ### Log data
 
@@ -76,6 +104,8 @@ from dvclive import Live
 
 live = Live()
 
+live.log_param(NUM_EPOCHS)
+
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)
@@ -96,6 +126,7 @@ $ tree
 ├── dvclive
 │   ├── images
 │   │   └── img.png
+│   ├── params.yaml
 │   ├── plots
 │   │   └── roc.json
 │   └── scalars
@@ -107,7 +138,8 @@ The contents of the `dvclive` folder and `dvclive.json` will vary depending on
 the type of data you have logged and whether you have updated the step value or
 not.
 
-See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
+See `Live.log()`, `Live.log_param()`/`Live.log_params()`, `Live.log_image()` and
+`Live.log_plot()` for more details.
 
 ### Metrics report
 

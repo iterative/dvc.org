@@ -15,7 +15,7 @@ to the callbacks list passed to the `xgboost.train` call:
 ```git
 +from dvclive.xgb import DvcLiveCallback
 
-. . .
+...
 
 xgboost.train(
     param,

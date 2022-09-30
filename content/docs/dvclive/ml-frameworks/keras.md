@@ -16,7 +16,7 @@ int the callbacks list passed to your
 ```git
 +from dvclive.keras import DvcLiveCallback
 
-. . .
+...
 
 model.fit(
     train_dataset,

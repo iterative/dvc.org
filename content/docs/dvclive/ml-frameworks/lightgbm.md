@@ -15,7 +15,7 @@ to the callbacks list passed to the `lightgbm.train` call:
 ```git
 +from dvclive.lgbm import DvcLiveCallback
 
-. . .
+...
 
 lightgbm.train(
   param,
