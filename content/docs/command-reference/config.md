@@ -30,9 +30,12 @@ When writing (a `value` is given or `--unset` is used), the new value is written
 to the project-level config file by default (`.dvc/config`). Options `--system`,
 `--global` and `--local` can be used to write to that location instead.
 
-⚠️ Note that `.dvc/config` is meant to be tracked by Git and should not contain
-sensitive user info or secrets (passwords, SSH keys, etc). Use `--local` when in
-doubt.
+<admon type="warn">
+
+`.dvc/config` is meant to be tracked by Git and should not contain sensitive
+user info or secrets (passwords, SSH keys, etc). Use `--local` when in doubt.
+
+</admon>
 
 | Flag                          | Priority | Config file location |
 | ----------------------------- | -------- | -------------------- |
@@ -106,7 +109,7 @@ within:
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
-- [`plots`](#plots) - contains an option to set custom HTML templates.
+- [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
 - [`index`](#index) - see [Internal directories and files][internals] to learn
@@ -351,6 +354,17 @@ experiments or projects use a similar structure.
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
   when using DVC on NFS or other mounted volumes.
+
+### hydra
+
+- `hydra.enabled` - enables
+  [Hydra Composition](/docs/user-guide/experiment-management/hydra-composition).
+- `hydra.config_dir` - location of the directory containing
+  [Hydra Config Groups](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
+  Defaults to `conf`.
+- `hydra.config_name` - the name of the file containing top-level
+  [Hydra Defaults List](https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/),
+  located inside `hydra.config_dir`. Defaults to `config`.
 
 ## Example: Add an S3 remote, and set it as default
 

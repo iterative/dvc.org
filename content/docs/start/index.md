@@ -1,7 +1,7 @@
 ---
-description: 'Learn how you can use DVC to manage data science and machine
-learning projects: version data, access it anywhere, capture data pipelines, and
-manage experiments.'
+description: 'Get a quick introduction to the major features of DVC for data
+science and machine learning projects: version data, access it anywhere, capture
+pipelines and metrics, and manage experiments.'
 ---
 
 # Get Started
@@ -45,15 +45,15 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-DVC's features can be grouped into functional components. You can explore them
-in two independent trails:
+DVC's multiple feature sets are best understood from different angles. Pick a
+trail below to see an overview of all features from that perspective:
 
 ### Data Management
 
-- **[Data and model versioning]** (try this next) is the base layer of DVC for
-  large files, datasets, and machine learning models. Use a regular Git
-  workflow, but without storing large files in the repo (think "Git for data").
-  Data is stored separately, which allows for efficient sharing.
+- **[Data and model versioning]** is the base layer of DVC for large files,
+  datasets, and machine learning models. Use a regular Git workflow, but without
+  storing large files in the repo (think "Git for data"). Data is stored
+  separately, which allows for efficient sharing.
 
 - **[Data and model access]** shows how to use data artifacts from outside of
   the project and how to import data artifacts from another DVC project. This
@@ -68,7 +68,7 @@ in two independent trails:
   you capture, navigate, and evaluate ML projects without leaving Git. Think
   "Git for machine learning".
 
-[data and model versioning]: /doc/start/data-management
+[data and model versioning]: /doc/start/data-management/data-versioning
 [data and model access]: /doc/start/data-management/data-and-model-access
 [data pipelines]: /doc/start/data-management/data-pipelines
 [metrics, parameters, and plots]:
@@ -84,5 +84,5 @@ in two independent trails:
 - **[Visualization]** compare experiment results visually, track your plots and
   generate them with library integrations.
 
-[experiments]: /doc/start/experiments
-[visualization]: /doc/start/experiments/visualization
+[experiments]: /doc/start/experiment-management/experiments
+[visualization]: /doc/start/experiment-management/visualization

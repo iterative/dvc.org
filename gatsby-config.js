@@ -135,7 +135,8 @@ const plugins = [
       ]
       /* eslint-enable @typescript-eslint/naming-convention */
     }
-  }
+  },
+  '@sentry/gatsby'
 ]
 
 if (process.env.ANALYZE) {

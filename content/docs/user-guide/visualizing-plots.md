@@ -4,7 +4,7 @@ DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
 1. Save some data, for example in JSON format. This may be an
-   [ML pipeline output](#stage-plots).
+   [ML pipeline output](#plot-outputs).
 
    ```json
    [
@@ -66,7 +66,7 @@ repository from bloating.
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[tracking]: /doc/start/data-management
+[tracking]: /doc/start/data-management/data-versioning
 
 </admon>
 
@@ -144,8 +144,8 @@ ways to configure visualizations. Users can define top-level `plots` in
 <admon type="info">
 
 DVC will collect both types and display everything conforming to each plot
-configuration. If any stage plot files are also used in a top-level definitions,
-DVC will create separate rendering for each type.
+configuration. If any stage plot files or directories are also used in a
+top-level definition, DVC will create separate rendering for each type.
 
 </admon>
 
@@ -210,18 +210,22 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_spec_conf_train_test.svg)
 
-📖 Refer to the [full format specification] and `dvc plots show` for more
-details.
-
 [template]: #plot-templates-data-series-only
+
+<admon icon="book">
+
+Refer to the [full format specification] and `dvc plots show` for more details.
+
 [full format specification]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
 
-### Plot Outputs
+</admon>
 
-When defining [pipelines], some <abbr>outputs</abbr> can be placed under a
-`plots` list for the corresponding stage. This will tell DVC that they are
-intended for visualization.
+### Plot outputs
+
+When defining [pipelines], some <abbr>outputs</abbr> (both files and
+directories) can be placed under a `plots` list for the corresponding stage.
+This will tell DVC that they are intended for visualization.
 
 <admon type="info">
 
@@ -243,9 +247,9 @@ stages:
   ...
 ```
 
-Plotting stage outputs are convenient for defining plots within the stage
-without having to write top-level `plots` definitions in `dvc.yaml`. They do not
-support custom plot IDs or multiple data sources.
+Plotting stage outputs is convenient for working with plots at the stage level,
+without having to write top-level `plots` definitions in `dvc.yaml`. However,
+stage-level plots do not support custom plot IDs or multiple data sources.
 
 [pipelines]: /doc/start/data-management/data-pipelines
 
@@ -279,6 +283,9 @@ DVC has the following built-in plot templates:
   [example](/doc/command-reference/plots/show#example-confusion-matrix)
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
+- `bar_horizontal` - horizontal bar plot, see
+  [example](/doc/command-reference/plots/show#example-horizontal-bar-plot)
+- `bar_horizontal_sorted` - horizontal bar plot sorted by bar size
 
 Note that in the case of CSV/TSV metrics files, column names from the table
 header (first row) are equivalent to field names.

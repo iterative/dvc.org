@@ -45,6 +45,8 @@
   "^/doc/start/data-and-model-access(/.*)?$                                               /doc/start/data-management/data-and-model-access 302",
   "^/doc/start/data-pipelines(/.*)?$                                                      /doc/start/data-management/data-pipelines 302",
   "^/doc/start/metrics-parameters-plots(/.*)?$                                            /doc/start/data-management/metrics-parameters-plots 302",
+  "^/doc/start/experiments$                                                               /doc/start/experiment-management/experiments 302",
+  "^/doc/start/experiments/visualization$                                                 /doc/start/experiment-management/visualization 302",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
@@ -56,6 +58,8 @@
   "^/doc/use-cases/shared-development-server$                                             /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
   "^/doc/use-cases/data-registries$                                                       /doc/use-cases/data-registry",
 
+  "^/doc/user-guide/what-is-dvc$                                                          /doc/user-guide/overview 302",
+  "^/doc/user-guide/related-technologies$                                                 /doc/user-guide/overview 302",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/resolve-merge-conflicts",
