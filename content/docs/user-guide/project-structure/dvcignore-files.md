@@ -23,7 +23,7 @@ helper command `dvc check-ignore`.
 - During execution of commands that traverse directories, DVC will ignore
   matching paths.
 
-## Global .dvcignore
+## Global Ignore Patterns
 
 - DVC also allows you to set global ignore patterns that you would otherwise
   need to manually include in each project's root `.dvcignore`.
@@ -32,20 +32,20 @@ helper command `dvc check-ignore`.
 - You can provide these patterns in a file of your choice and call the command
   `dvc config --global core.excludesfile </path/to/files/with/ignore/patterns>`
 - If `core.excludesfile` is not set, DVC will look for these global ignore
-  patterns in the user-level `.dvcignore` file and if such a file does not
-  exist, the system-level `.dvcignore` file.
+  patterns in the user-level `ignore` file and if such a file does not exist,
+  the system-level `ignore` file.
 
-The user-level and system-level `.dvcignore` files can be found in the following
+The user-level and system-level `ignore` files can be found in the following
 locations:
 
-| Level        | macOS location                                      | Linux location (typical\*)     | Windows location                                              |
-| ------------ | --------------------------------------------------- | ------------------------------ | ------------------------------------------------------------- |
-| user-level   | `$HOME/Library/Application\ Support/dvc/.dvcignore` | `$HOME/.config/dvc/.dvcignore` | `%LocalAppData%\iterative\dvc\.dvcignore`                     |
-| system-level | `/Library/Application\ Support/dvc/.dvcignore`      | `/etc/xdg/dvc/.dvcignore`      | `%AllUsersProfile%\Application Data\iterative\dvc\.dvcignore` |
+| Level        | macOS location                                  | Linux location (typical\*) | Windows location                                          |
+| ------------ | ----------------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| user-level   | `$HOME/Library/Application\ Support/dvc/ignore` | `$HOME/.config/dvc/ignore` | `%LocalAppData%\iterative\dvc\ignore`                     |
+| system-level | `/Library/Application\ Support/dvc/ignore`      | `/etc/xdg/dvc/ignore`      | `%AllUsersProfile%\Application Data\iterative\dvc\ignore` |
 
-> \* For Linux, the user-level `.dvcignore` may be found in
-> `$XDG_CONFIG_HOME/dvc/`, and the system-level one in
-> `$XDG_CONFIG_DIRS[0]/dvc/`, if those env vars are defined.
+> \* For Linux, the user-level `ignore` may be found in `$XDG_CONFIG_HOME/dvc/`,
+> and the system-level one in `$XDG_CONFIG_DIRS[0]/dvc/`, if those env vars are
+> defined.
 
 ## Remarks
 
