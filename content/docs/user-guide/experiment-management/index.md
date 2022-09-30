@@ -14,8 +14,6 @@ quantitative measures of your results.
 
 ## Experimentation in DVC
 
-_New in DVC 2.0 (see `dvc version`)_
-
 DVC experiment management features conform a comprehensive framework to
 organize, execute, manage, and share ML experiments. They support these main
 approaches:
