@@ -51,14 +51,14 @@ trail below to see an overview of all features from that perspective:
 ### Data Management
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
-  datasets, and machine learning models. Use a standard Git workflow, but
-  without storing large files in the repo (think "Git for data"). Data is stored
-  separately, which allows for efficient sharing.
+  datasets, and machine learning models. Use a standard Git workflow (think "Git
+  for data"), but without storing large files in the repo. Data versions are
+  stored separately, allowing for efficient sharing.
 
-- **[Data and model access]** shows how to use data artifacts from outside of
-  the project and how to import data artifacts from another DVC project. This
-  can help to download a specific version of an ML model to a deployment server
-  or import a model to another project.
+- **[Data and model access]** covers using data artifacts from outside of the
+  project and/or importing data artifacts from another DVC project. This can
+  help to download a specific version of an ML model to a deployment server or
+  import a model to another project.
 
 - **[Data pipelines]** describe how models and other data artifacts are built,
   and provide an efficient way to reproduce them. Think "Makefiles for data and
