@@ -4,9 +4,9 @@
 Git ecosystem. It parses the data, metrics, hyperparameters and model metadata
 that you add to your ML project Git repositories, and renders them on a web UI.
 
-Additionally, you can [track metrics from your experiments in
-real-time][live-metrics] by pushing the metrics directly to Iterative Studio
-using [DVCLive].
+Additionally, you can [track metrics from your experiments in real
+time][live-metrics] by pushing the metrics directly to Iterative Studio using
+[DVCLive].
 
 The following two videos illustrate how Iterative Studio works with data from
 your ML projects and experiments.
@@ -18,14 +18,14 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 
 TODO: Add a video about live metrics tracking
 
-## How your project data is saved
+## How you save your project data
 
 - Using [DVC] and [Git], you will push all your ML experiments to your GitHub,
   GitLab or Bitbucket repositories as Git commits.
 - Using Iterative Studio, or using the command line interface (CLI) of [GTO],
   and possibly [MLEM], you will push all your ML model details to the Git
   repositories as Git commits and Git tags.
-- Using [DVCLive], you will push real-time metrics from your Git-committed
+- Using [DVCLive], you will push live metrics from your Git-committed
   experiments to Iterative Studio.
 
 ## How Iterative Studio extracts your project data
@@ -37,14 +37,14 @@ TODO: Add a video about live metrics tracking
   [add the metrics and hyperparameters to your Git repositories manually](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
 - Details of your ML models, including versions and stage assignments, are
   extracted from the Git commits and tags.
-- Real-time metrics for experiments committed to Git are extracted from the data
-  you send using [DVCLive].
+- Live metrics for experiments committed to Git are extracted from the data you
+  send using [DVCLive].
 
 ## How Iterative Studio presents your project data
 
 - Iterative Studio creates an
   [interactive, tabular representation](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#components-of-a-project)
-  of all the identified values, including real-time metrics.
+  of all the identified values, including live metrics.
 - All the projects that you have created are presented in a central projects
   dashboard.
 - All identified models are included in an interactive
@@ -52,7 +52,7 @@ TODO: Add a video about live metrics tracking
   and individual
   [model details pages](/doc/studio/user-guide/model-registry/view-models#model-details-page).
 
-## How Iterative Studio saves updates to your ML projects
+## How Iterative Studio runs experiments and model actions
 
 - When you
   [run new experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments)
@@ -63,7 +63,7 @@ TODO: Add a video about live metrics tracking
 - You can set up your CI/CD actions (e.g. GitHub Actions) to run model training
   upon the creation of Git commits, tags or pull requests. You can use [CML] in
   your CI/CD actions for continuous machine learning.
-- You can use DVCLive in your CI/CD actions to send real-time metrics of model
+- You can use DVCLive in your CI/CD actions to send live metrics of model
   training to Iterative Studio.
 - When you
   [register new versions](/doc/studio/user-guide/model-registry/register-version)

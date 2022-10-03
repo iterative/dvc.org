@@ -107,13 +107,12 @@ You should now see that a project has been added in your dashboard.
 
 2. You can also make the project public by [sharing it on the web].
 
-## Submit experiments and track real-time metrics
+## Submit experiments and track live metrics
 
-1. You can also use your project to [submit new experiments] from Iterative
-   Studio.
+1. You can use your project to [submit new experiments] from Iterative Studio.
 
 2. For the experiments that you submit from Iterative Studio, you can [track
-   real-time metrics][live-metrics] by using [DVCLive].
+   live metrics][live-metrics] by using [DVCLive].
 
 ## Use model registry
 

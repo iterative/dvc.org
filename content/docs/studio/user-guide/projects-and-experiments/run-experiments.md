@@ -81,46 +81,45 @@ on `Commit changes`.
 
 ## What happens after you submit a new experiment
 
+### Git commit (and pull request) are created
+
 The new experiment appears in the project's experiment table. If you had
 specified a new branch to commit the changes to, then a new pull request will
 also have been created from the new branch to the base branch.
 
+### Model training is invoked
+
 If your ML project is integrated with a CI/CD setup (e.g. GitHub Actions), the
 CI/CD setup will get invoked. If this setup includes a model training process,
 it will be triggered, which means that your ML experiment will run
-automatically. The model training can happen on any cloud or Kubernetes. For
-more details on how to set up
-[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
-refer to [CML](https://cml.dev). You can also create CML reports with metrics,
-plots or other details at the end of each experiment run.
+automatically.
 
-Once the experiment completes, its metrics will be available in the project's
-experiment table. You can then generate plots and trend charts for it, or
-compare it with the other experiments. If a CML report has been defined in your
-CI/CD flow, you can access the report by clicking on the CML report icon next to
-the Git commit message in the table. The `CML Report` tooltip appears over the
-CML report icon on mouse hover.
+The model training can happen on any cloud or Kubernetes. For more details on
+how to set up
+[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
+refer to [CML].
+
+### Live metrics are tracked
+
+In your model training CI action, you can use [DVCLive] to send live updates to
+metrics and plots back to Iterative Studio, without writing them to your Git
+repository. The live metrics are displayed alongside the corresponding
+experiment commits. For more details, refer to the
+[next section](/doc/studio/user-guide/projects-and-experiments/live-metrics).
+
+### Metrics, plots and reports are saved in Git
+
+In your model training CI action, you can save the training results in Git. This
+means, once the experiment completes, its metrics will be available in the
+project's experiment table. You can then generate plots and trend charts for it,
+or compare it with the other experiments.
+
+In your model training CI action, you can also use [CML] to create reports with
+metrics, plots or other details. You can access the CML report by clicking on
+the `CML report` icon next to the Git commit message in the experiment table.
+The `CML Report` tooltip appears over the `CML report` icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
 
-## Generate real-time (live) metrics for experiments
-
-In your model training CI action, you can use [DVCLive] to send real-time
-updates to metrics and plots back to Iterative Studio, without writing them to
-your Git repository. For more details, refer to the
-[next section](/doc/studio/user-guide/projects-and-experiments/live-metrics).
-
-The project table displays the number of new updates to real-time metrics and
-plots. It also highlights the row for the experiment that has new updates. And
-you can apply a filter to display only the running experiments (ie, those
-experiments for which Iterative Studio expects to receive live metrics).
-
-An experiment can have one of the following statuses:
-
-- Running - Iterative Studio expects to receive live metrics for these
-  experiments.
-- Completed - Iterative Studio does expect to receive any more updates for these
-  experiments.
-- Stopped/Error - These experiments stopped due to some error.
-
 [dvclive]: /doc/dvclive
+[cml]: (https://cml.dev)

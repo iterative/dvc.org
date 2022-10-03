@@ -72,12 +72,12 @@ experiment, you can use the plots to compare them.
 
 ![](https://static.iterative.ai/img/studio/plots.png)
 
-### Real-time (live) plots
+### Live (real-time) plots
 
-For the experiments that you submit from Iterative Studio, you can [send
-real-time updates to your metrics plots][live-metrics] by using [DVCLive]. The
-number of recent updates to the real-time metrics and plots are displayed in the
-`Live` icon as shown
+For the experiments that you submit from Iterative Studio, you can [send live
+updates to your metrics plots][live-metrics] by using [DVCLive]. The number of
+recent updates to the live metrics and plots are displayed in the `Live` icon as
+shown
 [here](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#git-history-and-live-metrics).
 
 Live plots are also shown in the plots pane, just like all other plots.
@@ -98,3 +98,6 @@ commits), and click on the `Compare` button. The metrics, parameters and files
 in the selected experiments will be displayed side by side for easy comparison.
 
 ![](https://static.iterative.ai/img/studio/compare.png)
+
+[live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
+[dvclive]: /doc/dvclive

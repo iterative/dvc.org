@@ -9,11 +9,10 @@ settings_ are now called _Project settings_; and so on.
 
 # Explore ML Experiments
 
-When you create a project by connecting to a Git repository, the project is
-added to your Iterative Studio dashboard. You can dive deep into the projects
-shown in your Iterative Studio dashboard to explore all the ML experiments,
-visualize and compare them, and run new experiments. For this, open the project
-by clicking the project name (in this case, `example-get-started`).
+The projects dashboard in Iterative Studio contains all the projects you created
+by connecting to Git repositories. To explore all ML experiments in a project,
+visualize and compare them, and run new experiments, open the project by
+clicking the project name (in this case, `example-get-started`).
 
 An experiments table for the project will be generated as shown below. This
 includes metrics, hyperparameters, and information about datasets and models.
@@ -24,14 +23,13 @@ TODO: Replace this screenshot with one that contains live metrics
 
 ## Components of a project
 
-The experiments table of the project has different components that show you the
-complete experiment history as well as enable to you to generate plots, compare
-experiments, run new experiments, etc. The major components of the table are:
+The major components of the project experimentation table are:
 
-- [Git history and live metrics](#git-history-and-live-metrics) - view your
-  experimentation history as well as real-time metrics for running experiments.
-- [Display preferences](#display-preferences) - show/hide branches, commits and
-  columns, and re-arrange the table.
+- [Git history and live metrics](#git-history-and-live-metrics) that show you
+  the complete experimentation history as well as live metrics of running
+  experiments.
+- [Display preferences](#display-preferences) that let you show/hide branches,
+  commits and columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 
@@ -40,11 +38,10 @@ experiments, run new experiments, etc. The major components of the table are:
 The branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
-Any real-time metrics that you send using [DVCLive] are also displayed alongside
-the corresponding experiment commits.
-
-The number of recent updates to the real-time metrics are displayed in the
-`Live` icon as shown below.
+Any live metrics that you send using [DVCLive] are displayed alongside the
+corresponding experiment commits. More details of how live metrics are displayed
+can be found
+[here](/doc/studio/user-guide/projects-and-experiments/live-metrics#view-live-metrics).
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
@@ -128,12 +125,12 @@ The table also contains buttons to visualize, compare and run experiments.
 ![](https://static.iterative.ai/img/studio/view_components_3.gif)
 
 - **Show plots:** Show plots for the selected commits. When you click on this
-  button, plots for the selected commits are displayed in the bottom half of
-  your browser window.
+  button, plots for the selected commits are displayed in a `Plots ` pane.
 - **Compare:** Compare different experiments side by side.
 - **Run:** Run experiments by selecting any one commit. Refer
   [here][run-experiments] for details on how to run experiments and track
-  metrics in real-time.
+  metrics in real time.
 - **Trends:** Generate trend charts to show metric evolution over time.
 
 [run-experiments]: /doc/studio/user-guide/run-experiments
+[dvclive]: /doc/dvclive

@@ -19,8 +19,8 @@ hyperparameters and models. These values are then presented in an experiment
 table with each experiment (Git commit) in a row and the corresponding values
 for the data, metrics, hyperparameters and models in columns.
 
-Real-time metrics that you [send to Iterative Studio][live-metrics] using
-[DVCLive] are also included in the project table.
+Live metrics that you [send to Iterative Studio][live-metrics] using [DVCLive]
+are also included in the project table.
 
 <admon>
 
@@ -31,7 +31,7 @@ the values must be stored as described in the section about
 </admon>
 
 ![](https://static.iterative.ai/img/studio/view_components.png) _A project
-presents information stored in your Git repository and real-time metrics in an
+presents information stored in your Git repository and live metrics in an
 interactive table._
 
 All the projects that you have created are presented in a central projects
@@ -50,17 +50,25 @@ ML models across all your projects are presented in a [Model Registry].
 
 Within a project, you can:
 
-- Explore all the details of the experiments that you have pushed to your Git
-  repository.
-- Visualize the experiments using plots and trend charts.
-- Compare experiments.
-- Run new experiments by submitting new Git commits directly from Iterative
-  Studio.
-- [Track real-time metrics][live-metrics] by sending them to Iterative Studio by
+- [Explore all the details of the experiments][explore-ml-experiments] that you
+  have pushed to your Git repository.
+- [Visualize the experiments][visualize] using plots and trend charts.
+- [Compare experiments][compare].
+- [Run new experiments][run-experiments] by submitting new Git commits directly
+  from Iterative Studio.
+- [Track live metrics][live-metrics] by sending them to Iterative Studio by
   using [DVCLive].
 
 In the following sections, you will see how to create, configure and share
 projects.
 
+[explore-ml-experiments]:
+  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
+[visualize]:
+  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare
+[compare]:
+  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments
+[run-experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
 [live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
 [dvclive]: /doc/dvclive
