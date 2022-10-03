@@ -26,9 +26,11 @@ positional arguments:
 
 ## Description
 
-Lists files and directories from an external location. `dvc list-url` is
-equivalent to a wrapper providing a uniform interface around various listing
-commands such as `aws s3 ls` or `ssh user@host ls -a`.
+Lists files and directories from an external location. `dvc list-url` provides a
+uniform interface to browse the contents of an external location using any
+protocol that is understood by `dvc get-url` or `dvc import-url`. For example,
+it is roughly equivalent to `aws s3 ls` when using the `s3://` protocol, or
+`ssh user@host ls -a` when using `ssh://`.
 
 The `url` argument specifies the location of the data to be listed. It supports
 several kinds of external data sources:
