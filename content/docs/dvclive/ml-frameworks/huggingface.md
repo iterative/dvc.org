@@ -16,7 +16,7 @@ int the callbacks list passed to your
 ```git
 +from dvclive.huggingface import DvcLiveCallback
 
-. . .
+...
 
  trainer = Trainer(
         model,

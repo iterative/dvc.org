@@ -1,7 +1,5 @@
 # exp
 
-_New in DVC 2.0 (see `dvc version`)_
-
 > Alias of `dvc experiments`.
 
 A set of commands to generate and manage <abbr>experiments</abbr>:

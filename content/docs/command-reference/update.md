@@ -7,8 +7,10 @@ import `.dvc` files.
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R] [--no-download] [--to-remote]
-                  [-r <name>] [-j <number>] targets [targets ...]
+usage: dvc update [-h] [-q | -v] [-R] [--rev <commit>]
+                  [--to-remote] [-r <name>]
+                  [--no-download] [-j <number>]
+                  targets [targets ...]
 
 positional arguments:
   targets      Import .dvc files to update. Using -R, directories
@@ -52,7 +54,7 @@ $ dvc update --rev master
 
 - `--no-download` - Update data checksums in the `.dvc` file (`md5`, `etag`, or
   `checksum` fields) without actually downloading the latest data. See
-  `dvc import-url --no-download`/`dvc import --no-download` for more context.
+  `dvc import-url --no-download` or `dvc import --no-download` for more context.
   Cannot be combined with `--to-remote`.
 
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and

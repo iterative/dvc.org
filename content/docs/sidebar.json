@@ -94,12 +94,9 @@
   },
   {
     "slug": "user-guide",
-    "source": "user-guide/index.md",
+    "source": false,
     "children": [
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
+      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
@@ -162,7 +159,6 @@
       },
       "running-dvc-on-windows",
       "troubleshooting",
-      "related-technologies",
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
@@ -688,6 +684,14 @@
               {
                 "slug": "log_image",
                 "label": "log_image()"
+              },
+              {
+                "slug": "log_param",
+                "label": "log_param()"
+              },
+              {
+                "slug": "log_params",
+                "label": "log_params()"
               },
               {
                 "slug": "log_plot",

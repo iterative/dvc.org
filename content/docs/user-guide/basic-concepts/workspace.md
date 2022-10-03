@@ -42,6 +42,5 @@ from the workspace.
 
 ## Further Reading
 
-- [What is DVC?](/doc/user-guide/what-is-dvc)
 - [Get Started](/doc/start) with DVC
 - DVC [Project Structure](/doc/user-guide/project-structure)
