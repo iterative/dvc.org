@@ -44,7 +44,7 @@ security may have been compromised.
 You should define the following environment variables in your CI job:
 
 - `STUDIO_REPO_URL`: URL for the Git repository connected to the project. E.g.,
-  `https://github.com/iterative/example-get-started`
+  `github:iterative/example-get-started`
 - `STUDIO_TOKEN`: Your access token. The access token must be present in any
   request that sends data to the Iterative Studio ingestion endpoint. Requests
   with missing or incorrect access tokens are rejected with an appropriate HTTP
