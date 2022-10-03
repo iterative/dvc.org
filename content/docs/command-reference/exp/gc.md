@@ -15,8 +15,9 @@ usage: dvc exp gc [-h] [-q | -v] [-w]
 This command can delete (garbage collect) experiments that exist in the project
 but are no longer needed.
 
-> See **How does DVC track experiments?** in `dvc exp run` to learn more about
-> DVC experiment storage.
+> See
+> [**How does DVC track experiments?**](/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments)
+> in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 To avoid accidentally deleting work, `dvc exp gc` doesn't do anything unless one
 or a combination of scope options are provided (`--workspace`, `--all-branches`,
