@@ -16,7 +16,7 @@ your ML projects and experiments.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
-TODO: Add a video about live metrics tracking
+<!-- TODO: Add a video about live metrics tracking -->
 
 ## How you save your project data
 
