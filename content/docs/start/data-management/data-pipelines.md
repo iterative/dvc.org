@@ -32,14 +32,12 @@ into a [stage](/doc/command-reference/stage):
 
 ### ⚙️ Expand to download example code.
 
-
 <admon type="info">
 
 To actually try this example, begin after following the
-[Data Versioning](/doc/start/data-management/data-versioning) chapter.
-You can get there by cloning the `2-track-data` tag of our
-[example-get-started](https://github.com/iterative/example-get-started)
-repo.
+[Data Versioning](/doc/start/data-management/data-versioning) chapter. You can
+get there by cloning the `2-track-data` tag of our
+[example-get-started](https://github.com/iterative/example-get-started) repo.
 
 </admon>
 
