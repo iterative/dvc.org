@@ -73,7 +73,6 @@
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
   "^/doc/user-guide/contributing(/.*)?$                                                   /doc/contributing$1",
-  "^/doc/user-guide/contributing(/.*)?$                                                   /doc/contributing$1",
   "^/doc/user-guide/large-dataset-optimization$                                           /doc/user-guide/data-management/large-dataset-optimization",
   "^/doc/user-guide/external-dependencies$                                                /doc/user-guide/data-management/importing-external-data",
   "^/doc/user-guide/pipelines/external-dependencies$                                      /doc/user-guide/data-management/importing-external-data",
