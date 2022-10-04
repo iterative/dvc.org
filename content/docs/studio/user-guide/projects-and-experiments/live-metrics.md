@@ -1,6 +1,11 @@
 # Generate live (real-time) metrics for experiments
 
-In your model training CI action, you can use [DVCLive] to send live updates to
+When you
+[submit a new experiment](/doc/studio/user-guide/projects-and-experiments/run-experiments)
+from Iterative Studio, the CI/CD setup in your Git repository gets invoked. If
+this setup includes a model training process, it will be triggered.
+
+In this model training CI action, you can use [DVCLive] to send live updates to
 metrics and plots back to Iterative Studio, without writing them to your Git
 repository. This requires a 3-step process:
 
