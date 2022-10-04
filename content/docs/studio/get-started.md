@@ -8,7 +8,7 @@ Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-<!-- TODO: Add a video about live metrics tracking -->
+TODO: Add a video about live metrics tracking
 
 ## Sign up / sign in
 

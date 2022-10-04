@@ -15,7 +15,7 @@ repository. This requires a 3-step process:
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-<!-- TODO: Replace this with a video tutorial for live metrics -->
+TODO: Replace this with a video tutorial for live metrics
 
 ## Set up an access token
 
@@ -57,9 +57,8 @@ secrets.
 
 Here is an example GitHub action.
 
-<!-- TODO: provide link to an example snippet (such
-as
-[this](https://github.com/iterative/test-dvclive-studio/blob/086a51d76c7983f24c091e1b007820916aa75e7d/.github/workflows/test_live_metrics.yaml#L17-L19)) -->
+TODO: provide link to an example snippet (such as
+[this](https://github.com/iterative/test-dvclive-studio/blob/086a51d76c7983f24c091e1b007820916aa75e7d/.github/workflows/test_live_metrics.yaml#L17-L19))
 
 ## Send the updates
 
@@ -77,7 +76,7 @@ The live metrics are displayed alongside the corresponding experiment commits,
 and updates to the live metrics are highlighted in orange. The running
 experiments themselves are displayed with a `Running` indicator.
 
-<!-- TODO: Add a screenshot of the `Running` indicator -->
+TODO: Add a screenshot of the `Running` indicator
 
 The number of experiments with new updates to the live metrics values are
 displayed in the `Live` icon, which can also be used to filter and show only
@@ -93,7 +92,7 @@ An experiment can have one of the following statuses:
 - **Completed** - Iterative Studio does expect to receive any more updates for
   these experiments. Once the experiment concludes, live metrics will no longer
   be displayed for the experiment. You are expected to persist the final results
-  in Git. <!-- TODO: confirm if this statement is correct. -->
+  in Git. TODO: confirm if this statement is correct.
 
 - **Stopped/Error** - These experiments stopped due to some error.
 

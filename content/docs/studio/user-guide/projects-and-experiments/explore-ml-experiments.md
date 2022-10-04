@@ -19,7 +19,7 @@ includes metrics, hyperparameters, and information about datasets and models.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
-<!-- TODO: Replace this screenshot with one that contains live metrics -->
+TODO: Replace this screenshot with one that contains live metrics
 
 ## Components of a project
 
@@ -45,7 +45,7 @@ can be found
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
-<!-- TODO: Replace this gif with one that contains live metrics -->
+TODO: Replace this gif with one that contains live metrics
 
 ### Display preferences
 
