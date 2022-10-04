@@ -77,7 +77,7 @@ The live metrics are displayed alongside the corresponding experiment commits,
 and updates to the live metrics are highlighted in orange. The running
 experiments themselves are displayed with a `Running` indicator.
 
-<!-- TODO: Add a screenshot of the `Running` indicator
+<!-- TODO: Add a screenshot of the `Running` indicator -->
 
 The number of experiments with new updates to the live metrics values are
 displayed in the `Live` icon, which can also be used to filter and show only
