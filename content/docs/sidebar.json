@@ -131,11 +131,7 @@
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": [
-          "defining-pipelines",
-          "external-dependencies",
-          "external-outputs"
-        ]
+        "children": ["defining-pipelines"]
       },
       {
         "label": "Experiment Management",
