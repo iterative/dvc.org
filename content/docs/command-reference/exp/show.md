@@ -1,9 +1,12 @@
 # exp show
 
-Displays your experiments in a customizable table or
-[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot).
+Displays your experiments in a customizable table or [parallel coordinates
+plot].
 
 > Press `q` to exit.
+
+[parallel coordinates plot]:
+  /doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot
 
 ## Synopsis
 
@@ -58,8 +61,7 @@ sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
 
-When the `--pcp` option is passed, an interactive
-[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot)
+When the `--pcp` option is passed, an interactive [parallel coordinates plot]
 will be generated using the same data from the table.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
