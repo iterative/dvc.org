@@ -130,7 +130,7 @@
       },
       {
         "slug": "pipelines",
-        "source": false,
+        "source": "pipelines/index.md",
         "children": [
           "defining-pipelines",
           "external-dependencies",
