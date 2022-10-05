@@ -32,7 +32,7 @@ operation.
 - `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
 - `.dvc/plots`: Directory for
-  [plot templates](/doc/command-reference/plots#plot-templates)
+  [plot templates](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
@@ -165,4 +165,7 @@ run.
 run-cache to remote storage for sharing and/or as a back up.
 
 > Note that the run-cache assumes that stage commands are deterministic (see
-> **Avoiding unexpected behavior** in `dvc run`).
+> [Avoiding unexpected behavior]).
+
+[avoiding unexpected behavior]:
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior

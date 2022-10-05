@@ -53,7 +53,11 @@ The function parameters (below) let you restrict what's retrieved.
   walking up from the current working directory tree).
 
 - `stages` - one or more names of the stage(s) to retrieve params from.
-  _Default_: `None` (all parameters from all stages will be retrieved).
+  _Default_: `None` (all parameters from all stages will be retrieved). If this
+  method is called from a different location to the one where the `dvc.yaml` is
+  found, the relative path to the `dvc.yaml` must be provided as a prefix with
+  the syntax `{relpath}:{stage}`. For example: `subdir/dvc.yaml:stage-0` or
+  `../dvc.yaml:stage-1`.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, a commit hash or an

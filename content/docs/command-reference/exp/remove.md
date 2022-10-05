@@ -27,8 +27,8 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-- `-A`, `--all` - remove all experiments that have been run. Use `--queue` to
-  remove queued ones.
+- `-A`, `--all` - remove all experiments that have been run. Use
+  `dvc queue remove` to remove queued experiment tasks.
 
 - `--rev <commit>` - remove experiments derived from the specified `<commit>` as
   baseline.
@@ -92,7 +92,7 @@ Queued experiment '8de9a6c' for future execution.
 
 $ dvc exp remove e41d5b4 split16
 
-$ dvc exp show --include-params=train.min_split --no-pager
+$ dvc exp show
 ```
 
 ```dvctable

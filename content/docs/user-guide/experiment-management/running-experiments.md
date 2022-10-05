@@ -1,12 +1,16 @@
 # Running Experiments
 
-We explain how to execute DVC Experiments, setting their parameters, using
-multiple jobs to run them in parallel, and running them in queues, among other
-details.
+We explain how to execute DVC Experiments, setting their parameters, queueing
+them for future execution, running them in parallel, among other details.
 
-> 📖 If this is the first time you are introduced into data science
-> experimentation, you may want to check the basics in
-> [Get Started: Experiments](/doc/start/experiments/) first.
+<admon icon="book">
+
+If this is the first time you are introduced into data science experimentation,
+you may want to check the basics in [Get Started: Experiments] first.
+
+[get started: experiments]: /doc/start/experiment-management/experiments
+
+</admon>
 
 ## `dvc.yaml` files
 
@@ -15,13 +19,17 @@ experiment(s). These files codify _pipelines_ that specify one or more
 <abbr>stages</abbr> of the experiment workflow (code, <abbr>dependencies</abbr>,
 <abbr>outputs</abbr>, etc.).
 
-> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
-> to this topic.
+<admon icon="book">
+
+See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro to
+this topic.
+
+</admon>
 
 ### Running the pipeline(s)
 
-You can run the experiment pipeline using `dvc exp run`. It uses `./dvc.yaml`
-(in the current directory) by default.
+You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
+`./dvc.yaml` (in the current directory) by default.
 
 ```dvc
 $ dvc exp run
@@ -42,25 +50,50 @@ can limit this to certain [reproduction targets] or even single stages
 more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
 once.
 
-> 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
+<admon icon="book">
+
+`dvc exp run` is an experiment-specific alternative to `dvc repro`.
+
+</admon>
 
 [reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+
+## Experiment results
+
+The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
+They are stored and tracked internally by DVC.
+
+To display and compare multiple experiments along with their
+<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
+`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
+[Reviewing and Comparing Experiments][reviewing] for more details.
+
+Use `dvc exp apply` to restore the results of any other experiment instead. See
+[Bring experiment results to your workspace][apply] for more info.
+
+[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
+[apply]:
+  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
 
 ## Tuning (hyper)parameters
 
-Parameters are the values that modify the behavior of coded processes -- in this
-case producing different experiment results. Machine learning experimentation
-often involves defining and searching hyperparameter spaces to improve the
-resulting model metrics.
+Parameters are any values used inside your code to tune modeling attributes, or
+that affect experiment results in any other way. For example, a [random forest
+classifier] may require a _maximum depth_ value. Machine learning
+experimentation often involves defining and searching hyperparameter spaces to
+improve the resulting model metrics.
 
-In DVC project source code, <abbr>parameters</abbr> should be read from _params
-files_ (`params.yaml` by default) and defined in `dvc.yaml`. When a tracked
-param value has changed, `dvc exp run` invalidates any stages that depend on it,
-and reproduces them.
+Your source code should read params from structured [parameters files]
+(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
+for DVC to track them. When a param value has changed, `dvc exp run` invalidates
+any stages that depend on it, and reproduces them.
 
-> 📖 See `dvc params` for more details.
+<admon icon="book">
+
+See `dvc params` for more details.
+
+</admon>
 
 You could manually edit a params file and run an experiment using those as
 inputs. Since this is a common sequence, the built-in option
@@ -80,22 +113,10 @@ $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
 ...
 ```
 
-## Experiment results
-
-The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
-They are stored and tracked internally by DVC.
-
-To display and compare multiple experiments along with their
-<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
-`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
-[Reviewing and Comparing Experiments][reviewing] for more details.
-
-Use `dvc exp apply` to restore the results of any other experiment instead. See
-[Bring experiment results to your workspace][apply] for more info.
-
-[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
-[apply]:
-  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
+[random forest classifier]:
+  https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
+[parameters files]:
+  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
 
 ## The experiments queue
 
@@ -117,31 +138,45 @@ Queued experiment '4109ead' for future execution.
 
 ### How are experiments queued?
 
-Queued experiments are created similar to
-[Git stash](https://www.git-scm.com/docs/git-stash). The last experiment queued
-is found in `.git/refs/exps`, and earlier ones are in its [reflog].
+Queued experiments are managed using [dvc-task] and [Celery].
 
-[reflog]:
-  https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefreflogareflog
+[dvc-task]: https://github.com/iterative/dvc-task
+[celery]: https://docs.celeryq.dev/en/stable/index.html
 
 </details>
 
-Run them all with the `--run-all` flag:
+Run them all with `dvc queue start`:
 
 ```dvc
-$ dvc exp run --run-all
+$ dvc queue start
 ...
 ```
 
 <admon type="info">
 
-Note that the order of execution is independent of their queueing order.
+In most cases, experiment tasks will be executed in the order that they were
+added to the queue (First In, First Out), but this is not guaranteed.
 
 </admon>
 
 Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
 the time it was queued.
+
+Queued experiments are processed serially by default, but can be run in parallel
+by using more than one `--jobs` (to `dvc queue start` more than one worker).
+
+<admon type="warn">
+
+Parallel runs (using `--jobs` > 1) are experimental and may be unstable. Make
+sure you're using number of jobs that your environment can handle (no more than
+the CPU cores).
+
+Note that since queued experiments are run isolated from each other, common
+stages may be executed multiple times depending on the state of the
+<abbr>run-cache</abbr> at that time.
+
+</admon>
 
 <details>
 
@@ -169,10 +204,42 @@ committing unwanted files into Git (e.g. once successful experiments are
 
 </details>
 
-💡 To clear the experiments queue and start over, use `dvc exp remove --queue`.
+<admon type="tip">
 
-> 📖 See the `dvc exp run` reference for more options related to experiments
-> queue, such as running them in parallel with `--jobs`.
+To clear the experiments queue and start over, use `dvc queue remove --queued`.
+
+</admon>
+
+### Grid Search
+
+When combined with the `dvc exp run --set-param` option, you cann add multiple
+experiments to the queue by providing a list of choices and/or a custom range:
+
+```dvc
+$ dvc exp run \
+-S units=32,128 \
+-S learning_rate=range(0.001, 0.003, 0.001) \
+--queue
+
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.001']}'.
+Queued experiment 'ed3b4ef' for future execution.
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.002']}'.
+Queued experiment '7a10d54' for future execution.
+Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.003']}'.
+Queued experiment '0b443d8' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.001']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.002']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.003']}'.
+Queued experiment '0a5f20e' for future execution.
+```
+
+And run the grid search with:
+
+```dvc
+$ dvc queue start
+```
 
 ## Checkpoint experiments
 
@@ -182,8 +249,12 @@ logging. The latter can be achieved either with [DVCLive](/doc/dvclive), by
 using `dvc.api.make_checkpoint()` (Python code), or writing signal files (any
 programming language) following the same steps as `make_checkpoint()`.
 
-> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
-> learn more about this feature.
+<admon icon="book">
+
+See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
+more about this feature.
+
+</admon>
 
 Running checkpoint experiments is no different than running regular ones, e.g.:
 

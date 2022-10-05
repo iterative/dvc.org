@@ -1,14 +1,15 @@
 # exp run
 
-Run or resume a
-[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview).
+Run or resume a [DVC experiment].
+
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
                    { repro options ... } [-n <name>]
-                   [-S [<filename>:]<params_list>]
+                   [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]
                    [targets [targets ...]]
@@ -26,27 +27,31 @@ directories, etc.
 `dvc exp run` has the same general behavior as `dvc repro` when it comes to
 `targets` and stage execution (restores the dependency graph, etc.).
 
-> This includes committing any changed data <abbr>dependencies</abbr> to the
-> <abbr>DVC cache</abbr> when preparing the experiment, which can take some
-> time. See the [Options](#options) section for the differences.
+<admon type="info">
+
+This includes committing any changed data <abbr>dependencies</abbr> to the
+<abbr>DVC cache</abbr> when preparing the experiment, which can take some time.
+See the [Options](#options) section for the differences.
+
+</admon>
 
 Use the `--set-param` (`-S`) option as a shortcut to change
-<abbr>parameter</abbr> values [on-the-fly] before running the experiment.
+<abbr>parameter</abbr> values [on-the-fly] before running the experiment. See
+the [option description](#-S) for details regarding the syntax.
 
 It's possible to [queue experiments] for later execution with the `--queue`
-flag. To actually run them, use `dvc exp run --run-all`. Queued experiments are
-run sequentially by default, but can be run in parallel using the `--jobs`
-option.
-
-> ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
-> a number of jobs that your environment can handle (no more than the CPU
-> cores).
+flag. Queued experiments can be run with `dvc queue start` and managed with
+other `dvc queue` commands.
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
 options have special uses for these.
 
-> 📖 See the [Running Experiments] guide for more details on all these features.
+<admon icon="book">
+
+See the [Running Experiments] guide for more details on all these features.
+
+</admon>
 
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
@@ -67,14 +72,25 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 > In addition to the following, `dvc exp run` accepts the options in `dvc repro`
 > except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
-- `-S [<filename>:]<param_name>=<param_value>`,
-  `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
-  existing `dvc params` for this experiment. `filename` can be any valid params
-  file (`params.yaml` by default). This will override the param values coming
-  from the params file.
+- `-S [<filename>:]<override_pattern>`,
+  `--set-param [<filename>:]<override_pattern>` - set the value of `dvc params`
+  for this experiment.
+
+  This will update the param file **before** running the experiment.
+
+  Valid `<override_pattern>` values are defined in Hydra's [Basic Override
+  syntax]. In addition to the basic override syntax, the
+  [Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
+  and
+  [Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
+  syntax are supported for defining sweeps, but both require the `--queue`
+  option to be also provided.
+
+  You can optionally provide a prefix `[<filename>:]` to edit a specific
+  `dvc params` file. If not provided, `params.yaml` will be used as default.
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will generated otherwise, such as `exp-f80g4` (based on the
+  default one will be generated otherwise, such as `exp-f80g4` (based on the
   experiment's hash).
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
@@ -82,8 +98,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   runs.
 
 - `--queue` - place this experiment at the end of a line for future execution,
-  but don't actually run it yet. Use `dvc exp run --run-all` to process the
-  queue.
+  but don't run it yet. Use `dvc queue start` to process the queue.
 
   > For checkpoint experiments, this implies `--reset` unless a `--rev` is
   > provided.
@@ -92,13 +107,17 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   workspace (in `.dvc/tmp/exps`). Use `-j` to execute them
   [in parallel](#queueing-and-parallel-execution).
 
+  <admon type="warn">
+
+  `dvc exp run --run-all [--jobs]` is now a shortcut for
+  `dvc queue start [--jobs]` followed by `dvc queue logs -f`. The `--run-all`
+  and `--jobs` options will be deprecated in a future DVC release.
+
+  </admon>
+
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
-
-  > Note that since queued experiments are run isolated from each other, common
-  > stages may sometimes be executed several times depending on the state of the
-  > [run-cache] at that time.
 
 - `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
@@ -109,7 +128,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
 
-- `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exits.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
@@ -124,8 +143,14 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Examples
 
-> This is based on our [Get Started](/doc/start/experiments), where you can find
-> the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 <details>
 
@@ -180,28 +205,98 @@ experiment we just ran (`exp-44136`).
 
 ## Example: Modify parameters on-the-fly
 
-`dvc exp run--set-param` (`-S`) saves you the need to manually edit the params
+`dvc exp run --set-param` (`-S`) saves you the need to manually edit the params
 file before running an experiment.
 
+It can override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or
+remove (`~model.dropout`) parameters.
+
+You can modify multiple parameters at the same time:
+
 ```dvc
-$ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
+dvc exp run -S 'prepare.split=0.1' -S 'featurize.max_features=100'
 ...
-Reproduced experiment(s): exp-18bf6
 ```
 
-To see the results, you can use `dvc exp diff`. It compares both params and
-metrics to the previous project version:
+## Example: Grid Search
+
+Combining `--set-param` and `--queue`, we can perform a
+[Grid search](https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search)
+for tuning hyperparameters.
+
+DVC supports Hydra's
+[Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
+and
+[Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
+syntax for adding multiple experiments to the queue.
+
+This syntax can be used for multiple parameters at the same time, adding all
+combinations to the queue:
 
 ```dvc
-$ dvc exp diff
-Path         Metric    Value    Change
-scores.json  avg_prec  0.58187  -0.022184
-scores.json  roc_auc   0.93634  -0.024464
-
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  2000     -1000
-params.yaml  prepare.split           0.25     0.05
+$ dvc exp run -S 'train.min_split=2,8,64' -S 'train.n_est=100,200' --queue
+Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=100']}'.
+Queued experiment 'ed3b4ef' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=100']}'.
+Queued experiment '7a10d54' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=100']}'.
+Queued experiment '0b443d8' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=200']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=200']}'.
+Queued experiment '0a5f20e' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=200']}'.
+Queued experiment '0a5f20e' for future execution.
+$ dvc queue start
+...
 ```
 
-> Notice that experiments run as a series don't build up on each other. They are
-> all based on `HEAD`.
+We can then find and apply the best experiment:
+
+```dvc
+$ dvc exp apply $(dvc exp show --no-pager --sort-by avg_prec | tail -n 2 | head -n 1 | grep -o 'exp-\w*')
+```
+
+<admon type="tip">
+
+See more in `dvc exp apply` and `dvc exp show`
+
+</admon>
+
+## Example: Append parameters from custom files
+
+Given a `dvc.yaml` that uses a custom parameters file:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    params:
+      - train_config.json: # tracks all params in this file
+```
+
+We can add the `[<filename>:]` prefix to modify the parameters of arbitrary
+files. For example, to append a new parameter to`train_config.json`:
+
+```dvc
+$ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'
+...
+
+$ dvc params diff
+Path               Param                HEAD    workspace
+train_config.json  train.weight_decay   -       0.001
+```
+
+<admon type="warn">
+
+Note that `exp run --set-param` (`-S`) doesn't update your `dvc.yaml`. When
+appending or removing <abbr>parameters</abbr>, make sure to update the
+[`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameters)
+of your `dvc.yaml` accordingly.
+
+Alternatively, you can track all the parameters in the file being modified, as
+shown in the `dvc.yaml` above.
+
+</admon>
+
+[basic override syntax]: https://hydra.cc/docs/advanced/override_grammar/basic/

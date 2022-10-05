@@ -30,7 +30,7 @@ stages:
 
 <admon type="tip">
 
-A helper command, `dvc stage`, is available to create and list stages.
+A helper command group, `dvc stage`, is available to create and list stages.
 
 </admon>
 
@@ -44,10 +44,9 @@ but Windows or other shells can be used too.
 
 </admon>
 
-If a command reads input files, these can be defined as
-<abbr>dependencies</abbr> (`deps`). You can also define an entire directory as a
-stage dependency (for example if the command uses several files in it. DVC will
-check whether their contents have changed to decide whether the stage requires
+If a [stage command](#stage-commands) reads input files, these (or their
+directory locations) can be defined as <abbr>dependencies</abbr> (`deps`). DVC
+will check whether they have changed to decide whether the stage requires
 re-execution (see `dvc status`).
 
 If it writes files or directories, these can be defined as <abbr>outputs</abbr>
@@ -56,9 +55,8 @@ them).
 
 <admon type="tip">
 
-Output files may be viable data sources for [top-level plots].
-
-[top-level plots]: /doc/command-reference/plots#top-level-plots
+Output files may be viable data sources for
+[top-level plots](#top-level-plot-definitions).
 
 </admon>
 
@@ -68,13 +66,61 @@ See the full stage entry [specification](#stage-entries).
 
 </admon>
 
-### Parameter dependencies
+### Stage commands
 
-[Parameters] are a special type of stage dependency. They consist of a list of
-params to track in one of these formats:
+The command(s) defined in the `stages` (`cmd` field) can be anything your system
+terminal would accept and run, for example a shell built-in, an expression, or a
+binary found in `PATH`.
 
-1. A param key/value pair that can be found in `params.yaml` (default params
-   file);
+Surround the command with double quotes `"` if it includes special characters
+like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
+variables in it that should be evaluated dynamically.
+
+The same applies to the `command` argument for helper commands (`dvc stage add`,
+`dvc exp init`), otherwise they would apply to the DVC call itself:
+
+```cli
+$ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc exp init './another_script.sh $MYENVVAR'
+```
+
+<admon type="tip">
+
+See also [Templating](#templating) (and **Dict Unpacking**) for useful ways to
+parametrize `cmd` strings.
+
+</admon>
+
+<details>
+
+### 💡 Avoiding unexpected behavior
+
+We don't want to tell anyone how to write their code or what programs to use!
+However, please be aware that in order to prevent unexpected results when DVC
+reproduces pipeline stages, the underlying code should ideally follow these
+rules:
+
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+- Completely rewrite outputs. Do not append or edit.
+- Stop reading and writing files when the `command` exits.
+
+Also, if your pipeline reproducibility goals include consistent output data, its
+code should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
+the same output for any given input): avoid code that increases
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
+time functions, hardware dependencies, etc.).
+
+</details>
+
+### Parameters
+
+<abbr>Parameters</abbr> are simple key/value pairs consumed by the `command`
+code from a structured [parameters file](#parameters-files). They are defined
+per-stage in the `params` field of `dvc.yaml` and should contain one of these:
+
+1. A param name that can be found in `params.yaml` (default params file);
 2. A dictionary named by the file path to a custom params file, and with a list
    of param key/value pairs to find in it;
 3. An empty set (give no value or use `null`) named by the file path to a params
@@ -82,7 +128,7 @@ params to track in one of these formats:
 
 <admon type="info">
 
-File paths used must be to valid YAML, JSON, TOML, or Python parameters file.
+Dot-separated param names become tree paths to locate values in the params file.
 
 </admon>
 
@@ -94,7 +140,7 @@ stages:
       - raw.txt
     params:
       - threshold # track specific param (from params.yaml)
-      - passes
+      - nn.batch_size
       - myparams.yaml: # track specific params from custom file
           - epochs
       - config.json: # track all parameters in this file
@@ -102,11 +148,31 @@ stages:
       - clean.txt
 ```
 
-This allows several stages to depend on values of a (shared) structured file,
-which can be versioned directly with Git. See also `dvc params`.
+<admon type="tip">
 
-[parameters]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#parameter-dependencies
+Params are a more granular type of stage dependency: multiple `stages` can use
+the same params file, but only certain values will affect their state (see
+`dvc status`).
+
+</admon>
+
+#### Parameters files
+
+The supported params file formats are YAML 1.2, JSON, TOML 1.0, [and Python].
+[Parameter](#parameters) key/value pairs should be organized in tree-like
+hierarchies inside. Supported value types are: string, integer, float, boolean,
+and arrays (groups of params).
+
+These files are typically written manually (or generated) and they can be
+versioned directly with Git along with other <abbr>workspace</abbr> files.
+
+[and python]: /doc/command-reference/params#examples-python-parameters-file
+
+<admon type="tip">
+
+See also `dvc params diff` to compare params across project version.
+
+</admon>
 
 ### Metrics and Plots outputs
 
@@ -123,7 +189,7 @@ stages:
     outs:
       - model.pt
     metrics:
-      - accuracy.txt:
+      - accuracy.json:
           cache: false
     plots:
       - auc.json:
@@ -197,8 +263,6 @@ Using the `checkpoint` field in `dvc.yaml` is not compatible with `dvc repro`.
 
 ## Templating
 
-_New in DVC 2.0 (see `dvc version`)_
-
 `dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. These sources can be
 [parameters files](/doc/command-reference/params), or `vars` defined in
@@ -215,7 +279,8 @@ models:
 ```
 
 Those values can be used anywhere in `dvc.yaml` with the `${}` _substitution
-expression_:
+expression_, for example to pass parameters as command-line arguments to a
+[stage command](#stage-command):
 
 <!-- prettier-ignore-start -->
 ```yaml
@@ -383,8 +448,6 @@ value), escape it with a backslash, e.g. `\${...`.
 
 ## `foreach` stages
 
-_New in DVC 2.0 (see `dvc version`)_
-
 <admon type="warn">
 
 This feature cannot be combined with [templating](#templating) at the moment.
@@ -503,36 +566,57 @@ stages:
         - ${item.prop2}
 ```
 
+<admon type="tip">
+
+Both individual foreach stages (`train@1`) and groups of foreach stages
+(`train`) may be used in commands that accept stage targets.
+
+</admon>
+
 ## Top-level plot definitions
 
-The list of `plots` contains one or more user-defined `dvc plots` (paths
-relative to the location of `dvc.yaml`).
+The `plots` dictionary contains one or more user-defined `dvc plots`
+configurations. Every plot needs a unique ID, which may be either a file or
+directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
+Optional configuration fields can be provided as well.
 
-This example makes output `auc.json` viable for visualization, configuring keys
-`fpr` and `tpr` as X and Y axis, respectively:
+<admon icon="book">
 
-```yaml
-stages:
-  build:
-    cmd: python train.py
-    deps:
-      - features.csv
-    outs:
-      - model.pt
-      - auc.json
-    metrics:
-      - accuracy.txt:
-          cache: false
-plots:
-  auc.json:
-    x: fpr
-    y: tpr
-```
+Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
-Note that we didn't have to specify `auc.json` as a [plot output] in the stage.
-In fact, [top-level plots] can use any file found in the <abbr>project</abbr>.
+[visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
 
-[plot output]: /doc/command-reference/plots#stage-plots
+</admon>
+
+### Available configuration fields
+
+- `x` (string) - column/field name from which the X axis data comes from. An
+  auto-generated _step_ field is used by default.
+
+- `y` - source from which the Y axis data comes from:
+
+  - Top-level plots: Accepts string, list, or dictionary. For strings and lists,
+    the plot ID is used as path to the data source. List elements will be the
+    names of columns/fields within the source file. For dictionaries, the keys
+    are used as paths to data sources. The values (strings or lists) are treated
+    as the source column/field names.
+
+  - Plot outputs: column/field name found in the source plots file.
+
+- `x_label` (string) - X axis label. Defaults to the X field name.
+
+- `y_label` (string) - Y axis label. If all `y` data sources have the same field
+  name, that will be the default. Otherwise, it's "y".
+
+- `title` (string) - header for the plot(s). Defaults:
+
+  - Top-level plots: `path/to/dvc.yaml::plot_id`
+  - Plot outputs: `path/to/data.csv`
+
+- `template` (string) - [plot template]. Defaults to `linear`.
+
+[plot template]:
+  https://dvc.org/doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ## dvc.lock file
 

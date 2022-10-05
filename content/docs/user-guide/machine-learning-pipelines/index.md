@@ -12,7 +12,7 @@ A typical ML workflow could involve:
 3. (Re)training an ML model
 4. Evaluating the results against the validation set
 
-See [Get Started: Data Pipelines](/doc/start/data-management/pipelines) for a
-hands-on introduction to this topic.
+See [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) for
+a hands-on introduction to this topic.
 
 [defining it]: /doc/user-guide/machine-learning-pipelines/defining-pipelines

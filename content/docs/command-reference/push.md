@@ -32,7 +32,7 @@ the most common use cases for these commands.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
 
-[data sharing]: /doc/start/data-and-model-versioning#storing-and-sharing
+[data sharing]: /doc/start/data-management/data-versioning#storing-and-sharing
 
 The `dvc remote` used is determined in order, based on
 
@@ -88,7 +88,10 @@ in the cache (compared to the default remote.) It can be used to see what files
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to push to (see
-  `dvc remote list`).
+  `dvc remote list`). This will override the
+  [default remote](/doc/command-reference/remote/default). For any remote
+  specified in the `dvc.yaml` or `.dvc` files, data will be pushed to the
+  specified remotes.
 
 - `--run-cache` - uploads all available history of
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
@@ -187,6 +190,8 @@ data was uploaded.
 Finally, we used `dvc status` to double check that all data had been uploaded.
 
 ## Example: What happens in the cache?
+
+https://www.youtube.com/watch?v=FYmmiAz81G4
 
 Let's take a detailed look at what happens to the
 [cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)

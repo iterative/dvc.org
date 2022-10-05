@@ -13,7 +13,7 @@ import * as styles from './styles.module.css'
 
 const WhatsNewModal: React.FC = () => {
   const {
-    allBlogPost: {
+    allFeedIterativeBlog: {
       nodes: [latestPost]
     }
   } = useStaticQuery(query)
@@ -87,11 +87,11 @@ const WhatsNewModal: React.FC = () => {
             {isModalOpen && <CloseSvg width={20} height={20} />}
           </button>
           <div className={styles.modal}>
-            <Link className={styles.title} href={latestPost.slug}>
+            <Link className={styles.title} href={latestPost.link}>
               <h2>{latestPost.title}</h2>
             </Link>
             {latestPost.picture && (
-              <Link href={latestPost.slug}>
+              <Link href={latestPost.link}>
                 <GatsbyImage
                   className={styles.image}
                   alt=""
@@ -101,8 +101,8 @@ const WhatsNewModal: React.FC = () => {
               </Link>
             )}
             <p className={styles.text}>
-              {latestPost.description}{' '}
-              <Link href={latestPost.slug}>Read more.</Link>
+              {latestPost.contentSnippet}{' '}
+              <Link href={latestPost.link}>Read more.</Link>
             </p>
           </div>
         </div>
@@ -115,16 +115,17 @@ export default WhatsNewModal
 
 const query = graphql`
   query latestBlogPost {
-    allBlogPost(limit: 1, sort: { fields: [date], order: DESC }) {
+    allFeedIterativeBlog(limit: 1, sort: { fields: [isoDate], order: DESC }) {
       nodes {
         title
+        link
+        pubDate
         picture {
           childImageSharp {
             gatsbyImageData(width: 420)
           }
         }
-        description
-        slug
+        contentSnippet
       }
     }
   }

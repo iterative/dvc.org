@@ -210,9 +210,8 @@ Removed experiments: exp-bb09c
 
 ## Removing queued experiments
 
-When you've created experiments to be run in the queue with
-`dvc exp run --queue` and later decide not to run them, you can remove them with
-`dvc exp remove --queue`.
+When you've queued experiments with `dvc exp run --queue` and later decide not
+to run them, you can remove them with `dvc exp remove --queue`.
 
 ```dvc
 $ dvc exp run --queue -S param=10
@@ -232,8 +231,6 @@ $ dvc exp show
   └── *7b83744   12:05 PM       10
  ─────────────────────────────────────
 ```
-
-You can delete these queued experiments with `dvc exp remove --queue`.
 
 ```dvc
 $ dvc exp remove --queue

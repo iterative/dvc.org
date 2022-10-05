@@ -7,8 +7,10 @@ import `.dvc` files.
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R] [--to-remote]
-                  [-r <name>] [-j <number>] targets [targets ...]
+usage: dvc update [-h] [-q | -v] [-R] [--rev <commit>]
+                  [--to-remote] [-r <name>]
+                  [--no-download] [-j <number>]
+                  targets [targets ...]
 
 positional arguments:
   targets      Import .dvc files to update. Using -R, directories
@@ -50,11 +52,17 @@ $ dvc update --rev master
   directory and its subdirectories for import `.dvc` files to inspect. If there
   are no directories among the targets, this option has no effect.
 
-- `--to-remote` - update a `.dvc` file created with `dvc import-url` without
-  downloading the latest data.
-  [Transfer it](/doc/command-reference/import-url#example-transfer-to-remote-storage)
-  directly to remote storage instead (the default one unless one is specified
-  with `-r`). Use `dvc pull` to get the data locally.
+- `--no-download` - Update data checksums in the `.dvc` file (`md5`, `etag`, or
+  `checksum` fields) without actually downloading the latest data. See
+  `dvc import-url --no-download` or `dvc import --no-download` for more context.
+  Cannot be combined with `--to-remote`.
+
+- `--to-remote` - update a `.dvc` file created with `dvc import-url` and
+  [transfer](/doc/command-reference/import-url#example-transfer-to-remote-storage)
+  the data directly to remote storage (the default one unless one is specified
+  with -r) without saving it locally. Use
+  [dvc pull](https://dvc.org/doc/command-reference/pull) to get the data
+  locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with

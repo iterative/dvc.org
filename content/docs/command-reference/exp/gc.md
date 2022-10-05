@@ -15,8 +15,9 @@ usage: dvc exp gc [-h] [-q | -v] [-w]
 This command can delete (garbage collect) experiments that exist in the project
 but are no longer needed.
 
-> See **How does DVC track experiments?** in `dvc exp run` to learn more about
-> DVC experiment storage.
+> See
+> [**How does DVC track experiments?**](/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments)
+> in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 To avoid accidentally deleting work, `dvc exp gc` doesn't do anything unless one
 or a combination of scope options are provided (`--workspace`, `--all-branches`,
@@ -66,15 +67,21 @@ separately to delete it.
 
 ## Examples
 
-> This example is based on our [Get Started](/doc/start/experiments), where you
-> can find the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 Let's say we have the following project, and have just
 [applied](/docs/command-reference/exp/apply) and committed `exp-1dad0` (current
 `HEAD` of `master`):
 
 ```dvc
-$ dvc exp show --all-commits --include-params=featurize
+$ dvc exp show --all-commits
 ```
 
 ```dvctable
@@ -109,7 +116,7 @@ Removed 4 experiments. To remove unused cache files use 'dvc gc'.
 We can confirm that all the previous experiments are gone:
 
 ```dvc
-$ dvc exp show --all-commits --include-params=featurize
+$ dvc exp show --all-commits
 ```
 
 ```dvctable

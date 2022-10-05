@@ -75,13 +75,19 @@ all the current experiments (without comparisons).
 
 ## Examples
 
-> This example is based on our [Get Started](/doc/start/experiments), where you
-> can find the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 Let's say we have run 3 experiments in our project:
 
 ```dvc
-$ dvc exp show --include-params=featurize
+$ dvc exp show
 ```
 
 ```dvctable

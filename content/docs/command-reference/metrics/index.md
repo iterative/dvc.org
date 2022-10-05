@@ -61,10 +61,10 @@ stages:
 
 ### Supported file formats
 
-Metrics can be organized as tree hierarchies in JSON, TOML, or YAML 1.2 files.
-DVC addresses specific metrics by the tree path. In the JSON example below, five
-metrics are presented: `train.accuracy`, `train.loss`, `train.TN`, `train.FP`
-and `time_real`.
+Metrics can be organized as tree hierarchies in JSON, TOML 1.0, or YAML 1.2
+files. DVC addresses specific metrics by the tree path. In the JSON example
+below, five metrics are presented: `train.accuracy`, `train.loss`, `train.TN`,
+`train.FP` and `time_real`.
 
 ```json
 {

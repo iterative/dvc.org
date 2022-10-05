@@ -3,11 +3,16 @@
 You can use `dvc add` to track data files or directories located in your current
 <abbr>workspace</abbr>\*. Additionally, `dvc import` and `dvc import-url` let
 you bring data from external locations to your project, and start tracking it
-locally. See [Data Versioning](/doc/start/data-and-model-versioning) for more
-info.
+locally. See [Data Versioning] for more info.
 
-> \* Certain [external locations](/doc/user-guide/managing-external-data) are
-> also supported.
+[data versioning]: /doc/start/data-management/data-versioning
+
+<admon type="info">
+
+\* Certain [external locations](/doc/user-guide/managing-external-data) are also
+supported.
+
+</admon>
 
 Files ending with the `.dvc` extension ("dot DVC file") are created by these
 commands as data placeholders that can be versioned with Git. They contain the
@@ -31,7 +36,7 @@ human-friendly schema described below. We encourage you to get familiar with it
 so you may modify, write, or generate `.dvc` files on your own.
 
 > See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvc-files).
+> [How to Merge Conflicts](/doc/user-guide/how-to/resolve-merge-conflicts#dvc-files).
 
 ## Specification
 
@@ -44,7 +49,7 @@ schema:
 | `deps` | List of [dependency entries](#dependency-entries) (details below). Only present when `dvc import` or `dvc import-url` are used to generate this `.dvc` file. Typically there is only one (but several can be added manually). |
 | `wdir` | Working directory for the `outs` and `deps` paths (relative to the `.dvc` file's location). It defaults to `.` (the file's location).                                                                                         |
 | `md5`  | (Only for <abbr>imports</abbr>) MD5 hash of the `.dvc` file itself.                                                                                                                                                           |
-| `meta` | (Optional) arbitrary user metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC.                                                                                  |
+| `meta` | Arbitrary user metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC.                                                                                             |
 
 Comments can be entered using the `# comment` format.
 
@@ -64,9 +69,12 @@ The following subfields may be present under `outs` entries:
 | `nfiles`                        | If this output is a directory, the number of files inside (recursive).                                                                                                                                                                                                                                                                |
 | `isexec`                        | Whether this is an executable file. DVC preserves execute permissions upon `dvc checkout` and `dvc pull`. This has no effect on directories, or in general on Windows.                                                                                                                                                                |
 | `cache`                         | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                                                                          |
-| `remote`                        | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                                                                             |
+| `remote`                        | Name of the remote to use for pushing/fetching                                                                                                                                                                                                                                                                                        |
 | `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                                                                           |
-| `desc`                          | (Optional) User description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                                                                                                                             |
+| `desc`                          | User description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                                                                                                                                        |
+| `type`                          | User-assigned type of the data.                                                                                                                                                                                                                                                                                                       |
+| `labels`                        | User-assigned labels to add to the data.                                                                                                                                                                                                                                                                                              |
+| `meta`                          | Custom metadata about the data.                                                                                                                                                                                                                                                                                                       |
 
 ## Dependency entries
 

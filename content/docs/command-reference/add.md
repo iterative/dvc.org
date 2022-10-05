@@ -9,6 +9,7 @@ file.
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
                [--glob] [--file <filename>] [-o <path>] [--to-remote]
                [-r <name>] [-j <number>] [--desc <text>]
+               [--type <str>] [--label <str>] [--meta key=value]
                targets [targets ...]
 
 positional arguments:
@@ -23,8 +24,8 @@ track the added data.
 
 This command can be used to track large files, models, dataset directories, etc.
 that are too big for Git to handle directly. This enables
-[versioning](/doc/use-cases/versioning-data-and-model-files) them indirectly
-with Git.
+[versioning](/doc/use-cases/versioning-data-and-models) them indirectly with
+Git.
 
 The `targets` are the files or [directories](#adding-entire-directories) to add.
 They get stored in the <abbr>cache</abbr> by default (use the `--no-commit`
@@ -174,8 +175,13 @@ not.
   when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
   remotes, the default is `4`. Using more jobs may speed up the operation.
 
-- `--desc <text>` - user description of the data (optional). This doesn't affect
-  any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -270,7 +276,7 @@ $ dvc stage add -n train \
 ```
 
 > To try this example, see the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
+> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial).
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 

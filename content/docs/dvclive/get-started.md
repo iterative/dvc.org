@@ -1,7 +1,7 @@
 # Get Started
 
-DVCLive is a Python library for logging machine learning metrics and other
-metadata in simple file formats, which is fully compatible with DVC.
+DVCLive is a Python library for logging machine learning parameters, metrics and
+other metadata in simple file formats, which is fully compatible with DVC.
 
 <admon type="tip">
 
@@ -21,6 +21,34 @@ live = Live()
 ```
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
+
+### (Optionally) Log parameters
+
+<toggle>
+<tab title="Single parameter">
+
+```python
+live.log_param("num_classes", 10)
+```
+
+See `Live.log_param()`.
+
+</tab>
+<tab title="Multiple parameters">
+
+```python
+params = {
+    "num_classes": 10,
+    "metrics": ["accuracy", "mae"],
+    "optimizer": "adam"
+}
+live.log_params(params)
+```
+
+See `Live.log_params()`.
+
+</tab>
+</toggle>
 
 ### Log data
 
@@ -76,6 +104,8 @@ from dvclive import Live
 
 live = Live()
 
+live.log_param(NUM_EPOCHS)
+
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)
@@ -96,6 +126,7 @@ $ tree
 ├── dvclive
 │   ├── images
 │   │   └── img.png
+│   ├── params.yaml
 │   ├── plots
 │   │   └── roc.json
 │   └── scalars
@@ -107,19 +138,23 @@ The contents of the `dvclive` folder and `dvclive.json` will vary depending on
 the type of data you have logged and whether you have updated the step value or
 not.
 
-See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
+See `Live.log()`, `Live.log_param()`/`Live.log_params()`, `Live.log_image()` and
+`Live.log_plot()` for more details.
 
-### HTML report
+### Metrics report
 
-If and when `step` is updated, DVCLive generates or updates an HTML report in
-`dvclive/report.html` which will contain all the logged data.
+If and when `step` is updated, DVCLive generates or updates a report in
+`dvclive/report.{format}` which will contain all the logged data.
 
 ![](/img/dvclive-html.gif)
 
+The `format` can be HTML) or Markdown depending on the value of the `report`
+argument passed to [`Live()`](/doc/dvclive/api-reference/live#parameters).
+
 <admon type="info">
 
-If you don't update the step number, the HTML report won't be generated unless
-you call `Live.make_report()` directly.
+If you don't update the step number, the report won't be generated unless you
+call `Live.make_report()` directly.
 
 </admon>
 

@@ -66,8 +66,10 @@ of the _DVC_ GCP Project, DVC, Iterative or any other party.
 DVC stores your credentials on your machine, for later reuse by you. **Use
 caution when using Google Drive DVC remotes on shared machines.**
 
-By default, OAuth tokens are cached in a local file per DVC repository, located
-in `.dvc/tmp/gdrive-user-credentials.json`.
+By default, OAuth tokens are cached in a global location (e.g.
+`~/.cache/pydrive2fs` on Linux, see [details]).
+
+[details]: https://dvc.org/doc/command-reference/remote/modify#google-drive
 
 ## Usage in other packages or applications
 

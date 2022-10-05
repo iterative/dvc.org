@@ -56,7 +56,7 @@ changes before submitting them, and it's quite necessary when making changes to
 the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-Make sure you have [Python](https://www.python.org/downloads/) 3.7+, a recent
+Make sure you have [Python](https://www.python.org/downloads/) 3.8+, a recent
 LTS version of [Node.js](https://nodejs.org/en/) (`>=14.0.0`, `<=18.x`), and
 install [Yarn](https://yarnpkg.com/):
 
@@ -182,8 +182,8 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
   - `dvc` can be used to show examples of commands and their output in a
     terminal session.
   - `dvctable` is used for creating colored, bold, or italic table cells. (You
-    can see an [example](https://dvc.org/doc/start/experiments) of `dvctable` in
-    our "Get Started" section.)
+    can see an [example](/doc/start/experiment-management/experiments) of
+    `dvctable` in our "Get Started" section.)
   - `yaml` is used to show samples of <abbr>DVC files</abbr>, or other YAML
     contents.
   - `diff` is used mainly for examples of `git diff` output.

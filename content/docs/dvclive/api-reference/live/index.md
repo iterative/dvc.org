@@ -9,7 +9,7 @@ class Live:
         self,
         path: Optional[str] = None,
         resume: bool = False,
-        report: Optional[str] = "html",
+        report: Optional[str] = "auto",
     ):
 ```
 
@@ -23,8 +23,8 @@ live = Live()
 
 ## Description
 
-A `Live()` instance is required in order to log machine learning metrics and
-other metadata.
+A `Live()` instance is required in order to log machine learning parameters,
+metrics and other metadata.
 
 <admon type="warn">
 
@@ -38,11 +38,12 @@ other metadata.
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/get-started#outputs).
 
-- `summary_path` - `{dir}.json`. Location of the
+- `summary_path` - `{Live.dir}.json`. Location of the
   [summary](/doc/dvclive/api-reference/live/log#description).
 
-- `html_path` - `{dir}/report.html`. Location of the
-  [html report](/doc/dvclive/api-reference/live/make_report#description).
+- `report_path` - `{Live.dir}/report.{format}`. Location of the
+  [metrics report](/doc/dvclive/api-reference/live/make_report). The `format`
+  can be HTML) or Markdown depending on the value of the `report` parameter.
 
 ## Parameters
 
@@ -62,18 +63,20 @@ other metadata.
 
   </admon>
 
-- `report` - If `html`, DVCLive will call `Live.make_report()` on each step
-  update. _Default_: `html`.
+- `report` - If `auto`,`html`, or `md`, DVCLive will call `Live.make_report()`
+  on each step update. The `auto` mode (default) will use `md` format if a `CI`
+  env var is present, otherwise it will use `html`.
 
-- `auto_open` - If `True`, on the first `Live.make_report()` call, DVCLive will
-  automatically open `html_path` in a browser. _Default_: `False`.
+  If `report` is `None`, `Live.make_report()` won't be called automatically.
 
 ## Methods
 
+- `Live.get_step()`
 - `Live.log()`
 - `Live.log_image()`
+- `Live.log_param()`
+- `Live.log_params()`
 - `Live.log_plot()`
 - `Live.make_report()`
-- `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

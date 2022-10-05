@@ -8,9 +8,11 @@ Download a file or directory tracked by another DVC or Git repository into the
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-j <number>]
-                  [-o <path>] [--file <filename>]
-                  [--rev <commit>] [--no-exec] [--desc <text>]
+usage: dvc import [-h] [-q | -v] [--file <filename>]
+                  [-o <path>] [--rev <commit>]
+                  [--no-exec | --no-download]
+                  [-j <number>] [--desc <text>]
+                  [--type <str>] [--label <str>] [--meta key=value]
                   url path
 
 positional arguments:
@@ -65,8 +67,8 @@ data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC to efficiently determine whether the local copy is out of date.
 
-To actually [version the data](/doc/start/data-and-model-versioning), `git add`
-(and `git commit`) the import `.dvc` file.
+To actually [version the data], `git add` (and `git commit`) the import `.dvc`
+file.
 
 ⚠️ Relevant notes and limitation:
 
@@ -81,6 +83,8 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 - Note that `dvc repro` doesn't check or update import `.dvc` files (see
   `dvc freeze`), use `dvc update` to bring the import up to date from the data
   source.
+
+[version the data]: /doc/start/data-management/data-versioning
 
 ## Options
 
@@ -103,19 +107,29 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+- `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
   that the data source is valid). This is useful if you need to define the
-  project imports quickly, and download everything later (use `dvc update` to
-  finish the operation(s)); or if the target data already exist locally and you
-  want to "DVCfy" this state of the project (see also `dvc commit`).
+  project imports quickly, and import the data later (use `dvc update` to finish
+  the operation(s)).
+
+- `--no-download` - create the import `.dvc` file including the source data
+  [version](https://git-scm.com/docs/revisions) but without downloading the
+  associated data. This is useful if you need track changes in remote data
+  without using local storage space (yet). The data can be downloaded later
+  using `dvc pull`. File hashes can be updated using `dvc update --no-download`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
 
-- `--desc <text>` - user description of the data (optional). This doesn't affect
-  any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -217,7 +231,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > Used in our
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
+> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial)
 
 Or
 

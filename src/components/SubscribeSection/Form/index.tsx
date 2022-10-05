@@ -39,6 +39,10 @@ const Form: React.FC = () => {
         aria-label="Enter your email"
       />
 
+      <div hidden>
+        <input type="hidden" name="tags" value="6537593" />
+      </div>
+
       {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
       <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
         <input

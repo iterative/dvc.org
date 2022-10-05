@@ -42,7 +42,7 @@ Get the latest development version. Fork and clone the repo:
 $ git clone git@github.com:<your-username>/dvc.git
 ```
 
-Make sure that you have Python 3.7 or higher installed. On macOS, we recommend
+Make sure that you have Python 3.8 or higher installed. On macOS, we recommend
 using `brew` to install Python. For Windows, we recommend an official
 [python.org release](https://www.python.org/downloads/windows/).
 
@@ -228,9 +228,11 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 > the Google account.
 
 To avoid tests flow interruption by manual login, perform authorization once and
-backup the obtained Google Drive access token, which is stored by default under
-`.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
-from backup for any new DVC repo setup to avoid manual login.
+DVC will automatically cache the Google Drive access token obtained in a global
+location (e.g. `~/.cache/pydrive2fs` on Linux, see [details]) to avoid manual
+logins after this.
+
+[details]: https://dvc.org/doc/command-reference/remote/modify#google-drive
 
 Or add the contents of that file to your env (use encryption for CI setup):
 

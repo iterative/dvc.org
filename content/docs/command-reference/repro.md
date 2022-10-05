@@ -21,15 +21,15 @@ positional arguments:
 
 ## Description
 
+Provides a way to regenerate data pipeline results by restoring the [dependency
+graph] defined among the stages listed in `dvc.yaml`. Stages are then checked to
+decide which ones need to run (see `dvc status`). Finally, [their commands] are
+executed.
+
 This is similar to [`make`](https://www.gnu.org/software/make/manual/) in
 software build automation, but DVC captures "build requirements" (stage
 <abbr>dependencies</abbr>) and <abbr>caches</abbr> the pipeline's
 <abbr>outputs</abbr> along the way.
-
-`dvc repro` provides a way to regenerate data pipeline results, by restoring the
-[dependency graph] implicitly defined by the stages listed in `dvc.yaml`. Stages
-are then evaluated (see `dvc status`) to decide which ones need to run. Finally,
-[their commands] are executed.
 
 <admon type="info" title="Notes">
 
@@ -69,10 +69,8 @@ All the data files, intermediate or final results are <abbr>cached</abbr>
 (unless the `--no-commit` option is used), and the hash values of changed
 dependencies and outputs are updated in `dvc.lock` and `.dvc` files, as needed.
 
-[their commands]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
-[dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+[their commands]: /doc/user-guide/pipelines/defining-pipelines#stage-commands
 [always changed]: /doc/command-reference/status#local-workspace-status
 
 ### Parallel stage execution
@@ -119,6 +117,7 @@ final stage.
   - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`
   - `dvc repro modeling/dvc.yaml:prepare`: Stage(s) from a specific `dvc.yaml`
     file
+  - `dvc repro train-model@1`: [Foreach] stage(s) from `./dvc.yaml`
   - `dvc repro --glob train-*`: Pattern to match groups of stages
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
@@ -163,10 +162,8 @@ final stage.
   option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage command(s) even if they have already been run
-  with the same dependencies and outputs (see the
-  [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
-  for example if the stage command/s is/are non-deterministic
-  ([not recommended](/doc/user-guide/machine-learning-pipelines/defining-pipelines#avoiding-unexpected-behavior)).
+  with the same dependencies and outputs (see the [details]). Useful for example
+  if the stage command/s is/are non-deterministic ([not recommended]).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -188,11 +185,8 @@ final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - attempts to download outputs of stages found in the
-  [run-cache](/doc/user-guide/project-structure/internal-files#run-cache) during
-  reproduction. Uses the
-  [default remote storage](/doc/command-reference/remote/default). See also
-  `dvc pull`
+- `--pull` - attempts to download outputs of stages found in the [run-cache]
+  during reproduction. Uses the [default remote storage]. See also `dvc pull`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -203,10 +197,17 @@ final stage.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
+[details]: /doc/user-guide/project-structure/internal-files#run-cache
+[not recommended]:
+  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
+[default remote storage]: /doc/command-reference/remote/default
+
 ## Examples
 
 > To get hands-on experience with data science and machine learning pipelines,
-> see [Get Started: Data Pipelines](/doc/start/data-pipelines).
+> see [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines).
 
 Let's build and reproduce a simple pipeline. It takes this `text.txt` file:
 

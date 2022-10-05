@@ -26,4 +26,4 @@ organize data science projects, or build detailed machine learning pipelines.
 examine `dvc.yaml` files manually.
 
 Learn more about
-[defining stages](/doc/user-guide/machine-learning-pipelines/defining-pipelines#stages).
+[defining stages](/doc/user-guide/pipelines/defining-pipelines#stages).

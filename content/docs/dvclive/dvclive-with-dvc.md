@@ -28,6 +28,8 @@ from dvclive import Live
 
 live = Live("training_metrics")
 
+...
+
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)
@@ -113,7 +115,7 @@ The [metrics summary](/doc/dvclive/api-reference/live/log#description) in
 The [metrics history](/doc/dvclive/api-reference/live/log#step-updates)
 `training_metrics/scalars` can be visualized with `dvc plots`.
 
-The [HTML report](/doc/dvclive/api-reference/live/make_report#description) in
+The [metrics report](/doc/dvclive/api-reference/live/make_report) in
 `training_metrics/report.html` will contain all the logged data and will be
 automatically updated during training on each `step` update!
 
@@ -121,8 +123,8 @@ automatically updated during training on each `step` update!
 
 <admon type="info">
 
-If you don't update the step number, the HTML report won't be generated unless
-you call `Live.make_report()` directly.
+If you don't update the step number, the report won't be generated unless you
+call `Live.make_report()` directly.
 
 </admon>
 

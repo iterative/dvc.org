@@ -23,7 +23,7 @@ instead, and not as a separate system.
 
 [experiment management]: /doc/user-guide/experiment-management
 [codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
-[versioning everything]: /doc/use-cases/versioning-data-and-model-files
+[versioning everything]: /doc/use-cases/versioning-data-and-models
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────
@@ -70,7 +70,13 @@ Major benefits of tracking experiment with DVC:
 
 <br/>
 
-> 📖 Ready to dive in? [Get started with experiments](/doc/start/experiments)!
+<admon icon="book">
+
+Ready to dive in? [Get started with experiments]!
+
+[get started with experiments]: /doc/start/experiment-management/experiments
+
+</admon>
 
 Among other differentiators (below), DVC Experiments are unique in the space in
 that they provides a simple yet flexible, local-first experience. Your code is
@@ -86,7 +92,7 @@ repetitive data transfers or having to retrain models on-the-fly.
 | **Execution**     | `dvc exp run`                | Code API (usually Python)     |
 | **Collaboration** | Distributed                  | Centralized                   |
 
-[data versioning]: /doc/use-cases/versioning-data-and-model-files
+[data versioning]: /doc/use-cases/versioning-data-and-models
 [web]: /doc/studio
 [ide]: /doc/vs-code-extension
 [terminal]: /doc/command-reference

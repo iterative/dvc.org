@@ -156,7 +156,7 @@ members.
 The number of collaborators in your team depends on your team plan. By default,
 all teams are on the Free plan, and can have 2 collaborators. To add more
 collaborators,
-[upgrade to the Team or Enterprise plans](#change-your-team-plan).
+[upgrade to the Basic, Teams or Enterprise plans](#change-your-team-plan).
 
 All collaborators and pending invites get counted in the subscription. Suppose
 you have subscribed for a 10 member team. If you have 5 members who have
@@ -167,18 +167,18 @@ and so you will have 3 remaining seats.
 
 ### Change your team plan and team size
 
-Your team can be in the **Free**, **Team** or **Enterprise** plan. All newly
-created teams are on the Free plan. This plan is designed for teams that are
-starting out: you can invite one other team member and import as many
+Your team can be in the **Free**, **Basic**, **Teams** or **Enterprise** plan.
+All newly created teams are on the Free plan. This plan is designed for teams
+that are starting out: you can invite one other team member and import as many
 repositories as you want. For more advanced collaboration, you can switch to the
-Team or Enterprise plans. A detailed comparison of the different plans can be
-found in the Iterative Studio
+Basic, Teams or Enterprise plans. A detailed comparison of the different plans
+can be found in the Iterative Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
-- **To upgrade** from the Free plan to the Team or Enterprise plan or to
+- **To upgrade** from the Free plan to the Basic, Teams or Enterprise plan or to
   downgrade your team plan, refer to the section on [changing your team plan].
 
-- **To change the number of seats** in your Team plan, refer to the section on
+- **To change the number of seats** in your Basic plan, refer to the section on
   [changing your team size].
 
 [changing your team plan]:

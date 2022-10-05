@@ -17,7 +17,7 @@ https://youtu.be/bu3l75eQlQo
 
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
-[pipeline from before](/doc/start/data-pipelines):
+[pipeline from before](/doc/start/data-management/data-pipelines):
 
 ```dvc
 $ dvc run -n evaluate \
@@ -150,7 +150,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 Let's save this iteration, so we can compare it later:
 
 ```dvc
-$ git add scores.json prc.json roc.json
+$ git add .gitignore dvc.yaml dvc.lock evaluation.json evaluation
 $ git commit -a -m "Create evaluation stage"
 ```
 
@@ -191,9 +191,8 @@ featurize:
 
 ### ⚙️ Expand to recall how it was generated.
 
-The `featurize` stage [was created](/doc/start/data-pipelines#dependency-graphs)
-with this `dvc run` command. Notice the argument sent to the `-p` option (short
-for `--params`):
+The `featurize` stage [was created] with this `dvc run` command. Notice the
+argument sent to the `-p` option (short for `--params`):
 
 ```dvc
 $ dvc run -n featurize \
@@ -202,6 +201,8 @@ $ dvc run -n featurize \
           -o data/features \
           python src/featurization.py data/prepared data/features
 ```
+
+[was created]: /doc/start/data-pipelines#dependency-graphs
 
 </details>
 

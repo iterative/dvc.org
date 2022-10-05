@@ -20,9 +20,9 @@ positional arguments:
 
 ## Description
 
-This command is a way to visualize the "difference" between
-[certain metrics](/doc/command-reference/plots#supported-file-formats) among
-versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
+This command is a way to visualize the "difference" between [certain metrics]
+among versions of the <abbr>repository</abbr>, by overlaying them in a single
+plot.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between plots file values.
@@ -38,16 +38,19 @@ all of them in a single image).
 All plots defined in `dvc.yaml` are used by default, but specific files can be
 specified with the `--targets` option (any valid plots file is accepted).
 
-The plot style can be customized with
-[plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about plots files and templates please see
-`dvc plots`.
+The plot style can be customized with [plot templates], using the `--template`
+option. To learn more about plots files and templates please see `dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
 > file with `dvc plots modify`.
 
 Another way to display plots is the `dvc plots show` command, which just lists
 all the current plots, without comparisons.
+
+[certain metrics]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
+
+[plot templates]
+/doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ## Options
 
@@ -67,13 +70,13 @@ all the current plots, without comparisons.
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/command-reference/plots#plot-templates) to be injected
-  with data. The default template is `.dvc/plots/default.json`. See more details
-  in `dvc plots`.
+  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  to be injected with data. The default template is `.dvc/plots/default.json`.
+  See more details in `dvc plots`.
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
-  [Custom templates](/doc/command-reference/plots#custom-templates) for more
+  [Custom templates](/doc/command-reference/plots/templates) for more
   information on this `index` field. Column names or numbers are expected for
   tabular metrics files.
 
@@ -98,7 +101,7 @@ all the current plots, without comparisons.
   names.
 
 - `--html-template <path>` - path to a
-  [custom HTML template](/doc/command-reference/plots#html-templates).
+  [custom HTML template](/doc/command-reference/plots/show#custom-html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -148,8 +151,8 @@ cat,turtle
 ```
 
 The predefined confusion matrix
-[template](/doc/command-reference/plots#plot-templates) (in
-`.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
+[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+(in `.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 
 ```cli

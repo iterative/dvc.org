@@ -45,16 +45,20 @@ $ dvc stage add -n printer -d write.sh -o pages ./write.sh
 $ dvc stage add -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
 
-📖 See the guide on [defining pipeline stages] for more details.
+<admon icon="book">
+
+See the guide on [defining pipeline stages] for more details.
+
+</admon>
 
 `dvc repro` can be used to rebuild this [dependency graph] and run stages.
 
 [`command` argument]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#stage-commands
+  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 [defining pipeline stages]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines#dvcyaml-metafiles
+  /doc/user-guide/pipelines/defining-pipelines#dvcyaml-metafiles
 [dependency graph]:
-  /doc/user-guide/machine-learning-pipelines/defining-pipelines
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Dependencies and outputs
 
@@ -76,12 +80,10 @@ is reproduced (see also `dvc gc`). Relevant notes:
   have to read the files itself.
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
-  which generates a single `.dir` entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-  for more info.)
+  which generates a single `.dir` entry in the cache (refer to [Structure of
+  cache directory] for more info.)
 
-- [external dependencies](/doc/user-guide/external-dependencies) and
-  [external outputs](/doc/user-guide/managing-external-data) (outside of the
+- [external dependencies] and [external outputs] (outside of the
   <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
 - Stage commands need to recreate any directory structures defined as outputs
@@ -91,25 +93,32 @@ is reproduced (see also `dvc gc`). Relevant notes:
   some of the dependencies or outputs are missing from `dvc.yaml`. It is
   possible to [add them to an existing stage].
 
-- Renaming dependencies or outputs requires a
-  [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
+- Renaming dependencies or outputs requires a [manual process] to update
   `dvc.yaml` and the project's cache accordingly.
 
 [add them to an existing stage]:
   /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
+[structure of cache directory]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+[external dependencies]: /doc/user-guide/external-dependencies
+[external outputs]: /doc/user-guide/managing-external-data
+[manual process]: /doc/command-reference/move#renaming-stage-outputs
 
 ### For displaying and comparing data science experiments
 
-[parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
-special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML, JSON, TOML, or Python parameters files
-(e.g. `params.yaml`). This allows tracking experimental hyperparameters easily.
+[parameters][param-deps] (`-p`/`--params` option) are a special type of
+key/value dependencies. Multiple params can be specified from within one or more
+structured files (`params.yaml` by default). This allows tracking experimental
+hyperparameters easily in ML.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
 `--plots-no-cache` options), are also supported. Metrics and plots files have
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
+
+[param-deps]:
+  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
 
 ## Options
 
@@ -121,7 +130,7 @@ data science experiments.
   on. Multiple dependencies can be specified like this:
   `-d data.csv -d process.py`. Usually, each dependency is a file or a directory
   with data, or a code file, or a configuration file. DVC also supports certain
-  [external dependencies](/doc/user-guide/external-dependencies).
+  [external dependencies].
 
   When you use `dvc repro`, the list of dependencies helps DVC analyze whether
   any dependencies have changed and thus executing stages required to regenerate
@@ -154,12 +163,12 @@ data science experiments.
   makes the stage incompatible with `dvc repro`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
-  or more [parameter dependencies](/doc/command-reference/params) from a
-  parameters file `path` (`./params.yaml` by default). This is done by sending a
-  comma separated list (`params_list`) as argument, e.g.
-  `-p learning_rate,epochs`. A custom params file can be defined with a prefix,
-  e.g. `-p params.json:threshold`. Or use the prefix alone with `:` to use all
-  the parameters found in that file, e.g. `-p myparams.toml:`.
+  or more [parameter dependencies][param-deps] from a structured file `path`
+  (`./params.yaml` by default). This is done by sending a comma separated list
+  (`params_list`) as argument, e.g. `-p learning_rate,epochs`. A custom params
+  file can be defined with a prefix, e.g. `-p params.json:threshold`. Or use the
+  prefix alone with `:` to use all the parameters found in that file, e.g.
+  `-p myparams.toml:`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
@@ -174,12 +183,11 @@ data science experiments.
   is typically desirable with _metrics_ because they are small enough to be
   tracked with Git directly.
 
-- `--plots <path>` - specify a plot metrics file produces by this stage. This
-  option behaves like `-o` but registers the file in a `plots` field inside the
-  `dvc.yaml` stage. Plot metrics are data series stored in tabular (CSV or TSV)
-  or hierarchical (JSON or YAML) files, with complex information that describes
-  a model (or any other data artifact). See `dvc plots` to learn more about
-  plots.
+- `--plots <path>` - specify a plots file or directory produced by this stage.
+  This option behaves like `-o` but registers the file or directory in a `plots`
+  field inside the `dvc.yaml` stage. Plots outputs are either data series stored
+  in tabular (CSV or TSV) or hierarchical (JSON or YAML) files, or image (JPEG,
+  GIF, or PNG) files. See [Visualizing Plots] to learn more about plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots file (same as with `-O` and `-M` above). This may be desirable
@@ -210,6 +218,8 @@ data science experiments.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[visualizing plots]: /doc/user-guide/visualizing-plots
 
 ## Examples
 
@@ -382,6 +392,15 @@ epochs = params['train']['epochs']
 
 We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 1.2 (unlike the more popular PyYAML).
+
+</admon>
+
+<admon type="tip">
+
+You can also [use templating] to parse parameters directly from `params.yaml`
+into the stage.
+
+[use templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
 
 </admon>
 

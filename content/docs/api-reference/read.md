@@ -19,7 +19,8 @@ import dvc.api
 modelpkl = dvc.api.read(
     'model.pkl',
     repo='https://github.com/iterative/example-get-started',
-    mode='rb')
+    mode='rb'
+)
 ```
 
 ## Description
@@ -91,13 +92,12 @@ unserialize a binary model from a repo on GitHub:
 import pickle
 import dvc.api
 
-model = pickle.loads(
-    dvc.api.read(
-        'model.pkl',
-        repo='https://github.com/iterative/example-get-started'
-        mode='rb'
-        )
-    )
+data = dvc.api.read(
+    'model.pkl',
+    repo='https://github.com/iterative/example-get-started'
+    mode='rb'
+)
+model = pickle.loads(data)
 ```
 
 > We're using `'rb'` mode here for compatibility with `pickle.loads()`.

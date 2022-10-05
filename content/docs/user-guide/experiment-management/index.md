@@ -6,15 +6,13 @@ of the development of data features, hyperspace exploration, deep learning
 optimization, etc.
 
 Some of DVC's base features already help you codify and analyze experiments.
-[Parameters](/doc/command-reference/params) are simple values in a formatted
-text file which you can tweak and use in your code. On the other end,
+[Parameters](/doc/command-reference/params) are values in a structured text
+file, which you can tweak and use in your code. On the other end,
 [metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 quantitative measures of your results.
 
 ## Experimentation in DVC
-
-_New in DVC 2.0 (see `dvc version`)_
 
 DVC experiment management features conform a comprehensive framework to
 organize, execute, manage, and share ML experiments. They support these main
@@ -26,8 +24,13 @@ approaches:
 
 - [Run and capture] multiple experiments (derived from any project version as
   baseline) without polluting your Git history. DVC tracks them for you, letting
-  you compare and share them. 📖 More info in the [Experiments
-  Overview][experiments].
+  you compare and share them.
+
+  <admon icon="book">
+
+  More info in the [Experiments Overview][experiments].
+
+  </admon>
 
   <admon type="tip">
 
@@ -48,8 +51,14 @@ approaches:
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
-> 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
-> introduction to DVC experiments.
+<admon type="">
+
+See 👨‍💻 [Get Started: Experiments] for a hands-on introduction to DVC
+experiments.
+
+</admon>
+
+[get started: experiments]: /doc/start/experiment-management/experiments
 
 ### Organization patterns
 

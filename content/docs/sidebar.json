@@ -37,21 +37,14 @@
   {
     "slug": "start",
     "label": "Get Started",
-    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
-        "label": "Data Management",
         "source": "data-management/index.md",
         "children": [
-          {
-            "label": "Data and Model Access",
-            "slug": "access"
-          },
-          {
-            "label": "Data Pipelines",
-            "slug": "pipelines"
-          },
+          "data-versioning",
+          "data-and-model-access",
+          "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
             "slug": "metrics-parameters-plots"
@@ -59,15 +52,9 @@
         ]
       },
       {
-        "slug": "experiments",
-        "label": "Experiments",
-        "source": "experiments/index.md",
-        "children": [
-          {
-            "label": "Visualization",
-            "slug": "visualization"
-          }
-        ]
+        "slug": "experiment-management",
+        "source": false,
+        "children": ["experiments", "visualization"]
       }
     ]
   },
@@ -76,9 +63,7 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data and Models",
-        "slug": "versioning-data-and-model-files",
-        "source": "versioning-data-and-model-files/index.md",
+        "slug": "versioning-data-and-models",
         "children": [
           {
             "label": "Tutorial 👩‍💻",
@@ -96,17 +81,22 @@
       },
       "experiment-tracking",
       "model-registry",
-      "data-registry"
+      {
+        "slug": "data-registry",
+        "children": [
+          {
+            "label": "Tutorial 👩‍💻",
+            "slug": "tutorial"
+          }
+        ]
+      }
     ]
   },
   {
     "slug": "user-guide",
-    "source": "user-guide/index.md",
+    "source": false,
     "children": [
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
+      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
@@ -130,13 +120,29 @@
         ]
       },
       {
+        "slug": "data-management",
+        "source": false,
+        "children": [
+          "large-dataset-optimization",
+          "importing-external-data",
+          "managing-external-data"
+        ]
+      },
+      {
+        "slug": "pipelines",
+        "source": "pipelines/index.md",
+        "children": ["defining-pipelines"]
+      },
+      {
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
           "experiments-overview",
           "running-experiments",
+          "hydra-composition",
           "comparing-experiments",
+          "visualizing-plots",
           "sharing-experiments",
           "persisting-experiments",
           "cleaning-experiments",
@@ -151,24 +157,16 @@
         "slug": "how-to",
         "source": false,
         "children": [
+          "running-dvc-on-windows",
+          "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
+          "resolve-merge-conflicts",
           "share-a-dvc-cache"
         ]
       },
-      "setup-google-drive-remote",
-      "large-dataset-optimization",
-      "external-dependencies",
-      {
-        "label": "Managing External Data",
-        "slug": "managing-external-data"
-      },
-
-      "running-dvc-on-windows",
       "troubleshooting",
-      "related-technologies",
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
@@ -218,6 +216,17 @@
       {
         "label": "dag",
         "slug": "dag"
+      },
+      {
+        "label": "data",
+        "slug": "data",
+        "source": false,
+        "children": [
+          {
+            "label": "data status",
+            "slug": "status"
+          }
+        ]
       },
       {
         "label": "destroy",
@@ -384,6 +393,37 @@
         "slug": "push"
       },
       {
+        "label": "queue",
+        "slug": "queue",
+        "source": "queue/index.md",
+        "children": [
+          {
+            "label": "queue start",
+            "slug": "start"
+          },
+          {
+            "label": "queue stop",
+            "slug": "stop"
+          },
+          {
+            "label": "queue status",
+            "slug": "status"
+          },
+          {
+            "label": "queue logs",
+            "slug": "logs"
+          },
+          {
+            "label": "queue remove",
+            "slug": "remove"
+          },
+          {
+            "label": "queue kill",
+            "slug": "kill"
+          }
+        ]
+      },
+      {
         "label": "remote",
         "slug": "remote",
         "source": "remote/index.md",
@@ -472,6 +512,10 @@
     "label": "Python API Reference",
     "source": "api-reference/index.md",
     "children": [
+      {
+        "slug": "dvcfilesystem",
+        "label": "DVCFileSystem"
+      },
       {
         "slug": "get_url",
         "label": "get_url()"
@@ -648,6 +692,14 @@
               {
                 "slug": "log_image",
                 "label": "log_image()"
+              },
+              {
+                "slug": "log_param",
+                "label": "log_param()"
+              },
+              {
+                "slug": "log_params",
+                "label": "log_params()"
               },
               {
                 "slug": "log_plot",
