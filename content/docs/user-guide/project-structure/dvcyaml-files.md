@@ -499,8 +499,8 @@ stages:
 <admon type="tip">
 
 Both individual foreach stages (`train@1`) and groups of foreach stages
-(`train`) may be used in commands that accept stage targets such as
-`dvc repro` and `dvc stage list`.
+(`train`) may be used in commands that accept stage targets such as `dvc repro`
+and `dvc stage list`.
 
 </admon>
 
