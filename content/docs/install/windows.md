@@ -1,8 +1,8 @@
 # Installation on Windows
 
 > 💡 Please review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience using DVC on Windows.
+> [Running DVC on Windows](/doc/user-guide/how-to/running-dvc-on-windows) for
+> important tips to improve your experience using DVC on Windows.
 
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
@@ -51,7 +51,7 @@ In this case it installs the `boto3` library along with DVC.
 ## Install with pip
 
 From Command Prompt or other
-[recommended consoles](/doc/user-guide/running-dvc-on-windows):
+[recommended consoles](/doc/user-guide/how-to/running-dvc-on-windows):
 
 ```dvc
 $ pip install dvc
@@ -86,4 +86,5 @@ DVC. You may use Windows Uninstaller to
 
 > Note that this method by default enables symlink permissions for all users, so
 > they can use them to
-> [optimize DVC](/doc/user-guide/large-dataset-optimization) operations.
+> [optimize DVC](/doc/user-guide/data-management/large-dataset-optimization)
+> operations.

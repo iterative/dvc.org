@@ -153,8 +153,9 @@ $ git archive -o code.zip HEAD
 $ dvc list . -R --dvc-only | zip -@ data.zip
 ```
 
-ZIP alternative for [POSIX on Windows](/doc/user-guide/running-dvc-on-windows)
-(Python installed):
+ZIP alternative for
+[POSIX on Windows](/doc/user-guide/how-to/running-dvc-on-windows) (Python
+installed):
 
 ```dvc
 $ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip

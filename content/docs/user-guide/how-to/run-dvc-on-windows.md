@@ -43,11 +43,11 @@ perfect solution, but here are some ideas:
 ## Enable symbolic links
 
 Symlinks are one of the possible file link types that DVC can use for
-[optimization](/doc/user-guide/large-dataset-optimization) purposes. They're
-available on Windows, but the _Create symbolic links_ user privilege is needed.
-It's granted to the _Administrators_ group by default, so running `dvc` in an
-admin terminal is a good option for occasional usage. For regular users, it can
-be granted using the Local policy settings.
+[optimization](/doc/user-guide/data-management/large-dataset-optimization)
+purposes. They're available on Windows, but the _Create symbolic links_ user
+privilege is needed. It's granted to the _Administrators_ group by default, so
+running `dvc` in an admin terminal is a good option for occasional usage. For
+regular users, it can be granted using the Local policy settings.
 
 This is done automatically by DVC's [Windows installer](/doc/install/windows),
 but you may want to

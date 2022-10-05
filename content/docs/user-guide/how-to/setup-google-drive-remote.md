@@ -248,7 +248,7 @@ running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
 authentication is needed.
 
 > This requires having your own
-> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+> [GC project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 > as explained above.
 
 1. To

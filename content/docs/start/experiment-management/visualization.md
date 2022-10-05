@@ -113,5 +113,5 @@ workflow:
 
 - [DVCLive] integrations can produce plots automatically during training.
 
-[plot outputs]: /doc/user-guide/visualizing-plots
+[plot outputs]: /doc/user-guide/experiment-management/visualizing-plots
 [dvclive]: /doc/dvclive/dvclive-with-dvc
