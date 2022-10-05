@@ -150,10 +150,6 @@
         ]
       },
       {
-        "slug": "machine-learning-pipelines",
-        "children": ["defining-pipelines"]
-      },
-      {
         "slug": "how-to",
         "source": false,
         "children": [
