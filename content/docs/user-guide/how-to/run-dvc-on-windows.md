@@ -1,4 +1,10 @@
-# Running DVC on Windows
+---
+title: 'How to Run DVC on Windows'
+description: >-
+  Learn to setup your Windows environment for an optimal experience using DVC.
+---
+
+# How to Run DVC on Windows
 
 Different issues can arise when running DVC on Microsoft Windows, mainly
 involving system performance. Some, for example, have to do with NTFS file

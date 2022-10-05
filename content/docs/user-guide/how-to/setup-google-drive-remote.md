@@ -1,4 +1,11 @@
-# Setup a Google Drive DVC Remote
+---
+title: 'How to Setup a Google Drive DVC Remote'
+description: >-
+  We explain the existing ways to setup Google Drive remote storage for your DVC
+  projects.
+---
+
+# How to Setup a Google Drive DVC Remote
 
 In this guide we explain the existing ways to setup Google Drive
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
