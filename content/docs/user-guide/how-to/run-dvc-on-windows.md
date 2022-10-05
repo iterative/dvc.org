@@ -11,7 +11,7 @@ involving system performance. Some, for example, have to do with NTFS file
 system characteristics and Windows built-in security mechanisms. Below are some
 workarounds that can help avoid these potential problems:
 
-<admon tipe="info">
+<admon type="info">
 
 Did you know that DVC is available for Microsoft **Visual Studio Code**? More
 details [here](/doc/install/ide-plugins#visual-studio-code)!
