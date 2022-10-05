@@ -52,8 +52,8 @@ trail below to see an overview of all features from that perspective:
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
   datasets, and machine learning models. Use a regular Git workflow, but without
-  storing large files in the repo. Think "Git for data". Data is cached by DVC,
-  allowing for efficient sharing.
+  storing large files in the repo. Data is cached by DVC, allowing for efficient
+  sharing. Think "Git for data".
 
 - **[Data and model access]** shows how to bring, explore, and access data
   artifacts from outside the project. This can help download a specific version
