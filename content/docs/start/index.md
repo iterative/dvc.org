@@ -73,7 +73,7 @@ trail below to see an overview of all features from that perspective:
 [metrics, parameters, and plots]:
   /doc/start/data-management/metrics-parameters-plots
 
-### Experimentation
+### Experiment Management
 
 - **[Experiments]** enable exploration, iteration, and comparison across many ML
   experiments. Track your experiments with automatic versioning and checkpoint
