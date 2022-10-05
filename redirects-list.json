@@ -92,6 +92,8 @@
   "^/doc/command-reference/experiments$                                                   /doc/command-reference/exp",
   "^/doc/command-reference/ls$                                                            /doc/command-reference/list 302",
 
+  "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/dvclive/get-started",
+
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
