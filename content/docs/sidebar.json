@@ -669,19 +669,12 @@
         ]
       },
       {
-        "label": "How To",
-        "source": false,
-        "slug": "how-to",
-        "children": [
-          {
-            "slug": "outputs",
-            "label": "Track DVCLive outputs"
-          },
-          {
-            "slug": "checkpoints",
-            "label": "Integrate with DVC checkpoints"
-          }
-        ]
+        "slug": "outputs",
+        "label": "DVCLive outputs"
+      },
+      {
+        "slug": "resume",
+        "label": "Resume training"
       },
       {
         "slug": "api-reference",
