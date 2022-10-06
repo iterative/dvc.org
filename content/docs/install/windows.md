@@ -1,7 +1,7 @@
 # Installation on Windows
 
 > 💡 Please review
-> [Running DVC on Windows](/doc/user-guide/how-to/running-dvc-on-windows) for
+> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
 > important tips to improve your experience using DVC on Windows.
 
 > To use DVC [as a Python library](/doc/api-reference), please
@@ -51,7 +51,7 @@ In this case it installs the `boto3` library along with DVC.
 ## Install with pip
 
 From Command Prompt or other
-[recommended consoles](/doc/user-guide/how-to/running-dvc-on-windows):
+[recommended consoles](/doc/user-guide/how-to/run-dvc-on-windows):
 
 ```dvc
 $ pip install dvc

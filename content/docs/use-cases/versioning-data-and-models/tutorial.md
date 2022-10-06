@@ -40,7 +40,7 @@ Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
 > If you're using Windows, please review
-> [Running DVC on Windows](/doc/user-guide/how-to/running-dvc-on-windows) for
+> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
 > important tips to improve your experience.
 
 Okay! Let's first download the code and set up a Git repository:

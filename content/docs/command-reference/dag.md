@@ -35,7 +35,7 @@ This command's output is automatically piped to
 is not available (e.g. on Windows), the output is simply printed out.
 
 > It's also possible to
-> [enable `less` on Windows](/doc/user-guide/how-to/running-dvc-on-windows#enabling-paging-with-less).
+> [enable `less` on Windows](/doc/user-guide/how-to/run-dvc-on-windows#enabling-paging-with-less).
 
 > Note that this also applies to `dvc exp show`.
 

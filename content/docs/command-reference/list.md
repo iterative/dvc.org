@@ -154,7 +154,7 @@ $ dvc list . -R --dvc-only | zip -@ data.zip
 ```
 
 ZIP alternative for
-[POSIX on Windows](/doc/user-guide/how-to/running-dvc-on-windows) (Python
+[POSIX on Windows](/doc/user-guide/how-to/run-dvc-on-windows) (Python
 installed):
 
 ```dvc
