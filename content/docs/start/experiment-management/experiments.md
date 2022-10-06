@@ -1,21 +1,31 @@
 ---
 title: 'Get Started: Experiments'
-description: 'Get started with experiment management in DVC. Learn how to
-capture multiple project versions automatically without bloating the Git repo.
-Iterate quickly by comparing them easily and finding best performers.'
+description: 'Get started with DVC experiments. Learn how to capture multiple
+project versions automatically without bloating the Git repo. Iterate quickly by
+comparing them easily and finding the best performers.'
 ---
 
 # Get Started: Experiments
 
-In machine learning projects, the number of <abbr>experiments</abbr> grows
-rapidly. DVC can track these experiments, list and compare their most relevant
-metrics, parameters, and dependencies, navigate among them, and commit only the
-ones that we need to Git.
+<details>
 
-> ⚠️ This video is outdated and will be updated soon! Where there are
-> discrepancies between docs and video, please follow the docs.
+## 🎬 Click to watch a video intro.
+
+<admon type="warn">
+
+This video is outdated and will be updated soon! Our written docs contain the
+latest information about all of DVC's features.
+
+</admon>
 
 https://youtu.be/FHQq_zZz5ms
+
+</details>
+
+In machine learning projects, the number of <abbr>experiments</abbr> grows
+rapidly. DVC can track these experiments, list and compare their most relevant
+metrics, parameters, and dependencies, navigate among them and commit only the
+ones that we need to Git.
 
 <admon type="tip">
 

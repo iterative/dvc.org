@@ -1,4 +1,5 @@
 ---
+title: 'Get Started'
 description: 'Get a quick introduction to the major features of DVC for data
 science and machine learning projects: version data, access it anywhere, capture
 pipelines and metrics, and manage experiments.'
@@ -57,7 +58,7 @@ trail below to see an overview of all features from that perspective:
 
 - **[Data and model access]** shows how to bring, explore, and access data
   artifacts from outside the project. This can help download a specific version
-  of an ML model to a deployment server, or import a dataset to another project,
+  of an ML model to a deployment server or import a dataset to another project,
   for example.
 
 - **[Data pipelines]** describe how models and other data artifacts are built,
@@ -80,8 +81,8 @@ trail below to see an overview of all features from that perspective:
   logging. Compare differences in parameters, metrics, code, and data. Apply,
   drop, roll back, resume, or share any experiment.
 
-- **[Visualization]** compare experiment results visually, track your plots and
-  generate them with library integrations.
+- **[Visualization]** helps you compare experiment results visually, track your
+  plots, and generate them with library integrations.
 
 [experiments]: /doc/start/experiment-management/experiments
 [visualization]: /doc/start/experiment-management/visualization
