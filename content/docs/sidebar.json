@@ -40,7 +40,7 @@
     "children": [
       {
         "slug": "data-management",
-        "source": "data-management/index.md",
+        "source": false,
         "children": [
           "data-versioning",
           "data-and-model-access",
@@ -153,7 +153,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "running-dvc-on-windows",
+          "run-dvc-on-windows",
           "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",

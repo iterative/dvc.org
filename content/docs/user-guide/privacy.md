@@ -3,7 +3,7 @@
 DVC is using the [Google Drive API](https://developers.google.com/drive/) to
 make it easier to store files on Google Drive. For more details on how to set it
 up, refer to
-[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote).
+[Setup a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote).
 
 DVC uses the _DVC_ Application on Google Cloud Platform. (That is the name you
 will see in a consent screen.) This integration is governed by common policies,
@@ -42,8 +42,8 @@ authorized e.g. it will name the target API(s) and whether you are authorizing
 There are two ways to use DVC with Google Drive without authorizing the _DVC_
 Application: bring your own service account token or configure the package to
 use an OAuth client of your choice. See
-[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-more information.
+[Setup a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote)
+for more information.
 
 ## Scopes
 

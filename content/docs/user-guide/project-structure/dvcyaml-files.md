@@ -575,7 +575,8 @@ Optional configuration fields can be provided as well.
 
 Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
-[visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
+[visualizing plots]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
 
 </admon>
 
@@ -607,7 +608,7 @@ Refer to [Visualizing Plots] and `dvc plots show` for examples.
 - `template` (string) - [plot template]. Defaults to `linear`.
 
 [plot template]:
-  https://dvc.org/doc/user-guide/visualizing-plots#plot-templates-data-series-only
+  https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## dvc.lock file
 
