@@ -17,14 +17,15 @@ positional arguments:
 
 ## Description
 
-DVC represents each pipeline internally as a **Directed Acyclic Graph** ([DAG])
-where the nodes are stages and the edges are dependencies.
+DVC represents a pipeline internally as a **Directed Acyclic Graph** (DAG) where
+the nodes are stages and the edges are dependencies.
 
-`dvc dag` displays this dependency graph of the stages in one or more pipelines,
-as defined in the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a
-`target` stage name to show the pipeline up to that point.
+`dvc dag` displays this dependency graph in one or more pipelines, as defined in
+the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a `target` stage
+name to show the pipeline up to that point.
 
-[dag]: /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+[directed acyclic graph]:
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Paginating the output
 

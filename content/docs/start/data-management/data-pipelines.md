@@ -152,12 +152,12 @@ along with `git commit` to version DVC metafiles).
 [to remote storage]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 
-## Dependency graphs
+## Dependency graphs (DAG)
 
-By using `dvc stage add` multiple times, and defining <abbr>outputs</abbr> of a
-stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
-commands which gets to some desired result. This is what we call a [dependency
-graph] and it's what forms a cohesive pipeline.
+By using `dvc stage add` multiple times to use <abbr>outputs</abbr> of a stage
+as <abbr>dependencies</abbr> of another, we can describe a sequence of commands
+that gets to a desired result. This is what we call a _data pipeline_ or
+dependency graph (a [DAG]).
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
@@ -172,7 +172,7 @@ $ dvc stage add -n featurize \
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
-[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+[dag]: /doc/user-guide/pipelines/defining-pipelines
 
 <details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
@@ -277,8 +277,8 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 ### 💡 Expand to see what happens under the hood.
 
-`dvc repro` relies on the [dependency graph] of stages defined in `dvc.yaml`,
-and uses `dvc.lock` to determine what exactly needs to be run.
+`dvc repro` relies on the [DAG] defined in `dvc.yaml`, and uses `dvc.lock` to
+determine what exactly needs to be run.
 
 The `dvc.lock` file is similar to a `.dvc` file — it captures hashes (in most
 cases `md5`s) of the dependencies and values of the parameters that were used.
