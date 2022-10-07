@@ -47,11 +47,8 @@ metrics and other metadata.
 
 ## Parameters
 
-- `path` - Where to save DVCLive's outputs. _Default_: `None`.
-
-  If `None` and DVC is enabled (see
-  [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)), the `path` set by DVC
-  will be used. If `None` and DVC is **not** enabled, `"dvclive"` will be used.
+- `path` - Where to save DVCLive's outputs. _Default_: `None`. If `None`,
+  `"dvclive"` will be used.
 
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `path` directory and start from that point. _Default_: `False`.
