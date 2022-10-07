@@ -10,16 +10,14 @@ Pass the
 to your
 [`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
 
-```git
-+from dvclive.lightning import DvcLiveLogger
+```python
+from dvclive.lightning import DvcLiveLogger
 
 ...
  dvclive_logger = DvcLiveLogger()
 
- trainer = Trainer(
-+       logger=dvclive_logger,
-    )
- trainer.fit(model)
+trainer = Trainer(logger=dvclive_logger)
+trainer.fit(model)
 ```
 
 The [history](/doc/dvclive/api-reference/live/log#step-updates) of each

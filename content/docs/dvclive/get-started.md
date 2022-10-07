@@ -6,10 +6,10 @@ other metadata in simple file formats, which is fully compatible with DVC.
 ## Set up DVCLive
 
 First of all, you need to add DVCLive to your Python code in order to start
-logging metrics.
+logging metrics:
 
-In this example we are using [Keras](/doc/dvclive/ml-frameworks/keras) for
-training our model and we can add DVCLive as follows:
+<toggle>
+<tab title="Keras">
 
 ```python
 # train.py
@@ -20,9 +20,46 @@ model.fit(
   callbacks=[DvcLiveCallback(path="training_metrics")])
 ```
 
-You can find example snippets and reference of the options available in the
-corresponding page of any other of the supported
-[ML Frameworks](/doc/dvclive/ml-frameworks).
+</tab>
+
+<tab title="Hugging Face">
+
+```python
+# train.py
+from dvclive.huggingface import DvcLiveCallback
+
+. . .
+
+ trainer = Trainer(
+    model, args,
+    train_dataset=train_data,
+    eval_dataset=eval_data,
+    tokenizer=tokenizer,
+    compute_metrics=compute_metrics,
+)
+trainer.add_callback(DvcLiveCallback())
+trainer.train()
+```
+
+</tab>
+<tab title="Pytorch Lightning">
+
+```python
+# train.py
+from dvclive.lightning import DvcLiveLogger
+
+. . .
+dvclive_logger = DvcLiveLogger()
+
+trainer = Trainer(logger=dvclive_logger)
+trainer.fit(model)
+```
+
+</tab>
+</toggle>
+
+For other supported frameworks, you can find example snippets and API reference
+in the corresponding page of [ML Frameworks](/doc/dvclive/ml-frameworks).
 
 If you prefer to use the DVCLive API directly, check the
 [API Reference](/doc/dvclive/api-reference).
