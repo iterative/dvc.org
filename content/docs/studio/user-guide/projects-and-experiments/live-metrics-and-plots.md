@@ -2,12 +2,18 @@
 
 When you
 [submit a new experiment](/doc/studio/user-guide/projects-and-experiments/run-experiments)
-from Iterative Studio, the CI/CD setup in your Git repository gets invoked. If
-this setup includes a model training process, it will be triggered.
+from Iterative Studio, the
+[CI/CD setup](/doc/use-cases/ci-cd-for-machine-learning) in your Git repository
+gets invoked. If this setup includes a model training process, it will be
+triggered.
 
 In this model training CI action, you can use [DVCLive] to send live updates to
 metrics and plots back to Iterative Studio, without writing them to your Git
-repository. This requires a 3-step process:
+repository. This will help to keep your Git commit history unpolluted, as you
+can push only the final results of your experiments while being able to view all
+intermediate results in Studio (in the form of live metrics and plots).
+
+This requires a 3-step process:
 
 1. [Set up an access token](#set-up-an-access-token)
 2. [Configure your model training CI job](#configure-your-model-training-ci-job)
