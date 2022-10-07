@@ -87,7 +87,7 @@ live.next_step()
 
 See `Live.next_step()` and `Live.set_step()` for details.
 
-## Putting all together
+## Putting it all together
 
 Joining the above snippets, you can include DVCLive in your training code:
 
