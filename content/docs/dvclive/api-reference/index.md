@@ -92,26 +92,9 @@ for epoch in range(NUM_EPOCHS):
 
 ## Outputs
 
-After you run your training code, you should see the following content in the
-project:
-
-```dvc
-$ tree
-├── dvclive
-│   ├── images
-│   │   └── img.png
-│   ├── plots
-│   │   └── roc.json
-│   └── scalars
-│       └── acc.tsv
-└── dvclive.json
-```
-
-The outputs will vary depending on the type of data you have logged and whether
-you have updated the step value or not.
-
-See `Live.log()` (`dvclive/scalars` and `dvclive.json`), `Live.log_image()`
-(`dvclive/images`) and `Live.log_plot()` (`dvclive/plots`) for more details.
+After you run your training code, all the logged data will be stored in the
+`dvclive` folder. Check the [DVCLive outputs](/doc/dvclive/outputs) page for
+more details.
 
 ### Metrics report
 
