@@ -196,8 +196,12 @@ stages:
           cache: false
 ```
 
-> `cache: false` is typical here, since they're small enough for Git to version
-> directly.
+<admon type="tip">
+
+`cache: false` is typical here, since they're small enough for Git to store
+directly.
+
+<admon>
 
 The commands in `dvc metrics` and `dvc plots` help you display and compare
 metrics and plots.
@@ -244,8 +248,12 @@ See also
 
 ### Output subfields
 
-> These include a subset of the fields in `.dvc` file
-> [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
+<admon type="info">
+
+These include a subset of the fields in `.dvc` file
+[output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
+
+</admon>
 
 | Field        | Description                                                                                                                                                                                                                                                                       |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
