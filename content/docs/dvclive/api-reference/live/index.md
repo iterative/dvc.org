@@ -43,7 +43,7 @@ metrics and other metadata.
 
 - `report_path` - `{Live.dir}/report.{format}`. Location of the
   [metrics report](/doc/dvclive/api-reference/live/make_report). The `format`
-  can be HTML) or Markdown depending on the value of the `report` parameter.
+  can be HTML or Markdown depending on the value of the `report` parameter.
 
 ## Parameters
 
