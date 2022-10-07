@@ -5,8 +5,8 @@ Git ecosystem. It parses the data, metrics, hyperparameters and model metadata
 that you add to your ML project Git repositories, and renders them on a web UI.
 
 Additionally, you can [track metrics from your experiments in real
-time][live-metrics] by pushing the metrics directly to Iterative Studio using
-[DVCLive].
+time][live-metrics-and-plots] by pushing the metrics directly to Iterative
+Studio using [DVCLive].
 
 The following two videos illustrate how Iterative Studio works with data from
 your ML projects and experiments.
@@ -16,7 +16,7 @@ your ML projects and experiments.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
-TODO: Add a video about live metrics tracking
+TODO: Add a video about live metrics and plots tracking
 
 ## How you save your project data
 
@@ -25,7 +25,7 @@ TODO: Add a video about live metrics tracking
 - Using Iterative Studio, or using the command line interface (CLI) of [GTO],
   and possibly [MLEM], you will push all your ML model details to the Git
   repositories as Git commits and Git tags.
-- Using [DVCLive], you will push live metrics from your Git-committed
+- Using [DVCLive], you will push live metrics and plots from your Git-committed
   experiments to Iterative Studio.
 
 ## How Iterative Studio extracts your project data
@@ -37,8 +37,8 @@ TODO: Add a video about live metrics tracking
   [add the metrics and hyperparameters to your Git repositories manually](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
 - Details of your ML models, including versions and stage assignments, are
   extracted from the Git commits and tags.
-- Live metrics for experiments committed to Git are extracted from the data you
-  send using [DVCLive].
+- Live metrics and plots for experiments committed to Git are extracted from the
+  data you send using [DVCLive].
 
 ## How Iterative Studio presents your project data
 
@@ -76,5 +76,6 @@ TODO: Add a video about live metrics tracking
 [mlem]: https://mlem.ai/
 [gto]: https://github.com/iterative/gto
 [git]: https://git-scm.com/
-[live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
+[live-metrics-and-plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive

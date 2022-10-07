@@ -1,4 +1,4 @@
-# Generate live (real-time) metrics for experiments
+# Generate live (real-time) metrics and plots for experiments
 
 When you
 [submit a new experiment](/doc/studio/user-guide/projects-and-experiments/run-experiments)
@@ -15,7 +15,7 @@ repository. This requires a 3-step process:
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-TODO: Replace this with a video tutorial for live metrics
+TODO: Replace this with a video tutorial for live metrics and plots
 
 ## Set up an access token
 
@@ -66,15 +66,14 @@ In the training CI job (which has been configured as detailed above), whenever
 you log your metrics or plots using [DVCLive], they will be automatically sent
 to Iterative Studio.
 
-Iterative Studio stores the live Metrics in its database. In the project table,
-the live metrics are displayed next to the Git commit corresponding to the
-experiment.
+Iterative Studio stores the live metrics and plots data in its database.
 
-## View live metrics
+## View live metrics and plots
 
-The live metrics are displayed alongside the corresponding experiment commits,
-and updates to the live metrics are highlighted in orange. The running
-experiments themselves are displayed with a `Running` indicator.
+In the project table, the live metrics are displayed next to the Git commit
+corresponding to the experiment. Updates to the live metrics are highlighted in
+orange. The running experiments themselves are displayed with a `Running`
+indicator.
 
 TODO: Add a screenshot of the `Running` indicator
 
@@ -87,19 +86,19 @@ Live plots are displayed in the
 
 An experiment can have one of the following statuses:
 
-- **Running** - Iterative Studio expects to receive live metrics for these
-  experiments.
+- **Running** - Iterative Studio expects to receive live metrics and plots for
+  these experiments.
 - **Completed** - Iterative Studio does expect to receive any more updates for
-  these experiments. Once the experiment concludes, live metrics will no longer
-  be displayed for the experiment. You are expected to persist the final results
-  in Git. TODO: confirm if this statement is correct.
+  these experiments. Once the experiment concludes, live metrics or plots will
+  no longer be displayed for the experiment. You are expected to persist the
+  final results in Git. TODO: confirm if this statement is correct.
 
 - **Stopped/Error** - These experiments stopped due to some error.
 
 <admon>
 
-Live metrics sent by DVCLive are displayed in all the projects that are
-connected to the Git repository whose URL you have specified in the
+Live metrics and plots sent by DVCLive are displayed in all the projects that
+are connected to the Git repository whose URL you have specified in the
 `STUDIO_REPO_URL` environment variable.
 
 </admon>

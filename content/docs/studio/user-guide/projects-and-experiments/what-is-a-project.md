@@ -19,8 +19,8 @@ hyperparameters and models. These values are then presented in an experiment
 table with each experiment (Git commit) in a row and the corresponding values
 for the data, metrics, hyperparameters and models in columns.
 
-Live metrics that you [send to Iterative Studio][live-metrics] using [DVCLive]
-are also included in the project table.
+Live metrics that you [send to Iterative Studio][live-metrics-and-plots] using
+[DVCLive] are also included in the project table.
 
 <admon>
 
@@ -56,8 +56,8 @@ Within a project, you can:
 - [Compare experiments][compare].
 - [Run new experiments][run-experiments] by submitting new Git commits directly
   from Iterative Studio.
-- [Track live metrics][live-metrics] by sending them to Iterative Studio by
-  using [DVCLive].
+- [Track live metrics and plots][live-metrics-and-plots] by sending them to
+  Iterative Studio by using [DVCLive].
 
 In the following sections, you will see how to create, configure and share
 projects.
@@ -70,5 +70,6 @@ projects.
   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments
 [run-experiments]:
   /doc/studio/user-guide/projects-and-experiments/run-experiments
-[live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
+[live-metrics-and-plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive

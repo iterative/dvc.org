@@ -8,7 +8,7 @@ Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-TODO: Add a video about live metrics tracking
+TODO: Add a video about live metrics and plots tracking
 
 ## Sign up / sign in
 
@@ -107,12 +107,12 @@ You should now see that a project has been added in your dashboard.
 
 2. You can also make the project public by [sharing it on the web].
 
-## Submit experiments and track live metrics
+## Submit experiments and track live metrics and plots
 
 1. You can use your project to [submit new experiments] from Iterative Studio.
 
 2. For the experiments that you submit from Iterative Studio, you can [track
-   live metrics][live-metrics] by using [DVCLive].
+   live metrics and plots][live-metrics-and-plots] by using [DVCLive].
 
 ## Use model registry
 
@@ -157,5 +157,6 @@ You should now see that a project has been added in your dashboard.
 [create a team]: /doc/studio/user-guide/teams
 [sign up for the **basic**, **teams** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
-[live-metrics]: /doc/studio/user-guide/projects-and-experiments/live-metrics
+[live-metrics-and-plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive

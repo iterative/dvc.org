@@ -99,13 +99,13 @@ how to set up
 [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
 refer to [CML].
 
-### Live metrics are tracked
+### Live metrics and plots are tracked
 
 In your model training CI action, you can use [DVCLive] to send live updates to
 metrics and plots back to Iterative Studio, without writing them to your Git
 repository. The live metrics are displayed alongside the corresponding
 experiment commits. For more details, refer to the
-[next section](/doc/studio/user-guide/projects-and-experiments/live-metrics).
+[next section](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots).
 
 ### Metrics, plots and reports are saved in Git
 

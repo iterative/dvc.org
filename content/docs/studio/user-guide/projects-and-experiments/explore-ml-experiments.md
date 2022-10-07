@@ -41,7 +41,7 @@ corresponding models, metrics, hyperparameters, and DVC-tracked files.
 Any live metrics that you send using [DVCLive] are displayed alongside the
 corresponding experiment commits. More details of how live metrics are displayed
 can be found
-[here](/doc/studio/user-guide/projects-and-experiments/live-metrics#view-live-metrics).
+[here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
