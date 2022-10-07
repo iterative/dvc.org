@@ -27,9 +27,9 @@ locations of your inputs (data, <abbr>parameters</abbr>, and source code) and
 outputs (models, <abbr>metrics</abbr>, and
 [plots](/doc/command-reference/plots)).
 
-The only required argument is a [shell `command`] to run your experiment(s). It
-can be provided directly as an argument (see example below) or by using the
-`--interactive` (`-i`) mode, which will prompt for it.
+The only required argument is the terminal `command` that runs your
+experiment(s). It can be provided directly [as an argument] or by using the
+`--interactive` (`-i`) mode (which will prompt for it).
 
 ```cli
 $ dvc exp init "python src/train.py"
@@ -101,6 +101,7 @@ See the [Pipelines guide] for more on that topic.
   /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[as an argument]: /doc/user-guide/pipelines/defining-pipelines#stage-commands
 [pipelines guide]: /doc/user-guide/pipelines/defining-pipelines
 
 ## Options
