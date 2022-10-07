@@ -190,7 +190,7 @@ _Luigi_, etc.
     avoid recomputing all dependency file hashes, which would be highly
     problematic when working with large files (multiple GB).
 
-- DVC utilizes a [Directed Acyclic Graph] (DAG):
+- DVC utilizes a [directed acyclic graph] (DAG):
 
   - The dependency graph is defined implicitly by the connections between
     [stages](/doc/command-reference/run), based on their
