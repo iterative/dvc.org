@@ -623,6 +623,14 @@
         "slug": "get-started"
       },
       {
+        "slug": "outputs",
+        "label": "Output folder structure"
+      },
+      {
+        "slug": "resume",
+        "label": "Resume training"
+      },
+      {
         "slug": "ml-frameworks",
         "source": "dvclive/ml-frameworks/index.md",
         "children": [
@@ -667,14 +675,6 @@
             "label": "XGBoost"
           }
         ]
-      },
-      {
-        "slug": "outputs",
-        "label": "Output folder structure"
-      },
-      {
-        "slug": "resume",
-        "label": "Resume training"
       },
       {
         "slug": "api-reference",
