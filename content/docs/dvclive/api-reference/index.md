@@ -29,6 +29,24 @@ See [`Live()`](/doc/dvclive/api-reference/live) for details.
 ### Log data
 
 <toggle>
+<tab title="Parameters">
+
+```python
+live.log_param("num_classes", 10)
+```
+
+```python
+params = {
+    "num_classes": 10,
+    "metrics": ["accuracy", "mae"],
+    "optimizer": "adam"
+}
+live.log_params(params)
+```
+
+See `Live.log_param()` / `Live.log_params()`.
+
+</tab>
 <tab title="Scalars">
 
 ```python
@@ -79,6 +97,8 @@ Joining the above snippets, you can include DVCLive in your training code:
 from dvclive import Live
 
 live = Live()
+
+live.log_param("epochs", NUM_EPOCHS)
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
