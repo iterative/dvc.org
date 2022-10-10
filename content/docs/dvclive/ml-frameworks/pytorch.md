@@ -13,7 +13,7 @@ metrics and one single `Live.next_step()` call to indicate that the epoch has
 ended.
 
 let's consider the following example, extracted from the
-[official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/master/imagenet/main.py):
+[official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/main/src/imagenet/main.py):
 
 ```git
 + from dvclive import Live
