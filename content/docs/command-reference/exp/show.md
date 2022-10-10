@@ -168,8 +168,14 @@ $ dvc exp show ...
 
 ## Examples
 
-> This example is based on our [Get Started](/doc/start/experiments), where you
-> can find the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 Let's say we have run 3 experiments in our project. The basic usage shows the
 workspace (Git working tree) and experiments derived from `HEAD` (`master`
@@ -349,8 +355,11 @@ $ dvc exp show --all-branches --pcp --sort-by roc_auc
 
 ![](/img/ref_pcp_filter.png) _Excluded avg_prec column_
 
-📖 See
-[Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
-for an introduction to parameters, metrics, plots.
+<admon icon="book">
+
+See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for an
+introduction to parameters, metrics, plots.
+
+</admon>
 
 [regex]: https://regexone.com/

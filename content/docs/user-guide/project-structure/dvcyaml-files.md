@@ -208,8 +208,6 @@ metrics and plots.
 
 ## Templating
 
-_New in DVC 2.0 (see `dvc version`)_
-
 `dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. These sources can be
 [parameters files](/doc/command-reference/params), or `vars` defined in
@@ -386,8 +384,6 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 
 ## `foreach` stages
 
-_New in DVC 2.0 (see `dvc version`)_
-
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
@@ -500,6 +496,13 @@ stages:
         - ${item.prop2}
 ```
 
+<admon type="tip">
+
+Both individual foreach stages (`train@1`) and groups of foreach stages
+(`train`) may be used in commands that accept stage targets.
+
+</admon>
+
 > Note that this feature is not compatible with [templating](#templating) at the
 > moment.
 
@@ -518,8 +521,8 @@ These are the fields that are accepted in each stage:
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
 | `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
 | `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
-| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
-| `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
+| `meta`           | Arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                                      |
+| `desc`           | User description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                                  |
 
 [changed]: /doc/command-reference/status#local-workspace-status
 
@@ -547,13 +550,16 @@ libraries in the environment.
 > These include a subset of the fields in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
-| Field        | Description                                                                                                                                                                                                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                      |
-| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
-| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
-| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
+| Field        | Description                                                                                                                                                                                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                           |
+| `remote`     | Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
+| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                |
+| `checkpoint` | Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
+| `desc`       | User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
+| `type`       | User-assigned type of the data.                                                                                                                                                                                                                                        |
+| `labels`     | User-assigned labels to add to the data.                                                                                                                                                                                                                               |
+| `meta`       | Custom metadata about the data.                                                                                                                                                                                                                                        |
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.
@@ -565,9 +571,13 @@ configurations. Every plot needs a unique ID, which may be either a file or
 directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
 Optional configuration fields can be provided as well.
 
-📖 Refer to [Visualizing Plots] and `dvc plots show` for examples.
+<admon icon="book">
+
+Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
 [visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
+
+</admon>
 
 ### Available configuration fields
 

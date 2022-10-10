@@ -198,7 +198,11 @@ $ del data\data.xml
 $ dvc pull
 ```
 
-> 📖 See `dvc remote` for more information on remote storage.
+<admon icon="book">
+
+See `dvc remote` for more information on remote storage.
+
+</admon>
 
 ## Making changes
 
@@ -274,10 +278,10 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 
 </details>
 
-Yes, DVC is technically not even a version control system! `.dvc` file contents
-define data file versions. Git itself provides the version control. DVC in turn
-creates these `.dvc` files, updates them, and synchronizes DVC-tracked data in
-the <abbr>workspace</abbr> efficiently to match them.
+Yes, DVC is technically not a version control system! Git itself provides that
+layer. DVC in turn manipulates `.dvc` files, whose contents define the data file
+versions. DVC also synchronizes DVC-tracked data in the <abbr>workspace</abbr>
+efficiently to match them.
 
 ## Large datasets versioning
 

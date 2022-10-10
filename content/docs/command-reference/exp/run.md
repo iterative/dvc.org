@@ -47,7 +47,7 @@ It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
 options have special uses for these.
 
-<admon type="info">
+<admon icon="book">
 
 See the [Running Experiments] guide for more details on all these features.
 
@@ -143,8 +143,14 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Examples
 
-> This is based on our [Get Started](/doc/start/experiments), where you can find
-> the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 <details>
 

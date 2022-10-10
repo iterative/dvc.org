@@ -28,6 +28,8 @@ from dvclive import Live
 
 live = Live("training_metrics")
 
+...
+
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)

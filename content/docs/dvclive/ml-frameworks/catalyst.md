@@ -16,7 +16,7 @@ int the callbacks list passed to your
 ```git
 +from dvclive.catalyst import DvcLiveCallback
 
-. . .
+...
 
 runner.train(
     model=model,

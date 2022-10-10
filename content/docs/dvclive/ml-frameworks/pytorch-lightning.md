@@ -16,7 +16,7 @@ to your
 ```git
 +from dvclive.lightning import DvcLiveLogger
 
-. . .
+...
  dvclive_logger = DvcLiveLogger()
 
  trainer = Trainer(

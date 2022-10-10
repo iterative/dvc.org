@@ -1,4 +1,4 @@
-# External Dependencies
+# Importing External Data
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its preferable to avoid moving it from its current external location.

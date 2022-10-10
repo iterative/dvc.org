@@ -40,7 +40,7 @@
     "children": [
       {
         "slug": "data-management",
-        "source": "data-management/index.md",
+        "source": false,
         "children": [
           "data-versioning",
           "data-and-model-access",
@@ -94,12 +94,9 @@
   },
   {
     "slug": "user-guide",
-    "source": "user-guide/index.md",
+    "source": false,
     "children": [
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
+      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
@@ -123,6 +120,20 @@
         ]
       },
       {
+        "slug": "data-management",
+        "source": false,
+        "children": [
+          "large-dataset-optimization",
+          "importing-external-data",
+          "managing-external-data"
+        ]
+      },
+      {
+        "slug": "pipelines",
+        "source": "pipelines/index.md",
+        "children": ["defining-pipelines"]
+      },
+      {
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
@@ -131,6 +142,7 @@
           "running-experiments",
           "hydra-composition",
           "comparing-experiments",
+          "visualizing-plots",
           "sharing-experiments",
           "persisting-experiments",
           "cleaning-experiments",
@@ -138,13 +150,11 @@
         ]
       },
       {
-        "slug": "pipelines",
-        "children": ["defining-pipelines"]
-      },
-      {
         "slug": "how-to",
         "source": false,
         "children": [
+          "running-dvc-on-windows",
+          "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
@@ -152,17 +162,7 @@
           "share-a-dvc-cache"
         ]
       },
-      "visualizing-plots",
-      "setup-google-drive-remote",
-      "large-dataset-optimization",
-      "external-dependencies",
-      {
-        "label": "Managing External Data",
-        "slug": "managing-external-data"
-      },
-      "running-dvc-on-windows",
       "troubleshooting",
-      "related-technologies",
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
@@ -692,6 +692,14 @@
               {
                 "slug": "log_image",
                 "label": "log_image()"
+              },
+              {
+                "slug": "log_param",
+                "label": "log_param()"
+              },
+              {
+                "slug": "log_params",
+                "label": "log_params()"
               },
               {
                 "slug": "log_plot",

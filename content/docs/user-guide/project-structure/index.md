@@ -1,9 +1,9 @@
 # Project Structure
 
-Using `dvc init` in your <abbr>workspace</abbr> will start a <abbr>DVC
+Using `dvc init` in your <abbr>workspace</abbr> will initialize a <abbr>DVC
 project</abbr>, including the internal `.dvc/` directory. From there on, you
-will create and manage different DVC files and populate the <abbr>cache</abbr>
-as you use DVC and work on your data science experiments.
+will create and manage different DVC metafiles (below), and populate the
+<abbr>cache</abbr> with data artifacts as you work on your ML experiments.
 
 - `dvc.yaml` files define stages that form the pipeline(s) of a project. All
   stage-based features such as `dvc params`, `dvc metrics`, and `dvc plots` are
@@ -19,5 +19,9 @@ as you use DVC and work on your data science experiments.
   [configuration](/doc/command-reference/config) file(s), default local cache
   location, and other utilities that DVC needs to operate.
 
-These metafiles should be versioned with Git (in Git-enabled
-<abbr>repositories</abbr>).
+<admon type="info">
+
+These metafiles are typically versioned with Git, as DVC does not replace its
+distributed version control features, but rather extends on them.
+
+</admon>

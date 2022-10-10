@@ -41,6 +41,7 @@ important characteristics (dependencies, outputs, or metrics).
   - `dvc stage list train-model`: Specific stage(s) from `./dvc.yaml`
   - `dvc stage list modeling/dvc.yaml:prepare`: Stage(s) from a specific
     `dvc.yaml` file
+  - `dvc stage list train-model@1`: [Foreach] stage(s) from `./dvc.yaml`
 
 - `--name-only` - only lists stage names. Useful for scripting purposes (DVC
   uses it for shell tab completion).
@@ -61,6 +62,8 @@ important characteristics (dependencies, outputs, or metrics).
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 
 ## Examples:
 
