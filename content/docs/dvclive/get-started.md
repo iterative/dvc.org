@@ -1,7 +1,9 @@
 # Get Started
 
 DVCLive is a Python library for logging machine learning parameters, metrics and
-other metadata in simple file formats, which is fully compatible with DVC.
+other metadata in simple file formats, which is fully compatible with DVC, the
+[VS Code Extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
+and [Iterative Studio](https://studio.iterative.ai/).
 
 ## Set up DVCLive
 
@@ -110,35 +112,9 @@ To build on the previous section, you can optionally wrap our code with DVC to
 run [DVC experiments](/doc/user-guide/experiment-management/) and enable new
 ways to compare and visualize our experiments.
 
-First, you can initialize DVC with `dvc init`:
-
-```dvc
-$ dvc init
-```
-
-After that, you can use `dvc exp init --live` to create a `dvc.yaml` file:
-
-<admon type="info">
-
-Note that the path passed to the `--live` option (`"dvclive"`) matches the
-`path` passed to [`Live()`](/doc/dvclive/api-reference/live) in the Python code
-(`"dvclive"` is used as default when no value is passed).
-
-</admon>
-
-```dvc
-$ dvc exp init --explicit \
---live "dvclive" \
---code "train.py" \
-python train.py
-```
-
-<details>
-
-### ⚙️ Expand to see the `dvc.yaml`
-
-The `dvc.yaml` will contain a new `train` stage using the DVCLive outputs as
-`metrics` and `plots`:
+You can find below how an example `dvc.yaml` containing a single sage `train`,
+that runs the script from previous steps and tracks the
+[DVCLive outputs](/doc/dvclive/outputs) as `dvc metrics` and `dvc plots`:
 
 ```yaml
 stages:
@@ -153,12 +129,6 @@ stages:
       - dvclive/scalars:
           cache: false
 ```
-
-If you log other types of data you can check the
-[Output folder structure](/doc/dvclive/outputs) and update your `dvc.yaml`
-accordingly.
-
-</details>
 
 ## Run experiments
 
@@ -177,17 +147,8 @@ the training, comparing, and visualizing the experiments:
 
 ### DVC
 
-The [metrics history](/doc/dvclive/api-reference/live/log#step-updates)
-`dvclive/scalars` can be visualized with `dvc plots`.
-
-The [metrics summary](/doc/dvclive/api-reference/live/log#description) in
-`dvclive.json` can be visualized with `dvc metrics`.
-
-If you have logged parameters with `Live.log_param()`, they will be stored in
-`dvclive/params.yaml` and can be visualized with `dvc params`.
-
-In addition, the `dvc exp show` and `dvc exp diff` commands can be used to
-compare both metrics and parameters across experiments.
+You can use the `dvc exp show` and `dvc plots` commands to compare and visualize
+metrics, parameters and plots across experiments.
 
 ### Visual Studio Code
 
