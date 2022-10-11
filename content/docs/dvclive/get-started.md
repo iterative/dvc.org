@@ -55,13 +55,35 @@ trainer.fit(model)
 ```
 
 </tab>
+
+<tab title="Python API">
+
+```python
+# train.py
+from dvclive import Live
+
+live = Live()
+
+live.log_param("epochs", NUM_EPOCHS)
+
+for epoch in range(NUM_EPOCHS):
+    train_model(...)
+    metrics = evaluate_model(...)
+
+    for metric_name, value in metrics.items():
+        live.log(metric_name, value)
+
+    live.next_step()
+```
+
+</tab>
 </toggle>
 
-Check the [ML Frameworks](/doc/dvclive/ml-frameworks) page for other supported
+Check the [ML Frameworks page](/doc/dvclive/ml-frameworks) for other supported
 frameworks.
 
-If you prefer to use the DVCLive API directly, check the
-[API Reference](/doc/dvclive/api-reference).
+If you prefer to use DVCLive directly, check the overview of the
+[Python API](/doc/dvclive/api-reference).
 
 ### Run the script
 
