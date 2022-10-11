@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Pass the
-[`DvcLiveLogger`](https://github.com/iterative/dvclive/blob/master/dvclive/lightning.py)
+[`DvcLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
 to your
 [`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
 

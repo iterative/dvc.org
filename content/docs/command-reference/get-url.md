@@ -31,6 +31,13 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, then the file or
 directory will be placed inside.
 
+<admon type="tip">
+
+See `dvc list-url` for a way to browse the external location for files and
+directories to download.
+
+</admon>
+
 DVC supports several types of (local or) remote data sources (protocols):
 
 | Type      | Description                  | `url` format example                          |

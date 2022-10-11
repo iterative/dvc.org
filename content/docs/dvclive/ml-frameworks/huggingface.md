@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/huggingface.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/huggingface.py)
 int the callbacks list passed to your
 [`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
 

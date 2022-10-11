@@ -3,7 +3,7 @@
   "extends": ["config:base", "group:allNonMajor"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@dvcorg/", "iterative/"],
+      "matchPackagePatterns": ["@dvcorg", "iterative"],
       "groupName": "Iterative Packages"
     }
   ]

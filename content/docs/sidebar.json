@@ -324,6 +324,10 @@
         "slug": "install"
       },
       {
+        "label": "list-url",
+        "slug": "list-url"
+      },
+      {
         "label": "list",
         "slug": "list"
       },

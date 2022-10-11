@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/xgb.py)
 in the callbacks list passed to the `xgboost.train` call:
 
 ```python

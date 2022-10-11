@@ -6,8 +6,8 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/catalyst.py)
-in the callbacks list passed to your
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/catalyst.py)
+int the callbacks list passed to your
 [`Runner`](https://catalyst-team.github.io/catalyst/core/runner.html):
 
 ```python
