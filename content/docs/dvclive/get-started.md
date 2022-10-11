@@ -163,7 +163,7 @@ views.
 ![Experiments view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/experiments-table.png)
 ![Plost view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/plots-trends.png)
 
-### Iterative Studio
+## Share experiments
 
 After the experiment has finished and you have committed and pushed the results,
 [Iterative Studio](/doc/studio) will automatically parse the outputs generated
