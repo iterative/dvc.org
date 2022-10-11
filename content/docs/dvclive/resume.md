@@ -1,4 +1,4 @@
-# Resume training
+# Resume Training
 
 When using [DVC Checkpoints](/doc/user-guide/experiment-management/checkpoints)
 and/or enabling DVCLive's [`resume`](/doc/dvclive/api-reference/live#parameters)
