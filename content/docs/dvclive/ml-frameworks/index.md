@@ -1,8 +1,5 @@
 # ML Frameworks
 
-DVCLive makes it easy to add experiment tracking capabilities to your existing
-_ML training code_.
-
 We currently support the following _ML Frameworks_:
 
 - [Catalyst](/docs/dvclive/ml-frameworks/catalyst)

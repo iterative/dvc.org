@@ -5,8 +5,7 @@ other metadata in simple file formats, which is fully compatible with DVC.
 
 ## Set up DVCLive
 
-First of all, you need to add DVCLive to your Python code to start logging
-metrics:
+First of all, you need to add DVCLive to your Python:
 
 <toggle>
 <tab title="Keras">
@@ -58,8 +57,8 @@ trainer.fit(model)
 </tab>
 </toggle>
 
-For other supported frameworks, you can find example snippets and API reference
-on the corresponding page of [ML Frameworks](/doc/dvclive/ml-frameworks).
+Check the [ML Frameworks](/doc/dvclive/ml-frameworks) page for other supported
+frameworks.
 
 If you prefer to use the DVCLive API directly, check the
 [API Reference](/doc/dvclive/api-reference).
