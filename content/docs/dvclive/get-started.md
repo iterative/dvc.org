@@ -106,7 +106,7 @@ Note that the path passed to the `--live` option (`"dvclive"`) matches the
 </admon>
 
 ```dvc
-$ dvc exp init \
+$ dvc exp init --explicit \
 --live "dvclive" \
 --code "train.py" \
 python train.py
