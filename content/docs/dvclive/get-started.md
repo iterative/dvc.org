@@ -138,6 +138,9 @@ with `dvc exp run`:
 
 ```dvc
 $ dvc exp run
+Running stage 'train':
+> python train.py
+...
 ```
 
 ## Compare and visualize experiments
