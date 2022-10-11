@@ -16,23 +16,104 @@ your model training using Iterative Studio.
 
 Iterative Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
 experiments. This means that to enable experimentation from Iterative Studio,
-you need to integrate your Git repository with a CI/CD setup (e.g. GitHub
-Actions).
+you need to integrate your Git repository with a CI/CD setup. You can do this by
+[using the wizard provided by Iterative Studio](#use-the-iterative-studio-wizard-to-set-up-the-ci-action).
 
-Then, on each Git commit, the CI/CD setup will get invoked. If this setup
-includes a model training process, it will be triggered, which means that your
-ML experiment will run automatically.
-
-For more details on how to set up
+You can also create the CI set up on your own. For this, create workflow files
+(such as GitHub Actions) that get triggered on push or pull request. For more
+details on how to set up
 [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
-refer to [CML](https://cml.dev). You can use any cloud or Kubernetes for the
-model training process. CML also generates a report after the CI/CD setup
-executes.
+refer to [CML](https://cml.dev)
+
+Once the CI action is set up,
+[when you submit an experiment from Iterative Studio](#submit-a-new-experiment),
+the CI/CD setup will get invoked. If this setup includes a model training
+process, it will be triggered, which means that your ML experiment will run
+automatically.
 
 > Due to access restrictions, you cannot run experiments on the demo project
 > (`example-get-started`) that is provided to you by default. Once you connect
 > to your ML project repositories, you can follow the instructions given below
 > to run experiments directly from Iterative Studio.
+
+## Use the Iterative Studio wizard to set up the CI action
+
+When you select one of the commits in your project table and click on the `Run`
+button, an input form will open. At the top of this form, you will see a small
+message that invites you to set up your CI in case you have not done it yet.
+
+![](https://static.iterative.ai/img/studio/set_up_cml_message.png)
+
+The UI that comes up for this will guide you through the creation of your CML
+workflow within your CI/CD vendor.
+
+The UI is divided in two sections:
+
+- the left section that contains the parameters that you can customize, and
+- the right section that displays in real-time the generated yaml to be used in
+  your CI set up.
+
+By default, some standard values are assumed for all the parameters and a
+complete workflow (based on these default values) is ready for you to copy.
+
+![](https://static.iterative.ai/img/studio/set_up_cml_full.png)
+
+The workflow in the right section is divided into 2 steps, and accordingly, the
+parameters on the left section are also divided into 2 steps:
+
+---
+
+**Step 1: Deploy runner**
+
+This step is responsible for launching a self-hosted runner within your cloud
+vendor.
+
+The parameters for this step are a subset of the parameters for
+[CML self-hosted runners](https://cml.dev/doc/self-hosted-runners).
+
+- Spot: Whether you want to launch a spot cloud instance, cutting down the costs
+  of your training.
+
+- Reuse: Values for the CML flags `reuse` and `reuse-idle`. See all
+  [CML options](https://cml.dev/doc/ref/runner#options) for details.
+
+- Labels: Text labels to identify your CML runners from other self hosted
+  runners that you might have. In most scenarios you should not need to change
+  them.
+
+- Cloud: Your cloud provider.
+
+- Region: The cloud region or a CML synthetic region (an abstraction across all
+  the cloud vendors).
+
+- Type: Instance type, which can be a cloud-vendor specific type of a CML
+  synthetic type M/L/XL (an abstraction across all the cloud vendors).
+
+  This is also tied to GPU behavior. If you choose an instance with a selectable
+  GPU like a CML instance type or any GCP instances it will show the GPU select.
+
+- HDD size: Hard disk size in GB. We highly recommend you to enter a big enough
+  value (eg, 100) to avoid unexpected runner termination due to hard disk
+  exhaustion.
+
+**Step 2: Train**
+
+The training script here is where you specify the script needed for your runner
+to train your model. The default template is a very common combination of CML
+and DVC taking into account that DVC has to be set in order to make the most of
+Studio.
+
+---
+
+Once you have set your preferred options, click on `Copy to clipboard` to copy
+the content generated and displayed on the right section.
+
+Then, click on `paste in your CI Workflow file` to open the editor in your
+CI/CD. Paste the content here and create your CI script.
+
+That's it! At this point you should have CML in place within your CI/CD to run
+your experiments. After this, proceed with submitting your experiments as
+described below.
 
 ## Submit a new experiment
 
