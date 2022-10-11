@@ -79,8 +79,8 @@ for epoch in range(NUM_EPOCHS):
 </tab>
 </toggle>
 
-Check the [ML Frameworks page](/doc/dvclive/ml-frameworks) for other supported
-frameworks.
+Check the [ML Frameworks page](/doc/dvclive/ml-frameworks) for more details and
+other supported frameworks.
 
 If you prefer to use DVCLive directly, check the overview of the
 [Python API](/doc/dvclive/api-reference).
