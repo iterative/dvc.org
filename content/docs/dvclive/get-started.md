@@ -168,6 +168,6 @@ views.
 After the experiment has finished and you have committed and pushed the results,
 [Iterative Studio](/doc/studio) will automatically parse the outputs generated
 by DVCLive, allowing you to
-[compare and visualize experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare):
+[share your experiments online](https://dvc.org/doc/studio/get-started):
 
 ![Studio view](/img/dvclive-studio-plots.png)
