@@ -49,8 +49,8 @@ all the current plots, without comparisons.
 
 [certain metrics]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
 
-[plot templates]
-/doc/user-guide/visualizing-plots#plot-templates-data-series-only
+[plot templates]:
+  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 
 ## Options
 
