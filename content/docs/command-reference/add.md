@@ -162,7 +162,7 @@ not.
   [example](#example-transfer-to-an-external-cache)).
 
 - `--to-remote` - add a target that's outside the project, but neither cache it
-  nor place it in the workspace nor cache it yet.
+  nor place it in the workspace yet.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
   instead (the default one unless one is specified with `-r`). Implies
   `--out .`. Use `dvc pull` to get the data locally.
