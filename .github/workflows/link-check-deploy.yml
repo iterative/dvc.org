@@ -4,3 +4,6 @@ on:
 jobs:
   run:
     uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@test-log-deployment-status-event
+    if:
+      github.event.deployment.ref == ${{ inputs.branch }} &&
+      github.event.deployment_status.state == 'success'
