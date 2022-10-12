@@ -147,8 +147,7 @@ produces a regular stage in `dvc.yaml`.
   is useful if you need track changes in remote data without using local storage
   space (yet). The data can be downloaded later using `dvc pull`, but this will
   fail if the `url` no longer matches the hash values. File hashes can be
-  updated using
-  [`dvc update --no-download`](/doc/command-reference/update#--no-download).
+  updated using `dvc update --no-download`.
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
