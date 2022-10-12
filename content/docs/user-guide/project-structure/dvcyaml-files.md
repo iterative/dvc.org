@@ -201,7 +201,7 @@ stages:
 `cache: false` is typical here, since they're small enough for Git to store
 directly.
 
-<admon>
+</admon>
 
 The commands in `dvc metrics` and `dvc plots` help you display and compare
 metrics and plots.
