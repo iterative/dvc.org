@@ -560,6 +560,14 @@ stages:
   build@us: ...
 ```
 
+<admon type="tip">
+
+Both resulting stages (`train@1`, `build@uk`) and source groups (`train`,
+`build`) may be used in commands that accept stage targets, such as `dvc repro`
+and `dvc stage list`.
+
+</admon>
+
 Importantly, dictionaries from
 [parameters files](/doc/command-reference/params#examples) can be used in
 `foreach` stages as well:
