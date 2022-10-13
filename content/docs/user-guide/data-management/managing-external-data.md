@@ -32,9 +32,12 @@ their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
 `dvc remote` types/protocols:
 
 - Amazon S3
+- Microsoft Azure Blob Storage
+- Google Cloud Storage
 - SSH
 - HDFS
-- Local files and directories outside the workspace
+- HTTP
+- Local files and directories outside the <abbr>workspace</abbr>
 
 > Avoid using the same DVC remote used for `dvc push`, `dvc pull`, etc. as
 > external cache, because it may cause data collisions: the hash of an external
