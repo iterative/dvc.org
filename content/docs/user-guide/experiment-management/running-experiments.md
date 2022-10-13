@@ -72,6 +72,13 @@ To display and compare multiple experiments along with their
 Use `dvc exp apply` to restore the results of any other experiment instead. See
 [Bring experiment results to your workspace][apply] for more info.
 
+<admon type="warn">
+
+Only files tracked by either Git or DVC are saved to the experiment. Untracked
+files cannot be restored.
+
+</admon>
+
 [reviewing]: /doc/user-guide/experiment-management/comparing-experiments
 [apply]:
   /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
