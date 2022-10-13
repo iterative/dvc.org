@@ -118,10 +118,19 @@ $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
 [parameters files]:
   /doc/user-guide/project-structure/dvcyaml-files#parameters-files
 
+<admon icon="book">
+
+See [Hydra composition](/doc/user-guide/experiment-management/hydra-composition)
+for more advanced configuration options via parameter overrides (change, append,
+or remove, or use "choice" sets and ranges).
+
+</admon>
+
 ## The experiments queue
 
 The `--queue` option of `dvc exp run` tells DVC to append an experiment for
-later execution. Nothing is actually run yet.
+later execution. Nothing is actually run yet. Let's setup a simple
+hyperparameter [grid search]:
 
 ```dvc
 $ dvc exp run --queue -S units=10
@@ -133,6 +142,9 @@ Queued experiment '3591a5c' for future execution.
 $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
+
+[grid search]:
+  https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
 
 <details>
 
@@ -210,36 +222,14 @@ To clear the experiments queue and start over, use `dvc queue remove --queued`.
 
 </admon>
 
-### Grid Search
+<admon icon="book">
 
-When combined with the `dvc exp run --set-param` option, you cann add multiple
-experiments to the queue by providing a list of choices and/or a custom range:
+For more advanced grid searches, DVC supports complex config via [Hydra
+composition].
 
-```dvc
-$ dvc exp run \
--S units=32,128 \
--S learning_rate=range(0.001, 0.003, 0.001) \
---queue
+[hydra composition]: /docs/user-guide/experiment-management/hydra-composition
 
-Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.001']}'.
-Queued experiment 'ed3b4ef' for future execution.
-Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.002']}'.
-Queued experiment '7a10d54' for future execution.
-Queueing with overrides '{'params.yaml': ['units=32', 'learning_rate=0.003']}'.
-Queued experiment '0b443d8' for future execution.
-Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.001']}'.
-Queued experiment '0a5f20e' for future execution.
-Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.002']}'.
-Queued experiment '0a5f20e' for future execution.
-Queueing with overrides '{'params.yaml': ['units=128', 'learning_rate=0.003']}'.
-Queued experiment '0a5f20e' for future execution.
-```
-
-And run the grid search with:
-
-```dvc
-$ dvc queue start
-```
+</admon>
 
 ## Checkpoint experiments
 

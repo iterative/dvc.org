@@ -86,8 +86,8 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 <admon type="tip">
 
-See also [Templating](#templating) (and **Dict Unpacking**) for useful ways to
-parametrize `cmd` strings.
+See also [Templating](#templating) (and **Dictionary unpacking**) for useful
+ways to parametrize `cmd` strings.
 
 </admon>
 
@@ -311,6 +311,13 @@ will be listed by `dvc params diff`).
 
 ### Dictionary unpacking
 
+<admon type="tip">
+
+This is most useful for non-Python commands since our Python API includes
+`dvc.api.params_show()` to load parameters from code.
+
+</admon>
+
 Only inside the `cmd` entries, you can also reference a dictionary inside `${}`
 and DVC will _unpack_ it. This can be useful to avoid writing every argument
 passed to the command, or having to modify `dvc.yaml` when arguments change.
@@ -332,17 +339,28 @@ You can reference `mydict` in a stage command like this:
 ```yaml
 stages:
   train:
-    cmd: python train.py ${mydict}
+    cmd: R train.r ${mydict}
 ```
 
 DVC will unpack the values inside `mydict`, creating the following `cmd` call:
 
 ```cli
-$ python train.py --foo 'foo' --bar 1 --bool \
+$ R train.r --foo 'foo' --bar 1 --bool \
                   --nested.baz 'bar' --list 2 3 'qux'
 ```
 
 <admon type="tip">
+
+You can combine this with argument parsing libraries such as [R argparse] or
+[Julia ArgParse] to do all the work for you.
+
+[r argparse]:
+  https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html
+[julia argparse]: https://argparsejl.readthedocs.io/en/latest/argparse.html
+
+</admon>
+
+<admon icon="book">
 
 `dvc config parsing` can be used to customize the syntax used for ambiguous
 types like booleans and lists.
