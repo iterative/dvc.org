@@ -15,24 +15,26 @@ operation.
   (credentials, private locations, etc). The local config file can be edited by
   hand or with the command `dvc config --local`.
 
-- `.dvc/cache`: Default location of the <abbr>cache</abbr> directory. The cache
-  stores the project data in a special
-  [structure](#structure-of-the-cache-directory). The data files and directories
-  in the <abbr>workspace</abbr> will only contain links to the data files in the
-  cache (refer to
-  [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
-  `dvc config cache` for related configuration options, including changing its
-  location.
+- `.dvc/cache`: Default location of the <abbr>cache directory</abbr>. The cache
+  stores the project data in a special content-addressable
+  [structure](#structure-of-the-cache-directory). The files and directories
+  visible in the <abbr>workspace</abbr> will typically be [links] to cached
+  data. See `dvc config cache` for related configuration options, including
+  changing this default location.
 
-  > Note that DVC includes the cache directory in `.gitignore` during
-  > initialization. No data tracked by DVC should ever be pushed to the Git
-  > repository, only the <abbr>DVC files</abbr> that are needed to download or
-  > reproduce that data.
+  <admon type="info">
+
+  DVC includes the cache directory in `.gitignore` during [initialization]. No
+  data tracked by DVC should ever be pushed to the Git repository, only the
+  <abbr>DVC files</abbr> that are needed to download or reproduce that data.
+
+  [initialization]: /doc/command-reference/init
+
+  </admon>
 
 - `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
-- `.dvc/plots`: Directory for
-  [plot templates](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+- `.dvc/plots`: Directory for [plot templates]
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
@@ -69,6 +71,9 @@ operation.
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
   temporary or [queued experiments].
 
+[links]: /doc/user-guide/large-dataset-optimization
+[plot templates]:
+  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 [queued experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
