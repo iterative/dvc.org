@@ -9,7 +9,7 @@ To start using DVCLive, add a few lines to your training code in **any**
 [Hugging Face](https://huggingface.co/) project.
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/huggingface.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/huggingface.py)
 int the callbacks list passed to your
 [`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
 

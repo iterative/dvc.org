@@ -24,6 +24,10 @@ module.exports = [
     url: '/doc/command-reference/exp'
   },
   {
+    matches: 'dvc ls-url',
+    url: '/doc/command-reference/list-url'
+  },
+  {
     matches: 'dvc ls',
     url: '/doc/command-reference/list'
   }

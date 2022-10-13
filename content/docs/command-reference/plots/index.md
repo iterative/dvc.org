@@ -32,7 +32,7 @@ pipeline] or performance logs produced by [DVCLive].
 Plots have to be defined either at the stage level, or at the pipeline level in
 `dvc.yaml`.
 
-[ml pipeline]: /doc/start/data-management/pipelines
+[ml pipeline]: /doc/start/data-management/data-pipelines
 [dvclive]: /doc/dvclive/dvclive-with-dvc
 
 <admon icon="book">

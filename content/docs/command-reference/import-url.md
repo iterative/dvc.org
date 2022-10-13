@@ -52,6 +52,13 @@ The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
 working directory with its original file name e.g. `data.txt` (or to a location
 provided with `out`).
 
+<admon type="tip">
+
+See `dvc list-url` for a way to browse the external location for files and
+directories to download.
+
+</admon>
+
 An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
