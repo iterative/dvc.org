@@ -10,7 +10,7 @@ schema explained below. We encourage you to get familiar with it so you may
 modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
-with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
+with Git along with other <abbr>DVC files</abbr> and your project's code.
 
 ## Stages
 
