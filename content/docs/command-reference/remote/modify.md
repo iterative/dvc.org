@@ -827,17 +827,28 @@ $ export OSS_ENDPOINT='endpoint'
   $ dvc remote modify --local myremote keyfile /path/to/keyfile
   ```
 
-- `password` - a private key passphrase or a password to access the remote.
+- `password` - a password to access the remote.
 
   ```dvc
   $ dvc remote modify --local myremote password mypassword
   ```
 
-- `ask_password` - ask for a private key passphrase or a password to access the
-  remote.
+- `ask_password` - ask for a password to access the remote.
 
   ```dvc
   $ dvc remote modify myremote ask_password true
+  ```
+
+- `passphrase` - a private key passphrase to access the remote.
+
+  ```dvc
+  $ dvc remote modify --local myremote passphrase mypassphrase
+  ```
+
+- `ask_passphrase` - ask for a private key passphrase to access the remote.
+
+  ```dvc
+  $ dvc remote modify myremote ask_passphrase true
   ```
 
 - `gss_auth` - use Generic Security Services authentication if available on host
