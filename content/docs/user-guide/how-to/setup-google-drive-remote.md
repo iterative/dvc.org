@@ -1,4 +1,11 @@
-# Setup a Google Drive DVC Remote
+---
+title: 'How to Setup a Google Drive DVC Remote'
+description: >-
+  We explain the existing ways to setup Google Drive remote storage for your DVC
+  projects.
+---
+
+# How to Setup a Google Drive DVC Remote
 
 In this guide we explain the existing ways to setup Google Drive
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
@@ -241,7 +248,7 @@ running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
 authentication is needed.
 
 > This requires having your own
-> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+> [GC project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 > as explained above.
 
 1. To

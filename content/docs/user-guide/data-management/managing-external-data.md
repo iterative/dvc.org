@@ -17,8 +17,8 @@ HDFS, running [Dask](https://dask.org/) via SSH, or any code that generates
 massive files directly to the cloud.
 
 _External outputs_ (and
-[external dependencies](/doc/user-guide/external-dependencies)) provide ways to
-track and version data outside of the <abbr>project</abbr>.
+[external dependencies](/doc/user-guide/data-management/importing-external-data))
+provide ways to track and version data outside of the <abbr>project</abbr>.
 
 ## How external outputs work
 
@@ -50,7 +50,7 @@ avoids transferring files to the local environment and enables [file links]
 within the external storage.
 
 [file links]:
-  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
 
 As an example, let's create a directory external to the workspace and set it up
 as cache:
