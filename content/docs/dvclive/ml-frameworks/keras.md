@@ -9,7 +9,7 @@ To start using DVCLive you just need to add a few lines to your training code in
 **any** [Keras](https://keras.io/) project.
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/keras.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/keras.py)
 int the callbacks list passed to your
 [`Model`](https://keras.io/api/models/model/):
 

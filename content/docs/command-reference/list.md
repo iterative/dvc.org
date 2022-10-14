@@ -58,7 +58,7 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
 
-- `-R`, `--recursive` - recursively prints contents of all subdirectories.
+- `-R`, `--recursive` - recursively list files in all subdirectories.
 
 - `--dvc-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
@@ -111,7 +111,7 @@ We can now, for example, download the model file with:
 $ dvc get https://github.com/iterative/example-get-started model.pkl
 ```
 
-## Example: List all files and directories in a data registry
+## Example: List all files in a data registry
 
 Let's imagine a DVC repo used as a
 [data registry](/doc/use-cases/data-registry#using-registries), structured with

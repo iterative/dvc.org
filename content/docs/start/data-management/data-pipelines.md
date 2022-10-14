@@ -1,10 +1,18 @@
 ---
 title: 'Get Started: Data Pipelines'
-description: 'Learn how to build and use DVC pipelines to capture, organize,
+description: 'Get started with DVC pipelines. Learn how to capture, organize,
 version, and reproduce your data science and machine learning workflows.'
 ---
 
 # Get Started: Data Pipelines
+
+<details>
+
+## 🎬 Click to watch a video intro.
+
+https://youtu.be/71IGzyH95UY
+
+</details>
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
@@ -16,10 +24,6 @@ allows you to better organize projects, and reproduce your workflow and results
 later — exactly as they were built originally! For example, you could capture a
 simple ETL workflow, organize a data science project, or build a detailed
 machine learning pipeline.
-
-Watch and learn, or follow along with the code example below!
-
-https://youtu.be/71IGzyH95UY
 
 ## Pipeline stages
 

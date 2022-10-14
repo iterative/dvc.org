@@ -1,17 +1,31 @@
 ---
 title: 'Get Started: Metrics, Parameters, and Plots'
+description: 'Get started with DVC parameters, metrics, and plots. Learn how to
+capture, evaluate, and visualize ML projects without leaving Git.'
 ---
 
 # Get Started: Metrics, Parameters, and Plots
+
+<details>
+
+## 🎬 Click to watch a video intro.
+
+https://youtu.be/bu3l75eQlQo
+
+</details>
 
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 <abbr>parameters</abbr>, and visualize performance with
 [plots](/doc/command-reference/plots). These concepts are introduced below.
 
-> All of the above can be combined into <abbr>experiments</abbr> to run and
-> compare many iterations of your ML project.
+<admon type="tip">
 
-https://youtu.be/bu3l75eQlQo
+All of the above can be combined into [experiments] to run and compare many
+iterations of your ML project.
+
+[experiments]: /doc/start/experiment-management/experiments
+
+</admon>
 
 ## Collecting metrics
 

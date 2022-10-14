@@ -37,10 +37,11 @@
   {
     "slug": "start",
     "label": "Get Started",
+    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
-        "source": "data-management/index.md",
+        "source": false,
         "children": [
           "data-versioning",
           "data-and-model-access",
@@ -322,6 +323,10 @@
       {
         "label": "install",
         "slug": "install"
+      },
+      {
+        "label": "list-url",
+        "slug": "list-url"
       },
       {
         "label": "list",
