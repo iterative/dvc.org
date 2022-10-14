@@ -53,5 +53,19 @@ Datasets, metrics, and hyperparameters can be added to a project in two ways:
    file (within your Git repo) which contains your saved metrics. Refer to the
    section [on project settings] to learn how to specify the custom files.
 
+## Prepare Your Repositories to Run New Experiments
+
+To prepare your repositories to run new experiments from Iterative Studio, you
+should integrate them with a CI/CD setup that includes model training process.
+You can do this in one of two ways:
+
+- by
+  [using the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action).
+- by creating the CI set up on your own. For this, create workflow files (such
+  as GitHub Actions) that get triggered on push or pull request. For more
+  details on how to set up
+  [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
+  refer to [CML](https://cml.dev).
+
 [on project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories

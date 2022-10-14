@@ -89,7 +89,7 @@ vendor. The parameters listed here are a subset of the parameters for
   `M`/`L`/`XL` (an abstraction across all the cloud vendors).
 
   `Type` is also tied to GPU behavior. If you choose an instance with a
-  selectable GPU like a CML instance type or any GCP instance, the `GPU`
+  selectable GPU (such as a CML instance type or any GCP instance), the `GPU`
   parameter will show up.
 
 - `HDD size`: Hard disk size in GB. We highly recommend you to enter a big
