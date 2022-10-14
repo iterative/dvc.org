@@ -299,5 +299,5 @@ You can learn more about advanced workflows using these links:
   store, version and access a lot of data on a large shared volume efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). See
-  [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
+  [Managing External Data](https://dvc.org/doc/user-guide/data-management/managing-external-data)
   to learn more.

@@ -20,9 +20,9 @@ operation.
   [structure](#structure-of-the-cache-directory). The data files and directories
   in the <abbr>workspace</abbr> will only contain links to the data files in the
   cache (refer to
-  [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
-  `dvc config cache` for related configuration options, including changing its
-  location.
+  [Large Dataset Optimization](/doc/user-guide/data-management/large-dataset-optimization).
+  See `dvc config cache` for related configuration options, including changing
+  its location.
 
   > Note that DVC includes the cache directory in `.gitignore` during
   > initialization. No data tracked by DVC should ever be pushed to the Git
@@ -32,7 +32,7 @@ operation.
 - `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
 - `.dvc/plots`: Directory for
-  [plot templates](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  [plot templates](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
