@@ -24,6 +24,12 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
+<admon type="warn">
+
+Only files tracked by either Git or DVC are saved to the experiment.
+
+</admon>
+
 `dvc exp run` has the same general behavior as `dvc repro` when it comes to
 `targets` and stage execution (restores the dependency graph, etc.).
 
