@@ -204,7 +204,7 @@ If multiple GDrive remotes use the same client ID, by default they will share
 the same cached credentials. To isolate them, you can use custom profile names
 for different remotes:
 
-```
+```dvc
 $ dvc remote modify --local myremote profile myprofile
 ```
 
