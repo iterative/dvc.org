@@ -631,10 +631,6 @@
         "label": "Output folder structure"
       },
       {
-        "slug": "resume",
-        "label": "Resume training"
-      },
-      {
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
