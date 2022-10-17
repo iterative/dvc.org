@@ -51,10 +51,12 @@ Refer to [Versioning Data and Models] to learn more.
 
 </admon>
 
+<!--
 ## Cloud versioning
 
-_New in DVC 2.28.0 (see `dvc version`)_
+_New in DVC 2.30.0 (see `dvc version`)_
 
 To simplify remote data operations, DVC now supports native versioning of files
 and directories on several cloud providers. This means that you can browse your
 files normally as you would see them in your local workspace.
+-->
