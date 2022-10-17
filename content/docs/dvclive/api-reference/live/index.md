@@ -60,7 +60,7 @@ metrics and other metadata.
 
   </admon>
 
-- `report` - If `auto`,`html`, or `md`, DVCLive will call `Live.make_report()`
+- `report` - If `auto`, `html`, or `md`, DVCLive will call `Live.make_report()`
   on each step update. The `auto` mode (default) will use `md` format if a `CI`
   env var is present, otherwise it will use `html`.
 

@@ -635,52 +635,6 @@
         "label": "Resume training"
       },
       {
-        "slug": "ml-frameworks",
-        "source": "dvclive/ml-frameworks/index.md",
-        "children": [
-          {
-            "slug": "catalyst",
-            "label": "Catalyst"
-          },
-          {
-            "slug": "fastai",
-            "label": "Fast.ai"
-          },
-          {
-            "slug": "huggingface",
-            "label": "Hugging Face"
-          },
-          {
-            "slug": "keras",
-            "label": "Keras"
-          },
-          {
-            "slug": "lightgbm",
-            "label": "LightGBM"
-          },
-          {
-            "slug": "mmcv",
-            "label": "MMCV"
-          },
-          {
-            "slug": "pytorch",
-            "label": "PyTorch"
-          },
-          {
-            "slug": "pytorch-lightning",
-            "label": "PyTorch Lightning"
-          },
-          {
-            "slug": "tensorflow",
-            "label": "TensorFlow"
-          },
-          {
-            "slug": "xgboost",
-            "label": "XGBoost"
-          }
-        ]
-      },
-      {
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
@@ -724,6 +678,52 @@
               {
                 "slug": "set_step",
                 "label": "set_step()"
+              }
+            ]
+          },
+          {
+            "slug": "ml-frameworks",
+            "source": "dvclive/api-reference/ml-frameworks/index.md",
+            "children": [
+              {
+                "slug": "catalyst",
+                "label": "Catalyst"
+              },
+              {
+                "slug": "fastai",
+                "label": "Fast.ai"
+              },
+              {
+                "slug": "huggingface",
+                "label": "Hugging Face"
+              },
+              {
+                "slug": "keras",
+                "label": "Keras"
+              },
+              {
+                "slug": "lightgbm",
+                "label": "LightGBM"
+              },
+              {
+                "slug": "mmcv",
+                "label": "MMCV"
+              },
+              {
+                "slug": "pytorch",
+                "label": "PyTorch"
+              },
+              {
+                "slug": "pytorch-lightning",
+                "label": "PyTorch Lightning"
+              },
+              {
+                "slug": "tensorflow",
+                "label": "TensorFlow"
+              },
+              {
+                "slug": "xgboost",
+                "label": "XGBoost"
               }
             ]
           }

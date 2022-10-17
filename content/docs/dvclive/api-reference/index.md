@@ -9,8 +9,9 @@ from dvclive import Live
 
 <admon type="tip">
 
-If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
-can jump directly to its corresponding page.
+If you use one of the supported
+[ML Frameworks](/doc/dvclive/api-reference/ml-frameworks), you can jump directly
+to its corresponding page.
 
 </admon>
 
@@ -115,20 +116,3 @@ for epoch in range(NUM_EPOCHS):
 After you run your training code, all the logged data will be stored in the
 `dvclive` folder. Check the [DVCLive outputs](/doc/dvclive/outputs) page for
 more details.
-
-### Metrics report
-
-If and when `step` is updated, DVCLive generates or updates a report in
-`dvclive/report.{format}` which will contain all the logged data.
-
-![](/img/dvclive-html.gif)
-
-The `format` can be HTML or Markdown depending on the value of the `report`
-argument passed to [`Live()`](/doc/dvclive/api-reference/live#parameters).
-
-<admon type="info">
-
-If you don't update the step number, the report won't be generated unless you
-call `Live.make_report()` directly.
-
-</admon>

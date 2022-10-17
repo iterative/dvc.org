@@ -7,7 +7,7 @@ and [Iterative Studio](https://studio.iterative.ai/).
 
 ## Set up DVCLive
 
-First of all, you need to add DVCLive to your Python:
+First of all, you need to add DVCLive to your Python script:
 
 <toggle>
 <tab title="Keras">
@@ -81,8 +81,8 @@ for epoch in range(NUM_EPOCHS):
 </tab>
 </toggle>
 
-Check the [ML Frameworks page](/doc/dvclive/ml-frameworks) for more details and
-other supported frameworks.
+Check the [ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) page for
+more details and other supported frameworks.
 
 If you prefer to use DVCLive directly, check the overview of the
 [Python API](/doc/dvclive/api-reference).
@@ -96,8 +96,7 @@ would usually do:
 $ python train.py
 ```
 
-DVCLive will generate a
-[metrics report](/doc/dvclive/api-reference/live/make_report) in
+DVCLive will generate a [report](/doc/dvclive/outputs#report) in
 `dvclive/report.html` containing all the logged data. It will be automatically
 updated during training on each `step` update:
 
@@ -150,8 +149,8 @@ the training, comparing, and visualizing the experiments:
 
 ### DVC
 
-You can use the `dvc exp show` and `dvc plots` commands to compare and visualize
-metrics, parameters and plots across experiments.
+You can use `dvc exp show` and `dvc plots` to compare and visualize metrics,
+parameters and plots across experiments.
 
 ### Visual Studio Code
 

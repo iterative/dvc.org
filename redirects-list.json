@@ -93,6 +93,7 @@
   "^/doc/command-reference/ls$                                                            /doc/command-reference/list 302",
 
   "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/dvclive/get-started",
+  "^/doc/dvclive/ml-frameworks$                                                           /doc/dvclive/api-reference/ml-frameworks",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 

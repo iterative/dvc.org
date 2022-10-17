@@ -62,3 +62,20 @@ dvclive
 │       └── metric.tsv
 └── report.html
 ```
+
+### Report
+
+If and when `step` is updated, DVCLive generates or updates a report in
+`dvclive/report.{format}` which will contain the logged data.
+
+![](/img/dvclive-html.gif)
+
+The `format` can be HTML or Markdown depending on the value of the `report`
+argument passed to [`Live()`](/doc/dvclive/api-reference/live#parameters).
+
+<admon type="info">
+
+Reports are generated if you update the step number or call `Live.make_report()`
+directly.
+
+</admon>
