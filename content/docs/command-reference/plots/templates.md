@@ -73,7 +73,7 @@ important fields that DVC adds to the plot data:
 </details>
 
 [plot templates]:
-  https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 [vega-lite specification]: https://vega.github.io/vega-lite/
 [data-series plots]: /doc/user-guide/experiment-management/visualizing-plots
 
