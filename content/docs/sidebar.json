@@ -37,6 +37,7 @@
   {
     "slug": "start",
     "label": "Get Started",
+    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
@@ -153,7 +154,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "running-dvc-on-windows",
+          "run-dvc-on-windows",
           "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",

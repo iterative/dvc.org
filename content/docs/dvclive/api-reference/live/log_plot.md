@@ -93,8 +93,8 @@ plot.
 
 Stores the labels and predictions in `{Live.dir}/plots/confusion_matrix.json`,
 with the format expected by the confusion matrix
-[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only) of
-`dvc plots`.
+[template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+of `dvc plots`.
 
 ```py
 y_true = [1, 1, 2, 2]

@@ -218,7 +218,7 @@ See `dvc remote add` and `dvc remote modify` for more information.
 [`os.umask`]: https://docs.python.org/3/library/os.html#os.umask
 
 The following parameters allow setting an
-[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache)
+[external cache](/doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache)
 location. A [DVC remote](/doc/command-reference/remote) name is used (instead of
 the URL) because often it's necessary to configure authentication or other
 connection settings, and configuring a remote is the way that can be done.

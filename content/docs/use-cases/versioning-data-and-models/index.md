@@ -39,7 +39,7 @@ As you use DVC, unique versions of your data files and directories are
 in a systematic way (preventing file duplication). The working data store is
 separated from your <abbr>workspace</abbr> to keep the project light, but stays
 connected via file
-[links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[links](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 handled automatically by DVC.
 
 Benefits of our approach include:
@@ -59,8 +59,8 @@ Benefits of our approach include:
   [etc.](/doc/command-reference/remote/add#supported-storage-types)) — free from
   Git hosting
   [constraints](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota).
-  DVC [optimizes](/doc/user-guide/large-dataset-optimization) storing and
-  transferring large files.
+  DVC [optimizes](/doc/user-guide/data-management/large-dataset-optimization)
+  storing and transferring large files.
 
 - **Collaboration**: Easily distribute your project development and share its
   data [internally](/doc/user-guide/how-to/share-a-dvc-cache) and
