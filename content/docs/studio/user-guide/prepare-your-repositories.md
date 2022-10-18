@@ -20,6 +20,8 @@ New ML model metadata can be added directly from the **Models** tab after
 [gto]: https://github.com/iterative/gto
 [mlem]: https://mlem.ai/
 
+## Set up datasets, metrics, and hyperparameters
+
 Datasets, metrics, and hyperparameters can be added to a project in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
@@ -55,17 +57,18 @@ Datasets, metrics, and hyperparameters can be added to a project in two ways:
 
 ## Prepare Your Repositories to Run New Experiments
 
-To prepare your repositories to run new experiments from Iterative Studio, you
-should integrate them with a CI/CD setup that includes model training process.
-You can do this in one of two ways:
+To run new experiments from Iterative Studio, you should integrate your
+repositories with a CI/CD setup that includes a model training process. For
+this, create workflow files (such as GitHub Actions) that get triggered on push
+or pull request.
 
-- by
-  [using the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action).
-- by creating the CI set up on your own. For this, create workflow files (such
-  as GitHub Actions) that get triggered on push or pull request. For more
-  details on how to set up
-  [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
-  refer to [CML](https://cml.dev).
+You can
+[use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
+to automatically generate the workflow configuration.
+
+For more details on how to set up
+[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
+refer to [CML](https://cml.dev).
 
 [on project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories

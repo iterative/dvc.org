@@ -41,31 +41,24 @@ you need to do the following:
 
 ## Use the Iterative Studio wizard to set up your CI action
 
-When you select one of the commits in your project table and click on the `Run`
-button, an input form will open. At the top of this form, you will see a small
-message that invites you to set up your CI in case you have not done it yet.
+Select a commit and click **Run**. You will see a message that invites you to
+set up your CI.
 
 ![](https://static.iterative.ai/img/studio/set_up_cml_message.png)
 
-Click on `Click here` to use the wizard to create your CML workflow within your
-CI/CD vendor.
-
-The wizard UI is divided in two sections:
+The CI setup wizard has two sections, pre-filled with default values:
 
 - Left section with 2 sets of parameters:
 
-  1. [Configuration of your self-hosted runner, which is used in the `deploy-runner` step of your CI workflow](#step-1-deploy-runner)
-  2. [Model training script, which is used in the `Train` step of your CI process](#step-2-train)
+  1. [Configuration of your self-hosted runner, which is used in the `deploy-runner` step of your CI workflow](#configuration-of-your-self-hosted-runner)
+  2. [Job script, which is used in the `runner-job` step of your CI workflow](#runners-job-script)
 
-- Right section which displays in real-time the
+- Right section which displays the
   [generated yaml to be used in your CI set up](#ci-yaml).
-
-By default, some standard values are assumed for all the inputs and a complete
-workflow (based on these default values) is ready for you to copy.
 
 ![](https://static.iterative.ai/img/studio/set_up_cml_full.png)
 
-### Step 1: Deploy runner
+### Configuration of your self-hosted runner
 
 This step is responsible for launching a self-hosted runner within your cloud
 vendor. The parameters listed here are a subset of the parameters for
@@ -89,32 +82,36 @@ vendor. The parameters listed here are a subset of the parameters for
 - `HDD size`: Hard disk size in GB. We highly recommend you to enter a big
   enough value (eg, 100) to avoid unexpected runner termination due to hard disk
   exhaustion.
-  
-  - `Reuse`: Values for the CML flags `reuse` and `reuse-idle`. See all
+- `Reuse`: Values for the CML flags `reuse` and `reuse-idle`. See all
   [CML options](https://cml.dev/doc/ref/runner#options) for details.
 
 - `Labels`: Text labels to identify your CML runners from other self hosted
   runners that you might have.
 
-### Step 2: Runner's Job
+### Runner's job
 
-This is the script needed for your runner to execute your job, commonly training your model. The default
-template is a very common combination of CML and DVC taking into account that
-DVC enables you to make the most of Iterative Studio. You can update this script
-to reflect your exact model training process, whether you use DVC or not.
+This is the script needed for your runner to execute your job, which would
+commonly include training your model. The default template is a very common
+combination of CML and DVC taking into account that DVC enables you to make the
+most of Iterative Studio. You can update this script to reflect your exact model
+training process, whether you use DVC or not.
 
 ### Generated CI yaml
 
 The right section displays the generated CI yaml content, which reflects all
 your input parameters.
 
-Above the yaml textarea, you will find a `Copy to clipboard` link. Once you have
-specified all your parameters, click on this link to copy the yaml content.
+Just above the yaml textarea (and also below it), you will find a
+`Copy to clipboard and paste in your CI Workflow file` link. Once you have
+specified all your parameters, click on this link to copy the yaml content and
+open the editor in your Git provider.
 
-Then, click on `paste in your CI Workflow file`. This will open the editor in
-your Git provider. Paste the content here to create your CI script.
+Paste the content here to create your CI script.
 
-There is yet a final and crucial step. In other to be able to work effectively with your repo and be able to launch the runner in your desired cloud provider: Setup the yaml workflow ENV vars as secrets. You can learn how to do this simple step [here](https://cml.dev/doc/self-hosted-runners#environment-variables).
+There is yet a final and crucial step. In other to be able to work effectively
+with your repo and be able to launch the runner in your desired cloud provider:
+Setup the yaml workflow ENV vars as secrets. You can learn how to do this simple
+step [here](https://cml.dev/doc/self-hosted-runners#environment-variables).
 
 That's it! At this point you should have CML in place within your CI/CD to run
 your experiments. After this, proceed with submitting your experiments as
