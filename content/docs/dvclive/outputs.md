@@ -15,6 +15,8 @@ data:
 | [live.log_plot](/doc/dvclive/api-reference/live/log_plot)       | `dvclive/plots`                    |
 | [live.make_report](/doc/dvclive/api-reference/live/make_report) | `dvclive/report.{md/html}`         |
 
+## Example
+
 To illustrate with an example, given the following script:
 
 ```python
@@ -63,7 +65,7 @@ dvclive
 └── report.html
 ```
 
-### Report
+## Report
 
 If and when `step` is updated, DVCLive generates or updates a report in
 `dvclive/report.{format}` which will contain the logged data.
