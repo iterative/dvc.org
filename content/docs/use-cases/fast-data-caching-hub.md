@@ -30,10 +30,10 @@ to
 You can have a single storage for all you projects by setting up a [shared DVC
 cache] in a near location (network, external drive, etc.). This de-duplicates
 files across datasets and prevents repetitive transfers by
-[linking](/doc/user-guide/large-dataset-optimization) your working files and
-directories. Data security policies can be implemented reliably, as data never
-leaves the central storage. DVC can also help you back up and [share data and ML
-models] on external/remote locations.
+[linking](/doc/user-guide/data-management/large-dataset-optimization) your
+working files and directories. Data security policies can be implemented
+reliably, as data never leaves the central storage. DVC can also help you back
+up and [share data and ML models] on external/remote locations.
 
 Now that your team shares a primary storage, it can be managed independently as
 part of your infrastructure; provisioned depending on data access speed and cost
@@ -41,7 +41,7 @@ requirements. You have the flexibility to switch storage providers at any time,
 without having to change the directory structures or code of your projects.
 
 [share data and ml models]:
-  /doc/start/data-and-model-versioning#storing-and-sharing
+  /doc/start/data-management/data-versioning#storing-and-sharing
 
 ### What's next?
 

@@ -11,9 +11,10 @@ etc.), and download it to the local project, or make a copy in
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>]
-		      [--to-remote] [-r <name>]
+                      [--to-remote] [-r <name>]
                       [--no-exec | --no-download]
                       [-j <number>] [--desc <text>]
+                      [--type <str>] [--label <str>] [--meta key=value]
                       url [out]
 
 positional arguments:
@@ -51,6 +52,13 @@ The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
 working directory with its original file name e.g. `data.txt` (or to a location
 provided with `out`).
 
+<admon type="tip">
+
+See `dvc list-url` for a way to browse the external location for files and
+directories to download.
+
+</admon>
+
 An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
@@ -62,11 +70,11 @@ update the import later, if the data source has changed (see `dvc update`).
 > `dvc import`).
 
 `.dvc` files support references to data in an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such an
-import `.dvc` file, the `deps` field stores the external URL, and the `outs`
-field contains the corresponding local path in the <abbr>workspace</abbr>. It
-records enough metadata about the imported data to enable DVC efficiently
-determining whether the local copy is out of date.
+[External Dependencies](/doc/user-guide/data-management/importing-external-data).
+In such an import `.dvc` file, the `deps` field stores the external URL, and the
+`outs` field contains the corresponding local path in the
+<abbr>workspace</abbr>. It records enough metadata about the imported data to
+enable DVC efficiently determining whether the local copy is out of date.
 
 Note that `dvc repro` doesn't check or update import `.dvc` files, use
 `dvc update` to bring the import up to date from the data source.
@@ -105,8 +113,8 @@ generating a pipeline [stage](/doc/command-reference/run) with an external
 dependency.
 
 > This is discussed in the
-> [External Dependencies](/doc/user-guide/external-dependencies) documentation,
-> where an alternative is demonstrated for each of these schemes.
+> [External Dependencies](/doc/user-guide/data-management/importing-external-data)
+> documentation, where an alternative is demonstrated for each of these schemes.
 
 Instead of:
 
@@ -135,16 +143,18 @@ produces a regular stage in `dvc.yaml`.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url` or get
-  checksums (assumes that the data source is valid). This is useful if you need
-  to define the project imports quickly, and import the data later (use
-  `dvc update` to finish the operation(s)).
+- `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
+  that the data source is valid). This is useful if you need to define the
+  project imports quickly, and import the data later (use `dvc update` to finish
+  the operation(s)).
 
-- `--no-download` - create the import `.dvc` with data checksums but without
-  downloading the associated data. This is useful if you need track changes in
-  remote data but do not (yet) need to download data to the local workspace.
-  Data can be later downloaded using `dvc pull`, but will fail if the data
-  matching the checksum is no longer available.
+- `--no-download` - create the import `.dvc` file including
+  [hash values](/doc/user-guide/project-structure/dvc-files#dependency-entries)
+  for the external dependency but without downloading the associated data. This
+  is useful if you need track changes in remote data without using local storage
+  space (yet). The data can be downloaded later using `dvc pull`, but this will
+  fail if the `url` no longer matches the hash values. File hashes can be
+  updated using `dvc update --no-download`.
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
@@ -159,8 +169,13 @@ produces a regular stage in `dvc.yaml`.
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
 
-- `--desc <text>` - user description of the data (optional). This doesn't  
-  affect any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -193,8 +208,7 @@ $ git checkout 3-config-remote
 
 ## Example: Tracking a file from the web
 
-An advanced alternate to the intro of the
-[Versioning Basics](/doc/start/data-and-model-versioning) part of the _Get
+An advanced alternate to the intro of the [Versioning Basics] part of the _Get
 Started_ is to use `dvc import-url`:
 
 ```dvc
@@ -230,6 +244,8 @@ allows DVC to determine whether it's necessary to download it again.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
+
+[versioning basics]: /doc/start/data-management/data-versioning
 
 ## Example: Detecting external file changes
 
@@ -281,15 +297,16 @@ directory we created previously. (Its `path` has the URL for the data store.)
 And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
-Let's now manually reproduce the
-[data processing part](/doc/start/data-pipelines) of the _Get Started_. Download
-the example source code archive and unzip it:
+Let's now manually reproduce the [data processing section] of the _Get Started_.
+Download the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 ```
+
+[data processing section]: /doc/start/data-management/data-pipelines
 
 <details>
 

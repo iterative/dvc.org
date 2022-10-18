@@ -3,7 +3,8 @@
 Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
 [top-level definition] from `dvc.yaml`.
 
-[top-level definition]: /doc/user-guide/visualizing-plots#top-level-plots
+[top-level definition]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
 
 ## Synopsis
 
@@ -38,11 +39,13 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
-[certain data]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
+[certain data]:
+  /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
-  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
-[top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
-[stage plot]: /doc/user-guide/visualizing-plots#stage-plots
+  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+[top-level plot]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[stage plot]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Options
 
@@ -51,7 +54,7 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to be injected with data. The default template is `.dvc/plots/default.json`.
   See more details in `dvc plots`.
 
@@ -480,15 +483,54 @@ file:///Users/usr/src/dvc_plots/index.html
 ![](/img/plots_show_confusion.svg)
 
 > A confusion matrix
-> [template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+> [template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 > is predefined in DVC.
 
 We can use `confusion_normalized` template to normalize the results:
 
 ```dvc
-$ dvc plots show classes.csv -t confusion_normalized
+$ dvc plots show classes.csv -t confusion_normalized \
                              -x actual -y predicted
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_confusion_normalized.svg)
+
+## Example: Horizontal bar plot
+
+This is a simple bar plot useful for example in visualizing model feature
+importances.
+
+We'll use `importances.csv` for this example:
+
+```
+feature_name,feature_importance
+petal_width,0.4
+petal_length,0.33
+sepal_width,0.24
+sepal_length,0.03
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show importances.csv --template bar_horizontal \
+                             -x feature_importance -y feature_name
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_bar_horizontal.svg)
+
+When using the `bar_horizontal` template the plot is sorted by the vertical axis
+(in our example this means alphabetically, by feature name).
+
+If you want it to be sorted by the horizontal axis (by feature importance in the
+example) you can use the `bar_horizontal_sorted` template instead:
+
+```dvc
+$ dvc plots show importances.csv -t bar_horizontal_sorted \
+                             -x feature_importance -y feature_name
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_bar_horizontal_sorted.svg)

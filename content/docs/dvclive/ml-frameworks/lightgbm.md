@@ -9,13 +9,13 @@ To start using DVCLive you just need to add a few lines to your training code in
 **any** [LightGBM](https://lightgbm.readthedocs.io/en/latest/) project.
 
 You just need to add the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/lgbm.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lgbm.py)
 to the callbacks list passed to the `lightgbm.train` call:
 
 ```git
 +from dvclive.lgbm import DvcLiveCallback
 
-. . .
+...
 
 lightgbm.train(
   param,

@@ -6,5 +6,5 @@ tooltip: >-
   stage](/doc/command-reference/import) `.dvc` file) with origin in an external
   source, for example HTTP, SSH, Amazon S3, Google Cloud Storage remote
   locations, or even other DVC repositories. See [External
-  Dependencies](/doc/user-guide/external-dependencies).
+  Dependencies](/doc/user-guide/data-management/importing-external-data).
 ---

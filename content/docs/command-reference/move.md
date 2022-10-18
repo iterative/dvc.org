@@ -24,7 +24,7 @@ the <abbr>project</abbr> with `dvc add` or `dvc import`, creating a `.dvc` file
 `dvc.yaml`), they have to be [renamed manually](#renaming-stage-outputs).
 
 > Note that `src` itself may be either a
-> [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> [link](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > or a copy to the corresponding data in the cache. The <abbr>cached</abbr> file
 > is not changed by this command.
 
@@ -93,7 +93,7 @@ Often the output of a stage is a dependency in another stage, creating a
 [dependency graph]. In this case, you may want to also update the `path` in the
 `deps` field of `dvc.yaml`.
 
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 </admon>
 

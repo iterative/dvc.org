@@ -39,7 +39,7 @@ As you use DVC, unique versions of your data files and directories are
 in a systematic way (preventing file duplication). The working datastore is
 separated from your <abbr>workspace</abbr> to keep the project light, but stays
 connected via file
-[links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[links](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 handled automatically by DVC.
 
 Benefits of our approach include:
@@ -59,13 +59,13 @@ Benefits of our approach include:
   [etc.](/doc/command-reference/remote/add#supported-storage-types)) — free from
   Git hosting
   [constraints](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota).
-  DVC [optimizes](/doc/user-guide/large-dataset-optimization) storing and
-  transferring large files.
+  DVC [optimizes](/doc/user-guide/data-management/large-dataset-optimization)
+  storing and transferring large files.
 
 - **Collaboration**: Easily distribute your project development and share its
   data [internally](/doc/user-guide/how-to/share-a-dvc-cache) and
   [remotely](/doc/command-reference/remote), or
-  [reuse](/doc/start/data-and-model-access) it in other places.
+  [reuse](/doc/start/data-management/data-and-model-access) it in other places.
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).
@@ -83,6 +83,8 @@ data, models, and code happen at different paces. DVC helps you manage, and
 enforce them.
 
 And this is just the beginning. DVC supports multiple advanced features
-out-of-the-box: Build, run, and versioning
-[data pipelines](/doc/command-reference/dag),
-[manage experiments](/doc/start/experiments) effectively, and more.
+out-of-the-box: Build, run, and versioning [data pipelines], [manage
+experiments] effectively, and more.
+
+[data pipelines]: /doc/command-reference/dag
+[manage experiments]: /doc/start/experiment-management

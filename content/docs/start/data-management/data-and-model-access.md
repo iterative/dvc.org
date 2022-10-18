@@ -1,23 +1,32 @@
 ---
 title: 'Get Started: Data and Model Access'
+description: 'Get started with accessing data and models with DVC. Learn how to
+bring, explore, and access data artifacts from outside the project'
 ---
 
 # Get Started: Data and Model Access
+
+<details>
+
+## 🎬 Click to watch a video intro.
+
+https://youtu.be/EE7Gk84OZY8
+
+</details>
 
 We've learned how to _track_ data and models with DVC, and how to commit their
 versions to Git. The next questions are: How can we _use_ these artifacts
 outside of the project? How do we download a model to deploy it? How to download
 a specific version of a model? Or reuse datasets across different projects?
 
-> These questions tend to come up when you browse the files that DVC saves to
-> remote storage (e.g.
-> `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
-> instead of the original file name such as `model.pkl` or `data.xml`).
+<admon type="tip">
 
-Read on or watch our video to see how to find and access models and datasets
-with DVC.
+These questions tend to come up when you browse the files that DVC saves to
+remote storage (e.g.
+`s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
+instead of the original file name such as `model.pkl` or `data.xml`).
 
-https://youtu.be/EE7Gk84OZY8
+</admon>
 
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`,
 which we'll cover later) have their history in Git. DVC's remote storage config
@@ -113,6 +122,6 @@ import dvc.api
 with dvc.api.open(
     'get-started/data.xml',
     repo='https://github.com/iterative/dataset-registry'
-) as fd:
-    # fd is a file descriptor which can be processed normally
+) as f:
+    # f is a file-like object which can be processed normally
 ```

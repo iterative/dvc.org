@@ -23,8 +23,9 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
 > Plain `git push` and `git fetch` don't work with experiments because these are
-> saved under custom Git references. See **How does DVC track experiments?** in
-> `dvc exp run` to learn more about DVC experiment storage.
+> saved under custom Git references. See
+> [**How does DVC track experiments?**](/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments)
+> in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
 one or more `experiment` names or hashes (see `dvc exp run`) to pull.
@@ -82,8 +83,14 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
 
 ## Examples
 
-> This example is based on our [Get Started](/doc/start/experiments), where you
-> can find the actual source code.
+<admon type="info">
+
+This example is based on [our Get Started], where you can find the actual source
+code.
+
+[our get started](/doc/start/experiment-management/experiments)
+
+</admon>
 
 Let's say we have cloned a DVC repository, and would like to fetch an experiment
 that someone else shared (see also `dvc exp list`).

@@ -1,23 +1,37 @@
 ---
 title: 'Get Started: Metrics, Parameters, and Plots'
+description: 'Get started with DVC parameters, metrics, and plots. Learn how to
+capture, evaluate, and visualize ML projects without leaving Git.'
 ---
 
 # Get Started: Metrics, Parameters, and Plots
+
+<details>
+
+## 🎬 Click to watch a video intro.
+
+https://youtu.be/bu3l75eQlQo
+
+</details>
 
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 <abbr>parameters</abbr>, and visualize performance with
 [plots](/doc/command-reference/plots). These concepts are introduced below.
 
-> All of the above can be combined into <abbr>experiments</abbr> to run and
-> compare many iterations of your ML project.
+<admon type="tip">
 
-https://youtu.be/bu3l75eQlQo
+All of the above can be combined into [experiments] to run and compare many
+iterations of your ML project.
+
+[experiments]: /doc/start/experiment-management/experiments
+
+</admon>
 
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
-[pipeline from before](/doc/start/data-pipelines):
+[pipeline from before](/doc/start/data-management/data-pipelines):
 
 ```dvc
 $ dvc run -n evaluate \
@@ -150,7 +164,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 Let's save this iteration, so we can compare it later:
 
 ```dvc
-$ git add scores.json prc.json roc.json
+$ git add .gitignore dvc.yaml dvc.lock evaluation.json evaluation
 $ git commit -a -m "Create evaluation stage"
 ```
 
@@ -192,9 +206,9 @@ featurize:
 ### ⚙️ Expand to recall how it was generated.
 
 The `featurize` stage
-[was created](/doc/start/data-pipelines#dependency-graphs-dag) with this
-`dvc run` command. Notice the argument sent to the `-p` option (short for
-`--params`):
+[was created](/doc/start/data-management/data-pipelines#dependency-graphs-dag)
+with this `dvc run` command. Notice the argument sent to the `-p` option (short
+for `--params`):
 
 ```dvc
 $ dvc run -n featurize \

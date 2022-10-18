@@ -9,14 +9,14 @@ To start using DVCLive, add a few lines to your training code in **any**
 [Fast.ai](https://docs.fast.ai/) project.
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/fastai.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/fastai.py)
 int the callbacks list passed to your
 [`Learner`](https://docs.fast.ai/learner.html#Learner):
 
 ```git
 +from dvclive.fastai import DvcLiveCallback
 
-. . .
+...
 
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(

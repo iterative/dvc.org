@@ -46,7 +46,7 @@ graph] and execute them.
 See the guide on [defining pipeline stages] for more details.
 
 [defining pipeline stages]:
-  /doc/user-guide/data-pipelines/defining-pipelines#pipelines
+  /doc/user-guide/pipelines/defining-pipelines#pipelines
 
 </admon>
 
@@ -91,9 +91,10 @@ Relevant notes:
   [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
   for more info.)
 
-- [external dependencies](/doc/user-guide/external-dependencies) and
-  [external outputs](/doc/user-guide/managing-external-data) (outside of the
-  <abbr>workspace</abbr>) are also supported (except metrics and plots).
+- [external dependencies](/doc/user-guide/data-management/importing-external-data)
+  and [external outputs](/doc/user-guide/data-management/managing-external-data)
+  (outside of the <abbr>workspace</abbr>) are also supported (except metrics and
+  plots).
 
 - Outputs are deleted from the workspace before executing the command (including
   at `dvc repro`) if their paths are found as existing files/directories (unless
@@ -111,7 +112,7 @@ Relevant notes:
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
 
-[dependency graph]: /doc/user-guide/data-pipelines/defining-pipelines
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 ### For displaying and comparing data science experiments
 
@@ -139,7 +140,7 @@ data science experiments.
   on. Multiple dependencies can be specified like this:
   `-d data.csv -d process.py`. Usually, each dependency is a file or a directory
   with data, or a code file, or a configuration file. DVC also supports certain
-  [external dependencies](/doc/user-guide/external-dependencies).
+  [external dependencies](/doc/user-guide/data-management/importing-external-data).
 
   When you use `dvc repro`, the list of dependencies helps DVC analyze whether
   any dependencies have changed and thus executing stages required to regenerate
@@ -192,12 +193,11 @@ data science experiments.
   is typically desirable with _metrics_ because they are small enough to be
   tracked with Git directly.
 
-- `--plots <path>` - specify a plot metrics file produces by this stage. This
-  option behaves like `-o` but registers the file in a `plots` field inside the
-  `dvc.yaml` stage. Plot metrics are data series stored in tabular (CSV or TSV)
-  or hierarchical (JSON or YAML) files, with complex information that describes
-  a model (or any other data artifact). See `dvc plots` to learn more about
-  plots.
+- `--plots <path>` - specify a plots file or directory produced by this stage.
+  This option behaves like `-o` but registers the file or directory in a `plots`
+  field inside the `dvc.yaml` stage. Plots outputs are either data series stored
+  in tabular (CSV or TSV) or hierarchical (JSON or YAML) files, or image (JPEG,
+  GIF, or PNG) files. See [Visualizing Plots] to learn more about plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots file (same as with `-O` and `-M` above). This may be desirable
@@ -217,7 +217,7 @@ data science experiments.
   when reproducing the pipeline.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
+  [Managing External Data](/doc/user-guide/data-management/managing-external-data).
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
@@ -228,6 +228,8 @@ data science experiments.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Examples
 

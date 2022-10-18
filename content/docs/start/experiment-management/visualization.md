@@ -1,14 +1,17 @@
 ---
 title: 'Get Started: Visualization with Plots'
+description: 'Get started with visualizing DVC experiments with plots.'
 ---
 
 # Get Started: Visualization with Plots
 
-In this section, we'll add visualization to the [`example-dvc-experiments`][ede]
-project (explored [previously](/doc/start/experiments)). If you would like to
-try these yourself, please refer to the project. [README] about how to install.
+In this section, we'll add visualization to the [`example-dvc-experiments`]
+project (explored [previously]). If you would like to try this yourself, refer
+to the project's [README] on how to install it.
 
-[ede]: https://github.com/iterative/example-dvc-experiments
+[`example-dvc-experiments`]:
+  https://github.com/iterative/example-dvc-experiments
+[previously]: /doc/start/experiment-management/experiments
 [readme]:
   https://github.com/iterative/example-dvc-experiments/blob/main/README.md
 
@@ -111,5 +114,5 @@ workflow:
 
 - [DVCLive] integrations can produce plots automatically during training.
 
-[plot outputs]: /doc/user-guide/visualizing-plots
+[plot outputs]: /doc/user-guide/experiment-management/visualizing-plots
 [dvclive]: /doc/dvclive/dvclive-with-dvc

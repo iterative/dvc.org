@@ -122,12 +122,12 @@ import dvc.api.open
 model_path = 'model.pkl'
 repo_url = 'https://github.com/example/registry'
 
-with dvc.api.open(model_path, repo_url) as fd:
-    model = pickle.load(fd)
+with dvc.api.open(model_path, repo_url) as f:
+    model = pickle.load(f)
     # ... Use the model!
 ```
 
-This opens `model.pkl` as a file descriptor. This example illustrates a simple
+This opens `model.pkl` as a file-like object. This example illustrates a simple
 ML model **deployment** method, but it could be extended to more advanced
 scenarios such as a _model zoo_.
 

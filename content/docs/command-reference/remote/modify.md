@@ -559,11 +559,11 @@ can propagate from an Azure configuration file (typically managed with
 > file.
 
 Please see
-[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
+[Set up a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote)
 for a full guide on using Google Drive as DVC remote storage.
 
 - `url` - remote location. See
-  [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format).
+  [valid URL format](/doc/user-guide/how-to/setup-google-drive-remote#url-format).
 
   ```dvc
   $ dvc remote modify myremote url \
@@ -571,7 +571,7 @@ for a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
-  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended).
+  [custom Google Client project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended).
   Also requires using `gdrive_client_secret`.
 
   ```dvc
@@ -607,8 +607,9 @@ for a full guide on using Google Drive as DVC remote storage.
         gdrive_user_credentials_file path/to/mycredentials.json
   ```
 
-See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
-more details.
+See
+[Authorization](/doc/user-guide/how-to/setup-google-drive-remote#authorization)
+for more details.
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
   [trash](https://developers.google.com/drive/api/v2/reference/files/trash)

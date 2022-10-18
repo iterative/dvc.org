@@ -9,13 +9,13 @@ To start using DVCLive you just need to add a few lines to your training code in
 **any** [XGBoost](https://xgboost.ai/) project.
 
 You just need to add the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/xgb.py)
 to the callbacks list passed to the `xgboost.train` call:
 
 ```git
 +from dvclive.xgb import DvcLiveCallback
 
-. . .
+...
 
 xgboost.train(
     param,

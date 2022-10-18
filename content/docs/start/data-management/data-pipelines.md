@@ -1,10 +1,18 @@
 ---
 title: 'Get Started: Data Pipelines'
-description: 'Learn how to build and use DVC pipelines to capture, organize,
+description: 'Get started with DVC pipelines. Learn how to capture, organize,
 version, and reproduce your data science and machine learning workflows.'
 ---
 
 # Get Started: Data Pipelines
+
+<details>
+
+## 🎬 Click to watch a video intro.
+
+https://youtu.be/71IGzyH95UY
+
+</details>
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
@@ -16,10 +24,6 @@ allows you to better organize projects, and reproduce your workflow and results
 later — exactly as they were built originally! For example, you could capture a
 simple ETL workflow, organize a data science project, or build a detailed
 machine learning pipeline.
-
-Watch and learn, or follow along with the code example below!
-
-https://youtu.be/71IGzyH95UY
 
 ## Pipeline stages
 
@@ -77,7 +81,7 @@ want to run (`python src/prepare.py data/data.xml`), its
 
 DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
-[manually](/doc/start/data-and-model-versioning).
+[manually](/doc/start/data-management/data-versioning).
 
 <details id="stage-expand-to-see-what-happens-under-the-hood">
 
@@ -90,9 +94,9 @@ The command options used above mean the following:
 
 - `-p prepare.seed,prepare.split` defines special types of dependencies —
   [parameters](/doc/command-reference/params). We'll get to them later in the
-  [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) page,
-  but the idea is that the stage can depend on field values from a parameters
-  file (`params.yaml` by default):
+  [Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
+  page, but the idea is that the stage can depend on field values from a
+  parameters file (`params.yaml` by default):
 
 ```yaml
 prepare:
@@ -149,7 +153,8 @@ Once you added a stage, you can run the pipeline with `dvc repro`. Next, you can
 use `dvc push` if you wish to save all the data [to remote storage] (usually
 along with `git commit` to version DVC metafiles).
 
-[to remote storage]: /doc/start/data-and-model-versioning#storing-and-sharing
+[to remote storage]:
+  /doc/start/data-management/data-versioning#storing-and-sharing
 
 ## Dependency graphs (DAG)
 
@@ -171,7 +176,7 @@ $ dvc stage add -n featurize \
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
-[dag]: /doc/user-guide/data-pipelines/defining-pipelines
+[dag]: /doc/user-guide/pipelines/defining-pipelines
 
 <details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
@@ -209,8 +214,8 @@ The changes to the `dvc.yaml` should look like this:
 
 ### ⚙️ Expand to add more stages.
 
-Let's add the training itself. Nothing new this time; just the same `dvc run`
-command with the same set of options:
+Let's add the training itself. Nothing new this time; just the same
+`dvc stage add` command with the same set of options:
 
 ```dvc
 $ dvc stage add -n train \

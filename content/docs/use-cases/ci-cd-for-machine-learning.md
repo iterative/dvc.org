@@ -55,8 +55,8 @@ code. Instead, DVC stores meta-information in Git ("codifying" data and ML
 models) while pushing the actual data content to
 [cloud storage](/doc/command-reference/remote). DVC also provides metrics-driven
 navigation in Git repositories --
-[tabulating and plotting](/doc/start/metrics-parameters-plots) model metrics
-changes across commits.
+[tabulating and plotting](/doc/start/data-management/metrics-parameters-plots)
+model metrics changes across commits.
 
 **Low friction**: Our sister project CML provides
 [lightweight machine resource orchestration](https://cml.dev/doc/self-hosted-runners)
@@ -74,10 +74,10 @@ deploy and deliver new versions several times a day -- and even before the
 weekend -- without fear of bugs/regressions.
 
 **Metrics (Model Validation)**: Whenever a change is committed, DVC can check
-that the [pipeline](/doc/start/data-pipelines) (including data, parameters,
-code, and metrics) is up to date, thereby ensuring that Git commits and model
-artifacts are in sync. DVC can also run benchmarks against previously deployed
-models before a new one is
+that the [pipeline](/doc/start/data-management/data-pipelines) (including data,
+parameters, code, and metrics) is up to date, thereby ensuring that Git commits
+and model artifacts are in sync. DVC can also run benchmarks against previously
+deployed models before a new one is
 [released into production](/doc/use-cases/data-registry). CML provides useful
 tools to make this process easy -- including reporting metric changes with
 interactive graphs and tables in pull request comments.
@@ -90,8 +90,8 @@ a regularly updated source, checkout a pre-existing model, and then deploy an
 updated model refined on the additional data.
 
 **Experiment in the Cloud**: Alternatively, DVC and CML can be used to do
-research and run [experiments](/doc/start/experiments) in the cloud -- such as
-an entire hyperparameter search!
+research and run [experiments](/doc/start/experiment-management/experiments) in
+the cloud -- such as an entire hyperparameter search!
 
 <img src="https://static.iterative.ai/logo/dvc.svg" alt="DVC" width="24px" style="vertical-align: text-top"/> +
 <img src="https://static.iterative.ai/logo/cml.svg" alt="CML" width="24px" style="vertical-align: text-top"/>

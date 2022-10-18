@@ -1,4 +1,4 @@
-# External Dependencies
+# Importing External Data
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its preferable to avoid moving it from its current external location.
@@ -7,8 +7,8 @@ running [Dask](https://dask.org/) via SSH, or for a script that streams data
 from S3 to process it.
 
 _External dependencies_ and
-[external outputs](/doc/user-guide/managing-external-data) provide ways to track
-and version data outside of the <abbr>project</abbr>.
+[external outputs](/doc/user-guide/data-management/managing-external-data)
+provide ways to track and version data outside of the <abbr>project</abbr>.
 
 ## How external dependencies work
 

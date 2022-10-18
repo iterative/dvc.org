@@ -31,10 +31,14 @@ positional arguments:
 You can use `dvc exp run --queue` to queue ML experiments. `dvc queue` provides
 an interface to process and manage these queued tasks.
 
-📖 See [this guide] for more information on experiment queues.
+<admon icon="book">
+
+See [this guide] for more information on experiment queues.
 
 [this guide]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+
+</admon>
 
 ## Options
 

@@ -40,8 +40,8 @@ Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
 > If you're using Windows, please review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience.
+> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+> important tips to improve your experience.
 
 Okay! Let's first download the code and set up a Git repository:
 
@@ -132,7 +132,7 @@ You can use this command instead of `git add` on files or directories that are
 too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
-[file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a tiny, human-readable `.dvc` file that
 serves as a pointer to the cache.
@@ -342,16 +342,18 @@ very convenient having to remember to do so every time the dataset changes.
 Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
 handy. We touched on it briefly when we described `dvc run` and `dvc repro`. The
 next step would be splitting the script into two parts and utilizing pipelines.
-See [Get Started: Data Pipelines](/doc/start/data-pipelines) to get hands-on
-experience with pipelines, and try to apply it here. Don't hesitate to join our
-[community](/chat) and ask any questions!
+See [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) to
+get hands-on experience with pipelines, and try to apply it here. Don't hesitate
+to join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See
-`dvc metrics`,
-[Comparing Changes](/doc/start/metrics-parameters-plots#comparing-iterations),
-and
-[Comparing Many Experiments](/doc/start/experiments#comparing-many-experiments)
-to learn more about managing metrics with DVC.
+`dvc metrics`, [Comparing Changes], and [Comparing Many Experiments] to learn
+more about managing metrics with DVC.
+
+[comparing changes]:
+  /doc/start/data-management/metrics-parameters-plots#comparing-iterations
+[comparing many experiments]:
+  /doc/start/experiment-management/experiments#comparing-many-experiments

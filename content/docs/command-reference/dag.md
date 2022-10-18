@@ -25,7 +25,7 @@ the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a `target` stage
 name to show the pipeline up to that point.
 
 [directed acyclic graph]:
-  /doc/user-guide/data-pipelines/defining-pipelines#directed-acyclic-graph-dag
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Paginating the output
 
@@ -35,7 +35,7 @@ This command's output is automatically piped to
 is not available (e.g. on Windows), the output is simply printed out.
 
 > It's also possible to
-> [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+> [enable `less` on Windows](/doc/user-guide/how-to/run-dvc-on-windows#enabling-paging-with-less).
 
 > Note that this also applies to `dvc exp show`.
 

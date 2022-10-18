@@ -1,7 +1,5 @@
 # Checkpoints
 
-_New in DVC 2.0_
-
 To track successive steps in a longer machine learning experiment, you can
 register checkpoints from your code at runtime, for example to track the
 progress with deep learning techniques. They can help you
@@ -84,7 +82,7 @@ you have everything you need to get started with experiments and checkpoints.
 
 DVC can version data as well as the ML model weights file in checkpoints during
 the training process. To enable this, you will need to set up a
-[DVC pipeline](/doc/start/data-pipelines) to train your model.
+[DVC pipeline](/doc/start/data-management/data-pipelines) to train your model.
 
 Now we need to add a training stage to `dvc.yaml` including `checkpoint: true`
 in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
@@ -450,8 +448,7 @@ new set of checkpoints under a new experiment branch.
 When you terminate training, you'll see a few commands in the terminal that will
 allow you to add these changes to Git, making them [persistent]:
 
-[persistent]:
-  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ```dvc
 To track the changes with git, run:
