@@ -18,16 +18,8 @@ Iterative Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
 experiments. This means that to enable experimentation from Iterative Studio,
 you need to do the following:
 
-1. First, integrate your Git repository with a CI/CD setup that includes model
-   training process. You can do this in one of two ways:
-
-   - by
-     [using the wizard provided by Iterative Studio](#use-the-iterative-studio-wizard-to-set-up-your-ci-action).
-   - by creating the CI set up on your own. For this, create workflow files
-     (such as GitHub Actions) that get triggered on push or pull request. For
-     more details on how to set up
-     [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
-     refer to [CML](https://cml.dev).
+1. First,
+   [integrate your Git repository with a CI/CD setup that includes model training process](/doc/studio/user-guide/prepare-your-repositories#prepare-your-repositories-to-run-new-experiments).
 
 2. Then,
    [submit your experiment from Iterative Studio](#submit-a-new-experiment). The
