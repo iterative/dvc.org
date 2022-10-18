@@ -52,6 +52,13 @@ The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
 working directory with its original file name e.g. `data.txt` (or to a location
 provided with `out`).
 
+<admon type="tip">
+
+See `dvc list-url` for a way to browse the external location for files and
+directories to download.
+
+</admon>
+
 An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
@@ -63,11 +70,11 @@ update the import later, if the data source has changed (see `dvc update`).
 > `dvc import`).
 
 `.dvc` files support references to data in an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such an
-import `.dvc` file, the `deps` field stores the external URL, and the `outs`
-field contains the corresponding local path in the <abbr>workspace</abbr>. It
-records enough metadata about the imported data to enable DVC efficiently
-determining whether the local copy is out of date.
+[External Dependencies](/doc/user-guide/data-management/importing-external-data).
+In such an import `.dvc` file, the `deps` field stores the external URL, and the
+`outs` field contains the corresponding local path in the
+<abbr>workspace</abbr>. It records enough metadata about the imported data to
+enable DVC efficiently determining whether the local copy is out of date.
 
 Note that `dvc repro` doesn't check or update import `.dvc` files, use
 `dvc update` to bring the import up to date from the data source.
@@ -106,8 +113,8 @@ generating a pipeline [stage](/doc/command-reference/run) with an external
 dependency.
 
 > This is discussed in the
-> [External Dependencies](/doc/user-guide/external-dependencies) documentation,
-> where an alternative is demonstrated for each of these schemes.
+> [External Dependencies](/doc/user-guide/data-management/importing-external-data)
+> documentation, where an alternative is demonstrated for each of these schemes.
 
 Instead of:
 

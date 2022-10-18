@@ -4,9 +4,9 @@ Show changes in the <abbr>project</abbr> [pipelines](/doc/user-guide/pipelines),
 as well as file mismatches either between the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, or between the cache and remote storage.
 
-<admon type="info">
+<admon type="tip">
 
-For an equivalent to `git status`, use `dvc data status`.
+For the status of tracked data, see `dvc data status` (similar to `git status`).
 
 </admon>
 

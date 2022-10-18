@@ -42,7 +42,7 @@ files to find stages, rebuilding all the pipelines that these may define.
 
 [data versioning]: /doc/start/data-management/data-versioning
 [metrics]: /doc/command-reference/metrics
-[plots]: /doc/user-guide/visualizing-plots
+[plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 <details>
 
@@ -172,7 +172,7 @@ A less common kind of dependency is a _URL dependency_. Instead of files in a
 local disk, you can `dvc import` data from another <abbr>DVC project</abbr> (for
 example hosted on GitHub). External dependencies establish relationships between
 different projects or systems (see `dvc import-url`).
-[Get all the details](/doc/user-guide/external-dependencies).
+[Get all the details](/doc/user-guide/data-management/importing-external-data).
 
 <admon type="info">
 
