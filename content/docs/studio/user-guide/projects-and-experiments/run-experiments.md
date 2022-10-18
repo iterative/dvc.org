@@ -71,37 +71,21 @@ This step is responsible for launching a self-hosted runner within your cloud
 vendor. The parameters listed here are a subset of the parameters for
 [CML self-hosted runners](https://cml.dev/doc/self-hosted-runners).
 
-- `Spot`: Whether you want to launch a spot cloud instance, cutting down the
-  costs of your training.
-
-- `Cloud`: Your cloud provider.
-
-- `Region`: Cloud-vendor specific region or a CML synthetic region (an
-  abstraction across all the cloud vendors).
-
-- `Type`: Cloud-vendor specific instance type or a CML synthetic type
-  `M`/`L`/`XL` (an abstraction across all the cloud vendors).
-
-  `Type` is also tied to GPU behavior. If you choose an instance with a
-  selectable GPU (such as a CML instance type or any GCP instance), the `GPU`
-  parameter will show up.
-
-- `HDD size`: Hard disk size in GB. We highly recommend you to enter a big
-  enough value (eg, 100) to avoid unexpected runner termination due to hard disk
-  exhaustion.
-- `Reuse`: Values for the CML flags `reuse` and `reuse-idle`. See all
-  [CML options](https://cml.dev/doc/ref/runner#options) for details.
-
-- `Labels`: Text labels to identify your CML runners from other self hosted
-  runners that you might have.
+| Parameter  | Meaning                                                                                                                                                                                                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Spot`     | Whether you want to launch a spot cloud instance, cutting down the costs of your training.                                                                                                                                                                                                        |
+| `Cloud`    | Your cloud provider.                                                                                                                                                                                                                                                                              |
+| `Region`   | Cloud-vendor specific region or a CML synthetic region (an abstraction across all the cloud vendors).                                                                                                                                                                                             |
+| `Type`     | Cloud-vendor specific instance type or a CML synthetic type `M`/`L`/`XL` (an abstraction across all the cloud vendors). `Type` is also tied to GPU behavior. If you choose an instance with a selectable GPU (such as a CML instance type or any GCP instance), the `GPU` parameter will show up. |
+| `HDD size` | Hard disk size in GB. We highly recommend you to enter a big enough value (eg, 100) to avoid unexpected runner termination due to hard disk exhaustion.                                                                                                                                           |
+| `Reuse`    | Values for the CML flags `reuse` and `reuse-idle`. See all [CML options](https://cml.dev/doc/ref/runner#options) for details                                                                                                                                                                      |
+| `Labels`   | Text labels to identify your CML runners from other self hosted runners that you might have.                                                                                                                                                                                                      |
 
 ### Runner's job
 
-This is the script needed for your runner to execute your job, which would
-commonly include training your model. The default template is a very common
-combination of CML and DVC taking into account that DVC enables you to make the
-most of Iterative Studio. You can update this script to reflect your exact model
-training process, whether you use DVC or not.
+| Parameter    | Meaning                                                                                                                                                                                                                                                                                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Job script` | This is the script needed for your runner to execute your job, which would commonly include training your model. The default template is a very common combination of CML and DVC taking into account that DVC enables you to make the most of Iterative Studio. You can update this script to reflect your exact model training process, whether you use DVC or not. |
 
 ## Submit a new experiment
 
