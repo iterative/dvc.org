@@ -79,17 +79,26 @@ operation.
 
 ## Structure of the cache directory
 
-The DVC cache is a
-[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
-(by default in `.dvc/cache`), which adds a layer of indirection between code and
-data.
+The DVC cache is a [content-addressable storage] (found in `.dvc/cache` by
+default), which adds a layer of [indirection] between code and data.
 
-There are two ways in which the data is <abbr>cached</abbr>, depending on
-whether it's a single file, or a directory (which may contain multiple files).
+[content-addressable storage]:
+  https://en.wikipedia.org/wiki/Content-addressable_storage
+[indirection]: https://en.wikipedia.org/wiki/Indirection
 
-Note files are renamed, reorganized, and directory trees are flattened in the
-cache, which always has exactly one depth level with 2-character directories
-(based on hashes of the data contents, as explained next).
+<admon type="info">
+
+This structure is also used by [remote storage].
+
+[remote storage]: /doc/user-guide/data-management#remote-storage
+
+</admon>
+
+There are two ways in which data is <abbr>cached</abbr>, depending on whether
+it's a single file or a folder: Files are renamed and reorganized to prevent
+duplication. Directory trees are flattened so that the cache always has exactly
+one depth level containing 2-character directories (based on hashes of the data
+contents, as explained next).
 
 ### Files
 
@@ -99,10 +108,14 @@ rest become the file name of the cached file. For example, if a data file has a
 hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
 `.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
 
-> Note that file hashes are calculated from file contents only. 2 or more files
-> with different names but the same contents can exist in the workspace and be
-> tracked by DVC, but only one copy is stored in the cache. This helps avoid
-> data duplication.
+<admon type="info">
+
+File hashes are calculated from file contents only. 2 or more files with
+different names but the same contents can exist in the workspace and be tracked
+by DVC, but only one copy is stored in the cache. This helps avoid data
+duplication.
+
+</admon>
 
 ### Directories
 

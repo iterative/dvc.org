@@ -1,47 +1,76 @@
 # Data Management with DVC
 
 DVC helps you manage and share arbitrarily large files, datasets, and ML models
-anywhere: mounted drives, Network Attached Storage (NAS), external devices, or
+anywhere: mounted drives, network resources (e.g. NAS), external devices, or
 remotely (SSH servers, cloud storage, etc.). Once the project is configured, you
-can manipulate files normally in your local workspace, and DVC tracks, restores,
-and synchronizes them across locations.
+can manipulate files normally in your local workspace. DVC tracks, restores, and
+synchronizes them across locations.
 
-![]() _Figure 1_
+![]() _Local, external, and remote storage locations_
 
-## Separating data from code (local cache)
+## The data cache
 
-First, large files, data artifacts, ML models are replaced with small
-[metafiles]; We call this process _codification_. The actual data files are then
-cached by DVC in a separate data store, and linked to your project.
+<abbr>DVC projects</abbr> separate data from code by replacing large files, data
+artifacts, ML models, etc. in your <abbr>workspace</abbr> with small
+[metafiles]; We call this process _codification_ (of the data). The actual file
+contents are cached in an independent data store and linked to your project.
 
-![]() _Figure 2_
+![]() _Separating code from data_
 
-All DVC projects need fast storage access to a data <abbr>cache</abbr>. By
-default it's local (in `.dvc/cache`), but it can be moved to and external
-location in the file system or to a network location, for example to [share it]
-among several projects.
+<admon type="info">
 
-A DVC cache could even be setup in a remote system and accessed through the
+In order to [avoid duplicate content], and to support
+[versioning features](#data-versioning), files and directories are reorganized
+in the cache into a [content-addressable structure].
+
+[avoid duplicate content]:
+  /doc/user-guide/data-management/large-dataset-optimization
+
+</admon>
+
+DVC expects fast storage access to the <abbr>cache</abbr>, so it's local to the
+project by default (found in `.dvc/cache`). It can, however, be moved to an
+external location in the file system or network, for example to [share it] among
+several projects.
+
+<admon type="tip">
+
+A DVC cache could even be set up in a remote system and accessed through the
 internet, but this is typically too slow for working with the data regularly.
+
+</admon>
 
 [metafiles]: /doc/user-guide/project-structure
 [share it]: /doc/user-guide/how-to/share-a-dvc-cache
+[content-addressable structure]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
-## Remote storage (DVC remotes)
+## Remote storage
 
-DVC supports remote storage locations like SSH servers or cloud services (Amazon
-S3, Google Drive, Azure Blob Storage, etc.). This is mainly useful to upload
-copies of your project's cache in order to share and back up all or some of your
-datasets and models.
+Optionally, DVC supports additional storage locations such as cloud services
+(Amazon S3, Google Drive, Azure Blob Storage, etc.), SSH servers, HDFS, and
+others. [DVC remotes] are typically used to sync copies of all or some of your
+datasets and models, for sharing or backup.
+
+![]() _Distributed collaboration on DVC projects_
+
+<admon type="info">
+
+Remote storage uses the same [structure][content-addressable structure] of the
+data cache.
+
+</admon>
+
+[dvc remotes]: /doc/command-reference/remote
 
 ## Data Versioning
 
-DVC applies source code management (SCM) to data and machine learning. The
-metafiles in your repo can be handled with standard [Git workflows] ([version
-control], branching, pull requests, etc.).
+DVC brings source code management (SCM) to data science. Specifically, the
+metafiles in your repo can be handled with standard [Git workflows] (commits,
+branching, pull requests, etc.). This way machine learning teams can apply
+mature software engineering practices.
 
 [git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
-[version control]: /doc/use-cases/versioning-data-and-models
 
 <admon icon="book">
 
