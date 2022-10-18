@@ -111,7 +111,7 @@ To build on the previous section, you can optionally wrap our code with DVC to
 run [DVC experiments](/doc/user-guide/experiment-management/) and enable new
 ways to compare and visualize our experiments.
 
-You can find below how an example `dvc.yaml` containing a single sage `train`,
+You can find below an example `dvc.yaml` containing a single stage `train`,
 that runs the script from previous steps and tracks the
 [DVCLive outputs](/doc/dvclive/outputs) as `dvc metrics` and `dvc plots`:
 
@@ -142,7 +142,7 @@ Running stage 'train':
 ...
 ```
 
-## Compare and visualize experiments
+## Compare and visualize DVC experiments
 
 After following the above steps, you have enabled different ways of monitoring
 the training, comparing, and visualizing the experiments:
@@ -163,7 +163,7 @@ and
 views.
 
 ![Experiments view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/experiments-table.png)
-![Plost view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/plots-trends.png)
+![Plots view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/plots-trends.png)
 
 ## Share experiments
 
