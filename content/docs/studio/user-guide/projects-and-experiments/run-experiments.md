@@ -16,14 +16,22 @@ your model training using Iterative Studio.
 
 Iterative Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
 experiments. This means that to enable experimentation from Iterative Studio,
-you need to do the following:
+you should do the following:
 
 1. First,
    [integrate your Git repository with a CI/CD setup that includes model training process](/doc/studio/user-guide/prepare-your-repositories#prepare-your-repositories-to-run-new-experiments).
+   You can
+   [use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
+   to automatically generate the CI script, or you can write it on your own.
 
 2. Then,
-   [submit your experiment from Iterative Studio](#submit-a-new-experiment). The
-   submission will invoke your CI/CD setup, triggering the model training
+   [setup the yaml workflow ENV vars as secrets](https://cml.dev/doc/self-hosted-runners#environment-variables).
+   This is needed so that your CI workflow can launch the runner in your desired
+   cloud provider.
+
+3. Now, you can
+   [submit your experiments from Iterative Studio](#submit-a-new-experiment).
+   Each submission will invoke your CI/CD setup, triggering the model training
    process.
 
 > Due to access restrictions, you cannot run experiments on the demo project
@@ -46,7 +54,14 @@ The CI setup wizard has two sections, pre-filled with default values:
   2. [Job script, which is used in the `runner-job` step of your CI workflow](#runners-job-script)
 
 - Right section which displays the
-  [generated yaml to be used in your CI set up](#ci-yaml).
+  [generated yaml to be used in your CI set up](#ci-yaml). It reflects all your
+  input parameters. Use the
+  `Copy to clipboard and paste in your CI Workflow file` link to copy the
+  generated yaml and create your CI script.
+
+That's it! At this point you should have CML in place within your CI/CD to run
+your experiments. After this, proceed with submitting your experiments as
+described below.
 
 ![](https://static.iterative.ai/img/studio/set_up_cml_full.png)
 
@@ -87,27 +102,6 @@ commonly include training your model. The default template is a very common
 combination of CML and DVC taking into account that DVC enables you to make the
 most of Iterative Studio. You can update this script to reflect your exact model
 training process, whether you use DVC or not.
-
-### Generated CI yaml
-
-The right section displays the generated CI yaml content, which reflects all
-your input parameters.
-
-Just above the yaml textarea (and also below it), you will find a
-`Copy to clipboard and paste in your CI Workflow file` link. Once you have
-specified all your parameters, click on this link to copy the yaml content and
-open the editor in your Git provider.
-
-Paste the content here to create your CI script.
-
-There is yet a final and crucial step. In other to be able to work effectively
-with your repo and be able to launch the runner in your desired cloud provider:
-Setup the yaml workflow ENV vars as secrets. You can learn how to do this simple
-step [here](https://cml.dev/doc/self-hosted-runners#environment-variables).
-
-That's it! At this point you should have CML in place within your CI/CD to run
-your experiments. After this, proceed with submitting your experiments as
-described below.
 
 ## Submit a new experiment
 

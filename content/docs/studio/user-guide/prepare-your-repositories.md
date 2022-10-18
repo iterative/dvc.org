@@ -64,7 +64,8 @@ or pull request.
 
 You can
 [use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
-to automatically generate the workflow configuration.
+to automatically generate the workflow configuration, or you can write it on
+your own.
 
 For more details on how to set up
 [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
