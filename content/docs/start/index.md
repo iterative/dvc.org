@@ -56,10 +56,10 @@ trail below to see an overview of all features from that perspective:
   without storing large files in the repo. Data is cached by DVC, allowing for
   efficient sharing. Think "Git for data".
 
-- **[Data and model access]** covers using data artifacts from outside of the
-  project and/or importing data artifacts from another DVC project. This can
-  help to download a specific version of an ML model to a deployment server or
-  import a model to another project, for example.
+- **[Data and model access]** shows how to bring, explore, and access data
+  artifacts from outside the project. This can help download a specific version
+  of an ML model to a deployment server or import a dataset into another
+  project, for example.
 
 - **[Data pipelines]** describe how models and other data artifacts are built,
   and provide an efficient way to reproduce them. Think "Makefiles for data and
