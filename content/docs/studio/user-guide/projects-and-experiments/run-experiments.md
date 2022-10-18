@@ -54,7 +54,7 @@ The wizard UI is divided in two sections:
 
 - Left section with 2 sets of parameters:
 
-  1. [Configuration of your self-hosted runner, which is used in the `Deploy runner` step of your CI process](#step-1-deploy-runner)
+  1. [Configuration of your self-hosted runner, which is used in the `deploy-runner` step of your CI workflow](#step-1-deploy-runner)
   2. [Model training script, which is used in the `Train` step of your CI process](#step-2-train)
 
 - Right section which displays in real-time the
@@ -74,12 +74,6 @@ vendor. The parameters listed here are a subset of the parameters for
 - `Spot`: Whether you want to launch a spot cloud instance, cutting down the
   costs of your training.
 
-- `Reuse`: Values for the CML flags `reuse` and `reuse-idle`. See all
-  [CML options](https://cml.dev/doc/ref/runner#options) for details.
-
-- `Labels`: Text labels to identify your CML runners from other self hosted
-  runners that you might have.
-
 - `Cloud`: Your cloud provider.
 
 - `Region`: Cloud-vendor specific region or a CML synthetic region (an
@@ -95,10 +89,16 @@ vendor. The parameters listed here are a subset of the parameters for
 - `HDD size`: Hard disk size in GB. We highly recommend you to enter a big
   enough value (eg, 100) to avoid unexpected runner termination due to hard disk
   exhaustion.
+  
+  - `Reuse`: Values for the CML flags `reuse` and `reuse-idle`. See all
+  [CML options](https://cml.dev/doc/ref/runner#options) for details.
 
-### Step 2: Train
+- `Labels`: Text labels to identify your CML runners from other self hosted
+  runners that you might have.
 
-This is the script needed for your runner to train your model. The default
+### Step 2: Runner's Job
+
+This is the script needed for your runner to execute your job, commonly training your model. The default
 template is a very common combination of CML and DVC taking into account that
 DVC enables you to make the most of Iterative Studio. You can update this script
 to reflect your exact model training process, whether you use DVC or not.
@@ -113,6 +113,8 @@ specified all your parameters, click on this link to copy the yaml content.
 
 Then, click on `paste in your CI Workflow file`. This will open the editor in
 your Git provider. Paste the content here to create your CI script.
+
+There is yet a final and crucial step. In other to be able to work effectively with your repo and be able to launch the runner in your desired cloud provider: Setup the yaml workflow ENV vars as secrets. You can learn how to do this simple step [here](https://cml.dev/doc/self-hosted-runners#environment-variables).
 
 That's it! At this point you should have CML in place within your CI/CD to run
 your experiments. After this, proceed with submitting your experiments as
