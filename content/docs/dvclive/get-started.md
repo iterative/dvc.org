@@ -111,8 +111,8 @@ To build on the previous section, you can optionally wrap our code with DVC to
 run [DVC experiments](/doc/user-guide/experiment-management/) and enable new
 ways to compare and visualize our experiments.
 
-You can find below an example `dvc.yaml` containing a single stage `train`,
-that runs the script from previous steps and tracks the
+You can find below an example `dvc.yaml` containing a single stage `train`, that
+runs the script from previous steps and tracks the
 [DVCLive outputs](/doc/dvclive/outputs) as `dvc metrics` and `dvc plots`:
 
 ```yaml
