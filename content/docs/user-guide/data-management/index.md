@@ -95,3 +95,6 @@ To simplify remote data operations, DVC now supports native versioning of files
 and directories on several cloud providers. This means that you can browse your
 files normally as you would see them in your local workspace.
 -->
+
+The next page will cover the basic operations related to all the parts explained
+above.

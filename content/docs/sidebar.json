@@ -124,6 +124,10 @@
         "slug": "data-management",
         "source": "data-management/index.md",
         "children": [
+          {
+            "label": "Track, Sync, and Version",
+            "slug": "track-sync-version"
+          },
           "large-dataset-optimization",
           "importing-external-data",
           "managing-external-data"
