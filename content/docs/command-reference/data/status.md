@@ -35,7 +35,7 @@ you don't accidentally commit something you don't mean to.
 
 An example output might look something like follows:
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)

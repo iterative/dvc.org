@@ -13,35 +13,46 @@ it's also included automatically in more advanced features like [pipelining] and
 
 DVC is [similar to Git] in this area. To start tracking large files or
 directories, "add" them to DVC with the `dvc add` command. This hides the data
-from Git, moves it to the <abbr>cache</abbr>, [links it] back to the
-<abbr>workspace</abbr>, and creates an accompanying `.dvc` file (visible to
-Git). Now your code (including DVC metafiles) is physically separated from your
+from Git, moves it to the <abbr>cache</abbr>, and [links it] back to the
+<abbr>workspace</abbr>. It also creates an accompanying `.dvc` file (visible to
+Git). Now your code and configuration files are physically separated from your
 data!
 
 <admon type="info">
 
-`.dvc` files can be tracked (and versioned) with Git directly. This ties
-everything together (more about this in [Versioning data](#versioning-data)
-below).
+`.dvc` files can be tracked (and versioned) with Git directly (see
+[Versioning](#versioning-data)).
 
 </admon>
 
-To check what's happening with the data in your project, use `dvc data status`.
-This will list changes to DVC-tracked data as well as files unknown to DVC (or
-Git).
+To capture changes to tracked data, `dvc add` it again (alternatively,
+`dvc commit` will also do the trick). This caches the latest data present in the
+workspace and updates `.dvc` files accordingly (changes visible to Git).
 
-To capture changes to tracked data, `dvc add` it again. Alternatively,
-`dvc commit` will also do the trick. This caches the latest data present in the
-workspace and updates `.dvc` files accordingly (changes visible to Git). If you
-need to move or rename tracked data without content changes, use `dvc move`.
+If you need to move or rename tracked data, use `dvc move`. To stop tracking
+data altogether, use `dvc remove`. To also remove it from the cache (either the
+latest or historic versions), use `dvc gc`. See [more details].
 
-Finally, to stop tracking data, use `dvc remove`. To also remove it from the
-cache (either the latest or historic versions), use `dvc gc`. See [more
-details].
+Putting it all together, we can get an overview of the data in a project with
+`dvc data status`. This will list changes to DVC-tracked data as well as files
+unknown to DVC (or Git):
+
+```cli
+$ dvc data status
+Not in cache:
+        tmp/
+
+DVC committed changes:
+        added: data.xml
+        modified: data/features/
+
+DVC uncommitted changes:
+        deleted: model.pkl
+```
 
 <admon type="tip">
 
-Other commands related to tracking data: `dvc unprotect`, `dvc import`, and
+Other commands related to tracking data: `dvc unprotect`, `dvc import`,
 `dvc import-url`.
 
 </admon>
@@ -53,19 +64,52 @@ Other commands related to tracking data: `dvc unprotect`, `dvc import`, and
 
 ## Synchronizing data
 
-...
+DVC lets you [codify your data], configure the project's storage location(s),
+and stop worrying about low-level operations like copying, moving, renaming,
+uploading and downloading, etc.
+
+At a minimum, you'll have two locations: your <abbr>workspace</abbr> and a
+[cache directory]. The [data tracking](#tracking-data) operations already keep
+these in sync most of the time.
+
+<admon type="tip">
+
+The `dvc commit` and `dvc checkout` commands (normally for
+[versioning](#versioning-data)) let you force-sync them. This can be useful when
+unexpected errors occur (e.g. cache corruption).
+
+</admon>
 
 <!--
 remote add, modify, etc.
 push
 fetch
 pull
++ update
+
+? ### Access
+list, get, imports & update
 -->
+
+[codify your data]: /doc/use-cases/versioning-data-and-models
+[cache directory]: /doc/user-guide/data-management#the-data-cache
+[protected]: /doc/command-reference/unprotect
 
 ## Versioning data
 
-...
+You may have notices that most of the tracking and synchronization commands give
+hints about `git` commands to follow DVC operations. That's because the unifying
+aspect across DVC features (for data management and beyond) is _data [version
+control]_ (thus **DVC** 🙂).
 
 <!--
+commit(s)
+checkout(s)
+git ...
+install
 dvc diff
+--rev
 -->
+
+[version control]:
+  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
