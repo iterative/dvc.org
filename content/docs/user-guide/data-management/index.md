@@ -14,18 +14,17 @@ storage locations_
 <abbr>DVC projects</abbr> separate data from code by replacing large files, data
 artifacts, ML models, etc. in your <abbr>workspace</abbr> with small
 [metafiles]; We call this process _codification_ (of the data). The actual file
-contents are cached in an independent data store and linked to your project.
+contents are cached in an independent data store and [linked] to your project.
 
 ![Code vs. data](/img/code-vs-data.png) _Separating code from data_
 
 <admon type="info">
 
-In order to [avoid duplicate content], and to support
+In order to [avoid duplicate content][linked], and to support
 [versioning features](#data-versioning), files and directories are reorganized
 in the cache into a [content-addressable structure].
 
-[avoid duplicate content]:
-  /doc/user-guide/data-management/large-dataset-optimization
+[linked]: /doc/user-guide/data-management/large-dataset-optimization
 
 </admon>
 
@@ -72,9 +71,8 @@ your repo can be handled with standard [Git workflows] (commits, branching, pull
 requests, etc.). This way machine learning teams can apply mature software
 engineering practices.
 
-[version control]:
-  https://www.atlassian.com/git/tutorials/what-is-version-control
-[git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
+![Versioned ML project](/img/versioned-project.png) _Navigate versions with Git
+commits_
 
 <admon icon="book">
 
@@ -83,6 +81,10 @@ Refer to [Versioning Data and Models] to learn more.
 [versioning data and models]: /doc/use-cases/versioning-data-and-models
 
 </admon>
+
+[version control]:
+  https://www.atlassian.com/git/tutorials/what-is-version-control
+[git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
 
 <!--
 ## Cloud versioning
