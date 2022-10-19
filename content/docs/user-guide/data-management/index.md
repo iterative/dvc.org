@@ -67,11 +67,13 @@ data cache.
 
 ## Data Versioning
 
-DVC brings source code management (SCM) to data science. Specifically, the
-metafiles in your repo can be handled with standard [Git workflows] (commits,
-branching, pull requests, etc.). This way machine learning teams can apply
-mature software engineering practices.
+DVC brings [version control] to data science. Specifically, the metafiles in
+your repo can be handled with standard [Git workflows] (commits, branching, pull
+requests, etc.). This way machine learning teams can apply mature software
+engineering practices.
 
+[version control]:
+  https://www.atlassian.com/git/tutorials/what-is-version-control
 [git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
 
 <admon icon="book">
