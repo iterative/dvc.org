@@ -179,6 +179,12 @@ produces a regular stage in `dvc.yaml`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
+- `--version-aware` - capture cloud versioning information when importing the
+  file. By default, DVC will automatically capture cloud versioning information
+  if the URL contains a cloud versioning ID. When `--version-aware` is provided
+  along with a URL that does not contain a cloud versioning ID, DVC will capture
+  the latest version of the file.
+
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
