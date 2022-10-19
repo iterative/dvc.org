@@ -6,7 +6,8 @@ remotely (SSH servers, cloud storage, etc.). Once the project is configured, you
 can manipulate files normally in your local workspace. DVC tracks, restores, and
 synchronizes them across locations.
 
-![]() _Local, external, and remote storage locations_
+![Storage locations](/img/storage-locations.png) _Local, external, and remote
+storage locations_
 
 ## The data cache
 
@@ -15,7 +16,7 @@ artifacts, ML models, etc. in your <abbr>workspace</abbr> with small
 [metafiles]; We call this process _codification_ (of the data). The actual file
 contents are cached in an independent data store and linked to your project.
 
-![]() _Separating code from data_
+![Code vs. data](/img/code-vs-data.png) _Separating code from data_
 
 <admon type="info">
 
@@ -52,7 +53,8 @@ Optionally, DVC supports additional storage locations such as cloud services
 others. [DVC remotes] are typically used to sync copies of all or some of your
 datasets and models, for sharing or backup.
 
-![]() _Distributed collaboration on DVC projects_
+![Distributed collaboration](/img/distributed-collaboration.png) _Distributed
+collaboration on DVC projects_
 
 <admon type="info">
 
