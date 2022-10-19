@@ -5,27 +5,19 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-To start using DVCLive, add a few lines to your training code in **any**
-[Catalyst](https://catalyst-team.com/) project.
-
 Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/catalyst.py)
 int the callbacks list passed to your
 [`Runner`](https://catalyst-team.github.io/catalyst/core/runner.html):
 
-```git
-+from dvclive.catalyst import DvcLiveCallback
+```python
+from dvclive.catalyst import DvcLiveCallback
 
 ...
 
 runner.train(
-    model=model,
-    criterion=criterion,
-    optimizer=optimizer,
-    loaders=loaders,
--    num_epochs=2)
-+    num_epochs=2,
-+    callbacks=[DvcLiveCallback()])
+    model=model, criterion=criterion, optimizer=optimizer, loaders=loaders,
+    callbacks=[DvcLiveCallback()])
 ```
 
 The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
@@ -41,14 +33,6 @@ Where:
   [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
 - `{split}` can be either `train` or `valid`.
 - `{metric}` is the name provided by the framework.
-
-<admon type="tip">
-
-Without requiring additional modifications to your training code, you can use
-DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
-more info.
-
-</admon>
 
 ## Parameters
 
