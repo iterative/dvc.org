@@ -83,7 +83,7 @@ Refer to [Versioning Data and Models] to learn more.
 </admon>
 
 [version control]:
-  https://www.atlassian.com/git/tutorials/what-is-version-control
+  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 [git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
 
 <!--
