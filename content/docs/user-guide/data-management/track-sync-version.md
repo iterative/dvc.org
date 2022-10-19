@@ -80,11 +80,31 @@ unexpected errors occur (e.g. cache corruption).
 
 </admon>
 
+To enable additional storage locations, you can configure [DVC remotes] with the
+`dvc remote add` and `dvc remote modify` commands (see `dvc remote` for more
+options). Once this is done, use the `dvc push` and `dvc pull` commands to
+transfer data from between project and remote storage. This is the main
+mechanism to share and back up your work.
+
+![Sync ops among locations](/img/sync-ops-locations.png) _Data sync operations
+among locations_
+
+<admon type="tip">
+
+The `dvc fetch` transfers files downstream halfway, from remote storage to the
+<abbr>cache</abbr>. This can be useful to make sure that some data is available
+for checkout later.
+
+</admon>
+
+<admon type="info">
+
+Regardless of the name, "remotes" may be set up anywhere: local file systems,
+external devices or network locations, and remote servers or cloud platforms.
+
+</admon>
+
 <!--
-remote add, modify, etc.
-push
-fetch
-pull
 + update
 
 ? ### Access
@@ -94,13 +114,14 @@ list, get, imports & update
 [codify your data]: /doc/use-cases/versioning-data-and-models
 [cache directory]: /doc/user-guide/data-management#the-data-cache
 [protected]: /doc/command-reference/unprotect
+[dvc remotes]: /doc/user-guide/data-management#remote-storage
 
 ## Versioning data
 
-You may have notices that most of the tracking and synchronization commands give
+You may have noticed that most of the tracking and synchronization commands give
 hints about `git` commands to follow DVC operations. That's because the unifying
-aspect across DVC features (for data management and beyond) is _data [version
-control]_ (thus **DVC** 🙂).
+aspect across DVC features (for data management and beyond) is [data
+versioning].
 
 <!--
 commit(s)
@@ -111,5 +132,4 @@ dvc diff
 --rev
 -->
 
-[version control]:
-  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+[data versioning]: /doc/user-guide/data-management#data-versioning
