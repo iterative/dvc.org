@@ -75,6 +75,7 @@ for epoch in range(NUM_EPOCHS):
     for metric_name, value in metrics.items():
         live.log(metric_name, value)
 
+    live.make_report()
     live.next_step()
 ```
 
@@ -95,7 +96,7 @@ $ python train.py
 
 DVCLive will generate a [report](/doc/dvclive/outputs#report) in
 `dvclive/report.html` containing all the logged data. It will be automatically
-updated during training on each `step` update:
+updated during training:
 
 ![HTML report](/img/dvclive-html.gif).
 
@@ -103,10 +104,11 @@ In addition, the logged data will be stored in plain text files. For this simple
 example, it would look as follows:
 
 ```
-dvclive.json
 dvclive
-├── scalars
-│       └── metric.tsv
+├── metrics.json
+├── plots
+│   └── metrics
+│       └── accuracy.tsv
 └── report.html
 ```
 
@@ -134,10 +136,10 @@ stages:
     deps:
       - train.py
     metrics:
-      - dvclive.json:
+      - dvclive/metrics.json:
           cache: false
     plots:
-      - dvclive/scalars:
+      - dvclive/plots:
           cache: false
 ```
 
