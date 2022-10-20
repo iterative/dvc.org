@@ -645,6 +645,10 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
+                "slug": "get_step",
+                "label": "get_step()"
+              },
+              {
                 "slug": "log",
                 "label": "log()"
               },
@@ -667,10 +671,6 @@
               {
                 "slug": "make_report",
                 "label": "make_report()"
-              },
-              {
-                "slug": "get_step",
-                "label": "get_step()"
               },
               {
                 "slug": "next_step",
