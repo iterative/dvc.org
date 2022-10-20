@@ -1,9 +1,9 @@
 # Track, Sync, and Version Data
 
 Basic [data management] operations constitute the fundamental workflow of most
-DVC projects. This functionality can be used directly (as well cover here) but
-it's also included automatically in more advanced features like [pipelining] and
-[experiment management].
+<abbr>DVC projects</abbr>. This functionality can be used directly (as well
+cover here) but it's also included automatically in more advanced features like
+[pipelining] and [experiment management].
 
 [data management]: /doc/user-guide/data-management
 [pipelining]: /doc/user-guide/pipelines
@@ -53,7 +53,7 @@ DVC uncommitted changes:
 <admon type="tip">
 
 Other commands partially related to tracking data: `dvc status`,
-`dvc unprotect`, `dvc import`, `dvc import-url`.
+`dvc unprotect`, `dvc list`, `dvc import`, `dvc import-url`.
 
 </admon>
 
@@ -121,13 +121,13 @@ out hints about `git` commands to follow DVC operations. That's because the
 unifying aspect across DVC features (for data management and beyond) is [data
 versioning].
 
-The way this looks in practice is that many DVC operations write small
-[metafiles] to the <abbr>workspace</abbr>, which you can in turn track and
-version with Git, a feature-rich and battle-tested [SCM] tool.
+The way this looks is that many DVC operations write small [metafiles] to the
+<abbr>workspace</abbr>, which you can in turn track and version with Git, a
+feature-rich and battle-tested [SCM] tool.
 
-![]() _Data versioning on top of Git_
+![Versioning flow](/img/flow.png) _Data versioning flow on top of Git_
 
-Most common sequences:
+Some common sequences:
 
 - Check the `dvc data status` (or `dvc status`) before deciding what changes to
   track with Git.
@@ -141,6 +141,8 @@ Most common sequences:
   workspace.
 - After you `git push` project versions associated with new or changed data, you
   may want to `dvc push` those data updates to a [DVC remote].
+- `git checkout` a DVC repository, or `git pull` its latest version (e.g. that
+  someone else contributed), and then `dvc pull` the matching data updates.
 
 <admon type="tip">
 
@@ -151,10 +153,21 @@ command to set up [certain Git hooks] that automate them.
 
 </admon>
 
-<!--
-dvc diff
---rev
--->
+Having multiple versions of data and ML models (including their training
+parameters and performance metrics) within different Git commits is great, but
+sometimes requires navigation aids. DVC provides comparison commands like
+`dvc diff` (similar to `git diff`) to help with this. See also
+`dvc params diff`, `dvc metrics diff`, and `dvc plots diff`.
+
+<admon type="tip">
+
+Another neat feature of some DVC commands is the `--rev` ([revision]) option.
+This lets you specify a version of the project from where to perform the
+operation. For example, `dvc import --rev a17b8fd` can import data associated
+with the source project commit `a17b8fd`. Other commands with `--rev`: `dvc gc`,
+`dvc list`, etc.
+
+</admon>
 
 [data versioning]: /doc/user-guide/data-management#data-versioning
 [metafiles]: /doc/user-guide/project-structure
@@ -163,3 +176,4 @@ dvc diff
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [tags]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
 [dvc remote]: /doc/user-guide/data-management#remote-storage
+[revision]: https://git-scm.com/docs/revisions
