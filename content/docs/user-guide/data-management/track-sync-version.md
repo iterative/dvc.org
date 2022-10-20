@@ -83,15 +83,15 @@ unexpected errors occur (e.g. cache corruption).
 To enable additional storage locations, you can configure [DVC remotes] with the
 `dvc remote add` and `dvc remote modify` commands (see `dvc remote` for more
 options). Once this is done, use the `dvc push` and `dvc pull` commands to
-transfer data from between project and remote storage. This is the main
-mechanism to share and back up your work.
+transfer data between the project and remote storage. This is the main mechanism
+to share and back up your work.
 
 ![Sync ops among locations](/img/sync-ops-locations.png) _Data sync operations
 among locations_
 
 <admon type="tip">
 
-The `dvc fetch` transfers files downstream halfway, from remote storage to the
+`dvc fetch` transfers files downstream halfway -- from remote storage to the
 <abbr>cache</abbr>. This can be useful to make sure that some data is available
 for checkout later.
 
@@ -104,17 +104,16 @@ external devices or network locations, and remote servers or cloud platforms.
 
 </admon>
 
-<!--
-+ update
-
-? ### Access
-list, get, imports & update
--->
+It's also possible to access and synchronize data assets one way from misc.
+locations or from other DVC projects (e.g. [data registry] pattern). `dvc list`,
+`dvc import` or `dvc import-url`, and `dvc update` are the main commands for
+this.
 
 [codify your data]: /doc/use-cases/versioning-data-and-models
 [cache directory]: /doc/user-guide/data-management#the-data-cache
 [protected]: /doc/command-reference/unprotect
 [dvc remotes]: /doc/user-guide/data-management#remote-storage
+[data registry]: /doc/use-cases/data-registry
 
 ## Versioning data
 
