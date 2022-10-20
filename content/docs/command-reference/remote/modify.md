@@ -827,7 +827,7 @@ $ export OSS_ENDPOINT='endpoint'
   $ dvc remote modify --local myremote keyfile /path/to/keyfile
   ```
 
-- `password` - a password to access the remote.
+- `password` - a password to access the remote
 
   ```dvc
   $ dvc remote modify --local myremote password mypassword
@@ -839,7 +839,7 @@ $ export OSS_ENDPOINT='endpoint'
   $ dvc remote modify myremote ask_password true
   ```
 
-- `passphrase` - a private key passphrase to access the remote.
+- `passphrase` - a private key passphrase to access the remote
 
   ```dvc
   $ dvc remote modify --local myremote passphrase mypassphrase
