@@ -52,8 +52,8 @@ DVC uncommitted changes:
 
 <admon type="tip">
 
-Other commands related to tracking data: `dvc unprotect`, `dvc import`,
-`dvc import-url`.
+Other commands partially related to tracking data: `dvc status`,
+`dvc unprotect`, `dvc import`, `dvc import-url`.
 
 </admon>
 
@@ -74,9 +74,8 @@ these in sync most of the time.
 
 <admon type="tip">
 
-The `dvc commit` and `dvc checkout` commands (normally for
-[versioning](#versioning-data)) let you force-sync them. This can be useful when
-unexpected errors occur (e.g. cache corruption).
+The `dvc commit` and `dvc checkout` plumbing commands let you force-sync them.
+This can be useful when unexpected errors occur (e.g. cache corruption).
 
 </admon>
 
@@ -104,10 +103,10 @@ external devices or network locations, and remote servers or cloud platforms.
 
 </admon>
 
-It's also possible to access and synchronize data assets one way from misc.
-locations or from other DVC projects (e.g. [data registry] pattern). `dvc list`,
-`dvc import` or `dvc import-url`, and `dvc update` are the main commands for
-this.
+A more advanced strategy is to access and synchronize data assets one way, from
+misc. locations or other DVC projects (e.g. [data registry] pattern).
+`dvc list`, `dvc import` or `dvc import-url`, and `dvc update` are the main
+commands related to this.
 
 [codify your data]: /doc/use-cases/versioning-data-and-models
 [cache directory]: /doc/user-guide/data-management#the-data-cache
@@ -118,17 +117,49 @@ this.
 ## Versioning data
 
 You may have noticed that most of the tracking and synchronization commands give
-hints about `git` commands to follow DVC operations. That's because the unifying
-aspect across DVC features (for data management and beyond) is [data
+out hints about `git` commands to follow DVC operations. That's because the
+unifying aspect across DVC features (for data management and beyond) is [data
 versioning].
 
+The way this looks in practice is that many DVC operations write small
+[metafiles] to the <abbr>workspace</abbr>, which you can in turn track and
+version with Git, a feature-rich and battle-tested [SCM] tool.
+
+![]() _Data versioning on top of Git_
+
+Most common sequences:
+
+- Check the `dvc data status` (or `dvc status`) before deciding what changes to
+  track with Git.
+- Use `git add` and `git commit` after you `dvc add` (or `dvc commit`) data.
+  This registers the DVC-tracked data version with Git (without storing it in
+  the Git repo).
+- Create or merge [Git branches] to organize your project versions, or [tags] to
+  manage milestones and releases (no DVC operations needed).
+- `git checkout` to switch project versions (commits, branches, etc.), and then
+  `dvc checkout` to get the data files associated with that version into your
+  workspace.
+- After you `git push` project versions associated with new or changed data, you
+  may want to `dvc push` those data updates to a [DVC remote].
+
+<admon type="tip">
+
+Some of these sequences are so common that DVC provides the `dvc install` helper
+command to set up [certain Git hooks] that automate them.
+
+[certain git hooks]: /doc/command-reference/install#installed-git-hooks
+
+</admon>
+
 <!--
-commit(s)
-checkout(s)
-git ...
-install
 dvc diff
 --rev
 -->
 
 [data versioning]: /doc/user-guide/data-management#data-versioning
+[metafiles]: /doc/user-guide/project-structure
+[scm]: https://www.atlassian.com/git/tutorials/source-code-management
+[git branches]:
+  https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+[tags]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
+[dvc remote]: /doc/user-guide/data-management#remote-storage

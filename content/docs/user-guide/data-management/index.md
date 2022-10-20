@@ -66,13 +66,19 @@ data cache.
 
 ## Data Versioning
 
-DVC brings [version control] to data science. Specifically, the metafiles in
-your repo can be handled with standard [Git workflows] (commits, branching, pull
-requests, etc.). This way machine learning teams can apply mature software
-engineering practices.
+DVC enables [version control] for data science. But DVC does not actually
+implement versioning features! Instead, DVC focuses on codification, generating
+small [metafiles] that you can handle with standard [Git workflows] (commits,
+branching, pull requests, etc.). This way machine learning teams can apply
+mature software engineering practices.
 
 ![Versioned ML project](/img/versioned-project.png) _Navigate versions with Git
 commits_
+
+The resulting projects are neatly organized in the "space dimension", having
+only the files and directories needed at the time and without complicated, ad
+hoc file names like `2022-10-20_linear-model_v2-Carl`. Project versions live in
+the "time dimension" ([Git history]).
 
 <admon icon="book">
 
@@ -85,6 +91,8 @@ Refer to [Versioning Data and Models] to learn more.
 [version control]:
   https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 [git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
+[git history]:
+  https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
 <!--
 ## Cloud versioning
