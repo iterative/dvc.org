@@ -162,10 +162,9 @@ sometimes requires navigation aids. DVC provides comparison commands like
 <admon type="tip">
 
 Another neat feature of some DVC commands is the `--rev` ([revision]) option.
-This lets you specify a version of the project from where to perform the
-operation. For example, `dvc import --rev a17b8fd` can import data associated
-with the source project commit `a17b8fd`. Other commands with `--rev`: `dvc gc`,
-`dvc list`, etc.
+This lets you specify a version of the project to operate from. For example,
+`dvc import --rev a17b8fd` can import data associated with the source project
+commit `a17b8fd`. Other commands with `--rev`: `dvc gc`, `dvc list`, etc.
 
 </admon>
 
