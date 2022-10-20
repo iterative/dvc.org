@@ -124,6 +124,7 @@
         "slug": "data-management",
         "source": "data-management/index.md",
         "children": [
+          "remote-storage-setup",
           "large-dataset-optimization",
           "importing-external-data",
           "managing-external-data"
@@ -641,6 +642,10 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
+                "slug": "get_step",
+                "label": "get_step()"
+              },
+              {
                 "slug": "log",
                 "label": "log()"
               },
@@ -663,10 +668,6 @@
               {
                 "slug": "make_report",
                 "label": "make_report()"
-              },
-              {
-                "slug": "get_step",
-                "label": "get_step()"
               },
               {
                 "slug": "next_step",
