@@ -11,7 +11,7 @@ description:
 
 Adding datasets to a registry can be as simple as placing the data file or
 directory in question inside the <abbr>workspace</abbr>, and track it with
-`dvc add`. A regular Git workflow can be followed with the `.dvc` files that
+`dvc add`. A standard Git workflow can be followed with the `.dvc` files that
 substitute the actual data (e.g. `music/songs.dvc` below). This enables team
 collaboration on data at the same level as with source code:
 
