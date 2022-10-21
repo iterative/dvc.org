@@ -64,10 +64,13 @@ $ pip install "dvc[s3]"
 
 <admon icon="book">
 
-For an intro on DVC remote usage see [Storing and sharing data].
+For an intro on DVC remote usage see [Storing and sharing data]. See also
+[Synchronizing data] for further general info about remote storage usage.
 
 [storing and sharing data]:
   /doc/start/data-management/data-versioning#storing-and-sharing
+[synchronizing data]:
+  /doc/user-guide/data-management/track-sync-version#synchronizing-data
 
 </admon>
 
@@ -91,8 +94,8 @@ For an intro on DVC remote usage see [Storing and sharing data].
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
 refers to the type of location where the storage is: another directory in the
-same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
-It's essentially a local backup for data tracked by DVC.
+same file system. "Remote" is what we call storage for <abbr>DVC
+projects</abbr>. It's essentially a local backup for data tracked by DVC.
 
 </details>
 
