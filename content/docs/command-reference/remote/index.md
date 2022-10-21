@@ -24,37 +24,45 @@ positional arguments:
 
 ## Description
 
-What is data remote?
+DVC remotes are distributed storage locations for your data sets and ML models
+(similar to Git remotes, but for <abbr>cached</abbr> assets). This optional
+feature is typically used to share or back up copies of all or some of your
+data.
 
-The same way as GitHub provides storage hosting for Git repositories, DVC
-remotes provide a location to store and share data and models. You can pull data
-assets created by colleagues from DVC remotes without spending time and
-resources to build or process them locally. Remote storage can also save space
-on your local environment – DVC can [fetch](/doc/command-reference/fetch) into
-the <abbr>cache directory</abbr> only the data you need for a specific
-branch/commit.
+<admon icon="book">
 
-Using DVC with remote storage is optional. DVC commands use the local cache
-(usually in dir `.dvc/cache`) as data storage by default. This enables the main
-DVC usage scenarios out of the box.
+Learn more about [Remote storage].
 
-DVC supports several types of remote storage: local file system, SSH, Amazon S3,
-Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
-more details.
-
-<admon type="info">
-
-If you installed DVC via `pip` and plan to use cloud services as remote storage,
-you might need to install these optional dependencies: `[s3]`, `[azure]`,
-`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
-all. The command should look like this: `pip install "dvc[s3]"`. (This example
-installs `boto3` library along with DVC to support S3 storage.)
+[remote storage]: /doc/user-guide/data-management#remote-storage
 
 </admon>
 
-### Managing remote storage
+<!-- Remote storage can also save space in your local environment. -->
+
+DVC supports several [types of storage]: local file system, SSH, Amazon S3,
+Google Cloud Storage, HTTP, HDFS, among others.
 
 <admon type="info">
+
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
+
+```cli
+$ pip install "dvc[s3]"
+```
+
+> This installs the `boto3` library along with DVC to support S3 storage.
+
+[installed dvc]: /doc/install
+
+</admon>
+
+`dvc remote` subcommands read or modify DVC [config files]. Alternatively,
+`dvc config` can be used, or the config files can be edited manually.
+
+<admon icon="book">
 
 For an intro on DVC remote usage see [Storing and sharing data].
 
@@ -63,10 +71,7 @@ For an intro on DVC remote usage see [Storing and sharing data].
 
 </admon>
 
-`dvc remote` subcommands read or modify DVC [config files], where DVC remotes
-are set up. Alternatively, `dvc config` can be used, or the config files can be
-edited manually.
-
+[types of storage]: /doc/command-reference/remote/add#supported-storage-types
 [config files]: /doc/command-reference/config
 
 ## Options

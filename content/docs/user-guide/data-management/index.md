@@ -49,16 +49,17 @@ internet, but this is typically too slow for working with the data regularly.
 
 Optionally, DVC supports additional storage locations such as cloud services
 (Amazon S3, Google Drive, Azure Blob Storage, etc.), SSH servers, HDFS, and
-others. [DVC remotes] are typically used to sync copies of all or some of your
-datasets and models, for sharing or backup.
+others. [DVC remotes] are typically used to share or back up copies of all or
+some of your data sets and models.
 
 ![Distributed collaboration](/img/distributed-collaboration.png) _Distributed
 collaboration on DVC projects_
 
 <admon type="info">
 
-Remote storage uses the same [structure][content-addressable structure] of the
-data cache.
+DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> assets. This
+means that they use the same [directory
+structure][content-addressable structure] as the data cache.
 
 </admon>
 
