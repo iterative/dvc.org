@@ -27,7 +27,6 @@ data regularly.
 
 </admon>
 
-[metafiles]: /doc/user-guide/project-structure
 [share it]: /doc/user-guide/how-to/share-a-dvc-cache
 [content-addressable structure]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
@@ -44,46 +43,3 @@ DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> data.
 </admon>
 
 [dvc remotes]: /doc/command-reference/remote
-
-## Data Versioning
-
-DVC enables [version control] for data science. But DVC does not actually
-implement versioning features! Instead, DVC focuses on codification, generating
-small [metafiles] that you can handle with standard [Git workflows] (commits,
-branching, pull requests, etc.). This way machine learning teams can apply
-mature software engineering practices.
-
-![Versioned ML project](/img/versioned-project.png) _Navigate versions with Git
-commits_
-
-The resulting projects are neatly organized in the "space dimension", having
-only the files and directories needed at the time and without complicated, ad
-hoc file names like `2022-10-20_linear-model_v2-Carl`. Project versions live in
-the "time dimension" ([Git history]).
-
-<admon icon="book">
-
-Refer to [Versioning Data and Models] to learn more.
-
-[versioning data and models]: /doc/use-cases/versioning-data-and-models
-
-</admon>
-
-[version control]:
-  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
-[git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
-[git history]:
-  https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
-
-<!--
-## Cloud versioning
-
-_New in DVC 2.30.0 (see `dvc version`)_
-
-To simplify remote data operations, DVC now supports native versioning of files
-and directories on several cloud providers. This means that you can browse your
-files normally as you would see them in your local workspace.
--->
-
-The next page will cover the basic operations related to all the parts explained
-above.

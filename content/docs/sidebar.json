@@ -124,6 +124,7 @@
         "slug": "data-management",
         "source": "data-management/index.md",
         "children": [
+          "data-versioning",
           {
             "label": "Track, Sync, and Version",
             "slug": "track-sync-version"
