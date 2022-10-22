@@ -1,13 +1,17 @@
 # Data Management with DVC
 
 DVC helps you manage and share arbitrarily large files, datasets, and ML models
-anywhere: mounted drives, network resources (e.g. NAS), external devices, or
-remotely (SSH servers, cloud storage, etc.). Once the project is configured, you
-can manipulate files normally in your local workspace. DVC tracks, restores, and
-synchronizes them across locations.
+anywhere: cloud storage, SSH servers, network resources (e.g. NAS), mounted
+drives, local file systems, etc. You manipulate DVC project normally in your
+local workspace; DVC tracks, restores, and synchronizes them across locations.
 
 ![Storage locations](/img/storage-locations.png) _Local, external, and remote
 storage locations_
+
+<!--
+one page, no subtitles initially
+one story that highlights DVC's workflow with data, building blocks
+-->
 
 ## The data cache
 
