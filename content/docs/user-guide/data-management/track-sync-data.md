@@ -2,7 +2,7 @@
 
 Basic [data management] operations constitute the fundamental workflow of most
 <abbr>DVC projects</abbr>. This functionality can be used directly (as well
-cover here) but it's also included automatically in more advanced features like
+cover here) but it's also included automatically in other DVC workflows, like
 [pipelining] and [experiment management].
 
 [data management]: /doc/user-guide/data-management
@@ -15,31 +15,7 @@ DVC is [similar to Git] in this area. To start tracking large files or
 directories, "add" them to DVC with the `dvc add` command. This hides the data
 from Git, moves it to the <abbr>cache</abbr>, and [links it] back to the
 <abbr>workspace</abbr>. It also creates an accompanying `.dvc` file (visible to
-Git). Now your code and configuration files are physically separated from your
-data!
-
-<!--
-
-<abbr>DVC projects</abbr> separate data from code by replacing large files, data
-artifacts, ML models, etc. in your <abbr>workspace</abbr> with small
-[metafiles]; We call this strategy _codification_ (of the data). The actual file
-contents are cached in an independent data store and [linked] to your project.
-
-![Code vs. data](/img/code-vs-data.png) _Separating code from data_
-
-<admon type="info">
-
-In order to [avoid duplicate content][linked], and to support
-[versioning features][data versioning], files and directories are reorganized
-in the cache into a [content-addressable structure].
-
-[linked]: /doc/user-guide/data-management/large-dataset-optimization
-
-</admon>
-
-[metafiles]: /doc/user-guide/project-structure
-
--->
+Git).
 
 <admon type="info">
 
@@ -47,6 +23,32 @@ in the cache into a [content-addressable structure].
 directly.
 
 </admon>
+
+<details>
+
+### Click to learn about _data codification_
+
+<abbr>DVC projects</abbr> separate data from code by replacing large files, ML
+models, etc. in your <abbr>workspace</abbr> with small [metafiles]; We call this
+strategy _codification_ (of the data). The actual file contents are cached in an
+independent data store and [linked] to your project.
+
+![Code vs. data](/img/code-vs-data.png) _Separating code from data_
+
+<admon type="info">
+
+In order to [avoid duplicate content][linked], and to support [versioning
+features][data versioning], files and directories are reorganized in the cache
+into a [content-addressable structure].
+
+</admon>
+
+[metafiles]: /doc/user-guide/project-structure
+[linked]: /doc/user-guide/data-management/large-dataset-optimization
+[content-addressable structure]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+
+</details>
 
 To capture changes to tracked data, `dvc add` it again (alternatively,
 `dvc commit` will also do the trick). This caches the latest data present in the
@@ -92,7 +94,7 @@ and stop worrying about low-level operations like copying, moving, renaming,
 uploading and downloading, etc.
 
 At a minimum, you'll have two locations: your <abbr>workspace</abbr> and a
-[cache directory]. The [data tracking](#tracking-data) operations already keep
+<abbr>cache</abbr>. The [data tracking](#tracking-data) operations already keep
 these in sync most of the time.
 
 <admon type="tip">
@@ -142,9 +144,8 @@ misc. locations or other DVC projects (e.g. [data registry] pattern).
 commands related to this.
 
 [codify your data]: /doc/use-cases/versioning-data-and-models
-[cache directory]: /doc/user-guide/data-management#the-data-cache
 [protected]: /doc/command-reference/unprotect
-[dvc remotes]: /doc/user-guide/data-management#remote-storage
+[dvc remotes]: /doc/command-reference/remote
 [data registry]: /doc/use-cases/data-registry
 
 ## Versioning data
@@ -168,7 +169,7 @@ Some common sequences:
   `dvc checkout` to get the data files associated with that version into your
   workspace.
 - After you `git push` project versions associated with new or changed data, you
-  may want to `dvc push` those data updates to a [DVC remote].
+  may want to `dvc push` those data updates to a [DVC remote][dvc remotes].
 - `git checkout` a DVC repository, or `git pull` its latest version (e.g. that
   someone else contributed), and then `dvc pull` the matching data updates.
 
@@ -200,5 +201,4 @@ commit `a17b8fd`. Other commands with `--rev`: `dvc gc`, `dvc list`, etc.
 [git branches]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [tags]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
-[dvc remote]: /doc/user-guide/data-management#remote-storage
 [revision]: https://git-scm.com/docs/revisions

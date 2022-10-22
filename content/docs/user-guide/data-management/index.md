@@ -28,8 +28,6 @@ data regularly.
 </admon>
 
 [share it]: /doc/user-guide/how-to/share-a-dvc-cache
-[content-addressable structure]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 Optionally, DVC supports additional storage locations such as cloud services
 (Amazon S3, Google Drive, Azure Blob Storage, etc.), SSH servers,

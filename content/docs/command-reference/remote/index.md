@@ -33,7 +33,7 @@ data.
 
 Learn more about [Remote storage].
 
-[remote storage]: /doc/user-guide/data-management#remote-storage
+[remote storage]: /doc/command-reference/remote
 
 </admon>
 
