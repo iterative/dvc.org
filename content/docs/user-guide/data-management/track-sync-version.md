@@ -18,6 +18,27 @@ from Git, moves it to the <abbr>cache</abbr>, and [links it] back to the
 Git). Now your code and configuration files are physically separated from your
 data!
 
+<!--
+
+<abbr>DVC projects</abbr> separate data from code by replacing large files, data
+artifacts, ML models, etc. in your <abbr>workspace</abbr> with small
+[metafiles]; We call this strategy _codification_ (of the data). The actual file
+contents are cached in an independent data store and [linked] to your project.
+
+![Code vs. data](/img/code-vs-data.png) _Separating code from data_
+
+<admon type="info">
+
+In order to [avoid duplicate content][linked], and to support
+[versioning features](#data-versioning), files and directories are reorganized
+in the cache into a [content-addressable structure].
+
+[linked]: /doc/user-guide/data-management/large-dataset-optimization
+
+</admon>
+
+-->
+
 <admon type="info">
 
 `.dvc` files can be tracked (and versioned) with Git directly (see
@@ -87,6 +108,16 @@ to share and back up your work.
 
 ![Sync ops among locations](/img/sync-ops-locations.png) _Data sync operations
 among locations_
+
+<!--
+<admon type="info">
+
+DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> assets. This
+means that they use the same [directory
+structure][content-addressable structure] as the data cache.
+
+</admon>
+-->
 
 <admon type="tip">
 
