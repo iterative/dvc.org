@@ -40,4 +40,4 @@ DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> data.
 
 </admon>
 
-[dvc remotes]: /doc/command-reference/remote
+[dvc remotes]: /doc/user-guide/data-management/remote-storage

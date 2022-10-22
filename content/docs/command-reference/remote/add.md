@@ -1,9 +1,13 @@
 # remote add
 
-Add a new [data remote](/doc/command-reference/remote).
+Register a new [DVC remote](/doc/user-guide/data-management/remote-storage).
 
-> Depending on your storage type, you may also need `dvc remote modify` to
-> provide credentials and/or configure other remote parameters.
+<admon type="tip">
+
+Depending on your storage type, you may also need `dvc remote modify` to provide
+credentials and/or configure other remote parameters.
+
+</admon>
 
 ## Synopsis
 

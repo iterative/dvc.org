@@ -125,7 +125,7 @@
         "source": "data-management/index.md",
         "children": [
           "data-versioning",
-          "remote-storage-setup",
+          "remote-storage",
           "large-dataset-optimization",
           "importing-external-data",
           "managing-external-data"

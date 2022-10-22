@@ -1,12 +1,14 @@
 # remote
 
-A set of commands to set up and manage data remotes:
+A set of commands to set up and manage [remote storage]:
 [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
 [modify](/doc/command-reference/remote/modify),
 [remove](/doc/command-reference/remote/remove), and
 [rename](/doc/command-reference/remote/rename).
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ## Synopsis
 
