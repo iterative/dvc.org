@@ -90,7 +90,7 @@ default), which adds a layer of [indirection] between code and data.
 
 This structure is also used by [remote storage].
 
-[remote storage]: /doc/user-guide/data-management#remote-storage
+[remote storage]: /doc/command-reference/remote
 
 </admon>
 
