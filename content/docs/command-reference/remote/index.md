@@ -37,8 +37,6 @@ Learn more about [Remote storage].
 
 </admon>
 
-<!-- Remote storage can also save space in your local environment. -->
-
 DVC supports several [types of storage]: local file system, SSH, Amazon S3,
 Google Cloud Storage, HTTP, HDFS, among others.
 
