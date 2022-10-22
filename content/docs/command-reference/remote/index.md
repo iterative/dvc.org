@@ -70,7 +70,7 @@ For an intro on DVC remote usage see [Storing and sharing data]. See also
 [storing and sharing data]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 [synchronizing data]:
-  /doc/user-guide/data-management/track-sync-version#synchronizing-data
+  /doc/user-guide/data-management/track-sync-data#synchronizing-data
 
 </admon>
 

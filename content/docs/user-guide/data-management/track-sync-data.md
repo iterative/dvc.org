@@ -1,4 +1,4 @@
-# Track, Sync, and Version Data
+# Track and Sync and Versioned Data
 
 Basic [data management] operations constitute the fundamental workflow of most
 <abbr>DVC projects</abbr>. This functionality can be used directly (as well
@@ -30,19 +30,21 @@ contents are cached in an independent data store and [linked] to your project.
 <admon type="info">
 
 In order to [avoid duplicate content][linked], and to support
-[versioning features](#data-versioning), files and directories are reorganized
+[versioning features][data versioning], files and directories are reorganized
 in the cache into a [content-addressable structure].
 
 [linked]: /doc/user-guide/data-management/large-dataset-optimization
 
 </admon>
 
+[metafiles]: /doc/user-guide/project-structure
+
 -->
 
 <admon type="info">
 
-`.dvc` files can be tracked (and versioned) with Git directly (see
-[Versioning](#versioning-data)).
+`.dvc` files can be tracked (and [versioned](#versioning-data)) with Git
+directly.
 
 </admon>
 
@@ -147,16 +149,11 @@ commands related to this.
 
 ## Versioning data
 
-You may have noticed that most of the tracking and synchronization commands give
-out hints about `git` commands to follow DVC operations. That's because the
-unifying aspect across DVC features (for data management and beyond) is [data
-versioning].
+You may have noticed that most of the `dvc` commands give out hints about `git`
+commands to follow with. This helps you complete the [data versioning] side of
+the operation (if desired).
 
-The way this looks is that many DVC operations write small [metafiles] to the
-<abbr>workspace</abbr>, which you can in turn track and version with Git, a
-feature-rich and battle-tested [SCM] tool.
-
-![Versioning flow](/img/flow.png) _Data versioning flow on top of Git_
+![Versioning flow](/img/flow.png) _A data versioning flow on top of Git_
 
 Some common sequences:
 
@@ -199,9 +196,7 @@ commit `a17b8fd`. Other commands with `--rev`: `dvc gc`, `dvc list`, etc.
 
 </admon>
 
-[data versioning]: /doc/user-guide/data-management#data-versioning
-[metafiles]: /doc/user-guide/project-structure
-[scm]: https://www.atlassian.com/git/tutorials/source-code-management
+[data versioning]: /doc/user-guide/data-management/data-versioning
 [git branches]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [tags]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
