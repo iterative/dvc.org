@@ -1201,10 +1201,10 @@ Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-profile = myuser
+    url = s3://mybucket/path
+    profile = myuser
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 ## Example: Some Azure authentication methods

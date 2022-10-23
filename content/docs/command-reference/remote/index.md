@@ -103,9 +103,9 @@ The <abbr>project</abbr>'s config file should now look like this:
 
 ```ini
 ['remote "myremote"']
-url = /path/to/remote
+    url = /path/to/remote
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 ## Example: List all remotes in the project
@@ -130,12 +130,12 @@ The project's config file should now look something like this:
 
 ```ini
 ['remote "myremote"']
-url = /path/to/remote
+    url = /path/to/remote
 [core]
-remote = myremote
+    remote = myremote
 ['remote "newremote"']
-url = s3://mybucket/path
-endpointurl = https://object-storage.example.com
+    url = s3://mybucket/path
+    endpointurl = https://object-storage.example.com
 ```
 
 ## Example: Change the name of a remote

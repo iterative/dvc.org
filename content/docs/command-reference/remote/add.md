@@ -30,9 +30,9 @@ for the first remote):
 
 ```ini
 ['remote "myremote"']
-url = /tmp/dvcstore
+    url = /tmp/dvcstore
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 > 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
@@ -383,10 +383,10 @@ Using an absolute path (recommended):
 ```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-        url = /tmp/dvcstore
-  ...
+...
+['remote "myremote"']
+    url = /tmp/dvcstore
+...
 ```
 
 > Note that the absolute path `/tmp/dvcstore` is saved as is.
@@ -397,10 +397,10 @@ directory, but saved **relative to the config file location**:
 ```cli
 $ dvc remote add -d myremote ../dvcstore
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-      url = ../../dvcstore
-  ...
+...
+['remote "myremote"']
+    url = ../../dvcstore
+...
 ```
 
 > Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
@@ -427,10 +427,10 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-region = us-east-2
+    url = s3://mybucket/path
+    region = us-east-2
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 The list of remotes should now be:
