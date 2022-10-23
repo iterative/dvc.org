@@ -119,7 +119,7 @@ within:
 
 ### core
 
-- `core.remote` - name of the remote storage to use by default.
+- `core.remote` - name of the [remote storage](#remote) to use by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
@@ -154,9 +154,30 @@ within:
 
 ### remote
 
-All `remote` sections contain a `url` value and can also specify `user`, `port`,
-`keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value pairs.
-See `dvc remote add` and `dvc remote modify` for more information.
+Unlike most other sections, configuration files may have more than one
+`'remote'`. All of them require a unique `"name"` and a `url` value. They can
+also specify `jobs`, `verify`, and many platform-specific key/value pairs like
+`port` and `password`.
+
+<admon icon="book">
+
+See [Remote Storage Configuration] for more details.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
+
+</admon>
+
+For example, the following config file defines a `temp` remote in the local file
+system (located in `/tmp/dvcstore`), and marked as default (via [`core`](#core)
+section):
+
+```ini
+['remote "temp"']
+    url = /tmp/dvcstore
+[core]
+    remote = temp
+```
 
 ### cache
 
