@@ -26,49 +26,22 @@ positional arguments:
 
 ## Description
 
-What is data remote?
+DVC remotes are distributed storage locations for your data sets and ML models
+(similar to Git remotes, but for <abbr>cached</abbr> assets). This optional
+feature is typically used to share or back up copies of all or some of your
+data. Several types are supported: Amazon S3, Google Drive, SSH, HTTP, local
+file systems, among others.
 
-The same way as GitHub provides storage hosting for Git repositories, DVC
-remotes provide a location to store and share data and models. You can pull data
-assets created by colleagues from DVC remotes without spending time and
-resources to build or process them locally. Remote storage can also save space
-on your local environment – DVC can [fetch](/doc/command-reference/fetch) into
-the <abbr>cache directory</abbr> only the data you need for a specific
-branch/commit.
+<admon icon="book">
 
-Using DVC with remote storage is optional. DVC commands use the local cache
-(usually in dir `.dvc/cache`) as data storage by default. This enables the main
-DVC usage scenarios out of the box.
-
-DVC supports several types of remote storage: local file system, SSH, Amazon S3,
-Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
-more details.
-
-<admon type="info">
-
-If you installed DVC via `pip` and plan to use cloud services as remote storage,
-you might need to install these optional dependencies: `[s3]`, `[azure]`,
-`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
-all. The command should look like this: `pip install "dvc[s3]"`. (This example
-installs `boto3` library along with DVC to support S3 storage.)
+Learn more about [remote storage].
 
 </admon>
 
-### Managing remote storage
+`dvc remote` subcommands read or modify DVC [config files] (`.dvc/config` by
+default). Alternatively, the config files can be edited manually.
 
-<admon type="info">
-
-For an intro on DVC remote usage see [Storing and sharing data].
-
-[storing and sharing data]:
-  /doc/start/data-management/data-versioning#storing-and-sharing
-
-</admon>
-
-`dvc remote` subcommands read or modify DVC [config files], where DVC remotes
-are set up. Alternatively, `dvc config` can be used, or the config files can be
-edited manually.
-
+[types of storage]: /doc/command-reference/remote/add#supported-storage-types
 [config files]: /doc/command-reference/config
 
 ## Options
@@ -88,8 +61,8 @@ edited manually.
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
 refers to the type of location where the storage is: another directory in the
-same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
-It's essentially a local backup for data tracked by DVC.
+same file system. "Remote" is what we call storage for <abbr>DVC
+projects</abbr>. It's essentially a local backup for data tracked by DVC.
 
 </details>
 
@@ -103,9 +76,9 @@ The <abbr>project</abbr>'s config file should now look like this:
 
 ```ini
 ['remote "myremote"']
-    url = /path/to/remote
+url = /path/to/remote
 [core]
-    remote = myremote
+remote = myremote
 ```
 
 ## Example: List all remotes in the project
@@ -130,12 +103,12 @@ The project's config file should now look something like this:
 
 ```ini
 ['remote "myremote"']
-    url = /path/to/remote
+url = /path/to/remote
 [core]
-    remote = myremote
+remote = myremote
 ['remote "newremote"']
-    url = s3://mybucket/path
-    endpointurl = https://object-storage.example.com
+url = s3://mybucket/path
+endpointurl = https://object-storage.example.com
 ```
 
 ## Example: Change the name of a remote

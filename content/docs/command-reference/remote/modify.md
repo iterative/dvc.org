@@ -46,11 +46,16 @@ $ dvc remote modify temp url /mnt/c/tmp/dvcstore
 
 <admon type="info">
 
-If you installed DVC via `pip` and plan to use cloud services as remote storage,
-you might need to install these optional dependencies: `[s3]`, `[azure]`,
-`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
-all. The command should look like this: `pip install "dvc[s3]"`. (This example
-installs `boto3` library along with DVC to support S3 storage.)
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
+
+```cli
+$ pip install "dvc[s3]"
+```
+
+[installed dvc]: /doc/install
 
 </admon>
 
