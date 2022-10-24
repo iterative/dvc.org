@@ -40,8 +40,8 @@ file path), e.g.:
 $ dvc remote add mybucket s3://my-bucket
 ```
 
-Then, you may need or want to further configure the remote by authentication
-information or other properties, etc. For example:
+Then, you'll usually need or want to configure the remote's authentication
+credentials or other properties, etc. For example:
 
 ```cli
 $ dvc remote modify --local \
