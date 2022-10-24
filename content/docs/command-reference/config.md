@@ -109,12 +109,15 @@ within:
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
+- [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
+[dictionary unpacking]:
+  /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
 
 ### core
@@ -253,8 +256,7 @@ experiments or projects use a similar structure.
 ### parsing
 
 - `parsing.bool` - Controls the templating syntax for boolean values when used
-  in
-  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking).
+  in [dictionary unpacking].
 
   Valid values are `"store_true"` (default) and `"boolean_optional"`, named
   after
@@ -289,7 +291,7 @@ experiments or projects use a similar structure.
   ```
 
 - `parsing.list` - Controls the templating syntax for list values when used in
-  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking).
+  [dictionary unpacking].
 
   Valid values are `"nargs"` (default) and `"append"`, named after
   [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
