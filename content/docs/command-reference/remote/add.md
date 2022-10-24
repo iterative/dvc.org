@@ -1,11 +1,15 @@
 # remote add
 
-Register a new [DVC remote](/doc/user-guide/data-management/remote-storage).
+Add a new `dvc remote` to the <abbr>DVC project</abbr> configuration.
 
 <admon type="tip">
 
-Depending on your storage type, you may also need `dvc remote modify` to provide
-credentials and/or configure other remote parameters.
+You may also need `dvc remote modify` to provide credentials and/or configure
+other remote parameters. See [Remote storage configuration] for more
+information.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
 
 </admon>
 
@@ -23,41 +27,62 @@ positional arguments:
 
 ## Description
 
-This command creates a `remote` section in the <abbr>DVC project</abbr>'s
-[config file](/doc/command-reference/config) and optionally assigns a _default
-remote_ in the `core` section, if the `--default` option is used (recommended
-for the first remote):
+Registers an [additional storage] location to save data files (besides the
+<abbr>cache</abbr>) and optionally sets it as the `--default` remote. DVC
+remotes can point to a cloud storage service, an SSH server, network-attached
+storage, or even a directory in the local file system.
+
+<admon type="tip">
+
+A [default remote] is expected by `dvc push`, `dvc pull`, `dvc status`,
+`dvc gc`, and `dvc fetch` unless their `--remote` option is used.
+
+[default remote]: /doc/command-reference/remote/default
+
+</admon>
+
+The remote `name` (required) is used to identify the remote and must be unique.
+DVC will determine the [type of remote](#supported-storage-types) based on the
+provided `url` (also required), a URL or path for the location.
+
+<admon type="info">
+
+The storage type determines which config parameters you can access via
+`dvc remote modify`. Note that the `url` itself can be modified.
+
+</admon>
+
+This command creates a [`remote`] section in the project's [config file]
+(`.dvc/config`). The `--default` (`-d`) flag uses the [`core`] config section:
+
+```cli
+$ dvc remote add -d temp /tmp/dvcstore
+```
 
 ```ini
-['remote "myremote"']
+# .dvc/config
+['remote "temp"']
     url = /tmp/dvcstore
 [core]
     remote = myremote
 ```
 
-> 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
-> option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that
-> option is omitted.
+<admon type="info">
 
-`name` and `url` are required. The `name` is used to identify the remote and
-must be unique for the project.
+If you installed DVC via `pip` and plan to use cloud services as remote storage,
+you might need to install these optional dependencies: `[s3]`, `[azure]`,
+`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
+all. The command should look like this: `pip install "dvc[s3]"`. (This example
+installs `boto3` library along with DVC to support S3 storage.)
 
-`url` specifies a location to store your data. It can represent a cloud storage
-service, an SSH server, network-attached storage, or even a directory in the
-local file system (see all the supported remote storage types in the examples
-below).
+</admon>
 
-DVC will determine the [type of remote](#supported-storage-types) based on the
-`url` provided. This may affect which parameters you can access later via
-`dvc remote modify` (note that the `url` itself can be modified).
+[additional storage]: /doc/user-guide/data-management/remote-storage
+[config file]: /doc/command-reference/config
+[`remote`]: /doc/command-reference/config#remote
+[`core`]: /doc/command-reference/config#core
 
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
-
-## Options
+## Command options/flags
 
 - `--system` - save remote configuration to the system config file (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
