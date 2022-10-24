@@ -5,10 +5,6 @@ anywhere: cloud storage, SSH servers, network resources (e.g. NAS), mounted
 drives, local file systems, etc. You manipulate DVC project normally in your
 local workspace; DVC tracks, restores, and synchronizes them across locations.
 
-<!--
-one story that highlights DVC's workflow with data, building blocks
--->
-
 ![Storage locations](/img/storage-locations.png) _Local, external, and remote
 storage locations_
 
