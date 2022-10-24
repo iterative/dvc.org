@@ -96,15 +96,19 @@ configuration of your remote (in `.dvc/config`) via the Git repo.
 
 ### Cloud providers
 
-- Google Drive
 - Amazon S3 (AWS)
 - S3-compatible e.g. MinIO
+- Microsoft Azure Blob Storage
+- Google Drive
 - Google Cloud Storage (GCP)
-- Azure Blob Storage
+- Aliyun OSS
 
-### Self-hosted
+### Self-hosted/ On-prem/ Others
 
 - SSH servers; Like `scp`
+- HDFS & WebHDFS
+- HTTP
+- WebDAV
 - Local directories, mounted drives; Like `rsync`
-- Network resources e.g. network-attached storage (NAS) or other external
-  devices
+  > Includes network resources e.g. network-attached storage (NAS) or other
+  > external devices
