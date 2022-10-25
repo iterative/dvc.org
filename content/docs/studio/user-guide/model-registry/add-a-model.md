@@ -2,8 +2,8 @@
 
 You can add models from any ML project to the model registry. To add a model to
 your model registry, Iterative Studio creates an annotation for it in an
-`artifacts.yaml` file in your Git repository. If you are using the GTO command
-line tool, you can also add models from the [CLI][gto]. To add models using
+`artifacts.yaml` file in your Git repository. If you are using the [GTO] command
+line tool, you can also add models [from the CLI]. To add models using
 Iterative Studio, watch this tutorial video or read on below:
 
 https://www.youtube.com/watch?v=szzv4ZXmYAs
@@ -57,4 +57,5 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
    base branch.
 
 [gto]: https://github.com/iterative/gto
+[from the cli]: https://github.com/iterative/gto#versioning-an-artifact
 [mlem]: https://mlem.ai/
