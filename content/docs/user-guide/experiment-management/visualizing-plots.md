@@ -192,14 +192,14 @@ For customization, we can:
 # dvc.yaml
 ---
 plots:
-  ROC:
-    x: fpr
-    y:
-      evaluation/train/plots/roc.json: tpr
-      evaluation/test/plots/roc.json: tpr
-    title: Train vs. Test ROC
-    x_label: False Positive Rate
-    y_label: True Positive Rate
+  - ROC:
+      x: fpr
+      y:
+        evaluation/train/plots/roc.json: tpr
+        evaluation/test/plots/roc.json: tpr
+      title: Train vs. Test ROC
+      x_label: False Positive Rate
+      y_label: True Positive Rate
 ```
 
 ```dvc
