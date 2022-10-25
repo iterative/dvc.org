@@ -117,7 +117,8 @@ You should now see that a project has been added in your dashboard.
 
 2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
    to the model registry by clicking on the `Add a model` button and following
-   on-screen instructions.
+   on-screen instructions. Both remote and local models can be imported this
+   way.
 
 3. To
    [view the details](/doc/studio/user-guide/model-registry/view-models#model-details-page)
