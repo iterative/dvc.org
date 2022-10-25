@@ -573,8 +573,8 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "how-it-works",
       "get-started",
+      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
