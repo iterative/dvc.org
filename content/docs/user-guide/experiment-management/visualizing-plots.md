@@ -180,11 +180,10 @@ file:///Users/usr/src/dvc_plots/index.html
 
 For customization, we can:
 
-- Use a plot ID (`test_vs_train_confusion`) that is not a file path.
-- Specify one or more columns for the `x` (`actual_class`) and `y`
-  (`predicted_class`) axes.
-- Specify one or more data sources (`train_classes.csv` and `test_classes.csv`)
-  as keys to the `y` axis.
+- Use a plot ID (`ROC`) that is not a file path.
+- Specify one or more columns for the `x` (`fpr`) and `y` (`tpr`) axes.
+- Specify one or more data sources (`evaluation/train/plots/roc.json` and
+  `evaluation/test/plots/roc.json`) as keys to the `y` axis.
 - Specify any other available configuration field (`title`, `template`,
   `x_label`, `y_label`).
 
@@ -192,15 +191,14 @@ For customization, we can:
 # dvc.yaml
 ---
 plots:
-  test_vs_train_confusion:
-    x: actual_class
+  ROC:
+    x: fpr
     y:
-      train_classes.csv: predicted_class
-      test_classes.csv: predicted_class
-    title: Compare test vs train confusion matrix
-    template: confusion
-    x_label: Actual class
-    y_label: Predicted class
+      evaluation/train/plots/roc.json: tpr
+      evaluation/test/plots/roc.json: tpr
+    title: Train vs. Test ROC
+    x_label: False Positive Rate
+    y_label: True Positive Rate
 ```
 
 ```dvc
@@ -208,7 +206,7 @@ $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
-![](/img/plots_show_spec_conf_train_test.svg)
+![](/img/plots_show_spec_roc_train_test.svg)
 
 [template]: #plot-templates-data-series-only
 
