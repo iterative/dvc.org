@@ -154,9 +154,10 @@ top-level definition, DVC will create separate rendering for each type.
 Plots can be defined in a top-level `plots` key in `dvc.yaml`. Top-level plots
 can use any file found in the <abbr>project</abbr>.
 
-In the simplest use, you only need to provide the plot's file path. In the
-example below, DVC will take data from `logs.csv` and use the default plotting
-behavior (apply the `linear` plot [template] to the last found column):
+In the simplest use, you only need to provide the plot's file path as a
+dictionary key. In the example below, DVC will take data from `logs.csv` and use
+the default plotting behavior (apply the `linear` plot [template] to the last
+found column):
 
 ```yaml
 # dvc.yaml
@@ -168,7 +169,7 @@ stages:
       - logs.csv
   ...
 plots:
-  logs.csv:
+  - logs.csv:
 ```
 
 ```dvc
@@ -191,14 +192,14 @@ For customization, we can:
 # dvc.yaml
 ---
 plots:
-  ROC:
-    x: fpr
-    y:
-      evaluation/train/plots/roc.json: tpr
-      evaluation/test/plots/roc.json: tpr
-    title: Train vs. Test ROC
-    x_label: False Positive Rate
-    y_label: True Positive Rate
+  - ROC:
+      x: fpr
+      y:
+        evaluation/train/plots/roc.json: tpr
+        evaluation/test/plots/roc.json: tpr
+      title: Train vs. Test ROC
+      x_label: False Positive Rate
+      y_label: True Positive Rate
 ```
 
 ```dvc
