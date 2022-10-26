@@ -21,7 +21,6 @@ workflow is:
 
    ```yaml
    plots:
-
      # Data series source
      evaluation/test/plots/confusion_matrix.json:
        # Configure template and axes.
@@ -226,8 +225,8 @@ Refer to the [full format specification] and `dvc plots show` for more details.
 ### Plot outputs
 
 When defining [pipelines], some <abbr>outputs</abbr> (both files and
-directories) can be placed under a `plots` list for the corresponding stage
-in `dvc.yaml`. This will tell DVC that they are intended for visualization.
+directories) can be placed under a `plots` list for the corresponding stage in
+`dvc.yaml`. This will tell DVC that they are intended for visualization.
 
 <admon type="info">
 
