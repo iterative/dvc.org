@@ -656,8 +656,8 @@
                 "label": "log_params()"
               },
               {
-                "slug": "log_plot",
-                "label": "log_plot()"
+                "slug": "log_sklearn_plot",
+                "label": "log_sklearn_plot()"
               },
               {
                 "slug": "make_report",
