@@ -14,10 +14,9 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 
    <admon>
 
-   If your model file or the `.dvc` file for your model exists in a Git repo,
-   select the project that connects to it. If your model file resides in remote
-   storage (S3, GCS, etc.), select the project to whose Git repo you want to add
-   the model.
+   If your model file or the `.dvc` file for your model already exists in a Git
+   repo, select that repo. If your model file resides in remote storage (S3,
+   GCS, etc.), select the Git repo where you want to add the model.
 
    </admon>
 
@@ -60,5 +59,5 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 [connected repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
 [gto]: https://github.com/iterative/gto
-[from the cli]: https://github.com/iterative/gto#versioning-an-artifact
+[from the cli]: https://github.com/iterative/gto#annotating
 [mlem]: https://mlem.ai/
