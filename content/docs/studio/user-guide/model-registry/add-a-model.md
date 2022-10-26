@@ -38,7 +38,7 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
      [`mlem init`](https://mlem.ai/doc/command-reference/init), Iterative Studio
      will be able to parse the `.mlem` file to extract model metadata.
 
-4. If the model is located on the remote storage, Iterative Studio will detect
+4. If the model is located in remote storage, Iterative Studio will detect
    it and suggest to enter path in the repository where to save the model file.
    In this case, the following will happen:
 
