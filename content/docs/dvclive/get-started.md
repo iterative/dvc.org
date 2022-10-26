@@ -93,9 +93,9 @@ would usually do:
 $ python train.py
 ```
 
-DVCLive will generate a [report](/doc/dvclive/outputs#report) in
+DVCLive will generate a [report](/doc/dvclive/api-reference/live/make_report) in
 `dvclive/report.html` containing all the logged data. It will be automatically
-updated during training on each `step` update:
+updated during training:
 
 ![HTML report](/img/dvclive-html.gif).
 
@@ -103,10 +103,12 @@ In addition, the logged data will be stored in plain text files. For this simple
 example, it would look as follows:
 
 ```
-dvclive.json
 dvclive
-├── scalars
-│       └── metric.tsv
+├── metrics.json
+├── params.yaml
+├── plots
+│   └── metrics
+│       └── accuracy.tsv
 └── report.html
 ```
 
@@ -134,10 +136,10 @@ stages:
     deps:
       - train.py
     metrics:
-      - dvclive.json:
+      - dvclive/metrics.json:
           cache: false
     plots:
-      - dvclive/scalars:
+      - dvclive/plots:
           cache: false
 ```
 
@@ -157,7 +159,7 @@ Running stage 'train':
 ### Compare and Visualize DVC Experiments
 
 After following the above steps, you have enabled different ways of monitoring
-the training, comparing, and visualizing the experiments:
+the training, comparing, and visualizing the experiments.
 
 #### DVC CLI
 
@@ -191,6 +193,6 @@ views.
 After the experiment has finished and you have committed and pushed the results,
 [Iterative Studio](/doc/studio) will automatically parse the outputs generated
 by DVCLive, allowing you to
-[share your experiments online](https://dvc.org/doc/studio/get-started):
+[share your experiments online](/doc/studio/get-started):
 
 ![Studio view](/img/dvclive-studio-plots.png)
