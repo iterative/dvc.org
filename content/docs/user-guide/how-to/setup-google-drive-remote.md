@@ -296,12 +296,10 @@ heavy usage, it is recommended to rely on
 
 ![](/img/gdrive-share-with-service-account.png)
 
-## Delegation with google service accounts
+### Delegation
 
-Delegation can be used to overcome quota limits associated with google service
-accounts. See
-[these](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority)
-instructions for details.
+[Delegation](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority)
+can be used to overcome quota limits associated with Google service accounts.
 
 The required **OAuth scope** is `https://www.googleapis.com/auth/drive`
 
