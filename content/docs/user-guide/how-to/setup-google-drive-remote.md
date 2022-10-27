@@ -250,7 +250,7 @@ authentication is needed.
 <admon type="info">
 
 Google service accounts have their own associated usage limits which may be
-exceeded if used frequently in conjunction with `dvc push`, dvc pull`, etc. For
+exceeded if used frequently in conjunction with `dvc push`, `dvc pull`, etc. For
 heavy usage, it is recommended to rely on
 [delegation](#delegation-with-google-service-accounts).
 
