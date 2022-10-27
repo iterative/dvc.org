@@ -104,11 +104,10 @@ if unexpected errors occur (e.g. cache corruption).
 
 </admon>
 
-To enable additional storage locations, you can configure [DVC remotes] with the
-`dvc remote add` and `dvc remote modify` commands (see `dvc remote` for more
-options). Once this is done, use the `dvc push` and `dvc pull` commands to
-transfer data between the project and remote storage. This is the main mechanism
-to share and back up your work.
+To add storage locations to share and back up your work, you can configure [DVC
+remotes] with the `dvc remote add` and `dvc remote modify` commands (see
+`dvc remote` for more options). Once this is done, use `dvc push` and `dvc pull`
+to transfer data between the project and remote storage.
 
 ![Sync ops among locations](/img/sync-ops-locations.png) _Data sync operations
 among locations_
