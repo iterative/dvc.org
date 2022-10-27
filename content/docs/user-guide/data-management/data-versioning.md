@@ -59,7 +59,7 @@ corresponding data updates. Most notably, if you [set up remote storage] and
 `dvc push` data for others to `dvc pull` later, you should `git commit` both the
 metafile(s) and `.dvc/config` to the repo.
 
-Advanced situations where this is may also be necessary:
+Advanced situations where this may also be necessary:
 
 - When migrating to a [shared cache]
 - If you enable `dvc cache hydra` and then create an [experiment queue] with
