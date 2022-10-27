@@ -8,8 +8,8 @@ directory.
 ## Synopsis
 
 ```usage
-usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] [-j <number>]
-       url path
+usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>]
+               [--show-url] [-j <number>] url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
