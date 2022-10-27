@@ -68,7 +68,7 @@ metrics and other metadata.
 ## Methods
 
 - `Live.get_step()`
-- `Live.log()`
+- `Live.log_metric()`
 - `Live.log_image()`
 - `Live.log_param()`
 - `Live.log_params()`

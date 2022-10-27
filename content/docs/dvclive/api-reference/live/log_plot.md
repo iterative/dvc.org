@@ -42,7 +42,7 @@ If you perform `step` updates in your code, you can later use
 
 ```python
 for epoch in range(NUM_EPOCHS):
-    live.log(metric_name, value)
+    live.log_metric(metric_name, value)
     live.next_step()
 
 live.set_step(None)

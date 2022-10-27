@@ -19,14 +19,14 @@ live = Live()
 
 for epoch in range(args.start_epoch, args.epochs):
     lr = adjust_learning_rate(optimizer, epoch, args)
-    live.log("learning_rate", lr)
+    live.log_metric("learning_rate", lr)
 
     train_acc1 = train(
         train_loader, model, criterion, optimizer, epoch, args)
-    live.log("train/accuracy", train_acc1)
+    live.log_metric("train/accuracy", train_acc1)
 
     val_acc1 = validate(val_loader, model, criterion, args)
-    live.log("validation/accuracy", val_acc1)
+    live.log_metric("validation/accuracy", val_acc1)
 
     is_best = val_acc1 > best_acc1
     best_acc1 = max(val_acc1, best_acc1)

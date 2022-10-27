@@ -34,13 +34,13 @@ for epoch in range(epochs):
         optimizer.apply_gradients(zip(grads, model.trainable_weights))
         train_acc_metric.update_state(y_batch_train, logits)
 
-    live.log("train/accuracy", float(train_acc_metric.result())
+    live.log_metric("train/accuracy", float(train_acc_metric.result())
     train_acc_metric.reset_states()
 
     for x_batch_val, y_batch_val in val_dataset:
         val_logits = model(x_batch_val, training=False)
         val_acc_metric.update_state(y_batch_val, val_logits)
-    live.log("val/accuracy", float(val_acc_metric.result())
+    live.log_metric("val/accuracy", float(val_acc_metric.result())
     val_acc_metric.reset_states()
 
     live.next_step()

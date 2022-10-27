@@ -51,7 +51,7 @@ See `Live.log_param()` / `Live.log_params()`.
 <tab title="Scalars">
 
 ```python
-live.log("acc", 0.9)
+live.log_metric("acc", 0.9)
 ```
 
 See `Live.log_metric()`.
@@ -106,7 +106,7 @@ for epoch in range(NUM_EPOCHS):
     metrics = evaluate_model(...)
 
     for metric_name, value in metrics.items():
-        live.log(metric_name, value)
+        live.log_metric(metric_name, value)
 
     live.next_step()
 ```

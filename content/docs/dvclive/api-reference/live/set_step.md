@@ -15,8 +15,8 @@ live = Live()
 
 for step in [0, 10, 20]:
     live.set_step(step)
-    live.log("metric_1", 0.9)
-    live.log("metric_2", 0.7)
+    live.log_metric("metric_1", 0.9)
+    live.log_metric("metric_2", 0.7)
 ```
 
 ## Description

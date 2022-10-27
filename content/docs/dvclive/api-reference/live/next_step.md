@@ -14,7 +14,7 @@ from dvclive import Live
 live = Live()
 
 for step in range(3):
-    live.log("metric", 0.9)
+    live.log_metric("metric", 0.9)
     live.next_step()
 ```
 

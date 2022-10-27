@@ -32,8 +32,8 @@ live = Live()
 live.log_param("epochs", EPOCHS)
 
 for i in range(EPOCHS):
-    live.log("metric", i + random.random())
-    live.log("nested/metric", i + random.random())
+    live.log_metric("metric", i + random.random())
+    live.log_metric("nested/metric", i + random.random())
 
     img = Image.new("RGB", (50, 50), (i, i, i))
     live.log_image("img.png", img)

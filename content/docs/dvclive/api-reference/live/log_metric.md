@@ -11,14 +11,14 @@ from dvclive import Live
 
 live = Live()
 
-live.log("train/loss", 0.4)
-live.log("val/loss", 0.9)
+live.log_metric("train/loss", 0.4)
+live.log_metric("val/loss", 0.9)
 ```
 
 ## Description
 
-On each `live.log(name, val)` call DVCLive will create a _metrics history_ file
-in `{Live.plots_dir}/metrics/{name}.tsv`:
+On each `live.log_metric(name, val)` call DVCLive will create a _metrics
+history_ file in `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```dvc
 $ tree
@@ -48,13 +48,13 @@ dvc plots diff dvclive/plots
 
 </admon>
 
-Each subsequent call to `live.log(name, val)` will add a new row to
+Each subsequent call to `live.log_metric(name, val)` will add a new row to
 `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```python
 live.next_step()
-live.log("train/loss", 0.2)
-live.log("val/loss", 0.4)
+live.log_metric("train/loss", 0.2)
+live.log_metric("val/loss", 0.4)
 ```
 
 ```dvc
