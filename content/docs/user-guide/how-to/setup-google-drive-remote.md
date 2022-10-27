@@ -247,10 +247,14 @@ are intended for scenarios where your code needs to access data on its own, e.g.
 running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
 authentication is needed.
 
-ℹ️ Google service accounts have their own associated usage limits which may be
+<admon type="info">
+
+Google service accounts have their own associated usage limits which may be
 exceeded if used frequently in conjunction with `dvc push/pull`. For heavy usage
 it is recommended to rely on
 [delegation](#delegation-with-google-service-accounts).
+
+</admon>
 
 > This requires having your own
 > [GC project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
