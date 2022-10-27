@@ -74,7 +74,7 @@ file-based [dependencies](#simple-dependencies) as well as [outputs](#outputs).
 Let's look at a sample stage: it depends on a script file it runs as well as on
 a raw data input (ideally [tracked by DVC][data management] already):
 
-[data management]: https://dvc.org/doc/start/data-management
+[data management]: /doc/start/data-management
 
 ```yaml
 stages:
