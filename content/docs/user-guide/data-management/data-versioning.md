@@ -62,12 +62,9 @@ metafile(s) and `.dvc/config` to the repo.
 Advanced situations where this may also be necessary:
 
 - When migrating to a [shared cache]
-- If you enable `dvc cache hydra` and then create an [experiment queue] with
-  [param composition] to run from another environment
+- If you change a `dvc config parsing` option, which impact how `dvc.yaml` files
+  get parsed.
 
 [set up remote storage]:
   /doc/user-guide/data-management/remote-storage#configuration
 [shared cache]: doc/user-guide/how-to/share-a-dvc-cache
-[experiment queue]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
-[param composition]: /doc/user-guide/experiment-management/hydra-composition
