@@ -36,7 +36,7 @@ workflow is:
            evaluation/test/plots/roc.json: tpr
 
      # Image file source
-     - evaluation/importance.png:
+     - evaluation/importance.png
    ```
 
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
@@ -160,10 +160,9 @@ top-level definition, DVC will create separate rendering for each type.
 Plots can be defined in a top-level `plots` key in `dvc.yaml`. Top-level plots
 can use any file found in the <abbr>project</abbr>.
 
-In the simplest use, you only need to provide the plot's file path as a
-dictionary key. In the example below, DVC will take data from `logs.csv` and use
-the default plotting behavior (apply the `linear` plot [template] to the last
-found column):
+In the simplest use, you only need to provide the plot's file path. In the
+example below, DVC will take data from `logs.csv` and use the default plotting
+behavior (apply the `linear` plot [template] to the last found column):
 
 ```yaml
 stages:
@@ -173,7 +172,7 @@ stages:
       - logs.csv
   ...
 plots:
-  - logs.csv:
+  - logs.csv
 ```
 
 ```dvc

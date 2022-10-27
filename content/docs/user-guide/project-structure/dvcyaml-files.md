@@ -592,9 +592,9 @@ Both individual foreach stages (`train@1`) and groups of foreach stages
 ## Top-level plot definitions
 
 The list of `plots` contains one or more user-defined `dvc plots`
-configurations. Every plot is a dictionary keyed by a unique ID, which may be
-either a file or directory path (relative to the location of `dvc.yaml`) or an
-arbitrary string. Optional configuration fields can be provided as well.
+configurations. Every plot must have a unique ID, which may be either a file or
+directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
+Optional configuration fields can be provided as well.
 
 <admon icon="book">
 

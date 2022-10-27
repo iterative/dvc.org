@@ -229,7 +229,7 @@ stages:
     cmd: ...
 
 plots:
-  - logs.csv:
+  - logs.csv
 ```
 
 ```dvc
