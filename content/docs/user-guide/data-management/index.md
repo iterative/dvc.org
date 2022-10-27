@@ -5,10 +5,6 @@ anywhere: cloud storage, SSH servers, network resources (e.g. NAS), mounted
 drives, local file systems, etc. You manipulate DVC project normally in your
 local workspace; DVC tracks, restores, and synchronizes them across locations.
 
-<!--
-one story that highlights DVC's workflow with data, building blocks
--->
-
 ![Storage locations](/img/storage-locations.png) _Local, external, and remote
 storage locations_
 
@@ -28,8 +24,6 @@ data regularly.
 </admon>
 
 [share it]: /doc/user-guide/how-to/share-a-dvc-cache
-[content-addressable structure]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 Optionally, DVC supports additional storage locations such as cloud services
 (Amazon S3, Google Drive, Azure Blob Storage, etc.), SSH servers,

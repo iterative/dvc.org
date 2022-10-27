@@ -229,7 +229,7 @@ stages:
     cmd: ...
 
 plots:
-  logs.csv:
+  - logs.csv:
 ```
 
 ```dvc
@@ -243,12 +243,12 @@ We can also customize it:
 
 ```yaml
 plots:
-  logs.csv:
-    x: epoch
-    y: accuracy
-    title: Displaying accuracy
-    x_label: This is epoch
-    y_label: This is accuracy
+  - logs.csv:
+      x: epoch
+      y: accuracy
+      title: Displaying accuracy
+      x_label: This is epoch
+      y_label: This is accuracy
 ```
 
 ```dvc
@@ -274,11 +274,11 @@ Plot definition in `dvc.yaml`:
 
 ```yaml
 plots:
-  test_vs_train_loss:
-    x: epoch
-    y:
-      training_data.csv: [test_loss, train_loss]
-    title: Compare loss training versus test
+  - test_vs_train_loss:
+      x: epoch
+      y:
+        training_data.csv: [test_loss, train_loss]
+      title: Compare loss training versus test
 ```
 
 ```dvc
@@ -326,15 +326,15 @@ In `dvc.yaml`:
 
 ```yaml
 plots:
-  test_vs_train_confusion:
-    x: actual_class
-    y:
-      train_classes.csv: predicted_class
-      test_classes.csv: predicted_class
-    title: Compare test vs train confusion matrix
-    template: confusion
-    x_label: Actual class
-    y_label: Predicted class
+  - test_vs_train_confusion:
+      x: actual_class
+      y:
+        train_classes.csv: predicted_class
+        test_classes.csv: predicted_class
+      title: Compare test vs train confusion matrix
+      template: confusion
+      x_label: Actual class
+      y_label: Predicted class
 ```
 
 ```dvc
