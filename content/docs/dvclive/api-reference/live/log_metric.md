@@ -18,7 +18,7 @@ live.log("val/loss", 0.9)
 ## Description
 
 On each `live.log(name, val)` call DVCLive will create a _metrics history_ file
-in `{Live.plots_path}/metrics/{name}.tsv`:
+in `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```dvc
 $ tree
@@ -49,7 +49,7 @@ dvc plots diff dvclive/plots
 </admon>
 
 Each subsequent call to `live.log(name, val)` will add a new row to
-`{Live.plots_path}/metrics/{name}.tsv`:
+`{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```python
 live.next_step()

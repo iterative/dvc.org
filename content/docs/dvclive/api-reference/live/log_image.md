@@ -30,7 +30,7 @@ Supported values for `val` are:
   [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
 - A `PIL.Image` instance.
 
-The images will be saved in `{Live.plots_path}/images/{name}`:
+The images will be saved in `{Live.plots_dir}/images/{name}`:
 
 ```dvc
 $ tree
