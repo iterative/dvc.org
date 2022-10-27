@@ -54,7 +54,7 @@
       },
       {
         "slug": "experiment-management",
-        "source": "experiment-management/index.md",
+        "source": false,
         "children": ["experiments", "visualization"]
       }
     ]
