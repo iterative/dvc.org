@@ -99,8 +99,8 @@ these in sync most of the time.
 
 <admon type="tip">
 
-The `dvc commit` and `dvc checkout` plumbing commands let you force-sync them.
-This can be useful when unexpected errors occur (e.g. cache corruption).
+`dvc commit` and `dvc checkout` let you force-sync them if needed, for example
+if unexpected errors occur (e.g. cache corruption).
 
 </admon>
 
