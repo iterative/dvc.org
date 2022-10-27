@@ -12,6 +12,7 @@ usage: dvc import [-h] [-q | -v] [--file <filename>]
                   [-o <path>] [--rev <commit>]
                   [--no-exec | --no-download]
                   [-j <number>] [--desc <text>]
+                  [--type <str>] [--label <str>] [--meta key=value]
                   url path
 
 positional arguments:
@@ -106,23 +107,30 @@ file.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+- `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
   that the data source is valid). This is useful if you need to define the
   project imports quickly, and import the data later (use `dvc update` to finish
   the operation(s)).
 
-- `--no-download` - create the import `.dvc` with data checksums but without
-  downloading the associated data. This is useful if you need track changes in
-  remote data but do not (yet) need to download data to the local workspace.
-  Data can be later downloaded using `dvc pull`.
+- `--no-download` - create the import `.dvc` file including the source data
+  information (repository URL and [version](https://git-scm.com/docs/revisions))
+  but without downloading the associated data. This is useful if you need track
+  changes in remote data without using local storage space (yet). The data can
+  be downloaded later using `dvc pull`. File version can be updated using
+  `dvc update --no-download`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
 
-- `--desc <text>` - user description of the data (optional). This doesn't affect
-  any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

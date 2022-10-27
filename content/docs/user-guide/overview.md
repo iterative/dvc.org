@@ -1,10 +1,60 @@
-# Comparison with Related Technologies
+# Overview
+
+## Core Features
+
+- DVC is a [free], open-source [VS Code Extension] and [command line] tool.
+
+- DVC works **on top of Git repositories** and has a similar command line
+  interface and flow as Git. DVC can also work stand-alone, but without
+  [versioning](/doc/use-cases/versioning-data-and-models) capabilities.
+
+- DVC codifies data and ML experiments:
+
+  ![](/img/reproducibility.png)
+
+- **Data versioning** is enabled by replacing large files, dataset directories,
+  machine learning models, etc. with small
+  [metafiles](/doc/user-guide/project-structure) (easy to handle with Git).
+  These placeholders point to the original data, which is decoupled from source
+  code management.
+
+- **Data storage**: On-premises or cloud storage can be used to store the
+  project's data separate from its code base. This is how data scientists can
+  transfer large datasets or share a GPU-trained model with others.
+
+- DVC makes data science projects **reproducible** by creating lightweight
+  [pipelines] using implicit dependency graphs, and by codifying the data and
+  artifacts involved.
+
+- DVC is **platform agnostic**: It runs on all major operating systems (Linux,
+  macOS, and Windows), and works independently of the programming languages
+  (Python, R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow,
+  PyTorch, Scipy, etc.) used in the <abbr>project</abbr>.
+
+- **Easy to use**: DVC is quick to [install](/doc/install) and doesn't require
+  special infrastructure, nor does it depend on APIs or external services. It's
+  a stand-alone CLI tool.
+
+  <admon type="info">
+
+  Git servers, as well as SSH and cloud storage providers are supported,
+  however.
+
+  </admon>
+
+[free]: https://github.com/iterative/dvc/blob/master/LICENSE
+[vs code extension]: /doc/vs-code-extension
+[command line]: /doc/command-reference
+[pipelines]: /doc/user-guide/pipelines
+
+## Comparison with Related Technologies
 
 DVC combines a number of existing ideas into a single tool, with the goal of
-bringing best practices from software engineering into the data science field
-(refer to [What is DVC?](/doc/user-guide/what-is-dvc) for more details).
+bringing best practices from software engineering into the data science field.
 
-## Git
+<details>
+
+### Git
 
 - DVC builds upon Git by introducing the concept of data files – large files
   that should not be stored in a Git repository, but still need to be tracked
@@ -14,7 +64,11 @@ bringing best practices from software engineering into the data science field
 - DVC is not fundamentally bound to Git, and can work without it (except
   [versioning-related](/doc/use-cases/versioning-data-and-models) features).
 
-## Git-LFS (Large File Storage)
+</details>
+
+<details>
+
+### Git-LFS (Large File Storage)
 
 - DVC does not require special servers like Git-LFS demands. Any cloud storage
   like S3, Google Cloud Storage, or even an SSH server can be used as a
@@ -30,7 +84,11 @@ bringing best practices from software engineering into the data science field
 
 - GitHub (most common Git hosting service) has a limit of 2 GB per repository.
 
-## Git-annex
+</details>
+
+<details>
+
+### Git-annex
 
 - DVC can use reflinks\* or hardlinks (depending on the system) instead of
   symlinks to improve performance and the user experience.
@@ -45,23 +103,35 @@ bringing best practices from software engineering into the data science field
 
 - DVC optimizes file hash calculation.
 
-> \* **copy-on-write links or "reflinks"** are a relatively new way to link
-> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
-> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
-> means that editing a reflinked file is always safe as all the other links to
-> the file will reflect the changes.
+<admon type="info">
 
-## Git workflows/methodologies such as Gitflow
+\* **copy-on-write links or "reflinks"** are a relatively new way to link files
+in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
+means that editing a reflinked file is always safe as all the other links to the
+file will reflect the changes.
+
+</admon>
+
+</details>
+
+<details>
+
+### Git workflows such as Gitflow
 
 - DVC enables a new experimentation methodology that integrates easily with
-  existing Git workflows. For example, a separate branch can be created for each
+  standard Git workflows. For example, a separate branch can be created for each
   experiment, with a subsequent merge of the branch if the experiment is
   successful.
 
 - DVC innovates by giving users the ability to easily navigate through past
   experiments without recomputing them each time.
 
-## Workflow management systems
+</details>
+
+<details>
+
+### Workflow management systems
 
 Systems to manage data pipelines and [dependency graphs] such as _Airflow_,
 _Luigi_, etc.
@@ -80,7 +150,11 @@ _Luigi_, etc.
 
 [dependency graphs]: /doc/user-guide/pipelines/defining-pipelines
 
-## Experiment management software
+</details>
+
+<details>
+
+### Experiment management software
 
 > See also the [Experiment Management](/doc/user-guide/experiment-management)
 > guide.
@@ -97,7 +171,11 @@ _Luigi_, etc.
 - DVC has transparent design. <abbr>DVC files</abbr> have a human-readable
   format and can be easily reused by external tools.
 
-## Build automation tools
+</details>
+
+<details>
+
+### Build automation tools
 
 [_Make_](https://www.gnu.org/software/make/) and others.
 
@@ -134,3 +212,5 @@ _Luigi_, etc.
 
 [directed acyclic graph]:
   /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+
+</details>

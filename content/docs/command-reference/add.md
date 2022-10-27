@@ -9,6 +9,7 @@ file.
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
                [--glob] [--file <filename>] [-o <path>] [--to-remote]
                [-r <name>] [-j <number>] [--desc <text>]
+               [--type <str>] [--label <str>] [--meta key=value]
                targets [targets ...]
 
 positional arguments:
@@ -67,7 +68,7 @@ You can also [undo `dvc add`](/doc/user-guide/how-to/stop-tracking-data) to stop
 tracking files or directories.
 
 By default, DVC tries to use reflinks (see
-[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
@@ -148,7 +149,7 @@ not.
 
 - `--external` - allow tracking `targets` outside of the DVC repository
   in-place. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
+  [Managing External Data](/doc/user-guide/data-management/managing-external-data).
 
   > ⚠️ Note that this is an advanced feature for very specific situations and
   > not recommended except if there's absolutely no other alternative.
@@ -160,8 +161,8 @@ not.
   This enables targeting data outside the project (see an
   [example](#example-transfer-to-an-external-cache)).
 
-- `--to-remote` - add a target that's outside the project, but neither cache it
-  nor place it in the workspace nor cache it yet.
+- `--to-remote` - add a target that's outside the project, neither move it into
+  the workspace, nor cache it.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
   instead (the default one unless one is specified with `-r`). Implies
   `--out .`. Use `dvc pull` to get the data locally.
@@ -174,8 +175,13 @@ not.
   when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
   remotes, the default is `4`. Using more jobs may speed up the operation.
 
-- `--desc <text>` - user description of the data (optional). This doesn't affect
-  any DVC operations.
+- `--desc <text>` - user description of the data.
+
+- `--type <str>` - user-assigned type of the data.
+
+- `--label <text>` - user-assigned label(s) to add to the data.
+
+- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -378,9 +384,9 @@ outs:
 ```
 
 [linked]:
-  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
 [external cache]:
-  /doc/user-guide/managing-external-data#setting-up-an-external-cache
+  /doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache
 
 ## Example: Transfer to remote storage
 

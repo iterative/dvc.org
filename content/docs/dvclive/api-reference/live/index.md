@@ -23,8 +23,8 @@ live = Live()
 
 ## Description
 
-A `Live()` instance is required in order to log machine learning metrics and
-other metadata.
+A `Live()` instance is required in order to log machine learning parameters,
+metrics and other metadata.
 
 <admon type="warn">
 
@@ -43,15 +43,12 @@ other metadata.
 
 - `report_path` - `{Live.dir}/report.{format}`. Location of the
   [metrics report](/doc/dvclive/api-reference/live/make_report). The `format`
-  can be HTML) or Markdown depending on the value of the `report` parameter.
+  can be HTML or Markdown depending on the value of the `report` parameter.
 
 ## Parameters
 
-- `path` - Where to save DVCLive's outputs. _Default_: `None`.
-
-  If `None` and DVC is enabled (see
-  [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)), the `path` set by DVC
-  will be used. If `None` and DVC is **not** enabled, `"dvclive"` will be used.
+- `path` - Where to save DVCLive's outputs. _Default_: `None`. If `None`,
+  `"dvclive"` will be used.
 
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `path` directory and start from that point. _Default_: `False`.
@@ -63,7 +60,7 @@ other metadata.
 
   </admon>
 
-- `report` - If `auto`,`html`, or `md`, DVCLive will call `Live.make_report()`
+- `report` - If `auto`, `html`, or `md`, DVCLive will call `Live.make_report()`
   on each step update. The `auto` mode (default) will use `md` format if a `CI`
   env var is present, otherwise it will use `html`.
 
@@ -71,10 +68,12 @@ other metadata.
 
 ## Methods
 
+- `Live.get_step()`
 - `Live.log()`
 - `Live.log_image()`
+- `Live.log_param()`
+- `Live.log_params()`
 - `Live.log_plot()`
 - `Live.make_report()`
-- `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

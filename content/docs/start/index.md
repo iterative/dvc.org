@@ -1,4 +1,5 @@
 ---
+title: 'Get Started'
 description: 'Get a quick introduction to the major features of DVC for data
 science and machine learning projects: version data, access it anywhere, capture
 pipelines and metrics, and manage experiments.'
@@ -54,25 +55,22 @@ Pick a trail below to see an overview of all features from that perspective:
 
 ### Data Management
 
-- [Introduction](/doc/start/data-management)
-
 - **[Data and model versioning]** is the base layer of DVC for large files,
-  datasets, and machine learning models. Use a regular Git workflow, but without
-  storing large files in the repo (think "Git for data"). Data is stored
-  separately, which allows for efficient sharing.
+  datasets, and machine learning models. Use a standard Git workflow, but
+  without storing large files in the repo. Data is cached by DVC, allowing for
+  efficient sharing. Think "Git for data".
 
 - **[Data and model access]** goes over using data artifacts from outside of the
   project and importing them from another DVC project. This can help to download
-  a specific version of an ML model to a deployment server or import a model to
-  another project.
+  a specific version of an ML model to a deployment server or import a dataset
+  into another project.
 
 - **[Data pipelines]** describe how models and other data artifacts are built,
   and provide an efficient way to reproduce them. Think "Makefiles for data and
   ML projects" done right.
 
 - **[Metrics, parameters, and plots]** can be attached to pipelines. These let
-  you capture, navigate, and evaluate ML projects without leaving Git. Think
-  "Git for machine learning".
+  you capture, evaluate, and visualize ML projects without leaving Git.
 
 [data and model versioning]: /doc/start/data-management/data-versioning
 [data and model access]: /doc/start/data-management/data-and-model-access
@@ -80,17 +78,54 @@ Pick a trail below to see an overview of all features from that perspective:
 [metrics, parameters, and plots]:
   /doc/start/data-management/metrics-parameters-plots
 
-### Experimentation
+<admon type="tip">
 
-- [Introduction](/doc/start/experiment-management)
+The steps and results of some of these chapters are captured in our
+[example-get-started] repo. Feel free to `git clone/checkout` any of its [tags].
+
+[example-get-started]: https://github.com/iterative/example-get-started
+[tags]: https://github.com/iterative/example-get-started/tags
+
+</admon>
+
+### Experiment Management
 
 - **[Experiments]** enable exploration, iteration, and comparison across many
   trials in ML projects. Track your experiments with automatic versioning and
   checkpoint logging. Compare differences in parameters, metrics, code, and
   data. Apply, drop, roll back, resume, or share any experiment.
 
-- **[Visualization]** compare experiment results visually, track your plots and
-  generate them with library integrations.
+- **[Visualization]** helps you compare experiment results visually, track your
+  plots, and generate them with library integrations.
 
 [experiments]: /doc/start/experiment-management/experiments
 [visualization]: /doc/start/experiment-management/visualization
+
+<admon type="tip">
+
+The are captured in our [example-dvc-experiments] repo (see its [tags]).
+
+[example-dvc-experiments]: https://github.com/iterative/example-dvc-experiments
+[tags]: https://github.com/iterative/example-dvc-experiments/tags
+
+</admon>
+
+## Following the Get Started
+
+Although presented in a logical order, each page in the trails above is an
+independent chapter you can go to directly. There may be references to other
+chapters or docs, but you can skip them and still get a good idea of the
+features in question, even by only reading page sections.
+
+For better learning, you can also try each step yourself and get to similar
+results. Some of the required steps for this may be inside collapsed sections
+you can click on to expand:
+
+<details>
+
+### Click for an example!
+
+Click the header again to collapse this message. Or move on by picking a page
+from the list above, left-side navigation, or just click `NEXT` below!
+
+</details>

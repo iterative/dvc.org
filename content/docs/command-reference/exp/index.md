@@ -1,7 +1,5 @@
 # exp
 
-_New in DVC 2.0 (see `dvc version`)_
-
 > Alias of `dvc experiments`.
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
@@ -46,15 +44,22 @@ positional arguments:
 `dvc exp` subcommands provide specialized ways to create and manage data
 science/ machine learning experiments.
 
-📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
+<admon icon="book">
+
+See [Experiment Management](/doc/user-guide/experiment-management) for more
 info.
 
-<!-- prettier-ignore -->
-> ⚠️ Note that DVC assumes that experiments are deterministic (see [Avoiding
-> unexpected behavior]).
+</admon>
+
+<admon type="warn">
+
+Note that DVC assumes that experiments are deterministic (see [Avoiding
+unexpected behavior]).
 
 [avoiding unexpected behavior]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+
+</admon>
 
 ## Options
 

@@ -116,6 +116,7 @@ up-to-date and only execute the final stage.
   - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`
   - `dvc repro modeling/dvc.yaml:prepare`: Stage(s) from a specific `dvc.yaml`
     file
+  - `dvc repro train-model@1`: [Foreach] stage(s) from `./dvc.yaml`
   - `dvc repro --glob train-*`: Pattern to match groups of stages
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
@@ -195,6 +196,7 @@ up-to-date and only execute the final stage.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 [details]: /doc/user-guide/project-structure/internal-files#run-cache
 [not recommended]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior

@@ -19,9 +19,12 @@ experiment(s). These files codify _pipelines_ that specify one or more
 <abbr>stages</abbr> of the experiment workflow (code, <abbr>dependencies</abbr>,
 <abbr>outputs</abbr>, etc.).
 
-> 📖 See
-> [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) for
-> an intro to this topic.
+<admon icon="book">
+
+See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro to
+this topic.
+
+</admon>
 
 ### Running the pipeline(s)
 
@@ -47,7 +50,11 @@ can limit this to certain [reproduction targets] or even single stages
 more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
 once.
 
-> 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
+<admon icon="book">
+
+`dvc exp run` is an experiment-specific alternative to `dvc repro`.
+
+</admon>
 
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
@@ -64,6 +71,13 @@ To display and compare multiple experiments along with their
 
 Use `dvc exp apply` to restore the results of any other experiment instead. See
 [Bring experiment results to your workspace][apply] for more info.
+
+<admon type="warn">
+
+Only files tracked by either Git or DVC are saved to the experiment. Untracked
+files cannot be restored.
+
+</admon>
 
 [reviewing]: /doc/user-guide/experiment-management/comparing-experiments
 [apply]:
@@ -82,7 +96,11 @@ Your source code should read params from structured [parameters files]
 for DVC to track them. When a param value has changed, `dvc exp run` invalidates
 any stages that depend on it, and reproduces them.
 
-> 📖 See `dvc params` for more details.
+<admon icon="book">
+
+See `dvc params` for more details.
+
+</admon>
 
 You could manually edit a params file and run an experiment using those as
 inputs. Since this is a common sequence, the built-in option
@@ -238,8 +256,12 @@ logging. The latter can be achieved either with [DVCLive](/doc/dvclive), by
 using `dvc.api.make_checkpoint()` (Python code), or writing signal files (any
 programming language) following the same steps as `make_checkpoint()`.
 
-> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
-> learn more about this feature.
+<admon icon="book">
+
+See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
+more about this feature.
+
+</admon>
 
 Running checkpoint experiments is no different than running regular ones, e.g.:
 

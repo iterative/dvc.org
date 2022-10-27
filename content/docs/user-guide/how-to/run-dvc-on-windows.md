@@ -1,11 +1,17 @@
-# Running DVC on Windows
+---
+title: 'How to Run DVC on Windows'
+description: >-
+  Learn to setup your Windows environment for an optimal experience using DVC.
+---
+
+# How to Run DVC on Windows
 
 Different issues can arise when running DVC on Microsoft Windows, mainly
 involving system performance. Some, for example, have to do with NTFS file
 system characteristics and Windows built-in security mechanisms. Below are some
 workarounds that can help avoid these potential problems:
 
-<admon tipe="info">
+<admon type="info">
 
 Did you know that DVC is available for Microsoft **Visual Studio Code**? More
 details [here](/doc/install/ide-plugins#visual-studio-code)!
@@ -37,11 +43,11 @@ perfect solution, but here are some ideas:
 ## Enable symbolic links
 
 Symlinks are one of the possible file link types that DVC can use for
-[optimization](/doc/user-guide/large-dataset-optimization) purposes. They're
-available on Windows, but the _Create symbolic links_ user privilege is needed.
-It's granted to the _Administrators_ group by default, so running `dvc` in an
-admin terminal is a good option for occasional usage. For regular users, it can
-be granted using the Local policy settings.
+[optimization](/doc/user-guide/data-management/large-dataset-optimization)
+purposes. They're available on Windows, but the _Create symbolic links_ user
+privilege is needed. It's granted to the _Administrators_ group by default, so
+running `dvc` in an admin terminal is a good option for occasional usage. For
+regular users, it can be granted using the Local policy settings.
 
 This is done automatically by DVC's [Windows installer](/doc/install/windows),
 but you may want to

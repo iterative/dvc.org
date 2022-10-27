@@ -1,7 +1,5 @@
 # Checkpoints
 
-_New in DVC 2.0_
-
 To track successive steps in a longer machine learning experiment, you can
 register checkpoints from your code at runtime, for example to track the
 progress with deep learning techniques. They can help you
@@ -450,8 +448,7 @@ new set of checkpoints under a new experiment branch.
 When you terminate training, you'll see a few commands in the terminal that will
 allow you to add these changes to Git, making them [persistent]:
 
-[persistent]:
-  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ```dvc
 To track the changes with git, run:

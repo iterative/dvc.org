@@ -47,9 +47,9 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
   DVC-tracked data from multiple project branches or tags into your machine.
 - To use comparison commands across different Git commits, for example
   `dvc metrics show` with its `--all-branches` option, or `dvc plots diff`.
-- If you want to avoid [linking](/doc/user-guide/large-dataset-optimization)
-  files from the cache, or keep the <abbr>workspace</abbr> clean for any other
-  reason.
+- If you want to avoid
+  [linking](/doc/user-guide/data-management/large-dataset-optimization) files
+  from the cache, or keep the <abbr>workspace</abbr> clean for any other reason.
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from

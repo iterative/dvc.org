@@ -1,9 +1,12 @@
 # exp show
 
-Displays your experiments in a customizable table or
-[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot).
+Displays your experiments in a customizable table or [parallel coordinates
+plot].
 
 > Press `q` to exit.
+
+[parallel coordinates plot]:
+  /doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot
 
 ## Synopsis
 
@@ -58,8 +61,7 @@ sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
 
-When the `--pcp` option is passed, an interactive
-[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot)
+When the `--pcp` option is passed, an interactive [parallel coordinates plot]
 will be generated using the same data from the table.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
@@ -72,7 +74,7 @@ This command's output is automatically piped to
 is not available (e.g. on Windows), the output is simply printed out.
 
 > It's also possible to
-> [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+> [enable `less` on Windows](/doc/user-guide/how-to/run-dvc-on-windows#enabling-paging-with-less).
 
 ### Providing a custom pager
 
@@ -355,8 +357,11 @@ $ dvc exp show --all-branches --pcp --sort-by roc_auc
 
 ![](/img/ref_pcp_filter.png) _Excluded avg_prec column_
 
-📖 See
-[Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
-for an introduction to parameters, metrics, plots.
+<admon icon="book">
+
+See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for an
+introduction to parameters, metrics, plots.
+
+</admon>
 
 [regex]: https://regexone.com/

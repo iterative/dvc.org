@@ -5,37 +5,19 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-To start using DVCLive you just need to add a few lines to your training code in
-**any** [LightGBM](https://lightgbm.readthedocs.io/en/latest/) project.
+Include the
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lgbm.py)
+in the callbacks list passed to the `lightgbm.train` call:
 
-You just need to add the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/lgbm.py)
-to the callbacks list passed to the `lightgbm.train` call:
+```python
+from dvclive.lgbm import DvcLiveCallback
 
-```git
-+from dvclive.lgbm import DvcLiveCallback
-
-. . .
+...
 
 lightgbm.train(
-  param,
-  train_data,
-  valid_sets=[validation_data],
--   num_round=5)
-+   num_round=5,
-+   callbacks=[DvcLiveCallback()])
+  param, train_data, valid_sets=[validation_data], num_round=5,
+  callbacks=[DvcLiveCallback()])
 ```
-
-This will generate the outputs as described in the
-[Get Started](/docs/dvclive/get-started#outputs).
-
-<admon type="tip">
-
-Without requiring additional modifications to your training code, you can use
-DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
-more info.
-
-</admon>
 
 ## Parameters
 
