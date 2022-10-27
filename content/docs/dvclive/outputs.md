@@ -1,20 +1,19 @@
 # Output Folder Structure
 
-DVCLive will store the logged data under the folder (`path`) passed to
+DVCLive will store the logged data under the directory (`path`) passed to
 [`Live()`](/doc/dvclive/api-reference/live). If not provided, `dvclive` will be
 used by default.
 
-The resulting structure of the folder depends on the methods used for logging
-data:
+The contents of the directory will depend on the methods used:
 
-| Method                                                            | Writes to                                        |
-| ----------------------------------------------------------------- | ------------------------------------------------ |
-| [live.log](/doc/dvclive/api-reference/live/log)                   | `dvclive/plots/metrics` & `dvclive/metrics.json` |
-| [live.log_image](/doc/dvclive/api-reference/live/log_image)       | `dvclive/plots/images`                           |
-| [live.log_param](/doc/dvclive/api-reference/live/log_param)       | `dvclive/params.yaml`                            |
-| [live.log_sklearn_plot](/doc/dvclive/api-reference/live/log_plot) | `dvclive/plots/sklearn`                          |
-| [live.make_report](/doc/dvclive/api-reference/live/make_report)   | `dvclive/report.{md/html}`                       |
-| [live.make_summary](/doc/dvclive/api-reference/live/make_summary) | `dvclive/metrics.json`                           |
+| Method                                                                    | Writes to                  |
+| ------------------------------------------------------------------------- | -------------------------- |
+| [live.log_metric](/doc/dvclive/api-reference/live/log_metric)             | `dvclive/plots/metrics`    |
+| [live.log_image](/doc/dvclive/api-reference/live/log_image)               | `dvclive/plots/images`     |
+| [live.log_param](/doc/dvclive/api-reference/live/log_param)               | `dvclive/params.yaml`      |
+| [live.log_sklearn_plot](/doc/dvclive/api-reference/live/log_sklearn_plot) | `dvclive/plots/sklearn`    |
+| [live.make_report](/doc/dvclive/api-reference/live/make_report)           | `dvclive/report.{md/html}` |
+| [live.make_summary](/doc/dvclive/api-reference/live/make_summary)         | `dvclive/metrics.json`     |
 
 ## Example
 

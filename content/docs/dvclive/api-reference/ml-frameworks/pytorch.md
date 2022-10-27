@@ -5,9 +5,9 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-You need to add `Live.log()` calls to each place where you would like to log
-metrics and one single `Live.next_step()` call to indicate that the epoch has
-ended.
+You need to add `Live.log_metric()` calls to each place where you would like to
+log metrics and one single `Live.next_step()` call to indicate that the epoch
+has ended.
 
 let's consider the following example, extracted from the
 [official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/main/imagenet/main.py):

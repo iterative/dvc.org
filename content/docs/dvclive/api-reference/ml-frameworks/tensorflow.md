@@ -12,9 +12,9 @@ If you prefer the Keras API, check the
 
 </admon>
 
-You need to add `Live.log()` calls to each place where you would like to log
-metrics and one single `Live.next_step()` call to indicate that the epoch has
-ended.
+You need to add `Live.log_metric()` calls to each place where you would like to
+log metrics and one single `Live.next_step()` call to indicate that the epoch
+has ended.
 
 let's consider the following example, extracted from the
 [official TensorFlow guide](https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch):

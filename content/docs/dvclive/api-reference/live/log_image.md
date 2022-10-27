@@ -30,43 +30,26 @@ Supported values for `val` are:
   [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
 - A `PIL.Image` instance.
 
-The images will be saved in `{Live.dir}/images/{name}`:
+The images will be saved in `{Live.plots_path}/images/{name}`:
 
 ```dvc
 $ tree
 └── dvclive
-    └── images
-        ├── numpy.png
-        └── pil.png
+    └── plots
+        └── images
+            ├── numpy.png
+            └── pil.png
 ```
 
 <admon type="tip">
 
-The logged images can be visualized with `dvc plots`.
-
-</admon>
-
-### Step updates
-
-The first `step` update (with `Live.next_step()` or `Live.set_step()`) will move
-the saved file from `{Live.dir}/images/{name}` to
-`{Live.dir}/images/{step}/{name}`.
-
-Each subsequent call to `live.log_image(name, val)` will save the image under
-the folder `{Live.dir}/images/{step}/{name}` corresponding to the current
-`step`.
+The logged images can be visualized with `dvc plots`:
 
 ```dvc
-$ tree
-└── dvclive
-    └── images
-        ├── 0
-        │   ├── numpy.png
-        │   └── pil.png
-        └── 1
-            ├── numpy.png
-            └── pil.png
+dvc plots diff dvclive/plots
 ```
+
+</admon>
 
 ## Parameters
 

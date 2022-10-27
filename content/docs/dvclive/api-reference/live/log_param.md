@@ -1,7 +1,5 @@
 # Live.log_param()
 
-Logs the given parameter `val` associating it with the given `name`.
-
 ```py
  def log_param(name: str, val: ParamLike):
 ```
@@ -29,6 +27,16 @@ $ cat dvclive/params.yaml
 lr: 1e-3
 n_iter: 50
 ```
+
+<admon type="tip">
+
+The logged params can be visualized with `dvc params`:
+
+```dvc
+dvc params diff dvclive/params.yaml
+```
+
+</admon>
 
 ## Parameters
 

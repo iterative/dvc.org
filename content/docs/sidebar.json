@@ -640,8 +640,8 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
-                "slug": "log",
-                "label": "log()"
+                "slug": "log_metric",
+                "label": "log_metric"
               },
               {
                 "slug": "log_image",

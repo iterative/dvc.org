@@ -54,7 +54,7 @@ See `Live.log_param()` / `Live.log_params()`.
 live.log("acc", 0.9)
 ```
 
-See `Live.log()`.
+See `Live.log_metric()`.
 
 </tab>
 <tab title="Images">
@@ -67,15 +67,15 @@ live.log_image("image.png", img)
 See `Live.log_image()`.
 
 </tab>
-<tab title="Plots">
+<tab title="SKLearn Plots">
 
 ```python
 y_true = [0, 0, 1, 1]
 y_pred = [0.2, 0.5, 0.3, 0.8]
-live.log_plot("roc", y_true, y_score)
+live.log_sklearn_plot("roc", y_true, y_score)
 ```
 
-See `Live.log_plot()`.
+See `Live.log_sklearn_plot()`.
 
 </tab>
 </toggle>

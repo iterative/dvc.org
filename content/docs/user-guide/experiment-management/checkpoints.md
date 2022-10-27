@@ -197,15 +197,15 @@ for i in range(1, EPOCHS+1):
     metrics = evaluate(model, x_test, y_test)
     for k, v in metrics.items():
         print('Epoch %s: %s=%s'%(i, k, v))
-+       dvclive.log(k, v)
++       dvclive.log_metric(k, v)
 +   dvclive.next_step()
 ```
 
 The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
 file.
 
-You can read about what the line `dvclive.log(k, v)` does in the `Live.log()`
-reference.
+You can read about what the line `dvclive.log_metric(k, v)` does in the
+`Live.log_metric()` reference.
 
 The `Live.next_step()` line tells DVC that it can take a snapshot of the entire
 workspace and version it with Git. It's important that with this approach only

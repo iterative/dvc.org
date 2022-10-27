@@ -2,7 +2,9 @@
 
 [DVCLive](https://github.com/iterative/dvclive) is a Python library for logging
 machine learning metrics and other metadata in simple file formats, which is
-fully compatible with DVC. You can
+fully compatible with DVC, the
+[VS Code Extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
+and [Iterative Studio](https://studio.iterative.ai/). You can
 [install it](https://github.com/iterative/dvclive#installation) with `pip`.
 
 <cards>
