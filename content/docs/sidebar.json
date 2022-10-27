@@ -641,7 +641,7 @@
             "children": [
               {
                 "slug": "log_metric",
-                "label": "log_metric"
+                "label": "log_metric()"
               },
               {
                 "slug": "log_image",

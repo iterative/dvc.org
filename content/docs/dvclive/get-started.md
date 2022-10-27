@@ -75,6 +75,7 @@ for epoch in range(NUM_EPOCHS):
     for metric_name, value in metrics.items():
         live.log(metric_name, value)
 
+    live.make_report()
     live.next_step()
 ```
 
