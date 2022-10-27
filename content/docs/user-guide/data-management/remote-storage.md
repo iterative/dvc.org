@@ -1,8 +1,9 @@
-# Remote Storage (Optional)
+# Remote Storage
 
-_DVC remotes_ provide storage to backup and share your data or ML models. For
-example, you can download data artifacts created by colleagues without spending
-time and resources to recreate them locally. See `dvc push` and `dvc pull`.
+_DVC remotes_ provide storage to backup and share your data or ML models
+(optional). For example, you can download data artifacts created by colleagues
+without spending time and resources to recreate them locally. See `dvc push` and
+`dvc pull`.
 
 This is similar to how GitHub provides hosting for source code repositories (Git
 repos). However, DVC does not provide or recommend a specific storage service.

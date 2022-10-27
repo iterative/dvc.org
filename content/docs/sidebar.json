@@ -125,10 +125,7 @@
         "source": "data-management/index.md",
         "children": [
           "data-versioning",
-          {
-            "label": "Remote Storage (Optional)",
-            "slug": "remote-storage"
-          },
+          "remote-storage",
           "large-dataset-optimization",
           "importing-external-data",
           "managing-external-data"
