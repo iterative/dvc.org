@@ -301,10 +301,9 @@ heavy usage, it is recommended to rely on
 [Delegation](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority)
 can be used to overcome quota limits associated with Google service accounts.
 
-The required **OAuth scope** is `https://www.googleapis.com/auth/drive`
+The required **OAuth scope** is `https://www.googleapis.com/auth/drive`.
 
-The remote must also be configured with the associated user **personal email**
-using:
+The remote must also be configured with the associated user **personal email**:
 
 ```dvc
 $ dvc remote modify myremote gdrive_service_account_user_email \
