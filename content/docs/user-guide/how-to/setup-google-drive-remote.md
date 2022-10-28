@@ -1,4 +1,11 @@
-# Setup a Google Drive DVC Remote
+---
+title: 'How to Setup a Google Drive DVC Remote'
+description: >-
+  We explain the existing ways to setup Google Drive remote storage for your DVC
+  projects.
+---
+
+# How to Setup a Google Drive DVC Remote
 
 In this guide we explain the existing ways to setup Google Drive
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
@@ -197,7 +204,7 @@ If multiple GDrive remotes use the same client ID, by default they will share
 the same cached credentials. To isolate them, you can use custom profile names
 for different remotes:
 
-```
+```dvc
 $ dvc remote modify --local myremote profile myprofile
 ```
 
@@ -240,8 +247,17 @@ are intended for scenarios where your code needs to access data on its own, e.g.
 running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
 authentication is needed.
 
+<admon type="info">
+
+Google service accounts have their own associated usage limits which may be
+exceeded if used frequently in conjunction with `dvc push`, `dvc pull`, etc. For
+heavy usage, it is recommended to rely on
+[delegation](#delegation-with-google-service-accounts).
+
+</admon>
+
 > This requires having your own
-> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+> [GC project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 > as explained above.
 
 1. To
@@ -279,3 +295,17 @@ authentication is needed.
    account as an editor (read/write) or viewer (read-only):
 
 ![](/img/gdrive-share-with-service-account.png)
+
+### Delegation
+
+[Delegation](https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority)
+can be used to overcome quota limits associated with Google service accounts.
+
+The required **OAuth scope** is `https://www.googleapis.com/auth/drive`.
+
+The remote must also be configured with the associated user **personal email**:
+
+```dvc
+$ dvc remote modify myremote gdrive_service_account_user_email \
+              example_adress@some_google_domain.com
+```

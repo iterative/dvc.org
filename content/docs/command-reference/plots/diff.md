@@ -47,10 +47,10 @@ option. To learn more about plots files and templates please see `dvc plots`.
 Another way to display plots is the `dvc plots show` command, which just lists
 all the current plots, without comparisons.
 
-[certain metrics]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
-
-[plot templates]
-/doc/user-guide/visualizing-plots#plot-templates-data-series-only
+[certain metrics]:
+  /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
+[plot templates]:
+  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## Options
 
@@ -70,7 +70,7 @@ all the current plots, without comparisons.
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to be injected with data. The default template is `.dvc/plots/default.json`.
   See more details in `dvc plots`.
 
@@ -151,7 +151,7 @@ cat,turtle
 ```
 
 The predefined confusion matrix
-[template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+[template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 (in `.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 

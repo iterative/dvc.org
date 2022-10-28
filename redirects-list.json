@@ -76,7 +76,7 @@
   "^/doc/user-guide/large-dataset-optimization$                                           /doc/user-guide/data-management/large-dataset-optimization 302",
   "^/doc/user-guide/external-dependencies$                                                /doc/user-guide/data-management/importing-external-data 302",
   "^/doc/user-guide/managing-external-data$                                               /doc/user-guide/data-management/managing-external-data 302",
-  "^/doc/user-guide/running-dvc-on-windows$                                               /doc/user-guide/how-to/running-dvc-on-windows 302",
+  "^/doc/user-guide/running-dvc-on-windows$                                               /doc/user-guide/how-to/run-dvc-on-windows 302",
   "^/doc/user-guide/setup-google-drive-remote$                                            /doc/user-guide/how-to/setup-google-drive-remote 302",
   "^/doc/user-guide/visualizing-plots$                                                    /doc/user-guide/experiment-management/visualizing-plots 302",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",

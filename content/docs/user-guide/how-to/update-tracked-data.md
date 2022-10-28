@@ -17,8 +17,8 @@ default, see `dvc config cache` for more info.), updating tracked files has to
 be carried out with caution, to avoid data corruption. This is due to the way in
 which DVC handles linking data files between the <abbr>cache</abbr> and the
 <abbr>workspace</abbr> (refer to
-[Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
-details).
+[Large Dataset Optimization](/doc/user-guide/data-management/large-dataset-optimization)
+for details).
 
 If you use `dvc.yaml` files and `dvc repro`, there is no need to manage stage
 <abbr>outputs</abbr> manually. DVC removes them for you before regenerating

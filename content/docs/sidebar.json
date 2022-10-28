@@ -37,6 +37,7 @@
   {
     "slug": "start",
     "label": "Get Started",
+    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
@@ -153,7 +154,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "running-dvc-on-windows",
+          "run-dvc-on-windows",
           "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
@@ -640,6 +641,10 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
+                "slug": "get_step",
+                "label": "get_step()"
+              },
+              {
                 "slug": "log_metric",
                 "label": "log_metric()"
               },
@@ -662,10 +667,6 @@
               {
                 "slug": "make_report",
                 "label": "make_report()"
-              },
-              {
-                "slug": "get_step",
-                "label": "get_step()"
               },
               {
                 "slug": "next_step",

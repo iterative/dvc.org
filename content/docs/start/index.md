@@ -1,4 +1,5 @@
 ---
+title: 'Get Started'
 description: 'Get a quick introduction to the major features of DVC for data
 science and machine learning projects: version data, access it anywhere, capture
 pipelines and metrics, and manage experiments.'
@@ -51,14 +52,14 @@ trail below to see an overview of all features from that perspective:
 ### Data Management
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
-  datasets, and machine learning models. Use a regular Git workflow, but without
-  storing large files in the repo. Data is cached by DVC, allowing for efficient
-  sharing. Think "Git for data".
+  datasets, and machine learning models. Use a standard Git workflow, but
+  without storing large files in the repo. Data is cached by DVC, allowing for
+  efficient sharing. Think "Git for data".
 
 - **[Data and model access]** shows how to bring, explore, and access data
   artifacts from outside the project. This can help download a specific version
-  of an ML model to a deployment server, or import a dataset to another project,
-  for example.
+  of an ML model to a deployment server or import a dataset into another
+  project, for example.
 
 - **[Data pipelines]** describe how models and other data artifacts are built,
   and provide an efficient way to reproduce them. Think "Makefiles for data and
@@ -73,15 +74,15 @@ trail below to see an overview of all features from that perspective:
 [metrics, parameters, and plots]:
   /doc/start/data-management/metrics-parameters-plots
 
-### Experimentation
+### Experiment Management
 
 - **[Experiments]** enable exploration, iteration, and comparison across many ML
   experiments. Track your experiments with automatic versioning and checkpoint
   logging. Compare differences in parameters, metrics, code, and data. Apply,
   drop, roll back, resume, or share any experiment.
 
-- **[Visualization]** compare experiment results visually, track your plots and
-  generate them with library integrations.
+- **[Visualization]** helps you compare experiment results visually, track your
+  plots, and generate them with library integrations.
 
 [experiments]: /doc/start/experiment-management/experiments
 [visualization]: /doc/start/experiment-management/visualization

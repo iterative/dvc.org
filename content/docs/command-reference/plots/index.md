@@ -39,7 +39,7 @@ Plots have to be defined either at the stage level, or at the pipeline level in
 
 See [Visualizing Plots] and [Top-level plot definitions] for more details
 
-[visualizing plots]: /doc/user-guide/visualizing-plots
+[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 [top-level plot definitions]:
   /doc/user-guide/project-structure/dvcyaml-files#top-level-plot-definitions
 

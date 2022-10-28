@@ -1,23 +1,25 @@
 ---
 title: 'Get Started: Data Versioning'
 description: 'Get started with data and model versioning in DVC. Learn how to
-use a regular Git workflow for datasets and ML models, without storing large
+use a standard Git workflow for datasets and ML models, without storing large
 files in Git.'
 ---
 
 # Get Started: Data Versioning
+
+<details>
+
+## 🎬 Click to watch a video intro.
+
+https://youtu.be/kLKBcPonMYw
+
+</details>
 
 How cool would it be to make Git handle arbitrarily large files and directories
 with the same performance it has with small code files? Imagine cloning a
 repository and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
 `git checkout`. Think "Git for data".
-
-https://youtu.be/kLKBcPonMYw
-
-The foundation of DVC consists of a few commands you can run along with `git` to
-track large files, directories, or ML model files. Read on or watch the video
-above to learn more!
 
 <details>
 
@@ -31,17 +33,20 @@ $ dvc get https://github.com/iterative/dataset-registry \
           get-started/data.xml -o data/data.xml
 ```
 
+<admon type="info">
+
 We use the fancy `dvc get` command to jump ahead a bit and show how a Git repo
-becomes a source for datasets or models — what we call a "data/model registry".
+becomes a source for datasets or models — what we call a [data registry].
 `dvc get` can download any file or directory tracked in a <abbr>DVC
-repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
-download the latest version of the `data.xml` file from the
-[dataset registry](https://github.com/iterative/dataset-registry) repo as the
-data source.
+repository</abbr>.
+
+[data registry]: /doc/use-cases/data-registry
+
+</admon>
 
 </details>
 
-To start tracking a file or directory, use `dvc add`. For example:
+To start tracking a file or directory, use `dvc add`:
 
 ```dvc
 $ dvc add data/data.xml
@@ -294,5 +299,5 @@ You can learn more about advanced workflows using these links:
   store, version and access a lot of data on a large shared volume efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). See
-  [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
+  [Managing External Data](https://dvc.org/doc/user-guide/data-management/managing-external-data)
   to learn more.
