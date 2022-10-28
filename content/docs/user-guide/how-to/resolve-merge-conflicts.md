@@ -36,7 +36,8 @@ stages:
 ## `dvc.lock`
 
 There's no need to resolve lock file merge conflicts manually. You can safely
-overwrite this file by using `dvc repro` after merging `dvc.yaml`.
+remove this file. After merging `dvc.yaml`, you can reproduce a clean `dvc.lock`
+with `dvc repro`.
 
 > `dvc commit` can also be a good option, but only for the specific case where
 > the `HEAD` version is chosen.

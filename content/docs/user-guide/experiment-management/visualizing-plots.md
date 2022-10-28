@@ -15,22 +15,28 @@ workflow is:
    ...
    ```
 
-2. [Define plots](#defining-plots), optionally using
+2. [Define plots](#defining-plots) in `dvc.yaml`, optionally using
    [templates](#plot-templates-data-series-only) to configure how to visualize
    the data.
 
    ```yaml
    plots:
-     evaluation/test/plots/confusion_matrix.json: # Configure template and axes.
-       template: confusion
-       x: actual
-       y: predicted
-     ROC: # Combine multiple data sources.
-       x: fpr
-       y:
-         evaluation/train/plots/roc.json: tpr
-         evaluation/test/plots/roc.json: tpr
-     evaluation/importance.png: # Plot an image.
+     # Data series source
+     - evaluation/test/plots/confusion_matrix.json:
+         # Configure template and axes.
+         template: confusion
+         x: actual
+         y: predicted
+
+     # Multiple data sources
+     - ROC:
+         x: fpr
+         y:
+           evaluation/train/plots/roc.json: tpr
+           evaluation/test/plots/roc.json: tpr
+
+     # Image file source
+     - evaluation/importance.png:
    ```
 
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
@@ -160,8 +166,6 @@ the default plotting behavior (apply the `linear` plot [template] to the last
 found column):
 
 ```yaml
-# dvc.yaml
----
 stages:
   build:
     cmd: python train.py
@@ -189,8 +193,6 @@ For customization, we can:
   `x_label`, `y_label`).
 
 ```yaml
-# dvc.yaml
----
 plots:
   - ROC:
       x: fpr
@@ -223,8 +225,8 @@ Refer to the [full format specification] and `dvc plots show` for more details.
 ### Plot outputs
 
 When defining [pipelines], some <abbr>outputs</abbr> (both files and
-directories) can be placed under a `plots` list for the corresponding stage.
-This will tell DVC that they are intended for visualization.
+directories) can be placed under a `plots` list for the corresponding stage in
+`dvc.yaml`. This will tell DVC that they are intended for visualization.
 
 <admon type="info">
 
@@ -234,8 +236,6 @@ When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
 </admon>
 
 ```yaml
-# dvc.yaml
----
 stages:
   build:
     cmd: python train.py
