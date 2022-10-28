@@ -7,7 +7,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/keras.py)
-int the callbacks list passed to your
+in the callbacks list passed to your
 [`Model`](https://keras.io/api/models/model/):
 
 ```python

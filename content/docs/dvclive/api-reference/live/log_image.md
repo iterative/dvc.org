@@ -26,7 +26,7 @@ live.log_image("pil.png", img_pil)
 
 Supported values for `val` are:
 
-- A valid numpy array (convertible to image via
+- A valid NumPy array (convertible to image via
   [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
 - A `PIL.Image` instance.
 
@@ -62,4 +62,4 @@ $ dvc plots diff dvclive/plots
   have a supported type.
 
 - `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged whithin the same `step`.
+  already been logged within the same `step`.
