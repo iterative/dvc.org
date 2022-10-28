@@ -7,7 +7,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/huggingface.py)
-int the callbacks list passed to your
+in the callbacks list passed to your
 [`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
 
 ```python
@@ -26,17 +26,15 @@ trainer.add_callback(DvcLiveCallback())
 trainer.train()
 ```
 
-The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
-`{metric}` will be stored in:
+Each metric will be logged to:
 
 ```py
-{Live.dir}/scalars/{split}/{metric}.tsv
+{Live.plots_dir}/metrics/{split}/{metric}.tsv
 ```
 
 Where:
 
-- `{Live.dir}` is the
-  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{Live.plots_dir}` is defined in `Live()`.
 - `{split}` can be either `train` or `eval`.
 - `{metric}` is the name provided by the framework.
 
@@ -64,7 +62,7 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 trainer.add_callback(
-    DvcLiveCallback(model_file="my_model_path"))
+    DvcLiveCallback(model_file="my_model_file"))
 trainer.train()
 ```
 
@@ -82,6 +80,6 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 trainer.add_callback(
-    DvcLiveCallback(model_file="my_model_path", path="custom_path"))
+    DvcLiveCallback(model_file="my_model_file", dir="custom_dir"))
 trainer.train()
 ```

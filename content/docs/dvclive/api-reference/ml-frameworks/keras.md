@@ -20,17 +20,15 @@ model.fit(
     callbacks=[DvcLiveCallback()])
 ```
 
-The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
-`{metric}` will be stored in:
+Each metric will be logged to:
 
 ```py
-{Live.dir}/scalars/{split}/{metric}.tsv
+{Live.plots_dir}/metrics/{split}/{metric}.tsv
 ```
 
 Where:
 
-- `{Live.dir}` is the
-  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{Live.plots_dir}` is defined in `Live()`.
 - `{split}` can be either `train` or `eval`.
 - `{metric}` is the name provided by the framework.
 
@@ -73,5 +71,5 @@ model.fit(
     validation_data=validation_dataset,
     callbacks=[DvcLiveCallback(
         model_file="my_model_weights.h5",
-        path="custom_path")])
+        dir="custom_dir")])
 ```

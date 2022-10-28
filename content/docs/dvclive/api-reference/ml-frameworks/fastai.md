@@ -21,17 +21,15 @@ learn.fit_one_cycle(
     cbs=[DvcLiveCallback()])
 ```
 
-The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
-`{metric}` will be stored in:
+Each metric will be logged to:
 
 ```py
-{Live.dir}/scalars/{split}/{metric}.tsv
+{Live.plots_dir}/metrics/{split}/{metric}.tsv
 ```
 
 Where:
 
-- `{Live.dir}` is the
-  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{Live.plots_dir}` is defined in `Live()`.
 - `{split}` can be either `train` or `eval`.
 - `{metric}` is the name provided by the framework.
 
@@ -64,5 +62,5 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(model_file="model.pth", path="custom_path")])
+  cbs=[DvcLiveCallback(model_file="model.pth", dir="custom_dir")])
 ```

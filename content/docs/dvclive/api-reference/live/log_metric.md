@@ -64,7 +64,7 @@ timestamp      step  loss
 ```
 
 In addition, DVCLive will create or update a _metrics summary_ in
-`{Live.summary_path}`. The `name` in the _metrics summary_ will contain the
+`{Live.metrics_file}`. The `name` in the _metrics summary_ will contain the
 latest `val` logged:
 
 ```cli

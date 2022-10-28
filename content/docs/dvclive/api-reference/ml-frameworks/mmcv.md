@@ -14,7 +14,6 @@ the following in the config file of your
 log_config = dict(
     interval=100,
     hooks=[
-       dict(type='TextLoggerHook')
         dict(type='TextLoggerHook'),
         dict(type='DvcliveLoggerHook')
     ]
@@ -53,7 +52,7 @@ log_config = dict(
         dict(
             type='DvcliveLoggerHook',
             model_file="my_model.pth",
-            path="custom_path"
+            dir="custom_dir"
         )
     ]
 )

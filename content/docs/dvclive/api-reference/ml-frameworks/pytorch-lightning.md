@@ -20,17 +20,15 @@ trainer = Trainer(logger=dvclive_logger)
 trainer.fit(model)
 ```
 
-The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
-`{metric}` will be stored in:
+Each metric will be logged to:
 
 ```py
-{Live_dir}/scalars/{split}/{iter_type}/{metric}.tsv
+{Live.plots_dir}/metrics/{split}/{iter_type}/{metric}.tsv
 ```
 
 Where:
 
-- `{Live.dir}` is the
-  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{Live.plots_dir}` is defined in `Live()`.
 - `{split}` can be either `train` or `eval`.
 - `{iter_type}` can be either `epoch` or `step`.
 - `{metric}` is the name provided by the framework.
@@ -57,7 +55,7 @@ Where:
 from dvclive.lightning import DvcLiveLogger
 
 dvclive_logger = DvcLiveLogger(
-    path='my_logs_path'
+    dir='my_logs_dir'
 )
 trainer = Trainer(
     logger=dvclive_logger,

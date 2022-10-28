@@ -20,17 +20,15 @@ runner.train(
     callbacks=[DvcLiveCallback()])
 ```
 
-The [history](/doc/dvclive/api-reference/live/log#step-updates) of each
-`{metric}` will be stored in:
+Each metric will be logged to:
 
 ```py
-{Live.dir}/scalars/{split}/{metric}.tsv
+{Live.plots_dir}/metrics/{split}/{metric}.tsv
 ```
 
 Where:
 
-- `{Live.dir}` is the
-  [`dir` attribute of `Live`](/doc/dvclive/api-reference/live#attributes).
+- `{Live.plots_dir}` is defined in `Live()`.
 - `{split}` can be either `train` or `valid`.
 - `{metric}` is the name provided by the framework.
 
@@ -70,5 +68,5 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[
-      DvcLiveCallback(model_file="model.pth", path="custom_path")])
+      DvcLiveCallback(model_file="model.pth", dir="custom_dir")])
 ```

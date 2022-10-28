@@ -50,5 +50,5 @@ lightgbm.train(
     num_round=5,
     callbacks=[DvcLiveCallback(
       model_file="lgbm_model.txt",
-      path="custom_path")])
+      dir="custom_dir")])
 ```
