@@ -32,8 +32,8 @@ n_iter: 50
 
 The logged params can be visualized with `dvc params`:
 
-```dvc
-dvc params diff dvclive/params.yaml
+```cli
+$ dvc params diff dvclive/params.yaml
 ```
 
 </admon>

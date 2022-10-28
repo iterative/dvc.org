@@ -46,7 +46,7 @@ $ tree
 The logged images can be visualized with `dvc plots`:
 
 ```dvc
-dvc plots diff dvclive/plots
+$ dvc plots diff dvclive/plots
 ```
 
 </admon>
