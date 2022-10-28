@@ -1,9 +1,31 @@
 # Data Management with DVC
 
-DVC helps you manage and share arbitrarily large files, datasets, and ML models
-anywhere: cloud storage, SSH servers, network resources (e.g. NAS), mounted
-drives, local file systems, etc. You manipulate DVC project normally in your
-local workspace; DVC tracks, restores, and synchronizes them across locations.
+<!--
+Focus on (changed) workflows (e.g. from aws s3 cp to dvc get)
+> It's a big paradigm shift.
+
+Understand why its important to "pay this price" (codify, separate storage, go through git repo)
+-->
+
+Managing datasets and ML models tends to be a manual and different process for
+each team and project.
+
+<!--
+Benefits (similar to use cases); Indirection: DVC orgs objects into dirs, you deal with project-specific refs; deduplication
+-->
+
+With DVC, you manipulate the project files normally in your local workspace; DVC
+tracks, restores, and synchronizes them across locations.
+
+## How it works
+
+<!-- Too abstract -->
+
+DVC helps you manage and share arbitrarily large files anywhere: cloud storage,
+SSH servers, network resources (e.g. NAS), mounted drives, local file systems,
+etc. To do so, several storage locations can be defined.
+
+<!-- (Relevant) implementation detail? -->
 
 ![Storage locations](/img/storage-locations.png) _Local, external, and remote
 storage locations_
@@ -25,10 +47,10 @@ data regularly.
 
 [share it]: /doc/user-guide/how-to/share-a-dvc-cache
 
-Optionally, DVC supports additional storage locations such as cloud services
-(Amazon S3, Google Drive, Azure Blob Storage, etc.), SSH servers,
-network-attached storage, etc. These are called [DVC remotes], and help you to
-share or back up copies of your data assets.
+DVC supports additional storage locations such as cloud services (Amazon S3,
+Google Drive, Azure Blob Storage, etc.), SSH servers, network-attached storage,
+etc. These are called [DVC remotes], and help you to share or back up copies of
+your data assets.
 
 <admon type="info">
 
