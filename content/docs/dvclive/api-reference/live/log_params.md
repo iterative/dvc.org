@@ -34,7 +34,7 @@ live.log_params(params)
 On each `live.log_params(params)` call, DVCLive will write keys/values pairs in
 the `params` dict to `{Live.dir}/params.yaml`:
 
-```dvc
+```cli
 $ cat dvclive/params.yaml
 lr: 1e-3
 n_iter: 50
@@ -44,7 +44,7 @@ n_iter: 50
 
 The logged params can be visualized with `dvc params`:
 
-```dvc
+```cli
 dvc params diff dvclive/params.yaml
 ```
 

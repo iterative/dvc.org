@@ -22,7 +22,7 @@ live.log_param("n_iter", 50)
 On each `live.log_param(name, val)` call, DVCLive will write the `name`
 parameter to `{Live.dir}/params.yaml` with the corresponding `val`:
 
-```dvc
+```cli
 $ cat dvclive/params.yaml
 lr: 1e-3
 n_iter: 50

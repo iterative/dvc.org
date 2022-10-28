@@ -35,7 +35,7 @@ Given the [Usage](#usage) code snippet above, the
 [metrics history](/doc/dvclive/api-reference/live/log_metric#description)
 generated for `metric_1` would be:
 
-```dvc
+```cli
 $ cat dvclive/metric_1.tsv
 timestamp	step	metric_1
 1614129197192	0	0.9

@@ -60,7 +60,7 @@ live.log_sklearn_plot("calibration", y_true, y_score)
 
 Example usage with `dvc plots`:
 
-```dvc
+```cli
 $ dvc plots show 'dvclive/plots/sklearn/calibration.json' \
 -x prob_pred -y prob_true \
 --x-label 'Mean Predicted Probability' \
@@ -91,7 +91,7 @@ live.log_sklearn_plot("confusion_matrix", y_true, y_pred)
 
 Example usage with `dvc plots`:
 
-```dvc
+```cli
 $ dvc plots show 'dvclive/plots/sklearn/confusion_matrix.json' \
 -x actual -y predicted \
 --template confusion
@@ -120,7 +120,7 @@ live.log_sklearn_plot("det", y_true, y_score)
 
 Example usage with `dvc plots`:
 
-```dvc
+```cli
 $ dvc plots show 'dvclive/plots/sklearn/det.json' \
 -x fpr -y fnr \
 --title 'DET Curve'
@@ -149,7 +149,7 @@ live.log_sklearn_plot("precision_recall", y_true, y_score)
 
 Example usage with `dvc plots`:
 
-```dvc
+```cli
 $ dvc plots show 'dvclive/plots/sklearn/precision_recall.json' \
 -x recall -y precision \
 --title 'Precision Recall Curve'
@@ -178,7 +178,7 @@ live.log_sklearn_plot("roc", y_true, y_score)
 
 Example usage with `dvc plots`:
 
-```dvc
+```cli
 $ dvc plots show 'dvclive/plots/sklearn/roc.json' \
 -x fpr -y tpr \
 --title 'ROC Curve'

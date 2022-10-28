@@ -90,7 +90,7 @@ more details and other supported frameworks.
 Once you have added DVCLive to our python code, you can run the script as you
 would usually do:
 
-```dvc
+```cli
 $ python train.py
 ```
 
@@ -150,7 +150,7 @@ You can now
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
 with `dvc exp run`:
 
-```dvc
+```cli
 $ dvc exp run
 Running stage 'train':
 > python train.py

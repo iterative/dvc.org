@@ -32,7 +32,7 @@ Supported values for `val` are:
 
 The images will be saved in `{Live.plots_dir}/images/{name}`:
 
-```dvc
+```cli
 $ tree
 └── dvclive
     └── plots
@@ -45,7 +45,7 @@ $ tree
 
 The logged images can be visualized with `dvc plots`:
 
-```dvc
+```cli
 $ dvc plots diff dvclive/plots
 ```
 

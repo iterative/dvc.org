@@ -20,7 +20,7 @@ live.log_metric("val/loss", 0.9)
 On each `live.log_metric(name, val)` call DVCLive will create a _metrics
 history_ file in `{Live.plots_dir}/metrics/{name}.tsv`:
 
-```dvc
+```cli
 $ tree
 ├── dvclive
 │   └── plots
@@ -32,7 +32,7 @@ $ tree
 └── dvclive.json
 ```
 
-```dvc
+```cli
 $ cat dvclive/plots/metrics/train/loss.tsv
 timestamp      step  loss
 1623671484747  0     0.4
@@ -57,7 +57,7 @@ live.log_metric("train/loss", 0.2)
 live.log_metric("val/loss", 0.4)
 ```
 
-```dvc
+```cli
 $ cat dvclive/plots/metrics/train/loss.tsv
 timestamp      step  loss
 1623671484747  0     0.4
@@ -68,7 +68,7 @@ In addition, DVCLive will create or update a _metrics summary_ in
 `{Live.summary_path}`. The `name` in the _metrics summary_ will contain the
 latest `val` logged:
 
-```dvc
+```cli
 $ cat dvclive/metrics.json
 {
   "step": 1,
