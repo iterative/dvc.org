@@ -6,52 +6,70 @@ permissions on cloud storage, sync tools and schedules, back up snapshots, etc.
 and focus on machine learning.
 
 You work with data normally in a local <abbr>workspace</abbr>. DVC tracks,
-restores, and synchronize everything with a few, straightforward commands
-(similar to Git) that do not change regardless of the underlying file systems,
-transfer protocols, etc.
+restores, and synchronize everything with a few, straightforward operations that
+do not change regardless of the underlying file systems, transfer protocols,
+etc.
 
-![]() _Separating data from code_
+![]() _Separating data from code (codification)_
 
-To achieve this, DVC relies on data _codification_: replacing large files and
-directories with small [metafiles] that describe the assets. Data files are
-moved to a separate <abbr>cache</abbr> but kept virtually (linked) in the
-workspace. This **separates your data from code** (including metafiles).
+<details>
+
+## Click to learn more about data _codification_
+
+To achieve this, DVC replaces large files and directories with small [metafiles]
+that describe the assets. Data files are moved to a separate <abbr>cache</abbr>
+but kept virtually (linked) in the workspace. This separates your data from code
+(including metafiles).
 
 <admon type="tip">
 
-This also allows you to [version] all project files with Git, a battle-tested
-[SCM] tool.
+This also allows you to [version] project files with Git, a battle-tested [SCM]
+tool.
 
 </admon>
 
-DVC operations stay the same because they work [indirectly], by going through
-the metafiles and [configuration] of your <abbr>project</abbr> to find out where
-and how to handle files. This is transparent to you as user, but it's important
-to understand the mechanics in general.
+[version]: /doc/user-guide/data-management/data-versioning
+[scm]: https://www.atlassian.com/git/tutorials/source-code-management
 
-## Workflow and benefits
+</details>
 
-<!-- Focus on (changed) workflows (e.g. from aws s3 cp to dvc get);  It's a big paradigm shift. -->
-
-...
-
-<!-- Benefits (similar to use cases); Indirection: DVC orgs objects into dirs, you deal with project-specific refs; deduplication -->
+Your experience can stay consistent because DVC works [indirectly], by checking
+the [metafiles] and [configuration] of your <abbr>project</abbr> to find out
+where and how to handle files. This is transparent to you as user, but it's
+important to understand the mechanics in general.
 
 [metafiles]: /doc/user-guide/project-structure
 [indirectly]: https://en.wikipedia.org/wiki/Indirection
 [configuration]: /doc/command-reference/config
-[version]: /doc/user-guide/data-management/data-versioning
-[scm]: https://www.atlassian.com/git/tutorials/source-code-management
+
+## Workflow and benefits
+
+**Before**: Files are scattered in the cloud; You use low-level operations
+specific to each storage (e.g. `aws s3 cp`); Ad hoc file names are used to save
+versions; It's easy to lose track of which data produced which results; Everyone
+can read and write.
+
+**After**: Stored objects are organized by DVC and you don't need to touch them
+directly; DVC exposes a few commands to manage them; Everything is happening
+though a code repository that can be controlled with Git; Project versions (Git
+commits) guarantee reproducibility of ML processes (e.g. training models with
+the same datasets, hyperparametes, features, etc.).
+
+<!-- Optionally in cloud versioning etc can be accessed directly -->
+
+**Benefits**: You always work with project-specific paths; Efficient usage of
+storage space (file deduplication); Small repository; [Data versioning]; [Fast
+caching], [GitOps].
+
+[data versioning]: /doc/use-cases/versioning-data-and-models
+[fast caching]: /doc/use-cases/fast-data-caching-hub
+[gitops]: https://www.gitops.tech/
 
 ## Storage locations
-
-<!-- Too abstract -->
 
 DVC can manage data anywhere: cloud storage, SSH servers, network resources
 (e.g. NAS), mounted drives, local file systems, etc. These locations can be
 separated into three groups.
-
-<!-- (Relevant) implementation detail? -->
 
 ![Storage locations](/img/storage-locations.png) _Local, external, and remote
 storage locations_
