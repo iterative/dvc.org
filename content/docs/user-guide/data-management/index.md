@@ -1,29 +1,55 @@
 # Data Management with DVC
 
-<!--
-Focus on (changed) workflows (e.g. from aws s3 cp to dvc get)
-> It's a big paradigm shift.
+Storing and transferring datasets and ML models can vary depending on project
+needs, available infrastructure, etc. DVC helps you avoid logistics like object
+permissions on cloud storage, sync tools and schedules, back up snapshots, etc.
+and focus on machine learning.
 
-Understand why its important to "pay this price" (codify, separate storage, go through git repo)
--->
+You work with data normally in a local <abbr>workspace</abbr>. DVC tracks,
+restores, and synchronize everything with a few, straightforward commands
+(similar to Git) that do not change regardless of the underlying file systems,
+transfer protocols, etc.
 
-Managing datasets and ML models tends to be a manual and different process for
-each team and project.
+![]() _Separating data from code_
 
-<!--
-Benefits (similar to use cases); Indirection: DVC orgs objects into dirs, you deal with project-specific refs; deduplication
--->
+To achieve this, DVC relies on data _codification_: replacing large files and
+directories with small [metafiles] that describe the assets. Data files are
+moved to a separate <abbr>cache</abbr> but kept virtually (linked) in the
+workspace. This **separates your data from code** (including metafiles).
 
-With DVC, you manipulate the project files normally in your local workspace; DVC
-tracks, restores, and synchronizes them across locations.
+<admon type="tip">
 
-## How it works
+This also allows you to [version] all project files with Git, a battle-tested
+[SCM] tool.
+
+</admon>
+
+DVC operations stay the same because they work [indirectly], by going through
+the metafiles and [configuration] of your <abbr>project</abbr> to find out where
+and how to handle files. This is transparent to you as user, but it's important
+to understand the mechanics in general.
+
+## Workflow and benefits
+
+<!-- Focus on (changed) workflows (e.g. from aws s3 cp to dvc get);  It's a big paradigm shift. -->
+
+...
+
+<!-- Benefits (similar to use cases); Indirection: DVC orgs objects into dirs, you deal with project-specific refs; deduplication -->
+
+[metafiles]: /doc/user-guide/project-structure
+[indirectly]: https://en.wikipedia.org/wiki/Indirection
+[configuration]: /doc/command-reference/config
+[version]: /doc/user-guide/data-management/data-versioning
+[scm]: https://www.atlassian.com/git/tutorials/source-code-management
+
+## Storage locations
 
 <!-- Too abstract -->
 
-DVC helps you manage and share arbitrarily large files anywhere: cloud storage,
-SSH servers, network resources (e.g. NAS), mounted drives, local file systems,
-etc. To do so, several storage locations can be defined.
+DVC can manage data anywhere: cloud storage, SSH servers, network resources
+(e.g. NAS), mounted drives, local file systems, etc. These locations can be
+separated into three groups.
 
 <!-- (Relevant) implementation detail? -->
 
