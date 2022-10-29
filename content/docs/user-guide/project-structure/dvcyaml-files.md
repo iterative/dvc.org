@@ -459,12 +459,6 @@ value), escape it with a backslash, e.g. `\${...`.
 
 ## `foreach` stages
 
-<admon type="warn">
-
-This feature cannot be combined with [templating](#templating) at the moment.
-
-</admon>
-
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
