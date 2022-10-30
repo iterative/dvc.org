@@ -9,9 +9,8 @@ triggered.
 
 In this model training CI action, you can use [DVCLive] to send live updates to
 metrics and plots back to Iterative Studio, without writing them to your Git
-repository. This will help to keep your Git commit history unpolluted, as you
-can push only the final results of your experiments while being able to view all
-intermediate results in Studio (in the form of live metrics and plots).
+repository. This will enable you to view all intermediate results in Studio
+while your experiment is still running.
 
 This requires a 3-step process:
 
