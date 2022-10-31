@@ -38,18 +38,15 @@ metrics and other metadata.
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/how-it-works).
 
-- `metrics_file` - `{Live.dir}/metrics.json`. Location of the
-  [summary](</doc/dvclive/api-reference/live/make_summary()>).
+- `metrics_file` - `{Live.dir}/metrics.json`.
 
-- `params_file` - `{Live.dir}/params.yaml`. Location where `Live.log_param()`
-  and `Live.log_params()` write to.
+- `params_file` - `{Live.dir}/params.yaml`.
 
 - `plots_dir` - `{Live.dir}/plots`.
 
-- `report_file` - `{Live.dir}/report.{format}`. Location of the
-  [metrics report](/doc/dvclive/api-reference/live/make_report). The `format`
-  can be HTML (`.html`) or Markdown (`.md`) depending on the value of the
-  `report` parameter.
+- `report_file` - `{Live.dir}/report.{format}`. The `format` can be HTML
+  (`.html`) or Markdown (`.md`) depending on the value of the `report`
+  parameter.
 
 ## Parameters
 
