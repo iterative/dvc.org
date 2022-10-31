@@ -100,8 +100,9 @@ You should now see that a project has been added in your dashboard.
 
 ## Explore and share your projects
 
-1. After creating a project, you can use it to [explore the ML experiments] as
-   well as [submit new experiments] from Iterative Studio.
+1. After creating a project, you can use it to [explore the ML experiments],
+   [set up your model training CI job, potentially using CML], and [submit new
+   experiments] from Iterative Studio.
 
 2. You can also make the project public by [sharing it on the web].
 
@@ -141,6 +142,8 @@ You should now see that a project has been added in your dashboard.
   /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 [explore the ml experiments]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
+[set up your model training ci job, potentially using cml]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action
 [submit new experiments]:
   /doc/studio/user-guide/projects-and-experiments/run-experiments
 [sharing it on the web]:
