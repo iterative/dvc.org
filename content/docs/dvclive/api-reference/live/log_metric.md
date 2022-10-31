@@ -56,8 +56,7 @@ live.log_metric("train/loss", 0.2)
 live.log_metric("val/loss", 0.4)
 ```
 
-```cli
-$ cat dvclive/plots/metrics/train/loss.tsv
+```ts
 timestamp      step  loss
 1623671484747  0     0.4
 1623671484892  1     0.2
@@ -67,8 +66,7 @@ In addition, DVCLive will create or update a _metrics summary_ in
 `{Live.metrics_file}`. The `name` in the _metrics summary_ will contain the
 latest `val` logged:
 
-```cli
-$ cat dvclive/metrics.json
+```json
 {
   "step": 1,
   "train": {
