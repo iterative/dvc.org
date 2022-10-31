@@ -37,8 +37,14 @@ Datasets, metrics, and hyperparameters can be added to a project in two ways:
    about the features and benefits of DVC [here](/doc/start).
 
    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
-   repository, or Iterative Studio can
-   [initialize DVC for you](/doc/studio/user-guide/model-registry/add-a-model).
+   repository.
+
+   <admon type="tip">
+
+   Iterative Studio Model Registry can set up DVC for you when
+   [importing model files from cloud locations](/doc/studio/user-guide/model-registry/add-a-model).
+
+   </admon>
 
    [store and share your data and model files]:
      /doc/start/data-management/data-versioning#storing-and-sharing
