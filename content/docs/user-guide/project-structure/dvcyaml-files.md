@@ -12,6 +12,9 @@ modify, write, or generate them by your own means.
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
 
+[dependency graph]:
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+
 ## Stages
 
 The list of `stages` is typically the most important part of a `dvc.yaml` file.
@@ -455,12 +458,6 @@ value), escape it with a backslash, e.g. `\${...`.
 </admon>
 
 ## `foreach` stages
-
-<admon type="warn">
-
-This feature cannot be combined with [templating](#templating) at the moment.
-
-</admon>
 
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values

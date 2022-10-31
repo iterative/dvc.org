@@ -237,7 +237,7 @@ authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
 
 [auth process]: https://developers.google.com/drive/api/v2/about-auth
 [see `gdrive_user_credentials_file`]:
-  https://dvc.org/doc/command-reference/remote/modify#google-drive
+  /doc/command-reference/remote/modify#google-drive
 
 ## Using service accounts
 
