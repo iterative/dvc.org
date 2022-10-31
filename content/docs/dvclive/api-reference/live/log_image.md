@@ -33,11 +33,11 @@ Supported values for `val` are:
 The images will be saved in `{Live.plots_dir}/images/{name}`:
 
 ```
-└── dvclive
-    └── plots
-        └── images
-            ├── numpy.png
-            └── pil.png
+dvclive
+└── plots
+    └── images
+        ├── numpy.png
+        └── pil.png
 ```
 
 <admon type="tip">
