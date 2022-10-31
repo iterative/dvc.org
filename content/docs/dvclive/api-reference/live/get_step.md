@@ -20,10 +20,9 @@ while live.get_step() < 3:
 
 ## Description
 
-DVCLive uses `step` to track the progress of the data logged with
-`Live.log_metric()` and/or `Live.log_image()`.
+DVCLive uses `step` to track the history of the metrics logged with
+`Live.log_metric()`.
 
 The current `step` value can be retrieved with `Live.get_step()`.
 
-In order to update the `step` value, you can use `Live.next_step()` or
-`Live.set_step()`.
+To update the `step` value, you can use `Live.next_step()` or `Live.set_step()`.

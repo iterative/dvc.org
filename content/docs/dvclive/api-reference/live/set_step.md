@@ -21,13 +21,13 @@ for step in [0, 10, 20]:
 
 ## Description
 
-DVCLive uses `step` to track the progress of the data logged with
-`Live.log_metric()` and/or `Live.log_image()`.
+DVCLive uses `step` to track the history of the metrics logged with
+`Live.log_metric()`.
 
 You can use `Live.set_step()` to set `step` to any value.
 
 Each metric logged in between `Live.set_step()` (or `Live.next_step()`) calls
-will be associated to the provided `step` value.
+will be associated with the provided `step` value.
 
 ## Example
 
