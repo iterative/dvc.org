@@ -114,5 +114,5 @@ for epoch in range(NUM_EPOCHS):
 ## Outputs
 
 After you run your training code, all the logged data will be stored in the
-`dvclive` folder. Check the [DVCLive outputs](/doc/dvclive/outputs) page for
-more details.
+`dvclive` folder. Check the [DVCLive outputs](/doc/dvclive/how-it-works) page
+for more details.

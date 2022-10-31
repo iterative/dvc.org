@@ -1,4 +1,4 @@
-# Output Folder Structure
+# How it Works
 
 DVCLive will store the logged data under the directory (`dir`) passed to
 [`Live()`](/doc/dvclive/api-reference/live). If not provided, `dvclive` will be

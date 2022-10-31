@@ -35,7 +35,8 @@ metrics and other metadata.
 
 ## Attributes
 
-- `dir` - Location of the directory to store [outputs](/doc/dvclive/outputs).
+- `dir` - Location of the directory to store
+  [outputs](/doc/dvclive/how-it-works).
 
 - `metrics_file` - `{Live.dir}/metrics.json`. Location of the
   [summary](</doc/dvclive/api-reference/live/make_summary()>).
