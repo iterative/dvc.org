@@ -48,7 +48,7 @@ live.log_params(params)
 See `Live.log_param()` / `Live.log_params()`.
 
 </tab>
-<tab title="Scalars">
+<tab title="Metrics">
 
 ```python
 live.log_metric("acc", 0.9)
