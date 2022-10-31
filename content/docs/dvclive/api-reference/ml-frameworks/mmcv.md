@@ -25,8 +25,8 @@ log_config = dict(
 - `model_file` - (`None` by default) - The name of the file where the model will
   be saved at the end of each `step`.
 
-- `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+- `**kwargs` - Any additional arguments will be used to instantiate a new
+  [`Live`] instance.
 
 ## Examples
 
@@ -42,7 +42,7 @@ log_config = dict(
 )
 ```
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize [`Live`].
 
 ```python
 log_config = dict(
@@ -57,3 +57,5 @@ log_config = dict(
     ]
 )
 ```
+
+[`live`]: /docs/dvclive/api-reference/live

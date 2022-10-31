@@ -6,17 +6,17 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/xgb.py)
+[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/xgb.py)
 in the callbacks list passed to the `xgboost.train` call:
 
 ```python
-from dvclive.xgb import DvcLiveCallback
+from dvclive.xgb import DVCLiveCallback
 
 ...
 
 xgboost.train(
     param, dtrain, num_round=5, evals=[(dval, "eval_data")]
-    callbacks=[DvcLiveCallback("eval_data")],
+    callbacks=[DVCLiveCallback("eval_data")],
 )
 ```
 
@@ -25,12 +25,35 @@ xgboost.train(
 - `model_file` - (`None` by default) - The name of the file where the model will
   be saved at the end of each `step`.
 
-- `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+- `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
+  instance will be created using `**kwargs`.
+
+- `**kwargs` - Any additional arguments will be used to instantiate a new
+  [`Live`] instance. If `live` is used, the arguments are ignored.
 
 ## Examples
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `live` to pass an existing [`Live`] instance.
+
+```python
+from dvclive import Live
+from dvclive.xgb import DVCLiveCallback
+
+live = Live("custom_dir")
+
+xgboost.train(
+    param,
+    dtrain,
+    num_round=5,
+    callbacks=[DVCLiveCallback("eval_data", live=live)],
+    evals=[(dval, "eval_data")])
+
+# Log additional metrics after training
+live.summary["additional_metric"] = 1.0
+live.make_summary()
+```
+
+- Using `**kwargs` to customize [`Live`].
 
 ```python
 xgboost.train(
@@ -38,8 +61,10 @@ xgboost.train(
     dtrain,
     num_round=5,
     callbacks=[
-      DvcLiveCallback(
+      DVCLiveCallback(
         "eval_data",
         dir="custom_dir")],
     evals=[(dval, "eval_data")])
 ```
+
+[`live`]: /docs/dvclive/api-reference/live

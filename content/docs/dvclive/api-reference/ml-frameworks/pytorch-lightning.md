@@ -6,15 +6,15 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Pass the
-[`DvcLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
+[`DVCLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
 to your
 [`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
 
 ```python
-from dvclive.lightning import DvcLiveLogger
+from dvclive.lightning import DVCLiveLogger
 
 ...
- dvclive_logger = DvcLiveLogger()
+dvclive_logger = DVCLiveLogger()
 
 trainer = Trainer(logger=dvclive_logger)
 trainer.fit(model)
@@ -28,7 +28,7 @@ Each metric will be logged to:
 
 Where:
 
-- `{Live.plots_dir}` is defined in `Live()`.
+- `{Live.plots_dir}` is defined in [`Live`].
 - `{split}` can be either `train` or `eval`.
 - `{iter_type}` can be either `epoch` or `step`.
 - `{metric}` is the name provided by the framework.
@@ -44,30 +44,28 @@ Where:
   [`Live`](/docs/dvclive/api-reference/live) object to be used instead of
   initializing a new one.
 
-- `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+- `**kwargs` - Any additional arguments will be used to instantiate a new
+  [`Live`] instance. If `experiment` is used, the arguments are ignored.
 
 ## Examples
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize [`Live`].
 
 ```python
-from dvclive.lightning import DvcLiveLogger
+from dvclive.lightning import DVCLiveLogger
 
-dvclive_logger = DvcLiveLogger(
-    dir='my_logs_dir'
-)
 trainer = Trainer(
-    logger=dvclive_logger,
-)
+    logger=DVCLiveLogger(dir='my_logs_dir'))
 trainer.fit(model)
 ```
 
 <admon type="info">
 
 By default, PyTorch Lightning creates a directory to store checkpoints using the
-logger's name (`DvcLiveLogger`). You can change the checkpoint path or disable
+logger's name (`DVCLiveLogger`). You can change the checkpoint path or disable
 checkpointing at all as described in the
 [PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
 
 </admon>
+
+[`live`]: /docs/dvclive/api-reference/live

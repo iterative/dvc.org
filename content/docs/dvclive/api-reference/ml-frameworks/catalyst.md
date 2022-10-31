@@ -6,18 +6,18 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/catalyst.py)
+[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/catalyst.py)
 in the callbacks list passed to your
 [`Runner`](https://catalyst-team.github.io/catalyst/core/runner.html):
 
 ```python
-from dvclive.catalyst import DvcLiveCallback
+from dvclive.catalyst import DVCLiveCallback
 
 ...
 
 runner.train(
     model=model, criterion=criterion, optimizer=optimizer, loaders=loaders,
-    callbacks=[DvcLiveCallback()])
+    callbacks=[DVCLiveCallback()])
 ```
 
 Each metric will be logged to:
@@ -28,7 +28,7 @@ Each metric will be logged to:
 
 Where:
 
-- `{Live.plots_dir}` is defined in `Live()`.
+- `{Live.plots_dir}` is defined in [`Live`].
 - `{split}` can be either `train` or `valid`.
 - `{metric}` is the name provided by the framework.
 
@@ -37,29 +37,21 @@ Where:
 - `model_file` - (`None` by default) - The name of the file where the model will
   be saved at the end of each `step`.
 
-- `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+- `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
+  instance will be created using `**kwargs`.
+
+- `**kwargs` - Any additional arguments will be used to instantiate a new
+  [`Live`] instance. If `live` is used, the arguments are ignored.
 
 ## Examples
 
-- Using `model_file`.
+- Using `live` to pass an existing [`Live`] instance.
 
 ```python
-from dvclive.catalyst import DvcLiveCallback
+from dvclive import Live
+from dvclive.catalyst import DVCLiveCallback
 
-runner.train(
-    model=model,
-    criterion=criterion,
-    optimizer=optimizer,
-    loaders=loaders,
-    num_epochs=2,
-    callbacks=[DvcLiveCallback(model_file="model.pth")])
-```
-
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
-
-```python
-from dvclive.catalyst import DvcLiveCallback
+live = Live("custom_dir")
 
 runner.train(
     model=model,
@@ -68,5 +60,38 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[
-      DvcLiveCallback(model_file="model.pth", dir="custom_dir")])
+      DVCLiveCallback(live=live)])
+
+# Log additional metrics after training
+live.summary["additional_metric"] = 1.0
+live.make_summary()
 ```
+
+- Using `model_file`.
+
+```python
+runner.train(
+    model=model,
+    criterion=criterion,
+    optimizer=optimizer,
+    loaders=loaders,
+    num_epochs=2,
+    callbacks=[DVCLiveCallback(model_file="model.pth")])
+```
+
+[`live`]: /docs/dvclive/api-reference/live
+
+- Using `**kwargs` to customize the new [`Live`] instance.
+
+```python
+runner.train(
+    model=model,
+    criterion=criterion,
+    optimizer=optimizer,
+    loaders=loaders,
+    num_epochs=2,
+    callbacks=[
+      DVCLiveCallback(model_file="model.pth", dir="custom_dir")])
+```
+
+[`live`]: /docs/dvclive/api-reference/live
