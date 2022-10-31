@@ -187,7 +187,7 @@ and
 views.
 
 ![Experiments view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/experiments-table.png)
-![Plots view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/plots-trends.png)
+![Plots view](https://github.com/iterative/vscode-dvc/raw/main/extension/resources/walkthrough/images/plots-data-series.png)
 
 ### Share Results
 
