@@ -125,10 +125,22 @@ extracted from your selected commit.
 ![](https://static.iterative.ai/img/studio/cml_changes.png)
 
 Once you have made all the required changes, enter your Git commit message and
-description. Then, select the branch to commit to. You can commit to either the
-base branch or a new branch. If you commit to a new branch, a Git pull request
-will automatically be created from the new branch to the base branch. Now, click
-on `Commit changes`.
+description.
+
+<admon>
+
+If your CI job creates a new Git commit to write the experiment results to your
+Git repository, you may want to hide the Git commit that you created when
+submitting the experiment from your project table. In this case, add
+`[skip studio]` in the commit message. For details, refer to [Display
+preferences -> Hide commits].
+
+</admon>
+
+Then, select the branch to commit to. You can commit to either the base branch
+or a new branch. If you commit to a new branch, a Git pull request will
+automatically be created from the new branch to the base branch. Now, click on
+`Commit changes`.
 
 ![](https://static.iterative.ai/img/studio/cml_commit.png)
 
@@ -153,3 +165,6 @@ the Git commit message in the table. The `CML Report` tooltip appears over the
 CML report icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
+
+[display preferences -> hide commits]:
+  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
