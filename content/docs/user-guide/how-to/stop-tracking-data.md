@@ -8,9 +8,7 @@ description: 'You can "un-track" files or directories added in error.'
 There are situations where you may want to "un-track" files or directories added
 in error to DVC.
 
-<details>
-
-## Expand to add a sample data `data.csv` file
+#Expand to add a sample data `data.csv` file
 
 `dvc add` creates a `.dvc` file to track the file, and lists it in `.gitignore`:
 

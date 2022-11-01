@@ -8,7 +8,7 @@ capture, evaluate, and visualize ML projects without leaving Git.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/bu3l75eQlQo
 

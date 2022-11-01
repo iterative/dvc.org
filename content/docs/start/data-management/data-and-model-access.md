@@ -8,7 +8,7 @@ bring, explore, and access data artifacts from outside the project'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/EE7Gk84OZY8
 
