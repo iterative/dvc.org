@@ -1,7 +1,14 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use Iterative
-Studio.
+The following video provides you a quick overview of how to use [Iterative
+Studio].
+
+<admon>
+
+Iterative Studio [works very closely with your Git ecosystem][how-it-works]. So,
+you need to connect Iterative Studio to the Git repositories for your projects.
+
+</admon>
 
 > Note that we have renamed DVC Studio to Iterative Studio and Views to
 > Projects.
@@ -137,6 +144,8 @@ You should now see that a project has been added in your dashboard.
    projects dashboard. To create teams with more than 2 team members, [sign up
    for the **Basic**, **Teams** or **Enterprise** plan].
 
+[iterative studio]: https://studio.iterative.ai/
+[how-it-works]: /doc/studio/how-it-works
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
 [create multiple projects from a single git repository]:
