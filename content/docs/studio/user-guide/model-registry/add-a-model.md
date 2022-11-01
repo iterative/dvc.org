@@ -33,6 +33,9 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
      [`mlem init`](https://mlem.ai/doc/command-reference/init), Iterative Studio
      will be able to parse the `.mlem` file to extract model metadata.
 
+   If the path you entered is a cloud path, Iterative Studio will ask you for
+   the repository path where the dvc reference to the model should be saved.
+
 4. Provide labels for your model. For example, if your model is about reviewing
    sentiment analysis using natural language processing, one of the labels may
    be `nlp`. You can provide multiple labels as a comma separated list. Eg,
@@ -55,6 +58,18 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
    had committed to a new branch, a new pull request (or merge request in the
    case of GitLab) will also have been created to merge the new branch into the
    base branch.
+10. If you had added a model from a cloud storage, the following will also
+    happen before the commit is created:
+
+- If the repository does not contain DVC, Iterative Studio will run `dvc init`.
+  It is needed to version the model in the git repository.
+  [Learn more](/doc/command-reference/init).
+- If the specified directory does not exist yet, it will be created.
+- Iterative Studio will import the model to the repository by executing
+  `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
+- Iterative Studio annotate the model by executing
+  `gto annotate <model_name> --path <directory_path>/<filename from remote_path> --type model`.
+  [Learn more](https://github.com/iterative/gto#annotating).
 
 [connected repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
