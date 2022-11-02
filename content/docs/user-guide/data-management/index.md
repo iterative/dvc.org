@@ -16,9 +16,9 @@ etc.
 
 ## Click to learn more about data _codification_
 
-To achieve this, DVC replaces large files and directories with small [metafiles]
-that describe the assets. Data files are moved to a separate <abbr>cache</abbr>
-but kept virtually (linked) in the workspace. This separates your data from code
+DVC replaces large files and directories with small [metafiles] that describe
+the assets. Data files are moved to a separate <abbr>cache</abbr> but kept
+virtually (linked) in the workspace. This separates your data from code
 (including metafiles).
 
 <admon type="tip">
@@ -44,22 +44,25 @@ important to understand the mechanics in general.
 
 ## Workflow and benefits
 
-**Before**: Files are scattered in the cloud; You use low-level operations
-specific to each storage (e.g. `aws s3 cp`); Ad hoc file names are used to save
-versions; It's easy to lose track of which data produced which results; Everyone
-can read and write.
+**Before**: Files are scattered in the cloud; You use have to access each
+storage platform directly (e.g. `aws s3 cp`, Python libraries, etc.) and know
+the final URI of the assets; Ad hoc file names are used to save versions; It's
+easy to lose track of which data produced which results; Everyone can read and
+write.
 
-**After**: Stored objects are organized by DVC and you don't need to touch them
-directly; DVC exposes a few commands to manage them; Everything is happening
-though a code repository that can be controlled with Git; Project versions (Git
-commits) guarantee reproducibility of ML processes (e.g. training models with
-the same datasets, hyperparametes, features, etc.).
+**After**: Stored objects are organized by DVC (not intended for handling
+manually); Everything is happening though a code repository that can be
+controlled with Git; Project versions (Git commits) guarantee reproducibility of
+ML processes (e.g. training models with the same datasets, hyperparametes,
+features, etc.).
 
 <!-- Optionally in cloud versioning etc can be accessed directly -->
 
 **Benefits**: You always work with project-specific paths; Efficient usage of
 storage space (file deduplication); Small repository; [Data versioning]; [Fast
 caching], [GitOps].
+
+<!-- DVC exposes a few commands to manage them. -->
 
 [data versioning]: /doc/use-cases/versioning-data-and-models
 [fast caching]: /doc/use-cases/fast-data-caching-hub
