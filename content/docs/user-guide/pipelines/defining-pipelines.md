@@ -46,7 +46,7 @@ files to find stages, rebuilding all the pipelines that these may define.
 
 <details>
 
-## Directed Acyclic Graph (DAG)
+### Directed Acyclic Graph (DAG)
 
 DVC represents a pipeline internally as a _graph_ where the nodes are stages and
 the edges are _directed_ dependencies (e.g. A before B). And in order for DVC to
