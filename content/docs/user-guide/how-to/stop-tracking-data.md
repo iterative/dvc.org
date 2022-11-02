@@ -10,7 +10,7 @@ in error to DVC.
 
 <details>
 
-## Expand to add a sample data `data.csv` file
+### Expand to add a sample data `data.csv` file
 
 `dvc add` creates a `.dvc` file to track the file, and lists it in `.gitignore`:
 

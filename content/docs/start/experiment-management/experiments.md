@@ -9,7 +9,7 @@ comparing them easily and finding the best performers.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 <admon type="warn">
 
@@ -43,7 +43,7 @@ the [`example-dvc-experiments`][ede] project.
 
 <details>
 
-## ⚙️ Initializing a project with DVC experiments
+### ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to run experiments in your project. (See the [User Guide]
