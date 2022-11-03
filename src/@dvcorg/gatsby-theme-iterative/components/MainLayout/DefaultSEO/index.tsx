@@ -18,7 +18,6 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
   const siteUrl = siteMeta.siteUrl
   const metaTitle = siteMeta.title
-  const metaTitleTemplate = siteMeta.titleTemplate
   const metaDescription = siteMeta.description
   const metaKeywords = siteMeta.keywords
   const fullUrl = siteUrl + pathname
@@ -108,7 +107,6 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
         lang: 'en'
       }}
       defaultTitle={metaTitle}
-      titleTemplate={metaTitleTemplate || `%s | ${metaTitle}`}
       meta={meta}
       link={[
         {
