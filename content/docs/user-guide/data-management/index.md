@@ -1,72 +1,88 @@
 # Data Management with DVC
 
-Storing and transferring datasets and ML models can vary depending on project
-needs, available infrastructure, etc. DVC helps you avoid logistics like object
-permissions on cloud storage, sync tools and schedules, back up snapshots, etc.
-and focus on machine learning.
+DVC fundamentally changes the way you work with datasets and ML models. Let's
+look at how this workflow evolves, and why it's important.
 
-You work with data normally in a local <abbr>workspace</abbr>. DVC tracks,
-restores, and synchronize everything with a few, straightforward operations that
-do not change regardless of the underlying file systems, transfer protocols,
-etc.
+The mechanisms to store and transfer large files and directories directly can
+vary wildly. For example, you may need to use more than one storage platform,
+ending up with data scattered in the cloud and on-prem locations. Other common
+problems include:
 
-![]() _Separating data from code (codification)_
+- You have to access each location with specific tools (AWS CLI, code libraries,
+  SCP, etc.)
+- This requires knowing the final URL or path of every asset (often hardcoded).
+- Controlling who can read and write at folder or file level is difficult.
+- Tracking [data versions] typically involves ad hoc file naming schemes that
+  don't scale.
+- It's easy to lose track of which data produced what results, hindering
+  reproducibility.
 
-<details>
+To address these pain points and help you focus on machine learning work, DVC
+introduces a layer of _indirection_: raw data, models, and other artifacts are
+[separated](#separating-data-from-code-codification) from your project's code.
+This has a number of implications, but it's a small cost to improve your
+productivity:
 
-## Click to learn more about data _codification_
+1. You have to set up a <abbr>DVC project</abbr> and its
+   [storage locations](#storage-locations).
+1. Stored objects are [reorganized] by DVC (not intended for manual handling).
+   <!-- In cloud versioning they can be accessed directly. -->
+1. Everything happens though a code repository that can be controlled with Git.
+
+[data versions]: /doc/use-cases/versioning-data-and-models
+[reorganized]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+
+## Benefits
+
+Besides the basic solutions outlined before, there are several more benefits to
+DVC's approach:
+
+- You work with data in a local <abbr>workspace</abbr>, as with any other files;
+  You deal with project-specific file paths and forget about complicated [URIs].
+- DVC tracks, restores, and synchronize everything with a few straightforward
+  operations that do not change regardless of file systems, transfer protocols,
+  etc.
+- Standard [project versions] (Git commits) guarantee reproducibility of ML
+  processes (e.g. training models with the same datasets, hyperparametes, and
+  features).
+- Your storage space is [used efficiently] (file deduplication); Your project
+  repo stays small.
+- [Fast caching], [data registries], [model registries], [CI/CD for ML], and
+  more!
+
+[uris]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+[project versions]: /doc/user-guide/data-management/data-versioning
+[used efficiently]: /doc/user-guide/data-management/large-dataset-optimization
+[fast caching]: /doc/use-cases/fast-data-caching-hub
+[data registries]: /doc/use-cases/data-registry
+[model registries]: /doc/use-cases/model-registry
+[ci/cd for ml]: https://cml.dev/
+
+## Separating data from code (codification)
 
 DVC replaces large files and directories with small [metafiles] that describe
-the assets. Data files are moved to a separate <abbr>cache</abbr> but kept
-virtually (linked) in the workspace. This separates your data from code
-(including metafiles).
+the assets. We call this _data codification_. Data files are moved to a separate
+<abbr>cache</abbr> but kept virtually (linked) in the workspace. This separates
+your data from code (including metafiles).
 
 <admon type="tip">
 
-This also allows you to [version] project files with Git, a battle-tested [SCM]
+This also allows you to version project files with Git, a battle-tested [SCM]
 tool.
+
+[scm]: https://www.atlassian.com/git/tutorials/source-code-management
 
 </admon>
 
-[version]: /doc/user-guide/data-management/data-versioning
-[scm]: https://www.atlassian.com/git/tutorials/source-code-management
-
-</details>
-
 Your experience can stay consistent because DVC works [indirectly], by checking
-the [metafiles] and [configuration] of your <abbr>project</abbr> to find out
-where and how to handle files. This is transparent to you as user, but it's
-important to understand the mechanics in general.
+the metafiles and [configuration] of your <abbr>project</abbr> to find out where
+and how to handle files. This is transparent to you as user, but it's important
+to understand the mechanics in general.
 
 [metafiles]: /doc/user-guide/project-structure
 [indirectly]: https://en.wikipedia.org/wiki/Indirection
 [configuration]: /doc/command-reference/config
-
-## Workflow and benefits
-
-**Before**: Files are scattered in the cloud; You use have to access each
-storage platform directly (e.g. `aws s3 cp`, Python libraries, etc.) and know
-the final URI of the assets; Ad hoc file names are used to save versions; It's
-easy to lose track of which data produced which results; Everyone can read and
-write.
-
-**After**: Stored objects are organized by DVC (not intended for handling
-manually); Everything is happening though a code repository that can be
-controlled with Git; Project versions (Git commits) guarantee reproducibility of
-ML processes (e.g. training models with the same datasets, hyperparametes,
-features, etc.).
-
-<!-- Optionally in cloud versioning etc can be accessed directly -->
-
-**Benefits**: You always work with project-specific paths; Efficient usage of
-storage space (file deduplication); Small repository; [Data versioning]; [Fast
-caching], [GitOps].
-
-<!-- DVC exposes a few commands to manage them. -->
-
-[data versioning]: /doc/use-cases/versioning-data-and-models
-[fast caching]: /doc/use-cases/fast-data-caching-hub
-[gitops]: https://www.gitops.tech/
 
 ## Storage locations
 

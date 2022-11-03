@@ -32,8 +32,7 @@ Refer to [Versioning Data and Models] to learn more.
 [git history]:
   https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
-<!--
-## Cloud versioning
+<!--## Cloud versioning
 
 _New in DVC 2.30.0 (see `dvc version`)_
 
