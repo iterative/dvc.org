@@ -101,8 +101,6 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     }
   ]
 
-  console.log('Wumbo!')
-
   return (
     <Helmet
       htmlAttributes={{
