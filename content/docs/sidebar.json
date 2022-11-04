@@ -154,7 +154,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "running-dvc-on-windows",
+          "run-dvc-on-windows",
           "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
@@ -573,8 +573,8 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "how-it-works",
       "get-started",
+      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
@@ -628,54 +628,8 @@
         "slug": "get-started"
       },
       {
-        "label": "DVCLive with DVC",
-        "slug": "dvclive-with-dvc"
-      },
-      {
-        "slug": "ml-frameworks",
-        "source": "dvclive/ml-frameworks/index.md",
-        "children": [
-          {
-            "slug": "catalyst",
-            "label": "Catalyst"
-          },
-          {
-            "slug": "fastai",
-            "label": "Fast.ai"
-          },
-          {
-            "slug": "huggingface",
-            "label": "Hugging Face"
-          },
-          {
-            "slug": "keras",
-            "label": "Keras"
-          },
-          {
-            "slug": "lightgbm",
-            "label": "LightGBM"
-          },
-          {
-            "slug": "mmcv",
-            "label": "MMCV"
-          },
-          {
-            "slug": "pytorch",
-            "label": "PyTorch"
-          },
-          {
-            "slug": "pytorch-lightning",
-            "label": "PyTorch Lightning"
-          },
-          {
-            "slug": "tensorflow",
-            "label": "TensorFlow"
-          },
-          {
-            "slug": "xgboost",
-            "label": "XGBoost"
-          }
-        ]
+        "slug": "outputs",
+        "label": "Output Folder Structure"
       },
       {
         "slug": "api-reference",
@@ -686,6 +640,10 @@
             "label": "Live()",
             "source": "api-reference/live/index.md",
             "children": [
+              {
+                "slug": "get_step",
+                "label": "get_step()"
+              },
               {
                 "slug": "log",
                 "label": "log()"
@@ -711,16 +669,58 @@
                 "label": "make_report()"
               },
               {
-                "slug": "get_step",
-                "label": "get_step()"
-              },
-              {
                 "slug": "next_step",
                 "label": "next_step()"
               },
               {
                 "slug": "set_step",
                 "label": "set_step()"
+              }
+            ]
+          },
+          {
+            "slug": "ml-frameworks",
+            "source": "dvclive/api-reference/ml-frameworks/index.md",
+            "children": [
+              {
+                "slug": "catalyst",
+                "label": "Catalyst"
+              },
+              {
+                "slug": "fastai",
+                "label": "Fast.ai"
+              },
+              {
+                "slug": "huggingface",
+                "label": "Hugging Face"
+              },
+              {
+                "slug": "keras",
+                "label": "Keras"
+              },
+              {
+                "slug": "lightgbm",
+                "label": "LightGBM"
+              },
+              {
+                "slug": "mmcv",
+                "label": "MMCV"
+              },
+              {
+                "slug": "pytorch",
+                "label": "PyTorch"
+              },
+              {
+                "slug": "pytorch-lightning",
+                "label": "PyTorch Lightning"
+              },
+              {
+                "slug": "tensorflow",
+                "label": "TensorFlow"
+              },
+              {
+                "slug": "xgboost",
+                "label": "XGBoost"
               }
             ]
           }

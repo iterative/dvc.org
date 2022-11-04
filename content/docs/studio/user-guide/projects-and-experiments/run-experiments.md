@@ -16,23 +16,76 @@ your model training using Iterative Studio.
 
 Iterative Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
 experiments. This means that to enable experimentation from Iterative Studio,
-you need to integrate your Git repository with a CI/CD setup (e.g. GitHub
-Actions).
+you should do the following:
 
-Then, on each Git commit, the CI/CD setup will get invoked. If this setup
-includes a model training process, it will be triggered, which means that your
-ML experiment will run automatically.
+1. First,
+   [integrate your Git repository with a CI/CD setup that includes model training process](/doc/studio/user-guide/prepare-your-repositories#prepare-your-repositories-to-run-new-experiments).
+   You can
+   [use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
+   to automatically generate the CI script, or you can write it on your own.
 
-For more details on how to set up
-[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
-refer to [CML](https://cml.dev). You can use any cloud or Kubernetes for the
-model training process. CML also generates a report after the CI/CD setup
-executes.
+2. Then,
+   [setup the yaml workflow ENV vars as secrets](https://cml.dev/doc/self-hosted-runners#environment-variables).
+   This is needed so that your CI workflow can launch the runner in your desired
+   cloud provider.
+
+3. Now, you can
+   [submit your experiments from Iterative Studio](#submit-a-new-experiment).
+   Each submission will invoke your CI/CD setup, triggering the model training
+   process.
 
 > Due to access restrictions, you cannot run experiments on the demo project
 > (`example-get-started`) that is provided to you by default. Once you connect
 > to your ML project repositories, you can follow the instructions given below
 > to run experiments directly from Iterative Studio.
+
+## Use the Iterative Studio wizard to set up your CI action
+
+Select a commit and click **Run**. You will see a message that invites you to
+set up your CI.
+
+![](https://static.iterative.ai/img/studio/set_up_cml_message.png)
+
+The CI setup wizard has two sections, pre-filled with default values:
+
+- Left section with 2 sets of parameters:
+
+  1. [Configuration of your self-hosted runner, which is used in the `deploy-runner` step of your CI workflow](#configuration-of-your-self-hosted-runner)
+  2. [Job script, which is used in the `runner-job` step of your CI workflow](#runners-job-script)
+
+- Right section which displays the
+  [generated yaml to be used in your CI set up](#ci-yaml). It reflects all your
+  input parameters. Use the
+  `Copy to clipboard and paste in your CI Workflow file` link to copy the
+  generated yaml and create your CI script.
+
+That's it! At this point you should have CML in place within your CI/CD to run
+your experiments. After this, proceed with submitting your experiments as
+described below.
+
+![](https://static.iterative.ai/img/studio/set_up_cml_full.png)
+
+### Configuration of your self-hosted runner
+
+This step is responsible for launching a self-hosted runner within your cloud
+vendor. The parameters listed here are a subset of the parameters for
+[CML self-hosted runners](https://cml.dev/doc/self-hosted-runners).
+
+| Parameter  | Meaning                                                                                                                                                                                                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Spot`     | Whether you want to launch a spot cloud instance, cutting down the costs of your training.                                                                                                                                                                                                        |
+| `Cloud`    | Your cloud provider.                                                                                                                                                                                                                                                                              |
+| `Region`   | Cloud-vendor specific region or a CML synthetic region (an abstraction across all the cloud vendors).                                                                                                                                                                                             |
+| `Type`     | Cloud-vendor specific instance type or a CML synthetic type `M`/`L`/`XL` (an abstraction across all the cloud vendors). `Type` is also tied to GPU behavior. If you choose an instance with a selectable GPU (such as a CML instance type or any GCP instance), the `GPU` parameter will show up. |
+| `HDD size` | Hard disk size in GB. We highly recommend you to enter a big enough value (eg, 100) to avoid unexpected runner termination due to hard disk exhaustion.                                                                                                                                           |
+| `Reuse`    | Values for the CML flags `reuse` and `reuse-idle`. See all [CML options](https://cml.dev/doc/ref/runner#options) for details                                                                                                                                                                      |
+| `Labels`   | Text labels to identify your CML runners from other self hosted runners that you might have.                                                                                                                                                                                                      |
+
+### Runner's job
+
+| Parameter    | Meaning                                                                                                                                                                                                                                                                                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Job script` | This is the script needed for your runner to execute your job, which would commonly include training your model. The default template is a very common combination of CML and DVC taking into account that DVC enables you to make the most of Iterative Studio. You can update this script to reflect your exact model training process, whether you use DVC or not. |
 
 ## Submit a new experiment
 

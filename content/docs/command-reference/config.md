@@ -111,6 +111,7 @@ within:
   `dvc exp init`
 - [`hydra`](#hydra) - options around [Hydra Composition] for experiment
   configuration.
+- [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
@@ -118,6 +119,8 @@ within:
   more about remote index files.
 
 [hydra composition]: /docs/user-guide/experiment-management/hydra-composition
+[dictionary unpacking]:
+  /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
 
 ### core
@@ -183,7 +186,7 @@ See `dvc remote add` and `dvc remote modify` for more information.
   `dvc unprotect` to be able to modify them safely.
 
   There are pros and cons to different link types. Refer to
-  [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+  [File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
   To apply changes to this config option in the workspace, restore all file
@@ -207,7 +210,7 @@ See `dvc remote add` and `dvc remote modify` for more information.
   [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
 
 The following parameters allow setting an
-[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache)
+[external cache](/doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache)
 location. A [DVC remote](/doc/command-reference/remote) name is used (instead of
 the URL) because often it's necessary to configure authentication or other
 connection settings, and configuring a remote is the way that can be done.
@@ -273,8 +276,7 @@ Composition].
 ### parsing
 
 - `parsing.bool` - Controls the templating syntax for boolean values when used
-  in
-  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking).
+  in [dictionary unpacking].
 
   Valid values are `"store_true"` (default) and `"boolean_optional"`, named
   after
@@ -309,7 +311,7 @@ Composition].
   ```
 
 - `parsing.list` - Controls the templating syntax for list values when used in
-  [dict unpacking](/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking).
+  [dictionary unpacking].
 
   Valid values are `"nargs"` (default) and `"append"`, named after
   [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).

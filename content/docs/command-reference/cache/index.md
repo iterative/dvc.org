@@ -18,7 +18,7 @@ Tracked files and directories visible in the <abbr>workspace</abbr> are links\*
 to the ones in the project's <abbr>cache</abbr>.
 
 > \* Or copies. Refer to
-> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> [File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > for more information on supported linking on different platforms.
 
 For cache configuration options, refer to `dvc config cache`.

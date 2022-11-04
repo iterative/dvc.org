@@ -37,5 +37,7 @@ experiments, and visualize and share results.
   experiments on cloud resources of your choice.
 - Build an ML model registry for transparency and discovery across all your
   projects.
-- Because your model registry is built on top of Git, you can use GitOps for
+- Because your model registry is built on top of Git, you can use [GitOps] for
   model deployment.
+
+[gitops]: https://www.gitops.tech/

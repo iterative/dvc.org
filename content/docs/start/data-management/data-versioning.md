@@ -1,7 +1,7 @@
 ---
 title: 'Get Started: Data Versioning'
 description: 'Get started with data and model versioning in DVC. Learn how to
-use a regular Git workflow for datasets and ML models, without storing large
+use a standard Git workflow for datasets and ML models, without storing large
 files in Git.'
 ---
 
@@ -9,7 +9,7 @@ files in Git.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/kLKBcPonMYw
 
@@ -299,5 +299,5 @@ You can learn more about advanced workflows using these links:
   store, version and access a lot of data on a large shared volume efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). See
-  [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
+  [Managing External Data](https://dvc.org/doc/user-guide/data-management/managing-external-data)
   to learn more.
