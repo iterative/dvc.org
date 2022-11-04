@@ -96,7 +96,7 @@ model.fit(
 ```
 
 With these two changes, the model metrics are automatically logged to
-`training_metrics/metrics.json` and plotted in `training_metrics/report.html`:
+`dvclive/metrics.json` and plotted in `dvclive/report.html`:
 
 ![dvclive](/img/start_visualization_dvclive.png)
 
