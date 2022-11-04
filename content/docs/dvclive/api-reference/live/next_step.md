@@ -31,9 +31,8 @@ and `Live.make_summary()`.
 
 ### Manual step updates
 
-If you want custom `step` intervals or don't want to call 
-`Live.make_summary()` / `Live.make_report()`, you can
-manually modify the `Live.step` property:
+If you want custom `step` intervals or don't want to call `Live.make_summary()`
+/ `Live.make_report()`, you can manually modify the `Live.step` property:
 
 ```py
 from dvclive import Live
