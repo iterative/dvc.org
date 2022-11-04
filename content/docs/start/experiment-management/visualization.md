@@ -72,7 +72,7 @@ $ dvc plots show --open plots/misclassified.png
 
 ## Autogenerating plots from deep learning code
 
-An important issue for deep learning projects is to observe in which epoch do
+An important issue for deep learning projects is to observe in which epoch
 training and validation loss differ. DVC helps in that regard with its Python
 integrations to deep learning libraries via [DVCLive].
 
