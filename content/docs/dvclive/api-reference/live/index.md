@@ -21,6 +21,15 @@ from dvclive import Live
 live = Live()
 ```
 
+Or use as a context manager:
+
+```py
+from dvclive import Live
+
+with Live() as live:
+    ...
+```
+
 ## Description
 
 A `Live()` instance is required in order to log machine learning parameters,
@@ -33,7 +42,14 @@ metrics and other metadata.
 
 </admon>
 
-## Attributes
+You can use `Live()` as a context manager. When exiting the context manager,
+`Live.make_summary()` and `Live.make_report()` will be called.
+
+## Properties
+
+- `step` - See `Live.next_step()`.
+
+- `summary` - See `Live.make_summary()`.
 
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/how-it-works).
@@ -65,12 +81,11 @@ metrics and other metadata.
 
 ## Methods
 
-- `Live.get_step()`
-- `Live.log_metric()`
 - `Live.log_image()`
+- `Live.log_metric()`
 - `Live.log_param()`
 - `Live.log_params()`
 - `Live.log_sklearn_plot()`
 - `Live.make_report()`
+- `Live.make_summary()`
 - `Live.next_step()`
-- `Live.set_step()`

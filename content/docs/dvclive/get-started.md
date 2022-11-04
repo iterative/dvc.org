@@ -64,19 +64,17 @@ trainer.fit(model)
 # train.py
 from dvclive import Live
 
-live = Live()
+with Live() as live:
+    live.log_param("epochs", NUM_EPOCHS)
 
-live.log_param("epochs", NUM_EPOCHS)
+    for epoch in range(NUM_EPOCHS):
+        train_model(...)
+        metrics = evaluate_model(...)
+        for metric_name, value in metrics.items():
+            live.log_metric(metric_name, value)
+        live.next_step()
 
-for epoch in range(NUM_EPOCHS):
-    train_model(...)
-    metrics = evaluate_model(...)
-
-    for metric_name, value in metrics.items():
-        live.log_metric(metric_name, value)
-
-    live.make_report()
-    live.next_step()
+    live.summary["additional_metric"] = post_train_evaluate(...)
 ```
 
 </tab>

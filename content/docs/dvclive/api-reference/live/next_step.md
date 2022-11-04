@@ -1,6 +1,7 @@
 # Live.next_step()
 
-Signals that the current step has ended and increases `step` value by 1 (one).
+Signals that the current iteration has ended and increases `step` value by 1
+(one).
 
 ```py
 def next_step()
@@ -25,5 +26,25 @@ DVCLive uses `step` to track the history of the metrics logged with
 
 You can use `Live.next_step()` to increase the `step` by 1 (one).
 
-Each metric logged in between `Live.next_step()` (or `Live.set_step()`) calls
-will be associated with the updated `step` value.
+In addition to increasing the `step` number, it will call `live.make_report()`,
+`live.make_summary()` and `live.make_checkpoint()`.
+
+### Manual step updates
+
+If you want to decouple the `step` update from the rest of the calls, you can
+manually modify the `Live.step` property. This approach can be also used with
+custom `step` intervals:
+
+```py
+from dvclive import Live
+
+live = Live()
+
+for custom_step in [0, 15, 20]:
+    live.step = step
+    live.log_metric("metric_1", 0.9)
+    live.log_metric("metric_2", 0.7)
+    live.make_summary()
+# Create report only at the end instead of at each iteration
+live.make_report()
+```

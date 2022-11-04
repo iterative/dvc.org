@@ -27,24 +27,17 @@ from PIL import Image
 
 EPOCHS = 2
 
-live = Live()
+with Live() as live:
+    live.log_param("epochs", EPOCHS)
 
-live.log_param("epochs", EPOCHS)
+    for i in range(EPOCHS):
+        live.log_metric("metric", i + random.random())
+        live.log_metric("nested/metric", i + random.random())
+        live.log_image("img.png", Image.new("RGB", (50, 50), (i, i, i)))
+        live.next_step()
 
-for i in range(EPOCHS):
-    live.log_metric("metric", i + random.random())
-    live.log_metric("nested/metric", i + random.random())
-
-    img = Image.new("RGB", (50, 50), (i, i, i))
-    live.log_image("img.png", img)
-
-    live.next_step()
-
-live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
-
-live.summary["additional_metric"] = 1.0
-live.make_summary()
-live.make_report()
+    live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
+    live.summary["additional_metric"] = 1.0
 ```
 
 The resulting structure will be:

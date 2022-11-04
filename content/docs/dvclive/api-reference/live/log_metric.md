@@ -62,31 +62,8 @@ timestamp      step  loss
 1623671484892  1     0.2
 ```
 
-In addition, DVCLive will create or update a _metrics summary_ in
-`{Live.metrics_file}`. The `name` in the _metrics summary_ will contain the
-latest `val` logged:
-
-```json
-{
-  "step": 1,
-  "train": {
-    "loss": 0.2
-  },
-  "val": {
-    "loss": 0.4
-  }
-}
-```
-
-<admon type="tip">
-
-The _metrics summary_ is usable by `dvc metrics`:
-
-```
-dvc metrics diff dvclive/metrics.json
-```
-
-</admon>
+In addition, DVCLive will store the latest value logged in `Live.summary`, so it
+can be serialized with calls to `live.make_summary()` or `live.next_step()`.
 
 ## Parameters
 

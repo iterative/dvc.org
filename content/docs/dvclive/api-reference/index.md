@@ -25,6 +25,12 @@ from dvclive import Live
 live = Live()
 ```
 
+Or use as a context manager:
+
+```python
+with Live() as live:
+```
+
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
 
 ### Log data
@@ -86,7 +92,14 @@ See `Live.log_sklearn_plot()`.
 live.next_step()
 ```
 
-See `Live.next_step()` and `Live.set_step()` for details.
+See `Live.next_step()`.
+
+Under the hood, `Live.next_step()` calls `Live.make_summary()` and
+`Live.make_report()`.
+
+If you want to decouple the `step` update from the rest of the calls, you can
+manually modify the `Live.step` property and call `Live.make_summary()` /
+`Live.make_report()`.
 
 ## Putting it all together
 
