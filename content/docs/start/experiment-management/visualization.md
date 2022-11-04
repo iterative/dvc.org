@@ -106,8 +106,8 @@ these default values.
 In summary, DVC provides more than one option to use visualization in your
 workflow:
 
-- DVC can generate HTML files that includes interactive plots from data series
-  in JSON, YAML, CSV, or TSV format.
+- DVC can generate HTML files that include interactive plots from data series in
+  JSON, YAML, CSV, or TSV format.
 
 - DVC can keep track of image files produced as [plot outputs] from the
   training/evaluation scripts.
@@ -115,4 +115,4 @@ workflow:
 - [DVCLive] integrations can produce plots automatically during training.
 
 [plot outputs]: /doc/user-guide/experiment-management/visualizing-plots
-[dvclive]: /doc/dvclive/dvclive-with-dvc
+[dvclive]: /doc/dvclive/

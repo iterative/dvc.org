@@ -33,7 +33,7 @@ Plots have to be defined either at the stage level, or at the pipeline level in
 `dvc.yaml`.
 
 [ml pipeline]: /doc/start/data-management/data-pipelines
-[dvclive]: /doc/dvclive/dvclive-with-dvc
+[dvclive]: /doc/dvclive
 
 <admon icon="book">
 

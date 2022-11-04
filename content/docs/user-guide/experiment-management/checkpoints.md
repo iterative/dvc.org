@@ -122,11 +122,11 @@ stages:
       - model.pt:
           checkpoint: true
     metrics:
-      - dvclive.json:
+      - dvclive/metrics.json:
           cache: false
           persist: true
     plots:
-      - dvclive/scalars:
+      - dvclive/plots:
           cache: false
           persist: true
 ```
@@ -181,7 +181,7 @@ Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
 ```git
-+ dvclive = Live()
++ live = Live()
 
 # Iterate over training epochs.
 for i in range(1, EPOCHS+1):
@@ -197,14 +197,14 @@ for i in range(1, EPOCHS+1):
     metrics = evaluate(model, x_test, y_test)
     for k, v in metrics.items():
         print('Epoch %s: %s=%s'%(i, k, v))
-+       dvclive.log_metric(k, v)
-+   dvclive.next_step()
++       live.log_metric(k, v)
++   live.next_step()
 ```
 
 The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
 file.
 
-You can read about what the line `dvclive.log_metric(k, v)` does in the
+You can read about what the line `live.log_metric(k, v)` does in the
 `Live.log_metric()` reference.
 
 The `Live.next_step()` line tells DVC that it can take a snapshot of the entire
@@ -231,19 +231,16 @@ Generating lock file 'dvc.lock'
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd99d81c'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 2: loss=1.25374174118042
 Epoch 2: acc=0.7738
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '963b396'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 3: loss=0.7242147922515869
 Epoch 3: acc=0.8284
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd630b92'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 4: loss=0.5083536505699158
 Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
@@ -375,10 +372,10 @@ table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
 ```
-Path          Metric    d90179a  726d32f  Change
-dvclive.json  acc       0.9044   0.8185   -0.0859
-dvclive.json  loss      0.33246  0.83515  0.50269
-dvclive.json  step      6        8        2
+Path                  Metric    d90179a  726d32f  Change
+dvclive/metrics.json  acc       0.9044   0.8185   -0.0859
+dvclive/metrics.json  loss      0.33246  0.83515  0.50269
+dvclive/metrics.json  step      6        8        2
 ```
 
 _These are the same numbers you see in the metrics table, just in a different
@@ -453,7 +450,7 @@ allow you to add these changes to Git, making them [persistent]:
 ```dvc
 To track the changes with git, run:
 
-        git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
+        git add dvclive/metrics.json dvc.yaml .gitignore train.py dvc.lock
 
 ...
 ```
@@ -468,13 +465,13 @@ Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
         new file:   .gitignore
         new file:   dvc.lock
-        new file:   dvclive.json
+        new file:   dvclive/metrics.json
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
         data/
-        dvclive.html
-        dvclive/
+        dvclive/report.html
+        dvclive/plots
         model.pt
         plots.html
         predictions.json
