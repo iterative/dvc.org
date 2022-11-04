@@ -15,6 +15,13 @@ The contents of the directory will depend on the methods used:
 | [live.make_report](/doc/dvclive/api-reference/live/make_report)           | `dvclive/report.{md/html}` |
 | [live.make_summary](/doc/dvclive/api-reference/live/make_summary)         | `dvclive/metrics.json`     |
 
+<admon type="tip">
+
+`live.next_step()` takes care of calling `live.make_report()` and
+`live.make_summary`, in addition to increasing the `step` number.
+
+</admon>
+
 ## Example
 
 To illustrate with an example, given the following script:
