@@ -9,10 +9,9 @@
 ```py
 from dvclive import Live
 
-live = Live()
-
-live.log_metric("train/loss", 0.4)
-live.log_metric("val/loss", 0.9)
+with Live() as live:
+  live.log_metric("train/loss", 0.4)
+  live.log_metric("val/loss", 0.9)
 ```
 
 ## Description
@@ -21,13 +20,14 @@ On each `live.log_metric(name, val)` call DVCLive will create a _metrics
 history_ file in `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```
-└── dvclive
-    └── plots
-        └── metrics
-            ├── train
-            │   └── loss.tsv
-            └── val
-                └── loss.tsv
+dvclive
+├── metrics.json
+└── plots
+    └── metrics
+        ├── train
+        │   └── loss.tsv
+        └── val
+            └── loss.tsv
 ```
 
 ```cli
@@ -62,7 +62,30 @@ timestamp      step  loss
 ```
 
 In addition, DVCLive will store the latest value logged in `Live.summary`, so it
-can be serialized with calls to `live.make_summary()` or `live.next_step()`.
+can be serialized with calls to `live.make_summary()`, `live.next_step()` or
+when exiting the `with` block:
+
+```json
+{
+  "step": 1,
+  "train": {
+    "loss": 0.2
+  },
+  "val": {
+    "loss": 0.4
+  }
+}
+```
+
+<admon type="tip">
+
+The metrics summary can be visualized with `dvc metrics`:
+
+```
+dvc metrics diff dvclive/metrics.json
+```
+
+</admon>
 
 ## Parameters
 

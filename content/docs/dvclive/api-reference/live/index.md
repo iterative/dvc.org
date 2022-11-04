@@ -18,14 +18,6 @@ class Live:
 ```py
 from dvclive import Live
 
-live = Live()
-```
-
-Or use as a context manager:
-
-```py
-from dvclive import Live
-
 with Live() as live:
     ...
 ```

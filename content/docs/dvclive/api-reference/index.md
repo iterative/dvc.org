@@ -20,14 +20,6 @@ to its corresponding page.
 ### Initialize DVCLive
 
 ```python
-from dvclive import Live
-
-live = Live()
-```
-
-Or use as a context manager:
-
-```python
 with Live() as live:
 ```
 

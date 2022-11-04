@@ -67,8 +67,6 @@ with Live() as live:
         for metric_name, value in metrics.items():
             live.log_metric(metric_name, value)
         live.next_step()
-
-    live.summary["additional_metric"] = post_train_evaluate(...)
 ```
 
 </tab>
