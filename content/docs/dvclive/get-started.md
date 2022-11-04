@@ -15,7 +15,9 @@ First of all, you need to add DVCLive to your Python script:
 ```python
 # train.py
 from dvclive.keras import DVCLiveCallback
+
 ...
+
 model.fit(
   train_dataset, validation_data=validation_dataset,
   callbacks=[DVCLiveCallback()])
@@ -29,15 +31,8 @@ model.fit(
 # train.py
 from dvclive.huggingface import DVCLiveCallback
 
-. . .
+...
 
- trainer = Trainer(
-    model, args,
-    train_dataset=train_data,
-    eval_dataset=eval_data,
-    tokenizer=tokenizer,
-    compute_metrics=compute_metrics,
-)
 trainer.add_callback(DVCLiveCallback())
 trainer.train()
 ```
@@ -49,10 +44,9 @@ trainer.train()
 # train.py
 from dvclive.lightning import DVCLiveLogger
 
-. . .
-dvclive_logger = DVCLiveLogger()
+...
 
-trainer = Trainer(logger=dvclive_logger)
+trainer = Trainer(logger=DVCLiveLogger())
 trainer.fit(model)
 ```
 
