@@ -17,6 +17,8 @@ problems include:
 - It's easy to lose track of which data produced what results, hindering
   reproducibility.
 
+![Before and after DVC](/img/before-after.png) _DVC simplifies your project._
+
 To address these pain points and help you focus on machine learning work, DVC
 introduces a layer of _indirection_: raw data, models, and other artifacts are
 [separated](#separating-data-from-code-codification) from your project's code.
@@ -65,6 +67,8 @@ DVC replaces large files and directories with small [metafiles] that describe
 the assets. We call this _data codification_. Data files are moved to a separate
 <abbr>cache</abbr> but kept virtually (linked) in the workspace. This separates
 your data from code (including metafiles).
+
+<!-- ![Data separation](/img/data-separation.png) _Separating code from data_ -->
 
 <admon type="tip">
 
