@@ -81,7 +81,7 @@ callback that visualizes the training and validation loss for each epoch. We
 first import the callback from DVCLive.
 
 ```python
-from dvclive.keras import DvcLiveCallback
+from dvclive.keras import DVCLiveCallback
 ```
 
 Then we add this callback to the
@@ -91,12 +91,12 @@ call.
 ```python
 model.fit(
  ...
- callbacks=[DvcLiveCallback()],
+ callbacks=[DVCLiveCallback()],
  ...)
 ```
 
 With these two changes, the model metrics are automatically logged to
-`dvclive.json` and plotted in `training_metrics/index.html`:
+`training_metrics/metrics.json` and plotted in `training_metrics/report.html`:
 
 ![dvclive](/img/start_visualization_dvclive.png)
 
