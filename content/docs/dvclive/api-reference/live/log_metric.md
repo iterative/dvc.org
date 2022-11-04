@@ -21,14 +21,13 @@ On each `live.log_metric(name, val)` call DVCLive will create a _metrics
 history_ file in `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```
-├── dvclive
-│   └── plots
-│       └── metrics
-│           ├── train
-│           │   └── loss.tsv
-│           └── val
-│               └── loss.tsv
-└── dvclive.json
+└── dvclive
+    └── plots
+        └── metrics
+            ├── train
+            │   └── loss.tsv
+            └── val
+                └── loss.tsv
 ```
 
 ```cli
