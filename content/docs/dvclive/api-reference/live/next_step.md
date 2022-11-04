@@ -26,8 +26,8 @@ DVCLive uses `step` to track the history of the metrics logged with
 
 You can use `Live.next_step()` to increase the `step` by 1 (one).
 
-In addition to increasing the `step` number, it will call `live.make_report()`,
-`live.make_summary()` and `live.make_checkpoint()`.
+In addition to increasing the `step` number, it will call `Live.make_report()`
+and `Live.make_summary()`.
 
 ### Manual step updates
 
