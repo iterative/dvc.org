@@ -1,7 +1,14 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use Iterative
-Studio.
+The following video provides you a quick overview of how to use [Iterative
+Studio].
+
+<admon>
+
+Iterative Studio [works very closely with your Git ecosystem][how-it-works]. So,
+you need to connect Iterative Studio to the Git repositories for your projects.
+
+</admon>
 
 > Note that we have renamed DVC Studio to Iterative Studio and Views to
 > Projects.
@@ -100,8 +107,9 @@ You should now see that a project has been added in your dashboard.
 
 ## Explore and share your projects
 
-1. After creating a project, you can use it to [explore the ML experiments] as
-   well as [submit new experiments] from Iterative Studio.
+1. After creating a project, you can use it to [explore the ML experiments],
+   [set up your model training CI job, potentially using CML], and [submit new
+   experiments] from Iterative Studio.
 
 2. You can also make the project public by [sharing it on the web].
 
@@ -117,7 +125,8 @@ You should now see that a project has been added in your dashboard.
 
 2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
    to the model registry by clicking on the `Add a model` button and following
-   on-screen instructions.
+   on-screen instructions. Models that are already in the repository as well as
+   models stored in remote (cloud) storages can be registered in this way.
 
 3. To
    [view the details](/doc/studio/user-guide/model-registry/view-models#model-details-page)
@@ -135,12 +144,16 @@ You should now see that a project has been added in your dashboard.
    projects dashboard. To create teams with more than 2 team members, [sign up
    for the **Basic**, **Teams** or **Enterprise** plan].
 
+[iterative studio]: https://studio.iterative.ai/
+[how-it-works]: /doc/studio/how-it-works
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
 [create multiple projects from a single git repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 [explore the ml experiments]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
+[set up your model training ci job, potentially using cml]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action
 [submit new experiments]:
   /doc/studio/user-guide/projects-and-experiments/run-experiments
 [sharing it on the web]:
