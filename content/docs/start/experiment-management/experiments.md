@@ -58,7 +58,7 @@ metrics and plots to evaluate the models. `dvc exp init` has sane defaults about
 the names of these elements to initialize a project:
 
 ```dvc
-$ dvc exp init python src/train.py
+$ dvc exp init --live dvclive --plots plots python src/train.py
 ```
 
 Here, `python src/train.py` specifies how you run experiments. It could be any
@@ -242,13 +242,13 @@ generate these files. Please refer to the documentation for details.
 
 `dvc exp show` and `dvc metrics` are used to tabulate the experiments and Git
 commits with their associated metrics. In the above tables, `loss` and `acc`
-values are metrics found in [`metrics.json`] file.
+values are metrics found in [`dvclive/metrics.json`] file.
 
 Metrics files are interpreted specially also in
 [Iterative Studio](https://studio.iterative.ai).
 
 [`metrics.json`]:
-  https://github.com/iterative/example-dvc-experiments/blob/main/metrics.json
+  https://github.com/iterative/example-dvc-experiments/blob/main/dvclive/metrics.json
 
 </details>
 

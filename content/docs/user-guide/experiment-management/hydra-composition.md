@@ -2,37 +2,45 @@
 
 _New in DVC 2.25.0 (see `dvc version`)_
 
-In this guide, we explain how to use [Hydra](https://hydra.cc/) composition for
-configuring DVC <abbr>experiments</abbr>.
+[Hydra](https://hydra.cc/) is a framework to configure complex applications. DVC
+supports Hydra's [config composition] as a way to configure [experiment runs].
 
-## How it works
+<admon type="info">
 
-On each `dvc exp run` call, DVC will use Hydra to **compose** a single
-configuration object and **dump** it to `params.yaml`. This will happen
-**before** the experiment starts running.
+At the moment you must explicitly enable this feature with:
 
-This allows to combine Hydra composition and DVC <abbr>parameters</abbr> to
-configure DVC <abbr>pipelines</abbr>. DVC pipelines can run multiple steps of
-different shell commands, instead of a single Python script, and use features
-like [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
-and [`foreach`](/doc/user-guide/project-structure/dvcyaml-files#foreach).
-
-## Setting up Hydra
-
-<admon type="tip">
-
-Learn more about setting up Hydra in the
-[official Hydra tutorial](https://hydra.cc/docs/tutorials/basic/your_first_app/composition/).
+```dvc
+$ dvc config hydra.enabled True
+```
 
 </admon>
 
-To start using Hydra composition capabilities it is required to have a directory
-of
-[Hydra Config Groups](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/)
-(`conf`):
+[config composition]:
+  https://hydra.cc/docs/tutorials/basic/your_first_app/composition/
+[experiment runs]: /doc/user-guide/experiment-management/running-experiments
+
+## How it works
+
+Upon `dvc exp run`, Hydra will be used to compose a single `params.yaml` before
+executing the experiment. Its <abbr>parameters</abbr> will configure the
+[underlying DVC pipeline](#running-experiments) that contains your experiment.
+
+<admon type="tip">
+
+[DVC pipelines] can run multiple stages with different shell commands instead of
+a single script, and offer advanced features like [templating] and [`foreach`
+stages].
+
+[templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
+[`foreach`]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
+
+</admon>
+
+## Setting up Hydra
+
+First you need a `conf/` directory for Hydra [config groups]. For example:
 
 ```dvc
-$ tree conf
 conf
 ├── config.yaml
 ├── dataset
@@ -49,59 +57,30 @@ conf
         └── sgd.yaml
 ```
 
-Along with a file defining the top-level
-[Hydra Defaults List](https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/)
-(`conf/config.yaml`):
+You also need a `conf/config.yaml` file defining the Hydra [defaults list]:
 
-```dvc
-$ cat conf/config.yaml
+```yaml
 defaults:
   - dataset: imagenette
   - train/model: resnet
   - train/optimizer: sgd
 ```
 
-<admon type="info">
+[config groups]:
+  https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/
+[defaults list]: https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/
 
-You can set the [`dvc config hydra`](/doc/command-reference/config#hydra)
-options to provide custom locations for the _Config Group_ and the top-level
-_Defaults List_.
+<admon type="tip">
+
+Use [`dvc config hydra`](/doc/command-reference/config#hydra) options to change
+the default locations for the config groups directory and defaults list file.
 
 </admon>
 
-The main difference with the official tutorial is that, instead of relying on
-the
-[`@hydra.main`](https://hydra.cc/docs/tutorials/basic/your_first_app/simple_cli/)
-Python decorator, DVC will take care of composing and dumping the configuration
-so we can instead rely on a single file: `params.yaml`. See the
-[example below](#building-a-pipeline) to find different options on how to use
-this file.
-
-## Setting up DVC
-
-We can enable the Hydra composition by running:
-
-```dvc
-$ dvc config hydra.enabled True
-```
-
-### Testing the composition
-
-To check how the composition works, we can create a dummy `dvc.yaml` that prints
-the contents of `params.yaml`:
+Now let's look at what the resulting `params.yaml` could be based on the setup
+above:
 
 ```yaml
-stages:
-  print-params:
-    cmd: cat params.yaml
-```
-
-Now, if we run an experiment, we will see the composed configuration printed:
-
-```dvc
-$ dvc exp run
-Running stage 'print-params':
-> cat params.yaml
 dataset:
   url: https://s3.amazonaws.com/fast-ai-imageclas/imagenette2-160.tgz
   output_folder: imagenette
@@ -116,42 +95,27 @@ train:
     momentum: 0.9
 ```
 
-### Building a Pipeline
+## Running experiments
 
-To showcase a more realistic use case, we are going to build a Pipeline with 2
-stages.
+<details>
 
-The first stage downloads the dataset, and depends on the
-<abbr>parameters</abbr> defined in the `dataset` section:
+### Expand to set up a DVC pipeline.
+
+Let's build an [experimental pipeline] with 2 stages. The first one downloads a
+dataset and uses the parameters defined in the `dataset` section of
+`params.yaml`. The second stage trains an ML model and uses the rest of the
+parameters (entire `train` group).
 
 ```yaml
 stages:
   setup-dataset:
     cmd:
-    - wget ${dataset.url} -O tmp.tgz
-    - mkdir -p ${dataset.output_folder}
-    - tar zxvf tmp.tgz -C ${dataset.output_folder}
-    - rm tmp.tgz
+      - wget ${dataset.url} -O tmp.tgz
+      - mkdir -p ${dataset.output_folder}
+      - tar zxvf tmp.tgz -C ${dataset.output_folder}
+      - rm tmp.tgz
     outs:
       - ${dataset.output_folder}
-  ...
-```
-
-We use [Templating](/doc/user-guide/project-structure/dvcyaml-files#templating)
-to configure our shell commands (`mkdir`, `tar` and `wget`) and to avoid
-hardcoding the <abbr>output</abbr> paths.
-
-The second stage trains a model using the downloaded dataset and depends on the
-rest of the parameters:
-
-<toggle>
-<tab title="Python API">
-
-We can use the `dvc.api.params_show()` method to load all the required
-parameters inside the stage:
-
-```yaml
-  ...
   train:
     cmd: python train.py
     deps:
@@ -160,47 +124,35 @@ parameters inside the stage:
       - train
 ```
 
-```python
-# train.py
-import dvc.api
+[experimental pipeline]:
+  /doc/user-guide/experiment-management/running-experiments#running-the-pipelines
 
-train_params = dvc.api.params_show("train")
+<admon type="info">
 
-...
-```
+We parametrize the shell commands above (`mkdir`, `tar`, `wget`) as well as
+<abbr>output</abbr> and <abbr>dependency</abbr> paths (`outs`, `deps`) using
+[templating] (`${}` _expression_).
 
-</tab>
-<tab title="Language Agnostic">
+[templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
 
-Because the composed config will be dumped to `params.yaml`, we can use a YAML
-parser library (there is at least one available for most languages) to load the
-configuration.
+</admon>
 
-Alternatively, we can use
-[Dict Unpacking](/doc/user-guide/project-structure/dvcyaml-files#dict-unpacking),
-to pass our configuration as
-[argparse](https://docs.python.org/3/library/argparse.html) arguments.
+<admon type="tip">
 
-```yaml
-  ...
-  train:
-    cmd: python train.py ${train}
-    deps:
-      - ${dataset.output_folder}
-```
+You can use `dvc.api.params_show()` to load params in Python code. For other
+languages, use [dictionary unpacking] or a YAML parsing library.
 
-This approach can be used in other languages. For example, we can use
-[R argparse](https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html)
-, [Julia ArgParse](https://argparsejl.readthedocs.io/en/latest/argparse.html) or
-any other shell command that accepts argparse-like syntax.
+[dictionary unpacking]:
+  /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 
-</tab>
-</toggle>
+</admon>
 
-## Running experiments
+</details>
 
-We can now trigger use `dvc exp run --set-param` to modify the Hydra
-Composition:
+We can now use `dvc exp run --set-param` to modify the config composition
+on-the-fly, for example loading the model config from
+`train/model/efficientnet.yaml` (instead of `resnet.yaml` from the
+[defaults list](#setting-up-hydra)):
 
 ```dvc
 $ dvc exp run --set-param 'train/model=efficientnet'
@@ -212,8 +164,7 @@ Running stage 'train':
 ...
 ```
 
-In addition to modifying the _Defaults List_, we can also modify specific values
-of a config section:
+We can also modify specific values from any config section:
 
 ```dvc
 $ dvc exp run --set-param 'train.optimizer.lr=0.1'
@@ -225,15 +176,13 @@ Running stage 'train':
 ...
 ```
 
-## Grid Search
-
-We can use the `dvc queue` to run a grid search with different _Defaults List_
-values:
+We can also load multiple [config groups](#setting-up-hydra) in an [experiments
+queue], for example to run a [grid search] of ML hyperparameters:
 
 ```dvc
-$ dvc exp run \
--S 'train/optimizer=adam,sgd' -S 'train/model=resnet,efficientnet' \
---queue
+$ dvc exp run --queue \
+              -S 'train/optimizer=adam,sgd' \
+              -S 'train/model=resnet,efficientnet'
 
 Queueing with overrides '{'params.yaml': ['optimizer=adam', 'model=resnet']}'.
 Queued experiment 'ed3b4ef' for future execution.
@@ -243,21 +192,30 @@ Queueing with overrides '{'params.yaml': ['optimizer=sgd', 'model=resnet']}'.
 Queued experiment '0b443d8' for future execution.
 Queueing with overrides '{'params.yaml': ['optimizer=sgd', 'model=efficientnet']}'.
 Queued experiment '0a5f20e' for future execution.
-```
 
-```dvc
 $ dvc queue start
 ...
 ```
 
-One of the benefits of using DVC Pipelines is that stages are cached, so they
-will not be re-run unless their dependencies and/or parameters change.
+[experiments queue]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+[grid search]:
+  https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
 
-In the above example, the experiment with `['optimizer=sgd', 'model=resnet']`
-will not waste computing because the results are already in the cache:
+<admon type="info">
+
+Note that DVC keeps a cache of all runs, so many permutations will be completed
+without actually having to run the experiment. In the above example, the
+experiment with `['optimizer=sgd', 'model=resnet']` will not waste computing
+time because the results are already in the [run-cache]. You can confirm this
+with `dvc queue logs`:
 
 ```
 $ dvc queue logs 0b443d8
 Stage 'setup-dataset' didn't change, skipping
 Stage 'train' didn't change, skipping
 ```
+
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
+
+</admon>

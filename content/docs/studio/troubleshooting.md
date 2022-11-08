@@ -198,10 +198,11 @@ show/hide columns, remember to save the changes.
 ## Project does not contain some of my commits or branches
 
 This is likely not an error. Iterative Studio identifies commits that do not
-change metrics, files or hyperparameters and will auto-hide such commits. You
-can also manually hide commits and branches. So, it is possible that the commits
-or branches you do not see in your project were manually hidden by you or
-someone else in your team.
+change metrics, files or hyperparameters and will auto-hide such commits. It
+also auto-hides commits that contain the string `[skip studio]` in the commit
+message. You can also manually hide commits and branches. So, it is possible
+that the commits or branches you do not see in your project were manually hidden
+by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is

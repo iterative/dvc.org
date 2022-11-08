@@ -629,8 +629,8 @@
         "slug": "get-started"
       },
       {
-        "slug": "outputs",
-        "label": "Output Folder Structure"
+        "slug": "how-it-works",
+        "label": "How it Works"
       },
       {
         "slug": "api-reference",
@@ -642,16 +642,12 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
-                "slug": "get_step",
-                "label": "get_step()"
-              },
-              {
-                "slug": "log",
-                "label": "log()"
-              },
-              {
                 "slug": "log_image",
                 "label": "log_image()"
+              },
+              {
+                "slug": "log_metric",
+                "label": "log_metric()"
               },
               {
                 "slug": "log_param",
@@ -662,20 +658,20 @@
                 "label": "log_params()"
               },
               {
-                "slug": "log_plot",
-                "label": "log_plot()"
+                "slug": "log_sklearn_plot",
+                "label": "log_sklearn_plot()"
               },
               {
                 "slug": "make_report",
                 "label": "make_report()"
               },
               {
-                "slug": "next_step",
-                "label": "next_step()"
+                "slug": "make_summary",
+                "label": "make_summary()"
               },
               {
-                "slug": "set_step",
-                "label": "set_step()"
+                "slug": "next_step",
+                "label": "next_step()"
               }
             ]
           },

@@ -65,7 +65,7 @@ Note that it's best to try avoiding these scenarios, where the
 <abbr>cache</abbr>, `dvc.lock`, and `.dvc` files are force-updated. DVC can't
 guarantee reproducibility in those cases.
 
-[add the missing deps/outs]: /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
+[add the missing deps/outs]: /doc/user-guide/how-to/add-deps-or-outs-to-a-stage
 
 ## Options
 

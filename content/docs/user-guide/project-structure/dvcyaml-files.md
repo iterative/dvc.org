@@ -10,7 +10,7 @@ schema explained below. We encourage you to get familiar with it so you may
 modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
-with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
+with Git along with other <abbr>DVC files</abbr> and your project's code.
 
 [dependency graph]:
   /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
@@ -89,8 +89,8 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 <admon type="tip">
 
-See also [Templating](#templating) (and **Dict Unpacking**) for useful ways to
-parametrize `cmd` strings.
+See also [Templating](#templating) (and **Dictionary unpacking**) for useful
+ways to parametrize `cmd` strings.
 
 </admon>
 
@@ -318,6 +318,13 @@ Only inside the `cmd` entries, you can also reference a dictionary inside `${}`
 and DVC will _unpack_ it. This can be useful to avoid writing every argument
 passed to the command, or having to modify `dvc.yaml` when arguments change.
 
+<admon type="tip">
+
+An alternative to load parameters from Python code is the
+`dvc.api.params_show()` API function.
+
+</admon>
+
 For example, given the following `params.yaml`:
 
 ```yaml
@@ -335,17 +342,28 @@ You can reference `mydict` in a stage command like this:
 ```yaml
 stages:
   train:
-    cmd: python train.py ${mydict}
+    cmd: R train.r ${mydict}
 ```
 
 DVC will unpack the values inside `mydict`, creating the following `cmd` call:
 
 ```cli
-$ python train.py --foo 'foo' --bar 1 --bool \
+$ R train.r --foo 'foo' --bar 1 --bool \
                   --nested.baz 'bar' --list 2 3 'qux'
 ```
 
 <admon type="tip">
+
+You can combine this with argument parsing libraries such as [R argparse] or
+[Julia ArgParse] to do all the work for you.
+
+[r argparse]:
+  https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html
+[julia argparse]: https://argparsejl.readthedocs.io/en/latest/argparse.html
+
+</admon>
+
+<admon icon="book">
 
 `dvc config parsing` can be used to customize the syntax used for ambiguous
 types like booleans and lists.
@@ -589,9 +607,9 @@ Both individual foreach stages (`train@1`) and groups of foreach stages
 ## Top-level plot definitions
 
 The list of `plots` contains one or more user-defined `dvc plots`
-configurations. Every plot is a dictionary keyed by a unique ID, which may be
-either a file or directory path (relative to the location of `dvc.yaml`) or an
-arbitrary string. Optional configuration fields can be provided as well.
+configurations. Every plot must have a unique ID, which may be either a file or
+directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
+Optional configuration fields can be provided as well.
 
 <admon icon="book">
 
