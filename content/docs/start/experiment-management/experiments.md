@@ -9,7 +9,7 @@ comparing them easily and finding the best performers.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 <admon type="warn">
 
@@ -43,7 +43,7 @@ the [`example-dvc-experiments`][ede] project.
 
 <details>
 
-## ⚙️ Initializing a project with DVC experiments
+### ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to run experiments in your project. (See the [User Guide]
@@ -58,7 +58,7 @@ metrics and plots to evaluate the models. `dvc exp init` has sane defaults about
 the names of these elements to initialize a project:
 
 ```dvc
-$ dvc exp init python src/train.py
+$ dvc exp init --live dvclive --plots plots python src/train.py
 ```
 
 Here, `python src/train.py` specifies how you run experiments. It could be any
@@ -242,13 +242,13 @@ generate these files. Please refer to the documentation for details.
 
 `dvc exp show` and `dvc metrics` are used to tabulate the experiments and Git
 commits with their associated metrics. In the above tables, `loss` and `acc`
-values are metrics found in [`metrics.json`] file.
+values are metrics found in [`dvclive/metrics.json`] file.
 
 Metrics files are interpreted specially also in
 [Iterative Studio](https://studio.iterative.ai).
 
 [`metrics.json`]:
-  https://github.com/iterative/example-dvc-experiments/blob/main/metrics.json
+  https://github.com/iterative/example-dvc-experiments/blob/main/dvclive/metrics.json
 
 </details>
 

@@ -40,8 +40,8 @@ Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
 > If you're using Windows, please review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience.
+> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+> important tips to improve your experience.
 
 Okay! Let's first download the code and set up a Git repository:
 
@@ -132,7 +132,7 @@ You can use this command instead of `git add` on files or directories that are
 too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
-[file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a tiny, human-readable `.dvc` file that
 serves as a pointer to the cache.

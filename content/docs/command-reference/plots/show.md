@@ -3,7 +3,8 @@
 Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
 [top-level definition] from `dvc.yaml`.
 
-[top-level definition]: /doc/user-guide/visualizing-plots#top-level-plots
+[top-level definition]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
 
 ## Synopsis
 
@@ -38,11 +39,13 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
-[certain data]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
+[certain data]:
+  /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
-  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
-[top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
-[stage plot]: /doc/user-guide/visualizing-plots
+  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+[top-level plot]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[stage plot]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Options
 
@@ -51,7 +54,7 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to be injected with data. The default template is `.dvc/plots/default.json`.
   See more details in `dvc plots`.
 
@@ -226,7 +229,7 @@ stages:
     cmd: ...
 
 plots:
-  logs.csv:
+  - logs.csv
 ```
 
 ```dvc
@@ -240,12 +243,12 @@ We can also customize it:
 
 ```yaml
 plots:
-  logs.csv:
-    x: epoch
-    y: accuracy
-    title: Displaying accuracy
-    x_label: This is epoch
-    y_label: This is accuracy
+  - logs.csv:
+      x: epoch
+      y: accuracy
+      title: Displaying accuracy
+      x_label: This is epoch
+      y_label: This is accuracy
 ```
 
 ```dvc
@@ -271,11 +274,11 @@ Plot definition in `dvc.yaml`:
 
 ```yaml
 plots:
-  test_vs_train_loss:
-    x: epoch
-    y:
-      training_data.csv: [test_loss, train_loss]
-    title: Compare loss training versus test
+  - test_vs_train_loss:
+      x: epoch
+      y:
+        training_data.csv: [test_loss, train_loss]
+      title: Compare loss training versus test
 ```
 
 ```dvc
@@ -323,15 +326,15 @@ In `dvc.yaml`:
 
 ```yaml
 plots:
-  test_vs_train_confusion:
-    x: actual_class
-    y:
-      train_classes.csv: predicted_class
-      test_classes.csv: predicted_class
-    title: Compare test vs train confusion matrix
-    template: confusion
-    x_label: Actual class
-    y_label: Predicted class
+  - test_vs_train_confusion:
+      x: actual_class
+      y:
+        train_classes.csv: predicted_class
+        test_classes.csv: predicted_class
+      title: Compare test vs train confusion matrix
+      template: confusion
+      x_label: Actual class
+      y_label: Predicted class
 ```
 
 ```dvc
@@ -480,7 +483,7 @@ file:///Users/usr/src/dvc_plots/index.html
 ![](/img/plots_show_confusion.svg)
 
 > A confusion matrix
-> [template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+> [template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 > is predefined in DVC.
 
 We can use `confusion_normalized` template to normalize the results:

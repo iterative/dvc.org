@@ -8,7 +8,7 @@ version, and reproduce your data science and machine learning workflows.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/71IGzyH95UY
 

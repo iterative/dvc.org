@@ -8,7 +8,7 @@ capture, evaluate, and visualize ML projects without leaving Git.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/bu3l75eQlQo
 
@@ -35,13 +35,14 @@ attributes. Let's add a final evaluation stage to our
 
 ```dvc
 $ dvc run -n evaluate \
-          -d src/evaluate.py -d model.pkl -d data/features \
-          -M evaluation.json \
-          --plots-no-cache evaluation/plots/precision_recall.json \
-          --plots-no-cache evaluation/plots/roc.json \
-          --plots-no-cache evaluation/plots/confusion_matrix.json \
-          --plots evaluation/importance.png \
-          python src/evaluate.py model.pkl data/features
+  -d src/evaluate.py -d model.pkl -d data/features \
+  -O evaluation/plots/metrics \
+  -M evaluation/metrics.json \
+  --plots-no-cache evaluation/plots/prc.json \
+  --plots-no-cache evaluation/plots/sklearn/roc.json \
+  --plots-no-cache evaluation/plots/sklearn/confusion_matrix.json \
+  --plots evaluation/plots/importance.png \
+  python src/evaluate.py model.pkl data/features
 ```
 
 <details>
@@ -60,17 +61,27 @@ evaluate:
     - data/features
     - model.pkl
     - src/evaluate.py
+  outs:
+    - evaluation/plots/metrics:
+        cache: false
   metrics:
-    - evaluation.json:
+    - evaluation/metrics.json:
         cache: false
   plots:
-    - evaluation/importance.png
-    - evaluation/plots/confusion_matrix.json:
+    - evaluation/plots/importance.png
+    - evaluation/plots/prc.json:
         cache: false
-    - evaluation/plots/precision_recall.json:
+        x: recall
+        y: precision
+    - evaluation/plots/sklearn/confusion_matrix.json:
         cache: false
-    - evaluation/plots/roc.json:
+        template: confusion
+        x: actual
+        y: predicted
+    - evaluation/plots/sklearn/roc.json:
         cache: false
+        x: fpr
+        y: tpr
 ```
 
 The biggest difference to previous stages in our pipeline is in two new
@@ -79,9 +90,8 @@ ML "telemetry". Metrics files contain scalar values (e.g. `AUC`) and plots files
 contain matrices, data series (e.g. `ROC curves` or model loss plots), or images
 to be visualized and compared.
 
-> With `cache: false`, DVC skips caching the output, as we want
-> `evaluation.json`, `precision_recall.json`, `confusion_matrix.json`, and
-> `roc.json` to be versioned by Git.
+> With `cache: false`, DVC skips caching the output, as we want these JSON
+> metrics and plots files to be versioned by Git.
 
 </details>
 
@@ -90,8 +100,8 @@ writes the model's
 [ROC-AUC](https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc)
 and
 [average precision](https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures)
-to `evaluation.json`, which in turn is marked as a `metrics` file with `-M`. Its
-contents are:
+to `evaluation/metrics.json`, which in turn is marked as a `metrics` file with
+`-M`. Its contents are:
 
 ```json
 { "avg_prec": 0.5204838673030754, "roc_auc": 0.9032012604172255 }
@@ -100,7 +110,7 @@ contents are:
 `evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays
 (obtained using
 [`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into the plots file `precision_recall.json`:
+into the plots file `evaluation/plots/prc.json`:
 
 ```json
 {
@@ -114,10 +124,11 @@ into the plots file `precision_recall.json`:
 
 Similarly, it writes arrays for the
 [roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
-into `roc.json`,
+into `evaluation/plots/sklearn/roc.json`,
 [confusion matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html)
-into `confusion_matrix.json`, and an image `importance.png` with a feature
-importance bar chart for additional plots.
+into `evaluation/plots/sklearn/confusion_matrix.json`, and an image
+`evaluation/plots/importance.png` with a feature importance bar chart for
+additional plots.
 
 > DVC doesn't force you to use any specific file names, nor does it enforce a
 > format or structure of a metrics or plots file. It's completely
@@ -135,15 +146,13 @@ To view plots, first specify which arrays to use as the plot axes. We only need
 to do this once, and DVC will save our plot configurations.
 
 ```dvc
-$ dvc plots modify evaluation/plots/precision_recall.json \
-                   -x recall -y precision
+$ dvc plots modify evaluation/plots/prc.json -x recall -y precision
 Modifying stage 'evaluate' in 'dvc.yaml'
-$ dvc plots modify evaluation/plots/roc.json -x fpr -y tpr
+$ dvc plots modify evaluation/plots/sklearn/roc.json -x fpr -y tpr
 Modifying stage 'evaluate' in 'dvc.yaml'
-$ dvc plots modify evaluation/plots/confusion_matrix.json \
-                   -x actual -y predicted -t confusion
+$ dvc plots modify evaluation/plots/sklearn/confusion_matrix.json \
+    -x actual -y predicted -t confusion
 Modifying stage 'evaluate' in 'dvc.yaml'
-
 ```
 
 Now let's view the plots. You can run `dvc plots show` on you terminal (shown
@@ -164,7 +173,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 Let's save this iteration, so we can compare it later:
 
 ```dvc
-$ git add .gitignore dvc.yaml dvc.lock evaluation.json evaluation
+$ git add .gitignore dvc.yaml dvc.lock evaluation
 $ git commit -a -m "Create evaluation stage"
 ```
 

@@ -26,15 +26,15 @@ live.log_image("pil.png", img_pil)
 
 Supported values for `val` are:
 
-- A valid numpy array (convertible to image via
+- A valid NumPy array (convertible to image via
   [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
 - A `PIL.Image` instance.
 
-The images will be saved in `{Live.dir}/images/{name}`:
+The images will be saved in `{Live.plots_dir}/images/{name}`:
 
-```dvc
-$ tree
-└── dvclive
+```
+dvclive
+└── plots
     └── images
         ├── numpy.png
         └── pil.png
@@ -42,31 +42,13 @@ $ tree
 
 <admon type="tip">
 
-The logged images can be visualized with `dvc plots`.
+The logged images can be visualized with `dvc plots`:
+
+```cli
+$ dvc plots diff dvclive/plots
+```
 
 </admon>
-
-### Step updates
-
-The first `step` update (with `Live.next_step()` or `Live.set_step()`) will move
-the saved file from `{Live.dir}/images/{name}` to
-`{Live.dir}/images/{step}/{name}`.
-
-Each subsequent call to `live.log_image(name, val)` will save the image under
-the folder `{Live.dir}/images/{step}/{name}` corresponding to the current
-`step`.
-
-```dvc
-$ tree
-└── dvclive
-    └── images
-        ├── 0
-        │   ├── numpy.png
-        │   └── pil.png
-        └── 1
-            ├── numpy.png
-            └── pil.png
-```
 
 ## Parameters
 
@@ -80,4 +62,4 @@ $ tree
   have a supported type.
 
 - `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged whithin the same `step`.
+  already been logged within the same `step`.

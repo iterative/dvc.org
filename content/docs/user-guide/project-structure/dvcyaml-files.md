@@ -10,7 +10,10 @@ schema explained below. We encourage you to get familiar with it so you may
 modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
-with Git along with other DVC <abbr>metafiles</abbr> and your project's code.
+with Git along with other <abbr>DVC files</abbr> and your project's code.
+
+[dependency graph]:
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ## Stages
 
@@ -474,12 +477,6 @@ value), escape it with a backslash, e.g. `\${...`.
 
 ## `foreach` stages
 
-<admon type="warn">
-
-This feature cannot be combined with [templating](#templating) at the moment.
-
-</admon>
-
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
@@ -609,8 +606,8 @@ Both individual foreach stages (`train@1`) and groups of foreach stages
 
 ## Top-level plot definitions
 
-The `plots` dictionary contains one or more user-defined `dvc plots`
-configurations. Every plot needs a unique ID, which may be either a file or
+The list of `plots` contains one or more user-defined `dvc plots`
+configurations. Every plot must have a unique ID, which may be either a file or
 directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
 Optional configuration fields can be provided as well.
 
@@ -618,7 +615,8 @@ Optional configuration fields can be provided as well.
 
 Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
-[visualizing plots]: /doc/user-guide/visualizing-plots#top-level-plots
+[visualizing plots]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
 
 </admon>
 
@@ -650,7 +648,7 @@ Refer to [Visualizing Plots] and `dvc plots show` for examples.
 - `template` (string) - [plot template]. Defaults to `linear`.
 
 [plot template]:
-  https://dvc.org/doc/user-guide/visualizing-plots#plot-templates-data-series-only
+  https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## dvc.lock file
 

@@ -117,10 +117,10 @@ file will reflect the changes.
 
 <details>
 
-### Git workflows/methodologies such as Gitflow
+### Git workflows such as Gitflow
 
 - DVC enables a new experimentation methodology that integrates easily with
-  existing Git workflows. For example, a separate branch can be created for each
+  standard Git workflows. For example, a separate branch can be created for each
   experiment, with a subsequent merge of the branch if the experiment is
   successful.
 

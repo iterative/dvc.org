@@ -148,8 +148,8 @@ See the [Pipelines guide] for more on that topic.
   default value (`plots/`).
 
 - `--live` - set the path to the directory where the metrics and plots
-  [produced by DVCLive](https://dvc.org/doc/dvclive/dvclive-with-dvc#outputs)
-  will be found. Overrides the default values for `--metrics` and `--plots`.
+  [produced by DVCLive](https://dvc.org/doc/dvclive/how-it-works) will be found.
+  Overrides the default values for `--metrics` and `--plots`.
 
 - `--explicit` - do not assume default locations of project dependencies and
   outputs. You'll have to provide specific locations via other options or

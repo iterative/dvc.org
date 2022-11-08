@@ -79,10 +79,10 @@ fail.
 ## No possible cache types {#cache-types}
 
 You may encounter this error if DVC cannot find a valid
-[file link type](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link type](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to use when linking data files from cache into your workspace. To resolve the
 issue, you may need to
-[reconfigure](/doc/user-guide/large-dataset-optimization#configuring-dvc-cache-file-link-type)
+[reconfigure](/doc/user-guide/data-management/large-dataset-optimization#configuring-dvc-cache-file-link-type)
 DVC to use alternative link types which are supported on your machine.
 
 After reconfiguring cache types, you can re-link data files in your workspace
