@@ -1,59 +1,42 @@
 # Data Management with DVC
 
-DVC fundamentally changes the way you work with datasets and ML models. Let's
-look at how this workflow evolves, and why it's important.
+DVC changes the way you work with datasets and ML models in order to enable data
+[versioning] and reproducibility, among other
+[benefits](#benefits-and-implications). Let's look at how the workflow evolves.
 
-The mechanisms to store and transfer large files and directories directly can
-vary wildly. For example, you may need to use more than one storage platform,
-ending up with data scattered in the cloud and on-prem locations. Other common
-problems include:
+![Before and after DVC](/img/before-after.png) _DVC codifies data access._
 
-- You have to access each location with specific tools (AWS CLI, code libraries,
-  SCP, etc.)
-- This requires knowing the final URL or path of every asset (often hardcoded).
-- Controlling who can read and write at folder or file level is difficult.
-- Tracking [data versions] typically involves ad hoc file naming schemes that
-  don't scale.
-- It's easy to lose track of which data produced what results, hindering
-  reproducibility.
+Traditionally, you would access storage platforms directly, with dedicated tools
+such as AWS CLI, code libraries, SCP, etc. This requires knowing the final URL
+of every asset. It also means that having data scattered across the cloud or
+on-prem locations complicates your workflow.
 
-![Before and after DVC](/img/before-after.png) _DVC simplifies your project._
+DVC introduces a layer of [indirection]: raw data, models, and other artifacts
+are _codified_ in small [metafiles] that describe their unique characteristics.
+Storage locations (and other aspects of your project setup) are also saved to
+human-readable config files. You can control all these with Git along with the
+rest of your project's code and configuration files.
 
-To address these pain points and help you focus on machine learning work, DVC
-introduces a layer of _indirection_: raw data, models, and other artifacts are
-[separated](#separating-data-from-code-codification) from your project's code.
-This has a number of implications, but it's a small cost to improve your
-productivity:
+[versioning]: /doc/use-cases/versioning-data-and-models
+[indirection]: https://en.wikipedia.org/wiki/Indirection
+[metafiles]: /doc/user-guide/project-structure
 
-1. You have to set up a <abbr>DVC project</abbr> and its
-   [storage locations](#storage-locations).
-1. Stored objects are [reorganized] by DVC (not intended for manual handling).
-   <!-- In cloud versioning they can be accessed directly. -->
-1. Everything happens though a code repository that can be controlled with Git.
+## Benefits and implications
 
-[data versions]: /doc/use-cases/versioning-data-and-models
-[reorganized]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+DVC's approach lets you focus on machine learning and includes other advantages:
 
-## Benefits
-
-Besides the basic solutions outlined before, there are several more benefits to
-DVC's approach:
-
-- You work with data in a local <abbr>workspace</abbr>, as with any other files;
-  You deal with project-specific file paths and forget about complicated [URIs].
-- DVC tracks, restores, and synchronize everything with a few straightforward
-  operations that do not change regardless of file systems, transfer protocols,
-  etc.
 - Standard [project versions] (Git commits) guarantee reproducibility of ML
   processes (e.g. training models with the same datasets, hyperparametes, and
   features).
+- You work with data in a local <abbr>workspace</abbr>, as with any other files;
+  DVC tracks, restores, and synchronize everything with a few operations that do
+  not change per storage system.
 - Your storage space is [used efficiently] (file deduplication); Your project
   repo stays small.
+- Controlling who can read and write at folder or file level is easier.
 - [Fast caching], [data registries], [model registries], [CI/CD for ML], and
   more!
 
-[uris]: https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 [project versions]: /doc/user-guide/data-management/data-versioning
 [used efficiently]: /doc/user-guide/data-management/large-dataset-optimization
 [fast caching]: /doc/use-cases/fast-data-caching-hub
@@ -61,6 +44,18 @@ DVC's approach:
 [model registries]: /doc/use-cases/model-registry
 [ci/cd for ml]: https://cml.dev/
 
+This implies getting used to a new workflow. But it's a small cost to improve
+productivity:
+
+1. You have to set up a <abbr>DVC project</abbr> and its storage locations.
+   <!-- [storage locations](#storage-locations). -->
+1. Stored objects are [reorganized] by DVC (not intended for manual handling).
+1. Everything happens though a code repository that can be controlled with Git.
+
+[reorganized]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+
+<!--
 ## Separating data from code (codification)
 
 DVC replaces large files and directories with small [metafiles] that describe
@@ -68,7 +63,7 @@ the assets. We call this _data codification_. Data files are moved to a separate
 <abbr>cache</abbr> but kept virtually (linked) in the workspace. This separates
 your data from code (including metafiles).
 
-<!-- ![Data separation](/img/data-separation.png) _Separating code from data_ -->
+<!-- ![Data separation](/img/data-separation.png) _Separating code from data_ -/->
 
 <admon type="tip">
 
@@ -126,3 +121,4 @@ DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> data.
 </admon>
 
 [dvc remotes]: /doc/command-reference/remote
+-->
