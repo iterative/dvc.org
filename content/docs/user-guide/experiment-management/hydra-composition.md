@@ -22,9 +22,8 @@ $ dvc config hydra.enabled True
 ## How it works
 
 Upon `dvc exp run`, Hydra will be used to compose a single `params.yaml` before
-executing the experiment. Hydra config and existing <abbr>parameters</abbr> will
-be combined to configure the [underlying DVC pipeline](#running-experiments)
-that contains your experiment.
+executing the experiment. Its <abbr>parameters</abbr> will configure the
+[underlying DVC pipeline](#running-experiments) that contains your experiment.
 
 <admon type="tip">
 

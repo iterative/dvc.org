@@ -314,16 +314,16 @@ will be listed by `dvc params diff`).
 
 ### Dictionary unpacking
 
-<admon type="tip">
-
-This is most useful for non-Python commands since our Python API includes
-`dvc.api.params_show()` to load parameters from code.
-
-</admon>
-
 Only inside the `cmd` entries, you can also reference a dictionary inside `${}`
 and DVC will _unpack_ it. This can be useful to avoid writing every argument
 passed to the command, or having to modify `dvc.yaml` when arguments change.
+
+<admon type="tip">
+
+An alternative to load parameters from Python code is the
+`dvc.api.params_show()` API function.
+
+</admon>
 
 For example, given the following `params.yaml`:
 
