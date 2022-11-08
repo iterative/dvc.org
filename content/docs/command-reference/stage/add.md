@@ -105,7 +105,7 @@ Relevant notes:
 - In some situations, we have previously executed a stage, and later notice that
   some of the files/directories used by the stage as dependencies, or created as
   outputs are missing from `dvc.yaml`. It is possible to
-  [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
+  [add missing dependencies/outputs to an existing stage](/doc/user-guide/how-to/add-deps-or-outs-to-a-stage)
   without having to execute it again.
 
 - Renaming dependencies or outputs requires a

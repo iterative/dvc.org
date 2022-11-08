@@ -234,7 +234,7 @@ To clear the experiments queue and start over, use `dvc queue remove --queued`.
 For more advanced grid searches, DVC supports complex config via [Hydra
 composition].
 
-[hydra composition]: /docs/user-guide/experiment-management/hydra-composition
+[hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 
 </admon>
 

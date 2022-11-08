@@ -118,7 +118,7 @@ within:
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
-[hydra composition]: /docs/user-guide/experiment-management/hydra-composition
+[hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
