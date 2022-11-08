@@ -7,14 +7,16 @@ tools [DVC](https://dvc.org/), [CML](https://cml.dev), [MLEM](https://mlem.ai/),
 enables you to seamlessly manage data and machine learning models, run and track
 experiments, and visualize and share results.
 
-<cards>
+https://www.youtube.com/watch?v=hKf4twg832g
 
-  <card href="/doc/studio/how-it-works" heading="How Iterative Studio works">
-    Learn how Iterative Studio works closely with the Git ecosystem
-  </card>
+<cards>
 
   <card href="/doc/studio/get-started" heading="Get started">
     A step-by-step tutorial to get started with Iterative Studio
+  </card>
+
+  <card href="/doc/studio/how-it-works" heading="How Iterative Studio works">
+    Learn how Iterative Studio works closely with the Git ecosystem
   </card>
 
   <card href="/doc/studio/user-guide" heading="User guide">

@@ -5,15 +5,9 @@ Studio].
 
 <admon>
 
-Iterative Studio [works very closely with your Git ecosystem][how-it-works]. So,
-you need to connect Iterative Studio to the Git repositories for your projects.
+We have renamed DVC Studio to Iterative Studio.
 
 </admon>
-
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
-
-https://www.youtube.com/watch?v=hKf4twg832g
 
 ## Sign up / sign in
 
