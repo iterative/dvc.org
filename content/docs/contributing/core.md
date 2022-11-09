@@ -52,8 +52,8 @@ Note that `pip` version 21.3+ is required.
 
 </admon>
 
-Install DVC in editable mode with `pip install -e ".[dev]"`. But before we
-do that, we **strongly** recommend creating a
+Install DVC in editable mode with `pip install -e ".[dev]"`. But before we do
+that, we **strongly** recommend creating a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
