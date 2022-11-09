@@ -1,13 +1,6 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use [Iterative
-Studio].
-
-<admon>
-
-We have renamed DVC Studio to Iterative Studio.
-
-</admon>
+Below is a step-by-step tutorial to quickly get started with Iterative Studio.
 
 ## Sign up / sign in
 
