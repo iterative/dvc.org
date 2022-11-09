@@ -43,8 +43,8 @@ const footerListsData: Array<IFooterListData> = [
         text: 'Overview'
       },
       {
-        href: '/features',
-        text: 'Features'
+        href: '/use-cases',
+        text: 'Use Cases'
       }
     ]
   },
