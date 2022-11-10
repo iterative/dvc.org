@@ -197,7 +197,7 @@ data science experiments.
   This option behaves like `-o` but registers the file or directory in a `plots`
   field inside the `dvc.yaml` stage. Plots outputs are either data series stored
   in tabular (CSV or TSV) or hierarchical (JSON or YAML) files, or image (JPEG,
-  GIF, or PNG) files. See [Visualizing Plots] to learn more about plots.
+  GIF, PNG, or SVG) files. See [Visualizing Plots] to learn more about plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots file (same as with `-O` and `-M` above). This may be desirable
