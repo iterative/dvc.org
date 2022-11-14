@@ -39,7 +39,7 @@ const docsPage = getFirstPage()
 const menuData: IMenuData = {
   nav: [
     {
-      href: '/use-cases',
+      href: '/doc/use-cases',
       eventType: 'use-cases',
       text: 'Use Cases'
     },
