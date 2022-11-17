@@ -55,15 +55,14 @@ productivity:
 [reorganized]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
-<!--
-## Separating data from code (codification)
+<!-- ## Separating data from code (codification)
 
 DVC replaces large files and directories with small [metafiles] that describe
 the assets. We call this _data codification_. Data files are moved to a separate
 <abbr>cache</abbr> but kept virtually (linked) in the workspace. This separates
 your data from code (including metafiles).
 
-<!-- ![Data separation](/img/data-separation.png) _Separating code from data_ -/->
+![]() _Separating code from data_
 
 <admon type="tip">
 
@@ -82,8 +81,9 @@ to understand the mechanics in general.
 [metafiles]: /doc/user-guide/project-structure
 [indirectly]: https://en.wikipedia.org/wiki/Indirection
 [configuration]: /doc/command-reference/config
+-->
 
-## Storage locations
+<!-- ## Storage locations
 
 DVC can manage data anywhere: cloud storage, SSH servers, network resources
 (e.g. NAS), mounted drives, local file systems, etc. These locations can be
