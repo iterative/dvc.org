@@ -56,7 +56,7 @@ To create valid plots files, you can:
 - Use [DVCLive](/doc/dvclive/) in your Python code to log the data automatically
   in a DVC-compatible format.
 - Generate a JSON, YAML 1.2, CSV, or TSV data series file yourself.
-- Save an JPEG, GIF, or PNG image file to render directly in your reports
+- Save an JPEG, GIF, PNG, or SVG image file to render directly in your reports
   (helpful for custom visualizations that would be hard to configure in DVC).
 
 DVC generates plots as static HTML webpages you can open with a web browser or
