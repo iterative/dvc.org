@@ -126,5 +126,9 @@ module.exports = {
       ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
       : 'https://dvc.org',
     title
+  },
+  developMiddleware: app => {
+    app.use(redirectsMiddleware)
+    app.use('/api', apiMiddleware)
   }
 }
