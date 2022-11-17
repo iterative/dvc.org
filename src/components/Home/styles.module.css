@@ -1,3 +1,4 @@
 .heroSection {
+  @apply pt-14;
   position: relative;
 }

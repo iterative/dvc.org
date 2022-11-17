@@ -4,7 +4,7 @@
 }
 
 .content {
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding-bottom: 0;
   }
 }
@@ -23,11 +23,11 @@
   align-items: stretch;
   padding-top: 40px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     display: block;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding-top: 20px;
   }
 }
@@ -41,11 +41,11 @@
   & + & {
     margin-left: 30px;
 
-    @media (--md-scr) {
+    @media screen(mdMax) {
       margin-left: 15px;
     }
 
-    @media (--sm-scr) {
+    @media screen(smMax) {
       display: block;
       margin: 15px 0 0;
     }
@@ -95,7 +95,7 @@
 }
 
 .wrapper {
-  @media (--sm-scr) {
+  @media screen(smMax) {
     padding: 0 15px;
 
     & + & {

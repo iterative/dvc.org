@@ -1,13 +1,15 @@
 import React from 'react'
-
-import Community from '../components/Community'
+import { PageProps } from 'gatsby'
+import MainLayout from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 
-const CommunityPage: React.FC = () => (
-  <>
+import Community from '../components/Community'
+
+const CommunityPage = ({ location }: PageProps) => (
+  <MainLayout location={location}>
     <SEO title="Community" />
     <Community />
-  </>
+  </MainLayout>
 )
 
 export default CommunityPage

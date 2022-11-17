@@ -1,17 +1,17 @@
 .diagramSection {
+  width: 100%;
   padding-top: 80px;
   padding-bottom: 91px;
 }
 
 .title {
-  @mixin h2-desktop;
+  @apply text-3xl font-medium my-4 text-center;
 
   max-width: 550px;
   min-height: 44px;
   margin: 0 auto;
   font-family: var(--font-base);
   line-height: 45px;
-  text-align: center;
   color: var(--color-gray-hover);
 }
 
@@ -30,7 +30,7 @@
   width: 100%;
   margin-top: 49px;
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     overflow-x: scroll;
     overflow-y: hidden;
   }
@@ -43,34 +43,33 @@
 }
 
 .columns {
-  @mixin columns;
+  display: flex;
+  flex-flow: row wrap;
 
   margin-top: 10px;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex-direction: column;
   }
 }
 
 .column {
-  @mixin column;
-
   box-sizing: border-box;
   display: block;
   max-width: 33.3%;
   margin-top: 49px;
   padding: 0 10px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin-right: 0;
     flex-basis: auto;
     max-width: 100%;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     margin-top: 20px;
     flex-basis: auto;
     max-width: 100%;
@@ -105,7 +104,7 @@
 .columnDescription {
   margin-bottom: 24px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin-bottom: 12px;
   }
 }

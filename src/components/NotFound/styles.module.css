@@ -7,24 +7,24 @@
 }
 
 .title {
-  @media (--md-scr) {
+  @media screen(mdMax) {
     @mixin h1-mobile;
   }
 
-  @media (--lg-scr) {
+  @media screen(lg) {
     @mixin h1-desktop;
   }
 }
 
 .content {
-  @media (--md-scr) {
+  @media screen(mdMax) {
     @mixin text-mobile;
 
     padding: 0 15px;
     text-align: center;
   }
 
-  @media (--lg-scr) {
+  @media screen(lg) {
     @mixin text-desktop;
   }
 }

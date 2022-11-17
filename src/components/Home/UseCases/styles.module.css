@@ -7,11 +7,11 @@
   display: flex;
   justify-content: space-between;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex-direction: column;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     flex-direction: column-reverse;
   }
 }
@@ -24,29 +24,21 @@
   width: 100%;
   margin-right: 10%;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex: auto;
     margin-bottom: 20px;
     margin-right: 0;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     margin: 0;
   }
 }
 
 .heading {
-  @mixin h2-desktop;
-
-  min-height: 50px;
-  font-family: var(--font-base);
-  line-height: 45px;
-  text-align: center;
+  @apply text-3xl font-medium my-4
+    text-left sm:text-center;
   color: var(--color-gray-hover);
-
-  @media (--sm-scr) {
-    text-align: left;
-  }
 }
 
 .cases {
@@ -60,7 +52,7 @@
 .rightColumn {
   flex: 1 1 40%;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex: auto;
   }
 }

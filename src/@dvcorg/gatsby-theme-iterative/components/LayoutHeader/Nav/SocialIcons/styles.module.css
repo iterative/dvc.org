@@ -18,6 +18,7 @@
 }
 
 .socialIcon {
+  box-sizing: content-box;
   display: block;
   width: 24px;
   height: 24px;

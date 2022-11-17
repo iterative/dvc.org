@@ -1,4 +1,5 @@
 .container {
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -24,11 +25,11 @@
     right: 30px;
   }
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     width: 110px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     display: none;
   }
 }
@@ -51,7 +52,7 @@
   align-items: center;
   margin: 20px auto 0;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     flex-direction: column;
   }
 }
@@ -72,7 +73,7 @@
   text-decoration: none;
   text-align: left;
   color: #fff;
-  background: var(--color-purple) url("/img/arrow_right_white.svg") right center
+  background: var(--color-purple) url('/img/arrow_right_white.svg') right center
     no-repeat;
   background-position-x: 147px;
   transition: 0.2s background-color ease-out;
@@ -87,7 +88,7 @@
   & + & {
     margin-left: 14px;
 
-    @media (--xs-scr) {
+    @media screen(xsMax) {
       margin-left: 0;
     }
   }
@@ -97,7 +98,7 @@
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 21%);
-    background-image: url("/img/arrow_right_dark.svg");
+    background-image: url('/img/arrow_right_dark.svg');
     transition: 0.2s background-color ease-out;
 
     &:hover {
@@ -105,7 +106,7 @@
     }
 
     &:focus {
-      background: var(--color-orange) url("/img/arrow_right_white.svg") right
+      background: var(--color-orange) url('/img/arrow_right_white.svg') right
         center no-repeat;
       background-position-x: 147px;
       box-shadow: 0 2px 4px 0 rgb(0 0 0 / 21%);
@@ -113,7 +114,7 @@
     }
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     margin-bottom: 12px;
     margin-right: 0 !important;
   }

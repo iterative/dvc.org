@@ -45,7 +45,7 @@
   transition: all 0.25s ease-in-out;
   animation: gradient 2s infinite ease-in-out;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     left: 15px;
     bottom: 15px;
     width: 113px;
@@ -91,7 +91,7 @@
     background: var(--color-gray-dark);
     box-shadow: 0 1px 2px rgb(46 49 55 / 10%), 0 0 1px rgb(46 49 55 / 50%);
 
-    @media (--xs-scr) {
+    @media screen(xsMax) {
       width: 50px;
       height: 50px;
       bottom: 16px;
@@ -116,7 +116,7 @@
       height: 24px;
       fill: currentcolor;
 
-      @media (--xs-scr) {
+      @media screen(xsMax) {
         width: 20px;
         height: 20px;
       }
@@ -156,18 +156,18 @@
     cursor: initial;
   }
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     width: 520px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     width: 100%;
     left: 0;
     bottom: 0;
     padding: 16px 16px 74px;
   }
 
-  @media (--xxs-scr) {
+  @media screen(xxsMax) {
     padding-top: 26px;
   }
 
@@ -181,7 +181,7 @@
     text-decoration: none;
     color: var(--color-gray-hover);
 
-    @media (--xs-scr) {
+    @media screen(xsMax) {
       font-size: 20px;
       line-height: 30px;
       margin-bottom: 8px;
@@ -206,7 +206,7 @@
       color: var(--color-purple);
     }
 
-    @media (--xs-scr) {
+    @media screen(xsMax) {
       font-size: 16px;
       margin-top: 8px;
     }
