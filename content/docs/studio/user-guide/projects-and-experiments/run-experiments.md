@@ -92,8 +92,11 @@ vendor. The parameters listed here are a subset of the parameters for
 Watch this video for an overview of how you can run experiments from Iterative
 Studio, or read below for details.
 
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
+<admon>
+
+Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
+
+</admon>
 
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
