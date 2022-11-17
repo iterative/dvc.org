@@ -20,8 +20,8 @@ In this section, you will learn how to:
 To add a new project, follow these steps.
 
 1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
-   using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
-   address.
+   using your GitHub.com, GitLab.com, or Bitbucket.org account; or with your
+   email address.
 
 2. Click on `Add a Project`. All the organizations that you have access to will
    be listed.
