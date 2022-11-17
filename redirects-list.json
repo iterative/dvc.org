@@ -35,6 +35,8 @@
   "^/download/linux-rpm/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
+  "^/features$                                                                            /doc/use-cases 302",
+
   "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",

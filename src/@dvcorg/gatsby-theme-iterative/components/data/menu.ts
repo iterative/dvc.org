@@ -39,9 +39,9 @@ const docsPage = getFirstPage()
 const menuData: IMenuData = {
   nav: [
     {
-      href: '/features',
-      eventType: 'features',
-      text: 'Features'
+      href: '/doc/use-cases',
+      eventType: 'use-cases',
+      text: 'Use Cases'
     },
     {
       href: docsPage,

@@ -20,8 +20,8 @@ const Home: React.FC = () => {
     () => logEvent('Promo', { Item: 'get-started' }),
     []
   )
-  const goToFeatures = useCallback(
-    () => logEvent('Promo', { Item: 'features' }),
+  const goToUseCases = useCallback(
+    () => logEvent('Promo', { Item: 'use-cases' }),
     []
   )
 
@@ -39,8 +39,8 @@ const Home: React.FC = () => {
           <Link href="/doc/start" onClick={goToDocGetStarted} key="get-started">
             Get Started
           </Link>,
-          <Link href="/features" onClick={goToFeatures} key="features">
-            Full Features
+          <Link href="/doc/use-cases" onClick={goToUseCases} key="use-cases">
+            Use Cases
           </Link>
         ]}
       />
