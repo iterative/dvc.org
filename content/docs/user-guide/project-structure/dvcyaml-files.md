@@ -609,7 +609,8 @@ Both individual foreach stages (`train@1`) and groups of foreach stages
 The list of `plots` contains one or more user-defined `dvc plots`
 configurations. Every plot must have a unique ID, which may be either a file or
 directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
-Optional configuration fields can be provided as well.
+If the ID is an arbitrary string, a data source must be provided in the `y`
+field. Optional configuration fields can be provided as well.
 
 <admon icon="book">
 
@@ -625,17 +626,22 @@ Refer to [Visualizing Plots] and `dvc plots show` for examples.
 - `x` (string) - column/field name from which the X axis data comes from. An
   auto-generated _step_ field is used by default.
 
-- `y` - source from which the Y axis data comes from:
-
-  - Top-level plots: Accepts string, list, or dictionary. For strings and lists,
-    the plot ID is used as path to the data source. List elements will be the
-    names of columns/fields within the source file. For dictionaries, the keys
-    are used as paths to data sources. The values (strings or lists) are treated
-    as the source column/field names.
+  - Top-level plots: Accepts string or dictionary. For dictionaries, the keys
+    are used as paths to data sources. The values (strings) are treated as the
+    source column/field names.
 
   - Plot outputs: column/field name found in the source plots file.
 
-- `x_label` (string) - X axis label. Defaults to the X field name.
+- `y` - source from which the Y axis data comes from:
+
+  - Top-level plots: Accepts string, list, or dictionary. For dictionaries, the
+    keys are used as paths to data sources. The values (strings or lists) are
+    treated as the source column/field names.
+
+  - Plot outputs: column/field name found in the source plots file.
+
+- `x_label` (string) - X axis label. If all `y` data sources have the same field
+  name, that will be the default. Otherwise, it's "x".
 
 - `y_label` (string) - Y axis label. If all `y` data sources have the same field
   name, that will be the default. Otherwise, it's "y".
