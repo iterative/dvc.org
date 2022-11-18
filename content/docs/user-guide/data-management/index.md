@@ -4,7 +4,45 @@ DVC changes the way you work with datasets and ML models in order to enable data
 [versioning] and reproducibility, among other
 [benefits](#benefits-and-implications). Let's look at how the workflow evolves.
 
-![Before and after DVC](/img/before-after.png) _DVC codifies data access._
+<cards>
+
+<card heading="Traditional">
+
+```cli
+$ aws s3 cp s3://d/v0 .
+$ python cleanup.py
+$ python train.py
+
+$ gsutil cp gs://d/v1 .
+$ python cleanup.py
+$ python train.py
+
+$ az storagesync ... v2
+$ python cleanup.py
+$ python train.py
+```
+
+</card>
+
+<card heading="With DVC">
+
+```cli
+$ git checkout v0
+$ dvc checkout
+$ dvc pull -r SSS
+
+$ git checkout v1
+$ dvc checkout
+$ dvc pull -r GSC
+
+$ git checkout v1
+$ dvc checkout
+$ dvc pull -r ABS
+```
+
+</card>
+
+</cards>
 
 Traditionally, you would access storage platforms directly, with dedicated tools
 such as AWS CLI, code libraries, SCP, etc. This requires knowing the final URL
