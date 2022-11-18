@@ -187,7 +187,7 @@ For customization, we can:
 - Use a plot ID (`ROC`) that is not a file path.
 - Specify one or more columns for the `x` (`fpr`) and `y` (`tpr`) axes.
 - Specify one or more data sources (`evaluation/train/plots/roc.json` and
-  `evaluation/test/plots/roc.json`) as keys to the `y` axis.
+  `evaluation/test/plots/roc.json`) as keys to the `x` and `y` axes.
 - Specify any other available configuration field (`title`, `template`,
   `x_label`, `y_label`).
 
