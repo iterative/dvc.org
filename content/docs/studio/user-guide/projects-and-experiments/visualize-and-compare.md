@@ -9,8 +9,7 @@ settings_ are now called _Project settings_; and so on.
 
 # Visualize and Compare Experiments
 
-You can visualize and compare experiments using using plots, images, charts,
-etc.
+You can visualize and compare experiments using plots, images, charts, etc.
 
 ## Display plots and images
 
@@ -31,8 +30,10 @@ Iterative Studio can work with two types of plots files in your repository:
 2. Image files in JPEG, GIF, PNG, or SVG format. These images will be displayed
    directly in Iterative Studio.
 
-You can define multiple plots in a single repository. Below is an example
-snippet from a `dvc.yaml` file showing the `evaluate` stage of the DVC pipeline.
+You can define multiple plots in a single repository, including
+[Top-level plots](/doc/user-guide/experiment-management/visualizing-plots#top-level-plots).
+Below is an example snippet from a `dvc.yaml` file showing the `evaluate` stage
+of the DVC pipeline.
 
 ```yaml
 evaluate:
