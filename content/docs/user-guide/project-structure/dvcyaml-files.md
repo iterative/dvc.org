@@ -610,11 +610,26 @@ The list of `plots` contains one or more user-defined `dvc plots`
 configurations. Every plot must have a unique ID, which may be either a file or
 directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
 If the ID is an arbitrary string, a data source must be provided in the `y`
-field. Optional configuration fields can be provided as well.
+field (`x` data source is always optional and cannot be the only data source
+provided). Optional configuration fields can be provided as well.
+
+Here's an example plotting ROC and precision-recall curves on the same plot:
+
+```yaml
+plots:
+  - roc_vs_prc:
+      x:
+        precision_recall.json: recall
+        roc.json: fpr
+      y:
+        precision_recall.json: precision
+        roc.json: tpr
+      title: ROC vs Precision-Recall
+```
 
 <admon icon="book">
 
-Refer to [Visualizing Plots] and `dvc plots show` for examples.
+Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
 [visualizing plots]:
   /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
@@ -623,28 +638,27 @@ Refer to [Visualizing Plots] and `dvc plots show` for examples.
 
 ### Available configuration fields
 
-- `x` (string) - column/field name from which the X axis data comes from. An
-  auto-generated _step_ field is used by default.
-
-  - Top-level plots: Accepts string or dictionary. For dictionaries, the keys
-    are used as paths to data sources. The values (strings) are treated as the
-    source column/field names.
-
-  - Plot outputs: column/field name found in the source plots file.
-
 - `y` - source from which the Y axis data comes from:
 
-  - Top-level plots: Accepts string, list, or dictionary. For dictionaries, the
-    keys are used as paths to data sources. The values (strings or lists) are
-    treated as the source column/field names.
+  - Top-level plots: accepts string, list, or dictionary (like
+    `data_source_path: column/field_name`).
 
   - Plot outputs: column/field name found in the source plots file.
 
-- `x_label` (string) - X axis label. If all `y` data sources have the same field
-  name, that will be the default. Otherwise, it's "x".
+- `x` (string) - source from which the X axis data comes from. An auto-generated
+  _step_ field is used by default.
+
+  - Top-level plots: multiple `x` values are supported, but only if they match
+    the number of `y` values and are specified as a dictionary (list is not
+    supported).
+
+  - Plot outputs: column/field name found in the source plots file.
 
 - `y_label` (string) - Y axis label. If all `y` data sources have the same field
   name, that will be the default. Otherwise, it's "y".
+
+- `x_label` (string) - X axis label. If all `y` data sources have the same field
+  name, that will be the default. Otherwise, it's "x".
 
 - `title` (string) - header for the plot(s). Defaults:
 

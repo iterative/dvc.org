@@ -344,7 +344,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_spec_conf_train_test.svg)
 
-### Sourcing x and y from different files
+### Sourcing `x` and `y` from different files
 
 The actual and predicted classes may come from different data sources:
 
@@ -398,8 +398,8 @@ file:///Users/usr/src/dvc_plots/index.html
 In many automation scenarios (like
 [CI/CD for ML](/doc/use-cases/ci-cd-for-machine-learning)), it is convenient to
 output the [Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of
-rendering an HTML plot. For example, to generate another image format (like PNG
-or JPEG) or to include it differently into a web/mobile app. The `--show-vega`
+rendering an HTML plot. For example, to generating another image format like PNG
+or JPEG, or to include it differently into a web/mobile app. The `--show-vega`
 option prevents wrapping this plot spec in HTML, printing the resulting JSON to
 standard output instead:
 
