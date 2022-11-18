@@ -1,10 +1,6 @@
 import React, { useCallback } from 'react'
 
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import {
-  scrollIntoLayout,
-  ease
-} from '@dvcorg/gatsby-theme-iterative/src/utils/front/scroll'
 
 import * as styles from './styles.module.css'
 
@@ -15,11 +11,12 @@ interface ILearnMoreProps {
 const LearnMore: React.FC<ILearnMoreProps> = ({ scrollToRef }) => {
   const onClick = useCallback(() => {
     logEvent('Hero', { Item: 'learn-more' })
-    scrollIntoLayout(scrollToRef?.current, {
-      smooth: true,
-      duration: 800,
-      ease: ease.inOutCube
-    })
+    const scrollToEl = scrollToRef?.current
+    if (scrollToEl) {
+      scrollToEl.scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
   }, [scrollToRef?.current])
 
   return (

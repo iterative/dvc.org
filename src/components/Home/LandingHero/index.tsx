@@ -6,10 +6,6 @@ import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import DownloadButton from '../../DownloadButton'
 import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
-import {
-  scrollIntoLayout,
-  ease
-} from '@dvcorg/gatsby-theme-iterative/src/utils/front/scroll'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
@@ -32,11 +28,10 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
 
   const scrollToUseCases = useCallback(() => {
     logEvent('Button', { Item: 'how-it-works' })
-    scrollIntoLayout(scrollToRef?.current, {
-      smooth: true,
-      duration: 800,
-      ease: ease.inOutCube
-    })
+    const scrollToEl = scrollToRef?.current
+    if (scrollToEl) {
+      scrollToEl.scrollIntoView({ behavior: 'smooth' })
+    }
   }, [scrollToRef?.current])
 
   return (
