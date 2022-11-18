@@ -38,6 +38,9 @@
   "^/features$                                                                            /doc/use-cases 302",
 
   "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
+  "^/doc/install/completion#bash-completion-on-macos$                                     /doc/install/completion?tab=Bash-macOS",
+  "^/doc/install/completion#bash-completion-on-debianubuntu$                              /doc/install/completion?tab=Bash-Debian-Ubuntu",
+  "^/doc/install/completion#zsh-completion$                                               /doc/install/completion?tab=Zsh",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",
   "^/doc/start/data-versioning$                                                           /doc/start/data-management",

@@ -43,7 +43,10 @@ one you are using (Bash or Zsh).
 Depending on the shell that you are using, follow the instruction below to
 install and configure shell completion.
 
-## Bash completion on macOS
+<toggle>
+<tab title="Bash">
+<toggle>
+<tab title="macOS">
 
 1. First, make sure that Bash completion support is installed:
 
@@ -67,7 +70,8 @@ install and configure shell completion.
 
 3. Finally, open a new terminal to activate completions.
 
-## Bash completion on Debian/Ubuntu
+</tab>
+<tab title="Debian/Ubuntu">
 
 1. First, make sure that Bash completion support is installed:
 
@@ -96,7 +100,10 @@ install and configure shell completion.
 
 3. Finally, open a new terminal to activate completions.
 
-## Zsh completion
+</tab>
+</toggle>
+</tab>
+<tab title="Zsh">
 
 Place the completion script in a directory included in `$fpath`. Zsh expects the
 file name to be `_dvc`.
@@ -139,3 +146,6 @@ zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 ```
+
+</tab>
+</toggle>
