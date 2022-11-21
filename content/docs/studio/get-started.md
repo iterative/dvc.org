@@ -7,7 +7,7 @@ We have renamed DVC Studio to Iterative Studio.
 </admon>
 
 First, sign in to your [Iterative Studio](https://studio.iterative.ai/)
-dashboard using your GitHub.com, GitLab.com, or Bitbucket.org account; or with
+dashboard using your GitHub.com, GitLab.com, or Bitbucket.org account, or with
 your email address.
 
 <admon type="tip">
