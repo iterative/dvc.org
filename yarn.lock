@@ -2112,10 +2112,10 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/websites-server@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.0.10.tgz#05c86dbc26a575fa08026f841b7d11190248e851"
-  integrity sha512-WSVdW6MUUI4dRGWIoyyF/EaoXAerVXVH0KbeM6BrTO7QaxNmQgibeuPNNpozxOUO8SbFtBrH3AMTps14fpGijg==
+"@dvcorg/websites-server@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.0.11.tgz#3db2a8dc93b6bf015512985ba33f5b5ba1b6d888"
+  integrity sha512-ssfz2u1qe7qQgwYP6v8TBWTN1cumvP1DyLGze7xaMWiZNrnckG+6kd+2TRXnzcMwxo83nJ8D7flnGweW+1e8yQ==
   dependencies:
     "@dvcorg/gatsby-theme-iterative" "^0.1.17"
     "@hapi/wreck" "^18.0.0"
