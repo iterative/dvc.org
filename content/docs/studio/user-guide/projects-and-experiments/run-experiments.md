@@ -51,11 +51,10 @@ The CI setup wizard has two sections, pre-filled with default values:
 - Left section with 2 sets of parameters:
 
   1. [Configuration of your self-hosted runner, which is used in the `deploy-runner` step of your CI workflow](#configuration-of-your-self-hosted-runner)
-  2. [Job script, which is used in the `runner-job` step of your CI workflow](#runners-job-script)
+  2. [Job script, which is used in the `runner-job` step of your CI workflow](#runners-job)
 
-- Right section which displays the
-  [generated yaml to be used in your CI set up](#ci-yaml). It reflects all your
-  input parameters. Use the
+- Right section which displays the generated yaml to be used in your CI set up.
+  It reflects all your input parameters. Use the
   `Copy to clipboard and paste in your CI Workflow file` link to copy the
   generated yaml and create your CI script.
 
