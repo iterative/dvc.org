@@ -15,7 +15,7 @@
     margin: 0;
   }
 
-  @media (--xl-scr) {
+  @media screen(xl) {
     &:last-child {
       display: none;
     }
@@ -25,12 +25,12 @@
   &:nth-child(4) {
     display: none;
 
-    @media (--xl-scr) {
+    @media screen(xl) {
       display: initial;
     }
   }
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     margin-left: 0;
 
     &:nth-child(6) {
@@ -38,7 +38,7 @@
     }
   }
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     &:nth-child(5) {
       display: none;
     }
@@ -99,7 +99,7 @@
     display: none;
   }
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     font-size: 17px;
     line-height: 20px;
 

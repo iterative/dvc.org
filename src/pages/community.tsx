@@ -6,7 +6,7 @@ import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import Community from '../components/Community'
 
 const CommunityPage = ({ location }: PageProps) => (
-  <MainLayout location={location}>
+  <MainLayout location={location} className="mt-14">
     <SEO title="Community" />
     <Community />
   </MainLayout>
