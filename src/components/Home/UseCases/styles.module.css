@@ -38,6 +38,7 @@
 .heading {
   @apply text-3xl font-medium my-4
     text-left sm:text-center;
+
   color: var(--color-gray-hover);
 }
 

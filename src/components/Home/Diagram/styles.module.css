@@ -45,7 +45,6 @@
 .columns {
   display: flex;
   flex-flow: row wrap;
-
   margin-top: 10px;
   flex-direction: row;
   justify-content: center;

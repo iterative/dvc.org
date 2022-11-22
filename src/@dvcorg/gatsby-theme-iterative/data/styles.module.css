@@ -1,21 +1,21 @@
 .cmlIcon {
-  background-image: url('../../../../static/img/cml_icon-color--square_vector.svg');
+  background-image: url("../../../../static/img/cml_icon-color--square_vector.svg");
 }
 
 .dvcIcon {
-  background-image: url('../../../../static/img/dvc_icon-color--square_vector.svg');
+  background-image: url("../../../../static/img/dvc_icon-color--square_vector.svg");
 }
 
 .studioIcon {
-  background-image: url('../../../../static/img/studio_icon-color--square_vector.svg');
+  background-image: url("../../../../static/img/studio_icon-color--square_vector.svg");
 }
 
 .mlemIcon {
-  background-image: url('../../../../static/img/mlem-icon.svg');
+  background-image: url("../../../../static/img/mlem-icon.svg");
 }
 
 .vscodeIcon {
-  background-image: url('../../../../static/img/vscode-icon.svg');
+  background-image: url("../../../../static/img/vscode-icon.svg");
 }
 
 .other {
