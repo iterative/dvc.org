@@ -27,4 +27,6 @@ channels if you have any questions or need specific help. We are very responsive
 give us a ⭐ if you like the project!
 
 ✅ Contribute to DVCLive [on GitHub](https://github.com/iterative/dvclive) or
-help us improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
+help us improve this
+[documentation](https://github.com/iterative/dvc.org/tree/main/content/docs/dvclive)
+🙏.
