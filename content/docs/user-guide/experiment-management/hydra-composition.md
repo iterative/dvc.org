@@ -31,9 +31,10 @@ executing the experiment. Its <abbr>parameters</abbr> will configure the
 a single script, and offer advanced features like [templating] and [`foreach`
 stages].
 
-[DVC pipelines]: /doc/user-guide/pipelines/defining-pipelines
+[dvc pipelines]: /doc/user-guide/pipelines/defining-pipelines
 [templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
-[`foreach` stages]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
+[`foreach` stages]:
+  /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 
 </admon>
 
