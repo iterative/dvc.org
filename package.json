@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "^0.1.23",
-    "@dvcorg/websites-server": "^0.0.10",
+    "@dvcorg/websites-server": "^0.0.11",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^5.0.0",
     "@reach/portal": "^0.17.0",
