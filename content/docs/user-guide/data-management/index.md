@@ -1,15 +1,18 @@
 # Data Management with DVC
 
-DVC changes the way you work with datasets and ML models in order to enable data
-[versioning] and reproducibility, among other
-[benefits](#benefits-and-implications). Let's look at how the workflow evolves.
+Recognizing the challenges of managing data in real-life machine learning, DVC
+establishes a new standard for working with file-based datasets and ML models.
+This approach lets you focus on more important tasks like data exploration,
+validation, preparation, etc. You'll just have to get used to an evolved
+workflow and adopt basic [version control] principles.
 
-![Before and after DVC](/img/before-after.png) _DVC codifies data access._
+![]() _A better way to manage data_
 
-Traditionally, you would access storage platforms directly, with dedicated tools
-such as AWS CLI, code libraries, SCP, etc. This requires knowing the final URL
-of every asset. It also means that having data scattered across the cloud or
-on-prem locations complicates your workflow.
+Traditionally, you would access storage platforms directly with dedicated tools
+such as SSH, manually tracking the whereabouts (URL) of every asset. Repeated
+files get scattered across clouds or on-prem (inefficient storage). Your project
+directory gets bloated quickly, needing regular manual cleaning. Copying and
+transferring files over and over takes time.
 
 DVC introduces a layer of [indirection]: raw data, models, and other artifacts
 are _codified_ in small [metafiles] that describe their unique characteristics.
@@ -17,13 +20,13 @@ Storage locations (and other aspects of your project setup) are also saved to
 human-readable config files. You can control all these with Git along with the
 rest of your project's code and configuration files.
 
-[versioning]: /doc/use-cases/versioning-data-and-models
+[version control]:
+  https://www.atlassian.com/git/tutorials/what-is-version-control
 [indirection]: https://en.wikipedia.org/wiki/Indirection
 [metafiles]: /doc/user-guide/project-structure
 
-## Benefits and implications
-
-DVC's approach lets you focus on machine learning and includes other advantages:
+<!--
+DVC's approach enables data [versioning] and reproducibility. Other benefits:
 
 - Standard [project versions] (Git commits) guarantee reproducibility of ML
   processes (e.g. training models with the same datasets, hyperparametes, and
@@ -37,57 +40,31 @@ DVC's approach lets you focus on machine learning and includes other advantages:
 - [Fast caching], [data registries], [model registries], [CI/CD for ML], and
   more!
 
+[versioning]: /doc/use-cases/versioning-data-and-models
 [project versions]: /doc/user-guide/data-management/data-versioning
 [used efficiently]: /doc/user-guide/data-management/large-dataset-optimization
 [fast caching]: /doc/use-cases/fast-data-caching-hub
 [data registries]: /doc/use-cases/data-registry
 [model registries]: /doc/use-cases/model-registry
 [ci/cd for ml]: https://cml.dev/
+-->
 
-This implies getting used to a new workflow. But it's a small cost to improve
-productivity:
+In order to get there, you'll have to do some preparation and keep a few things
+in mind:
 
-1. You have to set up a <abbr>DVC project</abbr> and its storage locations.
+1. Set up a <abbr>DVC project</abbr> and its storage locations.
    <!-- [storage locations](#storage-locations). -->
 1. Stored objects are [reorganized] by DVC (not intended for manual handling).
-1. Everything happens though a code repository that can be controlled with Git.
+1. Everything happens though a code repository, typically controlled with Git.
 
 [reorganized]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
-
-<!-- ## Separating data from code (codification)
-
-DVC replaces large files and directories with small [metafiles] that describe
-the assets. We call this _data codification_. Data files are moved to a separate
-<abbr>cache</abbr> but kept virtually (linked) in the workspace. This separates
-your data from code (including metafiles).
-
-![]() _Separating code from data_
-
-<admon type="tip">
-
-This also allows you to version project files with Git, a battle-tested [SCM]
-tool.
-
-[scm]: https://www.atlassian.com/git/tutorials/source-code-management
-
-</admon>
-
-Your experience can stay consistent because DVC works [indirectly], by checking
-the metafiles and [configuration] of your <abbr>project</abbr> to find out where
-and how to handle files. This is transparent to you as user, but it's important
-to understand the mechanics in general.
-
-[metafiles]: /doc/user-guide/project-structure
-[indirectly]: https://en.wikipedia.org/wiki/Indirection
-[configuration]: /doc/command-reference/config
--->
 
 <!-- ## Storage locations
 
 DVC can manage data anywhere: cloud storage, SSH servers, network resources
 (e.g. NAS), mounted drives, local file systems, etc. These locations can be
-separated into three groups.
+put into three groups.
 
 ![Storage locations](/img/storage-locations.png) _Local, external, and remote
 storage locations_
