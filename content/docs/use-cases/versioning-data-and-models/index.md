@@ -22,7 +22,7 @@ work!
 ![](/img/project-versions.png) _DVC matches the right versions of data, code,
 and models for you 💘._
 
-DVC enables data _versioning through codification_. You produce simple
+DVC enables [data versioning] through _codification_. You produce simple
 [metafiles](/doc/user-guide/project-structure) once, describing what datasets,
 ML artifacts, etc. to track. This metadata can be put in Git in lieu of large
 files. Now you can use DVC to create [snapshots](/doc/command-reference/add) of
@@ -86,5 +86,6 @@ And this is just the beginning. DVC supports multiple advanced features
 out-of-the-box: Build, run, and versioning [data pipelines], [manage
 experiments] effectively, and more.
 
+[data versioning]: /doc/user-guide/data-management/data-versioning
 [data pipelines]: /doc/command-reference/dag
 [manage experiments]: /doc/start/experiment-management
