@@ -12,14 +12,11 @@ DVC changes the way you work with datasets and ML models in order to enable data
 $ aws s3 cp s3://d/v0 .
 $ python cleanup.py
 $ python train.py
+$ aws s3 cp . s3://d/v0
 
-$ gsutil cp gs://d/v1 .
-$ python cleanup.py
-$ python train.py
-
-$ az storagesync ... v2
-$ python cleanup.py
-$ python train.py
+$ gsutil cp gs://d/a1 .
+$ gsutil cp gs://d/b1 .
+$ gsutil cp gs://d/c1 .
 ```
 
 </card>
@@ -28,16 +25,13 @@ $ python train.py
 
 ```cli
 $ git checkout v0
-$ dvc checkout
-$ dvc pull -r SSS
+$ dvc repro
+...
+$ dvc push -r AS3
 
 $ git checkout v1
 $ dvc checkout
-$ dvc pull -r GSC
-
-$ git checkout v1
-$ dvc checkout
-$ dvc pull -r ABS
+$ dvc pull -r GCS
 ```
 
 </card>
