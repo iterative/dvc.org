@@ -1,17 +1,29 @@
 # Installation on Linux
 
-> To use DVC [as a Python library](/doc/api-reference), please
-> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+<admon type="tip">
+
+To use DVC [as a Python library](/doc/api-reference), please install
+[with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
+
+</admon>
 
 ## Install with pip
 
-> 💡 We **strongly** recommend creating a
-> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-> or using
-> [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> to encapsulate your local environment.
+<admon type="tip">
 
-> ⚠️ Note that Python 3.8+ is needed to get the latest version of DVC.
+We **strongly** recommend creating a
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+or using
+[pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+to encapsulate your local environment.
+
+</admon>
+
+<admon type="info">
+
+Note that Python 3.8+ is needed to get the latest version of DVC.
+
+</admon>
 
 ```dvc
 $ pip install dvc
@@ -41,8 +53,12 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Install with conda
 
-> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
-> [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+<admon type="info">
+
+Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
+[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
+</admon>
 
 ```dvc
 $ conda install -c conda-forge mamba # installs much faster than conda
@@ -68,7 +84,11 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Install with snap
 
-> Requires [snapd](https://snapcraft.io/docs/installing-snapd).
+<admon type="info">
+
+Requires [snapd](https://snapcraft.io/docs/installing-snapd).
+
+</admon>
 
 ```dvc
 $ snap install --classic dvc

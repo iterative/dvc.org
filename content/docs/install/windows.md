@@ -1,11 +1,19 @@
 # Installation on Windows
 
-> 💡 Please review
-> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
-> important tips to improve your experience using DVC on Windows.
+<admon type="tip">
 
-> To use DVC [as a Python library](/doc/api-reference), please
-> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+To use DVC [as a Python library](/doc/api-reference), please install
+[with `conda`](#install-with-conda) or [with `pip`](#install-with-pip).
+
+</admon>
+
+<admon type="tip">
+
+Please review
+[Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+important tips to improve your experience using DVC on Windows.
+
+</admon>
 
 ## Install with choco
 
@@ -19,8 +27,12 @@ $ choco install dvc
 
 ## Install with conda
 
-> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
-> [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+<admon type="info">
+
+Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
+[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
+</admon>
 
 You can use `conda` from
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win),
@@ -50,8 +62,21 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Install with pip
 
-From Command Prompt or other
-[recommended consoles](/doc/user-guide/how-to/run-dvc-on-windows):
+<admon type="tip">
+
+We **strongly** recommend creating a
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+or using
+[pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+to encapsulate your local environment.
+
+</admon>
+
+<admon type="info">
+
+Note that Python 3.8+ is needed to get the latest version of DVC.
+
+</admon>
 
 ```dvc
 $ pip install dvc
