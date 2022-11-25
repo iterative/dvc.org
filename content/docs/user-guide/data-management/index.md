@@ -1,29 +1,48 @@
 # Data Management with DVC
 
-Recognizing the challenges of managing data in real-life machine learning, DVC
-establishes a new standard for working with file-based datasets and ML models.
-This approach lets you focus on more important tasks like data exploration,
-validation, preparation, etc. You'll just have to get used to an evolved
-workflow and adopt basic [version control] principles.
+DVC establishes a standard for working with file-based datasets and ML models.
+This lets you focus on more important tasks like data exploration, validation,
+preparation, etc. Let's look at how your workflow evolves, and the basic
+[version control] principles you'll need.
 
-![]() _A better way to manage data_
+|                | **Manual**                 | **With DVC**                              |
+| -------------- | -------------------------- | ----------------------------------------- |
+| _Access Ops_   | Different per location     | Consistent `dvc` commands (via code repo) |
+| _File org._    | Manual (ad hoc)            | Automatic <abbr>caching</abbr>            |
+| _Storage_      | Bloated                    | [Efficient] (deduplicated)                |
+| _Versioning_   | Special file naming (hard) | Git commits (standard)                    |
+| _Reproduction_ | Manual logs (error-prone)  | Guaranteed by Git history                 |
+
+[efficient]: /doc/user-guide/data-management/large-dataset-optimization
 
 Traditionally, you would access storage platforms directly with dedicated tools
-such as SSH, manually tracking the whereabouts (URL) of every asset. Repeated
-files get scattered across clouds or on-prem (inefficient storage). Your project
-directory gets bloated quickly, needing regular manual cleaning. Copying and
-transferring files over and over takes time.
+such as SSH, manually tracking the whereabouts (URL) of every asset. Redundant
+files get scattered across clouds and locally. Your project directory gets
+bloated quickly, needing regular cleaning. But copying and transferring large
+files repeatedly wastes valuable time.
 
 DVC introduces a layer of [indirection]: raw data, models, and other artifacts
 are _codified_ in small [metafiles] that describe their unique characteristics.
 Storage locations (and other aspects of your project setup) are also saved to
-human-readable config files. You can control all these with Git along with the
-rest of your project's code and configuration files.
+human-readable config files. You can control all these files with Git, along
+with the rest of your project's code and configuration.
+
+<!-- [Storage locations](#storage-locations). -->
 
 [version control]:
   https://www.atlassian.com/git/tutorials/what-is-version-control
 [indirection]: https://en.wikipedia.org/wiki/Indirection
 [metafiles]: /doc/user-guide/project-structure
+
+To adopt this approach, you'll need some preparation and to keep a few things in
+mind:
+
+1. Set up a <abbr>DVC project</abbr> and its storage locations.
+1. Stored objects are [reorganized] by DVC (not intended for manual handling).
+1. Everything happens through a code repository, typically controlled with Git.
+
+[reorganized]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 <!--
 DVC's approach enables data [versioning] and reproducibility. Other benefits:
@@ -34,7 +53,7 @@ DVC's approach enables data [versioning] and reproducibility. Other benefits:
 - You work with data in a local <abbr>workspace</abbr>, as with any other files;
   DVC tracks, restores, and synchronize everything with a few operations that do
   not change per storage system.
-- Your storage space is [used efficiently] (file deduplication); Your project
+- Your storage space is [used efficiently] (file de-duplication); Your project
   repo stays small.
 - Controlling who can read and write at folder or file level is easier.
 - [Fast caching], [data registries], [model registries], [CI/CD for ML], and
@@ -48,17 +67,6 @@ DVC's approach enables data [versioning] and reproducibility. Other benefits:
 [model registries]: /doc/use-cases/model-registry
 [ci/cd for ml]: https://cml.dev/
 -->
-
-In order to get there, you'll have to do some preparation and keep a few things
-in mind:
-
-1. Set up a <abbr>DVC project</abbr> and its storage locations.
-   <!-- [storage locations](#storage-locations). -->
-1. Stored objects are [reorganized] by DVC (not intended for manual handling).
-1. Everything happens though a code repository, typically controlled with Git.
-
-[reorganized]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 <!-- ## Storage locations
 
