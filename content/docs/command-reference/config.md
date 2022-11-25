@@ -382,7 +382,7 @@ Composition].
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
@@ -394,26 +394,26 @@ $ dvc config core.remote myremote
 
 Use remote `myremote` by default:
 
-```dvc
+```cli
 $ dvc config core.remote myremote
 ```
 
 Get the default remote:
 
-```dvc
+```cli
 $ dvc config core.remote
 myremote
 ```
 
 Clear default remote value:
 
-```dvc
+```cli
 $ dvc config --unset core.remote
 ```
 
 The above command is equivalent to:
 
-```dvc
+```cli
 $ dvc config core.remote -u
 ```
 
@@ -421,7 +421,7 @@ $ dvc config core.remote -u
 
 Set the <abbr>cache directory</abbr> to an absolute path:
 
-```dvc
+```cli
 $ dvc config cache.dir /mnt/cache
 $ dvc config cache.dir
 /mnt/cache
@@ -429,7 +429,7 @@ $ dvc config cache.dir
 
 or to a relative path (resolved from `./.dvc/`):
 
-```dvc
+```cli
 $ dvc config cache.dir ../../mycache
 $ dvc pull
 
@@ -439,6 +439,6 @@ $ ls ../mycache
 
 Set cache type: if `reflink` is not available, use `copy`:
 
-```dvc
+```cli
 $ dvc config cache.type reflink,copy
 ```

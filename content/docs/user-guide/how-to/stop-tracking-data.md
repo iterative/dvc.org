@@ -14,7 +14,7 @@ in error to DVC.
 
 `dvc add` creates a `.dvc` file to track the file, and lists it in `.gitignore`:
 
-```dvc
+```cli
 $ dvc add data.csv
 
 $ ls
@@ -29,7 +29,7 @@ Let's undo `dvc add` with `dvc remove`. This deletes the `.dvc` file (and
 corresponding `.gitignore` entry). The data file is now no longer being tracked
 after this:
 
-```dvc
+```cli
 $ dvc remove data.csv.dvc
 
 $ git status
@@ -40,7 +40,7 @@ $ git status
 You can run `dvc gc` with the `-w` option to remove the data (and all of it's
 previous versions, if any) from the <abbr>cache</abbr>:
 
-```dvc
+```cli
 $ dvc gc -w
 ```
 

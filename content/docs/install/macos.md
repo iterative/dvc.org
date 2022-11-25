@@ -20,7 +20,7 @@ macOS.
 
 Recommended. Requires [Homebrew](https://brew.sh/).
 
-```dvc
+```cli
 $ brew install dvc
 ```
 
@@ -47,7 +47,7 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
 > ⚠️ Note that Python 3.8+ is needed to get the latest version of DVC.
 
-```dvc
+```cli
 $ pip install dvc
 ```
 
@@ -60,7 +60,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ pip install "dvc[s3]"
 ```
 
@@ -73,7 +73,7 @@ In this case it installs the `boto3` library along with DVC.
 > Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
@@ -86,7 +86,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc-s3
 ```

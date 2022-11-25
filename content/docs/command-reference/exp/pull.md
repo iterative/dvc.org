@@ -95,7 +95,7 @@ code.
 Let's say we have cloned a DVC repository, and would like to fetch an experiment
 that someone else shared (see also `dvc exp list`).
 
-```dvc
+```cli
 $ dvc exp list --all-commits origin
 master:
         exp-e6c97
@@ -105,7 +105,7 @@ Pulled experiment 'exp-e6c97' from Git remote 'origin'.
 
 We can now see that the experiment exists in the local repo:
 
-```dvc
+```cli
 $ dvc exp list --all-commits
 master:
         exp-e6c97

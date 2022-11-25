@@ -194,14 +194,14 @@ not.
 
 Track a file with DVC:
 
-```dvc
+```cli
 $ dvc add data.xml
 ```
 
 As indicated above, a `.dvc` file has been created for `data.xml`. Let's explore
 the result:
 
-```dvc
+```cli
 $ tree
 .
 ├── data.xml
@@ -219,7 +219,7 @@ outs:
 This is a standard `.dvc` file with only one output (`outs` field). The hash
 value (`md5` field) corresponds to a file path in the <abbr>cache</abbr>.
 
-```dvc
+```cli
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 .dvc/cache/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
 ```
@@ -233,7 +233,7 @@ Let's suppose your goal is to build an algorithm to identify cats and dogs in
 pictures. You may then have hundreds or thousands of pictures of these animals
 in a directory, and this is your training dataset:
 
-```dvc
+```cli
 $ tree pics --filelimit 3
 pics
 ├── train
@@ -247,7 +247,7 @@ pics
 [Tracking a directory](#tracking-directories) with DVC as simple as with a
 single file:
 
-```dvc
+```cli
 $ dvc add pics
 ```
 
@@ -268,7 +268,7 @@ This allows us to treat the entire directory structure as a single data
 artifact. For example, you can pass it as a <abbr>dependency</abbr> to a stage
 definition:
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -d train.py -d pics \
                 -M metrics.json -o model.h5 \
@@ -280,14 +280,14 @@ $ dvc stage add -n train \
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 
-```dvc
+```cli
 $ dvc add -R pics
 ```
 
 In this case, a `.dvc` file is generated for each file in the `pics/` directory
 tree:
 
-```dvc
+```cli
 $ tree pics
 pics
 ├── train
@@ -311,7 +311,7 @@ convenient. For example, we cannot use the directory structure as one unit with
 
 Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
 
-```dvc
+```cli
 $ mkdir dir
 $ echo file_one > dir/file1
 $ echo file_two > dir/file2
@@ -320,14 +320,14 @@ $ echo file_two > dir/file2
 Now add `file1` to `.dvcignore` and track the entire `dir` directory with
 `dvc add`.
 
-```dvc
+```cli
 $ echo dir/file1 > .dvcignore
 $ dvc add dir
 ```
 
 Let's now modify `file1` (which is listed in `.dvcignore`) and run `dvc status`:
 
-```dvc
+```cli
 $ echo file_one_changed > dir/file1
 $ dvc status
 Data and pipelines are up to date.
@@ -337,7 +337,7 @@ Data and pipelines are up to date.
 
 Let's have a look at cache directory:
 
-```dvc
+```cli
 $ tree .dvc/cache
 .dvc/cache
 ├── 0a
@@ -364,7 +364,7 @@ workspace.
 
 Let's add a `data.xml` file via HTTP, putting it in `./data.xml`:
 
-```dvc
+```cli
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
 ...
 $ ls
@@ -400,7 +400,7 @@ downloading anything, transferring a target directly to a DVC remote instead:
 
 Let's add a `data.xml` file via HTTP straight to remote:
 
-```dvc
+```cli
 $ dvc add https://data.dvc.org/get-started/data.xml --to-remote
 ...
 $ ls
@@ -410,7 +410,7 @@ data.xml.dvc
 Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
 wants to actually download the data they can use `dvc pull`:
 
-```dvc
+```cli
 $ dvc pull data.xml.dvc
 A       data.xml
 1 file added

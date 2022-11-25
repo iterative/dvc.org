@@ -36,7 +36,7 @@ you don't accidentally commit something you don't mean to.
 
 An example output might look something like follows:
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -102,7 +102,7 @@ default but this can be enabled with the `--granular` flag.
 
 ## Examples
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -128,7 +128,7 @@ that.
 
 ## Example: Full repository status (including Git)
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -166,7 +166,7 @@ unrelated changes to your Git repository).
 Following on from the above example, using `--granular` will show file-level
 information for the changes:
 
-```dvc
+```cli
 $ dvc data status --granular
 Not in cache:
   (use "dvc fetch <file>..." to download files)

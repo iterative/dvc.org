@@ -20,7 +20,7 @@ free to clone the repo.
 
 Let's start with `git init`:
 
-```dvc
+```cli
 $ mkdir example-get-started
 $ cd example-get-started
 $ git init
@@ -28,14 +28,14 @@ $ git init
 
 </details>
 
-```dvc
+```cli
 $ dvc init
 ```
 
 A few [internal files](/doc/user-guide/project-structure/internal-files) are
 created that should be added to Git:
 
-```dvc
+```cli
 $ git status
 Changes to be committed:
         new file:   .dvc/.gitignore
