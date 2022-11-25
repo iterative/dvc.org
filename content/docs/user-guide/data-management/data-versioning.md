@@ -33,7 +33,7 @@ data_v1.0.3/  1.8G
 ├── ...
 └── file_800
 
-TOTAL         3.8G
+TOTAL   1600f 3.8G
 ```
 
 <admon type="warn">
@@ -47,28 +47,30 @@ Datasets overlap in your project.
 <card heading="With DVC">
 
 ```cli
-$ git checkout {version}
+$ git checkout v0..n
 $ dvc checkout
 ```
 
 ```cli
-# version = v0
-data/   300M  100 files
+data.dvc    # v0
+data/       100f  300M
 ```
 
 ```cli
-# version = v1
-data/   1.7G  700 files
+data.dvc    # v1
+data/       700f  1.7G
 ```
 
 ```cli
-# version = v1.0.3
-data/   1.8G  800 files
+data.dvc    # v2
+data/       800f  1.8G
+
+.dvc/cache  827f  3.5G
 ```
 
 <admon type="info">
 
-The [DVC cache] now de-duplicates all files in your datasets.
+<abbr>Caching</abbr> de-duplicates all files.
 
 [dvc cache]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
