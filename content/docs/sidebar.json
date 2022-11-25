@@ -723,5 +723,10 @@
         ]
       }
     ]
+  },
+  {
+    "label": "GTO",
+    "url": "https://mlem.ai/doc/gto",
+    "type": "external"
   }
 ]
