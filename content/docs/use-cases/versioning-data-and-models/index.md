@@ -86,6 +86,6 @@ And this is just the beginning. DVC supports multiple advanced features
 out-of-the-box: Build, run, and versioning [data pipelines], [manage
 experiments] effectively, and more.
 
-[data versioning]: /doc/user-guide/data-management/data-versioning
+[data versioning]: /doc/user-guide/data-versioning
 [data pipelines]: /doc/command-reference/dag
 [manage experiments]: /doc/start/experiment-management

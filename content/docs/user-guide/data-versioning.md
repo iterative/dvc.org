@@ -17,7 +17,7 @@ commits_
 The resulting projects are neatly organized in the "space dimension", having
 only the files and directories needed at the time and without complicated, ad
 hoc file names like `2022-10-20_linear-model_v2-Carl`. Project versions live in
-the "time dimension" ([Git history]).Here's a more concrete example:
+the "time dimension" ([Git history]). Here's a more concrete example:
 
 [version control]:
   https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
@@ -26,6 +26,12 @@ the "time dimension" ([Git history]).Here's a more concrete example:
 [git workflows]: https://www.atlassian.com/git/tutorials/comparing-workflows
 [git history]:
   https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+
+## Organization and optimization
+
+DVC helps you keep a clean project directory by [caching your data] separate
+from code and configuration (including DVC metafiles). The same mechanisms
+[optimize] space and time.
 
 <cards>
 
@@ -95,6 +101,10 @@ data/       800f  1.8G
 
 </cards>
 
+[caching your data]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+[optimize]: /doc/user-guide/data-management/large-dataset-optimization
+
 <!-- ## Cloud versioning
 
 _New in DVC 2.30.0 (see `dvc version`)_
@@ -103,3 +113,7 @@ To simplify remote data operations, DVC now supports native versioning of files
 and directories on several cloud providers. This means that you can browse your
 files normally as you would see them in your local workspace.
 -->
+
+To learn more about [data management], click the `Next` button below ↘
+
+[data management]: /doc/user-guide/data-management
