@@ -5,7 +5,10 @@ DVC changes the way you work with datasets and ML models in order to enable data
 [benefits](#benefits-and-implications). Let's look at how the workflow evolves.
 
 <toggle>
-<tab title="Data access">
+<tab title="Data access & back up">
+
+Consistent `dvc` data operations. DVC reads a code repo (`git`) to find the
+assets.
 
   <cards>
   <card heading="Manual">
@@ -23,6 +26,8 @@ $ gsutil cp gs://d/c1 .
 
 ```
 
+> Ad hoc ingestion and transfers
+
   </card>
   <card heading="With DVC">
 
@@ -39,11 +44,15 @@ $ dvc pull -r GCS
 
 ```
 
+> DVC synchronizes your files.
+
   </card>
   </cards>
 
 </tab>
 <tab title="Versioning">
+
+Data versions and alternatives can be captured in Git (commits, branches, etc.)
 
   <cards>
   <card heading="Manual">
@@ -60,6 +69,8 @@ acc-final.json  36K
 TOTAL           2.1G
 ```
 
+> Error-prone file naming
+
   </card>
   <card heading="With DVC">
 
@@ -69,15 +80,17 @@ $ dvc checkout
 ```
 
 ```cli
+accuracy.json
 data.csv
-model-reg.dat
 data.csv.dvc
 dvc.yaml
-accuracy.json
+model-reg.dat
 ```
 
-</card>
-</cards>
+> Clean workspace
+
+  </card>
+  </cards>
 
 </tab>
 </toggle>
