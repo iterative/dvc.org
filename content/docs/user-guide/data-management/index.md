@@ -4,9 +4,11 @@ DVC changes the way you work with datasets and ML models in order to enable data
 [versioning] and reproducibility, among other
 [benefits](#benefits-and-implications). Let's look at how the workflow evolves.
 
-<cards>
+<toggle>
+<tab title="Data access">
 
-<card heading="Traditional">
+  <cards>
+  <card heading="Manual">
 
 ```cli
 $ aws s3 cp s3://d/v0 .
@@ -17,11 +19,12 @@ $ aws s3 cp . s3://d/v0
 $ gsutil cp gs://d/a1 .
 $ gsutil cp gs://d/b1 .
 $ gsutil cp gs://d/c1 .
+
+
 ```
 
-</card>
-
-<card heading="With DVC">
+  </card>
+  <card heading="With DVC">
 
 ```cli
 $ git checkout v0
@@ -32,11 +35,52 @@ $ dvc push -r AS3
 $ git checkout v1
 $ dvc checkout
 $ dvc pull -r GCS
+
+
+```
+
+  </card>
+  </cards>
+
+</tab>
+<tab title="Versioning">
+
+  <cards>
+  <card heading="Manual">
+
+```cli
+2020-data.csv   300M
+2021-data.csv   1.7G
+model-reg.dat   50M
+model-final.dat 51M
+accuracy.json   37K
+acc-final.json  36K
+...
+
+TOTAL           2.1G
+```
+
+  </card>
+  <card heading="With DVC">
+
+```cli
+$ git checkout {ver}
+$ dvc checkout
+```
+
+```cli
+data.csv
+model-reg.dat
+data.csv.dvc
+dvc.yaml
+accuracy.json
 ```
 
 </card>
-
 </cards>
+
+</tab>
+</toggle>
 
 Traditionally, you would access storage platforms directly, with dedicated tools
 such as AWS CLI, code libraries, SCP, etc. This requires knowing the final URL
