@@ -132,8 +132,8 @@ $ dvc exp show
 The `workspace` row in the table shows the results of the most recent experiment
 that's available in the <abbr>workspace</abbr>. The table also shows each
 experiment in a separate row, along with the Git commit IDs they are attached
-to. We can see that the experiment we run has a name `exp-6dccf` and was run
-from the commit ID `7317bc6`.
+to. We can see that the experiment we run has a name `exp-ff24d` and was run
+from the commit ID `999710f`.
 
 Now let's do some more experimentation.
 
