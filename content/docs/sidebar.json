@@ -124,7 +124,6 @@
         "slug": "data-management",
         "source": "data-management/index.md",
         "children": [
-          "data-versioning",
           "large-dataset-optimization",
           "importing-external-data",
           "managing-external-data"
