@@ -4,14 +4,14 @@ To manage model lifecycle, you can assign stages (such as `development`,
 `staging`, `production`, etc.) to specific model versions.
 
 To assign a stage to a model version, Iterative Studio uses [GTO] to create an
-[annotated Git tag][git tag] with the specified stage and version number. Refer
-the [GTO docs][gto] to see the exact format of the Git tag.
+annotated [Git tag][git tag] with the specified stage and version number. Refer
+to the [GTO docs][gto-format] to see the exact format of the Git tag.
 
 You can write CI/CD actions that can actually deploy the models to the different
 deployment environments upon the creation of a new Git tag for stage assignment.
 For that, you can leverage any ML model deployment tool, such as MLEM.
 
-You can assign stages using the [GTO] CLI. To assign stages using Iterative
+You can assign stages using the [`gto` CLI]. To assign stages using Iterative
 Studio, watch this tutorial video or read on below:
 
 https://www.youtube.com/watch?v=Vrp1O5lkWBo
@@ -51,5 +51,7 @@ https://www.youtube.com/watch?v=Vrp1O5lkWBo
    the selected version and stage has been created, indicating the stage
    assignment.
 
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
+[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tag-message-format
+[`gto` cli]: https://mlem.ai/doc/gto/command-reference

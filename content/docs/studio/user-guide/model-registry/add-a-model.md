@@ -3,8 +3,8 @@
 You can add models from any ML project to the model registry. To add a model to
 your model registry, Iterative Studio creates an annotation for it in an
 `artifacts.yaml` file in your Git repository. If you are using the [GTO] command
-line tool, you can also add models [from the CLI]. To add models using Iterative
-Studio, watch this tutorial video or read on below:
+line tool, you can also add models [from the CLI][gto annotate]. To add models
+using Iterative Studio, watch this tutorial video or read on below:
 
 https://www.youtube.com/watch?v=szzv4ZXmYAs
 
@@ -69,10 +69,10 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
   `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
 - Iterative Studio annotate the model by executing
   `gto annotate <model_name> --path <directory_path>/<filename from remote_path> --type model`.
-  [Learn more](https://github.com/iterative/gto#annotating).
+  [Learn more][gto annotate].
 
 [connected repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
-[gto]: https://github.com/iterative/gto
-[from the cli]: https://github.com/iterative/gto#annotating
+[gto]: https://mlem.ai/doc/gto
+[gto annotate]: https://mlem.ai/doc/gto/command-reference/annotate
 [mlem]: https://mlem.ai/

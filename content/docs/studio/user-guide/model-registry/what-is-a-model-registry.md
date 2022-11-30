@@ -20,9 +20,9 @@ open-source Git-based tools [GTO] and [MLEM].
   be in S3, GCP, or any other of your remote, or local, storages.
 
 The model registry provides an interactive web interface to the metadata files
-and Git tags. You can also use the model registry through the [GTO CLI and
-Python API][gto]. Any updates that you make from the CLI or API are also
-reflected in the model registry in Iterative Studio.
+and Git tags. You can also use the model registry through the [`gto` CLI]. Any
+updates that you make from the CLI or API are also reflected in the model
+registry in Iterative Studio.
 
 In the model registry, you can find information about your models in the
 following interfaces:
@@ -50,5 +50,6 @@ incorporate these tasks also. Similarly, you can use GTO in your CI/CD actions
 to interpret Git tags for deploying the models to the desired environment.
 
 [semantic versioning]: https://semver.org/
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
+[`gto` cli]: https://mlem.ai/doc/gto/command-reference
