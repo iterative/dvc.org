@@ -1,31 +1,24 @@
-import React, { useCallback } from 'react'
-
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-
 import * as styles from './styles.module.css'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import cn from 'classnames'
+import React from 'react'
 
-interface ILearnMoreProps {
-  scrollToRef: React.RefObject<HTMLElement>
+const logLearnMoreEvent = () => {
+  logEvent('Hero', { Item: 'learn-more' })
 }
 
-const LearnMore: React.FC<ILearnMoreProps> = ({ scrollToRef }) => {
-  const onClick = useCallback(() => {
-    logEvent('Hero', { Item: 'learn-more' })
-    const scrollToEl = scrollToRef?.current
-    if (scrollToEl) {
-      scrollToEl.scrollIntoView({
-        behavior: 'smooth'
-      })
-    }
-  }, [scrollToRef?.current])
-
+const LearnMore = () => {
   return (
-    <button className={`${styles.button} link-with-focus`} onClick={onClick}>
+    <a
+      className={cn(styles.button, 'link-with-focus')}
+      onClick={logLearnMoreEvent}
+      href="#diagram-section"
+    >
       <span className={styles.icon}>
         <img src="/img/learn-more.svg" alt="Learn More" />
       </span>
       <span className={styles.caption}>Learn more</span>
-    </button>
+    </a>
   )
 }
 

@@ -1,20 +1,20 @@
-import React, { useEffect, useCallback, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import DownloadButton from '../../DownloadButton'
-import TwoRowsButton from '../../TwoRowsButton'
+import TwoRowsButtonLink from '../../TwoRowsButton/link'
 import GithubLine from './GithubLine'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
-interface ILandingHeroProps {
-  scrollToRef: React.RefObject<HTMLElement>
+const logUseCasesEvent = () => {
+  logEvent('Button', { Item: 'how-it-works' })
 }
 
-const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
+const LandingHero = () => {
   const [activeCommand, setActiveCommand] = useState(0)
 
   useEffect(() => {
@@ -25,14 +25,6 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
 
     return (): void => clearInterval(interval)
   }, [])
-
-  const scrollToUseCases = useCallback(() => {
-    logEvent('Button', { Item: 'how-it-works' })
-    const scrollToEl = scrollToRef?.current
-    if (scrollToEl) {
-      scrollToEl.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [scrollToRef?.current])
 
   return (
     <div className={styles.container}>
@@ -56,7 +48,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
           <ShowOnly on="desktop">
             <DownloadButton />
           </ShowOnly>
-          <TwoRowsButton
+          <TwoRowsButtonLink
             mode="outline"
             className={`${cn(
               styles.actionButton,
@@ -71,7 +63,8 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
                 alt="Watch video"
               />
             }
-            onClick={scrollToUseCases}
+            onClick={logUseCasesEvent}
+            href="#use-cases"
           />
         </div>
 
