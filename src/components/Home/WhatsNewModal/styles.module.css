@@ -16,7 +16,7 @@
 }
 
 .button {
-  @mixin button-big;
+  @apply text-xl;
 
   position: absolute;
   box-sizing: border-box;
@@ -172,7 +172,7 @@
   }
 
   .title {
-    @mixin focus;
+    @apply focus;
 
     display: flex;
     font-size: 30px;
@@ -199,7 +199,7 @@
     color: var(--color-gray-dark);
 
     a {
-      @mixin focus;
+      @apply focus;
 
       text-decoration: none;
       font-weight: bold;

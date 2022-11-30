@@ -16,7 +16,7 @@
 }
 
 .description {
-  @mixin text-secondary;
+  @apply text-base;
 
   max-width: 590px;
   min-height: 50px;

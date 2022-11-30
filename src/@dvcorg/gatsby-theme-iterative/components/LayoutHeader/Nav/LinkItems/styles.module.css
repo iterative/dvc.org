@@ -46,9 +46,7 @@
 }
 
 .link {
-  @mixin active;
-  @mixin hover;
-  @mixin focus;
+  @apply hover active focus;
 
   font-family: var(--font-base);
   font-weight: 400;
