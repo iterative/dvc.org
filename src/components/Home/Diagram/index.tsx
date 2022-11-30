@@ -90,11 +90,8 @@ const ColumnThree: React.FC = () => (
   </div>
 )
 
-const DiagramSection: React.ForwardRefRenderFunction<HTMLElement> = (
-  _,
-  ref
-) => (
-  <section className={styles.diagramSection} ref={ref}>
+const DiagramSection = () => (
+  <section className={styles.diagramSection} id="diagram-section">
     <LayoutWidthContainer>
       <h2 className={styles.title}>DVC tracks ML models and data sets</h2>
       <p className={styles.description}>
