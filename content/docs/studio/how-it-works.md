@@ -7,8 +7,11 @@ repositories. It works very closely with your Git ecosystem.
 This video illustrates how Iterative Studio works closely with your Git
 ecosystem.
 
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
+<admon>
+
+Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
+
+</admon>
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
@@ -62,5 +65,5 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 [dvc]: https://dvc.org/
 [cml]: https://cml.dev
 [mlem]: https://mlem.ai/
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [git]: https://git-scm.com/

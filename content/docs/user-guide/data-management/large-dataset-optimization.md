@@ -105,7 +105,7 @@ your system, however this is not the most common case at this time, so it falls
 back to the copying strategy. If you wish to enable hard or soft links, you can
 configure DVC like this:
 
-```dvc
+```cli
 $ dvc config cache.type hardlink,symlink
 ```
 

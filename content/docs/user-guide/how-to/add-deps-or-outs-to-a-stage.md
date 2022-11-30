@@ -38,7 +38,7 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 > We could also use `dvc stage add` with `-f` to add another dependency/output
 > to the stage:
 >
-> ```dvc
+> ```cli
 > $ dvc stage add -n prepare \
 >           -f \
 >           -d src/prepare.py \
@@ -54,6 +54,6 @@ If the `data/raw.csv` or `data/validate` files already exist, we can use
 `dvc commit` to cache the newly specified outputs (and to update the `deps` and
 `outs` file hashes in `dvc.lock`):
 
-```dvc
+```cli
 $ dvc commit
 ```

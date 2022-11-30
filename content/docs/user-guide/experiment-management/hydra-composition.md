@@ -9,7 +9,7 @@ supports Hydra's [config composition] as a way to configure [experiment runs].
 
 At the moment you must explicitly enable this feature with:
 
-```dvc
+```cli
 $ dvc config hydra.enabled True
 ```
 
@@ -31,8 +31,10 @@ executing the experiment. Its <abbr>parameters</abbr> will configure the
 a single script, and offer advanced features like [templating] and [`foreach`
 stages].
 
+[dvc pipelines]: /doc/user-guide/pipelines/defining-pipelines
 [templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
-[`foreach`]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
+[`foreach` stages]:
+  /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 
 </admon>
 
@@ -40,7 +42,7 @@ stages].
 
 First you need a `conf/` directory for Hydra [config groups]. For example:
 
-```dvc
+```cli
 conf
 ├── config.yaml
 ├── dataset
@@ -154,7 +156,7 @@ on-the-fly, for example loading the model config from
 `train/model/efficientnet.yaml` (instead of `resnet.yaml` from the
 [defaults list](#setting-up-hydra)):
 
-```dvc
+```cli
 $ dvc exp run --set-param 'train/model=efficientnet'
 Stage 'setup-dataset' didn't change  skipping
 Running stage 'train':
@@ -166,7 +168,7 @@ Running stage 'train':
 
 We can also modify specific values from any config section:
 
-```dvc
+```cli
 $ dvc exp run --set-param 'train.optimizer.lr=0.1'
 Stage 'setup-dataset' didn't change, skipping
 Running stage 'train':
@@ -179,7 +181,7 @@ Running stage 'train':
 We can also load multiple [config groups](#setting-up-hydra) in an [experiments
 queue], for example to run a [grid search] of ML hyperparameters:
 
-```dvc
+```cli
 $ dvc exp run --queue \
               -S 'train/optimizer=adam,sgd' \
               -S 'train/model=resnet,efficientnet'

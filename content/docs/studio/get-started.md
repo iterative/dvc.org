@@ -1,43 +1,31 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use [Iterative
-Studio].
-
 <admon>
 
-Iterative Studio [works very closely with your Git ecosystem][how-it-works]. So,
-you need to connect Iterative Studio to the Git repositories for your projects.
+We have renamed DVC Studio to Iterative Studio.
 
 </admon>
 
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
+First, sign in to your [Iterative Studio](https://studio.iterative.ai/)
+dashboard using your GitHub.com, GitLab.com, or Bitbucket.org account, or with
+your email address.
 
-https://www.youtube.com/watch?v=hKf4twg832g
+<admon type="tip">
 
-## Sign up / sign in
+When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
+[create a team] first, then go to the _Team settings_ to [change the plan]. To
+sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
+[pricing details]).
 
-1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
-   using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
-   address.
+</admon>
 
-   <admon>
+[create a team]: /doc/studio/user-guide/teams
+[change the plan]:
+  /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
+[schedule a call]: https://calendly.com/gtm-2/studio-introduction
+[pricing details]: https://studio.iterative.ai/pricing
 
-   When you sign up, you're on the **Free plan**. To switch to the **Basic
-   plan** [create a team] first, then go to the [team settings] and click on
-   `Change plan` in the `Plan and billing` section.
-
-   To sign up for the **Teams** or **Enterprise** plan, please [schedule a
-   call].
-
-   > See [pricing details] to compare the different plans.
-
-   [create a team]: /doc/studio/user-guide/teams
-   [team settings]: /doc/studio/user-guide/teams#settings
-   [schedule a call]: https://calendly.com/gtm-2/studio-introduction
-   [pricing details]: https://studio.iterative.ai/pricing
-
-   </admon>
+</admon>
 
 ## Explore demo project
 

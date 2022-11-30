@@ -1,11 +1,19 @@
 # Installation on Windows
 
-> 💡 Please review
-> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
-> important tips to improve your experience using DVC on Windows.
+<admon type="tip">
 
-> To use DVC [as a Python library](/doc/api-reference), please
-> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+To use DVC [as a Python library](/doc/api-reference), please install
+[with `conda`](#install-with-conda) or [with `pip`](#install-with-pip).
+
+</admon>
+
+<admon type="tip">
+
+Please review
+[Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+important tips to improve your experience using DVC on Windows.
+
+</admon>
 
 ## Install with choco
 
@@ -13,20 +21,24 @@ The easiest way to install from command line for most cases is to install
 [Chocolatey](https://chocolatey.org/) on your machine, and use the `choco`
 command:
 
-```dvc
+```cli
 $ choco install dvc
 ```
 
 ## Install with conda
 
-> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
-> [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+<admon type="info">
+
+Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
+[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
+</admon>
 
 You can use `conda` from
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win),
 a POSIX-like command line terminal in Windows.
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
@@ -39,7 +51,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc-s3
 ```
@@ -50,10 +62,23 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Install with pip
 
-From Command Prompt or other
-[recommended consoles](/doc/user-guide/how-to/run-dvc-on-windows):
+<admon type="tip">
 
-```dvc
+We **strongly** recommend creating a
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+or using
+[pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+to encapsulate your local environment.
+
+</admon>
+
+<admon type="info">
+
+Note that Python 3.8+ is needed to get the latest version of DVC.
+
+</admon>
+
+```cli
 $ pip install dvc
 ```
 
@@ -65,7 +90,7 @@ plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ pip install "dvc[s3]"
 ```
 

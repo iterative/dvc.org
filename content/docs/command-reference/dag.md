@@ -45,7 +45,7 @@ It's possible to override the default pager via the `DVC_PAGER` environment
 variable. Set it to a program found in `PATH` or give a full path to it. For
 example on Linux shell:
 
-```dvc
+```cli
 $ DVC_PAGER=more dvc exp show  # Use more as pager once.
 ...
 
@@ -89,7 +89,7 @@ $ dvc exp show ...
 Visualize the prepare, featurize, train, and evaluate stages of a pipeline as
 defined in `dvc.yaml`:
 
-```dvc
+```cli
 $ dvc dag
          +---------+
          | prepare |
@@ -118,7 +118,7 @@ The pipeline can also be seen from the point of view of how stage
 outputs/dependencies are connected (using the `--outs` option). Notice that the
 resulting graph may be different:
 
-```dvc
+```cli
 $ dvc dag --outs
                   +---------------+
                   | data/prepared |
@@ -148,7 +148,7 @@ $ dvc dag --outs
 The `--mermaid` flag will generate a
 [flowchart in Mermaid format](https://mermaid-js.github.io/mermaid/#/flowchart):
 
-```dvc
+```cli
 $ dvc dag --mermaid
 flowchart TD
         node1["data/data.xml.dvc"]
@@ -175,7 +175,7 @@ and [in GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid).
 You can combine `dvc dag --md` with the
 [`cml send-comment`](https://cml.dev/doc/ref/send-comment) of CML:
 
-```dvc
+```cli
 dvc dag --md >> dag.md
 cml send-comment dag.md
 ```
