@@ -55,7 +55,12 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
   return (
     <div className={cn(sharedStyles.line, sharedStyles.image)} key={url}>
       {pictureUrl && (
-        <Link href={url} target="_blank" onClick={logPost}>
+        <Link
+          href={url}
+          target="_blank"
+          onClick={logPost}
+          className={cn('shrink-0', 'grow-0')}
+        >
           <img className={styles.image} src={pictureUrl} alt="" />
         </Link>
       )}
