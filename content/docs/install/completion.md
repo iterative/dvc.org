@@ -7,16 +7,15 @@ Shell completion is automatically enabled when DVC is installed on macOS
 [from **deb** or **rpm** repositories](/doc/install/linux#install-from-repository)
 or via [**snap**](/doc/install/linux#install-with-snap).
 
-Please follow the instructions below for other DVC installation methods.
+See below for other DVC installation methods.
 
 ## How it works
 
-Command completion is usually requested by pressing the `tab` key on your shell,
-it will then present the possible arguments that can follow that command name.
-For example:
+Command completion is usually triggered by pressing the `<tab>` key in your
+shell. Your shell will then list the possible arguments. For example:
 
 ```cli
-$ dvc r # Press [tab] key
+$ dvc r<tab>
 Completing dvc commands
 remote  -- Set up and manage data remotes.
 remove  -- Remove stages or .dvc files, unprotect their outputs, ...
@@ -27,21 +26,17 @@ run     -- Generate a stage file from a command and execute the command
 
 Depending on what you typed on the command line so far, it completes:
 
-- Available DVC commands and subcommands. For example, `dvc plots` completes
+- Available DVC commands & subcommands. For example, `dvc plots <tab>` completes
   with `diff`, `modify`, and `show`.
-- Options (flags) that are available for a particular command.
-- File names that make sense in a given context, such as using them as a target
-  for some commands.
-- Values for certain command arguments. For example, `dvc repro` completes with
-  existing files to use as targets.
+- Valid options (`--flags`). For example, `dvc add --r<tab>` prints
+  `--recursive` and `--remote`.
+- Argument that make sense in a given context. For example, `dvc repro <tab>`
+  suggests existing <abbr>DVC files</abbr>.
 
 ## What shell do you have?
 
-Use the command `echo $0` to check your active shell, if you are not sure which
-one you are using (Bash or Zsh).
-
-Depending on the shell that you are using, follow the instruction below to
-install and configure shell completion.
+Use the command `echo $0` to check which shell you are using (Bash or Zsh), then
+follow the instruction below to install and configure shell completion.
 
 <toggle>
 <tab title="Bash">
