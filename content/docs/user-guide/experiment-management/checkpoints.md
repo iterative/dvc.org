@@ -46,7 +46,7 @@ https://youtu.be/PcDo-hCvYpw
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/checkpoints-tutorial
 $ cd checkpoints-tutorial
 ```
@@ -54,7 +54,7 @@ $ cd checkpoints-tutorial
 It is highly recommended you create a virtual environment for this example. You
 can do that by running:
 
-```dvc
+```cli
 $ python3 -m venv .venv
 ```
 
@@ -67,7 +67,7 @@ following commands.
 Once you have your environment set up, you can install the dependencies by
 running:
 
-```dvc
+```cli
 $ pip install -r requirements.txt
 ```
 
@@ -89,7 +89,7 @@ in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
 to use to resume the experiment later (a circular dependency). We'll do this
 with `dvc exp init --live`.
 
-```dvc
+```cli
 $ dvc exp init --live 'dvclive' \
 --data 'data/MNIST' \
 --code 'train.py' \
@@ -141,7 +141,7 @@ Note that enabling checkpoints in a `dvc.yaml` file makes it incompatible with
 Before we go any further, this is a great point to add these changes to your Git
 history. You can do that with the following commands:
 
-```dvc
+```cli
 $ git add .
 $ git commit -m "created DVC pipeline"
 ```
@@ -217,7 +217,7 @@ actual model weight file will be stored in the DVC data <abbr>cache</abbr>.
 With checkpoints enabled and working in our code, let's run the experiment. You
 can run an experiment with the following command:
 
-```dvc
+```cli
 $ dvc exp run
 ```
 
@@ -278,7 +278,7 @@ be printed, but the experiment will continue running as normal.
 You can see a table of your experiments and checkpoints in the terminal by
 running:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -308,7 +308,7 @@ that.
 First, we need to apply the checkpoint we want to begin our new experiment from.
 To do that, run the following command:
 
-```dvc
+```cli
 $ dvc exp apply 963b396
 ```
 
@@ -318,14 +318,14 @@ Next, we'll change the learning rate set in the _params.yaml_ to `0.000001` and
 start a new experiment based on an existing checkpoint with the following
 command:
 
-```dvc
+```cli
 $ dvc exp run --set-param lr=0.00001
 ```
 
 You'll be able to see where the experiment starts from the existing checkpoint
 by running:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -363,7 +363,7 @@ existing data and using it as the starting point.
 When you've run all the experiments you want to and you are ready to compare
 metrics between checkpoints, you can run the command:
 
-```dvc
+```cli
 $ dvc metrics diff d90179a 726d32f
 ```
 
@@ -386,7 +386,7 @@ format._
 You also have the option to generate plots to visualize the metrics about your
 training epochs. Running:
 
-```dvc
+```cli
 $ dvc plots diff d90179a 726d32f
 ```
 
@@ -403,7 +403,7 @@ high. There might be a time when you want to remove all of the existing
 checkpoints to start the training from scratch. You can reset your checkpoints
 with the following command:
 
-```dvc
+```cli
 $ dvc exp run --reset
 ```
 
@@ -447,7 +447,7 @@ allow you to add these changes to Git, making them [persistent]:
 
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
-```dvc
+```cli
 To track the changes with git, run:
 
         git add dvclive/metrics.json dvc.yaml .gitignore train.py dvc.lock
@@ -459,7 +459,7 @@ Running the command above will stage the checkpoint experiment with Git. You can
 take a look at what would be committed first with `git status`. You should see
 something similar to this in your terminal:
 
-```dvc
+```cli
 $ git status
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
@@ -479,14 +479,14 @@ Untracked files:
 
 All that's left to do is to `git commit` the changes:
 
-```dvc
+```cli
 $ git commit -m 'saved files from experiment'
 ```
 
 We can also remove all of the experiments we don't promote to our Git workspace
 with the following command:
 
-```dvc
+```cli
 $ dvc exp gc --workspace --force
 ```
 

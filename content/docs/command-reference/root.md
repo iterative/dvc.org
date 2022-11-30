@@ -31,7 +31,7 @@ Use this command to build fixed paths to dependencies, files, or stage
 
 Basic demonstration:
 
-```dvc
+```cli
 $ dvc root
 .
 
@@ -46,7 +46,7 @@ $ dvc root
 When working in a subdirectory of a <abbr>DVC project</abbr>, simplify file
 references by making all paths relative to the root directory.
 
-```dvc
+```cli
 $ dvc root
 ../../../
 
@@ -56,7 +56,7 @@ $ dvc stage add -d $(dvc root)/data/file.cvs ... \
 
 The same can be applied to non-DVC commands:
 
-```dvc
+```cli
 $ dvc root
 ../..
 

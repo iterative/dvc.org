@@ -25,7 +25,7 @@ Note that Python 3.8+ is needed to get the latest version of DVC.
 
 </admon>
 
-```dvc
+```cli
 $ pip install dvc
 ```
 
@@ -38,7 +38,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ pip install "dvc[s3]"
 ```
 
@@ -60,7 +60,7 @@ Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 
 </admon>
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
@@ -73,7 +73,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba
 $ mamba install -c conda-forge dvc-s3
 ```
@@ -90,7 +90,7 @@ Requires [snapd](https://snapcraft.io/docs/installing-snapd).
 
 </admon>
 
-```dvc
+```cli
 $ snap install --classic dvc
 ```
 
@@ -103,7 +103,7 @@ $ snap install --classic dvc
 
 ### On Debian/Ubuntu
 
-```dvc
+```cli
 $ sudo wget \
        https://dvc.org/deb/dvc.list \
        -O /etc/apt/sources.list.d/dvc.list
@@ -120,7 +120,7 @@ $ sudo apt install dvc
 
 ### On Fedora/CentOS
 
-```dvc
+```cli
 $ sudo wget \
        https://dvc.org/rpm/dvc.repo \
        -O /etc/yum.repos.d/dvc.repo
@@ -141,7 +141,7 @@ Then install it with the following command.
 
 ### On Debian/Ubuntu
 
-```dvc
+```cli
 $ sudo apt install ./dvc_0.62.1_amd64.deb
 ```
 
@@ -151,7 +151,7 @@ $ sudo apt install ./dvc_0.62.1_amd64.deb
 
 ### On Fedora/CentOS
 
-```dvc
+```cli
 $ sudo yum install dvc-0.62.1-1.x86_64.rpm
 ```
 

@@ -48,13 +48,13 @@ first whether your task matches one of the cases that are considered safe:
 
 Enable symlinks:
 
-```dvc
+```cli
 $ dvc config cache.type symlink
 ```
 
 Track a data file with DVC:
 
-```dvc
+```cli
 $ ls -lh
 -rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.zip
 
@@ -63,7 +63,7 @@ $ dvc add Posts.xml.zip
 
 Check that file is a read-only link (@ sign means a link):
 
-```dvc
+```cli
 $ ls -lh
 -r--r--r--@ 1 10576022 Apr 25  2017 Posts.xml.zip
 -rw-r--r--  1      120 Nov 27 13:29 Posts.xml.zip.dvc
@@ -71,7 +71,7 @@ $ ls -lh
 
 Unprotect the file:
 
-```dvc
+```cli
 $ dvc unprotect Posts.xml.zip
 ```
 
@@ -79,7 +79,7 @@ Check that the file is writable now, the cached version is intact, and they are
 not linked (the file in the <abbr>workspace</abbr> is a copy of the
 <abbr>cached</abbr> file):
 
-```dvc
+```cli
 $ ls -lh
 -rw-r--r--  1  120B Nov 27 13:29 Posts.xml.zip.dvc
 -rw-r--r--  1   10M Nov 27 13:30 Posts.xml.zip

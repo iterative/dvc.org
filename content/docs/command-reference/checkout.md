@@ -118,7 +118,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 
 Start by cloning our example repo if you don't already have it:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 $ dvc fetch -aT
@@ -133,7 +133,7 @@ below.
 
 The workspace looks like this:
 
-```dvc
+```cli
 .
 ├── data
 │   └── data.xml.dvc
@@ -149,7 +149,7 @@ The workspace looks like this:
 Note that this repository includes the following tags, that represent different
 variants of the resulting model:
 
-```dvc
+```cli
 $ git tag
 ...
 baseline-experiment     <- First simple version of the model
@@ -160,7 +160,7 @@ We can now run `dvc checkout` to update the most recent `model.pkl`, `data.xml`,
 and any other files tracked by DVC. The model file hash (`ab349c2...`) is saved
 in `dvc.lock`, and it can be confirmed with:
 
-```dvc
+```cli
 $ dvc checkout
 
 $ md5 model.pkl
@@ -174,7 +174,7 @@ lets us restore any commit in the repository history (including tags). It
 automatically adjusts the repo files, by replacing, adding, or deleting them as
 necessary.
 
-```dvc
+```cli
 $ git checkout baseline-experiment  # Git commit where model was created
 ```
 
@@ -192,7 +192,7 @@ But if you check the MD5 of `model.pkl`, the file hash is still the same
 DVC-tracked files/dirs. Since Git doesn't track them, to get them we can do
 this:
 
-```dvc
+```cli
 $ dvc checkout
 M       model.pkl
 M       data\features\
@@ -209,7 +209,7 @@ DVC went through the stages (in `dvc.yaml`) and adjusted the current set of
 `dvc checkout` only affects the tracked data corresponding to any given
 `targets`:
 
-```dvc
+```cli
 $ git checkout master
 $ dvc checkout            # Start with latest version of everything.
 
@@ -221,7 +221,7 @@ Note that you can checkout data within directories tracked. For example, the
 `featurize` stage has the entire `data/features` directory as output, but we can
 just get this:
 
-```dvc
+```cli
 $ dvc checkout data/features/test.pkl
 ```
 
@@ -232,7 +232,7 @@ files (managed by Git e.g. source code). This requires us to remember running
 `dvc checkout` when needed after a `git checkout`, and we may not always
 remember to do so. Wouldn't it be nice to automate this?
 
-```dvc
+```cli
 $ dvc install
 ```
 
@@ -242,7 +242,7 @@ running `dvc checkout` when needed.
 (Having followed the previous example) we can then checkout the master branch
 again:
 
-```dvc
+```cli
 $ git checkout bigrams-experiment  # Has the latest model version
 
 $ md5 model.pkl

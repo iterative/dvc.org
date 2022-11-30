@@ -21,7 +21,7 @@ The easiest way to install from command line for most cases is to install
 [Chocolatey](https://chocolatey.org/) on your machine, and use the `choco`
 command:
 
-```dvc
+```cli
 $ choco install dvc
 ```
 
@@ -38,7 +38,7 @@ You can use `conda` from
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win),
 a POSIX-like command line terminal in Windows.
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
@@ -51,7 +51,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc-s3
 ```
@@ -78,7 +78,7 @@ Note that Python 3.8+ is needed to get the latest version of DVC.
 
 </admon>
 
-```dvc
+```cli
 $ pip install dvc
 ```
 
@@ -90,7 +90,7 @@ plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ pip install "dvc[s3]"
 ```
 

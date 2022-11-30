@@ -61,7 +61,7 @@ code.
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -80,14 +80,14 @@ $ dvc exp show
 Since `exp-e6c97` has the best `auc`, we may want to commit it into our project
 (this is what we call to "make it persistent"):
 
-```dvc
+```cli
 $ dvc exp apply exp-e6c97
 Changes for experiment 'exp-e6c97' have been applied...
 ```
 
 We can inspect what changed in the workspace with Git,
 
-```dvc
+```cli
 $ git status
 On branch master
 Changes not staged for commit:
@@ -107,7 +107,7 @@ $ git diff params.yaml
 
 and with DVC:
 
-```dvc
+```cli
 $ dvc status
 Data and pipelines are up to date.
 $ dvc diff
@@ -121,14 +121,14 @@ files summary: 0 added, 0 deleted, 3 modified, 0 not in cache
 
 To finish making this experiment persistent, we commit the changes to the repo:
 
-```dvc
+```cli
 $ git add .
 $ git commit -m "persist exp-e6c97"
 ```
 
 We can now see that the experiment is the new tip of our master branch:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 

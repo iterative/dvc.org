@@ -33,7 +33,7 @@ First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
 [pipeline from before](/doc/start/data-management/data-pipelines):
 
-```dvc
+```cli
 $ dvc run -n evaluate \
   -d src/evaluate.py -d model.pkl -d data/features \
   -O evaluation/plots/metrics \
@@ -136,7 +136,7 @@ additional plots.
 
 You can view tracked metrics and plots with DVC. Let's start with the metrics:
 
-```dvc
+```cli
 $ dvc metrics show
 Path             avg_prec    roc_auc
 evaluation.json  0.89668     0.92729
@@ -145,7 +145,7 @@ evaluation.json  0.89668     0.92729
 To view plots, first specify which arrays to use as the plot axes. We only need
 to do this once, and DVC will save our plot configurations.
 
-```dvc
+```cli
 $ dvc plots modify evaluation/plots/prc.json -x recall -y precision
 Modifying stage 'evaluate' in 'dvc.yaml'
 $ dvc plots modify evaluation/plots/sklearn/roc.json -x fpr -y tpr
@@ -160,7 +160,7 @@ below), which generates an HTML file you can open in a browser. Or you can load
 your project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
 visualize them.
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/dvc/example-get-started/dvc_plots/index.html
 ```
@@ -172,7 +172,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 
 Let's save this iteration, so we can compare it later:
 
-```dvc
+```cli
 $ git add .gitignore dvc.yaml dvc.lock evaluation
 $ git commit -a -m "Create evaluation stage"
 ```
@@ -219,7 +219,7 @@ The `featurize` stage
 with this `dvc run` command. Notice the argument sent to the `-p` option (short
 for `--params`):
 
-```dvc
+```cli
 $ dvc run -n featurize \
           -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
@@ -266,7 +266,7 @@ We are definitely not happy with the AUC value we got so far! Let's edit the
 
 The beauty of `dvc.yaml` is that all you need to do now is run:
 
-```dvc
+```cli
 $ dvc repro
 ```
 
@@ -284,7 +284,7 @@ to see changes in and visualize metrics, parameters, and plots. These commands
 can work for one or across multiple pipeline iteration(s). Let's compare the
 current "bigrams" run with the last committed "baseline" iteration:
 
-```dvc
+```cli
 $ dvc params diff
 Path         Param                   HEAD  workspace
 params.yaml  featurize.max_features  100   200
@@ -296,7 +296,7 @@ commit.
 
 `dvc metrics diff` does the same for metrics:
 
-```dvc
+```cli
 $ dvc metrics diff
 Path             Metric    HEAD      workspace    Change
 evaluation.json  avg_prec  0.89668   0.9202       0.02353
@@ -306,7 +306,7 @@ evaluation.json  roc_auc   0.92729   0.94096      0.01368
 And finally, we can compare all plots with a single command (we show only some
 of them for simplicity):
 
-```dvc
+```cli
 $ dvc plots diff
 file:///Users/dvc/example-get-started/plots.html
 ```

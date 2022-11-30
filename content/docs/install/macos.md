@@ -20,7 +20,7 @@ macOS.
 
 Recommended. Requires [Homebrew](https://brew.sh/).
 
-```dvc
+```cli
 $ brew install dvc
 ```
 
@@ -55,7 +55,7 @@ Note that Python 3.8+ is needed to get the latest version of DVC.
 
 </admon>
 
-```dvc
+```cli
 $ pip install dvc
 ```
 
@@ -68,7 +68,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ pip install "dvc[s3]"
 ```
 
@@ -85,7 +85,7 @@ Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 
 </admon>
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
@@ -98,7 +98,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc-s3
 ```

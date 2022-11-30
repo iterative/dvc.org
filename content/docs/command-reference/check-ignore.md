@@ -47,7 +47,7 @@ are printed back.
 First, let's create a `.dvcignore` file with some patterns in it, and some files
 to check against it:
 
-```dvc
+```cli
 $ echo "file*\n\!file2" >> .dvcignore
 $ cat .dvcignore
 file*
@@ -61,7 +61,7 @@ file1  file2 other
 Then, let's use `dvc check-ignore` to see which of these files would be excluded
 given our `.dvcignore` file:
 
-```dvc
+```cli
 $ dvc check-ignore file1
 file1
 
@@ -79,7 +79,7 @@ file2
 
 With `--details` (`-d`), we get a detailed report of all the matches:
 
-```dvc
+```cli
 $ dvc check-ignore -d file1 file2
 .dvcignore:1:file*	file1
 .dvcignore:2:!file2	file2
@@ -92,7 +92,7 @@ $ dvc check-ignore -d file*
 By default, only the last pattern matched would be shown. To see all the
 patterns matched, use `--all` (`-a`).
 
-```dvc
+```cli
 $ dvc check-ignore -d -a file2
 .dvcignore:1:file*	file2
 .dvcignore:2:!file2	file2
@@ -101,7 +101,7 @@ $ dvc check-ignore -d -a file2
 With the `--non-matching` (`-n`) option, non-matching `targets` will also be
 included in the details list:
 
-```dvc
+```cli
 $ dvc check-ignore -d -n other
 ::	other
 ```
@@ -110,7 +110,7 @@ $ dvc check-ignore -d -n other
 
 The `--stdin` option provides an interactive way to debug `.dvcignore` patterns:
 
-```dvc
+```cli
 $ dvc check-ignore --stdin
 > file1
 file1
@@ -121,6 +121,6 @@ file2
 
 It can also be used as part of a POSIX pipe:
 
-```dvc
+```cli
 cat file_list | dvc check-ignore --stdin
 ```

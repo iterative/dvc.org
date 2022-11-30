@@ -170,7 +170,7 @@ See the [Pipelines guide] for more on that topic.
 Let's prepare an ML model training script to start running experiments on it.
 The easiest route is using interactive mode and answering a few questions:
 
-```dvc
+```cli
 $ dvc exp init --interactive
 Command to execute: python src/train.py
 

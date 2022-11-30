@@ -45,7 +45,7 @@ remotes in the case of experiments.
 Make sure that you have the necessary remotes setup. Let's confirm with
 `git remote -v` and `dvc remote list`:
 
-```dvc
+```cli
 $ git remote -v
 origin  git@github.com:iterative/get-started-experiments.git (fetch)
 origin  git@github.com:iterative/get-started-experiments.git (push)
@@ -67,7 +67,7 @@ arguments.
 
 > 💡 You can use `dvc exp show` to find experiment names.
 
-```dvc
+```cli
 $ dvc exp push origin exp-abc123
 ```
 
@@ -82,7 +82,7 @@ When you clone a DVC repository, it doesn't fetch any experiments by default. In
 order to get them, use `dvc exp pull` (with the Git remote and the experiment
 name), for example:
 
-```dvc
+```cli
 $ dvc exp pull origin cnn-32
 ```
 
