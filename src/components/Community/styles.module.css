@@ -65,6 +65,8 @@
 }
 
 .link {
+  @apply shrink-0 grow-0;
+
   font-family: var(--font-base);
   font-size: 16px;
   line-height: 18px;

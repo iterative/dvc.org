@@ -59,7 +59,7 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
           href={url}
           target="_blank"
           onClick={logPost}
-          className={cn('shrink-0', 'grow-0')}
+          className={sharedStyles.link}
         >
           <img className={styles.image} src={pictureUrl} alt="" />
         </Link>
