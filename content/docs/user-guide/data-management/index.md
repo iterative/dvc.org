@@ -11,7 +11,8 @@ assets, and difficult to implement security controls. Accessing these data
 stores directly requires special tools and integrations (AWS CLI, Python
 libraries, etc.). Versioning data under these conditions is a challenge.
 
-![]() _Problems with managing data ad hoc_
+![Direct storage access](/img/direct-storage-access.png) _Problems with managing
+data ad hoc_
 
 DVC's approach has many benefits. First, a clean directory structure can be
 centrally mapped to a storage location (or multiple ones). Data objects are
@@ -24,13 +25,13 @@ ingested. [Data versioning] and [reproducibility] are enabled.
 [data versioning]: /doc/use-cases/versioning-data-and-models
 [reproducibility]: /doc/user-guide/pipelines
 
-![]() _Main benefits of DVC's approach_
+![DVC data access](/img/dvc-data-access.png) _Main benefits of DVC's approach_
 
 To achieve this, DVC introduces a layer of [indirection]: raw data, models, and
 other artifacts are _codified_ in small [metafiles] that describe them. Storage
 locations are also saved to human-readable config files. You can control all
-these files [with Git], along with the rest of your project's code. You'll just
-have to keep in mind a few workflow changes:
+these files [with Git], along with the rest of your project's code.
+Specifically, keep in mind these key workflow changes:
 
 [indirection]: https://en.wikipedia.org/wiki/Indirection
 [metafiles]: /doc/user-guide/project-structure
