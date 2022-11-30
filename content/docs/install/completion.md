@@ -26,17 +26,18 @@ run     -- Generate a stage file from a command and execute the command
 
 Depending on what you typed on the command line so far, it completes:
 
-- Available DVC commands & subcommands. For example, `dvc plots <tab>` completes
-  with `diff`, `modify`, and `show`.
-- Valid options (`--flags`). For example, `dvc add --r<tab>` prints
+- Available DVC commands & subcommands. For example, `dvc plots <tab>` suggests
+  `diff`, `modify`, `show`, and `templates`.
+- Valid options (`--flags`). For example, `dvc add --r<tab>` suggests
   `--recursive` and `--remote`.
 - Argument that make sense in a given context. For example, `dvc repro <tab>`
   suggests existing <abbr>DVC files</abbr>.
 
 ## What shell do you have?
 
-Use the command `echo $0` to check which shell you are using (Bash or Zsh), then
-follow the instruction below to install and configure shell completion.
+Use the command `echo $0` to check which shell you are using (`bash`, `zsh`, or
+`tcsh`), then follow the instruction below to install and configure shell
+completion.
 
 <toggle>
 <tab title="Bash">
@@ -142,6 +143,17 @@ zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 ```
+
+</tab>
+<tab title="tcsh">
+
+1. Run this command to install DVC completions:
+
+   ```dvc
+   $ dvc completion -s tcsh | sudo tee /etc/profile.d/dvc.completion.csh
+   ```
+
+2. Open a new terminal to activate completions.
 
 </tab>
 </toggle>
