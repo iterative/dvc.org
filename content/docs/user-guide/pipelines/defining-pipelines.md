@@ -99,7 +99,7 @@ stages with `dvc stage add` -- a limited command-line interface to setup
 pipelines. Let's add another stage this way and look at the resulting
 `dvc.yaml`:
 
-```dvc
+```cli
 $ dvc stage add --name train \
                 --deps src/model.py \
                 --deps data/clean.csv \

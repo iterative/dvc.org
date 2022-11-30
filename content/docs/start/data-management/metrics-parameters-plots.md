@@ -33,7 +33,7 @@ First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
 [pipeline from before](/doc/start/data-management/data-pipelines):
 
-```dvc
+```cli
 $ dvc stage add -n evaluate \
   -d src/evaluate.py -d model.pkl -d data/features \
   -o eval/importance.png -O eval/prc -O eval/live/plots \
@@ -138,7 +138,7 @@ into JSON files in the `eval/live/plots` directory, and an image
 To view plots, first configure the axes and other specifications of your plots
 by adding a `plots` section to your `dvc.yaml`:
 
-```dvc
+```cli
 plots:
   - eval/importance.png
   - Precision-Recall:
@@ -164,7 +164,7 @@ below), which generates an HTML file you can open in a browser. Or you can load
 your project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
 visualize them.
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/dvc/example-get-started/dvc_plots/index.html
 ```
@@ -176,7 +176,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 
 Let's save this iteration, so we can compare it later:
 
-```dvc
+```cli
 $ git add .gitignore dvc.yaml dvc.lock eval
 $ git commit -a -m "Create evaluation stage"
 ```
@@ -223,7 +223,7 @@ The `featurize` stage
 with this `dvc run` command. Notice the argument sent to the `-p` option (short
 for `--params`):
 
-```dvc
+```cli
 $ dvc run -n featurize \
           -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
@@ -270,7 +270,7 @@ We are definitely not happy with the AUC value we got so far! Let's edit the
 
 The beauty of `dvc.yaml` is that all you need to do now is run:
 
-```dvc
+```cli
 $ dvc repro
 ```
 
@@ -288,7 +288,7 @@ to see changes in and visualize metrics, parameters, and plots. These commands
 can work for one or across multiple pipeline iteration(s). Let's compare the
 current "bigrams" run with the last committed "baseline" iteration:
 
-```dvc
+```cli
 $ dvc params diff
 Path         Param                   HEAD  workspace
 params.yaml  featurize.max_features  100   200
@@ -300,7 +300,7 @@ commit.
 
 `dvc metrics diff` does the same for metrics:
 
-```dvc
+```cli
 $ dvc metrics diff
 Path                    Metric          HEAD     workspace    Change
 eval/live/metrics.json  avg_prec.test   0.9014   0.925        0.0236
@@ -312,7 +312,7 @@ eval/live/metrics.json  roc_auc.train   0.97743  0.98667      0.00924
 And finally, we can compare all plots with a single command (we show only some
 of them for simplicity):
 
-```dvc
+```cli
 $ dvc plots diff
 file:///Users/dvc/example-get-started/plots.html
 ```

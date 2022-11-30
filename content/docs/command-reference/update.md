@@ -34,7 +34,7 @@ update them.
 fixed to a commit hash (`rev` field in the `.dvc` file). Use the `--rev` option
 to update an imported artifact to a different revision.
 
-```dvc
+```cli
 $ dvc update --rev master
 ```
 
@@ -84,7 +84,7 @@ $ dvc update --rev master
 Let's first import a data artifact from our
 [get started example repo](https://github.com/iterative/example-get-started):
 
-```dvc
+```cli
 $ dvc import git@github.com:iterative/example-get-started model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
@@ -96,7 +96,7 @@ As DVC mentions, the import stage (`.dvc` file) `model.pkl.dvc` is created. This
 `dvc unfreeze` on it first, then `dvc repro` (and `dvc freeze` again). Let's
 just run `dvc update` on it instead:
 
-```dvc
+```cli
 $ dvc update model.pkl.dvc
 Output 'model.pkl' didn't change. Skipping saving.
 Saving information to 'model.pkl.dvc'.
@@ -117,7 +117,7 @@ Let's import a model from a specific version of our
 [get started example repo](https://github.com/iterative/example-get-started)
 first:
 
-```dvc
+```cli
 $ dvc import --rev baseline-experiment \
             git@github.com:iterative/example-get-started \
             model.pkl
@@ -128,7 +128,7 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 After this, the import stage (`.dvc` file) `model.pkl.dvc` is created. Let's try
 to run `dvc update` on this file and see what happens.
 
-```dvc
+```cli
 $ dvc update model.pkl.dvc
 ```
 
@@ -139,7 +139,7 @@ was not updated.
 
 Let's try to update the model to a different version:
 
-```dvc
+```cli
 $ dvc update --rev bigrams-experiment model.pkl.dvc
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'

@@ -118,13 +118,13 @@ dependency.
 
 Instead of:
 
-```dvc
+```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
 ```
 
 It is possible to use `dvc stage add`, for example (HTTP URL):
 
-```dvc
+```cli
 $ dvc stage add -n download_data \
                 -d https://data.dvc.org/get-started/data.xml \
                 -o data.xml \
@@ -198,7 +198,7 @@ the repo and checkout the
 [3-config-remote](https://github.com/iterative/example-get-started/releases/tag/3-config-remote)
 tag, section of the _Get Started_:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 $ git checkout 3-config-remote
@@ -211,7 +211,7 @@ $ git checkout 3-config-remote
 An advanced alternate to the intro of the [Versioning Basics] part of the _Get
 Started_ is to use `dvc import-url`:
 
-```dvc
+```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
                  data/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data/data.xml'
@@ -262,7 +262,7 @@ To illustrate this scenario, let's use a local file system directory external to
 the workspace (in real life, the data file could be on a remote server instead).
 Run these commands:
 
-```dvc
+```cli
 $ mkdir /tmp/dvc-import-url-example
 $ cd /tmp/dvc-import-url-example/
 $ wget https://data.dvc.org/get-started/data.xml
@@ -273,7 +273,7 @@ In a production system, you might have a process to update data files. That's
 not what we have here, so in this case we'll set up a "data store" where we can
 edit the data file.
 
-```dvc
+```cli
 $ dvc import-url /tmp/dvc-import-url-example/data.xml data/data.xml
 Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ```
@@ -300,7 +300,7 @@ edit the data file.
 Let's now manually reproduce the [data processing section] of the _Get Started_.
 Download the example source code archive and unzip it:
 
-```dvc
+```cli
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
@@ -316,7 +316,7 @@ Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
-```dvc
+```cli
 $ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
@@ -324,7 +324,7 @@ $ pip install -r src/requirements.txt
 
 </details>
 
-```dvc
+```cli
 $ dvc stage add -n prepare \
                 -d src/prepare.py -d data/data.xml \
                 -o data/prepared \
@@ -336,7 +336,7 @@ Running command:
 ...
 ```
 
-```dvc
+```cli
 $ tree
 .
 ├── README.md
@@ -359,7 +359,7 @@ $ tree
 
 At this point, DVC considers everything being up to date:
 
-```dvc
+```cli
 $ dvc status
 Data and pipelines are up to date.
 ```
@@ -369,7 +369,7 @@ as long as it remains a valid XML file, because any change will result in a
 different dependency file hash (`md5`) in the import `.dvc` file. Once we do so,
 we can run `dvc update` to make sure the import is up to date:
 
-```dvc
+```cli
 $ dvc update data.xml.dvc
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ```
@@ -378,7 +378,7 @@ DVC notices the external data source has changed, and updates the `.dvc` file
 (reproduces it). In this case it's also necessary to run `dvc repro` so that the
 remaining pipeline results are also regenerated:
 
-```dvc
+```cli
 $ dvc repro
 Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
@@ -396,7 +396,7 @@ downloading anything, transferring a target directly to a DVC remote instead.
 
 Let's import a `data.xml` file via HTTP straight to remote:
 
-```dvc
+```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote
 ...
@@ -407,7 +407,7 @@ data.xml.dvc
 Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
 wants to actually download the data they can use `dvc pull`:
 
-```dvc
+```cli
 $ dvc pull data.xml.dvc
 A       data.xml
 1 file added

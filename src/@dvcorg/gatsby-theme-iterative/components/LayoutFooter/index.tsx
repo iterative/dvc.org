@@ -18,7 +18,7 @@ import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_ic
 import { ReactComponent as IterativeSVG } from '../../../../../static/img/iterative_icon-color--square_vector.svg'
 import { ReactComponent as MlemSVG } from '../../../../../static/img/mlem-icon.svg'
 
-import * as styles from './styles.module.css'
+import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
 
 const docsPage = getFirstPage()
 

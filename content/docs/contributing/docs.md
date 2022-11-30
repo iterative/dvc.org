@@ -68,20 +68,20 @@ install [Yarn](https://yarnpkg.com/):
 [visual studio build tools]:
   https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
 
-```dvc
+```cli
 $ npm install -g yarn
 ```
 
 Having cloned this project locally, navigate into the directory and install the
 project dependencies with Yarn:
 
-```dvc
+```cli
 $ yarn
 ```
 
 Launch the server locally with:
 
-```dvc
+```cli
 $ yarn develop
 ```
 
