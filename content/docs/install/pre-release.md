@@ -9,7 +9,7 @@ releases, you can install it from our code repository GitHub.
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.8+) to encapsulate your local environment.
 
-```dvc
+```cli
 # Plain DVC
 $ pip install git+https://github.com/iterative/dvc
 

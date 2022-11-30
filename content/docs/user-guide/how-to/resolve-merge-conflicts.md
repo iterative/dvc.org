@@ -87,7 +87,7 @@ If you have a directory, DVC provides a [Git merge driver] that can
 automatically resolve many merge conflicts for you. To use it, first set it up
 in your Git repo:
 
-```dvc
+```cli
 $ git config merge.dvc.name 'DVC merge driver'
 $ git config merge.dvc.driver \
       'dvc git-hook merge-driver --ancestor %O --our %A --their %B'

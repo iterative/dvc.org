@@ -99,7 +99,7 @@ as pager for the output of `dvc dag`. Windows doesn't have the `less` command
 available however. Fortunately, there is a easy way of installing it via
 [Chocolatey](https://chocolatey.org/) (please install the tool first):
 
-```dvc
+```cli
 $ choco install less
 ```
 

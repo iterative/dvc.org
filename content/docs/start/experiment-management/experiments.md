@@ -57,7 +57,7 @@ model, a bunch of hyperparameters that tune training and models, and outputs
 metrics and plots to evaluate the models. `dvc exp init` has sane defaults about
 the names of these elements to initialize a project:
 
-```dvc
+```cli
 $ dvc exp init --live dvclive --plots plots python src/train.py
 ```
 
@@ -77,7 +77,7 @@ You can also set these options in a dialog format with
 Running the experiment with the default project settings requires only the
 command:
 
-```dvc
+```cli
 $ dvc exp run
 ...
 Reproduced experiment(s): exp-b28f0
@@ -115,7 +115,7 @@ model:
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -141,7 +141,7 @@ Option `dvc exp run --set-param` allows to update experimental parameters
 without modifying the files manually. We use this feature to set the
 convolutional units in `train.py`.
 
-```dvc
+```cli
 $ dvc exp run --set-param model.conv_units=24
 ...
 Reproduced experiment(s): exp-7b56f
@@ -159,7 +159,7 @@ batch. This is especially handy when you have long running experiments.
 We add experiments to the queue using the `--queue` option of `dvc exp run`. We
 also use `-S` (`--set-param`) to set a value for the parameter.
 
-```dvc
+```cli
 $ dvc exp run --queue -S model.conv_units=32
 Queued experiment '3cac8c6' for future execution.
 $ dvc exp run --queue -S model.conv_units=64
@@ -173,7 +173,7 @@ Queued experiment '9109ea9' for future execution.
 Next, run all (`--run-all`) queued experiments in parallel. You can specify the
 number of parallel processes using `--jobs`:
 
-```dvc
+```cli
 $ dvc exp run --run-all --jobs 2
 ```
 
@@ -184,7 +184,7 @@ $ dvc exp run --run-all --jobs 2
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments.
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -209,7 +209,7 @@ experiments, this may lead to a cluttered view. You can limit the table to
 specific columns using the [`--drop`](/doc/command-reference/exp/show#--drop)
 option of the command.
 
-```dvc
+```cli
 $ dvc exp show --drop 'Created|train|loss'
 ```
 
@@ -255,7 +255,7 @@ Metrics files are interpreted specially also in
 After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
-```dvc
+```cli
 $ dvc exp branch exp-17dd9 "cnn-256"
 Git branch 'cnn-256' has been created from experiment 'exp-17dd9'.
 To switch to the new branch run:

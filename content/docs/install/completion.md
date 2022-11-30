@@ -15,7 +15,7 @@ Command completion is usually requested by pressing the `tab` key on your shell,
 it will then present the possible arguments that can follow that command name.
 For example:
 
-```dvc
+```cli
 $ dvc r # Press [tab] key
 Completing dvc commands
 remote  -- Set up and manage data remotes.
@@ -47,7 +47,7 @@ install and configure shell completion.
 
 1. First, make sure that Bash completion support is installed:
 
-   ```dvc
+   ```cli
    $ brew install bash-completion
    ```
 
@@ -61,7 +61,7 @@ install and configure shell completion.
 
 2. Run this command to install DVC completions:
 
-   ```dvc
+   ```cli
    $ dvc completion -s bash | sudo tee "$(brew --prefix)"/etc/bash_completion.d/dvc
    ```
 
@@ -71,7 +71,7 @@ install and configure shell completion.
 
 1. First, make sure that Bash completion support is installed:
 
-   ```dvc
+   ```cli
    $ sudo apt install --reinstall bash-completion
    ```
 
@@ -90,7 +90,7 @@ install and configure shell completion.
 
 2. Run this command to install DVC completions:
 
-   ```dvc
+   ```cli
    $ dvc completion -s bash | sudo tee /etc/bash_completion.d/dvc
    ```
 
@@ -112,7 +112,7 @@ file name to be `_dvc`.
 
 2. Run this command to install DVC completions:
 
-   ```dvc
+   ```cli
    $ dvc completion -s zsh | sudo tee /usr/local/share/zsh/site-functions/_dvc
    ```
 

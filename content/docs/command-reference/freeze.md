@@ -41,7 +41,7 @@ pipeline that needs their outputs.
 
 First, let's create a dummy stage that copies `foo` to `bar`:
 
-```dvc
+```cli
 $ echo foo > foo
 $ dvc add foo
 $ dvc stage add -n make_copy -d foo -o bar cp foo bar
@@ -51,7 +51,7 @@ $ dvc stage add -n make_copy -d foo -o bar cp foo bar
 
 Then, let's change the file `foo` that the stage `make_copy` depends on:
 
-```dvc
+```cli
 $ echo zoo > foo
 $ dvc status
 make_copy:
@@ -65,7 +65,7 @@ foo.dvc:
 `dvc status` notices that `foo` has changed. Let's now freeze the `make_copy`
 stage and see what's the project status after that:
 
-```dvc
+```cli
 $ dvc freeze make_copy
 $ dvc status
 foo.dvc:

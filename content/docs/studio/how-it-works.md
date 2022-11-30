@@ -65,5 +65,5 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 [dvc]: https://dvc.org/
 [cml]: https://cml.dev
 [mlem]: https://mlem.ai/
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [git]: https://git-scm.com/

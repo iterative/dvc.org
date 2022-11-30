@@ -175,7 +175,7 @@ plots:
   - logs.csv
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -203,7 +203,7 @@ plots:
       y_label: True Positive Rate
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```

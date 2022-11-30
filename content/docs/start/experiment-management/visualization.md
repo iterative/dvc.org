@@ -36,7 +36,7 @@ HTML file you can open in the browser (shown below). Or you can load your
 project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
 visualize them.
 
-```dvc
+```cli
 $ dvc plots show plots/confusion.csv --template confusion \
                                      -x actual -y predicted
 file:///.../example-dvc-experiments/plots/confusion.json.html
@@ -64,7 +64,7 @@ project.][misclassified-example-code]
 [misclassified-example-code]:
   https://github.com/iterative/example-dvc-experiments/blob/48b1e5078c957f71674c00f416290eaa3b20b559/src/util.py#L49
 
-```dvc
+```cli
 $ dvc plots show --open plots/misclassified.png
 ```
 

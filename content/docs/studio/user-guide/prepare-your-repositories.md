@@ -12,12 +12,12 @@ values are found in JSON or YAML files in the repository. Additionally, model
 information may be available as Git tags.
 
 New ML model metadata can be added directly from the **Models** tab after
-[creating a project]. You can also use [GTO] or [MLEM].
+[creating a project]. You can also use the underlying [GTO] or [MLEM] directly.
 
 [projects]: /doc/studio/user-guide/projects-and-experiments/what-is-a-project
 [creating a project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
 
 ## Set up datasets, metrics, and hyperparameters

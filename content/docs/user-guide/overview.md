@@ -105,11 +105,11 @@ bringing best practices from software engineering into the data science field.
 
 <admon type="info">
 
-\* **copy-on-write links or "reflinks"** are a relatively new way to link files
-in UNIX-style file systems. Unlike hardlinks or symlinks, they support
-transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
-means that editing a reflinked file is always safe as all the other links to the
-file will reflect the changes.
+\* ([copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write)) links or
+**reflinks** are a type of file linking available in UNIX-style file systems.
+Unlike hardlinks or symlinks, these file entries turn into a plain copy when
+modified. This means that editing reflinks is always safe, as the original
+<abbr>cached</abbr> data will remain unchanged.
 
 </admon>
 
