@@ -1,69 +1,67 @@
-# Data Management with DVC
+# Data Management for Machine Learning
 
-Where to store data and how to organize datasets for machine learning are not
-trivial problems when working with large files and directories. DVC proposes a
-new strategy involving _codification_. This lets you focus on more important
-tasks like data exploration, preparation, etc.
+Where and how to store your data and ML model files is one of the first things
+you'll have to determine. Without a process, your assets may end up scattered
+redundantly through storage locations on the cloud or on-premise. Accessing
+these data stores directly requires different tools (AWS CLI, Python libraries,
+etc.), and it's difficult to control who can write and read.
 
-Traditionally, data files end up scattered through different locations on the
-cloud and on-premises, often redundantly. It's easy to lose track of relevant
-assets, and difficult to implement security controls. Accessing these data
-stores directly requires special tools and integrations (AWS CLI, Python
-libraries, etc.). Versioning data under these conditions is a challenge.
+![Direct storage access](/img/direct-storage-access.png) _Mess of managing data
+ad hoc_
 
-![Direct storage access](/img/direct-storage-access.png) _Problems with managing
-data ad hoc_
+DVC helps you structure your data throughout its lifecycle. A clean project
+structure can be linked to a central storage platform (or multiple ones). Data
+contents are <abbr>cached</abbr> in a way that [prevents duplication] as it's
+ingested. And [data versioning] as well as [reproducibility][data pipelines] are
+enabled. This lets you focus on more important tasks like data exploration,
+preparation etc.
 
-DVC's approach has many benefits. First, a clean directory structure can be
-centrally mapped to a storage location (or multiple ones). Data objects are
-<abbr>cached</abbr> in a way that [prevents file duplication] as they're
-ingested. [Data versioning] and [reproducibility] are enabled.
-[See more](#more-benefits).
-
-[prevents file duplication]:
+[prevents duplication]:
   /doc/user-guide/data-management/large-dataset-optimization
 [data versioning]: /doc/use-cases/versioning-data-and-models
-[reproducibility]: /doc/user-guide/pipelines
+[data pipelines]: /doc/user-guide/pipelines
 
-![DVC data access](/img/dvc-data-access.png) _Main benefits of DVC's approach_
+![DVC data access](/img/dvc-data-access.png) _Standard approach with DVC_
 
-To achieve this, DVC introduces a layer of [indirection]: raw data, models, and
-other artifacts are _codified_ in small [metafiles] that describe them. Storage
-locations are also saved to human-readable config files. You can control all
-these files [with Git], along with the rest of your project's code.
-Specifically, keep in mind these key workflow changes:
+To achieve this, DVC introduces a layer of [indirection] where large files and
+directories get _codified_ into small [metafiles] that describe them. Storage
+locations are also saved to human-readable [config files]. You can capture this
+[with Git] along with the rest of your project's code, while data storage is
+separated automatically. Key workflow changes to keep in mind:
 
-[indirection]: https://en.wikipedia.org/wiki/Indirection
-[metafiles]: /doc/user-guide/project-structure
-[with git]: https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
-
-1. Start by setting up up a <abbr>DVC project</abbr> and its storage locations.
+1. You must set up a <abbr>DVC project</abbr> and its storage locations.
 1. Stored objects are [reorganized] by DVC (not intended for manual handling).
 1. Data operations happen through a code repository (typically on Git).
 
+[indirection]: https://en.wikipedia.org/wiki/Indirection
+[metafiles]: /doc/user-guide/project-structure
+[config files]: /doc/user-guide/project-structure/internal-files
+[with git]: https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 [reorganized]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
-## More benefits
+## Benefits
 
-- [Version control] (Git) benefits on top of your existing storage solutions:
-  immutable history, authoring, distributed collaboration, etc.
-- You work with data in a local <abbr>workspace</abbr>, as with any other files;
-  DVC tracks, restores, and synchronizes everything with a few operations that
-  do not change per storage system.
-- Your project repository stays small, as storage is separated automatically.
-- Stop wasting valuable time by transferring the same large files repeatedly.
-- Controlling who can read and write at folder or file level is easier.
-- [Fast caching], [data registries], [model registries], [CI/CD for ML], and
-  more!
+- Work in a small and clean <abbr>workspace</abbr> linked to one or more storage
+  locations. DVC tracks, restores, and synchronizes everything with a few
+  operations that do not change.
+- Content-addressable <abbr>caching</abbr> maximizes storage efficiency and
+  transfer speed, enabling near-instantaneous switching among datasets.
+- [Data versioning] with Git on top of your existing storage solutions (SSH, S3,
+  [etc.])
+- Immutable project history with an append-only storage and authors
+  (auditability)
+- [Data registries], distributed collaboration, [data pipelines], [model
+  registries], data security, [CI/CD for ML], [productization], and other
+  advanced scenarios are unlocked.
 
-[version control]:
-  https://www.atlassian.com/git/tutorials/what-is-version-control
 [project versions]: /doc/user-guide/data-management/data-versioning
 [fast caching]: /doc/use-cases/fast-data-caching-hub
 [data registries]: /doc/use-cases/data-registry
+[etc.]: /doc/command-reference/remote/add#supported-storage-types
 [model registries]: /doc/use-cases/model-registry
 [ci/cd for ml]: https://cml.dev/
+[productization]: https://mlem.ai/
 
 <!-- ## Summary of differences
 
