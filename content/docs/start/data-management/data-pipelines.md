@@ -75,6 +75,15 @@ $ dvc stage add -n prepare \
                 python src/prepare.py data/data.xml
 ```
 
+<admon type="info">
+
+The data needed to run this example can be found [in a previous page].
+
+[in a previous page]:
+  /doc/start/data-management/data-versioning#expand-to-get-an-example-dataset
+
+</admon>
+
 A `dvc.yaml` file is generated. It includes information about the command we
 want to run (`python src/prepare.py data/data.xml`), its
 <abbr>dependencies</abbr>, and <abbr>outputs</abbr>.
