@@ -1,7 +1,7 @@
 # Data Management for Machine Learning
 
 Where and how to store your data and ML model files is one of the first things
-you'll have to determine. Without a process, your assets may end up scattered
+you'll have to determine. Without a process, assets may end up scattered
 redundantly through storage locations on the cloud or on-premise. Accessing
 these data stores directly requires different tools (AWS CLI, Python libraries,
 etc.), and it's difficult to control who can write and read.
