@@ -1,9 +1,5 @@
 name: Check Deployment
 on:
-  # TODO: Remove push event used for testing on current branch
-  push:
-    branches:
-      - 'test-no-deploy-branch'
   pull_request:
   issue_comment:
     types: [created, edited]
