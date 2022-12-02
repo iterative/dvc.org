@@ -1,5 +1,11 @@
 name: Check Deployment
 on:
+  workflow_dispatch:
+    inputs:
+      passci:
+        description: 'Pass CI'
+        required: true
+        type: boolean
   pull_request:
   issue_comment:
     types: [created, edited]
@@ -11,6 +17,9 @@ jobs:
       'no-deploy')
     runs-on: ubuntu-latest
     steps:
+      - name: Pass CI with input
+        if: ${{ inputs.passci }}
+        run: exit 0
       - uses: khan/pull-request-comment-trigger@v1.1.0
         id: check
         with:
