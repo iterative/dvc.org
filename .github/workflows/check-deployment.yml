@@ -1,15 +1,18 @@
 name: Check Deployment
 on:
-  workflow_dispatch:
+  # TODO: Remove push event used for testing on current branch
+  push:
+    branches:
+      - 'test-no-deploy-branch'
   pull_request:
   issue_comment:
     types: [created, edited]
-  branches:
-    - 'renovate/**'
-    - '**no-deploy**'
 
 jobs:
-  deploy:
+  check-branches:
+    if:
+      startsWith(github.head_ref, 'renovate/') || contains(github.head_ref,
+      'no-deploy')
     runs-on: ubuntu-latest
     steps:
       - uses: khan/pull-request-comment-trigger@v1.1.0
