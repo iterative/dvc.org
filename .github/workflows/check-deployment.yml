@@ -18,7 +18,7 @@ jobs:
       - uses: khan/pull-request-comment-trigger@v1.1.0
         id: check
         with:
-          trigger: '@pass-ci'
+          trigger: '#pass-ci'
           reaction: rocket
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
