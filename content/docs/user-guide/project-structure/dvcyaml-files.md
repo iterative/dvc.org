@@ -265,7 +265,7 @@ These include a subset of the fields in `.dvc` file
 | `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
 | `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
 | `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
-| `push`                          | Whether or not this  file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default). |
+| `push`       | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                                                                                      |
 
 <admon type="warn">
 
