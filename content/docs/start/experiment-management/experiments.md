@@ -32,7 +32,7 @@ ones that we need to Git.
 **New!** You can track and compare your ML experiments with DVC directly [from
 Visual Studio Code], a leading IDE in the industry.
 
-[from Visual Studio Code]: /doc/vs-code-extension
+[from visual studio code]: /doc/vs-code-extension
 
 </admon>
 
@@ -203,11 +203,11 @@ $ dvc exp show
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-By default, the output includes all the metrics, parameters and dependencies with the
-timestamp. If you have a large number of metrics, parameters, dependencies or
-experiments, this may lead to a cluttered view. You can limit the table to
-specific columns using the [`--drop`](/doc/command-reference/exp/show#--drop)
-option of the command.
+By default, the output includes all the metrics, parameters and dependencies
+with the timestamp. If you have a large number of metrics, parameters,
+dependencies or experiments, this may lead to a cluttered view. You can limit
+the table to specific columns using the
+[`--drop`](/doc/command-reference/exp/show#--drop) option of the command.
 
 ```cli
 $ dvc exp show --drop 'Created|train|loss'
@@ -268,9 +268,9 @@ into your `main` branch with the usual Git commands.
 
 ## Go Further
 
-There are many other features of `dvc exp`, like cleaning up unused
-experiments, sharing them without committing into Git, or getting differences
-between two experiments.
+There are many other features of `dvc exp`, like cleaning up unused experiments,
+sharing them without committing into Git, or getting differences between two
+experiments.
 
 Please see the section on
 [Experiment Management](/doc/user-guide/experiment-management) in the User's
