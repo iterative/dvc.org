@@ -72,7 +72,7 @@ $ dvc stage add -n prepare \
                 -p prepare.seed,prepare.split \
                 -d src/prepare.py -d data/data.xml \
                 -o data/prepared \
-                python src/prepare.py data/data.xml
+                python src/prepare.py data/data.xml 
 ```
 
 <admon type="info">
