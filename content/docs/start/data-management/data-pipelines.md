@@ -65,7 +65,11 @@ $ pip install -r src/requirements.txt
 
 Please also add or commit the source code directory with Git at this point.
 
+<admon type="info:>
+
 The data needed to run this example can be found [in a previous page].
+
+</admon>
 
 [in a previous page]:
   /doc/start/data-management/data-versioning#expand-to-get-an-example-dataset
