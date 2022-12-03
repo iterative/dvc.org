@@ -65,24 +65,19 @@ $ pip install -r src/requirements.txt
 
 Please also add or commit the source code directory with Git at this point.
 
-</details>
- 
-```cli
-$ dvc stage add -n prepare \
-                -p prepare.seed,prepare.split \ 
-                -d src/prepare.py -d data/data.xml \
-                -o data/prepared \
-                python src/prepare.py data/data.xml 
-```
-
-<admon type="info">
-
 The data needed to run this example can be found [in a previous page].
 
 [in a previous page]:
   /doc/start/data-management/data-versioning#expand-to-get-an-example-dataset
 
-</admon>
+</details>
+```cli
+$ dvc stage add -n prepare \
+                -p prepare.seed,prepare.split \
+                -d src/prepare.py -d data/data.xml \
+                -o data/prepared \
+                python src/prepare.py data/data.xml
+```
 
 A `dvc.yaml` file is generated. It includes information about the command we
 want to run (`python src/prepare.py data/data.xml`), its
