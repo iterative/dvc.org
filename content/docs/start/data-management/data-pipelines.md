@@ -69,7 +69,7 @@ Please also add or commit the source code directory with Git at this point.
 
 ```cli
 $ dvc stage add -n prepare \
-                -p prepare.seed,prepare.split \
+                -p prepare.seed,prepare.split \ 
                 -d src/prepare.py -d data/data.xml \
                 -o data/prepared \
                 python src/prepare.py data/data.xml 
