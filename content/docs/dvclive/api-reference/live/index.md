@@ -10,6 +10,7 @@ class Live:
         dir: str = "dvclive",
         resume: bool = False,
         report: Optional[str] = "auto",
+        save_dvc_exp: bool = False,
     ):
 ```
 
@@ -70,6 +71,9 @@ You can use `Live()` as a context manager. When exiting the context manager,
   `html`.
 
   If `report` is `None`, `Live.make_report()` won't generate anything.
+
+- `save_dvc_exp` - If `True`, DVCLive will create a DVC <abbr>experiment</abbr>
+  as part of `live.end()`.
 
 ## Methods
 
