@@ -16,7 +16,7 @@ This requires a 3-step process:
 
 1. [Set up an access token](#set-up-an-access-token)
 2. [Configure your model training CI job](#configure-your-model-training-ci-job)
-3. [Send and view the updates](#send-the-updates)
+3. [Send and view the updates](#send-and-view-live-metrics-and-plots)
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
@@ -27,19 +27,11 @@ TODO: Replace this with a video tutorial for live metrics and plots
 Iterative Studio uses access tokens to authorize [DVCLive] to send live updates
 to the metrics and plots.
 
-### Generate access token
+To set up the access token, open your user profile page. In the , click on
+`Generate new token`.
 
-To set up the access token, open your user profile page. In the
-`Studio access token` section, click on `Generate new token`.
-
-### Regenerate access token
-
-You can regenerate the access token at any point. The old access token will no
-longer be authorized to send live metrics and plots to Iterative Studio.
-
-### Reset (delete) access token
-
-You can delete the access token when you no longer need it.
+You can generate, regenerate, or delete your access token from the
+`Studio access token` section of your profile page.
 
 The option to delete the access token is also available when you try to change
 your password. That is, you can reset all your access credentials (your password
@@ -65,7 +57,7 @@ Here is an example GitHub action.
 TODO: provide link to an example snippet (such as
 [this](https://github.com/iterative/test-dvclive-studio/blob/086a51d76c7983f24c091e1b007820916aa75e7d/.github/workflows/test_live_metrics.yaml#L17-L19))
 
-## Send the updates
+## Send and view live metrics and plots
 
 In the training CI job (which has been configured as detailed above), whenever
 you log your metrics or plots using [DVCLive], they will be automatically sent
@@ -73,12 +65,9 @@ to Iterative Studio.
 
 Iterative Studio stores the live metrics and plots data in its database.
 
-## View live metrics and plots
-
 In the project table, the live metrics are displayed next to the Git commit
 corresponding to the experiment. Updates to the live metrics are highlighted in
-orange. The running experiments themselves are displayed with a `Running`
-indicator.
+orange.
 
 ![](https://static.iterative.ai/img/studio/live_metrics_row.png)
 
@@ -99,10 +88,10 @@ An experiment can have one of the following statuses:
 
 - **Running** - Iterative Studio expects to receive live metrics and plots for
   these experiments.
-- **Completed** - Iterative Studio does expect to receive any more updates for
-  these experiments. Once the experiment concludes, live metrics or plots will
-  no longer be displayed for the experiment. You are expected to persist the
-  final results in Git. TODO: confirm if this statement is correct.
+- **Completed** - Iterative Studio does not expect to receive any more updates
+  for these experiments. Once the experiment concludes, live metrics or plots
+  will no longer be displayed for the experiment. You are expected to persist
+  the final results in Git. TODO: confirm if this statement is correct.
 
 - **Stopped/Error** - These experiments stopped due to some error.
 

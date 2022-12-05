@@ -81,11 +81,19 @@ on `Commit changes`.
 
 ## What happens after you submit a new experiment
 
+Iterative Studio will
+[create the Git commit and pull request](#git-commit-and-pull-request-are-created).
+This will [invoke your model training process](#model-training-is-invoked) (if
+it is set up). You can
+[track the results in real-time](#live-metrics-and-plots-are-tracked). And you
+can [save the results in Git](#metrics-plots-and-reports-are-saved-in-git).
+
 ### Git commit (and pull request) are created
 
-The new experiment appears in the project's experiment table. If you had
-specified a new branch to commit the changes to, then a new pull request will
-also have been created from the new branch to the base branch.
+Iterative Studio will create a Git commit with the changes you submitted. This
+commit appears in the project's experiment table. If you had specified a new
+branch to commit the changes to, then a new pull request will also have been
+created from the new branch to the base branch.
 
 ### Model training is invoked
 
