@@ -80,7 +80,13 @@ corresponding to the experiment. Updates to the live metrics are highlighted in
 orange. The running experiments themselves are displayed with a `Running`
 indicator.
 
-TODO: Add a screenshot of the `Running` indicator
+![](https://static.iterative.ai/img/studio/live_metrics_row.png)
+
+Updates to the live metrics are highlighted in orange in the
+[compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
+as well.
+
+![](https://static.iterative.ai/img/studio/live_metrics_compare.png)
 
 The number of experiments with new updates to the live metrics values are
 displayed in the `Live` icon, which can also be used to filter and show only
