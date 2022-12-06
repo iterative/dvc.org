@@ -2,7 +2,9 @@
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
 or [URLs](/doc/command-reference/import-url#description), and the corresponding
-import `.dvc` files.
+import `.dvc` files, or update files or directories from a
+[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
+remote.
 
 ## Synopsis
 
@@ -37,6 +39,19 @@ to update an imported artifact to a different revision.
 ```cli
 $ dvc update --rev master
 ```
+
+### Worktree update
+
+When using a
+[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
+remote, `dvc update` will update the specified target to match the latest
+version of the corresponding file or directory from the remote storage. If the
+"latest" version of the specified target is a deleted file or an empty
+directory, `dvc update` will fail (in order to avoid potential accidental local
+data loss).
+
+⚠️ Note that the `--rev`, `--no-download` and `--to-remote` flags are not
+compatible when updating from a worktree remote.
 
 ## Options
 
