@@ -116,11 +116,11 @@ storage, DVC will always [pull](/doc/command-reference/pull) the versioned data
 from its original source location. Versioned data will also not be
 [pushed](/doc/command-reference/push) to remote storage.
 
-| Type      | Description                  | Versioned `url` format example                         |
-| --------- | ---------------------------- | ------------------------------------------------------ |
-| `s3`      | Amazon S3                    | `s3://bucket/data?versionId=L4kqtJlcpXroDTDmpUMLUo`    |
-| `azure`   | Microsoft Azure Blob Storage | `azure://container/data?versionid=YYYY-MM-DDThh:mm:ss` |
-| `gs`      | Google Cloud Storage         | `gs://bucket/data#1360887697105000`                    |
+| Type    | Description                  | Versioned `url` format example                         |
+| ------- | ---------------------------- | ------------------------------------------------------ |
+| `s3`    | Amazon S3                    | `s3://bucket/data?versionId=L4kqtJlcpXroDTDmpUMLUo`    |
+| `azure` | Microsoft Azure Blob Storage | `azure://container/data?versionid=YYYY-MM-DDThh:mm:ss` |
+| `gs`    | Google Cloud Storage         | `gs://bucket/data#1360887697105000`                    |
 
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline [stage](/doc/command-reference/run) with an external
