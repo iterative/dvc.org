@@ -126,7 +126,8 @@
         "children": [
           "large-dataset-optimization",
           "importing-external-data",
-          "managing-external-data"
+          "managing-external-data",
+          "cloud-versioning"
         ]
       },
       {

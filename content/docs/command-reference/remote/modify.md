@@ -346,6 +346,19 @@ $ dvc push
 For more on the supported env vars, please see the
 [boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables)
 
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this S3 remote. This requires that
+  [S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+  be enabled on the specified S3 bucket.
+
+- `worktree` - Use
+  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
+  cloud versioning features for this S3 remote. This requires that
+  [S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+  be enabled on the specified S3 bucket. When both `version_aware` and
+  `worktree` are set, `worktree` takes precedence.
+
 </details>
 
 <details>
@@ -548,6 +561,19 @@ can propagate from an Azure configuration file (typically managed with
 `container_name`. The default directory where it will be searched for is
 `~/.azure` but this can be customized with the `AZURE_CONFIG_DIR` env var.
 
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Azure remote. This requires that
+  [Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
+  be enabled on the specified Azure storage account and container.
+
+- `worktree` - Use
+  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
+  cloud versioning features for this Azure remote. This requires that
+  [Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
+  be enabled on the specified Azure storage account and container. When both
+  `version_aware` and `worktree` are set, `worktree` takes precedence.
+
 </details>
 
 <details>
@@ -721,6 +747,21 @@ set:
 ```cli
 $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 ```
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Google Cloud Storage remote. This requires
+  that
+  [Object versioning](https://cloud.google.com/storage/docs/object-versioning)
+  be enabled on the specified bucket.
+
+- `worktree` - Use
+  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
+  cloud versioning features for this Google Cloud Storage remote. This requires
+  that
+  [Object versioning](https://cloud.google.com/storage/docs/object-versioning)
+  be enabled on the specified bucket. When both `version_aware` and `worktree`
+  are set, `worktree` takes precedence.
 
 </details>
 
