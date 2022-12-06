@@ -125,7 +125,7 @@ When there are metrics file changes (before committing them with Git), the
 $ dvc metrics diff
 
 Path       Metric    HEAD     workspace  Change
-eval.json  ACU       0.65115  0.66729    0.01614
+eval.json  AUC       0.65115  0.66729    0.01614
 eval.json  error     0.1666   0.16982    0.00322
 eval.json  TP        528      516        -12
 ```
