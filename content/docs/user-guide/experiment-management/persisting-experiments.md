@@ -49,10 +49,10 @@ Your workspace now contains all the files from the experiment.
 
 ## Bring experiment results to your workspace
 
-Typically, `dvc exp run` leaves the experiment results in your workspace for
-convenience. However, you may have run multiple experiments and wish to go back
-to a specific one. In this case, you can restore a previous experiment's results
-with `dvc exp apply`. Let's see an example:
+Typically, `dvc exp run` and `dvc exp save` leave the experiment results in your
+workspace for convenience. However, you may have run multiple experiments and
+wish to go back to a specific one. In this case, you can restore a previous
+experiment's results with `dvc exp apply`. Let's see an example:
 
 ```cli
 $ dvc exp show

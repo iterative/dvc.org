@@ -53,9 +53,11 @@ once.
 <admon icon="book">
 
 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
+`dvc exp save` can be used to [save experiments] after running `dvc repro`
 
 </admon>
 
+[save experiments]: /doc/command-reference/exp/save
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
