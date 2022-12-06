@@ -108,6 +108,20 @@ DVC supports several types of external locations (protocols):
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
 
+DVC also supports capturing cloud versioning information when importing data
+from certain cloud storage providers. When the `--version-aware` option is
+provided or when the `url` argument includes a supported cloud versioning ID,
+DVC will import the specified version of the given data. When using versioned
+storage, DVC will always [pull](/doc/command-reference/pull) the versioned data
+from its original source location. Versioned data will also not be
+[pushed](/doc/command-reference/push) to remote storage.
+
+| Type    | Description                  | Versioned `url` format example                         |
+| ------- | ---------------------------- | ------------------------------------------------------ |
+| `s3`    | Amazon S3                    | `s3://bucket/data?versionId=L4kqtJlcpXroDTDmpUMLUo`    |
+| `azure` | Microsoft Azure Blob Storage | `azure://container/data?versionid=YYYY-MM-DDThh:mm:ss` |
+| `gs`    | Google Cloud Storage         | `gs://bucket/data#1360887697105000`                    |
+
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline [stage](/doc/command-reference/run) with an external
 dependency.
