@@ -12,6 +12,6 @@ on:
 
 jobs:
   check-deployment:
-    uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@check-deployment-workflow
+    uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@main
     with:
       passci: ${{ inputs.passci || false }}
