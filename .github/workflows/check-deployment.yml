@@ -14,4 +14,4 @@ jobs:
   check-branches:
     uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@check-deployment-workflow
     with:
-      passci: ${{ inputs.passci }}
+      passci: ${{ inputs.passci }} || false
