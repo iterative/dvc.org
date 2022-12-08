@@ -1,33 +1,45 @@
 # Data Management for Machine Learning
 
-Where and how to store your data and ML model files is one of the first things
-you'll have to determine. Without a process, assets may end up scattered
-redundantly through storage locations on the cloud or on-premise. Accessing
-these data stores directly requires different tools (AWS CLI, Python libraries,
-etc.), and it's difficult to control who can write and read.
+Where and how to store data and model files is one of the first things to solve
+in applied data science, but no best practices have been widely established yet.
+Your assets may end up scattered redundantly throughout data stores on the cloud
+and on-premise. Too many people have read and write access. Data versions rely
+on inconsistent file naming patterns.
 
-![Direct storage access](/img/direct-storage-access.png) _Mess of managing data
-ad hoc_
+![Direct storage access](/img/direct-storage-access.png) _Direct data access
+requires different tools._
 
-DVC helps you structure your data throughout its lifecycle. A clean project
-structure can be linked to a central storage platform (or multiple ones). Data
-contents are <abbr>cached</abbr> in a way that [prevents duplication] as it's
-ingested. And [data versioning] as well as [reproducibility][data pipelines] are
-enabled. This lets you focus on more important tasks like data exploration,
-preparation etc.
+DVC helps you take control of your data throughout its lifecycle. It manages
+your storage platform(s) from a central repository you can secure. It also
+tracks where every object lives, avoiding duplicates. Data updates can be
+[properly versioned] with append-only storage, guaranteeing the
+[reproducibility] of any state of your project. A consistent interface lets you
+access your files anywhere (via [CLI], [API], [IDE], or [web]).
 
-[prevents duplication]:
-  /doc/user-guide/data-management/large-dataset-optimization
-[data versioning]: /doc/use-cases/versioning-data-and-models
-[data pipelines]: /doc/user-guide/pipelines
+<!--
+visibility
+clean project structure?
+-->
+
+[properly versioned]: /doc/use-cases/versioning-data-and-models
+[reproducibility]: /doc/user-guide/pipelines
+[cli]: /doc/command-reference
+[api]: /doc/api-reference
+[ide]: /doc/vs-code-extension
+[web]: /doc/studio
 
 ![DVC data access](/img/dvc-data-access.png) _Standard approach with DVC_
 
-To achieve this, DVC introduces a layer of [indirection] where large files and
-directories get _codified_ into small [metafiles] that describe them. Storage
-locations are also saved to human-readable [config files]. You can capture this
-[with Git] along with the rest of your project's code, while data storage is
-separated automatically. Key workflow changes to keep in mind:
+To get there, DVC introduces a layer of [indirection] where large files and
+directories get _codified_ into small [metafiles], and storage locations defined
+in [config files]. You can capture all these [with Git] along with the rest of
+your project's code, while data storage is separated automatically.
+
+<!--
+Ops via Git?
+-->
+
+Key workflow changes to keep in mind:
 
 1. You must set up a <abbr>DVC project</abbr> and its storage locations.
 1. Stored objects are [reorganized] by DVC (not intended for manual handling).
@@ -45,23 +57,15 @@ separated automatically. Key workflow changes to keep in mind:
 - Work in a small and clean <abbr>workspace</abbr> linked to one or more storage
   locations. DVC tracks, restores, and synchronizes everything with a few
   operations that do not change.
-- Content-addressable <abbr>caching</abbr> maximizes storage efficiency and
+- Content-addressable <abbr>caching</abbr> maximizes [storage efficiency] and
   transfer speed, enabling near-instantaneous switching among datasets.
-- [Data versioning] with Git on top of your existing storage solutions (SSH, S3,
+- Data versioning with Git on top of your existing storage solutions (SSH, S3,
   [etc.])
 - Immutable project history with an append-only storage and authors
   (auditability)
 - [Data registries], distributed collaboration, [data pipelines], [model
   registries], data security, [CI/CD for ML], [productization], and other
   advanced scenarios are unlocked.
-
-[project versions]: /doc/user-guide/data-management/data-versioning
-[fast caching]: /doc/use-cases/fast-data-caching-hub
-[data registries]: /doc/use-cases/data-registry
-[etc.]: /doc/command-reference/remote/add#supported-storage-types
-[model registries]: /doc/use-cases/model-registry
-[ci/cd for ml]: https://cml.dev/
-[productization]: https://mlem.ai/
 
 <!-- ## Summary of differences
 
@@ -74,6 +78,19 @@ separated automatically. Key workflow changes to keep in mind:
 | _Reproduction_ | Manual logs (error-prone)  | Guaranteed by Git history                 |
 
 [efficient]: /doc/user-guide/data-management/large-dataset-optimization
+-->
+
+[project versions]: /doc/user-guide/data-management/data-versioning
+[fast caching]: /doc/use-cases/fast-data-caching-hub
+[data registries]: /doc/use-cases/data-registry
+[storage efficiency]: /doc/user-guide/data-management/large-dataset-optimization
+[etc.]: /doc/command-reference/remote/add#supported-storage-types
+[model registries]: /doc/use-cases/model-registry
+[ci/cd for ml]: https://cml.dev/
+[productization]: https://mlem.ai/
+
+<!--
+This lets you focus on more important tasks like data exploration, preparation, etc.
 -->
 
 <!-- ## Storage locations
