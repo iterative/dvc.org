@@ -51,7 +51,8 @@
         "src/server/**/*.js",
         "plugins/**/*.js",
         "gatsby-*.js",
-        "postcss.config.js"
+        "postcss.config.js",
+        "tailwind.config.js"
       ],
       "rules": {
         "@typescript-eslint/no-var-requires": "off",

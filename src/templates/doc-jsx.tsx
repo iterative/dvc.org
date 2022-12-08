@@ -3,29 +3,25 @@ import { getItemByPath } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/s
 
 import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 
-import Documentation from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX'
+import Documentation from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout'
 
 interface IJSXDocPageProps {
   title?: string
   description?: string
   slug: string
-  headings: []
 }
 
 const JSXDocPage: React.FC<PropsWithChildren<IJSXDocPageProps>> = ({
   title,
   description,
   children,
-  slug,
-  headings
+  slug
 }) => {
   const { label } = getItemByPath(slug)
   return (
     <>
       <SEO title={title || label} description={description} />
-      <Documentation headings={headings} path={slug}>
-        {children}
-      </Documentation>
+      <Documentation currentPath={slug}>{children}</Documentation>
     </>
   )
 }

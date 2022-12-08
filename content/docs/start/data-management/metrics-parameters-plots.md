@@ -275,7 +275,8 @@ and execute only the commands needed to produce new results (model, metrics,
 plots).
 
 The same logic applies to other possible adjustments — edit source code, update
-datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be.
+datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be
+run.
 
 ## Comparing iterations
 
