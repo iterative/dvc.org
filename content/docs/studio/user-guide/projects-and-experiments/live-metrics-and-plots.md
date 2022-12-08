@@ -87,13 +87,15 @@ Live plots are displayed in the
 An experiment can have one of the following statuses:
 
 - **Running** - Iterative Studio expects to receive live metrics and plots for
-  these experiments.
+  these experiments. Note that if the experiment stops due to any error,
+  Iterative Studio will not be aware of this and it will continue to wait for
+  live updates. In this case, you should delete the live metrics row from the
+  project table in Iterative Studio.
 - **Completed** - Iterative Studio does not expect to receive any more updates
-  for these experiments. Once the experiment concludes, live metrics or plots
-  will no longer be displayed for the experiment. You are expected to persist
-  the final results in Git. TODO: confirm if this statement is correct.
-
-- **Stopped/Error** - These experiments stopped due to some error.
+  for these experiments. Once the experiment concludes, you can delete the live
+  metrics row from the project table. Iterative Studio does not automatically
+  push the final results of your experiment to Git. Your CI action should
+  persist the final results in Git.
 
 <admon>
 
