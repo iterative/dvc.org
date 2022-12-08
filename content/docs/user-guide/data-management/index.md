@@ -6,8 +6,8 @@ Your assets may end up scattered redundantly throughout data stores on the cloud
 and on-premise. Too many people have read and write access. Data versions rely
 on inconsistent file naming patterns.
 
-![Direct storage access](/img/direct-storage-access.png) _Direct data access
-requires different tools._
+![Direct storage access](/img/manual_data_management.png) _Ad hoc data
+management gets complicated._
 
 DVC helps you take control of your data throughout its lifecycle. It manages
 your storage platform(s) from a central repository you can secure. It also
@@ -28,7 +28,7 @@ clean project structure?
 [ide]: /doc/vs-code-extension
 [web]: /doc/studio
 
-![DVC data access](/img/dvc-data-access.png) _Standard approach with DVC_
+![DVC data access](/img/dvc_managed_storage.png) _Simplified approach with DVC_
 
 To get there, DVC introduces a layer of [indirection] where large files and
 directories get _codified_ into small [metafiles], and storage locations defined
