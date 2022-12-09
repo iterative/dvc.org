@@ -7,11 +7,10 @@ on:
         required: true
         type: boolean
   pull_request:
-  issue_comment:
-    types: [created, edited]
+    types: [opened, synchronize, reopened, labeled]
 
 jobs:
   check-deployment:
-    uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@main
+    uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@update-check-deployment-workflow-no-deploy
     with:
       passci: ${{ inputs.passci || false }}
