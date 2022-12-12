@@ -29,7 +29,7 @@ that are tracked and <abbr>cached</abbr> by DVC. If you need to share these
 files, you can push them to [remote storage](/doc/command-reference/remote)
 (e.g. Amazon S3 or Google Drive).
 
-```
+```cli
 $ dvc push
 ```
 
