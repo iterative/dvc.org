@@ -7,9 +7,9 @@ to this commit history, so you can similarly share them.
 ## Basic workflow: store as peristent commits
 
 The most straightforward way to share experiments is to store them as
-[persistent](/doc/user-guide/experiment-management/persisting-experiments)
-Git commits and share them like you would [any other commit]. This will share
-all code and metadata associated with the experiment.
+[persistent](/doc/user-guide/experiment-management/persisting-experiments) Git
+commits and share them like you would [any other commit]. This will share all
+code and metadata associated with the experiment.
 
 ```cli
 $ dvc exp branch exp-e6c97 my-branch
