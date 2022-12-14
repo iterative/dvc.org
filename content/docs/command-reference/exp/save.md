@@ -1,6 +1,6 @@
 # exp save
 
-Save the current project status as a [DVC experiment].
+Save the current project workspace as a [DVC experiment].
 
 [dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
