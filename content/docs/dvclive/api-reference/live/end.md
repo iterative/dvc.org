@@ -19,7 +19,7 @@ with Live() as live:
 ```
 
 It is also called when the training ends for each of the supported
-[ML Frameworks](/docs/dvclive/api-reference/ml-frameworks)
+[ML Frameworks](/doc/dvclive/api-reference/ml-frameworks)
 
 ## Description
 
