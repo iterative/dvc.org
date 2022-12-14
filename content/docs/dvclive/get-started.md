@@ -140,7 +140,7 @@ the logged data.
 
 If you are using [one of the options](#track-the-results) that create <abbr>DVC
 experiments</abbr>, the
-[DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 will display all the data logged by DVCLive.
 
 ![VSCode monitoring](/img/dvclive-vscode-monitoring.gif)
