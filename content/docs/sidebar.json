@@ -251,6 +251,10 @@
             "slug": "run"
           },
           {
+            "label": "exp save",
+            "slug": "save"
+          },
+          {
             "label": "exp show",
             "slug": "show"
           },

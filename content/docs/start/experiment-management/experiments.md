@@ -46,9 +46,9 @@ the [`example-dvc-experiments`][ede] project.
 ### ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
-commands right away to run experiments in your project. (See the [User Guide]
-for detailed information.) Here, we briefly discuss how to structure an ML
-project with DVC experiments using `dvc exp init`.
+commands right away to run or save experiments in your project. (See the [User
+Guide] for detailed information.) Here, we briefly discuss how to structure an
+ML project with DVC experiments using `dvc exp init`.
 
 [user guide]: /doc/user-guide/experiment-management/experiments-overview
 
@@ -89,6 +89,13 @@ This runs the command specified in `dvc.yaml` (`python train.py`), and creates
 models, plots, and metrics in the respective directories. The experiment is then
 associated with the values found in the parameters file (`params.yaml`) and
 other dependencies, as well as the metrics produced.
+
+<admon type="tip">
+
+Current workspace status can also be saved as an experiment using
+[`dvc exp save`](/doc/command-reference/exp/save).
+
+</admon>
 
 <details>
 
@@ -269,8 +276,8 @@ into your `main` branch with the usual Git commands.
 ## Go Further
 
 There are many other features of `dvc exp`, like cleaning up unused experiments,
-sharing them without committing into Git, or getting differences between two
-experiments.
+saving the current workspace status as an experiment, sharing them without
+committing into Git, or getting differences between two experiments.
 
 Please see the section on
 [Experiment Management](/doc/user-guide/experiment-management) in the User's
