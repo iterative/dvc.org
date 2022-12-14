@@ -641,6 +641,10 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
+                "slug": "end",
+                "label": "end()"
+              },
+              {
                 "slug": "log_image",
                 "label": "log_image()"
               },
