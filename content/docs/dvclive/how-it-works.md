@@ -6,23 +6,16 @@ used by default.
 
 The contents of the directory will depend on the methods used:
 
-| Method                                                                    | Writes to                  |
-| ------------------------------------------------------------------------- | -------------------------- |
-| [live.log_metric](/doc/dvclive/api-reference/live/log_metric)             | `dvclive/plots/metrics`    |
-| [live.log_image](/doc/dvclive/api-reference/live/log_image)               | `dvclive/plots/images`     |
-| [live.log_param](/doc/dvclive/api-reference/live/log_param)               | `dvclive/params.yaml`      |
-| [live.log_sklearn_plot](/doc/dvclive/api-reference/live/log_sklearn_plot) | `dvclive/plots/sklearn`    |
-| [live.make_report](/doc/dvclive/api-reference/live/make_report)           | `dvclive/report.{md/html}` |
-| [live.make_summary](/doc/dvclive/api-reference/live/make_summary)         | `dvclive/metrics.json`     |
-| [make_dvcyaml](/doc/dvclive/api-reference/live/end)                       | `dvclive/dvc.yaml`         |
-
-<admon type="tip">
-
-`live.next_step()` takes care of calling `live.make_report()`,
-`live.make_summary`, and `make_dvcyaml` (if `save_dvc_exp=True`), in addition to
-increasing the `step` number.
-
-</admon>
+| Method                    | Writes to                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Live.log_metric()`       | `dvclive/plots/metrics`                                                                             |
+| `Live.log_image()`        | `dvclive/plots/images`                                                                              |
+| `Live.log_param()`        | `dvclive/params.yaml`                                                                               |
+| `Live.log_sklearn_plot()` | `dvclive/plots/sklearn`                                                                             |
+| `Live.make_report()`      | `dvclive/report.{md/html}`                                                                          |
+| `Live.make_summary()`     | `dvclive/metrics.json`                                                                              |
+| `Live.next_step()`        | `dvclive/metrics.json`<br>`dvclive/report.{md/html}`<br>`dvclive/dvc.yaml` (if `save_dvc_exp=True`) |
+| `Live.end()`              | `dvclive/metrics.json`<br>`dvclive/report.{md/html}`<br>`dvclive/dvc.yaml` (if `save_dvc_exp=True`) |
 
 ## Example
 
@@ -47,6 +40,7 @@ with Live(save_dvc_exp=True) as live:
 
     live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
     live.summary["additional_metric"] = 1.0
+# live.end() has been called at this point
 ```
 
 The resulting structure will be:
