@@ -21,6 +21,17 @@ with Live() as live:
 It is also called when the training ends for each of the supported
 [ML Frameworks](/doc/dvclive/api-reference/ml-frameworks)
 
+```py
+from dvclive.keras import DVCLiveCallback
+
+...
+
+model.fit(
+    train_dataset, epochs=num_epochs, validation_data=validation_dataset,
+    callbacks=[DVCLiveCallback()])
+# live.end() has been called at this point
+```
+
 ## Description
 
 By default, `Live.end()` will call `Live.make_summary()` and
