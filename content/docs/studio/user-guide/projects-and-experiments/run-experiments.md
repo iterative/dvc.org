@@ -130,4 +130,4 @@ The `CML Report` tooltip appears over the `CML report` icon on mouse hover.
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
 
 [dvclive]: /doc/dvclive
-[cml]: (https://cml.dev)
+[cml]: https://cml.dev
