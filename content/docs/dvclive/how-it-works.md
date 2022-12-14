@@ -14,11 +14,13 @@ The contents of the directory will depend on the methods used:
 | [live.log_sklearn_plot](/doc/dvclive/api-reference/live/log_sklearn_plot) | `dvclive/plots/sklearn`    |
 | [live.make_report](/doc/dvclive/api-reference/live/make_report)           | `dvclive/report.{md/html}` |
 | [live.make_summary](/doc/dvclive/api-reference/live/make_summary)         | `dvclive/metrics.json`     |
+| [make_dvcyaml](/doc/dvclive/api-reference/live/end)                       | `dvclive/dvc.yaml`         |
 
 <admon type="tip">
 
-`live.next_step()` takes care of calling `live.make_report()` and
-`live.make_summary`, in addition to increasing the `step` number.
+`live.next_step()` takes care of calling `live.make_report()`,
+`live.make_summary`, and `make_dvcyaml` (if `save_dvc_exp=True`), in addition to
+increasing the `step` number.
 
 </admon>
 
@@ -34,7 +36,7 @@ from PIL import Image
 
 EPOCHS = 2
 
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
     live.log_param("epochs", EPOCHS)
 
     for i in range(EPOCHS):

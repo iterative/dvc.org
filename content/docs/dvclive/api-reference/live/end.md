@@ -26,5 +26,15 @@ It is also called when the training ends for each of the supported
 By default, `Live.end()` will call `Live.make_summary()` and
 `Live.make_report()`.
 
-If `save_dvc_exp=True` has been passed to `Live`, it will also create a new DVC
-<abbr>experiment</abbrs>, by calling `exp save` internally.
+If `save_dvc_exp=True` has been passed to `Live`, it will create a new DVC
+<abbr>experiment</abbrs>, by calling `exp save` internally, and also writing a
+`dvc.yaml` file tracking the logged data:
+
+```yaml
+params:
+  - params.yaml
+metrics:
+  - metrics.json
+plots:
+  - plots/metrics
+```

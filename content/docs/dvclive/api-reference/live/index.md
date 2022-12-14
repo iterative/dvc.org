@@ -47,6 +47,8 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/how-it-works).
 
+- `dvc_file` - `{Live.dir}/dvc.yaml`.
+
 - `metrics_file` - `{Live.dir}/metrics.json`.
 
 - `params_file` - `{Live.dir}/params.yaml`.
