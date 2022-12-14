@@ -30,16 +30,8 @@ In addition to increasing the `step` number, it will call `Live.make_report()`
 and `Live.make_summary()`.
 
 If `save_dvc_exp=True` has been passed to `Live()`, `Live.next_step()` will
-create a `dvc.yaml` file tracking the logged data:
-
-```yaml
-params:
-  - params.yaml
-metrics:
-  - metrics.json
-plots:
-  - plots/metrics
-```
+write a `dvc.yaml` file configuring what DVC will show for logged plots,
+metrics, and parameters.
 
 ### Manual step updates
 
