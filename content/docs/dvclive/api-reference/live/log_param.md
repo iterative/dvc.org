@@ -11,10 +11,9 @@ Also see `Live.log_params()`.
 ```py
 from dvclive import Live
 
-live = Live()
-
-live.log_param("lr", 1e-3)
-live.log_param("n_iter", 50)
+with Live() as live:
+    live.log_param("lr", 1e-3)
+    live.log_param("n_iter", 50)
 ```
 
 ## Description

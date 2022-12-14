@@ -59,10 +59,10 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 ## Parameters
 
-- `dir` - Where to save DVCLive's outputs. _Default_: `dvclive`.
+- `dir` - Where to save DVCLive's outputs. Defaults to `dvclive`.
 
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
-  `metrics_file` and start from that point. _Default_: `False`.
+  `metrics_file` and start from that point. Defaults to `False`.
 
 - `report` - Any of `auto`, `html`, `md` or `None`. See `Live.make_report()`.
 
@@ -72,8 +72,8 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
   If `report` is `None`, `Live.make_report()` won't generate anything.
 
-- `save_dvc_exp` - If `True`, DVCLive will create a DVC <abbr>experiment</abbr>
-  as part of `live.end()`.
+- `save_dvc_exp` - If `True`, DVCLive will create a new <abbr>DVC
+  experiment</abbr> as part of `Live.end()`. Defaults to `False`.
 
 ## Methods
 
