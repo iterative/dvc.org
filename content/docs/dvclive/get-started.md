@@ -75,7 +75,7 @@ with Live() as live:
 Check the [ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) page for
 more details and other supported frameworks.
 
-## Run the script
+## Run the code
 
 Once you have added DVCLive to our python code, you can run the script as you
 would usually do:
