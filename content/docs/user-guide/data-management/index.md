@@ -5,20 +5,20 @@
 -->
 
 Where and how to store data and model files is one of the first decisions your
-team will have to make. Typically, files end up scattered throughout multiple
-buckets. Everyone can read and write which is not secure. Duplicated content is
-hard to find, so outdated datasets overlap with the latest version. You start
-formatting folder names with dates, but others still can't reproduce your
-results...
+team will have to make. But as the project needs grow and change, files may end
+up scattered throughout multiple buckets. Everyone can read and write, which is
+error-prone and not secure. Duplicated content is hard to prevent, so outdated
+datasets overlap with the latest version. You start formatting folder names with
+dates, but others still can't reproduce your results...
 
-![Direct storage access](/img/manual_data_management.png) _Managing data
-manually does not scale and quickly becomes a consuming job._
+![Direct storage access](/img/manual_data_management.png) _Managing code, data,
+and models manually does not scale and quickly becomes a consuming job._
 
-DVC gives you a structure that lets you take control of your existing [storage
-platforms]. It provides visibility over all your data and helps secure their
-access.
+DVC provides a structure that lets you take control of your existing [storage
+platforms]. It gives visibility over all your data and helps secure its access.
 
-![DVC data access](/img/dvc_managed_storage.png) _DVC's approach_
+![DVC data access](/img/dvc_managed_storage.png) _DVC centralizes file and
+directory management for you._
 
 Your storage is managed from an immutable <abbr>repository</abbr>, implementing
 append-only data stores. Content changes can be [properly versioned],
