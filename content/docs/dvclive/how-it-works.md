@@ -53,6 +53,7 @@ The resulting structure will be:
 
 ```
 dvclive
+├── dvc.yaml
 ├── metrics.json
 ├── params.yaml
 ├── plots
