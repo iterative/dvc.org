@@ -26,7 +26,7 @@ increasing the `step` number.
 
 ## Example
 
-To illustrate with an example, given the following script:
+To illustrate with an example, given the following code:
 
 ```python
 import random

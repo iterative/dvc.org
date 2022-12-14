@@ -7,7 +7,7 @@ and [Iterative Studio](https://studio.iterative.ai/).
 
 ## Set up DVCLive
 
-First of all, you need to add DVCLive to your Python script:
+First of all, you need to add DVCLive to your Python code:
 
 <toggle>
 <tab title="Keras">
@@ -77,7 +77,7 @@ more details and other supported frameworks.
 
 ## Run the code
 
-Once you have added DVCLive to our python code, you can run the script as you
+Once you have added DVCLive to our python code, you can run the code as you
 would usually do:
 
 ```cli
@@ -136,14 +136,14 @@ the logged data.
 
 </tab>
 
-<tab title="DVC Extension for VSCode">
+<tab title="DVC Extension for VS Code">
 
 If you are using [one of the options](#track-the-results) that create <abbr>DVC
 experiments</abbr>, the
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 will display all the data logged by DVCLive.
 
-![VSCode monitoring](/img/dvclive-vscode-monitoring.gif)
+![VS Code monitoring](/img/dvclive-vscode-monitoring.gif)
 
 </tab>
 
@@ -186,7 +186,7 @@ $ dvc plots diff $(dvc exp list --name-only)
 
 </tab>
 
-<tab title="DVC Extension for VSCode">
+<tab title="DVC Extension for VS Code">
 
 You can compare and visualize results using the
 [`Experiments`](https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/experiments-table.md)
@@ -194,7 +194,7 @@ and
 [`Plots`](https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
 views.
 
-![VSCode monitoring](/img/dvclive-vscode-compare.png)
+![VS Code monitoring](/img/dvclive-vscode-compare.png)
 
 </tab>
 
