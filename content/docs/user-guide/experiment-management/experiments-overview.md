@@ -1,8 +1,8 @@
 # DVC Experiments Overview
 
-DVC Experiments are captured automatically by DVC when [run]. Each experiment
-creates and tracks a variation of your data science project based on the changes
-in your <abbr>workspace</abbr>.
+DVC Experiments are captured automatically by DVC when [run], but can also be
+[saved] manually. Each experiment creates and tracks a variation of your data
+science project based on the changes in your <abbr>workspace</abbr>.
 
 Experiments preserve a connection to the latest commit in the current branch
 (Git `HEAD`) as their parent or _baseline_, but do not form part of the regular
@@ -10,6 +10,7 @@ Git tree (unless you make them [persistent]). This prevents bloating your repo
 with temporary commits and branches.
 
 [run]: /doc/user-guide/experiment-management/running-experiments
+[saved]: /doc/command-reference/exp/save
 
 <details>
 
@@ -23,8 +24,8 @@ by default either (see `dvc exp push`).
 Note that DVC Experiments require a unique name to identify them. DVC will
 usually auto-generate one by default, such as `exp-bfe64` (based on the
 experiment's hash). A custom name can be set instead, using the `--name`/`-n`
-option of `dvc exp run`. These names can be used to reference experiments in
-other `dvc exp` subcommands.
+option of `dvc exp run`/`dvc exp save`. These names can be used to reference
+experiments in other `dvc exp` subcommands.
 
 </details>
 
@@ -37,8 +38,9 @@ this:
 
 - Modify hyperparameters or other dependencies (input data, source code,
   commands to execute, etc.). Leave these changes un-committed in Git.
-- [Run experiments][run] with `dvc exp run` (instead of `repro`). The results
-  are reflected in your <abbr>workspace</abbr>, and tracked automatically.
+- [Run experiments][run] with `dvc exp run` (or use `repro` + `dvc exp save`).
+  The results are reflected in your <abbr>workspace</abbr>, and tracked
+  automatically.
 - Review and [compare] experiments with `dvc exp show` or `dvc exp diff`, using
   [metrics](/doc/command-reference/metrics) to identify the best one(s). Repeat
   🔄
