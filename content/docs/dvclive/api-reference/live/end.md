@@ -28,7 +28,7 @@ By default, `Live.end()` will call `Live.make_summary()` and
 
 If `save_dvc_exp=True` has been passed to `Live`, it will create a new DVC
 <abbr>experiment</abbrs>, by calling `exp save` internally, and also writing a
-`dvc.yaml` file tracking the logged data:
+`dvc.yaml` file configuring what DVC will show for logged plots, metrics, and parameters.
 
 ```yaml
 params:
