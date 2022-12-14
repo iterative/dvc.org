@@ -111,8 +111,8 @@ Unless you are:
 - A)
   [Running DVC experiments](/doc/user-guide/experiment-management/running-experiments)
   and DVCLive is used inside a stage of `dvc.yaml`.
-- B) Passed [`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to
-  [`Live()`](/doc/dvclive/api-reference/live).
+- B) Passing [`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters)
+  to [`Live()`](/doc/dvclive/api-reference/live).
 
 Upon each execution, DVCLive will **overwrite** the results in the workspace.
 
