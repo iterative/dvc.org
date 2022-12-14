@@ -719,6 +719,10 @@
                 "label": "XGBoost"
               }
             ]
+          },
+          {
+            "slug": "env",
+            "label": "Environment Variables"
           }
         ]
       }
