@@ -143,8 +143,7 @@ will display all the data logged by DVCLive.
 ## Compare results
 
 If you [track the results](#/doc/dvclive/how-it-works#track-the-results) of each
-experiment, you can compare the results of different executions in different
-ways:
+experiment, you can compare them in different ways:
 
 <toggle>
 

@@ -36,7 +36,7 @@ metrics and other metadata.
 </admon>
 
 You can use `Live()` as a context manager. When exiting the context manager,
-`Live.make_summary()` and `Live.make_report()` will be called.
+`Live.end()` will be called.
 
 ## Properties
 
