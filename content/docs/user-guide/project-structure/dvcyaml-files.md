@@ -25,11 +25,11 @@ Here's an example plotting ROC and precision-recall curves on the same plot:
 
 ```yaml
 plots:
-  - roc_vs_prc: # Use either a path or an arbitrary string as the ID.
-      y: # If ID is not a path, specify paths in y as path -> column/field
+  - roc_vs_prc:
+      y:
         precision_recall.json: precision
         roc.json: tpr
-      x: # If y is a dict, x may be a corresponding dict of the same length
+      x:
         precision_recall.json: recall
         roc.json: fpr
       title: ROC vs Precision-Recall
@@ -48,18 +48,17 @@ Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
 - `y` - source from which the Y axis data comes from:
 
-  - Top-level plots: one or more column/field names (if the plot ID is a file or
-    directory path), or a dictionary of file paths mapped to column/field names
-    (if the plot ID is an arbitrary string).
+  - Top-level plots: accepts string, list, or dictionary (like
+    `data_source_path: column/field name`).
 
   - Plot outputs: column/field name found in the source plots file.
 
 - `x` (string) - source from which the X axis data comes from. An auto-generated
   _step_ field is used by default.
 
-  - Top-level plots: either a single column/field name, or a dictionary of file
-    paths mapped to column/field names (list is not supported, and a dictionary
-    must correspond to a `y` dictionary with the same length).
+  - Top-level plots: multiple `x` values are supported, but only if they match
+    the number of `y` values and are specified as a dictionary (list is not
+    supported).
 
   - Plot outputs: column/field name found in the source plots file.
 
