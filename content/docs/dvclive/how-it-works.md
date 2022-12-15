@@ -73,8 +73,8 @@ can find but that don't clutter your Git history or create extra branches in
 your repo.
 
 If you don't have a DVC pipeline, you can include
-[`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to save
-the results as a DVC experiment. `save_dvc_exp=True` also writes out
-configuration for your plots, metrics, and parameters to a
+[`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to save the
+results as a DVC experiment. `save_dvc_exp=True` also writes out configuration
+for your plots, metrics, and parameters to a
 [`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files) so that DVC knows
 how to visualize and compare them.
