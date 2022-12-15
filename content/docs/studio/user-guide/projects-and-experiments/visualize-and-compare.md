@@ -72,7 +72,7 @@ experiment, you can use the plots to compare them.
 
 ![](https://static.iterative.ai/img/studio/plots.png)
 
-### Live (real-time) plots
+### Live plots
 
 For the experiments that you submit from Iterative Studio, you can [send live
 updates to your plots][live-metrics-and-plots] by using [DVCLive]. The number of
