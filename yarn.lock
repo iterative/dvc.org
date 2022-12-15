@@ -1735,14 +1735,15 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.0.2.tgz#1bfafe4b7ed0f3e4105837e056e0a89b108ebe36"
   integrity sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==
 
-"@dvcorg/gatsby-theme-iterative@^0.1.17":
-  version "0.1.17"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.17.tgz#62d9d7393da0e870e3d26a4a91f1a913483ea3dd"
-  integrity sha512-FuJTs9Kt7C2+bifw7byPt2hqxmNIcYOiPBu5a77k+N7wuAK1REBeK3gnJXB9sZilRv7TCmikhZTljz9RoVvk0Q==
+"@dvcorg/gatsby-theme-iterative@^0.2.0":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.2.7.tgz#a6e71e099e1c4ab24b3627ff5b7ff7a122e48850"
+  integrity sha512-icMrQCSHOG0xwPSlLY62S6LoNEtnuKJPxelRGE+cFdvqAH7GZtYy/yuZqdEYYCAIa1+nij5d2Iw0+PFgY2yqsQ==
   dependencies:
     "@reach/portal" "^0.17.0"
     "@reach/router" "^1.3.4"
     "@reach/skip-nav" "^0.17.0"
+    "@sentry/gatsby" "^7.11.1"
     "@svgr/webpack" "^6.2.1"
     "@types/github-slugger" "^1.3.0"
     "@types/isomorphic-fetch" "^0.0.36"
@@ -1766,7 +1767,7 @@
     gatsby-remark-embedder "^6.0.0"
     gatsby-remark-external-links "^0.0.4"
     gatsby-remark-images "^6.14.0"
-    gatsby-remark-prismjs "^6.14.0"
+    gatsby-remark-prismjs "6.24.0"
     gatsby-remark-relative-images "^2.0.2"
     gatsby-remark-responsive-iframe "^5.14.0"
     gatsby-remark-smartypants "^5.14.0"
@@ -1782,16 +1783,13 @@
     nanoid "^4.0.0"
     perfect-scrollbar "^1.5.5"
     postcss "^8.4.14"
-    postcss-color-mod-function "^3.0.3"
-    postcss-custom-media "^8.0.0"
-    postcss-custom-properties "^12.1.6"
-    postcss-mixins "^9.0.2"
     postcss-nested "^5.0.6"
-    prismjs "^1.28.0"
+    prismjs "^1.29.0"
     promise-polyfill "^8.2.3"
     react-collapse "^5.1.1"
     react-collapsible "^2.8.4"
     react-helmet "^6.1.0"
+    react-intersection-observer "^9.3.5"
     react-use "^17.3.2"
     rehype-parse "^8.0.4"
     rehype-react "^7.0.4"
@@ -1879,19 +1877,19 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/websites-server@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.0.14.tgz#e8d28a28387d14c6f0f69f0a9b74a8a2cb2bc2cd"
-  integrity sha512-j21IJ6b1CgRJv5KIvmUB2nQwHJeJIyTD6nj26Gbj248BEoPHZ4EJz3q3OYpPQdjU5A7pfbEz+petC2ADn9i30g==
+"@dvcorg/websites-server@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.0.16.tgz#aa95819c310e459a51071682dc39486a959890ae"
+  integrity sha512-RgdELGtr4igyYzLWIUahSlg4wV79dRkMyKXKfS3fWUKLYg2No/e1/gUzRBYUcZ1Lvbg0DaRUIZPf39t6OI8lRQ==
   dependencies:
-    "@dvcorg/gatsby-theme-iterative" "^0.1.17"
+    "@dvcorg/gatsby-theme-iterative" "^0.2.0"
     "@hapi/wreck" "^18.0.0"
     "@octokit/request" "^6.2.2"
     "@sentry/node" "^7.12.1"
     compression "^1.7.4"
     dotenv "^16.0.1"
     express "^4.18.1"
-    fs-extra "^10.1.0"
+    fs-extra "^11.0.0"
     helmet "^6.0.0"
     http-proxy-middleware "^2.0.6"
     isomorphic-fetch "^3.0.0"
@@ -8093,6 +8091,15 @@ fs-extra@^10.1.0:
     jsonfile "^6.0.1"
     universalify "^2.0.0"
 
+fs-extra@^11.0.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.0.tgz#5784b102104433bb0e090f48bfc4a30742c357ed"
+  integrity sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fs-extra@^9.0.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
@@ -8728,15 +8735,6 @@ gatsby-remark-prismjs@6.24.0:
   version "6.24.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-6.24.0.tgz#728455be1986ae55f52563ad034bf9971bbcd976"
   integrity sha512-xI8BrjbKHJHftfVVyIxmPMuyHX1kU+dHZrpOYjdTfOw8fv3jvR3cKUqZDCBy0pIRMYdPJUPMwUcggAhbtBiaEw==
-  dependencies:
-    "@babel/runtime" "^7.15.4"
-    parse-numeric-range "^1.2.0"
-    unist-util-visit "^2.0.3"
-
-gatsby-remark-prismjs@^6.14.0:
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-6.22.0.tgz#ff55a10cefe33b99b456a4d78bf936010748dba6"
-  integrity sha512-av/GsYOf1L+e+FrXkTZupQdyhmNfXk3nHnd+zJ97fIz6si7nle2T8UDlWXJ3472g0uadpe39KH+VkdpQn4xDzQ==
   dependencies:
     "@babel/runtime" "^7.15.4"
     parse-numeric-range "^1.2.0"
@@ -13357,7 +13355,7 @@ postcss-calc@^8.2.3:
     postcss-selector-parser "^6.0.9"
     postcss-value-parser "^4.2.0"
 
-postcss-color-mod-function@3.0.3, postcss-color-mod-function@^3.0.3:
+postcss-color-mod-function@3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/postcss-color-mod-function/-/postcss-color-mod-function-3.0.3.tgz#816ba145ac11cc3cb6baa905a75a49f903e4d31d"
   integrity sha512-YP4VG+xufxaVtzV6ZmhEtc+/aTXH3d0JLpnYfxqTvwZPbJhWqp8bSY3nfNzNRFLgB4XSaBA82OE4VjOOKpCdVQ==
@@ -13384,7 +13382,7 @@ postcss-convert-values@^5.1.3:
     browserslist "^4.21.4"
     postcss-value-parser "^4.2.0"
 
-postcss-custom-media@8.0.2, postcss-custom-media@^8.0.0:
+postcss-custom-media@8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/postcss-custom-media/-/postcss-custom-media-8.0.2.tgz#c8f9637edf45fef761b014c024cee013f80529ea"
   integrity sha512-7yi25vDAoHAkbhAzX9dHx2yc6ntS4jQvejrNcC+csQJAXjj15e7VcWfMgLqBNAbOvqi5uIa9huOVwdHbf+sKqg==
@@ -13395,13 +13393,6 @@ postcss-custom-properties@12.1.9:
   version "12.1.9"
   resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.1.9.tgz#0883429a7ef99f1ba239d1fea29ce84906daa8bd"
   integrity sha512-/E7PRvK8DAVljBbeWrcEQJPG72jaImxF3vvCNFwv9cC8CzigVoNIpeyfnJzphnN3Fd8/auBf5wvkw6W9MfmTyg==
-  dependencies:
-    postcss-value-parser "^4.2.0"
-
-postcss-custom-properties@^12.1.6:
-  version "12.1.8"
-  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.1.8.tgz#aa003e1885c5bd28e2e32496cd597e389ca889e4"
-  integrity sha512-8rbj8kVu00RQh2fQF81oBqtduiANu4MIxhyf0HbbStgPtnFlWn0yiaYTpLHrPnJbffVY1s9apWsIoVZcc68FxA==
   dependencies:
     postcss-value-parser "^4.2.0"
 
@@ -13537,16 +13528,6 @@ postcss-mixins@9.0.4:
     fast-glob "^3.2.11"
     postcss-js "^4.0.0"
     postcss-simple-vars "^7.0.0"
-    sugarss "^4.0.1"
-
-postcss-mixins@^9.0.2:
-  version "9.0.3"
-  resolved "https://registry.yarnpkg.com/postcss-mixins/-/postcss-mixins-9.0.3.tgz#21a41d30fa53213642d000520237db82313d1a11"
-  integrity sha512-99r5oYtK38cAdGKNYumVHs84u2G6SfbjWo7HCDF6Mxr0o2lFdnRRYwTl6DTqmfRpRvWAUlgav2iJv0fLXZjDKQ==
-  dependencies:
-    fast-glob "^3.2.11"
-    postcss-js "^4.0.0"
-    postcss-simple-vars "^6.0.3"
     sugarss "^4.0.1"
 
 postcss-modules-extract-imports@^3.0.0:
@@ -13688,11 +13669,6 @@ postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.2, postcss-selecto
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
 
-postcss-simple-vars@^6.0.3:
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/postcss-simple-vars/-/postcss-simple-vars-6.0.3.tgz#e66516c7fe980da3498f4a8ad400b9c53861806c"
-  integrity sha512-fkNn4Zio8vN4vIig9IFdb8lVlxWnYR769RgvxCM6YWlFKie/nQaOcaMMMFz/s4gsfHW4/5bJW+i57zD67mQU7g==
-
 postcss-simple-vars@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/postcss-simple-vars/-/postcss-simple-vars-7.0.0.tgz#f1d10a979762aa4e7e3450a35a32885112893d1b"
@@ -13827,7 +13803,7 @@ pretty-quick@^3.1.3:
     mri "^1.1.5"
     multimatch "^4.0.0"
 
-prismjs@^1.28.0, prismjs@^1.29.0:
+prismjs@^1.29.0:
   version "1.29.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.29.0.tgz#f113555a8fa9b57c35e637bba27509dcf802dd12"
   integrity sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==
