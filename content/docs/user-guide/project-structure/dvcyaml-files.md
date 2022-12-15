@@ -1,9 +1,10 @@
 # `dvc.yaml`
 
-The list of [`stages`](#stages) is typically the most important part of a
-`dvc.yaml` file, though the file can also be used to configure
-[`metrics`](#metrics), [`params`](#params), and [`plots`](#plots), either as
-part of a stage definition or on their own.
+You can configure machine learning projects in one or more `dvc.yaml` files. The
+list of [`stages`](#stages) is typically the most important part of a `dvc.yaml`
+file, though the file can also be used to configure [`metrics`](#metrics),
+[`params`](#params), and [`plots`](#plots), either as part of a stage definition
+or on their own.
 
 `dvc.yaml` uses the [YAML 1.2](https://yaml.org/) format and a human-friendly
 schema explained below. We encourage you to get familiar with it so you may
@@ -11,6 +12,35 @@ modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other <abbr>DVC files</abbr> and your project's code.
+
+## Metrics
+
+The list of `metrics` contains one or more paths to <abbr>metrics</abbr> files.
+Here's an example:
+
+```yaml
+metrics:
+  - metrics.json
+```
+
+Metrics are key/value pairs saved in structured files that map a metric name to
+a numeric value. See `dvc metrics` for more information and how to compare among
+experiments.
+
+## Params
+
+The list of `params` contains one or more paths to <abbr>parameters</abbr>
+files. Here's an example:
+
+```yaml
+params:
+  - params.yaml
+```
+
+Parameters are key/value pairs saved in structured files. Unlike stage-level
+[parameter dependencies](#parameters), which are granular, top-level parameters
+are defined at the file level and include all parameters in the file. See
+`dvc params` for more information and how to compare between experiments.
 
 ## Plots
 
