@@ -20,7 +20,7 @@ from dvclive.keras import DVCLiveCallback
 
 model.fit(
   train_dataset, validation_data=validation_dataset,
-  callbacks=[DVCLiveCallback()])
+  callbacks=[DVCLiveCallback(save_dvc_exp=True)])
 ```
 
 </tab>
@@ -33,7 +33,7 @@ from dvclive.huggingface import DVCLiveCallback
 
 ...
 
-trainer.add_callback(DVCLiveCallback())
+trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
 trainer.train()
 ```
 
@@ -46,7 +46,7 @@ from dvclive.lightning import DVCLiveLogger
 
 ...
 
-trainer = Trainer(logger=DVCLiveLogger())
+trainer = Trainer(logger=DVCLiveLogger(save_dvc_exp=True))
 trainer.fit(model)
 ```
 
@@ -58,7 +58,7 @@ trainer.fit(model)
 # train.py
 from dvclive import Live
 
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
     live.log_param("epochs", NUM_EPOCHS)
 
     for epoch in range(NUM_EPOCHS):
@@ -71,6 +71,13 @@ with Live() as live:
 
 </tab>
 </toggle>
+
+<admon type="info">
+
+Including `save_dvc_exp=True` will automatically
+[track the results](/doc/dvclive/how-it-works#track-the-results) using Git.
+
+</admon>
 
 Check the [ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) page for
 more details and other supported frameworks.
@@ -104,21 +111,6 @@ the [How it Works](/doc/dvclive/how-it-works) page.
 
 </admon>
 
-### Track the results
-
-Unless you are:
-
-- A)
-  [Running DVC experiments](/doc/user-guide/experiment-management/running-experiments)
-  and DVCLive is used inside a stage of `dvc.yaml`.
-- B) Passing [`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters)
-  to [`Live()`](/doc/dvclive/api-reference/live).
-
-Upon each execution, DVCLive will **overwrite** the results in the workspace.
-
-You would have to use one of the options above or take care of tracking the
-results with `git` between executions.
-
 ## Monitor the training
 
 Depending on your setup, DVCLive enables different ways of monitoring the
@@ -138,8 +130,7 @@ the logged data.
 
 <tab title="DVC Extension for VS Code">
 
-If you are using [one of the options](#track-the-results) that create <abbr>DVC
-experiments</abbr>, the
+The
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 will display all the data logged by DVCLive.
 
@@ -151,10 +142,9 @@ will display all the data logged by DVCLive.
 
 ## Compare results
 
-Whether you are manually tracking results with `git` or using
-[one of the options](#track-the-results) that create <abbr>DVC
-Experiments</abbr>, you can compare the results of different executions in
-different ways:
+If you [track the results](#/doc/dvclive/how-it-works#track-the-results) of each
+experiment, you can compare the results of different executions in different
+ways:
 
 <toggle>
 

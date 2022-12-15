@@ -74,8 +74,10 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
   If `report` is `None`, `Live.make_report()` won't generate anything.
 
-- `save_dvc_exp` - If `True`, DVCLive will create a new <abbr>DVC
-  experiment</abbr> as part of `Live.end()`. Defaults to `False`.
+- `save_dvc_exp` - If `True`, DVCLive will create a new
+  [DVC experiment](/doc/dvclive/how-it-works#track-the-results) as part of
+  `Live.end()`. Ignored if your repo already has a
+  [DVC pipeline](/doc/user-guide/pipelines). Defaults to `False`.
 
 ## Methods
 

@@ -14,8 +14,8 @@ The contents of the directory will depend on the methods used:
 | `Live.log_sklearn_plot()` | `dvclive/plots/sklearn`                                                                             |
 | `Live.make_report()`      | `dvclive/report.{md/html}`                                                                          |
 | `Live.make_summary()`     | `dvclive/metrics.json`                                                                              |
-| `Live.next_step()`        | `dvclive/metrics.json`<br>`dvclive/report.{md/html}`<br>`dvclive/dvc.yaml` (if `save_dvc_exp=True`) |
-| `Live.end()`              | `dvclive/metrics.json`<br>`dvclive/report.{md/html}`<br>`dvclive/dvc.yaml` (if `save_dvc_exp=True`) |
+| `Live.next_step()`        | `dvclive/dvc.yaml` (if `save_dvc_exp=True`)<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
+| `Live.end()`              | `dvclive/dvc.yaml` (if `save_dvc_exp=True`)<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 
 ## Example
 
@@ -61,3 +61,20 @@ dvclive
 │       └── confusion_matrix.json
 └── report.html
 ```
+
+## Track the results
+
+DVCLive expects each run to be tracked by Git, so it will save each run to the
+same path and overwrite the results each time. If you
+[run experiments](/doc/user-guide/experiment-management/running-experiments)
+using DVC <abbr>pipelines</abbr>, DVC will track them for you so you don't have
+to Git commit each run. <abbr>DVC experiments</abbr> are Git commits that DVC
+can find but that don't clutter your Git history or create extra branches in
+your repo.
+
+If you don't have a DVC pipeline, you can include
+[`save_dvc_exp=True`](/doc/dvclive/api-reference/live/index#parameters) to save
+the results as a DVC experiment. `save_dvc_exp=True` also writes out
+configuration for your plots, metrics, and parameters to a
+[`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files) so that DVC knows
+how to visualize and compare them.

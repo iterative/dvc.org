@@ -158,6 +158,6 @@ All changes, including untracked files, have been restored to the workspace.
 
 See [our Get Started] guide, for more examples on how to use experiments.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
