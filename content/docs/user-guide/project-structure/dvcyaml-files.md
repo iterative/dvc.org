@@ -1,9 +1,10 @@
 # `dvc.yaml`
 
-You can construct machine learning pipelines by defining individual
-[stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
-constitute a pipeline when they connect with each other (forming a [dependency
-graph], see `dvc dag`).
+You can configure machine learning projects in one or more `dvc.yaml` files. The
+list of [`stages`](#stages) is typically the most important part of a `dvc.yaml`
+file, though the file can also be used to configure [`metrics`](#metrics),
+[`params`](#params), and [`plots`](#plots), either as part of a stage definition
+or on their own.
 
 `dvc.yaml` uses the [YAML 1.2](https://yaml.org/) format and a human-friendly
 schema explained below. We encourage you to get familiar with it so you may
@@ -12,14 +13,113 @@ modify, write, or generate them by your own means.
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other <abbr>DVC files</abbr> and your project's code.
 
-[dependency graph]:
-  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+## Metrics
+
+The list of `metrics` contains one or more paths to <abbr>metrics</abbr> files.
+Here's an example:
+
+```yaml
+metrics:
+  - metrics.json
+```
+
+Metrics are key/value pairs saved in structured files that map a metric name to
+a numeric value. See `dvc metrics` for more information and how to compare among
+experiments.
+
+## Params
+
+The list of `params` contains one or more paths to <abbr>parameters</abbr>
+files. Here's an example:
+
+```yaml
+params:
+  - params.yaml
+```
+
+Parameters are key/value pairs saved in structured files. Unlike stage-level
+[parameter dependencies](#parameters), which are granular, top-level parameters
+are defined at the file level and include all parameters in the file. See
+`dvc params` for more information and how to compare between experiments.
+
+## Plots
+
+The list of `plots` contains one or more user-defined `dvc plots`
+configurations. Every plot must have a unique ID, which may be either a file or
+directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
+If the ID is an arbitrary string, a data source must be provided in the `y`
+field (`x` data source is always optional and cannot be the only data source
+provided). Optional configuration fields can be provided as well.
+
+Here's an example plotting ROC and precision-recall curves on the same plot:
+
+```yaml
+plots:
+  - roc_vs_prc:
+      y:
+        precision_recall.json: precision
+        roc.json: tpr
+      x:
+        precision_recall.json: recall
+        roc.json: fpr
+      title: ROC vs Precision-Recall
+```
+
+<admon icon="book">
+
+Refer to [Visualizing Plots] and `dvc plots show` for more examples.
+
+[visualizing plots]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+
+</admon>
+
+### Available configuration fields
+
+- `y` - source from which the Y axis data comes from:
+
+  - Top-level plots: accepts string, list, or dictionary (like
+    `data_source_path: column/field name`).
+
+  - Plot outputs: column/field name found in the source plots file.
+
+- `x` (string) - source from which the X axis data comes from. An auto-generated
+  _step_ field is used by default.
+
+  - Top-level plots: multiple `x` values are supported, but only if they match
+    the number of `y` values and are specified as a dictionary (list is not
+    supported).
+
+  - Plot outputs: column/field name found in the source plots file.
+
+- `y_label` (string) - Y axis label. If all `y` data sources have the same field
+  name, that will be the default. Otherwise, it's "y".
+
+- `x_label` (string) - X axis label. If all `y` data sources have the same field
+  name, that will be the default. Otherwise, it's "x".
+
+- `title` (string) - header for the plot(s). Defaults:
+
+  - Top-level plots: `path/to/dvc.yaml::plot_id`
+  - Plot outputs: `path/to/data.csv`
+
+- `template` (string) - [plot template]. Defaults to `linear`.
+
+[plot template]:
+  https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## Stages
 
-The list of `stages` is typically the most important part of a `dvc.yaml` file.
-It contains one or more user-defined <abbr>stages</abbr>. Here's a simple one
-named `transpose`:
+You can construct machine learning pipelines by defining individual
+[stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
+constitute a pipeline when they connect with each other (forming a [dependency
+graph], see `dvc dag`).
+
+[dependency graph]:
+  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+
+The list of `stages` contains one or more user-defined <abbr>stages</abbr>.
+Here's a simple one named `transpose`:
 
 ```yaml
 stages:
@@ -58,8 +158,7 @@ them).
 
 <admon type="tip">
 
-Output files may be viable data sources for
-[top-level plots](#top-level-plot-definitions).
+Output files may be viable data sources for [top-level plots](#plots).
 
 </admon>
 
@@ -603,72 +702,6 @@ Both individual foreach stages (`train@1`) and groups of foreach stages
 (`train`) may be used in commands that accept stage targets.
 
 </admon>
-
-## Top-level plot definitions
-
-The list of `plots` contains one or more user-defined `dvc plots`
-configurations. Every plot must have a unique ID, which may be either a file or
-directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
-If the ID is an arbitrary string, a data source must be provided in the `y`
-field (`x` data source is always optional and cannot be the only data source
-provided). Optional configuration fields can be provided as well.
-
-Here's an example plotting ROC and precision-recall curves on the same plot:
-
-```yaml
-plots:
-  - roc_vs_prc:
-      x:
-        precision_recall.json: recall
-        roc.json: fpr
-      y:
-        precision_recall.json: precision
-        roc.json: tpr
-      title: ROC vs Precision-Recall
-```
-
-<admon icon="book">
-
-Refer to [Visualizing Plots] and `dvc plots show` for more examples.
-
-[visualizing plots]:
-  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
-
-</admon>
-
-### Available configuration fields
-
-- `y` - source from which the Y axis data comes from:
-
-  - Top-level plots: accepts string, list, or dictionary (like
-    `data_source_path: column/field_name`).
-
-  - Plot outputs: column/field name found in the source plots file.
-
-- `x` (string) - source from which the X axis data comes from. An auto-generated
-  _step_ field is used by default.
-
-  - Top-level plots: multiple `x` values are supported, but only if they match
-    the number of `y` values and are specified as a dictionary (list is not
-    supported).
-
-  - Plot outputs: column/field name found in the source plots file.
-
-- `y_label` (string) - Y axis label. If all `y` data sources have the same field
-  name, that will be the default. Otherwise, it's "y".
-
-- `x_label` (string) - X axis label. If all `y` data sources have the same field
-  name, that will be the default. Otherwise, it's "x".
-
-- `title` (string) - header for the plot(s). Defaults:
-
-  - Top-level plots: `path/to/dvc.yaml::plot_id`
-  - Plot outputs: `path/to/data.csv`
-
-- `template` (string) - [plot template]. Defaults to `linear`.
-
-[plot template]:
-  https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## dvc.lock file
 
