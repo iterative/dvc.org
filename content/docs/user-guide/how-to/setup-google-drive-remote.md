@@ -34,6 +34,7 @@ $ dvc add data
 ...
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+$ dvc remote modify myremote gdrive_acknowledge_abuse true                           
 $ dvc push
 Your browser has been opened to visit:
 
@@ -232,6 +233,10 @@ this variable should be a string with JSON that has the same format as in the
 credentials files described above, and usually you get it going through the same
 authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
 `gdrive_user_credentials_file` value (if provided) is ignored.
+If you recieved the error `This file has been identified as malware or spam and cannot be downloaded` running a `dvc push` or `dvc pull` command you can modify the value of `gdrive_acknowledge_abuse` and set it to `true` using the below command:
+```cli
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
+```
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
