@@ -241,8 +241,8 @@ authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
 <admon type="warn">
 
 If you get an error message _This file has been identified as malware or spam
-and cannot be downloaded_ running a `dvc push` or `dvc pull` command, check
-that the `gdrive_acknowledge_abuse` option is set:
+and cannot be downloaded_ running a `dvc push` or `dvc pull` command, check that
+the `gdrive_acknowledge_abuse` option is set:
 
 ```cli
 $ dvc remote modify myremote gdrive_acknowledge_abuse true
