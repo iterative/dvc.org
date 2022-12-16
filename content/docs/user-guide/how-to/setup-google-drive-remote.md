@@ -193,6 +193,10 @@ globally, for example in
 `gdrive_user_credentials_file`]), and used automatically next time DVC needs
 them.
 
+[auth process]: https://developers.google.com/drive/api/v2/about-auth
+[see `gdrive_user_credentials_file`]:
+  /doc/command-reference/remote/modify#google-drive
+
 <admin type="warn">
 
 In order to prevent unauthorized access to your Google Drive, **do not share
@@ -234,25 +238,18 @@ credentials files described above, and usually you get it going through the same
 authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
 `gdrive_user_credentials_file` value (if provided) is ignored.
 
-<admon type="info">
+<admon type="warn">
 
-If you recieved the error _This file has been identified as malware or spam and
-cannot be downloaded_ running a `dvc push` or `dvc pull` command you can modify
-the value of the [`gdrive_acknowledge_abuse` option] and set it to `true` using
-the below command:
+If you get an error message _This file has been identified as malware or spam
+and cannot be downloaded_ running a `dvc push` or `dvc pull` command, check that
+the `gdrive_acknowledge_abuse` option is set:
 
 ```cli
 $ dvc remote modify myremote gdrive_acknowledge_abuse true
 ```
 
 </admon>
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
-
-[auth process]: https://developers.google.com/drive/api/v2/about-auth
-[see `gdrive_user_credentials_file`]:
-  /doc/command-reference/remote/modify#google-drive
-[`gdrive_acknowledge_abuse` option]:
-  /doc/command-reference/remote/modify#google-drive
+> Please note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
 
 ## Using service accounts
 
