@@ -34,7 +34,7 @@ $ dvc add data
 ...
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
-$ dvc remote modify myremote gdrive_acknowledge_abuse true                           
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
 $ dvc push
 Your browser has been opened to visit:
 
@@ -246,8 +246,6 @@ $ dvc remote modify myremote gdrive_acknowledge_abuse true
 ```
 
 </admon>
-
-
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 [auth process]: https://developers.google.com/drive/api/v2/about-auth
