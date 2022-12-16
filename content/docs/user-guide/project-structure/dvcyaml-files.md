@@ -47,23 +47,8 @@ are defined at the file level and include all parameters in the file. See
 The list of `plots` contains one or more user-defined `dvc plots`
 configurations. Every plot must have a unique ID, which may be either a file or
 directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
-If the ID is an arbitrary string, a data source must be provided in the `y`
-field (`x` data source is always optional and cannot be the only data source
-provided). Optional configuration fields can be provided as well.
-
-Here's an example plotting ROC and precision-recall curves on the same plot:
-
-```yaml
-plots:
-  - roc_vs_prc:
-      y:
-        precision_recall.json: precision
-        roc.json: tpr
-      x:
-        precision_recall.json: recall
-        roc.json: fpr
-      title: ROC vs Precision-Recall
-```
+If the ID is an arbitrary string, a file path must be provided in the `y` field
+(`x` file path is always optional and cannot be the only path provided).
 
 <admon icon="book">
 
@@ -76,34 +61,88 @@ Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
 ### Available configuration fields
 
-- `y` - source from which the Y axis data comes from:
+- `y` - source for the Y axis data:
 
-  - Top-level plots: accepts string, list, or dictionary (like
-    `data_source_path: column/field name`).
+  - **Top-level plots** (_string, list, dict_):
 
-  - Plot outputs: column/field name found in the source plots file.
+    If plot ID is a path, one or more column/field names is expected. For
+    example:
 
-- `x` (string) - source from which the X axis data comes from. An auto-generated
-  _step_ field is used by default.
+    ```yaml
+    plots:
+      - regression_hist.csv:
+          y: mean_squared_error
+      - classifier_hist.csv:
+          y: [acc, loss]
+    ```
 
-  - Top-level plots: multiple `x` values are supported, but only if they match
-    the number of `y` values and are specified as a dictionary (list is not
-    supported).
+    If plot ID is an arbitrary string, a dictionary of file paths mapped to
+    column/field names is expected. For example:
 
-  - Plot outputs: column/field name found in the source plots file.
+    ```yaml
+    plots:
+      - train_val_test:
+          y:
+            train.csv: [train_acc, val_acc]
+            test.csv: test_acc
+    ```
 
-- `y_label` (string) - Y axis label. If all `y` data sources have the same field
-  name, that will be the default. Otherwise, it's "y".
+  - **Plot outputs** (_string_): one column/field name.
 
-- `x_label` (string) - X axis label. If all `y` data sources have the same field
-  name, that will be the default. Otherwise, it's "x".
+- `x` - source for the X axis data. An auto-generated _step_ field is used by
+  default.
 
-- `title` (string) - header for the plot(s). Defaults:
+  - **Top-level plots** (_string, dict_):
 
-  - Top-level plots: `path/to/dvc.yaml::plot_id`
-  - Plot outputs: `path/to/data.csv`
+    If plot ID is a path, one column/field name is expected. For example:
 
-- `template` (string) - [plot template]. Defaults to `linear`.
+    ```yaml
+    plots:
+      - classifier_hist.csv:
+          y: [acc, loss]
+          x: epoch
+    ```
+
+    If plot ID is an arbitrary string, `x` may either be one column/field name,
+    or a dictionary of file paths each mapped to one column/field name (the
+    number of column/field names must match the number in `y`).
+
+    ```yaml
+    plots:
+      - train_val_test: # single x
+          y:
+            train.csv: [train_acc, val_acc]
+            test.csv: test_acc
+          x: epoch
+      - roc_vs_prc: # x dict
+          y:
+            precision_recall.json: precision
+            roc.json: tpr
+          x:
+            precision_recall.json: recall
+            roc.json: fpr
+      - confusion: # different x and y paths
+          y:
+            dir/preds.csv: predicted
+          x:
+            dir/actual.csv: actual
+          template: confusion
+    ```
+
+  - **Plot outputs** (_string_): one column/field name.
+
+- `y_label` (_string_) - Y axis label. If all `y` data sources have the same
+  field name, that will be the default. Otherwise, it's "y".
+
+- `x_label` (_string_) - X axis label. If all `y` data sources have the same
+  field name, that will be the default. Otherwise, it's "x".
+
+- `title` (_string_) - header for the plot(s). Defaults:
+
+  - **Top-level plots**: `path/to/dvc.yaml::plot_id`
+  - **Plot outputs**: `path/to/data.csv`
+
+- `template` (_string_) - [plot template]. Defaults to `linear`.
 
 [plot template]:
   https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
