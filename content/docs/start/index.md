@@ -25,7 +25,7 @@ $ git init
 
 <admon type="info">
 
-This name is actually used in our
+This directory name is actually used in our
 [example-get-started](https://github.com/iterative/example-get-started) repo.
 
 </admon>
