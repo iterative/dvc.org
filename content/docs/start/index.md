@@ -103,7 +103,7 @@ The steps and results of some of these chapters are captured in our
 
 <admon type="tip">
 
-The are captured in our [example-dvc-experiments] repo (see its [tags]).
+These are captured in our [example-dvc-experiments] repo (see its [tags]).
 
 [example-dvc-experiments]: https://github.com/iterative/example-dvc-experiments
 [tags]: https://github.com/iterative/example-dvc-experiments/tags
