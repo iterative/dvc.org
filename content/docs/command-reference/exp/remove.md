@@ -55,20 +55,20 @@ Let's say we have `dvc exp run` 3 experiments in our project:
 ```cli
 $ dvc exp list
 master:
-        exp-e6c97
-        exp-1dad0
-        exp-1df77
+        major-mela
+        conic-ease
+        lucid-lair
 ```
 
 To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
 (`-A`) option to remove them all at once:
 
 ```cli
-$ dvc exp remove exp-1dad0 exp-1df77
+$ dvc exp remove conic-ease lucid-lair
 
 $ dvc exp list
 master:
-        exp-e6c97
+        major-mela
 
 $ dvc exp remove -A
 
@@ -108,18 +108,18 @@ $ dvc exp show
 We can also remove experiments from a remote Git repository:
 
 ```cli
-$ dvc exp push myremote exp-e6c97
-$ dvc exp push myremote exp-9fcef
-$ dvc exp push myremote exp-1dad0
+$ dvc exp push myremote major-mela
+$ dvc exp push myremote urban-sign
+$ dvc exp push myremote conic-ease
 
 $ dvc exp list myremote
 master:
-        exp-1dad0
-        exp-9fcef
-        exp-e6c97
+        conic-ease
+        urban-sign
+        major-mela
 
-$ dvc exp remove -g myremote exp-9fcef exp-e6c97
+$ dvc exp remove -g myremote urban-sign major-mela
 $ dvc exp list myremote
 master:
-        exp-1dad0
+        conic-ease
 ```

@@ -12,8 +12,8 @@ commits and share them like you would [any other commit]. This will share all
 code and metadata associated with the experiment.
 
 ```cli
-$ dvc exp branch exp-e6c97 my-branch
-Git branch 'my-branch' has been created from experiment 'exp-e6c97'.
+$ dvc exp branch quare-zips my-branch
+Git branch 'my-branch' has been created from experiment 'quare-zips'.
 To switch to the new branch run:
         git checkout my-branch
 
@@ -120,7 +120,7 @@ arguments.
 > 💡 You can use `dvc exp show` to find experiment names.
 
 ```cli
-$ dvc exp push origin exp-abc123
+$ dvc exp push origin quare-zips
 ```
 
 Once pushed, you can easily [list remote experiments] (with `dvc exp list`).

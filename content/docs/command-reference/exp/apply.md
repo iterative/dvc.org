@@ -67,22 +67,22 @@ $ dvc exp show
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+  neutral:**Experiment**               neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.61314   1500                     2
-  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
-  ├── exp-e6c97           Oct 21, 2020   0.69830   2000                     2
-  ├── exp-1dad0           Oct 09, 2020   0.57756   1200                     2
-  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
+  workspace                -              0.61314   1500                     2
+  10-bigrams-experiment    Jun 20, 2020   0.61314   1500                     2
+  ├── gluey-leak           Oct 21, 2020   0.69830   2000                     2
+  ├── frank-farm           Oct 09, 2020   0.57756   1200                     2
+  └── union-mart           Oct 09, 2020   0.51676   500                      2
  ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-Since `exp-e6c97` has the best `auc`, we may want to commit it into our project
+Since `gluey-leak` has the best `auc`, we may want to commit it into our project
 (this is what we call to "make it persistent"):
 
 ```cli
-$ dvc exp apply exp-e6c97
-Changes for experiment 'exp-e6c97' have been applied...
+$ dvc exp apply gluey-leak
+Changes for experiment 'gluey-leak' have been applied...
 ```
 
 We can inspect what changed in the workspace with Git,
@@ -123,7 +123,7 @@ To finish making this experiment persistent, we commit the changes to the repo:
 
 ```cli
 $ git add .
-$ git commit -m "persist exp-e6c97"
+$ git commit -m "persist gluey-leak"
 ```
 
 We can now see that the experiment is the new tip of our master branch:

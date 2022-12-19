@@ -98,9 +98,9 @@ that someone else shared (see also `dvc exp list`).
 ```cli
 $ dvc exp list --all-commits origin
 master:
-        exp-e6c97
-$ dvc exp pull origin exp-e6c97
-Pulled experiment 'exp-e6c97' from Git remote 'origin'.
+        lurid-lair
+$ dvc exp pull origin lurid-lair
+Pulled experiment 'lurid-lair' from Git remote 'origin'.
 ```
 
 We can now see that the experiment exists in the local repo:
@@ -108,5 +108,5 @@ We can now see that the experiment exists in the local repo:
 ```cli
 $ dvc exp list --all-commits
 master:
-        exp-e6c97
+        lurid-lair
 ```

@@ -25,7 +25,7 @@ refs/tags/baseline-experiment:
         cnn-64
         cnn-128
 main:
-        exp-93150
+        unwet-jinn
 ```
 
 ## List experiments saved remotely
