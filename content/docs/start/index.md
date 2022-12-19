@@ -112,13 +112,10 @@ These are captured in our [example-dvc-experiments] repo (see its [tags]).
 
 ## Following the Get Started
 
-Although presented in a logical order, each page in the trails above is an
-independent chapter you can go to directly. There may be references to other
-chapters or docs, but you can skip them and still get a good idea of the
-features in question, even by only reading page sections.
-
-For better learning, you can also try each step yourself and get to similar
-results. Some of the required steps for this may be inside collapsed sections
+Each page in the trails above is more or less independent,
+especially if you're only reading them to get a general idea of the
+features in question. For better learning, try each step yourself from the beginning of any trail.
+Some of the preparation steps may be inside collapsed sections
 you can click on to expand:
 
 <details>
