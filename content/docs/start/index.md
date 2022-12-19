@@ -112,11 +112,10 @@ These are captured in our [example-dvc-experiments] repo (see its [tags]).
 
 ## Following the Get Started
 
-Each page in the trails above is more or less independent,
-especially if you're only reading them to get a general idea of the
-features in question. For better learning, try each step yourself from the beginning of any trail.
-Some of the preparation steps may be inside collapsed sections
-you can click on to expand:
+Each page in the trails above is more or less independent, especially if you're
+only reading them to get a general idea of the features in question. For better
+learning, try each step yourself from the beginning of any trail. Some of the
+preparation steps may be inside collapsed sections you can click on to expand:
 
 <details>
 
