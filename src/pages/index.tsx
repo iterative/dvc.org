@@ -6,6 +6,13 @@ import Home from '../components/Home'
 
 const HomePage = ({ location }: PageProps) => (
   <MainLayout location={location} className="mt-14">
+    <button
+      onClick={() => {
+        throw new Error('Test error!')
+      }}
+    >
+      Test error
+    </button>
     <Home />
   </MainLayout>
 )
