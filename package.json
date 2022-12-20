@@ -157,7 +157,7 @@
     "jest": "29.0.3",
     "lint-staged": "13.0.3",
     "postcss-color-mod-function": "3.0.3",
-    "postcss-custom-media": "8.0.2",
+    "postcss-custom-media": "9.0.1",
     "postcss-custom-properties": "12.1.9",
     "postcss-mixins": "9.0.4",
     "postcss-nested": "5.0.6",
