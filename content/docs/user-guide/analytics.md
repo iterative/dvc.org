@@ -53,7 +53,7 @@ DVC analytics help the entire community, so leaving it on is appreciated.
 However, if you want to opt out of DVC's analytics, you can disable it via
 `dvc config` command:
 
-```dvc
+```cli
 $ dvc config core.analytics false
 ```
 

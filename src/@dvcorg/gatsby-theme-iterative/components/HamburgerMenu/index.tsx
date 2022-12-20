@@ -10,8 +10,8 @@ import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 
-import * as styles from './styles.module.css'
-import menuData from '../data/menu'
+import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
+import menuData from '../../data/menu'
 
 const docsPage = getFirstPage()
 
@@ -81,11 +81,11 @@ export const HamburgerMenu: React.FC<
       <ul className={styles.sections}>
         <li className={styles.section}>
           <Link
-            href="/features"
+            href="/doc/use-cases"
             className={styles.sectionHeading}
-            onClick={() => handleItemClick('features')}
+            onClick={() => handleItemClick('use-cases')}
           >
-            Features
+            Use Cases
           </Link>
         </li>
         <li className={styles.section}>

@@ -17,7 +17,7 @@ running `dvc init` inside a Git project:
 Imagine we want to building an ML project from scratch. Let's start by creating
 a Git repository:
 
-```dvc
+```cli
 $ mkdir example-get-started
 $ cd example-get-started
 $ git init
@@ -32,14 +32,14 @@ This directory name is actually used in our
 
 </details>
 
-```dvc
+```cli
 $ dvc init
 ```
 
 A few [internal files](/doc/user-guide/project-structure/internal-files) are
 created that should be added to Git:
 
-```dvc
+```cli
 $ git status
 Changes to be committed:
         new file:   .dvc/.gitignore

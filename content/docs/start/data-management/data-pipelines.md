@@ -8,7 +8,7 @@ version, and reproduce your data science and machine learning workflows.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/71IGzyH95UY
 
@@ -38,7 +38,7 @@ into a [stage](/doc/command-reference/stage):
 
 Get the sample code like this:
 
-```dvc
+```cli
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
@@ -59,7 +59,7 @@ Now let's install the requirements:
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
-```dvc
+```cli
 $ pip install -r src/requirements.txt
 ```
 
@@ -67,7 +67,7 @@ Please also add or commit the source code directory with Git at this point.
 
 </details>
 
-```dvc
+```cli
 $ dvc stage add -n prepare \
                 -p prepare.seed,prepare.split \
                 -d src/prepare.py -d data/data.xml \
@@ -166,7 +166,7 @@ dependency graph (a [DAG]).
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
 
-```dvc
+```cli
 $ dvc stage add -n featurize \
                 -p featurize.max_features,featurize.ngrams \
                 -d src/featurization.py -d data/prepared \
@@ -217,7 +217,7 @@ The changes to the `dvc.yaml` should look like this:
 Let's add the training itself. Nothing new this time; just the same
 `dvc stage add` command with the same set of options:
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -p train.seed,train.n_est,train.min_split \
                 -d src/train.py -d data/features \
@@ -237,7 +237,7 @@ This should be a good time to commit the changes with Git. These include
 The whole point of creating this `dvc.yaml` file is the ability to easily
 reproduce a pipeline:
 
-```dvc
+```cli
 $ dvc repro
 ```
 
@@ -253,7 +253,7 @@ parameters for the training stage:
 
 You should see:
 
-```dvc
+```cli
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
@@ -265,7 +265,7 @@ the intermediate results are being reused.
 
 Now, let's change it back to `50` and run `dvc repro` again:
 
-```dvc
+```cli
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
@@ -337,7 +337,7 @@ Having built our pipeline, we need a good way to understand its structure.
 Seeing a graph of connected stages would help. DVC lets you do so without
 leaving the terminal!
 
-```dvc
+```cli
 $ dvc dag
          +---------+
          | prepare |

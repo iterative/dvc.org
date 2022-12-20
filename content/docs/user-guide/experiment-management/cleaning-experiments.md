@@ -11,7 +11,7 @@ the workspace or delete the ones that are not [final] yet.
 When you want to discard experiments by their name, you can use `dvc exp remove`
 and supply the experiment name.
 
-```dvc
+```cli
 $ dvc exp list
 main:
     cnn-32
@@ -27,7 +27,7 @@ You may wish to remove multiple experiments at once. For example, if you are
 finished experimenting on the current Git commit and want to discard all
 experiments derived from it, use `dvc exp remove --rev` with `HEAD`.
 
-```dvc
+```cli
 $ dvc exp list
 refs/tags/baseline-experiment:
         cnn-128
@@ -58,7 +58,7 @@ experiments not in scope are removed.
 Supplying `--workspace` flag to `dvc exp gc` causes all experiments to be
 removed **except** those in the current workspace.
 
-```dvc
+```cli
 $ dvc exp list --all-commits
 main:
    exp-aaa000
@@ -76,7 +76,7 @@ another:
 Issuing `dvc exp gc --workspace` removes experiments in `other` and `another`
 branches in this example.
 
-```dvc
+```cli
 $ dvc exp gc --workspace
 $ dvc exp list --all-commits
 main:
@@ -92,7 +92,7 @@ DVC can create a branch for an experiment using `dvc exp branch` command.
 In cases where you want to clean up the experiments _except_ those in the
 branches, you can use `--all-branches` flag.
 
-```dvc
+```cli
 $ dvc exp show --all-branches
 ```
 
@@ -115,7 +115,7 @@ $ dvc exp show --all-branches
 Supplying `--all-branches` keeps only the experiments in branch tips. Any
 experiment that's not promoted to a branch is removed this way.
 
-```dvc
+```cli
 $ dvc exp gc --all-branches
 WARNING: This will remove all experiments except those derived from the workspace and all git branches of the current repo.
 Are you sure you want to proceed? [y/n] y
@@ -141,7 +141,7 @@ When you tag the experiment commits by `git tag`, `dvc exp show --all-tags`
 presents them along with the tags. If you want the delete _all experiments
 without tags_, you can issue a `dvc exp gc --all-tags` command.
 
-```dvc
+```cli
 $ dvc exp show --all-tags
 ```
 
@@ -160,7 +160,7 @@ $ dvc exp show --all-tags
  ─────────────────────────────────────────────────────
 ```
 
-```dvc
+```cli
 $ dvc exp gc --all-tags
 
 $ dvc exp show --all-tags
@@ -203,7 +203,7 @@ As you push the experiments with `dvc exp push`, Git remotes may be become
 cluttered with experiment references. To remove experiments from a Git remote,
 use `dvc exp remove -g`.
 
-```dvc
+```cli
 $ dvc exp remove -g origin exp-ab780
 Removed experiments: exp-bb09c
 ```
@@ -213,7 +213,7 @@ Removed experiments: exp-bb09c
 When you've queued experiments with `dvc exp run --queue` and later decide not
 to run them, you can remove them with `dvc exp remove --queue`.
 
-```dvc
+```cli
 $ dvc exp run --queue -S param=10
 Queued experiment '7b83744' for future execution.
 $ dvc exp run --queue -S param=20
@@ -232,7 +232,7 @@ $ dvc exp show
  ─────────────────────────────────────
 ```
 
-```dvc
+```cli
 $ dvc exp remove --queue
 $ dvc exp show
 ```

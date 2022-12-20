@@ -4,20 +4,21 @@
   padding: 0;
   margin: 0 16px 0 4px;
 
-  @media (--xl-scr) {
+  @media screen(xl) {
     margin: 0 24px 0 12px;
   }
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     margin: 0 16px 0 0;
   }
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin: 0 16px 0 4px;
   }
 }
 
 .socialIcon {
+  box-sizing: content-box;
   display: block;
   width: 24px;
   height: 24px;
@@ -25,7 +26,7 @@
   padding: 12px;
   margin: 0;
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     width: 20px;
     height: 20px;
     padding: 6px;

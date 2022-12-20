@@ -22,7 +22,7 @@
   line-height: 34px;
   color: var(--color-black);
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin: 0;
     border: none;
     font-size: 20px;
@@ -44,7 +44,7 @@
 .icon {
   margin: 0 -2px 0 0;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     display: none;
   }
 }

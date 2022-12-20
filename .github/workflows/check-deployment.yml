@@ -1,0 +1,16 @@
+name: Check Deployment
+on:
+  workflow_dispatch:
+    inputs:
+      passci:
+        description: 'Pass CI'
+        required: true
+        type: boolean
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  check-deployment:
+    uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@main
+    with:
+      passci: ${{ inputs.passci || false }}

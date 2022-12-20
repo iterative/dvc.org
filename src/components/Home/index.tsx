@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react'
+import React from 'react'
 
 import WhatsNewModal from './WhatsNewModal'
 import HeroSection from '../HeroSection'
@@ -13,38 +13,38 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 
 import * as styles from './styles.module.css'
 
-const Home: React.FC = () => {
-  const diagramSectionRef = useRef<HTMLElement>(null)
-  const useCasesSectionRef = useRef<HTMLElement>(null)
-  const goToDocGetStarted = useCallback(
-    () => logEvent('Promo', { Item: 'get-started' }),
-    []
-  )
-  const goToFeatures = useCallback(
-    () => logEvent('Promo', { Item: 'features' }),
-    []
-  )
+const logGetStartedEvent = () => logEvent('Promo', { Item: 'get-started' })
+const logUseCasesEvent = () => logEvent('Promo', { Item: 'use-cases' })
 
+const Home: React.FC = () => {
   return (
     <>
       <WhatsNewModal />
       <HeroSection className={styles.heroSection}>
-        <LandingHero scrollToRef={useCasesSectionRef} />
-        <LearnMore scrollToRef={diagramSectionRef} />
+        <LandingHero />
+        <LearnMore />
       </HeroSection>
-      <Diagram ref={diagramSectionRef} />
+      <Diagram />
       <PromoSection
         title="For data scientists, by data scientists"
         buttons={[
-          <Link href="/doc/start" onClick={goToDocGetStarted} key="get-started">
+          <Link
+            href="/doc/start"
+            onClick={logGetStartedEvent}
+            key="get-started"
+          >
             Get Started
           </Link>,
-          <Link href="/features" onClick={goToFeatures} key="features">
-            Full Features
+          <Link
+            href="/doc/use-cases"
+            onClick={logUseCasesEvent}
+            key="use-cases"
+          >
+            Use Cases
           </Link>
         ]}
       />
-      <UseCases ref={useCasesSectionRef} />
+      <UseCases />
       <SubscribeSection />
     </>
   )

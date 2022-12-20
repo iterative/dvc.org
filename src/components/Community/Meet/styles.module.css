@@ -1,5 +1,5 @@
 .stats {
-  @media (--sm-scr) {
+  @media screen(smMax) {
     display: flex;
     flex-direction: row;
     margin-top: 15px;
@@ -17,7 +17,7 @@
   align-items: center;
   margin-top: 25px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex-direction: column;
     flex-basis: 50%;
     align-items: flex-start;
@@ -39,7 +39,7 @@
   text-align: right;
   color: var(--color-black);
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex: initial;
     font-size: 30px;
     line-height: 40px;
