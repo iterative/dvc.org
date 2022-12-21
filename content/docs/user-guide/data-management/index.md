@@ -40,11 +40,11 @@ duplicates. This requires a few key changes to your workflow:
 
 ## How it works
 
-<abbr>DVC repositories</abbr> contain [metafiles] that act as pointers,
-[linking] to your data files and directories. This keeps your project folder
-small and comprised mainly of text-like code and configuration files you can
-[version with Git] normally. DVC moves your assets (large files, binaries, etc.)
-to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
+<abbr>DVC repositories</abbr> contain [metafiles] (e.g. `data.dvc`) that act as
+pointers, [linking] to your data files and directories. This keeps your project
+folder small and comprised mainly of text-like code and configuration files you
+can [version with Git] normally. DVC moves your assets (large files, binaries,
+etc.) to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
 
 [metafiles]: /doc/user-guide/project-structure
 [linking]: /doc/user-guide/data-management/large-dataset-optimization
@@ -90,10 +90,10 @@ their contents (using simple hashes) to flatten any directory structure and
 prevent duplication.
 
 The cache is the first storage layer for you and your team to share and
-collaborate, but more can be defined in DVC [config files]. This is where you
-set up one or more locations to back up and share data, features, ML models,
-etc. Supported platforms include SSH, Amazon S3, Google Cloud Storage, Microsoft
-Azure, among [many more].
+collaborate, but more can be defined in DVC [config files] (using `dvc remote`
+commands). These storage locations let you back up and share data, features, ML
+models, etc. Supported platforms include SSH, Amazon S3, Google Cloud Storage,
+Microsoft Azure, among [many more].
 
 [config files]: /doc/user-guide/project-structure/internal-files
 [many more]: /doc/command-reference/remote/add#supported-storage-types
@@ -113,7 +113,7 @@ benefits:
 - Use a consistent interface to access data anywhere (via [CLI], [API], [IDE],
   or [web]).
 - Enable advanced features such as [data registries], [ML pipelines], [CI/CD for
-  ML], [productization], and more!
+  ML], [productize] your models, and more!
 
 [space efficiency]: /doc/user-guide/data-management/large-dataset-optimization
 [synchronizes]: /doc/command-reference/remote
@@ -124,7 +124,7 @@ benefits:
 [data registries]: /doc/use-cases/data-registry
 [ml pipelines]: /doc/user-guide/pipelines
 [ci/cd for ml]: https://cml.dev/
-[productization]: https://mlem.ai/
+[productize]: https://mlem.ai/
 
 In summary, DVC establishes a standard way to manage data for ML projects,
 letting you focus on more important tasks like data exploration, preparation,
