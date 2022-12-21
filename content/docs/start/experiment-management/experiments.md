@@ -1,8 +1,8 @@
 ---
 title: 'Get Started: Experiments'
 description: 'Get started with DVC experiments. Learn how to capture multiple
-project versions automatically without bloating the Git repo. Iterate quickly by
-comparing them easily and finding the best performers.'
+project versions automatically without bloating your Git repo. Iterate quickly by
+comparing experiments easily and finding the best performers.'
 ---
 
 # Get Started: Experiments
@@ -29,7 +29,7 @@ ones that we need to Git.
 
 <admon type="tip">
 
-**New!** You can track and compare you ML experiments with DVC directly [from
+**New!** You can track and compare your ML experiments with DVC directly [from
 Visual Studio Code], a leading IDE in the industry.
 
 [from visual studio code]: /doc/vs-code-extension
@@ -46,9 +46,9 @@ the [`example-dvc-experiments`][ede] project.
 ### ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
-commands right away to run experiments in your project. (See the [User Guide]
-for detailed information.) Here, we briefly discuss how to structure an ML
-project with DVC experiments using `dvc exp init`.
+commands right away to run or save experiments in your project. (See the [User
+Guide] for detailed information.) Here, we briefly discuss how to structure an
+ML project with DVC experiments using `dvc exp init`.
 
 [user guide]: /doc/user-guide/experiment-management/experiments-overview
 
@@ -89,6 +89,13 @@ This runs the command specified in `dvc.yaml` (`python train.py`), and creates
 models, plots, and metrics in the respective directories. The experiment is then
 associated with the values found in the parameters file (`params.yaml`) and
 other dependencies, as well as the metrics produced.
+
+<admon type="tip">
+
+Current workspace status can also be saved as an experiment using
+[`dvc exp save`](/doc/command-reference/exp/save).
+
+</admon>
 
 <details>
 
@@ -132,7 +139,7 @@ $ dvc exp show
 The `workspace` row in the table shows the results of the most recent experiment
 that's available in the <abbr>workspace</abbr>. The table also shows each
 experiment in a separate row, along with the Git commit IDs they are attached
-to. We can see that the experiment we run has a name `exp-ff24d` and was run
+to. We can see that the experiment we ran has a name `exp-ff24d` and was run
 from the commit ID `999710f`.
 
 Now let's do some more experimentation.
@@ -203,11 +210,11 @@ $ dvc exp show
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-By default, it shows all the metrics, parameters and dependencies with the
-timestamp. If you have a large number of metrics, parameters, dependencies or
-experiments, this may lead to a cluttered view. You can limit the table to
-specific columns using the [`--drop`](/doc/command-reference/exp/show#--drop)
-option of the command.
+By default, the output includes all the metrics, parameters and dependencies
+with the timestamp. If you have a large number of metrics, parameters,
+dependencies or experiments, this may lead to a cluttered view. You can limit
+the table to specific columns using the
+[`--drop`](/doc/command-reference/exp/show#--drop) option of the command.
 
 ```cli
 $ dvc exp show --drop 'Created|train|loss'
@@ -232,7 +239,7 @@ $ dvc exp show --drop 'Created|train|loss'
 
 ### ℹ️ More information about metrics
 
-Metrics are what you use to evaluate your models. DVC associates metrics to
+Metrics are what you use to evaluate your models. DVC associates metrics with
 experiments for later comparison. Any scalar value can be used as a metric. You
 can specify text files to contain metrics using `dvc exp init --metrics`, and
 write them in the experimentation code.
@@ -268,9 +275,9 @@ into your `main` branch with the usual Git commands.
 
 ## Go Further
 
-There are many other features of `dvc exp`, like cleaning up the unused
-experiments, sharing them without committing into Git or getting differences
-between two experiments.
+There are many other features of `dvc exp`, like cleaning up unused experiments,
+saving the current workspace status as an experiment, sharing them without
+committing into Git, or getting differences between two experiments.
 
 Please see the section on
 [Experiment Management](/doc/user-guide/experiment-management) in the User's

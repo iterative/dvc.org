@@ -65,8 +65,16 @@ $ pip install -r src/requirements.txt
 
 Please also add or commit the source code directory with Git at this point.
 
-</details>
+<admon type="info:>
 
+The data needed to run this example can be found [in a previous page].
+
+</admon>
+
+[in a previous page]:
+  /doc/start/data-management/data-versioning#expand-to-get-an-example-dataset
+
+</details>
 ```cli
 $ dvc stage add -n prepare \
                 -p prepare.seed,prepare.split \
@@ -156,12 +164,12 @@ along with `git commit` to version DVC metafiles).
 [to remote storage]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 
-## Dependency graphs (DAG)
+## Dependency graphs
 
-By using `dvc stage add` multiple times to use <abbr>outputs</abbr> of a stage
-as <abbr>dependencies</abbr> of another, we can describe a sequence of commands
-that gets to a desired result. This is what we call a _data pipeline_ or
-dependency graph (a [DAG]).
+By using `dvc stage add` multiple times, defining <abbr>outputs</abbr> of a
+stage as <abbr>dependencies</abbr> of another, we can describe a sequence of
+commands which gets to some desired result. This is what we call a [dependency
+graph] and it's what forms a cohesive pipeline.
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
@@ -175,8 +183,6 @@ $ dvc stage add -n featurize \
 ```
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
-
-[dag]: /doc/user-guide/pipelines/defining-pipelines
 
 <details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
@@ -207,6 +213,9 @@ The changes to the `dvc.yaml` should look like this:
 +    outs:
 +    - data/features
 ```
+
+Note that you can create and edit `dvc.yaml` files manually instead of using
+helper `dvc stage add`.
 
 </details>
 
@@ -281,8 +290,8 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 ### 💡 Expand to see what happens under the hood.
 
-`dvc repro` relies on the [DAG] defined in `dvc.yaml`, and uses `dvc.lock` to
-determine what exactly needs to be run.
+`dvc repro` relies on the [dependency graph] of stages defined in `dvc.yaml`,
+and uses `dvc.lock` to determine what exactly needs to be run.
 
 The `dvc.lock` file is similar to a `.dvc` file — it captures hashes (in most
 cases `md5`s) of the dependencies and values of the parameters that were used.
@@ -311,8 +320,14 @@ stages:
         nfiles: 2
 ```
 
-> `dvc status` command can be used to compare this state with an actual state of
-> the workspace.
+<admon type="info">
+
+The `dvc status` command can be used to compare the workspace with an actual
+state of the workspace.
+
+</admon>
+
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 </details>
 

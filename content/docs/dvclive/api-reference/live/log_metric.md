@@ -10,8 +10,8 @@
 from dvclive import Live
 
 with Live() as live:
-  live.log_metric("train/loss", 0.4)
-  live.log_metric("val/loss", 0.9)
+    live.log_metric("train/loss", 0.4)
+    live.log_metric("val/loss", 0.9)
 ```
 
 ## Description

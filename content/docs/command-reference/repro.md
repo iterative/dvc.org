@@ -1,8 +1,7 @@
 # repro
 
-Reproduce complete or partial [pipelines](/doc/command-reference/dag) by
-executing commands defined in their [stages](/doc/command-reference/run) in the
-correct order.
+Reproduce complete or partial <abbr>pipelines</abbr> by running their
+<abbr>stages</abbr> as needed in the correct order.
 
 ## Synopsis
 
