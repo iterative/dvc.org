@@ -29,6 +29,10 @@ You can use `Live.next_step()` to increase the `step` by 1 (one).
 In addition to increasing the `step` number, it will call `Live.make_report()`
 and `Live.make_summary()`.
 
+If `save_dvc_exp=True` has been passed to `Live()`, `Live.next_step()` will
+write a `dvc.yaml` file configuring what DVC will show for logged plots,
+metrics, and parameters.
+
 ### Manual step updates
 
 If you want custom `step` intervals or don't want to call `Live.make_summary()`

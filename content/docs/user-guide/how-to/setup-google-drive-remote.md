@@ -34,6 +34,7 @@ $ dvc add data
 ...
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
 $ dvc push
 Your browser has been opened to visit:
 
@@ -192,6 +193,10 @@ globally, for example in
 `gdrive_user_credentials_file`]), and used automatically next time DVC needs
 them.
 
+[auth process]: https://developers.google.com/drive/api/v2/about-auth
+[see `gdrive_user_credentials_file`]:
+  /doc/command-reference/remote/modify#google-drive
+
 <admin type="warn">
 
 In order to prevent unauthorized access to your Google Drive, **do not share
@@ -216,12 +221,12 @@ $ dvc remote modify myremote --local \
       gdrive_user_credentials_file ~/.gdrive/myremote-credentials.json
 ```
 
-<admin type="warn">
+<admon type="warn">
 
 If the file is in a Git repo, consider it a secret and **do not commit it**. Add
 it to `.gitignore` to be sure.
 
-</admin>
+</admon>
 
 To change the user you have authenticated with or for troubleshooting misc.
 token errors, you can remove the user credentials file and authorize again.
@@ -233,11 +238,18 @@ credentials files described above, and usually you get it going through the same
 authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
 `gdrive_user_credentials_file` value (if provided) is ignored.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+<admon type="warn">
 
-[auth process]: https://developers.google.com/drive/api/v2/about-auth
-[see `gdrive_user_credentials_file`]:
-  /doc/command-reference/remote/modify#google-drive
+If you get an error message _This file has been identified as malware or spam
+and cannot be downloaded_ running a `dvc push` or `dvc pull` command, check that
+the `gdrive_acknowledge_abuse` option is set:
+
+```cli
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
+```
+
+</admon>
+> Please note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
 
 ## Using service accounts
 

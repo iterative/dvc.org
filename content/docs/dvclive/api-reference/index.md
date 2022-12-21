@@ -20,10 +20,17 @@ to its corresponding page.
 ### Initialize DVCLive
 
 ```python
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
 ```
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
+
+<admon type="info">
+
+Including `save_dvc_exp=True` will automatically
+[track the results](/doc/dvclive/how-it-works#track-the-results).
+
+</admon>
 
 ### Log data
 
@@ -102,18 +109,18 @@ Joining the above snippets, you can include DVCLive in your training code:
 
 from dvclive import Live
 
-live = Live()
+with Live(save_dvc_exp=True) as live:
 
-live.log_param("epochs", NUM_EPOCHS)
+    live.log_param("epochs", NUM_EPOCHS)
 
-for epoch in range(NUM_EPOCHS):
-    train_model(...)
-    metrics = evaluate_model(...)
+    for epoch in range(NUM_EPOCHS):
+        train_model(...)
+        metrics = evaluate_model(...)
 
-    for metric_name, value in metrics.items():
-        live.log_metric(metric_name, value)
+        for metric_name, value in metrics.items():
+            live.log_metric(metric_name, value)
 
-    live.next_step()
+        live.next_step()
 ```
 
 ## Outputs
