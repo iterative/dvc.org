@@ -107,8 +107,8 @@ You can view tracked metrics with DVC:
 
 ```dvc
 $ dvc metrics show
-Path             avg_prec    roc_auc
-evaluation.json  0.89668     0.92729
+Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_auc.train
+eval/live/metrics.json  0.94496          0.97723           0.96191         0.98737
 ```
 
 ## Configuring plots
@@ -171,7 +171,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 
 ![](/img/plots_prc_get_started_show.svg)
 ![](/img/plots_roc_get_started_show.svg)
-![](/img/plots_importance_get_started_show.png '=300 :wrap-left')
+![](/img/plots_importance_get_started_show.png '=500 :wrap-left')
 ![](/img/plots_cm_get_started_show.svg)
 
 Let's save this iteration, so we can compare it later:
