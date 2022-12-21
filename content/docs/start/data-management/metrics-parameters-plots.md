@@ -138,7 +138,7 @@ into JSON files in the `eval/live/plots` directory, and an image
 To view plots, first configure the axes and other specifications of your plots
 by adding a `plots` section to your `dvc.yaml`:
 
-```cli
+```yaml
 plots:
   - eval/importance.png
   - Precision-Recall:
