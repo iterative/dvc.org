@@ -2,7 +2,6 @@
 
 Capture the current state of the <abbr>workspace</abbr> as a [DVC experiment].
 
-[reference]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 [dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 <admon type="info">
@@ -21,7 +20,7 @@ usage: dvc exp save [-h] [-q | -v] [-f]
 
 ## Description
 
-Provides a way to capture the current state of your <abbr>workspace</abbr> as an
+Provides a way to save a snapshot of your <abbr>project</abbr> as an
 <abbr>experiment</abbr>. This lets you quickly start tracking, [comparing],
 [plotting], and [sharing] experiments after making any project changes (e.g.
 retrain an ML model).
@@ -33,7 +32,8 @@ retrain an ML model).
 <admon type="tip">
 
 Only files tracked by either Git or DVC are saved to the experiment unless you
-use `--include-untracked` (`-I`) on untracked files explicitly.
+use `--include-untracked` (`-I`) on untracked files explicitly (see an
+[example](#examples) below).
 
 </admon>
 
