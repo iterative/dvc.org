@@ -1,8 +1,15 @@
 # exp run
 
-Run or resume a [DVC experiment].
+Run or resume a [DVC experiment] based on a [DVC pipeline].
 
 [dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+[dvc pipeline]: /doc/user-guide/pipelines
+
+<admon type="info">
+
+This is equivalent to `dvc repro` followed by `dvc exp save`.
+
+</admon>
 
 ## Synopsis
 
@@ -24,9 +31,10 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-<admon type="warn">
+<admon type="info">
 
-Only files tracked by either Git or DVC are saved to the experiment.
+Only files tracked by either Git or DVC are saved to the experiment. See
+`dvc exp save --include-untracked` for an alternative.
 
 </admon>
 
@@ -37,7 +45,6 @@ Only files tracked by either Git or DVC are saved to the experiment.
 
 This includes committing any changed data <abbr>dependencies</abbr> to the
 <abbr>DVC cache</abbr> when preparing the experiment, which can take some time.
-See the [Options](#options) section for the differences.
 
 </admon>
 

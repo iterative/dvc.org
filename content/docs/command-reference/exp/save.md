@@ -1,8 +1,15 @@
 # exp save
 
-Save the current project workspace as a [DVC experiment].
+Capture the current state of the <abbr>workspace</abbr> as a [DVC experiment].
 
+[reference]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 [dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+
+<admon type="info">
+
+See also `dvc exp run`, which includes this operation.
+
+</admon>
 
 ## Synopsis
 
@@ -14,21 +21,30 @@ usage: dvc exp save [-h] [-q | -v] [-f]
 
 ## Description
 
-Provides a way to save the current status of your <abbr>project</abbr> as an
-<abbr>experiment</abbr> without polluting it with unnecessary commits, branches,
-directories, etc.
-
-Only files tracked by either Git or DVC are saved to the experiment. Use the
-`--include-untracked` (`-I`) option to explicitly include any untracked files in
-the experiment.
-
-`dvc exp save` creates <abbr>experiments</abbr> just like
-[`dvc exp run`](/doc/command-reference/exp/run), but does not require
-reproduction or setup of [pipeline stages](/doc/start/data-pipelines), making it
-possible to quickly start tracking, [comparing] and [persisting] experiments.
+Provides a way to capture the current state of your <abbr>workspace</abbr> as an
+<abbr>experiment</abbr>. This lets you quickly start tracking, [comparing],
+[plotting], and [sharing] experiments after making any project changes (e.g.
+retrain an ML model).
 
 [comparing]: /doc/user-guide/experiment-management/comparing-experiments
-[persisting]: /doc/user-guide/experiment-management/persisting-experiments
+[plotting]: /doc/user-guide/experiment-management/visualizing-plots
+[sharing]: /doc/user-guide/experiment-management/persisting-experiments
+
+<admon type="tip">
+
+Only files tracked by either Git or DVC are saved to the experiment unless you
+use `--include-untracked` (`-I`) on untracked files explicitly.
+
+</admon>
+
+[Review] your experiments with `dvc exp show`. Successful ones can be [made
+persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
+committing them to the Git repo. Unnecessary ones can be [cleared] with
+`dvc exp gc`.
+
+[review]: /doc/user-guide/experiment-management/comparing-experiments
+[made persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[cleared]: /doc/user-guide/experiment-management/cleaning-experiments
 
 ## Options
 
@@ -36,11 +52,12 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
   default one will be generated otherwise, such as `exp-f80g4` (based on the
   experiment's hash).
 
-- `-I <path>`, `--include-untracked <path>` - specify untracked file(s) to be
-  included in the saved experiment. Multiple files can be specified.
+- `-I <path>`, `--include-untracked <path>` - specify an untracked file or
+  directory to be included in the experiment. This option can be used multiple
+  times.
 
-- `-f`, `--force` - overwrite the experiment if an experiment with the same name
-  already exists.
+- `-f`, `--force` - save the experiment even if no tracked files change (similar
+  to `dvc commit -f`).
 
 - `-h`, `--help` - prints the usage/help message, and exits.
 
@@ -52,7 +69,7 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [unique name]:
-  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+  /doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
 
 ## Examples
 
@@ -73,33 +90,34 @@ status in the repo:
 ```cli
 $ git status
 On branch main
-Your branch is up to date with 'upstream/main'.
 
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
 	modified:   data/.gitignore
 	modified:   src/train.py
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
 	data/new.xml.dvc
 	src/extratrees.py
-
-no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-We can run `dvc repro` to reproduce the pipeline and inspect results, e.g. by
-running `dvc metrics show`. We are not quite ready for a commit, but we want to
-save the results of this experiment, so we can run:
+We can inspect results with `dvc metrics show` (or other means) after running
+the experiment (in this case we can do so with `dvc repro` since the example
+project uses a [DVC pipeline]). We are not quite ready for a Git commit, but we
+want to save the results in the repo nonetheless:
 
 ```cli
-dvc exp save --name extra-trees -I data/new.xml.dvc -I src/extra_trees.py
+dvc exp save --name extra-trees \
+             -I data/new.xml.dvc -I src/extra_trees.py
 ```
 
-We use the `-I` flags to make sure to include new (untracked) files in the
-experiment.
+[dvc pipeline]: /doc/user-guide/pipelines
 
-We can now get rid of all the changes in the workspace, as well as removing
+<admon type="info">
+
+We use [`-I`](#-I) to include new (untracked) files in the experiment.
+
+</admon>
+
+We can now get rid of all the changes in the <abbr>workspace</abbr> and remove
 untracked files:
 
 ```cli
@@ -127,29 +145,16 @@ $ dvc exp apply extra-trees
 Changes for experiment 'extra-trees' have been applied to your current workspace.
 $ git status
 On branch main
-Your branch is up to date with 'upstream/main'.
 
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   data/.gitignore
-	modified:   data/data.xml.dvc
+	modified:   data/...
 	modified:   dvc.lock
-	modified:   evaluation/metrics.json
-	modified:   evaluation/plots/metrics/avg_prec.tsv
-	modified:   evaluation/plots/metrics/roc_auc.tsv
-	modified:   evaluation/plots/prc.json
-	modified:   evaluation/plots/sklearn/confusion_matrix.json
-	modified:   evaluation/plots/sklearn/roc.json
-	modified:   evaluation/report.html
+	modified:   evaluation/...
 	modified:   src/train.py
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
 	data/new.xml.dvc
 	src/extratrees.py
-
-no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 All changes, including untracked files, have been restored to the workspace.
@@ -157,7 +162,5 @@ All changes, including untracked files, have been restored to the workspace.
 <admon type="info">
 
 See [our Get Started] guide, for more examples on how to use experiments.
-
-[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
