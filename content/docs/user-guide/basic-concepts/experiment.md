@@ -4,10 +4,7 @@ match:
   [
     experiment,
     experiments,
-    'DVC experiment',
-    'DVC Experiment',
-    'DVC experiments',
-    'DVC Experiments'
+    'DVC experiments'
   ]
 tooltip: >-
   An attempt to reach desired/better/interesting results during data pipelining
