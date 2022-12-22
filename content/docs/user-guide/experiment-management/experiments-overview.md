@@ -1,8 +1,9 @@
 # DVC Experiments Overview
 
-DVC Experiments are captured automatically by DVC when [run], but can also be
-[saved] manually. Each experiment creates and tracks a variation of your data
-science project based on the changes in your <abbr>workspace</abbr>.
+Each DVC Experiment creates and tracks a variation of your data science project
+based on the changes in your <abbr>workspace</abbr>. They can be captured
+automatically when [run with DVC][run] or can be [saved directly][save] (e.g.
+after executing code manually).
 
 Experiments preserve a connection to the latest commit in the current branch
 (Git `HEAD`) as their parent or _baseline_, but do not form part of the regular
@@ -10,21 +11,20 @@ Git tree (unless you make them [persistent]). This prevents bloating your repo
 with temporary commits and branches.
 
 [run]: /doc/user-guide/experiment-management/running-experiments
-[saved]: /doc/command-reference/exp/save
+[save]: /doc/command-reference/exp/save
 
 <details>
 
 ### ⚙️ How does DVC track experiments?
 
-Experiments are custom [Git references](/blog/experiment-refs) (found in
-`.git/refs/exps`) with one or more commits based on `HEAD`. These commits are
-hidden and not checked out by DVC. Note that these are not pushed to Git remotes
-by default either (see `dvc exp push`).
+DVC Experiments are custom [Git references](/blog/experiment-refs) (found in
+`.git/refs/exps`) with one or more hidden commits based on `HEAD`. Note that
+these are not pushed to Git remotes by default (see `dvc exp push`).
 
-Note that DVC Experiments require a unique name to identify them. DVC will
-usually auto-generate one by default, such as `exp-bfe64` (based on the
-experiment's hash). A custom name can be set instead, using the `--name`/`-n`
-option of `dvc exp run`/`dvc exp save`. These names can be used to reference
+All experiments require a unique name to identify them. DVC will usually
+auto-generate one by default, such as `exp-bfe64` (based on the experiment's
+hash). A custom name can be set instead (see the `--name`/`-n` option of
+`dvc exp run` and `dvc exp save`). These names can be used to reference
 experiments in other `dvc exp` subcommands.
 
 </details>
@@ -38,9 +38,9 @@ this:
 
 - Modify hyperparameters or other dependencies (input data, source code,
   commands to execute, etc.). Leave these changes un-committed in Git.
-- [Run experiments][run] with `dvc exp run` (or use `repro` + `dvc exp save`).
-  The results are reflected in your <abbr>workspace</abbr>, and tracked
-  automatically.
+- [Run experiments][run] with `dvc exp run` (instead of `repro`) or [save the
+  current workspace state][save] as an experiment. The results are reflected in
+  your <abbr>workspace</abbr>, and tracked automatically.
 - Review and [compare] experiments with `dvc exp show` or `dvc exp diff`, using
   [metrics](/doc/command-reference/metrics) to identify the best one(s). Repeat
   🔄
