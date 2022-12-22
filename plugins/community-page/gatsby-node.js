@@ -143,7 +143,7 @@ module.exports = {
       query ExpiredItemQuery {
         events: allCommunityEvent(
           filter: { expired: { eq: true } }
-          sort: { fields: [sourceIndex] }
+          sort: { sourceIndex: ASC }
         ) {
           nodes {
             expires(formatString: "YYYY-MM-DD")
@@ -153,7 +153,7 @@ module.exports = {
         }
         heroes: allCommunityHero(
           filter: { expired: { eq: true } }
-          sort: { fields: [sourceIndex] }
+          sort: { sourceIndex: ASC }
         ) {
           nodes {
             sourceIndex
