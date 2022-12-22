@@ -51,7 +51,8 @@ $ git commit -m "Initialize DVC"
 Now you're ready to DVC!
 
 The value of DVC's several feature sets is best understood from different
-angles. Pick from the trails below to learn about DVC from that perspective:
+angles. Pick one of the two trails below to learn about DVC from that 
+perspective:
 
 ### Data Management Trail
 
