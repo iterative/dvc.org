@@ -1,7 +1,7 @@
 # run
 
-Helper command to create or update _stages_ in `dvc.yaml`. Requires a name and a
-command.
+Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`. Requires a
+name and a command.
 
 ## Synopsis
 
@@ -23,13 +23,17 @@ positional arguments:
 
 ## Description
 
-`dvc run` is a helper for creating or updating
-[pipeline](/doc/command-reference/dag) stages in a `dvc.yaml` file (located in
-the current working directory).
+`dvc run` is a helper for creating or updating <abbr>pipeline</abbr> stages in a
+`dvc.yaml` file (located in the current working directory). `dvc run` also
+executes the stage (unless the `--no-exec` flag is used).
 
-_Stages_ represent individual data processes, including their input and
-resulting outputs. They can be combined to capture simple data workflows,
-organize data science projects, or build detailed machine learning pipelines.
+<admon type="tip">
+
+We now recommend writing `dvc.yaml` files directly or using the `dvc stage add`
+helper to define stages (similar to `dvc run` but without execution). Use
+`dvc repro` to run them.
+
+</admon>
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mostly meant to describe different
