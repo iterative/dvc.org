@@ -39,7 +39,7 @@ pipeline that needs their outputs.
 
 First, let's create a dummy stage that copies `foo` to `bar`:
 
-```dvc
+```cli
 $ echo foo > foo
 $ dvc add foo
 $ dvc stage add -n make_copy -d foo -o bar cp foo bar
@@ -50,7 +50,7 @@ $ dvc stage add -n make_copy -d foo -o bar cp foo bar
 Then, let's change the file `foo` that the stage `make_copy` depends on, and
 freeze the stage as well, to see what's the project status after that:
 
-```dvc
+```cli
 $ echo zoo > foo
 $ dvc freeze make_copy
 $ dvc status
@@ -63,7 +63,7 @@ DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
 (as `outs`), but the `make_copy` stage doesn't record the change among its
 dependencies. Run `dvc unfreeze` to get the regular/full project status:
 
-```dvc
+```cli
 $ dvc unfreeze make_copy
 $ dvc status
 make_copy:

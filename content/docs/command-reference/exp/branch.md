@@ -60,13 +60,13 @@ version.
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -85,7 +85,7 @@ $ dvc exp show
 We may want to branch-off `exp-1dad0` for a separate experimentation process
 (based on 2000 `max_features`).
 
-```dvc
+```cli
 $ dvc exp branch exp-1dad0 maxf-2000
 Git branch 'maxf-2000' has been created from experiment 'exp-1dad0'.
 To switch to the new branch run:
@@ -94,7 +94,7 @@ To switch to the new branch run:
 
 We can inspect the result with Git:
 
-```dvc
+```cli
 $ git branch
 * master
   maxf-2000

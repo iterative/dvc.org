@@ -47,9 +47,9 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
   DVC-tracked data from multiple project branches or tags into your machine.
 - To use comparison commands across different Git commits, for example
   `dvc metrics show` with its `--all-branches` option, or `dvc plots diff`.
-- If you want to avoid [linking](/doc/user-guide/large-dataset-optimization)
-  files from the cache, or keep the <abbr>workspace</abbr> clean for any other
-  reason.
+- If you want to avoid
+  [linking](/doc/user-guide/data-management/large-dataset-optimization) files
+  from the cache, or keep the <abbr>workspace</abbr> clean for any other reason.
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
@@ -123,7 +123,7 @@ scenarios.
 
 Start by cloning our example repo if you don't already have it:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
@@ -132,7 +132,7 @@ $ cd example-get-started
 
 The workspace looks like this:
 
-```dvc
+```cli
 .
 ├── data
 │   └── data.xml.dvc
@@ -150,7 +150,7 @@ This project comes with a predefined HTTP
 to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
 into our local <abbr>cache</abbr>.
 
-```dvc
+```cli
 $ dvc status --cloud
 ...
 	deleted:            data/features/train.pkl
@@ -181,7 +181,7 @@ and `model.pkl` file, respectively.
 
 To link these files to the workspace:
 
-```dvc
+```cli
 $ dvc checkout
 ```
 
@@ -193,7 +193,7 @@ $ dvc checkout
 `dvc fetch` only downloads the tracked data corresponding to any given
 `targets`:
 
-```dvc
+```cli
 $ dvc fetch prepare
 
 $ tree .dvc/cache
@@ -214,7 +214,7 @@ Note that you can fetch data within directories tracked. For example, the
 `featurize` stage has the entire `data/features` directory as output, but we can
 just get this:
 
-```dvc
+```cli
 $ dvc fetch data/features/test.pkl
 ```
 
@@ -228,7 +228,7 @@ After following the previous example (**Specific stages**), only the files
 associated with the `prepare` stage have been fetched. Several
 dependencies/outputs of other pipeline stages are still missing from the cache:
 
-```dvc
+```cli
 $ dvc status -c
 ...
     deleted:            data/features/test.pkl
@@ -240,7 +240,7 @@ One could do a simple `dvc fetch` to get all the data, but what if you only want
 to retrieve the data up to our third stage, `train`? We can use the
 `--with-deps` (or `-d`) option:
 
-```dvc
+```cli
 $ dvc fetch --with-deps train
 
 $ tree .dvc/cache

@@ -23,11 +23,11 @@
   margin: 0 auto;
   padding-top: 80px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     padding-top: 70px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding-top: 50px;
   }
 }
@@ -38,7 +38,7 @@
   margin: 0 20px 60px;
   padding: 10px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex-basis: 100%;
     margin: 0 0 40px;
     padding: 10px 0;

@@ -11,7 +11,7 @@
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "./scripts/heroku-deploy.sh",
+    "heroku-postbuild": "heroku-deploy",
     "test": "jest",
     "format-staged": "pretty-quick --staged --no-restage --bail --pattern '**/*.{js,jsx,md,tsx,ts,json}'",
     "format-check": "prettier --check '**/*.{js,jsx,md,tsx,ts,json}'",
@@ -39,8 +39,8 @@
     "node": ">=14.x <=18.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.1.16",
-    "@dvcorg/websites-server": "^0.0.3",
+    "@dvcorg/gatsby-theme-iterative": "^0.2.8",
+    "@dvcorg/websites-server": "^0.0.16",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^5.0.0",
     "@reach/portal": "^0.17.0",
@@ -134,7 +134,6 @@
     "gatsby-plugin-manifest": "4.23.1",
     "gatsby-plugin-postcss": "5.23.0",
     "gatsby-plugin-react-helmet": "5.23.0",
-    "gatsby-plugin-sentry": "1.0.1",
     "gatsby-plugin-sitemap": "5.23.1",
     "gatsby-plugin-svgr": "3.0.0-beta.0",
     "gatsby-plugin-twitter": "4.23.1",

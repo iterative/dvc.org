@@ -1,10 +1,11 @@
 # data status
 
-Show changes in the data tracked by DVC in the <abbr>workspace</abbr>.
+Show changes to the files and directories tracked by DVC in the
+<abbr>workspace</abbr>.
 
-<admon type="info">
+<admon type="tip">
 
-For [pipelines](/doc/user-guide/pipelines) status, use `dvc status`.
+For the status of <abbr>data pipelines</abbr>, see `dvc status`.
 
 </admon>
 
@@ -35,7 +36,7 @@ you don't accidentally commit something you don't mean to.
 
 An example output might look something like follows:
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -52,33 +53,39 @@ DVC uncommitted changes:
 (there are other changes not tracked by dvc, use "git status" to see)
 ```
 
-As shown above, the `dvc data status` displays changes in multiple categories:
+`dvc data status` displays changes in multiple categories:
 
-- _Not in cache_ indicates that the hash for files are recorded in `dvc.lock`
-  and `.dvc` files but the corresponding cache files are missing.
-- _DVC committed changes_ indicates that there are changes that are
-  `dvc-commit`-ed that differs with the last Git commit. There might be more
-  detailed state on how each of those files changed: _added_, _modified_,
-  _deleted_ and _unknown_.
-- _DVC uncommitted changes_ indicates that there are changes in the
-  <abbr>workspace</abbr> that are not `dvc commit`-ed yet. Same as _DVC
-  committed changes_, there might be more detailed state on how each of those
-  files changed.
-- _Untracked files_ shows the files that are not being tracked by DVC and Git.
-  This is disabled by default, unless [`--untracked-files`](#--untracked-files)
-  is specified.
-- _DVC unchanged files_ shows the files that are not changed. This is not shown
-  by default, unless [`--unchanged`](#--unchanged) is specified.
+- _Not in cache_ indicates that there are file hashes in `.dvc` or `dvc.lock`
+  files, but the corresponding <abbr>cache</abbr> files are missing. This may
+  happen after cloning a DVC repository but before using `dvc pull` (or
+  `dvc fetch`) to download the data; or after using `dvc gc`.
 
-By default, `dvc data status` does not show individual changes inside the
-tracked directories, which can be enabled with [`--granular`](#--granular)
-option.
+- _DVC committed changes_ are new, modified, or deleted tracked files or
+  directories that have been [committed to DVC]. These may be ready for
+  committing to Git.
+
+- _DVC uncommitted changes_ are new, modified, or deleted tracked files or
+  directories that have not been [committed to DVC] yet. You can `dvc add` or
+  `dvc commit` these.
+
+- _Untracked files_ have not been added to DVC (nor Git). Only shown if the
+  `--untracked-files` flag is used.
+
+- _Unchanged files_ have no modifications. Only shown if the `--unchanged` flag
+  is used.
+
+Individual changes to files inside [tracked directories] are not shown by
+default but this can be enabled with the `--granular` flag.
+
+[committed to dvc]: /doc/command-reference/commit
+[tracked directories]: /doc/command-reference/add#adding-entire-directories
 
 ## Options
 
-- `--granular` - show granular, file-level information of the changes for
-  DVC-tracked directories. By default, `dvc data status` does not show
-  individual changes for files inside the tracked directories.
+- `--granular` - show granular file-level changes inside DVC-tracked
+  directories. Note that some granular changes may be reported as `unknown` as
+  DVC tracks
+  [directory-level hash values](doc/user-guide/project-structure/internal-files#directories).
 
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
@@ -95,7 +102,7 @@ option.
 
 ## Examples
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -121,7 +128,7 @@ that.
 
 ## Example: Full repository status (including Git)
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -159,7 +166,7 @@ unrelated changes to your Git repository).
 Following on from the above example, using `--granular` will show file-level
 information for the changes:
 
-```dvc
+```cli
 $ dvc data status --granular
 Not in cache:
   (use "dvc fetch <file>..." to download files)

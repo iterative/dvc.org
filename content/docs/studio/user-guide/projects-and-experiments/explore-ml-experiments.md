@@ -86,6 +86,18 @@ from the table.
 - **Iterative Studio auto-hides irrelevant commits:** Iterative Studio
   identifies commits where metrics, files and hyperparameters did not change and
   hides them automatically.
+- **Iterative Studio auto-hides commits that contain `[skip studio]` in the
+  commit message:** This is particularly useful if your workflow creates
+  multiple commits per experiment and you would like to hide all those commits
+  except the final one.
+
+  For example, suppose you create a Git commit with hyper-parameter changes for
+  running a new experiment, and your training CI job creates a new Git commit
+  with the experiment results. You may want to hide the first commit and only
+  display the second commit, which has the new values for the hyper-parameters
+  as well as experiment results (metrics). For this, you can use the string
+  `[skip studio]` in the commit message of the first commit.
+
 - **Hide commits and branches manually:** You can selectively hide commits and
   branches. This can be useful if there are commits that do not add much value
   in your project. To hide a commit or branch, click on the 3-dot menu next to

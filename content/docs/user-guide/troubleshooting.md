@@ -65,7 +65,7 @@ If the issue still persists then it may be the case that you are running DVC on
 some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 `core.hardlink_lock` which can be done by running following command:
 
-```dvc
+```cli
 $ dvc config core.hardlink_lock true
 ```
 
@@ -79,16 +79,16 @@ fail.
 ## No possible cache types {#cache-types}
 
 You may encounter this error if DVC cannot find a valid
-[file link type](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link type](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to use when linking data files from cache into your workspace. To resolve the
 issue, you may need to
-[reconfigure](/doc/user-guide/large-dataset-optimization#configuring-dvc-cache-file-link-type)
+[reconfigure](/doc/user-guide/data-management/large-dataset-optimization#configuring-dvc-cache-file-link-type)
 DVC to use alternative link types which are supported on your machine.
 
 After reconfiguring cache types, you can re-link data files in your workspace
 using:
 
-```dvc
+```cli
 $ dvc checkout --relink
 ```
 

@@ -1,9 +1,12 @@
 # exp show
 
-Displays your experiments in a customizable table or
-[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot).
+Displays your experiments in a customizable table or [parallel coordinates
+plot].
 
 > Press `q` to exit.
+
+[parallel coordinates plot]:
+  /doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot
 
 ## Synopsis
 
@@ -28,7 +31,7 @@ which includes their parent and name (or hash), as well as colored columns for
 Only the experiments derived from the Git `HEAD` are shown by default but all
 experiments can be included with the `--all-commits` option. Example:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -58,8 +61,7 @@ sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
 
-When the `--pcp` option is passed, an interactive
-[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot)
+When the `--pcp` option is passed, an interactive [parallel coordinates plot]
 will be generated using the same data from the table.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
@@ -72,7 +74,7 @@ This command's output is automatically piped to
 is not available (e.g. on Windows), the output is simply printed out.
 
 > It's also possible to
-> [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+> [enable `less` on Windows](/doc/user-guide/how-to/run-dvc-on-windows#enabling-paging-with-less).
 
 ### Providing a custom pager
 
@@ -80,7 +82,7 @@ It's possible to override the default pager via the `DVC_PAGER` environment
 variable. Set it to a program found in `PATH` or give a full path to it. For
 example on Linux shell:
 
-```dvc
+```cli
 $ DVC_PAGER=more dvc exp show  # Use more as pager once.
 ...
 
@@ -173,7 +175,7 @@ $ dvc exp show ...
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
@@ -182,7 +184,7 @@ workspace (Git working tree) and experiments derived from `HEAD` (`master`
 branch in this case), and all of their metrics, parameters and dependencies
 (scroll right to see all):
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -203,7 +205,7 @@ $ dvc exp show
 As a quick way of reducing noise, `--only-changed` will drop any column with
 values that do not change across experiments:
 
-```dvc
+```cli
 $ dvc exp show --only-changed
 ```
 
@@ -221,7 +223,7 @@ $ dvc exp show --only-changed
 
 You can also use `--drop` to filter specific columns:
 
-```dvc
+```cli
 $ dvc exp show --drop prepare
 ```
 
@@ -240,7 +242,7 @@ $ dvc exp show --drop prepare
 You can use [regex][regex] to match columns. For example, to remove multiple
 columns:
 
-```dvc
+```cli
 $ dvc exp show --drop 'avg_prec|train.min_split'
 ```
 
@@ -259,7 +261,7 @@ $ dvc exp show --drop 'avg_prec|train.min_split'
 If combined `--only-changed` has the least priority, `--drop` comes next, and
 `--keep` has the last word:
 
-```dvc
+```cli
 $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
 ```
 
@@ -277,7 +279,7 @@ $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
 
 Sort experiments by the `roc_auc` metric, in descending order:
 
-```dvc
+```cli
 $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
 ```
 
@@ -295,7 +297,7 @@ $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
 
 To see all experiments throughout the Git history:
 
-```dvc
+```cli
 $ dvc exp show --all-commits --only-changed --sort-by=roc_auc
 ```
 
@@ -331,7 +333,7 @@ sorting only applies to experiment groups (sharing a parent commit).
 To generate an interactive parallel coordinates plot based on the experiments
 and their parameters:
 
-```dvc
+```cli
 $ dvc exp show --all-branches --pcp
 ```
 
@@ -340,7 +342,7 @@ $ dvc exp show --all-branches --pcp
 Using `--sort-by` will reorder the plot experiments as expected, and determine
 the color of the lines that represent them:
 
-```dvc
+```cli
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
 ```
 
@@ -348,7 +350,7 @@ $ dvc exp show --all-branches --pcp --sort-by roc_auc
 
 Combine with other flags for further filtering:
 
-```dvc
+```cli
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
                --drop avg_prec
 ```

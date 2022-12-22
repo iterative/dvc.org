@@ -40,12 +40,12 @@ Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
 > If you're using Windows, please review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience.
+> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+> important tips to improve your experience.
 
 Okay! Let's first download the code and set up a Git repository:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-versioning.git
 $ cd example-versioning
 ```
@@ -57,7 +57,7 @@ Let's now install the requirements. But before we do that, we **strongly**
 recommend creating a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
-```dvc
+```cli
 $ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r requirements.txt
@@ -80,7 +80,7 @@ Now that we're done with preparations, let's add some data and then train the
 first model. We'll capture everything with DVC, including the input dataset and
 model [metrics](/doc/command-reference/metrics).
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorials/versioning/data.zip
 $ unzip -q data.zip
@@ -124,7 +124,7 @@ _(Who doesn't love ASCII directory art?)_
 
 Let's capture the current state of this dataset with `dvc add`:
 
-```dvc
+```cli
 $ dvc add data
 ```
 
@@ -132,7 +132,7 @@ You can use this command instead of `git add` on files or directories that are
 too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
-[file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a tiny, human-readable `.dvc` file that
 serves as a pointer to the cache.
@@ -144,7 +144,7 @@ bunch of files, among them `model.h5` and `metrics.csv`, weights of the trained
 model, and [metrics](/doc/command-reference/metrics) history. The simplest way
 to capture the current version of the model is to use `dvc add` again:
 
-```dvc
+```cli
 $ python train.py
 $ dvc add model.h5
 ```
@@ -154,7 +154,7 @@ $ dvc add model.h5
 
 Let's commit the current state:
 
-```dvc
+```cli
 $ git add data.dvc model.h5.dvc metrics.csv .gitignore
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
@@ -176,7 +176,7 @@ hashes that point to cached data. We then `git commit` these `.dvc` files.
 > Note that executing `train.py` produced other intermediate files. This is OK,
 > we will use them later.
 >
-> ```dvc
+> ```cli
 > $ git status
 > ...
 >       bottleneck_features_train.npy
@@ -188,7 +188,7 @@ hashes that point to cached data. We then `git commit` these `.dvc` files.
 Let's imagine that our image dataset doubles in size. The next command extracts
 500 new cat images and 500 new dog images into `data/train`:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorials/versioning/new-labels.zip
 $ unzip -q new-labels.zip
@@ -223,7 +223,7 @@ data
 
 We will now want to leverage these new labels and retrain the model:
 
-```dvc
+```cli
 $ dvc add data
 $ python train.py
 $ dvc add model.h5
@@ -231,7 +231,7 @@ $ dvc add model.h5
 
 Let's commit the second version:
 
-```dvc
+```cli
 $ git add data.dvc model.h5.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
@@ -252,7 +252,7 @@ There are two ways of doing this: a full workspace checkout or checkout of a
 specific data or model file. Let's consider the full checkout first. It's pretty
 straightforward:
 
-```dvc
+```cli
 $ git checkout v1.0
 $ dvc checkout
 ```
@@ -265,7 +265,7 @@ datasets, data files, or models.
 On the other hand, if we want to keep the current code, but go back to the
 previous dataset version, we can target specific data, like this:
 
-```dvc
+```cli
 $ git checkout v1.0 data.dvc
 $ dvc checkout data.dvc
 ```
@@ -293,13 +293,13 @@ When you have a script that takes some data as an input and produces other data
 > section, go back to the master branch code and data, and remove the
 > `model.h5.dvc` file with:
 >
-> ```dvc
+> ```cli
 > $ git checkout master
 > $ dvc checkout
 > $ dvc remove model.h5.dvc
 > ```
 
-```dvc
+```cli
 $ dvc run -n train -d train.py -d data \
           -o model.h5 -o bottleneck_features_train.npy \
           -o bottleneck_features_validation.npy -M metrics.csv \

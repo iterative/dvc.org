@@ -37,6 +37,7 @@
   {
     "slug": "start",
     "label": "Get Started",
+    "source": "start/index.md",
     "children": [
       {
         "slug": "data-management",
@@ -153,7 +154,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "running-dvc-on-windows",
+          "run-dvc-on-windows",
           "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
@@ -242,26 +243,6 @@
         "source": "exp/index.md",
         "children": [
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
-            "label": "exp run",
-            "slug": "run"
-          },
-          {
-            "label": "exp show",
-            "slug": "show"
-          },
-          {
-            "label": "exp diff",
-            "slug": "diff"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
-          },
-          {
             "label": "exp apply",
             "slug": "apply"
           },
@@ -270,20 +251,44 @@
             "slug": "branch"
           },
           {
-            "label": "exp remove",
-            "slug": "remove"
+            "label": "exp diff",
+            "slug": "diff"
           },
           {
             "label": "exp gc",
             "slug": "gc"
           },
           {
-            "label": "exp push",
-            "slug": "push"
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp pull",
             "slug": "pull"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp save",
+            "slug": "save"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
           }
         ]
       },
@@ -322,6 +327,10 @@
       {
         "label": "install",
         "slug": "install"
+      },
+      {
+        "label": "list-url",
+        "slug": "list-url"
       },
       {
         "label": "list",
@@ -568,8 +577,8 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "how-it-works",
       "get-started",
+      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
@@ -623,54 +632,8 @@
         "slug": "get-started"
       },
       {
-        "label": "DVCLive with DVC",
-        "slug": "dvclive-with-dvc"
-      },
-      {
-        "slug": "ml-frameworks",
-        "source": "dvclive/ml-frameworks/index.md",
-        "children": [
-          {
-            "slug": "catalyst",
-            "label": "Catalyst"
-          },
-          {
-            "slug": "fastai",
-            "label": "Fast.ai"
-          },
-          {
-            "slug": "huggingface",
-            "label": "Hugging Face"
-          },
-          {
-            "slug": "keras",
-            "label": "Keras"
-          },
-          {
-            "slug": "lightgbm",
-            "label": "LightGBM"
-          },
-          {
-            "slug": "mmcv",
-            "label": "MMCV"
-          },
-          {
-            "slug": "pytorch",
-            "label": "PyTorch"
-          },
-          {
-            "slug": "pytorch-lightning",
-            "label": "PyTorch Lightning"
-          },
-          {
-            "slug": "tensorflow",
-            "label": "TensorFlow"
-          },
-          {
-            "slug": "xgboost",
-            "label": "XGBoost"
-          }
-        ]
+        "slug": "how-it-works",
+        "label": "How it Works"
       },
       {
         "slug": "api-reference",
@@ -682,12 +645,16 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
-                "slug": "log",
-                "label": "log()"
+                "slug": "end",
+                "label": "end()"
               },
               {
                 "slug": "log_image",
                 "label": "log_image()"
+              },
+              {
+                "slug": "log_metric",
+                "label": "log_metric()"
               },
               {
                 "slug": "log_param",
@@ -698,26 +665,72 @@
                 "label": "log_params()"
               },
               {
-                "slug": "log_plot",
-                "label": "log_plot()"
+                "slug": "log_sklearn_plot",
+                "label": "log_sklearn_plot()"
               },
               {
                 "slug": "make_report",
                 "label": "make_report()"
               },
               {
-                "slug": "get_step",
-                "label": "get_step()"
+                "slug": "make_summary",
+                "label": "make_summary()"
               },
               {
                 "slug": "next_step",
                 "label": "next_step()"
-              },
-              {
-                "slug": "set_step",
-                "label": "set_step()"
               }
             ]
+          },
+          {
+            "slug": "ml-frameworks",
+            "source": "dvclive/api-reference/ml-frameworks/index.md",
+            "children": [
+              {
+                "slug": "catalyst",
+                "label": "Catalyst"
+              },
+              {
+                "slug": "fastai",
+                "label": "Fast.ai"
+              },
+              {
+                "slug": "huggingface",
+                "label": "Hugging Face"
+              },
+              {
+                "slug": "keras",
+                "label": "Keras"
+              },
+              {
+                "slug": "lightgbm",
+                "label": "LightGBM"
+              },
+              {
+                "slug": "mmcv",
+                "label": "MMCV"
+              },
+              {
+                "slug": "pytorch",
+                "label": "PyTorch"
+              },
+              {
+                "slug": "pytorch-lightning",
+                "label": "PyTorch Lightning"
+              },
+              {
+                "slug": "tensorflow",
+                "label": "TensorFlow"
+              },
+              {
+                "slug": "xgboost",
+                "label": "XGBoost"
+              }
+            ]
+          },
+          {
+            "slug": "env",
+            "label": "Environment Variables"
           }
         ]
       }

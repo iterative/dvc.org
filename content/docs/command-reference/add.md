@@ -68,7 +68,7 @@ You can also [undo `dvc add`](/doc/user-guide/how-to/stop-tracking-data) to stop
 tracking files or directories.
 
 By default, DVC tries to use reflinks (see
-[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
@@ -149,7 +149,7 @@ not.
 
 - `--external` - allow tracking `targets` outside of the DVC repository
   in-place. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
+  [Managing External Data](/doc/user-guide/data-management/managing-external-data).
 
   > ⚠️ Note that this is an advanced feature for very specific situations and
   > not recommended except if there's absolutely no other alternative.
@@ -161,8 +161,8 @@ not.
   This enables targeting data outside the project (see an
   [example](#example-transfer-to-an-external-cache)).
 
-- `--to-remote` - add a target that's outside the project, but neither cache it
-  nor place it in the workspace nor cache it yet.
+- `--to-remote` - add a target that's outside the project, neither move it into
+  the workspace, nor cache it.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
   instead (the default one unless one is specified with `-r`). Implies
   `--out .`. Use `dvc pull` to get the data locally.
@@ -194,14 +194,14 @@ not.
 
 Track a file with DVC:
 
-```dvc
+```cli
 $ dvc add data.xml
 ```
 
 As indicated above, a `.dvc` file has been created for `data.xml`. Let's explore
 the result:
 
-```dvc
+```cli
 $ tree
 .
 ├── data.xml
@@ -219,7 +219,7 @@ outs:
 This is a standard `.dvc` file with only one output (`outs` field). The hash
 value (`md5` field) corresponds to a file path in the <abbr>cache</abbr>.
 
-```dvc
+```cli
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 .dvc/cache/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
 ```
@@ -233,7 +233,7 @@ Let's suppose your goal is to build an algorithm to identify cats and dogs in
 pictures. You may then have hundreds or thousands of pictures of these animals
 in a directory, and this is your training dataset:
 
-```dvc
+```cli
 $ tree pics --filelimit 3
 pics
 ├── train
@@ -247,7 +247,7 @@ pics
 [Tracking a directory](#tracking-directories) with DVC as simple as with a
 single file:
 
-```dvc
+```cli
 $ dvc add pics
 ```
 
@@ -268,7 +268,7 @@ This allows us to treat the entire directory structure as a single data
 artifact. For example, you can pass it as a <abbr>dependency</abbr> to a stage
 definition:
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -d train.py -d pics \
                 -M metrics.json -o model.h5 \
@@ -280,14 +280,14 @@ $ dvc stage add -n train \
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 
-```dvc
+```cli
 $ dvc add -R pics
 ```
 
 In this case, a `.dvc` file is generated for each file in the `pics/` directory
 tree:
 
-```dvc
+```cli
 $ tree pics
 pics
 ├── train
@@ -311,7 +311,7 @@ convenient. For example, we cannot use the directory structure as one unit with
 
 Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
 
-```dvc
+```cli
 $ mkdir dir
 $ echo file_one > dir/file1
 $ echo file_two > dir/file2
@@ -320,14 +320,14 @@ $ echo file_two > dir/file2
 Now add `file1` to `.dvcignore` and track the entire `dir` directory with
 `dvc add`.
 
-```dvc
+```cli
 $ echo dir/file1 > .dvcignore
 $ dvc add dir
 ```
 
 Let's now modify `file1` (which is listed in `.dvcignore`) and run `dvc status`:
 
-```dvc
+```cli
 $ echo file_one_changed > dir/file1
 $ dvc status
 Data and pipelines are up to date.
@@ -337,7 +337,7 @@ Data and pipelines are up to date.
 
 Let's have a look at cache directory:
 
-```dvc
+```cli
 $ tree .dvc/cache
 .dvc/cache
 ├── 0a
@@ -364,7 +364,7 @@ workspace.
 
 Let's add a `data.xml` file via HTTP, putting it in `./data.xml`:
 
-```dvc
+```cli
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
 ...
 $ ls
@@ -384,9 +384,9 @@ outs:
 ```
 
 [linked]:
-  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
 [external cache]:
-  /doc/user-guide/managing-external-data#setting-up-an-external-cache
+  /doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache
 
 ## Example: Transfer to remote storage
 
@@ -400,7 +400,7 @@ downloading anything, transferring a target directly to a DVC remote instead:
 
 Let's add a `data.xml` file via HTTP straight to remote:
 
-```dvc
+```cli
 $ dvc add https://data.dvc.org/get-started/data.xml --to-remote
 ...
 $ ls
@@ -410,7 +410,7 @@ data.xml.dvc
 Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
 wants to actually download the data they can use `dvc pull`:
 
-```dvc
+```cli
 $ dvc pull data.xml.dvc
 A       data.xml
 1 file added

@@ -7,8 +7,8 @@ running [Dask](https://dask.org/) via SSH, or for a script that streams data
 from S3 to process it.
 
 _External dependencies_ and
-[external outputs](/doc/user-guide/managing-external-data) provide ways to track
-and version data outside of the <abbr>project</abbr>.
+[external outputs](/doc/user-guide/data-management/managing-external-data)
+provide ways to track and version data outside of the <abbr>project</abbr>.
 
 ## How external dependencies work
 
@@ -44,7 +44,7 @@ downloads a file from an external location, on all the supported location types.
 
 ### Amazon S3
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d s3://mybucket/data.txt \
           -o data.txt \
@@ -57,7 +57,7 @@ $ dvc run -n download_file \
 
 ### Microsoft Azure Blob Storage
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d azure://mycontainer/data.txt \
           -o data.txt \
@@ -74,7 +74,7 @@ $ dvc run -n download_file \
 
 ### Google Cloud Storage
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d gs://mybucket/data.txt \
           -o data.txt \
@@ -87,7 +87,7 @@ $ dvc run -n download_file \
 
 ### SSH
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d ssh://user@example.com/path/to/data.txt \
           -o data.txt \
@@ -106,7 +106,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### HDFS
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d hdfs://user@example.com/data.txt \
           -o data.txt \
@@ -122,7 +122,7 @@ $ dvc run -n download_file \
 
 > Including HTTPs
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d https://example.com/data.txt \
           -o data.txt \
@@ -135,7 +135,7 @@ $ dvc run -n download_file \
 
 ### local file system paths
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d /home/shared/data.txt \
           -o data.txt \
@@ -158,7 +158,7 @@ dependency.
 
 Let's see an example using SSH. First, register and configure the remote:
 
-```dvc
+```cli
 $ dvc remote add myssh ssh://user@example.com
 $ dvc remote modify --local myssh password 'mypassword'
 ```
@@ -168,7 +168,7 @@ $ dvc remote modify --local myssh password 'mypassword'
 
 Now, use an alias to this remote when defining the stage:
 
-```dvc
+```cli
 $ dvc run -n download_file \
           -d remote://myssh/path/to/data.txt \
           -o data.txt \
@@ -181,7 +181,7 @@ In the previous examples, special downloading tools were used: `scp`,
 `aws s3 cp`, etc. `dvc import-url` simplifies the downloading for all the
 supported external path or URL types.
 
-```dvc
+```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ```
@@ -218,7 +218,7 @@ determine whether the source has changed and we need to download the file again.
 or from a Git repository. It also creates an external dependency in its import
 `.dvc` file.
 
-```dvc
+```cli
 $ dvc import git@github.com:iterative/example-get-started model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'

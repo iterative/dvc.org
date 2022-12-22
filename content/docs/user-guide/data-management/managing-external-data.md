@@ -17,8 +17,8 @@ HDFS, running [Dask](https://dask.org/) via SSH, or any code that generates
 massive files directly to the cloud.
 
 _External outputs_ (and
-[external dependencies](/doc/user-guide/external-dependencies)) provide ways to
-track and version data outside of the <abbr>project</abbr>.
+[external dependencies](/doc/user-guide/data-management/importing-external-data))
+provide ways to track and version data outside of the <abbr>project</abbr>.
 
 ## How external outputs work
 
@@ -50,12 +50,12 @@ avoids transferring files to the local environment and enables [file links]
 within the external storage.
 
 [file links]:
-  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
 
 As an example, let's create a directory external to the workspace and set it up
 as cache:
 
-```dvc
+```cli
 $ mkdir -p /home/shared/dvcstore
 $ dvc cache dir /home/shared/dvcstore
 ```
@@ -96,7 +96,7 @@ types:
 
 ### Amazon S3
 
-```dvc
+```cli
 $ dvc remote add s3cache s3://mybucket/cache
 $ dvc config cache.s3 s3cache
 
@@ -114,7 +114,7 @@ $ dvc run -d data.txt \
 
 ### SSH
 
-```dvc
+```cli
 $ dvc remote add sshcache ssh://user@example.com/cache
 $ dvc config cache.ssh sshcache
 
@@ -138,7 +138,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### HDFS
 
-```dvc
+```cli
 $ dvc remote add hdfscache hdfs://user@example.com/cache
 $ dvc config cache.hdfs hdfscache
 
@@ -161,7 +161,7 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 ### WebHDFS
 
-```dvc
+```cli
 $ dvc remote add webhdfscache webhdfs://user@example.com/cache
 $ dvc config cache.webhdfs webhdfscache
 
@@ -188,7 +188,7 @@ custom cache location for local paths outside of your project.
 > external cache in that same drive to enable [file links] and avoid copying
 > data.
 
-```dvc
+```cli
 $ dvc add --external /home/shared/existing-data
 
 $ dvc run -d data.txt \

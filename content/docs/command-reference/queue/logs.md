@@ -56,7 +56,7 @@ experiment continue to run in the background.
 
 Let's say we have previously run some queued experiment tasks:
 
-```dvc
+```cli
 $ dvc queue status
 Task     Name    Created    Status
 192a13c          04:15 PM   Failed
@@ -70,7 +70,7 @@ Worker status: 0 active, 0 idle
 We can view the output for both failed and successfully completed experiment
 tasks:
 
-```dvc
+```cli
 $ dvc queue logs 192a13c
 'data/data.xml.dvc' didn't change, skipping
 Running stage 'prepare':
@@ -82,7 +82,7 @@ AssertionError
 ERROR: failed to reproduce 'prepare': failed to run: python src/prepare.py data/data.xml, exited with 1
 ```
 
-```dvc
+```cli
 $ dvc queue logs 0bbb118
 'data/data.xml.dvc' didn't change, skipping
 Stage 'prepare' is cached - skipping run, checking out outputs
@@ -110,7 +110,7 @@ To enable auto staging, run:
 
 Let's queue a new experiment and view the output while it is running:
 
-```dvc
+```cli
 $ dvc exp run --queue -S prepare.split=0.40 -S featurize.max_features=4000
 Queued experiment '93cfa70' for future execution.
 $ dvc queue start

@@ -25,7 +25,7 @@ the results are consistent. The typical pipelining process involves:
 
 We call this file-based definition _codification_ (YAML format in our case). It
 has the added benefit of allowing you to develop pipelines on standard Git
-workflows ([GitOps]).
+workflows (and [GitOps]).
 
 [gitops]: /doc/use-cases/versioning-data-and-model-files
 
@@ -42,11 +42,11 @@ files to find stages, rebuilding all the pipelines that these may define.
 
 [data versioning]: /doc/start/data-management/data-versioning
 [metrics]: /doc/command-reference/metrics
-[plots]: /doc/user-guide/visualizing-plots
+[plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 <details>
 
-## Directed Acyclic Graph (DAG)
+### Directed Acyclic Graph (DAG)
 
 DVC represents a pipeline internally as a _graph_ where the nodes are stages and
 the edges are _directed_ dependencies (e.g. A before B). And in order for DVC to
@@ -74,6 +74,8 @@ file-based [dependencies](#simple-dependencies) as well as [outputs](#outputs).
 Let's look at a sample stage: it depends on a script file it runs as well as on
 a raw data input (ideally [tracked by DVC][data management] already):
 
+[data management]: /doc/start/data-management
+
 ```yaml
 stages:
   prepare:
@@ -97,7 +99,7 @@ stages with `dvc stage add` -- a limited command-line interface to setup
 pipelines. Let's add another stage this way and look at the resulting
 `dvc.yaml`:
 
-```dvc
+```cli
 $ dvc stage add --name train \
                 --deps src/model.py \
                 --deps data/clean.csv \
@@ -172,7 +174,7 @@ A less common kind of dependency is a _URL dependency_. Instead of files in a
 local disk, you can `dvc import` data from another <abbr>DVC project</abbr> (for
 example hosted on GitHub). External dependencies establish relationships between
 different projects or systems (see `dvc import-url`).
-[Get all the details](/doc/user-guide/external-dependencies).
+[Get all the details](/doc/user-guide/data-management/importing-external-data).
 
 <admon type="info">
 
