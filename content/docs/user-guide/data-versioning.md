@@ -1,5 +1,9 @@
 # Data Versioning
 
+<!--
+## Data Versioning
+-->
+
 <admon type="tip">
 
 **Data version control** is the unifying trait across DVC features.

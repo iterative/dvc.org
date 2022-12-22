@@ -1,4 +1,8 @@
-# Data Management with DVC
+# Data Management for Machine Learning
+
+<!--
+## Data Management for Machine Learning
+-->
 
 DVC changes the way you work with datasets and ML models in order to enable data
 [versioning] and reproducibility, among other
