@@ -10,7 +10,7 @@ Git commits.
 You can use `dvc exp branch` to create a new branch from an experiment, and keep
 all its code and artifacts separate from your current <abbr>workspace</abbr>.
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -29,7 +29,7 @@ Suppose you want to continue to work on `exp-e6c97` in a separate branch. You
 can create a new Git branch by specifying the experiment and giving a new name
 for it:
 
-```dvc
+```cli
 $ dvc exp branch exp-e6c97 my-branch
 Git branch 'my-branch' has been created from experiment 'exp-e6c97'.
 To switch to the new branch run:
@@ -40,7 +40,7 @@ Note that DVC doesn't switch into the new branch. You can create one or more
 branches from the existing experiments, and switch into any one manually like
 this:
 
-```dvc
+```cli
 $ git checkout my-branch
 $ dvc checkout
 ```
@@ -49,12 +49,12 @@ Your workspace now contains all the files from the experiment.
 
 ## Bring experiment results to your workspace
 
-Typically, `dvc exp run` leaves the experiment results in your workspace for
-convenience. However, you may have run multiple experiments and wish to go back
-to a specific one. In this case, you can restore a previous experiment's results
-with `dvc exp apply`. Let's see an example:
+Typically, `dvc exp run` and `dvc exp save` leave the experiment results in your
+workspace for convenience. However, you may have run multiple experiments and
+wish to go back to a specific one. In this case, you can restore a previous
+experiment's results with `dvc exp apply`. Let's see an example:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -73,7 +73,7 @@ The results found in the workspace are shown in the respective row. When you
 want to bring another experiment to the workspace, you can reference it using
 it's name, e.g.:
 
-```dvc
+```cli
 $ dvc exp apply exp-e6c97
 Changes for experiment 'exp-e6c97' have been applied...
 ```

@@ -244,26 +244,6 @@
         "source": "exp/index.md",
         "children": [
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
-            "label": "exp run",
-            "slug": "run"
-          },
-          {
-            "label": "exp show",
-            "slug": "show"
-          },
-          {
-            "label": "exp diff",
-            "slug": "diff"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
-          },
-          {
             "label": "exp apply",
             "slug": "apply"
           },
@@ -272,20 +252,44 @@
             "slug": "branch"
           },
           {
-            "label": "exp remove",
-            "slug": "remove"
+            "label": "exp diff",
+            "slug": "diff"
           },
           {
             "label": "exp gc",
             "slug": "gc"
           },
           {
-            "label": "exp push",
-            "slug": "push"
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp pull",
             "slug": "pull"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp save",
+            "slug": "save"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
           }
         ]
       },
@@ -642,6 +646,10 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
+                "slug": "end",
+                "label": "end()"
+              },
+              {
                 "slug": "log_image",
                 "label": "log_image()"
               },
@@ -720,14 +728,13 @@
                 "label": "XGBoost"
               }
             ]
+          },
+          {
+            "slug": "env",
+            "label": "Environment Variables"
           }
         ]
       }
     ]
-  },
-  {
-    "label": "GTO",
-    "url": "https://mlem.ai/doc/gto",
-    "type": "external"
   }
 ]

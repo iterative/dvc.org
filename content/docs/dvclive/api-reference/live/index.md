@@ -10,6 +10,7 @@ class Live:
         dir: str = "dvclive",
         resume: bool = False,
         report: Optional[str] = "auto",
+        save_dvc_exp: bool = False,
     ):
 ```
 
@@ -35,7 +36,7 @@ metrics and other metadata.
 </admon>
 
 You can use `Live()` as a context manager. When exiting the context manager,
-`Live.make_summary()` and `Live.make_report()` will be called.
+`Live.end()` will be called.
 
 ## Properties
 
@@ -45,6 +46,8 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/how-it-works).
+
+- `dvc_file` - `{Live.dir}/dvc.yaml`.
 
 - `metrics_file` - `{Live.dir}/metrics.json`.
 
@@ -58,10 +61,10 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 ## Parameters
 
-- `dir` - Where to save DVCLive's outputs. _Default_: `dvclive`.
+- `dir` - Where to save DVCLive's outputs. Defaults to `dvclive`.
 
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
-  `metrics_file` and start from that point. _Default_: `False`.
+  `metrics_file` and start from that point. Defaults to `False`.
 
 - `report` - Any of `auto`, `html`, `md` or `None`. See `Live.make_report()`.
 
@@ -70,6 +73,11 @@ You can use `Live()` as a context manager. When exiting the context manager,
   `html`.
 
   If `report` is `None`, `Live.make_report()` won't generate anything.
+
+- `save_dvc_exp` - If `True`, DVCLive will create a new
+  [DVC experiment](/doc/dvclive/how-it-works#track-the-results) as part of
+  `Live.end()`. Ignored if your repo already has a
+  [DVC pipeline](/doc/user-guide/pipelines). Defaults to `False`.
 
 ## Methods
 

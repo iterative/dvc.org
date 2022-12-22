@@ -38,7 +38,7 @@ contributing!
 
 Get the latest development version. Fork and clone the repo:
 
-```dvc
+```cli
 $ git clone git@github.com:<your-username>/dvc.git
 ```
 
@@ -56,7 +56,7 @@ Install DVC in editable mode with `pip install -e ".[dev]"`. But before we do
 that, we **strongly** recommend creating a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
-```dvc
+```cli
 $ cd dvc
 $ python3 -m venv venv
 $ source venv/bin/activate
@@ -66,7 +66,7 @@ $ pip install -e ".[dev]"
 
 Install coding style pre-commit hooks with:
 
-```dvc
+```cli
 $ pip install pre-commit
 $ pre-commit install
 ```
@@ -91,7 +91,7 @@ docstring for some usage examples.
 
 The simplest way to run tests:
 
-```dvc
+```cli
 $ cd dvc
 $ python -m tests
 ```
@@ -99,7 +99,7 @@ $ python -m tests
 This uses `pytest` to run the full test suite and report the result. At the very
 end you should see something like this:
 
-```dvc
+```cli
 $ python -m tests
 
 ...
@@ -127,19 +127,19 @@ default `pytest`'s scope:
 
 To run a single test case:
 
-```dvc
+```cli
 $ python -m tests tests/func/test_metrics.py::TestCachedMetrics
 ```
 
 To run a single test function:
 
-```dvc
+```cli
 $ python -m tests tests/unit/utils/test_fs.py::test_get_inode
 ```
 
 To pass additional arguments:
 
-```dvc
+```cli
 $ python -m tests --pdb
 ```
 

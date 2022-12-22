@@ -35,7 +35,7 @@ is moved into this folder along with the corresponding `.dvc` file.
 
 Let's imagine the following scenario:
 
-```dvc
+```cli
 $ dvc add data.csv
 ```
 
@@ -52,7 +52,7 @@ DVC wouldn't know that we changed the `path` of `data.csv` to `other.csv`, as
 the old location is still found in the corresponding `.dvc` file. `dvc move`
 updates that `path`, saves users from manually editing it:
 
-```dvc
+```cli
 $ dvc move data.csv other.csv
 $ cat other.csv.dvc
 ```
@@ -83,7 +83,7 @@ First, change the output name in the `train` stage of `dvc.yaml` and update
 `/keras.h5` to `/model.h5` in `.gitignore` file. Then, we rename the existing
 model file:
 
-```dvc
+```cli
 $ mv keras.h5 model.h5
 ```
 
@@ -100,7 +100,7 @@ Often the output of a stage is a dependency in another stage, creating a
 Finally, we run `dvc commit` with the `-f` option to force save the changes to
 <abbr>cache</abbr>:
 
-```dvc
+```cli
 $ dvc commit -f
 ```
 
@@ -118,7 +118,7 @@ $ dvc commit -f
 We first use `dvc add` to track file with DVC. Then, we change its name using
 `dvc move`.
 
-```dvc
+```cli
 $ dvc add data.csv
 ...
 $ tree
@@ -141,7 +141,7 @@ location. If the target path is a directory and already exists, the data file is
 moved with unchanged name into this folder. Note that the corresponding `.dvc`
 file, `data.csv.dvc` is also moved.
 
-```dvc
+```cli
 $ tree
 .
 ├── data
@@ -176,7 +176,7 @@ Let's try the same with an entire directory imported from an external <abbr>DVC
 repository</abbr> with `dvc import`. Note that, as in the previous cases, the
 `.dvc` file is also moved.
 
-```dvc
+```cli
 $ dvc import ../another-repo data
 ...
 $ tree

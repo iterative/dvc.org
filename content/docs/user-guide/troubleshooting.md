@@ -65,7 +65,7 @@ If the issue still persists then it may be the case that you are running DVC on
 some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 `core.hardlink_lock` which can be done by running following command:
 
-```dvc
+```cli
 $ dvc config core.hardlink_lock true
 ```
 
@@ -88,7 +88,7 @@ DVC to use alternative link types which are supported on your machine.
 After reconfiguring cache types, you can re-link data files in your workspace
 using:
 
-```dvc
+```cli
 $ dvc checkout --relink
 ```
 

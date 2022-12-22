@@ -43,7 +43,7 @@ after destruction.
 
 ## Examples
 
-```dvc
+```cli
 $ dvc init
 $ echo foo > foo
 $ dvc add foo
@@ -67,7 +67,7 @@ By default, the <abbr>cache</abbr> location is `.dvc/cache`. Let's change its
 location to `/mnt/cache` using `dvc cache dir`, add some data, and then try
 `dvc destroy`:
 
-```dvc
+```cli
 $ dvc cache dir /mnt/cache
 $ echo foo > foo
 $ dvc add foo
@@ -75,14 +75,14 @@ $ dvc add foo
 
 Contents of the <abbr>workspace</abbr>:
 
-```dvc
+```cli
 $ ls -a
 .dvc .git code.py foo foo.dvc
 ```
 
 Contents of the (external) cache (`b1/946a...` contains `foo`):
 
-```dvc
+```cli
 $ tree /mnt/cache
 /mnt/cache/
 └── b1
@@ -91,7 +91,7 @@ $ tree /mnt/cache
 
 OK, let's destroy the <abbr>DVC project</abbr>:
 
-```dvc
+```cli
 $ dvc destroy
 
 This will destroy all information about your pipelines, all data files...
@@ -106,7 +106,7 @@ $ ls -a
 any cached data prior to changing the cache location). But the cache files in
 `/mnt/cache` persist:
 
-```dvc
+```cli
 $ tree /mnt/cache
 /mnt/cache/
 └── b1

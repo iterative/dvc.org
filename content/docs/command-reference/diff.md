@@ -52,7 +52,7 @@ for example when `dvc init` was used with the `--no-scm` option.
   When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
   use `--` after this option's arguments (POSIX terminals), e.g.:
 
-  ```dvc
+  ```cli
   $ dvc diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
@@ -88,14 +88,14 @@ For these examples we can use the [Get Started](/doc/start) project.
 
 Start by cloning our example repo if you don't already have it:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
 Download data using:
 
-```dvc
+```cli
 $ dvc fetch -T
 Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
@@ -113,7 +113,7 @@ The minimal `dvc diff`, run without arguments, defaults to comparing DVC-tracked
 files between `HEAD` (last Git commit) and the current <abbr>workspace</abbr>
 (uncommitted changes, if any):
 
-```dvc
+```cli
 $ dvc diff
 ```
 
@@ -126,7 +126,7 @@ $ dvc diff
 Let's checkout the [2-track-data] tag, corresponding to the [Data Versioning]
 _Get Started_ chapter, right after we added `data.xml` file with DVC:
 
-```dvc
+```cli
 $ git checkout 2-track-data
 $ dvc checkout
 ```
@@ -136,7 +136,7 @@ $ dvc checkout
 To see the difference between the very previous commit of the project and the
 workspace, we can use `HEAD^` as `a_rev`:
 
-```dvc
+```cli
 $ dvc diff HEAD^
 Added:
     data/data.xml
@@ -162,14 +162,14 @@ Having followed the example's setup, move into the `example-get-started/`
 directory. Then make sure that you have the latest code and data with the
 following commands:
 
-```dvc
+```cli
 $ git checkout master
 $ dvc checkout
 ```
 
 </details>
 
-```dvc
+```cli
 $ dvc diff baseline-experiment bigrams-experiment
 Modified:
     data/features/
@@ -190,7 +190,7 @@ between the tags `baseline-experiment` and `bigrams-experiment`.
 Let's use the same command as above, but with JSON output and including hash
 values:
 
-```dvc
+```cli
 $ dvc diff --json --show-hash \
            baseline-experiment bigrams-experiment
 ```
@@ -232,7 +232,7 @@ Having followed the previous examples' setup, move into the
 `example-get-started/` directory. Then make sure that you have the latest code
 and data with the following commands:
 
-```dvc
+```cli
 $ git checkout master
 $ dvc checkout
 ```
@@ -246,7 +246,7 @@ been added.
 
 Let's see what happens when we rename `data/data.xml` in our workspace:
 
-```dvc
+```cli
 $ dvc move data/data.xml data/other_data.xml
 $ dvc diff
 Renamed:
@@ -257,7 +257,7 @@ files summary: 0 added, 0 deleted, 1 renamed, 0 modified, 0 not in cache
 
 Now, let's modify `data/other_data.xml` and then see what happens again:
 
-```dvc
+```cli
 $ echo "<row Id=\"12345678\" Body=\"New row\" />" >> data/other_data.xml
 $ dvc diff
 Added:

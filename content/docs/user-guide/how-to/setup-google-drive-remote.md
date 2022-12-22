@@ -29,11 +29,12 @@ To start using a Google Drive remote, you only need to add it with a
 to it (e.g. `dvc pull` or `dvc push` once there's tracked data to synchronize).
 For example:
 
-```dvc
+```cli
 $ dvc add data
 ...
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
 $ dvc push
 Your browser has been opened to visit:
 
@@ -59,13 +60,13 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    > ⚠️ The folder in question should be shared to specific users (or groups) so
    > they can use it with DVC. "Anyone with a link" is not guaranteed to work.
 
-   ```dvc
+   ```cli
    $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA
    ```
 
    or
 
-   ```dvc
+   ```cli
    $ dvc remote add myremote \
                          gdrive://0AIac4JZqHhKmUk9PDA/Data/text
    ```
@@ -84,7 +85,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    would cause DVC to try synchronizing data to/from different Google Drives for
    every user.
 
-   ```dvc
+   ```cli
    $ dvc remote add myremote gdrive://root/dvcstore
    ```
 
@@ -99,7 +100,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
 
    ⚠️ Only suitable for personal use.
 
-   ```dvc
+   ```cli
    $ dvc remote add myremote gdrive://appDataFolder
    ```
 
@@ -158,7 +159,7 @@ connect to the Google Drive.
 Finally, use the `dvc remote modify` command to set the credentials (for each
 GDrive remote), for example:
 
-```dvc
+```cli
 $ dvc remote modify myremote gdrive_client_id 'client-id'
 $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 ```
@@ -192,6 +193,10 @@ globally, for example in
 `gdrive_user_credentials_file`]), and used automatically next time DVC needs
 them.
 
+[auth process]: https://developers.google.com/drive/api/v2/about-auth
+[see `gdrive_user_credentials_file`]:
+  /doc/command-reference/remote/modify#google-drive
+
 <admin type="warn">
 
 In order to prevent unauthorized access to your Google Drive, **do not share
@@ -204,24 +209,24 @@ If multiple GDrive remotes use the same client ID, by default they will share
 the same cached credentials. To isolate them, you can use custom profile names
 for different remotes:
 
-```dvc
+```cli
 $ dvc remote modify --local myremote profile myprofile
 ```
 
 You can also overwrite the cached credentials file location per remote, for
 example to have it in your home directory:
 
-```dvc
+```cli
 $ dvc remote modify myremote --local \
       gdrive_user_credentials_file ~/.gdrive/myremote-credentials.json
 ```
 
-<admin type="warn">
+<admon type="warn">
 
 If the file is in a Git repo, consider it a secret and **do not commit it**. Add
 it to `.gitignore` to be sure.
 
-</admin>
+</admon>
 
 To change the user you have authenticated with or for troubleshooting misc.
 token errors, you can remove the user credentials file and authorize again.
@@ -233,11 +238,18 @@ credentials files described above, and usually you get it going through the same
 authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
 `gdrive_user_credentials_file` value (if provided) is ignored.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+<admon type="warn">
 
-[auth process]: https://developers.google.com/drive/api/v2/about-auth
-[see `gdrive_user_credentials_file`]:
-  /doc/command-reference/remote/modify#google-drive
+If you get an error message _This file has been identified as malware or spam
+and cannot be downloaded_ running a `dvc push` or `dvc pull` command, check that
+the `gdrive_acknowledge_abuse` option is set:
+
+```cli
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
+```
+
+</admon>
+> Please note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
 
 ## Using service accounts
 
@@ -276,7 +288,7 @@ heavy usage, it is recommended to rely on
 2. Configure the remote to use the service account and tell if where to find the
    key file:
 
-   ```dvc
+   ```cli
    $ dvc remote modify myremote gdrive_use_service_account true
    $ dvc remote modify myremote --local \
                  gdrive_service_account_json_file_path path/to/file.json
@@ -305,7 +317,7 @@ The required **OAuth scope** is `https://www.googleapis.com/auth/drive`.
 
 The remote must also be configured with the associated user **personal email**:
 
-```dvc
+```cli
 $ dvc remote modify myremote gdrive_service_account_user_email \
               example_adress@some_google_domain.com
 ```

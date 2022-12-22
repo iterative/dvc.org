@@ -31,7 +31,7 @@ this topic.
 You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
 `./dvc.yaml` (in the current directory) by default.
 
-```dvc
+```cli
 $ dvc exp run
 ...
 Reproduced experiment(s): exp-44136
@@ -53,9 +53,11 @@ once.
 <admon icon="book">
 
 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
+`dvc exp save` can be used to [save experiments] after running `dvc repro`
 
 </admon>
 
+[save experiments]: /doc/command-reference/exp/save
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
@@ -107,7 +109,7 @@ inputs. Since this is a common sequence, the built-in option
 `dvc exp run --set-param` (`-S`) is provided as a shortcut. It takes an existing
 param name and value, and updates the file on-the-fly before execution.
 
-```dvc
+```cli
 $ cat params.yaml
 model:
   learning_rate: 0.001
@@ -139,7 +141,7 @@ The `--queue` option of `dvc exp run` tells DVC to append an experiment for
 later execution. Nothing is actually run yet. Let's setup a simple
 hyperparameter [grid search]:
 
-```dvc
+```cli
 $ dvc exp run --queue -S units=10
 Queued experiment '1cac8ca' for future execution.
 $ dvc exp run --queue -S units=64
@@ -166,7 +168,7 @@ Queued experiments are managed using [dvc-task] and [Celery].
 
 Run them all with `dvc queue start`:
 
-```dvc
+```cli
 $ dvc queue start
 ...
 ```
@@ -208,7 +210,7 @@ however.
 💡 To isolate any experiment (without queuing it), you can use the `--temp`
 flag. This allows you to continue working while a long experiment runs, e.g.:
 
-```dvc
+```cli
 $ nohup dvc exp run --temp &
 [1] 30473
 nohup: ignoring input and appending output to 'nohup.out'
@@ -255,7 +257,7 @@ more about this feature.
 
 Running checkpoint experiments is no different than running regular ones, e.g.:
 
-```dvc
+```cli
 $ dvc exp run -S param=value
 ```
 

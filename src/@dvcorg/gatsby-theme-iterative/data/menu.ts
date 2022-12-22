@@ -1,13 +1,16 @@
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
 import * as styles from './styles.module.css'
-import { ReactComponent as EllipsisIcon } from '../../../../../static/img/ellipsis.svg'
+import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
 import {
   OtherToolsPopup,
   CommunityPopup,
   OtherPopup
-} from '../LayoutHeader/Nav/Popup'
-import { INavLinkData, INavLinkPopupData } from '../LayoutHeader/Nav/LinkItems'
+} from '../components/LayoutHeader/Nav/Popup'
+import {
+  INavLinkData,
+  INavLinkPopupData
+} from '../components/LayoutHeader/Nav/LinkItems'
 
 interface ICommunityData {
   title: string

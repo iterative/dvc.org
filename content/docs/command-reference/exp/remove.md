@@ -52,7 +52,7 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 Let's say we have `dvc exp run` 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp list
 master:
         exp-e6c97
@@ -63,7 +63,7 @@ master:
 To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
 (`-A`) option to remove them all at once:
 
-```dvc
+```cli
 $ dvc exp remove exp-1dad0 exp-1df77
 
 $ dvc exp list
@@ -82,7 +82,7 @@ The same applies to queued experiments but these won't have a name to give to
 their ID (shown when queued, and by `dvc exp show`). Let's queue a few
 experiments and then delete some of them:
 
-```dvc
+```cli
 $ dvc exp run --queue -S train.min_split=64
 Queued experiment 'e41d5b4' for future execution.
 $ dvc exp run --queue -S train.min_split=32 --name split32
@@ -107,7 +107,7 @@ $ dvc exp show
 
 We can also remove experiments from a remote Git repository:
 
-```dvc
+```cli
 $ dvc exp push myremote exp-e6c97
 $ dvc exp push myremote exp-9fcef
 $ dvc exp push myremote exp-1dad0

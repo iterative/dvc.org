@@ -1,4 +1,5 @@
 .wrapper {
+  width: 100%;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -15,7 +16,7 @@
   max-width: 1000px;
   box-sizing: border-box;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding: 20px 15px;
   }
 }
@@ -27,11 +28,11 @@
   height: auto;
   object-fit: contain;
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     width: 110px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     display: none;
   }
 
@@ -47,11 +48,10 @@
 }
 
 .title {
-  @mixin h2-desktop;
+  @apply text-3xl font-medium text-center my-0 mx-auto;
 
   color: #fff;
   margin: 0 auto;
-  text-align: center;
 }
 
 .rssLink {
@@ -73,7 +73,7 @@
   border-radius: 8px;
   background-color: #fff;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     width: 100%;
     margin: 0 auto;
     margin-top: 20px;

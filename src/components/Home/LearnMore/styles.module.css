@@ -55,7 +55,7 @@
   will-change: transform;
   animation: bounce 3s infinite;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     animation-name: bounceMobile;
   }
 }
@@ -68,7 +68,7 @@
   color: var(--color-gray-light);
   display: initial;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     display: none;
   }
 }
