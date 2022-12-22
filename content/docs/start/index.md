@@ -50,10 +50,11 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-The value of DVC's many feature sets is best understood from different angles.
-Pick a trail below to see an overview of all features from that perspective:
+The value of DVC's several feature sets is best understood from different
+angles. Pick one of the two trails below to learn about DVC from that
+perspective:
 
-### Data Management
+### Data Management Trail
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
   datasets, and machine learning models. Use a standard Git workflow, but
@@ -88,7 +89,7 @@ The steps and results of some of these chapters are captured in our
 
 </admon>
 
-### Experiment Management
+### Experiment Management Trail
 
 - **[Experiments]** enable exploration, iteration, and comparison across many
   trials in ML projects. Track your experiments with automatic versioning and
