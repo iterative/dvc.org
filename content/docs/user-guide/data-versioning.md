@@ -32,7 +32,7 @@ the "time dimension" ([Git history]). Here's a more concrete example:
 
 ## Organization and optimization
 
-DVC helps you keep a clean project directory by [caching your data] separate
+DVC helps you keep a clean project directory by [caching your data] separately
 from code and configuration (including DVC metafiles). The same mechanisms
 [optimize] space and time.
 
