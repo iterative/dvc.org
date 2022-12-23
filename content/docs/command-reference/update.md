@@ -48,6 +48,11 @@ $ dvc update --rev master
   > Note that this changes the `rev` field in the import stage, fixing it to the
   > revision.
 
+  For stages created with `dvc import-url` and a
+  [cloud-versioned URL](/doc/command-reference/import-url#--version-aware),
+  `--rev` can be used to specify a object version ID to use. By default, the
+  import will be updated to the latest version from cloud storage.
+
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import `.dvc` files to inspect. If there
   are no directories among the targets, this option has no effect.
