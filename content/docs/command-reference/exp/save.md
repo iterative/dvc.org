@@ -20,10 +20,12 @@ usage: dvc exp save [-h] [-q | -v] [-f]
 
 ## Description
 
-Provides a way to save a snapshot of your <abbr>project</abbr> as an
-<abbr>experiment</abbr>. This lets you quickly start tracking, [comparing],
-[plotting], and [sharing] experiments after making any project changes (e.g.
-retrain an ML model).
+Saves a snapshot of your <abbr>project</abbr> as an <abbr>experiment</abbr>,
+without polluting your Git repository with unnecessary commits, branches,
+directories, etc.
+
+This lets you start tracking, [comparing], [plotting], and [sharing] experiments
+quickly after making any project changes (e.g. retrain an ML model).
 
 [comparing]: /doc/user-guide/experiment-management/comparing-experiments
 [plotting]: /doc/user-guide/experiment-management/visualizing-plots

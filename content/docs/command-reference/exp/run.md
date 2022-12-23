@@ -27,9 +27,8 @@ positional arguments:
 
 ## Description
 
-Provides a way to execute and track <abbr>experiments</abbr> in your
-<abbr>project</abbr> without polluting it with unnecessary commits, branches,
-directories, etc.
+Executes and tracks <abbr>experiments</abbr> in your <abbr>repository</abbr>
+without polluting it with unnecessary Git commits, branches, directories, etc.
 
 <admon type="info">
 
@@ -61,7 +60,7 @@ options have special uses for these.
 
 <admon icon="book">
 
-See the [Running Experiments] guide for more details on all these features.
+See the [Running Experiments] guide for more details on these features and more.
 
 </admon>
 
