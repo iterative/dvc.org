@@ -58,8 +58,9 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   directory to be included in the experiment. This option can be used multiple
   times.
 
-- `-f`, `--force` - save the experiment even if no tracked files change (similar
-  to `dvc commit -f`).
+- `-f`, `--force` - rewrite the experiment if it already exists. Or, if nothing
+  has changed in the workspace, force saving an experiment anyway (identical to
+  Git `HEAD`).
 
 - `-h`, `--help` - prints the usage/help message, and exits.
 
