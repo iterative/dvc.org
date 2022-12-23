@@ -76,19 +76,15 @@ iterations.
 <admon type="info">
 
 With `cache: false`, DVC skips caching the output, as we want these JSON metrics
-and plots files to be versioned by Git.
+files to be versioned by Git.
 
 </admon>
 
 </details>
 
-[`evaluate.py`](https://github.com/iterative/example-get-started/blob/master/src/evaluate.py)
-writes the model's
-[ROC-AUC](https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc)
-and
-[average precision](https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures)
-for both train and test datasets to `eval/live/metrics.json`, which in turn is
-marked as a [metrics file] with `-M`. Its contents are:
+[`evaluate.py`] writes the model's [ROC-AUC] and [average precision] (for both
+datasets) to `eval/live/metrics.json` (which was marked as a [metrics file] with
+`-M` above):
 
 ```json
 {
@@ -111,28 +107,31 @@ Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_a
 eval/live/metrics.json  0.94496          0.97723           0.96191         0.98737
 ```
 
+[`evaluate.py`]:
+  https://github.com/iterative/example-get-started/blob/master/src/evaluate.py
+[roc-auc]:
+  https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc
+[average precision]:
+  https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures
 [metrics file]: /doc/command-reference/metrics#supported-file-formats
+
+The stage also writes [`roc_curve`] and [`confusion_matrix`] values in the
+`eval/live/plots` directory. Let's see how to visualize these better...
 
 ## Rendering plots
 
-`evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays into
-the plots files `eval/prc/train.json` and `eval/prc/test.json`:
+Similarly, `evaluate` writes `precision`, `recall`, and `thresholds` values into
+JSON arrays (shown below) in the the `eval/prc/train.json` and
+`eval/prc/test.json` [plots files]. It also generates a custom
+`eval/importance.png` image showing a bar chart of features' importance.
 
 ```json
-{
-  "prc": [
-    { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
-    ...
-    { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.6 }
-  ]
-}
+{ "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
+...
 ```
 
-Similarly, it writes arrays for the [`roc_curve`] and [`confusion_matrix`] into
-JSON files in the `eval/live/plots` directory, and an additional
-`eval/importance.png` plot with a feature importance bar chart.
-
-Before generating plots, you must configure their [rendering properties]:
+You can visualize these different elements as plots with DVC! But first, you
+must configure their [rendering properties][plots files]:
 
 ```yaml
 plots:
@@ -169,7 +168,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 ![](/img/plots_importance_get_started_show.png '=500 :wrap-left')
 ![](/img/plots_cm_get_started_show.svg)
 
-Let's save this iteration, so we can compare it later:
+Let's save this iteration so we can compare it later:
 
 ```cli
 $ git add .gitignore dvc.yaml dvc.lock eval
@@ -178,14 +177,14 @@ $ git commit -a -m "Create evaluation stage"
 
 Later we will see how to
 [compare and visualize different pipeline iterations](#comparing-iterations).
-For now, let's see how can we capture another important piece of information
-which will be useful for comparison: parameters.
+For now, let's see how to capture another important piece of information which
+will be useful for comparison: parameters.
 
 [`roc_curve`]:
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html
 [`confusion_matrix`]:
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
-[rendering properties]: /doc/user-guide/project-structure/dvcyaml-files#plots
+[plots files]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
