@@ -30,7 +30,7 @@ iterations of your ML project.
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML
-attributes. Let's add a final evaluation stage to our
+attributes. Let's add and run a final evaluation stage to our
 [pipeline from before](/doc/start/data-management/data-pipelines):
 
 ```cli
@@ -73,8 +73,12 @@ The biggest difference to previous stages in our pipeline is the new `metrics`
 section. Metrics files contain scalar values (e.g. `AUC`) to compare across
 iterations.
 
-> With `cache: false`, DVC skips caching the output, as we want these JSON
-> metrics and plots files to be versioned by Git.
+<admon type="info">
+
+With `cache: false`, DVC skips caching the output, as we want these JSON metrics
+and plots files to be versioned by Git.
+
+</admon>
 
 </details>
 
@@ -84,7 +88,7 @@ writes the model's
 and
 [average precision](https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures)
 for both train and test datasets to `eval/live/metrics.json`, which in turn is
-marked as a `metrics` file with `-M`. Its contents are:
+marked as a [metrics file] with `-M`. Its contents are:
 
 ```json
 {
@@ -99,11 +103,7 @@ marked as a `metrics` file with `-M`. Its contents are:
 }
 ```
 
-> DVC doesn't force you to use any specific file names, nor does it enforce a
-> format or structure of a metrics file. It's completely user/case-defined.
-> Refer to `dvc metrics` for more details.
-
-You can view tracked metrics with DVC:
+You can view tracked metrics with `dvc metrics show `:
 
 ```dvc
 $ dvc metrics show
@@ -111,32 +111,28 @@ Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_a
 eval/live/metrics.json  0.94496          0.97723           0.96191         0.98737
 ```
 
-## Configuring plots
+[metrics file]: /doc/command-reference/metrics#supported-file-formats
 
-`evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays
-(obtained using
-[`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into the plots files `eval/prc/train.json` and `eval/prc/test.json`:
+## Rendering plots
+
+`evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays into
+the plots files `eval/prc/train.json` and `eval/prc/test.json`:
 
 ```json
 {
   "prc": [
     { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
-    ...,
+    ...
     { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.6 }
   ]
 }
 ```
 
-Similarly, it writes arrays for the
-[roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
-and
-[confusion matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html)
-into JSON files in the `eval/live/plots` directory, and an image
-`eval/importance.png` with a feature importance bar chart for additional plots.
+Similarly, it writes arrays for the [`roc_curve`] and [`confusion_matrix`] into
+JSON files in the `eval/live/plots` directory, and an additional
+`eval/importance.png` plot with a feature importance bar chart.
 
-To view plots, first configure the axes and other specifications of your plots
-by adding a `plots` section to your `dvc.yaml`:
+Before generating plots, you must configure their [rendering properties]:
 
 ```yaml
 plots:
@@ -159,10 +155,9 @@ plots:
         eval/live/plots/sklearn/cm/test.json: predicted
 ```
 
-Now let's view the plots. You can run `dvc plots show` on your terminal (shown
-below), which generates an HTML file you can open in a browser. Or you can load
-your project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
-visualize them.
+To render them, you can run `dvc plots show` (shown below), which generates an
+HTML file you can open in a browser. Or you can load your project in VS Code and
+use the [DVC Extension]'s [Plots Dashboard].
 
 ```cli
 $ dvc plots show
@@ -186,6 +181,11 @@ Later we will see how to
 For now, let's see how can we capture another important piece of information
 which will be useful for comparison: parameters.
 
+[`roc_curve`]:
+  https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html
+[`confusion_matrix`]:
+  https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
+[rendering properties]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [plots dashboard]:
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
