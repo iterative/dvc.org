@@ -24,6 +24,17 @@ values can be added to a project in two ways:
    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
    repository.
 
+   <admon type="tip">
+
+To add model metadata to your repositories, you can use Iterative Studio Model Registry, or the underlying [GTO] or [MLEM].
+
+   Iterative Studio Model Registry can also set up DVC for you when
+   [importing model files from cloud locations](/doc/studio/user-guide/model-registry/add-a-model).
+
+   </admon>
+
+  [gto]: https://mlem.ai/doc/gto
+  [mlem]: https://mlem.ai/
    [store and share your data and model files]:
      /doc/start/data-management/data-versioning#storing-and-sharing
    [create data registries]: /doc/use-cases/data-registry
@@ -37,6 +48,22 @@ values can be added to a project in two ways:
    using some ML tracking tools, then you can add this project by specifying the
    file (within your Git repo) which contains your saved metrics. Refer to the
    section [on project settings] to learn how to specify the custom files.
+
+## Prepare Your Repositories to Run New Experiments
+
+To run new experiments from Iterative Studio, you should integrate your
+repositories with a CI/CD setup that includes a model training process. For
+this, create workflow files (such as GitHub Actions) that get triggered on push
+or pull request.
+
+You can
+[use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
+to automatically generate the workflow configuration, or you can write it on
+your own.
+
+For more details on how to set up
+[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
+refer to [CML](https://cml.dev).
 
 [on project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories

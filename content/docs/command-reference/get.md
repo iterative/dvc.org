@@ -8,8 +8,8 @@ directory.
 ## Synopsis
 
 ```usage
-usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] [-j <number>]
-       url path
+usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>]
+               [--show-url] [-j <number>] url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -90,7 +90,7 @@ We can use `dvc get` to download the resulting model file from our
 [get started example repo](https://github.com/iterative/example-get-started), a
 <abbr>DVC project</abbr> hosted on GitHub:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/example-get-started model.pkl
 $ ls
 model.pkl
@@ -118,7 +118,7 @@ The same example applies to raw data or intermediate artifacts as well.
 We can also use `dvc get` to retrieve any file or directory that exists in a Git
 repository.
 
-```dvc
+```cli
 $ dvc get https://github.com/schacon/cowsay install.sh
 $ ls
 install.sh
@@ -131,7 +131,7 @@ file from our
 [get started example repo](https://github.com/iterative/example-get-started) is
 stored:
 
-```dvc
+```cli
 $ dvc get --show-url \
           https://github.com/iterative/example-get-started model.pkl
 https://remote.dvc.org/get-started/c8/d307aa005d6974a8525550956d5fb3
@@ -155,7 +155,7 @@ Let's use the [get started example repo] again, like in the previous example.
 But this time, clone it first to see `dvc get` in action inside a <abbr>DVC
 project</abbr>.
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
@@ -167,7 +167,7 @@ repo. Similarly `bigrams-experiment` points to an improved model (trained using
 bigrams). What if we wanted to have both versions of the model "checked out" at
 the same time? `dvc get` provides an easy way to do this:
 
-```dvc
+```cli
 $ dvc get . model.pkl --rev baseline-experiment \
                       --out model.monograms.pkl
 ```
@@ -183,7 +183,7 @@ since that tag has the latest model version anyway). In fact, in this case using
 the file as just `model.pkl`. We can then rename it to make its variant
 explicit:
 
-```dvc
+```cli
 $ dvc pull train
 $ mv model.pkl model.bigrams.pkl
 ```
@@ -191,7 +191,7 @@ $ mv model.pkl model.bigrams.pkl
 And that's it! Now we have both model files in the <abbr>workspace</abbr>, with
 different names, and not currently tracked by Git:
 
-```dvc
+```cli
 $ git status
 ...
 Untracked files:

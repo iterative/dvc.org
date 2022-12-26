@@ -31,7 +31,7 @@ This command's output is equivalent to cloning the repo and
 [pulling](/doc/command-reference/pull) the data (except that nothing is
 downloaded), like this:
 
-```dvc
+```cli
 $ git clone <url> example
 $ cd example
 $ dvc pull
@@ -58,7 +58,7 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
 
-- `-R`, `--recursive` - recursively prints contents of all subdirectories.
+- `-R`, `--recursive` - recursively list files in all subdirectories.
 
 - `--dvc-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
@@ -84,7 +84,7 @@ We can use this command for getting information about a repository before using
 other commands like `dvc get` or `dvc import` to reuse any file or directory
 found in it. This includes files (or directories) tracked by DVC or by Git:
 
-```dvc
+```cli
 $ dvc list https://github.com/iterative/example-get-started
 .dvcignore
 .gitignore
@@ -107,18 +107,18 @@ an output of the `train` stage (in the `outs` field).
 
 We can now, for example, download the model file with:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/example-get-started model.pkl
 ```
 
-## Example: List all files and directories in a data registry
+## Example: List all files in a data registry
 
 Let's imagine a DVC repo used as a
 [data registry](/doc/use-cases/data-registry#using-registries), structured with
 different datasets in separate directories. We can do this recursively, using
 `-R` option:
 
-```dvc
+```cli
 $ dvc list -R https://github.com/iterative/dataset-registry
 .gitignore
 README.md
@@ -141,7 +141,7 @@ bundle the current data files in the project.
 For example, here's a TAR archive of the entire <abbr>workspace</abbr>
 (Linux/GNU):
 
-```dvc
+```cli
 $ dvc list . -R | tar -cvf project.tar
 ```
 
@@ -153,9 +153,10 @@ $ git archive -o code.zip HEAD
 $ dvc list . -R --dvc-only | zip -@ data.zip
 ```
 
-ZIP alternative for [POSIX on Windows](/doc/user-guide/running-dvc-on-windows)
-(Python installed):
+ZIP alternative for
+[POSIX on Windows](/doc/user-guide/how-to/run-dvc-on-windows) (Python
+installed):
 
-```dvc
+```cli
 $ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip
 ```

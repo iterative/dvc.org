@@ -3,7 +3,8 @@
 Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
 [top-level definition] from `dvc.yaml`.
 
-[top-level definition]: /doc/user-guide/visualizing-plots#top-level-plots
+[top-level definition]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
 
 ## Synopsis
 
@@ -38,11 +39,13 @@ The default behavior of this command can be modified per [stage plot] file with
 
 </admon>
 
-[certain data]: /doc/user-guide/visualizing-plots#supported-plot-file-formats
+[certain data]:
+  /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
-  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
-[top-level plot]: /doc/user-guide/visualizing-plots#top-level-plots
-[stage plot]: /doc/user-guide/visualizing-plots
+  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+[top-level plot]:
+  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[stage plot]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Options
 
@@ -51,7 +54,7 @@ The default behavior of this command can be modified per [stage plot] file with
   [`plots.out_dir`](/doc/command-reference/config#plots) config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+  [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to be injected with data. The default template is `.dvc/plots/default.json`.
   See more details in `dvc plots`.
 
@@ -226,10 +229,10 @@ stages:
     cmd: ...
 
 plots:
-  logs.csv:
+  - logs.csv
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -240,15 +243,15 @@ We can also customize it:
 
 ```yaml
 plots:
-  logs.csv:
-    x: epoch
-    y: accuracy
-    title: Displaying accuracy
-    x_label: This is epoch
-    y_label: This is accuracy
+  - logs.csv:
+      x: epoch
+      y: accuracy
+      title: Displaying accuracy
+      x_label: This is epoch
+      y_label: This is accuracy
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -271,14 +274,14 @@ Plot definition in `dvc.yaml`:
 
 ```yaml
 plots:
-  test_vs_train_loss:
-    x: epoch
-    y:
-      training_data.csv: [test_loss, train_loss]
-    title: Compare loss training versus test
+  - test_vs_train_loss:
+      x: epoch
+      y:
+        training_data.csv: [test_loss, train_loss]
+      title: Compare loss training versus test
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -323,23 +326,72 @@ In `dvc.yaml`:
 
 ```yaml
 plots:
-  test_vs_train_confusion:
-    x: actual_class
-    y:
-      train_classes.csv: predicted_class
-      test_classes.csv: predicted_class
-    title: Compare test vs train confusion matrix
-    template: confusion
-    x_label: Actual class
-    y_label: Predicted class
+  - test_vs_train_confusion:
+      x: actual_class
+      y:
+        train_classes.csv: predicted_class
+        test_classes.csv: predicted_class
+      title: Compare test vs train confusion matrix
+      template: confusion
+      x_label: Actual class
+      y_label: Predicted class
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_spec_conf_train_test.svg)
+
+### Sourcing `x` and `y` from different files
+
+The actual and predicted classes may come from different data sources:
+
+```csv
+actual_class
+dog
+dog
+dog
+bird
+bird
+bird
+cat
+cat
+cat
+```
+
+```csv
+predicted_class
+dog
+dog
+cat
+bird
+bird
+cat
+cat
+cat
+bird
+```
+
+In `dvc.yaml`:
+
+```yaml
+plots:
+  - confusion:
+      x:
+        actual.csv: actual_class
+      y:
+        preds.csv: predicted_class
+      template: confusion
+```
+
+```cli
+$ dvc plots show
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_spec_conf_diff_actual_pred.svg)
 
 ## Example: Vega-Lite specification file
 
@@ -390,7 +442,7 @@ extra text. DVC allows to replace the HTML file that contains the final plots.
 Download the Vega-Lite libraries into the directory where you'll produce the
 `dvc plots`:
 
-```dvc
+```cli
 $ wget https://cdn.jsdelivr.net/npm/vega@5.20.2 -O my_vega.js
 $ wget https://cdn.jsdelivr.net/npm/vega-lite@5.1.0 -O my_vega_lite.js
 $ wget https://cdn.jsdelivr.net/npm/vega-embed@6.18.2 -O my_vega_embed.js
@@ -415,14 +467,14 @@ Note that this is a standard HTML file with only `{plot_divs}` as a placeholder
 for DVC to inject plots. `<script>` tags in this file point to the local
 JavaScript libraries we downloaded above. We can use it like this:
 
-```dvc
+```cli
 $ dvc plots show --html-template .dvc/plots/mypage.html
 ```
 
 You can also make it the default HTML template by setting it as `dvc config`
 parameter `plots.html_template`.
 
-```dvc
+```cli
 $ dvc config plots.html_template plots/mypage.html
 ```
 
@@ -434,7 +486,7 @@ Note that the path supplied to `dvc config plots.html_template` is relative to
 In some cases we would like to smooth our plot. In this example we will use a
 noisy plot with 100 data points:
 
-```dvc
+```cli
 $ dvc plots show data.csv
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -444,7 +496,7 @@ file:///Users/usr/src/dvc_plots/index.html
 We can use the `-t` (`--template`) option and `smooth` template to make it less
 noisy:
 
-```dvc
+```cli
 $ dvc plots show -t smooth data.csv
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -471,7 +523,7 @@ turtle,cat
 
 Let's visualize it:
 
-```dvc
+```cli
 $ dvc plots show classes.csv --template confusion \
                              -x actual -y predicted
 file:///Users/usr/src/dvc_plots/index.html
@@ -480,12 +532,12 @@ file:///Users/usr/src/dvc_plots/index.html
 ![](/img/plots_show_confusion.svg)
 
 > A confusion matrix
-> [template](/doc/user-guide/visualizing-plots#plot-templates-data-series-only)
+> [template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 > is predefined in DVC.
 
 We can use `confusion_normalized` template to normalize the results:
 
-```dvc
+```cli
 $ dvc plots show classes.csv -t confusion_normalized \
                              -x actual -y predicted
 file:///Users/usr/src/dvc_plots/index.html
@@ -510,7 +562,7 @@ sepal_length,0.03
 
 Let's visualize it:
 
-```dvc
+```cli
 $ dvc plots show importances.csv --template bar_horizontal \
                              -x feature_importance -y feature_name
 file:///Users/usr/src/dvc_plots/index.html
@@ -524,7 +576,7 @@ When using the `bar_horizontal` template the plot is sorted by the vertical axis
 If you want it to be sorted by the horizontal axis (by feature importance in the
 example) you can use the `bar_horizontal_sorted` template instead:
 
-```dvc
+```cli
 $ dvc plots show importances.csv -t bar_horizontal_sorted \
                              -x feature_importance -y feature_name
 file:///Users/usr/src/dvc_plots/index.html

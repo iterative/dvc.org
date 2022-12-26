@@ -9,8 +9,7 @@ settings_ are now called _Project settings_; and so on.
 
 # Visualize and Compare Experiments
 
-You can visualize and compare experiments using using plots, images, charts,
-etc.
+You can visualize and compare experiments using plots, images, charts, etc.
 
 ## Display plots and images
 
@@ -30,37 +29,38 @@ Iterative Studio can work with two types of plots files in your repository:
 2. Image files in JPEG, GIF, or PNG format. These images will be displayed as-is
    in Iterative Studio.
 
-You can define multiple plots in a single repository. Below is an example
-snippet from a `dvc.yaml` file showing the `evaluate` stage of the DVC pipeline.
+Plots can be
+[pipeline outputs](/doc/user-guide/experiment-management/visualizing-plots#plot-outputs)
+or
+[top-level](/doc/user-guide/experiment-management/visualizing-plots#top-level-plots).
+Below is a sample `dvc.yaml` file with 2 plots in the `evaluate` stage and a
+top-level plot using data from `runtime_logs/logs.csv`.
 
 ```yaml
-evaluate:
-  cmd: python src/evaluate.py
-  deps:
-    - output/data.pkl
-    - output/model.h5
-    - src/evaluate.py
-  metrics:
-    - output/metrics.json:
-        cache: false
-  plots:
-    - output/predictions.json:
-        cache: false
-        template: confusion
-        x: actual
-        y: predicted
-    - output/misclassified_samples/:
-        cache: false
+stages:
+  evaluate:
+    cmd: python src/evaluate.py
+    deps: ...
+    plots:
+      - output/predictions.json:
+          template: confusion
+          x: actual
+          y: predicted
+      - output/misclassified_samples/:
+          cache: false
+plots: runtime_logs/logs.csv
 ```
 
 As you can see,
 
-- metrics from `output/predictions.json` will be rendered in a confusion matrix,
+- metrics from `output/predictions.json` will be plotted in a confusion matrix,
 - images in the `output/misclassified_samples/` directory will be displayed
-  directly.
+  directly,
+- data from `runtime_logs/logs.json` will be rendered using the default (linear)
+  template.
 
-You can also specify a single image file (eg,
-`output/misclassified_sample1.png`).
+For images, you can also specify a single image file (eg,
+`output/misclassified_sample1.png`) instead of a directory.
 
 ### How to generate plots
 

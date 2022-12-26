@@ -44,6 +44,5 @@ metafiles such as `dvc.lock`; for example source code that is used as a
 
 ## Further Reading
 
-- [What is DVC?](/doc/user-guide/what-is-dvc)
 - [Get Started](/doc/start) with DVC
 - DVC [Project Structure](/doc/user-guide/project-structure)

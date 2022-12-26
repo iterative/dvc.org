@@ -11,14 +11,14 @@ description:
 
 Adding datasets to a registry can be as simple as placing the data file or
 directory in question inside the <abbr>workspace</abbr>, and track it with
-`dvc add`. A regular Git workflow can be followed with the `.dvc` files that
+`dvc add`. A standard Git workflow can be followed with the `.dvc` files that
 substitute the actual data (e.g. `music/songs.dvc` below). This enables team
 collaboration on data at the same level as with source code:
 
 > This sample dataset actually
 > [exists](http://millionsongdataset.com/pages/getting-dataset/#subset).
 
-```dvc
+```cli
 $ mkdir -p music/songs
 $ cp ~/Downloads/millionsongsubset_full music/songs
 
@@ -32,7 +32,7 @@ The actual data is stored in the project's <abbr>cache</abbr>, and can be
 [pushed](/doc/command-reference/push) to one or more [remote storage] locations
 so the registry can be accessed from other locations and by other people:
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/dvcstore
 $ dvc push
 ```
@@ -55,7 +55,7 @@ But first, we may want to explore its contents.
 To explore the contents of a DVC repository in search for the right data, use
 the `dvc list` command (similar to `ls` and 3rd-party tools like `aws s3 ls`):
 
-```dvc
+```cli
 $ dvc list -R https://github.com/iterative/dataset-registry
 .gitignore
 README.md
@@ -75,7 +75,7 @@ Both Git-tracked files and DVC-tracked data (or models, etc.) are listed.
 `aws s3 cp` (S3), etc. To get a dataset from a DVC repo, we can run something
 like this:
 
-```dvc
+```cli
 $ dvc get https://github.com/example/registry music/songs
 ```
 
@@ -87,7 +87,7 @@ current working directory.
 
 `dvc import` uses the same syntax as `dvc get`:
 
-```dvc
+```cli
 $ dvc import https://github.com/example/registry images/faces
 ```
 
@@ -99,7 +99,7 @@ metadata.
 Whenever the dataset changes in the registry, we can bring data up to date in
 with `dvc update`:
 
-```dvc
+```cli
 $ dvc update faces.dvc
 ```
 
@@ -138,7 +138,7 @@ See also the `dvc.api.read()` and `dvc.api.get_url()` functions.
 Datasets evolve, and DVC is prepared to handle it. Just change the data in the
 registry, and apply the updates by running `dvc add` again:
 
-```dvc
+```cli
 $ cp 1000/more/songs/* music/songs/
 $ dvc add music/songs/
 ```
@@ -146,7 +146,7 @@ $ dvc add music/songs/
 DVC modifies the corresponding `.dvc` file to reflect the changes, and this is
 picked up by Git:
 
-```dvc
+```cli
 $ git status
 ...
 	modified:   music/songs.dvc
@@ -157,7 +157,7 @@ Iterating on this process for several datasets can give shape to a robust
 registry. The result is basically a repo that versions a set of
 [metafiles](/doc/user-guide/project-structure). Let's see an example:
 
-```dvc
+```cli
 $ tree --filelimit=10
 .
 ├── images
@@ -177,6 +177,6 @@ $ tree --filelimit=10
 And let's not forget to `dvc push` data changes to the [remote storage], so
 others can obtain them!
 
-```dvc
+```cli
 $ dvc push
 ```

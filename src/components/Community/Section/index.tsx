@@ -4,8 +4,6 @@ import { useLocation } from '@reach/router'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
-import { screens } from '@dvcorg/gatsby-theme-iterative/config/postcss/media'
-
 import * as styles from './styles.module.css'
 
 export interface ICommunitySection {
@@ -46,7 +44,7 @@ const Section: React.FC<ICommunitySection> = ({
     }
   }, [location.hash])
 
-  useEffect(() => setIsTablet(width <= screens.tablet), [width])
+  useEffect(() => setIsTablet(width <= 768), [width])
 
   return (
     <div

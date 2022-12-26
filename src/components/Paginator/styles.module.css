@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin-top: 50px;
   }
 }

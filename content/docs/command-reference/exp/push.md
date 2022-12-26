@@ -23,8 +23,9 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
 > Plain `git push` and `git fetch` don't work with experiments because these are
-> saved under custom Git references. See **How does DVC track experiments?** in
-> `dvc exp run` to learn more about DVC experiment storage.
+> saved under custom Git references. See
+> [**How does DVC track experiments?**](/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments)
+> in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
 one or more `experiment` names or hashes (see `dvc exp run`) to push.
@@ -83,13 +84,13 @@ This command will also try to [push](/doc/command-reference/push) all
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp list --all-commits
 11-bigrams-experiment:
         exp-e6c97
@@ -99,14 +100,14 @@ $ dvc exp list --all-commits
 
 We would now like to share one of them with others via the Git remote:
 
-```dvc
+```cli
 $ dvc exp push origin exp-e6c97
 Pushed experiment 'exp-e6c97' to Git remote 'origin'.
 ```
 
 We can now see that the experiment exists in the remote repo:
 
-```dvc
+```cli
 $ dvc exp list --all origin
 master:
         exp-e6c97

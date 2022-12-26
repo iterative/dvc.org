@@ -23,7 +23,7 @@ experiments by printing a table of differences. By default, it includes the
 params/metrics file "Path", "Param" or "Metric" name, the new "Value", and the
 difference ("Change") for numeric values. Example:
 
-```dvc
+```cli
 $ dvc exp diff
 Path         Metric   HEAD      workspace  Change
 scores.json  roc_auc  0.915363  0.93345    0.018087
@@ -80,13 +80,13 @@ all the current experiments (without comparisons).
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -105,7 +105,7 @@ $ dvc exp show
 Since we haven't made any changes to the workspace, we can compare `exp-1dad0`
 to its baseline (`10-bigrams-experiment`, current `HEAD`) like this:
 
-```dvc
+```cli
 $ dvc exp diff exp-1dad0
 Path         Metric  HEAD      exp-1dad0  Change
 scores.json  auc     0.577565  0.61314    0.035575
@@ -117,7 +117,7 @@ params.yaml  featurize.max_features  2000  1500       -500
 To compare two specific experiments (values are shown for the second one by
 default):
 
-```dvc
+```cli
 $ dvc exp diff exp-1dad0 exp-1df77
 Path         Metric  exp-1dad0  exp-1df77   Change
 scores.json  auc     0.577559   0.51676     -0.060799
@@ -130,7 +130,7 @@ To compare an experiment to the
 [`7-ml-pipeline`](https://github.com/iterative/example-get-started/releases/tag/7-ml-pipeline)
 tag (or any other [revision](https://git-scm.com/docs/revisions)):
 
-```dvc
+```cli
 $ dvc exp diff exp-1dad0 7-ml-pipeline
 Path         Metric  exp-1dad0  7-ml-pipeline  Change
 scores.json  auc     0.577559   None           diff not supported

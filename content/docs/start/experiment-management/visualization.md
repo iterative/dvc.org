@@ -1,12 +1,13 @@
 ---
 title: 'Get Started: Visualization with Plots'
+description: 'Get started with visualizing DVC experiments with plots.'
 ---
 
 # Get Started: Visualization with Plots
 
 In this section, we'll add visualization to the [`example-dvc-experiments`]
-project (explored [previously]). If you would like to try these yourself, please
-refer to the project [README] on how to install.
+project (explored [previously]). If you would like to try this yourself, refer
+to the project's [README] on how to install it.
 
 [`example-dvc-experiments`]:
   https://github.com/iterative/example-dvc-experiments
@@ -35,7 +36,7 @@ HTML file you can open in the browser (shown below). Or you can load your
 project in VS Code and use the [Plots Dashboard] of the [DVC Extension] to
 visualize them.
 
-```dvc
+```cli
 $ dvc plots show plots/confusion.csv --template confusion \
                                      -x actual -y predicted
 file:///.../example-dvc-experiments/plots/confusion.json.html
@@ -63,7 +64,7 @@ project.][misclassified-example-code]
 [misclassified-example-code]:
   https://github.com/iterative/example-dvc-experiments/blob/48b1e5078c957f71674c00f416290eaa3b20b559/src/util.py#L49
 
-```dvc
+```cli
 $ dvc plots show --open plots/misclassified.png
 ```
 
@@ -71,7 +72,7 @@ $ dvc plots show --open plots/misclassified.png
 
 ## Autogenerating plots from deep learning code
 
-An important issue for deep learning projects is to observe in which epoch do
+An important issue for deep learning projects is to observe in which epoch
 training and validation loss differ. DVC helps in that regard with its Python
 integrations to deep learning libraries via [DVCLive].
 
@@ -80,7 +81,7 @@ callback that visualizes the training and validation loss for each epoch. We
 first import the callback from DVCLive.
 
 ```python
-from dvclive.keras import DvcLiveCallback
+from dvclive.keras import DVCLiveCallback
 ```
 
 Then we add this callback to the
@@ -90,12 +91,12 @@ call.
 ```python
 model.fit(
  ...
- callbacks=[DvcLiveCallback()],
+ callbacks=[DVCLiveCallback()],
  ...)
 ```
 
 With these two changes, the model metrics are automatically logged to
-`dvclive.json` and plotted in `training_metrics/index.html`:
+`dvclive/metrics.json` and plotted in `dvclive/report.html`:
 
 ![dvclive](/img/start_visualization_dvclive.png)
 
@@ -105,13 +106,13 @@ these default values.
 In summary, DVC provides more than one option to use visualization in your
 workflow:
 
-- DVC can generate HTML files that includes interactive plots from data series
-  in JSON, YAML, CSV, or TSV format.
+- DVC can generate HTML files that include interactive plots from data series in
+  JSON, YAML, CSV, or TSV format.
 
 - DVC can keep track of image files produced as [plot outputs] from the
   training/evaluation scripts.
 
 - [DVCLive] integrations can produce plots automatically during training.
 
-[plot outputs]: /doc/user-guide/visualizing-plots
-[dvclive]: /doc/dvclive/dvclive-with-dvc
+[plot outputs]: /doc/user-guide/experiment-management/visualizing-plots
+[dvclive]: /doc/dvclive/

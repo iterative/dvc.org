@@ -168,9 +168,9 @@ To use a custom authentication method, use the parameters described in
 ### Google Drive
 
 To start using a GDrive remote, first add it with a
-[valid URL format](/doc/user-guide/setup-google-drive-remote#url-format). Then
-use any DVC command that needs to connect to it (e.g. `dvc pull` or `dvc push`
-once there's tracked data to synchronize). For example:
+[valid URL format](/doc/user-guide/how-to/setup-google-drive-remote#url-format).
+Then use any DVC command that needs to connect to it (e.g. `dvc pull` or
+`dvc push` once there's tracked data to synchronize). For example:
 
 ```cli
 $ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
@@ -184,7 +184,7 @@ Enter verification code: # <- enter resulting code
 ```
 
 See `dvc remote modify` for a list of other GDrive parameters, or
-[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
+[Set up a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote)
 for a full guide on using Google Drive as DVC remote storage.
 
 Note that GDrive remotes are not "trusted" by default. This means that the
@@ -412,7 +412,7 @@ region.
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 
@@ -431,20 +431,20 @@ remote = myremote
 
 The list of remotes should now be:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	s3://mybucket/path
 ```
 
 You can overwrite existing remotes using `-f` with `dvc remote add`:
 
-```dvc
+```cli
 $ dvc remote add -f myremote s3://mybucket/another-path
 ```
 
 List remotes again to view the updated remote:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	s3://mybucket/another-path
 ```

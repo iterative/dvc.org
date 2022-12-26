@@ -91,9 +91,10 @@ Relevant notes:
   [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
   for more info.)
 
-- [external dependencies](/doc/user-guide/external-dependencies) and
-  [external outputs](/doc/user-guide/managing-external-data) (outside of the
-  <abbr>workspace</abbr>) are also supported (except metrics and plots).
+- [external dependencies](/doc/user-guide/data-management/importing-external-data)
+  and [external outputs](/doc/user-guide/data-management/managing-external-data)
+  (outside of the <abbr>workspace</abbr>) are also supported (except metrics and
+  plots).
 
 - Outputs are deleted from the workspace before executing the command (including
   at `dvc repro`) if their paths are found as existing files/directories (unless
@@ -104,7 +105,7 @@ Relevant notes:
 - In some situations, we have previously executed a stage, and later notice that
   some of the files/directories used by the stage as dependencies, or created as
   outputs are missing from `dvc.yaml`. It is possible to
-  [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
+  [add missing dependencies/outputs to an existing stage](/doc/user-guide/how-to/add-deps-or-outs-to-a-stage)
   without having to execute it again.
 
 - Renaming dependencies or outputs requires a
@@ -139,7 +140,7 @@ data science experiments.
   on. Multiple dependencies can be specified like this:
   `-d data.csv -d process.py`. Usually, each dependency is a file or a directory
   with data, or a code file, or a configuration file. DVC also supports certain
-  [external dependencies](/doc/user-guide/external-dependencies).
+  [external dependencies](/doc/user-guide/data-management/importing-external-data).
 
   When you use `dvc repro`, the list of dependencies helps DVC analyze whether
   any dependencies have changed and thus executing stages required to regenerate
@@ -196,7 +197,7 @@ data science experiments.
   This option behaves like `-o` but registers the file or directory in a `plots`
   field inside the `dvc.yaml` stage. Plots outputs are either data series stored
   in tabular (CSV or TSV) or hierarchical (JSON or YAML) files, or image (JPEG,
-  GIF, or PNG) files. See [Visualizing Plots] to learn more about plots.
+  GIF, PNG, or SVG) files. See [Visualizing Plots] to learn more about plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots file (same as with `-O` and `-M` above). This may be desirable
@@ -216,7 +217,7 @@ data science experiments.
   when reproducing the pipeline.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
+  [Managing External Data](/doc/user-guide/data-management/managing-external-data).
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
@@ -228,13 +229,13 @@ data science experiments.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[visualizing plots]: /doc/user-guide/visualizing-plots
+[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Examples
 
 Let's create a stage (that counts the number of lines in a `test.txt` file):
 
-```dvc
+```cli
 $ dvc stage add -n count \
                 -d test.txt \
                 -o lines \
@@ -272,7 +273,7 @@ created and tracked whenever `dvc repro` is run.
 The following stage runs a Python script that trains an ML model on the training
 dataset (`20180226` is a seed value):
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -d train_model.py -d matrix-train.p -o model.p \
                 python train_model.py 20180226 model.p
@@ -281,7 +282,7 @@ $ dvc stage add -n train \
 To update a stage that is already defined, the `-f` (`--force`) option is
 needed. Let's update the seed for the `train` stage:
 
-```dvc
+```cli
 $ dvc stage add -n train --force \
                 -d train_model.p -d matrix-train.p -o model.p \
                 python train_model.py 18494003 model.p
@@ -293,7 +294,7 @@ Let's move to a subdirectory and create a stage there. This generates a separate
 `dvc.yaml` file in that location. The stage command itself counts the lines in
 `test.txt` and writes the number to `lines`.
 
-```dvc
+```cli
 $ cd more_stages/
 $ dvc stage add -n process_data \
                 -d data.in \
@@ -318,7 +319,7 @@ outputs of a stage to the dependencies of the following one(s).
 Let's create a stage that extracts an XML file from an archive to the `data/`
 folder:
 
-```dvc
+```cli
 $ dvc stage add -n extract \
                 -d Posts.xml.zip \
                 -o data/Posts.xml \
@@ -331,7 +332,7 @@ $ dvc stage add -n extract \
 Also, let's add another stage that executes an R script that parses the XML
 file:
 
-```dvc
+```cli
 $ dvc stage add -n parse \
                 -d parsingxml.R -d data/Posts.xml \
                 -o data/Posts.csv \
@@ -342,7 +343,7 @@ These stages are not run yet, so there are no outputs. But we can still see how
 they are connected into a pipeline (given their outputs and dependencies) with
 `dvc dag`:
 
-```dvc
+```cli
 $ dvc dag
 +---------+
 | extract |
@@ -378,7 +379,7 @@ processing:
 
 Define a stage with both regular dependencies as well as parameter dependencies:
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -d train_model.py -d matrix-train.p  -o model.p \
                 -p seed,train.lr,train.epochs

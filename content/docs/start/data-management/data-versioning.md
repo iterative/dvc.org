@@ -1,23 +1,25 @@
 ---
 title: 'Get Started: Data Versioning'
 description: 'Get started with data and model versioning in DVC. Learn how to
-use a regular Git workflow for datasets and ML models, without storing large
+use a standard Git workflow for datasets and ML models, without storing large
 files in Git.'
 ---
 
 # Get Started: Data Versioning
+
+<details>
+
+### 🎬 Click to watch a video intro.
+
+https://youtu.be/kLKBcPonMYw
+
+</details>
 
 How cool would it be to make Git handle arbitrarily large files and directories
 with the same performance it has with small code files? Imagine cloning a
 repository and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
 `git checkout`. Think "Git for data".
-
-https://youtu.be/kLKBcPonMYw
-
-The foundation of DVC consists of a few commands you can run along with `git` to
-track large files, directories, or ML model files. Read on or watch the video
-above to learn more!
 
 <details>
 
@@ -26,24 +28,27 @@ above to learn more!
 Having initialized a project in the previous section, we can get the data file
 (which we'll be using later) like this:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           get-started/data.xml -o data/data.xml
 ```
 
+<admon type="info">
+
 We use the fancy `dvc get` command to jump ahead a bit and show how a Git repo
-becomes a source for datasets or models — what we call a "data/model registry".
+becomes a source for datasets or models — what we call a [data registry].
 `dvc get` can download any file or directory tracked in a <abbr>DVC
-repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
-download the latest version of the `data.xml` file from the
-[dataset registry](https://github.com/iterative/dataset-registry) repo as the
-data source.
+repository</abbr>.
+
+[data registry]: /doc/use-cases/data-registry
+
+</admon>
 
 </details>
 
-To start tracking a file or directory, use `dvc add`. For example:
+To start tracking a file or directory, use `dvc add`:
 
-```dvc
+```cli
 $ dvc add data/data.xml
 ```
 
@@ -52,7 +57,7 @@ DVC stores information about the added file in a special `.dvc` file named
 metadata file is a placeholder for the original data, and can be easily
 versioned like source code with Git:
 
-```dvc
+```cli
 $ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
@@ -94,7 +99,7 @@ safely stored [remotely](/doc/command-reference/remote). This also means they
 can be retrieved on other environments later with `dvc pull`. First, we need to
 set up a remote storage location:
 
-```dvc
+```cli
 $ dvc remote add -d storage s3://mybucket/dvcstore
 $ git add .dvc/config
 $ git commit -m "Configure remote storage"
@@ -115,7 +120,7 @@ remote_ in a temporary `dvcstore/` directory (create the dir first if needed):
 <toggle>
 <tab title="Mac/Linux">
 
-```dvc
+```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ git commit .dvc/config -m "Configure local remote"
 ```
@@ -123,7 +128,7 @@ $ git commit .dvc/config -m "Configure local remote"
 </tab>
 <tab title="Windows (Cmd)">
 
-```dvc
+```cli
 $ dvc remote add -d myremote %TEMP%\dvcstore
 $ git commit .dvc\config -m "Configure local remote"
 ```
@@ -138,7 +143,7 @@ $ git commit .dvc\config -m "Configure local remote"
 
 </details>
 
-```dvc
+```cli
 $ dvc push
 ```
 
@@ -176,7 +181,7 @@ If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 <toggle>
 <tab title="Mac/Linux">
 
-```dvc
+```cli
 $ rm -rf .dvc/cache
 $ rm -f data/data.xml
 ```
@@ -184,7 +189,7 @@ $ rm -f data/data.xml
 </tab>
 <tab title="Windows (Cmd)">
 
-```dvc
+```cli
 $ rmdir .dvc\cache
 $ del data\data.xml
 ```
@@ -194,7 +199,7 @@ $ del data\data.xml
 
 </details>
 
-```dvc
+```cli
 $ dvc pull
 ```
 
@@ -219,7 +224,7 @@ is the case by doubling the dataset:
 <toggle>
 <tab title="Mac/Linux">
 
-```dvc
+```cli
 $ cp data/data.xml /tmp/data.xml
 $ cat /tmp/data.xml >> data/data.xml
 ```
@@ -227,7 +232,7 @@ $ cat /tmp/data.xml >> data/data.xml
 </tab>
 <tab title="Windows (Cmd)">
 
-```dvc
+```cli
 $ copy data\data.xml %TEMP%\data.xml
 $ type %TEMP%\data.xml >> data\data.xml
 ```
@@ -237,13 +242,13 @@ $ type %TEMP%\data.xml >> data\data.xml
 
 </details>
 
-```dvc
+```cli
 $ dvc add data/data.xml
 ```
 
 Usually you would also run `git commit` and `dvc push` to save the changes:
 
-```dvc
+```cli
 $ git commit data/data.xml.dvc -m "Dataset updates"
 $ dvc push
 ```
@@ -253,7 +258,7 @@ $ dvc push
 The regular workflow is to use `git checkout` first (to switch a branch or
 checkout a `.dvc` file version) and then run `dvc checkout` to sync data:
 
-```dvc
+```cli
 $ git checkout <...>
 $ dvc checkout
 ```
@@ -264,7 +269,7 @@ $ dvc checkout
 
 Let's go back to the original version of the data:
 
-```dvc
+```cli
 $ git checkout HEAD~1 data/data.xml.dvc
 $ dvc checkout
 ```
@@ -272,16 +277,16 @@ $ dvc checkout
 Let's commit it (no need to do `dvc push` this time since this original version
 of the dataset was already saved):
 
-```dvc
+```cli
 $ git commit data/data.xml.dvc -m "Revert dataset updates"
 ```
 
 </details>
 
-Yes, DVC is technically not even a version control system! `.dvc` file contents
-define data file versions. Git itself provides the version control. DVC in turn
-creates these `.dvc` files, updates them, and synchronizes DVC-tracked data in
-the <abbr>workspace</abbr> efficiently to match them.
+Yes, DVC is technically not a version control system! Git itself provides that
+layer. DVC in turn manipulates `.dvc` files, whose contents define the data file
+versions. DVC also synchronizes DVC-tracked data in the <abbr>workspace</abbr>
+efficiently to match them.
 
 ## Large datasets versioning
 
@@ -294,5 +299,5 @@ You can learn more about advanced workflows using these links:
   store, version and access a lot of data on a large shared volume efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). See
-  [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
+  [Managing External Data](https://dvc.org/doc/user-guide/data-management/managing-external-data)
   to learn more.

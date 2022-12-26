@@ -65,14 +65,14 @@ options below).
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project. You can quickly list the
 available experiments with this command:
 
-```dvc
+```cli
 $ dvc exp list --all-commits
 10-bigrams-experiment:
         exp-e6c97
@@ -85,7 +85,7 @@ $ dvc exp list --all-commits
 
 You can also list experiments in any DVC repo with `dvc exp list`:
 
-```dvc
+```cli
 $ dvc exp list --all-commits git@github.com:iterative/example-get-started.git
 10-bigrams-experiment:
         exp-e6c97
@@ -99,7 +99,7 @@ If we're currently in a local clone of the repo, we can also use
 [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
 name instead:
 
-```dvc
+```cli
 $ git remote -v
 origin  git@github.com:iterative/example-get-started.git
 $ dvc exp list --all-commits origin

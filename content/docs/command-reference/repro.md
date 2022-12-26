@@ -1,8 +1,7 @@
 # repro
 
-Reproduce complete or partial [pipelines](/doc/command-reference/dag) by
-executing commands defined in their [stages](/doc/command-reference/run) in the
-correct order.
+Reproduce complete or partial <abbr>pipelines</abbr> by running their
+<abbr>stages</abbr> as needed in the correct order.
 
 ## Synopsis
 
@@ -78,7 +77,7 @@ If you need to do this, you can launch `dvc repro` multiple times manually. For
 example, let's say a [pipelines](/doc/command-reference/dag) graph looks
 something like this:
 
-```dvc
+```cli
 $ dvc dag
 +--------+          +--------+
 |   A1   |          |   B1   |
@@ -116,6 +115,7 @@ up-to-date and only execute the final stage.
   - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`
   - `dvc repro modeling/dvc.yaml:prepare`: Stage(s) from a specific `dvc.yaml`
     file
+  - `dvc repro train-model@1`: [Foreach] stage(s) from `./dvc.yaml`
   - `dvc repro --glob train-*`: Pattern to match groups of stages
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
@@ -195,6 +195,7 @@ up-to-date and only execute the final stage.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
 [details]: /doc/user-guide/project-structure/internal-files#run-cache
 [not recommended]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
@@ -219,7 +220,7 @@ best
 
 And runs a few simple transformations to filter and count numbers:
 
-```dvc
+```cli
 $ dvc stage add -n filter -d text.txt -o numbers.txt \
            "cat text.txt | egrep '[0-9]+' > numbers.txt"
 
@@ -242,7 +243,7 @@ print(num_lines)
 The result of executing `dvc repro` should look like this (`cat` shows the
 contents of a file and `tree` shows the contents of the working directory):
 
-```dvc
+```cli
 $ dvc repro
 Running stage 'filter':
 > cat text.txt | egrep '[0-9]+' > numbers.txt
@@ -281,7 +282,7 @@ print(num_lines)
 
 If we now run `dvc repro`, we should see this:
 
-```dvc
+```cli
 $ dvc repro
 Stage 'filter' didn't change, skipping
 Running stage 'count' with command:
@@ -319,7 +320,7 @@ print(num_lines)
 Now, using the `--downstream` option with `dvc repro` results in the execution
 of only the target (`count`) and following stages (none in this case):
 
-```dvc
+```cli
 $ dvc repro --downstream count
 Running stage 'count' with command:
         python process.py numbers.txt > count.txt
@@ -331,7 +332,7 @@ The change in `text.txt` is ignored because that file is a dependency in the
 `filter` happens before the target (`count`) in the pipeline (see `dvc dag`), as
 shown below:
 
-```dvc
+```cli
 $ dvc dag
 
   +--------+

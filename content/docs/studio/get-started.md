@@ -1,36 +1,31 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use Iterative
-Studio.
+<admon>
 
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
+We have renamed DVC Studio to Iterative Studio.
 
-https://www.youtube.com/watch?v=hKf4twg832g
+</admon>
 
-## Sign up / sign in
+First, sign in to your [Iterative Studio](https://studio.iterative.ai/)
+dashboard using your GitHub.com, GitLab.com, or Bitbucket.org account, or with
+your email address.
 
-1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
-   using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
-   address.
+<admon type="tip">
 
-   <admon>
+When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
+[create a team] first, then go to the _Team settings_ to [change the plan]. To
+sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
+[pricing details]).
 
-   When you sign up, you're on the **Free plan**. To switch to the **Basic
-   plan** [create a team] first, then go to the [team settings] and click on
-   `Change plan` in the `Plan and billing` section.
+</admon>
 
-   To sign up for the **Teams** or **Enterprise** plan, please [schedule a
-   call].
+[create a team]: /doc/studio/user-guide/teams
+[change the plan]:
+  /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
+[schedule a call]: https://calendly.com/gtm-2/studio-introduction
+[pricing details]: https://studio.iterative.ai/pricing
 
-   > See [pricing details] to compare the different plans.
-
-   [create a team]: /doc/studio/user-guide/teams
-   [team settings]: /doc/studio/user-guide/teams#settings
-   [schedule a call]: https://calendly.com/gtm-2/studio-introduction
-   [pricing details]: https://studio.iterative.ai/pricing
-
-   </admon>
+</admon>
 
 ## Explore demo project
 
@@ -127,7 +122,8 @@ You should now see that a project has been added in your dashboard.
 
 2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
    to the model registry by clicking on the `Add a model` button and following
-   on-screen instructions.
+   on-screen instructions. Models that are already in the repository as well as
+   models stored in remote (cloud) storages can be registered in this way.
 
 3. To
    [view the details](/doc/studio/user-guide/model-registry/view-models#model-details-page)

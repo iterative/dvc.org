@@ -24,7 +24,7 @@ scenarios:
 Create a directory external to your <abbr>DVC projects</abbr> to be used as a
 shared <abbr>cache</abbr> location for everyone's projects:
 
-```dvc
+```cli
 $ mkdir -p /home/shared/dvc-cache
 ```
 
@@ -42,7 +42,7 @@ If you did work on the <abbr>DVC projects</abbr> previously and wish to transfer
 its existing cache to the shared cache directory, you will simply need to move
 its contents from the old location to the new one:
 
-```dvc
+```cli
 $ mv .dvc/cache/* /home/shared/dvc-cache
 ```
 
@@ -50,7 +50,7 @@ Now, ensure that the cached directories and files have appropriate permissions,
 so that they can be accessed by your colleagues (assuming their users are
 members of the same group):
 
-```dvc
+```cli
 $ sudo find /home/shared/dvc-cache -type d -exec chmod 0775 {} \;
 $ sudo find /home/shared/dvc-cache -type f -exec chmod 0444 {} \;
 $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
@@ -59,11 +59,11 @@ $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 ## Configure the shared cache
 
 A <abbr>cache</abbr> directory outside the <abbr>workspace</abbr> is called an
-[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache).
+[external cache](/doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache).
 Set it to the directory we created earlier with `dvc cache dir` and configure it
 with `dvc config cache`:
 
-```dvc
+```cli
 $ dvc cache dir /home/shared/dvc-cache
 
 $ dvc config cache.shared group
@@ -75,7 +75,8 @@ enable symlinks to avoid having copies from the external cache to the
 <abbr>workspace</abbr>.
 
 > See `dvc config cache` and
-> [File link types](/doc/user-guide/large-dataset-optimization) for more info.
+> [File link types](/doc/user-guide/data-management/large-dataset-optimization)
+> for more info.
 
 <admon type="warn">
 
@@ -87,7 +88,7 @@ editing them in-place would corrupt the cache. See `dvc unprotect`.
 If you're using Git, commit the changes to your project's config file (usually
 `.dvc/config`):
 
-```dvc
+```cli
 $ git add .dvc/config
 $ git commit -m "config external/shared DVC cache"
 ```

@@ -25,14 +25,7 @@ const Hero: React.FC = () => {
 
   return (
     <LayoutWidthContainer className={styles.container}>
-      <Link
-        className={styles.link}
-        href={hero.url}
-        onClick={logHero}
-        scrollOptions={{
-          smooth: true
-        }}
-      >
+      <Link className={styles.link} href={hero.url} onClick={logHero}>
         <ShowOnly on="desktop">
           <div className={styles.pictureContainer}>
             <img className={styles.picture} src={hero.pictureDesktop} alt="" />

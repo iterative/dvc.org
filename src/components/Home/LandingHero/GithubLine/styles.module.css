@@ -28,6 +28,7 @@
 }
 
 .starIcon {
+  display: inline-block;
   width: 11px;
   height: 11px;
   margin-top: -1px;

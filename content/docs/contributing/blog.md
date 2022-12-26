@@ -33,7 +33,9 @@ descriptionLong: |
   text (supports _basic_ [Markdown](link))
 picture: 2015-05-01/post-image.jpeg
 pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
-author: author_filename
+authors:
+  - author_filename
+  - other_author_filename
 tags:
   - Open Source
   - Machine Learning
@@ -44,21 +46,32 @@ tags:
 ```
 
 - `title` (**required**) - title of the post.
+
 - `date` (**required**) - publication date in the `YYYY-MM-DD` format. Will be
   used to sort posts and in RSS.
+
 - `description` (**required**) - short description to show in the feed.
+
 - `descriptionLong` (optional) - long description to show before the image on
   the post page. If not set, `description` will be used instead. Supports basic
   Markdown markup.
+
 - `picture` (optional) - cover image, relative to `static/uploads/images`
+
 - `pictureComment` (optional) - cover image comment. Supports basic Markdown
   markup.
-- `author` (**required**) - base name of the file in `content/authors`
-  representing this post's author. See
-  [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
-  new author.
+
+- `authors` (**required**) - a list of filenames from files in `content/authors`
+  that represent the post's authors. The first author is shown most prominently.
+  The `author` field can be used as an alternative to specify as a string what
+  would otherwise be a single-item list in `authors`.
+
+  See [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add
+  a new author.
+
 - `commentsUrl` (optional) - link to the [DVC forum](https://discuss.dvc.org)
   topic. It will contain comments for the post.
+
 - `tags` (optional) - list of tags.
 
 ## Content guidelines

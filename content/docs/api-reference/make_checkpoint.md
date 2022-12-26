@@ -81,7 +81,7 @@ Since `checkpoint` outputs in effect implement a circular dependency,
 `dvc repro` does not support running this stage. Let's execute the stage with
 `dvc exp run` instead, and interrupt the process manually moments later:
 
-```dvc
+```cli
 $ dvc exp run
 Running stage 'every100':
 > python iterate.py
@@ -107,7 +107,7 @@ In this example we killed the process (with `[Ctrl] C`) after 3 checkpoints (at
 
 `dvc exp show` will display these checkpoints as an experiment branch:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
