@@ -10,29 +10,29 @@ Iterative Studio creates [projects] by identifying machine learning datasets,
 hyperparameters, models and metrics defined in your Git repositories. These
 values can be added to a project in two ways:
 
-1. **Set up DVC in your repositories**: You can use [DVC](https://dvc.org/) and
-   Git to version your code, data, and models from your project repositories.
-   This avoids bloating your repositories with large volumes of data or huge
-   models. These large assets reside in the cloud or other remote storage
-   locations. You will simply track their version info in Git.
+1.  **Set up DVC in your repositories**: You can use [DVC](https://dvc.org/) and
+    Git to version your code, data, and models from your project repositories.
+    This avoids bloating your repositories with large volumes of data or huge
+    models. These large assets reside in the cloud or other remote storage
+    locations. You will simply track their version info in Git.
 
-   DVC also enables you to [store and share your data and model files], [create
-   data registries], [create data pipelines], connect them with
-   [CML](https://cml.dev) for [CI/CD in machine learning], and so on. Find more
-   about the features and benefits of DVC [here](/doc/start).
+    DVC also enables you to [store and share your data and model files], [create
+    data registries], [create data pipelines], connect them with
+    [CML](https://cml.dev) for [CI/CD in machine learning], and so on. Find more
+    about the features and benefits of DVC [here](/doc/start).
 
-   Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
-   repository.
+    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
+    repository.
 
-   <admon type="tip">
+    <admon type="tip">
 
-To add model metadata to your repositories, you can use Iterative Studio Model
-Registry, or the underlying [GTO] or [MLEM].
+    To add model metadata to your repositories, you can use Iterative Studio
+    Model Registry, or the underlying [GTO] or [MLEM].
 
-Iterative Studio Model Registry can also set up DVC for you when
-[importing model files from cloud locations](/doc/studio/user-guide/model-registry/add-a-model).
+    Iterative Studio Model Registry can also set up DVC for you when
+    [importing model files from cloud locations](/doc/studio/user-guide/model-registry/add-a-model).
 
-   </admon>
+    </admon>
 
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
