@@ -25,13 +25,9 @@ TODO: Replace this with a video tutorial for live metrics and plots
 ## Set up an access token
 
 Iterative Studio uses access tokens to authorize [DVCLive] to send live updates
-to the metrics and plots.
-
-To set up the access token, open your user profile page. In the , click on
-`Generate new token`.
-
-You can generate, regenerate, or delete your access token from the
-`Studio access token` section of your profile page.
+to the metrics and plots. To set up the access token, open your user profile
+page. In the `Studio access token` section, click on `Generate new token`. You
+can also regenerate or delete your access token.
 
 The option to delete the access token is also available when you try to change
 your password. That is, you can reset all your access credentials (your password
@@ -61,8 +57,8 @@ TODO: provide link to an example snippet (such as
 
 In the training CI job (which has been configured as detailed above), whenever
 you log your metrics or plots using [DVCLive], they will be automatically sent
-to Iterative Studio. Iterative Studio stores the live metrics and plots
-data in its database.
+to Iterative Studio. Iterative Studio stores the live metrics and plots data in
+its database.
 
 In the project table, the live metrics are displayed next to the Git commit
 corresponding to the experiment. Updates to the live metrics are highlighted in
