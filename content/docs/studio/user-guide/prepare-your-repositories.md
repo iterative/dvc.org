@@ -6,16 +6,15 @@
 
 # Prepare Your Repositories
 
-Iterative Studio creates [projects] by identifying machine learning
-models, datasets, metrics and hyperparameters defined in your Git repositories.
-These values can be added to a project in two ways:
+Iterative Studio creates [projects] by identifying machine learning models,
+datasets, metrics and hyperparameters defined in your Git repositories. These
+values can be added to a project in two ways:
 
 1. **Set up DVC in your repositories**: You can use [DVC](https://dvc.org/) and
-   Git to version your code, data, and models from your project repositories. 
-   This avoids bloating
-   your repositories with large volumes of data or huge models. These large
-   assets reside in the cloud or other remote storage locations. You will simply
-   track their version info in Git.
+   Git to version your code, data, and models from your project repositories.
+   This avoids bloating your repositories with large volumes of data or huge
+   models. These large assets reside in the cloud or other remote storage
+   locations. You will simply track their version info in Git.
 
    DVC also enables you to [store and share your data and model files], [create
    data registries], [create data pipelines], connect them with
