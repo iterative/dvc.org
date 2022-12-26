@@ -6,7 +6,7 @@ present organized data, hyperparameters, models, and metrics on a web UI. It
 also parses and displays live metrics and plots sent by [DVCLive]; these don't
 need to be pushed to the Git repositories.
 
-The following video illustrate how Iterative Studio works with data from your ML
+The following video illustrates how Iterative Studio works with data from your ML
 projects and experiments.
 
 <admon>
@@ -17,7 +17,7 @@ Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
-## How you save your project data
+## How to save your project data
 
 - Using [DVC] and [Git], you will push all your ML experiments to your GitHub,
   GitLab or Bitbucket repositories.

@@ -1,4 +1,4 @@
-# Generate live (real-time) metrics and plots for experiments
+# Generate live (real-time) metrics and plots for remote experiments
 
 When you
 [submit a new experiment](/doc/studio/user-guide/projects-and-experiments/run-experiments)
@@ -74,9 +74,14 @@ training code:
 
 ```
 from dvclive import Live
-live = Live()
-...
-live.log_metric("accuracy", accuracy)
+
+with Live() as live:
+  for i in range(params["epochs"]):
+    ...
+    live.log_metric("accuracy", accuracy)
+    live.next_step()
+  ...
+  live.end()
 ```
 
 Iterative Studio stores the live metrics and plots data in its database.
@@ -111,7 +116,7 @@ An experiment can have one of the following statuses:
 - **Completed** - Iterative Studio does not expect to receive any more updates
   for these experiments. Once the experiment concludes, you can delete the live
   metrics row from the project table. Iterative Studio does not automatically
-  push the final results of your experiment to Git. Your CI action should
+  commit and push the final results of your experiment to Git. Your CI action should
   persist the final results in Git.
 
 <admon>
