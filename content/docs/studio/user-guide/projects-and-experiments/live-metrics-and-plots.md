@@ -32,24 +32,38 @@ security may have been compromised.
 
 ## Configure your model training CI job
 
-You should define the `STUDIO_TOKEN` environment variable in your CI job. The
-access token must be present in any request that sends data to the Iterative
-Studio ingestion endpoint. Requests with missing or incorrect access tokens are
-rejected with an appropriate HTTP error code and error message.
+You should define the following environment variables in your CI job:
 
-A secure way to provide the access token is to create a
-[GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-containing the value of the token, and use the secret in your CI job (see
-example below).
+1.  `STUDIO_TOKEN`: The access token must be present in any request that sends
+    data to the Iterative Studio ingestion endpoint. Requests with missing or
+    incorrect access tokens are rejected with an appropriate HTTP error code and
+    error message.
 
-```
-...
-    steps:
-      - name: Train model
-        env:
-          STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
-...
-```
+    A secure way to provide the access token is to create a
+    [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+    containing the value of the token, and use the secret in your CI job (see
+    example below).
+
+    ```
+    ...
+      steps:
+        - name: Train model
+          env:
+            STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
+    ...
+    ```
+
+2.  `STUDIO_REPO_URL`: If your repository is on github.com, gitlab.com or
+    bitbucket.org, you do not need to set this environment variable. But if you
+    are using some other Git provider, then you should set the repository url in
+    this format: `{remote-type}:{namespace}/{repo-name}`. For example, for the
+    `example-get-started` repository in the `iterative` namespace,
+    `STUDIO_REPO_URL` should be set to the following value:
+
+    - If you are using a custom (self-hosted) GitLab server, set it to
+      `custom-gitlab:iterative/example-get-started`.
+    - If you are using a GitHub enterprise server, set it to
+      `github:iterative/example-get-started`.
 
 ## Send and view live metrics and plots
 
