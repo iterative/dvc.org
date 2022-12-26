@@ -116,8 +116,8 @@ An experiment can have one of the following statuses:
 - **Completed** - Iterative Studio does not expect to receive any more updates
   for these experiments. Once the experiment concludes, you can delete the live
   metrics row from the project table. Iterative Studio does not automatically
-  commit and push the final results of your experiment to Git. Your CI action should
-  persist the final results in Git.
+  commit and push the final results of your experiment to Git. Your CI action
+  should persist the final results in Git.
 
 <admon>
 
