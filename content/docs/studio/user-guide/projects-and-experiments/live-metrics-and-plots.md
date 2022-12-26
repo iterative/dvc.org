@@ -18,10 +18,6 @@ This requires a 3-step process:
 2. [Configure your model training CI job](#configure-your-model-training-ci-job)
 3. [Send and view the updates](#send-and-view-live-metrics-and-plots)
 
-https://www.youtube.com/watch?v=hKf4twg832g
-
-TODO: Replace this with a video tutorial for live metrics and plots
-
 ## Set up an access token
 
 Iterative Studio uses access tokens to authorize [DVCLive] to send live updates
@@ -36,22 +32,24 @@ security may have been compromised.
 
 ## Configure your model training CI job
 
-You should define the following environment variables in your CI job:
+You should define the `STUDIO_TOKEN` environment variable in your CI job. The
+access token must be present in any request that sends data to the Iterative
+Studio ingestion endpoint. Requests with missing or incorrect access tokens are
+rejected with an appropriate HTTP error code and error message.
 
-- `STUDIO_REPO_URL`: URL for the Git repository connected to the project. E.g.,
-  `github:iterative/example-get-started`
-- `STUDIO_TOKEN`: Your access token. The access token must be present in any
-  request that sends data to the Iterative Studio ingestion endpoint. Requests
-  with missing or incorrect access tokens are rejected with an appropriate HTTP
-  error code and error message.
+A secure way to provide the access token is to create a
+[GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+containing the value of the token, and use the secret in your CI job (see
+example below).
 
-One way to provide the above values to your CI job is to set them as GitHub
-secrets.
-
-Here is an example GitHub action.
-
-TODO: provide link to an example snippet (such as
-[this](https://github.com/iterative/test-dvclive-studio/blob/086a51d76c7983f24c091e1b007820916aa75e7d/.github/workflows/test_live_metrics.yaml#L17-L19))
+```
+...
+    steps:
+      - name: Train model
+        env:
+          STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
+...
+```
 
 ## Send and view live metrics and plots
 
@@ -94,9 +92,9 @@ An experiment can have one of the following statuses:
 
 <admon>
 
-Live metrics and plots sent by DVCLive are displayed in all the projects that
-are connected to the Git repository whose URL you have specified in the
-`STUDIO_REPO_URL` environment variable.
+If there are multiple projects connected to a single Git repository, then live
+metrics and plots for this repository are displayed in all its connected
+projects.
 
 </admon>
 
