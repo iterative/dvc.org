@@ -1,5 +1,14 @@
 # Cloud Versioning
 
+<admon type="warn">
+
+Cloud versioning features are currently under active development and should be
+considered experimental. These features are subject to frequent change, and the
+documentation may not always reflect changes available in the latest DVC
+release.
+
+</admon>
+
 When cloud versioning is enabled, DVC will store files in the remote according
 to their original directory location and filenames. Different versions of a file
 will then be stored as separate versions of the corresponding object in cloud
