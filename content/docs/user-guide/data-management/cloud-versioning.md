@@ -1,5 +1,26 @@
 # Cloud Versioning
 
+When cloud versioning is enabled, DVC will store files in the remote according
+to their original directory location and filenames. Different versions of a file
+will then be stored as separate versions of the corresponding object in cloud
+storage. This is useful for cases where users prefer to retain their original
+filenames and directory hierarchy in remote storage (instead of using DVC's
+usual
+[content-addressible storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+format).
+
+<admon type="warn">
+
+Note that not all DVC functionality is supported when using cloud versioned
+remotes, and using cloud versioning comes with the tradeoff of losing certain
+benefits of content-addressible storage.
+
+</admon>
+
+<details>
+
+### Expand for more details on the differences between cloud versioned and content-addressible storage
+
 `dvc remote` storage normally uses
 [content-addressible storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 to organize versioned data. Different versions of files are stored in the remote
@@ -10,16 +31,10 @@ file level. However, this comes with the drawback of losing human-readable
 filenames without the use of the DVC CLI (`dvc get --show-url`) or API
 (`dvc.api.get_url()`).
 
-DVC supports the use of cloud object versioning for cases where users prefer to
-retain their original filenames and directory hierarchy in remote storage, in
-exchange for losing the de-duplication and performance benefits of
-content-addressible storage. When cloud versioning is enabled, DVC will store
-files in the remote according to their original directory location and
-filenames. Different versions of a file will then be stored as separate versions
-of the corresponding object in cloud storage.
+When using cloud versioning, DVC does not provide de-duplication, and certain
+remote storage performance optimizations will be unavailable.
 
-⚠️ Note that not all DVC functionality is supported when using cloud versioned
-remotes.
+</details>
 
 ## Supported storage providers
 
@@ -47,28 +62,37 @@ When the `version_aware` option is enabled on a `dvc remote`:
 - `dvc fetch` and `dvc pull` will download the corresponding version of an
   object from cloud storage.
 
-⚠️ Note that when `version_aware` is in use, DVC does not set DELETE flags on
-objects in cloud storage, and does not make any attempt to ensure that the
-latest version of an object in cloud storage matches the latest version of a
-file in your DVC repository.
+<admon type="warn">
+
+Note that when `version_aware` is in use, DVC does not delete current versions
+or restore noncurrent versions of objects in cloud storage. So the current
+version of an object in cloud storage version of a file in your DVC repository.
+
+</admon>
 
 ## Worktree remotes
 
-When the `worktree` option is enabled on a `dvc remote`:
+`worktree` remotes behave similarly to `version_aware` remotes, but with one key
+difference. For `worktree` remotes, DVC will also attempt to ensure that the
+current version of objects in cloud storage match the latest versions of files
+in your DVC repository.
 
-- `dvc push` will utilize cloud versioning and ensure that the "latest" version
-  of the remote storage is a mirror of your current local DVC repository
-  workspace. Data in cloud storage will retain its original directory structure
-  and filenames, and each version of a file tracked by DVC will be stored as a
-  new version of the corresponding object in cloud storage. Additionally, DVC
-  will set the DELETE flag on any objects which were present in cloud storage
-  but that do not exist in your current DVC repository workspace.
-- `dvc fetch` and `dvc pull` will download the corresponding version of an
-  object from cloud storage.
-- `dvc update` can be used to update a DVC-tracked file or directory in your
-  current workspace to match the latest version of the corresponding object(s)
-  from cloud storage.
+So in addition to the command behaviors described for `version_aware` remotes,
+when the `worktree` option is enabled on a `dvc remote`:
 
-⚠️ Note that setting DELETE flags does not delete any object versions (and does
-not delete any data) from cloud storage, it only means that the "latest" version
-of a given object will show that the object does not exist.
+- `dvc push` will also ensure that the current version of objects in remote
+  storage match the latest versions of files in your DVC repository repository.
+  Additionally, DVC will delete the current version of any objects which were
+  present in cloud storage but that do not exist in your current DVC repository
+  workspace.
+- `dvc update` can be used to update a DVC-tracked file or directory in your DVC
+  repository to match the current version of the corresponding object(s) from
+  cloud storage.
+
+<admon type="info">
+
+Note that deleting current versions in cloud storage does not delete any objects
+(and does not delete) any data). It only means that the current version of a
+given object will show that the object does not exist.
+
+</admon>

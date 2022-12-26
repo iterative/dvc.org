@@ -44,14 +44,17 @@ $ dvc update --rev master
 
 When using a
 [worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
-remote, `dvc update` will update the specified target to match the latest
+remote, `dvc update` will update the specified target to match the current
 version of the corresponding file or directory from the remote storage. If the
-"latest" version of the specified target is a deleted file or an empty
-directory, `dvc update` will fail (in order to avoid potential accidental local
-data loss).
+current version of the specified target is a deleted file or an empty directory,
+`dvc update` will fail.
 
-⚠️ Note that the `--rev`, `--no-download` and `--to-remote` flags are not
+<admon type="warn">
+
+Note that the `--rev`, `--no-download` and `--to-remote` flags are not
 compatible when updating from a worktree remote.
+
+</admon>
 
 ## Options
 
@@ -66,7 +69,7 @@ compatible when updating from a worktree remote.
   For stages created with `dvc import-url` and a
   [cloud-versioned URL](/doc/command-reference/import-url#--version-aware),
   `--rev` can be used to specify a object version ID to use. By default, the
-  import will be updated to the latest version from cloud storage.
+  import will be updated to the current version from cloud storage.
 
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import `.dvc` files to inspect. If there

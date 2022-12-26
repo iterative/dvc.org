@@ -348,13 +348,20 @@ For more on the supported env vars, please see the
 
 - `version_aware` - Use
   [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
-  cloud versioning features for this S3 remote. This requires that
+  cloud versioning features for this S3 remote. Files stored in the remote will
+  retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote. This requires that
   [S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
   be enabled on the specified S3 bucket.
-
 - `worktree` - Use
   [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
-  cloud versioning features for this S3 remote. This requires that
+  cloud versioning features for this S3 remote. Files stored in the remote will
+  retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in cloud storage. DVC will also attempt to ensure that the current
+  version of objects in the remote match the latest version of files in the DVC
+  repository. This requires that
   [S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
   be enabled on the specified S3 bucket. When both `version_aware` and
   `worktree` are set, `worktree` takes precedence.
@@ -563,13 +570,21 @@ can propagate from an Azure configuration file (typically managed with
 
 - `version_aware` - Use
   [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
-  cloud versioning features for this Azure remote. This requires that
+  cloud versioning features for this Azure remote. Files stored in the remote
+  will retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote. This requires that
   [Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
   be enabled on the specified Azure storage account and container.
 
 - `worktree` - Use
   [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
-  cloud versioning features for this Azure remote. This requires that
+  cloud versioning features for this Azure remote. Files stored in the remote
+  will retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in cloud storage. DVC will also attempt to ensure that the current
+  version of objects in the remote match the latest version of files in the DVC
+  repository. This requires that
   [Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
   be enabled on the specified Azure storage account and container. When both
   `version_aware` and `worktree` are set, `worktree` takes precedence.
@@ -750,15 +765,21 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 
 - `version_aware` - Use
   [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
-  cloud versioning features for this Google Cloud Storage remote. This requires
-  that
+  cloud versioning features for this Google Cloud Storage remote. Files stored
+  in the remote will retain their original filenames and directory hierarchy,
+  and different versions of files will be stored as separate versions of the
+  corresponding object in the remote. This requires that
   [Object versioning](https://cloud.google.com/storage/docs/object-versioning)
   be enabled on the specified bucket.
 
 - `worktree` - Use
   [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
-  cloud versioning features for this Google Cloud Storage remote. This requires
-  that
+  cloud versioning features for this Google Cloud Storage remote. Files stored
+  in the remote will retain their original filenames and directory hierarchy,
+  and different versions of files will be stored as separate versions of the
+  corresponding object in cloud storage. DVC will also attempt to ensure that
+  the current version of objects in the remote match the latest version of files
+  in the DVC repository. This requires that
   [Object versioning](https://cloud.google.com/storage/docs/object-versioning)
   be enabled on the specified bucket. When both `version_aware` and `worktree`
   are set, `worktree` takes precedence.
