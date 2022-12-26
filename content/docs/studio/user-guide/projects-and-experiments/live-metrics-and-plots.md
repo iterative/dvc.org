@@ -55,27 +55,37 @@ example below).
 
 In the training CI job (which has been configured as detailed above), whenever
 you log your metrics or plots using [DVCLive], they will be automatically sent
-to Iterative Studio. Iterative Studio stores the live metrics and plots data in
-its database.
+to Iterative Studio. Here is an example of how you can use [DVCLive] in your
+training code:
+
+```
+from dvclive import Live
+live = Live()
+...
+live.log_metric("accuracy", accuracy)
+```
+
+Iterative Studio stores the live metrics and plots data in its database.
 
 In the project table, the live metrics are displayed next to the Git commit
 corresponding to the experiment. Updates to the live metrics are highlighted in
 orange.
 
-![](https://static.iterative.ai/img/studio/live_metrics_row.png)
+![](https://static.iterative.ai/img/studio/live_metrics.gif)
 
 Updates to the live metrics are highlighted in orange in the
 [compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
 as well.
-
-![](https://static.iterative.ai/img/studio/live_metrics_compare.png)
 
 The number of experiments with new updates to the live metrics values are
 displayed in the `Live` icon, which can also be used to filter and show only
 running experiments in the table.
 
 Live plots are displayed in the
-[plots pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#how-to-generate-plots).
+[plots pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#how-to-generate-plots);
+you can see the plots getting populated as Studio receives new updates.
+
+![](https://static.iterative.ai/img/studio/live_plots.gif)
 
 An experiment can have one of the following statuses:
 
