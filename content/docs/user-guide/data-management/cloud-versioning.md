@@ -105,3 +105,9 @@ Note that deleting current versions in cloud storage does not delete any objects
 given object will show that the object does not exist.
 
 </admon>
+
+## Importing versioned data
+
+DVC supports importing cloud versioned data from supported storage providers.
+Refer to the documentation for `dvc import-url` and `dvc update` for more
+information.
