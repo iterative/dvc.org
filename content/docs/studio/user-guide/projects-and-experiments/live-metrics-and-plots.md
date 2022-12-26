@@ -61,9 +61,8 @@ TODO: provide link to an example snippet (such as
 
 In the training CI job (which has been configured as detailed above), whenever
 you log your metrics or plots using [DVCLive], they will be automatically sent
-to Iterative Studio.
-
-Iterative Studio stores the live metrics and plots data in its database.
+to Iterative Studio. Iterative Studio stores the live metrics and plots
+data in its database.
 
 In the project table, the live metrics are displayed next to the Git commit
 corresponding to the experiment. Updates to the live metrics are highlighted in

@@ -92,8 +92,8 @@ can [save the results in Git](#metrics-plots-and-reports-are-saved-in-git).
 
 Iterative Studio will create a Git commit with the changes you submitted. This
 commit appears in the project's experiment table. If you had specified a new
-branch to commit the changes to, then a new pull request will also have been
-created from the new branch to the base branch.
+branch to commit the changes to, then a new pull request will also be created
+from the new branch to the base branch.
 
 ### Model training is invoked
 
@@ -109,11 +109,13 @@ refer to [CML].
 
 ### Live metrics and plots are tracked
 
-In your model training CI action, you can use [DVCLive] to send live updates to
-metrics and plots back to Iterative Studio, without writing them to your Git
+In your model training CI action, you can use [DVCLive] to [send live updates to
+metrics and plots] back to Iterative Studio, without writing them to your Git
 repository. The live metrics are displayed alongside the corresponding
-experiment commits. For more details, refer to the
-[next section](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots).
+experiment commits.
+
+[send live updates to metrics and plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 
 ### Metrics, plots and reports are saved in Git
 

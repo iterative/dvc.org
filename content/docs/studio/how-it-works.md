@@ -1,8 +1,8 @@
 # How Iterative Studio Works
 
 [Iterative Studio](https://studio.iterative.ai/) works very closely with your
-Git ecosystem. It parses the data, metrics, hyperparameters and model metadata
-that you add to your ML project Git repositories, and renders them on a web UI.
+Git ecosystem. It parses the metadata found in your ML project repositories to
+present organized data, hyperparameters, models, and metrics on a web UI.
 It also parses and displays live metrics and plots sent by [DVCLive]; these
 don't need to be pushed to the Git repositories.
 
@@ -17,7 +17,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 ## How you save your project data
 
 - Using [DVC] and [Git], you will push all your ML experiments to your GitHub,
-  GitLab or Bitbucket repositories as Git commits.
+  GitLab or Bitbucket repositories.
 - Using Iterative Studio, or using the command line interface (CLI) of [GTO],
   and possibly [MLEM], you will push all your ML model details to the Git
   repositories as Git commits and Git tags.
