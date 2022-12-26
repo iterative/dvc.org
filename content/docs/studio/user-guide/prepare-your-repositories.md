@@ -26,20 +26,21 @@ values can be added to a project in two ways:
 
    <admon type="tip">
 
-To add model metadata to your repositories, you can use Iterative Studio Model Registry, or the underlying [GTO] or [MLEM].
+To add model metadata to your repositories, you can use Iterative Studio Model
+Registry, or the underlying [GTO] or [MLEM].
 
-   Iterative Studio Model Registry can also set up DVC for you when
-   [importing model files from cloud locations](/doc/studio/user-guide/model-registry/add-a-model).
+Iterative Studio Model Registry can also set up DVC for you when
+[importing model files from cloud locations](/doc/studio/user-guide/model-registry/add-a-model).
 
    </admon>
 
-  [gto]: https://mlem.ai/doc/gto
-  [mlem]: https://mlem.ai/
-   [store and share your data and model files]:
-     /doc/start/data-management/data-versioning#storing-and-sharing
-   [create data registries]: /doc/use-cases/data-registry
-   [create data pipelines]: /doc/start/data-management/data-pipelines
-   [ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
+[gto]: https://mlem.ai/doc/gto
+[mlem]: https://mlem.ai/
+[store and share your data and model files]:
+  /doc/start/data-management/data-versioning#storing-and-sharing
+[create data registries]: /doc/use-cases/data-registry
+[create data pipelines]: /doc/start/data-management/data-pipelines
+[ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
 
 2. **Specify custom files with your metrics and parameters**: If you are working
    with a non-DVC repository, you can add the project provided that the metrics
