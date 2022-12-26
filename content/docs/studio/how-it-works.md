@@ -23,8 +23,10 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
   GitLab or Bitbucket repositories.
 - Using Iterative Studio, or using [GTO] and possibly [MLEM], you will push
   information about your ML models as Git commits and tags.
-- Using [DVCLive], you will push live metrics and plots from your Git-committed
-  experiments to Iterative Studio.
+- Using [DVCLive], you will push live metrics and plots from your experiments to
+  Iterative Studio. Note that at the moment, live metrics are supported only for
+  experiments that you [submit from the Iterative Studio
+  UI][run new experiments].
 
 ## How Iterative Studio extracts your project data
 
@@ -52,9 +54,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 
 ## How Iterative Studio runs experiments and model actions
 
-- When you
-  [run new experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments)
-  or
+- When you [run new experiments] or
   [add models to your model registry](/doc/studio/user-guide/model-registry/add-a-model)
   in Iterative Studio, it creates Git commits and pull requests with the
   changes.
@@ -76,4 +76,6 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 [git]: https://git-scm.com/
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[run new experiments]:
+  (/doc/studio/user-guide/projects-and-experiments/run-experiments)
 [dvclive]: /doc/dvclive
