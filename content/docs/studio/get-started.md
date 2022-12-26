@@ -100,10 +100,13 @@ You should now see that a project has been added in your dashboard.
 
 ## Explore and share your projects
 
-1. After creating a project, you can use it to [explore the ML experiments] as
-   well as [submit new experiments] from Iterative Studio.
+1. You can use the project to [explore ML experiments].
 
-2. You can also make the project public by [sharing it on the web].
+2. You can [create a team] and invite collaborators. Each team will have its own
+   projects dashboard. To create teams with more than 2 team members, [sign up
+   for the **Basic**, **Teams** or **Enterprise** plan].
+
+3. You can also [make your projects public].
 
 ## Run experiments and get live updates
 
@@ -136,25 +139,19 @@ You should now see that a project has been added in your dashboard.
    [assign stages to them](/doc/studio/user-guide/model-registry/assign-stage)
    (e.g., development, staging, production).
 
-## Create and manage teams
-
-1. You can [create a team] and invite collaborators. Each team will have its own
-   projects dashboard. To create teams with more than 2 team members, [sign up
-   for the **Basic**, **Teams** or **Enterprise** plan].
-
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
 [create multiple projects from a single git repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
-[explore the ml experiments]:
+[explore ml experiments]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
-[submit new experiments]:
-  /doc/studio/user-guide/projects-and-experiments/run-experiments
-[sharing it on the web]:
-  /doc/studio/user-guide/projects-and-experiments/share-a-project
 [create a team]: /doc/studio/user-guide/teams
 [sign up for the **basic**, **teams** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
+[make your projects public]:
+  /doc/studio/user-guide/projects-and-experiments/share-a-project
+[submit new experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
