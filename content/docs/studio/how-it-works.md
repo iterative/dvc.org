@@ -6,8 +6,8 @@ present organized data, hyperparameters, models, and metrics on a web UI. It
 also parses and displays live metrics and plots sent by [DVCLive]; these don't
 need to be pushed to the Git repositories.
 
-The following video illustrates how Iterative Studio works with data from your ML
-projects and experiments.
+The following video illustrates how Iterative Studio works with data from your
+ML projects and experiments.
 
 <admon>
 
@@ -61,7 +61,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 - You can set up your CI/CD actions (e.g. GitHub Actions) to run model training
   upon the creation of Git commits, tags or pull requests. You can use [CML] in
   your CI/CD actions for continuous machine learning. And you can use [DVCLive]
-  to [send live metrics of model training to Iterative
+  to [send live updates for training metrics and plots to Iterative
   Studio][live-metrics-and-plots].
 - When you
   [register new versions](/doc/studio/user-guide/model-registry/register-version)
