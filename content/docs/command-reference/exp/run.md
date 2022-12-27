@@ -90,8 +90,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   [example](#example-run-a-grid-search)).
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `exp-f80g4` (based on the
-  experiment's hash).
+  default one will be generated otherwise, such as `puffy-daks`.
+
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
   Useful to continue working (e.g. in another terminal) while a long experiment
@@ -194,7 +199,7 @@ let's limit the data to 20 MB and reproduce the pipeline with `dvc exp run`:
 $ truncate --size=20M data/data.xml
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-44136
+Reproduced experiment(s): puffy-daks
 Experiment results have been applied to your workspace.
 
 $ dvc metrics diff
@@ -204,7 +209,7 @@ scores.json  roc_auc   0.9608   0.94003    -0.02077
 ```
 
 The `dvc metrics diff` command shows the difference in performance for the
-experiment we just ran (`exp-44136`).
+experiment we just ran (`puffy-daks`).
 
 ## Example: Modify parameters on-the-fly
 

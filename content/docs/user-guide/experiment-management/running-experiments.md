@@ -34,7 +34,7 @@ You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
 ```cli
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-44136
+Reproduced experiment(s): matte-vies
 ```
 
 > ⚠️ Note that any changed dependencies are committed to the DVC cache when

@@ -80,7 +80,7 @@ command:
 ```cli
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-b28f0
+Reproduced experiment(s): angry-upas
 Experiment results have been applied to your workspace.
 ...
 ```
@@ -128,18 +128,18 @@ $ dvc exp show
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+  neutral:**Experiment**                  neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.03247   0.9887   10             16                 6875529
-  baseline-experiment       Jan 14, 2022   0.03332   0.9888   10             16                 6875529
-  └── 999710f [exp-ff24d]   10:54 PM       0.03247   0.9887   10             16                 6875529
+  workspace                  -               0.03247   0.9887   10             16                 6875529
+  baseline-experiment        Jan 14, 2022    0.03332   0.9888   10             16                 6875529
+  └── 999710f [angry-upas]   10:54 PM        0.03247   0.9887   10             16                 6875529
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
 that's available in the <abbr>workspace</abbr>. The table also shows each
 experiment in a separate row, along with the Git commit IDs they are attached
-to. We can see that the experiment we ran has a name `exp-ff24d` and was run
+to. We can see that the experiment we ran has a name `angry-upas` and was run
 from the commit ID `999710f`.
 
 Now let's do some more experimentation.
@@ -151,7 +151,7 @@ convolutional units in `train.py`.
 ```cli
 $ dvc exp run --set-param model.conv_units=24
 ...
-Reproduced experiment(s): exp-7b56f
+Reproduced experiment(s): lurid-lair
 Experiment results have been applied to your workspace.
 ...
 ```
@@ -168,13 +168,13 @@ also use `-S` (`--set-param`) to set a value for the parameter.
 
 ```cli
 $ dvc exp run --queue -S model.conv_units=32
-Queued experiment '3cac8c6' for future execution.
+Queued experiment 'conic-ease' for future execution.
 $ dvc exp run --queue -S model.conv_units=64
-Queued experiment '23660b6' for future execution.
+Queued experiment 'major-mela' for future execution.
 $ dvc exp run --queue -S model.conv_units=128
-Queued experiment '6591a57' for future execution.
+Queued experiment 'frank-farm' for future execution.
 $ dvc exp run --queue -S model.conv_units=256
-Queued experiment '9109ea9' for future execution.
+Queued experiment 'paced-rugs' for future execution.
 ```
 
 Next, run all (`--run-all`) queued experiments in parallel. You can specify the
@@ -197,16 +197,14 @@ $ dvc exp show
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+  neutral:**Experiment**                 neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.031865   0.9897   10             24                 6875529
-  baseline-experiment       Jan 14, 2022    0.03332   0.9888   10             16                 6875529
-  ├── 43a3b4f [exp-7f82e]   Jan 27, 2022   0.042424   0.9874   10             256                6875529
-  ├── 6d15fac [exp-75369]   Jan 27, 2022   0.037164    0.989   10             128                6875529
-  ├── 47896c1 [exp-76693]   Jan 27, 2022    0.03845   0.9876   10             64                 6875529
-  ├── da84ac7 [exp-4a081]   Jan 27, 2022   0.035497    0.988   10             32                 6875529
-  ├── 5846c68 [exp-953fa]   Jan 27, 2022   0.031865   0.9897   10             24                 6875529
-  └── 999710f [exp-ff24d]   Jan 27, 2022    0.03247   0.9887   10             16                 6875529
+  workspace                  -              0.031865   0.9897   10             24                 6875529
+  baseline-experiment        Jan 14, 2022    0.03332   0.9888   10             16                 6875529
+  ├── 43a3b4f [paced-rugs]   Jan 27, 2022   0.042424   0.9874   10             256                6875529
+  ├── 6d15fac [frank-farm]   Jan 27, 2022   0.037164    0.989   10             128                6875529
+  ├── 47896c1 [major-mela]   Jan 27, 2022    0.03845   0.9876   10             64                 6875529
+  └── da84ac7 [conic-ease]   Jan 27, 2022   0.035497    0.988   10             32
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
@@ -222,16 +220,14 @@ $ dvc exp show --drop 'Created|train|loss'
 
 ```dvctable
  ───────────────────────────────────────────────────────────────
-  neutral:**Experiment**                   metric:**acc**   param:**model.conv_units**    dep:**data**
+  neutral:**Experiment**                    metric:**acc**   param:**model.conv_units**    dep:**data**
  ───────────────────────────────────────────────────────────────
-  workspace                 0.9897   24                 6875529
-  baseline-experiment       0.9888   16                 6875529
-  ├── 43a3b4f [exp-7f82e]   0.9874   256                6875529
-  ├── 6d15fac [exp-75369]    0.989   128                6875529
-  ├── 47896c1 [exp-76693]   0.9876   64                 6875529
-  ├── da84ac7 [exp-4a081]    0.988   32                 6875529
-  ├── 5846c68 [exp-953fa]   0.9897   24                 6875529
-  └── 999710f [exp-ff24d]   0.9887   16                 6875529
+  workspace                  0.9897   24                 6875529
+  baseline-experiment        0.9888   16                 6875529
+  ├── 43a3b4f [paced-rugs]   0.9874   256                6875529
+  ├── 6d15fac [frank-farm]   0.989    128                6875529
+  ├── 47896c1 [major-mela]   0.9876   64                 6875529
+  └── da84ac7 [conic-ease]   0.988    32                 6875529
  ───────────────────────────────────────────────────────────────
 ```
 
@@ -263,8 +259,8 @@ After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
 ```cli
-$ dvc exp branch exp-17dd9 "cnn-256"
-Git branch 'cnn-256' has been created from experiment 'exp-17dd9'.
+$ dvc exp branch paced-rugs "cnn-256"
+Git branch 'cnn-256' has been created from experiment 'paced-rugs'.
 To switch to the new branch run:
 
         git checkout cnn-256

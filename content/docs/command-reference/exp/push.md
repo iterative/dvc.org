@@ -93,16 +93,16 @@ Let's say we have run 3 experiments in our project:
 ```cli
 $ dvc exp list --all-commits
 11-bigrams-experiment:
-        exp-e6c97
-        exp-1dad0
-        exp-1df77
+        conic-ease
+        lucid-lair
+        major-mela
 ```
 
 We would now like to share one of them with others via the Git remote:
 
 ```cli
-$ dvc exp push origin exp-e6c97
-Pushed experiment 'exp-e6c97' to Git remote 'origin'.
+$ dvc exp push origin conic-ease
+Pushed experiment 'conic-ease' to Git remote 'origin'.
 ```
 
 We can now see that the experiment exists in the remote repo:
@@ -110,5 +110,5 @@ We can now see that the experiment exists in the remote repo:
 ```cli
 $ dvc exp list --all origin
 master:
-        exp-e6c97
+        conic-ease
 ```
