@@ -35,6 +35,12 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
   default one will be generated otherwise, such as `urban-sign`.
 
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
+
 - `-I <path>`, `--include-untracked <path>` - specify untracked file(s) to be
   included in the saved experiment. Multiple files can be specified.
 

@@ -90,8 +90,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   [example](#example-run-a-grid-search)).
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `puffy-daks`. The name of the
-  experiment is exposed as an environment variable called `DVC_EXP_NAME`.
+  default one will be generated otherwise, such as `puffy-daks`.
+
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
   Useful to continue working (e.g. in another terminal) while a long experiment
