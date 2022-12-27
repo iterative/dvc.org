@@ -16,22 +16,22 @@ $ dvc exp show
 
 ```dvctable
  ─────────────────────────────────────────────────────────
-  neutral:**Experiment**             neutral:**Created**            metric:**auc**   param:**my_param**
+  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**my_param**
  ─────────────────────────────────────────────────────────
-  workspace              -              0.61314   3
-  new-experiments        Oct 19, 2020   0.61314   3
-  ├── exp-e6c97          Oct 20, 2020   0.69830   2
-  └── exp-1df77          Oct 22, 2020   0.51676   1
+  workspace               -              0.61314   3
+  new-experiments         Oct 19, 2020   0.61314   3
+  ├── ochre-dook          Oct 20, 2020   0.69830   2
+  └── matte-vies          Oct 22, 2020   0.51676   1
  ─────────────────────────────────────────────────────────
 ```
 
-Suppose you want to continue to work on `exp-e6c97` in a separate branch. You
+Suppose you want to continue to work on `ochre-dook` in a separate branch. You
 can create a new Git branch by specifying the experiment and giving a new name
 for it:
 
 ```cli
-$ dvc exp branch exp-e6c97 my-branch
-Git branch 'my-branch' has been created from experiment 'exp-e6c97'.
+$ dvc exp branch ochre-dook my-branch
+Git branch 'my-branch' has been created from experiment 'ochre-dook'.
 To switch to the new branch run:
         git checkout my-branch
 ```
@@ -60,12 +60,12 @@ $ dvc exp show
 
 ```dvctable
  ───────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**my_param**
+  neutral:**Experiment**               neutral:**Created**            metric:**auc**   param:**my_param**
  ───────────────────────────────────────────────────────────
-  workspace               -              0.61314   3
-  new-experiments         Oct 19, 2020   0.61314   3
-  ├── exp-e6c97           Oct 20, 2020   0.69830   2
-  └── exp-1df77           Oct 22, 2020   0.51676   1
+  workspace                -              0.61314   3
+  new-experiments          Oct 19, 2020   0.61314   3
+  ├── ochre-dook           Oct 20, 2020   0.69830   2
+  └── matte-vies           Oct 22, 2020   0.51676   1
  ───────────────────────────────────────────────────────────
 ```
 
@@ -74,8 +74,8 @@ want to bring another experiment to the workspace, you can reference it using
 it's name, e.g.:
 
 ```cli
-$ dvc exp apply exp-e6c97
-Changes for experiment 'exp-e6c97' have been applied...
+$ dvc exp apply ochre-dook
+Changes for experiment 'ochre-dook' have been applied...
 ```
 
 ⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
@@ -85,7 +85,7 @@ used.
 > same as when the experiment was run.
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
-workspace contains the results of `exp-e6c97`.
+workspace contains the results of `ochre-dook`.
 
 You can use standard Git commands (e.g. `git add/commit/push`) to version this
 experiment directly in the <abbr>repository</abbr>. DVC-tracked data and

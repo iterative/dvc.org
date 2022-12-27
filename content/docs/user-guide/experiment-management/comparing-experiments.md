@@ -25,7 +25,7 @@ refs/tags/baseline-experiment:
         cnn-64
         cnn-128
 main:
-        exp-93150
+        unwet-jinn
 ```
 
 ## List experiments saved remotely
@@ -407,13 +407,13 @@ also customize the amount of significant digits shown for numeric values with
 the `--precision` option (5 by default).
 
 ```cli
-$ dvc exp diff exp-25a26 cnn-64 --no-path --precision 2
-Metric    exp-25a26  cnn-64  Change
-acc       0.92       0.92    0.0002
-loss      0.23       0.23    -0.0048
+$ dvc exp diff puffy-daks cnn-64 --no-path --precision 2
+Metric    puffy-daks  cnn-64  Change
+acc       0.92        0.92    0.0002
+loss      0.23        0.23    -0.0048
 
-Param             exp-25a26  Value  Change
-model.conv_units  256        64     -192
+Param             puffy-daks  Value  Change
+model.conv_units  256         64     -192
 ```
 
 ### Get the comparison in JSON
@@ -422,7 +422,7 @@ Parsing the output of `dvc exp diff` may not be easy when you want to use it in
 other commands. `dvc exp diff` can output in JSON with `--json` flag.
 
 ```cli
-$ dvc exp diff exp-25a26 cnn-64 --json
+$ dvc exp diff puffy-daks cnn-64 --json
 ```
 
 ```json
@@ -462,7 +462,7 @@ As an example, we can get only a specific metric with
 [jq](https://stedolan.github.io/jq/):
 
 ```cli
-$ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
+$ dvc exp diff puffy-daks cnn-64 --json | jq '.metrics."metrics.json".acc'
 {
   "old": 0.9150999784469604,
   "new": 0.9153000116348267,
@@ -478,21 +478,21 @@ table to embed in the reports directly.
 [gfm]: https://github.github.com/gfm/#tables-extension-
 
 ```cli
-$ dvc exp diff exp-25a26 cnn-64 --md
-| Path         | Metric | exp-25a26 | cnn-64  | Change     |
-| ------------ | ------ | --------- | ------- | ---------- |
-| metrics.json | acc    | 0.9151    | 0.9153  | 0.00020003 |
-| metrics.json | loss   | 0.23867   | 0.23385 | -0.0048174 |
+$ dvc exp diff puffy-daks cnn-64 --md
+| Path         | Metric | puffy-daks | cnn-64  | Change     |
+| ------------ | ------ | ---------- | ------- | ---------- |
+| metrics.json | acc    | 0.9151     | 0.9153  | 0.00020003 |
+| metrics.json | loss   | 0.23867    | 0.23385 | -0.0048174 |
 
 
-| Path        | Param            | exp-25a26 | cnn-64 | Change |
-| ----------- | ---------------- | --------- | ------ | ------ |
-| params.yaml | model.conv_units | 256       | 64     | -192   |
+| Path        | Param            | puffy-daks | cnn-64 | Change |
+| ----------- | ---------------- | ---------- | ------ | ------ |
+| params.yaml | model.conv_units | 256        | 64     | -192   |
 ```
 
 You can use this output to automatically update the documents with a command
 like:
 
 ```cli
-$ dvc exp diff exp-25a26 cnn-64 --md | xargs --replace=DIFFTABLE -- sed -i -e 's/EXPERIMENT_RESULT/DIFFTABLE/' my-template.md
+$ dvc exp diff puffy-daks cnn-64 --md | xargs --replace=DIFFTABLE -- sed -i -e 's/EXPERIMENT_RESULT/DIFFTABLE/' my-template.md
 ```
