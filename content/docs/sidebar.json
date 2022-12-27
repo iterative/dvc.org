@@ -594,6 +594,7 @@
               "explore-ml-experiments",
               "visualize-and-compare",
               "run-experiments",
+              "live-metrics-and-plots",
               "share-a-project"
             ]
           },
