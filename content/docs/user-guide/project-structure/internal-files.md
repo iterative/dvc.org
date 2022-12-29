@@ -15,26 +15,24 @@ operation.
   (credentials, private locations, etc). The local config file can be edited by
   hand or with the command `dvc config --local`.
 
-- `.dvc/cache`: Default location of the <abbr>cache directory</abbr>. The cache
-  stores the project data in a special content-addressable
-  [structure](#structure-of-the-cache-directory). The files and directories
-  visible in the <abbr>workspace</abbr> will typically be [links] to cached
-  data. See `dvc config cache` for related configuration options, including
-  changing this default location.
+- `.dvc/cache`: Default location of the <abbr>cache</abbr> directory. The cache
+  stores the project data in a special
+  [structure](#structure-of-the-cache-directory). The data files and directories
+  in the <abbr>workspace</abbr> will only contain links to the data files in the
+  cache (refer to
+  [Large Dataset Optimization](/doc/user-guide/data-management/large-dataset-optimization).
+  See `dvc config cache` for related configuration options, including changing
+  its location.
 
-  <admon type="info">
-
-  DVC includes the cache directory in `.gitignore` during [initialization]. No
-  data tracked by DVC should ever be pushed to the Git repository, only the
-  <abbr>DVC files</abbr> that are needed to download or reproduce that data.
-
-  [initialization]: /doc/command-reference/init
-
-  </admon>
+  > Note that DVC includes the cache directory in `.gitignore` during
+  > initialization. No data tracked by DVC should ever be pushed to the Git
+  > repository, only the <abbr>DVC files</abbr> that are needed to download or
+  > reproduce that data.
 
 - `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
-- `.dvc/plots`: Directory for [plot templates]
+- `.dvc/plots`: Directory for
+  [plot templates](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
@@ -71,34 +69,22 @@ operation.
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
   temporary or [queued experiments].
 
-[links]: /doc/user-guide/large-dataset-optimization
-[plot templates]:
-  /doc/user-guide/visualizing-plots#plot-templates-data-series-only
 [queued experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Structure of the cache directory
 
-The DVC cache is a [content-addressable storage] (found in `.dvc/cache` by
-default), which adds a layer of [indirection] between code and data.
+The DVC cache is a
+[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
+(by default in `.dvc/cache`), which adds a layer of indirection between code and
+data.
 
-[content-addressable storage]:
-  https://en.wikipedia.org/wiki/Content-addressable_storage
-[indirection]: https://en.wikipedia.org/wiki/Indirection
+There are two ways in which the data is <abbr>cached</abbr>, depending on
+whether it's a single file, or a directory (which may contain multiple files).
 
-<admon type="info">
-
-This structure is also used by [remote storage].
-
-[remote storage]: /doc/command-reference/remote
-
-</admon>
-
-There are two ways in which data is <abbr>cached</abbr>, depending on whether
-it's a single file or a folder: Files are renamed and reorganized to prevent
-duplication. Directory trees are flattened so that the cache always has exactly
-one depth level containing 2-character directories (based on hashes of the data
-contents, as explained next).
+Note files are renamed, reorganized, and directory trees are flattened in the
+cache, which always has exactly one depth level with 2-character directories
+(based on hashes of the data contents, as explained next).
 
 ### Files
 
@@ -108,14 +94,10 @@ rest become the file name of the cached file. For example, if a data file has a
 hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
 `.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
 
-<admon type="info">
-
-File hashes are calculated from file contents only. 2 or more files with
-different names but the same contents can exist in the workspace and be tracked
-by DVC, but only one copy is stored in the cache. This helps avoid data
-duplication.
-
-</admon>
+> Note that file hashes are calculated from file contents only. 2 or more files
+> with different names but the same contents can exist in the workspace and be
+> tracked by DVC, but only one copy is stored in the cache. This helps avoid
+> data duplication.
 
 ### Directories
 

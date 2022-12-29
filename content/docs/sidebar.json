@@ -122,7 +122,7 @@
       },
       {
         "slug": "data-management",
-        "source": "data-management/index.md",
+        "source": false,
         "children": [
           "large-dataset-optimization",
           "importing-external-data",
