@@ -1,4 +1,4 @@
-const { graphql } = require('@octokit/graphql')
+const { request } = require('@octokit/request')
 /*
    GitHub Static Data
 
@@ -7,6 +7,22 @@ const { graphql } = require('@octokit/graphql')
    filled with default dummy data instead of throwing like using the plugin
    alone does.
  */
+
+async function getStars({ owner, repo }) {
+  const response = await request({
+    method: 'GET',
+    url: '/repos/{owner}/{repo}',
+    owner,
+    repo,
+    headers: {
+      authorization: `token ${process.env.GITHUB_TOKEN}`
+    }
+  })
+
+  const stars = response.data.stargazers_count
+
+  return stars
+}
 
 module.exports = {
   async createSchemaCustomization({ actions: { createTypes }, schema }) {
@@ -27,20 +43,7 @@ module.exports = {
           async resolve() {
             const { GITHUB_TOKEN } = process.env
             if (GITHUB_TOKEN) {
-              const query = await graphql(
-                `
-                  {
-                    repository(owner: "iterative", name: "dvc") {
-                      stargazers {
-                        totalCount
-                      }
-                    }
-                  }
-                `,
-                { headers: { authorization: `token ${GITHUB_TOKEN}` } }
-              )
-
-              const stars = query.repository.stargazers.totalCount
+              const stars = await getStars({ owner: 'iterative', repo: 'dvc' })
               return { stars }
             }
             return { stars: 8888 }

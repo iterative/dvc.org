@@ -6,17 +6,17 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lgbm.py)
+[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lgbm.py)
 in the callbacks list passed to the `lightgbm.train` call:
 
 ```python
-from dvclive.lgbm import DvcLiveCallback
+from dvclive.lgbm import DVCLiveCallback
 
 ...
 
 lightgbm.train(
   param, train_data, valid_sets=[validation_data], num_round=5,
-  callbacks=[DvcLiveCallback()])
+  callbacks=[DVCLiveCallback()])
 ```
 
 ## Parameters
@@ -24,10 +24,33 @@ lightgbm.train(
 - `model_file` - (`None` by default) - The name of the file where the model will
   be saved at the end of each `step`.
 
-- `**kwargs` - Any additional arguments will be passed to
-  [`Live`](/docs/dvclive/api-reference/live).
+- `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
+  instance will be created using `**kwargs`.
+
+- `**kwargs` - Any additional arguments will be used to instantiate a new
+  [`Live`] instance. If `live` is used, the arguments are ignored.
 
 ## Examples
+
+- Using `live` to pass an existing [`Live`] instance.
+
+```python
+from dvclive import Live
+from dvclive.lgbm import DVCLiveCallback
+
+live = Live("custom_dir")
+
+lightgbm.train(
+    param,
+    train_data,
+    valid_sets=[validation_data],
+    num_round=5,
+    callbacks=[DVCLiveCallback(live=live)])
+
+# Log additional metrics after training
+live.summary["additional_metric"] = 1.0
+live.make_summary()
+```
 
 - Using `model_file`.
 
@@ -37,10 +60,10 @@ lightgbm.train(
     train_data,
     valid_sets=[validation_data],
     num_round=5,
-    callbacks=[DvcLiveCallback(model_file="lgbm_model.txt")])
+    callbacks=[DVCLiveCallback(model_file="lgbm_model.txt")])
 ```
 
-- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+- Using `**kwargs` to customize the new [`Live`] instance.
 
 ```python
 lightgbm.train(
@@ -48,7 +71,9 @@ lightgbm.train(
     train_data,
     valid_sets=[validation_data],
     num_round=5,
-    callbacks=[DvcLiveCallback(
+    callbacks=[DVCLiveCallback(
       model_file="lgbm_model.txt",
-      path="custom_path")])
+      dir="custom_dir")])
 ```
+
+[`live`]: /docs/dvclive/api-reference/live

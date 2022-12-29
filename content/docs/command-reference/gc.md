@@ -151,7 +151,7 @@ project we want to clear.
 
 Basic example of cleaning up the <abbr>cache</abbr>:
 
-```dvc
+```cli
 $ du -sh .dvc/cache/
 7.4G    .dvc/cache/
 ```
@@ -160,7 +160,7 @@ When you run `dvc gc --workspace`, DVC removes all objects from cache that are
 not referenced in the <abbr>workspace</abbr> (by collecting hash values from the
 <abbr>DVC files</abbr>):
 
-```dvc
+```cli
 $ dvc gc --workspace
 
 '.dvc/cache/27e30965256ed4d3e71c2bf0c4caad2e' was removed
@@ -176,7 +176,7 @@ $ dvc gc --workspace
 
 Let's check the size now:
 
-```dvc
+```cli
 $ du -sh .dvc/cache/
 3.1G    .dvc/cache/
 ```

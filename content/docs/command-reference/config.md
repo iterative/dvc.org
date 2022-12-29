@@ -109,6 +109,8 @@ within:
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
+- [`hydra`](#hydra) - options around [Hydra Composition] for experiment
+  configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
@@ -116,6 +118,7 @@ within:
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
+[hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
@@ -267,6 +270,23 @@ experiments or projects use a similar structure.
 
 - `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
 
+### hydra
+
+Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra
+Composition].
+
+- `hydra.enabled` - enables Hydra [config composition].
+- `hydra.config_dir` - location of the directory containing Hydra [config
+  groups]. Defaults to `conf`.
+- `hydra.config_name` - the name of the file containing the Hydra [defaults
+  list] (located inside `hydra.config_dir`). Defaults to `config.yaml`.
+
+[config composition]:
+  https://hydra.cc/docs/tutorials/basic/your_first_app/composition/
+[config groups]:
+  https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/
+[defaults list]: https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/
+
 ### parsing
 
 - `parsing.bool` - Controls the templating syntax for boolean values when used
@@ -371,23 +391,12 @@ experiments or projects use a similar structure.
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
   when using DVC on NFS or other mounted volumes.
 
-### hydra
-
-- `hydra.enabled` - enables
-  [Hydra Composition](/docs/user-guide/experiment-management/hydra-composition).
-- `hydra.config_dir` - location of the directory containing
-  [Hydra Config Groups](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
-  Defaults to `conf`.
-- `hydra.config_name` - the name of the file containing top-level
-  [Hydra Defaults List](https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/),
-  located inside `hydra.config_dir`. Defaults to `config`.
-
 ## Example: Add an S3 remote, and set it as default
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
@@ -399,26 +408,26 @@ $ dvc config core.remote myremote
 
 Use remote `myremote` by default:
 
-```dvc
+```cli
 $ dvc config core.remote myremote
 ```
 
 Get the default remote:
 
-```dvc
+```cli
 $ dvc config core.remote
 myremote
 ```
 
 Clear default remote value:
 
-```dvc
+```cli
 $ dvc config --unset core.remote
 ```
 
 The above command is equivalent to:
 
-```dvc
+```cli
 $ dvc config core.remote -u
 ```
 
@@ -426,7 +435,7 @@ $ dvc config core.remote -u
 
 Set the <abbr>cache directory</abbr> to an absolute path:
 
-```dvc
+```cli
 $ dvc config cache.dir /mnt/cache
 $ dvc config cache.dir
 /mnt/cache
@@ -434,7 +443,7 @@ $ dvc config cache.dir
 
 or to a relative path (resolved from `./.dvc/`):
 
-```dvc
+```cli
 $ dvc config cache.dir ../../mycache
 $ dvc pull
 
@@ -444,6 +453,6 @@ $ ls ../mycache
 
 Set cache type: if `reflink` is not available, use `copy`:
 
-```dvc
+```cli
 $ dvc config cache.type reflink,copy
 ```

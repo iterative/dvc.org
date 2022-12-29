@@ -198,10 +198,11 @@ show/hide columns, remember to save the changes.
 ## Project does not contain some of my commits or branches
 
 This is likely not an error. Iterative Studio identifies commits that do not
-change metrics, files or hyperparameters and will auto-hide such commits. You
-can also manually hide commits and branches. So, it is possible that the commits
-or branches you do not see in your project were manually hidden by you or
-someone else in your team.
+change metrics, files or hyperparameters and will auto-hide such commits. It
+also auto-hides commits that contain the string `[skip studio]` in the commit
+message. You can also manually hide commits and branches. So, it is possible
+that the commits or branches you do not see in your project were manually hidden
+by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is
@@ -242,7 +243,8 @@ Then you can come back to the model registry and add the model.
 ## Model registry does not display the models in my Git repositories
 
 For a model to be displayed in the model registry, it has to be registered using
-[GTO]. You can [register the model] from Iterative Studio or with GTO's CLI.
+[GTO]. You can [register the model] from Iterative Studio or with the [`gto`
+CLI].
 
 ## How can I remove models from my model registry
 
@@ -268,5 +270,6 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
+[`gto` cli]: https://mlem.ai/doc/gto/command-reference

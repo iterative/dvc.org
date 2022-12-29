@@ -15,8 +15,8 @@ jobs:
           version=$(curl --silent $url | jq -r .tag_name)
           path=src/components/DownloadButton/index.tsx
           sed -i "s/^const VERSION = .*$/const VERSION = \`$version\`/g" $path
-          echo "::set-output name=changes::$(git diff)"
-          echo "::set-output name=version::$version"
+          echo "changes=$(git diff)" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
       - name: Create PR
         if: ${{ steps.update.outputs.changes != '' }}
         uses: peter-evans/create-pull-request@v4

@@ -1,7 +1,5 @@
 # Live.log_params()
 
-Logs the given group of parameters `params`.
-
 ```py
  def log_params(params: Dict[ParamLike]):
 ```
@@ -36,11 +34,20 @@ live.log_params(params)
 On each `live.log_params(params)` call, DVCLive will write keys/values pairs in
 the `params` dict to `{Live.dir}/params.yaml`:
 
-```dvc
-$ cat dvclive/params.yaml
+```yaml
 lr: 1e-3
 n_iter: 50
 ```
+
+<admon type="tip">
+
+The logged params can be visualized with `dvc params`:
+
+```cli
+dvc params diff dvclive/params.yaml
+```
+
+</admon>
 
 ## Parameters
 

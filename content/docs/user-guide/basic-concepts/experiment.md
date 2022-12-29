@@ -1,6 +1,14 @@
 ---
 name: Experiment
-match: [experiment, experiments]
+match:
+  [
+    experiment,
+    experiments,
+    'DVC experiment',
+    'DVC Experiment',
+    'DVC experiments',
+    'DVC Experiments'
+  ]
 tooltip: >-
   An attempt to reach desired/better/interesting results during data pipelining
   or ML model development. DVC is designed to help [manage

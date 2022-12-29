@@ -124,7 +124,6 @@
         "slug": "data-management",
         "source": "data-management/index.md",
         "children": [
-          "data-versioning",
           "large-dataset-optimization",
           "importing-external-data",
           "managing-external-data"
@@ -244,26 +243,6 @@
         "source": "exp/index.md",
         "children": [
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
-            "label": "exp run",
-            "slug": "run"
-          },
-          {
-            "label": "exp show",
-            "slug": "show"
-          },
-          {
-            "label": "exp diff",
-            "slug": "diff"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
-          },
-          {
             "label": "exp apply",
             "slug": "apply"
           },
@@ -272,20 +251,44 @@
             "slug": "branch"
           },
           {
-            "label": "exp remove",
-            "slug": "remove"
+            "label": "exp diff",
+            "slug": "diff"
           },
           {
             "label": "exp gc",
             "slug": "gc"
           },
           {
-            "label": "exp push",
-            "slug": "push"
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp pull",
             "slug": "pull"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp save",
+            "slug": "save"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
           }
         ]
       },
@@ -574,8 +577,8 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "how-it-works",
       "get-started",
+      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
@@ -591,6 +594,7 @@
               "explore-ml-experiments",
               "visualize-and-compare",
               "run-experiments",
+              "live-metrics-and-plots",
               "share-a-project"
             ]
           },
@@ -629,8 +633,8 @@
         "slug": "get-started"
       },
       {
-        "slug": "outputs",
-        "label": "Output Folder Structure"
+        "slug": "how-it-works",
+        "label": "How it Works"
       },
       {
         "slug": "api-reference",
@@ -642,16 +646,16 @@
             "source": "api-reference/live/index.md",
             "children": [
               {
-                "slug": "get_step",
-                "label": "get_step()"
-              },
-              {
-                "slug": "log",
-                "label": "log()"
+                "slug": "end",
+                "label": "end()"
               },
               {
                 "slug": "log_image",
                 "label": "log_image()"
+              },
+              {
+                "slug": "log_metric",
+                "label": "log_metric()"
               },
               {
                 "slug": "log_param",
@@ -662,20 +666,20 @@
                 "label": "log_params()"
               },
               {
-                "slug": "log_plot",
-                "label": "log_plot()"
+                "slug": "log_sklearn_plot",
+                "label": "log_sklearn_plot()"
               },
               {
                 "slug": "make_report",
                 "label": "make_report()"
               },
               {
-                "slug": "next_step",
-                "label": "next_step()"
+                "slug": "make_summary",
+                "label": "make_summary()"
               },
               {
-                "slug": "set_step",
-                "label": "set_step()"
+                "slug": "next_step",
+                "label": "next_step()"
               }
             ]
           },
@@ -724,6 +728,10 @@
                 "label": "XGBoost"
               }
             ]
+          },
+          {
+            "slug": "env",
+            "label": "Environment Variables"
           }
         ]
       }

@@ -72,7 +72,7 @@ moved or copied.
 
 [shared dvc cache]: /doc/user-guide/how-to/share-a-dvc-cache
 
-```dvc
+```cli
 $ git pull
 $ dvc checkout
 A       data/new

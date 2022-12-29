@@ -1,39 +1,131 @@
-# Data Management with DVC
+# Data Management for Machine Learning
 
-DVC helps you manage and share arbitrarily large files, datasets, and ML models
-anywhere: cloud storage, SSH servers, network resources (e.g. NAS), mounted
-drives, local file systems, etc. You manipulate DVC project normally in your
-local workspace; DVC tracks, restores, and synchronizes them across locations.
+<!--
+## Data Management for Machine Learning
+-->
 
-![Storage locations](/img/storage-locations.png) _Local, external, and remote
-storage locations_
+Where and how to store data and ML model files is one of the first decisions
+your team will have to make. But as projects grow, files may end up scattered
+throughout multiple buckets and folders. Datasets repeat and overlap, causing
+data leakage and inefficient storage. Other people's work coexists with yours
+(error-prone and not secure). How do you find the data you need? What was the
+name of the best model? Will others be able to reproduce your results?
 
-Every <abbr>DVC project</abbr> starts with 2 locations. The
-<abbr>workspace</abbr> is the main project directory, containing your data,
-models, source code, etc. DVC also creates a <abbr>data cache</abbr> (found
-locally in `.dvc/cache` by default), which will be used as fast-access storage
-for DVC operations.
+![Direct storage access](/img/direct_access_storage.png) _Managing code, data,
+and models manually does not scale and quickly becomes a problem._
 
-<admon type="tip">
+DVC gives your data stores a structure, helping you take control of existing
+[storage platforms]. It provides clear visibility over all your data and helps
+secure its access.
 
-The cache can be moved to an external location in the file system or network,
-for example to [share it] among several projects. It could even be set up in a
-remote system (Internet access), but this is typically too slow for working with
-data regularly.
+![DVC data access](/img/dvc_managed_storage.png) _DVC keeps track of which data
+files you need in the current version of a project._
 
-</admon>
+Your storage is managed from a Git repository, so you can go back to any
+previous state of a <abbr>project</abbr> and the data will match the code and
+parameters you used at that time. In other words, [data versioning] guarantees
+[reproducibility]. DVC knows where the underlying files reside and avoids
+duplicates. This requires a few key changes to your workflow:
 
-[share it]: /doc/user-guide/how-to/share-a-dvc-cache
+1. Data and models must be registered in a code repository (typically on Git).
+1. Stored objects are [reorganized] by DVC (not intended for manual handling).
+1. Data operations (drop, update, transfer, etc.) happen indirectly -- through
+   the repo.
 
-Optionally, DVC supports additional storage locations such as cloud services
-(Amazon S3, Google Drive, Azure Blob Storage, etc.), SSH servers,
-network-attached storage, etc. These are called [DVC remotes], and help you to
-share or back up copies of your data assets.
+[storage platforms]: /doc/command-reference/remote/add#supported-storage-types
+[data versioning]: /doc/use-cases/versioning-data-and-models
+[reproducibility]: /doc/user-guide/pipelines
+[reorganized]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
-<admon type="info">
+## How it works
 
-DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> data.
+<abbr>DVC repositories</abbr> contain [metafiles] (e.g. `data.dvc`) that act as
+pointers, [linking] to your data files and directories. This keeps your project
+folder small and comprised mainly of text-like code and configuration files you
+can [version with Git] normally. DVC moves your assets (large files, binaries,
+etc.) to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
 
-</admon>
+[metafiles]: /doc/user-guide/project-structure
+[linking]: /doc/user-guide/data-management/large-dataset-optimization
+[register]: /doc/command-reference/add
+[generate]: /doc/command-reference/repro
+[version with git]:
+  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
-[dvc remotes]: /doc/command-reference/remote
+<!-- More technical diagram? -->
+
+<details>
+
+### Click for deeper learning: data _codification_ and _indirection_.
+
+These are two important concepts behind **data version control**. First, large
+files and directories are replaced by [file links] and tiny code-like metafiles.
+We can also call this "data as code".
+
+This DVC-generated code contains references to the underlying files in the cache
+(which have been renamed). All data operations going forward happen
+**[indirectly]**, reading/writing metafiles in the repo first (handled
+automatically by `dvc` operations).
+
+[file links]:
+  https://towardsdatascience.com/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1
+[indirectly]: https://en.wikipedia.org/wiki/Indirection
+
+</details>
+
+Now that your data is tracked by DVC (and its code with Git) there's no need to
+come up with special file names or directory structures to handle dataset
+variations -- you can use [Git branching] instead. This keeps your project clean
+and manageable at any scale.
+
+[git branching]:
+  https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+<!-- Sample code/terminal blocks... -->
+
+The built-in cache included in every <abbr>DVC project</abbr> isolates your
+project logic from storage needs. Files are renamed and [reorganized] based on
+their contents (using simple hashes) to flatten any directory structure and
+prevent duplication.
+
+The cache is the first storage layer for you and your team to share and
+collaborate, but more can be defined in DVC [config files] (using `dvc remote`
+commands). These storage locations let you back up and share data, features, ML
+models, etc. Supported platforms include SSH, Amazon S3, Google Cloud Storage,
+Microsoft Azure, among [many more].
+
+[config files]: /doc/user-guide/project-structure/internal-files
+[many more]: /doc/command-reference/remote/add#supported-storage-types
+
+## Why it's better
+
+DVC's approach has a low cost (indirect access, work with Git) and many
+benefits:
+
+- Work in a small and clean <abbr>workspace</abbr> linked to one or more storage
+  locations.
+- Automatic <abbr>caching</abbr> decouples your project code and configuration
+  from storage and maximizes [space efficiency].
+- DVC backs up, restores, and [synchronizes] everything with a few fast
+  operations that do not change.
+- You get an authored history of data changes that can be traced and audited.
+- Use a consistent interface to access data anywhere (via [CLI], [API], [IDE],
+  or [web]).
+- Enable advanced features such as [data registries], [ML pipelines], [CI/CD for
+  ML], [productize] your models, and more!
+
+[space efficiency]: /doc/user-guide/data-management/large-dataset-optimization
+[synchronizes]: /doc/command-reference/remote
+[cli]: /doc/command-reference
+[api]: /doc/api-reference
+[ide]: /doc/vs-code-extension
+[web]: /doc/studio
+[data registries]: /doc/use-cases/data-registry
+[ml pipelines]: /doc/user-guide/pipelines
+[ci/cd for ml]: https://cml.dev/
+[productize]: https://mlem.ai/
+
+In summary, DVC establishes a standard way to manage data for ML projects,
+letting you focus on more important tasks like data exploration, preparation,
+cross validation, etc.

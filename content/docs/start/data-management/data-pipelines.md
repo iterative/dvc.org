@@ -8,7 +8,7 @@ version, and reproduce your data science and machine learning workflows.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/71IGzyH95UY
 
@@ -38,7 +38,7 @@ into a [stage](/doc/command-reference/stage):
 
 Get the sample code like this:
 
-```dvc
+```cli
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
@@ -59,15 +59,23 @@ Now let's install the requirements:
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
-```dvc
+```cli
 $ pip install -r src/requirements.txt
 ```
 
 Please also add or commit the source code directory with Git at this point.
 
-</details>
+<admon type="info:>
 
-```dvc
+The data needed to run this example can be found [in a previous page].
+
+</admon>
+
+[in a previous page]:
+  /doc/start/data-management/data-versioning#expand-to-get-an-example-dataset
+
+</details>
+```cli
 $ dvc stage add -n prepare \
                 -p prepare.seed,prepare.split \
                 -d src/prepare.py -d data/data.xml \
@@ -156,17 +164,17 @@ along with `git commit` to version DVC metafiles).
 [to remote storage]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 
-## Dependency graphs (DAG)
+## Dependency graphs
 
-By using `dvc stage add` multiple times to use <abbr>outputs</abbr> of a stage
-as <abbr>dependencies</abbr> of another, we can describe a sequence of commands
-that gets to a desired result. This is what we call a _data pipeline_ or
-dependency graph (a [DAG]).
+By using `dvc stage add` multiple times, defining <abbr>outputs</abbr> of a
+stage as <abbr>dependencies</abbr> of another, we can describe a sequence of
+commands which gets to some desired result. This is what we call a [dependency
+graph] and it's what forms a cohesive pipeline.
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
 
-```dvc
+```cli
 $ dvc stage add -n featurize \
                 -p featurize.max_features,featurize.ngrams \
                 -d src/featurization.py -d data/prepared \
@@ -175,8 +183,6 @@ $ dvc stage add -n featurize \
 ```
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
-
-[dag]: /doc/user-guide/pipelines/defining-pipelines
 
 <details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
@@ -208,6 +214,9 @@ The changes to the `dvc.yaml` should look like this:
 +    - data/features
 ```
 
+Note that you can create and edit `dvc.yaml` files manually instead of using
+helper `dvc stage add`.
+
 </details>
 
 <details>
@@ -217,7 +226,7 @@ The changes to the `dvc.yaml` should look like this:
 Let's add the training itself. Nothing new this time; just the same
 `dvc stage add` command with the same set of options:
 
-```dvc
+```cli
 $ dvc stage add -n train \
                 -p train.seed,train.n_est,train.min_split \
                 -d src/train.py -d data/features \
@@ -237,7 +246,7 @@ This should be a good time to commit the changes with Git. These include
 The whole point of creating this `dvc.yaml` file is the ability to easily
 reproduce a pipeline:
 
-```dvc
+```cli
 $ dvc repro
 ```
 
@@ -253,7 +262,7 @@ parameters for the training stage:
 
 You should see:
 
-```dvc
+```cli
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
@@ -265,7 +274,7 @@ the intermediate results are being reused.
 
 Now, let's change it back to `50` and run `dvc repro` again:
 
-```dvc
+```cli
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
@@ -281,8 +290,8 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 ### 💡 Expand to see what happens under the hood.
 
-`dvc repro` relies on the [DAG] defined in `dvc.yaml`, and uses `dvc.lock` to
-determine what exactly needs to be run.
+`dvc repro` relies on the [dependency graph] of stages defined in `dvc.yaml`,
+and uses `dvc.lock` to determine what exactly needs to be run.
 
 The `dvc.lock` file is similar to a `.dvc` file — it captures hashes (in most
 cases `md5`s) of the dependencies and values of the parameters that were used.
@@ -311,8 +320,14 @@ stages:
         nfiles: 2
 ```
 
-> `dvc status` command can be used to compare this state with an actual state of
-> the workspace.
+<admon type="info">
+
+The `dvc status` command can be used to compare the workspace with an actual
+state of the workspace.
+
+</admon>
+
+[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
 </details>
 
@@ -337,7 +352,7 @@ Having built our pipeline, we need a good way to understand its structure.
 Seeing a graph of connected stages would help. DVC lets you do so without
 leaving the terminal!
 
-```dvc
+```cli
 $ dvc dag
          +---------+
          | prepare |

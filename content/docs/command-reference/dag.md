@@ -17,15 +17,14 @@ positional arguments:
 
 ## Description
 
-DVC represents a pipeline internally as a **Directed Acyclic Graph** (DAG) where
-the nodes are stages and the edges are dependencies.
+DVC represents each pipeline internally as a **Directed Acyclic Graph** ([DAG])
+where the nodes are stages and the edges are dependencies.
 
-`dvc dag` displays this dependency graph in one or more pipelines, as defined in
-the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a `target` stage
-name to show the pipeline up to that point.
+`dvc dag` displays this dependency graph of the stages in one or more pipelines,
+as defined in the `dvc.yaml` files found in the <abbr>project</abbr>. Provide a
+`target` stage name to show the pipeline up to that point.
 
-[directed acyclic graph]:
-  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+[dag]: /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Paginating the output
 
@@ -45,7 +44,7 @@ It's possible to override the default pager via the `DVC_PAGER` environment
 variable. Set it to a program found in `PATH` or give a full path to it. For
 example on Linux shell:
 
-```dvc
+```cli
 $ DVC_PAGER=more dvc exp show  # Use more as pager once.
 ...
 
@@ -89,7 +88,7 @@ $ dvc exp show ...
 Visualize the prepare, featurize, train, and evaluate stages of a pipeline as
 defined in `dvc.yaml`:
 
-```dvc
+```cli
 $ dvc dag
          +---------+
          | prepare |
@@ -118,7 +117,7 @@ The pipeline can also be seen from the point of view of how stage
 outputs/dependencies are connected (using the `--outs` option). Notice that the
 resulting graph may be different:
 
-```dvc
+```cli
 $ dvc dag --outs
                   +---------------+
                   | data/prepared |
@@ -148,7 +147,7 @@ $ dvc dag --outs
 The `--mermaid` flag will generate a
 [flowchart in Mermaid format](https://mermaid-js.github.io/mermaid/#/flowchart):
 
-```dvc
+```cli
 $ dvc dag --mermaid
 flowchart TD
         node1["data/data.xml.dvc"]
@@ -175,7 +174,7 @@ and [in GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid).
 You can combine `dvc dag --md` with the
 [`cml send-comment`](https://cml.dev/doc/ref/send-comment) of CML:
 
-```dvc
+```cli
 dvc dag --md >> dag.md
 cml send-comment dag.md
 ```
