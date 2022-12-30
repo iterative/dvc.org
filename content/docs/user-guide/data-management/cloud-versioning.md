@@ -75,7 +75,7 @@ When the `version_aware` option is enabled on a `dvc remote`:
 
 Note that when `version_aware` is in use, DVC does not delete current versions
 or restore noncurrent versions of objects in cloud storage. So the current
-version of an object in cloud storage version of a file in your DVC repository.
+version of an object in cloud storage may not match the version of a file in your DVC repository.
 
 </admon>
 
@@ -101,7 +101,7 @@ when the `worktree` option is enabled on a `dvc remote`:
 <admon type="info">
 
 Note that deleting current versions in cloud storage does not delete any objects
-(and does not delete) any data). It only means that the current version of a
+(and does not delete any data). It only means that the current version of a
 given object will show that the object does not exist.
 
 </admon>
