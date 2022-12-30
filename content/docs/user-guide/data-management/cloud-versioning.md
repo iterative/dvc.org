@@ -15,23 +15,23 @@ will then be stored as separate versions of the corresponding object in cloud
 storage. This is useful for cases where users prefer to retain their original
 filenames and directory hierarchy in remote storage (instead of using DVC's
 usual
-[content-addressible storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+[content-addressable storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 format).
 
 <admon type="warn">
 
 Note that not all DVC functionality is supported when using cloud versioned
 remotes, and using cloud versioning comes with the tradeoff of losing certain
-benefits of content-addressible storage.
+benefits of content-addressable storage.
 
 </admon>
 
 <details>
 
-### Expand for more details on the differences between cloud versioned and content-addressible storage
+### Expand for more details on the differences between cloud versioned and content-addressable storage
 
 `dvc remote` storage normally uses
-[content-addressible storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+[content-addressable storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 to organize versioned data. Different versions of files are stored in the remote
 according to hash of their data content instead of according to their original
 filenames and directory location. This allows DVC to optimize certain remote
