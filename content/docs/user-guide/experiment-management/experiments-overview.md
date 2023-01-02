@@ -1,16 +1,13 @@
 # DVC Experiments Overview
 
-DVC Experiments are captured automatically by DVC when [run], but can also be
-[saved] manually. Each experiment creates and tracks a variation of your data
+DVC Experiments can be saved automatically while experiments run or manually
+after they complete. Each experiment creates and tracks a variation of your data
 science project based on the changes in your <abbr>workspace</abbr>.
 
 Experiments preserve a connection to the latest commit in the current branch
 (Git `HEAD`) as their parent or _baseline_, but do not form part of the regular
 Git tree (unless you make them [persistent]). This prevents bloating your repo
 with temporary commits and branches.
-
-[run]: /doc/user-guide/experiment-management/running-experiments
-[saved]: /doc/command-reference/exp/save
 
 <details>
 
@@ -37,9 +34,8 @@ this:
 
 - Modify hyperparameters or other dependencies (input data, source code,
   commands to execute, etc.). Leave these changes un-committed in Git.
-- [Run experiments][run] with `dvc exp run` (or use `repro` + `dvc exp save`).
-  The results are reflected in your <abbr>workspace</abbr>, and tracked
-  automatically.
+- Run and [save experiments](#save-experiments). The results are reflected in
+  your <abbr>workspace</abbr>, and tracked automatically.
 - Review and [compare] experiments with `dvc exp show` or `dvc exp diff`, using
   [metrics](/doc/command-reference/metrics) to identify the best one(s). Repeat
   🔄
@@ -49,29 +45,35 @@ this:
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
-## Initialize DVC Experiments on any project
+## Save experiments
 
-To use DVC Experiments you need a <abbr>DVC project</abbr> with a minimal
-structure and configuration. To avoid having to bootstrap DVC manually, the
-`dvc exp init` command lets you quickly onboard an existing project to the DVC
-Experiments workflow.
+DVC is not opinionated about your experiments workflow. To save an experiment,
+you may choose any of these workflows:
 
-It will create a simple `dvc.yaml` metafile, which codifies your planned
-experiments. This includes the locations for expected <abbr>dependencies</abbr>
-(data, parameters, source code) and <abbr>outputs</abbr> (ML models,
-<abbr>metrics</abbr>, etc.). These assume [sane defaults] but can be customized
-with the options of `dvc exp init`.
+- If you have a DVC [pipeline], use `dvc exp run` to both [run] your code
+  pipeline and save experiment results. `dvc exp run` also enables other
+  features like queuing many experiments at once.
+- If you do not have a DVC pipeline, you can add [DVCLive] to your Python code
+  to log live results and save the experiment by including the keyword argument
+  `save_dvc_exp=True`.
+- If you already have results that you want to save or don't want to use either
+  of the above methods to automatically save experiments, you can save
+  experiment results manually after your code finishes with `dvc exp save`.
 
-💡 We recommend adding the `-i` flag to use its [interactive mode]. This will
-ask you how to run the experiments, and guide you through customizing the
-aforementioned locations (optional).
+[pipeline]: /doc/user-guide/pipelines
+[run]: /doc/user-guide/experiment-management/running-experiments
+[dvclive]: /doc/dvclive/get-started
+[save]: /doc/user-guide/experiment-management/saving-experiments
 
-You can review the resulting changes to your repo (and commit them to Git) to
-begin using DVC Experiments. Now you can move on to [running experiments][run]
-(next).
+## Evaluate experiments
 
-[sane defaults]: /doc/command-reference/exp/init#description
-[interactive mode]: /doc/command-reference/exp/init#example-interactive-mode
+DVC can track and compare evaluation criteria for machine learning experiments.
+Parameters, metrics, and plots data may be saved in standard structured files
+like YAML, JSON, and CSV, and they can be tracked as part of your repo.
+`dvc.yaml` metafiles specify which files are parameters, metrics, or plots, and
+how to visualize plots. One way to generate these structured parameters,
+metrics, and plots files (and to automatically configure them in `dvc.yaml`) is
+with DVCLive.
 
 ## Work with DVC Experiments from a GUI
 

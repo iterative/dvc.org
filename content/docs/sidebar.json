@@ -138,7 +138,7 @@
       {
         "label": "Experiment Management",
         "slug": "experiment-management",
-        "source": "experiment-management/index.md",
+        "source": false,
         "children": [
           "experiments-overview",
           "running-experiments",
