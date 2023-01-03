@@ -83,6 +83,7 @@ $ dvc stage add -n prepare \
                 -o data/prepared \
                 python src/prepare.py data/data.xml
 ```
+
 A `dvc.yaml` file is generated. It includes information about the command we
 want to run (`python src/prepare.py data/data.xml`), its
 <abbr>dependencies</abbr>, and <abbr>outputs</abbr>.
