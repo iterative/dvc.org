@@ -75,7 +75,8 @@ When the `version_aware` option is enabled on a `dvc remote`:
 
 Note that when `version_aware` is in use, DVC does not delete current versions
 or restore noncurrent versions of objects in cloud storage. So the current
-version of an object in cloud storage may not match the version of a file in your DVC repository.
+version of an object in cloud storage may not match the version of a file in
+your DVC repository.
 
 </admon>
 
