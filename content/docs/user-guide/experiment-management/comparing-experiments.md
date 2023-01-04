@@ -6,7 +6,7 @@ they can help you streamline the experimentation process.
 <admon type="tip">
 
 **New!** You can compare your ML experiments with DVC directly [from Visual
-Studio Code], a leading IDE in the industry.
+Studio Code].
 
 https://www.youtube.com/watch?v=LHi3SWGD9nc
 
