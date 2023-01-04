@@ -126,4 +126,4 @@ To make sure that the data files in the workspace are consistent with the
 > files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
 > transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
 > means that editing a reflinked file is always safe as all the other links to
-> the file will reflect the changes.
+> the file will not reflect the changes.
