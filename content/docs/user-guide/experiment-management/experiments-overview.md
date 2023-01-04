@@ -65,15 +65,14 @@ you may choose any of these workflows:
 [dvclive]: /doc/dvclive/get-started
 [save]: /doc/user-guide/experiment-management/saving-experiments
 
-## Evaluate experiments
+## Save metrics, plots, and parameters
 
-DVC can track and compare evaluation criteria for machine learning experiments.
-Parameters, metrics, and plots data may be saved in standard structured files
-like YAML, JSON, and CSV, and they can be tracked as part of your repo.
-`dvc.yaml` metafiles specify which files are parameters, metrics, or plots, and
-how to visualize plots. One way to generate these structured parameters,
-metrics, and plots files (and to automatically configure them in `dvc.yaml`) is
-with DVCLive.
+DVC can track and compare parameters, metrics, and plots data saved in standard
+structured files like YAML, JSON, and CSV, and they can be tracked as part of
+your repo. `dvc.yaml` metafiles specify which files are parameters, metrics, or
+plots, and how to visualize plots. One way to generate these structured
+parameters, metrics, and plots files (and to automatically configure them in
+`dvc.yaml`) is with DVCLive.
 
 ## Work with DVC Experiments from a GUI
 
