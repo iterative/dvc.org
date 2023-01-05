@@ -23,7 +23,7 @@ live = Live()
 
 y_true = [0, 0, 1, 1]
 y_pred = [1, 0, 1, 0]
-y_score = [0.1, 0.4, 0.35, 0.8]]
+y_score = [0.1, 0.4, 0.35, 0.8]
 live.log_sklearn_plot("roc", y_true, y_score)
 live.log_sklearn_plot("confusion_matrix", y_true, y_pred, name="cm.json")
 ```
