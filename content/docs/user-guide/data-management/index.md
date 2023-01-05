@@ -4,28 +4,35 @@
 ## Data Management for Machine Learning
 -->
 
-Where and how to store data and ML model files is one of the first decisions
-your team will have to make. But as projects grow, files may end up scattered
-throughout multiple buckets and folders. Datasets repeat and overlap, causing
-data leakage and inefficient storage. Other people's work coexists with yours
-(error-prone and not secure). How do you find the data you need? What was the
-name of the best model? Will others be able to reproduce your results?
+Where and how to store datasets and ML model files is one of the first decisions
+your team will face. But as time progresses, unnecessary files may end up
+scattered throughout multiple buckets and folders. Overlapping contents cause
+data leakage and inefficient storage. The project evolution is not easily to
+track, so multiple data versions coexist (error-prone and not secure). What was
+the name of the best model? Will others be able to reproduce your results?
 
 ![Direct storage access](/img/direct_access_storage.png) _Managing code, data,
-and models manually does not scale and quickly becomes a problem._
+and models manually does not scale: The S3 bucket on the left is shared by
+various people and projects; The user on the right needs to know the exact
+location of the correct files, and uses cloud-specific tools (e.g. AWS CLI) to
+access them directly._
 
 DVC gives your data stores a structure, helping you take control of existing
-[storage platforms]. It provides clear visibility over all your data and helps
-secure its access.
+[storage platforms]. It maintains visibility over all your data and helps secure
+its access.
 
-![DVC data access](/img/dvc_managed_storage.png) _DVC keeps track of which data
-files you need in the current version of a project._
+![DVC data access](/img/dvc_managed_storage.png) _DVC captures the structure of
+your datasets in a code repository, which can be versioned with Git. The storage
+(left) can now be reorganized to eliminate duplication; You access data with
+`dvc` (multi-cloud support) -- it checks the metadata to locate files in both
+sides._
 
-Your storage is managed from a Git repository, so you can go back to any
-previous state of a <abbr>project</abbr> and the data will match the code and
-parameters you used at that time. In other words, [data versioning] guarantees
-[reproducibility]. DVC knows where the underlying files reside and avoids
-duplicates. This requires a few key changes to your workflow:
+DVC lets you describe the entire <abbr>project</abbr> in a Git repository, so
+you can go back to any previous state and find the right data, code, parameters,
+etc. used at that time. In other words: [data versioning] guarantees [ML
+reproducibility].
+
+This requires a few key changes to your workflow:
 
 1. Data and models must be registered in a code repository (typically on Git).
 1. Stored objects are [reorganized] by DVC (not intended for manual handling).
@@ -34,14 +41,14 @@ duplicates. This requires a few key changes to your workflow:
 
 [storage platforms]: /doc/command-reference/remote/add#supported-storage-types
 [data versioning]: /doc/use-cases/versioning-data-and-models
-[reproducibility]: /doc/user-guide/pipelines
+[ml reproducibility]: /doc/user-guide/pipelines
 [reorganized]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ## How it works
 
 <abbr>DVC repositories</abbr> contain [metafiles] (e.g. `data.dvc`) that act as
-pointers, [linking] to your data files and directories. This keeps your project
+pointers, [linking]? to your data files and directories. This keeps your project
 folder small and comprised mainly of text-like code and configuration files you
 can [version with Git] normally. DVC moves your assets (large files, binaries,
 etc.) to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
