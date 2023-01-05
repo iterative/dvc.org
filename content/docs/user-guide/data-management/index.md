@@ -9,52 +9,61 @@ your team will face. But as time progresses, unnecessary files may end up
 scattered throughout multiple buckets and folders. Overlapping contents cause
 data leakage and inefficient storage. The project evolution is not easily to
 track, so multiple data versions coexist (error-prone and not secure). What was
-the name of the best model? Will others be able to reproduce your results?
+the name of the best model? Can others reproduce your results?
 
-![Direct storage access](/img/direct_access_storage.png) _Managing code, data,
-and models manually does not scale: The S3 bucket on the left is shared by
-various people and projects; The user on the right needs to know the exact
-location of the correct files, and uses cloud-specific tools (e.g. AWS CLI) to
-access them directly._
+![Direct storage access](/img/direct_access_storage.png) _The S3 bucket on the
+left is shared by several people and projects; The user on the right needs to
+know the exact location of the correct files, and uses cloud-specific tools
+(e.g. AWS CLI) to access them directly._
 
-DVC gives your data stores a structure, helping you take control of existing
-[storage platforms]. It maintains visibility over all your data and helps secure
-its access.
+DVC gives your data stores a clean structure, helping you take control of your
+existing storage platform. This provides visibility over your data and helps
+secure its access.
 
-![DVC data access](/img/dvc_managed_storage.png) _DVC captures the structure of
-your datasets in a code repository, which can be versioned with Git. The storage
-(left) can now be reorganized to eliminate duplication; You access data with
-`dvc` (multi-cloud support) -- it checks the metadata to locate files in both
-sides._
+![DVC data access](/img/dvc_managed_storage.png) _DVC captures information about
+your data in a Git repository. Shared storage (left) can now be organized
+efficiently; You access data using `dvc` (multi-cloud support)._
 
-DVC lets you describe the entire <abbr>project</abbr> in a Git repository, so
-you can go back to any previous state and find the right data, code, parameters,
-etc. used at that time. In other words: [data versioning] guarantees [ML
-reproducibility].
+DVC saves you the hassle of storing and renaming every data object and their
+versions. It makes sure not to save duplicated file and uses Git's immutable
+history to prevent deleting relevant assets, so sharing your storage is not a
+problem. Your work is made more portable with [multiple storage provider]
+support. And your team collaboration can improve with Git.
 
-This requires a few key changes to your workflow:
+[multiple storage provider]:
+  /doc/command-reference/remote/add#supported-storage-types
+
+To get there, a few key changes to your workflow are required:
 
 1. Data and models must be registered in a code repository (typically on Git).
 1. Stored objects are [reorganized] by DVC (not intended for manual handling).
 1. Data operations (drop, update, transfer, etc.) happen indirectly -- through
    the repo.
 
-[storage platforms]: /doc/command-reference/remote/add#supported-storage-types
-[data versioning]: /doc/use-cases/versioning-data-and-models
-[ml reproducibility]: /doc/user-guide/pipelines
 [reorganized]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
-## How it works
+## Details & Benefits
+
+<!--
+DVC lets you describe the entire <abbr>project</abbr> in a Git repository, so
+you can go back to any previous state and find the right data, code, parameters,
+etc. used at that time. In other words: [data versioning] guarantees [ML
+reproducibility].
+
+[data versioning]: /doc/use-cases/versioning-data-and-models
+[ml reproducibility]: /doc/user-guide/pipelines
+-->
+
+<!-- it checks the metadata to locate files in both sides -->
 
 <abbr>DVC repositories</abbr> contain [metafiles] (e.g. `data.dvc`) that act as
-pointers, [linking]? to your data files and directories. This keeps your project
-folder small and comprised mainly of text-like code and configuration files you
-can [version with Git] normally. DVC moves your assets (large files, binaries,
-etc.) to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
+pointers to your data files and directories. This keeps your project folder
+small and comprised mainly of text-like code and configuration files you can
+[version with Git] normally. DVC moves your assets (large files, binaries, etc.)
+to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
 
 [metafiles]: /doc/user-guide/project-structure
-[linking]: /doc/user-guide/data-management/large-dataset-optimization
 [register]: /doc/command-reference/add
 [generate]: /doc/command-reference/repro
 [version with git]:
@@ -83,19 +92,11 @@ automatically by `dvc` operations).
 
 Now that your data is tracked by DVC (and its code with Git) there's no need to
 come up with special file names or directory structures to handle dataset
-variations -- you can use [Git branching] instead. This keeps your project clean
-and manageable at any scale.
-
-[git branching]:
-  https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+variations. This keeps your project clean and manageable at any scale.
 
 <!-- Sample code/terminal blocks... -->
 
-The built-in cache included in every <abbr>DVC project</abbr> isolates your
-project logic from storage needs. Files are renamed and [reorganized] based on
-their contents (using simple hashes) to flatten any directory structure and
-prevent duplication.
-
+<!--
 The cache is the first storage layer for you and your team to share and
 collaborate, but more can be defined in DVC [config files] (using `dvc remote`
 commands). These storage locations let you back up and share data, features, ML
@@ -104,10 +105,9 @@ Microsoft Azure, among [many more].
 
 [config files]: /doc/user-guide/project-structure/internal-files
 [many more]: /doc/command-reference/remote/add#supported-storage-types
+-->
 
-## Why it's better
-
-DVC's approach has a low cost (indirect access, work with Git) and many
+DVC's approach has a low cost (indirect access, work with Git) and many more
 benefits:
 
 - Work in a small and clean <abbr>workspace</abbr> linked to one or more storage
