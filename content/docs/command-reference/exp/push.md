@@ -84,31 +84,31 @@ This command will also try to [push](/doc/command-reference/push) all
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp list --all-commits
 11-bigrams-experiment:
-        exp-e6c97
-        exp-1dad0
-        exp-1df77
+        conic-ease
+        lucid-lair
+        major-mela
 ```
 
 We would now like to share one of them with others via the Git remote:
 
-```dvc
-$ dvc exp push origin exp-e6c97
-Pushed experiment 'exp-e6c97' to Git remote 'origin'.
+```cli
+$ dvc exp push origin conic-ease
+Pushed experiment 'conic-ease' to Git remote 'origin'.
 ```
 
 We can now see that the experiment exists in the remote repo:
 
-```dvc
+```cli
 $ dvc exp list --all origin
 master:
-        exp-e6c97
+        conic-ease
 ```

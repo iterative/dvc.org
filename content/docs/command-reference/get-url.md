@@ -67,7 +67,7 @@ Another way to understand the `dvc get-url` command is as a tool for downloading
 data files. On GNU/Linux systems for example, instead of `dvc get-url` with
 HTTP(S) it's possible to instead use:
 
-```dvc
+```cli
 $ wget https://example.com/path/to/data.csv
 ```
 
@@ -93,7 +93,7 @@ $ wget https://example.com/path/to/data.csv
 This command will copy an S3 object into the current working directory with the
 same file name:
 
-```dvc
+```cli
 $ dvc get-url s3://bucket/path
 ```
 
@@ -117,7 +117,7 @@ configuration, you can use the parameters described in `dvc remote modify`.
 
 ### Google Cloud Storage
 
-```dvc
+```cli
 $ dvc get-url gs://bucket/path file
 ```
 
@@ -129,7 +129,7 @@ The above command downloads the `/path` file (or directory) into `./file`.
 
 ### SSH
 
-```dvc
+```cli
 $ dvc get-url ssh://user@example.com/path/to/data
 ```
 
@@ -142,7 +142,7 @@ directory).
 
 ### HDFS
 
-```dvc
+```cli
 $ dvc get-url hdfs://user@example.com/path/to/file
 ```
 
@@ -154,7 +154,7 @@ $ dvc get-url hdfs://user@example.com/path/to/file
 
 > Both HTTP and HTTPS protocols are supported.
 
-```dvc
+```cli
 $ dvc get-url https://example.com/path/to/file
 ```
 
@@ -164,7 +164,7 @@ $ dvc get-url https://example.com/path/to/file
 
 ### WebHDFS
 
-```dvc
+```cli
 $ dvc get-url webhdfs://user@example.com/path/to/file
 ```
 
@@ -174,7 +174,7 @@ $ dvc get-url webhdfs://user@example.com/path/to/file
 
 ### local
 
-```dvc
+```cli
 $ dvc get-url /local/path/to/data
 ```
 

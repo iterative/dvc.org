@@ -90,8 +90,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   [example](#example-run-a-grid-search)).
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `exp-f80g4` (based on the
-  experiment's hash).
+  default one will be generated otherwise, such as `puffy-daks`.
+
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
   Useful to continue working (e.g. in another terminal) while a long experiment
@@ -151,7 +156,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
@@ -161,7 +166,7 @@ code.
 
 Clone the DVC repo and download the data it <abbr>depends</abbr> on:
 
-```dvc
+```cli
 $ git clone git@github.com:iterative/example-get-started.git
 $ cd example-get-started
 $ dvc pull
@@ -173,7 +178,7 @@ Let's also install the Python requirements:
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
-```dvc
+```cli
 $ pip install -r src/requirements.txt
 ```
 
@@ -181,7 +186,7 @@ $ pip install -r src/requirements.txt
 
 Let's check the latest metrics of the project:
 
-```dvc
+```cli
 $ dvc metrics show
 Path         avg_prec    roc_auc
 scores.json  0.60405     0.9608
@@ -190,11 +195,11 @@ scores.json  0.60405     0.9608
 For this experiment, we want to see the results for a smaller dataset input, so
 let's limit the data to 20 MB and reproduce the pipeline with `dvc exp run`:
 
-```dvc
+```cli
 $ truncate --size=20M data/data.xml
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-44136
+Reproduced experiment(s): puffy-daks
 Experiment results have been applied to your workspace.
 
 $ dvc metrics diff
@@ -204,7 +209,7 @@ scores.json  roc_auc   0.9608   0.94003    -0.02077
 ```
 
 The `dvc metrics diff` command shows the difference in performance for the
-experiment we just ran (`exp-44136`).
+experiment we just ran (`puffy-daks`).
 
 ## Example: Modify parameters on-the-fly
 
@@ -215,7 +220,7 @@ This option accepts Hydra's [basic override] syntax. For example, it can
 override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or remove
 (`~model.dropout`) <abbr>parameters</abbr>:
 
-```dvc
+```cli
 dvc exp run -S 'prepare.split=0.1' -S 'featurize.max_features=100'
 ...
 ```
@@ -230,7 +235,7 @@ By default, `-S` overwrites the values in `params.yaml`. To use another params
 file, add a `<filename>:` prefix. For example, let's append a new parameter to
 `train_config.json`:
 
-```dvc
+```cli
 $ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'
 ...
 
@@ -261,7 +266,7 @@ DVC supports Hydra's syntax for [choice] and [range] sweeps to add multiple
 experiments to the queue. These can be used for multiple parameters at the same
 time, adding all combinations to the queue:
 
-```dvc
+```cli
 $ dvc exp run -S 'train.min_split=2,8,64' -S 'train.n_est=100,200' --queue
 Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=100']}'.
 Queued experiment 'ed3b4ef' for future execution.

@@ -9,11 +9,10 @@ settings_ are now called _Project settings_; and so on.
 
 # Explore ML Experiments
 
-When you create a project by connecting to a Git repository, the project is
-added to your Iterative Studio dashboard. You can dive deep into the projects
-shown in your Iterative Studio dashboard to explore all the ML experiments,
-visualize and compare them, and run new experiments. For this, open the project
-by clicking the project name (in this case, `example-get-started`).
+The projects dashboard in Iterative Studio contains all the projects you created
+by connecting to Git repositories. To explore all ML experiments in a project,
+visualize and compare them, and run new experiments, open the project by
+clicking the project name (in this case, `example-get-started`).
 
 An experiments table for the project will be generated as shown below. This
 includes metrics, hyperparameters, and information about datasets and models.
@@ -22,20 +21,27 @@ includes metrics, hyperparameters, and information about datasets and models.
 
 ## Components of a project
 
-The experiments table of the project has different components that show you the
-complete experiment history as well as enable to you to generate plots, compare
-experiments, run new experiments, etc. The major components of the table are:
+The major components of the project experimentation table are:
 
-- [Git history](#git-history) - represents your experimentation history.
-- [Display preferences](#display-preferences) - show/hide branches, commits and
-  columns, and re-arrange the table.
+- [Git history and live metrics](#git-history-and-live-metrics) that show you
+  the complete experimentation history as well as live metrics of running
+  experiments.
+- [Display preferences](#display-preferences) that let you show/hide branches,
+  commits and columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 
-### Git history
+### Git history and live metrics
 
 The branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
+
+[New experiments submitted from Iterative Studio][run-experiments] appear as
+experiment commits, which are eventually pushed to Git. Any live metrics that
+you send using [DVCLive] are displayed in a special experiment row next to the
+corresponding Git commit. More details of how live metrics are displayed can be
+found
+[here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
@@ -89,20 +95,14 @@ from the table.
 - **Iterative Studio auto-hides commits that contain `[skip studio]` in the
   commit message:** This is particularly useful if your workflow creates
   multiple commits per experiment and you would like to hide all those commits
-  except the final one. Below is an example:
+  except the final one.
 
-  > Suppose you submit hyper-parameter changes by creating a Git commit. Your CI
-  > job gets invoked when the commit is created, starting the model training
-  > process. Suppose your CI job creates a new Git commit with the experiment
-  > results at the end of model training. This new Git commit, therefore,
-  > contains the new values of the hyper-parameters as well as experiment
-  > results (metrics).
-  >
-  > In Iterative Studio, you may want to display only this final commit and
-  > auto-hide the original commit which contains the the new values of the
-  > hyper-parameters but not the experiment results (metrics). In this case,
-  > what you should do is add the string `[skip studio]` to the commit message
-  > when you create the original commit.
+  For example, suppose you create a Git commit with hyper-parameter changes for
+  running a new experiment, and your training CI job creates a new Git commit
+  with the experiment results. You may want to hide the first commit and only
+  display the second commit, which has the new values for the hyper-parameters
+  as well as experiment results (metrics). For this, you can use the string
+  `[skip studio]` in the commit message of the first commit.
 
 - **Hide commits and branches manually:** You can selectively hide commits and
   branches. This can be useful if there are commits that do not add much value
@@ -135,10 +135,12 @@ The table also contains buttons to visualize, compare and run experiments.
 ![](https://static.iterative.ai/img/studio/view_components_3.gif)
 
 - **Show plots:** Show plots for the selected commits. When you click on this
-  button, plots for the selected commits are displayed in the bottom half of
-  your browser window.
+  button, plots for the selected commits are displayed in a `Plots ` pane.
 - **Compare:** Compare different experiments side by side.
 - **Run:** Run experiments by selecting any one commit. Refer
-  [here](/doc/studio/user-guide/run-experiments) for details on how to run
-  experiments.
+  [here][run-experiments] for details on how to run experiments and track
+  metrics in real time.
 - **Trends:** Generate trend charts to show metric evolution over time.
+
+[run-experiments]: /doc/studio/user-guide/run-experiments
+[dvclive]: /doc/dvclive

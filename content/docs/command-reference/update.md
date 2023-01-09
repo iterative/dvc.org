@@ -2,7 +2,9 @@
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
 or [URLs](/doc/command-reference/import-url#description), and the corresponding
-import `.dvc` files.
+import `.dvc` files, or update files or directories from a
+[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
+remote.
 
 ## Synopsis
 
@@ -34,9 +36,25 @@ update them.
 fixed to a commit hash (`rev` field in the `.dvc` file). Use the `--rev` option
 to update an imported artifact to a different revision.
 
-```dvc
+```cli
 $ dvc update --rev master
 ```
+
+### Worktree update
+
+When using a
+[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
+remote, `dvc update` will update the specified target to match the current
+version of the corresponding file or directory from the remote storage. If the
+current version of the specified target is a deleted file or an empty directory,
+`dvc update` will fail.
+
+<admon type="warn">
+
+Note that the `--rev`, `--no-download` and `--to-remote` flags are not
+compatible when updating from a worktree remote.
+
+</admon>
 
 ## Options
 
@@ -47,6 +65,11 @@ $ dvc update --rev master
 
   > Note that this changes the `rev` field in the import stage, fixing it to the
   > revision.
+
+  For stages created with `dvc import-url` and a
+  [cloud-versioned URL](/doc/command-reference/import-url#--version-aware),
+  `--rev` can be used to specify a object version ID to use. By default, the
+  import will be updated to the current version from cloud storage.
 
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import `.dvc` files to inspect. If there
@@ -84,7 +107,7 @@ $ dvc update --rev master
 Let's first import a data artifact from our
 [get started example repo](https://github.com/iterative/example-get-started):
 
-```dvc
+```cli
 $ dvc import git@github.com:iterative/example-get-started model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
@@ -96,7 +119,7 @@ As DVC mentions, the import stage (`.dvc` file) `model.pkl.dvc` is created. This
 `dvc unfreeze` on it first, then `dvc repro` (and `dvc freeze` again). Let's
 just run `dvc update` on it instead:
 
-```dvc
+```cli
 $ dvc update model.pkl.dvc
 Output 'model.pkl' didn't change. Skipping saving.
 Saving information to 'model.pkl.dvc'.
@@ -117,7 +140,7 @@ Let's import a model from a specific version of our
 [get started example repo](https://github.com/iterative/example-get-started)
 first:
 
-```dvc
+```cli
 $ dvc import --rev baseline-experiment \
             git@github.com:iterative/example-get-started \
             model.pkl
@@ -128,7 +151,7 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 After this, the import stage (`.dvc` file) `model.pkl.dvc` is created. Let's try
 to run `dvc update` on this file and see what happens.
 
-```dvc
+```cli
 $ dvc update model.pkl.dvc
 ```
 
@@ -139,7 +162,7 @@ was not updated.
 
 Let's try to update the model to a different version:
 
-```dvc
+```cli
 $ dvc update --rev bigrams-experiment model.pkl.dvc
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'

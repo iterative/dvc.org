@@ -32,19 +32,19 @@ a `train.tsv` file:
 
 Unlink the file with `dvc unprotect`. This will make `train.tsv` safe to edit:
 
-```dvc
+```cli
 $ dvc unprotect train.tsv
 ```
 
 Then edit the content of the file, for example with:
 
-```dvc
+```cli
 $ echo "new data item" >> train.tsv
 ```
 
 Add the new version of the file back with DVC:
 
-```dvc
+```cli
 $ dvc add train.tsv
 $ git add train.tsv.dvc
 $ git commit -m "modify train data"
@@ -62,19 +62,19 @@ First, [stop tracking](/doc/user-guide/how-to/stop-tracking-data) the file by
 using `dvc remove` on the `.dvc` file. This will remove `train.tsv` from the
 workspace (and unlink it from the <abbr>cache</abbr>):
 
-```dvc
+```cli
 $ dvc remove train.tsv.dvc
 ```
 
 Next, replace the file with new content:
 
-```dvc
+```cli
 $ echo new > train.tsv
 ```
 
 And start tracking it again:
 
-```dvc
+```cli
 $ dvc add train.tsv
 $ git add train.tsv.dvc .gitignore
 $ git commit -m "new train data"

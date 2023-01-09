@@ -4,9 +4,10 @@ on:
     - cron: '0 18 * * *'
 jobs:
   update:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v1
       - name: Update
         id: update
         shell: bash
@@ -15,11 +16,12 @@ jobs:
           version=$(curl --silent $url | jq -r .tag_name)
           path=src/components/DownloadButton/index.tsx
           sed -i "s/^const VERSION = .*$/const VERSION = \`$version\`/g" $path
-          echo "::set-output name=changes::$(git diff)"
-          echo "::set-output name=version::$version"
+          echo "changes=$(git diff)" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
       - name: Create PR
         if: ${{ steps.update.outputs.changes != '' }}
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: dvc ${{ steps.update.outputs.version }}
-          title: dvc ${{ steps.update.outputs.version }}
+        run: |
+          cml pr create \
+            --token="${{ secrets.GITHUB_TOKEN }}" \
+            --message="dvc ${{ steps.update.outputs.version }}" \
+            --title="dvc ${{ steps.update.outputs.version }}" .

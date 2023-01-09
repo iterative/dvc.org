@@ -1,3 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .heroSection {
+  @apply pt-14;
+
   position: relative;
 }

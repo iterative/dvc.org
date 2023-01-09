@@ -1,8 +1,8 @@
 ---
 title: 'Get Started: Experiments'
 description: 'Get started with DVC experiments. Learn how to capture multiple
-project versions automatically without bloating the Git repo. Iterate quickly by
-comparing them easily and finding the best performers.'
+project versions automatically without bloating your Git repo. Iterate quickly by
+comparing experiments easily and finding the best performers.'
 ---
 
 # Get Started: Experiments
@@ -29,7 +29,7 @@ ones that we need to Git.
 
 <admon type="tip">
 
-**New!** You can track and compare you ML experiments with DVC directly [from
+**New!** You can track and compare your ML experiments with DVC directly [from
 Visual Studio Code], a leading IDE in the industry.
 
 [from visual studio code]: /doc/vs-code-extension
@@ -46,9 +46,9 @@ the [`example-dvc-experiments`][ede] project.
 ### ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
-commands right away to run experiments in your project. (See the [User Guide]
-for detailed information.) Here, we briefly discuss how to structure an ML
-project with DVC experiments using `dvc exp init`.
+commands right away to run or save experiments in your project. (See the [User
+Guide] for detailed information.) Here, we briefly discuss how to structure an
+ML project with DVC experiments using `dvc exp init`.
 
 [user guide]: /doc/user-guide/experiment-management/experiments-overview
 
@@ -57,7 +57,7 @@ model, a bunch of hyperparameters that tune training and models, and outputs
 metrics and plots to evaluate the models. `dvc exp init` has sane defaults about
 the names of these elements to initialize a project:
 
-```dvc
+```cli
 $ dvc exp init --live dvclive --plots plots python src/train.py
 ```
 
@@ -77,10 +77,10 @@ You can also set these options in a dialog format with
 Running the experiment with the default project settings requires only the
 command:
 
-```dvc
+```cli
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-b28f0
+Reproduced experiment(s): angry-upas
 Experiment results have been applied to your workspace.
 ...
 ```
@@ -89,6 +89,13 @@ This runs the command specified in `dvc.yaml` (`python train.py`), and creates
 models, plots, and metrics in the respective directories. The experiment is then
 associated with the values found in the parameters file (`params.yaml`) and
 other dependencies, as well as the metrics produced.
+
+<admon type="tip">
+
+Current workspace status can also be saved as an experiment using
+[`dvc exp save`](/doc/command-reference/exp/save).
+
+</admon>
 
 <details>
 
@@ -115,24 +122,24 @@ model:
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+  neutral:**Experiment**                  neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.03247   0.9887   10             16                 6875529
-  baseline-experiment       Jan 14, 2022   0.03332   0.9888   10             16                 6875529
-  └── 999710f [exp-ff24d]   10:54 PM       0.03247   0.9887   10             16                 6875529
+  workspace                  -               0.03247   0.9887   10             16                 6875529
+  baseline-experiment        Jan 14, 2022    0.03332   0.9888   10             16                 6875529
+  └── 999710f [angry-upas]   10:54 PM        0.03247   0.9887   10             16                 6875529
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
 that's available in the <abbr>workspace</abbr>. The table also shows each
 experiment in a separate row, along with the Git commit IDs they are attached
-to. We can see that the experiment we run has a name `exp-ff24d` and was run
+to. We can see that the experiment we ran has a name `angry-upas` and was run
 from the commit ID `999710f`.
 
 Now let's do some more experimentation.
@@ -141,10 +148,10 @@ Option `dvc exp run --set-param` allows to update experimental parameters
 without modifying the files manually. We use this feature to set the
 convolutional units in `train.py`.
 
-```dvc
+```cli
 $ dvc exp run --set-param model.conv_units=24
 ...
-Reproduced experiment(s): exp-7b56f
+Reproduced experiment(s): lurid-lair
 Experiment results have been applied to your workspace.
 ...
 ```
@@ -159,21 +166,21 @@ batch. This is especially handy when you have long running experiments.
 We add experiments to the queue using the `--queue` option of `dvc exp run`. We
 also use `-S` (`--set-param`) to set a value for the parameter.
 
-```dvc
+```cli
 $ dvc exp run --queue -S model.conv_units=32
-Queued experiment '3cac8c6' for future execution.
+Queued experiment 'conic-ease' for future execution.
 $ dvc exp run --queue -S model.conv_units=64
-Queued experiment '23660b6' for future execution.
+Queued experiment 'major-mela' for future execution.
 $ dvc exp run --queue -S model.conv_units=128
-Queued experiment '6591a57' for future execution.
+Queued experiment 'frank-farm' for future execution.
 $ dvc exp run --queue -S model.conv_units=256
-Queued experiment '9109ea9' for future execution.
+Queued experiment 'paced-rugs' for future execution.
 ```
 
 Next, run all (`--run-all`) queued experiments in parallel. You can specify the
 number of parallel processes using `--jobs`:
 
-```dvc
+```cli
 $ dvc exp run --run-all --jobs 2
 ```
 
@@ -184,47 +191,43 @@ $ dvc exp run --run-all --jobs 2
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments.
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+  neutral:**Experiment**                 neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.031865   0.9897   10             24                 6875529
-  baseline-experiment       Jan 14, 2022    0.03332   0.9888   10             16                 6875529
-  ├── 43a3b4f [exp-7f82e]   Jan 27, 2022   0.042424   0.9874   10             256                6875529
-  ├── 6d15fac [exp-75369]   Jan 27, 2022   0.037164    0.989   10             128                6875529
-  ├── 47896c1 [exp-76693]   Jan 27, 2022    0.03845   0.9876   10             64                 6875529
-  ├── da84ac7 [exp-4a081]   Jan 27, 2022   0.035497    0.988   10             32                 6875529
-  ├── 5846c68 [exp-953fa]   Jan 27, 2022   0.031865   0.9897   10             24                 6875529
-  └── 999710f [exp-ff24d]   Jan 27, 2022    0.03247   0.9887   10             16                 6875529
+  workspace                  -              0.031865   0.9897   10             24                 6875529
+  baseline-experiment        Jan 14, 2022    0.03332   0.9888   10             16                 6875529
+  ├── 43a3b4f [paced-rugs]   Jan 27, 2022   0.042424   0.9874   10             256                6875529
+  ├── 6d15fac [frank-farm]   Jan 27, 2022   0.037164    0.989   10             128                6875529
+  ├── 47896c1 [major-mela]   Jan 27, 2022    0.03845   0.9876   10             64                 6875529
+  └── da84ac7 [conic-ease]   Jan 27, 2022   0.035497    0.988   10             32
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-By default, it shows all the metrics, parameters and dependencies with the
-timestamp. If you have a large number of metrics, parameters, dependencies or
-experiments, this may lead to a cluttered view. You can limit the table to
-specific columns using the [`--drop`](/doc/command-reference/exp/show#--drop)
-option of the command.
+By default, the output includes all the metrics, parameters and dependencies
+with the timestamp. If you have a large number of metrics, parameters,
+dependencies or experiments, this may lead to a cluttered view. You can limit
+the table to specific columns using the
+[`--drop`](/doc/command-reference/exp/show#--drop) option of the command.
 
-```dvc
+```cli
 $ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable
  ───────────────────────────────────────────────────────────────
-  neutral:**Experiment**                   metric:**acc**   param:**model.conv_units**    dep:**data**
+  neutral:**Experiment**                    metric:**acc**   param:**model.conv_units**    dep:**data**
  ───────────────────────────────────────────────────────────────
-  workspace                 0.9897   24                 6875529
-  baseline-experiment       0.9888   16                 6875529
-  ├── 43a3b4f [exp-7f82e]   0.9874   256                6875529
-  ├── 6d15fac [exp-75369]    0.989   128                6875529
-  ├── 47896c1 [exp-76693]   0.9876   64                 6875529
-  ├── da84ac7 [exp-4a081]    0.988   32                 6875529
-  ├── 5846c68 [exp-953fa]   0.9897   24                 6875529
-  └── 999710f [exp-ff24d]   0.9887   16                 6875529
+  workspace                  0.9897   24                 6875529
+  baseline-experiment        0.9888   16                 6875529
+  ├── 43a3b4f [paced-rugs]   0.9874   256                6875529
+  ├── 6d15fac [frank-farm]   0.989    128                6875529
+  ├── 47896c1 [major-mela]   0.9876   64                 6875529
+  └── da84ac7 [conic-ease]   0.988    32                 6875529
  ───────────────────────────────────────────────────────────────
 ```
 
@@ -232,7 +235,7 @@ $ dvc exp show --drop 'Created|train|loss'
 
 ### ℹ️ More information about metrics
 
-Metrics are what you use to evaluate your models. DVC associates metrics to
+Metrics are what you use to evaluate your models. DVC associates metrics with
 experiments for later comparison. Any scalar value can be used as a metric. You
 can specify text files to contain metrics using `dvc exp init --metrics`, and
 write them in the experimentation code.
@@ -255,9 +258,9 @@ Metrics files are interpreted specially also in
 After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
-```dvc
-$ dvc exp branch exp-17dd9 "cnn-256"
-Git branch 'cnn-256' has been created from experiment 'exp-17dd9'.
+```cli
+$ dvc exp branch paced-rugs "cnn-256"
+Git branch 'cnn-256' has been created from experiment 'paced-rugs'.
 To switch to the new branch run:
 
         git checkout cnn-256
@@ -268,9 +271,9 @@ into your `main` branch with the usual Git commands.
 
 ## Go Further
 
-There are many other features of `dvc exp`, like cleaning up the unused
-experiments, sharing them without committing into Git or getting differences
-between two experiments.
+There are many other features of `dvc exp`, like cleaning up unused experiments,
+saving the current workspace status as an experiment, sharing them without
+committing into Git, or getting differences between two experiments.
 
 Please see the section on
 [Experiment Management](/doc/user-guide/experiment-management) in the User's

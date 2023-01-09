@@ -2,11 +2,11 @@
   margin: 12rem auto;
   text-align: center;
 
-  @media (--md-scr) {
+  @media screen(mdMax) {
     margin: 10rem auto;
   }
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     margin: 6rem auto;
   }
 }
@@ -15,7 +15,7 @@
   font-size: 3rem;
   margin: 2rem 0;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     font-size: 2rem;
   }
 }
@@ -23,7 +23,7 @@
 .copy {
   font-size: 1.75rem;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     font-size: 1.1rem;
   }
 }

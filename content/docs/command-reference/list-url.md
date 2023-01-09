@@ -71,7 +71,7 @@ list files recursively.
 
 This command will list objects and common prefixes under the specified path:
 
-```dvc
+```cli
 $ dvc list-url s3://bucket/path
 ```
 
@@ -81,7 +81,7 @@ DVC will use the AWS credentials file to access S3.
 
 ## Example: SSH
 
-```dvc
+```cli
 $ dvc list-url ssh://user@example.com/path/to/data
 ```
 
@@ -90,7 +90,7 @@ inside `data`.
 
 ## Example: local file system
 
-```dvc
+```cli
 $ dvc list-url /local/path/to/data
 ```
 

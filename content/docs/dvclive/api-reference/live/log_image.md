@@ -11,15 +11,14 @@ def log_image(name: str, val):
 ```py
 from dvclive import Live
 
-live = Live()
+with Live() as live:
+    import numpy as np
+    img_numpy = np.ones((500, 500), np.uint8) * 255
+    live.log_image("numpy.png", img_numpy)
 
-import numpy as np
-img_numpy = np.ones((500, 500), np.uint8) * 255
-live.log_image("numpy.png", img_numpy)
-
-from PIL import Image
-img_pil = Image.new("RGB", (500, 500), (250, 250, 250))
-live.log_image("pil.png", img_pil)
+    from PIL import Image
+    img_pil = Image.new("RGB", (500, 500), (250, 250, 250))
+    live.log_image("pil.png", img_pil)
 ```
 
 ## Description

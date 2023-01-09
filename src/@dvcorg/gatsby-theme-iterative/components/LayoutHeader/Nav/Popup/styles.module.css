@@ -137,7 +137,7 @@
       display: none;
     }
 
-    @media (--md-scr) {
+    @media screen(mdMax) {
       font-size: 17px;
       line-height: 20px;
 
@@ -146,7 +146,7 @@
       }
     }
 
-    @media (--sm-scr) {
+    @media screen(smMax) {
       &:nth-child(5) {
         display: initial;
       }

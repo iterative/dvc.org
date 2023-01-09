@@ -106,7 +106,7 @@ Getting the DVC version and environment information:
 
 Inside a DVC project:
 
-```dvc
+```cli
 $ dvc version
 
 DVC version: 1.10.0 (pip)
@@ -123,7 +123,7 @@ Repo: dvc, git
 
 Outside a DVC project:
 
-```dvc
+```cli
 $ dvc version
 
 DVC version: 1.10.0 (pip)

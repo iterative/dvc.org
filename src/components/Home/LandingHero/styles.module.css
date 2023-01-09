@@ -4,7 +4,7 @@
   padding-top: 136px;
   padding-bottom: 146px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex-direction: column;
     padding-top: 46px;
     padding-bottom: 86px;
@@ -12,7 +12,7 @@
 }
 
 .about {
-  @media (--sm-scr) {
+  @media screen(smMax) {
     max-width: 412px;
     width: 100%;
     margin: 0 auto;
@@ -27,12 +27,12 @@
   font-weight: 500;
   color: var(--color-gray-hover);
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     padding-right: 0;
     font-size: 36px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding: 0;
     font-size: 32px;
   }
@@ -47,7 +47,7 @@
   display: flex;
   margin-top: 28px;
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     flex-direction: column;
   }
 
@@ -61,7 +61,7 @@
   text-decoration: none;
 
   &.actionButton {
-    @media (--xs-scr) {
+    @media screen(xsMax) {
       min-height: 60px;
       margin: 0;
       margin-bottom: 12px;
@@ -106,7 +106,7 @@
   margin-left: 20px;
   font-family: monospace;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     align-items: center;
     margin: 30px auto 0;
     padding-top: 24px;
@@ -150,13 +150,13 @@
   align-self: center;
   flex-basis: 50%;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     max-width: 412px;
     width: 100%;
     margin: 40px 0 0;
   }
 
-  @media (--xxs-scr) {
+  @media screen(xxsMax) {
     margin: 20px 0 0;
   }
 }
@@ -166,9 +166,9 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--color-gray-light);
+  align-items: center;
 
-  @media (--sm-scr) {
-    align-items: center;
+  @media screen(smMax) {
     margin-top: 24px;
     font-size: 18px;
   }
