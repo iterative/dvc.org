@@ -20,7 +20,6 @@ Iterative Studio.
 - [Error: No commits were found for the sub-directory](#error-no-commits-were-found-for-the-sub-directory)
 - [Project got created, but does not contain any data](#project-got-created-but-does-not-contain-any-data)
 - [Project does not contain the columns that I want](#project-does-not-contain-the-columns-that-i-want)
-- [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 
@@ -145,15 +144,13 @@ will still be able to work with your models in the model registry.
 
 There are two possible reasons for this:
 
-1. **The required columns were not imported:** Iterative Studio will import up
-   to 200 columns (metrics, hyperparameters and files) from your Git repository.
-   If your repository has more than 200 columns, you should [select the columns
-   that are mandatory to import]. Iterative Studio will also import the
-   unselected columns, but only up to a maximum of 200 columns.
+1. **The required columns were not imported:** Iterative Studio will only import
+   columns that you select in the
+   [**Columns** setting](/doc/studio/user-guide/projects-and-experiments/configure-a-project#columns).
 
-   **What if there are more than 200 mandatory columns?** Currently Iterative
-   Studio cannot import over 200 columns. If you have a large repository (with
-   more than 200 mandatory columns), one solution is to split the
+   **What if there are more than 200 columns?** Currently Iterative Studio
+   cannot import over 200 columns. If you have a large repository (with more
+   than 200 columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
    multiple subdirectories in your git repository. For each subdirectory, you
    can create a new project in Iterative Studio and limit it to that
@@ -165,8 +162,6 @@ There are two possible reasons for this:
    If this solution does not work for your use case, please create a support
    ticket in the [Iterative Studio support GitHub repository].
 
-[select the columns that are mandatory to import]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#mandatory-columns
 [specify the project directory in project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#project-directory
 [iterative studio support github repository]:
@@ -181,19 +176,6 @@ There are two possible reasons for this:
    #### Show/hide columns
 
    ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
-
-## Project contains columns that I did not mark as mandatory to import
-
-This is not an error. Columns that you select as mandatory in project settings
-are guaranteed to be imported. However, columns that are not selected can still
-be imported and included in the project - if you have selected less than 200
-columns, Iterative Studio will also import some of the unselected columns, up to
-a total of 200 columns.
-
-If you would like to explicitly hide columns, you can simply hide them in the
-project. Once you show/hide columns, you can save the changes. Check out the
-[above video](#showhide-columns) to see how you can show/hide columns. Once you
-show/hide columns, remember to save the changes.
 
 ## Project does not contain some of my commits or branches
 

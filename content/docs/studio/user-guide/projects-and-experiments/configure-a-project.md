@@ -30,7 +30,7 @@ Iterative Studio to be able to access the data required for visualization.
 
 Additionally, you can also configure project settings to
 [change the name](#project-name) of your project and to
-[select mandatory columns](#mandatory-columns) to import in your project.
+[select columns](#columns) to import in your project.
 
 ### Non-DVC repositories
 
@@ -114,30 +114,32 @@ if they are not saved into Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
-### Mandatory columns
+### Columns
 
-##### (Tracking scope)
-
-If your repository exceeds 200 columns, Iterative Studio will import a subset.
-The columns that are not imported will not be available to display in your
-project. In the settings for "Mandatory columns", You can select which columns
-are mandatory to import. Iterative Studio will also import unselected columns up
-to a maximum of 200.
+In the "Columns" setting, you can specify which columns should be imported from
+your Git repository to your project in Iterative Studio. Any unselected column
+cannot be displayed in your project table.
 
 ![](https://static.iterative.ai/img/studio/project_settings_mandatory_columns.png)
 
-Note that some non-mandatory columns will also be imported if there are less
-than 200 mandatory columns. If you would like to hide specific columns from your
-project, you can do so in the project's [Display preferences].
+<!-- TODO: Update the screenshot -->
 
-If your project is missing some required columns or includes columns that you do
-not want, refer to the following troubleshooting sections to understand why this
-may have happened.
+If you would like to hide imported columns from your project, you can do so in
+the project's [Display preferences].
 
-- [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
-- [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
+If your project is missing some required columns, then it is likely that
+[they have not been imported or are hidden](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want).
 
-Note: The **Mandatory columns** section was earlier called **Tracking scope**.
+<admon type="warn">
+
+The **Columns** setting was earlier called **Tracking scope** or **Mandatory
+columns** and behaved slightly differently. Iterative Studio would always import
+up to 200 columns. This means that if you selected only 5 columns, Iterative
+Studio would still import another 195 columns, unless your repository did not
+have so many columns. This behavior is now obsolete, and only selected columns
+are imported.
+
+</admon>
 
 [display preferences]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#columns
