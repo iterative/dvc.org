@@ -120,9 +120,7 @@ In the "Columns" setting, you can specify which columns should be imported from
 your Git repository to your project in Iterative Studio. Any unselected column
 cannot be displayed in your project table.
 
-![](https://static.iterative.ai/img/studio/project_settings_mandatory_columns.png)
-
-<!-- TODO: Update the screenshot -->
+![](https://static.iterative.ai/img/studio/project_settings_columns.png)
 
 If you would like to hide imported columns from your project, you can do so in
 the project's [Display preferences].
