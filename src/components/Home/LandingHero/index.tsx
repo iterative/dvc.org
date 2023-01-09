@@ -1,106 +1,126 @@
-import React, { useEffect, useState } from 'react'
+import React, { Reducer, useEffect, useReducer } from 'react'
 import cn from 'classnames'
 
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import DownloadButton from '../../DownloadButton'
-import TwoRowsButtonLink from '../../TwoRowsButton/link'
-import GithubLine from './GithubLine'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+const items = [
+  {
+    title: 'Connect storage to repo',
+    description:
+      'Keep large data and model files alongside code and share via your cloud storage.',
+    terminal: `$ dvc add cats-dogs
 
-import * as styles from './styles.module.css'
+$ dvc remote add storage s3://bucket/dvc-cache
 
-const logUseCasesEvent = () => {
-  logEvent('Button', { Item: 'how-it-works' })
+$ dvc push
+5000 files pushed`
+  },
+  {
+    title: 'Configure steps as you go',
+    description:
+      'Declare dependencies and outputs at each step to build reproducible end-to-end pipelines.',
+    terminal: `$ dvc exp run
+'data/data.xml.dvc' didn't change, skipping
+Stage 'prepare' didn't change, skipping
+Stage 'featurize' didn't change, skipping
+Running stage 'train':
+> python src/train.py data/features model.pkl`
+  },
+  {
+    title: 'Track experiments in Git',
+    description:
+      'Track experiments in your repo, compare results and restore entire experiment states cross-team.',
+    terminal: `$ dvc exp show
+──────────────────────────────────────────────────────────────────────────
+  Experiment                avg_prec.test   roc_auc.test   train.min_split
+──────────────────────────────────────────────────────────────────────────
+  workspace                         0.925        0.94602   0.01
+  main                              0.925        0.94602   0.01
+  ├── 49dedc5 [exp-49cad]           0.925        0.94602   0.01
+  ├── 701190a [exp-23adf]         0.92017        0.94309   0.02
+  ├── cb3521f [exp-e77dd]         0.91783         0.9407   0.03
+  ├── 29a4e00 [exp-5fe41]         0.91634        0.93989   0.04
+  └── cb4fc16 [exp-61221]         0.91583        0.93979   0.05
+ ──────────────────────────────────────────────────────────────────────────`
+  }
+]
+
+const Terminal = ({ data }) => {
+  return (
+    <div className={cn('sm:w-7/12', 'shrink-0')}>
+      <pre
+        className={cn(
+          'block',
+          'p-3',
+          'border-black',
+          'border-solid',
+          'border',
+          'text-xs',
+          'mx-auto'
+        )}
+      >
+        {data}
+      </pre>
+    </div>
+  )
 }
 
 const LandingHero = () => {
-  const [activeCommand, setActiveCommand] = useState(0)
+  const [{ currentIndex, paused }, changeCurrentIndex] = useReducer<
+    Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
+  >(
+    ({ currentIndex }, action) =>
+      action === undefined
+        ? {
+            currentIndex:
+              currentIndex === items.length - 1 ? 0 : currentIndex + 1,
+            paused: false
+          }
+        : {
+            currentIndex: action,
+            paused: true
+          },
+    { currentIndex: 0, paused: false }
+  )
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setActiveCommand(prev => (prev + 1) % 4),
-      3000
-    )
-
-    return (): void => clearInterval(interval)
-  }, [])
+    if (!paused) {
+      const interval = window.setInterval(() => {
+        changeCurrentIndex(undefined)
+      }, 3000)
+      return () => window.clearInterval(interval)
+    }
+  }, [paused])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.about}>
-        <h1 className={styles.title}>
-          Open-source
-          <br />
-          Version Control System
-          <br />
-          for Machine Learning Projects
-        </h1>
-        <div className={styles.buttonsContainer}>
-          <ShowOnly on="mobile">
-            <Link
-              className={cn(styles.actionButton, styles.getStartedButton)}
-              href="/doc/start"
-            >
-              Get started
-            </Link>
-          </ShowOnly>
-          <ShowOnly on="desktop">
-            <DownloadButton />
-          </ShowOnly>
-          <TwoRowsButtonLink
-            mode="outline"
-            className={`${cn(
-              styles.actionButton,
-              styles.watchVideo
-            )} btn-with-focus btn-with-focus--white`}
-            title="Watch video"
-            description="How it works"
-            icon={
-              <img
-                className={styles.actionButtonIcon}
-                src="/img/play-icon.svg"
-                alt="Watch video"
-              />
-            }
-            onClick={logUseCasesEvent}
-            href="#use-cases"
-          />
-        </div>
-
-        <div className={styles.github}>
-          <GithubLine />
-        </div>
+    <div>
+      <h1 className={cn('text-4xl', 'font-bold', 'mt-4', 'mb-8')}>
+        (Not Just) Data Version Control
+      </h1>
+      <div className={cn('flex', 'flex-col', 'sm:flex-row-reverse', 'my-8')}>
+        <Terminal data={items[currentIndex].terminal} />
+        <ul className={cn('flex', 'flex-col')}>
+          {items.map(({ title, description }, i) => {
+            return (
+              <li key={i}>
+                <button
+                  onClick={() => {
+                    changeCurrentIndex(i)
+                  }}
+                >
+                  <h2 className={cn('text-lg', 'font-semibold')}>{title}</h2>
+                  <p
+                    className={cn(
+                      'overflow-hidden',
+                      i === currentIndex ? 'h-8' : 'h-0'
+                    )}
+                  >
+                    {description}
+                  </p>
+                </button>
+              </li>
+            )
+          })}
+        </ul>
       </div>
-
-      <ShowOnly on="desktop">
-        <div className={styles.commands}>
-          <div
-            className={cn(styles.command, activeCommand === 0 && styles.active)}
-          >
-            <span className={styles.line}>$ dvc add images</span>
-          </div>
-          <div
-            className={cn(styles.command, activeCommand === 1 && styles.active)}
-          >
-            <span className={styles.line}>
-              $ dvc run -d images -o model.p cnn.py
-            </span>
-          </div>
-          <div
-            className={cn(styles.command, activeCommand === 2 && styles.active)}
-          >
-            <span className={styles.line}>
-              $ dvc remote add -d myrepo s3://mybucket
-            </span>
-          </div>
-          <div
-            className={cn(styles.command, activeCommand === 3 && styles.active)}
-          >
-            <span className={styles.line}>$ dvc push</span>
-          </div>
-        </div>
-      </ShowOnly>
     </div>
   )
 }
