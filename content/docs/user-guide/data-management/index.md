@@ -6,29 +6,40 @@
 
 Where and how to store datasets and ML model files is one of the first decisions
 your team will face. But as time progresses, unnecessary files may end up
-scattered throughout multiple buckets and folders. Overlapping contents cause
-data leakage and inefficient storage. The project evolution is not easily to
-track, so multiple data versions coexist (error-prone and not secure). What was
-the name of the best model? Can others reproduce your results?
+scattered throughout multiple buckets. Overlapping contents cause data leakage
+and inefficient storage. The project evolution is not easily to track, so
+multiple data versions coexist (error-prone and not secure). What was the name
+of the best model? Can others reproduce your results?
 
-![Direct storage access](/img/direct_access_storage.png) _The S3 bucket on the
+![Direct access storage](/img/direct_access_storage.png) _The S3 bucket on the
 left is shared by several people and projects; The user on the right needs to
 know the exact location of the correct files, and uses cloud-specific tools
 (e.g. AWS CLI) to access them directly._
 
-DVC gives your data stores a clean structure, helping you take control of your
-existing storage platform. This provides visibility over your data and helps
-secure its access.
+DVC captures information about your data sets, which can be versioned with Git.
+Existing storage can now be organized efficiently. Click among **test** and
+**v1.0** below to see an example:
 
-![DVC data access](/img/dvc_managed_storage.png) _DVC captures information about
-your data in a Git repository. Shared storage (left) can now be organized
-efficiently; You access data using `dvc` (multi-cloud support)._
+<toggle>
+<tab title="test">
 
-DVC saves you the hassle of storing and renaming every data object and their
-versions. It makes sure not to save duplicated file and uses Git's immutable
-history to prevent deleting relevant assets, so sharing your storage is not a
-problem. Your work is made more portable with [multiple storage provider]
-support. And your team collaboration can improve with Git.
+![DVC managed storage (test)](/img/dvc_managed_storage_0.png)
+
+</tab>
+<tab title="v1.0">
+
+![DVC managed storage (1.0)](/img/dvc_managed_storage_1.png)
+
+</tab>
+</toggle>
+
+![]() _DVC captures information about your data in a Git repository. Shared
+storage (left) contains unique, indexed data objects in this example; You access
+data using DVC synchronization tools._
+
+This provides visibility over all your data and helps secure its access. Sharing
+storage locations is no longer a problem, and it's easy to migrate with
+[multiple storage provider] support.
 
 [multiple storage provider]:
   /doc/command-reference/remote/add#supported-storage-types
@@ -56,6 +67,13 @@ reproducibility].
 -->
 
 <!-- it checks the metadata to locate files in both sides -->
+
+<!--
+DVC saves you the hassle of storing and renaming every data object and their
+versions. It makes sure not to save duplicated files
+
+uses Git's immutable history to prevent deleting relevant assets
+-->
 
 <abbr>DVC repositories</abbr> contain [metafiles] (e.g. `data.dvc`) that act as
 pointers to your data files and directories. This keeps your project folder
@@ -121,6 +139,8 @@ benefits:
   or [web]).
 - Enable advanced features such as [data registries], [ML pipelines], [CI/CD for
   ML], [productize] your models, and more!
+
+<!-- And your team collaboration can improve with Git. -->
 
 [space efficiency]: /doc/user-guide/data-management/large-dataset-optimization
 [synchronizes]: /doc/command-reference/remote
