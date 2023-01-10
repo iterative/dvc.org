@@ -125,9 +125,8 @@ To make sure that the data files in the workspace are consistent with the
 <admon>
    
 \* ([copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write)) links or
-**reflinks** are a type of file linking available in UNIX-style file systems.
-Unlike hard links or symlinks, these file entries are only loosely connected to
-the original content. This means that editing reflinks is always safe, as the
-original <abbr>cached</abbr> data will remain unchanged.
+**reflinks** are a type of file linking available in modern file systems. Unlike
+hard links or symlinks, editing reflinks is always safe, as the original
+<abbr>cached</abbr> data will remain unchanged.
 
 </admon>
