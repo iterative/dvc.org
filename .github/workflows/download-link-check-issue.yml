@@ -46,7 +46,7 @@ jobs:
 
       - name: Run Lychee
         id: lychee
-        uses: lycheeverse/lychee-action@v1.5.1
+        uses: lycheeverse/lychee-action@v1.5.4
         with:
           args: ${{ inputs.lychee_args }}
         env:
@@ -85,7 +85,7 @@ jobs:
           labels: ${{ inputs.labels }}
 
       - name: Close if Check Passes
-        uses: peter-evans/close-issue@v2.1.0
+        uses: peter-evans/close-issue@v2.2.0
         if: >-
           steps.lychee.outputs.exit_code == 0 &&
           steps.find-existing-comment.outputs.result

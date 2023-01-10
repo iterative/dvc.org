@@ -126,7 +126,8 @@
         "children": [
           "large-dataset-optimization",
           "importing-external-data",
-          "managing-external-data"
+          "managing-external-data",
+          "cloud-versioning"
         ]
       },
       {
@@ -594,6 +595,7 @@
               "explore-ml-experiments",
               "visualize-and-compare",
               "run-experiments",
+              "live-metrics-and-plots",
               "share-a-project"
             ]
           },

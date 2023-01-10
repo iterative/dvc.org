@@ -77,7 +77,7 @@ code.
 </admon>
 
 Let's say we have the following project, and have just
-[applied](/docs/command-reference/exp/apply) and committed `exp-1dad0` (current
+[applied](/docs/command-reference/exp/apply) and committed `gluey-leak` (current
 `HEAD` of `master`):
 
 ```cli
@@ -86,20 +86,20 @@ $ dvc exp show --all-commits
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+  neutral:**Experiment**               neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.57756   2000                     2
-  master                  05:39 PM       0.57756   2000                     2
-  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
-  ├── exp-e6c97           Oct 21, 2020   0.61314   1500                     2
-  ├── exp-1dad0           Oct 09, 2020   0.57756   2000                     2
-  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
-  9-bigrams-model         Jun 20, 2020   0.54175   1500                     2
-  └── exp-069d9           Sep 24, 2020   0.51076   2500                     2
-  8-evaluation            Jun 20, 2020   0.54175   500                      1
-  7-ml-pipeline           Jun 20, 2020         -   500                      1
+  workspace                -              0.57756   2000                     2
+  master                   05:39 PM       0.57756   2000                     2
+  10-bigrams-experiment    Jun 20, 2020   0.61314   1500                     2
+  ├── paced-rugs           Oct 21, 2020   0.61314   1500                     2
+  ├── gluey-leak           Oct 09, 2020   0.57756   2000                     2
+  └── grade-owls           Oct 09, 2020   0.51676   500                      2
+  9-bigrams-model          Jun 20, 2020   0.54175   1500                     2
+  └── bally-gude           Sep 24, 2020   0.51076   2500                     2
+  8-evaluation             Jun 20, 2020   0.54175   500                      1
+  7-ml-pipeline            Jun 20, 2020         -   500                      1
   ...
-  0-git-init              Jun 20, 2020         -   1500                     2
+  0-git-init               Jun 20, 2020         -   1500                     2
  ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 

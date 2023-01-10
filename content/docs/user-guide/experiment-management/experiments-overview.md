@@ -22,10 +22,9 @@ hidden and not checked out by DVC. Note that these are not pushed to Git remotes
 by default either (see `dvc exp push`).
 
 Note that DVC Experiments require a unique name to identify them. DVC will
-usually auto-generate one by default, such as `exp-bfe64` (based on the
-experiment's hash). A custom name can be set instead, using the `--name`/`-n`
-option of `dvc exp run`/`dvc exp save`. These names can be used to reference
-experiments in other `dvc exp` subcommands.
+auto-generate one by default, such as `puffy-daks`. A custom name can be set
+instead, using the `--name`/`-n` option of `dvc exp run`/`dvc exp save`. These
+names can be used to reference experiments in other `dvc exp` subcommands.
 
 </details>
 
