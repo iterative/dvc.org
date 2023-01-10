@@ -48,7 +48,6 @@
     "@reach/skip-nav": "^0.18.0",
     "@reach/tooltip": "^0.18.0",
     "algoliasearch": "^4.14.3",
-    "asciinema-player": "^3.0.1",
     "classnames": "^2.3.2",
     "color": "^4.2.3",
     "compression": "^1.7.4",

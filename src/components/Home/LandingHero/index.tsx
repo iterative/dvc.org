@@ -1,25 +1,46 @@
-import React, { Reducer, useReducer } from 'react'
+import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
-import { AsciinemaPlayer } from '../../AsciinemaPlayer'
+import { MemoizedTypedTerminal } from './Typed'
 
 const items = [
   {
     title: 'Connect storage to repo',
     description:
       'Keep large data and model files alongside code and share via your cloud storage.',
-    terminal: `remote`
+    terminal: `$ dvc add cats-dogs
+
+$ dvc remote add storage s3://bucket/dvc-cache
+
+$ dvc push
+5000 files pushed`
   },
   {
     title: 'Configure steps as you go',
     description:
       'Declare dependencies and outputs at each step to build reproducible end-to-end pipelines.',
-    terminal: `pull`
+    terminal: `$ dvc exp run
+'data/data.xml.dvc' didn't change, skipping
+Stage 'prepare' didn't change, skipping
+Stage 'featurize' didn't change, skipping
+Running stage 'train':
+> python src/train.py data/features model.pkl`
   },
   {
     title: 'Track experiments in Git',
     description:
       'Track experiments in your repo, compare results and restore entire experiment states cross-team.',
-    terminal: `expshow`
+    terminal: `$ dvc exp show
+──────────────────────────────────────────────────────────────────────────
+  Experiment                avg_prec.test   roc_auc.test   train.min_split
+──────────────────────────────────────────────────────────────────────────
+  workspace                         0.925        0.94602   0.01
+  main                              0.925        0.94602   0.01
+  ├── 49dedc5 [exp-49cad]           0.925        0.94602   0.01
+  ├── 701190a [exp-23adf]         0.92017        0.94309   0.02
+  ├── cb3521f [exp-e77dd]         0.91783         0.9407   0.03
+  ├── 29a4e00 [exp-5fe41]         0.91634        0.93989   0.04
+  └── cb4fc16 [exp-61221]         0.91583        0.93979   0.05
+ ──────────────────────────────────────────────────────────────────────────`
   }
 ]
 
@@ -40,6 +61,9 @@ const LandingHero = () => {
           }
         }
       } else {
+        if (state.paused && state.currentIndex === action) {
+          return state
+        }
         return {
           currentIndex: action,
           paused: true
@@ -51,27 +75,48 @@ const LandingHero = () => {
 
   const { terminal } = items[currentIndex]
 
+  const onComplete = useCallback(
+    () =>
+      window.setTimeout(() => {
+        changeCurrentIndex(undefined)
+      }, 2000),
+    [changeCurrentIndex]
+  )
+
+  const typedOptions = useMemo(() => {
+    return {
+      strings: Array.isArray(terminal) ? terminal : [terminal],
+      onComplete
+    }
+  }, [terminal, currentIndex, onComplete])
+
   return (
     <div>
       <h1 className={cn('text-4xl', 'font-bold', 'mt-4', 'mb-8')}>
         (Not Just) Data Version Control
       </h1>
-      <div className={cn('flex', 'flex-col', 'sm:flex-row-reverse', 'my-8')}>
-        <AsciinemaPlayer
-          asciinemaOptions={{
-            autoPlay: true,
-            preload: true,
-            cols: '67',
-            rows: '15'
-          }}
-          className={cn('sm:w-7/12', 'shrink-0', 'h-full')}
-          src={`/asciinema/${terminal}.cast`}
-          onEnded={() => {
-            window.setTimeout(() => {
-              changeCurrentIndex(undefined)
-            }, 1000)
-          }}
-        />
+      <div className={cn('flex', 'flex-col', 'md:flex-row-reverse', 'my-8')}>
+        <div
+          className={cn(
+            'my-4',
+            'rounded-lg',
+            'bg-white',
+            'drop-shadow',
+            'h-64',
+            'shrink-0',
+            'text-[10px]',
+            'mx-auto',
+            'max-w-full',
+            'w-[474px]',
+            'sm:w-[564px]',
+            'sm:text-[12px]',
+            'overflow-auto'
+          )}
+        >
+          <div className={cn('m-3', 'inline-block')}>
+            <MemoizedTypedTerminal typedOptions={typedOptions} />
+          </div>
+        </div>
         <ul className={cn('flex', 'flex-col', 'justify-center')}>
           {items.map(({ title, description }, i) => {
             const active = currentIndex === i
