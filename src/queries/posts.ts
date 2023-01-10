@@ -26,7 +26,7 @@ interface IResultBlogPostData {
 export default function posts(): Array<IResultBlogPostData> {
   const { allFeedIterativeBlog } = useStaticQuery(graphql`
     query Posts {
-      allFeedIterativeBlog(sort: { fields: [isoDate], order: DESC }, limit: 3) {
+      allFeedIterativeBlog(sort: { isoDate: DESC }, limit: 3) {
         nodes {
           link
           title
