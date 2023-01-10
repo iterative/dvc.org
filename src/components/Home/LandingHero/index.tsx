@@ -2,6 +2,9 @@ import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
 import { MemoizedTypedTerminal } from './Typed'
 
+const wrapOutputLine = line =>
+  line.startsWith('$') ? line + '^250' : `\`${line}\``
+
 const items = [
   {
     title: 'Connect storage to repo',
@@ -12,7 +15,8 @@ const items = [
 $ dvc remote add storage s3://bucket/dvc-cache
 
 $ dvc push
-5000 files pushed`
+5000 files pushed
+`
   },
   {
     title: 'Configure steps as you go',
@@ -23,7 +27,8 @@ $ dvc push
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
 Running stage 'train':
-> python src/train.py data/features model.pkl`
+> python src/train.py data/features model.pkl
+`
   },
   {
     title: 'Track experiments in Git',
@@ -40,9 +45,16 @@ Running stage 'train':
   ├── cb3521f [exp-e77dd]         0.91783         0.9407   0.03
   ├── 29a4e00 [exp-5fe41]         0.91634        0.93989   0.04
   └── cb4fc16 [exp-61221]         0.91583        0.93979   0.05
- ──────────────────────────────────────────────────────────────────────────`
+──────────────────────────────────────────────────────────────────────────
+`
   }
-]
+].map(item => {
+  const { terminal } = item
+  return {
+    ...item,
+    terminal: terminal.split('\n').map(wrapOutputLine).join('\n')
+  }
+})
 
 const LandingHero = () => {
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
@@ -85,6 +97,7 @@ const LandingHero = () => {
 
   const typedOptions = useMemo(() => {
     return {
+      typeSpeed: 20,
       strings: Array.isArray(terminal) ? terminal : [terminal],
       onComplete
     }
@@ -103,17 +116,17 @@ const LandingHero = () => {
             'bg-white',
             'drop-shadow',
             'h-64',
-            'shrink-0',
             'text-[10px]',
             'mx-auto',
             'max-w-full',
             'w-[474px]',
             'sm:w-[564px]',
             'sm:text-[12px]',
-            'overflow-auto'
+            'overflow-auto',
+            'shrink-0'
           )}
         >
-          <div className={cn('m-3', 'inline-block')}>
+          <div className={cn('leading-4', 'm-3', 'inline-block')}>
             <MemoizedTypedTerminal typedOptions={typedOptions} />
           </div>
         </div>
@@ -125,13 +138,14 @@ const LandingHero = () => {
                 <button
                   className={cn(
                     'text-left',
-                    'pl-2',
+                    'px-3',
                     'py-1',
                     'my-1',
                     'flex',
                     'flex-col',
                     'flex-nowrap',
                     'justify-center',
+                    'md:pl-4',
                     active && ['border-l-2', 'border-sky-500']
                   )}
                   onClick={() => {
