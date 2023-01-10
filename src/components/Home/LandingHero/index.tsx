@@ -2,7 +2,7 @@ import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
 import { MemoizedTypedTerminal } from './Typed'
 
-const wrapOutputLine = line =>
+const wrapOutputLine = (line: string) =>
   line.startsWith('$') ? line + '^250' : `\`${line}\``
 
 const items = [
@@ -116,12 +116,16 @@ const LandingHero = () => {
             'bg-white',
             'drop-shadow',
             'h-64',
-            'text-[10px]',
             'mx-auto',
             'max-w-full',
             'w-[474px]',
+            'text-[10px]',
             'sm:w-[564px]',
             'sm:text-[12px]',
+            'md:w-[474px]',
+            'md:text-[10px]',
+            'lg:w-[564px]',
+            'lg:text-[12px]',
             'overflow-auto',
             'shrink-0'
           )}
@@ -159,7 +163,7 @@ const LandingHero = () => {
                       'ease-in-out',
                       'duration-300',
                       'overflow-hidden',
-                      i === currentIndex ? 'h-12' : 'h-0'
+                      i === currentIndex ? 'max-h-12' : 'max-h-0'
                     )}
                   >
                     {description}
