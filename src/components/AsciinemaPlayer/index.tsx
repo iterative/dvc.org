@@ -4,25 +4,29 @@ import 'asciinema-player/dist/bundle/asciinema-player.css'
 
 type AsciinemaPlayerProps = {
   src: string
-  cols?: string
-  rows?: string
-  autoPlay?: boolean
-  preload?: boolean
-  loop?: boolean | number
-  startAt?: number | string
-  speed?: number
-  idleTimeLimit?: number
-  theme?: string
-  poster?: string
-  fit?: string
-  fontSize?: string
+  className?: string
   onEnded?: () => void
+  asciinemaOptions?: {
+    cols?: string
+    rows?: string
+    autoPlay?: boolean
+    preload?: boolean
+    loop?: boolean | number
+    startAt?: number | string
+    speed?: number
+    idleTimeLimit?: number
+    theme?: string
+    poster?: string
+    fit?: string
+    fontSize?: string
+  }
 }
 
 export const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({
   src,
   onEnded,
-  ...asciinemaOptions
+  className,
+  asciinemaOptions
 }) => {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -41,7 +45,7 @@ export const AsciinemaPlayer: React.FC<AsciinemaPlayerProps> = ({
     }
   }, [src])
 
-  return <div ref={ref} />
+  return <div className={className} ref={ref} />
 }
 
 export default AsciinemaPlayer
