@@ -29,9 +29,8 @@ iterations of your ML project.
 
 ## Collecting metrics
 
-First, let's see what is the mechanism to capture values for these ML
-attributes. Let's add and run a final evaluation stage to our
-[pipeline from before](/doc/start/data-management/data-pipelines):
+First, let's see the mechanism to capture values for these ML attributes. Add
+and run a final evaluation stage to our [earlier pipeline]:
 
 ```cli
 $ dvc stage add -n evaluate \
@@ -42,6 +41,8 @@ $ dvc stage add -n evaluate \
 
 $ dvc repro
 ```
+
+[earlier pipeline]: /doc/start/data-management/data-pipelines
 
 <details>
 
@@ -69,7 +70,7 @@ evaluate:
         cache: false
 ```
 
-The biggest difference to previous stages in our pipeline is the new `metrics`
+The biggest difference from previous stages in our pipeline is the new `metrics`
 section. Metrics files contain scalar values (e.g. `AUC`) to compare across
 iterations.
 
@@ -82,9 +83,8 @@ files to be versioned by Git.
 
 </details>
 
-[`evaluate.py`] writes the model's [ROC-AUC] and [average precision] (for both
-datasets) to `eval/live/metrics.json` (which was marked as a [metrics file] with
-`-M` above):
+[`evaluate.py`] writes the model's [ROC-AUC] and [average precision] to
+`eval/live/metrics.json` (previously marked as a [metrics file] with `-M`):
 
 ```json
 {
@@ -121,9 +121,9 @@ The stage also writes [`roc_curve`] and [`confusion_matrix`] values in the
 ## Rendering plots
 
 Similarly, `evaluate` writes `precision`, `recall`, and `thresholds` values into
-JSON arrays (shown below) in the the `eval/prc/train.json` and
-`eval/prc/test.json` [plots files]. It also generates a custom
-`eval/importance.png` image showing a bar chart of features' importance.
+JSON arrays (shown below) in the `eval/prc/train.json` and `eval/prc/test.json`
+[plots files]. It also generates a custom `eval/importance.png` image showing a
+bar chart of features' importance.
 
 ```json
 { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
