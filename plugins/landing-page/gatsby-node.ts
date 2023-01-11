@@ -1,7 +1,39 @@
 import type { GatsbyNode } from 'gatsby'
 
-const wrapOutputLine = (line: string): string =>
-  line.startsWith('$') ? line + '^250' : `\`${line}\``
+const isTypedLine = (line: string) => line.startsWith('$')
+
+const wrapWithBackticks = (line: string) => `\`${line}\``
+
+const DEFAULT_TYPED_LINE_PAUSE = '^250'
+
+const wrapAndAddPause = (line: string, addedPause: string | undefined) => {
+  if (isTypedLine(line)) {
+    return line + (addedPause || DEFAULT_TYPED_LINE_PAUSE)
+  } else {
+    const wrappedLine = wrapWithBackticks(line)
+    if (addedPause) {
+      return wrappedLine + addedPause
+    }
+    return wrappedLine
+  }
+}
+
+const _wrapOutputLine = (line: string): string => {
+  const regexResult = /\^[0-9]+$/.exec(line)
+  console.log(line, regexResult)
+  if (regexResult) {
+    const addedPause = regexResult[0]
+    const originalLine = line.slice(0, regexResult.index)
+    return wrapAndAddPause(originalLine, addedPause)
+  }
+  return wrapAndAddPause(line, undefined)
+}
+
+const wrapOutputLine = (line: string): string => {
+  const result = _wrapOutputLine(line)
+  console.log({ line, result })
+  return result
+}
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
   const {

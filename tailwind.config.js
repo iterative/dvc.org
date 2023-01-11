@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       ...themeConfig.theme.extend,
       colors: {
-        gray: { hover: '#40364d' }
+        gray: { hover: '#40364d' },
+        purple: { DEFAULT: '#945dd6' }
       }
     },
     fontFamily: {

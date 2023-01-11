@@ -7,7 +7,7 @@
   {
     "title": "Configure steps as you go",
     "description": "Declare dependencies and outputs at each step to build reproducible end-to-end pipelines.",
-    "terminal": "$ dvc exp run\n\"data/data.xml.dvc\" didn't change, skipping\nStage \"prepare\" didn't change, skipping\nStage \"featurize\" didn't change, skipping\nRunning stage \"train\":\n> python src/train.py data/features model.pkl"
+    "terminal": "$ dvc exp run\n\"data/data.xml.dvc\" didn't change, skipping^500\nStage \"prepare\" didn't change, skipping^500\nStage \"featurize\" didn't change, skipping^500\nRunning stage \"train\":\n> python src/train.py data/features model.pkl"
   },
   {
     "title": "Track experiments in Git",
