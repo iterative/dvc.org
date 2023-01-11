@@ -1,4 +1,5 @@
 const moment = require('moment')
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
 const { getExpirationFields } = require('../../src/utils/shared/expiration')
 const content = require('../../content/community.json')
 
@@ -143,7 +144,7 @@ module.exports = {
       query ExpiredItemQuery {
         events: allCommunityEvent(
           filter: { expired: { eq: true } }
-          sort: { fields: [sourceIndex] }
+          sort: { sourceIndex: ASC }
         ) {
           nodes {
             expires(formatString: "YYYY-MM-DD")
@@ -153,7 +154,7 @@ module.exports = {
         }
         heroes: allCommunityHero(
           filter: { expired: { eq: true } }
-          sort: { fields: [sourceIndex] }
+          sort: { sourceIndex: ASC }
         ) {
           nodes {
             sourceIndex
@@ -176,5 +177,15 @@ module.exports = {
         `There are expired Nodes in community.json!\n${typeLogsString}`
       )
     }
+  },
+  async onCreateWebpackConfig({ actions }) {
+    actions.setWebpackConfig({
+      plugins: [
+        new FilterWarningsPlugin({
+          exclude:
+            /mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
+        })
+      ]
+    })
   }
 }
