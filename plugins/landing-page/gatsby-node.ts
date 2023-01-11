@@ -14,7 +14,7 @@ const processSplitTerminalLine = (
   line: string,
   addedPause: string | undefined
 ) => {
-  const highlightedLine = Prism.highlight(line, Prism.languages.dvc, 'dvc')
+  const highlightedLine = Prism.highlight(line, Prism.languages.cli, 'cli')
   if (isTypedLine(line)) {
     return highlightedLine + (addedPause || DEFAULT_TYPED_LINE_PAUSE)
   } else {
