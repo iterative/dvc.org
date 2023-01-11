@@ -9,6 +9,28 @@ interface ILandingPageSlide {
   terminal: string
 }
 
+const TerminalButton = ({ color }: { color: string }) => (
+  <span
+    className={cn(
+      'shrink-0',
+      'mr-1',
+      'inline-block',
+      'rounded-full',
+      'w-2',
+      'h-2',
+      color
+    )}
+  />
+)
+
+const TerminalButtons = () => (
+  <div className={cn('h-4', 'px-2', 'pt-2', 'flex', 'flex-row', 'flex-nowrap')}>
+    <TerminalButton color="bg-red-400" />
+    <TerminalButton color="bg-yellow-300" />
+    <TerminalButton color="bg-green-400" />
+  </div>
+)
+
 export const HeroSlides = () => {
   const {
     landingPage: { slides }
@@ -82,11 +104,9 @@ export const HeroSlides = () => {
           'rounded-lg',
           'bg-white',
           'drop-shadow',
-          'h-64',
           'mx-auto',
           'max-w-full',
           'text-[10px]',
-          'overflow-auto',
           'shrink-0',
           'w-[469px]',
           'sm:w-[564px]',
@@ -97,8 +117,12 @@ export const HeroSlides = () => {
           'lg:text-[12px]'
         )}
       >
-        <div className={cn('leading-4', 'm-3', 'inline-block')}>
-          <MemoizedTypedTerminal typedOptions={typedOptions} />
+        <TerminalButtons />
+        <div className={cn('leading-4', 'm-3', 'overflow-auto', 'h-60')}>
+          <MemoizedTypedTerminal
+            typedOptions={typedOptions}
+            className={cn('inline-block')}
+          />
         </div>
       </div>
       <ul className={cn('flex', 'flex-col', 'justify-center')}>
