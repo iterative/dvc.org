@@ -65,7 +65,7 @@ const LandingHero = () => {
   }, [terminal, currentIndex, onComplete])
 
   return (
-    <div>
+    <div className={cn('my-14')}>
       <h1 className={cn('text-4xl', 'font-bold', 'mt-4', 'mb-8')}>
         (Not Just) Data Version Control
       </h1>
@@ -79,16 +79,16 @@ const LandingHero = () => {
             'h-64',
             'mx-auto',
             'max-w-full',
-            'w-[474px]',
             'text-[10px]',
+            'overflow-auto',
+            'shrink-0',
+            'w-[469px]',
             'sm:w-[564px]',
             'sm:text-[12px]',
-            'md:w-[474px]',
+            'md:w-[469px]',
             'md:text-[10px]',
             'lg:w-[564px]',
-            'lg:text-[12px]',
-            'overflow-auto',
-            'shrink-0'
+            'lg:text-[12px]'
           )}
         >
           <div className={cn('leading-4', 'm-3', 'inline-block')}>
