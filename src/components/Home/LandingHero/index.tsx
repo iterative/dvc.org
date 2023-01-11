@@ -1,62 +1,23 @@
 import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
 import { MemoizedTypedTerminal } from './Typed'
-
-const wrapOutputLine = (line: string) =>
-  line.startsWith('$') ? line + '^250' : `\`${line}\``
-
-const items = [
-  {
-    title: 'Connect storage to repo',
-    description:
-      'Keep large data and model files alongside code and share via your cloud storage.',
-    terminal: `$ dvc add cats-dogs
-
-$ dvc remote add storage s3://bucket/dvc-cache
-
-$ dvc push
-5000 files pushed
-`
-  },
-  {
-    title: 'Configure steps as you go',
-    description:
-      'Declare dependencies and outputs at each step to build reproducible end-to-end pipelines.',
-    terminal: `$ dvc exp run
-'data/data.xml.dvc' didn't change, skipping
-Stage 'prepare' didn't change, skipping
-Stage 'featurize' didn't change, skipping
-Running stage 'train':
-> python src/train.py data/features model.pkl
-`
-  },
-  {
-    title: 'Track experiments in Git',
-    description:
-      'Track experiments in your repo, compare results and restore entire experiment states cross-team.',
-    terminal: `$ dvc exp show
-──────────────────────────────────────────────────────────────────────────
-  Experiment                avg_prec.test   roc_auc.test   train.min_split
-──────────────────────────────────────────────────────────────────────────
-  workspace                         0.925        0.94602   0.01
-  main                              0.925        0.94602   0.01
-  ├── 49dedc5 [exp-49cad]           0.925        0.94602   0.01
-  ├── 701190a [exp-23adf]         0.92017        0.94309   0.02
-  ├── cb3521f [exp-e77dd]         0.91783         0.9407   0.03
-  ├── 29a4e00 [exp-5fe41]         0.91634        0.93989   0.04
-  └── cb4fc16 [exp-61221]         0.91583        0.93979   0.05
-──────────────────────────────────────────────────────────────────────────
-`
-  }
-].map(item => {
-  const { terminal } = item
-  return {
-    ...item,
-    terminal: terminal.split('\n').map(wrapOutputLine).join('\n')
-  }
-})
+import { graphql, useStaticQuery } from 'gatsby'
 
 const LandingHero = () => {
+  const {
+    landingPage: { slides }
+  } = useStaticQuery(graphql`
+    query {
+      landingPage {
+        slides {
+          title
+          description
+          terminal
+        }
+      }
+    }
+  `)
+
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
     Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
   >(
@@ -68,7 +29,7 @@ const LandingHero = () => {
         } else {
           return {
             currentIndex:
-              currentIndex === items.length - 1 ? 0 : currentIndex + 1,
+              currentIndex === slides.length - 1 ? 0 : currentIndex + 1,
             paused: false
           }
         }
@@ -85,7 +46,7 @@ const LandingHero = () => {
     { currentIndex: 0, paused: false }
   )
 
-  const { terminal } = items[currentIndex]
+  const { terminal } = slides[currentIndex]
 
   const onComplete = useCallback(
     () =>
@@ -135,7 +96,7 @@ const LandingHero = () => {
           </div>
         </div>
         <ul className={cn('flex', 'flex-col', 'justify-center')}>
-          {items.map(({ title, description }, i) => {
+          {slides.map(({ title, description }, i) => {
             const active = currentIndex === i
             return (
               <li key={i}>
