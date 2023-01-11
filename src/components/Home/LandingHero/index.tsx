@@ -54,13 +54,13 @@ const HeroButtons = () => (
 const LandingHero = () => {
   return (
     <div className={cn('my-14', 'text-gray-hover')}>
-      <h1 className={cn('text-4xl', 'font-medium', 'my-4', 'text-purple')}>
+      <h1 className={cn('text-5xl', 'font-semibold', 'my-4', 'text-purple')}>
         (Not Just) Data Version Control
       </h1>
       <p className={cn('text-xl', 'my-4')}>
-        Git-based data science. Apply version control to machine learning
-        development, make your repo the backbone of your project, and instill
-        best practices across your team.
+        Open-source, Git-based data science. Apply version control to machine
+        learning development, make your repo the backbone of your project, and
+        instill best practices across your team.
       </p>
       <HeroSlides />
       <HeroButtons />
