@@ -119,10 +119,9 @@ export const HeroSlides = () => {
       >
         <TerminalButtons />
         <div className={cn('leading-4', 'm-3', 'overflow-auto', 'h-60')}>
-          <MemoizedTypedTerminal
-            typedOptions={typedOptions}
-            className={cn('inline-block')}
-          />
+          <div className={cn('inline-block')}>
+            <MemoizedTypedTerminal typedOptions={typedOptions} />
+          </div>
         </div>
       </div>
       <ul className={cn('flex', 'flex-col', 'justify-center')}>
