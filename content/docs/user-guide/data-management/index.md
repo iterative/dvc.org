@@ -9,16 +9,20 @@ your team will face. But as time progresses, unnecessary files may end up
 scattered throughout multiple buckets. Overlapping contents cause data leakage
 and inefficient storage. The project evolution is not easily to track, so
 multiple data versions coexist (error-prone and not secure). What was the name
-of the best model? Can others reproduce your results?
+of the best model? Can others reproduce your results? _Example:_
 
 ![Direct access storage](/img/direct_access_storage.png) _The S3 bucket on the
-left is shared by several people and projects; The user on the right needs to
-know the exact location of the correct files, and uses cloud-specific tools
-(e.g. AWS CLI) to access them directly._
+right is shared (and bloated) by several people and projects. You need to know
+the exact location of the correct files, and use cloud-specific tools (e.g. AWS
+CLI) to access them directly._
 
-DVC captures information about your data sets, which can be versioned with Git.
-Existing storage can now be organized efficiently. Click among **test** and
-**v1.0** below to see an example:
+DVC captures information that describes your data. This allows datasets to exist
+in a <abbr>project</abbr> regardless of where and how they're actually stored.
+Their storage can be (re)[organized efficiently] without affecting original
+projects. _Click on **v1.0** and **test** below for an example:_
+
+[organized efficiently]:
+  /doc/user-guide/data-management/large-dataset-optimization
 
 <toggle>
 <tab title="test">
@@ -33,28 +37,32 @@ Existing storage can now be organized efficiently. Click among **test** and
 </tab>
 </toggle>
 
-![]() _DVC captures information about your data in a Git repository. Shared
-storage (left) contains unique, indexed data objects in this example; You access
-data using DVC synchronization tools._
+![]() _DVC [metadata] including folder structure is saved a in Git repository.
+The shared storage (right) contains unique, indexed data objects, minimizing its
+size; You access them using DVC [synchronization] features._
 
-This provides visibility over all your data and helps secure its access. Sharing
-storage locations is no longer a problem, and it's easy to migrate with
-[multiple storage provider] support.
+Every file and directory that matters at a given time is tracked by DVC. And Git
+let's you record of many such times (project versions). You'll be able to know
+when/why any data was included (visibility), guarantee storage integrity, and
+secure its access. Sharing data stores is not a problem, and they're easy to
+migrate across platforms with [multiple provider support].
 
-[multiple storage provider]:
+[metadata]: /doc/user-guide/project-structure/dvc-files#specification
+[synchronization]:
+  /doc/start/data-management/data-versioning#storing-and-sharing
+[multiple provider support]:
   /doc/command-reference/remote/add#supported-storage-types
 
-To get there, a few key changes to your workflow are required:
+Just keep in mind these key changes to your workflow, required by our approach:
 
-1. Data and models must be registered in a code repository (typically on Git).
-1. Stored objects are [reorganized] by DVC (not intended for manual handling).
-1. Data operations (drop, update, transfer, etc.) happen indirectly -- through
-   the repo.
+1. Relevant data and models are registered in a code repository (typically Git).
+1. Data operations (add, remove, move, etc.) happen [indirectly]: DVC checks the
+   metadata to locate files in both sides.
+1. Stored objects managed with DVC are not intended for handling manually.
 
-[reorganized]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+[indirectly]: https://en.wikipedia.org/wiki/Indirection
 
-## Details & Benefits
+## More details and benefits
 
 <!--
 DVC lets you describe the entire <abbr>project</abbr> in a Git repository, so
