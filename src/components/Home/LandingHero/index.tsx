@@ -54,7 +54,16 @@ const HeroButtons = () => (
 const LandingHero = () => {
   return (
     <div className={cn('my-14', 'text-gray-hover')}>
-      <h1 className={cn('text-5xl', 'font-semibold', 'my-4', 'text-purple')}>
+      <h1
+        className={cn(
+          'text-3xl',
+          'sm:text-4xl',
+          'md:text-5xl',
+          'font-semibold',
+          'my-4',
+          'text-purple'
+        )}
+      >
         (Not Just) Data Version Control
       </h1>
       <p className={cn('text-xl', 'my-4')}>
