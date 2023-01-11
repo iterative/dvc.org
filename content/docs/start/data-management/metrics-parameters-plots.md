@@ -115,23 +115,31 @@ eval/live/metrics.json  0.94496          0.97723           0.96191         0.987
   https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures
 [metrics file]: /doc/command-reference/metrics#supported-file-formats
 
-The stage also writes [`roc_curve`] and [`confusion_matrix`] values in the
-`eval/live/plots` directory. Let's see how to visualize these better...
-
 ## Rendering plots
 
-Similarly, `evaluate` writes `precision`, `recall`, and `thresholds` values into
-JSON arrays (shown below) in the `eval/prc/train.json` and `eval/prc/test.json`
-[plots files]. It also generates a custom `eval/importance.png` image showing a
-bar chart of features' importance.
+The stage also writes [`roc_curve`] and [`confusion_matrix`] values in the
+`eval/live/plots` directory. Similarly, it writes `precision`, `recall`, and
+`thresholds` values into JSON arrays to the `eval/prc/train.json` and
+`eval/prc/test.json` [plots files] (format shown below).
 
 ```json
-{ "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
-...
+{
+  "prc": [
+    {
+      "precision": 0.021473008227975116,
+      "recall": 1.0,
+      "threshold": 0.0
+    },
+    ...
+  ]
+}
 ```
 
-You can visualize these different elements as plots with DVC! But first, you
-must configure their [rendering properties][plots files]:
+It also generates a custom `eval/importance.png` image showing a bar chart of
+features' importance. And you can visualize any of these different elements as
+plots with DVC!
+
+Start by configuring the [rendering properties][plots files]:
 
 ```yaml
 plots:
