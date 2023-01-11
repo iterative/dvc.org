@@ -117,29 +117,25 @@ eval/live/metrics.json  0.94496          0.97723           0.96191         0.987
 
 ## Visualizing plots
 
-The stage also writes [`roc_curve`] and [`confusion_matrix`] values in the
-`eval/live/plots` directory. Similarly, it writes `precision`, `recall`, and
-`thresholds` values into JSON arrays to the `eval/prc/train.json` and
-`eval/prc/test.json` [plots files] (format shown below).
+The stage also writes different files with data that can be graphed:
 
-```json
-{
-  "prc": [
-    {
-      "precision": 0.021473008227975116,
-      "recall": 1.0,
-      "threshold": 0.0
-    },
-    ...
-  ]
-}
-```
+- [DVCLive]-generated [`roc_curve`] and [`confusion_matrix`] values in the
+  `eval/live/plots` directory.
+- Precision-recall curves as JSON arrays in `eval/prc/train.json`:
 
-It also generates a custom `eval/importance.png` image showing a bar chart of
-features' importance. And you can visualize any of these different elements as
-plots with DVC!
+  ```json
+  {
+    "prc": [
+      { "precision": 0.0215, "recall": 1.0, "threshold": 0.0 },
+      { "precision": 1.0, "recall": 0.0093, "threshold": 0.6 },
+      ...
+  ```
 
-Start by [configuring the plots][plots files] in `dvc.yaml`:
+- A custom `eval/importance.png` image showing a bar chart of features'
+  importance.
+
+You can visualize all of these with DVC! Start by [configuring the
+plots][plots files] in `dvc.yaml`:
 
 ```yaml
 plots:
@@ -188,6 +184,7 @@ Later we will see how to
 For now, let's see how to capture another important piece of information which
 will be useful for comparison: parameters.
 
+[dvclive]: /doc/dvclive
 [`roc_curve`]:
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html
 [`confusion_matrix`]:
