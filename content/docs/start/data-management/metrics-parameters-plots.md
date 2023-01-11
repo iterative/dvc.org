@@ -115,7 +115,7 @@ eval/live/metrics.json  0.94496          0.97723           0.96191         0.987
   https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures
 [metrics file]: /doc/command-reference/metrics#supported-file-formats
 
-## Rendering plots
+## Visualizing plots
 
 The stage also writes [`roc_curve`] and [`confusion_matrix`] values in the
 `eval/live/plots` directory. Similarly, it writes `precision`, `recall`, and
@@ -139,7 +139,7 @@ It also generates a custom `eval/importance.png` image showing a bar chart of
 features' importance. And you can visualize any of these different elements as
 plots with DVC!
 
-Start by configuring the [rendering properties][plots files]:
+Start by [configuring the plots][plots files] in `dvc.yaml`:
 
 ```yaml
 plots:
@@ -162,7 +162,7 @@ plots:
         eval/live/plots/sklearn/cm/test.json: predicted
 ```
 
-To render them, you can run `dvc plots show` (shown below), which generates an
+To generate them, you can run `dvc plots show` (shown below), which generates an
 HTML file you can open in a browser. Or you can load your project in VS Code and
 use the [DVC Extension]'s [Plots Dashboard].
 
