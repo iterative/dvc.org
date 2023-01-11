@@ -6,11 +6,19 @@ const wrapWithBackticks = (line: string) => `\`${line}\``
 
 const DEFAULT_TYPED_LINE_PAUSE = '^250'
 
-const wrapAndAddPause = (line: string, addedPause: string | undefined) => {
+import Prism from 'prismjs'
+
+import '@dvcorg/gatsby-theme-iterative/config/prismjs/dvc'
+
+const processSplitTerminalLine = (
+  line: string,
+  addedPause: string | undefined
+) => {
+  const highlightedLine = Prism.highlight(line, Prism.languages.dvc, 'dvc')
   if (isTypedLine(line)) {
-    return line + (addedPause || DEFAULT_TYPED_LINE_PAUSE)
+    return highlightedLine + (addedPause || DEFAULT_TYPED_LINE_PAUSE)
   } else {
-    const wrappedLine = wrapWithBackticks(line)
+    const wrappedLine = wrapWithBackticks(highlightedLine)
     if (addedPause) {
       return wrappedLine + addedPause
     }
@@ -18,21 +26,14 @@ const wrapAndAddPause = (line: string, addedPause: string | undefined) => {
   }
 }
 
-const _wrapOutputLine = (line: string): string => {
+const processTerminalLine = (line: string): string => {
   const regexResult = /\^[0-9]+$/.exec(line)
-  console.log(line, regexResult)
   if (regexResult) {
     const addedPause = regexResult[0]
     const originalLine = line.slice(0, regexResult.index)
-    return wrapAndAddPause(originalLine, addedPause)
+    return processSplitTerminalLine(originalLine, addedPause)
   }
-  return wrapAndAddPause(line, undefined)
-}
-
-const wrapOutputLine = (line: string): string => {
-  const result = _wrapOutputLine(line)
-  console.log({ line, result })
-  return result
+  return processSplitTerminalLine(line, undefined)
 }
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
@@ -49,7 +50,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
       const { terminal } = item
       return {
         ...item,
-        terminal: terminal.split('\n').map(wrapOutputLine).join('\n')
+        terminal: terminal.split('\n').map(processTerminalLine).join('\n')
       }
     })
     const landingPageNode = {

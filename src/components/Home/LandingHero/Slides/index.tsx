@@ -102,7 +102,8 @@ export const HeroSlides = () => {
         className={cn(
           'my-4',
           'rounded-lg',
-          'bg-white',
+          'bg-gray-dark',
+          'text-blue',
           'drop-shadow',
           'mx-auto',
           'max-w-full',

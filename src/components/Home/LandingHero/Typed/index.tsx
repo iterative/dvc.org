@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react'
+import cn from 'classnames'
 import Typed, { TypedOptions } from 'typed.js'
+
+import * as codeStyles from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Markdown/Main/theme.module.css'
 
 export const TypedTerminal = ({
   typedOptions,
@@ -21,7 +24,7 @@ export const TypedTerminal = ({
     }
   }, [typedOptions, el.current, typed.current])
 
-  return <pre className={className} ref={el} />
+  return <pre className={cn(className, codeStyles.code)} ref={el} />
 }
 
 export const MemoizedTypedTerminal = React.memo(TypedTerminal)
