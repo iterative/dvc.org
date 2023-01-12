@@ -97,7 +97,7 @@ export const HeroSlides = () => {
   }, [terminal, currentIndex, onComplete])
 
   return (
-    <div className={cn('flex', 'flex-col', 'md:flex-row-reverse', 'my-8')}>
+    <div className={cn('flex', 'flex-col', 'md:flex-row-reverse', 'my-6')}>
       <div
         className={cn(
           'my-4',
@@ -113,13 +113,11 @@ export const HeroSlides = () => {
           'sm:w-[564px]',
           'sm:text-[12px]',
           'md:w-[469px]',
-          'md:text-[10px]',
-          'lg:w-[564px]',
-          'lg:text-[12px]'
+          'md:text-[10px]'
         )}
       >
         <TerminalButtons />
-        <div className={cn('leading-4', 'm-3', 'overflow-auto', 'h-60')}>
+        <div className={cn('leading-4', 'm-3', 'overflow-auto', 'h-52')}>
           <div className={cn('inline-block')}>
             <MemoizedTypedTerminal typedOptions={typedOptions} />
           </div>

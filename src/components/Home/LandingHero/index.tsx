@@ -53,7 +53,7 @@ const HeroButtons = () => (
 
 const LandingHero = () => {
   return (
-    <div className={cn('my-14', 'text-gray-hover')}>
+    <div className={cn('text-gray-hover')}>
       <h1
         className={cn(
           'text-3xl',
