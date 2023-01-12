@@ -64,7 +64,8 @@ const LandingHero = () => {
           'text-purple'
         )}
       >
-        (Not Just) Data Version Control
+        <span className={cn('whitespace-nowrap')}>(Not Just)</span>{' '}
+        <span className={cn('whitespace-nowrap')}>Data Version Control</span>
       </h1>
       <p className={cn('text-xl', 'my-4')}>
         Open-source, Git-based data science. Apply version control to machine
