@@ -2,7 +2,11 @@ const themeConfig = require('@dvcorg/gatsby-theme-iterative/tailwind.config')
 
 module.exports = {
   ...themeConfig,
-  content: [...themeConfig.content, './src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    ...themeConfig.content,
+    './src/**/*.{js,jsx,ts,tsx}',
+    './content/**/*.json'
+  ],
   theme: {
     ...themeConfig.theme,
     extend: {

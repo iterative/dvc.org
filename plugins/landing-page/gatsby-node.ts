@@ -14,11 +14,13 @@ const processSplitTerminalLine = (
   line: string,
   addedPause: string | undefined
 ) => {
-  const highlightedLine = Prism.highlight(line, Prism.languages.cli, 'cli')
   if (isTypedLine(line)) {
-    return highlightedLine + (addedPause || DEFAULT_TYPED_LINE_PAUSE)
+    return (
+      Prism.highlight(line, Prism.languages.cli, 'cli') +
+      (addedPause || DEFAULT_TYPED_LINE_PAUSE)
+    )
   } else {
-    const wrappedLine = wrapWithBackticks(highlightedLine)
+    const wrappedLine = wrapWithBackticks(line)
     if (addedPause) {
       return wrappedLine + addedPause
     }

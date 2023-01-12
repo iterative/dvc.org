@@ -109,15 +109,15 @@ export const HeroSlides = () => {
           'max-w-full',
           'text-[10px]',
           'shrink-0',
-          'w-[469px]',
+          'w-[474px]',
           'sm:w-[564px]',
           'sm:text-[12px]',
-          'md:w-[469px]',
+          'md:w-[474px]',
           'md:text-[10px]'
         )}
       >
         <TerminalButtons />
-        <div className={cn('leading-4', 'm-3', 'overflow-auto', 'h-52')}>
+        <div className={cn('leading-4', 'm-3', 'overflow-auto', 'h-56')}>
           <div className={cn('inline-block')}>
             <MemoizedTypedTerminal typedOptions={typedOptions} />
           </div>
