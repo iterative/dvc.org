@@ -64,7 +64,8 @@ Just keep in mind these key changes to your workflow, required by our approach:
 
 ## More details and benefits
 
-![Technical diagram]() _Technical diagram_
+![DVC data process](/img/dvc-data-process.png) _Overall mechanism for managing
+data with DVC_
 
 When DVC tracks existing, new, or updated data in your <abbr>project</abbr>, it
 takes a unique snapshot of that data in tiny [metafiles] (e.g. `mydata.dvc`).
@@ -75,11 +76,6 @@ expected files transparently.
 
 [metafiles]: /doc/user-guide/project-structure
 [content-addressable]: https://en.wikipedia.org/wiki/Content-addressable_storage
-
-<!--
-[file links]:
-  https://towardsdatascience.com/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1
--->
 
 <details>
 
@@ -104,22 +100,34 @@ organize data or model variations.
 <toggle>
 <tab title="Yesterday">
 
-```
-
+```cli
+$ ls -hop
+total 228B
+    0B  A
+  128B  b/
+  160B  c/
 ```
 
 </tab>
 <tab title="Today">
 
-```
-
+```cli
+$ ls -hop
+total 228K
+    0K  A
+  128K  b/
+  160K  c/
 ```
 
 </tab>
 <tab title="Tomorrow">
 
-```
-
+```cli
+$ ls -hop
+total 228M
+    0M  A
+  128M  b/
+  160M  c/
 ```
 
 </tab>
