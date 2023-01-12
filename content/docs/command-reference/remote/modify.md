@@ -1151,7 +1151,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   minutes for example:
 
   ```cli
-  $ dvc remote modify myremote read_timeout 300
+  $ dvc remote add myremote read_timeout 300
   ```
 
 - `connect_timeout` - set the time in seconds till a timeout exception is thrown
@@ -1159,7 +1159,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   minutes for example:
 
   ```cli
-  $ dvc remote modify myremote connect_timeout 300
+  $ dvc remote add myremote connect_timeout 300
   ```
 
 </details>
