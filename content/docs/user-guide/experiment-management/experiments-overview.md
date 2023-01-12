@@ -22,8 +22,7 @@ DVC Experiments are custom [Git references](/blog/experiment-refs) (found in
 these are not pushed to Git remotes by default (see `dvc exp push`).
 
 All experiments require a unique name to identify them. DVC will usually
-auto-generate one by default, such as `exp-bfe64` (based on the experiment's
-hash). A custom name can be set instead (see the `--name`/`-n` option of
+auto-generate one by default, such as `zippy-acid`. A custom name can be set instead (see the `--name`/`-n` option of
 `dvc exp run` and `dvc exp save`). These names can be used to reference
 experiments in other `dvc exp` subcommands.
 
