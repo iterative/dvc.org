@@ -1147,7 +1147,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 - `read_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to read from a connection (60 by default). Let's set it to 5
+  when attempting to read a portion of data from a connection (60 by default). Let's set it to 5
   minutes for example:
 
   ```cli
