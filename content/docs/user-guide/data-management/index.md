@@ -45,12 +45,12 @@ Every file and directory that matters at a given time is tracked by DVC. And Git
 let's you record of many such times (project versions). You'll be able to know
 when/why any data was included (visibility), guarantee storage integrity, and
 secure its access. Sharing data stores is not a problem, and they're easy to
-migrate across platforms with [multiple provider support].
+migrate across platforms ([multiple providers supported]).
 
 [metadata]: /doc/user-guide/project-structure/dvc-files#specification
 [synchronization]:
   /doc/start/data-management/data-versioning#storing-and-sharing
-[multiple provider support]:
+[multiple providers supported]:
   /doc/command-reference/remote/add#supported-storage-types
 
 Just keep in mind these key changes to your workflow, required by our approach:
@@ -64,94 +64,68 @@ Just keep in mind these key changes to your workflow, required by our approach:
 
 ## More details and benefits
 
-<!--
-DVC lets you describe the entire <abbr>project</abbr> in a Git repository, so
-you can go back to any previous state and find the right data, code, parameters,
-etc. used at that time. In other words: [data versioning] guarantees [ML
-reproducibility].
+![Technical diagram]() _Technical diagram_
 
-[data versioning]: /doc/use-cases/versioning-data-and-models
-[ml reproducibility]: /doc/user-guide/pipelines
--->
-
-<!-- it checks the metadata to locate files in both sides -->
-
-<!--
-DVC saves you the hassle of storing and renaming every data object and their
-versions. It makes sure not to save duplicated files
-
-uses Git's immutable history to prevent deleting relevant assets
--->
-
-<abbr>DVC repositories</abbr> contain [metafiles] (e.g. `data.dvc`) that act as
-pointers to your data files and directories. This keeps your project folder
-small and comprised mainly of text-like code and configuration files you can
-[version with Git] normally. DVC moves your assets (large files, binaries, etc.)
-to a content-addressable <abbr>cache</abbr>, eliminating any duplicates.
+When DVC tracks existing, new, or updated data in your <abbr>project</abbr>, it
+takes a unique snapshot of that data in tiny [metafiles] (e.g. `mydata.dvc`).
+These placeholders point to the underlying files, which DVC moves to a
+[content-addressable] <abbr>cache</abbr> (eliminating duplicates). File links
+are created in your <abbr>workspace</abbr> so you continue working with the
+expected files transparently.
 
 [metafiles]: /doc/user-guide/project-structure
-[register]: /doc/command-reference/add
-[generate]: /doc/command-reference/repro
-[version with git]:
-  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+[content-addressable]: https://en.wikipedia.org/wiki/Content-addressable_storage
 
-<!-- More technical diagram? -->
+<!--
+[file links]:
+  https://towardsdatascience.com/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1
+-->
 
 <details>
 
-### Click for deeper learning: data _codification_ and _indirection_.
+### Click to learn about _data as code_.
 
-These are two important concepts behind **data version control**. First, large
-files and directories are replaced by [file links] and tiny code-like metafiles.
-We can also call this "data as code".
-
-This DVC-generated code contains references to the underlying files in the cache
-(which have been renamed). All data operations going forward happen
-**[indirectly]**, reading/writing metafiles in the repo first (handled
-automatically by `dvc` operations).
-
-[file links]:
-  https://towardsdatascience.com/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1
-[indirectly]: https://en.wikipedia.org/wiki/Indirection
+DVC replaces large files and directories in the project with code-like metafiles
+(and file links, as explain above). We call this process "data codification".
 
 </details>
 
-Now that your data is tracked by DVC (and its code with Git) there's no need to
-come up with special file names or directory structures to handle dataset
-variations. This keeps your project clean and manageable at any scale.
+Separating the description of your data from its storage lets you treat the
+_codified data_ as a first-class citizen in a code repository, by committing it
+with [Git version control] along with ML source code, configuration files, etc.
+This keeps the workspace small and clean -- no need for special file names or
+nested folders to organize data or model variations.
+
+[git version control]:
+  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
 <!-- Sample code/terminal blocks... -->
 
-<!--
-The cache is the first storage layer for you and your team to share and
-collaborate, but more can be defined in DVC [config files] (using `dvc remote`
-commands). These storage locations let you back up and share data, features, ML
-models, etc. Supported platforms include SSH, Amazon S3, Google Cloud Storage,
-Microsoft Azure, among [many more].
+Adopting DVC's approach requires a low effort and has many benefits (recap):
 
-[config files]: /doc/user-guide/project-structure/internal-files
-[many more]: /doc/command-reference/remote/add#supported-storage-types
--->
+- Automatic <abbr>caching</abbr> makes data as easy to manage as code and
+  [optimizes space usage].
+- Your project <abbr>repository</abbr> stays small and easy to share for
+  collaboration ([Git workflows]).
+- DVC keeps track of large files and directories for you, mapping them between
+  your <abbr>workspace</abbr> and one or more storage locations ([multiple
+  providers supported]).
+- Restore previous project versions with Git and find the right data, code, and
+  parameters: [Data versioning] guarantees ML **reproducibility**.
+- Use a consistent interface to access and sync data anywhere (via [CLI], [API],
+  [IDE], or [web]), regardless of the storage platform (S3, GDrive, NAS, etc.).
+- Data integrity: DVC implements append-only storage and uses Git's unchanging
+  history to prevent deleting relevant assets.
+- Data security: Get an authored history of changes that can be traced and
+  audited.
+- Advanced features: [Data registries], [ML pipelines], [CI/CD for ML],
+  [productize] your models, and more!
 
-DVC's approach has a low cost (indirect access, work with Git) and many more
-benefits:
-
-- Work in a small and clean <abbr>workspace</abbr> linked to one or more storage
-  locations.
-- Automatic <abbr>caching</abbr> decouples your project code and configuration
-  from storage and maximizes [space efficiency].
-- DVC backs up, restores, and [synchronizes] everything with a few fast
-  operations that do not change.
-- You get an authored history of data changes that can be traced and audited.
-- Use a consistent interface to access data anywhere (via [CLI], [API], [IDE],
-  or [web]).
-- Enable advanced features such as [data registries], [ML pipelines], [CI/CD for
-  ML], [productize] your models, and more!
-
-<!-- And your team collaboration can improve with Git. -->
-
-[space efficiency]: /doc/user-guide/data-management/large-dataset-optimization
-[synchronizes]: /doc/command-reference/remote
+[optimizes space usage]:
+  /doc/user-guide/data-management/large-dataset-optimization
+[git workflows]:
+  https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows
+[data versioning]: /doc/use-cases/versioning-data-and-models
 [cli]: /doc/command-reference
 [api]: /doc/api-reference
 [ide]: /doc/vs-code-extension
@@ -164,3 +138,18 @@ benefits:
 In summary, DVC establishes a standard way to manage data for ML projects,
 letting you focus on more important tasks like data exploration, preparation,
 cross validation, etc.
+
+<!-- ## Storage locations
+
+The cache is the first storage layer for you and your team to share and
+collaborate, but more can be defined in DVC [config files] (using `dvc remote`
+commands). These storage locations let you back up and share data, features, ML
+models, etc. Supported platforms include SSH, Amazon S3, Google Cloud Storage,
+Microsoft Azure, among [many more].
+
+[config files]: /doc/user-guide/project-structure/internal-files
+[many more]: /doc/command-reference/remote/add#supported-storage-types
+
+[]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+-->
