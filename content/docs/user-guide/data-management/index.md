@@ -83,45 +83,69 @@ expected files transparently.
 
 <details>
 
-### Click to learn about _data as code_.
+### Click to learn about _data codification_.
 
-DVC replaces large files and directories in the project with code-like metafiles
-(and file links, as explain above). We call this process "data codification".
+DVC replaces data in the project with code-like metafiles (and file links, as
+explain above). We could say that the data gets "codified".
 
 </details>
 
-Separating the description of your data from its storage lets you treat the
-_codified data_ as a first-class citizen in a code repository, by committing it
-with [Git version control] along with ML source code, configuration files, etc.
-This keeps the workspace small and clean -- no need for special file names or
-nested folders to organize data or model variations.
+Separating the description of your data from its storage lets you treat data as
+a first-class citizen in a code repository, by committing it with [Git version
+control] along with ML source code, configuration files, etc. This keeps the
+workspace small and clean -- no need for special file names or nested folders to
+organize data or model variations.
 
 [git version control]:
   https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
 <!-- Sample code/terminal blocks... -->
 
+<toggle>
+<tab title="Yesterday">
+
+```
+
+```
+
+</tab>
+<tab title="Today">
+
+```
+
+```
+
+</tab>
+<tab title="Tomorrow">
+
+```
+
+```
+
+</tab>
+</toggle>
+
 Adopting DVC's approach requires a low effort and has many benefits (recap):
 
-- Automatic <abbr>caching</abbr> makes data as easy to manage as code and
-  [optimizes space usage].
-- Your project <abbr>repository</abbr> stays small and easy to share for
-  collaboration ([Git workflows]).
+- Easily manage **data as code** and [optimize space usage] automatically.
 - DVC keeps track of large files and directories for you, mapping them between
   your <abbr>workspace</abbr> and one or more storage locations ([multiple
   providers supported]).
-- Restore previous project versions with Git and find the right data, code, and
-  parameters: [Data versioning] guarantees ML **reproducibility**.
-- Use a consistent interface to access and sync data anywhere (via [CLI], [API],
-  [IDE], or [web]), regardless of the storage platform (S3, GDrive, NAS, etc.).
-- Data integrity: DVC implements append-only storage and uses Git's unchanging
-  history to prevent deleting relevant assets.
-- Data security: Get an authored history of changes that can be traced and
-  audited.
+- Your project <abbr>repository</abbr> stays small and easy to share for
+  **collaboration** ([Git workflows]).
+- [Data versioning] guarantees ML **reproducibility**: Restore previous project
+  states (with Git) and find the right data, code, and parameters used at the
+  time.
+- Use a **consistent interface** to access and sync data anywhere (via [CLI],
+  [API], [IDE], or [web]), regardless of the storage platform (S3, GDrive, NAS,
+  etc.).
+- Data **integrity** based on append-only storage and Git's unchanging history;
+  Data **security** given the authored history of project changes that can be
+  traced and audited.
 - Advanced features: [Data registries], [ML pipelines], [CI/CD for ML],
-  [productize] your models, and more!
+  [productize] your ML models, and more!
 
-[optimizes space usage]:
+[optimize space usage]:
   /doc/user-guide/data-management/large-dataset-optimization
 [git workflows]:
   https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows
