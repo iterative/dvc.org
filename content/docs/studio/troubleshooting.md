@@ -216,7 +216,17 @@ not in the hidden commits list, then please [raise a support request](#support).
 This is a non-specific error with a range of possible causes. To resolve it,
 please check:
 
-- Your account is able to push to the repository.
+- Your account is able to push to the Git repository.
+
+  <admon>
+
+  If your Git account does not have write access on the Git repository connected
+  to a project, you cannot push changes (e.g., new experiments) to the
+  repository even if the project belongs to a team
+  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/teams#roles).
+
+  </admon>
+
 - The repository is **not** marked as archived / read only.
 - In case of GitHub/GitLab/BitBucket enterprise organizations: there is no IP
   whitelisting policy in place which limits access to the organization's
