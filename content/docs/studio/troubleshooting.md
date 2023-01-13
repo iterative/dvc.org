@@ -29,6 +29,7 @@ Iterative Studio.
 - [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
 - [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
 - [How can I remove models from my model registry](#how-can-i-remove-models-from-my-model-registry)
+- [My models have disappeared even though I did not remove (deprecate) them](#my-models-have-disappeared-even-though-i-did-not-remove-deprecate-them)
 - [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
 
 **Billing and payment**
@@ -258,8 +259,14 @@ CLI].
 
 ## How can I remove models from my model registry
 
-To remove models from the model registry, you should remove the associated
-project from your projects dashboard.
+To remove a model from the model registry, use the `Deprecate model` menu item
+in the 3-dot menu next to the model name. You can also remove all of a project's
+models by deleting the project from your projects dashboard.
+
+## My models have disappeared even though I did not remove (deprecate) them
+
+Models can also be removed by deleting the associated project from the projects
+dashboard. So make sure that the project is not deleted.
 
 ## How can I un-assign stages from model versions
 
