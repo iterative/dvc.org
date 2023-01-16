@@ -38,7 +38,7 @@ details.
 
 To connect to repositories on your self-hosted GitLab server, you must first add
 a connection to this server and create a team. Refer to the section on
-[self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+[self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
 for more details.
 
 </admon>
