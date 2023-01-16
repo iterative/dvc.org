@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Connect storage to repo",
+    "description": "Keep large data and model files alongside code and share via your cloud storage.",
+    "terminal": "$ dvc add cats-dogs\n\n$ dvc remote add storage s3://bucket/dvc-cache\n\n$ dvc push\n5000 files pushed"
+  },
+  {
+    "title": "Configure steps as you go",
+    "description": "Declare dependencies and outputs at each step to build reproducible end-to-end pipelines.",
+    "terminal": "$ dvc exp run\n\"data/data.xml.dvc\" didn't change, skipping^500\nStage \"prepare\" didn't change, skipping^500\nStage \"featurize\" didn't change, skipping^500\nRunning stage \"train\":\n> python src/train.py data/features model.pkl"
+  },
+  {
+    "title": "Track experiments in Git",
+    "description": "Track experiments in your repo, compare results and restore entire experiment states cross-team.",
+    "terminal": "$ dvc exp show\n───────────────────────────────────────────────────────────────────────────\n<span class=\"text-black\"><span class=\"bg-stone-100\"> Experiment               </span> <span class=\"bg-orange-200\"> roc_auc.train </span> <span class=\"bg-orange-200\"> roc_auc.test </span> <span class=\"bg-cyan-200\"> train.min_split </span></span>\n───────────────────────────────────────────────────────────────────────────\n <b>workspace                        0.96464        0.93989   0.04</b>\n <b>main                             0.98667        0.94602   0.01</b>\n ├── 0417ff0 [fuggy-zack]         0.98667        0.94602   0.01\n ├── cb5c648 [fishy-mene]         0.97652        0.94309   0.02\n ├── c0dca21 [atrip-teds]         0.96957         0.9407   0.03\n ├── 3d2c9c7 [brisk-aged]         0.96464        0.93989   0.04\n └── 6e910c4 [chirk-main]         0.96193        0.93979   0.05\n───────────────────────────────────────────────────────────────────────────"
+  }
+]
