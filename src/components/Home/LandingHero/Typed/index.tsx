@@ -14,7 +14,6 @@ export const TypedTerminal = ({
   const el = useRef<HTMLPreElement | null>(null)
   const typed = useRef<Typed | null>(null)
 
-
   useEffect(() => {
     if (el.current) {
       typed.current = new Typed(el.current, typedOptions)
