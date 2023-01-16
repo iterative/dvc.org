@@ -68,7 +68,7 @@
     "iso-url": "^1.2.1",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
-    "mkdirp": "^1.0.4",
+    "mkdirp": "^2.0.0",
     "moment": "^2.29.4",
     "nanoid": "^4.0.0",
     "perfect-scrollbar": "^1.5.5",
