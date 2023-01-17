@@ -86,7 +86,7 @@ with Live() as live:
 
 <admon type="warn">
 
-If `live.end()` is omitted, Iterative Studio will continue to wait for new
+If `live.end()` is not called, Iterative Studio will continue to wait for new
 updates forever, because it will not receive the signal that the experiment has
 ended.
 
