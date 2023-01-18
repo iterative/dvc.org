@@ -95,7 +95,7 @@ $ dvc run -n download_file \
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
+Don't forget to check that you are able to connect both ways with tools like `ssh` and
 `sftp` (GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
@@ -163,7 +163,7 @@ $ dvc remote add myssh ssh://user@example.com
 $ dvc remote modify --local myssh password 'mypassword'
 ```
 
-> Please refer to `dvc remote modify` for more details like setting up access
+> You may refer to `dvc remote modify` for more details like setting up access
 > credentials for the different remote types.
 
 Now, use an alias to this remote when defining the stage:
