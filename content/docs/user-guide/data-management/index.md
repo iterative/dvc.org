@@ -5,24 +5,37 @@
 -->
 
 Where and how to store datasets and ML model files is one of the first decisions
-your team will face. But as time progresses, unnecessary files may end up
-scattered throughout multiple buckets. Overlapping contents cause data leakage
-and inefficient storage. The project evolution is not easily to track, so
-multiple data versions coexist (error-prone and not secure). What was the name
-of the best model? Can others reproduce your results? _Example:_
+your team will face. But as time progresses, unrecognized files may end up
+scattered throughout several buckets. Multiple data versions coexist, causing
+errors, data leakage, and inefficient storage. The project evolution is not
+easily to track. What was the name of the best model? Can others reproduce your
+results? _Example:_
+
+<!-- (not secure) -->
 
 ![Direct access storage](/img/direct_access_storage.png) _The S3 bucket on the
 right is shared (and bloated) by several people and projects. You need to know
 the exact location of the correct files, and use cloud-specific tools (e.g. AWS
 CLI) to access them directly._
 
-DVC captures information that describes your data. This allows datasets to exist
-in a <abbr>project</abbr> regardless of where and how they're actually stored.
-Their storage can be (re)[organized efficiently] without affecting original
-projects. _Click on **v1.0** and **test** below for an example:_
+<!--
 
-[organized efficiently]:
+1.1 [x] unrecognized files
+1.2 [/] may end up scattered throughout multiple buckets
+
+2.1 [/] Multiple data versions coexist, causing errors
+2.2 [x] and inefficient storage
+
+-->
+
+To maintain control and visibility over all your data and models, DVC stores
+large files and directories for you in an [organized and efficient] way. It
+tracks them by logging their locations and unique descriptions in text-based
+[metafiles]. _Click on **v1.0** and **test** below for an example:_
+
+[organized and efficient]:
   /doc/user-guide/data-management/large-dataset-optimization
+[metafiles]: /doc/user-guide/project-structure
 
 <toggle>
 <tab title="test">
@@ -41,19 +54,28 @@ projects. _Click on **v1.0** and **test** below for an example:_
 The shared storage (right) contains unique, indexed data objects, minimizing its
 size; You access them using DVC [synchronization] features._
 
-Every file and directory that matters at a given time is tracked by DVC. And Git
-let's you record of many such times (project versions). You'll be able to know
-when/why any data was included (visibility), guarantee storage integrity, and
-secure its access. Sharing data stores is not a problem, and they're easy to
-migrate across platforms ([multiple providers supported]).
-
 [metadata]: /doc/user-guide/project-structure/dvc-files#specification
 [synchronization]:
   /doc/start/data-management/data-versioning#storing-and-sharing
-[multiple providers supported]:
-  /doc/command-reference/remote/add#supported-storage-types
 
-Just keep in mind these key changes to your workflow, required by our approach:
+<!--
+
+3.1 [x] The project evolution is not easily to track
+
+4 [x] Can others reproduce your results?
+
+-->
+
+Committing DVC metafiles [to Git] along your ML source files creates
+[reproducible] project versions: Its history becomes easy to review, rewind, and
+repeat going forward (by anyone). There's no need to come up with naming schemes
+for changed data and model files.
+
+[to git]:
+  https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+[reproducible]: /doc/user-guide/pipelines
+
+This approach requires a few key changes to your workflow:
 
 1. Relevant data and models are registered in a code repository (typically Git).
 1. Data operations (add, remove, move, etc.) happen [indirectly]: DVC checks the
@@ -64,17 +86,38 @@ Just keep in mind these key changes to your workflow, required by our approach:
 
 ## More details and benefits
 
+<!-- distribute parts or entire copies (of the cache). -->
+
+<!-- New or updated files are appended to storage (preventing duplicates), but nothing is deleted by default. -->
+
+<!-- We call this key process _data codification_. -->
+
+<!-- another layer of structure along the time dimension (Git history) -->
+
+<!--
+Every file and directory that matters at a given time is tracked by DVC.
+And Git let's you record of many such times (project versions).
+-->
+
+<!-- This allows datasets to exist in a <abbr>project</abbr> regardless of where and how they're actually stored. -->
+
+<!--
+It takes a snapshot of the data and saves it in text files.
+These become placeholders for large files and directory in your project.
+Data is cached and linked back (virtual).
+Small workspace
+-->
+
 ![DVC data process](/img/dvc-data-process.png) _Overall mechanism for managing
 data with DVC_
 
 When DVC tracks existing, new, or updated data in your <abbr>project</abbr>, it
-takes a unique snapshot of that data in tiny [metafiles] (e.g. `mydata.dvc`).
-These placeholders point to the underlying files, which DVC moves to a
-[content-addressable] <abbr>cache</abbr> (eliminating duplicates). File links
-are created in your <abbr>workspace</abbr> so you continue working with the
-expected files transparently.
+captures a unique description of that data in tiny [metafiles] (e.g.
+`mydata.dvc`). These placeholders point to the underlying files, which DVC moves
+to a [content-addressable] <abbr>cache</abbr> (eliminating duplicates). File
+links are created in your <abbr>workspace</abbr> so you continue working with
+the expected files transparently.
 
-[metafiles]: /doc/user-guide/project-structure
 [content-addressable]: https://en.wikipedia.org/wiki/Content-addressable_storage
 
 <details>
@@ -135,15 +178,21 @@ total 228M
 
 Adopting DVC's approach requires a low effort and has many benefits (recap):
 
+<!--
+Sharing data stores is not a problem, and they're easy to
+migrate across platforms ([multiple providers supported]).
+
+[multiple providers supported]:
+  /doc/command-reference/remote/add#supported-storage-types
+-->
+
 - Easily manage **data as code** and [optimize space usage] automatically.
 - DVC keeps track of large files and directories for you, mapping them between
   your <abbr>workspace</abbr> and one or more storage locations ([multiple
   providers supported]).
 - Your project <abbr>repository</abbr> stays small and easy to share for
   **collaboration** ([Git workflows]).
-- [Data versioning] guarantees ML **reproducibility**: Restore previous project
-  states (with Git) and find the right data, code, and parameters used at the
-  time.
+- [Data versioning] guarantees ML **reproducibility**.
 - Use a **consistent interface** to access and sync data anywhere (via [CLI],
   [API], [IDE], or [web]), regardless of the storage platform (S3, GDrive, NAS,
   etc.).
