@@ -57,18 +57,25 @@ Once you have added the people that you wish to add to your team, click on
 
 ## Roles
 
-Team members or collaborators can have the View, Edit or Admin roles. Viewers
-have read-only access to the projects created by other team members. Editors can
-create and edit the team's projects. And admins have full access to the team's
-projects and settings. They can add (invite) and remove collaborators as well as
-change team settings such as cloud credentials (data remotes).
+Team members or collaborators can have the `Viewer`, `Editor` or `Admin` roles.
+Viewers have read-only access to the projects created by other team members.
+Editors can create and edit the team's projects. And admins have full access to
+the team's projects and settings. They can add (invite) and remove collaborators
+as well as change team settings such as cloud credentials (data remotes). An
+additional role `Visitor` exists for anonymous users who can open a public
+project.
 
 Iterative Studio does not have the concept of an `Owner` role. The user who
 creates the team has the `Admin` role. The privileges of such an admin is the
 same as that of any other collaborator who has been assigned the `Admin` role.
 
-> An additional role `Visitor` exists for anonymous users who can open a public
-> project.
+<admon>
+
+If your Git account does not have write access on the Git repository connected
+to a project, you cannot push changes (e.g., new experiments) to the repository
+even if the project belongs to a team where you are an `Editor` or `Admin`.
+
+</admon>
 
 ### Privileges to create, open and access the team's projects
 

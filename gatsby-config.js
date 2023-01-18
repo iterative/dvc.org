@@ -20,11 +20,19 @@ const keywords = [
 
 const plugins = [
   'gatsby-plugin-twitter',
+  'landing-page',
   {
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
       remark: false,
       simpleLinkerTerms: require('./content/linked-terms')
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'data',
+      path: path.join(__dirname, 'content', 'data')
     }
   },
   {

@@ -1,14 +1,14 @@
 # What is DVC?
 
-DVC is a free [free], open-source tool that standardizes machine learning
-workflows. It helps you [manage data] and ML models, define reproducible [ML
-pipelines], and [manage experiments][experiment management], all under the same
-set of principles:
+DVC is a [free], open-source tool that standardizes machine learning workflows.
+It helps you [manage data] and ML models, define reproducible [ML pipelines],
+and [manage experiments][experiment management], all under the same set of
+principles:
 
 1. **Codification**: Define any aspect of your ML project (data and model
    versions, ML pipelines and experiments) in human-readable [metafiles]. This
-   enables best practices borrowed from established engineering toolsets,
-   reducing the gap with data science.
+   enables using best practices and established engineering toolsets, reducing
+   the gap with data science.
 1. **Versioning**: Use Git (or any SCM) to version and share your entire ML
    project including its source code and configuration, parameters and metrics,
    as well as data assets and processes by committing DVC metafiles (as
@@ -144,9 +144,8 @@ repo (if one is being used, which is not required).
 <admon type="info">
 
 \* ([copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write)) links or
-**reflinks** are a type of file linking available in UNIX-style file systems.
-Unlike hardlinks or symlinks, these file entries turn into a plain copy when
-modified. This means that editing reflinks is always safe, as the original
+**reflinks** are a type of file linking available in modern file systems. Unlike
+hard links or symlinks, editing reflinks is always safe, as the original
 <abbr>cached</abbr> data will remain unchanged.
 
 </admon>

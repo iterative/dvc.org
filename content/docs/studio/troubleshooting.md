@@ -29,6 +29,7 @@ Iterative Studio.
 - [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
 - [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
 - [How can I remove models from my model registry](#how-can-i-remove-models-from-my-model-registry)
+- [My models have disappeared even though I did not remove (deprecate) them](#my-models-have-disappeared-even-though-i-did-not-remove-deprecate-them)
 - [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
 
 **Billing and payment**
@@ -216,7 +217,17 @@ not in the hidden commits list, then please [raise a support request](#support).
 This is a non-specific error with a range of possible causes. To resolve it,
 please check:
 
-- Your account is able to push to the repository.
+- Your account is able to push to the Git repository.
+
+  <admon>
+
+  If your Git account does not have write access on the Git repository connected
+  to a project, you cannot push changes (e.g., new experiments) to the
+  repository even if the project belongs to a team
+  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/teams#roles).
+
+  </admon>
+
 - The repository is **not** marked as archived / read only.
 - In case of GitHub/GitLab/BitBucket enterprise organizations: there is no IP
   whitelisting policy in place which limits access to the organization's
@@ -248,8 +259,14 @@ CLI].
 
 ## How can I remove models from my model registry
 
-To remove models from the model registry, you should remove the associated
-project from your projects dashboard.
+To remove a model from the model registry, use the `Deprecate model` menu item
+in the 3-dot menu next to the model name. You can also remove all of a project's
+models by deleting the project from your projects dashboard.
+
+## My models have disappeared even though I did not remove (deprecate) them
+
+Models can also be removed by deleting the associated project from the projects
+dashboard. So make sure that the project is not deleted.
 
 ## How can I un-assign stages from model versions
 

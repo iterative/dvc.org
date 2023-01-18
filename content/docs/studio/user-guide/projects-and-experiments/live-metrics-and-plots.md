@@ -84,6 +84,14 @@ with Live() as live:
   live.end()
 ```
 
+<admon type="warn">
+
+If `live.end()` is not called, Iterative Studio will continue to wait for new
+updates forever, because it will not receive the signal that the experiment has
+ended.
+
+</admon>
+
 Iterative Studio stores the live metrics and plots data in its database.
 
 In the project table, the live metrics are displayed next to the Git commit
