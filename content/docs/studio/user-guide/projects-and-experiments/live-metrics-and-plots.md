@@ -81,14 +81,13 @@ with Live() as live:
     live.log_metric("accuracy", accuracy)
     live.next_step()
   ...
-  live.end()
 ```
 
-<admon type="warn">
+<admon>
 
-If `live.end()` is not called, Iterative Studio will continue to wait for new
-updates forever, because it will not receive the signal that the experiment has
-ended.
+DVCLive signals the end of the experiment using `live.end()`. Using
+`with Live() as live:` ensures that `live.end()` is automatically called when
+the experiment concludes.
 
 </admon>
 
