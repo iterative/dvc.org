@@ -27,5 +27,5 @@ To check whether DVC is installed or which version you have, use `dvc version`.
   it does not work for you, you can refer to 
   [these instructions](/doc/install/completion) to set it up
 
-- Please also check out these 3rd-party tool [plugins](/doc/install/plugins),
-  which might be useful.
+- Additionally, you might find these 3rd-party tool 
+  [plugins](/doc/install/plugins) useful.
