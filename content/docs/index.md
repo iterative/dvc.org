@@ -4,10 +4,10 @@
 [experiment management] tool that takes advantage of the existing software
 engineering toolset you're already familiar with (Git, your IDE, CI/CD, etc.).
 **DVC** helps data science and machine learning teams manage large datasets,
-make projects reproducible, and better collaborate.
+make projects reproducible, and collaborate better.
 
-**DVC** is available for [Visual Studio Code], any [system terminal], and as a
-[Python library].
+**DVC** is available for [Visual Studio Code], and can be installed in any
+[system terminal], and used as a [Python library].
 
 [data versioning]: /doc/start/data-management/data-versioning
 [workflow automation]: /doc/user-guide/pipelines
