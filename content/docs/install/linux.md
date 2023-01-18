@@ -2,7 +2,7 @@
 
 <admon type="tip">
 
-To use DVC [as a Python library](/doc/api-reference), please install
+To use DVC [as a Python library](/doc/api-reference), you can install it
 [with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
 
 </admon>
@@ -46,7 +46,7 @@ In this case it installs the `boto3` library along with DVC.
 
 </details>
 
-> Please restart your terminal or re-source the shell configuration file
+> The shell configuration file needs to be restarted or re-sourced
 > (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after
 > installation. If restarting the terminal isn't desirable (e.g. containers),
 > it's also possible to manually edit the `PATH` env variable.
