@@ -87,7 +87,7 @@ with Live() as live:
 
 DVCLive signals the end of the experiment using `live.end()`. Using
 `with Live() as live:` or one of the DVCLive integrations for
-[ML Frameworks](doc/dvclive/api-reference/ml-frameworks) ensures that
+[ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) ensures that
 `live.end()` is automatically called when the experiment concludes.
 
 </admon>
