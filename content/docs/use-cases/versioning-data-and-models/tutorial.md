@@ -36,10 +36,10 @@ model file.
 > We have last tested this tutorial with Python 3.7.
 
 You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
-Also, if DVC is not installed, please follow these [instructions](/doc/install)
+Also, if DVC is not installed, you can follow these [instructions](/doc/install)
 to do so.
 
-> If you're using Windows, please review
+> If you're using Windows, you can review
 > [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
 > important tips to improve your experience.
 
