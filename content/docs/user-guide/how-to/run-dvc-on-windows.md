@@ -21,7 +21,7 @@ details [here](/doc/install/ide-plugins#visual-studio-code)!
 ## POSIX-like command line experience
 
 The regular Command Prompt (`cmd`) in Windows will most likely not help you use
-DVC effectively, or follow the examples in our docs. Please avoid it. There's no
+DVC effectively, or follow the examples in our docs. Make sure to avoid it. There's no
 perfect solution, but here are some ideas:
 
 - [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) with
@@ -97,7 +97,7 @@ directory, as explained in
 By default, DVC tries to use [Less](<https://en.wikipedia.org/wiki/Less_(Unix)>)
 as pager for the output of `dvc dag`. Windows doesn't have the `less` command
 available however. Fortunately, there is a easy way of installing it via
-[Chocolatey](https://chocolatey.org/) (please install the tool first):
+[Chocolatey](https://chocolatey.org/) (don't forget to install the tool first):
 
 ```cli
 $ choco install less
