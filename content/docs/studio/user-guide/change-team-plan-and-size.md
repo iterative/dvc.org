@@ -55,7 +55,7 @@ only 1 or 2 collaborators or pending invites. Then click on the `Downgrade`
 button.
 
 When you downgrade, you will receive a prorated refund for the days remaining in
-the billing period. For inquiries about refunds, please [contact us].
+the billing period. For inquiries about refunds, feel free to [contact us].
 
 [contact us]: /doc/studio/troubleshooting#support
 
@@ -65,7 +65,7 @@ needs and suggest a suitable plan and pricing.
 
 ### If you are on the Teams or Enterprise plan
 
-For any changes to the plan, please contact your focal point at Iterative.
+For any changes to the plan, feel free to contact your focal point at Iterative.
 
 ## Change the size of your team
 
@@ -95,4 +95,4 @@ The total payable amount or credit balance will be displayed for you to
 
 ### If you are on the Teams or Enterprise plan
 
-For any changes to the plan, please contact your focal point at Iterative.
+For any changes to the plan, don't hesitate to contact your focal point at Iterative.
