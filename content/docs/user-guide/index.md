@@ -1,18 +1,12 @@
 # What is DVC?
 
-**Data Version Control** is a [free], open-source tool for [data management], ML
-[workflow automation], and [experiment management]. DVC takes advantage of the
-existing software engineering toolset your team already knows (Git, your IDE,
-CI/CD, etc.). DVC helps data science and machine learning teams manage large
-datasets, make projects reproducible, and collaborate better.
+**Data Version Control** is a [free], open-source tool for [data management],
+[ML pipeline][ml pipelines] automation, and [experiment management]. This helps
+data science and machine learning teams manage **large datasets**, make projects
+**reproducible**, and **collaborate** better.
 
-[data management]: /doc/user-guide/data-management
-[workflow automation]: /doc/user-guide/pipelines
-[experiment management]: /doc/user-guide/experiment-management
-
-DVC is a [free], open-source tool that standardizes machine learning workflows.
-It helps you [manage data] and ML models, define reproducible [ML pipelines],
-and [manage experiments][experiment management], all under the same set of
+DVC takes advantage of the existing software engineering toolset your team
+already knows (Git, your IDE, CI/CD, etc.). Its design follows this set of
 principles:
 
 1. **Codification**: Define any aspect of your ML project (data and model
@@ -26,6 +20,7 @@ principles:
 1. **Secure collaboration**: Control the access to all aspects of your project
    and share them with the people and teams you choose.
 
+[data management]: /doc/user-guide/data-management
 [manage data]: /doc/user-guide/data-management
 [ml pipelines]: /doc/user-guide/pipelines
 [experiment management]: /doc/user-guide/experiment-management
@@ -127,8 +122,8 @@ repo (if one is being used, which is not required).
   [available](/doc/command-reference/install)).
 
 - Git-LFS was not made with data science in mind, so it doesn't provide related
-  features (e.g. [ML pipelines](/doc/command-reference/dag),
-  [metrics](/doc/command-reference/metrics), etc.).
+  features (e.g. [ML pipelines], [metrics](/doc/command-reference/metrics),
+  etc.).
 
 - GitHub (most common Git hosting service) has a limit of 2 GB per repository.
 
