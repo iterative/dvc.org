@@ -6,7 +6,7 @@ existing software engineering toolset your team already knows (Git, your IDE,
 CI/CD, etc.). DVC helps data science and machine learning teams manage large
 datasets, make projects reproducible, and collaborate better.
 
-[data management]: /doc/start/data-management
+[data management]: /doc/user-guide/data-management
 [workflow automation]: /doc/user-guide/pipelines
 [experiment management]: /doc/user-guide/experiment-management
 
