@@ -1,6 +1,6 @@
 # DVC Experiments Overview
 
-DVC Experiments can be saved automatically while experiments run or manually
+ML experiments can be saved with DVC automatically as they're run or manually
 after they complete. Each experiment creates and tracks a variation of your data
 science project based on the changes in your <abbr>workspace</abbr>.
 
