@@ -19,32 +19,18 @@ CLI) to access them directly._
 To maintain control and visibility over all your data and models, DVC stores
 large files and directories for you in an [organized] way. It tracks them by
 logging their locations and unique descriptions in text-based [metafiles].
-_Click on **v1.0** and **test** below for an example:_
 
 [organized]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 [metafiles]: /doc/user-guide/project-structure
 
-<toggle>
-<tab title="test">
+![DVC-cached storage](/img/dvc_managed_storage.png)
 
-![DVC managed storage (test)](/img/dvc_managed_storage_0.png)
+![]() _DVC writes `.dvc` files including `md5` content signatures. A project
+cache indexes files by content, eliminating duplicates. Mass storage may or may
+not reflect your project folder. DVC [synchronizes] everything._
 
-</tab>
-<tab title="v1.0">
-
-![DVC managed storage (1.0)](/img/dvc_managed_storage_1.png)
-
-</tab>
-</toggle>
-
-![]() _DVC [metadata] including folder structure is saved a in Git repository.
-The shared storage (right) contains unique, indexed data objects, minimizing its
-size; You access them using DVC [synchronization] features._
-
-[metadata]: /doc/user-guide/project-structure/dvc-files#specification
-[synchronization]:
-  /doc/start/data-management/data-versioning#storing-and-sharing
+[synchronizes]: /doc/start/data-management/data-versioning#storing-and-sharing
 
 Committing DVC metafiles [to Git] along your ML source files creates
 [reproducible] project versions: Its history becomes easy to review, rewind, and
@@ -55,6 +41,13 @@ for changed data and model files.
   https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 [reproducible]: /doc/user-guide/pipelines
 
+![Versioning data with Git](/img/project_versioning.png) _You can use Git
+history to store different dataset and model versions without renaming any
+files._
+
+## More details and benefits
+
+<!--
 This approach requires a few key changes to your workflow:
 
 1. Relevant data and models are registered in a code repository (typically Git).
@@ -63,10 +56,7 @@ This approach requires a few key changes to your workflow:
 1. Stored objects managed with DVC are not intended for handling manually.
 
 [indirectly]: https://en.wikipedia.org/wiki/Indirection
-
-## More details and benefits
-
-<!-- Full diagram -->
+-->
 
 When DVC tracks existing, new, or updated data in your <abbr>project</abbr>, it
 writes a unique description about it to tiny [metafiles] (e.g. `dataset.dvc`).
@@ -85,6 +75,8 @@ creates references from your workspace to the cache so that DVC can manage the
 data transparently.
 
 </details>
+
+<!-- Full diagram? -->
 
 Separating data description from storage lets you treat it as a first-class
 citizen in any code repository by committing the metafiles with [Git version
