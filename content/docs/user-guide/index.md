@@ -1,5 +1,9 @@
 # What is DVC?
 
+<!--
+## What is DVC?
+-->
+
 **Data Version Control** is a [free], open-source tool for [data management],
 [ML pipeline][ml pipelines] automation, and [experiment management]. This helps
 data science and machine learning teams manage **large datasets**, make projects
