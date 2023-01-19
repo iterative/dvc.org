@@ -55,7 +55,7 @@ This hook automates `dvc push` before `git push`.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories tracked by DVC to remote storage.
 
-If a hook already exists, DVC will raise an exception. In that case, please try
+If a hook already exists, DVC will raise an exception. In that case, you can try
 to manually edit the existing file or remove it and retry install.
 
 For more information about git hooks, refer to the
