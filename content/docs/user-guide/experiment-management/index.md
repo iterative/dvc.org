@@ -46,6 +46,15 @@ this:
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [gui]: #work-with-dvc-experiments-from-a-gui
 
+<admon type="">
+
+See 👨‍💻 [Get Started: Experiments] for a hands-on introduction to DVC
+experiments.
+
+</admon>
+
+[get started: experiments]: /doc/start/experiment-management/experiments
+
 ## Save experiments
 
 DVC is not opinionated about your experiments workflow. To save an experiment,
