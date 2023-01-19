@@ -38,7 +38,7 @@ Iterative Studio.
 
 ## Support
 
-If you need further help, please send us a message using `Help` on the
+If you need further help, feel free to send us a message using `Help` on the
 [Iterative Studio website](https://studio.iterative.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
@@ -163,7 +163,7 @@ There are two possible reasons for this:
    To create projects for subdirectories, [specify the project directory in
    project settings].
 
-   If this solution does not work for your use case, please create a support
+   If this solution does not work for your use case, don't hesitate to create a support
    ticket in the [Iterative Studio support GitHub repository].
 
 [select the columns that are mandatory to import]:
@@ -207,7 +207,7 @@ by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is
-not in the hidden commits list, then please [raise a support request](#support).
+not in the hidden commits list, then make sure to [raise a support request](#support).
 
 [display preferences -> hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
@@ -215,7 +215,7 @@ not in the hidden commits list, then please [raise a support request](#support).
 ## Error: Failed to push experiment to repository
 
 This is a non-specific error with a range of possible causes. To resolve it,
-please check:
+don't forget to check:
 
 - Your account is able to push to the Git repository.
 
@@ -234,13 +234,13 @@ please check:
   resources.
 - Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
   are experiencing service disruptions. In case of an on-premises deployment,
-  please check with your administrator.
+  do check with your administrator.
 
 [gh-status]: https://www.githubstatus.com/
 [gl-status]: https://status.gitlab.com/
 [bb-status]: https://bitbucket.status.atlassian.com/
 
-If you get this error and none of the above applies, please
+If you get this error and none of the above applies, don't forget to
 [get in touch with us](#support).
 
 ## I cannot find my desired Git repository in the form to add a model
@@ -285,7 +285,7 @@ Currently, you cannot un-assign stages from the Iterative Studio user interface.
 
 Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
-please [contact us](#support).
+don't hesitate to [contact us](#support).
 
 [gto]: https://mlem.ai/doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
