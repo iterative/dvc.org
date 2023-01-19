@@ -54,7 +54,7 @@ you can follow one of these roads:
   to log live results and save the experiment by including the keyword argument
   `save_dvc_exp=True`.
 - If you have a DVC [pipeline], use `dvc exp run` to both [run] your code
-  pipeline and save experiment results. `dvc exp run` also enables other
+  pipeline and save experiment results. `dvc exp run` also enables advanced
   features like queuing many experiments at once.
 - If you already have results that you want to save or don't want to use either
   of the above methods to automatically save experiments, you can save
