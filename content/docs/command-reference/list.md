@@ -52,7 +52,7 @@ providing a path to listing commands such as `ls` or `aws s3 ls`.
 Only the root directory is listed by default, but the `-R` option can be used to
 list files recursively.
 
-Please note that `dvc list` doesn't check whether the listed data (tracked by
+Note that `dvc list` doesn't check whether the listed data (tracked by
 DVC) actually exists in remote storage, so it's not guaranteed whether it can be
 accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
