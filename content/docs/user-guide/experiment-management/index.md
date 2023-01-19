@@ -13,10 +13,10 @@ with temporary commits and branches.
 
 ### ⚙️ How does DVC track experiments?
 
-Experiments are custom [Git references](/blog/experiment-refs) (found in
-`.git/refs/exps`) with one or more commits based on `HEAD`. These commits are
-hidden and not checked out by DVC. Note that these are not pushed to Git remotes
-by default either (see `dvc exp push`).
+Experiments are custom [Git references] (found in `.git/refs/exps`) with one or
+more commits based on `HEAD`. These commits are hidden and not checked out by
+DVC. Note that these are not pushed to Git remotes by default either (see
+`dvc exp push`).
 
 Note that DVC Experiments require a unique name to identify them. DVC will
 auto-generate one by default, such as `puffy-daks`. A custom name can be set
@@ -24,6 +24,8 @@ instead, using the `--name`/`-n` option of `dvc exp run`/`dvc exp save`. These
 names can be used to reference experiments in other `dvc exp` subcommands.
 
 </details>
+
+[git references]: https://iterative.ai/blog/experiment-refs/
 
 ## Basic workflow
 
@@ -34,17 +36,18 @@ this:
 
 - Modify hyperparameters or other dependencies (input data, source code,
   commands to execute, etc.). Leave these changes un-committed in Git.
-- Run and [save experiments](#save-experiments). The results are reflected in
-  your <abbr>workspace</abbr>, and tracked automatically.
+- Run and [save experiments]. The results are reflected in your
+  <abbr>workspace</abbr>, and tracked automatically.
 - Review and [compare] experiments in a [GUI] or from the command line with
   `dvc exp show`, using `dvc metrics` and `dvc plots` to identify the best
   one(s). Repeat 🔄
 - Make certain experiments [persistent] by committing their results to Git. This
   lets you repeat the process from that point.
 
+[save experiments]: #saving-experiments
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [gui]: #work-with-dvc-experiments-from-a-gui
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 <admon type="">
 
@@ -72,8 +75,6 @@ you can follow one of these roads:
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
 [dvclive]: /doc/dvclive/get-started
-[save]:
-  /doc/user-guide/experiment-management/experiment-overview#saving-experiments
 
 ## Save metrics, plots, and parameters
 
