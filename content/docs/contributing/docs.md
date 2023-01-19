@@ -9,7 +9,7 @@ In case of a minor change, you can use the **Edit on GitHub** button to open the
 source code page. Use the Edit button (pencil icon) to edit the file in-place,
 and then **Commit changes** from the bottom of the page.
 
-> Please see our
+> Do check out our
 > [Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
 > for more details on how to write and submit a new blog post.
 
