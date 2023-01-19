@@ -48,7 +48,7 @@ this:
 ## Save experiments
 
 DVC is not opinionated about your experiments workflow. To save an experiment,
-you may choose any of these workflows:
+you can follow one of these roads:
 
 - If you do not have a DVC pipeline, you can add [DVCLive] to your Python code
   to log live results and save the experiment by including the keyword argument
