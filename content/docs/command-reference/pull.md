@@ -182,7 +182,7 @@ $ dvc pull train
 
 ## Example: With dependencies
 
-> Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
+> Delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous ones.
 
 Our [pipeline](/doc/command-reference/dag) has been set up with these
