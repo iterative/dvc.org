@@ -4,37 +4,25 @@
 ## Data Management for Machine Learning
 -->
 
-Where and how to store datasets and ML model files is one of the first decisions
-your team will face. But as time progresses, unrecognized files may end up
-scattered throughout several buckets. Multiple data versions coexist, causing
-errors, data leakage, and inefficient storage. The project evolution is not
-easily to track. What was the name of the best model? Can others reproduce your
-results? _Example:_
-
-<!-- (not secure) -->
+Where and how to store data and ML model files is one of the first decisions
+your team will face. But traditional back-up strategies do not fit the data
+science lifecycle. Large files end up scattered throughout several buckets.
+Overlapping dataset versions coexist, causing leakage and inefficient use of
+space. The project evolution is harder to track. What was the name of the best
+model? Is it safe to delete `huge_split.zip`? Can others reproduce my results?
 
 ![Direct access storage](/img/direct_access_storage.png) _The S3 bucket on the
 right is shared (and bloated) by several people and projects. You need to know
 the exact location of the correct files, and use cloud-specific tools (e.g. AWS
 CLI) to access them directly._
 
-<!--
-
-1.1 [x] unrecognized files
-1.2 [/] may end up scattered throughout multiple buckets
-
-2.1 [/] Multiple data versions coexist, causing errors
-2.2 [x] and inefficient storage
-
--->
-
 To maintain control and visibility over all your data and models, DVC stores
-large files and directories for you in an [organized and efficient] way. It
-tracks them by logging their locations and unique descriptions in text-based
-[metafiles]. _Click on **v1.0** and **test** below for an example:_
+large files and directories for you in an [organized] way. It tracks them by
+logging their locations and unique descriptions in text-based [metafiles].
+_Click on **v1.0** and **test** below for an example:_
 
-[organized and efficient]:
-  /doc/user-guide/data-management/large-dataset-optimization
+[organized]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 [metafiles]: /doc/user-guide/project-structure
 
 <toggle>
@@ -58,14 +46,6 @@ size; You access them using DVC [synchronization] features._
 [synchronization]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 
-<!--
-
-3.1 [x] The project evolution is not easily to track
-
-4 [x] Can others reproduce your results?
-
--->
-
 Committing DVC metafiles [to Git] along your ML source files creates
 [reproducible] project versions: Its history becomes easy to review, rewind, and
 repeat going forward (by anyone). There's no need to come up with naming schemes
@@ -86,95 +66,37 @@ This approach requires a few key changes to your workflow:
 
 ## More details and benefits
 
-<!-- distribute parts or entire copies (of the cache). -->
-
-<!-- New or updated files are appended to storage (preventing duplicates), but nothing is deleted by default. -->
-
-<!-- We call this key process _data codification_. -->
-
-<!-- another layer of structure along the time dimension (Git history) -->
-
-<!--
-Every file and directory that matters at a given time is tracked by DVC.
-And Git let's you record of many such times (project versions).
--->
-
-<!-- This allows datasets to exist in a <abbr>project</abbr> regardless of where and how they're actually stored. -->
-
-<!--
-It takes a snapshot of the data and saves it in text files.
-These become placeholders for large files and directory in your project.
-Data is cached and linked back (virtual).
-Small workspace
--->
-
-![DVC data process](/img/dvc-data-process.png) _Overall mechanism for managing
-data with DVC_
+<!-- Full diagram -->
 
 When DVC tracks existing, new, or updated data in your <abbr>project</abbr>, it
-captures a unique description of that data in tiny [metafiles] (e.g.
-`mydata.dvc`). These placeholders point to the underlying files, which DVC moves
-to a [content-addressable] <abbr>cache</abbr> (eliminating duplicates). File
-links are created in your <abbr>workspace</abbr> so you continue working with
-the expected files transparently.
-
-[content-addressable]: https://en.wikipedia.org/wiki/Content-addressable_storage
+writes a unique description about it to tiny [metafiles] (e.g. `dataset.dvc`).
+These include a content signature that is used to index a data
+<abbr>cache</abbr>. The underlying files are appended there (preventing
+duplicates and deletions) and replaced by file links in your
+<abbr>workspace</abbr>: You continue using the data normally.
 
 <details>
 
 ### Click to learn about _data codification_.
 
-DVC replaces data in the project with code-like metafiles (and file links, as
-explain above). We could say that the data gets "codified".
+DVC replaces data in the project with code-like metafiles (and file links) as
+explain above. We could say that the data gets "codified". This in effect
+creates references from your workspace to the cache so that DVC can manage the
+data transparently.
 
 </details>
 
-Separating the description of your data from its storage lets you treat data as
-a first-class citizen in a code repository, by committing it with [Git version
-control] along with ML source code, configuration files, etc. This keeps the
-workspace small and clean -- no need for special file names or nested folders to
-organize data or model variations.
+Separating data description from storage lets you treat it as a first-class
+citizen in any code repository by committing the metafiles with [Git version
+control] along with other small files (code, config, etc.). This keeps the
+project complete and small at the same time. It's also cleaner since there's no
+need for special file names like `2020-03_training_split (256x256)` to organize
+variations (use repo branches or tags instead).
 
 [git version control]:
   https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
-<!-- Sample code/terminal blocks... -->
-
-<toggle>
-<tab title="Yesterday">
-
-```cli
-$ ls -hop
-total 228B
-    0B  A
-  128B  b/
-  160B  c/
-```
-
-</tab>
-<tab title="Today">
-
-```cli
-$ ls -hop
-total 228K
-    0K  A
-  128K  b/
-  160K  c/
-```
-
-</tab>
-<tab title="Tomorrow">
-
-```cli
-$ ls -hop
-total 228M
-    0M  A
-  128M  b/
-  160M  c/
-```
-
-</tab>
-</toggle>
+<!-- Sample code/terminal blocks (to copy/paste?) -->
 
 Adopting DVC's approach requires a low effort and has many benefits (recap):
 
@@ -185,6 +107,8 @@ migrate across platforms ([multiple providers supported]).
 [multiple providers supported]:
   /doc/command-reference/remote/add#supported-storage-types
 -->
+
+<!-- You can also distribute parts or entire copies of an independent data caches. -->
 
 - Easily manage **data as code** and [optimize space usage] automatically.
 - DVC keeps track of large files and directories for you, mapping them between
@@ -230,7 +154,4 @@ Microsoft Azure, among [many more].
 
 [config files]: /doc/user-guide/project-structure/internal-files
 [many more]: /doc/command-reference/remote/add#supported-storage-types
-
-[]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 -->

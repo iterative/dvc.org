@@ -74,10 +74,8 @@ operation.
 
 ## Structure of the cache directory
 
-The DVC cache is a
-[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
-(by default in `.dvc/cache`), which adds a layer of indirection between code and
-data.
+The DVC cache is a [content-addressable storage] (by default in `.dvc/cache`),
+which adds a layer of indirection between code and data.
 
 There are two ways in which the data is <abbr>cached</abbr>, depending on
 whether it's a single file, or a directory (which may contain multiple files).
@@ -85,6 +83,9 @@ whether it's a single file, or a directory (which may contain multiple files).
 Note files are renamed, reorganized, and directory trees are flattened in the
 cache, which always has exactly one depth level with 2-character directories
 (based on hashes of the data contents, as explained next).
+
+[content-addressable storage]:
+  https://en.wikipedia.org/wiki/Content-addressable_storage
 
 ### Files
 
