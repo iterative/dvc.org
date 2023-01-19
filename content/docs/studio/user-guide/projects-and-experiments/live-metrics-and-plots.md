@@ -81,8 +81,16 @@ with Live() as live:
     live.log_metric("accuracy", accuracy)
     live.next_step()
   ...
-  live.end()
 ```
+
+<admon>
+
+DVCLive signals the end of the experiment using `live.end()`. Using
+`with Live() as live:` or one of the DVCLive integrations for
+[ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) ensures that
+`live.end()` is automatically called when the experiment concludes.
+
+</admon>
 
 Iterative Studio stores the live metrics and plots data in its database.
 

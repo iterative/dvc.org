@@ -2,7 +2,7 @@
 
 Kill actively running [DVC experiment] tasks (see `dvc queue start`).
 
-[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
 
 ## Synopsis
 
@@ -39,5 +39,5 @@ To kill all running experiments and also stop processing the queue, use
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--force` - Forcefully and immediately kill running experiment queue
-  tasks.
+- `-f`, `--force` - forcefully and immediately interrupt the task (not
+  graceful).
