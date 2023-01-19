@@ -25,26 +25,29 @@ _Click on **v1.0** and **test** below for an example:_
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 [metafiles]: /doc/user-guide/project-structure
 
+<!--
 <toggle>
 <tab title="test">
+-->
 
-![DVC managed storage (test)](/img/dvc_managed_storage_0.png)
+![DVC managed storage](/img/dvc_managed_storage_0.png) _An cache index by
+content signatures is introduced, eliminating the **overlap** across datasets.  
+DVC [synchronizes] storage under the hood._
+
+<!--
+<toggle>
 
 </tab>
 <tab title="v1.0">
 
-![DVC managed storage (1.0)](/img/dvc_managed_storage_1.png)
+![DVC managed storage (v2)]()
 
 </tab>
 </toggle>
-
-![]() _DVC [metadata] including folder structure is saved a in Git repository.
-The shared storage (right) contains unique, indexed data objects, minimizing its
-size; You access them using DVC [synchronization] features._
+-->
 
 [metadata]: /doc/user-guide/project-structure/dvc-files#specification
-[synchronization]:
-  /doc/start/data-management/data-versioning#storing-and-sharing
+[synchronizes]: /doc/start/data-management/data-versioning#storing-and-sharing
 
 Committing DVC metafiles [to Git] along your ML source files creates
 [reproducible] project versions: Its history becomes easy to review, rewind, and
