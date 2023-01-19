@@ -63,7 +63,7 @@ you may choose any of these workflows:
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
 [dvclive]: /doc/dvclive/get-started
-[save]: /doc/user-guide/experiment-management/saving-experiments
+[save]: /doc/user-guide/experiment-management/experiment-overview#saving-experiments
 
 ## Save metrics, plots, and parameters
 
