@@ -138,9 +138,8 @@
       {
         "label": "Experiment Management",
         "slug": "experiment-management",
-        "source": false,
+        "source": "experiment-management/index.md",
         "children": [
-          "experiments-overview",
           "running-experiments",
           "hydra-composition",
           "comparing-experiments",

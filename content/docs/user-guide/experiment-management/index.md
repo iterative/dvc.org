@@ -36,34 +36,35 @@ this:
   commands to execute, etc.). Leave these changes un-committed in Git.
 - Run and [save experiments](#save-experiments). The results are reflected in
   your <abbr>workspace</abbr>, and tracked automatically.
-- Review and [compare] experiments with `dvc exp show` or `dvc exp diff`, using
-  [metrics](/doc/command-reference/metrics) to identify the best one(s). Repeat
-  🔄
+- Review and [compare] experiments in a [GUI] or from the command line with
+  `dvc exp show`, using `dvc metrics` and `dvc plots` to identify the best
+  one(s). Repeat 🔄
 - Make certain experiments [persistent] by committing their results to Git. This
   lets you repeat the process from that point.
 
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[gui]: #work-with-dvc-experiments-from-a-gui
 
 ## Save experiments
 
 DVC is not opinionated about your experiments workflow. To save an experiment,
 you can follow one of these roads:
 
-- If you do not have a DVC pipeline, you can add [DVCLive] to your Python code
-  to log live results and save the experiment by including the keyword argument
-  `save_dvc_exp=True`.
+- If you do not have a DVC pipeline, you can log live results from Python code
+  using [DVCLive] initialized with `save_dvc_exp=True`.
 - If you have a DVC [pipeline], use `dvc exp run` to both [run] your code
   pipeline and save experiment results. `dvc exp run` also enables advanced
   features like queuing many experiments at once.
-- If you already have results that you want to save or don't want to use either
-  of the above methods, you can save
-  experiment results manually with `dvc exp save`.
+- If you already have results that you want to save, or you don't want to use
+  either of the above methods, you can save experiment results manually with
+  `dvc exp save`.
 
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
 [dvclive]: /doc/dvclive/get-started
-[save]: /doc/user-guide/experiment-management/experiment-overview#saving-experiments
+[save]:
+  /doc/user-guide/experiment-management/experiment-overview#saving-experiments
 
 ## Save metrics, plots, and parameters
 

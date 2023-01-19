@@ -10,7 +10,8 @@ Studio Code].
 
 https://www.youtube.com/watch?v=LHi3SWGD9nc
 
-[from visual studio code]: /doc/vs-code-extension
+[from visual studio code]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 
 </admon>
 
