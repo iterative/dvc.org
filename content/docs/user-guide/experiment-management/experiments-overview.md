@@ -57,8 +57,8 @@ you can follow one of these roads:
   pipeline and save experiment results. `dvc exp run` also enables advanced
   features like queuing many experiments at once.
 - If you already have results that you want to save or don't want to use either
-  of the above methods to automatically save experiments, you can save
-  experiment results manually after your code finishes with `dvc exp save`.
+  of the above methods, you can save
+  experiment results manually with `dvc exp save`.
 
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
