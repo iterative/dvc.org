@@ -193,7 +193,7 @@ parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+> MAke sure to check our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 </details>
 
@@ -272,7 +272,7 @@ $ dvc remote add -d myremote ssh://user@example.com/path
 > See `dvc remote modify` for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
+Do check whether you are able to connect both ways with tools like `ssh` and
 `sftp` (GNU/Linux).
 
 > Note that the server's SFTP root might differ from its physical root (`/`).
