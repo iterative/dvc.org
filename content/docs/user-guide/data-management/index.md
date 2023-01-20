@@ -32,8 +32,9 @@ and repeat going forward (by anyone). There's no need to come up with naming
 schemes for changed data and model files.
 
 ![Versioning data with Git](/img/project_versioning.png) _You can use Git
-history to store different dataset and model versions without renaming any
-files._
+history to store different dataset and model versions without renaming any files
+in your workspace. The project cache grows as more relevant versions are
+tracked._
 
 ## How it works
 
