@@ -24,9 +24,7 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 - Using Iterative Studio, or using [GTO] and possibly [MLEM], you will push
   information about your ML models as Git commits and tags.
 - Using [DVCLive], you will push live metrics and plots from your experiments to
-  Iterative Studio. Note that at the moment, live metrics are supported only for
-  experiments that you [submit from the Iterative Studio
-  UI][run new experiments].
+  Iterative Studio.
 
 ## How Iterative Studio extracts your project data
 
