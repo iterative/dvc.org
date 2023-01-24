@@ -28,12 +28,10 @@ The main uses of remote storage are:
 
 ## Configuration
 
-You can set up one or more remote [storage locations], mainly with the
+You can set up one or more remote storage locations, mainly with the
 `dvc remote add` and `dvc remote modify` commands. These read and write to the
 [`remote`] section of the project's configuration file (`.dvc/config`), which
 you could edit manually as well.
-
-[storage locations]: /doc/user-guide/data-management/storage-locations
 
 Typically, you'll first register a DVC remote by adding its name and URL (or
 file path), e.g.:
