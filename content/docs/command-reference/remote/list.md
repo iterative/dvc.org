@@ -1,7 +1,6 @@
 # remote list
 
-List all available
-[DVC remotes](/doc/user-guide/data-management/remote-storage).
+List all `dvc remote` locations configured in the <abbr>project</abbr>.
 
 ## Synopsis
 

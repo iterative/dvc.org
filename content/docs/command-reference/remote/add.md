@@ -1,6 +1,6 @@
 # remote add
 
-Add a new `dvc remote` to the <abbr>DVC project</abbr> configuration.
+Add a new `dvc remote` to the <abbr>project</abbr> configuration.
 
 <admon type="tip">
 
