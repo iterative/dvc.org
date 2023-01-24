@@ -1,14 +1,9 @@
 # Remote Storage
 
-_DVC remotes_ provide storage to backup and share your data or ML models
-(optional). For example, you can download data artifacts created by colleagues
-without spending time and resources to recreate them locally. See `dvc push` and
-`dvc pull`.
-
-This is similar to how GitHub provides hosting for source code repositories (Git
-repos). However, DVC does not provide or recommend a specific storage service.
-Instead, it adopts a bring-your-own-platform approach, supporting a
-[wide variety of storage types](#supported-storage-types).
+_DVC remotes_ provide optional/additional storage to backup and share your data
+and ML model. For example, you can download data artifacts created by colleagues
+without spending time and resources to regenerate them locally. See `dvc push`
+and `dvc pull`.
 
 <admon type="info">
 
@@ -18,22 +13,24 @@ DVC remotes are similar to [Git remotes], but for <abbr>cached</abbr> data.
 
 </admon>
 
+This is somehow like GitHub or GitLab providing hosting for source code
+repositories. However, DVC does not provide or recommend a specific storage
+service. Instead, it adopts a bring-your-own-platform approach, supporting a
+wide variety of [storage types](#supported-storage-types).
+
 The main uses of remote storage are:
 
-- Synchronize <abbr>cached</abbr> data assets (pull and push).
-- Share data in a distributed way to better collaborate.
+- Synchronize DVC-tracked data (previously <abbr>cached</abbr>).
+- Centralize or distribute large file storage for sharing and collaboration.
 - Back up different versions of your data and models.
-- Save space in your working environment (by deleting data that has been
-  pushed).
+- Save space in your working environment (by deleting pushed files/directories).
 
 ## Configuration
 
-You can set up one or more remote [storage locations], mainly with the
+You can set up one or more remote storage locations, mainly with the
 `dvc remote add` and `dvc remote modify` commands. These read and write to the
 [`remote`] section of the project's configuration file (`.dvc/config`), which
 you could edit manually as well.
-
-[storage locations]: /doc/user-guide/data-management/storage-locations
 
 Typically, you'll first register a DVC remote by adding its name and URL (or
 file path), e.g.:
@@ -87,8 +84,8 @@ re-configure remote storage authentication.
 
 </details>
 
-Finally, you can `git add` and `git commit` the changes to share the general
-configuration of your remote (in `.dvc/config`) via the Git repo.
+Finally, you can `git commit` the changes to share the general configuration of
+your remote (`.dvc/config`) via the Git repo.
 
 [`remote`]: /doc/command-reference/config#remote
 
@@ -105,7 +102,7 @@ configuration of your remote (in `.dvc/config`) via the Git repo.
 - Google Cloud Storage (GCP)
 - Aliyun OSS
 
-### Self-hosted/ On-prem/ Others
+### Self-hosted / On-premises
 
 - SSH servers; Like `scp`
 - HDFS & WebHDFS

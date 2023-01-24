@@ -32,6 +32,8 @@ Registers an [additional storage] location to save data files (besides the
 remotes can point to a cloud storage service, an SSH server, network-attached
 storage, or even a directory in the local file system.
 
+[additional storage]: /doc/user-guide/data-management/remote-storage
+
 <admon type="tip">
 
 A [default remote] is expected by `dvc push`, `dvc pull`, `dvc status`,
@@ -67,6 +69,10 @@ $ dvc remote add -d temp /tmp/dvcstore
     remote = myremote
 ```
 
+[config file]: /doc/command-reference/config
+[`remote`]: /doc/command-reference/config#remote
+[`core`]: /doc/command-reference/config#core
+
 <admon type="info">
 
 If you [installed DVC] via `pip` and plan to use cloud services as remote
@@ -81,11 +87,6 @@ $ pip install "dvc[s3]"
 [installed dvc]: /doc/install
 
 </admon>
-
-[additional storage]: /doc/user-guide/data-management/remote-storage
-[config file]: /doc/command-reference/config
-[`remote`]: /doc/command-reference/config#remote
-[`core`]: /doc/command-reference/config#core
 
 ## Command options/flags
 
