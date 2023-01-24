@@ -125,9 +125,10 @@
         "source": false,
         "children": [
           "large-dataset-optimization",
+          "remote-storage",
+          "cloud-versioning",
           "importing-external-data",
-          "managing-external-data",
-          "cloud-versioning"
+          "managing-external-data"
         ]
       },
       {

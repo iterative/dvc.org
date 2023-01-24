@@ -1,7 +1,12 @@
 # remote rename
 
-Rename a [data remote](/doc/command-reference/remote). The remote's URL is not
-changed by this command.
+Rename a [DVC remote](/doc/user-guide/data-management/remote-storage).
+
+<admon type="info">
+
+The remote storage URL is not changed by this command.
+
+</admon>
 
 ## Synopsis
 

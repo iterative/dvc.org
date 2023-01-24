@@ -1,8 +1,13 @@
 # remote remove
 
-Remove a [data remote](/doc/command-reference/remote). This command affects DVC
-configuration files only, it does not physically remove data files stored
-remotely.
+Remove a [DVC remote](/doc/user-guide/data-management/remote-storage).
+
+<admon type="info">
+
+This command affects DVC configuration files only. It does not physically remove
+data files stored remotely. See `dvc gc --cloud` for that.
+
+</admon>
 
 ## Synopsis
 
