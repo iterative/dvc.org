@@ -20,8 +20,8 @@ In this section, you will learn how to:
 To add a new project, follow these steps.
 
 1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
-   using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
-   address.
+   using your GitHub.com, GitLab.com, or Bitbucket.org account, or with your
+   email address.
 
 2. Click on `Add a Project`. All the organizations that you have access to will
    be listed.
@@ -38,7 +38,7 @@ details.
 
 To connect to repositories on your self-hosted GitLab server, you must first add
 a connection to this server and create a team. Refer to the section on
-[self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+[self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
 for more details.
 
 </admon>

@@ -52,7 +52,7 @@ how it helps replace data that is tracked by DVC.
 Let's imagine we have `foo.csv` and `bar.csv` files, that are already
 [tracked](/doc/command-reference/add) by DVC:
 
-```dvc
+```cli
 $ ls
 bar.csv  bar.csv.dvc  foo.csv  foo.csv.dvc
 $ cat .gitignore
@@ -63,7 +63,7 @@ $ cat .gitignore
 This removes `foo.csv.dvc` and double checks that its entry is gone from
 `.gitignore`:
 
-```dvc
+```cli
 $ dvc remove foo.csv.dvc
 
 $ ls
@@ -89,7 +89,7 @@ train:
     - model
 ```
 
-```dvc
+```cli
 $ ls
 dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  model  train.py
 ```
@@ -98,7 +98,7 @@ Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
 its outputs from `.gitignore`. With the `--outs` option, its outputs are also
 deleted (just the `model` file in this example):
 
-```dvc
+```cli
 $ dvc remove train --outs
 $ ls
 dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  train.py

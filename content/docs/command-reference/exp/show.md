@@ -31,19 +31,19 @@ which includes their parent and name (or hash), as well as colored columns for
 Only the experiments derived from the Git `HEAD` are shown by default but all
 experiments can be included with the `--all-commits` option. Example:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
+  neutral:**Experiment**                   neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                   -               0.60405    0.9608   3000                     484fab5     52c1fdd
-  random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
-  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
-  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
-  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
+  workspace                    -               0.60405    0.9608   3000                     484fab5     52c1fdd
+  random-forest-experiments    May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
+  ├── a2efdc9 [urban-sign]     10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
+  ├── e7bd029 [unwet-jinn]     10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
+  └── 56f3be3 [freed-roam]     10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
@@ -82,7 +82,7 @@ It's possible to override the default pager via the `DVC_PAGER` environment
 variable. Set it to a program found in `PATH` or give a full path to it. For
 example on Linux shell:
 
-```dvc
+```cli
 $ DVC_PAGER=more dvc exp show  # Use more as pager once.
 ...
 
@@ -175,7 +175,7 @@ $ dvc exp show ...
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
@@ -184,19 +184,19 @@ workspace (Git working tree) and experiments derived from `HEAD` (`master`
 branch in this case), and all of their metrics, parameters and dependencies
 (scroll right to see all):
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**data/prepared**   dep:**src/train.py**   dep:**src/evaluate.py**   dep:**src/prepare.py**   dep:**data/features**   dep:**data/data.xml**   dep:**model.pkl**   dep:**src/featurization.py**
+  neutral:**Experiment**                   neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**data/prepared**   dep:**src/train.py**   dep:**src/evaluate.py**   dep:**src/prepare.py**   dep:**data/features**   dep:**data/data.xml**   dep:**model.pkl**   dep:**src/featurization.py**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                   -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          52c1fdd         a304afb         484fab5     61c5927
-  random-forest-experiments   May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          52c1fdd         a304afb         484fab5     61c5927
-  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          2ac217b         a304afb         7aae464     61c5927
-  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   0.2             20170428       1000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          1b2d542         a304afb         e2b5a9a     61c5927
-  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          64ed644         a304afb         cfbfed4     61c5927
+  workspace                    -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          52c1fdd         a304afb         484fab5     61c5927
+  random-forest-experiments    May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          52c1fdd         a304afb         484fab5     61c5927
+  ├── e7bd029 [unwet-jinn]     10:21 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          2ac217b         a304afb         7aae464     61c5927
+  ├── a2efdc9 [urban-sign]     10:21 PM        0.55669   0.93516   0.2             20170428       1000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          1b2d542         a304afb         e2b5a9a     61c5927
+  └── 56f3be3 [freed-roam]     10:21 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          64ed644         a304afb         cfbfed4     61c5927
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
@@ -205,112 +205,112 @@ $ dvc exp show
 As a quick way of reducing noise, `--only-changed` will drop any column with
 values that do not change across experiments:
 
-```dvc
+```cli
 $ dvc exp show --only-changed
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
+  neutral:**Experiment**                   neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                   -               0.60405    0.9608   3000                     484fab5     52c1fdd
-  random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
-  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
-  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
-  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
+  workspace                    -               0.60405    0.9608   3000                     484fab5     52c1fdd
+  random-forest-experiments    May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
+  ├── a2efdc9 [urban-sign]     10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
+  ├── e7bd029 [unwet-jinn]     10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
+  └── 56f3be3 [freed-roam]     10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 You can also use `--drop` to filter specific columns:
 
-```dvc
+```cli
 $ dvc exp show --drop prepare
 ```
 
 ```dvctable
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**data/prepared**   dep:**model.pkl**   dep:**data/data.xml**   dep:**src/prepare.py**   dep:**data/features**   dep:**src/evaluate.py**   dep:**src/featurization.py**   dep:**src/train.py**
+  neutral:**Experiment**                   neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**data/prepared**   dep:**model.pkl**   dep:**data/data.xml**   dep:**src/prepare.py**   dep:**data/features**   dep:**src/evaluate.py**   dep:**src/featurization.py**   dep:**src/train.py**
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                   -               0.60405    0.9608   3000                     2                  20170428     100           64                20b786b         484fab5     a304afb         51549a1          52c1fdd         fb7b520           61c5927                9ab9549
-  random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     2                  20170428     100           64                20b786b         484fab5     a304afb         51549a1          52c1fdd         fb7b520           61c5927                9ab9549
-  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   2000                     2                  20170428     100           64                20b786b         7aae464     a304afb         51549a1          2ac217b         fb7b520           61c5927                9ab9549
-  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   1000                     2                  20170428     100           64                20b786b         e2b5a9a     a304afb         51549a1          1b2d542         fb7b520           61c5927                9ab9549
-  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   500                      2                  20170428     100           64                20b786b         cfbfed4     a304afb         51549a1          64ed644         fb7b520           61c5927                9ab9549
+  workspace                    -               0.60405    0.9608   3000                     2                  20170428     100           64                20b786b         484fab5     a304afb         51549a1          52c1fdd         fb7b520           61c5927                9ab9549
+  random-forest-experiments    May 29, 2021    0.60405    0.9608   3000                     2                  20170428     100           64                20b786b         484fab5     a304afb         51549a1          52c1fdd         fb7b520           61c5927                9ab9549
+  ├── e7bd029 [unwet-jinn]     10:21 PM        0.58589     0.945   2000                     2                  20170428     100           64                20b786b         7aae464     a304afb         51549a1          2ac217b         fb7b520           61c5927                9ab9549
+  ├── a2efdc9 [urban-sign]     10:21 PM        0.55669   0.93516   1000                     2                  20170428     100           64                20b786b         e2b5a9a     a304afb         51549a1          1b2d542         fb7b520           61c5927                9ab9549
+  └── 56f3be3 [freed-roam]     10:21 PM        0.51799   0.92333   500                      2                  20170428     100           64                20b786b         cfbfed4     a304afb         51549a1          64ed644         fb7b520           61c5927                9ab9549
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 You can use [regex][regex] to match columns. For example, to remove multiple
 columns:
 
-```dvc
+```cli
 $ dvc exp show --drop 'avg_prec|train.min_split'
 ```
 
 ```dvctable
  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                     neutral:**Created**        metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   dep:**src/prepare.py**   dep:**data/prepared**   dep:**data/features**   dep:**data/data.xml**   dep:**src/evaluate.py**   dep:**src/featurization.py**   dep:**src/train.py**   dep:**model.pkl**
+  neutral:**Experiment**                      neutral:**Created**        metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   dep:**src/prepare.py**   dep:**data/prepared**   dep:**data/features**   dep:**data/data.xml**   dep:**src/evaluate.py**   dep:**src/featurization.py**   dep:**src/train.py**   dep:**model.pkl**
  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                      -               0.9608   0.2             20170428       3000                     2                  20170428     100           51549a1          20b786b         52c1fdd         a304afb         fb7b520           61c5927                9ab9549        484fab5
-  11-random-forest-experiments   May 29, 2021    0.9608   0.2             20170428       3000                     2                  20170428     100           51549a1          20b786b         52c1fdd         a304afb         fb7b520           61c5927                9ab9549        484fab5
-  ├── a2efdc9 [exp-68ac9]        10:21 PM       0.93516   0.2             20170428       1000                     2                  20170428     100           51549a1          20b786b         1b2d542         a304afb         fb7b520           61c5927                9ab9549        e2b5a9a
-  ├── e7bd029 [exp-25e9a]        10:21 PM         0.945   0.2             20170428       2000                     2                  20170428     100           51549a1          20b786b         2ac217b         a304afb         fb7b520           61c5927                9ab9549        7aae464
-  └── 56f3be3 [exp-8f5c4]        10:21 PM       0.92333   0.2             20170428       500                      2                  20170428     100           51549a1          20b786b         64ed644         a304afb         fb7b520           61c5927                9ab9549        cfbfed4
+  workspace                       -               0.9608   0.2             20170428       3000                     2                  20170428     100           51549a1          20b786b         52c1fdd         a304afb         fb7b520           61c5927                9ab9549        484fab5
+  11-random-forest-experiments    May 29, 2021    0.9608   0.2             20170428       3000                     2                  20170428     100           51549a1          20b786b         52c1fdd         a304afb         fb7b520           61c5927                9ab9549        484fab5
+  ├── a2efdc9 [urban-sign]        10:21 PM       0.93516   0.2             20170428       1000                     2                  20170428     100           51549a1          20b786b         1b2d542         a304afb         fb7b520           61c5927                9ab9549        e2b5a9a
+  ├── e7bd029 [unwet-jinn]        10:21 PM         0.945   0.2             20170428       2000                     2                  20170428     100           51549a1          20b786b         2ac217b         a304afb         fb7b520           61c5927                9ab9549        7aae464
+  └── 56f3be3 [freed-roam]        10:21 PM       0.92333   0.2             20170428       500                      2                  20170428     100           51549a1          20b786b         64ed644         a304afb         fb7b520           61c5927                9ab9549        cfbfed4
  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 If combined `--only-changed` has the least priority, `--drop` comes next, and
 `--keep` has the last word:
 
-```dvc
+```cli
 $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
 ```
 
 ```dvctable
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                  metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**train.n_est**   param:**train.min_split**   dep:**model.pkl**   dep:**data/features**
+  neutral:**Experiment**                   metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**train.n_est**   param:**train.min_split**   dep:**model.pkl**   dep:**data/features**
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                    0.60405    0.9608   3000                     100           64                484fab5     52c1fdd
-  random-forest-experiments    0.60405    0.9608   3000                     100           64                484fab5     52c1fdd
-  ├── e7bd029 [exp-25e9a]      0.58589     0.945   2000                     100           64                7aae464     2ac217b
-  ├── a2efdc9 [exp-68ac9]      0.55669   0.93516   1000                     100           64                e2b5a9a     1b2d542
-  └── 56f3be3 [exp-8f5c4]      0.51799   0.92333   500                      100           64                cfbfed4     64ed644
+  workspace                     0.60405    0.9608   3000                     100           64                484fab5     52c1fdd
+  random-forest-experiments     0.60405    0.9608   3000                     100           64                484fab5     52c1fdd
+  ├── e7bd029 [unwet-jinn]      0.58589     0.945   2000                     100           64                7aae464     2ac217b
+  ├── a2efdc9 [urban-sign]      0.55669   0.93516   1000                     100           64                e2b5a9a     1b2d542
+  └── 56f3be3 [freed-roam]      0.51799   0.92333   500                      100           64                cfbfed4     64ed644
  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 Sort experiments by the `roc_auc` metric, in descending order:
 
-```dvc
+```cli
 $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
 ```
 
 ```dvctable
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                     neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
+  neutral:**Experiment**                      neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                      -               0.60405    0.9608   3000                     484fab5     52c1fdd
-  11-random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
-  ├── e7bd029 [exp-25e9a]        10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
-  ├── a2efdc9 [exp-68ac9]        10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
-  └── 56f3be3 [exp-8f5c4]        10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
+  workspace                       -               0.60405    0.9608   3000                     484fab5     52c1fdd
+  11-random-forest-experiments    May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
+  ├── e7bd029 [unwet-jinn]        10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
+  ├── a2efdc9 [urban-sign]        10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
+  └── 56f3be3 [freed-roam]        10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 To see all experiments throughout the Git history:
 
-```dvc
+```cli
 $ dvc exp show --all-commits --only-changed --sort-by=roc_auc
 ```
 
 ```dvctable
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                     neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**src/train.py**   dep:**model.pkl**   dep:**data/data.xml**   dep:**src/evaluate.py**   dep:**data/features**   dep:**src/prepare.py**   dep:**data/prepared**   dep:**src/featurization.py**
+  neutral:**Experiment**                      neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**src/train.py**   dep:**model.pkl**   dep:**data/data.xml**   dep:**src/evaluate.py**   dep:**data/features**   dep:**src/prepare.py**   dep:**data/prepared**   dep:**src/featurization.py**
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                      -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        484fab5     a304afb         fb7b520           52c1fdd         51549a1          20b786b         61c5927
+  workspace                       -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        484fab5     a304afb         fb7b520           52c1fdd         51549a1          20b786b         61c5927
   bee447d                        Jun 01, 2021    0.67038   0.96693   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        fe89bd4     c1fa36d         fb7b520           7c68668         51549a1          030d866         61c5927
-  11-random-forest-experiments   May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        484fab5     a304afb         fb7b520           52c1fdd         51549a1          20b786b         61c5927
-  ├── 56f3be3 [exp-8f5c4]        10:21 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64                9ab9549        cfbfed4     a304afb         fb7b520           64ed644         51549a1          20b786b         61c5927
-  ├── a2efdc9 [exp-68ac9]        10:21 PM        0.55669   0.93516   0.2             20170428       1000                     2                  20170428     100           64                9ab9549        e2b5a9a     a304afb         fb7b520           1b2d542         51549a1          20b786b         61c5927
-  └── e7bd029 [exp-25e9a]        10:21 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64                9ab9549        7aae464     a304afb         fb7b520           2ac217b         51549a1          20b786b         61c5927
+  11-random-forest-experiments    May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        484fab5     a304afb         fb7b520           52c1fdd         51549a1          20b786b         61c5927
+  ├── 56f3be3 [freed-roam]        10:21 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64                9ab9549        cfbfed4     a304afb         fb7b520           64ed644         51549a1          20b786b         61c5927
+  ├── a2efdc9 [urban-sign]        10:21 PM        0.55669   0.93516   0.2             20170428       1000                     2                  20170428     100           64                9ab9549        e2b5a9a     a304afb         fb7b520           1b2d542         51549a1          20b786b         61c5927
+  └── e7bd029 [unwet-jinn]        10:21 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64                9ab9549        7aae464     a304afb         fb7b520           2ac217b         51549a1          20b786b         61c5927
   bigrams-experiment             May 28, 2021    0.55259   0.91536   0.2             20170428       1500                     2                  20170428     50            2                 9ab9549        17b3d1e     a304afb         fb7b520           f237c73         51549a1          20b786b         61c5927
   9-bigrams-model                May 27, 2021    0.52048    0.9032   0.2             20170428       1500                     2                  20170428     50            2                 9ab9549        c4c0670     a304afb         fb7b520           2b5e0fd         51549a1          20b786b         61c5927
   8-evaluation                   May 25, 2021    0.52048    0.9032   0.2             20170428       500                      1                  20170428     50            2                 9ab9549        c4c0670     a304afb         fb7b520           2b5e0fd         51549a1          20b786b         61c5927
@@ -333,7 +333,7 @@ sorting only applies to experiment groups (sharing a parent commit).
 To generate an interactive parallel coordinates plot based on the experiments
 and their parameters:
 
-```dvc
+```cli
 $ dvc exp show --all-branches --pcp
 ```
 
@@ -342,7 +342,7 @@ $ dvc exp show --all-branches --pcp
 Using `--sort-by` will reorder the plot experiments as expected, and determine
 the color of the lines that represent them:
 
-```dvc
+```cli
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
 ```
 
@@ -350,7 +350,7 @@ $ dvc exp show --all-branches --pcp --sort-by roc_auc
 
 Combine with other flags for further filtering:
 
-```dvc
+```cli
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
                --drop avg_prec
 ```

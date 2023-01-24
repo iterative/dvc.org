@@ -7,7 +7,7 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 import { ReactComponent as ExternalLinkIcon } from '../../../../../../../static/img/external-link-icon.svg'
 
 import * as styles from './styles.module.css'
-import menuData from '../../../data/menu'
+import menuData from '../../../../data/menu'
 
 export interface IPopupProps {
   isVisible: boolean

@@ -9,7 +9,7 @@ files in Git.'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/kLKBcPonMYw
 
@@ -28,7 +28,7 @@ Or switching to a different version of a 100Gb file in less than a second with a
 Having initialized a project in the previous section, we can get the data file
 (which we'll be using later) like this:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           get-started/data.xml -o data/data.xml
 ```
@@ -48,7 +48,7 @@ repository</abbr>.
 
 To start tracking a file or directory, use `dvc add`:
 
-```dvc
+```cli
 $ dvc add data/data.xml
 ```
 
@@ -57,7 +57,7 @@ DVC stores information about the added file in a special `.dvc` file named
 metadata file is a placeholder for the original data, and can be easily
 versioned like source code with Git:
 
-```dvc
+```cli
 $ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
@@ -99,7 +99,7 @@ safely stored [remotely](/doc/command-reference/remote). This also means they
 can be retrieved on other environments later with `dvc pull`. First, we need to
 set up a remote storage location:
 
-```dvc
+```cli
 $ dvc remote add -d storage s3://mybucket/dvcstore
 $ git add .dvc/config
 $ git commit -m "Configure remote storage"
@@ -120,7 +120,7 @@ remote_ in a temporary `dvcstore/` directory (create the dir first if needed):
 <toggle>
 <tab title="Mac/Linux">
 
-```dvc
+```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ git commit .dvc/config -m "Configure local remote"
 ```
@@ -128,7 +128,7 @@ $ git commit .dvc/config -m "Configure local remote"
 </tab>
 <tab title="Windows (Cmd)">
 
-```dvc
+```cli
 $ dvc remote add -d myremote %TEMP%\dvcstore
 $ git commit .dvc\config -m "Configure local remote"
 ```
@@ -143,7 +143,7 @@ $ git commit .dvc\config -m "Configure local remote"
 
 </details>
 
-```dvc
+```cli
 $ dvc push
 ```
 
@@ -181,7 +181,7 @@ If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 <toggle>
 <tab title="Mac/Linux">
 
-```dvc
+```cli
 $ rm -rf .dvc/cache
 $ rm -f data/data.xml
 ```
@@ -189,7 +189,7 @@ $ rm -f data/data.xml
 </tab>
 <tab title="Windows (Cmd)">
 
-```dvc
+```cli
 $ rmdir .dvc\cache
 $ del data\data.xml
 ```
@@ -199,7 +199,7 @@ $ del data\data.xml
 
 </details>
 
-```dvc
+```cli
 $ dvc pull
 ```
 
@@ -224,7 +224,7 @@ is the case by doubling the dataset:
 <toggle>
 <tab title="Mac/Linux">
 
-```dvc
+```cli
 $ cp data/data.xml /tmp/data.xml
 $ cat /tmp/data.xml >> data/data.xml
 ```
@@ -232,7 +232,7 @@ $ cat /tmp/data.xml >> data/data.xml
 </tab>
 <tab title="Windows (Cmd)">
 
-```dvc
+```cli
 $ copy data\data.xml %TEMP%\data.xml
 $ type %TEMP%\data.xml >> data\data.xml
 ```
@@ -242,13 +242,13 @@ $ type %TEMP%\data.xml >> data\data.xml
 
 </details>
 
-```dvc
+```cli
 $ dvc add data/data.xml
 ```
 
 Usually you would also run `git commit` and `dvc push` to save the changes:
 
-```dvc
+```cli
 $ git commit data/data.xml.dvc -m "Dataset updates"
 $ dvc push
 ```
@@ -258,7 +258,7 @@ $ dvc push
 The regular workflow is to use `git checkout` first (to switch a branch or
 checkout a `.dvc` file version) and then run `dvc checkout` to sync data:
 
-```dvc
+```cli
 $ git checkout <...>
 $ dvc checkout
 ```
@@ -269,7 +269,7 @@ $ dvc checkout
 
 Let's go back to the original version of the data:
 
-```dvc
+```cli
 $ git checkout HEAD~1 data/data.xml.dvc
 $ dvc checkout
 ```
@@ -277,7 +277,7 @@ $ dvc checkout
 Let's commit it (no need to do `dvc push` this time since this original version
 of the dataset was already saved):
 
-```dvc
+```cli
 $ git commit data/data.xml.dvc -m "Revert dataset updates"
 ```
 

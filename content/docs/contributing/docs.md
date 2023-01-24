@@ -56,9 +56,8 @@ changes before submitting them, and it's quite necessary when making changes to
 the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-Make sure you have [Python](https://www.python.org/downloads/) 3.8+, a recent
-LTS version of [Node.js](https://nodejs.org/en/) (`>=14.0.0`, `<=18.x`), and
-install [Yarn](https://yarnpkg.com/):
+Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
+(`>=18.0.0`, `<=19.x`), and install [Yarn](https://yarnpkg.com/):
 
 > In Windows, you may need to install [Visual Studio Build Tools], and the
 > [Windows SDK] first.
@@ -68,20 +67,20 @@ install [Yarn](https://yarnpkg.com/):
 [visual studio build tools]:
   https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
 
-```dvc
+```cli
 $ npm install -g yarn
 ```
 
 Having cloned this project locally, navigate into the directory and install the
 project dependencies with Yarn:
 
-```dvc
+```cli
 $ yarn
 ```
 
 Launch the server locally with:
 
-```dvc
+```cli
 $ yarn develop
 ```
 

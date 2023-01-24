@@ -73,9 +73,9 @@ const Description3: React.FC = () => (
   </div>
 )
 
-const UseCases: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => {
+const UseCases = () => {
   return (
-    <section className={styles.container} ref={ref}>
+    <section className={styles.container} id="use-cases">
       <LayoutWidthContainer>
         <h2 className={styles.heading}>Use cases</h2>
         <div className={styles.wrapper}>

@@ -41,7 +41,7 @@ const ColumnOne: React.FC = () => (
         back and forth between experiments.
       </p>
     </div>
-    <LearnMore href={'/features'} />
+    <LearnMore href={'/doc/use-cases'} />
   </div>
 )
 
@@ -64,7 +64,7 @@ const ColumnTwo: React.FC = () => (
         intermediate artifact caching.
       </p>
     </div>
-    <LearnMore href={'/features'} />
+    <LearnMore href={'/doc/use-cases'} />
   </div>
 )
 
@@ -86,15 +86,12 @@ const ColumnThree: React.FC = () => (
         production.
       </p>
     </div>
-    <LearnMore href={'/features'} />
+    <LearnMore href={'/doc/use-cases'} />
   </div>
 )
 
-const DiagramSection: React.ForwardRefRenderFunction<HTMLElement> = (
-  _,
-  ref
-) => (
-  <section className={styles.diagramSection} ref={ref}>
+const DiagramSection = () => (
+  <section className={styles.diagramSection} id="diagram-section">
     <LayoutWidthContainer>
       <h2 className={styles.title}>DVC tracks ML models and data sets</h2>
       <p className={styles.description}>

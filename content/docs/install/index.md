@@ -18,15 +18,6 @@ enable important features such as [data versioning] and [quick experimentation]
 
 To check whether DVC is installed or which version you have, use `dvc version`.
 
-## Install as a Python library
-
-DVC can be used as a Python library with a package manager like `pip` or
-`conda`, or as a Python [project requirement] if needed. The Python API module
-is `dvc.api`.
-
-[project requirement]:
-  https://pip.pypa.io/en/latest/user_guide/#requirements-files
-
 ## Advanced options
 
 - You can [install a stable pre-release](/doc/install/pre-release) of DVC to

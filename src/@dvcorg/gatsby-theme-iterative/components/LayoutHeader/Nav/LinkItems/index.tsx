@@ -14,7 +14,7 @@ import usePopup, {
 
 import * as styles from './styles.module.css'
 import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
-import menuData from '../../../data/menu'
+import menuData from '../../../../data/menu'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 

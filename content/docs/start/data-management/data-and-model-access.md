@@ -8,7 +8,7 @@ bring, explore, and access data artifacts from outside the project'
 
 <details>
 
-## 🎬 Click to watch a video intro.
+### 🎬 Click to watch a video intro.
 
 https://youtu.be/EE7Gk84OZY8
 
@@ -41,7 +41,7 @@ You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
 Git server. For example, let's see what's in the `get-started/` directory of our
 [dataset-registry](https://github.com/iterative/dataset-registry) repo:
 
-```dvc
+```cli
 $ dvc list https://github.com/iterative/dataset-registry get-started
 .gitignore
 data.xml
@@ -59,7 +59,7 @@ One way is to simply download the data with `dvc get`. This is useful when
 working outside of a <abbr>DVC project</abbr> environment, for example in an
 automated ML model deployment task:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           use-cases/cats-dogs
 ```
@@ -73,7 +73,7 @@ the data came from or whether new versions are available.
 `dvc import` also downloads any file or directory, while also creating a `.dvc`
 file (which can be saved in the project):
 
-```dvc
+```cli
 $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```

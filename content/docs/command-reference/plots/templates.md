@@ -95,7 +95,7 @@ y
 
 The simple template renders it like this:
 
-```dvc
+```cli
 $ dvc plots show data.csv --template simple
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -104,7 +104,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 Let's dump the `simple` template to `bars_template.json`:
 
-```dvc
+```cli
 $ dvc plots templates simple > bars_template.json
 ```
 
@@ -126,7 +126,7 @@ a line):
 
 And this is how the data looks like using our custom template:
 
-```dvc
+```cli
 $ dvc plots show data.csv --template bars_template.json
 file:///Users/usr/src/dvc_plots/index.html
 ```

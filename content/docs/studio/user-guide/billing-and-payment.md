@@ -33,11 +33,12 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 ## How to sign up for the Basic, Teams or Enterprise plans
 
 When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
-[create a team] first, then go to the [team settings] and click on `Change plan`
-in the `Plan and billing` section. To switch to the **Teams** or **Enterprise**
-plan, please [contact us].
+[create a team] first, then go to the _Team settings_ to [change the plan]. To
+sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
+[pricing details]).
 
-[team settings]: /doc/studio/user-guide/teams#settings
+[change the plan]:
+  /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
 [contact us]: /doc/studio/troubleshooting#support
 
 ## How total price is calculated
@@ -117,6 +118,8 @@ After the grace period expires, you and all your team members will lose access
 to your team's projects. You will continue to have access to your team settings
 page. Access to the team's projects will be restored once you clear the pending
 balance.
+
+[team settings]: /doc/studio/user-guide/teams#settings
 
 ## Payment processor and accepted payment methods
 

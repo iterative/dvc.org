@@ -1,7 +1,7 @@
-# Remote Storage (Optional)
+# Remote Storage
 
-_DVC remotes_ provide additional storage for your data or ML models and allow
-sharing them. For example, you can pull data artifacts created by colleagues
+_DVC remotes_ provide storage to backup and share your data or ML models
+(optional). For example, you can download data artifacts created by colleagues
 without spending time and resources to recreate them locally. See `dvc push` and
 `dvc pull`.
 
@@ -22,16 +22,18 @@ The main uses of remote storage are:
 
 - Synchronize <abbr>cached</abbr> data assets (pull and push).
 - Share data in a distributed way to better collaborate.
-- Back up your data and its different versions.
+- Back up different versions of your data and models.
 - Save space in your working environment (by deleting data that has been
   pushed).
 
 ## Configuration
 
-You can set up one or more remote storage locations, mainly with the
+You can set up one or more remote [storage locations], mainly with the
 `dvc remote add` and `dvc remote modify` commands. These read and write to the
 [`remote`] section of the project's configuration file (`.dvc/config`), which
 you could edit manually as well.
+
+[storage locations]: /doc/user-guide/data-management/storage-locations
 
 Typically, you'll first register a DVC remote by adding its name and URL (or
 file path), e.g.:
