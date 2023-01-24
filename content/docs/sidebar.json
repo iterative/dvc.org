@@ -122,9 +122,8 @@
       },
       {
         "slug": "data-management",
-        "source": "data-management/index.md",
+        "source": false,
         "children": [
-          "data-versioning",
           "remote-storage",
           "large-dataset-optimization",
           "importing-external-data",

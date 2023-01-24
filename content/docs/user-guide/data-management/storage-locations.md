@@ -1,5 +1,9 @@
 # Storage locations
 
+<!--
+## Storage locations
+-->
+
 DVC can manage data anywhere: cloud storage, SSH servers, network resources
 (e.g. NAS), mounted drives, local file systems, etc. These locations can be put
 into three groups.
@@ -36,3 +40,15 @@ DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> data.
 </admon>
 
 [dvc remotes]: /doc/command-reference/remote
+
+<!-- ## Storage locations (for other pages)
+
+The cache is the first storage layer for you and your team to share and
+collaborate, but more can be defined in DVC [config files] (using `dvc remote`
+commands). These storage locations let you back up and share data, features, ML
+models, etc. Supported platforms include SSH, Amazon S3, Google Cloud Storage,
+Microsoft Azure, among [many more].
+
+[config files]: /doc/user-guide/project-structure/internal-files
+[many more]: /doc/command-reference/remote/add#supported-storage-types
+-->
