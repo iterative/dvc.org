@@ -109,6 +109,8 @@ within:
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
+- [`hydra`](#hydra) - options around [Hydra Composition] for experiment
+  configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
@@ -116,6 +118,7 @@ within:
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
+[hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
@@ -189,23 +192,30 @@ section):
   value is `cache`, that resolves to `.dvc/cache` (relative to the project
   config file location).
 
-  > See also the helper command `dvc cache dir` to intuitively set this config
-  > option, properly transforming paths relative to the current working
-  > directory into paths relative to the config file location.
+  <admon type="tip">
+
+  See also the helper command `dvc cache dir` to intuitively set this config
+  option, properly transforming paths relative to the current working directory
+  into paths relative to the config file location.
+
+  </admon>
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or an
   ordered combination of those, separated by commas e.g:
   `reflink,hardlink,copy`. Default: `reflink,copy`
 
+  <admon type="info">
+
+  There are pros and cons to different link types. Refer to [File link types]
+  for a full explanation of each one.
+
+  </admon>
+
   If you set `cache.type` to `hardlink` or `symlink`, manually modifying tracked
   data files in the workspace would corrupt the cache. To prevent this, DVC
   automatically protects those kinds of links (making them read-only). Use
   `dvc unprotect` to be able to modify them safely.
-
-  There are pros and cons to different link types. Refer to
-  [File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-  for a full explanation of each one.
 
   To apply changes to this config option in the workspace, restore all file
   links/copies from cache with `dvc checkout --relink`.
@@ -216,16 +226,23 @@ section):
   faster cache link types available than the defaults (`reflink,copy` – see
   `cache.type`). Accepts values `true` and `false`.
 
-  > These warnings are automatically turned off when `cache.type` is manually
-  > set.
+  <admon type="info">
+
+  These warnings are automatically turned off when `cache.type` is manually set.
+
+  </admon>
 
 - `cache.shared` - permissions for newly created or downloaded cache files and
   directories. The only accepted value right now is `group`, which makes DVC use
   `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
-  useful when [sharing a cache](/doc/user-guide/how-to/share-a-dvc-cache) among
-  projects. The default permissions for cache files is system dependent. In
-  Linux and macOS for example, they're determined using
-  [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
+  useful when [sharing a cache] among projects. The default permissions for
+  cache files is system dependent. In Linux and macOS for example, they're
+  determined using [`os.umask`].
+
+[file link types]:
+  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+[sharing a cache]: /doc/user-guide/how-to/share-a-dvc-cache
+[`os.umask`]: https://docs.python.org/3/library/os.html#os.umask
 
 The following parameters allow setting an
 [external cache](/doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache)
@@ -273,6 +290,23 @@ experiments or projects use a similar structure.
 - `exp.plots` - path to your plots file or directory output.
 
 - `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
+
+### hydra
+
+Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra
+Composition].
+
+- `hydra.enabled` - enables Hydra [config composition].
+- `hydra.config_dir` - location of the directory containing Hydra [config
+  groups]. Defaults to `conf`.
+- `hydra.config_name` - the name of the file containing the Hydra [defaults
+  list] (located inside `hydra.config_dir`). Defaults to `config.yaml`.
+
+[config composition]:
+  https://hydra.cc/docs/tutorials/basic/your_first_app/composition/
+[config groups]:
+  https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/
+[defaults list]: https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/
 
 ### parsing
 
@@ -378,23 +412,12 @@ experiments or projects use a similar structure.
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
   when using DVC on NFS or other mounted volumes.
 
-### hydra
-
-- `hydra.enabled` - enables
-  [Hydra Composition](/docs/user-guide/experiment-management/hydra-composition).
-- `hydra.config_dir` - location of the directory containing
-  [Hydra Config Groups](https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/).
-  Defaults to `conf`.
-- `hydra.config_name` - the name of the file containing top-level
-  [Hydra Defaults List](https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/),
-  located inside `hydra.config_dir`. Defaults to `config`.
-
 ## Example: Add an S3 remote, and set it as default
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
@@ -406,26 +429,26 @@ $ dvc config core.remote myremote
 
 Use remote `myremote` by default:
 
-```dvc
+```cli
 $ dvc config core.remote myremote
 ```
 
 Get the default remote:
 
-```dvc
+```cli
 $ dvc config core.remote
 myremote
 ```
 
 Clear default remote value:
 
-```dvc
+```cli
 $ dvc config --unset core.remote
 ```
 
 The above command is equivalent to:
 
-```dvc
+```cli
 $ dvc config core.remote -u
 ```
 
@@ -433,7 +456,7 @@ $ dvc config core.remote -u
 
 Set the <abbr>cache directory</abbr> to an absolute path:
 
-```dvc
+```cli
 $ dvc config cache.dir /mnt/cache
 $ dvc config cache.dir
 /mnt/cache
@@ -441,7 +464,7 @@ $ dvc config cache.dir
 
 or to a relative path (resolved from `./.dvc/`):
 
-```dvc
+```cli
 $ dvc config cache.dir ../../mycache
 $ dvc pull
 
@@ -451,6 +474,6 @@ $ ls ../mycache
 
 Set cache type: if `reflink` is not available, use `copy`:
 
-```dvc
+```cli
 $ dvc config cache.type reflink,copy
 ```

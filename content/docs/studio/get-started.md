@@ -1,36 +1,31 @@
 # Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use Iterative
-Studio.
+<admon>
 
-> Note that we have renamed DVC Studio to Iterative Studio and Views to
-> Projects.
+We have renamed DVC Studio to Iterative Studio.
 
-https://www.youtube.com/watch?v=hKf4twg832g
+</admon>
 
-## Sign up / sign in
+First, sign in to your [Iterative Studio](https://studio.iterative.ai/)
+dashboard using your GitHub.com, GitLab.com, or Bitbucket.org account, or with
+your email address.
 
-1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
-   using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
-   address.
+<admon type="tip">
 
-   <admon>
+When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
+[create a team] first, then go to the _Team settings_ to [change the plan]. To
+sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
+[pricing details]).
 
-   When you sign up, you're on the **Free plan**. To switch to the **Basic
-   plan** [create a team] first, then go to the [team settings] and click on
-   `Change plan` in the `Plan and billing` section.
+</admon>
 
-   To sign up for the **Teams** or **Enterprise** plan, please [schedule a
-   call].
+[create a team]: /doc/studio/user-guide/teams
+[change the plan]:
+  /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
+[schedule a call]: https://calendly.com/gtm-2/studio-introduction
+[pricing details]: https://studio.iterative.ai/pricing
 
-   > See [pricing details] to compare the different plans.
-
-   [create a team]: /doc/studio/user-guide/teams
-   [team settings]: /doc/studio/user-guide/teams#settings
-   [schedule a call]: https://calendly.com/gtm-2/studio-introduction
-   [pricing details]: https://studio.iterative.ai/pricing
-
-   </admon>
+</admon>
 
 ## Explore demo project
 
@@ -65,7 +60,7 @@ more projects._
 
    To connect to repositories on your self-hosted GitLab server, you must first
    add a connection to this server and create a team. Refer to the section on
-   [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+   [self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
    for more details.
 
     </admon>
@@ -100,10 +95,20 @@ You should now see that a project has been added in your dashboard.
 
 ## Explore and share your projects
 
-1. After creating a project, you can use it to [explore the ML experiments] as
-   well as [submit new experiments] from Iterative Studio.
+1. You can use the project to [explore ML experiments].
 
-2. You can also make the project public by [sharing it on the web].
+2. You can [create a team] and invite collaborators. Each team will have its own
+   projects dashboard. To create teams with more than 2 team members, [sign up
+   for the **Basic**, **Teams** or **Enterprise** plan].
+
+3. You can also [make your projects public].
+
+## Run experiments and get live updates
+
+1. You can use your project to [submit new experiments] from Iterative Studio.
+
+2. For the experiments that you submit from Iterative Studio, you can [track
+   live metrics and plots][live-metrics-and-plots] by using [DVCLive].
 
 ## Use model registry
 
@@ -117,7 +122,8 @@ You should now see that a project has been added in your dashboard.
 
 2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
    to the model registry by clicking on the `Add a model` button and following
-   on-screen instructions.
+   on-screen instructions. Models that are already in the repository as well as
+   models stored in remote (cloud) storages can be registered in this way.
 
 3. To
    [view the details](/doc/studio/user-guide/model-registry/view-models#model-details-page)
@@ -129,22 +135,19 @@ You should now see that a project has been added in your dashboard.
    [assign stages to them](/doc/studio/user-guide/model-registry/assign-stage)
    (e.g., development, staging, production).
 
-## Create and manage teams
-
-1. You can [create a team] and invite collaborators. Each team will have its own
-   projects dashboard. To create teams with more than 2 team members, [sign up
-   for the **Basic**, **Teams** or **Enterprise** plan].
-
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
 [create multiple projects from a single git repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
-[explore the ml experiments]:
+[explore ml experiments]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
-[submit new experiments]:
-  /doc/studio/user-guide/projects-and-experiments/run-experiments
-[sharing it on the web]:
-  /doc/studio/user-guide/projects-and-experiments/share-a-project
 [create a team]: /doc/studio/user-guide/teams
 [sign up for the **basic**, **teams** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
+[make your projects public]:
+  /doc/studio/user-guide/projects-and-experiments/share-a-project
+[submit new experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
+[live-metrics-and-plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[dvclive]: /doc/dvclive

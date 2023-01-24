@@ -9,7 +9,7 @@ You can get a list of existing experiments in the <abbr>repository</abbr> with
 `dvc exp list`. Without any options, this command lists the experiments based on
 the latest commit of the current branch (Git `HEAD`).
 
-```dvc
+```cli
 $ dvc exp list
 refs/tags/baseline-experiment:
         cnn-64
@@ -19,13 +19,13 @@ refs/tags/baseline-experiment:
 If you want to list all the experiments in the repo regardless of their parent
 commit, use the `--all-commits` (`-A`) flag.
 
-```dvc
+```cli
 $ dvc exp list -A
 refs/tags/baseline-experiment:
         cnn-64
         cnn-128
 main:
-        exp-93150
+        unwet-jinn
 ```
 
 ## List experiments saved remotely
@@ -34,7 +34,7 @@ Experiments can be [shared] (with `dvc exp push`) from another location. To
 review experiments uploaded to a remote <abbr>repository</abbr> (which you may
 not have locally), provide a Git remote name to `dvc exp list`.
 
-```dvc
+```cli
 $ dvc exp list origin
 refs/tags/baseline-experiment:
         cnn-32
@@ -54,7 +54,7 @@ output to other commands. You can get only the names of the experiments via the
 `--name-only` flag. For example, to download the model files from all
 experiments in a remote:
 
-```dvc
+```cli
 $ for name in $(dvc exp list origin --name-only -A); do
     dvc get --rev ${name} \
             git@github.com:iterative/example-dvc-experiments.git \
@@ -67,7 +67,7 @@ done
 The `--rev` option allows to specify a Git commit, tag or branch name to list
 the experiments that are based on it. For example:
 
-```dvc
+```cli
 # from a commit:
 $ dvc exp list origin --rev 23ceb4a
 23ceb4a:
@@ -94,7 +94,7 @@ them. You can get a table of experiments with `dvc exp show`, which displays all
 the metrics (yellow), parameters (blue) and <abbr>dependencies</abbr> (violet)
 in a nicely formatted table.
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
@@ -127,7 +127,7 @@ the columns to be shown in the table.
 As a quick way of reducing noise, `dvc exp show --only-changed` will drop any
 column with values that do not change across experiments:
 
-```dvc
+```cli
 $ dvc exp show --only-changed
 ```
 
@@ -153,7 +153,7 @@ the metrics or parameters columns by the option `--sort-by` and `--sort-order`.
 `--sort-by` takes a metric or parameter name, and `--sort-order` takes either
 `asc` or `desc`.
 
-```dvc
+```cli
 $ dvc exp show --sort-by auc --sort-order desc
 ```
 
@@ -182,7 +182,7 @@ The `--pcp` flag can be combined with other options of the command. For example,
 use `--sort-by` to sort the experiments and determine the color of the lines
 that represent them.
 
-```dvc
+```cli
 $ dvc exp show --pcp --all-branches --sort-by roc_auc
 ```
 
@@ -196,7 +196,7 @@ $ dvc exp show --pcp --all-branches --sort-by roc_auc
 `dvc exp show` can also output the table in CSV, with `--csv`. It includes all
 the data found in the table.
 
-```dvc
+```cli
 $ dvc exp show --csv
 ```
 
@@ -211,7 +211,7 @@ cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.91600000
 For example, let's parse the CSV output with [csvkit] to get a statistical
 summary about the experiments:
 
-```dvc
+```cli
 $ dvc exp show --csv | csvstat
 ...
 7. "acc"
@@ -241,7 +241,7 @@ It's also possible to output the table of experiments in a machine-readable
 format, for example to parse in scripts. To do so, use the `--json` or `--csv`
 options.
 
-```dvc
+```cli
 $ dvc exp show --json
 ```
 
@@ -330,7 +330,7 @@ Each experiment entry has the following structure:
 As an example, let's feed our experiments to JSON-parsing tool
 [jq](https://stedolan.github.io/jq/) and filter through only metrics:
 
-```dvc
+```cli
 $ dvc exp show --json | jq '.[].baseline.data.metrics'
 {
   "metrics.json": {
@@ -356,7 +356,7 @@ In addition to showing a summary table of experiments, DVC provides the
 `dvc exp diff` command to compare pairs of experiments by the difference in
 their metrics and params.
 
-```dvc
+```cli
 $ dvc exp diff
 Path          Metric  HEAD     workspace  Change
 metrics.json  acc     0.9127   0.9151     0.0024
@@ -372,7 +372,7 @@ print an output, there might be no experiment since the previous commit or it
 didn't produce changes in results. If you want to see all the parameters and
 metrics regardless of whether they have changed, you can use `--all` flag.
 
-```dvc
+```cli
 $ dvc exp diff --all
 Path          Metric  HEAD     workspace  Change
 metrics.json  acc     0.9127   0.9151     0.0024
@@ -406,14 +406,14 @@ You can hide the file path of metrics and parameter files the `--no-path` option
 also customize the amount of significant digits shown for numeric values with
 the `--precision` option (5 by default).
 
-```dvc
-$ dvc exp diff exp-25a26 cnn-64 --no-path --precision 2
-Metric    exp-25a26  cnn-64  Change
-acc       0.92       0.92    0.0002
-loss      0.23       0.23    -0.0048
+```cli
+$ dvc exp diff puffy-daks cnn-64 --no-path --precision 2
+Metric    puffy-daks  cnn-64  Change
+acc       0.92        0.92    0.0002
+loss      0.23        0.23    -0.0048
 
-Param             exp-25a26  Value  Change
-model.conv_units  256        64     -192
+Param             puffy-daks  Value  Change
+model.conv_units  256         64     -192
 ```
 
 ### Get the comparison in JSON
@@ -421,8 +421,8 @@ model.conv_units  256        64     -192
 Parsing the output of `dvc exp diff` may not be easy when you want to use it in
 other commands. `dvc exp diff` can output in JSON with `--json` flag.
 
-```dvc
-$ dvc exp diff exp-25a26 cnn-64 --json
+```cli
+$ dvc exp diff puffy-daks cnn-64 --json
 ```
 
 ```json
@@ -461,8 +461,8 @@ parameters are listed as keys.
 As an example, we can get only a specific metric with
 [jq](https://stedolan.github.io/jq/):
 
-```dvc
-$ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
+```cli
+$ dvc exp diff puffy-daks cnn-64 --json | jq '.metrics."metrics.json".acc'
 {
   "old": 0.9150999784469604,
   "new": 0.9153000116348267,
@@ -477,22 +477,22 @@ table to embed in the reports directly.
 
 [gfm]: https://github.github.com/gfm/#tables-extension-
 
-```dvc
-$ dvc exp diff exp-25a26 cnn-64 --md
-| Path         | Metric | exp-25a26 | cnn-64  | Change     |
-| ------------ | ------ | --------- | ------- | ---------- |
-| metrics.json | acc    | 0.9151    | 0.9153  | 0.00020003 |
-| metrics.json | loss   | 0.23867   | 0.23385 | -0.0048174 |
+```cli
+$ dvc exp diff puffy-daks cnn-64 --md
+| Path         | Metric | puffy-daks | cnn-64  | Change     |
+| ------------ | ------ | ---------- | ------- | ---------- |
+| metrics.json | acc    | 0.9151     | 0.9153  | 0.00020003 |
+| metrics.json | loss   | 0.23867    | 0.23385 | -0.0048174 |
 
 
-| Path        | Param            | exp-25a26 | cnn-64 | Change |
-| ----------- | ---------------- | --------- | ------ | ------ |
-| params.yaml | model.conv_units | 256       | 64     | -192   |
+| Path        | Param            | puffy-daks | cnn-64 | Change |
+| ----------- | ---------------- | ---------- | ------ | ------ |
+| params.yaml | model.conv_units | 256        | 64     | -192   |
 ```
 
 You can use this output to automatically update the documents with a command
 like:
 
-```dvc
-$ dvc exp diff exp-25a26 cnn-64 --md | xargs --replace=DIFFTABLE -- sed -i -e 's/EXPERIMENT_RESULT/DIFFTABLE/' my-template.md
+```cli
+$ dvc exp diff puffy-daks cnn-64 --md | xargs --replace=DIFFTABLE -- sed -i -e 's/EXPERIMENT_RESULT/DIFFTABLE/' my-template.md
 ```

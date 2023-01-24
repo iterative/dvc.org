@@ -139,22 +139,6 @@ options:
   $ dvc remote modify myremote connect_timeout 300
   ```
 
-- `read_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to read from a connection (60 by default). Let's set it to 5
-  minutes for example:
-
-  ```cli
-  $ dvc remote modify myremote read_timeout 300
-  ```
-
-- `connect_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to make a connection (60 by default). Let's set it to 5
-  minutes for example:
-
-  ```cli
-  $ dvc remote modify myremote connect_timeout 300
-  ```
-
 By default, DVC authenticates using your AWS CLI
 [configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 (if set). This uses the default AWS credentials file. Use the following
@@ -271,7 +255,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   ([SSE-C](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)).
   instead of `sse`. The value should be a base64-encoded 256 bit key.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote sse_customer_key 'mysecret'
   ```
 
@@ -279,21 +263,21 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   `sse_customer_key`. This parameter will be passed directly to AWS S3, so DVC
   supports any value that S3 supports. `AES256` by default.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote sse_customer_algorithm 'AES256'
   ```
 
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote acl bucket-owner-full-control
   ```
 
 - `grant_read`\* - grants `READ` permissions at object level access control list
   for specific grantees\*\*. Grantee can read object and its metadata.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote grant_read \
         id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
@@ -301,7 +285,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 - `grant_read_acp`\* - grants `READ_ACP` permissions at object level access
   control list for specific grantees\*\*. Grantee can read the object's ACP.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote grant_read_acp \
         id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
@@ -309,7 +293,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 - `grant_write_acp`\* - grants `WRITE_ACP` permissions at object level access
   control list for specific grantees\*\*. Grantee can modify the object's ACP.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote grant_write_acp \
         id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
@@ -318,7 +302,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   access control list for specific grantees\*\*. Equivalent of grant_read +
   grant_read_acp + grant_write_acp
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote grant_full_control \
         id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
@@ -340,7 +324,7 @@ of `dvc remote modify`). These are tried if none of the params above are set.
 
 Authentication example:
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 $ export AWS_ACCESS_KEY_ID='mykey'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
@@ -349,6 +333,31 @@ $ dvc push
 
 For more on the supported env vars, please see the
 [boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables)
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this S3 remote. Files stored in the remote will
+  retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote.
+
+- `worktree` - Use
+  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
+  cloud versioning features for this S3 remote. Files stored in the remote will
+  retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in cloud storage. DVC will also attempt to ensure that the current
+  version of objects in the remote match the latest version of files in the DVC
+  repository. When both `version_aware` and `worktree` are set, `worktree` takes
+  precedence.
+
+<admon type="tip">
+
+The `version_aware` and `worktree` options require that
+[S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+be enabled on the specified S3 bucket.
+
+</admon>
 
 </details>
 
@@ -361,7 +370,7 @@ For more on the supported env vars, please see the
   [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
   [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.):
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote \
                       endpointurl https://storage.example.com
   ```
@@ -382,7 +391,7 @@ storage. Whether they're effective depends on each storage platform.
 - `url` (required) - remote location, in the `azure://<container>/<object>`
   format:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
@@ -392,7 +401,7 @@ storage. Whether they're effective depends on each storage platform.
 - `account_name` - storage account name. Required for every authentication
   method except `connection_string` (which already includes it).
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote account_name 'myaccount'
   ```
 
@@ -414,7 +423,7 @@ exclusion parameters depending on your setup
 [azure-default-cred-params]:
   https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python#parameters
 
-```dvc
+```cli
 $ dvc remote modify --system myremote
                     exclude_environment_credential true
 $ dvc remote modify --system myremote
@@ -456,7 +465,7 @@ attempting to authenticate with Azure:
   [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
   (recommended).
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
                               connection_string 'mysecret'
   ```
@@ -464,33 +473,33 @@ attempting to authenticate with Azure:
 * `tenant_id` - tenant ID for AD _service principal_ authentication (requires
   `client_id` and `client_secret` along with this):
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote tenant_id 'mytenant'
   ```
 
 * `client_id` - client ID for _service principal_ authentication (when
   `tenant_id` is set):
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote client_id 'myclient'
   ```
 
 * `client_secret` - client Secret for _service principal_ authentication (when
   `tenant_id` is set):
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote client_secret 'mysecret'
   ```
 
 * `account_key` - storage account key:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
 * `sas_token` - shared access signature token:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
@@ -498,7 +507,7 @@ attempting to authenticate with Azure:
   auth params are given (besides `account_name`). This will only work with
   public buckets:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote allow_anonymous_login true
   ```
 
@@ -509,13 +518,13 @@ Azure remotes can also authenticate via env vars (instead of
 
 For Azure connection string:
 
-```dvc
+```cli
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 ```
 
 For account name and key/token auth:
 
-```dvc
+```cli
 $ export AZURE_STORAGE_ACCOUNT='myaccount'
 # and
 $ export AZURE_STORAGE_KEY='mysecret'
@@ -525,7 +534,7 @@ $ export AZURE_STORAGE_SAS_TOKEN='mysecret'
 
 For _service principal_ auth (via certificate file):
 
-```dvc
+```cli
 $ export AZURE_TENANT_ID='directory-id'
 $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
@@ -533,7 +542,7 @@ $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
 
 For simple username/password login:
 
-```dvc
+```cli
 $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_USERNAME='myuser'
 $ export AZURE_PASSWORD='mysecret'
@@ -552,6 +561,31 @@ can propagate from an Azure configuration file (typically managed with
 `container_name`. The default directory where it will be searched for is
 `~/.azure` but this can be customized with the `AZURE_CONFIG_DIR` env var.
 
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Azure remote. Files stored in the remote
+  will retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote.
+
+- `worktree` - Use
+  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
+  cloud versioning features for this Azure remote. Files stored in the remote
+  will retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in cloud storage. DVC will also attempt to ensure that the current
+  version of objects in the remote match the latest version of files in the DVC
+  repository. When both `version_aware` and `worktree` are set, `worktree` takes
+  precedence.
+
+<admon type="tip">
+
+The `version_aware` and `worktree` options require that
+[Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
+be enabled on the specified Azure storage account and container.
+
+</admon>
+
 </details>
 
 <details>
@@ -569,7 +603,7 @@ for a full guide on using Google Drive as DVC remote storage.
 - `url` - remote location. See
   [valid URL format](/doc/user-guide/how-to/setup-google-drive-remote#url-format).
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url \
                       gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
   ```
@@ -578,14 +612,14 @@ for a full guide on using Google Drive as DVC remote storage.
   [custom Google Client project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended).
   Also requires using `gdrive_client_secret`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote gdrive_client_id 'client-id'
   ```
 
 - `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
@@ -606,7 +640,7 @@ for a full guide on using Google Drive as DVC remote storage.
   | ------------------ | ----------------- | ----------------------- |
   | `~/Library/Caches` | `~/.cache`        | `%CSIDL_LOCAL_APPDATA%` |
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote \
         gdrive_user_credentials_file path/to/mycredentials.json
   ```
@@ -622,7 +656,7 @@ for more details.
   them permanently. `false` by default, meaning "delete". Useful for shared
   drives/folders, where delete permissions may not be given.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote gdrive_trash_only true
   ```
 
@@ -633,7 +667,7 @@ for more details.
   identified as such (malware, personal info., etc.) can only be downloaded by
   their owner (with this param enabled).
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote gdrive_acknowledge_abuse true
   ```
 
@@ -648,7 +682,7 @@ more information.
   that the service account has read/write access (as needed) to the file
   structure in the remote `url`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
@@ -657,7 +691,7 @@ more information.
   [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
   (credentials).
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
                       gdrive_service_account_json_file_path \
                       path/to/file.json
@@ -666,7 +700,7 @@ more information.
 - `gdrive_service_account_user_email` - the authority of a user account can be
   [delegated] to the service account if needed.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote \
                       gdrive_service_account_user_email 'myemail-addr'
   ```
@@ -691,14 +725,14 @@ more information.
 
 - `url` - remote location, in the `gs://<bucket>/<object>` format:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url gs://mybucket/path
   ```
 
 - `projectname` - override or provide a project name to use, if a default one is
   not set.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote projectname myproject
   ```
 
@@ -714,7 +748,7 @@ more information.
   Make sure that the service account has read/write access (as needed) to the
   file structure in the remote `url`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
           credentialpath '/home/.../project-XXX.json'
   ```
@@ -722,9 +756,34 @@ more information.
 Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be
 set:
 
-```dvc
+```cli
 $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 ```
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Google Cloud Storage remote. Files stored
+  in the remote will retain their original filenames and directory hierarchy,
+  and different versions of files will be stored as separate versions of the
+  corresponding object in the remote.
+
+- `worktree` - Use
+  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
+  cloud versioning features for this Google Cloud Storage remote. Files stored
+  in the remote will retain their original filenames and directory hierarchy,
+  and different versions of files will be stored as separate versions of the
+  corresponding object in cloud storage. DVC will also attempt to ensure that
+  the current version of objects in the remote match the latest version of files
+  in the DVC repository. When both `version_aware` and `worktree` are set,
+  `worktree` takes precedence.
+
+<admon type="tip">
+
+The `version_aware` and `worktree` options require that
+[Object versioning](https://cloud.google.com/storage/docs/object-versioning) be
+enabled on the specified bucket.
+
+</admon>
 
 </details>
 
@@ -738,7 +797,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 
 - `url` - remote location, in the `oss://<bucket>/<object>` format:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url oss://mybucket/path
   ```
 
@@ -746,19 +805,19 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
   [OSS endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html) values
   for accessing the remote container.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote oss_endpoint endpoint
   ```
 
 - `oss_key_id` - OSS key ID to access the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote oss_key_id 'mykey'
   ```
 
 - `oss_key_secret` - OSS secret key for authorizing access into the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote oss_key_secret 'mysecret'
   ```
 
@@ -766,7 +825,7 @@ Note that OSS remotes can also be configured via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
 The available ones are shown below:
 
-```dvc
+```cli
 $ export OSS_ACCESS_KEY_ID='mykey'
 $ export OSS_ACCESS_KEY_SECRET='mysecret'
 $ export OSS_ENDPOINT='endpoint'
@@ -787,7 +846,7 @@ $ export OSS_ENDPOINT='endpoint'
   Note that this can already include the `user` parameter, embedded into the
   URL:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url \
                       ssh://user@example.com:1234/path
   ```
@@ -800,7 +859,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 - `user` - user name to access the remote:
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote user myuser
   ```
 
@@ -814,7 +873,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 - `port` - port to access the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote port 2222
   ```
 
@@ -828,31 +887,31 @@ $ export OSS_ENDPOINT='endpoint'
 
 - `keyfile` - path to private key to access the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote keyfile /path/to/keyfile
   ```
 
 - `password` - a password to access the remote
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote password mypassword
   ```
 
 - `ask_password` - ask for a password to access the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ask_password true
   ```
 
 - `passphrase` - a private key passphrase to access the remote
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote passphrase mypassphrase
   ```
 
 - `ask_passphrase` - ask for a private key passphrase to access the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ask_passphrase true
   ```
 
@@ -864,7 +923,7 @@ $ export OSS_ENDPOINT='endpoint'
   `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and macOS
   PKG) do not support it.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote gss_auth true
   ```
 
@@ -872,7 +931,7 @@ $ export OSS_ENDPOINT='endpoint'
   (`true` by default). Setting this to `false` is useful when `ssh-agent` is
   causing problems, such as a "No existing session" error:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote allow_agent false
   ```
 
@@ -892,20 +951,20 @@ Read more about by expanding the WebHDFS section in
 
 - `url` - remote location:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url hdfs://user@example.com/path
   ```
 
 - `user` - user name to access the remote.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote user myuser
   ```
 
 - `kerb_ticket` - path to the Kerberos ticket cache for Kerberos-secured HDFS
   clusters
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
                               kerb_ticket /path/to/ticket/cache
   ```
@@ -926,7 +985,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `url` - remote location:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url webhdfs://user@example.com/path
   ```
 
@@ -936,20 +995,20 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `user` - user name to access the remote. Do not set this with `kerberos` or
   `token` authentication.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote user myuser
   ```
 
 - `kerberos` - enable Kerberos authentication (`false` by default):
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote kerberos true
   ```
 
 - `kerberos_principal` - [Kerberos principal] to use, in case you have multiple
   ones (for example service accounts). Only used if `kerberos` is `true`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote kerberos_principal myprincipal
   ```
 
@@ -961,7 +1020,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   the cluster is secured, Kerberos must be enabled (set `kerberos` to `true`)
   for this to work. This parameter is incompatible with `token`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote proxy_to myuser
   ```
 
@@ -971,7 +1030,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `use_https` - enables SWebHdfs. Note that DVC still expects the protocol in
   `url` to be `webhdfs://`, and will fail if `swebhdfs://` is used.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote use_https true
   ```
 
@@ -981,7 +1040,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `ssl_verify` - whether to verify SSL requests. Defaults to `true` when
   `use_https` is enabled, `false` otherwise.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ssl_verify false
   ```
 
@@ -990,7 +1049,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   this to work. This parameter is incompatible with providing a `user` and with
   `proxy_to`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote token "mysecret"
   ```
 
@@ -1011,7 +1070,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `url` - remote location:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url https://example.com/path
   ```
 
@@ -1033,7 +1092,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
     `custom_auth_header` and `password` (or `ask_password`) parameters should
     also be configured.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote auth basic
   ```
 
@@ -1043,21 +1102,21 @@ by HDFS. Read more about by expanding the WebHDFS section in
   [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
   By default, `POST` is used.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote method PUT
   ```
 
 - `custom_auth_header` - HTTP header field name to use when the `auth` parameter
   is set to `custom`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote \
                       custom_auth_header 'My-Header'
   ```
 
 - `user` - user name to use when the `auth` parameter is set to `basic`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote user myuser
   ```
 
@@ -1068,13 +1127,13 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `password` - password to use for any `auth` method.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote password mypassword
   ```
 
 - `ask_password` - ask each time for the password to use for any `auth` method.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ask_password true
   ```
 
@@ -1085,10 +1144,26 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `ssl_verify` - whether or not to verify SSL certificates, or a path to a
   custom CA bundle to do so (`true` by default).
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ssl_verify false
   # or
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
+  ```
+
+- `read_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to read a portion of data from a connection (60 by default).
+  Let's set it to 5 minutes for example:
+
+  ```cli
+  $ dvc remote modify myremote read_timeout 300
+  ```
+
+- `connect_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to make a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```cli
+  $ dvc remote modify myremote connect_timeout 300
   ```
 
 </details>
@@ -1103,7 +1178,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `url` - remote location:
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote url \
       webdavs://example.com/nextcloud/remote.php/dav/files/myuser/
   ```
@@ -1111,14 +1186,14 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `token` - token for WebDAV server, can be empty in case of using
   `user/password` authentication.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote token 'mytoken'
   ```
 
 - `user` - user name for WebDAV server, can be empty in case of using `token`
   authentication.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote user myuser
   ```
 
@@ -1130,7 +1205,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `password` - password for WebDAV server, can be empty in case of using `token`
   authentication.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote password mypassword
   ```
 
@@ -1141,14 +1216,14 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `ask_password` - ask each time for the password to use for `user/password`
   authentication. This has no effect if `password` or `token` are set.
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ask_password true
   ```
 
 - `ssl_verify` - whether or not to verify SSL certificates, or a path to a
   custom CA bundle to do so (`true` by default).
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote ssl_verify false
   # or
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
@@ -1157,14 +1232,14 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `cert_path` - path to certificate used for WebDAV server authentication, if
   you need to use local client side certificates.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote cert_path /path/to/cert
   ```
 
 - `key_path` - path to private key to use to access a remote. Only has an effect
   in combination with `cert_path`.
 
-  ```dvc
+  ```cli
   $ dvc remote modify --local myremote key_path /path/to/key
   ```
 
@@ -1173,7 +1248,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `timeout` - connection timeout (in seconds) for WebDAV server (default: 30).
 
-  ```dvc
+  ```cli
   $ dvc remote modify myremote timeout 120
   ```
 
@@ -1186,14 +1261,14 @@ Let's first set up a _default_ S3 remote.
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 ```
 
 Modify its access profile:
 
-```dvc
+```cli
 $ dvc remote modify myremote profile myprofile
 ```
 
@@ -1211,7 +1286,7 @@ Now the project config file should look like this:
 
 Using a default identity (e.g. credentials set by `az cli`):
 
-```dvc
+```cli
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify myremote account_name 'myaccount'
 $ dvc push
@@ -1222,7 +1297,7 @@ $ dvc push
 
 Using a `connection_string`:
 
-```dvc
+```cli
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote connection_string 'mysecret'
 $ dvc push
@@ -1230,7 +1305,7 @@ $ dvc push
 
 Using `account_key`:
 
-```dvc
+```cli
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote account_key 'mysecret'
@@ -1239,7 +1314,7 @@ $ dvc push
 
 Using `sas_token`:
 
-```dvc
+```cli
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'

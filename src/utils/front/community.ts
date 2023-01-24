@@ -37,7 +37,7 @@ export function useCommunityData(): ICommunityData {
         content
       }
       hero: allCommunityHero(
-        sort: { fields: [sourceIndex], order: ASC }
+        sort: { sourceIndex: ASC }
         limit: 1
         filter: { expired: { eq: false } }
       ) {
@@ -49,7 +49,7 @@ export function useCommunityData(): ICommunityData {
       }
       events: allCommunityEvent(
         filter: { expired: { eq: false } }
-        sort: { fields: [sourceIndex], order: ASC }
+        sort: { sourceIndex: ASC }
         limit: 3
       ) {
         nodes {

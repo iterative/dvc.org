@@ -65,7 +65,7 @@ Note that it's best to try avoiding these scenarios, where the
 <abbr>cache</abbr>, `dvc.lock`, and `.dvc` files are force-updated. DVC can't
 guarantee reproducibility in those cases.
 
-[add the missing deps/outs]: /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
+[add the missing deps/outs]: /doc/user-guide/how-to/add-deps-or-outs-to-a-stage
 
 ## Options
 
@@ -104,7 +104,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 
 Start by cloning our example repo if you don't already have it:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
@@ -113,7 +113,7 @@ Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
-```dvc
+```cli
 $ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
@@ -121,7 +121,7 @@ $ pip install -r src/requirements.txt
 
 Download the precomputed data using:
 
-```dvc
+```cli
 $ dvc pull -aT
 ```
 
@@ -151,7 +151,7 @@ This edit introduces a change that would cause the `featurize`, `train` and
 several values for `max_features` and save only the best result to the cache, we
 can run it like this:
 
-```dvc
+```cli
 $ dvc repro --no-commit
 ```
 
@@ -161,7 +161,7 @@ cache. Let's verify that's the case:
 
 First verification (via `dvc status`):
 
-```dvc
+```cli
 $ dvc status
 featurize:
 	changed outs:
@@ -198,7 +198,7 @@ hash value are used as a subdirectory name, and the remaining characters are the
 file name. Therefore, had the file been committed to the cache, it would appear
 in the directory `.dvc/cache/9a`. Let's check:
 
-```dvc
+```cli
 $ ls .dvc/cache/9a
 ls: .dvc/cache/9a: No such file or directory
 ```
@@ -206,7 +206,7 @@ ls: .dvc/cache/9a: No such file or directory
 If we've determined the changes to `params.yaml` were successful, we can execute
 this set of commands:
 
-```dvc
+```cli
 $ dvc commit
 $ dvc status
 Data and pipelines are up to date.
@@ -223,7 +223,7 @@ Sometimes you may want to execute stage commands manually (instead of using
 `dvc repro`). You won't have DVC helping you, but you'll have the freedom to run
 any command, even ones not defined in `dvc.yaml`. For example:
 
-```dvc
+```cli
 $ python src/featurization.py data/prepared data/features
 $ python src/train.py data/features model.pkl
 $ python src/evaluate.py model.pkl data/features auc.metric
@@ -240,7 +240,7 @@ cause a change in its results. We might write in-line documentation with
 comments, change indentation, remove some debugging printouts, or any other
 change that doesn't produce different output of pipeline stages.
 
-```dvc
+```cli
 $ git status -s
 M src/train.py
 
@@ -258,7 +258,7 @@ since the change was inconsequential, that would be a waste of time and CPU.
 That's especially critical if the corresponding stages take lots of resources to
 execute.
 
-```dvc
+```cli
 $ git add src/train.py
 
 $ git commit -m "CHANGED"

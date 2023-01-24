@@ -1,7 +1,7 @@
 # run
 
-Helper command to create or update _stages_ in `dvc.yaml`. Requires a name and a
-command.
+Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`. Requires a
+name and a command.
 
 ## Synopsis
 
@@ -23,13 +23,17 @@ positional arguments:
 
 ## Description
 
-`dvc run` is a helper for creating or updating
-[pipeline](/doc/command-reference/dag) stages in a `dvc.yaml` file (located in
-the current working directory).
+`dvc run` is a helper for creating or updating <abbr>pipeline</abbr> stages in a
+`dvc.yaml` file (located in the current working directory). `dvc run` also
+executes the stage (unless the `--no-exec` flag is used).
 
-_Stages_ represent individual data processes, including their input and
-resulting outputs. They can be combined to capture simple data workflows,
-organize data science projects, or build detailed machine learning pipelines.
+<admon type="tip">
+
+We now recommend writing `dvc.yaml` files directly or using the `dvc stage add`
+helper to define stages (similar to `dvc run` but without execution). Use
+`dvc repro` to run them.
+
+</admon>
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mostly meant to describe different
@@ -58,7 +62,7 @@ input of another, and so on (see `dvc dag`). This graph can be restored by DVC
 later to modify or [reproduce](/doc/command-reference/repro) the full pipeline.
 For example:
 
-```dvc
+```cli
 $ dvc run -n printer -d write.sh -o pages ./write.sh
 $ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
@@ -101,7 +105,7 @@ Relevant notes:
 - In some situations, we have previously executed a stage, and later notice that
   some of the files/directories used by the stage as dependencies, or created as
   outputs are missing from `dvc.yaml`. It is possible to
-  [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
+  [add missing dependencies/outputs to an existing stage](/doc/user-guide/how-to/add-deps-or-outs-to-a-stage)
   without having to execute it again.
 
 - Renaming dependencies or outputs requires a
@@ -193,7 +197,7 @@ data science experiments.
   This option behaves like `-o` but registers the file or directory in a `plots`
   field inside the `dvc.yaml` stage. Plots outputs are either data series stored
   in tabular (CSV or TSV) or hierarchical (JSON or YAML) files, or image (JPEG,
-  GIF, or PNG) files. See [Visualizing Plots] to learn more about plots.
+  GIF, PNG, or SVG) files. See [Visualizing Plots] to learn more about plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots output (same as with `-O` and `-M` above). This may be
@@ -252,7 +256,7 @@ data science experiments.
 
 Let's create a stage (that counts the number of lines in a `test.txt` file):
 
-```dvc
+```cli
 $ dvc run -n count \
           -d test.txt \
           -o lines \
@@ -288,7 +292,7 @@ stages:
 The following stage runs a Python script that trains an ML model on the training
 dataset (`20180226` is a seed value):
 
-```dvc
+```cli
 $ dvc run -n train \
           -d train_model.py -d matrix-train.p -o model.p \
           python train_model.py 20180226 model.p
@@ -297,7 +301,7 @@ $ dvc run -n train \
 To update a stage that is already defined, the `-f` (`--force`) option is
 needed. Let's update the seed for the `train` stage:
 
-```dvc
+```cli
 $ dvc run -n train --force \
           -d train_model.p -d matrix-train.p -o model.p \
           python train_model.py 18494003 model.p
@@ -309,7 +313,7 @@ Let's move to a subdirectory and create a stage there. This generates a separate
 `dvc.yaml` file in that location. The stage command itself counts the lines in
 `test.txt` and writes the number to `lines`.
 
-```dvc
+```cli
 $ cd more_stages/
 $ dvc run -n process_data \
           -d data.in \
@@ -335,7 +339,7 @@ outputs of a stage to the dependencies of the following one(s).
 
 Extract an XML file from an archive to the `data/` folder:
 
-```dvc
+```cli
 $ dvc run -n extract \
           -d Posts.xml.zip \
           -o data/Posts.xml \
@@ -347,7 +351,7 @@ $ dvc run -n extract \
 
 Execute an R script that parses the XML file:
 
-```dvc
+```cli
 $ dvc run -n parse \
           -d parsingxml.R -d data/Posts.xml \
           -o data/Posts.csv \
@@ -357,7 +361,7 @@ $ dvc run -n parse \
 To visualize how these stages are connected into a pipeline (given their outputs
 and dependencies), we can use `dvc dag`:
 
-```dvc
+```cli
 $ dvc dag
 +---------+
 | extract |
@@ -391,7 +395,7 @@ processing:
 
 Define a stage with both regular dependencies as well as parameter dependencies:
 
-```dvc
+```cli
 $ dvc run -n train \
           -d train_model.py -d matrix-train.p  -o model.p \
           -p seed,train.lr,train.epochs

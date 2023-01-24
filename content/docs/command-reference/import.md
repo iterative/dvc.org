@@ -145,7 +145,7 @@ A simple case for this command is to import a dataset from an external <abbr>DVC
 repository</abbr>, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
-```dvc
+```cli
 $ dvc import git@github.com:iterative/example-get-started \
              data/data.xml
 Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
@@ -181,7 +181,7 @@ version of the dependency, respectively.
 
 To import a specific version of a file/directory, we may use the `--rev` option:
 
-```dvc
+```cli
 $ dvc import --rev cats-dogs-v1 \
              git@github.com:iterative/dataset-registry.git \
              use-cases/cats-dogs
@@ -209,7 +209,7 @@ update `rev_lock` in the `.dvc` file), simply use `dvc update <stage>.dvc`. If
 will not have an effect on the import `.dvc` file. You may force-update it to a
 different commit with `dvc update --rev`:
 
-```dvc
+```cli
 $ dvc update --rev cats-dogs-v2 cats-dogs.dvc
 ```
 
@@ -226,7 +226,7 @@ that track different datasets. Given this simple structure, its data files can
 be easily shared among several other projects using `dvc get` and `dvc import`.
 For example:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorials/versioning/data.zip
 ```
@@ -236,7 +236,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 Or
 
-```dvc
+```cli
 $ dvc import git@github.com:iterative/dataset-registry.git \
              use-cases/cats-dogs
 ```
@@ -271,7 +271,7 @@ You can even import files from plain Git repos that are not <abbr>DVC
 repositories</abbr>. For example, let's import a dataset from
 [GSA's data repo](https://github.com/GSA/data):
 
-```dvc
+```cli
 $ dvc import git@github.com:GSA/data \
            enterprise-architecture/it-standards.csv
 Importing ...
@@ -313,7 +313,7 @@ a `data.csv` file tracked with `dvc add`:
 
 In repo B, we import `data.csv` from A and into a subdirectory:
 
-```dvc
+```cli
 $ dvc import /repo/a data.csv --out training/data.csv
 ```
 
@@ -350,7 +350,7 @@ outs:
 
 Now lets imagine that we run the following command in our third repo, C:
 
-```dvc
+```cli
 $ dvc import /repo/b training
 ```
 

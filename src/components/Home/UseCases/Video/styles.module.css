@@ -49,8 +49,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top: calc(50% - 30px);
 
     &:hover .tooltip {
       opacity: 1;
@@ -65,17 +65,17 @@
     text-shadow: 0 1px 0 rgb(33 45 69 / 25%);
     font-size: 16px;
 
-    @media (--xs-scr) {
+    @media screen(xsMax) {
       margin: 8px 16px 0;
       font-size: 14px;
     }
 
-    @media (--xxs-scr) {
+    @media screen(xxsMax) {
       margin: 2px 16px 0;
     }
 
     a {
-      @mixin focus;
+      @apply focus;
 
       color: #fff;
     }

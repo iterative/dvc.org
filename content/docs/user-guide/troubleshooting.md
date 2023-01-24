@@ -65,7 +65,7 @@ If the issue still persists then it may be the case that you are running DVC on
 some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 `core.hardlink_lock` which can be done by running following command:
 
-```dvc
+```cli
 $ dvc config core.hardlink_lock true
 ```
 
@@ -88,7 +88,7 @@ DVC to use alternative link types which are supported on your machine.
 After reconfiguring cache types, you can re-link data files in your workspace
 using:
 
-```dvc
+```cli
 $ dvc checkout --relink
 ```
 
@@ -98,15 +98,6 @@ $ dvc checkout --relink
 commands accept a `git_remote` argument. You may need to authenticate to use the
 Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
 `dvc exp pull`) permissions.
-
-DVC does not currently support authentication with [Git credentials]. This means
-that unless the Git server allows unauthenticated HTTP write/read, you should
-use an [SSH Git URL] for Git remotes used for listing, pulling or pushing
-experiments.
-
-[git credentials]: https://git-scm.com/docs/gitcredentials
-[ssh git url]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
 
 ## Could not open pickled 'index/md5/links' cache {#pickle}
 

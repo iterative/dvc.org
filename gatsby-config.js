@@ -6,14 +6,6 @@ const path = require('path')
 const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
 const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
 
-const autoprefixer = require('autoprefixer')
-const customMedia = require('postcss-custom-media')
-const customProperties = require('postcss-custom-properties')
-const mixins = require('postcss-mixins')
-const colorMod = require('postcss-color-mod-function')
-
-const mixinsConfig = require('@dvcorg/gatsby-theme-iterative/config/postcss/mixins')
-
 const title = 'Data Version Control · DVC'
 const description =
   'Open-source version control system for Data Science and Machine Learning ' +
@@ -28,33 +20,19 @@ const keywords = [
 
 const plugins = [
   'gatsby-plugin-twitter',
+  'landing-page',
   {
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
       remark: false,
-      simpleLinkerTerms: require('./content/linked-terms'),
-      cssBase: require.resolve(
-        './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
-      ),
-      postCssPlugins: [
-        require('postcss-nested'),
-        customMedia({
-          importFrom: './src/styles/media.css'
-        }),
-        mixins(mixinsConfig),
-        customProperties({
-          importFrom: [
-            './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
-          ],
-          disableDeprecationNotice: true
-        }),
-        colorMod({
-          importFrom: [
-            './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
-          ]
-        }),
-        autoprefixer
-      ]
+      simpleLinkerTerms: require('./content/linked-terms')
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'data',
+      path: path.join(__dirname, 'content', 'data')
     }
   },
   {
@@ -135,8 +113,7 @@ const plugins = [
       ]
       /* eslint-enable @typescript-eslint/naming-convention */
     }
-  },
-  '@sentry/gatsby'
+  }
 ]
 
 if (process.env.ANALYZE) {

@@ -416,7 +416,7 @@ region.
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 
@@ -435,20 +435,20 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 The list of remotes should now be:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	s3://mybucket/path
 ```
 
 You can overwrite existing remotes using `-f` with `dvc remote add`:
 
-```dvc
+```cli
 $ dvc remote add -f myremote s3://mybucket/another-path
 ```
 
 List remotes again to view the updated remote:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	s3://mybucket/another-path
 ```

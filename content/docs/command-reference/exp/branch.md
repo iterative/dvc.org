@@ -60,41 +60,41 @@ version.
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**           metric: **auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+  neutral:**Experiment**               neutral:**Created**           metric: **auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.61314   1500                     2
-  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
-  ├── exp-e6c97           Oct 21, 2020   0.61314   1500                     2
-  ├── exp-1dad0           Oct 09, 2020   0.57756   2000                     2
-  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
+  workspace                -              0.61314   1500                     2
+  10-bigrams-experiment    Jun 20, 2020   0.61314   1500                     2
+  ├── major-mela           Oct 21, 2020   0.61314   1500                     2
+  ├── gluey-leak           Oct 09, 2020   0.57756   2000                     2
+  └── ochre-dook           Oct 09, 2020   0.51676   500                      2
  ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-We may want to branch-off `exp-1dad0` for a separate experimentation process
+We may want to branch-off `gluey-leak` for a separate experimentation process
 (based on 2000 `max_features`).
 
-```dvc
-$ dvc exp branch exp-1dad0 maxf-2000
-Git branch 'maxf-2000' has been created from experiment 'exp-1dad0'.
+```cli
+$ dvc exp branch gluey-leak maxf-2000
+Git branch 'maxf-2000' has been created from experiment 'gluey-leak'.
 To switch to the new branch run:
         git checkout my-branch
 ```
 
 We can inspect the result with Git:
 
-```dvc
+```cli
 $ git branch
 * master
   maxf-2000

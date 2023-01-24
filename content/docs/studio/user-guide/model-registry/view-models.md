@@ -20,7 +20,7 @@ Iterative Studio consolidates the stages of all the models in the registry, and
 provides a way to filter models by stages.
 
 Iterative Studio also consolidates the frameworks of all the models in the
-registry, and provides a way to filter models by framework. Note that the
+registry and provides a way to filter models by framework. Note that the
 framework of a model is identified by Iterative’s model deployment tool [MLEM].
 If you have not used MLEM, then Iterative Studio will use a generic framework
 label (`G`) to indicate that the model framework was not identified, and that
@@ -70,4 +70,4 @@ belongs.
 ![](https://static.iterative.ai/img/studio/model-columns-in-experiment-table.png)
 
 [mlem]: https://mlem.ai/
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
