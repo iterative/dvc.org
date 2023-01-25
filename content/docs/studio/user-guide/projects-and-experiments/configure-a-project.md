@@ -54,10 +54,11 @@ you want to visualize in Iterative Studio.
 ### Data remotes (cloud/remote storage)
 
 The metrics and parameters that you want to include in the project may also be
-present in a [data remote](/doc/command-reference/remote#description) (cloud
-storage or another location outside the Git repo). If you want to include such
-data in your projects, then you will have to grant Iterative Studio access to
-the data remote.
+present in a [data remote] (cloud storage or another location outside the Git
+repo). If you want to include such data in your projects, then you will have to
+grant Iterative Studio access to the data remote.
+
+[data remote]: /doc/user-guide/data-management/remote-storage
 
 ## Configuring project settings
 
@@ -82,9 +83,8 @@ which you are trying to connect.
 
 ### Data remotes / cloud storage credentials
 
-If you need to provide credentials for
-[DVC data remotes](/doc/command-reference/remote#description), you will need to
-do it after your project has been created. First, create your project without
+If you need to provide credentials for a [data remote], you will need to do it
+after your project has been created. First, create your project without
 specifying the data remotes. Once your project is created, open its settings.
 Open the `Data remotes / cloud storage credentials` section. The data remotes
 that are used in your DVC repo will be listed.
