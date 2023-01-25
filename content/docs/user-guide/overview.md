@@ -71,18 +71,21 @@ bringing best practices from software engineering into the data science field.
 ### Git-LFS (Large File Storage)
 
 - DVC does not require special servers like Git-LFS demands. Any cloud storage
-  like S3, Google Cloud Storage, or even an SSH server can be used as a
-  [remote storage](/doc/command-reference/remote). No additional databases,
-  servers, or infrastructure are required.
+  like S3, Google Cloud Storage, or even an SSH server can be used as a [remote
+  storage]. No additional databases, servers, or infrastructure are required.
 
 - DVC does not add any hooks to the Git repo by default (although they are
-  [available](/doc/command-reference/install)).
+  [available]).
 
 - Git-LFS was not made with data science in mind, so it doesn't provide related
-  features (e.g. [pipelines](/doc/command-reference/dag),
-  [metrics](/doc/command-reference/metrics), etc.).
+  features (e.g. [pipelines], [metrics], etc.).
 
-- GitHub (most common Git hosting service) has a limit of 2 GB per repository.
+- GitHub (common Git hosting service) has a limit of 2 GB per repository.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[available]: /doc/command-reference/install
+[pipelines]: /doc/command-reference/dag
+[metrics]: /doc/command-reference/metrics
 
 </details>
 
@@ -97,9 +100,9 @@ bringing best practices from software engineering into the data science field.
   workflow for machine learning and reproducible experiments. When a DVC or
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine, as file contents are stored in separate
-  [remotes](/doc/command-reference/remote). With DVC however, `.dvc` files,
-  which provide the reproducible workflow, are always included in the Git
-  repository. Hence, they can be executed locally with minimal effort.
+  [remotes][remote storage]. With DVC however, `.dvc` files, which provide the
+  reproducible workflow, are always included in the Git repository. Hence, they
+  can be executed locally with minimal effort.
 
 - DVC optimizes file hash calculation.
 

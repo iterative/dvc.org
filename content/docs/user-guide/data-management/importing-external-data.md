@@ -29,8 +29,13 @@ types/protocols:
 - HTTP
 - Local files and directories outside the <abbr>workspace</abbr>
 
-> Note that [remote storage](/doc/command-reference/remote) is a different
-> feature.
+<admon type="info">
+
+[Remote storage] is a different feature.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
+</admon>
 
 ## Examples
 
@@ -151,8 +156,8 @@ be managed independently. This is useful if the connection requires
 authentication, if multiple dependencies (or stages) reuse the same location, or
 if the URL is likely to change in the future.
 
-[DVC remotes](/doc/command-reference/remote) can do just this. You may use
-`dvc remote add` to define them, and then use a special URL with format
+[DVC remotes][remote storage] can do just this. You may use `dvc remote add` to
+define them, and then use a special URL with format
 `remote://{remote_name}/{path}` (remote alias) to define the external
 dependency.
 

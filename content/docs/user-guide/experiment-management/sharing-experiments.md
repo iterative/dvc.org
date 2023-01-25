@@ -26,8 +26,9 @@ $ git push origin my-branch
 If you only need to share code and metadata like parameters and metrics, then
 pushing to Git is often enough. However, you may also have data, models, etc.
 that are tracked and <abbr>cached</abbr> by DVC. If you need to share these
-files, you can push them to [remote storage](/doc/command-reference/remote)
-(e.g. Amazon S3 or Google Drive).
+files, you can push them to [remote storage] (e.g. Amazon S3 or Google Drive).
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ```cli
 $ dvc push
