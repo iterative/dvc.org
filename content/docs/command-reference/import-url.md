@@ -1,11 +1,16 @@
 # import-url
 
 Track a file or directory found in an external location (`s3://`, `/local/path`,
-etc.), and download it to the local project, or make a copy in
-[remote storage](/doc/command-reference/remote).
+etc.), and download it to the local project, or make a copy in [remote storage].
 
-> See `dvc import` to download and track data/model files or directories from
-> other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
+<admon type="info">
+
+See `dvc import` to download and track data/model files or directories from
+other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
+
+</admon>
 
 ## Synopsis
 
@@ -25,8 +30,7 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from an external
-location into the workspace (or to
-[remote storage](/doc/command-reference/remote)), such that it can be updated
+location into the workspace (or to a `dvc remote`), such that it can be updated
 later, if/when the external data source changes. Example scenarios:
 
 - A remote system may produce occasional data files that are used in other
@@ -63,11 +67,12 @@ An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
 
-> Note that data imported from external locations can be
-> [pushed](/doc/command-reference/push) and
-> [pulled](/doc/command-reference/pull) to/from
-> [remote storage](/doc/command-reference/remote) normally (unlike for
-> `dvc import`).
+<admon type="info">
+
+You can `dvc push` and `dvc pull` data imported from external locations to/from
+remote storage normally (unlike for `dvc import`).
+
+</admon>
 
 `.dvc` files support references to data in an external location, see
 [External Dependencies](/doc/user-guide/data-management/importing-external-data).
@@ -93,11 +98,15 @@ DVC supports several types of external locations (protocols):
 | `webhdfs` | HDFS REST API\*              | `webhdfs://user@example.com/path/to/data.csv` |
 | `local`   | Local path                   | `/path/to/local/data`                         |
 
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include
-> them all. The command should look like this: `pip install "dvc[s3]"`. (This
-> example installs `boto3` library along with DVC to support S3 storage.)
+<admon type="info">
+
+If you installed DVC via `pip` and plan to use cloud services as [remote
+storage], you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
+all. The command should look like this: `pip install "dvc[s3]"`. (This example
+installs `boto3` library along with DVC to support S3 storage.)
+
+</admon>
 
 \* Notes on remote locations:
 
@@ -108,15 +117,22 @@ DVC supports several types of external locations (protocols):
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
 
-DVC also supports capturing
-[cloud versioning](/doc/user-guide/data-management/cloud-versioning) information
-when importing data from certain cloud storage providers. When the
-`--version-aware` option is provided or when the `url` argument includes a
-supported cloud versioning ID, DVC will import the specified version of the
-given data. When using versioned storage, DVC will always
-[pull](/doc/command-reference/pull) the versioned data from its original source
-location. Versioned data will also not be [pushed](/doc/command-reference/push)
-to remote storage.
+DVC also supports capturing [cloud versioning] information when importing data
+from certain cloud storage providers. When the `--version-aware` option is
+provided or when the `url` argument includes a supported cloud versioning ID,
+DVC will import the specified version of the given data.
+
+[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
+
+<admon type="info">
+
+When using versioned storage, DVC will always [pull] the versioned data from its
+original source. DVC will not [push] versioned data to remote storage.
+
+[pull]: https://dvc.org/doc/command-reference/pull
+[push]: https://dvc.org/doc/command-reference/push
+
+</admon>
 
 | Type    | Description                  | Versioned `url` format example                         |
 | ------- | ---------------------------- | ------------------------------------------------------ |
@@ -174,12 +190,11 @@ produces a regular stage in `dvc.yaml`.
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
-  remote storage (the default one unless one is specified with `-r`) instead.
+  remote storage (the default one unless otherwise specified with `-r`) instead.
   Use `dvc pull` to get the data locally.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) (can only be used with
-  `--to-remote`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` (can only be used
+  with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
@@ -412,11 +427,11 @@ Sometimes there's not enough space in the local environment to import a large
 dataset, but you still want to track it in the <abbr>project</abbr> so it can be
 [pulled](/doc/command-reference/plots) later.
 
-As long as you have setup [remote storage] that can handle the data, this can be
+As long as you have setup a `dvc remote` that can handle the data, this can be
 achieved with the `--to-remote` flag. It creates an import `.dvc` file without
-downloading anything, transferring a target directly to a DVC remote instead.
+downloading anything, transferring a target directly to remote storage instead.
 
-Let's import a `data.xml` file via HTTP straight to remote:
+Let's import a `data.xml` file via HTTP straight "to remote":
 
 ```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
@@ -437,5 +452,3 @@ A       data.xml
 
 Use `dvc update --to-remote` to bring the import up to date in remote storage,
 without downloading anything.
-
-[remote storage]: /doc/command-reference/remote

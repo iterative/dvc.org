@@ -27,19 +27,17 @@ positional arguments:
 
 ## Description
 
-Registers an [additional storage] location to save data files (besides the
+Registers a [remote storage] location to save data files (besides the
 <abbr>cache</abbr>) and optionally sets it as the `--default` remote. DVC
 remotes can point to a cloud storage service, an SSH server, network-attached
 storage, or even a directory in the local file system.
 
-[additional storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 <admon type="tip">
 
-A [default remote] is expected by `dvc push`, `dvc pull`, `dvc status`,
+A `dvc remote default` is expected by `dvc push`, `dvc pull`, `dvc status`,
 `dvc gc`, and `dvc fetch` unless their `--remote` option is used.
-
-[default remote]: /doc/command-reference/remote/default
 
 </admon>
 
@@ -69,8 +67,8 @@ $ dvc remote add -d temp /tmp/dvcstore
     remote = myremote
 ```
 
-[config file]: /doc/command-reference/config
 [`remote`]: /doc/command-reference/config#remote
+[config file]: /doc/command-reference/config
 [`core`]: /doc/command-reference/config#core
 
 <admon type="info">
@@ -223,12 +221,14 @@ See `dvc remote modify` for a list of other GDrive parameters, or
 for a full guide on using Google Drive as DVC remote storage.
 
 Note that GDrive remotes are not "trusted" by default. This means that the
-[`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
-parameter is enabled on this type of storage, so DVC recalculates the file
-hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
-modified.
+[`verify` parameter] is enabled on this type of storage, so DVC recalculates the
+file hashes upon download (e.g. `dvc pull`), to make sure that these haven't
+been modified.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+[`verify` parameter]:
+  /doc/command-reference/remote/modify#available-parameters-for-all-remotes
 
 </details>
 

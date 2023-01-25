@@ -37,19 +37,16 @@ files, `.dvc/` directory is created the same way as in the default mode. This
 way multiple <abbr>DVC projects</abbr> can be initialized in a single Git
 repository, providing isolation between projects.
 
-This is mostly useful in the scenario of a
-[monorepo](https://en.wikipedia.org/wiki/Monorepo) (Git repo split into several
-project directories), but can also be used with other patterns when such
+This is mostly useful in the scenario of a [monorepo] (Git repo split into
+several project directories), but can also be used with other patterns when such
 isolation is needed. `dvc init --subdir` mitigates possible limitations of
 initializing DVC in the Git repo root:
 
 - Repository maintainers might not allow a top level `.dvc/` directory,
   especially if DVC is already being used by several sub-projects (monorepo).
 
-- DVC [internals](/doc/user-guide/project-structure/internal-files) (config
-  file, cache directory, etc.) would be shared across different subdirectories.
-  This forces all of them to use the same DVC configuration and
-  [remote storage](/doc/command-reference/remote).
+- DVC [internals] (configuration, cache directory, [remote storage], etc.) would
+  be shared across different subdirectories.
 
 - By default, DVC commands like `dvc pull` and `dvc repro` explore the whole
   <abbr>DVC repository</abbr> to find DVC-tracked data and pipelines to work
@@ -57,6 +54,10 @@ initializing DVC in the Git repo root:
 
 - Commands such as `dvc status` and `dvc metrics show` would produce unexpected
   results if not constrained to a single project scope.
+
+[monorepo]: https://en.wikipedia.org/wiki/Monorepo
+[internals]: /doc/user-guide/project-structure/internal-files
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 <details>
 

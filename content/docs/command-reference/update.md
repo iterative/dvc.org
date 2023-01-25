@@ -1,10 +1,12 @@
 # update
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
-or [URLs](/doc/command-reference/import-url#description), and the corresponding
-import `.dvc` files, or update files or directories from a
-[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
-remote.
+or [URLs], and the corresponding import `.dvc` files, or update files or
+directories from a [worktree remote].
+
+[URLs]: /doc/command-reference/import-url#description
+[worktree remote]:
+  /doc/user-guide/data-management/cloud-versioning#worktree-remotes
 
 ## Synopsis
 
@@ -42,12 +44,10 @@ $ dvc update --rev master
 
 ### Worktree update
 
-When using a
-[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
-remote, `dvc update` will update the specified target to match the current
-version of the corresponding file or directory from the remote storage. If the
-current version of the specified target is a deleted file or an empty directory,
-`dvc update` will fail.
+When using a [worktree remote], `dvc update` will update the specified target to
+match the current version of the corresponding file or directory from the remote
+storage. If the current version of the specified target is a deleted file or an
+empty directory, `dvc update` will fail.
 
 <admon type="warn">
 
@@ -81,15 +81,12 @@ compatible when updating from a worktree remote.
   Cannot be combined with `--to-remote`.
 
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and
-  [transfer](/doc/command-reference/import-url#example-transfer-to-remote-storage)
-  the data directly to remote storage (the default one unless one is specified
-  with -r) without saving it locally. Use
-  [dvc pull](https://dvc.org/doc/command-reference/pull) to get the data
-  locally.
+  [transfer] the data directly to remote storage (the default one unless
+  otherwise specified with -r) without saving it locally. Use `dvc pull` to get
+  the data locally.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) (can only be used with
-  `--to-remote`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` (can only be used
+  with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
@@ -101,6 +98,8 @@ compatible when updating from a worktree remote.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[transfer]: /doc/command-reference/import-url#example-transfer-to-remote-storage
 
 ## Example
 

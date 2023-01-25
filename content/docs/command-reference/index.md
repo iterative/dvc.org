@@ -35,5 +35,6 @@ operations [to the Command Palette].
 - Execute or restore any version of your pipeline using `dvc repro`, or
   experiment on it with `dvc exp` features.
 - Sharing the <abbr>repository</abbr> will not include locally cached data. Use
-  [remote storage](/doc/command-reference/remote) with `dvc push` and `dvc pull`
-  to share data artifacts.
+  [remote storage] with `dvc push` and `dvc pull` to share data artifacts.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage

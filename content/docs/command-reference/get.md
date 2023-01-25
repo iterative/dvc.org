@@ -41,10 +41,13 @@ tracked directories are supported). It should be relative to the root of the
 repo (absolute paths are supported when `url` is local). Note that DVC-tracked
 targets must be found in a `dvc.yaml` or `.dvc` file of the repo.
 
-⚠️ DVC repos should have a default [DVC remote](/doc/command-reference/remote)
-containing the target actual for this command to work. The only exception is for
-local repos, where DVC will try to copy the data from its <abbr>cache</abbr>
-first.
+<admon type="warn">
+
+DVC repos should have a `dvc remote default` containing the target for this to
+work. The only exception is for local repos, where DVC will try to copy the data
+from its <abbr>cache</abbr> first.
+
+</admon>
 
 > See `dvc get-url` to download data from other supported locations such as S3,
 > SSH, HTTP, etc.
@@ -96,20 +99,28 @@ $ ls
 model.pkl
 ```
 
-Note that the `model.pkl` file doesn't actually exist in the
-[root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
-<abbr>output</abbr> of the `train` stage (in the `outs` field). DVC then
-[pulls](/doc/command-reference/pull) the file from the default
-[remote](/doc/command-reference/remote) of the source DVC project (found in its
-[config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
+Note that the `model.pkl` file doesn't actually exist in the [root directory] of
+the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
+<abbr>output</abbr> of the `train` stage (in the `outs` field). DVC will then
+`dvc pull` the file from the `dvc remote default` of the source DVC project
+(found in [its config file]).
 
-> A recommended use for downloading binary files from DVC repositories, as done
-> in this example, is to place a ML model inside a wrapper application that
-> serves as an [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)
-> pipeline or as an HTTP/RESTful API (web service) that provides predictions
-> upon request. This can be automated leveraging DVC with
-> [CI/CD](/doc/use-cases/ci-cd-for-machine-learning) tools.
+[root directory]: https://github.com/iterative/example-get-started/tree/master/
+[its config file]:
+  https://github.com/iterative/example-get-started/blob/master/.dvc/config
+
+<admon type="info">
+
+A recommended use for downloading binary files from DVC repositories, as done in
+this example, is to place an ML model inside a wrapper application that serves
+as an [ETL] pipeline or as an HTTP/RESTful API (web service) that provides
+predictions upon request. This can be automated by leveraging DVC with [CI/CD]
+tools.
+
+[ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
+[CI/CD]: /doc/use-cases/ci-cd-for-machine-learning
+
+</admon>
 
 The same example applies to raw data or intermediate artifacts as well.
 
@@ -137,9 +148,8 @@ $ dvc get --show-url \
 https://remote.dvc.org/get-started/c8/d307aa005d6974a8525550956d5fb3
 ```
 
-`remote.dvc.org/get-started` is an HTTP
-[DVC remote](/doc/command-reference/remote), whereas `c8d307...` is the file
-hash.
+`remote.dvc.org/get-started` is an HTTP `dvc remote`, whereas `c8d307...` is the
+file hash.
 
 ## Example: Compare different versions of data or model
 

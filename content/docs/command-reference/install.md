@@ -41,10 +41,11 @@ user to employ either `dvc commit` or `dvc repro`.
 
 **Push**: While publishing changes to the Git remote with `git push`, its easy
 to forget that the `dvc push` command is necessary to upload new or updated data
-files and directories tracked by DVC to
-[remote storage](/doc/command-reference/remote).
+files and directories tracked by DVC to [remote storage].
 
 This hook automates `dvc push` before `git push`.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ## Installed Git hooks
 
@@ -53,7 +54,7 @@ This hook automates `dvc push` before `git push`.
 - A `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the differences between cache and workspace.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
-  directories tracked by DVC to remote storage.
+  directories tracked by DVC to the `dvc remote default`.
 
 If a hook already exists, DVC will raise an exception. In that case, please try
 to manually edit the existing file or remove it and retry install.

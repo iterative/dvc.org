@@ -28,17 +28,18 @@ Returns the URL string of the storage location (in a [DVC remote] where a target
 file or directory, specified by its `path` in a `repo` (<abbr>DVC
 project</abbr>), is stored.
 
-The URL is formed by reading the project's
-[remote configuration](/doc/command-reference/config#remote) and the `dvc.yaml`
-or `.dvc` file where the given `path` is found (`outs` field). The schema of the
-URL returned depends on the [storage type] of the `remote` (see the
-[Parameters](#parameters) section).
+The URL is formed by reading the project's [remote configuration] and the
+`dvc.yaml` or `.dvc` file where the given `path` is found (`outs` field). The
+schema of the URL returned depends on the [storage type] of the `remote` (see
+the [Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
 [Structure of cache directory] and `dvc add` to learn more about how DVC handles
 data directories.
 
 [dvc remote]: /doc/user-guide/data-management/remote-storage
+[remote configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
 [storage type]:
   /doc/user-guide/data-management/remote-storage#supported-storage-types
 [structure of cache directory]:
