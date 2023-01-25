@@ -13,7 +13,7 @@ DVC remotes are similar to [Git remotes], but for <abbr>cached</abbr> data.
 
 </admon>
 
-This is somewhat like GitHub or GitLab providing hosting for source code
+This is somehow like GitHub or GitLab providing hosting for source code
 repositories. However, DVC does not provide or recommend a specific storage
 service. Instead, it adopts a bring-your-own-platform approach, supporting a
 wide variety of [storage types](#supported-storage-types).

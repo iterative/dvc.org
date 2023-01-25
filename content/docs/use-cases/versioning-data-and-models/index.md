@@ -55,21 +55,17 @@ Benefits of our approach include:
   editing these in source code.
 
 - **Efficient data management**: Use a familiar and cost-effective storage
-  solution for your data and models (e.g. SFTP, S3, HDFS, [etc.]) — free from
-  Git hosting [constraints]. DVC [optimizes] storing and transferring large
-  files.
-
-  [etc.]: /doc/user-guide/data-management/remote-storage#supported-storage-types
-  [constraints]:
-    https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota
-  [optimizes]: /doc/user-guide/data-management/large-dataset-optimization
+  solution for your data and models (e.g. SFTP, S3, HDFS,
+  [etc.](/doc/command-reference/remote/add#supported-storage-types)) — free from
+  Git hosting
+  [constraints](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota).
+  DVC [optimizes](/doc/user-guide/data-management/large-dataset-optimization)
+  storing and transferring large files.
 
 - **Collaboration**: Easily distribute your project development and share its
-  data [internally] and [remotely], or [reuse] it in other places.
-
-  [remotely]: /doc/user-guide/data-management/remote-storage
-  [internally]: /doc/user-guide/how-to/share-a-dvc-cache
-  [reuse]: /doc/start/data-management/data-and-model-access
+  data [internally](/doc/user-guide/how-to/share-a-dvc-cache) and
+  [remotely](/doc/command-reference/remote), or
+  [reuse](/doc/start/data-management/data-and-model-access) it in other places.
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).
