@@ -39,7 +39,7 @@ All plots defined in `dvc.yaml` are used by default, but specific files can be
 specified with the `--targets` option (any valid plots file is accepted).
 
 The plot style can be customized with [plot templates], using the `--template`
-option. To learn more about plots files and templates please see `dvc plots`.
+option. See `dvc plots` to learn more about plots files and templates.
 
 > Note that the default behavior of this command can be modified per metrics
 > file with `dvc plots modify`.

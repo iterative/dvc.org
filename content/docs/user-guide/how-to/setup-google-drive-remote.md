@@ -75,7 +75,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    browser address bar, for example
    `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
-   > \* Please note the
+   > \* Note the
    > [Shared drive limits](https://support.google.com/a/answer/7338880) on
    > storage and uploads.
 
@@ -167,7 +167,7 @@ $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 > Note that Google Drive API usage limits/quotas apply per _project_ client and
 > can be reviewed in the
 > [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent).
-> Please keep this in mind when sharing them, or you may
+> Do keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
 ## Authorization
@@ -249,7 +249,7 @@ $ dvc remote modify myremote gdrive_acknowledge_abuse true
 ```
 
 </admon>
-> Please note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
+> Note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
 
 ## Using service accounts
 
