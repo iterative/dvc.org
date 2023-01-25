@@ -81,7 +81,7 @@ It's recommended to follow all the relevant recommendations from the
 
 ### Adding images
 
-> 🙏 Make sure to be reasonable about the size of the image files you are about to
+> 🙏 Be careful about the size of the image files you are about to
 > commit — run an online image optimizer. Huge images pollute the Git index,
 > slow down `git clone`, deployment, and other operations in the repository.
 

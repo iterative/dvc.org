@@ -127,7 +127,7 @@ $ dvc run -d data.txt \
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Don't forget to check that you are able to connect both ways with tools like `ssh` and
+Check that you can connect both ways with tools like `ssh` and
 `sftp` (GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
@@ -183,9 +183,10 @@ $ dvc run -d data.txt \
 The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
 custom cache location for local paths outside of your project.
 
-> Except for external data on different storage devices or partitions mounted on
-> the same file system (e.g. `/mnt/raid/data`). In that case you can setup an
-> external cache in that same drive to enable [file links] and avoid copying
+> Exceptions to the above include: external data on different storage devices, and
+partitions mounted on
+> the same file system (e.g. `/mnt/raid/data`). In such cases, set up an
+> external cache in the same drive to enable [file links] and avoid copying
 > data.
 
 ```cli

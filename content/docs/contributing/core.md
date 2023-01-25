@@ -11,7 +11,7 @@ Please search the [issue tracker](https://github.com/iterative/dvc/issues) befor
 creating a new issue (problem or an improvement request). Feel free to add
 issues related to the project.
 
-For problems with [dvc.org](https://dvc.org/) site you can use this
+For problems with the [dvc.org](https://dvc.org) site, use this
 [GitHub repository](https://github.com/iterative/dvc.org/).
 
 If you feel that you can fix or implement it yourself, please read a few

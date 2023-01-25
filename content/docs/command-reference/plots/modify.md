@@ -105,8 +105,8 @@ file:///Users/usr/src/myclassifier/logs.html
 
 ![](/img/plots_mod_acc.svg)
 
-Note, a new field _y_ was added to `dvc.yaml` file for the plot. Make sure not
-to forget to commit the change in Git if the modification needs to be preserved.
+Note that a new field _y_ was added to `dvc.yaml` file for the plot. Make sure
+to commit the change in Git if the modification needs to be preserved.
 
 ```yaml
 plots:

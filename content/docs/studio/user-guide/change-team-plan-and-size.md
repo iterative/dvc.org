@@ -65,7 +65,7 @@ needs and suggest a suitable plan and pricing.
 
 ### If you are on the Teams or Enterprise plan
 
-For any changes to the plan, feel free to contact your focal point at Iterative.
+For any changes to the plan, please ask your contact person at Iterative.
 
 ## Change the size of your team
 
@@ -95,4 +95,4 @@ The total payable amount or credit balance will be displayed for you to
 
 ### If you are on the Teams or Enterprise plan
 
-For any changes to the plan, don't hesitate to contact your focal point at Iterative.
+For any changes to the plan, please ask your contact person at Iterative.

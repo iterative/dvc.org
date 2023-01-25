@@ -95,7 +95,7 @@ $ dvc run -n download_file \
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Don't forget to check that you are able to connect both ways with tools like `ssh` and
+Check that you can connect both ways with tools like `ssh` and
 `sftp` (GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).

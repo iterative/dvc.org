@@ -9,8 +9,8 @@ To use DVC [as a Python library](/doc/api-reference), you can install it
 
 <admon type="tip">
 
-You can find important tips to improve your experience using DVC on Windows 
-by reviewing [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows).  
+See [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows)
+for important tips to improve your experience on Windows.
   
 </admon>
 

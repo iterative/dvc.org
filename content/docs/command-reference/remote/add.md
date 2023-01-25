@@ -272,7 +272,7 @@ $ dvc remote add -d myremote ssh://user@example.com/path
 > See `dvc remote modify` for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Do check whether you are able to connect both ways with tools like `ssh` and
+Check that you can connect both ways with tools like `ssh` and
 `sftp` (GNU/Linux).
 
 > Note that the server's SFTP root might differ from its physical root (`/`).
