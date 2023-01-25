@@ -56,7 +56,7 @@ other DVC commands), a few actions are taken under the hood:
    they are staged automatically if [`core.autostage`] is set).
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
-[Structure of cache directory]:
+[structure of cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 [`core.autostage`]: /doc/command-reference/config#core
 
@@ -194,7 +194,7 @@ not.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [pattern]: https://docs.python.org/3/library/glob.html
-[Managing External Data]: /doc/user-guide/data-management/managing-external-data
+[managing external data]: /doc/user-guide/data-management/managing-external-data
 
 ## Example: Single file
 

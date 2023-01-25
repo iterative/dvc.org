@@ -84,7 +84,7 @@ call – no _context manager_ involved. Neither function utilizes disc space.
 
 [revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
-[DVC remote]: /doc/user-guide/data-management/remote-storage
+[dvc remote]: /doc/user-guide/data-management/remote-storage
 [default remote]: /doc/command-reference/remote/default
 [codec]: https://docs.python.org/3/library/codecs.html#standard-encodings
 

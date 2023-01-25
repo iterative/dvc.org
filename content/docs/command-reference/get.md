@@ -117,8 +117,8 @@ as an [ETL] pipeline or as an HTTP/RESTful API (web service) that provides
 predictions upon request. This can be automated by leveraging DVC with [CI/CD]
 tools.
 
-[ETL]: https://en.wikipedia.org/wiki/Extract,_transform,_load
-[CI/CD]: /doc/use-cases/ci-cd-for-machine-learning
+[etl]: https://en.wikipedia.org/wiki/Extract,_transform,_load
+[ci/cd]: /doc/use-cases/ci-cd-for-machine-learning
 
 </admon>
 
