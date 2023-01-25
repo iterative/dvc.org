@@ -144,8 +144,7 @@ later, DVC will keep operating detached from Git in this project.
 
 - `--subdir` - initialize the DVC project in the current working directory,
   _even if it's not the Git repository root_. (If run in a project root, this
-  option is ignored.) It affects how other DVC commands behave afterwards,
-  see
+  option is ignored.) It affects how other DVC commands behave afterwards, see
   [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) for
   more details.
 

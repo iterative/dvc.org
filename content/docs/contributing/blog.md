@@ -81,9 +81,9 @@ It's recommended to follow all the relevant recommendations from the
 
 ### Adding images
 
-> 🙏 Be careful about the size of the image files you are about to
-> commit — run an online image optimizer. Huge images pollute the Git index,
-> slow down `git clone`, deployment, and other operations in the repository.
+> 🙏 Be careful about the size of the image files you are about to commit — run
+> an online image optimizer. Huge images pollute the Git index, slow down
+> `git clone`, deployment, and other operations in the repository.
 
 The original image should be 2x the height and width of the size you want to see
 on the screen, to look sharp. To add images, put them into `static/uploads` and

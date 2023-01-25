@@ -39,8 +39,8 @@ You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
 Also, [follow these instructions to install DVC](/doc/install) if it's not
 already installed.
 
-> See [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows)
-> for important tips to improve your experience on Windows.
+> See [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+> important tips to improve your experience on Windows.
 
 Okay! Let's first download the code and set up a Git repository:
 

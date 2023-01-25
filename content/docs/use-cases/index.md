@@ -29,8 +29,7 @@ learning models, and you want to
 DVC is for you!
 
 > We keep reviewing our docs and will include interesting scenarios that surface
-> in the community. [Contact us](/support) if you need help or have
-> suggestions!
+> in the community. [Contact us](/support) if you need help or have suggestions!
 
-Choose from the navigation sidebar to the left, or click the `Next`
-button below ↘
+Choose from the navigation sidebar to the left, or click the `Next` button below
+↘

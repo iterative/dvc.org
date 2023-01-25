@@ -233,8 +233,8 @@ check that:
   whitelisting policy in place which limits access to the organization's
   resources.
 - Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
-  are experiencing service disruptions. In case of an on-premises deployment,
-  do check with your administrator.
+  are experiencing service disruptions. In case of an on-premises deployment, do
+  check with your administrator.
 
 [gh-status]: https://www.githubstatus.com/
 [gl-status]: https://status.gitlab.com/

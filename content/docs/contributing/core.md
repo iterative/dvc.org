@@ -7,9 +7,9 @@ you want to fix or update the documentation or this website.
 
 ## How to report a problem
 
-Please search the [issue tracker](https://github.com/iterative/dvc/issues) before
-creating a new issue (problem or an improvement request). Feel free to add
-issues related to the project.
+Please search the [issue tracker](https://github.com/iterative/dvc/issues)
+before creating a new issue (problem or an improvement request). Feel free to
+add issues related to the project.
 
 For problems with the [dvc.org](https://dvc.org) site, use this
 [GitHub repository](https://github.com/iterative/dvc.org/).
@@ -72,8 +72,7 @@ $ pre-commit install
 ```
 
 That's it. You should be ready to make changes, run tests, and make commits! If
-you experience any problems, don't hesitate to ping us in our
-[chat](/chat).
+you experience any problems, don't hesitate to ping us in our [chat](/chat).
 
 ## Writing tests
 

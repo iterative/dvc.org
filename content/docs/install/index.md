@@ -24,8 +24,8 @@ To check whether DVC is installed or which version you have, use `dvc version`.
   stay ahead of official releases.
 
 - Shell completion is automatically enabled by certain installation methods. If
-  it does not work for you, see
-  [these instructions](/doc/install/completion) to set it up.
+  it does not work for you, see [these instructions](/doc/install/completion) to
+  set it up.
 
-- Additionally, you might find these 3rd-party tool 
+- Additionally, you might find these 3rd-party tool
   [plugins](/doc/install/plugins) useful.

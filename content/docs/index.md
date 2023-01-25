@@ -36,8 +36,8 @@ make projects reproducible, and better collaborate.
 
 </cards>
 
-✅ If you have any questions or need specific help, feel free to join our 
-[community](/community) or use the [support](/support) channels. We are very 
+✅ If you have any questions or need specific help, feel free to join our
+[community](/community) or use the [support](/support) channels. We are very
 responsive⚡.
 
 ✅ Check out our [GitHub repository](https://github.com/iterative/dvc) and give
