@@ -4,7 +4,7 @@ Update files or directories imported from external <abbr>DVC repositories</abbr>
 or [URLs], and the corresponding import `.dvc` files, or update files or
 directories from a [worktree remote].
 
-[URLs]: /doc/command-reference/import-url#description
+[urls]: /doc/command-reference/import-url#description
 [worktree remote]:
   /doc/user-guide/data-management/cloud-versioning#worktree-remotes
 

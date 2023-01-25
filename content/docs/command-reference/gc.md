@@ -145,7 +145,7 @@ project we want to clear.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [dvc experiments]: /doc/user-guide/experiment-management#experiments
-[ISO 8601]: https://www.iso.org/iso-8601-date-and-time-format.html
+[iso 8601]: https://www.iso.org/iso-8601-date-and-time-format.html
 [experimental]: /doc/user-guide/experiment-management
 
 ## Examples
