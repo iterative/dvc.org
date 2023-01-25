@@ -55,7 +55,7 @@ only 1 or 2 collaborators or pending invites. Then click on the `Downgrade`
 button.
 
 When you downgrade, you will receive a prorated refund for the days remaining in
-the billing period. For inquiries about refunds, feel free to [contact us].
+the billing period. For inquiries about refunds, please [contact us].
 
 [contact us]: /doc/studio/troubleshooting#support
 

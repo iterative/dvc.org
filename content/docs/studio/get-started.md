@@ -14,7 +14,7 @@ your email address.
 
 When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 [create a team] first, then go to the _Team settings_ to [change the plan]. To
-sign up for the **Teams** or **Enterprise** plan, you can [schedule a call] (see
+sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
 [pricing details]).
 
 </admon>

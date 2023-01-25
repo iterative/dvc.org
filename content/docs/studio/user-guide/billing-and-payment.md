@@ -34,7 +34,7 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 
 When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 [create a team] first, then go to the _Team settings_ to [change the plan]. To
-sign up for the **Teams** or **Enterprise** plan, feel free to [schedule a call] (see
+sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
 [pricing details]).
 
 [change the plan]:
@@ -84,9 +84,9 @@ applied automatically for future payment.
 
 When you downgrade from the Basic plan to the Free plan, you will receive a
 prorated refund for the days remaining in the billing period. For inquiries
-about refunds, don't hesitate to [contact us].
+about refunds, please [contact us].
 
-To upgrade to or downgrade from Teams or Enterprise plan, feel free to [contact us].
+To upgrade to or downgrade from Teams or Enterprise plan, please [contact us].
 
 ## Billing period and auto-renewal of Basic plans
 
@@ -141,4 +141,4 @@ you see your payment history and get a copy of your invoices.
 
 You can find answers to other frequently asked questions in the Iterative Studio
 [FAQ page](https://studio.iterative.ai/faq). If you have any other questions,
-don't hesitate to [contact us].
+please [contact us].

@@ -163,7 +163,7 @@ There are two possible reasons for this:
    To create projects for subdirectories, [specify the project directory in
    project settings].
 
-   If this solution does not work for your use case, don't hesitate to create a support
+   If this solution does not work for your use case, please create a support
    ticket in the [Iterative Studio support GitHub repository].
 
 [select the columns that are mandatory to import]:
@@ -207,7 +207,7 @@ by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is
-not in the hidden commits list, then make sure to [raise a support request](#support).
+not in the hidden commits list, please [raise a support request](#support).
 
 [display preferences -> hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
@@ -240,7 +240,7 @@ check that:
 [gl-status]: https://status.gitlab.com/
 [bb-status]: https://bitbucket.status.atlassian.com/
 
-If you get this error and none of the above applies, don't forget to
+If you get this error and none of the above applies, please
 [get in touch with us](#support).
 
 ## I cannot find my desired Git repository in the form to add a model
@@ -285,7 +285,7 @@ Currently, you cannot un-assign stages from the Iterative Studio user interface.
 
 Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
-don't hesitate to [contact us](#support).
+please [contact us](#support).
 
 [gto]: https://mlem.ai/doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
