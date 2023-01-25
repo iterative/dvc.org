@@ -29,7 +29,7 @@ usage: dvc version [-h] [-q | -v]
 
 > Note that if you've installed DVC using `pip`, you will need to install
 > `psutil` manually with `pip install psutil` in order for `dvc version` to
-> report file system information. Have a look at the original
+> report file system information. See the original
 > [issue on GitHub](https://github.com/iterative/dvc/issues/2284) for more info.
 
 ### Components of DVC version

@@ -19,7 +19,7 @@ and [Iterative Studio](https://studio.iterative.ai/). You can
 
 </cards>
 
-✅ You can join our [community](/community) or use the [support](/support)
+✅ Join our [community](/community) or use the [support](/support)
 channels if you have any questions or need specific help. We are very responsive
 ⚡.
 

@@ -31,7 +31,7 @@ corresponding
 file can be tracked by DVC (as an <abbr>output</abbr>) or by Git.
 
 > The exact type of file object depends on the `mode` used. For more details,
-> Refer to Python's
+> refer to Python's
 > [`open()`](https://docs.python.org/3/library/functions.html#open) built-in,
 > which is used under the hood.
 

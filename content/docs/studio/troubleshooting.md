@@ -38,7 +38,7 @@ Iterative Studio.
 
 ## Support
 
-If you need further help, feel free to send us a message using `Help` on the
+If you need further help, you can send us a message using `Help` on the
 [Iterative Studio website](https://studio.iterative.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
@@ -215,7 +215,7 @@ not in the hidden commits list, then make sure to [raise a support request](#sup
 ## Error: Failed to push experiment to repository
 
 This is a non-specific error with a range of possible causes. To resolve it,
-don't forget to check:
+check that:
 
 - Your account is able to push to the Git repository.
 

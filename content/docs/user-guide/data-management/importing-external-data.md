@@ -163,7 +163,7 @@ $ dvc remote add myssh ssh://user@example.com
 $ dvc remote modify --local myssh password 'mypassword'
 ```
 
-> You may refer to `dvc remote modify` for more details like setting up access
+> Refer to `dvc remote modify` for more details like setting up access
 > credentials for the different remote types.
 
 Now, use an alias to this remote when defining the stage:

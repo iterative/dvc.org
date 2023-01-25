@@ -193,7 +193,7 @@ parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
-> Make sure to check our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 </details>
 

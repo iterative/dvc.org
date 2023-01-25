@@ -2,7 +2,7 @@
 
 We provide short articles on common data science scenarios that DVC can help
 with or improve. Our use cases are not written to be run end-to-end like
-tutorials. For more general, hands-on experience with DVC, you can head over to
+tutorials. For more general, hands-on experience with DVC, see
 [Get Started](/doc/start) instead.
 
 ## Why DVC?
@@ -29,8 +29,8 @@ learning models, and you want to
 DVC is for you!
 
 > We keep reviewing our docs and will include interesting scenarios that surface
-> in the community. Feel free to, [contact us](/support) if you need help or have
+> in the community. [Contact us](/support) if you need help or have
 > suggestions!
 
-You can choose from the navigation sidebar to the left, or click the `Next`
+Choose from the navigation sidebar to the left, or click the `Next`
 button below ↘

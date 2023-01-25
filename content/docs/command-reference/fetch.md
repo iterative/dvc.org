@@ -187,7 +187,7 @@ $ dvc checkout
 
 ## Example: Specific files or directories
 
-> If you tried the previous example, then you can delete the `.dvc/cache` directory
+> If you tried the previous example, delete the `.dvc/cache` directory
 > first (e.g. `rm -Rf .dvc/cache`) to follow this one.
 
 `dvc fetch` only downloads the tracked data corresponding to any given

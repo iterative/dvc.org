@@ -75,7 +75,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    browser address bar, for example
    `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
-   > \* Do note the
+   > \* Note the
    > [Shared drive limits](https://support.google.com/a/answer/7338880) on
    > storage and uploads.
 
@@ -245,11 +245,11 @@ and cannot be downloaded_ running a `dvc push` or `dvc pull` command, check that
 the `gdrive_acknowledge_abuse` option is set:
 
 ```cli
-$ dvc remote modify myremote gdrive_acknowledge_abuse true 
+$ dvc remote modify myremote gdrive_acknowledge_abuse true
 ```
 
 </admon>
-> Don't forget to note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
+> Note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
 
 ## Using service accounts
 
