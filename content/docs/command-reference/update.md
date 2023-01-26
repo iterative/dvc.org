@@ -68,7 +68,7 @@ compatible when updating from a worktree remote.
 
   Changes the `rev` field in the import `.dvc` files.
 
-  [Git revision]: https://git-scm.com/docs/revisions
+  [git revision]: https://git-scm.com/docs/revisions
   [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
 - `-R`, `--recursive` - determines the files to update by searching each target
