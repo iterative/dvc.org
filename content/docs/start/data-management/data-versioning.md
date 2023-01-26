@@ -64,9 +64,9 @@ $ git commit -m "Add raw data"
 
 The data, meanwhile, is listed in `.gitignore`.
 
-<details id="add-expand-to-see-what-happens-under-the-hood">
+<details id="add-click-to-see-what-happens-under-the-hood">
 
-### 💡 Expand to see what happens under the hood.
+### 💡 Click to see what happens under the hood.
 
 `dvc add` moved the data to the project's <abbr>cache</abbr>, and
 <abbr>linked</abbr> it back to the <abbr>workspace</abbr>. The `.dvc/cache`
@@ -94,18 +94,22 @@ outs:
 
 ## Storing and sharing
 
-You can upload DVC-tracked data or model files with `dvc push`, so they're
-safely stored [remotely](/doc/command-reference/remote). This also means they
-can be retrieved on other environments later with `dvc pull`.
+You can upload DVC-tracked data or models with `dvc push`. This requires setting
+up [remote storage] first, for example on Amazon S3:
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
+```cli
+$ dvc remote add -d storage s3://mybucket/dvcstore
+$ dvc push
+```
 
 <details>
 
-### ⚙️ Expand to set up remote storage.
+### ⚠️ That didn't work!
 
-DVC remotes let you store a copy of the data tracked by DVC outside of the cache
-(usually in a cloud storage service). For simplicity, let's set up a "local
-remote" (another directory in the local file system) in a temporary `dvcstore/`
-directory:
+Instead of the S3 remote in the next block, use this "local remote" (another
+directory in the local file system) to try `dvc push`:
 
 <toggle>
 <tab title="Mac/Linux">
@@ -113,7 +117,6 @@ directory:
 ```cli
 $ mkdir /tmp/dvcstore
 $ dvc remote add -d myremote /tmp/dvcstore
-$ git commit .dvc/config -m "Configure local remote"
 ```
 
 </tab>
@@ -122,32 +125,26 @@ $ git commit .dvc/config -m "Configure local remote"
 ```cli
 $ mkdir %TEMP%/dvcstore
 $ dvc remote add -d myremote %TEMP%\dvcstore
-$ git commit .dvc\config -m "Configure local remote"
 ```
 
 </tab>
 </toggle>
 
-<admon title="info">
+<admon type="info">
 
-DVC supports many remote storage types, including Amazon S3, SSH, Google Drive,
-Azure Blob Storage, and HDFS. See `dvc remote add` for more details and
-examples.
+DVC supports many remote [storage types], including Amazon S3, SSH, Google
+Drive, Azure Blob Storage, and HDFS.
+
+[storage types]:
+  /doc/user-guide/data-management/remote-storage#supported-storage-types
 
 </admon>
 
 </details>
 
-```cli
-$ dvc push
-```
+<details id="push-click-to-see-what-happens-under-the-hood">
 
-Usually, we also want to `git commit` and `git push` the corresponding `.dvc`
-files.
-
-<details id="push-expand-to-see-what-happens-under-the-hood">
-
-### 💡 Expand to see what happens under the hood.
+### 💡 Click to see what happens under the hood.
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
 set up earlier. The remote storage directory should look like this:
@@ -160,18 +157,21 @@ set up earlier. The remote storage directory should look like this:
 
 </details>
 
+Usually, we also want to `git commit` (and `git push`) the project config
+changes.
+
 ## Retrieving
 
-Having DVC-tracked data and models stored remotely, it can be downloaded when
-needed in other copies of this <abbr>project</abbr> with `dvc pull`. Usually, we
-run it after `git clone` and `git pull`.
+Having DVC-tracked data and models stored remotely, it can be downloaded with
+`dvc pull` when needed (e.g. in other copies of this <abbr>project</abbr>).
+Usually, we run it after `git clone` and `git pull`.
 
 <details>
 
 ### ⚙️ Expand to delete locally cached data.
 
-If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
-`data/data.xml` to experiment with `dvc pull`:
+If you've run `dvc push` successfully, empty the <abbr>cache</abbr> and delete
+`data/data.xml` for `dvc pull` to have an effect:
 
 <toggle>
 <tab title="Mac/Linux">
@@ -292,7 +292,8 @@ You can learn more about advanced workflows using these links:
 
 - A [shared cache](/doc/user-guide/how-to/share-a-dvc-cache) can be set up to
   store, version and access a lot of data on a large shared volume efficiently.
-- A quite advanced scenario is to track and version data directly on the remote
-  storage (e.g. S3). See
-  [Managing External Data](https://dvc.org/doc/user-guide/data-management/managing-external-data)
-  to learn more.
+- An advanced scenario is to track and version data directly on the remote
+  storage (e.g. S3, SSH). See [Managing External Data] to learn more.
+
+[managing external data]:
+  https://dvc.org/doc/user-guide/data-management/managing-external-data
