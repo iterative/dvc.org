@@ -140,7 +140,6 @@
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
-          "experiments-overview",
           "running-experiments",
           "hydra-composition",
           "comparing-experiments",
