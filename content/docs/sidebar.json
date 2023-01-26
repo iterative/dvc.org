@@ -178,6 +178,11 @@
     ]
   },
   {
+    "slug": "remote-reference",
+    "source": false,
+    "children": ["amazon-s3"]
+  },
+  {
     "slug": "command-reference",
     "source": "command-reference/index.md",
     "children": [

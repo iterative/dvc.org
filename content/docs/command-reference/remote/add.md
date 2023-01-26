@@ -92,30 +92,14 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 The following are the types of remote storage (protocols) supported:
 
-<details>
-
 ### Amazon S3
-
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```cli
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
-
-Make sure you have the following permissions enabled: `s3:ListBucket`,
-`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
-methods that are performed by DVC (`list_objects_v2` or `list_objects`,
-`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
-
-> See `dvc remote modify` for a full list of S3 parameters.
-
-</details>
+See more [details and options](/doc/remote-reference/amazon-s3) (including
+authentication).
 
 <details>
 

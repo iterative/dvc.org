@@ -27,20 +27,20 @@ The main uses of remote storage are:
 
 ## Configuration
 
-You can set up one or more remote storage locations, mainly with the
-`dvc remote add` and `dvc remote modify` commands. These read and write to the
-[`remote`] section of the project's configuration file (`.dvc/config`), which
-you could edit manually as well.
+You can set up one or more remote storage locations with `dvc remote` commands.
+These read and write to the [`remote`] section of the project's configuration
+file (`.dvc/config`), which you could edit manually as well.
 
-Typically, you'll first register a DVC remote by adding its name and URL (or
-file path), e.g.:
+First, `dvc remote add` a storage name and valid URL (or file path), e.g.:
+
+[`remote`]: /doc/command-reference/config#remote
 
 ```cli
 $ dvc remote add mybucket s3://my-bucket
 ```
 
-Then, you'll usually need or want to configure the remote's authentication
-credentials or other properties, etc. For example:
+You may also need to `dvc remote modify` its authentication or other
+configuration, e.g.:
 
 ```cli
 $ dvc remote modify --local \
@@ -51,11 +51,11 @@ $ dvc remote modify mybucket connect_timeout 300
 
 <admon type="warn">
 
-Make sure to use the `--local` flag when writing secrets to configuration. This
-creates a second config file in `.dvc/config.local` that is ignored by Git. This
-way your secrets do not get to the repository. See `dvc config` for more info.
+The `--local` flag is needed to write sensitive user info to a Git-ignored
+config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
+`dvc config` for more info.
 
-This also means each copy of the <abbr>DVC repository</abbr> may have to
+This also means that each copy of the <abbr>DVC repository</abbr> may have to
 re-configure remote storage authentication.
 
 </admon>
@@ -84,18 +84,14 @@ re-configure remote storage authentication.
 
 </details>
 
-Finally, you can `git commit` the changes to share the general configuration of
-your remote (`.dvc/config`) via the Git repo.
-
-[`remote`]: /doc/command-reference/config#remote
+Finally, you can `git commit` the changes to share the remote location with your
+team.
 
 ## Supported storage types
 
-> See more [details](/doc/command-reference/remote/add#supported-storage-types).
-
 ### Cloud providers
 
-- Amazon S3 (AWS)
+- [Amazon S3](/doc/remote-reference/amazon-s3) (AWS)
 - S3-compatible e.g. MinIO
 - Microsoft Azure Blob Storage
 - Google Drive
