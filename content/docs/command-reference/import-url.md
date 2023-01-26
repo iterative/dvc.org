@@ -108,10 +108,10 @@ DVC supports several types of external locations (protocols):
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
 
-DVC also supports capturing [cloud versioning] information when importing data
-from certain cloud storage providers. When the `--version-aware` option is
-provided or when the `url` argument includes a supported cloud versioning ID,
-DVC will import the specified version.
+DVC also supports capturing [cloud versioning] information from certain cloud
+storage providers. When the `--version-aware` option is provided or when the
+`url` argument includes a supported cloud versioning ID, DVC will import the
+specified version.
 
 [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
@@ -202,11 +202,10 @@ produces a regular stage in `dvc.yaml`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `--version-aware` - capture cloud versioning information when importing the
-  file. By default, DVC will automatically capture cloud versioning information
-  if the URL contains a cloud versioning ID. When `--version-aware` is provided
-  along with a URL that does not contain a cloud versioning ID, DVC will capture
-  the latest version of the file.
+- `--version-aware` - capture [cloud versioning] information (supported for
+  certain cloud storage providers). By default, DVC will automatically do so
+  only if the `url` contains a valid cloud versioning ID. Otherwsie, with this
+  flat DVC will import the latest version of the file.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.

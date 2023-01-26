@@ -58,18 +58,18 @@ compatible when updating from a worktree remote.
 
 ## Options
 
-- `--rev <commit>` - commit hash, branch or tag name, etc. (any
-  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
-  update the file or directory from. The latest commit in `master` (tip of the
-  default branch) is used by default when this option is not specified.
+- `--rev <commit>` - commit hash, branch or tag name, etc. (any [Git revision])
+  of the repository to update the file or directory from. The latest commit in
+  `master` (tip of the default branch) is used by default.
 
-  > Note that this changes the `rev` field in the import stage, fixing it to the
-  > revision.
+  For data obtained with `dvc import-url` and [cloud versioning], `--rev` can be
+  used to specify an object version ID. By default, the current version from
+  cloud storage will be used.
 
-  For stages created with `dvc import-url` and a
-  [cloud-versioned URL](/doc/command-reference/import-url#--version-aware),
-  `--rev` can be used to specify a object version ID to use. By default, the
-  import will be updated to the current version from cloud storage.
+  Changes the `rev` field in the import `.dvc` files.
+
+  [Git revision]: https://git-scm.com/docs/revisions
+  [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import `.dvc` files to inspect. If there
