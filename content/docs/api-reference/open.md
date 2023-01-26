@@ -34,6 +34,8 @@ corresponding [file object]. The file can be tracked by DVC (as an
 The exact type of file object depends on the `mode` used. For more details,
 please refer to Python's [`open()`] built-in, which is used under the hood.
 
+[`open()`]: https://docs.python.org/3/library/functions.html#open
+
 </admon>
 
 `dvc.api.open()` may only be used as a [context manager] (using the `with`
@@ -44,7 +46,6 @@ contents can be streamed. Your code can process the data [buffer] as it's
 streamed, which optimizes memory usage.
 
 [file object]: https://docs.python.org/3/glossary.html#term-file-object
-[`open()`]: https://docs.python.org/3/library/functions.html#open
 [context manager]:
   https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library
 [remote storage]: /doc/user-guide/data-management/remote-storage

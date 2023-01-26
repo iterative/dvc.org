@@ -109,6 +109,6 @@ given object will show that the object does not exist.
 
 ## Importing versioned data
 
-DVC supports importing cloud versioned data from supported storage providers.
-Refer to the documentation for `dvc import-url` and `dvc update` for more
+DVC supports importing cloud-versioned data from supported storage providers.
+Refer to `dvc import-url` (`--version-aware`) and `dvc update --rev` for more
 information.
