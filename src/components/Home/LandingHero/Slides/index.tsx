@@ -139,9 +139,12 @@ export const HeroSlides = () => {
                   'flex-nowrap',
                   'justify-center',
                   'md:pl-4',
+                  'md:py-2',
+                  'md:mr-3',
                   'border-l-2',
                   'ease-in-out',
                   'duration-300',
+                  'hover:bg-gray-200',
                   active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
@@ -151,11 +154,10 @@ export const HeroSlides = () => {
                 <h2 className={cn('text-2xl', 'font-medium')}>{title}</h2>
                 <p
                   className={cn(
-                    'mt-2',
                     'ease-in-out',
                     'duration-300',
                     'overflow-hidden',
-                    i === currentIndex ? 'max-h-12' : 'max-h-0'
+                    i === currentIndex ? ['max-h-12', 'mt-2'] : 'max-h-0'
                   )}
                 >
                   {description}
