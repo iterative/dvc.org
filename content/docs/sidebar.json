@@ -133,7 +133,7 @@
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines"]
+        "children": ["defining-pipelines", "run-cache"]
       },
       {
         "label": "Experiment Management",
