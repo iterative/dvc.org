@@ -16,7 +16,7 @@ The `-d` flag (optional) makes this the `--default` remote for the
 
 </admon>
 
-[S3]: https://aws.amazon.com/s3/
+[s3]: https://aws.amazon.com/s3/
 [existing s3 bucket]:
   https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html
 [folder key]:
@@ -95,7 +95,7 @@ config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 [profile]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
-[MFA]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
+[mfa]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
 
 ## Cloud versioning
 
@@ -207,11 +207,11 @@ $ dvc remote modify myremote worktree true
 
 [server-side encryption]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html
-[SSE-KMS]:
+[sse-kms]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
-[SSE-C]:
+[sse-c]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html
-[ACL]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
+[acl]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
 [grantees]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#specifying-grantee
 [permissions]:

@@ -152,7 +152,7 @@ $ dvc remote modify --local myremote \
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 [profile]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
-[MFA]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
+[mfa]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
 
 **Other**
 
@@ -184,7 +184,7 @@ $ dvc remote modify --local myremote \
 
 [server-side encryption]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html
-[ACL]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
+[acl]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
 [grantees]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#specifying-grantee
 [permissions]:
