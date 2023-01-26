@@ -1,16 +1,8 @@
 # Using DVC Commands
 
-The core of DVC is a command line tool. These pages contain the specifications,
-self-contained descriptions, and comprehensive usage examples for `dvc`
-commands. Use `dvc -h` to list them.
-
-<admon type="tip">
-
-To run DVC commands in a specific directory, use `dvc --cd <path> ...` before
-the actual command and its options/arguments (this does not change directories
-in your terminal).
-
-</admon>
+<!--
+## Using DVC Commands
+-->
 
 <admon type="tip">
 
@@ -20,6 +12,17 @@ operations [to the Command Palette].
 [for the vs code ide]: /doc/vs-code-extension
 [to the command palette]:
   https://github.com/iterative/vscode-dvc#useful-commands
+
+</admon>
+
+The core of DVC is a command line tool. These pages contain the specifications,
+self-contained descriptions, and comprehensive usage examples for `dvc`
+commands. Use `dvc -h` to list them.
+
+<admon type="tip">
+
+To run DVC in a specific directory, use `dvc --cd <path> ...` before the command
+and its options/arguments (does not change directories in your terminal).
 
 </admon>
 

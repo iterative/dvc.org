@@ -95,9 +95,8 @@
   },
   {
     "slug": "user-guide",
-    "source": false,
+    "source": "user-guide/index.md",
     "children": [
-      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
