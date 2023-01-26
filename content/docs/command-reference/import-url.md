@@ -111,14 +111,14 @@ DVC supports several types of external locations (protocols):
 DVC also supports capturing [cloud versioning] information when importing data
 from certain cloud storage providers. When the `--version-aware` option is
 provided or when the `url` argument includes a supported cloud versioning ID,
-DVC will import the specified version of the given data.
+DVC will import the specified version.
 
 [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
 <admon type="info">
 
-When using versioned storage, DVC will always [pull] the versioned data from its
-original source. DVC will not [push] versioned data to remote storage.
+When using versioned storage, DVC will always [pull] the versioned data from
+source. This will not [push] an additional version to remote storage.
 
 [pull]: https://dvc.org/doc/command-reference/pull
 [push]: https://dvc.org/doc/command-reference/push
