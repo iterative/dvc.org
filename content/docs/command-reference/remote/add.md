@@ -1,9 +1,13 @@
 # remote add
 
-Add a new [data remote](/doc/command-reference/remote).
+Register a new [DVC remote](/doc/user-guide/data-management/remote-storage).
 
-> Depending on your storage type, you may also need `dvc remote modify` to
-> provide credentials and/or configure other remote parameters.
+<admon type="tip">
+
+Depending on your storage type, you may also need `dvc remote modify` to provide
+credentials and/or configure other remote parameters.
+
+</admon>
 
 ## Synopsis
 
@@ -26,9 +30,9 @@ for the first remote):
 
 ```ini
 ['remote "myremote"']
-url = /tmp/dvcstore
+    url = /tmp/dvcstore
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 > 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
@@ -193,7 +197,7 @@ parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 </details>
 
@@ -272,8 +276,8 @@ $ dvc remote add -d myremote ssh://user@example.com/path
 > See `dvc remote modify` for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
-`sftp` (GNU/Linux).
+Check that you can connect both ways with tools like `ssh` and `sftp`
+(GNU/Linux).
 
 > Note that the server's SFTP root might differ from its physical root (`/`).
 
@@ -379,10 +383,10 @@ Using an absolute path (recommended):
 ```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-        url = /tmp/dvcstore
-  ...
+...
+['remote "myremote"']
+    url = /tmp/dvcstore
+...
 ```
 
 > Note that the absolute path `/tmp/dvcstore` is saved as is.
@@ -393,10 +397,10 @@ directory, but saved **relative to the config file location**:
 ```cli
 $ dvc remote add -d myremote ../dvcstore
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-      url = ../../dvcstore
-  ...
+...
+['remote "myremote"']
+    url = ../../dvcstore
+...
 ```
 
 > Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
@@ -423,10 +427,10 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-region = us-east-2
+    url = s3://mybucket/path
+    region = us-east-2
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 The list of remotes should now be:

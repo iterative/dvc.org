@@ -1,10 +1,14 @@
 # remote modify
 
-Modify the configuration of a [data remote](/doc/command-reference/remote).
+Configure a [DVC remote](/doc/user-guide/data-management/remote-storage).
 
-> This command is commonly needed after `dvc remote add` or
-> [default](/doc/command-reference/remote/default) to set up credentials or
-> other customizations to each remote storage type.
+<admon type="tip">
+
+This command is commonly needed after `dvc remote add` or `dvc remote default`
+to set up credentials or for other customizations specific to the
+[storage type](#available-parameters-per-storage-type).
+
+</admon>
 
 ## Synopsis
 
@@ -1272,10 +1276,10 @@ Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-profile = myuser
+    url = s3://mybucket/path
+    profile = myuser
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 ## Example: Some Azure authentication methods

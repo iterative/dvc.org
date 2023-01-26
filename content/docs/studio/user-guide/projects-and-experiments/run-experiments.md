@@ -41,8 +41,8 @@ you should do the following:
 
 ## Use the Iterative Studio wizard to set up your CI action
 
-Select a commit and click **Run**. You will see a message that invites you to
-set up your CI.
+Select a commit and click **Experiment**. You will see a message that invites
+you to set up your CI.
 
 ![](https://static.iterative.ai/img/studio/set_up_cml_message.png)
 
@@ -101,8 +101,8 @@ https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
 To run experiments from Iterative Studio, first you need to determine the Git
 commit (experiment) on which you want to iterate. Select the commit that you
-want to use and click the `Run` button. A form will let you specify all the
-changes that you want to make to your experiment. On this form, there are 2
+want to use and click the `Experiment` button. A form will let you specify all
+the changes that you want to make to your experiment. On this form, there are 2
 types of inputs that you can change:
 
 1. **Input data files**: You can change datasets that are used for model

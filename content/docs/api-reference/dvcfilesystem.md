@@ -128,6 +128,6 @@ remote if they don't exist in the cache.
 ## API Reference
 
 As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
-it is compatible with most of the APIs that it offers. Please check the fsspec's
-[API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem)
-for more details.
+it is compatible with most of the APIs that it offers. For more details check
+out the fsspec's
+[API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem).

@@ -112,7 +112,7 @@ $ dvc config cache.type hardlink,symlink
 > Refer to `dvc config cache` for more details.
 
 Note that with this `cache.type`, your workspace files will be in read-only mode
-in order to protect the cache from corruption. Please refer to
+in order to protect the cache from corruption. Refer to
 [Update a Tracked File](/doc/user-guide/how-to/update-tracked-files) on how to
 manage tracked files under these cache configurations.
 

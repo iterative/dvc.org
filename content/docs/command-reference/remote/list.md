@@ -1,6 +1,7 @@
 # remote list
 
-List all available [data remotes](/doc/command-reference/remote).
+List all available
+[DVC remotes](/doc/user-guide/data-management/remote-storage).
 
 ## Synopsis
 
