@@ -139,7 +139,10 @@ export const HeroSlides = () => {
                   'flex-nowrap',
                   'justify-center',
                   'md:pl-4',
-                  active && ['border-l-2', 'border-sky-500']
+                  'border-l-2',
+                  'ease-in-out',
+                  'duration-300',
+                  active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
                   changeCurrentIndex(i)
