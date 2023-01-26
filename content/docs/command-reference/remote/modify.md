@@ -1,10 +1,14 @@
 # remote modify
 
-Modify the configuration of a [data remote](/doc/command-reference/remote).
+Configure a [DVC remote](/doc/user-guide/data-management/remote-storage).
 
-> This command is commonly needed after `dvc remote add` or
-> [default](/doc/command-reference/remote/default) to set up credentials or
-> other customizations to each remote storage type.
+<admon type="tip">
+
+This command is commonly needed after `dvc remote add` or `dvc remote default`
+to set up credentials or for other customizations specific to the
+[storage type](#available-parameters-per-storage-type).
+
+</admon>
 
 ## Synopsis
 
@@ -117,22 +121,6 @@ options:
 
   ```cli
   $ dvc remote modify myremote region us-east-2
-  ```
-
-- `read_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to read from a connection (60 by default). Let's set it to 5
-  minutes for example:
-
-  ```cli
-  $ dvc remote modify myremote read_timeout 300
-  ```
-
-- `connect_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to make a connection (60 by default). Let's set it to 5
-  minutes for example:
-
-  ```cli
-  $ dvc remote modify myremote connect_timeout 300
   ```
 
 - `read_timeout` - set the time in seconds till a timeout exception is thrown
@@ -1162,6 +1150,22 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
+- `read_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to read a portion of data from a connection (60 by default).
+  Let's set it to 5 minutes for example:
+
+  ```cli
+  $ dvc remote modify myremote read_timeout 300
+  ```
+
+- `connect_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to make a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```cli
+  $ dvc remote modify myremote connect_timeout 300
+  ```
+
 </details>
 
 <details>
@@ -1272,10 +1276,10 @@ Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-profile = myuser
+    url = s3://mybucket/path
+    profile = myuser
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 ## Example: Some Azure authentication methods

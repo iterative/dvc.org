@@ -137,7 +137,7 @@ The table also contains buttons to visualize, compare and run experiments.
 - **Show plots:** Show plots for the selected commits. When you click on this
   button, plots for the selected commits are displayed in a `Plots ` pane.
 - **Compare:** Compare different experiments side by side.
-- **Run:** Run experiments by selecting any one commit. Refer
+- **Experiment:** Run experiments by selecting any one commit. Refer
   [here][run-experiments] for details on how to run experiments and track
   metrics in real time.
 - **Trends:** Generate trend charts to show metric evolution over time.

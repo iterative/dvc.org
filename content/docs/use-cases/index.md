@@ -31,3 +31,7 @@ learning models, and you want to
 - adopt engineering tools and best practices in data science projects;
 
 DVC is for you!
+
+---
+
+Choose a page from the navigation sidebar to the left.

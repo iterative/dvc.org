@@ -35,8 +35,8 @@ and run a final evaluation stage to our [earlier pipeline]:
 ```cli
 $ dvc stage add -n evaluate \
   -d src/evaluate.py -d model.pkl -d data/features \
-  -o eval/importance.png -O eval/prc -O eval/live/plots \
-  -M eval/live/metrics.json \
+  -M eval/live/metrics.json -O eval/live/plots \
+  -O eval/prc -o eval/importance.png \
   python src/evaluate.py model.pkl data/features
 
 $ dvc repro
@@ -139,12 +139,6 @@ plots][plots files] in `dvc.yaml`:
 
 ```yaml
 plots:
-  - eval/importance.png
-  - Precision-Recall:
-      x: recall
-      y:
-        eval/prc/train.json: precision
-        eval/prc/test.json: precision
   - ROC:
       x: fpr
       y:
@@ -156,6 +150,12 @@ plots:
       y:
         eval/live/plots/sklearn/cm/train.json: predicted
         eval/live/plots/sklearn/cm/test.json: predicted
+  - Precision-Recall:
+      x: recall
+      y:
+        eval/prc/train.json: precision
+        eval/prc/test.json: precision
+  - eval/importance.png
 ```
 
 To generate them, you can run `dvc plots show` (shown below), which generates an

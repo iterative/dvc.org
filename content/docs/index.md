@@ -35,9 +35,9 @@ used as a [Python library].
 
 </cards>
 
-✅ Please join our [community](/community) or use the [support](/support)
-channels if you have any questions or need specific help. We are very responsive
-⚡.
+✅ If you have any questions or need specific help, feel free to join our
+[community](/community) or use the [support](/support) channels. We are very
+responsive⚡.
 
 ✅ Check out our [GitHub repository](https://github.com/iterative/dvc) and give
 us a ⭐ if you like the project!

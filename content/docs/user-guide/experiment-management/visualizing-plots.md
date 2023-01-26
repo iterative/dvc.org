@@ -22,7 +22,7 @@ workflow is:
    ```yaml
    plots:
      # Data series source
-     - evaluation/test/plots/confusion_matrix.json:
+     - eval/live/plots/sklearn/cm/test.json:
          # Configure template and axes.
          template: confusion
          x: actual
@@ -32,11 +32,11 @@ workflow is:
      - ROC:
          x: fpr
          y:
-           evaluation/train/plots/roc.json: tpr
-           evaluation/test/plots/roc.json: tpr
+           eval/live/plots/sklearn/roc/train.json: tpr
+           eval/live/plots/sklearn/roc/test.json: tpr
 
      # Image file source
-     - evaluation/importance.png
+     - eval/importance.png
    ```
 
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
