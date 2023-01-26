@@ -92,8 +92,10 @@ The following subfields may be present under `deps` entries:
 
 ### Dependency `repo` subfields:
 
-| Field      | Description                                                                                                                                                                     |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `url`      | URL of Git repository with source DVC project                                                                                                                                   |
-| `rev`      | Only when `dvc import --rev` is used: Specific commit hash, branch or tag name, etc. (a [Git revision](https://git-scm.com/docs/revisions)) used to import the dependency from. |
-| `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)                                             |
+| Field      | Description                                                                                                                                                                                                 |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `url`      | URL of Git repository with source DVC project                                                                                                                                                               |
+| `rev`      | Specific commit hash, branch or tag name, etc. (a [Git revision](https://git-scm.com/docs/revisions)) or version used to import the dependency from when `dvc import --rev` or [cloud versioning] are used. |
+| `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)                                                                         |
+
+[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
