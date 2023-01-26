@@ -10,8 +10,8 @@ data science and machine learning teams manage **large datasets**, make projects
 **reproducible**, and **collaborate** better.
 
 DVC takes advantage of the existing software engineering toolset your team
-already knows (Git, your IDE, CI/CD, etc.). Its design follows this set of
-principles:
+already knows (Git, your IDE, CI/CD, cloud storage, etc.). Its design follows
+this set of principles:
 
 1. **Codification**: Define any aspect of your ML project (data and model
    versions, ML pipelines and experiments) in human-readable [metafiles]. This
