@@ -11,11 +11,11 @@ etc.), and download it to the local project, or make a copy in
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>]
-                      [--to-remote] [-r <name>]
-                      [--no-exec | --no-download]
-                      [-j <number>] [--desc <text>]
-                      [--type <str>] [--label <str>] [--meta key=value]
-                      url [out]
+           [--to-remote] [-r <name>]
+           [--no-exec | --no-download] [-j <number>]
+           [--desc <text>] [--type <str>] [--label <str>]
+           [--meta key=value] [--version-aware]
+           url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -200,12 +200,12 @@ produces a regular stage in `dvc.yaml`.
 
 - `--meta key=value` - custom metadata to add to the data.
 
-- `-h`, `--help` - prints the usage/help message, and exit.
-
 - `--version-aware` - capture [cloud versioning] information (supported for
   certain cloud storage providers). By default, DVC will automatically do so
   only if the `url` contains a valid cloud versioning ID. Otherwsie, with this
   flat DVC will import the latest version of the file.
+
+- `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
