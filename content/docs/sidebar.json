@@ -216,15 +216,8 @@
         "slug": "dag"
       },
       {
-        "label": "data",
-        "slug": "data",
-        "source": false,
-        "children": [
-          {
-            "label": "data status",
-            "slug": "status"
-          }
-        ]
+        "label": "data status",
+        "slug": "data/status"
       },
       {
         "label": "destroy",
