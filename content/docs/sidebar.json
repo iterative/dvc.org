@@ -95,9 +95,8 @@
   },
   {
     "slug": "user-guide",
-    "source": false,
+    "source": "user-guide/index.md",
     "children": [
-      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
@@ -134,14 +133,13 @@
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines"]
+        "children": ["defining-pipelines", "run-cache"]
       },
       {
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
-          "experiments-overview",
           "running-experiments",
           "hydra-composition",
           "comparing-experiments",
