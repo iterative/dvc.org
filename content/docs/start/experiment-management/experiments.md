@@ -50,7 +50,7 @@ commands right away to run or save experiments in your project. (See the [User
 Guide] for detailed information.) Here, we briefly discuss how to structure an
 ML project with DVC experiments using `dvc exp init`.
 
-[user guide]: /doc/user-guide/experiment-management/experiments-overview
+[user guide]: /doc/user-guide/experiment-management
 
 A typical machine learning project has data, a set of scripts that train a
 model, a bunch of hyperparameters that tune training and models, and outputs

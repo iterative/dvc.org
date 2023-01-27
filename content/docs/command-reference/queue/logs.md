@@ -2,7 +2,7 @@
 
 Show console output logs for [DVC experiment] tasks (see `dvc queue start`).
 
-[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiment]: /doc/user-guide/experiment-management
 
 ## Synopsis
 
