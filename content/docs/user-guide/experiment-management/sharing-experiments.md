@@ -4,7 +4,7 @@ In a regular Git workflow, <abbr>DVC repository</abbr> versions are typically
 synchronized among team members. And [DVC Experiments] are internally connected
 to this commit history, so you can similarly share them.
 
-[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiments]: /doc/user-guide/experiment-management
 
 ## Method 1: Less steps
 
@@ -32,12 +32,18 @@ Git and [DVC remotes][remote storage] as needed:
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
 
-If you need to share <abbr>cached</abbr> data, [configure remote storage] first.
-Check that you have the necessary remotes with `git remote -v` and (optionally)
-`dvc remote list`.
+If you need to share <abbr>cached</abbr> data that is tracked by DVC, [configure
+remote storage] first (e.g. Amazon S3 or SSH).
 
 [configure remote storage]:
   https://dvc.org/doc/user-guide/data-management/remote-storage#configuration
+
+<admon type="tip">
+
+Check that you have the necessary remotes with `git remote -v` and (optionally)
+`dvc remote list`.
+
+</admon>
 
 <admon type="warn">
 
@@ -96,4 +102,56 @@ $ dvc exp push --rev HEAD origin
 - DVC experiments are not fetched when cloning a <abbr>DVC repository</abbr> (to
   avoid cluttering your local repo). You must `dvc exp pull` the ones you want.
 
-## Method 2 do
+## Method 2: More persistent
+
+A more straightforward way to distribute your experiments is to turn them into
+[persistent](/doc/user-guide/experiment-management/persisting-experiments) Git
+commits (we use `dvc exp branch` below) and [share them][sharing-data] like any
+project version.
+
+```cli
+$ dvc exp branch quare-zips my-branch
+Git branch 'my-branch' has been created from experiment 'quare-zips'.
+To switch to the new branch run:
+        git checkout my-branch
+
+$ git checkout my-branch
+Switched to branch 'my-branch'
+
+$ git push origin my-branch
+```
+
+If you only need to share code and metadata (like parameters and metrics), then
+pushing to Git should be enough.
+
+You may also have <abbr>cached</abbr> data, models, etc. tracked by DVC. To
+share these, `dvc push` them to [remote storage] (e.g. Google Drive or NAS).
+
+```cli
+$ dvc push
+```
+
+```
+  ┌────────────────┐     ┌────────────────┐
+  ├────────────────┤     │   DVC remote   │  Remote locations
+  │   Git remote   │     │    storage     │
+  │                │     ├────────────────┤
+  └────────────────┘     └────────────────┘
+          ▲                       ▲
+          │                       │
+       git push                dvc push
+       git pull                dvc pull
+          │                       │
+          ▼                       ▼
+  ┌─────────────────┐    ┌────────────────┐
+  │    Code and     │    │      Data      │
+  │    metafiles    │    │    (cached)    │  Local project
+  └─────────────────┘    └────────────────┘
+```
+
+### Limitations
+
+- Storing experiments as persistent Git commits is not always practical, as it
+  may defeat the point of using DVC experiments in the first place (to avoid
+  cluttering your Git repo).
+- Persistent Git commits are technically no longer [DVC experiments].
