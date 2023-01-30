@@ -6,11 +6,11 @@ List of environment variables to configure DVCLive behavior.
 import os
 from dvclive import env
 
-os.environ[env.DVCLIVE_LOG_LEVEL] = "DEBUG"
+os.environ[env.DVCLIVE_LOGLEVEL] = "DEBUG"
 os.environ[env.DVCLIVE_OPEN] = "True"
 ```
 
-- `DVCLIVE_LOG_LEVEL`: Configure the
+- `DVCLIVE_LOGLEVEL`: Configure the
   [logging level](https://docs.python.org/3/library/logging.html#logging-levels)
   of DVCLive. Defaults to `INFO`.
 - `DVCLIVE_OPEN`: If True, DVCLive will try to automatically open the HTML
