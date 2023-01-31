@@ -130,11 +130,11 @@ change their configuration to avoid shallow cloning. Common examples:
 <toggle>
 <tab title="CML">
 
-[CML](https://cml.dev) has a convenient `--unshallow` option for its
+[CML](https://cml.dev) has a convenient `--fetch-depth` option for its
 [`ci`](https://cml.dev/doc/ref/ci) command:
 
 ```cli
-$ cml ci --unshallow
+$ cml ci --fetch-depth 0
 ```
 
 </tab>
