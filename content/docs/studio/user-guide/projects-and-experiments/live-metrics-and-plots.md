@@ -97,9 +97,8 @@ DVCLive signals the end of the experiment using `live.end()`. Using
 
 Iterative Studio stores the live metrics and plots data in its database.
 
-In the project table, the live metrics are displayed next to the Git commit
-corresponding to the experiment. Updates to the live metrics are highlighted in
-orange.
+In the project table, the live metrics are displayed nested under the parent Git
+commit. Updates to the live metrics are highlighted in orange.
 
 ![](https://static.iterative.ai/img/studio/live_metrics.gif)
 
