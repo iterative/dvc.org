@@ -108,8 +108,8 @@ options:
 
 ### Amazon S3
 
-This is a summary. See more
-[details and options](/doc/remote-reference/amazon-s3).
+This is a summary. See
+[all the details](/doc/user-guide/data-management/remote-storage/amazon-s3).
 
 - `url` - update the S3 location. Format: `s3://<bucket>/<key>`
 

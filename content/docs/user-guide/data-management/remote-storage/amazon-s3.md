@@ -31,12 +31,12 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 
 </admon>
 
-DVC will try to authenticate using your [AWS CLI configuration] by default. This
-reads the default AWS credentials file (if available). To use customize
+DVC will try to authenticate using your [AWS CLI config] by default. This reads
+the default AWS credentials file (if available). To use customize
 authentication, you can set the following config params with
 `dvc remote modify --local`.
 
-[aws cli configuration]:
+[aws cli config]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
 
 <admon type="warn">
@@ -127,7 +127,7 @@ $ dvc remote modify myremote worktree true
   /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
 [worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
-## Other configuration
+## More configuration options
 
 - `region` - specific AWS region
 

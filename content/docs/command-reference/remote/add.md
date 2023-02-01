@@ -94,12 +94,13 @@ The following are the types of remote storage (protocols) supported:
 
 ### Amazon S3
 
+See [all the details] (including authentication).
+
+[all the details]: /doc/user-guide/data-management/remote-storage/amazon-s3
+
 ```cli
 $ dvc remote add -d myremote s3://mybucket/path
 ```
-
-See more [details and options](/doc/remote-reference/amazon-s3) (including
-authentication).
 
 <details>
 
