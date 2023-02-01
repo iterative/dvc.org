@@ -75,10 +75,10 @@ log your metrics or plots using [DVCLive], they will be automatically sent to
 Iterative Studio. Here is an example of how you can use [DVCLive] in your
 training code:
 
-```
+```py
 from dvclive import Live
 
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
   for i in range(params["epochs"]):
     ...
     live.log_metric("accuracy", accuracy)
