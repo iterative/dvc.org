@@ -56,8 +56,8 @@ Benefits of our approach include:
 
 - **Efficient data management**: Use a familiar and cost-effective storage
   solution for your data and models (e.g. SFTP, S3, HDFS,
-  [etc.](/doc/command-reference/remote/add#supported-storage-types)) — free from
-  Git hosting
+  [etc.](/doc/user-guide/data-management/remote-storage#supported-storage-types))
+  — free from Git hosting
   [constraints](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota).
   DVC [optimizes](/doc/user-guide/data-management/large-dataset-optimization)
   storing and transferring large files.

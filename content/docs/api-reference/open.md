@@ -40,8 +40,8 @@ file can be tracked by DVC (as an <abbr>output</abbr>) or by Git.
 (using the `with` keyword, as shown in the examples).
 
 This function makes a direct connection to the
-[remote storage](/doc/command-reference/remote/add#supported-storage-types), so
-the file contents can be streamed. Your code can process the data
+[remote storage](/doc/user-guide/data-management/remote-storage#supported-storage-types),
+so the file contents can be streamed. Your code can process the data
 [buffer](https://docs.python.org/3/c-api/buffer.html) as it's streamed, which
 optimizes memory usage.
 

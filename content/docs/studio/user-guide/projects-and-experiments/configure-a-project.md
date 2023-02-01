@@ -94,7 +94,7 @@ that are used in your DVC repo will be listed.
 Now, click on `Add new credentials`. In the form that opens up, select the
 provider (Amazon S3, GCP, etc.). For details on what types of remote storage
 (protocols) are supported, refer to the DVC documentation on
-[supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+[supported storage types](/doc/user-guide/data-management/remote-storage#supported-storage-types).
 
 Depending on the provider, you will be asked for more details such as the
 credentials name, username, password etc. Note that for each supported storage
@@ -104,7 +104,7 @@ type, the required details may be different.
 
 You will also have to ensure that the credentials you enter have the required
 permissions on the cloud / remote storage. In the DVC documentation on
-[supported storage types](/doc/command-reference/remote/add#supported-storage-types),
+[supported storage types](/doc/user-guide/data-management/remote-storage#supported-storage-types),
 expand the section for the storage type you want to add. There, you will find
 the details of the permissions that you need to grant to the account
 (credentials) that you are configuring on Iterative Studio.
