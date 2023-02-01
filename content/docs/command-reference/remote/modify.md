@@ -6,7 +6,7 @@ Configure a [DVC remote](/doc/user-guide/data-management/remote-storage).
 
 This command is commonly needed after `dvc remote add` or `dvc remote default`
 to set up credentials or for other customizations specific to the
-[storage type](#available-parameters-per-storage-type).
+[storage type](#supported-storage-types).
 
 </admon>
 
@@ -25,10 +25,10 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Config option names are specific
-to the remote type. See `dvc remote add` and
-[Available parameters](#available-parameters-per-storage-type) below for a list
-of remote storage types.
+Remote `name` and `option` name are required. Most configuration options are
+specific to the remote type. Refer to the lists of
+[parameters for all remotes](#available-parameters-for-all-remotes) and of
+[supported storage types](#supported-storage-types) below.
 
 This command modifies a `remote` section in the project's
 [config file](/doc/command-reference/config). Alternatively, `dvc config` or
@@ -99,117 +99,18 @@ The following config options are available for all remote types:
   $ dvc remote modify myremote verify true
   ```
 
-## Available parameters per storage type
+## Supported storage types
 
-The following are the types of remote storage (protocols) and their config
-options:
+Each type of storage has different config options you can set. See all the
+details in the pages linked below.
 
-<details>
+### Cloud providers
 
-### Amazon S3
+- [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 
-This is a summary. See
-[all the details](/doc/user-guide/data-management/remote-storage/amazon-s3).
-
-- `url` - update the S3 location. Format: `s3://<bucket>/<key>`
-
-- `version_aware`, `worktree` - enable a [cloud versioning] strategy.
-
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-
-**Authentication**
-
-<admon type="info">
-
-The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
-`s3:PutObject`, `s3:DeleteObject`.
-
-</admon>
-
-<admon type="warn">
-
-The `--local` flag is needed to write sensitive user info to a Git-ignored
-config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
-`dvc config` for more info. Example:
-
-```cli
-$ dvc remote modify --local myremote \
-                    access_key_id 'mysecret'
-$ dvc remote modify --local myremote \
-                    secret_access_key 'mysecret'
-```
-
-</admon>
-
-- `configpath`, `credentialpath`, `profile` - custom AWS CLI [config and/or
-  credential file] paths, and [profile] name
-
-- `access_key_id`, `secret_access_key`, `session_token` - AWS access key ID,
-  secret access key, and [MFA] session token (when required). May be used
-  instead of `credentialpath`.
-
-[config and/or credential file]:
-  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
-[profile]:
-  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
-[mfa]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
-
-**Other**
-
-- `region` - specific AWS region
-
-  ```cli
-  $ dvc remote modify myremote region 'us-east-2'
-  ```
-
-- `endpointurl` - custom endpoint to use non-Amazon
-  [S3-compatible storage](#s3-compatible-storage)
-
-- `read_timeout`, `connect_timeout` - time in seconds until a timeout exception
-  is thrown when attempting to read or connect (60 by default).
-
-- `listobjects` - whether to use the `list_objects()` S3 API method instead of
-  the default `list_objects_v2()`
-
-- `use_ssl`, `ssl_verify` - used to enable and setup SSL
-
-- `sse`, `sse_kms_key_id`, `sse_customer_key`, `sse_customer_algorithm` - enable
-  and configure [server-side encryption].
-
-- `acl` - object-level access control list ([ACL])
-
-- `grant_read`, `grant_read_acp`, `grant_read_acp`, `grant_write_acp`,
-  `grant_full_control` - grant object-level ACL [permissions] to specific
-  [grantees].
-
-[server-side encryption]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html
-[acl]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
-[grantees]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#specifying-grantee
-[permissions]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions
-
-</details>
-
-<details>
-
-### S3-compatible storage
-
-- `endpointurl` - URL to connect to the S3-compatible storage server or service
-  (e.g. [Minio](https://min.io/),
-  [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-  [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.):
-
-  ```cli
-  $ dvc remote modify myremote \
-                      endpointurl https://storage.example.com
-  ```
-
-Any other S3 parameter (see previous section) can also be set for S3-compatible
-storage. Whether they're effective depends on each storage platform.
-
-</details>
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3-compatible]:
+  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 
 <details>
 

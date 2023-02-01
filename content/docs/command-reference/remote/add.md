@@ -47,15 +47,19 @@ service, an SSH server, network-attached storage, or even a directory in the
 local file system (see all the supported remote storage types in the examples
 below).
 
-DVC will determine the [type of remote](#supported-storage-types) based on the
+DVC will determine the [storage type](#supported-storage-types) based on the
 `url` provided. This may affect which parameters you can access later via
 `dvc remote modify` (note that the `url` itself can be modified).
 
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+<admon type="tip">
+
+If you installed DVC via `pip` and plan to use cloud services as remote storage,
+you might need to install these optional dependencies: `[s3]`, `[azure]`,
+`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
+all. The command should look like this: `pip install "dvc[s3]"`. (This example
+installs `boto3` library along with DVC to support S3 storage.)
+
+</admon>
 
 ## Options
 
@@ -90,45 +94,15 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 ## Supported storage types
 
-The following are the types of remote storage (protocols) supported:
+The following are the supported types of storage protocols and platforms.
 
-### Amazon S3
+### Cloud providers
 
-See [all the details] (including authentication).
+- [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 
-[all the details]: /doc/user-guide/data-management/remote-storage/amazon-s3
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-```
-
-<details>
-
-### S3-compatible storage
-
-For object storage that supports an S3-compatible API (e.g.
-[Minio](https://min.io/),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the `endpointurl` parameter. For example, let's set up a DigitalOcean
-"space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
-region:
-
-```cli
-$ dvc remote add -d myremote s3://mystore/path
-$ dvc remote modify myremote endpointurl \
-                             https://nyc3.digitaloceanspaces.com
-```
-
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
-
-Any other S3 parameter can also be set for S3-compatible storage. Whether
-they're effective depends on each storage platform.
-
-</details>
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3-compatible]:
+  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 
 <details>
 

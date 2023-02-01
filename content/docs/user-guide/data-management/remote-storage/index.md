@@ -91,12 +91,15 @@ team.
 
 ### Cloud providers
 
-- [Amazon S3](/doc/user-guide/data-management/remote-storage/amazon-s3) (AWS)
-- S3-compatible e.g. MinIO
+- [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 - Microsoft Azure Blob Storage
 - Google Drive
 - Google Cloud Storage (GCP)
 - Aliyun OSS
+
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3-compatible]:
+  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 
 ### Self-hosted / On-premises
 

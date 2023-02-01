@@ -1,6 +1,6 @@
 # Amazon S3
 
-Use `dvc remote add` with a (new) remote name and a valid [S3] URL:
+`dvc remote add` a (new) remote name and a valid [S3] URL:
 
 ```cli
 $ dvc remote add -d myremote s3://<bucket>/<key>
@@ -97,6 +97,30 @@ config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 [mfa]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
 
+## S3-compatible servers (non-Amazon)
+
+Set the `endpointurl` parameter with the URL to connect to the S3-compatible
+service (e.g. [MinIO], [IBM Cloud Object Storage], etc.). For example, let's set
+up a [DigitalOcean Space] (equivalent to a bucket in S3) called `mystore` found
+in the `nyc3` region:
+
+```cli
+$ dvc remote add -d myremote s3://mystore/path
+$ dvc remote modify myremote endpointurl \
+                    https://nyc3.digitaloceanspaces.com
+```
+
+<admon type="info">
+
+Any other S3 parameter can also be set for S3-compatible storage. Whether
+they're effective depends on each storage platform.
+
+</admon>
+
+[minio]: https://min.io/
+[digitalocean space]: https://www.digitalocean.com/products/spaces
+[ibm cloud object storage]: https://www.ibm.com/cloud/object-storage
+
 ## Cloud versioning
 
 Learn about DVC [cloud versioning] support.
@@ -129,14 +153,17 @@ $ dvc remote modify myremote worktree true
 
 ## More configuration options
 
+<admon type="info">
+
+See `dvc remote modify` for more command usage details.
+
+</admon>
+
 - `region` - specific AWS region
 
   ```cli
   $ dvc remote modify myremote region 'us-east-2'
   ```
-
-- `endpointurl` - custom endpoint to use non-Amazon
-  [S3-compatible storage](/doc/command-reference/remote/modify#s3-compatible-storage)
 
 - `read_timeout` - time in seconds until a timeout exception is thrown when
   attempting to read from a connection (60 by default)
