@@ -1202,15 +1202,21 @@ by HDFS. Read more about by expanding the WebHDFS section in
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
 
-- `password` - password for WebDAV server, can be empty in case of using `token`
-  authentication.
+- `custom_auth_header` - custom header field name to use for authentication. Value is set via `password`.
+
+  ```cli
+  $ dvc remote modify --local myremote \
+                      custom_auth_header 'My-Header'
+  ```
+
+- `password` - password for WebDAV server, used with `user` or `custom_auth_header`, can be empty in case of using `token` authentication.
 
   ```cli
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> Note that `user/password` and `token` authentication are incompatible. You
-> should authenticate against your WebDAV remote by either `user/password` or
+> Note that `user/password`, `custom_auth_header/password` and `token` authentication are incompatible. You
+> should authenticate against your WebDAV remote by either `user/password`, `custom_auth_header/password` or
 > `token`.
 
 - `ask_password` - ask each time for the password to use for `user/password`
