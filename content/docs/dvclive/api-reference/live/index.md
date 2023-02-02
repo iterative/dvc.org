@@ -86,6 +86,13 @@ You can use `Live()` as a context manager. When exiting the context manager,
   [`Live.dvc_file`](/doc/dvclive/api-reference/live#properties). See
   `Live.make_dvcyaml()`. Defaults to `True`.
 
+<admon type="tip">
+
+If you have custom DVC configuration of metrics, plots, and parameters in your
+own `dvc.yaml` file, set `dvcyaml=False` to avoid duplication.
+
+</admon>
+
 ## Methods
 
 - `Live.log_image()`
