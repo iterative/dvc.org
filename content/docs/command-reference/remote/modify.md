@@ -1217,9 +1217,11 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> Note that `user/password`, `custom_auth_header/password` and `token` authentication are incompatible. You
-> should authenticate against your WebDAV remote by either `user/password`, `custom_auth_header/password` or
-> `token`.
+  <admon type="info">
+
+  `user/custom_auth_header`, `password` auth is incompatible with `token` auth.
+
+  </admon>
 
 - `ask_password` - ask each time for the password to use for `user/password`
   authentication. This has no effect if `password` or `token` are set.
