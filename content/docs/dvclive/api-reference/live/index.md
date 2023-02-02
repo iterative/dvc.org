@@ -88,7 +88,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 <admon type="tip">
 
-If you have custom DVC configuration of metrics, plots, and parameters in your
+If you are already tracking DVCLive metrics, plots, and parameters in your
 own `dvc.yaml` file, set `dvcyaml=False` to avoid duplication.
 
 </admon>
