@@ -3,60 +3,63 @@
 _DVC remotes_ provide optional/additional storage to backup and share your data
 and ML models. For example, you can download data artifacts created by
 colleagues without spending time and resources to regenerate them locally. See
-`dvc push` and `dvc pull`.
+also `dvc push` and `dvc pull`.
 
 <admon type="info">
 
-DVC remotes are similar to [Git remotes], but for <abbr>cached</abbr> data.
+DVC remotes are similar to [Git remotes] (e.g. GitHub or GitLab hosting), but
+for <abbr>cached</abbr> data instead of code.
 
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
 </admon>
 
-This is somewhat like GitHub or GitLab providing hosting for source code
-repositories. However, DVC does not provide or recommend a specific storage
-service. Instead, it adopts a bring-your-own-platform approach, supporting a
-wide variety of [storage types](#supported-storage-types).
+DVC does not provide or recommend a specific storage service (unlike code
+repos). You can bring your own platform from a wide variety of
+[supported storage types](#supported-storage-types).
 
-The main uses of remote storage are:
+Main uses of remote storage:
 
-- Synchronize DVC-tracked data (previously <abbr>cached</abbr>).
-- Centralize or distribute large file storage for sharing and collaboration.
-- Back up different versions of your data and models.
-- Save space in your working environment (by deleting pushed files/directories).
+- Synchronize large files and directories tracked by DVC.
+- Centralize or distribute data storage for sharing and collaboration.
+- Back up different versions of datasets and models (saving space locally).
 
 ## Configuration
 
-You can set up one or more remote storage locations with `dvc remote` commands.
-These read and write to the [`remote`] section of the project's configuration
-file (`.dvc/config`), which you could edit manually as well.
+You can set up one or more storage locations with `dvc remote` commands. These
+read and write to the [`remote`] section of the project's config file
+(`.dvc/config`), which you could edit manually as well.
 
-First, `dvc remote add` a storage name and valid URL (or file path), e.g.:
+For example, let's define a remote storage location on an S3 bucket:
 
 [`remote`]: /doc/command-reference/config#remote
 
 ```cli
-$ dvc remote add mybucket s3://my-bucket
+$ dvc remote add myremote s3://mybucket
 ```
 
-You may also need to `dvc remote modify` its authentication or other
-configuration, e.g.:
+<admon type="tip">
+
+DVC reads existing configuration you may have locally for major cloud providers
+(AWS, Azure, GCP) so that many times all you need to do is `dvc remote add`!
+
+</admon>
+
+You may also need to customize authentication or other config with
+`dvc remote modify`:
 
 ```cli
 $ dvc remote modify --local \
                     mybucket credentialpath ~/.aws/alt
-
 $ dvc remote modify mybucket connect_timeout 300
 ```
 
 <admon type="warn">
 
 The `--local` flag is needed to write sensitive user info to a Git-ignored
-config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
-`dvc config` for more info.
-
-This also means that each copy of the <abbr>DVC repository</abbr> may have to
-re-configure remote storage authentication.
+config file (`.dvc/config.local`) so that no secrets are leaked (see
+`dvc config`). This means that each copy of the <abbr>DVC repository</abbr> has
+to re-configure these values.
 
 </admon>
 

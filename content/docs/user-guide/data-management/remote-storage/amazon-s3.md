@@ -1,18 +1,29 @@
 # Amazon S3
 
-`dvc remote add` a (new) remote name and a valid [S3] URL:
+<!--
+## Amazon S3
+-->
+
+Start with `dvc remote add` to define the remote. Set a name and valid [S3] URL:
 
 ```cli
 $ dvc remote add -d myremote s3://<bucket>/<key>
 ```
 
-- `bucket` - name of an [existing S3 bucket]
-- `key` - optional path to a [folder key] in your bucket
+- `<bucket>` - name of an [existing S3 bucket]
+- `<key>` - optional path to a [folder key] in your bucket
 
-<admon type="tip">
+Upon `dvc push` (or when needed) DVC will try to authenticate using your [AWS
+CLI config]. This reads the default AWS credentials file (if available) or
+[env vars](#environment-variables).
 
-The `-d` flag (optional) makes this the `--default` remote for the
-<abbr>project</abbr>.
+[aws cli config]:
+  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+
+<admon type="info">
+
+The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
+`s3:PutObject`, `s3:DeleteObject`.
 
 </admon>
 
@@ -22,22 +33,11 @@ The `-d` flag (optional) makes this the `--default` remote for the
 [folder key]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html
 
-## Authentication
+## Custom authentication
 
-<admon type="info">
-
-The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
-`s3:PutObject`, `s3:DeleteObject`.
-
-</admon>
-
-DVC will try to authenticate using your [AWS CLI config] by default. This reads
-the default AWS credentials file (if available). To use customize
-authentication, you can set the following config params with
+If you don't have a regular local S3 setup or if you want to change the auth
+method for some reason, you can set the following config params with
 `dvc remote modify --local`.
-
-[aws cli config]:
-  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
 
 <admon type="warn">
 
@@ -47,54 +47,37 @@ config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
 
 </admon>
 
-- `configpath` - custom [AWS CLI config file][aws-cli-config] path
+To use custom [AWS CLI config or credential files][aws-cli-config-files], or to
+specify a [profile name], use `configpath`, `credentialpath`, or `profile`:
 
-  ```cli
-  $ dvc remote modify --local myremote \
-                      configpath 'path/to/config'
-  ```
+```cli
+$ dvc remote modify --local myremote \
+                    configpath 'path/to/config'
+# or
+$ dvc remote modify --local myremote \
+                    credentialpath 'path/to/credentials'
+# and (optional)
+$ dvc remote modify --local myremote profile 'myprofile'
+```
 
-- `credentialpath` - custom [AWS CLI credentials file][aws-cli-config] path
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      credentialpath 'path/to/credentials'
-  ```
-
-- `profile` - credentials [profile] name
-
-  ```cli
-  $ dvc remote modify --local myremote profile 'myprofile'
-  ```
-
-- `access_key_id` - AWS access key ID. May be used (along with
-  `secret_access_key`) instead of `credentialpath`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      access_key_id 'mysecret'
-  ```
-
-- `secret_access_key` - AWS secret access key. May be used (along with
-  `access_key_id`) instead of `credentialpath`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      secret_access_key 'mysecret'
-  ```
-
-- `session_token` - AWS [MFA] session token (when required). May be used (along
-  with `access_key_id` and `secret_access_key`) instead of `credentialpath`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      session_token 'mysecret'
-  ```
-
-[aws-cli-config]:
+[aws-cli-config-files]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
-[profile]:
+[profile name]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
+
+Another option is to use an AWS access key ID (`access_key_id`) and secret
+access key (`secret_access_key`) pair, and if required, an [MFA] session token
+(`session_token`):
+
+```cli
+$ dvc remote modify --local myremote \
+                    access_key_id 'mysecret'
+$ dvc remote modify --local myremote \
+                    secret_access_key 'mysecret'
+$ dvc remote modify --local myremote \
+                    session_token 'mysecret'
+```
+
 [mfa]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
 
 ## S3-compatible servers (non-Amazon)
@@ -179,8 +162,8 @@ See `dvc remote modify` for more command usage details.
 
 - `ssl_verify` - whether to verify SSL certificates (`true` or `false`), or a
   path to a custom CA certificates bundle to do so (implies `true`). Any certs
-  found in the [AWS CLI config file][aws-cli-config] (`ca_bundle`) are used by
-  default.
+  found in the [AWS CLI config file][aws-cli-config-files] (`ca_bundle`) are
+  used by default.
 
   ```cli
   $ dvc remote modify myremote ssl_verify false
