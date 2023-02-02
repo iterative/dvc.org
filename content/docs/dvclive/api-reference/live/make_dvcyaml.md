@@ -22,8 +22,8 @@ live.make_dvcyaml()
 
 ## Description
 
-If `Live(dvcyaml=True)`, DVCLive will collect all the data logged in
-`{Live.dir}` and save the DVC configuration for it in `{Live.dir}/dvc.yaml`.
+DVCLive will collect all the data logged in `{Live.dir}` and save the DVC
+configuration for it in `{Live.dir}/dvc.yaml`.
 
 ```yaml
 params:
