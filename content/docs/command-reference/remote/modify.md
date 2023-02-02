@@ -1206,10 +1206,12 @@ by HDFS. Read more about by expanding the WebHDFS section in
   is set via `password`.
 
   ```cli
-  $ dvc remote modify --local myremote custom_auth_header 'My-Header'
+  $ dvc remote modify --local myremote \
+                      custom_auth_header 'My-Header'
   ```
 
-- `password` - password for WebDAV server, used with `user` or `custom_auth_header`, can be empty in case of using `token` authentication.
+- `password` - password for WebDAV server, combined either with `user` or
+  `custom_auth_header`. Leave empty for `token` authentication.
 
   ```cli
   $ dvc remote modify --local myremote password mypassword
