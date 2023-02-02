@@ -29,9 +29,19 @@ The `-d` flag (optional) makes this the `--default` remote for the
 
 ## Authentication
 
-By default, DVC expects a storage account name (`account_name`) to authenticate
-with its [default credential]. This uses environment variables (usually set
-during [Azure CLI configuration]) or data from certain Microsoft applications.
+<admon type="info">
+
+This may require the **Storage Blob Data Contributor** and other [roles] on the
+account.
+
+[roles]: https://learn.microsoft.com/en-us/azure/role-based-access-control/
+
+</admon>
+
+A storage account name (`account_name`) is always needed. DVC tries to
+authenticate with its [default credential] by default. This uses environment
+variables (usually set during [Azure CLI configuration]) or data from certain
+Microsoft applications.
 
 ```cli
 $ dvc remote modify myremote --local account_name 'myuser'
@@ -208,7 +218,7 @@ Requires [Blob versioning] enabled on the storage account and container.
   /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
 [worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
-## More configuration options
+## More configuration parameters
 
 <admon type="info">
 
@@ -216,45 +226,5 @@ See `dvc remote modify` for more command usage details.
 
 </admon>
 
-- `url` - used to modify the remote location
-  ([scroll up](#microsoft-azure-blob-storage) for details)
-
-<!-- ## Example: Some Azure authentication methods
-
-Using a default identity (e.g. credentials set by `az cli`):
-
-```cli
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify myremote account_name 'myaccount'
-$ dvc push
-```
-
-> Note that this may require the `Storage Blob Data Contributor` and other roles
-> on the account.
-
-Using a `connection_string`:
-
-```cli
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote connection_string 'mysecret'
-$ dvc push
-```
-
-Using `account_key`:
-
-```cli
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote account_name 'myaccount'
-$ dvc remote modify --local myremote account_key 'mysecret'
-$ dvc push
-```
-
-Using `sas_token`:
-
-```cli
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote account_name 'myaccount'
-$ dvc remote modify --local myremote sas_token 'mysecret'
-$ dvc push
-```
--->
+- `url` - modify the remote location ([scroll up](#microsoft-azure-blob-storage)
+  for details)

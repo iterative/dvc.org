@@ -43,8 +43,18 @@ service account or other ways to authenticate ([more info]).
 
 </admon>
 
-For custom authentication, you can set the following configuration parameters
-with `dvc remote modify --local`.
+For [service accounts] (a Google account associated to your GCP project instead
+of a user), you can set the path to the file that contains a [service account
+key] with `dvc remote modify --local`:
+
+[service accounts]: https://cloud.google.com/iam/docs/service-accounts
+[service account key]:
+  https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+
+```cli
+$ dvc remote modify --local myremote \
+                    credentialpath 'path/to/project-XXX.json'
+```
 
 <admon type="warn">
 
@@ -54,44 +64,12 @@ config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
 
 </admon>
 
-WIP
-
-<!--
-
-### Google Cloud Storage
-
-- `projectname` - override or provide a project name to use, if a default one is
-  not set.
-
-  ```cli
-  $ dvc remote modify myremote projectname myproject
-  ```
-
-**For service accounts:**
-
-A service account is a Google account associated with your GCP project, and not
-a specific user. Please refer to
-[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
-more information.
-
-- `credentialpath` - path to the file that contains the
-  [service account key](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account).
-  Make sure that the service account has read/write access (as needed) to the
-  file structure in the remote `url`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-          credentialpath '/home/.../project-XXX.json'
-  ```
-
 Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be
 set:
 
 ```cli
 $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 ```
-
--->
 
 ## Cloud versioning
 
@@ -124,7 +102,7 @@ Requires [Object versioning] enabled on the bucket.
   /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
 [worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
-## More configuration options
+## More configuration parameters
 
 <admon type="info">
 
@@ -132,5 +110,8 @@ See `dvc remote modify` for more command usage details.
 
 </admon>
 
-- `url` - used to modify the remote location ([scroll up](#google-cloud-storage)
-  for details)
+- `url` - modify the remote location ([scroll up](#google-cloud-storage) for
+  details)
+
+- `projectname` - override or provide a project name to use if a default one is
+  not set.

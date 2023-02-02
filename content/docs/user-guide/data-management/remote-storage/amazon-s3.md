@@ -157,7 +157,7 @@ Requires [S3 Versioning] enabled on the bucket.
   /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
 [worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
-## More configuration options
+## More configuration parameters
 
 <admon type="info">
 
@@ -165,8 +165,7 @@ See `dvc remote modify` for more command usage details.
 
 </admon>
 
-- `url` - used to modify the remote location ([scroll up](#amazon-s3) for
-  details)
+- `url` - modify the remote location ([scroll up](#amazon-s3) for details)
 
 - `region` - specific AWS region
 
