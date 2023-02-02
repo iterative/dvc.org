@@ -1,13 +1,14 @@
 # Amazon S3
 
+<!--
+## Amazon S3
+-->
+
 `dvc remote add` a (new) remote name and a valid [S3] URL:
 
 ```cli
 $ dvc remote add -d myremote s3://<bucket>/<key>
 ```
-
-- `bucket` - name of an [existing S3 bucket]
-- `key` - optional path to a [folder key] in your bucket
 
 <admon type="tip">
 
@@ -15,6 +16,9 @@ The `-d` flag (optional) makes this the `--default` remote for the
 <abbr>project</abbr>.
 
 </admon>
+
+- `<bucket>` - name of an [existing S3 bucket]
+- `<key>` - optional path to a [folder key] in your bucket
 
 [s3]: https://aws.amazon.com/s3/
 [existing s3 bucket]:
@@ -32,9 +36,9 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 </admon>
 
 DVC will try to authenticate using your [AWS CLI config] by default. This reads
-the default AWS credentials file (if available). To use customize
-authentication, you can set the following config params with
-`dvc remote modify --local`.
+the default AWS credentials file (if available). For custom authentication, you
+can set the following configuration parameters with `dvc remote modify --local`
+or use [environment variables](#environment-variables).
 
 [aws cli config]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
@@ -43,7 +47,7 @@ authentication, you can set the following config params with
 
 The `--local` flag is needed to write sensitive user info to a Git-ignored
 config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
-`dvc config` for more info.
+`dvc config`.
 
 </admon>
 
@@ -64,7 +68,7 @@ config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
 - `profile` - credentials [profile] name
 
   ```cli
-  $ dvc remote modify --local myremote profile 'myprofile'
+  $ dvc remote modify --local myremote profile 'mysecret'
   ```
 
 - `access_key_id` - AWS access key ID. May be used (along with
@@ -135,17 +139,19 @@ Requires [S3 Versioning] enabled on the bucket.
 [s3 versioning]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
 
-```cli
-$ dvc remote modify myremote version_aware true
-# or
-$ dvc remote modify myremote worktree true
-```
-
 - `version_aware` (`true` or `false`) - use [version-aware] cloud versioning
   features for this remote.
 
+  ```cli
+  $ dvc remote modify myremote version_aware true
+  ```
+
 - `worktree` (`true` or `false`) - use [worktree] cloud versioning features for
   this remote (implies `version_aware`).
+
+  ```cli
+  $ dvc remote modify myremote worktree true
+  ```
 
 [version-aware]:
   /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
@@ -158,6 +164,9 @@ $ dvc remote modify myremote worktree true
 See `dvc remote modify` for more command usage details.
 
 </admon>
+
+- `url` - used to modify the remote location ([scroll up](#amazon-s3) for
+  details)
 
 - `region` - specific AWS region
 
@@ -246,13 +255,12 @@ See `dvc remote modify` for more command usage details.
 
 ## Environment variables
 
-Authentication and other configuration can also be set via [`boto3` env vars].
-These are tried if no config params are set in the <abbr>project</abbr>.
-Example:
+Authentication and other config can also be set via [`boto3` env vars]. These
+are tried if no config params are set. Example:
 
 ```cli
 $ dvc remote add -d myremote s3://mybucket
-$ export AWS_ACCESS_KEY_ID='mysecret'
+$ export AWS_ACCESS_KEY_ID='myid'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
 $ dvc push
 ```

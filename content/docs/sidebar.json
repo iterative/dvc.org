@@ -127,7 +127,11 @@
           {
             "slug": "remote-storage",
             "source": "remote-storage/index.md",
-            "children": ["amazon-s3"]
+            "children": [
+              "amazon-s3",
+              "azure-blob-storage",
+              "google-cloud-storage"
+            ]
           },
           "cloud-versioning",
           "importing-external-data",
