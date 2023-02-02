@@ -12,7 +12,7 @@ The contents of the directory will depend on the methods used:
 | `Live.log_image()`        | `dvclive/plots/images`                                                     |
 | `Live.log_param()`        | `dvclive/params.yaml`                                                      |
 | `Live.log_sklearn_plot()` | `dvclive/plots/sklearn`                                                    |
-| `Live.make_dvcyaml()`     | `dvclive/dvcyaml`                                                          |
+| `Live.make_dvcyaml()`     | `dvclive/dvc.yaml`                                                          |
 | `Live.make_report()`      | `dvclive/report.{md/html}`                                                 |
 | `Live.make_summary()`     | `dvclive/metrics.json`                                                     |
 | `Live.next_step()`        | dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`  |
