@@ -7,13 +7,13 @@ data, hyperparameters, models, and metrics on a web UI.
 The following video illustrates how Iterative Studio works with data from your
 ML projects and experiments.
 
+https://www.youtube.com/watch?v=5xM5az78Lrg
+
 <admon>
 
 Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
 
 </admon>
-
-https://www.youtube.com/watch?v=5xM5az78Lrg
 
 ## How to save your project data
 
