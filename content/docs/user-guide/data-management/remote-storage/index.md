@@ -107,6 +107,48 @@ team.
 - HDFS & WebHDFS
 - HTTP
 - WebDAV
-- Local directories, mounted drives; Like `rsync`
-  > Includes network resources e.g. network-attached storage (NAS) or other
-  > external devices
+
+## File systems (local remotes)
+
+<admon type="tip">
+
+Not related to the `--local` option of `dvc remote` and `dvc config`!
+
+</admon>
+
+You can also use system directories, mounted drives, network resources e.g.
+network-attached storage (NAS), and other external devices as storage. We call
+all these "local remotes".
+
+<admon type="info">
+
+Here, the word "local" refers to where the storage is found: typically another
+directory in the same file system. And "remote" is how we call storage for
+<abbr>DVC projects</abbr>.
+
+</admon>
+
+Using an absolute path (recommended because it's saved as-is in DVC config):
+
+```cli
+$ dvc remote add -d myremote /tmp/dvcstore
+```
+
+```ini
+# .dvc/config
+['remote "myremote"']
+    url = /tmp/dvcstore
+```
+
+When using a relative path, it will be saved **relative to the config file
+location**, but resolved against the current working directory.
+
+```cli
+$ dvc remote add -d myremote ../dvcstore
+```
+
+```ini
+# .dvc/config
+['remote "myremote"']
+    url = ../../dvcstore
+```

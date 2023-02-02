@@ -325,48 +325,6 @@ $ dvc remote add -d myremote \
 
 </details>
 
-<details>
-
-### local remote
-
-A "local remote" is a directory in the machine's file system. Not to be confused
-with the `--local` option of `dvc remote` (and other config) commands!
-
-> While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the type of location where the storage is: another directory in the
-> same file system. "Remote" is how we call storage for <abbr>DVC
-> projects</abbr>. It's essentially a local backup for data tracked by DVC.
-
-Using an absolute path (recommended):
-
-```cli
-$ dvc remote add -d myremote /tmp/dvcstore
-$ cat .dvc/config
-...
-['remote "myremote"']
-    url = /tmp/dvcstore
-...
-```
-
-> Note that the absolute path `/tmp/dvcstore` is saved as is.
-
-Using a relative path. It will be resolved against the current working
-directory, but saved **relative to the config file location**:
-
-```cli
-$ dvc remote add -d myremote ../dvcstore
-$ cat .dvc/config
-...
-['remote "myremote"']
-    url = ../../dvcstore
-...
-```
-
-> Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
-> resulting in `../../dvcstore`.
-
-</details>
-
 ## Example: Customize an S3 remote
 
 Add an Amazon S3 remote as the _default_ (via the `-d` option), and modify its
