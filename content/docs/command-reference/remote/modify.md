@@ -986,34 +986,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 </details>
 
-## Example: Customize an S3 remote
-
-Let's first set up a _default_ S3 remote.
-
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-Setting 'myremote' as a default remote.
-```
-
-Modify its access profile:
-
-```cli
-$ dvc remote modify myremote profile myprofile
-```
-
-Now the project config file should look like this:
-
-```ini
-['remote "myremote"']
-    url = s3://mybucket/path
-    profile = myuser
-[core]
-    remote = myremote
-```
-
 ## Example: Some Azure authentication methods
 
 Using a default identity (e.g. credentials set by `az cli`):
