@@ -94,7 +94,7 @@ live.next_step()
 See `Live.next_step()`.
 
 Under the hood, `Live.next_step()` calls `Live.make_summary()`,
-`Live.make_dvcyaml`, and `Live.make_report()`.
+`Live.make_dvcyaml()`, and `Live.make_report()`.
 
 If you want to decouple the `step` update from the rest of the calls, you can
 manually modify the `Live.step` property and call `Live.make_summary()` / /
