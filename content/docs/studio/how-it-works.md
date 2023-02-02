@@ -1,10 +1,8 @@
 # How Iterative Studio Works
 
 [Iterative Studio](https://studio.iterative.ai/) works very closely with your
-Git ecosystem. It parses the metadata found in your ML project repositories to
-present organized data, hyperparameters, models, and metrics on a web UI. It
-also parses and displays live metrics and plots sent by [DVCLive]; these don't
-need to be pushed to the Git repositories.
+Git ecosystem. It parses the metadata from your ML project to present organized
+data, hyperparameters, models, and metrics on a web UI.
 
 The following video illustrates how Iterative Studio works with data from your
 ML projects and experiments.
