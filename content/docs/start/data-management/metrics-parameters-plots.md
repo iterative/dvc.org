@@ -140,6 +140,7 @@ plots][plots files] in `dvc.yaml`:
 ```yaml
 plots:
   - ROC:
+      template: simple
       x: fpr
       y:
         eval/live/plots/sklearn/roc/train.json: tpr
@@ -151,6 +152,7 @@ plots:
         eval/live/plots/sklearn/cm/train.json: predicted
         eval/live/plots/sklearn/cm/test.json: predicted
   - Precision-Recall:
+      template: simple
       x: recall
       y:
         eval/prc/train.json: precision
