@@ -1219,7 +1219,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
   <admon type="info">
 
-  `user/custom_auth_header`, `password` auth is incompatible with `token` auth.
+  Auth based on `user` or `custom_auth_header` (with `password`) is incompatible
+  with `token` auth.
 
   </admon>
 
