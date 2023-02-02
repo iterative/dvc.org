@@ -7,8 +7,7 @@ enable important features such as [data versioning] and [quick experimentation]
 (recommended).
 
 [data versioning]: /doc/use-cases/versioning-data-and-models
-[quick experimentation]:
-  /doc/user-guide/experiment-management/experiments-overview
+[quick experimentation]: /doc/user-guide/experiment-management
 
 </admon>
 

@@ -127,9 +127,10 @@ export const HeroSlides = () => {
         {slides.map(({ title, description }, i) => {
           const active = currentIndex === i
           return (
-            <li key={i}>
+            <li className={cn('md:mr-3')} key={i}>
               <button
                 className={cn(
+                  'w-full',
                   'text-left',
                   'px-3',
                   'py-1',
@@ -139,7 +140,12 @@ export const HeroSlides = () => {
                   'flex-nowrap',
                   'justify-center',
                   'md:pl-4',
-                  active && ['border-l-2', 'border-sky-500']
+                  'md:py-2',
+                  'border-l-2',
+                  'ease-in-out',
+                  'duration-300',
+                  'hover:bg-gray-200',
+                  active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
                   changeCurrentIndex(i)
@@ -148,11 +154,10 @@ export const HeroSlides = () => {
                 <h2 className={cn('text-2xl', 'font-medium')}>{title}</h2>
                 <p
                   className={cn(
-                    'mt-2',
                     'ease-in-out',
                     'duration-300',
                     'overflow-hidden',
-                    i === currentIndex ? 'max-h-12' : 'max-h-0'
+                    i === currentIndex ? ['max-h-12', 'mt-2'] : 'max-h-0'
                   )}
                 >
                   {description}

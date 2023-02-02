@@ -8,7 +8,7 @@ A set of commands to manage the [DVC experiments] task queue:
 [remove](/doc/command-reference/queue/remove),
 [kill](/doc/command-reference/queue/kill)
 
-[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiments]: /doc/user-guide/experiment-management
 
 ## Synopsis
 

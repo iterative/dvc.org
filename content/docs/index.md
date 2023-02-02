@@ -1,17 +1,16 @@
 # DVC Documentation
 
-**Data Version Control** is a [data versioning], ML [workflow automation], and
-[experiment management] tool that takes advantage of the existing software
-engineering toolset you're already familiar with (Git, your IDE, CI/CD, etc.).
-**DVC** helps data science and machine learning teams manage large datasets,
-make projects reproducible, and better collaborate.
+<admon type="info">
 
-**DVC** is available for [Visual Studio Code], any [system terminal], and as a
-[Python library].
+DVC is a tool for data science that takes advantage of existing software
+engineering toolset. It helps machine learning teams manage large datasets, make
+projects reproducible, and collaborate better.
 
-[data versioning]: /doc/start/data-management/data-versioning
-[workflow automation]: /doc/user-guide/pipelines
-[experiment management]: /doc/user-guide/experiment-management
+</admon>
+
+**DVC** can be installed on [Visual Studio Code], any [system terminal], and
+used as a [Python library].
+
 [visual studio code]: /doc/vs-code-extension
 [system terminal]: /doc/install
 [python library]: /doc/api-reference
@@ -19,11 +18,11 @@ make projects reproducible, and better collaborate.
 <cards>
 
   <card href="/doc/start" heading="Get Started">
-    A step-by-step introduction into basic DVC features
+    A step-by-step introduction to basic DVC features
   </card>
 
   <card href="/doc/user-guide" heading="User Guide">
-    Study the detailed inner-workings of DVC in its user guide.
+    Learn more details about the principles, features, and mechanisms of DVC.
   </card>
 
   <card href="/doc/use-cases" heading="Use Cases">
@@ -31,7 +30,7 @@ make projects reproducible, and better collaborate.
   </card>
 
   <card href="/doc/command-reference" heading="Command Reference">
-    See all of DVC's commands.
+    Manuals for all of DVC's commands
   </card>
 
 </cards>

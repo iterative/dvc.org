@@ -10,6 +10,8 @@ import Prism from 'prismjs'
 
 import '@dvcorg/gatsby-theme-iterative/config/prismjs/dvc'
 
+import yaml from 'js-yaml'
+
 const processSplitTerminalLine = (
   line: string,
   addedPause: string | undefined
@@ -45,9 +47,13 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
     createNodeId,
     actions: { createNode, createParentChildLink }
   } = api
-  if (node.internal.type === 'File' && node.sourceInstanceName === 'data') {
+  if (
+    node.internal.type === 'File' &&
+    node.sourceInstanceName === 'data' &&
+    node.relativePath === 'home.yml'
+  ) {
     const fileContent = await loadNodeContent(node)
-    const homeSlides = JSON.parse(fileContent)
+    const homeSlides = yaml.load(fileContent)
     const processedSlides = homeSlides.map(item => {
       const { terminal } = item
       return {

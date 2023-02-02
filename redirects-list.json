@@ -60,8 +60,9 @@
   "^/doc/use-cases/shared-development-server$                                             /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
   "^/doc/use-cases/data-registries$                                                       /doc/use-cases/data-registry",
 
-  "^/doc/user-guide/what-is-dvc$                                                          /doc/user-guide/overview 302",
-  "^/doc/user-guide/related-technologies$                                                 /doc/user-guide/overview 302",
+  "^/doc/user-guide/what-is-dvc$                                                          /doc/user-guide",
+  "^/doc/user-guide/related-technologies$                                                 /doc/user-guide",
+  "^/doc/user-guide/overview$                                                             /doc/user-guide",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/resolve-merge-conflicts",
@@ -81,6 +82,7 @@
   "^/doc/user-guide/running-dvc-on-windows$                                               /doc/user-guide/how-to/run-dvc-on-windows 302",
   "^/doc/user-guide/setup-google-drive-remote$                                            /doc/user-guide/how-to/setup-google-drive-remote 302",
   "^/doc/user-guide/visualizing-plots$                                                    /doc/user-guide/experiment-management/visualizing-plots 302",
+  "^/doc/user-guide/experiment-management/experiments-overview$                           /doc/user-guide/experiment-management 302",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
 
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
