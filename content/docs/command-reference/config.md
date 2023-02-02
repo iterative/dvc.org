@@ -250,9 +250,8 @@ location. A [DVC remote](/doc/command-reference/remote) name is used (instead of
 the URL) because often it's necessary to configure authentication or other
 connection settings, and configuring a remote is the way that can be done.
 
-- `cache.local` - name of a _local remote_ to use as external cache (refer to
-  `dvc remote` for more info. on "local remotes".) This will overwrite the value
-  in `cache.dir` (see `dvc cache dir`).
+- `cache.local` - name of a [local remote] to use as external cache. This will
+  overwrite the value in `cache.dir` (see `dvc cache dir`).
 
 - `cache.s3` - name of an Amazon S3 remote to use as external cache.
 
@@ -265,10 +264,17 @@ connection settings, and configuring a remote is the way that can be done.
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
   external cache.
 
-> ⚠️ Avoid using the same [remote storage](/doc/command-reference/remote) used
-> for `dvc push` and `dvc pull` as external cache, because it may cause file
-> hash overlaps: the hash of an external <abbr>output</abbr> could collide with
-> that of a local file with different content.
+  <admon type="warn">
+
+  Avoid using the same [remote storage](/doc/command-reference/remote) used for
+  `dvc push` and `dvc pull` as external cache, because it may cause file hash
+  overlaps: the hash of an external <abbr>output</abbr> could collide with that
+  of a local file with different content.
+
+  </admon>
+
+[local remote]:
+  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
 
 ### exp
 

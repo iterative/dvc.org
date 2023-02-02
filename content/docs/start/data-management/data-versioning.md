@@ -141,12 +141,10 @@ $ git commit .dvc\config -m "Configure local remote"
 </tab>
 </toggle>
 
-<admon type="info">
+<admon type="tip">
 
-While the term "local remote" may seem contradictory, it doesn't have to be. The
-"local" part refers to the type of location: another directory in the file
-system. "Remote" is what we call storage for <abbr>DVC projects</abbr>. It's
-essentially a local data backup.
+Learn more about
+[local remotes](/doc/user-guide/data-management/remote-storage#file-systems-local-remotes).
 
 </admon>
 

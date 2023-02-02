@@ -188,15 +188,8 @@
         "slug": "add"
       },
       {
-        "label": "cache",
-        "slug": "cache",
-        "source": "cache/index.md",
-        "children": [
-          {
-            "label": "cache dir",
-            "slug": "dir"
-          }
-        ]
+        "label": "cache dir",
+        "slug": "cache/dir"
       },
       {
         "label": "check-ignore",
@@ -219,15 +212,8 @@
         "slug": "dag"
       },
       {
-        "label": "data",
-        "slug": "data",
-        "source": false,
-        "children": [
-          {
-            "label": "data status",
-            "slug": "status"
-          }
-        ]
+        "label": "data status",
+        "slug": "data/status"
       },
       {
         "label": "destroy",

@@ -934,16 +934,27 @@ by HDFS. Read more about by expanding the WebHDFS section in
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
 
-- `password` - password for WebDAV server, can be empty in case of using `token`
-  authentication.
+- `custom_auth_header` - HTTP header field name to use for authentication. Value
+  is set via `password`.
+
+  ```cli
+  $ dvc remote modify --local myremote \
+                      custom_auth_header 'My-Header'
+  ```
+
+- `password` - password for WebDAV server, combined either with `user` or
+  `custom_auth_header`. Leave empty for `token` authentication.
 
   ```cli
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> Note that `user/password` and `token` authentication are incompatible. You
-> should authenticate against your WebDAV remote by either `user/password` or
-> `token`.
+  <admon type="info">
+
+  Auth based on `user` or `custom_auth_header` (with `password`) is incompatible
+  with `token` auth.
+
+  </admon>
 
 - `ask_password` - ask each time for the password to use for `user/password`
   authentication. This has no effect if `password` or `token` are set.
@@ -985,34 +996,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 </details>
-
-## Example: Customize an S3 remote
-
-Let's first set up a _default_ S3 remote.
-
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-Setting 'myremote' as a default remote.
-```
-
-Modify its access profile:
-
-```cli
-$ dvc remote modify myremote profile myprofile
-```
-
-Now the project config file should look like this:
-
-```ini
-['remote "myremote"']
-    url = s3://mybucket/path
-    profile = myuser
-[core]
-    remote = myremote
-```
 
 ## Example: Some Azure authentication methods
 
