@@ -37,7 +37,7 @@ job:
     variable when submitting the training job.
 
     ```
-    $ STUDIO_TOKEN=**** dvc exp run
+    $ export STUDIO_TOKEN=**** dvc exp run
     ```
 
     If you are running the experiment as part of a CI job, a secure way to
