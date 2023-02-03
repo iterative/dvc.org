@@ -77,8 +77,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 - `save_dvc_exp` - If `True`, DVCLive will create a new
   [DVC experiment](/doc/dvclive/how-it-works#track-the-results) as part of
-  `Live.end()`. Ignored if your repo already has a
-  [DVC pipeline](/doc/user-guide/pipelines). Defaults to `False`.
+  `Live.end()`. Defaults to `False`.
 
 - `dvcyaml` - If `True`, DVCLive will write
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
