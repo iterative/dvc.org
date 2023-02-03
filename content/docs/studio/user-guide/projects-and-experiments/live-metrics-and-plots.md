@@ -63,9 +63,9 @@ job:
     `STUDIO_REPO_URL` should be set to the following value:
 
     - If you are using GitHub.com, GitLab.com or Bitbucket.org, set it to
-      `github:iterative/example-get-started`,
-      `gitlab:iterative/example-get-started`,
-      `bitbucket:iterative/example-get-started` respectively.
+      `git@github.com:iterative/example-get-started.git`,
+      `git@gitlab.com:iterative/example-get-started.git`,
+      `git@bitbucket.org:iterative/example-get-started.git` respectively.
     - If you are using a custom (self-hosted) GitLab server, set it to
       `custom-gitlab:iterative/example-get-started`.
     - If you are using a GitHub enterprise server, set it to
