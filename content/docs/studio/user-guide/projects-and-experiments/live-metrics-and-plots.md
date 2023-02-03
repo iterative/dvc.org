@@ -55,14 +55,17 @@ job:
     ...
     ```
 
-2.  `STUDIO_REPO_URL`: If you are running the experiment locally, or your
-    repository is on github.com, gitlab.com or bitbucket.org, you do not need to
-    set this environment variable. But if you are using some other Git provider,
-    then you should set the repository url in this format:
+2.  `STUDIO_REPO_URL`: If you are running the experiment locally, you do not
+    need to set this environment variable. But if you are running it in a CI
+    job, then you should set the repository url in this format:
     `{remote-type}:{namespace}/{repo-name}`. For example, for the
     `example-get-started` repository in the `iterative` namespace,
     `STUDIO_REPO_URL` should be set to the following value:
 
+    - If you are using GitHub.com, GitLab.com or Bitbucket.org, set it to
+      `git@github.com:iterative/example-get-started.git`,
+      `git@gitlab.com:iterative/example-get-started.git`,
+      `git@bitbucket.org:iterative/example-get-started.git` respectively.
     - If you are using a custom (self-hosted) GitLab server, set it to
       `custom-gitlab:iterative/example-get-started`.
     - If you are using a GitHub enterprise server, set it to
