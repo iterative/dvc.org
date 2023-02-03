@@ -102,6 +102,14 @@ commit. Updates to the live metrics are highlighted in orange.
 
 ![](https://static.iterative.ai/img/studio/live_metrics.gif)
 
+<admon>
+
+The live metrics row for an experiment is displayed only if its parent Git
+commit is present in the project table. So, before you run the experiment, make
+sure that its parent commit is pushed to Git and shown in the project table.
+
+</admon>
+
 Updates to the live metrics are highlighted in orange in the
 [compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
 as well.
