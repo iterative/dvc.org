@@ -23,7 +23,6 @@ Iterative Studio.
 - [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
-- [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 
 **Model registry**
 
@@ -243,17 +242,6 @@ check that:
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
-
-## Project does not display live metrics and plots
-
-Confirm that you are correctly following the
-[procedure to send live metrics and plots](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
-to Iterative Studio.
-
-Also note that live metrics and plots for an experiment are displayed only if
-its parent Git commit is present in the project table. So, before you run the
-experiment, make sure that its parent commit is pushed to Git and shown in the
-project table.
 
 ## I cannot find my desired Git repository in the form to add a model
 
