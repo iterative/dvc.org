@@ -105,8 +105,8 @@ commit. Updates to the live metrics are highlighted in orange.
 <admon>
 
 The live metrics row for an experiment is displayed only if its parent Git
-commit is present in the project table. So, before you run the experiment, make
-sure that its parent commit is pushed to Git and shown in the project table.
+commit is shown in the project table. So before you run the experiment, make
+sure that its parent commit is pushed to Git.
 
 </admon>
 
