@@ -222,11 +222,11 @@ featurize:
 
 ### ⚙️ Expand to recall how it was generated.
 
-The `featurize` stage was created with this `dvc run` command. Notice the
+The `featurize` stage was created with this `dvc stage add` command. Notice the
 argument sent to the `-p` option (short for `--params`):
 
 ```cli
-$ dvc run -n featurize \
+$ dvc stage add -n featurize \
           -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \
