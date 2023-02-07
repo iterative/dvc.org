@@ -284,16 +284,13 @@ the remote storage.
   /doc/user-guide/data-management/cloud-versioning#version-aware-remotes
 
 ```cli
-$ dvc remote add --force --default r1 s3://mybucket
+$ dvc remote add -d versioned_store s3://mybucket
+$ dvc remote modify versioned_store version_aware true
 
-$ dvc remote modify r1 version_aware true
-```
-
-Push to the `version-aware` remote:
-
-```cli
 $ dvc push
 ```
+
+> See also `dvc remote add` and `dvc remote modify`.
 
 Now let's look at what was pushed to the remote. Unlike the [example above], the
 version-aware remote looks similar to the data in your workspace and is easy to
