@@ -347,14 +347,14 @@ stages:
         md5: b656f1a8273d0c541340cb129fd5d5a9
         relpath: test.tsv
         cloud:
-          r1:
+          versioned_store:
             etag: b656f1a8273d0c541340cb129fd5d5a9
             version_id: T6rFr7NSHkL3v9tGStO7GTwsVaIFl42T
       - size: 6728772
         md5: 9ca281786366acca17632c27c5c5cc75
         relpath: train.tsv
         cloud:
-          r1:
+          versioned_store:
             etag: 9ca281786366acca17632c27c5c5cc75
             version_id: XaYsHQHWK219n5MoCRe.Rr7LeNbbder_
 ```
