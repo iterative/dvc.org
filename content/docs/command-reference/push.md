@@ -331,30 +331,3 @@ $ aws s3api list-object-versions --bucket mybucket
         }
     ]
 ```
-
-Finally, let's look at the corresponding entries in `dvc.lock`. The `version_id`
-of each file from above is recorded, so that they can be recovered even if
-overwritten by a new version.
-
-```yaml
-stages:
-  prepare:
-    ...
-    outs:
-    - path: data/prepared
-      files:
-      - size: 1708591
-        md5: b656f1a8273d0c541340cb129fd5d5a9
-        relpath: test.tsv
-        cloud:
-          versioned_store:
-            etag: b656f1a8273d0c541340cb129fd5d5a9
-            version_id: T6rFr7NSHkL3v9tGStO7GTwsVaIFl42T
-      - size: 6728772
-        md5: 9ca281786366acca17632c27c5c5cc75
-        relpath: train.tsv
-        cloud:
-          versioned_store:
-            etag: 9ca281786366acca17632c27c5c5cc75
-            version_id: XaYsHQHWK219n5MoCRe.Rr7LeNbbder_
-```
