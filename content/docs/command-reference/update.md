@@ -75,7 +75,7 @@ The `--rev`, `--no-download` and `--to-remote` options are not compatible.
 - `--no-download` - Update data checksums in the `.dvc` file (`md5`, `etag`, or
   `checksum` fields) without actually downloading the latest data. See
   `dvc import-url --no-download` or `dvc import --no-download` for more context.
-  Cannot be used with `--to-remote` or [worktree updates](#worktree-update).
+  Cannot be used with `--to-remote`.
 
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and
   [transfer] the data directly to remote storage (the default one unless one is
