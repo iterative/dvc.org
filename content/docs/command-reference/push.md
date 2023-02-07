@@ -275,13 +275,13 @@ Cache and remote 'r1' are in sync.
 And running `dvc status --cloud`, DVC verifies that indeed there are no more
 files to push to remote storage.
 
-## Example: [Version-aware] remote for readable storage
+## Example: Version-aware remote for readable storage
+
+Let's set up a [version-aware] remote, which uses cloud versioning to organize
+the remote storage.
 
 [version-aware]:
   /doc/user-guide/data-management/cloud-versioning#version-aware-remotes
-
-Let's set up a `version-aware` remote, which uses cloud versioning to organize
-the remote storage.
 
 ```cli
 $ dvc remote add --force --default r1 s3://mybucket
