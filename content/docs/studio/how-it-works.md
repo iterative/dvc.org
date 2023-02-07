@@ -75,5 +75,5 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [run new experiments]:
-  (/doc/studio/user-guide/projects-and-experiments/run-experiments)
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
 [dvclive]: /doc/dvclive
