@@ -458,10 +458,6 @@
         "slug": "root"
       },
       {
-        "label": "run",
-        "slug": "run"
-      },
-      {
         "label": "stage",
         "slug": "stage",
         "source": "stage/index.md",
