@@ -1,5 +1,4 @@
 name: 'Linting and Testing'
-run-name: 'Lint and Test'
 
 on: push
 
@@ -25,3 +24,5 @@ jobs:
         run: yarn check-lint
       - name: Check TypeScript compilation
         run: yarn lint-ts
+      - name: Run tests
+        run: yarn test
