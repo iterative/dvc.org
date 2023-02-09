@@ -120,8 +120,12 @@ set of wrapper commands for your convenience:
 We use linters (e.g. [ESLint](https://eslint.org/)) to check source code style
 and detect different errors:
 
-- `yarn lint-ts` - lint source code files (`.ts`, `.js`, `tsx`, etc).
-- `yarn lint-css` - lint `.css` files.
+- `yarn lint` - run `eslint` on all compatible source code files: `js`, `jsx`,
+  `ts`, `tsx`, `json`.
+- `yarn lint-ts` - uses `tsc` to attempt to compile the project, ensuring all
+  TypeScript types are properly formatted.
+- `yarn lint-css` - lint `.css` files with `stylelint`, which covers more than
+  `prettier` does.
 
 > Note that you can always use the formatter or linter directly (e.g.
 > `yarn eslint <file>` or `yarn prettier --check <file>`).

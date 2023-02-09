@@ -2,6 +2,10 @@ name: 'Linting and Testing'
 
 on: push
 
+concurrency:
+  group: lint-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   run-tests:
     name: 'Run Tests'
@@ -19,9 +23,9 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Check with Prettier
-        run: yarn check-format
+        run: yarn format-check
       - name: Lint JS with ESLint
-        run: yarn check-lint
+        run: yarn lint
       - name: Lint CSS with Stylelint
         run: yarn lint-css
       - name: Check TypeScript compilation
