@@ -109,23 +109,28 @@ If you change source code files, run tests:
 We use [Prettier](https://prettier.io/) to format our source code. Below is a
 set of wrapper commands for your convenience:
 
-- `yarn format-all` - Run `prettier --write` on all files to automatically fix
-  problems.
+- `yarn format-fix` - Run `prettier --write` on all files to find formatting
+  issues and automatically fix as many as possible.
 - `yarn format-check` - Run `prettier --check` on all files, exiting with an
   error if any issues are found. This is particularly useful for CI.
-- `yarn format-staged` - legacy alias for `lint-staged`.
-- `yarn format <file>` - run this script `yarn format <file-name>` to format a
-  specific file.
+- `yarn format-staged` - alias for `lint-staged`, which will run the appropriate
+  linters on all files staged in your copy of the git repository.
+- `yarn format <file>` - Run `prettier` on a specific file.
 
 We use linters (e.g. [ESLint](https://eslint.org/)) to check source code style
 and detect different errors:
 
 - `yarn lint` - run `eslint` on all compatible source code files: `js`, `jsx`,
   `ts`, `tsx`, `json`.
+- `yarn lint-fix` - use `eslint --fix` to automatically fix as many issues as
+  possible.
 - `yarn lint-ts` - uses `tsc` to attempt to compile the project, ensuring all
   TypeScript types are properly formatted.
 - `yarn lint-css` - lint `.css` files with `stylelint`, which covers more than
   `prettier` does alone.
+
+To use the `fix` variant of all of these tools in one command, use
+`yarn fix-all`.
 
 > Note that you can always use the formatter or linter directly (e.g.
 > `yarn eslint <file>` or `yarn prettier --check <file>`).
