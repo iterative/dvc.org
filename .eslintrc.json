@@ -48,15 +48,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "src/utils/shared/*.?(js|ts)",
-        "src/gatsby/**/*.js",
-        "config/**/*.js",
-        "plugins/**/*.js",
-        "gatsby-*.js",
-        "postcss.config.js",
-        "tailwind.config.js"
-      ],
+      "files": "**/*.js",
       "rules": {
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/explicit-function-return-type": "off"

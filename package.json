@@ -17,7 +17,7 @@
     "check-lint": "eslint \"**/*.{js,jsx,ts,tsx,json}\"",
     "format-check": "prettier --check '**/*.{js,jsx,md,tsx,ts,json}'",
     "format-all": "prettier --write '**/*.{js,jsx,md,tsx,ts,json}'",
-    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
+    "lint-ts": "tsc --noEmit --skipLibCheck",
     "lint-css": "stylelint \"src/**/*.css\"",
     "link-check": "repo-link-check -c config/link-check/config.yml",
     "link-check-diff": "repo-link-check -c config/link-check/config.yml -d main",
