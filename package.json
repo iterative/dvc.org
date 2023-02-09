@@ -21,7 +21,7 @@
     "lint-css": "stylelint \"src/**/*.css\"",
     "lint-css-fix": "stylelint --fix \"src/**/*.css\"",
     "lint-ts": "tsc --noEmit --skipLibCheck",
-    "fix-all": "yarn format-fix && yarn lint-fix && yarn lint-css-fix && yarn lint-ts",
+    "fix-all": "yarn format-all && yarn lint-fix && yarn lint-css-fix && yarn lint-ts",
     "link-check": "repo-link-check -c config/link-check/config.yml",
     "link-check-diff": "repo-link-check -c config/link-check/config.yml -d main",
     "link-check-dev-server": "repo-link-check -c config/link-check/config.yml -r http://localhost:3000",
