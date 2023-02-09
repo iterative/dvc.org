@@ -20,8 +20,10 @@ jobs:
         run: yarn
       - name: Check with Prettier
         run: yarn check-format
-      - name: Check with ESLint
+      - name: Lint JS with ESLint
         run: yarn check-lint
+      - name: Lint CSS with Stylelint
+        run: yarn lint-css
       - name: Check TypeScript compilation
         run: yarn lint-ts
       - name: Run tests

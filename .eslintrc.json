@@ -2,10 +2,10 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:json/recommended"
+    "plugin:json/recommended",
+    "prettier"
   ],
   "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
