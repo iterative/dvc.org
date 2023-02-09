@@ -37,7 +37,12 @@
         "leadingUnderscore": "allow"
       }
     ],
-    "no-tabs": "error",
+    "no-tabs": [
+      "error",
+      {
+        "allowIndentationTabs": true
+      }
+    ],
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "error"
   },
