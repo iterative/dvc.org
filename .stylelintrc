@@ -24,12 +24,6 @@
       }
     ],
     "selector-class-pattern": null,
-    "keyframes-name-pattern": null,
-    "function-no-unknown": [
-      true,
-      {
-        "ignoreFunctions": ["a", "color-mod"]
-      }
-    ]
+    "keyframes-name-pattern": null
   }
 }
