@@ -99,8 +99,11 @@ To build the project and run it:
 - `yarn build` - build assets in the `public` directory.
 - `yarn start` - run production static server over the `public` directory.
 
-> All the tests, formatting, and linters below will be enforced automatically
-> upon [submitting PRs](#submitting-changes).
+> All the tests, formatting, and linters below will be automatically enforced
+> before every commit with [Husky](https://typicode.github.io/husky) and
+> [lint-staged](https://github.com/okonet/lint-staged) before each commit, as
+> well as with [GitHub Actions](https://github.com/features/actions) upon
+> [submitting PRs](#submitting-changes).
 
 If you change source code files, run tests:
 
@@ -109,11 +112,11 @@ If you change source code files, run tests:
 We use [Prettier](https://prettier.io/) to format our source code. Below is a
 set of wrapper commands for your convenience:
 
-- `yarn format-fix` - Run `prettier --write` on all files to find formatting
+- `yarn format-all` - Run `prettier --write` on all files to find formatting
   issues and automatically fix as many as possible.
 - `yarn format-check` - Run `prettier --check` on all files, exiting with an
   error if any issues are found. This is particularly useful for CI.
-- `yarn format-staged` - alias for `lint-staged`, which will run the appropriate
+- `yarn format-staged` - alias for `lint-staged`, which will run all applicable
   linters on all files staged in your copy of the git repository.
 - `yarn format <file>` - Run `prettier` on a specific file.
 
