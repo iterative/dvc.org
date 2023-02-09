@@ -51,9 +51,7 @@
       "files": [
         "src/utils/shared/*.?(js|ts)",
         "src/gatsby/**/*.js",
-        "scripts/**/*.js",
         "config/**/*.js",
-        "src/server/**/*.js",
         "plugins/**/*.js",
         "gatsby-*.js",
         "postcss.config.js",
