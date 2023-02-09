@@ -11,30 +11,24 @@ jobs:
     name: 'Run Tests'
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Set up Node 
+      - name: Install Node.js and use yarn
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-          cache: 'npm'
-          cache-dependency-path: '.github/workflows/lint-and-test.yml'
-
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn
       - name: Check with Prettier
-        run: npx prettier --check "**/*.{js,jsx,md,tsx,ts,json,css}"
-
+        run: yarn format-check
       - name: Lint JS with ESLint
-        run: npx eslint "**/*.{js,jsx,ts,tsx,json}"
-
+        run: yarn lint
       - name: Lint CSS with Stylelint
-        run: npx stylelint "src/**/*.css"
-
+        run: yarn lint-css
       - name: Check TypeScript compilation
-        run: npx tsc --noEmit --skipLibCheck
-
+        run: yarn lint-ts
       - name: Run tests
-        run: npx jest
+        run: yarn test
