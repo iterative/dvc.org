@@ -1,0 +1,27 @@
+name: 'Linting and Testing'
+run-name: 'Lint and Test'
+
+on: push
+
+jobs:
+  run-tests:
+    name: 'Run Tests'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install Node.js and use yarn
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: yarn
+      - name: Check with Prettier
+        run: yarn check-format
+      - name: Check with ESLint
+        run: yarn check-lint
+      - name: Check TypeScript compilation
+        run: yarn lint-ts
