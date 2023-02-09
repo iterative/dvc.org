@@ -36,7 +36,7 @@ job:
     If you are running the experiment locally, you can set this environment
     variable when submitting the training job.
 
-    ```
+    ```cli
     $ export STUDIO_TOKEN=**** dvc exp run
     ```
 
