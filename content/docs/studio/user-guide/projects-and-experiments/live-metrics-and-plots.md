@@ -91,6 +91,13 @@ with Live(save_dvc_exp=True) as live:
 
 <admon>
 
+Using `save_dvc_exp=True` will ensure that
+[the results get saved as a DVC experiment even if you do not have a DVC pipeline](/doc/dvclive/how-it-works#track-the-results).
+
+</admon>
+
+<admon>
+
 DVCLive signals the end of the experiment using `live.end()`. Using
 `with Live() as live:` or one of the DVCLive integrations for
 [ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) ensures that
