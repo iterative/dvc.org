@@ -11,6 +11,7 @@ class Live:
         resume: bool = False,
         report: Optional[str] = "auto",
         save_dvc_exp: bool = False,
+        dvcyaml: bool = True,
     ):
 ```
 
@@ -76,8 +77,21 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 - `save_dvc_exp` - If `True`, DVCLive will create a new
   [DVC experiment](/doc/dvclive/how-it-works#track-the-results) as part of
-  `Live.end()`. Ignored if your repo already has a
-  [DVC pipeline](/doc/user-guide/pipelines). Defaults to `False`.
+  `Live.end()`. Defaults to `False`.
+
+- `dvcyaml` - If `True`, DVCLive will write
+  [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
+  metrics, plots, and parameters to
+  [`Live.dvc_file`](/doc/dvclive/api-reference/live#properties) as part of
+  `Live.next_step()` and `Live.end()`. See `Live.make_dvcyaml()`. Defaults to
+  `True`.
+
+<admon type="tip">
+
+If you are already tracking DVCLive metrics, plots, and parameters in your own
+`dvc.yaml` file, set `dvcyaml=False` to avoid duplication.
+
+</admon>
 
 ## Methods
 
@@ -86,6 +100,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `Live.log_param()`
 - `Live.log_params()`
 - `Live.log_sklearn_plot()`
+- `Live.make_dvcyaml()`
 - `Live.make_report()`
 - `Live.make_summary()`
 - `Live.next_step()`

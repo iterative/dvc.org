@@ -34,8 +34,8 @@ model.fit(
 
 ## Description
 
-By default, `Live.end()` will call `Live.make_summary()` and
-`Live.make_report()`.
+By default, `Live.end()` will call `Live.make_summary()`, `Live.make_dvcyaml()`,
+and `Live.make_report()`.
 
 If `save_dvc_exp=True` has been passed to `Live`, it will
 [save a new DVC experiment](/doc/dvclive/how-it-works#track-the-results) and

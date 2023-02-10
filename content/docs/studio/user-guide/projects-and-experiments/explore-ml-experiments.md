@@ -38,8 +38,8 @@ corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
 [New experiments submitted from Iterative Studio][run-experiments] appear as
 experiment commits, which are eventually pushed to Git. Any live metrics that
-you send using [DVCLive] are displayed in a special experiment row next to the
-corresponding Git commit. More details of how live metrics are displayed can be
+you send using [DVCLive] are displayed in a special experiment row nested under
+the parent Git commit. More details of how live metrics are displayed can be
 found
 [here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 

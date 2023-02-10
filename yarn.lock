@@ -8522,9 +8522,9 @@ htmlparser2@^8.0.0, htmlparser2@^8.0.1:
     entities "^4.3.0"
 
 http-cache-semantics@^4.0.0, http-cache-semantics@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.0.tgz#49e91c5cbf36c9b94bcfcd71c23d5249ec74e390"
-  integrity sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.1.tgz#abe02fcb2985460bf0323be664436ec3476a6d5a"
+  integrity sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==
 
 http-errors@2.0.0:
   version "2.0.0"
@@ -13327,10 +13327,10 @@ repeat-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha512-PV0dzCYDNfRi1jCDbJzpW7jNNDRuCOG/jI5ctQcGKt/clZD+YcPS3yIlWuTJMmESC8aevCFmWJy5wjAFgNqN6w==
 
-repo-link-check@^0.13.0:
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.13.0.tgz#1700ae55134738505039a056ee38fa9cc077e479"
-  integrity sha512-y1pid2myT7zgvwk7DnX3KJs+qEYZNU4/YVyNUVFEDBQWMvck3MBtGfYjViQUP7fb4Ly5QnNNPdLCUAMtLCccMA==
+repo-link-check@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.14.0.tgz#8101be0a5d026f35f330c7449fba2f7e66c1bc77"
+  integrity sha512-c+UcRseOJom4jw4TAKNGVOyLyTCg5Wi1n8TN5SIX4EL+YJ/0G2UQDeeVyjbpSjE0BxdtSjKnBgjP5ZhH5uatuQ==
   dependencies:
     bottleneck "^2.19.5"
     commander "^9.4.0"

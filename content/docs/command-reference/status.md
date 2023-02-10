@@ -70,8 +70,8 @@ detailed bellow.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
-  commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to update
-  the file. Possible states are:
+  commands like `dvc commit`, `dvc repro`, or `dvc exp run` can be used to
+  update the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the <abbr>workspace</abbr>, but
     there is no corresponding file hash saved in the `dvc.lock` or `.dvc` file
