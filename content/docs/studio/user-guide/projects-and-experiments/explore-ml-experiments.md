@@ -123,6 +123,16 @@ Use this toggle switch to show/hide experiments that you have not selected.
 
 Toggle between absolute values and difference from the first row.
 
+#### Export Project to CSV:
+
+Export current project table to CSV.
+
+![export to csv](https://static.iterative.ai/img/studio/project_export_to_csv.png)
+
+_Here is an example of portion of CSV file generated._
+
+![example export to csv](https://static.iterative.ai/img/studio/project_export_to_csv_example.png)
+
 #### Save changes:
 
 Save your filters or column display preferences so that these preferences remain
