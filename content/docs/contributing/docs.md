@@ -114,7 +114,7 @@ set of wrapper commands for your convenience:
 
 - `yarn format-all` - Run `prettier --write` on all files to find formatting
   issues and automatically fix as many as possible.
-- `yarn format-check` - Run `prettier --check` on all files, exiting with an
+- `yarn format-check-all` - Run `prettier --check` on all files, exiting with an
   error if any issues are found. This is particularly useful for CI.
 - `yarn format-staged` - alias for `lint-staged`, which will run all applicable
   linters on all files staged in your copy of the git repository.
