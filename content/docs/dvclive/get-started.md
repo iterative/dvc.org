@@ -96,6 +96,7 @@ would look as follows:
 
 ```
 dvclive
+├── dvc.yaml
 ├── metrics.json
 ├── params.yaml
 ├── plots
@@ -118,7 +119,7 @@ training progress:
 
 <toggle>
 
-<tab title="Standalone">
+<tab title="Standalone / Notebook">
 
 By default, DVCLive will generate or update a report in
 [`Live.report_file`](/doc/dvclive/api-reference/live#properties) displaying all
@@ -126,14 +127,28 @@ the logged data:
 
 ![HTML report](/img/dvclive-html.gif)
 
-</tab>
-
-<tab title="Notebook">
-
 If you pass `report="notebook"` to DVCLive, the HTML report will be displayed
 and updated inside the output of the cell:
 
 ![Notebook report](/img/dvclive-notebook.gif)
+
+</tab>
+
+<tab title="CML">
+
+DVCLive will generate the Standalone report in Markdown format when used inside
+CI/CD, so you can combine it with
+[cml comment](https://cml.dev/doc/ref/comment):
+
+```bash
+cml comment create --publish --watch results/train/report.md \
+& python train_with_dvclive.py
+```
+
+You can find a
+[full example here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/run-studio-experiment.yml):
+
+![CML report](/img/dvclive-cml.gif)
 
 </tab>
 
