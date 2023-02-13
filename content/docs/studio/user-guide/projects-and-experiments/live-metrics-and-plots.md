@@ -139,9 +139,9 @@ An experiment can have one of the following statuses:
 
   <admon type="warn">
 
-  Note that if the experiment stops due to any error, Iterative Studio will not
-  be aware of this and it will continue to wait for live updates. In this case,
-  you can delete the row from the project table.
+  If the experiment stops due to any error, Iterative Studio will not be aware
+  of this and it will continue to wait for live updates. In this case, you can
+  delete the row from the project table.
 
   </admon>
 
