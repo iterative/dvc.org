@@ -31,7 +31,7 @@ jobs:
         run: yarn
 
       - name: Lint and fix all changed files
-        run: yarn lint-staged --no-stash --diff "origin/main...HEAD"
+        run: yarn lint-staged -q --no-stash --diff "origin/main...HEAD"
 
       - name: Commit and push changes
         id: commit
