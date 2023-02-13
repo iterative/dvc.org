@@ -14,12 +14,12 @@ This requires a 3-step process:
 ## Set up an access token
 
 Iterative Studio uses access tokens to authorize [DVCLive] to send live updates
-to the metrics and plots. You can generate a Studio access token from your user
-profile page.
+to the metrics and plots. You can generate (and delete) an access token from
+your user profile page.
 
 The option to delete the access token is also available when you change your
-password (resetting all your access credentials at once). This is handy if you
-suspect that your account security may have been compromised.
+password, so that you can reset all your access credentials at once. This is
+handy if you suspect that your account security may have been compromised.
 
 ## Configure your model training job
 
