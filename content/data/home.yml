@@ -1,14 +1,18 @@
 - title: Connect storage to repo
-  description: Keep large data and model files alongside code and share via your cloud storage.
+  description:
+    Keep large data and model files alongside code and share via your cloud
+    storage.
   terminal: |
     $ dvc add cats-dogs
-    
+
     $ dvc remote add storage s3://bucket/dvc-cache
-    
+
     $ dvc push
     5000 files pushed
 - title: Configure steps as you go
-  description: Declare dependencies and outputs at each step to build reproducible end-to-end pipelines.
+  description:
+    Declare dependencies and outputs at each step to build reproducible
+    end-to-end pipelines.
   terminal: |
     $ dvc exp run
     "data/data.xml.dvc" didn't change, skipping^500
@@ -17,7 +21,9 @@
     Running stage "train":
     > python src/train.py data/features model.pkl
 - title: Track experiments in Git
-  description: Track experiments in your repo, compare results and restore entire experiment states cross-team.
+  description:
+    Track experiments in your repo, compare results and restore entire
+    experiment states cross-team.
   terminal: |
     $ dvc exp show
     ───────────────────────────────────────────────────────────────────────────
