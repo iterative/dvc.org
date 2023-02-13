@@ -11,20 +11,14 @@ jobs:
     name: 'Run Tests'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - name: Checkout PR
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Checkout Ref
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Fetch main and PR history
+        run: |
+          git fetch origin main:main
 
       - name: Install Node.js and use yarn
         uses: actions/setup-node@v3
