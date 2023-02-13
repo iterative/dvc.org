@@ -85,7 +85,7 @@ default but this can be enabled with the `--granular` flag.
 - `--granular` - show granular file-level changes inside DVC-tracked
   directories. Note that some granular changes may be reported as `unknown` as
   DVC tracks
-  [directory-level hash values](doc/user-guide/project-structure/internal-files#directories).
+  [directory-level hash values](/doc/user-guide/project-structure/internal-files#directories).
 
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
