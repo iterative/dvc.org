@@ -134,24 +134,6 @@ and updated inside the output of the cell:
 
 </tab>
 
-<tab title="CML">
-
-DVCLive will generate the Standalone report in Markdown format when used inside
-CI/CD, so you can combine it with
-[cml comment](https://cml.dev/doc/ref/comment):
-
-```bash
-cml comment create --publish --watch results/train/report.md \
-& python train_with_dvclive.py
-```
-
-You can find a
-[full example here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/run-studio-experiment.yml):
-
-![CML report](/img/dvclive-cml.gif)
-
-</tab>
-
 <tab title="DVC Extension for VS Code">
 
 The
@@ -169,6 +151,24 @@ If you follow the instructions in
 DVCLive updates will be displayed in the Studio UI:
 
 ![Studio Report](/img/dvclive-studio.gif)
+
+</tab>
+
+<tab title="CML">
+
+If `matplotlib` is available and DVCLive is used inside CI/CD, it will generate
+the standalone report in Markdown format so you can combine it with
+[cml comment](https://cml.dev/doc/ref/comment):
+
+```bash
+cml comment create --publish --watch results/train/report.md \
+& python train_with_dvclive.py
+```
+
+You can find a
+[full example here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/run-studio-experiment.yml):
+
+![CML report](/img/dvclive-cml.gif)
 
 </tab>
 
