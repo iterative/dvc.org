@@ -9,11 +9,8 @@ ML projects and experiments.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
-<admon>
-
-Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
-
-</admon>
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
 
 ## How to save your project data
 
