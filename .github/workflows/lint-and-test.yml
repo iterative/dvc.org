@@ -19,6 +19,7 @@ jobs:
       - name: Fetch main and PR history
         run: |
           git fetch origin main:main
+          git fetch origin ${{ github.head_ref }}:${{ github.head_ref }}
 
       - name: Install Node.js and use yarn
         uses: actions/setup-node@v3
@@ -30,7 +31,7 @@ jobs:
         run: yarn
 
       - name: Lint and fix all changed files
-        run: yarn lint-staged --no-stash --diff "origin/main...HEAD"
+        run: yarn lint-staged --no-stash --diff "main...${{ github.head_ref }}"
 
       - name: Commit and push changes
         id: commit
