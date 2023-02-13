@@ -11,7 +11,6 @@ jobs:
     name: 'Run Tests'
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -40,10 +39,3 @@ jobs:
 
       - name: Run tests
         run: yarn test
-
-      # - name: Publish to Chromatic
-      #   uses: chromaui/action@v1
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-      #     exitOnceUploaded: true
