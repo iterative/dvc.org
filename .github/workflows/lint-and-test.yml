@@ -13,16 +13,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Fetch main and PR history
         run: |
-          git fetch --depth=0 origin ${{ github.head_ref }}
-          git fetch --depth=0 origin main
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
+          git fetch --unshallow origin main
+          git fetch --unshallow origin ${{ github.head_ref }}
+          git reset --hard FETCH_HEAD
 
       - name: Install Node.js and use yarn
         uses: actions/setup-node@v3
