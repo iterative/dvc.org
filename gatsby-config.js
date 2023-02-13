@@ -25,7 +25,8 @@ const plugins = [
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
       remark: false,
-      simpleLinkerTerms: require('./content/linked-terms')
+      simpleLinkerTerms: require('./content/linked-terms'),
+      glossaryPath: path.resolve('content', 'basic-concepts')
     }
   },
   {
