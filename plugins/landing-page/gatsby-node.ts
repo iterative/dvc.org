@@ -12,6 +12,8 @@ import '@dvcorg/gatsby-theme-iterative/config/prismjs/dvc'
 
 import yaml from 'js-yaml'
 
+const unusedVariable = "Oh no!"
+
 const processSplitTerminalLine = (
   line: string,
   addedPause: string | undefined
