@@ -30,4 +30,9 @@ jobs:
 
       - name: Commit and push changes
         id: commit
-        run: git commit -am "Fix unlinted files" --no-verify && git push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -m "Fix unlinted files" --no-verify
+          git push
