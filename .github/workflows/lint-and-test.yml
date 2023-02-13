@@ -19,6 +19,8 @@ jobs:
       - name: Fetch main and PR history
         run: |
           git fetch origin main
+          git fetch origin ${{ github.head_ref }}
+          git reset --hard origin/${{ github.head_ref }}
           echo $(git diff origin/main...HEAD)
 
       # - name: Install Node.js and use yarn
