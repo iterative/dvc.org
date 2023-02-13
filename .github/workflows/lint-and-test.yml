@@ -30,4 +30,4 @@ jobs:
 
       - name: Commit and push changes
         id: commit
-        run: git commit -am "Fix unlinted files" && git push
+        run: git commit -am "Fix unlinted files" --no-verify && git push
