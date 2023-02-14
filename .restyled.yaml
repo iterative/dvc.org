@@ -1,6 +1,6 @@
 restylers:
   - name: prettier
-    arguments: ['--write']
+    arguments: ['--config=./.prettierrc', '--ignore-path=./.prettierignore']
     include:
       - '**/*.css'
       - '**/*.js'
