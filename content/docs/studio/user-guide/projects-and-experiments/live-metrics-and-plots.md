@@ -153,7 +153,7 @@ An experiment can have one of the following statuses:
 
   Iterative Studio does not automatically commit and push the final results of
   your experiment to Git. If you want to save the experiment result, you should
-  make it [persistent] it using appropriate DVC and Git commands.
+  make it [persistent] using appropriate DVC and Git commands.
 
   </admon>
 
