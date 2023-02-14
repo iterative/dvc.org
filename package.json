@@ -158,7 +158,7 @@
     "lint-staged": "^13.1.1",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-custom-media": "^9.0.1",
-    "postcss-custom-properties": "^12.1.11",
+    "postcss-custom-properties": "^13.0.0",
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.0",
     "prettier": "^2.8.4",
