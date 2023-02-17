@@ -1,12 +1,14 @@
 # remote modify
 
-Configure a [DVC remote](/doc/user-guide/data-management/remote-storage).
+Configure an existing `dvc remote`.
 
 <admon type="tip">
 
-This command is commonly needed after `dvc remote add` or `dvc remote default`
-to set up credentials or for other customizations specific to the
-[storage type](#available-parameters-per-storage-type).
+This command is commonly needed after `dvc remote add` to set up credentials or
+other customizations. See [Remote storage configuration] for more information.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
 
 </admon>
 
@@ -25,16 +27,43 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Config option names are specific
-to the remote type. See `dvc remote add` and
-[Available parameters](#available-parameters-per-storage-type) below for a list
-of remote storage types.
+The DVC remote's `name` and a valid `option` to modify are required. Remote
+options or [config parameters](#available-parameters-per-storage-type) are
+specific to the storage type and typically require a `value` as well.
 
-This command modifies a `remote` section in the project's
-[config file](/doc/command-reference/config). Alternatively, `dvc config` or
-manual editing could be used to change the configuration.
+This command updates a [`remote`] section in the [config file] (`.dvc/config`):
 
-## Command options (flags)
+```cli
+$ dvc remote modify temp url /mnt/c/tmp/dvcstore
+```
+
+```git
+# .dvc/config
+['remote "temp"']
+-     url = /tmp/dvcstore
++     url = /mnt/c/tmp/dvcstore
+```
+
+<admon type="info">
+
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
+
+```cli
+$ pip install "dvc[s3]"
+```
+
+[installed dvc]: /doc/install
+
+</admon>
+
+[config file]: /doc/command-reference/config
+[`remote`]: /doc/command-reference/config#remote
+[`core`]: /doc/command-reference/config#core
+
+## Command options/flags
 
 - `-u`, `--unset` - remove the configuration `option` from a config file. Don't
   provide a `value` argument when employing this flag.

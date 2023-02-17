@@ -11,12 +11,11 @@ etc.), and download it to the local project, or make a copy in
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>]
-                      [--to-remote] [-r <name>]
-                      [--no-exec | --no-download]
-                      [-j <number>] [--version-aware]
-                      [--desc <text>] [--type <str>]
-                      [--label <str>] [--meta key=value]
-                      url [out]
+           [--to-remote] [-r <name>]
+           [--no-exec | --no-download] [-j <number>]
+           [--desc <text>] [--type <str>] [--label <str>]
+           [--meta key=value] [--version-aware]
+           url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -109,15 +108,22 @@ DVC supports several types of external locations (protocols):
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
 
-DVC also supports capturing
-[cloud versioning](/doc/user-guide/data-management/cloud-versioning) information
-when importing data from certain cloud storage providers. When the
-`--version-aware` option is provided or when the `url` argument includes a
-supported cloud versioning ID, DVC will import the specified version of the
-given data. When using versioned storage, DVC will always
-[pull](/doc/command-reference/pull) the versioned data from its original source
-location. Versioned data will also not be [pushed](/doc/command-reference/push)
-to remote storage.
+DVC also supports capturing [cloud versioning] information from certain cloud
+storage providers. When the `--version-aware` option is provided or when the
+`url` argument includes a supported cloud versioning ID, DVC will import the
+specified version.
+
+[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
+
+<admon type="info">
+
+When using versioned storage, DVC will always [pull] the versioned data from
+source. This will not [push] an additional version to remote storage.
+
+[pull]: https://dvc.org/doc/command-reference/pull
+[push]: https://dvc.org/doc/command-reference/push
+
+</admon>
 
 | Type    | Description                  | Versioned `url` format example                         |
 | ------- | ---------------------------- | ------------------------------------------------------ |
@@ -199,6 +205,11 @@ produces a regular stage in `dvc.yaml`.
 - `--label <text>` - user-assigned label(s) to add to the data.
 
 - `--meta key=value` - custom metadata to add to the data.
+
+- `--version-aware` - capture [cloud versioning] information (supported for
+  certain cloud storage providers). By default, DVC will automatically do so
+  only if the `url` contains a valid cloud versioning ID. Otherwsie, with this
+  flat DVC will import the latest version of the file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
