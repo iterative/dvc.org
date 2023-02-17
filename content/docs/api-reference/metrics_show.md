@@ -56,7 +56,7 @@ The function parameters (below) let you restrict what's retrieved.
 
 ## Example: Filter by one or more targets
 
-`stages` can be a single name (string):
+`targets` can be a single name (string):
 
 ```py
 import dvc.api
