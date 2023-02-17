@@ -26,8 +26,8 @@ project</abbr> and returns a dictionary, such as:
 
 ```json
 {
-  "avg_prec": {"train": 0.97, "val": 0.92},
-  "roc_auc": {"train": 0.98, "val": 0.94},
+  "avg_prec": { "train": 0.97, "val": 0.92 },
+  "roc_auc": { "train": 0.98, "val": 0.94 }
 }
 ```
 
@@ -40,9 +40,10 @@ The function parameters (below) let you restrict what's retrieved.
 ## Metrics
 
 - `*targets` - one or more separate path(s) to valid metrics file(s) to retrieve
-  metrics from, for example `"eval/train_val_metrics.json",
-  "eval/test_metrics.json"`. If no `targets` are provided, all metrics files
-  tracked in any `dvc.yaml` will be targeted by default.
+  metrics from, for example
+  `"eval/train_val_metrics.json", "eval/test_metrics.json"`. If no `targets` are
+  provided, all metrics files tracked in any `dvc.yaml` will be targeted by
+  default.
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
@@ -65,8 +66,8 @@ metrics = dvc.api.metrics_show("eval/train_val_metrics.json")
 
 ```json
 {
-  "avg_prec": {"train": 0.97, "val": 0.92},
-  "roc_auc": {"train": 0.98, "val": 0.94},
+  "avg_prec": { "train": 0.97, "val": 0.92 },
+  "roc_auc": { "train": 0.98, "val": 0.94 }
 }
 ```
 
@@ -80,13 +81,13 @@ metrics = dvc.api.metrics_show("eval/train_val_metrics.json", "eval/test_metrics
 ```json
 {
   "eval/train_val_metrics.json": {
-    "avg_prec": {"train": 0.97, "val": 0.92},
-    "roc_auc": {"train": 0.98, "val": 0.94},
+    "avg_prec": { "train": 0.97, "val": 0.92 },
+    "roc_auc": { "train": 0.98, "val": 0.94 }
   },
   "eval/test_metrics.json": {
-    "avg_prec": {"test": 0.72},
-    "roc_auc": {"test": 0.77} 
-  },
+    "avg_prec": { "test": 0.72 },
+    "roc_auc": { "test": 0.77 }
+  }
 }
 ```
 
@@ -102,8 +103,8 @@ metrics = dvc.api.metrics_show(rev="HEAD~1")
 
 ```json
 {
-  "avg_prec": {"train": 0.97, "val": 0.92},
-  "roc_auc": {"train": 0.98, "val": 0.94},
+  "avg_prec": { "train": 0.97, "val": 0.92 },
+  "roc_auc": { "train": 0.98, "val": 0.94 }
 }
 ```
 
