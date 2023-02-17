@@ -60,7 +60,7 @@ be preserved this way, while preventing accidental file deletions.
     ...
 ```
 
-Now that they're cached safely, DVC-tracked files in the <abbr>workspace</abbr>
+Now that they're cached safely, DVC-tracked files in your <abbr>workspace</abbr>
 can be replaced with [file links], so you continue seeing and using them as
 usual. File hashes (usually MD5) are written in human-readable YAML [metafiles]
 next to the original data.
@@ -71,14 +71,13 @@ next to the original data.
   validation.xml -> .dvc/cache/6a/2aa4b
 + validation.xml.dvc
   model.bin
-  ...
+  src/train.py
 ```
 
 ```yaml
 # validation.xml.dvc
-  ...
-  md5: 6a26845d4000daa4bfb196017e103355
-  path: validation.xml
+md5: 6a2aa4b # Note: actual hashes are longer
+path: validation.xml
 ```
 
 [metafiles]: /doc/user-guide/project-structure
@@ -95,8 +94,8 @@ repository.
 To keep track of relevant versions of the data, models, etc. cached by DVC, the
 corresponding metafiles should be [versioned with Git] (or any SCM) along with
 the rest of the code. This also means that a single file name can represent
-different contents, keeping your project clean. You can use branches or tags to
-organize data versions instead.
+different contents, keeping your project structure clean (use branches or tags
+to organize data versions instead).
 
 [versioned with git]:
   https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
@@ -105,19 +104,23 @@ organize data versions instead.
 $ git checkout dev-branch
 $ dvc checkout
 $ ls
-... training.csv      2 G # old data
-... model.bin       2.7 M # old model
-... src/train.py    214 K
+  training.csv      2 G # old data
+  model.bin       2.7 M # old model
+  src/train.py    214 K
 
 $ git checkout latest-tag
 $ dvc checkout
 $ ls
-... training.csv      3 G # latest data
-... validation.xml    1 G
-... model.bin       3.2 M # better model
-... src/train.py    354 K
-... src/evaluate.py 175 K # more code
+  training.csv      3 G # latest data
+  validation.xml    1 G
+  model.bin       3.2 M # better model
+  src/train.py    354 K
+  src/evaluate.py 175 K # more code
 ```
+
+<!-- TODO: Remote storage? -->
+
+## Tradeoff
 
 Adopting DVC's approach requires a few key changes to your workflow:
 
@@ -127,8 +130,6 @@ Adopting DVC's approach requires a few key changes to your workflow:
 1. Stored objects managed with DVC are not intended for handling manually.
 
 [indirectly]: https://en.wikipedia.org/wiki/Indirection
-
-<!-- ## Benefits and tradeoffs
 
 At the same time, it comes with many benefits:
 
@@ -162,7 +163,6 @@ At the same time, it comes with many benefits:
 [ml pipelines]: /doc/user-guide/pipelines
 [ci/cd for ml]: https://cml.dev/
 [productize]: https://mlem.ai/
--->
 
 ---
 
