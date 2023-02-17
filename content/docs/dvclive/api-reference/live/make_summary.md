@@ -25,8 +25,8 @@ above.
 
 <admon type="info">
 
-`Live.next_step()` will call `Live.make_summary()` internally, so you don't need
-to call both.
+`Live.next_step()` and `Live.end()` will call `Live.make_summary()` internally,
+so you don't need to call both.
 
 </admon>
 

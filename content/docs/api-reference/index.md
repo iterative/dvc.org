@@ -14,5 +14,4 @@ The purpose of this API is to provide programmatic access to the data or models
 [stored and versioned](/doc/use-cases/versioning-data-and-models) in <abbr>DVC
 repositories</abbr> from Python code.
 
-You can choose a function from the navigation sidebar to the left, or click the
-`Next` button below to jump into the first one ↘
+Choose a page from the navigation sidebar to the left.
