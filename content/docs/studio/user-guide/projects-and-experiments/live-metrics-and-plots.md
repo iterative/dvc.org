@@ -36,7 +36,7 @@ job:
     If you are running the experiment locally, you can set this environment
     variable when submitting the training job.
 
-    ```
+    ```dvc
     $ STUDIO_TOKEN=**** dvc exp run
     ```
 
@@ -46,7 +46,7 @@ job:
     containing the value of the token, and use the secret in your CI job (see
     example below).
 
-    ```
+    ```yaml
     ...
       steps:
         - name: Train model
