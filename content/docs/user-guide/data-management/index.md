@@ -38,7 +38,7 @@ tracked._
 
 ## How it works
 
-Let's consider a simplified, hypothetical ML project:
+Let's consider a simple ML project that looks like this:
 
 ```
 training.csv
@@ -47,7 +47,12 @@ model.bin
 src/train.py
 ```
 
-DVC appends unique large files to a hidden <abbr>cache</abbr> organized by
+![]() _The first two data files are very large (multiple Gigabytes). The model
+file is not as large (several Megabytes) but still large enough to avoid storing
+it in Git. The `.py` code file (last) is safe to commit to Git (some
+Kilobytes)._
+
+DVC appends unique large files to a hidden <abbr>cache</abbr>, organized by
 content hashes (similar to an index). As the data changes, its full history can
 be preserved this way, while preventing accidental file deletions.
 
@@ -83,11 +88,16 @@ path: validation.xml
 [metafiles]: /doc/user-guide/project-structure
 [file links]: /doc/user-guide/data-management/large-dataset-optimization
 
-<admon type="info" title="Data codification">
+<admon type="tip" title="Remote storage">
 
-DVC replaces data assets in the project with code-like YAML [metafiles] (and
-links). Codifying data lets you treat it as a first-class citizen in any code
-repository.
+Data tracked by DVC can be stored in more than one location. You get a project
+cache by default, but it's possible to synchronize all or parts of it with
+[remote storage]. The same content-addressable file structure is used remotely
+unless you enable [cloud versioning], which lets you see a similar directory
+structure in your cloud buckets as in the local project.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
 </admon>
 
@@ -118,7 +128,13 @@ $ ls
   src/evaluate.py 175 K # more code
 ```
 
-<!-- TODO: Remote storage? -->
+<admon type="info" title="Data codification">
+
+DVC replaces data assets in the project with code-like YAML [metafiles] (and
+links). Codifying data lets you treat it as a first-class citizen in any code
+repository.
+
+</admon>
 
 ## Tradeoff
 
