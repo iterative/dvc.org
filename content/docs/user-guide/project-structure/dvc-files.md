@@ -79,7 +79,7 @@ The following subfields may be present under `outs` entries:
 | `meta`                          | Custom metadata about the data.                                                                                                                                                                                           |
 | `push`                          | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                              |
 
-[ETag]: https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation
+[etag]: https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation
 [external outputs]: /doc/user-guide/data-management/managing-external-data
 [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
@@ -103,4 +103,4 @@ The following subfields may be present under `deps` entries:
 | `rev`      | Only when `dvc import --rev` is used: Specific commit hash, branch or tag name, etc. (a [Git revision]) used to import the dependency from. |
 | `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)         |
 
-[Git revision]: https://git-scm.com/docs/revisions
+[git revision]: https://git-scm.com/docs/revisions
