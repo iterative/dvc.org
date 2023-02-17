@@ -65,7 +65,7 @@ $ dvc update --rev master
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and
   [transfer] the data directly to remote storage (the default one unless one is
   specified with -r) without saving it locally. Use `dvc pull` to get the data
-  locally. Cannot be used with [worktree updates](#worktree-update).
+  locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
