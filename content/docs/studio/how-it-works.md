@@ -35,8 +35,8 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
   [add the metrics and hyperparameters to your Git repositories manually](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
 - Details of your ML models, including versions and stage assignments, are
   extracted from the Git commits and tags.
-- Live metrics and plots for experiments committed to Git are extracted from the
-  data you send using [DVCLive].
+- Live metrics and plots for experiments are extracted from the data you send
+  using [DVCLive].
 
 ## How Iterative Studio presents your project data
 
@@ -75,5 +75,5 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [run new experiments]:
-  (/doc/studio/user-guide/projects-and-experiments/run-experiments)
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
 [dvclive]: /doc/dvclive

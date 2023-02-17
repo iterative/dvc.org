@@ -192,6 +192,12 @@ produces a regular stage in `dvc.yaml`.
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
 
+- `--version-aware` - capture cloud versioning information when importing the
+  file. By default, DVC will automatically capture cloud versioning information
+  if the URL contains a cloud versioning ID. When `--version-aware` is provided
+  along with a URL that does not contain a cloud versioning ID, DVC will capture
+  the latest version of the file.
+
 - `--desc <text>` - user description of the data.
 
 - `--type <str>` - user-assigned type of the data.
@@ -445,3 +451,49 @@ Use `dvc update --to-remote` to bring the import up to date in remote storage,
 without downloading anything.
 
 [remote storage]: /doc/command-reference/remote
+
+## Example: Tracking cloud version IDs
+
+If your cloud storage path already has versioning enabled, DVC can use the cloud
+version IDs to manage the data. Let's import versioned data from S3:
+
+```dvc
+$ dvc import-url --version-aware s3://mybucket/data
+Importing 's3://mybucket/data' -> 'data'
+```
+
+Check `data.dvc` and note that it captures the `version_id` for each file:
+
+```yaml
+md5: 0c00504e8539cba57c523413d6f98df3
+frozen: true
+deps:
+- path: s3://mybucket/data
+  files:
+  - size: 14445097
+    version_id: LiVFgBb24qRRbn1o2DcAZhh4_M8Zy7FK
+    etag: 22a1a2931c8370d3aeedd7183606fd7f
+    relpath: data.xml
+  ...
+  - size: 6728772
+    version_id: fLkcP.Dq0zl7CtKexohzyJCazSMk_R9C
+    etag: 9ca281786366acca17632c27c5c5cc75
+    relpath: prepared/train.tsv
+outs:
+- md5: 3ce9c43d5bead55bee0d3752fc1d68c5.dir
+  size: 25115048
+  nfiles: 5
+  path: data
+  push: false
+```
+
+DVC knows that your cloud storage is already versioning these files, so it won't
+push them to the DVC remote.
+
+```dvc
+$ dvc push
+Everything is up to date.
+```
+
+During `dvc pull`, these files will be pulled from their original source
+location rather than the DVC remote.

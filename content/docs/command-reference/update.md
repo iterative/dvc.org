@@ -1,8 +1,7 @@
 # update
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
-or [URLs], and the corresponding import `.dvc` files. Or update files or
-directories [from a worktree remote](#worktree-update).
+or [URLs], and the corresponding import `.dvc` files.
 
 [urls]: /doc/command-reference/import-url
 
@@ -39,20 +38,6 @@ to update an imported artifact to a different revision.
 ```cli
 $ dvc update --rev master
 ```
-
-### Worktree update
-
-When using a cloud-versioned [worktree remote], this command will attempt to
-update its `targets` to match the current version on remote storage.
-
-[worktree remote]:
-  /doc/user-guide/data-management/cloud-versioning#worktree-remotes
-
-<admon type="warn">
-
-The `--rev`, `--no-download` and `--to-remote` options are not compatible.
-
-</admon>
 
 ## Options
 

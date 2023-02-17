@@ -55,14 +55,17 @@ job:
     ...
     ```
 
-2.  `STUDIO_REPO_URL`: If you are running the experiment locally, or your
-    repository is on github.com, gitlab.com or bitbucket.org, you do not need to
-    set this environment variable. But if you are using some other Git provider,
-    then you should set the repository url in this format:
+2.  `STUDIO_REPO_URL`: If you are running the experiment locally, you do not
+    need to set this environment variable. But if you are running it in a CI
+    job, then you should set the repository url in this format:
     `{remote-type}:{namespace}/{repo-name}`. For example, for the
     `example-get-started` repository in the `iterative` namespace,
     `STUDIO_REPO_URL` should be set to the following value:
 
+    - If you are using GitHub.com, GitLab.com or Bitbucket.org, set it to
+      `git@github.com:iterative/example-get-started.git`,
+      `git@gitlab.com:iterative/example-get-started.git`,
+      `git@bitbucket.org:iterative/example-get-started.git` respectively.
     - If you are using a custom (self-hosted) GitLab server, set it to
       `custom-gitlab:iterative/example-get-started`.
     - If you are using a GitHub enterprise server, set it to
@@ -75,16 +78,23 @@ log your metrics or plots using [DVCLive], they will be automatically sent to
 Iterative Studio. Here is an example of how you can use [DVCLive] in your
 training code:
 
-```
+```py
 from dvclive import Live
 
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
   for i in range(params["epochs"]):
     ...
     live.log_metric("accuracy", accuracy)
     live.next_step()
   ...
 ```
+
+<admon>
+
+Using `save_dvc_exp=True` will ensure that
+[the results get saved as a DVC experiment even if you do not have a DVC pipeline](/doc/dvclive/how-it-works#track-the-results).
+
+</admon>
 
 <admon>
 
@@ -101,6 +111,14 @@ In the project table, the live metrics are displayed nested under the parent Git
 commit. Updates to the live metrics are highlighted in orange.
 
 ![](https://static.iterative.ai/img/studio/live_metrics.gif)
+
+<admon>
+
+The live metrics row for an experiment is displayed only if its parent Git
+commit is shown in the project table. So before you run the experiment, make
+sure that its parent commit is pushed to Git.
+
+</admon>
 
 Updates to the live metrics are highlighted in orange in the
 [compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
