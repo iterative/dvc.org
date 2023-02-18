@@ -1,8 +1,8 @@
 # Track and Sync Versioned Data
 
 The fundamental workflow of most <abbr>DVC projects</abbr> includes the
-following basic operations. These can be performed directly (as we cover here)
-but are sometimes included automatically in advanced workflows, like
+following **basic operations**. These can be performed directly (as we cover
+here) but are sometimes included automatically in advanced workflows, like
 [pipelining] and [experiment management].
 
 [pipelining]: /doc/user-guide/pipelines
@@ -63,9 +63,9 @@ DVC lets you [codify your data], configure the project's storage location(s),
 and stop worrying about low-level operations like copying, moving, renaming,
 uploading and downloading, etc.
 
-At a minimum, you'll have two locations: your <abbr>workspace</abbr> and a
-<abbr>cache</abbr>. The [data tracking](#tracking-data) operations already keep
-these in sync most of the time.
+At a minimum, you'll have one data store: the project's <abbr>cache</abbr>.
+[Data tracking](#tracking-data) operations already keep it in sync with your
+<abbr>workspace</abbr> most of the time.
 
 <admon type="tip">
 
@@ -74,23 +74,18 @@ if unexpected errors occur (e.g. cache corruption).
 
 </admon>
 
+[codify your data]: /doc/use-cases/versioning-data-and-models
+
 To add storage locations to share and back up your work, you can configure [DVC
-remotes] with the `dvc remote add` and `dvc remote modify` commands (see
-`dvc remote` for more options). Once this is done, use `dvc push` and `dvc pull`
-to transfer data between the project and remote storage.
+remotes] using `dvc remote` commands (more on their [configuration]). Once this
+is done, use `dvc push` and `dvc pull` (among others) to transfer data between
+the project and remote storage.
+
+[dvc remotes]: /doc/user-guide/data-management/remote-storage
+[configuration]: /doc/user-guide/data-management/remote-storage#configuration
 
 ![Sync ops among locations](/img/sync-ops-locations.png) _Data sync operations
 among locations_
-
-<!--
-<admon type="info">
-
-DVC remotes are similar to Git remotes, but for <abbr>cached</abbr> assets. This
-means that they use the same [directory
-structure][content-addressable structure] as the data cache.
-
-</admon>
--->
 
 <admon type="tip">
 
@@ -100,22 +95,14 @@ for checkout later.
 
 </admon>
 
-<admon type="info">
+A more advanced strategy is to access and synchronize data assets directly from
+misc. locations or other DVC projects (e.g. [data registry] pattern). See
+`dvc list`, `dvc import`/`dvc import-url`, and `dvc update`, as well as the
+[Python API].
 
-Regardless of the name, "remotes" may be set up anywhere: local file systems,
-external devices or network locations, and remote servers or cloud platforms.
-
-</admon>
-
-A more advanced strategy is to access and synchronize data assets one way, from
-misc. locations or other DVC projects (e.g. [data registry] pattern).
-`dvc list`, `dvc import` or `dvc import-url`, and `dvc update` are the main
-commands related to this.
-
-[codify your data]: /doc/use-cases/versioning-data-and-models
 [protected]: /doc/command-reference/unprotect
-[dvc remotes]: /doc/command-reference/remote
 [data registry]: /doc/use-cases/data-registry
+[python api]: /doc/api-reference
 
 ## Versioning data
 
