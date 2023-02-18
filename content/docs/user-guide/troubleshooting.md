@@ -27,7 +27,7 @@ be reached, causing this error.
 To solve this, it's often possible to increase the open file descriptors limit,
 with `ulimit` on UNIX-like system (for example `ulimit -n 1024`), or
 [increasing Handles limit](https://blogs.technet.microsoft.com/markrussinovich/2009/09/29/pushing-the-limits-of-windows-handles/)
-on Windows. Otherwise, please try using a lower `JOBS` value.
+on Windows. Otherwise, try using a lower `JOBS` value.
 
 ## Unable to find credentials {#no-credentials}
 
@@ -65,7 +65,7 @@ If the issue still persists then it may be the case that you are running DVC on
 some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 `core.hardlink_lock` which can be done by running following command:
 
-```dvc
+```cli
 $ dvc config core.hardlink_lock true
 ```
 
@@ -88,7 +88,7 @@ DVC to use alternative link types which are supported on your machine.
 After reconfiguring cache types, you can re-link data files in your workspace
 using:
 
-```dvc
+```cli
 $ dvc checkout --relink
 ```
 
@@ -98,15 +98,6 @@ $ dvc checkout --relink
 commands accept a `git_remote` argument. You may need to authenticate to use the
 Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
 `dvc exp pull`) permissions.
-
-DVC does not currently support authentication with [Git credentials]. This means
-that unless the Git server allows unauthenticated HTTP write/read, you should
-use an [SSH Git URL] for Git remotes used for listing, pulling or pushing
-experiments.
-
-[git credentials]: https://git-scm.com/docs/gitcredentials
-[ssh git url]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
 
 ## Could not open pickled 'index/md5/links' cache {#pickle}
 
@@ -139,11 +130,11 @@ change their configuration to avoid shallow cloning. Common examples:
 <toggle>
 <tab title="CML">
 
-[CML](https://cml.dev) has a convenient `--unshallow` option for its
+[CML](https://cml.dev) has a convenient `--fetch-depth` option for its
 [`ci`](https://cml.dev/doc/ref/ci) command:
 
 ```cli
-$ cml ci --unshallow
+$ cml ci --fetch-depth 0
 ```
 
 </tab>

@@ -85,7 +85,7 @@ default but this can be enabled with the `--granular` flag.
 - `--granular` - show granular file-level changes inside DVC-tracked
   directories. Note that some granular changes may be reported as `unknown` as
   DVC tracks
-  [directory-level hash values](doc/user-guide/project-structure/internal-files#directories).
+  [directory-level hash values](/doc/user-guide/project-structure/internal-files#directories).
 
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
@@ -102,7 +102,7 @@ default but this can be enabled with the `--granular` flag.
 
 ## Examples
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -128,7 +128,7 @@ that.
 
 ## Example: Full repository status (including Git)
 
-```dvc
+```cli
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
@@ -166,7 +166,7 @@ unrelated changes to your Git repository).
 Following on from the above example, using `--granular` will show file-level
 information for the changes:
 
-```dvc
+```cli
 $ dvc data status --granular
 Not in cache:
   (use "dvc fetch <file>..." to download files)

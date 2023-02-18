@@ -2,7 +2,7 @@
 
 Run or resume a [DVC experiment].
 
-[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiment]: /doc/user-guide/experiment-management
 
 ## Synopsis
 
@@ -42,8 +42,7 @@ See the [Options](#options) section for the differences.
 </admon>
 
 Use the `--set-param` (`-S`) option as a shortcut to change
-<abbr>parameter</abbr> values [on-the-fly] before running the experiment. See
-the [option description](#-S) for details regarding the syntax.
+<abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
 It's possible to [queue experiments] for later execution with the `--queue`
 flag. Queued experiments can be run with `dvc queue start` and managed with
@@ -80,24 +79,24 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-S [<filename>:]<override_pattern>`,
   `--set-param [<filename>:]<override_pattern>` - set the value of `dvc params`
-  for this experiment.
+  for this experiment. This will update the parameters file (`params.yaml` by
+  default) before running the experiment. Use the optional `[<filename>:]`
+  prefix to use a custom params file.
 
-  This will update the param file **before** running the experiment.
-
-  Valid `<override_pattern>` values are defined in Hydra's [Basic Override
-  syntax]. In addition to the basic override syntax, the
-  [Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
-  and
-  [Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
-  syntax are supported for defining sweeps, but both require the `--queue`
-  option to be also provided.
-
-  You can optionally provide a prefix `[<filename>:]` to edit a specific
-  `dvc params` file. If not provided, `params.yaml` will be used as default.
+  Valid `<override_pattern>` values can be defined in Hydra's [basic override]
+  syntax (see [example](#example-modify-parameters-on-the-fly)). Hydra's
+  [choice] and [range] sweep overrides are also supported, but these require the
+  `--queue` flag to be provided as well (see
+  [example](#example-run-a-grid-search)).
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `exp-f80g4` (based on the
-  experiment's hash).
+  default one will be generated otherwise, such as `puffy-daks`.
+
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
 
 - `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
   Useful to continue working (e.g. in another terminal) while a long experiment
@@ -143,8 +142,11 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[basic override]: https://hydra.cc/docs/advanced/override_grammar/basic/
+[choice]: https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep
+[range]: https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep
 [unique name]:
-  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+  https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples
@@ -154,7 +156,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
@@ -164,7 +166,7 @@ code.
 
 Clone the DVC repo and download the data it <abbr>depends</abbr> on:
 
-```dvc
+```cli
 $ git clone git@github.com:iterative/example-get-started.git
 $ cd example-get-started
 $ dvc pull
@@ -176,7 +178,7 @@ Let's also install the Python requirements:
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
-```dvc
+```cli
 $ pip install -r src/requirements.txt
 ```
 
@@ -184,7 +186,7 @@ $ pip install -r src/requirements.txt
 
 Let's check the latest metrics of the project:
 
-```dvc
+```cli
 $ dvc metrics show
 Path         avg_prec    roc_auc
 scores.json  0.60405     0.9608
@@ -193,11 +195,11 @@ scores.json  0.60405     0.9608
 For this experiment, we want to see the results for a smaller dataset input, so
 let's limit the data to 20 MB and reproduce the pipeline with `dvc exp run`:
 
-```dvc
+```cli
 $ truncate --size=20M data/data.xml
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-44136
+Reproduced experiment(s): puffy-daks
 Experiment results have been applied to your workspace.
 
 $ dvc metrics diff
@@ -207,39 +209,64 @@ scores.json  roc_auc   0.9608   0.94003    -0.02077
 ```
 
 The `dvc metrics diff` command shows the difference in performance for the
-experiment we just ran (`exp-44136`).
+experiment we just ran (`puffy-daks`).
 
 ## Example: Modify parameters on-the-fly
 
-`dvc exp run --set-param` (`-S`) saves you the need to manually edit the params
-file before running an experiment.
+`dvc exp run --set-param` (`-S`) saves you the need to manually edit a params
+file (see `dvc params`) before running an experiment.
 
-It can override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or
-remove (`~model.dropout`) parameters.
+This option accepts Hydra's [basic override] syntax. For example, it can
+override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or remove
+(`~model.dropout`) <abbr>parameters</abbr>:
 
-You can modify multiple parameters at the same time:
-
-```dvc
+```cli
 dvc exp run -S 'prepare.split=0.1' -S 'featurize.max_features=100'
 ...
 ```
 
-## Example: Grid Search
+<admon type="tip">
 
-Combining `--set-param` and `--queue`, we can perform a
-[Grid search](https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search)
-for tuning hyperparameters.
+Note that you can modify multiple parameters at once in the same command.
 
-DVC supports Hydra's
-[Choice](https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep)
-and
-[Range](https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep)
-syntax for adding multiple experiments to the queue.
+</admon>
 
-This syntax can be used for multiple parameters at the same time, adding all
-combinations to the queue:
+By default, `-S` overwrites the values in `params.yaml`. To use another params
+file, add a `<filename>:` prefix. For example, let's append a new parameter to
+`train_config.json`:
 
-```dvc
+```cli
+$ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'
+...
+
+$ dvc params diff --targets train_config.json
+Path               Param                HEAD    workspace
+train_config.json  train.weight_decay   -       0.001
+```
+
+<admon type="warn" title="Warnings">
+
+`exp run --set-param` (`-S`) doesn't update your `dvc.yaml` to start or stop
+tracking parameters. When appending or removing params, check if you need to
+update the [`params` section] accordingly.
+
+Similarly, when using custom param files, check that these are defined in
+`dvc.yaml`.
+
+[`params` section]: /doc/user-guide/project-structure/dvcyaml-files#parameters
+
+</admon>
+
+## Example: Run a grid search
+
+Combining `--set-param` and `--queue`, we can perform a [grid search] for tuning
+hyperparameters.
+
+DVC supports Hydra's syntax for [choice] and [range] sweeps to add multiple
+experiments to the queue. These can be used for multiple parameters at the same
+time, adding all combinations to the queue:
+
+```cli
 $ dvc exp run -S 'train.min_split=2,8,64' -S 'train.n_est=100,200' --queue
 Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=100']}'.
 Queued experiment 'ed3b4ef' for future execution.
@@ -257,52 +284,5 @@ $ dvc queue start
 ...
 ```
 
-We can then find and apply the best experiment:
-
-```dvc
-$ dvc exp apply $(dvc exp show --no-pager --sort-by avg_prec | tail -n 2 | head -n 1 | grep -o 'exp-\w*')
-```
-
-<admon type="tip">
-
-See more in `dvc exp apply` and `dvc exp show`
-
-</admon>
-
-## Example: Append parameters from custom files
-
-Given a `dvc.yaml` that uses a custom parameters file:
-
-```yaml
-stages:
-  train:
-    cmd: python train.py
-    params:
-      - train_config.json: # tracks all params in this file
-```
-
-We can add the `[<filename>:]` prefix to modify the parameters of arbitrary
-files. For example, to append a new parameter to`train_config.json`:
-
-```dvc
-$ dvc exp run -S 'train_config.json:+train.weight_decay=0.001'
-...
-
-$ dvc params diff
-Path               Param                HEAD    workspace
-train_config.json  train.weight_decay   -       0.001
-```
-
-<admon type="warn">
-
-Note that `exp run --set-param` (`-S`) doesn't update your `dvc.yaml`. When
-appending or removing <abbr>parameters</abbr>, make sure to update the
-[`params` section](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#parameters)
-of your `dvc.yaml` accordingly.
-
-Alternatively, you can track all the parameters in the file being modified, as
-shown in the `dvc.yaml` above.
-
-</admon>
-
-[basic override syntax]: https://hydra.cc/docs/advanced/override_grammar/basic/
+[grid search]:
+  https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search

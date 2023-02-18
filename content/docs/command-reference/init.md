@@ -72,7 +72,7 @@ inside the sub-dir project are reachable by them.
 
 If there are multiple `--subdir` projects, but not nested, e.g.:
 
-```dvc
+```cli
 .           # git init
 ├── .git
 ├── project-A
@@ -92,7 +92,7 @@ not aware of `project-B`. However, commands that involve versioning (like
 
 If there are nested `--subdir` projects e.g.:
 
-```dvc
+```cli
 project-A
 ├── .dvc        # git init && dvc init
 ├── .git
@@ -144,14 +144,13 @@ later, DVC will keep operating detached from Git in this project.
 
 - `--subdir` - initialize the DVC project in the current working directory,
   _even if it's not the Git repository root_. (If run in a project root, this
-  option is ignored.) It affects how other DVC commands behave afterwards,
-  please see
+  option is ignored.) It affects how other DVC commands behave afterwards, see
   [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) for
   more details.
 
 - `--no-scm` - initialize the DVC project detached from Git. It means that DVC
   doesn't try to find or use Git in the directory it's initialized in. Certain
-  DVC features are not available in this mode, please see
+  DVC features are not available in this mode. See
   [Initializing DVC without Git](#initializing-dvc-without-git) for more
   details.
 
@@ -167,7 +166,7 @@ later, DVC will keep operating detached from Git in this project.
 Create a new <abbr>DVC repository</abbr> (requires running in the Git repository
 root):
 
-```dvc
+```cli
 $ mkdir mydvcrepo && cd mydvcrepo
 $ git init
 $ dvc init
@@ -182,7 +181,7 @@ $ git commit -m "Init DVC"
 Note that the <abbr>cache</abbr> directory (among others) is not tracked with
 Git. It contains data and model files, and will be managed by DVC.
 
-```dvc
+```cli
 $ cat .dvc/.gitignore
 /config.local
 /tmp
@@ -193,7 +192,7 @@ $ cat .dvc/.gitignore
 
 Create a <abbr>DVC repository</abbr> in a subdirectory of a Git repository:
 
-```dvc
+```cli
 $ mkdir mygitrepo && cd mygitrepo
 $ git init
 
@@ -204,7 +203,7 @@ $ dvc init --subdir
 In this case, Git repository is inside `repo` directory, while <abbr>DVC
 repository</abbr> is inside `repo/project-a`.
 
-```dvc
+```cli
 $ tree repo -a
 repo
 ├── .git

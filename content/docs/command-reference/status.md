@@ -70,8 +70,8 @@ detailed bellow.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
-  commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to update
-  the file. Possible states are:
+  commands like `dvc commit`, `dvc repro`, or `dvc exp run` can be used to
+  update the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the <abbr>workspace</abbr>, but
     there is no corresponding file hash saved in the `dvc.lock` or `.dvc` file
@@ -164,7 +164,7 @@ that.
 
 ## Examples
 
-```dvc
+```cli
 $ dvc status
 baz.dvc:
 	changed outs:
@@ -190,7 +190,7 @@ tracked by it has changed.
 
 `dvc status` only checks the tracked data corresponding to any given `targets`:
 
-```dvc
+```cli
 $ dvc status foo.dvc dobar
 foo.dvc:
 	changed outs:
@@ -209,7 +209,7 @@ dobar:
 Note that you can check data within directories tracked, such as the `data/raw`
 directory (tracked with `data/raw.dvc`):
 
-```dvc
+```cli
 $ tree data
 data
 ├── raw
@@ -224,7 +224,7 @@ new:                data/raw
 
 ## Example: Dependencies
 
-```dvc
+```cli
 $ vi code/featurization.py
 ... edit the code
 
@@ -245,7 +245,7 @@ adding `--with-deps`, any change in a preceding stage will be found.
 Let's now assume that we have a shared remote on S3: and would like to check
 what files we have generated but haven't pushed to the remote yet:
 
-```dvc
+```cli
 $ dvc remote list
 storage	s3://bucket/path
 ```
@@ -253,7 +253,7 @@ storage	s3://bucket/path
 And would like to check what files we have generated but haven't pushed to the
 remote yet:
 
-```dvc
+```cli
 $ dvc status --remote storage
 ...
 	new:      data/model.p
@@ -270,7 +270,7 @@ differences between the <abbr>cache</abbr> and `storage` remote.
 Let's import a data file (`data.csv`) from a different <abbr>DVC repository
 </abbr> into our current project using `dvc import`.
 
-```dvc
+```cli
 $ dvc import different/repo/location data.csv
 ```
 
@@ -278,7 +278,7 @@ The resulting `data.csv.dvc` file is called an <abbr>import stage</abbr>. If the
 original file or directory changes later, `dvc status` will show "update
 available" as output:
 
-```dvc
+```cli
 $ dvc status
 data.csv.dvc:
 	changed deps:

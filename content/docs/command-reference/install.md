@@ -55,8 +55,8 @@ This hook automates `dvc push` before `git push`.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories tracked by DVC to remote storage.
 
-If a hook already exists, DVC will raise an exception. In that case, please try
-to manually edit the existing file or remove it and retry install.
+If a hook already exists, DVC will raise an exception. In that case, try to
+manually edit the existing file or remove it and retry install.
 
 For more information about git hooks, refer to the
 [git-scm documentation](https://git-scm.com/docs/githooks).
@@ -112,7 +112,7 @@ Note that by default, the pre-commit tool only installs `pre-commit` hooks. To
 enable the `pre-push` and `post-checkout` hooks, you must explicitly configure
 the tool this way:
 
-```dvc
+```cli
 $ pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
 ```
 
@@ -142,7 +142,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created in our
 
 Start by cloning our example repo if you don't already have it:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
@@ -151,7 +151,7 @@ Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
-```dvc
+```cli
 $ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
@@ -159,7 +159,7 @@ $ pip install -r src/requirements.txt
 
 Download the precomputed data using:
 
-```dvc
+```cli
 $ dvc pull -aT
 ```
 
@@ -174,7 +174,7 @@ can be fixed with `dvc checkout`).
 
 Let's first list the available tags in the _Get Started_ repo:
 
-```dvc
+```cli
 $ git tag
 0-git-init
 1-dvc-init
@@ -194,7 +194,7 @@ These tags are used to mark points in the development of the project, and to
 document specific experiments conducted in it. To take a look at one, we
 checkout the `7-ml-pipeline` tag:
 
-```dvc
+```cli
 $ git checkout 7-ml-pipeline
 Note: checking out '7-ml-pipeline'.
 
@@ -223,7 +223,7 @@ matched the hash values in the corresponding `.dvc` and `dvc.lock` files.
 Running `dvc checkout` then brings them up to date, and a second `dvc status`
 tells us that the data files now do match the DVC files.
 
-```dvc
+```cli
 $ git checkout master
 Previous HEAD position was 6666298 Create ML pipeline stages
 Switched to branch 'master'
@@ -236,7 +236,7 @@ We've seen the default behavior with there being no Git hooks installed. We want
 to see how the behavior changes after installing the Git hooks. We must first
 reset the workspace to the `HEAD` commit before installing the hooks.
 
-```dvc
+```cli
 $ dvc install
 
 $ cat .git/hooks/pre-commit
@@ -253,7 +253,7 @@ is the `post-checkout` script that runs after `git checkout`.
 
 We can now repeat the command run earlier, to see the difference.
 
-```dvc
+```cli
 $ git checkout 7-ml-pipeline
 HEAD is now at 6666298 Create ML pipeline stages
 M       model.pkl
@@ -274,7 +274,7 @@ is not in a _detached HEAD_ state by running `git checkout master`.
 
 If we simply edit one of the code files:
 
-```dvc
+```cli
 $ vi src/featurization.py
 
 $ git commit -a -m "modified featurization"
@@ -291,7 +291,7 @@ interaction. This new behavior corresponds to the Git hook installed, and it
 informs us that the workspace is out of sync. Therefore, we know that
 `dvc repro` command is needed:
 
-```dvc
+```cli
 $ dvc repro
 ...
 To track the changes with git run:

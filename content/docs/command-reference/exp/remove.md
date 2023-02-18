@@ -52,23 +52,23 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 Let's say we have `dvc exp run` 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp list
 master:
-        exp-e6c97
-        exp-1dad0
-        exp-1df77
+        major-mela
+        conic-ease
+        lucid-lair
 ```
 
 To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
 (`-A`) option to remove them all at once:
 
-```dvc
-$ dvc exp remove exp-1dad0 exp-1df77
+```cli
+$ dvc exp remove conic-ease lucid-lair
 
 $ dvc exp list
 master:
-        exp-e6c97
+        major-mela
 
 $ dvc exp remove -A
 
@@ -82,7 +82,7 @@ The same applies to queued experiments but these won't have a name to give to
 their ID (shown when queued, and by `dvc exp show`). Let's queue a few
 experiments and then delete some of them:
 
-```dvc
+```cli
 $ dvc exp run --queue -S train.min_split=64
 Queued experiment 'e41d5b4' for future execution.
 $ dvc exp run --queue -S train.min_split=32 --name split32
@@ -107,19 +107,19 @@ $ dvc exp show
 
 We can also remove experiments from a remote Git repository:
 
-```dvc
-$ dvc exp push myremote exp-e6c97
-$ dvc exp push myremote exp-9fcef
-$ dvc exp push myremote exp-1dad0
+```cli
+$ dvc exp push myremote major-mela
+$ dvc exp push myremote urban-sign
+$ dvc exp push myremote conic-ease
 
 $ dvc exp list myremote
 master:
-        exp-1dad0
-        exp-9fcef
-        exp-e6c97
+        conic-ease
+        urban-sign
+        major-mela
 
-$ dvc exp remove -g myremote exp-9fcef exp-e6c97
+$ dvc exp remove -g myremote urban-sign major-mela
 $ dvc exp list myremote
 master:
-        exp-1dad0
+        conic-ease
 ```

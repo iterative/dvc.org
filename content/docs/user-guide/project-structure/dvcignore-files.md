@@ -29,9 +29,13 @@ Ignored files will not be saved in <abbr>cache</abbr>, they will be non-existent
 for DVC. It's worth to remember that, especially when ignoring files inside
 DVC-handled directories.
 
-⚠️ `dvc run` and `dvc repro` might remove ignored files. If they are not
+<admon type="warning">
+
+`dvc exp run` and `dvc repro` might remove ignored files. If they are not
 produced by a pipeline [stage](/doc/command-reference/run), they can be lost
 permanently.
+
+</admon>
 
 Keep in mind that when you add `.dvcignore` patterns that affect an existing
 <abbr>output</abbr>, its status will change and DVC will behave as if the
@@ -48,7 +52,7 @@ raises an error. Ignoring files inside such directories should be handled from a
 
 Let's see what happens when we add a file to `.dvcignore`:
 
-```dvc
+```cli
 $ mkdir data
 $ echo 1 > data/data1
 $ echo 2 > data/data2
@@ -62,7 +66,7 @@ $ tree
 We created the `data/` directory with two data files. Let's ignore one of them,
 and double check that it's being ignored by DVC:
 
-```dvc
+```cli
 $ echo data/data1 >> .dvcignore
 $ cat .dvcignore
 data/data1
@@ -77,7 +81,7 @@ data/data1
 Let's now track the directory with `dvc add`, and see what happens in the
 <abbr>cache</abbr>:
 
-```dvc
+```cli
 $ dvc add data
 ...
 $ tree .dvc/cache
@@ -106,7 +110,7 @@ starting with `26`) is for `data2`. There is no cache entry for the `data1` file
 
 Now, let's modify file `data1` and see if it affects `dvc status`.
 
-```dvc
+```cli
 $ dvc status
 Data and pipelines are up to date.
 
@@ -119,7 +123,7 @@ Data and pipelines are up to date.
 
 Similarly, deleting a dvc ignored file also does not affect `dvc status`:
 
-```dvc
+```cli
 $ rm data/data1
 $ dvc status
 Data and pipelines are up to date.
@@ -127,7 +131,7 @@ Data and pipelines are up to date.
 
 Modifications/deletions on a tracked file produce a different output:
 
-```dvc
+```cli
 $ echo "345" >> data/data2
 $ dvc status
 data.dvc:
@@ -137,7 +141,7 @@ data.dvc:
 
 ## Example: Moving ignored data
 
-```dvc
+```cli
 $ mkdir data
 $ echo data1 >> data/data1
 $ echo data2 >> data/data2
@@ -160,7 +164,7 @@ If we move the ignored file to a new file within the `data` directory (which is
 not dvc ignored), DVC will behave as if we modified the directory by adding a
 new file:
 
-```dvc
+```cli
 $ dvc status
 Data and pipelines are up to date.
 
@@ -175,7 +179,7 @@ data.dvc:
 
 Let's analyze an example <abbr>workspace</abbr>:
 
-```dvc
+```cli
 $ mkdir dir1 dir2
 $ echo data1 >> dir1/data1
 $ echo data2 >> dir2/data2
@@ -192,14 +196,14 @@ $ tree .
 
 Modify data files:
 
-```dvc
+```cli
 $ echo mod > dir1/data1
 $ echo mod > dir2/data2
 ```
 
 Check status:
 
-```dvc
+```cli
 $ dvc status
 dir1/data1.dvc:
 	changed outs:
@@ -212,13 +216,13 @@ dir2/data2.dvc:
 Note that both data files are displayed as modified. Create a `.dvcignore` file
 and insert pattern matching one of the files:
 
-```dvc
+```cli
 $ echo 'dir1/*' >> .dvcignore
 ```
 
 Check status again:
 
-```dvc
+```cli
 $ dvc status
 dir2/data2.dvc:
 	changed outs:

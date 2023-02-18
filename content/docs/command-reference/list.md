@@ -31,7 +31,7 @@ This command's output is equivalent to cloning the repo and
 [pulling](/doc/command-reference/pull) the data (except that nothing is
 downloaded), like this:
 
-```dvc
+```cli
 $ git clone <url> example
 $ cd example
 $ dvc pull
@@ -52,8 +52,8 @@ providing a path to listing commands such as `ls` or `aws s3 ls`.
 Only the root directory is listed by default, but the `-R` option can be used to
 list files recursively.
 
-Please note that `dvc list` doesn't check whether the listed data (tracked by
-DVC) actually exists in remote storage, so it's not guaranteed whether it can be
+Note that `dvc list` doesn't check whether the listed data (tracked by DVC)
+actually exists in remote storage, so it's not guaranteed whether it can be
 accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
@@ -84,7 +84,7 @@ We can use this command for getting information about a repository before using
 other commands like `dvc get` or `dvc import` to reuse any file or directory
 found in it. This includes files (or directories) tracked by DVC or by Git:
 
-```dvc
+```cli
 $ dvc list https://github.com/iterative/example-get-started
 .dvcignore
 .gitignore
@@ -107,7 +107,7 @@ an output of the `train` stage (in the `outs` field).
 
 We can now, for example, download the model file with:
 
-```dvc
+```cli
 $ dvc get https://github.com/iterative/example-get-started model.pkl
 ```
 
@@ -118,7 +118,7 @@ Let's imagine a DVC repo used as a
 different datasets in separate directories. We can do this recursively, using
 `-R` option:
 
-```dvc
+```cli
 $ dvc list -R https://github.com/iterative/dataset-registry
 .gitignore
 README.md
@@ -141,7 +141,7 @@ bundle the current data files in the project.
 For example, here's a TAR archive of the entire <abbr>workspace</abbr>
 (Linux/GNU):
 
-```dvc
+```cli
 $ dvc list . -R | tar -cvf project.tar
 ```
 
@@ -157,6 +157,6 @@ ZIP alternative for
 [POSIX on Windows](/doc/user-guide/how-to/run-dvc-on-windows) (Python
 installed):
 
-```dvc
+```cli
 $ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip
 ```

@@ -20,12 +20,17 @@ to its corresponding page.
 ### Initialize DVCLive
 
 ```python
-from dvclive import Live
-
-live = Live()
+with Live(save_dvc_exp=True) as live:
 ```
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
+
+<admon type="info">
+
+Including `save_dvc_exp=True` will automatically
+[track the results](/doc/dvclive/how-it-works#track-the-results).
+
+</admon>
 
 ### Log data
 
@@ -48,13 +53,13 @@ live.log_params(params)
 See `Live.log_param()` / `Live.log_params()`.
 
 </tab>
-<tab title="Scalars">
+<tab title="Metrics">
 
 ```python
-live.log("acc", 0.9)
+live.log_metric("acc", 0.9)
 ```
 
-See `Live.log()`.
+See `Live.log_metric()`.
 
 </tab>
 <tab title="Images">
@@ -67,15 +72,15 @@ live.log_image("image.png", img)
 See `Live.log_image()`.
 
 </tab>
-<tab title="Plots">
+<tab title="SKLearn Plots">
 
 ```python
 y_true = [0, 0, 1, 1]
 y_pred = [0.2, 0.5, 0.3, 0.8]
-live.log_plot("roc", y_true, y_score)
+live.log_sklearn_plot("roc", y_true, y_score)
 ```
 
-See `Live.log_plot()`.
+See `Live.log_sklearn_plot()`.
 
 </tab>
 </toggle>
@@ -86,7 +91,14 @@ See `Live.log_plot()`.
 live.next_step()
 ```
 
-See `Live.next_step()` and `Live.set_step()` for details.
+See `Live.next_step()`.
+
+Under the hood, `Live.next_step()` calls `Live.make_summary()`,
+`Live.make_dvcyaml()`, and `Live.make_report()`.
+
+If you want to decouple the `step` update from the rest of the calls, you can
+manually modify the `Live.step` property and call `Live.make_summary()` /
+`Live.make_dvcyaml()` / `Live.make_report()`.
 
 ## Putting it all together
 
@@ -97,22 +109,22 @@ Joining the above snippets, you can include DVCLive in your training code:
 
 from dvclive import Live
 
-live = Live()
+with Live(save_dvc_exp=True) as live:
 
-live.log_param("epochs", NUM_EPOCHS)
+    live.log_param("epochs", NUM_EPOCHS)
 
-for epoch in range(NUM_EPOCHS):
-    train_model(...)
-    metrics = evaluate_model(...)
+    for epoch in range(NUM_EPOCHS):
+        train_model(...)
+        metrics = evaluate_model(...)
 
-    for metric_name, value in metrics.items():
-        live.log(metric_name, value)
+        for metric_name, value in metrics.items():
+            live.log_metric(metric_name, value)
 
-    live.next_step()
+        live.next_step()
 ```
 
 ## Outputs
 
 After you run your training code, all the logged data will be stored in the
-`dvclive` folder. Check the [DVCLive outputs](/doc/dvclive/outputs) page for
-more details.
+`dvclive` directory. Check the [DVCLive outputs](/doc/dvclive/how-it-works) page
+for more details.

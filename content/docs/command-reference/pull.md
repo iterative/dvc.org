@@ -141,14 +141,14 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 
 Start by cloning our example repo if you don't already have it:
 
-```dvc
+```cli
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
 </details>
 
-```dvc
+```cli
 .
 ├── data
 │   └── data.xml.dvc
@@ -162,7 +162,7 @@ $ cd example-get-started
 We can now just run `dvc pull` to download the most recent `data/data.xml`,
 `model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr>:
 
-```dvc
+```cli
 $ dvc pull
 
 $ tree
@@ -176,14 +176,14 @@ $ tree
 
 We can also download only the <abbr>outputs</abbr> of a specific stage:
 
-```dvc
+```cli
 $ dvc pull train
 ```
 
 ## Example: With dependencies
 
-> Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
-> follow this example if you tried the previous ones.
+> Delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to follow
+> this example if you tried the previous ones.
 
 Our [pipeline](/doc/command-reference/dag) has been set up with these
 [stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
@@ -193,7 +193,7 @@ Imagine the [remote storage](/doc/command-reference/remote) has been modified
 such that the data in some of these stages should be updated in the
 <abbr>workspace</abbr>.
 
-```dvc
+```cli
 $ dvc status -c
 ...
 	deleted:            data/features/test.pkl
@@ -205,7 +205,7 @@ $ dvc status -c
 One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
-```dvc
+```cli
 $ dvc pull --with-deps featurize
 
 # Use the partial update...
@@ -227,7 +227,7 @@ For using the `dvc pull` command, a remote storage must be defined. (See
 already set up and you can use `dvc remote list` to check them. To remember how
 it's done, and set a context for the example, let's define a default SSH remote:
 
-```dvc
+```cli
 $ dvc remote add -d r1 ssh://user@example.com/path/to/dvc/remote/storage
 $ dvc remote list
 r1	ssh://user@example.com/path/to/dvc/remote/storage
@@ -239,6 +239,6 @@ r1	ssh://user@example.com/path/to/dvc/remote/storage
 To download DVC-tracked data from a specific DVC remote, use the `--remote`
 (`-r`) option of `dvc pull`:
 
-```dvc
+```cli
 $ dvc pull --remote r1
 ```

@@ -55,39 +55,39 @@ or `dvc exp diff`, and before committing it to Git (making it [persistent].
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
 Let's say we have run 3 experiments in our project:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+  neutral:**Experiment**               neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.61314   1500                     2
-  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
-  ├── exp-e6c97           Oct 21, 2020   0.69830   2000                     2
-  ├── exp-1dad0           Oct 09, 2020   0.57756   1200                     2
-  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
+  workspace                -              0.61314   1500                     2
+  10-bigrams-experiment    Jun 20, 2020   0.61314   1500                     2
+  ├── gluey-leak           Oct 21, 2020   0.69830   2000                     2
+  ├── frank-farm           Oct 09, 2020   0.57756   1200                     2
+  └── union-mart           Oct 09, 2020   0.51676   500                      2
  ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-Since `exp-e6c97` has the best `auc`, we may want to commit it into our project
+Since `gluey-leak` has the best `auc`, we may want to commit it into our project
 (this is what we call to "make it persistent"):
 
-```dvc
-$ dvc exp apply exp-e6c97
-Changes for experiment 'exp-e6c97' have been applied...
+```cli
+$ dvc exp apply gluey-leak
+Changes for experiment 'gluey-leak' have been applied...
 ```
 
 We can inspect what changed in the workspace with Git,
 
-```dvc
+```cli
 $ git status
 On branch master
 Changes not staged for commit:
@@ -107,7 +107,7 @@ $ git diff params.yaml
 
 and with DVC:
 
-```dvc
+```cli
 $ dvc status
 Data and pipelines are up to date.
 $ dvc diff
@@ -121,14 +121,14 @@ files summary: 0 added, 0 deleted, 3 modified, 0 not in cache
 
 To finish making this experiment persistent, we commit the changes to the repo:
 
-```dvc
+```cli
 $ git add .
-$ git commit -m "persist exp-e6c97"
+$ git commit -m "persist gluey-leak"
 ```
 
 We can now see that the experiment is the new tip of our master branch:
 
-```dvc
+```cli
 $ dvc exp show
 ```
 

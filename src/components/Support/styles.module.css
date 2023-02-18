@@ -23,11 +23,11 @@
   margin: 0 auto;
   padding-top: 80px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     padding-top: 70px;
   }
 
-  @media (--xs-scr) {
+  @media screen(xsMax) {
     padding-top: 50px;
   }
 }
@@ -38,7 +38,7 @@
   margin: 0 20px 60px;
   padding: 10px;
 
-  @media (--sm-scr) {
+  @media screen(smMax) {
     flex-basis: 100%;
     margin: 0 0 40px;
     padding: 10px 0;
@@ -70,11 +70,11 @@
   }
 
   &.chat .featureIcon::after {
-    mask-image: url("/img/support/chat.svg");
+    mask-image: url('/img/support/chat.svg');
   }
 
   &.email .featureIcon::after {
-    mask-image: url("/img/support/email.svg");
+    mask-image: url('/img/support/email.svg');
   }
 
   &.bugs {
@@ -83,7 +83,7 @@
 
       &::after {
         background-color: var(--color-azure);
-        mask-image: url("/img/support/bug.svg");
+        mask-image: url('/img/support/bug.svg');
       }
     }
 
@@ -108,7 +108,7 @@
 
       &::after {
         background-color: var(--color-orange-bright);
-        mask-image: url("/img/support/forum.svg");
+        mask-image: url('/img/support/forum.svg');
       }
     }
 
@@ -141,7 +141,7 @@
   border-radius: 50%;
 
   &::after {
-    content: " ";
+    content: ' ';
     display: block;
     width: 50px;
     height: 50px;
@@ -208,7 +208,7 @@
   width: 50px;
   height: 50px;
   cursor: pointer;
-  mask-image: url("/img/support/discord.svg");
+  mask-image: url('/img/support/discord.svg');
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: #b88eeb;

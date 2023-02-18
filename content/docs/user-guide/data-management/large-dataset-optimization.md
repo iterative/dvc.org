@@ -105,14 +105,14 @@ your system, however this is not the most common case at this time, so it falls
 back to the copying strategy. If you wish to enable hard or soft links, you can
 configure DVC like this:
 
-```dvc
+```cli
 $ dvc config cache.type hardlink,symlink
 ```
 
 > Refer to `dvc config cache` for more details.
 
 Note that with this `cache.type`, your workspace files will be in read-only mode
-in order to protect the cache from corruption. Please refer to
+in order to protect the cache from corruption. Refer to
 [Update a Tracked File](/doc/user-guide/how-to/update-tracked-files) on how to
 manage tracked files under these cache configurations.
 
@@ -122,8 +122,11 @@ To make sure that the data files in the workspace are consistent with the
 
 ---
 
-> \* **copy-on-write links or "reflinks"** are a relatively new way to link
-> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
-> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
-> means that editing a reflinked file is always safe as all the other links to
-> the file will reflect the changes.
+<admon>
+   
+\* ([copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write)) links or
+**reflinks** are a type of file linking available in modern file systems. Unlike
+hard links or symlinks, editing reflinks is always safe, as the original
+<abbr>cached</abbr> data will remain unchanged.
+
+</admon>

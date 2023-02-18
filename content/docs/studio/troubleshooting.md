@@ -23,12 +23,14 @@ Iterative Studio.
 - [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+- [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 
 **Model registry**
 
 - [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
 - [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
 - [How can I remove models from my model registry](#how-can-i-remove-models-from-my-model-registry)
+- [My models have disappeared even though I did not remove (deprecate) them](#my-models-have-disappeared-even-though-i-did-not-remove-deprecate-them)
 - [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
 
 **Billing and payment**
@@ -37,7 +39,7 @@ Iterative Studio.
 
 ## Support
 
-If you need further help, please send us a message using `Help` on the
+If you need further help, you can send us a message using `Help` on the
 [Iterative Studio website](https://studio.iterative.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
@@ -198,14 +200,15 @@ show/hide columns, remember to save the changes.
 ## Project does not contain some of my commits or branches
 
 This is likely not an error. Iterative Studio identifies commits that do not
-change metrics, files or hyperparameters and will auto-hide such commits. You
-can also manually hide commits and branches. So, it is possible that the commits
-or branches you do not see in your project were manually hidden by you or
-someone else in your team.
+change metrics, files or hyperparameters and will auto-hide such commits. It
+also auto-hides commits that contain the string `[skip studio]` in the commit
+message. You can also manually hide commits and branches. So, it is possible
+that the commits or branches you do not see in your project were manually hidden
+by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is
-not in the hidden commits list, then please [raise a support request](#support).
+not in the hidden commits list, please [raise a support request](#support).
 
 [display preferences -> hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
@@ -213,16 +216,26 @@ not in the hidden commits list, then please [raise a support request](#support).
 ## Error: Failed to push experiment to repository
 
 This is a non-specific error with a range of possible causes. To resolve it,
-please check:
+check that:
 
-- Your account is able to push to the repository.
+- Your account is able to push to the Git repository.
+
+  <admon>
+
+  If your Git account does not have write access on the Git repository connected
+  to a project, you cannot push changes (e.g., new experiments) to the
+  repository even if the project belongs to a team
+  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/teams#roles).
+
+  </admon>
+
 - The repository is **not** marked as archived / read only.
 - In case of GitHub/GitLab/BitBucket enterprise organizations: there is no IP
   whitelisting policy in place which limits access to the organization's
   resources.
 - Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
-  are experiencing service disruptions. In case of an on-premises deployment,
-  please check with your administrator.
+  are experiencing service disruptions. In case of an on-premises deployment, do
+  check with your administrator.
 
 [gh-status]: https://www.githubstatus.com/
 [gl-status]: https://status.gitlab.com/
@@ -230,6 +243,17 @@ please check:
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
+
+## Project does not display live metrics and plots
+
+Confirm that you are correctly following the
+[procedure to send live metrics and plots](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+to Iterative Studio.
+
+Also note that live metrics and plots for an experiment are displayed only if
+its parent Git commit is present in the project table. So, before you run the
+experiment, make sure that its parent commit is pushed to Git and shown in the
+project table.
 
 ## I cannot find my desired Git repository in the form to add a model
 
@@ -242,12 +266,19 @@ Then you can come back to the model registry and add the model.
 ## Model registry does not display the models in my Git repositories
 
 For a model to be displayed in the model registry, it has to be registered using
-[GTO]. You can [register the model] from Iterative Studio or with GTO's CLI.
+[GTO]. You can [register the model] from Iterative Studio or with the [`gto`
+CLI].
 
 ## How can I remove models from my model registry
 
-To remove models from the model registry, you should remove the associated
-project from your projects dashboard.
+To remove a model from the model registry, use the `Deprecate model` menu item
+in the 3-dot menu next to the model name. You can also remove all of a project's
+models by deleting the project from your projects dashboard.
+
+## My models have disappeared even though I did not remove (deprecate) them
+
+Models can also be removed by deleting the associated project from the projects
+dashboard. So make sure that the project is not deleted.
 
 ## How can I un-assign stages from model versions
 
@@ -268,5 +299,6 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[gto]: https://github.com/iterative/gto
+[gto]: https://mlem.ai/doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
+[`gto` cli]: https://mlem.ai/doc/gto/command-reference

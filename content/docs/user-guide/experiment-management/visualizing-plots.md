@@ -15,22 +15,28 @@ workflow is:
    ...
    ```
 
-2. [Define plots](#defining-plots), optionally using
+2. [Define plots](#defining-plots) in `dvc.yaml`, optionally using
    [templates](#plot-templates-data-series-only) to configure how to visualize
    the data.
 
    ```yaml
    plots:
-     evaluation/test/plots/confusion_matrix.json: # Configure template and axes.
-       template: confusion
-       x: actual
-       y: predicted
-     ROC: # Combine multiple data sources.
-       x: fpr
-       y:
-         evaluation/train/plots/roc.json: tpr
-         evaluation/test/plots/roc.json: tpr
-     evaluation/importance.png: # Plot an image.
+     # Data series source
+     - eval/live/plots/sklearn/cm/test.json:
+         # Configure template and axes.
+         template: confusion
+         x: actual
+         y: predicted
+
+     # Multiple data sources
+     - ROC:
+         x: fpr
+         y:
+           eval/live/plots/sklearn/roc/train.json: tpr
+           eval/live/plots/sklearn/roc/test.json: tpr
+
+     # Image file source
+     - eval/importance.png
    ```
 
 3. [Show](/doc/command-reference/plots/show) all plots in a single view or
@@ -38,8 +44,8 @@ workflow is:
 
    ![](/img/guide_plots_intro_show.png)
 
-4. Run [experiments](/doc/user-guide/experiment-management/experiments-overview)
-   and [compare](#comparing-plots) the resulting plots.
+4. Run [experiments](/doc/user-guide/experiment-management) and
+   [compare](#comparing-plots) the resulting plots.
 
    ![](/img/guide_plots_intro_compare.png)
 
@@ -47,10 +53,10 @@ workflow is:
 
 To create valid plots files, you can:
 
-- Use [DVCLive](/doc/dvclive/dvclive-with-dvc) in your Python code to log the
-  data automatically in a DVC-compatible format.
+- Use [DVCLive](/doc/dvclive/) in your Python code to log the data automatically
+  in a DVC-compatible format.
 - Generate a JSON, YAML 1.2, CSV, or TSV data series file yourself.
-- Save an JPEG, GIF, or PNG image file to render directly in your reports
+- Save an JPEG, GIF, PNG, or SVG image file to render directly in your reports
   (helpful for custom visualizations that would be hard to configure in DVC).
 
 DVC generates plots as static HTML webpages you can open with a web browser or
@@ -154,14 +160,11 @@ top-level definition, DVC will create separate rendering for each type.
 Plots can be defined in a top-level `plots` key in `dvc.yaml`. Top-level plots
 can use any file found in the <abbr>project</abbr>.
 
-In the simplest use, you only need to provide the plot's file path as a
-dictionary key. In the example below, DVC will take data from `logs.csv` and use
-the default plotting behavior (apply the `linear` plot [template] to the last
-found column):
+In the simplest use, you only need to provide the plot's file path. In the
+example below, DVC will take data from `logs.csv` and use the default plotting
+behavior (apply the `linear` plot [template] to the last found column):
 
 ```yaml
-# dvc.yaml
----
 stages:
   build:
     cmd: python train.py
@@ -169,10 +172,10 @@ stages:
       - logs.csv
   ...
 plots:
-  - logs.csv:
+  - logs.csv
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -184,13 +187,11 @@ For customization, we can:
 - Use a plot ID (`ROC`) that is not a file path.
 - Specify one or more columns for the `x` (`fpr`) and `y` (`tpr`) axes.
 - Specify one or more data sources (`evaluation/train/plots/roc.json` and
-  `evaluation/test/plots/roc.json`) as keys to the `y` axis.
+  `evaluation/test/plots/roc.json`) as keys to the `x` and `y` axes.
 - Specify any other available configuration field (`title`, `template`,
   `x_label`, `y_label`).
 
 ```yaml
-# dvc.yaml
----
 plots:
   - ROC:
       x: fpr
@@ -202,7 +203,7 @@ plots:
       y_label: True Positive Rate
 ```
 
-```dvc
+```cli
 $ dvc plots show
 file:///Users/usr/src/dvc_plots/index.html
 ```
@@ -223,8 +224,8 @@ Refer to the [full format specification] and `dvc plots show` for more details.
 ### Plot outputs
 
 When defining [pipelines], some <abbr>outputs</abbr> (both files and
-directories) can be placed under a `plots` list for the corresponding stage.
-This will tell DVC that they are intended for visualization.
+directories) can be placed under a `plots` list for the corresponding stage in
+`dvc.yaml`. This will tell DVC that they are intended for visualization.
 
 <admon type="info">
 
@@ -234,8 +235,6 @@ When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
 </admon>
 
 ```yaml
-# dvc.yaml
----
 stages:
   build:
     cmd: python train.py
@@ -304,7 +303,7 @@ Extension][dvc extension].
 
 ![](/img/plots_compare_vs_code.png)
 
-[experiments]: /doc/user-guide/experiment-management/experiments-overview
+[experiments]: /doc/user-guide/experiment-management
 [compare between experiments]:
   /doc/user-guide/experiment-management/comparing-experiments
 [revisions]: https://git-scm.com/docs/revisions

@@ -33,6 +33,9 @@ DVC's analytics record the following information per event:
 - Command return code e.g. `1`
 - A random user ID (e.g. `8ca59a29-ddd9-4247-992a-9b4775732aad`), generated with
   [`uuid`](https://docs.python.org/3/library/uuid.html)
+- For CI jobs, a random ID per repo (e.g.
+  `8ca59a29-ddd9-4247-992a-9b4775732aad`), generated with
+  [`uuid`](https://docs.python.org/3/library/uuid.html)
 
 This _does not allow us to track individual users_ but does enable us to
 accurately measure user counts vs. event counts.
@@ -53,7 +56,7 @@ DVC analytics help the entire community, so leaving it on is appreciated.
 However, if you want to opt out of DVC's analytics, you can disable it via
 `dvc config` command:
 
-```dvc
+```cli
 $ dvc config core.analytics false
 ```
 

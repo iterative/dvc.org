@@ -97,11 +97,11 @@ project we want to clear.
   well as in the workspace (implying `-w`). This preserves the cache for all
   data used in the entire commit history of the project.
 
-  A use case for this option is to safely delete all temporary data `dvc run`
-  and/or `dvc repro` cache when used without committing changes (see the `-O` or
-  `-M`, and `--no-commit` options in those commands). In that scenario, data
-  that is never referenced from the workspace or from any Git commit can still
-  be stored in the project's cache).
+  A use case for this option is to safely delete all temporary data
+  `dvc exp run` and/or `dvc repro` cache when used without committing changes
+  (see the `-O` or `-M`, and `--no-commit` options in those commands). In that
+  scenario, data that is never referenced from the workspace or from any Git
+  commit can still be stored in the project's cache).
 
   > \* Not including [DVC experiments]
 
@@ -151,7 +151,7 @@ project we want to clear.
 
 Basic example of cleaning up the <abbr>cache</abbr>:
 
-```dvc
+```cli
 $ du -sh .dvc/cache/
 7.4G    .dvc/cache/
 ```
@@ -160,7 +160,7 @@ When you run `dvc gc --workspace`, DVC removes all objects from cache that are
 not referenced in the <abbr>workspace</abbr> (by collecting hash values from the
 <abbr>DVC files</abbr>):
 
-```dvc
+```cli
 $ dvc gc --workspace
 
 '.dvc/cache/27e30965256ed4d3e71c2bf0c4caad2e' was removed
@@ -176,7 +176,7 @@ $ dvc gc --workspace
 
 Let's check the size now:
 
-```dvc
+```cli
 $ du -sh .dvc/cache/
 3.1G    .dvc/cache/
 ```

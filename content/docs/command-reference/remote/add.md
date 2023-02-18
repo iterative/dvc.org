@@ -1,9 +1,17 @@
 # remote add
 
-Add a new [data remote](/doc/command-reference/remote).
+Add a new `dvc remote` to the <abbr>project</abbr> configuration.
 
-> Depending on your storage type, you may also need `dvc remote modify` to
-> provide credentials and/or configure other remote parameters.
+<admon type="tip">
+
+You may also need `dvc remote modify` to provide credentials and/or configure
+other remote parameters. See [Remote storage configuration] for more
+information.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
+
+</admon>
 
 ## Synopsis
 
@@ -19,41 +27,68 @@ positional arguments:
 
 ## Description
 
-This command creates a `remote` section in the <abbr>DVC project</abbr>'s
-[config file](/doc/command-reference/config) and optionally assigns a _default
-remote_ in the `core` section, if the `--default` option is used (recommended
-for the first remote):
+Registers an [additional storage] location to save data files (besides the
+<abbr>cache</abbr>) and optionally sets it as the `--default` remote. DVC
+remotes can point to a cloud storage service, an SSH server, network-attached
+storage, or even a directory in the local file system.
 
-```ini
-['remote "myremote"']
-url = /tmp/dvcstore
-[core]
-remote = myremote
+[additional storage]: /doc/user-guide/data-management/remote-storage
+
+<admon type="tip">
+
+A [default remote] is expected by `dvc push`, `dvc pull`, `dvc status`,
+`dvc gc`, and `dvc fetch` unless their `--remote` option is used.
+
+[default remote]: /doc/command-reference/remote/default
+
+</admon>
+
+The remote `name` (required) is used to identify the remote and must be unique.
+DVC will determine the [type of remote](#supported-storage-types) based on the
+provided `url` (also required), a URL or path for the location.
+
+<admon type="info">
+
+The storage type determines which config parameters you can access via
+`dvc remote modify`. Note that the `url` itself can be modified.
+
+</admon>
+
+This command creates a [`remote`] section in the project's [config file]
+(`.dvc/config`). The `--default` (`-d`) flag uses the [`core`] config section:
+
+```cli
+$ dvc remote add -d temp /tmp/dvcstore
 ```
 
-> 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
-> option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that
-> option is omitted.
+```ini
+# .dvc/config
+['remote "temp"']
+    url = /tmp/dvcstore
+[core]
+    remote = myremote
+```
 
-`name` and `url` are required. The `name` is used to identify the remote and
-must be unique for the project.
+[config file]: /doc/command-reference/config
+[`remote`]: /doc/command-reference/config#remote
+[`core`]: /doc/command-reference/config#core
 
-`url` specifies a location to store your data. It can represent a cloud storage
-service, an SSH server, network-attached storage, or even a directory in the
-local file system (see all the supported remote storage types in the examples
-below).
+<admon type="info">
 
-DVC will determine the [type of remote](#supported-storage-types) based on the
-`url` provided. This may affect which parameters you can access later via
-`dvc remote modify` (note that the `url` itself can be modified).
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
 
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+```cli
+$ pip install "dvc[s3]"
+```
 
-## Options
+[installed dvc]: /doc/install
+
+</admon>
+
+## Command options/flags
 
 - `--system` - save remote configuration to the system config file (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
@@ -193,7 +228,7 @@ parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 </details>
 
@@ -272,8 +307,8 @@ $ dvc remote add -d myremote ssh://user@example.com/path
 > See `dvc remote modify` for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
-`sftp` (GNU/Linux).
+Check that you can connect both ways with tools like `ssh` and `sftp`
+(GNU/Linux).
 
 > Note that the server's SFTP root might differ from its physical root (`/`).
 
@@ -379,10 +414,10 @@ Using an absolute path (recommended):
 ```cli
 $ dvc remote add -d myremote /tmp/dvcstore
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-        url = /tmp/dvcstore
-  ...
+...
+['remote "myremote"']
+    url = /tmp/dvcstore
+...
 ```
 
 > Note that the absolute path `/tmp/dvcstore` is saved as is.
@@ -393,10 +428,10 @@ directory, but saved **relative to the config file location**:
 ```cli
 $ dvc remote add -d myremote ../dvcstore
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-      url = ../../dvcstore
-  ...
+...
+['remote "myremote"']
+    url = ../../dvcstore
+...
 ```
 
 > Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
@@ -412,7 +447,7 @@ region.
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-```dvc
+```cli
 $ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 
@@ -423,28 +458,28 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-region = us-east-2
+    url = s3://mybucket/path
+    region = us-east-2
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 The list of remotes should now be:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	s3://mybucket/path
 ```
 
 You can overwrite existing remotes using `-f` with `dvc remote add`:
 
-```dvc
+```cli
 $ dvc remote add -f myremote s3://mybucket/another-path
 ```
 
 List remotes again to view the updated remote:
 
-```dvc
+```cli
 $ dvc remote list
 myremote	s3://mybucket/another-path
 ```

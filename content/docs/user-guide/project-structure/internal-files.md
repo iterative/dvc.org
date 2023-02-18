@@ -74,10 +74,8 @@ operation.
 
 ## Structure of the cache directory
 
-The DVC cache is a
-[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
-(by default in `.dvc/cache`), which adds a layer of indirection between code and
-data.
+The DVC cache is a [content-addressable storage] (by default in `.dvc/cache`),
+which adds a layer of indirection between code and data.
 
 There are two ways in which the data is <abbr>cached</abbr>, depending on
 whether it's a single file, or a directory (which may contain multiple files).
@@ -85,6 +83,9 @@ whether it's a single file, or a directory (which may contain multiple files).
 Note files are renamed, reorganized, and directory trees are flattened in the
 cache, which always has exactly one depth level with 2-character directories
 (based on hashes of the data contents, as explained next).
+
+[content-addressable storage]:
+  https://en.wikipedia.org/wiki/Content-addressable_storage
 
 ### Files
 
@@ -103,7 +104,7 @@ hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
 
 Let's imagine [adding](/doc/command-reference/add) a directory with 2 images:
 
-```dvc
+```cli
 $ tree data/images/
 data/images/
 ├── cat.jpeg
@@ -114,7 +115,7 @@ $ dvc add data/images
 
 The resulting cache dir looks like this:
 
-```dvc
+```cli
 .dvc/cache/
 ├── 40
 │   └── 2e97968614f583ece3b35555971f64
@@ -128,7 +129,7 @@ The files in the directory are cached normally. The directory itself gets a
 similar entry, with the `.dir` extension. It contains the mapping of files
 inside (as a JSON array), identified by their hash values:
 
-```dvc
+```cli
 $ cat .dvc/cache/6f/db5336fce0dbfd669f83065f107551.dir
 [{"md5": "de7371b0119f4f75f9de703c7c3bac16", "relpath": "cat.jpeg"},
 {"md5": "402e97968614f583ece3b35555971f64", "relpath": "index.jpeg"}]
@@ -147,7 +148,7 @@ Runs are identified as combinations of exact <abbr>dependency</abbr> contents
 command(s) to execute. These combinations are represented by special hashes that
 translate to the file paths inside the run-cache dir:
 
-```dvc
+```cli
 $ tree .dvc/cache/runs
 .dvc/cache/runs
 └── 86

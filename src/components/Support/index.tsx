@@ -60,7 +60,7 @@ const SupportPage: React.FC = () => (
           <div className={cn(styles.feature, styles.bugs)}>
             <div className={styles.featureHeader}>
               <div className={styles.featureIcon} />
-              <h3 className={styles.featureName}>Bugs & Features</h3>
+              <h3 className={styles.featureName}>Bugs & Feature Requests</h3>
             </div>
             <div className={styles.featureDescription}>
               Found an issue or have an idea? Check our GitHub{' '}

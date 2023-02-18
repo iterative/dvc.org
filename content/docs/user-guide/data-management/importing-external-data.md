@@ -44,8 +44,8 @@ downloads a file from an external location, on all the supported location types.
 
 ### Amazon S3
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d s3://mybucket/data.txt \
           -o data.txt \
           aws s3 cp s3://mybucket/data.txt data.txt
@@ -57,8 +57,8 @@ $ dvc run -n download_file \
 
 ### Microsoft Azure Blob Storage
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d azure://mycontainer/data.txt \
           -o data.txt \
           az storage copy \
@@ -74,8 +74,8 @@ $ dvc run -n download_file \
 
 ### Google Cloud Storage
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d gs://mybucket/data.txt \
           -o data.txt \
           gsutil cp gs://mybucket/data.txt data.txt
@@ -87,16 +87,16 @@ $ dvc run -n download_file \
 
 ### SSH
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d ssh://user@example.com/path/to/data.txt \
           -o data.txt \
           scp user@example.com:/path/to/data.txt data.txt
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
-`sftp` (GNU/Linux).
+Check that you can connect both ways with tools like `ssh` and `sftp`
+(GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 
@@ -106,8 +106,8 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### HDFS
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d hdfs://user@example.com/data.txt \
           -o data.txt \
           hdfs fs -copyToLocal \
@@ -122,8 +122,8 @@ $ dvc run -n download_file \
 
 > Including HTTPs
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d https://example.com/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
@@ -135,8 +135,8 @@ $ dvc run -n download_file \
 
 ### local file system paths
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d /home/shared/data.txt \
           -o data.txt \
           cp /home/shared/data.txt data.txt
@@ -158,18 +158,18 @@ dependency.
 
 Let's see an example using SSH. First, register and configure the remote:
 
-```dvc
+```cli
 $ dvc remote add myssh ssh://user@example.com
 $ dvc remote modify --local myssh password 'mypassword'
 ```
 
-> Please refer to `dvc remote modify` for more details like setting up access
+> Refer to `dvc remote modify` for more details like setting up access
 > credentials for the different remote types.
 
 Now, use an alias to this remote when defining the stage:
 
-```dvc
-$ dvc run -n download_file \
+```cli
+$ dvc stage add -n download_file \
           -d remote://myssh/path/to/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
@@ -181,7 +181,7 @@ In the previous examples, special downloading tools were used: `scp`,
 `aws s3 cp`, etc. `dvc import-url` simplifies the downloading for all the
 supported external path or URL types.
 
-```dvc
+```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ```
@@ -218,7 +218,7 @@ determine whether the source has changed and we need to download the file again.
 or from a Git repository. It also creates an external dependency in its import
 `.dvc` file.
 
-```dvc
+```cli
 $ dvc import git@github.com:iterative/example-get-started model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'

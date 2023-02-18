@@ -45,11 +45,18 @@ can also specify `encoding` argument in case of text mode (`"r"`).
 ## Reading a file
 
 ```py
->>> contents = fs.cat_file("get-started/data.xml")
+>>> text = fs.read_text("get-started/data.xml", encoding="utf-8")
 ```
 
-This is similar to `dvc.api.read()`, but it returns the contents of the file as
-bytes instead of a string.
+This is similar to `dvc.api.read()`, which returns the contents of the file as a
+string.
+
+To get the binary contents of the file, you can use `read_bytes()` or
+`cat_file()`.
+
+```py
+>>> contents = fs.read_bytes("get-started/data.xml")
+```
 
 ## Listing all DVC-tracked files recursively
 
@@ -121,6 +128,6 @@ remote if they don't exist in the cache.
 ## API Reference
 
 As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
-it is compatible with most of the APIs that it offers. Please check the fsspec's
-[API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem)
-for more details.
+it is compatible with most of the APIs that it offers. For more details check
+out the fsspec's
+[API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem).

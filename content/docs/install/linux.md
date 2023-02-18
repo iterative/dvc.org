@@ -1,19 +1,31 @@
 # Installation on Linux
 
-> To use DVC [as a Python library](/doc/api-reference), please
-> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+<admon type="tip">
+
+To use DVC [as a Python library](/doc/api-reference), you can install it
+[with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
+
+</admon>
 
 ## Install with pip
 
-> 💡 We **strongly** recommend creating a
-> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-> or using
-> [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> to encapsulate your local environment.
+<admon type="tip">
 
-> ⚠️ Note that Python 3.8+ is needed to get the latest version of DVC.
+We **strongly** recommend creating a
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+or using
+[pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+to encapsulate your local environment.
 
-```dvc
+</admon>
+
+<admon type="info">
+
+Note that Python 3.8+ is needed to get the latest version of DVC.
+
+</admon>
+
+```cli
 $ pip install dvc
 ```
 
@@ -26,7 +38,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ pip install "dvc[s3]"
 ```
 
@@ -34,17 +46,21 @@ In this case it installs the `boto3` library along with DVC.
 
 </details>
 
-> Please restart your terminal or re-source the shell configuration file
-> (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after
-> installation. If restarting the terminal isn't desirable (e.g. containers),
-> it's also possible to manually edit the `PATH` env variable.
+> Restart your terminal, or re-source the shell configuration file (`.bashrc`,
+> `.zshrc`, etc.) if you get `Command 'dvc' not found` after installation. If
+> restarting the terminal isn't desirable (e.g. containers), it's also possible
+> to manually edit the `PATH` env variable.
 
 ## Install with conda
 
-> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
-> [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+<admon type="info">
 
-```dvc
+Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
+[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
+</admon>
+
+```cli
 $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
@@ -57,7 +73,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 
 ### Example: with support for Amazon S3 storage
 
-```dvc
+```cli
 $ conda install -c conda-forge mamba
 $ mamba install -c conda-forge dvc-s3
 ```
@@ -68,9 +84,13 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Install with snap
 
-> Requires [snapd](https://snapcraft.io/docs/installing-snapd).
+<admon type="info">
 
-```dvc
+Requires [snapd](https://snapcraft.io/docs/installing-snapd).
+
+</admon>
+
+```cli
 $ snap install --classic dvc
 ```
 
@@ -83,7 +103,7 @@ $ snap install --classic dvc
 
 ### On Debian/Ubuntu
 
-```dvc
+```cli
 $ sudo wget \
        https://dvc.org/deb/dvc.list \
        -O /etc/apt/sources.list.d/dvc.list
@@ -100,7 +120,7 @@ $ sudo apt install dvc
 
 ### On Fedora/CentOS
 
-```dvc
+```cli
 $ sudo wget \
        https://dvc.org/rpm/dvc.repo \
        -O /etc/yum.repos.d/dvc.repo
@@ -121,7 +141,7 @@ Then install it with the following command.
 
 ### On Debian/Ubuntu
 
-```dvc
+```cli
 $ sudo apt install ./dvc_0.62.1_amd64.deb
 ```
 
@@ -131,7 +151,7 @@ $ sudo apt install ./dvc_0.62.1_amd64.deb
 
 ### On Fedora/CentOS
 
-```dvc
+```cli
 $ sudo yum install dvc-0.62.1-1.x86_64.rpm
 ```
 

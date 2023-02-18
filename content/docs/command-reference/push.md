@@ -119,7 +119,7 @@ To use `dvc push` (without options), a default
 [remote storage](/doc/command-reference/remote) must be defined (see option
 `--default` of `dvc remote add`). Let's see an SSH remote example:
 
-```dvc
+```cli
 $ dvc remote add --default r1 \
                  ssh://user@example.com/path/to/dvc/cache/directory
 ```
@@ -127,7 +127,7 @@ $ dvc remote add --default r1 \
 > For existing <abbr>projects</abbr>, remotes are usually already set up. You
 > can use `dvc remote list` to check them:
 >
-> ```dvc
+> ```cli
 > $ dvc remote list
 > r1	ssh://user@example.com/path/to/dvc/cache/directory
 > ```
@@ -135,13 +135,13 @@ $ dvc remote add --default r1 \
 Push entire data <abbr>cache</abbr> from the current <abbr>workspace</abbr> to
 the default remote:
 
-```dvc
+```cli
 $ dvc push
 ```
 
 Push files related to a specific `.dvc` file only:
 
-```dvc
+```cli
 $ dvc push data.zip.dvc
 ```
 
@@ -156,7 +156,7 @@ Imagine the <abbr>project</abbr> has been modified such that the
 <abbr>outputs</abbr> of some of these stages need to be uploaded to
 [remote storage](/doc/command-reference/remote).
 
-```dvc
+```cli
 $ dvc status --cloud
 ...
 	new:            data/model.p
@@ -167,7 +167,7 @@ $ dvc status --cloud
 One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
-```dvc
+```cli
 $ dvc push --with-deps test-posts
 
 # Do some work based on the partial update...
@@ -204,7 +204,7 @@ uploading to the [remote](/doc/command-reference/remote). `dvc status --cloud`
 will list several files in `new` state. We can see exactly what that means by
 looking in the project's <abbr>cache</abbr>:
 
-```dvc
+```cli
 $ tree .dvc/cache
 .dvc/cache
 ├── 02
@@ -248,7 +248,7 @@ state means.
 Next we can copy the remaining data from the cache to the remote using
 `dvc push`:
 
-```dvc
+```cli
 $ tree ~/vault/recursive
 ~/vault/recursive
 ├── 02
@@ -274,3 +274,60 @@ Cache and remote 'r1' are in sync.
 
 And running `dvc status --cloud`, DVC verifies that indeed there are no more
 files to push to remote storage.
+
+## Example: Version-aware remote for readable storage
+
+Let's set up a [version-aware] remote, which uses cloud versioning to organize
+the remote storage.
+
+[version-aware]:
+  /doc/user-guide/data-management/cloud-versioning#version-aware-remotes
+
+```cli
+$ dvc remote add -d versioned_store s3://mybucket
+$ dvc remote modify versioned_store version_aware true
+
+$ dvc push
+```
+
+> See also `dvc remote add` and `dvc remote modify`.
+
+Now let's look at what was pushed to the remote. Unlike the [example above], the
+version-aware remote looks similar to the data in your workspace and is easy to
+read.
+
+[example above]: #example-what-happens-in-the-cache
+
+```cli
+# Show the current versions.
+$ aws s3 ls --recursive s3://mybucket/
+
+2023-02-01 15:24:09    1708591 data/prepared/test.tsv
+2023-02-01 15:24:10    6728772 data/prepared/train.tsv
+
+# Show all object versions.
+$ aws s3api list-object-versions --bucket mybucket
+{
+    "Versions": [
+        {
+            "ETag": "\"b656f1a8273d0c541340cb129fd5d5a9\"",
+            "Size": 1708591,
+            "StorageClass": "STANDARD",
+            "Key": "data/prepared/test.tsv",
+            "VersionId": "T6rFr7NSHkL3v9tGStO7GTwsVaIFl42T",
+            "IsLatest": true,
+            "LastModified": "2023-02-01T20:24:09.000Z",
+            ...
+        },
+        {
+            "ETag": "\"9ca281786366acca17632c27c5c5cc75\"",
+            "Size": 6728772,
+            "StorageClass": "STANDARD",
+            "Key": "data/prepared/train.tsv",
+            "VersionId": "XaYsHQHWK219n5MoCRe.Rr7LeNbbder_",
+            "IsLatest": true,
+            "LastModified": "2023-02-01T20:24:10.000Z",
+            ...
+        }
+    ]
+```

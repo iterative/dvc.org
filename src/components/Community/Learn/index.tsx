@@ -44,18 +44,19 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
   commentsUrl,
   pictureUrl
 }) => {
-  if (!commentsUrl) {
-    return null
-  }
-
   const logPost = useCallback(() => logBlog(title), [title])
 
-  const { error, ready, result } = useCommentsCount(commentsUrl)
+  const { error, ready, result } = useCommentsCount(commentsUrl || '')
 
   return (
     <div className={cn(sharedStyles.line, sharedStyles.image)} key={url}>
       {pictureUrl && (
-        <Link href={url} target="_blank" onClick={logPost}>
+        <Link
+          href={url}
+          target="_blank"
+          onClick={logPost}
+          className={sharedStyles.link}
+        >
           <img className={styles.image} src={pictureUrl} alt="" />
         </Link>
       )}
@@ -70,7 +71,7 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
           {title}
         </Link>
         <div className={sharedStyles.meta}>
-          {ready && !error && (
+          {commentsUrl && ready && !error && (
             <>
               <Link
                 className={sharedStyles.commentsLink}

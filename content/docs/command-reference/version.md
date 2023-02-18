@@ -29,7 +29,7 @@ usage: dvc version [-h] [-q | -v]
 
 > Note that if you've installed DVC using `pip`, you will need to install
 > `psutil` manually with `pip install psutil` in order for `dvc version` to
-> report file system information. Please see the original
+> report file system information. See the original
 > [issue on GitHub](https://github.com/iterative/dvc/issues/2284) for more info.
 
 ### Components of DVC version
@@ -106,7 +106,7 @@ Getting the DVC version and environment information:
 
 Inside a DVC project:
 
-```dvc
+```cli
 $ dvc version
 
 DVC version: 1.10.0 (pip)
@@ -123,7 +123,7 @@ Repo: dvc, git
 
 Outside a DVC project:
 
-```dvc
+```cli
 $ dvc version
 
 DVC version: 1.10.0 (pip)
