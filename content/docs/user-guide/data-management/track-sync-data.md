@@ -153,7 +153,7 @@ commit `a17b8fd`. Other commands with `--rev`: `dvc gc`, `dvc list`, etc.
 
 </admon>
 
-[data versioning]: /doc/user-guide/data-management/data-versioning
+[data versioning]: /doc/use-cases/versioning-data-and-models
 [git branches]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [tags]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
