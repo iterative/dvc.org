@@ -1,62 +1,32 @@
 # Track and Sync Versioned Data
 
-Basic [data management] operations constitute the fundamental workflow of most
-<abbr>DVC projects</abbr>. This functionality can be used directly (as well
-cover here) but it's also included automatically in other DVC workflows, like
+The fundamental workflow of most <abbr>DVC projects</abbr> includes the
+following basic operations. These can be performed directly (as we cover here)
+but are sometimes included automatically in advanced workflows, like
 [pipelining] and [experiment management].
 
-[data management]: /doc/user-guide/data-management
 [pipelining]: /doc/user-guide/pipelines
 [experiment management]: /doc/user-guide/experiment-management
 
 ## Tracking data
 
 DVC is [similar to Git] in this area. To start tracking large files or
-directories, "add" them to DVC with the `dvc add` command. This hides the data
-from Git, moves it to the <abbr>cache</abbr>, and [links it] back to the
-<abbr>workspace</abbr>. It also creates an accompanying `.dvc` file (visible to
-Git).
+directories, "add" them to DVC with the `dvc add` command. This
+<abbr>caches</abbr> the data and [links it] back to the <abbr>workspace</abbr>
+(hiding it from Git). An accompanying `.dvc` file is created.
+
+To capture changes to tracked data, `dvc add` it again (`dvc commit` will also
+do the trick). This caches the latest data and updates `.dvc` files accordingly.
 
 <admon type="info">
 
-`.dvc` files can be tracked (and [versioned](#versioning-data)) with Git
-directly.
+`.dvc` files can be tracked (and [versioned](#versioning-data)) with Git.
 
 </admon>
-
-<details>
-
-### Click to learn about _data codification_
-
-<abbr>DVC projects</abbr> separate data from code by replacing large files, ML
-models, etc. in your <abbr>workspace</abbr> with small [metafiles]; We call this
-strategy _codification_ (of the data). The actual file contents are cached in an
-independent data store and [linked] to your project.
-
-![Code vs. data](/img/code-vs-data.png) _Separating code from data_
-
-<admon type="info">
-
-In order to [avoid duplicate content][linked], and to support [versioning
-features][data versioning], files and directories are reorganized in the cache
-into a [content-addressable structure].
-
-</admon>
-
-[metafiles]: /doc/user-guide/project-structure
-[linked]: /doc/user-guide/data-management/large-dataset-optimization
-[content-addressable structure]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
-
-</details>
-
-To capture changes to tracked data, `dvc add` it again (alternatively,
-`dvc commit` will also do the trick). This caches the latest data present in the
-workspace and updates `.dvc` files accordingly (changes visible to Git).
 
 If you need to move or rename tracked data, use `dvc move`. To stop tracking
-data altogether, use `dvc remove`. To also remove it from the cache (either the
-latest or historic versions), use `dvc gc`. See [more details].
+data, use `dvc remove`. To also remove it from the cache, use `dvc gc`. See
+[more details].
 
 Putting it all together, we can get an overview of the data in a project with
 `dvc data status`. This will list changes to DVC-tracked data as well as files
@@ -77,8 +47,8 @@ DVC uncommitted changes:
 
 <admon type="tip">
 
-Other commands partially related to tracking data: `dvc status`,
-`dvc unprotect`, `dvc list`, `dvc import`, `dvc import-url`.
+Other related commands: `dvc status`, `dvc list`, `dvc import`,
+`dvc import-url`, `dvc unprotect`.
 
 </admon>
 
