@@ -1,4 +1,4 @@
-# Track and Sync and Versioned Data
+# Track and Sync Versioned Data
 
 Basic [data management] operations constitute the fundamental workflow of most
 <abbr>DVC projects</abbr>. This functionality can be used directly (as well
