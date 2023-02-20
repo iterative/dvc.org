@@ -1,4 +1,4 @@
-# Track and Sync Versioned Data
+# Track and Sync Versioned Data & Models
 
 The fundamental workflow of most <abbr>DVC projects</abbr> includes the
 following **basic operations**. These can be performed directly (as we cover
@@ -10,27 +10,36 @@ here) but are sometimes included automatically in advanced workflows, like
 
 ## Tracking data
 
-DVC is [similar to Git] in this area. To start tracking large files or
-directories, "add" them to DVC with the `dvc add` command. This
-<abbr>caches</abbr> the data and [links it] back to the <abbr>workspace</abbr>
-(hiding it from Git). An accompanying `.dvc` file is created.
+DVC is [similar to Git] here. To start tracking large files or directories (e.g.
+data or machine learning models), "add" them to DVC with the `dvc add` command.
+This <abbr>caches</abbr> the files and [links them] back to the
+<abbr>workspace</abbr> (hiding them from Git). A matching `.dvc` file is
+created.
 
-To capture changes to tracked data, `dvc add` it again (`dvc commit` will also
-do the trick). This caches the latest data and updates `.dvc` files accordingly.
+To capture changes to tracked data, `dvc add` them again (`dvc commit` will also
+do the trick). This caches the latest file contents and updates `.dvc` metafiles
+accordingly.
+
+[similar to git]:
+  https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+[links them]: /doc/user-guide/data-management/large-dataset-optimization
 
 <admon type="info">
 
-`.dvc` files can be tracked (and [versioned](#versioning-data)) with Git.
+`.dvc` and other [metafiles] can be tracked (and [versioned](#versioning-data))
+with Git.
+
+[metafiles]: /doc/user-guide/project-structure
 
 </admon>
 
-If you need to move or rename tracked data, use `dvc move`. To stop tracking
-data, use `dvc remove`. To also remove it from the cache, use `dvc gc`. See
-[more details].
+If you need to move or rename tracked data, use `dvc move`. To stop tracking it,
+use `dvc remove`. To also remove it from the cache, use `dvc gc`. See [more
+details].
 
-Putting it all together, we can get an overview of the data in a project with
-`dvc data status`. This will list changes to DVC-tracked data as well as files
-unknown to DVC (or Git):
+To wrap up, you can get an overview of DVC-tracked assets with
+`dvc data status`. This will list changes to tracked files and directories as
+well as files unknown to DVC (or Git):
 
 ```cli
 $ dvc data status
@@ -45,6 +54,8 @@ DVC uncommitted changes:
         deleted: model.pkl
 ```
 
+[more details]: /doc/user-guide/how-to/stop-tracking-data
+
 <admon type="tip">
 
 Other related commands: `dvc status`, `dvc list`, `dvc import`,
@@ -52,19 +63,14 @@ Other related commands: `dvc status`, `dvc list`, `dvc import`,
 
 </admon>
 
-[similar to git]:
-  https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
-[links it]: /doc/user-guide/data-management/large-dataset-optimization
-[more details]: /doc/user-guide/how-to/stop-tracking-data
-
 ## Synchronizing data
 
-DVC lets you [codify your data], configure the project's storage location(s),
-and stop worrying about low-level operations like copying, moving, renaming,
-uploading and downloading, etc.
+DVC lets you [codify your data][data versioning] and ML models, configure the
+project's storage location(s), and stop worrying about low-level file operations
+like copying, moving, renaming, uploading, etc.
 
 At a minimum, you'll have one data store: the project's <abbr>cache</abbr>.
-[Data tracking](#tracking-data) operations already keep it in sync with your
+[Data-tracking](#tracking-data) operations already keep it in sync with your
 <abbr>workspace</abbr> most of the time.
 
 <admon type="tip">
@@ -74,7 +80,7 @@ if unexpected errors occur (e.g. cache corruption).
 
 </admon>
 
-[codify your data]: /doc/use-cases/versioning-data-and-models
+[data versioning]: /doc/use-cases/versioning-data-and-models
 
 To add storage locations to share and back up your work, you can configure [DVC
 remotes] using `dvc remote` commands (more on their [configuration]). Once this
@@ -106,43 +112,42 @@ misc. locations or other DVC projects (e.g. [data registry] pattern). See
 
 ## Versioning data
 
-You may have noticed that most of the `dvc` commands give out hints about `git`
-commands to follow with. This helps you complete the [data versioning] side of
-the operation (if desired).
+Many `dvc` commands give out hints about `git` commands to follow then with.
+This helps you complete the [data versioning] side of the operation (if needed).
 
-![Versioning flow](/img/flow.png) _A data versioning flow on top of Git_
+![Versioning flow](/img/flow.png) _DVC metafiles represent your data and models
+in the Git repo, while large files are stored in the cache (and/or remote
+storage) and linked to your workspace._
 
 Some common sequences:
 
 - Check the `dvc data status` (or `dvc status`) before deciding what changes to
   track with Git.
-- Use `git add` and `git commit` after you `dvc add` (or `dvc commit`) data.
-  This registers the DVC-tracked data version with Git (without storing it in
-  the Git repo).
-- Create or merge [Git branches] to organize your project versions, or [tags] to
-  manage milestones and releases (no DVC operations needed).
-- `git checkout` to switch project versions (commits, branches, etc.), and then
-  `dvc checkout` to get the data files associated with that version into your
-  workspace.
+- `dvc add` (or `dvc commit`) your data and then `git add` and `git commit` the
+  resulting DVC metafiles. This registers DVC-tracked files with Git indirectly
+  (without storing them in the Git repo).
 - After you `git push` project versions associated with new or changed data, you
   may want to `dvc push` those data updates to a [DVC remote][dvc remotes].
-- `git checkout` a DVC repository, or `git pull` its latest version (e.g. that
-  someone else contributed), and then `dvc pull` the matching data updates.
+- `git checkout` to switch project versions (commits, branches, etc.) and then
+  `dvc checkout` to get the corresponding large files tracked by DVC into your
+  <abbr>workspace</abbr>.
+- `git clone` or `git pull` a DVC repository (e.g. to get others contributions),
+  and then `dvc pull` the matching data files.
 
 <admon type="tip">
 
-Some of these sequences are so common that DVC provides the `dvc install` helper
-command to set up [certain Git hooks] that automate them.
+Some of these are so common that DVC provides the `dvc install` helper command
+to set up [certain Git hooks] that automate them.
 
 [certain git hooks]: /doc/command-reference/install#installed-git-hooks
 
 </admon>
 
-Having multiple versions of data and ML models (including their training
-parameters and performance metrics) within different Git commits is great, but
-sometimes requires navigation aids. DVC provides comparison commands like
-`dvc diff` (similar to `git diff`) to help with this. See also
-`dvc params diff`, `dvc metrics diff`, and `dvc plots diff`.
+Managing multiple versions of data or models (including their training
+parameters and performance metrics) with Git is great, but sometimes requires
+navigation aids. DVC provides comparison commands like `dvc diff` (similar to
+`git diff`) to help with this. See also `dvc params diff`, `dvc metrics diff`,
+and `dvc plots diff`.
 
 <admon type="tip">
 
@@ -153,7 +158,6 @@ commit `a17b8fd`. Other commands with `--rev`: `dvc gc`, `dvc list`, etc.
 
 </admon>
 
-[data versioning]: /doc/use-cases/versioning-data-and-models
 [git branches]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [tags]: https://git-scm.com/book/en/v2/Git-Basics-Tagging
