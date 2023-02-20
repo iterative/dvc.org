@@ -47,7 +47,6 @@ job:
     example below).
 
     ```yaml
-
     ---
     steps:
       - name: Train model
