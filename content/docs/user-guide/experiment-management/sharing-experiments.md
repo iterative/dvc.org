@@ -80,7 +80,7 @@ pulling to/from both Git and DVC remotes in the case of experiments.
   └─────────────────┘    └────────────────┘
 ```
 
-[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiments]: /doc/user-guide/experiment-management
 [any other commit]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes

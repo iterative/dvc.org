@@ -50,7 +50,7 @@ downloads a file from an external location, on all the supported location types.
 ### Amazon S3
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d s3://mybucket/data.txt \
           -o data.txt \
           aws s3 cp s3://mybucket/data.txt data.txt
@@ -63,7 +63,7 @@ $ dvc run -n download_file \
 ### Microsoft Azure Blob Storage
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d azure://mycontainer/data.txt \
           -o data.txt \
           az storage copy \
@@ -80,7 +80,7 @@ $ dvc run -n download_file \
 ### Google Cloud Storage
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d gs://mybucket/data.txt \
           -o data.txt \
           gsutil cp gs://mybucket/data.txt data.txt
@@ -93,15 +93,15 @@ $ dvc run -n download_file \
 ### SSH
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d ssh://user@example.com/path/to/data.txt \
           -o data.txt \
           scp user@example.com:/path/to/data.txt data.txt
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
-`sftp` (GNU/Linux).
+Check that you can connect both ways with tools like `ssh` and `sftp`
+(GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 
@@ -112,7 +112,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 ### HDFS
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d hdfs://user@example.com/data.txt \
           -o data.txt \
           hdfs fs -copyToLocal \
@@ -128,7 +128,7 @@ $ dvc run -n download_file \
 > Including HTTPs
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d https://example.com/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
@@ -141,7 +141,7 @@ $ dvc run -n download_file \
 ### local file system paths
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d /home/shared/data.txt \
           -o data.txt \
           cp /home/shared/data.txt data.txt
@@ -168,13 +168,13 @@ $ dvc remote add myssh ssh://user@example.com
 $ dvc remote modify --local myssh password 'mypassword'
 ```
 
-> Please refer to `dvc remote modify` for more details like setting up access
+> Refer to `dvc remote modify` for more details like setting up access
 > credentials for the different remote types.
 
 Now, use an alias to this remote when defining the stage:
 
 ```cli
-$ dvc run -n download_file \
+$ dvc stage add -n download_file \
           -d remote://myssh/path/to/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt

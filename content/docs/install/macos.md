@@ -2,7 +2,7 @@
 
 <admon type="tip">
 
-To use DVC [as a Python library](/doc/api-reference), please install
+To use DVC [as a Python library](/doc/api-reference), you can install it
 [with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
 
 </admon>

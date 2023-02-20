@@ -1,11 +1,15 @@
 ---
-title: 'Get Started'
+title: 'Get Started with DVC'
 description: 'Get a quick introduction to the major features of DVC for data
 science and machine learning projects: version data, access it anywhere, capture
 pipelines and metrics, and manage experiments.'
 ---
 
-# Get Started
+# Get Started with DVC
+
+<!--
+## Get Started with DVC
+-->
 
 Assuming DVC is already [installed](/doc/install), let's initialize it by
 running `dvc init` inside a Git project:

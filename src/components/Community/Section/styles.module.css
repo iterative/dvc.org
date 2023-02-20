@@ -53,7 +53,7 @@
     cursor: pointer;
 
     &::after {
-      content: "";
+      content: '';
       position: relative;
       display: inline-block;
       width: 0;

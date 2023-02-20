@@ -92,5 +92,5 @@ experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
 files, etc.) can be stored in Git.
 
-> Please note that you need to `dvc push` in order to share or backup the DVC
-> cache contents.
+> Note that you need to `dvc push` in order to share or backup the DVC cache
+> contents.

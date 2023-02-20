@@ -30,7 +30,10 @@ DVC remotes are distributed storage locations for your data sets and ML models
 (similar to Git remotes, but for <abbr>cached</abbr> assets). This optional
 feature is typically used to share or back up copies of all or some of your
 data. Several types are supported: Amazon S3, Google Drive, SSH, HTTP, local
-file systems, among others.
+file systems, [among others].
+
+[among others]:
+  /doc/user-guide/data-management/remote-storage#supported-storage-types
 
 <admon icon="book">
 

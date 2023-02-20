@@ -28,7 +28,7 @@ be reached, causing this error.
 To solve this, it's often possible to increase the open file descriptors limit,
 with `ulimit` on UNIX-like system (for example `ulimit -n 1024`), or
 [increasing Handles limit](https://blogs.technet.microsoft.com/markrussinovich/2009/09/29/pushing-the-limits-of-windows-handles/)
-on Windows. Otherwise, please try using a lower `JOBS` value.
+on Windows. Otherwise, try using a lower `JOBS` value.
 
 ## Unable to find credentials {#no-credentials}
 
@@ -131,11 +131,11 @@ change their configuration to avoid shallow cloning. Common examples:
 <toggle>
 <tab title="CML">
 
-[CML](https://cml.dev) has a convenient `--unshallow` option for its
+[CML](https://cml.dev) has a convenient `--fetch-depth` option for its
 [`ci`](https://cml.dev/doc/ref/ci) command:
 
 ```cli
-$ cml ci --unshallow
+$ cml ci --fetch-depth 0
 ```
 
 </tab>

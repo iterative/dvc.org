@@ -1,21 +1,14 @@
 # Generate live (real-time) metrics and plots for remote experiments
 
-When you
-[submit a new experiment](/doc/studio/user-guide/projects-and-experiments/run-experiments)
-from Iterative Studio, the
-[CI/CD setup](/doc/use-cases/ci-cd-for-machine-learning) in your Git repository
-gets invoked. If this setup includes a model training process, it will be
-triggered.
-
-In this model training CI action, you can use [DVCLive] to send live updates to
-metrics and plots back to Iterative Studio, without writing them to your Git
-repository. This will enable you to view all intermediate results in Studio
-while your experiment is still running.
+In your model training script, you can use [DVCLive] to send live updates to
+metrics and plots to Iterative Studio, without writing them to your Git
+repository. This will enable you to view all intermediate results in Iterative
+Studio while your experiment is still running.
 
 This requires a 3-step process:
 
 1. [Set up an access token](#set-up-an-access-token)
-2. [Configure your model training CI job](#configure-your-model-training-ci-job)
+2. [Configure your model training job](#configure-your-model-training-job)
 3. [Send and view the updates](#send-and-view-live-metrics-and-plots)
 
 ## Set up an access token
@@ -30,36 +23,49 @@ your password. That is, you can reset all your access credentials (your password
 and the access token) at once. This is handy if you suspect that your account
 security may have been compromised.
 
-## Configure your model training CI job
+## Configure your model training job
 
-You should define the following environment variables in your CI job:
+You should provide the following environment variables to your model training
+job:
 
 1.  `STUDIO_TOKEN`: The access token must be present in any request that sends
     data to the Iterative Studio ingestion endpoint. Requests with missing or
     incorrect access tokens are rejected with an appropriate HTTP error code and
     error message.
 
-    A secure way to provide the access token is to create a
+    If you are running the experiment locally, you can set this environment
+    variable when submitting the training job.
+
+    ```dvc
+    $ STUDIO_TOKEN=**** dvc exp run
+    ```
+
+    If you are running the experiment as part of a CI job, a secure way to
+    provide the access token is to create a
     [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
     containing the value of the token, and use the secret in your CI job (see
     example below).
 
-    ```
-    ...
-      steps:
-        - name: Train model
-          env:
-            STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
-    ...
+    ```yaml
+
+    ---
+    steps:
+      - name: Train model
+        env:
+          STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
     ```
 
-2.  `STUDIO_REPO_URL`: If your repository is on github.com, gitlab.com or
-    bitbucket.org, you do not need to set this environment variable. But if you
-    are using some other Git provider, then you should set the repository url in
-    this format: `{remote-type}:{namespace}/{repo-name}`. For example, for the
+2.  `STUDIO_REPO_URL`: If you are running the experiment locally, you do not
+    need to set this environment variable. But if you are running it in a CI
+    job, then you should set the repository url in this format:
+    `{remote-type}:{namespace}/{repo-name}`. For example, for the
     `example-get-started` repository in the `iterative` namespace,
     `STUDIO_REPO_URL` should be set to the following value:
 
+    - If you are using GitHub.com, GitLab.com or Bitbucket.org, set it to
+      `git@github.com:iterative/example-get-started.git`,
+      `git@gitlab.com:iterative/example-get-started.git`,
+      `git@bitbucket.org:iterative/example-get-started.git` respectively.
     - If you are using a custom (self-hosted) GitLab server, set it to
       `custom-gitlab:iterative/example-get-started`.
     - If you are using a GitHub enterprise server, set it to
@@ -67,21 +73,28 @@ You should define the following environment variables in your CI job:
 
 ## Send and view live metrics and plots
 
-In the training CI job (which has been configured as detailed above), whenever
-you log your metrics or plots using [DVCLive], they will be automatically sent
-to Iterative Studio. Here is an example of how you can use [DVCLive] in your
+In the training job (which has been configured as detailed above), whenever you
+log your metrics or plots using [DVCLive], they will be automatically sent to
+Iterative Studio. Here is an example of how you can use [DVCLive] in your
 training code:
 
-```
+```py
 from dvclive import Live
 
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
   for i in range(params["epochs"]):
     ...
     live.log_metric("accuracy", accuracy)
     live.next_step()
   ...
 ```
+
+<admon>
+
+Using `save_dvc_exp=True` will ensure that
+[the results get saved as a DVC experiment even if you do not have a DVC pipeline](/doc/dvclive/how-it-works#track-the-results).
+
+</admon>
 
 <admon>
 
@@ -94,11 +107,18 @@ DVCLive signals the end of the experiment using `live.end()`. Using
 
 Iterative Studio stores the live metrics and plots data in its database.
 
-In the project table, the live metrics are displayed next to the Git commit
-corresponding to the experiment. Updates to the live metrics are highlighted in
-orange.
+In the project table, the live metrics are displayed nested under the parent Git
+commit. Updates to the live metrics are highlighted in orange.
 
 ![](https://static.iterative.ai/img/studio/live_metrics.gif)
+
+<admon>
+
+The live metrics row for an experiment is displayed only if its parent Git
+commit is shown in the project table. So before you run the experiment, make
+sure that its parent commit is pushed to Git.
+
+</admon>
 
 Updates to the live metrics are highlighted in orange in the
 [compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
@@ -124,8 +144,9 @@ An experiment can have one of the following statuses:
 - **Completed** - Iterative Studio does not expect to receive any more updates
   for these experiments. Once the experiment concludes, you can delete the live
   metrics row from the project table. Iterative Studio does not automatically
-  commit and push the final results of your experiment to Git. Your CI action
-  should persist the final results in Git.
+  commit and push the final results of your experiment to Git. If you want to
+  save the experiment result, you should persist it using appropriate Git
+  commands.
 
 <admon>
 
