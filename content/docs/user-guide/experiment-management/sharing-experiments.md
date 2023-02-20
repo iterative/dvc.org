@@ -12,8 +12,8 @@ commits and share them like you would [any other commit]. This will share all
 code and metadata associated with the experiment.
 
 ```cli
-$ dvc exp branch exp-e6c97 my-branch
-Git branch 'my-branch' has been created from experiment 'exp-e6c97'.
+$ dvc exp branch quare-zips my-branch
+Git branch 'my-branch' has been created from experiment 'quare-zips'.
 To switch to the new branch run:
         git checkout my-branch
 
@@ -59,9 +59,9 @@ if you aren't ready to make the experiment persistent but still want to share it
 with others? What if you have many experiments to share? For those scenarios,
 you can use `dvc exp push`.
 
-This works similarly to [sharing regular project versions], by synchronizing
-with DVC and [Git remotes]. But DVC takes care of pushing and pulling to/from
-both Git and DVC remotes in the case of experiments.
+This works similarly to [sharing regular project versions][any other commit], by
+synchronizing with DVC and [Git remotes]. But DVC takes care of pushing and
+pulling to/from both Git and DVC remotes in the case of experiments.
 
 ```
   ┌────────────────┐     ┌────────────────┐
@@ -79,7 +79,7 @@ both Git and DVC remotes in the case of experiments.
   └─────────────────┘    └────────────────┘
 ```
 
-[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiments]: /doc/user-guide/experiment-management
 [any other commit]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
@@ -120,7 +120,7 @@ arguments.
 > 💡 You can use `dvc exp show` to find experiment names.
 
 ```cli
-$ dvc exp push origin exp-abc123
+$ dvc exp push origin quare-zips
 ```
 
 Once pushed, you can easily [list remote experiments] (with `dvc exp list`).

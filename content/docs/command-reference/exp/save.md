@@ -2,7 +2,7 @@
 
 Save the current project workspace as a [DVC experiment].
 
-[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiment]: /doc/user-guide/experiment-management
 
 ## Synopsis
 
@@ -33,8 +33,13 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
 ## Options
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `exp-f80g4` (based on the
-  experiment's hash).
+  default one will be generated otherwise, such as `urban-sign`.
+
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
 
 - `-I <path>`, `--include-untracked <path>` - specify untracked file(s) to be
   included in the saved experiment. Multiple files can be specified.
@@ -52,7 +57,7 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [unique name]:
-  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+  https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
@@ -61,7 +66,7 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 

@@ -97,11 +97,11 @@ project we want to clear.
   well as in the workspace (implying `-w`). This preserves the cache for all
   data used in the entire commit history of the project.
 
-  A use case for this option is to safely delete all temporary data `dvc run`
-  and/or `dvc repro` cache when used without committing changes (see the `-O` or
-  `-M`, and `--no-commit` options in those commands). In that scenario, data
-  that is never referenced from the workspace or from any Git commit can still
-  be stored in the project's cache).
+  A use case for this option is to safely delete all temporary data
+  `dvc exp run` and/or `dvc repro` cache when used without committing changes
+  (see the `-O` or `-M`, and `--no-commit` options in those commands). In that
+  scenario, data that is never referenced from the workspace or from any Git
+  commit can still be stored in the project's cache).
 
   > \* Not including [DVC experiments]
 

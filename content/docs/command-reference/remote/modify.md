@@ -1,10 +1,16 @@
 # remote modify
 
-Modify the configuration of a [data remote](/doc/command-reference/remote).
+Configure an existing `dvc remote`.
 
-> This command is commonly needed after `dvc remote add` or
-> [default](/doc/command-reference/remote/default) to set up credentials or
-> other customizations to each remote storage type.
+<admon type="tip">
+
+This command is commonly needed after `dvc remote add` to set up credentials or
+other customizations. See [Remote storage configuration] for more information.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
+
+</admon>
 
 ## Synopsis
 
@@ -21,16 +27,43 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Config option names are specific
-to the remote type. See `dvc remote add` and
-[Available parameters](#available-parameters-per-storage-type) below for a list
-of remote storage types.
+The DVC remote's `name` and a valid `option` to modify are required. Remote
+options or [config parameters](#available-parameters-per-storage-type) are
+specific to the storage type and typically require a `value` as well.
 
-This command modifies a `remote` section in the project's
-[config file](/doc/command-reference/config). Alternatively, `dvc config` or
-manual editing could be used to change the configuration.
+This command updates a [`remote`] section in the [config file] (`.dvc/config`):
 
-## Command options (flags)
+```cli
+$ dvc remote modify temp url /mnt/c/tmp/dvcstore
+```
+
+```git
+# .dvc/config
+['remote "temp"']
+-     url = /tmp/dvcstore
++     url = /mnt/c/tmp/dvcstore
+```
+
+<admon type="info">
+
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
+
+```cli
+$ pip install "dvc[s3]"
+```
+
+[installed dvc]: /doc/install
+
+</admon>
+
+[config file]: /doc/command-reference/config
+[`remote`]: /doc/command-reference/config#remote
+[`core`]: /doc/command-reference/config#core
+
+## Command options/flags
 
 - `-u`, `--unset` - remove the configuration `option` from a config file. Don't
   provide a `value` argument when employing this flag.
@@ -135,21 +168,22 @@ options:
   $ dvc remote modify myremote connect_timeout 300
   ```
 
-- `read_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to read from a connection (60 by default). Let's set it to 5
-  minutes for example:
+<admon type="tip">
 
-  ```cli
-  $ dvc remote modify myremote read_timeout 300
-  ```
+The `version_aware` option requires that
+[S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
+be enabled on the specified S3 bucket.
 
-- `connect_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to make a connection (60 by default). Let's set it to 5
-  minutes for example:
+</admon>
 
-  ```cli
-  $ dvc remote modify myremote connect_timeout 300
-  ```
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this S3 remote. Files stored in the remote will
+  retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote.
+
+**Authentication**
 
 By default, DVC authenticates using your AWS CLI
 [configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
@@ -391,6 +425,23 @@ storage. Whether they're effective depends on each storage platform.
   ```cli
   $ dvc remote modify myremote account_name 'myaccount'
   ```
+
+<admon type="tip">
+
+The `version_aware` option requires that
+[Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
+be enabled on the specified Azure storage account and container.
+
+</admon>
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Azure remote. Files stored in the remote
+  will retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote.
+
+**Authentication**
 
 By default, DVC authenticates using an `account_name` and its [default
 credential] (if any), which uses environment variables (e.g. set by `az cli`) or
@@ -697,6 +748,21 @@ more information.
   ```cli
   $ dvc remote modify myremote projectname myproject
   ```
+
+<admon type="tip">
+
+The `version_aware` option requires that
+[Object versioning](https://cloud.google.com/storage/docs/object-versioning) be
+enabled on the specified bucket.
+
+</admon>
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Google Cloud Storage remote. Files stored
+  in the remote will retain their original filenames and directory hierarchy,
+  and different versions of files will be stored as separate versions of the
+  corresponding object in the remote.
 
 **For service accounts:**
 
@@ -1087,6 +1153,22 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
+- `read_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to read a portion of data from a connection (60 by default).
+  Let's set it to 5 minutes for example:
+
+  ```cli
+  $ dvc remote modify myremote read_timeout 300
+  ```
+
+- `connect_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to make a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```cli
+  $ dvc remote modify myremote connect_timeout 300
+  ```
+
 </details>
 
 <details>
@@ -1123,16 +1205,27 @@ by HDFS. Read more about by expanding the WebHDFS section in
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
 
-- `password` - password for WebDAV server, can be empty in case of using `token`
-  authentication.
+- `custom_auth_header` - HTTP header field name to use for authentication. Value
+  is set via `password`.
+
+  ```cli
+  $ dvc remote modify --local myremote \
+                      custom_auth_header 'My-Header'
+  ```
+
+- `password` - password for WebDAV server, combined either with `user` or
+  `custom_auth_header`. Leave empty for `token` authentication.
 
   ```cli
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> Note that `user/password` and `token` authentication are incompatible. You
-> should authenticate against your WebDAV remote by either `user/password` or
-> `token`.
+  <admon type="info">
+
+  Auth based on `user` or `custom_auth_header` (with `password`) is incompatible
+  with `token` auth.
+
+  </admon>
 
 - `ask_password` - ask each time for the password to use for `user/password`
   authentication. This has no effect if `password` or `token` are set.
@@ -1197,10 +1290,10 @@ Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/path
-profile = myuser
+    url = s3://mybucket/path
+    profile = myuser
 [core]
-remote = myremote
+    remote = myremote
 ```
 
 ## Example: Some Azure authentication methods

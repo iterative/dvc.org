@@ -68,9 +68,8 @@ examples below).
 
 > ⚠️ An external cache could be
 > [shared](/doc/user-guide/how-to/share-a-dvc-cache) among copies of a DVC
-> project. Please **do not** use external outputs in that scenario, as
-> `dvc checkout` in any project would overwrite the working data for all
-> projects.
+> project. **Do not** use external outputs in that scenario, as `dvc checkout`
+> in any project would overwrite the working data for all projects.
 
 ## Examples
 
@@ -83,9 +82,9 @@ types:
 2. Tracking existing data on the external location using `dvc add` (`--external`
    option needed). This produces a `.dvc` file with an external URL or path in
    its `outs` field.
-3. Creating a simple stage with `dvc run` (`--external` option needed) that
-   moves a local file to the external location. This produces an external output
-   in `dvc.yaml`.
+3. Creating a simple stage with `dvc stage add` (`--external` option needed)
+   that moves a local file to the external location. This produces an external
+   output in `dvc.yaml`.
 
 > \* Note that for certain remote storage authentication methods, extra config
 > steps are required (see `dvc remote modify` for details). Once access is
@@ -102,7 +101,7 @@ $ dvc config cache.s3 s3cache
 
 $ dvc add --external s3://mybucket/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
@@ -120,15 +119,15 @@ $ dvc config cache.ssh sshcache
 
 $ dvc add --external ssh://user@example.com/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o ssh://user@example.com/data.txt \
           scp data.txt user@example.com:/data.txt
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Please check that you are able to connect both ways with tools like `ssh` and
-`sftp` (GNU/Linux).
+Check that you can connect both ways with tools like `ssh` and `sftp`
+(GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 
@@ -144,7 +143,7 @@ $ dvc config cache.hdfs hdfscache
 
 $ dvc add --external hdfs://user@example.com/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o hdfs://user@example.com/data.txt \
           hdfs fs -copyFromLocal \
@@ -167,7 +166,7 @@ $ dvc config cache.webhdfs webhdfscache
 
 $ dvc add --external webhdfs://user@example.com/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o webhdfs://user@example.com/data.txt \
           curl --upload-file data.txt \
@@ -183,15 +182,15 @@ $ dvc run -d data.txt \
 The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
 custom cache location for local paths outside of your project.
 
-> Except for external data on different storage devices or partitions mounted on
-> the same file system (e.g. `/mnt/raid/data`). In that case please setup an
-> external cache in that same drive to enable [file links] and avoid copying
-> data.
+> Exceptions to the above include: external data on different storage devices,
+> and partitions mounted on the same file system (e.g. `/mnt/raid/data`). In
+> such cases, set up an external cache in the same drive to enable [file links]
+> and avoid copying data.
 
 ```cli
 $ dvc add --external /home/shared/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o /home/shared/data.txt \
           cp data.txt /home/shared/data.txt

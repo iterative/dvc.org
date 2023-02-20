@@ -19,30 +19,6 @@
   }
 }
 
-.title {
-  /* padding-right: 2em; */
-  padding-right: 30px;
-  font-family: var(--font-base);
-  font-size: 40px;
-  font-weight: 500;
-  color: var(--color-gray-hover);
-
-  @media screen(smMax) {
-    padding-right: 0;
-    font-size: 36px;
-  }
-
-  @media screen(xsMax) {
-    padding: 0;
-    font-size: 32px;
-  }
-
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    padding: 0;
-    font-size: 34px;
-  }
-}
-
 .buttonsContainer {
   display: flex;
   margin-top: 28px;

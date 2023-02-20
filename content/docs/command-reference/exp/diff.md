@@ -80,7 +80,7 @@ all the current experiments (without comparisons).
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started](/doc/start/experiment-management/experiments)
+[our get started]: /doc/start/experiment-management/experiments
 
 </admon>
 
@@ -92,38 +92,38 @@ $ dvc exp show
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+  neutral:**Experiment**               neutral:**Created**           metric: **auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.61314   1500                     2
-  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
-  ├── exp-e6c97           Oct 21, 2020   0.61314   1500                     2
-  ├── exp-1dad0           Oct 09, 2020   0.57756   2000                     2
-  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
+  workspace                -              0.61314   1500                     2
+  10-bigrams-experiment    Jun 20, 2020   0.61314   1500                     2
+  ├── major-mela           Oct 21, 2020   0.61314   1500                     2
+  ├── gluey-leak           Oct 09, 2020   0.57756   2000                     2
+  └── ochre-dook           Oct 09, 2020   0.51676   500                      2
  ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-Since we haven't made any changes to the workspace, we can compare `exp-1dad0`
+Since we haven't made any changes to the workspace, we can compare `gluey-leak`
 to its baseline (`10-bigrams-experiment`, current `HEAD`) like this:
 
 ```cli
-$ dvc exp diff exp-1dad0
-Path         Metric  HEAD      exp-1dad0  Change
-scores.json  auc     0.577565  0.61314    0.035575
+$ dvc exp diff gluey-leak
+Path         Metric  HEAD     gluey-leak  Change
+scores.json  auc     0.61314  0.577565    -0.035575
 
-Path         Param                   HEAD  exp-1dad0  Change
-params.yaml  featurize.max_features  2000  1500       -500
+Path         Param                   HEAD  gluey-leak  Change
+params.yaml  featurize.max_features  2000  1500        -500
 ```
 
 To compare two specific experiments (values are shown for the second one by
 default):
 
 ```cli
-$ dvc exp diff exp-1dad0 exp-1df77
-Path         Metric  exp-1dad0  exp-1df77   Change
-scores.json  auc     0.577559   0.51676     -0.060799
+$ dvc exp diff gluey-leak ochre-dook
+Path         Metric  gluey-leak  ochre-dook   Change
+scores.json  auc     0.577559    0.51676     -0.060799
 
-Path         Param                   exp-1dad0  exp-1df77  Change
-params.yaml  featurize.max_features  2000       500        -1500
+Path         Param                   gluey-leak  ochre-dook  Change
+params.yaml  featurize.max_features  2000        500        -1500
 ```
 
 To compare an experiment to the
@@ -131,11 +131,11 @@ To compare an experiment to the
 tag (or any other [revision](https://git-scm.com/docs/revisions)):
 
 ```cli
-$ dvc exp diff exp-1dad0 7-ml-pipeline
-Path         Metric  exp-1dad0  7-ml-pipeline  Change
-scores.json  auc     0.577559   None           diff not supported
+$ dvc exp diff gluey-leak 7-ml-pipeline
+Path         Metric  gluey-leak  7-ml-pipeline  Change
+scores.json  auc     0.577559    None           diff not supported
 
-Path         Param                   exp-1dad0  7-ml-pipeline  Change
-params.yaml  featurize.max_features  2000       500            -1500
-params.yaml  featurize.ngrams        2          1              -1
+Path         Param                   gluey-leak  7-ml-pipeline  Change
+params.yaml  featurize.max_features  2000        500            -1500
+params.yaml  featurize.ngrams        2           1              -1
 ```

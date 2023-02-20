@@ -1,6 +1,6 @@
 # remote list
 
-List all available [data remotes](/doc/command-reference/remote).
+List all `dvc remote` names and locations.
 
 ## Synopsis
 
@@ -11,9 +11,11 @@ usage: dvc remote list [-h] [--global | --system | --project | --local]
 
 ## Description
 
-Reads DVC configuration files and prints the list of available remotes,
-including names and URLs. Remotes are read from the system, global, project, and
-local config files (in that order).
+Reads [DVC configuration] and prints the list of available remotes, including
+their names and URLs/paths. Remotes are read from the system, global, project,
+and local config files (in that order).
+
+[dvc configuration]: /doc/command-reference/config#remote
 
 ## Options
 

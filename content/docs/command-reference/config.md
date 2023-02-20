@@ -63,7 +63,7 @@ multiple projects or users, respectively.
 > Note that the `--show-origin` flag can show you where a given config option
 > `value` is currently stored.
 
-## Command options (flags)
+## Command options/flags
 
 - `-u`, `--unset` - remove the specified config option `name` from a config
   file. Don't provide a `value` argument when employing this flag.
@@ -125,7 +125,7 @@ within:
 
 ### core
 
-- `core.remote` - name of the remote storage to use by default.
+- `core.remote` - name of the [remote storage](#remote) to use by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
@@ -160,9 +160,30 @@ within:
 
 ### remote
 
-All `remote` sections contain a `url` value and can also specify `user`, `port`,
-`keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value pairs.
-See `dvc remote add` and `dvc remote modify` for more information.
+Unlike most other sections, configuration files may have more than one
+`'remote'`. All of them require a unique `"name"` and a `url` value. They can
+also specify `jobs`, `verify`, and many platform-specific key/value pairs like
+`port` and `password`.
+
+<admon icon="book">
+
+See [Remote Storage Configuration] for more details.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
+
+</admon>
+
+For example, the following config file defines a `temp` remote in the local file
+system (located in `/tmp/dvcstore`), and marked as default (via [`core`](#core)
+section):
+
+```ini
+['remote "temp"']
+    url = /tmp/dvcstore
+[core]
+    remote = temp
+```
 
 ### cache
 
@@ -171,23 +192,30 @@ See `dvc remote add` and `dvc remote modify` for more information.
   value is `cache`, that resolves to `.dvc/cache` (relative to the project
   config file location).
 
-  > See also the helper command `dvc cache dir` to intuitively set this config
-  > option, properly transforming paths relative to the current working
-  > directory into paths relative to the config file location.
+  <admon type="tip">
+
+  See also the helper command `dvc cache dir` to intuitively set this config
+  option, properly transforming paths relative to the current working directory
+  into paths relative to the config file location.
+
+  </admon>
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or an
   ordered combination of those, separated by commas e.g:
   `reflink,hardlink,copy`. Default: `reflink,copy`
 
+  <admon type="info">
+
+  There are pros and cons to different link types. Refer to [File link types]
+  for a full explanation of each one.
+
+  </admon>
+
   If you set `cache.type` to `hardlink` or `symlink`, manually modifying tracked
   data files in the workspace would corrupt the cache. To prevent this, DVC
   automatically protects those kinds of links (making them read-only). Use
   `dvc unprotect` to be able to modify them safely.
-
-  There are pros and cons to different link types. Refer to
-  [File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-  for a full explanation of each one.
 
   To apply changes to this config option in the workspace, restore all file
   links/copies from cache with `dvc checkout --relink`.
@@ -198,16 +226,23 @@ See `dvc remote add` and `dvc remote modify` for more information.
   faster cache link types available than the defaults (`reflink,copy` – see
   `cache.type`). Accepts values `true` and `false`.
 
-  > These warnings are automatically turned off when `cache.type` is manually
-  > set.
+  <admon type="info">
+
+  These warnings are automatically turned off when `cache.type` is manually set.
+
+  </admon>
 
 - `cache.shared` - permissions for newly created or downloaded cache files and
   directories. The only accepted value right now is `group`, which makes DVC use
   `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
-  useful when [sharing a cache](/doc/user-guide/how-to/share-a-dvc-cache) among
-  projects. The default permissions for cache files is system dependent. In
-  Linux and macOS for example, they're determined using
-  [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
+  useful when [sharing a cache] among projects. The default permissions for
+  cache files is system dependent. In Linux and macOS for example, they're
+  determined using [`os.umask`].
+
+[file link types]:
+  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+[sharing a cache]: /doc/user-guide/how-to/share-a-dvc-cache
+[`os.umask`]: https://docs.python.org/3/library/os.html#os.umask
 
 The following parameters allow setting an
 [external cache](/doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache)
@@ -279,8 +314,7 @@ Composition].
   in [dictionary unpacking].
 
   Valid values are `"store_true"` (default) and `"boolean_optional"`, named
-  after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  after [Python `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -313,8 +347,8 @@ Composition].
 - `parsing.list` - Controls the templating syntax for list values when used in
   [dictionary unpacking].
 
-  Valid values are `"nargs"` (default) and `"append"`, named after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  Valid values are `"nargs"` (default) and `"append"`, named after [Python
+  `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -342,6 +376,9 @@ Composition].
   ```shell
   python foo.py --list 1 --list 2 --list 'foo'
   ```
+
+[python `argparse` actions]:
+  https://docs.python.org/3/library/argparse.html#action
 
 ### plots
 
