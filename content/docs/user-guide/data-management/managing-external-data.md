@@ -8,7 +8,7 @@
 
 [to-cache]: /doc/command-reference/add#example-transfer-to-an-external-cache
 [to-remote]: /doc/command-reference/add#example-transfer-to-remote-storage
-[remote storage]: /doc/command-reference/remote
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its impossible to handle it in the local machine disk. For example
