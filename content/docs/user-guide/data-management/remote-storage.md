@@ -20,10 +20,13 @@ wide variety of [storage types](#supported-storage-types).
 
 The main uses of remote storage are:
 
-- Synchronize DVC-tracked data (previously <abbr>cached</abbr>).
+- [Synchronize] DVC-tracked data (previously <abbr>cached</abbr>).
 - Centralize or distribute large file storage for sharing and collaboration.
 - Back up different versions of your data and models.
 - Save space in your working environment (by deleting pushed files/directories).
+
+[synchronize]:
+  /doc/user-guide/data-management/track-sync-data#synchronizing-data
 
 ## Configuration
 
