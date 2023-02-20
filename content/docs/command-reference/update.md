@@ -1,12 +1,9 @@
 # update
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
-or [URLs], and the corresponding import `.dvc` files, or update files or
-directories from a [worktree remote].
+or [URLs], and the corresponding import `.dvc` files.
 
-[urls]: /doc/command-reference/import-url#description
-[worktree remote]:
-  /doc/user-guide/data-management/cloud-versioning#worktree-remotes
+[urls]: /doc/command-reference/import-url
 
 ## Synopsis
 
@@ -42,34 +39,19 @@ to update an imported artifact to a different revision.
 $ dvc update --rev master
 ```
 
-### Worktree update
-
-When using a [worktree remote], `dvc update` will update the specified target to
-match the current version of the corresponding file or directory from the remote
-storage. If the current version of the specified target is a deleted file or an
-empty directory, `dvc update` will fail.
-
-<admon type="warn">
-
-Note that the `--rev`, `--no-download` and `--to-remote` flags are not
-compatible when updating from a worktree remote.
-
-</admon>
-
 ## Options
 
-- `--rev <commit>` - commit hash, branch or tag name, etc. (any [Git revision])
+- `--rev <version>` - commit hash, branch or tag name, etc. (any [Git revision])
   of the repository to update the file or directory from. The latest commit in
   `master` (tip of the default branch) is used by default.
 
-  For data obtained with `dvc import-url` and [cloud versioning], `--rev` can be
+  For data obtained with `dvc import-url --version-aware`, this option can be
   used to specify an object version ID. By default, the current version from
   cloud storage will be used.
 
   Changes the `rev` field in the import `.dvc` files.
 
   [git revision]: https://git-scm.com/docs/revisions
-  [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import `.dvc` files to inspect. If there
@@ -78,12 +60,12 @@ compatible when updating from a worktree remote.
 - `--no-download` - Update data checksums in the `.dvc` file (`md5`, `etag`, or
   `checksum` fields) without actually downloading the latest data. See
   `dvc import-url --no-download` or `dvc import --no-download` for more context.
-  Cannot be combined with `--to-remote`.
+  Cannot be used with `--to-remote`.
 
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and
-  [transfer] the data directly to remote storage (the default one unless
-  otherwise specified with -r) without saving it locally. Use `dvc pull` to get
-  the data locally.
+  [transfer] the data directly to remote storage (the default one unless one is
+  specified with -r) without saving it locally. Use `dvc pull` to get the data
+  locally.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` (can only be used
   with `--to-remote`).

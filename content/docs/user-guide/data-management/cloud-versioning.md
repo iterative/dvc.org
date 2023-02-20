@@ -80,33 +80,6 @@ your DVC repository.
 
 </admon>
 
-## Worktree remotes
-
-`worktree` remotes behave similarly to `version_aware` remotes, but with one key
-difference. For `worktree` remotes, DVC will also attempt to ensure that the
-current version of objects in cloud storage match the latest versions of files
-in your DVC repository.
-
-So in addition to the command behaviors described for `version_aware` remotes,
-when the `worktree` option is enabled on a `dvc remote`:
-
-- `dvc push` will also ensure that the current version of objects in remote
-  storage match the latest versions of files in your DVC repository repository.
-  Additionally, DVC will delete the current version of any objects which were
-  present in cloud storage but that do not exist in your current DVC repository
-  workspace.
-- `dvc update` can be used to update a DVC-tracked file or directory in your DVC
-  repository to match the current version of the corresponding object(s) from
-  cloud storage.
-
-<admon type="info">
-
-Note that deleting current versions in cloud storage does not delete any objects
-(and does not delete any data). It only means that the current version of a
-given object will show that the object does not exist.
-
-</admon>
-
 ## Importing versioned data
 
 DVC supports importing cloud-versioned data from supported storage providers.

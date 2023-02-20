@@ -44,8 +44,8 @@ workflow is:
 
    ![](/img/guide_plots_intro_show.png)
 
-4. Run [experiments](/doc/user-guide/experiment-management/experiments-overview)
-   and [compare](#comparing-plots) the resulting plots.
+4. Run [experiments](/doc/user-guide/experiment-management) and
+   [compare](#comparing-plots) the resulting plots.
 
    ![](/img/guide_plots_intro_compare.png)
 
@@ -303,7 +303,7 @@ Extension][dvc extension].
 
 ![](/img/plots_compare_vs_code.png)
 
-[experiments]: /doc/user-guide/experiment-management/experiments-overview
+[experiments]: /doc/user-guide/experiment-management
 [compare between experiments]:
   /doc/user-guide/experiment-management/comparing-experiments
 [revisions]: https://git-scm.com/docs/revisions

@@ -322,8 +322,7 @@ Composition].
   in [dictionary unpacking].
 
   Valid values are `"store_true"` (default) and `"boolean_optional"`, named
-  after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  after [Python `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -356,8 +355,8 @@ Composition].
 - `parsing.list` - Controls the templating syntax for list values when used in
   [dictionary unpacking].
 
-  Valid values are `"nargs"` (default) and `"append"`, named after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  Valid values are `"nargs"` (default) and `"append"`, named after [Python
+  `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -385,6 +384,9 @@ Composition].
   ```shell
   python foo.py --list 1 --list 2 --list 'foo'
   ```
+
+[python `argparse` actions]:
+  https://docs.python.org/3/library/argparse.html#action
 
 ### plots
 

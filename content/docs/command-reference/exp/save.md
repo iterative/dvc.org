@@ -2,7 +2,7 @@
 
 Save the current project workspace as a [DVC experiment].
 
-[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiment]: /doc/user-guide/experiment-management
 
 ## Synopsis
 
@@ -57,7 +57,7 @@ possible to quickly start tracking, [comparing] and [persisting] experiments.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [unique name]:
-  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+  https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 

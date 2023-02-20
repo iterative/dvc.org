@@ -25,8 +25,7 @@ Instead of a single reference like [regular experiments], checkpoint experiments
 have multiple commits under the custom Git reference (in `.git/refs/exps`),
 similar to a branch.
 
-[regular experiments]:
-  /doc/user-guide/experiment-management/experiments-overview
+[regular experiments]: /doc/user-guide/experiment-management
 
 </details>
 

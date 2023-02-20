@@ -1,51 +1,81 @@
-# Overview
+# What is DVC?
 
-## Core Features
+<!--
+## What is DVC?
+-->
 
-- DVC is a [free], open-source [VS Code Extension] and [command line] tool.
+**Data Version Control** is a [free], open-source tool for [data management],
+[ML pipeline][ml pipelines] automation, and [experiment management]. This helps
+data science and machine learning teams manage **large datasets**, make projects
+**reproducible**, and **collaborate** better.
 
-- DVC works **on top of Git repositories** and has a similar command line
-  interface and flow as Git. DVC can also work stand-alone, but without
-  [versioning](/doc/use-cases/versioning-data-and-models) capabilities.
+DVC takes advantage of the existing software engineering toolset your team
+already knows (Git, your IDE, CI/CD, cloud storage, etc.). Its design follows
+this set of principles:
 
-- DVC codifies data and ML experiments:
+1. **Codification**: Define any aspect of your ML project (data and model
+   versions, ML pipelines and experiments) in human-readable [metafiles]. This
+   enables using best practices and established engineering toolsets, reducing
+   the gap with data science.
+1. **Versioning**: Use Git (or any SCM) to version and share your entire ML
+   project including its source code and configuration, parameters and metrics,
+   as well as data assets and processes by committing DVC metafiles (as
+   placeholders).
+1. **Secure collaboration**: Control the access to all aspects of your project
+   and share them with the people and teams you choose.
 
-  ![](/img/reproducibility.png)
+[data management]: /doc/user-guide/data-management
+[manage data]: /doc/user-guide/data-management
+[ml pipelines]: /doc/user-guide/pipelines
+[experiment management]: /doc/user-guide/experiment-management
+[metafiles]: /doc/user-guide/project-structure
 
-- **Data versioning** is enabled by replacing large files, dataset directories,
-  machine learning models, etc. with small
-  [metafiles](/doc/user-guide/project-structure) (easy to handle with Git).
-  These placeholders point to the original data, which is decoupled from source
-  code management.
+## Characteristics
 
-- **Data storage**: On-premises or cloud storage can be used to store the
-  project's data separate from its code base. This is how data scientists can
-  transfer large datasets or share a GPU-trained model with others.
+- DVC comes as a [VS Code Extension], as a [command line] interface, and as a
+  [Python API]. These options provide a familiar an intuitive **user
+  experience** to a broad range of users.
+- **Easy to use**: DVC is quick to [install](/doc/install) and works out of the
+  box. It doesn't require special infrastructure, nor does it depend on APIs or
+  external services.
 
-- DVC makes data science projects **reproducible** by creating lightweight
-  [pipelines] using implicit dependency graphs, and by codifying the data and
-  artifacts involved.
+  <admon type="tip">
 
-- DVC is **platform agnostic**: It runs on all major operating systems (Linux,
-  macOS, and Windows), and works independently of the programming languages
-  (Python, R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow,
-  PyTorch, Scipy, etc.) used in the <abbr>project</abbr>.
-
-- **Easy to use**: DVC is quick to [install](/doc/install) and doesn't require
-  special infrastructure, nor does it depend on APIs or external services. It's
-  a stand-alone CLI tool.
-
-  <admon type="info">
-
-  Git servers, as well as SSH and cloud storage providers are supported,
-  however.
+  Optional integrations with existing solutions and platforms such as Git
+  hosting, SSH and cloud storage providers, among others are included.
 
   </admon>
 
+- **Works on top of Git repositories** and has similar feel and flows. Stick to
+  the regular Git workflow (commits, branching, pull requests, etc.) and don't
+  reinvent the wheel!
+
+  <admon type="info">
+
+  DVC can also work stand-alone, but without
+  [versioning](/doc/use-cases/versioning-data-and-models) capabilities.
+
+  </admon>
+
+<!--
+- DVC codifies data and ML experiments:
+
+  ![](/img/reproducibility.png)
+-->
+
+- **Bring your own resources**: Provision or reuse existing resources
+  on-premises or on the cloud, including storage, compute, CI workers, etc. and
+  use DVC on top. You're not locked to any one provider!
+
+- DVC is **platform agnostic**: It runs on all major operating systems (Linux,
+  macOS, and Windows), and works independently of programming languages (Python,
+  R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow, PyTorch,
+  Scipy, etc.).
+
 [free]: https://github.com/iterative/dvc/blob/master/LICENSE
 [vs code extension]: /doc/vs-code-extension
+[python api]: /doc/api-reference
 [command line]: /doc/command-reference
-[pipelines]: /doc/user-guide/pipelines
 
 ## Comparison with Related Technologies
 
@@ -56,13 +86,30 @@ bringing best practices from software engineering into the data science field.
 
 ### Git
 
-- DVC builds upon Git by introducing the concept of data files – large files
-  that should not be stored in a Git repository, but still need to be tracked
-  and versioned. It leverages Git's features to enable managing different
-  versions of data, data pipelines, and experiments.
+DVC builds upon Git by introducing the concept of _data versioning_ – large
+files that should not be stored in a Git repository, but still need to be
+tracked and versioned. It leverages Git's features to enable managing different
+versions of data, data pipelines, and experiments.
 
-- DVC is not fundamentally bound to Git, and can work without it (except
-  [versioning-related](/doc/use-cases/versioning-data-and-models) features).
+<admon type="info">
+
+DVC is not fundamentally bound to Git, and can work without it (except
+[versioning-related](/doc/use-cases/versioning-data-and-models) features).
+
+</admon>
+
+**DVC does not replace Git!** DVC [metafiles] such as `dvc.yaml` and `.dvc`
+files serve as placeholders to version data and ML pipelines. These files change
+along with your data, and you can use Git to place them under [version control]
+as a proxy to the actual data, which is stored in a <abbr>cache</abbr> (outside
+of Git).
+
+DVC does, however, provide several commands similar to Git such as `dvc init`,
+`dvc add`, `dvc checkout`, or `dvc push`, which interact with the underlying Git
+repo (if one is being used, which is not required).
+
+[version control]:
+  https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
 
 </details>
 
@@ -79,8 +126,8 @@ bringing best practices from software engineering into the data science field.
   [available](/doc/command-reference/install)).
 
 - Git-LFS was not made with data science in mind, so it doesn't provide related
-  features (e.g. [pipelines](/doc/command-reference/dag),
-  [metrics](/doc/command-reference/metrics), etc.).
+  features (e.g. [ML pipelines], [metrics](/doc/command-reference/metrics),
+  etc.).
 
 - GitHub (most common Git hosting service) has a limit of 2 GB per repository.
 
@@ -155,8 +202,7 @@ _Luigi_, etc.
 
 ### Experiment management software
 
-> See also the [Experiment Management](/doc/user-guide/experiment-management)
-> guide.
+> See also the [Experiment Management] guide.
 
 - DVC uses Git as the underlying version control layer for data, pipelines, and
   experiments. Data versions exist as metadata in Git, as opposed to using
@@ -201,8 +247,8 @@ _Luigi_, etc.
     simplifying conflict resolution during merges.
 
   - DVC stages can be written manually in an intuitive `dvc.yaml` file, or
-    generated by the helper command `dvc run`, based on a terminal command, its
-    inputs, and outputs.
+    generated by the helper command `dvc stage add`, based on a terminal
+    command, its inputs, and outputs.
 
 > \* **Inodes** are metadata file records to locate and store permissions to the
 > actual file contents. See **Linking files** in

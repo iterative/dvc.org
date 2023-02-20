@@ -37,7 +37,7 @@ storage, or even a directory in the local file system.
 <admon type="tip">
 
 A `dvc remote default` is expected by `dvc push`, `dvc pull`, `dvc status`,
-`dvc gc`, and `dvc fetch` unless their `--remote` option is used.
+`dvc gc`, and `dvc fetch` unless their `--remote` (`-r`) option is used.
 
 </admon>
 
