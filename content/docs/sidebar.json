@@ -184,15 +184,8 @@
         "slug": "add"
       },
       {
-        "label": "cache",
-        "slug": "cache",
-        "source": "cache/index.md",
-        "children": [
-          {
-            "label": "cache dir",
-            "slug": "dir"
-          }
-        ]
+        "label": "cache dir",
+        "slug": "cache/dir"
       },
       {
         "label": "check-ignore",
@@ -215,15 +208,8 @@
         "slug": "dag"
       },
       {
-        "label": "data",
-        "slug": "data",
-        "source": false,
-        "children": [
-          {
-            "label": "data status",
-            "slug": "status"
-          }
-        ]
+        "label": "data status",
+        "slug": "data/status"
       },
       {
         "label": "destroy",
@@ -472,10 +458,6 @@
         "slug": "root"
       },
       {
-        "label": "run",
-        "slug": "run"
-      },
-      {
         "label": "stage",
         "slug": "stage",
         "source": "stage/index.md",
@@ -528,6 +510,10 @@
       {
         "slug": "make_checkpoint",
         "label": "make_checkpoint()"
+      },
+      {
+        "slug": "metrics_show",
+        "label": "metrics_show()"
       },
       {
         "slug": "open",
@@ -668,6 +654,10 @@
               {
                 "slug": "log_sklearn_plot",
                 "label": "log_sklearn_plot()"
+              },
+              {
+                "slug": "make_dvcyaml",
+                "label": "make_dvcyaml()"
               },
               {
                 "slug": "make_report",

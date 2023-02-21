@@ -63,7 +63,7 @@ multiple projects or users, respectively.
 > Note that the `--show-origin` flag can show you where a given config option
 > `value` is currently stored.
 
-## Command options (flags)
+## Command options/flags
 
 - `-u`, `--unset` - remove the specified config option `name` from a config
   file. Don't provide a `value` argument when employing this flag.

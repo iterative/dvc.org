@@ -87,9 +87,9 @@ your project.
 
 ### Sharing many experiments
 
-You can use `--rev` command option to push and pull multiple experiments at
-once. For example, to upload all experiments based on the latest commit of the
-current branch (Git `HEAD`), use `--rev HEAD`:
+Use the `--rev` option of `dvc exp push` and `dvc exp pull` to share many
+experiments at once. E.g., to upload all experiments based on the latest commit,
+target the Git `HEAD`:
 
 ```
 $ dvc exp push --rev HEAD origin

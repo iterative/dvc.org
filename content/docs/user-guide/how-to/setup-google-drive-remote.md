@@ -7,9 +7,9 @@ description: >-
 
 # How to Setup a Google Drive DVC Remote
 
-In this guide we explain the existing ways to setup Google Drive
-[remote storage](/doc/command-reference/remote) for your <abbr>DVC
-projects</abbr>, along with the different benefits each one brings.
+In this guide we explain the existing ways to setup Google Drive [remote
+storage] for your <abbr>DVC projects</abbr>, along with the different benefits
+each one brings.
 
 DVC uses the Google Drive API to synchronize your DVC project data with this
 type of remote storage, so it's subject to certain usage limits and quotas,
@@ -21,6 +21,8 @@ which puts you in control of these limits.
 Having your own GC project, it's also possible to
 [use a service account](#using-service-accounts) for automating tasks that need
 to establish GDrive remote connections (e.g. CI/CD).
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ## Quick start
 
@@ -181,14 +183,13 @@ automation is needed (e.g. CI/CD) we recommend
 
 </admon>
 
-On the first usage of a GDrive [remote](/doc/command-reference/remote), for
-example when trying to `dvc push` tracked data for the first time, DVC will
-prompt you to visit a special Google authentication web page. There you'll need
-to sign into a Google account with the needed access to the GDrive
-[URL](#url-format) in question. The [auth process] will ask you to grant DVC the
-necessary permissions, and produce a verification code needed for DVC to
-complete the connection. On success, the necessary credentials will be cached
-globally, for example in
+On the first usage of a GDrive remote, for example when trying to `dvc push`
+tracked data for the first time, DVC will prompt you to visit a special Google
+authentication web page. There you'll need to sign into a Google account with
+the needed access to the GDrive [URL](#url-format) in question. The [auth
+process] will ask you to grant DVC the necessary permissions, and produce a
+verification code needed for DVC to complete the connection. On success, the
+necessary credentials will be cached globally, for example in
 `~/Library/Caches/pydrive2fs/{gdrive_client_id}/default.json` for macOS ([see
 `gdrive_user_credentials_file`]), and used automatically next time DVC needs
 them.

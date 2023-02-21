@@ -33,7 +33,7 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 
 > Plain `git push` and `git fetch` don't work with experiments because these are
 > saved under custom Git references. See
-> [**How does DVC track experiments?**](/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments)
+> [**How does DVC track experiments?**](/doc/user-guide/experiment-management#how-does-dvc-track-experiments)
 > in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
