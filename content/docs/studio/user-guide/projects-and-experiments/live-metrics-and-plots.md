@@ -47,12 +47,11 @@ job:
     example below).
 
     ```yaml
-    ...
-      steps:
-        - name: Train model
-          env:
-            STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
-    ...
+    ---
+    steps:
+      - name: Train model
+        env:
+          STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
     ```
 
 2.  `STUDIO_REPO_URL`: If you are running the experiment locally, you do not

@@ -86,12 +86,18 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download any file or directory tracked in a <abbr>DVC
-> repository</abbr> (and [stored remotely](/doc/command-reference/remote)). It's
-> like `wget`, but for DVC or Git repos. In this case we use our
-> [dataset registry](https://github.com/iterative/dataset-registry) repo as the
-> data source (refer to [Data Registry](/doc/use-cases/data-registry) for more
-> info.)
+<admon type="info">
+
+`dvc get` can download any file or directory tracked in a <abbr>DVC
+repository</abbr> (and stored [remotely]). It's like `wget`, but for DVC or Git
+repos. In this case we use our [dataset registry] repo as the data source (refer
+to [Data Registry] for more info.)
+
+[remotely]: /doc/user-guide/data-management/remote-storage
+[dataset registry]: https://github.com/iterative/dataset-registry
+[data registry]: /doc/use-cases/data-registry
+
+</admon>
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43

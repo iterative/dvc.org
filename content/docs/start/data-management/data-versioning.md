@@ -95,9 +95,11 @@ outs:
 ## Storing and sharing
 
 You can upload DVC-tracked data or model files with `dvc push`, so they're
-safely stored [remotely](/doc/command-reference/remote). This also means they
-can be retrieved on other environments later with `dvc pull`. First, we need to
-set up a remote storage location:
+safely stored [remotely]. This also means they can be retrieved on other
+environments later with `dvc pull`. First, we need to set up a remote storage
+location:
+
+[remotely]: /doc/user-guide/data-management/remote-storage
 
 ```cli
 $ dvc remote add -d storage s3://mybucket/dvcstore
@@ -105,9 +107,16 @@ $ git add .dvc/config
 $ git commit -m "Configure remote storage"
 ```
 
-> DVC supports many remote storage types, including Amazon S3, SSH, Google
-> Drive, Azure Blob Storage, and HDFS. See `dvc remote add` for more details and
-> examples.
+<admon type="info">
+
+DVC supports many [remote storage types], including Amazon S3, SSH, Google
+Drive, Azure Blob Storage, and HDFS. See `dvc remote add` for more details and
+examples.
+
+[remote storage types]:
+  /doc/user-guide/data-management/remote-storage#supported-storage-types
+
+</admon>
 
 <details>
 
