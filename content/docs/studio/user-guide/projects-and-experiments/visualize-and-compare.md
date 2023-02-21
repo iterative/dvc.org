@@ -98,6 +98,13 @@ in the selected experiments will be displayed side by side for easy comparison.
 
 ![](https://static.iterative.ai/img/studio/compare.png)
 
+### Export project data
+
+You can also
+[export data from the project table as CSV](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#export-project-data),
+so that you can use the data with any external reporting or visualization tool
+of your choice.
+
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
