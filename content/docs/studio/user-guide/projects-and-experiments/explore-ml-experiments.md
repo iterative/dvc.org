@@ -30,7 +30,7 @@ The major components of the project experimentation table are:
   commits and columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
-- Button to [export project data](#visualize-compare-and-run-experiments).
+- Button to [export project data](#export-project-data).
 
 ### Git history and live metrics
 
