@@ -12,9 +12,10 @@ custom anchor link is used. Just add {#custom-anchor} after each title:
 Users may encounter errors when running `dvc pull` and `dvc fetch`, like
 `WARNING: Cache 'xxxx' not found.` or
 `ERROR: failed to pull data from the cloud`. The most common cause is changes
-pushed to Git without the corresponding data being uploaded to the
-[DVC remote](/doc/command-reference/remote). Make sure to `dvc push` from the
-original <abbr>project</abbr>, and try again.
+pushed to Git without the corresponding data being uploaded to the [DVC remote].
+Make sure to `dvc push` from the original <abbr>project</abbr>, and try again.
+
+[dvc remote]: /doc/user-guide/data-management/remote-storage
 
 ## Too many open files error {#many-files}
 

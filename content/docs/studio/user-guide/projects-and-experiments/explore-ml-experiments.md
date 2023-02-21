@@ -30,6 +30,7 @@ The major components of the project experimentation table are:
   commits and columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
+- Button to [export project data](#export-project-data).
 
 ### Git history and live metrics
 
@@ -141,6 +142,17 @@ The table also contains buttons to visualize, compare and run experiments.
   [here][run-experiments] for details on how to run experiments and track
   metrics in real time.
 - **Trends:** Generate trend charts to show metric evolution over time.
+
+### Export project data
+
+The button to export data from the project table to CSV is present next to the
+[`Delta mode`](#delta-mode) button.
+
+![export to csv](https://static.iterative.ai/img/studio/project_export_to_csv.png)
+
+Below is an example of the downloaded CSV file.
+
+![example export to csv](https://static.iterative.ai/img/studio/project_export_to_csv_example.png)
 
 [run-experiments]: /doc/studio/user-guide/run-experiments
 [dvclive]: /doc/dvclive

@@ -516,6 +516,10 @@
         "label": "make_checkpoint()"
       },
       {
+        "slug": "metrics_show",
+        "label": "metrics_show()"
+      },
+      {
         "slug": "open",
         "label": "open()"
       },
