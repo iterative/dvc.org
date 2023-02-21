@@ -158,10 +158,10 @@ At the same time, it comes with many benefits:
 - Your <abbr>repository</abbr> stays small and easy **collaborate** on (using
   regular [Git workflows]).
 - [Data versioning] guarantees ML **reproducibility**.
-- Use a **consistent interface** to access and sync data anywhere (via [CLI],
+- Use a **consistent interface** to access and [sync data] anywhere (via [CLI],
   [API], [IDE], or [web]), regardless of the storage platform (S3, GDrive, NAS,
   etc.).
-- Data **integrity** based on a Git-based storage; Data **security** through an
+- Data **integrity** based on Git-based storage; Data **security** through an
   authored project history that can be audited.
 - Advanced features: [Data registries], [ML pipelines], [CI/CD for ML],
   [productize] your ML models, and more!
@@ -171,6 +171,7 @@ At the same time, it comes with many benefits:
 [git workflows]:
   https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows
 [data versioning]: /doc/use-cases/versioning-data-and-models
+[sync data]: /doc/user-guide/data-management/track-sync-data#synchronizing-data
 [cli]: /doc/command-reference
 [api]: /doc/api-reference
 [ide]: /doc/vs-code-extension

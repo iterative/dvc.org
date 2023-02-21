@@ -172,6 +172,9 @@ set up earlier. The remote storage directory should look like this:
     └── a1a2931c8370d3aeedd7183606fd7f
 ```
 
+Learn more about
+[storage synchronization](/doc/user-guide/data-management/track-sync-data#synchronizing-data).
+
 </details>
 
 ## Retrieving

@@ -4,7 +4,7 @@ In a regular Git workflow, <abbr>DVC repository</abbr> versions are typically
 synchronized among team members. And [DVC Experiments] are internally connected
 to this commit history, so you can similarly share them.
 
-## Basic workflow: store as peristent commits
+## Basic workflow: store as persistent commits
 
 The most straightforward way to share experiments is to store them as
 [persistent](/doc/user-guide/experiment-management/persisting-experiments) Git

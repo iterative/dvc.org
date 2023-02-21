@@ -30,18 +30,21 @@ benefits of content-addressable storage.
 
 ### Expand for more details on the differences between cloud versioned and content-addressable storage
 
-`dvc remote` storage normally uses
-[content-addressable storage](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-to organize versioned data. Different versions of files are stored in the remote
-according to hash of their data content instead of according to their original
-filenames and directory location. This allows DVC to optimize certain remote
-storage lookup and data sync operations, and provides data de-duplication at the
-file level. However, this comes with the drawback of losing human-readable
-filenames without the use of the DVC CLI (`dvc get --show-url`) or API
-(`dvc.api.get_url()`).
+`dvc remote` storage normally uses [content-addressable storage] to organize
+versioned data. Different versions of files are stored in the remote according
+to a hash of their data contents instead of using their original filenames and
+directory location. This allows DVC to optimize certain remote storage lookup
+and [data sync operations], and provides data de-duplication at the file level.
+However, this comes with the drawback of losing human-readable filenames without
+the use of the DVC CLI (`dvc get --show-url`) or API (`dvc.api.get_url()`).
 
 When using cloud versioning, DVC does not provide de-duplication, and certain
 remote storage performance optimizations will be unavailable.
+
+[content-addressable storage]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+[data sync operations]:
+  /doc/user-guide/data-management/track-sync-data#synchronizing-data
 
 </details>
 
