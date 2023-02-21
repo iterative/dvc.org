@@ -9,7 +9,11 @@ settings_ are now called _Project settings_; and so on.
 
 # Visualize and Compare Experiments
 
-You can visualize and compare experiments using plots, images, charts, etc.
+You can visualize and compare experiments using plots, images, charts, etc. You
+can also
+[export the project table as CSV](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#export-project-data),
+so that you can use the data with any external reporting or visualization tool
+of your choice.
 
 ## Display plots and images
 
@@ -97,13 +101,6 @@ commits), and click on the `Compare` button. The metrics, parameters and files
 in the selected experiments will be displayed side by side for easy comparison.
 
 ![](https://static.iterative.ai/img/studio/compare.png)
-
-### Export project data
-
-You can also
-[export data from the project table as CSV](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#export-project-data),
-so that you can use the data with any external reporting or visualization tool
-of your choice.
 
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
