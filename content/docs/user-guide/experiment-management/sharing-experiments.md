@@ -6,7 +6,7 @@ to this commit history, so you can similarly share them.
 
 [dvc experiments]: /doc/user-guide/experiment-management
 
-## Method 1: Less steps
+## Push and pull experiments
 
 The fastest way to share DVC experiments is to use `dvc exp push` and
 `dvc exp pull`. This works like [sharing regular project
@@ -45,15 +45,6 @@ Check that you have the necessary remotes with `git remote -v` and (optionally)
 
 </admon>
 
-<admon type="warn">
-
-DVC can only authenticate with Git remotes using [SSH URLs].
-
-[ssh urls]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
-
-</admon>
-
 You can upload an experiment using `dvc exp push --no-cache`, which takes a Git
 remote name and an experiment ID or name. (Remove the `--no-cache` flag to
 include <abbr>cached</abbr> data, which requries a `dvc remote`.) For example:
@@ -79,34 +70,35 @@ To download an experiment, use `dvc exp pull --no-cache` (with the Git remote
 and experiment name). Remove `--no-cache` to include data, for example:
 
 ```cli
-$ dvc exp pull origin cnn-32
+$ dvc exp pull origin quare-zips
 ```
 
 This puts all the necessary files and data (from both Git and DVC remotes) in
 your project.
 
+<admon type="warn">
+
+DVC experiments are not fetched when cloning a <abbr>DVC repository</abbr> (to
+avoid cluttering your local repo). You must `dvc exp pull` the ones you want.
+
+</admon>
+
 ### Sharing many experiments
 
-Use the `--rev` option of `dvc exp push` and `dvc exp pull` to share many
-experiments at once. E.g., to upload all experiments based on the latest commit,
-target the Git `HEAD`:
+Use the `--rev`/`--num`/`--all-commits` options of `dvc exp push` and
+`dvc exp pull` to share many experiments at once. E.g., to upload all
+experiments based on the latest commit, target the Git `HEAD`:
 
 ```
 $ dvc exp push --rev HEAD origin
 ```
 
-### Limitations
+## Pushing a persistent experiment
 
-- `dvc exp push` is designed to work with a limited set of experiments (a
-  specific one or based on a Git commit).
-- DVC experiments are not fetched when cloning a <abbr>DVC repository</abbr> (to
-  avoid cluttering your local repo). You must `dvc exp pull` the ones you want.
-
-## Method 2: More persistent
-
-A more straightforward way to distribute your experiments is to turn them into
+To share an individual experiment the same way you share other Git commits, turn
+it into a
 [persistent](/doc/user-guide/experiment-management/persisting-experiments) Git
-commits (we use `dvc exp branch` below) and [share them][sharing-data] like any
+commit (we use `dvc exp branch` below) and [share it][sharing-data] like any
 project version.
 
 ```cli
@@ -148,10 +140,3 @@ $ dvc push
   │    metafiles    │    │    (cached)    │  Local project
   └─────────────────┘    └────────────────┘
 ```
-
-### Limitations
-
-- Storing experiments as persistent Git commits is not always practical, as it
-  may defeat the point of using DVC experiments in the first place (to avoid
-  cluttering your Git repo).
-- Persistent Git commits are technically no longer [DVC experiments].
