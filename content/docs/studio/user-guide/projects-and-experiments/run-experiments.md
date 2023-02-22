@@ -93,11 +93,8 @@ Studio, or read below for details.
 
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
-<admon>
-
-Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
-
-</admon>
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
 
 To run experiments from Iterative Studio, first you need to determine the Git
 commit (experiment) on which you want to iterate. Select the commit that you

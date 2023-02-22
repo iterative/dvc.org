@@ -9,11 +9,8 @@ experiments, and visualize and share results.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-<admon>
-
-Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
-
-</admon>
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
 
 <cards>
 
