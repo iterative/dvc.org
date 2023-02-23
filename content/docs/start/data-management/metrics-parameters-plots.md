@@ -140,6 +140,7 @@ plots][plots files] in `dvc.yaml`:
 ```yaml
 plots:
   - ROC:
+      template: simple
       x: fpr
       y:
         eval/live/plots/sklearn/roc/train.json: tpr
@@ -151,6 +152,7 @@ plots:
         eval/live/plots/sklearn/cm/train.json: predicted
         eval/live/plots/sklearn/cm/test.json: predicted
   - Precision-Recall:
+      template: simple
       x: recall
       y:
         eval/prc/train.json: precision
@@ -222,11 +224,11 @@ featurize:
 
 ### ⚙️ Expand to recall how it was generated.
 
-The `featurize` stage was created with this `dvc run` command. Notice the
+The `featurize` stage was created with this `dvc stage add` command. Notice the
 argument sent to the `-p` option (short for `--params`):
 
 ```cli
-$ dvc run -n featurize \
+$ dvc stage add -n featurize \
           -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \

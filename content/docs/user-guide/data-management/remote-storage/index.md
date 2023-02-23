@@ -1,6 +1,6 @@
 # Remote Storage
 
-_DVC remotes_ provide optional/additional storage to backup and share your data
+_DVC remotes_ provide optional/additional storage to back up and share your data
 and ML models. For example, you can download data artifacts created by
 colleagues without spending time and resources to regenerate them locally. See
 also `dvc push` and `dvc pull`.

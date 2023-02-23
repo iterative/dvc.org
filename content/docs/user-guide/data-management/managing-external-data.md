@@ -8,7 +8,7 @@
 
 [to-cache]: /doc/command-reference/add#example-transfer-to-an-external-cache
 [to-remote]: /doc/command-reference/add#example-transfer-to-remote-storage
-[remote storage]: /doc/command-reference/remote
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its impossible to handle it in the local machine disk. For example
@@ -82,9 +82,9 @@ types:
 2. Tracking existing data on the external location using `dvc add` (`--external`
    option needed). This produces a `.dvc` file with an external URL or path in
    its `outs` field.
-3. Creating a simple stage with `dvc run` (`--external` option needed) that
-   moves a local file to the external location. This produces an external output
-   in `dvc.yaml`.
+3. Creating a simple stage with `dvc stage add` (`--external` option needed)
+   that moves a local file to the external location. This produces an external
+   output in `dvc.yaml`.
 
 > \* Note that for certain remote storage authentication methods, extra config
 > steps are required (see `dvc remote modify` for details). Once access is
@@ -101,7 +101,7 @@ $ dvc config cache.s3 s3cache
 
 $ dvc add --external s3://mybucket/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
@@ -119,7 +119,7 @@ $ dvc config cache.ssh sshcache
 
 $ dvc add --external ssh://user@example.com/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o ssh://user@example.com/data.txt \
           scp data.txt user@example.com:/data.txt
@@ -143,7 +143,7 @@ $ dvc config cache.hdfs hdfscache
 
 $ dvc add --external hdfs://user@example.com/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o hdfs://user@example.com/data.txt \
           hdfs fs -copyFromLocal \
@@ -166,7 +166,7 @@ $ dvc config cache.webhdfs webhdfscache
 
 $ dvc add --external webhdfs://user@example.com/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o webhdfs://user@example.com/data.txt \
           curl --upload-file data.txt \
@@ -190,7 +190,7 @@ custom cache location for local paths outside of your project.
 ```cli
 $ dvc add --external /home/shared/existing-data
 
-$ dvc run -d data.txt \
+$ dvc stage add -d data.txt \
           --external \
           -o /home/shared/data.txt \
           cp data.txt /home/shared/data.txt

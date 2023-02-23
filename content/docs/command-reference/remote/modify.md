@@ -1,12 +1,14 @@
 # remote modify
 
-Configure a [DVC remote](/doc/user-guide/data-management/remote-storage).
+Configure an existing `dvc remote`.
 
 <admon type="tip">
 
-This command is commonly needed after `dvc remote add` or `dvc remote default`
-to set up credentials or for other customizations specific to the
-[storage type](#supported-storage-types).
+This command is commonly needed after `dvc remote add` to set up credentials or
+other customizations. See [Remote storage configuration] for more information.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
 
 </admon>
 
@@ -25,16 +27,43 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Most configuration options are
-specific to the remote type. Refer to the lists of
-[parameters for all remotes](#available-parameters-for-all-remotes) and of
-[supported storage types](#supported-storage-types) below.
+The DVC remote's `name` and a valid `option` to modify are required. Most
+[config parameters](#available-parameters-per-storage-type) are specific to the
+[storage type](#supported-storage-types).
 
-This command modifies a `remote` section in the project's
-[config file](/doc/command-reference/config). Alternatively, `dvc config` or
-manual editing could be used to change the configuration.
+This command updates a [`remote`] section in the [config file] (`.dvc/config`):
 
-## Command options (flags)
+```cli
+$ dvc remote modify temp url /mnt/c/tmp/dvcstore
+```
+
+```git
+# .dvc/config
+['remote "temp"']
+-     url = /tmp/dvcstore
++     url = /mnt/c/tmp/dvcstore
+```
+
+<admon type="info">
+
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
+
+```cli
+$ pip install "dvc[s3]"
+```
+
+[installed dvc]: /doc/install
+
+</admon>
+
+[config file]: /doc/command-reference/config
+[`remote`]: /doc/command-reference/config#remote
+[`core`]: /doc/command-reference/config#core
+
+## Command options/flags
 
 - `-u`, `--unset` - remove the configuration `option` from a config file. Don't
   provide a `value` argument when employing this flag.
@@ -136,6 +165,23 @@ details in the pages linked below.
   ```cli
   $ dvc remote modify myremote account_name 'myaccount'
   ```
+
+<admon type="tip">
+
+The `version_aware` option requires that
+[Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
+be enabled on the specified Azure storage account and container.
+
+</admon>
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Azure remote. Files stored in the remote
+  will retain their original filenames and directory hierarchy, and different
+  versions of files will be stored as separate versions of the corresponding
+  object in the remote.
+
+**Authentication**
 
 By default, DVC authenticates using an `account_name` and its [default
 credential] (if any), which uses environment variables (e.g. set by `az cli`) or
@@ -293,31 +339,6 @@ can propagate from an Azure configuration file (typically managed with
 `container_name`. The default directory where it will be searched for is
 `~/.azure` but this can be customized with the `AZURE_CONFIG_DIR` env var.
 
-- `version_aware` - Use
-  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
-  cloud versioning features for this Azure remote. Files stored in the remote
-  will retain their original filenames and directory hierarchy, and different
-  versions of files will be stored as separate versions of the corresponding
-  object in the remote.
-
-- `worktree` - Use
-  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
-  cloud versioning features for this Azure remote. Files stored in the remote
-  will retain their original filenames and directory hierarchy, and different
-  versions of files will be stored as separate versions of the corresponding
-  object in cloud storage. DVC will also attempt to ensure that the current
-  version of objects in the remote match the latest version of files in the DVC
-  repository. When both `version_aware` and `worktree` are set, `worktree` takes
-  precedence.
-
-<admon type="tip">
-
-The `version_aware` and `worktree` options require that
-[Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
-be enabled on the specified Azure storage account and container.
-
-</admon>
-
 </details>
 
 <details>
@@ -468,6 +489,21 @@ more information.
   $ dvc remote modify myremote projectname myproject
   ```
 
+<admon type="tip">
+
+The `version_aware` option requires that
+[Object versioning](https://cloud.google.com/storage/docs/object-versioning) be
+enabled on the specified bucket.
+
+</admon>
+
+- `version_aware` - Use
+  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
+  cloud versioning features for this Google Cloud Storage remote. Files stored
+  in the remote will retain their original filenames and directory hierarchy,
+  and different versions of files will be stored as separate versions of the
+  corresponding object in the remote.
+
 **For service accounts:**
 
 A service account is a Google account associated with your GCP project, and not
@@ -491,31 +527,6 @@ set:
 ```cli
 $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 ```
-
-- `version_aware` - Use
-  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
-  cloud versioning features for this Google Cloud Storage remote. Files stored
-  in the remote will retain their original filenames and directory hierarchy,
-  and different versions of files will be stored as separate versions of the
-  corresponding object in the remote.
-
-- `worktree` - Use
-  [worktree](/docs/user-guide/data-management/cloud-versioning#worktree-remotes)
-  cloud versioning features for this Google Cloud Storage remote. Files stored
-  in the remote will retain their original filenames and directory hierarchy,
-  and different versions of files will be stored as separate versions of the
-  corresponding object in cloud storage. DVC will also attempt to ensure that
-  the current version of objects in the remote match the latest version of files
-  in the DVC repository. When both `version_aware` and `worktree` are set,
-  `worktree` takes precedence.
-
-<admon type="tip">
-
-The `version_aware` and `worktree` options require that
-[Object versioning](https://cloud.google.com/storage/docs/object-versioning) be
-enabled on the specified bucket.
-
-</admon>
 
 </details>
 

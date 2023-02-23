@@ -42,9 +42,11 @@ $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
 
-Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `dvc-s3`,
-`dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
+Depending on the type of the [remote storage] you plan to use, you might need to
+install optional dependencies: `dvc-s3`, `dvc-azure`, `dvc-gdrive`, `dvc-gs`,
+`dvc-oss`, `dvc-ssh`.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 <details id="example-conda-with-support-for-amazon-s3-storage">
 
@@ -81,9 +83,9 @@ Note that Python 3.8+ is needed to get the latest version of DVC.
 $ pip install dvc
 ```
 
-Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
-`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
+Depending on the type of the [remote storage] you plan to use, you might need to
+install optional dependencies: `[s3]`, `[azure]`, `[gdrive]`, `[gs]`, `[oss]`,
+`[ssh]`. Use `[all]` to include them all.
 
 <details id="example-pip-with-support-for-amazon-s3-storage">
 
