@@ -1,4 +1,4 @@
-# Amazon S3
+# Amazon S3 and Compatible Servers
 
 <!--
 ## Amazon S3
