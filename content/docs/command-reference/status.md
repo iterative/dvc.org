@@ -6,7 +6,9 @@ as well as file mismatches either between the <abbr>cache</abbr> and
 
 <admon type="tip">
 
-For the status of tracked data, see `dvc data status` (similar to `git status`).
+For the status of tracked data, see
+[`dvc data status`](/doc/command-reference/data/status) (similar to
+`git status`).
 
 </admon>
 

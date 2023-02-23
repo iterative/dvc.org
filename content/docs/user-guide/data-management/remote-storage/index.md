@@ -92,6 +92,16 @@ team.
 
 ## Supported storage types
 
+<admon type="tip">
+
+Guides for each storage type are in progress. For storage types that do not link
+to a specific guide, see
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types)
+and
+[`dvc remote modify`](/doc/command-reference/remote/modify#supported-storage-types).
+
+</admon>
+
 ### Cloud providers
 
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
