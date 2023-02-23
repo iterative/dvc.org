@@ -3,6 +3,15 @@
 Download [experiments](/doc/command-reference/exp) from a Git remote, and their
 data from a `dvc remote`.
 
+<admon type="warn">
+
+DVC can only authenticate with Git remotes using [SSH URLs].
+
+[ssh urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+</admon>
+
 ## Synopsis
 
 ```usage

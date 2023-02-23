@@ -1,6 +1,6 @@
 # remote remove
 
-Remove a [DVC remote](/doc/user-guide/data-management/remote-storage).
+Remove a `dvc remote`.
 
 <admon type="info">
 

@@ -4,16 +4,26 @@
 ## Amazon S3
 -->
 
-`dvc remote add` a (new) remote name and a valid [S3] URL:
+Start with `dvc remote add` to define the remote. Set a name and valid [S3] URL:
 
 ```cli
 $ dvc remote add -d myremote s3://<bucket>/<key>
 ```
 
-<admon type="tip">
+- `<bucket>` - name of an [existing S3 bucket]
+- `<key>` - optional path to a [folder key] in your bucket
 
-The `-d` flag (optional) makes this the `--default` remote for the
-<abbr>project</abbr>.
+Upon `dvc push` (or when needed) DVC will try to authenticate using your [AWS
+CLI config]. This reads the default AWS credentials file (if available) or
+[env vars](#environment-variables).
+
+[aws cli config]:
+  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+
+<admon type="info">
+
+The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
+`s3:PutObject`, `s3:DeleteObject`.
 
 </admon>
 
@@ -26,79 +36,73 @@ The `-d` flag (optional) makes this the `--default` remote for the
 [folder key]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html
 
-## Authentication
+To use [custom auth](#custom-authentication) or further configure your DVC
+remote, set any supported config param with `dvc remote modify`.
+
+## Cloud versioning
 
 <admon type="info">
 
-The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
-`s3:PutObject`, `s3:DeleteObject`.
+Requires [S3 Versioning] enabled on the bucket.
 
 </admon>
 
-DVC will try to authenticate using your [AWS CLI config] by default. This reads
-the default AWS credentials file (if available). For custom authentication, you
-can set the following configuration parameters with `dvc remote modify --local`
-or use [environment variables](#environment-variables).
+```cli
+$ dvc remote modify myremote version_aware true
+```
 
-[aws cli config]:
-  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+`version_aware` (`true` or `false`) enables [cloud versioning] features for this
+remote. This lets you explore the bucket files under the same structure you see
+in your project directory locally.
+
+[s3 versioning]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
+[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
+
+## Custom authentication
+
+If you don't have the AWS CLI configured in your machine or if you want to
+change the auth method for some reason.
 
 <admon type="warn">
 
-The `--local` flag is needed to write sensitive user info to a Git-ignored
-config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
-`dvc config`.
+The `dvc remote modify --local` flag is needed to write sensitive user info to a
+Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
+through Git. See `dvc config`.
 
 </admon>
 
-- `configpath` - custom [AWS CLI config file][aws-cli-config] path
+To use custom [AWS CLI config or credential files][aws-cli-config-files], or to
+specify a [profile name], use `configpath`, `credentialpath`, or `profile`:
 
-  ```cli
-  $ dvc remote modify --local myremote \
-                      configpath 'path/to/config'
-  ```
+```cli
+$ dvc remote modify --local myremote \
+                    configpath 'path/to/config'
+# or
+$ dvc remote modify --local myremote \
+                    credentialpath 'path/to/credentials'
+# and (optional)
+$ dvc remote modify --local myremote profile 'mysecret'
+```
 
-- `credentialpath` - custom [AWS CLI credentials file][aws-cli-config] path
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      credentialpath 'path/to/credentials'
-  ```
-
-- `profile` - credentials [profile] name
-
-  ```cli
-  $ dvc remote modify --local myremote profile 'mysecret'
-  ```
-
-- `access_key_id` - AWS access key ID. May be used (along with
-  `secret_access_key`) instead of `credentialpath`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      access_key_id 'mysecret'
-  ```
-
-- `secret_access_key` - AWS secret access key. May be used (along with
-  `access_key_id`) instead of `credentialpath`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      secret_access_key 'mysecret'
-  ```
-
-- `session_token` - AWS [MFA] session token (when required). May be used (along
-  with `access_key_id` and `secret_access_key`) instead of `credentialpath`.
-
-  ```cli
-  $ dvc remote modify --local myremote \
-                      session_token 'mysecret'
-  ```
-
-[aws-cli-config]:
+[aws-cli-config-files]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
-[profile]:
+[profile name]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
+
+Another option is to use an AWS access key ID (`access_key_id`) and secret
+access key (`secret_access_key`) pair, and if required, an [MFA] session token
+(`session_token`):
+
+```cli
+$ dvc remote modify --local myremote \
+                    access_key_id 'mysecret'
+$ dvc remote modify --local myremote \
+                    secret_access_key 'mysecret'
+$ dvc remote modify --local myremote \
+                    session_token 'mysecret'
+```
+
 [mfa]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html
 
 ## S3-compatible servers (non-Amazon)
@@ -124,38 +128,6 @@ they're effective depends on each storage platform.
 [minio]: https://min.io/
 [digitalocean space]: https://www.digitalocean.com/products/spaces
 [ibm cloud object storage]: https://www.ibm.com/cloud/object-storage
-
-## Cloud versioning
-
-Learn about DVC [cloud versioning] support.
-
-<admon type="info">
-
-Requires [S3 Versioning] enabled on the bucket.
-
-</admon>
-
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-[s3 versioning]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
-
-- `version_aware` (`true` or `false`) - use [version-aware] cloud versioning
-  features for this remote.
-
-  ```cli
-  $ dvc remote modify myremote version_aware true
-  ```
-
-- `worktree` (`true` or `false`) - use [worktree] cloud versioning features for
-  this remote (implies `version_aware`).
-
-  ```cli
-  $ dvc remote modify myremote worktree true
-  ```
-
-[version-aware]:
-  /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
-[worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
 ## More configuration parameters
 
@@ -187,8 +159,8 @@ See `dvc remote modify` for more command usage details.
 
 - `ssl_verify` - whether to verify SSL certificates (`true` or `false`), or a
   path to a custom CA certificates bundle to do so (implies `true`). Any certs
-  found in the [AWS CLI config file][aws-cli-config] (`ca_bundle`) are used by
-  default.
+  found in the [AWS CLI config file][aws-cli-config-files] (`ca_bundle`) are
+  used by default.
 
   ```cli
   $ dvc remote modify myremote ssl_verify false
