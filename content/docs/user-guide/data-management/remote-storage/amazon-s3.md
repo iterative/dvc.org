@@ -27,9 +27,6 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 
 </admon>
 
-- `<bucket>` - name of an [existing S3 bucket]
-- `<key>` - optional path to a [folder key] in your bucket
-
 [s3]: https://aws.amazon.com/s3/
 [existing s3 bucket]:
   https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html
