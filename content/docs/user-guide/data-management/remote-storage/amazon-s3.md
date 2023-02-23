@@ -33,17 +33,39 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 [folder key]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html
 
+To use [custom auth](#custom-authentication) or further configure your DVC
+remote, set any supported config param with `dvc remote modify`.
+
+## Cloud versioning
+
+<admon type="info">
+
+Requires [S3 Versioning] enabled on the bucket.
+
+</admon>
+
+```cli
+$ dvc remote modify myremote version_aware true
+```
+
+`version_aware` (`true` or `false`) enables [cloud versioning] features for this
+remote. This lets you explore the bucket files under the same structure you see
+in your project directory locally.
+
+[s3 versioning]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
+[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
+
 ## Custom authentication
 
 If you don't have the AWS CLI configured in your machine or if you want to
-change the auth method for some reason, you can set the following config params
-with `dvc remote modify --local`.
+change the auth method for some reason.
 
 <admon type="warn">
 
-The `--local` flag is needed to write sensitive user info to a Git-ignored
-config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
-`dvc config` for more info.
+The `dvc remote modify --local` flag is needed to write sensitive user info to a
+Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
+through Git. See `dvc config` for more info.
 
 </admon>
 
@@ -103,29 +125,6 @@ they're effective depends on each storage platform.
 [minio]: https://min.io/
 [digitalocean space]: https://www.digitalocean.com/products/spaces
 [ibm cloud object storage]: https://www.ibm.com/cloud/object-storage
-
-## Cloud versioning
-
-Learn about DVC [cloud versioning] support.
-
-<admon type="info">
-
-Requires [S3 Versioning] enabled on the bucket.
-
-</admon>
-
-```cli
-$ dvc remote modify myremote version_aware true
-```
-
-- `version_aware` (`true` or `false`) - use [version-aware] cloud versioning
-  features for this remote.
-
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-[s3 versioning]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
-[version-aware]:
-  /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
 
 ## More configuration options
 
