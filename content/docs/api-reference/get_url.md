@@ -44,7 +44,8 @@ directory in the remote storage.
 💡 Having the resource's URL, it should be possible to download it directly with
 an appropriate library, such as [`boto3`] or [`paramiko`].
 
-[storage-types]: /doc/command-reference/remote/add#supported-storage-types
+[storage-types]:
+  /doc/user-guide/data-management/remote-storage#supported-storage-types
 [structure of cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 [`boto3`]:

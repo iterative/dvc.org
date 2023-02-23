@@ -11,7 +11,7 @@ DVCFileSystem provides a unified view of all the files/directories in your
 repository, be it Git-tracked or DVC-tracked, or untracked (in case of a local
 repository). It can reuse the files in DVC <abbr>cache</abbr> and can otherwise
 stream from
-[supported remote storage](/doc/command-reference/remote/add#supported-storage-types).
+[supported remote storage](/doc/user-guide/data-management/remote-storage#supported-storage-types).
 
 ```py
 >>> from dvc.api import DVCFileSystem
