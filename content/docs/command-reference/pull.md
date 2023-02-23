@@ -8,7 +8,7 @@ and `.dvc` files, and make them visible in the <abbr>workspace</abbr>.
 
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [-d] [-f] [-R] [--all-commits] [--run-cache]
+                [-d] [-f] [-R] [--all-commits] [--run-cache] [--allow-missing]
                 [targets [targets ...]]
 
 positional arguments:
@@ -116,6 +116,9 @@ used to see what files `dvc pull` would download.
   the `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
   `dvc repro <stage_name>` is necessary to checkout these files (into the
   workspace) and update `dvc.lock`.
+
+- `--allow-missing` - allows the command to suceed even if some files or
+  directories are missing.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. Note that the
