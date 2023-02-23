@@ -95,7 +95,7 @@ outs:
 ## Storing and sharing
 
 You can upload DVC-tracked data or model files with `dvc push`, so they're
-safely stored [remotely]. This also means they can be retrieved on other
+safely stored [remotely]. This also means that they can be retrieved on other
 environments later with `dvc pull`. First, we need to set up a remote storage
 location:
 
@@ -145,10 +145,12 @@ $ git commit .dvc\config -m "Configure local remote"
 </tab>
 </toggle>
 
-> While the term "local remote" may seem contradictory, it doesn't have to be.
-> The "local" part refers to the type of location: another directory in the file
-> system. "Remote" is what we call storage for <abbr>DVC projects</abbr>. It's
-> essentially a local data backup.
+<admon type="tip">
+
+Learn more about
+[local remotes](/doc/user-guide/data-management/remote-storage#file-systems-local-remotes).
+
+</admon>
 
 </details>
 
@@ -214,7 +216,7 @@ $ dvc pull
 
 <admon icon="book">
 
-See `dvc remote` for more information on remote storage.
+See [Remote Storage] for more information on remote storage.
 
 </admon>
 

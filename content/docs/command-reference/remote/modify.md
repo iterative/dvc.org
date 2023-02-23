@@ -27,9 +27,9 @@ positional arguments:
 
 ## Description
 
-The DVC remote's `name` and a valid `option` to modify are required. Remote
-options or [config parameters](#available-parameters-per-storage-type) are
-specific to the storage type and typically require a `value` as well.
+The DVC remote's `name` and a valid `option` to modify are required. Most
+[config parameters](#available-parameters-per-storage-type) are specific to the
+[storage type](#supported-storage-types).
 
 This command updates a [`remote`] section in the [config file] (`.dvc/config`):
 
@@ -93,313 +93,53 @@ $ pip install "dvc[s3]"
 
 The following config options are available for all remote types:
 
-- `url` - the remote location can always be modified. This is how DVC determines
-  what type of remote it is, and thus which other config options can be modified
-  (see each type in the next section for more details).
+- `url` - the remote location (URL or path) can always be modified. See each
+  type in the next section for valid URL formats.
 
-  For example, for an Amazon S3 remote (see more details in the S3 section
-  below):
+  <admon type="info">
 
-  ```cli
-  $ dvc remote modify myremote url s3://mybucket/new/path
-  ```
+  This is how DVC determines what type of remote this is, and thus which other
+  config options can be modified.
 
-  Or a _local remote_ (a directory in the file system):
-
-  ```cli
-  $ dvc remote modify localremote url /home/user/dvcstore
-  ```
+  </admomn>
 
 - `jobs` - change the default number of processes for
   [remote storage](/doc/command-reference/remote) synchronization operations
-  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc get`, `dvc import`,
-  `dvc update`, `dvc add --to-remote`, `dvc gc -c`, etc.). Accepts positive
-  integers. The default is `4 \* cpu_count()`.
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc import`,
+  `dvc update`, `dvc gc -c`, etc.). Accepts positive integers. The default is
+  `4 \* cpu_count()`.
 
   ```cli
   $ dvc remote modify myremote jobs 8
   ```
 
-- `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
-  DVC will recalculate the file hashes, to check that their contents have not
-  changed. This may slow down the aforementioned commands. The calculated hash
-  is compared to the value saved in the corresponding <abbr>DVC file</abbr>.
+- `verify` - set to `true` for `dvc pull` and `dvc fetch` to recalculate file
+  hashes to check whether their contents have changed (compared to the values
+  saved in the corresponding <abbr>metafile</abbr>). This may slow down the
+  operations.
 
-  > Note that this option is enabled on **Google Drive** remotes by default.
+  <admon type="info">
+
+  Note that this option is enabled on **Google Drive** remotes by default.
+
+  </admon>
 
   ```cli
   $ dvc remote modify myremote verify true
   ```
 
-## Available parameters per storage type
+## Supported storage types
 
-The following are the types of remote storage (protocols) and their config
-options:
+Each type of storage has different config options you can set. See all the
+details in the pages linked below.
 
-<details>
+### Cloud providers
 
-### Amazon S3
+- [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 
-- `url` - remote location, in the `s3://<bucket>/<key>` format:
-
-  ```cli
-  $ dvc remote modify myremote url s3://mybucket/path
-  ```
-
-- `region` - change S3 remote region:
-
-  ```cli
-  $ dvc remote modify myremote region us-east-2
-  ```
-
-- `read_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to read from a connection (60 by default). Let's set it to 5
-  minutes for example:
-
-  ```cli
-  $ dvc remote modify myremote read_timeout 300
-  ```
-
-- `connect_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to make a connection (60 by default). Let's set it to 5
-  minutes for example:
-
-  ```cli
-  $ dvc remote modify myremote connect_timeout 300
-  ```
-
-<admon type="tip">
-
-The `version_aware` option requires that
-[S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
-be enabled on the specified S3 bucket.
-
-</admon>
-
-- `version_aware` - Use
-  [version-aware](/docs/user-guide/data-management/cloud-versioning#version-aware-remotes)
-  cloud versioning features for this S3 remote. Files stored in the remote will
-  retain their original filenames and directory hierarchy, and different
-  versions of files will be stored as separate versions of the corresponding
-  object in the remote.
-
-**Authentication**
-
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. Use the following
-parameters to customize the authentication method:
-
-> If any values given to the parameters below contain sensitive user info, add
-> them with the `--local` option, so they're written to a Git-ignored config
-> file.
-
-- `profile` - credentials profile name to access S3:
-
-  ```cli
-  $ dvc remote modify --local myremote profile myprofile
-  ```
-
-- `credentialpath` - S3 credentials file path:
-
-  ```cli
-  $ dvc remote modify --local myremote credentialpath /path/to/creds
-  ```
-
-- `configpath` - path to the
-  [AWS CLI config file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
-  The default AWS CLI config file path (e.g. `~/.aws/config`) is used if this
-  parameter isn't set.
-
-  ```cli
-  $ dvc remote modify --local myremote configpath /path/to/config
-  ```
-
-  > Note that only the S3-specific
-  > [configuration values](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#configuration-values)
-  > are used.
-
-- `endpointurl` - endpoint URL to access S3:
-
-  ```cli
-  $ dvc remote modify myremote endpointurl https://myendpoint.com
-  ```
-
-- `access_key_id` - AWS Access Key ID. May be used (along with
-  `secret_access_key`) instead of `credentialpath`:
-
-  ```cli
-  $ dvc remote modify --local myremote access_key_id 'mykey'
-  ```
-
-- `secret_access_key` - AWS Secret Access Key. May be used (along with
-  `access_key_id`) instead of `credentialpath`:
-
-  ```cli
-  $ dvc remote modify --local myremote \
-        secret_access_key 'mysecret'
-  ```
-
-- `session_token` - AWS
-  [MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html)
-  session token. May be used (along with `access_key_id` and
-  `secret_access_key`) instead of `credentialpath` when MFA is required:
-
-  ```cli
-  $ dvc remote modify --local myremote session_token my-session-token
-  ```
-
-- `use_ssl` - whether or not to use SSL. By default, SSL is used.
-
-  ```cli
-  $ dvc remote modify myremote use_ssl false
-  ```
-
-- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
-  custom CA certificates bundle to do so (implies `true`). The certs in
-  [AWS CLI config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings)
-  (if any) are used by default.
-
-  ```cli
-  $ dvc remote modify myremote ssl_verify false
-  # or
-  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
-  ```
-
-**Operational details**
-
-Make sure you have the following permissions enabled: `s3:ListBucket`,
-`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
-methods that are performed by DVC (`list_objects_v2` or `list_objects`,
-`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
-
-- `listobjects` - whether or not to use `list_objects`. By default,
-  `list_objects_v2` is used. Useful for ceph and other S3 emulators.
-
-  ```cli
-  $ dvc remote modify myremote listobjects true
-  ```
-
-- `sse` - server-side encryption algorithm to use: `AES256` or `aws:kms`. By
-  default, no encryption is used.
-
-  ```cli
-  $ dvc remote modify myremote sse AES256
-  ```
-
-- `sse_kms_key_id` - identifier of the key to encrypt data uploaded when using
-  [SSE-KMS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
-  (see `sse`). This parameter will be passed directly to AWS S3, so DVC supports
-  any value that S3 supports, including both key IDs and aliases.
-
-  ```cli
-  $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
-  ```
-
-- `sse_customer_key` - key to encrypt data uploaded when using customer-provided
-  encryption keys
-  ([SSE-C](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)).
-  instead of `sse`. The value should be a base64-encoded 256 bit key.
-
-  ```cli
-  $ dvc remote modify --local myremote sse_customer_key 'mysecret'
-  ```
-
-- `sse_customer_algorithm` - server-side encryption algorithm to use with
-  `sse_customer_key`. This parameter will be passed directly to AWS S3, so DVC
-  supports any value that S3 supports. `AES256` by default.
-
-  ```cli
-  $ dvc remote modify myremote sse_customer_algorithm 'AES256'
-  ```
-
-- `acl` - set object level access control list (ACL) such as `private`,
-  `public-read`, etc. By default, no ACL is specified.
-
-  ```cli
-  $ dvc remote modify myremote acl bucket-owner-full-control
-  ```
-
-- `grant_read`\* - grants `READ` permissions at object level access control list
-  for specific grantees\*\*. Grantee can read object and its metadata.
-
-  ```cli
-  $ dvc remote modify myremote grant_read \
-        id=aws-canonical-user-id,id=another-aws-canonical-user-id
-  ```
-
-- `grant_read_acp`\* - grants `READ_ACP` permissions at object level access
-  control list for specific grantees\*\*. Grantee can read the object's ACP.
-
-  ```cli
-  $ dvc remote modify myremote grant_read_acp \
-        id=aws-canonical-user-id,id=another-aws-canonical-user-id
-  ```
-
-- `grant_write_acp`\* - grants `WRITE_ACP` permissions at object level access
-  control list for specific grantees\*\*. Grantee can modify the object's ACP.
-
-  ```cli
-  $ dvc remote modify myremote grant_write_acp \
-        id=aws-canonical-user-id,id=another-aws-canonical-user-id
-  ```
-
-- `grant_full_control`\* - grants `FULL_CONTROL` permissions at object level
-  access control list for specific grantees\*\*. Equivalent of grant_read +
-  grant_read_acp + grant_write_acp
-
-  ```cli
-  $ dvc remote modify myremote grant_full_control \
-        id=aws-canonical-user-id,id=another-aws-canonical-user-id
-  ```
-
-  > \* `grant_read`, `grant_read_acp`, `grant_write_acp` and
-  > `grant_full_control` params are mutually exclusive with `acl`.
-  >
-  > \*\* default ACL grantees are overwritten. Grantees are AWS accounts
-  > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
-  > (predefined group).
-  >
-  > **References**
-  >
-  > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
-  > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
-
-Note that S3 remotes can also be configured via environment variables (instead
-of `dvc remote modify`). These are tried if none of the params above are set.
-
-Authentication example:
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-$ export AWS_ACCESS_KEY_ID='mykey'
-$ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc push
-```
-
-For more on the supported env vars, please see the
-[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables)
-
-</details>
-
-<details>
-
-### S3-compatible storage
-
-- `endpointurl` - URL to connect to the S3-compatible storage server or service
-  (e.g. [Minio](https://min.io/),
-  [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-  [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.):
-
-  ```cli
-  $ dvc remote modify myremote \
-                      endpointurl https://storage.example.com
-  ```
-
-Any other S3 parameter (see previous section) can also be set for S3-compatible
-storage. Whether they're effective depends on each storage platform.
-
-</details>
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3-compatible]:
+  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 
 <details>
 
@@ -1267,34 +1007,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 </details>
-
-## Example: Customize an S3 remote
-
-Let's first set up a _default_ S3 remote.
-
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-Setting 'myremote' as a default remote.
-```
-
-Modify its access profile:
-
-```cli
-$ dvc remote modify myremote profile myprofile
-```
-
-Now the project config file should look like this:
-
-```ini
-['remote "myremote"']
-    url = s3://mybucket/path
-    profile = myuser
-[core]
-    remote = myremote
-```
 
 ## Example: Some Azure authentication methods
 

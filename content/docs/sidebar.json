@@ -124,7 +124,11 @@
         "source": false,
         "children": [
           "large-dataset-optimization",
-          "remote-storage",
+          {
+            "slug": "remote-storage",
+            "source": "remote-storage/index.md",
+            "children": ["amazon-s3"]
+          },
           "cloud-versioning",
           "importing-external-data",
           "managing-external-data"

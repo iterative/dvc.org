@@ -44,7 +44,7 @@ A [default remote] is expected by `dvc push`, `dvc pull`, `dvc status`,
 </admon>
 
 The remote `name` (required) is used to identify the remote and must be unique.
-DVC will determine the [type of remote](#supported-storage-types) based on the
+DVC will determine the [storage type](#supported-storage-types) based on the
 provided `url` (also required), a URL or path for the location.
 
 <admon type="info">
@@ -121,60 +121,15 @@ $ pip install "dvc[s3]"
 
 ## Supported storage types
 
-The following are the types of remote storage (protocols) supported:
+The following are the supported types of storage protocols and platforms.
 
-<details>
+### Cloud providers
 
-### Amazon S3
+- [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-```
-
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
-
-Make sure you have the following permissions enabled: `s3:ListBucket`,
-`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
-methods that are performed by DVC (`list_objects_v2` or `list_objects`,
-`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
-
-> See `dvc remote modify` for a full list of S3 parameters.
-
-</details>
-
-<details>
-
-### S3-compatible storage
-
-For object storage that supports an S3-compatible API (e.g.
-[Minio](https://min.io/),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the `endpointurl` parameter. For example, let's set up a DigitalOcean
-"space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
-region:
-
-```cli
-$ dvc remote add -d myremote s3://mystore/path
-$ dvc remote modify myremote endpointurl \
-                             https://nyc3.digitaloceanspaces.com
-```
-
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
-
-Any other S3 parameter can also be set for S3-compatible storage. Whether
-they're effective depends on each storage platform.
-
-</details>
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3-compatible]:
+  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 
 <details>
 
@@ -396,90 +351,3 @@ $ dvc remote add -d myremote \
 > See `dvc remote modify` for a full list of WebDAV parameters.
 
 </details>
-
-<details>
-
-### local remote
-
-A "local remote" is a directory in the machine's file system. Not to be confused
-with the `--local` option of `dvc remote` (and other config) commands!
-
-> While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the type of location where the storage is: another directory in the
-> same file system. "Remote" is how we call storage for <abbr>DVC
-> projects</abbr>. It's essentially a local backup for data tracked by DVC.
-
-Using an absolute path (recommended):
-
-```cli
-$ dvc remote add -d myremote /tmp/dvcstore
-$ cat .dvc/config
-...
-['remote "myremote"']
-    url = /tmp/dvcstore
-...
-```
-
-> Note that the absolute path `/tmp/dvcstore` is saved as is.
-
-Using a relative path. It will be resolved against the current working
-directory, but saved **relative to the config file location**:
-
-```cli
-$ dvc remote add -d myremote ../dvcstore
-$ cat .dvc/config
-...
-['remote "myremote"']
-    url = ../../dvcstore
-...
-```
-
-> Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
-> resulting in `../../dvcstore`.
-
-</details>
-
-## Example: Customize an S3 remote
-
-Add an Amazon S3 remote as the _default_ (via the `-d` option), and modify its
-region.
-
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-Setting 'myremote' as a default remote.
-
-$ dvc remote modify myremote region us-east-2
-```
-
-The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
-
-```ini
-['remote "myremote"']
-    url = s3://mybucket/path
-    region = us-east-2
-[core]
-    remote = myremote
-```
-
-The list of remotes should now be:
-
-```cli
-$ dvc remote list
-myremote	s3://mybucket/path
-```
-
-You can overwrite existing remotes using `-f` with `dvc remote add`:
-
-```cli
-$ dvc remote add -f myremote s3://mybucket/another-path
-```
-
-List remotes again to view the updated remote:
-
-```cli
-$ dvc remote list
-myremote	s3://mybucket/another-path
-```
