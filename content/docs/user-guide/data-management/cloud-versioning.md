@@ -57,7 +57,7 @@ Currently, it is supported on the following `dvc remote` types:
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
 [s3 versioning]:
-  https://docs.aws.amazon.com/amazons3/latest/userguide/versioning.html
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
 [azure blob storage]:
   /doc/user-guide/data-management/remote-storage/azure-blob-storage
 [blob versioning]:
