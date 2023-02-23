@@ -74,10 +74,8 @@ operation.
 
 ## Structure of the cache directory
 
-The DVC cache is a
-[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
-(by default in `.dvc/cache`), which adds a layer of indirection between code and
-data.
+The DVC cache is a [content-addressable storage] (by default in `.dvc/cache`),
+which adds a layer of indirection between code and data.
 
 There are two ways in which the data is <abbr>cached</abbr>, depending on
 whether it's a single file, or a directory (which may contain multiple files).
@@ -85,6 +83,9 @@ whether it's a single file, or a directory (which may contain multiple files).
 Note files are renamed, reorganized, and directory trees are flattened in the
 cache, which always has exactly one depth level with 2-character directories
 (based on hashes of the data contents, as explained next).
+
+[content-addressable storage]:
+  https://en.wikipedia.org/wiki/Content-addressable_storage
 
 ### Files
 
@@ -140,12 +141,15 @@ That's how DVC knows that the other two cached files belong in the directory.
 
 `dvc exp run` and `dvc repro` by default populate and reutilize a log of stages
 that have been run in the project. It is found in the `runs/` directory inside
-the cache (or [remote storage](/doc/command-reference/remote)).
+the cache (or [remote storage]).
 
 Runs are identified as combinations of exact <abbr>dependency</abbr> contents
-(or [parameter](/doc/command-reference/params) values), and the literal
-command(s) to execute. These combinations are represented by special hashes that
-translate to the file paths inside the run-cache dir:
+(or [parameter] values), and the literal command(s) to execute. These
+combinations are represented by special hashes that translate to the file paths
+inside the run-cache dir:
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[parameter]: /doc/command-reference/params
 
 ```cli
 $ tree .dvc/cache/runs

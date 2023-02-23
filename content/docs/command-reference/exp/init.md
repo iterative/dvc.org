@@ -100,7 +100,7 @@ See the [Pipelines guide] for more on that topic.
 [shell `command`]:
   /doc/user-guide/project-structure/dvcyaml-files#stage-commands
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
-[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiments]: /doc/user-guide/experiment-management
 [as an argument]: /doc/user-guide/pipelines/defining-pipelines#stage-commands
 [pipelines guide]: /doc/user-guide/pipelines/defining-pipelines
 

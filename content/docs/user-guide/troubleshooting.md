@@ -12,9 +12,10 @@ custom anchor link is used. Just add {#custom-anchor} after each title:
 Users may encounter errors when running `dvc pull` and `dvc fetch`, like
 `WARNING: Cache 'xxxx' not found.` or
 `ERROR: failed to pull data from the cloud`. The most common cause is changes
-pushed to Git without the corresponding data being uploaded to the
-[DVC remote](/doc/command-reference/remote). Make sure to `dvc push` from the
-original <abbr>project</abbr>, and try again.
+pushed to Git without the corresponding data being uploaded to the [DVC remote].
+Make sure to `dvc push` from the original <abbr>project</abbr>, and try again.
+
+[dvc remote]: /doc/user-guide/data-management/remote-storage
 
 ## Too many open files error {#many-files}
 
@@ -27,7 +28,7 @@ be reached, causing this error.
 To solve this, it's often possible to increase the open file descriptors limit,
 with `ulimit` on UNIX-like system (for example `ulimit -n 1024`), or
 [increasing Handles limit](https://blogs.technet.microsoft.com/markrussinovich/2009/09/29/pushing-the-limits-of-windows-handles/)
-on Windows. Otherwise, please try using a lower `JOBS` value.
+on Windows. Otherwise, try using a lower `JOBS` value.
 
 ## Unable to find credentials {#no-credentials}
 
@@ -99,15 +100,6 @@ commands accept a `git_remote` argument. You may need to authenticate to use the
 Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
 `dvc exp pull`) permissions.
 
-DVC does not currently support authentication with [Git credentials]. This means
-that unless the Git server allows unauthenticated HTTP write/read, you should
-use an [SSH Git URL] for Git remotes used for listing, pulling or pushing
-experiments.
-
-[git credentials]: https://git-scm.com/docs/gitcredentials
-[ssh git url]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
-
 ## Could not open pickled 'index/md5/links' cache {#pickle}
 
 You may encounter this error when using DVC on different Python versions with
@@ -139,11 +131,11 @@ change their configuration to avoid shallow cloning. Common examples:
 <toggle>
 <tab title="CML">
 
-[CML](https://cml.dev) has a convenient `--unshallow` option for its
+[CML](https://cml.dev) has a convenient `--fetch-depth` option for its
 [`ci`](https://cml.dev/doc/ref/ci) command:
 
 ```cli
-$ cml ci --unshallow
+$ cml ci --fetch-depth 0
 ```
 
 </tab>

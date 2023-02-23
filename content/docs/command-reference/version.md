@@ -16,11 +16,11 @@ usage: dvc version [-h] [-q | -v]
 | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`DVC version`](#components-of-dvc-version) | Version of DVC, and name of the binary or package manager (`pip`, `conda`, etc.) used to install DVC (along with a Git commit hash in case of a development version)             |
 | `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                                        |
-| `Supports`                                  | Types of [remote storage](/doc/command-reference/remote/add#supported-storage-types) supported by the current DVC setup (their required dependencies are installed)              |
+| `Supports`                                  | Types of [remote storage](/doc/user-guide/data-management/remote-storage#supported-storage-types) supported by the current DVC setup (their required dependencies are installed) |
 | `Cache types`                               | [Types of links](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>) |
 | `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                            |
 | `Caches`                                    | Cache [location types](/doc/user-guide/data-management/managing-external-data) configured in the repo (e.g. local, SSH, S3, etc.)                                                |
-| `Remotes`                                   | Remote [location types](/doc/command-reference/remote/add#supported-storage-types) configured in the repo (e.g. SSH, S3, Google Drive, etc.)                                     |
+| `Remotes`                                   | Remote [location types](/doc/user-guide/data-management/remote-storage#supported-storage-types) configured in the repo (e.g. SSH, S3, Google Drive, etc.)                        |
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                                  |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                               |
 
@@ -29,7 +29,7 @@ usage: dvc version [-h] [-q | -v]
 
 > Note that if you've installed DVC using `pip`, you will need to install
 > `psutil` manually with `pip install psutil` in order for `dvc version` to
-> report file system information. Please see the original
+> report file system information. See the original
 > [issue on GitHub](https://github.com/iterative/dvc/issues/2284) for more info.
 
 ### Components of DVC version

@@ -1,43 +1,45 @@
 # How Iterative Studio Works
 
-[Iterative Studio](https://studio.iterative.ai/) works with the data, metrics,
-hyperparameters and model metadata that you add to your ML project Git
-repositories. It works very closely with your Git ecosystem.
+[Iterative Studio](https://studio.iterative.ai/) works very closely with your
+Git ecosystem. It parses the metadata from your ML project to present organized
+data, hyperparameters, models, and metrics on a web UI. It also parses and
+displays live metrics and plots sent by [DVCLive]; these don't need to be pushed
+to the Git repositories.
 
-This video illustrates how Iterative Studio works closely with your Git
-ecosystem.
-
-<admon>
-
-Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
-
-</admon>
+The following video illustrates how Iterative Studio works with data from your
+ML projects and experiments.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
-## How your project data is saved
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
+
+## How to save your project data
 
 - Using [DVC] and [Git], you will push all your ML experiments to your GitHub,
-  GitLab or Bitbucket repositories as Git commits.
-- Using Iterative Studio, or using the command line interface (CLI) of [GTO],
-  and possibly [MLEM], you will push all your ML model details to the Git
-  repositories as Git commits and Git tags.
+  GitLab or Bitbucket repositories.
+- Using Iterative Studio, or using [GTO] and possibly [MLEM], you will push
+  information about your ML models as Git commits and tags.
+- Using [DVCLive], you will push live metrics and plots from your experiments to
+  Iterative Studio.
 
 ## How Iterative Studio extracts your project data
 
-- When you connect to these Git repositories from Iterative Studio, the
-  project's `dvc.yaml` is used to identify all the data, metrics and
-  hyperparameters in your experiments.
+- When you connect to the Git repositories from Iterative Studio, the project's
+  `dvc.yaml` is used to identify all the data, metrics and hyperparameters in
+  your experiments.
 - If you are not using DVC, you can
   [add the metrics and hyperparameters to your Git repositories manually](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
 - Details of your ML models, including versions and stage assignments, are
   extracted from the Git commits and tags.
+- Live metrics and plots for experiments are extracted from the data you send
+  using [DVCLive].
 
 ## How Iterative Studio presents your project data
 
 - Iterative Studio creates an
   [interactive, tabular representation](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#components-of-a-project)
-  of all the identified values.
+  of all the identified values, including live metrics.
 - All the projects that you have created are presented in a central projects
   dashboard.
 - All identified models are included in an interactive
@@ -45,17 +47,17 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
   and individual
   [model details pages](/doc/studio/user-guide/model-registry/view-models#model-details-page).
 
-## How Iterative Studio saves updates to your ML projects
+## How Iterative Studio runs experiments and model actions
 
-- When you
-  [run new experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments)
-  or
+- When you [run new experiments] or
   [add models to your model registry](/doc/studio/user-guide/model-registry/add-a-model)
   in Iterative Studio, it creates Git commits and pull requests with the
   changes.
 - You can set up your CI/CD actions (e.g. GitHub Actions) to run model training
   upon the creation of Git commits, tags or pull requests. You can use [CML] in
-  your CI/CD actions for continuous machine learning.
+  your CI/CD actions for continuous machine learning. And you can use [DVCLive]
+  to [send live updates for training metrics and plots to Iterative
+  Studio][live-metrics-and-plots].
 - When you
   [register new versions](/doc/studio/user-guide/model-registry/register-version)
   of your ML models or
@@ -67,3 +69,8 @@ https://www.youtube.com/watch?v=5xM5az78Lrg
 [mlem]: https://mlem.ai/
 [gto]: https://mlem.ai/doc/gto
 [git]: https://git-scm.com/
+[live-metrics-and-plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[run new experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
+[dvclive]: /doc/dvclive

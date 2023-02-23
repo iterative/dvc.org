@@ -94,7 +94,7 @@ Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '75ff5e0'.
 ^C
 
-Reproduced experiment(s): exp-8a3bd
+Reproduced experiment(s): gluey-leak
 Experiment results have been applied to your workspace.
 ```
 
@@ -113,14 +113,14 @@ $ dvc exp show
 
 ```dvctable
  ──────────────────────────────
-  neutral:**Experiment**      neutral:**Created**
+  neutral:**Experiment**       neutral:**Created**
  ──────────────────────────────
-  workspace       -
-  master          Feb 10, 2021
-  │ ╓ exp-8a3bd   02:07 PM
-  │ ╟ 75ff5e0     01:54 PM
-  │ ╟ 6f5009b     01:54 PM
-  ├─╨ d832784     01:54 PM
+  workspace        -
+  master           Feb 10, 2021
+  │ ╓ gluey-leak   02:07 PM
+  │ ╟ 75ff5e0      01:54 PM
+  │ ╟ 6f5009b      01:54 PM
+  ├─╨ d832784      01:54 PM
  ──────────────────────────────
 # Press q to exit this screen.
 ```

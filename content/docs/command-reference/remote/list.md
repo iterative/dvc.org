@@ -1,6 +1,6 @@
 # remote list
 
-List all available [data remotes](/doc/command-reference/remote).
+List all `dvc remote` names and locations.
 
 ## Synopsis
 
@@ -11,9 +11,11 @@ usage: dvc remote list [-h] [--global | --system | --project | --local]
 
 ## Description
 
-Reads DVC configuration files and prints the list of available remotes,
-including names and URLs. Remotes are read from the system, global, project, and
-local config files (in that order).
+Reads [DVC configuration] and prints the list of available remotes, including
+their names and URLs/paths. Remotes are read from the system, global, project,
+and local config files (in that order).
+
+[dvc configuration]: /doc/command-reference/config#remote
 
 ## Options
 
@@ -38,18 +40,7 @@ local config files (in that order).
 
 ## Examples
 
-For simplicity, let's add a default local remote:
-
-<details>
-
-### What is a "local remote" ?
-
-While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the type of location where the storage is: another directory in the
-same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
-It's essentially a local backup for data tracked by DVC.
-
-</details>
+For simplicity, let's add a default [local remote]:
 
 ```cli
 $ dvc remote add -d myremote /path/to/remote
@@ -64,3 +55,6 @@ myremote	/path/to/remote
 ```
 
 The list will also include any previously added remotes.
+
+[local remote]:
+  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes

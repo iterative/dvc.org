@@ -1,9 +1,6 @@
 # remote default
 
-Set/unset the default [data remote](/doc/command-reference/remote).
-
-> Depending on your remote storage type, you may also need `dvc remote modify`
-> to provide credentials and/or configure other remote parameters.
+Set/unset the default `dvc remote`.
 
 ## Synopsis
 
