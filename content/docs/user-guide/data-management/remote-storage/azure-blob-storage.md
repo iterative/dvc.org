@@ -4,18 +4,12 @@
 ## Microsoft Azure Blob Storage
 -->
 
-`dvc remote add` a (new) remote name and a valid [Azure Blob Storage] URL:
+Start with `dvc remote add` to define the remote. Set a name and a valid [Azure
+Blob Storage] URL:
 
 ```cli
 $ dvc remote add -d myremote azure://<mycontainer>/<path>
 ```
-
-<admon type="tip">
-
-The `-d` flag (optional) makes this the `--default` remote for the
-<abbr>project</abbr>.
-
-</admon>
 
 - `<mycontainer>` - name of a [blob container]. DVC will attempt to create it if
   needed.
@@ -26,6 +20,29 @@ The `-d` flag (optional) makes this the `--default` remote for the
   https://learn.microsoft.com/en-us/azure/storage/blobs/blob-containers-portal
 [virtual directory]:
   https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names
+
+To set up authentication or other configuration, set any supported config param
+with `dvc remote modify`.
+
+## Cloud versioning
+
+<admon type="info">
+
+Requires [Blob versioning] enabled on the storage account and container.
+
+</admon>
+
+```cli
+$ dvc remote modify myremote version_aware true
+```
+
+`version_aware` (`true` or `false`) enables [cloud versioning] features for this
+remote. This lets you explore the bucket files under the same structure you see
+in your project directory locally.
+
+[blob versioning]:
+  https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
+[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
 
 ## Authentication
 
@@ -54,9 +71,9 @@ $ dvc remote modify myremote --local account_name 'myuser'
 
 <admon type="warn">
 
-The `--local` flag is needed to write sensitive user info to a Git-ignored
-config file (`.dvc/config.local`) so that no secrets are leaked through Git. See
-`dvc config`.
+The `dvc remote modify --local` flag is needed to write sensitive user info to a
+Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
+through Git. See `dvc config`.
 
 </admon>
 
@@ -185,38 +202,6 @@ from an [Azure CLI configuration file] (typically managed with [az config]):
 [azure cli configuration file]:
   https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration#cli-configuration-file
 [az config]: https://docs.microsoft.com/en-us/cli/azure/config
-
-## Cloud versioning
-
-Learn about DVC [cloud versioning] support.
-
-<admon type="info">
-
-Requires [Blob versioning] enabled on the storage account and container.
-
-</admon>
-
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-[blob versioning]:
-  https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
-
-- `version_aware` (`true` or `false`) - use [version-aware] cloud versioning
-  features for this remote.
-
-  ```cli
-  $ dvc remote modify myremote version_aware true
-  ```
-
-- `worktree` (`true` or `false`) - use [worktree] cloud versioning features for
-  this remote (implies `version_aware`).
-
-  ```cli
-  $ dvc remote modify myremote worktree true
-  ```
-
-[version-aware]:
-  /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
-[worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
 ## More configuration parameters
 

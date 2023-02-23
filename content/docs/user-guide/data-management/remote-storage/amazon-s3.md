@@ -13,7 +13,7 @@ $ dvc remote add -d myremote s3://<bucket>/<key>
 - `<bucket>` - name of an [existing S3 bucket]
 - `<key>` - optional path to a [folder key] in your bucket
 
-Upon `dvc push` (or when needed) DVC will try to authenticate using your [AWS
+Upon `dvc push` (or when needed), DVC will try to authenticate using your [AWS
 CLI config]. This reads the default AWS credentials file (if available) or
 [env vars](#environment-variables).
 
