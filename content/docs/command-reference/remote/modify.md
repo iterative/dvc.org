@@ -430,7 +430,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+[`dvc remote add`](/doc/user-guide/data-management/remote-storage#supported-storage-types).
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -464,7 +464,7 @@ Read more about by expanding the WebHDFS section in
 
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+[`dvc remote add`](/doc/user-guide/data-management/remote-storage#supported-storage-types).
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -751,3 +751,46 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 </details>
+<<<<<<< HEAD
+=======
+
+## Example: Some Azure authentication methods
+
+Using a default identity (e.g. credentials set by `az cli`):
+
+```cli
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify myremote account_name 'myaccount'
+$ dvc push
+```
+
+> Note that this may require the `Storage Blob Data Contributor` and other roles
+> on the account.
+
+Using a `connection_string`:
+
+```cli
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote connection_string 'mysecret'
+$ dvc push
+```
+
+Using `account_key`:
+
+```cli
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote account_key 'mysecret'
+$ dvc push
+```
+
+Using `sas_token`:
+
+```cli
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote sas_token 'mysecret'
+$ dvc push
+```
+
+> > > > > > > main

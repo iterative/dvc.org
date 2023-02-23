@@ -100,6 +100,14 @@ team.
 - [Google Cloud Storage] (GCP)
 - Aliyun OSS
 
+<admon type="tip">
+
+Guides for each storage type are in progress. For storage types that do not link
+to a specific guide, see the
+[`dvc remote modify` reference](/doc/command-reference/remote/modify#supported-storage-types).
+
+</admon>
+
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
 [s3-compatible]:
   /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
