@@ -22,9 +22,11 @@ a specific version of a model? Or reuse datasets across different projects?
 <admon type="tip">
 
 These questions tend to come up when you browse the files that DVC saves to
-remote storage (e.g.
+[remote storage] (e.g.
 `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
 instead of the original file name such as `model.pkl` or `data.xml`).
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 </admon>
 
@@ -86,10 +88,15 @@ bring in changes from the data source later using `dvc update`.
 
 ### 💡 Expand to see what happens under the hood.
 
-> Note that the
-> [dataset registry](https://github.com/iterative/dataset-registry) repository
-> doesn't actually contain a `get-started/data.xml` file. Like `dvc get`,
-> `dvc import` downloads from [remote storage](/doc/command-reference/remote).
+<admon type="info">
+
+The [dataset registry] repository doesn't actually contain a
+`get-started/data.xml` file. Like `dvc get`, `dvc import` downloads from [remote
+storage].
+
+[dataset registry]: https://github.com/iterative/dataset-registry
+
+</admon>
 
 `.dvc` files created by `dvc import` have special fields, such as the data
 source `repo` and `path` (under `deps`):

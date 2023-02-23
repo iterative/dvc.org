@@ -1,7 +1,6 @@
 # remote default
 
-Set/unset the default
-[remote storage](/doc/user-guide/data-management/remote-storage).
+Set/unset the default `dvc remote`.
 
 ## Synopsis
 

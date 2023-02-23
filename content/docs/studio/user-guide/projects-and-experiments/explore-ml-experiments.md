@@ -30,6 +30,7 @@ The major components of the project experimentation table are:
   commits and columns, and re-arrange the table.
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
+- Button to [export project data](#export-project-data).
 
 ### Git history and live metrics
 
@@ -38,8 +39,8 @@ corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
 [New experiments submitted from Iterative Studio][run-experiments] appear as
 experiment commits, which are eventually pushed to Git. Any live metrics that
-you send using [DVCLive] are displayed in a special experiment row next to the
-corresponding Git commit. More details of how live metrics are displayed can be
+you send using [DVCLive] are displayed in a special experiment row nested under
+the parent Git commit. More details of how live metrics are displayed can be
 found
 [here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 
@@ -141,6 +142,17 @@ The table also contains buttons to visualize, compare and run experiments.
   [here][run-experiments] for details on how to run experiments and track
   metrics in real time.
 - **Trends:** Generate trend charts to show metric evolution over time.
+
+### Export project data
+
+The button to export data from the project table to CSV is present next to the
+[`Delta mode`](#delta-mode) button.
+
+![export to csv](https://static.iterative.ai/img/studio/project_export_to_csv.png)
+
+Below is an example of the downloaded CSV file.
+
+![example export to csv](https://static.iterative.ai/img/studio/project_export_to_csv_example.png)
 
 [run-experiments]: /doc/studio/user-guide/run-experiments
 [dvclive]: /doc/dvclive

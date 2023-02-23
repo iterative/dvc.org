@@ -58,7 +58,7 @@ with software engineering methods such as continuous integration (CI/CD), which
 can sync with the state of the artifacts in your registry.
 
 [modeling process]: /doc/start/data-management/data-pipelines
-[remote storage]: /doc/command-reference/remote
+[remote storage]: /doc/user-guide/data-management/remote-storage
 [sharing]: /doc/start/data-management/data-and-model-access
 [via cml]: https://cml.dev/doc/cml-with-dvc
 [gitops]: https://www.gitops.tech/

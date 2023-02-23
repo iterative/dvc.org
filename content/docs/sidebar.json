@@ -462,10 +462,6 @@
         "slug": "root"
       },
       {
-        "label": "run",
-        "slug": "run"
-      },
-      {
         "label": "stage",
         "slug": "stage",
         "source": "stage/index.md",
@@ -518,6 +514,10 @@
       {
         "slug": "make_checkpoint",
         "label": "make_checkpoint()"
+      },
+      {
+        "slug": "metrics_show",
+        "label": "metrics_show()"
       },
       {
         "slug": "open",
@@ -658,6 +658,10 @@
               {
                 "slug": "log_sklearn_plot",
                 "label": "log_sklearn_plot()"
+              },
+              {
+                "slug": "make_dvcyaml",
+                "label": "make_dvcyaml()"
               },
               {
                 "slug": "make_report",
