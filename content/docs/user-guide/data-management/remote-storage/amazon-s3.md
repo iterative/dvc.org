@@ -114,25 +114,18 @@ Requires [S3 Versioning] enabled on the bucket.
 
 </admon>
 
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-[s3 versioning]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
-
 ```cli
 $ dvc remote modify myremote version_aware true
-# or
-$ dvc remote modify myremote worktree true
 ```
 
 - `version_aware` (`true` or `false`) - use [version-aware] cloud versioning
   features for this remote.
 
-- `worktree` (`true` or `false`) - use [worktree] cloud versioning features for
-  this remote (implies `version_aware`).
-
+[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
+[s3 versioning]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
 [version-aware]:
   /docs/user-guide/data-management/cloud-versioning#version-aware-remotes
-[worktree]: /docs/user-guide/data-management/cloud-versioning#worktree-remotes
 
 ## More configuration options
 
