@@ -117,7 +117,7 @@ used to see what files `dvc pull` would download.
   `dvc repro <stage_name>` is necessary to checkout these files (into the
   workspace) and update `dvc.lock`.
 
-- `--allow-missing` - allows the command to suceed even if some files or
+- `--allow-missing` - allows the command to succeed even if some files or
   directories are missing.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
