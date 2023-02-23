@@ -35,9 +35,9 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 
 ## Custom authentication
 
-If you don't have a regular local S3 setup or if you want to change the auth
-method for some reason, you can set the following config params with
-`dvc remote modify --local`.
+If you don't have the AWS CLI configured in your machine or if you want to
+change the auth method for some reason, you can set the following config params
+with `dvc remote modify --local`.
 
 <admon type="warn">
 
