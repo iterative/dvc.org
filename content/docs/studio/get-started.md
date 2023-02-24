@@ -107,8 +107,8 @@ You should now see that a project has been added in your dashboard.
 
 1. You can use your project to [submit new experiments] from Iterative Studio.
 
-2. For the experiments that you submit from Iterative Studio, you can [track
-   live metrics and plots][live-metrics-and-plots] by using [DVCLive].
+2. You can [track live metrics and plots][live-metrics-and-plots] by using
+   [DVCLive].
 
 ## Use model registry
 

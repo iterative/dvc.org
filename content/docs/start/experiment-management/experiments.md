@@ -50,7 +50,7 @@ commands right away to run or save experiments in your project. (See the [User
 Guide] for detailed information.) Here, we briefly discuss how to structure an
 ML project with DVC experiments using `dvc exp init`.
 
-[user guide]: /doc/user-guide/experiment-management/experiments-overview
+[user guide]: /doc/user-guide/experiment-management
 
 A typical machine learning project has data, a set of scripts that train a
 model, a bunch of hyperparameters that tune training and models, and outputs
@@ -241,7 +241,7 @@ can specify text files to contain metrics using `dvc exp init --metrics`, and
 write them in the experimentation code.
 
 An alternative to manual metrics generation is to use [DVCLive](/doc/dvclive) to
-generate these files. Please refer to the documentation for details.
+generate these files.
 
 `dvc exp show` and `dvc metrics` are used to tabulate the experiments and Git
 commits with their associated metrics. In the above tables, `loss` and `acc`
@@ -275,6 +275,6 @@ There are many other features of `dvc exp`, like cleaning up unused experiments,
 saving the current workspace status as an experiment, sharing them without
 committing into Git, or getting differences between two experiments.
 
-Please see the section on
+For more information, see the section on
 [Experiment Management](/doc/user-guide/experiment-management) in the User's
 Guide or `dvc exp` and subcommands in the Command Reference.

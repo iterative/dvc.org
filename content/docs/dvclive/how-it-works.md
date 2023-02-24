@@ -6,16 +6,17 @@ used by default.
 
 The contents of the directory will depend on the methods used:
 
-| Method                    | Writes to                                                                                           |
-| ------------------------- | --------------------------------------------------------------------------------------------------- |
-| `Live.log_metric()`       | `dvclive/plots/metrics`                                                                             |
-| `Live.log_image()`        | `dvclive/plots/images`                                                                              |
-| `Live.log_param()`        | `dvclive/params.yaml`                                                                               |
-| `Live.log_sklearn_plot()` | `dvclive/plots/sklearn`                                                                             |
-| `Live.make_report()`      | `dvclive/report.{md/html}`                                                                          |
-| `Live.make_summary()`     | `dvclive/metrics.json`                                                                              |
-| `Live.next_step()`        | `dvclive/dvc.yaml` (if `save_dvc_exp=True`)<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
-| `Live.end()`              | `dvclive/dvc.yaml` (if `save_dvc_exp=True`)<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
+| Method                    | Writes to                                                                  |
+| ------------------------- | -------------------------------------------------------------------------- |
+| `Live.log_metric()`       | `dvclive/plots/metrics`                                                    |
+| `Live.log_image()`        | `dvclive/plots/images`                                                     |
+| `Live.log_param()`        | `dvclive/params.yaml`                                                      |
+| `Live.log_sklearn_plot()` | `dvclive/plots/sklearn`                                                    |
+| `Live.make_dvcyaml()`     | `dvclive/dvc.yaml`                                                         |
+| `Live.make_report()`      | `dvclive/report.{md/html}`                                                 |
+| `Live.make_summary()`     | `dvclive/metrics.json`                                                     |
+| `Live.next_step()`        | dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`  |
+| `Live.end()`              | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 
 ## Example
 
@@ -74,7 +75,4 @@ your repo.
 
 If you don't have a DVC pipeline, you can include
 [`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to save the
-results as a DVC experiment. `save_dvc_exp=True` also writes out configuration
-for your plots, metrics, and parameters to a
-[`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files) so that DVC knows
-how to visualize and compare them.
+results as a DVC experiment.

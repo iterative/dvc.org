@@ -200,7 +200,7 @@ $ dvc pull
 
 <admon icon="book">
 
-See `dvc remote` for more information on remote storage.
+See [Remote Storage] for more information on remote storage.
 
 </admon>
 

@@ -95,9 +95,8 @@
   },
   {
     "slug": "user-guide",
-    "source": false,
+    "source": "user-guide/index.md",
     "children": [
-      "overview",
       {
         "slug": "project-structure",
         "source": "project-structure/index.md",
@@ -125,22 +124,26 @@
         "source": false,
         "children": [
           "large-dataset-optimization",
+          {
+            "slug": "remote-storage",
+            "source": "remote-storage/index.md",
+            "children": ["amazon-s3"]
+          },
+          "cloud-versioning",
           "importing-external-data",
-          "managing-external-data",
-          "cloud-versioning"
+          "managing-external-data"
         ]
       },
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines"]
+        "children": ["defining-pipelines", "run-cache"]
       },
       {
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
-          "experiments-overview",
           "running-experiments",
           "hydra-composition",
           "comparing-experiments",
@@ -185,15 +188,8 @@
         "slug": "add"
       },
       {
-        "label": "cache",
-        "slug": "cache",
-        "source": "cache/index.md",
-        "children": [
-          {
-            "label": "cache dir",
-            "slug": "dir"
-          }
-        ]
+        "label": "cache dir",
+        "slug": "cache/dir"
       },
       {
         "label": "check-ignore",
@@ -216,15 +212,8 @@
         "slug": "dag"
       },
       {
-        "label": "data",
-        "slug": "data",
-        "source": false,
-        "children": [
-          {
-            "label": "data status",
-            "slug": "status"
-          }
-        ]
+        "label": "data status",
+        "slug": "data/status"
       },
       {
         "label": "destroy",
@@ -473,10 +462,6 @@
         "slug": "root"
       },
       {
-        "label": "run",
-        "slug": "run"
-      },
-      {
         "label": "stage",
         "slug": "stage",
         "source": "stage/index.md",
@@ -529,6 +514,10 @@
       {
         "slug": "make_checkpoint",
         "label": "make_checkpoint()"
+      },
+      {
+        "slug": "metrics_show",
+        "label": "metrics_show()"
       },
       {
         "slug": "open",
@@ -669,6 +658,10 @@
               {
                 "slug": "log_sklearn_plot",
                 "label": "log_sklearn_plot()"
+              },
+              {
+                "slug": "make_dvcyaml",
+                "label": "make_dvcyaml()"
               },
               {
                 "slug": "make_report",

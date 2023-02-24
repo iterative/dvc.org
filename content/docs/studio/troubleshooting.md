@@ -23,6 +23,7 @@ Iterative Studio.
 - [Project contains columns that I did not import](#project-contains-columns-that-i-did-not-mark-as-mandatory-to-import)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+- [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 
 **Model registry**
 
@@ -38,7 +39,7 @@ Iterative Studio.
 
 ## Support
 
-If you need further help, please send us a message using `Help` on the
+If you need further help, you can send us a message using `Help` on the
 [Iterative Studio website](https://studio.iterative.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
@@ -207,7 +208,7 @@ by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is
-not in the hidden commits list, then please [raise a support request](#support).
+not in the hidden commits list, please [raise a support request](#support).
 
 [display preferences -> hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
@@ -215,7 +216,7 @@ not in the hidden commits list, then please [raise a support request](#support).
 ## Error: Failed to push experiment to repository
 
 This is a non-specific error with a range of possible causes. To resolve it,
-please check:
+check that:
 
 - Your account is able to push to the Git repository.
 
@@ -233,8 +234,8 @@ please check:
   whitelisting policy in place which limits access to the organization's
   resources.
 - Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
-  are experiencing service disruptions. In case of an on-premises deployment,
-  please check with your administrator.
+  are experiencing service disruptions. In case of an on-premises deployment, do
+  check with your administrator.
 
 [gh-status]: https://www.githubstatus.com/
 [gl-status]: https://status.gitlab.com/
@@ -242,6 +243,17 @@ please check:
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
+
+## Project does not display live metrics and plots
+
+Confirm that you are correctly following the
+[procedure to send live metrics and plots](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+to Iterative Studio.
+
+Also note that live metrics and plots for an experiment are displayed only if
+its parent Git commit is present in the project table. So, before you run the
+experiment, make sure that its parent commit is pushed to Git and shown in the
+project table.
 
 ## I cannot find my desired Git repository in the form to add a model
 

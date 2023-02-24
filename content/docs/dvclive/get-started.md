@@ -96,6 +96,7 @@ would look as follows:
 
 ```
 dvclive
+├── dvc.yaml
 ├── metrics.json
 ├── params.yaml
 ├── plots
@@ -118,13 +119,18 @@ training progress:
 
 <toggle>
 
-<tab title="Standalone report">
+<tab title="Standalone / Notebook">
 
-At the end of each `step`, DVCLive will generate or update a report in
+By default, DVCLive will generate or update a report in
 [`Live.report_file`](/doc/dvclive/api-reference/live#properties) displaying all
-the logged data.
+the logged data:
 
 ![HTML report](/img/dvclive-html.gif)
+
+If you pass `report="notebook"` to DVCLive, the HTML report will be displayed
+and updated inside the output of the cell:
+
+![Notebook report](/img/dvclive-notebook.gif)
 
 </tab>
 
@@ -132,9 +138,37 @@ the logged data.
 
 The
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
-will display all the data logged by DVCLive.
+will display all the data logged by DVCLive:
 
-![VS Code monitoring](/img/dvclive-vscode-monitoring.gif)
+![VS Code Report](/img/dvclive-vscode-monitoring.gif)
+
+</tab>
+
+<tab title="Iterative Studio">
+
+If you follow the instructions in
+[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
+DVCLive updates will be displayed in the Studio UI:
+
+![Studio Report](/img/dvclive-studio.gif)
+
+</tab>
+
+<tab title="CML">
+
+If `matplotlib` is available and DVCLive is used inside CI/CD, it will generate
+the standalone report in Markdown format so you can combine it with
+[cml comment](https://cml.dev/doc/ref/comment):
+
+```bash
+cml comment create --publish --watch results/train/report.md \
+& python train_with_dvclive.py
+```
+
+You can find a
+[full example here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/run-studio-experiment.yml):
+
+![CML report](/img/dvclive-cml.gif)
 
 </tab>
 
@@ -183,17 +217,17 @@ and
 [`Plots`](https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
 views.
 
-![VS Code monitoring](/img/dvclive-vscode-compare.png)
+![VS Code Comparisson](/img/dvclive-vscode-compare.png)
+
+</tab>
+
+<tab title="Iterative Studio">
+
+Once you have pushed the results to [Iterative Studio](/doc/studio), you can
+compare them against the entire repo history:
+
+![Studio view](/img/dvclive-studio.png)
 
 </tab>
 
 </toggle>
-
-## Share Results
-
-After the experiment has finished and you have committed and pushed the results,
-[Iterative Studio](/doc/studio) will automatically parse the outputs generated
-by DVCLive, allowing you to
-[share your experiments online](/doc/studio/get-started):
-
-![Studio view](/img/dvclive-studio-plots.png)

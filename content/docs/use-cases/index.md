@@ -1,17 +1,21 @@
 # Use Cases
 
-We provide short articles on common data science scenarios that DVC can help
-with or improve. Our use cases are not written to be run end-to-end like
-tutorials. For more general, hands-on experience with DVC, please see
-[Get Started](/doc/start) instead.
+We provide short articles on common data science scenarios where DVC can help.
+
+<admon info="tip">
+
+Our use cases are not written to be run end-to-end like tutorials. For more
+hands-on experience with DVC, see [Get Started](/doc/start).
+
+</admon>
 
 ## Why DVC?
 
-Even with all the success we've seen today in machine learning, especially with
-deep learning and its applications in business, data scientists still lack best
+Even with all the success we've seen in machine learning, especially with deep
+learning and its applications in business, data scientists still lack best
 practices for organizing their projects and collaborating effectively. This is a
 critical challenge: while ML algorithms and methods are no longer tribal
-knowledge, they are still difficult to implement, reuse, and manage.
+knowledge, they are still difficult to develop, reuse, and manage.
 
 ## Basic uses of DVC
 
@@ -28,9 +32,6 @@ learning models, and you want to
 
 DVC is for you!
 
-> We keep reviewing our docs and will include interesting scenarios that surface
-> in the community. Please, [contact us](/support) if you need help or have
-> suggestions!
+---
 
-Please choose from the navigation sidebar to the left, or click the `Next`
-button below ↘
+Choose a page from the navigation sidebar to the left.

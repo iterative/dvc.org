@@ -56,7 +56,7 @@ options below).
   `dvc pull` command.
 
 [names of the experiments]:
-  https://dvc.org/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+  https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
