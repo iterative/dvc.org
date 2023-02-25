@@ -7,7 +7,8 @@ Run or resume a [DVC experiment] based on a [DVC pipeline].
 
 <admon type="info">
 
-This is equivalent to `dvc repro` followed by `dvc exp save`.
+When called with no arguments, this is equivalent to `dvc repro` followed by
+`dvc exp save`.
 
 </admon>
 
