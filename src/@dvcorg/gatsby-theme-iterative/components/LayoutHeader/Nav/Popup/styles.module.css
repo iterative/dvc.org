@@ -34,23 +34,23 @@
 }
 
 .cmlIcon {
-  background-image: url("../../../../../../../static/img/cml_icon-color--square_vector.svg");
+  background-image: url('../../../../../../../static/img/cml_icon-color--square_vector.svg');
 }
 
 .dvcIcon {
-  background-image: url("../../../../../../../static/img/dvc_icon-color--square_vector.svg");
+  background-image: url('../../../../../../../static/img/dvc_icon-color--square_vector.svg');
 }
 
 .studioIcon {
-  background-image: url("../../../../../../../static/img/studio_icon-color--square_vector.svg");
+  background-image: url('../../../../../../../static/img/studio_icon-color--square_vector.svg');
 }
 
 .mlemIcon {
-  background-image: url("../../../../../../../static/img/mlem-icon.svg");
+  background-image: url('../../../../../../../static/img/mlem-icon.svg');
 }
 
 .vscodeIcon {
-  background-image: url("../../../../../../../static/img/vscode-icon.svg");
+  background-image: url('../../../../../../../static/img/vscode-icon.svg');
 }
 
 .communityPopup {
@@ -69,7 +69,7 @@
   .link {
     padding: 8px;
     display: grid;
-    grid-template-areas: "icon title" "icon description";
+    grid-template-areas: 'icon title' 'icon description';
     grid-template-columns: 32px 216px;
     column-gap: 16px;
 

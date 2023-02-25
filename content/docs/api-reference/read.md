@@ -36,8 +36,8 @@ The returned contents can be a
 or a [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray).
 These are loaded to memory directly (without using any disc space).
 
-> The type returned depends on the `mode` used. For more details, please refer
-> to Python's [`open()`](https://docs.python.org/3/library/functions.html#open)
+> The type returned depends on the `mode` used. For more details, refer to
+> Python's [`open()`](https://docs.python.org/3/library/functions.html#open)
 > built-in, which is used under the hood.
 
 ## Parameters

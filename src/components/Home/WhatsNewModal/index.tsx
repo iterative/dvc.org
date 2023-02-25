@@ -115,7 +115,7 @@ export default WhatsNewModal
 
 const query = graphql`
   query latestBlogPost {
-    allFeedIterativeBlog(limit: 1, sort: { fields: [isoDate], order: DESC }) {
+    allFeedIterativeBlog(limit: 1, sort: { isoDate: DESC }) {
       nodes {
         title
         link

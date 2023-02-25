@@ -98,17 +98,17 @@ $ dvc exp show --all-branches
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**           metric:**acc**   param:**model.conv_units**
+  neutral:**Experiment**                 neutral:**Created**           metric:**acc**   param:**model.conv_units**
  ────────────────────────────────────────────────────────────────────
-  workspace                 -                   -   64
-  cnn-48                    09:11 AM       0.9131   48
-  main                      Jul 21, 2021   0.9189   16
-  ├── dac711b [cnn-32]      09:16 AM       0.9152   32
-  ├── 7cd3ae7 [cnn-48]      09:11 AM       0.9131   48
-  ├── ab585b5 [cnn-24]      09:06 AM       0.9135   24
-  ├── 7d51b55 [exp-44136]   09:01 AM       0.9151   16
-  └── 7feaa1c [exp-78ede]   Aug 02, 2021   0.9151   16
-  8583124                   Jul 20, 2021   0.9132   17
+  workspace                  -                   -   64
+  cnn-48                     09:11 AM       0.9131   48
+  main                       Jul 21, 2021   0.9189   16
+  ├── dac711b [cnn-32]       09:16 AM       0.9152   32
+  ├── 7cd3ae7 [cnn-48]       09:11 AM       0.9131   48
+  ├── ab585b5 [cnn-24]       09:06 AM       0.9135   24
+  ├── 7d51b55 [freed-roam]   09:01 AM       0.9151   16
+  └── 7feaa1c [frank-farm]   Aug 02, 2021   0.9151   16
+  8583124                    Jul 20, 2021   0.9132   17
  ────────────────────────────────────────────────────────────────────
 ```
 
@@ -150,8 +150,8 @@ $ dvc exp show --all-tags
   neutral:**Experiment**                   metric:**acc**   metric:**model.conv_units**
  ─────────────────────────────────────────────────────
   workspace                 0.9067   16
-  ├── 2fc4f81 [exp-a1b3c4]  0.9037   48
-  └── 21beb69 [exp-d4e3ff]  0.9367   128
+  ├── 2fc4f81 [frank-farm]  0.9037   48
+  └── 21beb69 [unwet-jinn]  0.9367   128
   my-experiments            0.9067   16
   ├── 2fc4f81 [cnn-32]      0.9067   32
   ├── 5bc84a3 [cnn-64]      0.9158   64
@@ -204,8 +204,8 @@ cluttered with experiment references. To remove experiments from a Git remote,
 use `dvc exp remove -g`.
 
 ```cli
-$ dvc exp remove -g origin exp-ab780
-Removed experiments: exp-bb09c
+$ dvc exp remove -g origin unwet-jinn
+Removed experiments: unwet-jinn
 ```
 
 ## Removing queued experiments

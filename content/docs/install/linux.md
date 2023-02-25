@@ -2,7 +2,7 @@
 
 <admon type="tip">
 
-To use DVC [as a Python library](/doc/api-reference), please install
+To use DVC [as a Python library](/doc/api-reference), you can install it
 [with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
 
 </admon>
@@ -29,10 +29,11 @@ Note that Python 3.8+ is needed to get the latest version of DVC.
 $ pip install dvc
 ```
 
-Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `[s3]`,
-`[gdrive]`, `[gs]`, `[azure]`, `[ssh]`, `[hdfs]`, `[webdav]`, `[oss]`. Use
-`[all]` to include them all.
+Depending on the type of the [remote storage] you plan to use, you might need to
+install optional dependencies: `[s3]`, `[gdrive]`, `[gs]`, `[azure]`, `[ssh]`,
+`[hdfs]`, `[webdav]`, `[oss]`. Use `[all]` to include them all.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 <details id="example-pip-with-support-for-amazon-s3-storage">
 
@@ -46,10 +47,10 @@ In this case it installs the `boto3` library along with DVC.
 
 </details>
 
-> Please restart your terminal or re-source the shell configuration file
-> (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after
-> installation. If restarting the terminal isn't desirable (e.g. containers),
-> it's also possible to manually edit the `PATH` env variable.
+> Restart your terminal, or re-source the shell configuration file (`.bashrc`,
+> `.zshrc`, etc.) if you get `Command 'dvc' not found` after installation. If
+> restarting the terminal isn't desirable (e.g. containers), it's also possible
+> to manually edit the `PATH` env variable.
 
 ## Install with conda
 
@@ -65,9 +66,9 @@ $ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
 
-Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `dvc-s3`,
-`dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
+Depending on the type of the [remote storage] you plan to use, you might need to
+install optional dependencies: `dvc-s3`, `dvc-azure`, `dvc-gdrive`, `dvc-gs`,
+`dvc-oss`, `dvc-ssh`.
 
 <details id="example-conda-with-support-for-amazon-s3-storage">
 

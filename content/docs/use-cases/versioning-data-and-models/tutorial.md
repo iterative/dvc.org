@@ -36,12 +36,11 @@ model file.
 > We have last tested this tutorial with Python 3.7.
 
 You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
-Also, if DVC is not installed, please follow these [instructions](/doc/install)
-to do so.
+Also, [follow these instructions to install DVC](/doc/install) if it's not
+already installed.
 
-> If you're using Windows, please review
-> [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
-> important tips to improve your experience.
+> See [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+> important tips to improve your experience on Windows.
 
 Okay! Let's first download the code and set up a Git repository:
 
@@ -87,12 +86,18 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download any file or directory tracked in a <abbr>DVC
-> repository</abbr> (and [stored remotely](/doc/command-reference/remote)). It's
-> like `wget`, but for DVC or Git repos. In this case we use our
-> [dataset registry](https://github.com/iterative/dataset-registry) repo as the
-> data source (refer to [Data Registry](/doc/use-cases/data-registry) for more
-> info.)
+<admon type="info">
+
+`dvc get` can download any file or directory tracked in a <abbr>DVC
+repository</abbr> (and stored [remotely]). It's like `wget`, but for DVC or Git
+repos. In this case we use our [dataset registry] repo as the data source (refer
+to [Data Registry] for more info.)
+
+[remotely]: /doc/user-guide/data-management/remote-storage
+[dataset registry]: https://github.com/iterative/dataset-registry
+[data registry]: /doc/use-cases/data-registry
+
+</admon>
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -150,7 +155,7 @@ $ dvc add model.h5
 ```
 
 > We manually added the model output here, which isn't ideal. The preferred way
-> of capturing command outputs is with `dvc run`. More on this later.
+> of capturing command outputs is with `dvc stage add`. More on this later.
 
 Let's commit the current state:
 
@@ -286,7 +291,7 @@ our example, `train.py` produces binary files (e.g.
 [metrics](/doc/command-reference/metrics) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data
-<abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
+<abbr>outputs</abbr>, a better way to capture them is to use `dvc stage add`:
 
 > If you tried the commands in the
 > [Switching between workspace versions](#switching-between-workspace-versions)
@@ -300,15 +305,16 @@ When you have a script that takes some data as an input and produces other data
 > ```
 
 ```cli
-$ dvc run -n train -d train.py -d data \
+$ dvc stage add -n train -d train.py -d data \
           -o model.h5 -o bottleneck_features_train.npy \
           -o bottleneck_features_validation.npy -M metrics.csv \
           python train.py
+$ dvc repro
 ```
 
-`dvc run` writes a pipeline stage named `train` (specified using the `-n`
+`dvc stage add` writes a pipeline stage named `train` (specified using the `-n`
 option) in `dvc.yaml`. It tracks all outputs (`-o`) the same way as `dvc add`
-does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the
+does. Unlike `dvc add`, `dvc stage add` also tracks dependencies (`-d`) and the
 command (`python train.py`) that was run to produce the result.
 
 > At this point you could run `git add .` and `git commit` to save the `train`
@@ -320,9 +326,9 @@ our model, that was a dependency change. It also updates outputs and puts them
 into the <abbr>cache</abbr>.
 
 To make things a little simpler: `dvc add` and `dvc checkout` provide a basic
-mechanism for model and large dataset versioning. `dvc run` and `dvc repro`
-provide a build system for machine learning models, which is similar to
-[Make](https://www.gnu.org/software/make/) in software build automation.
+mechanism for model and large dataset versioning. `dvc stage add` and
+`dvc repro` provide a build system for machine learning models, which is similar
+to [Make](https://www.gnu.org/software/make/) in software build automation.
 
 ## What's next?
 
@@ -340,14 +346,15 @@ Features are written into files. The intention was probably that the
 very convenient having to remember to do so every time the dataset changes.
 
 Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
-handy. We touched on it briefly when we described `dvc run` and `dvc repro`. The
-next step would be splitting the script into two parts and utilizing pipelines.
-See [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) to
-get hands-on experience with pipelines, and try to apply it here. Don't hesitate
-to join our [community](/chat) and ask any questions!
+handy. We touched on it briefly when we described `dvc stage add` and
+`dvc repro`. The next step would be splitting the script into two parts and
+utilizing pipelines. See
+[Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) to get
+hands-on experience with pipelines, and try to apply it here. Don't hesitate to
+join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metrics file with the `-M` option of `dvc stage add`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See
 `dvc metrics`, [Comparing Changes], and [Comparing Many Experiments] to learn

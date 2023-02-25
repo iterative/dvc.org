@@ -1,106 +1,82 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import cn from 'classnames'
 
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import DownloadButton from '../../DownloadButton'
 import TwoRowsButtonLink from '../../TwoRowsButton/link'
 import GithubLine from './GithubLine'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import DownloadButton from '../../DownloadButton'
 
 import * as styles from './styles.module.css'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { HeroSlides } from './Slides'
 
 const logUseCasesEvent = () => {
   logEvent('Button', { Item: 'how-it-works' })
 }
 
+const HeroButtons = () => (
+  <div className={styles.buttonsContainer}>
+    <ShowOnly on="mobile">
+      <Link
+        className={cn(styles.actionButton, styles.getStartedButton)}
+        href="/doc/start"
+      >
+        Get started
+      </Link>
+    </ShowOnly>
+    <ShowOnly on="desktop">
+      <DownloadButton />
+    </ShowOnly>
+    <TwoRowsButtonLink
+      mode="outline"
+      className={cn(
+        styles.actionButton,
+        styles.watchVideo,
+        'btn-with-focus',
+        'btn-with-focus--white'
+      )}
+      title="Watch video"
+      description="How it works"
+      icon={
+        <img
+          className={styles.actionButtonIcon}
+          src="/img/play-icon.svg"
+          alt="Watch video"
+        />
+      }
+      onClick={logUseCasesEvent}
+      href="#use-cases"
+    />
+  </div>
+)
+
 const LandingHero = () => {
-  const [activeCommand, setActiveCommand] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(
-      () => setActiveCommand(prev => (prev + 1) % 4),
-      3000
-    )
-
-    return (): void => clearInterval(interval)
-  }, [])
-
   return (
-    <div className={styles.container}>
-      <div className={styles.about}>
-        <h1 className={styles.title}>
-          Open-source
-          <br />
-          Version Control System
-          <br />
-          for Machine Learning Projects
-        </h1>
-        <div className={styles.buttonsContainer}>
-          <ShowOnly on="mobile">
-            <Link
-              className={cn(styles.actionButton, styles.getStartedButton)}
-              href="/doc/start"
-            >
-              Get started
-            </Link>
-          </ShowOnly>
-          <ShowOnly on="desktop">
-            <DownloadButton />
-          </ShowOnly>
-          <TwoRowsButtonLink
-            mode="outline"
-            className={`${cn(
-              styles.actionButton,
-              styles.watchVideo
-            )} btn-with-focus btn-with-focus--white`}
-            title="Watch video"
-            description="How it works"
-            icon={
-              <img
-                className={styles.actionButtonIcon}
-                src="/img/play-icon.svg"
-                alt="Watch video"
-              />
-            }
-            onClick={logUseCasesEvent}
-            href="#use-cases"
-          />
-        </div>
-
-        <div className={styles.github}>
-          <GithubLine />
-        </div>
+    <div className={cn('text-gray-hover')}>
+      <h1
+        className={cn(
+          'text-3xl',
+          'sm:text-4xl',
+          'md:text-5xl',
+          'font-semibold',
+          'my-4',
+          'text-purple'
+        )}
+      >
+        <span className={cn('whitespace-nowrap')}>(Not Just)</span>{' '}
+        <span className={cn('whitespace-nowrap')}>Data Version Control</span>
+      </h1>
+      <p className={cn('text-xl', 'my-4')}>
+        Open-source, Git-based data science. Apply version control to machine
+        learning development, make your repo the backbone of your project, and
+        instill best practices across your team.
+      </p>
+      <HeroSlides />
+      <HeroButtons />
+      <div className={styles.github}>
+        <GithubLine />
       </div>
-
-      <ShowOnly on="desktop">
-        <div className={styles.commands}>
-          <div
-            className={cn(styles.command, activeCommand === 0 && styles.active)}
-          >
-            <span className={styles.line}>$ dvc add images</span>
-          </div>
-          <div
-            className={cn(styles.command, activeCommand === 1 && styles.active)}
-          >
-            <span className={styles.line}>
-              $ dvc run -d images -o model.p cnn.py
-            </span>
-          </div>
-          <div
-            className={cn(styles.command, activeCommand === 2 && styles.active)}
-          >
-            <span className={styles.line}>
-              $ dvc remote add -d myrepo s3://mybucket
-            </span>
-          </div>
-          <div
-            className={cn(styles.command, activeCommand === 3 && styles.active)}
-          >
-            <span className={styles.line}>$ dvc push</span>
-          </div>
-        </div>
-      </ShowOnly>
     </div>
   )
 }

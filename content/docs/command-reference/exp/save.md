@@ -2,7 +2,7 @@
 
 Capture the current state of the <abbr>workspace</abbr> as a [DVC experiment].
 
-[dvc experiment]: /doc/user-guide/experiment-management/experiments-overview
+[dvc experiment]: /doc/user-guide/experiment-management
 
 <admon type="info">
 
@@ -51,8 +51,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 ## Options
 
 - `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `exp-f80g4` (based on the
-  experiment's hash).
+  default one will be generated otherwise, such as `urban-sign`.
+
+  <admon type="tip">
+
+  The name of the experiment is exposed in env var `DVC_EXP_NAME`.
+
+  </admon>
 
 - `-I <path>`, `--include-untracked <path>` - specify an untracked file or
   directory to be included in the experiment. This option can be used multiple
@@ -72,7 +77,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [unique name]:
-  /doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments
+  /doc/user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
