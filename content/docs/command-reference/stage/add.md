@@ -86,8 +86,9 @@ is reproduced (see also `dvc gc`). Relevant notes:
 - [external dependencies] and [external outputs] (outside of the
   <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
-- Stage commands need to recreate any directory structures defined as outputs
-  every time its executed by DVC.
+- Since <abbr>outputs</abbr> are deleted from the workspace before executing
+  stage commands, the underlying code should create any directory structures
+  needed every time its executed by DVC.
 
 - In some situations, we have previously executed a stage, and later notice that
   some of the dependencies or outputs are missing from `dvc.yaml`. It is
