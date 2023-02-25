@@ -118,9 +118,9 @@ team.
 - [WebDAV]
 
 [ssh servers]: /doc/command-reference/remote/modify#ssh
-[HDFS]: /doc/command-reference/remote/modify#hdfs
+[hdfs]: /doc/command-reference/remote/modify#hdfs
 [webhdfs]: /doc/command-reference/remote/modify#webhdfs
-[HTTP]: /doc/command-reference/remote/modify#http
+[http]: /doc/command-reference/remote/modify#http
 [webdav]: /doc/command-reference/remote/modify#webdav
 
 ## File systems (local remotes)
