@@ -92,8 +92,10 @@ other dependencies, as well as the metrics produced.
 
 <admon type="tip">
 
-If you already changed or ran your ML process in some other way and have
-relevant changes, you can capture the results with `dvc exp save` instead.
+If you already changed or ran your ML process in some other way and want to capture the
+results as a [DVC experiment], use `dvc exp save`.
+
+[dvc experiment]: /doc/user-guide/experiment-management
 
 </admon>
 
