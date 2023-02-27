@@ -60,8 +60,8 @@ This command will also try to [push](/doc/command-reference/push) all
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
-- `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
-  Git remote. Equivalent to `git push --force` (rewrites history)
+- `-f`, `--force` - rewrite the experiment if it already exists in the Git
+  remote.
 
 - `--no-cache` - do not push cached files associated with this experiment to a
   DVC remote.
