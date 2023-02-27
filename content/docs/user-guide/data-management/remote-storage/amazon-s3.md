@@ -13,7 +13,7 @@ $ dvc remote add -d myremote s3://<bucket>/<key>
 - `<bucket>` - name of an [existing S3 bucket]
 - `<key>` - optional path to a [folder key] in your bucket
 
-Upon `dvc push` (or when needed) DVC will try to authenticate using your [AWS
+Upon `dvc push` (or when needed), DVC will try to authenticate using your [AWS
 CLI config]. This reads the default AWS credentials file (if available) or
 [env vars](#environment-variables).
 
@@ -65,7 +65,7 @@ change the auth method for some reason.
 
 The `dvc remote modify --local` flag is needed to write sensitive user info to a
 Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
-through Git. See `dvc config` for more info.
+through Git. See `dvc config`.
 
 </admon>
 
@@ -79,7 +79,7 @@ $ dvc remote modify --local myremote \
 $ dvc remote modify --local myremote \
                     credentialpath 'path/to/credentials'
 # and (optional)
-$ dvc remote modify --local myremote profile 'myprofile'
+$ dvc remote modify myremote profile 'myprofile'
 ```
 
 [aws-cli-config-files]:
@@ -126,13 +126,15 @@ they're effective depends on each storage platform.
 [digitalocean space]: https://www.digitalocean.com/products/spaces
 [ibm cloud object storage]: https://www.ibm.com/cloud/object-storage
 
-## More configuration options
+## More configuration parameters
 
 <admon type="info">
 
 See `dvc remote modify` for more command usage details.
 
 </admon>
+
+- `url` - modify the remote location ([scroll up](#amazon-s3) for details)
 
 - `region` - specific AWS region
 
@@ -221,13 +223,12 @@ See `dvc remote modify` for more command usage details.
 
 ## Environment variables
 
-Authentication and other configuration can also be set via [`boto3` env vars].
-These are tried if no config params are set in the <abbr>project</abbr>.
-Example:
+Authentication and other config can also be set via [`boto3` env vars]. These
+are tried if no config params are set. Example:
 
 ```cli
 $ dvc remote add -d myremote s3://mybucket
-$ export AWS_ACCESS_KEY_ID='mysecret'
+$ export AWS_ACCESS_KEY_ID='myid'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
 $ dvc push
 ```

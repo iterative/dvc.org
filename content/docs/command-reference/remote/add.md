@@ -126,32 +126,16 @@ The following are the supported types of storage protocols and platforms.
 ### Cloud providers
 
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
+- Microsoft [Azure Blob Storage]
+- [Google Cloud Storage] (GCP)
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
 [s3-compatible]:
   /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
-
-<details>
-
-### Microsoft Azure Blob Storage
-
-```cli
-$ dvc remote add -d myremote azure://mycontainer/path
-$ dvc remote modify myremote account_name 'myuser'
-```
-
-By default, DVC authenticates using an `account_name` and its [default
-credential] (if any), which uses environment variables (e.g. set by `az cli`) or
-a Microsoft application.
-
-[default credential]:
-  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
-
-To use a custom authentication method, use the parameters described in
-`dvc remote modify`. See some
-[examples](/doc/command-reference/remote/modify#example-some-azure-authentication-methods).
-
-</details>
+[azure blob storage]:
+  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+[google cloud storage]:
+  /doc/user-guide/data-management/remote-storage/google-cloud-storage
 
 <details>
 
@@ -184,28 +168,6 @@ hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
 > Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
-
-</details>
-
-<details>
-
-### Google Cloud Storage
-
-> 💡 Before adding a GC Storage remote, be sure to
-> [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
-
-```cli
-$ dvc remote add -d myremote gs://mybucket/path
-```
-
-By default, DVC expects your GCP CLI is already
-[configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
-default GCP key file to access Google Cloud Storage. To override some of these
-parameters, use the parameters described in `dvc remote modify`.
-
-> Make sure to run `gcloud auth application-default login` unless you use
-> `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
-> authenticate. See details [here](https://stackoverflow.com/a/53307505/298182).
 
 </details>
 

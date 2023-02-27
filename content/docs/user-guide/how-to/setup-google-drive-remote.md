@@ -270,8 +270,8 @@ heavy usage, it is recommended to rely on
 </admon>
 
 > This requires having your own
-> [GC project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
-> as explained above.
+> [GC project](#using-a-custom-google-cloud-project-recommended) as explained
+> above.
 
 1. To
    [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),

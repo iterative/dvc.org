@@ -92,34 +92,36 @@ team.
 
 ## Supported storage types
 
-<admon type="tip">
-
-Guides for each storage type are in progress. For storage types that do not link
-to a specific guide, see
-[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types)
-and
-[`dvc remote modify`](/doc/command-reference/remote/modify#supported-storage-types).
-
-</admon>
-
 ### Cloud providers
 
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
-- Microsoft Azure Blob Storage
-- Google Drive
-- Google Cloud Storage (GCP)
-- Aliyun OSS
+- Microsoft [Azure Blob Storage]
+- [Google Drive]
+- [Google Cloud Storage] (GCP)
+- [Aliyun OSS]
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
 [s3-compatible]:
   /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
+[azure blob storage]:
+  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+[google drive]: /doc/command-reference/remote/modify#google-drive
+[google cloud storage]:
+  /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[aliyun oss]: /doc/command-reference/remote/modify#aliyun-oss
 
 ### Self-hosted / On-premises
 
-- SSH servers; Like `scp`
-- HDFS & WebHDFS
-- HTTP
-- WebDAV
+- [SSH servers]; Like `scp`
+- [HDFS] & [WebHDFS]
+- [HTTP]
+- [WebDAV]
+
+[ssh servers]: /doc/command-reference/remote/modify#ssh
+[hdfs]: /doc/command-reference/remote/modify#hdfs
+[webhdfs]: /doc/command-reference/remote/modify#webhdfs
+[http]: /doc/command-reference/remote/modify#http
+[webdav]: /doc/command-reference/remote/modify#webdav
 
 ## File systems (local remotes)
 
