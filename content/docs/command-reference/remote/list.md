@@ -40,18 +40,7 @@ and local config files (in that order).
 
 ## Examples
 
-For simplicity, let's add a default local remote:
-
-<details>
-
-### What is a "local remote" ?
-
-While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the type of location where the storage is: another directory in the
-same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
-It's essentially a local backup for data tracked by DVC.
-
-</details>
+For simplicity, let's add a default [local remote]:
 
 ```cli
 $ dvc remote add -d myremote /path/to/remote
@@ -66,3 +55,6 @@ myremote	/path/to/remote
 ```
 
 The list will also include any previously added remotes.
+
+[local remote]:
+  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes

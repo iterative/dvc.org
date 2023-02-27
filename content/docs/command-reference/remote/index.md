@@ -58,16 +58,12 @@ default). Alternatively, the config files can be edited manually.
 
 ## Example: Add a default local remote
 
-<details>
+<admon type="tip">
 
-### What is a "local remote" ?
+Learn more about
+[local remotes](/doc/user-guide/data-management/remote-storage#file-systems-local-remotes).
 
-While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the type of location where the storage is: another directory in the
-same file system. "Remote" is what we call storage for <abbr>DVC
-projects</abbr>. It's essentially a local backup for data tracked by DVC.
-
-</details>
+</admon>
 
 We use the `-d` (`--default`) option of `dvc remote add` for this:
 
