@@ -42,7 +42,7 @@ use `--include-untracked` (`-I`) on untracked files explicitly (see an
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
 committing them to the Git repo. Unnecessary ones can be [cleared] with
-`dvc exp gc`.
+`dvc exp remove`.
 
 [review]: /doc/user-guide/experiment-management/comparing-experiments
 [made persistent]: /doc/user-guide/experiment-management/persisting-experiments
