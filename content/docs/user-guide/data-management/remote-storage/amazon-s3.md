@@ -79,7 +79,7 @@ $ dvc remote modify --local myremote \
 $ dvc remote modify --local myremote \
                     credentialpath 'path/to/credentials'
 # and (optional)
-$ dvc remote modify --local myremote profile 'mysecret'
+$ dvc remote modify myremote profile 'myprofile'
 ```
 
 [aws-cli-config-files]:
