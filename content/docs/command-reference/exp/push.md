@@ -63,12 +63,6 @@ This command will also try to [push](/doc/command-reference/push) all
 - `-f`, `--force` - rewrite the experiment if it already exists in the Git
   remote.
 
-  <admon type="warn">
-
-  Similarly to `git push --force`, this rewrites the remote history.
-
-  </admon>
-
 - `--no-cache` - do not push cached files associated with this experiment to a
   DVC remote.
 
