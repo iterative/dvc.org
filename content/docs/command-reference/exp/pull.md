@@ -64,8 +64,7 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
   include all first-parent commits (similar to `git log -n`).
 
 - `-f`, `--force` - rewrite the experiment if it already exists in the local
-  repo. Note that similarly to `git reset --hard`, this overwrites the local
-  history.
+  repo.
 
 - `--no-cache` - do not pull cached files files associated with this experiment
   from DVC remote storage.
