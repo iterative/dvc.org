@@ -583,3 +583,24 @@ file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_bar_horizontal_sorted.svg)
+
+## Example: Scatter plot
+
+Let's make a scatter plot of actual numeric classes compared to predicted
+probabilities for those classes, using `probs.json` that looks like this:
+
+```
+[
+  {"actual": 7, "prob": 0.2525983154773712},
+  {"actual": 1, "prob": 0.6300574541091919},
+  ...
+]
+```
+
+```cli
+$ dvc plots show probs.json -t scatter \
+                             -x actual -y prob
+file:///Users/usr/src/dvc_plots/index.html
+```
+
+![](/img/plots_show_scatter.svg)
