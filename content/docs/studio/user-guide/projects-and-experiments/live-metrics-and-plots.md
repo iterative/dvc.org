@@ -7,9 +7,10 @@ Studio while your experiment is still running.
 
 This requires a 3-step process:
 
-1. [Set up an access token](#set-up-an-access-token)
-2. [Configure your model training job](#configure-your-model-training-job)
-3. [Send and view the updates](#send-and-view-live-metrics-and-plots)
+- [Generate live (real-time) metrics and plots for remote experiments](#generate-live-real-time-metrics-and-plots-for-remote-experiments)
+  - [Set up an access token](#set-up-an-access-token)
+  - [Configure your model training job](#configure-your-model-training-job)
+  - [Send and view live metrics and plots](#send-and-view-live-metrics-and-plots)
 
 ## Set up an access token
 
@@ -23,50 +24,34 @@ handy if you suspect that your account security may have been compromised.
 
 ## Configure your model training job
 
-You should provide the following environment variables to your model training
+You should provide the following environment variable to your model training
 job:
 
-1.  `STUDIO_TOKEN`: The access token must be present in any request that sends
-    data to the Iterative Studio ingestion endpoint. Requests with missing or
-    incorrect access tokens are rejected with an appropriate HTTP error code and
-    error message.
+`STUDIO_TOKEN`: The access token must be present in any request that sends data
+to the Iterative Studio ingestion endpoint. Requests with missing or incorrect
+access tokens are rejected with an appropriate HTTP error code and error
+message.
 
-    If you are running the experiment locally, you can set this environment
-    variable when submitting the training job.
+If you are running the experiment locally, you can set this environment variable
+when submitting the training job.
 
-    ```dvc
-    $ STUDIO_TOKEN=**** dvc exp run
-    ```
+```dvc
+$ STUDIO_TOKEN=**** dvc exp run
+```
 
-    If you are running the experiment as part of a CI job, a secure way to
-    provide the access token is to create a
-    [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-    containing the value of the token, and use the secret in your CI job (see
-    example below).
+If you are running the experiment as part of a CI job, a secure way to provide
+the access token is to create a
+[GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+containing the value of the token, and use the secret in your CI job (see
+example below).
 
-    ```yaml
-    ---
-    steps:
-      - name: Train model
-        env:
-          STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
-    ```
-
-2.  `STUDIO_REPO_URL`: If you are running the experiment locally, you do not
-    need to set this environment variable. But if you are running it in a CI
-    job, then you should set the repository url in this format:
-    `{remote-type}:{namespace}/{repo-name}`. For example, for the
-    `example-get-started` repository in the `iterative` namespace,
-    `STUDIO_REPO_URL` should be set to the following value:
-
-    - If you are using GitHub, GitLab or Bitbucket, set it to
-      `git@github.com:iterative/example-get-started.git`,
-      `git@gitlab.com:iterative/example-get-started.git`,
-      `git@bitbucket.org:iterative/example-get-started.git` respectively.
-    - If you are using a custom (self-hosted) GitLab server, set it to
-      `custom-gitlab:iterative/example-get-started`.
-    - If you are using a GitHub enterprise server, set it to
-      `github:iterative/example-get-started`.
+```yaml
+---
+steps:
+  - name: Train model
+    env:
+      STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
+```
 
 ## Send and view live metrics and plots
 
