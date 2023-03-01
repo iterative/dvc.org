@@ -65,8 +65,9 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to list
-  content for. The latest commit the default branch) is used by default when
+  content for. The latest commit (in the default branch) is used by default when
   this option is not specified.
+
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
 
