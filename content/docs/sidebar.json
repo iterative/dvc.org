@@ -614,7 +614,45 @@
           "connect-custom-gitlab-server"
         ]
       },
-      "troubleshooting"
+      "troubleshooting",
+      {
+        "slug": "selfhosted",
+        "source": false,
+        "children": [
+          {
+            "slug": "installation",
+            "source": "installation/index.md",
+            "children": [
+              {
+                "label": "AMI",
+                "slug": "ami"
+              },
+              {
+                "label": "Helm",
+                "slug": "helm"
+              }
+            ]
+          },
+          {
+            "slug": "configuration",
+            "source": false,
+            "children": [
+              {
+                "label": "Adding a TLS certificate",
+                "slug": "tls"
+              },
+              {
+                "label": "GitHub integration",
+                "slug": "github"
+              },
+              {
+                "label": "GitLab integration",
+                "slug": "gitlab"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
