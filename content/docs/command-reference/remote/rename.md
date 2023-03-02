@@ -1,6 +1,6 @@
 # remote rename
 
-Rename a [DVC remote](/doc/user-guide/data-management/remote-storage).
+Rename a `dvc remote`.
 
 <admon type="info">
 

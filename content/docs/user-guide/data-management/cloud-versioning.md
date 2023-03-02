@@ -50,15 +50,21 @@ remote storage performance optimizations will be unavailable.
 Cloud versioning features are only avaible for certain storage providers.
 Currently, it is supported on the following `dvc remote` types:
 
-- Amazon S3 (requires
-  [S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
-  enabled buckets)
-- Microsoft Azure Blob Storage (requires
-  [Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
-  enabled storage accounts and containers)
-- Google Cloud Storage (requires
-  [Object versioning](https://cloud.google.com/storage/docs/object-versioning)
-  enabled buckets)
+- [Amazon S3] (requires [S3 Versioning] enabled buckets)
+- Microsoft [Azure Blob Storage] (requires [Blob versioning] enabled storage
+  accounts and containers)
+- [Google Cloud Storage] (requires [Object versioning] enabled buckets)
+
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3 versioning]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
+[azure blob storage]:
+  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+[blob versioning]:
+  https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
+[google cloud storage]:
+  /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[object versioning]: https://cloud.google.com/storage/docs/object-versioning
 
 ## Version-aware remotes
 
@@ -80,35 +86,8 @@ your DVC repository.
 
 </admon>
 
-## Worktree remotes
-
-`worktree` remotes behave similarly to `version_aware` remotes, but with one key
-difference. For `worktree` remotes, DVC will also attempt to ensure that the
-current version of objects in cloud storage match the latest versions of files
-in your DVC repository.
-
-So in addition to the command behaviors described for `version_aware` remotes,
-when the `worktree` option is enabled on a `dvc remote`:
-
-- `dvc push` will also ensure that the current version of objects in remote
-  storage match the latest versions of files in your DVC repository repository.
-  Additionally, DVC will delete the current version of any objects which were
-  present in cloud storage but that do not exist in your current DVC repository
-  workspace.
-- `dvc update` can be used to update a DVC-tracked file or directory in your DVC
-  repository to match the current version of the corresponding object(s) from
-  cloud storage.
-
-<admon type="info">
-
-Note that deleting current versions in cloud storage does not delete any objects
-(and does not delete any data). It only means that the current version of a
-given object will show that the object does not exist.
-
-</admon>
-
 ## Importing versioned data
 
-DVC supports importing cloud versioned data from supported storage providers.
-Refer to the documentation for `dvc import-url` and `dvc update` for more
+DVC supports importing cloud-versioned data from supported storage providers.
+Refer to `dvc import-url` (`--version-aware`) and `dvc update --rev` for more
 information.

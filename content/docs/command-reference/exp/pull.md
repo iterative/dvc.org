@@ -3,6 +3,15 @@
 Download [experiments](/doc/command-reference/exp) from a Git remote, and their
 data from a `dvc remote`.
 
+<admon type="warn">
+
+DVC can only authenticate with Git remotes using [SSH URLs].
+
+[ssh urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+</admon>
+
 ## Synopsis
 
 ```usage
@@ -54,8 +63,8 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
-- `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
-  local repo. Equivalent to `git push --force` (rewrites history)
+- `-f`, `--force` - rewrite the experiment if it already exists in the local
+  repo.
 
 - `--no-cache` - do not pull cached files files associated with this experiment
   from DVC remote storage.

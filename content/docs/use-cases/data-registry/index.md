@@ -33,7 +33,7 @@ cloud storage. Advantages:
 
 [ci/cd for your data and models lifecycle]:
   /doc/use-cases/ci-cd-for-machine-learning
-[remote storage]: /doc/command-reference/remote
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 👩‍💻 Intrigued? Try our [registry tutorial] to learn how DVC looks and feels
 firsthand.

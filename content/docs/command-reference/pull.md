@@ -234,7 +234,7 @@ r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
 
 > DVC supports several
-> [remote types](/doc/command-reference/remote/add#supported-storage-types).
+> [remote types](/doc/user-guide/data-management/remote-storage#supported-storage-types).
 
 To download DVC-tracked data from a specific DVC remote, use the `--remote`
 (`-r`) option of `dvc pull`:
