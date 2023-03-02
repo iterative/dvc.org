@@ -46,12 +46,12 @@ containing the value of the token, and use the secret in your CI job (see
 example below).
 
 ```yaml
-...
-  steps:
-    - name: Train model
-      env:
-        STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
-...
+
+---
+steps:
+  - name: Train model
+    env:
+      STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
 ```
 
 ## Send and view live metrics and plots
