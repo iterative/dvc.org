@@ -5,68 +5,52 @@ metrics and plots to Iterative Studio, without writing them to your Git
 repository. This will enable you to view all intermediate results in Iterative
 Studio while your experiment is still running.
 
-This requires a 3-step process:
+This requires a 2-step process:
 
 1. [Set up an access token](#set-up-an-access-token)
-2. [Configure your model training job](#configure-your-model-training-job)
-3. [Send and view the updates](#send-and-view-live-metrics-and-plots)
+2. [Send and view the updates](#send-and-view-live-metrics-and-plots)
 
 ## Set up an access token
 
 Iterative Studio uses access tokens to authorize [DVCLive] to send live updates
-to the metrics and plots. You can generate (and delete) an access token from
-your user profile page.
+to the metrics and plots. The access token must be present in any request that
+sends data to the Iterative Studio ingestion endpoint. Requests with missing or
+incorrect access tokens are rejected with an appropriate HTTP error code and
+error message.
+
+### Create and manage access token
+
+Open your user profile page. In the `Studio access token` section, click on
+`Generate new token`. You can also regenerate or delete your access token.
 
 The option to delete the access token is also available when you change your
 password, so that you can reset all your access credentials at once. This is
 handy if you suspect that your account security may have been compromised.
 
-## Configure your model training job
+### Provide access token to experiment
 
-You should provide the following environment variables to your model training
-job:
+DVCLive expects the access token to be set in the `STUDIO_TOKEN` environment
+variable.
 
-1.  `STUDIO_TOKEN`: The access token must be present in any request that sends
-    data to the Iterative Studio ingestion endpoint. Requests with missing or
-    incorrect access tokens are rejected with an appropriate HTTP error code and
-    error message.
+If you are running the experiment locally, you can set this environment variable
+when submitting the training job.
 
-    If you are running the experiment locally, you can set this environment
-    variable when submitting the training job.
+```cli
+$ STUDIO_TOKEN=**** dvc exp run
+```
 
-    ```dvc
-    $ STUDIO_TOKEN=**** dvc exp run
-    ```
+If you are running the experiment as part of a CI job, a secure way to provide
+the access token is to create a
+[GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+containing the value of the token, and use the secret in your CI job (see
+example below).
 
-    If you are running the experiment as part of a CI job, a secure way to
-    provide the access token is to create a
-    [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-    containing the value of the token, and use the secret in your CI job (see
-    example below).
-
-    ```yaml
-    ---
-    steps:
-      - name: Train model
-        env:
-          STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
-    ```
-
-2.  `STUDIO_REPO_URL`: If you are running the experiment locally, you do not
-    need to set this environment variable. But if you are running it in a CI
-    job, then you should set the repository url in this format:
-    `{remote-type}:{namespace}/{repo-name}`. For example, for the
-    `example-get-started` repository in the `iterative` namespace,
-    `STUDIO_REPO_URL` should be set to the following value:
-
-    - If you are using GitHub, GitLab or Bitbucket, set it to
-      `git@github.com:iterative/example-get-started.git`,
-      `git@gitlab.com:iterative/example-get-started.git`,
-      `git@bitbucket.org:iterative/example-get-started.git` respectively.
-    - If you are using a custom (self-hosted) GitLab server, set it to
-      `custom-gitlab:iterative/example-get-started`.
-    - If you are using a GitHub enterprise server, set it to
-      `github:iterative/example-get-started`.
+```yaml
+steps:
+  - name: Train model
+    env:
+      STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
+```
 
 ## Send and view live metrics and plots
 
