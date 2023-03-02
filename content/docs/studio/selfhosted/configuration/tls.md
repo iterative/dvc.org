@@ -33,7 +33,7 @@ $ kubectl create secret tls studio-ingress-tls \
 
 4. Update Studio's config file
 
-Merge your `values.yaml` file with the following contents:
+Merge the `values.yaml` file with the following contents:
 
 ```yaml
 global:
@@ -42,7 +42,7 @@ global:
     tlsSecretName: studio-ingress-tls
 ```
 
-5. Redeploy Studio
+5. Reload Studio
 
 ```shell
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
@@ -63,7 +63,7 @@ $ kubectl create secret tls studio-ingress-tls \
 
 2. Update Studio's config file
 
-Merge your `values.yaml` file with the following contents:
+Merge the `values.yaml` file with the following contents:
 
 ```yaml
 global:
@@ -72,7 +72,7 @@ global:
     tlsSecretName: studio-ingress-tls
 ```
 
-3. Redeploy Studio
+3. Reload Studio
 
 ```shell
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml

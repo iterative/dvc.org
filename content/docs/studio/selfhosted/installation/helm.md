@@ -8,8 +8,8 @@ You can deploy Studio Self-hosted on any Kubernetes cluster (version => 1.20)
 that has an ingress controller configured and installed.
 
 The choice of ingress controller is up to you. We have good experiences with
-[ingress-nginx](https://a) but Studio will work on other ingress controllers as
-well.
+[ingress-nginx](https://kubernetes.github.io/ingress-nginx/) but Studio will
+work on other ingress controllers as well.
 
 You'll also need to have the following CLI tools configured and installed:
 

@@ -141,32 +141,3 @@ status. If so, please go to Troubleshooting
 17. Access Iterative Studio by opening the EC2 hostname in your browser
 
 ![](/img/studio-selfhosted-ami-9.png)
-
-## Troubleshooting
-
-### ImagePullBackOff / ErrImagePull status on some of the Studio apps
-
-1. Confirm if the username and password value in secret are correct
-
-   ```bash
-   $ ssh -i studio.pem ubuntu@$EC2_INSTANCE kubectl get secret iterativeai -n studio --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode
-   {"auths":{"docker.iterative.ai":{"username":"trial","password":"...","auth":"..."}}}
-   ```
-
-   If not, delete the existing secret:
-
-   ```bash
-   $ ssh -i studio.pem ubuntu@$EC2_INSTANCE kubectl detele secret iterativeai -n studio
-   ```
-
-   and create it
-   [again](https://www.notion.so/Installing-Studio-Selfhosted-AMI-a89d13e363094e2595ca22fb70edc04a)
-
-### Updating the Studio configuration
-
-1. Change the setting in the `studio-values.yaml`
-2. Run `helm upgrade` command:
-
-```bash
-$ cat studio-values.yaml | ssh -i studio.pem ubuntu@$EC2_INSTANCE "helm upgrade --wait studio iterative/studio --namespace studio -f -"
-```

@@ -635,10 +635,10 @@
           },
           {
             "slug": "configuration",
-            "source": false,
+            "source": "configuration/index.md",
             "children": [
               {
-                "label": "Adding a TLS certificate",
+                "label": "TLS certificates",
                 "slug": "tls"
               },
               {
@@ -648,6 +648,16 @@
               {
                 "label": "GitLab integration",
                 "slug": "gitlab"
+              }
+            ]
+          },
+          {
+            "slug": "troubleshooting",
+            "source": false,
+            "children": [
+              {
+                "label": "502 Service Unavailable",
+                "slug": "502"
               }
             ]
           }
