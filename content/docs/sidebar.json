@@ -246,6 +246,10 @@
             "slug": "branch"
           },
           {
+            "label": "exp clean",
+            "slug": "clean"
+          },
+          {
             "label": "exp diff",
             "slug": "diff"
           },
