@@ -1,15 +1,20 @@
-# Installing Studio Self-hosted via Helm
+# K8s Installation using Helm
 
 ## Prerequisites
+
+**Studio Images**
+
+Access to the Studio Docker images need to be provided by the Iterative team to
+enable the installation.
 
 **Software**
 
 You can deploy Studio Self-hosted on any Kubernetes cluster (version => 1.20)
 that has an ingress controller configured and installed.
 
-The choice of ingress controller is up to you. We have good experiences with
-[ingress-nginx](https://kubernetes.github.io/ingress-nginx/) but Studio will
-work on other ingress controllers as well.
+The choice of ingress controller is up to you. We recommend the
+[ingress-nginx](https://kubernetes.github.io/ingress-nginx/) controller, but
+Studio will work on other ingress controllers as well.
 
 You'll also need to have the following CLI tools configured and installed:
 
@@ -35,7 +40,7 @@ $ kubectl create namespace studio
 
 <admon type="tip">
 
-If you want to install Studio in any other namespace, modify the --namespace
+If you want to install Studio in any other namespace, modify the `--namespace`
 flag in the following commands accordingly
 
 </admon>
@@ -60,7 +65,7 @@ Replace `<username>` and `<password>` with the credentials you've received.
 $ helm repo add iterative https://helm.iterative.ai
 ```
 
-## 3. Install Studio
+## 3. Install the Studio Helm chart
 
 In this example, we'll configure Studio to integrate with GitLab and use the
 built in Postgres, Redis, and Minio.

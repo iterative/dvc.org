@@ -7,8 +7,11 @@ We strongly recommend deploying Studio with a TLS certificate.
 To configure TLS certificates to Studio, following the instructions below
 according to your installation method:
 
-<toggle>
-<tab title="AMI">
+<admon type="info">
+
+If you've deployed Studio with the AMI, you'll need to copy your TLS certificate
+and private key to the EC2 instance and start an SSH session before continuing.
+Example:
 
 1. Transfer your TLS certificate and private key to the EC2 instance
 
@@ -22,35 +25,7 @@ $ scp studio.crt studio.pem ubuntu@my-ec2-instance:.
 $ ssh ubuntu@my-ec2-instance
 ```
 
-3. Store your TLS certificate and private key in an object
-
-```cli
-$ kubectl create secret tls studio-ingress-tls \
-      --namespace studio \
-      --cert=studio.crt \
-      --key=studio.pem
-```
-
-4. Update Studio's config file
-
-Merge the `values.yaml` file with the following contents:
-
-```yaml
-global:
-  ingress:
-    tlsEnabled: true
-    tlsSecretName: studio-ingress-tls
-```
-
-5. Reload Studio
-
-```cli
-$ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
-```
-
-</tab>
-
-<tab title="Helm">
+</admon>
 
 1. Store your TLS certificate and private key in an object
 
@@ -77,7 +52,3 @@ global:
 ```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 ```
-
-</tab>
-
-</toggle>

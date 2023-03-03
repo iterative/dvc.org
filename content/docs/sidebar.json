@@ -624,12 +624,12 @@
             "source": "installation/index.md",
             "children": [
               {
-                "label": "AMI",
-                "slug": "ami"
+                "label": "AWS AMI",
+                "slug": "aws-ami"
               },
               {
-                "label": "Helm",
-                "slug": "helm"
+                "label": "Kubernetes (Helm)",
+                "slug": "k8s-helm"
               }
             ]
           },
