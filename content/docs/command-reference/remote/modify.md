@@ -751,8 +751,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 </details>
-<<<<<<< HEAD
-=======
 
 ## Example: Some Azure authentication methods
 
@@ -792,5 +790,3 @@ $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'
 $ dvc push
 ```
-
-> > > > > > > main
