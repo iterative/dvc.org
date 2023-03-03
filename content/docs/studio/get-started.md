@@ -60,7 +60,7 @@ more projects._
 
    To connect to repositories on your self-hosted GitLab server, you must first
    add a connection to this server and create a team. Refer to the section on
-   [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+   [self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
    for more details.
 
     </admon>
@@ -107,8 +107,8 @@ You should now see that a project has been added in your dashboard.
 
 1. You can use your project to [submit new experiments] from Iterative Studio.
 
-2. For the experiments that you submit from Iterative Studio, you can [track
-   live metrics and plots][live-metrics-and-plots] by using [DVCLive].
+2. You can [track live metrics and plots][live-metrics-and-plots] by using
+   [DVCLive].
 
 ## Use model registry
 

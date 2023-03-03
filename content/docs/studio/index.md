@@ -7,13 +7,10 @@ tools [DVC](https://dvc.org/), [CML](https://cml.dev), [MLEM](https://mlem.ai/),
 to seamlessly manage data and machine learning models, run and track
 experiments, and visualize and share results.
 
-<admon>
-
-Note that we have renamed DVC Studio to Iterative Studio and Views to Projects.
-
-</admon>
-
 https://www.youtube.com/watch?v=hKf4twg832g
+
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
 
 <cards>
 

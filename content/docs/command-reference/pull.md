@@ -182,8 +182,8 @@ $ dvc pull train
 
 ## Example: With dependencies
 
-> Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
-> follow this example if you tried the previous ones.
+> Delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to follow
+> this example if you tried the previous ones.
 
 Our [pipeline](/doc/command-reference/dag) has been set up with these
 [stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
@@ -234,7 +234,7 @@ r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
 
 > DVC supports several
-> [remote types](/doc/command-reference/remote/add#supported-storage-types).
+> [remote types](/doc/user-guide/data-management/remote-storage#supported-storage-types).
 
 To download DVC-tracked data from a specific DVC remote, use the `--remote`
 (`-r`) option of `dvc pull`:

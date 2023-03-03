@@ -5,9 +5,10 @@ project</abbr>, including the internal `.dvc/` directory. From there on, you
 will create and manage different DVC metafiles (below), and populate the
 <abbr>cache</abbr> with data artifacts as you work on your ML experiments.
 
-- `dvc.yaml` files define stages that form the pipeline(s) of a project. All
-  stage-based features such as `dvc params`, `dvc metrics`, and `dvc plots` are
-  specified here.
+- `dvc.yaml` files define stages, parameters, metrics, and plots. Stages form
+  the pipeline(s) of a project. Parameters, metrics, and plots are used to
+  evaluate and compare project versions and may be defined within stages or
+  independently.
 
 - `.dvc` files ("dot DVC files") are placeholders to track data files and
   directories.

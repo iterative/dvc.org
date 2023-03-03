@@ -9,7 +9,11 @@ settings_ are now called _Project settings_; and so on.
 
 # Visualize and Compare Experiments
 
-You can visualize and compare experiments using plots, images, charts, etc.
+You can visualize and compare experiments using plots, images, charts, etc. You
+can also
+[export the project table as CSV](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#export-project-data),
+so that you can use the data with any external reporting or visualization tool
+of your choice.
 
 ## Display plots and images
 
@@ -72,14 +76,13 @@ experiment, you can use the plots to compare them.
 
 ![](https://static.iterative.ai/img/studio/plots.png)
 
-### Live plots
+## Live plots
 
-For the experiments that you submit from Iterative Studio, you can [send live
-updates to your plots][live-metrics-and-plots] by using [DVCLive]. The number of
-recent updates to the live metrics are displayed in the `Live` icon as shown
-[here](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#git-history-and-live-metrics).
-
-Live plots are also shown in the plots pane, just like all other plots.
+You can [send live updates to your plots][live-metrics-and-plots] with
+[DVCLive]. The number of recent updates to the live metrics are
+[displayed](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#git-history-and-live-metrics)
+in the `Live` icon. Live plots are also shown and updated in real-time in the
+plots pane along with all other plots.
 
 ## Generate trend charts
 

@@ -63,7 +63,7 @@ multiple projects or users, respectively.
 > Note that the `--show-origin` flag can show you where a given config option
 > `value` is currently stored.
 
-## Command options (flags)
+## Command options/flags
 
 - `-u`, `--unset` - remove the specified config option `name` from a config
   file. Don't provide a `value` argument when employing this flag.
@@ -125,7 +125,7 @@ within:
 
 ### core
 
-- `core.remote` - name of the remote storage to use by default.
+- `core.remote` - name of the [remote storage](#remote) to use by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
@@ -160,9 +160,30 @@ within:
 
 ### remote
 
-All `remote` sections contain a `url` value and can also specify `user`, `port`,
-`keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value pairs.
-See `dvc remote add` and `dvc remote modify` for more information.
+Unlike most other sections, configuration files may have more than one
+`'remote'`. All of them require a unique `"name"` and a `url` value. They can
+also specify `jobs`, `verify`, and many platform-specific key/value pairs like
+`port` and `password`.
+
+<admon icon="book">
+
+See [Remote Storage Configuration] for more details.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
+
+</admon>
+
+For example, the following config file defines a `temp` remote in the local file
+system (located in `/tmp/dvcstore`), and marked as default (via [`core`](#core)
+section):
+
+```ini
+['remote "temp"']
+    url = /tmp/dvcstore
+[core]
+    remote = temp
+```
 
 ### cache
 
@@ -229,9 +250,8 @@ location. A [DVC remote](/doc/command-reference/remote) name is used (instead of
 the URL) because often it's necessary to configure authentication or other
 connection settings, and configuring a remote is the way that can be done.
 
-- `cache.local` - name of a _local remote_ to use as external cache (refer to
-  `dvc remote` for more info. on "local remotes".) This will overwrite the value
-  in `cache.dir` (see `dvc cache dir`).
+- `cache.local` - name of a [local remote] to use as external cache. This will
+  overwrite the value in `cache.dir` (see `dvc cache dir`).
 
 - `cache.s3` - name of an Amazon S3 remote to use as external cache.
 
@@ -244,10 +264,17 @@ connection settings, and configuring a remote is the way that can be done.
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
   external cache.
 
-> ⚠️ Avoid using the same [remote storage](/doc/command-reference/remote) used
-> for `dvc push` and `dvc pull` as external cache, because it may cause file
-> hash overlaps: the hash of an external <abbr>output</abbr> could collide with
-> that of a local file with different content.
+  <admon type="warn">
+
+  Avoid using the same [remote storage](/doc/command-reference/remote) used for
+  `dvc push` and `dvc pull` as external cache, because it may cause file hash
+  overlaps: the hash of an external <abbr>output</abbr> could collide with that
+  of a local file with different content.
+
+  </admon>
+
+[local remote]:
+  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
 
 ### exp
 
@@ -293,8 +320,7 @@ Composition].
   in [dictionary unpacking].
 
   Valid values are `"store_true"` (default) and `"boolean_optional"`, named
-  after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  after [Python `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -327,8 +353,8 @@ Composition].
 - `parsing.list` - Controls the templating syntax for list values when used in
   [dictionary unpacking].
 
-  Valid values are `"nargs"` (default) and `"append"`, named after
-  [Python argparse actions](https://docs.python.org/3/library/argparse.html#action).
+  Valid values are `"nargs"` (default) and `"append"`, named after [Python
+  `argparse` actions].
 
   Given the following `params.yaml`:
 
@@ -356,6 +382,9 @@ Composition].
   ```shell
   python foo.py --list 1 --list 2 --list 'foo'
   ```
+
+[python `argparse` actions]:
+  https://docs.python.org/3/library/argparse.html#action
 
 ### plots
 

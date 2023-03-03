@@ -3,6 +3,15 @@
 Upload [experiments](/doc/command-reference/exp) to a Git remote, and their data
 to a `dvc remote`.
 
+<admon type="warn">
+
+DVC can only authenticate with Git remotes using [SSH URLs].
+
+[ssh urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+</admon>
+
 ## Synopsis
 
 ```usage
@@ -24,7 +33,7 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 
 > Plain `git push` and `git fetch` don't work with experiments because these are
 > saved under custom Git references. See
-> [**How does DVC track experiments?**](/doc/user-guide/experiment-management/experiments-overview#how-does-dvc-track-experiments)
+> [**How does DVC track experiments?**](/doc/user-guide/experiment-management#how-does-dvc-track-experiments)
 > in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
@@ -51,8 +60,8 @@ This command will also try to [push](/doc/command-reference/push) all
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
-- `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
-  Git remote. Equivalent to `git push --force` (rewrites history)
+- `-f`, `--force` - rewrite the experiment if it already exists in the Git
+  remote.
 
 - `--no-cache` - do not push cached files associated with this experiment to a
   DVC remote.

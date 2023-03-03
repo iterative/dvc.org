@@ -52,8 +52,8 @@ providing a path to listing commands such as `ls` or `aws s3 ls`.
 Only the root directory is listed by default, but the `-R` option can be used to
 list files recursively.
 
-Please note that `dvc list` doesn't check whether the listed data (tracked by
-DVC) actually exists in remote storage, so it's not guaranteed whether it can be
+Note that `dvc list` doesn't check whether the listed data (tracked by DVC)
+actually exists in remote storage, so it's not guaranteed whether it can be
 accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
@@ -65,8 +65,9 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to list
-  content for. The latest commit in `master` (tip of the default branch) is used
-  by default when this option is not specified.
+  content for. The latest commit (in the default branch) is used by default when
+  this option is not specified.
+
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
 
