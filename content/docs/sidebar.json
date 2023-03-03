@@ -642,12 +642,20 @@
                 "slug": "tls"
               },
               {
+                "label": "CA certificates",
+                "slug": "ca"
+              },
+              {
                 "label": "GitHub integration",
                 "slug": "github"
               },
               {
                 "label": "GitLab integration",
                 "slug": "gitlab"
+              },
+              {
+                "label": "Bitbucket integration",
+                "slug": "bitbucket"
               }
             ]
           },
