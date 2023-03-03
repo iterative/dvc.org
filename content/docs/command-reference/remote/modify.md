@@ -138,6 +138,7 @@ details in the pages linked below.
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 - Microsoft [Azure Blob Storage]
 - [Google Cloud Storage] (GCP)
+- [Aliyun OSS]
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
 [s3-compatible]:
@@ -146,6 +147,7 @@ details in the pages linked below.
   /doc/user-guide/data-management/remote-storage/azure-blob-storage
 [google cloud storage]:
   /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
 
 <details>
 
@@ -274,51 +276,7 @@ more information.
 
 </details>
 
-<details>
-
-### Aliyun OSS
-
-> If any values given to the parameters below contain sensitive user info, add
-> them with the `--local` option, so they're written to a Git-ignored config
-> file.
-
-- `url` - remote location, in the `oss://<bucket>/<object>` format:
-
-  ```cli
-  $ dvc remote modify myremote url oss://mybucket/path
-  ```
-
-- `oss_endpoint` -
-  [OSS endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html) values
-  for accessing the remote container.
-
-  ```cli
-  $ dvc remote modify myremote oss_endpoint endpoint
-  ```
-
-- `oss_key_id` - OSS key ID to access the remote.
-
-  ```cli
-  $ dvc remote modify --local myremote oss_key_id 'mykey'
-  ```
-
-- `oss_key_secret` - OSS secret key for authorizing access into the remote.
-
-  ```cli
-  $ dvc remote modify --local myremote oss_key_secret 'mysecret'
-  ```
-
-Note that OSS remotes can also be configured via environment variables (instead
-of `dvc remote modify`). These are tried if none of the params above are set.
-The available ones are shown below:
-
-```cli
-$ export OSS_ACCESS_KEY_ID='mykey'
-$ export OSS_ACCESS_KEY_SECRET='mysecret'
-$ export OSS_ENDPOINT='endpoint'
-```
-
-</details>
+### Self-hosted / On-premises
 
 <details>
 

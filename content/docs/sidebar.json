@@ -130,7 +130,8 @@
             "children": [
               "amazon-s3",
               "azure-blob-storage",
-              "google-cloud-storage"
+              "google-cloud-storage",
+              "aliyun-oss"
             ]
           },
           "cloud-versioning",

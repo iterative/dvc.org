@@ -108,7 +108,7 @@ team.
 [google drive]: /doc/command-reference/remote/modify#google-drive
 [google cloud storage]:
   /doc/user-guide/data-management/remote-storage/google-cloud-storage
-[aliyun oss]: /doc/command-reference/remote/modify#aliyun-oss
+[aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
 
 ### Self-hosted / On-premises
 
