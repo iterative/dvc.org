@@ -25,11 +25,20 @@ Authentication successful.
 
 See [Authorization](#authorization) for more details.
 
-Note that GDrive remotes are not "trusted" by default. This means that the
+For the full list of configuration parameters, see
+[Configuration Parameters](#configuration-parameters).
+
+<details id="default-configuration">
+
+### DVC verifies Google Drive files by default
+
+GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
 parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
+
+</details>
 
 <admon type="tip">
 
