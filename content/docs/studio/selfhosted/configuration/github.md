@@ -22,15 +22,15 @@ Fill out the details as follows:
 
    **Repository permissions:**
 
-- Contents: Read / Write
-- Issues: Read / Write
-- Metadata: Read
-- Pull Requests: Read / Write
-- Webhooks: Read / Write
+   - Contents: Read / Write
+   - Issues: Read / Write
+   - Metadata: Read
+   - Pull Requests: Read / Write
+   - Webhooks: Read / Write
 
-**User permissions:**
+   **User permissions:**
 
-- Email addresses: Read
+   - Email addresses: Read
 
 4. Click **Create Github App**
 
