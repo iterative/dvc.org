@@ -23,11 +23,8 @@ You'll also need to have the following CLI tools configured and installed:
 
 **DNS**
 
-Create the following two DNS records pointing to the IP address of your load
-balancer:
-
-- `studio.company.com`
-- `minio.studio.company.com`
+Create a DNS record pointing to the external IP address of your ingress
+controller. This hostname will be used for Studio.
 
 ## 1. Create a namespace
 
@@ -85,21 +82,14 @@ imagePullSecrets:
   - name: iterativeai
 
 global:
-  host: 'studio.company.com'
-  ingress:
-    enabled: true
+  host: '<Studio hostname>'
   scmProviders:
     gitlab:
       enabled: true
-      appId: '<app-id>'
-      appName: '<app-name>'
-      clientId: '<gh-client-id>'
-      clientSecret: '<gh-app-secret>'
-
-minio:
-  apiIngress:
-    enabled: true
-    hostname: minio.studio.company.com
+      url: '<GitLab URL>'
+      clientId: '<GitLab OAuth App Client ID>'
+      secretKey: '<GitLab OAuth App Secret Key>'
+      webhookSecret: '<GitLab Webhook Secret>'
 ```
 
 Now let's deploy Studio with the command:

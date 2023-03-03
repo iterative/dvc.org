@@ -7,6 +7,11 @@
 The Studio machine image (AMI) and access to the Studio Docker images need to be
 provided by the Iterative team to enable the installation.
 
+**DNS**
+
+Create a DNS record pointing to the IP address of the EC2 instance. This
+hostname will be used for Studio.
+
 ## Installation
 
 1. Open the AWS Console
@@ -64,7 +69,7 @@ It's important to ensure that your VPC has connectivity to your Git forge
 $ ssh -i <EC2 key pair> ubuntu@$EC2_INSTANCE
 ```
 
-13. On the EC2 instance, configure the Docker registry credentials:
+13. Configure the Docker registry credentials:
 
 ```cli
 ubuntu@ami:~$ kubectl create secret docker-registry iterativeai \
@@ -95,7 +100,8 @@ Replace the strings marked with < >
 
 </admon>
 
-14. Create a new `values.yaml` file with the appropriate configuration. See the
+14. On the EC2 instance, create a new `values.yaml` file with the appropriate
+    configuration. See the
     [configuration section](/doc/studio/selfhosted/configuration) for more
     details. Example config with a custom Gitlab instance:
 
@@ -104,16 +110,13 @@ imagePullSecrets:
   - name: iterativeai
 
 global:
-  host: <EC2 instance hostname (this becomes the Studio hostname)>
+  host: <Studio hostname>
   scmProviders:
     gitlab:
       enabled: true
-      url: '<GitLab URL >'
+      url: '<GitLab URL>'
       clientId: '<GitLab OAuth App Client ID>'
       secretKey: '<GitLab OAuth App Secret Key>'
-      webhookUrl:
-        '<GitLab Webhook URL (e.g. https://<EC2 instance
-        hostname>/webhook/gitlab/)>'
       webhookSecret: '<GitLab Webhook Secret>'
 ```
 
@@ -135,7 +138,7 @@ Replace the strings marked with < >
 
 </admon>
 
-16. You're done! Access Iterative Studio by opening the EC2 hostname in your
-    browser
+16. You're done! Access Iterative Studio by opening the configured hostname in
+    your browser
 
 ![](/img/studio-selfhosted-ami-9.png)

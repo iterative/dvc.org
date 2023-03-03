@@ -40,9 +40,12 @@ scmProviders:
 
     clientId: <GitLab OAuth App Client ID>
     secretKey: <GitLab OAuth App Secret Key>
-
-    webhookUrl: <GitLab Webhook URL>
     webhookSecret: <GitLab Webhook Secret>
+
+    # Optional
+    # This is useful in cases where Studio is on an internal
+    # network, but the webhook endpoint is on an external network
+    # webhookUrl: https://webhook.studio.company.com/webhook/gitlab/
 ```
 
 <admon type="info">

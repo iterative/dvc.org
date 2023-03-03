@@ -41,9 +41,10 @@ up Studio to your needs.
 Studio integrates with several Git forges (also referred to as SCM providers),
 each of which are configured differently:
 
-- [GitHub](/doc/studio/selfhosted/configuration/github)
-- [GitLab](/doc/studio/selfhosted/configuration/gitlab)
+- [GitHub](/doc/studio/self-hosting/configuration/github)
+- [GitLab](/doc/studio/self-hosting/configuration/gitlab)
+- [Bitbucket](/doc/studio/self-hosting/configuration/bitbucket)
 
 To allow secure access to Studio, we highly recommend setting up a valid TLS
 certificate. To set this up, check out the
-[TLS certificates](/doc/studio/selfhosted/configuration/tls) page.
+[TLS certificates](/doc/studio/self-hosting/configuration/tls) page.

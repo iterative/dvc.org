@@ -63,9 +63,10 @@ scmProviders:
     appSecret: <GitHub OAuth App Secret>
     privateKey: <GitHub OAuth App Private Key>
 
-    # Optional. This is useful in cases where Studio is on an internal
+    # Optional
+    # This is useful in cases where Studio is on an internal
     # network, but the webhook endpoint is on an external network
-    webhookUrl: <GitHub Webhook URL, e.g. https://<domain>/webhook/github/>
+    # webhookUrl: https://webhook.studio.company.com/webhook/github/
 ```
 
 <admon type="info">
