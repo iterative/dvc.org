@@ -96,8 +96,8 @@ team.
 
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 - Microsoft [Azure Blob Storage]
-- [Google Drive]
 - [Google Cloud Storage] (GCP)
+- [Google Drive]
 - [Aliyun OSS]
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
@@ -105,9 +105,9 @@ team.
   /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 [azure blob storage]:
   /doc/user-guide/data-management/remote-storage/azure-blob-storage
-[google drive]: /doc/command-reference/remote/modify#google-drive
 [google cloud storage]:
   /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[google drive]: /doc/user-guide/data-management/remote-storage/google-drive
 [aliyun oss]: /doc/command-reference/remote/modify#aliyun-oss
 
 ### Self-hosted / On-premises
