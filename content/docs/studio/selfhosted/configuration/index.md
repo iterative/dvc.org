@@ -13,7 +13,7 @@ to your installation method:
 
 1. Connect with SSH to your EC2 instance
 
-```shell
+```cli
 $ ssh ubuntu@my-ec2-instance
 ```
 
@@ -30,7 +30,7 @@ global:
 
 3. Reload Studio
 
-```shell
+```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 
@@ -51,7 +51,7 @@ global:
 
 2. Reload Studio
 
-```shell
+```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 

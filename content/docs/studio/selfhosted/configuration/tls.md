@@ -12,19 +12,19 @@ according to your installation method:
 
 1. Transfer your TLS certificate and private key to the EC2 instance
 
-```shell
+```cli
 $ scp studio.crt studio.pem ubuntu@my-ec2-instance:.
 ```
 
 2. Connect with SSH to your EC2 instance
 
-```shell
+```cli
 $ ssh ubuntu@my-ec2-instance
 ```
 
 3. Store your TLS certificate and private key in an object
 
-```shell
+```cli
 $ kubectl create secret tls studio-ingress-tls \
       --namespace studio \
       --cert=studio.crt \
@@ -44,7 +44,7 @@ global:
 
 5. Reload Studio
 
-```shell
+```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 
@@ -54,7 +54,7 @@ $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 
 1. Store your TLS certificate and private key in an object
 
-```shell
+```cli
 $ kubectl create secret tls studio-ingress-tls \
       --namespace studio \
       --cert=studio.crt \
@@ -74,7 +74,7 @@ global:
 
 3. Reload Studio
 
-```shell
+```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 

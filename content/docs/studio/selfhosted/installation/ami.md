@@ -50,7 +50,7 @@ Gitlab, or Bitbucket)
 
 12. Open a terminal, and run the following commands:
 
-```shell
+```cli
 $ export DOCKER_USERNAME=<Docker registry username>
 $ export DOCKER_PASSWORD=<Docker registry password>
 $ export EC2_INSTANCE=<EC2 instance hostname>
@@ -66,7 +66,7 @@ Replace the strings marked with < >
 
 13. Update the Helm repository using the following command:
 
-```shell
+```cli
 $ helm repo update
 ```
 
@@ -110,13 +110,13 @@ Replace the strings marked with < >
 
 15. Open a terminal, and run the following command:
 
-```shell
+```cli
 $ helm repo update
 ```
 
 16. Confirm that all Studio components show `Running` in the status
 
-```shell
+```cli
 ssh -i studio.pem ubuntu@$EC2_INSTANCE kubectl get pod -n studio
 NAME                             READY   STATUS    RESTARTS   AGE
 studio-minio-847ff9757c-nbdc9    1/1     Running   0          1m

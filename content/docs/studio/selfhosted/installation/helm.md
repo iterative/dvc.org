@@ -29,7 +29,7 @@ balancer:
 We'll install Studio and related components in a dedicated `studio` namespace.
 Let's create it now:
 
-```shell
+```cli
 $ kubectl create namespace studio
 ```
 
@@ -44,7 +44,7 @@ flag in the following commands accordingly
 
 Configure Docker credentials for pulling images from our private registry:
 
-```shell
+```cli
 $ kubectl create secret docker-registry iterativeai \
     --namespace studio \
     --docker-server=docker.iterative.ai \
@@ -56,7 +56,7 @@ Replace `<username>` and `<password>` with the credentials you've received.
 
 ## 3. Add the Iterative Helm repository
 
-```shell
+```cli
 $ helm repo add iterative https://helm.iterative.ai
 ```
 
@@ -99,7 +99,7 @@ minio:
 
 Now let's deploy Studio with the command:
 
-```shell
+```cli
 $ helm install studio iterative/studio \
     --namespace studio \
     -f values.yaml
