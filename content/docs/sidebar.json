@@ -616,7 +616,7 @@
       },
       "troubleshooting",
       {
-        "slug": "selfhosted",
+        "slug": "self-hosting",
         "source": false,
         "children": [
           {
