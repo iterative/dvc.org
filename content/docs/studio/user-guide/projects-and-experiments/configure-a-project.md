@@ -134,7 +134,7 @@ If your project is missing some required columns, then it is likely that
 
 The **Columns** setting was earlier called **Tracking scope** or **Mandatory
 columns** and behaved slightly differently. Iterative Studio would always import
-up to 200 columns. This means that if you selected only 5 columns, Iterative
+up to 200 columns. This meant that if you selected only 5 columns, Iterative
 Studio would still import another 195 columns, unless your repository did not
 have so many columns. This behavior is now obsolete, and only selected columns
 are imported.
