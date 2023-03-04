@@ -43,6 +43,13 @@ remote storage] first (e.g. Amazon S3 or SSH).
 Check that you have the necessary remotes with `git remote -v` and (optionally)
 `dvc remote list`.
 
+For problems accessing the Git remote, see the [remote storage] guide.
+
+For problems accessing the DVC remote, see [troubleshooting].
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[troubleshooting]: /doc/user-guide/troubleshooting#git-auth
+
 </admon>
 
 You can upload an experiment using `dvc exp push --no-cache`, which takes a Git

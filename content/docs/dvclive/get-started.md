@@ -176,7 +176,7 @@ You can find a
 
 ## Compare results
 
-If you [track the results](#/doc/dvclive/how-it-works#track-the-results) of each
+If you [track the results](/doc/dvclive/how-it-works#track-the-results) of each
 experiment, you can compare them in different ways:
 
 <toggle>

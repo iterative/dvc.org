@@ -155,12 +155,12 @@ details in the pages linked below.
 > them with the `--local` option, so they're written to a Git-ignored config
 > file.
 
-Please see
-[Set up a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote)
-for a full guide on using Google Drive as DVC remote storage.
+Please see how to set up
+[Google Drive](/doc/user-guide/data-management/remote-storage/google-drive) for
+a full guide on using Google Drive as DVC remote storage.
 
 - `url` - remote location. See
-  [valid URL format](/doc/user-guide/how-to/setup-google-drive-remote#url-format).
+  [valid URL format](/doc/user-guide/data-management/remote-storage/google-drive#url-format).
 
   ```cli
   $ dvc remote modify myremote url \
@@ -168,7 +168,7 @@ for a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
-  [custom Google Client project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended).
+  [custom Google Client project](/doc/user-guide/data-management/remote-storage/google-drive#using-a-custom-google-cloud-project-recommended).
   Also requires using `gdrive_client_secret`.
 
   ```cli
@@ -205,7 +205,7 @@ for a full guide on using Google Drive as DVC remote storage.
   ```
 
 See
-[Authorization](/doc/user-guide/how-to/setup-google-drive-remote#authorization)
+[Authorization](/doc/user-guide/data-management/remote-storage/google-drive#authorization)
 for more details.
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
@@ -751,8 +751,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 </details>
-<<<<<<< HEAD
-=======
 
 ## Example: Some Azure authentication methods
 
@@ -792,5 +790,3 @@ $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'
 $ dvc push
 ```
-
-> > > > > > > main
