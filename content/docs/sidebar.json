@@ -130,7 +130,9 @@
             "children": [
               "amazon-s3",
               "azure-blob-storage",
-              "google-cloud-storage"
+              "google-cloud-storage",
+              "google-drive",
+              "aliyun-oss"
             ]
           },
           "cloud-versioning",
@@ -163,7 +165,6 @@
         "source": false,
         "children": [
           "run-dvc-on-windows",
-          "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",

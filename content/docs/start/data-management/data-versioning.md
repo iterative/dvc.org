@@ -155,6 +155,10 @@ set up earlier. The remote storage directory should look like this:
     └── a1a2931c8370d3aeedd7183606fd7f
 ```
 
+If you prefer to keep human-readable filenames, you can use [cloud versioning].
+
+[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
+
 </details>
 
 Usually, we also want to `git commit` (and `git push`) the project config
@@ -241,11 +245,11 @@ $ type %TEMP%\data.xml >> data\data.xml
 $ dvc add data/data.xml
 ```
 
-Usually you would also run `git commit` and `dvc push` to save the changes:
+Usually you would also run `dvc push` and `git commit` to save the changes:
 
 ```cli
-$ git commit data/data.xml.dvc -m "Dataset updates"
 $ dvc push
+$ git commit data/data.xml.dvc -m "Dataset updates"
 ```
 
 ## Switching between versions
