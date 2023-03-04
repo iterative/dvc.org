@@ -131,7 +131,8 @@
               "amazon-s3",
               "azure-blob-storage",
               "google-cloud-storage",
-              "google-drive"
+              "google-drive",
+              "aliyun-oss"
             ]
           },
           "cloud-versioning",
