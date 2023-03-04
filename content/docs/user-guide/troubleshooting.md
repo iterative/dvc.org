@@ -117,3 +117,10 @@ and retry the DVC command. Specifically, one of:
 
 [internal directories]:
   https://dvc.org/doc/user-guide/project-structure/internal-files
+
+## DVC Experiments may fail in Git shallow clones {#git-shallow}
+
+In `dvc<=2.45.1`, dvc exp` commands use internal Git operations which may not
+work properly in
+[shallow clones](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
+Upgrade to a newer version of DVC to resolve these errors.
