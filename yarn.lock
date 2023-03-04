@@ -7433,11 +7433,6 @@ gatsby-plugin-page-creator@^5.4.0:
     globby "^11.1.0"
     lodash "^4.17.21"
 
-gatsby-plugin-parent-resolvers@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-parent-resolvers/-/gatsby-plugin-parent-resolvers-1.0.2.tgz#3fae4ec5820c6619ef4dcb4f6022c2af6098a361"
-  integrity sha512-zPnvxOK+AbRpkpMeiMvAAFD3IJPT3NOL+ft5BauUVfnR4+KmTIZ2NOGxodO73qNzEJh/q9GYNCX8u1rxtH+6yQ==
-
 gatsby-plugin-postcss@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-postcss/-/gatsby-plugin-postcss-6.4.0.tgz#660427fbff2725e6daccad4d2f9668283ea45970"
