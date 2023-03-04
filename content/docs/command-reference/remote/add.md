@@ -128,6 +128,7 @@ The following are the supported types of storage protocols and platforms.
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 - Microsoft [Azure Blob Storage]
 - [Google Cloud Storage] (GCP)
+- [Google Drive]
 - [Aliyun OSS]
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
@@ -137,41 +138,8 @@ The following are the supported types of storage protocols and platforms.
   /doc/user-guide/data-management/remote-storage/azure-blob-storage
 [google cloud storage]:
   /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[google drive]: /doc/user-guide/data-management/remote-storage/google-drive
 [aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
-
-<details>
-
-### Google Drive
-
-To start using a GDrive remote, first add it with a
-[valid URL format](/doc/user-guide/how-to/setup-google-drive-remote#url-format).
-Then use any DVC command that needs to connect to it (e.g. `dvc pull` or
-`dvc push` once there's tracked data to synchronize). For example:
-
-```cli
-$ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
-$ dvc push  # Assuming there's data to push
-
-Go to the following link in your browser:
-
-    https://accounts.google.com/o/oauth2/auth # ... copy this link
-
-Enter verification code: # <- enter resulting code
-```
-
-See `dvc remote modify` for a list of other GDrive parameters, or
-[Set up a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote)
-for a full guide on using Google Drive as DVC remote storage.
-
-Note that GDrive remotes are not "trusted" by default. This means that the
-[`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
-parameter is enabled on this type of storage, so DVC recalculates the file
-hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
-modified.
-
-> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
-
-</details>
 
 ### Self-hosted / On-premises
 
