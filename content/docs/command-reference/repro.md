@@ -160,8 +160,9 @@ up-to-date and only execute the final stage.
   option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage command(s) even if they have already been run
-  with the same dependencies and outputs (see the [details]). Useful for example
-  if the stage command/s is/are non-deterministic ([not recommended]).
+  with the same dependencies and outputs (see the [details][run-cache]). Useful
+  for example if the stage command/s is/are non-deterministic ([not
+  recommended]).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -196,10 +197,9 @@ up-to-date and only execute the final stage.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
-[details]: /doc/user-guide/project-structure/internal-files#run-cache
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 [not recommended]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 [default remote storage]: /doc/command-reference/remote/default
 
 ## Examples
