@@ -62,7 +62,6 @@ with Live("custom_dir") as live
     model.load_weights(os.path.join("model", "best_model"))
     # Log additional data after training
     test_loss, test_acc = model.evaluate(test_dataset)
-    live.summary["additional_metric"] = 1.0
     live.summary["test_loss"] = test_loss
     live.summary["test_acc"] = test_acc
 ```
