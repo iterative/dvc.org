@@ -58,7 +58,7 @@ with Live("custom_dir") as live
         epochs=num_epochs,
         validation_data=validation_dataset,
         callbacks=[DVCLiveCallback(live=live)])
-    
+
     model.load_weights(os.path.join("model", "best_model"))
     # Log additional data after training
     test_loss, test_acc = model.evaluate(test_dataset)
