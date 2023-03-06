@@ -93,12 +93,41 @@ using:
 $ dvc checkout --relink
 ```
 
-## DVC can only authenticate with Git remotes using SSH URLs {#git-auth}
+## DVC cannot authenticate to Git remote {#git-auth}
 
-[Experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)
-commands accept a `git_remote` argument. You may need to authenticate to use the
-Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
-`dvc exp pull`) permissions.
+Some commands require authenticating to a Git remote (for example,
+[experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)).
+You may need _write_ (`dvc exp push`) or _read_ (`dvc exp list`, `dvc exp pull`)
+permissions.
+
+Using SSH to authenticate is recommended. If you use HTTP, you can configure a
+[Git credential helper] (like [Git Credential Manager]) to authenticate to
+private HTTP Git remotes. DVC will not prompt for these credentials, so they
+must already be saved in the credential helper. For example, if you `git clone`
+the repo after configuring the credential helper, it should save the credentials
+for DVC to read in the future.
+
+Commands like `dvc import` will clone a different Git repo than the one in which
+you are working. In order for these commands to read from a credential helper,
+it must be configured using `git config --global` or `git config --system`.
+
+<admon type="tip">
+
+If your SSH configuration includes [`UseKeychain` on macOS][usekeychain], you
+will need to decrypt the SSH key and add it to the SSH agent for DVC to be able
+to use it:
+
+```
+ssh-add --apple-load-keychain ~/.ssh/ed255
+```
+
+</admon>
+
+[git credential helper]:
+  https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage
+[git credential manager]:
+  https://github.com/GitCredentialManager/git-credential-manager
+[usekeychain]: https://github.com/iterative/dvc-ssh/issues/20
 
 ## Could not open pickled 'index/md5/links' cache {#pickle}
 

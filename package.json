@@ -40,10 +40,10 @@
   },
   "homepage": "https://github.com/iterative/dvc.org#readme",
   "engines": {
-    "node": ">=14.x <=18.x"
+    "node": "^18.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "^0.3.2",
+    "@dvcorg/gatsby-theme-iterative": "^0.3.3",
     "@dvcorg/websites-server": "^0.0.19",
     "@hapi/wreck": "^18.0.0",
     "@octokit/graphql": "^5.0.4",
@@ -64,7 +64,6 @@
     "gatsby": "^5.4.2",
     "gatsby-plugin-algolia": "^1.0.3",
     "gatsby-plugin-image": "^3.4.0",
-    "gatsby-plugin-parent-resolvers": "^1.0.2",
     "gatsby-plugin-sharp": "^5.4.0",
     "gatsby-source-rss-feed": "^1.2.2",
     "github-markdown-css": "^5.1.0",

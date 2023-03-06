@@ -15,7 +15,7 @@ The contents of the directory will depend on the methods used:
 | `Live.make_dvcyaml()`     | `dvclive/dvc.yaml`                                                         |
 | `Live.make_report()`      | `dvclive/report.{md/html}`                                                 |
 | `Live.make_summary()`     | `dvclive/metrics.json`                                                     |
-| `Live.next_step()`        | dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`  |
+| `Live.next_step()`        | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 | `Live.end()`              | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 
 ## Example

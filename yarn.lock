@@ -1227,16 +1227,16 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-2.1.1.tgz#c9c61d9fe5ca5ac664e1153bb0aa0eba1c6d6308"
   integrity sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==
 
-"@dvcorg/gatsby-theme-iterative@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.2.tgz#bc6bf6e25471b5161501e28f461a2604233c8204"
-  integrity sha512-/jZDf5RmZ0TAOZpCyNkpZrhr/aOcvBqycAYPHmy6rabsmdyX/FdjMwYvLL2Z+5sDEnpFDZsWh4KQs8kNB7mj4A==
+"@dvcorg/gatsby-theme-iterative@^0.3.2", "@dvcorg/gatsby-theme-iterative@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.3.tgz#92c4e5cd615d01812cbf641d336f2fd2eea14b1b"
+  integrity sha512-tf8U0OrCGQdypJ9j3AnYvjuIqViFSTei0PkodyHxpt+g6plTE7rJ9knHpQeVsJyDP8JXt9v0e2oETr/1dLuRMw==
   dependencies:
     "@reach/portal" "^0.18.0"
     "@reach/skip-nav" "^0.18.0"
     "@sentry/gatsby" "^7.31.1"
     "@svgr/webpack" "^6.2.1"
-    "@types/gatsbyjs__reach-router" "^1.3.0"
+    "@types/gatsbyjs__reach-router" "^2.0.0"
     "@types/isomorphic-fetch" "^0.0.36"
     "@types/promise-polyfill" "^6.0.4"
     "@types/react-collapse" "^5.0.1"
@@ -3001,12 +3001,13 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.51.tgz#cfd70924a25a3fd32b218e5e420e6897e1ac4f40"
   integrity sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==
 
-"@types/gatsbyjs__reach-router@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@types/gatsbyjs__reach-router/-/gatsbyjs__reach-router-1.3.0.tgz#6c831f6c369391b0ecc1726f9959ecd8e14a9eb0"
-  integrity sha512-7dfI9peaJk7TuIIaW8r6r8UaobvR+zqyc/x8pQpqwOFHCiLXl49TUxMoapFv1BQFAbT9UKrvlsijJk7X5r18lQ==
+"@types/gatsbyjs__reach-router@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/gatsbyjs__reach-router/-/gatsbyjs__reach-router-2.0.0.tgz#ee7196dbe2012ecd942de42de722d2b58124d13a"
+  integrity sha512-HDAeAXJQUxwvM3J18bj0oJ6t9xtKmFGLe52q1X8m2f73/EMsTOh7yHJ5vBa4eBNAB1Bx2xFqWXdw8dMngPgdVg==
   dependencies:
     "@types/reach__router" "*"
+    "@types/react" "*"
 
 "@types/get-port@^3.2.0":
   version "3.2.0"
@@ -7431,11 +7432,6 @@ gatsby-plugin-page-creator@^5.4.0:
     gatsby-telemetry "^4.4.0"
     globby "^11.1.0"
     lodash "^4.17.21"
-
-gatsby-plugin-parent-resolvers@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-parent-resolvers/-/gatsby-plugin-parent-resolvers-1.0.2.tgz#3fae4ec5820c6619ef4dcb4f6022c2af6098a361"
-  integrity sha512-zPnvxOK+AbRpkpMeiMvAAFD3IJPT3NOL+ft5BauUVfnR4+KmTIZ2NOGxodO73qNzEJh/q9GYNCX8u1rxtH+6yQ==
 
 gatsby-plugin-postcss@^6.4.0:
   version "6.4.0"
