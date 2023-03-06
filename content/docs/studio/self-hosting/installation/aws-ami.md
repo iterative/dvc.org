@@ -138,12 +138,6 @@ Replace the strings marked with `< >`
 ubuntu@ami:~$ helm install --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 
-<admon type="info">
-
-Replace the strings marked with `< >`
-
-</admon>
-
 16. You're done! Access Iterative Studio by opening the configured hostname in
     your browser
 
