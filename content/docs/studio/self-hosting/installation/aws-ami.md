@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-**Studio Images**
+### Studio Images
 
 The Studio machine image (AMI) and access to the Studio Docker images need to be
 provided by the Iterative team to enable the installation.
 
-**DNS**
+### DNS
 
 Create a DNS record pointing to the IP address of the EC2 instance. This
 hostname will be used for Studio.

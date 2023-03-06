@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-**Studio Images**
+### Studio Images
 
 Access to the Studio Docker images need to be provided by the Iterative team to
 enable the installation.
 
-**Software**
+### Software
 
 You can deploy Studio Self-hosted on any Kubernetes cluster (version => 1.20)
 that has an ingress controller configured and installed.
@@ -21,7 +21,7 @@ You'll also need to have the following CLI tools configured and installed:
 - Helm
 - Kubectl
 
-**DNS**
+### DNS
 
 Create a DNS record pointing to the external IP address of your ingress
 controller. This hostname will be used for Studio.
