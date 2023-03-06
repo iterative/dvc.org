@@ -132,7 +132,7 @@ Replace the strings marked with `< >`
 
 </admon>
 
-15. Open a terminal, and run the following command:
+15. To install the Studio application using Helm, run the following command:
 
 ```cli
 ubuntu@ami:~$ helm install --wait studio iterative/studio --namespace studio -f values.yaml
