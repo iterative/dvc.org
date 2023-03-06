@@ -89,4 +89,4 @@ need to whitelist your domain in GitLab:
    ```
 
 More examples of using the allowlist can be found in GitLab’s documentation:
-[Create an allowlist for local requests](http://gitlab-customca.iterative.ai/help/security/webhooks.md#create-an-allowlist-for-local-requests)
+[Create an allowlist for local requests](https://docs.gitlab.com/ee/security/webhooks.html#create-an-allowlist-for-local-requests)

@@ -108,7 +108,7 @@ Replace the strings marked with `< >`
 </admon>
 
 14. Create a new `values.yaml` file with the appropriate configuration. See the
-    [configuration section](/doc/studio/selfhosted/configuration) for more
+    [configuration section](/doc/studio/self-hosting/configuration) for more
     details. Example config with a custom Gitlab instance:
 
 ```yaml
