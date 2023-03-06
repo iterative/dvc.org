@@ -71,6 +71,6 @@ scmProviders:
 
 <admon type="info">
 
-Replace the strings marked with < >
+Replace the strings marked with `< >`
 
 </admon>

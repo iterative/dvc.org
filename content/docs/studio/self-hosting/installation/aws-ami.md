@@ -69,6 +69,13 @@ It's important to ensure that your VPC has connectivity to your Git forge
 $ ssh -i <EC2 key pair> ubuntu@$EC2_INSTANCE
 ```
 
+<admon type="info">
+
+The commands in the upcoming steps (13-15) are all meant to be run over SSH on
+the EC2 instance.
+
+</admon>
+
 13. Configure the Docker registry credentials:
 
 ```cli
@@ -81,7 +88,7 @@ ubuntu@ami:~$ kubectl create secret docker-registry iterativeai \
 
 <admon type="info">
 
-Replace the strings marked with < >
+Replace the strings marked with `< >`
 
 The `DOCKER_USERNAME` and `DOCKER_PASSWORD` will be provided to you by our
 support team in preparation for the installation.
@@ -96,7 +103,7 @@ ubuntu@ami:~$ helm repo update
 
 <admon type="info">
 
-Replace the strings marked with < >
+Replace the strings marked with `< >`
 
 </admon>
 
@@ -122,7 +129,7 @@ global:
 
 <admon type="info">
 
-Replace the strings marked with < >
+Replace the strings marked with `< >`
 
 </admon>
 
@@ -134,7 +141,7 @@ ubuntu@ami:~$ helm install --wait studio iterative/studio --namespace studio -f 
 
 <admon type="info">
 
-Replace the strings marked with < >
+Replace the strings marked with `< >`
 
 </admon>
 
