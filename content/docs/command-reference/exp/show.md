@@ -169,9 +169,10 @@ $ dvc exp show ...
   default behavior.
 
 - `-f`, `--force` - force re-collection of experiments instead of loading from
-  exp cache. DVC caches `exp show` table data to improve performance of
-  subsequent `exp show` calls. When `--force` is specified, DVC will reload all
-  experiment data and ignore any previously cached results.
+  internal experiments cache. DVC caches `exp show` table data for completed
+  experiments to improve performance of subsequent `exp show` calls. When
+  `--force` is specified, DVC will reload all experiment data and ignore any
+  previously cached results.
 
 ## Examples
 
