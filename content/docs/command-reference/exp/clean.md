@@ -1,6 +1,6 @@
 # exp clean
 
-Cleanup internal DVC experiment temporary files.
+Cleanup DVC experiment temporary files.
 
 ## Synopsis
 
@@ -10,9 +10,9 @@ usage: dvc exp clean [-h] [-q | -v]
 
 ## Description
 
-Runs housekeeping tasks within the DVC repository, such as removing outdated
-internal experiments queue message files (to reduce disk space and improve
-performance).
+Runs housekeeping tasks within the <abbr>DVC repository</abbr>, such as removing
+outdated internal experiments queue message files (to reduce disk space and
+improve performance).
 
 This is done automatically when running [queued experiments]. Running
 `dvc exp clean` manually should not be required for typical use cases, but it
