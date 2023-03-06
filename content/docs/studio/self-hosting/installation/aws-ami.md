@@ -107,8 +107,7 @@ Replace the strings marked with `< >`
 
 </admon>
 
-14. On the EC2 instance, create a new `values.yaml` file with the appropriate
-    configuration. See the
+14. Create a new `values.yaml` file with the appropriate configuration. See the
     [configuration section](/doc/studio/selfhosted/configuration) for more
     details. Example config with a custom Gitlab instance:
 
