@@ -1,12 +1,13 @@
 # Configuration
 
-Studio uses a standardized, unified YAML configuration file, often referred to
-as `values.yaml` in the documentation.
+Studio gets provisioned by Helm, which uses a single YAML file for
+configuration, often referred to as `values.yaml` in our documentation.
+
+To learn more about Helm's configuration format, refer to the page
+[Values Files ](https://helm.sh/docs/chart_template_guide/values_files/) on the
+Helm website.
 
 ## Updating the configuration
-
-To update the configuration and apply the changes, follow the instructions
-below:
 
 <admon type="info">
 
@@ -14,6 +15,9 @@ If you've deployed Studio with the AMI, you'll need to SSH to the EC2 instance
 before continuing.
 
 </admon>
+
+To update the configuration and apply the changes, follow the instructions
+below:
 
 1. Update Studio's `values.yaml` config file
 
