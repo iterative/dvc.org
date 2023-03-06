@@ -646,16 +646,22 @@
                 "slug": "ca"
               },
               {
-                "label": "GitHub integration",
-                "slug": "github"
-              },
-              {
-                "label": "GitLab integration",
-                "slug": "gitlab"
-              },
-              {
-                "label": "Bitbucket integration",
-                "slug": "bitbucket"
+                "slug": "git-forges",
+                "source": "git-forges/index.md",
+                "children": [
+                  {
+                    "label": "GitHub",
+                    "slug": "github"
+                  },
+                  {
+                    "label": "GitLab",
+                    "slug": "gitlab"
+                  },
+                  {
+                    "label": "Bitbucket",
+                    "slug": "bitbucket"
+                  }
+                ]
               }
             ]
           },
