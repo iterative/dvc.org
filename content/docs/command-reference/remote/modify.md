@@ -944,7 +944,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <admon type="tip">
 
-Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
+Using an HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about it by expanding the WebHDFS section [in `dvc remote add`].
 
 [in `dvc remote add`]: /doc/command-reference/remote/add#supported-storage-types
