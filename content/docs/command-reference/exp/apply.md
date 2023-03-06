@@ -22,39 +22,15 @@ the experiment, to their exact states from the experiment. This includes files
 tracked both with DVC and Git: code, raw data, <abbr>parameters</abbr>,
 <abbr>metrics</abbr>, resulting artifacts, etc.
 
+The resulting Git + DVC workspace after `dvc exp apply` will contain the
+contents of `experiment`, plus any files from the workspace prior to
+`dvc exp apply` that did not exist in `experiment`.
+
 This is typically used after choosing a target `experiment` with `dvc exp show`
 or `dvc exp diff`, and before committing it to Git (making it [persistent].
 
 > Note that any [checkpoints] found in the `experiment` will **not** be
 > preserved when applying and committing it. Use `dvc exp branch` instead.
-
-<details>
-
-### Expand for `dvc exp apply` implementation details
-
-`dvc exp apply` is approximately equivalent to the following Git + DVC workflow:
-
-```cli
-$ git stash --include-untracked
-$ git checkout --detach experiment
-$ git reset HEAD^1
-$ git checkout stash@{0} --ours
-$ git stash drop
-$ dvc checkout
-```
-
-The resulting Git + DVC workspace after `dvc exp apply` will contain the
-contents of `experiment`, plus any files from the workspace prior to
-`dvc exp apply` that did not exist in `experiment`.
-
-<admon type="info">
-
-Note that `dvc exp apply` does not actually use the standard Git stash (and does
-not modify `.git/refs/stash`).
-
-</admon>
-
-</details>
 
 <admon type="warn">
 
@@ -70,15 +46,14 @@ Conflicting changes in the workspace are overwritten, but the result of
 `dvc exp apply` can be reverted with the following Git workflow:
 
 ```cli
-$ git reset --hard
+$ git stash
 $ git stash apply refs/exps/apply/stash
 ```
 
 <admon type="info">
 
-Note that this workflow is only valid as long no Git commands which affect
-`HEAD` (such as `git commit` or `git checkout`) have been used since
-`dvc exp apply` was run.
+Note that `git stash apply` my fail if you run Git commands which affect `HEAD`
+(such as `git commit` or `git checkout`) after `dvc exp apply`.
 
 </admon>
 
