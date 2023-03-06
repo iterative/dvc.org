@@ -58,8 +58,12 @@ with Live("custom_dir") as live:
         validation_data=validation_dataset,
         callbacks=[DVCLiveCallback(live=live)])
 
-    # Log additional metrics after training
-    live.summary["additional_metric"] = 1.0
+    model.load_weights(os.path.join("model", "best_model"))
+
+    # Log additional data after training
+    test_loss, test_acc = model.evaluate(test_dataset)
+    live.summary["test_loss"] = test_loss
+    live.summary["test_acc"] = test_acc
 ```
 
 - Using `model_file` and `save_weights_only`.
