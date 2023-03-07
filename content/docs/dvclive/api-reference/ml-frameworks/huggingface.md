@@ -57,17 +57,15 @@ Where:
 from dvclive import Live
 from dvclive.huggingface import DVCLiveCallback
 
-live = Live("custom_dir")
+with Live("custom_dir") as live:
+    trainer = Trainer(
+        model, args,
+        train_dataset=train_data, eval_dataset=eval_data, tokenizer=tokenizer)
+    trainer.add_callback(
+        DVCLiveCallback(live=live))
 
-trainer = Trainer(
-    model, args,
-    train_dataset=train_data, eval_dataset=eval_data, tokenizer=tokenizer)
-trainer.add_callback(
-    DVCLiveCallback(live=live))
-
-# Log additional metrics after training
-live.summary["additional_metric"] = 1.0
-live.make_summary()
+    # Log additional metrics after training
+    live.summary["additional_metric"] = 1.0
 ```
 
 - Using `model_file`.

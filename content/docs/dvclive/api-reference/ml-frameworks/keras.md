@@ -51,17 +51,19 @@ Where:
 from dvclive import Live
 from dvclive.keras import DVCLiveCallback
 
-live = Live("custom_dir")
+with Live("custom_dir") as live:
+    model.fit(
+        train_dataset,
+        epochs=num_epochs,
+        validation_data=validation_dataset,
+        callbacks=[DVCLiveCallback(live=live)])
 
-model.fit(
-    train_dataset,
-    epochs=num_epochs,
-    validation_data=validation_dataset,
-    callbacks=[DVCLiveCallback(live=live)])
+    model.load_weights(os.path.join("model", "best_model"))
 
-# Log additional metrics after training
-live.summary["additional_metric"] = 1.0
-live.make_summary()
+    # Log additional data after training
+    test_loss, test_acc = model.evaluate(test_dataset)
+    live.summary["test_loss"] = test_loss
+    live.summary["test_acc"] = test_acc
 ```
 
 - Using `model_file` and `save_weights_only`.

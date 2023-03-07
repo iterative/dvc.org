@@ -38,18 +38,16 @@ lightgbm.train(
 from dvclive import Live
 from dvclive.lgbm import DVCLiveCallback
 
-live = Live("custom_dir")
+with Live("custom_dir") as live:
+    lightgbm.train(
+        param,
+        train_data,
+        valid_sets=[validation_data],
+        num_round=5,
+        callbacks=[DVCLiveCallback(live=live)])
 
-lightgbm.train(
-    param,
-    train_data,
-    valid_sets=[validation_data],
-    num_round=5,
-    callbacks=[DVCLiveCallback(live=live)])
-
-# Log additional metrics after training
-live.summary["additional_metric"] = 1.0
-live.make_summary()
+    # Log additional metrics after training
+    live.summary["additional_metric"] = 1.0
 ```
 
 - Using `model_file`.
