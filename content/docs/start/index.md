@@ -86,10 +86,12 @@ perspective:
 <admon type="tip">
 
 The steps and results of some of these chapters are captured in our
-[example-get-started] repo. Feel free to `git clone/checkout` any of its [tags][example-get-started-tags].
+[example-get-started] repo. Feel free to `git clone/checkout` any of its
+[tags][example-get-started-tags].
 
 [example-get-started]: https://github.com/iterative/example-get-started
-[example-get-started-tags]: https://github.com/iterative/example-get-started/tags
+[example-get-started-tags]:
+  https://github.com/iterative/example-get-started/tags
 
 </admon>
 
@@ -108,10 +110,12 @@ The steps and results of some of these chapters are captured in our
 
 <admon type="tip">
 
-These are captured in our [example-dvc-experiments] repo (see its [tags][example-dvc-experiments-tags]).
+These are captured in our [example-dvc-experiments] repo (see its
+[tags][example-dvc-experiments-tags]).
 
 [example-dvc-experiments]: https://github.com/iterative/example-dvc-experiments
-[example-dvc-experiments-tags]: https://github.com/iterative/example-dvc-experiments/tags
+[example-dvc-experiments-tags]:
+  https://github.com/iterative/example-dvc-experiments/tags
 
 </admon>
 
