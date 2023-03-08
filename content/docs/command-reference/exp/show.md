@@ -17,7 +17,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [--rev <commit>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
-                    [--pcp] [--only-changed]
+                    [--pcp] [--only-changed] [-f]
 ```
 
 ## Description
@@ -167,6 +167,12 @@ $ dvc exp show ...
 - `--open` - when used with `--pcp`, opens the generated plot in a browser
   automatically. You can enable `dvc config plots.auto_open` to make this the
   default behavior.
+
+- `-f`, `--force` - force re-collection of experiments instead of loading from
+  internal experiments cache. DVC caches `exp show` table data for completed
+  experiments to improve performance of subsequent `exp show` calls. When
+  `--force` is specified, DVC will reload all experiment data and ignore any
+  previously cached results.
 
 ## Examples
 
