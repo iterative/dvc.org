@@ -23,8 +23,8 @@ The `dvc push` and `dvc pull` commands are the means for uploading and
 downloading data to and from [remote storage] (S3, SSH, GCS, etc.). These
 commands are similar to `git push` and `git pull`, respectively. [Data sharing]
 across environments, and preserving data versions (input datasets, intermediate
-results, models, `dvc metrics`, etc.) remotely are
-the most common use cases for these commands.
+results, models, `dvc metrics`, etc.) remotely are the most common use cases for
+these commands.
 
 `dvc push` uploads data from the <abbr>cache</abbr> to a `dvc remote`.
 
