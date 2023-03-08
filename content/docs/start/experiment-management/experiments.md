@@ -45,10 +45,10 @@ the [`example-dvc-experiments`][ede] project.
 
 ### ⚙️ Initializing a project with DVC experiments
 
-If you already have a DVC project, that's great. You can start to use `dvc exp`
-commands right away to run or save experiments in your project. (See the [User
-Guide] for detailed information.) Here, we briefly discuss how to structure an
-ML project with DVC experiments using `dvc exp init`.
+If you already have a <abbr>DVC project</abbr>, that's great. You can start to
+use `dvc exp` commands right away to capture experiments (see [this guide] for
+detailed information). Here, we briefly discuss how to structure any ML project
+with DVC experiments by using `dvc exp init`.
 
 [user guide]: /doc/user-guide/experiment-management
 
@@ -75,7 +75,7 @@ You can also set these options in a dialog format with
 </details>
 
 Running the experiment with the default project settings requires only the
-command:
+`dvc exp run` command:
 
 ```cli
 $ dvc exp run
@@ -92,8 +92,10 @@ other dependencies, as well as the metrics produced.
 
 <admon type="tip">
 
-Current workspace status can also be saved as an experiment using
-[`dvc exp save`](/doc/command-reference/exp/save).
+If you already changed or ran your ML process in some other way and want to
+capture the results as a [DVC experiment], use `dvc exp save`.
+
+[dvc experiment]: /doc/user-guide/experiment-management
 
 </admon>
 
@@ -272,8 +274,8 @@ into your `main` branch with the usual Git commands.
 ## Go Further
 
 There are many other features of `dvc exp`, like cleaning up unused experiments,
-saving the current workspace status as an experiment, sharing them without
-committing into Git, or getting differences between two experiments.
+sharing them without committing into Git, or getting differences between two
+experiments.
 
 For more information, see the section on
 [Experiment Management](/doc/user-guide/experiment-management) in the User's

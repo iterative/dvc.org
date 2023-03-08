@@ -1,30 +1,8 @@
----
-title: 'How to Setup a Google Drive DVC Remote'
-description: >-
-  We explain the existing ways to setup Google Drive remote storage for your DVC
-  projects.
----
+# Google Drive
 
-# How to Setup a Google Drive DVC Remote
-
-In this guide we explain the existing ways to setup Google Drive [remote
-storage] for your <abbr>DVC projects</abbr>, along with the different benefits
-each one brings.
-
-DVC uses the Google Drive API to synchronize your DVC project data with this
-type of remote storage, so it's subject to certain usage limits and quotas,
-which by default are shared with other GDrive remote storage users. For heavy
-use, it's highly recommended to
-[connect using a custom Google Cloud project](#using-a-custom-google-cloud-project-recommended),
-which puts you in control of these limits.
-
-Having your own GC project, it's also possible to
-[use a service account](#using-service-accounts) for automating tasks that need
-to establish GDrive remote connections (e.g. CI/CD).
-
-[remote storage]: /doc/user-guide/data-management/remote-storage
-
-## Quick start
+<!--
+## Google Drive
+-->
 
 To start using a Google Drive remote, you only need to add it with a
 [valid URL format](#url-format). Then use any DVC command that needs to connect
@@ -46,6 +24,38 @@ Authentication successful.
 ```
 
 See [Authorization](#authorization) for more details.
+
+For the full list of configuration parameters, see
+[Configuration Parameters](#configuration-parameters).
+
+<details id="default-configuration">
+
+### DVC verifies Google Drive files by default
+
+GDrive remotes are not "trusted" by default. This means that the
+[`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
+parameter is enabled on this type of storage, so DVC recalculates the file
+hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
+modified.
+
+</details>
+
+<admon type="tip">
+
+DVC uses the Google Drive API to synchronize your DVC project data with this
+type of remote storage, so it's subject to certain usage limits and quotas,
+which by default are shared with other GDrive remote storage users. For heavy
+use, it's highly recommended to
+[connect using a custom Google Cloud project](#using-a-custom-google-cloud-project-recommended),
+which puts you in control of these limits.
+
+Having your own GC project, it's also possible to
+[use a service account](#using-service-accounts) for automating tasks that need
+to establish GDrive remote connections (e.g. CI/CD).
+
+</admon>
+
+> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 ## URL format
 
@@ -195,8 +205,7 @@ necessary credentials will be cached globally, for example in
 them.
 
 [auth process]: https://developers.google.com/drive/api/v2/about-auth
-[see `gdrive_user_credentials_file`]:
-  /doc/command-reference/remote/modify#google-drive
+[see `gdrive_user_credentials_file`]: #configuration-parameters
 
 <admin type="warn">
 
@@ -270,8 +279,8 @@ heavy usage, it is recommended to rely on
 </admon>
 
 > This requires having your own
-> [GC project](/doc/user-guide/how-to/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
-> as explained above.
+> [GC project](#using-a-custom-google-cloud-project-recommended) as explained
+> above.
 
 1. To
    [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
@@ -322,3 +331,120 @@ The remote must also be configured with the associated user **personal email**:
 $ dvc remote modify myremote gdrive_service_account_user_email \
               example_adress@some_google_domain.com
 ```
+
+## Configuration parameters
+
+<admon type="warn">
+
+If any values given to the parameters below contain sensitive user info, add
+them with the `--local` option, so they're written to a Git-ignored config file.
+
+</admon>
+
+- `url` - remote location. See [valid URL format](#url-format).
+
+  ```cli
+  $ dvc remote modify myremote url \
+                      gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+  ```
+
+- `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
+  [custom Google Client project](#using-a-custom-google-cloud-project-recommended).
+  Also requires using `gdrive_client_secret`.
+
+  ```cli
+  $ dvc remote modify myremote gdrive_client_id 'client-id'
+  ```
+
+- `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
+  using a custom Google Client project. Also requires using `gdrive_client_id`.
+
+  ```cli
+  $ dvc remote modify myremote gdrive_client_secret 'client-secret'
+  ```
+
+- `profile` - file basename used to cache OAuth credentials. Helpful to avoid
+  using the wrong credentials when multiple GDrive remotes use the same
+  `gdrive_client_id`. The default value is `default`.
+
+  ```cli
+  $ dvc remote modify --local myremote profile myprofile
+  ```
+
+- `gdrive_user_credentials_file` - specific file path to cache OAuth
+  credentials. The default is
+  `$CACHE_HOME/pydrive2fs/{gdrive_client_id}/default.json` (unless `profile` is
+  specified), where the `CACHE_HOME` location per platform is:
+
+  | macOS              | Linux (\*typical) | Windows                 |
+  | ------------------ | ----------------- | ----------------------- |
+  | `~/Library/Caches` | `~/.cache`        | `%CSIDL_LOCAL_APPDATA%` |
+
+  ```cli
+  $ dvc remote modify myremote \
+        gdrive_user_credentials_file path/to/mycredentials.json
+  ```
+
+  See [Authorization](#authorization) for more details.
+
+- `gdrive_trash_only` - configures `dvc gc` to move remote files to
+  [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
+  instead of
+  [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
+  them permanently. `false` by default, meaning "delete". Useful for shared
+  drives/folders, where delete permissions may not be given.
+
+  ```cli
+  $ dvc remote modify myremote gdrive_trash_only true
+  ```
+
+- `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potentially
+  [abusive](https://support.google.com/docs/answer/148505) files. Anything
+  identified as such (malware, personal info., etc.) can only be downloaded by
+  their owner (with this param enabled).
+
+  ```cli
+  $ dvc remote modify myremote gdrive_acknowledge_abuse true
+  ```
+
+### For service accounts
+
+A service account is a Google account associated with your GCP project, and not
+a specific user. Please refer to
+[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
+more information.
+
+- `gdrive_use_service_account` - authenticate using a service account. Make sure
+  that the service account has read/write access (as needed) to the file
+  structure in the remote `url`.
+
+  ```cli
+  $ dvc remote modify myremote gdrive_use_service_account true
+  ```
+
+- `gdrive_service_account_json_file_path` - path to the Google Project's service
+  account `.json`
+  [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  (credentials).
+
+  ```cli
+  $ dvc remote modify --local myremote \
+                      gdrive_service_account_json_file_path \
+                      path/to/file.json
+  ```
+
+- `gdrive_service_account_user_email` - the authority of a user account can be
+  [delegated] to the service account if needed.
+
+  ```cli
+  $ dvc remote modify myremote \
+                      gdrive_service_account_user_email 'myemail-addr'
+  ```
+
+  ⚠️ DVC requires the following OAuth Scopes:
+
+  - `https://www.googleapis.com/auth/drive`
+  - `https://www.googleapis.com/auth/drive.appdata`
+
+[delegated]:
+  https://developers.google.com/admin-sdk/directory/v1/guides/delegation

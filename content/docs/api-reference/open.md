@@ -29,27 +29,28 @@ Open a data or model file tracked in a <abbr>DVC project</abbr> and generate a
 corresponding [file object]. The file can be tracked by DVC (as an
 <abbr>output</abbr>) or by Git.
 
+[file object]: https://docs.python.org/3/glossary.html#term-file-object
+
 <admon type="info">
 
 The exact type of file object depends on the `mode` used. For more details,
 please refer to Python's [`open()`] built-in, which is used under the hood.
 
+This function makes a direct connection to [remote storage], so the file
+contents can be streamed. Your code can process the data [buffer] as it's
+streamed, which optimizes memory usage.
+
 [`open()`]: https://docs.python.org/3/library/functions.html#open
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[buffer]: https://docs.python.org/3/c-api/buffer.html
 
 </admon>
 
 `dvc.api.open()` may only be used as a [context manager] (using the `with`
 keyword, as shown in the examples).
 
-This function makes a direct connection to [remote storage], so the file
-contents can be streamed. Your code can process the data [buffer] as it's
-streamed, which optimizes memory usage.
-
-[file object]: https://docs.python.org/3/glossary.html#term-file-object
 [context manager]:
   https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[buffer]: https://docs.python.org/3/c-api/buffer.html
 
 <admon type="info">
 

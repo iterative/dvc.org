@@ -5,6 +5,15 @@ to [remote storage].
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
+<admon type="warn">
+
+DVC can only authenticate with Git remotes using [SSH URLs].
+
+[ssh urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+</admon>
+
 ## Synopsis
 
 ```usage
@@ -52,8 +61,8 @@ with the experiments to [remote storage], unless `--no-cache` is used.
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
-- `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
-  Git remote. Equivalent to `git push --force` (rewrites history)
+- `-f`, `--force` - rewrite the experiment if it already exists in the Git
+  remote.
 
 - `--no-cache` - do not push cached files associated with this experiment to a
   DVC remote.

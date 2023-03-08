@@ -252,9 +252,8 @@ is the way that can be done.
 [external cache]:
   /doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache
 
-- `cache.local` - name of a _local remote_ to use as external cache (refer to
-  `dvc remote` for more info. on "local remotes".) This will overwrite the value
-  in `cache.dir` (see `dvc cache dir`).
+- `cache.local` - name of a [local remote] to use as external cache. This will
+  overwrite the value in `cache.dir` (see `dvc cache dir`).
 
 - `cache.s3` - name of an Amazon S3 remote to use as external cache.
 
@@ -267,16 +266,19 @@ is the way that can be done.
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
   external cache.
 
-<admon type="warn">
+  <admon type="warn">
 
-Avoid using the same [remote storage] used for `dvc push` and `dvc pull` as
-external cache, because it may cause file hash overlaps: the hash of an external
-<abbr>output</abbr> could collide with that of a local file with different
-content.
+  Avoid using the same [remote storage] used for `dvc push` and `dvc pull` as
+  external cache, because it may cause file hash overlaps: the hash of an
+  external <abbr>output</abbr> could collide with that of a local file with
+  different content.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+  [remote storage]: /doc/user-guide/data-management/remote-storage
 
-</admon>
+  </admon>
+
+[local remote]:
+  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
 
 ### exp
 
