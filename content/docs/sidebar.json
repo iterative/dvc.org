@@ -619,7 +619,69 @@
           "connect-custom-gitlab-server"
         ]
       },
-      "troubleshooting"
+      "troubleshooting",
+      {
+        "slug": "self-hosting",
+        "source": false,
+        "children": [
+          {
+            "slug": "installation",
+            "source": "installation/index.md",
+            "children": [
+              {
+                "label": "AWS AMI",
+                "slug": "aws-ami"
+              },
+              {
+                "label": "Kubernetes (Helm)",
+                "slug": "k8s-helm"
+              }
+            ]
+          },
+          {
+            "slug": "configuration",
+            "source": "configuration/index.md",
+            "children": [
+              {
+                "label": "TLS certificates",
+                "slug": "tls"
+              },
+              {
+                "label": "CA certificates",
+                "slug": "ca"
+              },
+              {
+                "slug": "git-forges",
+                "source": "git-forges/index.md",
+                "children": [
+                  {
+                    "label": "GitHub",
+                    "slug": "github"
+                  },
+                  {
+                    "label": "GitLab",
+                    "slug": "gitlab"
+                  },
+                  {
+                    "label": "Bitbucket",
+                    "slug": "bitbucket"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "slug": "troubleshooting",
+            "source": false,
+            "children": [
+              {
+                "label": "502 Service Unavailable",
+                "slug": "502"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
