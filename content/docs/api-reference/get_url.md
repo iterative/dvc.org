@@ -24,34 +24,45 @@ resource_url = dvc.api.get_url(
 
 ## Description
 
-Returns the URL string of the storage location (in a
-[DVC remote](/doc/command-reference/remote)) where a target file or directory,
-specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
+Returns the URL string of the storage location (in a [DVC remote] where a target
+file or directory, specified by its `path` in a `repo` (<abbr>DVC
+project</abbr>), is stored.
 
-The URL is formed by reading the project's
-[remote configuration](/doc/command-reference/config#remote) and the `dvc.yaml`
-or `.dvc` file where the given `path` is found (`outs` field). The schema of the
-URL returned depends on the [type][storage-types] of the `remote` used (see the
-[Parameters](#parameters) section).
+The URL is formed by reading the project's [remote configuration] and the
+`dvc.yaml` or `.dvc` file where the given `path` is found (`outs` field). The
+schema of the URL returned depends on the [storage type] of the `remote` (see
+the [Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
 [Structure of cache directory] and `dvc add` to learn more about how DVC handles
 data directories.
 
-⚠️ This function does not check for the actual existence of the file or
-directory in the remote storage.
-
-💡 Having the resource's URL, it should be possible to download it directly with
-an appropriate library, such as [`boto3`] or [`paramiko`].
-
-[storage-types]:
+[dvc remote]: /doc/user-guide/data-management/remote-storage
+[remote configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
+[storage type]:
   /doc/user-guide/data-management/remote-storage#supported-storage-types
 [structure of cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+
+<admon type="warn">
+
+This function does not check for the actual existence of the file or directory
+in the remote storage.
+
+</admon>
+
+<admon type="tip">
+
+Having the resource's URL, it should be possible to download it directly with an
+appropriate library, such as [`boto3`] or [`paramiko`].
+
 [`boto3`]:
   https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj
 [`paramiko`]:
   https://docs.paramiko.org/en/stable/api/sftp.html#paramiko.sftp_client.SFTPClient.get
+
+</admon>
 
 ## Parameters
 
@@ -68,9 +79,9 @@ an appropriate library, such as [`boto3`] or [`paramiko`].
   Git repo, this option is ignored. _Default_: `None` (current working tree will
   be used)
 
-- `remote` - name of the [DVC remote](/doc/command-reference/remote) to use to
-  form the returned URL string. _Default_: The
-  [default remote](/doc/command-reference/remote/default) of `repo` is used.
+- `remote` - name of the [DVC remote] to use to form the returned URL string.
+  _Default_: The [default remote](/doc/command-reference/remote/default) of
+  `repo` is used.
 
 [experiment name]: /doc/command-reference/exp/run#-n
 

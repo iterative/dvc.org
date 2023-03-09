@@ -24,8 +24,10 @@ specified, this command returns the name of the default remote.
 $ dvc remote default myremote
 ```
 
-This command assigns the default remote in the core section of the DVC
-[config file](/doc/command-reference/config).
+This command assigns the default remote in the `core` section of the DVC [config
+file].
+
+[config file]: /doc/command-reference/config
 
 ```ini
 [core]

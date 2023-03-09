@@ -2,6 +2,8 @@
 
 Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
 ## Synopsis
 
 ```usage
@@ -42,9 +44,8 @@ restored using `dvc fetch`, as long as they have been previously uploaded with
 ### Removing data in remote storage
 
 If the `--cloud` (`-c`) flag is used, this command deletes unused data from the
-[default remote storage](/doc/command-reference/remote/default) **in addition**
-to deleting it from the local DVC cache. To specify a DVC remote to delete from,
-use the `--remote` (`-r`) option.
+`dvc remote default` **in addition** to deleting it from the local DVC cache. To
+specify a DVC remote to delete from, use the `--remote` (`-r`) option.
 
 <admon type="warn">
 
@@ -66,9 +67,11 @@ those other projects first.
 
 For example, if we have several projects with some overlapping files and we'd
 like to collect all the data that's only used in one of them (e.g. if we no
-longer need that projects), we would first clone all the other projects, fetch
+longer need that project), we would first clone all the other projects, fetch
 all their branches, and pass their paths to the `dvc gc -p` command from the
 project we want to clear.
+
+[cache is shared]: /doc/user-guide/how-to/share-a-dvc-cache
 
 ## Options
 
@@ -106,13 +109,11 @@ project we want to clear.
   > \* Not including [DVC experiments]
 
 - `--date <YYYY-MM-DD>` - Keep experiments from any commits on of after a
-  certain date. Argument `<YYYY-MM-DD>` expects a date in the
-  [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+  certain date. Argument `<YYYY-MM-DD>` expects a date in the [ISO 8601] format.
 
 - `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's
-  [experimental](/doc/user-guide/experiment-management) data (including
-  checkpoints). See also `dvc exp gc`.
+  [experimental] data (including checkpoints). See also `dvc exp gc`.
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache is
   shared] among different projects, this option can be used to specify a list of
@@ -123,9 +124,8 @@ project we want to clear.
   **This option is dangerous.** The default remote is used unless a specific one
   is given with `-r`.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to collect unused objects from
-  if `-c` option is specified (see `dvc remote list`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` to collect unused
+  objects from if `-c` option is specified (see `dvc remote list`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a
@@ -144,8 +144,9 @@ project we want to clear.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[cache is shared]: /doc/user-guide/how-to/share-a-dvc-cache
 [dvc experiments]: /doc/user-guide/experiment-management#experiments
+[iso 8601]: https://www.iso.org/iso-8601-date-and-time-format.html
+[experimental]: /doc/user-guide/experiment-management
 
 ## Examples
 
