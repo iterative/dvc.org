@@ -13,7 +13,7 @@ DVC helps you [define] these stages in a standard YAML format (`.dvc` and
 `dvc.yaml` files), making your <abbr>pipeline</abbr> more manageable and
 consistent to reproduce.
 
-See [Get Started: Data Pipelines] for a hands-on introduction to this topic.
+See [Get Started: Building Pipelines] for a hands-on introduction to this topic.
 
 [define]: /doc/user-guide/pipelines/defining-pipelines
-[get started: data pipelines]: /doc/start/data-management/data-pipelines
+[get started: data pipelines]: /doc/start/pipelines/building-pipelines

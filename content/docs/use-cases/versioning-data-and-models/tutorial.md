@@ -349,9 +349,9 @@ Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
 handy. We touched on it briefly when we described `dvc stage add` and
 `dvc repro`. The next step would be splitting the script into two parts and
 utilizing pipelines. See
-[Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) to get
-hands-on experience with pipelines, and try to apply it here. Don't hesitate to
-join our [community](/chat) and ask any questions!
+[Get Started: Building Pipelines](/doc/start/pipelines/building-pipelines) to
+get hands-on experience with pipelines, and try to apply it here. Don't hesitate
+to join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metrics file with the `-M` option of `dvc stage add`. Marking this
@@ -361,6 +361,6 @@ or branches (for example, representing different experiments). See
 more about managing metrics with DVC.
 
 [comparing changes]:
-  /doc/start/data-management/metrics-parameters-plots#comparing-iterations
+  /doc/start/data/metrics-parameters-plots#comparing-iterations
 [comparing many experiments]:
-  /doc/start/experiment-management/experiments#comparing-many-experiments
+  /doc/start/experiments/experiments#comparing-many-experiments

@@ -84,7 +84,7 @@ file.
   `dvc freeze`), use `dvc update` to bring the import up to date from the data
   source.
 
-[version the data]: /doc/start/data-management/data-versioning
+[version the data]: /doc/start/data/data-versioning
 
 ## Options
 

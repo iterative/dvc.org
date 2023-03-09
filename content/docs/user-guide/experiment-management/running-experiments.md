@@ -8,7 +8,7 @@ them for future execution, running them in parallel, among other details.
 If this is the first time you are introduced into data science experimentation,
 you may want to check the basics in [Get Started: Experiments] first.
 
-[get started: experiments]: /doc/start/experiment-management/experiments
+[get started: experiments]: /doc/start/experiments/experiments
 
 </admon>
 
@@ -21,8 +21,8 @@ experiment(s). These files codify _pipelines_ that specify one or more
 
 <admon icon="book">
 
-See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro to
-this topic.
+See [Get Started: Building Pipelines](/doc/start/pipelines) for an intro to this
+topic.
 
 </admon>
 

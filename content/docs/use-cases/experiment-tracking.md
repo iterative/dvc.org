@@ -74,7 +74,7 @@ Major benefits of tracking experiment with DVC:
 
 Ready to dive in? [Get started with experiments]!
 
-[get started with experiments]: /doc/start/experiment-management/experiments
+[get started with experiments]: /doc/start/experiments/experiments
 
 </admon>
 

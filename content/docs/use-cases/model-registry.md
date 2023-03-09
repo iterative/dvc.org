@@ -24,7 +24,7 @@ ML model registries give your team key capabilities:
 - For security, control who can manage models, and audit their usage trails.
 
 [versions]: /doc/use-cases/versioning-data-and-models
-[mp]: /doc/start/data-management/metrics-parameters-plots
+[mp]: /doc/start/data/metrics-parameters-plots
 [experiments]: /doc/user-guide/experiment-management
 
 Many of these benefits are built into DVC: Your [modeling process] and

@@ -146,7 +146,7 @@ files summary: 1 added, 0 deleted, 0 modified
 
 [2-track-data]:
   https://github.com/iterative/example-get-started/releases/tag/2-track-data
-[data versioning]: /doc/start/data-management/data-versioning
+[data versioning]: /doc/start/data/data-versioning
 
 ## Example: Comparing tags or branches
 

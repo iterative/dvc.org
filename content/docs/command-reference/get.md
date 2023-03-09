@@ -213,4 +213,4 @@ Untracked files:
 
 [get started example repo]: https://github.com/iterative/example-get-started
 [switching between versions]:
-  /doc/start/data-management/data-versioning#switching-between-versions
+  /doc/start/data/data-versioning#switching-between-versions

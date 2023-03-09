@@ -13,8 +13,8 @@ raw data, source code, data artifacts, etc. and a few
 [metafiles](/doc/user-guide/project-structure) that enable these features. A
 single version of the project is visible at a time.
 
-[data versioning]: /doc/start/data-management/data-versioning
-[pipelining]: /doc/start/data-management/data-pipelines
+[data versioning]: /doc/start/data/data-versioning
+[pipelining]: /doc/start/pipelines/building-pipelines
 
 <admon type="info">
 

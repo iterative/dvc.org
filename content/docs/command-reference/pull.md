@@ -31,7 +31,7 @@ these commands.
 and links (or copies) the files or directories to the <abbr>workspace</abbr>
 (refer to `dvc config cache.type`).
 
-[data sharing]: /doc/start/data-management/data-versioning#storing-and-sharing
+[data sharing]: /doc/start/data/data-versioning#storing-and-sharing
 
 <admon type="info">
 

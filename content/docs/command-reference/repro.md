@@ -204,7 +204,8 @@ up-to-date and only execute the final stage.
 ## Examples
 
 > To get hands-on experience with data science and machine learning pipelines,
-> see [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines).
+> see
+> [Get Started: Building Pipelines](/doc/start/pipelines/building-pipelines).
 
 Let's build and reproduce a simple pipeline. It takes this `text.txt` file:
 

@@ -75,7 +75,7 @@ deploy and deliver new versions several times a day -- and even before the
 weekend -- without fear of bugs/regressions.
 
 **Metrics (Model Validation)**: Whenever a change is committed, DVC can check
-that the [pipeline](/doc/start/data-management/data-pipelines) (including data,
+that the [pipeline](/doc/start/pipelines/building-pipelines) (including data,
 parameters, code, and metrics) is up to date, thereby ensuring that Git commits
 and model artifacts are in sync. DVC can also run benchmarks against previously
 deployed models before a new one is
@@ -91,8 +91,8 @@ a regularly updated source, checkout a pre-existing model, and then deploy an
 updated model refined on the additional data.
 
 **Experiment in the Cloud**: Alternatively, DVC and CML can be used to do
-research and run [experiments](/doc/start/experiment-management/experiments) in
-the cloud -- such as an entire hyperparameter search!
+research and run [experiments](/doc/start/experiments/experiments) in the cloud
+-- such as an entire hyperparameter search!
 
 <img src="https://static.iterative.ai/logo/dvc.svg" alt="DVC" width="24px" style="vertical-align: text-top"/> +
 <img src="https://static.iterative.ai/logo/cml.svg" alt="CML" width="24px" style="vertical-align: text-top"/>

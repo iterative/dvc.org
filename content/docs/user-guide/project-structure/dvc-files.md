@@ -5,7 +5,7 @@ You can use `dvc add` to track data files or directories located in your current
 you bring data from external locations to your project, and start tracking it
 locally. See [Data Versioning] for more info.
 
-[data versioning]: /doc/start/data-management/data-versioning
+[data versioning]: /doc/start/data/data-versioning
 
 <admon type="info">
 

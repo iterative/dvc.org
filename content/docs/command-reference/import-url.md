@@ -287,7 +287,7 @@ allows DVC to determine whether it's necessary to download it again.
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
 
-[versioning basics]: /doc/start/data-management/data-versioning
+[versioning basics]: /doc/start/data/data-versioning
 
 ## Example: Detecting external file changes
 
@@ -348,7 +348,7 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-[data processing section]: /doc/start/data-management/data-pipelines
+[data processing section]: /doc/start/pipelines/building-pipelines
 
 <details>
 

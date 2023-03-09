@@ -72,7 +72,7 @@ repository from bloating.
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[tracking]: /doc/start/data-management/data-versioning
+[tracking]: /doc/start/data/data-versioning
 
 </admon>
 
@@ -249,7 +249,7 @@ Plotting stage outputs is convenient for working with plots at the stage level,
 without having to write top-level `plots` definitions in `dvc.yaml`. However,
 stage-level plots do not support custom plot IDs or multiple data sources.
 
-[pipelines]: /doc/start/data-management/data-pipelines
+[pipelines]: /doc/start/pipelines/building-pipelines
 
 ## Plot templates (data-series only)
 

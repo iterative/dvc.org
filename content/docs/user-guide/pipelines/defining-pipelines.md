@@ -40,7 +40,7 @@ Note that while each pipeline is a graph, this doesn't mean a single `dvc.yaml`
 file. DVC checks the entire <abbr>project</abbr> tree and validates all such
 files to find stages, rebuilding all the pipelines that these may define.
 
-[data versioning]: /doc/start/data-management/data-versioning
+[data versioning]: /doc/start/data/data-versioning
 [metrics]: /doc/command-reference/metrics
 [plots]: /doc/user-guide/experiment-management/visualizing-plots
 

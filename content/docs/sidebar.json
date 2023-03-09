@@ -40,22 +40,19 @@
     "source": "start/index.md",
     "children": [
       {
-        "slug": "data-management",
+        "slug": "data",
         "source": false,
-        "children": [
-          "data-versioning",
-          "data-and-model-access",
-          "data-pipelines",
-          {
-            "label": "Metrics, Parameters, and Plots",
-            "slug": "metrics-parameters-plots"
-          }
-        ]
+        "children": ["data-versioning", "data-and-model-access"]
       },
       {
-        "slug": "experiment-management",
+        "slug": "experiments",
         "source": false,
-        "children": ["experiments", "visualization"]
+        "children": ["experiment-versioning", "experiment-management"]
+      },
+      {
+        "slug": "pipelines",
+        "source": false,
+        "children": ["building-pipelines", "running-pipelines"]
       }
     ]
   },

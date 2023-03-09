@@ -32,7 +32,7 @@ PNG, or SVG images found in your project. Typically these are artifacts of an
 Plots have to be defined either at the stage level, or at the pipeline level in
 `dvc.yaml`.
 
-[ml pipeline]: /doc/start/data-management/data-pipelines
+[ml pipeline]: /doc/start/pipelines/building-pipelines
 [dvclive]: /doc/dvclive
 
 <admon icon="book">
