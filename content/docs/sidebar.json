@@ -607,6 +607,7 @@
               },
               "add-a-model",
               "view-models",
+              "download-models",
               "register-version",
               "assign-stage"
             ]
