@@ -13,7 +13,10 @@ is `lightgbm-model`. You can find its registered versions in the
 [list of Git tags](https://github.com/iterative/demo-bank-customer-churn/tags).
 
 Suppose you want to dowload the model file for the `lightgbm-model@v2.0.1`
-version. You can use the following dvc command:
+version. In the model details page, you can see that the model file path is
+`.mlem/model/lightgbm-model`.
+
+To download the file, you can use the following dvc command:
 
 ```cli
 $ dvc get https://github.com/iterative/demo-bank-customer-churn .mlem/model/lightgbm-model --rev lightgbm-model@v2.0.1
