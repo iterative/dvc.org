@@ -649,6 +649,10 @@
                 "label": "end()"
               },
               {
+                "slug": "log_artifact",
+                "label": "log_artifact()"
+              },
+              {
                 "slug": "log_image",
                 "label": "log_image()"
               },

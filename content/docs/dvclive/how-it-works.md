@@ -6,17 +6,18 @@ used by default.
 
 The contents of the directory will depend on the methods used:
 
-| Method                    | Writes to                                                                  |
-| ------------------------- | -------------------------------------------------------------------------- |
-| `Live.log_metric()`       | `dvclive/plots/metrics`                                                    |
-| `Live.log_image()`        | `dvclive/plots/images`                                                     |
-| `Live.log_param()`        | `dvclive/params.yaml`                                                      |
-| `Live.log_sklearn_plot()` | `dvclive/plots/sklearn`                                                    |
-| `Live.make_dvcyaml()`     | `dvclive/dvc.yaml`                                                         |
-| `Live.make_report()`      | `dvclive/report.{md/html}`                                                 |
-| `Live.make_summary()`     | `dvclive/metrics.json`                                                     |
-| `Live.next_step()`        | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
-| `Live.end()`              | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
+| Method                                                                    | Writes to                                                                  |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [`Live.log_artifact(path)`](/doc/dvclive/api-reference/live/log_artifact) | `{path}.dvc`                                                               |
+| `Live.log_metric()`                                                       | `dvclive/plots/metrics`                                                    |
+| `Live.log_image()`                                                        | `dvclive/plots/images`                                                     |
+| `Live.log_param()`                                                        | `dvclive/params.yaml`                                                      |
+| `Live.log_sklearn_plot()`                                                 | `dvclive/plots/sklearn`                                                    |
+| `Live.make_dvcyaml()`                                                     | `dvclive/dvc.yaml`                                                         |
+| `Live.make_report()`                                                      | `dvclive/report.{md/html}`                                                 |
+| `Live.make_summary()`                                                     | `dvclive/metrics.json`                                                     |
+| `Live.next_step()`                                                        | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
+| `Live.end()`                                                              | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 
 ## Example
 
@@ -37,8 +38,10 @@ with Live(save_dvc_exp=True) as live:
         live.log_metric("metric", i + random.random())
         live.log_metric("nested/metric", i + random.random())
         live.log_image("img.png", Image.new("RGB", (50, 50), (i, i, i)))
+        Path("model.txt").write_text(str(random.random()))
         live.next_step()
 
+    live.log_artifact("model.txt")
     live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
     live.summary["additional_metric"] = 1.0
 # live.end() has been called at this point
@@ -61,6 +64,8 @@ dvclive
 │   └── sklearn
 │       └── confusion_matrix.json
 └── report.html
+model.txt
+model.txt.dvc
 ```
 
 ## Track the results

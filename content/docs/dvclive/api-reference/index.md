@@ -35,22 +35,13 @@ Including `save_dvc_exp=True` will automatically
 ### Log data
 
 <toggle>
-<tab title="Parameters">
+<tab title="Artifacts">
 
 ```python
-live.log_param("num_classes", 10)
+live.log_artifact("model.pt")
 ```
 
-```python
-params = {
-    "num_classes": 10,
-    "metrics": ["accuracy", "mae"],
-    "optimizer": "adam"
-}
-live.log_params(params)
-```
-
-See `Live.log_param()` / `Live.log_params()`.
+See `Live.log_artifact()`.
 
 </tab>
 <tab title="Metrics">
@@ -70,6 +61,24 @@ live.log_image("image.png", img)
 ```
 
 See `Live.log_image()`.
+
+</tab>
+<tab title="Parameters">
+
+```python
+live.log_param("num_classes", 10)
+```
+
+```python
+params = {
+    "num_classes": 10,
+    "metrics": ["accuracy", "mae"],
+    "optimizer": "adam"
+}
+live.log_params(params)
+```
+
+See `Live.log_param()` / `Live.log_params()`.
 
 </tab>
 <tab title="SKLearn Plots">
