@@ -19,7 +19,9 @@ version. In the model details page, you can see that the model file path is
 To download the file, you can use the following dvc command:
 
 ```cli
-$ dvc get https://github.com/iterative/demo-bank-customer-churn .mlem/model/lightgbm-model --rev lightgbm-model@v2.0.1
+$ dvc get https://github.com/iterative/demo-bank-customer-churn \
+    .mlem/model/lightgbm-model \
+    --rev lightgbm-model@v2.0.1
 ```
 
 Note that `.mlem/model/lightgbm-model` is the path where the model is registered
