@@ -39,18 +39,16 @@ xgboost.train(
 from dvclive import Live
 from dvclive.xgb import DVCLiveCallback
 
-live = Live("custom_dir")
+with Live("custom_dir") as live:
+    xgboost.train(
+        param,
+        dtrain,
+        num_round=5,
+        callbacks=[DVCLiveCallback("eval_data", live=live)],
+        evals=[(dval, "eval_data")])
 
-xgboost.train(
-    param,
-    dtrain,
-    num_round=5,
-    callbacks=[DVCLiveCallback("eval_data", live=live)],
-    evals=[(dval, "eval_data")])
-
-# Log additional metrics after training
-live.summary["additional_metric"] = 1.0
-live.make_summary()
+    # Log additional metrics after training
+    live.summary["additional_metric"] = 1.0
 ```
 
 - Using `**kwargs` to customize [`Live`].

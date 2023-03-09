@@ -9,9 +9,10 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
 [remove](/doc/command-reference/exp/remove),
-[gc](/doc/command-reference/exp/gc), [push](/doc/command-reference/exp/list),
-[pull](/doc/command-reference/exp/pull), and
-[list](/doc/command-reference/exp/list).
+[gc](/doc/command-reference/exp/gc), [push](/doc/command-reference/exp/push),
+[pull](/doc/command-reference/exp/pull),
+[list](/doc/command-reference/exp/list), and
+[clean](/doc/command-reference/exp/clean).
 
 > Requires that Git is being used to version the project.
 
@@ -19,7 +20,7 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 
 ```usage
 usage: dvc exp [-h] [-q | -v]
-          {show,apply,diff,run,gc,branch,list,push,pull,remove,init}
+          {show,apply,diff,run,gc,branch,list,push,pull,remove,init,clean}
           ...
 
 positional arguments:
@@ -37,6 +38,7 @@ positional arguments:
     gc                  Garbage collect unneeded experiments.
     push                Push a local experiment to a Git remote.
     pull                Pull an experiment from a Git remote.
+    clean               Cleanup dvc exp internal tempfiles.
 ```
 
 ## Description

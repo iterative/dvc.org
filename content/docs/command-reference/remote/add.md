@@ -27,19 +27,17 @@ positional arguments:
 
 ## Description
 
-Registers an [additional storage] location to save data files (besides the
+Registers a [remote storage] location to save data files (besides the
 <abbr>cache</abbr>) and optionally sets it as the `--default` remote. DVC
 remotes can point to a cloud storage service, an SSH server, network-attached
 storage, or even a directory in the local file system.
 
-[additional storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 <admon type="tip">
 
-A [default remote] is expected by `dvc push`, `dvc pull`, `dvc status`,
-`dvc gc`, and `dvc fetch` unless their `--remote` option is used.
-
-[default remote]: /doc/command-reference/remote/default
+A `dvc remote default` is expected by `dvc push`, `dvc pull`, `dvc status`,
+`dvc gc`, and `dvc fetch` unless their `--remote` (`-r`) option is used.
 
 </admon>
 
@@ -69,8 +67,8 @@ $ dvc remote add -d temp /tmp/dvcstore
     remote = myremote
 ```
 
-[config file]: /doc/command-reference/config
 [`remote`]: /doc/command-reference/config#remote
+[config file]: /doc/command-reference/config
 [`core`]: /doc/command-reference/config#core
 
 <admon type="info">

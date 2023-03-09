@@ -42,9 +42,10 @@ e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
 <admon type="info">
 
-DVC won't push data imported from other DVC repos to
-[remote storage](/doc/command-reference/remote). `dvc pull` will download from
-the original source.
+DVC won't push data imported from other DVC repos to [remote storage].
+`dvc pull` will download from the original source.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 </admon>
 
@@ -72,9 +73,8 @@ file.
 
 ⚠️ Relevant notes and limitation:
 
-- Source DVC repos should have a default
-  [DVC remote](/doc/command-reference/remote) containing the target data for
-  this command to work.
+- Source DVC repos should have a `dvc remote default` containing the target data
+  for this command to work.
 - The only exception to the above requirement is for local repos, where DVC will
   try to copy the data from its <abbr>cache</abbr> first.
 - Limited support for [chained imports](#example-chained-imports) is available
@@ -299,7 +299,7 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 ## Example: Chained imports
 
 DVC supports importing data that was itself imported into the source repo, as
-long as all the repos in the import chain (and their default remote storage) are
+long as all the repos in the import chain (and their `dvc remote default`) are
 accessible from the final destination repo.
 
 Consider an example with 3 DVC repos (A, B, and C). DVC repo `/repo/a` contains
@@ -398,6 +398,5 @@ needed (finding `data.csv` in A).
 This means both repos A and B must be reachable when `dvc import` runs in repo
 C, otherwise the import chain resolution would fail.
 
-The [default DVC remotes](/doc/command-reference/remote/default) for all repos
-in the import chain must also be accessible (repo C needs to have all the
-appropriate credentials).
+The `dvc remote default` for all repos in the import chain must also be
+accessible (repo C needs to have all the appropriate credentials).

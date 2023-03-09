@@ -65,10 +65,12 @@ such a case, `dvc checkout` prints a warning message. It also lists the partial
 progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases the cache can be pulled from
-[remote storage](/doc/command-reference/remote) using `dvc pull`. In other cases
-the [pipeline](/doc/command-reference/dag) must be reproduced (using
+situation. In some cases, the data can be pulled from [remote storage] using
+`dvc pull`. In other cases, the [pipeline] must be reproduced (using
 `dvc repro`) to regenerate its outputs.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[pipeline]: /doc/command-reference/dag
 
 ## Options
 
@@ -125,9 +127,8 @@ $ dvc fetch -aT
 ```
 
 We run `dvc fetch` with the `-aT` flags to get the DVC-tracked data from all Git
-branches and tags from [remote storage](/doc/command-reference/remote) to the
-<abbr>cache</abbr>. This way it's all available for the `checkout` examples
-below.
+branches and tags from [remote storage] to the <abbr>cache</abbr>. This way it's
+all available for the `checkout` examples below.
 
 </details>
 

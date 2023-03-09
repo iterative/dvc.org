@@ -59,9 +59,8 @@ $ pip install "dvc[s3]"
 
 </admon>
 
-[config file]: /doc/command-reference/config
 [`remote`]: /doc/command-reference/config#remote
-[`core`]: /doc/command-reference/config#core
+[config file]: /doc/command-reference/config
 
 ## Command options/flags
 
@@ -103,11 +102,10 @@ The following config options are available for all remote types:
 
   </admomn>
 
-- `jobs` - change the default number of processes for
-  [remote storage](/doc/command-reference/remote) synchronization operations
-  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc import`,
-  `dvc update`, `dvc gc -c`, etc.). Accepts positive integers. The default is
-  `4 \* cpu_count()`.
+- `jobs` - change the default number of processes for remote storage
+  synchronization operations (see the `--jobs` option of `dvc push`, `dvc pull`,
+  `dvc get`, `dvc import`, `dvc update`, `dvc add --to-remote`, `dvc gc -c`,
+  etc.). Accepts positive integers. The default is `4 * cpu_count()`.
 
   ```cli
   $ dvc remote modify myremote jobs 8
@@ -261,13 +259,21 @@ details in the pages linked below.
 
 ### HDFS
 
-💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
-Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/user-guide/data-management/remote-storage#supported-storage-types).
+<admon type="tip">
 
-> If any values given to the parameters below contain sensitive user info, add
-> them with the `--local` option, so they're written to a Git-ignored config
-> file.
+Using an HDFS cluster as remote storage is also supported via the WebHDFS API.
+Read more about it [here].
+
+[here]: /doc/command-reference/remote/add#webhdfs
+
+</admon>
+
+<admon type="info">
+
+If any values given to the parameters below contain sensitive user info, add
+them with the `--local` option, so they're written to a Git-ignored config file.
+
+</admon>
 
 - `url` - remote location:
 
@@ -295,13 +301,19 @@ Read more about by expanding the WebHDFS section in
 
 ### WebHDFS
 
-💡 WebHDFS serves as an alternative for using the same remote storage supported
-by HDFS. Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/user-guide/data-management/remote-storage#supported-storage-types).
+<admon type="tip">
 
-> If any values given to the parameters below contain sensitive user info, add
-> them with the `--local` option, so they're written to a Git-ignored config
-> file.
+WebHDFS serves as an alternative for using the same remote storage supported by
+HDFS. Read more about it [here].
+
+</admon>
+
+<admon type="info">
+
+If any values given to the parameters below contain sensitive user info, add
+them with the `--local` option, so they're written to a Git-ignored config file.
+
+</admon>
 
 - `url` - remote location:
 
