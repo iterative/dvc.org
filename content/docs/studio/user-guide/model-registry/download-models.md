@@ -25,4 +25,4 @@ $ dvc get https://github.com/iterative/demo-bank-customer-churn \
 ```
 
 Note that `.mlem/model/lightgbm-model` is the path where the model is registered
-using GTO, and not the actual path of the model file (in the remote storage).
+using GTO, and not the physical path of the model file (in the remote storage).
