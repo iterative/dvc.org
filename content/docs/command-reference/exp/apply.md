@@ -27,7 +27,7 @@ contents of `experiment`, plus any files from the workspace prior to
 `dvc exp apply` that did not exist in `experiment`.
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
-or `dvc exp diff`, and before committing it to Git (making it [persistent].
+or `dvc exp diff`, and before committing it to Git (making it [persistent]).
 
 > Note that any [checkpoints] found in the `experiment` will **not** be
 > preserved when applying and committing it. Use `dvc exp branch` instead.
