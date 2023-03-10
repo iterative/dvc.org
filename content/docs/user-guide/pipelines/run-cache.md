@@ -19,4 +19,5 @@ for that stage.
 
 </admon>
 
-See also [DVC Experiments](/doc/user-guide/experiment-management).
+The run cache is also enabled when you use `dvc exp run` (see
+[DVC Experiments](/doc/user-guide/experiment-management)).
