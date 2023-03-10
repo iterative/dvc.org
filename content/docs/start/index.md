@@ -58,7 +58,7 @@ DVC can be divided in groups of features that are modular but combinable:
   suits your needs.
 
 [experiment versioning]: /doc/start/experiments/experiment-versioning
-[experiment management]: /doc/start/data/experiment-management
+[experiment management]: /doc/start/experiments/experiment-management
 
 ## Pipelines
 
