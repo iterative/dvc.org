@@ -81,3 +81,10 @@ your repo.
 If you don't have a DVC pipeline, you can include
 [`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to save the
 results as a DVC experiment.
+
+When using `Live.log_artifact("model.pt")`, DVCLive will
+[cache](/doc/start/data-management/data-versioning) the `model.pt` file with DVC
+to avoid tracking large artifacts in Git. It will generate a `model.pt.dvc`
+metadata file, which you should track in Git. You can
+[retrieve](/doc/start/data-management/data-versioning#retrieving) the artifact
+from the Git commit.
