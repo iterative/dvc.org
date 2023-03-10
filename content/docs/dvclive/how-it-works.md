@@ -38,10 +38,10 @@ with Live(save_dvc_exp=True) as live:
         live.log_metric("metric", i + random.random())
         live.log_metric("nested/metric", i + random.random())
         live.log_image("img.png", Image.new("RGB", (50, 50), (i, i, i)))
-        Path("model.txt").write_text(str(random.random()))
+        Path("model.pt").write_text(str(random.random()))
         live.next_step()
 
-    live.log_artifact("model.txt")
+    live.log_artifact("model.pt")
     live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
     live.summary["additional_metric"] = 1.0
 # live.end() has been called at this point
@@ -64,8 +64,8 @@ dvclive
 │   └── sklearn
 │       └── confusion_matrix.json
 └── report.html
-model.txt
-model.txt.dvc
+model.pt
+model.pt.dvc
 ```
 
 ## Track the results

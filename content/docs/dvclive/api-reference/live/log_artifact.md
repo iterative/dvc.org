@@ -13,10 +13,10 @@ from pathlib import Path
 from dvclive import Live
 
 # Create example file
-Path("model.txt").write_text("weights")
+Path("model.pt").write_text("weights")
 
 with Live() as live:
-    live.log_artifact("model.txt")
+    live.log_artifact("model.pt")
 ```
 
 ## Description
