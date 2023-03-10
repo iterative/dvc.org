@@ -25,20 +25,19 @@ usage: dvc exp [-h] [-q | -v]
 
 positional arguments:
   COMMAND
-    init                Quickly setup any project to use DVC Experiments.
-    run                 Reproduce complete or partial experiment pipelines.
     show                Print experiments.
-    diff                Show changes between experiments in the DVC
-                        repository.
-    list                List local and remote experiments.
-    apply               Apply the changes from an experiment to your
-                        workspace.
+    run                 Run or resume an experiment.
+    apply               Apply the changes from an experiment to your workspace.
     branch              Promote an experiment to a Git branch.
-    remove              Remove local experiments.
+    clean               Cleanup experiments temporary internal files.
+    diff                Show changes between experiments.
     gc                  Garbage collect unneeded experiments.
-    push                Push a local experiment to a Git remote.
+    init                Quickly setup any project to use experiments.
+    list                List local and remote experiments.
     pull                Pull an experiment from a Git remote.
-    clean               Cleanup dvc exp internal tempfiles.
+    push                Push a local experiment to a Git remote.
+    remove              Remove experiments.
+    save                Save current workspace as an experiment.
 ```
 
 ## Description
