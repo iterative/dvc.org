@@ -16,7 +16,7 @@ manage the experiments using the workflow that best suits your needs.
 ## Sharing Experiments
 
 Unless you have enabled
-[Studio Live Experiments](https://dvc.org/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
+[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
 the DVC experiments only exist in your repo and people can't manage or view them
 from other machines.
 
