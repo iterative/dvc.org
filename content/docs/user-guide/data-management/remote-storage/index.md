@@ -119,7 +119,7 @@ team.
 
 [ssh]: /doc/user-guide/data-management/remote-storage/ssh
 [hdfs]: /doc/user-guide/data-management/remote-storage/hdfs
-[webhdfs]: /doc/user-guide/data-management/remote-storage/webhdfs
+[webhdfs]: /doc/user-guide/data-management/remote-storage/hdfs#webhdfs
 [http]: /doc/user-guide/data-management/remote-storage/http
 [webdav]: /doc/user-guide/data-management/remote-storage/webdav
 
