@@ -17,8 +17,14 @@ positional arguments:
 Safely removes `.dvc` files or stages from `dvc.yaml`. This includes deleting
 the corresponding `.gitignore` entries (based on the `outs` fields removed).
 
-> `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
-> [remote storage](/doc/command-reference/remote). Use `dvc gc` for that.
+<admon type="info">
+
+`dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or [remote
+storage]. Use `dvc gc` for that.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
+</admon>
 
 It takes one or more stage names (see `-n` option of `dvc stage add`) or `.dvc`
 file names as `targets`.

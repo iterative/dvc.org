@@ -48,6 +48,20 @@ Where:
 
 ## Examples
 
+- Using `live` to pass an existing [`Live`] instance.
+
+```python
+from dvclive import Live
+from dvclive.lightning import DVCLiveLogger
+
+with Live("custom_dir") as live:
+    trainer = Trainer(
+        logger=DVCLiveLogger(live=live))
+    trainer.fit(model)
+    # Log additional metrics after training
+    live.summary["additional_metric"] = 1.0
+```
+
 - Using `**kwargs` to customize [`Live`].
 
 ```python

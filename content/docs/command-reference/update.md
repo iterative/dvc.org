@@ -67,9 +67,8 @@ $ dvc update --rev master
   specified with -r) without saving it locally. Use `dvc pull` to get the data
   locally.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) (can only be used with
-  `--to-remote`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` (can only be used
+  with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may

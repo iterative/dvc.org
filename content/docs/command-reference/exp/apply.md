@@ -6,7 +6,7 @@ Put the results from an [experiment](/doc/command-reference/exp) in the
 ## Synopsis
 
 ```usage
-usage: dvc exp apply [-h] [-q | -v] [--no-force] experiment
+usage: dvc exp apply [-h] [-q | -v] experiment
 
 positional arguments:
   experiment     Experiment to be applied
@@ -14,31 +14,55 @@ positional arguments:
 
 ## Description
 
-Restores an `experiment` into the workspace, as long as we're on the same
-project baseline (Git `HEAD`) as when the target experiment was run. The
-experiment can be referenced by name or hash (see `dvc exp run` for details).
+Restores an `experiment` into the workspace. The experiment can be referenced by
+name or hash (see `dvc exp run` for details).
 
-Specifically, `dvc exp apply` restores any files or directories needed to
-reflect the experiment conditions and results. This means checking out files
+Specifically, `dvc exp apply` restores any files or directories which exist in
+the experiment, to their exact states from the experiment. This includes files
 tracked both with DVC and Git: code, raw data, <abbr>parameters</abbr>,
 <abbr>metrics</abbr>, resulting artifacts, etc.
 
-⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
-used.
+The resulting Git + DVC workspace after `dvc exp apply` will contain the
+contents of `experiment`, plus any files from the workspace prior to
+`dvc exp apply` that did not exist in `experiment`.
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
-or `dvc exp diff`, and before committing it to Git (making it [persistent].
+or `dvc exp diff`, and before committing it to Git (making it [persistent]).
 
 > Note that any [checkpoints] found in the `experiment` will **not** be
 > preserved when applying and committing it. Use `dvc exp branch` instead.
+
+<admon type="warn">
+
+Conflicting changes in the workspace are overwritten, but the result of
+`dvc exp apply` can be reverted using Git.
+
+</admon>
+
+<details>
+
+### Expand for details on reverting `dvc exp apply`
+
+`dvc exp apply` can be reverted with the following Git workflow:
+
+```cli
+$ git stash
+$ git stash apply refs/exps/apply/stash
+```
+
+<admon type="info">
+
+Note that `git stash apply` my fail if you run Git commands which affect `HEAD`
+(such as `git commit` or `git checkout`) after `dvc exp apply`.
+
+</admon>
+
+</details>
 
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
 ## Options
-
-- `--no-force` - fail if this command would overwrite conflicting differences
-  between the `experiment` and the workspace.
 
 - `-h`, `--help` - shows the help message and exit.
 

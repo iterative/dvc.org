@@ -149,60 +149,7 @@ and retry the DVC command. Specifically, one of:
 
 ## DVC Experiments may fail in Git shallow clones {#git-shallow}
 
-`dvc exp` commands use internal Git operations which may not work properly in
+In `dvc<=2.45.1`, dvc exp` commands use internal Git operations which may not
+work properly in
 [shallow clones](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
-Local Git repositories can be unshallowed with `git fetch --unshallow`.
-
-This often occurs in transient remote environments such as Continuous
-Integration (CI) jobs, which use shallow clones by default. In those cases,
-change their configuration to avoid shallow cloning. Common examples:
-
-<toggle>
-<tab title="CML">
-
-[CML](https://cml.dev) has a convenient `--fetch-depth` option for its
-[`ci`](https://cml.dev/doc/ref/ci) command:
-
-```cli
-$ cml ci --fetch-depth 0
-```
-
-</tab>
-<tab title="GitHub Actions">
-
-Set `fetch-depth` to `0` in the `actions/checkout` action:
-
-```yaml
-- uses: actions/checkout@v3
-  with:
-    fetch-depth: 0
-```
-
-<admon type="info">
-
-See the
-[GitHub Actions docs](https://github.com/actions/checkout#fetch-all-history-for-all-tags-and-branches)
-for more information.
-
-</admon>
-
-</tab>
-<tab title="GitLab CI/CD">
-
-Set the `GIT_DEPTH` env var to `0`:
-
-```yaml
-variables:
-  GIT_DEPTH: '0'
-```
-
-<admon type="info">
-
-See the
-[GitLab CI/CD docs](https://docs.gitlab.com/ee/ci/large_repositories/#shallow-cloning)
-for more information.
-
-</admon>
-
-</tab>
-</toggle>
+Upgrade to a newer version of DVC to resolve these errors.

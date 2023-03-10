@@ -52,16 +52,14 @@ Where:
 from dvclive import Live
 from dvclive.fastai import DVCLiveCallback
 
-live = Live("custom_dir")
+with Live("custom_dir") as live:
+    learn = tabular_learner(data_loader, metrics=accuracy)
+    learn.fit_one_cycle(
+      n_epoch=2,
+      cbs=[DVCLiveCallback(live=live)])
 
-learn = tabular_learner(data_loader, metrics=accuracy)
-learn.fit_one_cycle(
-  n_epoch=2,
-  cbs=[DVCLiveCallback(live=live)])
-
-# Log additional metrics after training
-live.summary["additional_metric"] = 1.0
-live.make_summary()
+    # Log additional metrics after training
+    live.summary["additional_metric"] = 1.0
 ```
 
 - Using `model_file`.
