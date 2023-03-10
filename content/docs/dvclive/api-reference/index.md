@@ -62,9 +62,10 @@ live.log_metric("acc", 0.9)
 
 See `Live.log_metric()`. </tab> <tab title="Parameters">
 
+</tab>
+<tab title="Parameters">
 ```python
 live.log_param("num_classes", 10)
-```
 
 ```python
 params = {
