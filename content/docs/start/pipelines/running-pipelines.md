@@ -73,7 +73,7 @@ of the variations you try. It also enables new features:
 
 - [Send live updates to Studio](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
 - [Modify parameters from the CLI](/doc/command-reference/exp/run#example-modify-parameters-on-the-fly)
-- [Queue experiments for future execution](https://dvc.org/doc/command-reference/exp/run#example-run-a-grid-search)
+- [Queue experiments for future execution](/doc/command-reference/exp/run#example-run-a-grid-search)
 
 For example, `dvc exp run` can be useful if you want to try different values of
 a parameter that affects the `train` stage:
