@@ -184,7 +184,7 @@ up-to-date and only execute the final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - attempts to download outputs of stages found in the [run-cache]
+- `--pull` - attempts to download outputs of stages found in the [run cache]
   during reproduction. Uses the `dvc remote default`. See also `dvc pull`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -197,7 +197,7 @@ up-to-date and only execute the final stage.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
+[run cache]: /doc/user-guide/project-structure/internal-files#run-cache
 [not recommended]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
 

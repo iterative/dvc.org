@@ -278,7 +278,7 @@ The beauty of `dvc.yaml` is that all you need to do now is run:
 $ dvc repro
 ```
 
-It'll analyze the changes, use existing results from the <abbr>run-cache</abbr>,
+It'll analyze the changes, use existing results from the <abbr>run cache</abbr>,
 and execute only the commands needed to produce new results (model, metrics,
 plots).
 
