@@ -112,16 +112,16 @@ team.
 
 ### Self-hosted / On-premises
 
-- [SSH servers]; Like `scp`
+- [SSH]; Like `scp`
 - [HDFS] & [WebHDFS]
 - [HTTP]
 - [WebDAV]
 
-[ssh servers]: /doc/command-reference/remote/modify#ssh
-[hdfs]: /doc/command-reference/remote/modify#hdfs
-[webhdfs]: /doc/command-reference/remote/modify#webhdfs
-[http]: /doc/command-reference/remote/modify#http
-[webdav]: /doc/command-reference/remote/modify#webdav
+[ssh]: /doc/user-guide/data-management/remote-storage/ssh
+[hdfs]: /doc/user-guide/data-management/remote-storage/hdfs
+[webhdfs]: /doc/user-guide/data-management/remote-storage/webhdfs
+[http]: /doc/user-guide/data-management/remote-storage/http
+[webdav]: /doc/user-guide/data-management/remote-storage/webdav
 
 ## File systems (local remotes)
 

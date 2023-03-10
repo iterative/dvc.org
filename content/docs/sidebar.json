@@ -132,7 +132,26 @@
               "azure-blob-storage",
               "google-cloud-storage",
               "google-drive",
-              "aliyun-oss"
+              {
+                "label": "Aliyun OSS",
+                "slug": "aliyun-oss"
+              },
+              {
+                "label": "SSH",
+                "slug": "ssh"
+              },
+              {
+                "label": "HDFS & WebHDFS",
+                "slug": "hdfs"
+              },
+              {
+                "label": "HTTP",
+                "slug": "http"
+              },
+              {
+                "label": "WebDAV",
+                "slug": "webdav"
+              }
             ]
           },
           "cloud-versioning",
