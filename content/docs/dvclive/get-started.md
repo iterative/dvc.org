@@ -205,7 +205,7 @@ main                       Dec 06, 2022            -       -      -   -
 $ dvc plots diff $(dvc exp list --name-only)
 ```
 
-![plots diff](/img/dvclive_exp_tracking_plots_diff.svg)
+![plots diff](/img/dvclive_exp_tracking_plots_diff.png)
 
 </tab>
 
