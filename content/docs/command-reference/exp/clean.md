@@ -1,6 +1,6 @@
 # exp clean
 
-Cleanup DVC experiment temporary files.
+Cleanup experiments temporary files.
 
 ## Synopsis
 
