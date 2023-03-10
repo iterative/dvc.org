@@ -259,7 +259,7 @@ $ dvc remote modify myremote gdrive_acknowledge_abuse true
 ```
 
 </admon>
-> Note our [Privacy Policy (Google APIs)](https://dvc.org/doc/user-guide/privacy).
+> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 ## Using service accounts
 
