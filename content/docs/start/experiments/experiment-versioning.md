@@ -206,7 +206,7 @@ views.
 <tab title="Remotely">
 
 Once you have pushed the results to [Iterative Studio](/doc/studio), you can
-[compare experiment](https://dvc.org/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
+[compare experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
 against the entire repo history:
 
 ![Studio view](/img/dvclive-studio.png)
