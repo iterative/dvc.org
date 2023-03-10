@@ -141,103 +141,13 @@ The following are the supported types of storage protocols and platforms.
 
 ### Self-hosted / On-premises
 
-<details>
+- [SSH]; Like `scp`
+- [HDFS] & [WebHDFS]
+- [HTTP]
+- [WebDAV]
 
-### SSH
-
-```cli
-$ dvc remote add -d myremote ssh://user@example.com/path
-```
-
-> See `dvc remote modify` for a full list of SSH parameters.
-
-⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Check that you can connect both ways with tools like `ssh` and `sftp`
-(GNU/Linux).
-
-> Note that the server's SFTP root might differ from its physical root (`/`).
-
-</details>
-
-<details>
-
-### HDFS
-
-⚠️ Using HDFS with a Hadoop cluster might require additional setup. Our
-assumption is that the client is set up to use it. Specifically, [`libhdfs`]
-should be installed.
-
-[`libhdfs`]:
-  https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/LibHdfs.html
-
-💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
-API. Read more about it by expanding the WebHDFS section below.
-
-```cli
-$ dvc remote add -d myremote hdfs://user@example.com/path
-```
-
-> See `dvc remote modify` for a full list of HDFS parameters.
-
-</details>
-
-<details>
-
-### WebHDFS
-
-⚠️ Using WebHDFS requires to enable REST API access in the cluster: set the
-config property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
-
-If your cluster is secured, then WebHDFS is commonly used with Kerberos and
-HTTPS. To enable these for the DVC remote, set `use_https` and `kerberos` to
-`true`.
-
-```cli
-$ dvc remote add -d myremote webhdfs://example.com/path
-$ dvc remote modify myremote use_https true
-$ dvc remote modify myremote kerberos true
-$ dvc remote modify --local myremote token SOME_BASE64_ENCODED_TOKEN
-```
-
-💡 You may want to run `kinit` before using the remote to make sure you have an
-active kerberos session.
-
-> `token` contains sensitive user info. Therefore, it's safer to add it with the
-> `--local` option, so it's written to a Git-ignored config file.
-
-> See `dvc remote modify` for a full list of WebHDFS parameters.
-
-</details>
-
-<details>
-
-### HTTP
-
-```cli
-$ dvc remote add -d myremote https://example.com/path
-```
-
-> See `dvc remote modify` for a full list of HTTP parameters.
-
-</details>
-
-<details>
-
-### WebDAV
-
-```cli
-$ dvc remote add -d myremote \
-                    webdavs://example.com/owncloud/remote.php/dav
-```
-
-If your remote is located in a subfolder of your WebDAV server e.g.
-`files/myuser`, this path may be appended to the base URL:
-
-```cli
-$ dvc remote add -d myremote \
-      webdavs://example.com/owncloud/remote.php/dav/files/myuser
-```
-
-> See `dvc remote modify` for a full list of WebDAV parameters.
-
-</details>
+[ssh]: /doc/user-guide/data-management/remote-storage/ssh
+[hdfs]: /doc/user-guide/data-management/remote-storage/hdfs
+[webhdfs]: /doc/user-guide/data-management/remote-storage/hdfs#webhdfs
+[http]: /doc/user-guide/data-management/remote-storage/http
+[webdav]: /doc/user-guide/data-management/remote-storage/webdav
