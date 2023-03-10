@@ -1,10 +1,9 @@
 # update
 
 Update files or directories imported from external <abbr>DVC repositories</abbr>
-or [URLs](/doc/command-reference/import-url#description), and the corresponding
-import `.dvc` files, or update files or directories from a
-[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
-remote.
+or [URLs], and the corresponding import `.dvc` files.
+
+[urls]: /doc/command-reference/import-url
 
 ## Synopsis
 
@@ -40,36 +39,19 @@ to update an imported artifact to a different revision.
 $ dvc update --rev master
 ```
 
-### Worktree update
-
-When using a
-[worktree](/doc/user-guide/data-management/cloud-versioning#worktree-remotes)
-remote, `dvc update` will update the specified target to match the current
-version of the corresponding file or directory from the remote storage. If the
-current version of the specified target is a deleted file or an empty directory,
-`dvc update` will fail.
-
-<admon type="warn">
-
-Note that the `--rev`, `--no-download` and `--to-remote` flags are not
-compatible when updating from a worktree remote.
-
-</admon>
-
 ## Options
 
-- `--rev <commit>` - commit hash, branch or tag name, etc. (any
-  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
-  update the file or directory from. The latest commit in `master` (tip of the
-  default branch) is used by default when this option is not specified.
+- `--rev <version>` - commit hash, branch or tag name, etc. (any [Git revision])
+  of the repository to update the file or directory from. The latest commit in
+  `master` (tip of the default branch) is used by default.
 
-  > Note that this changes the `rev` field in the import stage, fixing it to the
-  > revision.
+  For data obtained with `dvc import-url --version-aware`, this option can be
+  used to specify an object version ID. By default, the current version from
+  cloud storage will be used.
 
-  For stages created with `dvc import-url` and a
-  [cloud-versioned URL](/doc/command-reference/import-url#--version-aware),
-  `--rev` can be used to specify a object version ID to use. By default, the
-  import will be updated to the current version from cloud storage.
+  Changes the `rev` field in the import `.dvc` files.
+
+  [git revision]: https://git-scm.com/docs/revisions
 
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import `.dvc` files to inspect. If there
@@ -78,18 +60,15 @@ compatible when updating from a worktree remote.
 - `--no-download` - Update data checksums in the `.dvc` file (`md5`, `etag`, or
   `checksum` fields) without actually downloading the latest data. See
   `dvc import-url --no-download` or `dvc import --no-download` for more context.
-  Cannot be combined with `--to-remote`.
+  Cannot be used with `--to-remote`.
 
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and
-  [transfer](/doc/command-reference/import-url#example-transfer-to-remote-storage)
-  the data directly to remote storage (the default one unless one is specified
-  with -r) without saving it locally. Use
-  [dvc pull](https://dvc.org/doc/command-reference/pull) to get the data
+  [transfer] the data directly to remote storage (the default one unless one is
+  specified with -r) without saving it locally. Use `dvc pull` to get the data
   locally.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) (can only be used with
-  `--to-remote`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` (can only be used
+  with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
@@ -101,6 +80,8 @@ compatible when updating from a worktree remote.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[transfer]: /doc/command-reference/import-url#example-transfer-to-remote-storage
 
 ## Example
 

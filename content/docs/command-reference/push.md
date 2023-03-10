@@ -1,8 +1,9 @@
 # push
 
-Upload tracked files or directories to
-[remote storage](/doc/command-reference/remote) based on the current `dvc.yaml`
-and `.dvc` files.
+Upload tracked files or directories to [remote storage] based on the current
+`dvc.yaml` and `.dvc` files.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -19,14 +20,13 @@ positional arguments:
 ## Description
 
 The `dvc push` and `dvc pull` commands are the means for uploading and
-downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
-are similar to `git push` and `git pull`, respectively. [Data sharing] across
-environments, and preserving data versions (input datasets, intermediate
-results, models, [metrics](/doc/command-reference/metrics), etc.) remotely are
-the most common use cases for these commands.
+downloading data to and from [remote storage] (S3, SSH, GCS, etc.). These
+commands are similar to `git push` and `git pull`, respectively. [Data sharing]
+across environments, and preserving data versions (input datasets, intermediate
+results, models, `dvc metrics`, etc.) remotely are the most common use cases for
+these commands.
 
-`dvc push` uploads data from the <abbr>cache</abbr> to
-[remote storage](/doc/command-reference/remote).
+`dvc push` uploads data from the <abbr>cache</abbr> to a `dvc remote`.
 
 > Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
@@ -37,7 +37,7 @@ the most common use cases for these commands.
 The `dvc remote` used is determined in order, based on
 
 1. the `remote` fields in the `dvc.yaml` or `.dvc` files.
-2. the value passed to the `--remote` option via CLI.
+2. the value passed to the `--remote` (`-r`) option via CLI.
 3. the value of the `core.remote` config option (see `dvc remote default`).
 
 Without arguments, it uploads the files and directories referenced in the
@@ -86,12 +86,8 @@ in the cache (compared to the default remote.) It can be used to see what files
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
   If there are no directories among the `targets`, this option has no effect.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to push to (see
-  `dvc remote list`). This will override the
-  [default remote](/doc/command-reference/remote/default). For any remote
-  specified in the `dvc.yaml` or `.dvc` files, data will be pushed to the
-  specified remotes.
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` to push to (see
+  `dvc remote list`).
 
 - `--run-cache` - uploads all available history of
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
@@ -115,22 +111,25 @@ in the cache (compared to the default remote.) It can be used to see what files
 
 ## Examples
 
-To use `dvc push` (without options), a default
-[remote storage](/doc/command-reference/remote) must be defined (see option
-`--default` of `dvc remote add`). Let's see an SSH remote example:
+To use `dvc push` (without options), a `dvc remote default` must be defined (see
+also `dvc remote add --default`). Let's see an SSH remote example:
 
 ```cli
 $ dvc remote add --default r1 \
                  ssh://user@example.com/path/to/dvc/cache/directory
 ```
 
-> For existing <abbr>projects</abbr>, remotes are usually already set up. You
-> can use `dvc remote list` to check them:
->
-> ```cli
-> $ dvc remote list
-> r1	ssh://user@example.com/path/to/dvc/cache/directory
-> ```
+<admon type="info">
+
+For existing <abbr>projects</abbr>, remotes are usually already set up. You can
+use `dvc remote list` to check them:
+
+```cli
+$ dvc remote list
+r1	ssh://user@example.com/path/to/dvc/cache/directory
+```
+
+</admon>
 
 Push entire data <abbr>cache</abbr> from the current <abbr>workspace</abbr> to
 the default remote:
@@ -153,8 +152,8 @@ a [pipeline](/doc/command-reference/dag) has been set up with these
 `matrix-train`
 
 Imagine the <abbr>project</abbr> has been modified such that the
-<abbr>outputs</abbr> of some of these stages need to be uploaded to
-[remote storage](/doc/command-reference/remote).
+<abbr>outputs</abbr> of some of these stages need to be uploaded to [remote
+storage].
 
 ```cli
 $ dvc status --cloud
@@ -193,16 +192,18 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 
 https://www.youtube.com/watch?v=FYmmiAz81G4
 
-Let's take a detailed look at what happens to the
-[cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-as you run an experiment locally and push data to remote storage. To set the
-example consider having created a <abbr>workspace</abbr> that contains some code
-and data, and having set up a remote.
+Let's take a detailed look at what happens to the [cache directory] as you run
+an experiment locally and push data to remote storage. To set the example
+consider having created a <abbr>project</abbr> with some code, data, and a
+`dvc remote` setup.
 
 Some work has been performed in the workspace, and new data is ready for
-uploading to the [remote](/doc/command-reference/remote). `dvc status --cloud`
-will list several files in `new` state. We can see exactly what that means by
-looking in the project's <abbr>cache</abbr>:
+uploading to the remote. `dvc status --cloud` will list several files in `new`
+state. We can see exactly what that means by looking in the project's
+<abbr>cache</abbr>:
+
+[cache directory]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ```cli
 $ tree .dvc/cache

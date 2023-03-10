@@ -7,3 +7,8 @@
 - '/img/<filename>.gif'
 - '/uploads/images/2020-02-10/image.png'
 - 'https://medium.com**'
+- 'src/*'
+- 'data/*'
+- 'models/*'
+- 'mailto:*'
+- 'https://machinelearningmastery.com/*'

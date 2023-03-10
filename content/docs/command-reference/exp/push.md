@@ -1,7 +1,18 @@
 # exp push
 
 Upload [experiments](/doc/command-reference/exp) to a Git remote, and their data
-to a `dvc remote`.
+to [remote storage].
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
+<admon type="warn">
+
+DVC can only authenticate with Git remotes using [SSH URLs].
+
+[ssh urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+</admon>
 
 ## Synopsis
 
@@ -18,7 +29,7 @@ positional arguments:
 ## Description
 
 The `dvc exp push` and `dvc exp pull` commands are the means for [sharing
-experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
+experiments] across <abbr>repository</abbr> copies via Git and [remote storage].
 
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -35,9 +46,8 @@ remote so they can be pulled later from other repo clones (equivalent to
 `git push <git_remote> refs/exps/<experiment>`). Use `dvc exp list <git_remote>`
 to see experiments in the remote.
 
-This command will also try to [push](/doc/command-reference/push) all
-<abbr>cached</abbr> data associated with the experiments to DVC
-[remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
+This command will also try to `dvc push` all <abbr>cached</abbr> data associated
+with the experiments to [remote storage], unless `--no-cache` is used.
 
 ## Options
 
@@ -51,8 +61,8 @@ This command will also try to [push](/doc/command-reference/push) all
   (first parents) starting from the `--rev` baseline. Give a negative value to
   include all first-parent commits (similar to `git log -n`).
 
-- `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
-  Git remote. Equivalent to `git push --force` (rewrites history)
+- `-f`, `--force` - rewrite the experiment if it already exists in the Git
+  remote.
 
 - `--no-cache` - do not push cached files associated with this experiment to a
   DVC remote.
@@ -60,9 +70,8 @@ This command will also try to [push](/doc/command-reference/push) all
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to push cached files
   to.
 
-- `--run-cache` - uploads all available history of
-  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
-  the `dvc remote`.
+- `--run-cache` - uploads all available history of [stage runs] to the
+  `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. Note that the default
@@ -76,6 +85,8 @@ This command will also try to [push](/doc/command-reference/push) all
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+[stage runs]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 

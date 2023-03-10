@@ -48,14 +48,15 @@ A model details page is divided into the following sections:
   particular registered version of the model. It has a version picker, which you
   can use to switch between different registered versions of the model. For the
   selected version, the left section shows
-  - a button to
-    [assign a stage to the version](/doc/studio/user-guide/model-registry/assign-stage),
-  - the path to the model,
-  - the version description,
-  - labels, and
-  - model methods. Note that the methods of a model are identified by
-    Iterative’s model deployment tool [MLEM]. If you have not used MLEM, then
-    Iterative Studio will not display any methods for the model.
+  - buttons for common actions such as opening the corresponding experiment,
+    deregistering the model version, and
+    [assigning a stage to the version](/doc/studio/user-guide/model-registry/assign-stage),
+  - all assigned stages,
+  - version description and labels,
+  - path to the model, and
+  - model requirements and methods. Note that the requirements and methods are
+    identified by Iterative’s model deployment tool [MLEM]. If you have not used
+    MLEM, then Iterative Studio will not display any methods for the model.
 - Right section: The right section contains information that is applicable
   across all the versions of the model. In particular, it displays
   - the assigned stages for the different versions, and

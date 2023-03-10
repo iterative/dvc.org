@@ -26,27 +26,38 @@ with dvc.api.open(
 ## Description
 
 Open a data or model file tracked in a <abbr>DVC project</abbr> and generate a
-corresponding
-[file object](https://docs.python.org/3/glossary.html#term-file-object). The
-file can be tracked by DVC (as an <abbr>output</abbr>) or by Git.
+corresponding [file object]. The file can be tracked by DVC (as an
+<abbr>output</abbr>) or by Git.
 
-> The exact type of file object depends on the `mode` used. For more details,
-> refer to Python's
-> [`open()`](https://docs.python.org/3/library/functions.html#open) built-in,
-> which is used under the hood.
+[file object]: https://docs.python.org/3/glossary.html#term-file-object
 
-`dvc.api.open()` may only be used as a
-[context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
-(using the `with` keyword, as shown in the examples).
+<admon type="info">
 
-This function makes a direct connection to the
-[remote storage](/doc/command-reference/remote/add#supported-storage-types), so
-the file contents can be streamed. Your code can process the data
-[buffer](https://docs.python.org/3/c-api/buffer.html) as it's streamed, which
-optimizes memory usage.
+The exact type of file object depends on the `mode` used. For more details,
+please refer to Python's [`open()`] built-in, which is used under the hood.
 
-> Use `dvc.api.read()` to load the complete file contents in a single function
-> call – no _context manager_ involved. Neither function utilizes disc space.
+This function makes a direct connection to [remote storage], so the file
+contents can be streamed. Your code can process the data [buffer] as it's
+streamed, which optimizes memory usage.
+
+[`open()`]: https://docs.python.org/3/library/functions.html#open
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[buffer]: https://docs.python.org/3/c-api/buffer.html
+
+</admon>
+
+`dvc.api.open()` may only be used as a [context manager] (using the `with`
+keyword, as shown in the examples).
+
+[context manager]:
+  https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library
+
+<admon type="info">
+
+Use `dvc.api.read()` to load the complete file contents in a single function
+call – no _context manager_ involved. Neither function utilizes disc space.
+
+</admon>
 
 ## Parameters
 
@@ -58,28 +69,26 @@ optimizes memory usage.
   (e.g. `[user@]server:project.git`). _Default_: The current project is used
   (the current working directory tree is walked up to find it).
 
-- `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, commit hash, or [experiment name]). If `repo` is not a
-  Git repo, this option is ignored. _Default_: `None` (current working tree will
-  be used)
+- `rev` - Git commit (any [revision] such as a branch or tag name, commit hash,
+  or [experiment name]). If `repo` is not a Git repo, this option is ignored.
+  _Default_: `None` (current working tree will be used)
 
-- `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data. _Default_: The
-  [default remote](/doc/command-reference/remote/default) of `repo` is used if a
-  `remote` argument is not given. For local projects, the <abbr>cache</abbr> is
-  tried before the default remote.
+- `remote` - name of the [DVC remote] to look for the target data. _Default_:
+  The [default remote] of `repo` is used if a `remote` argument is not given.
+  For local projects, the <abbr>cache</abbr> is tried before the default remote.
 
 - `mode` - specifies the mode in which the file is opened. Defaults to `"r"`
-  (read). Mirrors the namesake parameter in builtin
-  [`open()`](https://docs.python.org/3/library/functions.html#open).
+  (read). Mirrors the namesake parameter in builtin [`open()`].
 
-- `encoding` -
-  [codec](https://docs.python.org/3/library/codecs.html#standard-encodings) used
-  to decode the file contents to a string. This should only be used in text
-  mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
-  `open()`.
+- `encoding` - [codec] used to decode the file contents to a string. This should
+  only be used in text mode. Defaults to `"utf-8"`. Mirrors the namesake
+  parameter in builtin `open()`.
 
+[revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
+[dvc remote]: /doc/user-guide/data-management/remote-storage
+[default remote]: /doc/command-reference/remote/default
+[codec]: https://docs.python.org/3/library/codecs.html#standard-encodings
 
 ## Exceptions
 
@@ -91,10 +100,10 @@ optimizes memory usage.
 
 ## Example: Use data or models from a DVC repository
 
-Any file tracked in a <abbr>DVC project</abbr> (and
-[stored remotely](/doc/command-reference/remote/add)) can be processed directly
-in your Python code with this API. For example, an XML file tracked in a public
-DVC repo on GitHub can be processed like this:
+Any file tracked in a <abbr>DVC project</abbr> (and [stored
+remotely][remote storage]) can be processed directly in your Python code with
+this API. For example, an XML file tracked in a public DVC repo on GitHub can be
+processed like this:
 
 ```py
 from xml.sax import parse
@@ -167,9 +176,9 @@ directory tree, and look for the file contents of `clean.csv` in its local
 
 ## Example: Choose a specific remote as the data source
 
-Sometimes we may want to choose the [remote](/doc/command-reference/remote) data
-source, for example if the `repo` has no default remote set. This can be done by
-providing a `remote` argument:
+Sometimes we may want to choose a specific [remote storage] as source, for
+example if the `repo` has no default remote set. This can be done by providing a
+`remote` argument:
 
 ```py
 import dvc.api

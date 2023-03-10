@@ -30,7 +30,7 @@ Iterative Studio to be able to access the data required for visualization.
 
 Additionally, you can also configure project settings to
 [change the name](#project-name) of your project and to
-[select mandatory columns](#mandatory-columns) to import in your project.
+[select columns](#columns) to import in your project.
 
 ### Non-DVC repositories
 
@@ -54,10 +54,11 @@ you want to visualize in Iterative Studio.
 ### Data remotes (cloud/remote storage)
 
 The metrics and parameters that you want to include in the project may also be
-present in a [data remote](/doc/command-reference/remote#description) (cloud
-storage or another location outside the Git repo). If you want to include such
-data in your projects, then you will have to grant Iterative Studio access to
-the data remote.
+present in a [data remote] (cloud storage or another location outside the Git
+repo). If you want to include such data in your projects, then you will have to
+grant Iterative Studio access to the data remote.
+
+[data remote]: /doc/user-guide/data-management/remote-storage
 
 ## Configuring project settings
 
@@ -82,9 +83,8 @@ which you are trying to connect.
 
 ### Data remotes / cloud storage credentials
 
-If you need to provide credentials for
-[DVC data remotes](/doc/command-reference/remote#description), you will need to
-do it after your project has been created. First, create your project without
+If you need to provide credentials for a [data remote], you will need to do it
+after your project has been created. First, create your project without
 specifying the data remotes. Once your project is created, open its settings.
 Open the `Data remotes / cloud storage credentials` section. The data remotes
 that are used in your DVC repo will be listed.
@@ -93,8 +93,8 @@ that are used in your DVC repo will be listed.
 
 Now, click on `Add new credentials`. In the form that opens up, select the
 provider (Amazon S3, GCP, etc.). For details on what types of remote storage
-(protocols) are supported, refer to the DVC documentation on
-[supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+(protocols) are supported, refer to the DVC documentation on [supported storage
+types].
 
 Depending on the provider, you will be asked for more details such as the
 credentials name, username, password etc. Note that for each supported storage
@@ -103,41 +103,43 @@ type, the required details may be different.
 ![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
 
 You will also have to ensure that the credentials you enter have the required
-permissions on the cloud / remote storage. In the DVC documentation on
-[supported storage types](/doc/command-reference/remote/add#supported-storage-types),
-expand the section for the storage type you want to add. There, you will find
-the details of the permissions that you need to grant to the account
-(credentials) that you are configuring on Iterative Studio.
+permissions on the cloud / remote storage. Refer to the [DVC Remote config
+parameters] for more details about this.
 
 Note that Iterative Studio uses the credentials only to read plots/metrics files
 if they are not saved into Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
-### Mandatory columns
+[supported storage types]:
+  /doc/user-guide/data-management/remote-storage#supported-storage-types
+[dvc remote config parameters]:
+  /doc/command-reference/remote/modify#available-parameters-per-storage-type
 
-##### (Tracking scope)
+### Columns
 
-If your repository exceeds 200 columns, Iterative Studio will import a subset.
-The columns that are not imported will not be available to display in your
-project. In the settings for "Mandatory columns", You can select which columns
-are mandatory to import. Iterative Studio will also import unselected columns up
-to a maximum of 200.
+In the "Columns" setting, you can specify which columns should be imported from
+your Git repository to your project in Iterative Studio. Any unselected column
+cannot be displayed in your project table.
 
-![](https://static.iterative.ai/img/studio/project_settings_mandatory_columns.png)
+![](https://static.iterative.ai/img/studio/project_settings_columns.png)
 
-Note that some non-mandatory columns will also be imported if there are less
-than 200 mandatory columns. If you would like to hide specific columns from your
-project, you can do so in the project's [Display preferences].
+If you would like to hide imported columns from your project, you can do so in
+the project's [Display preferences].
 
-If your project is missing some required columns or includes columns that you do
-not want, refer to the following troubleshooting sections to understand why this
-may have happened.
+If your project is missing some required columns, then it is likely that
+[they have not been imported or are hidden](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want).
 
-- [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
-- [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
+<admon type="warn">
 
-Note: The **Mandatory columns** section was earlier called **Tracking scope**.
+The **Columns** setting was earlier called **Tracking scope** or **Mandatory
+columns** and behaved slightly differently. Iterative Studio would always import
+up to 200 columns. This meant that if you selected only 5 columns, Iterative
+Studio would still import another 195 columns, unless your repository did not
+have so many columns. This behavior is now obsolete, and only selected columns
+are imported.
+
+</admon>
 
 [display preferences]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#columns

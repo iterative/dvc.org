@@ -124,7 +124,17 @@
         "source": false,
         "children": [
           "large-dataset-optimization",
-          "remote-storage",
+          {
+            "slug": "remote-storage",
+            "source": "remote-storage/index.md",
+            "children": [
+              "amazon-s3",
+              "azure-blob-storage",
+              "google-cloud-storage",
+              "google-drive",
+              "aliyun-oss"
+            ]
+          },
           "cloud-versioning",
           "importing-external-data",
           "managing-external-data"
@@ -155,7 +165,6 @@
         "source": false,
         "children": [
           "run-dvc-on-windows",
-          "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
@@ -235,6 +244,10 @@
           {
             "label": "exp branch",
             "slug": "branch"
+          },
+          {
+            "label": "exp clean",
+            "slug": "clean"
           },
           {
             "label": "exp diff",
@@ -512,6 +525,10 @@
         "label": "make_checkpoint()"
       },
       {
+        "slug": "metrics_show",
+        "label": "metrics_show()"
+      },
+      {
         "slug": "open",
         "label": "open()"
       },
@@ -590,6 +607,7 @@
               },
               "add-a-model",
               "view-models",
+              "download-models",
               "register-version",
               "assign-stage"
             ]
@@ -602,7 +620,69 @@
           "connect-custom-gitlab-server"
         ]
       },
-      "troubleshooting"
+      "troubleshooting",
+      {
+        "slug": "self-hosting",
+        "source": false,
+        "children": [
+          {
+            "slug": "installation",
+            "source": "installation/index.md",
+            "children": [
+              {
+                "label": "AWS AMI",
+                "slug": "aws-ami"
+              },
+              {
+                "label": "Kubernetes (Helm)",
+                "slug": "k8s-helm"
+              }
+            ]
+          },
+          {
+            "slug": "configuration",
+            "source": "configuration/index.md",
+            "children": [
+              {
+                "label": "TLS certificates",
+                "slug": "tls"
+              },
+              {
+                "label": "CA certificates",
+                "slug": "ca"
+              },
+              {
+                "slug": "git-forges",
+                "source": "git-forges/index.md",
+                "children": [
+                  {
+                    "label": "GitHub",
+                    "slug": "github"
+                  },
+                  {
+                    "label": "GitLab",
+                    "slug": "gitlab"
+                  },
+                  {
+                    "label": "Bitbucket",
+                    "slug": "bitbucket"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "slug": "troubleshooting",
+            "source": false,
+            "children": [
+              {
+                "label": "502 Service Unavailable",
+                "slug": "502"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {

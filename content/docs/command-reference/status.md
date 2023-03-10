@@ -2,11 +2,15 @@
 
 Show changes in the <abbr>project</abbr> [pipelines](/doc/user-guide/pipelines),
 as well as file mismatches either between the <abbr>cache</abbr> and
-<abbr>workspace</abbr>, or between the cache and remote storage.
+<abbr>workspace</abbr>, or between the cache and [remote storage].
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 <admon type="tip">
 
-For the status of tracked data, see `dvc data status` (similar to `git status`).
+For the status of tracked data, see
+[`dvc data status`](/doc/command-reference/data/status) (similar to
+`git status`).
 
 </admon>
 
@@ -35,7 +39,7 @@ the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | local  | _none_            | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
 | remote | `--remote` (`-r`) | Comparisons are made between the cache, and a given DVC remote.                                                             |
-| remote | `--cloud` (`-c`)  | Comparisons are made between the cache, and the [default remote].                                                           |
+| remote | `--cloud` (`-c`)  | Comparisons are made between the cache, and the `dvc remote default`.                                                       |
 
 Without arguments, this command checks all `dvc.yaml` and `.dvc` files to
 rebuild and validate pipeline(s). It then compares <abbr>outputs</abbr> defined
@@ -55,9 +59,6 @@ used). If differences are detected, the changes in <abbr>dependencies</abbr>
 and/or <abbr>outputs</abbr> for each stage are listed. For each item listed,
 either the file name or hash is shown, along with a state description, as
 detailed bellow.
-
-[remote storage]: /doc/command-reference/remote
-[default remote]: /doc/command-reference/remote/default
 
 ### Local workspace status
 
@@ -98,7 +99,7 @@ detailed bellow.
 - _missing_ means that the file/directory doesn't exist neither in cache, nor in
   remote storage.
 
-For _new_ and _deleted_ data, the cache is different from remote storage.
+For _new_ and _deleted_ data, the cache is different from [remote storage].
 Bringing the two into sync requires `dvc pull` or `dvc push`.
 
 For _missing_ data, there's nothing to retrieve from storage. This can happen
@@ -109,9 +110,9 @@ that.
 
 ## Options
 
-- `-c`, `--cloud` - enables comparison against a remote (see `dvc remote`). If
-  the `--remote` option is not used, DVC will compare against the default remote
-  (specified in the `core.remote` config option).
+- `-c`, `--cloud` - enables comparison against a `dvc remote`. If the `--remote`
+  option is not used, DVC will compare against the `dvc remote default` (see
+  `dvc config core.remote`).
 
   The `dvc remote` used is determined in order, based on
 
@@ -143,8 +144,8 @@ that.
   `.dvc` files to inspect. If there are no directories among the targets, this
   option has no effect.
 
-- `-r <name>`, `--remote <name>` - name of the [remote storage] to compare
-  against (see `dvc remote list`). Implies `--cloud`.
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` to compare against
+  (see `dvc remote list`). Implies `--cloud`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
@@ -242,19 +243,19 @@ adding `--with-deps`, any change in a preceding stage will be found.
 
 ## Example: Remote comparisons
 
-Let's now assume that we have a shared remote on S3: and would like to check
-what files we have generated but haven't pushed to the remote yet:
+Let's now assume that we have a shared S3 `dvc remote` and would like to check
+which files we have generated but haven't pushed to the remote yet:
 
 ```cli
 $ dvc remote list
-storage	s3://bucket/path
+mystorage	s3://bucket/path
 ```
 
 And would like to check what files we have generated but haven't pushed to the
 remote yet:
 
 ```cli
-$ dvc status --remote storage
+$ dvc status --remote mystorage
 ...
 	new:      data/model.p
 	new:      data/eval.txt
@@ -263,7 +264,7 @@ $ dvc status --remote storage
 ```
 
 The output shows where the location of the remote storage is, as well as any
-differences between the <abbr>cache</abbr> and `storage` remote.
+differences between the <abbr>cache</abbr> and `mystorage` remote.
 
 ## Example: Check imported data
 

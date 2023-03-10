@@ -67,11 +67,11 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `metrics_file` and start from that point. Defaults to `False`.
 
-- `report` - Any of `auto`, `html`, `md` or `None`. See `Live.make_report()`.
+- `report` - Any of `auto`, `html`, `notebook`, `md` or `None`. See
+  `Live.make_report()`.
 
   The `auto` mode (default) will use `md` format if the `CI` env var is present
-  and [matplotlib](https://matplotlib.org/) is installed, otherwise it will use
-  `html`.
+  and [matplotlib](https://matplotlib.org/) is installed and `html` otherwise.
 
   If `report` is `None`, `Live.make_report()` won't generate anything.
 

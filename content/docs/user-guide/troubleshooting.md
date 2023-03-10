@@ -12,9 +12,10 @@ custom anchor link is used. Just add {#custom-anchor} after each title:
 Users may encounter errors when running `dvc pull` and `dvc fetch`, like
 `WARNING: Cache 'xxxx' not found.` or
 `ERROR: failed to pull data from the cloud`. The most common cause is changes
-pushed to Git without the corresponding data being uploaded to the
-[DVC remote](/doc/command-reference/remote). Make sure to `dvc push` from the
-original <abbr>project</abbr>, and try again.
+pushed to Git without the corresponding data being uploaded to the [DVC remote].
+Make sure to `dvc push` from the original <abbr>project</abbr>, and try again.
+
+[dvc remote]: /doc/user-guide/data-management/remote-storage
 
 ## Too many open files error {#many-files}
 
@@ -92,12 +93,41 @@ using:
 $ dvc checkout --relink
 ```
 
-## DVC can only authenticate with Git remotes using SSH URLs {#git-auth}
+## DVC cannot authenticate to Git remote {#git-auth}
 
-[Experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)
-commands accept a `git_remote` argument. You may need to authenticate to use the
-Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
-`dvc exp pull`) permissions.
+Some commands require authenticating to a Git remote (for example,
+[experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)).
+You may need _write_ (`dvc exp push`) or _read_ (`dvc exp list`, `dvc exp pull`)
+permissions.
+
+Using SSH to authenticate is recommended. If you use HTTP, you can configure a
+[Git credential helper] (like [Git Credential Manager]) to authenticate to
+private HTTP Git remotes. DVC will not prompt for these credentials, so they
+must already be saved in the credential helper. For example, if you `git clone`
+the repo after configuring the credential helper, it should save the credentials
+for DVC to read in the future.
+
+Commands like `dvc import` will clone a different Git repo than the one in which
+you are working. In order for these commands to read from a credential helper,
+it must be configured using `git config --global` or `git config --system`.
+
+<admon type="tip">
+
+If your SSH configuration includes [`UseKeychain` on macOS][usekeychain], you
+will need to decrypt the SSH key and add it to the SSH agent for DVC to be able
+to use it:
+
+```
+ssh-add --apple-load-keychain ~/.ssh/ed255
+```
+
+</admon>
+
+[git credential helper]:
+  https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage
+[git credential manager]:
+  https://github.com/GitCredentialManager/git-credential-manager
+[usekeychain]: https://github.com/iterative/dvc-ssh/issues/20
 
 ## Could not open pickled 'index/md5/links' cache {#pickle}
 
@@ -119,60 +149,7 @@ and retry the DVC command. Specifically, one of:
 
 ## DVC Experiments may fail in Git shallow clones {#git-shallow}
 
-`dvc exp` commands use internal Git operations which may not work properly in
+In `dvc<=2.45.1`, dvc exp` commands use internal Git operations which may not
+work properly in
 [shallow clones](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
-Local Git repositories can be unshallowed with `git fetch --unshallow`.
-
-This often occurs in transient remote environments such as Continuous
-Integration (CI) jobs, which use shallow clones by default. In those cases,
-change their configuration to avoid shallow cloning. Common examples:
-
-<toggle>
-<tab title="CML">
-
-[CML](https://cml.dev) has a convenient `--fetch-depth` option for its
-[`ci`](https://cml.dev/doc/ref/ci) command:
-
-```cli
-$ cml ci --fetch-depth 0
-```
-
-</tab>
-<tab title="GitHub Actions">
-
-Set `fetch-depth` to `0` in the `actions/checkout` action:
-
-```yaml
-- uses: actions/checkout@v3
-  with:
-    fetch-depth: 0
-```
-
-<admon type="info">
-
-See the
-[GitHub Actions docs](https://github.com/actions/checkout#fetch-all-history-for-all-tags-and-branches)
-for more information.
-
-</admon>
-
-</tab>
-<tab title="GitLab CI/CD">
-
-Set the `GIT_DEPTH` env var to `0`:
-
-```yaml
-variables:
-  GIT_DEPTH: '0'
-```
-
-<admon type="info">
-
-See the
-[GitLab CI/CD docs](https://docs.gitlab.com/ee/ci/large_repositories/#shallow-cloning)
-for more information.
-
-</admon>
-
-</tab>
-</toggle>
+Upgrade to a newer version of DVC to resolve these errors.

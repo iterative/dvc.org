@@ -1,11 +1,15 @@
 # remote add
 
-Register a new [DVC remote](/doc/user-guide/data-management/remote-storage).
+Add a new `dvc remote` to the <abbr>project</abbr> configuration.
 
 <admon type="tip">
 
-Depending on your storage type, you may also need `dvc remote modify` to provide
-credentials and/or configure other remote parameters.
+You may also need `dvc remote modify` to provide credentials and/or configure
+other remote parameters. See [Remote storage configuration] for more
+information.
+
+[remote storage configuration]:
+  /doc/user-guide/data-management/remote-storage#configuration
 
 </admon>
 
@@ -23,41 +27,66 @@ positional arguments:
 
 ## Description
 
-This command creates a `remote` section in the <abbr>DVC project</abbr>'s
-[config file](/doc/command-reference/config) and optionally assigns a _default
-remote_ in the `core` section, if the `--default` option is used (recommended
-for the first remote):
+Registers a [remote storage] location to save data files (besides the
+<abbr>cache</abbr>) and optionally sets it as the `--default` remote. DVC
+remotes can point to a cloud storage service, an SSH server, network-attached
+storage, or even a directory in the local file system.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+
+<admon type="tip">
+
+A `dvc remote default` is expected by `dvc push`, `dvc pull`, `dvc status`,
+`dvc gc`, and `dvc fetch` unless their `--remote` (`-r`) option is used.
+
+</admon>
+
+The remote `name` (required) is used to identify the remote and must be unique.
+DVC will determine the [storage type](#supported-storage-types) based on the
+provided `url` (also required), a URL or path for the location.
+
+<admon type="info">
+
+The storage type determines which config parameters you can access via
+`dvc remote modify`. Note that the `url` itself can be modified.
+
+</admon>
+
+This command creates a [`remote`] section in the project's [config file]
+(`.dvc/config`). The `--default` (`-d`) flag uses the [`core`] config section:
+
+```cli
+$ dvc remote add -d temp /tmp/dvcstore
+```
 
 ```ini
-['remote "myremote"']
+# .dvc/config
+['remote "temp"']
     url = /tmp/dvcstore
 [core]
     remote = myremote
 ```
 
-> 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
-> option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that
-> option is omitted.
+[`remote`]: /doc/command-reference/config#remote
+[config file]: /doc/command-reference/config
+[`core`]: /doc/command-reference/config#core
 
-`name` and `url` are required. The `name` is used to identify the remote and
-must be unique for the project.
+<admon type="info">
 
-`url` specifies a location to store your data. It can represent a cloud storage
-service, an SSH server, network-attached storage, or even a directory in the
-local file system (see all the supported remote storage types in the examples
-below).
+If you [installed DVC] via `pip` and plan to use cloud services as remote
+storage, you might need to install these optional dependencies: `[s3]`,
+`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
+all. For example:
 
-DVC will determine the [type of remote](#supported-storage-types) based on the
-`url` provided. This may affect which parameters you can access later via
-`dvc remote modify` (note that the `url` itself can be modified).
+```cli
+$ pip install "dvc[s3]"
+```
 
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+[installed dvc]: /doc/install
 
-## Options
+</admon>
+
+## Command options/flags
 
 - `--system` - save remote configuration to the system config file (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
@@ -90,180 +119,27 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 ## Supported storage types
 
-The following are the types of remote storage (protocols) supported:
+The following are the supported types of storage protocols and platforms.
 
-<details>
+### Cloud providers
 
-### Amazon S3
+- [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
+- Microsoft [Azure Blob Storage]
+- [Google Cloud Storage] (GCP)
+- [Google Drive]
+- [Aliyun OSS]
 
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3-compatible]:
+  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
+[azure blob storage]:
+  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+[google cloud storage]:
+  /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[google drive]: /doc/user-guide/data-management/remote-storage/google-drive
+[aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
 
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-```
-
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
-
-Make sure you have the following permissions enabled: `s3:ListBucket`,
-`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
-methods that are performed by DVC (`list_objects_v2` or `list_objects`,
-`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
-
-> See `dvc remote modify` for a full list of S3 parameters.
-
-</details>
-
-<details>
-
-### S3-compatible storage
-
-For object storage that supports an S3-compatible API (e.g.
-[Minio](https://min.io/),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the `endpointurl` parameter. For example, let's set up a DigitalOcean
-"space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
-region:
-
-```cli
-$ dvc remote add -d myremote s3://mystore/path
-$ dvc remote modify myremote endpointurl \
-                             https://nyc3.digitaloceanspaces.com
-```
-
-By default, DVC authenticates using your AWS CLI
-[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
-
-Any other S3 parameter can also be set for S3-compatible storage. Whether
-they're effective depends on each storage platform.
-
-</details>
-
-<details>
-
-### Microsoft Azure Blob Storage
-
-```cli
-$ dvc remote add -d myremote azure://mycontainer/path
-$ dvc remote modify myremote account_name 'myuser'
-```
-
-By default, DVC authenticates using an `account_name` and its [default
-credential] (if any), which uses environment variables (e.g. set by `az cli`) or
-a Microsoft application.
-
-[default credential]:
-  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
-
-To use a custom authentication method, use the parameters described in
-`dvc remote modify`. See some
-[examples](/doc/command-reference/remote/modify#example-some-azure-authentication-methods).
-
-</details>
-
-<details>
-
-### Google Drive
-
-To start using a GDrive remote, first add it with a
-[valid URL format](/doc/user-guide/how-to/setup-google-drive-remote#url-format).
-Then use any DVC command that needs to connect to it (e.g. `dvc pull` or
-`dvc push` once there's tracked data to synchronize). For example:
-
-```cli
-$ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
-$ dvc push  # Assuming there's data to push
-
-Go to the following link in your browser:
-
-    https://accounts.google.com/o/oauth2/auth # ... copy this link
-
-Enter verification code: # <- enter resulting code
-```
-
-See `dvc remote modify` for a list of other GDrive parameters, or
-[Set up a Google Drive DVC Remote](/doc/user-guide/how-to/setup-google-drive-remote)
-for a full guide on using Google Drive as DVC remote storage.
-
-Note that GDrive remotes are not "trusted" by default. This means that the
-[`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
-parameter is enabled on this type of storage, so DVC recalculates the file
-hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
-modified.
-
-> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
-
-</details>
-
-<details>
-
-### Google Cloud Storage
-
-> 💡 Before adding a GC Storage remote, be sure to
-> [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
-
-```cli
-$ dvc remote add -d myremote gs://mybucket/path
-```
-
-By default, DVC expects your GCP CLI is already
-[configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
-default GCP key file to access Google Cloud Storage. To override some of these
-parameters, use the parameters described in `dvc remote modify`.
-
-> Make sure to run `gcloud auth application-default login` unless you use
-> `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
-> authenticate. See details [here](https://stackoverflow.com/a/53307505/298182).
-
-</details>
-
-<details>
-
-### Aliyun OSS
-
-First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
-for OSS storage, and configure the
-[endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
-
-```cli
-$ dvc remote add -d myremote oss://mybucket/path
-$ dvc remote modify myremote oss_endpoint endpoint
-```
-
-To set key id, key secret and endpoint (or any other OSS parameter), use
-`dvc remote modify` as show below. Use the `--local` option to avoid committing
-your secrets to Git:
-
-```cli
-$ dvc remote modify --local myremote oss_key_id 'mykey'
-$ dvc remote modify --local myremote oss_key_secret 'mysecret'
-```
-
-**Testing your OSS storage using docker**
-
-Start a container running an OSS emulator, and set up the environment variables,
-for example:
-
-```cli
-$ git clone https://github.com/nanaya-tachibana/oss-emulator.git
-$ docker image build -t oss:1.0 oss-emulator
-$ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
-$ export OSS_BUCKET='mybucket'
-$ export OSS_ENDPOINT='endpoint'
-$ export OSS_ACCESS_KEY_ID='mykey'
-$ export OSS_ACCESS_KEY_SECRET='mysecret'
-```
-
-> Uses default key id and key secret when they are not given, which gives read
-> access to public read bucket and public bucket.
-
-</details>
+### Self-hosted / On-premises
 
 <details>
 
@@ -365,90 +241,3 @@ $ dvc remote add -d myremote \
 > See `dvc remote modify` for a full list of WebDAV parameters.
 
 </details>
-
-<details>
-
-### local remote
-
-A "local remote" is a directory in the machine's file system. Not to be confused
-with the `--local` option of `dvc remote` (and other config) commands!
-
-> While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the type of location where the storage is: another directory in the
-> same file system. "Remote" is how we call storage for <abbr>DVC
-> projects</abbr>. It's essentially a local backup for data tracked by DVC.
-
-Using an absolute path (recommended):
-
-```cli
-$ dvc remote add -d myremote /tmp/dvcstore
-$ cat .dvc/config
-...
-['remote "myremote"']
-    url = /tmp/dvcstore
-...
-```
-
-> Note that the absolute path `/tmp/dvcstore` is saved as is.
-
-Using a relative path. It will be resolved against the current working
-directory, but saved **relative to the config file location**:
-
-```cli
-$ dvc remote add -d myremote ../dvcstore
-$ cat .dvc/config
-...
-['remote "myremote"']
-    url = ../../dvcstore
-...
-```
-
-> Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
-> resulting in `../../dvcstore`.
-
-</details>
-
-## Example: Customize an S3 remote
-
-Add an Amazon S3 remote as the _default_ (via the `-d` option), and modify its
-region.
-
-> 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-```cli
-$ dvc remote add -d myremote s3://mybucket/path
-Setting 'myremote' as a default remote.
-
-$ dvc remote modify myremote region us-east-2
-```
-
-The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
-
-```ini
-['remote "myremote"']
-    url = s3://mybucket/path
-    region = us-east-2
-[core]
-    remote = myremote
-```
-
-The list of remotes should now be:
-
-```cli
-$ dvc remote list
-myremote	s3://mybucket/path
-```
-
-You can overwrite existing remotes using `-f` with `dvc remote add`:
-
-```cli
-$ dvc remote add -f myremote s3://mybucket/another-path
-```
-
-List remotes again to view the updated remote:
-
-```cli
-$ dvc remote list
-myremote	s3://mybucket/another-path
-```

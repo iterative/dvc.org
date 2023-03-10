@@ -102,7 +102,7 @@ even if the project belongs to a team where you are an `Editor` or `Admin`.
 | Specify project directory                    | No      | No     | Yes    | Yes   |
 | Use existing cloud / data remote credentials | No      | No     | Yes    | Yes   |
 | Configure cloud / data remote credentials    | No      | No     | No     | Yes   |
-| Manage mandatory columns (tracking scope)    | No      | No     | Yes    | Yes   |
+| Manage columns                               | No      | No     | Yes    | Yes   |
 | Manage custom files                          | No      | No     | Yes    | Yes   |
 
 ### Privileges to manage the team
