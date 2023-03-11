@@ -59,7 +59,7 @@ $ pip install "dvc[s3]"
 
 </admon>
 
-[`remote`]: /doc/command-reference/config#remote
+[`remote`]: /doc/user-guide/project-structure/configuration#remote
 [config file]: /doc/command-reference/config
 
 ## Command options/flags

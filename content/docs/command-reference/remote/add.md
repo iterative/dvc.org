@@ -67,7 +67,7 @@ $ dvc remote add -d temp /tmp/dvcstore
     remote = myremote
 ```
 
-[`remote`]: /doc/command-reference/config#remote
+[`remote`]: /doc/user-guide/project-structure/configuration#remote
 [config file]: /doc/command-reference/config
 [`core`]: /doc/command-reference/config#core
 

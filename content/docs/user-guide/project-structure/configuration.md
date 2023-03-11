@@ -57,8 +57,8 @@ config file (`.dvc/config` by default), supporting different config options
 within:
 
 - [`core`](#core) - main section with the general config options
-- [`remote`](#remote) - sections in the config file that describe particular
-  remotes
+- [`remote`](#remote) - sections in the config file that describe [remote
+  storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
@@ -71,6 +71,7 @@ within:
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
+[remote storage]: /doc/user-guide/data-management/remote-storage
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
@@ -78,7 +79,7 @@ within:
 
 ### core
 
-- `core.remote` - name of the [remote storage](#remote) to use by default.
+- [`core.remote`](#remote) - name of the default remote storage
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
