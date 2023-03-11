@@ -472,8 +472,8 @@ JavaScript libraries we downloaded above. We can use it like this:
 $ dvc plots show --html-template .dvc/plots/mypage.html
 ```
 
-You can also make it the default HTML template by setting it as `dvc config`
-parameter `plots.html_template`.
+You can also make it the default HTML template by setting it with DVC config
+option [`plots.html_template`].
 
 ```cli
 $ dvc config plots.html_template plots/mypage.html
@@ -481,6 +481,8 @@ $ dvc config plots.html_template plots/mypage.html
 
 Note that the path supplied to `dvc config plots.html_template` is relative to
 `.dvc/` directory.
+
+[`plots.html_template`]: /doc/user-guide/project-structure/configuration#plots
 
 ## Example: Smooth plot
 
