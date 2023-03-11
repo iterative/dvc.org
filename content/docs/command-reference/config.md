@@ -75,8 +75,8 @@ currently stored.
 
 </admon>
 
-Refer to [Configuration sections][config section] to explore which config options
-(`name`) are accepted.
+Refer to [Configuration sections][config section] to explore which config
+options (`name`) are accepted.
 
 ## Command options/flags
 
