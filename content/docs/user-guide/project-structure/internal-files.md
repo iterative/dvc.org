@@ -4,16 +4,27 @@ Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the internal directories and files needed for DVC
 operation.
 
-⚠️ Not to be confused with `.dvc` files.
+<admon type="warn">
 
-- `.dvc/config`: This is a configuration file. The config file can be edited by
-  hand or with the `dvc config` command.
+Not to be confused with `.dvc` files.
 
-- `.dvc/config.local`: This is a local configuration file, that will overwrite
-  options in `.dvc/config`. This is useful when you need to specify private
-  options in your config that you don't want to track and share through Git
-  (credentials, private locations, etc). The local config file can be edited by
-  hand or with the command `dvc config --local`.
+</admon>
+
+- `.dvc/config`: This is the default [DVC configuration] file. It can be edited
+  by hand or with the `dvc config` command.
+
+- `.dvc/config.local`: This is an optional Git-ignored configuration file, that
+  will overwrite options in `.dvc/config`. This is useful when you need to
+  specify sensitive values (secrets) which should not reach the Git repo
+  (credentials, private locations, etc). This config file can also be edited by
+  hand or with `dvc config --local`.
+
+  <admon type="tip">
+
+  See more
+  [config file locations](/doc/user-guide/project-structure/configuration#config-file-locations).
+
+  </admon>
 
 - `.dvc/cache`: Default location of the <abbr>cache</abbr> directory. The cache
   stores the project data in a special
@@ -24,10 +35,14 @@ operation.
   See `dvc config cache` for related configuration options, including changing
   its location.
 
-  > Note that DVC includes the cache directory in `.gitignore` during
-  > initialization. No data tracked by DVC should ever be pushed to the Git
-  > repository, only the <abbr>DVC files</abbr> that are needed to download or
-  > reproduce that data.
+  <admon type="info">
+
+  Note that DVC includes the cache directory in `.gitignore` during
+  initialization. No data tracked by DVC should ever be pushed to the Git
+  repository, only the <abbr>DVC files</abbr> that are needed to download or
+  reproduce that data.
+
+  </admon>
 
 - `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
@@ -39,20 +54,32 @@ operation.
 - `.dvc/tmp/index`: Directory for remote index files that are used for
   optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations.
 
-  > This location may be overridden with `dvc config index.dir`.
+  <admon type="info">
+
+  This location may be overridden with `dvc config index.dir`.
+
+  </admon>
 
 - `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
   state database that stores hash values for files tracked in a DVC project. It
   also saves the corresponding timestamps and inodes to avoid unnecessary file
   hash computations.
 
-  > This parent location may be overridden with `dvc config state.dir`.
+  <admon type="info">
+
+  This parent location may be overridden with `dvc config state.dir`.
+
+  </admon>
 
 - `.dvc/tmp/links`: This directory is used to clean up your workspace when
   calling `dvc checkout`. It contains a SQLite state database that stores a list
   of file links created by DVC (from cache to <abbr>workspace</abbr>).
 
-  > This parent location may be overridden with `dvc config state.dir`.
+  <admon type="info">
+
+  This parent location may be overridden with `dvc config state.dir`.
+
+  </admon>
 
 - `.dvc/tmp/updater`: This file is used to store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
@@ -69,6 +96,7 @@ operation.
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
   temporary or [queued experiments].
 
+[dvc configuration]: /doc/user-guide/project-structure/configuration
 [queued experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
