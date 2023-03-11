@@ -37,7 +37,7 @@ to the project-level config file by default (`.dvc/config`). Options `--system`,
 <admon type="warn">
 
 `.dvc/config` is meant to be tracked by Git and should not contain sensitive
-info or secrets (passwords, keys, etc). Use `--local` when in doubt.
+user info or secrets (passwords, SSH keys, etc). Use `--local` when in doubt.
 
 </admon>
 
