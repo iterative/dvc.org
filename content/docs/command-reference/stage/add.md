@@ -159,7 +159,7 @@ data science experiments.
   the user to manage them separately. This is useful if the outputs are small
   enough to be tracked by Git directly; or large, yet you prefer to regenerate
   them every time (see `dvc repro`); or unwanted in storage for any other
-  reason. Using this option will deactivate the <abbr>run-cache</abbr> for the
+  reason. Using this option will deactivate the <abbr>run cache</abbr> for the
   stage.
 
 - `--outs-persist <path>` - declare output file or directory that will not be

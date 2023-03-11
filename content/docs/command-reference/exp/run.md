@@ -154,7 +154,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 [range]: https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep
 [unique name]:
   https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 
