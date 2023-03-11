@@ -69,7 +69,7 @@ $ dvc remote add -d temp /tmp/dvcstore
 
 [`remote`]: /doc/user-guide/project-structure/configuration#remote
 [config file]: /doc/command-reference/config
-[`core`]: /doc/command-reference/config#core
+[`core`]: /doc/user-guide/project-structure/configuration#core
 
 <admon type="info">
 

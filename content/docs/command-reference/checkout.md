@@ -95,7 +95,8 @@ situation. In some cases, the data can be pulled from [remote storage] using
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
-  project's [`cache.type`](/doc/command-reference/config#cache). This is
+  project's
+  [`cache.type`](/doc/user-guide/project-structure/configuration#cache). This is
   achieved by restoring **all data files or directories** referenced in current
   DVC files (regardless of whether the files/dirs were already present).
 
