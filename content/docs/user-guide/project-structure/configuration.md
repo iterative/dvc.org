@@ -9,8 +9,9 @@ configuration file.
 <admon type="warn">
 
 `.dvc/config` is meant to be tracked by Git and should not contain sensitive
-user info or secrets (passwords, SSH keys, etc). Other
-[config file locations](#config-file-locations) can be used as well.
+info or secrets (passwords, keys, etc).
+[Config file locations](#config-file-locations) outside the repo can be used as
+well.
 
 </admon>
 
@@ -19,9 +20,9 @@ helper command `dvc config`.
 
 ## Config file locations
 
-DVC supports saving configuration in a Git-ignored file inside the
-<abbr>repository</abbr>, or in other plcaes in your file system. These locations
-and their loading priority are detailed below:
+DVC supports saving configuration outside of the <abbr>repository</abbr>, either
+in a Git-ignored file alongside the regular config file or in other places in
+your file system. These locations and their loading priority are detailed below:
 
 <!-- Avoids new lines in the Flag columns (below). -->
 <style>
@@ -32,8 +33,8 @@ and their loading priority are detailed below:
 
 | Priority | Type              | macOS location                                  | Linux location (typical\*) | Windows location                                          |
 | -------- | ----------------- | ----------------------------------------------- | -------------------------- | --------------------------------------------------------- |
-| 1        | Local             | `.dvc/config.local`                             | _N/A_                      | _N/A_                                                     |
-| 2        | Project (default) | `.dvc/config`                                   | _N/A_                      | _N/A_                                                     |
+| 1        | Local             | `.dvc/config.local`                             | _Same_                     | _Same_                                                    |
+| 2        | Project (default) | `.dvc/config`                                   | _Same_                     | _Same_                                                    |
 | 3        | Global            | `$HOME/Library/Application\ Support/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
 | 4        | System            | `/Library/Application\ Support/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
 
