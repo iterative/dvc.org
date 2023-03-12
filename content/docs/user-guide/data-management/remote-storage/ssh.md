@@ -1,20 +1,45 @@
-# SSH
+# SSH and SFTP
 
 <!--
 ## SSH
 -->
 
-Start with `dvc remote add` to define the remote:
+<details>
+
+### Click to learn about SSH and SFTP.
+
+[SSH] (Secure Shell) is a protocol that uses encryption to secure a connection
+with a remote computer, which lets you safely transfer files to and from it
+(like [`scp`]), among other features. Other operations can be used on top of
+SSH, like FTP (simple file transfer protocol) which becomes secure or [SFTP].
+
+[SSH]: https://www.ssh.com/academy/ssh
+[SFTP]: https://www.ssh.com/academy/ssh/sftp-ssh-file-transfer-protocol
+[`scp`]: https://www.ssh.com/academy/ssh/scp
+
+</details>
+
+DVC will act as an SSH/SFTP client, which means that the remote storage should
+be located in an [SSH server]. Use `dvc remote add` to define the remote by
+setting a name and valid [SSH URL] (may include basic auth info. like a user
+name):
 
 ```cli
 $ dvc remote add -d myremote ssh://user@example.com/path
 ```
 
-⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Check that you can connect both ways with tools like `ssh` and `sftp`
-(GNU/Linux).
+[ssh server]: https://www.ssh.com/academy/ssh/server
+[SSH URL]: https://www.ietf.org/archive/id/draft-salowey-secsh-uri-00.html
 
-> Note that the server's SFTP root might differ from its physical root (`/`).
+<admon type="warn">
+
+DVC requires both SSH and SFTP access to work with SSH remote storage. Check
+that you can connect both ways with tools like [`ssh`] and `sftp` (GNU/Linux).  
+Note that your server's SFTP root might differ from its physical root (`/`).
+
+[`ssh`]: https://www.ssh.com/academy/ssh/command
+
+</admon>
 
 ## Configuration parameters
 

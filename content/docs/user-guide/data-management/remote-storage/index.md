@@ -112,7 +112,7 @@ team.
 
 ### Self-hosted / On-premises
 
-- [SSH]; Like `scp`
+- [SSH] & SFTP (like `scp`)
 - [HDFS] & [WebHDFS]
 - [HTTP]
 - [WebDAV]
@@ -125,7 +125,7 @@ team.
 
 ## File systems (local remotes)
 
-<admon type="tip">
+<admon type="info">
 
 Not related to the `--local` option of `dvc remote` and `dvc config`!
 
