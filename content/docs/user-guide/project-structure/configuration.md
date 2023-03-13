@@ -270,6 +270,8 @@ experiments or projects use a similar structure.
 
 </details>
 
+<details>
+
 ### hydra
 
 Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra
