@@ -72,8 +72,8 @@ through Git. See `dvc config`.
 
 </admon>
 
-Using a private key is usually the recommended way to auth an SSH connection,
-and it should be saved in a key file. You can set it's path as shown below.
+Using a private key is usually the recommended way to authenticate an SSH connection,
+and it should be saved in a key file. You can set its path as shown below.
 Often these require a passphrase to use as well: You can set up DVC to ask for
 it each time, or set it directly.
 
