@@ -124,4 +124,9 @@ Add to a `dvc.yaml` file at the base of your repository. There may be a
 since DVCLive will overwrite the contents of your `dvclive` directory during
 each run.
 
+If you already have a DVC artifact tracked like `model.pt.dvc` file (for
+example, because you used `Live.log_artifact("model.pt")`), DVC will not allow
+you to also track that same artifact in `dvc.yaml`. You must
+`dvc remove model.pt.dvc` before you can add it to `dvc.yaml`.
+
 </admon>
