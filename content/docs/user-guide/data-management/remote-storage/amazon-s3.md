@@ -58,8 +58,8 @@ in your project directory locally.
 
 ## Custom authentication
 
-If you don't have the AWS CLI configured in your machine or if you want to
-change the auth method for some reason.
+Use these configuration options if you don't have the AWS CLI setup in your
+environment, if you want to override those values, or to change the auth method.
 
 <admon type="warn">
 

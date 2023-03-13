@@ -21,15 +21,15 @@ SSH, like FTP (simple file transfer protocol) which becomes secure or [SFTP].
 
 DVC will act as an SSH/SFTP client, which means that the remote storage should
 be located in an [SSH server]. Use `dvc remote add` to define the remote by
-setting a name and valid [SSH URL] (may include basic auth info. like a user
-name):
+setting a name and valid [SSH URL] (which may include some auth info. like user
+name or port):
 
 ```cli
-$ dvc remote add -d myremote ssh://user@example.com/path
+$ dvc remote add -d myremote ssh://user@example.com:2222/path
 ```
 
 [ssh server]: https://www.ssh.com/academy/ssh/server
-[SSH URL]: https://www.ietf.org/archive/id/draft-salowey-secsh-uri-00.html
+[SSH URL]: https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax
 
 <admon type="warn">
 
@@ -41,102 +41,77 @@ Note that your server's SFTP root might differ from its physical root (`/`).
 
 </admon>
 
-## Configuration parameters
+By default, authentication credentials (user name, password or private key,
+etc.) not found in the URL are loaded from [SSH configuration]. You can also set
+them directly with DVC.
 
-> If any values given to the parameters below contain sensitive user info, add
-> them with the `--local` option, so they're written to a Git-ignored config
-> file.
+[ssh configuration]: https://www.ssh.com/academy/ssh/config
 
-- `url` - remote location, in a regular
-  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax).
-  Note that this can already include the `user` parameter, embedded into the
-  URL:
+## Custom authentication
 
-  ```cli
-  $ dvc remote modify myremote url \
-                      ssh://user@example.com:1234/path
-  ```
+2 parameters that are commonly included in an SSH URL are user name and
+sometimes port. These can be set (or overridden) as follows:
 
-  ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-  Please check that you are able to connect both ways with tools like `ssh` and
-  `sftp` (GNU/Linux).
+```cli
+$ dvc remote modify myremote user myuser
+$ dvc remote modify myremote port 2222
+```
 
-  > Note that your server's SFTP root might differ from its physical root (`/`).
+Order in which DVC picks these values when defined in multiple places:
 
-- `user` - user name to access the remote:
+1. Value set in these `user`/`port` params (DVC-specific config)
+2. User/port embedded in the `url`, if any (e.g. `ssh://user@example.com:2222`)
+3. `User`/`Port` defined for the host in SSH config
+4. Default values: Current system user; Standard SSH port 22
 
-  ```cli
-  $ dvc remote modify --local myremote user myuser
-  ```
+<admon type="warn">
 
-  The order in which DVC picks the user name:
+The `dvc remote modify --local` flag is needed to write sensitive user info to a
+Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
+through Git. See `dvc config`.
 
-  1. `user` parameter set with this command (found in `.dvc/config`);
-  2. User defined in the URL (e.g. `ssh://user@example.com/path`);
-  3. User defined in the SSH config file (e.g. `~/.ssh/config`) for this host
-     (URL);
-  4. Current system user
+</admon>
 
-- `port` - port to access the remote.
+Using a private key is usually the recommended way to auth an SSH connection,
+and it should be saved in a key file. You can set it's path as shown below.
+Often these require a passphrase to use as well: You can set up DVC to ask for
+it each time, or set it directly.
 
-  ```cli
-  $ dvc remote modify myremote port 2222
-  ```
+```cli
+$ dvc remote modify --local myremote keyfile /path/to/keyfile
+# and (if needed)
+$ dvc remote modify myremote ask_passphrase true
+# or
+$ dvc remote modify --local myremote passphrase mypassphrase
+```
 
-  The order in which DVC decide the port number:
+Another popular way to authenticate an SSH connection is with a simple password.
+It can be set directly or you can set up DVC to ask for it when needed:
 
-  1. `port` parameter set with this command (found in `.dvc/config`);
-  2. Port defined in the URL (e.g. `ssh://example.com:1234/path`);
-  3. Port defined in the SSH config file (e.g. `~/.ssh/config`) for this host
-     (URL);
-  4. Default SSH port 22
+```cli
+$ dvc remote modify --local myremote password mypassword
+# or
+$ dvc remote modify myremote ask_password true
+```
 
-- `keyfile` - path to private key to access the remote.
+## More configuration parameters
 
-  ```cli
-  $ dvc remote modify --local myremote keyfile /path/to/keyfile
-  ```
+- `url` - modify the remote location ([scroll up](#amazon-s3) for details)
 
-- `password` - a password to access the remote
+- `allow_agent` - whether to use [SSH agents] (`true` by default). Setting this
+  to `false` is useful when `ssh-agent` is causing problems, e.g. "No existing
+  session" errors.
 
-  ```cli
-  $ dvc remote modify --local myremote password mypassword
-  ```
+- `gss_auth` - use Generic Security Service auth if available on host (for
+  example, [with Kerberos]). `false` by default
 
-- `ask_password` - ask for a password to access the remote.
+  <admon type="warn">
 
-  ```cli
-  $ dvc remote modify myremote ask_password true
-  ```
+  Using GSS requires `paramiko[gssapi]`, which is only supported currently by
+  the DVC pip package (installed with `pip install 'dvc[ssh_gssapi]'`).
 
-- `passphrase` - a private key passphrase to access the remote
+  </admon>
 
-  ```cli
-  $ dvc remote modify --local myremote passphrase mypassphrase
-  ```
-
-- `ask_passphrase` - ask for a private key passphrase to access the remote.
-
-  ```cli
-  $ dvc remote modify myremote ask_passphrase true
-  ```
-
-- `gss_auth` - use Generic Security Services authentication if available on host
-  (for example,
-  [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
-  Using this param requires `paramiko[gssapi]`, which is currently only
-  supported by our pip package, and could be installed with
-  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and macOS
-  PKG) do not support it.
-
-  ```cli
-  $ dvc remote modify myremote gss_auth true
-  ```
-
-- `allow_agent` - whether to use [SSH agents](https://www.ssh.com/ssh/agent)
-  (`true` by default). Setting this to `false` is useful when `ssh-agent` is
-  causing problems, such as a "No existing session" error:
-
-  ```cli
-  $ dvc remote modify myremote allow_agent false
-  ```
+[ssh agents]: https://www.ssh.com/academy/ssh/agent
+[with kerberos]:
+  https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos
