@@ -86,11 +86,42 @@ can be tracked in Git and becomes part of the experiment. With this metadata
 file, you can [retrieve](/doc/start/data-management/data-versioning#retrieving)
 the versioned artifact from the Git commit.
 
-### Run experiments with `dvc exp run`
+### Run experiments with DVC pipelines
 
 You may
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
-using DVC <abbr>pipelines</abbr>. Once you setup your pipeline, you can run it
-with `dvc exp run`. This will track the inputs and outputs of your code, cache
-them so you never waste time repeating steps, and enable other features like
-queuing, hyperparameter tuning, and grid searches.
+using DVC <abbr>pipelines</abbr>. When your experiment completes, DVCLive prints
+instructions for how to start:
+
+```
+Put this into `/Users/dave/Code/myproject/dvc.yaml` to run experiments with DVC:
+
+stages:
+  dvclive:
+    cmd: # Insert command to run the code
+    deps:
+      - train.py
+    outs:
+      - dvclive/metrics.json:
+          cache: false
+      - dvclive/plots:
+          cache: false
+      - model.pt
+
+See https://dvc.org/doc/user-guide/experiment-management/running-experiments.
+```
+
+Add this pipeline stage into `dvc.yaml`, insert the command to run your
+experiment code, and otherwise modify it to fit your project. Then, you can run
+it with `dvc exp run`. This will track the inputs and outputs of your code,
+cache them so you never waste time repeating steps, and enable other features
+like queuing, hyperparameter tuning, and grid searches.
+
+<admon type="warn">
+
+Add to a `dvc.yaml` file at the base of your repository. There may be a
+`dvclive/dvc.yaml` file as part of your DVCLive output. Do not use that file
+since DVCLive will overwrite the contents of your `dvclive` directory during
+each run.
+
+</admon>
