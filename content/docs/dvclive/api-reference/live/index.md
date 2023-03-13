@@ -95,6 +95,7 @@ If you are already tracking DVCLive metrics, plots, and parameters in your own
 
 ## Methods
 
+- `Live.log_artifact()`
 - `Live.log_image()`
 - `Live.log_metric()`
 - `Live.log_param()`

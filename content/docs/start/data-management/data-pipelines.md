@@ -283,7 +283,7 @@ Stage 'featurize' didn't change, skipping
 
 As before, there was no need to rerun `prepare`, `featurize`, etc. But this time
 it also doesn't rerun `train`! The previous run with the same set of inputs
-(parameters & data) was saved in DVC's <abbr>run-cache</abbr>, and reused here.
+(parameters & data) was saved in DVC's <abbr>run cache</abbr>, and reused here.
 
 </details>
 

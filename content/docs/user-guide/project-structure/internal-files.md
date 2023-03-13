@@ -44,7 +44,7 @@ Not to be confused with `.dvc` files.
 
   </admon>
 
-- `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
+- `.dvc/cache/runs`: Default location of the [run cache](#run-cache).
 
 - `.dvc/plots`: Directory for
   [plot templates](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
@@ -165,18 +165,19 @@ $ cat .dvc/cache/6f/db5336fce0dbfd669f83065f107551.dir
 
 That's how DVC knows that the other two cached files belong in the directory.
 
-## Run-cache
+## Run cache
 
 `dvc exp run` and `dvc repro` by default populate and reutilize a log of stages
 that have been run in the project. It is found in the `runs/` directory inside
 the cache (or [remote storage]).
 
-Runs are identified as combinations of exact <abbr>dependency</abbr> contents
+[Runs] are identified as combinations of exact <abbr>dependency</abbr> contents
 (or [parameter] values), and the literal command(s) to execute. These
 combinations are represented by special hashes that translate to the file paths
-inside the run-cache dir:
+inside the run cache dir:
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
+[runs]: /doc/user-guide/pipelines/run-cache
 [parameter]: /doc/command-reference/params
 
 ```cli
@@ -190,14 +191,26 @@ $ tree .dvc/cache/runs
 The files themselves are backups of the `dvc.lock` file that resulted from that
 run.
 
-> Note that the run's <abbr>outputs</abbr> are stored and retrieved from the
-> regular cache.
+<admon type="info">
 
-💡 `dvc push` and `dvc pull` (and `dvc fetch`) can download and upload the
-run-cache to remote storage for sharing and/or as a back up.
+The run's <abbr>outputs</abbr> are stored and retrieved from the regular cache.
 
-> Note that the run-cache assumes that stage commands are deterministic (see
-> [Avoiding unexpected behavior]).
+</admon>
+
+<admon type="tip">
+
+`dvc push` and `dvc pull` (and `dvc fetch`) can download and upload the run
+cache to remote storage using the `--run-cache` flag, for sharing and/or as a
+back up.
+
+</admon>
+
+<admon type="warn">
+
+The run cache assumes that stage commands are deterministic (see [Avoiding
+unexpected behavior]).
+
+</admon>
 
 [avoiding unexpected behavior]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
