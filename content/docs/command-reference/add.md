@@ -58,7 +58,7 @@ other DVC commands), a few actions are taken under the hood:
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [structure of cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
-[`core.autostage`]: /doc/command-reference/config#core
+[`core.autostage`]: /doc/user-guide/project-structure/configuration#core
 
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be easily tracked with Git.

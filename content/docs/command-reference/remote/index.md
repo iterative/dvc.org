@@ -46,7 +46,7 @@ default). Alternatively, the config files can be edited manually.
 
 [types of storage]:
   /doc/user-guide/data-management/remote-storage#supported-storage-types
-[config files]: /doc/command-reference/config
+[config files]: /doc/user-guide/project-structure/configuration
 
 ## Options
 

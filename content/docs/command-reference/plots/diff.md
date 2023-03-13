@@ -67,7 +67,8 @@ all the current plots, without comparisons.
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
   containing the plots. The default is `dvc_plots` or the value set with the
-  [`plots.out_dir`](/doc/command-reference/config#plots) config option.
+  [`plots.out_dir`](/doc/user-guide/project-structure/configuration#plots)
+  config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)

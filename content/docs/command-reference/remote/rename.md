@@ -23,15 +23,16 @@ positional arguments:
 
 ## Description
 
-This command modify a section in the DVC
-[config file](/doc/command-reference/config). Alternatively, it is possible to
-edit config files manually.
+This command modify a section in the [DVC configuration] file. Alternatively, it
+is possible to edit config files manually.
 
 See also `dvc remote modify` to change other aspects of remote configuration,
 such as the URL or access credentials.
 
 Both `name` and `new` arguments are required, with the old and new names for the
 DVC remote, respectively.
+
+[dvc configuration]: /doc/user-guide/project-structure/configuration
 
 ## Options
 
