@@ -71,20 +71,26 @@ model.pt.dvc
 ## Track the results
 
 DVCLive expects each run to be tracked by Git, so it will save each run to the
-same path and overwrite the results each time. If you
-[run experiments](/doc/user-guide/experiment-management/running-experiments)
-using DVC <abbr>pipelines</abbr>, DVC will track them for you so you don't have
-to Git commit each run. <abbr>DVC experiments</abbr> are Git commits that DVC
-can find but that don't clutter your Git history or create extra branches in
-your repo.
+same path and overwrite the results each time. Include
+[`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to auto-track
+as a <abbr>DVC experiment</abbr>. DVC experiments are Git commits that DVC can
+find but that don't clutter your Git history or create extra branches.
 
-If you don't have a DVC pipeline, you can include
-[`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to save the
-results as a DVC experiment.
+### Track large artifacts
 
-When using `Live.log_artifact("model.pt")`, DVCLive will
+Models and data are often large and aren't easily tracked in Git.
+`Live.log_artifact("model.pt")` will
 [cache](/doc/start/data-management/data-versioning) the `model.pt` file with DVC
-to avoid tracking large artifacts in Git. It will generate a `model.pt.dvc`
-metadata file, which you should track in Git. You can
-[retrieve](/doc/start/data-management/data-versioning#retrieving) the artifact
-from the Git commit.
+and make Git ignore it. It will generate a `model.pt.dvc` metadata file, which
+can be tracked in Git and becomes part of the experiment. With this metadata
+file, you can [retrieve](/doc/start/data-management/data-versioning#retrieving)
+the versioned artifact from the Git commit.
+
+### Run experiments with `dvc exp run`
+
+You may
+[run experiments](/doc/user-guide/experiment-management/running-experiments)
+using DVC <abbr>pipelines</abbr>. Once you setup your pipeline, you can run it
+with `dvc exp run`. This will track the inputs and outputs of your code, cache
+them so you never waste time repeating steps, and enable other features like
+queuing, hyperparameter tuning, and grid searches.
