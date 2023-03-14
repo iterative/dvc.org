@@ -65,8 +65,8 @@ name.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
-  download the file or directory from. The latest commit in `master` (tip of the
-  default branch) is used by default when this option is not specified.
+  download the file or directory from. The latest commit (in the default branch)
+  is used by default when this option is not specified.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
