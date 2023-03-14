@@ -94,28 +94,26 @@ using DVC <abbr>pipelines</abbr>. When your experiment completes, DVCLive prints
 instructions for how to start:
 
 ```
-Put this into `/Users/dave/Code/myproject/dvc.yaml` to run experiments with DVC:
-
+To run with DVC, add this to `/Users/sarah/myproject/dvc.yaml`:
 stages:
   dvclive:
-    cmd: # Insert command to run the code
+    cmd: <python my_code_file.py my_args>
     deps:
-      - train.py
+    - <my_code_file.py>
     outs:
-      - dvclive/metrics.json:
-          cache: false
-      - dvclive/plots:
-          cache: false
-      - model.pt
-
-See https://dvc.org/doc/user-guide/experiment-management/running-experiments.
+    - params.yaml:
+        cache: false
+    - metrics.json:
+        cache: false
+    - results/plots:
+        cache: false
+    - model.pt
 ```
 
-Add this pipeline stage into `dvc.yaml`, insert the command to run your
-experiment code, and otherwise modify it to fit your project. Then, you can run
-it with `dvc exp run`. This will track the inputs and outputs of your code,
-cache them so you never waste time repeating steps, and enable other features
-like queuing, hyperparameter tuning, and grid searches.
+Add this pipeline stage into `dvc.yaml`, modifying it to fit your project. Then,
+you can run it with `dvc exp run`. This will track the inputs and outputs of
+your code, cache them so you don't waste time repeating steps, and enable other
+features like queuing, parameter tuning, and grid searches.
 
 <admon type="warn">
 
@@ -124,9 +122,9 @@ Add to a `dvc.yaml` file at the base of your repository. There may be a
 since DVCLive will overwrite the contents of your `dvclive` directory during
 each run.
 
-If you already have a DVC artifact tracked like `model.pt.dvc` file (for
-example, because you used `Live.log_artifact("model.pt")`), DVC will not allow
-you to also track that same artifact in `dvc.yaml`. You must
-`dvc remove model.pt.dvc` before you can add it to `dvc.yaml`.
+If you already have a `.dvc` file (for example, `Live.log_artifact("model.pt")`
+generates `model.pt.dvc`), DVC will not allow you to also track `model.pt` in
+`dvc.yaml`. You must `dvc remove model.pt.dvc` before you can add it to
+`dvc.yaml`.
 
 </admon>
