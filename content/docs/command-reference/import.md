@@ -99,8 +99,8 @@ file.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
-  download the file or directory from. The latest commit in `master` (tip of the
-  default branch) is used by default when this option is not specified.
+  download the file or directory from. The latest commit (in the default branch)
+  is used by default when this option is not specified.
 
   > Note that this adds a `rev` field in the import `.dvc` file that fixes it to
   > the revision. This can impact the behavior of `dvc update` (see the
