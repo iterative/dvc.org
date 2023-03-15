@@ -191,7 +191,7 @@ master                     05:26 PM      0.78426    0.054157      0.49599   0.1
 $ dvc plots diff $(dvc exp list --name-only)
 ```
 
-![plots diff](/img/dvclive_exp_tracking_plots_diff.png)
+![plots diff](/img/dvclive_exp_tracking_plots_diff.svg)
 
 </tab>
 
