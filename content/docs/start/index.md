@@ -58,7 +58,7 @@ The value of DVC's several feature sets is best understood from different
 angles. Pick one of the two trails below to learn about DVC from that
 perspective:
 
-### Data Management Trail
+## Data
 
 - **[Data and model versioning]** is the base layer of DVC for large files,
   datasets, and machine learning models. Use a standard Git workflow, but
@@ -95,18 +95,31 @@ The steps and results of some of these chapters are captured in our
 
 </admon>
 
-### Experiment Management Trail
+## Experiments
 
-- **[Experiments]** enable exploration, iteration, and comparison across many
-  trials in ML projects. Track your experiments with automatic versioning and
-  checkpoint logging. Compare differences in parameters, metrics, code, and
-  data. Apply, drop, roll back, resume, or share any experiment.
+- **[Experiment versioning]**
 
-- **[Visualization]** helps you compare experiment results visually, track your
-  plots, and generate them with library integrations.
+  Track the changes to the code, data, metrics, parameters and plots associated
+  with each experiment, without bloating your Git repo.
 
-[experiments]: /doc/start/experiment-management/experiments
-[visualization]: /doc/start/experiment-management/visualization
+- **[Experiment management]**
+
+  Manage experiments and share them with others using the workflow that best
+  suits your needs.
+
+- **[Building pipelines]**
+
+  Split your workflow into stages and build a pipeline by connecting
+  dependencies and outputs.
+
+- **[Experiments with Pipelines]**
+
+  Explore the benefits of running experiments using DVC Pipelines.
+
+[experiment versioning]: /doc/start/experiments/experiment-versioning
+[experiment management]: /doc/start/experiments/experiment-management
+[building pipelines]: /doc/start/experiments/building-pipelines
+[experiments with pipelines]: /doc/start/experiments/experiment-pipelines
 
 <admon type="tip">
 

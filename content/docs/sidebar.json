@@ -53,9 +53,14 @@
         ]
       },
       {
-        "slug": "experiment-management",
+        "slug": "experiments",
         "source": false,
-        "children": ["experiments", "visualization"]
+        "children": [
+          "experiment-versioning",
+          "experiment-management",
+          "building-pipelines",
+          "experiment-pipelines"
+        ]
       }
     ]
   },
