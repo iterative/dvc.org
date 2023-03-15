@@ -1,5 +1,7 @@
 # How it Works
 
+## Directory structure
+
 DVCLive will store the logged data under the directory (`dir`) passed to
 [`Live()`](/doc/dvclive/api-reference/live). If not provided, `dvclive` will be
 used by default.
@@ -19,7 +21,7 @@ The contents of the directory will depend on the methods used:
 | `Live.next_step()`                                                        | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 | `Live.end()`                                                              | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
 
-## Example
+### Example
 
 To illustrate with an example, given the following code:
 
@@ -68,7 +70,7 @@ model.pt
 model.pt.dvc
 ```
 
-## Track the results
+## Tracking with Git+DVC
 
 DVCLive expects each run to be tracked by Git, so it will save each run to the
 same path and overwrite the results each time. Include
@@ -76,7 +78,7 @@ same path and overwrite the results each time. Include
 as a <abbr>DVC experiment</abbr>. DVC experiments are Git commits that DVC can
 find but that don't clutter your Git history or create extra branches.
 
-### Track large artifacts
+### Track large artifacts with DVC
 
 Models and data are often large and aren't easily tracked in Git.
 `Live.log_artifact("model.pt")` will
@@ -86,12 +88,16 @@ can be tracked in Git and becomes part of the experiment. With this metadata
 file, you can [retrieve](/doc/start/data-management/data-versioning#retrieving)
 the versioned artifact from the Git commit.
 
-### Run experiments with DVC pipelines
+### Run with DVC
 
-You may
+Experimenting in Python interactively (like in notebooks) is great for
+exploration, but eventually you may need a more structured way to run
+reproducible experiments (for example, running a parallelized hyperparameter
+search). By configuring DVC <abbr>pipelines</abbr>, you can
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
-using DVC <abbr>pipelines</abbr>. When your experiment completes, DVCLive prints
-instructions for how to start:
+with `dvc exp run`.
+
+DVCLive prints instructions for how to start:
 
 ```
 To run with DVC, add this to `/Users/sarah/myproject/dvc.yaml`:
@@ -101,30 +107,30 @@ stages:
     deps:
     - <my_code_file.py>
     outs:
-    - params.yaml:
+    - dvclive/params.yaml:
         cache: false
-    - metrics.json:
+    - dvclive/metrics.json:
         cache: false
-    - results/plots:
+    - dvclive/plots:
         cache: false
     - model.pt
 ```
 
 Add this pipeline stage into `dvc.yaml`, modifying it to fit your project. Then,
-you can run it with `dvc exp run`. This will track the inputs and outputs of
-your code, cache them so you don't waste time repeating steps, and enable other
-features like queuing, parameter tuning, and grid searches.
+run it with `dvc exp run`. This will track the inputs and outputs of your code,
+and also enable features like queuing, parameter tuning, and grid searches.
 
 <admon type="warn">
 
-Add to a `dvc.yaml` file at the base of your repository. There may be a
-`dvclive/dvc.yaml` file as part of your DVCLive output. Do not use that file
-since DVCLive will overwrite the contents of your `dvclive` directory during
-each run.
+Add to a `dvc.yaml` file at the base of your repository. Do not use
+`dvclive/dvc.yaml` since DVCLive will overwrite it during each run.
 
-If you already have a `.dvc` file (for example, `Live.log_artifact("model.pt")`
-generates `model.pt.dvc`), DVC will not allow you to also track `model.pt` in
-`dvc.yaml`. You must `dvc remove model.pt.dvc` before you can add it to
-`dvc.yaml`.
+</admon>
+
+<admon type="tip">
+
+If you already have a `.dvc` file like `model.pt.dvc`, DVC will not allow you to
+also track `model.pt` in `dvc.yaml`. You must `dvc remove model.pt.dvc` before
+you can add it to `dvc.yaml`.
 
 </admon>
