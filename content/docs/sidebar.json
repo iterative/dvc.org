@@ -138,7 +138,7 @@
                 "slug": "aliyun-oss"
               },
               {
-                "label": "SSH",
+                "label": "SSH & SFTP",
                 "slug": "ssh"
               },
               {
