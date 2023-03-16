@@ -68,7 +68,7 @@ Order in which DVC picks these values when defined in multiple places:
 
 The `dvc remote modify --local` flag is needed to write sensitive user info to a
 Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
-through Git. See `dvc config`.
+through Git. See [Configuration](/doc/user-guide/project-structure/configuration#config-file-locations).
 
 </admon>
 
