@@ -16,9 +16,11 @@ will create and manage different DVC metafiles (below), and populate the
 - `.dvcignore` files (optional) contain a list of paths for DVC to ignore, which
   can dramatically increase its operational performance.
 
-- Internal files and directories in `.dvc/` contains the local
-  [configuration](/doc/command-reference/config) file(s), default local cache
-  location, and other utilities that DVC needs to operate.
+- Internal files and directories in `.dvc/` contain the local [configuration]
+  file(s), default local cache location, and other utilities that DVC needs to
+  operate.
+
+[configuration]: /doc/user-guide/project-structure/configuration
 
 <admon type="info">
 

@@ -52,7 +52,7 @@ The storage type determines which config parameters you can access via
 
 </admon>
 
-This command creates a [`remote`] section in the project's [config file]
+This command creates a [`remote`] section in the project's config file
 (`.dvc/config`). The `--default` (`-d`) flag uses the [`core`] config section:
 
 ```cli
@@ -67,9 +67,8 @@ $ dvc remote add -d temp /tmp/dvcstore
     remote = myremote
 ```
 
-[`remote`]: /doc/command-reference/config#remote
-[config file]: /doc/command-reference/config
-[`core`]: /doc/command-reference/config#core
+[`remote`]: /doc/user-guide/project-structure/configuration#remote
+[`core`]: /doc/user-guide/project-structure/configuration#core
 
 <admon type="info">
 

@@ -32,7 +32,7 @@ read and write to the [`remote`] section of the project's config file
 
 For example, let's define a remote storage location on an S3 bucket:
 
-[`remote`]: /doc/command-reference/config#remote
+[`remote`]: /doc/user-guide/project-structure/configuration#remote
 
 ```cli
 $ dvc remote add myremote s3://mybucket

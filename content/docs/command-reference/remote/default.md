@@ -24,10 +24,10 @@ specified, this command returns the name of the default remote.
 $ dvc remote default myremote
 ```
 
-This command assigns the default remote in the `core` section of the DVC [config
-file].
+This command assigns the default remote in the [`core`] section of the DVC
+config file.
 
-[config file]: /doc/command-reference/config
+[`core`]: doc/user-guide/project-structure/configuration#core
 
 ```ini
 [core]
@@ -38,8 +38,8 @@ Default remotes are expected by commands that accept a `-r`/`--remote` option
 (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that option
 is omitted.
 
-You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
-to set/unset/change the default remote configurations.
+You can also use `dvc config`, `dvc remote add`, or `dvc remote modify` commands
+to set/unset/change the default remote.
 
 Remotes are read from the system, global, project, and local config files (in
 that order).

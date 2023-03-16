@@ -74,8 +74,8 @@ defaults:
 
 <admon type="tip">
 
-Use [`dvc config hydra`](/doc/command-reference/config#hydra) options to change
-the default locations for the config groups directory and defaults list file.
+Use `dvc config hydra` options to change the default locations for the config
+groups directory and defaults list file.
 
 </admon>
 

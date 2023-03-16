@@ -113,6 +113,7 @@
             "label": ".dvcignore Files",
             "slug": "dvcignore-files"
           },
+          "configuration",
           {
             "label": "Internal Files",
             "slug": "internal-files"
@@ -729,6 +730,10 @@
               {
                 "slug": "end",
                 "label": "end()"
+              },
+              {
+                "slug": "log_artifact",
+                "label": "log_artifact()"
               },
               {
                 "slug": "log_image",
