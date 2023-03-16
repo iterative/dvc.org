@@ -7,10 +7,10 @@ description: >-
 
 # How to Share a DVC Cache
 
-[Configuring](/doc/command-reference/config#cache) the project's
-<abbr>cache</abbr> in a location shared by other projects helps avoid file
-duplication and can reduce data transfers between different data locations. Some
-scenarios:
+[Configuring](/doc/user-guide/project-structure/configuration#cache) the
+project's <abbr>cache</abbr> in a location shared by other projects helps avoid
+file duplication and can reduce data transfers between different data locations.
+Some scenarios:
 
 - Multiple users have copies of the same project on a single machine.
 - Different projects use the same data, so it makes sense to centralize its

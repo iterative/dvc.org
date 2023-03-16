@@ -51,7 +51,8 @@ The default behavior of this command can be modified per [stage plot] file with
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
   containing the plots. The default is `dvc_plots` or the value set with the
-  [`plots.out_dir`](/doc/command-reference/config#plots) config option.
+  [`plots.out_dir`](/doc/user-guide/project-structure/configuration#plots)
+  config option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
@@ -471,8 +472,8 @@ JavaScript libraries we downloaded above. We can use it like this:
 $ dvc plots show --html-template .dvc/plots/mypage.html
 ```
 
-You can also make it the default HTML template by setting it as `dvc config`
-parameter `plots.html_template`.
+You can also make it the default HTML template by setting it with DVC config
+option [`plots.html_template`].
 
 ```cli
 $ dvc config plots.html_template plots/mypage.html
@@ -480,6 +481,8 @@ $ dvc config plots.html_template plots/mypage.html
 
 Note that the path supplied to `dvc config plots.html_template` is relative to
 `.dvc/` directory.
+
+[`plots.html_template`]: /doc/user-guide/project-structure/configuration#plots
 
 ## Example: Smooth plot
 

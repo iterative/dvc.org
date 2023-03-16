@@ -41,7 +41,8 @@ Creating train stage in dvc.yaml
 `dvc exp init` also generates the boilerplate project structure, including input
 files/directories and directories needed for future outputs. These locations can
 also be customized via [CLI options](#options) or interactive mode, or with
-[configuration](/doc/command-reference/config#exp). Default structure:
+[configuration](/doc/user-guide/project-structure/configuration#exp). Default
+structure:
 
 ```
 ├── data/

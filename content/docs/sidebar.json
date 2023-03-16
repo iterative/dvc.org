@@ -113,6 +113,7 @@
             "label": ".dvcignore Files",
             "slug": "dvcignore-files"
           },
+          "configuration",
           {
             "label": "Internal Files",
             "slug": "internal-files"

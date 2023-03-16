@@ -45,15 +45,18 @@ after `git checkout`. See the
 for more details.
 
 By default, this command tries not make copies of cached files in the workspace,
-using reflinks instead when supported by the file system (refer to
-[File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)).
-The next linking strategy default value is `copy` though, so unless other file
-link types are manually configured in `cache.type` (using `dvc config`), files
-will be copied. Keep in mind that having file copies doesn't present much of a
-negative impact unless the project uses very large data (several GBs or more).
-But leveraging file links is crucial with large files, for example when checking
-out a 50Gb file by copying might take a few minutes whereas, with links,
-restoring any file size will be almost instantaneous.
+using reflinks instead when supported by the file system (refer to [File link
+types]). The next linking strategy default value is `copy` though, so unless
+other file link types are manually configured in [`cache.type`]), files will be
+copied. Keep in mind that having file copies doesn't present much of a negative
+impact unless the project uses very large data (several GBs or more). But
+leveraging file links is crucial with large files, for example when checking out
+a 50Gb file by copying might take a few minutes whereas, with links, restoring
+any file size will be almost instantaneous.
+
+[File link types]:
+  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
+[`cache.type`]: /doc/user-guide/project-structure/configuration#cache
 
 > When linking files takes longer than expected (10 seconds for any one file)
 > and `cache.type` is not set, a warning will be displayed reminding users about
@@ -95,7 +98,8 @@ situation. In some cases, the data can be pulled from [remote storage] using
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
-  project's [`cache.type`](/doc/command-reference/config#cache). This is
+  project's
+  [`cache.type`](/doc/user-guide/project-structure/configuration#cache). This is
   achieved by restoring **all data files or directories** referenced in current
   DVC files (regardless of whether the files/dirs were already present).
 
