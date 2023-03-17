@@ -17,13 +17,17 @@ manage the experiments using the workflow that best suits your needs.
 
 Unless you have enabled
 [Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
-the DVC experiments only exist in your repo and people can't manage or view them
-from other machines.
+the <abbr>DVC experiments</abbr> only exist in your repo and people can't manage
+or view them from other machines.
 
-To share an experiment with others, you can use `dvc exp push`, providing the
-names of the git remote and the experiment:
+You can share an experiment with others from your machine:
 
-TODO: VSCode sharing?
+<toggle>
+
+<tab title="DVC CLI">
+
+You can use `dvc exp push`, providing the names of the git remote and the
+experiment:
 
 ```cli
 $ dvc exp push origin "soupy-leak"
@@ -35,6 +39,19 @@ People from other machines can then retrieve it using `dvc exp pull`:
 $ dvc exp pull origin "soupy-leak"
 ```
 
+</tab>
+
+<tab title="VSCode Extension">
+
+You can right-click on the experiment row and select the `Share to Studio`
+action:
+
+![VSCode Share to Studio](/img/vscode-sharing.gif)
+
+</tab>
+
+</toggle>
+
 <admon type="info">
 
 Learn more about
@@ -44,13 +61,35 @@ Learn more about
 
 ## Persisting
 
-You can use `dvc exp branch` to create a git branch from the experiment:
+Once you have agreed on the best experiment, you can create a git branch and
+manage it using regular Git workflows:
+
+<toggle>
+
+<tab title="DVC CLI">
+
+You can use `dvc exp branch`, providing the name of the experiment and the
+future branch:
 
 ```cli
 $ dvc exp branch "soupy-leak" "soupy-leak"
 ```
 
-This allows you to manage experiments using common Git workflows, like creating
+</tab>
+
+<tab title="VSCode Extension">
+
+You can right-click on the experiment row and select the `Create a new Branch`
+action:
+
+![VSCode Create a new Branch](/img/vscode-branch.gif)
+
+</tab>
+
+</toggle>
+
+This allows you to use software engineering best practices to manage
+experiments, like creating
 [Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests):
 
 ```cli
@@ -66,12 +105,31 @@ Learn more about
 
 ## Cleaning
 
-You can use `dvc exp remove` to manually remove the experiment(s) that you no
-longer want to keep:
+After deciding on which experiments to persist, you might want to remove those
+that you no longer want to keep:
+
+<toggle>
+
+<tab title="DVC CLI">
+
+You can use `dvc exp remove` to manually remove experiment(s) using their names:
 
 ```cli
 $ dvc exp remove bifid-says potty-sash
 ```
+
+</tab>
+
+<tab title="VSCode Extension">
+
+You can select multiple experiment rows and use the `Remove selected rows`
+action:
+
+![VSCode Remove selected rows](/img/vscode-remove.gif)
+
+</tab>
+
+</toggle>
 
 <admon type="info">
 
