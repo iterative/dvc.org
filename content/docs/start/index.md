@@ -107,19 +107,8 @@ The steps and results of some of these chapters are captured in our
   Manage experiments and share them with others using the workflow that best
   suits your needs.
 
-- **[Building pipelines]**
-
-  Split your workflow into stages and build a pipeline by connecting
-  dependencies and outputs.
-
-- **[Experiments with Pipelines]**
-
-  Explore the benefits of running experiments using DVC Pipelines.
-
 [experiment versioning]: /doc/start/experiments/experiment-versioning
 [experiment management]: /doc/start/experiments/experiment-management
-[building pipelines]: /doc/start/experiments/building-pipelines
-[experiments with pipelines]: /doc/start/experiments/experiment-pipelines
 
 <admon type="tip">
 
