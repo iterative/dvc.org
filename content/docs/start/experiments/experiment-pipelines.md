@@ -12,7 +12,7 @@ running experiments using <abbr>DVC Pipelines</abbr> has many benefits in
 comparison to the previous setup using notebooks.
 
 All the explanations in
-[Experiment Versioning](/doc/start/experimens/experiment-versioning) and
+[Experiment Versioning](/doc/start/experiments/experiment-versioning) and
 [Experiment Management](/doc/start/experiments/experiment-management) still
 apply, the only difference is that the experiment is now being created by
 `dvc exp run`.

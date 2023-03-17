@@ -85,7 +85,7 @@ stages:
 
 DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/train_data` or `data/test_data`
-[manually](/doc/start/data/data-versioning).
+[manually](/doc/start/data-management/data-versioning).
 
 ## Building a DAG
 

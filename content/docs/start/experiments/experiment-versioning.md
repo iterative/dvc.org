@@ -108,9 +108,8 @@ Framework but you can also manually
 [log additional info](/doc/dvclive/api-reference#log-data) to be included in the
 experiment.
 
-If you have
-[data tracked by DVC](/doc/start/data/data-management/data-versioning), it will
-be automatically included in the experiment.
+If you have [data tracked by DVC](/doc/start/data-management/data-versioning),
+it will be automatically included in the experiment.
 
 Once you have added [DVCLive] to your code, you can track the changes with git:
 
@@ -220,4 +219,4 @@ against the entire repo history:
 
 </toggle>
 
-[dvclive]: (/doc/dvclive)
+[dvclive]: /doc/dvclive
