@@ -169,7 +169,7 @@ After you have run multiple experiments, you can compare the results:
 
 <tab title="DVC CLI">
 
-We can use `dvc exp show` and `dvc plots` to compare and visualize metrics,
+You can use `dvc exp show` and `dvc plots` to compare and visualize metrics,
 parameters and plots across experiments.
 
 ```cli
