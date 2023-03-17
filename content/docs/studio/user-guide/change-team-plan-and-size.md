@@ -16,7 +16,7 @@ marked.
 
 ### If you are on the Free plan
 
-You can upgrade to the Basic, Teams or Enterprise plan.
+You can upgrade to the Basic or Enterprise plan.
 
 **To upgrade to the Basic plan**, click on the `Upgrade` button. Then select the
 number of seats (collaborators) you need in your team.
@@ -40,15 +40,15 @@ number of seats.
 
 </admon>
 
-**To upgrade to the Teams or Enterprise plan**, click on the `Contact Us` button
-to [schedule a call] with our in-house experts. They will try to understand your
+**To upgrade to the Enterprise plan**, click on the `Contact Us` button to
+[schedule a call] with our in-house experts. They will try to understand your
 needs and suggest a suitable plan and pricing.
 
 [schedule a call]: https://calendly.com/gtm-2/studio-introduction
 
 ### If you are on the Basic plan
 
-You can downgrade to the Free plan or upgrade to the Teams or Enterprise plan.
+You can downgrade to the Free plan or upgrade to the Enterprise plan.
 
 **To downgrade to the Free plan** you must first make sure that your team has
 only 1 or 2 collaborators or pending invites. Then click on the `Downgrade`
@@ -59,23 +59,23 @@ the billing period. For inquiries about refunds, please [contact us].
 
 [contact us]: /doc/studio/troubleshooting#support
 
-**To upgrade to the Teams or Enterprise plan**, click on the `Contact Us` button
-to [schedule a call] with our in-house experts. They will try to understand your
+**To upgrade to the Enterprise plan**, click on the `Contact Us` button to
+[schedule a call] with our in-house experts. They will try to understand your
 needs and suggest a suitable plan and pricing.
 
-### If you are on the Teams or Enterprise plan
+### If you are on the Enterprise plan
 
 For any changes to the plan, please ask your contact person at Iterative.
 
 ## Change the size of your team
 
-You can change the size of your team within the Basic, Teams or Enterprise plans
-at any point.
+You can change the size of your team within the Basic or Enterprise plans at any
+point.
 
 ### If you are on the Free plan
 
 To change the number of seats in your team,
-[upgrade to the Basic, Teams or Enterprise plan](#change-the-plan-your-team-is-on).
+[upgrade to the Basic or Enterprise plan](#change-the-plan-your-team-is-on).
 
 ### If you are on the Basic plan
 
@@ -93,6 +93,6 @@ select the desired number of seats.
 The total payable amount or credit balance will be displayed for you to
 `Confirm`.
 
-### If you are on the Teams or Enterprise plan
+### If you are on the Enterprise plan
 
 For any changes to the plan, please ask your contact person at Iterative.
