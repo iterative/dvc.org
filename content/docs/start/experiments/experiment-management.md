@@ -2,7 +2,7 @@
 title: 'Get Started: Experiment Management'
 description:
   'Get started with managing experiments with DVC. Manage your experiments and
-  share them with others using the workflow that best suits your needs.'
+  share them with others using software engineering best practices.'
 ---
 
 # Get Started: Experiment Management
@@ -11,7 +11,7 @@ After having compared all the experiments, ML Practitioners still need to agree
 on which one is the best and manage the remaining candidates.
 
 <abbr>DVC Experiments</abbr> are fully compatible with Git workflows, so you can
-manage the experiments using the workflow that best suits your needs.
+manage the experiments using software engineering best practices.
 
 ## Sharing
 

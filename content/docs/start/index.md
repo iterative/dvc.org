@@ -104,8 +104,8 @@ The steps and results of some of these chapters are captured in our
 
 - **[Experiment management]**
 
-  Manage experiments and share them with others using the workflow that best
-  suits your needs.
+  Manage experiments and share them with others using software engineering best
+  practices.
 
 [experiment versioning]: /doc/start/experiments/experiment-versioning
 [experiment management]: /doc/start/experiments/experiment-management
