@@ -35,24 +35,34 @@ People from other machines can then retrieve it using `dvc exp pull`:
 $ dvc exp pull origin "soupy-leak"
 ```
 
+<admon type="info">
+
+Learn more about
+[Sharing Experiments](/doc/user-guide/experiment-management/sharing-experiments)
+
+</admon>
+
 ## Persisting
 
-After you have decided which experiment is the best, you can use `dvc exp apply`
-to bring the experiment into your <abbr>workspace</abbr>:
-
-```cli
-$ dvc exp apply "soupy-leak"
-$ git commit -am "Applied experiment: soupy-leak"
-```
-
-Alternatively, you can use `dvc exp branch` to create a git branch from the
-experiment. This can be more useful in different workflows, like managing the
-experiments via Pull Requests:
+You can use `dvc exp branch` to create a git branch from the experiment:
 
 ```cli
 $ dvc exp branch "soupy-leak" "soupy-leak"
+```
+
+This allows you to manage experiments using common Git workflows, like creating
+[Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests):
+
+```cli
 $ gh pr create -H soupy-leak --title "Experiment: soupy-leak"
 ```
+
+<admon type="info">
+
+Learn more about
+[Persisting Experiments](/doc/user-guide/experiment-management/persisting-experiments)
+
+</admon>
 
 ## Cleaning
 
@@ -62,3 +72,10 @@ longer want to keep:
 ```cli
 $ dvc exp remove bifid-says potty-sash
 ```
+
+<admon type="info">
+
+Learn more about
+[Cleaning Experiments](/doc/user-guide/experiment-management/cleaning-experiments)
+
+</admon>
