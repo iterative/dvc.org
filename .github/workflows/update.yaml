@@ -16,7 +16,7 @@ jobs:
           version=$(curl --silent $url | jq -r .tag_name)
           path=src/components/DownloadButton/index.tsx
           sed -i "s/^const VERSION = .*$/const VERSION = \`$version\`/g" $path
-          echo "changes=$(git diff)" >> $GITHUB_OUTPUT
+          echo "changes=$(git diff | tr '\n' ' ')" >> $GITHUB_OUTPUT
           echo "version=$version" >> $GITHUB_OUTPUT
       - name: Create PR
         if: ${{ steps.update.outputs.changes != '' }}
