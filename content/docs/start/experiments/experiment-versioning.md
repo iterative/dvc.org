@@ -19,8 +19,9 @@ be a challenge.
 
 You can start using DVC to version your experiments without leaving your Jupyter
 Notebook. There are no logins, servers, databases, or UI to spin up. Every
-experiment will be versioned **without cluttering your repo**, unlike saving
-each run to a separate directory or creating a Git branch for each.
+<abbr>DVC experiment</abbr> will be versioned **without cluttering your repo**,
+unlike saving each run to a separate directory or creating a Git branch for
+each.
 
 ## Enable Versioning
 
@@ -99,7 +100,7 @@ with Live(save_dvc_exp=True) as live:
 
 </toggle>
 
-After this, each execution of the code will create a DVC <abbr>experiment</abbr>
+After this, each execution of the code will create a <abbr>DVC experiment</abbr>
 containing the results and the changes needed to reproduce it.
 
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
@@ -111,16 +112,12 @@ If you have
 [data tracked by DVC](/doc/start/data/data-management/data-versioning), it will
 be automatically included in the experiment.
 
-<admon type="tip">
-
-Make sure that the experiment's code is tracked by Git:
+Once you have added [DVCLive] to your code, you can track the changes with git:
 
 ```cli
 git add notebooks/TrainSegModel.ipynb
 git commit -m "Add Notebook using DVCLive"
 ```
-
-</admon>
 
 ## Monitor the execution
 
