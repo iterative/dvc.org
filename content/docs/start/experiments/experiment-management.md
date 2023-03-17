@@ -38,7 +38,7 @@ $ dvc exp pull origin "soupy-leak"
 ## Persisting
 
 After you have decided which experiment is the best, you can use `dvc exp apply`
-bring the experiment into your <abbr>workspace</abbr>:
+to bring the experiment into your <abbr>workspace</abbr>:
 
 ```cli
 $ dvc exp apply "soupy-leak"

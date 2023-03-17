@@ -31,8 +31,8 @@ library installed:
 $ pip install dvclive
 ```
 
-In your Python code, you can start versioning your experiments with
-`save_dvc_exp=True`.
+In your Python code, you can start versioning your experiments in
+DVCLive's `Live` API or framework-specific callbacks with `save_dvc_exp=True`.
 
 There are some examples below
 ([other frameworks available](/doc/dvclive/api-reference/ml-frameworks)):
@@ -107,7 +107,7 @@ Framework but you can also manually
 [log additional info](/doc/dvclive/api-reference#log-data) to be included in the
 experiment.
 
-If you have [data tracked by DVC](/doc/start/data/data-versioning), it will be
+If you have [data tracked by DVC](/doc/start/data/data-management/data-versioning), it will be
 automatically included in the experiment.
 
 <admon type="tip">
@@ -153,9 +153,10 @@ will also display all the data logged by DVCLive:
 
 <tab title="Studio">
 
-If you have followed the instructions in
-[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
-DVCLive updates will be displayed in the Studio UI:
+If you want to share live updates with others or monitor while away from your machine,
+follow the instructions in
+[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+to display updates in the Studio web interface:
 
 ![Studio Report](/img/dvclive-studio.gif)
 
@@ -165,7 +166,7 @@ DVCLive updates will be displayed in the Studio UI:
 
 ## Compare results
 
-After you have executed the code multiple times, you can compare the results:
+After you have run multiple experiments, you can compare the results:
 
 <toggle>
 
