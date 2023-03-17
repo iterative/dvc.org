@@ -2,6 +2,7 @@ name: Update download links
 on:
   schedule:
     - cron: '0 18 * * *'
+  workflow_dispatch:
 jobs:
   update:
     runs-on: ubuntu-latest
