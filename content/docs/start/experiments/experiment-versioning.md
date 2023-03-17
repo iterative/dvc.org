@@ -114,8 +114,8 @@ it will be automatically included in the experiment.
 Once you have added [DVCLive] to your code, you can track the changes with git:
 
 ```cli
-git add notebooks/TrainSegModel.ipynb
-git commit -m "Add Notebook using DVCLive"
+$ git add notebooks/TrainSegModel.ipynb
+$ git commit -m "Add Notebook using DVCLive"
 ```
 
 ## Monitor the execution
