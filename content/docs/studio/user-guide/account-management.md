@@ -12,10 +12,10 @@ which are described below.
 
 <admon>
 
-This does not include managing your team plan (Free, Basic, Teams, or
-Enterprise). Team plans are defined for each team separately. To manage them, go
-to the [team settings] page and scroll to the `Plan and billing` section. You
-can change plans there and increase or decrease the number of seats in it.
+This does not include managing your team plan (Free, Basic, or Enterprise). Team
+plans are defined for each team separately. To manage them, go to the [team
+settings] page and scroll to the `Plan and billing` section. You can change
+plans there and increase or decrease the number of seats in it.
 
 [team settings]: /doc/studio/user-guide/teams#settings
 

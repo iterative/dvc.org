@@ -14,8 +14,8 @@ your email address.
 
 When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 [create a team] first, then go to the _Team settings_ to [change the plan]. To
-sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
-[pricing details]).
+sign up for the **Enterprise** plan, please [schedule a call] (see [pricing
+details]).
 
 </admon>
 
@@ -99,7 +99,7 @@ You should now see that a project has been added in your dashboard.
 
 2. You can [create a team] and invite collaborators. Each team will have its own
    projects dashboard. To create teams with more than 2 team members, [sign up
-   for the **Basic**, **Teams** or **Enterprise** plan].
+   for the **Basic** or **Enterprise** plan].
 
 3. You can also [make your projects public].
 
@@ -142,7 +142,7 @@ You should now see that a project has been added in your dashboard.
 [explore ml experiments]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
 [create a team]: /doc/studio/user-guide/teams
-[sign up for the **basic**, **teams** or **enterprise** plan]:
+[sign up for the **basic** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
 [make your projects public]:
   /doc/studio/user-guide/projects-and-experiments/share-a-project

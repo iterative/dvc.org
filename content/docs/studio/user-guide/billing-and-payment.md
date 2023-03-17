@@ -10,12 +10,12 @@ Studio is free for individuals and teams with up to 2 members. The Free plan is
 designed for teams that are starting out: you can invite one other team member
 and import as many repositories as you want.
 
-For more advanced collaboration, you can switch to the Basic, Teams or
-Enterprise plans. These are paid plans, and in this page you will learn how to
-manage billing and payment for them.
+For more advanced collaboration, you can switch to the Basic or Enterprise
+plans. These are paid plans, and in this page you will learn how to manage
+billing and payment for them.
 
-- [Difference between Free, Basic, Teams, and Enterprise plans](#difference-between-free-basic-teams-and-enterprise-plans)
-- [How to sign up for the Basic, Teams or Enterprise plans](#how-to-sign-up-for-the-basic-teams-or-enterprise-plans)
+- [Difference between Free, Basic, and Enterprise plans](#difference-between-free-basic-and-enterprise-plans)
+- [How to sign up for the Basic or Enterprise plans](#how-to-sign-up-for-the-basic-or-enterprise-plans)
 - [How total price is calculated](#how-total-price-is-calculated), including
   effects of making changes to the plan during the billing period.
 - [Downgrading a plan](#downgrading-a-plan)
@@ -25,17 +25,17 @@ manage billing and payment for them.
 - [Accessing your payment history and invoices](#accessing-your-payment-history-and-invoices)
 - [Other questions](#other-questions)
 
-## Difference between Free, Basic, Teams, and Enterprise plans
+## Difference between Free, Basic, and Enterprise plans
 
 A detailed comparison of the different plans can be found in the Iterative
 Studio [pricing page](https://studio.iterative.ai/pricing).
 
-## How to sign up for the Basic, Teams or Enterprise plans
+## How to sign up for the Basic or Enterprise plans
 
 When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 [create a team] first, then go to the _Team settings_ to [change the plan]. To
-sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
-[pricing details]).
+sign up for the **Enterprise** plan, please [schedule a call] (see [pricing
+details]).
 
 [change the plan]:
   /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
@@ -54,7 +54,7 @@ seat, the total payable amount for the team would be $40 x 5 = $200 per month.
 Increasing or decreasing the number of seats during a billing period will result
 in prorated amount calculation (see the next section for an example).
 
-For Teams and Enterprise plans, all invoice amounts are calculated based on the
+For the Enterprise plan, all invoice amounts are calculated based on the
 agreement between you and Iterative.
 
 ### How increasing or decreasing the number of seats affects price
@@ -86,7 +86,7 @@ When you downgrade from the Basic plan to the Free plan, you will receive a
 prorated refund for the days remaining in the billing period. For inquiries
 about refunds, please [contact us].
 
-To upgrade to or downgrade from Teams or Enterprise plan, please [contact us].
+To upgrade to or downgrade from the Enterprise plan, please [contact us].
 
 ## Billing period and auto-renewal of Basic plans
 
