@@ -1,11 +1,11 @@
 # Iterative Studio
 
-[Iterative Studio](https://studio.iterative.ai/) is a web application that you
-can access online or even host on-prem. Using the power of leading open-source
-tools [DVC](https://dvc.org/), [CML](https://cml.dev), [MLEM](https://mlem.ai/),
-[GTO](https://mlem.ai/doc/gto), and [Git](https://git-scm.com/), it enables you
-to seamlessly manage data and machine learning models, run and track
-experiments, and visualize and share results.
+[Iterative Studio](https://studio.iterative.ai/) is a web application that
+enables Machine Learning teams to seamlessly manage data and models, run and
+track experiments, and visualize and share results.
+
+Iterative Studio works on top of [Git](https://git-scm.com/), and works best
+with [DVC](https://dvc.org/) repositories.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
