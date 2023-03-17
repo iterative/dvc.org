@@ -1306,10 +1306,10 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/websites-server@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.0.19.tgz#5e6e5f1f07fc3192c104e37c470695740be80ab8"
-  integrity sha512-NRhs1yWYSyW+RirAWSVQ/7uTJtiWZS+oW8LPMZ/ky6K7VxKh1GcgQUKCdKfvgIw8l4fWSuid0nfExSSt3L4oAg==
+"@dvcorg/websites-server@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.1.0.tgz#282dd1e7897ac2d887de87ce3e96a7f1ae55ba59"
+  integrity sha512-Mw9jzcABy+mi2wFSKKJ8UsOsWW2y2XsWniw3GCOwGTj00/1qdqrHmNJu3R+dhAw26OCykNXZja5xnkLGcTMt5g==
   dependencies:
     "@dvcorg/gatsby-theme-iterative" "^0.3.2"
     "@hapi/wreck" "^18.0.0"
@@ -1323,6 +1323,7 @@
     http-proxy-middleware "^2.0.6"
     isomorphic-fetch "^3.0.0"
     lodash "^4.17.21"
+    mime-types "^2.1.35"
     node-cache "^5.1.2"
     permissions-policy "^0.6.0"
     react "^18.2.0"
@@ -11029,7 +11030,7 @@ mime-types@2.1.18:
   dependencies:
     mime-db "~1.33.0"
 
-mime-types@^2.1.12, mime-types@^2.1.27, mime-types@^2.1.30, mime-types@~2.1.19, mime-types@~2.1.24, mime-types@~2.1.34:
+mime-types@^2.1.12, mime-types@^2.1.27, mime-types@^2.1.30, mime-types@^2.1.35, mime-types@~2.1.19, mime-types@~2.1.24, mime-types@~2.1.34:
   version "2.1.35"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.35.tgz#381a871b62a734450660ae3deee44813f70d959a"
   integrity sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==
