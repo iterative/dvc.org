@@ -98,7 +98,7 @@ containing the results and the changes needed to reproduce it.
 
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
 Framework and any
-[data tracked by DVC](/doc/start/data-management/data-versioning)but you can
+[data tracked by DVC](/doc/start/data-management/data-versioning) but you can
 also [log additional info](/doc/dvclive/api-reference#log-data) to be included
 in the experiment.
 

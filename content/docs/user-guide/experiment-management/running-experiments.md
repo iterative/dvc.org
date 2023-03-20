@@ -8,7 +8,7 @@ them for future execution, running them in parallel, among other details.
 If this is the first time you are introduced into data science experimentation,
 you may want to check the basics in [Get Started: Experiments] first.
 
-[get started: experiments]: /doc/start/experiment-management/experiments
+[get started: experiments]: /doc/start/experiments
 
 </admon>
 

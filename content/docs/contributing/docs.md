@@ -193,8 +193,8 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
   - `dvc` can be used to show examples of commands and their output in a
     terminal session.
   - `dvctable` is used for creating colored, bold, or italic table cells. (You
-    can see an [example](/doc/start/experiment-management/experiments) of
-    `dvctable` in our "Get Started" section.)
+    can see an [example](/doc/start/experiments) of `dvctable` in our "Get
+    Started" section.)
   - `yaml` is used to show samples of <abbr>DVC files</abbr>, or other YAML
     contents.
   - `diff` is used mainly for examples of `git diff` output.
