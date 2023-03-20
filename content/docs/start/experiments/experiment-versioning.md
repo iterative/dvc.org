@@ -8,15 +8,8 @@ description:
 
 # Get Started: Experiment Versioning
 
-The early stages of a Machine Learning (ML) project are usually exploratory and
-demand fast iterations. Many ML practitioners chose to use tools that require
-little setup and enable rapid prototyping, like those based on
-[Jupyter Notebooks](https://jupyter.org/).
-
-Although these tools are extremely useful, keeping track of the changes you made
-across experiments quickly becomes cumbersome and reproducing an experiment can
-be a challenge.
-
+Tools like [Jupyter Notebooks](https://jupyter.org/) are useful for rapid prototyping,
+but it's hard to keep track of changes and reproduce experiments.
 You can start using DVC to version your experiments without leaving your Jupyter
 Notebook. There are no logins, servers, databases, or UI to spin up. Every
 <abbr>DVC experiment</abbr> will be versioned **without cluttering your repo**,
