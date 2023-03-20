@@ -16,7 +16,7 @@ Notebook. There are no logins, servers, databases, or UI to spin up. Every
 unlike saving each run to a separate directory or creating a Git branch for
 each.
 
-## Enable Versioning
+## Running
 
 All you need to start is a <abbr>DVC repository</abbr> and the [DVCLive] Python
 library installed:
@@ -97,21 +97,18 @@ After this, each execution of the code will create a <abbr>DVC experiment</abbr>
 containing the results and the changes needed to reproduce it.
 
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
-Framework but you can also manually
-[log additional info](/doc/dvclive/api-reference#log-data) to be included in the
-experiment.
+Framework and any
+[data tracked by DVC](/doc/start/data-management/data-versioning)but you can
+also [log additional info](/doc/dvclive/api-reference#log-data) to be included
+in the experiment.
 
-If you have [data tracked by DVC](/doc/start/data-management/data-versioning),
-it will be automatically included in the experiment.
+<admon type="info">
 
-Once you have added [DVCLive] to your code, you can track the changes with git:
+Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
 
-```cli
-$ git add notebooks/TrainSegModel.ipynb
-$ git commit -m "Add Notebook using DVCLive"
-```
+</admon>
 
-## Monitor the execution
+## Tracking
 
 By following the steps above, you enable different options to monitor the
 training progress:
@@ -154,7 +151,7 @@ to display updates in the Studio web interface:
 
 </toggle>
 
-## Compare results
+## Comparing
 
 After you have run multiple experiments, you can compare the results:
 
@@ -211,5 +208,12 @@ against the entire repo history:
 </tab>
 
 </toggle>
+
+<admon type="info">
+
+Learn more about
+[Comparing Experiments](/doc/user-guide/experiment-management/comparing-experiments)
+
+</admon>
 
 [dvclive]: /doc/dvclive

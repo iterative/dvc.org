@@ -7,11 +7,10 @@ description:
 
 # Get Started: Experiment Management
 
-After having compared all the experiments, ML Practitioners still need to agree
-on which one is the best and manage the remaining candidates.
-
-<abbr>DVC Experiments</abbr> are fully compatible with Git workflows, so you can
-manage the experiments using software engineering best practices.
+After having compared all the experiments, you still need to agree on which one
+is the best and manage the remaining candidates. <abbr>DVC Experiments</abbr>
+are fully compatible with Git workflows, so you can manage the experiments using
+software engineering best practices.
 
 ## Sharing
 
