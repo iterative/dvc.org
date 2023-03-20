@@ -80,7 +80,7 @@ all the current experiments (without comparisons).
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiment-management/experiments
+[our get started]: /doc/start/experiments
 
 </admon>
 

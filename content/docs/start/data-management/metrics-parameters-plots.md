@@ -23,7 +23,7 @@ DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 All of the above can be combined into [experiments] to run and compare many
 iterations of your ML project.
 
-[experiments]: /doc/start/experiment-management/experiments
+[experiments]: /doc/start/experiments
 
 </admon>
 

@@ -56,7 +56,7 @@ experiments.
 
 </admon>
 
-[get started: experiments]: /doc/start/experiment-management/experiments
+[get started: experiments]: /doc/start/experiments
 
 ## Save experiments
 
