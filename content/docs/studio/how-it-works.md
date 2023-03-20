@@ -1,51 +1,35 @@
 # How Iterative Studio Works
 
-[Iterative Studio](https://studio.iterative.ai/) works very closely with your
-Git ecosystem. It parses the metadata from your ML project to present organized
-data, hyperparameters, models, and metrics on a web UI. It also parses and
-displays live metrics and plots sent by [DVCLive]; these don't need to be pushed
-to the Git repositories.
+[Iterative Studio](https://studio.iterative.ai/) works closely with your Git
+ecosystem. Once you connect Iterative Studio to your ML project Git
+repositories, Iterative Studio parses specific files and Git tags as listed
+below:
 
-The following video illustrates how Iterative Studio works with data from your
-ML projects and experiments.
+- `dvc.yaml` file is used to identify data, metrics, plots and hyperparameters
+- `artifacts.yaml` file is used to identify ML models
+- specially formatted Git tags are used to identify model versions and stage
+  assignments
+- data sent to the live metrics end-point are used to identify live metrics and
+  plots (in real-time)
 
-https://www.youtube.com/watch?v=5xM5az78Lrg
+<admon type='info'>
 
-_Note that we have renamed DVC Studio mentioned in the above video to Iterative
-Studio and Views to Projects._
+If you are not using DVC, you can separately
+[indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
+However, we strongly recommend using DVC to avail of all the features of
+Iterative Studio.
 
-## How to save your project data
+</admon>
 
-- Using [DVC] and [Git], you will push all your ML experiments to your GitHub,
-  GitLab or Bitbucket repositories.
-- Using Iterative Studio, or using [GTO] and possibly [MLEM], you will push
-  information about your ML models as Git commits and tags.
-- Using [DVCLive], you will push live metrics and plots from your experiments to
-  Iterative Studio.
+Iterative Studio presents parsed data in the following pages:
 
-## How Iterative Studio extracts your project data
-
-- When you connect to the Git repositories from Iterative Studio, the project's
-  `dvc.yaml` is used to identify all the data, metrics and hyperparameters in
-  your experiments.
-- If you are not using DVC, you can
-  [add the metrics and hyperparameters to your Git repositories manually](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
-- Details of your ML models, including versions and stage assignments, are
-  extracted from the Git commits and tags.
-- Live metrics and plots for experiments are extracted from the data you send
-  using [DVCLive].
-
-## How Iterative Studio presents your project data
-
-- Iterative Studio creates an
-  [interactive, tabular representation](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#components-of-a-project)
-  of all the identified values, including live metrics.
-- All the projects that you have created are presented in a central projects
-  dashboard.
-- All identified models are included in an interactive
+- All connected projects are included in a central projects dashboard.
+- Each project has a separate
+  [project details page (also called experiment table)](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#components-of-a-project)
+- All identified models are included in a
   [models dashboard](/doc/studio/user-guide/model-registry/view-models#models-dashboard)
-  and individual
-  [model details pages](/doc/studio/user-guide/model-registry/view-models#model-details-page).
+- Each model has a separate
+  [model details page](/doc/studio/user-guide/model-registry/view-models#model-details-page).
 
 ## How Iterative Studio runs experiments and model actions
 
@@ -63,6 +47,14 @@ Studio and Views to Projects._
   of your ML models or
   [assign stages](/doc/studio/user-guide/model-registry/assign-stage) to them,
   Iterative Studio creates annotated Git tags representing the actions.
+
+The following video illustrates how Iterative Studio works with data from your
+ML projects and experiments.
+
+https://www.youtube.com/watch?v=5xM5az78Lrg
+
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
 
 [dvc]: https://dvc.org/
 [cml]: https://cml.dev

@@ -2,15 +2,9 @@
 
 [Iterative Studio](https://studio.iterative.ai/) is a web application that
 enables Machine Learning teams to seamlessly manage data and models, run and
-track experiments, and visualize and share results.
-
-Iterative Studio works on top of [Git](https://git-scm.com/), and works best
-with [DVC](https://dvc.org/) repositories.
-
-https://www.youtube.com/watch?v=hKf4twg832g
-
-_Note that we have renamed DVC Studio mentioned in the above video to Iterative
-Studio and Views to Projects._
+track experiments, and visualize and share results. It works on top of
+[Git](https://git-scm.com/), and works best with [DVC](https://dvc.org/)
+repositories.
 
 <cards>
 
@@ -31,6 +25,11 @@ Studio and Views to Projects._
   </card>
 
 </cards>
+
+https://www.youtube.com/watch?v=hKf4twg832g
+
+_Note that we have renamed DVC Studio mentioned in the above video to Iterative
+Studio and Views to Projects._
 
 **Why Iterative Studio?**
 
