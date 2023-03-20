@@ -802,6 +802,10 @@
                 "label": "MMCV"
               },
               {
+                "slug": "optuna",
+                "label": "Optuna"
+              },
+              {
                 "slug": "pytorch",
                 "label": "PyTorch"
               },

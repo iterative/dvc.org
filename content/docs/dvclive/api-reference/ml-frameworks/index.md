@@ -8,6 +8,7 @@ We currently support the following _ML Frameworks_:
 - [Keras](/doc/dvclive/api-reference/ml-frameworks/keras)
 - [LightGBM](/doc/dvclive/api-reference/ml-frameworks/lightgbm)
 - [MMCV](/doc/dvclive/api-reference/ml-frameworks/mmcv)
+- [Optuna](/doc/dvclive/api-reference/ml-frameworks/optuna)
 - [PyTorch](/doc/dvclive/api-reference/ml-frameworks/pytorch)
 - [PyTorch Lightning](/doc/dvclive/api-reference/ml-frameworks/pytorch-lightning)
 - [TensorFlow](/doc/dvclive/api-reference/ml-frameworks/tensorflow)
