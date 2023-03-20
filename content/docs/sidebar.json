@@ -597,12 +597,10 @@
     "icon": "studio",
     "children": [
       "get-started",
-      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
-          "prepare-your-repositories",
           {
             "slug": "projects-and-experiments",
             "source": false,
