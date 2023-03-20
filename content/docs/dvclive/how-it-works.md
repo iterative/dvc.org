@@ -97,23 +97,23 @@ search). By configuring DVC <abbr>pipelines</abbr>, you can
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
 with `dvc exp run`.
 
-DVCLive prints instructions for how to start:
+DVCLive prints instructions for how to configure a pipeline stage in `dvc.yaml`
+like:
 
-```
-To run with DVC, add this to `/Users/sarah/myproject/dvc.yaml`:
+```yaml
 stages:
   dvclive:
     cmd: <python my_code_file.py my_args>
     deps:
-    - <my_code_file.py>
+      - <my_code_file.py>
     outs:
-    - dvclive/params.yaml:
-        cache: false
-    - dvclive/metrics.json:
-        cache: false
-    - dvclive/plots:
-        cache: false
-    - model.pt
+      - dvclive/params.yaml:
+          cache: false
+      - dvclive/metrics.json:
+          cache: false
+      - dvclive/plots:
+          cache: false
+      - model.pt
 ```
 
 Add this pipeline stage into `dvc.yaml`, modifying it to fit your project. Then,
