@@ -8,8 +8,8 @@ description:
 
 # Get Started: Experiment Versioning
 
-Tools like [Jupyter Notebooks](https://jupyter.org/) are useful for rapid prototyping,
-but it's hard to keep track of changes and reproduce experiments.
+Tools like [Jupyter Notebooks](https://jupyter.org/) are useful for rapid
+prototyping, but it's hard to keep track of changes and reproduce experiments.
 You can start using DVC to version your experiments without leaving your Jupyter
 Notebook. There are no logins, servers, databases, or UI to spin up. Every
 <abbr>DVC experiment</abbr> will be versioned **without cluttering your repo**,
