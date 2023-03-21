@@ -74,8 +74,8 @@ Learn more about
 
 ## Queuing experiments
 
-You can combine the `--queue` and `--set-param` flags to set up a grid search of
-parameters with a single command:
+You can queue multiple experiments for later execution. For example, you can set
+up a grid search of parameters with a single command
 
 ```cli
 $ dvc exp run --queue \
