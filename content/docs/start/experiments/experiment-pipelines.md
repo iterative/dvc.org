@@ -13,7 +13,7 @@ comparison to the previous setup using notebooks.
 All the explanations in
 [Experiment Versioning](/doc/start/experiments/experiment-versioning) and
 [Experiment Management](/doc/start/experiments/experiment-management) still
-apply here, the only difference is that the experiment is now being created by
+apply here, the only difference is that the experiments are now being created by
 `dvc exp run`.
 
 The `dvc exp run` command will execute the DVC Pipeline and create a DVC
