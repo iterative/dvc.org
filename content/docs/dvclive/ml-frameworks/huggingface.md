@@ -1,24 +1,29 @@
-# Fast.ai
+# Hugging Face
 
 DVCLive allows you to add experiment tracking capabilities to your
-[Fast.ai](https://docs.fast.ai/) projects.
+[Hugging Face](https://huggingface.co/) projects.
 
 ## Usage
 
 Include the
-[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/fastai.py)
+[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/huggingface.py)
 in the callbacks list passed to your
-[`Learner`](https://docs.fast.ai/learner.html#Learner):
+[`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
 
 ```python
-from dvclive.fastai import DVCLiveCallback
+from dvclive.huggingface import DVCLiveCallback
 
 ...
 
-learn = tabular_learner(data_loader, metrics=accuracy)
-learn.fit_one_cycle(
-    n_epoch=2,
-    cbs=[DVCLiveCallback()])
+ trainer = Trainer(
+    model, args,
+    train_dataset=train_data,
+    eval_dataset=eval_data,
+    tokenizer=tokenizer,
+    compute_metrics=compute_metrics,
+)
+trainer.add_callback(DVCLiveCallback())
+trainer.train()
 ```
 
 Each metric will be logged to:
@@ -50,13 +55,14 @@ Where:
 
 ```python
 from dvclive import Live
-from dvclive.fastai import DVCLiveCallback
+from dvclive.huggingface import DVCLiveCallback
 
 with Live("custom_dir") as live:
-    learn = tabular_learner(data_loader, metrics=accuracy)
-    learn.fit_one_cycle(
-      n_epoch=2,
-      cbs=[DVCLiveCallback(live=live)])
+    trainer = Trainer(
+        model, args,
+        train_dataset=train_data, eval_dataset=eval_data, tokenizer=tokenizer)
+    trainer.add_callback(
+        DVCLiveCallback(live=live))
 
     # Log additional metrics after training
     live.summary["additional_metric"] = 1.0
@@ -65,17 +71,16 @@ with Live("custom_dir") as live:
 - Using `model_file`.
 
 ```python
-learn.fit_one_cycle(
-  n_epoch=2,
-  cbs=[DVCLiveCallback(model_file="model.pth")])
+trainer.add_callback(
+    DVCLiveCallback(model_file="my_model_file"))
+trainer.train()
 ```
 
 - Using `**kwargs` to customize the new [`Live`] instance.
 
 ```python
-learn.fit_one_cycle(
-  n_epoch=2,
-  cbs=[DVCLiveCallback(model_file="model.pth", dir="custom_dir")])
+trainer.add_callback(
+    DVCLiveCallback(model_file="my_model_file", dir="custom_dir"))
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

@@ -77,7 +77,7 @@ runner.train(
     callbacks=[DVCLiveCallback(model_file="model.pth")])
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live
 
 - Using `**kwargs` to customize the new [`Live`] instance.
 
@@ -92,4 +92,4 @@ runner.train(
       DVCLiveCallback(model_file="model.pth", dir="custom_dir")])
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

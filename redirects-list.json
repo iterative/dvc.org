@@ -98,7 +98,7 @@
   "^/doc/command-reference/run$                                                           /doc/command-reference/stage/add",
 
   "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiments",
-  "^/doc/dvclive/ml-frameworks$                                                           /doc/dvclive/api-reference/ml-frameworks",
+  "^/doc/dvclive/api-reference/$                                                          /doc/dvclive/",
   "^/doc/dvclive/get-started$                                                             /doc/start/experiments",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",

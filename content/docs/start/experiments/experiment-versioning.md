@@ -29,7 +29,7 @@ In your Python code, you can start versioning your experiments in DVCLive's
 `Live` API or framework-specific callbacks with `save_dvc_exp=True`.
 
 There are some examples below
-([other frameworks available](/doc/dvclive/api-reference/ml-frameworks)):
+([other frameworks available](/doc/dvclive/ml-frameworks)):
 
 <toggle>
 
@@ -99,8 +99,8 @@ containing the results and the changes needed to reproduce it.
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
 Framework and any
 [data tracked by DVC](/doc/start/data-management/data-versioning) but you can
-also [log additional info](/doc/dvclive/api-reference#log-data) to be included
-in the experiment.
+also [log additional info](/doc/dvclive#log-data) to be included in the
+experiment.
 
 <admon type="info">
 
@@ -118,8 +118,8 @@ training progress:
 <tab title="DVCLive Report">
 
 By default, DVCLive will
-[generate or update a report](/doc/dvclive/api-reference/live/make_report)
-displaying all the logged data.
+[generate or update a report](/doc/dvclive/live/make_report) displaying all the
+logged data.
 
 If you pass `report="notebook"` to DVCLive, the report will be displayed and
 updated inside the output of the cell:
