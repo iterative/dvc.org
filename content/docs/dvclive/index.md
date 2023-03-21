@@ -9,12 +9,10 @@ and [Iterative Studio](https://studio.iterative.ai/). You can
 
 <cards>
 
-  <card href="/doc/dvclive/get-started" heading="Get Started">
-    A step-by-step introduction
+  <card href="/doc/dvclive/how-it-works" heading="How it Works">
   </card>
 
   <card href="/doc/dvclive/api-reference" heading="API Reference">
-    See details of all DVCLive's functions
   </card>
 
 </cards>
