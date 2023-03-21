@@ -89,8 +89,8 @@ stage as <abbr>dependencies</abbr> of another, you describe a sequence of
 commands which gets to some desired result. This is called a
 [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
-Let's create 2 stages chained to the outputs of `data_split`, one for training
-and the other for evaluating the model:
+Let's create 2 additional stages one for training and the other for evaluating
+the model:
 
 ```cli
 $ dvc stage add -n train \
