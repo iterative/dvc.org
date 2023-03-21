@@ -84,8 +84,8 @@ there's no need to use `dvc add` on `data/train_data` or `data/test_data`
 
 ## Building a DAG
 
-By using `dvc stage add` multiple times, defining <abbr>outputs</abbr> of a
-stage as <abbr>dependencies</abbr> of another, you can describe a sequence of
+By using `dvc stage add` multiple times and defining <abbr>outputs</abbr> of a
+stage as <abbr>dependencies</abbr> of another, you describe a sequence of
 commands which gets to some desired result. This is called a
 [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
