@@ -12,16 +12,12 @@ repositories.
     A step-by-step tutorial to get started with Iterative Studio
   </card>
 
-  <card href="/doc/studio/how-it-works" heading="How Iterative Studio works">
-    Learn how Iterative Studio works closely with the Git ecosystem
-  </card>
-
   <card href="/doc/studio/user-guide" heading="User guide">
     Non-exhaustive list things you can do with Iterative Studio
   </card>
 
   <card href="/doc/studio/troubleshooting" heading="Troubleshooting">
-    Learn how to troubleshoot some common problem scenarios
+    Troubleshoot some common problem scenarios
   </card>
 
 </cards>

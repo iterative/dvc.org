@@ -118,6 +118,8 @@
   "^/doc/studio/user-guide/views/visualize-experiments$                                   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare 302",
   "^/doc/studio/user-guide/views/share-view$                                              /doc/studio/user-guide/projects-and-experiments/share-a-project 302",
   "^/doc/studio/user-guide/views(/.*)?$                                                   /doc/studio/user-guide/projects-and-experiments$1 302",
+  "^/doc/studio/user-guide/teams$                                                         /doc/studio/user-guide/team-collaboration/teams",
+  "^/doc/studio/user-guide/change-team-plan-and-size$                                     /doc/studio/user-guide/team-collaboration/change-team-plan-and-size",
 
   "^/(.+)/$                                                                               /$1"
 ]

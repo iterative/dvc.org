@@ -1,12 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
-settings_ are now called _Project settings_; and so on.
-
-</admon>
-
 # Configure a Project
 
 You can configure additional settings for your projects. Some of these settings,
