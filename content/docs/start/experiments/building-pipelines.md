@@ -21,16 +21,16 @@ software engineering best practices while also enabling new features like:
 
 ## From notebook to scripts
 
-Before building the pipeline, you need to:
+We are not going to cover here how to go from notebooks to scripts, but you can
+follow
+[this detailed blog post](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c)
+to learn how to do it.
+
+From a high level perspective, what you need to do before building a pipeline
+is:
 
 - **Modularize**: split the different logical steps in your notebook into
   separate scripts.
-- **Parametrize**: adapt your scripts to decouple the configuration from the
-  source code.
-
-We are not going to cover how to perform these steps, but you can follow
-[this detailed blog post](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c)
-to learn how to achieve the above requirements.
 
 In our example repo, the
 [original notebook](https://github.com/iterative/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
@@ -39,6 +39,9 @@ has been transformed into 3 scripts:
 [`train.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/train.py)
 and
 [`evaluate.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/evaluate.py).
+
+- **Parametrize**: adapt your scripts to decouple the configuration from the
+  source code.
 
 All these scripts are configured using different sections of the
 [`params.yaml`](https://github.com/iterative/example-get-started-experiments/blob/main/params.yaml)
