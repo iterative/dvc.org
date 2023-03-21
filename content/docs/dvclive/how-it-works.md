@@ -70,7 +70,7 @@ model.pt
 model.pt.dvc
 ```
 
-## Tracking with Git+DVC
+## Track the results
 
 DVCLive expects each run to be tracked by Git, so it will save each run to the
 same path and overwrite the results each time. Include
