@@ -711,10 +711,6 @@
     "source": "dvclive/index.md",
     "children": [
       {
-        "label": "Get Started",
-        "slug": "get-started"
-      },
-      {
         "slug": "how-it-works",
         "label": "How it Works"
       },
