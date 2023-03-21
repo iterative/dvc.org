@@ -9,7 +9,7 @@ description:
 
 Once you start consolidating your project and the code structure, the
 flexibility of the notebooks might start to lose its value and some parts of the
-workflow feel like could be improved.
+workflow could be improved.
 
 DVC <abbr>Pipelines</abbr> can help you standardize your workflow following
 software engineering best practices while also enabling new features like:
