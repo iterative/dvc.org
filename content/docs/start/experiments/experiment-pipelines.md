@@ -75,7 +75,7 @@ Learn more about
 ## Queuing experiments
 
 You can queue multiple experiments for later execution. For example, you can set
-up a grid search of parameters with a single command
+up a grid search of parameters using a single command:
 
 ```cli
 $ dvc exp run --queue \
