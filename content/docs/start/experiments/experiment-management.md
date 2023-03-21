@@ -1,8 +1,8 @@
 ---
 title: 'Get Started: Experiment Management'
 description:
-  'Get started with managing experiments with DVC. Manage your experiments and
-  share them with others using software engineering best practices.'
+  'Manage your experiments and share them with others using software engineering
+  best practices.'
 ---
 
 # Get Started: Experiment Management

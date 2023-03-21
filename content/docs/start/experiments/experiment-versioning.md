@@ -1,9 +1,8 @@
 ---
 title: 'Get Started: Experiment Versioning'
 description:
-  'Get started with versioning experiments with DVC. Track the changes to the
-  code, data, metrics, parameters and plots associated with each experiment,
-  without bloating your Git repo.'
+  'Track the changes to the code, data, metrics, parameters and plots associated
+  with each experiment, without bloating your Git repo.'
 ---
 
 # Get Started: Experiment Versioning

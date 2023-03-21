@@ -55,7 +55,15 @@
       {
         "slug": "experiments",
         "source": false,
-        "children": ["experiment-versioning", "experiment-management"]
+        "children": [
+          "experiment-versioning",
+          "experiment-management",
+          "building-pipelines",
+          {
+            "label": "Experiments with Pipelines",
+            "slug": "experiment-pipelines"
+          }
+        ]
       }
     ]
   },

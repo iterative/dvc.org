@@ -18,8 +18,8 @@ running `dvc init` inside a Git project:
 
 ### ⚙️ Expand to prepare a project.
 
-Imagine we want to building an ML project from scratch. Let's start by creating
-a Git repository:
+Imagine we want to build an ML project from scratch. Let's start by creating a
+Git repository:
 
 ```cli
 $ mkdir example-get-started
@@ -29,7 +29,7 @@ $ git init
 
 <admon type="info">
 
-This directory name is actually used in our
+This directory name is used in our
 [example-get-started](https://github.com/iterative/example-get-started) repo.
 
 </admon>
@@ -107,8 +107,19 @@ The steps and results of some of these chapters are captured in our
   Manage experiments and share them with others using software engineering best
   practices.
 
+- **[Building pipelines]**
+
+  Split your workflow into stages and build a pipeline by connecting
+  dependencies and outputs.
+
+**[Experiments with Pipelines]**
+
+Explore the benefits of running experiments using DVC Pipelines.
+
 [experiment versioning]: /doc/start/experiments/experiment-versioning
 [experiment management]: /doc/start/experiments/experiment-management
+[building pipelines]: /doc/start/experiments/building-pipelines
+[experiments with pipelines]: /doc/start/experiments/experiment-pipelines
 
 <admon type="tip">
 
