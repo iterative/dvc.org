@@ -163,8 +163,8 @@ stages:
 
 </details>
 
-These stages use a special type of outputs, <abbr>metrics</abbr> and
-<abbr>plots</abbr>, that can be rendered by the DVC CLI (`dvc metrics` /
+These stages use a special type of outputs (<abbr>metrics</abbr> and
+<abbr>plots</abbr>) that can be rendered by the DVC CLI (`dvc metrics` /
 `dvc plots`) and the VSCode Extension and Studio UIs.
 
 <admon type="info">
