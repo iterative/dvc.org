@@ -278,10 +278,6 @@
             "slug": "gc"
           },
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
             "label": "exp list",
             "slug": "list"
           },

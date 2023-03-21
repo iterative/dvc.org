@@ -96,6 +96,7 @@
   "^/doc/command-reference/experiments$                                                   /doc/command-reference/exp",
   "^/doc/command-reference/ls$                                                            /doc/command-reference/list 302",
   "^/doc/command-reference/run$                                                           /doc/command-reference/stage/add",
+  "^/doc/command-reference/exp/init$                                                      /doc/command-reference/stage/add",
 
   "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/dvclive/get-started",
   "^/doc/dvclive/ml-frameworks$                                                           /doc/dvclive/api-reference/ml-frameworks",

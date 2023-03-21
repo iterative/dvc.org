@@ -217,12 +217,11 @@ Surround the command with double quotes `"` if it includes special characters
 like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
 variables in it that should be evaluated dynamically.
 
-The same applies to the `command` argument for helper commands (`dvc stage add`,
-`dvc exp init`), otherwise they would apply to the DVC call itself:
+The same applies to the `command` argument for helper commands
+(`dvc stage add`), otherwise they would apply to the DVC call itself:
 
 ```cli
 $ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc exp init './another_script.sh $MYENVVAR'
 ```
 
 <admon type="tip">

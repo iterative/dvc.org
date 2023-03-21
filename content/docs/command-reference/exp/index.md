@@ -3,8 +3,7 @@
 > Alias of `dvc experiments`.
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
-[init](/doc/command-reference/exp/init), [run](/doc/command-reference/exp/run),
-[show](/doc/command-reference/exp/show),
+[run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
@@ -32,7 +31,6 @@ positional arguments:
     clean               Cleanup experiments temporary internal files.
     diff                Show changes between experiments.
     gc                  Garbage collect unneeded experiments.
-    init                Quickly setup any project to use experiments.
     list                List local and remote experiments.
     pull                Pull an experiment from a Git remote.
     push                Push a local experiment to a Git remote.
