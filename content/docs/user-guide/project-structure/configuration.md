@@ -59,8 +59,6 @@ within:
 - [`remote`](#remote) - sections in the config file that describe [remote
   storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
-- [`exp`](#exp) - options to change the default repo paths assumed by
-  `dvc exp init`
 - [`hydra`](#hydra) - options around [Hydra Composition] for experiment
   configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
@@ -242,31 +240,6 @@ is the way that can be done.
 
 [local remote]:
   /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
-
-</details>
-
-<details>
-
-## exp
-
-Sets the default paths assumed by `dvc exp init`. This can help avoid overriding
-them repeatedly with that command's options, for example if all of your
-experiments or projects use a similar structure.
-
-- `exp.code` - path to your source file or directory <abbr>dependency</abbr>.
-
-- `exp.params` - path to your <abbr>parameters</abbr> file.
-
-- `exp.data` - path to your data file or directory dependency.
-
-- `exp.models` - path to your model/artifact(s) file or directory
-  <abbr>output</abbr>.
-
-- `exp.metrics` - path to your metrics file output.
-
-- `exp.plots` - path to your plots file or directory output.
-
-- `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
 
 </details>
 
