@@ -64,6 +64,11 @@ In this section, you can,
   If you signed up to use Iterative Studio with an email address, you will not
   have any Git connections by default. You can set them up in this section.
 
+  To connect to your GitHub repositories, you must install the Iterative Studio
+  GitHub app. Refer to the section on
+  [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
+  details.
+
   Note that **connections to self-hosted GitLab servers** are not managed in
   this section. If you want to connect to a self-hosted GitLab server, you
   should create a team and
