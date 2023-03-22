@@ -597,12 +597,10 @@
     "icon": "studio",
     "children": [
       "get-started",
-      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
-          "prepare-your-repositories",
           {
             "slug": "projects-and-experiments",
             "source": false,
@@ -632,8 +630,11 @@
               "assign-stage"
             ]
           },
-          "teams",
-          "change-team-plan-and-size",
+          {
+            "slug": "team-collaboration",
+            "source": false,
+            "children": ["teams", "change-team-plan-and-size"]
+          },
           "account-management",
           "billing-and-payment",
           "install-github-app",
