@@ -65,4 +65,4 @@ xgboost.train(
     evals=[(dval, "eval_data")])
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

@@ -82,9 +82,8 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `dvcyaml` - If `True`, DVCLive will write
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
   metrics, plots, and parameters to
-  [`Live.dvc_file`](/doc/dvclive/api-reference/live#properties) as part of
-  `Live.next_step()` and `Live.end()`. See `Live.make_dvcyaml()`. Defaults to
-  `True`.
+  [`Live.dvc_file`](/doc/dvclive/live#properties) as part of `Live.next_step()`
+  and `Live.end()`. See `Live.make_dvcyaml()`. Defaults to `True`.
 
 <admon type="tip">
 

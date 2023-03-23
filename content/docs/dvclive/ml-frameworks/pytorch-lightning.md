@@ -40,8 +40,8 @@ Where:
 
 - `prefix` - (`None` by default) - string that adds to each metric name.
 
-- `experiment` - (`None` by default) - [`Live`](/doc/dvclive/api-reference/live)
-  object to be used instead of initializing a new one.
+- `experiment` - (`None` by default) - [`Live`](/doc/dvclive/live) object to be
+  used instead of initializing a new one.
 
 - `**kwargs` - Any additional arguments will be used to instantiate a new
   [`Live`] instance. If `experiment` is used, the arguments are ignored.
@@ -81,4 +81,4 @@ checkpointing at all as described in the
 
 </admon>
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

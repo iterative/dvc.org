@@ -1,29 +1,136 @@
 # DVCLive Documentation
 
-[DVCLive](https://github.com/iterative/dvclive) is a Python library for logging
-machine learning metrics and other metadata in simple file formats, which is
-fully compatible with DVC, the
-[VS Code Extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
-and [Iterative Studio](https://studio.iterative.ai/). You can
-[install it](https://github.com/iterative/dvclive#installation) with `pip`.
+This documentation provides the details about the `dvclive` Python API module,
+which can be imported regularly, for example:
 
-<cards>
+```py
+from dvclive import Live
+```
 
-  <card href="/doc/dvclive/how-it-works" heading="How it Works">
-  </card>
+<admon type="tip">
 
-  <card href="/doc/dvclive/api-reference" heading="API Reference">
-  </card>
+If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
+can jump directly to its corresponding page.
 
-</cards>
+</admon>
 
-✅ Join our [community](/community) or use the [support](/support) channels if
-you have any questions or need specific help. We are very responsive ⚡.
+## Basic Workflow
 
-✅ Check out our [GitHub repository](https://github.com/iterative/dvclive) and
-give us a ⭐ if you like the project!
+### Initialize DVCLive
 
-✅ Contribute to DVCLive [on GitHub](https://github.com/iterative/dvclive) or
-help us improve this
-[documentation](https://github.com/iterative/dvc.org/tree/main/content/docs/dvclive)
-🙏.
+```python
+with Live(save_dvc_exp=True) as live:
+```
+
+See [`Live()`](/doc/dvclive/live) for details.
+
+<admon type="info">
+
+Including `save_dvc_exp=True` will automatically
+[track the results](/doc/dvclive/how-it-works#track-the-results).
+
+</admon>
+
+### Log data
+
+<toggle>
+<tab title="Artifacts">
+
+```python
+live.log_artifact("model.pt")
+```
+
+See `Live.log_artifact()`.
+
+</tab>
+<tab title="Images">
+
+```python
+img = np.ones((500, 500, 3), np.uint8)
+live.log_image("image.png", img)
+```
+
+See `Live.log_image()`.
+
+</tab>
+<tab title="Metrics">
+
+```python
+live.log_metric("acc", 0.9)
+```
+
+See `Live.log_metric()`. </tab> <tab title="Parameters">
+
+</tab>
+<tab title="Parameters">
+```python
+live.log_param("num_classes", 10)
+
+```python
+params = {
+    "num_classes": 10,
+    "metrics": ["accuracy", "mae"],
+    "optimizer": "adam"
+}
+live.log_params(params)
+```
+
+See `Live.log_param()` / `Live.log_params()`.
+
+</tab>
+<tab title="SKLearn Plots">
+
+```python
+y_true = [0, 0, 1, 1]
+y_pred = [0.2, 0.5, 0.3, 0.8]
+live.log_sklearn_plot("roc", y_true, y_score)
+```
+
+See `Live.log_sklearn_plot()`.
+
+</tab>
+</toggle>
+
+### (Optionally) Update the step number
+
+```python
+live.next_step()
+```
+
+See `Live.next_step()`.
+
+Under the hood, `Live.next_step()` calls `Live.make_summary()`,
+`Live.make_dvcyaml()`, and `Live.make_report()`.
+
+If you want to decouple the `step` update from the rest of the calls, you can
+manually modify the `Live.step` property and call `Live.make_summary()` /
+`Live.make_dvcyaml()` / `Live.make_report()`.
+
+## Putting it all together
+
+Joining the above snippets, you can include DVCLive in your training code:
+
+```python
+# train.py
+
+from dvclive import Live
+
+with Live(save_dvc_exp=True) as live:
+
+    live.log_param("epochs", NUM_EPOCHS)
+
+    for epoch in range(NUM_EPOCHS):
+        train_model(...)
+        metrics = evaluate_model(...)
+
+        for metric_name, value in metrics.items():
+            live.log_metric(metric_name, value)
+
+        live.next_step()
+```
+
+## Outputs
+
+After you run your training code, all the logged data will be stored in the
+`dvclive` directory. Check the [DVCLive outputs](/doc/dvclive/how-it-works) page
+for more details.
