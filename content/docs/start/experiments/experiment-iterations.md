@@ -34,7 +34,7 @@ If you later modify a parameter of the `train` stage, only the stages affected
 by the change will be computed:
 
 ```cli
-$ dvc exp run --set-param "train.img_size=128"
+$ dvc exp run -S "train.img_size=128"
 'data/pool_data.dvc' didn't change, skipping
 Stage 'data_split' didn't change, skipping
 Running stage 'train':
@@ -50,7 +50,7 @@ and <abbr>parameters</abbr>, it will be retrieved from the
 [run cache](/doc/user-guide/pipelines/run-cache) and skipped:
 
 ```cli
-$ dvc exp run --set-param "train.img_size=256"
+$ dvc exp run -S "train.img_size=256"
 'data/pool_data.dvc' didn't change, skipping
 Stage 'data_split' didn't change, skipping
 Stage 'train' is cached - skipping run, checking out outputs
@@ -71,8 +71,8 @@ up a grid search of parameters using a single command:
 
 ```cli
 $ dvc exp run --queue \
---set-param 'train.arch=alexnet,resnet34,squeezenet1_1' \
---set-param 'train.img_size=128,256'
+-S 'train.arch=alexnet,resnet34,squeezenet1_1' \
+-S 'train.img_size=128,256'
 Queueing with overrides '{'params.yaml': ['train.arch=alexnet', 'train.img_size=128']}'.
 Queueing with overrides '{'params.yaml': ['train.arch=alexnet', 'train.img_size=256']}'.
 Queueing with overrides '{'params.yaml': ['train.arch=resnet34', 'train.img_size=128']}'.
