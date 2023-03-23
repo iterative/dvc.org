@@ -71,9 +71,12 @@ stages:
       - data/test_data
 ```
 
-DVC uses these metafiles to track the data used and produced by the stage, so
-there's no need to use `dvc add` on `data/train_data` or `data/test_data`
-[manually](/doc/start/data-management/data-versioning).
+<admon type="info">
+
+Learn more about
+[Stages](https://dvc.org/doc/user-guide/pipelines/defining-pipelines#stages)
+
+</admon>
 
 ## Building a DAG
 
