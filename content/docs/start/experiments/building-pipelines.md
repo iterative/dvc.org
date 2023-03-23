@@ -11,25 +11,18 @@ Once you start consolidating your project and the code structure, the
 flexibility of the notebooks might start to lose its value and some parts of the
 workflow could be improved.
 
+<admon type="tip">
+
+Learn more about
+[how to migrate from Jupyter notebook to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c)
+and the motivations behind it.
+
+</admon>
+
 DVC <abbr>Pipelines</abbr> can help you standardize your workflow following
-software engineering best practices while also enabling new features like:
+software engineering best practices:
 
-- [Preventing steps to be recomputed](/doc/user-guide/pipelines/run-cache).
-- [Modifying parameters from the CLI](/doc/user-guide/experiment-management/running-experiments#tuning-hyperparameters).
-- [Queueing and executing multiple experiments at once](/doc/user-guide/experiment-management/running-experiments#the-experiments-queue).
-- [Configuring your project with Hydra](/doc/user-guide/experiment-management/running-experiments#hydra-composition).
-
-## From notebook to scripts
-
-We are not going to cover here how to go from notebooks to scripts, but you can
-follow
-[this detailed blog post](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c)
-to learn how to do it.
-
-From a high level perspective, what you need to do before building a pipeline
-is:
-
-- **Modularize**: split the different logical steps in your notebook into
+- **Modularization**: split the different logical steps in your notebook into
   separate scripts.
 
 In our example repo, the
@@ -40,7 +33,7 @@ has been transformed into 3 scripts:
 and
 [`evaluate.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/evaluate.py).
 
-- **Parametrize**: adapt your scripts to decouple the configuration from the
+- **Parametrization**: adapt your scripts to decouple the configuration from the
   source code.
 
 All these scripts are configured using different sections of the
