@@ -1,23 +1,15 @@
 ---
-title: 'Get Started: Experiments with Pipelines'
+title: 'Get Started: Experiments Iterations'
 description: 'Explore the benefits of running experiments using DVC Pipelines.'
 ---
 
-# Get Started: Experiments with Pipelines
+# Get Started: Experiments Iterations
 
-As described in
-[Building Pipelines](/doc/start/experiments/building-pipelines#benefits-of-dvc-pipelines),
-running experiments using <abbr>DVC Pipelines</abbr> has many benefits in
-comparison to the previous setup using notebooks.
-
-All the explanations in
+Now that you have a <abbr>DVC Pipeline</abbr>, all the explanations in
 [Experiment Versioning](/doc/start/experiments/experiment-versioning) and
 [Experiment Management](/doc/start/experiments/experiment-management) still
 apply here, the only difference is that the experiments are now being created by
 `dvc exp run`.
-
-The `dvc exp run` command will execute the DVC Pipeline and create a DVC
-<abbr>Experiment</abbr> on completion.
 
 ## Running experiments
 

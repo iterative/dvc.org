@@ -59,10 +59,7 @@
           "experiment-versioning",
           "experiment-management",
           "building-pipelines",
-          {
-            "label": "Experiments with Pipelines",
-            "slug": "experiment-pipelines"
-          }
+          "experiment-iterations"
         ]
       }
     ]
