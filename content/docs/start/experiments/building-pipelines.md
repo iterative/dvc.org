@@ -73,8 +73,7 @@ stages:
 
 <admon type="info">
 
-Learn more about
-[Stages](https://dvc.org/doc/user-guide/pipelines/defining-pipelines#stages)
+Learn more about [Stages](/doc/user-guide/pipelines/defining-pipelines#stages)
 
 </admon>
 
@@ -93,8 +92,6 @@ $ dvc stage add -n train \
   -p base,train \
   -d src/train.py -d data/train_data \
   -o models/model.pkl \
-  --metrics-no-cache results/train/metrics.json \
-  --plots-no-cache results/train/plots \
   python src/train.py
 ```
 
@@ -102,8 +99,6 @@ $ dvc stage add -n train \
 $ dvc stage add -n evaluate \
   -p base,evaluate \
   -d src/evaluate.py -d models/model.pkl -d data/test_data \
-  --metrics-no-cache results/evaluate/metrics.json \
-  --plots-no-cache results/evaluate/plots \
   python src/evaluate.py
 ```
 
@@ -137,12 +132,6 @@ stages:
       - train
     outs:
       - models/model.pkl
-    metrics:
-      - results/train/metrics.json:
-          cache: false
-    plots:
-      - results/train/plots:
-          cache: false
   evaluate:
     cmd: python src/evaluate.py
     deps:
@@ -152,26 +141,9 @@ stages:
     params:
       - base
       - evaluate
-    metrics:
-      - results/evaluate/metrics.json:
-          cache: false
-    plots:
-      - results/evaluate/plots:
-          cache: false
 ```
 
 </details>
-
-These stages use a special type of outputs (<abbr>metrics</abbr> and
-<abbr>plots</abbr>) that can be rendered by the DVC CLI (`dvc metrics` /
-`dvc plots`) and the VSCode Extension and Studio UIs.
-
-<admon type="info">
-
-Learn more about
-[Metrics, Parameters and Plots](/doc/start/data-management/metrics-parameters-plots)
-
-</admon>
 
 ## Visualizing the DAG
 
