@@ -112,9 +112,9 @@ The steps and results of some of these chapters are captured in our
   Split your workflow into stages and build a pipeline by connecting
   dependencies and outputs.
 
-**[Experiments with Pipelines]**
+- **[Experiments with Pipelines]**
 
-Explore the benefits of running experiments using DVC Pipelines.
+  Explore the benefits of running experiments using DVC Pipelines.
 
 [experiment versioning]: /doc/start/experiments/experiment-versioning
 [experiment management]: /doc/start/experiments/experiment-management
