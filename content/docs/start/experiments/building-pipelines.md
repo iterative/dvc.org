@@ -34,7 +34,7 @@ from ruamel.yaml import YAML
 yaml = YAML(typ="safe")
 
 def data_split():
-    params = ConfigBox(yaml.load(open("params.yaml", encoding="utf-8")))
+    params = yaml.load(open("params.yaml", encoding="utf-8"))
 ...
 ```
 
