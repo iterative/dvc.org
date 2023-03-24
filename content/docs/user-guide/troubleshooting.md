@@ -102,10 +102,7 @@ permissions.
 
 Using SSH to authenticate is recommended. If you use HTTP, you can configure a
 [Git credential helper] (like [Git Credential Manager]) to authenticate to
-private HTTP Git remotes. DVC will not prompt for these credentials, so they
-must already be saved in the credential helper. For example, if you `git clone`
-the repo after configuring the credential helper, it should save the credentials
-for DVC to read in the future.
+private HTTP Git remotes.
 
 Commands like `dvc import` will clone a different Git repo than the one in which
 you are working. In order for these commands to read from a credential helper,
