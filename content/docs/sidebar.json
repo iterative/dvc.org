@@ -163,7 +163,14 @@
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines", "run-cache"]
+        "children": [
+          "defining-pipelines",
+          "running-pipelines",
+          {
+            "label": "Caching Stages",
+            "slug": "run-cache"
+          }
+        ]
       },
       {
         "label": "Experiment Management",
