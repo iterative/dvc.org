@@ -105,8 +105,8 @@ $ dvc stage add -n train \
   python src/train.py
 ```
 
-`dvc exp run` checks the `prepare` stage first and then the `train` stage since
-it depends on the <abbr>outputs</abbr> of `prepare`. If a stage has not changed
+`dvc exp run` checks the `data_split` stage first and then the `train` stage since
+it depends on the <abbr>outputs</abbr> of `data_split`. If a stage has not changed
 or has been run before with the same <abbr>dependencies</abbr> and
 <abbr>parameters</abbr>, it will be
 [skipped](/doc/user-guide/pipelines/run-cache):
