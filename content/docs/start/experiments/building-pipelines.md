@@ -7,7 +7,7 @@ description:
 
 # Get Started: Building Pipelines
 
-Eventually, managing the your notebook cells may start to feel fragile, and you
+Eventually, managing your notebook cells may start to feel fragile, and you
 may want to structure your project and code. When you are ready to
 [migrate from notebooks to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c),
 DVC <abbr>Pipelines</abbr> can help you standardize your workflow following
