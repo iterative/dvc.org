@@ -41,9 +41,9 @@ stage commands that produce them (unless `persist: true` is used in `dvc.yaml`).
 
 DVC runs the [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) stages
 sequentially, in the order defined by the
-[dependencies](/doc/user-guide/defining-pipelines#simple-dependencies) and
-[outputs](/doc/user-guide/defining-pipelines#outputs). Consider this example
-`dvc.yaml`:
+[dependencies](/doc/user-guide/pipelines/defining-pipelines#simple-dependencies)
+and [outputs](/doc/user-guide/pipelines/defining-pipelines#outputs). Consider
+this example `dvc.yaml`:
 
 ```yaml
 stages:
@@ -77,9 +77,10 @@ The `prepare` stage will always precede the `featurize` stage because
 
 DVC will try to avoid recomputing stages that have been run before. If you run a
 stage without changing its commands,
-[dependencies](/doc/user-guide/defining-pipelines#simple-dependencies), or
-[parameters](/doc/user-guide/defining-pipelines#parameter-dependencies), DVC
-will skip that stage:
+[dependencies](/doc/user-guide/pipelines/defining-pipelines#simple-dependencies),
+or
+[parameters](/doc/user-guide/pipelines/defining-pipelines#parameter-dependencies),
+DVC will skip that stage:
 
 ```cli
 Stage 'prepare' didn't change, skipping
