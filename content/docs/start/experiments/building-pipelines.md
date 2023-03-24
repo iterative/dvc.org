@@ -67,7 +67,17 @@ stages:
       - data/test_data
 ```
 
-`dvc exp run` will run all stages in the `dvc.yaml` file.
+`dvc exp run` will run all stages in the `dvc.yaml` file:
+
+```cli
+$ dvc exp run
+'data/pool_data.dvc' didn't change, skipping
+Running stage 'data_split':
+> python src/data_split.py
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+...
+```
 
 <admon type="info">
 
@@ -96,10 +106,19 @@ $ dvc stage add -n train \
 ```
 
 `dvc exp run` checks the `prepare` stage first and then the `train` stage since
-it depends on the <abbr>outputs</abbr> of `prepare`. If you already ran
-`prepare` with the same <abbr>dependencies</abbr> and <abbr>parameters</abbr>,
-it will be retrieved from the [run cache](/doc/user-guide/pipelines/run-cache)
-and skipped.
+it depends on the <abbr>outputs</abbr> of `prepare`. If a stage has not changed
+or has been run before with the same <abbr>dependencies</abbr> and
+<abbr>parameters</abbr>, it will be
+[skipped](/doc/user-guide/pipelines/run-cache):
+
+```cli
+$ dvc exp run
+'data/pool_data.dvc' didn't change, skipping
+Stage 'data_split' didn't change, skipping
+Running stage 'train':
+> python src/train.py
+...
+```
 
 Finally, let's add an `evaluate` stage:
 
