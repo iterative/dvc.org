@@ -91,4 +91,4 @@ out-of-the-box: Build, run, and versioning [data pipelines], [manage
 experiments] effectively, and more.
 
 [data pipelines]: /doc/command-reference/dag
-[manage experiments]: /doc/start/experiment-management
+[manage experiments]: /doc/start/experiments

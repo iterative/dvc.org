@@ -39,10 +39,8 @@ other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`) (or to
-   remote storage if `--to-remote` is given), using the file hash to form the
-   cached file path. (See
-   [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-   for more details.)
+   [remote storage] if `--to-remote` is given), using the file hash to form the
+   cached file path. (See [Structure of cache directory] for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down). Skipped if `--to-remote` is used.
 4. Create a corresponding `.dvc` file to track the file, using its path and hash
@@ -55,8 +53,12 @@ other DVC commands), a few actions are taken under the hood:
    committed to the Git repository (unless `dvc init --no-scm` was used when
    initializing the <abbr>DVC project</abbr>).
 6. Instructions are printed showing `git` commands for staging `.dvc` files (or
-   they are staged automatically if
-   [`core.autostage`](/doc/command-reference/config#core) is set).
+   they are staged automatically if [`core.autostage`] is set).
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[structure of cache directory]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+[`core.autostage`]: /doc/user-guide/project-structure/configuration#core
 
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be easily tracked with Git.
@@ -143,18 +145,20 @@ not.
   the given target. This option allows to set the name and the path of the
   generated `.dvc` file.
 
-- `--glob` - allows adding files and directories that match the
-  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
-  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+- `--glob` - allows adding files and directories that match the [pattern]
+  specified in `targets`. Shell style wildcards supported: `*`, `?`, `[seq]`,
+  `[!seq]`, and `**`
 
 - `--external` - allow tracking `targets` outside of the DVC repository
-  in-place. See
-  [Managing External Data](/doc/user-guide/data-management/managing-external-data).
+  in-place. See [Managing External Data].
 
-  > ⚠️ Note that this is an advanced feature for very specific situations and
-  > not recommended except if there's absolutely no other alternative.
-  > Additionally, this typically requires an external cache setup (see link
-  > above).
+  <admon type="warn">
+
+  Note that this is an advanced feature for very specific situations and not
+  recommended except if there's absolutely no other alternative. Additionally,
+  this typically requires an external cache setup (see link above).
+
+  </admon>
 
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the `targets` (copying them from their current location).
@@ -164,12 +168,11 @@ not.
 - `--to-remote` - add a target that's outside the project, neither move it into
   the workspace, nor cache it.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
-  instead (the default one unless one is specified with `-r`). Implies
+  instead (the default one unless otherwise specified with `-r`). Implies
   `--out .`. Use `dvc pull` to get the data locally.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to transfer external target to
-  (can only be used with `--to-remote`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` to transfer external
+  target to (can only be used with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to transfer data
   when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
@@ -189,6 +192,9 @@ not.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[pattern]: https://docs.python.org/3/library/glob.html
+[managing external data]: /doc/user-guide/data-management/managing-external-data
 
 ## Example: Single file
 
@@ -391,14 +397,14 @@ outs:
 ## Example: Transfer to remote storage
 
 Sometimes there's not enough space in the local environment to import a large
-dataset, but you still want to track it in the <abbr>project</abbr> so it can be
-[pulled](/doc/command-reference/plots) later.
+dataset, but you still want to track it in the <abbr>project</abbr> so that
+`dvc pull` can download it later.
 
-As long as you have setup [remote storage] that can handle the data, this can be
+As long as you have setup a `dvc remote` that can handle the data, this can be
 achieved with the `--to-remote` flag. It creates a `.dvc` file without
-downloading anything, transferring a target directly to a DVC remote instead:
+downloading anything, transferring a target directly to remote storage instead.
 
-Let's add a `data.xml` file via HTTP straight to remote:
+Let's add a `data.xml` file via HTTP straight "to remote":
 
 ```cli
 $ dvc add https://data.dvc.org/get-started/data.xml --to-remote
@@ -416,9 +422,13 @@ A       data.xml
 1 file added
 ```
 
-> Note that you can also do this [with `dvc import-url`][iutr]. This has the
-> added benefit of keeping a connection to the data source so it can be updated
-> later (with `dvc update`).
+<admon type="info">
 
-[remote storage]: /doc/command-reference/remote
-[iutr]: /doc/command-reference/import-url#example-transfer-to-remote-storage
+Note that you can also do this [with `dvc import-url`]. This has the added
+benefit of keeping a connection to the data source so it can be updated later
+(with `dvc update`).
+
+[with `dvc import-url`]:
+  /doc/command-reference/import-url#example-transfer-to-remote-storage
+
+</admon>

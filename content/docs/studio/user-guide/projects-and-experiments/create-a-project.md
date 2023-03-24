@@ -1,12 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
-settings_ are now called _Project settings_; and so on.
-
-</admon>
-
 # Create a Project
 
 In this section, you will learn how to:
@@ -101,4 +92,4 @@ Each team will have its own projects dashboard, and the projects that you create
 in the team's dashboard will be accessible to all members of the team.
 
 To add more than 2 collaborators in your team, you can
-[upgrade to the **Basic**, **Teams** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+[upgrade to the **Basic** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).

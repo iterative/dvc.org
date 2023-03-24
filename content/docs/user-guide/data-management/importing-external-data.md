@@ -99,11 +99,13 @@ $ dvc stage add -n download_file \
           scp user@example.com:/path/to/data.txt data.txt
 ```
 
-⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
-Check that you can connect both ways with tools like `ssh` and `sftp`
-(GNU/Linux).
+<admon type="warn">
 
-> Note that your server's SFTP root might differ from its physical root (`/`).
+DVC requires both SSH and SFTP access to work with SSH remote storage. Check
+that you can connect both ways with tools like `ssh` and `sftp` (GNU/Linux).  
+Note that your server's SFTP root might differ from its physical root (`/`).
+
+</admon>
 
 </details>
 

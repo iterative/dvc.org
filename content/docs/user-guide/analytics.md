@@ -54,7 +54,7 @@ DVC's analytics are sent through DVC's proxy to Google Analytics over HTTPS.
 
 DVC analytics help the entire community, so leaving it on is appreciated.
 However, if you want to opt out of DVC's analytics, you can disable it via
-`dvc config` command:
+`dvc config` command (or setting [`core.analytics`] manually):
 
 ```cli
 $ dvc config core.analytics false
@@ -66,3 +66,5 @@ the active user or for everyone in the system, respectively.
 
 Another way to disable analytics is to set the environment variable
 `DVC_NO_ANALYTICS` (will override config).
+
+[`core.analytics`]: /doc/user-guide/project-structure/configuration#core

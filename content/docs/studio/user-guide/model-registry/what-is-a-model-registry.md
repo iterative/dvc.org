@@ -39,6 +39,7 @@ following interfaces:
 You can perform the following actions to the models in your model registry:
 
 - [Add models to the registry](/doc/studio/user-guide/model-registry/add-a-model)
+- [Download models from the registry](/doc/studio/user-guide/model-registry/download-models)
 - [Register new versions of the models](/doc/studio/user-guide/model-registry/register-version)
 - [Assign stages to model versions](/doc/studio/user-guide/model-registry/assign-stage)
 

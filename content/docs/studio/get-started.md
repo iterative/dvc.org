@@ -1,21 +1,16 @@
 # Get Started with Iterative Studio
 
-<admon>
-
-We have renamed DVC Studio to Iterative Studio.
-
-</admon>
-
-First, sign in to your [Iterative Studio](https://studio.iterative.ai/)
-dashboard using your GitHub.com, GitLab.com, or Bitbucket.org account, or with
-your email address.
+Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard using
+your GitHub.com, GitLab.com, or Bitbucket.org account, or with your email
+address. Upon sign-in, the Projects dashboard opens. It includes some `Demo`
+projects for you to explore.
 
 <admon type="tip">
 
 When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 [create a team] first, then go to the _Team settings_ to [change the plan]. To
-sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
-[pricing details]).
+sign up for the **Enterprise** plan, please [schedule a call] (see [pricing
+details]).
 
 </admon>
 
@@ -27,122 +22,91 @@ sign up for the **Teams** or **Enterprise** plan, please [schedule a call] (see
 
 </admon>
 
-## Explore demo project
+## Run and track experiments
 
-1. If this is the first time you are signing in to Iterative Studio, you will
-   see that there already exists a `Demo` project that connects to an example
-   repository. Use this project to explore the features that Iterative Studio
-   has to offer.
-
-![](https://static.iterative.ai/img/studio/login_home_v3.png) _When you first
-login, an example project is already created for you to explore, and you can add
-more projects._
-
-2. Each project on this dashboard displays the metrics that Iterative Studio
-   identified in your Git repository. In the figure above, you can see that
-   `avg_prec` and `roc_auc` metrics are displayed.
-
-## Add your projects
-
-1. To connect to a new repository, click on `Add a Project`. All the
-   organizations that you have access to will be listed.
-
-    <admon type="info">
-
-   If you do not see your desired organizations or Git repositories, make sure
-   that
+1. Iterative Studio works with Git repositories. So first, [prepare your Git
+   repositories] and make sure that
    [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
 
-   To connect to your GitHub repositories, you must install the Iterative Studio
-   GitHub app. Refer to the section on
-   [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
-   details.
+[prepare your git repositories]:
+  /doc/studio/user-guide/projects-and-experiments/what-is-a-project#prepare-your-repositories
 
-   To connect to repositories on your self-hosted GitLab server, you must first
-   add a connection to this server and create a team. Refer to the section on
-   [self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
-   for more details.
+2. Click on `Add a Project` and follow the on-screen instructions to search and
+   connect to the desired Git repository. You can `Skip and Continue` the
+   `Project settings`.
 
-    </admon>
+   <admon type="info">
 
-2. Open the organization whose repository you want to connect to. You can also
-   use the search bar to directly look for a repository.
+   Once the project is created, remember to [configure project
+   settings][project settings] if [needed][when do you need project settings].
 
-   ![](https://static.iterative.ai/img/studio/select_repo_v3.png)
+   </admon>
 
-3. Specify additional connection settings if required.
+3. Iterative Studio parses your project's `dvc.yaml` file to identify data,
+   metrics, plots and hyperparameters.
 
-   ![](https://static.iterative.ai/img/studio/project_settings.png)
+   If you are not using DVC, you can separately
+   [indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
+   However, we strongly recommend using DVC to avail of all the features of
+   Iterative Studio.
 
-> Project settings must be configured if you are connecting to a non-DVC
-> repository, if your metrics are in some custom files, if you are connecting to
-> a monorepo, or if your metrics are in cloud or other remote storage. However,
-> you can configure the project settings after the project has been created. So
-> you can `Skip and Continue` now. Refer to the [Project Settings] section for
-> more details.
+4. Each project on the Projects dashboard displays some of the metrics from your
+   Git repository (such as `avg_prec` and `roc_auc` in the following project).
 
-You should now see that a project has been added in your dashboard.
+   ![](https://static.iterative.ai/img/studio/project_card.png)
 
-4. If your project requires any of the additional settings, then remember to
-   configure them by opening the [project settings]. Otherwise, your project may
-   not work as expected. To go to project settings, click on the
-   ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
-   in the project. In the menu that opens up, click on `Settings`.
+5. Click on the project name to open the project table and [explore all your ML
+   experiments][explore ML experiments].
 
-![](https://static.iterative.ai/img/studio/project_open_settings.png)
+   ![](https://static.iterative.ai/img/studio/view_components.png)
 
-5. You can also [create multiple projects from a single Git repository].
+6. You can [submit new experiments] by changing hyperparameters and datasets.
+   This triggers model training if your repository has appropriate CI/CD actions
+   set up.
 
-## Explore and share your projects
+7. To [track live metrics and plots][live-metrics-and-plots] of running
+   experiments, set the `STUDIO_ACCESS_TOKEN` environment variable and use
+   [DVCLive] in your training pipeline.
 
-1. You can use the project to [explore ML experiments].
+## Manage models
 
-2. You can [create a team] and invite collaborators. Each team will have its own
-   projects dashboard. To create teams with more than 2 team members, [sign up
-   for the **Basic**, **Teams** or **Enterprise** plan].
-
-3. You can also [make your projects public].
-
-## Run experiments and get live updates
-
-1. You can use your project to [submit new experiments] from Iterative Studio.
-
-2. You can [track live metrics and plots][live-metrics-and-plots] by using
-   [DVCLive].
-
-## Use model registry
-
-1. Click on the `Models` tab to open the central [Models dashboard]. If any of
-   your projects contain [GTO-annotated models], they will be listed here
-   automatically.
+1. Click on the `Models` tab to open the central [Models dashboard]. Iterative
+   Studio uses your project's `artifacts.yaml` file to identify ML models and
+   specially formatted Git tags to identify model versions and stage
+   assignments.
 
    [models dashboard]:
      /doc/studio/user-guide/model-registry/view-models#models-dashboard
-   [gto-annotated models]: /doc/studio/user-guide/model-registry/add-a-model
 
-2. You can [add new models](/doc/studio/user-guide/model-registry/add-a-model)
-   to the model registry by clicking on the `Add a model` button and following
-   on-screen instructions. Models that are already in the repository as well as
-   models stored in remote (cloud) storages can be registered in this way.
+2. Click on the model name to
+   [open its details page](/doc/studio/user-guide/model-registry/view-models#model-details-page).
 
-3. To
-   [view the details](/doc/studio/user-guide/model-registry/view-models#model-details-page)
-   of a model, click on the name of the model.
+3. You can perform the following actions to manage the life cycle of models:
+   - [Register new models](/doc/studio/user-guide/model-registry/add-a-model)
+     from your Git repositories and remote (cloud) storages.
+   - [Register model versions](/doc/studio/user-guide/model-registry/register-version)
+   - [Assign stages](/doc/studio/user-guide/model-registry/assign-stage) (e.g.,
+     development, staging, production)
+   - Unassign stages, deregister versions or deprecate (remove) models
 
-4. You can
-   [register new versions](/doc/studio/user-guide/model-registry/register-version)
-   of the models and
-   [assign stages to them](/doc/studio/user-guide/model-registry/assign-stage)
-   (e.g., development, staging, production).
+## Collaborate
+
+1. You can [create a team] and invite collaborators. Each team will have its own
+   projects dashboard. To create teams with more than 2 team members, [sign up
+   for the **Basic** or **Enterprise** plan].
+
+2. You can also [make your projects public].
 
 [project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project
+[when do you need project settings]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#scenarios-where-project-settings-are-required
 [create multiple projects from a single git repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 [explore ml experiments]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
 [create a team]: /doc/studio/user-guide/teams
-[sign up for the **basic**, **teams** or **enterprise** plan]:
+[sign up for the **basic** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
 [make your projects public]:
   /doc/studio/user-guide/projects-and-experiments/share-a-project

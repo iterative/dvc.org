@@ -1,7 +1,8 @@
 # fetch
 
-Download files or directories from
-[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>.
+Download files or directories from [remote storage] to the <abbr>cache</abbr>.
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -17,12 +18,16 @@ positional arguments:
 
 ## Description
 
-Downloads tracked files and directories from remote storage into the
+Downloads tracked files and directories from a `dvc remote` into the
 <abbr>cache</abbr> (without placing them in the <abbr>workspace</abbr> like
 `dvc pull`). This makes the tracked data available for linking (or copying) into
 the workspace (see `dvc checkout`).
 
-Note that `dvc pull` already includes fetching:
+<admon type="tip">
+
+Note that `dvc pull` includes fetching.
+
+</admon>
 
 ```
 Tracked files                Commands
@@ -68,8 +73,7 @@ The `dvc remote` used is determined in order, based on
 
 ## Options
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to fetch from (see
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` to fetch from (see
   `dvc remote list`).
 
 - `-d`, `--with-deps` - only meaningful when specifying `targets`. This
@@ -81,9 +85,8 @@ The `dvc remote` used is determined in order, based on
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
   If there are no directories among the `targets`, this option has no effect.
 
-- `--run-cache` - downloads all available history of
-  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
-  the remote repository. See the same option in `dvc push`.
+- `--run-cache` - downloads all available history of [stage runs] from the
+  remote repository. See the same option in `dvc push`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. Note that the
@@ -109,6 +112,8 @@ The `dvc remote` used is determined in order, based on
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[stage runs]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 
@@ -145,10 +150,9 @@ The workspace looks like this:
     └── <code files here>
 ```
 
-This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
-into our local <abbr>cache</abbr>.
+This project comes with a predefined HTTP [remote storage]. We can now just run
+`dvc fetch` to download the most recent `model.pkl`, `data.xml`, and other
+DVC-tracked files into our local <abbr>cache</abbr>.
 
 ```cli
 $ dvc status --cloud

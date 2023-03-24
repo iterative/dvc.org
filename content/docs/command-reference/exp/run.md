@@ -1,8 +1,16 @@
 # exp run
 
-Run or resume a [DVC experiment].
+Run or resume a [DVC experiment] based on a [DVC pipeline].
 
 [dvc experiment]: /doc/user-guide/experiment-management
+[dvc pipeline]: /doc/user-guide/pipelines
+
+<admon type="info">
+
+When called with no arguments, this is equivalent to `dvc repro` followed by
+`dvc exp save`.
+
+</admon>
 
 ## Synopsis
 
@@ -20,13 +28,13 @@ positional arguments:
 
 ## Description
 
-Provides a way to execute and track <abbr>experiments</abbr> in your
-<abbr>project</abbr> without polluting it with unnecessary commits, branches,
-directories, etc.
+Executes and tracks <abbr>experiments</abbr> in your <abbr>repository</abbr>
+without polluting it with unnecessary Git commits, branches, directories, etc.
 
-<admon type="warn">
+<admon type="info">
 
-Only files tracked by either Git or DVC are saved to the experiment.
+Only files tracked by either Git or DVC are saved to the experiment. See
+`dvc exp save --include-untracked` for an alternative.
 
 </admon>
 
@@ -37,7 +45,6 @@ Only files tracked by either Git or DVC are saved to the experiment.
 
 This includes committing any changed data <abbr>dependencies</abbr> to the
 <abbr>DVC cache</abbr> when preparing the experiment, which can take some time.
-See the [Options](#options) section for the differences.
 
 </admon>
 
@@ -54,7 +61,7 @@ options have special uses for these.
 
 <admon icon="book">
 
-See the [Running Experiments] guide for more details on all these features.
+See the [Running Experiments] guide for more details on these features and more.
 
 </admon>
 
@@ -147,7 +154,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 [range]: https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep
 [unique name]:
   https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 
@@ -156,7 +162,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiment-management/experiments
+[our get started]: /doc/start/experiments
 
 </admon>
 

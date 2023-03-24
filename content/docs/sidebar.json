@@ -53,9 +53,9 @@
         ]
       },
       {
-        "slug": "experiment-management",
+        "slug": "experiments",
         "source": false,
-        "children": ["experiments", "visualization"]
+        "children": ["experiment-versioning", "experiment-management"]
       }
     ]
   },
@@ -113,6 +113,7 @@
             "label": ".dvcignore Files",
             "slug": "dvcignore-files"
           },
+          "configuration",
           {
             "label": "Internal Files",
             "slug": "internal-files"
@@ -124,7 +125,36 @@
         "source": "data-management/index.md",
         "children": [
           "large-dataset-optimization",
-          "remote-storage",
+          {
+            "slug": "remote-storage",
+            "source": "remote-storage/index.md",
+            "children": [
+              "amazon-s3",
+              "azure-blob-storage",
+              "google-cloud-storage",
+              "google-drive",
+              {
+                "label": "Aliyun OSS",
+                "slug": "aliyun-oss"
+              },
+              {
+                "label": "SSH & SFTP",
+                "slug": "ssh"
+              },
+              {
+                "label": "HDFS & WebHDFS",
+                "slug": "hdfs"
+              },
+              {
+                "label": "HTTP",
+                "slug": "http"
+              },
+              {
+                "label": "WebDAV",
+                "slug": "webdav"
+              }
+            ]
+          },
           "cloud-versioning",
           "importing-external-data",
           "managing-external-data"
@@ -155,7 +185,6 @@
         "source": false,
         "children": [
           "run-dvc-on-windows",
-          "setup-google-drive-remote",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
@@ -237,16 +266,16 @@
             "slug": "branch"
           },
           {
+            "label": "exp clean",
+            "slug": "clean"
+          },
+          {
             "label": "exp diff",
             "slug": "diff"
           },
           {
             "label": "exp gc",
             "slug": "gc"
-          },
-          {
-            "label": "exp init",
-            "slug": "init"
           },
           {
             "label": "exp list",
@@ -564,12 +593,10 @@
     "icon": "studio",
     "children": [
       "get-started",
-      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
-          "prepare-your-repositories",
           {
             "slug": "projects-and-experiments",
             "source": false,
@@ -594,19 +621,85 @@
               },
               "add-a-model",
               "view-models",
+              "download-models",
               "register-version",
               "assign-stage"
             ]
           },
-          "teams",
-          "change-team-plan-and-size",
+          {
+            "slug": "team-collaboration",
+            "source": false,
+            "children": ["teams", "change-team-plan-and-size"]
+          },
           "account-management",
           "billing-and-payment",
           "install-github-app",
           "connect-custom-gitlab-server"
         ]
       },
-      "troubleshooting"
+      "troubleshooting",
+      {
+        "slug": "self-hosting",
+        "source": false,
+        "children": [
+          {
+            "slug": "installation",
+            "source": "installation/index.md",
+            "children": [
+              {
+                "label": "AWS AMI",
+                "slug": "aws-ami"
+              },
+              {
+                "label": "Kubernetes (Helm)",
+                "slug": "k8s-helm"
+              }
+            ]
+          },
+          {
+            "slug": "configuration",
+            "source": "configuration/index.md",
+            "children": [
+              {
+                "label": "TLS certificates",
+                "slug": "tls"
+              },
+              {
+                "label": "CA certificates",
+                "slug": "ca"
+              },
+              {
+                "slug": "git-forges",
+                "source": "git-forges/index.md",
+                "children": [
+                  {
+                    "label": "GitHub",
+                    "slug": "github"
+                  },
+                  {
+                    "label": "GitLab",
+                    "slug": "gitlab"
+                  },
+                  {
+                    "label": "Bitbucket",
+                    "slug": "bitbucket"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "slug": "troubleshooting",
+            "source": false,
+            "children": [
+              {
+                "label": "502 Service Unavailable",
+                "slug": "502"
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {
@@ -615,115 +708,113 @@
     "source": "dvclive/index.md",
     "children": [
       {
-        "label": "Get Started",
-        "slug": "get-started"
-      },
-      {
         "slug": "how-it-works",
         "label": "How it Works"
       },
       {
-        "slug": "api-reference",
-        "source": "api-reference/index.md",
+        "slug": "live",
+        "label": "API Reference",
+        "source": "live/index.md",
         "children": [
           {
-            "slug": "live",
-            "label": "Live()",
-            "source": "api-reference/live/index.md",
-            "children": [
-              {
-                "slug": "end",
-                "label": "end()"
-              },
-              {
-                "slug": "log_image",
-                "label": "log_image()"
-              },
-              {
-                "slug": "log_metric",
-                "label": "log_metric()"
-              },
-              {
-                "slug": "log_param",
-                "label": "log_param()"
-              },
-              {
-                "slug": "log_params",
-                "label": "log_params()"
-              },
-              {
-                "slug": "log_sklearn_plot",
-                "label": "log_sklearn_plot()"
-              },
-              {
-                "slug": "make_dvcyaml",
-                "label": "make_dvcyaml()"
-              },
-              {
-                "slug": "make_report",
-                "label": "make_report()"
-              },
-              {
-                "slug": "make_summary",
-                "label": "make_summary()"
-              },
-              {
-                "slug": "next_step",
-                "label": "next_step()"
-              }
-            ]
+            "slug": "end",
+            "label": "end()"
           },
           {
-            "slug": "ml-frameworks",
-            "source": "dvclive/api-reference/ml-frameworks/index.md",
-            "children": [
-              {
-                "slug": "catalyst",
-                "label": "Catalyst"
-              },
-              {
-                "slug": "fastai",
-                "label": "Fast.ai"
-              },
-              {
-                "slug": "huggingface",
-                "label": "Hugging Face"
-              },
-              {
-                "slug": "keras",
-                "label": "Keras"
-              },
-              {
-                "slug": "lightgbm",
-                "label": "LightGBM"
-              },
-              {
-                "slug": "mmcv",
-                "label": "MMCV"
-              },
-              {
-                "slug": "pytorch",
-                "label": "PyTorch"
-              },
-              {
-                "slug": "pytorch-lightning",
-                "label": "PyTorch Lightning"
-              },
-              {
-                "slug": "tensorflow",
-                "label": "TensorFlow"
-              },
-              {
-                "slug": "xgboost",
-                "label": "XGBoost"
-              }
-            ]
+            "slug": "log_artifact",
+            "label": "log_artifact()"
           },
           {
-            "slug": "env",
-            "label": "Environment Variables"
+            "slug": "log_image",
+            "label": "log_image()"
+          },
+          {
+            "slug": "log_metric",
+            "label": "log_metric()"
+          },
+          {
+            "slug": "log_param",
+            "label": "log_param()"
+          },
+          {
+            "slug": "log_params",
+            "label": "log_params()"
+          },
+          {
+            "slug": "log_sklearn_plot",
+            "label": "log_sklearn_plot()"
+          },
+          {
+            "slug": "make_dvcyaml",
+            "label": "make_dvcyaml()"
+          },
+          {
+            "slug": "make_report",
+            "label": "make_report()"
+          },
+          {
+            "slug": "make_summary",
+            "label": "make_summary()"
+          },
+          {
+            "slug": "next_step",
+            "label": "next_step()"
           }
         ]
+      },
+      {
+        "slug": "ml-frameworks",
+        "source": "ml-frameworks/index.md",
+        "children": [
+          {
+            "slug": "catalyst",
+            "label": "Catalyst"
+          },
+          {
+            "slug": "fastai",
+            "label": "Fast.ai"
+          },
+          {
+            "slug": "huggingface",
+            "label": "Hugging Face"
+          },
+          {
+            "slug": "keras",
+            "label": "Keras"
+          },
+          {
+            "slug": "lightgbm",
+            "label": "LightGBM"
+          },
+          {
+            "slug": "mmcv",
+            "label": "MMCV"
+          },
+          {
+            "slug": "optuna",
+            "label": "Optuna"
+          },
+          {
+            "slug": "pytorch",
+            "label": "PyTorch"
+          },
+          {
+            "slug": "pytorch-lightning",
+            "label": "PyTorch Lightning"
+          },
+          {
+            "slug": "tensorflow",
+            "label": "TensorFlow"
+          },
+          {
+            "slug": "xgboost",
+            "label": "XGBoost"
+          }
+        ]
+      },
+      {
+        "slug": "env",
+        "label": "Environment Variables"
       }
     ]
   }

@@ -1,14 +1,5 @@
 # Cloud Versioning
 
-<admon type="warn">
-
-Cloud versioning features are currently under active development and should be
-considered experimental. These features are subject to frequent change, and the
-documentation may not always reflect changes available in the latest DVC
-release.
-
-</admon>
-
 When cloud versioning is enabled, DVC will store files in the remote according
 to their original directory location and filenames. Different versions of a file
 will then be stored as separate versions of the corresponding object in cloud
@@ -50,15 +41,35 @@ remote storage performance optimizations will be unavailable.
 Cloud versioning features are only avaible for certain storage providers.
 Currently, it is supported on the following `dvc remote` types:
 
-- Amazon S3 (requires
-  [S3 Versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html)
-  enabled buckets)
-- Microsoft Azure Blob Storage (requires
-  [Blob versioning](https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview)
-  enabled storage accounts and containers)
-- Google Cloud Storage (requires
-  [Object versioning](https://cloud.google.com/storage/docs/object-versioning)
-  enabled buckets)
+- [Amazon S3] (requires [S3 Versioning] enabled buckets)
+- Microsoft [Azure Blob Storage] (requires [Blob versioning] enabled storage
+  accounts and containers)
+- [Google Cloud Storage] (requires [Object versioning] enabled buckets)
+
+[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[s3 versioning]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
+[azure blob storage]:
+  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+[blob versioning]:
+  https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
+[google cloud storage]:
+  /doc/user-guide/data-management/remote-storage/google-cloud-storage
+[object versioning]: https://cloud.google.com/storage/docs/object-versioning
+
+Lifecycle management policies may delete object versions, in which case DVC will
+be unable to recover those versions. For more information about lifecycle
+management, see:
+
+- [Amazon S3]
+- Microsoft [Azure Blob Storage]
+- [Google Cloud Storage]
+
+[amazon s3]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html
+[azure blob storage]:
+  https://learn.microsoft.com/en-us/azure/storage/blobs/lifecycle-management-policy-configure
+[google cloud storage]: https://cloud.google.com/storage/docs/lifecycle
 
 ## Version-aware remotes
 

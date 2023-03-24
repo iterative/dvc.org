@@ -8,7 +8,7 @@ them for future execution, running them in parallel, among other details.
 If this is the first time you are introduced into data science experimentation,
 you may want to check the basics in [Get Started: Experiments] first.
 
-[get started: experiments]: /doc/start/experiment-management/experiments
+[get started: experiments]: /doc/start/experiments
 
 </admon>
 
@@ -53,11 +53,11 @@ once.
 <admon icon="book">
 
 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
-`dvc exp save` can be used to [save experiments] after running `dvc repro`
+`dvc exp save` can be used to capture experiments after executing ML processes
+manually.
 
 </admon>
 
-[save experiments]: /doc/command-reference/exp/save
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 
