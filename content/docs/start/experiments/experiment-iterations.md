@@ -72,7 +72,7 @@ Queueing with overrides '{'params.yaml': ['train.batch_size=24']}'.
 ```
 
 You can build a grid search by modifying multiple parameters. To better identify
-the experiments from the grid search, you can also provide a a
+the experiments from the grid search, you can also provide a
 [`--name`](/doc/command-reference/exp/run#--name):
 
 ```cli
