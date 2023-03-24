@@ -90,7 +90,7 @@ Learn more about [Stages](/doc/user-guide/pipelines/defining-pipelines#stages)
 By using `dvc stage add` multiple times and defining <abbr>outputs</abbr> of a
 stage as <abbr>dependencies</abbr> of another, you describe a sequence of
 commands which forms a
-[pipeline](https://dvc.org/doc/user-guide/pipelines/defining-pipelines), also
+[pipeline](/doc/user-guide/pipelines/defining-pipelines), also
 called a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 Let's create a `train` stage using
