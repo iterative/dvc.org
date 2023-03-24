@@ -1,11 +1,4 @@
-# Caching Stages
-
-DVC will try to avoid recomputing stages that have been
-[run](/doc/user-guide/running-pipelines) before. If you run a stage without
-changing the command, dependencies, or parameters, DVC will skip that stage. DVC
-will also recover the outputs from previous runs using the run cache.
-
-## Run Cache: Automatic Log of Stage Runs
+# Run Cache: Automatic Log of Stage Runs
 
 Every time you run a pipeline with DVC, it logs the unique signature of each
 stage run (in `.dvc/cache/runs`). If it never happened before, its command(s)
