@@ -6,21 +6,23 @@ branch.
 ## Synopsis
 
 ```usage
-usage: dvc exp branch [-h] [-q | -v] experiment branch
+usage: dvc exp branch [-h] [-q | -v] experiment [branch]
 
 positional arguments:
   experiment     Experiment to turn into a branch
-  branch         Name for the new Git branch
+  branch         Optional name for the new Git branch. Defaults to '{experiment-name}-branch'
 ```
 
 ## Description
 
-Creates a new [Git branch] containing the target `experiment`. The given
-`branch` name will be used. It will stem from the experiment's baseline (`HEAD`
-at the time the experiment was run).
+Creates a new [Git branch] containing the target `experiment` from the
+experiment's baseline (`HEAD` at the time the experiment was run).
 
 This turns the experiment into one or more [regular commits] (one per checkpoint
 in the case of [checkpoint experiments]).
+
+If you don't provide a `branch` name, the default one will be based on the name
+of the `experiment`.
 
 <admon type="info">
 
@@ -32,7 +34,7 @@ Note that DVC **does not** switch into the new `branch` automatically.
 the workspace so they can be continued, [stored and shared] in a normal Git +
 DVC workflow.
 
-To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
+To switch to the new branch, use `git checkout branch` and `dvc checkout`. Or
 use `git merge branch` and `dvc repro` to combine it with your current project
 version.
 
@@ -82,23 +84,22 @@ $ dvc exp show
  ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-We may want to branch-off `gluey-leak` for a separate experimentation process
-(based on 2000 `max_features`).
+We can create a branch from `gluey-leak`:
 
 ```cli
-$ dvc exp branch gluey-leak maxf-2000
-Git branch 'maxf-2000' has been created from experiment 'gluey-leak'.
+$ dvc exp branch gluey-leak
+Git branch 'gluey-leak-branch' has been created from experiment 'gluey-leak'.
 To switch to the new branch run:
-        git checkout my-branch
+        git checkout exp-gluey-leak
 ```
 
-We can inspect the result with Git:
+And inspect the result with Git:
 
 ```cli
 $ git branch
 * master
-  maxf-2000
+  gluey-leak-branch
 ```
 
-`maxf-2000` can now be checked out, merged, rebased, pushed, etc. like any other
-Git branch.
+`gluey-leak-branch` can now be checked out, merged, rebased, pushed, etc. like
+any other Git branch.
