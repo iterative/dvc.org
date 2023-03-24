@@ -22,11 +22,9 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [--rev <commit>]
 
 ## Description
 
-Displays experiments and
-[checkpoints](/doc/command-reference/exp/run#checkpoints) in a detailed table
-which includes their parent and name (or hash), as well as colored columns for
-(left to right): metrics (yellow), parameters (blue) and
-<abbr>dependencies</abbr> (violet).
+Displays experiments in a detailed table which includes their parent and name
+(or hash), as well as colored columns for (left to right): metrics (yellow),
+parameters (blue) and <abbr>dependencies</abbr> (violet).
 
 Only the experiments derived from the Git `HEAD` are shown by default but all
 experiments can be included with the `--all-commits` option. Example:

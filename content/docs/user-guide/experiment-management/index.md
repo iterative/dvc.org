@@ -74,7 +74,7 @@ you can follow one of these roads:
 
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
-[dvclive]: /doc/dvclive/get-started
+[dvclive]: /doc/dvclive
 
 ## Save metrics, plots, and parameters
 

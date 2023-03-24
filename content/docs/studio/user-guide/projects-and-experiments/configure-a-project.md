@@ -1,19 +1,10 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
-settings_ are now called _Project settings_; and so on.
-
-</admon>
-
 # Configure a Project
 
 You can configure additional settings for your projects. Some of these settings,
 such as project name, are optional. Some other settings, such as data remotes,
 may be required depending on how your Git repository has been set up.
 
-## Scenarios where projects settings are required
+## Scenarios where project settings are required
 
 If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize
@@ -25,12 +16,22 @@ Alternatively, you could create projects from:
 - Sub-directories in a monorepo
 - Custom files in your repository or remote/cloud storage
 
+If you are connecting to a non-DVC repository, if your metrics are in some
+custom files, if you are connecting to a monorepo, or if your metrics are in
+cloud or other remote storage, you will need to configure project settings.
+
 In each of these scenarios, you will need to configure additional settings for
 Iterative Studio to be able to access the data required for visualization.
 
 Additionally, you can also configure project settings to
 [change the name](#project-name) of your project and to
 [select columns](#columns) to import in your project.
+
+To go to project settings, click on the
+![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon in
+the project. In the menu that opens up, click on `Settings`.
+
+![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
 ### Non-DVC repositories
 

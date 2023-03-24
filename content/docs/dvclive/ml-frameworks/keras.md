@@ -90,4 +90,4 @@ model.fit(
         dir="custom_dir")])
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

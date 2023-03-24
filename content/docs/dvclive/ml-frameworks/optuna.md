@@ -56,8 +56,7 @@ study.optimize(
 
 In the
 [Optuna and Keras example](https://github.com/optuna/optuna-examples/blob/main/keras/keras_simple.py)
-you can use the
-[`dvclive.keras`](/doc/dvclive/api-reference/ml-frameworks/keras) callback:
+you can use the [`dvclive.keras`](/doc/dvclive/ml-frameworks/keras) callback:
 
 ```python
 from dvclive.keras import DVCLiveCallback
@@ -76,4 +75,4 @@ model.fit(
 )
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

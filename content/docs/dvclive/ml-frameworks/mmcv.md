@@ -58,4 +58,4 @@ log_config = dict(
 )
 ```
 
-[`live`]: /docs/dvclive/api-reference/live
+[`live`]: /doc/dvclive/live

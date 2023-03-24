@@ -283,10 +283,6 @@
             "slug": "gc"
           },
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
             "label": "exp list",
             "slug": "list"
           },
@@ -602,12 +598,10 @@
     "icon": "studio",
     "children": [
       "get-started",
-      "how-it-works",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
-          "prepare-your-repositories",
           {
             "slug": "projects-and-experiments",
             "source": false,
@@ -637,8 +631,11 @@
               "assign-stage"
             ]
           },
-          "teams",
-          "change-team-plan-and-size",
+          {
+            "slug": "team-collaboration",
+            "source": false,
+            "children": ["teams", "change-team-plan-and-size"]
+          },
           "account-management",
           "billing-and-payment",
           "install-github-app",
@@ -716,123 +713,113 @@
     "source": "dvclive/index.md",
     "children": [
       {
-        "label": "Get Started",
-        "slug": "get-started"
-      },
-      {
         "slug": "how-it-works",
         "label": "How it Works"
       },
       {
-        "slug": "api-reference",
-        "source": "api-reference/index.md",
+        "slug": "live",
+        "label": "API Reference",
+        "source": "live/index.md",
         "children": [
           {
-            "slug": "live",
-            "label": "Live()",
-            "source": "api-reference/live/index.md",
-            "children": [
-              {
-                "slug": "end",
-                "label": "end()"
-              },
-              {
-                "slug": "log_artifact",
-                "label": "log_artifact()"
-              },
-              {
-                "slug": "log_image",
-                "label": "log_image()"
-              },
-              {
-                "slug": "log_metric",
-                "label": "log_metric()"
-              },
-              {
-                "slug": "log_param",
-                "label": "log_param()"
-              },
-              {
-                "slug": "log_params",
-                "label": "log_params()"
-              },
-              {
-                "slug": "log_sklearn_plot",
-                "label": "log_sklearn_plot()"
-              },
-              {
-                "slug": "make_dvcyaml",
-                "label": "make_dvcyaml()"
-              },
-              {
-                "slug": "make_report",
-                "label": "make_report()"
-              },
-              {
-                "slug": "make_summary",
-                "label": "make_summary()"
-              },
-              {
-                "slug": "next_step",
-                "label": "next_step()"
-              }
-            ]
+            "slug": "end",
+            "label": "end()"
           },
           {
-            "slug": "ml-frameworks",
-            "source": "dvclive/api-reference/ml-frameworks/index.md",
-            "children": [
-              {
-                "slug": "catalyst",
-                "label": "Catalyst"
-              },
-              {
-                "slug": "fastai",
-                "label": "Fast.ai"
-              },
-              {
-                "slug": "huggingface",
-                "label": "Hugging Face"
-              },
-              {
-                "slug": "keras",
-                "label": "Keras"
-              },
-              {
-                "slug": "lightgbm",
-                "label": "LightGBM"
-              },
-              {
-                "slug": "mmcv",
-                "label": "MMCV"
-              },
-              {
-                "slug": "optuna",
-                "label": "Optuna"
-              },
-              {
-                "slug": "pytorch",
-                "label": "PyTorch"
-              },
-              {
-                "slug": "pytorch-lightning",
-                "label": "PyTorch Lightning"
-              },
-              {
-                "slug": "tensorflow",
-                "label": "TensorFlow"
-              },
-              {
-                "slug": "xgboost",
-                "label": "XGBoost"
-              }
-            ]
+            "slug": "log_artifact",
+            "label": "log_artifact()"
           },
           {
-            "slug": "env",
-            "label": "Environment Variables"
+            "slug": "log_image",
+            "label": "log_image()"
+          },
+          {
+            "slug": "log_metric",
+            "label": "log_metric()"
+          },
+          {
+            "slug": "log_param",
+            "label": "log_param()"
+          },
+          {
+            "slug": "log_params",
+            "label": "log_params()"
+          },
+          {
+            "slug": "log_sklearn_plot",
+            "label": "log_sklearn_plot()"
+          },
+          {
+            "slug": "make_dvcyaml",
+            "label": "make_dvcyaml()"
+          },
+          {
+            "slug": "make_report",
+            "label": "make_report()"
+          },
+          {
+            "slug": "make_summary",
+            "label": "make_summary()"
+          },
+          {
+            "slug": "next_step",
+            "label": "next_step()"
           }
         ]
+      },
+      {
+        "slug": "ml-frameworks",
+        "source": "ml-frameworks/index.md",
+        "children": [
+          {
+            "slug": "catalyst",
+            "label": "Catalyst"
+          },
+          {
+            "slug": "fastai",
+            "label": "Fast.ai"
+          },
+          {
+            "slug": "huggingface",
+            "label": "Hugging Face"
+          },
+          {
+            "slug": "keras",
+            "label": "Keras"
+          },
+          {
+            "slug": "lightgbm",
+            "label": "LightGBM"
+          },
+          {
+            "slug": "mmcv",
+            "label": "MMCV"
+          },
+          {
+            "slug": "optuna",
+            "label": "Optuna"
+          },
+          {
+            "slug": "pytorch",
+            "label": "PyTorch"
+          },
+          {
+            "slug": "pytorch-lightning",
+            "label": "PyTorch Lightning"
+          },
+          {
+            "slug": "tensorflow",
+            "label": "TensorFlow"
+          },
+          {
+            "slug": "xgboost",
+            "label": "XGBoost"
+          }
+        ]
+      },
+      {
+        "slug": "env",
+        "label": "Environment Variables"
       }
     ]
   }

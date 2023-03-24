@@ -81,8 +81,8 @@ Using `save_dvc_exp=True` will ensure that
 
 DVCLive signals the end of the experiment using `live.end()`. Using
 `with Live() as live:` or one of the integrations for
-[ML Frameworks](/doc/dvclive/api-reference/ml-frameworks) ensures that
-`live.end()` is automatically called when the experiment concludes successfully.
+[ML Frameworks](/doc/dvclive/ml-frameworks) ensures that `live.end()` is
+automatically called when the experiment concludes successfully.
 
 </admon>
 

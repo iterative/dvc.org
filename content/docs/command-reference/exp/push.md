@@ -5,15 +5,6 @@ to [remote storage].
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
-<admon type="warn">
-
-DVC can only authenticate with Git remotes using [SSH URLs].
-
-[ssh urls]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
-
-</admon>
-
 ## Synopsis
 
 ```usage

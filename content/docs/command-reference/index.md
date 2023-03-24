@@ -28,8 +28,7 @@ and its options/arguments (does not change directories in your terminal).
 
 ## Typical DVC workflow
 
-- Initialize a <abbr>DVC project</abbr> in a Git repo with `dvc init` or
-  `dvc exp init`.
+- Initialize a <abbr>DVC project</abbr> in a Git repo with `dvc init`.
 - Copy data files or dataset directories for modeling into the project and use
   `dvc add` to tell DVC to <abbr>cache</abbr> and track them.
 - Create a simple `dvc.yaml` file to codify a data processing
