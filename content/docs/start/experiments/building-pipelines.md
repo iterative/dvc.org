@@ -21,7 +21,7 @@ software engineering best practices:
 
 ## Creating stages
 
-In our example repo, we first split data preparation from the
+In our example repo, we first extract data preparation from the
 [original notebook](https://github.com/iterative/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
 into
 [`data_split.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/data_split.py).
