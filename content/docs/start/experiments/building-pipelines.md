@@ -89,9 +89,8 @@ Learn more about [Stages](/doc/user-guide/pipelines/defining-pipelines#stages)
 
 By using `dvc stage add` multiple times and defining <abbr>outputs</abbr> of a
 stage as <abbr>dependencies</abbr> of another, you describe a sequence of
-commands which forms a
-[pipeline](/doc/user-guide/pipelines/defining-pipelines), also
-called a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+commands which forms a [pipeline](/doc/user-guide/pipelines/defining-pipelines),
+also called a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 Let's create a `train` stage using
 [`train.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/train.py)
@@ -105,9 +104,9 @@ $ dvc stage add -n train \
   python src/train.py
 ```
 
-`dvc exp run` checks the `data_split` stage first and then the `train` stage since
-it depends on the <abbr>outputs</abbr> of `data_split`. If a stage has not changed
-or has been run before with the same <abbr>dependencies</abbr> and
+`dvc exp run` checks the `data_split` stage first and then the `train` stage
+since it depends on the <abbr>outputs</abbr> of `data_split`. If a stage has not
+changed or has been run before with the same <abbr>dependencies</abbr> and
 <abbr>parameters</abbr>, it will be
 [skipped](/doc/user-guide/pipelines/run-cache):
 
