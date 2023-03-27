@@ -16,7 +16,13 @@ The choice of ingress controller is up to you. We recommend the
 [ingress-nginx](https://kubernetes.github.io/ingress-nginx/) controller, but
 Studio will work on other ingress controllers as well.
 
-You'll also need to have the following CLI tools configured and installed:
+The cluster you're deploying Studio on should have the following minimum amount
+of resources available:
+
+- 16 GB RAM
+- 4 vCPUs
+
+Lastly, you'll need to have the following CLI tools configured and installed:
 
 - Helm
 - Kubectl
