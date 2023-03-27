@@ -20,6 +20,7 @@ The cluster you're deploying Studio on should have the following minimum amount
 of resources available:
 
 - 16 GB RAM
+- 100 GB disk space
 - 4 vCPUs
 
 Lastly, you'll need to have the following CLI tools configured and installed:
