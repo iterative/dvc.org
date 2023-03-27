@@ -55,7 +55,12 @@
       {
         "slug": "experiments",
         "source": false,
-        "children": ["experiment-versioning", "experiment-management"]
+        "children": [
+          "experiment-versioning",
+          "experiment-management",
+          "building-pipelines",
+          "experiment-iterations"
+        ]
       }
     ]
   },

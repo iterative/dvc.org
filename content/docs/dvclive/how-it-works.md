@@ -107,12 +107,6 @@ stages:
     deps:
       - <my_code_file.py>
     outs:
-      - dvclive/params.yaml:
-          cache: false
-      - dvclive/metrics.json:
-          cache: false
-      - dvclive/plots:
-          cache: false
       - model.pt
 ```
 
