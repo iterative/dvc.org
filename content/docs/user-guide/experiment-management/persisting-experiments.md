@@ -30,18 +30,16 @@ can create a new Git branch by specifying the experiment and giving a new name
 for it:
 
 ```cli
-$ dvc exp branch ochre-dook my-branch
-Git branch 'my-branch' has been created from experiment 'ochre-dook'.
-To switch to the new branch run:
-        git checkout my-branch
+$ dvc exp branch ochre-dook
+Git branch 'ochre-dook-branch' has been created from experiment 'ochre-dook'.
 ```
 
-Note that DVC doesn't switch into the new branch. You can create one or more
+Note that DVC doesn't switch to the new branch. You can create one or more
 branches from the existing experiments, and switch into any one manually like
 this:
 
 ```cli
-$ git checkout my-branch
+$ git checkout ochre-dook-branch
 $ dvc checkout
 ```
 
