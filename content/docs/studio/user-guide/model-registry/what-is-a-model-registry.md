@@ -36,6 +36,13 @@ following interfaces:
   [`model` columns](/doc/studio/user-guide/model-registry/view-models#model-columns-in-the-projects-experiment-table)
   that show the different models in that project’s Git repository.
 
+<admon type="tip">
+
+You can take a look at Iterative's [public model registry] to get a feel for
+what's possible.
+
+</admon>
+
 You can perform the following actions to the models in your model registry:
 
 - [Add models to the registry](/doc/studio/user-guide/model-registry/add-a-model)
@@ -54,3 +61,4 @@ to interpret Git tags for deploying the models to the desired environment.
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
 [`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[public model registry]: https://studio.iterative.ai/team/Iterative/models
