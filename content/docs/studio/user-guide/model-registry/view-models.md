@@ -26,8 +26,8 @@ If you have not used MLEM, then Iterative Studio will use a generic framework
 label (`G`) to indicate that the model framework was not identified, and that
 the model was registered using [GTO].
 
-You can take a look at the [models dashboard] in Iterative's public (read only) model
-registry.
+You can take a look at the [models dashboard] in Iterative's public (read only)
+model registry.
 
 ## Model details page:
 
@@ -65,8 +65,8 @@ A model details page is divided into the following sections:
   - the assigned stages for the different versions, and
   - the history of all version registration and stage assignment actions.
 
-You can find an example of a [model detail page] in Iterative's public (read only) model
-registry.
+You can find an example of a [model detail page] in Iterative's public (read
+only) model registry.
 
 ## Model columns in the project’s experiment table:
 

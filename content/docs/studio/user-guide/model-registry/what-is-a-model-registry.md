@@ -38,8 +38,8 @@ following interfaces:
 
 <admon type="tip">
 
-You can take a look at Iterative's [public model registry] (read only) to get a feel for
-what's possible.
+You can take a look at Iterative's [public model registry] (read only) to get a
+feel for what's possible.
 
 </admon>
 
