@@ -65,7 +65,7 @@ A model details page is divided into the following sections:
   - the assigned stages for the different versions, and
   - the history of all version registration and stage assignment actions.
 
-You can find an example of a [model detail page] in Iterative's public model
+You can find an example of a [model detail page] in Iterative's public (read only) model
 registry.
 
 ## Model columns in the project’s experiment table:
