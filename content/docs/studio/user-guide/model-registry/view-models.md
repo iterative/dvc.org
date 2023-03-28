@@ -26,7 +26,7 @@ If you have not used MLEM, then Iterative Studio will use a generic framework
 label (`G`) to indicate that the model framework was not identified, and that
 the model was registered using [GTO].
 
-You can take a look at the [models dashboard] in Iterative's public model
+You can take a look at the [models dashboard] in Iterative's public (read only) model
 registry.
 
 ## Model details page:
