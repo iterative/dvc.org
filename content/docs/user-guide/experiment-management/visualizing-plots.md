@@ -297,9 +297,8 @@ template from pre-defined ones.
 
 When you run [experiments] or otherwise update the data in the plots files,
 those updates will be automatically reflected in your visualizations. To
-[compare between experiments] or Git [revisions], you can use `dvc plots diff`,
-`dvc exp show --pcp`, or the [plots dashboard] from the [VS Code
-Extension][dvc extension].
+[compare between experiments] or Git [revisions], you can use `dvc plots diff`
+or the [plots dashboard] from the [VS Code Extension][dvc extension].
 
 ![](/img/plots_compare_vs_code.png)
 
