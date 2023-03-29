@@ -37,10 +37,6 @@ $ dvc exp run
 Reproduced experiment(s): matte-vies
 ```
 
-> ⚠️ Note that any changed dependencies are committed to the DVC cache when
-> preparing the experiment, which can take some time. `dvc exp gc` can clean up
-> unnecessary ones.
-
 DVC observes the [dependency graph] between stages, so it only runs the ones
 with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
 can limit this to certain [reproduction targets] or even single stages
