@@ -54,8 +54,7 @@ Major benefits of tracking experiment with DVC:
   <abbr>metrics</abbr>.
 - Use a controlled [execution mechanism]; Run one or queue many experiments (and
   run them in parallel if needed).
-- Create deep learning [checkpoints] from your code, and track
-  [live metrics](/doc/dvclive).
+- Track [live metrics](/doc/dvclive).
 - [Review and compare] results based on params or metrics; Restore them from
   <abbr>cache</abbr> or reproduce them from scratch.
 - Adopt or stay on a Git workflow ([distributed collaboration][shared]) and
@@ -63,7 +62,6 @@ Major benefits of tracking experiment with DVC:
 - Enable [Experiment Versioning] practices.
 
 [execution mechanism]: /doc/user-guide/experiment-management/running-experiments
-[checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [review and compare]:
   /doc/user-guide/experiment-management/comparing-experiments
 [experiment versioning]: /blog/ml-experiment-versioning

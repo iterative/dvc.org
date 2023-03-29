@@ -160,10 +160,6 @@ data science experiments.
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
 
-- `-c <path>`, `--checkpoints <path>` - the same as `-o` but also marks the
-  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). This
-  makes the stage incompatible with `dvc repro`.
-
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
   or more [parameter dependencies][param-deps] from a structured file `path`
   (`./params.yaml` by default). This is done by sending a comma separated list

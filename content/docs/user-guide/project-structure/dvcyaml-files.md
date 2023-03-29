@@ -395,20 +395,13 @@ These include a subset of the fields in `.dvc` file
 
 </admon>
 
-| Field        | Description                                                                                                                                                                                                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`. If any output of a stage has `cache: false`, the [<abbr>run cache</abbr> will be deactivated for that stage.                                         |
-| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
-| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
-| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
-| `push`       | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                                                                                      |
-
-<admon type="warn">
-
-Using the `checkpoint` field in `dvc.yaml` is not compatible with `dvc repro`.
-
-</admon>
+| Field     | Description                                                                                                                                                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cache`   | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`. If any output of a stage has `cache: false`, the [<abbr>run cache</abbr> will be deactivated for that stage. |
+| `remote`  | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                 |
+| `persist` | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                   |
+| `desc`    | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                      |
+| `push`    | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                                              |
 
 ## Templating
 

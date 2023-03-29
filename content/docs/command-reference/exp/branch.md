@@ -18,9 +18,6 @@ positional arguments:
 Creates a new [Git branch] containing the target `experiment` from the
 experiment's baseline (`HEAD` at the time the experiment was run).
 
-This turns the experiment into one or more [regular commits] (one per checkpoint
-in the case of [checkpoint experiments]).
-
 If you don't provide a `branch` name, the default one will be based on the name
 of the `experiment`.
 
@@ -41,7 +38,6 @@ version.
 [git branch]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [regular commits]: /doc/user-guide/experiment-management/persisting-experiments
-[checkpoint experiments]: /doc/command-reference/exp/run#checkpoints
 [stored and shared]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 
