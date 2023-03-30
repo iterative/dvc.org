@@ -15,7 +15,7 @@ For the status of <abbr>data pipelines</abbr>, see `dvc status`.
 usage: dvc data status [-h] [-q | -v]
                        [--granular] [--unchanged]
                        [--untracked-files [{no,all}]]
-                       [--json]
+                       [--json] [--remote-refresh]
 ```
 
 ## Description
@@ -60,6 +60,12 @@ DVC uncommitted changes:
   happen after cloning a DVC repository but before using `dvc pull` (or
   `dvc fetch`) to download the data; or after using `dvc gc`.
 
+- _Not in remote_ indicates that there are file hashes in `.dvc` or `dvc.lock`
+  files, but the corresponding <abbr>remote</abbr> files are missing. This may
+  happen after adding new files into dvc but before using `dvc push` to upload
+  the data; or after using `dvc gc -c`; or if index for remote is out-of-date,
+  in which case you should use `--remote-refresh` flag to refresh it.
+
 - _DVC committed changes_ are new, modified, or deleted tracked files or
   directories that have been [committed to DVC]. These may be ready for
   committing to Git.
@@ -90,6 +96,8 @@ default but this can be enabled with the `--granular` flag.
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
 - `--unchanged` - show unchanged DVC-tracked files.
+
+- `--remote-refresh` - refresh remote index.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable output.
@@ -132,6 +140,10 @@ that.
 $ dvc data status
 Not in cache:
   (use "dvc fetch <file>..." to download files)
+        data/data.xml
+
+Not in remote:
+  (use "dvc push <file>..." to upload files)
         data/data.xml
 
 DVC committed changes:
