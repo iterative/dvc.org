@@ -44,8 +44,9 @@ Learn more about [remote storage].
 `dvc remote` subcommands read or modify DVC [config files] (`.dvc/config` by
 default). Alternatively, the config files can be edited manually.
 
-[types of storage]: /doc/command-reference/remote/add#supported-storage-types
-[config files]: /doc/command-reference/config
+[types of storage]:
+  /doc/user-guide/data-management/remote-storage#supported-storage-types
+[config files]: /doc/user-guide/project-structure/configuration
 
 ## Options
 

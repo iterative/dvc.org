@@ -42,8 +42,8 @@ $ dvc update --rev master
 ## Options
 
 - `--rev <version>` - commit hash, branch or tag name, etc. (any [Git revision])
-  of the repository to update the file or directory from. The latest commit in
-  `master` (tip of the default branch) is used by default.
+  of the repository to update the file or directory from. The latest commit (in
+  the default branch) is used by default.
 
   For data obtained with `dvc import-url --version-aware`, this option can be
   used to specify an object version ID. By default, the current version from
@@ -67,9 +67,8 @@ $ dvc update --rev master
   specified with -r) without saving it locally. Use `dvc pull` to get the data
   locally.
 
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) (can only be used with
-  `--to-remote`).
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` (can only be used
+  with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may

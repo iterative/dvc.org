@@ -3,15 +3,15 @@
 > Alias of `dvc experiments`.
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
-[init](/doc/command-reference/exp/init), [run](/doc/command-reference/exp/run),
-[show](/doc/command-reference/exp/show),
+[run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
 [remove](/doc/command-reference/exp/remove),
-[gc](/doc/command-reference/exp/gc), [push](/doc/command-reference/exp/list),
-[pull](/doc/command-reference/exp/pull), and
-[list](/doc/command-reference/exp/list).
+[gc](/doc/command-reference/exp/gc), [push](/doc/command-reference/exp/push),
+[pull](/doc/command-reference/exp/pull),
+[list](/doc/command-reference/exp/list), and
+[clean](/doc/command-reference/exp/clean).
 
 > Requires that Git is being used to version the project.
 
@@ -19,24 +19,23 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 
 ```usage
 usage: dvc exp [-h] [-q | -v]
-          {show,apply,diff,run,gc,branch,list,push,pull,remove,init}
+          {show,apply,diff,run,gc,branch,list,push,pull,remove,init,clean}
           ...
 
 positional arguments:
   COMMAND
-    init                Quickly setup any project to use DVC Experiments.
-    run                 Reproduce complete or partial experiment pipelines.
     show                Print experiments.
-    diff                Show changes between experiments in the DVC
-                        repository.
-    list                List local and remote experiments.
-    apply               Apply the changes from an experiment to your
-                        workspace.
+    run                 Run or resume an experiment.
+    apply               Apply the changes from an experiment to your workspace.
     branch              Promote an experiment to a Git branch.
-    remove              Remove local experiments.
+    clean               Cleanup experiments temporary internal files.
+    diff                Show changes between experiments.
     gc                  Garbage collect unneeded experiments.
-    push                Push a local experiment to a Git remote.
+    list                List local and remote experiments.
     pull                Pull an experiment from a Git remote.
+    push                Push a local experiment to a Git remote.
+    remove              Remove experiments.
+    save                Save current workspace as an experiment.
 ```
 
 ## Description

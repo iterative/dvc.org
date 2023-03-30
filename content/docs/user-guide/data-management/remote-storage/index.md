@@ -32,7 +32,7 @@ read and write to the [`remote`] section of the project's config file
 
 For example, let's define a remote storage location on an S3 bucket:
 
-[`remote`]: /doc/command-reference/config#remote
+[`remote`]: /doc/user-guide/project-structure/configuration#remote
 
 ```cli
 $ dvc remote add myremote s3://mybucket
@@ -96,8 +96,8 @@ team.
 
 - [Amazon S3] (AWS) and [S3-compatible] e.g. MinIO
 - Microsoft [Azure Blob Storage]
-- [Google Drive]
 - [Google Cloud Storage] (GCP)
+- [Google Drive]
 - [Aliyun OSS]
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
@@ -105,27 +105,27 @@ team.
   /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 [azure blob storage]:
   /doc/user-guide/data-management/remote-storage/azure-blob-storage
-[google drive]: /doc/command-reference/remote/modify#google-drive
 [google cloud storage]:
   /doc/user-guide/data-management/remote-storage/google-cloud-storage
-[aliyun oss]: /doc/command-reference/remote/modify#aliyun-oss
+[google drive]: /doc/user-guide/data-management/remote-storage/google-drive
+[aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
 
 ### Self-hosted / On-premises
 
-- [SSH servers]; Like `scp`
+- [SSH] & SFTP (like `scp`)
 - [HDFS] & [WebHDFS]
 - [HTTP]
 - [WebDAV]
 
-[ssh servers]: /doc/command-reference/remote/modify#ssh
-[hdfs]: /doc/command-reference/remote/modify#hdfs
-[webhdfs]: /doc/command-reference/remote/modify#webhdfs
-[http]: /doc/command-reference/remote/modify#http
-[webdav]: /doc/command-reference/remote/modify#webdav
+[ssh]: /doc/user-guide/data-management/remote-storage/ssh
+[hdfs]: /doc/user-guide/data-management/remote-storage/hdfs
+[webhdfs]: /doc/user-guide/data-management/remote-storage/hdfs#webhdfs
+[http]: /doc/user-guide/data-management/remote-storage/http
+[webdav]: /doc/user-guide/data-management/remote-storage/webdav
 
 ## File systems (local remotes)
 
-<admon type="tip">
+<admon type="info">
 
 Not related to the `--local` option of `dvc remote` and `dvc config`!
 

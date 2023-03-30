@@ -43,6 +43,13 @@ remote storage] first (e.g. Amazon S3 or SSH).
 Check that you have the necessary remotes with `git remote -v` and (optionally)
 `dvc remote list`.
 
+For problems accessing the Git remote, see the [remote storage] guide.
+
+For problems accessing the DVC remote, see [troubleshooting].
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[troubleshooting]: /doc/user-guide/troubleshooting#git-auth
+
 </admon>
 
 You can upload an experiment using `dvc exp push --no-cache`, which takes a Git
@@ -102,15 +109,13 @@ commit (we use `dvc exp branch` below) and [share it][sharing-data] like any
 project version.
 
 ```cli
-$ dvc exp branch quare-zips my-branch
-Git branch 'my-branch' has been created from experiment 'quare-zips'.
-To switch to the new branch run:
-        git checkout my-branch
+$ dvc exp branch quare-zips
+Git branch 'quare-zips-branch' has been created from experiment 'quare-zips'.
 
-$ git checkout my-branch
-Switched to branch 'my-branch'
+$ git checkout quare-zips-branch
+Switched to branch 'quare-zips-branch'
 
-$ git push origin my-branch
+$ git push origin quare-zips-branch
 ```
 
 If you only need to share code and metadata (like parameters and metrics), then

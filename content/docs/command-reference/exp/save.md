@@ -84,7 +84,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiment-management/experiments
+[our get started]: /doc/start/experiments
 
 </admon>
 

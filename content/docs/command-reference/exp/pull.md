@@ -1,16 +1,9 @@
 # exp pull
 
 Download [experiments](/doc/command-reference/exp) from a Git remote, and their
-data from a `dvc remote`.
+data from [remote storage].
 
-<admon type="warn">
-
-DVC can only authenticate with Git remotes using [SSH URLs].
-
-[ssh urls]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
-
-</admon>
+[remote storage]: /doc/user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -27,7 +20,7 @@ positional arguments:
 ## Description
 
 The `dvc exp push` and `dvc exp pull` commands are the means for [sharing
-experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
+experiments] across <abbr>repository</abbr> copies via Git and [remote storage].
 
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -39,17 +32,21 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
 one or more `experiment` names or hashes (see `dvc exp run`) to pull.
 
-The first action of `dvc exp pull` is to download the `experiments` so they are
-available in the local repository (equivalent to
+The first action of `dvc exp pull` is to download the `experiments` from the Git
+remote so they are available in the local repository (equivalent to
 `git fetch <git_remote> refs/exps/<experiment>`). Use `dvc exp show` to explore
 your local experiments.
 
-By default, this command will also try to [pull](/doc/command-reference/pull)
-all <abbr>cached</abbr> data associated with the experiments to DVC
-[remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
+By default, this command will also try to `dvc pull` all <abbr>cached</abbr>
+data associated with the experiments to [remote storage], unless `--no-cache` is
+used.
 
-> 💡 Note that `git push <git_remote> --delete <experiment>` can be used to
-> delete a pushed experiment.
+<admon type="tip">
+
+Note that `git push <git_remote> --delete <experiment>` can be used to delete a
+pushed experiment.
+
+</admon>
 
 ## Options
 
@@ -70,11 +67,10 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
   from DVC remote storage.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to pull cached files
-  to.
+  from.
 
-- `--run-cache` - downloads all available history of
-  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
-  the `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
+- `--run-cache` - downloads all available history of [stage runs] from the
+  `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
   `dvc exp run <stage_name>` is necessary to checkout these files.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
@@ -90,6 +86,8 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
 
+[stage runs]: /doc/user-guide/project-structure/internal-files#run-cache
+
 ## Examples
 
 <admon type="info">
@@ -97,7 +95,7 @@ all <abbr>cached</abbr> data associated with the experiments to DVC
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiment-management/experiments
+[our get started]: /doc/start/experiments
 
 </admon>
 

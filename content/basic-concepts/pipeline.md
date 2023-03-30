@@ -1,6 +1,6 @@
 ---
 name: Pipeline
-match: [pipeline, pipelines, 'data pipeline', 'data pipelines']
+match: [pipeline, pipelines, 'data pipeline', 'data pipelines', 'dvc pipelines']
 tooltip: >-
   DVC pipelines describe data processing workflows in a standard declarative
   YAML format ([`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files)).

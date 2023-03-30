@@ -85,28 +85,8 @@ the training process. To enable this, you will need to set up a
 
 Now we need to add a training stage to `dvc.yaml` including `checkpoint: true`
 in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
-to use to resume the experiment later (a circular dependency). We'll do this
-with `dvc exp init --live`.
-
-```cli
-$ dvc exp init --live 'dvclive' \
---data 'data/MNIST' \
---code 'train.py' \
---model 'model.pt' \
---type 'checkpoint' \
-python train.py
-```
-
-The `--live` option configures where the [DVCLive](/doc/dvclive) logs (produced
-by the training process) will go. `--type 'checkpoint'` is used to enable DVC
-checkpoints. The checkpoint file, specified with `--model 'model.pt'`, is an
-output from one checkpoint that becomes a dependency for the next checkpoint.
-The other options (`--data` and `--code`) set up our dependencies for running
-the training code, whose parameters we want to track (by default everything
-inside `params.yaml`).
-
-After running the command above to setup your _train_ stage, your _dvc.yaml_
-should have the following code.
+to use to resume the experiment later (a circular dependency). We'll use this
+_dvc.yaml_ file:
 
 ```yaml
 stages:

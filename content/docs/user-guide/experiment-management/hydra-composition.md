@@ -74,8 +74,8 @@ defaults:
 
 <admon type="tip">
 
-Use [`dvc config hydra`](/doc/command-reference/config#hydra) options to change
-the default locations for the config groups directory and defaults list file.
+Use `dvc config hydra` options to change the default locations for the config
+groups directory and defaults list file.
 
 </admon>
 
@@ -209,15 +209,13 @@ $ dvc queue start
 Note that DVC keeps a cache of all runs, so many permutations will be completed
 without actually having to run the experiment. In the above example, the
 experiment with `['optimizer=sgd', 'model=resnet']` will not waste computing
-time because the results are already in the [run-cache]. You can confirm this
-with `dvc queue logs`:
+time because the results are already in the <abbr>run cache</abbr>. You can
+confirm this with `dvc queue logs`:
 
 ```
 $ dvc queue logs 0b443d8
 Stage 'setup-dataset' didn't change, skipping
 Stage 'train' didn't change, skipping
 ```
-
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 </admon>

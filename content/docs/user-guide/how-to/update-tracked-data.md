@@ -46,12 +46,11 @@ Add the new version of the file back with DVC:
 
 ```cli
 $ dvc add train.tsv
+$ dvc push # If you have remote storage.
+
 $ git add train.tsv.dvc
 $ git commit -m "modify train data"
-
-# If you have remote storage and/or an upstream repo:
-$ dvc push
-$ git push
+$ git push # If you have an upstream repo.
 ```
 
 ## Replacing files

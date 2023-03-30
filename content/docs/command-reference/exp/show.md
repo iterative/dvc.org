@@ -17,16 +17,14 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [--rev <commit>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
-                    [--pcp] [--only-changed]
+                    [--pcp] [--only-changed] [-f]
 ```
 
 ## Description
 
-Displays experiments and
-[checkpoints](/doc/command-reference/exp/run#checkpoints) in a detailed table
-which includes their parent and name (or hash), as well as colored columns for
-(left to right): metrics (yellow), parameters (blue) and
-<abbr>dependencies</abbr> (violet).
+Displays experiments in a detailed table which includes their parent and name
+(or hash), as well as colored columns for (left to right): metrics (yellow),
+parameters (blue) and <abbr>dependencies</abbr> (violet).
 
 Only the experiments derived from the Git `HEAD` are shown by default but all
 experiments can be included with the `--all-commits` option. Example:
@@ -168,6 +166,12 @@ $ dvc exp show ...
   automatically. You can enable `dvc config plots.auto_open` to make this the
   default behavior.
 
+- `-f`, `--force` - force re-collection of experiments instead of loading from
+  internal experiments cache. DVC caches `exp show` table data for completed
+  experiments to improve performance of subsequent `exp show` calls. When
+  `--force` is specified, DVC will reload all experiment data and ignore any
+  previously cached results.
+
 ## Examples
 
 <admon type="info">
@@ -175,7 +179,7 @@ $ dvc exp show ...
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiment-management/experiments
+[our get started]: /doc/start/experiments
 
 </admon>
 

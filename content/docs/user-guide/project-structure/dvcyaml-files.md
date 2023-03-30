@@ -217,12 +217,11 @@ Surround the command with double quotes `"` if it includes special characters
 like `|` or `<`, `>`. Use single quotes `'` instead if there are environment
 variables in it that should be evaluated dynamically.
 
-The same applies to the `command` argument for helper commands (`dvc stage add`,
-`dvc exp init`), otherwise they would apply to the DVC call itself:
+The same applies to the `command` argument for helper commands
+(`dvc stage add`), otherwise they would apply to the DVC call itself:
 
 ```cli
 $ dvc stage add -n a_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc exp init './another_script.sh $MYENVVAR'
 ```
 
 <admon type="tip">
@@ -398,7 +397,7 @@ These include a subset of the fields in `.dvc` file
 
 | Field        | Description                                                                                                                                                                                                                                                                       |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`. If any output of a stage has `cache: false`, the [<abbr>run-cache</abbr> will be deactivated for that stage.                                         |
+| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`. If any output of a stage has `cache: false`, the [<abbr>run cache</abbr> will be deactivated for that stage.                                         |
 | `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
 | `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
 | `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
