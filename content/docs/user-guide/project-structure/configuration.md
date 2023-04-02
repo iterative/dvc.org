@@ -111,6 +111,11 @@ within:
   <abbr>DVC files</abbr> created or modified by DVC commands. The files will not
   be committed. Accepts values `true` and `false` (default).
 
+- `core.site_cache_dir` - override
+  [platformdirs.site_cache_dir](https://platformdirs.readthedocs.io/en/latest/api.html#platformdirs.site_cache_dir)
+  used for storing temporary files. This option has nothing to do with DVC
+  cache, and is only used for optimization similar to `.dvc/tmp`.
+
 </details>
 
 <details>
