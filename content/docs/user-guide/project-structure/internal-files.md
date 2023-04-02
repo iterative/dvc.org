@@ -51,36 +51,6 @@ Not to be confused with `.dvc` files.
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
-- `.dvc/tmp/index`: Directory for remote index files that are used for
-  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations.
-
-  <admon type="info">
-
-  This location may be overridden with `dvc config index.dir`.
-
-  </admon>
-
-- `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
-  state database that stores hash values for files tracked in a DVC project. It
-  also saves the corresponding timestamps and inodes to avoid unnecessary file
-  hash computations.
-
-  <admon type="info">
-
-  This parent location may be overridden with `dvc config state.dir`.
-
-  </admon>
-
-- `.dvc/tmp/links`: This directory is used to clean up your workspace when
-  calling `dvc checkout`. It contains a SQLite state database that stores a list
-  of file links created by DVC (from cache to <abbr>workspace</abbr>).
-
-  <admon type="info">
-
-  This parent location may be overridden with `dvc config state.dir`.
-
-  </admon>
-
 - `.dvc/tmp/updater`: This file is used to store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
   behind.
@@ -214,3 +184,37 @@ unexpected behavior]).
 
 [avoiding unexpected behavior]:
   /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+
+## Site cache dir
+
+Directory used for storing temporary files.
+
+Default location:
+
+| macOS                 | Linux (typical\*) | Windows                        |
+| --------------------- | ----------------- | ------------------------------ |
+| `/Library/Caches/dvc` | `/var/tmp/dvc`    | `C:\ProgramData\iterative\dvc` |
+
+<admon type="info">
+
+This location may be overridden with `dvc config core.site_cache_dir`.
+
+</admon>
+
+<admon type="warn">
+
+Not to be confused with DVC <abbr>cache</abbr>.
+
+</admon>
+
+- `index`: Directory for remote index files that are used for optimizing
+  `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations.
+
+- `hashes`: This directory is used for optimization. It contains a SQLite state
+  database that stores hash values for files tracked in a DVC project. It also
+  saves the corresponding timestamps and inodes to avoid unnecessary file hash
+  computations.
+
+- `links`: This directory is used to clean up your workspace when calling
+  `dvc checkout`. It contains a SQLite state database that stores a list of file
+  links created by DVC (from cache to <abbr>workspace</abbr>).
