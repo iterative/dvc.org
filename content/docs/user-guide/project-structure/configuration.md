@@ -365,6 +365,12 @@ Composition].
 
 ## state
 
+<admon type="warn">
+
+This section is obsolete. Modifying these config options will have no effect.
+
+</admon>
+
 - `state.row_limit` - maximum number of entries in state databases. This affects
   the physical size of the state files, as well as the performance of certain
   DVC operations. The default is 10,000,000 rows. The bigger the limit, the
@@ -384,6 +390,12 @@ Composition].
 <details>
 
 ## index
+
+<admon type="warn">
+
+This section is obsolete. Modifying these config options will have no effect.
+
+</admon>
 
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
