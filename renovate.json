@@ -6,7 +6,7 @@
     "group:linters",
     "group:postcss",
     "helpers:disableTypesNodeMajor",
-    ":reviewers(team:websites)",
+    ":reviewer(team:websites)",
     ":enableVulnerabilityAlerts",
     ":label(dependencies)"
   ],
