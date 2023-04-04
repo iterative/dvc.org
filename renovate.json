@@ -1,10 +1,38 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "group:allNonMajor"],
+  "extends": [
+    "config:base",
+    ":pinAllExceptPeerDependencies",
+    "group:linters",
+    "group:postcss",
+    "helpers:disableTypesNodeMajor",
+    ":reviewers(team:websites)",
+    ":enableVulnerabilityAlerts",
+    ":label(dependencies)"
+  ],
   "packageRules": [
     {
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "branch",
+      "schedule": ["on tuesday every 2 weeks"]
+    },
+    {
+      "matchPackagePatterns": ["*"],
+      "prConcurrentLimit": 3,
+      "stabilityDays": 7,
+      "matchDatasources": ["npm"],
+      "schedule": ["on tuesday"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
       "matchPackagePatterns": ["@dvcorg", "iterative"],
-      "groupName": "Iterative Packages"
+      "additionalBranchPrefix": "iterative-package-",
+      "prCreation": "immediate"
     }
   ]
 }
