@@ -109,15 +109,13 @@ commit (we use `dvc exp branch` below) and [share it][sharing-data] like any
 project version.
 
 ```cli
-$ dvc exp branch quare-zips my-branch
-Git branch 'my-branch' has been created from experiment 'quare-zips'.
-To switch to the new branch run:
-        git checkout my-branch
+$ dvc exp branch quare-zips
+Git branch 'quare-zips-branch' has been created from experiment 'quare-zips'.
 
-$ git checkout my-branch
-Switched to branch 'my-branch'
+$ git checkout quare-zips-branch
+Switched to branch 'quare-zips-branch'
 
-$ git push origin my-branch
+$ git push origin quare-zips-branch
 ```
 
 If you only need to share code and metadata (like parameters and metrics), then

@@ -5,6 +5,13 @@ to [remote storage].
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
+<admon type="warn">
+
+`dvc exp push` is not supported with
+[`version_aware` DVC remotes](/doc/user-guide/data-management/cloud-versioning).
+
+</admon>
+
 ## Synopsis
 
 ```usage

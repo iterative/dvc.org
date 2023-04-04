@@ -55,7 +55,7 @@ run a pipeline, its topology should be _acyclic_ -- because executing cycles
 
 Use `dvc dag` to visualize (or export) them.
 
-[more about dags]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
+[more about dags]: /doc/user-guide/pipelines/running-pipelines#dag
 
 </details>
 

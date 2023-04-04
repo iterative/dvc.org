@@ -55,7 +55,12 @@
       {
         "slug": "experiments",
         "source": false,
-        "children": ["experiment-versioning", "experiment-management"]
+        "children": [
+          "experiment-versioning",
+          "experiment-management",
+          "building-pipelines",
+          "experiment-iterations"
+        ]
       }
     ]
   },
@@ -163,7 +168,7 @@
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines", "run-cache"]
+        "children": ["defining-pipelines", "running-pipelines", "run-cache"]
       },
       {
         "label": "Experiment Management",

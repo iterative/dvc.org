@@ -1,8 +1,8 @@
 ---
 title: 'Get Started: Experiment Management'
 description:
-  'Get started with managing experiments with DVC. Manage your experiments and
-  share them with others using software engineering best practices.'
+  'Manage your experiments and share them with others using software engineering
+  best practices.'
 ---
 
 # Get Started: Experiment Management
@@ -71,7 +71,8 @@ You can use `dvc exp branch`, providing the name of the experiment and the
 future branch:
 
 ```cli
-$ dvc exp branch "soupy-leak" "soupy-leak"
+$ dvc exp branch "soupy-leak"
+Git branch 'soupy-leak-branch' has been created from experiment 'soupy-leak'.
 ```
 
 </tab>
@@ -92,7 +93,7 @@ experiments, like creating
 [Pull Requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests):
 
 ```cli
-$ gh pr create -H soupy-leak --title "Experiment: soupy-leak"
+$ gh pr create -H soupy-leak-branch --title "Experiment: soupy-leak"
 ```
 
 <admon type="info">
