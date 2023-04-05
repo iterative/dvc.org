@@ -156,3 +156,14 @@ Upgrade to a newer version of DVC to resolve these errors.
 
 Try the command manually. For example, if you are trying `git commit` and the dvc-pre-commit hook failed, 
 try to execute the command `dvc commit`.
+
+If that doesn't help, edit your `.pre-commit-config.yaml` file to define `args` and `entry` definition for the hook:
+
+```cli
+    - id: dvc-pre-commit
+      language_version: python3
+      stages: [commit]
+      args: ["-vv", "commit"]
+      entry: dvc -v commit
+```
+
