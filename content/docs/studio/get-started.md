@@ -50,8 +50,10 @@ details]).
    However, we strongly recommend using DVC to avail of all the features of
    Iterative Studio.
 
-4. Each project on the Projects dashboard displays some of the metrics from your
-   Git repository (such as `avg_prec` and `roc_auc` in the following project).
+4. Each project on the Projects dashboard displays the metrics of the first
+   three columns in your project (such as `avg_prec` and `roc_auc` in the
+   following project). You can change which metrics are shown here by reordering
+   columns in the project table.
 
    ![](https://static.iterative.ai/img/studio/project_card.png)
 
