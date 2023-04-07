@@ -27,6 +27,17 @@ const CompanyLogos = () => {
       </div>
       <div className={logoClass}>
         <StaticImage
+          src="./logos/billie.svg"
+          alt="Billie logo"
+          width={sm}
+          loading="eager"
+          layout="fixed"
+          objectFit="contain"
+          className={logoImageClass}
+        />
+      </div>
+      <div className={logoClass}>
+        <StaticImage
           src="./logos/cyclica.png"
           alt="Cyclica logo"
           width={md}
@@ -117,7 +128,7 @@ const CompanyLogos = () => {
         <StaticImage
           src="./logos/sicara.png"
           alt="Sicara logo"
-          height={sm}
+          width={sm}
           loading="eager"
           layout="fixed"
           objectFit="contain"
