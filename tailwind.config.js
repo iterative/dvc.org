@@ -15,6 +15,16 @@ module.exports = {
         gray: { hover: '#40364d', dark: 'rgb(26, 30, 35)' },
         purple: { DEFAULT: '#945dd6' },
         blue: { DEFAULT: 'rgb(56, 179, 220)' }
+      },
+      keyframes: {
+        slide: {
+          '0%': { transform: 'translate3d(0, 0, 0)' },
+          '100%': { transform: 'translate3d(-50%, 0, 0)' }
+        }
+      },
+      animation: {
+        slide: 'slide 80s linear infinite',
+        'slide-fast': 'slide 40s linear infinite'
       }
     },
     fontFamily: {
