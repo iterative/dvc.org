@@ -13,8 +13,8 @@ with a remote computer, which lets you safely transfer files to and from it
 (like [`scp`]), among other features. Other operations can be used on top of
 SSH, like FTP (simple file transfer protocol) which becomes secure or [SFTP].
 
-[SSH]: https://www.ssh.com/academy/ssh
-[SFTP]: https://www.ssh.com/academy/ssh/sftp-ssh-file-transfer-protocol
+[ssh]: https://www.ssh.com/academy/ssh
+[sftp]: https://www.ssh.com/academy/ssh/sftp-ssh-file-transfer-protocol
 [`scp`]: https://www.ssh.com/academy/ssh/scp
 
 </details>
@@ -29,7 +29,7 @@ $ dvc remote add -d myremote ssh://user@example.com:2222/path
 ```
 
 [ssh server]: https://www.ssh.com/academy/ssh/server
-[SSH URL]: https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax
+[ssh url]: https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax
 
 <admon type="warn">
 
@@ -110,6 +110,23 @@ $ dvc remote modify myremote ask_password true
 
   Using GSS requires `paramiko[gssapi]`, which is only supported currently by
   the DVC pip package (installed with `pip install 'dvc[ssh_gssapi]'`).
+
+  </admon>
+
+- `jobs` - change the default number of processes for remote storage
+  synchronization operations (see the `--jobs` option of `dvc push`, `dvc pull`,
+  `dvc get`, `dvc import`, `dvc update`, `dvc add --to-remote`, `dvc gc -c`,
+  etc.). The default is `4 * cpu_count()`. Setting this to a lower value may be
+  useful when encountering a "Can't create any SFTP connections" error.
+
+  <admon type="info">
+
+  When encountering a "Can't create any SFTP connection" errors, you may need to
+  specify a lower `jobs` value. Using a value of `1` will generally resolve all
+  of these errors, at the cost of performance. When troubleshooting these types
+  of errors, we recommend starting with a value of `1`, and then try increasing
+  the value until you have determined the maximum `jobs` value which works for
+  your particular client + SSH server configuration.
 
   </admon>
 
