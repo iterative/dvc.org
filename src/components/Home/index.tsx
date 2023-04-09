@@ -23,9 +23,9 @@ const Home: React.FC = () => {
       <WhatsNewModal />
       <HeroSection className={styles.heroSection}>
         <LandingHero />
+        <CompanySlider />
         <LearnMore />
       </HeroSection>
-      <CompanySlider />
       <Diagram />
       <PromoSection
         title="For data scientists, by data scientists"
