@@ -9,8 +9,8 @@ const CompanySlider = () => {
     <div className="mt-10">
       <div className="mb-2">
         <h2 className={cn('text-2xl font-medium text-center', styles.title)}>
-          Empowering from startups to Fortune 500 Companies: Our Open Source
-          Tools at Work
+          Empowering thousands of users and customers from startups to Fortune
+          500 companies:
         </h2>
       </div>
       <div
