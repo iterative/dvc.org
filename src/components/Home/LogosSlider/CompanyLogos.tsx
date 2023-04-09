@@ -1,173 +1,127 @@
 import React from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
+import cn from 'classnames'
 
 const logoClass =
-  'flex items-center mr-10 md:mr-16 opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out'
-const logoImageClass = 'grayscale hover:grayscale-0'
+  'flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out'
+const logoImageClass = 'h-20 grayscale hover:grayscale-0'
 const logoImageClassInverted = `${logoImageClass} invert`
 
-const sm = 80
-const md = 150
-const lg = 200
-const xl = 300
+const sm = 'w-16'
+const md = 'w-24'
+const lg = 'w-32'
+const xl = 'w-40'
+const xxl = 'w-48'
+
+const logos = [
+  {
+    name: 'Aicon',
+    alt: 'Aicon logo',
+    src: 'logos/aicon.svg',
+    className: cn(logoClass, sm),
+    imageClassName: cn(logoImageClass, 'h-16')
+  },
+  {
+    name: 'Billie',
+    alt: 'Billie logo',
+    src: 'logos/billie.svg',
+    className: cn(logoClass, sm),
+    imageClassName: cn(logoImageClass, 'h-16')
+  },
+  {
+    name: 'Cyclica',
+    alt: 'Cyclica logo',
+    src: 'logos/cyclica.png',
+    className: cn(logoClass, lg)
+  },
+  {
+    name: 'Degould',
+    alt: 'Degould logo',
+    src: 'logos/degould.png',
+    className: cn(logoClass, md),
+    imageClassName: logoImageClassInverted
+  },
+  {
+    name: 'Huggingface',
+    alt: 'Huggingface logo',
+    src: 'logos/huggingface.svg',
+    className: cn(logoClass, xxl)
+  },
+  {
+    name: 'Inlab Digital',
+    alt: 'Inlab Digital logo',
+    src: 'logos/inlab-digital.svg',
+    className: cn(logoClass, lg)
+  },
+  {
+    name: 'UBS',
+    alt: 'UBS logo',
+    src: 'logos/ubs.png',
+    className: cn(logoClass, xl),
+    imageClassName: logoImageClassInverted
+  },
+  {
+    name: 'Mantis',
+    alt: 'Mantis logo',
+    src: 'logos/mantis.svg',
+    className: cn(logoClass, lg)
+  },
+  {
+    name: 'Papercup',
+    alt: 'Papercup logo',
+    src: 'logos/papercup.png',
+    className: cn(logoClass, xl)
+  },
+  {
+    name: 'Pieces',
+    alt: 'Pieces logo',
+    src: 'logos/pieces.png',
+    className: cn(logoClass, md),
+    imageClassName: logoImageClassInverted
+  },
+  {
+    name: 'Plasmasolve',
+    alt: 'Plasmasolve logo',
+    src: 'logos/plasmasolve.png',
+    className: cn(logoClass, lg),
+    imageClassName: logoImageClassInverted
+  },
+  {
+    name: 'Sicara',
+    alt: 'Sicara logo',
+    src: 'logos/sicara.png',
+    className: cn(logoClass, sm)
+  },
+  {
+    name: 'UKHO',
+    alt: 'UKHO logo',
+    src: 'logos/ukho.png',
+    className: cn(logoClass, lg),
+    imageClassName: logoImageClassInverted
+  },
+  {
+    name: 'XP Inc',
+    alt: 'XP Inc logo',
+    src: 'logos/xp-inc-new.webp',
+    className: cn(logoClass, md)
+  }
+]
 
 const CompanyLogos = () => {
   return (
     <>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/aicon.svg"
-          alt="Aicon logo"
-          width={sm}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/billie.svg"
-          alt="Billie logo"
-          width={sm}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/cyclica.png"
-          alt="Cyclica logo"
-          width={md}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/degould.png"
-          alt="Degould logo"
-          width={md}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClassInverted}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/huggingface.svg"
-          alt="Huggingface logo"
-          width={xl}
-          layout="fixed"
-          loading="eager"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/inlab-digital.svg"
-          alt="Inlab Digital logo"
-          width={md}
-          layout="fixed"
-          loading="eager"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/mantis.svg"
-          alt="Mantis logo"
-          width={lg}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/papercup.png"
-          alt="Papercup logo"
-          width={lg}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/pieces.png"
-          alt="Pieces logo"
-          width={md}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClassInverted}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/plasmasolve.png"
-          alt="Plasmasolve logo"
-          width={md}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClassInverted}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/sicara.png"
-          alt="Sicara logo"
-          width={sm}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/ubs.png"
-          alt="UBS logo"
-          width={md}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClassInverted}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/ukho.png"
-          alt="UKHO logo"
-          width={md}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClassInverted}
-        />
-      </div>
-      <div className={logoClass}>
-        <StaticImage
-          src="./logos/xp-inc-new.webp"
-          alt="XP Inc logo"
-          width={lg}
-          loading="eager"
-          layout="fixed"
-          objectFit="contain"
-          className={logoImageClass}
-        />
-      </div>
+      {logos.map((logo, index) => (
+        <div key={index} className={logo.className}>
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            width={200}
+            height={35}
+            loading="eager"
+            className={logo.imageClassName ?? logoImageClass}
+            style={{ color: 'transparent', objectFit: 'contain' }}
+          />
+        </div>
+      ))}
     </>
   )
 }

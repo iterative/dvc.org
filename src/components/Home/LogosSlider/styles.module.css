@@ -12,9 +12,13 @@
     top: 0;
     right: 0;
     z-index: 1;
-    width: 90px;
+    width: 50px;
     height: 100%;
-    background: linear-gradient(to left, white, transparent);
+    background: linear-gradient(to left, var(--color-light-blue), transparent);
+
+    @media screen(sm) {
+      width: 100px;
+    }
   }
 
   &::after {
@@ -23,8 +27,12 @@
     top: 0;
     left: 0;
     z-index: 1;
-    width: 90px;
+    width: 50px;
     height: 100%;
-    background: linear-gradient(to right, white, transparent);
+    background: linear-gradient(to right, var(--color-light-blue), transparent);
+
+    @media screen(sm) {
+      width: 100px;
+    }
   }
 }
