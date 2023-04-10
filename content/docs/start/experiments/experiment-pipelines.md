@@ -1,11 +1,11 @@
 ---
-title: 'Get Started: Building Pipelines'
+title: 'Get Started: Experiment Pipelines'
 description:
   'Split your workflow into stages and build a pipeline by connecting
   dependencies and outputs.'
 ---
 
-# Get Started: Building Pipelines
+# Get Started: Experiment Pipelines
 
 Eventually, managing your notebook cells may start to feel fragile, and you may
 want to structure your project and code. When you are ready to
@@ -18,6 +18,11 @@ software engineering best practices:
 
 - **Parametrization**: adapt your scripts to decouple the configuration from the
   source code.
+
+If you've followed this guide in order, you might remember DVC's
+[data pipelines](/doc/start/data-management/data-pipelines) functionality. We
+will now show you how to use the same data driven functionality as a powerful
+experiment management system.
 
 ## Creating stages
 
@@ -200,3 +205,85 @@ $ dvc dag
          | evaluate |
          +----------+
 ```
+
+Now that you have a <abbr>DVC Pipeline</abbr> set up, you can easily iterate on
+it by running `dvc exp run` to create and track new experiment runs. This
+enables some new features in DVC like Queueing experiments, and a canonical way
+to work with parameters and hyper-parameters.
+
+## Modifying parameters
+
+You can modify <abbr>parameters</abbr> from the CLI using
+[`--set-param`](/doc/command-reference/exp/run#--set-param):
+
+```cli
+$ dvc exp run --set-param "train.img_size=128"
+```
+
+The flag can be used to modify multiple parameters on a single call, even from
+different stages:
+
+```cli
+$ dvc exp run \
+-S "data_split.test_pct=0.1" -S "train.img_size=384"
+```
+
+## Hyperparameter Tuning
+
+You can provide multiple values for the same parameter:
+
+```cli
+$ dvc exp run \
+--queue --set-param "train.batch_size=8,16,24"
+Queueing with overrides '{'params.yaml': ['train.batch_size=8']}'.
+Queueing with overrides '{'params.yaml': ['train.batch_size=16']}'.
+Queueing with overrides '{'params.yaml': ['train.batch_size=24']}'.
+...
+```
+
+You can build a grid search by modifying multiple parameters. To better identify
+the experiments from the grid search, you can also provide a
+[`--name`](/doc/command-reference/exp/run#--name):
+
+```cli
+$ dvc exp run --name "arch-size" --queue \
+-S 'train.arch=alexnet,resnet34,squeezenet1_1' \
+-S 'train.img_size=128,256'
+Queueing with overrides '{'params.yaml': ['train.arch=alexnet', 'train.img_size=128']}'.
+Queued experiment 'arch-size-1' for future execution.
+Queueing with overrides '{'params.yaml': ['train.arch=alexnet', 'train.img_size=256']}'.
+Queued experiment 'arch-size-2' for future execution.
+Queueing with overrides '{'params.yaml': ['train.arch=resnet34', 'train.img_size=128']}'.
+Queued experiment 'arch-size-3' for future execution.
+...
+```
+
+<admon type="info">
+
+Learn more about
+[Running Experiments](/doc/user-guide/experiment-management/running-experiments)
+
+</admon>
+
+## Queuing experiments
+
+You can enqueue experiments for later execution using
+[`--queue`](/doc/command-reference/exp/run#--queue):
+
+```cli
+$ dvc exp run --queue --set-param "train.img_size=512"
+Queueing with overrides '{'params.yaml': ['train.img_size=512']}'.
+```
+
+Once you have put some experiments in the queue, you can run all with:
+
+```cli
+$ dvc exp run --run-all
+```
+
+<admon type="info">
+
+Learn more about
+[The experiments queue](/doc/user-guide/experiment-management/running-experiments#the-experiments-queue)
+
+</admon>

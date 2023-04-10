@@ -1,16 +1,20 @@
 ---
-title: 'Get Started: Experiment Management'
+title: 'Get Started: Experiment Collaboration'
 description:
-  'Manage your experiments and share them with others using software engineering
-  best practices.'
+  'Share your experiments with others, persist and apply your changes using Git
+  branches and software engineering best practices.'
 ---
 
-# Get Started: Experiment Management
+# Get Started: Experiment Collaboration
 
-After having compared all the experiments, you still need to agree on which one
-is the best and manage the remaining candidates. <abbr>DVC Experiments</abbr>
-are fully compatible with Git workflows, so you can manage the experiments using
-software engineering best practices.
+After having compared some experiments' results and parameters, you still need
+to agree on which one is the best, share it, persist it into Gi, and do some
+house keeping on the rejected experiments.
+
+<abbr>DVC Experiments</abbr> are fully compatible with Git workflows. You can
+share, manage and collaborate on experiments and related code changes using
+software engineering best practices. There is no need for a different system or
+paradigm to track and version experiments.
 
 ## Sharing
 
@@ -19,7 +23,7 @@ Unless you have enabled
 the <abbr>DVC experiments</abbr> only exist in your repo and people can't manage
 or view them from other machines.
 
-You can share an experiment with others from your machine:
+To share an experiment with others from your machine:
 
 <toggle>
 

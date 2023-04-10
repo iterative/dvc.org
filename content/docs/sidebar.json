@@ -44,7 +44,6 @@
         "source": false,
         "children": [
           "data-versioning",
-          "discovering-and-accessing-data",
           "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
@@ -53,13 +52,13 @@
         ]
       },
       {
-        "slug": "experiment-management",
+        "label": "Experiment Management",
+        "slug": "experiments",
         "source": false,
         "children": [
-          "experiment-versioning",
-          "experiment-management",
-          "building-pipelines",
-          "experiment-iterations"
+          "experiment-live-tracking",
+          "experiment-pipelines",
+          "experiment-collaboration"
         ]
       }
     ]
@@ -190,6 +189,7 @@
         "source": false,
         "children": [
           "run-dvc-on-windows",
+          "discovering-and-accessing-data",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",

@@ -84,7 +84,7 @@ files to be versioned by Git.
 </details>
 
 [`evaluate.py`] writes the model's [ROC-AUC] and [average precision] to
-`eval/live/metrics.json` (previously marked as a [metrics file] with `-M`):
+`eval/live/metrics.json` (designated a [metrics file] with `-M` above):
 
 ```json
 {

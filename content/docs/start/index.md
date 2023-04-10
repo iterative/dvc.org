@@ -54,20 +54,21 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-## Before You Begin
+## Following This Guide
 
-To help you understand and use DVC consider those two high level scenarios:
+To help you understand and use DVC better, consider those two high level
+scenarios:
 
 - **Data Management** - Track and version large amounts of data along with your
   code, and use DVC as a build-system for reproducible, data driven pipelines.
 
-- **Experiment Management** - Track experiments using only Git as a storage
-  system (no service/DB required). Manage parameters, metrics and plots easily,
-  and get powerful live tracking capabilities for training jobs via code
-  instrumentation.
+- **Experiment Management** - Live-track your experiments via code
+  instrumentation for light-weight experiment tracking. Learn how to Leverage
+  pipelines as a powerful Git based build system with native parameters, metrics
+  and plots support.
 
-The following chapters are categorized into the above 2 trails and are all
-pretty self-contained.
+The following chapters are grouped into the above 2 trails and are all pretty
+self-contained.
 
 <admon type="tip">
 
@@ -80,24 +81,17 @@ over the chapters in order.
 ## Data Management
 
 - **[Data and model versioning]** - Manage large files, datasets, and machine
-  learning models. DVC helps you track your data and couple its versions to your
-  code, while your data is stored outside of your Git repo.
-
-- **[Discovering and accessing data]** - Accessing and using data artifacts from
-  outside of the project and importing them from anywhere. This can help to
-  download a specific version of an ML model to a deployment server or import a
-  dataset into another project.
+  learning models. Track your data and couple its versions to your code
+  versions, while keeping it stored properly outside of your Git repo.
 
 - **[Data pipelines]** - Use pipelines to describe how models and other data
   artifacts are built, and provide an efficient way to reproduce them. Think
   "Makefiles for data and ML projects" done right.
 
-- **[Metrics, parameters, and plots]** - Those are 1st class citizens in DVC
+- **[Metrics, parameters, and plots]** - Those are first class citizens in DVC
   pipelines. Capture, evaluate, and visualize ML projects without leaving Git.
 
 [data and model versioning]: /doc/start/data-management/data-versioning
-[discovering and accessing data]:
-  /doc/start/data-management/discovering-and-accessing-data
 [data pipelines]: /doc/start/data-management/data-pipelines
 [metrics, parameters, and plots]:
   /doc/start/data-management/metrics-parameters-plots
@@ -116,23 +110,22 @@ The steps and results of some of these chapters are captured in our
 
 ## Experiment Management
 
-- **[Experiment versioning]** - Track the changes to the code, data, metrics,
-  parameters and plots associated with each experiment, without bloating your
-  Git repo.
+- **[Experiment live tracking]** - Instrument your code to quickly start
+  tracking experiments. Manage changes to code, data, metrics, parameters and
+  plots associated with each experiment without bloating your Git repo.
 
-- **[Experiment management]** - Manage experiments and share them with others
-  using software engineering best practices.
+- **[Experiment pipelines]** - Leverage DVC data pipelines as an experiment
+  management system. Split your workflow into stages, track dependencies and
+  outputs, and natively inject parameters and hyper-parameters to experiment
+  runs.
 
-- **[Building pipelines]** - Split your workflow into stages and build a
-  pipeline by connecting dependencies and outputs.
+- **[Experiment collaboration]** - Manage experiments the same way developers
+  manage code. Share experiments with your team over git, create branches and
+  pull requests, and compare results.
 
-- **[Experiments Iterations]** - Explore the benefits of running experiments
-  using DVC Pipelines.
-
-[experiment versioning]: /doc/start/experiments/experiment-versioning
-[experiment management]: /doc/start/experiments/experiment-management
-[building pipelines]: /doc/start/experiments/building-pipelines
-[experiments iterations]: /doc/start/experiments/experiment-iterations
+[experiment live tracking]: /doc/start/experiments/experiment-live-tracking
+[experiment pipelines]: /doc/start/experiments/experiment-pipelines
+[experiment collaboration]: /doc/start/experiments/experiment-collaboration
 
 <admon type="tip">
 
@@ -147,5 +140,5 @@ These are captured in our [example-dvc-experiments] repo (see its
 
 ## Where To Go Next
 
-Picking a page from the list above, left-side navigation, or just click `NEXT`
-below!
+Pick a page from the list above, the left-side navigation bar, or just click
+`NEXT` below!
