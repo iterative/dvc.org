@@ -26,6 +26,7 @@ const Home: React.FC = () => {
         <CompanySlider />
         <LearnMore />
       </HeroSection>
+      <SubscribeSection />
       <Diagram />
       <PromoSection
         title="For data scientists, by data scientists"
