@@ -113,23 +113,32 @@ $ dvc remote modify myremote ask_password true
 
   </admon>
 
-- `jobs` - change the default number of processes for remote storage
-  synchronization operations (see the `--jobs` option of `dvc push`, `dvc pull`,
-  `dvc get`, `dvc import`, `dvc update`, `dvc add --to-remote`, `dvc gc -c`,
-  etc.). The default is `4 * cpu_count()`. Setting this to a lower value may be
-  useful when encountering a "Can't create any SFTP connections" error.
+- `max_sessions` - change the maximum number of SSH and SFTP sessions used when
+  connecting to the SSH server. Minimum of `3`, `10` by default. Should not
+  exceed the server-side maximum number of sessions.
 
   <admon type="info">
 
-  When encountering a "Can't create any SFTP connection" errors, you may need to
-  specify a lower `jobs` value. Using a value of `1` will generally resolve all
-  of these errors, at the cost of performance. When troubleshooting these types
-  of errors, we recommend starting with a value of `1`, and then try increasing
-  the value until you have determined the maximum `jobs` value which works for
-  your particular client + SSH server configuration.
+  DVC will attempt to use as many SFTP sessions as possible (up to
+  `max_sessions`) from the SSH server in order to parallelize remote transfer
+  operations. The widely used OpenSSH server (sshd) defaults to a value of `10`
+  for [MaxSessions]. This means that by default, DVC will attempt to use all
+  available sessions from the server. In some cases, it may be useful to specify
+  a lower `max_sessions` value in order to ensure that some number of sessions
+  are kept available for other (non-DVC) SSH or SFTP connections.
+
+  </admon>
+
+  <admon type="warn">
+
+  When encountering "Can't create any SFTP connection" errors, it means that DVC
+  could not open any sessions from the SSH server. In this situation, we
+  recommend setting `max_sessions` to some value less than the server-side
+  maximum number of sessions.
 
   </admon>
 
 [ssh agents]: https://www.ssh.com/academy/ssh/agent
 [with kerberos]:
   https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos
+[maxsessions]: https://man.openbsd.org/sshd_config#MaxSessions
