@@ -59,6 +59,6 @@ can sync with the state of the artifacts in your registry.
 
 [modeling process]: /doc/start/data-management/data-pipelines
 [remote storage]: /doc/user-guide/data-management/remote-storage
-[sharing]: /doc/start/data-management/data-and-model-access
+[sharing]: /doc/start/data-management/discovering-and-accessing-data
 [via cml]: https://cml.dev/doc/cml-with-dvc
 [gitops]: https://www.gitops.tech/

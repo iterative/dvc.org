@@ -69,7 +69,7 @@ Benefits of our approach include:
 
   [remotely]: /doc/user-guide/data-management/remote-storage
   [internally]: /doc/user-guide/how-to/share-a-dvc-cache
-  [reuse]: /doc/start/data-management/data-and-model-access
+  [reuse]: /doc/start/data-management/discovering-and-accessing-data
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).

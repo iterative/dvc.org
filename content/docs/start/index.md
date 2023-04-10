@@ -54,31 +54,50 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-The value of DVC's several feature sets is best understood from different
-angles. Pick one of the two trails below to learn about DVC from that
-perspective:
+## Before You Begin
 
-## Data
+To help you understand and use DVC consider those two high level scenarios:
 
-- **[Data and model versioning]** is the base layer of DVC for large files,
-  datasets, and machine learning models. Use a standard Git workflow, but
-  without storing large files in the repo. Data is cached by DVC, allowing for
-  efficient sharing. Think "Git for data".
+- **Data Management** - Track and version large amounts of data along with your
+  code, and use DVC as a build-system for reproducible, data driven pipelines.
 
-- **[Data and model access]** goes over using data artifacts from outside of the
-  project and importing them from another DVC project. This can help to download
-  a specific version of an ML model to a deployment server or import a dataset
-  into another project.
+- **Experiment Management** - Track experiments using only Git as a storage
+  system (no service/DB required). Manage parameters, metrics and plots easily,
+  and get powerful live tracking capabilities for training jobs via code
+  instrumentation.
 
-- **[Data pipelines]** describe how models and other data artifacts are built,
-  and provide an efficient way to reproduce them. Think "Makefiles for data and
-  ML projects" done right.
+The following chapters are categorized into the above 2 trails and are all
+pretty self-contained.
 
-- **[Metrics, parameters, and plots]** can be attached to pipelines. These let
-  you capture, evaluate, and visualize ML projects without leaving Git.
+<admon type="tip">
+
+Feel free to "choose your own adventure" and skip to the chapters which answer
+your specific needs. In case you're unsure where to start, we recommend going
+over the chapters in order.
+
+</admon>
+
+## Data Management
+
+- **[Data and model versioning]** - Manage large files, datasets, and machine
+  learning models. DVC helps you track your data and couple its versions to your
+  code, while your data is stored outside of your Git repo.
+
+- **[Discovering and accessing data]** - Accessing and using data artifacts from
+  outside of the project and importing them from anywhere. This can help to
+  download a specific version of an ML model to a deployment server or import a
+  dataset into another project.
+
+- **[Data pipelines]** - Use pipelines to describe how models and other data
+  artifacts are built, and provide an efficient way to reproduce them. Think
+  "Makefiles for data and ML projects" done right.
+
+- **[Metrics, parameters, and plots]** - Those are 1st class citizens in DVC
+  pipelines. Capture, evaluate, and visualize ML projects without leaving Git.
 
 [data and model versioning]: /doc/start/data-management/data-versioning
-[data and model access]: /doc/start/data-management/data-and-model-access
+[discovering and accessing data]:
+  /doc/start/data-management/discovering-and-accessing-data
 [data pipelines]: /doc/start/data-management/data-pipelines
 [metrics, parameters, and plots]:
   /doc/start/data-management/metrics-parameters-plots
@@ -95,26 +114,20 @@ The steps and results of some of these chapters are captured in our
 
 </admon>
 
-## Experiments
+## Experiment Management
 
-- **[Experiment versioning]**
+- **[Experiment versioning]** - Track the changes to the code, data, metrics,
+  parameters and plots associated with each experiment, without bloating your
+  Git repo.
 
-  Track the changes to the code, data, metrics, parameters and plots associated
-  with each experiment, without bloating your Git repo.
+- **[Experiment management]** - Manage experiments and share them with others
+  using software engineering best practices.
 
-- **[Experiment management]**
+- **[Building pipelines]** - Split your workflow into stages and build a
+  pipeline by connecting dependencies and outputs.
 
-  Manage experiments and share them with others using software engineering best
-  practices.
-
-- **[Building pipelines]**
-
-  Split your workflow into stages and build a pipeline by connecting
-  dependencies and outputs.
-
-- **[Experiments Iterations]**
-
-  Explore the benefits of running experiments using DVC Pipelines.
+- **[Experiments Iterations]** - Explore the benefits of running experiments
+  using DVC Pipelines.
 
 [experiment versioning]: /doc/start/experiments/experiment-versioning
 [experiment management]: /doc/start/experiments/experiment-management
@@ -132,18 +145,7 @@ These are captured in our [example-dvc-experiments] repo (see its
 
 </admon>
 
-## Following the Get Started
+## Where To Go Next
 
-Each page in the trails above is more or less independent, especially if you're
-only reading them to get a general idea of the features in question. For better
-learning, try each step yourself from the beginning of any trail. Some of the
-preparation steps may be inside collapsed sections you can click on to expand:
-
-<details>
-
-### Click for an example!
-
-Click the header again to collapse this message. Or move on by picking a page
-from the list above, left-side navigation, or just click `NEXT` below!
-
-</details>
+Picking a page from the list above, left-side navigation, or just click `NEXT`
+below!

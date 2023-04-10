@@ -1,10 +1,10 @@
 ---
-title: 'Get Started: Data and Model Access'
+title: 'Get Started: Discovering and accessing data'
 description: 'Get started with accessing data and models with DVC. Learn how to
 bring, explore, and access data artifacts from outside the project'
 ---
 
-# Get Started: Data and Model Access
+# Get Started: Discovering and accessing data
 
 <details>
 
