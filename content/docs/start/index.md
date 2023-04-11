@@ -64,8 +64,8 @@ scenarios:
 
 - **Experiment Management** - Easily track your experiments and their progress
   by only instrumenting your code. For more advanced control, use DVC pipelines
-  as a build system to run lots of experiments, and collaborate on ML
-  experiments like software engineers do for code.
+  as a build system to run lots of experiments managed tracked and managed in
+  Git, and collaborate on ML experiments like software engineers do for code.
 
 The following chapters are grouped into the above 2 trails and are all pretty
 self-contained.
