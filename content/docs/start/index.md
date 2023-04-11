@@ -60,7 +60,7 @@ To help you understand and use DVC better, consider those two high level
 scenarios:
 
 - **Data Management** - Track and version large amounts of data along with your
-  code, and use DVC as a build-system for reproducible, data driven pipelines.
+  code, and use DVC as a build system for reproducible, data driven pipelines.
 
 - **Experiment Management** - Easily track your experiments and their progress
   by only instrumenting your code. For more advanced control, use DVC pipelines
