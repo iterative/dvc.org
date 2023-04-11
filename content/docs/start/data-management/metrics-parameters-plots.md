@@ -330,6 +330,3 @@ file:///Users/dvc/example-get-started/plots.html
 > All these commands also accept
 > [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 > names) to compare.
-
-On the next page, you can learn advanced ways to track, organize, and compare
-more experiment iterations.
