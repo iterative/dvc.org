@@ -99,7 +99,7 @@
   "^/doc/command-reference/exp/init$                                                      /doc/command-reference/stage/add",
 
   "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiments",
-  "^/doc/dvclive/api-reference$                                                          /doc/dvclive/",
+  "^/doc/dvclive/api-reference$                                                           /doc/dvclive/",
   "^/doc/dvclive/get-started$                                                             /doc/start/experiments",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
