@@ -8,7 +8,8 @@ description:
 # Get Started: Experiment Pipelines
 
 Eventually, managing your notebook cells may start to feel fragile, and you may
-want to structure your project and code. When you are ready to
+want to structure your project and code for reproducible execution. When you are
+ready to
 [migrate from notebooks to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c),
 DVC <abbr>Pipelines</abbr> can help you standardize your workflow following
 software engineering best practices:
@@ -19,12 +20,20 @@ software engineering best practices:
 - **Parametrization**: adapt your scripts to decouple the configuration from the
   source code.
 
-If you've followed this guide in order, you might remember DVC's
-[data pipelines](/doc/start/data-management/data-pipelines) functionality. We
-will now show you how to use the same data driven functionality as a powerful
-experiment management system.
+If you've been following the guide in order, you might have gone through the
+chapter about [data pipelines](/doc/start/data-management/data-pipelines)
+already. We will now use the same functionality as a basis for an
+experimentation build system.
 
-## Creating stages
+Running an <Abbr>experiment</abbr> is achieved by executing the pipeline, and
+the term refers to the set of trackable changes associated with that execution -
+including code changes and resulting artifacts like plots, charts and models.
+The various `dvc exp` sub commands allow you to execute, share and manage
+experiments in various ways. Below, we'll build an experiment pipeline, and use
+`dvc exp run` to execute it with a few very handy capabilities like experiment
+queueing and parametrization.
+
+## Creating the pipeline
 
 In our example repo, we first extract data preparation from the
 [original notebook](https://github.com/iterative/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
@@ -176,7 +185,7 @@ stages:
 
 </details>
 
-## Visualizing the DAG
+## Visualizing the experiment DAG
 
 As the number of stages grows, the `dvc dag` command becomes handy for
 visualizing the pipeline without manually inspecting the `dvc.yaml` file:

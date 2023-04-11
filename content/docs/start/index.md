@@ -62,10 +62,10 @@ scenarios:
 - **Data Management** - Track and version large amounts of data along with your
   code, and use DVC as a build-system for reproducible, data driven pipelines.
 
-- **Experiment Management** - Live-track your experiments via code
-  instrumentation for light-weight experiment tracking. Learn how to Leverage
-  pipelines as a powerful Git based build system with native parameters, metrics
-  and plots support.
+- **Experiment Management** - Easily track your experiments and their progress
+  by only instrumenting your code. For more advanced control, use DVC pipelines
+  as a build system to run lots of experiments, and collaborate on ML
+  experiments like software engineers do for code.
 
 The following chapters are grouped into the above 2 trails and are all pretty
 self-contained.
@@ -114,18 +114,18 @@ The steps and results of some of these chapters are captured in our
   tracking experiments. Manage changes to code, data, metrics, parameters and
   plots associated with each experiment without bloating your Git repo.
 
+- **[Experiment collaboration]** - Manage experiments the same way developers
+  manage code. Share experiments with your team over git, create branches and
+  pull requests, and compare results.
+
 - **[Experiment pipelines]** - Leverage DVC data pipelines as an experiment
   management system. Split your workflow into stages, track dependencies and
   outputs, and natively inject parameters and hyper-parameters to experiment
   runs.
 
-- **[Experiment collaboration]** - Manage experiments the same way developers
-  manage code. Share experiments with your team over git, create branches and
-  pull requests, and compare results.
-
 [experiment live tracking]: /doc/start/experiments/experiment-live-tracking
-[experiment pipelines]: /doc/start/experiments/experiment-pipelines
 [experiment collaboration]: /doc/start/experiments/experiment-collaboration
+[experiment pipelines]: /doc/start/experiments/experiment-pipelines
 
 <admon type="tip">
 

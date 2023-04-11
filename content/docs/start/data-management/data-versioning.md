@@ -297,7 +297,7 @@ To learn about how DVC allows you to do this, see the [discovering and accessing
 data] how-to guide.
 
 [discovering and accessing data]:
-  /doc/user-guide/how-to/discovering-and-accessing-data
+  /doc/user-guide/data-management/discovering-and-accessing-data
 
 ## Large datasets versioning
 

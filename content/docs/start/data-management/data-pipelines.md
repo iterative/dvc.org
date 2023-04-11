@@ -25,6 +25,10 @@ later — exactly as they were built originally! For example, you could capture 
 simple ETL workflow, organize a data science project, or build a detailed
 machine learning pipeline.
 
+Later on, we will find DVC manages the execution of
+[machine learning experiments](/doc/start/experiments/experiment-pipelines) on
+top of these pipelines - controlling their execution, injecting parameters, etc.
+
 ## Pipeline stages
 
 Use `dvc stage add` to create _stages_. These represent processes (source code

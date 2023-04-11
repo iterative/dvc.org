@@ -8,8 +8,8 @@ description:
 # Get Started: Experiment Collaboration
 
 After having compared some experiments' results and parameters, you still need
-to agree on which one is the best, share it, persist it into Gi, and do some
-house keeping on the rejected experiments.
+to agree on which one is the best, share it, track it, and do some house keeping
+on the rejected experiments.
 
 <abbr>DVC Experiments</abbr> are fully compatible with Git workflows. You can
 share, manage and collaborate on experiments and related code changes using

@@ -128,7 +128,6 @@
         "slug": "data-management",
         "source": false,
         "children": [
-          "large-dataset-optimization",
           {
             "slug": "remote-storage",
             "source": "remote-storage/index.md",
@@ -160,8 +159,10 @@
             ]
           },
           "cloud-versioning",
+          "discovering-and-accessing-data",
           "importing-external-data",
-          "managing-external-data"
+          "managing-external-data",
+          "large-dataset-optimization"
         ]
       },
       {
@@ -189,7 +190,6 @@
         "source": false,
         "children": [
           "run-dvc-on-windows",
-          "discovering-and-accessing-data",
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
