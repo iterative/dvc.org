@@ -1,11 +1,11 @@
 ---
-title: 'Get Started: Experiment Live Tracking'
+title: 'Get Started: Experiment Tracking'
 description:
-  'Track the changes to the code, data, metrics, parameters and plots associated
-  with each experiment, without bloating your Git repo.'
+  'Track changes to code, data, metrics, parameters and plots associated with
+  each experiment, without bloating your Git repo.'
 ---
 
-# Get Started: Experiment Live Tracking
+# Get Started: Experiment Tracking
 
 Tools like [Jupyter Notebooks](https://jupyter.org/) are useful for rapid
 prototyping, but it's hard to keep track of changes and reproduce experiments.

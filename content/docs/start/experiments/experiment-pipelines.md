@@ -1,11 +1,11 @@
 ---
-title: 'Get Started: Experiment Pipelines'
+title: 'Get Started: Experimenting Using Pipelines'
 description:
   'Split your workflow into stages and build a pipeline by connecting
   dependencies and outputs.'
 ---
 
-# Get Started: Experiment Pipelines
+# Get Started: Experimenting Using Pipelines
 
 If you've been following the guide in order, you might have gone through the
 chapter about [data pipelines](/doc/start/data-management/data-pipelines)
@@ -97,7 +97,7 @@ stages:
 
 </details>
 
-Now, create the `train` and `evaluate` stages using
+Now, we create the `train` and `evaluate` stages using
 [`train.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/train.py)
 and
 [`evaluate.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/evaluate.py)

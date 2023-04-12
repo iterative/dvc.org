@@ -109,22 +109,22 @@ The steps and results of some of these chapters are captured in our
 
 ## Experiment Management
 
-- **[Experiment live tracking]** - Instrument your code to quickly start
-  tracking experiments. Manage changes to code, data, metrics, parameters and
-  plots associated with each experiment without bloating your Git repo.
+- **[Experiment tracking]** - Instrument your code to quickly start tracking
+  experiments. Manage changes to code, data, metrics, parameters and plots
+  associated with each experiment without bloating your Git repo.
 
-- **[Experiment collaboration]** - Manage experiments the same way developers
-  manage code. Share experiments with your team over git, create branches and
-  pull requests, and compare results.
+- **[Collaborating on experiments]** - Manage experiments the same way
+  developers manage code. Share experiments with your team over git, create
+  branches and pull requests, and compare results.
 
-- **[Experiment pipelines]** - Leverage DVC data pipelines as an experiment
-  management system. Split your workflow into stages, track dependencies and
-  outputs, and natively inject parameters and hyper-parameters to experiment
-  runs.
+- **[Experimenting using pipelines]** - Leverage DVC data pipelines as an
+  experiment management system. Split your workflow into stages, track
+  dependencies and outputs, and natively inject parameters and hyper-parameters
+  to experiment runs.
 
-[experiment live tracking]: /doc/start/experiments/experiment-live-tracking
-[experiment collaboration]: /doc/start/experiments/experiment-collaboration
-[experiment pipelines]: /doc/start/experiments/experiment-pipelines
+[experiment tracking]: /doc/start/experiments/experiment-tracking
+[collaborating on experiments]: /doc/start/experiments/experiment-collaboration
+[experimenting using pipelines]: /doc/start/experiments/experiment-pipelines
 
 <admon type="tip">
 
