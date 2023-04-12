@@ -1,17 +1,10 @@
 # Discovering and accessing data
 
-<details>
-
-### 🎬 Click to watch a video intro.
-
-https://youtu.be/EE7Gk84OZY8
-
-</details>
-
-We've learned how to _track_ data and models with DVC, and how to commit their
-versions to Git. The next questions are: How can we _use_ these artifacts
-outside of the project? How do we download a model to deploy it? How to download
-a specific version of a model? Or reuse datasets across different projects?
+Assuming you've learned the basics of how to
+[track and version data](/doc/start/data-management/data-versioning) with DVC,
+you might wonder: How can we access and use these artifacts _outside_ of the DVC
+project? How do we download a model to deploy it? How to download a specific
+version of a model? How to reuse datasets across different projects?
 
 <admon type="tip">
 
@@ -24,12 +17,20 @@ instead of the original file name such as `model.pkl` or `data.xml`).
 
 </admon>
 
-Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`,
-which we'll cover later) have their history in Git. DVC's remote storage config
-is also saved in Git, and contains all the information needed to access and
-download any version of datasets, files, and models. It means that a Git
-repository with <abbr>DVC files</abbr> becomes an entry point, and can be used
-instead of accessing files directly.
+<details>
+
+### 🎬 Click to watch a video about sharing data and models
+
+https://youtu.be/EE7Gk84OZY8
+
+</details>
+
+Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`)
+have their history in Git. DVC's remote storage config is also saved in Git, and
+contains all the information needed to access and download any version of
+datasets, files, and models. It means that a Git repository with <abbr>DVC
+files</abbr> becomes an entry point, and can be used instead of accessing files
+directly.
 
 ## Find a file or directory
 

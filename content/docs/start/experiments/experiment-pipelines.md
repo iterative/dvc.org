@@ -7,35 +7,41 @@ description:
 
 # Get Started: Experiment Pipelines
 
-Eventually, managing your notebook cells may start to feel fragile, and you may
-want to structure your project and code for reproducible execution. When you are
-ready to
-[migrate from notebooks to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c),
-DVC <abbr>Pipelines</abbr> can help you standardize your workflow following
-software engineering best practices:
-
-- **Modularization**: split the different logical steps in your notebook into
-  separate scripts.
-
-- **Parametrization**: adapt your scripts to decouple the configuration from the
-  source code.
-
 If you've been following the guide in order, you might have gone through the
 chapter about [data pipelines](/doc/start/data-management/data-pipelines)
-already. We will now use the same functionality as a basis for an
+already. Here, we will use the same functionality as a basis for an
 experimentation build system.
 
-Running an <Abbr>experiment</abbr> is achieved by executing the pipeline, and
-the term refers to the set of trackable changes associated with that execution -
-including code changes and resulting artifacts like plots, charts and models.
-The various `dvc exp` sub commands allow you to execute, share and manage
-experiments in various ways. Below, we'll build an experiment pipeline, and use
-`dvc exp run` to execute it with a few very handy capabilities like experiment
-queueing and parametrization.
+Running an <Abbr>experiment</abbr> is achieved by executing <abbr>DVC
+pipelines</abbr>, and the term refers to the set of trackable changes associated
+with this execution. This includes code changes and resulting artifacts like
+plots, charts and models. The various `dvc exp` subcommands allow you to
+execute, share and manage experiments in various ways. Below, we'll build an
+experiment pipeline, and use `dvc exp run` to execute it with a few very handy
+capabilities like experiment queueing and parametrization.
 
-## Creating the pipeline
+## Stepping up and out of the notebook
 
-In our example repo, we first extract data preparation from the
+After some time spent in your IPython notebook (e.g.
+[Jupyter](https://jupyter-notebook.readthedocs.io/en/latest/)) doing data
+exploration and basic modeling, managing your notebook cells may start to feel
+fragile, and you may want to structure your project and code for reproducible
+execution, testing and further automation. When you are ready to
+[migrate from notebooks to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c),
+DVC <abbr>Pipelines</abbr> help you standardize your workflow following software
+engineering best practices:
+
+- **Modularization**: Split the different logical steps in your notebook into
+  separate scripts.
+
+- **Parametrization**: Adapt your scripts to decouple the configuration from the
+  source code.
+
+## Creating the experiment pipeline
+
+In our
+[example repo](https://github.com/iterative/example-get-started-experiments), we
+first extract data preparation logic from the
 [original notebook](https://github.com/iterative/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
 into
 [`data_split.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/data_split.py).
@@ -52,7 +58,9 @@ def data_split():
 ...
 ```
 
-You can use `dvc stage add` to transform a script into a <abbr>stage</abbr>:
+We now use `dvc stage add` commands to transform our scripts into individual
+<abbr>stages</abbr> starting with a `data_split` stage for
+[`data_split.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/data_split.py):
 
 ```cli
 $ dvc stage add --name data_split \
@@ -62,8 +70,14 @@ $ dvc stage add --name data_split \
   python src/data_split.py
 ```
 
-A `dvc.yaml` file is generated. It includes information about the command you
-want to run (`python src/data_split.py`), its <abbr>dependencies</abbr>,
+A `dvc.yaml` file is automatically generated with the stage details.
+
+<details>
+
+### Expand to see the created `dvc.yaml`
+
+It includes information about the stage we added, like the executable command
+(`python src/data_split.py`), its <abbr>dependencies</abbr>,
 <abbr>parameters</abbr>, and <abbr>outputs</abbr>:
 
 ```yaml
@@ -81,34 +95,13 @@ stages:
       - data/test_data
 ```
 
-`dvc exp run` will run all stages in the `dvc.yaml` file:
+</details>
 
-```cli
-$ dvc exp run
-'data/pool_data.dvc' didn't change, skipping
-Running stage 'data_split':
-> python src/data_split.py
-Generating lock file 'dvc.lock'
-Updating lock file 'dvc.lock'
-...
-```
-
-<admon type="info">
-
-Learn more about [Stages](/doc/user-guide/pipelines/defining-pipelines#stages)
-
-</admon>
-
-## Building a DAG
-
-By using `dvc stage add` multiple times and defining <abbr>outputs</abbr> of a
-stage as <abbr>dependencies</abbr> of another, you describe a sequence of
-commands which forms a [pipeline](/doc/user-guide/pipelines/defining-pipelines),
-also called a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
-
-Let's create a `train` stage using
+Now, create the `train` and `evaluate` stages using
 [`train.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/train.py)
-to train the model:
+and
+[`evaluate.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/evaluate.py)
+to train the model and evaluate its performance respectively:
 
 ```cli
 $ dvc stage add -n train \
@@ -116,26 +109,7 @@ $ dvc stage add -n train \
   -d src/train.py -d data/train_data \
   -o models/model.pkl \
   python src/train.py
-```
 
-`dvc exp run` checks the `data_split` stage first and then the `train` stage
-since it depends on the <abbr>outputs</abbr> of `data_split`. If a stage has not
-changed or has been run before with the same <abbr>dependencies</abbr> and
-<abbr>parameters</abbr>, it will be
-[skipped](/doc/user-guide/pipelines/run-cache):
-
-```cli
-$ dvc exp run
-'data/pool_data.dvc' didn't change, skipping
-Stage 'data_split' didn't change, skipping
-Running stage 'train':
-> python src/train.py
-...
-```
-
-Finally, let's add an `evaluate` stage:
-
-```cli
 $ dvc stage add -n evaluate \
   -p base,evaluate \
   -d src/evaluate.py -d models/model.pkl -d data/test_data \
@@ -185,6 +159,8 @@ stages:
 
 </details>
 
+<details>
+
 ## Visualizing the experiment DAG
 
 As the number of stages grows, the `dvc dag` command becomes handy for
@@ -219,6 +195,8 @@ Now that you have a <abbr>DVC Pipeline</abbr> set up, you can easily iterate on
 it by running `dvc exp run` to create and track new experiment runs. This
 enables some new features in DVC like Queueing experiments, and a canonical way
 to work with parameters and hyper-parameters.
+
+</details>
 
 ## Modifying parameters
 

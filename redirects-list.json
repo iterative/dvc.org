@@ -47,7 +47,7 @@
   "^/doc/start/data-and-model-access(/.*)?$                                               /doc/user-guide/data-management/discovering-and-accessing-data 302",
   "^/doc/start/data-pipelines(/.*)?$                                                      /doc/start/data-management/data-pipelines 302",
   "^/doc/start/metrics-parameters-plots(/.*)?$                                            /doc/start/data-management/metrics-parameters-plots 302",
-  "^/doc/start/experiment-management(/.*)?$                                               /doc/start/experiment-management",
+  "^/doc/start/experiment-management(/.*)?$                                               /doc/start/experiments",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
@@ -98,9 +98,9 @@
   "^/doc/command-reference/run$                                                           /doc/command-reference/stage/add",
   "^/doc/command-reference/exp/init$                                                      /doc/command-reference/stage/add",
 
-  "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiment-management",
+  "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiments",
   "^/doc/dvclive/api-reference/$                                                          /doc/dvclive/",
-  "^/doc/dvclive/get-started$                                                             /doc/start/experiment-management",
+  "^/doc/dvclive/get-started$                                                             /doc/start/experiments",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
