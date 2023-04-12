@@ -30,9 +30,9 @@
   padding: 16px 24px;
   background: linear-gradient(
     102.58deg,
-    #13adc7 22.89%,
+    #945dd6 22.89%,
     #17d5f5 24.16%,
-    #13adc7 25.62%
+    #945dd6 25.62%
   );
   background-size: 600% auto;
   color: #fff;
@@ -65,7 +65,7 @@
     opacity: 0;
     border-radius: 99px;
     transition: opacity 0.2s ease-out;
-    background: var(--color-azure-hover);
+    background: var(--color-purple-hover);
   }
 
   &:hover {
