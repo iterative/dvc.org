@@ -1,0 +1,38 @@
+.title {
+  font-family: var(--font-base);
+  line-height: 45px;
+  color: var(--color-gray-dark);
+  margin: 0 auto;
+}
+
+.fade {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to left, var(--color-light-blue), transparent);
+
+    @media screen(sm) {
+      width: 100px;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to right, var(--color-light-blue), transparent);
+
+    @media screen(sm) {
+      width: 100px;
+    }
+  }
+}
