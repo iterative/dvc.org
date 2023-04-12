@@ -293,11 +293,8 @@ DVC helps you with accessing and using your data artifacts from outside of the
 project where they are versioned, and your tracked data can be imported and
 fetched from anywhere. For example, you may want to download a specific version
 of an ML model to a deployment server or import a dataset into another project.
-To learn about how DVC allows you to do this, see the [discovering and accessing
-data] how-to guide.
-
-[discovering and accessing data]:
-  /doc/user-guide/data-management/discovering-and-accessing-data
+To learn about how DVC allows you to do this, see the
+[discovering and accessing data guide](/doc/user-guide/data-management/discovering-and-accessing-data).
 
 ## Large datasets versioning
 
