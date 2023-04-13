@@ -50,7 +50,7 @@ $ dvc repro
 
 The `-O` option here specifies an output that will not be <abbr>cached</abbr> by
 DVC, and `-M` specifies a metrics file (that will also not be cached).
-`dvc stage add` generates a new stage in the `dvc.yaml` file:
+`dvc stage add` will generates this new stage in the `dvc.yaml` file:
 
 ```yaml
 evaluate:
@@ -84,7 +84,7 @@ files to be versioned by Git.
 </details>
 
 [`evaluate.py`] writes the model's [ROC-AUC] and [average precision] to
-`eval/live/metrics.json` (previously marked as a [metrics file] with `-M`):
+`eval/live/metrics.json` (designated a [metrics file] with `-M` above):
 
 ```json
 {
@@ -160,7 +160,7 @@ plots:
   - eval/importance.png
 ```
 
-To generate them, you can run `dvc plots show` (shown below), which generates an
+To render them, you can run `dvc plots show` (shown below), which generates an
 HTML file you can open in a browser. Or you can load your project in VS Code and
 use the [DVC Extension]'s [Plots Dashboard].
 

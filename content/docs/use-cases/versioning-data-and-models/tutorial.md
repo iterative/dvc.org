@@ -363,4 +363,4 @@ more about managing metrics with DVC.
 [comparing changes]:
   /doc/start/data-management/metrics-parameters-plots#comparing-iterations
 [comparing many experiments]:
-  /doc/start/experiments/experiment-versioning#comparing
+  /doc/start/experiments/experiment-live-tracking#comparing

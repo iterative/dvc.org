@@ -44,7 +44,6 @@
         "source": false,
         "children": [
           "data-versioning",
-          "data-and-model-access",
           "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
@@ -53,13 +52,19 @@
         ]
       },
       {
+        "label": "Experiment Management",
         "slug": "experiments",
         "source": false,
         "children": [
-          "experiment-versioning",
-          "experiment-management",
-          "building-pipelines",
-          "experiment-iterations"
+          "experiment-tracking",
+          {
+            "label": "Collaborating on Experiments",
+            "slug": "experiment-collaboration"
+          },
+          {
+            "label": "Experimenting Using Pipelines",
+            "slug": "experiment-pipelines"
+          }
         ]
       }
     ]
@@ -129,7 +134,6 @@
         "slug": "data-management",
         "source": false,
         "children": [
-          "large-dataset-optimization",
           {
             "slug": "remote-storage",
             "source": "remote-storage/index.md",
@@ -161,8 +165,10 @@
             ]
           },
           "cloud-versioning",
+          "discovering-and-accessing-data",
           "importing-external-data",
-          "managing-external-data"
+          "managing-external-data",
+          "large-dataset-optimization"
         ]
       },
       {
