@@ -12,3 +12,14 @@ Below are the supported installation methods:
 
 - [AMI (AWS)](/doc/studio/self-hosting/installation/aws-ami)
 - [Kubernetes (Helm)](/doc/studio/self-hosting/installation/k8s-helm)
+
+## Studio's architecture
+
+![](/img/studio-architecture-diagram.svg)
+
+Studio is composed of four pieces:
+
+- Frontend Server: Renders the web interface
+- Backend Server: Stores all user information
+- Celery Beat: Coordinates background tasks
+- Celery Worker: Processes background tasks
