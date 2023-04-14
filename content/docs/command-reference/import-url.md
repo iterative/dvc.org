@@ -201,7 +201,10 @@ produces a regular stage in `dvc.yaml`.
   speed up the operation.
 
 - `--version-aware` - capture [cloud versioning] information of the current
-  version when importing the file.
+  version when importing the file. DVC will always
+  [pull](/doc/command-reference/pull) the versioned data from the source and
+  will not [push](/doc/command-reference/push) an additional copy to remote
+  storage.
 
 - `--desc <text>` - user description of the data.
 
