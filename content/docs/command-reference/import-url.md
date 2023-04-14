@@ -200,11 +200,8 @@ produces a regular stage in `dvc.yaml`.
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
 
-- `--version-aware` - capture cloud versioning information when importing the
-  file. By default, DVC will automatically capture cloud versioning information
-  if the URL contains a cloud versioning ID. When `--version-aware` is provided
-  along with a URL that does not contain a cloud versioning ID, DVC will capture
-  the latest version of the file.
+- `--version-aware` - capture [cloud versioning] information of the current
+  version when importing the file.
 
 - `--desc <text>` - user description of the data.
 
@@ -213,11 +210,6 @@ produces a regular stage in `dvc.yaml`.
 - `--label <text>` - user-assigned label(s) to add to the data.
 
 - `--meta key=value` - custom metadata to add to the data.
-
-- `--version-aware` - capture [cloud versioning] information (supported for
-  certain cloud storage providers). By default, DVC will automatically do so
-  only if the `url` contains a valid cloud versioning ID. Otherwsie, with this
-  flat DVC will import the latest version of the file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
