@@ -65,6 +65,8 @@ within:
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
+- [`studio`](#studio) - options for configuring
+  [Iterative Studio](https://studio.iterative.ai/) token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
@@ -373,6 +375,24 @@ Composition].
   `md5/` directories), by default in `.dvc/tmp`. This may be necessary when
   using DVC on NFS or other mounted volumes where SQLite encounters file
   permission errors.
+
+</details>
+
+<details>
+
+## studio
+
+- `studio.token` - Studio access token to use. When this is set, DVC uses this
+  to notify Studio of new experiments. For security reasons, we advise setting
+  token to either a local or a global config. This can also be specified through
+  `DVC_STUDIO_TOKEN` environment variable.
+
+  [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
+  or check
+  [this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
+
+- `studio.url` - URL of Studio to use (in case of self-hosted Studio instance).
+  This can also be specified through `DVC_STUDIO_URL` environment variable.
 
 </details>
 

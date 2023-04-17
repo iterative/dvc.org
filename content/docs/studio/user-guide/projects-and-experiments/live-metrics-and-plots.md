@@ -12,11 +12,11 @@ This requires a 2-step process:
 
 ## Set up an access token
 
-Iterative Studio uses access tokens to authorize [DVCLive] to send live updates
-to the metrics and plots. The access token must be present in any request that
-sends data to the Iterative Studio ingestion endpoint. Requests with missing or
-incorrect access tokens are rejected with an appropriate HTTP error code and
-error message.
+Iterative Studio uses access tokens to authorize DVC and [DVCLive] to send
+experiments and live updates to the metrics and plots. The access token must be
+present in any request that sends data to the Iterative Studio ingestion
+endpoint. Requests with missing or incorrect access tokens are rejected with an
+appropriate HTTP error code and error message.
 
 ### Create and manage access token
 
@@ -29,14 +29,14 @@ handy if you suspect that your account security may have been compromised.
 
 ### Provide access token to experiment
 
-DVCLive expects the access token to be set in the `STUDIO_TOKEN` environment
+DVCLive expects the access token to be set in the `DVC_STUDIO_TOKEN` environment
 variable.
 
 If you are running the experiment locally, you can set this environment variable
 when submitting the training job.
 
 ```cli
-$ STUDIO_TOKEN=**** dvc exp run
+$ DVC_STUDIO_TOKEN=**** dvc exp run
 ```
 
 If you are running the experiment as part of a CI job, a secure way to provide
@@ -49,7 +49,7 @@ example below).
 steps:
   - name: Train model
     env:
-      STUDIO_TOKEN: ${{ secrets.STUDIO_TOKEN }}
+      DVC_STUDIO_TOKEN: ${{ secrets.DVC_STUDIO_TOKEN }}
 ```
 
 ## Send and view live metrics and plots
