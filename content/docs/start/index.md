@@ -11,7 +11,8 @@ pipelines and metrics, and manage experiments.'
 ## Get Started with DVC
 -->
 
-Before we begin, let's prepare a project for this guide
+Before we begin, settle on a directory for
+this guide. Everything we will do will be self contained there.
 
 <details>
 
@@ -35,8 +36,10 @@ This directory name is used in our
 
 </details>
 
-Assuming DVC is already [installed](/doc/install), initialize it by running
-`dvc init` inside a Git project:
+## Initializing a project
+
+Inside your chosen directory, we will use our CWD as a <abbr>DVC project</abbr>. Let's
+initialize it by running `dvc init` inside a Git project:
 
 ```cli
 $ dvc init
