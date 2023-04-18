@@ -116,7 +116,8 @@ within:
   <admon type="warn">
 
   Not to be confused with DVC <abbr>cache</abbr>. The name `site_cache_dir` is
-  coming from [platformdirs.site_cache_dir](https://platformdirs.readthedocs.io/en/latest/api.html#platformdirs.site_cache_dir)
+  coming from
+  [platformdirs.site_cache_dir](https://platformdirs.readthedocs.io/en/latest/api.html#platformdirs.site_cache_dir)
 
   </admon>
 
