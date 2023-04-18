@@ -21,7 +21,7 @@ repository and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
 `git checkout`. Think _"Git for data"_.
 
-### Getting example data.
+## Tracking data
 
 Working inside an [initialized project](/doc/start#initializing-a-project)
 directory, we'll first need to pick a piece of data to work with. Any text or
@@ -54,8 +54,8 @@ DVC stores information about the added file in a special `.dvc` file named
 purpose of Git tracking.
 
 The _metadata about your data_ will now be versioned as source code, while the
-original data file is added to `.gitignore` (so expect it to be modified as
-well). Run the following commands to track the changes with Git:
+original data file is added to `.gitignore`. Run the following commands to track
+the changes with Git:
 
 ```cli
 $ git add data/data.xml.dvc data/.gitignore
@@ -96,11 +96,10 @@ outs:
 
 You can upload DVC-tracked data to a variety of different storage systems
 (remote and local), referred to as "remotes". Before pushing data remotely, you
-will need to set up such a remote.
+will need to set up your remote.
 
 To keep this guide simple, instead of using cloud storage, we will set up and
-use a "local remote", which is simply a directory in the local file system.
-Configure this now according to your OS:
+use a "local remote", which is simply a directory in the local file system:
 
 <toggle>
 
@@ -127,7 +126,7 @@ $ dvc remote add -d myremote %TEMP%\dvcstore
 DVC supports many remote [storage types], including Amazon S3, SSH, Google
 Drive, Azure Blob Storage, and HDFS.
 
-A very common use case will be to configure an [Amazon S3] remote:
+A quite common use case will be to configure an [Amazon S3] remote:
 
 ```cli
 $ dvc remote add -d storage s3://mybucket/dvcstore
@@ -146,7 +145,7 @@ allow access.
 
 ### Pushing
 
-Now, all that's left is to `dvc push` the data to the configured remote:
+Now, let's `dvc push` the data to the configured remote:
 
 ```cli
 $ dvc push
@@ -184,7 +183,7 @@ with `dvc pull` whenever needed (e.g. in other copies of this
 
 If you've run `dvc push` above, we need to empty the <abbr>cache</abbr> and
 delete `data/data.xml` locally to demonstrate the effects of `dvc pull`, or the
-pull would be short-circuited for efficiency:
+pull would be short-circuited for efficiency. Let's do that now:
 
 <toggle>
 <tab title="Mac/Linux">
@@ -207,8 +206,8 @@ $ del data\data.xml
 
 #### Pulling
 
-Now we will physically pull the data back to the project and its
-<abbr>cache<abbr> by running:
+Now we can run `dvc pull` to retrieve the data from the remote back to the
+project and its <abbr>cache<abbr>:
 
 ```cli
 $ dvc pull
@@ -224,8 +223,8 @@ See [Remote Storage] for more information on remote storage.
 
 ## Making changes
 
-Now, let's say we obtained more data from some external source. We will simulate
-this by doubling the dataset contents:
+Next, let's say we obtained more data from some external source. We will
+simulate this by doubling the dataset contents:
 
 <toggle>
 <tab title="Mac/Linux">
@@ -254,7 +253,7 @@ $ dvc add data/data.xml
 ```
 
 Let's also run `dvc push` to upload the changes to the remote storage. Often,
-this will be followed by a `git commit`, to commit the changes locally to Git:
+this will be followed by a `git commit` to track the changes in Git:
 
 ```cli
 $ dvc push
@@ -263,9 +262,9 @@ $ git commit data/data.xml.dvc -m "Dataset updates"
 
 ## Switching between versions
 
-The very popular workflow is to use `git checkout` to switch a branch or
-checkout a `.dvc` file from a specific revision, followed by `dvc checkout` to
-sync data:
+The commonly used workflow is to use `git checkout` to switch to a branch or
+checkout a specific `.dvc` file revision, followed by `dvc checkout` to sync
+data:
 
 ```cli
 $ git checkout <...>
@@ -293,14 +292,14 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 </details>
 
 Yes, DVC is technically not a version control system! DVC manipulates `.dvc`
-files with metadata, whose contents define the data file versions. Git, which is
-already used to version your code, now also versions your data alongside it. DVC
-also synchronizes DVC-tracked data in the <abbr>workspace</abbr> efficiently to
-match the `.dvc` files.
+files, whose contents define the data file versions. Git is already used to
+version your code, and now also versions data alongside it. DVC also
+synchronizes the DVC-tracked data in the workspace efficiently to match the
+`.dvc` files.
 
 ## Discovering and accessing data
 
-With DVC, your tracked data can be imported and fetched from anywhere. For
+Your tracked data can be imported and fetched from anywhere using DVC. For
 example, you may want to download a specific version of an ML model to a
 deployment server or import a dataset into another project. To learn about how
 DVC allows you to do this, see the
