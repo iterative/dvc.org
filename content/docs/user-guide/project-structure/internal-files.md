@@ -94,9 +94,9 @@ This location may be overridden with `dvc config core.site_cache_dir`.
   saves the corresponding timestamps and inodes to avoid unnecessary file hash
   computations.
 
-- `links`: This directory is used to clean up your workspace when
-  calling `dvc checkout`. It contains a SQLite state database that stores a list
-  of file links created by DVC (from cache to <abbr>workspace</abbr>).
+- `links`: This directory is used to clean up your workspace when calling
+  `dvc checkout`. It contains a SQLite state database that stores a list of file
+  links created by DVC (from cache to <abbr>workspace</abbr>).
 
 ## Structure of the cache directory
 
