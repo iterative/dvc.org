@@ -378,7 +378,8 @@ Composition].
 
 <admon type="warn">
 
-This section is obsolete since DVC 2.48.0. Modifying these config options will have no effect.
+This section is obsolete since DVC 2.48.0. Modifying these config options will
+have no effect.
 
 </admon>
 
@@ -404,7 +405,8 @@ This section is obsolete since DVC 2.48.0. Modifying these config options will h
 
 <admon type="warn">
 
-This section is obsolete since DVC 2.48.0. Modifying these config options will have no effect.
+This section is obsolete since DVC 2.48.0. Modifying these config options will
+have no effect.
 
 </admon>
 
