@@ -101,7 +101,7 @@
   "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiments",
   "^/doc/dvclive/api-reference$                                                           /doc/dvclive/",
   "^/doc/dvclive/get-started$                                                             /doc/start/experiments",
-  "^/doc/dvclive/api-reference/ml-frameworks$                                             /doc/dvclive/ml-frameworks",
+  "^/doc/dvclive/api-reference/ml-frameworks(/.*)?$                                             /doc/dvclive/ml-frameworks$1",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
