@@ -112,7 +112,8 @@ within:
   be committed. Accepts values `true` and `false` (default).
 
 - `core.site_cache_dir` - specify a custom location for misc temporary files.
-  Read more [here](/doc/user-guide/project-structure/internal-files#site-cache-dir).
+  Read more
+  [here](/doc/user-guide/project-structure/internal-files#site-cache-dir).
 
 </details>
 
