@@ -140,6 +140,9 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
 
+- `-C <path>`, `--copy-paths <path>` - List of ignored or untracked paths to
+  copy into the temp directory. Only used if `--temp` or `--queue` is specified.
+
 - `-h`, `--help` - prints the usage/help message, and exits.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
@@ -292,3 +295,16 @@ $ dvc queue start
 
 [grid search]:
   https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
+
+## Example: Include untracked or ignored paths
+
+If your code relies on some paths that are intentionally untracked or ignored by
+Git, you can use `-C/--copy-paths` to ensure those files are accessible when you
+use the `--temp` or `--queue` flags:
+
+```cli
+$ dvc exp run --temp -C secrets.txt -C symlinked-directory
+```
+
+The paths will be copied to the temporary directory but will _not_ be tracked by
+Git or DVC so the paths are not unintentionally leaked.
