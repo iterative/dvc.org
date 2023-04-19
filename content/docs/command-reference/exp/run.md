@@ -306,5 +306,5 @@ use the `--temp` or `--queue` flags:
 $ dvc exp run --temp -C secrets.txt -C symlinked-directory
 ```
 
-The paths will be copied to the temporary directory but will _not_ be tracked by
-Git or DVC so the paths are not unintentionally leaked.
+The paths will be copied to the temporary directory but will _not_ be tracked,
+to prevent unintentional leaks.
