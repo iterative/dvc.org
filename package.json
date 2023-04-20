@@ -64,7 +64,7 @@
     "gatsby": "^5.4.2",
     "gatsby-plugin-algolia": "^1.0.3",
     "gatsby-plugin-image": "^3.4.0",
-    "gatsby-plugin-sharp": "^5.4.0",
+    "gatsby-plugin-sharp": "^5.8.1",
     "gatsby-source-rss-feed": "^1.2.2",
     "github-markdown-css": "^5.1.0",
     "http-proxy-middleware": "^2.0.6",
