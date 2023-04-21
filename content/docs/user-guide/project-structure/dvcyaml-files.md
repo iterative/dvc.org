@@ -42,6 +42,22 @@ Parameters are key/value pairs saved in structured files. Unlike stage-level
 are defined at the file level and include all parameters in the file. See
 `dvc params` for more information and how to compare between experiments.
 
+## Artifacts
+
+This section contains one or more artifact you want to declare in order to build
+a [Model Registry](/doc/use-cases/model-registry), Data Registry or more generic
+Artifact Registry.
+
+```yaml
+artifacts:
+  cv-classification:
+    path: models/cv.pkl
+    type: model
+```
+
+Artifacts with `type: model` will appear in
+[Studio Model Registry](/doc/studio).
+
 ## Plots
 
 The list of `plots` contains one or more user-defined `dvc plots`
