@@ -74,7 +74,7 @@ $ dvc exp pull origin quare-zips
 This puts all the necessary files and data (from both Git and DVC remotes) in
 your project. Add the `--no-cache` flag to exclude pulling from the DVC remote.
 
-You can find experiments to pull in [Studio](https://iterative.studio.ai) or
+You can find experiments to pull in [Studio](https://studio.iterative.ai) or
 [list remote experiments] from the command line.
 
 [list remote experiments]:
