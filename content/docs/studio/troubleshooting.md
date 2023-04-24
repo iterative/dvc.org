@@ -23,6 +23,7 @@ Iterative Studio.
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 - [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
+- [Project does not display DVC experiments](#project-does-not-display-dvc-experiments)
 
 **Model registry**
 
@@ -236,6 +237,16 @@ Also note that live metrics and plots for an experiment are displayed only if
 its parent Git commit is present in the project table. So, before you run the
 experiment, make sure that its parent commit is pushed to Git and shown in the
 project table.
+
+## Project does not display DVC experiments
+
+Iterative Studio automatically checks for updates to your repository using
+webhooks, but it can not rely on this mechanism for custom git objects, like DVC
+experiment references. So the experiments you push using `dvc exp push` may not
+automatically display in your project table.
+
+To manually check for updates in your repository, use the `Reload` button 🔄
+located above the project table.
 
 ## I cannot find my desired Git repository in the form to add a model
 
