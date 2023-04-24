@@ -50,13 +50,24 @@ Artifact Registry.
 
 ```yaml
 artifacts:
-  cv-classification:
-    path: models/cv.pkl
+  cv-classification: # artifact ID
+    path: models/resnet.pt
     type: model
+    desc: 'CV classification model, ResNet50'
+    labels:
+      - resnet50
+      - classification
+    meta:
+      framework: pytorch
 ```
 
-Artifacts with `type: model` will appear in
+Soon, artifacts with `type: model` will appear in
 [Studio Model Registry](/doc/studio).
+
+Artifact IDs
+[must](https://github.com/iterative/dvc/blob/main/dvc/repo/artifacts.py#L16)
+consist of letters and numbers, and use '-' as separator (but not at the start
+or end). The first character must be a letter.
 
 ## Plots
 
