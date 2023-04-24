@@ -65,6 +65,8 @@ within:
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
+- [`studio`](#studio) - options for configuring
+  [Iterative Studio](https://studio.iterative.ai/) token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
@@ -110,6 +112,10 @@ within:
 - `core.autostage` - if enabled, DVC will automatically stage (`git add`)
   <abbr>DVC files</abbr> created or modified by DVC commands. The files will not
   be committed. Accepts values `true` and `false` (default).
+
+- `core.site_cache_dir` - specify a custom location for misc temporary files.
+  Read more
+  [here](/doc/user-guide/project-structure/internal-files#site-cache-dir).
 
 </details>
 
@@ -360,6 +366,13 @@ Composition].
 
 ## state
 
+<admon type="warn">
+
+This section is obsolete since DVC 2.48.0. Modifying these config options will
+have no effect.
+
+</admon>
+
 - `state.row_limit` - maximum number of entries in state databases. This affects
   the physical size of the state files, as well as the performance of certain
   DVC operations. The default is 10,000,000 rows. The bigger the limit, the
@@ -378,7 +391,32 @@ Composition].
 
 <details>
 
+## studio
+
+- `studio.token` - Studio access token to use. When this is set, DVC uses this
+  to notify Studio of new experiments. For security reasons, we advise setting
+  token to either a local or a global config. This can also be specified through
+  `DVC_STUDIO_TOKEN` environment variable.
+
+  [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
+  or check
+  [this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
+
+- `studio.url` - URL of Studio to use (in case of self-hosted Studio instance).
+  This can also be specified through `DVC_STUDIO_URL` environment variable.
+
+</details>
+
+<details>
+
 ## index
+
+<admon type="warn">
+
+This section is obsolete since DVC 2.48.0. Modifying these config options will
+have no effect.
+
+</admon>
 
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary

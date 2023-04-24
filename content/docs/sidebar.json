@@ -706,6 +706,10 @@
               {
                 "label": "502 Service Unavailable",
                 "slug": "502"
+              },
+              {
+                "label": "Providing data to our support",
+                "slug": "support-bundle"
               }
             ]
           }
