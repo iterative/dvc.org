@@ -53,8 +53,8 @@ even containerize and deploy them to cloud providers!
 
 To let your teams **collaborate** on project more efficiently, you can use
 [Studio model registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
- to organize, discover, version, promote models to production and
-track their lineage.
+to organize, discover, version, promote models to production and track their
+lineage.
 
 This ecosystem of tools from [Iterative](https://iterative.ai/) introduces
 [GitOps] into your ML process. This means you can manage and deliver ML models

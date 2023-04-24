@@ -19,7 +19,8 @@ This section allows you to declare structured metadata about your artifacts.
 Although you can specify artifacts of any `type`, we are in the process of
 building a DVC-based [model registry](/doc/use-cases/model-registry) that will
 use any artifacts with `type: model`. Specically, they will appear in
-[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry) (coming soon).
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
+(coming soon).
 
 ```yaml
 artifacts:
