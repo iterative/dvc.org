@@ -88,7 +88,7 @@ can be tracked in Git and becomes part of the experiment. With this metadata
 file, you can [retrieve](/doc/start/data-management/data-versioning#retrieving)
 the versioned artifact from the Git commit.
 
-Passing `type="model"` or `type="data"` will it to `artifacts` section of
+Passing `type="model"` or `type="data"` will add it to `artifacts` section of
 `dvc.yaml`, allowing DVC to understand what it is and show models in
 [Studio Model Registry](/doc/use-cases/model-registry).
 
