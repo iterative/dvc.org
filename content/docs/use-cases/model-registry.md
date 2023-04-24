@@ -52,8 +52,8 @@ list and transfer them within locations, wrap them as a local REST server, or
 even containerize and deploy them to cloud providers!
 
 To let your teams **collaborate** on project more efficiently, you can use
-[Studio](/doc/studio/user-guide/model-registry/what-is-a-model-registry) web
-application to organize, discover, version, promote models to production and
+[Studio model registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
+ to organize, discover, version, promote models to production and
 track their lineage.
 
 This ecosystem of tools from [Iterative](https://iterative.ai/) introduces
