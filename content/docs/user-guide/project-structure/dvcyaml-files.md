@@ -50,12 +50,17 @@ directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
 If the ID is an arbitrary string, a file path must be provided in the `y` field
 (`x` file path is always optional and cannot be the only path provided).
 
+In addition to these "top-level plots," users can mark specific stage
+<abbr>outputs</abbr> as [plot outputs](#metrics-and-plots-outputs). DVC will
+collect both types and display everything conforming to each plot configuration.
+If any stage plot files or directories are also used in a top-level definition,
+DVC will create separate rendering for each type.
+
 <admon icon="book">
 
 Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
-[visualizing plots]:
-  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 </admon>
 

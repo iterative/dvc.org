@@ -22,7 +22,8 @@ Within a project, you can:
 To **display your project's content** in Iterative Studio,
 [**initialize DVC**](https://dvc.org/doc) in your project's Git repository and
 create `dvc.yaml`. When running model training and evaluation, save metrics and
-plots in the files defined in `dvc.yaml`.
+plots in the files defined in `dvc.yaml`. [DVCLive] can do this for you
+automatically.
 
 If you are working with a **non-DVC repository**, you can
 [indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters)
