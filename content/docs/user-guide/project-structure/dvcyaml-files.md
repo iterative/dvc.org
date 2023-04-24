@@ -2,9 +2,9 @@
 
 You can configure machine learning projects in one or more `dvc.yaml` files. The
 list of [`stages`](#stages) is typically the most important part of a `dvc.yaml`
-file, though the file can also be used to configure [`metrics`](#metrics),
-[`params`](#params), and [`plots`](#plots), either as part of a stage definition
-or on their own.
+file, though the file can also be used to configure [`artifacts`](#artifacts),
+[`metrics`](#metrics), [`params`](#params), and [`plots`](#plots), either as
+part of a stage definition or on their own.
 
 `dvc.yaml` uses the [YAML 1.2](https://yaml.org/) format and a human-friendly
 schema explained below. We encourage you to get familiar with it so you may
@@ -12,6 +12,32 @@ modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other <abbr>DVC files</abbr> and your project's code.
+
+## Artifacts
+
+This section allows you to declare structured metadata about your artifacts.
+Although you can specify artifacts of any `type`, we are in the process of
+building a DVC-based [model registry](/doc/use-cases/model-registry) that will
+use any artifacts with `type: model`. Specically, they will appear in
+[Studio Model Registry](/doc/studio) (coming soon).
+
+```yaml
+artifacts:
+  cv-classification: # artifact ID (name)
+    path: models/resnet.pt
+    type: model
+    desc: 'CV classification model, ResNet50'
+    labels:
+      - resnet50
+      - classification
+    meta:
+      framework: pytorch
+```
+
+Artifact IDs
+[must](https://github.com/iterative/dvc/blob/main/dvc/repo/artifacts.py#L16)
+consist of letters and numbers, and use '-' as separator (but not at the start
+or end). The first character must be a letter.
 
 ## Metrics
 
@@ -41,33 +67,6 @@ Parameters are key/value pairs saved in structured files. Unlike stage-level
 [parameter dependencies](#parameters), which are granular, top-level parameters
 are defined at the file level and include all parameters in the file. See
 `dvc params` for more information and how to compare between experiments.
-
-## Artifacts
-
-This section contains one or more artifact you want to declare in order to build
-a [Model Registry](/doc/use-cases/model-registry), Data Registry or more generic
-Artifact Registry.
-
-```yaml
-artifacts:
-  cv-classification: # artifact ID
-    path: models/resnet.pt
-    type: model
-    desc: 'CV classification model, ResNet50'
-    labels:
-      - resnet50
-      - classification
-    meta:
-      framework: pytorch
-```
-
-Soon, artifacts with `type: model` will appear in
-[Studio Model Registry](/doc/studio).
-
-Artifact IDs
-[must](https://github.com/iterative/dvc/blob/main/dvc/repo/artifacts.py#L16)
-consist of letters and numbers, and use '-' as separator (but not at the start
-or end). The first character must be a letter.
 
 ## Plots
 
