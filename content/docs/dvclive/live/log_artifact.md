@@ -39,7 +39,8 @@ Uses `dvc add` to track `path` with DVC, generating a `{path}.dvc` file.
 When combined with `save_dvc_exp=True`, it will ensure that `{path}.dvc` is
 included in the experiment.
 
-If `Live` was initialized with `dvcyaml=True` (which is the default), will add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to
+If `Live` was initialized with `dvcyaml=True` (which is the default), will add
+an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to
 corresponding `dvc.yaml`, marking it as a `model` for DVC and making artifact
 appear in [Studio Model Registry](/doc/studio).
 
