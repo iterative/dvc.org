@@ -24,13 +24,15 @@ To **display your project's content** in Iterative Studio,
 create `dvc.yaml`. When running model training and evaluation, save metrics and
 plots in the files defined in `dvc.yaml`.
 
+You can also use the `dvc exp push` command to **push experiments without
+creating separate Git commits** for them. To notify Iterative Studio when you
+push experiments using `dvc exp push`,
+[configure the `DVC_STUDIO_TOKEN` environment variable](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
+
 If you are working with a **non-DVC repository**, you can
 [indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters)
 that Iterative Studio should display in the project. However, we strongly
 recommend using DVC to avail of all the features of Iterative Studio.
-
-To **add model metadata** to your repositories, you can use Iterative Studio
-Model Registry, or the underlying [GTO] or [MLEM]. [Learn more][model-registry]
 
 To **run new experiments** from Iterative Studio, integrate your repositories
 with a CI setup that includes a model training process. You can
@@ -39,10 +41,13 @@ to automatically generate the workflow configuration for the model training CI
 job. [Learn more][run-experiments]
 
 To **track live metrics and plots** of running experiments, configure the
-`STUDIO_ACCESS_TOKEN` environment variable and use DVCLive in your training
+`DVC_STUDIO_TOKEN` environment variable and use DVCLive in your training
 pipeline. You can also do this for experiments that you run from Iterative
 Studio if you configure the CI job accordingly. [Learn
 more][live-metrics-and-plots]
+
+To **add model metadata** to your repositories, you can use Iterative Studio
+Model Registry, or the underlying [GTO] or [MLEM]. [Learn more][model-registry]
 
 [on project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories

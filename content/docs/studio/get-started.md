@@ -42,13 +42,21 @@ details]).
 
    </admon>
 
-3. Iterative Studio parses your project's `dvc.yaml` file to identify data,
-   metrics, plots and hyperparameters.
+3. Iterative Studio identifies experiments and their data, metrics, plots and
+   hyperparameters form the following sources:
 
-   If you are not using DVC, you can separately
-   [indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
-   However, we strongly recommend using DVC to avail of all the features of
-   Iterative Studio.
+   1. **`dvc.yaml` file**: Details of experiments saved as Git commits are
+      fetched from this file.
+   2. **Git refs**: Details of experiments pushed using `dvc exp push` are
+      fetched from here.
+   3. **Metrics and plots logged by [DVCLive]**: To [track live metrics and
+      plots][live-metrics-and-plots] of running experiments, you should set the
+      `DVC_STUDIO_TOKEN` environment variable and use [DVCLive] in your training
+      pipeline.
+   4. **Files that you
+      [indicate as custom metrics and parameters files](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters)**:
+      These are useful if you are not using DVC. However, we strongly recommend
+      using DVC to avail of all the features of Iterative Studio.
 
 4. Each project on the Projects dashboard displays the metrics of the first
    three columns in your project (such as `avg_prec` and `roc_auc` in the
@@ -65,10 +73,6 @@ details]).
 6. You can [submit new experiments] by changing hyperparameters and datasets.
    This triggers model training if your repository has appropriate CI/CD actions
    set up.
-
-7. To [track live metrics and plots][live-metrics-and-plots] of running
-   experiments, set the `STUDIO_ACCESS_TOKEN` environment variable and use
-   [DVCLive] in your training pipeline.
 
 ## Manage models
 

@@ -18,6 +18,9 @@ present in any request that sends data to the Iterative Studio ingestion
 endpoint. Requests with missing or incorrect access tokens are rejected with an
 appropriate HTTP error code and error message.
 
+The access token is also used by DVC to notify Iterative Studio when you push
+experiments using `dvc exp push`.
+
 ### Create and manage access token
 
 Open your user profile page. In the `Studio access token` section, click on

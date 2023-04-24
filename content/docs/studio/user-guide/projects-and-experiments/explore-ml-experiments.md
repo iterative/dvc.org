@@ -38,11 +38,13 @@ The branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
 [New experiments submitted from Iterative Studio][run-experiments] appear as
-experiment commits, which are eventually pushed to Git. Any live metrics that
-you send using [DVCLive] are displayed in a special experiment row nested under
-the parent Git commit. More details of how live metrics are displayed can be
-found
+experiment commits, which are eventually pushed to Git. Experiments that you
+push using the `dvc exp push` command as well as any live metrics that you send
+using [DVCLive] are displayed in a special experiment row nested under the
+parent Git commit. More details of how live metrics are displayed can be found
 [here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
+
+<!-- To do: Replace the following image with one that contains dvc exp and live experiment rows.-->
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
