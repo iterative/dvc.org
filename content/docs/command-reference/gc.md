@@ -11,6 +11,7 @@ usage: dvc gc [-h] [-q | -v]
               [-w] [--rev <commit>] [-n <num>] [-a] [-T] [-A]
               [--date <YYYY-MM-DD>] [--all-experiments]
               [-p [<path> [<path> ...]]]
+              [--not-in-remote]
               [-c] [-r <name>] [-j <number>] [-f]
 ```
 
@@ -119,6 +120,19 @@ project we want to clear.
   shared] among different projects, this option can be used to specify a list of
   them (each project is a path) to keep data that is currently referenced from
   them.
+
+- `--not-in-remote` - keep cached objects that are _not_ in the remote. This
+  will remove the objects from the local cache that have been pushed and are
+  present in the remote.
+
+  For objects using the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against that remote.
+
+  For objects not using the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against the default remote unless a specific one is given
+  with `-r`.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
   **This option is dangerous.** The default remote is used unless a specific one
