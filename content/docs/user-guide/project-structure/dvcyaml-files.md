@@ -35,10 +35,8 @@ artifacts:
       framework: pytorch
 ```
 
-Artifact IDs
-[must](https://github.com/iterative/dvc/blob/main/dvc/repo/artifacts.py#L16)
-consist of letters and numbers, and use '-' as separator (but not at the start
-or end). The first character must be a letter.
+Artifact IDs must consist of letters and numbers, and use '-' as separator (but
+not at the start or end). The first character must be a letter.
 
 ## Metrics
 
