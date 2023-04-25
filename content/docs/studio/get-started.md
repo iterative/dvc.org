@@ -43,7 +43,7 @@ details]).
    </admon>
 
 3. Iterative Studio identifies experiments and their data, metrics, plots and
-   hyperparameters form the following sources:
+   hyperparameters from the following sources:
 
    1. **`dvc.yaml` file**: Details of experiments saved as Git commits are
       fetched from this file.
