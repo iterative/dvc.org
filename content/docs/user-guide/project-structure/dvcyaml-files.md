@@ -18,7 +18,7 @@ with Git along with other <abbr>DVC files</abbr> and your project's code.
 This section allows you to declare structured metadata about your artifacts.
 Although you can specify artifacts of any `type`, we are in the process of
 building a DVC-based [model registry](/doc/use-cases/model-registry) that will
-use any artifacts with `type: model`. Specically, they will appear in
+pick up any artifacts with type `model`. Additionally, they will be picked up and supported by
 [Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
 (coming soon).
 

@@ -90,9 +90,9 @@ the versioned artifact from the Git commit.
 
 If `Live` was initialized with `dvcyaml=True` (which is the default), this will
 add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to
-corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model` for
-DVC and will make it appear in [Studio Model Registry](/doc/studio) (coming
-soon).
+the corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model` for
+DVC and will also make [Studio Model Registry](/doc/studio) support it (coming
+soon!).
 
 ### Run with DVC
 
@@ -103,8 +103,7 @@ search). By configuring DVC <abbr>pipelines</abbr>, you can
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
 with `dvc exp run`.
 
-DVCLive prints instructions for how to configure a pipeline stage in `dvc.yaml`
-like:
+You can configure a pipeline stage in `dvc.yaml` like:
 
 ```yaml
 stages:
