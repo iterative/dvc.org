@@ -103,8 +103,7 @@ search). By configuring DVC <abbr>pipelines</abbr>, you can
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
 with `dvc exp run`.
 
-DVCLive prints instructions for how to configure a pipeline stage in `dvc.yaml`
-like:
+You can configure a pipeline stage in `dvc.yaml` like:
 
 ```yaml
 stages:
