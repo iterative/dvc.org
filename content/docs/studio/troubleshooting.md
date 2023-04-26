@@ -241,8 +241,8 @@ project table.
 ## Project does not display DVC experiments
 
 Iterative Studio automatically checks for updates to your repository using
-webhooks, but it can not rely on this mechanism for custom git objects, like DVC
-experiment references. So the experiments you push using `dvc exp push` may not
+webhooks, but it can not rely on this mechanism for custom git objects, like <abbr>DVC
+experiment</abbr> references. So the experiments you push using `dvc exp push` may not
 automatically display in your project table.
 
 To manually check for updates in your repository, use the `Reload` button 🔄
