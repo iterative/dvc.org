@@ -81,12 +81,18 @@ find but that don't clutter your Git history or create extra branches.
 ### Track large artifacts with DVC
 
 Models and data are often large and aren't easily tracked in Git.
-`Live.log_artifact("model.pt")` will
+`Live.log_artifact("model.pt", type="model")` will
 [cache](/doc/start/data-management/data-versioning) the `model.pt` file with DVC
 and make Git ignore it. It will generate a `model.pt.dvc` metadata file, which
 can be tracked in Git and becomes part of the experiment. With this metadata
 file, you can [retrieve](/doc/start/data-management/data-versioning#retrieving)
 the versioned artifact from the Git commit.
+
+If `Live` was initialized with `dvcyaml=True` (which is the default), this will
+add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to
+the corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model`
+for DVC and will also make [Studio Model Registry](/doc/studio) support it
+(coming soon!).
 
 ### Run with DVC
 
