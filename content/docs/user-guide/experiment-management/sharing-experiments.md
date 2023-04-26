@@ -1,17 +1,8 @@
 # Sharing Experiments
 
-In a regular Git workflow, <abbr>DVC repository</abbr> versions are typically
-synchronized among team members. And [DVC Experiments] are internally connected
-to this commit history, so you can similarly share them.
-
-[dvc experiments]: /doc/user-guide/experiment-management
-
-## Push and pull experiments
-
-The fastest way to share DVC experiments is to use `dvc exp push` and
-`dvc exp pull`. This works like [sharing regular project
-versions][sharing-data], but here DVC takes care of synchronizing to/from both
-Git and [DVC remotes][remote storage] as needed:
+Use `dvc exp push` and `dvc exp pull` to share experiments. This works like
+[sharing regular project versions][sharing-data], but here DVC takes care of
+synchronizing to/from both Git and [DVC remotes][remote storage] as needed:
 
 ```
   ┌────────────────┐     ┌────────────────┐
@@ -32,56 +23,62 @@ Git and [DVC remotes][remote storage] as needed:
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
 
-If you need to share <abbr>cached</abbr> data that is tracked by DVC, [configure
-remote storage] first (e.g. Amazon S3 or SSH).
+## Pushing experiments
 
-[configure remote storage]:
-  https://dvc.org/doc/user-guide/data-management/remote-storage#configuration
+You can upload an experiment using `dvc exp push`, which takes a Git remote name
+and an experiment ID or name. Check your Git remote with `git remote -v` and see
+[troubleshooting] for problems. For example, push to Git remote `origin`:
 
-<admon type="tip">
+```cli
+$ dvc exp push origin quare-zips
+```
 
-Check that you have the necessary remotes with `git remote -v` and (optionally)
-`dvc remote list`.
+By default, DVC will also share <abbr>cached</abbr> data that is tracked by DVC,
+which requires [remote storage] (e.g. Amazon S3 or SSH). Add the `--no-cache`
+flag to exclude sharing with the DVC remote.
 
-For problems accessing the Git remote, see the [remote storage] guide.
+View and manage pushed experiments in [Studio](https://studio.iterative.ai). To
+notify Studio when you push experiments,
+[get your Studio token](https://studio.iterative.ai/user/_/profile?section=accessToken)
+and save it with
+[`dvc config --global studio.token ***`](/doc/user-guide/project-structure/configuration#studio).
 
-For problems accessing the DVC remote, see [troubleshooting].
+![Sharing experiments in Studio](/img/exp-sharing-studio.png)
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [troubleshooting]: /doc/user-guide/troubleshooting#git-auth
 
-</admon>
+## Live sharing
 
-You can upload an experiment using `dvc exp push --no-cache`, which takes a Git
-remote name and an experiment ID or name. (Remove the `--no-cache` flag to
-include <abbr>cached</abbr> data, which requries a `dvc remote`.) For example:
+For long-running experiments, you may wish to share updates while the experiment
+runs. For example, if you are running an experiment on a remote GPU server, you
+may need a UI outside of that server to track progress and decide whether to
+continue training. You can
+[share live updates in Studio](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots).
+If you set the
+[`DVC_STUDIO_TOKEN` environment variable](https://studio.iterative.ai/user/_/profile?section=accessToken),
+[Studio](https://studio.iterative.ai) will show live metrics, plots, and other
+experiment information.
 
-```cli
-$ dvc exp push --no-cache origin quare-zips
-```
+![](https://static.iterative.ai/img/studio/live_metrics.gif)
 
-<admon type="tip">
+## Pulling experiments
 
-Learn how to [list local experiments] (to find their names).
-
-You can also [list remote experiments] (without/before downloading them).
-
-[list local experiments]:
-  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-in-the-project
-[list remote experiments]:
-  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely
-
-</admon>
-
-To download an experiment, use `dvc exp pull --no-cache` (with the Git remote
-and experiment name). Remove `--no-cache` to include data, for example:
+To download an experiment, use `dvc exp pull` (with the Git remote and
+experiment name).
 
 ```cli
 $ dvc exp pull origin quare-zips
 ```
 
 This puts all the necessary files and data (from both Git and DVC remotes) in
-your project.
+your project. Add the `--no-cache` flag to exclude pulling from the DVC remote.
+
+You can find experiments to pull in [Studio](https://studio.iterative.ai) or
+[list remote experiments] from the command line.
+
+[list remote experiments]:
+  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely
 
 <admon type="warn">
 
@@ -90,7 +87,7 @@ avoid cluttering your local repo). You must `dvc exp pull` the ones you want.
 
 </admon>
 
-### Sharing many experiments
+## Sharing many experiments
 
 Use the `--rev`/`--num`/`--all-commits` options of `dvc exp push` and
 `dvc exp pull` to share many experiments at once. E.g., to upload all
