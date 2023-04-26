@@ -42,9 +42,9 @@ details]).
 
    </admon>
 
-3. Iterative Studio identifies experiments, which are Git commits or Git refs,
-   and parses your project's `dvc.yaml` file to identify data, metrics, plots
-   and hyperparameters.
+3. Iterative Studio identifies [experiments](/doc/start#experiment-management),
+   which are Git commits or Git refs, and parses your project's `dvc.yaml` file
+   to identify data, metrics, plots and hyperparameters.
 
    If you are not using DVC, you can separately
    [indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
