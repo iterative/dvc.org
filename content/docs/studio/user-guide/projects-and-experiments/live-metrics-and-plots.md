@@ -18,6 +18,9 @@ present in any request that sends data to the Iterative Studio ingestion
 endpoint. Requests with missing or incorrect access tokens are rejected with an
 appropriate HTTP error code and error message.
 
+The access token is also used by DVC to notify Iterative Studio when you push
+experiments using `dvc exp push`.
+
 ### Create and manage access token
 
 Open your user profile page. In the `Studio access token` section, click on
@@ -135,8 +138,8 @@ An experiment can have one of the following statuses:
   <admon type="warn">
 
   Iterative Studio does not automatically commit and push the final results of
-  your experiment to Git. If you want to save the experiment result, you should
-  make it [persistent] using appropriate DVC and Git commands.
+  your experiment to Git. You can [share] the experiment or [save] it using
+  appropriate DVC and Git commands.
 
   </admon>
 
@@ -149,4 +152,5 @@ projects.
 </admon>
 
 [dvclive]: /doc/dvclive
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[share]: /doc/user-guide/experiment-management/sharing-experiments
+[save]: /doc/user-guide/experiment-management/persisting-experiments
