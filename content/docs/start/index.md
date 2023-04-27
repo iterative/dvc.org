@@ -11,8 +11,8 @@ pipelines and metrics, and manage experiments.'
 ## Get Started with DVC
 -->
 
-Before we begin, settle on a directory for
-this guide. Everything we will do will be self contained there.
+Before we begin, settle on a directory for this guide. Everything we will do
+will be self contained there.
 
 <details>
 
@@ -38,8 +38,8 @@ This directory name is used in our
 
 ## Initializing a project
 
-Inside your chosen directory, we will use our CWD as a <abbr>DVC project</abbr>. Let's
-initialize it by running `dvc init` inside a Git project:
+Inside your chosen directory, we will use our CWD as a <abbr>DVC project</abbr>.
+Let's initialize it by running `dvc init` inside a Git project:
 
 ```cli
 $ dvc init

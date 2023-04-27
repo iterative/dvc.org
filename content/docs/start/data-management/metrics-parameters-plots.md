@@ -46,7 +46,7 @@ $ dvc repro
 
 <details>
 
-### 💡 Expand to see what happens under the hood.
+### 💡 Expand to get a peek under the hood
 
 The `-O` option here specifies an output that will not be <abbr>cached</abbr> by
 DVC, and `-M` specifies a metrics file (that will also not be cached).
@@ -117,7 +117,7 @@ eval/live/metrics.json  0.94496          0.97723           0.96191         0.987
 
 ## Visualizing plots
 
-The stage also writes different files with data that can be graphed:
+The `evaluate` stage also writes different files with data that can be graphed:
 
 - [DVCLive]-generated [`roc_curve`] and [`confusion_matrix`] values in the
   `eval/live/plots` directory.
@@ -160,9 +160,9 @@ plots:
   - eval/importance.png
 ```
 
-To render them, you can run `dvc plots show` (shown below), which generates an
-HTML file you can open in a browser. Or you can load your project in VS Code and
-use the [DVC Extension]'s [Plots Dashboard].
+To render them, run `dvc plots show` (shown below), which generates an HTML file
+you can open in a browser. Or you can load your project in VS Code and use the
+[DVC Extension]'s [Plots Dashboard].
 
 ```cli
 $ dvc plots show
