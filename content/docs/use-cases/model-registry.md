@@ -40,17 +40,21 @@ See also [Data Registry](/doc/use-cases/data-registry).
 
 </admon>
 
-To make a Git-native registry (on top of DVC or not), one option is to use [GTO]
-(Git Tag Ops). It tags ML model releases and promotions, and links them to
-artifacts in the repo using versioned annotations. This creates abstractions for
-your models, which lets you **manage their lifecycle** freely and directly from
-Git.
+To make a Git-native registry (with or without DVC), one option is to use [GTO]
+(Git Tag Ops). It tags ML model version releases and stage changes. This creates
+abstractions for your models, which lets you **manage their lifecycle** freely
+and directly from Git.
 
 And to **productionize** the models, you can save and package them with the
 [MLEM] Python API or CLI, which automagically captures all the context needed to
 distribute them. It can store model files on the cloud (by itself or with DVC),
 list and transfer them within locations, wrap them as a local REST server, or
 even containerize and deploy them to cloud providers!
+
+To allow your teams **collaborate** on projects more efficiently, use
+[Studio model registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
+to organize, discover, version, manage model stages (e.g. testing, production)
+and track their lineage.
 
 This ecosystem of tools from [Iterative](https://iterative.ai/) introduces
 [GitOps] into your ML process. This means you can manage and deliver ML models

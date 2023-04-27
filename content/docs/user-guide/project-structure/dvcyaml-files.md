@@ -2,9 +2,9 @@
 
 You can configure machine learning projects in one or more `dvc.yaml` files. The
 list of [`stages`](#stages) is typically the most important part of a `dvc.yaml`
-file, though the file can also be used to configure [`metrics`](#metrics),
-[`params`](#params), and [`plots`](#plots), either as part of a stage definition
-or on their own.
+file, though the file can also be used to configure [`artifacts`](#artifacts),
+[`metrics`](#metrics), [`params`](#params), and [`plots`](#plots), either as
+part of a stage definition or on their own.
 
 `dvc.yaml` uses the [YAML 1.2](https://yaml.org/) format and a human-friendly
 schema explained below. We encourage you to get familiar with it so you may
@@ -12,6 +12,32 @@ modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other <abbr>DVC files</abbr> and your project's code.
+
+## Artifacts
+
+This section allows you to declare structured metadata about your artifacts.
+Although you can specify artifacts of any `type`, we are in the process of
+building a DVC-based [model registry](/doc/use-cases/model-registry) that will
+pick up any artifacts with type `model`. Additionally, they will be picked up
+and supported by
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
+(coming soon).
+
+```yaml
+artifacts:
+  cv-classification: # artifact ID (name)
+    path: models/resnet.pt
+    type: model
+    desc: 'CV classification model, ResNet50'
+    labels:
+      - resnet50
+      - classification
+    meta:
+      framework: pytorch
+```
+
+Artifact IDs must consist of letters and numbers, and use '-' as separator (but
+not at the start or end). The first character must be a letter.
 
 ## Metrics
 
