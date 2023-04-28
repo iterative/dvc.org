@@ -43,3 +43,5 @@ These are captured in our [example-dvc-experiments] repo (see its
 
 Pick a page from the list above, the left-side navigation bar, or just click
 `NEXT` below!
+
+Click [here](/doc/start/) to jump back to the Get Started landing page.

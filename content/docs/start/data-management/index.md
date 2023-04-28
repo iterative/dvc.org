@@ -41,3 +41,5 @@ The steps and results of some of these chapters are captured in our
 
 Pick a page from the list above, the left-side navigation bar, or just click
 `NEXT` below!
+
+Click [here](/doc/start/) to jump back to the Get Started landing page.
