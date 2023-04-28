@@ -41,7 +41,7 @@
     "children": [
       {
         "slug": "data-management",
-        "source": false,
+        "source": "data-management/index.md",
         "children": [
           "data-versioning",
           "data-pipelines",
@@ -54,7 +54,7 @@
       {
         "label": "Experiment Management",
         "slug": "experiments",
-        "source": false,
+        "source": "experiments/index.md",
         "children": [
           "experiment-tracking",
           {

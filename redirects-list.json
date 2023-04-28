@@ -40,8 +40,8 @@
   "^/doc/install/plugins(/.*)?$                                                           /doc/install/ide-plugins$1",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",
-  "^/doc/start/data-versioning$                                                           /doc/start/data-management",
-  "^/doc/start/data-and-model-versioning(/.*)?$                                           /doc/start/data-management 302",
+  "^/doc/start/data-versioning$                                                           /doc/start/data-management/data-versioning",
+  "^/doc/start/data-and-model-versioning(/.*)?$                                           /doc/start/data-management/data-versioning 302",
   "^/doc/start/sharing-data-and-model-files$                                              /doc/start/data-management#storing-and-sharing 302",
   "^/doc/start/data-access$                                                               /doc/user-guide/data-management/discovering-and-accessing-data",
   "^/doc/start/data-and-model-access(/.*)?$                                               /doc/user-guide/data-management/discovering-and-accessing-data 302",
@@ -98,9 +98,9 @@
   "^/doc/command-reference/run$                                                           /doc/command-reference/stage/add",
   "^/doc/command-reference/exp/init$                                                      /doc/command-reference/stage/add",
 
-  "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiments",
+  "^/doc/dvclive/dvclive-with-dvc$                                                        /doc/start/experiments/experiment-tracking",
   "^/doc/dvclive/api-reference$                                                           /doc/dvclive/",
-  "^/doc/dvclive/get-started$                                                             /doc/start/experiments",
+  "^/doc/dvclive/get-started$                                                             /doc/start/experiments/experiment-tracking",
   "^/doc/dvclive/api-reference/ml-frameworks(/.*)?$                                       /doc/dvclive/ml-frameworks$1",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
