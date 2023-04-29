@@ -192,18 +192,23 @@ $ dvc plots show 'dvclive/plots/sklearn/roc.json' \
 
 ## Parameters
 
-- `kind` - a [supported plot type](#supported-plots)
+- `kind` - a [supported plot type](#supported-plots).
 
-- `labels` - array of ground truth labels
+- `labels` - array of ground truth labels.
 
 - `predictions` - array of predicted labels (for `confusion_matrix`) or
-  predicted probabilities (for other plots)
+  predicted probabilities (for other plots).
 
-- `name` - Optional name of the output file. If not provided, `kind` will be
+- `name` - optional name of the output file. If not provided, `kind` will be
   used as name.
 
-- `**kwargs` - additional arguments to be passed to the internal scikit-learn
-  function being called
+- `**kwargs` - additional arguments to tune the result. Arguments are passed to
+  the scikit-learn function (e.g. `drop_intermediate=True` for the
+  [`roc`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
+  type). Plus extra arguments supported by the type of a plot are:
+
+  - `normalized` - _default_: `False`. `confusion_matrix` with values normalized
+    to `<0, 1>` range.
 
 ## Exceptions
 
