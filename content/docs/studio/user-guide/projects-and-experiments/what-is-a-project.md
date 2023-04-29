@@ -22,7 +22,8 @@ Within a project, you can:
 To **display your project's content** in Iterative Studio,
 [**initialize DVC**](https://dvc.org/doc) in your project's Git repository and
 create `dvc.yaml`. When running model training and evaluation, save metrics and
-plots in the files defined in `dvc.yaml`.
+plots in the files defined in `dvc.yaml`. [DVCLive] can do this for you
+automatically.
 
 You can also use the `dvc exp push` command to **push experiments without
 creating separate Git commits** for them. To notify Iterative Studio when you
