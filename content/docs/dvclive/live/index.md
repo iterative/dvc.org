@@ -99,6 +99,7 @@ If you are already tracking DVCLive metrics, plots, and parameters in your own
 - `Live.log_metric()`
 - `Live.log_param()`
 - `Live.log_params()`
+- `Live.log_plot()`
 - `Live.log_sklearn_plot()`
 - `Live.make_dvcyaml()`
 - `Live.make_report()`
