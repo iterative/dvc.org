@@ -131,13 +131,6 @@ epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-<admon type="info">
-
-We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
-1.2 (unlike the more popular PyYAML).
-
-</admon>
-
 You can find that each parameter was defined in `dvc.yaml`, as well as saved to
 `dvc.lock` along with the values. These are compared to the params files when
 `dvc repro` is used, to determine if the parameter dependency has changed.
