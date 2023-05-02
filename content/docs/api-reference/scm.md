@@ -41,8 +41,8 @@ Returns the names for branches and tags and the SHAs for commits.
 
 ## Example: Passing results to `dvc.api.exp_show()`
 
-The results of the [`dvc.api.scm`] functions can be passed to the `revs`
-argument of `dvc.api.exp_show()`:
+The results of the `dvc.api.scm` functions can be passed to the `revs` argument
+of `dvc.api.exp_show()`:
 
 ```py
 import dvc.api
