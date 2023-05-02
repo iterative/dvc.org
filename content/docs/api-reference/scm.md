@@ -38,3 +38,16 @@ Returns the names for branches and tags and the SHAs for commits.
   system path. Both HTTP and SSH protocols are supported for online Git repos
   (e.g. `[user@]server:project.git`). _Default_: The current project (found by
   walking up from the current working directory tree).
+
+## Example: Passing results to `dvc.api.exp_show()`
+
+The results of the [`dvc.api.scm`] functions can be passed to the `revs`
+argument of `dvc.api.exp_show()`:
+
+```py
+import dvc.api
+import pandas as pd
+
+all_tags = dvc.api.scm.all_tags()
+exps = dvc.api.exp_show(revs=all_tags)
+```
