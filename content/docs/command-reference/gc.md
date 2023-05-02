@@ -136,16 +136,22 @@ project we want to clear.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
 
-  **This option is dangerous.**
+  <admon type="warn">
 
-  For objects using the
+  This option is dangerous. Read the description carefully.
+
+  </admon>
+
+  For objects **using** the
   [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
-  the check will be against that remote.
+  the check will be against that remote. Any other files **not using** the
+  `remote` field may be deleted from that remote.
 
-  For objects not using the
+  For objects **not using** the
   [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
   the check will be against the default remote unless a specific one is given
-  with `-r`.
+  with `-r`. Any other files **using** the `remote` field may be deleted from
+  that remote.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to collect unused
   objects from if `-c` option is specified (see `dvc remote list`).
