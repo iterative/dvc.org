@@ -31,9 +31,10 @@ Later, we will find DVC allows you to manage
 [machine learning experiments](/doc/start/experiments/experiment-pipelines) on
 top of these pipelines - controlling their execution, injecting parameters, etc.
 
-## Pipeline stages
+## Setup
 
-To prepare for the next steps, we need some sample code:
+Working inside an [initialized DVC project](/doc/start#initializing-a-project),
+let's get some sample code for the next steps:
 
 ```cli
 $ wget https://code.dvc.org/get-started/code.zip
@@ -42,7 +43,7 @@ $ unzip code.zip && rm -f code.zip
 
 <details>
 
-### ⚙️ Expand to inspect the project
+### ⚙️ Expand to inspect project structure
 
 Get the sample code like this:
 
@@ -58,27 +59,37 @@ $ tree
     └── train.py
 ```
 
-<admon type="info">
+</details>
 
-The data needed to run this example can be found in the [tracking data guide].
-
-</admon>
+The DVC tracked data needed to run this example can be found in the [tracking
+data guide]. Download it into the project now.
 
 [tracking data guide]: /doc/start/data-management/data-versioning#tracking-data
 
-</details>
+Before we get to business, let's finish setting up the project:
 
-Now let's install the requirements:
+We **strongly** recommend creating and using a
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
-> We **strongly** recommend creating a
-> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-> first.
+```cli
+$ virtualenv venv && echo "venv" > .gitignore
+$ source venv/bin/activate
+```
+
+Next, install the python requirements:
 
 ```cli
 $ pip install -r src/requirements.txt
 ```
 
-Its best to also add or commit the source code directory with Git at this point.
+Now would also be a good time to commit our code to git:
+
+```cli
+$ git add .github/ data/ params.yaml src .gitignore
+$ git commit -m "data pipelines initial commit"
+```
+
+## Pipeline stages
 
 Use `dvc stage add` to create _stages_. These represent processing steps
 (usually scripts/code tracked with Git) and combine to form the _pipeline_.
@@ -212,6 +223,10 @@ $ dvc stage add -n train \
 
 This would be a good time to commit the changes with Git. These include
 `.gitignore`, `dvc.lock`, and `dvc.yaml` — which describes our pipeline.
+
+```cli
+
+```
 
 </admon>
 
