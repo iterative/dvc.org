@@ -566,6 +566,10 @@
       {
         "slug": "read",
         "label": "read()"
+      },
+      {
+        "slug": "scm",
+        "label": "scm"
       }
     ]
   },

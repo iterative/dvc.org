@@ -1,7 +1,7 @@
 # dvc.api.metrics_show()
 
-Load [metrics](/doc/command-reference/metrics) tracked in a <abbr>DVC
-project</abbr>.
+Get [metrics](/doc/command-reference/metrics) tracked in a <abbr>DVC
+repository</abbr>.
 
 ```py
 def metrics_show(
@@ -21,8 +21,8 @@ metrics = dvc.api.metrics_show()
 
 ## Description
 
-Retrieves [metrics](/doc/command-reference/metrics) values from a <abbr>DVC
-project</abbr> and returns a dictionary, such as:
+Gets [metrics](/doc/command-reference/metrics) values from a <abbr>DVC
+repository</abbr> and returns a dictionary, such as:
 
 ```json
 {
