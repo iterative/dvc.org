@@ -198,7 +198,7 @@ views.
 
 <tab title="Studio">
 
-Once you have pushed the results to [Iterative Studio](/doc/studio), you can
+Once you have [shared] the results to [Studio], you can
 [compare experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
 against the entire repo history:
 
@@ -216,3 +216,5 @@ Learn more about
 </admon>
 
 [dvclive]: /doc/dvclive
+[shared]: /doc/user-guide/experiment-management/sharing-experiments
+[studio]: https://studio.iterative.ai
