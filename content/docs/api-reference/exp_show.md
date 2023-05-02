@@ -63,9 +63,8 @@ the Git `HEAD`.
 
 - `revs` - List of Git commits (any
   [revision](https://git-scm.com/docs/revisions) such as a branch or tag name, a
-  commit hash or an [experiment](/doc/command-reference/exp) name). If `repo` is
-  not a Git repo, this option is ignored. _Default_: `None` (current working
-  tree will be used)
+  commit hash or an [experiment](/doc/command-reference/exp) name). _Default_:
+  `None` (current working tree will be used)
 
 - `param_deps` - whether to retrieve only params that are stage dependencies.
   _Default_: `False`.
