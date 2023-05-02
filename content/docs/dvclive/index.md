@@ -78,6 +78,24 @@ live.log_params(params)
 See `Live.log_param()` / `Live.log_params()`.
 
 </tab>
+<tab title="Plots">
+
+```python
+datapoints = [
+    {"name": "petal_width", "importance": 0.4},
+    {"name": "petal_length", "importance": 0.33},
+    {"name": "sepal_width", "importance": 0.24},
+    {"name": "sepal_length", "importance": 0.03}
+]
+live.log_plot(
+    "iris", datapoints, x="importance", y="name",
+    template="bar_horizontal", title="Iris Feature Importance"
+)
+```
+
+See `Live.log_plot()`.
+
+</tab>
 <tab title="SKLearn Plots">
 
 ```python
