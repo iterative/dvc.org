@@ -14,6 +14,7 @@ The contents of the directory will depend on the methods used:
 | `Live.log_metric()`                                         | `dvclive/plots/metrics`                                                    |
 | `Live.log_image()`                                          | `dvclive/plots/images`                                                     |
 | `Live.log_param()`                                          | `dvclive/params.yaml`                                                      |
+| `Live.log_plot()`                                           | `dvclive/plots/custom`                                                     |
 | `Live.log_sklearn_plot()`                                   | `dvclive/plots/sklearn`                                                    |
 | `Live.make_dvcyaml()`                                       | `dvclive/dvc.yaml`                                                         |
 | `Live.make_report()`                                        | `dvclive/report.{md/html}`                                                 |
