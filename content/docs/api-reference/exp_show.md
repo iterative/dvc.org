@@ -61,7 +61,7 @@ the Git `HEAD`.
   (e.g. `[user@]server:project.git`). _Default_: The current project (found by
   walking up from the current working directory tree).
 
-- `revs` - List of Git commit (any
+- `revs` - List of Git commits (any
   [revision](https://git-scm.com/docs/revisions) such as a branch or tag name, a
   commit hash or an [experiment](/doc/command-reference/exp) name). If `repo` is
   not a Git repo, this option is ignored. _Default_: `None` (current working
