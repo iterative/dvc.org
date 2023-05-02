@@ -135,8 +135,17 @@ project we want to clear.
   with `-r`.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
-  **This option is dangerous.** The default remote is used unless a specific one
-  is given with `-r`.
+
+  **This option is dangerous.**
+
+  For objects using the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against that remote.
+
+  For objects not using the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against the default remote unless a specific one is given
+  with `-r`.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to collect unused
   objects from if `-c` option is specified (see `dvc remote list`).
