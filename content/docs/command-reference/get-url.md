@@ -9,7 +9,7 @@ Download a file or directory from a supported URL (for example `s3://`,
 ## Synopsis
 
 ```usage
-usage: dvc get-url [-h] [-q | -v] [-j <number>] url [out]
+usage: dvc get-url [-h] [-q | -v] [-j <number>] [-f] url [out]
 
 positional arguments:
   url            (See supported URLs in the description.)
@@ -76,6 +76,10 @@ $ wget https://example.com/path/to/data.csv
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
+
+`-f`, `--force` - when using `--out` to specify a local target file or
+directory, the operation will fail if those paths already exist. this flag will
+force the operation causing local files/dirs to be overwritten by the command.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

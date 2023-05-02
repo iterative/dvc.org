@@ -16,10 +16,9 @@ other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>]
-           [--to-remote] [-r <name>]
-           [--no-exec | --no-download] [-j <number>]
-           [--desc <text>] [--type <str>] [--label <str>]
-           [--meta key=value] [--version-aware]
+           [--to-remote] [-r <name>] [--no-exec | --no-download]
+           [-j <number>] [-f] [--version-aware] [--desc <text>]
+           [--meta key=value] [--label <str>] [--type <str>]
            url [out]
 
 positional arguments:
@@ -199,6 +198,10 @@ produces a regular stage in `dvc.yaml`.
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
+
+`-f`, `--force` - when using `--out` to specify a local target file or
+directory, the operation will fail if those paths already exist. this flag will
+force the operation causing local files/dirs to be overwritten by the command.
 
 - `--version-aware` - capture [cloud versioning] information of the current
   version when importing the file. DVC will always
