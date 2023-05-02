@@ -302,12 +302,16 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 
 </details>
 
+<admon type="info">
+
 As you can see, DVC is technically not a version control system by itself! It
 manipulates `.dvc` files, whose contents define the data file versions. Git is
 already used to version your code, and now it can also version your data
 alongside it.
 
-## Discovering and accessing data
+</admon>
+
+### Discovering and accessing data
 
 Your tracked data can be imported and fetched from anywhere using DVC. For
 example, you may want to download a specific version of an ML model to a

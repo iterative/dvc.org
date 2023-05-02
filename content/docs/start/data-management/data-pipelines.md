@@ -61,32 +61,37 @@ $ tree
 
 </details>
 
-The DVC tracked data needed to run this example can be found in the [tracking
-data guide]. Download it into the project now.
+The DVC tracked data needed to run this example can be downloaded using
+`dvc get`:
 
-[tracking data guide]: /doc/start/data-management/data-versioning#tracking-data
+```cli
+$ dvc get https://github.com/iterative/dataset-registry \
+          get-started/data.xml -o data/data.xml
+```
 
-Before we get to business, let's finish setting up the project:
+Now, let's go through some usual project setup steps (virtualenv, requirements,
+Git).
 
-We **strongly** recommend creating and using a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
+First, create and use a
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+(it's not a must, but we **strongly** recommend it):
 
 ```cli
 $ virtualenv venv && echo "venv" > .gitignore
 $ source venv/bin/activate
 ```
 
-Next, install the python requirements:
+Next, install the Python requirements:
 
 ```cli
 $ pip install -r src/requirements.txt
 ```
 
-Now would also be a good time to commit our code to git:
+Finally, this is a good time to commit our code to Git:
 
 ```cli
 $ git add .github/ data/ params.yaml src .gitignore
-$ git commit -m "data pipelines initial commit"
+$ git commit -m "Initial commit"
 ```
 
 ## Pipeline stages
@@ -194,8 +199,8 @@ stage as <abbr>dependencies</abbr> of another, we can describe a sequence of
 dependent commands which gets to some desired result. This is what we call a
 [dependency graph] which forms a full cohesive pipeline.
 
-Let's create a second stage chained to the outputs of `prepare`, to perform
-feature extraction:
+Let's create a 2nd stage chained to the outputs of `prepare`, to perform feature
+extraction:
 
 ```cli
 $ dvc stage add -n featurize \
@@ -205,7 +210,7 @@ $ dvc stage add -n featurize \
                 python src/featurization.py data/prepared data/features
 ```
 
-The `dvc.yaml` file will now be updated to include two stages.
+The `dvc.yaml` file will now be updated to include the two stages.
 
 And finally, let's add a 3rd `train` stage:
 
@@ -217,18 +222,21 @@ $ dvc stage add -n train \
                 python src/train.py data/features model.pkl
 ```
 
-`dvc.yaml` should have all 3 stages now.
+and now, `dvc.yaml` should have all 3 stages.
 
 <admon type="tip">
 
 This would be a good time to commit the changes with Git. These include
-`.gitignore`, `dvc.lock`, and `dvc.yaml` — which describes our pipeline.
+`.gitignore`(s) and `dvc.yaml` — which describes our pipeline.
 
 ```cli
-
+$ git add .gitignore data/.gitignore dvc.yaml
+$ git commit -m "pipeline defined"
 ```
 
 </admon>
+
+Great! Now we're ready to run the pipeline.
 
 ## Reproducing
 
@@ -237,6 +245,9 @@ The pipeline definition in `dvc.yaml` allow us to easily reproduce the pipeline:
 ```cli
 $ dvc repro
 ```
+
+You'll notice a `dvc.lock` (a "state file") was created to capture the
+reproduction's results.
 
 <details id="repro-expand-to-see-what-happens-under-the-hood">
 
@@ -283,20 +294,12 @@ state of the workspace.
 
 </details>
 
-DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc repro` commands) solve
-a few important problems:
+It's good practice to immediately commit `dvc.lock` to Git after its creation or
+modification, to record the current state & results:
 
-- _Automation_: run a sequence of steps in a "smart" way which makes iterating
-  on your project faster. DVC automatically determines which parts of a project
-  need to be run, and it caches "runs" and their results to avoid unnecessary
-  reruns.
-- _Reproducibility_: `dvc.yaml` and `dvc.lock` files describe what data to use
-  and which commands will generate the pipeline results (such as an ML model).
-  Storing these files in Git makes it easy to version and share.
-- [_Continuous Delivery and Continuous Integration (CI/CD) for ML_](/doc/use-cases/ci-cd-for-machine-learning):
-  describing projects in a way that can be built and reproduced is the first
-  necessary step before introducing CI/CD systems. See our sister project
-  [CML](https://cml.dev) for some examples.
+```cli
+$ git add dvc.lock && git commit -m "first pipeline repro"
+```
 
 <details>
 
@@ -361,3 +364,20 @@ $ dvc dag
 
 > Refer to `dvc dag` to explore other ways this command can visualize a
 > pipeline.
+
+## Summary
+
+DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc repro` commands) solve
+a few important problems:
+
+- _Automation_: run a sequence of steps in a "smart" way which makes iterating
+  on your project faster. DVC automatically determines which parts of a project
+  need to be run, and it caches "runs" and their results to avoid unnecessary
+  reruns.
+- _Reproducibility_: `dvc.yaml` and `dvc.lock` files describe what data to use
+  and which commands will generate the pipeline results (such as an ML model).
+  Storing these files in Git makes it easy to version and share.
+- [_Continuous Delivery and Continuous Integration (CI/CD) for ML_](/doc/use-cases/ci-cd-for-machine-learning):
+  describing projects in a way that can be built and reproduced is the first
+  necessary step before introducing CI/CD systems. See our sister project
+  [CML](https://cml.dev) for some examples.
