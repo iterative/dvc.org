@@ -38,8 +38,9 @@ This directory name is used in our
 
 ## Initializing a project
 
-Inside your chosen directory, we will use our CWD as a <abbr>DVC project</abbr>.
-Let's initialize it by running `dvc init` inside a Git project:
+Inside your chosen directory, we will use our current working directory as a
+<abbr>DVC project</abbr>. Let's initialize it by running `dvc init` inside a Git
+project:
 
 ```cli
 $ dvc init

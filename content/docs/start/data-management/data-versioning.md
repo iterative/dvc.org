@@ -282,9 +282,7 @@ $ git checkout <...>
 $ dvc checkout
 ```
 
-<details>
-
-### ⚙️ Learn how to get to a previous version of the dataset
+## Return to a previous version of the dataset
 
 Let's go back to the original version of the data:
 
@@ -299,8 +297,6 @@ of the dataset was already saved):
 ```cli
 $ git commit data/data.xml.dvc -m "Revert dataset updates"
 ```
-
-</details>
 
 <admon type="info">
 

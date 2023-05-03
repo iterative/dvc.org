@@ -16,7 +16,7 @@ https://youtu.be/71IGzyH95UY
 
 Versioning large data files and directories for data science is powerful, but
 often not enough. Data needs to be filtered, cleaned, and transformed before
-training ML models - for purpose that DVC introduces a build system to define,
+training ML models - for that purpose DVC introduces a build system to define,
 execute and track _data pipelines_ — a series of data processing stages, that
 produce a final result.
 
@@ -43,7 +43,7 @@ $ unzip code.zip && rm -f code.zip
 
 <details>
 
-### ⚙️ Expand to inspect project structure
+### 💡 Expand to inspect project structure
 
 Get the sample code like this:
 
@@ -222,7 +222,7 @@ $ dvc stage add -n train \
                 python src/train.py data/features model.pkl
 ```
 
-and now, `dvc.yaml` should have all 3 stages.
+Finally, our `dvc.yaml` should have all 3 stages.
 
 <admon type="tip">
 
@@ -362,8 +362,11 @@ $ dvc dag
           +-------+
 ```
 
-> Refer to `dvc dag` to explore other ways this command can visualize a
-> pipeline.
+<admon icon="book">
+
+Refer to `dvc dag` to explore other ways this command can visualize a pipeline.
+
+</admon>
 
 ## Summary
 
