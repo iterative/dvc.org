@@ -81,7 +81,7 @@ bring in changes from the data source later using `dvc update`.
 
 <details>
 
-### 💡 Expand to see what happens under the hood.
+### 💡 Expand to get a peek under the hood
 
 <admon type="info">
 
