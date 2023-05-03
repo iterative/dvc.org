@@ -89,9 +89,9 @@ columns = ["Experiment", "dice_multi", "train.arch"]
 
 df = pd.DataFrame(dvc.api.exp_show(), columns=columns)
 
-df["Experiment"].replace("", None, inplace=True)
 df.dropna(inplace=True)
 df.reset_index(drop=True, inplace=True)
+
 df.to_markdown()
 ```
 
