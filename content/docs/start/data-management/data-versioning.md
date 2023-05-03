@@ -124,7 +124,7 @@ $ dvc remote add -d myremote %TEMP%\dvcstore
 </tab>
 </toggle>
 
-<admon type="info">
+<admon icon="info">
 
 DVC supports many remote [storage types], including Amazon S3, NFS,SSH, Google
 Drive, Azure Blob Storage, and HDFS.
@@ -138,9 +138,12 @@ $ dvc remote add -d storage s3://mybucket/dvcstore
 For this to work, you'll need an AWS account and credentials set up to allow
 access.
 
+To learn more about storage remotes, see the [Remote Storage Guide].
+
 [Amazon S3]: /doc/user-guide/data-management/remote-storage/amazon-s3
 [storage types]:
   /doc/user-guide/data-management/remote-storage#supported-storage-types
+[Remote Storage Guide]: /doc/user-guide/data-management/remote-storage
 
 </admon>
 
@@ -224,14 +227,6 @@ $ dvc pull
 ```
 
 </details>
-
-<admon icon="book">
-
-See [Remote Storage] for more information on remotes.
-
-[remote storage]: /doc/user-guide/data-management/remote-storage
-
-</admon>
 
 ## Making local changes
 
