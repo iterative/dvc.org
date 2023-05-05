@@ -215,6 +215,90 @@ $ dvc exp run \
 -S "data_split.test_pct=0.1" -S "train.img_size=384"
 ```
 
+<details>
+
+### 💡 Expand to get a peek under the hood
+
+This is equivalent to modifying `params.yaml` manually:
+
+```git
+base:
+   random_seed: 42
+
+ data_split:
+-  test_pct: 0.15
++  test_pct: 0.1
+
+ train:
+   valid_pct: 0.1
+   arch: shufflenet_v2_x2_0
+-  img_size: 256
++  img_size: 384
+   batch_size: 8
+   fine_tune_args:
+     epochs: 8
+     base_lr: 0.01
+
+ evaluate:
+   n_samples_to_save: 10
+```
+
+Followed by running a "bare" `dvc exp run`:
+
+```cli
+$ dvc exp run
+```
+
+</details>
+
+## Comparing iterations
+
+DVC provides commands to inspect changes in metrics, parameters, and plots.
+Let's compare the latest run (with changes to `data_split.test_pct` and
+`train.img_size`) to the last committed "baseline" iteration now.
+
+`dvc params diff` shows how params in the workspace differ from the last commit:
+
+```cli
+$ dvc params diff
+Path                       Param                HEAD    workspace
+results/train/params.yaml  batch_per_epoch      8       9
+params.yaml                data_split.test_pct  0.15    0.1
+params.yaml                train.img_size       256     384
+```
+
+`dvc metrics diff` does the same for metrics:
+
+```cli
+$ dvc metrics diff
+Path                           Metric      HEAD     workspace    Change
+results/evaluate/metrics.json  dice_multi  0.89642  0.88518      -0.01124
+results/train/metrics.json     dice_multi  0.91089  0.80698      -0.1039
+results/train/metrics.json     eval.loss   0.02195  0.04326      0.02131
+results/train/metrics.json     train.loss  0.03106  0.03032      -0.00074
+```
+
+And we can compare all plots with a single `dvc plots diff` command:
+
+```cli
+$ dvc plots diff
+file:///Users/dvc/example-get-started/dvc_plots/index.html
+```
+
+Opened the HTML file in your browser to see the rendered plots comparisons. Here
+are a couple select samples, you will see more annotated examples in your diff:
+
+![](/img/start_exp_pipelines_plots_diff_1.png)
+![](/img/start_exp_pipelines_plots_diff_2.png)
+
+<admon type="tip">
+
+All these commands also accept
+[Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
+names) to compare.
+
+</admon>
+
 ## Hyperparameter Tuning
 
 You can provide multiple values for the same parameter:
@@ -244,13 +328,6 @@ Queueing with overrides '{'params.yaml': ['train.arch=resnet34', 'train.img_size
 Queued experiment 'arch-size-3' for future execution.
 ...
 ```
-
-<admon type="info">
-
-Learn more about
-[Running Experiments](/doc/user-guide/experiment-management/running-experiments)
-
-</admon>
 
 ## Queuing experiments
 
