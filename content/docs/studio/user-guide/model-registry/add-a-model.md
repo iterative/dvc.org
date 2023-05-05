@@ -2,9 +2,9 @@
 
 You can add models from any ML project to the model registry. To add a model to
 your model registry, Iterative Studio creates an annotation for it in an
-`artifacts.yaml` file in your Git repository. If you are using the [GTO] command
-line tool, you can also add models [from the CLI][gto annotate]. To add models
-using Iterative Studio, watch this tutorial video or read on below:
+`dvc.yaml` file in your Git repository. If you are using the [GTO] command line
+tool, you can also add models [from the CLI][gto annotate]. To add models using
+Iterative Studio, watch this tutorial video or read on below:
 
 https://www.youtube.com/watch?v=szzv4ZXmYAs
 
@@ -28,10 +28,8 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
      project path of the corresponding `.dvc` file.
    - If the model file is in remote storage and is not DVC-tracked, enter the
      absolute path of the model file.
-   - If you use [MLEM] to save your model, use the path to the binary file that
-     MLEM generates. After you have run
-     [`mlem init`](https://mlem.ai/doc/command-reference/init), Iterative Studio
-     will be able to parse the `.mlem` file to extract model metadata.
+   - If you use [MLEM] to save your model, use the path to the binary file or
+     folder that MLEM generates.
 
    If the path you entered is a cloud path, Iterative Studio will ask you for
    the repository path where the dvc reference to the model should be saved.
@@ -54,10 +52,10 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 8. At this point, the new model appears in the models dashboard.
 
 9. In your Git repository, you will find that an entry for the new model has
-   been created in the `artifacts.yaml` file in the repository's root. If you
-   had committed to a new branch, a new pull request (or merge request in the
-   case of GitLab) will also have been created to merge the new branch into the
-   base branch.
+   been created in the `dvc.yaml` file in the repository's root. If you had
+   committed to a new branch, a new pull request (or merge request in the case
+   of GitLab) will also have been created to merge the new branch into the base
+   branch.
 10. If you had added a model from a cloud storage, the following will also
     happen before the commit is created:
 

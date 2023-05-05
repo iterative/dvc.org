@@ -38,9 +38,13 @@ There are some examples below
 from dvclive.lightning import DVCLiveLogger
 
 ...
-
-trainer = Trainer(logger=DVCLiveLogger(save_dvc_exp=True))
-trainer.fit(model)
+with Live(save_dvc_exp=True) as live:
+    trainer = Trainer(
+        logger=DVCLiveLogger(save_dvc_exp=True),
+        default_root_dir="mymodel"
+    )
+    trainer.fit(model)
+    live.log_artifact("mymodel", type="model")
 ```
 
 </tab>
@@ -51,9 +55,11 @@ trainer.fit(model)
 from dvclive.huggingface import DVCLiveCallback
 
 ...
-
-trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
-trainer.train()
+with Live(save_dvc_exp=True) as live:
+    trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
+    trainer.train()
+    trainer.save_model("mymodel")
+    live.log_artifact("mymodel", type="model")
 ```
 
 </tab>
@@ -64,10 +70,14 @@ trainer.train()
 from dvclive.keras import DVCLiveCallback
 
 ...
-
-model.fit(
-  train_dataset, validation_data=validation_dataset,
-  callbacks=[DVCLiveCallback(save_dvc_exp=True)])
+with Live(save_dvc_exp=True) as live:
+    model.fit(
+        train_dataset,
+        validation_data=validation_dataset,
+        callbacks=[DVCLiveCallback(save_dvc_exp=True)]
+    )
+    model.save("mymodel")
+    live.log_artifact("mymodel", type="model")
 ```
 
 </tab>
@@ -86,6 +96,8 @@ with Live(save_dvc_exp=True) as live:
         for metric_name, value in metrics.items():
             live.log_metric(metric_name, value)
         live.next_step()
+
+    live.log_artifact("model.pkl", type="model")
 ```
 
 </tab>

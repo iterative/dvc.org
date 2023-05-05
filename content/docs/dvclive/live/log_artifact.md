@@ -43,7 +43,7 @@ If `Live` was initialized with `dvcyaml=True` (which is the default), it will
 add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) and
 all the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 `type="model"` will mark it as a `model` for DVC and will make it appear in
-[Studio Model Registry](/doc/studio) (coming soon).
+[Studio Model Registry](/doc/studio).
 
 If `name` is not provided, the path stem (last part of the path without the file
 extension) will be used as the artifact name.

@@ -20,8 +20,7 @@ Although you can specify artifacts of any `type`, we are in the process of
 building a DVC-based [model registry](/doc/use-cases/model-registry) that will
 pick up any artifacts with type `model`. Additionally, they will be picked up
 and supported by
-[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
-(coming soon).
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
 ```yaml
 artifacts:
@@ -37,7 +36,7 @@ artifacts:
 ```
 
 Artifact IDs must consist of letters and numbers, and use '-' as separator (but
-not at the start or end). The first character must be a letter.
+not at the start or end).
 
 ## Metrics
 
