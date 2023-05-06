@@ -14,14 +14,16 @@ https://youtu.be/bu3l75eQlQo
 
 </details>
 
-DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
-<abbr>parameters</abbr>, and visualize performance with
-[plots](/doc/command-reference/plots). These concepts are introduced below.
+Collecting and visualizing [metrics](/doc/command-reference/metrics), injecting
+<abbr>parameters</abbr>, and visualizing results with
+[plots](/doc/command-reference/plots) are all crucial to running machine
+learning experimentation. DVC makes it easy to do all of the above with flexible
+mechanisms that also extend to other use cases.
 
 <admon type="tip">
 
 All of the above can be combined into [experiments] to run and compare many
-iterations of your machine learning project.
+iterations of your ML project.
 
 [experiments]: /doc/start/experiments
 
@@ -29,11 +31,10 @@ iterations of your machine learning project.
 
 ## Collecting metrics
 
-Collecting and visualizing metrics is crucial for machine learning
-experimentation. However, DVC's flexible mechanism to deal with them generalizes
-beyond model training use cases, and you can use it with any process that writes
-metrics into one or more files upon execution. DVC provides a convenient way to
-pick those up and visualize the contents as metrics.
+DVC has a generalized way to deal with metrics that you can use with any process
+that writes metrics into [files][metrics file]. DVC provides a convenient way to
+pick those up, parse their contents as metrics, view them, and even
+[run comparisons](#comparing-iterations) across executions.
 
 Let's add a final evaluation stage to our [earlier pipeline] and run it:
 
@@ -48,8 +49,7 @@ $ dvc repro
 ```
 
 [earlier pipeline]: /doc/start/data-management/data-pipelines
-
-<details>
+[files]: details
 
 ### 💡 Expand to get a peek under the hood
 
@@ -105,11 +105,11 @@ files to be versioned by Git.
 ```
 
 As you can see, it's a simple json file and the structure is up to you and your
-project (see [supported formats] to learn more).
+project, with the only expectation of metrics being numerical (see [supported
+formats] to learn more).
 
-DVC doesn't care how you generate [metric files][metrics file] - you can create
-them whichever way you like. As long as metrics are numerical DVC can pick them
-up for visualization via the command line (as we're about to see), VS Code's
+DVC doesn't care how you generate [metric files][metrics file]. DVC can pick
+them up and view them via the command line (as we're about to see), VS Code's
 [DVC extension] or [Studio][studio metrics].
 
 Now that DVC is aware of the [metrics file], we can visualize the metrics in the
@@ -309,9 +309,9 @@ train:
 
 ## Modifying parameters
 
-To work with parameters, let's assume (realistically) that we are not happy with
-the AUC value we got previously. We'll edit the `params.yaml` file to use
-bigrams (ngrams=2) and increase the number of features:
+To work with parameters, let's assume that we are not happy with the AUC value
+we got previously. We'll edit the `params.yaml` file to use bigrams (ngrams=2)
+and increase the number of features:
 
 ```git
  featurize:
