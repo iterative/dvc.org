@@ -66,13 +66,14 @@ processes.
 
 ## Enable long folder/file paths
 
-`dvc pull` or `dvc repro` may fail in some cases when the folder path is longer than 260
-characters. This may happen with the error ``[Errno 2] No such file or directory``. 
-In the Windows API, the maximum allowed length for a path is 260
-characters. If required, the user can explicitly enable long paths either by editing group policies following
-[this](https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/)
-guide or by editing registry keys following 
-[this](https://www.howtogeek.com/266621/how-to-make-windows-10-accept-file-paths-over-260-characters/) guide.
+DVC commands (e.g. `dvc pull`, `dvc repro`) may fail when the folder path is
+longer than 260 characters. This may happen with the error
+`[Errno 2] No such file or directory`. Starting in Windows 10, path length
+limitations have been removed from common file and directory functions. However,
+you must opt-in to the new behavior. The user can explicitly enable long paths
+either by editing Group Policy or by editing registry keys following
+[this](https://www.howtogeek.com/266621/how-to-make-windows-10-accept-file-paths-over-260-characters/)
+guide.
 
 ## Fix or disable Search Indexing
 
