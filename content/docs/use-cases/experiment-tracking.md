@@ -7,8 +7,8 @@ changes is essential, as we may want to inspect them when comparing outcomes.
 Recovering these conditions later will be necessary to reproduce results or
 resume a line of work.
 
-![](/img/natural-experimentation.png) _Difficulty tracking experiments manually
-(usually with notebooks or speadsheets)_
+![](/img/test/natural-experimentation.png) _Difficulty tracking experiments
+manually (usually with notebooks or speadsheets)_
 
 DVC provides a layer of [experiment management] features out-of-the-box (no need
 for special servers or websites). Running **DVC Experiments** in your workspace
