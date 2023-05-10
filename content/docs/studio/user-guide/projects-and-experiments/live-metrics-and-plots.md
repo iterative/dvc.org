@@ -32,21 +32,18 @@ handy if you suspect that your account security may have been compromised.
 
 ### Provide access token to experiment
 
-DVCLive expects the access token to be set in the `DVC_STUDIO_TOKEN` environment
-variable.
-
-If you are running the experiment locally, you can set this environment variable
-when submitting the training job.
+If you are running the experiment locally, you can set the token in your [DVC
+config].
 
 ```cli
-$ DVC_STUDIO_TOKEN=**** dvc exp run
+$ dvc config --global studio.token ***
 ```
 
 If you are running the experiment as part of a CI job, a secure way to provide
 the access token is to create a
 [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-containing the value of the token, and use the secret in your CI job (see
-example below).
+containing the value of the token, and use the secret in your CI job using the
+`DVC_STUDIO_TOKEN` environment variable (see example below).
 
 ```yaml
 steps:
@@ -54,6 +51,9 @@ steps:
     env:
       DVC_STUDIO_TOKEN: ${{ secrets.DVC_STUDIO_TOKEN }}
 ```
+
+See [DVC config] for how to enable/disable live metrics and plots and how to
+configure a different Studio URL or Git repository.
 
 ## Send and view live metrics and plots
 
@@ -154,3 +154,4 @@ projects.
 [dvclive]: /doc/dvclive
 [share]: /doc/user-guide/experiment-management/sharing-experiments
 [save]: /doc/user-guide/experiment-management/persisting-experiments
+[dvc config]: /docs/user-guide/project-structure/configuration#studio

@@ -1,68 +1,102 @@
 # Sharing Experiments
 
-Use `dvc exp push` and `dvc exp pull` to share experiments. This works like
-[sharing regular project versions][sharing-data], but here DVC takes care of
-synchronizing to/from both Git and [DVC remotes][remote storage] as needed:
+To share experiments, you can:
 
-```
-  ┌────────────────┐     ┌────────────────┐
-  ├────────────────┤     │   DVC remote   │  Remote locations
-  │   Git remote   │     │    storage     │
-  │                │     ├────────────────┤
-  └────────────────┘     └────────────────┘
-          ▲                       ▲
-          │      dvc exp push     │
-          │      dvc exp pull     │
-          ▼                       ▼
-  ┌─────────────────┐    ┌────────────────┐
-  │    Code and     │    │      Data      │
-  │    metafiles    │    │    (cached)    │  Local project
-  └─────────────────┘    └────────────────┘
-```
+1. View [live metrics] for running experiments in [Studio].
+2. Push completed experiments with `dvc exp push`, and optionally manage them in
+   [Studio].
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
+## Live metrics and plots
 
-## Pushing experiments
+You can view [live metrics] in [Studio](https://studio.iterative.ai). These are
+live updates showing intermediate results for metrics and plots in any running
+experiments. To start sharing live metrics to [Studio],
+[get your Studio token](https://studio.iterative.ai/user/_/profile?section=accessToken)
+and save it with
+[`dvc config --global studio.token ***`](/doc/user-guide/project-structure/configuration#studio).
 
-You can upload an experiment using `dvc exp push`, which takes a Git remote name
-and an experiment ID or name. Check your Git remote with `git remote -v` and see
-[troubleshooting] for problems. For example, push to Git remote `origin`:
+![Live metrics in Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
+
+See [DVC config] for how to enable/disable live metrics and how to configure a
+different Studio URL or Git repository, or see the Studio guide on [live
+metrics] for more information on how to setup, view, and compare.
+
+## Push experiments
+
+You can upload a completed experiment using `dvc exp push`. For example, push
+experiment `quare-zips` to Git remote `origin`:
 
 ```cli
 $ dvc exp push origin quare-zips
 ```
 
+Check your Git remote with `git remote -v` and see [troubleshooting] for
+problems.
+
 By default, DVC will also share <abbr>cached</abbr> data that is tracked by DVC,
 which requires [remote storage] (e.g. Amazon S3 or SSH). Add the `--no-cache`
-flag to exclude sharing with the DVC remote.
+flag to exclude sharing cached data.
 
-View and manage pushed experiments in [Studio](https://studio.iterative.ai). To
-notify Studio when you push experiments,
-[get your Studio token](https://studio.iterative.ai/user/_/profile?section=accessToken)
-and save it with
-[`dvc config --global studio.token ***`](/doc/user-guide/project-structure/configuration#studio).
+You can optionally manage your pushed experiments from Studio. If you have saved
+your token as described above for [live metrics](#live-metrics-and-plots), DVC
+will notify Studio when you push an experiment. Otherwise, you may use the
+reload button in Studio.
 
 ![Sharing experiments in Studio](/img/exp-sharing-studio.png)
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[troubleshooting]: /doc/user-guide/troubleshooting#git-auth
+<details>
 
-## Live sharing
+### ⚙️ How pushing and pulling experiments works
 
-For long-running experiments, you may wish to share updates while the experiment
-runs. For example, if you are running an experiment on a remote GPU server, you
-may need a UI outside of that server to track progress and decide whether to
-continue training. You can
-[share live updates in Studio](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots).
-If you set the
-[`DVC_STUDIO_TOKEN` environment variable](https://studio.iterative.ai/user/_/profile?section=accessToken),
-[Studio](https://studio.iterative.ai) will show live metrics, plots, and other
-experiment information.
+`dvc exp push` pushes <abbr>experiment</abbr> commits that Git can upload to
+remote servers like GitHub but don't show up in the UI (so they don't clutter
+your repo) and can be cleaned up without affecting the rest of your project.
 
-![](https://static.iterative.ai/img/studio/live_metrics.gif)
+To understand how `dvc exp push` works, let's compare to pushing a
+[persistent commit](#push-a-persistent-experiment). With a typical Git commit,
+you would use `git push` to upload it to your Git remote and `dvc push` to
+upload the corresponding data to your DVC remote.
 
-## Pulling experiments
+```
+ ┌────────────────┐  ┌────────────────┐
+ ├────────────────┤  │   DVC remote   │ Remote locations
+ │   Git remote   │  │    storage     │
+ │                │  ├────────────────┤
+ └────────────────┘  └────────────────┘
+         ▲                    ▲
+         │                    │
+      git push             dvc push
+      git pull             dvc pull
+         │                    │
+         ▼                    ▼
+ ┌────────────────┐  ┌────────────────┐
+ │    Code and    │  │      Data      │
+ │    metafiles   │  │    (cached)    │ Local project
+ └────────────────┘  └────────────────┘
+```
+
+`dvc exp push` and `dvc exp pull` take care of synchronizing to/from both Git
+and DVC remotes as needed:
+
+```
+ ┌────────────────┐  ┌────────────────┐
+ ├────────────────┤  │   DVC remote   │ Remote locations
+ │   Git remote   │  │    storage     │
+ │                │  ├────────────────┤
+ └────────────────┘  └────────────────┘
+         ▲                    ▲
+         │   dvc exp push     │
+         │   dvc exp pull     │
+         ▼                    ▼
+ ┌─────────────────┐ ┌────────────────┐
+ │    Code and     │ │      Data      │
+ │    metafiles    │ │    (cached)    │ Local project
+ └─────────────────┘ └────────────────┘
+```
+
+</details>
+
+## Pull experiments
 
 To download an experiment, use `dvc exp pull` (with the Git remote and
 experiment name).
@@ -77,9 +111,6 @@ your project. Add the `--no-cache` flag to exclude pulling from the DVC remote.
 You can find experiments to pull in [Studio](https://studio.iterative.ai) or
 [list remote experiments] from the command line.
 
-[list remote experiments]:
-  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely
-
 <admon type="warn">
 
 DVC experiments are not fetched when cloning a <abbr>DVC repository</abbr> (to
@@ -87,7 +118,7 @@ avoid cluttering your local repo). You must `dvc exp pull` the ones you want.
 
 </admon>
 
-## Sharing many experiments
+## Share many experiments
 
 Use the `--rev`/`--num`/`--all-commits` options of `dvc exp push` and
 `dvc exp pull` to share many experiments at once. E.g., to upload all
@@ -97,10 +128,10 @@ experiments based on the latest commit, target the Git `HEAD`:
 $ dvc exp push --rev HEAD origin
 ```
 
-## Pushing a persistent experiment
+## Push a persistent experiment
 
-To share an individual experiment the same way you share other Git commits, turn
-it into a
+To share an individual experiment the same way you share [other Git
+commits][sharing-data], turn it into a
 [persistent](/doc/user-guide/experiment-management/persisting-experiments) Git
 commit (we use `dvc exp branch` below) and [share it][sharing-data] like any
 project version.
@@ -125,20 +156,12 @@ share these, `dvc push` them to [remote storage] (e.g. Google Drive or NAS).
 $ dvc push
 ```
 
-```
-  ┌────────────────┐     ┌────────────────┐
-  ├────────────────┤     │   DVC remote   │  Remote locations
-  │   Git remote   │     │    storage     │
-  │                │     ├────────────────┤
-  └────────────────┘     └────────────────┘
-          ▲                       ▲
-          │                       │
-       git push                dvc push
-       git pull                dvc pull
-          │                       │
-          ▼                       ▼
-  ┌─────────────────┐    ┌────────────────┐
-  │    Code and     │    │      Data      │
-  │    metafiles    │    │    (cached)    │  Local project
-  └─────────────────┘    └────────────────┘
-```
+[studio]: https://studio.iterative.ai
+[live metrics]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[dvc config]: /docs/user-guide/project-structure/configuration#studio
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
+[troubleshooting]: /doc/user-guide/troubleshooting#git-auth
+[list remote experiments]:
+  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely

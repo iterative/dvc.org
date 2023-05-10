@@ -394,16 +394,34 @@ have no effect.
 ## studio
 
 - `studio.token` - Studio access token to use. When this is set, DVC uses this
-  to notify Studio of new experiments. For security reasons, we advise setting
-  token to either a local or a global config. This can also be specified through
-  `DVC_STUDIO_TOKEN` environment variable.
+  to share [live metrics] and notify Studio about [pushed experiments]. For
+  security reasons, we advise setting token to either a local or a global
+  config. This can also be specified through `DVC_STUDIO_TOKEN` environment
+  variable, which will override any value in `studio.token`.
 
   [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
   or check
   [this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
 
+- `studio.offline` - Disables sharing [live metrics] even if `studio.token` is
+  set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode also
+  be specified through `DVC_STUDIO_OFFLINE` environment variable, which will
+  override any value in `studio.offline`. Accepts values `true` and `false`.
+
 - `studio.url` - URL of Studio to use (in case of self-hosted Studio instance).
-  This can also be specified through `DVC_STUDIO_URL` environment variable.
+  This can also be specified through `DVC_STUDIO_URL` environment variable,
+  which will override any value in `studio.url`. If not set,
+  `https://studio.iterative.ai` is used.
+
+- `studio.repo_url` - URL of Git remote associated with the Studio project. This
+  can also be specified through `DVC_STUDIO_REPO_URL` environment variable,
+  which will override any value in `studio.repo_url`. If not set, the URL is set
+  to the [upstream remote] or, failing that, the `origin` remote.
+
+[live metrics]:
+  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiments
+[upstream remote]: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
 
 </details>
 
