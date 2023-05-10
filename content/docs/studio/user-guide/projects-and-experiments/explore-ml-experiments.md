@@ -23,8 +23,8 @@ includes metrics, hyperparameters, and information about datasets and models.
 
 The major components of the project experimentation table are:
 
-- [Git history and live metrics](#git-history-and-live-metrics) that show you
-  the complete experimentation history as well as live metrics of running
+- [Git history and live experiments](#git-history-and-live-metrics) that show
+  you the complete experimentation history as well as live metrics of running
   experiments.
 - [Display preferences](#display-preferences) that let you show/hide branches,
   commits and columns, and re-arrange the table.
@@ -32,16 +32,17 @@ The major components of the project experimentation table are:
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 - Button to [export project data](#export-project-data).
 
-### Git history and live metrics
+### Git history and live experiments
 
 The branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
 [New experiments submitted from Iterative Studio][run-experiments] appear as
 experiment commits, which are eventually pushed to Git. Experiments that you
-push using the `dvc exp push` command as well as any live metrics that you send
-using [DVCLive] are displayed in a special experiment row nested under the
-parent Git commit. More details of how live metrics are displayed can be found
+push using the `dvc exp push` command as well as any live experiments that you
+send using [DVCLive] are displayed in a special experiment row nested under the
+parent Git commit. More details of how live experiments are displayed can be
+found
 [here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 
 To manually check for updates in your repository, use the `Reload` button 🔄

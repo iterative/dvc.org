@@ -394,7 +394,7 @@ have no effect.
 ## studio
 
 - `studio.token` - Studio access token to use. When this is set, DVC uses this
-  to share [live metrics] and notify Studio about [pushed experiments]. For
+  to share [live experiments] and notify Studio about [pushed experiments]. For
   security reasons, we advise setting token to either a local or a global
   config. This can also be specified through `DVC_STUDIO_TOKEN` environment
   variable, which will override any value in `studio.token`.
@@ -403,10 +403,11 @@ have no effect.
   or check
   [this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
 
-- `studio.offline` - Disables sharing [live metrics] even if `studio.token` is
-  set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode also
-  be specified through `DVC_STUDIO_OFFLINE` environment variable, which will
-  override any value in `studio.offline`. Accepts values `true` and `false`.
+- `studio.offline` - Disables sharing [live experiments] even if `studio.token`
+  is set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can
+  also be specified through `DVC_STUDIO_OFFLINE` environment variable, which
+  will override any value in `studio.offline`. Accepts values `true` and
+  `false`.
 
 - `studio.url` - URL of Studio to use (in case of self-hosted Studio instance).
   This can also be specified through `DVC_STUDIO_URL` environment variable,
@@ -418,7 +419,7 @@ have no effect.
   which will override any value in `studio.repo_url`. If not set, the URL is set
   to the [upstream remote] or, failing that, the `origin` remote.
 
-[live metrics]:
+[live experiments]:
   /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [pushed experiments]: /docs/user-guide/experiment-management/sharing-experiments
 [upstream remote]: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches

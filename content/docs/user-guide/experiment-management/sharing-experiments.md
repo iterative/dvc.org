@@ -2,24 +2,30 @@
 
 To share experiments, you can:
 
-1. View [live metrics] for running experiments in [Studio].
+1. Send [live experiments] to [Studio] to view metrics and plots.
 2. Push completed experiments with `dvc exp push`, and optionally manage them in
    [Studio].
 
 ## Live metrics and plots
 
-You can view [live metrics] in [Studio](https://studio.iterative.ai). These are
-live updates showing intermediate results for metrics and plots in any running
-experiments. To start sharing live metrics to [Studio],
+You can send [live experiments] to [Studio](https://studio.iterative.ai), which
+will show updates showing intermediate results for metrics and plots in any
+running experiments. To start sharing live metrics to [Studio],
 [get your Studio token](https://studio.iterative.ai/user/_/profile?section=accessToken)
-and save it with
-[`dvc config --global studio.token ***`](/doc/user-guide/project-structure/configuration#studio).
+and save it in your
+[dvc config](/doc/user-guide/project-structure/configuration#studio) or
+`DVC_STUDIO_TOKEN` environment variable. For example, to set it globally for all
+of a user's projects:
 
-![Live metrics in Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
+```cli
+$ dvc config --global studio.token ***
+```
+
+![Live experiments in Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
 
 See [DVC config] for how to enable/disable live metrics and how to configure a
 different Studio URL or Git repository, or see the Studio guide on [live
-metrics] for more information on how to setup, view, and compare.
+experiments] for more information on how to setup, view, and compare.
 
 ## Push experiments
 
@@ -38,8 +44,8 @@ which requires [remote storage] (e.g. Amazon S3 or SSH). Add the `--no-cache`
 flag to exclude sharing cached data.
 
 You can optionally manage your pushed experiments from Studio. If you have saved
-your token as described above for [live metrics](#live-metrics-and-plots), DVC
-will notify Studio when you push an experiment. Otherwise, you may use the
+your token as described above for [live experiments](#live-metrics-and-plots),
+DVC will notify Studio when you push an experiment. Otherwise, you may use the
 reload button in Studio.
 
 ![Sharing experiments in Studio](/img/exp-sharing-studio.png)
@@ -157,7 +163,7 @@ $ dvc push
 ```
 
 [studio]: https://studio.iterative.ai
-[live metrics]:
+[live experiments]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvc config]: /docs/user-guide/project-structure/configuration#studio
 [remote storage]: /doc/user-guide/data-management/remote-storage
