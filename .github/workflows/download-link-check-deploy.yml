@@ -8,8 +8,9 @@ jobs:
     name: Initialize
     runs-on: ubuntu-latest
     if:
-      github.event.deployment.ref != 'main' &&
-      github.event.deployment_status.state == 'success'
+      ${{ github.event.deployment.ref != github.event.repository.default_branch
+      && github.event.deployment_status.state == 'success' &&
+      contains(github.event.deployment_status.description, 'Heroku') }}
     steps:
       - uses: actions/checkout@v3
       - name: Download Link Checker
