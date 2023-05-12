@@ -22,6 +22,7 @@ If you've deployed Studio directly with Helm, please download the
 
 ```cli
 $ curl -o create-support-bundle https://raw.githubusercontent.com/iterative/studio-selfhosted/main/packer/create-support-bundle.sh
+$ chmod +x create-support-bundle
 ```
 
 </tab>

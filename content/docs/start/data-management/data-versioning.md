@@ -21,7 +21,7 @@ Imagine cloning a repository and immediately seeing your datasets, checkpoints
 and models staged in your workspace. Imagine switching to a different version of
 a 100Gb file in less than a second with a `git checkout`.
 
-**💫 DVC is your _"Git for data"_!**
+_💫 DVC is your *"Git for data"*!_
 
 ## Tracking data
 
