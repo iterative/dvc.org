@@ -20,7 +20,7 @@ training ML models - for that purpose DVC introduces a build system to define,
 execute and track _data pipelines_ — a series of data processing stages, that
 produce a final result.
 
-**💫 DVC is a "Makefile" system for machine learning projects!**
+_💫 DVC is a "Makefile" system for machine learning projects!_
 
 DVC pipelines are versioned using Git, and allow you to better organize projects
 and reproduce complete workflows and results at will. You could capture a simple
