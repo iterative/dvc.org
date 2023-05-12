@@ -46,13 +46,6 @@ To save an experiment, you can follow one of these roads:
 Experiments are saved locally by default but you can [share] them so that anyone
 can reproduce your work.
 
-## Datasets and models
-
-DVC can track models or datasets as part of your repo, and you can manage those
-models with [Studio Model Registry]. One way to log models or other artifacts is with [DVCLive].
-You can also track them with `dvc add` and declare metadata for the [Studio Model Registry]
-in [`dvc.yaml`][artifacts].
-
 ## Metrics, plots, parameters
 
 DVC can track and compare <abbr>parameters</abbr>, <abbr>metrics</abbr>, and
@@ -62,6 +55,13 @@ parameters, metrics, and plots (and to automatically configure them) is with
 [DVCLive]. You can also manually generate these files and use `dvc.yaml`
 metafiles to specify which files are [parameters], [metrics], or [plots] (and to
 specify how to [visualize plots]).
+
+## Models and datasets
+
+DVC can track models or datasets as part of your repo, and you can manage those
+models with [Studio Model Registry]. One way to log models or other artifacts is
+with [DVCLive]. You can also track them with `dvc add` and declare metadata for
+the [Studio Model Registry] in [`dvc.yaml`][artifacts].
 
 ## Work with DVC Experiments from a GUI
 

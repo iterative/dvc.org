@@ -39,12 +39,20 @@ from dvclive.lightning import DVCLiveLogger
 
 ...
 with Live(save_dvc_exp=True) as live:
+    checkpoint = ModelCheckpoint(dirpath="mymodel")
     trainer = Trainer(
-        logger=DVCLiveLogger(save_dvc_exp=True),
-        default_root_dir="mymodel"
+        logger=DVCLiveLogger(
+            save_dvc_exp=True,
+            experiment=live
+        ),
+        callbacks=checkpoint
     )
     trainer.fit(model)
-    live.log_artifact("mymodel", type="model")
+    live.log_artifact(
+        checkpoint.best_model_path,
+        type="model",
+        name="lightning-model"
+    )
 ```
 
 </tab>
@@ -56,7 +64,9 @@ from dvclive.huggingface import DVCLiveCallback
 
 ...
 with Live(save_dvc_exp=True) as live:
-    trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
+    trainer.add_callback(
+        DVCLiveCallback(save_dvc_exp=True, live=live)
+    )
     trainer.train()
     trainer.save_model("mymodel")
     live.log_artifact("mymodel", type="model")
@@ -74,7 +84,9 @@ with Live(save_dvc_exp=True) as live:
     model.fit(
         train_dataset,
         validation_data=validation_dataset,
-        callbacks=[DVCLiveCallback(save_dvc_exp=True)]
+        callbacks=[
+            DVCLiveCallback(save_dvc_exp=True, live=live)
+        ]
     )
     model.save("mymodel")
     live.log_artifact("mymodel", type="model")
@@ -111,7 +123,9 @@ containing the results and the changes needed to reproduce it.
 Framework and any
 [data tracked by DVC](/doc/start/data-management/data-versioning) but you can
 also [log additional info](/doc/dvclive#log-data) to be included in the
-experiment.
+experiment. `live.log_artifact("mymodel", type="model")` will
+[track your model with DVC](/doc/dvclive#log-data) and enable managing it with
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
 <admon type="info">
 

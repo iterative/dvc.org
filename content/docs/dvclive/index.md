@@ -37,7 +37,7 @@ Including `save_dvc_exp=True` will automatically
 <tab title="Artifacts">
 
 ```python
-live.log_artifact("model.pt", type="model")
+live.log_artifact("model.pt", type="model", name="gpt")
 ```
 
 See `Live.log_artifact()`.
