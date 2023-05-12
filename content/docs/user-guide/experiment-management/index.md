@@ -48,10 +48,10 @@ can reproduce your work.
 
 ## Datasets and models
 
-DVC can track datasets or models as part of your repo. One way to let DVC know
-the specific artifact is a model or a dataset is to use [DVCLive]. You can also
-manually add them to `dvc.yaml`. For models, you'll see them appear in [Studio
-Model Registry].
+DVC can track models or datasets as part of your repo, and you can manage those
+models with [Studio Model Registry]. One way to log models or other artifacts is with [DVCLive].
+You can also track them with `dvc add` and declare metadata for the [Studio Model Registry]
+in [`dvc.yaml`][artifacts].
 
 ## Metrics, plots, parameters
 

@@ -1,7 +1,7 @@
 # Add a model
 
 You can add models from any ML project to the model registry. To add a model to
-your model registry, Iterative Studio creates an annotation for it in an
+your model registry, Iterative Studio creates an annotation for it in a
 `dvc.yaml` file in your Git repository. If you are using the [GTO] command line
 tool, you can also add models [from the CLI][gto annotate]. To add models using
 Iterative Studio, watch this tutorial video or read on below:
