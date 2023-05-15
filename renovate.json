@@ -1,38 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":pinAllExceptPeerDependencies",
-    "group:linters",
-    "group:postcss",
-    "helpers:disableTypesNodeMajor",
-    ":reviewer(team:websites)",
-    ":enableVulnerabilityAlerts",
-    ":label(dependencies)"
-  ],
-  "packageRules": [
-    {
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-      "automergeType": "branch",
-      "schedule": ["on tuesday every 2 weeks"]
-    },
-    {
-      "matchPackagePatterns": ["*"],
-      "prConcurrentLimit": 3,
-      "stabilityDays": 7,
-      "matchDatasources": ["npm"],
-      "schedule": ["on tuesday"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "matchPackagePatterns": ["@dvcorg", "iterative"],
-      "additionalBranchPrefix": "iterative-package-",
-      "prCreation": "immediate"
-    }
+    "github>iterative/gatsby-theme-iterative:renovate.json",
+    ":pinAllExceptPeerDependencies"
   ]
 }
