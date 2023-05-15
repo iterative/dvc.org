@@ -15,7 +15,7 @@ See also `dvc exp run`, which includes this operation.
 ```usage
 usage: dvc exp save [-h] [-q | -v] [-f]
                    [--json] [-n <name>]
-                   [-I path]
+                   [-I path] [-M <commit_message>]
 ```
 
 ## Description
@@ -62,6 +62,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-I <path>`, `--include-untracked <path>` - specify an untracked file or
   directory to be included in the experiment. This option can be used multiple
   times.
+
+- `-M <message>`, `--message <message>` - Custom commit message to use when
+  commiting the experiment. If not provided, `dvc: commit experiment {hash}`
+  will be used.
 
 - `-f`, `--force` - rewrite the experiment if it already exists.
 

@@ -20,6 +20,7 @@ usage: dvc exp run [-h] [-q | -v] [-f]
                    [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset] [-C <path>]
+                   [-M <commit_message>]
                    [targets [targets ...]]
 
 positional arguments:
@@ -142,6 +143,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-C <path>`, `--copy-paths <path>` - List of ignored or untracked paths to
   copy into the temp directory. Only used if `--temp` or `--queue` is specified.
+
+- `-M <message>`, `--message <message>` - Custom commit message to use when
+  commiting the experiment. If not provided, `dvc: commit experiment {hash}`
+  will be used.
 
 - `-h`, `--help` - prints the usage/help message, and exits.
 
