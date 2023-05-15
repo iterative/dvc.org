@@ -1,7 +1,7 @@
 # dvc.api.params_show()
 
-Load <abbr>parameters</abbr> (name and values) tracked in a <abbr>DVC
-project</abbr>.
+Get <abbr>parameters</abbr> (name and values) tracked in a <abbr>DVC
+repository</abbr>.
 
 ```py
 def params_show(
@@ -23,7 +23,7 @@ params = dvc.api.params_show()
 
 ## Description
 
-Retrieves <abbr>parameter</abbr> keys and values from a <abbr>DVC project</abbr>
+Gets <abbr>parameter</abbr> keys and values from a <abbr>DVC repository</abbr>
 and returns a dictionary, such as:
 
 ```json
