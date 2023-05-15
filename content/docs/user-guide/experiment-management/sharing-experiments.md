@@ -21,7 +21,11 @@ of a user's projects:
 $ dvc config --global studio.token ***
 ```
 
-![Live experiments in Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
+While the experiment runs, you will see live updates like this in Studio:
+
+![Live metrics in Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
+
+![Live plots in Studio](https://static.iterative.ai/img/studio/live_plots.gif)
 
 See [DVC config] for how to enable/disable live metrics and how to configure a
 different Studio URL or Git repository, or see the Studio guide on [live
@@ -36,8 +40,8 @@ experiment `quare-zips` to Git remote `origin`:
 $ dvc exp push origin quare-zips
 ```
 
-Check your Git remote with `git remote -v` and see [troubleshooting] for
-problems.
+If you don't know your Git remote, check with `git remote -v` or see
+[troubleshooting] for problems.
 
 By default, DVC will also share <abbr>cached</abbr> data that is tracked by DVC,
 which requires [remote storage] (e.g. Amazon S3 or SSH). Add the `--no-cache`
