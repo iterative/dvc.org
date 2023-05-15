@@ -24,27 +24,9 @@ instead, and not as a separate system.
 [codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
 [versioning everything]: /doc/use-cases/versioning-data-and-models
 
-```dvctable
- ────────────────────────────────────────────────────────────────────
-  white:**Experiment**                 yellow:**loss**      yellow:**acc**      blue:**epochs**   blue:**model.conv_u**
- ────────────────────────────────────────────────────────────────────
-  workspace                  0.23508   0.9151   10       24
-  main                             -        -   10       16
-  ├── e2647ef [freed-roam]   0.23146   0.9145   10       64
-  ├── 15c9451 [paced-rugs]   0.25231   0.9102   10       32
-  └── 9c32227 [puffy-daks]   0.23687   0.9167   10       256
-  7317bc6                          -        -   100      16
-  ├── 299dc5e [monograms]    0.24838   0.9176   100      128
-  └── 8a9cb15 [bigrams]      0.24459   0.9134   100      64
- ────────────────────────────────────────────────────────────────────
-```
-
-<div style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; margin-bottom: 16px;">
-  <em style="color: #6a737d; font-size: 0.9em; display: block; text-align: center;">
-    _DVC Experiments are organized along project versions (Git commits,
-    branches, tags, etc.)_
-  </em>
-</div>
+![](/img/vscode-live.gif) _DVC Experiments are organized along project versions
+(Git commits, branches, tags, etc.), and can be compared in the terminal, the
+[VS Code extension][ide] (shown) or [Studio]._
 
 When you are ready to share, [Studio] can be the central hub for your team's
 projects, experiments, and models. Studio also gives you the power to run
@@ -107,4 +89,4 @@ Finally, DVC is completely language agnostic, offering the same functionality
 whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[iterative studio]: /doc/studio
+[studio]: /doc/studio
