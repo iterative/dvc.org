@@ -544,6 +544,10 @@
         "label": "DVCFileSystem"
       },
       {
+        "slug": "exp_show",
+        "label": "exp_show()"
+      },
+      {
         "slug": "get_url",
         "label": "get_url()"
       },
@@ -566,6 +570,10 @@
       {
         "slug": "read",
         "label": "read()"
+      },
+      {
+        "slug": "scm",
+        "label": "scm"
       }
     ]
   },
