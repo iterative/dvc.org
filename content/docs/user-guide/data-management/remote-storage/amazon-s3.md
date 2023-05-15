@@ -70,7 +70,7 @@ through Git. See `dvc config`.
 </admon>
 
 To use custom [AWS CLI config or credential files][aws-cli-config-files], or to
-specify a [profile name], use `configpath`, `credentialpath`, or `profile`:
+specify a profile name, use `configpath`, `credentialpath`, or `profile`:
 
 ```cli
 $ dvc remote modify --local myremote \
@@ -84,8 +84,6 @@ $ dvc remote modify myremote profile 'myprofile'
 
 [aws-cli-config-files]:
   https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
-[profile name]:
-  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
 
 Another option is to use an AWS access key ID (`access_key_id`) and secret
 access key (`secret_access_key`) pair, and if required, an [MFA] session token
