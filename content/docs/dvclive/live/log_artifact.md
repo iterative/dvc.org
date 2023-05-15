@@ -49,9 +49,18 @@ all the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 
 - `path` - an existing directory or file.
 
+- `type` - an optional type of the artifact. Common types are `model` or
+  `dataset`.
+
 - `name` - an optional custom name of an artifact. If not provided the path stem
   (last part of the path without the file extension) will be used as the
   artifact name.
+
+- `desc` - an optional description of an artifact.
+
+- `labels` - optional labels describing the artifact.
+
+- `meta` - optional metainformation in `key: value` format.
 
 - `copy` - copy a directory or file at `path` into the `dvclive/artifacts`
   location ([default](/doc/dvclive/how-it-works#directory-structure)) before

@@ -22,14 +22,10 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 
 3. Enter the path of the model file as follows:
 
-   - If the model file is in the Git repository, enter the relative path of the
-     model (from the repository root).
-   - If the model file is in remote storage but is DVC-tracked, enter the
-     project path of the corresponding `.dvc` file.
-   - If the model file is in remote storage and is not DVC-tracked, enter the
-     absolute path of the model file.
-   - If you use [MLEM] to save your model, use the path to the binary file or
-     folder that MLEM generates.
+   - If the model file is in the Git repository (including if it is saved with
+     DVC and/or [MLEM]), enter the relative path of the model (from the
+     repository root).
+   - Otherwise, enter the URL to the model file in the cloud.
 
    If the path you entered is a cloud path, Iterative Studio will ask you for
    the repository path where the dvc reference to the model should be saved.
@@ -59,15 +55,15 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 10. If you had added a model from a cloud storage, the following will also
     happen before the commit is created:
 
-- If the repository does not contain DVC, Iterative Studio will run `dvc init`.
-  It is needed to version the model in the git repository.
-  [Learn more](/doc/command-reference/init).
-- If the specified directory does not exist yet, it will be created.
-- Iterative Studio will import the model to the repository by executing
-  `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
-- Iterative Studio annotate the model by executing
-  `gto annotate <model_name> --path <directory_path>/<filename from remote_path> --type model`.
-  [Learn more][gto annotate].
+    - If the repository does not contain DVC, Iterative Studio will run
+      `dvc init`. It is needed to version the model in the git repository.
+      [Learn more](/doc/command-reference/init).
+    - If the specified directory does not exist yet, it will be created.
+    - Iterative Studio will import the model to the repository by executing
+      `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
+    - Iterative Studio annotate the model by executing
+      `gto annotate <model_name> --path <directory_path>/<filename from remote_path> --type model`.
+      [Learn more][gto annotate].
 
 [connected repository]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
