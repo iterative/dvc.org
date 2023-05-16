@@ -107,7 +107,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
-    "@svgr/webpack": "^6.5.1",
+    "@svgr/webpack": "^7.0.0",
     "@types/classnames": "^2.3.1",
     "@types/isomorphic-fetch": "^0.0.36",
     "@types/promise-polyfill": "^6.0.4",
