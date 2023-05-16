@@ -48,7 +48,7 @@ Where:
 
 ## Examples
 
-- Using `live` to pass an existing [`Live`] instance.
+- Using `experiment` to pass an existing [`Live`] instance.
 
 ```python
 from dvclive import Live
@@ -56,7 +56,7 @@ from dvclive.lightning import DVCLiveLogger
 
 with Live("custom_dir") as live:
     trainer = Trainer(
-        logger=DVCLiveLogger(live=live))
+        logger=DVCLiveLogger(experiment=live))
     trainer.fit(model)
     # Log additional metrics after training
     live.summary["additional_metric"] = 1.0
