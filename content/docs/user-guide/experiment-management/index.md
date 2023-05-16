@@ -46,7 +46,7 @@ To save an experiment, you can follow one of these roads:
 Experiments are saved locally by default but you can [share] them so that anyone
 can reproduce your work.
 
-## Metrics, plots, and parameters
+## Metrics, plots, parameters
 
 DVC can track and compare <abbr>parameters</abbr>, <abbr>metrics</abbr>, and
 <abbr>plots</abbr> data saved in standard structured files like YAML, JSON, and
@@ -55,6 +55,13 @@ parameters, metrics, and plots (and to automatically configure them) is with
 [DVCLive]. You can also manually generate these files and use `dvc.yaml`
 metafiles to specify which files are [parameters], [metrics], or [plots] (and to
 specify how to [visualize plots]).
+
+## Models and datasets
+
+DVC can track models or datasets as part of your repo, and you can manage those
+models with [Studio Model Registry]. One way to log models or other artifacts is
+with [DVCLive]. You can also track them with `dvc add` and declare metadata for
+the [Studio Model Registry] in [`dvc.yaml`][artifacts].
 
 ## Work with DVC Experiments from a GUI
 
@@ -74,9 +81,12 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
 [share]: /doc/user-guide/experiment-management/sharing-experiments
+[artifacts]: /doc/user-guide/project-structure/dvcyaml-files#artifacts
 [parameters]: /doc/user-guide/project-structure/dvcyaml-files#params
 [metrics]: /doc/user-guide/project-structure/dvcyaml-files#metrics
 [plots]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
 [from the vs code ide]: /doc/vs-code-extension
 [iterative studio]: /doc/studio
+[studio model registry]:
+  /doc/studio/user-guide/model-registry/what-is-a-model-registry

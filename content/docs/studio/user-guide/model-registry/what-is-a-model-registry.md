@@ -54,7 +54,7 @@ Note that while you can get the basic Model Registry functionality within
 Iterative Studio, there are more things you can do using the [MLEM] and [GTO]
 command line interface (CLI). For example, to save and deploy models, you will
 need to use MLEM, although future iterations of the Model Registry may
-incorporate these tasks also. Similarly, you can use GTO in your CI/CD actions
+incorporate these tasks also. Similarly, you can use [GTO] in your CI/CD actions
 to interpret Git tags for deploying the models to the desired environment.
 
 [semantic versioning]: https://semver.org/

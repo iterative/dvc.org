@@ -38,9 +38,21 @@ There are some examples below
 from dvclive.lightning import DVCLiveLogger
 
 ...
-
-trainer = Trainer(logger=DVCLiveLogger(save_dvc_exp=True))
-trainer.fit(model)
+with Live(save_dvc_exp=True) as live:
+    checkpoint = ModelCheckpoint(dirpath="mymodel")
+    trainer = Trainer(
+        logger=DVCLiveLogger(
+            save_dvc_exp=True,
+            experiment=live
+        ),
+        callbacks=checkpoint
+    )
+    trainer.fit(model)
+    live.log_artifact(
+        checkpoint.best_model_path,
+        type="model",
+        name="lightning-model"
+    )
 ```
 
 </tab>
@@ -51,9 +63,13 @@ trainer.fit(model)
 from dvclive.huggingface import DVCLiveCallback
 
 ...
-
-trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
-trainer.train()
+with Live(save_dvc_exp=True) as live:
+    trainer.add_callback(
+        DVCLiveCallback(save_dvc_exp=True, live=live)
+    )
+    trainer.train()
+    trainer.save_model("mymodel")
+    live.log_artifact("mymodel", type="model")
 ```
 
 </tab>
@@ -64,10 +80,16 @@ trainer.train()
 from dvclive.keras import DVCLiveCallback
 
 ...
-
-model.fit(
-  train_dataset, validation_data=validation_dataset,
-  callbacks=[DVCLiveCallback(save_dvc_exp=True)])
+with Live(save_dvc_exp=True) as live:
+    model.fit(
+        train_dataset,
+        validation_data=validation_dataset,
+        callbacks=[
+            DVCLiveCallback(save_dvc_exp=True, live=live)
+        ]
+    )
+    model.save("mymodel")
+    live.log_artifact("mymodel", type="model")
 ```
 
 </tab>
@@ -86,6 +108,8 @@ with Live(save_dvc_exp=True) as live:
         for metric_name, value in metrics.items():
             live.log_metric(metric_name, value)
         live.next_step()
+
+    live.log_artifact("model.pkl", type="model")
 ```
 
 </tab>
@@ -99,7 +123,10 @@ containing the results and the changes needed to reproduce it.
 Framework and any
 [data tracked by DVC](/doc/start/data-management/data-versioning) but you can
 also [log additional info](/doc/dvclive#log-data) to be included in the
-experiment.
+experiment. `live.log_artifact("mymodel", type="model")` will
+[track your model with DVC](/doc/dvclive/live/log_artifact) and enable managing
+it with
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
 <admon type="info">
 
