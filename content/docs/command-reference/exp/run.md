@@ -141,10 +141,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
 
-- `-C <path>`, `--copy-paths <path>` - List of ignored or untracked paths to
+- `-C <path>`, `--copy-paths <path>` - list of ignored or untracked paths to
   copy into the temp directory. Only used if `--temp` or `--queue` is specified.
 
-- `-M <message>`, `--message <message>` - Custom message to use when saving the
+- `-M <message>`, `--message <message>` - custom message to use when saving the
   experiment. If not provided, `dvc: commit experiment {hash}` will be used.
 
 - `-h`, `--help` - prints the usage/help message, and exits.

@@ -63,7 +63,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   directory to be included in the experiment. This option can be used multiple
   times.
 
-- `-M <message>`, `--message <message>` - Custom message to use when saving the
+- `-M <message>`, `--message <message>` - custom message to use when saving the
   experiment. If not provided, `dvc: commit experiment {hash}` will be used.
 
 - `-f`, `--force` - rewrite the experiment if it already exists.
