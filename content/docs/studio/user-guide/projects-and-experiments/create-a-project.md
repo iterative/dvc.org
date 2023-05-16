@@ -39,16 +39,14 @@ for more details.
 
    ![](https://static.iterative.ai/img/studio/select_repo_v3.png)
 
-4. Specify additional connection settings if required.
+4. Specify additional settings if required.
 
    ![](https://static.iterative.ai/img/studio/project_settings.png)
 
 > Project settings must be configured if you are connecting to a non-DVC
-> repository, if your metrics are in some custom files, if you are connecting to
-> a monorepo, or if your metrics are in cloud or other remote storage. However,
-> you can configure the project settings after the project has been created. So,
-> you can `Skip and Continue` now. Refer to the [Project Settings] section for
-> more details.
+> repository, if you are connecting to a monorepo, or if your metrics are in
+> cloud or other remote storage. You can configure the [Project Settings] after
+> the project has been created.
 
 You should now see that a project has been added in your dashboard.
 
@@ -74,8 +72,9 @@ each one in a different sub-directory.
 
 For each ML project in the monorepo, follow the
 [above process](#connect-to-a-git-repository-and-add-a-project) to connect to
-the Git repository. Then go to the project settings, and [specify the
-sub-directory] in which the desired ML project resides.
+the Git repository. On the additional settings page specify [specify the
+sub-directory] (or up to 10 comma-separated values) in which the desired ML
+project resides.
 
 This way, you will have multiple Iterative Studio projects for your single Git
 repository, with each project presenting values from a different sub-directory.
