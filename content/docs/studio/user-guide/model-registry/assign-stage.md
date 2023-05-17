@@ -22,7 +22,7 @@ https://www.youtube.com/watch?v=Vrp1O5lkWBo
    experiment table - look for the `Assign stage` button or icon.
 
 2. Select the version to which you want to assign the stage.
-3. Enter the stage name (eg, `development`, `staging`, `production`).
+3. Enter the stage name (eg, `dev`, `shadow`, `prod`).
 
    <admon>
 

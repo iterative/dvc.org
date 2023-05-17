@@ -1,4 +1,4 @@
-# View models
+# View and compare models
 
 You can find all your models in the [models dashboard](#models-dashboard). Each
 model has separate [model details pages](#model-details-page) for all its model
@@ -75,6 +75,17 @@ projects that have been created from the Git repository to which the model
 belongs.
 
 ![](https://static.iterative.ai/img/studio/model-columns-in-experiment-table.png)
+
+## Comparing model versions:
+
+To compare model versions, select relevant commits in the project's experiment
+table and click "Compare" and/or "Plots" buttons:
+
+![](https://hackmd.io/_uploads/B1L1d8fS3.png)
+
+This way you can compare both registered model versions and unregistered
+experimental iterations and make a decision to register a new version out of the
+the latter.
 
 [mlem]: https://mlem.ai/
 [gto]: https://mlem.ai/doc/gto

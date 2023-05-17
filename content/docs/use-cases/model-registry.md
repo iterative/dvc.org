@@ -11,7 +11,7 @@ division between ML engineering and operations!
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
 
-ML model registry enable end-to-end workflows:
+Model registry enable end-to-end workflows:
 
 - **Log your model**: Start by logging your model's performance metrics and
   artifacts. Seamless integration with your existing ML framework allows you to
@@ -41,7 +41,7 @@ ML model registry enable end-to-end workflows:
   assignment automatically, creating a streamlined process for model deployment.
 
 These steps provide a streamlined workflow from model development to deployment,
-leveraging the power of ML model registries.
+supporting all stages of ML model lifecycle.
 
 To begin with this integrated approach to managing your ML models, explore
 [Studio model registry docs][Studio] and get started today!
