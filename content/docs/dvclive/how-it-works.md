@@ -8,19 +8,19 @@ default.
 
 The contents of the directory will depend on the methods used:
 
-| Method                                                      | Writes to                                                                  |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [`Live.log_artifact(path)`](/doc/dvclive/live/log_artifact) | `{path}.dvc`                                                               |
-| `Live.log_metric()`                                         | `dvclive/plots/metrics`                                                    |
-| `Live.log_image()`                                          | `dvclive/plots/images`                                                     |
-| `Live.log_param()`                                          | `dvclive/params.yaml`                                                      |
-| `Live.log_plot()`                                           | `dvclive/plots/custom`                                                     |
-| `Live.log_sklearn_plot()`                                   | `dvclive/plots/sklearn`                                                    |
-| `Live.make_dvcyaml()`                                       | `dvclive/dvc.yaml`                                                         |
-| `Live.make_report()`                                        | `dvclive/report.{md/html}`                                                 |
-| `Live.make_summary()`                                       | `dvclive/metrics.json`                                                     |
-| `Live.next_step()`                                          | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
-| `Live.end()`                                                | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}` |
+| Method                                                  | Writes to                                                                            |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`Live.log_artifact()`](/doc/dvclive/live/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc` |
+| `Live.log_metric()`                                     | `dvclive/plots/metrics`                                                              |
+| `Live.log_image()`                                      | `dvclive/plots/images`                                                               |
+| `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
+| `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |
+| `Live.log_sklearn_plot()`                               | `dvclive/plots/sklearn`                                                              |
+| `Live.make_dvcyaml()`                                   | `dvclive/dvc.yaml`                                                                   |
+| `Live.make_report()`                                    | `dvclive/report.{md/html}`                                                           |
+| `Live.make_summary()`                                   | `dvclive/metrics.json`                                                               |
+| `Live.next_step()`                                      | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
+| `Live.end()`                                            | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
 
 ### Example
 
@@ -75,9 +75,9 @@ model.pt.dvc
 
 DVCLive expects each run to be tracked by Git, so it will save each run to the
 same path and overwrite the results each time. Include
-[`save_dvc_exp=True`](/doc/dvclive/api-reference/live#parameters) to auto-track
-as a <abbr>DVC experiment</abbr>. DVC experiments are Git commits that DVC can
-find but that don't clutter your Git history or create extra branches.
+[`save_dvc_exp=True`](/doc/dvclive/live#parameters) to auto-track as a <abbr>DVC
+experiment</abbr>. DVC experiments are Git commits that DVC can find but that
+don't clutter your Git history or create extra branches.
 
 ### Track large artifacts with DVC
 

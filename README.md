@@ -1,12 +1,9 @@
 ![owl logo](https://dvc.org/img/logo-github-readme.png)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/5872e0a572ec8b74bd8d/maintainability)](https://codeclimate.com/github/iterative/dvc.org/maintainability)
-[![CircleCI](https://circleci.com/gh/iterative/dvc.org.svg?style=svg)](https://circleci.com/gh/iterative/dvc.org)
 [![Link Check](https://github.com/iterative/dvc.org/workflows/Check%20all%20links%20in%20the%20repository/badge.svg)](https://github.com/iterative/dvc.org/actions?query=workflow%3A%22Check+all+links+in+the+repository%22)
 
 [DVC](https://github.com/iterative/dvc) project website's source code.
-[Documentation](https://dvc.org/doc) and [blog](https://dvc.org/blog) content.
-Contributions are welcome!
+[Documentation](https://dvc.org/doc) content. Contributions are welcome!
 
 # Contributing Docs
 
@@ -15,15 +12,6 @@ Please see our
 details. Thanks to all our contributors!
 
 [![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/iterative/dvc.org/graphs/contributors)
-
-# Writing a blog post
-
-Please, [contact us](mailto:support@dvc.org) if you'd like to write something
-cool together or publish your content on our [blog](https://dvc.org/blog).
-
-Please see our
-[Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
-for more details on how to write and submit a new blog post.
 
 # Getting help
 

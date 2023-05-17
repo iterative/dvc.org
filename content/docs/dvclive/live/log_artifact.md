@@ -10,6 +10,7 @@ def log_artifact(
     desc: Optional[str] = None,
     labels: Optional[List[str]] = None,
     meta: Optional[Dict[str, Any]] = None,
+    copy: Optional[bool] = False,
 ):
 ```
 
@@ -34,23 +35,38 @@ with Live() as live:
 
 ## Description
 
-Uses `dvc add` to track `path` with DVC, generating a `{path}.dvc` file.
-
-When combined with `save_dvc_exp=True`, it will ensure that `{path}.dvc` is
-included in the experiment.
+Uses `dvc add` to track `path` with DVC, generating a `{path}.dvc` file. When
+combined with [`save_dvc_exp=True`](/doc/dvclive#initialize-dvclive), it will
+ensure that `{path}.dvc` is included in the experiment.
 
 If `Live` was initialized with `dvcyaml=True` (which is the default), it will
 add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) and
 all the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 `type="model"` will mark it as a `model` for DVC and will make it appear in
-[Studio Model Registry](/doc/studio) (coming soon).
-
-If `name` is not provided, the path stem (last part of the path without the file
-extension) will be used as the artifact name.
+[Studio Model Registry](/doc/studio).
 
 ## Parameters
 
-- `path` - existing directory or file
+- `path` - an existing directory or file.
+
+- `type` - an optional type of the artifact. Common types are `model` or
+  `dataset`.
+
+- `name` - an optional custom name of an artifact. If not provided the path stem
+  (last part of the path without the file extension) will be used as the
+  artifact name.
+
+- `desc` - an optional description of an artifact.
+
+- `labels` - optional labels describing the artifact.
+
+- `meta` - optional metainformation in `key: value` format.
+
+- `copy` - copy a directory or file at `path` into the `dvclive/artifacts`
+  location ([default](/doc/dvclive/how-it-works#directory-structure)) before
+  tracking it. The new path is used instead of the original one to track the
+  artifact. Useful if you don't want to track the original path in your repo
+  (for example, it is outside the repo or in a Git-ignored directory).
 
 ## Exceptions
 

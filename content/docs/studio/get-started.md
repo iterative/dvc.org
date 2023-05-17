@@ -74,7 +74,7 @@ details]).
 ## Manage models
 
 1. Click on the `Models` tab to open the central [Models dashboard]. Iterative
-   Studio uses your project's `artifacts.yaml` file to identify ML models and
+   Studio uses your project's `dvc.yaml` files to identify ML models and
    specially formatted Git tags to identify model versions and stage
    assignments.
 
