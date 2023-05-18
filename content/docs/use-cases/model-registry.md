@@ -2,8 +2,8 @@
 
 A **model registry** is a tool to catalog ML models and their versions. Models
 from your data science projects can be discovered, tested, shared, deployed, and
-audited from there. [DVC](/doc), [GTO], and [MLEM] enable these capabilities on
-top of Git, so you can stick to an existing software engineering stack. No more
+audited from there. [Studio model registry] enables these capabilities on top of
+Git, so you can stick to an existing software engineering stack. No more
 division between ML engineering and operations!
 
 ![](/img/ml_model_registry.jpg) _MLOps from modeling to production_
@@ -11,59 +11,49 @@ division between ML engineering and operations!
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
 
-ML model registries give your team key capabilities:
+Model registry enable end-to-end workflows:
 
-- Collect and organize model [versions] from different sources effectively,
-  preserving their data provenance and lineage information.
-- Share metadata including [metrics and plots][mp] to help use and evaluate
-  models.
-- A standard interface to access all your ML artifacts, from early-stage
-  [experiments] to production-ready models.
-- Deploy specific models on different environments (dev, shadow, prod, etc.)
-  without touching the applications that consume them.
-- For security, control who can manage models, and audit their usage trails.
+- **Log your model**: Start by logging your model's performance metrics and
+  artifacts. Seamless integration with your existing ML framework allows you to
+  log everything necessary for later model use and evaluation.
 
-[versions]: /doc/use-cases/versioning-data-and-models
-[mp]: /doc/start/data-management/metrics-parameters-plots
-[experiments]: /doc/user-guide/experiment-management
+- **Compare experiments**: Once your models are logged, you can compare metrics,
+  parameters, and plots for different iterations to choose the next model
+  version.
 
-Many of these benefits are built into DVC: Your [modeling process] and
-[performance data][mp] become **codified** in Git-based <abbr>DVC
-repositories</abbr>, making it possible to reproduce and manage models with
-standard Git workflows (along with code). Large model files are stored
-separately and efficiently, and can be pushed to [remote storage] -- a scalable
-access point for [sharing].
+- **Register model versions**: After comparing your models, you can register a
+  semantic model version to mark an important iteration. This process of
+  collecting and organizing model [versions] preserves their data provenance and
+  lineage information, providing a clear history of model development.
 
-<admon type="info">
+- **Assign stage to model**: With your model registered, you can manage the
+  lifecycle of your models. Models can be assigned to specific tasks or stages
+  (e.g., dev, shadow, prod), and promoted through these stages based on their
+  performance.
 
-See also [Data Registry](/doc/use-cases/data-registry).
+- **Download specific version**: To use a specific model version, you can
+  download the latest or requested model version, or the version in the selected
+  stage.
 
-</admon>
+- **Deploy with CI/CD**: To enable automation, you can set up a continuous
+  integration/continuous deployment (CI/CD) workflow that publishes or deploys
+  your model. CI/CD can be triggered upon version registration or stage
+  assignment automatically, creating a streamlined process for model deployment.
 
-To make a Git-native registry (with or without DVC), one option is to use [GTO]
-(Git Tag Ops). It tags ML model version releases and stage changes. This creates
-abstractions for your models, which lets you **manage their lifecycle** freely
-and directly from Git.
+These steps provide a streamlined workflow from model development to deployment,
+supporting all stages of ML model lifecycle.
 
-And to **productionize** the models, you can save and package them with the
-[MLEM] Python API or CLI, which automagically captures all the context needed to
-distribute them. It can store model files on the cloud (by itself or with DVC),
-list and transfer them within locations, wrap them as a local REST server, or
-even containerize and deploy them to cloud providers!
-
-To allow your teams **collaborate** on projects more efficiently, use
-[Studio model registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
-to organize, discover, version, manage model stages (e.g. testing, production)
-and track their lineage.
-
-This ecosystem of tools from [Iterative](https://iterative.ai/) introduces
-[GitOps] into your ML process. This means you can manage and deliver ML models
-with software engineering methods such as continuous integration (CI/CD), which
-can sync with the state of the artifacts in your registry.
+To begin with this integrated approach to managing your ML models, explore
+[Studio model registry docs][Studio] and get started today!
 
 [modeling process]: /doc/start/data-management/data-pipelines
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [accessing and sharing]:
   /doc/user-guide/data-management/discovering-and-accessing-data
-[via cml]: https://cml.dev/doc/cml-with-dvc
 [gitops]: https://www.gitops.tech/
+[dvclive]: /doc/live
+[Studio model registry]:
+  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[Studio]: (/doc/studio/user-guide/model-registry/what-is-a-model-registry)
+[dvc]: /doc
+[versions]: /doc/use-cases/versioning-data-and-models
