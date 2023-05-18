@@ -2,16 +2,9 @@ name: Check new links against deployment
 on:
   deployment_status:
 jobs:
-  test-run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: log event
-        run: |
-          echo "${{ toJSON(github.event.deployment) }}"
-          echo "${{ toJSON(github.event.deployment_status) }}"
-
   run:
     if:
       ${{ github.event.deployment.ref != github.event.repository.default_branch
-      && github.event.deployment_status.state == 'success' }}
+      && github.event.deployment_status.state == 'success' &&
+      contains(github.event.deployment_status.description, 'Heroku') }}
     uses: iterative/link-check/.github/workflows/link-check-deployment-status.yml@v0.14.0
