@@ -16,10 +16,9 @@ with Git along with other <abbr>DVC files</abbr> and your project's code.
 ## Artifacts
 
 This section allows you to declare structured metadata about your artifacts.
-Although you can specify artifacts of any `type`, we are in the process of
-building a DVC-based [model registry](/doc/use-cases/model-registry) that will
-pick up any artifacts with type `model`. Additionally, they will be picked up
-and supported by
+Although you can specify artifacts of any `type`, DVC-based
+[model registry](/doc/use-cases/model-registry) will pick up any artifacts with
+type `model`. Additionally, they will be available in
 [Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
 ```yaml
@@ -37,6 +36,14 @@ artifacts:
 
 Artifact IDs must consist of letters and numbers, and use '-' as separator (but
 not at the start or end).
+
+<admon icon="bulb">
+
+To migrate from the old GTO-based Model Registry by moving artifact annotations
+from `artifacts.yaml` to `dvc.yaml`, use
+[this helper script](https://gist.github.com/aguschin/9ad9ee8adf02a42d08dda92ee6d4497f).
+
+</admon>
 
 ## Metrics
 
