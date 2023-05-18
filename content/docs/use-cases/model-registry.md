@@ -11,7 +11,7 @@ more division between ML engineering and operations!
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
 
-Model registry enable end-to-end workflows:
+Model registry enables end-to-end workflows:
 
 - **Log your model**: Start by logging your model's performance metrics and
   artifacts. Seamless integration with your existing ML framework allows you to
