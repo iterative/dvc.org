@@ -66,7 +66,7 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
     - Iterative Studio will import the model to the repository by executing
       `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
 
-[connected repository]:
+[connected project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
