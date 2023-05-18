@@ -11,7 +11,7 @@ https://www.youtube.com/watch?v=DYeVI-QrHGI
 Iterative Studio Model Registry is built on top of Git, and uses Iterative’s
 open-source Git-based tools [GTO] and [MLEM] and [DVC].
 
-Model registry enable end-to-end workflows:
+Model registry enables end-to-end workflows:
 
 - **Add/Log your model**: Start by logging your model's performance metrics and
   artifacts with [dvclive]. This tool integrates seamlessly with your existing
