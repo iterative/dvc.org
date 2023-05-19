@@ -25,7 +25,7 @@ For completed tasks, this will also remove any associated output logs.
 <admon type="warn">
 
 Note that for successfully completed tasks, this command is not the same as
-`dvc exp remove`, which does not remove any data associated with a the
+`dvc exp remove`, because `dvc queue remove` does not remove any data associated with an
 experiment, only the queue entry and any output logs for that task.
 
 </admon>
