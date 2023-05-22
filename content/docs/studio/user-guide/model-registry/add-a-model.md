@@ -2,11 +2,13 @@
 
 You can add models from any ML project to the model registry. To add a model to
 your model registry, Iterative Studio creates an annotation for it in a
-`dvc.yaml` file in your Git repository. You can add a model in any of the following ways:
+`dvc.yaml` file in your Git repository. You can add a model in any of the
+following ways:
 
 1. Log your model during the training process using [dvclive].
 2. Edit `dvc.yaml` directly.
-3. Use the Iterative Studio interface (watch this tutorial video or read on below).
+3. Use the Iterative Studio interface (watch this tutorial video or read on
+   below).
 
 https://www.youtube.com/watch?v=szzv4ZXmYAs
 
@@ -51,22 +53,22 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 
 8. Now, click on `Commit changes`.
 
-9. At this point, the new model appears in the models dashboard.
+At this point, the new model appears in the models dashboard.
 
-10. In your Git repository, you will find that an entry for the new model has
-    been created in the `dvc.yaml` file in the repository's root. If you had
-    committed to a new branch, a new pull request (or merge request in the case
-    of GitLab) will also have been created to merge the new branch into the base
-    branch.
-11. If you had added a model from a cloud storage, the following will also
-    happen before the commit is created:
+In your Git repository, you will find that an entry for the new model has been
+created in the `dvc.yaml` that was specified. If you had committed to a new
+branch, a new pull request (or merge request in the case of GitLab) will also
+have been created to merge the new branch into the base branch.
 
-    - If the repository does not contain DVC, Iterative Studio will run
-      `dvc init`. It is needed to version the model in the git repository.
-      [Learn more](/doc/command-reference/init).
-    - If the specified directory does not exist yet, it will be created.
-    - Iterative Studio will import the model to the repository by executing
-      `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
+If you had added a model from a cloud storage, the following will also happen
+before the commit is created:
+
+- If the repository does not contain DVC, Iterative Studio will run `dvc init`.
+  It is needed to version the model in the git repository.
+  [Learn more](/doc/command-reference/init).
+- If the specified directory does not exist yet, it will be created.
+- Iterative Studio will import the model to the repository by executing
+  `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
 
 [connected project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
