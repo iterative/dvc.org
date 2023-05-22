@@ -72,9 +72,8 @@ each one in a different sub-directory.
 
 For each ML project in the monorepo, follow the
 [above process](#connect-to-a-git-repository-and-add-a-project) to connect to
-the Git repository. On the additional settings page [specify the
-sub-directory] (or up to 10 comma-separated values) in which the desired ML
-project resides.
+the Git repository. On the additional settings page [specify the sub-directory]
+(or up to 10 comma-separated values) in which the desired ML project resides.
 
 This way, you will have multiple Iterative Studio projects for your single Git
 repository, with each project presenting values from a different sub-directory.
