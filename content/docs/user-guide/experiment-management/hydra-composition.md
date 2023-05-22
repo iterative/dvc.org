@@ -166,6 +166,9 @@ Running stage 'train':
 ...
 ```
 
+Add `-vv` (`dvc exp run -vv --set-param 'train/model=efficientnet'`) if you need
+to [debug] the composed values.
+
 We can also modify specific values from any config section:
 
 ```cli
@@ -219,3 +222,5 @@ Stage 'train' didn't change, skipping
 ```
 
 </admon>
+
+[debug]: /doc/user-guide/pipelines/running-pipelines#debugging-stages
