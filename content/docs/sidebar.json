@@ -638,7 +638,7 @@
               "register-version",
               "assign-stage",
               "view-and-compare-models",
-              "download-models"
+              "use-models"
             ]
           },
           {

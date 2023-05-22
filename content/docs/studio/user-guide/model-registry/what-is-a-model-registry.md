@@ -14,8 +14,8 @@ Model registry enable end-to-end workflows:
 - [Register new versions of the models](/doc/studio/user-guide/model-registry/register-version)
 - [Assign stages to model versions](/doc/studio/user-guide/model-registry/assign-stage)
 - [View and compare model versions](/doc/studio/user-guide/model-registry/view-and-compare-models)
-- [Download models from the registry](/doc/studio/user-guide/model-registry/download-models)
-- [Set up CI/CD to publish or deploy models](/doc/studio/user-guide/model-registry/download-models)
+- [Download models from the registry](/doc/studio/user-guide/model-registry/use-models)
+- [Set up CI/CD to publish or deploy models](/doc/studio/user-guide/model-registry/use-models)
 
 You can take a look at Iterative's [public model registry] (read only) to get a
 feel for what's possible.
