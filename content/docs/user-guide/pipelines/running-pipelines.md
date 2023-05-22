@@ -107,3 +107,28 @@ stages:
       - latest_results.csv
     always_changed: true
 ```
+
+## Debugging Stages
+
+If you are using advanced features to interpolate values for your pipeline, like
+[templating] or [Hydra composition], you can get the interpolated values by
+running `dvc exp run -vv`, which will include information like:
+
+```cli
+2023-05-18 07:38:43,955 TRACE: Hydra composition enabled.
+Contents dumped to params.yaml: {'model': {'batch_size':
+512, 'latent_dim': 8, 'lr': 0.01, 'duration': '00:00:30:00',
+'max_epochs': 2}, 'data_path': 'fra.txt', 'num_samples':
+100000, 'seed': 423}
+2023-05-18 07:38:44,027 TRACE: Context during resolution of
+stage download: {'model': {'batch_size': 512, 'latent_dim':
+8, 'lr': 0.01, 'duration': '00:00:30:00', 'max_epochs': 2},
+'data_path': 'fra.txt', 'num_samples': 100000, 'seed': 423}
+2023-05-18 07:38:44,073 TRACE: Context during resolution of
+stage train: {'model': {'batch_size': 512, 'latent_dim': 8,
+'lr': 0.01, 'duration': '00:00:30:00', 'max_epochs': 2},
+'data_path': 'fra.txt', 'num_samples': 100000, 'seed': 423}
+```
+
+[templating]: /doc/user-guide/project-structure/pipelines-files#templating
+[hydra composition]: /docs/user-guide/experiment-management/hydra-composition

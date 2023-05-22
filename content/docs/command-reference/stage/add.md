@@ -13,6 +13,7 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-f]
                  [-m <path>] [-M <path>]
                  [--plots <path>] [--plots-no-cache <path>]
                  [-w <path>] [--always-changed] [--desc <text>]
+		 [--run]
                  command
 
 positional arguments:
@@ -213,6 +214,8 @@ data science experiments.
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
+
+- `--run` - executes the stage after generating it
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
