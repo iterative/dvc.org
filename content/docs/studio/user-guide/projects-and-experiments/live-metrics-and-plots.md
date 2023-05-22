@@ -1,9 +1,9 @@
-# Generate live (real-time) metrics and plots for remote experiments
+# Generate live (real-time) metrics and plots for running experiments
 
-In your model training script, you can use [DVCLive] to send live updates to
-metrics and plots to Iterative Studio, without writing them to your Git
-repository. This will enable you to view all intermediate results in Iterative
-Studio while your experiment is still running.
+In your model training script, you can use [DVCLive] to send live experiment
+updates to metrics and plots to Iterative Studio, without writing them to your
+Git repository. This will enable you to view all intermediate results in
+Iterative Studio while your experiment is still running.
 
 This requires a 2-step process:
 
@@ -12,11 +12,11 @@ This requires a 2-step process:
 
 ## Set up an access token
 
-Iterative Studio uses access tokens to authorize DVC and [DVCLive] to send
-experiments and live updates to the metrics and plots. The access token must be
-present in any request that sends data to the Iterative Studio ingestion
-endpoint. Requests with missing or incorrect access tokens are rejected with an
-appropriate HTTP error code and error message.
+Iterative Studio uses access tokens to authorize DVC and [DVCLive] to send live
+experiment updates. The access token must be present in any request that sends
+data to the Iterative Studio ingestion endpoint. Requests with missing or
+incorrect access tokens are rejected with an appropriate HTTP error code and
+error message.
 
 The access token is also used by DVC to notify Iterative Studio when you push
 experiments using `dvc exp push`.
@@ -32,21 +32,18 @@ handy if you suspect that your account security may have been compromised.
 
 ### Provide access token to experiment
 
-DVCLive expects the access token to be set in the `DVC_STUDIO_TOKEN` environment
-variable.
-
-If you are running the experiment locally, you can set this environment variable
-when submitting the training job.
+If you are running the experiment locally, you can set the token in your [DVC
+config]. For example, to set it globally for all of a user's projects:
 
 ```cli
-$ DVC_STUDIO_TOKEN=**** dvc exp run
+$ dvc config --global studio.token ***
 ```
 
 If you are running the experiment as part of a CI job, a secure way to provide
 the access token is to create a
 [GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-containing the value of the token, and use the secret in your CI job (see
-example below).
+containing the value of the token, and use the secret in your CI job using the
+`DVC_STUDIO_TOKEN` environment variable (see example below).
 
 ```yaml
 steps:
@@ -54,6 +51,9 @@ steps:
     env:
       DVC_STUDIO_TOKEN: ${{ secrets.DVC_STUDIO_TOKEN }}
 ```
+
+See [DVC config] for how to enable/disable live experiment updates and how to
+configure a different Studio URL or Git repository.
 
 ## Send and view live metrics and plots
 
@@ -89,28 +89,29 @@ automatically called when the experiment concludes successfully.
 
 </admon>
 
-Iterative Studio stores the live metrics and plots data in its database.
+Iterative Studio stores the live experiments data in its database.
 
-In the project table, the live metrics are displayed in experiment rows, which
-are nested under the parent Git commit.
+In the project table, the live experiments are displayed in experiment rows,
+which are nested under the parent Git commit.
 
 ![](https://static.iterative.ai/img/studio/live_metrics.gif)
 
 <admon>
 
-The live metrics row for an experiment is displayed only if its parent Git
+The live experiments row for an experiment is displayed only if its parent Git
 commit is shown in the project table. So before you run the experiment, make
 sure that its parent commit is pushed to Git.
 
 </admon>
 
-Updates to the live metrics are highlighted (in orange) in the project table and
+Updates to the live experiments are highlighted (in orange) in the project table
+and
 [compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
 in real time.
 
-The number of experiments with recent updates to live metrics are displayed in
-the `Live` icon, which can also be used to filter and show only running
-experiments in the table.
+The number of live experiments with recent updates are displayed in the `Live`
+icon, which can also be used to filter and show only running experiments in the
+table.
 
 Live plots are displayed in the
 [plots pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#how-to-generate-plots).
@@ -146,11 +147,11 @@ An experiment can have one of the following statuses:
 <admon>
 
 If there are multiple projects connected to a single Git repository, then live
-metrics and plots for this repository are displayed in all its connected
-projects.
+experiments for this repository are displayed in all its connected projects.
 
 </admon>
 
 [dvclive]: /doc/dvclive
 [share]: /doc/user-guide/experiment-management/sharing-experiments
 [save]: /doc/user-guide/experiment-management/persisting-experiments
+[dvc config]: /docs/user-guide/project-structure/configuration#studio
