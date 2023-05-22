@@ -8,7 +8,7 @@ etc.) of your models on top of Git.
 
 https://www.youtube.com/watch?v=DYeVI-QrHGI
 
-Model registry enable end-to-end workflows:
+Model registry enables end-to-end workflows:
 
 - [Add models to the registry](/doc/studio/user-guide/model-registry/add-a-model)
 - [Register new versions of the models](/doc/studio/user-guide/model-registry/register-version)
