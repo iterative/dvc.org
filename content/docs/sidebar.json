@@ -635,10 +635,10 @@
                 "slug": "what-is-a-model-registry"
               },
               "add-a-model",
-              "view-models",
-              "download-models",
               "register-version",
-              "assign-stage"
+              "assign-stage",
+              "view-and-compare-models",
+              "use-models"
             ]
           },
           {
