@@ -10,12 +10,6 @@ If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize
 it without configuring additional settings.
 
-Alternatively, you could create projects from:
-
-- Non-DVC repositories
-- Sub-directories in a monorepo
-- Custom files in your repository or remote/cloud storage
-
 If you are connecting to a non-DVC repository, if your metrics are in some
 custom files, if you are connecting to a monorepo, or if your metrics are in
 cloud or other remote storage, you will need to configure project settings.
@@ -47,10 +41,12 @@ contain the metrics and hyperparameters that you want to visualize.
 
 Depending on how you have set up your Git repositories, your DVC repo (to which
 you are trying to connect from Iterative Studio) may not be in the root of your
-Git repo. Instead, it could be in a sub-directory of a
+Git repo. Instead, it could be in a [sub-directory] of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo). If this is the case, you
 will need to specify the full path to the sub-directory that contains the data
 you want to visualize in Iterative Studio.
+
+[sub-directory]: /doc/command-reference/init#initializing-dvc-in-subdirectories
 
 ### Data remotes (cloud/remote storage)
 
@@ -80,7 +76,17 @@ If you have connected to a [monorepo](https://en.wikipedia.org/wiki/Monorepo),
 then specify the full path to the sub-directory that contains the DVC repo to
 which you are trying to connect.
 
+   <admon type="note">
+
+Create multiple projects at once by providing up to 10 comma-separated values
+during the initial [create project] flow.
+
+   </admon>
+
 ![](https://static.iterative.ai/img/studio/project_settings_sub_directory.png)
+
+[create project]:
+  /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 
 ### Data remotes / cloud storage credentials
 

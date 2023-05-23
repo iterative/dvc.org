@@ -32,8 +32,9 @@ details]).
   /doc/studio/user-guide/projects-and-experiments/what-is-a-project#prepare-your-repositories
 
 2. Click on `Add a Project` and follow the on-screen instructions to search and
-   connect to the desired Git repository. You can `Skip and Continue` the
-   `Project settings`.
+   connect to the desired Git repository. Optionaly pass a sub-directory path
+   (or up to 10 comma-separated values) on the settings screen if you use a
+   [monorepo] setup.
 
    <admon type="info">
 
@@ -45,11 +46,6 @@ details]).
 3. Iterative Studio identifies [experiments](/doc/start#experiment-management),
    which are Git commits or Git refs, and parses your project's `dvc.yaml` file
    to identify data, metrics, plots and hyperparameters.
-
-   If you are not using DVC, you can separately
-   [indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/projects-and-experiments/configure-a-project#custom-metrics-and-parameters).
-   However, we strongly recommend using DVC to avail of all the features of
-   Iterative Studio.
 
 4. Each project on the Projects dashboard displays the metrics of the first
    three columns in your project (such as `avg_prec` and `roc_auc` in the
@@ -118,3 +114,5 @@ details]).
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
+[monorepo]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#monorepo
