@@ -11,7 +11,7 @@ of those projects that connect to this Git repository.
 The models in your model registry are organized in a central dashboard that
 facilitates search and discovery.
 
-![](https://static.iterative.ai/img/studio/models-dashboard.png)
+![](/img/mr-models-table.png)
 
 You can sort the models in the dashboard by several criteria, including model
 framework, repository, etc.
@@ -34,7 +34,7 @@ model registry.
 You can open the details of any model in the registry by clicking on the name of
 the model in the models dashboard.
 
-![](https://static.iterative.ai/img/studio/model-details-page.png)
+![](/img/mr-mdp.png)
 
 A model details page is divided into the following sections:
 
@@ -57,6 +57,7 @@ A model details page is divided into the following sections:
   - all assigned stages,
   - version description and labels,
   - path to the model, and
+  - metrics and params,
   - model requirements and methods. Note that the requirements and methods are
     identified by Iterative’s model deployment tool [MLEM]. If you have not used
     MLEM, then Iterative Studio will not display any methods for the model.
@@ -81,7 +82,7 @@ belongs.
 To compare model versions, select relevant commits in the project's experiment
 table and click "Compare" and/or "Plots" buttons:
 
-![](https://hackmd.io/_uploads/B1L1d8fS3.png)
+![](/img/mr-comparing-models.png)
 
 This way you can compare both registered model versions and unregistered
 experimental iterations and make a decision to register a new version out of the

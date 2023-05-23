@@ -6,7 +6,8 @@ your model registry, Iterative Studio creates an annotation for it in a
 following ways:
 
 1. Log your model during the training process using [dvclive].
-2. Edit `dvc.yaml` directly.
+2. Edit [`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files#artifacts)
+   directly.
 3. Use the Iterative Studio interface (watch this tutorial video or read on
    below).
 

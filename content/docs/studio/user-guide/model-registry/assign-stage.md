@@ -11,8 +11,8 @@ You can write CI/CD actions that can actually deploy the models to the different
 deployment environments upon the creation of a new Git tag for stage assignment.
 For that, you can leverage any ML model deployment tool, such as MLEM.
 
-You can assign stages using the [`gto` CLI]. To assign stages using Iterative
-Studio, watch this tutorial video or read on below:
+To assign stages using Iterative Studio, watch this tutorial video or read on
+below:
 
 https://www.youtube.com/watch?v=Vrp1O5lkWBo
 
@@ -43,13 +43,16 @@ https://www.youtube.com/watch?v=Vrp1O5lkWBo
 
 4. Optionally, provide a Git tag message.
 5. Click on `Assign stage`.
-6. Once the action is successful, the stage assignment will show up in the
-   `Stages` column of the models dashboard.
-7. If you open the model details page, the stage assignment will be visible in
-   the model `History` section as well as in the `Stages` section.
-8. If you go to your Git repository, you will see that a new Git tag referencing
-   the selected version and stage has been created, indicating the stage
-   assignment.
+
+Once the action is successful, the stage assignment will show up in the `Stages`
+column of the models dashboard.
+
+If you open the model details page, the stage assignment will be visible in the
+model `History` section as well as in the `Stages` section.
+
+If you go to your Git repository, you will see that a new Git tag referencing
+the selected version and stage has been created, indicating the stage
+assignment.
 
 [gto]: https://mlem.ai/doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
