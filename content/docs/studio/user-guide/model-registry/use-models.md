@@ -12,7 +12,7 @@ versions using `dvc get`.
 ### Looking up right command in Studio
 
 Model details page have a command ready to copy and use under "Get the model
-file": ![](https://hackmd.io/_uploads/SkE5qUGr2.png)
+file": ![](/img/mr-dvc-get.png)
 
 ### Constructing the command manually
 
