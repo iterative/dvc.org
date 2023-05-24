@@ -72,6 +72,39 @@ trainer = Trainer(
 trainer.fit(model)
 ```
 
+- Using [`live.log_artifact()`](/doc/dvclive/live/log_artifact) to save the
+  [best checkpoint](https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html).
+
+```python
+with Live() as live:
+    checkpoint = ModelCheckpoint(dirpath="mymodel")
+    trainer = Trainer(
+        logger=DVCLiveLogger(experiment=live),
+        callbacks=checkpoint
+    )
+    trainer.fit(model)
+    live.log_artifact(
+        checkpoint.best_model_path,
+        type="model",
+        name="lightning-model"
+    )
+```
+
+- Logging
+  [hyperparameters](https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#save-hyperparameters).
+
+```python
+class LitModule(LightningModule):
+    def __init__(self, layer_1_dim, learning_rate):
+        super().__init__()
+        # call this to save (layer_1_dim=128, learning_rate=1e-4)
+        self.save_hyperparameters()
+
+model = LitModule(layer_1_dim=128, learning_rate=1e-4)
+trainer = Trainer(logger=DVCLiveLogger())
+trainer.fit(model)
+```
+
 <admon type="info">
 
 By default, PyTorch Lightning creates a directory to store checkpoints using the
