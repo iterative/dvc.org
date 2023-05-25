@@ -46,7 +46,7 @@ with Live(save_dvc_exp=True) as live:
 
     live.log_artifact("model.pt")
     live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
-    live.summary["additional_metric"] = 1.0
+    live.log_metric("summary_metric", 1.0, plot=False)
 # live.end() has been called at this point
 ```
 
