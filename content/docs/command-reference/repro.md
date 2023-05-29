@@ -9,7 +9,7 @@ Reproduce complete or partial <abbr>pipelines</abbr> by running their
 usage: dvc repro [-h] [-q | -v] [-f] [-i]
                  [-s] [-p] [-P] [-R] [-m]
                  [--downstream] [--force-downstream]
-                 [--pull] [--dry]
+                 [--pull] [--dry] [--allow-missing]
                  [--glob] [--no-commit] [--no-run-cache]
                  [targets [<target> ...]]
 
@@ -186,8 +186,11 @@ final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - attempts to download outputs of stages found in the [run cache]
-  during reproduction. Uses the `dvc remote default`. See also `dvc pull`
+- `--pull` - attempts to download the missing dependencies of stages that need
+  to be run. Unless `--no-run-cache` is passed, it will also try to download the
+  [run cache] and the outputs of stages that are already present in it.
+
+- `--allow-missing` - skip stages with no other changes than missing data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -350,3 +353,60 @@ $ dvc dag
 > Note that using `dvc repro` without `--downstream` in the above example
 > results in the execution of the target (`count`), and the preceding stages
 > (only 'filter' in this case).
+
+## Example: Only pull pipeline data as needed.
+
+You can combine the `--pull` and `--allow-missing` flags to reproduce a pipeline
+while only pulling the data that is actually needed to run the changed stages.
+
+Given the pipeline used in example-get-started-experiments:
+
+```cli
+$ dvc dag
+    +--------------------+
+    | data/pool_data.dvc |
+    +--------------------+
+               *
+               *
+               *
+        +------------+
+        | data_split |
+        +------------+
+         **        **
+       **            **
+      *                **
++-------+                *
+| train |              **
++-------+            **
+         **        **
+           **    **
+             *  *
+         +----------+
+         | evaluate |
+         +----------+
+```
+
+If we are in a machine where all the data is missing:
+
+```cli
+$ dvc status
+Not in cache:
+  (use "dvc fetch <file>..." to download files)
+        models/model.pkl
+        data/pool_data/
+        data/test_data/
+        data/train_data/
+```
+
+We can modify the `evaluate` stage and DVC will only pull the necessary data to
+run that stage (`models/model.pkl` `data/test_data/`) while skipping the rest of
+the stages:
+
+```cli
+$ dvc reproduce
+'data/pool_data.dvc' didn't change, skipping
+Stage 'data_split' didn't change, skipping
+Stage 'train' didn't change, skipping
+Running stage 'evaluate':
+...
+```
