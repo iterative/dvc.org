@@ -359,7 +359,8 @@ $ dvc dag
 You can combine the `--pull` and `--allow-missing` flags to reproduce a pipeline
 while only pulling the data that is actually needed to run the changed stages.
 
-Given the pipeline used in example-get-started-experiments:
+Given the pipeline used in
+[example-get-started-experiments](https://github.com/iterative/example-get-started-experiments):
 
 ```cli
 $ dvc dag
