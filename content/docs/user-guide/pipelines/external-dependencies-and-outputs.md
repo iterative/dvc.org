@@ -1,4 +1,4 @@
-# External Data
+# External Dependencies and Outputs
 
 Sometimes you need to stream your data dependencies directly from their source
 locations outside your local <abbr>project</abbr>, or stream your data outputs
@@ -27,8 +27,8 @@ field). Use the same format as the `url` of of the following supported
 Let's take a look at defining and running a `download_file` stage that simply
 downloads a file from an external location, on all the supported location types.
 
-> See the [Remote alias example](#example-using-dvc-remote-aliases) for info. on
-> using remote locations that require manual authentication setup.
+> See the [Remote alias example](#using-dvc-remote-aliases) for info. on using
+> remote locations that require manual authentication setup.
 
 <details>
 
@@ -136,16 +136,18 @@ $ dvc stage add -n download_file \
 
 </details>
 
-#### Example: Using DVC remote aliases
+<details>
+
+#### Using DVC remote aliases
 
 You may want to encapsulate external locations as configurable entities that can
 be managed independently. This is useful if the connection requires
 authentication, if multiple dependencies (or stages) reuse the same location, or
 if the URL is likely to change in the future.
 
-[DVC remotes][remote storage] can do just this. You may use `dvc remote add` to
-define them, and then use a special URL with format
-`remote://{remote_name}/{path}` (remote alias) to define the external
+[DVC remotes](/doc/user-guide/data-management/remote-storage) can do just this.
+You may use `dvc remote add` to define them, and then use a special URL with
+format `remote://{remote_name}/{path}` (remote alias) to define the external
 dependency.
 
 Let's see an example using SSH. First, register and configure the remote:
@@ -167,6 +169,8 @@ $ dvc stage add -n download_file \
           wget https://example.com/data.txt -O data.txt
 ```
 
+</details>
+
 ## How external outputs work
 
 External <abbr>outputs</abbr> will be tracked by DVC, detecting when they
@@ -177,7 +181,7 @@ change, but not saved in the <abbr>cache</abbr> for
 
 Saving external outputs to an external cache has been deprecated in DVC 3.0.
 
-Please bear with us as we work on versioning external outputs using
+Stay tuned as we work on versioning external outputs using
 [cloud versioning](/doc/user-guide/data-management/cloud-versioning).
 
 </admon>

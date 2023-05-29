@@ -166,7 +166,7 @@
           },
           "cloud-versioning",
           "discovering-and-accessing-data",
-          "importing-external-data",
+          { "label": "External Data", "slug": "importing-external-data" },
           "large-dataset-optimization"
         ]
       },
@@ -177,7 +177,7 @@
           "defining-pipelines",
           "running-pipelines",
           "run-cache",
-          "external-data"
+          "external-dependencies-and-outputs"
         ]
       },
       {

@@ -1,9 +1,9 @@
-# Importing External Data
+# External Data
 
 To version data that lives outside of your local <abbr>project</abbr>, you can
 import it. You can choose whether to download that data and whether to push
-copies of it to your [DVC remote]. This makes importing the data useful even if
-you want to track the data in-place at its original source location.
+copies to your [DVC remote]. This makes importing the data useful even if you
+want to track the data in-place at its original source location.
 
 ## How importing external data works
 
@@ -54,15 +54,14 @@ recover it.
 
 ## Avoiding duplication
 
-Uploading and downloading copies of the external data may be unnecessary and
-impractical in some cases, like if your data is large or static, or you stream
-it directly from its source location, or you use cloud versioning to backup old
+Making copies of the external data may be unnecessary and impractical in some
+cases, like if your data is too big to download locally, or you stream it
+directly from its source location, or you use cloud versioning to backup old
 versions already.
 
-### Skipping downloads
-
-You can use `--no-download` to skip the download step when you import or update
-the data:
+Use `--no-download` to skip the download step when you import or update the
+data. DVC will save the metadata in `data.xml.dvc` but won't download `data.xml`
+locally:
 
 ```cli
 $ dvc import-url --no-download https://data.dvc.org/get-started/data.xml
@@ -72,23 +71,46 @@ $ ls
 data.xml.dvc
 ```
 
-If you don't have time or space to download the data but still want to make a
-backup of the data on your [DVC remote] to be able to recover a copy later, you
-can instead use `--to-remote`, which will upload the data to remote storage
-without saving a local copy.
+To recover this version of the data later, use `dvc pull`, and DVC will try to
+download it from its original source location. However, if you have overwritten
+the original source data, `dvc pull` may fail. To version the data so you can
+recover any version, either push the data to the [DVC remote] or use [cloud
+versioning].
 
-### Skipping uploads
+### Example: Push to remote
 
-You can also skip pushing the data to the [DVC remote], and DVC will try to
-recover the data from its source location. However, if you don't push the data
-and the source location has changed, you may be unable to recover the data.
+`dvc import-url --to-remote` will not download the data locally but will push
+the data to the [DVC remote]:
 
-[Cloud versioning](/doc/user-guide/data-management/cloud-versioning) enables you
-to recover data without having to push a copy to DVC remote storage. If you have
-cloud versioning enabled for the source location, you can import it with
-`--version-aware`. DVC will track the version ID of all imported files and be
-able to recover them from source as long as those versions remain in the source
-location. DVC will also know to skip uploading these files during `dvc push`
-since it assumes they are available from the source location.
+```cli
+$ dvc import-url --to-remote https://data.dvc.org/get-started/data.xml
+
+$ ls
+data.xml.dvc
+
+$ dvc push
+Everything is up to date.
+```
+
+### Example: Cloud versioning
+
+If you are importing from a supported [cloud versioning] provider,
+`dvc import-url --no-download --version-aware` will not download the data
+locally but will track the cloud provider's version IDs for the data. `dvc pull`
+will try to download those version IDs as long as they are available. `dvc push`
+will not upload anything because DVC assumes the versions are available at the
+source location:
+
+```cli
+$ dvc import-url --no-download --version-aware s3://myversionedbucket/data.xml
+Importing 's3://myversionedbucket/data.xml' -> 'data.xml'
+
+$ ls
+data.xml.dvc
+
+$ dvc push
+Everything is up to date.
+```
 
 [dvc remote]: /doc/user-guide/data-management/remote-storage
+[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
