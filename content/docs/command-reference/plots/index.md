@@ -29,7 +29,7 @@ You can visualize and compare JSON, YAML 1.2, CSV, TSV data files or JPEG, GIF,
 PNG, or SVG images found in your project. Typically these are artifacts of an
 [ML pipeline] or performance logs produced by [DVCLive].
 
-[ml pipeline]: /doc/start/data-management/data-pipelines
+[ml pipeline]: /doc/start/data-pipelines/building-pipelines
 [dvclive]: /doc/dvclive
 
 <admon icon="book">

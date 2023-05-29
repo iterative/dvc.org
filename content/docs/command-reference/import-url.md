@@ -346,7 +346,7 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-[data processing section]: /doc/start/data-management/data-pipelines
+[data processing section]: /doc/start/data-pipelines/building-pipelines
 
 <details>
 

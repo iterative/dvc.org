@@ -122,6 +122,9 @@ You can use `dvc exp remove` to manually remove experiment(s) using their names:
 $ dvc exp remove bifid-says potty-sash
 ```
 
+You can also use `dvc exp gc` with various flag combinations for more advanced
+housekeeping.
+
 </tab>
 
 <tab title="VSCode Extension">

@@ -41,29 +41,38 @@
     "children": [
       {
         "slug": "data-management",
-        "source": "data-management/index.md",
         "children": [
           "data-versioning",
-          "data-pipelines",
           {
-            "label": "Metrics, Parameters, and Plots",
-            "slug": "metrics-parameters-plots"
-          }
+            "label": "Storing and Sharing",
+            "slug": "storing-sharing"
+          },
+          "tracking-changes"
+        ]
+      },
+      {
+        "slug": "data-pipelines",
+        "children": [
+          "building-pipelines",
+          {
+            "label": "Metrics and Plots",
+            "slug": "metrics-and-plots"
+          },
+          "parameters"
         ]
       },
       {
         "label": "Experiment Management",
         "slug": "experiments",
-        "source": "experiments/index.md",
         "children": [
           "experiment-tracking",
           {
-            "label": "Collaborating on Experiments",
-            "slug": "experiment-collaboration"
-          },
-          {
             "label": "Experimenting Using Pipelines",
             "slug": "experiment-pipelines"
+          },
+          {
+            "label": "Experiment Collaboration",
+            "slug": "experiment-collaboration"
           }
         ]
       }

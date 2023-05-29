@@ -233,7 +233,7 @@ level, without having to write top-level `plots` definitions in `dvc.yaml`.
 However, stage-level plots do not support custom plot IDs or multiple data
 sources.
 
-[pipelines]: /doc/start/data-management/data-pipelines
+[pipelines]: /doc/start/data-pipelines/building-pipelines
 
 ## Plot templates (data-series only)
 

@@ -1,10 +1,10 @@
 ---
-title: 'Get Started: Metrics, Parameters, and Plots'
-description: 'Get started with DVC parameters, metrics, and plots. Learn how to
-capture, evaluate, and visualize ML projects without leaving Git.'
+title: 'Get Started: Metrics and Plots'
+description: 'Get started with DVC metrics and plots. Learn how to
+capture, evaluate, and visualize ML pipelines.'
 ---
 
-# Get Started: Metrics, Parameters, and Plots
+# Get Started: Metrics and Plots
 
 <details>
 
@@ -14,48 +14,43 @@ https://youtu.be/bu3l75eQlQo
 
 </details>
 
-Collecting and visualizing [metrics](/doc/command-reference/metrics), injecting
-<abbr>parameters</abbr>, and visualizing results with
-[plots](/doc/command-reference/plots) are all crucial to running machine
-learning experimentation. DVC makes it easy to do all of the above with flexible
-mechanisms that also extend to other use cases.
-
-<admon type="tip">
-
-All of the above can be combined into [experiments] to run and compare many
-iterations of your ML project.
-
-[experiments]: /doc/start/experiments
-
-</admon>
+DVC makes it easy to track <abbr>metrics</abbr>, and visualize performance and
+outputs using <abbr>plots</abbr>. These concepts are crucial to machine learning
+[experimentation](/doc/start/experiments) as well as other types of data
+processing pipelines and are introduced below.
 
 ## Collecting metrics
 
 DVC has a generalized way to deal with metrics that you can use with any process
 that writes metrics into [files][metrics file]. DVC provides a convenient way to
-pick those up, parse their contents as metrics, view them, and even
-[run comparisons](#comparing-iterations) across executions.
+pick up, parse, view those <abbr>metrics</abbr>, and
+[run comparisons](#comparing-iterations) across executions (see [supported
+formats]).
 
 Let's add a final evaluation stage to our [earlier pipeline] and run it:
 
 ```cli
-$ dvc stage add -n evaluate \
-  -d src/evaluate.py -d model.pkl -d data/features \
-  -M eval/live/metrics.json -O eval/live/plots \
-  -O eval/prc -o eval/importance.png \
-  python src/evaluate.py model.pkl data/features
+$ dvc stage add --name evaluate \
+      --deps src/evaluate.py --deps model.pkl --deps data/features \
+      --metrics-no-cache eval/live/metrics.json \
+      --outs-no-cache eval/live/plots --outs-no-cache eval/prc \
+      --outs eval/importance.png \
+      python src/evaluate.py model.pkl data/features
 
 $ dvc repro
 ```
 
-[earlier pipeline]: /doc/start/data-management/data-pipelines
-[files]: details
+[earlier pipeline]: /doc/start/data-pipelines/building-pipelines
+
+<details>
 
 ### 💡 Expand to get a peek under the hood
 
-The `-O` option here specifies an output that will not be <abbr>cached</abbr> by
-DVC, and `-M` specifies a metrics file (that will also not be cached).
-`dvc stage add` will generates this new stage in the `dvc.yaml` file:
+The `-outs-no-cache`/`-O` option specifies an output that will not be
+<abbr>cached</abbr> by DVC (path won't be tracked by DVC). This is used for
+small artifact that are either always generated locally or tracked in Git.
+`--metrics-no-cache`/`-M` specifies a metrics file (that will also not be
+cached). `dvc stage add` will generates this new stage in the `dvc.yaml` file:
 
 ```yaml
 evaluate:
@@ -129,13 +124,13 @@ can also show metrics across different branches, commits and tags. See
 
 </admon>
 
-## Visualizing plots
+## Displaying plots
 
 The [`evaluate.py`] script writes additional output files, formatted in a way
 that allows them to be graphed. The code demonstrates three different methods of
-generating plots:
+generating <abbr>plots</abbr>:
 
-- The [`roc_curve`] and [`confusion_matrix`] metric values are written into the
+- The [`roc_curve`] and [`confusion_matrix`] metrics are written into the
   [`eval/live/plots`] directory using `Live.log_sklearn_plot()` API (from
   [DVCLive]).
 - The precision-recall curves are manually generated and dumped into
@@ -169,8 +164,8 @@ You can visualize all of these with DVC!
 [`matplotlib.pyplot.savefig`]:
   https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
 
-Let's try configuring `dvc.yaml` with a [plots section][plots files] to parse
-those. Edit `dvc.yaml` and add this top level section:
+Let's configure `dvc.yaml` with a [plots template][plots files] to parse those.
+Edit `dvc.yaml` and add this top level section:
 
 ```yaml
 plots:
@@ -210,7 +205,9 @@ The generated HTML file contains the following rendered plots:
 ![](/img/plots_importance_get_started_show.png '=500 :wrap-left')
 ![](/img/plots_cm_get_started_show.svg)
 
-Alternatively:
+<admon icon="tip">
+
+#### For more advanced visualization
 
 - If you're using VSCode's [DVC extension] for your project, you can use the
   [Plots Dashboard] inside your IDE.
@@ -219,17 +216,14 @@ Alternatively:
   [Studio], all visualization, comparisons and trends can be easily [shared with
   others][studio share a project] as well!
 
+</admon>
+
 Let's save this iteration into Git:
 
 ```cli
 $ git add .gitignore dvc.yaml dvc.lock eval
 $ git commit -a -m "Create evaluation stage"
 ```
-
-Now, let's see how to capture another critical piece of information for pipeline
-execution: parameters. Tracking parameters along with your pipelines' data is
-essential to making them fully reproducible and for future comparisons and
-analysis to be complete.
 
 [plots files]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [dvc extension]:
@@ -242,133 +236,10 @@ analysis to be complete.
 [studio share a project]:
   /doc/studio/user-guide/projects-and-experiments/share-a-project#share-a-project
 
-## Defining stage parameters
-
-It's common for data science pipelines to include configuration files that
-define adjustable parameters to control code execution and inject external
-inputs - whether it's model training, data processing or any other processing
-stage. DVC provides a mechanism for stages to depend on the values of specific
-sections of such a config file (YAML, JSON, TOML, and Python formats are
-supported).
-
-Luckily, the `featurize` stage already has
-[parameters (params section)](/doc/command-reference/params) defined in
-`dvc.yaml`:
-
-```yaml
-featurize:
-  cmd: python src/featurization.py data/prepared data/features
-  deps:
-    - data/prepared
-    - src/featurization.py
-  params:
-    - featurize.max_features
-    - featurize.ngrams
-  outs:
-    - data/features
-```
-
-<details>
-
-### ⚙️ Expand to recall how it was generated
-
-The `featurize` stage was created with this `dvc stage add` command. Notice the
-argument sent to the `-p` option (short for `--params`):
-
-```cli
-$ dvc stage add -n featurize \
-          -p featurize.max_features,featurize.ngrams \
-          -d src/featurization.py -d data/prepared \
-          -o data/features \
-          python src/featurization.py data/prepared data/features
-```
-
-</details>
-
-The `params` section defines the parameter dependencies of the `featurize`
-stage. By default, DVC will look for those values (`featurize.max_features` and
-`featurize.ngrams`) in a file named [`params.yaml`], but file names and
-structure can also be user-defined, similar to metrics and plots.
-
-Here's the contents of our [`params.yaml`] file:
-
-```yaml
-prepare:
-  split: 0.20
-  seed: 20170428
-
-featurize:
-  max_features: 100
-  ngrams: 1
-
-train:
-  seed: 20170428
-  n_est: 50
-  min_split: 2
-```
-
-## Modifying parameters
-
-To work with parameters, let's assume that we are not happy with the AUC value
-we got previously. We'll edit the `params.yaml` file to use bigrams (ngrams=2)
-and increase the number of features:
-
-```git
- featurize:
--  max_features: 100
--  ngrams: 1
-+  max_features: 200
-+  ngrams: 2
-```
-
-Now all you need to do is (re)run:
-
-```cli
-$ dvc repro
-```
-
-It'll analyze the changes, use existing results from the <abbr>run cache</abbr>,
-and execute only the commands needed to produce new results (model, metrics,
-plots).
-
-The same workflow applies to other modifications; you make changes (editing
-source code, configs files and updating datasets), and then you simply (re)run
-`dvc repro`. DVC runs whatever needs running.
-
-<admon type="tip">
-
-Notice that all the "moving pieces" are represented by changes in files, and all
-of those changes can be committed and tracked in Git. This means that all the
-information to fully and reliably reproduce executions or compare runs is
-accessible in Git history!
-
-</admon>
-
-## Comparing iterations
-
-DVC has a few commands to inspect and visualize changes in metrics, parameters,
-and plots. They are very handy when working with <abbr>DVC pipelines</abbr> to
-manage machine learning experiments!
-
-<admon type="tip">
-
-Try running `dvc params diff`, `dvc metrics diff` and `dvc plots diff` now
-yourself and observe the results. To learn more, jump to
-[this chapter in "Experimenting Using Pipelines"](/doc/start/experiments/experiment-pipelines#comparing-iterations)
-
-</admon>
-
-<admon type="info">
-
-Learn more about
-[Running Experiments](/doc/user-guide/experiment-management/running-experiments)
-
-</admon>
+Next, we'll learn about injecting and tracking parameters into our pipelines.
 
 [`eval/live/metrics.json`]:
   https://github.com/iterative/example-get-started/blob/main/eval/live/metrics.json
-[`params.yaml`]:
-  https://github.com/iterative/example-get-started/blob/master/params.yaml
 [roc-auc]:
   https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc
 [average precision]:

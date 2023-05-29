@@ -102,7 +102,7 @@ Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
   - **Top-level plots** (_string, list, dict_):
 
-    If plot ID is a path, one or more column/field names is expected. For
+    If plot ID (key) is a path, one or more column/field names is expected. For
     example:
 
     ```yaml
@@ -113,8 +113,8 @@ Refer to [Visualizing Plots] and `dvc plots show` for more examples.
           y: [acc, loss]
     ```
 
-    If plot ID is an arbitrary string, a dictionary of file paths mapped to
-    column/field names is expected. For example:
+    If plot ID (key) is an arbitrary string, a dictionary of file paths mapped
+    to column/field names is expected. For example:
 
     ```yaml
     plots:

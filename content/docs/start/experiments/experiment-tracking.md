@@ -15,7 +15,18 @@ Notebook. There are no logins, servers, databases, or UI to spin up. Every
 unlike saving each run to a separate directory or creating a Git branch for
 each.
 
-## Running
+<admon type="tip">
+
+The code for these chapters is captured in the [example-dvc-experiments] repo
+(see its [tags][example-dvc-experiments-tags]).
+
+[example-dvc-experiments]: https://github.com/iterative/example-dvc-experiments
+[example-dvc-experiments-tags]:
+  https://github.com/iterative/example-dvc-experiments/tags
+
+</admon>
+
+## Live experiments
 
 All you need to start is a <abbr>DVC repository</abbr> and the [DVCLive] Python
 library installed:
@@ -134,7 +145,7 @@ Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
 
 </admon>
 
-## Tracking
+## Tracking metrics
 
 By following the steps above, you enable different options to monitor the
 training progress:
@@ -177,7 +188,7 @@ to display updates in the Studio web interface:
 
 </toggle>
 
-## Comparing
+## Comparing experiments
 
 After you have run multiple experiments, you can compare the results:
 

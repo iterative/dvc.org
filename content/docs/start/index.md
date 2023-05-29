@@ -11,15 +11,11 @@ pipelines and metrics, and manage experiments.'
 ## Get Started with DVC
 -->
 
+## Initializing a project
+
 Before we begin, settle on a directory for this guide. Everything we will do
-will be self contained there.
-
-<details>
-
-### ⚙️ Expand to prepare a project.
-
-Imagine we want to build an ML project from scratch. Let's start by creating a
-Git repository:
+will be self contained there. Create this directory and initialize a Git
+repository:
 
 ```cli
 $ mkdir example-get-started
@@ -34,13 +30,30 @@ This directory name is used in our
 
 </admon>
 
+Now install DVC in your project.
+
+<details>
+
+### ⚙️ Example installation using virtualenv
+
+We assume you have Python 3.7 or greater installed. Here is a common path for
+installing DVC using Pip, inside an
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+(it's not a must, but we **strongly** recommend it):
+
+```cli
+$ virtualenv venv && echo "venv" > .gitignore
+$ git add .gitignore
+$ source venv/bin/activate
+$ pip install dvc
+```
+
+Click [here](/doc/install) for more installation scenarios
+
 </details>
 
-## Initializing a project
-
-Inside your chosen directory, we will use our current working directory as a
-<abbr>DVC project</abbr>. Let's initialize it by running `dvc init` inside a Git
-project:
+We will use this working directory as a <abbr>DVC project</abbr>. Let's
+initialize it by running `dvc init` inside the Git project:
 
 ```cli
 $ dvc init
@@ -54,7 +67,8 @@ $ git status
 Changes to be committed:
         new file:   .dvc/.gitignore
         new file:   .dvc/config
-        ...
+        new file:   .dvcignore
+        new file:   .gitignore
 $ git commit -m "Initialize DVC"
 ```
 
@@ -62,21 +76,25 @@ Now you're ready to DVC!
 
 ## Following This Guide
 
-To help you understand and use DVC better, consider the following two use-cases:
-**data management** and **experiment tracking**. You may pick either one to
-start learning about how DVC helps you "solve" that scenario!
+To help you understand and use DVC better, consider the below use-cases. You may
+pick either one to start learning about how DVC helps you "solve" that scenario!
 
 Choose a trail to jump into its first chapter:
 
-- **[Data Management]** - Track and version large amounts of data along with
-  your code, and use DVC as a build system for reproducible, data driven
-  pipelines.
+- **[Basic Data Management]** - Track and version your data along with your
+  code, and move data (push/pull) efficiently between your local environment and
+  remote storage locations.
+
+- **[Data Pipelines]** - Connect data as dependencies and outputs of multi-stage
+  processing pipelines to get a powerful data-centric build system for your
+  projects.
 
 - **[Experiment Management]** - Easily track your experiments and their progress
   by only instrumenting your code, and collaborate on ML experiments like
   software engineers do for code.
 
-[Data Management]: /doc/start/data-management/data-versioning
+[Basic Data Management]: /doc/start/data-management/data-versioning
+[Data Pipelines]: /doc/start/data-pipelines/building-pipelines
 [Experiment Management]: /doc/start/experiments/experiment-tracking
 
 <admon type="tip">
@@ -86,3 +104,6 @@ your specific needs. In case you're unsure where to start, we recommend starting
 with **data management**.
 
 </admon>
+
+Pick a page from the list above, the left-side navigation bar, or just click
+`NEXT` below!

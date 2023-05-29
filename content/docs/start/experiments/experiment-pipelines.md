@@ -1,24 +1,17 @@
 ---
 title: 'Get Started: Experimenting Using Pipelines'
 description:
-  'Split your workflow into stages and build a pipeline by connecting
-  dependencies and outputs.'
+  'Split your workflow into stages and build a pipeline to represent the
+  experimentation or training process.'
 ---
 
 # Get Started: Experimenting Using Pipelines
 
-If you've been following the guide in order, you might have gone through the
-chapter about [data pipelines](/doc/start/data-management/data-pipelines)
-already. Here, we will use the same functionality as a basis for an
-experimentation build system.
-
-Running an <Abbr>experiment</abbr> is achieved by executing <abbr>DVC
+Running an <Abbr>experiment</abbr> can achieved by executing <abbr>DVC
 pipelines</abbr>, and the term refers to the set of trackable changes associated
 with this execution. This includes code changes and resulting artifacts like
 plots, charts and models. The various `dvc exp` subcommands allow you to
-execute, share and manage experiments in various ways. Below, we'll build an
-experiment pipeline, and use `dvc exp run` to execute it with a few very handy
-capabilities like experiment queueing and parametrization.
+execute, share and manage experiments in various ways.
 
 ## Stepping up and out of the notebook
 
@@ -37,6 +30,20 @@ engineering best practices:
 - **Parametrization**: Adapt your scripts to decouple the configuration from the
   source code.
 
+Below, we'll build an experiment pipeline, and use `dvc exp run` to execute it
+with a few very handy capabilities like experiment queueing and parametrization.
+
+<admon type="tip">
+
+The code for this chapter is captured in the [example-dvc-experiments] repo (see
+its [tags][example-dvc-experiments-tags]).
+
+[example-dvc-experiments]: https://github.com/iterative/example-dvc-experiments
+[example-dvc-experiments-tags]:
+  https://github.com/iterative/example-dvc-experiments/tags
+
+</admon>
+
 ## Creating the experiment pipeline
 
 In our
@@ -45,7 +52,7 @@ first extract data preparation logic from the
 [original notebook](https://github.com/iterative/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
 into
 [`data_split.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/data_split.py).
-We parametrize this script by reading parameters from
+We then parametrize the script by reading parameters from
 [`params.yaml`](https://github.com/iterative/example-get-started-experiments/blob/main/params.yaml):
 
 ```python
@@ -64,10 +71,10 @@ We now use `dvc stage add` commands to transform our scripts into individual
 
 ```cli
 $ dvc stage add --name data_split \
-  --params base,data_split \
-  --deps data/pool_data --deps src/data_split.py \
-  --outs data/train_data --outs data/test_data \
-  python src/data_split.py
+      --params base,data_split \
+      --deps data/pool_data --deps src/data_split.py \
+      --outs data/train_data --outs data/test_data \
+      python src/data_split.py
 ```
 
 A `dvc.yaml` file is automatically generated with the stage details.
@@ -104,15 +111,15 @@ and
 to train the model and evaluate its performance respectively:
 
 ```cli
-$ dvc stage add -n train \
-  -p base,train \
-  -d src/train.py -d data/train_data \
-  -o models/model.pkl \
+$ dvc stage add --name train \
+  --params base,train \
+  --deps src/train.py --deps data/train_data \
+  --outs models/model.pkl \
   python src/train.py
 
-$ dvc stage add -n evaluate \
-  -p base,evaluate \
-  -d src/evaluate.py -d models/model.pkl -d data/test_data \
+$ dvc stage add --name evaluate \
+  --params base,evaluate \
+  --deps src/evaluate.py --deps models/model.pkl --deps data/test_data \
   python src/evaluate.py
 ```
 
@@ -161,10 +168,10 @@ stages:
 
 <details>
 
-## Visualizing the experiment DAG
+### Visualizing the experiment DAG
 
 As the number of stages grows, the `dvc dag` command becomes handy for
-visualizing the pipeline without manually inspecting the `dvc.yaml` file:
+visualizing the pipeline:
 
 ```cli
 $ dvc dag
@@ -253,9 +260,10 @@ $ dvc exp run
 
 ## Comparing iterations
 
-DVC provides commands to inspect changes in metrics, parameters, and plots.
-Let's compare the latest run (with changes to `data_split.test_pct` and
-`train.img_size`) to the last committed "baseline" iteration now.
+DVC provides commands to inspect changes in <abbr>metrics</abbr>,
+<abbr>parameters</abbr>, and <abbr>plots</abbr>. Let's compare the latest run
+(with changes to `data_split.test_pct` and `train.img_size`) to the last
+committed "baseline" iteration now.
 
 `dvc params diff` shows how params in the workspace differ from the last commit:
 
@@ -304,8 +312,8 @@ names) to compare.
 You can provide multiple values for the same parameter:
 
 ```cli
-$ dvc exp run \
---queue --set-param "train.batch_size=8,16,24"
+$ dvc exp run --queue \
+      --set-param "train.batch_size=8,16,24"
 Queueing with overrides '{'params.yaml': ['train.batch_size=8']}'.
 Queueing with overrides '{'params.yaml': ['train.batch_size=16']}'.
 Queueing with overrides '{'params.yaml': ['train.batch_size=24']}'.
@@ -318,8 +326,8 @@ the experiments from the grid search, you can also provide a
 
 ```cli
 $ dvc exp run --name "arch-size" --queue \
--S 'train.arch=alexnet,resnet34,squeezenet1_1' \
--S 'train.img_size=128,256'
+      -S 'train.arch=alexnet,resnet34,squeezenet1_1' \
+      -S 'train.img_size=128,256'
 Queueing with overrides '{'params.yaml': ['train.arch=alexnet', 'train.img_size=128']}'.
 Queued experiment 'arch-size-1' for future execution.
 Queueing with overrides '{'params.yaml': ['train.arch=alexnet', 'train.img_size=256']}'.

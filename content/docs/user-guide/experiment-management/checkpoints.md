@@ -81,7 +81,8 @@ you have everything you need to get started with experiments and checkpoints.
 
 DVC can version data as well as the ML model weights file in checkpoints during
 the training process. To enable this, you will need to set up a
-[DVC pipeline](/doc/start/data-management/data-pipelines) to train your model.
+[DVC pipeline](/doc/start/data-pipelines/building-pipelines) to train your
+model.
 
 Now we need to add a training stage to `dvc.yaml` including `checkpoint: true`
 in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
