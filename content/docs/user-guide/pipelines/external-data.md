@@ -9,11 +9,10 @@ directly to some external location, like cloud storage or HDFS.
 External <abbr>dependencies</abbr> will be tracked by DVC, detecting when they
 change (triggering stage executions on `dvc repro`, for example).
 
-To define files or directories in an external location as
-[stage](/doc/command-reference/run) dependencies, specify their remote URLs or
-external paths in `dvc.yaml` (`deps` field). Use the same format as the `url` of
-certain `dvc remote` types. Currently, the following supported `dvc remote`
-types/protocols:
+To define files or directories in an external location as <abbr>stage</abbr>
+dependencies, specify their remote URLs or external paths in `dvc.yaml` (`deps`
+field). Use the same format as the `url` of of the following supported
+`dvc remote` types/protocols:
 
 - Amazon S3
 - Microsoft Azure Blob Storage
@@ -23,15 +22,7 @@ types/protocols:
 - HTTP
 - Local files and directories outside the <abbr>workspace</abbr>
 
-<admon type="info">
-
-[Remote storage] is a different feature.
-
-[remote storage]: /doc/user-guide/data-management/remote-storage
-
-</admon>
-
-## Examples
+### Examples
 
 Let's take a look at defining and running a `download_file` stage that simply
 downloads a file from an external location, on all the supported location types.
@@ -41,7 +32,7 @@ downloads a file from an external location, on all the supported location types.
 
 <details>
 
-### Amazon S3
+#### Amazon S3
 
 ```cli
 $ dvc stage add -n download_file \
@@ -54,7 +45,7 @@ $ dvc stage add -n download_file \
 
 <details>
 
-### Microsoft Azure Blob Storage
+#### Microsoft Azure Blob Storage
 
 ```cli
 $ dvc stage add -n download_file \
@@ -71,7 +62,7 @@ $ dvc stage add -n download_file \
 
 <details>
 
-### Google Cloud Storage
+#### Google Cloud Storage
 
 ```cli
 $ dvc stage add -n download_file \
@@ -84,7 +75,7 @@ $ dvc stage add -n download_file \
 
 <details>
 
-### SSH
+#### SSH
 
 ```cli
 $ dvc stage add -n download_file \
@@ -105,7 +96,7 @@ Note that your server's SFTP root might differ from its physical root (`/`).
 
 <details>
 
-### HDFS
+#### HDFS
 
 ```cli
 $ dvc stage add -n download_file \
@@ -119,7 +110,7 @@ $ dvc stage add -n download_file \
 
 <details>
 
-### HTTP
+#### HTTP
 
 > Including HTTPs
 
@@ -134,7 +125,7 @@ $ dvc stage add -n download_file \
 
 <details>
 
-### local file system paths
+#### local file system paths
 
 ```cli
 $ dvc stage add -n download_file \
@@ -145,7 +136,7 @@ $ dvc stage add -n download_file \
 
 </details>
 
-## Example: Using DVC remote aliases
+#### Example: Using DVC remote aliases
 
 You may want to encapsulate external locations as configurable entities that can
 be managed independently. This is useful if the connection requires
@@ -176,76 +167,35 @@ $ dvc stage add -n download_file \
           wget https://example.com/data.txt -O data.txt
 ```
 
-## Example: `import-url` command
+## How external outputs work
 
-In the previous examples, special downloading tools were used: `scp`,
-`aws s3 cp`, etc. `dvc import-url` simplifies the downloading for all the
-supported external path or URL types.
+External <abbr>outputs</abbr> will be tracked by DVC, detecting when they
+change, but not saved in the <abbr>cache</abbr> for
+[versioning](/doc/use-cases/versioning-data-and-models).
 
-```cli
-$ dvc import-url https://data.dvc.org/get-started/data.xml
-Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
-```
+<admon type="warn">
 
-The command above creates the import `.dvc` file `data.xml.dvc`, that contains
-an external dependency (in this case an HTTPs URL).
+Saving external outputs to an external cache has been deprecated in DVC 3.0.
 
-<details id="import-url-expand-to-see-resulting-dvc-file">
+Please bear with us as we work on versioning external outputs using
+[cloud versioning](/doc/user-guide/data-management/cloud-versioning).
 
-### Expand to see resulting `.dvc` file
+</admon>
 
-```yaml
-# ...
-deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://data.dvc.org/get-started/data.xml
-outs:
-  - md5: a304afb96060aad90176268345e10355
-    path: data.xml
-    cache: true
-    persist: false
-```
+To define files or directories in an external location as <stage> outputs, give
+their remote URLs or external paths to `dvc stage add -O`, or put them in
+`dvc.yaml` (`outs` field). For supported external output types and expected URL
+formats, see the examples above for
+[external dependencies](#how-external-dependencies-work).
 
-DVC checks the headers returned by the server, looking for an
-[HTTP ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
-[Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to
-determine whether the source has changed and we need to download the file again.
+### Example
 
-</details>
-
-## Example: Imports
-
-`dvc import` can download a file or directory from any <abbr>DVC project</abbr>,
-or from a Git repository. It also creates an external dependency in its import
-`.dvc` file.
+Let's take a look at defining and running an `upload_file` stage that simply
+uploads a file to an external location.
 
 ```cli
-$ dvc import git@github.com:iterative/example-get-started model.pkl
-Importing 'model.pkl (git@github.com:iterative/example-get-started)'
--> 'model.pkl'
+$ dvc stage add -n upload_file \
+          -d data.txt \
+          -O s3://mybucket/data.txt \
+          aws s3 cp data.txt s3://mybucket/data.txt
 ```
-
-The command above creates `model.pkl.dvc`, where the external dependency is
-specified (with the `repo` field).
-
-<details id="import-expand-to-see-resulting-dvc-file">
-
-### Expand to see resulting `.dvc` file
-
-```yaml
-# ...
-deps:
-  - path: model.pkl
-    repo:
-      url: git@github.com:iterative/example-get-started
-      rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
-outs:
-  - md5: 3863d0e317dee0a55c4e59d2ec0eef33
-    path: model.pkl
-    cache: true
-```
-
-The `url` and `rev_lock` subfields under `repo` are used to save the origin and
-[version](https://git-scm.com/docs/revisions) of the dependency, respectively.
-
-</details>
