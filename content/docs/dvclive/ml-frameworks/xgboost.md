@@ -15,12 +15,18 @@ from dvclive.xgb import DVCLiveCallback
 ...
 
 xgboost.train(
-    param, dtrain, num_round=5, evals=[(dval, "eval_data")]
-    callbacks=[DVCLiveCallback("eval_data")],
+    param, dtrain, num_round=5, evals=[(dtrain, "train"), (dval, "val")]
+    callbacks=[DVCLiveCallback()],
 )
 ```
 
 ## Parameters
+
+- `metric_data` - (`None` by default) - The name of the evaluation set to use
+  for logging metrics. When omitted or `None`, the metrics will be logged in a
+  dedicated subdirectory for all evaluation sets specified via `evals`. **Note**
+  that this parameter has been deprecated and will be removed in a future
+  DVCLive release.
 
 - `model_file` - (`None` by default) - The name of the file where the model will
   be saved at the end of each `step`.
@@ -44,8 +50,8 @@ with Live("custom_dir") as live:
         param,
         dtrain,
         num_round=5,
-        callbacks=[DVCLiveCallback("eval_data", live=live)],
-        evals=[(dval, "eval_data")])
+        callbacks=[DVCLiveCallback(live=live)],
+        evals=[(dval, "val")])
 
     # Log additional metrics after training
     live.log_metric("summary_metric", 1.0, plot=False)
@@ -58,11 +64,8 @@ xgboost.train(
     param,
     dtrain,
     num_round=5,
-    callbacks=[
-      DVCLiveCallback(
-        "eval_data",
-        dir="custom_dir")],
-    evals=[(dval, "eval_data")])
+    callbacks=[DVCLiveCallback(dir="custom_dir")],
+    evals=[(dval, "val")])
 ```
 
 [`live`]: /doc/dvclive/live
