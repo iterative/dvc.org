@@ -109,9 +109,9 @@ Let's say we have run 3 experiments in our project:
 ```cli
 $ dvc exp list --all-commits
 11-bigrams-experiment:
-        conic-ease
-        lucid-lair
-        major-mela
+    1d4c01d [conic-ease]
+    a80bca5 [lucid-lair]
+    9380a12 [major-mela]
 ```
 
 We would now like to share one of them with others via the Git remote:
@@ -126,5 +126,5 @@ We can now see that the experiment exists in the remote repo:
 ```cli
 $ dvc exp list --all origin
 master:
-        conic-ease
+    conic-ease
 ```

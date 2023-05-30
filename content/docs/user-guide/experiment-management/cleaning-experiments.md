@@ -14,9 +14,9 @@ and supply the experiment name.
 ```cli
 $ dvc exp list
 main:
-    cnn-32
-    cnn-64
-    cnn-128
+    2399f24 [cnn-128]
+    4e8a178 [cnn-32]
+    f1edf21 [cnn-64]
 $ dvc exp remove cnn-32 cnn-64
 Removed experiments: cnn-32,cnn-64
 ```
@@ -30,10 +30,11 @@ experiments derived from it, use `dvc exp remove --rev` with `HEAD`.
 ```cli
 $ dvc exp list
 refs/tags/baseline-experiment:
-        cnn-128
-        cnn-32
-        cnn-64
-        cnn-96
+    2399f24 [cnn-128]
+    4e8a178 [cnn-32]
+    f1edf21 [cnn-64]
+    bdf6fa2 [cnn-96]
+
 $ dvc exp remove --rev HEAD
 Removed experiments: cnn-128,cnn-32,cnn-64,cnn-96
 ```
@@ -61,16 +62,16 @@ removed **except** those in the current workspace.
 ```cli
 $ dvc exp list --all-commits
 main:
-   exp-aaa000
-   exp-aaa111
-   exp-aaa222
+    1f7e42f [toric-chiv]
+    48b0af9 [cadgy-site]
+    935d6e9 [melic-plum]
 other:
-   exp-bbb333
-   exp-bbb444
+    97501f9 [algal-toms]
+    0f1523d [heady-sera]
 another:
-   exp-ccc555
-   exp-ccc666
-   exp-ccc777
+    bc0e834 [riled-song]
+    b3447f3 [forky-aits]
+    dacb364 [hooly-firm]
 ```
 
 Issuing `dvc exp gc --workspace` removes experiments in `other` and `another`
@@ -80,9 +81,9 @@ branches in this example.
 $ dvc exp gc --workspace
 $ dvc exp list --all-commits
 main:
-   exp-abc000
-   exp-abc111
-   exp-abc222
+    1f7e42f [toric-chiv]
+    48b0af9 [cadgy-site]
+    935d6e9 [melic-plum]
 ```
 
 ### Keeping experiments in all branches
