@@ -280,19 +280,24 @@ experiments to the queue. These can be used for multiple parameters at the same
 time, adding all combinations to the queue:
 
 ```cli
-$ dvc exp run -S 'train.min_split=2,8,64' -S 'train.n_est=100,200' --queue
-Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=100']}'.
-Queued experiment 'ed3b4ef' for future execution.
+
+$ dvc exp run -S 'train.min_split=8,64' -S 'train.n_est=range(100,500,100)' --queue
 Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=100']}'.
-Queued experiment '7a10d54' for future execution.
-Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=100']}'.
-Queued experiment '0b443d8' for future execution.
-Queueing with overrides '{'params.yaml': ['train.min_split=2', 'train.n_est=200']}'.
-Queued experiment '0a5f20e' for future execution.
+Queued experiment 'azure-ices' for future execution.
 Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=200']}'.
-Queued experiment '0a5f20e' for future execution.
+Queued experiment 'zingy-peri' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=300']}'.
+Queued experiment 'jammy-feds' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=8', 'train.n_est=400']}'.
+Queued experiment 'lowse-shay' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=100']}'.
+Queued experiment 'brown-hugs' for future execution.
 Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=200']}'.
-Queued experiment '0a5f20e' for future execution.
+Queued experiment 'local-scud' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=300']}'.
+Queued experiment 'alpha-neck' for future execution.
+Queueing with overrides '{'params.yaml': ['train.min_split=64', 'train.n_est=400']}'.
+Queued experiment 'algal-hood' for future execution.
 $ dvc queue start
 ...
 ```
