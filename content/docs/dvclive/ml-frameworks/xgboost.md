@@ -24,13 +24,13 @@ xgboost.train(
 
 - `metric_data` - (`None` by default) - The name of the evaluation set to use
   for logging metrics. When omitted or `None`, the metrics will be logged in a
-  dedicated subdirectory for all evaluation sets specified via `evals`. 
-  
+  dedicated subdirectory for all evaluation sets specified via `evals`.
+
   <admon type="warn">
-  
-  This parameter has been deprecated and will be removed in a future
-  DVCLive release.
-  
+
+  This parameter has been deprecated and will be removed in a future DVCLive
+  release.
+
   </adom>
 
 - `model_file` - (`None` by default) - The name of the file where the model will
