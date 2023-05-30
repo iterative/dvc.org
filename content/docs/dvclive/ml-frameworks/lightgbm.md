@@ -47,7 +47,7 @@ with Live("custom_dir") as live:
         callbacks=[DVCLiveCallback(live=live)])
 
     # Log additional metrics after training
-    live.summary["additional_metric"] = 1.0
+    live.log_metric("summary_metric", 1.0, plot=False)
 ```
 
 - Using `model_file`.
