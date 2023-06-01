@@ -108,6 +108,160 @@ stages:
     always_changed: true
 ```
 
+## Pulling Data
+
+You can combine the `--pull` and `--allow-missing` flags to run a pipeline while
+only pulling the data that is actually needed to run the changed stages.
+
+Given the pipeline used in
+[example-get-started-experiments](https://github.com/iterative/example-get-started-experiments):
+
+```cli
+$ dvc dag
+    +--------------------+
+    | data/pool_data.dvc |
+    +--------------------+
+               *
+               *
+               *
+        +------------+
+        | data_split |
+        +------------+
+         **        **
+       **            **
+      *                **
++-------+                *
+| train |              **
++-------+            **
+         **        **
+           **    **
+             *  *
+         +----------+
+         | evaluate |
+         +----------+
+```
+
+If we are in a machine where all the data is missing:
+
+```cli
+$ dvc status
+Not in cache:
+  (use "dvc fetch <file>..." to download files)
+        models/model.pkl
+        data/pool_data/
+        data/test_data/
+        data/train_data/
+```
+
+We can modify the `evaluate` stage and DVC will only pull the necessary data to
+run that stage (`models/model.pkl` `data/test_data/`) while skipping the rest of
+the stages:
+
+```cli
+$ dvc exp run
+'data/pool_data.dvc' didn't change, skipping
+Stage 'data_split' didn't change, skipping
+Stage 'train' didn't change, skipping
+Running stage 'evaluate':
+...
+```
+
+## Verify Pipeline Status
+
+In scenarios like CI jobs, you may want to check that the pipeline is up to date
+without pulling or running anything. You can check that nothing has changed:
+
+<details>
+
+### Clean example
+
+In the example below, data is missing because nothing has been pulled, but
+otherwise the pipeline is up to date.
+
+```cli
+$ dvc status
+data_split:
+        changed deps:
+                deleted:            data/pool_data
+        changed outs:
+                not in cache:       data/test_data
+                not in cache:       data/train_data
+train:
+        changed deps:
+                deleted:            data/train_data
+        changed outs:
+                not in cache:       models/model.pkl
+evaluate:
+        changed deps:
+                deleted:            data/test_data
+                deleted:            models/model.pkl
+data/pool_data.dvc:
+        changed outs:
+                not in cache:       data/pool_data
+```
+
+</details>
+
+```cli
+$ dvc exp run --allow-missing --dry
+Reproducing experiment 'agley-nuke'
+'data/pool_data.dvc' didn't change, skipping
+Stage 'data_split' didn't change, skipping
+Stage 'train' didn't change, skipping
+Stage 'evaluate' didn't change, skipping
+```
+
+If anything is not up to date, the pipeline will fail:
+
+<details>
+
+### Dirty example
+
+In the example below, the `data_split` parameter in `params.yaml` was modified,
+so the pipeline is not up to date.
+
+```cli
+$ dvc status
+data_split:
+        changed deps:
+                deleted:            data/pool_data
+                params.yaml:
+                        modified:           data_split
+        changed outs:
+                not in cache:       data/test_data
+                not in cache:       data/train_data
+train:
+        changed deps:
+                deleted:            data/train_data
+        changed outs:
+                not in cache:       models/model.pkl
+evaluate:
+        changed deps:
+                deleted:            data/test_data
+                deleted:            models/model.pkl
+data/pool_data.dvc:
+        changed outs:
+                not in cache:       data/pool_data
+```
+
+</details>
+
+```cli
+$ dvc exp run --allow-missing --dry
+Reproducing experiment 'dozen-jogs'
+'data/pool_data.dvc' didn't change, skipping
+ERROR: failed to reproduce 'data_split': [Errno 2] No such file or directory: '/private/tmp/example-get-started-experiments/data/pool_data'
+```
+
+You can also check that all data exists on the remote. The command below will
+succeed (return `true` and set the exit code to `0`) if all data is found in the
+remote. Otherwise, it will fail (return `false` and set the exit code to `1`).
+
+```cli
+$ dvc status -c --json | jq -e '. == {}'
+true
+```
+
 ## Debugging Stages
 
 If you are using advanced features to interpolate values for your pipeline, like
