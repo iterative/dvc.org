@@ -59,7 +59,7 @@ with Live("custom_dir") as live:
         logger=DVCLiveLogger(experiment=live))
     trainer.fit(model)
     # Log additional metrics after training
-    live.summary["additional_metric"] = 1.0
+    live.log_metric("summary_metric", 1.0, plot=False)
 ```
 
 - Using `**kwargs` to customize [`Live`].
