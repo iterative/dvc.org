@@ -86,8 +86,7 @@ DVC will skip that stage:
 Stage 'prepare' didn't change, skipping
 ```
 
-DVC will also recover the outputs from previous runs using the
-[run cache](/doc/user-guide/pipelines/run-cache):
+DVC will also recover the outputs from previous runs using the [run cache].
 
 ```
 Stage 'prepare' is cached - skipping run, checking out outputs
@@ -108,10 +107,14 @@ stages:
     always_changed: true
 ```
 
-## Pulling Data
+## Pull Missing Data
 
-You can combine the `--pull` and `--allow-missing` flags to run a pipeline while
-only pulling the data that is actually needed to run the changed stages.
+`--pull` will download missing dependencies (and will download the cached
+outputs of previous runs saved in the [run cache]), so you don't need to pull
+all data for your project before running the pipeline. `--allow-missing` will
+skip stages with no other changes than missing data. You can combine the
+`--pull` and `--allow-missing` flags to run a pipeline while only pulling the
+data that is actually needed to run the changed stages.
 
 Given the pipeline used in
 [example-get-started-experiments](https://github.com/iterative/example-get-started-experiments):
@@ -153,9 +156,10 @@ Not in cache:
         data/train_data/
 ```
 
-We can modify the `evaluate` stage and DVC will only pull the necessary data to
-run that stage (`models/model.pkl` `data/test_data/`) while skipping the rest of
-the stages:
+We can modify the `evaluate` stage (for example, we changed the code to add a
+new evaluation method) and DVC will only pull the necessary data to run that
+stage (`models/model.pkl` `data/test_data/`) while skipping the rest of the
+stages:
 
 ```cli
 $ dvc exp run
@@ -258,7 +262,7 @@ succeed (return `true` and set the exit code to `0`) if all data is found in the
 remote. Otherwise, it will fail (return `false` and set the exit code to `1`).
 
 ```cli
-$ dvc status -c --json | jq -e '. == {}'
+$ dvc data status --not-in-remote --json | jq -e 'has("not_in_remote") | not'
 true
 ```
 
@@ -286,3 +290,4 @@ stage train: {'model': {'batch_size': 512, 'latent_dim': 8,
 
 [templating]: /doc/user-guide/project-structure/pipelines-files#templating
 [hydra composition]: /docs/user-guide/experiment-management/hydra-composition
+[run cache]: /doc/user-guide/pipelines/run-cache
