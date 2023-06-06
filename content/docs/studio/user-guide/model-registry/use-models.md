@@ -73,3 +73,7 @@ for you to use them in CI.
 That example repo also introduces a workflow
 [that deploys a model](https://github.com/iterative/example-gto/blob/mlem/.github/workflows/deploy-model-with-mlem.yml)
 from CI/CD using MLEM.
+
+Finally, you can find examples of building a Docker Image with a model and
+deploying it to the cloud in
+[GTO User Guide](https://mlem.ai/doc/gto/user-guide#acting-on-new-registrations-and-assignments).
