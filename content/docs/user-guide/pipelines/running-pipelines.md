@@ -258,11 +258,11 @@ ERROR: failed to reproduce 'data_split': [Errno 2] No such file or directory: '/
 ```
 
 You can also check that all data exists on the remote. The command below will
-succeed (return `true` and set the exit code to `0`) if all data is found in the
-remote. Otherwise, it will fail (return `false` and set the exit code to `1`).
+succeed (set the exit code to `0`) if all data is found in the remote.
+Otherwise, it will fail (set the exit code to `1`).
 
 ```cli
-$ dvc data status --not-in-remote --json | jq -e 'has("not_in_remote") | not'
+$ dvc data status --not-in-remote --json | grep -v not_in_remote
 true
 ```
 
