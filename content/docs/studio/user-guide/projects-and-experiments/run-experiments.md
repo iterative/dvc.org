@@ -79,8 +79,8 @@ https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c
 ### Submit a new experiment
 
 Once you have added credentials, navigate to the project and select the Git
-commit from which you want to iterate. Click the button at the top shaped like a
-flask to open the form to run an experiment.
+commit from which you want to iterate. Click the `Run` button at the top to open
+the form to run an experiment.
 
 At the top of the form, configure the cloud instance (including the region,
 size, GPU, HDD, timeout, and whether to use a spot instance). Under the
