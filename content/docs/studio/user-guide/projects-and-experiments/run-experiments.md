@@ -1,6 +1,6 @@
 # Run Experiments
 
-Using your own cloud infrastructure, you can train your model on the cloud and
+You can train your model on the cloud and
 run experiments with different hyperparameters or different datasets.
 
 > Due to access restrictions, you cannot run experiments on the demo projects
