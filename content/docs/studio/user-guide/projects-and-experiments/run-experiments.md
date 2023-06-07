@@ -1,7 +1,7 @@
 # Run Experiments
 
 You can train your model on the cloud and
-run experiments with different hyperparameters or different datasets.
+run experiments with different hyperparameters or different datasets. You can configure the experiments to run on your own cloud infrastructure.
 
 > Due to access restrictions, you cannot run experiments on the demo projects
 > that are provided to you by default. Once you connect to your ML project
