@@ -8,7 +8,7 @@ Download a file or directory tracked by another DVC or Git repository into the
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [--file <filename>]
+usage: dvc import [-h] [-q | -v]
                   [-o <path>] [--rev <commit>]
                   [--no-exec | --no-download]
                   [-j <number>] [--desc <text>]
@@ -19,6 +19,14 @@ positional arguments:
   url              Location of DVC or Git repository to download from
   path             Path to a file or directory within the repository
 ```
+
+<details>
+
+### Options deprecated in 3.0
+
+- `--file`
+
+</details>
 
 ## Description
 
@@ -91,11 +99,6 @@ file.
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the downloaded file or directory (instead of using the
   current working directory).
-
-- `--file <filename>` - specify a path and/or file name for the `.dvc` file
-  created by this command (e.g. `--file stages/stage.dvc`). This overrides the
-  default file name: `<file>.dvc`, where `<file>` is the desired file name of
-  the imported data (`out`).
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to

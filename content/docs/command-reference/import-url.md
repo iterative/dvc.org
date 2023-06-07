@@ -15,7 +15,7 @@ other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--file <filename>]
+usage: dvc import-url [-h] [-q | -v]
            [--to-remote] [-r <name>] [--no-exec | --no-download]
            [-j <number>] [-f] [--version-aware] [--desc <text>]
            [--meta key=value] [--label <str>] [--type <str>]
@@ -25,6 +25,14 @@ positional arguments:
   url                   (See supported URLs in the description.)
   out                   Destination path to put files in.
 ```
+
+<details>
+
+### Options deprecated in 3.0
+
+- `--file`
+
+</details>
 
 ## Description
 
@@ -168,11 +176,6 @@ $ dvc repro
 produces a regular stage in `dvc.yaml`.
 
 ## Options
-
-- `--file <filename>` - specify a path and/or file name for the `.dvc` file
-  created by this command (e.g. `--file stages/stage.dvc`). This overrides the
-  default file name: `<file>.dvc`, where `<file>` is the desired file name of
-  the imported data (`out`).
 
 - `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
   that the data source is valid). This is useful if you need to define the
