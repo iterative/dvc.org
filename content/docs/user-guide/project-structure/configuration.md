@@ -211,42 +211,6 @@ section):
 [sharing a cache]: /doc/user-guide/how-to/share-a-dvc-cache
 [`os.umask`]: https://docs.python.org/3/library/os.html#os.umask
 
-The following parameters allow setting an [external cache] location. A
-`dvc remote` name is used (instead of the URL) because often it's necessary to
-configure authentication or other connection settings, and configuring a remote
-is the way that can be done.
-
-[external cache]:
-  /doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache
-
-- `cache.local` - name of a [local remote] to use as external cache. This will
-  overwrite the value in `cache.dir` (see `dvc cache dir`).
-
-- `cache.s3` - name of an Amazon S3 remote to use as external cache.
-
-- `cache.gs` - name of a Google Cloud Storage remote to use as external cache.
-
-- `cache.ssh` - name of an SSH remote to use as external cache.
-
-- `cache.hdfs` - name of an HDFS remote to use as external cache.
-
-- `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
-  external cache.
-
-  <admon type="warn">
-
-  Avoid using the same [remote storage] used for `dvc push` and `dvc pull` as
-  external cache, because it may cause file hash overlaps: the hash of an
-  external <abbr>output</abbr> could collide with that of a local file with
-  different content.
-
-  [remote storage]: /doc/user-guide/data-management/remote-storage
-
-  </admon>
-
-[local remote]:
-  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
-
 </details>
 
 <details>

@@ -166,25 +166,6 @@ File system-level dependencies are defined in the `deps` field of `dvc.yaml`
 stages; Alternatively, using the `--deps` (`-d`) option of `dvc stage add` (see
 the previous section's example).
 
-<details>
-
-### External dependencies: click to learn more.
-
-A less common kind of dependency is a _URL dependency_. Instead of files in a
-local disk, you can `dvc import` data from another <abbr>DVC project</abbr> (for
-example hosted on GitHub). External dependencies establish relationships between
-different projects or systems (see `dvc import-url`).
-[Get all the details](/doc/user-guide/data-management/importing-external-data).
-
-<admon type="info">
-
-DVC will use special methods to check whether the contents of an URL have
-changed for the purpose of stage invalidation.
-
-</admon>
-
-</details>
-
 ## Parameter dependencies
 
 A more granular type of dependency is the parameter (`params` field of
