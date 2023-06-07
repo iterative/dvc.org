@@ -1,7 +1,8 @@
 # Run Experiments
 
-You can train your model on the cloud and
-run experiments with different hyperparameters or different datasets. You can configure the experiments to run on your own cloud infrastructure.
+You can train your model on the cloud and run experiments with different
+hyperparameters or different datasets. You can configure the experiments to run
+on your own cloud infrastructure.
 
 > Due to access restrictions, you cannot run experiments on the demo projects
 > that are provided to you by default. Once you connect to your ML project
@@ -73,8 +74,7 @@ https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c
 [data remote]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#credentials
 [profile]: https://studio.iterative.ai/user/_/profile
-[cloud credentials]:
-  /doc/studio/user-guide/projects-and-experiments/account-management
+[cloud credentials]: /doc/studio/user-guide/account-management
 
 ### Submit a new experiment
 
