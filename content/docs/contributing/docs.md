@@ -9,10 +9,6 @@ In case of a minor change, you can use the **Edit on GitHub** button to open the
 source code page. Use the Edit button (pencil icon) to edit the file in-place,
 and then **Commit changes** from the bottom of the page.
 
-> Do check our
-> [Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
-> for more details on how to write and submit a new blog post.
-
 ## Structure of the project
 
 To contribute documentation, these are the relevant locations:
@@ -51,13 +47,13 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-We highly recommend running this web app locally to check documentation or blog
-changes before submitting them, and it's quite necessary when making changes to
-the website engine itself. Source code and content files need to be properly
+We highly recommend running this web app locally to check documentation changes
+before submitting them, and it's quite necessary when making changes to the
+website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
-(`>=18.0.0`, `<=19.x`), and install [Yarn](https://yarnpkg.com/):
+(`>=18.0.0`, `<=20.x`), and install [Yarn](https://yarnpkg.com/):
 
 > In Windows, you may need to install [Visual Studio Build Tools], and the
 > [Windows SDK] first.

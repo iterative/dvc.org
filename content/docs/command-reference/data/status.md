@@ -16,6 +16,7 @@ usage: dvc data status [-h] [-q | -v]
                        [--granular] [--unchanged]
                        [--untracked-files [{no,all}]]
                        [--json]
+                       [--not-in-remote] [--no-remote-refresh]
 ```
 
 ## Description
@@ -60,6 +61,11 @@ DVC uncommitted changes:
   happen after cloning a DVC repository but before using `dvc pull` (or
   `dvc fetch`) to download the data; or after using `dvc gc`.
 
+- _Not in remote_ indicates that there are file hashes in `.dvc` or `dvc.lock`
+  files, but the corresponding <abbr>remote</abbr> files are missing. This may
+  happen after adding new files into dvc but before using `dvc push` to upload
+  the data; or after using `dvc gc -c`.
+
 - _DVC committed changes_ are new, modified, or deleted tracked files or
   directories that have been [committed to DVC]. These may be ready for
   committing to Git.
@@ -90,6 +96,11 @@ default but this can be enabled with the `--granular` flag.
 - `--untracked-files` - show files that are not being tracked by DVC and Git.
 
 - `--unchanged` - show unchanged DVC-tracked files.
+
+- `--not-in-remote` - show files that are missing from the <abbr>remote</abbr>.
+
+- `--no-remote-refresh` - use cached <abbr>remote</abbr> index (don't check
+  remote). Only has an effect along with `--not-in-remote`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable output.
@@ -186,3 +197,26 @@ DVC uncommitted changes:
 Now there's more information in _DVC committed changes_ regarding the changes in
 `data/features`. From the output, it shows that there is a new file added to
 `data/features`: `data/features/foo`.
+
+## Example: Remote status
+
+```cli
+$ dvc data status --not-in-remote
+Not in cache:
+  (use "dvc fetch <file>..." to download files)
+        data/data.xml
+
+Not in remote:
+  (use "dvc push <file>..." to upload files)
+        data/data.xml
+
+DVC committed changes:
+  (git commit the corresponding dvc files to update the repo)
+        modified: data/features/
+
+DVC uncommitted changes:
+  (use "dvc commit <file>..." to track changes)
+  (use "dvc checkout <file>..." to discard changes)
+        deleted: model.pkl
+(there are other changes not tracked by dvc, use "git status" to see)
+```

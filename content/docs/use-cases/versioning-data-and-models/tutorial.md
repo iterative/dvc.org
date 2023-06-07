@@ -11,9 +11,8 @@ The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: managing multiple datasets and ML
 models using DVC. We'll work with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
-that [François Chollet](https://twitter.com/fchollet) put together to show how
-to build a powerful image classifier using a pretty small dataset.
-
+that [François Chollet](https://fchollet.com/) put together to show how to build
+a powerful image classifier using a pretty small dataset.
 ![](/img/cats-and-dogs.jpg) _Dataset to classify cats and dogs_
 
 > We highly recommend reading François' tutorial itself. It's a great
@@ -363,4 +362,4 @@ more about managing metrics with DVC.
 [comparing changes]:
   /doc/start/data-management/metrics-parameters-plots#comparing-iterations
 [comparing many experiments]:
-  /doc/start/experiments/experiment-versioning#comparing
+  /doc/user-guide/experiment-management/comparing-experiments

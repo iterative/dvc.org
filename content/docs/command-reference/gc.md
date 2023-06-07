@@ -11,6 +11,7 @@ usage: dvc gc [-h] [-q | -v]
               [-w] [--rev <commit>] [-n <num>] [-a] [-T] [-A]
               [--date <YYYY-MM-DD>] [--all-experiments]
               [-p [<path> [<path> ...]]]
+              [--not-in-remote]
               [-c] [-r <name>] [-j <number>] [-f]
 ```
 
@@ -120,9 +121,37 @@ project we want to clear.
   them (each project is a path) to keep data that is currently referenced from
   them.
 
+- `--not-in-remote` - keep cached objects that are _not_ in the remote. This
+  will remove the objects from the local cache that have been pushed and are
+  present in the remote.
+
+  For objects using the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against that remote.
+
+  For objects not using the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against the default remote unless a specific one is given
+  with `-r`.
+
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
-  **This option is dangerous.** The default remote is used unless a specific one
-  is given with `-r`.
+
+  <admon type="warn">
+
+  This option is dangerous. Read the description carefully.
+
+  </admon>
+
+  For objects **using** the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against that remote. Any other files **not using** the
+  `remote` field may be deleted from that remote.
+
+  For objects **not using** the
+  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
+  the check will be against the default remote unless a specific one is given
+  with `-r`. Any other files **using** the `remote` field may be deleted from
+  that remote.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to collect unused
   objects from if `-c` option is specified (see `dvc remote list`).

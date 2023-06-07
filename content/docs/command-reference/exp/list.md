@@ -75,9 +75,9 @@ available experiments with this command:
 ```cli
 $ dvc exp list --all-commits
 10-bigrams-experiment:
-        bally-gude
-        gluey-leak
-        lurid-lair
+    60b225a [bally-gude]
+    b485671 [gluey-leak]
+    5f30433 [lurid-lair]
 ```
 
 > Contrast this with the full table
@@ -88,8 +88,8 @@ You can also list experiments in any DVC repo with `dvc exp list`:
 ```cli
 $ dvc exp list --all-commits git@github.com:iterative/example-get-started.git
 10-bigrams-experiment:
-        bally-gude
-        conic-ease
+    bally-gude
+    conic-ease
 ```
 
 We can see that two experiments are available in
@@ -104,8 +104,8 @@ $ git remote -v
 origin  git@github.com:iterative/example-get-started.git
 $ dvc exp list --all-commits origin
 10-bigrams-experiment:
-        bally-gude
-        conic-ease
+    bally-gude
+    conic-ease
 ```
 
 And in this context, `dvc exp pull` can download the experiments if needed, as

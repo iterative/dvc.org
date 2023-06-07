@@ -16,10 +16,9 @@ other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>]
-           [--to-remote] [-r <name>]
-           [--no-exec | --no-download] [-j <number>]
-           [--desc <text>] [--type <str>] [--label <str>]
-           [--meta key=value] [--version-aware]
+           [--to-remote] [-r <name>] [--no-exec | --no-download]
+           [-j <number>] [-f] [--version-aware] [--desc <text>]
+           [--meta key=value] [--label <str>] [--type <str>]
            url [out]
 
 positional arguments:
@@ -200,11 +199,15 @@ produces a regular stage in `dvc.yaml`.
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
 
-- `--version-aware` - capture cloud versioning information when importing the
-  file. By default, DVC will automatically capture cloud versioning information
-  if the URL contains a cloud versioning ID. When `--version-aware` is provided
-  along with a URL that does not contain a cloud versioning ID, DVC will capture
-  the latest version of the file.
+`-f`, `--force` - when using `--out` to specify a local target file or
+directory, the operation will fail if those paths already exist. this flag will
+force the operation causing local files/dirs to be overwritten by the command.
+
+- `--version-aware` - capture [cloud versioning] information of the current
+  version when importing the file. DVC will always
+  [pull](/doc/command-reference/pull) the versioned data from the source and
+  will not [push](/doc/command-reference/push) an additional copy to remote
+  storage.
 
 - `--desc <text>` - user description of the data.
 
@@ -213,11 +216,6 @@ produces a regular stage in `dvc.yaml`.
 - `--label <text>` - user-assigned label(s) to add to the data.
 
 - `--meta key=value` - custom metadata to add to the data.
-
-- `--version-aware` - capture [cloud versioning] information (supported for
-  certain cloud storage providers). By default, DVC will automatically do so
-  only if the `url` contains a valid cloud versioning ID. Otherwsie, with this
-  flat DVC will import the latest version of the file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

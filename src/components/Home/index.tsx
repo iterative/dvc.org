@@ -12,6 +12,7 @@ import UseCases from './UseCases'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
+import CompanySlider from './LogosSlider'
 
 const logGetStartedEvent = () => logEvent('Promo', { Item: 'get-started' })
 const logUseCasesEvent = () => logEvent('Promo', { Item: 'use-cases' })
@@ -22,8 +23,10 @@ const Home: React.FC = () => {
       <WhatsNewModal />
       <HeroSection className={styles.heroSection}>
         <LandingHero />
+        <CompanySlider />
         <LearnMore />
       </HeroSection>
+      <SubscribeSection />
       <Diagram />
       <PromoSection
         title="For data scientists, by data scientists"

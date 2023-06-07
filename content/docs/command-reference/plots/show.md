@@ -3,8 +3,7 @@
 Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
 [top-level definition] from `dvc.yaml`.
 
-[top-level definition]:
-  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[top-level definition]: /doc/user-guide/project-structure/dvcyaml-files#plots
 
 ## Synopsis
 
@@ -43,8 +42,7 @@ The default behavior of this command can be modified per [stage plot] file with
   /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
   /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
-[top-level plot]:
-  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[top-level plot]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [stage plot]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Options

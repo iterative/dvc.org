@@ -12,22 +12,32 @@ def log_image(name: str, val):
 from dvclive import Live
 
 with Live() as live:
+    # 1. Log an image from a numpy array:
     import numpy as np
     img_numpy = np.ones((500, 500), np.uint8) * 255
     live.log_image("numpy.png", img_numpy)
 
+    # 2. Or log a `PIL.image`:
     from PIL import Image
     img_pil = Image.new("RGB", (500, 500), (250, 250, 250))
     live.log_image("pil.png", img_pil)
+
+    # 3. Or log an existing image:
+    from PIL import Image
+    live.log_image("sample.png", "run/batch_0_sample.png")
 ```
 
 ## Description
 
 Supported values for `val` are:
 
-- A valid NumPy array (convertible to image via
+- A valid NumPy array (convertible to an image via
   [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
-- A `PIL.Image` instance.
+- A `PIL.Image` instance
+- A path to an image file (`str` or
+  [`Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path)). It
+  should be in a format that is readable by
+  [`PIL.Image.open()`](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open)
 
 The images will be saved in `{Live.plots_dir}/images/{name}`:
 
@@ -53,7 +63,8 @@ $ dvc plots diff dvclive/plots
 
 - `name` - name of the image file that this command will output
 
-- `val` - image to be saved
+- `val` - image to be saved. See the list of supported values in the
+  [Description](#description).
 
 ## Exceptions
 

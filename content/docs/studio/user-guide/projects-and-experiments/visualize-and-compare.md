@@ -9,7 +9,7 @@ settings_ are now called _Project settings_; and so on.
 
 # Visualize and Compare Experiments
 
-You can visualize and compare experiments using plots, images, charts, etc. You
+You can visualize and compare experiments using plots, images, metrics, etc. You
 can also
 [export the project table as CSV](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#export-project-data),
 so that you can use the data with any external reporting or visualization tool
@@ -19,13 +19,10 @@ of your choice.
 
 You can visualize certain metrics of machine learning experiments as plots.
 Usual plot examples are AUC curves, loss functions, and confusion matrices,
-among others. For DVC repositories, the plots are defined in `dvc.yaml` (plots
-field). Refer to the [DVC plots documentation](/doc/command-reference/plots) for
-details on how to add plots to your repositories.
-
-### Types of plots
-
-Iterative Studio can work with two types of plots files in your repository:
+among others. The easiest way to start is with [DVCLive], which will
+automatically generate plots data and configure them to be visualized. Iterative
+Studio supports all [DVC plots], which can plot two types of files in your
+repository:
 
 1. Data series files, which can be JSON, YAML, CSV or TSV. Data from these files
    will populate your AUC curves, loss functions, confusion matrices and other
@@ -33,42 +30,7 @@ Iterative Studio can work with two types of plots files in your repository:
 2. Image files in JPEG, GIF, or PNG format. These images will be displayed as-is
    in Iterative Studio.
 
-Plots can be
-[pipeline outputs](/doc/user-guide/experiment-management/visualizing-plots#plot-outputs)
-or
-[top-level](/doc/user-guide/experiment-management/visualizing-plots#top-level-plots).
-Below is a sample `dvc.yaml` file with 2 plots in the `evaluate` stage and a
-top-level plot using data from `runtime_logs/logs.csv`.
-
-```yaml
-stages:
-  evaluate:
-    cmd: python src/evaluate.py
-    deps: ...
-    plots:
-      - output/predictions.json:
-          template: confusion
-          x: actual
-          y: predicted
-      - output/misclassified_samples/:
-          cache: false
-plots: runtime_logs/logs.csv
-```
-
-As you can see,
-
-- metrics from `output/predictions.json` will be plotted in a confusion matrix,
-- images in the `output/misclassified_samples/` directory will be displayed
-  directly,
-- data from `runtime_logs/logs.json` will be rendered using the default (linear)
-  template.
-
-For images, you can also specify a single image file (eg,
-`output/misclassified_sample1.png`) instead of a directory.
-
-### How to generate plots
-
-To generate the plots, select one or more experiments (represented by the
+To display the plots, select one or more experiments (represented by the
 commits), and click on the `Show plots` button.
 
 The plots will appear in the plots pane. If you have selected more than one
@@ -104,3 +66,4 @@ in the selected experiments will be displayed side by side for easy comparison.
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
+[dvc plots]: /doc/user-guide/experiment-management/visualizing-plots

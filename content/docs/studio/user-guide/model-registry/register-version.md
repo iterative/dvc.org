@@ -7,8 +7,8 @@ To register a new version of a model, Iterative Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified version number. Refer to the
 [GTO docs][gto-format] to see the exact format of the Git tag.
 
-You can register versions using the [`gto` CLI]. To register versions using
-Iterative Studio, watch this tutorial video or read on below:
+To register versions using Iterative Studio, watch this tutorial video or read
+on below:
 
 https://www.youtube.com/watch?v=eA70puzOp1o
 
@@ -31,17 +31,19 @@ https://www.youtube.com/watch?v=eA70puzOp1o
 
 4. Optionally, provide a Git tag message.
 5. Click on `Register version`.
-6. Once the action is successful, the newly registered version will show up in
-   the `Latest version` column of the models dashboard. Note that this will
-   happen only if the newly registered version is the greatest semantic version
-   for your model. For example, if your model already had v3.0.0 registered,
-   then if you register a smaller version (e.g., v2.0.0), then the new version
-   will not appear in the `Latest version` column.
-7. If you open the model details page, the newly registered version will be
-   available in the model `History` section as well as in the versions drop
-   down.
-8. If you go to your Git repository, you will see that a new Git tag referencing
-   the selected commit has been created, representing the new version.
+
+Once the action is successful, the newly registered version will show up in the
+`Latest version` column of the models dashboard. Note that this will happen only
+if the newly registered version is the greatest semantic version for your model.
+For example, if your model already had v3.0.0 registered, then if you register a
+smaller version (e.g., v2.0.0), then the new version will not appear in the
+`Latest version` column.
+
+If you open the model details page, the newly registered version will be
+available in the model `History` section as well as in the versions drop down.
+
+If you go to your Git repository, you will see that a new Git tag referencing
+the selected commit has been created, representing the new version.
 
 [gto]: https://mlem.ai/doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
