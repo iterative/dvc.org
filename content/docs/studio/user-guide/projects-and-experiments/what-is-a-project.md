@@ -12,7 +12,7 @@ Within a project, you can:
   have pushed to your Git repository.
 - [Visualize the experiments][visualize] using plots and trend charts.
 - [Compare experiments][compare].
-- [Run new experiments][run-experiments] on your own cloud instances directly
+- [Run new experiments][run-experiments], including on your own cloud instances, directly
   from Iterative Studio.
 - [Track live metrics and plots][live-metrics-and-plots] by sending them to
   Iterative Studio by using [DVCLive].
