@@ -117,7 +117,8 @@ with Live(save_dvc_exp=True) as live:
 </toggle>
 
 After this, each execution of the code will create a <abbr>DVC experiment</abbr>
-containing the results and the changes needed to reproduce it.
+containing the results and the changes needed to reproduce it. Each experiment
+is automatically saved in Git, so you don't need to worry about committing them.
 
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
 Framework and any
