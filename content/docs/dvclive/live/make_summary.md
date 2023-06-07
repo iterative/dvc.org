@@ -32,6 +32,6 @@ so you don't need to call both.
 
 The summary is usable by `dvc metrics`:
 
-```
-dvc metrics diff dvclive/metrics.json
+```cli
+$ dvc metrics diff dvclive/metrics.json
 ```

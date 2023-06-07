@@ -41,10 +41,9 @@
     "children": [
       {
         "slug": "data-management",
-        "source": false,
+        "source": "data-management/index.md",
         "children": [
           "data-versioning",
-          "data-and-model-access",
           "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
@@ -53,13 +52,19 @@
         ]
       },
       {
+        "label": "Experiment Management",
         "slug": "experiments",
-        "source": false,
+        "source": "experiments/index.md",
         "children": [
-          "experiment-versioning",
-          "experiment-management",
-          "building-pipelines",
-          "experiment-iterations"
+          "experiment-tracking",
+          {
+            "label": "Collaborating on Experiments",
+            "slug": "experiment-collaboration"
+          },
+          {
+            "label": "Experimenting Using Pipelines",
+            "slug": "experiment-pipelines"
+          }
         ]
       }
     ]
@@ -129,7 +134,6 @@
         "slug": "data-management",
         "source": false,
         "children": [
-          "large-dataset-optimization",
           {
             "slug": "remote-storage",
             "source": "remote-storage/index.md",
@@ -161,8 +165,10 @@
             ]
           },
           "cloud-versioning",
+          "discovering-and-accessing-data",
           "importing-external-data",
-          "managing-external-data"
+          "managing-external-data",
+          "large-dataset-optimization"
         ]
       },
       {
@@ -534,6 +540,10 @@
         "label": "DVCFileSystem"
       },
       {
+        "slug": "exp_show",
+        "label": "exp_show()"
+      },
+      {
         "slug": "get_url",
         "label": "get_url()"
       },
@@ -556,6 +566,10 @@
       {
         "slug": "read",
         "label": "read()"
+      },
+      {
+        "slug": "scm",
+        "label": "scm"
       }
     ]
   },
@@ -571,10 +585,6 @@
       {
         "label": "Docs and Website",
         "slug": "docs"
-      },
-      {
-        "label": "Writing Blog Posts",
-        "slug": "blog"
       }
     ]
   },
@@ -621,10 +631,10 @@
                 "slug": "what-is-a-model-registry"
               },
               "add-a-model",
-              "view-models",
-              "download-models",
               "register-version",
-              "assign-stage"
+              "assign-stage",
+              "view-and-compare-models",
+              "use-models"
             ]
           },
           {
@@ -696,6 +706,10 @@
               {
                 "label": "502 Service Unavailable",
                 "slug": "502"
+              },
+              {
+                "label": "Providing data to our support",
+                "slug": "support-bundle"
               }
             ]
           }
@@ -740,6 +754,10 @@
           {
             "slug": "log_params",
             "label": "log_params()"
+          },
+          {
+            "slug": "log_plot",
+            "label": "log_plot()"
           },
           {
             "slug": "log_sklearn_plot",

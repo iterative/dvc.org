@@ -59,20 +59,23 @@ In the
 you can use the [`dvclive.keras`](/doc/dvclive/ml-frameworks/keras) callback:
 
 ```python
+from dvclive import Live
 from dvclive.keras import DVCLiveCallback
 
 ...
 
-model.fit(
-    x_train,
-    y_train,
-    validation_data=(x_valid, y_valid),
-    shuffle=True,
-    batch_size=BATCHSIZE,
-    epochs=EPOCHS,
-    verbose=False,
-    callbacks=[DVCLiveCallback(save_dvc_exp=True)]
-)
+with Live(save_dvc_exp=True) as live:
+    live.log_params(trial.params)
+    model.fit(
+        x_train,
+        y_train,
+        validation_data=(x_valid, y_valid),
+        shuffle=True,
+        batch_size=BATCHSIZE,
+        epochs=EPOCHS,
+        verbose=False,
+        callbacks=[DVCLiveCallback(live=live)]
+    )
 ```
 
 [`live`]: /doc/dvclive/live

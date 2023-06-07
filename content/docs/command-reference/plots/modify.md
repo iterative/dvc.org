@@ -6,8 +6,7 @@ defined in <abbr>stages</abbr>.
 > ⚠️ Note that this command can modify only data-series plots. It has no effect
 > on image-type plots or any [top-level plot] definitions.
 
-[top-level plot]:
-  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[top-level plot]: /doc/user-guide/project-structure/dvcyaml-files#plots
 
 ## Synopsis
 

@@ -7,11 +7,11 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--glob] [--file <filename>] [-o <path>] [--to-remote]
-               [-r <name>] [-j <number>] [--desc <text>]
-               [--type <str>] [--label <str>] [--meta key=value]
+               [--glob] [--file <filename>] [-o <path>]
+               [--to-remote] [-r <name>] [-j <number>] [-f]
+               [--desc <text>] [--meta key=value] [--label <str>]
+               [--type <str>]
                targets [targets ...]
-
 positional arguments:
   targets               Files or directories to add
 ```
@@ -177,6 +177,11 @@ not.
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to transfer data
   when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
   remotes, the default is `4`. Using more jobs may speed up the operation.
+
+- `-f`, `--force` - when using `--out` to specify a local target file or
+  directory, the operation will fail if those paths already exist. this flag
+  will force the operation causing local files/dirs to be overwritten by the
+  command.
 
 - `--desc <text>` - user description of the data.
 

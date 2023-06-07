@@ -14,9 +14,9 @@ and supply the experiment name.
 ```cli
 $ dvc exp list
 main:
-    cnn-32
-    cnn-64
-    cnn-128
+    2399f24 [cnn-128]
+    4e8a178 [cnn-32]
+    f1edf21 [cnn-64]
 $ dvc exp remove cnn-32 cnn-64
 Removed experiments: cnn-32,cnn-64
 ```
@@ -30,10 +30,11 @@ experiments derived from it, use `dvc exp remove --rev` with `HEAD`.
 ```cli
 $ dvc exp list
 refs/tags/baseline-experiment:
-        cnn-128
-        cnn-32
-        cnn-64
-        cnn-96
+    2399f24 [cnn-128]
+    4e8a178 [cnn-32]
+    f1edf21 [cnn-64]
+    bdf6fa2 [cnn-96]
+
 $ dvc exp remove --rev HEAD
 Removed experiments: cnn-128,cnn-32,cnn-64,cnn-96
 ```

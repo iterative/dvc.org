@@ -1,16 +1,21 @@
 # Add a model
 
 You can add models from any ML project to the model registry. To add a model to
-your model registry, Iterative Studio creates an annotation for it in an
-`artifacts.yaml` file in your Git repository. If you are using the [GTO] command
-line tool, you can also add models [from the CLI][gto annotate]. To add models
-using Iterative Studio, watch this tutorial video or read on below:
+your model registry, Iterative Studio creates an annotation for it in a
+`dvc.yaml` file in your Git repository. You can add a model in any of the
+following ways:
+
+1. Log your model during the training process using [dvclive] by calling
+   [`live.log_artifact(path, type="model")`][log_artifact] method.
+2. Edit `dvc.yaml` directly and add your model to [`artifacts`] section.
+3. Use the Iterative Studio interface (watch this tutorial video or read on
+   below).
 
 https://www.youtube.com/watch?v=szzv4ZXmYAs
 
 1. Click on `Add a model`.
 
-2. Select a [connected repository] to which you want to add the model.
+2. Select a [connected project] to which you want to add the model.
 
    <admon>
 
@@ -20,46 +25,43 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 
    </admon>
 
-3. Enter the path of the model file as follows:
+3. Enter the path to `dvc.yaml` the model will be added to. Adding your model to
+   non-root `dvc.yaml` can be helpful if you develop this ML model in a specific
+   subfolder or if this repo is a
+   [monorepo](/doc/studio/user-guide/projects-and-experiments/configure-a-project#monorepo).
 
-   - If the model file is in the Git repository, enter the relative path of the
-     model (from the repository root).
-   - If the model file is in remote storage but is DVC-tracked, enter the
-     project path of the corresponding `.dvc` file.
-   - If the model file is in remote storage and is not DVC-tracked, enter the
-     absolute path of the model file.
-   - If you use [MLEM] to save your model, use the path to the binary file that
-     MLEM generates. After you have run
-     [`mlem init`](https://mlem.ai/doc/command-reference/init), Iterative Studio
-     will be able to parse the `.mlem` file to extract model metadata.
+4. Enter the path of the model file as follows:
 
-   If the path you entered is a cloud path, Iterative Studio will ask you for
-   the repository path where the dvc reference to the model should be saved.
+   - If the model file is in the Git repository (including if it is saved with
+     DVC and/or [MLEM]), enter the relative path of the model (from the
+     repository root).
+   - Otherwise, enter the URL to the model file in the cloud. Iterative Studio
+     will ask you for the repository path where the dvc reference to the model
+     should be saved.
 
-4. Provide labels for your model. For example, if your model is about reviewing
+5. Provide labels for your model. For example, if your model is about reviewing
    sentiment analysis using natural language processing, one of the labels may
-   be `nlp`. You can provide multiple labels as a comma separated list. Eg,
-   `nlp, sentiment_analysis`.
+   be `nlp` or `sentiment_analysis`.
 
-5. Optionally, add a brief description for your model.
+6. Optionally, add a brief description for your model.
 
-6. Enter a Git commit message. Then, select the branch to commit to. You can
+7. Enter a Git commit message. Then, select the branch to commit to. You can
    commit to either the base branch or a new branch. Iterative Studio will
    commit the changes to the selected branch. If you commit to a new branch,
    Iterative Studio will also create a Git pull request from the new branch to
    the base branch.
 
-7. Now, click on `Commit changes`.
+8. Now, click on `Commit changes`.
 
-8. At this point, the new model appears in the models dashboard.
+At this point, the new model appears in the models dashboard.
 
-9. In your Git repository, you will find that an entry for the new model has
-   been created in the `artifacts.yaml` file in the repository's root. If you
-   had committed to a new branch, a new pull request (or merge request in the
-   case of GitLab) will also have been created to merge the new branch into the
-   base branch.
-10. If you had added a model from a cloud storage, the following will also
-    happen before the commit is created:
+In your Git repository, you will find that an entry for the new model has been
+created in the `dvc.yaml` that was specified. If you had committed to a new
+branch, a new pull request (or merge request in the case of GitLab) will also
+have been created to merge the new branch into the base branch.
+
+If you had added a model from a cloud storage, the following will also happen
+before the commit is created:
 
 - If the repository does not contain DVC, Iterative Studio will run `dvc init`.
   It is needed to version the model in the git repository.
@@ -67,12 +69,11 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 - If the specified directory does not exist yet, it will be created.
 - Iterative Studio will import the model to the repository by executing
   `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
-- Iterative Studio annotate the model by executing
-  `gto annotate <model_name> --path <directory_path>/<filename from remote_path> --type model`.
-  [Learn more][gto annotate].
 
-[connected repository]:
+[connected project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
 [gto]: https://mlem.ai/doc/gto
-[gto annotate]: https://mlem.ai/doc/gto/command-reference/annotate
 [mlem]: https://mlem.ai/
+[dvclive]: /doc/dvclive
+[log_artifact]: /doc/dvclive/live/log_artifact
+[`artifacts`]: /doc/user-guide/project-structure/dvcyaml-files#artifacts

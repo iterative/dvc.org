@@ -52,7 +52,7 @@ the background with this command (for example for debugging).
   If `number` is less than the number of existing worker processes, this command
   will not stop any existing worker processes. To reduce worker concurrency,
   `dvc queue stop` must first be used to stop queue processing, before running
-  `dvc queue run` with the desired number of `--jobs`.
+  `dvc queue start` with the desired number of `--jobs`.
 
   </admon>
 
