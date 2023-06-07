@@ -285,10 +285,6 @@
             "slug": "diff"
           },
           {
-            "label": "exp gc",
-            "slug": "gc"
-          },
-          {
             "label": "exp list",
             "slug": "list"
           },

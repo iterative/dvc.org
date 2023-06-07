@@ -69,7 +69,7 @@ See the [Running Experiments] guide for more details on these features and more.
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
 committing them to the Git repo. Unnecessary ones can be [cleared] with
-`dvc exp gc`.
+`dvc exp remove`.
 
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
