@@ -9,8 +9,6 @@ file.
 usage: dvc add [-h] [-q | -v] [-f] [--no-commit] [--external]
                [--glob] [-o <path>]
                [--to-remote] [-r <name>] [--remote-jobs <number>]
-               [--desc <text>] [--meta key=value] [--label <str>]
-               [--type <str>]
                targets [targets ...]
 positional arguments:
   targets               Files or directories to add
@@ -20,9 +18,13 @@ positional arguments:
 
 ### Options removed in 3.0
 
+- `--desc`
 - `--file`
-- `--jobs`
+- `--jobs` (renamed to `--remote-jobs`)
+- `--labels`
+- `--meta`
 - `--recursive`
+- `--type`
 
 </details>
 
@@ -173,14 +175,6 @@ not.
   directory, the operation will fail if those paths already exist. this flag
   will force the operation causing local files/dirs to be overwritten by the
   command.
-
-- `--desc <text>` - user description of the data.
-
-- `--type <str>` - user-assigned type of the data.
-
-- `--label <text>` - user-assigned label(s) to add to the data.
-
-- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

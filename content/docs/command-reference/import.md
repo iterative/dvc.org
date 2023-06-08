@@ -11,8 +11,7 @@ Download a file or directory tracked by another DVC or Git repository into the
 usage: dvc import [-h] [-q | -v]
                   [-o <path>] [--rev <commit>]
                   [--no-exec | --no-download]
-                  [-j <number>] [--desc <text>]
-                  [--type <str>] [--label <str>] [--meta key=value]
+                  [-j <number>]
                   url path
 
 positional arguments:
@@ -24,7 +23,11 @@ positional arguments:
 
 ### Options deprecated in 3.0
 
+- `--desc`
 - `--file`
+- `--label`
+- `--meta`
+- `--type`
 
 </details>
 
@@ -126,14 +129,6 @@ file.
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
-
-- `--desc <text>` - user description of the data.
-
-- `--type <str>` - user-assigned type of the data.
-
-- `--label <text>` - user-assigned label(s) to add to the data.
-
-- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -17,8 +17,7 @@ other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 ```usage
 usage: dvc import-url [-h] [-q | -v]
            [--to-remote] [-r <name>] [--no-exec | --no-download]
-           [-j <number>] [-f] [--version-aware] [--desc <text>]
-           [--meta key=value] [--label <str>] [--type <str>]
+           [-j <number>] [-f] [--version-aware]
            url [out]
 
 positional arguments:
@@ -30,7 +29,11 @@ positional arguments:
 
 ### Options deprecated in 3.0
 
+- `--desc`
 - `--file`
+- `--label`
+- `--meta`
+- `--type`
 
 </details>
 
@@ -211,14 +214,6 @@ force the operation causing local files/dirs to be overwritten by the command.
   [pull](/doc/command-reference/pull) the versioned data from the source and
   will not [push](/doc/command-reference/push) an additional copy to remote
   storage.
-
-- `--desc <text>` - user description of the data.
-
-- `--type <str>` - user-assigned type of the data.
-
-- `--label <text>` - user-assigned label(s) to add to the data.
-
-- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
