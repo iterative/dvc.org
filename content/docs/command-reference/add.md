@@ -18,7 +18,7 @@ positional arguments:
 
 <details>
 
-### Options deprecated in 3.0
+### Options removed in 3.0
 
 - `--file`
 - `--jobs`
