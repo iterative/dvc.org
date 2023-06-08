@@ -35,6 +35,7 @@ There are some examples below
 <tab title="Pytorch Lightning">
 
 ```python
+from dvclive import Live
 from dvclive.lightning import DVCLiveLogger
 
 ...
@@ -60,6 +61,7 @@ with Live(save_dvc_exp=True) as live:
 <tab title="Hugging Face">
 
 ```python
+from dvclive import Live
 from dvclive.huggingface import DVCLiveCallback
 
 ...
@@ -77,6 +79,7 @@ with Live(save_dvc_exp=True) as live:
 <tab title="Keras">
 
 ```python
+from dvclive import Live
 from dvclive.keras import DVCLiveCallback
 
 ...
