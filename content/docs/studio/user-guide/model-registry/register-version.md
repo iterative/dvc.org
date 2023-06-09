@@ -1,4 +1,4 @@
-# Version models
+# Register a model version
 
 New model versions signify an important, published or released iteration. To
 register version, you first need to
@@ -18,8 +18,10 @@ You can register a version in any of the following ways:
 1. Use GTO CLI or API. An example would be
    [`gto register s3:mymodel --version v0.0.1`][register]. In this case, `s3` is
    a path within a repo to the directory where `dvc.yaml` with model annotation
-   is located, and `mymodel` is a model name used in that `dvc.yaml`. Check out
-   this [example repo][monorepo] and [its Git tags].
+   is located, and `mymodel` is a model name used in that `dvc.yaml`. If
+   `dvc.yaml` is located in the root, it will be simply
+   `gto register mymodel --version v0.0.1`. To get a better idea about `s3:`
+   part, check out this [example monorepo][monorepo] and [its Git tags].
 2. To register versions using Iterative Studio, watch this tutorial video or
    read on below.
 

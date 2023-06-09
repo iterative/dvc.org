@@ -1,4 +1,4 @@
-# Assign stages to models
+# Assign stage to model version
 
 To manage model lifecycle, you can assign stages (such as `dev`, `staging`,
 `prod`, etc.) to specific model versions.
@@ -18,7 +18,10 @@ You can assign a stage in any of the following ways:
    [`gto assign s3:mymodel --version v0.0.1 --stage dev`][assign]. In this case,
    `s3` is a path within a repo to the directory where `dvc.yaml` with model
    annotation is located, and `mymodel` is a model name used in that `dvc.yaml`.
-   Check out this [example repo][monorepo] and [its Git tags].
+   If `dvc.yaml` is located in the root, it will be simply
+   `gto register mymodel --version v0.0.1 --stage dev`. To get a better idea
+   about `s3:` part, check out this [example monorepo][monorepo] and [its Git
+   tags].
 2. To assign stages using Iterative Studio, watch this tutorial video or read on
    below.
 
