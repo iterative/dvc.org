@@ -25,18 +25,6 @@ positional arguments:
   out                   Destination path to put files in.
 ```
 
-<details>
-
-### Options deprecated in 3.0
-
-- `--desc`
-- `--file`
-- `--label`
-- `--meta`
-- `--type`
-
-</details>
-
 ## Description
 
 In some cases it's convenient to add a data file or directory from an external

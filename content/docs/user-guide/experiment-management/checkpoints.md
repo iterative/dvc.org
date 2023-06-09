@@ -462,13 +462,6 @@ All that's left to do is to `git commit` the changes:
 $ git commit -m 'saved files from experiment'
 ```
 
-We can also remove all of the experiments we don't promote to our Git workspace
-with the following command:
-
-```cli
-$ dvc exp gc --workspace --force
-```
-
 Now that you know how to use checkpoints in DVC, you'll be able to resume
 training from different checkpoints to try out new hyperparameters or code and
 you'll be able to track all of the changes you make while trying to create the

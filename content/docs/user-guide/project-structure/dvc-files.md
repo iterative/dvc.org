@@ -7,14 +7,6 @@ locally. See [Data Versioning] for more info.
 
 [data versioning]: /doc/start/data-management/data-versioning
 
-<admon type="info">
-
-\* Certain
-[external locations](/doc/user-guide/data-management/managing-external-data) are
-also supported.
-
-</admon>
-
 Files ending with the `.dvc` extension ("dot DVC file") are created by these
 commands as data placeholders that can be versioned with Git. They contain the
 information needed to track the target data over time. Here's an example:
@@ -66,7 +58,7 @@ The following subfields may be present under `outs` entries:
 | `push`                          | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                              |
 
 [etag]: https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation
-[external outputs]: /doc/user-guide/data-management/managing-external-data
+[external outputs]: /doc/user-guide/pipelines/external-dependencies-and-outputs
 [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
 ## Dependency entries

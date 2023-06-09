@@ -19,18 +19,6 @@ positional arguments:
   path             Path to a file or directory within the repository
 ```
 
-<details>
-
-### Options deprecated in 3.0
-
-- `--desc`
-- `--file`
-- `--label`
-- `--meta`
-- `--type`
-
-</details>
-
 ## Description
 
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC

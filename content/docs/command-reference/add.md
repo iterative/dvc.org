@@ -6,27 +6,13 @@ file.
 ## Synopsis
 
 ```usage
-usage: dvc add [-h] [-q | -v] [-f] [--no-commit] [--external]
+usage: dvc add [-h] [-q | -v] [-f] [--no-commit]
                [--glob] [-o <path>]
                [--to-remote] [-r <name>] [--remote-jobs <number>]
                targets [targets ...]
 positional arguments:
   targets               Files or directories to add
 ```
-
-<details>
-
-### Options removed in 3.0
-
-- `--desc`
-- `--file`
-- `--jobs` (renamed to `--remote-jobs`)
-- `--labels`
-- `--meta`
-- `--recursive`
-- `--type`
-
-</details>
 
 ## Description
 
@@ -142,21 +128,9 @@ not.
   specified in `targets`. Shell style wildcards supported: `*`, `?`, `[seq]`,
   `[!seq]`, and `**`
 
-- `--external` - allow tracking `targets` outside of the DVC repository
-  in-place. See [Managing External Data].
-
-  <admon type="warn">
-
-  Note that this is an advanced feature for very specific situations and not
-  recommended except if there's absolutely no other alternative. Additionally,
-  this typically requires an external cache setup (see link above).
-
-  </admon>
-
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the `targets` (copying them from their current location).
-  This enables targeting data outside the project (see an
-  [example](#example-transfer-to-an-external-cache)).
+  This enables targeting data outside the project.
 
 - `--to-remote` - add a target that's outside the project, neither move it into
   the workspace, nor cache it.
@@ -184,7 +158,6 @@ not.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [pattern]: https://docs.python.org/3/library/glob.html
-[managing external data]: /doc/user-guide/data-management/managing-external-data
 
 ## Example: Single file
 
@@ -315,45 +288,6 @@ $ tree .dvc/cache
 
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
-
-## Example: Transfer to an external cache
-
-When you want to add a large dataset that is outside of your
-<abbr>project</abbr> (e.g. online), you would normally need to download or copy
-it into the <abbr>workspace</abbr> first. But you may not have enough local
-storage space.
-
-You can however set up an [external cache] that can handle the data. To avoid
-ever making a local copy, target the outside data with `dvc add` while
-specifying an `--out` (`-o`) path inside of your project. This way the data will
-be transferred to the <abbr>cache</abbr> directly, and then [linked] into your
-workspace.
-
-Let's add a `data.xml` file via HTTP, putting it in `./data.xml`:
-
-```cli
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
-...
-$ ls
-data.xml data.xml.dvc
-```
-
-The resulting `.dvc` file will save the provided local `path` as if the data was
-already in the workspace, while the `md5` hash points to the copy of the data
-that has now been transferred to the <abbr>cache</abbr>. Let's check the
-contents of `data.xml.dvc` in this case:
-
-```yaml
-outs:
-  - md5: a304afb96060aad90176268345e10355
-    nfiles: 1
-    path: data.xml
-```
-
-[linked]:
-  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
-[external cache]:
-  /doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache
 
 ## Example: Transfer to remote storage
 

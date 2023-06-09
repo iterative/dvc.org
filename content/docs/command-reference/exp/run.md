@@ -20,7 +20,7 @@ usage: dvc exp run [-h] [-q | -v] [-f]
                    [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset] [-C <path>]
-                   [--message <message>]
+                   [-m <message>]
                    [targets [targets ...]]
 
 positional arguments:
@@ -69,7 +69,7 @@ See the [Running Experiments] guide for more details on these features and more.
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
 committing them to the Git repo. Unnecessary ones can be [cleared] with
-`dvc exp gc`.
+`dvc exp remove`.
 
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
@@ -144,8 +144,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `-C <path>`, `--copy-paths <path>` - list of ignored or untracked paths to
   copy into the temp directory. Only used if `--temp` or `--queue` is specified.
 
-- `--message <message>` - custom message to use when saving the experiment. If
-  not provided, `dvc: commit experiment {hash}` will be used.
+- `-m <message>`, `--message <message>` - custom message to use when saving the
+  experiment. If not provided, `dvc: commit experiment {hash}` will be used.
 
 - `-h`, `--help` - prints the usage/help message, and exits.
 
