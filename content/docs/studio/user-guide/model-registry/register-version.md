@@ -1,14 +1,27 @@
 # Version models
 
-You can register new versions of registered models by specifying the Git commit
-which corresponds to the new version.
+New model versions signify an important, published or released iteration. To
+register version, you first need to
+[add a model to the model registry](/doc/studio/user-guide/model-registry/add-a-model).
 
 To register a new version of a model, Iterative Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified version number. Refer to the
 [GTO docs][gto-format] to see the exact format of the Git tag.
 
-To register versions using Iterative Studio, watch this tutorial video or read
-on below:
+You can [write CI/CD actions][CI/CD] that can actually build and publish models
+(for example, build Docker image with the model and publish it to a Docker
+Registry) upon the creation of a new Git tag for version registration. For that,
+you can leverage any ML model deployment tool, such as [MLEM].
+
+You can register a version in any of the following ways:
+
+1. Use GTO CLI or API. An example would be
+   [`gto register s3:mymodel --version v0.0.1`][register]. In this case, `s3` is
+   a path within a repo to the directory where `dvc.yaml` with model annotation
+   is located, and `mymodel` is a model name used in that `dvc.yaml`. Check out
+   this [example repo][monorepo] and [its Git tags].
+2. To register versions using Iterative Studio, watch this tutorial video or
+   read on below.
 
 https://www.youtube.com/watch?v=eA70puzOp1o
 
@@ -50,3 +63,10 @@ the selected commit has been created, representing the new version.
 [gto-format]: https://mlem.ai/doc/gto/user-guide#git-tag-message-format
 [`gto` cli]: https://mlem.ai/doc/gto/command-reference
 [semver]: https://semver.org/
+[CI/CD]:
+  /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
+[MLEM]: https://mlem.ai/
+[register]: https://mlem.ai/doc/gto/command-reference/register
+[monorepo]:
+  https://github.com/iterative/monorepo-test-no-root/blob/master/s3/dvc.yaml
+[its Git tags]: https://github.com/iterative/monorepo-test-no-root/tags
