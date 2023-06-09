@@ -16,12 +16,11 @@ you can leverage any ML model deployment tool, such as [MLEM].
 You can register a version in any of the following ways:
 
 1. Use GTO CLI or API. An example would be
-   [`gto register cv:pool-segmentation --version v0.0.1`][register]. In this
-   case, `cv` is a folder where `dvc.yaml` with model annotation is located, and
-   `pool-segmentation` is a model name used in that `dvc.yaml`. If `dvc.yaml` is
-   located in the root, it will be simply
-   `gto register mymodel --version v0.0.1`. To get a better idea about `cv:`
-   part, check out this [example monorepo][monorepo] and [its Git tags].
+   [`gto register pool-segmentation --version v0.0.1`][register], assuming
+   `dvc.yaml` with the model annotation is located in the root of the repo. If
+   not, you should append its parent directory to the model's name like this:
+   [`gto register cv:pool-segmentation --version v0.0.1`][register]. To get a
+   better idea about this case, check out this [example monorepo][monorepo].
 2. To register versions using Iterative Studio, watch this tutorial video or
    read on below.
 
@@ -71,4 +70,3 @@ the selected commit has been created, representing the new version.
 [register]: https://mlem.ai/doc/gto/command-reference/register
 [monorepo]:
   https://github.com/iterative/monorepo-example/blob/add-cv-model/cv/dvc.yaml
-[its Git tags]: https://github.com/iterative/monorepo-example/tags
