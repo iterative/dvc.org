@@ -19,8 +19,9 @@ You can register a version in any of the following ways:
    [`gto register pool-segmentation --version v0.0.1`][register], assuming
    `dvc.yaml` with the model annotation is located in the root of the repo. If
    not, you should append its parent directory to the model's name like this:
-   [`gto register cv:pool-segmentation --version v0.0.1`][register]. To get a
-   better idea about this case, check out this [example monorepo][monorepo].
+   [`gto register cv:pool-segmentation --version v0.0.1`][register] (here, `cv`
+   is the parent directory). To get a better idea about this case, check out
+   this [example monorepo][monorepo].
 2. To register versions using Iterative Studio, watch this tutorial video or
    read on below.
 

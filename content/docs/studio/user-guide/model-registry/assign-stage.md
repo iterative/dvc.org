@@ -19,9 +19,9 @@ You can assign a stage in any of the following ways:
    assuming `dvc.yaml` with the model annotation is located in the root of the
    repo. If not, you should append its parent directory to the model's name like
    this:
-   [`gto assign cv:pool-segmentation --version v0.0.1 --stage dev`][assign]. To
-   get a better idea about this case, check out this [example
-   monorepo][monorepo].
+   [`gto assign cv:pool-segmentation --version v0.0.1 --stage dev`][assign]
+   (here, `cv` is the parent directory). To get a better idea about this case,
+   check out this [example monorepo][monorepo].
 2. To assign stages using Iterative Studio, watch this tutorial video or read on
    below.
 
