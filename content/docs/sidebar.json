@@ -167,7 +167,8 @@
           "cloud-versioning",
           "discovering-and-accessing-data",
           { "label": "External Data", "slug": "importing-external-data" },
-          "large-dataset-optimization"
+          "large-dataset-optimization",
+          "modifying-large-datasets"
         ]
       },
       {
