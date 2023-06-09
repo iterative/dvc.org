@@ -1,6 +1,6 @@
 # Register a model version
 
-New model versions signify an important, published or released iteration. To
+New model versions can signify an important, published or released iteration. To
 register version, you first need to
 [add a model to the model registry](/doc/studio/user-guide/model-registry/add-a-model).
 
