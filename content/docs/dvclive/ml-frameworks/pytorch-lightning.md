@@ -48,7 +48,7 @@ Where:
 
 ## Examples
 
-- Using `live` to pass an existing [`Live`] instance.
+- Using `experiment` to pass an existing [`Live`] instance.
 
 ```python
 from dvclive import Live
@@ -56,10 +56,10 @@ from dvclive.lightning import DVCLiveLogger
 
 with Live("custom_dir") as live:
     trainer = Trainer(
-        logger=DVCLiveLogger(live=live))
+        logger=DVCLiveLogger(experiment=live))
     trainer.fit(model)
     # Log additional metrics after training
-    live.summary["additional_metric"] = 1.0
+    live.log_metric("summary_metric", 1.0, plot=False)
 ```
 
 - Using `**kwargs` to customize [`Live`].
@@ -69,6 +69,39 @@ from dvclive.lightning import DVCLiveLogger
 
 trainer = Trainer(
     logger=DVCLiveLogger(dir='my_logs_dir'))
+trainer.fit(model)
+```
+
+- Using [`live.log_artifact()`](/doc/dvclive/live/log_artifact) to save the
+  [best checkpoint](https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html).
+
+```python
+with Live() as live:
+    checkpoint = ModelCheckpoint(dirpath="mymodel")
+    trainer = Trainer(
+        logger=DVCLiveLogger(experiment=live),
+        callbacks=checkpoint
+    )
+    trainer.fit(model)
+    live.log_artifact(
+        checkpoint.best_model_path,
+        type="model",
+        name="lightning-model"
+    )
+```
+
+- Logging
+  [hyperparameters](https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#save-hyperparameters).
+
+```python
+class LitModule(LightningModule):
+    def __init__(self, layer_1_dim, learning_rate):
+        super().__init__()
+        # call this to save (layer_1_dim=128, learning_rate=1e-4)
+        self.save_hyperparameters()
+
+model = LitModule(layer_1_dim=128, learning_rate=1e-4)
+trainer = Trainer(logger=DVCLiveLogger())
 trainer.fit(model)
 ```
 

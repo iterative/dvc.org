@@ -24,8 +24,8 @@ the latest commit of the current branch (Git `HEAD`).
 ```cli
 $ dvc exp list
 refs/tags/baseline-experiment:
-        cnn-64
-        cnn-128
+    2399f24 [cnn-128]
+    f1edf21 [cnn-64]
 ```
 
 If you want to list all the experiments in the repo regardless of their parent
@@ -34,10 +34,10 @@ commit, use the `--all-commits` (`-A`) flag.
 ```cli
 $ dvc exp list -A
 refs/tags/baseline-experiment:
-        cnn-64
-        cnn-128
+    2399f24 [cnn-128]
+    f1edf21 [cnn-64]
 main:
-        unwet-jinn
+    1f7e42f [toric-chiv]
 ```
 
 ## List experiments saved remotely
@@ -49,8 +49,8 @@ not have locally), provide a Git remote name to `dvc exp list`.
 ```cli
 $ dvc exp list origin
 refs/tags/baseline-experiment:
-        cnn-32
-        cnn-64
+    cnn-32
+    cnn-64
 ```
 
 This command lists remote experiments based on that repo's `HEAD`. You can use
@@ -83,20 +83,20 @@ the experiments that are based on it. For example:
 # from a commit:
 $ dvc exp list origin --rev 23ceb4a
 23ceb4a:
-        cnn-32
-        cnn-96
+    cnn-32
+    cnn-96
 
 # from a tag:
 $ dvc exp list origin --rev baseline-experiment
 refs/tags/baseline-experiment:
-        cnn-64
-        cnn-128
+    cnn-64
+    cnn-128
 
 # from a fully specified Git reference:
 $ dvc exp list origin --rev refs/tags/baseline-experiment
 refs/tags/baseline-experiment:
-        cnn-64
-        cnn-128
+    cnn-64
+    cnn-128
 ```
 
 ## Show a table of experiments
@@ -179,29 +179,6 @@ $ dvc exp show --sort-by auc --sort-order desc
   └── 69503c6 [cnn-128]    0.916   128
  ───────────────────────────────────────────────────
 ```
-
-## Parallel Coordinates Plot
-
-You can also generate an interactive
-[parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
-with `dvc exp show --pcp`.
-
-This plot is useful to explore the relationships between the metrics, parameters
-and dependencies used in experiments. You can reorder the columns to make some
-patterns more easily visible.
-
-The `--pcp` flag can be combined with other options of the command. For example,
-use `--sort-by` to sort the experiments and determine the color of the lines
-that represent them.
-
-```cli
-$ dvc exp show --pcp --all-branches --sort-by roc_auc
-```
-
-![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
-
-> You can see more
-> [examples in the command reference](/doc/command-reference/exp/show#example-parallel-coordinates-plot-pcp).
 
 ## Get experiments table in CSV
 

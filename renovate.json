@@ -1,10 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "group:allNonMajor"],
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["@dvcorg", "iterative"],
-      "groupName": "Iterative Packages"
-    }
+  "extends": [
+    "github>iterative/gatsby-theme-iterative:renovate.json",
+    ":pinAllExceptPeerDependencies"
   ]
 }

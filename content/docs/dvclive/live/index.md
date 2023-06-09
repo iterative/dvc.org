@@ -12,6 +12,7 @@ class Live:
         report: Optional[str] = "auto",
         save_dvc_exp: bool = False,
         dvcyaml: bool = True,
+        exp_message: Optional[str] = None,
     ):
 ```
 
@@ -85,12 +86,19 @@ You can use `Live()` as a context manager. When exiting the context manager,
   [`Live.dvc_file`](/doc/dvclive/live#properties) as part of `Live.next_step()`
   and `Live.end()`. See `Live.make_dvcyaml()`. Defaults to `True`.
 
-<admon type="tip">
+  <admon type="tip">
 
-If you are already tracking DVCLive metrics, plots, and parameters in your own
-`dvc.yaml` file, set `dvcyaml=False` to avoid duplication.
+  If you are already tracking DVCLive metrics, plots, and parameters in your own
+  `dvc.yaml` file, set `dvcyaml=False` to avoid duplication.
 
-</admon>
+  </admon>
+
+- `exp_message` - If not `None`, and `save_dvc_exp` is `True`, the provided
+  string will be passed to
+  [`dvc exp save --message`](/doc/command-reference/exp/save#--message).
+
+  If DVCLive is used inside `dvc exp run`, the option will be ignored, use
+  [`dvc exp run --message`](/doc/command-reference/exp/run#--message) instead.
 
 ## Methods
 
@@ -99,6 +107,7 @@ If you are already tracking DVCLive metrics, plots, and parameters in your own
 - `Live.log_metric()`
 - `Live.log_param()`
 - `Live.log_params()`
+- `Live.log_plot()`
 - `Live.log_sklearn_plot()`
 - `Live.make_dvcyaml()`
 - `Live.make_report()`

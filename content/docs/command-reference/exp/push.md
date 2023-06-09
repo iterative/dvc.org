@@ -47,6 +47,13 @@ to see experiments in the remote.
 This command will also try to `dvc push` all <abbr>cached</abbr> data associated
 with the experiments to [remote storage], unless `--no-cache` is used.
 
+If `studio.token` config or `DVC_STUDIO_TOKEN` environment variable is set, DVC
+will notify Studio about new experiments, and display a Studio project URL to
+view experiments.
+[Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
+or check
+[this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
+
 ## Options
 
 - `-A`, `--all-commits` - push all experiments in the repository (overrides
@@ -102,9 +109,9 @@ Let's say we have run 3 experiments in our project:
 ```cli
 $ dvc exp list --all-commits
 11-bigrams-experiment:
-        conic-ease
-        lucid-lair
-        major-mela
+    1d4c01d [conic-ease]
+    a80bca5 [lucid-lair]
+    9380a12 [major-mela]
 ```
 
 We would now like to share one of them with others via the Git remote:
@@ -119,5 +126,5 @@ We can now see that the experiment exists in the remote repo:
 ```cli
 $ dvc exp list --all origin
 master:
-        conic-ease
+    conic-ease
 ```

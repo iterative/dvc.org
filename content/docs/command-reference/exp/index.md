@@ -8,7 +8,7 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
 [remove](/doc/command-reference/exp/remove),
-[gc](/doc/command-reference/exp/gc), [push](/doc/command-reference/exp/push),
+[push](/doc/command-reference/exp/push),
 [pull](/doc/command-reference/exp/pull),
 [list](/doc/command-reference/exp/list), and
 [clean](/doc/command-reference/exp/clean).
@@ -19,7 +19,7 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 
 ```usage
 usage: dvc exp [-h] [-q | -v]
-          {show,apply,diff,run,gc,branch,list,push,pull,remove,init,clean}
+          {show,apply,diff,run,branch,list,push,pull,remove,clean}
           ...
 
 positional arguments:
@@ -30,7 +30,6 @@ positional arguments:
     branch              Promote an experiment to a Git branch.
     clean               Cleanup experiments temporary internal files.
     diff                Show changes between experiments.
-    gc                  Garbage collect unneeded experiments.
     list                List local and remote experiments.
     pull                Pull an experiment from a Git remote.
     push                Push a local experiment to a Git remote.

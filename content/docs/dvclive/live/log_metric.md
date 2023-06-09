@@ -1,7 +1,7 @@
 # Live.log_metric()
 
 ```py
- def log_metric(name: str, val: float):
+ def log_metric(name: str, val: float, plot: Optional[bool] = True):
 ```
 
 ## Usage
@@ -92,6 +92,9 @@ dvc metrics diff dvclive/metrics.json
 - `name` - Name of the metric being logged.
 
 - `val` - The value to be logged.
+
+- `plot` - Whether to add the metric value to the _metrics history_ file for
+  plotting. If `false`, the metric will only be saved to the metrics summary.
 
 ## Exceptions
 

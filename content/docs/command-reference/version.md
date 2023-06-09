@@ -19,7 +19,6 @@ usage: dvc version [-h] [-q | -v]
 | `Supports`                                  | Types of [remote storage] supported by the current DVC setup (their required dependencies are installed)                                                             |
 | `Cache types`                               | [Types of links] supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)                                                                                   |
 | `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                |
-| `Caches`                                    | Cache [location types] configured in the repo (e.g. local, SSH, S3, etc.)                                                                                            |
 | `Remotes`                                   | Remote [location types][remote storage] configured in the repo (e.g. SSH, S3, Google Drive, etc.)                                                                    |
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
@@ -27,7 +26,6 @@ usage: dvc version [-h] [-q | -v]
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [types of links]:
   /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
-[location types]: /doc/user-guide/data-management/managing-external-data
 
 > No info about `Cache` or `Workspace directory` is printed if `dvc version` is
 > used outside a DVC project.

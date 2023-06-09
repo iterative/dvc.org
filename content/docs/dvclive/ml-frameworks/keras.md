@@ -62,8 +62,8 @@ with Live("custom_dir") as live:
 
     # Log additional data after training
     test_loss, test_acc = model.evaluate(test_dataset)
-    live.summary["test_loss"] = test_loss
-    live.summary["test_acc"] = test_acc
+    live.log_metric("test_loss", test_loss, plot=False)
+    live.log_metric("test_acc", test_acc, plot=False)
 ```
 
 - Using `model_file` and `save_weights_only`.

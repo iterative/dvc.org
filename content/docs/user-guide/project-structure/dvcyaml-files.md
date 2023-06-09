@@ -2,9 +2,9 @@
 
 You can configure machine learning projects in one or more `dvc.yaml` files. The
 list of [`stages`](#stages) is typically the most important part of a `dvc.yaml`
-file, though the file can also be used to configure [`metrics`](#metrics),
-[`params`](#params), and [`plots`](#plots), either as part of a stage definition
-or on their own.
+file, though the file can also be used to configure [`artifacts`](#artifacts),
+[`metrics`](#metrics), [`params`](#params), and [`plots`](#plots), either as
+part of a stage definition or on their own.
 
 `dvc.yaml` uses the [YAML 1.2](https://yaml.org/) format and a human-friendly
 schema explained below. We encourage you to get familiar with it so you may
@@ -12,6 +12,38 @@ modify, write, or generate them by your own means.
 
 `dvc.yaml` files are designed to be small enough so you can easily version them
 with Git along with other <abbr>DVC files</abbr> and your project's code.
+
+## Artifacts
+
+This section allows you to declare structured metadata about your artifacts.
+Although you can specify artifacts of any `type`, DVC-based
+[model registry](/doc/use-cases/model-registry) will pick up any artifacts with
+type `model`. Additionally, they will be available in
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
+
+```yaml
+artifacts:
+  cv-classification: # artifact ID (name)
+    path: models/resnet.pt
+    type: model
+    desc: 'CV classification model, ResNet50'
+    labels:
+      - resnet50
+      - classification
+    meta:
+      framework: pytorch
+```
+
+Artifact IDs must consist of letters and numbers, and use '-' as separator (but
+not at the start or end).
+
+<admon icon="bulb">
+
+To migrate from the old GTO-based Model Registry by moving artifact annotations
+from `artifacts.yaml` to `dvc.yaml`, use
+[this helper script](https://gist.github.com/aguschin/9ad9ee8adf02a42d08dda92ee6d4497f).
+
+</admon>
 
 ## Metrics
 
@@ -50,12 +82,17 @@ directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
 If the ID is an arbitrary string, a file path must be provided in the `y` field
 (`x` file path is always optional and cannot be the only path provided).
 
+In addition to these "top-level plots," users can mark specific stage
+<abbr>outputs</abbr> as [plot outputs](#metrics-and-plots-outputs). DVC will
+collect both types and display everything conforming to each plot configuration.
+If any stage plot files or directories are also used in a top-level definition,
+DVC will create separate rendering for each type.
+
 <admon icon="book">
 
 Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
-[visualizing plots]:
-  /doc/user-guide/experiment-management/visualizing-plots#top-level-plots
+[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 </admon>
 
