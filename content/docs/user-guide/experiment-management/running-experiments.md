@@ -37,10 +37,6 @@ $ dvc exp run
 Reproduced experiment(s): matte-vies
 ```
 
-> ⚠️ Note that any changed dependencies are committed to the DVC cache when
-> preparing the experiment, which can take some time. `dvc exp gc` can clean up
-> unnecessary ones.
-
 DVC observes the [dependency graph] between stages, so it only runs the ones
 with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
 can limit this to certain [reproduction targets] or even single stages
@@ -239,41 +235,3 @@ composition].
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 
 </admon>
-
-## Checkpoint experiments
-
-To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register "checkpoints" from your code. These combine DVC Experiments with code
-logging. The latter can be achieved either with [DVCLive](/doc/dvclive), by
-using `dvc.api.make_checkpoint()` (Python code), or writing signal files (any
-programming language) following the same steps as `make_checkpoint()`.
-
-<admon icon="book">
-
-See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
-more about this feature.
-
-</admon>
-
-Running checkpoint experiments is no different than running regular ones, e.g.:
-
-```cli
-$ dvc exp run -S param=value
-```
-
-All checkpoints registered at runtime will be preserved, even if the process
-gets interrupted (e.g. with `Ctrl+C`, or by an error). Without interruption, a
-"wrap-up" checkpoint will be added (if needed), so that changes to pipeline
-outputs don't remain in the workspace.
-
-Subsequent uses of `dvc exp run` will resume from the latest checkpoint (using
-the latest cached versions of all outputs). To resume from a previous checkpoint
-(list them with `dvc exp show`), you must first `dvc exp apply` it before using
-`dvc exp run`. For `--queue` or `--temp` runs, use `--rev` to specify the
-checkpoint to resume from.
-
-Alternatively, use `--reset` to start over (discards previous checkpoints and
-their outputs). This is useful for re-training ML models, for example.
-
-> Note that queuing an experiment that uses checkpoints implies `--reset`,
-> unless a `--rev` is provided (refer to the previous section).

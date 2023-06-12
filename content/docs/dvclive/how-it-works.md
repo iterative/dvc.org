@@ -44,7 +44,7 @@ with Live(save_dvc_exp=True) as live:
         Path("model.pt").write_text(str(random.random()))
         live.next_step()
 
-    live.log_artifact("model.pt")
+    live.log_artifact("model.pt", type="model", name="mymodel")
     live.log_sklearn_plot("confusion_matrix", [0, 0, 1, 1], [0, 1, 0, 1])
     live.log_metric("summary_metric", 1.0, plot=False)
 # live.end() has been called at this point
@@ -92,8 +92,8 @@ the versioned artifact from the Git commit.
 If `Live` was initialized with `dvcyaml=True` (which is the default), this will
 add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to
 the corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model`
-for DVC and will also make [Studio Model Registry](/doc/studio) support it
-(coming soon!).
+for DVC and will also show it in
+[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
 ### Run with DVC
 

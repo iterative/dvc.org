@@ -145,6 +145,8 @@ with Live(save_dvc_exp=True) as live:
             live.log_metric(metric_name, value)
 
         live.next_step()
+
+    live.log_artifact(path, type="model", name=name)
 ```
 
 ## Outputs

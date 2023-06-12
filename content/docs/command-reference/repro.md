@@ -7,7 +7,7 @@ Reproduce complete or partial <abbr>pipelines</abbr> by running their
 
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-i]
-                 [-s] [-p] [-P] [-R] [-m]
+                 [-s] [-p] [-P] [-R]
                  [--downstream] [--force-downstream]
                  [--pull] [--dry] [--allow-missing]
                  [--glob] [--no-commit] [--no-run-cache]
@@ -143,10 +143,6 @@ final stage.
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
   caching unnecessary data when exploring different data or stages. Use
   `dvc commit` to finish the operation.
-
-- `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
-  have at least one [metrics](/doc/command-reference/metrics) file defined in
-  `dvc.yaml`.
 
 - `--dry` - only print the commands that would be executed without actually
   executing the commands.

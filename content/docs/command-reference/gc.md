@@ -114,7 +114,7 @@ project we want to clear.
 
 - `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's
-  [experimental] data (including checkpoints). See also `dvc exp gc`.
+  [experimental] data.
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache is
   shared] among different projects, this option can be used to specify a list of

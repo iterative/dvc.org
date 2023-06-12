@@ -166,15 +166,19 @@
           },
           "cloud-versioning",
           "discovering-and-accessing-data",
-          "importing-external-data",
-          "managing-external-data",
+          { "label": "External Data", "slug": "importing-external-data" },
           "large-dataset-optimization"
         ]
       },
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines", "running-pipelines", "run-cache"]
+        "children": [
+          "defining-pipelines",
+          "running-pipelines",
+          "run-cache",
+          "external-dependencies-and-outputs"
+        ]
       },
       {
         "label": "Experiment Management",
@@ -187,8 +191,7 @@
           "visualizing-plots",
           "sharing-experiments",
           "persisting-experiments",
-          "cleaning-experiments",
-          "checkpoints"
+          "cleaning-experiments"
         ]
       },
       {
@@ -283,10 +286,6 @@
           {
             "label": "exp diff",
             "slug": "diff"
-          },
-          {
-            "label": "exp gc",
-            "slug": "gc"
           },
           {
             "label": "exp list",
@@ -550,10 +549,6 @@
       {
         "slug": "get_url",
         "label": "get_url()"
-      },
-      {
-        "slug": "make_checkpoint",
-        "label": "make_checkpoint()"
       },
       {
         "slug": "metrics_show",

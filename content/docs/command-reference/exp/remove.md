@@ -20,8 +20,6 @@ Deletes one or more experiments, indicated by name (see `dvc exp run`) or ID
 
 With `--queue`, the list of experiments awaiting execution is cleared instead.
 
-> Note that all the checkpoints in an experiment are removed by this command.
-
 ## Options
 
 - `--queue` - remove all experiments that haven't been run yet (defined via

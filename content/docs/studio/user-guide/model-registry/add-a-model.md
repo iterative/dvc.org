@@ -5,9 +5,9 @@ your model registry, Iterative Studio creates an annotation for it in a
 `dvc.yaml` file in your Git repository. You can add a model in any of the
 following ways:
 
-1. Log your model during the training process using [dvclive].
-2. Edit [`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files#artifacts)
-   directly.
+1. Log your model during the training process using [dvclive] by calling
+   [`live.log_artifact(path, type="model")`][log_artifact] method.
+2. Edit `dvc.yaml` directly and add your model to [`artifacts`] section.
 3. Use the Iterative Studio interface (watch this tutorial video or read on
    below).
 
@@ -41,8 +41,7 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 
 5. Provide labels for your model. For example, if your model is about reviewing
    sentiment analysis using natural language processing, one of the labels may
-   be `nlp`. You can provide multiple labels as a comma separated list. Eg,
-   `nlp, sentiment_analysis`.
+   be `nlp` or `sentiment_analysis`.
 
 6. Optionally, add a brief description for your model.
 
@@ -75,4 +74,6 @@ before the commit is created:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
 [gto]: https://mlem.ai/doc/gto
 [mlem]: https://mlem.ai/
-[dvclive]: /doc/dvclive/live/log_artifact
+[dvclive]: /doc/dvclive
+[log_artifact]: /doc/dvclive/live/log_artifact
+[`artifacts`]: /doc/user-guide/project-structure/dvcyaml-files#artifacts

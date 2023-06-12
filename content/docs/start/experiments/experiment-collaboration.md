@@ -46,10 +46,17 @@ $ dvc exp pull origin "soupy-leak"
 
 <tab title="VSCode Extension">
 
-You can right-click on the experiment row and select the `Share to Studio`
-action:
+You can right-click on the experiment row and select the `Push Selected` action:
 
-![VSCode Share to Studio](/img/vscode-sharing.gif)
+![VSCode Push](/img/vscode-sharing.gif)
+
+</tab>
+
+<tab title="Studio">
+
+Manage shared experiments from [Studio]:
+
+![Studio Shared Experiments](/img/studio-shared-exps.png)
 
 </tab>
 
@@ -86,7 +93,16 @@ Git branch 'soupy-leak-branch' has been created from experiment 'soupy-leak'.
 You can right-click on the experiment row and select the `Create a new Branch`
 action:
 
-![VSCode Create a new Branch](/img/vscode-branch.gif)
+![VSCode Create a New Branch](/img/vscode-branch.gif)
+
+</tab>
+
+<tab title="Studio">
+
+You can click to the right of the experiment and select the
+`Create branch/pull request` action:
+
+![Studio Create a New Branch](/img/studio-branch.gif)
 
 </tab>
 
@@ -126,18 +142,26 @@ $ dvc exp remove bifid-says potty-sash
 
 <tab title="VSCode Extension">
 
-You can select multiple experiment rows and use the `Remove selected rows`
-action:
+You can select multiple experiment rows and use the `Remove selected` action:
 
 ![VSCode Remove selected rows](/img/vscode-remove.gif)
 
 </tab>
 
-</toggle>
+<tab title="Studio">
 
+You can click to the right of the experiment and use the `Delete` action:
+
+![Studio Remove selected rows](/img/studio-remove.gif)
+
+</tab>
+
+</toggle>
 <admon type="info">
 
 Learn more about
 [Cleaning Experiments](/doc/user-guide/experiment-management/cleaning-experiments)
 
 </admon>
+
+[studio]: https://studio.iterative.ai

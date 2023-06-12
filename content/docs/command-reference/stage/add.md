@@ -8,7 +8,7 @@ Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`.
 usage: dvc stage add [-h] [-q | -v] -n <name> [-f]
                  [-d <path>] [-p [<filename>:]<params_list>]
                  [-o <filename>] [-O <filename>] [-c <filename>]
-                 [--external] [--outs-persist <filename>]
+                 [--outs-persist <filename>]
                  [--outs-persist-no-cache <filename>]
                  [-m <path>] [-M <path>]
                  [--plots <path>] [--plots-no-cache <path>]
@@ -19,6 +19,14 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-f]
 positional arguments:
   command               Command to execute
 ```
+
+<details>
+
+### Options deprecated in 3.0
+
+- `--external`
+
+</details>
 
 ## Description
 
@@ -84,8 +92,8 @@ is reproduced (see also `dvc gc`). Relevant notes:
   which generates a single `.dir` entry in the cache (refer to [Structure of
   cache directory] for more info.)
 
-- [external dependencies] and [external outputs] (outside of the
-  <abbr>workspace</abbr>) are also supported (except metrics and plots).
+- [external dependencies and outputs] (outside of the <abbr>workspace</abbr>)
+  are also supported (except metrics and plots).
 
 - Since <abbr>outputs</abbr> are deleted from the workspace before executing
   stage commands, the underlying code should create any directory structures
@@ -102,8 +110,8 @@ is reproduced (see also `dvc gc`). Relevant notes:
   /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
 [structure of cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
-[external dependencies]: /doc/user-guide/external-dependencies
-[external outputs]: /doc/user-guide/managing-external-data
+[external dependencies and outputs]:
+  /doc/user-guide/pipelines/external-dependencies-and-outputs
 [manual process]: /doc/command-reference/move#renaming-stage-outputs
 
 ### For displaying and comparing data science experiments
@@ -161,10 +169,6 @@ data science experiments.
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
 
-- `-c <path>`, `--checkpoints <path>` - the same as `-o` but also marks the
-  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). This
-  makes the stage incompatible with `dvc repro`.
-
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
   or more [parameter dependencies][param-deps] from a structured file `path`
   (`./params.yaml` by default). This is done by sending a comma separated list
@@ -208,9 +212,6 @@ data science experiments.
 - `--always-changed` - always consider this stage as changed (sets the
   `always_changed` field in `dvc.yaml`). As a result DVC will always execute it
   when reproducing the pipeline.
-
-- `--external` - allow writing outputs outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/data-management/managing-external-data).
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
