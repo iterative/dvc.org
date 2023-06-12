@@ -1,18 +1,21 @@
 # Running Experiments
 
-We explain how to execute DVC Experiments, setting their parameters, queueing
+We explain how to execute DVC experiments, setting their parameters, queueing
 them for future execution, running them in parallel, among other details.
 
 <admon icon="book">
 
-If this is the first time you are introduced into data science experimentation,
-you may want to check the basics in [Get Started: Experiments] first.
+This page is not applicable if you are [saving experiments] without a pipeline.
 
+If this is the first time you are introduced to DVC experimentation, you may
+want to check the basics in [Get Started: Experiments] first.
+
+[saving experiments]: /doc/user-guide/experiment-management#save-experiments
 [get started: experiments]: /doc/start/experiments
 
 </admon>
 
-## `dvc.yaml` files
+## Running experiment commands and pipelines
 
 DVC relies on `dvc.yaml` files that contain the commands to run the
 experiment(s). These files codify _pipelines_ that specify one or more
@@ -21,21 +24,40 @@ experiment(s). These files codify _pipelines_ that specify one or more
 
 <admon icon="book">
 
-See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro to
-this topic.
+See [Get Started: Experimenting Using Pipelines] for an intro to this topic.
+
+[get started: experimenting using pipelines]:
+  /doc/start/experiments/experiment-pipelines
 
 </admon>
 
-### Running the pipeline(s)
+### Running the pipeline(s) locally
 
 You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
 `./dvc.yaml` (in the current directory) by default.
+
+<toggle>
+
+<tab title="DVC CLI">
 
 ```cli
 $ dvc exp run
 ...
 Reproduced experiment(s): matte-vies
 ```
+
+</tab>
+
+<tab title="VSCode Extension">
+
+Look for the `Run experiment` icon in any of the available menus and click to
+run:
+
+![VSCode Run experiment](/img/vscode-run-exp.png)
+
+</tab>
+
+</toggle>
 
 DVC observes the [dependency graph] between stages, so it only runs the ones
 with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
@@ -48,14 +70,26 @@ once.
 
 <admon icon="book">
 
-`dvc exp run` is an experiment-specific alternative to `dvc repro`.
-`dvc exp save` can be used to capture experiments after executing ML processes
-manually.
+`dvc exp run` is an experiment-specific alternative to `dvc repro`. See [Running
+Pipelines] for differences between them.
 
 </admon>
 
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+[running pipelines]: /doc/user-guide/pipelines/running-pipelines
+
+### Running the pipeline(s) on cloud
+
+You can use [Studio] to run the experiment pipeline on a remote compute instance
+using your own cloud infrastructure. This will spin up a cloud compute instance
+on your cloud provider, run a setup script, execute your pipeline using
+`dvc exp run`, and share the results back to Studio. See the Studio [Run
+Experiments] guide.
+
+[studio]: https://studio.iterative.ai
+[run experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
 
 ## Experiment results
 
@@ -63,9 +97,9 @@ The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
 They are stored and tracked internally by DVC.
 
 To display and compare multiple experiments along with their
-<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
-`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
-[Reviewing and Comparing Experiments][reviewing] for more details.
+<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show`.
+`plots diff` also accepts experiments as `revisions`. See [Reviewing and
+Comparing Experiments][reviewing] for more details.
 
 Use `dvc exp apply` to restore the results of any other experiment instead. See
 [Bring experiment results to your workspace][apply] for more info.
@@ -105,18 +139,39 @@ inputs. Since this is a common sequence, the built-in option
 `dvc exp run --set-param` (`-S`) is provided as a shortcut. It takes an existing
 param name and value, and updates the file on-the-fly before execution.
 
+<toggle>
+
+<tab title="DVC CLI">
+
 ```cli
 $ cat params.yaml
-model:
-  learning_rate: 0.001
-  units=64
-
-$ dvc exp run --set-param model.learning_rate=0.0002
+...
+train:
+  valid_pct: 0.1
+  arch: shufflenet_v2_x2_0
+  img_size: 256
+  batch_size: 8
+  fine_tune_args:
+    epochs: 8
+    base_lr: 0.01
 ...
 
-$ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
+$ dvc exp run --set-param train.fine_tune_args.base_lr=0.001
+...
+
+$ dvc exp run -S train.img_size=1024 -S train.batch_size=512  # set multiple params
 ...
 ```
+
+</tab>
+
+<tab title="VSCode Extension">
+
+![VSCode Modify and run experiment](/img/vscode-modify-and-run.gif)
+
+</tab>
+
+</toggle>
 
 [random forest classifier]:
   https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
@@ -134,19 +189,65 @@ or remove, or use "choice" sets and ranges).
 ## The experiments queue
 
 The `--queue` option of `dvc exp run` tells DVC to append an experiment for
-later execution. Nothing is actually run yet. Let's setup a simple
-hyperparameter [grid search]:
+later execution. Nothing is actually run yet. Let's queue a couple experiments:
+
+<toggle>
+
+<tab title="DVC CLI">
 
 ```cli
-$ dvc exp run --queue -S units=10
-Queued experiment '1cac8ca' for future execution.
-$ dvc exp run --queue -S units=64
-Queued experiment '23660bb' for future execution.
-$ dvc exp run --queue -S units=128
-Queued experiment '3591a5c' for future execution.
-$ dvc exp run --queue -S units=256
-Queued experiment '4109ead' for future execution.
+$ dvc exp run --queue -S train.fine_tune_args.base_lr=0.001
+Queueing with overrides '{'params.yaml': ['train.fine_tune_args.base_lr=0.001']}'.
+Queued experiment 'blowy-pail' for future execution.
+$ dvc exp run --queue -S train.fine_tune_args.base_lr=0.002
+Queueing with overrides '{'params.yaml': ['train.fine_tune_args.base_lr=0.002']}'.
+Queued experiment 'nubby-gram' for future execution.
 ```
+
+</tab>
+
+<tab title="VSCode Extension">
+
+![VSCode Queue experiments](/img/vscode-queue.gif)
+
+</tab>
+
+</toggle>
+
+Alternatively, we can setup a hyperparameter [grid search]:
+
+<toggle>
+
+<tab title="DVC CLI">
+
+```cli
+$ dvc exp run --queue \
+    -S train.arch='resnet18,shufflenet_v2_x2_0' \
+    -S 'train.fine_tune_args.base_lr=range(0.001, 0.01, 0.001)'
+Queueing with overrides '{'params.yaml': ['train.arch=resnet18', 'train.fine_tune_args.base_lr=0.001']}'.
+Queued experiment 'bijou-chis' for future execution.
+Queueing with overrides '{'params.yaml': ['train.arch=resnet18', 'train.fine_tune_args.base_lr=0.002']}'.
+Queued experiment 'color-meal' for future execution.
+Queueing with overrides '{'params.yaml': ['train.arch=resnet18', 'train.fine_tune_args.base_lr=0.003']}'.
+Queued experiment 'fusil-chin' for future execution.
+...
+Queueing with overrides '{'params.yaml': ['train.arch=shufflenet_v2_x2_0', 'train.fine_tune_args.base_lr=0.001']}'.
+Queued experiment 'lumpy-jato' for future execution.
+Queueing with overrides '{'params.yaml': ['train.arch=shufflenet_v2_x2_0', 'train.fine_tune_args.base_lr=0.002']}'.
+Queued experiment 'gypsy-wino' for future execution.
+Queueing with overrides '{'params.yaml': ['train.arch=shufflenet_v2_x2_0', 'train.fine_tune_args.base_lr=0.003']}'.
+...
+```
+
+</tab>
+
+<tab title="VSCode Extension">
+
+![VSCode grid search](/img/vscode-grid-search.gif)
+
+</tab>
+
+</toggle>
 
 [grid search]:
   https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
@@ -185,9 +286,8 @@ by using more than one `--jobs` (to `dvc queue start` more than one worker).
 
 <admon type="warn">
 
-Parallel runs (using `--jobs` > 1) are experimental and may be unstable. Make
-sure you're using number of jobs that your environment can handle (no more than
-the CPU cores).
+Make sure you're using number of jobs that your environment can handle (no more
+than the CPU cores).
 
 Note that since queued experiments are run isolated from each other, common
 stages may be executed multiple times depending on the state of the
