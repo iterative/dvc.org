@@ -109,6 +109,8 @@ stages:
 
 ## Pull Missing Data
 
+By default, DVC expects that all data to run the pipeline is available locally.
+Any missing data will be considered deleted and may cause the pipeline to fail.
 `--pull` will download missing dependencies (and will download the cached
 outputs of previous runs saved in the [run cache]), so you don't need to pull
 all data for your project before running the pipeline. `--allow-missing` will
@@ -156,13 +158,13 @@ Not in cache:
         data/train_data/
 ```
 
-We can modify the `evaluate` stage (for example, we changed the code to add a
-new evaluation method) and DVC will only pull the necessary data to run that
-stage (`models/model.pkl` `data/test_data/`) while skipping the rest of the
-stages:
+We can modify the `evaluate` stage and DVC will only pull the necessary data to
+run that stage (`models/model.pkl` `data/test_data/`) while skipping the rest of
+the stages:
 
 ```cli
-$ dvc exp run
+$ dvc exp run --pull --allow-missing --set-param evaluate.n_samples_to_save=20
+Reproducing experiment 'hefty-tils'
 'data/pool_data.dvc' didn't change, skipping
 Stage 'data_split' didn't change, skipping
 Stage 'train' didn't change, skipping
@@ -173,7 +175,13 @@ Running stage 'evaluate':
 ## Verify Pipeline Status
 
 In scenarios like CI jobs, you may want to check that the pipeline is up to date
-without pulling or running anything. You can check that nothing has changed:
+without pulling or running anything. `dvc exp run --dry` will check which
+pipeline stages to run without actually running them. However, if data is
+missing, `--dry` will fail because DVC does not know whether that data simply
+needs to be pulled or is missing for some other reason. To check which stages to
+run and ignore any missing data, use `dvc exp run --dry --allow-missing`.
+
+This command will succeed if nothing has changed:
 
 <details>
 
@@ -215,7 +223,7 @@ Stage 'train' didn't change, skipping
 Stage 'evaluate' didn't change, skipping
 ```
 
-If anything is not up to date, the pipeline will fail:
+If anything is not up to date, the command will fail:
 
 <details>
 
@@ -254,12 +262,12 @@ data/pool_data.dvc:
 $ dvc exp run --allow-missing --dry
 Reproducing experiment 'dozen-jogs'
 'data/pool_data.dvc' didn't change, skipping
-ERROR: failed to reproduce 'data_split': [Errno 2] No such file or directory: '/private/tmp/example-get-started-experiments/data/pool_data'
+ERROR: failed to reproduce 'data_split': [Errno 2] No such file or directory: '.../example-get-started-experiments/data/pool_data'
 ```
 
-You can also check that all data exists on the remote. The command below will
-succeed (set the exit code to `0`) if all data is found in the remote.
-Otherwise, it will fail (set the exit code to `1`).
+To ensure any missing data exists, you can also check that all data exists on
+the remote. The command below will succeed (set the exit code to `0`) if all
+data is found in the remote. Otherwise, it will fail (set the exit code to `1`).
 
 ```cli
 $ dvc data status --not-in-remote --json | grep -v not_in_remote

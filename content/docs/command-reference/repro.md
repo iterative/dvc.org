@@ -404,7 +404,7 @@ run that stage (`models/model.pkl` `data/test_data/`) while skipping the rest of
 the stages:
 
 ```cli
-$ dvc reproduce
+$ dvc repro --pull --allow-missing
 'data/pool_data.dvc' didn't change, skipping
 Stage 'data_split' didn't change, skipping
 Stage 'train' didn't change, skipping
