@@ -13,7 +13,7 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-f]
                  [-m <path>] [-M <path>]
                  [--plots <path>] [--plots-no-cache <path>]
                  [-w <path>] [--always-changed] [--desc <text>]
-		 [--run]
+                 [--run]
                  command
 
 positional arguments:
