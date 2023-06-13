@@ -34,7 +34,7 @@ For this, you need to:
    from `requirements.txt`, although advanced users can specify requirements
    differently by modifying the script.
 
-[script for cloud experiments]: #submit-an-experiment
+[script for cloud experiments]: #submit-a-new-experiment
 
 ### Submit a new experiment
 
