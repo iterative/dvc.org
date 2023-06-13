@@ -20,14 +20,6 @@ positional arguments:
   command               Command to execute
 ```
 
-<details>
-
-### Options deprecated in 3.0
-
-- `--external`
-
-</details>
-
 ## Description
 
 Writes stage definitions to `dvc.yaml` (in the current working directory). To
