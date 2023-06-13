@@ -82,10 +82,140 @@ In this section, you can,
 
 ## Cloud credentials
 
-Here, you can see all the credentials you have added for your cloud / data
+Here, you can see all the credentials you have added for your cloud and data
 remotes. You can also add new credentials as well as edit or delete existing
-credentials. The credentials that you add here will become available to use with
-your projects in Iterative Studio.
+credentials. These credentials useful in two cases:
+
+- To
+  [fetch project data from data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials)
+- To
+  [create cloud resources for running experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments#cloud-experiments)
+
+To add credentials, click on your user icon in the top right corner and go to
+your [Profile]. Navigate to `Cloud Credentials` and click `Add credentials`.
+Select the cloud provider (note that
+[cloud experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments#cloud-experiments)
+currently support AWS and GCP). Depending on the provider, you will be asked for
+more details.
+
+![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
+
+The credentials must have the required permissions. For
+[cloud experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments#cloud-experiments),
+the following permissions are needed:
+
+<details>
+
+#### AWS
+
+```
+"autoscaling:CreateAutoScalingGroup",
+"autoscaling:DeleteAutoScalingGroup",
+"autoscaling:DescribeAutoScalingGroups",
+"autoscaling:DescribeScalingActivities",
+"autoscaling:UpdateAutoScalingGroup",
+"ec2:AuthorizeSecurityGroupEgress",
+"ec2:AuthorizeSecurityGroupIngress",
+"ec2:CancelSpotInstanceRequests",
+"ec2:CreateKeyPair",
+"ec2:CreateLaunchTemplate",
+"ec2:CreateSecurityGroup",
+"ec2:CreateTags",
+"ec2:DeleteKeyPair",
+"ec2:DeleteLaunchTemplate",
+"ec2:DeleteSecurityGroup",
+"ec2:DescribeAutoScalingGroups",
+"ec2:DescribeImages",
+"ec2:DescribeInstanceTypeOfferings",
+"ec2:DescribeInstances",
+"ec2:DescribeKeyPairs",
+"ec2:DescribeLaunchTemplates",
+"ec2:DescribeScalingActivities",
+"ec2:DescribeSecurityGroups",
+"ec2:DescribeSpotInstanceRequests",
+"ec2:DescribeSubnets",
+"ec2:DescribeVpcs",
+"ec2:GetLaunchTemplateData",
+"ec2:ImportKeyPair",
+"ec2:ModifyImageAttribute",
+"ec2:ModifyLaunchTemplate",
+"ec2:RequestSpotInstances",
+"ec2:RevokeSecurityGroupEgress",
+"ec2:RevokeSecurityGroupIngress",
+"ec2:RunInstances",
+"ec2:TerminateInstances",
+"s3:CreateBucket",
+"s3:DeleteBucket",
+"s3:DeleteObject",
+"s3:GetObject",
+"s3:ListBucket",
+"s3:PutObject",
+```
+
+See
+https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/aws/main.tf
+
+</details>
+
+<details>
+
+#### GCP
+
+```
+"compute.acceleratorTypes.get",
+"compute.diskTypes.get",
+"compute.disks.create",
+"compute.firewalls.create",
+"compute.firewalls.delete",
+"compute.firewalls.get",
+"compute.globalOperations.get",
+"compute.instanceGroupManagers.create",
+"compute.instanceGroupManagers.delete",
+"compute.instanceGroupManagers.get",
+"compute.instanceGroupManagers.update",
+"compute.instanceGroups.create",
+"compute.instanceGroups.delete",
+"compute.instanceGroups.get",
+"compute.instanceTemplates.create",
+"compute.instanceTemplates.delete",
+"compute.instanceTemplates.get",
+"compute.instanceTemplates.useReadOnly",
+"compute.instances.create",
+"compute.instances.delete",
+"compute.instances.get",
+"compute.instances.setMetadata",
+"compute.instances.setServiceAccount",
+"compute.instances.setTags",
+"compute.machineTypes.get",
+"compute.networks.create",
+"compute.networks.get",
+"compute.networks.updatePolicy",
+"compute.subnetworks.use",
+"compute.subnetworks.useExternalIp",
+"compute.zoneOperations.get",
+"iam.serviceAccounts.actAs",
+"storage.buckets.create",
+"storage.buckets.delete",
+"storage.buckets.get",
+"storage.multipartUploads.abort",
+"storage.multipartUploads.create",
+"storage.multipartUploads.list",
+"storage.multipartUploads.listParts",
+"storage.objects.create",
+"storage.objects.delete",
+"storage.objects.get",
+"storage.objects.list",
+"storage.objects.update",
+```
+
+See
+https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/gcp/main.tf
+
+</details>
+
+[profile]: https://studio.iterative.ai/user/_/profile
+
+Finally, click `Save credentials`.
 
 ## Delete account
 

@@ -1,8 +1,12 @@
 # Run Experiments
 
-You can train your model on the cloud and run experiments with different
-hyperparameters or different datasets. You can configure the experiments to run
-on your own cloud infrastructure.
+Iterative Studio can train your model and run experiments with different
+hyperparameters or datasets. Experiments can be
+
+- [Cloud experiments](#cloud-experiments), that run on your own cloud,
+  independent of your CI/CD setup, or
+- [CI-based experiments](#ci-based-experiments), that invoke your CI/CD setup
+  for model training. The training can run on your own cloud.
 
 > Due to access restrictions, you cannot run experiments on the demo projects
 > that are provided to you by default. Once you connect to your ML project
@@ -18,104 +22,64 @@ Cloud experiments are in alpha release and are subject to change.
 </admon>
 
 Run your experiments on your own cloud compute instances in AWS, Azure, and GCP.
-To get started, you need:
+For this, you need to:
 
-1. Credentials for the cloud provider.
-2. A [DVC experiment pipeline]. The default [script] runs a DVC pipeline,
-   although advanced users can run without a pipeline by modifying the script.
-3. A `requirements.txt` file listing Python packages required by the project.
-   The default [script] installs all requirements from `requirements.txt`,
-   although advanced users can specify requirements differently by modifying the
-   script.
+1. Set up
+   [credentials for the cloud provider](/doc/studio/user-guide/account-management#cloud-credentials)
+2. Create a [DVC experiment pipeline] in your project. Note that while the
+   default [script for cloud experiments] runs a DVC pipeline, advanced users
+   can run without a pipeline by modifying the script.
+3. Create a `requirements.txt` file listing all Python packages required by the
+   project. The default [script for cloud experiments] installs all requirements
+   from `requirements.txt`, although advanced users can specify requirements
+   differently by modifying the script.
 
-[script]: #submit-an-experiment
-
-### Setup Credentials
-
-To enable cloud experiments, first add credentials (or use credentials from a
-[data remote]). To add credentials, click on your user icon in the top right
-corner and go to your [Profile]. Navigate to [Cloud Credentials] and click
-`Add credentials`. Select either AWS, Azure, or GCP as the provider. Depending
-on the provider, you will be asked for more details. Finally, click
-`Save credentials`.
-
-![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
-
-The credentials must have the required permissions. See details and examples for
-each provider below:
-
-<details>
-
-#### AWS
-
-See
-https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/aws/main.tf
-
-</details>
-
-<details>
-
-#### Azure
-
-See
-https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/az/main.tf
-
-</details>
-
-<details>
-
-#### GCP
-
-See
-https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/gcp/main.tf
-
-</details>
-
-[data remote]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#credentials
-[profile]: https://studio.iterative.ai/user/_/profile
-[cloud credentials]: /doc/studio/user-guide/account-management
+[script for cloud experiments]: #submit-an-experiment
 
 ### Submit a new experiment
 
-Once you have added credentials, navigate to the project and select the Git
-commit from which you want to iterate. Click the `Run` button at the top to open
-the form to run an experiment.
+Once you have added credentials, navigate to the project and follow these steps:
 
-At the top of the form, configure the cloud instance (including the region,
-size, GPU, HDD, timeout, and whether to use a spot instance). Under the
-`Parameters` tab, optionally modify any parameters of your [DVC experiment
-pipeline]. Under the `Script` tab, you can see the commands that will be run on
-the cloud instance and optionally modify them (this is not recommended unless
-you know what you are doing since it could cause the experiment to fail). At the
-bottom of the form, click `Run Experiment` to start the experiment.
+- Select the Git commit from which you want to iterate. Click the `Run` button
+  at the top to open the form to run an experiment. In the form, switch to the
+  `Cloud` tab to run cloud experiments.
+- At the top of the form, configure the cloud instance. You will find
+  configurations for the cloud region, instance size, disk size, whether to use
+  a spot instance, etc.
+- Under the `Parameters` tab, optionally
+  [modify any parameters](#hyperparameters) of your [DVC experiment pipeline].
+- Under the `Script` tab, you can see the commands that will be run on the cloud
+  instance. You can modify this script, although this is not recommended unless
+  you know what you are doing, as it could cause the experiment to fail.
+- At the bottom of the form, click `Run Experiment` to start the experiment.
 
 [dvc experiment pipeline]: /doc/start/experiments/experiment-pipelines
 
 ### Monitor a running experiment
 
-Once you submit an experiment, the instance is created and the job script is
-run. A new row is created in the experiments table under the original Git
-commit. [Live updates to metrics and plots] generated by [DVCLive] will show up
-in this row, and you can click on the experiment name to view the status and
-output log of the running experiment task.
+Once you submit an experiment, Iterative Studio creates the cloud instance and
+runs the job script. A new row is created in the experiments table under the
+original Git commit. [Live updates to metrics and plots] generated by [DVCLive]
+will show up in this row, and you can click on the experiment name to view the
+status and output log of the running experiment task.
 
 ![Studio View logs and live metrics of cloud experiments](/img/studio-cloud_exp_logs_and_live_metrics.gif)
 
 ### Manage a completed experiment
 
-When the experiment completes, the files are pushed back to your Git and DVC
-remotes (including code, data, models, parameters, metrics, and plots).
-Iterative Studio can create a branch and pull/merge request from the completed
-experiment, so you can share, review, merge, and reproduce it.
+When the experiment completes, the files (including code, data, models,
+parameters, metrics, and plots) are pushed back to your Git and DVC remotes.
+
+Within the project, you can create a branch and pull/merge request from the
+completed experiment, so that you can share, review, merge, and reproduce the
+experiment.
 
 ![Studio Create a New Branch](/img/studio-branch.gif)
 
 ## CI-Based experiments
 
-Iterative Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
-experiments. This means that to enable experimentation from Iterative Studio,
-you should do the following:
+Iterative Studio can also use your regular CI/CD setup (e.g. GitHub Actions) to
+run the experiments. To enable this, you should do the following:
 
 1. First,
    [integrate your Git repository with a CI/CD setup that includes model training process](/doc/studio/user-guide/prepare-your-repositories#prepare-your-repositories-to-run-new-experiments).
@@ -196,26 +160,32 @@ want to use and click the `Run` button. A form will let you specify all the
 changes that you want to make to your experiment. On this form, there are 2
 types of inputs that you can change:
 
-1. **Input data files**: You can change datasets that are used for model
-   training. The list of files that you can change will depend on your ML
-   project. For instance, in the `example-get-started` ML project, you can
-   change the `data.xml` file. Iterative Studio identifies all the files used in
-   your ML project, which means that if you select the
-   `Show all input parameters (including hidden)` option, then you can also
-   change the hidden files such as the `model.pkl` model file and the
-   `scores.json` metrics file. You can also choose not to change any input data
-   files if you only wish to change the values of one or more hyperparameters.
-2. **Hyperparameters**: Iterative Studio lists all the hyperparameters of your
-   ML project and you can change their values as per the new experiment that you
-   want to run. For instance, in the `example-get-started` ML project, you can
-   change `max_features` (the maximum number of features that the model uses),
-   `ngrams`, etc. You can also choose not to change any hyperparameters if you
-   only wish to change one or more input data files.
+#### **Input data files**:
+
+You can change datasets that are used for model training. The list of files that
+you can change will depend on your ML project. For instance, in the
+`example-get-started` ML project, you can change the `data.xml` file. Iterative
+Studio identifies all the files used in your ML project, which means that if you
+select the `Show all input parameters (including hidden)` option, then you can
+also change the hidden files such as the `model.pkl` model file and the
+`scores.json` metrics file. You can also choose not to change any input data
+files if you only wish to change the values of one or more hyperparameters.
+
+#### **Hyperparameters**:
+
+Iterative Studio lists all the hyperparameters of your ML project and you can
+change their values as per the new experiment that you want to run. For
+instance, in the `example-get-started` ML project, you can change `max_features`
+(the maximum number of features that the model uses), `ngrams`, etc. You can
+also choose not to change any hyperparameters if you only wish to change one or
+more input data files.
 
 The default values of the input data files and hyperparameters in this form are
 extracted from your selected commit.
 
 ![](https://static.iterative.ai/img/studio/cml_changes.png)
+
+### Enter commit details and submit the CI-Based experiment
 
 Once you have made all the required changes, enter your Git commit message and
 description.
