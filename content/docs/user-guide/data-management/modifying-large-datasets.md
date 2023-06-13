@@ -26,9 +26,9 @@ images
 23 directories, 70001 files
 ```
 
-You can `dvc add` one or more new files or subdirectories to
-this dataset without re-adding the entire dataset. Let's assume we have one new
-file in the dataset:
+You can `dvc add` one or more new files or subdirectories to this dataset
+without re-adding the entire dataset. Let's assume we have one new file in the
+dataset:
 
 ```cli
 $ cp ~/Downloads/new.png images/test/0/70001.png
