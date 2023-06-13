@@ -17,11 +17,6 @@ outs:
     path: data.xml
     desc: Cats and dogs dataset
     remote: myremote
-
-# Comments and user metadata are supported.
-meta:
-  name: 'Devee Bird'
-  email: devee@dvc.org
 ```
 
 These files use the [YAML 1.2](https://yaml.org/) file format, and a
@@ -42,13 +37,8 @@ schema:
 | `deps` | List of [dependency entries](#dependency-entries) (details below). Only present when `dvc import` or `dvc import-url` are used to generate this `.dvc` file. Typically there is only one (but several can be added manually). |
 | `wdir` | Working directory for the `outs` and `deps` paths (relative to the `.dvc` file's location). It defaults to `.` (the file's location).                                                                                         |
 | `md5`  | (Only for <abbr>imports</abbr>) MD5 hash of the `.dvc` file itself.                                                                                                                                                           |
-| `meta` | Arbitrary user metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC.                                                                                             |
 
 Comments can be entered using the `# comment` format.
-
-> `meta` fields and `#` comments are preserved among executions of `dvc repro`
-> and `dvc commit`, but not when the file is overwritten by `dvc add`,
-> `dvc move`, `dvc import`, or `dvc import-url`.
 
 ## Output entries
 
@@ -65,10 +55,6 @@ The following subfields may be present under `outs` entries:
 | `cache`                         | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                              |
 | `remote`                        | Name of the remote to use for pushing/fetching                                                                                                                                                                            |
 | `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                               |
-| `desc`                          | User description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                            |
-| `type`                          | User-assigned type of the data.                                                                                                                                                                                           |
-| `labels`                        | User-assigned labels to add to the data.                                                                                                                                                                                  |
-| `meta`                          | Custom metadata about the data.                                                                                                                                                                                           |
 | `push`                          | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                              |
 
 [etag]: https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation
