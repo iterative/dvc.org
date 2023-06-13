@@ -40,7 +40,7 @@ remote, set any supported config param with `dvc remote modify`.
 
 <admon type="info">
 
-Requires [S3 Versioning] enabled on the bucket.
+Requires [S3 Versioning] enabled on the bucket and the following AWS user permissions: `s3:ListBucketVersions`, `s3:GetObjectVersion`, `s3:DeleteObjectVersion`.
 
 </admon>
 
