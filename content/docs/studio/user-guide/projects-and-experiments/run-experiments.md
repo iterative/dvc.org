@@ -21,7 +21,7 @@ Cloud experiments are in alpha release and are subject to change.
 
 </admon>
 
-Run your experiments on your own cloud compute instances in AWS, Azure, and GCP.
+Run your experiments on your own cloud compute instances in AWS, GCP, and Azure (coming soon).
 For this, you need to:
 
 1. Set up
