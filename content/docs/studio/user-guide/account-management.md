@@ -213,6 +213,11 @@ https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c
 
 </details>
 
+For
+[data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials),
+you can find more details about required permissions [here][data remote].
+
+[data remote]: /doc/user-guide/data-management/remote-storage
 [profile]: https://studio.iterative.ai/user/_/profile
 
 Finally, click `Save credentials`.
