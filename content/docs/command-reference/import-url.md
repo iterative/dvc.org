@@ -15,10 +15,9 @@ other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--file <filename>]
+usage: dvc import-url [-h] [-q | -v]
            [--to-remote] [-r <name>] [--no-exec | --no-download]
-           [-j <number>] [-f] [--version-aware] [--desc <text>]
-           [--meta key=value] [--label <str>] [--type <str>]
+           [-j <number>] [-f] [--version-aware]
            url [out]
 
 positional arguments:
@@ -169,11 +168,6 @@ produces a regular stage in `dvc.yaml`.
 
 ## Options
 
-- `--file <filename>` - specify a path and/or file name for the `.dvc` file
-  created by this command (e.g. `--file stages/stage.dvc`). This overrides the
-  default file name: `<file>.dvc`, where `<file>` is the desired file name of
-  the imported data (`out`).
-
 - `--no-exec` - create the import `.dvc` file without accessing `url` (assumes
   that the data source is valid). This is useful if you need to define the
   project imports quickly, and import the data later (use `dvc update` to finish
@@ -208,14 +202,6 @@ force the operation causing local files/dirs to be overwritten by the command.
   [pull](/doc/command-reference/pull) the versioned data from the source and
   will not [push](/doc/command-reference/push) an additional copy to remote
   storage.
-
-- `--desc <text>` - user description of the data.
-
-- `--type <str>` - user-assigned type of the data.
-
-- `--label <text>` - user-assigned label(s) to add to the data.
-
-- `--meta key=value` - custom metadata to add to the data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
