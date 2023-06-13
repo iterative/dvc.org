@@ -5,6 +5,12 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
+<p align='center'>
+  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-PyTorch-Lightning.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" />
+  </a>
+</p>
+
 Pass the
 [`DVCLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
 to your
@@ -19,19 +25,6 @@ dvclive_logger = DVCLiveLogger()
 trainer = Trainer(logger=dvclive_logger)
 trainer.fit(model)
 ```
-
-Each metric will be logged to:
-
-```py
-{Live.plots_dir}/metrics/{split}/{iter_type}/{metric}.tsv
-```
-
-Where:
-
-- `{Live.plots_dir}` is defined in [`Live`].
-- `{split}` can be either `train` or `eval`.
-- `{iter_type}` can be either `epoch` or `step`.
-- `{metric}` is the name provided by the framework.
 
 ## Parameters
 
@@ -113,5 +106,20 @@ checkpointing at all as described in the
 [PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
 
 </admon>
+
+## Output format
+
+Each metric will be logged to:
+
+```py
+{Live.plots_dir}/metrics/{split}/{iter_type}/{metric}.tsv
+```
+
+Where:
+
+- `{Live.plots_dir}` is defined in [`Live`].
+- `{split}` can be either `train`, `val` or `test`.
+- `{iter_type}` can be either `epoch` or `step`.
+- `{metric}` is the name provided by the framework.
 
 [`live`]: /doc/dvclive/live
