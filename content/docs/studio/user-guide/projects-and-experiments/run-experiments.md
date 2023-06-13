@@ -53,6 +53,8 @@ Once you have added credentials, navigate to the project and follow these steps:
   you know what you are doing, as it could cause the experiment to fail.
 - At the bottom of the form, click `Run Experiment` to start the experiment.
 
+![Studio run cloud experiment](/img/studio-run_cloud_exp_form.png)
+
 [dvc experiment pipeline]: /doc/start/experiments/experiment-pipelines
 
 ### Monitor a running experiment
