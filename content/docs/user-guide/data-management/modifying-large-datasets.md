@@ -26,7 +26,7 @@ images
 23 directories, 70001 files
 ```
 
-You can `dvc add` or `dvc commit` one or more new files or subdirectories to
+You can `dvc add` one or more new files or subdirectories to
 this dataset without re-adding the entire dataset. Let's assume we have one new
 file in the dataset:
 
