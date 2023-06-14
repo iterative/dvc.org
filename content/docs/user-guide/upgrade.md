@@ -53,7 +53,7 @@ releases, files tracked in DVC 3.0 are stored separately from files tracked in
 older releases. By default, DVC does not automatically de-duplicate any data
 between files tracked in DVC 3.0 and files tracked in older releases.
 
-Users with can manually migrate existing local DVC cache data to the DVC 3.0
+Users can manually migrate existing local DVC cache data to the DVC 3.0
 location by running the `dvc cache migrate` command. On most local filesystems,
 `dvc cache migrate` is equivalent to forcing the de-duplication of files tracked
 in DVC 3.0 and files tracked in older releases.
