@@ -24,14 +24,15 @@ specifying the targets you want to track. DVC manages the corresponding `.dvc`
 files, ensuring the consistency of your data to your workspace.
 
 The `targets` can be individual files, directories, or specific paths within an
-already tracked dataset. If the target is a part of an existing dataset, only
-that portion of the dataset is updated, and associated `.dvc` file is updated to
-reflect the changes. If the target path does not exist in workspace but was
-previously tracked, it will be removed from the dataset, and the `.dvc` file
-will be updated accordingly. For new files and
+already tracked dataset. For new files and
 [directories](#adding-entire-directories) that are not currently tracked, DVC
 creates new `.dvc` files to track the added data, and stores them in the
 <abbr>cache</abbr>.
+
+If the target is a part of an existing dataset, only that portion of the dataset
+is updated, and associated `.dvc` file is updated to reflect the changes. If the
+target path does not exist in workspace but was previously tracked, it will be
+removed from the dataset, and the `.dvc` file will be updated accordingly.
 
 Leveraging the metadata in `.dvc` files and the <abbr>cache</abbr> structure,
 datasets don't need to exist completely in your workspace to update. You can
@@ -47,6 +48,11 @@ Git.
 
 > See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and
 > version intermediate and final results (like ML models).
+
+The command will add the `targets` to `.gitignore` to prevent them from being
+committed to the Git repository (unless `dvc init --no-scm` was used when
+initializing the <abbr>DVC project</abbr>). The generated `.dvc` files can be
+staged automatically if [`core.autostage`] is set.
 
 To exclude specific files or directories from being added, you can add
 corresponding patterns to a `.dvcignore` file.
