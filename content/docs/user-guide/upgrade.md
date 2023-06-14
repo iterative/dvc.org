@@ -46,7 +46,7 @@ default platform specific `os.linesep` behavior.
 
 </admon>
 
-## Local cache migration
+## Optional local cache migration
 
 In order to avoid hash collisions between files tracked in DVC 3.0 and older
 releases, files tracked in DVC 3.0 are stored separately from files tracked in
