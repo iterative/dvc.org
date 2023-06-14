@@ -45,6 +45,16 @@ If you need further help, you can send us a message using `Help` on the
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
 [Discord](https://discord.com/invite/dvwXA2N).
 
+## Error: `dvc.lock` validation failed
+
+This error indicates that the `dvc.lock` file in the given commit has an invalid
+YAML. If the given commit is unimportant to you, you can ignore this error.
+
+One potential cause for this error is that at the time of the given commit, your
+repository used DVC 1.0. The format of lock files used in DVC 1.0 were
+deprecated in the DVC 2.0 release. Upgrading to the latest DVC version will
+resolve this issue for any future commits in your repository.
+
 ## Error: No data found to visualize
 
 If you have connected to a non-DVC repository, then you need to specify custom
