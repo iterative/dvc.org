@@ -54,6 +54,8 @@ committed to the Git repository (unless `dvc init --no-scm` was used when
 initializing the <abbr>DVC project</abbr>). The generated `.dvc` files can be
 staged automatically if [`core.autostage`] is set.
 
+[`core.autostage`]: /doc/user-guide/project-structure/configuration#core
+
 To exclude specific files or directories from being added, you can add
 corresponding patterns to a `.dvcignore` file.
 
