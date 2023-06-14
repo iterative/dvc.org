@@ -1,7 +1,5 @@
 # DVCFileSystem
 
-_New in DVC 2.27.0 (see `dvc version`)_
-
 DVCFileSystem provides a pythonic file interface (
 [fsspec-compatible](https://filesystem-spec.readthedocs.io/)) for a DVC repo. It
 is a read-only filesystem, hence it does not support any write operations, like
