@@ -59,9 +59,9 @@ details]).
 
    ![](https://static.iterative.ai/img/studio/view_components.png)
 
-6. You can [submit new experiments] by changing hyperparameters and datasets.
-   This triggers model training if your repository has appropriate CI/CD actions
-   set up.
+6. You can [train on the cloud and submit new experiments] by changing
+   hyperparameters and datasets, and you can run on your own cloud
+   infrastructure.
 
 7. To [track live metrics and plots][live-metrics-and-plots] of running
    experiments, set the `STUDIO_ACCESS_TOKEN` environment variable and use

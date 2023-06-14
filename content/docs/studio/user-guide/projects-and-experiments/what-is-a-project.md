@@ -12,8 +12,8 @@ Within a project, you can:
   have pushed to your Git repository.
 - [Visualize the experiments][visualize] using plots and trend charts.
 - [Compare experiments][compare].
-- [Run new experiments][run-experiments] by submitting new Git commits directly
-  from Iterative Studio.
+- [Run new experiments][run-experiments], including on your own cloud instances,
+  directly from Iterative Studio.
 - [Track live metrics and plots][live-metrics-and-plots] by sending them to
   Iterative Studio by using [DVCLive].
 
@@ -35,11 +35,9 @@ If you are working with a **non-DVC repository**, you can
 that Iterative Studio should display in the project. However, we strongly
 recommend using DVC to avail of all the features of Iterative Studio.
 
-To **run new experiments** from Iterative Studio, integrate your repositories
-with a CI setup that includes a model training process. You can
-[use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
-to automatically generate the workflow configuration for the model training CI
-job. [Learn more][run-experiments]
+To **run new experiments** from Iterative Studio, add credentials with
+sufficient access. Optionally, integrate with CI to run experiments
+automatically on CI triggers. [Learn more][run-experiments]
 
 To **track live metrics and plots** of running experiments, configure the
 `DVC_STUDIO_TOKEN` environment variable and use DVCLive in your training
