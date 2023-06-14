@@ -11,20 +11,48 @@ DVCLive allows you to add experiment tracking capabilities to your
   </a>
 </p>
 
-Pass the
+If you pass the
 [`DVCLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
 to your
-[`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
+[`Trainer`](https://lightning.ai/docs/pytorch/stable/common/trainer.html),
+DVCLive will automatically log the
+[metrics](https://lightning.ai/docs/pytorch/stable/visualize/logging_basic.html#track-metrics)
+and
+[parameters](https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#save-hyperparameters)
+tracked in your
+[`LightningModule`](https://pytorch-lightning.readthedocs.io/en/2.0.1/common/lightning_module.html).
 
 ```python
+import lightning.pytorch as pl
 from dvclive.lightning import DVCLiveLogger
 
 ...
+class LitModule(pl.LightningModule):
+    def __init__(self, layer_1_dim=128, learning_rate=1e-2):
+        super().__init__()
+        # layer_1_dim and learning_rate will be logged by DVCLive
+        self.save_hyperparameters()
+
+    def training_step(self, batch, batch_idx):
+        metric = ...
+        # some_metric will be logged by DVCLive
+        self.log("some_metric", metric)
+
 dvclive_logger = DVCLiveLogger()
 
-trainer = Trainer(logger=dvclive_logger)
+model = LitModule()
+trainer = pl.Trainer(logger=dvclive_logger)
 trainer.fit(model)
 ```
+
+<admon type="info">
+
+By default, PyTorch Lightning creates a directory to store checkpoints using the
+logger's name (`DVCLiveLogger`). You can change the checkpoint path or disable
+checkpointing at all as described in the
+[PyTorch Lightning documentation](https://lightning.ai/docs/pytorch/stable/common/checkpointing_basic.html#disable-checkpointing)
+
+</admon>
 
 ## Parameters
 
@@ -82,30 +110,6 @@ with Live() as live:
         name="lightning-model"
     )
 ```
-
-- Logging
-  [hyperparameters](https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#save-hyperparameters).
-
-```python
-class LitModule(LightningModule):
-    def __init__(self, layer_1_dim, learning_rate):
-        super().__init__()
-        # call this to save (layer_1_dim=128, learning_rate=1e-4)
-        self.save_hyperparameters()
-
-model = LitModule(layer_1_dim=128, learning_rate=1e-4)
-trainer = Trainer(logger=DVCLiveLogger())
-trainer.fit(model)
-```
-
-<admon type="info">
-
-By default, PyTorch Lightning creates a directory to store checkpoints using the
-logger's name (`DVCLiveLogger`). You can change the checkpoint path or disable
-checkpointing at all as described in the
-[PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
-
-</admon>
 
 ## Output format
 
