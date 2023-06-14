@@ -30,7 +30,7 @@ reflect the changes. If the target path does not exist in workspace but was
 previously tracked, it will be removed from the dataset, and the `.dvc` file
 will be updated accordingly. For new files and
 [directories](#adding-entire-directories) that are not currently tracked, DVC
-creates a new `.dvc` files to track the added data, and stores them in the
+creates new `.dvc` files to track the added data, and stores them in the
 <abbr>cache</abbr>.
 
 Leveraging the metadata in `.dvc` files and the <abbr>cache</abbr> structure,
