@@ -14,7 +14,8 @@ const VERSION = `3.0.0`
 const dropdownItems = [
   OS.UNKNOWN,
   null,
-  OS.OSX,
+  // temporarily disabled, re-enable if pkg gets built
+  // OS.OSX,
   OS.WINDOWS,
   OS.LINUX,
   OS.LINUX_RPM
