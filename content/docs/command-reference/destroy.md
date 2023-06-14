@@ -15,17 +15,11 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 `dvc destroy` removes `dvc.yaml`, `.dvc` files, and the internal `.dvc/`
 directory from the <abbr>project</abbr>.
 
-Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
-set to an
-[external location](/doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache)
-(by default a local cache is located in `.dvc/cache`). If you have setup
-[symlinks](/doc/user-guide/data-management/large-dataset-optimization) (from
-cache to workspace) in your project, DVC will replace them with the latest
+Note that the <abbr>cache directory</abbr> will be removed as well. If you have
+setup [symlinks](/doc/user-guide/data-management/large-dataset-optimization)
+(from cache to workspace) in your project, DVC will replace them with the latest
 versions of the actual files and directories first, so that your data is intact
 after destruction.
-
-[external cache]:
-  /doc/user-guide/data-management/managing-external-data#setting-up-an-external-cache
 
 > Refer to [Project Structure](/doc/user-guide/project-structure) for more
 > details on the directories and files deleted by this command.
@@ -59,56 +53,4 @@ yes
 $ ls -a
 
 .git code.py foo
-```
-
-## Example: Preserve an external cache directory
-
-By default, the <abbr>cache</abbr> location is `.dvc/cache`. Let's change its
-location to `/mnt/cache` using `dvc cache dir`, add some data, and then try
-`dvc destroy`:
-
-```cli
-$ dvc cache dir /mnt/cache
-$ echo foo > foo
-$ dvc add foo
-```
-
-Contents of the <abbr>workspace</abbr>:
-
-```cli
-$ ls -a
-.dvc .git code.py foo foo.dvc
-```
-
-Contents of the (external) cache (`b1/946a...` contains `foo`):
-
-```cli
-$ tree /mnt/cache
-/mnt/cache/
-└── b1
-    └── 946ac92492d2347c6235b4d2611184
-```
-
-OK, let's destroy the <abbr>DVC project</abbr>:
-
-```cli
-$ dvc destroy
-
-This will destroy all information about your pipelines, all data files...
-Are you sure you want to continue? [y/n]
-yes
-
-$ ls -a
-.git code.py foo
-```
-
-`foo.dvc` and the internal `.dvc/` directory were removed (this would include
-any cached data prior to changing the cache location). But the cache files in
-`/mnt/cache` persist:
-
-```cli
-$ tree /mnt/cache
-/mnt/cache/
-└── b1
-    └── 946ac92492d2347c6235b4d2611184
 ```

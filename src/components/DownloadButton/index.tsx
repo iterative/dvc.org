@@ -9,12 +9,13 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 import * as styles from './styles.module.css'
 import { OS, useUserOS } from '../../utils/front/useUserOS'
 
-const VERSION = `2.57.1`
+const VERSION = `3.0.0`
 
 const dropdownItems = [
   OS.UNKNOWN,
   null,
-  OS.OSX,
+  // temporarily disabled, re-enable if pkg gets built
+  // OS.OSX,
   OS.WINDOWS,
   OS.LINUX,
   OS.LINUX_RPM

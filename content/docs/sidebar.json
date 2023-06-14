@@ -166,15 +166,20 @@
           },
           "cloud-versioning",
           "discovering-and-accessing-data",
-          "importing-external-data",
-          "managing-external-data",
-          "large-dataset-optimization"
+          { "label": "External Data", "slug": "importing-external-data" },
+          "large-dataset-optimization",
+          "modifying-large-datasets"
         ]
       },
       {
         "slug": "pipelines",
         "source": "pipelines/index.md",
-        "children": ["defining-pipelines", "running-pipelines", "run-cache"]
+        "children": [
+          "defining-pipelines",
+          "running-pipelines",
+          "run-cache",
+          "external-dependencies-and-outputs"
+        ]
       },
       {
         "label": "Experiment Management",
@@ -187,8 +192,7 @@
           "visualizing-plots",
           "sharing-experiments",
           "persisting-experiments",
-          "cleaning-experiments",
-          "checkpoints"
+          "cleaning-experiments"
         ]
       },
       {
@@ -212,6 +216,10 @@
         "label": "Glossary",
         "slug": "glossary",
         "source": "basic-concepts"
+      },
+      {
+        "label": "Upgrading to DVC 3.0",
+        "slug": "upgrade"
       }
     ]
   },
@@ -224,8 +232,19 @@
         "slug": "add"
       },
       {
-        "label": "cache dir",
-        "slug": "cache/dir"
+        "label": "cache",
+        "slug": "cache",
+        "source": "cache/index.md",
+        "children": [
+          {
+            "label": "cache dir",
+            "slug": "dir"
+          },
+          {
+            "label": "cache migrate",
+            "slug": "migrate"
+          }
+        ]
       },
       {
         "label": "check-ignore",
@@ -283,10 +302,6 @@
           {
             "label": "exp diff",
             "slug": "diff"
-          },
-          {
-            "label": "exp gc",
-            "slug": "gc"
           },
           {
             "label": "exp list",
@@ -550,10 +565,6 @@
       {
         "slug": "get_url",
         "label": "get_url()"
-      },
-      {
-        "slug": "make_checkpoint",
-        "label": "make_checkpoint()"
       },
       {
         "slug": "metrics_show",

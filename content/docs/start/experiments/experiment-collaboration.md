@@ -97,8 +97,6 @@ action:
 
 </tab>
 
-</tab>
-
 <tab title="Studio">
 
 You can click to the right of the experiment and select the

@@ -432,20 +432,13 @@ These include a subset of the fields in `.dvc` file
 
 </admon>
 
-| Field        | Description                                                                                                                                                                                                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`. If any output of a stage has `cache: false`, the [<abbr>run cache</abbr> will be deactivated for that stage.                                         |
-| `remote`     | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                                                         |
-| `persist`    | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                           |
-| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [checkpoint experiments](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                              |
-| `push`       | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                                                                                      |
-
-<admon type="warn">
-
-Using the `checkpoint` field in `dvc.yaml` is not compatible with `dvc repro`.
-
-</admon>
+| Field     | Description                                                                                                                                                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cache`   | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`. If any output of a stage has `cache: false`, the [<abbr>run cache</abbr> will be deactivated for that stage. |
+| `remote`  | (Optional) Name of the remote to use for pushing/fetching                                                                                                                                                                                 |
+| `persist` | Whether the output file/dir should remain in place during `dvc repro` (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                   |
+| `desc`    | (Optional) User description for this output. This doesn't affect any DVC operations.                                                                                                                                                      |
+| `push`    | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                                              |
 
 ## Templating
 
@@ -571,8 +564,8 @@ Values from `vars` are not tracked like parameters.
 
 </admon>
 
-To load additional params files, list them in the top `vars`, in the desired
-order, e.g.:
+To load additional params files, list them in the top-level `vars`, in the
+desired order, e.g.:
 
 ```yaml
 vars:
@@ -583,9 +576,8 @@ vars:
 
 <admon type="info" title="Notes">
 
-The default `params.yaml` file is always loaded first, if present.  
-Param file paths will be evaluated based on [`wdir`](#stage-entries), if
-specified.
+Param file paths will be evaluated relative to the directory the `dvc.yaml` file
+is in. The default `params.yaml` is always loaded first, if present.
 
 </admon>
 
@@ -605,35 +597,9 @@ stages:
       - ${feats.dirname}
 ```
 
-Stage-specific values are also supported, with inner `vars`. You may also load
-additional params files locally. For example:
-
-```yaml
-stages:
-  build-us:
-    vars:
-      - params.json:build
-      - model:
-          filename: 'model-us.hdf5'
-    cmd: python train.py ${build.epochs} --out ${model.filename}
-    outs:
-      - ${model.filename}
-```
-
-DVC merges values from params files and `vars` in each scope when possible. For
-example, `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
+DVC merges values from param files or values specified in `vars`. For example,
+`{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
 `{"grp": {"a": 7}}`.
-
-<admon type="warn">
-
-Known limitations of local `vars`:
-
-- [`wdir`](#stage-entries) cannot use values from local `vars`, as DVC uses the
-  working directory first (to load any values from params files listed in
-  `vars`).
-- `foreach` is also incompatible with local `vars` at the moment.
-
-</admon>
 
 The substitution expression supports these forms:
 
