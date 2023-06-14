@@ -238,7 +238,7 @@
         "children": [
           {
             "label": "cache dir",
-            "slug": "cache/dir"
+            "slug": "dir"
           },
           {
             "label": "cache migrate",
