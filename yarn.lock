@@ -1457,10 +1457,10 @@
     unist-util-remove-position "^4.0.1"
     unist-util-visit "^4.1.0"
 
-"@dvcorg/gatsby-theme-iterative@^0.3.6":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.6.tgz#b4cfcc7967bc5b9eff69eb001300c6a9de22945d"
-  integrity sha512-fRtSuFQnvo9RC0IS5MfRKqZTd9Ovs3haiD4IKPcY+0Gp7fnx1jXFtodEy9hsSPj+LKMeb99ril4BcgZC8gfKdQ==
+"@dvcorg/gatsby-theme-iterative@^0.3.7":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.7.tgz#e8a9144e141e2022bc80c747b59fb0a1858ceb80"
+  integrity sha512-T4v9XcBfbm4KNPqy5rmk6mSG1SvPHYlnb6am4n3UNc4P7gpasRrstAv7jokfGExJlReHs00X2TuCXdux7A4NcA==
   dependencies:
     "@reach/portal" "^0.18.0"
     "@reach/skip-nav" "^0.18.0"
