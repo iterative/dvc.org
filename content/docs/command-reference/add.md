@@ -1,7 +1,6 @@
 # add
 
-Track data files or directories with DVC, by creating a corresponding `.dvc`
-file.
+Track data files or directories with DVC.
 
 ## Synopsis
 
@@ -11,57 +10,46 @@ usage: dvc add [-h] [-q | -v] [-f] [--no-commit]
                [--to-remote] [-r <name>] [--remote-jobs <number>]
                targets [targets ...]
 positional arguments:
-  targets               Files or directories to add
+  targets               Files or directories to add or update
 ```
 
 ## Description
 
-The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
-the target data, in order to start versioning it. It creates a `.dvc` file to
-track the added data.
+DVC allows tracking datasets using `.dvc` files as lightweight pointers to your
+data. The `dvc add` command is used to track and update your data by creating or
+updating `.dvc` files.
+
+With `dvc add`, you can seamlessly track datasets, models or large files by
+specifying the targets you want to track. DVC manages the corresponding `.dvc`
+files, ensuring the consistency of your data to your workspace.
+
+The `targets` can be individual files, directories, or specific paths within an
+already tracked dataset. If the target is a part of an existing dataset, only
+that portion of the dataset is updated, and associated `.dvc` file is updated to
+reflect the changes. If the target path does not exist in workspace but was
+previously tracked, it will be removed from the dataset, and the `.dvc` file
+will be updated accordingly. For new files and
+[directories](#adding-entire-directories) that are not currently tracked, DVC
+creates a new `.dvc` files to track the added data, and stores them in the
+<abbr>cache</abbr>.
+
+Leveraging the metadata in `.dvc` files and the <abbr>cache</abbr> structure,
+datasets don't need to exist completely in your workspace to update. You can
+pull a dataset partially and operate on it. DVC will automatically update the
+relevant `.dvc` file to reflect the changes. This capability allows you to
+[work with large datasets without having to download the entire dataset](/docs/user-guide/data-management/modifying-large-datasets#modifying-remote-datasets)
+to your local machine.
 
 This command can be used to track large files, models, dataset directories, etc.
 that are too big for Git to handle directly. This enables
 [versioning](/doc/use-cases/versioning-data-and-models) them indirectly with
 Git.
 
-The `targets` are the files or [directories](#adding-entire-directories) to add.
-They get stored in the <abbr>cache</abbr> by default (use the `--no-commit`
-option to avoid this, and `dvc commit` to finish the process when needed).
-
 > See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and
 > version intermediate and final results (like ML models).
 
-After checking that each `target` hasn't been added before (or tracked with
-other DVC commands), a few actions are taken under the hood:
-
-1. Calculate the file hash.
-2. Move the file contents to the cache (by default in `.dvc/cache`) (or to
-   [remote storage] if `--to-remote` is given), using the file hash to form the
-   cached file path. (See [Structure of cache directory] for more details.)
-3. Attempt to replace the file with a link to the cached data (more details on
-   file linking further down). Skipped if `--to-remote` is used.
-4. Create a corresponding `.dvc` file to track the file, using its path and hash
-   to identify the cached data (with `--to-remote`/`-o`, an external path is
-   moved to the <abbr>workspace</abbr>). The `.dvc` file lists the DVC-tracked
-   file as an <abbr>output</abbr> (`outs` field). The `.dvc` file name generated
-   is `<file>.dvc`, where `<file>` is the file name of the first target.
-5. Add the `targets` to `.gitignore` in order to prevent them from being
-   committed to the Git repository (unless `dvc init --no-scm` was used when
-   initializing the <abbr>DVC project</abbr>).
-6. Instructions are printed showing `git` commands for staging `.dvc` files (or
-   they are staged automatically if [`core.autostage`] is set).
-
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[structure of cache directory]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
-[`core.autostage`]: /doc/user-guide/project-structure/configuration#core
-
-Summarizing, the result is that the target data is replaced by small `.dvc`
-files that can be easily tracked with Git.
-
-It's possible to prevent files or directories from being added by DVC by
-entering the corresponding patterns in a `.dvcignore` file.
+To exclude specific files or directories from being added, you can add
+corresponding patterns to a `.dvcignore` file.
 
 You can also [undo `dvc add`](/doc/user-guide/how-to/stop-tracking-data) to stop
 tracking files or directories.
