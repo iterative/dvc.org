@@ -59,6 +59,10 @@ Users can manually migrate existing local DVC cache data to the DVC 3.0
 location by running the `dvc cache migrate` command. On most local filesystems,
 `dvc cache migrate` is equivalent to forcing the de-duplication of files tracked
 in DVC 3.0 and files tracked in older releases.
+Files from the old cache location
+will be re-hashed using the DVC 3.0 hash algorithm, atomically moved to the new
+cache location, and then a link will be created from the old location to the new
+one. This may take a long time.
 
 <admon type="warn">
 
