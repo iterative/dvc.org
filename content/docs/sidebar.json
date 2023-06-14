@@ -242,7 +242,7 @@
           },
           {
             "label": "cache migrate",
-            "slug": "cache/migrate"
+            "slug": "migrate"
           }
         ]
       },
