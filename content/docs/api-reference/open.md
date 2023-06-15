@@ -86,8 +86,8 @@ call – no _context manager_ involved. Neither function utilizes disc space.
   parameter in builtin `open()`.
 
 - `config` - [config] dictionary to pass to the DVC project. This is merged with
-  the existing project config and can be used to, for example, provide credentials
-  to the `remote`.
+  the existing project config and can be used to, for example, provide
+  credentials to the `remote`.
 
 [revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
