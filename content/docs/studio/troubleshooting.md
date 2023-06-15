@@ -24,6 +24,7 @@ Iterative Studio.
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 - [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 - [Project does not display DVC experiments](#project-does-not-display-dvc-experiments)
+- [Error: `dvc.lock` validation failed](#error-dvclock-validation-failed)
 
 **Model registry**
 
@@ -247,6 +248,16 @@ webhooks, but it can not rely on this mechanism for custom git objects, like
 
 To manually check for updates in your repository, use the `Reload` button 🔄
 located above the project table.
+
+## Error: `dvc.lock` validation failed
+
+This error indicates that the `dvc.lock` file in the given commit has an invalid
+YAML. If the given commit is unimportant to you, you can ignore this error.
+
+One potential cause for this error is that at the time of the given commit, your
+repository used DVC 1.0. The format of lock files used in DVC 1.0 were
+deprecated in the DVC 2.0 release. Upgrading to the latest DVC version will
+resolve this issue for any future commits in your repository.
 
 ## I cannot find my desired Git repository in the form to add a model
 
