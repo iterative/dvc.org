@@ -14,7 +14,8 @@ def read(path: str,
          rev: str = None,
          remote: str = None,
          mode: str = "r",
-         encoding: str = None)
+         encoding: str = None,
+         config: dict = None)
 ```
 
 ## Usage
@@ -75,11 +76,16 @@ Python's [`open()`] built-in, which is used under the hood.
   only be used in text mode. Defaults to `"utf-8"`. Mirrors the namesake
   parameter in builtin `open()`.
 
+- `config` - [config] dictionary to pass to the DVC project. This is merged with
+  the existing project config and can be used to, for example, provide credentials
+  to the `remote`.
+
 [revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
 [dvc remote]: /doc/user-guide/data-management/remote-storage
 [default remote]: /doc/command-reference/remote/default
 [codec]: https://docs.python.org/3/library/codecs.html#standard-encodings
+[config]: /doc/command-reference/config
 
 ## Exceptions
 
@@ -109,3 +115,24 @@ model = pickle.loads(data)
 ```
 
 > We're using `'rb'` mode here for compatibility with `pickle.loads()`.
+
+## Example: Specify credentials for your remote
+
+See [remote modify](/doc/command-reference/remote/modify) for full list of
+remote-specific config options.
+
+```py
+import dvc.api
+
+config = {
+    'remote': {
+        'myremote': {
+            'access_key_id': 'mykey',
+            'secret_access_key': 'mysecretkey',
+            'session_token': 'mytoken',
+        },
+    },
+}
+
+modelpkl = dvc.api.read('model.pkl', config=config)
+```
