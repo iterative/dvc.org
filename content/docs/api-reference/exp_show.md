@@ -9,6 +9,7 @@ def exp_show(
     num: int = 1,
     param_deps: bool = False,
     force: bool = False,
+    config: Optional[dict] = None,
 ) -> List[Dict]:
 ```
 
@@ -68,6 +69,11 @@ the Git `HEAD`.
 
 - `param_deps` - whether to retrieve only params that are stage dependencies.
   _Default_: `False`.
+
+- `config` - [config](/doc/command-reference/config) dictionary to pass to the
+   DVC project. This is merged with the existing project config and can be used
+   to, for example, provide credentials to the `remote`. See
+   [dvc.api.open](/doc/api-reference/open) for examples.
 
 ## Example: Create a Pandas DataFrame
 

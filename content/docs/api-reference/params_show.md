@@ -10,6 +10,7 @@ def params_show(
     repo: Optional[str] = None,
     rev: Optional[str] = None,
     deps: bool = False,
+    config: Optional[dict] = None,
 ) -> Dict:
 ```
 
@@ -66,6 +67,11 @@ The function parameters (below) let you restrict what's retrieved.
 
 - `deps` - whether to retrieve only params that are stage dependencies. Accepts
   `True` or `False` (_default_).
+
+- `config` - [config](/doc/command-reference/config) dictionary to pass to the
+   DVC project. This is merged with the existing project config and can be used
+   to, for example, provide credentials to the `remote`. See
+   [dvc.api.open](/doc/api-reference/open) for examples.
 
 ## Example: Filter by stage name(s)
 
