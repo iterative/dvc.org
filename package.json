@@ -61,7 +61,7 @@
     "ease-component": "^1.0.0",
     "express": "^4.18.2",
     "fs-extra": "^11.1.0",
-    "gatsby": "^5.4.2",
+    "gatsby": "^5.9.1",
     "gatsby-plugin-algolia": "^1.0.3",
     "gatsby-plugin-image": "^3.4.0",
     "gatsby-plugin-sharp": "^5.4.0",
