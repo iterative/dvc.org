@@ -1,9 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-</admon>
-
 # Billing and Payment
 
 Studio is free for individuals and teams with up to 2 members. The Free plan is
