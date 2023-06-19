@@ -71,9 +71,9 @@ the Git `HEAD`.
   _Default_: `False`.
 
 - `config` - [config](/doc/command-reference/config) dictionary to pass to the
-   DVC project. This is merged with the existing project config and can be used
-   to, for example, provide credentials to the `remote`. See
-   [dvc.api.open](/doc/api-reference/open) for examples.
+  DVC project. This is merged with the existing project config and can be used
+  to, for example, provide credentials to the `remote`. See
+  [dvc.api.open](/doc/api-reference/open) for examples.
 
 ## Example: Create a Pandas DataFrame
 
