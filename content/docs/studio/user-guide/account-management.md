@@ -1,9 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-</admon>
-
 # Account Management
 
 To manage your user account, click on your user icon on the top right corner of
