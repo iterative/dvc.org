@@ -16,6 +16,7 @@ Iterative Studio.
 - [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 - [Project does not display DVC experiments](#project-does-not-display-dvc-experiments)
 - [Error: `dvc.lock` validation failed](#error-dvclock-validation-failed)
+- [Project does not reflect updates in the Git repository ](#project-does-not-reflect-updates-in-the-git-repository)
 
 **Model registry**
 
@@ -249,6 +250,18 @@ One potential cause for this error is that at the time of the given commit, your
 repository used DVC 1.0. The format of lock files used in DVC 1.0 were
 deprecated in the DVC 2.0 release. Upgrading to the latest DVC version will
 resolve this issue for any future commits in your repository.
+
+## Project does not reflect updates in the Git repository
+
+When there are updates (new commits, branches, etc.) in your Git repository,
+your project in Iterative Studio gets reflected to include those updates. If the
+project has stopped receiving updates from the Git repository and you have to
+"force import" the project each time to get any new commit, then it is possible
+that the Iterative Studio webhook in your repository got deleted or messed up.
+
+Iterative Studio periodically checks for any missing or messed up webhooks, and
+attempts to re-create it. Currently, this happens every 3 days. The webhook also
+gets re-created every time you create a new project.
 
 ## I cannot find my desired Git repository in the form to add a model
 
