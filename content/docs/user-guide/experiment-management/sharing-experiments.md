@@ -130,13 +130,15 @@ avoid cluttering your local repo). You must `dvc exp pull` the ones you want.
 
 ## Share many experiments
 
-Use the `--rev`/`--num`/`--all-commits` options of `dvc exp push` and
-`dvc exp pull` to share many experiments at once. E.g., to upload all
-experiments based on the latest commit, target the Git `HEAD`:
+By default, DVC will share all experiments derived from the Git `HEAD`.
 
 ```
-$ dvc exp push --rev HEAD origin
+$ dvc exp push origin
+Pushed experiment conic-ease, lucid-lair, and major-mela to Git remote 'origin'.
 ```
+
+Use the `--rev`/`--num`/`--all-commits` options of `dvc exp push` and
+`dvc exp pull` to share experiments from other commits.
 
 ## Push a persistent experiment
 
