@@ -1,18 +1,13 @@
 # Explore ML Experiments
 
-The projects dashboard in Iterative Studio contains all the projects you created
-by connecting to Git repositories. To explore all ML experiments in a project,
-visualize and compare them, and run new experiments, open the project by
-clicking the project name (in this case, `example-get-started`).
-
-An experiments table for the project will be generated as shown below. This
+The projects dashboard in Iterative Studio contains all your projects. Open a
+project by clicking on its name (in this case, `example-get-started`). An
+experiments table for the project will be generated as shown below. This
 includes metrics, hyperparameters, and information about datasets and models.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
-## Components of a project
-
-The major components of the project experimentation table are:
+The major components of a project table are:
 
 - [Git history and live experiments](#git-history-and-live-metrics) that show
   you the complete experimentation history as well as live metrics of running
@@ -23,12 +18,12 @@ The major components of the project experimentation table are:
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 - Button to [export project data](#export-project-data).
 
-### Git history and live experiments
+## Git history and live experiments
 
 The branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
-[New experiments submitted from Iterative Studio][run-experiments] appear as
+[New experiments submitted from Iterative Studio][run experiments] appear as
 experiment commits, which are eventually pushed to Git. Experiments that you
 push using the `dvc exp push` command as well as any live experiments that you
 send using [DVCLive] are displayed in a special experiment row nested under the
@@ -43,14 +38,14 @@ located above the project table.
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
-### Display preferences
+## Display preferences
 
 The table contains buttons to specify filters and other preferences regarding
 which commits and columns to display.
 
 ![](https://static.iterative.ai/img/studio/view_components_2.gif)
 
-#### Filters:
+### Filters:
 
 You can filter the commits that you want to display by the following fields:
 
@@ -67,25 +62,22 @@ You can filter the commits that you want to display by the following fields:
   experiments
 - **File changed:** Whether or not any given file changed in the experiment
 
-#### Columns:
+### Columns:
 
 Select the columns you want to display and hide the rest.
 ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
 
-Additionally, you can click and drag the columns in the table to rearrange them
-as per your preferences.
+You can also click and drag the columns in the table to rearrange them.
 
 If your project is missing some required columns or includes columns that you do
-not want, refer to the following troubleshooting sections to understand why this
-may have happened.
+not want, refer to the following troubleshooting sections:
 
 - [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
 - [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
 
-#### Hide commits:
+### Hide commits:
 
-The following functionality are available for you to hide irrelevant commits
-from the table.
+Commits can be hidden from the project table in the following ways:
 
 - **Iterative Studio auto-hides irrelevant commits:** Iterative Studio
   identifies commits where metrics, files and hyperparameters did not change and
@@ -97,15 +89,15 @@ from the table.
 
   For example, suppose you create a Git commit with hyper-parameter changes for
   running a new experiment, and your training CI job creates a new Git commit
-  with the experiment results. You may want to hide the first commit and only
-  display the second commit, which has the new values for the hyper-parameters
-  as well as experiment results (metrics). For this, you can use the string
-  `[skip studio]` in the commit message of the first commit.
+  with the experiment results (metrics and plots). You may want to hide the
+  first commit and only display the second commit, which has the new values for
+  the hyper-parameters as well as experiment results. For this, you can use the
+  string `[skip studio]` in the commit message of the first commit.
 
-- **Hide commits and branches manually:** You can selectively hide commits and
-  branches. This can be useful if there are commits that do not add much value
-  in your project. To hide a commit or branch, click on the 3-dot menu next to
-  the commit or branch name and click on `Hide commit` or `Hide branch`.
+- **Hide commits and branches manually:** This can be useful if there are
+  commits that do not add much value in your project. To hide a commit or
+  branch, click on the 3-dot menu next to the commit or branch name and click on
+  `Hide commit` or `Hide branch`.
 - **Unhide commits:** You can unhide commits as needed, so that you don't lose
   any experimentation history. To display all hidden commits, click on the
   `Show hidden commits` toggle (refer [the above gif](#display-preferences)).
@@ -113,34 +105,34 @@ from the table.
   To unhide any commit, click on the 3-dot menu for that commit and click on
   `Show commit`.
 
-#### Selected only:
+### Selected only:
 
-Use this toggle switch to show/hide experiments that you have not selected.
+Toggle between showing and hiding experiments that you have not selected.
 
-#### Delta mode:
+### Delta mode:
 
-Toggle between absolute values and difference from the first row.
+Toggle between absolute values and difference from the baseline row.
 
-#### Save changes:
+### Save changes:
 
 Save your filters or column display preferences so that these preferences remain
 intact even after you log out of Iterative Studio and log back in later.
 
-### Visualize, compare and run experiments.
+## Visualize, compare and run experiments
 
-The table also contains buttons to visualize, compare and run experiments.
+Use the following buttons to visualize, compare and run experiments:
+
+- **Show plots:** Open the `Plots` pane and [display plots] for the selected
+  commits.
+- **Compare:** [Compare experiments] side by side.
+- **Run:** [Run experiments] and [track results in real
+  time][live-metrics-and-plots].
+- **Trends:** [Generate trend charts] to see how the metrics have changed over
+  time.
 
 ![](https://static.iterative.ai/img/studio/view_components_3.gif)
 
-- **Show plots:** Show plots for the selected commits. When you click on this
-  button, plots for the selected commits are displayed in a `Plots ` pane.
-- **Compare:** Compare different experiments side by side.
-- **Run:** Run experiments by selecting any one commit. Refer
-  [here][run-experiments] for details on how to run experiments and track
-  metrics in real time.
-- **Trends:** Generate trend charts to show metric evolution over time.
-
-### Export project data
+## Export project data
 
 The button to export data from the project table to CSV is present next to the
 [`Delta mode`](#delta-mode) button.
@@ -151,5 +143,13 @@ Below is an example of the downloaded CSV file.
 
 ![example export to csv](https://static.iterative.ai/img/studio/project_export_to_csv_example.png)
 
-[run-experiments]: /doc/studio/user-guide/run-experiments
-[dvclive]: /doc/dvclive
+[display plots]:
+  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#display-plots-and-images
+[Compare experiments]:
+  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments
+[run experiments]:
+  /doc/studio/user-guide/projects-and-experiments/run-experiments
+[live-metrics-and-plots]:
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[Generate trend charts]:
+  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#generate-trend-charts

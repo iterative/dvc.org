@@ -28,7 +28,7 @@ Run your experiments on your own cloud compute instances in AWS, GCP, and Azure
    [credentials for the cloud provider](/doc/studio/user-guide/account-management#cloud-credentials)
 2. Create a [DVC experiment pipeline] in your project. Note that while the
    default [script for cloud experiments] runs a DVC pipeline, advanced users
-   can run without a pipeline by modifying the script.
+   can run experiments without a pipeline by modifying the script.
 3. Create a `requirements.txt` file listing all Python packages required by the
    project. The default [script for cloud experiments] installs all requirements
    from `requirements.txt`, although advanced users can specify requirements
@@ -41,11 +41,10 @@ Run your experiments on your own cloud compute instances in AWS, GCP, and Azure
 Once you have added credentials, navigate to the project and follow these steps:
 
 - Select the Git commit from which you want to iterate. Click the `Run` button
-  at the top to open the form to run an experiment. In the form, switch to the
-  `Cloud` tab to run cloud experiments.
-- At the top of the form, configure the cloud instance. You will find
-  configurations for the cloud region, instance size, disk size, whether to use
-  a spot instance, etc.
+  at the top. In the form that opens up, switch to the `Cloud` tab to run cloud
+  experiments.
+- At the top of the form, configure the cloud instance by selecting the cloud
+  region, instance size, disk size, whether to use a spot instance, etc.
 - Under the `Parameters` tab, optionally
   [modify any parameters](#hyperparameters) of your [DVC experiment pipeline].
 - Under the `Script` tab, you can see the commands that will be run on the cloud
@@ -72,7 +71,7 @@ status and output log of the running experiment task.
 When the experiment completes, the files (including code, data, models,
 parameters, metrics, and plots) are pushed back to your Git and DVC remotes.
 
-Within the project, you can create a branch and pull/merge request from the
+In Iterative Studio, you can create a branch and pull/merge request from the
 completed experiment, so that you can share, review, merge, and reproduce the
 experiment.
 
@@ -81,7 +80,7 @@ experiment.
 ## CI-Based experiments
 
 Iterative Studio can also use your regular CI/CD setup (e.g. GitHub Actions) to
-run the experiments. To enable this, you should do the following:
+run the experiments. To enable this, do the following:
 
 1. First,
    [integrate your Git repository with a CI/CD setup that includes model training process](/doc/studio/user-guide/prepare-your-repositories#prepare-your-repositories-to-run-new-experiments).
@@ -90,11 +89,11 @@ run the experiments. To enable this, you should do the following:
    to automatically generate the CI script, or you can write it on your own.
 
 2. Then,
-   [setup the yaml workflow ENV vars as secrets](https://cml.dev/doc/self-hosted-runners#environment-variables).
+   [setup the yaml workflow environment variables as secrets](https://cml.dev/doc/self-hosted-runners#environment-variables).
    This is needed so that your CI workflow can launch the runner in your desired
    cloud provider.
 
-3. Now, you can
+3. Now,
    [submit your experiments from Iterative Studio](#submit-a-new-experiment).
    Each submission will invoke your CI/CD setup, triggering the model training
    process.
@@ -106,12 +105,34 @@ set up your CI.
 
 ![](https://static.iterative.ai/img/studio/set_up_cml_message.png)
 
-The CI setup wizard has two sections, pre-filled with default values:
+The CI setup wizard opens as shown below.
+
+![](https://static.iterative.ai/img/studio/set_up_cml_full.png)
+
+This wizard has the following two sections, pre-filled with default values:
 
 - Left section with 2 sets of parameters:
 
-  1. [Configuration of your self-hosted runner, which is used in the `deploy-runner` step of your CI workflow](#configuration-of-your-self-hosted-runner)
-  2. [Job script, which is used in the `runner-job` step of your CI workflow](#runners-job)
+  1. Configuration of your self-hosted runner, which is used in the
+     `deploy-runner` step of your CI workflow. The parameters listed here are a
+     subset of the parameters for
+     [CML self-hosted runners](https://cml.dev/doc/self-hosted-runners).
+
+     | Parameter  | Meaning                                                                                                                                                                                                                                                                                           |
+     | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+     | `Spot`     | Whether you want to launch a spot cloud instance, cutting down the costs of your training.                                                                                                                                                                                                        |
+     | `Cloud`    | Your cloud provider.                                                                                                                                                                                                                                                                              |
+     | `Region`   | Cloud-vendor specific region or a CML synthetic region (an abstraction across all the cloud vendors).                                                                                                                                                                                             |
+     | `Type`     | Cloud-vendor specific instance type or a CML synthetic type `M`/`L`/`XL` (an abstraction across all the cloud vendors). `Type` is also tied to GPU behavior. If you choose an instance with a selectable GPU (such as a CML instance type or any GCP instance), the `GPU` parameter will show up. |
+     | `HDD size` | Hard disk size in GB. We highly recommend you to enter a big enough value (eg, 100) to avoid unexpected runner termination due to hard disk exhaustion.                                                                                                                                           |
+     | `Reuse`    | Values for the CML flags `reuse` and `reuse-idle`. See all [CML options](https://cml.dev/doc/ref/runner#options) for details                                                                                                                                                                      |
+     | `Labels`   | Text labels to identify your CML runners from other self hosted runners that you might have.                                                                                                                                                                                                      |
+
+  2. Job script, which is used in the `runner-job` step of your CI workflow
+
+     | Parameter    | Meaning                                                                                                                                                                                                                                                                                                                                                               |
+     | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+     | `Job script` | This is the script needed for your runner to execute your job, which would commonly include training your model. The default template is a very common combination of CML and DVC taking into account that DVC enables you to make the most of Iterative Studio. You can update this script to reflect your exact model training process, whether you use DVC or not. |
 
 - Right section which displays the generated yaml to be used in your CI set up.
   It reflects all your input parameters. Use the
@@ -119,48 +140,21 @@ The CI setup wizard has two sections, pre-filled with default values:
   generated yaml and create your CI script.
 
 That's it! At this point you should have CML in place within your CI/CD to run
-your experiments. After this, proceed with submitting your experiments as
-described below.
-
-![](https://static.iterative.ai/img/studio/set_up_cml_full.png)
-
-#### Configuration of your self-hosted runner
-
-This step is responsible for launching a self-hosted runner within your cloud
-vendor. The parameters listed here are a subset of the parameters for
-[CML self-hosted runners](https://cml.dev/doc/self-hosted-runners).
-
-| Parameter  | Meaning                                                                                                                                                                                                                                                                                           |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Spot`     | Whether you want to launch a spot cloud instance, cutting down the costs of your training.                                                                                                                                                                                                        |
-| `Cloud`    | Your cloud provider.                                                                                                                                                                                                                                                                              |
-| `Region`   | Cloud-vendor specific region or a CML synthetic region (an abstraction across all the cloud vendors).                                                                                                                                                                                             |
-| `Type`     | Cloud-vendor specific instance type or a CML synthetic type `M`/`L`/`XL` (an abstraction across all the cloud vendors). `Type` is also tied to GPU behavior. If you choose an instance with a selectable GPU (such as a CML instance type or any GCP instance), the `GPU` parameter will show up. |
-| `HDD size` | Hard disk size in GB. We highly recommend you to enter a big enough value (eg, 100) to avoid unexpected runner termination due to hard disk exhaustion.                                                                                                                                           |
-| `Reuse`    | Values for the CML flags `reuse` and `reuse-idle`. See all [CML options](https://cml.dev/doc/ref/runner#options) for details                                                                                                                                                                      |
-| `Labels`   | Text labels to identify your CML runners from other self hosted runners that you might have.                                                                                                                                                                                                      |
-
-#### Runner's job
-
-| Parameter    | Meaning                                                                                                                                                                                                                                                                                                                                                               |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Job script` | This is the script needed for your runner to execute your job, which would commonly include training your model. The default template is a very common combination of CML and DVC taking into account that DVC enables you to make the most of Iterative Studio. You can update this script to reflect your exact model training process, whether you use DVC or not. |
+your experiments. Now, you can submit your experiments.
 
 ### Submit a new experiment
 
-Watch this video for an overview of how you can run experiments from Iterative
-Studio, or read below for details.
+Watch this video for an overview of how you can run CI-based experiments from
+Iterative Studio.
 
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
 _Note that we have renamed DVC Studio mentioned in the above video to Iterative
 Studio and Views to Projects._
 
-To run experiments from Iterative Studio, first you need to determine the Git
-commit (experiment) on which you want to iterate. Select the commit that you
-want to use and click the `Run` button. A form will let you specify all the
-changes that you want to make to your experiment. On this form, there are 2
-types of inputs that you can change:
+To run experiments from Iterative Studio, determine the Git commit on which you
+want to iterate. Select the commit and click the `Run` button. A form opens,
+with 2 types of inputs that you can change:
 
 #### **Input data files**:
 
@@ -202,57 +196,44 @@ preferences -> Hide commits].
 
 </admon>
 
-Then, select the branch to commit to. You can commit to either the base branch
-or a new branch. If you commit to a new branch, a Git pull request will
-automatically be created from the new branch to the base branch. Now, click on
-`Commit changes`.
+Select the branch to commit to. You can commit to either the base branch or a
+new branch. If you commit to a new branch, a Git pull request will automatically
+be created from the new branch to the base branch.
+
+Click on `Commit changes`.
 
 ![](https://static.iterative.ai/img/studio/cml_commit.png)
 
-### What happens after you submit a new experiment
+### What happens after you submit a new CI-based experiment
 
-Iterative Studio will
-[create the Git commit and pull request](#git-commit-and-pull-request-are-created).
-This will [invoke your model training process](#model-training-is-invoked) (if
-it is set up). You can
-[track the results in real-time](#live-metrics-and-plots-are-tracked). And you
-can [save the results in Git](#metrics-plots-and-reports-are-saved-in-git).
+**Git commit (and pull request) are created:** Iterative Studio will create a
+Git commit with the changes you submitted. This commit appears in the project
+table. If you had specified a new branch to commit the changes to, then a new
+pull request will also be created from the new branch to the base branch.
 
-#### Git commit (and pull request) are created
-
-Iterative Studio will create a Git commit with the changes you submitted. This
-commit appears in the project's experiment table. If you had specified a new
-branch to commit the changes to, then a new pull request will also be created
-from the new branch to the base branch.
-
-#### Model training is invoked
-
-If your ML project is integrated with a CI/CD setup (e.g. GitHub Actions), the
-CI/CD setup will get invoked. If this setup includes a model training process,
-it will be triggered, which means that your ML experiment will run
-automatically.
+**Model training is invoked:** If your ML project is integrated with a CI/CD
+setup (e.g. GitHub Actions), the CI/CD setup will get invoked. If this setup
+includes a model training process, it will be triggered, which means that your
+ML experiment will run automatically.
 
 The model training can happen on any cloud or Kubernetes. For more details on
 how to set up
 [CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
 refer to [CML].
 
-#### Live metrics and plots are tracked
-
-In your model training CI action, you can use [DVCLive] to send [live updates to
-metrics and plots] back to Iterative Studio, without writing them to your Git
-repository. The live metrics are displayed alongside the corresponding
-experiment commits.
+**Live metrics and plots are tracked:** In your model training CI action, you
+can use [DVCLive] to send [live updates to metrics and plots] back to Iterative
+Studio, without writing them to your Git repository. The live metrics are
+displayed alongside the corresponding experiment commits.
 
 [live updates to metrics and plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 
-#### Metrics, plots and reports are saved in Git
-
-In your model training CI action, you can save the training results in Git. This
-means, once the experiment completes, its metrics will be available in the
-project's experiment table. You can then generate plots and trend charts for it,
-or compare it with the other experiments.
+**Metrics, plots and reports can be saved in Git:** In your model training CI
+action, you can save the training results in Git. This means, once the
+experiment completes, its metrics will be available in the project's experiment
+table. You can then generate plots and trend charts for it, or compare it with
+the other experiments.
 
 In your model training CI action, you can also use [CML] to create reports with
 metrics, plots or other details. You can access the CML report by clicking on
@@ -260,10 +241,6 @@ the `CML report` icon next to the Git commit message in the experiment table.
 The `CML Report` tooltip appears over the `CML report` icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
-
-</tab>
-
-</toggle>
 
 [dvclive]: /doc/dvclive
 [cml]: https://cml.dev

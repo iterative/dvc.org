@@ -216,6 +216,19 @@ you can find more details about required permissions [here][data remote].
 
 Finally, click `Save credentials`.
 
+## Studio access token
+
+Iterative Studio uses access tokens to authorize [DVC] and [DVCLive] to send
+experiment updates.
+
+To generate a new access token, click on `Generate new token` in the
+`Studio access token` section of your profile page. You can also regenerate or
+delete your access token.
+
+The option to delete the access token is also available when you change your
+password, so that you can reset all your access credentials at once. This is
+handy if you suspect that your account security may have been compromised.
+
 ## Delete account
 
 You can delete your account. However, this will permanently delete all the
@@ -228,3 +241,6 @@ projects or links anymore.
 Deleting your account in Iterative Studio does not delete your Git repositories.
 
 </admon>
+
+[dvc]: /doc
+[dvclive]: /doc/dvclive

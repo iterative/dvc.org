@@ -36,8 +36,8 @@ that Iterative Studio should display in the project. However, we strongly
 recommend using DVC to avail of all the features of Iterative Studio.
 
 To **run new experiments** from Iterative Studio, add credentials with
-sufficient access. Optionally, integrate with CI to run experiments
-automatically on CI triggers. [Learn more][run-experiments]
+sufficient access to your cloud. Optionally, set up Continuous Integration (CI)
+to run experiments automatically on CI triggers. [Learn more][run-experiments]
 
 To **track live metrics and plots** of running experiments, configure the
 `DVC_STUDIO_TOKEN` environment variable and use DVCLive in your training

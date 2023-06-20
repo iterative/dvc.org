@@ -1,8 +1,9 @@
 # Generate live (real-time) metrics and plots for running experiments
 
-In your model training script, you can use [DVCLive] to send live updates for
-metrics and plots without writing them to your Git repository, so that you can
-track your experiments in real-time from Iterative Studio.
+In your model training script, you can use [DVCLive] to send live experiment
+updates to metrics and plots to Iterative Studio, without writing them to your
+Git repository. This will enable you to view all intermediate results in
+Iterative Studio while your experiment is still running.
 
 This requires a 2-step process:
 
@@ -15,12 +16,24 @@ Iterative Studio uses access tokens to authorize DVC and [DVCLive] to send live
 experiment updates. The access token must be present in any request that sends
 data to the Iterative Studio ingestion endpoint. Requests with missing or
 incorrect access tokens are rejected with an appropriate HTTP error code and
-error message. The access token is also used by DVC to notify Iterative Studio
-when you push experiments using `dvc exp push`.
+error message.
 
-Once you [create your access token], pass it to your experiment. If you are
-running the experiment locally, you can set the token in your [DVC config]. For
-example, to set it globally for all of a user's projects:
+The access token is also used by DVC to notify Iterative Studio when you push
+experiments using `dvc exp push`.
+
+### Create and manage access token
+
+Open your user profile page. In the `Studio access token` section, click on
+`Generate new token`. You can also regenerate or delete your access token.
+
+The option to delete the access token is also available when you change your
+password, so that you can reset all your access credentials at once. This is
+handy if you suspect that your account security may have been compromised.
+
+### Provide access token to experiment
+
+If you are running the experiment locally, you can set the token in your [DVC
+config]. For example, to set it globally for all of a user's projects:
 
 ```cli
 $ dvc config --global studio.token ***
@@ -39,16 +52,15 @@ steps:
       DVC_STUDIO_TOKEN: ${{ secrets.DVC_STUDIO_TOKEN }}
 ```
 
+See [DVC config] for how to enable/disable live experiment updates and how to
+configure a different Studio URL or Git repository.
+
 ## Send and view live metrics and plots
 
 In the training job (which has been configured as detailed above), whenever you
 log your metrics or plots using [DVCLive], they will be automatically sent to
-Iterative Studio.
-
-See [DVC config] for how to enable/disable live experiment updates and how to
-configure a different Studio URL or Git repository.
-
-Here is an example of how you can use [DVCLive] in your training code:
+Iterative Studio. Here is an example of how you can use [DVCLive] in your
+training code:
 
 ```py
 from dvclive import Live
@@ -86,7 +98,7 @@ which are nested under the parent Git commit.
 
 <admon>
 
-The live experiment row for an experiment is displayed only if its parent Git
+The live experiments row for an experiment is displayed only if its parent Git
 commit is shown in the project table. So before you run the experiment, make
 sure that its parent commit is pushed to Git.
 
@@ -98,8 +110,8 @@ and
 in real time.
 
 The number of live experiments with recent updates are displayed in the `Live`
-icon, which can also be used to filter and show only live (running) experiments
-in the table.
+icon, which can also be used to filter and show only running experiments in the
+table.
 
 Live plots are displayed in the
 [plots pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#how-to-generate-plots).
@@ -140,8 +152,6 @@ experiments for this repository are displayed in all its connected projects.
 </admon>
 
 [dvclive]: /doc/dvclive
-[create your access token]:
-  /doc/studio/user-guide/account-management#studio-access-token
 [share]: /doc/user-guide/experiment-management/sharing-experiments
 [save]: /doc/user-guide/experiment-management/persisting-experiments
 [dvc config]: /docs/user-guide/project-structure/configuration#studio
