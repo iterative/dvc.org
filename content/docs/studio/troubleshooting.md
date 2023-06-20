@@ -259,7 +259,7 @@ repository again.
 
 ## Error: Skipped big remote file(s)
 
-Files that are larger than 512 KB are currently skipped by Iterative Studio.
+Files that are larger than 10 MB are currently skipped by Iterative Studio.
 
 ## Error: Base commit not found
 
