@@ -260,8 +260,8 @@ project has stopped receiving updates from the Git repository and you have to
 that the Iterative Studio webhook in your repository got deleted or messed up.
 
 Iterative Studio periodically checks for any missing or messed up webhooks, and
-attempts to re-create it. Currently, this happens every 2 hours. The webhook also
-gets re-created every time you create a new project.
+attempts to re-create it. Currently, this happens every 2 hours. The webhook
+also gets re-created every time you create a new project.
 
 ## I cannot find my desired Git repository in the form to add a model
 
