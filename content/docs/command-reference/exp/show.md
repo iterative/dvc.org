@@ -1,12 +1,8 @@
 # exp show
 
-Displays your experiments in a customizable table or [parallel coordinates
-plot].
+Displays your experiments in a customizable table.
 
 > Press `q` to exit.
-
-[parallel coordinates plot]:
-  /doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot
 
 ## Synopsis
 
