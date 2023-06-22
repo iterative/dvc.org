@@ -1,15 +1,17 @@
 # cache
 
-Contains a helper command to set the <abbr>cache</abbr> directory location:
-[dir](/doc/command-reference/cache/dir).
+Contains a helper commands to manage the <abbr>cache</abbr> directory:
+[dir](/doc/command-reference/cache/dir),
+[migrate](/doc/command-reference/cache/migrate).
 
 ## Synopsis
 
 ```usage
-usage: dvc cache [-h] [-q] [-v] {dir} ...
+usage: dvc cache [-h] [-q] [-v] {dir,migrate} ...
 
 positional arguments:
     dir          Configure cache directory location.
+    migrate      Migrate cached files to the DVC 3.0 cache location.
 ```
 
 ## Description

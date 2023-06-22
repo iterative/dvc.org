@@ -20,7 +20,7 @@ usage: dvc exp run [-h] [-q | -v] [-f]
                    [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset] [-C <path>]
-                   [--message <message>]
+                   [-m <message>]
                    [targets [targets ...]]
 
 positional arguments:
@@ -56,10 +56,6 @@ It's possible to [queue experiments] for later execution with the `--queue`
 flag. Queued experiments can be run with `dvc queue start` and managed with
 other `dvc queue` commands.
 
-It's also possible to run special [checkpoint experiments] that log the
-execution progress (useful for deep learning ML). The `--rev` and `--reset`
-options have special uses for these.
-
 <admon icon="book">
 
 See the [Running Experiments] guide for more details on these features and more.
@@ -74,7 +70,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
-[checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
 [review]: /doc/user-guide/experiment-management/comparing-experiments
 [made persistent]: /doc/user-guide/experiment-management/persisting-experiments
@@ -113,9 +108,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 - `--queue` - place this experiment at the end of a line for future execution,
   but don't run it yet. Use `dvc queue start` to process the queue.
 
-  > For checkpoint experiments, this implies `--reset` unless a `--rev` is
-  > provided.
-
 - `--run-all` - run all queued experiments (see `--queue`) and outside your
   workspace (in `.dvc/tmp/exps`). Use `-j` to execute them
   [in parallel](#queueing-and-parallel-execution).
@@ -132,20 +124,14 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
 
-- `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
-  checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
-
-- `--reset` - deletes `checkpoint: true` outputs before running this experiment
-  (regardless of `dvc.lock`). Useful for ML model re-training.
-
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
 
 - `-C <path>`, `--copy-paths <path>` - list of ignored or untracked paths to
   copy into the temp directory. Only used if `--temp` or `--queue` is specified.
 
-- `--message <message>` - custom message to use when saving the experiment. If
-  not provided, `dvc: commit experiment {hash}` will be used.
+- `-m <message>`, `--message <message>` - custom message to use when saving the
+  experiment. If not provided, `dvc: commit experiment {hash}` will be used.
 
 - `-h`, `--help` - prints the usage/help message, and exits.
 

@@ -90,10 +90,6 @@ global:
       clientId: '<GitLab OAuth App Client ID>'
       secretKey: '<GitLab OAuth App Secret Key>'
       webhookSecret: '<GitLab Webhook Secret>'
-
-nginx:
-  ingress:
-    hostname: <Studio hostname>
 ```
 
 Now let's deploy Studio with the command:
