@@ -564,8 +564,8 @@ Values from `vars` are not tracked like parameters.
 
 </admon>
 
-To load additional params files, list them in the top-level `vars`, in the
-desired order, e.g.:
+To load additional params files, list them in the top `vars`, in the desired
+order, e.g.:
 
 ```yaml
 vars:
@@ -576,8 +576,9 @@ vars:
 
 <admon type="info" title="Notes">
 
-Param file paths will be evaluated relative to the directory the `dvc.yaml` file
-is in. The default `params.yaml` is always loaded first, if present.
+The default `params.yaml` file is always loaded first, if present.  
+Param file paths will be evaluated based on [`wdir`](#stage-entries), if
+specified.
 
 </admon>
 
@@ -597,9 +598,35 @@ stages:
       - ${feats.dirname}
 ```
 
-DVC merges values from param files or values specified in `vars`. For example,
-`{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
+Stage-specific values are also supported, with inner `vars`. You may also load
+additional params files locally. For example:
+
+```yaml
+stages:
+  build-us:
+    vars:
+      - params.json:build
+      - model:
+          filename: 'model-us.hdf5'
+    cmd: python train.py ${build.epochs} --out ${model.filename}
+    outs:
+      - ${model.filename}
+```
+
+DVC merges values from params files and `vars` in each scope when possible. For
+example, `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
 `{"grp": {"a": 7}}`.
+
+<admon type="warn">
+
+Known limitations of local `vars`:
+
+- [`wdir`](#stage-entries) cannot use values from local `vars`, as DVC uses the
+  working directory first (to load any values from params files listed in
+  `vars`).
+- `foreach` is also incompatible with local `vars` at the moment.
+
+</admon>
 
 The substitution expression supports these forms:
 
