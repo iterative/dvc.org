@@ -1,18 +1,29 @@
-# Assign stages to models
+# Assign stage to model version
 
-To manage model lifecycle, you can assign stages (such as `development`,
-`staging`, `production`, etc.) to specific model versions.
+To manage model lifecycle, you can assign stages (such as `dev`, `staging`,
+`prod`, etc.) to specific model versions.
 
 To assign a stage to a model version, Iterative Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified stage and version number. Refer
 to the [GTO docs][gto-format] to see the exact format of the Git tag.
 
-You can write CI/CD actions that can actually deploy the models to the different
-deployment environments upon the creation of a new Git tag for stage assignment.
-For that, you can leverage any ML model deployment tool, such as MLEM.
+You can [write CI/CD actions][CI/CD] that can actually deploy the models to the
+different deployment environments upon the creation of a new Git tag for stage
+assignment. For that, you can leverage any ML model deployment tool, such as
+[MLEM].
 
-To assign stages using Iterative Studio, watch this tutorial video or read on
-below:
+You can assign a stage in any of the following ways:
+
+1. Use GTO CLI or API. An example would be
+   [`gto assign pool-segmentation --version v0.0.1 --stage dev`][assign],
+   assuming `dvc.yaml` with the model annotation is located in the root of the
+   repo. If not, you should append its parent directory to the model's name like
+   this:
+   [`gto assign cv:pool-segmentation --version v0.0.1 --stage dev`][assign]
+   (here, `cv` is the parent directory). To get a better idea about this case,
+   check out this [example monorepo][monorepo].
+2. To assign stages using Iterative Studio, watch this tutorial video or read on
+   below.
 
 https://www.youtube.com/watch?v=Vrp1O5lkWBo
 
@@ -57,4 +68,9 @@ assignment.
 [gto]: https://mlem.ai/doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
 [gto-format]: https://mlem.ai/doc/gto/user-guide#git-tag-message-format
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[CI/CD]:
+  /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
+[MLEM]: https://mlem.ai/
+[assign]: https://mlem.ai/doc/gto/command-reference/assign
+[monorepo]:
+  https://github.com/iterative/monorepo-example/blob/add-cv-model/cv/dvc.yaml
