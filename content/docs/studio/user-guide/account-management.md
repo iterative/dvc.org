@@ -231,7 +231,7 @@ In this section, you can,
   Studio GitHub app on additional organizations or repositories, or even remove
   the app from organizations or repositories where you no longer need it.
 
-# Delete account
+## Delete account
 
 If you delete your account, all the projects you own and the links that you have
 shared will be permanently deleted. So, click on `Delete my account` only if you

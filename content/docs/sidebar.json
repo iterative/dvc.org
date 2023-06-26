@@ -649,7 +649,8 @@
               "register-version",
               "assign-stage",
               "view-and-compare-models",
-              "use-models"
+              "use-models",
+              "remove-a-model-or-its-details"
             ]
           },
           {
