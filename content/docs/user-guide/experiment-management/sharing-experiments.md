@@ -218,7 +218,7 @@ You can remove experiments in Studio:
 
 ![Studio Remove selected rows](/img/studio-remove.gif)
 
-To remove experiments using the command line, use `dvc exp remove -g`:
+To remove pushed experiments using the command line, use `dvc exp remove -g`:
 
 ```cli
 $ dvc exp remove -g origin unwet-jinn
