@@ -203,9 +203,38 @@ df = pd.DataFrame(dvc.api.exp_show())
 
 The experiments table compares scalar parameters and metrics. You can also save
 plots data from each exepriment and overlay plots from different experiments to
-compare them. See [Comparing plots].
+compare them. Plots can include metrics trends, non-scalar data like ROC curves
+or histograms, and static images to compare. Get more info on [visualizing
+plots] and see the examples below for how to compare plots between experiments.
 
-[comparing plots]: /doc/user-guide/experiment-management/visualizing-plots
+<toggle>
+
+<tab title="DVC CLI">
+
+You can use `dvc plots diff` to compare plots across experiments. To get the
+names of experiments to compare, use `dvc exp list --name-only`, which will
+return the names of all experiments in `HEAD`. See the options for
+`dvc exp list` to choose a different set of experiments.
+
+```cli
+$ dvc plots diff $(dvc exp list --name-only)
+```
+
+![plots diff](/img/dvclive_exp_tracking_plots_diff.svg)
+
+</tab>
+
+<tab title="VSCode Extension">
+
+In the [DVC extension for VS Code], select any experiments in the table to plot.
+
+![VS Code Compare Plots](/img/vscode-compare-plots.gif)
+
+</tab>
+
+</toggle>
+
+[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Bring experiment results to your workspace
 
