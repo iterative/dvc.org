@@ -91,7 +91,7 @@ DVC calculates the file hash, a 32 characters long string (usually MD5). The
 first two characters are used to name the directory inside the cache, and the
 rest become the file name of the cached file. For example, if a data file has a
 hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
-`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
+`.dvc/cache/files/md5/ec/1d2935f811b77cc49b031b999cbf17`.
 
 > Note that file hashes are calculated from file contents only. 2 or more files
 > with different names but the same contents can exist in the workspace and be
@@ -115,12 +115,14 @@ The resulting cache dir looks like this:
 
 ```cli
 .dvc/cache/
-├── 40
-│   └── 2e97968614f583ece3b35555971f64
-├── 6f
-│   └── db5336fce0dbfd669f83065f107551.dir
-└── de
-    └── 7371b0119f4f75f9de703c7c3bac16
+└── files
+    └── md5
+        ├── 40
+        │   └── 2e97968614f583ece3b35555971f64
+        ├── 6f
+        │   └── db5336fce0dbfd669f83065f107551.dir
+        └── de
+            └── 7371b0119f4f75f9de703c7c3bac16
 ```
 
 The files in the directory are cached normally. The directory itself gets a
@@ -128,7 +130,7 @@ similar entry, with the `.dir` extension. It contains the mapping of files
 inside (as a JSON array), identified by their hash values:
 
 ```cli
-$ cat .dvc/cache/6f/db5336fce0dbfd669f83065f107551.dir
+$ cat .dvc/cache/files/md5/6f/db5336fce0dbfd669f83065f107551.dir
 [{"md5": "de7371b0119f4f75f9de703c7c3bac16", "relpath": "cat.jpeg"},
 {"md5": "402e97968614f583ece3b35555971f64", "relpath": "index.jpeg"}]
 ```

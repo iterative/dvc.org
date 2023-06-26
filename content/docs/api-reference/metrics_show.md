@@ -8,6 +8,7 @@ def metrics_show(
     *targets: str,
     repo: Optional[str] = None,
     rev: Optional[str] = None,
+    config: Optional[dict] = None,
 ) -> Dict:
 ```
 
@@ -54,6 +55,11 @@ The function parameters (below) let you restrict what's retrieved.
   a branch or tag name, a commit hash or an
   [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
   this option is ignored. _Default_: `None` (current working tree will be used)
+
+- `config` - [config](/doc/command-reference/config) dictionary to pass to the
+  DVC project. This is merged with the existing project config and can be used
+  to, for example, provide credentials to the `remote`. See
+  [dvc.api.open](/doc/api-reference/open) for examples.
 
 ## Example: Filter by one or more targets
 

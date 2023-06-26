@@ -1,7 +1,5 @@
 # DVCFileSystem
 
-_New in DVC 2.27.0 (see `dvc version`)_
-
 DVCFileSystem provides a pythonic file interface (
 [fsspec-compatible](https://filesystem-spec.readthedocs.io/)) for a DVC repo. It
 is a read-only filesystem, hence it does not support any write operations, like
@@ -30,6 +28,8 @@ project. If unspecified, the DVC project in current working directory is used.
 The optional `rev` argument can be passed to open a filesystem from a certain
 Git commit (any [revision](https://git-scm.com/docs/revisions) such as a branch
 or a tag name, a commit hash, or an [experiment name]).
+
+The optional `config` argument can be passed through to the DVC project.
 
 [experiment name]: /doc/command-reference/exp/run#-n
 

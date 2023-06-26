@@ -1,12 +1,3 @@
-<admon>
-
-**We have renamed Views to Projects in Iterative Studio.**
-
-Accordingly, _Views dashboard_ is now called _Projects dashboard_; _View
-settings_ are now called _Project settings_; and so on.
-
-</admon>
-
 # Explore ML Experiments
 
 The projects dashboard in Iterative Studio contains all the projects you created

@@ -1,9 +1,7 @@
 # plots show
 
-Generate [plot](/doc/command-reference/plots) from a plots file or `plots`
-[top-level definition] from `dvc.yaml`.
-
-[top-level definition]: /doc/user-guide/project-structure/dvcyaml-files#plots
+Generate [plots](/doc/command-reference/plots) from any `plots` defined in
+`dvc.yaml` (or any other target files).
 
 ## Synopsis
 
@@ -24,9 +22,10 @@ positional arguments:
 This command provides a quick way to visualize [certain data] such as loss
 functions, AUC curves, confusion matrices, etc.
 
-All plots defined in `dvc.yaml` are used by default, but specific plots files or
-[top-level plot] IDs can be specified as `targets` (note that target files don't
-necessarily have to be defined in `dvc.yaml`).
+All plots defined in `dvc.yaml` are used by default, but you can specify any
+`targets`, which can be plots files or non-file [plot IDs] defined anywhere in
+`dvc.yaml`, or any other files (they don't necessarily have to be defined in
+`dvc.yaml`).
 
 The plot style can be customized with [plot templates], using the `--template`
 option. To learn more about plots file formats and templates, see `dvc plots`.
@@ -42,7 +41,7 @@ The default behavior of this command can be modified per [stage plot] file with
   /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
   /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
-[top-level plot]: /doc/user-guide/project-structure/dvcyaml-files#plots
+[plot ids]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [stage plot]: /doc/user-guide/experiment-management/visualizing-plots
 
 ## Options

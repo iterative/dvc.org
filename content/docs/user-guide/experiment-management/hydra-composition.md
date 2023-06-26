@@ -1,7 +1,5 @@
 # Hydra Composition
 
-_New in DVC 2.25.0 (see `dvc version`)_
-
 [Hydra](https://hydra.cc/) is a framework to configure complex applications. DVC
 supports Hydra's [config composition] as a way to configure [experiment runs].
 
