@@ -9,10 +9,12 @@ capabilities.
 If your model file is DVC-tracked, you can download any of its registered
 versions using `dvc get`.
 
-### Looking up right command in Studio
+### Looking up the right command in Studio
 
-Model details page have a command ready to copy and use under "Get the model
-file": ![](/img/mr-dvc-get.png)
+The `Get the model file` section of a model's details page contains a `dvc get`
+command ready to copy and use.
+
+![](/img/mr-dvc-get.png)
 
 ### Constructing the command manually
 
@@ -22,12 +24,13 @@ You can also construct this command manually using this template:
 $ dvc get ${GIT_REPO} ${MODEL_PATH} --rev ${GIT_REV}
 ```
 
-Let's download the model in the
+Let's download the `seg-model` model in the
 [example-get-started-experiments](https://github.com/iterative/example-get-started-experiments)
-is `seg-model`.
+repository.
 
-To find out the model file path (e.g. `models/model.pkl`) you can see the
-Model's details page or check `dvc.yaml` the model annotation was written to.
+To find out the model file path (that is, `models/model.pkl`) you can check the
+model's details page or check the `dvc.yaml` file to which the model annotation
+was written.
 
 To find out the Git revision, you can check the
 [list of Git tags](https://github.com/iterative/example-get-started-experiments/tags)
@@ -56,24 +59,23 @@ credentials set up in your environment.
 
 ## Deploying and publishing models in CI/CD
 
-A popular deployment option is to use CI/CD (triggered when Git tags are pushed)
-to publish new model version for consumers to use, or deploy it upon stage
-assignment.
+A popular deployment option is to use CI/CD pipelines triggered by new Git tags
+to publish or deploy a new model version. Since GTO registers versions and
+assigns stages by creating Git tags, you can set up a CI/CD pipeline to be
+triggered when the tags are pushed to the repository.
 
-Since GTO register versions and assign stages by creating Git tags, you can set
-up a CI/CD to be triggered once they're pushed to the repo. To see an actual
-example, check out
-[the workflow](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml)
-in `example-gto` repo. The workflow uses
-[the GTO GH Action](https://github.com/iterative/gto-action) that interprets the
-Git tag, finds out the model's version, stage assigned if any, and annotations
-details such as `path`, `type`, `description` or downloads the model binaries
-for you to use them in CI.
+To see an actual example, check out
+[the workflow in the `example-gto` repository](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml).
+This workflow uses
+[the GTO GitHub Action](https://github.com/iterative/gto-action) that interprets
+a Git tag to find out the model's version and stage assignment (if any), reads
+annotation details such as `path`, `type` and `description`, and downloads the
+model binaries if needed.
 
-That example repo also introduces a workflow
-[that deploys a model](https://github.com/iterative/example-gto/blob/mlem/.github/workflows/deploy-model-with-mlem.yml)
+The `example-gto` repository also includes an
+[example workflow that deploys a model](https://github.com/iterative/example-gto/blob/mlem/.github/workflows/deploy-model-with-mlem.yml)
 from CI/CD using MLEM.
 
-Finally, you can find examples of building a Docker Image with a model and
-deploying it to the cloud in
-[GTO User Guide](https://mlem.ai/doc/gto/user-guide#acting-on-new-registrations-and-assignments).
+Finally, you can find examples of building a Docker image with a model and
+deploying it to the cloud in the
+[GTO user guide](https://mlem.ai/doc/gto/user-guide#acting-on-new-registrations-and-assignments).
