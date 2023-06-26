@@ -106,9 +106,7 @@ $ dvc exp show
 We can also remove experiments from a remote Git repository:
 
 ```cli
-$ dvc exp push myremote major-mela
-$ dvc exp push myremote urban-sign
-$ dvc exp push myremote conic-ease
+$ dvc exp push myremote
 
 $ dvc exp list myremote
 master:
