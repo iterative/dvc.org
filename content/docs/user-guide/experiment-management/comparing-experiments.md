@@ -40,7 +40,9 @@ instead.
 
 <tab title="VSCode Extension">
 
-TODO: add vs code table
+Select the `Show Experiments` action in the [DVC extension for VS Code].
+
+![VS Code Show Experiments](/img/vscode-show-experiments.png)
 
 </tab>
 
@@ -82,7 +84,10 @@ filter columns, sort rows, and otherwise customize the table.
 
 <tab title="VSCode Extension">
 
-TODO: add vs code table
+You can hide and move columns and sort and filter rows in the `Show Experiments`
+action in the [DVC extension for VS Code].
+
+![VS Code Customize Table](/img/vscode-customize-table.gif)
 
 </tab>
 
@@ -205,7 +210,7 @@ compare them. See [Comparing plots].
 ## Bring experiment results to your workspace
 
 To inspect an experiment beyond what you can see in the table or plots (like
-inspecting code or data changes), you may can restore a previous experiment's
+inspecting code or data changes), you can restore a previous experiment's
 results to your workspace.
 
 ⚠️ Conflicting changes in the workspace are overwritten, but they can be
@@ -227,7 +232,10 @@ Changes for experiment 'ochre-dook' have been applied...
 
 <tab title="VSCode Extension">
 
-TODO: add vs code table
+You can apply the results of any experiment to the workspace in the [DVC
+extension for VS Code].
+
+![VS Code Apply Experiment](/img/vscode-apply-experiment.gif)
 
 </tab>
 
@@ -241,7 +249,7 @@ files, etc.) can be stored in Git.
 > Note that you need to `dvc push` in order to share or backup the DVC cache
 > contents.
 
-## Cleaning up experiments
+## Clean up experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. When you want to discard experiments by their
@@ -270,7 +278,9 @@ to remove.
 
 <tab title="VSCode Extension">
 
-TODO: add vs code table
+You can remove any number of experiments in the [DVC extension for VS Code].
+
+![VS Code Remove Experiments](/img/vscode-remove-experiments.gif)
 
 </tab>
 
@@ -279,3 +289,6 @@ TODO: add vs code table
 Removing an experiment does not delete any objects in the DVC
 <abbr>cache</abbr>. To remove the cache objects, e.g. model files, intermediate
 artifacts, etc. related with the experiments, you can use `dvc gc`.
+
+[dvc extension for vs code]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
