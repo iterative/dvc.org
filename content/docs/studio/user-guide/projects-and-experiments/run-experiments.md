@@ -9,7 +9,8 @@ hyperparameters or datasets. Experiments can be
   for model training. The training can run on your own cloud.
 
 > Due to access restrictions, you cannot run experiments on the demo projects
-> that are provided to you by default. Once you connect to your ML project
+> that are provided to you by default (such as the [`example-get-started` demo
+> project][example-get-started project]). Once you connect to your ML project
 > repositories, you can follow the instructions given below to run experiments
 > directly from Iterative Studio.
 
@@ -160,21 +161,23 @@ with 2 types of inputs that you can change:
 
 You can change datasets that are used for model training. The list of files that
 you can change will depend on your ML project. For instance, in the
-`example-get-started` ML project, you can change the `data.xml` file. Iterative
-Studio identifies all the files used in your ML project, which means that if you
-select the `Show all input parameters (including hidden)` option, then you can
-also change the hidden files such as the `model.pkl` model file and the
-`scores.json` metrics file. You can also choose not to change any input data
-files if you only wish to change the values of one or more hyperparameters.
+[`example-get-started` ML project][example-get-started project], an authorized
+user can change the `data.xml` file. Iterative Studio identifies all the files
+used in your ML project, which means that if you select the
+`Show all input parameters (including hidden)` option, then you can also change
+the hidden files such as the `model.pkl` model file and the `scores.json`
+metrics file. You can also choose not to change any input data files if you only
+wish to change the values of one or more hyperparameters.
 
 #### **Hyperparameters**:
 
 Iterative Studio lists all the hyperparameters of your ML project and you can
 change their values as per the new experiment that you want to run. For
-instance, in the `example-get-started` ML project, you can change `max_features`
-(the maximum number of features that the model uses), `ngrams`, etc. You can
-also choose not to change any hyperparameters if you only wish to change one or
-more input data files.
+instance, in the [`example-get-started` ML
+project][example-get-started project], an authorized user can change
+`max_features` (the maximum number of features that the model uses), `ngrams`,
+etc. You can also choose not to change any hyperparameters if you only wish to
+change one or more input data files.
 
 The default values of the input data files and hyperparameters in this form are
 extracted from your selected commit.
@@ -242,6 +245,8 @@ The `CML Report` tooltip appears over the `CML report` icon on mouse hover.
 
 ![](https://static.iterative.ai/img/studio/cml_report_icon.png)
 
+[example-get-started project]:
+  https://studio.iterative.ai/team/Iterative/projects/example-get-started-zde16i6c4g
 [dvclive]: /doc/dvclive
 [cml]: https://cml.dev
 [display preferences -> hide commits]:

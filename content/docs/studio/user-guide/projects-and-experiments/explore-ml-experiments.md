@@ -1,9 +1,9 @@
 # Explore ML Experiments
 
 The projects dashboard in Iterative Studio contains all your projects. Open a
-project by clicking on its name (in this case, `example-get-started`). An
-experiments table for the project will be generated as shown below. This
-includes metrics, hyperparameters, and information about datasets and models.
+project by clicking on its name. An experiments table for the project will be
+generated as shown below. This includes metrics, hyperparameters, and
+information about datasets and models.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
