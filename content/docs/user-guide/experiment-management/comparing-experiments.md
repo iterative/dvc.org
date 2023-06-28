@@ -278,6 +278,16 @@ files, etc.) can be stored in Git.
 > Note that you need to `dvc push` in order to share or backup the DVC cache
 > contents.
 
+## Compare outside your workspace
+
+The methods above let you compare experiments from your local machine where you
+are working without any servers, logins, or infrastructure. However, sometimes
+you are away from your machine, or you want to share the results with others.
+[Studio] provides a web colleboration hub for [sharing experiments] and
+[visualizing and comparing experiments] for your entire project history.
+
+![Studio Compare Experiments Overview](/img/studio-compare-exps-overview.gif)
+
 ## Clean up experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
@@ -321,3 +331,7 @@ artifacts, etc. related with the experiments, you can use `dvc gc`.
 
 [dvc extension for vs code]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+[studio]: https://studio.iterative.ai
+[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
+[visualizing and comparing experiments]:
+  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare
