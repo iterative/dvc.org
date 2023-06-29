@@ -308,7 +308,8 @@ to Iterative Studio.
 Note that a live experiment is nested under the parent Git commit in the project
 table. If the parent Git commit is not pushed to the Git repository, the live
 experiment row will appear within a `Detached experiments` dummy branch in the
-project table.
+project table. Once you push the missing parent commit to the Git remote, the
+live experiment will get nested under the parent commit as expected.
 
 ## Project does not display DVC experiments
 
