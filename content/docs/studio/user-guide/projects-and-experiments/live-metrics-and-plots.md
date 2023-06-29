@@ -41,14 +41,13 @@ steps:
 
 ## Send and view live metrics and plots
 
+### Send live updates using DVCLive
+
 In the training job (which has been configured as detailed above), whenever you
 log your metrics or plots using [DVCLive], they will be automatically sent to
-Iterative Studio.
-
-See [DVC config] for how to enable/disable live experiment updates and how to
-configure a different Studio URL or Git repository.
-
-Here is an example of how you can use [DVCLive] in your training code:
+Iterative Studio. See [DVC config] for how to enable/disable live experiment
+updates and how to configure a different Studio URL or Git repository. Here is
+an example of how you can use [DVCLive] in your training code:
 
 ```py
 from dvclive import Live
@@ -61,7 +60,7 @@ with Live(save_dvc_exp=True) as live:
   ...
 ```
 
-<admon>
+<admon type="tip">
 
 Using `save_dvc_exp=True` will ensure that
 [the results get saved as a DVC experiment](/doc/dvclive/how-it-works#track-the-results).
@@ -77,25 +76,16 @@ automatically called when the experiment concludes successfully.
 
 </admon>
 
-Iterative Studio stores the live experiments data in its database.
+### Live experiments in Iterative Studio
 
-In the project table, the live experiments are displayed in experiment rows,
-which are nested under the parent Git commit.
-
-![](https://static.iterative.ai/img/studio/live_metrics.gif)
-
-<admon>
-
-The live experiment row for an experiment is displayed only if its parent Git
-commit is shown in the project table. So before you run the experiment, make
-sure that its parent commit is pushed to Git.
-
-</admon>
-
-Updates to the live experiments are highlighted (in orange) in the project table
-and
+Iterative Studio stores the live experiments data in its database. In the
+project table, the live experiments are displayed in experiment rows, which are
+nested under the parent Git commit. Updates to the live experiments are
+highlighted (in orange) in the project table and
 [compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
 in real time.
+
+![](https://static.iterative.ai/img/studio/live_metrics.gif)
 
 The number of live experiments with recent updates are displayed in the `Live`
 icon, which can also be used to filter and show only live (running) experiments
@@ -106,6 +96,33 @@ Live plots are displayed in the
 You can see them getting populated as Studio receives new updates.
 
 ![](https://static.iterative.ai/img/studio/live_plots.gif)
+
+<admon>
+
+If there are multiple projects connected to a single Git repository, then live
+experiments for this repository are displayed in all its connected projects.
+
+</admon>
+
+### Detached experiments
+
+A live experiment for which the parent Git commit is missing in the Git
+repository is displayed in a separate section called `Detached experiments` at
+the top of the project table.
+
+Some of the reasons for missing parent commits are:
+
+- the parent commit exists in your local clone of the repository and is not
+  pushed to the Git remote
+- the parent commit got removed by some mutative Git action such as rebase, hard
+  reset with a push, squash commit, etc.
+
+Once you push the missing parent commit to the Git remote, the live experiment
+will get nested under the parent commit as expected.
+
+You can also delete the detached experiments if they are no longer important.
+
+### Experiment status
 
 An experiment can have one of the following statuses:
 
@@ -131,13 +148,6 @@ An experiment can have one of the following statuses:
   appropriate DVC and Git commands.
 
   </admon>
-
-<admon>
-
-If there are multiple projects connected to a single Git repository, then live
-experiments for this repository are displayed in all its connected projects.
-
-</admon>
 
 [dvclive]: /doc/dvclive
 [create your access token]:
