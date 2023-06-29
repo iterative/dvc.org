@@ -24,34 +24,34 @@ You can also construct this command manually using this template:
 $ dvc get ${GIT_REPO} ${MODEL_PATH} --rev ${GIT_REV}
 ```
 
-Let's download the `seg-model` model in the
-[example-get-started-experiments](https://github.com/iterative/example-get-started-experiments)
+Let's download the `text-classification` model in the
+[example-get-started](https://github.com/iterative/example-get-started)
 repository.
 
-To find out the model file path (that is, `models/model.pkl`) you can check the
-model's details page or check the `dvc.yaml` file to which the model annotation
-was written.
+To find out the model file path (that is, `model.pkl`) you can check the model's
+details page or check the `dvc.yaml` file to which the model annotation was
+written.
 
 To find out the Git revision, you can check the
-[list of Git tags](https://github.com/iterative/example-get-started-experiments/tags)
-or use [GTO](https://mlem.ai/doc/gto/command-reference/show/):
+[list of Git tags](https://github.com/iterative/example-get-started/tags) or use
+[GTO](https://mlem.ai/doc/gto/command-reference/show/):
 
 ```cli
-$ gto show seg-model@latest --ref
-seg-model@v0.0.1#1
+$ gto show text-classification@latest --ref
+text-classification@v1.2.0
 ```
 
 Putting everything together, to download the model file, you can use the
 following dvc command:
 
 ```cli
-$ dvc get https://github.com/iterative/example-get-started-experiments \
-    models/model.pkl \
-    --rev seg-model@v0.0.1#1
+$ dvc get https://github.com/iterative/example-get-started \
+    model.pkl \
+    --rev text-classification@v1.2.0
 ```
 
-Note that `models/model.pkl` is the path that was specified in `dvc.yaml`, and
-not the physical path of the model file (in the remote storage).
+Note that `model.pkl` is the path that was specified in `dvc.yaml`, and not the
+physical path of the model file (in the remote storage).
 
 DVC will figure out the right file to download from the remote storage for you.
 Note that for running this command, you will need to have remote storage
