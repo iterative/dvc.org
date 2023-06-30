@@ -47,7 +47,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `summary` - See `Live.make_summary()`.
 
 - `dir` - Location of the directory to store
-  [outputs](/doc/dvclive/how-it-works).
+  [outputs](/doc/dvclive/directory-structure).
 
 - `dvc_file` - `{Live.dir}/dvc.yaml`.
 
@@ -77,8 +77,8 @@ You can use `Live()` as a context manager. When exiting the context manager,
   If `report` is `None`, `Live.make_report()` won't generate anything.
 
 - `save_dvc_exp` - If `True`, DVCLive will create a new
-  [DVC experiment](/doc/dvclive/how-it-works#track-the-results) as part of
-  `Live.end()`. Defaults to `False`.
+  [DVC experiment](/doc/dvclive/track-the-results) as part of `Live.end()`.
+  Defaults to `False`.
 
 - `dvcyaml` - If `True`, DVCLive will write
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for

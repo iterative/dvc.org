@@ -63,10 +63,10 @@ all the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 - `meta` - optional metainformation in `key: value` format.
 
 - `copy` - copy a directory or file at `path` into the `dvclive/artifacts`
-  location ([default](/doc/dvclive/how-it-works#directory-structure)) before
-  tracking it. The new path is used instead of the original one to track the
-  artifact. Useful if you don't want to track the original path in your repo
-  (for example, it is outside the repo or in a Git-ignored directory).
+  location ([default](/doc/dvclive/directory-structure)) before tracking it. The
+  new path is used instead of the original one to track the artifact. Useful if
+  you don't want to track the original path in your repo (for example, it is
+  outside the repo or in a Git-ignored directory).
 
 ## Exceptions
 

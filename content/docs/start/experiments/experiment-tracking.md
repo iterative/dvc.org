@@ -133,7 +133,7 @@ it with
 
 <admon type="info">
 
-Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
+Learn more about [how DVCLive works](/doc/dvclive/track-the-results)
 
 </admon>
 

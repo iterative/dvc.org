@@ -27,7 +27,7 @@ See [`Live()`](/doc/dvclive/live) for details.
 <admon type="info">
 
 Including `save_dvc_exp=True` will automatically
-[track the results](/doc/dvclive/how-it-works#track-the-results).
+[track the results](/doc/dvclive/track-the-results).
 
 </admon>
 
@@ -152,5 +152,5 @@ with Live(save_dvc_exp=True) as live:
 ## Outputs
 
 After you run your training code, all the logged data will be stored in the
-`dvclive` directory. Check the [DVCLive outputs](/doc/dvclive/how-it-works) page
-for more details.
+`dvclive` directory. Check the
+[DVCLive outputs](/doc/dvclive/directory-structure) page for more details.

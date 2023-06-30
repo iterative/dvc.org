@@ -738,8 +738,12 @@
     "source": "dvclive/index.md",
     "children": [
       {
-        "slug": "how-it-works",
-        "label": "How it Works"
+        "slug": "directory-structure",
+        "label": "Directory Structure"
+      },
+      {
+        "slug": "track-the-results",
+        "label": "Track the Results"
       },
       {
         "slug": "live",
