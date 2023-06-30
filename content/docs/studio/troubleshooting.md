@@ -341,7 +341,8 @@ that the Iterative Studio webhook in your repository got deleted or messed up.
 
 Iterative Studio periodically checks for any missing or messed up webhooks, and
 attempts to re-create them. Currently, this happens every 2 hours. The webhook
-also gets re-created every time you create a new project.
+also gets re-created every time you create a new project or force import a
+repository.
 
 ## I cannot find my desired Git repository in the form to add a model
 
