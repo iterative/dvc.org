@@ -23,8 +23,4 @@ a new Git tag in your Git repository to
 [indicate that the given model version has been unassigned from the given stage](https://mlem.ai/doc/gto/command-reference/deprecate#unassigning-a-stage).
 
 Removing a Git tag from your Git repository also removes the model version or
-stage assignment represented by that Git tag. To get this change to reflect in
-Iterative Studio, reparse the repository by opening the project in Iterative
-Studio and clicking on `Force import` as shown below.
-
-![Showing and hiding columns](https://static.iterative.ai/img/studio/force_import.gif)
+stage assignment represented by that Git tag.
