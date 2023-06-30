@@ -17,7 +17,7 @@ description:
   artifacts are built, and provide an efficient way to reproduce them. Think
   "Makefiles for data and ML projects" done right.
 
-- **[Metrics, parameters, and plots]** - Those are first class citizens in DVC
+- **[Metrics, parameters, and plots]** - These are first class citizens in DVC
   pipelines. Capture, evaluate, and visualize ML projects without leaving Git.
 
 [data and model versioning]: /doc/start/data-management/data-versioning
