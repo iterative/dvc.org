@@ -3,41 +3,77 @@
 DVCLive allows you to add experiment tracking capabilities to your
 [PyTorch](https://pytorch.org/) projects.
 
+<admon type="tip">
+
+If you are using PyTorch Lightning, check the
+[DVCLive - PyTorch Lightning](/doc/dvclive/ml-frameworks/pytorch-lightning)
+page.
+
+</admon>
+
 ## Usage
 
-You need to add `Live.log_metric()` calls to each place where you would like to
-log metrics and one single `Live.next_step()` call to indicate that the epoch
-has ended.
+<p align='center'>
+  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-Quickstart.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" />
+  </a>
+</p>
 
-let's consider the following example, extracted from the
-[official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/main/imagenet/main.py):
+You need to create a [`Live`](/doc/dvclive/api-refence) instance and include
+calls to [log data](/doc/dvclive#log-data) and
+[update the step number](/doc/dvclive#optionally-update-the-step-number).
+
+This snippet is used inside the Colab Notebook linked above:
 
 ```python
-from dvclive import Live
+from DVCLive import Live
 
-live = Live()
+...
 
-for epoch in range(args.start_epoch, args.epochs):
-    lr = adjust_learning_rate(optimizer, epoch, args)
-    live.log_metric("learning_rate", lr)
+with Live(save_dvc_exp=True, report="notebook") as live:
 
-    train_acc1 = train(
-        train_loader, model, criterion, optimizer, epoch, args)
-    live.log_metric("train/accuracy", train_acc1)
+    live.log_params(params)
 
-    val_acc1 = validate(val_loader, model, criterion, args)
-    live.log_metric("validation/accuracy", val_acc1)
+    for _ in range(params["epochs"]):
 
-    is_best = val_acc1 > best_acc1
-    best_acc1 = max(val_acc1, best_acc1)
+        train_one_epoch(
+            model, criterion, x_train, y_train, params["lr"], params["weight_decay"]
+        )
 
-    save_checkpoint({
-        'epoch': epoch + 1,
-        'arch': args.arch,
-        'state_dict': model.state_dict(),
-        'best_acc1': best_acc1,
-        'optimizer' : optimizer.state_dict(),
-    }, is_best)
+        # Train Evaluation
+        metrics_train, acual_train, predicted_train = evaluate(
+            model, x_train, y_train)
 
-    live.next_step()
+        for k, v in metrics_train.items():
+            live.log_metric(f"train/{k}", v)
+
+        live.log_sklearn_plot(
+            "confusion_matrix",
+            acual_train, predicted_train,
+            name="test/confusion_matrix"
+        )
+
+        # Test Evaluation
+        metrics_test, actual, predicted = evaluate(
+            model, x_test, y_test)
+
+        for k, v in metrics_test.items():
+            live.log_metric(f"test/{k}", v)
+
+        live.log_sklearn_plot(
+            "confusion_matrix", actual, predicted, name="test/confusion_matrix"
+        )
+
+        live.log_image(
+            "misclassified.jpg",
+            get_missclassified_image(actual, predicted, mnist_test)
+        )
+
+        # Save best model
+        if metrics_test["acc"] > best_test_acc:
+            torch.save(model.state_dict(), "model.pt")
+
+        live.next_step()
+
+    live.log_artifact("model.pt")
 ```

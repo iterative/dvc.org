@@ -35,7 +35,7 @@ class LitModule(pl.LightningModule):
 
     def training_step(self, batch, batch_idx):
         metric = ...
-        # some_metric will be logged by DVCLive
+        # See Output Format bellow
         self.log("train_metric", metric, on_step=False, on_epoch=True)
 
 dvclive_logger = DVCLiveLogger()
@@ -116,14 +116,27 @@ with Live() as live:
 Each metric will be logged to:
 
 ```py
-{Live.plots_dir}/metrics/{split}/{iter_type}/{metric}.tsv
+{Live.plots_dir}/metrics/{split_prefix}/{iter_type}/{metric_name}.tsv
 ```
 
 Where:
 
 - `{Live.plots_dir}` is defined in [`Live`].
-- `{split}` can be either `train`, `val` or `test`.
-- `{iter_type}` can be either `epoch` or `step`.
-- `{metric}` is the name provided by the framework.
+- `{iter_type}` can be either `epoch` or `step`. This is inferred from the
+  `on_step` and `on_epoch` arguments used in the `log` call.
+- `{split_prefix}_{metric_name}` is the full string passed to the `log` call.
+  `split_prefix` can be either `train`, `val` or `test`.
+
+In the example above, the metric logged as:
+
+```py
+self.log("train_metric", metric, on_step=False, on_epoch=True)
+```
+
+Will be stored in:
+
+```
+dvclive/metrics/train/epoch/metric.tsv
+```
 
 [`live`]: /doc/dvclive/live
