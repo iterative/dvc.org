@@ -50,7 +50,7 @@ with Live(save_dvc_exp=True, report="notebook") as live:
         live.log_sklearn_plot(
             "confusion_matrix",
             acual_train, predicted_train,
-            name="test/confusion_matrix"
+            name="train/confusion_matrix"
         )
 
         # Test Evaluation
