@@ -77,10 +77,9 @@ you experience any problems, don't hesitate to ping us in our [chat](/chat).
 ## Debugging
 
 The DVC command line interface has several debugging tools that are hidden by
-default in the `--help`. However, by setting the `DVC_SHOW_DEBUG_OPTIONS`
-environment variable the available options will be shown to you. See 
-[The DVC Debugging Wiki](https://github.com/iterative/dvc/wiki/Debugging,-Profiling-and-Benchmarking-DVC) 
-for more information.
+default in the `--help`, but will be shown `--verbose` is also specified.
+See [The DVC Debugging Wiki](https://github.com/iterative/dvc/wiki/Debugging,-Profiling-and-Benchmarking-DVC) 
+for more information on these debugging options.
 
 ## Writing tests
 
