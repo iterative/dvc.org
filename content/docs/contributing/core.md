@@ -74,6 +74,17 @@ $ pre-commit install
 That's it. You should be ready to make changes, run tests, and make commits! If
 you experience any problems, don't hesitate to ping us in our [chat](/chat).
 
+## Debugging
+
+The DVC command line interface has several debugging tools that are hidden by
+default in the `--help`. However, by setting the `DVC_SHOW_DEBUG_OPTIONS`
+environment variable the available options will be shown to you. This includes
+options to visualize the code execution with
+[VizTracer](https://github.com/gaogaotiantian/viztracer) or generate callgrind
+files with [yappi](https://github.com/sumerc/yappi), which can then be
+visualized with tools like
+[KCachegrind](https://kcachegrind.github.io/html/Home.html).
+
 ## Writing tests
 
 We have unit tests in `tests/unit/` and functional tests in `tests/func/`.
