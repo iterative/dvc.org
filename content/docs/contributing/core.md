@@ -78,12 +78,9 @@ you experience any problems, don't hesitate to ping us in our [chat](/chat).
 
 The DVC command line interface has several debugging tools that are hidden by
 default in the `--help`. However, by setting the `DVC_SHOW_DEBUG_OPTIONS`
-environment variable the available options will be shown to you. This includes
-options to visualize the code execution with
-[VizTracer](https://github.com/gaogaotiantian/viztracer) or generate callgrind
-files with [yappi](https://github.com/sumerc/yappi), which can then be
-visualized with tools like
-[KCachegrind](https://kcachegrind.github.io/html/Home.html).
+environment variable the available options will be shown to you. See 
+[The DVC Debugging Wiki](https://github.com/iterative/dvc/wiki/Debugging,-Profiling-and-Benchmarking-DVC) 
+for more information.
 
 ## Writing tests
 
