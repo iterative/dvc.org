@@ -19,8 +19,8 @@ page.
   </a>
 </p>
 
-You need to create a [`Live`](/doc/dvclive/api-refence) instance and include
-calls to [log data](/doc/dvclive#log-data) and
+You need to create a [`Live`](/doc/dvclive/live) instance and include calls to
+[log data](/doc/dvclive#log-data) and
 [update the step number](/doc/dvclive#optionally-update-the-step-number).
 
 This snippet is used inside the Colab Notebook linked above:
