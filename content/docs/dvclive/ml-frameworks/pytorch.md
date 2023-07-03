@@ -19,7 +19,7 @@ page.
   </a>
 </p>
 
-You need to create a [`Live`](/doc/dvclive/api-refence) instance and include
+You need to create a [`Live`](/doc/dvclive/live) instance and include
 calls to [log data](/doc/dvclive#log-data) and
 [update the step number](/doc/dvclive#optionally-update-the-step-number).
 
