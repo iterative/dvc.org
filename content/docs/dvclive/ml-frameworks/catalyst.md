@@ -51,7 +51,7 @@ Where:
 from dvclive import Live
 from dvclive.catalyst import DVCLiveCallback
 
-with Live("custom_dir") as live:
+with Live("custom_dir", save_dvc_exp=True) as live:
     runner.train(
         model=model,
         criterion=criterion,
@@ -63,18 +63,6 @@ with Live("custom_dir") as live:
 
     # Log additional metrics after training
     live.log_metric("summary_metric", 1.0, plot=False)
-```
-
-- Using `model_file`.
-
-```python
-runner.train(
-    model=model,
-    criterion=criterion,
-    optimizer=optimizer,
-    loaders=loaders,
-    num_epochs=2,
-    callbacks=[DVCLiveCallback(model_file="model.pth")])
 ```
 
 [`live`]: /doc/dvclive/live
@@ -89,7 +77,7 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[
-      DVCLiveCallback(model_file="model.pth", dir="custom_dir")])
+      DVCLiveCallback(save_dvc_exp=True, dir="custom_dir")])
 ```
 
 [`live`]: /doc/dvclive/live
