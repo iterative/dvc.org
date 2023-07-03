@@ -36,7 +36,7 @@ class LitModule(pl.LightningModule):
     def training_step(self, batch, batch_idx):
         metric = ...
         # some_metric will be logged by DVCLive
-        self.log("some_metric", metric)
+        self.log("train_metric", metric, on_step=False, on_epoch=True)
 
 dvclive_logger = DVCLiveLogger()
 
