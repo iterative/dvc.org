@@ -139,8 +139,8 @@ An experiment can have one of the following statuses:
   <admon type="warn">
 
   Iterative Studio does not automatically commit and push the final results of
-  your experiment to Git. You can [share] the experiment or [save] it using
-  appropriate DVC and Git commands.
+  your experiment to Git. You can [push] the experiment using appropriate DVC
+  and Git commands.
 
   </admon>
 
@@ -152,6 +152,6 @@ experiments for this repository are displayed in all its connected projects.
 </admon>
 
 [dvclive]: /doc/dvclive
-[share]: /doc/user-guide/experiment-management/sharing-experiments
-[save]: /doc/user-guide/experiment-management/persisting-experiments
+[push]:
+  /doc/user-guide/experiment-management/sharing-experiments#push-experiments
 [dvc config]: /docs/user-guide/project-structure/configuration#studio

@@ -270,7 +270,7 @@ extension for VS Code].
 
 </toggle>
 
-You can use standard Git commands (e.g. `git add/commit/push`) to version this
+You can use standard Git commands (e.g. `git add/commit/push`) to [persist] this
 experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
 files, etc.) can be stored in Git.
@@ -288,7 +288,7 @@ you are away from your machine, or you want to share the results with others.
 
 ![Studio Compare Experiments Overview](/img/studio-compare-exps-overview.gif)
 
-## Clean up experiments
+## Removing experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. When you want to discard experiments by their
@@ -335,3 +335,5 @@ artifacts, etc. related with the experiments, you can use `dvc gc`.
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 [visualizing and comparing experiments]:
   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare
+[persist]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
