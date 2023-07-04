@@ -38,7 +38,7 @@ class LitModule(pl.LightningModule):
         # See Output Format bellow
         self.log("train_metric", metric, on_step=False, on_epoch=True)
 
-dvclive_logger = DVCLiveLogger()
+dvclive_logger = DVCLiveLogger(save_dvc_exp=True)
 
 model = LitModule()
 trainer = pl.Trainer(logger=dvclive_logger)
@@ -75,7 +75,7 @@ checkpointing at all as described in the
 from dvclive import Live
 from dvclive.lightning import DVCLiveLogger
 
-with Live("custom_dir") as live:
+with Live("custom_dir", save_dvc_exp=True) as live:
     trainer = Trainer(
         logger=DVCLiveLogger(experiment=live))
     trainer.fit(model)
@@ -89,7 +89,7 @@ with Live("custom_dir") as live:
 from dvclive.lightning import DVCLiveLogger
 
 trainer = Trainer(
-    logger=DVCLiveLogger(dir='my_logs_dir'))
+    logger=DVCLiveLogger(save_dvc_exp=True, dir='my_logs_dir'))
 trainer.fit(model)
 ```
 
@@ -97,7 +97,7 @@ trainer.fit(model)
   [best checkpoint](https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html).
 
 ```python
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
     checkpoint = ModelCheckpoint(dirpath="mymodel")
     trainer = Trainer(
         logger=DVCLiveLogger(experiment=live),

@@ -22,7 +22,7 @@ from dvclive.huggingface import DVCLiveCallback
     tokenizer=tokenizer,
     compute_metrics=compute_metrics,
 )
-trainer.add_callback(DVCLiveCallback())
+trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
 trainer.train()
 ```
 
@@ -57,7 +57,7 @@ Where:
 from dvclive import Live
 from dvclive.huggingface import DVCLiveCallback
 
-with Live("custom_dir") as live:
+with Live("custom_dir", save_dvc_exp=True) as live:
     trainer = Trainer(
         model, args,
         train_dataset=train_data, eval_dataset=eval_data, tokenizer=tokenizer)
@@ -68,19 +68,11 @@ with Live("custom_dir") as live:
     live.log_metric("summary_metric", 1.0, plot=False)
 ```
 
-- Using `model_file`.
-
-```python
-trainer.add_callback(
-    DVCLiveCallback(model_file="my_model_file"))
-trainer.train()
-```
-
 - Using `**kwargs` to customize the new [`Live`] instance.
 
 ```python
 trainer.add_callback(
-    DVCLiveCallback(model_file="my_model_file", dir="custom_dir"))
+    DVCLiveCallback(save_dvc_exp=True, dir="custom_dir"))
 ```
 
 [`live`]: /doc/dvclive/live

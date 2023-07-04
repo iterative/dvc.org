@@ -52,7 +52,7 @@ Where:
 from dvclive import Live
 from dvclive.fastai import DVCLiveCallback
 
-with Live("custom_dir") as live:
+with Live("custom_dir", save_dvc_exp=True) as live:
     learn = tabular_learner(data_loader, metrics=accuracy)
     learn.fit_one_cycle(
       n_epoch=2,
@@ -62,20 +62,12 @@ with Live("custom_dir") as live:
     live.log_metric("summary_metric", 1.0, plot=False)
 ```
 
-- Using `model_file`.
-
-```python
-learn.fit_one_cycle(
-  n_epoch=2,
-  cbs=[DVCLiveCallback(model_file="model.pth")])
-```
-
 - Using `**kwargs` to customize the new [`Live`] instance.
 
 ```python
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DVCLiveCallback(model_file="model.pth", dir="custom_dir")])
+  cbs=[DVCLiveCallback(save_dvc_exp=True, dir="custom_dir")])
 ```
 
 [`live`]: /doc/dvclive/live

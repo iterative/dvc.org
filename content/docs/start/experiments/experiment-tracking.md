@@ -43,7 +43,6 @@ with Live(save_dvc_exp=True) as live:
     checkpoint = ModelCheckpoint(dirpath="mymodel")
     trainer = Trainer(
         logger=DVCLiveLogger(
-            save_dvc_exp=True,
             experiment=live
         ),
         callbacks=checkpoint
@@ -67,7 +66,7 @@ from dvclive.huggingface import DVCLiveCallback
 ...
 with Live(save_dvc_exp=True) as live:
     trainer.add_callback(
-        DVCLiveCallback(save_dvc_exp=True, live=live)
+        DVCLiveCallback(live=live)
     )
     trainer.train()
     trainer.save_model("mymodel")
@@ -88,7 +87,7 @@ with Live(save_dvc_exp=True) as live:
         train_dataset,
         validation_data=validation_dataset,
         callbacks=[
-            DVCLiveCallback(save_dvc_exp=True, live=live)
+            DVCLiveCallback(live=live)
         ]
     )
     model.save("mymodel")
