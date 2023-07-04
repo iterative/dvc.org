@@ -288,7 +288,7 @@ you are away from your machine, or you want to share the results with others.
 
 ![Studio Compare Experiments Overview](/img/studio-compare-exps-overview.gif)
 
-## Clean up experiments
+## Removing experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. When you want to discard experiments by their

@@ -123,7 +123,7 @@ Learn more about
 
 </admon>
 
-## Cleaning
+## Removing
 
 After deciding on which experiments to persist, you might want to remove those
 that you no longer want to keep:
@@ -160,7 +160,7 @@ You can click to the right of the experiment and use the `Delete` action:
 <admon type="info">
 
 Learn more about
-[Cleaning Experiments](/doc/user-guide/experiment-management/comparing-experiments#clean-up-experiments)
+[Removing Experiments](/doc/user-guide/experiment-management/comparing-experiments#removing-experiments)
 
 </admon>
 
