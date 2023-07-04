@@ -37,7 +37,8 @@ version.
 
 [git branch]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
-[regular commits]: /doc/user-guide/experiment-management/persisting-experiments
+[regular commits]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
 [stored and shared]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 

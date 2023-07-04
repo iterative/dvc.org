@@ -113,7 +113,7 @@ files cannot be restored.
 
 [reviewing]: /doc/user-guide/experiment-management/comparing-experiments
 [apply]:
-  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
+  /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 
 ## Tuning (hyper)parameters
 
@@ -317,7 +317,8 @@ committing unwanted files into Git (e.g. once successful experiments are
 [persisted]). To include untracked files, stage them with `git add` first
 (before `dvc exp run`) and `git reset` them afterwards.
 
-[persisted]: /doc/user-guide/experiment-management/persisting-experiments
+[persisted]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
 
 </details>
 

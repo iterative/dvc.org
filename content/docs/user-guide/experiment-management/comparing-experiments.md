@@ -270,7 +270,7 @@ extension for VS Code].
 
 </toggle>
 
-You can use standard Git commands (e.g. `git add/commit/push`) to version this
+You can use standard Git commands (e.g. `git add/commit/push`) to [persist] this
 experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
 files, etc.) can be stored in Git.
@@ -335,3 +335,5 @@ artifacts, etc. related with the experiments, you can use `dvc gc`.
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 [visualizing and comparing experiments]:
   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare
+[persist]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment

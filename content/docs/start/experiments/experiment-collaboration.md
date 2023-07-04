@@ -119,7 +119,7 @@ $ gh pr create -H soupy-leak-branch --title "Experiment: soupy-leak"
 <admon type="info">
 
 Learn more about
-[Persisting Experiments](/doc/user-guide/experiment-management/persisting-experiments)
+[Persisting Experiments](/doc/user-guide/experiment-management/sharing-experiments#persist-experiment)
 
 </admon>
 
@@ -160,7 +160,7 @@ You can click to the right of the experiment and use the `Delete` action:
 <admon type="info">
 
 Learn more about
-[Cleaning Experiments](/doc/user-guide/experiment-management/cleaning-experiments)
+[Cleaning Experiments](/doc/user-guide/experiment-management/comparing-experiments#clean-up-experiments)
 
 </admon>
 
