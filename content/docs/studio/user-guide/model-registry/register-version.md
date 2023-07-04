@@ -1,14 +1,29 @@
-# Version models
+# Register a model version
 
-You can register new versions of registered models by specifying the Git commit
-which corresponds to the new version.
+New model versions can signify an important, published or released iteration. To
+register version, you first need to
+[add a model to the model registry](/doc/studio/user-guide/model-registry/add-a-model).
 
 To register a new version of a model, Iterative Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified version number. Refer to the
 [GTO docs][gto-format] to see the exact format of the Git tag.
 
-To register versions using Iterative Studio, watch this tutorial video or read
-on below:
+You can [write CI/CD actions][CI/CD] that can actually build and publish models
+(for example, build Docker image with the model and publish it to a Docker
+Registry) upon the creation of a new Git tag for version registration. For that,
+you can leverage any ML model deployment tool, such as [MLEM].
+
+You can register a version in any of the following ways:
+
+1. Use GTO CLI or API. An example would be
+   [`gto register pool-segmentation --version v0.0.1`][register], assuming
+   `dvc.yaml` with the model annotation is located in the root of the repo. If
+   not, you should append its parent directory to the model's name like this:
+   [`gto register cv:pool-segmentation --version v0.0.1`][register] (here, `cv`
+   is the parent directory). To get a better idea about this case, check out
+   this [example monorepo][monorepo].
+2. To register versions using Iterative Studio, watch this tutorial video or
+   read on below.
 
 https://www.youtube.com/watch?v=eA70puzOp1o
 
@@ -50,3 +65,9 @@ the selected commit has been created, representing the new version.
 [gto-format]: https://mlem.ai/doc/gto/user-guide#git-tag-message-format
 [`gto` cli]: https://mlem.ai/doc/gto/command-reference
 [semver]: https://semver.org/
+[CI/CD]:
+  /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
+[MLEM]: https://mlem.ai/
+[register]: https://mlem.ai/doc/gto/command-reference/register
+[monorepo]:
+  https://github.com/iterative/monorepo-example/blob/add-cv-model/cv/dvc.yaml

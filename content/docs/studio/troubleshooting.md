@@ -5,6 +5,11 @@ Iterative Studio.
 
 **Projects and experiments**
 
+- [Errors accessing your Git repository](#errors-accessing-your-git-repository)
+- [Errors related to parsing the repository](#errors-related-to-parsing-the-repository)
+- [Errors related to DVC remotes](#errors-related-to-dvc-remotes)
+- [Errors related to credentials](#errors-related-to-credentials)
+
 - [Error: No data found to visualize](#error-no-data-found-to-visualize)
 - [Error: No DVC repo was found at the root](#error-no-dvc-repo-was-found-at-the-root)
 - [Error: Non-DVC sub-directory of a monorepo](#error-non-dvc-sub-directory-of-a-monorepo)
@@ -12,10 +17,14 @@ Iterative Studio.
 - [Project got created, but does not contain any data](#project-got-created-but-does-not-contain-any-data)
 - [Project does not contain the columns that I want](#project-does-not-contain-the-columns-that-i-want)
 - [Project does not contain some of my commits or branches](#project-does-not-contain-some-of-my-commits-or-branches)
+
+- [Error: Missing metric or plot file(s)](#error-missing-metric-or-plot-files)
+- [Error: Base commit not found](#error-base-commit-not-found)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 - [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 - [Project does not display DVC experiments](#project-does-not-display-dvc-experiments)
 - [Error: `dvc.lock` validation failed](#error-dvclock-validation-failed)
+- [Project does not reflect updates in the Git repository ](#project-does-not-reflect-updates-in-the-git-repository)
 
 **Model registry**
 
@@ -36,6 +45,61 @@ If you need further help, you can send us a message using `Help` on the
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
 [Discord](https://discord.com/invite/dvwXA2N).
+
+## Errors accessing your Git repository
+
+When Iterative Studio cannot access your Git repository, it can present one of
+the following errors:
+
+- Repository not found or you don't have access to it
+- Unable to access repository due to stale authorization
+- Unable to access repository
+- Could not access the git repository, because the connection was deleted or the
+  token was expired
+- No tokens to access the repo
+- Insufficient permission to push to this repository
+- No access to this repo
+
+To fix this, make sure that the repository exists and you have access to it.
+Re-login to the correct Git account and try to import the repository again. If
+you are connecting to a GitHub account, also make sure that the Iterative Studio
+GitHub app is installed.
+
+Additionally, network or third party issues (such as GitHub, GitLab or Bitbucket
+outages) can also cause connection issues. In this case, Iterative Studio can
+display an appropriate indication in the error message.
+
+## Errors related to parsing the repository
+
+If you see one of the following errors, it means that for some reason, parsing
+of the Git repository could not start or it stopped unexpectedly. You can try to
+import the repo again.
+
+- Failed to start parsing
+- Parsing stopped unexpectedly
+
+## Errors related to DVC remotes
+
+Iterative Studio can access data from network-accessible remotes such as Amazon
+S3, Microsoft Azure, etc but not from [local DVC remotes][local-dvc-remotes]. If
+your project uses an unsupported remote, you will see one of the following
+errors:
+
+- Local remote was ignored
+- Remote not supported
+
+Please use one of the following types of data remotes: Amazon S3, Microsoft
+Azure, Google Drive, Google Cloud Storage and SSH.
+
+## Errors related to credentials
+
+If your repository uses data remotes that Iterative Studio needs to access, then
+you should [add the required credentials to your project][cloud-credentials]. If
+credentials are missing or incorrect, you will see one of the following errors:
+
+- No credentials were provided
+- Credentials are either broken or not recognized
+- No permission to fetch remote data
 
 ## Error: No data found to visualize
 
@@ -105,9 +169,8 @@ Instructions on how to specify the sub-directory or custom files can be found
 
 ## Error: No commits were found for the sub-directory
 
-If you get this message when you try to add a project:
-`No commits were found for the sub-directory`, then it means that you have
-specified an empty or non-existent sub-directory.
+If you get this message when you try to add a project, then it means that you
+have specified an empty or non-existent sub-directory.
 
 To solve this, you need to change the sub-directory and specify the full path to
 the correct sub-directory that contains the DVC repo.
@@ -188,6 +251,22 @@ not in the hidden commits list, please [raise a support request](#support).
 [display preferences -> hide commits]:
   /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
 
+## Error: Missing metric or plot file(s)
+
+This error message means that the metric or plot files referenced from
+`dvc.yaml` could not be found in your Git repository or cache. Make sure that
+you have pushed the required files using `dvc push`. Then try to import the
+repository again.
+
+## Error: Skipped big remote file(s)
+
+Files that are larger than 10 MB are currently skipped by Iterative Studio.
+
+## Error: Base commit not found
+
+The base commit which you have selected cannot be found in your Git repository.
+Check if the commit has been removed from your Git repository.
+
 ## Error: Failed to push experiment to repository
 
 This is a non-specific error with a range of possible causes. To resolve it,
@@ -215,6 +294,10 @@ check that:
 [gh-status]: https://www.githubstatus.com/
 [gl-status]: https://status.gitlab.com/
 [bb-status]: https://bitbucket.status.atlassian.com/
+[local-dvc-remotes]:
+  /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
+[cloud-credentials]:
+  /doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
@@ -249,6 +332,18 @@ One potential cause for this error is that at the time of the given commit, your
 repository used DVC 1.0. The format of lock files used in DVC 1.0 were
 deprecated in the DVC 2.0 release. Upgrading to the latest DVC version will
 resolve this issue for any future commits in your repository.
+
+## Project does not reflect updates in the Git repository
+
+When there are updates (new commits, branches, etc.) in your Git repository,
+your project in Iterative Studio gets reflected to include those updates. If the
+project has stopped receiving updates from the Git repository and you have to
+"force import" the project each time to get any new commit, then it is possible
+that the Iterative Studio webhook in your repository got deleted or messed up.
+
+Iterative Studio periodically checks for any missing or messed up webhooks, and
+attempts to re-create it. Currently, this happens every 2 hours. The webhook
+also gets re-created every time you create a new project.
 
 ## I cannot find my desired Git repository in the form to add a model
 

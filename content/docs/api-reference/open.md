@@ -8,7 +8,8 @@ def open(path: str,
          rev: str = None,
          remote: str = None,
          mode: str = "r",
-         encoding: str = None)
+         encoding: str = None,
+         config: dict = None)
 ```
 
 ## Usage
@@ -84,11 +85,16 @@ call – no _context manager_ involved. Neither function utilizes disc space.
   only be used in text mode. Defaults to `"utf-8"`. Mirrors the namesake
   parameter in builtin `open()`.
 
+- `config` - [config] dictionary to pass to the DVC project. This is merged with
+  the existing project config and can be used to, for example, provide
+  credentials to the `remote`.
+
 [revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
 [dvc remote]: /doc/user-guide/data-management/remote-storage
 [default remote]: /doc/command-reference/remote/default
 [codec]: https://docs.python.org/3/library/codecs.html#standard-encodings
+[config]: /doc/command-reference/config
 
 ## Exceptions
 
@@ -198,4 +204,49 @@ import dvc.api
 
 with dvc.api.open('data/nlp/words_ru.txt', encoding='koi8_r') as f:
     # ... Process Russian words
+```
+
+## Example: Specify credentials for specific remote
+
+See [remote modify](/doc/command-reference/remote/modify) for full list of
+remote-specific config options.
+
+```py
+import dvc.api
+
+config = {
+    'remote': {
+        'myremote': {
+            'access_key_id': 'mykey',
+            'secret_access_key': 'mysecretkey',
+            'session_token': 'mytoken',
+        },
+    },
+}
+
+with dvc.api.open('data', config=config) as f:
+    # ... Process data
+```
+
+## Example: Change default remote and specify credentials for it
+
+See [remote modify](/doc/command-reference/remote/modify) for full list of
+remote-specific config options.
+
+```py
+import dvc.api
+
+config = {
+    'core': {'remote': 'myremote'},
+    'remote': {
+        'myremote': {
+            'access_key_id': 'mykey',
+            'secret_access_key': 'mysecretkey',
+            'session_token': 'mytoken',
+        },
+    },
+}
+
+with dvc.api.open('data', config=config) as f:
+    # ... Process data
 ```
