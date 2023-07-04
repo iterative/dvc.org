@@ -98,7 +98,7 @@ They are stored and tracked internally by DVC.
 
 To display and compare multiple experiments along with their
 <abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show`.
-`plots diff` also accepts experiments as `revisions`. See [Reviewing and
+`dvc plots diff` also accepts experiments as `revisions`. See [Reviewing and
 Comparing Experiments][reviewing] for more details.
 
 Use `dvc exp apply` to restore the results of any other experiment instead. See
