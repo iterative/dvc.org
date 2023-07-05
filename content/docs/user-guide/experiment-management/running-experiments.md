@@ -87,6 +87,8 @@ on your cloud provider, run a setup script, execute your pipeline using
 `dvc exp run`, and share the results back to Studio. See the Studio [Run
 Experiments] guide.
 
+![Studio run cloud experiments](/img/studio-run-cloud-experiments.gif)
+
 [studio]: https://studio.iterative.ai
 [run experiments]:
   /doc/studio/user-guide/projects-and-experiments/run-experiments
