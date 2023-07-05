@@ -27,7 +27,7 @@ Note that DVC **does not** switch into the new `branch` automatically.
 
 </admon>
 
-`dvc exp branch` is useful to make an experiment persistent without modifying
+`dvc exp branch` is useful to make an experiment [persistent] without modifying
 the workspace so they can be continued, [stored and shared] in a normal Git +
 DVC workflow.
 
@@ -37,7 +37,8 @@ version.
 
 [git branch]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
-[regular commits]: /doc/user-guide/experiment-management/persisting-experiments
+[persistent]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
 [stored and shared]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 

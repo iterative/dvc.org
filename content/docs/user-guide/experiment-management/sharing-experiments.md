@@ -235,7 +235,7 @@ Removed experiments: unwet-jinn
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
 [troubleshooting]: /doc/user-guide/troubleshooting#git-auth
-[persistent]: #push-a-persistent-experiment
+[persistent]: #persist-experiment
 [bring experiment results to your workspace]:
-  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
+  /doc/user-guide/experiment-management/copmaring-experiments#bring-experiment-results-to-your-workspace
 [remove]: #remove-pushed-experiments
