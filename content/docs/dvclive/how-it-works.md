@@ -95,6 +95,10 @@ the corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model`
 for DVC and will also show it in
 [Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
+Using `Live.log_image()` to log multiple images may also grow too large to track
+with Git, in which case you can use
+[`Live(cache_images=True)`](/doc/dvclive/live#parameters) to cache them.
+
 ### Run with DVC
 
 Experimenting in Python interactively (like in notebooks) is great for
