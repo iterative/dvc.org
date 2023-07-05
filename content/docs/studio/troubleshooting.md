@@ -348,9 +348,9 @@ repository.
 
 Only repositories that you have connected to Iterative Studio are available in
 the `Add a model` form. To connect your desired repository to Iterative Studio,
-go to the `Projects` tab and
-[create a project that connects to this Git repository](/doc/studio/user-guide/projects-and-experiments/create-a-project).
-Then you can come back to the model registry and add the model.
+go to the `Projects` tab and [create a project that connects to this Git
+repository][create a project]. Then you can come back to the model registry and
+add the model.
 
 ## Model registry does not display the models in my Git repositories
 
@@ -361,8 +361,11 @@ CLI].
 ## My models have disappeared even though I did not remove (deprecate) them
 
 When a project is deleted from the projects dashboard, all its models get
-automatically removed from the model registry. So make sure that the project is
-not deleted.
+automatically removed from the model registry. So check if the project has been
+removed. If yes, you can [add the project][create a project] again. Deleting a
+project from Iterative Studio does not delete any commits or tags from the Git
+repository. So, adding the project back will restore all the models from the
+repository along with their details including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 
@@ -373,3 +376,5 @@ please [contact us](#support).
 [gto]: https://mlem.ai/doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
 [`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[create a project]:
+  /doc/studio/user-guide/projects-and-experiments/create-a-project
