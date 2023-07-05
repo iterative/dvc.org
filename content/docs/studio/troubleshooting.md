@@ -361,7 +361,7 @@ CLI].
 ## My models have disappeared even though I did not remove (deprecate) them
 
 When a project is deleted from the projects dashboard, all its models get
-automatically removed form the model registry. So make sure that the project is
+automatically removed from the model registry. So make sure that the project is
 not deleted.
 
 ## Questions or problems with billing and payment

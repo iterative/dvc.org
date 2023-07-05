@@ -67,7 +67,7 @@ handy if you suspect that your account security may have been compromised.
 ### Cloud credentials
 
 In the `Cloud Credentials` section of your [Profile] page, you can view, add and
-update credentials for cloud resources. These credentials are used to
+update credentials for cloud resources. These credentials are used to:
 
 - [fetch project data from data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials),
   and
