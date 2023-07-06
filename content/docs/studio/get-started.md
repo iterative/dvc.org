@@ -59,9 +59,8 @@ details]).
 
    ![](https://static.iterative.ai/img/studio/view_components.png)
 
-6. You can [train on the cloud and submit new experiments] by changing
-   hyperparameters and datasets, and you can run on your own cloud
-   infrastructure.
+6. You can [train on the cloud, including on your own cloud infrastructure, and
+   submit new experiments] by changing hyperparameters and datasets.
 
 7. To [track live metrics and plots][live-metrics-and-plots] of running
    experiments, set the `STUDIO_ACCESS_TOKEN` environment variable and use
@@ -116,7 +115,7 @@ to get started.
   /doc/studio/user-guide/change-team-plan-and-size
 [make your projects public]:
   /doc/studio/user-guide/projects-and-experiments/share-a-project
-[submit new experiments]:
+[train on the cloud, including on your own cloud infrastructure, and submit new experiments]:
   /doc/studio/user-guide/projects-and-experiments/run-experiments
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots

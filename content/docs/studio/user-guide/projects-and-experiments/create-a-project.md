@@ -52,9 +52,8 @@ You should now see that a project has been added in your dashboard.
 
 5. If your project requires any of the additional settings, then remember to
    configure them by opening the [project settings]. Otherwise, your project may
-   not work as expected. To go to project settings, click on the
-   ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
-   in the project. In the menu that opens up, click on `Settings`.
+   not work as expected. To go to project settings, open the 3-dot menu for the
+   project and click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
@@ -63,12 +62,12 @@ You should now see that a project has been added in your dashboard.
 
 ## Create multiple projects from a single Git repository
 
-You can also create multiple projects in Iterative Studio from a single Git
+You can create multiple projects in Iterative Studio from a single Git
 repository and apply different settings to them.
 
 One use case for this is if you have a
-[monorepo](https://en.wikipedia.org/wiki/Monorepo) with multiple ML projects,
-each one in a different sub-directory.
+**[monorepo](https://en.wikipedia.org/wiki/Monorepo)** with multiple ML
+projects, each one in a different sub-directory.
 
 For each ML project in the monorepo, follow the
 [above process](#connect-to-a-git-repository-and-add-a-project) to connect to
@@ -89,5 +88,5 @@ members, also called collaborators.
 Each team will have its own projects dashboard, and the projects that you create
 in the team's dashboard will be accessible to all members of the team.
 
-To add more than 2 collaborators in your team, you can
+To add more than 2 collaborators in your team,
 [upgrade to the **Basic** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).

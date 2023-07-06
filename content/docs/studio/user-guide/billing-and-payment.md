@@ -31,8 +31,11 @@ When you sign up, you're on the **Free plan**. To switch to the **Basic plan**
 sign up for the **Enterprise** plan, please [schedule a call] (see [pricing
 details]).
 
+[create a team]: /doc/studio/user-guide/team-collaboration/teams
 [change the plan]:
   /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
+[schedule a call]: https://calendly.com/gtm-2/studio-overview
+[pricing details]: https://studio.iterative.ai/pricing
 [contact us]: /doc/studio/troubleshooting#support
 
 ## How total price is calculated
@@ -46,7 +49,9 @@ For example, suppose you have a team with 5 seats. At a monthly rate of $40 per
 seat, the total payable amount for the team would be $40 x 5 = $200 per month.
 
 Increasing or decreasing the number of seats during a billing period will result
-in prorated amount calculation (see the next section for an example).
+in prorated amount calculation (see the
+[next section](#how-increasing-or-decreasing-the-number-of-seats-affects-price)
+for an example).
 
 For the Enterprise plan, all invoice amounts are calculated based on the
 agreement between you and Iterative.
@@ -60,8 +65,9 @@ If you increase the number of seats, your account will be charged a prorated
 amount based on the time remaining in the billing period at the time each seat
 was added. For instance, if your billing period runs from the 15th of last month
 to the 14th of this month, then, if you add 2 seats on the 10th of this month,
-you will be charged for only 5 days of the 2 new seats. In the following billing
-period, the 2 additional seats will be charged for the entire billing period.
+you will be charged for only 5 days for the 2 new seats. In the following
+billing period, the 2 additional seats will be charged for the entire billing
+period.
 
 If you decrease the number of seats, you will receive an account credit for the
 prorated difference. It will be applied automatically for future payment.
@@ -69,7 +75,8 @@ prorated difference. It will be applied automatically for future payment.
 ## Downgrading a plan
 
 You can decrease the number of seats in your plan at any point, as explained in
-the previous section.
+the
+[previous section](#how-increasing-or-decreasing-the-number-of-seats-affects-price).
 
 To cancel the Basic plan and move back to the Free plan, decrease the number of
 seats in the team to 1 or 2 and click on `Downgrade`. A prorated credit will be
@@ -98,10 +105,9 @@ subscription at the end of the billing period.
 
 ## Grace period for non-payment
 
-At the end of your billing period, if we were unable to process your payment,
-you will enter a grace period of 5 days during which you must provide valid
-payment. During this time you will continue to have full access to Iterative
-Studio.
+At the end of your billing period, if we are unable to process your payment, you
+will enter a grace period of 5 days during which you must provide valid payment.
+During this time you will continue to have full access to Iterative Studio.
 
 Your account's primary email address will be notified after each failed payment.
 Payments may be retried up to 4 times. To provide a new payment method, go to
@@ -113,11 +119,11 @@ to your team's projects. You will continue to have access to your team settings
 page. Access to the team's projects will be restored once you clear the pending
 balance.
 
-[team settings]: /doc/studio/user-guide/teams#settings
+[team settings]: /doc/studio/user-guide/team-collaboration/teams#settings
 
 ## Payment processor and accepted payment methods
 
-We rely on [Stripe](https://stripe.com/) to process (Basic plan) payments. We do
+We rely on [Stripe](https://stripe.com/) to process Basic plan payments. We do
 not handle your payment information (including credit card details) directly. We
 are PCI compliant and your payment information is handled securely by Stripe.
 
@@ -128,7 +134,7 @@ team settings. You will be redirected to Stripe to make these changes.
 
 ## Accessing your payment history and invoices
 
-You can find a link to your dashboard on Stripe on your team settings page. Here
+You can find a link to your Stripe dashboard on your team settings page. There
 you see your payment history and get a copy of your invoices.
 
 ## Other questions

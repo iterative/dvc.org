@@ -1,6 +1,6 @@
 # Install the Iterative Studio GitHub App
 
-If you are using a GitHub account, you can install the Iterative Studio App on
+If you are using a GitHub account, you can install the Iterative Studio app on
 the repositories or organizations that you want to use it with.
 
 When you try to create a project, if the app is not already installed, Iterative
@@ -10,7 +10,7 @@ case, you will be prompted to configure Git integrations as shown below.
 ![](https://static.iterative.ai/img/studio/configure_git_integrations_v2.png)
 
 Click on the link to `Configure Git integrations settings`. This will open the
-`Git integrations` section of your profile page.
+[`Git integrations` section of your profile page](/doc/studio/user-guide/account-management#git-integrations).
 
 ![](https://static.iterative.ai/img/studio/configure_github.png)
 
@@ -19,8 +19,7 @@ to install and authorize the Iterative Studio GitHub app.
 
 ![](https://static.iterative.ai/img/studio/authorize_app_on_github_v2.png)
 
-You can specify the level of authorization that you want to grant to Iterative
-Studio:
+You can specify the level of authorization that you want to grant:
 
 - To authorize Iterative Studio on all the repositories in your GitHub account,
   select `All repositories`.

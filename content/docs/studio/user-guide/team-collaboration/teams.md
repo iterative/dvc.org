@@ -16,10 +16,12 @@ In this page, you will learn about:
 
 ## Create a team
 
-To create a team, click on the drop down next to `Personal`. All the teams that
-you have created so far will be listed within "Teams" in the drop down menu. If
-you have not created any team so far, this list will be empty. Now, click on
-`Create a team`. ![](https://static.iterative.ai/img/studio/team_create_v3.png)
+Click on the drop down next to `Personal`. All the teams that you have created
+so far will be listed within `Teams` in the drop down menu. If you have not
+created any team so far, this list will be empty.
+
+To create a new team, click on `Create a team`.
+![](https://static.iterative.ai/img/studio/team_create_v3.png)
 
 You will be asked to enter the URL namespace for your team. Enter a unique name.
 The URL for your team will be formed using this name.
@@ -29,32 +31,27 @@ Then, click the `Create team` button on the top right corner.
 
 ## Invite collaborators
 
-The next step is to invite the team members (or collaborators) for your team.
-You can also choose to skip adding collaborators at this point. For this, click
-on `Skip and Close` on the top right corner. You will be able to add
-collaborators by accessing [team settings] later.
+To add collaborators, enter their email addresses. Each collaborator can be
+assigned the [Admin, Edit, or View role](#roles). An email invite will be sent
+to each invitee. Then, click on `Send invites and close`.
 
-If you wish to add collaborators now, enter their email addresses. An email
-invite will be sent to each invitee.
+![](https://static.iterative.ai/img/studio/team_roles_v3.png)
 
-You can add multiple collaborators. Each collaborator can be assigned the Admin,
-Edit, or View role. Refer to the [Roles](#roles) section below for more details
-about the roles. ![](https://static.iterative.ai/img/studio/team_roles_v3.png)
-
-Once you have added the people that you wish to add to your team, click on
-`Send Invites and Close` on the top right corner.
-
-[team settings]: /doc/studio/user-guide/teams#settings
+You can also click on `Skip and close` to skip adding collaborators while
+creating the team, and
+[add them later by accessing team settings](#edit-collaborators).
 
 ## Roles
 
-Team members or collaborators can have the `Viewer`, `Editor` or `Admin` roles.
-Viewers have read-only access to the projects created by other team members.
-Editors can create and edit the team's projects. And admins have full access to
-the team's projects and settings. They can add (invite) and remove collaborators
-as well as change team settings such as cloud credentials (data remotes). An
-additional role `Visitor` exists for anonymous users who can open a public
-project.
+Team members or collaborators can have the following roles:
+
+- `Viewers` have read-only access to the projects created by other team members.
+- `Editors` can create and edit the team's projects.
+- `Admins` have full access to the team's projects and settings. They can add
+  (invite) and remove collaborators as well as change team settings such as
+  cloud credentials (data remotes).
+- An additional role `Visitor` exists for anonymous users who can open a public
+  project.
 
 Iterative Studio does not have the concept of an `Owner` role. The user who
 creates the team has the `Admin` role. The privileges of such an admin is the
@@ -96,13 +93,29 @@ even if the project belongs to a team where you are an `Editor` or `Admin`.
 | Manage columns                               | No      | No     | Yes    | Yes   |
 | Manage custom files                          | No      | No     | Yes    | Yes   |
 
+### Privileges in the team's model registry
+
+| Feature                                                                                                                                          | Visitor | Viewer | Editor | Admin |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | ------ | ------ | ----- |
+| Access a team's models dashboard                                                                                                                 | No      | Yes    | Yes    | Yes   |
+| Access a team's model details page                                                                                                               | No      | Yes    | Yes    | Yes   |
+| Perform model actions in the team's model registry<br>- add / deprecate models<br>- register / deregsiter versions<br>- assign / unassign stages | No      | Yes\*  | Yes\*  | Yes\* |
+
+\*All team members can submit model actions in Iterative Studio. But for a team
+member's actions to successfully complete, the team member must have write
+access in the Git repository from where the model was added. This is because any
+model action constitutes writing a Git commit, pull/merge request or tag to the
+Git repository. If the team member does not have this write access, then the
+model action will fail.
+
 ### Privileges to manage the team
 
-| Feature                   | Visitor | Viewer | Editor | Admin |
-| ------------------------- | ------- | ------ | ------ | ----- |
-| Manage team settings      | No      | No     | No     | Yes   |
-| Manage team collaborators | No      | No     | No     | Yes   |
-| Delete a team             | No      | No     | No     | Yes   |
+| Feature                      | Visitor | Viewer | Editor | Admin |
+| ---------------------------- | ------- | ------ | ------ | ----- |
+| Manage team settings         | No      | No     | No     | Yes   |
+| Manage team collaborators    | No      | No     | No     | Yes   |
+| Manage team plan and billing | No      | No     | No     | Yes   |
+| Delete a team                | No      | No     | No     | Yes   |
 
 ## Manage your team and its projects
 
@@ -110,8 +123,8 @@ Once you have created the team, the team's workspace opens up.
 
 ![](https://static.iterative.ai/img/studio/team_page_v6.png)
 
-In this workspace, there are 2 pages - [Projects](#projects) and
-[Settings](#settings).
+In this workspace, there are 2 pages - [Projects](#projects), [Models](#models)
+and [Settings](#settings).
 
 ## Projects
 
@@ -120,21 +133,28 @@ are accessible to all members (collaborators) of the team.
 
 To add a project to this dashboard, click on `Add a project`. The process for
 adding a project is the same as that for adding personal projects
-([instructions][project settings]).
+([instructions](/doc/studio/user-guide/projects-and-experiments/create-a-project)).
+
+## Models
+
+This is the models dashboard for the team. All the models on this dashboard are
+accessible to all members (collaborators) of the team.
+
+To add a model to this dashboard, click on `Add a model`. The process for adding
+a model is the same as that for adding personal models
+([instructions](/doc/studio/user-guide/model-registry/add-a-model)).
 
 ## Settings
 
-In the [team settings] page, you can change the team name, add credentials for
-the data remotes, and delete the team. Note that these settings are applicable
-to the team and are thus different from [project settings].
+In the [team settings](#settings) page, you can change the team name, add
+credentials for the data remotes, and delete the team. Note that these settings
+are applicable to the team and are thus different from
+[project settings](/doc/studio/user-guide/projects-and-experiments/configure-a-project).
 
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),
 [edit collaborators](#edit-collaborators) and
 [change your team plan](#change-your-team-plan).
-
-[project settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project
 
 ### Manage connections to self-hosted GitLab servers
 
@@ -165,7 +185,7 @@ and so you will have 3 remaining seats.
 
 ### Change your team plan and team size
 
-Your team can be in the **Free**, **Basic**, **Enterprise** plan. All newly
+Your team can be in the **Free**, **Basic** or **Enterprise** plan. All newly
 created teams are on the Free plan. This plan is designed for teams that are
 starting out: you can invite one other team member and import as many
 repositories as you want. For more advanced collaboration, you can switch to the
