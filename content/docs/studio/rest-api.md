@@ -12,7 +12,9 @@ To use API, you need to generate
 
 Get signed url to download the model binary. Requires the model to be stored
 with DVC with s3 or azure remote. `path` in model annotation must point to a
-single file and not to a directory.
+single file and not to a directory. Note, that you need to
+[set up remote cloud credentials](https://dvc.org/doc/studio/user-guide/account-management#cloud-credentials)
+for Studio have rights to sign urls.
 
 ```yaml
 Endpoint: api/download-model
