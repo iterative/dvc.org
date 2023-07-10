@@ -17,7 +17,7 @@ single file and not to a directory. Note, that you need to
 for Studio have rights to sign urls.
 
 ```yaml
-Endpoint: api/download-model
+Endpoint: api/model-registry/get-download-uris
 HTTP Method: GET
 ```
 
@@ -25,7 +25,7 @@ HTTP Method: GET
 
 ```yaml
 params:
-  url:
+  repo:
     desc: Git repo URL
     type: string
     required: true
@@ -50,7 +50,7 @@ actually download the model.
 ### Example curl
 
 ```
-$ curl https://studio.iterative.ai/api/download-model?url=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0 --header "Authorization:token <TOKEN>"
+$ curl https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0 --header "Authorization:token <TOKEN>"
 
 {
     ".mlem/model/clf-model": "https://sandbox-datasets-iterative.s3.amazonaws.com/bank-customer-churn/86/bd02376ac675568ba2fac566169ef9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU7UXIWDIQFPCO76Q%2F20230706%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230706T134619Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6807259ddd1f4448ed1e3c5d4503039884f7779381ee556175096b0a884ba1a6"
