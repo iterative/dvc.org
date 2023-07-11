@@ -17,7 +17,7 @@
   margin: auto;
   font-size: 1rem;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (width >= 480px) {
     font-size: 1.25rem;
   }
 }
