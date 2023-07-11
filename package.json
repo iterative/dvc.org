@@ -76,7 +76,8 @@
     "repo-link-check": "0.14.0",
     "slick-carousel": "1.8.1",
     "typed.js": "2.0.16",
-    "upath": "2.0.1"
+    "upath": "2.0.1",
+    "webpack-filter-warnings-plugin": "1.2.1"
   },
   "devDependencies": {
     "@babel/core": "7.22.8",
@@ -107,8 +108,7 @@
     "remark-html": "15.0.2",
     "stylelint": "15.10.1",
     "stylelint-config-standard": "34.0.0",
-    "typescript": "5.1.6",
-    "webpack-filter-warnings-plugin": "1.2.1"
+    "typescript": "5.1.6"
   },
   "cacheDirectories": [
     "node_modules"
