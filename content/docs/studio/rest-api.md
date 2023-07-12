@@ -25,23 +25,15 @@ HTTP Method: GET
 
 ### Request
 
-```yaml
-params:
-  repo:
-    desc: Git repo URL
-    type: string
-    required: true
-  name:
-    desc: Model name
-    type: string
-    required: true
-  version:
-    desc: Model version
-    type: string
-    required: true
-headers:
-  Authorization: 'token <TOKEN>'
-```
+| param   | desc          | type   | example value                      |
+| ------- | ------------- | ------ | ---------------------------------- |
+| repo    | Git repo URL  | string | iterative/demo-bank-customer-churn |
+| name    | Model name    | string | randomforest-model                 |
+| version | Model version | string | v2.0.0                             |
+
+| header        | desc            | example value |
+| ------------- | --------------- | ------------- |
+| Authorization | Header for auth | token abc123  |
 
 ### Response
 
