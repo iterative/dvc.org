@@ -25,11 +25,13 @@ HTTP Method: GET
 
 ### Request
 
-| param   | desc          | type   | example value                      |
-| ------- | ------------- | ------ | ---------------------------------- |
-| repo    | Git repo URL  | string | iterative/demo-bank-customer-churn |
-| name    | Model name    | string | randomforest-model                 |
-| version | Model version | string | v2.0.0                             |
+| param   | desc          | type   | required | example value                      |
+| ------- | ------------- | ------ | -------- | ---------------------------------- |
+| repo    | Git repo URL  | string | true     | iterative/demo-bank-customer-churn |
+| name    | Model name    | string | true     | randomforest-model                 |
+| version | Model version | string | false    | v2.0.0                             |
+
+If no version specified, the latest one is returned.
 
 | header        | desc            | example value |
 | ------------- | --------------- | ------------- |
