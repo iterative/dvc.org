@@ -57,10 +57,7 @@
   &::before {
     position: absolute;
     content: '';
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     z-index: -1;
     opacity: 0;
     border-radius: 99px;
@@ -70,7 +67,9 @@
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 4px 8px rgb(46 49 55 / 10%), 0 0 2px rgb(46 49 55 / 20%);
+    box-shadow:
+      0 4px 8px rgb(46 49 55 / 10%),
+      0 0 2px rgb(46 49 55 / 20%);
 
     &::before {
       opacity: 1;
@@ -89,7 +88,9 @@
     left: 18px;
     bottom: 18px;
     background: var(--color-gray-dark);
-    box-shadow: 0 1px 2px rgb(46 49 55 / 10%), 0 0 1px rgb(46 49 55 / 50%);
+    box-shadow:
+      0 1px 2px rgb(46 49 55 / 10%),
+      0 0 1px rgb(46 49 55 / 50%);
 
     @media screen(xsMax) {
       width: 50px;
@@ -100,7 +101,9 @@
 
     &:hover {
       background: var(--color-gray-hover);
-      box-shadow: 0 4px 8px rgb(46 49 55 / 10%), 0 0 2px rgb(46 49 55 / 20%);
+      box-shadow:
+        0 4px 8px rgb(46 49 55 / 10%),
+        0 0 2px rgb(46 49 55 / 20%);
 
       &::before {
         opacity: 0;
@@ -144,13 +147,17 @@
   left: 50px;
   bottom: 50px;
   background: #fff;
-  box-shadow: 0 8px 16px rgb(46 49 55 / 10%), 0 0 2px rgb(46 49 55 / 20%);
+  box-shadow:
+    0 8px 16px rgb(46 49 55 / 10%),
+    0 0 2px rgb(46 49 55 / 20%);
   width: 560px;
   border-radius: 16px;
   padding: 24px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
 
   &:hover {
     cursor: initial;

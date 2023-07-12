@@ -75,5 +75,5 @@ with Live(save_dvc_exp=True, report="notebook") as live:
 
         live.next_step()
 
-    live.log_artifact("model.pt")
+    live.log_artifact("model.pt", type="model", name="pytorch-model")
 ```
