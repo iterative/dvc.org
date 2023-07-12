@@ -89,10 +89,11 @@ can be tracked in Git and becomes part of the experiment. With this metadata
 file, you can [retrieve](/doc/start/data-management/data-versioning#retrieving)
 the versioned artifact from the Git commit.
 
-If `Live` was initialized with `dvcyaml=True` (which is the default), this will
-add an [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to
-the corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model`
-for DVC and will also show it in
+If `Live` was initialized with `dvcyaml=True` (which is the default) and you
+include values for any of the optional metadata arguments, this will add an
+[artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) to the
+corresponding `dvc.yaml`. Passing `type="model"` will mark it as a `model` for
+DVC and will also show it in
 [Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 
 Using `Live.log_image()` to log multiple images may also grow too large to track

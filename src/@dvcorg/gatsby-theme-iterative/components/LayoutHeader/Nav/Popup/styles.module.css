@@ -11,7 +11,9 @@
   filter: drop-shadow(0 2px 8px rgb(0 0 0 / 15%));
   border-radius: 12px;
   box-sizing: border-box;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
 
   &.visible {
     opacity: 1;

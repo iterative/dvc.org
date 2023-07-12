@@ -30,6 +30,7 @@
       {
         "ignoreFunctions": ["a", "color-mod"]
       }
-    ]
+    ],
+    "media-query-no-invalid": null
   }
 }
