@@ -1,8 +1,10 @@
 # REST API
 
-Studio REST API is WIP and will be extended. The API is hosted under the `/api`
-route on the Studio server: https://studio.iterative.ai/api or
-https://your-domain/api in case of
+The purpose of Studio REST API is to give programmatic access to information in
+Studio and executing actions in it.
+
+The API is hosted under the `/api` route on the Studio server:
+https://studio.iterative.ai/api or https://your-domain/api in case of
 [self-hosted Studio](/doc/studio/self-hosting/installation).
 
 To use API, you need to generate
@@ -10,9 +12,9 @@ To use API, you need to generate
 
 ## Download model
 
-Get signed url to download the model binary. Requires the model to be stored
-with DVC with s3 or azure remote. `path` in model annotation must point to a
-single file and not to a directory. Note, that you need to
+Get signed url to download the model binaries for a model from Model Registry.
+Requires the model to be stored with DVC with s3 or azure remote. Note, that you
+need to
 [set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
 for Studio have rights to sign urls.
 
@@ -49,7 +51,7 @@ actually download the model.
 
 ### Example curl
 
-```
+```sh
 $ curl https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0 --header "Authorization:token <TOKEN>"
 
 {
