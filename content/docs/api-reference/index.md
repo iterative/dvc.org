@@ -15,3 +15,6 @@ The purpose of this API is to provide programmatic access to the data or models
 repositories</abbr> from Python code.
 
 Choose a page from the navigation sidebar to the left.
+
+Check out [Studio Python API reference](/doc/studio/python-api) if you're
+looking for Studio API.

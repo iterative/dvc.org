@@ -27,9 +27,12 @@ for Studio first.
 
 ```py
 from dvc.studio.model_registry import download_model
-path = download_model(
+# downloads model to temp directory giving you the path to it
+with download_model(
     repo="iterative/demo-bank-customer-churn",
     model="randomforest-model",
     version="v2.0.0"
-)
+) as path:
+    # load model as usual
+    model = load_model(path)
 ```
