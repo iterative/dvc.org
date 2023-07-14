@@ -193,7 +193,7 @@ final stage.
   on the failed stage. The other dependencies of the targets will still be
   executed.
 
-- `--ignore-errors` - Ignore all errors when executing the stages.
+- `--ignore-errors` - Ignore all errors when executing the stages. Unlike `--keep-going`, stages having dependencies on the failed stage will be executed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
