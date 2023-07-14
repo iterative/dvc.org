@@ -19,7 +19,7 @@ usage: dvc exp run [-h] [-q | -v] [-f]
                    { repro options ... } [-n <name>]
                    [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
-                   [-r <experiment_rev>] [--reset] [-C <path>]
+                   [-r <experiment_rev>] [-C <path>]
                    [-m <message>]
                    [targets [targets ...]]
 
