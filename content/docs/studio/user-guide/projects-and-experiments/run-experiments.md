@@ -74,7 +74,9 @@ parameters, metrics, and plots) are pushed back to your Git and DVC remotes.
 
 In Iterative Studio, you can create a branch and pull/merge request from the
 completed experiment, so that you can share, review, merge, and reproduce the
-experiment.
+experiment. In the pull/merge request, Iterative Studio automatically inserts a
+link to the training report. So your teammates who are reviewing your PR can
+quickly and easily compare your experiment with its baseline.
 
 ![Studio Create a New Branch](/img/studio-branch.gif)
 
