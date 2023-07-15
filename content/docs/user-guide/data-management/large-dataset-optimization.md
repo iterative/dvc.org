@@ -25,8 +25,8 @@ in the system.
 
 > **Inodes** are metadata file records to locate and store permissions to the
 > actual file contents. See **Linking files** in
-> [this doc](https://tldp.org/LDP/intro-linux/html/sect_03_03.html) for
-> technical details (Linux). Use `ls -i` to list inodes on Linux.
+> [this doc](https://devconnected.com/understanding-hard-and-soft-links-on-linux)
+> for technical details (Linux). Use `ls -i` to list inodes on Linux.
 
 There are pros and cons to the 3 supported link types: Hard links, Soft or
 Symbolic links, and Reflinks in more recent systems. While reflinks bring all
