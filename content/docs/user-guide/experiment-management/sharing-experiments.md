@@ -237,5 +237,5 @@ Removed experiments: unwet-jinn
 [troubleshooting]: /doc/user-guide/troubleshooting#git-auth
 [persistent]: #persist-experiment
 [bring experiment results to your workspace]:
-  /doc/user-guide/experiment-management/copmaring-experiments#bring-experiment-results-to-your-workspace
+  /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 [remove]: #remove-pushed-experiments
