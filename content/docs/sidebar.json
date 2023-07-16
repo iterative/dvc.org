@@ -190,9 +190,7 @@
           "hydra-composition",
           "comparing-experiments",
           "visualizing-plots",
-          "sharing-experiments",
-          "persisting-experiments",
-          "cleaning-experiments"
+          "sharing-experiments"
         ]
       },
       {
@@ -649,7 +647,8 @@
               "register-version",
               "assign-stage",
               "view-and-compare-models",
-              "use-models"
+              "use-models",
+              "remove-a-model-or-its-details"
             ]
           },
           {

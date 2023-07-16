@@ -19,7 +19,7 @@ usage: dvc exp run [-h] [-q | -v] [-f]
                    { repro options ... } [-n <name>]
                    [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
-                   [-r <experiment_rev>] [--reset] [-C <path>]
+                   [-r <experiment_rev>] [-C <path>]
                    [-m <message>]
                    [targets [targets ...]]
 
@@ -72,8 +72,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
 [review]: /doc/user-guide/experiment-management/comparing-experiments
-[made persistent]: /doc/user-guide/experiment-management/persisting-experiments
-[cleared]: /doc/user-guide/experiment-management/cleaning-experiments
+[made persistent]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+[cleared]:
+  /doc/user-guide/experiment-management/comparing-experiments#clean-up-experiments
 
 ## Options
 

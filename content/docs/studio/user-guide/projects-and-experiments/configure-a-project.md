@@ -8,61 +8,45 @@ may be required depending on how your Git repository has been set up.
 
 If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize
-it without configuring additional settings.
-
-If you are connecting to a non-DVC repository, if your metrics are in some
-custom files, if you are connecting to a monorepo, or if your metrics are in
-cloud or other remote storage, you will need to configure project settings.
-
-In each of these scenarios, you will need to configure additional settings for
-Iterative Studio to be able to access the data required for visualization.
-
-Additionally, you can also configure project settings to
-[change the name](#project-name) of your project and to
-[select columns](#columns) to import in your project.
-
-To go to project settings, click on the
-![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon in
-the project. In the menu that opens up, click on `Settings`.
-
-![](https://static.iterative.ai/img/studio/project_open_settings.png)
+it without configuring additional settings. But in the following scenarios, you
+will need to configure project settings:
 
 ### Non-DVC repositories
 
-In the section on [preparing your repositories], you saw that you can use
-Iterative Studio with DVC as well as non-DVC repositories. If you are connecting
-to a non-DVC repository, then you will need to [specify the custom files] that
-contain the metrics and hyperparameters that you want to visualize.
+If you are creating a project for a non-DVC repository, you will need to
+[specify the custom files] that contain the metrics and hyperparameters that you
+want to visualize.
 
-[preparing your repositories]: /doc/studio/user-guide/prepare-your-repositories
 [specify the custom files]: #custom-metrics-and-parameters
 
 ### Monorepo
 
-Depending on how you have set up your Git repositories, your DVC repo (to which
-you are trying to connect from Iterative Studio) may not be in the root of your
-Git repo. Instead, it could be in a [sub-directory] of a
-[monorepo](https://en.wikipedia.org/wiki/Monorepo). If this is the case, you
-will need to specify the full path to the sub-directory that contains the data
-you want to visualize in Iterative Studio.
+If the DVC repo for which you are creating the project is not in the root of
+your Git repo but is in a [sub-directory] of a
+[monorepo](https://en.wikipedia.org/wiki/Monorepo), you will need to specify the
+full path to the sub-directory that contains the data you want to visualize in
+Iterative Studio.
 
 [sub-directory]: /doc/command-reference/init#initializing-dvc-in-subdirectories
 
 ### Data remotes (cloud/remote storage)
 
-The metrics and parameters that you want to include in the project may also be
-present in a [data remote] (cloud storage or another location outside the Git
-repo). If you want to include such data in your projects, then you will have to
-grant Iterative Studio access to the data remote.
+If you want to include data stored in [data remotes] (cloud storage or another
+location outside the Git repo), you will have to grant Iterative Studio access
+to the data remotes.
 
-[data remote]: /doc/user-guide/data-management/remote-storage
+[data remotes]: /doc/user-guide/data-management/remote-storage
+
+Additionally, you can also configure project settings to
+[change the name](#project-name) of your project and to
+[select columns](#columns) to import in your project.
 
 ## Configuring project settings
 
 You can configure a project's settings at any time after creating the project.
-For this, click on the
-![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon in
-the project. In the menu that opens up, click on `Settings`.
+For this, open the 3-dot menu for the project and click on `Settings`.
+
+![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
 ### Project name
 
@@ -90,18 +74,17 @@ during the initial [create project] flow.
 
 ### Data remotes / cloud storage credentials
 
-If you need to provide credentials for a [data remote], you will need to do it
+If you need to provide credentials for [data remotes], you will need to do it
 after your project has been created. First, create your project without
-specifying the data remotes. Once your project is created, open its settings.
-Open the `Data remotes / cloud storage credentials` section. The data remotes
-that are used in your DVC repo will be listed.
+specifying the data remotes. Then, open project settings and go to the
+`Data remotes / cloud storage credentials` section. The data remotes that are
+used in your DVC repo will be listed.
 
 ![](https://static.iterative.ai/img/studio/view_settings_credentials.png)
 
-Now, click on `Add new credentials`. In the form that opens up, select the
-provider (Amazon S3, GCP, etc.). For details on what types of remote storage
-(protocols) are supported, refer to the DVC documentation on [supported storage
-types].
+Click on `Add new credentials`. In the form that opens up, select the provider
+(Amazon S3, GCP, etc.). For details on what types of remote storage (protocols)
+are supported, refer to the DVC documentation on [supported storage types].
 
 Depending on the provider, you will be asked for more details such as the
 credentials name, username, password etc. Note that for each supported storage
@@ -113,10 +96,14 @@ You will also have to ensure that the credentials you enter have the required
 permissions on the cloud / remote storage. Refer to the [DVC Remote config
 parameters] for more details about this.
 
+Any credentials that you
+[add in your profile page](/doc/studio/user-guide/account-management#cloud-credentials)
+are also available in your project settings page.
+
 Note that Iterative Studio uses the credentials only to read plots/metrics files
-if they are not saved into Git. It does not access any other data in your remote
+if they are not saved in Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
-in not used in your Git repository.
+is not used in your Git repository.
 
 [supported storage types]:
   /doc/user-guide/data-management/remote-storage#supported-storage-types
@@ -125,9 +112,9 @@ in not used in your Git repository.
 
 ### Columns
 
-In the "Columns" setting, you can specify which columns should be imported from
-your Git repository to your project in Iterative Studio. Any unselected column
-cannot be displayed in your project table.
+You can specify which columns should be imported from your Git repository to
+your project in Iterative Studio. Any unselected column cannot be displayed in
+your project table.
 
 ![](https://static.iterative.ai/img/studio/project_settings_columns.png)
 

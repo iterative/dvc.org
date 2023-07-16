@@ -29,7 +29,7 @@ quickly after making any project changes (e.g. retrain an ML model).
 
 [comparing]: /doc/user-guide/experiment-management/comparing-experiments
 [plotting]: /doc/user-guide/experiment-management/visualizing-plots
-[sharing]: /doc/user-guide/experiment-management/persisting-experiments
+[sharing]: /doc/user-guide/experiment-management/sharing-experiments
 
 <admon type="tip">
 
@@ -45,8 +45,10 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 `dvc exp remove`.
 
 [review]: /doc/user-guide/experiment-management/comparing-experiments
-[made persistent]: /doc/user-guide/experiment-management/persisting-experiments
-[cleared]: /doc/user-guide/experiment-management/cleaning-experiments
+[made persistent]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+[cleared]:
+  /doc/user-guide/experiment-management/comparing-experiments#clean-up-experiments
 
 ## Options
 

@@ -61,21 +61,13 @@ variables (usually set during [Azure CLI configuration]) or data from certain
 Microsoft applications.
 
 ```cli
-$ dvc remote modify myremote --local account_name 'myuser'
+$ dvc remote modify myremote account_name 'mystorage'
 ```
 
 [default credential]:
   https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
 [azure cli configuration]:
   https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration
-
-<admon type="warn">
-
-The `dvc remote modify --local` flag is needed to write sensitive user info to a
-Git-ignored config file (`.dvc/config.local`) so that no secrets are leaked
-through Git. See `dvc config`.
-
-</admon>
 
 <details>
 

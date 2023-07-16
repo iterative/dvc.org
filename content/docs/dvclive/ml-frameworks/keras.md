@@ -17,7 +17,7 @@ from dvclive.keras import DVCLiveCallback
 
 model.fit(
     train_dataset, epochs=num_epochs, validation_data=validation_dataset,
-    callbacks=[DVCLiveCallback()])
+    callbacks=[DVCLiveCallback(save_dvc_exp=True)])
 ```
 
 Each metric will be logged to:
@@ -51,7 +51,7 @@ Where:
 from dvclive import Live
 from dvclive.keras import DVCLiveCallback
 
-with Live("custom_dir") as live:
+with Live("custom_dir", save_dvc_exp=True) as live:
     model.fit(
         train_dataset,
         epochs=num_epochs,
@@ -66,18 +66,6 @@ with Live("custom_dir") as live:
     live.log_metric("test_acc", test_acc, plot=False)
 ```
 
-- Using `model_file` and `save_weights_only`.
-
-```python
-model.fit(
-    train_dataset,
-    epochs=num_epochs,
-    validation_data=validation_dataset,
-    callbacks=[DVCLiveCallback(
-        model_file="my_model_weights.h5",
-        save_weights_only=True)])
-```
-
 - Using `**kwargs` to customize the new [`Live`] instance.
 
 ```python
@@ -86,7 +74,7 @@ model.fit(
     epochs=num_epochs,
     validation_data=validation_dataset,
     callbacks=[DVCLiveCallback(
-        model_file="my_model_weights.h5",
+        save_dvc_exp=True,
         dir="custom_dir")])
 ```
 

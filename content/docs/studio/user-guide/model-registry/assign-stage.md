@@ -67,7 +67,7 @@ assignment.
 
 [gto]: https://mlem.ai/doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
-[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tag-message-format
+[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tags-format
 [CI/CD]:
   /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
 [MLEM]: https://mlem.ai/

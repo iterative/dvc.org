@@ -11,7 +11,7 @@ To connect to your self-hosted GitLab server, you will need the following:
 - A URL for your GitLab server. The URL should either be publicly accessible, or
   in the same private network as Iterative Studio if Iterative Studio is
   deployed on-premises.
-- A personal access token with the following roles: `api`, `read_user`,
+- A GitLab personal access token with the following roles: `api`, `read_user`,
   `read_repository`. If you do not have a personal access token yet, you can
   create one at
 
@@ -39,7 +39,7 @@ account on GitLab SaaS ([gitlab.com](http://gitlab.com/)). To connect to GitLab
 SaaS go to the `Git integrations` section in your
 [personal profile settings](https://studio.iterative.ai/user/_/profile). If you
 signed up to use Iterative Studio using your GitLab account, you may already
-have the connection.
+have this connection.
 
 </admon>
 

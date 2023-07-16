@@ -4,6 +4,13 @@ Sometimes you need to stream your data dependencies directly from their source
 locations outside your local <abbr>project</abbr>, or stream your data outputs
 directly to some external location, like cloud storage or HDFS.
 
+<admon type="tip">
+
+To version external data without a pipeline, see
+[importing external data](/doc/user-guide/data-management/importing-external-data).
+
+</admon>
+
 ## How external dependencies work
 
 External <abbr>dependencies</abbr> will be tracked by DVC, detecting when they
