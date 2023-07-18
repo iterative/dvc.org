@@ -82,9 +82,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Options
 
-> In addition to the following, `dvc exp run` accepts the options in `dvc repro`
-> except for `--glob`, `--no-commit`, and `--no-run-cache`.
-
 - `-S [<filename>:]<override_pattern>`,
   `--set-param [<filename>:]<override_pattern>` - set the value of `dvc params`
   for this experiment. This will update the parameters file (`params.yaml` by
