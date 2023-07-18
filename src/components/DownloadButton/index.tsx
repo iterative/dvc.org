@@ -13,6 +13,7 @@ const VERSION = `3.5.0`
 
 const dropdownItems = [
   OS.UNKNOWN,
+  OS.VSCODE,
   null,
   OS.OSX,
   OS.WINDOWS,
@@ -39,6 +40,11 @@ const itemsByOs: Record<OS, IOSDescription> = {
   [OS.UNKNOWN]: {
     title: 'pip, conda, brew',
     url: `/doc/install`,
+    download: false
+  },
+  [OS.VSCODE]: {
+    title: 'Visual Studio Code',
+    url: `https://marketplace.visualstudio.com/items?itemName=Iterative.dvc`,
     download: false
   },
   [OS.OSX]: {

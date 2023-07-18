@@ -4,6 +4,7 @@ import { useEffect, useReducer } from 'react'
 
 export enum OS {
   UNKNOWN = 'unknown',
+  VSCODE = 'vscode',
   OSX = 'osx',
   WINDOWS = 'win',
   LINUX = 'linux',
