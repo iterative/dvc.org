@@ -15,12 +15,15 @@ When called with no arguments, this is equivalent to `dvc repro` followed by
 ## Synopsis
 
 ```usage
-usage: dvc exp run [-h] [-q | -v] [-f]
-                   { repro options ... } [-n <name>]
-                   [-S [<filename>:]<override_pattern>]
+usage: dvc exp run [-h] [-q | -v] [-f] [-i]
+                   [-s] [-p] [-P] [-R]
+                   [-n <name>] [-S [<filename>:]<override_pattern>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [-C <path>]
                    [-m <message>]
+                   [--downstream] [--force-downstream]
+                   [--pull] [--dry] [--allow-missing]
+                   [-k] [--ignore-errors]
                    [targets [targets ...]]
 
 positional arguments:
@@ -79,9 +82,6 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Options
 
-> In addition to the following, `dvc exp run` accepts the options in `dvc repro`
-> except for `--glob`, `--no-commit`, and `--no-run-cache`.
-
 - `-S [<filename>:]<override_pattern>`,
   `--set-param [<filename>:]<override_pattern>` - set the value of `dvc params`
   for this experiment. This will update the parameters file (`params.yaml` by
@@ -134,6 +134,58 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-m <message>`, `--message <message>` - custom message to use when saving the
   experiment. If not provided, `dvc: commit experiment {hash}` will be used.
+
+- `-i`, `--interactive` - ask for confirmation before reproducing each stage.
+  The stage is only executed if the user types "y".
+
+- `-s`, `--single-item` - reproduce only a single stage by turning off the
+  recursive search for changed dependencies. Multiple stages are executed
+  (non-recursively) if multiple stage names are given as `targets`.
+
+- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
+  to. Use `dvc dag <target>` to show the parent pipeline of a target.
+
+- `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
+  present in the DVC project. Specifying `targets` has no effects with this
+  option, as all possible targets are already included.
+
+- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
+  directories given as `targets`, and in their subdirectories. If there are no
+  directories among the targets, this option has no effect.
+
+- `--downstream` - only execute the stages after the given `targets` in their
+  corresponding pipelines, including the target stages themselves. This option
+  has no effect if `targets` are not provided.
+
+- `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
+  reproduce `A` first and then `B`, even if `B` was previously executed with the
+  same inputs from `A` (cached). To be precise, it reproduces all descendants of
+  a changed stage or the stages following the changed stage, even if their
+  direct dependencies did not change.
+
+  It can be useful when we have a common dependency among all stages, and want
+  to specify it only once (for stage `A` here). For example, if we know that all
+  stages (`A` and below) depend on `requirements.txt`, we can specify it in `A`,
+  and omit it in `B` and `C`.
+
+  This is a way to force-execute stages without changes. This can also be useful
+  for pipelines containing stages that produce non-deterministic (semi-random)
+  outputs, where outputs can vary on each execution, meaning the cache cannot be
+  trusted for such stages.
+
+- `--pull` - attempts to download the missing dependencies of stages that need
+  to be run. Unless `--no-run-cache` is passed, it will also try to download the
+  [run cache] and the outputs of stages that are already present in it.
+
+- `--allow-missing` - skip stages with no other changes than missing data.
+
+- `-k`, `--keep-going` - Continue executing, skipping stages having dependencies
+  on the failed stage. The other dependencies of the targets will still be
+  executed.
+
+- `--ignore-errors` - Ignore all errors when executing the stages. Unlike
+  `--keep-going`, stages having dependencies on the failed stage will be
+  executed.
 
 - `-h`, `--help` - prints the usage/help message, and exits.
 
