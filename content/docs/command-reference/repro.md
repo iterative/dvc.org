@@ -7,11 +7,11 @@ Reproduce complete or partial <abbr>pipelines</abbr> by running their
 
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-i]
-                 [-s] [-p] [-k] [-P] [-R]
+                 [-s] [-p] [-P] [-R]
                  [--downstream] [--force-downstream]
-                 [--pull] [--dry] [--allow-missing]
+                 [--pull] [--allow-missing] [--dry]
                  [--glob] [--no-commit] [--no-run-cache]
-                 [--ignore-errors]
+                 [-k] [--ignore-errors]
                  [targets [<target> ...]]
 
 positional arguments:
