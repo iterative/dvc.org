@@ -4,7 +4,7 @@ import cn from 'classnames'
 import * as styles from './styles.module.css'
 
 type ITwoRowsButtonLinkProps = {
-  mode: 'azure' | 'purple' | 'outline'
+  mode: 'azure' | 'purple' | 'outline' | 'vscode'
   className?: string
   title: string
   description: string

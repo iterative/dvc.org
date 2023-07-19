@@ -33,10 +33,25 @@ const HeroButtons = () => (
       <DownloadButton />
     </ShowOnly>
     <TwoRowsButtonLink
+      mode="vscode"
+      className={styles.actionButton}
+      title="DVC For VS Code"
+      description="Get VS Code Extension"
+      icon={
+        <img
+          className={styles.actionButtonIcon}
+          src="/img/vscode-alt-icon.svg"
+          alt="Get VS Code Extension"
+        />
+      }
+      onClick={logVSCodeEvent}
+      href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc"
+      target="_blank"
+    />
+    <TwoRowsButtonLink
       mode="outline"
       className={cn(
         styles.actionButton,
-        styles.watchVideo,
         'btn-with-focus',
         'btn-with-focus--white'
       )}
@@ -51,22 +66,6 @@ const HeroButtons = () => (
       }
       onClick={logUseCasesEvent}
       href="#use-cases"
-    />
-    <TwoRowsButtonLink
-      mode="azure"
-      className={cn(styles.actionButton, styles.watchVideo)}
-      title="DVC For VS Code"
-      description="Get VS Code Extension"
-      icon={
-        <img
-          className={styles.actionButtonIcon}
-          src="/img/download-arrow.svg"
-          alt="Get VS Code Extension"
-        />
-      }
-      onClick={logVSCodeEvent}
-      href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc"
-      target="_blank"
     />
   </div>
 )

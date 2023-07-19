@@ -57,6 +57,18 @@
       background-color: var(--color-light-blue-hover);
     }
   }
+
+  &.vscode {
+    background-color: #007acc;
+    border-color: #007acc;
+    color: #fff;
+
+    &.active,
+    &:hover {
+      background-color: #0065a9;
+      border-color: #0065a9;
+    }
+  }
 }
 
 .icon {
