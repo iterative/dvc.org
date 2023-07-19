@@ -12,7 +12,7 @@ type ITwoRowsButtonLinkProps = {
   children?: React.ReactNode
   active?: boolean
   href?: string
-} & React.ButtonHTMLAttributes<HTMLAnchorElement>
+} & React.HTMLProps<HTMLAnchorElement>
 
 const TwoRowsButtonLink: React.FC<ITwoRowsButtonLinkProps> = ({
   className,

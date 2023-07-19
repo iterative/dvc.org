@@ -15,6 +15,10 @@ const logUseCasesEvent = () => {
   logEvent('Button', { Item: 'how-it-works' })
 }
 
+const logVSCodeEvent = () => {
+  logEvent('Button', { Item: 'vscode-dvc-ext' })
+}
+
 const HeroButtons = () => (
   <div className={styles.buttonsContainer}>
     <ShowOnly on="mobile">
@@ -47,6 +51,22 @@ const HeroButtons = () => (
       }
       onClick={logUseCasesEvent}
       href="#use-cases"
+    />
+    <TwoRowsButtonLink
+      mode="azure"
+      className={cn(styles.actionButton, styles.watchVideo)}
+      title="DVC For VS Code"
+      description="Get VS Code Extension"
+      icon={
+        <img
+          className={styles.actionButtonIcon}
+          src="/img/download-arrow.svg"
+          alt="Get VS Code Extension"
+        />
+      }
+      onClick={logVSCodeEvent}
+      href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc"
+      target="_blank"
     />
   </div>
 )
