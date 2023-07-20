@@ -2,6 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 
 import * as styles from './styles.module.css'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 type ITwoRowsButtonLinkProps = {
   mode: 'azure' | 'purple' | 'outline' | 'vscode'
@@ -11,8 +12,8 @@ type ITwoRowsButtonLinkProps = {
   icon?: React.ReactNode
   children?: React.ReactNode
   active?: boolean
-  href?: string
-} & React.HTMLProps<HTMLAnchorElement>
+  href: string
+} & React.ButtonHTMLAttributes<HTMLAnchorElement>
 
 const TwoRowsButtonLink: React.FC<ITwoRowsButtonLinkProps> = ({
   className,
@@ -25,7 +26,7 @@ const TwoRowsButtonLink: React.FC<ITwoRowsButtonLinkProps> = ({
   href,
   ...props
 }) => (
-  <a
+  <Link
     href={href}
     className={cn(
       styles.button,
@@ -42,7 +43,7 @@ const TwoRowsButtonLink: React.FC<ITwoRowsButtonLinkProps> = ({
       <span className={styles.description}>{description}</span>
     </span>
     {children}
-  </a>
+  </Link>
 )
 
 export default TwoRowsButtonLink

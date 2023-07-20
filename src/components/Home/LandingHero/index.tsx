@@ -46,7 +46,6 @@ const HeroButtons = () => (
       }
       onClick={logVSCodeEvent}
       href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc"
-      target="_blank"
     />
     <TwoRowsButtonLink
       mode="outline"
