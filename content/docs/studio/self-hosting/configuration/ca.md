@@ -1,16 +1,23 @@
 # CA certificates
 
-Does your Git forge use a certificate signed by a custom certificate authority
-(CA)? If so, Studio needs to have the CA certificate in order to connect to the
-Git forge.
+Do you use a custom certificate for Studio or one of your Git forges? 
+If so, Studio needs to have the CA certificates in order to establish
+connections.
 
-To do this, copy your CA certificate as plain text, then insert it in the
-`customCaCert` key in the `values.yaml` configuration file:
+To do this, copy your CA certificates as plain text, then add them to the
+`customCaCerts` list in the `values.yaml` configuration file:
 
 ```yaml
 global:
-  customCaCert: |-
-    -----BEGIN CERTIFICATE-----
-    ....
-    -----END CERTIFICATE-----
+  customCaCerts:
+    # First certificate
+    - |-
+      -----BEGIN CERTIFICATE-----
+      ....
+      -----END CERTIFICATE-----
+    # Second certificate
+    - |-
+      -----BEGIN CERTIFICATE-----
+      ....
+      -----END CERTIFICATE-----
 ```
