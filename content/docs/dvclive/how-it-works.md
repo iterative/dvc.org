@@ -77,27 +77,12 @@ model.pt.dvc
 
 Unlike other experiment trackers, DVCLive relies on Git to track the [directory]
 it generates. This enables DVCLive to work with Git instead of separate from it.
-With this approach, DVCLive can use Git to automatically manage experiment
-results, code changes, and data changes
+With this approach, DVCLive can use Git to automatically manage results, code
+changes, and data changes for each <abbr>experiment</abbr>
 ([with DVC](#track-large-artifacts-with-dvc)), so you don't need to worry about
-manually making Git commits or branches for each experiment.
-
-Before using DVCLive, it helps to get accustomed to some differences with how
-DVCLive works compared to other experiments trackers. Set
-[`save_dvc_exp=True`](/doc/dvclive/live#parameters), which tells DVCLive to use
-Git to auto-track the results as a <abbr>DVC experiment</abbr>. If you do not
-set `save_dvc_exp=True`, you will be responsible for committing the results of
-each experiment to Git, or else they may be lost since DVCLive will overwrite
-the files it generates on each run. You can recover previous experiments using
+manually making Git commits or branches for each experiment. DVCLive will
+overwrite the files it generates on each run, but you can recover them using
 `dvc exp` commands or using Git.
-
-<admon type="tip">
-
-`save_dvc_exp=True` is ignored when [running with DVC](#run-with-dvc) since
-`dvc exp run` takes care of auto-tracking the results as a <abbr>DVC
-experiment</abbr>.
-
-</admon>
 
 ### Track large artifacts with DVC
 
@@ -110,16 +95,21 @@ versioned artifact from the Git commit. You can also use
 `Live.log_artifact("model.pt", type="model")` to add it to the [Studio Model
 Registry].
 
-<admon type="tip">
+Using `Live.log_image()` to log multiple images may also grow too large to track
+with Git, in which case you can use
+[`Live(cache_images=True)`](/doc/dvclive/live#parameters) to cache them.
 
-When [running with DVC](#run-with-dvc) in a <abbr>pipeline</abbr>, [outputs] are
-tracked in `dvc.lock` files. `Live.log_artifact()` will fail to add them since
-they are already tracked, but they are functionally the same as if you had added
-them with `Live.log_artifact()`.
+### Customize with DVC
 
-</admon>
+DVCLive by default [generates] its own `dvc.yaml` file to configure the
+experiment results, but you can create your own `dvc.yaml` file to customize
+your project. For example, to define a [pipeline](#run-with-dvc) or
+[customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
+Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
+experiment run. Instead, write customizations to a new `dvc.yaml` file at the
+base of your repository or elsewhere outside the DVCLive directory.
 
-### Run with DVC
+## Run with DVC
 
 Experimenting in Python interactively (like in notebooks) is great for
 exploration, but eventually you may need a more structured way to run
@@ -130,8 +120,8 @@ with `dvc exp run`. This will track the inputs and outputs of your code, and
 also enable features like queuing, parameter tuning, and grid searches.
 
 You can configure a pipeline stage in your own `dvc.yaml` file at the base of
-the repository (not the `dvc.yaml` file inside the DVCLive [directory], since
-that gets overwritten on each experiment run):
+the repository (not the `dvc.yaml` file inside the DVCLive [directory]; see
+[Customize with DVC](#customize-with-dvc):
 
 ```yaml
 stages:
@@ -143,30 +133,33 @@ stages:
       - model.pt
 ```
 
+<admon type="tip">
+
+You may have previously tracked [outputs] with `Live.log_artifact()` that
+generated a `.dvc` file like `model.pt.dvc`. If you already have a `.dvc` file
+like `model.pt.dvc`, DVC will not allow you to also add `model.pt` as a pipeline
+[output][outputs] since it is already tracked by `model.pt.dvc`. You must
+`dvc remove model.pt.dvc` before you can add it to the pipeline. You can
+optionally drop `Live.log_artifact()` from your code.
+
+</admon>
+
 Adding any subpaths of the DVCLive [directory] to the [outputs] is optional, but
 do not add the entire directory since DVC does not expect the DVCLive `dvc.yaml`
 file to be inside the [outputs]. DVC will [cache] any paths you add as [outputs]
 by default, and you can use those paths as [dependencies] downstream in your
-pipeline.
+pipeline. For example, to cache all DVCLive plots:
 
-<admon type="tip">
-
-If you already have a `.dvc` file like `model.pt.dvc`, DVC will not allow you to
-also add `model.pt` as a pipeline [output][outputs] since it is already tracked
-by `model.pt.dvc`. You must `dvc remove model.pt.dvc` before you can add it to
-the pipeline.
-
-</admon>
-
-### Customize with DVC
-
-DVCLive by default [generates] its own `dvc.yaml` file to configure the
-experiment results, but you can create your own `dvc.yaml` file to customize
-your project. For example, to define a [pipeline](#run-with-dvc) or
-[customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
-Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
-experiment run. Instead, write customizations to a new `dvc.yaml` file at the
-base of your repository or elsewhere outside the DVCLive directory.
+```diff
+  stages:
+    dvclive:
+      cmd: <python my_code_file.py my_args>
+      deps:
+        - <my_code_file.py>
+      outs:
+        - model.pt
++       - dvclive/plots
+```
 
 [directory]: /doc/dvclive/how-it-works#directory-structure
 [studio model registry]: /doc/studio/user-guide/model-registry
