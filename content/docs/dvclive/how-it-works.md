@@ -135,19 +135,16 @@ stages:
 <admon type="tip">
 
 You may have previously tracked [outputs] with `Live.log_artifact()` that
-generated a `.dvc` file like `model.pt.dvc`. If you already have a `.dvc` file
-like `model.pt.dvc`, DVC will not allow you to also add `model.pt` as a pipeline
-[output][outputs] since it is already tracked by `model.pt.dvc`. You must
-`dvc remove model.pt.dvc` before you can add it to the pipeline. You can
-optionally drop `Live.log_artifact()` from your code.
+generated a `.dvc` file like `model.pt.dvc`. DVC will not allow you to also add
+`model.pt` as a pipeline [output][outputs] since it is already tracked by
+`model.pt.dvc`. You must `dvc remove model.pt.dvc` before you can add it to the
+pipeline. You can optionally drop `Live.log_artifact()` from your code.
 
 </admon>
 
-Adding any subpaths of the DVCLive [directory] to the [outputs] is optional, but
-do not add the entire directory since DVC does not expect the DVCLive `dvc.yaml`
-file to be inside the [outputs]. DVC will [cache] any paths you add as [outputs]
-by default, and you can use those paths as [dependencies] downstream in your
-pipeline. For example, to cache all DVCLive plots:
+Optionally add any subpaths of the DVCLive [directory] to the [outputs]. DVC
+will [cache] them by default, and you can use those paths as [dependencies]
+downstream in your pipeline. For example, to cache all DVCLive plots:
 
 ```diff
   stages:
@@ -159,6 +156,13 @@ pipeline. For example, to cache all DVCLive plots:
         - model.pt
 +       - dvclive/plots
 ```
+
+<admon type="warn">
+
+Do not add the entire DVCLive [directory] since DVC does not expect the DVCLive
+`dvc.yaml` file to be inside the [outputs].
+
+</admon>
 
 [directory]: /doc/dvclive/how-it-works#directory-structure
 [studio model registry]: /doc/studio/user-guide/model-registry
