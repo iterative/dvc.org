@@ -76,13 +76,13 @@ model.pt.dvc
 ### Git integration
 
 Unlike other experiment trackers, DVCLive relies on Git to track the [directory]
-it generates. This enables DVCLive to work with Git instead of separate from it.
-With this approach, DVCLive can use Git to automatically manage results, code
-changes, and data changes for each <abbr>experiment</abbr>
-([with DVC](#track-large-artifacts-with-dvc)), so you don't need to worry about
-manually making Git commits or branches for each experiment. DVCLive will
-overwrite the files it generates on each run, but you can recover them using
-`dvc exp` commands or using Git.
+it generates, so it will save each run to the same path and overwrite the
+results each time. DVCLive uses Git to manage results, code changes, and data
+changes ([with DVC](#track-large-artifacts-with-dvc)). Include
+[`save_dvc_exp=True`](/doc/dvclive/live#parameters) to auto-track as a <abbr>DVC
+experiment</abbr> so you don't need to worry about manually making Git commits
+or branches for each experiment. You can recover them using `dvc exp` commands
+or using Git.
 
 ### Track large artifacts with DVC
 
@@ -120,8 +120,7 @@ with `dvc exp run`. This will track the inputs and outputs of your code, and
 also enable features like queuing, parameter tuning, and grid searches.
 
 You can configure a pipeline stage in your own `dvc.yaml` file at the base of
-the repository (not the `dvc.yaml` file inside the DVCLive [directory]; see
-[Customize with DVC](#customize-with-dvc):
+the repository (see [Customize with DVC](#customize-with-dvc):
 
 ```yaml
 stages:
