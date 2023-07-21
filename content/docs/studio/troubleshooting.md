@@ -7,8 +7,7 @@ Iterative Studio.
 
 - [Errors accessing your Git repository](#errors-accessing-your-git-repository)
 - [Errors related to parsing the repository](#errors-related-to-parsing-the-repository)
-- [Errors related to DVC remotes](#errors-related-to-dvc-remotes)
-- [Errors related to credentials](#errors-related-to-credentials)
+- [Errors related to DVC remotes and credentials](#errors-related-to-dvc-remotes-and-credentials)
 
 - [Error: No data found to visualize](#error-no-data-found-to-visualize)
 - [Error: No DVC repo was found at the root](#error-no-dvc-repo-was-found-at-the-root)
@@ -30,9 +29,7 @@ Iterative Studio.
 
 - [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
 - [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
-- [How can I remove models from my model registry](#how-can-i-remove-models-from-my-model-registry)
 - [My models have disappeared even though I did not remove (deprecate) them](#my-models-have-disappeared-even-though-i-did-not-remove-deprecate-them)
-- [How can I un-assign stages from model versions](#how-can-i-un-assign-stages-from-model-versions)
 
 **Billing and payment**
 
@@ -78,12 +75,14 @@ import the repo again.
 - Failed to start parsing
 - Parsing stopped unexpectedly
 
-## Errors related to DVC remotes
+## Errors related to DVC remotes and credentials
 
-Iterative Studio can access data from network-accessible remotes such as Amazon
-S3, Microsoft Azure, etc but not from [local DVC remotes][local-dvc-remotes]. If
-your project uses an unsupported remote, you will see one of the following
-errors:
+Iterative Studio can include data from
+[data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes-cloudremote-storage)
+in your project. However, it can access data from network-accessible remotes
+such as Amazon S3, Microsoft Azure, etc but not from [local DVC
+remotes][local-dvc-remotes]. If your project uses an unsupported remote, you
+will see one of the following errors:
 
 - Local remote was ignored
 - Remote not supported
@@ -91,11 +90,9 @@ errors:
 Please use one of the following types of data remotes: Amazon S3, Microsoft
 Azure, Google Drive, Google Cloud Storage and SSH.
 
-## Errors related to credentials
-
-If your repository uses data remotes that Iterative Studio needs to access, then
-you should [add the required credentials to your project][cloud-credentials]. If
-credentials are missing or incorrect, you will see one of the following errors:
+If the data remotes have access control, then you should [add the required
+credentials to your project][cloud-credentials]. If credentials are missing or
+incorrect, you will see one of the following errors:
 
 - No credentials were provided
 - Credentials are either broken or not recognized
@@ -183,10 +180,10 @@ Instructions on how to specify the sub-directory or custom files can be found
 
 ## Project got created, but does not contain any data
 
-If you initialized a DVC repository, but did make any commit with data, metrics
-or hyperparameters, then you will be able to connect to this repository.
-However, the project will appear empty in Iterative Studio. To solve this,
-either make relevant commits to your DVC repository. Or, specify custom files
+If you initialized a DVC repository, but did not push any commit with data,
+metrics or hyperparameters, then even though you will be able to connect to this
+repository, the project will appear empty in Iterative Studio. To solve this,
+either make relevant commits to your DVC repository, or specify custom files
 with the metrics or hyperparameters that you want to visualize.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
@@ -206,11 +203,11 @@ There are two possible reasons for this:
    columns that you select in the
    [**Columns** setting](/doc/studio/user-guide/projects-and-experiments/configure-a-project#columns).
 
-   **What if there are more than 200 columns?** Currently Iterative Studio
-   cannot import over 200 columns. If you have a large repository (with more
-   than 200 columns), one solution is to split the
+   **What if the repository has more than 500 columns?** Currently Iterative
+   Studio does not import over 500 columns. If you have a large repository (with
+   more than 500 columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
-   multiple subdirectories in your git repository. For each subdirectory, you
+   multiple subdirectories in your Git repository. For each subdirectory, you
    can create a new project in Iterative Studio and limit it to that
    subdirectory.
 
@@ -240,9 +237,9 @@ There are two possible reasons for this:
 This is likely not an error. Iterative Studio identifies commits that do not
 change metrics, files or hyperparameters and will auto-hide such commits. It
 also auto-hides commits that contain the string `[skip studio]` in the commit
-message. You can also manually hide commits and branches. So, it is possible
-that the commits or branches you do not see in your project were manually hidden
-by you or someone else in your team.
+message. You can also manually hide commits and branches, which means it is
+possible that the commits or branches you do not see in your project were
+manually hidden by you or someone else in your team.
 
 You can unhide commits and branches to display them. For details, refer to
 [Display preferences -> Hide commits]. However, if the missing commit/branch is
@@ -308,15 +305,16 @@ Confirm that you are correctly following the
 [procedure to send live metrics and plots](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
 to Iterative Studio.
 
-Also note that live metrics and plots for an experiment are displayed only if
-its parent Git commit is present in the project table. So, before you run the
-experiment, make sure that its parent commit is pushed to Git and shown in the
-project table.
+Note that a live experiment is nested under the parent Git commit in the project
+table. If the parent Git commit is not pushed to the Git repository, the live
+experiment row will appear within a `Detached experiments` dummy branch in the
+project table. Once you push the missing parent commit to the Git remote, the
+live experiment will get nested under the parent commit as expected.
 
 ## Project does not display DVC experiments
 
 Iterative Studio automatically checks for updates to your repository using
-webhooks, but it can not rely on this mechanism for custom git objects, like
+webhooks, but it can not rely on this mechanism for custom Git objects, like
 <abbr>DVC experiment</abbr> references. So the experiments you push using
 `dvc exp push` may not automatically display in your project table.
 
@@ -329,29 +327,30 @@ This error indicates that the `dvc.lock` file in the given commit has an invalid
 YAML. If the given commit is unimportant to you, you can ignore this error.
 
 One potential cause for this error is that at the time of the given commit, your
-repository used DVC 1.0. The format of lock files used in DVC 1.0 were
-deprecated in the DVC 2.0 release. Upgrading to the latest DVC version will
-resolve this issue for any future commits in your repository.
+repository used DVC 1.0. The format of lock files used in DVC 1.0 was deprecated
+in the DVC 2.0 release. Upgrading to the latest DVC version will resolve this
+issue for any future commits in your repository.
 
 ## Project does not reflect updates in the Git repository
 
 When there are updates (new commits, branches, etc.) in your Git repository,
 your project in Iterative Studio gets reflected to include those updates. If the
 project has stopped receiving updates from the Git repository and you have to
-"force import" the project each time to get any new commit, then it is possible
+`force import` the project each time to get any new commit, then it is possible
 that the Iterative Studio webhook in your repository got deleted or messed up.
 
 Iterative Studio periodically checks for any missing or messed up webhooks, and
-attempts to re-create it. Currently, this happens every 2 hours. The webhook
-also gets re-created every time you create a new project.
+attempts to re-create them. Currently, this happens every 2 hours. The webhook
+also gets re-created every time you create a new project or force import a
+repository.
 
 ## I cannot find my desired Git repository in the form to add a model
 
 Only repositories that you have connected to Iterative Studio are available in
 the `Add a model` form. To connect your desired repository to Iterative Studio,
-go to the `Projects` tab and
-[create a project that connects to this Git repository](/doc/studio/user-guide/projects-and-experiments/create-a-project).
-Then you can come back to the model registry and add the model.
+go to the `Projects` tab and [create a project that connects to this Git
+repository][create a project]. Then you can come back to the model registry and
+add the model.
 
 ## Model registry does not display the models in my Git repositories
 
@@ -359,29 +358,14 @@ For a model to be displayed in the model registry, it has to be registered using
 [GTO]. You can [register the model] from Iterative Studio or with the [`gto`
 CLI].
 
-## How can I remove models from my model registry
-
-To remove a model from the model registry, use the `Deprecate model` menu item
-in the 3-dot menu next to the model name. You can also remove all of a project's
-models by deleting the project from your projects dashboard.
-
 ## My models have disappeared even though I did not remove (deprecate) them
 
-Models can also be removed by deleting the associated project from the projects
-dashboard. So make sure that the project is not deleted.
-
-## How can I un-assign stages from model versions
-
-To un-assign any stage from a model, open the corresponding Git repository (in
-GitHub, GitLab or Bitbucket). Then, remove the Git tag pertaining to the stage
-that you want to un-assign.
-
-After removing the Git tag, reparse the repository. To do this, open the project
-in Iterative Studio and then click on `Force import` as shown below.
-
-![Showing and hiding columns](https://static.iterative.ai/img/studio/force_import.gif)
-
-Currently, you cannot un-assign stages from the Iterative Studio user interface.
+When a project is deleted from the projects dashboard, all its models get
+automatically removed from the model registry. So check if the project has been
+removed. If yes, you can [add the project][create a project] again. Deleting a
+project from Iterative Studio does not delete any commits or tags from the Git
+repository. So, adding the project back will restore all the models from the
+repository along with their details, including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 
@@ -392,3 +376,5 @@ please [contact us](#support).
 [gto]: https://mlem.ai/doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
 [`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[create a project]:
+  /doc/studio/user-guide/projects-and-experiments/create-a-project

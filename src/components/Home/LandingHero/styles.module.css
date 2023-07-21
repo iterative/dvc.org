@@ -27,7 +27,7 @@
     flex-direction: column;
   }
 
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media only screen and (device-width >= 768px) and (device-width <= 1024px) {
     justify-content: flex-start;
   }
 }
@@ -35,13 +35,12 @@
 .actionButton {
   min-width: 186px;
   text-decoration: none;
+  margin-left: 15px;
 
-  &.actionButton {
-    @media screen(xsMax) {
-      min-height: 60px;
-      margin: 0;
-      margin-bottom: 12px;
-    }
+  @media screen(xsMax) {
+    min-height: 60px;
+    margin: 0;
+    margin-bottom: 12px;
   }
 }
 
@@ -68,10 +67,6 @@
   height: 20px;
 }
 
-.watchVideo {
-  margin-left: 15px;
-}
-
 .commands {
   display: flex;
   flex: 1 1 auto;
@@ -88,7 +83,7 @@
     padding-top: 24px;
   }
 
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media only screen and (device-width >= 768px) and (device-width <= 1024px) {
     align-items: center;
     padding-top: 24px;
   }
@@ -107,7 +102,10 @@
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
   transform: translateZ(0);
   opacity: 0.3;
-  transition: opacity 3s, border 0.5s, color 1s;
+  transition:
+    opacity 3s,
+    border 0.5s,
+    color 1s;
 
   &.active {
     border-color: var(--color-purple);
@@ -149,7 +147,7 @@
     font-size: 18px;
   }
 
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media only screen and (device-width >= 768px) and (device-width <= 1024px) {
     align-items: center;
     margin-top: 24px;
     font-size: 18px;

@@ -56,7 +56,8 @@ Note that `git stash apply` my fail if you run Git commands which affect `HEAD`
 
 </details>
 
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[persistent]:
+  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
 
 ## Options
 

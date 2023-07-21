@@ -62,7 +62,7 @@ the selected commit has been created, representing the new version.
 
 [gto]: https://mlem.ai/doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
-[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tag-message-format
+[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tags-format
 [`gto` cli]: https://mlem.ai/doc/gto/command-reference
 [semver]: https://semver.org/
 [CI/CD]:

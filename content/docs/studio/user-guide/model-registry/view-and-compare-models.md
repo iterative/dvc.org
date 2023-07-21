@@ -23,8 +23,8 @@ Iterative Studio also consolidates the frameworks of all the models in the
 registry and provides a way to filter models by framework. Note that the
 framework of a model is identified by Iterative’s model deployment tool [MLEM].
 If you have not used MLEM, then Iterative Studio will use a generic framework
-label (`G`) to indicate that the model framework was not identified, and that
-the model was registered using [GTO].
+icon to indicate that the model framework was not identified, and that the model
+was registered using [GTO].
 
 You can take a look at the [models dashboard] in Iterative's public (read only)
 model registry.
@@ -56,11 +56,12 @@ A model details page is divided into the following sections:
     [assigning a stage to the version](/doc/studio/user-guide/model-registry/assign-stage),
   - all assigned stages,
   - version description and labels,
-  - path to the model, and
-  - metrics and params,
+  - path to the model,
+  - metrics, params and plots, and
   - model requirements and methods. Note that the requirements and methods are
     identified by Iterative’s model deployment tool [MLEM]. If you have not used
-    MLEM, then Iterative Studio will not display any methods for the model.
+    MLEM, then Iterative Studio will not display any requirements or methods for
+    the model.
 - Right section: The right section contains information that is applicable
   across all the versions of the model. In particular, it displays
   - the assigned stages for the different versions, and
@@ -80,13 +81,13 @@ belongs.
 ## Comparing model versions:
 
 To compare model versions, select relevant commits in the project's experiment
-table and click "Compare" and/or "Plots" buttons:
+table and click `Compare` and/or `Plots` buttons:
 
 ![](/img/mr-comparing-models.png)
 
 This way you can compare both registered model versions and unregistered
 experimental iterations and make a decision to register a new version out of the
-the latter.
+latter.
 
 [mlem]: https://mlem.ai/
 [gto]: https://mlem.ai/doc/gto

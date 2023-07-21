@@ -5,6 +5,14 @@ import it. You can choose whether to download that data and whether to push
 copies to your [DVC remote]. This makes importing the data useful even if you
 want to track the data in-place at its original source location.
 
+<admon type="tip">
+
+See
+[external dependencies and outputs](/doc/user-guide/pipelines/external-dependencies-and-outputs)
+if you want to work with external data in a <abbr>pipeline</abbr>.
+
+</admon>
+
 ## How importing external data works
 
 Import external data using `import-url`:
@@ -51,6 +59,12 @@ $ dvc update data.xml.dvc
 During `dvc push`, DVC will upload the version of the data tracked by
 `data.xml.dvc` to the [DVC remote] so that it is backed up in case you need to
 recover it.
+
+DVC will never overwrite the source location of the data. Instead, DVC can
+checkout any version of that data locally. DVC is designed to protect the
+original data from accidental overwrites or changes that might be unexpected to
+other users, so you can recover old versions without losing what's currently
+stored in the source location.
 
 ## Avoiding duplication
 

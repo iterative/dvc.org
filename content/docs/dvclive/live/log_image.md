@@ -11,7 +11,7 @@ def log_image(name: str, val):
 ```py
 from dvclive import Live
 
-with Live() as live:
+with Live(cache_images=True) as live:
     # 1. Log an image from a numpy array:
     import numpy as np
     img_numpy = np.ones((500, 500), np.uint8) * 255
@@ -39,14 +39,21 @@ Supported values for `val` are:
   should be in a format that is readable by
   [`PIL.Image.open()`](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open)
 
-The images will be saved in `{Live.plots_dir}/images/{name}`:
+The images will be saved in `{Live.plots_dir}/images/{name}`. When using
+[`Live(cache_images=True)`](/doc/dvclive/live#parameters), the images directory
+will also be <abbr>cached</abbr> as part of `Live.end()`. In that case, a `.dvc`
+file will be saved to [track](/doc/dvclive/how-it-works#track-the-results) it,
+and the directory will be added to a `.gitignore` file to prevent Git tracking:
 
 ```
 dvclive
 └── plots
-    └── images
-        ├── numpy.png
-        └── pil.png
+    ├── .gitignore
+    ├── images
+    │   ├── numpy.png
+    │   ├── pil.png
+    │   └── sample.png
+    └── images.dvc
 ```
 
 <admon type="tip">

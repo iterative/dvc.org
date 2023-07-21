@@ -5,33 +5,54 @@ DVCLive allows you to add experiment tracking capabilities to your
 
 ## Usage
 
-Pass the
+<p align='center'>
+  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-PyTorch-Lightning.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" />
+  </a>
+</p>
+
+If you pass the
 [`DVCLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
 to your
-[`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
+[`Trainer`](https://lightning.ai/docs/pytorch/stable/common/trainer.html),
+DVCLive will automatically log the
+[metrics](https://lightning.ai/docs/pytorch/stable/visualize/logging_basic.html#track-metrics)
+and
+[parameters](https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#save-hyperparameters)
+tracked in your
+[`LightningModule`](https://pytorch-lightning.readthedocs.io/en/2.0.1/common/lightning_module.html).
 
 ```python
+import lightning.pytorch as pl
 from dvclive.lightning import DVCLiveLogger
 
 ...
-dvclive_logger = DVCLiveLogger()
+class LitModule(pl.LightningModule):
+    def __init__(self, layer_1_dim=128, learning_rate=1e-2):
+        super().__init__()
+        # layer_1_dim and learning_rate will be logged by DVCLive
+        self.save_hyperparameters()
 
-trainer = Trainer(logger=dvclive_logger)
+    def training_step(self, batch, batch_idx):
+        metric = ...
+        # See Output Format bellow
+        self.log("train_metric", metric, on_step=False, on_epoch=True)
+
+dvclive_logger = DVCLiveLogger(save_dvc_exp=True)
+
+model = LitModule()
+trainer = pl.Trainer(logger=dvclive_logger)
 trainer.fit(model)
 ```
 
-Each metric will be logged to:
+<admon type="info">
 
-```py
-{Live.plots_dir}/metrics/{split}/{iter_type}/{metric}.tsv
-```
+By default, PyTorch Lightning creates a directory to store checkpoints using the
+logger's name (`DVCLiveLogger`). You can change the checkpoint path or disable
+checkpointing at all as described in the
+[PyTorch Lightning documentation](https://lightning.ai/docs/pytorch/stable/common/checkpointing_basic.html#disable-checkpointing)
 
-Where:
-
-- `{Live.plots_dir}` is defined in [`Live`].
-- `{split}` can be either `train` or `eval`.
-- `{iter_type}` can be either `epoch` or `step`.
-- `{metric}` is the name provided by the framework.
+</admon>
 
 ## Parameters
 
@@ -54,7 +75,7 @@ Where:
 from dvclive import Live
 from dvclive.lightning import DVCLiveLogger
 
-with Live("custom_dir") as live:
+with Live("custom_dir", save_dvc_exp=True) as live:
     trainer = Trainer(
         logger=DVCLiveLogger(experiment=live))
     trainer.fit(model)
@@ -68,7 +89,7 @@ with Live("custom_dir") as live:
 from dvclive.lightning import DVCLiveLogger
 
 trainer = Trainer(
-    logger=DVCLiveLogger(dir='my_logs_dir'))
+    logger=DVCLiveLogger(save_dvc_exp=True, dir='my_logs_dir'))
 trainer.fit(model)
 ```
 
@@ -76,7 +97,7 @@ trainer.fit(model)
   [best checkpoint](https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html).
 
 ```python
-with Live() as live:
+with Live(save_dvc_exp=True) as live:
     checkpoint = ModelCheckpoint(dirpath="mymodel")
     trainer = Trainer(
         logger=DVCLiveLogger(experiment=live),
@@ -90,28 +111,32 @@ with Live() as live:
     )
 ```
 
-- Logging
-  [hyperparameters](https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#save-hyperparameters).
+## Output format
 
-```python
-class LitModule(LightningModule):
-    def __init__(self, layer_1_dim, learning_rate):
-        super().__init__()
-        # call this to save (layer_1_dim=128, learning_rate=1e-4)
-        self.save_hyperparameters()
+Each metric will be logged to:
 
-model = LitModule(layer_1_dim=128, learning_rate=1e-4)
-trainer = Trainer(logger=DVCLiveLogger())
-trainer.fit(model)
+```py
+{Live.plots_dir}/metrics/{split_prefix}/{iter_type}/{metric_name}.tsv
 ```
 
-<admon type="info">
+Where:
 
-By default, PyTorch Lightning creates a directory to store checkpoints using the
-logger's name (`DVCLiveLogger`). You can change the checkpoint path or disable
-checkpointing at all as described in the
-[PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
+- `{Live.plots_dir}` is defined in [`Live`].
+- `{iter_type}` can be either `epoch` or `step`. This is inferred from the
+  `on_step` and `on_epoch` arguments used in the `log` call.
+- `{split_prefix}_{metric_name}` is the full string passed to the `log` call.
+  `split_prefix` can be either `train`, `val` or `test`.
 
-</admon>
+In the example above, the metric logged as:
+
+```py
+self.log("train_metric", metric, on_step=False, on_epoch=True)
+```
+
+Will be stored in:
+
+```
+dvclive/metrics/train/epoch/metric.tsv
+```
 
 [`live`]: /doc/dvclive/live

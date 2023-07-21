@@ -15,7 +15,7 @@ log_config = dict(
     interval=100,
     hooks=[
         dict(type='TextLoggerHook'),
-        dict(type='DvcliveLoggerHook')
+        dict(type='DvcliveLoggerHook', save_dvc_exp=True)
     ]
 )
 ```
@@ -30,18 +30,6 @@ log_config = dict(
 
 ## Examples
 
-- Using `model_file`.
-
-```python
-log_config = dict(
-    interval=100,
-    hooks=[
-        dict(type='TextLoggerHook'),
-        dict(type='DvcliveLoggerHook', model_file="my_model.pth")
-    ]
-)
-```
-
 - Using `**kwargs` to customize [`Live`].
 
 ```python
@@ -51,7 +39,7 @@ log_config = dict(
         dict(type='TextLoggerHook'),
         dict(
             type='DvcliveLoggerHook',
-            model_file="my_model.pth",
+            save_dvc_exp=True,
             dir="custom_dir"
         )
     ]

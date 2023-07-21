@@ -1,9 +1,8 @@
 # Add a model
 
-You can add models from any ML project to the model registry. To add a model to
-your model registry, Iterative Studio creates an annotation for it in a
-`dvc.yaml` file in your Git repository. You can add a model in any of the
-following ways:
+You can add models from any ML project to the model registry. To add a model,
+Iterative Studio creates an annotation for it in a `dvc.yaml` file in your Git
+repository. You can add a model in any of the following ways:
 
 1. Log your model during the training process using [dvclive] by calling
    [`live.log_artifact(path, type="model")`][log_artifact] method.
@@ -32,9 +31,9 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 
 4. Enter the path of the model file as follows:
 
-   - If the model file is in the Git repository (including if it is saved with
-     DVC and/or [MLEM]), enter the relative path of the model (from the
-     repository root).
+   - If the model file is in the Git repository or is in the cloud but is
+     tracked by DVC and/or [MLEM], enter the relative path of the model (from
+     the repository root).
    - Otherwise, enter the URL to the model file in the cloud. Iterative Studio
      will ask you for the repository path where the dvc reference to the model
      should be saved.
