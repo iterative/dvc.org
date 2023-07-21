@@ -22,10 +22,7 @@ repositories.
 
 </cards>
 
-https://www.youtube.com/watch?v=It74fReRHAU
-
-_Note that we have renamed DVC Studio mentioned in the above video to Iterative
-Studio and Views to Projects._
+https://www.youtube.com/watch?v=w-UjAbdpRY4
 
 **Why Iterative Studio?**
 
