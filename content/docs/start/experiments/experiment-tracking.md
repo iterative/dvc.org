@@ -39,20 +39,13 @@ from dvclive import Live
 from dvclive.lightning import DVCLiveLogger
 
 ...
-with Live(save_dvc_exp=True) as live:
-    checkpoint = ModelCheckpoint(dirpath="mymodel")
     trainer = Trainer(
         logger=DVCLiveLogger(
-            experiment=live
-        ),
-        callbacks=checkpoint
+            save_dvc_exp=True,
+            log_model=True
+        )
     )
     trainer.fit(model)
-    live.log_artifact(
-        checkpoint.best_model_path,
-        type="model",
-        name="lightning-model"
-    )
 ```
 
 </tab>
