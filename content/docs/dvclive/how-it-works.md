@@ -120,7 +120,7 @@ with `dvc exp run`. This will track the inputs and outputs of your code, and
 also enable features like queuing, parameter tuning, and grid searches.
 
 You can configure a pipeline stage in your own `dvc.yaml` file at the base of
-the repository (see [Customize with DVC](#customize-with-dvc):
+the repository (see [Customize with DVC](#customize-with-dvc)):
 
 ```yaml
 stages:
