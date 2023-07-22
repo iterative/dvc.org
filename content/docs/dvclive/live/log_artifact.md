@@ -36,9 +36,10 @@ with Live() as live:
 
 ## Description
 
-Uses `dvc add` to track `path` with DVC, generating a `{path}.dvc` file. When
-combined with [`save_dvc_exp=True`](/doc/dvclive#initialize-dvclive), it will
-ensure that `{path}.dvc` is included in the experiment.
+Uses `dvc add` to [track] `path` with DVC, saving it to the DVC
+<abbr>cache</abbr> and generating a `{path}.dvc` file. When combined with
+[`save_dvc_exp=True`](/doc/dvclive#initialize-dvclive), it will ensure that
+`{path}.dvc` is included in the experiment.
 
 If `Live` was initialized with `dvcyaml=True` (which is the default) and you
 include any of the optional metadata fields (`type`, `name`, `desc`, `labels`,
@@ -71,12 +72,13 @@ the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
   artifact. Useful if you don't want to track the original path in your repo
   (for example, it is outside the repo or in a Git-ignored directory).
 
-- `cache` - <abbr>cache</abbr> the files with DVC to
-  [track](/doc/dvclive/how-it-works#track-large-artifacts-with-dvc) them outside
-  of Git. Defaults to `True`, but set to `False` if you want to annotate
-  metadata about the artifact without storing a copy in the DVC cache.
+- `cache` - <abbr>cache</abbr> the files with DVC to [track] them outside of
+  Git. Defaults to `True`, but set to `False` if you want to annotate metadata
+  about the artifact without storing a copy in the DVC cache.
 
 ## Exceptions
 
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `path` does not
   have a supported type.
+
+[track]: /doc/dvclive/how-it-works#track-large-artifacts-with-dvc

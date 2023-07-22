@@ -63,12 +63,8 @@ checkpointing at all as described in the
 
 - `log_model` - (`False` by default) - use
   [`live.log_artifact()`](/doc/dvclive/live/log_artifact) to log checkpoints
-  created by
-  [`ModelCheckpoint`](https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html)
-  and annotate the best checkpoint with `type=model` and `name=best` for use in
-  [Studio model registry]. DVCLive will <abbr>cache</abbr> the checkpoint
-  directory and delete checkpoints from previous <abbr>experiments</abbr>, but
-  you can recover the checkpoints from any experiment using DVC.
+  created by [`ModelCheckpoint`]. See
+  [Log model checkpoints](#log-model-checkpoints).
 
   - if `log_model == 'all'`, checkpoints are logged during training.
 
@@ -86,16 +82,51 @@ checkpointing at all as described in the
 
 ## Examples
 
-- Using `log_model` to save the checkpoints and annotate the best one for use in
-  [Studio model registry].
+### Log model checkpoints
+
+Use `log_model` to save the checkpoints. DVCLive will first delete checkpoints
+from previous <abbr>experiments</abbr> (since DVC tracks checkpoints per
+experiment) and then <abbr>cache</abbr> the entire checkpoints directory using
+`Live.log_artifact()`. At the end of training, DVCLive will annotate the
+[`best_model_path`][`ModelCheckpoint`] with `type=model` and `name=best` for use
+in [Studio model registry].
+
+- Save updates to the checkpoints directory at the end of training:
 
 ```python
 from dvclive.lightning import DVCLiveLogger
 
-trainer = Trainer(
-    logger=DVCLiveLogger(save_dvc_exp=True, log_model=True))
+logger = DVCLiveLogger(save_dvc_exp=True, log_model=True)
+trainer = Trainer(logger=logger)
 trainer.fit(model)
 ```
+
+- Save updates to the checkpoints directory whenever a new checkpoint is saved:
+
+```python
+from dvclive.lightning import DVCLiveLogger
+
+logger = DVCLiveLogger(save_dvc_exp=True, log_model="all")
+trainer = Trainer(logger=logger)
+trainer.fit(model)
+```
+
+- Use a custom `ModelCheckpoint`:
+
+```python
+from dvclive.lightning import DVCLiveLogger
+
+logger = DVCLiveLogger(save_dvc_exp=True, log_model=True),
+checkpoint_callback = ModelCheckpoint(
+        dirpath="model",
+        monitor="val_acc",
+        mode="max",
+)
+trainer = Trainer(logger=logger, callbacks=[checkpoint_callback])
+trainer.fit(model)
+```
+
+### Passing additional DVCLive arguments
 
 - Using `experiment` to pass an existing [`Live`] instance.
 
@@ -152,3 +183,5 @@ dvclive/metrics/train/epoch/metric.tsv
 [`live`]: /doc/dvclive/live
 [studio model registry]:
   /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[`ModelCheckpoint`]:
+  https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html
