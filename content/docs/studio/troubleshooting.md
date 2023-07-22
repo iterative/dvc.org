@@ -3,7 +3,15 @@
 Here we provide help for some of the problems that you may encounter when using
 Iterative Studio.
 
-**Projects and experiments**
+## Support
+
+If you need further help, you can send us a message using `Help` on the
+[Iterative Studio website](https://studio.iterative.ai). You can also
+[email us](mailto:support@iterative.ai), create a support ticket on
+[GitHub](https://github.com/iterative/studio-support) or join the discussion in
+[Discord](https://discord.com/invite/dvwXA2N).
+
+## Projects and experiments
 
 - [Errors accessing your Git repository](#errors-accessing-your-git-repository)
 - [Errors related to parsing the repository](#errors-related-to-parsing-the-repository)
@@ -25,23 +33,15 @@ Iterative Studio.
 - [Error: `dvc.lock` validation failed](#error-dvclock-validation-failed)
 - [Project does not reflect updates in the Git repository ](#project-does-not-reflect-updates-in-the-git-repository)
 
-**Model registry**
+## Model registry
 
 - [I cannot find my desired Git repository in the form to add a model](#i-cannot-find-my-desired-git-repository-in-the-form-to-add-a-model)
 - [Model registry does not display the models in my Git repositories](#model-registry-does-not-display-the-models-in-my-git-repositories)
 - [My models have disappeared even though I did not remove (deprecate) them](#my-models-have-disappeared-even-though-i-did-not-remove-deprecate-them)
 
-**Billing and payment**
+## Billing and payment
 
 - [Questions or problems with billing and payment](#questions-or-problems-with-billing-and-payment)
-
-## Support
-
-If you need further help, you can send us a message using `Help` on the
-[Iterative Studio website](https://studio.iterative.ai). You can also
-[email us](mailto:support@iterative.ai), create a support ticket on
-[GitHub](https://github.com/iterative/studio-support) or join the discussion in
-[Discord](https://discord.com/invite/dvwXA2N).
 
 ## Errors accessing your Git repository
 
