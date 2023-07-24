@@ -107,9 +107,9 @@ The `dvc remote` used is determined in order, based on
   workspace. This downloads tracked data for the entire commit history of the
   project.
 
-- `--max-size <bytes>` - fetch data files/directories that are each below specified size
-  (bytes). The size is determined by a corresponding `size` field in the
-  `.dvc`/`dvc.lock` file.
+- `--max-size <bytes>` - fetch data files/directories that are each below
+  specified size (bytes). The size is determined by a corresponding `size` field
+  in the `.dvc`/`dvc.lock` file.
 
 -- `--type <type>` - fetch data files/directories that are of a particular type.
 Currently only `metrics` and `plots` are supported.
