@@ -729,7 +729,6 @@
           }
         ]
       },
-      "python-api",
       "rest-api"
     ]
   },

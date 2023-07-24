@@ -7,18 +7,17 @@ capabilities.
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions using Studio [REST API], Studio [Python API] or `dvc get`.
+versions using Studio [REST API], `dvc get`, or DVC [Python API].
 
 ### Using Studio API
 
 Using Studio API will require you to add your remote storage secrets to
 respective projects, but can be easier since to use it in place you only need to
 have Studio API token. Studio APIs rely on signing urls, which limits the number
-of remotes they're working with. You can learn more on [REST API] and [Python
-API] pages.
+of remotes they're working with. You can learn more on [REST API] pages.
 
 [REST API]: /doc/studio/rest-api
-[Python API]: /doc/studio/python-api
+[Python API]: /doc/api-reference
 
 ### Using `dvc get`
 
