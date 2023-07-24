@@ -12,9 +12,11 @@ versions using Studio [REST API], `dvc get`, or DVC [Python API].
 ### Using Studio API
 
 Using Studio API will require you to add your remote storage secrets to
-respective projects, but can be easier since to use it in place you only need to
-have Studio API token. Studio APIs rely on signing urls, which limits the number
-of remotes they're working with. You can learn more on [REST API] pages.
+respective projects but downloading models can be easier than DVC since you only
+need to have the Studio API token. You do not need direct access to your remote
+storage, and you do not need to install DVC. Studio APIs rely on signing urls,
+which limits the number of remotes they're working with. You can learn more on
+[REST API] pages.
 
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference
