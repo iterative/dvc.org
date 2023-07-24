@@ -12,6 +12,7 @@ usage: dvc import [-h] [-q | -v]
                   [-o <path>] [--rev <commit>]
                   [--no-exec | --no-download]
                   [-j <number>]
+                  [--config <path>]
                   url path
 
 positional arguments:
@@ -117,6 +118,9 @@ file.
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
+
+- `--config <path>` - path to a [config file](/doc/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

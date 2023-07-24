@@ -9,7 +9,9 @@ directory.
 
 ```usage
 usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>]
-               [--show-url] [-j <number>] [-f] url path
+               [--show-url] [-j <number>] [-f]
+               [--config <path>]
+               url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -81,6 +83,9 @@ name.
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. If `path` is a Git-tracked file,
   this option is ignored.
+
+- `--config <path>` - path to a [config file](/doc/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

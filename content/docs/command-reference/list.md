@@ -12,6 +12,7 @@ and by Git.
 ```usage
 usage: dvc list [-h] [-q | -v] [-R] [--dvc-only]
                 [--json] [--rev [<commit>]]
+                [--config <path>]
                 url [path]
 
 positional arguments:
@@ -70,6 +71,9 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
+
+- `--config <path>` - path to a [config file](/doc/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

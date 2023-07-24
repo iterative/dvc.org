@@ -71,14 +71,15 @@ The following subfields may be present under `deps` entries:
 | `md5`<br/>`etag`<br/>`checksum` | Only in <abbr>external dependencies</abbr> created with `dvc import-url`: Hash value of the imported file or directory. MD5 is used for local paths and SSH; [ETag] for HTTP, S3, GCS, and Azure; and a special _checksum_ for HDFS and WebHDFS. |
 | `size`                          | Size of the file or directory (sum of all files).                                                                                                                                                                                                |
 | `nfiles`                        | If this dependency is a directory, the number of files inside (recursive).                                                                                                                                                                       |
-| `repo`                          | Only in external dependencies created with `dvc import`: It can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                           |
+| `repo`                          | Only in external dependencies created with `dvc import`: It can contain `url`, `rev`, `rev_lock` and `config` (detailed below).                                                                                                                  |
 
 ### Dependency `repo` subfields:
 
-| Field      | Description                                                                                                                                 |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `url`      | URL of Git repository with source DVC project                                                                                               |
-| `rev`      | Only when `dvc import --rev` is used: Specific commit hash, branch or tag name, etc. (a [Git revision]) used to import the dependency from. |
-| `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)         |
+| Field      | Description                                                                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `url`      | URL of Git repository with source DVC project                                                                                                                 |
+| `rev`      | Only when `dvc import --rev` is used: Specific commit hash, branch or tag name, etc. (a [Git revision]) used to import the dependency from.                   |
+| `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)                           |
+| `config`   | Only when `dvc import --config` is used: Path to a [config file](/doc/command-reference/config) that will be merged with the config in the target repository. |
 
 [git revision]: https://git-scm.com/docs/revisions
