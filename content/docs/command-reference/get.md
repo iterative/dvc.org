@@ -84,8 +84,8 @@ name.
   storage location (URL) of the target data. If `path` is a Git-tracked file,
   this option is ignored.
 
-- `--config <path>` - path to a [config file](/doc/command-reference/config) that
-  will be merged with the config in the target repository.
+- `--config <path>` - path to a [config file](/doc/command-reference/config)
+  that will be merged with the config in the target repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

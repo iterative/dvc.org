@@ -119,8 +119,8 @@ file.
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
 
-- `--config <path>` - path to a [config file](/doc/command-reference/config) that
-  will be merged with the config in the target repository.
+- `--config <path>` - path to a [config file](/doc/command-reference/config)
+  that will be merged with the config in the target repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
