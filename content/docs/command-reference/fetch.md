@@ -112,7 +112,7 @@ The `dvc remote` used is determined in order, based on
   `.dvc`/`dvc.lock` file.
 
 -- `--type` - fetch data files/directories that are of a particular type.
-  Currently only `metrics` and `plots` are supported.
+Currently only `metrics` and `plots` are supported.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
