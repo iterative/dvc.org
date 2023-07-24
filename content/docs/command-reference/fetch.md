@@ -113,8 +113,8 @@ The `dvc remote` used is determined in order, based on
   even if some files or subdirectories are smaller inside a DVC-tracked
   directory, the whole directory is still skipped.
 
--- `--type <type>` - fetch data files/directories that are of a particular type.
-Currently only `metrics` and `plots` are supported.
+- `--type <type>` - fetch data files/directories that are of a particular type.
+  Currently only `metrics` and `plots` are supported.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
