@@ -9,8 +9,9 @@ Reproduce complete or partial <abbr>pipelines</abbr> by running their
 usage: dvc repro [-h] [-q | -v] [-f] [-i]
                  [-s] [-p] [-P] [-R]
                  [--downstream] [--force-downstream]
-                 [--pull] [--dry] [--allow-missing]
+                 [--pull] [--allow-missing] [--dry]
                  [--glob] [--no-commit] [--no-run-cache]
+                 [-k] [--ignore-errors]
                  [targets [<target> ...]]
 
 positional arguments:
@@ -187,6 +188,14 @@ final stage.
   [run cache] and the outputs of stages that are already present in it.
 
 - `--allow-missing` - skip stages with no other changes than missing data.
+
+- `-k`, `--keep-going` - Continue executing, skipping stages having dependencies
+  on the failed stage. The other dependencies of the targets will still be
+  executed.
+
+- `--ignore-errors` - Ignore all errors when executing the stages. Unlike
+  `--keep-going`, stages having dependencies on the failed stage will be
+  executed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -70,7 +70,7 @@ DVC Experiments can be used directly [from the VS Code IDE] or online with
 
 ### Iterative Studio
 
-https://www.youtube.com/watch?v=It74fReRHAU
+https://www.youtube.com/watch?v=w-UjAbdpRY4
 
 ### VS Code Extension
 

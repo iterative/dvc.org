@@ -109,10 +109,10 @@ export const HeroSlides = () => {
           'max-w-full',
           'text-[10px]',
           'shrink-0',
-          'w-[474px]',
-          'sm:w-[564px]',
+          'w-[480px]',
+          'sm:w-[570px]',
           'sm:text-[12px]',
-          'md:w-[474px]',
+          'md:w-[480px]',
           'md:text-[10px]'
         )}
       >

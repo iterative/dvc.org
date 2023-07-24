@@ -256,8 +256,8 @@ _Luigi_, etc.
 
 > \* **Inodes** are metadata file records to locate and store permissions to the
 > actual file contents. See **Linking files** in
-> [this doc](http://www.tldp.org/LDP/intro-linux/html/sect_03_03.html) for
-> technical details (Linux).
+> [this doc](https://devconnected.com/understanding-hard-and-soft-links-on-linux)
+> for technical details (Linux).
 
 [directed acyclic graph]:
   /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
