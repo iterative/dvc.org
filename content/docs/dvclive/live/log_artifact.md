@@ -37,9 +37,8 @@ with Live() as live:
 ## Description
 
 Uses `dvc add` to [track] `path` with DVC, saving it to the DVC
-<abbr>cache</abbr> and generating a `{path}.dvc` file. When combined with
-[`save_dvc_exp=True`](/doc/dvclive#initialize-dvclive), it will ensure that
-`{path}.dvc` is included in the experiment.
+<abbr>cache</abbr> and generating a `{path}.dvc` file that acts as a pointer to
+the cached data.
 
 If `Live` was initialized with `dvcyaml=True` (which is the default) and you
 include any of the optional metadata fields (`type`, `name`, `desc`, `labels`,
