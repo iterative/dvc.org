@@ -30,8 +30,10 @@ HTTP Method: GET
 | repo    | Git repo URL  | string | true     | iterative/demo-bank-customer-churn |
 | name    | Model name    | string | true     | randomforest-model                 |
 | version | Model version | string | false    | v2.0.0                             |
+| stage   | Model stage   | string | false    | prod                               |
 
-If no version specified, the latest one is returned.
+Only one of stage or version is allowed. If no version or stage is specified,
+the latest version is returned.
 
 When your model is annotated in non-root [`dvc.yaml`] file (typical for monorepo
 case), model name will be constructed from two parts separated by colon:
@@ -52,7 +54,7 @@ actually download the model.
 ### Example curl
 
 ```sh
-$ curl https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0 --header "Authorization:token <TOKEN>"
+$ curl "https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0" --header "Authorization:token <TOKEN>"
 
 {
     ".mlem/model/clf-model": "https://sandbox-datasets-iterative.s3.amazonaws.com/bank-customer-churn/86/bd02376ac675568ba2fac566169ef9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU7UXIWDIQFPCO76Q%2F20230706%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230706T134619Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6807259ddd1f4448ed1e3c5d4503039884f7779381ee556175096b0a884ba1a6"
