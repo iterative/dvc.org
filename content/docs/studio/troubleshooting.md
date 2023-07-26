@@ -98,6 +98,24 @@ incorrect, you will see one of the following errors:
 - Credentials are either broken or not recognized
 - No permission to fetch remote data
 
+### Errors related to DVC remotes behind firewall
+
+For self-hosted S3 storage(like Minio) or SSH server, ensure that it is
+available to access from the internet. If your server is behind the firewall,
+you can limit the traffic on the firewall to the server to allow access from our
+IP addresses only, which are:
+
+```
+3.21.85.173/32
+3.142.203.124/32
+```
+
+Additionally, if you provide the hostname, the DNS records associated with the
+storage server should be publicly available to resolve the server name. Use
+[DNS Propagation Checker](https://www.whatsmydns.net/) to confirm if the server
+domain is resolvable. If you still have any trouble setting up the connection to
+your server, please [contact us](/doc/studio/troubleshooting#support).
+
 ## Error: No data found to visualize
 
 If you have connected to a non-DVC repository, then you need to specify custom
