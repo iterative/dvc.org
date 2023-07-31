@@ -86,4 +86,4 @@ the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 
 [track]: /doc/dvclive/how-it-works#track-large-artifacts-with-dvc
 [Studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry)
+  /doc/studio/user-guide/model-registry/what-is-a-model-registry
