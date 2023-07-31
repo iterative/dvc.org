@@ -84,12 +84,10 @@ checkpointing at all as described in the
 
 ### Log model checkpoints
 
-Use `log_model` to save the checkpoints. DVCLive will first delete checkpoints
-from previous <abbr>experiments</abbr> (since DVC tracks checkpoints per
-experiment) and then <abbr>cache</abbr> the entire checkpoints directory using
-`Live.log_artifact()`. At the end of training, DVCLive will annotate the
-[`best_model_path`][`ModelCheckpoint`] with `type=model` and `name=best` for use
-in [Studio model registry].
+Use `log_model` to save the checkpoints (it will use `Live.log_artifact()`
+internally to save those). At the end of training, DVCLive will annotate the
+[`best_model_path`][`ModelCheckpoint`] with name `best` (for example, to be
+consumed in [Studio model registry] or automation scenarios).
 
 - Save updates to the checkpoints directory at the end of training:
 
