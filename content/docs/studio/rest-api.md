@@ -16,7 +16,8 @@ Get signed URL to download the model binaries for a model from [Model Registry].
 Requires the model to be stored with DVC with S3 or Azure [remote]. Note, that
 you need to
 [set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
-for Studio to have rights to the signed URLs.
+for Studio to have rights to the signed URLs. The signed URLs expire after one
+hour.
 
 ```yaml
 Endpoint: api/model-registry/get-download-uris
