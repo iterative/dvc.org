@@ -19,7 +19,7 @@ const GetStartedWithDvcX = () => {
         />
       </div>
       <DvcxSlides />
-      <div className={cn('flex md:justify-center')}>
+      <div className={cn('flex justify-center')}>
         <CTAButton className={cn('bg-purple text-light')}>
           Get on the waitlist
           <ArrowRight className="ml-4" />

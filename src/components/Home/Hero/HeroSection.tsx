@@ -6,6 +6,9 @@ import { ReactComponent as ArrowDown } from '../../../../static/img/arrow-down-w
 import { ReactComponent as StarGithub } from '../../../../static/img/landing/star-github.svg'
 
 import * as styles from './styles.module.css'
+import shortenNumber from '../../../utils/format'
+import useStars from '../../../gatsby/hooks/stars'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 interface ISectionProps {
   className?: string
@@ -32,8 +35,7 @@ const Section = ({ className, children }: ISectionProps) => (
 const Badge = ({ className, children }: ISectionProps) => (
   <div
     className={cn(
-      'mt-4',
-      'px-3 py-0 rounded-lg',
+      'px-1.5 md:px-3 py-0 rounded-lg',
       'w-fit',
       'mx-auto',
       'flex items-center justify-center gap-2',
@@ -48,8 +50,11 @@ const Badge = ({ className, children }: ISectionProps) => (
 export const CTAButton = ({ className, children }: ISectionProps) => (
   <button
     className={cn(
-      'py-4 px-5  rounded-lg',
-      'text-xl font-medium ',
+      'rounded-lg',
+      'py-1 px-2',
+      'md:py-4 md:px-5',
+      'text-base font-medium ',
+      'md:text-xl',
       'flex items-center',
       className
     )}
@@ -59,25 +64,36 @@ export const CTAButton = ({ className, children }: ISectionProps) => (
 )
 
 const HeroSection = () => {
+  const stars = useStars()
+
   return (
     <>
       {/* Title Section */}
       <SectionWrapper>
         <Section className="bg-dark text-light">
           <img src={'/img/logos/dvcx.svg'} alt="DVCx Logo" />
-          <div>
+          <div
+            className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
+          >
             <h2 className="text-3xl font-medium">Dataset versioning</h2>
             <Badge className="bg-light text-dark">Coming soon</Badge>
           </div>
         </Section>
         <Section className="bg-light">
           <img src={'/img/logos/dvc.svg'} alt="DVC Logo" />
-          <div>
+          <div
+            className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
+          >
             <h2 className="text-3xl font-medium">ML model versioning</h2>
-            <Badge className="bg-dark text-light">
-              11.4K
-              <StarGithub />
-            </Badge>
+            <Link
+              href="https://github.com/iterative/dvc"
+              className="no-underline"
+            >
+              <Badge className="bg-dark text-light">
+                {stars && shortenNumber(stars, 1)}
+                <StarGithub />
+              </Badge>
+            </Link>
           </div>
         </Section>
       </SectionWrapper>

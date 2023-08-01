@@ -16,6 +16,18 @@
 .sectionViz {
   position: relative;
   height: 600px;
+
+  @media screen(xxsMax) {
+    height: 800px;
+  }
+
+  @media screen(lg) {
+    height: 400px;
+  }
+
+  @media screen(xl) {
+    height: 350px;
+  }
 }
 
 .gridContainer {
@@ -34,7 +46,7 @@
 }
 
 .heroDesc {
-  @apply pl-4 py-4 pr-6 text-2xl font-normal text-left;
+  @apply pl-4 py-4 pr-6 text-xl sm:text-2xl font-normal text-left;
 
   line-height: 3rem;
 }
@@ -52,10 +64,6 @@
 }
 
 @media screen(lg) {
-  .sectionViz {
-    height: 300px;
-  }
-
   .gridContainer {
     grid-template-columns: 1fr 2fr 1fr; /* Three columns */
     grid-template-rows: auto;
