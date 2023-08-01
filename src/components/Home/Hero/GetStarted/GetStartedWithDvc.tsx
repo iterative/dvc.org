@@ -1,16 +1,19 @@
 import React from 'react'
-import cn from 'classnames'
+import HeroContainer from '../../../HeroContainer'
+import { StaticImage } from 'gatsby-plugin-image'
+import { cn } from '../../../../utils'
 
-import TwoRowsButtonLink from '../../TwoRowsButton/link'
-import GithubLine from './GithubLine'
-import DownloadButton from '../../DownloadButton'
+import TwoRowsButtonLink from '../../../TwoRowsButton/link'
+
+import DownloadButton from '../../../DownloadButton'
+
+import DvcSlides from '../../LandingHero/DvcSlides'
 
 import * as styles from './styles.module.css'
+
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-
-import DvcSlides from './DvcSlides'
 
 const logUseCasesEvent = () => {
   logEvent('Button', { Item: 'how-it-works' })
@@ -70,34 +73,21 @@ const HeroButtons = () => (
   </div>
 )
 
-const LandingHero = () => {
+const GetStartedWithDvc = () => {
   return (
-    <div className={cn('text-gray-hover')}>
-      <h1
-        className={cn(
-          'text-3xl',
-          'sm:text-4xl',
-          'md:text-5xl',
-          'font-semibold',
-          'my-4',
-          'text-purple'
-        )}
-      >
-        <span className={cn('whitespace-nowrap')}>(Not Just)</span>{' '}
-        <span className={cn('whitespace-nowrap')}>Data Version Control</span>
-      </h1>
-      <p className={cn('text-xl', 'my-4')}>
-        Open-source, Git-based data science. Apply version control to machine
-        learning development, make your repo the backbone of your project, and
-        instill best practices across your team.
-      </p>
+    <HeroContainer className="py-10 px-6">
+      <div className="flex items-center gap-4 md:justify-center">
+        <h1 className={cn('text-2xl font-medium')}>Get Started with</h1>
+        <StaticImage
+          height={48}
+          src="../../../../../static/img/dvc_icon-color--square_vector.svg"
+          alt="DVC Logo"
+        />
+      </div>
       <DvcSlides />
       <HeroButtons />
-      <div className={styles.github}>
-        <GithubLine />
-      </div>
-    </div>
+    </HeroContainer>
   )
 }
 
-export default LandingHero
+export default GetStartedWithDvc

@@ -1,0 +1,26 @@
+- title: Filter a billion samples in seconds
+  description:
+    Datasets are getting larger, but the ability to iterate rapidly and
+    efficiently is as important as ever.
+  terminal: |
+    $ dvcx --version
+
+    $ dvcx --help
+
+- title: Share datasets without duplication
+  description:
+    Keeping a single source of truth for data can save you money and simplify
+    your team's ability to collaborate.
+  terminal: |
+    $ dvcx pull
+
+    $ dvcx push
+
+- title: Enrich your dataset with embeddings
+  description:
+    Add whatever embeddings, auto-labels, or annotations are required by the
+    model you want to train.
+  terminal: |
+    $ dvcx add-embeddings
+
+    $ dvcx add-labels

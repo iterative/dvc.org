@@ -1,9 +1,8 @@
 import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
 import { MemoizedTypedTerminal } from '../Typed'
-import { graphql, useStaticQuery } from 'gatsby'
 
-interface ILandingPageSlide {
+export interface ISlide {
   title: string
   description: string
   terminal: string
@@ -31,25 +30,7 @@ const TerminalButtons = () => (
   </div>
 )
 
-export const HeroSlides = () => {
-  const {
-    landingPage: { slides }
-  } = useStaticQuery(graphql`
-    query {
-      landingPage {
-        slides {
-          title
-          description
-          terminal
-        }
-      }
-    }
-  `) as {
-    landingPage: {
-      slides: ILandingPageSlide[]
-    }
-  }
-
+const Slides = ({ slides }: { slides: ISlide[] }) => {
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
     Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
   >(
@@ -170,3 +151,5 @@ export const HeroSlides = () => {
     </div>
   )
 }
+
+export default Slides
