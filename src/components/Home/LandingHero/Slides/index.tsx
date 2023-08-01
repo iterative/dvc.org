@@ -125,7 +125,7 @@ const Slides = ({ slides }: { slides: ISlide[] }) => {
                   'border-l-2',
                   'ease-in-out',
                   'duration-300',
-                  'hover:bg-gray-200',
+                  'hover:bg-light',
                   active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
