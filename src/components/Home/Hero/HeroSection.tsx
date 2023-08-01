@@ -9,6 +9,7 @@ import * as styles from './styles.module.css'
 import shortenNumber from '../../../utils/format'
 import useStars from '../../../gatsby/hooks/stars'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { navigate } from 'gatsby'
 
 interface ISectionProps {
   className?: string
@@ -47,7 +48,13 @@ const Badge = ({ className, children }: ISectionProps) => (
   </div>
 )
 
-export const CTAButton = ({ className, children }: ISectionProps) => (
+export const CTAButton = ({
+  className,
+  children,
+  onClick
+}: ISectionProps & {
+  onClick?: () => void
+}) => (
   <button
     className={cn(
       'rounded-lg',
@@ -58,6 +65,7 @@ export const CTAButton = ({ className, children }: ISectionProps) => (
       'flex items-center',
       className
     )}
+    onClick={onClick}
   >
     {children}
   </button>
@@ -131,7 +139,12 @@ const HeroSection = () => {
           </CTAButton>
         </Section>
         <Section className="bg-light text-dark pt-1">
-          <CTAButton className="bg-dark text-light">
+          <CTAButton
+            className="bg-dark text-light"
+            onClick={() => {
+              navigate('#get-started-dvc')
+            }}
+          >
             Download it now
             <ArrowDown className="ml-4" />
           </CTAButton>
