@@ -10,9 +10,10 @@ import { CTAButton } from '../HeroSection'
 const GetStartedWithDvcX = () => {
   return (
     <HeroContainer className="py-10 px-6">
-      <div className="flex items-center md:justify-center">
+      <div className="flex items-end md:justify-center">
         <h1 className={cn('text-2xl font-medium')}>Get Started with</h1>
         <StaticImage
+          className="-ml-1"
           height={40}
           src="../../../../../static/img/logos/dvcx.svg"
           alt="DVCx Logo"

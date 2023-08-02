@@ -10,6 +10,7 @@ import shortenNumber from '../../../utils/format'
 import useStars from '../../../gatsby/hooks/stars'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { navigate } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
 
 interface ISectionProps {
   className?: string
@@ -79,7 +80,11 @@ const HeroSection = () => {
       {/* Title Section */}
       <SectionWrapper>
         <Section className="bg-dark text-light">
-          <img src={'/img/logos/dvcx.svg'} alt="DVCx Logo" />
+          <StaticImage
+            src="../../../../static/img/logos/dvcx.svg"
+            alt="DVCx Logo"
+            className="w-52"
+          />
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
@@ -88,7 +93,7 @@ const HeroSection = () => {
           </div>
         </Section>
         <Section className="bg-light">
-          <img src={'/img/logos/dvc.svg'} alt="DVC Logo" />
+          <img src={'/img/logos/dvc.svg'} alt="DVC Logo" className="w-52" />
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
