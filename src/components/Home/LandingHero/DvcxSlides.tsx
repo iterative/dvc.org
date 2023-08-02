@@ -21,7 +21,7 @@ const DvcxSlides = () => {
     }
   }
 
-  return <Slides slides={slides} terminalSide="left" />
+  return <Slides slides={slides} terminalSide="left" theme="dark" />
 }
 
 export default DvcxSlides

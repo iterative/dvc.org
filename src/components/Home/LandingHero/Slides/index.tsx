@@ -32,13 +32,17 @@ const TerminalButtons = () => (
 
 const Slides = ({
   slides,
-  terminalSide = 'right'
+  terminalSide = 'right',
+  theme = 'light'
 }: {
   slides: ISlide[]
   terminalSide?: 'right' | 'left'
+  theme?: 'light' | 'dark'
 }) => {
   const leftTerminal = terminalSide === 'left'
   const rightTerminal = terminalSide === 'right'
+  const lightTheme = theme === 'light'
+  const darkTheme = theme === 'dark'
 
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
     Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
@@ -102,7 +106,7 @@ const Slides = ({
         className={cn(
           'my-4',
           'rounded-lg',
-          'bg-gray-dark',
+          { 'bg-gray-dark': darkTheme, 'bg-light': lightTheme },
           'text-blue',
           'drop-shadow',
           'mx-auto',
@@ -113,7 +117,11 @@ const Slides = ({
           'sm:w-[570px]',
           'sm:text-[12px]',
           'md:w-[480px]',
-          'md:text-[10px]'
+          'md:text-[10px]',
+          {
+            'md:mr-3': leftTerminal,
+            'md:ml-3': rightTerminal
+          }
         )}
       >
         <TerminalButtons />
@@ -141,13 +149,14 @@ const Slides = ({
                   'my-1',
                   'flex flex-col flex-nowrap justify-center',
                   'md:pl-4 md:py-2',
+                  'border-l-2 text-left',
                   {
-                    'border-r-2 text-right items-end': leftTerminal,
-                    'border-l-2 text-left': rightTerminal
+                    'md:border-l-0 md:border-r-2 md:text-right md:items-end':
+                      leftTerminal
                   },
                   'ease-in-out',
                   'duration-300',
-                  'hover:bg-light',
+                  'hover:bg-light hover:bg-opacity-50',
                   active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
