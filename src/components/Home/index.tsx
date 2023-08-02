@@ -13,7 +13,7 @@ const Home: React.FC = () => {
     <>
       <WhatsNewModal />
       <Hero />
-      <HeroContainer className={styles.heroContainer}>
+      <HeroContainer className={(styles.heroContainer, 'bg-light')}>
         <CompanySlider />
       </HeroContainer>
       <SubscribeSection />
