@@ -21,7 +21,7 @@ const DvcxSlides = () => {
     }
   }
 
-  return <Slides slides={slides} />
+  return <Slides slides={slides} terminalSide="left" />
 }
 
 export default DvcxSlides

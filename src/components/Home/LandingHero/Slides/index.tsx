@@ -30,7 +30,16 @@ const TerminalButtons = () => (
   </div>
 )
 
-const Slides = ({ slides }: { slides: ISlide[] }) => {
+const Slides = ({
+  slides,
+  terminalSide = 'right'
+}: {
+  slides: ISlide[]
+  terminalSide?: 'right' | 'left'
+}) => {
+  const leftTerminal = terminalSide === 'left'
+  const rightTerminal = terminalSide === 'right'
+
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
     Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
   >(
@@ -78,7 +87,17 @@ const Slides = ({ slides }: { slides: ISlide[] }) => {
   }, [terminal, currentIndex, onComplete])
 
   return (
-    <div className={cn('flex', 'flex-col', 'md:flex-row-reverse', 'my-6')}>
+    <div
+      className={cn(
+        'flex',
+        'flex-col',
+        {
+          'md:flex-row': leftTerminal,
+          'md:flex-row-reverse': rightTerminal
+        },
+        'my-6'
+      )}
+    >
       <div
         className={cn(
           'my-4',
@@ -108,21 +127,24 @@ const Slides = ({ slides }: { slides: ISlide[] }) => {
         {slides.map(({ title, description }, i) => {
           const active = currentIndex === i
           return (
-            <li className={cn('md:mr-3')} key={i}>
+            <li
+              className={cn({
+                'md:mr-3': leftTerminal,
+                'md:ml-3': rightTerminal
+              })}
+              key={i}
+            >
               <button
                 className={cn(
                   'w-full',
-                  'text-left',
-                  'px-3',
-                  'py-1',
+                  'px-3 py-1',
                   'my-1',
-                  'flex',
-                  'flex-col',
-                  'flex-nowrap',
-                  'justify-center',
-                  'md:pl-4',
-                  'md:py-2',
-                  'border-l-2',
+                  'flex flex-col flex-nowrap justify-center',
+                  'md:pl-4 md:py-2',
+                  {
+                    'border-r-2 text-right items-end': leftTerminal,
+                    'border-l-2 text-left': rightTerminal
+                  },
                   'ease-in-out',
                   'duration-300',
                   'hover:bg-light',
