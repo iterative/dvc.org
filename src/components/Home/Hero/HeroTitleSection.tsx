@@ -8,9 +8,9 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
     <div className={className}>
       <div
         className={cn(
-          'text-center ',
+          'text-center',
           'px-6 py-10 md:py-24',
-          'flex flex-col gap-6 md:flex-row md:gap-0',
+          'flex flex-col gap-6 md:flex-row md:gap-0 items-center',
           'max-w-screen-lg'
         )}
       >
@@ -20,16 +20,16 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
             'flex-1',
             'md:border-r md:border-solid md:border-r-light',
             'md:text-left',
-            'lg:mr-16'
+            'lg:pr-16'
           )}
         >
-          <h1 className={cn('leading-10 font-extralight', styles.title)}>
+          <h1 className={cn('font-extralight', styles.title)}>
             <span className="font-medium block sm:inline md:block">
               Data Version Control
             </span>{' '}
             for the <span className="font-medium">GenAI</span> era
           </h1>
-          <p className="text-2xl mt-2 leading-normal">
+          <p className="text-2xl mt-4 leading-normal">
             Free and open source, forever.
           </p>
         </div>
