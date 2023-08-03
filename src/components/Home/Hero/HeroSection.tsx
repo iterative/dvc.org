@@ -3,7 +3,6 @@ import cn from 'classnames'
 
 import { ReactComponent as ArrowRight } from '../../../../static/img/arrow-right-black.svg'
 import { ReactComponent as ArrowDown } from '../../../../static/img/arrow-down-white.svg'
-import { ReactComponent as StarGithub } from '../../../../static/img/landing/star-github.svg'
 
 import * as styles from './styles.module.css'
 import shortenNumber from '../../../utils/format'
@@ -93,7 +92,11 @@ const HeroSection = () => {
           </div>
         </Section>
         <Section className="bg-light">
-          <img src={'/img/logos/dvc.svg'} alt="DVC Logo" className="w-52" />
+          <StaticImage
+            src="../../../../static/img/logos/dvc.svg"
+            alt="DVC Logo"
+            className="w-52"
+          />
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
@@ -104,7 +107,10 @@ const HeroSection = () => {
             >
               <Badge className="bg-dark text-light">
                 {stars && shortenNumber(stars, 1)}
-                <StarGithub />
+                <StaticImage
+                  src="../../../../static/img/landing/star-github.svg"
+                  alt="Star Github"
+                />
               </Badge>
             </Link>
           </div>
