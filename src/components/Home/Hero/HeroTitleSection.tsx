@@ -18,7 +18,7 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
           className={cn(
             'text-indigo',
             'flex-1',
-            'md:border-r md:border-solid md:border-r-light',
+            'md:border-r-2 md:border-solid md:border-r-light',
             'md:text-left',
             'lg:pr-16'
           )}
@@ -33,14 +33,7 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
             Free and open source, forever.
           </p>
         </div>
-        <div
-          className={cn(
-            'md:border-l md:border-solid md:border-l-light',
-            'flex-1',
-            'md:text-justify',
-            'lg:pl-16'
-          )}
-        >
+        <div className={cn('flex-1', 'md:text-justify', 'lg:pl-16')}>
           <p className="text-xl font-extralight md:pl-8 lg:pl-0 leading-10">
             Manage and version unstructured image, audio, video, and text files
             in storage and organize your ML modeling process into a reproducible

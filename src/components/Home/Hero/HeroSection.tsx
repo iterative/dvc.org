@@ -16,8 +16,28 @@ interface ISectionProps {
   children?: React.ReactNode
 }
 
-const SectionWrapper = ({ className, children }: ISectionProps) => (
-  <div className={cn('w-full flex', className)}>{children}</div>
+const SectionWrapper = ({
+  className,
+  children,
+  maxWidth = 'lg'
+}: ISectionProps & {
+  maxWidth?: 'lg' | 'xl' | '2xl'
+}) => (
+  <div className={cn('w-full flex relative', className)}>
+    <div className="absolute w-full h-full flex flex-row">
+      <div className="w-1/2 h-full bg-dark" />
+      <div className="w-1/2 h-full bg-light" />
+    </div>
+    <div
+      className={cn('w-full z-10 flex m-auto', {
+        'max-w-screen-lg': maxWidth === 'lg',
+        'max-w-screen-xl': maxWidth === 'xl',
+        'max-w-screen-2xl': maxWidth === '2xl'
+      })}
+    >
+      {children}
+    </div>
+  </div>
 )
 
 const Section = ({ className, children }: ISectionProps) => (
@@ -78,11 +98,11 @@ const HeroSection = () => {
     <>
       {/* Title Section */}
       <SectionWrapper>
-        <Section className="bg-dark text-light">
+        <Section className=" text-light">
           <StaticImage
             src="../../../../static/img/logos/dvcx.svg"
             alt="DVCx Logo"
-            className="w-52"
+            className="max-w-[210px]"
           />
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
@@ -91,11 +111,11 @@ const HeroSection = () => {
             <Badge className="bg-light text-dark">Coming soon</Badge>
           </div>
         </Section>
-        <Section className="bg-light">
+        <Section className="">
           <StaticImage
             src="../../../../static/img/logos/dvc.svg"
             alt="DVC Logo"
-            className="w-52"
+            className="max-w-[210px]"
           />
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
@@ -117,14 +137,14 @@ const HeroSection = () => {
         </Section>
       </SectionWrapper>
       {/* Visualization Section */}
-      <SectionWrapper className={styles.sectionViz}>
-        <div className={cn(styles.centered, styles.gridContainer)}>
+      <SectionWrapper maxWidth="2xl">
+        <div className={cn(styles.gridContainer)}>
           <img
             src={'/img/landing/Hero Visualization.svg'}
             className={styles.heroViz}
             alt="Visualization"
           />
-          <div className={cn(styles.heroDesc, styles.dvcxDesc)}>
+          <div className={cn(styles.heroDesc, styles.dvcxDesc, 'text-white')}>
             <strong>Explore</strong> and <strong>enrich</strong> annotated
             datasets with custom embeddings, auto-labeling, and bias removal at
             billion-file scale — without modifying your data.
@@ -136,20 +156,18 @@ const HeroSection = () => {
             <strong>register</strong> models — all based on GitOps principles.
           </div>
         </div>
-        <Section className="bg-dark text-light" />
-        <Section className="bg-light text-dark" />
       </SectionWrapper>
 
       {/* CTA Section */}
 
       <SectionWrapper>
-        <Section className="bg-dark text-light pt-1">
+        <Section className="text-light">
           <CTAButton className="bg-light text-dark">
             Get on the waitlist
             <ArrowRight className="ml-4" />
           </CTAButton>
         </Section>
-        <Section className="bg-light text-dark pt-1">
+        <Section className="text-dark">
           <CTAButton
             className="bg-dark text-light"
             onClick={() => {
