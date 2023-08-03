@@ -98,7 +98,7 @@ const HeroSection = () => {
     <>
       {/* Title Section */}
       <SectionWrapper>
-        <Section className=" text-light">
+        <Section className="text-light">
           <StaticImage
             src="../../../../static/img/logos/dvcx.svg"
             alt="DVCx Logo"
@@ -111,7 +111,7 @@ const HeroSection = () => {
             <Badge className="bg-light text-dark">Coming soon</Badge>
           </div>
         </Section>
-        <Section className="">
+        <Section>
           <StaticImage
             src="../../../../static/img/logos/dvc.svg"
             alt="DVC Logo"

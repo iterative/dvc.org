@@ -3,29 +3,6 @@
   line-height: 1.5;
 }
 
-.centered {
-  @apply max-w-screen-2xl m-auto;
-
-  text-align: center;
-}
-
-.sectionViz {
-  position: relative;
-  height: 600px;
-
-  @media screen(xxsMax) {
-    height: 800px;
-  }
-
-  @media screen(lg) {
-    height: 400px;
-  }
-
-  @media screen(xl) {
-    height: 350px;
-  }
-}
-
 .gridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns */
