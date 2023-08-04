@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import cn from 'classnames'
 
 import { ReactComponent as ArrowRight } from '../../../../static/img/arrow-right-black.svg'
@@ -71,10 +71,8 @@ const Badge = ({ className, children }: ISectionProps) => (
 export const CTAButton = ({
   className,
   children,
-  onClick
-}: ISectionProps & {
-  onClick?: () => void
-}) => (
+  ...props
+}: ISectionProps & ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
     className={cn(
       'rounded-lg',
@@ -85,7 +83,7 @@ export const CTAButton = ({
       'flex items-center',
       className
     )}
-    onClick={onClick}
+    {...props}
   >
     {children}
   </button>
@@ -162,7 +160,12 @@ const HeroSection = () => {
 
       <SectionWrapper>
         <Section className="text-light">
-          <CTAButton className="bg-light text-dark">
+          <CTAButton
+            className="bg-light text-dark"
+            onClick={() => {
+              navigate('#get-started-dvcx', { state: { focusInput: true } })
+            }}
+          >
             Get on the waitlist
             <ArrowRight className="ml-4" />
           </CTAButton>
