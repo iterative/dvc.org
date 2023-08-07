@@ -11,12 +11,15 @@ DVCLive allows you to add experiment tracking capabilities to your
   </a>
 </p>
 
-If you have `dvclive` installed,
-[Ultralytics YOLO v8](https://docs.ultralytics.com/) will use DVCLive for
-tracking experiments, logging `metrics`, `parameters`, `plots` and the best
-`model` automatically.
+If you have `dvclive` installed, the
+[DVCLive callback](https://docs.ultralytics.com/reference/utils/callbacks/dvc/)
+will be used for tracking experiments and logging `metrics`, `parameters`,
+`plots` and the best `model` automatically.
 
 ```shell
 $ pip install dvclive ultralytics
 $ yolo train model=yolov8n.pt data=coco8.yaml epochs=5 imgsz=640
 ```
+
+![YOLO Studio Table](/img/yolo-studio-table.png)
+![YOLO Studio Plots](/img/yolo-studio-plots.gif)
