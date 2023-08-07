@@ -16,7 +16,7 @@ If you have `dvclive` installed, the
 will be used for tracking experiments and logging `metrics`, `parameters`,
 `plots` and the best `model` automatically.
 
-```shell
+```cli
 $ pip install dvclive ultralytics
 $ yolo train model=yolov8n.pt data=coco8.yaml epochs=5 imgsz=640
 ```
