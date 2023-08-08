@@ -25,4 +25,5 @@ jobs:
           cml pr create \
             --token="${{ secrets.GITHUB_TOKEN }}" \
             --message="dvc ${{ steps.update.outputs.version }}" \
-            --title="dvc ${{ steps.update.outputs.version }}" .
+            --title="dvc ${{ steps.update.outputs.version }}" . \
+            --body="Ping @iterative/dvc"

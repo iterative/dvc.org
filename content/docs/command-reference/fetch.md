@@ -9,6 +9,7 @@ Download files or directories from [remote storage] to the <abbr>cache</abbr>.
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                  [--all-commits] [-d] [-R] [--run-cache]
+                 [--max-size <bytes>] [--type {metrics,plots}]
                  [targets [targets ...]]
 
 positional arguments:
@@ -105,6 +106,15 @@ The `dvc remote` used is determined in order, based on
 - `-A`, `--all-commits` - fetch cache for all Git commits, as well as for the
   workspace. This downloads tracked data for the entire commit history of the
   project.
+
+- `--max-size <bytes>` - fetch data files/directories that are each below
+  specified size (bytes). **Note** that the size is determined by a
+  corresponding `size` field in the `.dvc`/`dvc.lock` file. Which means that
+  even if some files or subdirectories are smaller inside a DVC-tracked
+  directory, the whole directory is still skipped.
+
+- `--type <type>` - fetch data files/directories that are of a particular type.
+  Currently only `metrics` and `plots` are supported.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

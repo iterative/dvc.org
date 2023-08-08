@@ -23,7 +23,6 @@ with Live(cache_images=True) as live:
     live.log_image("pil.png", img_pil)
 
     # 3. Or log an existing image:
-    from PIL import Image
     live.log_image("sample.png", "run/batch_0_sample.png")
 ```
 
