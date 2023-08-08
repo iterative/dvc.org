@@ -108,8 +108,8 @@ with Git, in which case you can use
 
 Experimenting in Python interactively (like in notebooks) is great for
 exploration, but eventually you may need a more structured way to run
-reproducible experiments (for example, running a parallelized hyperparameter
-search). By configuring DVC [pipelines], you can
+reproducible experiments (for example, running a multi-step pipeline or queueing
+multiple experiments). By configuring DVC [pipelines], you can
 [run experiments](/doc/user-guide/experiment-management/running-experiments)
 with `dvc exp run`. This will track the inputs and outputs of your code, and
 also enable features like queuing, parameter tuning, and grid searches.
