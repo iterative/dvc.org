@@ -836,6 +836,10 @@
             "label": "PyTorch Lightning"
           },
           {
+            "slug": "scikit-learn",
+            "label": "Scikit-learn"
+          },
+          {
             "slug": "tensorflow",
             "label": "TensorFlow"
           },
