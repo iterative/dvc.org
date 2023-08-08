@@ -27,7 +27,7 @@ See [`Live()`](/doc/dvclive/live) for details.
 <admon type="info">
 
 Including `save_dvc_exp=True` will automatically
-[track the results](/doc/dvclive/how-it-works#track-the-results).
+[track the results](/doc/dvclive/how-it-works#git-integration).
 
 </admon>
 

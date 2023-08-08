@@ -41,8 +41,9 @@ Supported values for `val` are:
 The images will be saved in `{Live.plots_dir}/images/{name}`. When using
 [`Live(cache_images=True)`](/doc/dvclive/live#parameters), the images directory
 will also be <abbr>cached</abbr> as part of `Live.end()`. In that case, a `.dvc`
-file will be saved to [track](/doc/dvclive/how-it-works#track-the-results) it,
-and the directory will be added to a `.gitignore` file to prevent Git tracking:
+file will be saved to
+[track](/doc/dvclive/how-it-works#track-large-artifacts-with-dvc) it, and the
+directory will be added to a `.gitignore` file to prevent Git tracking:
 
 ```
 dvclive
