@@ -18,7 +18,7 @@ const GetStartedWithDvcX = () => {
         />
       </div>
       <DvcxSlides />
-      <div className={cn('flex justify-center w-full')}>
+      <div className={cn('flex flex-col items-center justify-center w-full')}>
         <GetOnTheWaitlistForm />
       </div>
     </HeroContainer>
