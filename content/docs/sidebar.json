@@ -846,6 +846,10 @@
           {
             "slug": "xgboost",
             "label": "XGBoost"
+          },
+          {
+            "slug": "yolo",
+            "label": "Ultralytics YOLO v8"
           }
         ]
       },
