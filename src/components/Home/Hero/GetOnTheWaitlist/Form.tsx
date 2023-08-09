@@ -12,7 +12,7 @@ const GetOnTheWaitlistForm = () => {
   const [showSuccessMsg, setShowSuccessMsg] = useState(false)
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
-  const [tags] = useState('14160889')
+  const [tags] = useState('14160905')
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -24,38 +24,22 @@ const GetOnTheWaitlistForm = () => {
         className={cn('flex flex-col md:flex-row', 'w-full max-w-xl')}
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
+        method="post"
+        target="_blank"
+        action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=763c86981c&amp;f_id=009ed9e5f0"
         onSubmit={async e => {
-          e.preventDefault()
-          setLoading(true)
           if (hiddenInputRef.current?.value) {
             // It's a bot.
+            e.preventDefault()
             return
           }
-
-          try {
-            const res = await fetch('/api/subscribe/dvcx/waitlist', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                email,
-                tags
-              })
-            })
-            if (!res.ok) {
-              throw new Error('Failed to subscribe')
-            }
-            setShowSuccessMsg(true)
+          setLoading(true)
+          setShowSuccessMsg(true)
+          setTimeout(() => {
             setEmail('')
-            setTimeout(() => {
-              setShowSuccessMsg(false)
-            }, 5000)
-          } catch (error) {
-            console.error(error)
-          } finally {
+            setShowSuccessMsg(false)
             setLoading(false)
-          }
+          }, 5000)
         }}
       >
         <input
@@ -67,8 +51,9 @@ const GetOnTheWaitlistForm = () => {
             'bg-light text-dark',
             'text-xl font-medium'
           )}
+          id="mce-EMAIL"
           type="email"
-          name="email"
+          name="EMAIL"
           value={email}
           onChange={onChangeEmail}
           placeholder="email address"
@@ -105,6 +90,8 @@ const GetOnTheWaitlistForm = () => {
           )}
           type="submit"
           disabled={loading}
+          name="subscribe"
+          id="mc-embedded-subscribe"
         >
           {loading && <Spinner className="mr-3" />} Get on the waitlist
         </CTAButton>
