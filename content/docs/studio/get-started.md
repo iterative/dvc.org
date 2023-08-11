@@ -57,7 +57,7 @@ details]).
 5. Click on the project name to open the project table and [explore all your ML
    experiments][explore ML experiments].
 
-   ![](https://static.iterative.ai/img/studio/view_components.png)
+   ![Project table with live plots](https://static.iterative.ai/img/studio/project-table-with-live-plots.gif)
 
 6. You can [train on the cloud, including on your own cloud infrastructure, and
    submit new experiments] by changing hyperparameters and datasets.
