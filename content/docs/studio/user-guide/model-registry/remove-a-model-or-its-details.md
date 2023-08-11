@@ -19,12 +19,14 @@ These actions are also available in the model details page:
 </p>
 
 - `Deregister version` button is present next to the version dropdown.
+
 <p align="center">
 <img src="https://static.iterative.ai/img/studio/model-registry-deregister.png" alt="Deprecate model" width="400px"/>
 </p>
 
 - Click on the the relevant stage assignment pill in the `Stages` section to
-reveal the `Unassign stage` menu item.
+  reveal the `Unassign stage` menu item.
+
 <p align="center">
 <img src="https://static.iterative.ai/img/studio/model-registry-unassign.png" alt="Deprecate model" width="400px"/>
 </p>
