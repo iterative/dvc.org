@@ -11,7 +11,7 @@ def log_image(name: str, val):
 ```py
 from dvclive import Live
 
-with Live(cache_images=True) as live:
+with Live(cache_images=True, save_dvc_exp=True) as live:
     # 1. Log an image from a numpy array:
     import numpy as np
     img_numpy = np.ones((500, 500), np.uint8) * 255
@@ -65,6 +65,30 @@ $ dvc plots diff dvclive/plots
 ```
 
 </admon>
+
+### Images per step
+
+By default the images will be overwritten on each step. However, you can log
+images using the following pattern
+`live.log_image(f"folder/{live.step}.png", img)`:
+
+```py
+import numpy as np
+from dvclive import Live
+
+with Live(save_dvc_exp=True) as live:
+    base_img = np.ones((500, 500), np.uint8)
+    for i in range(10):
+      live.log_image(
+        f"numpy/{live.step}.png", base_img * i * 10)
+      live.next_step()
+```
+
+In the
+[DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
+folders following this pattern will be rendered using an image slider:
+
+![DVCLive VSCode Image Slider](/img/dvclive-vscode-image-slider.gif)
 
 ## Parameters
 
