@@ -123,7 +123,7 @@ Once you have created the team, the team's workspace opens up.
 
 ![](https://static.iterative.ai/img/studio/team_page_v6.png)
 
-In this workspace, there are 2 pages - [Projects](#projects), [Models](#models)
+In this workspace, there are 3 pages - [Projects](#projects), [Models](#models)
 and [Settings](#settings).
 
 ## Projects
