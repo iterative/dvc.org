@@ -36,5 +36,5 @@ To remove all of a project's models from Iterative Studio without deprecating th
 </admon>
 
 <admon type="info">
-You can also remove a model version or stage assignment by removing the corresponding Git tag directly from your Git repository. But this destroys the trace of the version registration or stage assignment action.
+You can also remove a model version or stage assignment by removing the corresponding Git tag directly from your Git repository. But this destroys the audit trail of the original version registration or stage assignment action.
 </admon>
