@@ -45,7 +45,8 @@ details]).
 
 3. Iterative Studio identifies [experiments](/doc/start#experiment-management),
    which are Git commits or Git refs, and parses your project's `dvc.yaml` file
-   to identify data, metrics, plots and hyperparameters.
+   as well as the experiments to identify hyperparameters, metrics, plots,
+   models and other details.
 
 4. Each project on the Projects dashboard displays the metrics of the first
    three columns in your project (such as `avg_prec` and `roc_auc` in the
