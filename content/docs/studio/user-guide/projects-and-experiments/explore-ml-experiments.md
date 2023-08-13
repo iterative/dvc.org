@@ -1,34 +1,24 @@
 # Explore ML Experiments
 
-The projects dashboard in Iterative Studio contains all your projects. Open a
-project by clicking on its name. An experiments table for the project will be
-generated as shown below. This includes metrics, hyperparameters, and
-information about datasets and models.
+The projects dashboard in Iterative Studio contains all your projects. Click on
+a project name to open the project table, which contains:
 
-![](https://static.iterative.ai/img/studio/view_components.png)
-
-The major components of a project table are:
-
-- [Git history and live experiments](#git-history-and-live-metrics) that show
-  you the complete experimentation history as well as live metrics of running
-  experiments.
-- [Display preferences](#display-preferences) that let you show/hide branches,
-  commits and columns, and re-arrange the table.
+- [Git history and live experiments](#git-history-and-live-metrics) of the
+  project
+- [Display preferences](#display-preferences)
 - Buttons to
   [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 - Button to [export project data](#export-project-data).
 
 ## Git history and live experiments
 
-The branches and commits in your Git repository are displayed along with the
+Branches and commits in your Git repository are displayed along with the
 corresponding models, metrics, hyperparameters, and DVC-tracked files.
 
-[New experiments submitted from Iterative Studio][run experiments] appear as
-experiment commits, which are eventually pushed to Git. Experiments that you
-push using the `dvc exp push` command as well as any live experiments that you
-send using [DVCLive] are displayed in a special experiment row nested under the
-parent Git commit. More details of how live experiments are displayed can be
-found
+Experiments that you push using the `dvc exp push` command as well as any live
+experiments that you send using [DVCLive] are displayed in a special experiment
+row nested under the parent Git commit. More details of how live experiments are
+displayed can be found
 [here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 
 To manually check for updates in your repository, use the `Reload` button 🔄
@@ -43,37 +33,55 @@ located above the project table.
 The table contains buttons to specify filters and other preferences regarding
 which commits and columns to display.
 
-![](https://static.iterative.ai/img/studio/view_components_2.gif)
-
 ### Filters:
 
-You can filter the commits that you want to display by the following fields:
+Click on the `Filters` button to specify which rows you want to show in the
+project table.
 
-- **Branch:** The Git branch
-- **Tag:** The Git tag
-- **Author:** Author of the Git commit
-- **Metric:** Values of different metrics. For instance, you can display only
-  those experiments for which the value of `avg_prec` is greater than `0.9`.
-- **Metric delta:** Change in the value of the metric. For instance, you can use
-  this filter to only display those experiments for which the value of
-  `avg_prec` changed by more than `0.1` compared to the baseline experiment.
-- **Param:** Values of different parameters
-- **File size:** Size of the data, model and other files corresponding to your
-  experiments
-- **File changed:** Whether or not any given file changed in the experiment
+![Project filters](https://static.iterative.ai/img/studio/project_filters.png)
+
+There are two types of filters:
+
+- **Quick filters** (highlighted in orange above): Use the quick filter buttons
+  to
+
+  - Show only DVC experiments
+  - Show only selected experiments
+  - Toggle hidden commits (include or exclude hidden commits in the project
+    table)
+
+- **Custom filters** (highlighted in purple above): Filter commits by one or
+  more of the following fields:
+
+  - Git related fields such as Git branch, commit message, tag and author
+  - Column values (values of metrics, hyperparameters, etc.) and their deltas
+
+  <admon type="info">
+
+  The `Branch`filter displays only the specified branch and its commits.
+
+  On the other hand, the `Commits on branch` filter displays all branches that
+  contain commits from the specified branch. For example, if a commit from the
+  `main` branch also appears in `feature-branch-1`, then filtering for
+  `Commits on branch = main` will include `main` as well `feature-branch-1` in
+  the project table.
+
+  </admon>
 
 ### Columns:
 
 Select the columns you want to display and hide the rest.
 ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
 
-You can also click and drag the columns in the table to rearrange them.
-
 If your project is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections:
 
 - [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
 - [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
+
+To reorder the columns, click and drag them in the table or from the Columns
+dropdown.
+![Showing and hiding columns](https://static.iterative.ai/img/studio/reorder_columns.gif)
 
 ### Hide commits:
 
@@ -98,25 +106,37 @@ Commits can be hidden from the project table in the following ways:
   commits that do not add much value in your project. To hide a commit or
   branch, click on the 3-dot menu next to the commit or branch name and click on
   `Hide commit` or `Hide branch`.
+
+  ![Hide commit](https://static.iterative.ai/img/studio/hide_commit.png)
+
 - **Unhide commits:** You can unhide commits as needed, so that you don't lose
   any experimentation history. To display all hidden commits, click on the
-  `Show hidden commits` toggle (refer [the above gif](#display-preferences)).
-  This will display all hidden commits, with a `hidden` (closed eye) indicator.
+  `Show hidden commits` toggle (refer [filters](#filters)). This will display
+  all hidden commits, with a `hidden` (closed eye) indicator.
+
+  ![Hidden commit indicator](https://static.iterative.ai/img/studio/hidden_commit_indicator.png)
+
   To unhide any commit, click on the 3-dot menu for that commit and click on
   `Show commit`.
 
-### Selected only:
+  ![Show hidden commit](https://static.iterative.ai/img/studio/show_hidden_commit.png)
 
-Toggle between showing and hiding experiments that you have not selected.
+### Delta mode
 
-### Delta mode:
+You can display either the absolute values of the columns (metrics,
+hyperparameters, etc) or their delta (difference) from the baseline row. To
+toggle between these two options, use the `Delta mode` button.
 
-Toggle between absolute values and difference from the baseline row.
+![Delta mode](https://static.iterative.ai/img/studio/delta_mode.png)
 
 ### Save changes:
 
-Save your filters or column display preferences so that these preferences remain
-intact even after you log out of Iterative Studio and log back in later.
+Whenever you make any changes to your project's columns, commits or filters, a
+notification to save or discard your changes is displayed at the top of the
+project table. Saved changes remain intact even after you log out of Iterative
+Studio and log back in later.
+
+![Save or discard changes](https://static.iterative.ai/img/studio/save_discard_changes.png)
 
 ## Visualize, compare and run experiments
 
@@ -148,6 +168,7 @@ Below is an example of the downloaded CSV file.
 
 ![example export to csv](https://static.iterative.ai/img/studio/project_export_to_csv_example.png)
 
+[DVCLive]: /doc/dvclive
 [display plots]:
   /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#display-plots-and-images
 [Compare experiments]:
