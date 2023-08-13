@@ -122,15 +122,20 @@ intact even after you log out of Iterative Studio and log back in later.
 
 Use the following buttons to visualize, compare and run experiments:
 
-- **Show plots:** Open the `Plots` pane and [display plots] for the selected
-  commits.
+- **Plots:** Open the `Plots` pane and [display plots] for the selected commits.
+- **Trends:** [Generate trend charts] to see how the metrics have changed over
+  time.
 - **Compare:** [Compare experiments] side by side.
 - **Run:** [Run experiments] and [track results in real
   time][live-metrics-and-plots].
-- **Trends:** [Generate trend charts] to see how the metrics have changed over
-  time.
 
-![](https://static.iterative.ai/img/studio/view_components_3.gif)
+These buttons appear above your project table as shown below.
+![example export to csv](https://static.iterative.ai/img/studio/project_action_buttons_big_screen.png)
+
+On smaller screens, the buttons might appear without text labels, as shown
+below.
+
+![example export to csv](https://static.iterative.ai/img/studio/project_action_buttons_small_screen.png)
 
 ## Export project data
 
