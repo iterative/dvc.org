@@ -28,6 +28,7 @@ To illustrate with an example, given the following code:
 
 ```python
 import random
+from pathlib import Path
 
 from dvclive import Live
 from PIL import Image
@@ -40,7 +41,7 @@ with Live(save_dvc_exp=True) as live:
     for i in range(EPOCHS):
         live.log_metric("metric", i + random.random())
         live.log_metric("nested/metric", i + random.random())
-        live.log_image("img.png", Image.new("RGB", (50, 50), (i, i, i)))
+        live.log_image(f"img/{live.step}.png", Image.new("RGB", (50, 50), (i, i, i)))
         Path("model.pt").write_text(str(random.random()))
         live.next_step()
 
@@ -58,14 +59,16 @@ dvclive
 ├── metrics.json
 ├── params.yaml
 ├── plots
-│   ├── images
-│   │   └── img.png
-│   ├── metrics
-│   │   ├── metric.tsv
-│   │   └── nested
-│   │       └── metric.tsv
-│   └── sklearn
-│       └── confusion_matrix.json
+│   ├── images
+│   │   └── img
+│   │       ├── 0.png
+│   │       └── 1.png
+│   ├── metrics
+│   │   ├── metric.tsv
+│   │   └── nested
+│   │       └── metric.tsv
+│   └── sklearn
+│       └── confusion_matrix.json
 └── report.html
 model.pt
 model.pt.dvc
