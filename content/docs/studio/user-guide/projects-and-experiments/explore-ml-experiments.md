@@ -28,6 +28,26 @@ located above the project table.
 
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
 
+### Nested branches
+
+When a Git branch is merged into another branch (e.g., `main`), two
+possibilities exist:
+
+- The user continues to push more commits to the merged branch, which means that
+  the merged branch contains some commits that are not present in `main`. In
+  this scenario, the project table will display both the `main` branch and the
+  merged branch.
+
+- The user does NOT push any more commits to the merged branch, which means that
+  the merged branch does NOT contain any commits that are not present in `main`.
+
+  In this scenario, Iterative Studio considers the merged branch as **"nested"**
+  and does not display it as a separate branch in the project table. This helps
+  to keep the project table concise when there are many branches that get merged
+  into `main` (or some other branch) over time; including all the merged
+  branches in the project table would make the table very large without adding
+  much informational value.
+
 ## Display preferences
 
 The table contains buttons to specify filters and other preferences regarding
@@ -53,20 +73,27 @@ There are two types of filters:
 - **Custom filters** (highlighted in purple above): Filter commits by one or
   more of the following fields:
 
-  - Git related fields such as Git branch, commit message, tag and author
   - Column values (values of metrics, hyperparameters, etc.) and their deltas
+  - Git related fields such as Git branch, commit message, tag and author
 
-  <admon type="info">
+    <admon type="info">
 
-  The `Branch`filter displays only the specified branch and its commits.
+    The `Branch`filter displays only the specified branch and its commits.
 
-  On the other hand, the `Commits on branch` filter displays all branches that
-  contain commits from the specified branch. For example, if a commit from the
-  `main` branch also appears in `feature-branch-1`, then filtering for
-  `Commits on branch = main` will include `main` as well `feature-branch-1` in
-  the project table.
+    On the other hand, the `Commits on branch` filter will also display branches
+    that contain any commits **in common** with the specified branch. This is
+    useful when
+    [some Git branches are nested inside other branches](#nested-branches),
+    because of which the nested branches are not displayed in the project table.
+    If you use the `Commits on branch = feature-branch-1` filter, commits from
+    this branch are included in the result. These commits appear within the
+    branch into which the nested branch was merged (e.g., `main`). A hint is
+    present indicating that the commits are part of the nested branch
+    `feature-branch-1`.
 
-  </admon>
+    ![Result of commits on branch filter](https://static.iterative.ai/img/studio/commits_on_branch_filter.png)
+
+    </admon>
 
 ### Columns:
 
