@@ -17,12 +17,18 @@ with Live(cache_images=True, save_dvc_exp=True) as live:
     img_numpy = np.ones((500, 500), np.uint8) * 255
     live.log_image("numpy.png", img_numpy)
 
-    # 2. Or log a `PIL.image`:
+    # 2. Or log a matplotlib figure:
+    from matplotlib import pyplot as plt
+    fig, ax = plt.subplots()
+    ax.plot([1, 2, 3, 4])
+    live.log_image("plt.png", fig)
+
+    # 3. Or log a `PIL.image`:
     from PIL import Image
     img_pil = Image.new("RGB", (500, 500), (250, 250, 250))
-    live.log_image("pil.png", img_pil)
+    live.log_image("matplotlib.png", img_pil)
 
-    # 3. Or log an existing image:
+    # 4. Or log an existing image:
     live.log_image("sample.png", "run/batch_0_sample.png")
 ```
 
@@ -32,6 +38,7 @@ Supported values for `val` are:
 
 - A valid NumPy array (convertible to an image via
   [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
+- A `matplotlib.figure.Figure` instance
 - A `PIL.Image` instance
 - A path to an image file (`str` or
   [`Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path)). It
@@ -51,6 +58,7 @@ dvclive
     ├── .gitignore
     ├── images
     │   ├── numpy.png
+    │   ├── matplotlib.png
     │   ├── pil.png
     │   └── sample.png
     └── images.dvc
