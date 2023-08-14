@@ -16,7 +16,7 @@ your Git repo:
    git config --global user.email ...
    ```
 
-Don't forget to install DVC and any other requirements in your environment!
+3. Don't forget to install DVC and any other requirements in your environment!
 
 ## Notebooks
 
