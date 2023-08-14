@@ -150,8 +150,8 @@ Commits can be hidden from the project table in the following ways:
 
 ### Delta mode
 
-You can display either the absolute values of the columns (metrics,
-hyperparameters, etc) or their delta (difference) from the baseline row. To
+For metrics, models and files columns with numeric values, you can display
+either the absolute values or their delta (difference) from the baseline row. To
 toggle between these two options, use the `Delta mode` button.
 
 ![Delta mode](https://static.iterative.ai/img/studio/delta_mode.png)
