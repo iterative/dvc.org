@@ -9,7 +9,7 @@ your Git repo:
 
    ![Git clone](/img/sagemaker-git-clone.gif)
 
-2. Launch a terminal or notebook and configure the user name and email:
+2. Launch a terminal or notebook and configure the Git user name and email:
 
    ```bash
    git config --global user.name ...
