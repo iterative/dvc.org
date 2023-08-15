@@ -1,15 +1,17 @@
 # Running pipelines
 
-To run a pipeline, you can use `dvc exp run`. This will run the pipeline and
-save the results as an [experiment](/doc/user-guide/experiment-management):
+To run a pipeline, you can use either `dvc repro` or `dvc exp run`. Either will
+run the pipeline, and `dvc exp run` will save the results as an
+[experiment](/doc/user-guide/experiment-management) (and has other
+[experiment-related features](/doc/user-guide/experiment-management/running-experiments)
+like modifying parameters from the command line):
 
 ```cli
-$ dvc exp run
-'data/data.xml.dvc' didn't change, skipping
-Running stage 'prepare':
-> python src/prepare.py data/data.xml
-Updating lock file 'dvc.lock'
+$ dvc exp run --set-param featurize.ngrams=3
 
+Reproducing experiment 'funny-dado'
+'data/data.xml.dvc' didn't change, skipping
+Stage 'prepare' didn't change, skipping
 Running stage 'featurize':
 > python src/featurization.py data/prepared data/features
 Updating lock file 'dvc.lock'
@@ -22,13 +24,9 @@ Running stage 'evaluate':
 > python src/evaluate.py model.pkl data/features
 Updating lock file 'dvc.lock'
 
-Ran experiment(s): barer-acts
+Ran experiment(s): funny-dado
 Experiment results have been applied to your workspace.
 ```
-
-If you do not want to save the results as an experiment, you can use
-`dvc repro`, which is similar but does not save an experiment or have the other
-experiment-related features of `dvc exp run`.
 
 <admon type="info">
 
@@ -175,11 +173,11 @@ Running stage 'evaluate':
 ## Verify Pipeline Status
 
 In scenarios like CI jobs, you may want to check that the pipeline is up to date
-without pulling or running anything. `dvc exp run --dry` will check which
-pipeline stages to run without actually running them. However, if data is
-missing, `--dry` will fail because DVC does not know whether that data simply
-needs to be pulled or is missing for some other reason. To check which stages to
-run and ignore any missing data, use `dvc exp run --dry --allow-missing`.
+without pulling or running anything. `dvc repro --dry` will check which pipeline
+stages to run without actually running them. However, if data is missing,
+`--dry` will fail because DVC does not know whether that data simply needs to be
+pulled or is missing for some other reason. To check which stages to run and
+ignore any missing data, use `dvc repro --dry --allow-missing`.
 
 This command will succeed if nothing has changed:
 
@@ -215,8 +213,7 @@ data/pool_data.dvc:
 </details>
 
 ```cli
-$ dvc exp run --allow-missing --dry
-Reproducing experiment 'agley-nuke'
+$ dvc repro --allow-missing --dry
 'data/pool_data.dvc' didn't change, skipping
 Stage 'data_split' didn't change, skipping
 Stage 'train' didn't change, skipping
@@ -259,8 +256,7 @@ data/pool_data.dvc:
 </details>
 
 ```cli
-$ dvc exp run --allow-missing --dry
-Reproducing experiment 'dozen-jogs'
+$ dvc repro --allow-missing --dry
 'data/pool_data.dvc' didn't change, skipping
 ERROR: failed to reproduce 'data_split': [Errno 2] No such file or directory: '.../example-get-started-experiments/data/pool_data'
 ```
@@ -278,7 +274,8 @@ true
 
 If you are using advanced features to interpolate values for your pipeline, like
 [templating] or [Hydra composition], you can get the interpolated values by
-running `dvc exp run -vv`, which will include information like:
+running `dvc repro -vv` or `dvc exp run -vv`, which will include information
+like:
 
 ```cli
 2023-05-18 07:38:43,955 TRACE: Hydra composition enabled.
