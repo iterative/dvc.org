@@ -104,14 +104,14 @@ tune hyperparameters and track what changed. Hyperparameters are added under the
 to pass all those arguments and track them as parameters, in addition to
 tracking the other inputs and outputs:
 
-```
-  training:
-    cmd: python sm_training.py --bucket ${bucket} --prefix ${prefix}  ${train}
-    deps:
+```yaml
+training:
+  cmd: python sm_training.py --bucket ${bucket} --prefix ${prefix}  ${train}
+  deps:
     - sm_training.py
     - s3://${bucket}/${prefix}/train
     - s3://${bucket}/${prefix}/validation
-    outs:
+  outs:
     - s3://${bucket}/${prefix}/output:
         cache: false
 ```
