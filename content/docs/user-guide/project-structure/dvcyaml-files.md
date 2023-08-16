@@ -618,6 +618,13 @@ value), escape it with a backslash, e.g. `\${...`.
 
 ## `foreach` stages
 
+<admon type="info">
+
+Checkout [`matrix` stages](#matrix-stages) for a more powerful way to define
+multiple stages.
+
+</admon>
+
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
@@ -802,13 +809,29 @@ When using a list or a dictionary, dvc will generate the name of stages based on
 variable name and the index of the value. In the above example, generated stages
 may look like `train@labels0-config0`.
 
-Note that templating is supported inside `matrix` and in definition, so you can
-reference things defined in `vars` and from your imported file as usual.
+Templating can also be used inside `matrix`, so you can reference
+[variables](#variables) defined elsewhere. For example, you can define values in
+`params.yaml` file and use them in `matrix`.
 
 ```yaml
-matrix:
-  labels: ${labels}
-  config: ${config}
+# params.yaml
+datasets: [dataset1/, dataset2/]
+processors: [processor1, processor2]
+```
+
+```yaml{4-6}
+# dvc.yaml
+stages:
+  preprocess:
+    matrix:
+      processor: ${processors}
+      dataset: ${datasets}
+
+    cmd: ./preprocess.py ${item.dataset} ${item.processor}
+    deps:
+    - ${item.dataset}
+    outs:
+    - ${item.dataset}-${item.processor}.json
 ```
 
 ## dvc.lock file
@@ -869,5 +892,6 @@ and all forms of
 Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
 (under `params`), under each parameters file name.
 [templated `dvc.yaml`](#templating) files, the actual values are written to
-`dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages),
-individual stages are expanded (no `foreach` structures are preserved).
+`dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages) and
+[`matrix` stages](#matrix-stages), individual stages are expanded (no `foreach`
+or `matrix` structures are preserved).
