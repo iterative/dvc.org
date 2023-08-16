@@ -66,13 +66,12 @@ checkpointing at all as described in the
   created by [`ModelCheckpoint`]. See
   [Log model checkpoints](#log-model-checkpoints).
 
-  - if `log_model == 'all'`, checkpoints are logged during training.
+  - if `log_model == False` (default), no checkpoint is logged.
 
   - if `log_model == True`, checkpoints are logged at the end of training,
-    except when `save_top_k == -1` which also logs every checkpoint during
-    training.
+    except when `save_top_k == -1` which logs every checkpoint during training.
 
-  - if `log_model == False` (default), no checkpoint is logged.
+  - if `log_model == 'all'`, checkpoints are logged during training.
 
 - `experiment` - (`None` by default) - [`Live`](/doc/dvclive/live) object to be
   used instead of initializing a new one.
@@ -85,9 +84,10 @@ checkpointing at all as described in the
 ### Log model checkpoints
 
 Use `log_model` to save the checkpoints (it will use `Live.log_artifact()`
-internally to save those). At the end of training, DVCLive will annotate the
-[`best_model_path`][`ModelCheckpoint`] with name `best` (for example, to be
-consumed in [Studio model registry] or automation scenarios).
+internally to save those). At the end of training, DVCLive will copy the
+[`best_model_path`][`ModelCheckpoint`] to the `dvclive/artifacts` directory and
+annotate it with name `best` (for example, to be consumed in [Studio model
+registry] or automation scenarios).
 
 - Save updates to the checkpoints directory at the end of training:
 
