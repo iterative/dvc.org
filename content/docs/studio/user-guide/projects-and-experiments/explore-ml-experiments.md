@@ -36,7 +36,8 @@ possibilities exist:
 - The user continues to push more commits to the merged branch, which means that
   the merged branch contains some commits that are not present in `main`. In
   this scenario, the project table will display both the `main` branch and the
-  merged branch.
+  merged branch and the merged branch will show the commits that are not present
+  in `main`.
 
 - The user does NOT push any more commits to the merged branch, which means that
   the merged branch does NOT contain any commits that are not present in `main`.
