@@ -86,11 +86,11 @@ There are two types of filters:
     useful when
     [some Git branches are nested inside other branches](#nested-branches),
     because of which the nested branches are not displayed in the project table.
-    If you use the `Commits on branch = feature-branch-1` filter, commits from
-    this branch are included in the result. These commits appear within the
-    branch into which the nested branch was merged (e.g., `main`). A hint is
-    present indicating that the commits are part of the nested branch
-    `feature-branch-1`.
+    If you use the `Commits on branch = feature-branch-1` filter (where
+    `feature-branch-1` nested within `main`), commits from this branch are
+    included in the result. These commits appear within the branch into which
+    the nested branch was merged (i.e., `main`). A hint is present indicating
+    that the commits are part of the nested branch `feature-branch-1`.
 
     ![Result of commits on branch filter](https://static.iterative.ai/img/studio/commits_on_branch_filter.png)
 
