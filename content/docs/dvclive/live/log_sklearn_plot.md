@@ -6,7 +6,6 @@ saves the data in `{Live.dir}/plots/sklearn/{name}.json`.
 
 ```py
 def log_sklearn_plot(
-  self,
   kind: Literal['calibration', 'confusion_matrix', 'precision_recall', 'roc'],
   labels,
   predictions,
