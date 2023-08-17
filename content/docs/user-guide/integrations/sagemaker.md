@@ -26,7 +26,8 @@ your Git repo:
 
 After completing the setup, you can work with DVC in SageMaker notebooks like
 you would in any other environment. Take a look at DVC [experiments] for how to
-get started with DVC in notebooks.
+get started with DVC in notebooks (if you have setup [code-server] on SageMaker,
+you can also install the [DVC extension for VS Code]).
 
 If you would like to see live experiment updates in [DVC Studio], get your
 [token] and save it in your [dvc config] or `DVC_STUDIO_TOKEN` environment
@@ -36,7 +37,7 @@ variable. For example, to set it globally for all of a user's projects:
 $ dvc config --global studio.token ***
 ```
 
-While the experiment runs, you will see live updates like this in Studio:
+While the experiment runs, you will see live updates like this in DVC Studio:
 
 ![Notebook](/img/sagemaker-notebook.gif)
 
@@ -122,6 +123,9 @@ The end result of running the pipeline looks like this:
 
 [experiments]: /doc/start/experiments
 [clone]: https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-git.html
+[code-server]:
+  https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/
+[dvc extension for vs code]: /doc/vs-code-extension
 [dvc studio]: https://studio.iterative.ai
 [token]: https://studio.iterative.ai/user/_/profile?section=accessToken
 [dvc config]: /doc/user-guide/project-structure/configuration#studio
