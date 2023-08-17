@@ -786,6 +786,10 @@
             "label": "make_report()"
           },
           {
+            "slug": "make_stage_template",
+            "label": "make_stage_template()"
+          },
+          {
             "slug": "make_summary",
             "label": "make_summary()"
           },

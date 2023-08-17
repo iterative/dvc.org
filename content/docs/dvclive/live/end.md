@@ -35,9 +35,7 @@ model.fit(
 ## Description
 
 By default, `Live.end()` will call `Live.make_summary()`, `Live.make_dvcyaml()`,
-and `Live.make_report()`.
+`Live.make_report()`, and `Live.make_stage_template()`.
 
 If `save_dvc_exp=True` has been passed to `Live`, it will
-[save a new DVC experiment](/doc/dvclive/how-it-works#git-integration) and write
-a `dvc.yaml` file configuring what DVC will show for logged plots, metrics, and
-parameters.
+[save a new DVC experiment](/doc/dvclive/how-it-works#git-integration).

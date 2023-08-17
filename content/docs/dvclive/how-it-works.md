@@ -8,19 +8,20 @@ default.
 
 The contents of the directory will depend on the methods used:
 
-| Method                                                  | Writes to                                                                            |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [`Live.log_artifact()`](/doc/dvclive/live/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc` |
-| `Live.log_metric()`                                     | `dvclive/plots/metrics`                                                              |
-| `Live.log_image()`                                      | `dvclive/plots/images`                                                               |
-| `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
-| `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |
-| `Live.log_sklearn_plot()`                               | `dvclive/plots/sklearn`                                                              |
-| `Live.make_dvcyaml()`                                   | `dvclive/dvc.yaml`                                                                   |
-| `Live.make_report()`                                    | `dvclive/report.{md/html}`                                                           |
-| `Live.make_summary()`                                   | `dvclive/metrics.json`                                                               |
-| `Live.next_step()`                                      | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
-| `Live.end()`                                            | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
+| Method                                                  | Writes to                                                                                                   |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [`Live.log_artifact()`](/doc/dvclive/live/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc`                        |
+| `Live.log_metric()`                                     | `dvclive/plots/metrics`                                                                                     |
+| `Live.log_image()`                                      | `dvclive/plots/images`                                                                                      |
+| `Live.log_param()`                                      | `dvclive/params.yaml`                                                                                       |
+| `Live.log_plot()`                                       | `dvclive/plots/custom`                                                                                      |
+| `Live.log_sklearn_plot()`                               | `dvclive/plots/sklearn`                                                                                     |
+| `Live.make_dvcyaml()`                                   | `dvclive/dvc.yaml`                                                                                          |
+| `Live.make_report()`                                    | `dvclive/report.{md/html}`                                                                                  |
+| `Live.make_stage_template()`                            | `dvclive/stage_template.yaml`                                                                               |
+| `Live.make_summary()`                                   | `dvclive/metrics.json`                                                                                      |
+| `Live.next_step()`                                      | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                                  |
+| `Live.end()`                                            | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`<br>`dvclive/stage_template.yaml` |
 
 ### Example
 
@@ -69,7 +70,8 @@ dvclive
 │   │       └── metric.tsv
 │   └── sklearn
 │       └── confusion_matrix.json
-└── report.html
+├── report.html
+└── stage_template.yaml
 model.pt
 model.pt.dvc
 ```
@@ -117,12 +119,13 @@ multiple experiments). By configuring DVC [pipelines], you can
 with `dvc exp run`. This will track the inputs and outputs of your code, and
 also enable features like queuing, parameter tuning, and grid searches.
 
-DVCLive by default [generates] its own `dvc.yaml` file to configure the
-experiment results, but you can create your own `dvc.yaml` file at the base of
-your repository (or elsewhere) to define a [pipeline](#run-with-dvc) or
-[customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
-Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
-experiment run. A pipeline stage for model training might look like:
+At the end of each experiment, `Live.make_stage_template()` generates a
+template, which you can copy to a `dvc.yaml` file at the base of your repository
+to define a [pipeline](#run-with-dvc) stage (you can also use this `dvc.yaml` to
+[customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots)).
+_Do not reuse the `dvc.yaml` file inside the DVCLive directory since it gets
+overwritten during each experiment run._ A pipeline stage for model training
+might look like:
 
 ```yaml
 stages:
