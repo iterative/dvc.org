@@ -44,6 +44,13 @@ If `cache=True` (which is the default), uses `dvc add` to [track] `path` with
 DVC, saving it to the DVC <abbr>cache</abbr> and generating a `{path}.dvc` file
 that acts as a pointer to the cached data.
 
+<admon type="warn">
+
+If you [run a DVC pipeline], `Live.log_artifact()` will not cache the artifacts,
+and you must instead include them as `outs` in the pipeline stage to cache them.
+
+</admon>
+
 If `Live` was initialized with `dvcyaml=True` (which is the default) and you
 include any of the optional metadata fields (`type`, `name`, `desc`, `labels`,
 `meta`), it will add an
@@ -87,3 +94,4 @@ the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 [track]: /doc/dvclive/how-it-works#track-large-artifacts-with-dvc
 [Studio model registry]:
   /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[run a DVC pipeline]: /doc/dvclive/how-it-works#run-with-dvc
