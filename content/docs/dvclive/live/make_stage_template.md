@@ -38,7 +38,7 @@ live.make_stage_template()
 ## Description
 
 Creates `{Live.dir}/stage_template.yaml`, which provides a template for a DVC
-pipeline stage. Copy the contents into a `dvc.yaml` file _outside the DVCLive
+pipeline stage. You can then copy the contents into a `dvc.yaml` file _outside the DVCLive
 directory_ (since that directory will get deleted on each run) to automatically
 capture the outputs tracked by DVCLive when running a DVC pipeline.
 
