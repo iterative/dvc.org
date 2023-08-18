@@ -37,9 +37,8 @@ trainer.train()
 - `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
   instance will be created using `**kwargs`.
 
-- `log_model` - (`None` by default) - use
-  [`live.log_artifact()`](/doc/dvclive/live/log_artifact) to log checkpoints
-  created by the
+- `log_model` - (`None` by default) - use `Live.log_artifact()` to log
+  checkpoints created by the
   [`Trainer`](https://huggingface.co/docs/transformers/main_classes/trainer#checkpoints).
 
   - if `log_model is None` (default), no checkpoint is logged.
@@ -48,7 +47,7 @@ trainer.train()
     training.
 
   - if `log_model == 'all'`, all checkpoints are logged during training.
-    [`live.log_artifact()`] is called with `Trainer.output_dir`.
+    `Live.log_artifact()` is called with `Trainer.output_dir`.
 
 - `**kwargs` - Any additional arguments will be used to instantiate a new
   [`Live`] instance. If `live` is used, the arguments are ignored.
@@ -67,13 +66,23 @@ If `log_model=True` DVCLive will save a copy of the last checkpoint to the
 This is useful to be consumed in [Studio model registry] or automation
 scenarios.
 
-- Save the final checkpoint at the end of training:
+- Save the `last` checkpoint at the end of training:
 
 ```python
 from dvclive.huggingface import DVCLiveCallback
 
 trainer.add_callback(
-    DVCLiveCallback(save_dvc_exp=True, log_model=True)
+    DVCLiveCallback(save_dvc_exp=True, log_model=True))
+```
+
+- Save the `best` checkpoint at the end of training:
+
+```python
+from dvclive.huggingface import DVCLiveCallback
+
+trainer.args.load_best_model_at_end = True
+trainer.add_callback(
+    DVCLiveCallback(save_dvc_exp=True, log_model=True))
 ```
 
 - Save updates to the checkpoints directory whenever a new checkpoint is saved:
@@ -82,7 +91,7 @@ trainer.add_callback(
 from dvclive.huggingface import DVCLiveCallback
 
 trainer.add_callback(
-    DVCLiveCallback(save_dvc_exp=True, log_model="all")
+    DVCLiveCallback(save_dvc_exp=True, log_model="all"))
 ```
 
 ### Passing additional DVCLive arguments
