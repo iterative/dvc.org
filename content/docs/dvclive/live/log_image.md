@@ -21,12 +21,12 @@ with Live(cache_images=True, save_dvc_exp=True) as live:
     from matplotlib import pyplot as plt
     fig, ax = plt.subplots()
     ax.plot([1, 2, 3, 4])
-    live.log_image("matplotlib.png", img_pil)
+    live.log_image("matplotlib.png", fix)
 
     # 3. Or log a `PIL.image`:
     from PIL import Image
     img_pil = Image.new("RGB", (500, 500), (250, 250, 250))
-    live.log_image("plt.png", fig)
+    live.log_image("plt.png", img_pil)
 
     # 4. Or log an existing image:
     live.log_image("sample.png", "run/batch_0_sample.png")
