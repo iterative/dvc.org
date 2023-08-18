@@ -1,7 +1,7 @@
 # Live.make_stage_template()
 
 Writes template for a DVC pipeline [stage], capturing the outputs tracked by
-DVCLive, which you can use to [run] DVCLive experiments with DVC.
+DVCLive, which you can use to [run] experiments with DVC.
 
 ```py
 def make_stage_template()
