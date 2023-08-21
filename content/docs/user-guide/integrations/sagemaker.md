@@ -49,7 +49,7 @@ running each stage on its own EC2 instance and enabling other data
 [input modes](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html),
 with the benefits of DVC pipelines, like skipping unchanged stages and tracking
 the inputs and outputs of each run. SageMaker expects all inputs and outputs to
-be stored in S3, so the easiest way to integrate with DVC is to use [external
+be stored in S3, so the easiest way to integrate with DVC is to use S3 storage, and utilize [external
 dependencies and outputs].
 
 ### Example: XGBoost pipeline
