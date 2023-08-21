@@ -102,7 +102,7 @@ Finally, the [training script] uses the SageMaker Estimator for XGBoost to train
 a model. We add all the model hyperparameters as arguments to make it easy to
 tune hyperparameters and track what changed. Hyperparameters are added under the
 `train` key in `params.yaml`. The DVC pipeline stage `cmd` includes `${train}`
-to pass all those arguments and track them as parameters, in addition to
+to [unpack and pass](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking) all those arguments and track them as parameters, in addition to
 tracking the other inputs and outputs:
 
 ```yaml
