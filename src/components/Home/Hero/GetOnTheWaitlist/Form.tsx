@@ -93,7 +93,7 @@ const GetOnTheWaitlistForm = () => {
           name="subscribe"
           id="mc-embedded-subscribe"
         >
-          {loading && <Spinner className="mr-3" />} Get on the waitlist
+          {loading && <Spinner className="mr-3" />} Join the waitlist
         </CTAButton>
       </form>
       {/* // thank you for joining the waitlist! */}

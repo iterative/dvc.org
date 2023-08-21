@@ -13,11 +13,15 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 interface ISectionProps {
   className?: string
+  leftClassName?: string
+  rightClassName?: string
   children?: React.ReactNode
 }
 
 const SectionWrapper = ({
   className,
+  leftClassName,
+  rightClassName,
   children,
   maxWidth = 'lg'
 }: ISectionProps & {
@@ -25,8 +29,8 @@ const SectionWrapper = ({
 }) => (
   <div className={cn('w-full flex relative', className)}>
     <div className="absolute w-full h-full flex flex-row">
-      <div className="w-1/2 h-full bg-dark" />
-      <div className="w-1/2 h-full bg-light" />
+      <div className={cn('w-1/2 h-full bg-dark', leftClassName)} />
+      <div className={cn('w-1/2 h-full bg-light', rightClassName)} />
     </div>
     <div
       className={cn('w-full z-10 flex m-auto', {
@@ -93,9 +97,12 @@ const HeroSection = () => {
   const stars = useStars()
 
   return (
-    <>
+    <div className="drop-shadow-2xl">
       {/* Title Section */}
-      <SectionWrapper>
+      <SectionWrapper
+        leftClassName="2xl:rounded-tl-xl"
+        rightClassName="2xl:rounded-tr-xl"
+      >
         <Section className="text-light">
           <StaticImage
             src="../../../../static/img/logos/dvcx.svg"
@@ -158,7 +165,10 @@ const HeroSection = () => {
 
       {/* CTA Section */}
 
-      <SectionWrapper>
+      <SectionWrapper
+        leftClassName="2xl:rounded-bl-xl"
+        rightClassName="2xl:rounded-br-xl"
+      >
         <Section className="text-light">
           <CTAButton
             className="bg-light text-dark"
@@ -166,7 +176,7 @@ const HeroSection = () => {
               navigate('#get-started-dvcx', { state: { focusInput: true } })
             }}
           >
-            Get on the waitlist
+            Join the waitlist
             <ArrowRight className="ml-4" />
           </CTAButton>
         </Section>
@@ -182,7 +192,7 @@ const HeroSection = () => {
           </CTAButton>
         </Section>
       </SectionWrapper>
-    </>
+    </div>
   )
 }
 
