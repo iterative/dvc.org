@@ -64,9 +64,7 @@ The DVC pipeline stage is defined in `dvc.yaml` like this:
 ```yaml
 prepare:
   cmd:
-    - rm -f bank-additional.zip
-    - wget
-      https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip
+    - https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip -O bank-additional.zip
     - python sm_prepare.py --bucket ${bucket} --prefix ${prefix}
   deps:
     - sm_prepare.py
