@@ -205,6 +205,17 @@
           "share-a-dvc-cache"
         ]
       },
+      {
+        "slug": "integrations",
+        "source": false,
+        "children": [
+          "ml-frameworks",
+          {
+            "label": "Amazon SageMaker",
+            "slug": "sagemaker"
+          }
+        ]
+      },
       "troubleshooting",
       {
         "label": "Anonymized Usage Analytics",
