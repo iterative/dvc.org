@@ -56,7 +56,7 @@ dependencies and outputs].
 
 For an example, see https://github.com/iterative/sagemaker-pipeline, which
 adapts an existing SageMaker tutorial from a notebook into a DVC pipeline. The
-first stage downloads the data and tracks the output so that it doesn't have to
+first stage (`prepare`) downloads the data and tracks the output so that it doesn't have to
 be re-downloaded on each run. We parametrize the `bucket` and `prefix` of the
 destination into a separate `params.yaml` file so they can be modified easily.
 The DVC pipeline stage is defined in `dvc.yaml` like this:
