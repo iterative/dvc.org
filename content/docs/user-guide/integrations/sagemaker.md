@@ -49,22 +49,23 @@ running each stage on its own EC2 instance and enabling other data
 [input modes](https://docs.aws.amazon.com/sagemaker/latest/dg/model-access-training-data.html),
 with the benefits of DVC pipelines, like skipping unchanged stages and tracking
 the inputs and outputs of each run. SageMaker expects all inputs and outputs to
-be stored in S3, so the easiest way to integrate with DVC is to use S3 storage, and utilize [external
-dependencies and outputs].
+be stored in S3, so the easiest way to integrate with DVC is to use S3 storage,
+and utilize [external dependencies and outputs].
 
 ### Example: XGBoost pipeline
 
 For an example, see https://github.com/iterative/sagemaker-pipeline, which
 adapts an existing SageMaker tutorial from a notebook into a DVC pipeline. The
-first stage (`prepare`) downloads the data and tracks the output so that it doesn't have to
-be re-downloaded on each run. We parametrize the `bucket` and `prefix` of the
-destination into a separate `params.yaml` file so they can be modified easily.
-The DVC pipeline stage is defined in `dvc.yaml` like this:
+first stage (`prepare`) downloads the data and tracks the output so that it
+doesn't have to be re-downloaded on each run. We parametrize the `bucket` and
+`prefix` of the destination into a separate `params.yaml` file so they can be
+modified easily. The DVC pipeline stage is defined in `dvc.yaml` like this:
 
 ```yaml
 prepare:
   cmd:
-    - https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip -O bank-additional.zip
+    - https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip
+      -O bank-additional.zip
     - python sm_prepare.py --bucket ${bucket} --prefix ${prefix}
   deps:
     - sm_prepare.py
@@ -100,8 +101,10 @@ Finally, the [training script] uses the SageMaker Estimator for XGBoost to train
 a model. We add all the model hyperparameters as arguments to make it easy to
 tune hyperparameters and track what changed. Hyperparameters are added under the
 `train` key in `params.yaml`. The DVC pipeline stage `cmd` includes `${train}`
-to [unpack and pass](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking) all those arguments and track them as parameters, in addition to
-tracking the other inputs and outputs:
+to
+[unpack and pass](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
+all those arguments and track them as parameters, in addition to tracking the
+other inputs and outputs:
 
 ```yaml
 training:
