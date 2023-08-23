@@ -14,6 +14,7 @@ usage: dvc list [-h] [-q | -v] [-R] [--dvc-only]
                 [--json] [--rev [<commit>]]
                 [--config <path>] [--remote <name>]
                 [--remote-config [<name>=<value> ...]]
+                [--size]
                 url [path]
 
 positional arguments:
@@ -82,6 +83,8 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 - `--remote-config [<name>=<value> ...]` - `dvc remote` config options to merge
   with a remote's config (default or one specified by `--remote`) in the target
   repository.
+
+- `--size` - show sizes.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
