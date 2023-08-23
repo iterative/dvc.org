@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 const logoClass =
   'flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out'
-const logoImageClass = 'h-20 grayscale hover:grayscale-0'
+const logoImageClass = 'h-20 grayscale group-hover:grayscale-0'
 const logoImageClassInverted = `${logoImageClass} invert`
 
 const sm = 'w-16'
