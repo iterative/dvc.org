@@ -107,7 +107,7 @@ Using `Live.log_image()` to log multiple images may also grow too large to track
 with Git, in which case you can use
 [`Live(cache_images=True)`](/doc/dvclive/live#parameters) to cache them.
 
-## Run with DVC
+## Setup to Run with DVC
 
 Experimenting in Python interactively (like in notebooks) is great for
 exploration, but eventually you may need a more structured way to run

@@ -57,7 +57,7 @@ metrics:
 
 Metrics are key/value pairs saved in structured files that map a metric name to
 a numeric value. See `dvc metrics` for more information and how to compare among
-experiments.
+experiments, or [DVCLive] for a helper to log metrics.
 
 ## Params
 
@@ -90,7 +90,8 @@ DVC will create separate rendering for each type.
 
 <admon icon="book">
 
-Refer to [Visualizing Plots] and `dvc plots show` for more examples.
+Refer to [Visualizing Plots] and `dvc plots show` for more examples, and refer
+to [DVCLive] for a helper to log plots.
 
 [visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
@@ -353,6 +354,17 @@ See also `dvc params diff` to compare params across project version.
 
 ### Metrics and Plots outputs
 
+<admon type="tip">
+
+Metrics and plots outputs described below come from earlier versions of DVC and
+remain as a convenience. However, metrics and plots typically don't need to be
+stage outputs since they're small enough for Git to store directly (if not, they
+can be in `outs`), and they're unlikely to be dependencies of downstream stages.
+Instead, use [DVCLive] or add "top-level" [metrics](#metrics) and
+[plots](#plots).
+
+</admon>
+
 Like common outputs, <abbr>metrics</abbr> and <abbr>plots</abbr> files are
 produced by the stage `cmd`. However, their purpose is different. Typically they
 contain metadata to evaluate pipeline processes. Example:
@@ -372,13 +384,6 @@ stages:
       - auc.json:
           cache: false
 ```
-
-<admon type="tip">
-
-`cache: false` is typical here, since they're small enough for Git to store
-directly.
-
-</admon>
 
 The commands in `dvc metrics` and `dvc plots` help you display and compare
 metrics and plots.
@@ -898,3 +903,5 @@ Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
 `dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages) and
 [`matrix` stages](#matrix-stages), individual stages are expanded (no `foreach`
 or `matrix` structures are preserved).
+
+[DVCLive]: /doc/dvclive
