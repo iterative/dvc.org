@@ -12,6 +12,8 @@ usage: dvc import [-h] [-q | -v]
                   [-o <path>] [--rev <commit>]
                   [--no-exec | --no-download]
                   [-j <number>]
+                  [--config <path>] [--remote <name>]
+                  [--remote-config [<name>=<value> ...]]
                   url path
 
 positional arguments:
@@ -117,6 +119,16 @@ file.
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
+
+- `--config <path>` - path to a [config file](/doc/command-reference/config)
+  that will be merged with the config in the target repository.
+
+- `--remote <name>` - name of the `dvc remote` to set as a default in the target
+  repository.
+
+- `--remote-config [<name>=<value> ...]` - `dvc remote` config options to merge
+  with a remote's config (default or one specified by `--remote`) in the target
+  repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -386,3 +398,107 @@ C, otherwise the import chain resolution would fail.
 
 The `dvc remote default` for all repos in the import chain must also be
 accessible (repo C needs to have all the appropriate credentials).
+
+## Example: Set default remote
+
+```cli
+$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared --remote myremote
+...
+$ cat prepared.dvc
+deps:
+  - path: data/prepared
+    repo:
+      url: https://github.com/iterative/example-get-started-s3
+      rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
+      remote: myremote
+outs:
+  - md5: e784c380dd9aa9cb13fbe22e62d7b2de.dir
+    size: 27
+    nfiles: 3
+    path: prepared
+```
+
+## Example: Set AWS profile for default remote
+
+```cli
+$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared --remote-config profile=myprofile
+...
+$ cat prepared.dvc
+deps:
+  - path: data/prepared
+    repo:
+      url: https://github.com/iterative/example-get-started-s3
+      rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
+      remote:
+        profile: myprofile
+outs:
+  - md5: e784c380dd9aa9cb13fbe22e62d7b2de.dir
+    size: 27
+    nfiles: 3
+    path: prepared
+```
+
+## Example: Create new AWS S3 remote and set it as default
+
+If remote with that name already exists, its config will be merged with options
+provided by `--remote-config`.
+
+```cli
+$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared \
+    --remote myremote \
+    --remote-config url=s3://mybucket/mypath profile=myprofile
+...
+$ cat prepared.dvc
+deps:
+  - path: data/prepared
+    repo:
+      url: https://github.com/iterative/example-get-started-s3
+      rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
+      config:
+        core:
+          remote: myremote
+        remote:
+          myremote:
+            url: s3://mybucket/mypath
+            profile: myprofile
+outs:
+  - md5: e784c380dd9aa9cb13fbe22e62d7b2de.dir
+    size: 27
+    nfiles: 3
+    path: prepared
+```
+
+## Example: Set AWS secret keys for particular remote
+
+In this example, instead of using `--remote myremote` with `--remote-config` and
+exposing your secrets in dvcfile, you could use `--config` to use a gitignored
+config file. The format of the config file is the same as produced by
+`dvc config`.
+
+```cli
+$ cat myconfig
+[core]
+  remote = myremote
+
+[remote "myremote"]
+  access_key_id = myaccesskeyid
+  secret_access_key = mysecretaccesskey
+$ cat .gitignore # make sure you are not commiting this file to git
+...
+/myconfig
+...
+$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared --config myconfig
+...
+$ cat prepared.dvc
+deps:
+  - path: data/prepared
+    repo:
+      url: https://github.com/iterative/example-get-started-s3
+      rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
+      config: myconfig
+outs:
+  - md5: e784c380dd9aa9cb13fbe22e62d7b2de.dir
+    size: 27
+    nfiles: 3
+    path: prepared
+```

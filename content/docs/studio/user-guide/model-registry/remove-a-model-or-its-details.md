@@ -1,26 +1,40 @@
 # Remove a model, version, or stage assignment
 
-To **remove a model** from the model registry, use the `Deprecate model` menu
-item in the 3-dot menu next to the model name in the models dashboard or details
-page. This action
-[creates a new Git tag in your Git repository to indicate that the model has been deprecated](https://mlem.ai/doc/gto/command-reference/deprecate#deprecating-an-artifact).
+When you remove (deprecate) a model, deregister a version or unassign a stage,
+Iterative Studio
+[creates Git tags that indicate the action](https://mlem.ai/doc/gto/command-reference/deprecate)
+and saves the tags in your Git repository.
 
-You can also remove all of a project's models from Iterative Studio by deleting
-the project from your projects dashboard. This does not deprecate the model in
-the Git repository.
+These actions can be found in the 3-dot menu next to the model name in the
+models dashboard (see the section highlighted in purple below).
 
-To **deregister a model version**, use the `Deregister version` menu item in the
-3-dot menu next to the model name in the models dashboard or the
-`Deregister version` button on the model details page. This action creates a new
-Git tag in your Git repository to
-[indicate that the given model has been deregistered](https://mlem.ai/doc/gto/command-reference/deprecate#deregister-a-version).
+![](https://static.iterative.ai/img/studio/model-registry-undo-actions.png)
 
-To **unassign a stage from a model version**, use the `Unassign stage` menu item
-in the 3-dot menu next to the model name in the models dashboard. You can also
-click on the the relevant stage assignment pill in the `Stages` section of the
-model details page to reveal the `Unassign stage` menu item. This action creates
-a new Git tag in your Git repository to
-[indicate that the given model version has been unassigned from the given stage](https://mlem.ai/doc/gto/command-reference/deprecate#unassigning-a-stage).
+These actions are also available in the model details page:
 
-Removing a Git tag from your Git repository also removes the model version or
-stage assignment represented by that Git tag.
+- `Deprecate model` action is present in the 3-dot menu next to the model name.
+
+<p align="center">
+<img src="https://static.iterative.ai/img/studio/model-registry-deprecate.png" alt="Deprecate model" width="400px"/>
+</p>
+
+- `Deregister version` button is present next to the version dropdown.
+
+<p align="center">
+<img src="https://static.iterative.ai/img/studio/model-registry-deregister.png" alt="Deprecate model" width="400px"/>
+</p>
+
+- Click on the the relevant stage assignment pill in the `Stages` section to
+  reveal the `Unassign stage` menu item.
+
+<p align="center">
+<img src="https://static.iterative.ai/img/studio/model-registry-unassign.png" alt="Deprecate model" width="400px"/>
+</p>
+
+<admon type="tip">
+To remove all of a project's models from Iterative Studio without deprecating them, you can simply delete the project from your projects dashboard.
+</admon>
+
+<admon type="info">
+You can also remove a model version or stage assignment by removing the corresponding Git tag directly from your Git repository. But this destroys the audit trail of the original version registration or stage assignment action.
+</admon>

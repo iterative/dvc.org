@@ -1,22 +1,14 @@
 ---
-title: 'Get Started: Metrics, Parameters, and Plots'
-description: 'Get started with DVC parameters, metrics, and plots. Learn how to
+title: 'Get Started: Metrics, Plots, and Parameters'
+description: 'Get started with DVC metrics, plots, and parameters. Learn how to
 capture, evaluate, and visualize ML projects without leaving Git.'
 ---
 
-# Get Started: Metrics, Parameters, and Plots
+# Get Started: Metrics, Plots, and Parameters
 
-<details>
-
-### 🎬 Click to watch a video intro.
-
-https://youtu.be/bu3l75eQlQo
-
-</details>
-
-DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
-<abbr>parameters</abbr>, and visualize performance with
-[plots](/doc/command-reference/plots). These concepts are introduced below.
+DVC makes it easy to track [metrics](/doc/command-reference/metrics), visualize
+performance with [plots](/doc/command-reference/plots), and update
+<abbr>parameters</abbr>. These concepts are introduced below.
 
 <admon type="tip">
 
@@ -27,7 +19,7 @@ iterations of your ML project.
 
 </admon>
 
-## Collecting metrics
+## Collecting metrics and plots
 
 First, let's see the mechanism to capture values for these ML attributes. Add
 and run a final evaluation stage to our [earlier pipeline]:
@@ -35,12 +27,14 @@ and run a final evaluation stage to our [earlier pipeline]:
 ```cli
 $ dvc stage add -n evaluate \
   -d src/evaluate.py -d model.pkl -d data/features \
-  -M eval/live/metrics.json -O eval/live/plots \
-  -O eval/prc -o eval/importance.png \
   python src/evaluate.py model.pkl data/features
 
 $ dvc repro
 ```
+
+[`evaluate.py`] uses [DVCLive] to write scalar metrics values (e.g. `AUC`) and
+plots data (e.g. `ROC curve`) to files in the `eval` directory that DVC can
+parse to compare and visualize across iterations.
 
 [earlier pipeline]: /doc/start/data-management/data-pipelines
 
@@ -48,8 +42,6 @@ $ dvc repro
 
 ### 💡 Expand to get a peek under the hood
 
-The `-O` option here specifies an output that will not be <abbr>cached</abbr> by
-DVC, and `-M` specifies a metrics file (that will also not be cached).
 `dvc stage add` will generates this new stage in the `dvc.yaml` file:
 
 ```yaml
@@ -59,98 +51,62 @@ evaluate:
     - data/features
     - model.pkl
     - src/evaluate.py
-  outs:
-    - eval/importance.png
-    - eval/live/plots:
-        cache: false
-    - eval/prc:
-        cache: false
-  metrics:
-    - eval/live/metrics.json:
-        cache: false
 ```
 
-The biggest difference from previous stages in our pipeline is the new `metrics`
-section. Metrics files contain scalar values (e.g. `AUC`) to compare across
-iterations.
+Note that there are no outputs in this stage! This is because our metrics and
+plots files are small enough to track in Git, and they are unlikely to be
+dependencies of downstream stages, so we can ignore them from our stage
+definition. If you want to cache your plots with DVC, add `eval/plots` to the
+stage outputs the same way outputs were added in previous stages.
 
-<admon type="info">
+Let's save this iteration so we can compare it later:
 
-With `cache: false`, DVC skips caching the output, as we want these JSON metrics
-files to be versioned by Git.
-
-</admon>
+```cli
+$ git add .gitignore dvc.yaml dvc.lock eval
+$ git commit -a -m "Create evaluation stage"
+```
 
 </details>
 
-[`evaluate.py`] writes the model's [ROC-AUC] and [average precision] to
-`eval/live/metrics.json` (designated a [metrics file] with `-M` above):
-
-```json
-{
-  "avg_prec": {
-    "train": 0.9772271756725741,
-    "test": 0.9449556493816984
-  },
-  "roc_auc": {
-    "train": 0.9873675866013153,
-    "test": 0.9619097316125981
-  }
-}
-```
+You can view metrics and plots from the command line, or you can load your
+project in VS Code and use the [DVC Extension] to view metrics, plots, and more.
 
 You can view tracked metrics with `dvc metrics show `:
 
 ```dvc
 $ dvc metrics show
 Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_auc.train
-eval/live/metrics.json  0.94496          0.97723           0.96191         0.98737
+eval/metrics.json  0.94496          0.97723           0.96191         0.98737
 ```
 
-[`evaluate.py`]:
-  https://github.com/iterative/example-get-started/blob/master/src/evaluate.py
-[roc-auc]:
-  https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc
-[average precision]:
-  https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures
-[metrics file]: /doc/command-reference/metrics#supported-file-formats
+You can view plots with `dvc plots show` (shown below), which generates an HTML
+file you can open in a browser.
 
-## Visualizing plots
+<details>
 
-The `evaluate` stage also writes different files with data that can be graphed:
+### 💡 Expand to see how to customize metrics and plots
 
-- [DVCLive]-generated [`roc_curve`] and [`confusion_matrix`] values in the
-  `eval/live/plots` directory.
-- Precision-recall curves as JSON arrays in `eval/prc/train.json`:
-
-  ```json
-  {
-    "prc": [
-      { "precision": 0.0215, "recall": 1.0, "threshold": 0.0 },
-      { "precision": 1.0, "recall": 0.0093, "threshold": 0.6 },
-      ...
-  ```
-
-- A custom `eval/importance.png` image showing a bar chart of features'
-  importance.
-
-You can visualize all of these with DVC! Start by [configuring the
-plots][plots files] in `dvc.yaml`:
+You can customize metrics and plots by [configuring them][plots files] in the
+same `dvc.yaml` file where your stage definitions are saved. For example, to
+combine train and test data, and to set other custom attributes like titles, add
+the following to `dvc.yaml`:
 
 ```yaml
+metrics:
+  - eval/metrics.json
 plots:
   - ROC:
       template: simple
       x: fpr
       y:
-        eval/live/plots/sklearn/roc/train.json: tpr
-        eval/live/plots/sklearn/roc/test.json: tpr
+        eval/plots/sklearn/roc/train.json: tpr
+        eval/plots/sklearn/roc/test.json: tpr
   - Confusion-Matrix:
       template: confusion
       x: actual
       y:
-        eval/live/plots/sklearn/cm/train.json: predicted
-        eval/live/plots/sklearn/cm/test.json: predicted
+        eval/plots/sklearn/cm/train.json: predicted
+        eval/plots/sklearn/cm/test.json: predicted
   - Precision-Recall:
       template: simple
       x: recall
@@ -160,9 +116,22 @@ plots:
   - eval/importance.png
 ```
 
-To render them, run `dvc plots show` (shown below), which generates an HTML file
-you can open in a browser. Or you can load your project in VS Code and use the
-[DVC Extension]'s [Plots Dashboard].
+To avoid duplicating the plots already configured by DVCLive, we set
+`Live(dvcyaml=False)` in [`evaluate.py`], which prevents DVCLive from
+[automatically configuring] them for us (it's also why we also need to add
+`metrics` above since DVCLive will no longer configure these for us either).
+This flexibility to define your own metrics and plots configuration means that
+you can even [generate your own] metrics and plots data without using DVCLive!
+
+Let's run again and save these changes:
+
+```cli
+$ dvc repro
+$ git add .gitignore dvc.yaml dvc.lock eval
+$ git commit -a -m "Customize evaluation plots"
+```
+
+</details>
 
 ```cli
 $ dvc plots show
@@ -174,12 +143,15 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 ![](/img/plots_importance_get_started_show.png '=500 :wrap-left')
 ![](/img/plots_cm_get_started_show.svg)
 
-Let's save this iteration so we can compare it later:
-
-```cli
-$ git add .gitignore dvc.yaml dvc.lock eval
-$ git commit -a -m "Create evaluation stage"
-```
+[`evaluate.py`]:
+  https://github.com/iterative/example-get-started/blob/master/src/evaluate.py
+[roc-auc]:
+  https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc
+[average precision]:
+  https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures
+[metrics file]: /doc/command-reference/metrics#supported-file-formats
+[automatically configuring]: /doc/dvclive/live/make_dvcyaml
+[generate your own]: /doc/user-guide/experiment-management/visualizing-plots
 
 Later we will see how to
 [compare and visualize different pipeline iterations](#comparing-iterations).
@@ -192,8 +164,6 @@ will be useful for comparison: parameters.
 [`confusion_matrix`]:
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
 [plots files]: /doc/user-guide/project-structure/dvcyaml-files#plots
-[plots dashboard]:
-  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 

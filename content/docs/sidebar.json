@@ -205,6 +205,17 @@
           "share-a-dvc-cache"
         ]
       },
+      {
+        "slug": "integrations",
+        "source": false,
+        "children": [
+          "ml-frameworks",
+          {
+            "label": "Amazon SageMaker",
+            "slug": "sagemaker"
+          }
+        ]
+      },
       "troubleshooting",
       {
         "label": "Anonymized Usage Analytics",
@@ -836,12 +847,20 @@
             "label": "PyTorch Lightning"
           },
           {
+            "slug": "scikit-learn",
+            "label": "Scikit-learn"
+          },
+          {
             "slug": "tensorflow",
             "label": "TensorFlow"
           },
           {
             "slug": "xgboost",
             "label": "XGBoost"
+          },
+          {
+            "slug": "yolo",
+            "label": "Ultralytics YOLO v8"
           }
         ]
       },
