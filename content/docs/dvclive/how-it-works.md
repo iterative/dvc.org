@@ -119,7 +119,7 @@ also enable features like queuing, parameter tuning, and grid searches.
 
 DVCLive by default [generates] its own `dvc.yaml` file to configure the
 experiment results, but you can create your own `dvc.yaml` file at the base of
-your repository (or elsewhere) to define a [pipeline](#run-with-dvc) or
+your repository (or elsewhere) to define a [pipeline](#setup-to-run-with-dvc) or
 [customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
 Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
 experiment run. A pipeline stage for model training might look like:

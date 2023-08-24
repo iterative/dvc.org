@@ -357,11 +357,10 @@ See also `dvc params diff` to compare params across project version.
 <admon type="tip">
 
 Metrics and plots outputs described below come from earlier versions of DVC and
-remain as a convenience. However, metrics and plots typically don't need to be
-stage outputs since they're small enough for Git to store directly (if not, they
-can be in `outs`), and they're unlikely to be dependencies of downstream stages.
-Instead, use [DVCLive] or add "top-level" [metrics](#metrics) and
-[plots](#plots).
+remain as a convenience. You can instead define metrics and plots separate from
+your pipeline with [DVCLive] or add "top-level" [metrics](#metrics) and
+[plots](#plots). You can optionally include them as regular `outs` in the
+pipeline.
 
 </admon>
 
@@ -384,6 +383,13 @@ stages:
       - auc.json:
           cache: false
 ```
+
+<admon type="tip">
+
+`cache: false` is typical here, since they're small enough for Git to store
+directly.
+
+</admon>
 
 The commands in `dvc metrics` and `dvc plots` help you display and compare
 metrics and plots.

@@ -217,9 +217,9 @@ Outputs can be dependencies of subsequent stages (as explained earlier). So when
 they change, DVC may need to reproduce downstream stages as well (handled
 automatically).
 
-DVC can also track [metrics] and [plots] files, but they typically do not need
-to be included in stage outputs since they are small enough to store in Git and
-are not likely to be dependencies of subsequent stages.
+DVC can also track [metrics] and [plots] files, which can optionally be added as
+stage outputs, or even added with `cache: false` in `dvc.yaml` since they are
+often small enough to store in Git.
 
 <admon type="info">
 

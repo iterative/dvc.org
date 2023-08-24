@@ -166,4 +166,4 @@ information about how to [setup a pipeline] to work with DVCLive.
 [pipelines]: /doc/user-guide/pipelines
 [add DVCLive to a pipeline]: /doc/start/data-management/metrics-parameters-plots
 [add a pipeline to DVCLive code]: /doc/start/experiments/experiment-pipelines
-[setup your pipeline]: /doc/dvclive/how-it-works#run-with-dvc
+[setup a pipeline]: /doc/dvclive/how-it-works#setup-to-run-with-dvc
