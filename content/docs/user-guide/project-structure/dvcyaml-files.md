@@ -57,7 +57,7 @@ metrics:
 
 Metrics are key/value pairs saved in structured files that map a metric name to
 a numeric value. See `dvc metrics` for more information and how to compare among
-experiments.
+experiments, or [DVCLive] for a helper to log metrics.
 
 ## Params
 
@@ -84,7 +84,8 @@ If the ID is an arbitrary string, a file path must be provided in the `y` field
 
 <admon icon="book">
 
-Refer to [Visualizing Plots] and `dvc plots show` for more examples.
+Refer to [Visualizing Plots] and `dvc plots show` for more examples, and refer
+to [DVCLive] for a helper to log plots.
 
 [visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
@@ -847,3 +848,5 @@ Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
 `dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages) and
 [`matrix` stages](#matrix-stages), individual stages are expanded (no `foreach`
 or `matrix` structures are preserved).
+
+[DVCLive]: /doc/dvclive

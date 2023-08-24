@@ -88,31 +88,38 @@ all the current metrics (without comparisons).
 
 ## Examples
 
-Start by creating a metrics file and commit it (see the `-M` option of
-`dvc stage add` for more details):
+Start with a simple Python script to generate metrics:
+
+```python
+# train.py
+import random
+from dvclive import Live
+
+with Live() as live:
+    live.log_metric("AUC", random.random())
+    live.log_metric("TP", random.randint(0, 1000))
+```
+
+Run the script and commit it:
 
 ```cli
-$ dvc stage add -n eval -M metrics.json \
-                'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
-
-$ dvc repro
-
-$ cat metrics.json
-{"AUC": 0.9643, "TP": 527}
-
-$ git add dvc.* metrics.json
-$ git commit -m "Add metrics file"
+$ python train.py
+$ git add train.py dvclive
+$ git commit -m "Add metrics"
 ```
 
 Now let's simulate a change in our AUC metric:
 
 ```cli
-$ echo '{"AUC":0.9671, "TP":531}' > metrics.json
+$ python train.py
 
-$ git diff
-...
--{"AUC":0.9643, "TP":527}
-+{"AUC":0.9671, "TP":531}
+$ git diff -- dvclive/metrics.json
+ {
+-    "AUC": 0.7891189181402177,
+-    "TP": 215
++    "AUC": 0.18113944203594523,
++    "TP": 768
+ }
 ```
 
 To see the change, let's run `dvc metrics diff`. This compares our current
@@ -121,9 +128,9 @@ had in the latest commit (`HEAD`):
 
 ```cli
 $ dvc metrics diff
-Path          Metric    HEAD    workspace  Change
-metrics.json  AUC       0.9643  0.9671     0.0028
-metrics.json  TP        527     531        4
+Path                  Metric    HEAD     workspace    Change
+dvclive/metrics.json  AUC       0.78912  0.18114      -0.60798
+dvclive/metrics.json  TP        215      768          553
 ```
 
 ## Example: compare metrics among specific versions
@@ -133,7 +140,7 @@ two [revisions](https://git-scm.com/docs/revisions)):
 
 ```cli
 $ dvc metrics diff --targets metrics.json -- 305fb8b c7bef55
-Path          Metric    305fb8b  c7bef55  Change
-metrics.json  AUC       0.9643   0.9743   0.0100
-metrics.json  TP        527      516      -11
+Path                  Metric    305fb8b  c7bef55  Change
+dvclive/metrics.json  AUC       0.9643   0.9743   0.0100
+dvclive/metrics.json  TP        527      516      -11
 ```
