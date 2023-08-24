@@ -157,8 +157,13 @@ for more details.
 
 ## Run with DVC
 
-You can [run experiments with DVC] using [pipelines]. See examples of how to
-[add DVCLive to a pipeline] or [add a pipeline to DVCLive code], or get more
+Experimenting in Python interactively (like in notebooks) is great for
+exploration, but eventually you may need a more structured way to run
+reproducible experiments. By configuring DVC [pipelines], you can [run
+experiments] with `dvc exp run`. This will track the inputs and outputs of code,
+and enable more advanced workflows like multi-step pipelines and queueing
+multiple experiments or even an entire grid search. See examples of how to [add
+DVCLive to a pipeline] or [add a pipeline to DVCLive code], or get more
 information about how to [setup a pipeline] to work with DVCLive.
 
 [run experiments with DVC]:

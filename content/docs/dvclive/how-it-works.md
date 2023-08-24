@@ -109,17 +109,10 @@ with Git, in which case you can use
 
 ## Setup to Run with DVC
 
-Experimenting in Python interactively (like in notebooks) is great for
-exploration, but eventually you may need a more structured way to run
-reproducible experiments (for example, running a multi-step pipeline or queueing
-multiple experiments). By configuring DVC [pipelines], you can
-[run experiments](/doc/user-guide/experiment-management/running-experiments)
-with `dvc exp run`. This will track the inputs and outputs of your code, and
-also enable features like queuing, parameter tuning, and grid searches.
-
 DVCLive by default [generates] its own `dvc.yaml` file to configure the
 experiment results, but you can create your own `dvc.yaml` file at the base of
-your repository (or elsewhere) to define a [pipeline](#setup-to-run-with-dvc) or
+your repository (or elsewhere) to define a [pipeline](#setup-to-run-with-dvc) to
+run experiments with DVC or
 [customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
 Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
 experiment run. A pipeline stage for model training might look like:
