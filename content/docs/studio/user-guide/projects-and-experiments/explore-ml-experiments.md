@@ -30,24 +30,25 @@ located above the project table.
 
 ### Nested branches
 
-When a Git branch is merged into another branch (e.g., `main`), two
-possibilities exist:
+When a Git branch (e.g., `feature-branch-1`) is merged into another branch
+(e.g., `main`), two possibilities exist:
 
-- The user continues to push more commits to the merged branch, which means that
-  the merged branch contains some commits that are not present in `main`. In
-  this scenario, the project table will display both the `main` branch and the
-  merged branch and the merged branch will show the commits that are not present
-  in `main`.
+- `feature-branch-1` is still active. That is, the user continues to push more
+  commits to this branch. Since the branch now contains new unique commits, the
+  project table will display both `main` and `feature-branch-1` separately.
+  `feature-branch-1` will show the new commits that are not part of `main` while
+  all the merged commits will be shown inside `main`.
 
-- The user does NOT push any more commits to the merged branch, which means that
-  the merged branch does NOT contain any commits that are not present in `main`.
-
-  In this scenario, Iterative Studio considers the merged branch as **"nested"**
-  and does not display it as a separate branch in the project table. This helps
-  to keep the project table concise when there are many branches that get merged
-  into `main` (or some other branch) over time; including all the merged
-  branches in the project table would make the table very large without adding
-  much informational value.
+- `feature-branch-1` is inactive. That is, the user does NOT push any more
+  commits to this branch. Since the branch does not contain any new unique
+  commits, Iterative Studio considers `feature-branch-1` as **"nested"** within
+  `main` and does not display it as a separate branch. This helps to keep the
+  project table concise and reduce clutter that can accumulate over time when
+  inactive branches are not cleaned from the Git repository. After all, those
+  inactive branches usually carry no new information for the purpose of managing
+  experiments. If you would like to display all commits of such an inactive
+  branch, use the
+  [`Commits on branch = feature-branch-1` display filter](#filters).
 
 ## Display preferences
 
@@ -79,18 +80,23 @@ There are two types of filters:
 
     <admon type="info">
 
-    The `Branch`filter displays only the specified branch and its commits.
+    The `Branch` filter displays only the specified branch and its commits.
 
     On the other hand, the `Commits on branch` filter will also display branches
-    that contain any commits **in common** with the specified branch. This is
-    useful when
-    [some Git branches are nested inside other branches](#nested-branches),
-    because of which the nested branches are not displayed in the project table.
-    If you use the `Commits on branch = feature-branch-1` filter (where
-    `feature-branch-1` nested within `main`), commits from this branch are
-    included in the result. These commits appear within the branch into which
-    the nested branch was merged (i.e., `main`). A hint is present indicating
-    that the commits are part of the nested branch `feature-branch-1`.
+    [inside which the specified branch is nested](#nested-branches).
+
+    When a Git branch is nested inside another branch, the project table
+    [does not display the nested branch](#nested-branches). If
+    `feature-branch-1` is nested within `main`, `feature-branch-1` is NOT
+    displayed in the project table even if you apply the
+    `Branch = feature-brach-1` filter.
+
+    In this case, if you would like to filter for commits in `feature-branch-1`,
+    you should use the `Commits on branch = feature-branch-1` filter. This will
+    display the `main` branch with commits that were merged from
+    `feature-branch-1` into `main`. A hint is present to indicate that even
+    though the commits appear inside `main`, they are part of the nested branch
+    `feature-branch-1`.
 
     ![Result of commits on branch filter](https://static.iterative.ai/img/studio/commits_on_branch_filter.png)
 
