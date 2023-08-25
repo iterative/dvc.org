@@ -2,14 +2,13 @@
 
 A set of commands to visualize and compare data series or images from ML
 projects: [show](/doc/command-reference/plots/show),
-[diff](/doc/command-reference/plots/diff),
-[modify](/doc/command-reference/plots/modify) and
+[diff](/doc/command-reference/plots/diff), and
 [templates](/doc/command-reference/plots/templates).
 
 ## Synopsis
 
 ```usage
-usage: dvc plots [-h] [-q | -v] {show,diff,modify,templates} ...
+usage: dvc plots [-h] [-q | -v] {show,diff,templates} ...
 
 positional arguments:
   COMMAND
@@ -17,8 +16,6 @@ positional arguments:
                 definitions in `dvc.yaml`.
     diff        Show multiple versions of a plot by overlaying them
                 in a single image.
-    modify      Modify display properties of data-series plots
-                defined in stages (has no effect on image plots).
     templates   List built-in plots templates or show JSON
                 specification for one.
 ```
