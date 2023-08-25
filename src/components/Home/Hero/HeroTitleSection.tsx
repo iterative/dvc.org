@@ -26,6 +26,8 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
           <h1 className={cn('font-extralight', styles.title)}>
             <span className="font-medium block sm:inline md:block">
               Data Version Control
+              <br />
+              <em>&ndash; and much more &ndash;</em>
             </span>{' '}
             for the <span className="font-medium">GenAI</span> era
           </h1>
@@ -35,9 +37,8 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
         </div>
         <div className={cn('flex-1', 'md:text-justify', 'lg:pl-16')}>
           <p className="text-xl font-extralight md:pl-8 lg:pl-0 leading-10">
-            Manage and version unstructured image, audio, video, and text files
-            in storage and organize your ML modeling process into a reproducible
-            workflow.
+            Manage and version images, audio, video, and text files in storage
+            and organize your ML modeling process into a reproducible workflow.
           </p>
         </div>
       </div>
