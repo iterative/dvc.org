@@ -188,53 +188,6 @@ Refer to the [full format specification] and `dvc plots show` for more details.
 
 </admon>
 
-### Plot outputs
-
-Plots can use any file defined in the project, including <abbr>outputs</abbr> of
-[pipelines]:
-
-```yaml
-plots:
-  - logs.csv:
-      x: epoch
-      y: loss
-stages:
-  build:
-    cmd: python train.py
-    outs:
-      - logs.csv
-  ...
-```
-
-Alternatively, when defining [pipelines], some <abbr>outputs</abbr> (both files
-and directories) can be placed under a `plots` list for the corresponding stage
-in `dvc.yaml`. This will tell DVC that they are intended for visualization.
-
-<admon type="info">
-
-When using `dvc stage add`, use `--plots/--plots-no-cache` instead of
-`--outs/--outs-no-cache`.
-
-</admon>
-
-```yaml
-stages:
-  build:
-    cmd: python train.py
-    plots:
-      - logs.csv:
-        x: epoch
-        y: loss
-  ...
-```
-
-Marking stage outputs as plots is convenient for working with plots at the stage
-level, without having to write top-level `plots` definitions in `dvc.yaml`.
-However, stage-level plots do not support custom plot IDs or multiple data
-sources.
-
-[pipelines]: /doc/start/data-management/data-pipelines
-
 ## Plot templates (data-series only)
 
 DVC uses [Vega-Lite](https://vega.github.io/vega-lite/) JSON specifications to
