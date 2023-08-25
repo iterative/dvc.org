@@ -1,7 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react'
 import cn from 'classnames'
 
-import { ReactComponent as ArrowRight } from '../../../../static/img/arrow-right-black.svg'
 import { ReactComponent as ArrowDown } from '../../../../static/img/arrow-down-white.svg'
 
 import * as styles from './styles.module.css'
@@ -29,8 +28,8 @@ const SectionWrapper = ({
 }) => (
   <div className={cn('w-full flex relative', className)}>
     <div className="absolute w-full h-full flex flex-row">
-      <div className={cn('w-1/2 h-full bg-dark', leftClassName)} />
-      <div className={cn('w-1/2 h-full bg-light', rightClassName)} />
+      <div className={cn('w-1/2 h-full', leftClassName)} />
+      <div className={cn('w-1/2 h-full', rightClassName)} />
     </div>
     <div
       className={cn('w-full z-10 flex m-auto', {
@@ -97,13 +96,10 @@ const HeroSection = () => {
   const stars = useStars()
 
   return (
-    <div className="drop-shadow-2xl">
+    <div className="md:border-y-2 md:border-solid md:border-y-light">
       {/* Title Section */}
-      <SectionWrapper
-        leftClassName="2xl:rounded-tl-xl"
-        rightClassName="2xl:rounded-tr-xl"
-      >
-        <Section className="text-light">
+      <SectionWrapper>
+        <Section>
           <StaticImage
             src="../../../../static/img/logos/dvcx.svg"
             alt="DVCx Logo"
@@ -113,7 +109,7 @@ const HeroSection = () => {
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
             <h2 className="text-3xl font-medium">Dataset factory</h2>
-            <Badge className="bg-light text-dark">Coming soon</Badge>
+            <Badge className="bg-dark text-light">Coming soon</Badge>
           </div>
         </Section>
         <Section>
@@ -149,7 +145,7 @@ const HeroSection = () => {
             className={styles.heroViz}
             alt="Visualization"
           />
-          <div className={cn(styles.heroDesc, styles.dvcxDesc, 'text-white')}>
+          <div className={cn(styles.heroDesc, styles.dvcxDesc)}>
             <strong>Explore</strong> and <strong>enrich</strong> annotated
             datasets with custom embeddings, auto-labeling, and bias removal at
             billion-file scale — without modifying your data.
@@ -165,22 +161,19 @@ const HeroSection = () => {
 
       {/* CTA Section */}
 
-      <SectionWrapper
-        leftClassName="2xl:rounded-bl-xl"
-        rightClassName="2xl:rounded-br-xl"
-      >
-        <Section className="text-light">
+      <SectionWrapper>
+        <Section>
           <CTAButton
-            className="bg-light text-dark"
+            className="bg-dark text-light"
             onClick={() => {
               navigate('#get-started-dvcx', { state: { focusInput: true } })
             }}
           >
-            Join the waitlist
-            <ArrowRight className="ml-4" />
+            Download it now
+            <ArrowDown className="ml-4" />
           </CTAButton>
         </Section>
-        <Section className="text-dark">
+        <Section>
           <CTAButton
             className="bg-dark text-light"
             onClick={() => {
