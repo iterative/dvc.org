@@ -15,11 +15,11 @@
   grid-row: 1;
   max-width: 706px;
   margin: auto;
-  width: 94%;
+  width: 96%;
 }
 
 .heroDesc {
-  @apply pl-4 py-4 pr-6 text-xl sm:text-2xl font-normal text-left;
+  @apply p-4 text-xl sm:text-2xl font-normal text-left;
 
   line-height: 3rem;
 }
