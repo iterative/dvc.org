@@ -430,10 +430,6 @@
             "slug": "diff"
           },
           {
-            "label": "plots modify",
-            "slug": "modify"
-          },
-          {
             "label": "plots templates",
             "slug": "templates"
           }
