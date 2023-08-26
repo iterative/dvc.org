@@ -329,6 +329,10 @@
             "slug": "remove"
           },
           {
+            "label": "exp rename",
+            "slug": "rename"
+          },
+          {
             "label": "exp run",
             "slug": "run"
           },
