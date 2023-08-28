@@ -10,7 +10,7 @@ usage: dvc exp rename [-h] [-q | -v] [--rev <commit>]
                       [experiment] [name]
 
 positional arguments:
-   experiment    Experiments to remove.
+   experiment    Experiments to rename.
    name          Name of new experiment.
 ```
 
