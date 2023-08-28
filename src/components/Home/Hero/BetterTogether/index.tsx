@@ -4,7 +4,7 @@ import { cn } from '../../../../utils'
 
 const BetterTogether = () => {
   return (
-    <HeroContainer className="py-14 bg-purple-200">
+    <HeroContainer className="py-14 bg-blue-100">
       <h2 className={cn('text-center text-3xl font-medium')}>
         DVC<sup>X</sup> and DVC: Better Together
       </h2>
