@@ -46,11 +46,11 @@ When a Git branch (e.g., `feature-branch-1`) is created from another branch
   will be shown inside `main`.
 
 - `feature-branch-1` is inactive (does not contain any commits that are not
-  present in `main`). This can happen if the user
+  present in `main`). This can happen in two cases:
 
-  - either has not pushed any new commits to it
-  - or has merged it into `main` and has not pushed any new commits to it after
-    the merger.
+  - if the user has not pushed any new commits to `feature-branch-1`
+  - if the user has merged `feature-branch-1` into `main` and has not pushed any
+    new commits to it after the merger.
 
   Since the branch does not contain any new unique commits, Iterative Studio
   considers `feature-branch-1` as **"nested"** within `main` and does not
