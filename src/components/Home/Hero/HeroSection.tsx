@@ -112,7 +112,7 @@ const HeroSection = () => {
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
-            <h2 className="text-3xl font-medium">Dataset versioning</h2>
+            <h2 className="text-3xl font-medium">Dataset factory</h2>
             <Badge className="bg-light text-dark">Coming soon</Badge>
           </div>
         </Section>
@@ -125,7 +125,7 @@ const HeroSection = () => {
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
-            <h2 className="text-3xl font-medium">ML model versioning</h2>
+            <h2 className="text-3xl font-medium">Data and model versioning</h2>
             <Link
               href="https://github.com/iterative/dvc"
               className="no-underline"
