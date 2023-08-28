@@ -1,7 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react'
 import cn from 'classnames'
 
-import { ReactComponent as ArrowRight } from '../../../../static/img/arrow-right-black.svg'
 import { ReactComponent as ArrowDown } from '../../../../static/img/arrow-down-white.svg'
 
 import * as styles from './styles.module.css'
@@ -13,42 +12,36 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 interface ISectionProps {
   className?: string
-  leftClassName?: string
-  rightClassName?: string
   children?: React.ReactNode
 }
 
 const SectionWrapper = ({
   className,
-  leftClassName,
-  rightClassName,
   children,
   maxWidth = 'lg'
 }: ISectionProps & {
   maxWidth?: 'lg' | 'xl' | '2xl'
 }) => (
-  <div className={cn('w-full flex relative', className)}>
-    <div className="absolute w-full h-full flex flex-row">
-      <div className={cn('w-1/2 h-full bg-dark', leftClassName)} />
-      <div className={cn('w-1/2 h-full bg-light', rightClassName)} />
-    </div>
-    <div
-      className={cn('w-full z-10 flex m-auto', {
+  <div
+    className={cn(
+      'w-full flex m-auto',
+      {
         'max-w-screen-lg': maxWidth === 'lg',
         'max-w-screen-xl': maxWidth === 'xl',
         'max-w-screen-2xl': maxWidth === '2xl'
-      })}
-    >
-      {children}
-    </div>
+      },
+      className
+    )}
+  >
+    {children}
   </div>
 )
 
 const Section = ({ className, children }: ISectionProps) => (
   <div
     className={cn(
-      'w-1/2 px-6 py-10',
-      'flex flex-col items-center justify-center gap-8',
+      'w-1/2 px-4 py-5 md:px-6 md:py-10',
+      'flex flex-col items-center gap-8',
       'text-center',
       className
     )}
@@ -64,7 +57,7 @@ const Badge = ({ className, children }: ISectionProps) => (
       'w-fit',
       'mx-auto',
       'flex items-center justify-center gap-2',
-      'text-xl font-medium',
+      'text-lg md:text-xl font-medium',
       className
     )}
   >
@@ -82,9 +75,11 @@ export const CTAButton = ({
       'rounded-lg',
       'py-1 px-2',
       'md:py-4 md:px-5',
-      'text-base font-medium ',
-      'md:text-xl',
+      'font-medium ',
+      'text-sm sm:text-base md:text-xl',
       'flex items-center',
+      'gap-2.5',
+      'hover:opacity-80',
       className
     )}
     {...props}
@@ -97,38 +92,34 @@ const HeroSection = () => {
   const stars = useStars()
 
   return (
-    <div className="drop-shadow-2xl">
+    <div className="md:border-y-2 md:border-solid md:border-y-light">
       {/* Title Section */}
-      <SectionWrapper
-        leftClassName="2xl:rounded-tl-xl"
-        rightClassName="2xl:rounded-tr-xl"
-      >
-        <Section className="text-light">
-          <StaticImage
-            src="../../../../static/img/logos/dvcx.svg"
-            alt="DVCx Logo"
-            className="max-w-[210px]"
-          />
+      <SectionWrapper>
+        <Section>
+          <img src="/img/logos/dvcx.svg" alt="DVCx Logo" className="h-28" />
           <div
-            className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
+            className={cn(
+              'flex flex-col gap-4 flex-1 justify-between',
+              'lg:flex-row lg:items-center'
+            )}
           >
-            <h2 className="text-3xl font-medium">Dataset factory</h2>
-            <Badge className="bg-light text-dark">Coming soon</Badge>
+            <h2 className="text-2xl md:text-3xl font-medium">
+              Dataset factory
+            </h2>
+            <Badge className="bg-dark text-light">Coming soon</Badge>
           </div>
         </Section>
         <Section>
-          <StaticImage
-            src="../../../../static/img/logos/dvc.svg"
-            alt="DVC Logo"
-            className="max-w-[210px]"
-          />
+          <img src="/img/logos/dvc.svg" alt="DVC Logo" className="h-28" />
           <div
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
-            <h2 className="text-3xl font-medium">Data and model versioning</h2>
+            <h2 className="text-2xl md:text-3xl font-medium">
+              Data and model versioning
+            </h2>
             <Link
               href="https://github.com/iterative/dvc"
-              className="no-underline"
+              className="no-underline hover:opacity-80"
             >
               <Badge className="bg-dark text-light">
                 {stars && shortenNumber(stars, 1)}
@@ -149,7 +140,7 @@ const HeroSection = () => {
             className={styles.heroViz}
             alt="Visualization"
           />
-          <div className={cn(styles.heroDesc, styles.dvcxDesc, 'text-white')}>
+          <div className={cn(styles.heroDesc, styles.dvcxDesc)}>
             <strong>Explore</strong> and <strong>enrich</strong> annotated
             datasets with custom embeddings, auto-labeling, and bias removal at
             billion-file scale — without modifying your data.
@@ -165,30 +156,29 @@ const HeroSection = () => {
 
       {/* CTA Section */}
 
-      <SectionWrapper
-        leftClassName="2xl:rounded-bl-xl"
-        rightClassName="2xl:rounded-br-xl"
-      >
-        <Section className="text-light">
+      <SectionWrapper>
+        <Section>
           <CTAButton
-            className="bg-light text-dark"
+            className="bg-dark text-light"
             onClick={() => {
               navigate('#get-started-dvcx', { state: { focusInput: true } })
             }}
           >
-            Join the waitlist
-            <ArrowRight className="ml-4" />
+            <span>
+              Download DVC<sup>X</sup>
+            </span>
+            <ArrowDown className="w-4 md:w-6 animate-bounce" />
           </CTAButton>
         </Section>
-        <Section className="text-dark">
+        <Section>
           <CTAButton
             className="bg-dark text-light"
             onClick={() => {
               navigate('#get-started-dvc')
             }}
           >
-            Download it now
-            <ArrowDown className="ml-4" />
+            Download DVC
+            <ArrowDown className="w-4 md:w-6 animate-bounce" />
           </CTAButton>
         </Section>
       </SectionWrapper>
