@@ -575,6 +575,10 @@
         "label": "DVCFileSystem"
       },
       {
+        "slug": "artifacts_show",
+        "label": "artifacts_show()"
+      },
+      {
         "slug": "exp_show",
         "label": "exp_show()"
       },
