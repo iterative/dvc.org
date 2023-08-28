@@ -241,6 +241,17 @@
         "slug": "add"
       },
       {
+        "label": "artifacts",
+        "slug": "artifacts",
+        "source": "artifacts/index.md",
+        "children": [
+          {
+            "label": "artifacts get",
+            "slug": "get"
+          }
+        ]
+      },
+      {
         "label": "cache",
         "slug": "cache",
         "source": "cache/index.md",
