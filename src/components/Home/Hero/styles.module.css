@@ -19,13 +19,19 @@
   grid-row: 1;
   max-width: 706px;
   margin: auto;
-  width: 96%;
+  width: 90%;
+
+  @media screen(md) {
+    width: 100%;
+  }
 }
 
 .heroDesc {
   @apply p-4 text-xl sm:text-2xl font-normal text-left;
 
-  line-height: 3rem;
+  @media screen(md) {
+    line-height: 3rem;
+  }
 }
 
 .dvcxDesc {
