@@ -24,12 +24,15 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
           )}
         >
           <h1 className={cn('font-extralight', styles.title)}>
-            <span className="font-medium block sm:inline md:block">
+            <span className="font-medium">
               Data Version Control
               <br />
-              <em>&ndash; and much more &ndash;</em>
-            </span>{' '}
-            for the <span className="font-medium">GenAI</span> era
+              <em className="text-3xl md:text-4xl italic">
+                &ndash; and much more &ndash;
+              </em>
+              <br />
+            </span>
+            for the <strong className="font-medium">GenAI</strong> era
           </h1>
           <p className="text-2xl mt-4 leading-normal">
             Free and open source, forever.
