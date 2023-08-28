@@ -1,6 +1,10 @@
 .title {
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.5;
+
+  @media screen(md) {
+    font-size: 40px;
+  }
 }
 
 .gridContainer {
