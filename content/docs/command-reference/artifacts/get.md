@@ -103,3 +103,39 @@ artifact from the project's default DVC remote.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example: Download an artifact from a DVC remote
+
+```cli
+$ dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --rev=v1.0.0
+Downloaded 1 file(s) to 'model.pkl'
+```
+
+In this example, we download version `v1.0.0` of the artifact. Since we have no
+Studio credentials set in our environment, `dvc artifacts get` will download the
+artifact from the default DVC remote defined in the repository.
+
+## Example: Download an artifact using a Studio token
+
+```cli
+$ DVC_STUDIO_TOKEN=mytoken dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --stage=prod
+Downloaded 1 file(s) to 'model.pkl'
+```
+
+In this example, we download stage `prod` of the artifact. Since we have set our
+Studio access token in the `DVC_STUDIO_TOKEN` environment variable,
+`dvc artifacts get` will download the artifact via the Studio Model Registry
+rather than from a DVC remote.
+
+## Example: Download an artifact defined in a specific `dvc.yaml` file
+
+```cli
+$ dvc artifacts get https://github.com/iterative/lstm_seq2seq.git results/dvc.yaml:best
+Downloaded 1 file(s) to 'epoch=0-step=16.ckpt'
+```
+
+In this example, we download the latest version of the `best` artifact. In this
+case, the artifact is defined in `results/dvc.yaml` so we must include the path
+to the `dvc.yaml` file when addressing the artifact. Since we do not specify
+`--rev` or `--stage`, `dvc artifacts get` will download the latest version of
+the artifact by default.
