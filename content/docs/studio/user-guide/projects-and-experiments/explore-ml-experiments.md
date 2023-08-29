@@ -30,24 +30,35 @@ located above the project table.
 
 ### Nested branches
 
-When a Git branch (e.g., `feature-branch-1`) is merged into another branch
+When a Git branch (e.g., `feature-branch-1`) is created from another branch
 (e.g., `main`), two possibilities exist:
 
-- `feature-branch-1` is still active. That is, the user continues to push more
-  commits to this branch. Since the branch now contains new unique commits, the
-  project table will display both `main` and `feature-branch-1` separately.
-  `feature-branch-1` will show the new commits that are not part of `main` while
-  all the merged commits will be shown inside `main`.
+- `feature-branch-1` is still active (contains commits that are not present in
+  `main`). This can happen if the user has pushed new commits to this branch and
 
-- `feature-branch-1` is inactive. That is, the user does NOT push any more
-  commits to this branch. Since the branch does not contain any new unique
-  commits, Iterative Studio considers `feature-branch-1` as **"nested"** within
-  `main` and does not display it as a separate branch. This helps to keep the
-  project table concise and reduce clutter that can accumulate over time when
-  inactive branches are not cleaned from the Git repository. After all, those
-  inactive branches usually carry no new information for the purpose of managing
-  experiments. If you would like to display all commits of such an inactive
-  branch, use the
+  - either hasn't merged it into `main` yet
+  - or has merged it into `main` but has continued to push more new commits to
+    it after the merger.
+
+  Since the branch now contains new unique commits, the project table will
+  display both `main` and `feature-branch-1` separately. `feature-branch-1` will
+  show the new commits that are not part of `main` while all the merged commits
+  will be shown inside `main`.
+
+- `feature-branch-1` is inactive (does not contain any commits that are not
+  present in `main`). This can happen in two cases:
+
+  - if the user has not pushed any new commits to `feature-branch-1`
+  - if the user has merged `feature-branch-1` into `main` and has not pushed any
+    new commits to it after the merger.
+
+  Since the branch does not contain any new unique commits, Iterative Studio
+  considers `feature-branch-1` as **"nested"** within `main` and does not
+  display it as a separate branch. This helps to keep the project table concise
+  and reduce clutter that can accumulate over time when inactive branches are
+  not cleaned from the Git repository. After all, those inactive branches
+  usually carry no new information for the purpose of managing experiments. If
+  you would like to display all commits of such an inactive branch, use the
   [`Commits on branch = feature-branch-1` display filter](#filters).
 
 ## Display preferences
