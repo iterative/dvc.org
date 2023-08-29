@@ -30,8 +30,7 @@ located above the project table.
 
 One simple way to briefly describe your experiments is to use meaningful commit
 messages. If you're running experiments with `dvc exp run`, use the
-[`--message` option](https://dvc.org/doc/command-reference/exp/run#-m) to
-provide the message.
+[`--message` option](/doc/command-reference/exp/run#-m) to provide the message.
 
 </admon>
 
