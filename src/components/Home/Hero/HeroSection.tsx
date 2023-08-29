@@ -135,8 +135,10 @@ const HeroSection = () => {
       {/* Visualization Section */}
       <SectionWrapper maxWidth="2xl">
         <div className={cn(styles.gridContainer)}>
-          <img
-            src={'/img/landing/Hero Visualization.svg'}
+          <StaticImage
+            src={'../../../../static/img/landing/Hero Visualization.svg'}
+            quality={100}
+            formats={['avif', 'webp', 'auto']}
             className={styles.heroViz}
             alt="Visualization"
           />
