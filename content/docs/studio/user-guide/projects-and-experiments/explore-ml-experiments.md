@@ -24,9 +24,16 @@ displayed can be found
 To manually check for updates in your repository, use the `Reload` button 🔄
 located above the project table.
 
-<!-- To do: Replace the following image with one that contains dvc exp and live experiment rows.-->
-
 ![](https://static.iterative.ai/img/studio/view_components_1.gif)
+
+<admon type="tip">
+
+One simple way to briefly describe your experiments is to use meaningful commit
+messages. If you're running experiments with `dvc exp run`, use the
+[`--message` option](https://dvc.org/doc/command-reference/exp/run#-m) to
+provide the message.
+
+</admon>
 
 ### Nested branches
 
