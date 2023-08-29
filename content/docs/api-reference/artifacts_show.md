@@ -1,7 +1,8 @@
 # dvc.api.artifacts_show()
 
-Get the path and Git revision for an artifact tracked in a <abbr>DVC
-repository</abbr>.
+Get the path and Git revision for an
+[artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) tracked in
+a <abbr>DVC repository</abbr>.
 
 ```py
 def artifacts_show(
@@ -45,7 +46,17 @@ version of the model will be returned.
 
 ## Parameters
 
-- `name` (required) - name of the artifact.
+- `name` (required) - name of the artifact. By default DVC will search for
+  artifacts declared in a `dvc.yaml` file located at the root of the DVC
+  repository. Artifacts declared in other `dvc.yaml` files should be addressed
+  in the form `path/to/dvc.yaml:artifact_name`.
+
+<admon icon="tip">
+
+DVC also accepts GTO/Studio Model Registry style artifact names in the form
+`path/to:artifact_name` (where `dvc.yaml` is omitted).
+
+</admon>
 
 - `version` - version of the artifact (mutually exclusive with `stage`).
 

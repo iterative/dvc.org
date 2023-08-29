@@ -20,11 +20,14 @@ positional arguments:
 
 ## Description
 
-Provides an easy way to download artifacts tracked in a DVC project.
-`dvc artifacts get` supports downloading artifacts both from the
+Provides a way to download artifacts tracked in a DVC project. Unlike `dvc get`,
+`dvc artifacts get` supports downloading an artifact by name, rather than by
+path. Likewise, `dvc artifacts get` supports downloading a registered artifact
+version or stage, instead of requiring a specified Git revision.
+
+`dvc artifacts get` also supports downloading artifacts both from the
 [Studio Model Registry](/doc/studio/user-guide/model-registry) and from DVC
-remotes. Unlike `dvc get`, `dvc artifacts get` supports downloading an artifact
-by name, rather than by path.
+remotes.
 
 <admon type="tip">
 
@@ -40,14 +43,24 @@ the artifact. Both HTTP and SSH protocols are supported (e.g.
 `[user@]server:project.git`). `url` can also be a local file system path
 (including the current project e.g. `.`).
 
-The `name` argument specifies the name of the artifact to download.
+The `name` argument specifies the name of the artifact to download. By default
+DVC will search for artifacts declared in a `dvc.yaml` file located at the root
+of the DVC repository. Artifacts declared in other `dvc.yaml` files should be
+addressed in the form `path/to/dvc.yaml:artifact_name`.
+
+<admon icon="tip">
+
+DVC also accepts GTO/Studio Model Registry style names in the form
+`path/to:artifact_name` (where `dvc.yaml` is omitted).
+
+</admon>
 
 <admon type="info">
 
-`dvc artifacts get` will first try to download artifacts from Studio. If you do
-not have a valid Studio token, or the artifact is not tracked in the Studio
-Model Registry, DVC will fall back to downloading the artifact from the
-project's default DVC remote.
+`dvc artifacts get` will first try to download artifacts via the Studio Model
+Registry. If you do not have a valid Studio token, or the artifact is not
+tracked in the Studio Model Registry, DVC will fall back to downloading the
+artifact from the project's default DVC remote.
 
 </admon>
 
