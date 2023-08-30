@@ -378,7 +378,7 @@ CLI].
 
 ## My models have disappeared even though I did not remove (deprecate) them
 
-When a project is deleted from the projects dashboard, all its models get
+When a project is deleted from Iterative Studio, all its models get
 automatically removed from the model registry. So check if the project has been
 removed. If yes, you can [add the project][create a project] again. Deleting a
 project from Iterative Studio does not delete any commits or tags from the Git

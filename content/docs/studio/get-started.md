@@ -1,9 +1,9 @@
 # Get Started with Iterative Studio
 
-Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard using
-your GitHub.com, GitLab.com, or Bitbucket.org account, or with your email
-address. Upon sign-in, the Projects dashboard opens. It includes some `Demo`
-projects for you to explore.
+Sign in to [Iterative Studio](https://studio.iterative.ai/) using your
+GitHub.com, GitLab.com, or Bitbucket.org account, or with your email address.
+Upon sign-in, the Projects dashboard opens. It includes some `Demo` projects for
+you to explore.
 
 <admon type="tip">
 
