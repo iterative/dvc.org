@@ -24,7 +24,7 @@ These actions are also available in the model details page:
 <img src="https://static.iterative.ai/img/studio/model-registry-deregister.png" alt="Deprecate model" width="400px"/>
 </p>
 
-- Click on the the relevant stage assignment pill in the `Stages` section to
+- Click on the relevant stage assignment pill in the `Stages` section to
   reveal the `Unassign stage` menu item.
 
 <p align="center">
