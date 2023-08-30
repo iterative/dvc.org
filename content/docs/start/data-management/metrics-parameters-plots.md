@@ -30,10 +30,6 @@ $ dvc stage add -n evaluate \
   python src/evaluate.py model.pkl data/features
 ```
 
-[`evaluate.py`] uses [DVCLive] to write scalar metrics values (e.g. `AUC`) and
-plots data (e.g. `ROC curve`) to files in the `eval` directory that DVC can
-parse to compare and visualize across iterations.
-
 [earlier pipeline]: /doc/start/data-management/data-pipelines
 
 <details>
@@ -59,15 +55,19 @@ stage outputs the same way outputs were added in previous stages.
 
 </details>
 
+[`evaluate.py`] uses [DVCLive] to write scalar metrics values (e.g. `AUC`) and
+plots data (e.g. `ROC curve`) to files in the `eval` directory that DVC can
+parse to compare and visualize across iterations. DVCLive can configure metrics
+and plots for you if you call `Live.make_dvcyaml()`, or you can customize
+metrics and plots by [configuring them][plots files] in the same `dvc.yaml` file
+where your stage definitions are saved.
+
 <details>
 
 ### 💡 Expand to see how to customize metrics and plots
 
-DVCLive can configure metrics and plots for you if you call
-`Live.make_dvcyaml()`, or you can customize metrics and plots by [configuring
-them][plots files] in the same `dvc.yaml` file where your stage definitions are
-saved. For example, to combine train and test data, and to set other custom
-attributes like titles, we add the following to `dvc.yaml`:
+To combine train and test data, and to set other custom attributes like titles,
+we add the following to `dvc.yaml`:
 
 ```yaml
 metrics:
@@ -106,6 +106,8 @@ $ dvc repro
 $ git add .gitignore dvc.yaml dvc.lock eval
 $ git commit -a -m "Create evaluation stage"
 ```
+
+## Viewing metrics and plots
 
 You can view metrics and plots from the command line, or you can load your
 project in VS Code and use the [DVC Extension] to view metrics, plots, and more.
