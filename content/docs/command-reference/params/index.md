@@ -34,7 +34,7 @@ paths:
 ```
 
 To start tracking parameters, list their names under the `params` field of
-`dvc.yaml` (manually or with the the `-p`/`--params` option of `dvc stage add`).
+`dvc.yaml` (manually or with the `-p`/`--params` option of `dvc stage add`).
 For example:
 
 ```yaml
