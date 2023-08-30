@@ -32,7 +32,7 @@ These actions are also available in the model details page:
 </p>
 
 <admon type="tip">
-To remove all of a project's models from Iterative Studio without deprecating them, you can simply delete the project from your projects dashboard.
+To remove all of a project's models from Iterative Studio without deprecating them, you can simply delete the project.
 </admon>
 
 <admon type="info">
