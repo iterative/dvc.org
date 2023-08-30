@@ -99,7 +99,8 @@ efficiency:
 [replace them]: /doc/user-guide/how-to/update-tracked-files
 
 <admon type="tip">   
-Use `dvc version` in a DVC repository (with an existing cache folder) to display supported file link types.
+Use `dvc version` in a DVC repository (with an existing cache folder) to display
+supported file link types.
 </admon>
 
 ## Configuring DVC cache file link type
