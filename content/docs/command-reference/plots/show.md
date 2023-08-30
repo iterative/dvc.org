@@ -411,8 +411,8 @@ $ dvc plots show --show-vega logs.csv -y accuracy
 ## Custom HTML templates
 
 It's possible to supply an HTML file to `dvc plots show` and `dvc plots diff` by
-using the `--html-template` option. This allows you to customize the
-container where DVC will inject plots it generates.
+using the `--html-template` option. This allows you to customize the container
+where DVC will inject plots it generates.
 
 > ⚠️ This is a separate feature from
 > [custom Vega-Lite templates](/doc/command-reference/plots/templates).
