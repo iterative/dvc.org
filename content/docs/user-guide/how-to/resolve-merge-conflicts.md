@@ -6,8 +6,8 @@ from multiple team members.'
 
 # How to Resolve Merge Conflicts in DVC Metafiles
 
-Sometimes multiple team members work on the the same DVC-tracked data. When the
-time comes to combine their changes, merge conflicts can occur in Git-tracked
+Sometimes multiple team members work on the same DVC-tracked data. When the time
+comes to combine their changes, merge conflicts can occur in Git-tracked
 <abbr>DVC files</abbr>, which need to be resolved.
 
 ## `dvc.yaml`
