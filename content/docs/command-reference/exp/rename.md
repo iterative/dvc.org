@@ -5,7 +5,7 @@ Rename a specific experiment from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc exp rename [-h] [-q | -v] [--rev <commit>]
+usage: dvc exp rename [-h] [-q | -v]
                       [-g <git_remote>]
                       [experiment] [name]
 
@@ -20,9 +20,6 @@ Renames one experiment, indicated by name (see `dvc exp run`) or rev.
 
 ## Options
 
-- `--rev <commit>` - rename experiments derived from the specified `<commit>` as
-  baseline.
-
 - `-g`, `--git-remote` - Name or URL of the Git remote to rename the experiment
   from
 
@@ -35,7 +32,7 @@ Renames one experiment, indicated by name (see `dvc exp run`) or rev.
 
 ## Examples
 
-Let's say we have `dvc exp run` 3 experiments in our project:
+Let's say we have created 3 experiments in our project using `dvc exp run`:
 
 ```cli
 $ dvc exp list
@@ -45,7 +42,8 @@ master:
         lucid-lair
 ```
 
-To rename any of them, give their names to `dvc exp rename`:
+To rename any of them, pass the original and new experiment names to
+`dvc exp rename`:
 
 ```cli
 $ dvc exp rename conic-ease renamed-exp
@@ -57,10 +55,9 @@ master:
         lucid-lair
 ```
 
-The experiment named "conic-ease" has now been renamed to "renamed-exp" as seen
-from the output of `dvc exp list`.
+The experiment named "conic-ease" has now been renamed to "renamed-exp".
 
-We can also remove experiments from a remote Git repository:
+We can also rename an experiment from a remote Git repository:
 
 ```cli
 $ dvc exp push myremote
