@@ -46,7 +46,7 @@ Studio if you configure the CI job accordingly. [Learn
 more][live-metrics-and-plots]
 
 To **add model metadata** to your repositories, you can use Iterative Studio
-Model Registry, or the underlying [GTO] or [MLEM]. [Learn more][model-registry]
+Model Registry, or the underlying DVC. [Learn more][model-registry]
 
 [on project settings]:
   /doc/studio/user-guide/projects-and-experiments/configure-a-project#non-dvc-repositories
@@ -63,8 +63,6 @@ Model Registry, or the underlying [GTO] or [MLEM]. [Learn more][model-registry]
 [live-metrics-and-plots]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
-[gto]: https://mlem.ai/doc/gto
-[mlem]: https://mlem.ai/
 [store and share your data and model files]:
   /doc/start/data-management/data-versioning#storing-and-sharing
 [create data registries]: /doc/use-cases/data-registry

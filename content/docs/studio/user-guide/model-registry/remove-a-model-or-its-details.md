@@ -2,7 +2,7 @@
 
 When you remove (deprecate) a model, deregister a version or unassign a stage,
 Iterative Studio
-[creates Git tags that indicate the action](https://mlem.ai/doc/gto/command-reference/deprecate)
+[creates Git tags that indicate the action](/doc/gto/command-reference/deprecate)
 and saves the tags in your Git repository.
 
 These actions can be found in the 3-dot menu next to the model name in the

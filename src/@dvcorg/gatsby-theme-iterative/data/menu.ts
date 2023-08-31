@@ -156,15 +156,6 @@ const menuData: IMenuData = {
       href: 'https://cml.dev/',
       img: '/img/cml_icon-color--square_vector.svg',
       imgAlt: 'CML logo'
-    },
-    {
-      title: 'MLEM',
-      description:
-        'Open-source model registry and deployment tool for ML projects',
-      iconClass: styles.mlemIcon,
-      href: 'https://mlem.ai/',
-      img: '/img/mlem-icon.svg',
-      imgAlt: 'MLEM logo'
     }
   ]
 }

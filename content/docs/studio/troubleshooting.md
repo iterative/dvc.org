@@ -391,8 +391,8 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[`gto` cli]: /doc/gto/command-reference
 [create a project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project

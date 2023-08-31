@@ -71,7 +71,7 @@ before the commit is created:
 
 [connected project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [mlem]: https://mlem.ai/
 [dvclive]: /doc/dvclive
 [log_artifact]: /doc/dvclive/live/log_artifact

@@ -34,7 +34,7 @@ written.
 
 To find out the Git revision, you can check the
 [list of Git tags](https://github.com/iterative/example-get-started/tags) or use
-[GTO](https://mlem.ai/doc/gto/command-reference/show/):
+[GTO](/doc/gto/command-reference/show/):
 
 ```cli
 $ gto show text-classification@latest --ref
@@ -78,4 +78,4 @@ from CI/CD using MLEM.
 
 Finally, you can find examples of building a Docker image with a model and
 deploying it to the cloud in the
-[GTO user guide](https://mlem.ai/doc/gto/user-guide#acting-on-new-registrations-and-assignments).
+[GTO user guide](/doc/gto/user-guide#acting-on-new-registrations-and-assignments).
