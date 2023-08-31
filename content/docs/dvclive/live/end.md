@@ -38,6 +38,6 @@ By default, `Live.end()` will call `Live.make_summary()`, `Live.make_dvcyaml()`,
 and `Live.make_report()`.
 
 If `save_dvc_exp=True` has been passed to `Live`, it will
-[save a new DVC experiment](/doc/dvclive/how-it-works#track-the-results) and
-write a `dvc.yaml` file configuring what DVC will show for logged plots,
-metrics, and parameters.
+[save a new DVC experiment](/doc/dvclive/how-it-works#git-integration) and write
+a `dvc.yaml` file configuring what DVC will show for logged plots, metrics, and
+parameters.

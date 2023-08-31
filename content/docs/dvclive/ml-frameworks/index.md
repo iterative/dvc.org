@@ -11,8 +11,10 @@ We currently support the following _ML Frameworks_:
 - [Optuna](/doc/dvclive/ml-frameworks/optuna)
 - [PyTorch](/doc/dvclive/ml-frameworks/pytorch)
 - [PyTorch Lightning](/doc/dvclive/ml-frameworks/pytorch-lightning)
+- [Scikit-learn](/doc/dvclive/ml-frameworks/scikit-learn)
 - [TensorFlow](/doc/dvclive/ml-frameworks/tensorflow)
 - [XGBoost](/doc/dvclive/ml-frameworks/xgboost)
+- [Ultralytics YOLO v8](/doc/dvclive/ml-frameworks/yolo)
 
 The DVCLive team is happy to extend the list with more _ML Frameworks_ as
 needed. Check the

@@ -49,3 +49,20 @@ Custom GitLab server support is available only within a team workspace, and is
 available to all Iterative Studio teams (free and paid).
 
 </admon>
+
+## My GitLab server is behind a firewall. What should I do?
+
+Firstly, the GitLab server must be exposed to the internet to enable remote
+access from the Studio. You can limit the traffic on the firewall to the server
+to allow access from our IP addresses only, which are:
+
+```
+3.21.85.173/32
+3.142.203.124/32
+```
+
+Additionally, the DNS records associated with the GitLab server should be
+publicly available to resolve the server name. Use
+[DNS Propagation Checker](https://www.whatsmydns.net/) to confirm if the GitLab
+domain is resolvable. If you still have any trouble setting up the connection to
+your GitLab server, please [contact us](/doc/studio/troubleshooting#support).

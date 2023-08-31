@@ -57,7 +57,7 @@ metrics:
 
 Metrics are key/value pairs saved in structured files that map a metric name to
 a numeric value. See `dvc metrics` for more information and how to compare among
-experiments.
+experiments, or [DVCLive] for a helper to log metrics.
 
 ## Params
 
@@ -82,15 +82,10 @@ directory path (relative to the location of `dvc.yaml`) or an arbitrary string.
 If the ID is an arbitrary string, a file path must be provided in the `y` field
 (`x` file path is always optional and cannot be the only path provided).
 
-In addition to these "top-level plots," users can mark specific stage
-<abbr>outputs</abbr> as [plot outputs](#metrics-and-plots-outputs). DVC will
-collect both types and display everything conforming to each plot configuration.
-If any stage plot files or directories are also used in a top-level definition,
-DVC will create separate rendering for each type.
-
 <admon icon="book">
 
-Refer to [Visualizing Plots] and `dvc plots show` for more examples.
+Refer to [Visualizing Plots] and `dvc plots show` for more examples, and refer
+to [DVCLive] for a helper to log plots.
 
 [visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
@@ -98,75 +93,66 @@ Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 
 ### Available configuration fields
 
-- `y` - source for the Y axis data:
+- `y` (_string, list, dict_) - source for the Y axis data:
 
-  - **Top-level plots** (_string, list, dict_):
+  If plot ID is a path, one or more column/field names is expected. For example:
 
-    If plot ID is a path, one or more column/field names is expected. For
-    example:
+  ```yaml
+  plots:
+    - regression_hist.csv:
+        y: mean_squared_error
+    - classifier_hist.csv:
+        y: [acc, loss]
+  ```
 
-    ```yaml
-    plots:
-      - regression_hist.csv:
-          y: mean_squared_error
-      - classifier_hist.csv:
-          y: [acc, loss]
-    ```
+  If plot ID is an arbitrary string, a dictionary of file paths mapped to
+  column/field names is expected. For example:
 
-    If plot ID is an arbitrary string, a dictionary of file paths mapped to
-    column/field names is expected. For example:
+  ```yaml
+  plots:
+    - train_val_test:
+        y:
+          train.csv: [train_acc, val_acc]
+          test.csv: test_acc
+  ```
 
-    ```yaml
-    plots:
-      - train_val_test:
-          y:
-            train.csv: [train_acc, val_acc]
-            test.csv: test_acc
-    ```
+- `x` (_string, dict_) - source for the X axis data. An auto-generated _step_
+  field is used by default.
 
-  - **Plot outputs** (_string_): one column/field name.
+  If plot ID is a path, one column/field name is expected. For example:
 
-- `x` - source for the X axis data. An auto-generated _step_ field is used by
-  default.
+  ```yaml
+  plots:
+    - classifier_hist.csv:
+        y: [acc, loss]
+        x: epoch
+  ```
 
-  - **Top-level plots** (_string, dict_):
+  If plot ID is an arbitrary string, `x` may either be one column/field name, or
+  a dictionary of file paths each mapped to one column/field name (the number of
+  column/field names must match the number in `y`).
 
-    If plot ID is a path, one column/field name is expected. For example:
-
-    ```yaml
-    plots:
-      - classifier_hist.csv:
-          y: [acc, loss]
-          x: epoch
-    ```
-
-    If plot ID is an arbitrary string, `x` may either be one column/field name,
-    or a dictionary of file paths each mapped to one column/field name (the
-    number of column/field names must match the number in `y`).
-
-    ```yaml
-    plots:
-      - train_val_test: # single x
-          y:
-            train.csv: [train_acc, val_acc]
-            test.csv: test_acc
-          x: epoch
-      - roc_vs_prc: # x dict
-          y:
-            precision_recall.json: precision
-            roc.json: tpr
-          x:
-            precision_recall.json: recall
-            roc.json: fpr
-      - confusion: # different x and y paths
-          y:
-            dir/preds.csv: predicted
-          x:
-            dir/actual.csv: actual
-          template: confusion
-    ```
-
-  - **Plot outputs** (_string_): one column/field name.
+  ```yaml
+  plots:
+    - train_val_test: # single x
+        y:
+          train.csv: [train_acc, val_acc]
+          test.csv: test_acc
+        x: epoch
+    - roc_vs_prc: # x dict
+        y:
+          precision_recall.json: precision
+          roc.json: tpr
+        x:
+          precision_recall.json: recall
+          roc.json: fpr
+    - confusion: # different x and y paths
+        y:
+          dir/preds.csv: predicted
+        x:
+          dir/actual.csv: actual
+        template: confusion
+  ```
 
 - `y_label` (_string_) - Y axis label. If all `y` data sources have the same
   field name, that will be the default. Otherwise, it's "y".
@@ -174,10 +160,8 @@ Refer to [Visualizing Plots] and `dvc plots show` for more examples.
 - `x_label` (_string_) - X axis label. If all `y` data sources have the same
   field name, that will be the default. Otherwise, it's "x".
 
-- `title` (_string_) - header for the plot(s). Defaults:
-
-  - **Top-level plots**: `path/to/dvc.yaml::plot_id`
-  - **Plot outputs**: `path/to/data.csv`
+- `title` (_string_) - header for the plot(s). Defaults to
+  `path/to/dvc.yaml::plot_id`.
 
 - `template` (_string_) - [plot template]. Defaults to `linear`.
 
@@ -234,7 +218,7 @@ them).
 
 <admon type="tip">
 
-Output files may be viable data sources for [top-level plots](#plots).
+Output files may be viable data sources for [plots](#plots).
 
 </admon>
 
@@ -351,38 +335,6 @@ See also `dvc params diff` to compare params across project version.
 
 </admon>
 
-### Metrics and Plots outputs
-
-Like common outputs, <abbr>metrics</abbr> and <abbr>plots</abbr> files are
-produced by the stage `cmd`. However, their purpose is different. Typically they
-contain metadata to evaluate pipeline processes. Example:
-
-```yaml
-stages:
-  build:
-    cmd: python train.py
-    deps:
-      - features.csv
-    outs:
-      - model.pt
-    metrics:
-      - accuracy.json:
-          cache: false
-    plots:
-      - auc.json:
-          cache: false
-```
-
-<admon type="tip">
-
-`cache: false` is typical here, since they're small enough for Git to store
-directly.
-
-</admon>
-
-The commands in `dvc metrics` and `dvc plots` help you display and compare
-metrics and plots.
-
 ## Stage entries
 
 These are the fields that are accepted in each stage:
@@ -394,8 +346,6 @@ These are the fields that are accepted in each stage:
 | `deps`           | List of <abbr>dependency</abbr> paths (relative to `wdir`).                                                                                                                                                                                                                                     |
 | `outs`           | List of <abbr>output</abbr> paths (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                                      |
 | `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                               |
-| `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc stage add`.                                                                            |
-| `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc stage add`. |
 | `frozen`         | Whether or not this stage is frozen (prevented from execution during reproduction)                                                                                                                                                                                                              |
 | `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                     |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                                 |
@@ -618,6 +568,13 @@ value), escape it with a backslash, e.g. `\${...`.
 
 ## `foreach` stages
 
+<admon type="info">
+
+Checkout [`matrix` stages](#matrix-stages) for a more powerful way to define
+multiple stages.
+
+</admon>
+
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
@@ -745,6 +702,91 @@ Both individual foreach stages (`train@1`) and groups of foreach stages
 
 </admon>
 
+## `matrix` stages
+
+`matrix` allows you do to define multiple stages based on combinations of
+variables. A `matrix` element accepts one or more variables, each iterating over
+a list of values. For example:
+
+```yaml
+stages:
+  train:
+    matrix:
+      model: [cnn, xgb]
+      feature: [feature1, feature2, feature3]
+    cmd: ./train.py --feature ${item.feature} ${item.model}
+    outs:
+      - ${item.model}.pkl
+```
+
+You can reference each variable in your stage definition using the `item`
+dictionary key. In the above example, you can access `item.model` and
+`item.feature`.
+
+On `dvc repro`, dvc will expand the definition to multiple stages for each
+possible combination of the variables. In the above example, dvc will create six
+stages, one for each combination of `model` and`feature`. The name of the stages
+will be generated by appending values of the variables to the stage name after a
+`@` as with [foreach](#foreach). For example, dvc will create the following
+stages:
+
+```cli
+$ dvc stage list
+train@cnn-feature1  Outputs cnn.pkl
+train@cnn-feature2  Outputs cnn.pkl
+train@cnn-feature3  Outputs cnn.pkl
+train@xgb-feature1  Outputs xgb.pkl
+train@xgb-feature2  Outputs xgb.pkl
+train@xgb-feature3  Outputs xgb.pkl
+```
+
+Both individual matrix stages (eg: `train@cnn-feature1`) and group of matrix
+stages (`train`) may be used in commands that accept stage targets.
+
+The values in variables can be simple values such as string, integer, etc and
+composite values such as list, dictionary, etc. For example:
+
+```yaml
+matrix:
+  config:
+    - n_estimators: 150
+      max_depth: 20
+    - n_estimators: 120
+      max_depth: 30
+  labels:
+    - [label1, label2, label3]
+    - [labelX, labelY, labelZ]
+```
+
+When using a list or a dictionary, dvc will generate the name of stages based on
+variable name and the index of the value. In the above example, generated stages
+may look like `train@labels0-config0`.
+
+Templating can also be used inside `matrix`, so you can reference
+[variables](#variables) defined elsewhere. For example, you can define values in
+`params.yaml` file and use them in `matrix`.
+
+```yaml
+# params.yaml
+datasets: [dataset1/, dataset2/]
+processors: [processor1, processor2]
+```
+
+```yaml{4-6}
+# dvc.yaml
+stages:
+  preprocess:
+    matrix:
+      processor: ${processors}
+      dataset: ${datasets}
+
+    cmd: ./preprocess.py ${item.dataset} ${item.processor}
+    deps:
+    - ${item.dataset}
+    outs:
+    - ${item.dataset}-${item.processor}.json
+```
+
 ## dvc.lock file
 
 To record the state of your pipeline(s) and help track its <abbr>outputs</abbr>,
@@ -803,5 +845,8 @@ and all forms of
 Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
 (under `params`), under each parameters file name.
 [templated `dvc.yaml`](#templating) files, the actual values are written to
-`dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages),
-individual stages are expanded (no `foreach` structures are preserved).
+`dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages) and
+[`matrix` stages](#matrix-stages), individual stages are expanded (no `foreach`
+or `matrix` structures are preserved).
+
+[DVCLive]: /doc/dvclive

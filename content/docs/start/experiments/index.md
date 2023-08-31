@@ -30,12 +30,13 @@ description:
 
 <admon type="tip">
 
-These are captured in our [example-dvc-experiments] repo (see its
-[tags][example-dvc-experiments-tags]).
+These are captured in our [example-get-started-experiments] repo (see its
+[tags][example-get-started-experiments-tags]).
 
-[example-dvc-experiments]: https://github.com/iterative/example-dvc-experiments
-[example-dvc-experiments-tags]:
-  https://github.com/iterative/example-dvc-experiments/tags
+[example-get-started-experiments]:
+  https://github.com/iterative/example-get-started-experiments
+[example-get-started-experiments-tags]:
+  https://github.com/iterative/example-get-started-experiments/tags
 
 </admon>
 

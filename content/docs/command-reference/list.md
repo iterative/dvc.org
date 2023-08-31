@@ -12,6 +12,9 @@ and by Git.
 ```usage
 usage: dvc list [-h] [-q | -v] [-R] [--dvc-only]
                 [--json] [--rev [<commit>]]
+                [--config <path>] [--remote <name>]
+                [--remote-config [<name>=<value> ...]]
+                [--size]
                 url [path]
 
 positional arguments:
@@ -70,6 +73,18 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
+
+- `--config <path>` - path to a [config file](/doc/command-reference/config)
+  that will be merged with the config in the target repository.
+
+- `--remote <name>` - name of the `dvc remote` to set as a default in the target
+  repository.
+
+- `--remote-config [<name>=<value> ...]` - `dvc remote` config options to merge
+  with a remote's config (default or one specified by `--remote`) in the target
+  repository.
+
+- `--size` - show sizes.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -160,4 +175,16 @@ installed):
 
 ```cli
 $ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip
+```
+
+## Example: Set AWS profile for default remote
+
+```cli
+$ dvc list https://github.com/iterative/example-get-started-s3 data/prepared --remote-config profile=myprofile
+```
+
+## Example: Set default remote
+
+```cli
+$ dvc list https://github.com/iterative/example-get-started-s3 data/prepared --remote myremote
 ```

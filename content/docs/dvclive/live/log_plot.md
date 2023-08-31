@@ -2,7 +2,6 @@
 
 ```py
 def log_plot(
-    self,
     name: str,
     datapoints: List[Dict],
     x: str,

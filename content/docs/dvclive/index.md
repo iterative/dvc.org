@@ -27,7 +27,7 @@ See [`Live()`](/doc/dvclive/live) for details.
 <admon type="info">
 
 Including `save_dvc_exp=True` will automatically
-[track the results](/doc/dvclive/how-it-works#track-the-results).
+[track the results](/doc/dvclive/how-it-works#git-integration).
 
 </admon>
 
@@ -154,3 +154,21 @@ with Live(save_dvc_exp=True) as live:
 After you run your training code, all the logged data will be stored in the
 `dvclive` directory. Check the [DVCLive outputs](/doc/dvclive/how-it-works) page
 for more details.
+
+## Run with DVC
+
+Experimenting in Python interactively (like in notebooks) is great for
+exploration, but eventually you may need a more structured way to run
+reproducible experiments. By configuring DVC [pipelines], you can [run
+experiments] with `dvc exp run`. This will track the inputs and outputs of code,
+and enable more advanced workflows like multi-step pipelines and queueing
+multiple experiments or even an entire grid search. See examples of how to [add
+DVCLive to a pipeline] or [add a pipeline to DVCLive code], or get more
+information about how to [setup a pipeline] to work with DVCLive.
+
+[run experiments with DVC]:
+  /doc/user-guide/experiment-management/running-experiments
+[pipelines]: /doc/user-guide/pipelines
+[add DVCLive to a pipeline]: /doc/start/data-management/metrics-parameters-plots
+[add a pipeline to DVCLive code]: /doc/start/experiments/experiment-pipelines
+[setup a pipeline]: /doc/dvclive/how-it-works#setup-to-run-with-dvc

@@ -9,7 +9,10 @@ directory.
 
 ```usage
 usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>]
-               [--show-url] [-j <number>] [-f] url path
+               [--show-url] [-j <number>] [-f]
+               [--config <path>] [--remote <name>]
+               [--remote-config [<name>=<value> ...]]
+               url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -81,6 +84,16 @@ name.
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. If `path` is a Git-tracked file,
   this option is ignored.
+
+- `--config <path>` - path to a [config file](/doc/command-reference/config)
+  that will be merged with the config in the target repository.
+
+- `--remote <name>` - name of the `dvc remote` to set as a default in the target
+  repository.
+
+- `--remote-config [<name>=<value> ...]` - `dvc remote` config options to merge
+  with a remote's config (default or one specified by `--remote`) in the target
+  repository.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -219,3 +232,15 @@ Untracked files:
 [get started example repo]: https://github.com/iterative/example-get-started
 [switching between versions]:
   /doc/start/data-management/data-versioning#switching-between-versions
+
+## Example: Set AWS profile for default remote
+
+```cli
+$ dvc get https://github.com/iterative/example-get-started-s3 data/prepared --remote-config profile=myprofile
+```
+
+## Example: Set default remote
+
+```cli
+$ dvc get https://github.com/iterative/example-get-started-s3 data/prepared --remote myremote
+```

@@ -36,9 +36,13 @@ with Live() as live:
 
 ## Description
 
-Uses `dvc add` to track `path` with DVC, generating a `{path}.dvc` file. When
-combined with [`save_dvc_exp=True`](/doc/dvclive#initialize-dvclive), it will
-ensure that `{path}.dvc` is included in the experiment.
+Log `path`, saving its contents to DVC storage. Also annotate with any included
+metadata fields (for example, to be consumed in [Studio model registry] or
+automation scenarios).
+
+If `cache=True` (which is the default), uses `dvc add` to [track] `path` with
+DVC, saving it to the DVC <abbr>cache</abbr> and generating a `{path}.dvc` file
+that acts as a pointer to the cached data.
 
 If `Live` was initialized with `dvcyaml=True` (which is the default) and you
 include any of the optional metadata fields (`type`, `name`, `desc`, `labels`,
@@ -46,7 +50,7 @@ include any of the optional metadata fields (`type`, `name`, `desc`, `labels`,
 [artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) and all
 the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
 `type="model"` will mark it as a `model` for DVC and will make it appear in
-[Studio Model Registry](/doc/studio).
+[Studio model registry].
 
 ## Parameters
 
@@ -71,12 +75,15 @@ the metadata passed as arguments to the corresponding `dvc.yaml`. Passing
   artifact. Useful if you don't want to track the original path in your repo
   (for example, it is outside the repo or in a Git-ignored directory).
 
-- `cache` - <abbr>cache</abbr> the files with DVC to
-  [track](/doc/dvclive/how-it-works#track-large-artifacts-with-dvc) them outside
-  of Git. Defaults to `True`, but set to `False` if you want to annotate
-  metadata about the artifact without storing a copy in the DVC cache.
+- `cache` - <abbr>cache</abbr> the files with DVC to [track] them outside of
+  Git. Defaults to `True`, but set to `False` if you want to annotate metadata
+  about the artifact without storing a copy in the DVC cache.
 
 ## Exceptions
 
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `path` does not
   have a supported type.
+
+[track]: /doc/dvclive/how-it-works#track-large-artifacts-with-dvc
+[Studio model registry]:
+  /doc/studio/user-guide/model-registry/what-is-a-model-registry

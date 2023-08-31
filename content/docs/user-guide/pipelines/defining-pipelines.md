@@ -209,31 +209,17 @@ Use `dvc params diff` to compare parameters across project versions.
 ## Outputs
 
 Stage outputs are files (or directories) written by <abbr>pipelines</abbr>, for
-example machine learning models, intermediate artifacts, as well as data [plots]
-and performance [metrics]. These files are <abbr>cached</abbr> by DVC
-automatically, and tracked with the help of `dvc.lock` files (or `.dvc` files,
-see `dvc add`).
+example machine learning models and intermediate artifacts. These files are
+<abbr>cached</abbr> by DVC automatically, and tracked with the help of
+`dvc.lock` files (or `.dvc` files, see `dvc add`).
 
 Outputs can be dependencies of subsequent stages (as explained earlier). So when
 they change, DVC may need to reproduce downstream stages as well (handled
 automatically).
 
-The types of outputs are:
-
-- Files and directories: Typically data to feed to intermediate stages, as well
-  as the final results of a pipeline (e.g. a dataset or an ML model).
-
-- [Metrics]: DVC supports small text files that usually contain model
-  performance metrics from the evaluation, validation, or testing phases of the
-  ML lifecycle. DVC allows to compare produced metrics with one another using
-  `dvc metrics diff` and presents the results as a table with `dvc metrics show`
-  or `dvc exp show`.
-
-- [Plots]: Different kinds of data that can be visually graphed. For example
-  contrast ML performance statistics or continuous metrics from multiple
-  experiments. `dvc plots show` can generate charts for certain data files or
-  render custom image files for you, or you can compare different ones with
-  `dvc plots diff`.
+DVC can also track [metrics] and [plots] files, which can optionally be added as
+stage outputs, or even added with `cache: false` in `dvc.yaml` since they are
+often small enough to store in Git.
 
 <admon type="info">
 

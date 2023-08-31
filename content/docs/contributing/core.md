@@ -74,6 +74,13 @@ $ pre-commit install
 That's it. You should be ready to make changes, run tests, and make commits! If
 you experience any problems, don't hesitate to ping us in our [chat](/chat).
 
+## Debugging
+
+The DVC command line interface has several debugging tools that are hidden by
+default in the `--help`, but will be shown if `--verbose` is also specified. See
+[The DVC Debugging Wiki](https://github.com/iterative/dvc/wiki/Debugging,-Profiling-and-Benchmarking-DVC)
+for more information on these debugging options.
+
 ## Writing tests
 
 We have unit tests in `tests/unit/` and functional tests in `tests/func/`.

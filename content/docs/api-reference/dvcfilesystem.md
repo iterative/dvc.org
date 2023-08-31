@@ -127,6 +127,26 @@ This downloads all the files in "data" directory - be it Git-tracked or
 DVC-tracked into a local directory "data". Similarly, DVC might fetch files from
 remote if they don't exist in the cache.
 
+## Using subrepos
+
+If you have
+[initialized DVC in a subdirectory](https://dvc.org/doc/command-reference/init#initializing-dvc-in-subdirectories)
+of the Git repository, use `DVCFileSystem(url, subrepos=True)` to access the
+subdirectory.
+
+```py
+>>> from dvc.api import DVCFileSystem
+>>> url = "https://github.com/iterative/monorepo-example.git"
+# by default, DVC initialized in a subdirectory will be ignored
+>>> fs = DVCFileSystem(url, rev="develop")
+>>> fs.find("nlp", detail=False, dvc_only=True)
+[]
+# use subrepos=True to list those files
+>>> fs = DVCFileSystem(url, subrepos=True, rev="develop")
+>>> fs.find("nlp", detail=False, dvc_only=True)
+['nlp/data/data.xml', 'nlp/data/features/test.pkl', 'nlp/data/features/train.pkl', 'nlp/data/prepared/test.tsv', 'nlp/data/prepared/train.tsv', 'nlp/eval/importance.png', 'nlp/model.pkl']
+```
+
 ## API Reference
 
 As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),

@@ -41,9 +41,6 @@ specified with the `--targets` option (any valid plots file is accepted).
 The plot style can be customized with [plot templates], using the `--template`
 option. See `dvc plots` to learn more about plots files and templates.
 
-> Note that the default behavior of this command can be modified per metrics
-> file with `dvc plots modify`.
-
 Another way to display plots is the `dvc plots show` command, which just lists
 all the current plots, without comparisons.
 

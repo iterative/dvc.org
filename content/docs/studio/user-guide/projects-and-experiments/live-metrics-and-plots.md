@@ -63,7 +63,7 @@ with Live(save_dvc_exp=True) as live:
 <admon type="tip">
 
 Using `save_dvc_exp=True` will ensure that
-[the results get saved as a DVC experiment](/doc/dvclive/how-it-works#track-the-results).
+[the results get saved as a DVC experiment](/doc/dvclive/how-it-works#git-integration).
 
 </admon>
 

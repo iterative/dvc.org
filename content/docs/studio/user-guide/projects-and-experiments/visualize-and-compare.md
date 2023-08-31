@@ -24,15 +24,15 @@ your repository:
 To open the `Plots` pane and display plots, select one or more experiments and
 click on the `Show plots` button.
 
-![](https://static.iterative.ai/img/studio/plots.png)
-
-## Live plots
+### Live plots
 
 You can [send live updates to your plots][live-metrics-and-plots] with
 [DVCLive]. The number of recent updates to the live metrics are
 [displayed](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#git-history-and-live-metrics)
 in the `Live` icon. Live plots are also shown and updated in real-time in the
 plots pane along with all other plots.
+
+![Live plots](https://static.iterative.ai/img/studio/live-plots.gif)
 
 ## Generate trend charts
 

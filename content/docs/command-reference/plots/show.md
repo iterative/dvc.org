@@ -30,13 +30,6 @@ All plots defined in `dvc.yaml` are used by default, but you can specify any
 The plot style can be customized with [plot templates], using the `--template`
 option. To learn more about plots file formats and templates, see `dvc plots`.
 
-<admon type="tip">
-
-The default behavior of this command can be modified per [stage plot] file with
-`dvc plots modify`.
-
-</admon>
-
 [certain data]:
   /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
@@ -205,7 +198,7 @@ $ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
-## Example: Top-level plots
+## Example: `dvc.yaml` plots
 
 ### Simple plot definition
 
