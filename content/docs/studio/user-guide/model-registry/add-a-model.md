@@ -32,8 +32,8 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 4. Enter the path of the model file as follows:
 
    - If the model file is in the Git repository or is in the cloud but is
-     tracked by DVC and/or [MLEM], enter the relative path of the model (from
-     the repository root).
+     tracked by DVC, enter the relative path of the model (from the repository
+     root).
    - Otherwise, enter the URL to the model file in the cloud. Iterative Studio
      will ask you for the repository path where the dvc reference to the model
      should be saved.
@@ -71,8 +71,7 @@ before the commit is created:
 
 [connected project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
-[gto]: https://mlem.ai/doc/gto
-[mlem]: https://mlem.ai/
+[gto]: /doc/gto
 [dvclive]: /doc/dvclive
 [log_artifact]: /doc/dvclive/live/log_artifact
 [`artifacts`]: /doc/user-guide/project-structure/dvcyaml-files#artifacts
