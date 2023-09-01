@@ -93,9 +93,6 @@ like REST API to check if changes happened. As an example, check out
 
 ### CI/CD workflow examples
 
-We use MLEM in these examples, but you can use any other tool to build, publish
-or deploy your models, or do any other action with your artifacts.
-
 <toggle>
 <tab title="GitHub: build a Docker image">
 
@@ -130,15 +127,9 @@ jobs:
           pip install -r requirements.txt
       - if: steps.gto.outputs.event == 'registration'
         run: |
-          mlem build docker \
-              --model '${{ steps.gto.outputs.path }}' \
-              --image.name ${{ steps.gto.outputs.name }} \
-              --image.tag '${{ steps.gto.outputs.version }}' \
-              --image.registry docker_io
+          # build docker image and push it to Dockerhub
+          ...
 ```
-
-[Learn more](/doc/user-guide/building) about building Docker images, Python
-packages or preparing `docker build`-ready folders from your models with MLEM.
 
 </tab>
 <tab title="GitHub: deploy a model">
@@ -173,40 +164,9 @@ jobs:
           pip install -r requirements.txt
       - if: steps.gto.outputs.event == 'assignment'
         run: |
-          # TODO: check this works
-          mlem deployment run \
-            --load deploy/${{ steps.gto.outputs.stage }} \
-            --model ${{ steps.gto.outputs.path }}
+          # deploy your model here
+          ...
 ```
-
-This relies on having [deployment declarations](/doc/user-guide/deploying) in
-the `deploy/` directory, such as:
-
-```yaml
-# deploy/dev.yaml
-object_type: deployment
-type: heroku
-app_name: mlem-dev
-```
-
-This declaration is read by MLEM in CI and the model promoted to `dev` is
-deployed to https://mlem-dev.herokuapp.com.
-
-Note, that you need to provide environment variables to deploy to Heroku and
-update the [deployment state](/doc/user-guide/deploying). The location for the
-state should be
-[configured](/doc/user-guide/deploying#setting-up-remote-state-manager) in MLEM
-config file:
-
-```yaml
-# .mlem.yaml
-core:
-  state:
-    uri: s3://bucket/path
-```
-
-Check out [another example](https://github.com/iterative/example-gto/tree/mlem)
-of MLEM model deployment in the `main` branch of the `example-gto` repo.
 
 </tab>
 </toggle>
