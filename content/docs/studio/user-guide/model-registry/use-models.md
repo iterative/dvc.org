@@ -78,7 +78,7 @@ DVC model registry**, refer the
 This tutorial adapts the above example workflow to get the details of the
 requested deployment. It then uses the `dvc get --show-url` command to get the
 model file path. Finally, it invokes a custom deployment script that deploys the
-model to Amazon SageMaker.
+model to **Amazon SageMaker**.
 [Here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
 is the complete workflow script.
 
