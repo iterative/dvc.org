@@ -74,11 +74,7 @@ model binaries if needed.
 
 For help **building an end-to-flow from model training to deployment using the
 DVC model registry**, refer the
-[tutorial on automating model deployment](https://iterative.ai/blog/sagemaker-model-deployment).
-This tutorial adapts the above example workflow to get the details of the
-requested deployment. It then uses the `dvc get --show-url` command to get the
-model file path. Finally, it invokes a custom deployment script that deploys the
-model to **Amazon SageMaker**.
+[tutorial on automating model deployment to Sagemaker](https://iterative.ai/blog/sagemaker-model-deployment).
 [Here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
 is the complete workflow script.
 
