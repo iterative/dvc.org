@@ -14,7 +14,8 @@ remote projects with DVC directly.
 
 ## DVC API
 
-You can use your existing DVC projects through [Python API] as normal, for example:
+You can use your existing DVC projects through [Python API] as normal, for
+example:
 
 ```python
 import dvc.api
