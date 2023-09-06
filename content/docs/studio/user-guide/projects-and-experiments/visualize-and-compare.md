@@ -21,8 +21,11 @@ your repository:
 2. Image files in JPEG, GIF, or PNG format. These images will be displayed as-is
    in Iterative Studio.
 
-To open the `Plots` pane and display plots, toggle the plots icon for one or
-more experiments and click on the `Plots` button.
+To open the `Plots` pane and display plots, select the plots toggle (highlighted
+in orange below) for one or more experiments and click on the `Plots` button
+(highlighted in blue below).
+
+![Plots toggle](/img/studio-toggle-plots.png)
 
 ### Live plots
 
