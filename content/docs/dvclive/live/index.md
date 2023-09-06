@@ -71,8 +71,6 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `report` - Any of `html`, `notebook`, `md` or `None`. See
   `Live.make_report()`. Defaults to `None`.
 
-  If `report` is `None`, `Live.make_report()` won't generate any local file.
-
 - `save_dvc_exp` - If `True` , DVCLive will create a new
   [DVC experiment](/doc/dvclive/how-it-works#git-integration) as part of
   `Live.end()`. Defaults to `True`.
