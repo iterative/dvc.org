@@ -75,6 +75,9 @@ You can use `Live()` as a context manager. When exiting the context manager,
   [DVC experiment](/doc/dvclive/how-it-works#git-integration) as part of
   `Live.end()`. Defaults to `True`.
 
+  If you are using DVCLive inside a <abbr>DVC Pipeline</abbr> and running with
+  `dvc exp run`, the option will be ignored.
+
 - `dvcyaml` - If `True`, DVCLive will write
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
   metrics, plots, and parameters to
