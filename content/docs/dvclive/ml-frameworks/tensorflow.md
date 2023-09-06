@@ -22,7 +22,7 @@ let's consider the following example, extracted from the
 ```python
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
 
     for epoch in range(epochs):
         start_time = time.time()

@@ -51,7 +51,7 @@ Where:
 from dvclive import Live
 from dvclive.catalyst import DVCLiveCallback
 
-with Live("custom_dir", save_dvc_exp=True) as live:
+with Live("custom_dir") as live:
     runner.train(
         model=model,
         criterion=criterion,
@@ -77,7 +77,7 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[
-      DVCLiveCallback(save_dvc_exp=True, dir="custom_dir")])
+      DVCLiveCallback(dir="custom_dir")])
 ```
 
 [`live`]: /doc/dvclive/live
