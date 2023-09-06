@@ -30,7 +30,7 @@ from DVCLive import Live
 
 ...
 
-with Live(save_dvc_exp=True, report="notebook") as live:
+with Live(report="notebook") as live:
 
     live.log_params(params)
 
