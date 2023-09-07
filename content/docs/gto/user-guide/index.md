@@ -1,20 +1,19 @@
 # User Guide
 
-GTO lets you build an Artifact Registry or [Model Registry] out of your Git
-repository by creating annotated
+GTO lets you build an artifact registry or <abbr>model registry</abbr> out of
+your Git repository by creating annotated
 [Git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) with a
 [special format](#git-tags-format). To read more about building a Model
 Registry, read this [Studio User Guide].
 
-[Model Registry]: http://dvc.org/doc/use-cases/model-registry
 [Studio User Guide]:
   https://dvc.org/doc/studio/user-guide/model-registry/what-is-a-model-registry
 
 ## Finding the right artifact version
 
-You may need to get a specific artifact version to a certain environment, most
-likely the latest one or the one currently assigned to the stage. Use `gto show`
-to find the [Git reference] (tag) you need.
+You may need to get a specific <abbr>artifact</abbr> version to a certain
+environment, most likely the latest one or the one currently assigned to the
+stage. Use `gto show` to find the [Git reference] (tag) you need.
 
 [git reference]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 

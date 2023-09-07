@@ -160,7 +160,6 @@ Do not add the entire DVCLive [directory] since DVC does not expect the DVCLive
 </admon>
 
 [directory]: /doc/dvclive/how-it-works#directory-structure
-[studio model registry]: /doc/studio/user-guide/model-registry
 [cache]: /doc/start/data-management/data-versioning
 [outputs]: /doc/user-guide/pipelines/defining-pipelines#outputs
 [dependencies]: /doc/user-guide/pipelines/defining-pipelines#simple-dependencies

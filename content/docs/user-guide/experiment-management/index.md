@@ -59,9 +59,9 @@ specify how to [visualize plots]).
 ## Models and datasets
 
 DVC can track models or datasets as part of your repo, and you can manage those
-models with [Studio Model Registry]. One way to log models or other artifacts is
-with [DVCLive]. You can also track them with `dvc add` and declare metadata for
-the [Studio Model Registry] in [`dvc.yaml`][artifacts].
+models in the <abbr>model registry</abbr>. One way to log models or other
+<abbr>artifacts</abbr> is with [DVCLive]. You can also track them with `dvc add`
+and declare metadata for the model registry in `dvc.yaml`.
 
 ## Work with DVC Experiments from a GUI
 
@@ -81,7 +81,6 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [pipeline]: /doc/user-guide/pipelines
 [run]: /doc/user-guide/experiment-management/running-experiments
 [share]: /doc/user-guide/experiment-management/sharing-experiments
-[artifacts]: /doc/user-guide/project-structure/dvcyaml-files#artifacts
 [parameters]: /doc/user-guide/project-structure/dvcyaml-files#params
 [metrics]: /doc/user-guide/project-structure/dvcyaml-files#metrics
 [plots]: /doc/user-guide/project-structure/dvcyaml-files#plots

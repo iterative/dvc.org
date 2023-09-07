@@ -1,12 +1,12 @@
 ---
 description:
-  'Learn how you can use GTO to create Artifact Registry in Git repository'
+  'Learn how you can use GTO to create an artifact registry in a Git repository'
 ---
 
 # Get Started
 
-GTO helps you manage machine learning artifact versions in a Git repository, and
-their deployment stages (testing, shadow, production, etc.).
+GTO helps you manage machine learning <abbr>artifact</abbr> versions in a Git
+repository, and their deployment stages (testing, shadow, production, etc.).
 
 Assuming GTO is already [installed](/doc/gto/install) in your Python
 environment, let's clone an [example model registry] and review it's current
