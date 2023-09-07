@@ -172,8 +172,8 @@ $ dvc status --cloud
 
 $ dvc fetch
 
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 20
 │   └── b786b6e6f80e2b3fcf17827ad18597.dir
 ├── c8
@@ -210,8 +210,8 @@ $ dvc checkout
 ```cli
 $ dvc fetch prepare
 
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 20
 │   └── b786b6e6f80e2b3fcf17827ad18597.dir
 ├── 32
@@ -257,8 +257,8 @@ to retrieve the data up to our third stage, `train`? We can use the
 ```cli
 $ dvc fetch --with-deps train
 
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 20
 │   └── b786b6e6f80e2b3fcf17827ad18597.dir
 ├── c8

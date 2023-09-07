@@ -196,11 +196,11 @@ To verify this instance of `model.pkl` is not in the cache, we must know the
 path to the cached file. In the cache directory, the first two characters of the
 hash value are used as a subdirectory name, and the remaining characters are the
 file name. Therefore, had the file been committed to the cache, it would appear
-in the directory `.dvc/cache/9a`. Let's check:
+in the directory `.dvc/cache/files/md5/9a`. Let's check:
 
 ```cli
-$ ls .dvc/cache/9a
-ls: .dvc/cache/9a: No such file or directory
+$ ls .dvc/cache/files/md5/9a
+ls: .dvc/cache/files/md5/9a: No such file or directory
 ```
 
 If we've determined the changes to `params.yaml` were successful, we can execute
@@ -210,7 +210,7 @@ this set of commands:
 $ dvc commit
 $ dvc status
 Data and pipelines are up to date.
-$ ls .dvc/cache/70
+$ ls .dvc/cache/files/md5/70
 ba000ba83b341a423a81eed8ff9238
 ```
 
