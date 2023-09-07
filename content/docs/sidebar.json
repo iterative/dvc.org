@@ -213,6 +213,10 @@
           {
             "label": "Amazon SageMaker",
             "slug": "sagemaker"
+          },
+          {
+            "label": "Databricks",
+            "slug": "databricks"
           }
         ]
       },
