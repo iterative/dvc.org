@@ -206,8 +206,8 @@ state. We can see exactly what that means by looking in the project's
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ```cli
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 02
 │   └── 423d88d184649a7157a64f28af5a73
 ├── 0b
@@ -225,8 +225,8 @@ $ tree .dvc/cache
 
 10 directories, 9 files
 
-$ tree ~/vault/recursive
-~/vault/recursive
+$ tree ~/vault/recursive/files/md5
+~/vault/recursive/files/md5
 ├── 0b
 │   └── d48000c6a4e359f4b81285abf059b5
 ├── 4a

@@ -84,8 +84,8 @@ Let's now track the directory with `dvc add`, and see what happens in the
 ```cli
 $ dvc add data
 ...
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 26
 │   └── ab0db90d72e28ad0ba1e22ee510510
 └── ad

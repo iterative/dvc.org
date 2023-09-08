@@ -179,7 +179,5 @@ dvclive/metrics/train/epoch/metric.tsv
 ```
 
 [`live`]: /doc/dvclive/live
-[studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
 [`ModelCheckpoint`]:
   https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html

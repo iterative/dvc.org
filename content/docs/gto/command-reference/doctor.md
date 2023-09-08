@@ -1,4 +1,4 @@
-# describe
+# doctor
 
 Display GTO version and check the registry for problems.
 

@@ -1,7 +1,7 @@
 # register
 
-Create an artifact version to signify an important, published or released
-iteration.
+Create an <abbr>artifact</abbr> version to signify an important, published or
+released iteration.
 
 ## Synopsis
 

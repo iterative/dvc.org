@@ -1,6 +1,6 @@
 # deprecate
 
-Deprecate artifact, deregister a version, or unassign a stage.
+Deprecate <abbr>artifact</abbr>, deregister a version, or unassign a stage.
 
 ## Synopsis
 
