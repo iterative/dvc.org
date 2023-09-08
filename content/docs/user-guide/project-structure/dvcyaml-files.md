@@ -15,7 +15,8 @@ with Git along with other <abbr>DVC files</abbr> and your project's code.
 
 ## Artifacts
 
-This section allows you to declare structured metadata about your artifacts.
+This section allows you to declare structured metadata about your
+<abbr>artifacts</abbr>.
 
 ```yaml
 artifacts:
@@ -36,13 +37,11 @@ mandatory):
 - `path` (_string_) - The path to the artifact, either relative to the root of
   the repository or a full path in an external storage such as S3.
 - `type` (_string_) - You can specify artifacts of any `type` and the DVC-based
-  [model registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
-  will pick up any artifacts with type `model`.
+  <abbr>model registry</abbr> will pick up any artifacts with type `model`.
 - `desc` (_string_) - A description of your artifact
 - `labels` (_list_) - Any labels you want to add to the artifact
 - `meta` - Any extra extra information, the content of this element will be
-  ignored by DVC and will not show up in the
-  [model registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry)
+  ignored by DVC and will not show up in the <abbr>model registry</abbr>
 
 Artifact IDs must consist of letters and numbers, and use '-' as separator (but
 not at the start or end).

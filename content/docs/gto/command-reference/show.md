@@ -17,8 +17,8 @@ arguments:
 
 ## Description
 
-This is the entire state of the registry: all artifacts, their latest versions,
-and the versions in each stage.
+This is the entire state of the registry: all <abbr>artifacts</abbr>, their
+latest versions, and the versions in each stage.
 
 ```cli
 $ gto show -r https://github.com/iterative/example-gto
@@ -30,12 +30,6 @@ $ gto show -r https://github.com/iterative/example-gto
 │ cv-class │ v0.1.13  │ -      │ -       │ -          │
 ╘══════════╧══════════╧════════╧═════════╧════════════╛
 ```
-
-Here we'll see artifacts that have Git tags or are annotated in
-`artifacts.yaml`. The artifacts that have annotation, but have no Git tags, are
-considered yet `unregistered` and will be marked with an asterisk, e.g.
-`*annotated`. Use `--all-branches` or `--all-commits` to read `artifacts.yaml`
-from more commits than just `HEAD`.
 
 Add an artifact name to print all of its versions instead:
 
