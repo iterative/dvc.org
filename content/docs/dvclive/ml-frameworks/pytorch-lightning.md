@@ -38,7 +38,7 @@ class LitModule(pl.LightningModule):
         # See Output Format bellow
         self.log("train_metric", metric, on_step=False, on_epoch=True)
 
-dvclive_logger = DVCLiveLogger(save_dvc_exp=True)
+dvclive_logger = DVCLiveLogger()
 
 model = LitModule()
 trainer = pl.Trainer(logger=dvclive_logger)
@@ -94,7 +94,7 @@ registry] or automation scenarios).
 ```python
 from dvclive.lightning import DVCLiveLogger
 
-logger = DVCLiveLogger(save_dvc_exp=True, log_model=True)
+logger = DVCLiveLogger(log_model=True)
 trainer = Trainer(logger=logger)
 trainer.fit(model)
 ```
@@ -104,7 +104,7 @@ trainer.fit(model)
 ```python
 from dvclive.lightning import DVCLiveLogger
 
-logger = DVCLiveLogger(save_dvc_exp=True, log_model="all")
+logger = DVCLiveLogger(log_model="all")
 trainer = Trainer(logger=logger)
 trainer.fit(model)
 ```
@@ -114,7 +114,7 @@ trainer.fit(model)
 ```python
 from dvclive.lightning import DVCLiveLogger
 
-logger = DVCLiveLogger(save_dvc_exp=True, log_model=True),
+logger = DVCLiveLogger(log_model=True),
 checkpoint_callback = ModelCheckpoint(
         dirpath="model",
         monitor="val_acc",
@@ -132,7 +132,7 @@ trainer.fit(model)
 from dvclive import Live
 from dvclive.lightning import DVCLiveLogger
 
-with Live("custom_dir", save_dvc_exp=True) as live:
+with Live("custom_dir") as live:
     trainer = Trainer(
         logger=DVCLiveLogger(experiment=live))
     trainer.fit(model)
@@ -146,7 +146,7 @@ with Live("custom_dir", save_dvc_exp=True) as live:
 from dvclive.lightning import DVCLiveLogger
 
 trainer = Trainer(
-    logger=DVCLiveLogger(save_dvc_exp=True, dir='my_logs_dir'))
+    logger=DVCLiveLogger(dir='my_logs_dir'))
 trainer.fit(model)
 ```
 
@@ -179,7 +179,5 @@ dvclive/metrics/train/epoch/metric.tsv
 ```
 
 [`live`]: /doc/dvclive/live
-[studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
 [`ModelCheckpoint`]:
   https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html

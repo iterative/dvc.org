@@ -16,7 +16,7 @@ from dvclive.xgb import DVCLiveCallback
 
 xgboost.train(
     param, dtrain, num_round=5, evals=[(dval, "eval_data")]
-    callbacks=[DVCLiveCallback("eval_data", save_dvc_exp=True)],
+    callbacks=[DVCLiveCallback("eval_data")],
 )
 ```
 
@@ -39,7 +39,7 @@ xgboost.train(
 from dvclive import Live
 from dvclive.xgb import DVCLiveCallback
 
-with Live("custom_dir", save_dvc_exp=True) as live:
+with Live("custom_dir") as live:
     xgboost.train(
         param,
         dtrain,
@@ -61,7 +61,6 @@ xgboost.train(
     callbacks=[
       DVCLiveCallback(
         "eval_data",
-        save_dvc_exp=True,
         dir="custom_dir")],
     evals=[(dval, "eval_data")])
 ```

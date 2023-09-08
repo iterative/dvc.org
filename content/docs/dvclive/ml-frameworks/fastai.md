@@ -52,7 +52,7 @@ Where:
 from dvclive import Live
 from dvclive.fastai import DVCLiveCallback
 
-with Live("custom_dir", save_dvc_exp=True) as live:
+with Live("custom_dir") as live:
     learn = tabular_learner(data_loader, metrics=accuracy)
     learn.fit_one_cycle(
       n_epoch=2,
@@ -67,7 +67,7 @@ with Live("custom_dir", save_dvc_exp=True) as live:
 ```python
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DVCLiveCallback(save_dvc_exp=True, dir="custom_dir")])
+  cbs=[DVCLiveCallback(dir="custom_dir")])
 ```
 
 [`live`]: /doc/dvclive/live

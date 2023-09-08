@@ -9,8 +9,8 @@ class Live:
         self,
         dir: str = "dvclive",
         resume: bool = False,
-        report: Optional[str] = "auto",
-        save_dvc_exp: bool = False,
+        report: Optional[str] = None,
+        save_dvc_exp: bool = True,
         dvcyaml: bool = True,
         exp_message: Optional[str] = None,
     ):
@@ -68,17 +68,15 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `metrics_file` and start from that point. Defaults to `False`.
 
-- `report` - Any of `auto`, `html`, `notebook`, `md` or `None`. See
-  `Live.make_report()`.
+- `report` - Any of `html`, `notebook`, `md` or `None`. See
+  `Live.make_report()`. Defaults to `None`.
 
-  The `auto` mode (default) will use `md` format if the `CI` env var is present
-  and [matplotlib](https://matplotlib.org/) is installed and `html` otherwise.
-
-  If `report` is `None`, `Live.make_report()` won't generate anything.
-
-- `save_dvc_exp` - If `True`, DVCLive will create a new
+- `save_dvc_exp` - If `True` , DVCLive will create a new
   [DVC experiment](/doc/dvclive/how-it-works#git-integration) as part of
-  `Live.end()`. Defaults to `False`.
+  `Live.end()`. Defaults to `True`.
+
+  If you are using DVCLive inside a <abbr>DVC Pipeline</abbr> and running with
+  `dvc exp run`, the option will be ignored.
 
 - `dvcyaml` - If `True` (default), DVCLive will write
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
