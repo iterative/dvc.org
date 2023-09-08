@@ -2,7 +2,8 @@
 name: Model Registry
 match: [model registry]
 tooltip: >-
-  The model registry connects all of your team's models through Git.  Find, organize,
-  and manage all of them, and use GitOps workflows to version, promote, demote, and
-  deploy them. [Learn more](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
+  The model registry connects all of your team's models through Git. Find,
+  organize, and manage all of them, and use GitOps workflows to version,
+  promote, demote, and deploy them. [Learn
+  more](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
 ---
