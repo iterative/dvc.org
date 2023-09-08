@@ -9,7 +9,7 @@ Download a file or directory tracked by another DVC or Git repository into the
 
 ```usage
 usage: dvc import [-h] [-q | -v]
-                  [-o <path>] [--rev <commit>]
+                  [-o <path>] [-f] [--rev <commit>]
                   [--no-exec | --no-download]
                   [-j <number>]
                   [--config <path>] [--remote <name>]
@@ -92,6 +92,11 @@ file.
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the downloaded file or directory (instead of using the
   current working directory).
+
+- `-f`, `--force` - when using `--out` to specify a local target file or
+  directory, the operation will fail if those paths already exist. this flag
+  will force the operation causing local files/dirs to be overwritten by the
+  command.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
