@@ -108,8 +108,8 @@ const SupportPage: React.FC = () => (
                 support@dvc.org
               </Link>
               . For help with debugging DVC commands, run the commands with the{' '}
-              <span className={styles.accent}>--verbose</span>{' '}
-              flag and include the output if possible.
+              <span className={styles.accent}>--verbose</span> flag and include
+              the output if possible.
             </div>
             <div className={styles.featureFooter}>
               <Link
