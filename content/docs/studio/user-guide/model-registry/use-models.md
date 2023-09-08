@@ -34,7 +34,7 @@ written.
 
 To find out the Git revision, you can check the
 [list of Git tags](https://github.com/iterative/example-get-started/tags) or use
-[GTO](https://mlem.ai/doc/gto/command-reference/show/):
+[GTO](/doc/gto/command-reference/show/):
 
 ```cli
 $ gto show text-classification@latest --ref
@@ -59,12 +59,12 @@ credentials set up in your environment.
 
 ## Deploying and publishing models in CI/CD
 
-A popular deployment option is to use CI/CD pipelines triggered by new Git tags
-to publish or deploy a new model version. Since GTO registers versions and
-assigns stages by creating Git tags, you can set up a CI/CD pipeline to be
+A popular deployment option is to **use CI/CD pipelines triggered by new Git
+tags to publish or deploy a new model version**. Since GTO registers versions
+and assigns stages by creating Git tags, you can set up a CI/CD pipeline to be
 triggered when the tags are pushed to the repository.
 
-To see an actual example, check out
+**To see an example**, check out
 [the workflow in the `example-gto` repository](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml).
 This workflow uses
 [the GTO GitHub Action](https://github.com/iterative/gto-action) that interprets
@@ -72,10 +72,12 @@ a Git tag to find out the model's version and stage assignment (if any), reads
 annotation details such as `path`, `type` and `description`, and downloads the
 model binaries if needed.
 
-The `example-gto` repository also includes an
-[example workflow that deploys a model](https://github.com/iterative/example-gto/blob/mlem/.github/workflows/deploy-model-with-mlem.yml)
-from CI/CD using MLEM.
+For help **building an end-to-flow from model training to deployment using the
+DVC model registry**, refer the
+[tutorial on automating model deployment to Sagemaker](https://iterative.ai/blog/sagemaker-model-deployment).
+[Here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
+is the complete workflow script.
 
-Finally, you can find examples of building a Docker image with a model and
-deploying it to the cloud in the
-[GTO user guide](https://mlem.ai/doc/gto/user-guide#acting-on-new-registrations-and-assignments).
+Finally, you can find examples of **building a Docker image with a model and
+deploying it to the cloud** in the
+[GTO user guide](/doc/gto/user-guide#acting-on-new-registrations-and-assignments).

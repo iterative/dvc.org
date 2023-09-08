@@ -190,8 +190,8 @@ $ cd example-get-started
 
 If you are familiar with the project in our [Get Started](/doc/start) (used in
 these examples), you may remember that the chapter where we train a first
-version of the model corresponds to the the `baseline-experiment` tag in the
-repo. Similarly `bigrams-experiment` points to an improved model (trained using
+version of the model corresponds to the `baseline-experiment` tag in the repo.
+Similarly `bigrams-experiment` points to an improved model (trained using
 bigrams). What if we wanted to have both versions of the model "checked out" at
 the same time? `dvc get` provides an easy way to do this:
 

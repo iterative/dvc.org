@@ -74,7 +74,7 @@ while the original data file was added to `.gitignore`.
 look like this:
 
 ```
-.dvc/cache
+.dvc/cache/files/md5
 └── 22
     └── a1a2931c8370d3aeedd7183606fd7f
 ```

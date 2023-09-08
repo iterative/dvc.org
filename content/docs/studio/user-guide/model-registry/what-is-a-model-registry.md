@@ -21,8 +21,7 @@ You can take a look at Iterative's [public model registry] (read only) to get a
 feel for what's possible.
 
 [semantic versioning]: https://semver.org/
-[gto]: https://mlem.ai/doc/gto
-[mlem]: https://mlem.ai/
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[gto]: /doc/gto
+[`gto` cli]: /doc/gto/command-reference
 [public model registry]: https://studio.iterative.ai/team/Iterative/models
 [dvc]: /doc

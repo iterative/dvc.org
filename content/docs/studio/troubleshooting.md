@@ -378,12 +378,12 @@ CLI].
 
 ## My models have disappeared even though I did not remove (deprecate) them
 
-When a project is deleted from the projects dashboard, all its models get
-automatically removed from the model registry. So check if the project has been
-removed. If yes, you can [add the project][create a project] again. Deleting a
-project from Iterative Studio does not delete any commits or tags from the Git
-repository. So, adding the project back will restore all the models from the
-repository along with their details, including versions and stage assignments.
+When a project is deleted, all its models get automatically removed from the
+model registry. So check if the project has been removed. If yes, you can [add
+the project][create a project] again. Deleting a project from Iterative Studio
+does not delete any commits or tags from the Git repository. So, adding the
+project back will restore all the models from the repository along with their
+details, including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 
@@ -391,8 +391,8 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[`gto` cli]: /doc/gto/command-reference
 [create a project]:
   /doc/studio/user-guide/projects-and-experiments/create-a-project
