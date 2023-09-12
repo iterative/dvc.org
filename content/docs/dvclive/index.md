@@ -166,8 +166,7 @@ multiple experiments or even an entire grid search. See examples of how to [add
 DVCLive to a pipeline] or [add a pipeline to DVCLive code], or get more
 information about how to [setup a pipeline] to work with DVCLive.
 
-[run experiments with DVC]:
-  /doc/user-guide/experiment-management/running-experiments
+[run experiments]: /doc/user-guide/experiment-management/running-experiments
 [pipelines]: /doc/user-guide/pipelines
 [add DVCLive to a pipeline]: /doc/start/data-management/metrics-parameters-plots
 [add a pipeline to DVCLive code]: /doc/start/experiments/experiment-pipelines
