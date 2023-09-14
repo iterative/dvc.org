@@ -1,9 +1,9 @@
 # Manage models
 
 Iterative Studio provides a model registry that you can access by clicking on
-the `Models` tab. Iterative Studio uses your project's `dvc.yaml` files to
-identify ML models and specially formatted Git tags to identify model versions
-and stage assignments.
+the `Models` tab. Your project's `dvc.yaml` files are used to identify ML models
+and specially formatted Git tags are used to identify model versions and stage
+assignments.
 
 To quickly start tracking your models in the Iterative Studio model registry:
 

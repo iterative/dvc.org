@@ -15,7 +15,8 @@ terminal, etc. To quickly start tracking your experiments with Iterative Studio:
 
 - Copy your
   [DVC Studio token](/doc/studio/user-guice/account-and-billing#studio-access-token)
-  and configure your model training environment to use the token:
+  and
+  [configure your model training environment to use the token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token):
 
   ```cli
   dvc config --global studio.token ***
