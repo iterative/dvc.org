@@ -1,5 +1,9 @@
 # Experiment tracking and management
 
+You can submit your experiments from your favorite interface - whether it is
+Jupyter Notebooks, a code editor or IDE like VS Code, the Python cli, the bash
+terminal, etc.
+
 To track and manage experiments,
 [create a project](/doc/studio/uer-guide/experiments/create-a-project) in
 Iterative Studio. A project is an interactive representation of the ML datasets,

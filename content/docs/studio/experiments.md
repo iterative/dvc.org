@@ -1,48 +1,56 @@
 # Run and track experiments
 
-1. A project displays your live and complete experiments, including Git commits
-   and refs. For each experiment, you can compare metrics, parameters, plots,
-   and other files.
+You can submit your experiments from your favorite interface - whether it is
+Jupyter Notebooks, a code editor or IDE like VS Code, the Python cli, the bash
+terminal, etc. To quickly start tracking your experiments with Iterative Studio:
 
-   ![Project table with live plots](https://static.iterative.ai/img/studio/project-table-with-live-plots.gif)
+- Click on `Add a project` to connect Iterative Studio to your ML project's Git
+  repository.
 
-2. Click on `Add a Project` and connect to the Git repository for your Machine
-   Learning project.
+- In your model training environment, install [DVCLive]:
 
-3. Iterative Studio offers a
-   [few different ways to track your experiments](/doc/studio/user-guide/experiments#different-ways-to-track-experiments).
-   To get started quickly, you can track experiments in real-time using
-   [DVCLive]:
+  ```cli
+  pip install dvclive
+  ```
 
-   - Install DVCLive:
+- Copy your
+  [DVC Studio token](/doc/studio/user-guice/account-and-billing#studio-access-token)
+  and configure your model training environment to use the token:
 
-     `pip install dvclive`
+  ```cli
+  dvc config --global studio.token ***
+  ```
 
-   - Copy your DVC Studio token and configure your model training environment to
-     use the token:
+- Use the DVCLive log_metric() method in your model training code:
 
-     `dvc config --global studio.token ***`
+  ```python
+  from dvclive import Live
+  with Live(save_dvc_exp=True) as live:
+    for epoch in range(epochs):
+      live.log_metric("accuracy", accuracy)
+      live.log_metric("loss", loss)
+      live.next_step()
+  ```
 
-   - Add DVCLive to your model training code:
+- Run the training job:
 
-     ```python
-     from dvclive import Live
-     with Live(save_dvc_exp=True) as live:
-       for epoch in range(epochs):
-         live.log_metric("accuracy", accuracy)
-         live.log_metric("loss", loss)
-         live.next_step()
-     ```
+  ```cli
+  python train.py
+  ```
 
-   - Run the training job:
+- The metrics and plots will be [tracked live][live-metrics-and-plots] in the
+  project in Iterative Studio.
 
-     `python train.py`
+## More ways to run and track experiments
 
-4. The metrics will be updated in the project table in real-time.
+Iterative Studio offers more ways to run and track experiments - you can:
 
-5. Open the `Plots` pane to view the live updates to your plots.
+- set up reproducible pipelines with DVC,
+- submit new experiments from the VS Code IDE,
+- submit new experiments from Iterative Studio, and have them run in your own
+  cloud infrastructure.
 
-For more details, check out the
+For details on all these, check out the
 [`experiment management user guide`](/doc/studio/user-guide/experiments).
 
 [project settings]:
