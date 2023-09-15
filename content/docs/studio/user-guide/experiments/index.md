@@ -124,7 +124,7 @@ recommend using DVC to avail of all the features of Iterative Studio.
 [compare]:
   /doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments
 [run-experiments]: /doc/studio/user-guide/experiments/run-experiments
-[model-registry]: /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[model-registry]: /doc/studio/user-guide/model-registry
 [live-metrics-and-plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive

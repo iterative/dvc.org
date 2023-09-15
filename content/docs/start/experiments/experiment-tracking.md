@@ -120,8 +120,7 @@ Framework and any
 also [log additional info](/doc/dvclive#log-data) to be included in the
 experiment. `live.log_artifact("mymodel", type="model")` will
 [track your model with DVC](/doc/dvclive/live/log_artifact) and enable managing
-it with
-[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
+it with [Studio Model Registry](/doc/studio/user-guide/model-registry).
 
 <admon type="info">
 
