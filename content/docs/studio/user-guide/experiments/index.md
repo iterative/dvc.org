@@ -5,16 +5,13 @@ Jupyter Notebooks, a code editor or IDE like [VS Code](/doc/vs-code-extension),
 the Python cli, the bash terminal, etc. You can also [submit new experiments
 from Iterative Studio][run-experiments].
 
-To quickly start tracking your experiments with Iterative Studio, check out the
-[experiments quick start guide](/doc/studio/experiments).
-
-## Different ways to track experiments
-
 You can track live as well as completed experiments in Iterative Studio. First,
 click on `Add a project` to connect Iterative Studio to your ML project's Git
 repository. Then, follow the instructions presented below.
 
-### 1. To track experiments in real-time, use [DVCLive]:
+## Track experiments in real-time
+
+To quickly start tracking your experiments with Iterative Studio:
 
 - In your model training environment, install [DVCLive]:
 
@@ -52,7 +49,10 @@ repository. Then, follow the instructions presented below.
 - The metrics and plots will be [tracked live][live-metrics-and-plots] in the
   project in Iterative Studio.
 
-### 2. To set up, run and track [reproducible pipelines](/doc/start/experiments/experiment-pipelines), use [DVC](https://dvc.org/doc):
+## Track reproducible pipelines
+
+To set up, run and track
+[reproducible pipelines](/doc/start/experiments/experiment-pipelines):
 
 - In your model training environment, install [DVC]:
 
