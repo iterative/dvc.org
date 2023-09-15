@@ -122,24 +122,6 @@ recommend using DVC to avail of all the features of Iterative Studio.
 
 </admon>
 
-[on project settings]:
-  /doc/studio/user-guide/experiments/configure-a-project#non-dvc-repositories
-[explore-ml-experiments]:
-  /doc/studio/user-guide/experiments/explore-ml-experiments
-[visualize]: /doc/studio/user-guide/experiments/visualize-and-compare
-[compare]:
-  /doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments
-[run-experiments]: /doc/studio/user-guide/experiments/run-experiments
-[model-registry]: /doc/studio/user-guide/model-registry
-[live-metrics-and-plots]:
-  /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvclive]: /doc/dvclive
-[store and share your data and model files]:
-  /doc/start/data-management/data-versioning#storing-and-sharing
-[create data registries]: /doc/use-cases/data-registry
-[create data pipelines]: /doc/start/data-management/data-pipelines
-[ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
-
 ## Visualize, compare and run experiments
 
 Within a project, you can:
@@ -153,20 +135,12 @@ Within a project, you can:
 - [Track live metrics and plots][live-metrics-and-plots] by sending them to
   Iterative Studio by using [DVCLive].
 
-[project settings]: /doc/studio/user-guide/experiments/configure-a-project
-[when do you need project settings]:
-  /doc/studio/user-guide/experiments/configure-a-project#scenarios-where-project-settings-are-required
-[create multiple projects from a single git repository]:
-  /doc/studio/user-guide/experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
-[explore ml experiments]:
+[explore-ml-experiments]:
   /doc/studio/user-guide/experiments/explore-ml-experiments
-[create a team]: /doc/studio/user-guide/team-collaboration
-[sign up for the **basic** or **enterprise** plan]:
-  /doc/studio/user-guide/change-team-plan-and-size
-[make your projects public]: /doc/studio/user-guide/experiments/share-a-project
-[train on the cloud, including on your own cloud infrastructure, and submit new experiments]:
-  /doc/studio/user-guide/experiments/run-experiments
+[visualize]: /doc/studio/user-guide/experiments/visualize-and-compare
+[compare]:
+  /doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments
+[run-experiments]: /doc/studio/user-guide/experiments/run-experiments
 [live-metrics-and-plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
-[monorepo]: /doc/studio/user-guide/experiments/configure-a-project#monorepo

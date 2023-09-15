@@ -376,3 +376,5 @@ please [contact us](#support).
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
 [`gto` cli]: /doc/gto/command-reference
 [create a project]: /doc/studio/user-guide/experiments/create-a-project
+[project-settings]:
+  /doc/studio/user-guide/experiments/configure-a-project#configuring-project-settings

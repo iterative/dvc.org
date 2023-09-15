@@ -27,26 +27,7 @@ help getting started.
   experiments on cloud resources of your choice.
 - Build an ML model registry for transparency and discovery across all your
   projects.
-- Because your model registry is built on top of Git, you can use [GitOps] for
-  model deployment.
+- Because your model registry is built on top of Git, you can use
+  [GitOps](https://www.gitops.tech/) for model deployment.
 
   https://www.youtube.com/watch?v=w-UjAbdpRY4
-
-[gitops]: https://www.gitops.tech/
-[project settings]: /doc/studio/user-guide/experiments/configure-a-project
-[when do you need project settings]:
-  /doc/studio/user-guide/experiments/configure-a-project#scenarios-where-project-settings-are-required
-[create multiple projects from a single git repository]:
-  /doc/studio/user-guide/experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
-[explore ml experiments]:
-  /doc/studio/user-guide/experiments/explore-ml-experiments
-[create a team]: /doc/studio/user-guide/team-collaboration
-[sign up for the **basic** or **enterprise** plan]:
-  /doc/studio/user-guide/change-team-plan-and-size
-[make your projects public]: /doc/studio/user-guide/experiments/share-a-project
-[train on the cloud, including on your own cloud infrastructure, and submit new experiments]:
-  /doc/studio/user-guide/experiments/run-experiments
-[live-metrics-and-plots]:
-  /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvclive]: /doc/dvclive
-[monorepo]: /doc/studio/user-guide/experiments/configure-a-project#monorepo
