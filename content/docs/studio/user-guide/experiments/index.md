@@ -27,7 +27,8 @@ To quickly start tracking your experiments with Iterative Studio:
   dvc config --global studio.token ***
   ```
 
-- Use the DVCLive log_metric() method in your model training code:
+- Use the DVCLive [`log_metric()`](/doc/dvclive/live/log_metric#livelog_metric)
+  method in your model training code:
 
   ```python
   from dvclive import Live
@@ -38,7 +39,13 @@ To quickly start tracking your experiments with Iterative Studio:
       live.next_step()
   ```
 
-  Find the list of all supported frameworks [here](/doc/dvclive/ml-frameworks)
+  <admon type="tip">
+
+  DVCLive has implemented
+  [callbacks for several popular ML frameworks](/doc/dvclive/ml-frameworks)
+  which simplify adding experiment tracking capabilities to your projects.
+
+  </admon>
 
 - Run the training job:
 
@@ -54,7 +61,7 @@ To quickly start tracking your experiments with Iterative Studio:
 To set up, run and track
 [reproducible pipelines](/doc/start/experiments/experiment-pipelines):
 
-- In your model training environment, install [DVC]:
+- In your model training environment, install [DVC](https://dvc.org/):
 
   ```cli
   pip install dvc
@@ -77,8 +84,7 @@ To set up, run and track
   dvc config --global studio.token ***
   ```
 
-- [Set up the DVC
-  pipeline]/doc/start/experiments/experiment-pipelines#creating-the-experiment-pipeline
+- [Set up the DVC pipeline](/doc/start/experiments/experiment-pipelines#creating-the-experiment-pipeline)
   for model training.
 
 - [Run an experiment](/doc/start/experiments/experiment-pipelines#modifying-parameters):

@@ -1,4 +1,4 @@
-# What is a Model Registry
+# Model Registry
 
 Iterative Studio Model Registry is a central registry of all your Machine
 Learning models. It enables ML teams to collaborate on models by providing model

@@ -2,7 +2,7 @@
 
 If you sign up to use Iterative Studio using your GitHub, GitLab or Bitbucket
 account, integration with that Git account gets created during sign up. If you
-sign with your email address, you will need to
+sign in with your email address, you will need to
 [set up the Git integrations](/doc/studio/user-guide/account-and-billing#git-integrations).
 This is also needed if you want to connect to more than one Git provider.
 

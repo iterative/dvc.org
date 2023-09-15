@@ -1,8 +1,9 @@
 # Run and track experiments
 
 You can submit your experiments from your favorite interface - whether it is
-Jupyter Notebooks, a code editor or IDE like VS Code, the Python cli, the bash
-terminal, etc. To quickly start tracking your experiments with Iterative Studio:
+Jupyter Notebooks, a code editor or IDE like [VS Code](/doc/vs-code-extension),
+the Python cli, the bash terminal, etc. To quickly start tracking your
+experiments with Iterative Studio:
 
 - Click on `Add a project` to connect Iterative Studio to your ML project's Git
   repository.
@@ -22,7 +23,8 @@ terminal, etc. To quickly start tracking your experiments with Iterative Studio:
   dvc config --global studio.token ***
   ```
 
-- Use the DVCLive log_metric() method in your model training code:
+- Use the DVCLive [`log_metric()`](/doc/dvclive/live/log_metric#livelog_metric)
+  method in your model training code:
 
   ```python
   from dvclive import Live
