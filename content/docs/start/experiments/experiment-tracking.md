@@ -163,7 +163,7 @@ will also display all the data logged by DVCLive:
 
 If you want to share live updates with others or monitor while away from your
 machine, follow the instructions in
-[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+[Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
 to display updates in the Studio web interface:
 
 ![Studio Report](/img/dvclive-studio.gif)
@@ -221,7 +221,7 @@ views.
 <tab title="Studio">
 
 Once you have [shared] the results to [Studio], you can
-[compare experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
+[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
 ![Studio view](/img/dvclive-studio.png)

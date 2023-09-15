@@ -27,7 +27,7 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 3. Enter the path to `dvc.yaml` the model will be added to. Adding your model to
    non-root `dvc.yaml` can be helpful if you develop this ML model in a specific
    subfolder or if this repo is a
-   [monorepo](/doc/studio/user-guide/projects-and-experiments/configure-a-project#monorepo).
+   [monorepo](/doc/studio/user-guide/experiments/configure-a-project#monorepo).
 
 4. Enter the path of the model file as follows:
 
@@ -69,8 +69,7 @@ before the commit is created:
 - Iterative Studio will import the model to the repository by executing
   `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
 
-[connected project]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project
+[connected project]: /doc/studio/user-guide/experiments/create-a-project
 [gto]: /doc/gto
 [dvclive]: /doc/dvclive
 [log_artifact]: /doc/dvclive/live/log_artifact

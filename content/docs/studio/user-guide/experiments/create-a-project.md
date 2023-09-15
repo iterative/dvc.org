@@ -19,16 +19,16 @@ To add a new project, follow these steps.
 <admon type="info">
 
 If you do not see your desired organizations or Git repositories, make sure that
-[the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
+[the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
 
 To connect to your GitHub repositories, you must install the Iterative Studio
 GitHub app. Refer to the section on
-[GitHub app installation](/doc/studio/user-guide/install-github-app) for more
-details.
+[GitHub app installation](/doc/studio/user-guide/git-integrations/install-github-app)
+for more details.
 
 To connect to repositories on your self-hosted GitLab server, you must first add
 a connection to this server and create a team. Refer to the section on
-[self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
+[self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/connect-custom-gitlab-server)
 for more details.
 
 </admon>
@@ -56,8 +56,7 @@ You should now see that a project has been added in your dashboard.
 
 ![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
-[project settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project
+[project settings]: /doc/studio/user-guide/experiments/configure-a-project
 
 ## Create multiple projects from a single Git repository
 
@@ -77,12 +76,12 @@ This way, you will have multiple Iterative Studio projects for your single Git
 repository, with each project presenting values from a different sub-directory.
 
 [specify the sub-directory]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#project-directory
+  /doc/studio/user-guide/experiments/configure-a-project#project-directory
 
 ## Create projects shared across a team
 
-You can [create teams](/doc/studio/user-guide/teams) with one or more team
-members, also called collaborators.
+You can [create teams](/doc/studio/user-guide/team-collaboration) with one or
+more team members, also called collaborators.
 
 Each team will have its own projects dashboard, and the projects that you create
 in the team's dashboard will be accessible to all members of the team.

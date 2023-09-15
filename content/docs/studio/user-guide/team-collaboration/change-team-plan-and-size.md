@@ -12,7 +12,7 @@ comparison page will open. Your current plan will be marked.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features_v2.png)
 
-[team settings]: /doc/studio/user-guide/teams#settings
+[team settings]: /doc/studio/user-guide/team-collaboration#settings
 
 ### If you are on the Free plan
 
@@ -24,7 +24,8 @@ number of seats (collaborators) you need in your team.
 ![](https://static.iterative.ai/img/studio/team_settings_select_seats.png)
 
 The total payable amount will be shown. See
-[Billing and Payment](/doc/studio/user-guide/billing-and-payment) for details.
+[Billing and Payment](/doc/studio/user-guide/account-and-billing/billing-and-payment)
+for details.
 
 Click on `Confirm` to provide payment and upgrade the plan. You will be
 redirected to our payment processor, [Stripe](https://stripe.com/). Once your
@@ -57,7 +58,7 @@ button.
 When you downgrade, you will receive a prorated refund for the days remaining in
 the billing period. For inquiries about refunds, please [contact us].
 
-[contact us]: /doc/studio/troubleshooting#support
+[contact us]: /doc/studio/user-guide/troubleshooting#support
 
 **To upgrade to the Enterprise plan**, click on the `Contact Us` button to
 [schedule a call] with our in-house experts. They will try to understand your

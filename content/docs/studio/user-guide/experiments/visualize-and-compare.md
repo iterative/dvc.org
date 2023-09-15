@@ -2,7 +2,7 @@
 
 You can visualize and compare experiments using plots, images, metrics, etc. You
 can also
-[export the project table as CSV](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#export-project-data),
+[export the project table as CSV](/doc/studio/user-guide/experiments/explore-ml-experiments#export-project-data),
 to use the data with any external reporting or visualization tool.
 
 ## Display plots and images
@@ -31,7 +31,7 @@ in orange below) for one or more experiments and click on the `Plots` button
 
 You can [send live updates to your plots][live-metrics-and-plots] with
 [DVCLive]. The number of recent updates to the live metrics are
-[displayed](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#git-history-and-live-metrics)
+[displayed](/doc/studio/user-guide/experiments/explore-ml-experiments#git-history-and-live-metrics)
 in the `Live` icon. Live plots are also shown and updated in real-time in the
 plots pane along with all other plots.
 
@@ -56,6 +56,6 @@ for easy comparison.
 ![](https://static.iterative.ai/img/studio/compare.png)
 
 [live-metrics-and-plots]:
-  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
 [dvc plots]: /doc/user-guide/experiment-management/visualizing-plots

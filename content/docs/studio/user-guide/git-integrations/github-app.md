@@ -10,7 +10,7 @@ case, you will be prompted to configure Git integrations as shown below.
 ![](https://static.iterative.ai/img/studio/configure_git_integrations_v2.png)
 
 Click on the link to `Configure Git integrations settings`. This will open the
-[`Git integrations` section of your profile page](/doc/studio/user-guide/account-management#git-integrations).
+[`Git integrations` section of your profile page](/doc/studio/user-guide/account-and-billing#git-integrations).
 
 ![](https://static.iterative.ai/img/studio/configure_github.png)
 

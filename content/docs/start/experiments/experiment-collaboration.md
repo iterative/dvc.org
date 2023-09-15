@@ -19,7 +19,7 @@ paradigm to track and version experiments.
 ## Sharing
 
 Unless you have enabled
-[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
+[Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots),
 the <abbr>DVC experiments</abbr> only exist in your repo and people can't manage
 or view them from other machines.
 

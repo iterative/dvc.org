@@ -70,7 +70,7 @@ during the initial [create project] flow.
 ![](https://static.iterative.ai/img/studio/project_settings_sub_directory.png)
 
 [create project]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
+  /doc/studio/user-guide/experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 
 ### Data remotes / cloud storage credentials
 
@@ -97,7 +97,7 @@ permissions on the cloud / remote storage. Refer to the [DVC Remote config
 parameters] for more details about this.
 
 Any credentials that you
-[add in your profile page](/doc/studio/user-guide/account-management#cloud-credentials)
+[add in your profile page](/doc/studio/user-guide/account-and-billing#cloud-credentials)
 are also available in your project settings page.
 
 Note that Iterative Studio uses the credentials only to read plots/metrics files
@@ -122,7 +122,7 @@ If you would like to hide imported columns from your project, you can do so in
 the project's [Display preferences].
 
 If your project is missing some required columns, then it is likely that
-[they have not been imported or are hidden](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want).
+[they have not been imported or are hidden](/doc/studio/user-guide/troubleshooting#project-does-not-contain-the-columns-that-i-want).
 
 <admon type="warn">
 
@@ -136,7 +136,7 @@ are imported.
 </admon>
 
 [display preferences]:
-  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#columns
+  /doc/studio/user-guide/experiments/explore-ml-experiments#columns
 
 ### Custom metrics and parameters
 

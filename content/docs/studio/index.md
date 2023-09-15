@@ -33,23 +33,20 @@ help getting started.
   https://www.youtube.com/watch?v=w-UjAbdpRY4
 
 [gitops]: https://www.gitops.tech/
-[project settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project
+[project settings]: /doc/studio/user-guide/experiments/configure-a-project
 [when do you need project settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#scenarios-where-project-settings-are-required
+  /doc/studio/user-guide/experiments/configure-a-project#scenarios-where-project-settings-are-required
 [create multiple projects from a single git repository]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
+  /doc/studio/user-guide/experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 [explore ml experiments]:
-  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments
-[create a team]: /doc/studio/user-guide/teams
+  /doc/studio/user-guide/experiments/explore-ml-experiments
+[create a team]: /doc/studio/user-guide/team-collaboration
 [sign up for the **basic** or **enterprise** plan]:
   /doc/studio/user-guide/change-team-plan-and-size
-[make your projects public]:
-  /doc/studio/user-guide/projects-and-experiments/share-a-project
+[make your projects public]: /doc/studio/user-guide/experiments/share-a-project
 [train on the cloud, including on your own cloud infrastructure, and submit new experiments]:
-  /doc/studio/user-guide/projects-and-experiments/run-experiments
+  /doc/studio/user-guide/experiments/run-experiments
 [live-metrics-and-plots]:
-  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive
-[monorepo]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#monorepo
+[monorepo]: /doc/studio/user-guide/experiments/configure-a-project#monorepo

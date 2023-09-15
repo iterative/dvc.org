@@ -22,12 +22,12 @@ $ yolo train model=yolov8n.pt data=coco8.yaml epochs=5 imgsz=640
 ```
 
 Here is how the logged [metrics], [parameters], and [model] look in the
-[Studio Project Table](/doc/studio/user-guide/projects-and-experiments/explore-ml-experiments):
+[Studio Project Table](/doc/studio/user-guide/experiments/explore-ml-experiments):
 
 ![YOLO Studio Table](/img/yolo-studio-table.png)
 
 And the [plots] in the
-[Studio Plots Panel](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare):
+[Studio Plots Panel](/doc/studio/user-guide/experiments/visualize-and-compare):
 
 ![YOLO Studio Plots](/img/yolo-studio-plots.gif)
 
