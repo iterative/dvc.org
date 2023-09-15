@@ -10,7 +10,7 @@ To **connect to your GitHub repositories**, you must
 [install the Iterative Studio GitHub app](/doc/studio/user-guide/git-integrations/github-app).
 
 To **connect to a self-hosted GitLab server**, you should create a team and
-[set up the GitLab server connection](/doc/studio/user-guide/git-integrations/gitlab-server).
+[set up the GitLab server connection](/doc/studio/user-guide/git-integrations/custom-gitlab-server).
 
 You can **remove a Git integration** from your account by visiting the
 [Git integrations sections of your profile page](/doc/studio/user-guide/account-and-billing#git-integrations).
