@@ -20,7 +20,7 @@ To quickly start tracking your experiments with Iterative Studio:
   ```
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guice/account-and-billing#studio-access-token)
+  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
   and configure your model training environment to use the token:
 
   ```cli
@@ -69,7 +69,7 @@ To set up, run and track
   This will create a `dvc.yaml` file in the Git repository.
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guice/account-and-billing#studio-access-token)
+  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
   and
   [configure your model training environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
 
@@ -118,7 +118,6 @@ recommend using DVC to avail of all the features of Iterative Studio.
 
 [on project settings]:
   /doc/studio/user-guide/experiments/configure-a-project#non-dvc-repositories
-[projects]: /doc/studio/user-guide/experiments/what-is-a-project
 [explore-ml-experiments]:
   /doc/studio/user-guide/experiments/explore-ml-experiments
 [visualize]: /doc/studio/user-guide/experiments/visualize-and-compare

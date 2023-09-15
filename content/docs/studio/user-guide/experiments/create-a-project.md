@@ -23,12 +23,12 @@ If you do not see your desired organizations or Git repositories, make sure that
 
 To connect to your GitHub repositories, you must install the Iterative Studio
 GitHub app. Refer to the section on
-[GitHub app installation](/doc/studio/user-guide/git-integrations/install-github-app)
+[GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
 for more details.
 
 To connect to repositories on your self-hosted GitLab server, you must first add
 a connection to this server and create a team. Refer to the section on
-[self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/connect-custom-gitlab-server)
+[self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/custom-gitlab-server)
 for more details.
 
 </admon>

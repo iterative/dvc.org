@@ -213,7 +213,7 @@ In this section, you can,
 
   To connect to your GitHub repositories, you must install the Iterative Studio
   GitHub app. Refer to the section on
-  [GitHub app installation](/doc/studio/user-guide/git-integrations/install-github-app)
+  [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
   for more details.
 
   Note that if you signed up to use Iterative Studio using your GitHub, GitLb or
@@ -223,7 +223,7 @@ In this section, you can,
   Also, note that **connections to self-hosted GitLab servers** are not managed
   in this section. If you want to connect to a self-hosted GitLab server, you
   should create a team and
-  [set up the GitLab server connection](/doc/studio/user-guide/git-integrations/connect-custom-gitlab-server)
+  [set up the GitLab server connection](/doc/studio/user-guide/git-integrations/custom-gitlab-server)
   in the [team settings].
 
 - Disconnect from your GitHub, GitLab, or Bitbucket accounts.

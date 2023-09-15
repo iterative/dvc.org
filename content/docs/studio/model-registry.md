@@ -17,7 +17,7 @@ To quickly start tracking your models in the Iterative Studio model registry:
   ```
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guice/account-and-billing#studio-access-token)
+  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
   and configure your model training environment to use the token:
 
   ```cli

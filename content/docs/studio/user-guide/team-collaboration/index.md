@@ -162,7 +162,7 @@ If your team’s Git repositories are on a self-hosted GitLab server, you can go
 to the `GitLab connections` section of the team settings page to set up a
 connection to this server. Once you set up the connection, all your team members
 can connect to the Git repositories on this server. For more details, refer to
-[Custom GitLab Server Connection](/doc/studio/user-guide/git-integrations/connect-custom-gitlab-server).
+[Custom GitLab Server Connection](/doc/studio/user-guide/git-integrations/custom-gitlab-server).
 
 ### Edit collaborators
 
