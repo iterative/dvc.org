@@ -27,6 +27,7 @@ final evaluation stage to our [earlier pipeline]:
 ```cli
 $ dvc stage add -n evaluate \
   -d src/evaluate.py -d model.pkl -d data/features \
+  -o eval \
   python src/evaluate.py model.pkl data/features
 ```
 
@@ -45,13 +46,16 @@ evaluate:
     - data/features
     - model.pkl
     - src/evaluate.py
+  outs:
+    - eval
 ```
 
-Note that there are no outputs in this stage! This is because our metrics and
-plots files are small enough to track in Git, and they are unlikely to be
-dependencies of downstream stages, so we can ignore them from our stage
-definition. If you want to cache your plots with DVC, add `eval/plots` to the
-stage outputs the same way outputs were added in previous stages.
+We cache your metrics and plots files with DVC, by making `eval` directory as a
+stage output the same way outputs were added in previous stages. This is the
+easiest way to handle this, and if amount of files and size is growing it
+doesn't affect your Git history. Alternatively it could be setup in more
+granular way to track certain metrics files or plots in Git, while other files
+could still be tracked by DVC.
 
 </details>
 
