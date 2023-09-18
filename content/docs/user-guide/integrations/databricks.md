@@ -58,8 +58,10 @@ with dvc.api.open(
 
 ## Running DVC commands
 
-Databricks doesn't provide a classic terminal, so you'll need to use [magic
-commands] to run DVC commands.
+Databricks doesn't provide a classic terminal by default, so you'll need to use
+[magic commands] to run DVC commands in your notebook. If your workspace does
+have [web terminal] enabled, you can also run DVC commands in the terminal as
+normal.
 
 ### Example: set up shared DVC cache on dbfs
 
@@ -87,3 +89,4 @@ workaround, DVC won't be able to automatically add new entries to corresponding
 [Python API]: /doc/api-reference
 [magic commands]:
   https://ipython.readthedocs.io/en/stable/interactive/magics.html
+[web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html
