@@ -52,20 +52,13 @@ an example of how you can use [DVCLive] in your training code:
 ```py
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
   for i in range(params["epochs"]):
     ...
     live.log_metric("accuracy", accuracy)
     live.next_step()
   ...
 ```
-
-<admon type="tip">
-
-Using `save_dvc_exp=True` will ensure that
-[the results get saved as a DVC experiment](/doc/dvclive/how-it-works#git-integration).
-
-</admon>
 
 <admon type="tip">
 

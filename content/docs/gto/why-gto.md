@@ -1,18 +1,18 @@
 # Why GTO?
 
-**GTO** is a tool for creating an Artifact Registry in your Git repository. One
-of the special cases we would like to highlight is creating a
-[Machine Learning Model Registry](/doc/use-cases/model-registry).
+**GTO** is a tool for creating an artifact registry in your Git repository. One
+of the special cases we would like to highlight is creating a <abbr>model
+registry</abbr>.
 
 <details>
 
 ## Why do we need such a Registry?
 
 Such a registry serves as a centralized place to store and operationalize your
-artifacts along with their metadata; manage model life-cycle, versions &
-releases, and easily automate tests and deployments using GitOps.
+<abbr>artifacts</abbr> along with their metadata; manage model life-cycle,
+versions & releases, and easily automate tests and deployments using GitOps.
 
-Usually, Artifact Registry usage follows these three steps:
+Usually, artifact registry usage follows these three steps:
 
 - **Registry**. Track new artifacts and their versions for releases and
   significant changes. Usually this is needed for keeping track of lineage.
@@ -33,7 +33,7 @@ necessary. Such approaches as [GitOps](https://www.gitops.tech) made huge steps
 towards automation of development cycles, reducing errors and helping maintain
 productive software development.
 
-Artifact Registries (and Model Registries in specific) usually introduce a
+Artifact registries (and model Registries in specific) usually introduce a
 separate service or infrastructure, as well as new set of APIs to integrate
 with. This often leads to a necessity to maintain two different systems, which
 is a significant overhead. For example, if you work in Machine Learning, you
@@ -43,7 +43,7 @@ responsible of maintaining their part of the system.
 ![](https://i.imgur.com/GTcrytE.png)
 
 GTO builds that on top of Git repository using Git tags to register versions and
-assign stages, and using `artifacts.yaml` file to keep the metainformation about
+assign stages, and using `dvc.yaml` file to keep the metainformation about
 artifacts, such as `path`, `type`, `description` and etc. If your artifact
 development is built around Git, you won't need to introduce new things for your
 team to manage.

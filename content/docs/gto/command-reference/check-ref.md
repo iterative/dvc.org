@@ -1,6 +1,6 @@
 # check-ref
 
-Find out the artifact version registered/assigned with ref.
+Find out the <abbr>artifact</abbr> version registered/assigned with ref.
 
 ## Synopsis
 
