@@ -49,7 +49,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/how-it-works).
 
-- `dvc_file` - `{Live.dir}/dvc.yaml`.
+- `dvc_file` - Path for `dvc.yaml` file.
 
 - `metrics_file` - `{Live.dir}/metrics.json`.
 
@@ -78,18 +78,17 @@ You can use `Live()` as a context manager. When exiting the context manager,
   If you are using DVCLive inside a <abbr>DVC Pipeline</abbr> and running with
   `dvc exp run`, the option will be ignored.
 
-- `dvcyaml` - If `True`, DVCLive will write
+- `dvcyaml` - If `True` (default), DVCLive will write
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
-  metrics, plots, and parameters to
-  [`Live.dvc_file`](/doc/dvclive/live#properties) as part of `Live.next_step()`
-  and `Live.end()`. See `Live.make_dvcyaml()`. Defaults to `True`.
+  metrics, plots, and parameters to `dvc.yaml` (at the root of the repository)
+  as part of `Live.next_step()` and `Live.end()`. See `Live.make_dvcyaml()`.
 
-  <admon type="tip">
+  If a string like `subdir/dvc.yaml`, DVCLive will write the configuration to
+  that path (file must be named `dvc.yaml`).
 
-  If you are already tracking DVCLive metrics, plots, and parameters in your own
-  `dvc.yaml` file, set `dvcyaml=False` to avoid duplication.
-
-  </admon>
+  If `False`, DVCLive will not write to `dvc.yaml` (useful if you are tracking
+  DVCLive metrics, plots, and parameters independently and want to avoid
+  duplication).
 
 - `cache_images` - If `True`, DVCLive will <abbr>cache</abbr> any images logged
   with `Live.log_image()` as part of `Live.end()`. Defaults to `False`.

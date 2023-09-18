@@ -105,11 +105,11 @@ like:
 }
 ```
 
-It will also generate `dvclive/dvc.yaml`, which includes:
+It will also generate `dvc.yaml`, which includes:
 
 ```yaml
 metrics:
-  - metrics.json
+  - dvclive/metrics.json
 ```
 
 Now let's print metrics values that we are tracking in this

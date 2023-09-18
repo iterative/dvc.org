@@ -16,11 +16,11 @@ The contents of the directory will depend on the methods used:
 | `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
 | `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |
 | `Live.log_sklearn_plot()`                               | `dvclive/plots/sklearn`                                                              |
-| `Live.make_dvcyaml()`                                   | `dvclive/dvc.yaml`                                                                   |
+| `Live.make_dvcyaml()`                                   | `dvc.yaml`                                                                           |
 | `Live.make_report()`                                    | `dvclive/report.{md/html}`                                                           |
 | `Live.make_summary()`                                   | `dvclive/metrics.json`                                                               |
-| `Live.next_step()`                                      | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
-| `Live.end()`                                            | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
+| `Live.next_step()`                                      | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
+| `Live.end()`                                            | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
 
 ### Example
 
@@ -54,8 +54,8 @@ with Live(report="notebook") as live:
 The resulting structure will be:
 
 ```
+dvc.yaml
 dvclive
-├── dvc.yaml
 ├── metrics.json
 ├── params.yaml
 ├── plots
@@ -109,13 +109,11 @@ with Git, in which case you can use
 
 ## Setup to Run with DVC
 
-DVCLive by default [generates] its own `dvc.yaml` file to configure the
-experiment results, but you can create your own `dvc.yaml` file at the base of
-your repository (or elsewhere) to define a [pipeline](#setup-to-run-with-dvc) to
-run experiments with DVC or
+You can create or modify the `dvc.yaml` file at the base of your repository (or
+elsewhere) to define a [pipeline](#setup-to-run-with-dvc) to run experiments
+with DVC or
 [customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
-Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
-experiment run. A pipeline stage for model training might look like:
+A pipeline stage for model training might look like:
 
 ```yaml
 stages:
@@ -151,13 +149,6 @@ downstream in your pipeline. For example, to cache all DVCLive plots:
         - model.pt
 +       - dvclive/plots
 ```
-
-<admon type="warn">
-
-Do not add the entire DVCLive [directory] since DVC does not expect the DVCLive
-`dvc.yaml` file to be inside the [outputs].
-
-</admon>
 
 [directory]: /doc/dvclive/how-it-works#directory-structure
 [cache]: /doc/start/data-management/data-versioning
