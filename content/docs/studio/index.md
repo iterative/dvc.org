@@ -17,6 +17,8 @@ Explore the demo projects and models, and
 [let us know](/doc/studio/user-guide/troubleshooting#support) if you need any
 help getting started.
 
+https://www.youtube.com/watch?v=w-UjAbdpRY4
+
 ## Why Iterative Studio?
 
 - Simplify ML experiment tracking, visualization, and collaboration on top of
@@ -29,5 +31,3 @@ help getting started.
   projects.
 - Because your model registry is built on top of Git, you can use
   [GitOps](https://www.gitops.tech/) for model deployment.
-
-  https://www.youtube.com/watch?v=w-UjAbdpRY4
