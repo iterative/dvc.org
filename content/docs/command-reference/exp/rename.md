@@ -23,6 +23,8 @@ Renames one experiment, indicated by name (see `dvc exp run`) or rev.
 - `-g`, `--git-remote` - Name or URL of the Git remote to rename the experiment
   from
 
+- `-f`, `--force` - overwrite the experiment if it already exists.
+
 - `-h`, `--help` - shows the help message and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
