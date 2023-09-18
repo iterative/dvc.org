@@ -7,6 +7,7 @@ Rename a specific experiment from the <abbr>project</abbr>.
 ```usage
 usage: dvc exp rename [-h] [-q | -v]
                       [-g <git_remote>]
+                      [--force]
                       [experiment] [name]
 
 positional arguments:
