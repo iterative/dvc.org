@@ -101,8 +101,15 @@ file:///Users/usr/src/dvc_plots/index.html
 
 In order to create visualizations, users need to provide the data and
 (optionally) configuration that will help customize the plot in a `dvc.yaml`
-file. If you are using [DVCLive](/doc/dvclive/), it will configure plots, but
-you can also add your own custom plots like this example:
+file. If you are using [DVCLive](/doc/dvclive/), it will configure plots
+automatically.
+
+You can also add your own custom plots. For example, define a plot using the [VS
+Code extension][dvc extension].
+
+![](/img/vscode_plots_wizard.mp4)
+
+Or define it in `dvc.yaml` yourself like this example:
 
 <admon type="warn">
 
