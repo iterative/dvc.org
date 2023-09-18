@@ -229,8 +229,7 @@ Removed experiments: unwet-jinn
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
 [pull]: #pull-experiments
-[live experiments]:
-  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[live experiments]: /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvc config]: /docs/user-guide/project-structure/configuration#studio
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing

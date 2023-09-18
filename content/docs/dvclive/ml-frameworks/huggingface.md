@@ -135,5 +135,4 @@ Where:
 - `{metric}` is the name provided by the framework.
 
 [`live`]: /doc/dvclive/live
-[studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[studio model registry]: /doc/studio/user-guide/model-registry

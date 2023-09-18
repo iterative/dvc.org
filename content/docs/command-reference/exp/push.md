@@ -52,7 +52,7 @@ will notify Studio about new experiments, and display a Studio project URL to
 view experiments.
 [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
 or check
-[this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
+[this guide on how to create an access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
 
 ## Options
 

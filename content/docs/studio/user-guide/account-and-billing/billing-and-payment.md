@@ -33,10 +33,10 @@ details]).
 
 [create a team]: /doc/studio/user-guide/team-collaboration/teams
 [change the plan]:
-  /doc/studio/user-guide/teams#change-your-team-plan-and-team-size
+  /doc/studio/user-guide/team-collaboration#change-your-team-plan-and-team-size
 [schedule a call]: https://calendly.com/gtm-2/studio-overview
 [pricing details]: https://studio.iterative.ai/pricing
-[contact us]: /doc/studio/troubleshooting#support
+[contact us]: /doc/studio/user-guide/troubleshooting#support
 
 ## How total price is calculated
 

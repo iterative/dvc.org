@@ -126,5 +126,16 @@
   "^/doc/studio/user-guide/teams$                                                         /doc/studio/user-guide/team-collaboration/teams",
   "^/doc/studio/user-guide/change-team-plan-and-size$                                     /doc/studio/user-guide/team-collaboration/change-team-plan-and-size",
 
+  "^/doc/studio/get-started$                                                              /doc/studio/experiments",
+  "^/doc/studio/user-guide/projects-and-experiments(/.*)?$                                /doc/studio/user-guide/experiments$1",
+  "^/doc/studio/user-guide/projects-and-experiments/what-is-a-project$                    /doc/studio/user-guide/experiments",
+  "^/doc/studio/user-guide/model-registry/what-is-a-model-registry$                       /doc/studio/user-guide/model-registry",
+  "^/doc/studio/user-guide/team-collaboration/teams$                                      /doc/studio/user-guide/team-collaboration",
+  "^/doc/studio/user-guide/account-management$                                            /doc/studio/user-guide/account-and-billing",
+  "^/doc/studio/user-guide/billing-and-payment$                                           /doc/studio/user-guide/account-and-billing/billing-and-payment",
+  "^/doc/studio/user-guide/install-github-app$                                            /doc/studio/user-guide/git-integrations/github-app",
+  "^/doc/studio/user-guide/connect-custom-gitlab-server$                                  /doc/studio/user-guide/git-integrations/custom-gitlab-server",
+  "^/doc/studio/troubleshooting$                                                          /doc/studio/user-guide/troubleshooting",
+
   "^/(.+)/$                                                                               /$1"
 ]

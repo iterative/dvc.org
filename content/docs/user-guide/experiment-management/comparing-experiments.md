@@ -334,6 +334,6 @@ artifacts, etc. related with the experiments, you can use `dvc gc`.
 [studio]: https://studio.iterative.ai
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 [visualizing and comparing experiments]:
-  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare
+  /doc/studio/user-guide/experiments/visualize-and-compare
 [persist]:
   /doc/user-guide/experiment-management/sharing-experiments#persist-experiment

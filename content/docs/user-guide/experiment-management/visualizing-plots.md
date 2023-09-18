@@ -274,7 +274,7 @@ view.
 <tab title="Studio">
 
 Once you have [shared] the results to [Studio], you can
-[compare experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
+[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
 ![Studio view](/img/dvclive-studio.png)

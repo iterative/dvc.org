@@ -365,7 +365,7 @@ have no effect.
 
   [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
   or check
-  [this guide on how to create an access token](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#set-up-an-access-token).
+  [this guide on how to create an access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
 
 - `studio.offline` - Disables sharing [live experiments] even if `studio.token`
   is set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can

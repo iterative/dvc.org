@@ -120,8 +120,7 @@ Framework and any
 also [log additional info](/doc/dvclive#log-data) to be included in the
 experiment. `live.log_artifact("mymodel", type="model")` will
 [track your model with DVC](/doc/dvclive/live/log_artifact) and enable managing
-it with
-[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
+it with [Studio Model Registry](/doc/studio/user-guide/model-registry).
 
 <admon type="info">
 
@@ -163,7 +162,7 @@ will also display all the data logged by DVCLive:
 
 If you want to share live updates with others or monitor while away from your
 machine, follow the instructions in
-[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+[Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
 to display updates in the Studio web interface:
 
 ![Studio Report](/img/dvclive-studio.gif)
@@ -221,7 +220,7 @@ views.
 <tab title="Studio">
 
 Once you have [shared] the results to [Studio], you can
-[compare experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
+[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
 ![Studio view](/img/dvclive-studio.png)

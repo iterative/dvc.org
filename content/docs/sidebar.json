@@ -627,16 +627,15 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "get-started",
+      "experiments",
+      "model-registry",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
           {
-            "slug": "projects-and-experiments",
-            "source": false,
+            "slug": "experiments",
             "children": [
-              "what-is-a-project",
               "create-a-project",
               "configure-a-project",
               "explore-ml-experiments",
@@ -648,12 +647,7 @@
           },
           {
             "slug": "model-registry",
-            "source": false,
             "children": [
-              {
-                "label": "What is a Model Registry",
-                "slug": "what-is-a-model-registry"
-              },
               "add-a-model",
               "register-version",
               "assign-stage",
@@ -664,16 +658,19 @@
           },
           {
             "slug": "team-collaboration",
-            "source": false,
-            "children": ["teams", "change-team-plan-and-size"]
+            "children": ["change-team-plan-and-size"]
           },
-          "account-management",
-          "billing-and-payment",
-          "install-github-app",
-          "connect-custom-gitlab-server"
+          {
+            "slug": "account-and-billing",
+            "children": ["billing-and-payment"]
+          },
+          {
+            "slug": "git-integrations",
+            "children": ["github-app", "custom-gitlab-server"]
+          },
+          "troubleshooting"
         ]
       },
-      "troubleshooting",
       {
         "slug": "self-hosting",
         "source": false,

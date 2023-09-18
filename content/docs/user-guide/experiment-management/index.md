@@ -87,5 +87,4 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
 [from the vs code ide]: /doc/vs-code-extension
 [iterative studio]: /doc/studio
-[studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[studio model registry]: /doc/studio/user-guide/model-registry
