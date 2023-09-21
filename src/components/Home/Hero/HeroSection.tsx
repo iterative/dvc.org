@@ -104,7 +104,7 @@ const HeroSection = () => {
             )}
           >
             <h2 className="text-2xl md:text-3xl font-medium">
-              Dataset factory
+              GenAI data chain
             </h2>
             <Badge className="bg-dark text-light">Coming soon</Badge>
           </div>
