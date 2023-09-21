@@ -63,7 +63,7 @@ If `log_model=True` DVCLive will save a copy of the last checkpoint to the
 `dvclive/artifacts` directory and annotate it with name `last` or `best` (if
 [args.load_best_model_at_end](https://huggingface.co/docs/transformers/main_classes/trainer#transformers.TrainingArguments.load_best_model_at_end)).
 
-This is useful to be consumed in [Studio model registry] or automation
+This is useful to be consumed in the <abbr>model registry</abbr> or automation
 scenarios.
 
 - Save the `last` checkpoint at the end of training:

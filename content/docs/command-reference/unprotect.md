@@ -84,6 +84,6 @@ $ ls -lh
 -rw-r--r--  1  120B Nov 27 13:29 Posts.xml.zip.dvc
 -rw-r--r--  1   10M Nov 27 13:30 Posts.xml.zip
 
-$ ls -lh ls -lh .dvc/cache/ce/
+$ ls -lh .dvc/cache/files/md5/ce/
 -rw-r--r--@ 1 10M Apr 25  2017 68b98d82545628782c66192c96f2d2
 ```

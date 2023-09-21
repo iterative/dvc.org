@@ -191,7 +191,7 @@ file:///Users/usr/src/dvc_plots/index.html
 ### Headerless tables
 
 A tabular data file without headers can be plotted with `--no-header` option. A
-column can be specified with `-y` by it's numeric position (starting with `0`):
+column can be specified with `-y` by its numeric position (starting with `0`):
 
 ```cli
 $ dvc plots show --no-header logs.csv -y 2
@@ -411,8 +411,8 @@ $ dvc plots show --show-vega logs.csv -y accuracy
 ## Custom HTML templates
 
 It's possible to supply an HTML file to `dvc plots show` and `dvc plots diff` by
-using the the `--html-template` option. This allows you to customize the
-container where DVC will inject plots it generates.
+using the `--html-template` option. This allows you to customize the container
+where DVC will inject plots it generates.
 
 > ⚠️ This is a separate feature from
 > [custom Vega-Lite templates](/doc/command-reference/plots/templates).

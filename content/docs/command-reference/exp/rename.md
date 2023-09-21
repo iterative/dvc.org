@@ -7,6 +7,7 @@ Rename a specific experiment from the <abbr>project</abbr>.
 ```usage
 usage: dvc exp rename [-h] [-q | -v]
                       [-g <git_remote>]
+                      [--force]
                       [experiment] [name]
 
 positional arguments:
@@ -22,6 +23,8 @@ Renames one experiment, indicated by name (see `dvc exp run`) or rev.
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to rename the experiment
   from
+
+- `-f`, `--force` - overwrite the experiment if it already exists.
 
 - `-h`, `--help` - shows the help message and exit.
 

@@ -345,6 +345,64 @@ $ dvc queue start
 [grid search]:
   https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
 
+## Example: Only pull pipeline data as needed.
+
+You can combine the `--pull` and `--allow-missing` flags to reproduce a pipeline
+while only pulling the data that is actually needed to run the changed stages.
+
+Given the pipeline used in
+[example-get-started-experiments](https://github.com/iterative/example-get-started-experiments):
+
+```cli
+$ dvc dag
+    +--------------------+
+    | data/pool_data.dvc |
+    +--------------------+
+               *
+               *
+               *
+        +------------+
+        | data_split |
+        +------------+
+         **        **
+       **            **
+      *                **
++-------+                *
+| train |              **
++-------+            **
+         **        **
+           **    **
+             *  *
+         +----------+
+         | evaluate |
+         +----------+
+```
+
+If we are in a machine where all the data is missing:
+
+```cli
+$ dvc status
+Not in cache:
+  (use "dvc fetch <file>..." to download files)
+        models/model.pkl
+        data/pool_data/
+        data/test_data/
+        data/train_data/
+```
+
+We can modify the `evaluate` stage and DVC will only pull the necessary data to
+run that stage (`models/model.pkl` `data/test_data/`) while skipping the rest of
+the stages:
+
+```cli
+$ dvc exp run --pull --allow-missing
+'data/pool_data.dvc' didn't change, skipping
+Stage 'data_split' didn't change, skipping
+Stage 'train' didn't change, skipping
+Running stage 'evaluate':
+...
+```
+
 ## Example: Include untracked or ignored paths
 
 If your code relies on some paths that are intentionally untracked or ignored by
