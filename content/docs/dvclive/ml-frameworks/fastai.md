@@ -35,9 +35,6 @@ Where:
 
 ## Parameters
 
-- `model_file` - (`None` by default) - The name of the file where the model will
-  be saved at the end of each `step`.
-
 - `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
   instance will be created using `**kwargs`.
 
