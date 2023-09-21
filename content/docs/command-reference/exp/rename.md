@@ -21,8 +21,8 @@ Renames one experiment, indicated by name (see `dvc exp run`) or rev.
 
 ## Options
 
-- `-g`, `--git-remote` - Name or URL of the Git remote to rename the experiment
-  from
+- `-g`, `--git-remote` - name or URL of the Git remote to rename the experiment
+  from.
 
 - `-f`, `--force` - overwrite the experiment if it already exists.
 
