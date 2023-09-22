@@ -4,6 +4,11 @@ You can send [live metrics and plots] to [Studio], [push] entire completed
 <abbr>experiments</abbr> (including data, models, and code), and convert an
 experiment into a [persistent] branch or commit in your Git repo.
 
+See the video below for how it all works using the [DVC Extension] for VS Code,
+or keep reading to go deeper.
+
+https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
+
 ## Live metrics and plots
 
 You can send [live experiments] to [Studio](https://studio.iterative.ai), which
@@ -225,6 +230,8 @@ $ dvc exp remove -g origin unwet-jinn
 Removed experiments: unwet-jinn
 ```
 
+[dvc extension]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [studio]: https://studio.iterative.ai
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
