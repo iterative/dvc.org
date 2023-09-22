@@ -1,10 +1,10 @@
 # Databricks
 
-As of September 2023 Databricks doesn't expose the underlying GIT repo in your
-project, so GIT-related DVC functionality within the repo provided by Databricks
-is not supported (e.g. [experiments], `--rev/--all-commits/--all-tags/etc`). But
-everything will operate as normal if you `git clone` a project yourself or use
-remote projects with DVC directly.
+As of September 2023 [Databricks Repos] don't expose the underlying Git repo, so
+Git-related DVC functionality within Databricks Repos is not supported (e.g.
+[experiments], `--rev/--all-commits/--all-tags/etc`). Everything will operate as
+normal if you `git clone` a project yourself or [use remote projects](#dvc-api)
+with DVC directly.
 
 ## Setup
 
@@ -12,8 +12,8 @@ remote projects with DVC directly.
 %pip install dvc
 ```
 
-In order to be able to work in the project provided by databricks without GIT
-functionality, you'll need to use this workaround:
+In order to be able to work in [Databricks Repos], you'll need to use this
+workaround:
 
 ```bash
 !dvc config core.no_scm true --local
@@ -21,7 +21,7 @@ functionality, you'll need to use this workaround:
 
 ## DVC API
 
-You can use your existing DVC projects through [Python API] as normal, for
+You can use your existing DVC projects through the [Python API] as normal, for
 example:
 
 ```python
@@ -36,9 +36,8 @@ with dvc.api.open(
 
 ### Secrets
 
-If you need to use secrets to access your data, first add them to databricks
-secrets https://docs.databricks.com/en/security/secrets/index.html and then use
-them with DVC, for example:
+If you need to use secrets to access your data, first add them to [Databricks
+secrets] and then use them with DVC, for example:
 
 ```python
 import dvc.api
@@ -75,9 +74,9 @@ normal.
 !dvc add data
 ```
 
-Note that due to the limitations described in the beginning and `noscm`
-workaround, DVC won't be able to automatically add new entries to corresponding
-`.gitignore`s, so you'll need to do that manually.
+If working with [Databricks Repos], due to the limitations described in the
+beginning and `noscm` workaround, DVC won't be able to automatically add new
+entries to corresponding `.gitignore`s, so you'll need to do that manually.
 
 ### Example: import data
 
@@ -85,8 +84,10 @@ workaround, DVC won't be able to automatically add new entries to corresponding
 !dvc import-url https://archive.ics.uci.edu/static/public/186/wine+quality.zip
 ```
 
+[Databricks Repos]: https://docs.databricks.com/en/repos/index.html
 [experiments]: /doc/start/experiments
 [Python API]: /doc/api-reference
+[Databricks secrets]: https://docs.databricks.com/en/security/secrets/index.html
 [magic commands]:
   https://ipython.readthedocs.io/en/stable/interactive/magics.html
 [web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html

@@ -34,19 +34,19 @@ The method will compute and dump the `kind` plot (see
 format compatible with `dvc plots`.
 
 It will also store the provided properties to be included in the `plots` section
-written by `Live.make_dvcyaml()`. The example snippet would produce the
-following `dvc.yaml` in `{Live.dir}/{Live.dvc_file}`:
+written by `Live.make_dvcyaml()`. The example snippet would add the following to
+`dvc.yaml`:
 
 ```yaml
 plots:
-  - plots/sklearn/roc.json:
+  - dvclive/plots/sklearn/roc.json:
       template: simple
       x: fpr
       y: tpr
       title: Receiver operating characteristic (ROC)
       x_label: False Positive Rate
       y_label: True Positive Rate
-  - plots/sklearn/cm.json:
+  - dvclive/plots/sklearn/cm.json:
       template: confusion
       x: actual
       y: predicted

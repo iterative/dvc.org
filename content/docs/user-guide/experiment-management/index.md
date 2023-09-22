@@ -38,7 +38,7 @@ experiments.
 To save an experiment, you can follow one of these roads:
 
 - If you do not have a DVC pipeline, you can log live results from Python code
-  using [DVCLive] initialized with `save_dvc_exp=True`.
+  using [DVCLive] initialized.
 - If you have a DVC [pipeline], use `dvc exp run` to both [run] your code
   pipeline and save experiment results. `dvc exp run` also enables advanced
   features like queuing many experiments at once.

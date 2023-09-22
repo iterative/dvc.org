@@ -19,17 +19,10 @@ can jump directly to its corresponding page.
 ### Initialize DVCLive
 
 ```python
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
 ```
 
 See [`Live()`](/doc/dvclive/live) for details.
-
-<admon type="info">
-
-Including `save_dvc_exp=True` will automatically
-[track the results](/doc/dvclive/how-it-works#git-integration).
-
-</admon>
 
 ### Log data
 
@@ -120,6 +113,8 @@ See `Live.next_step()`.
 Under the hood, `Live.next_step()` calls `Live.make_summary()`,
 `Live.make_dvcyaml()`, and `Live.make_report()`.
 
+When access is enabled, updates will be sent to DVC Studio.
+
 If you want to decouple the `step` update from the rest of the calls, you can
 manually modify the `Live.step` property and call `Live.make_summary()` /
 `Live.make_dvcyaml()` / `Live.make_report()`.
@@ -133,7 +128,7 @@ Joining the above snippets, you can include DVCLive in your training code:
 
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
 
     live.log_param("epochs", NUM_EPOCHS)
 
