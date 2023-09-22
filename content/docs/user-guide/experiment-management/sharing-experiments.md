@@ -7,7 +7,7 @@ experiment into a [persistent] branch or commit in your Git repo.
 See the video below for how it all works using the [DVC Extension] for VS Code,
 or keep reading to go deeper.
 
-https://www.youtube.com/watch?v=UMVYjwJtRj0
+https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
 
 ## Live metrics and plots
 
