@@ -88,7 +88,7 @@ each run to the same path and overwrite the results each time. DVCLive uses Git
 to manage results, code changes, and data changes
 ([with DVC](#track-large-artifacts-with-dvc)).
 
-By default, DVCLive will save <abbr>DVC experiment</abbr> so you don't need to
+By default, DVCLive will save a <abbr>DVC experiment</abbr> so you don't need to
 worry about manually making Git commits or branches for each experiment. You can
 recover them using `dvc exp` commands or using Git.
 
