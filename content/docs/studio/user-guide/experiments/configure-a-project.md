@@ -89,8 +89,7 @@ imported in your project. Your old commits will remain in your Git repository,
 but will not over-crowd your projects any more. This will let you focus on
 recent experiments, metrics and plots.
 
-<!-- TODO: Add the following gif -->
-<!-- ![](https://static.iterative.ai/img/studio/project_settings_start_date_time.gif) -->
+![](https://static.iterative.ai/img/studio/project_settings_start_date_time.gif)
 
 ### Columns
 
