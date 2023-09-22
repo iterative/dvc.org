@@ -16,47 +16,43 @@ To add a new project, follow these steps.
 2. Click on `Add a Project`. All the organizations that you have access to will
    be listed.
 
-<admon type="info">
+   <admon type="info">
+ 
+   If you do not see your desired organizations or Git repositories, make sure that [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
 
-If you do not see your desired organizations or Git repositories, make sure that
-[the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
+   To connect to your GitHub repositories, you must install the Iterative Studio GitHub app. Refer to the section on [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app) for more details.
 
-To connect to your GitHub repositories, you must install the Iterative Studio
-GitHub app. Refer to the section on
-[GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
-for more details.
+   To connect to repositories on your self-hosted GitLab server, you must first add a connection to this server and create a team. Refer to the section on [self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/custom-gitlab-server) for more details.
 
-To connect to repositories on your self-hosted GitLab server, you must first add
-a connection to this server and create a team. Refer to the section on
-[self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/custom-gitlab-server)
-for more details.
-
-</admon>
+   </admon>
 
 3. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.
 
    ![](https://static.iterative.ai/img/studio/select_repo_v3.png)
 
-4. Specify additional settings if required.
+4. Click on the Git repository that you want to connect to.
 
-   ![](https://static.iterative.ai/img/studio/project_settings.png)
+5. In the `Project settings` page that opens up, you can edit the project name, directory and visibility (public accessibility). These settings can also be [edited after the project has been created](/doc/studio/user-guide/experiments/configure-a-project).
 
-> Project settings must be configured if you are connecting to a non-DVC
-> repository, if you are connecting to a monorepo, or if your metrics are in
-> cloud or other remote storage. You can configure the [Project Settings] after
-> the project has been created.
+   <admon type = "info">
 
-You should now see that a project has been added in your dashboard.
+   If your DVC repo is in a [sub-directory] of a [monorepo](https://en.wikipedia.org/wiki/Monorepo), then you should specify the full path to the sub-directory in the `Project directory` setting.
 
-5. If your project requires any of the additional settings, then remember to
-   configure them by opening the [project settings]. Otherwise, your project may
-   not work as expected. To go to project settings, open the 3-dot menu for the
-   project and click on `Settings`.
+   [sub-directory]: /doc/command-reference/init#initializing-dvc-in-subdirectories
 
-![](https://static.iterative.ai/img/studio/project_open_settings.png)
+   </admon>
 
-[project settings]: /doc/studio/user-guide/experiments/configure-a-project
+   <admon type = "tip">
+
+   You can create multiple projects at once by providing up to 10 comma-separated values. Iterative Studio will create one project for each sub-directory in the list.
+
+
+   </admon>
+
+6. Click on `Create Project`.
+
+You should now see that the project has been added in your dashboard.
 
 ## Create multiple projects from a single Git repository
 

@@ -1,88 +1,42 @@
 # Configure a Project
 
-You can configure additional settings for your projects. Some of these settings,
-such as project name, are optional. Some other settings, such as data remotes,
-may be required depending on how your Git repository has been set up.
+You can configure additional settings for your projects, including the project name, directory, etc. Some of these settings are optional while others may be mandatory depending on how your Git repository has been set up.
 
-## Scenarios where project settings are required
-
-If you are connecting to a DVC repo which is at the root of the Git repository
-and does not reference remote/cloud storage, then you can successfully visualize
-it without configuring additional settings. But in the following scenarios, you
-will need to configure project settings:
-
-### Non-DVC repositories
-
-If you are creating a project for a non-DVC repository, you will need to
-[specify the custom files] that contain the metrics and hyperparameters that you
-want to visualize.
-
-[specify the custom files]: #custom-metrics-and-parameters
-
-### Monorepo
-
-If the DVC repo for which you are creating the project is not in the root of
-your Git repo but is in a [sub-directory] of a
-[monorepo](https://en.wikipedia.org/wiki/Monorepo), you will need to specify the
-full path to the sub-directory that contains the data you want to visualize in
-Iterative Studio.
-
-[sub-directory]: /doc/command-reference/init#initializing-dvc-in-subdirectories
-
-### Data remotes (cloud/remote storage)
-
-If you want to include data stored in [data remotes] (cloud storage or another
-location outside the Git repo), you will have to grant Iterative Studio access
-to the data remotes.
-
-[data remotes]: /doc/user-guide/data-management/remote-storage
-
-Additionally, you can also configure project settings to
-[change the name](#project-name) of your project and to
-[select columns](#columns) to import in your project.
-
-## Configuring project settings
-
-You can configure a project's settings at any time after creating the project.
-For this, open the 3-dot menu for the project and click on `Settings`.
+To configure a project's settings , open the 3-dot menu for the project and click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/project_open_settings.png)
 
-### Project name
+## Project name
 
 To change the project name, enter the new name for your project as shown below.
 
 ![](https://static.iterative.ai/img/studio/project_settings_view_name.png)
 
-### Project directory
+## Project directory
 
-If you have connected to a [monorepo](https://en.wikipedia.org/wiki/Monorepo),
-then specify the full path to the sub-directory that contains the DVC repo to
+If the DVC repo for which you are creating the project is not in the root of your Git repository but is in a [sub-directory] of a [monorepo](https://en.wikipedia.org/wiki/Monorepo), then [specify the full path](/doc/studio/user-guide/experiments/configure-a-project#project-directory) to the sub-directory that contains the DVC repo to
 which you are trying to connect.
 
-   <admon type="note">
+<admon type="note">
 
 Create multiple projects at once by providing up to 10 comma-separated values
 during the initial [create project] flow.
 
-   </admon>
+</admon>
 
 ![](https://static.iterative.ai/img/studio/project_settings_sub_directory.png)
 
 [create project]:
   /doc/studio/user-guide/experiments/create-a-project#create-multiple-projects-from-a-single-git-repository
 
-### Data remotes / cloud storage credentials
+## Data remotes / cloud storage credentials
 
-If you need to provide credentials for [data remotes], you will need to do it
-after your project has been created. First, create your project without
-specifying the data remotes. Then, open project settings and go to the
-`Data remotes / cloud storage credentials` section. The data remotes that are
-used in your DVC repo will be listed.
+Here, the [data remotes](/doc/user-guide/data-management/remote-storage) (cloud storage or another location outside the Git repo) that are used in your DVC repo will be listed. If you want your project to include data stored in these data remotes, you will have to add credentials to grant Iterative Studio access
+to the data remotes. Credentials that you have already added to your account are listed in this section, and you can select them to add them to the project.
 
 ![](https://static.iterative.ai/img/studio/view_settings_credentials.png)
 
-Click on `Add new credentials`. In the form that opens up, select the provider
+To add new credentials, click on `Add new credentials` and select the provider
 (Amazon S3, GCP, etc.). For details on what types of remote storage (protocols)
 are supported, refer to the DVC documentation on [supported storage types].
 
@@ -110,10 +64,22 @@ is not used in your Git repository.
 [dvc remote config parameters]:
   /doc/command-reference/remote/modify#available-parameters-per-storage-type
 
+## Commits and columns
+
+You can specify which Git commits and columns should be imported from your Git repository to
+your project in Iterative Studio, and which ones should be excluded.
+
+### Start date/time
+
+If your Git history has old commits that are not relevant to your project anymore, you can set a cut-off date so that these outdated commits are not imported in your project. Your old commits will remain in your Git repository, but will not over-crowd your projects any more. This will let you focus on recent experiments, metrics and plots.
+
+<!-- TODO: Add the following gif -->
+<!-- ![](https://static.iterative.ai/img/studio/project_settings_start_date_time.gif) -->
+
 ### Columns
 
 You can specify which columns should be imported from your Git repository to
-your project in Iterative Studio. Any unselected column cannot be displayed in
+your project. Any unselected column cannot be displayed in
 your project table.
 
 ![](https://static.iterative.ai/img/studio/project_settings_columns.png)
@@ -138,10 +104,14 @@ are imported.
 [display preferences]:
   /doc/studio/user-guide/experiments/explore-ml-experiments#columns
 
-### Custom metrics and parameters
+## Custom metrics and parameters
 
-If you want to connect custom files, you can add them by clicking the `Add file`
-button. Enter the full file path within your Git repository, and specify whether
+If you are creating a project for a non-DVC repository, you will need to
+specify the custom files that contain the metrics and hyperparameters that you
+want to visualize.
+
+To connect to a custom file, click the `Add file`
+button, enter the full file path within your Git repository, and specify whether
 the file is for `Metrics` or `Parameters`.
 
 ![](https://static.iterative.ai/img/studio/project_settings_custom_files.png)
