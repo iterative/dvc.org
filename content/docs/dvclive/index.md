@@ -1,5 +1,11 @@
 # DVCLive Documentation
 
+<admon type="info">
+
+DVCLive 3.0 is now available. Go to the [release notes] to see what changed.
+
+</admon>
+
 This documentation provides the details about the `dvclive` Python API module,
 which can be imported regularly, for example:
 
@@ -161,6 +167,7 @@ multiple experiments or even an entire grid search. See examples of how to [add
 DVCLive to a pipeline] or [add a pipeline to DVCLive code], or get more
 information about how to [setup a pipeline] to work with DVCLive.
 
+[release notes]: https://github.com/iterative/dvclive/releases/tag/3.0.0
 [run experiments]: /doc/user-guide/experiment-management/running-experiments
 [pipelines]: /doc/user-guide/pipelines
 [add DVCLive to a pipeline]: /doc/start/data-management/metrics-parameters-plots
