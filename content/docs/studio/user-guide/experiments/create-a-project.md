@@ -17,12 +17,20 @@ To add a new project, follow these steps.
    be listed.
 
    <admon type="info">
- 
-   If you do not see your desired organizations or Git repositories, make sure that [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
 
-   To connect to your GitHub repositories, you must install the Iterative Studio GitHub app. Refer to the section on [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app) for more details.
+   If you do not see your desired organizations or Git repositories, make sure
+   that
+   [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
 
-   To connect to repositories on your self-hosted GitLab server, you must first add a connection to this server and create a team. Refer to the section on [self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/custom-gitlab-server) for more details.
+   To connect to your GitHub repositories, you must install the Iterative Studio
+   GitHub app. Refer to the section on
+   [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
+   for more details.
+
+   To connect to repositories on your self-hosted GitLab server, you must first
+   add a connection to this server and create a team. Refer to the section on
+   [self-hosted GitLab server support](/doc/studio/user-guide/git-integrations/custom-gitlab-server)
+   for more details.
 
    </admon>
 
@@ -33,20 +41,26 @@ To add a new project, follow these steps.
 
 4. Click on the Git repository that you want to connect to.
 
-5. In the `Project settings` page that opens up, you can edit the project name, directory and visibility (public accessibility). These settings can also be [edited after the project has been created](/doc/studio/user-guide/experiments/configure-a-project).
+5. In the `Project settings` page that opens up, you can edit the project name,
+   directory and visibility (public accessibility). These settings can also be
+   [edited after the project has been created](/doc/studio/user-guide/experiments/configure-a-project).
 
    <admon type = "info">
 
-   If your DVC repo is in a [sub-directory] of a [monorepo](https://en.wikipedia.org/wiki/Monorepo), then you should specify the full path to the sub-directory in the `Project directory` setting.
+   If your DVC repo is in a [sub-directory] of a
+   [monorepo](https://en.wikipedia.org/wiki/Monorepo), then you should specify
+   the full path to the sub-directory in the `Project directory` setting.
 
-   [sub-directory]: /doc/command-reference/init#initializing-dvc-in-subdirectories
+   [sub-directory]:
+     /doc/command-reference/init#initializing-dvc-in-subdirectories
 
    </admon>
 
    <admon type = "tip">
 
-   You can create multiple projects at once by providing up to 10 comma-separated values. Iterative Studio will create one project for each sub-directory in the list.
-
+   You can create multiple projects at once by providing up to 10
+   comma-separated values. Iterative Studio will create one project for each
+   sub-directory in the list.
 
    </admon>
 
