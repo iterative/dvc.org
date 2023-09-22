@@ -17,7 +17,7 @@ from dvclive.keras import DVCLiveCallback
 
 model.fit(
     train_dataset, epochs=num_epochs, validation_data=validation_dataset,
-    callbacks=[DVCLiveCallback(save_dvc_exp=True)])
+    callbacks=[DVCLiveCallback()])
 ```
 
 Each metric will be logged to:
@@ -34,9 +34,6 @@ Where:
 
 ## Parameters
 
-- `model_file` - (`None` by default) - The name of the file where the model will
-  be saved at the end of each `step`.
-
 - `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
   instance will be created using `**kwargs`.
 
@@ -51,7 +48,7 @@ Where:
 from dvclive import Live
 from dvclive.keras import DVCLiveCallback
 
-with Live("custom_dir", save_dvc_exp=True) as live:
+with Live("custom_dir") as live:
     model.fit(
         train_dataset,
         epochs=num_epochs,
@@ -73,9 +70,7 @@ model.fit(
     train_dataset,
     epochs=num_epochs,
     validation_data=validation_dataset,
-    callbacks=[DVCLiveCallback(
-        save_dvc_exp=True,
-        dir="custom_dir")])
+    callbacks=[DVCLiveCallback(dir="custom_dir")])
 ```
 
 [`live`]: /doc/dvclive/live
