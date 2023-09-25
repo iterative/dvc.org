@@ -61,10 +61,9 @@ could still be tracked by DVC.
 
 [`evaluate.py`] uses [DVCLive] to write scalar metrics values (e.g. `AUC`) and
 plots data (e.g. `ROC curve`) to files in the `eval` directory that DVC can
-parse to compare and visualize across iterations. DVCLive can configure metrics
-and plots for you if you call `Live.make_dvcyaml()`, or you can customize
-metrics and plots by [configuring them][plots files] in the same `dvc.yaml` file
-where your stage definitions are saved.
+parse to compare and visualize across iterations. By default, DVCLive will
+configure metrics and plots for you in `dvc.yaml`, but in this example we
+customize them by editing `dvc.yaml` to combine train and test plots.
 
 <details>
 
