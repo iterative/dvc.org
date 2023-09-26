@@ -40,7 +40,9 @@ GTO creates a special Git tag in
 - `--simple <text>` - Use simple notation, e.g. `rf#prod` instead of `rf#prod-5`
   [supported values: auto, true, false] [default: auto]
 - `--force` - Create the Git tag even if it already exists and is in effect
-- `--push` - Push created tag automatically (experimental)
+- `--push` - Push created git tag to `origin`. The value is ignored if the
+  `repo` option is set to a remote URL. In that case tags are pushed to or
+  created on the remote repo automatically.
 - `--sr`, `--skip-registration` - Don't register a version at specified commit
 - `-h`, `--help` - Show this message and exit.
 

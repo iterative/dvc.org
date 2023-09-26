@@ -137,5 +137,7 @@ git push origin awesome-model@v0.0.1 awesome-model#prod#1 awesome-model#prod!#2 
   [supported values: auto, true, false] [default: auto]
 - `--force` - Create the Git tag even if it already exists and is in effect
 - `-d`, `--delete` - Delete the git tag(s) instead of creating the new one
-- `--push` - Push created tag automatically (experimental)
+- `--push` - Push created git tag to `origin`. The value is ignored if the
+  `repo` option is set to a remote URL. In that case tags are pushed to or
+  created on the remote repo automatically.
 - `-h`, `--help` - Show this message and exit.
