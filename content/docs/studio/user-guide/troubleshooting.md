@@ -127,14 +127,7 @@ the root.
 This could be a typical situation when your DVC repository is part of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo).
 
-To solve this, you can either:
-
-- specify the full path to the sub-directory that contains the DVC repo, or
-- specify custom files that contain the metrics and hyperparameters that you
-  want to visualize.
-
-Instructions on how to specify the sub-directory or custom files can be found
-[here][project-settings].
+To solve this, you should [specify the full path to the sub-directory][project-settings] that contains the DVC repo.
 
 Note that if you're connecting to a repository just to fetch models for the
 model registry, and you are not working with DVC repositories, you can ignore
@@ -153,41 +146,24 @@ contains sub-directories A and B. If A contains the DVC repository which you
 want to connect from Iterative Studio, but you specify B when creating the
 project, then you will get the above error.
 
-To solve this, you can either:
-
-- specify the full path to the correct sub-directory that contains the DVC repo,
-  or
-- specify custom files that contain the metrics and hyperparameters that you
-  want to visualize.
-
-Instructions on how to specify the sub-directory or custom files can be found
-[here][project-settings].
+To solve this, you should [specify the full path to the correct sub-directory][project-settings] that contains the DVC repo.
 
 ## Error: No commits were found for the sub-directory
 
 If you get this message when you try to add a project, then it means that you
 have specified an empty or non-existent sub-directory.
 
-To solve this, you need to change the sub-directory and specify the full path to
-the correct sub-directory that contains the DVC repo.
-
-If you did not intend to work with a DVC repo, you can also specify custom files
-that contain the metrics and hyperparameters that you want to visualize.
-
-Instructions on how to specify the sub-directory or custom files can be found
-[here][project-settings].
+To solve this, you need to change the sub-directory and [specify the full path to
+the correct sub-directory][project-settings] that contains the DVC repo.
 
 ## Project got created, but does not contain any data
 
 If you initialized a DVC repository, but did not push any commit with data,
 metrics or hyperparameters, then even though you will be able to connect to this
-repository, the project will appear empty in Iterative Studio. To solve this,
-either make relevant commits to your DVC repository, or specify custom files
-with the metrics or hyperparameters that you want to visualize.
+repository, the project will appear empty in Iterative Studio. To solve this, make relevant commits to your DVC repository.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
-to a DVC repository. Instructions on how to specify custom files can be found
-[here][project-settings].
+to a DVC repository.
 
 Note that if you're connecting to a repository just to fetch models for the
 model registry, and your repository is not expected to contain experiment data,

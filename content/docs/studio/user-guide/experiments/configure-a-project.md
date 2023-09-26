@@ -117,15 +117,3 @@ are imported.
 
 [display preferences]:
   /doc/studio/user-guide/experiments/explore-ml-experiments#columns
-
-## Custom metrics and parameters
-
-If you are creating a project for a non-DVC repository, you will need to specify
-the custom files that contain the metrics and hyperparameters that you want to
-visualize.
-
-To connect to a custom file, click the `Add file` button, enter the full file
-path within your Git repository, and specify whether the file is for `Metrics`
-or `Parameters`.
-
-![](https://static.iterative.ai/img/studio/project_settings_custom_files.png)
