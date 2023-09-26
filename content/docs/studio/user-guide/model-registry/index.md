@@ -1,4 +1,4 @@
-# What is a Model Registry
+# Model Registry
 
 Iterative Studio Model Registry is a central registry of all your Machine
 Learning models. It enables ML teams to collaborate on models by providing model
@@ -21,8 +21,7 @@ You can take a look at Iterative's [public model registry] (read only) to get a
 feel for what's possible.
 
 [semantic versioning]: https://semver.org/
-[gto]: https://mlem.ai/doc/gto
-[mlem]: https://mlem.ai/
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[gto]: /doc/gto
+[`gto` cli]: /doc/gto/command-reference
 [public model registry]: https://studio.iterative.ai/team/Iterative/models
 [dvc]: /doc

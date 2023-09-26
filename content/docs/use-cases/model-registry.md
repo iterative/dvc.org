@@ -8,9 +8,6 @@ more division between ML engineering and operations!
 
 ![](/img/ml_model_registry.jpg) _MLOps from modeling to production_
 
-[gto]: https://mlem.ai/doc/gto
-[mlem]: https://mlem.ai/
-
 Model registry enables end-to-end workflows:
 
 - **Log your model**: Start by logging your model's performance metrics and
@@ -47,6 +44,5 @@ To begin with this integrated approach to managing your ML models, explore
 [Studio model registry] docs and get started today!
 
 [gitops]: https://www.gitops.tech/
-[Studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[Studio model registry]: /doc/studio/user-guide/model-registry
 [versions]: /doc/use-cases/versioning-data-and-models

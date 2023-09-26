@@ -78,7 +78,7 @@ import the repo again.
 ## Errors related to DVC remotes and credentials
 
 Iterative Studio can include data from
-[data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes-cloudremote-storage)
+[data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes-cloudremote-storage)
 in your project. However, it can access data from network-accessible remotes
 such as Amazon S3, Microsoft Azure, etc but not from [local DVC
 remotes][local-dvc-remotes]. If your project uses an unsupported remote, you
@@ -114,27 +114,8 @@ Additionally, if you provide the hostname, the DNS records associated with the
 storage server should be publicly available to resolve the server name. Use
 [DNS Propagation Checker](https://www.whatsmydns.net/) to confirm if the server
 domain is resolvable. If you still have any trouble setting up the connection to
-your server, please [contact us](/doc/studio/troubleshooting#support).
-
-## Error: No data found to visualize
-
-If you have connected to a non-DVC repository, then you need to specify custom
-files that contain the metrics and hyperparameters that you want to visualize.
-Otherwise, you will get this message when you try to add a project:
-`We could not find data to visualize in this repo`.
-
-For more details, refer to the section on how to [prepare your Git repositories]
-for use with Iterative Studio. Instructions on how to specify custom files can
-be found [here][project-settings].
-
-Note that if you're connecting to a repository just to fetch models for the
-model registry, and you are not working with DVC repositories, you can ignore
-this error.
-
-[prepare your git repositories]:
-  /doc/studio/user-guide/prepare-your-repositories
-[project-settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#configuring-project-settings
+your server, please
+[contact us](/doc/studio/user-guide/troubleshooting#support).
 
 ## Error: No DVC repo was found at the root
 
@@ -219,7 +200,7 @@ There are two possible reasons for this:
 
 1. **The required columns were not imported:** Iterative Studio will only import
    columns that you select in the
-   [**Columns** setting](/doc/studio/user-guide/projects-and-experiments/configure-a-project#columns).
+   [**Columns** setting](/doc/studio/user-guide/experiments/configure-a-project#columns).
 
    **What if the repository has more than 500 columns?** Currently Iterative
    Studio does not import over 500 columns. If you have a large repository (with
@@ -236,7 +217,7 @@ There are two possible reasons for this:
    ticket in the [Iterative Studio support GitHub repository].
 
 [specify the project directory in project settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#project-directory
+  /doc/studio/user-guide/experiments/configure-a-project#project-directory
 [iterative studio support github repository]:
   https://github.com/iterative/studio-support
 
@@ -264,7 +245,7 @@ You can unhide commits and branches to display them. For details, refer to
 not in the hidden commits list, please [raise a support request](#support).
 
 [display preferences -> hide commits]:
-  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
+  /doc/studio/user-guide/experiments/explore-ml-experiments#hide-commits
 
 ## Error: Missing metric or plot file(s)
 
@@ -294,7 +275,7 @@ check that:
   If your Git account does not have write access on the Git repository connected
   to a project, you cannot push changes (e.g., new experiments) to the
   repository even if the project belongs to a team
-  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/teams#roles).
+  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/team-collaboration#roles).
 
   </admon>
 
@@ -312,7 +293,7 @@ check that:
 [local-dvc-remotes]:
   /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
 [cloud-credentials]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials
+  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
@@ -320,7 +301,7 @@ If you get this error and none of the above applies, please
 ## Project does not display live metrics and plots
 
 Confirm that you are correctly following the
-[procedure to send live metrics and plots](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+[procedure to send live metrics and plots](/doc/studio/user-guide/experiments/live-metrics-and-plots)
 to Iterative Studio.
 
 Note that a live experiment is nested under the parent Git commit in the project
@@ -378,12 +359,12 @@ CLI].
 
 ## My models have disappeared even though I did not remove (deprecate) them
 
-When a project is deleted from the projects dashboard, all its models get
-automatically removed from the model registry. So check if the project has been
-removed. If yes, you can [add the project][create a project] again. Deleting a
-project from Iterative Studio does not delete any commits or tags from the Git
-repository. So, adding the project back will restore all the models from the
-repository along with their details, including versions and stage assignments.
+When a project is deleted, all its models get automatically removed from the
+model registry. So check if the project has been removed. If yes, you can [add
+the project][create a project] again. Deleting a project from Iterative Studio
+does not delete any commits or tags from the Git repository. So, adding the
+project back will restore all the models from the repository along with their
+details, including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 
@@ -391,8 +372,9 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
-[create a project]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project
+[`gto` cli]: /doc/gto/command-reference
+[create a project]: /doc/studio/user-guide/experiments/create-a-project
+[project-settings]:
+  /doc/studio/user-guide/experiments/configure-a-project#configuring-project-settings

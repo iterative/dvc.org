@@ -133,7 +133,7 @@ are accessible to all members (collaborators) of the team.
 
 To add a project to this dashboard, click on `Add a project`. The process for
 adding a project is the same as that for adding personal projects
-([instructions](/doc/studio/user-guide/projects-and-experiments/create-a-project)).
+([instructions](/doc/studio/user-guide/experiments/create-a-project)).
 
 ## Models
 
@@ -149,7 +149,7 @@ a model is the same as that for adding personal models
 In the [team settings](#settings) page, you can change the team name, add
 credentials for the data remotes, and delete the team. Note that these settings
 are applicable to the team and are thus different from
-[project settings](/doc/studio/user-guide/projects-and-experiments/configure-a-project).
+[project settings](/doc/studio/user-guide/experiments/configure-a-project).
 
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),
@@ -162,7 +162,7 @@ If your team’s Git repositories are on a self-hosted GitLab server, you can go
 to the `GitLab connections` section of the team settings page to set up a
 connection to this server. Once you set up the connection, all your team members
 can connect to the Git repositories on this server. For more details, refer to
-[Custom GitLab Server Connection](/doc/studio/user-guide/connect-custom-gitlab-server).
+[Custom GitLab Server Connection](/doc/studio/user-guide/git-integrations/custom-gitlab-server).
 
 ### Edit collaborators
 

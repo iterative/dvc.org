@@ -27,13 +27,13 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 3. Enter the path to `dvc.yaml` the model will be added to. Adding your model to
    non-root `dvc.yaml` can be helpful if you develop this ML model in a specific
    subfolder or if this repo is a
-   [monorepo](/doc/studio/user-guide/projects-and-experiments/configure-a-project#monorepo).
+   [monorepo](/doc/studio/user-guide/experiments/configure-a-project#monorepo).
 
 4. Enter the path of the model file as follows:
 
    - If the model file is in the Git repository or is in the cloud but is
-     tracked by DVC and/or [MLEM], enter the relative path of the model (from
-     the repository root).
+     tracked by DVC, enter the relative path of the model (from the repository
+     root).
    - Otherwise, enter the URL to the model file in the cloud. Iterative Studio
      will ask you for the repository path where the dvc reference to the model
      should be saved.
@@ -69,10 +69,8 @@ before the commit is created:
 - Iterative Studio will import the model to the repository by executing
   `dvc import-url <remote_path> <directory_path>/<filename from remote_path> --no-exec`.
 
-[connected project]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project
-[gto]: https://mlem.ai/doc/gto
-[mlem]: https://mlem.ai/
+[connected project]: /doc/studio/user-guide/experiments/create-a-project
+[gto]: /doc/gto
 [dvclive]: /doc/dvclive
 [log_artifact]: /doc/dvclive/live/log_artifact
 [`artifacts`]: /doc/user-guide/project-structure/dvcyaml-files#artifacts

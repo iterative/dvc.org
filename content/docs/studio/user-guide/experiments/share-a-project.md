@@ -5,9 +5,10 @@ also [make a project public](#make-a-project-public) to share it on the web.
 
 ## Share a project within a team
 
-Each team that you [create in Iterative Studio](/doc/studio/user-guide/teams)
-will have its own projects dashboard. All the projects that you create in the
-team's dashboard will be accessible to all members (collaborators) of the team.
+Each team that you
+[create in Iterative Studio](/doc/studio/user-guide/team-collaboration) will
+have its own projects dashboard. All the projects that you create in the team's
+dashboard will be accessible to all members (collaborators) of the team.
 
 To add more than 2 collaborators in your team,
 [upgrade to the **Basic** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
@@ -41,5 +42,5 @@ who are not logged in to Iterative Studio. These anonymous users have the
 `Visitor` role. Their access is limited to opening the project's experiment
 table, applying filters, and showing/hiding columns for themselves without
 saving any changes permanently. Refer to the
-[Roles](/doc/studio/user-guide/teams#roles) section for details on the features
-available for different roles.
+[Roles](/doc/studio/user-guide/team-collaboration#roles) section for details on
+the features available for different roles.

@@ -65,12 +65,12 @@ If you go to your Git repository, you will see that a new Git tag referencing
 the selected version and stage has been created, indicating the stage
 assignment.
 
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
-[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tags-format
+[gto-format]: /doc/gto/user-guide#git-tags-format
 [CI/CD]:
   /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
 [MLEM]: https://mlem.ai/
-[assign]: https://mlem.ai/doc/gto/command-reference/assign
+[assign]: /doc/gto/command-reference/assign
 [monorepo]:
   https://github.com/iterative/monorepo-example/blob/add-cv-model/cv/dvc.yaml

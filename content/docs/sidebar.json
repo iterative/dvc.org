@@ -213,6 +213,10 @@
           {
             "label": "Amazon SageMaker",
             "slug": "sagemaker"
+          },
+          {
+            "label": "Databricks",
+            "slug": "databricks"
           }
         ]
       },
@@ -327,6 +331,10 @@
           {
             "label": "exp remove",
             "slug": "remove"
+          },
+          {
+            "label": "exp rename",
+            "slug": "rename"
           },
           {
             "label": "exp run",
@@ -623,16 +631,15 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "get-started",
+      "experiments",
+      "model-registry",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
           {
-            "slug": "projects-and-experiments",
-            "source": false,
+            "slug": "experiments",
             "children": [
-              "what-is-a-project",
               "create-a-project",
               "configure-a-project",
               "explore-ml-experiments",
@@ -644,12 +651,7 @@
           },
           {
             "slug": "model-registry",
-            "source": false,
             "children": [
-              {
-                "label": "What is a Model Registry",
-                "slug": "what-is-a-model-registry"
-              },
               "add-a-model",
               "register-version",
               "assign-stage",
@@ -660,16 +662,19 @@
           },
           {
             "slug": "team-collaboration",
-            "source": false,
-            "children": ["teams", "change-team-plan-and-size"]
+            "children": ["change-team-plan-and-size"]
           },
-          "account-management",
-          "billing-and-payment",
-          "install-github-app",
-          "connect-custom-gitlab-server"
+          {
+            "slug": "account-and-billing",
+            "children": ["billing-and-payment"]
+          },
+          {
+            "slug": "git-integrations",
+            "children": ["github-app", "custom-gitlab-server"]
+          },
+          "troubleshooting"
         ]
       },
-      "troubleshooting",
       {
         "slug": "self-hosting",
         "source": false,
@@ -864,6 +869,75 @@
       {
         "slug": "env",
         "label": "Environment Variables"
+      }
+    ]
+  },
+  {
+    "slug": "gto",
+    "label": "GTO",
+    "source": "gto/index.md",
+    "children": [
+      {
+        "slug": "install",
+        "source": "install.md",
+        "label": "Installation"
+      },
+      {
+        "slug": "get-started",
+        "label": "Get Started",
+        "source": "get-started.md"
+      },
+      {
+        "slug": "user-guide",
+        "label": "User Guide",
+        "source": "user-guide/index.md"
+      },
+      {
+        "slug": "command-reference",
+        "label": "Command Reference",
+        "source": "command-reference/index.md",
+        "children": [
+          {
+            "slug": "assign",
+            "source": "assign.md",
+            "label": "assign"
+          },
+          {
+            "slug": "check-ref",
+            "source": "check-ref.md",
+            "label": "check-ref"
+          },
+          {
+            "slug": "deprecate",
+            "source": "deprecate.md",
+            "label": "deprecate"
+          },
+          {
+            "slug": "doctor",
+            "source": "doctor.md",
+            "label": "doctor"
+          },
+          {
+            "slug": "history",
+            "source": "history.md",
+            "label": "history"
+          },
+          {
+            "slug": "register",
+            "source": "register.md",
+            "label": "register"
+          },
+          {
+            "slug": "show",
+            "source": "show.md",
+            "label": "show"
+          },
+          {
+            "slug": "stages",
+            "source": "stages.md",
+            "label": "stages"
+          }
+        ]
       }
     ]
   }

@@ -16,11 +16,11 @@ The contents of the directory will depend on the methods used:
 | `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
 | `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |
 | `Live.log_sklearn_plot()`                               | `dvclive/plots/sklearn`                                                              |
-| `Live.make_dvcyaml()`                                   | `dvclive/dvc.yaml`                                                                   |
+| `Live.make_dvcyaml()`                                   | `dvc.yaml`                                                                           |
 | `Live.make_report()`                                    | `dvclive/report.{md/html}`                                                           |
 | `Live.make_summary()`                                   | `dvclive/metrics.json`                                                               |
-| `Live.next_step()`                                      | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
-| `Live.end()`                                            | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
+| `Live.next_step()`                                      | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
+| `Live.end()`                                            | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
 
 ### Example
 
@@ -35,7 +35,7 @@ from PIL import Image
 
 EPOCHS = 2
 
-with Live(save_dvc_exp=True) as live:
+with Live(report="notebook") as live:
     live.log_param("epochs", EPOCHS)
 
     for i in range(EPOCHS):
@@ -54,8 +54,8 @@ with Live(save_dvc_exp=True) as live:
 The resulting structure will be:
 
 ```
+dvc.yaml
 dvclive
-├── dvc.yaml
 ├── metrics.json
 ├── params.yaml
 ├── plots
@@ -69,7 +69,7 @@ dvclive
 │   │       └── metric.tsv
 │   └── sklearn
 │       └── confusion_matrix.json
-└── report.html
+└── report.md
 model.pt
 model.pt.dvc
 ```
@@ -86,11 +86,11 @@ experiment tracker.
 DVCLive relies on Git to track the [directory] it generates, so it will save
 each run to the same path and overwrite the results each time. DVCLive uses Git
 to manage results, code changes, and data changes
-([with DVC](#track-large-artifacts-with-dvc)). Include
-[`save_dvc_exp=True`](/doc/dvclive/live#parameters) to auto-track as a <abbr>DVC
-experiment</abbr> so you don't need to worry about manually making Git commits
-or branches for each experiment. You can recover them using `dvc exp` commands
-or using Git.
+([with DVC](#track-large-artifacts-with-dvc)).
+
+By default, DVCLive will save a <abbr>DVC experiment</abbr> so you don't need to
+worry about manually making Git commits or branches for each experiment. You can
+recover them using `dvc exp` commands or using Git.
 
 ### Track large artifacts with DVC
 
@@ -109,13 +109,11 @@ with Git, in which case you can use
 
 ## Setup to Run with DVC
 
-DVCLive by default [generates] its own `dvc.yaml` file to configure the
-experiment results, but you can create your own `dvc.yaml` file at the base of
-your repository (or elsewhere) to define a [pipeline](#setup-to-run-with-dvc) to
-run experiments with DVC or
+You can create or modify the `dvc.yaml` file at the base of your repository (or
+elsewhere) to define a [pipeline](#setup-to-run-with-dvc) to run experiments
+with DVC or
 [customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
-Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
-experiment run. A pipeline stage for model training might look like:
+A pipeline stage for model training might look like:
 
 ```yaml
 stages:
@@ -152,15 +150,7 @@ downstream in your pipeline. For example, to cache all DVCLive plots:
 +       - dvclive/plots
 ```
 
-<admon type="warn">
-
-Do not add the entire DVCLive [directory] since DVC does not expect the DVCLive
-`dvc.yaml` file to be inside the [outputs].
-
-</admon>
-
 [directory]: /doc/dvclive/how-it-works#directory-structure
-[studio model registry]: /doc/studio/user-guide/model-registry
 [cache]: /doc/start/data-management/data-versioning
 [outputs]: /doc/user-guide/pipelines/defining-pipelines#outputs
 [dependencies]: /doc/user-guide/pipelines/defining-pipelines#simple-dependencies

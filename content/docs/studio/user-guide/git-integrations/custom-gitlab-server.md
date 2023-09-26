@@ -30,7 +30,7 @@ do the following:
 Once the connection is successful, all the repositories in this GitLab server
 will become available when you try to add a project in your team workspace. If
 you have any trouble setting up the connection to your GitLab server, please
-[contact us](/doc/studio/troubleshooting#support).
+[contact us](/doc/studio/user-guide/troubleshooting#support).
 
 <admon type ="info">
 
@@ -65,4 +65,5 @@ Additionally, the DNS records associated with the GitLab server should be
 publicly available to resolve the server name. Use
 [DNS Propagation Checker](https://www.whatsmydns.net/) to confirm if the GitLab
 domain is resolvable. If you still have any trouble setting up the connection to
-your GitLab server, please [contact us](/doc/studio/troubleshooting#support).
+your GitLab server, please
+[contact us](/doc/studio/user-guide/troubleshooting#support).
