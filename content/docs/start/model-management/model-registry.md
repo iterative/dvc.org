@@ -38,7 +38,10 @@ Each of these methods creates an entry in the `dvc.yaml` file (in the last
 method this is done manually) which describes the model we are adding to the
 model registry and lists its properties for DVC to show in Studio.
 
-The DVCLive option also takes care of saving and versioning the model artifact with DVC which is why we will be using that in this guide. To get more details on how to use the other two options, have a look at the [Model registry documentation](/doc/studio/user-guide/model-registry/add-a-model).
+The DVCLive option also takes care of saving and versioning the model artifact
+with DVC which is why we will be using that in this guide. To get more details
+on how to use the other two options, have a look at the
+[Model registry documentation](/doc/studio/user-guide/model-registry/add-a-model).
 
 <toggle>
 
@@ -86,11 +89,15 @@ artifacts:
 
 </toggle>
 
-With DVCLive, we use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to save the model and add it to the model registry.
+With DVCLive, we use the [`log_artifact`](/doc/dvclive/live/log_artifact) method
+to save the model and add it to the model registry.
 
-To see the model in registry, we need to fill in `path` and `type` parameters. `path` is the path to our model and by setting `type` to `"model"` we let the model registry in Studio know to pick up the artifact and show in the GUI. 
+To see the model in registry, we need to fill in `path` and `type` parameters.
+`path` is the path to our model and by setting `type` to `"model"` we let the
+model registry in Studio know to pick up the artifact and show in the GUI.
 
-The rest of the parameters are optional and descriptive. They add information that will be visible in Studio like in the following example
+The rest of the parameters are optional and descriptive. They add information
+that will be visible in Studio like in the following example
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
