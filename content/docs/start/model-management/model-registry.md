@@ -102,7 +102,7 @@ additional properties which will not show up in the model registry.
 Once we have an artifact in the model registry, we can start registering model
 versions. This can be done using the Studio UI as follows
 
-![Registering model versions](/img/mr-register-model-version.gif)
+![Registering model versions](/img/placeholder-cat.gif)
 
 - TODO - for a model version we can see the experiment metadata and observe the
   associated experiment directly
