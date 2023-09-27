@@ -34,16 +34,13 @@ We have three options how to add a model to the model registry. We can:
 1. Use the Studio's graphical user interface to add models interactively
 1. Manually edit `dvc.yaml` files to add information about model artifacts.
 
-In our example repository we cover the first two options as the outcome of the
-third one is identical to using the Studio GUI:
+Each of these methods creates an entry in the `dvc.yaml` file (in the last
+method this is done manually) which describes the model we are adding to the
+model registry and lists its properties for DVC to show in Studio.
+
+The DVCLive option also takes care of saving and versioning the model artifact with DVC which is why we will be using that in this guide. To get more details on how to use the other two options, have a look at the [Model registry documentation](/doc/studio/user-guide/model-registry/add-a-model).
 
 <toggle>
-
-<tab title="Studio">
-
-![Adding models in Studio](/img/mr-add-model-placeholder.gif)
-
-</tab>
 
 <tab title="DVCLive">
 
@@ -63,7 +60,13 @@ with Live() as live:
 
 </tab>
 
-<tab title="Manual editing `dvc.yaml`">
+<tab title="Studio">
+
+![Adding models in Studio](/img/mr-add-model-placeholder.gif)
+
+</tab>
+
+<tab title="Manualy editing dvc.yaml">
 
 ```yaml
 artifacts:
@@ -77,25 +80,19 @@ artifacts:
       - cv
       - segmentation
       - sattelite-images
-    meta:
-      framework: pytorch
 ```
 
 </tab>
 
 </toggle>
 
-Each of these methods creates an entry in the `dvc.yaml` file (in the last
-method this is done manually) which describes the model we are adding to the
-model registry and lists its properties for DVC to show in Studio. The most
-important properties are the `name` of the artifact, its `path` and `type`. The
-model will be shown in the model registry under the given name, the path tells
-dvc where to look for the versioned model artifact, and specifying artifact
-`type` as`model` tells the model registry to show it (other artifact types are
-ignored).
+With DVCLive, we use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to save the model and add it to the model registry.
 
-The rest of the properties are descriptive and `meta` allows you to add
-additional properties which will not show up in the model registry.
+To see the model in registry, we need to fill in `path` and `type` parameters. `path` is the path to our model and by setting `type` to `"model"` we let the model registry in Studio know to pick up the artifact and show in the GUI. 
+
+The rest of the parameters are optional and descriptive. They add information that will be visible in Studio like in the following example
+
+![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
 ## Versioning models
 
