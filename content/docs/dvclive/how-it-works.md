@@ -141,10 +141,11 @@ stages:
 </tab>
 </toggle>
 
-Adding the DVCLive [directory] to the [outputs] will add it to the DVC [cache].
-If you want to keep the directory in Git instead of the cache, you can disable
-the cache. You can also choose to cache only some paths, like keeping
-lightweight metrics in Git but adding more heavyweight plots data to the cache:
+Adding the DVCLive [directory] to the [outputs] will add it to the DVC [cache]
+(if you previously tracked the directory in Git, you must first stop tracking it
+there). If you want to keep it in Git, you can disable the cache. You can also
+choose to cache only some paths, like keeping lightweight metrics in Git but
+adding more heavyweight plots data to the cache:
 
 <toggle>
 <tab title="CLI">
@@ -178,10 +179,9 @@ stages:
 </toggle>
 
 Now you can run an experiment using `dvc exp run`. Instead of DVCLive handling
-caching and saving experiments, DVC will do this automatically at the end of
-each run. See examples of how to [add DVCLive to a pipeline] or [add a pipeline
-to DVCLive code], including how to parametrize your code and queue multiple
-experiments at once.
+caching and saving experiments, DVC will do this at the end of each run. See
+examples of how to [add DVCLive to a pipeline] or [add a pipeline to DVCLive
+code], including how to parametrize your code to iterate on experiments.
 
 <admon type="tip">
 

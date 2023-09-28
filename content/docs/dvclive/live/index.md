@@ -93,6 +93,9 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `cache_images` - If `True`, DVCLive will <abbr>cache</abbr> any images logged
   with `Live.log_image()` as part of `Live.end()`. Defaults to `False`.
 
+  If running a <abbr>DVC pipeline</abbr>, `cache_images` will be ignored, and
+  you should instead cache images as pipeline <abbr>outputs</abbr>.
+
 - `exp_message` - If not `None`, and `save_dvc_exp` is `True`, the provided
   string will be passed to
   [`dvc exp save --message`](/doc/command-reference/exp/save#--message).
