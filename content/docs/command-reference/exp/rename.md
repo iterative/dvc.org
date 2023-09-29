@@ -11,8 +11,8 @@ usage: dvc exp rename [-h] [-q | -v]
                       [experiment] [name]
 
 positional arguments:
-   experiment    Experiments to rename.
-   name          Name of new experiment.
+   experiment    Experiment to rename
+   name          New name for the experiment
 ```
 
 ## Description
