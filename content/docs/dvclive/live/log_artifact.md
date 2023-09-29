@@ -77,6 +77,9 @@ it in the <abbr>model registry</abbr>.
   Git. Defaults to `True`, but set to `False` if you want to annotate metadata
   about the artifact without storing a copy in the DVC cache.
 
+  If running a <abbr>DVC pipeline</abbr>, `cache` will be ignored, and you
+  should instead cache artifacts as pipeline <abbr>outputs</abbr>.
+
 ## Exceptions
 
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `path` does not
