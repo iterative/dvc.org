@@ -53,7 +53,7 @@ version of the model will be returned.
 
 <admon icon="tip">
 
-DVC also accepts GTO/Studio Model Registry style artifact names in the form
+DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style artifact names in the form
 `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
 </admon>
