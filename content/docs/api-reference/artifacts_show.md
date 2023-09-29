@@ -1,7 +1,7 @@
 # dvc.api.artifacts_show()
 
-Get the path and Git revision for an <abbr>artifact</abbr> tracked in a
-<abbr>DVC repository</abbr>.
+Get the path and Git revision for an <abbr>artifact</abbr> tracked in the
+<abbr>model registry</abbr>.
 
 ```py
 def artifacts_show(
@@ -11,6 +11,15 @@ def artifacts_show(
     repo: Optional[str] = None,
 ) -> Dict[str, str]:
 ```
+
+<admon type="tip">
+
+If you have a Studio project configured with your [remote storage credentials],
+you may also use the Studio [REST API] to programmatically access artifacts. It
+does not require the client to have any credentials other than the Studio
+[access token] and does not require DVC to be installed.
+
+</admon>
 
 ## Usage:
 
@@ -104,3 +113,8 @@ fs.get_file(artifact['path'], os.path.basename(artifact['path']))
 This example uses the returned path and Git revision in conjunction with
 `dvc.api.DVCFileSystem` to download the artifact to the current working
 directory.
+
+[rest api]: /doc/studio/rest-api
+[access token]: /doc/studio/user-guide/account-management#studio-access-token
+[remote storage credentials]:
+  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials

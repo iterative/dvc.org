@@ -36,7 +36,7 @@ of the DVC repository. Artifacts declared in other `dvc.yaml` files should be
 addressed in the form `path/to/dvc.yaml:artifact_name` or
 `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
-`dvc artifacts get` will first try to download artifacts via the [Studio REST
+`dvc artifacts get` will first try to download artifacts via the Studio [REST
 API]. Downloading an artifact using the Studio REST API only requires a valid
 Studio [access token] and a Studio project configured with your [remote storage
 credentials]. It does not require the client to have those credentials. If you
@@ -120,7 +120,7 @@ to the `dvc.yaml` file when addressing the artifact. Since we do not specify
 `--rev` or `--stage`, `dvc artifacts get` will download the latest version of
 the artifact by default.
 
-[studio rest api]: /doc/studio/rest-api
+[rest api]: /doc/studio/rest-api
 [access token]: /doc/studio/user-guide/account-management#studio-access-token
 [remote storage credentials]:
   /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
