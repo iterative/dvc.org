@@ -1,8 +1,7 @@
 # dvc.api.artifacts_show()
 
-Get the path and Git revision for an
-<abbr>artifact</abbr> tracked in
-a <abbr>DVC repository</abbr>.
+Get the path and Git revision for an <abbr>artifact</abbr> tracked in a
+<abbr>DVC repository</abbr>.
 
 ```py
 def artifacts_show(
@@ -53,8 +52,8 @@ version of the model will be returned.
 
 <admon icon="tip">
 
-DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style artifact names in the form
-`path/to:artifact_name` (where `dvc.yaml` is omitted).
+DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style artifact
+names in the form `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
 </admon>
 

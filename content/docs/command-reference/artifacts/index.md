@@ -1,8 +1,7 @@
 # artifacts
 
-Commands for working with DVC
-<abbr>artifacts</abbr> and the
-<abbr>model registry</abbr>.
+Commands for working with DVC <abbr>artifacts</abbr> and the <abbr>model
+registry</abbr>.
 
 ## Synopsis
 
@@ -16,8 +15,8 @@ positional arguments:
 
 ## Description
 
-`dvc artifacts` subcommands provide a command line client for working with <abbr>model
-registry</abbr> artifacts.
+`dvc artifacts` subcommands provide a command line client for working with
+<abbr>model registry</abbr> artifacts.
 
 ## Options
 
