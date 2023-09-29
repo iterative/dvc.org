@@ -69,19 +69,19 @@ handy if you suspect that your account security may have been compromised.
 In the `Cloud Credentials` section of your [Profile] page, you can view, add and
 update credentials for cloud resources. These credentials are used to:
 
-- [fetch project data from data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials),
+- [fetch project data from data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials),
   and
-- [create cloud resources for running experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments#cloud-experiments).
+- [create cloud resources for running experiments](/doc/studio/user-guide/experiments/run-experiments#cloud-experiments).
 
 To add new credentials, click `Add credentials` and select the cloud provider.
 Depending on the provider, you will be asked for more details. Note that
-[cloud experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments#cloud-experiments)
+[cloud experiments](/doc/studio/user-guide/experiments/run-experiments#cloud-experiments)
 currently support AWS and GCP.
 
 ![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
 
 The credentials must have the required permissions. For
-[cloud experiments](/doc/studio/user-guide/projects-and-experiments/run-experiments#cloud-experiments),
+[cloud experiments](/doc/studio/user-guide/experiments/run-experiments#cloud-experiments),
 the following permissions are needed:
 
 <details>
@@ -194,7 +194,7 @@ https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c
 </details>
 
 For
-[data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials),
+[data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials),
 you can find more details about required permissions [here][data remote].
 
 [data remote]: /doc/user-guide/data-management/remote-storage
@@ -213,8 +213,8 @@ In this section, you can,
 
   To connect to your GitHub repositories, you must install the Iterative Studio
   GitHub app. Refer to the section on
-  [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
-  details.
+  [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
+  for more details.
 
   Note that if you signed up to use Iterative Studio using your GitHub, GitLb or
   Bitbucket account, integration with that Git account will have been created
@@ -223,7 +223,7 @@ In this section, you can,
   Also, note that **connections to self-hosted GitLab servers** are not managed
   in this section. If you want to connect to a self-hosted GitLab server, you
   should create a team and
-  [set up the GitLab server connection](/doc/studio/user-guide/connect-custom-gitlab-server)
+  [set up the GitLab server connection](/doc/studio/user-guide/git-integrations/custom-gitlab-server)
   in the [team settings].
 
 - Disconnect from your GitHub, GitLab, or Bitbucket accounts.

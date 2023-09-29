@@ -6,8 +6,7 @@ your Git repository by creating annotated
 [special format](#git-tags-format). To read more about building a Model
 Registry, read this [Studio User Guide].
 
-[Studio User Guide]:
-  https://dvc.org/doc/studio/user-guide/model-registry/what-is-a-model-registry
+[Studio User Guide]: https://dvc.org/doc/studio/user-guide/model-registry
 
 ## Finding the right artifact version
 

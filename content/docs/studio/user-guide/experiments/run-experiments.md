@@ -26,7 +26,7 @@ Run your experiments on your own cloud compute instances in AWS, GCP, and Azure
 (coming soon). For this, you need to:
 
 1. Set up
-   [credentials for the cloud provider](/doc/studio/user-guide/account-management#cloud-credentials)
+   [credentials for the cloud provider](/doc/studio/user-guide/account-and-billing#cloud-credentials)
 2. Create a [DVC experiment pipeline] in your project. Note that while the
    default [script for cloud experiments] runs a DVC pipeline, advanced users
    can run experiments without a pipeline by modifying the script.
@@ -85,10 +85,9 @@ quickly and easily compare your experiment with its baseline.
 Iterative Studio can also use your regular CI/CD setup (e.g. GitHub Actions) to
 run the experiments. To enable this, do the following:
 
-1. First,
-   [integrate your Git repository with a CI/CD setup that includes model training process](/doc/studio/user-guide/prepare-your-repositories#prepare-your-repositories-to-run-new-experiments).
-   You can
-   [use the wizard provided by Iterative Studio](/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
+1. First, integrate your Git repository with a CI/CD setup that includes model
+   training process. You can
+   [use the wizard provided by Iterative Studio](/doc/studio/user-guide/experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
    to automatically generate the CI script, or you can write it on your own.
 
 2. Then,
@@ -232,7 +231,7 @@ Studio, without writing them to your Git repository. The live metrics are
 displayed alongside the corresponding experiment commits.
 
 [live updates to metrics and plots]:
-  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
 
 **Metrics, plots and reports can be saved in Git:** In your model training CI
 action, you can save the training results in Git. This means, once the
@@ -252,4 +251,4 @@ The `CML Report` tooltip appears over the `CML report` icon on mouse hover.
 [dvclive]: /doc/dvclive
 [cml]: https://cml.dev
 [display preferences -> hide commits]:
-  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
+  /doc/studio/user-guide/experiments/explore-ml-experiments#hide-commits

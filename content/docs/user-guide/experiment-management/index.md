@@ -38,7 +38,7 @@ experiments.
 To save an experiment, you can follow one of these roads:
 
 - If you do not have a DVC pipeline, you can log live results from Python code
-  using [DVCLive] initialized with `save_dvc_exp=True`.
+  using [DVCLive] initialized.
 - If you have a DVC [pipeline], use `dvc exp run` to both [run] your code
   pipeline and save experiment results. `dvc exp run` also enables advanced
   features like queuing many experiments at once.
@@ -87,5 +87,4 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
 [from the vs code ide]: /doc/vs-code-extension
 [iterative studio]: /doc/studio
-[studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[studio model registry]: /doc/studio/user-guide/model-registry

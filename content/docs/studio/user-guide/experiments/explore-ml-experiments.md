@@ -19,7 +19,7 @@ Experiments that you push using the `dvc exp push` command as well as any live
 experiments that you send using [DVCLive] are displayed in a special experiment
 row nested under the parent Git commit. More details of how live experiments are
 displayed can be found
-[here](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots#view-live-metrics-and-plots).
+[here](/doc/studio/user-guide/experiments/live-metrics-and-plots#view-live-metrics-and-plots).
 
 To manually check for updates in your repository, use the `Reload` button 🔄
 located above the project table.
@@ -127,8 +127,8 @@ Select the columns you want to display and hide the rest.
 If your project is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections:
 
-- [Project does not contain the columns that I want](/doc/studio/troubleshooting#project-does-not-contain-the-columns-that-i-want)
-- [Project contains columns that I did not import](/doc/studio/troubleshooting#project-contains-columns-that-i-did-not-import)
+- [Project does not contain the columns that I want](/doc/studio/user-guide/troubleshooting#project-does-not-contain-the-columns-that-i-want)
+- [Project contains columns that I did not import](/doc/studio/user-guide/troubleshooting#project-contains-columns-that-i-did-not-import)
 
 To reorder the columns, click and drag them in the table or from the Columns
 dropdown.
@@ -221,12 +221,11 @@ Below is an example of the downloaded CSV file.
 
 [DVCLive]: /doc/dvclive
 [display plots]:
-  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#display-plots-and-images
+  /doc/studio/user-guide/experiments/visualize-and-compare#display-plots-and-images
 [Compare experiments]:
-  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments
-[run experiments]:
-  /doc/studio/user-guide/projects-and-experiments/run-experiments
+  /doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments
+[run experiments]: /doc/studio/user-guide/experiments/run-experiments
 [live-metrics-and-plots]:
-  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
 [Generate trend charts]:
-  /doc/studio/user-guide/projects-and-experiments/visualize-and-compare#generate-trend-charts
+  /doc/studio/user-guide/experiments/visualize-and-compare#generate-trend-charts

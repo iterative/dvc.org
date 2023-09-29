@@ -44,6 +44,5 @@ To begin with this integrated approach to managing your ML models, explore
 [Studio model registry] docs and get started today!
 
 [gitops]: https://www.gitops.tech/
-[Studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[Studio model registry]: /doc/studio/user-guide/model-registry
 [versions]: /doc/use-cases/versioning-data-and-models

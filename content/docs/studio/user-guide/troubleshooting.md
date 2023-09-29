@@ -78,7 +78,7 @@ import the repo again.
 ## Errors related to DVC remotes and credentials
 
 Iterative Studio can include data from
-[data remotes](/doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes-cloudremote-storage)
+[data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes-cloudremote-storage)
 in your project. However, it can access data from network-accessible remotes
 such as Amazon S3, Microsoft Azure, etc but not from [local DVC
 remotes][local-dvc-remotes]. If your project uses an unsupported remote, you
@@ -114,27 +114,8 @@ Additionally, if you provide the hostname, the DNS records associated with the
 storage server should be publicly available to resolve the server name. Use
 [DNS Propagation Checker](https://www.whatsmydns.net/) to confirm if the server
 domain is resolvable. If you still have any trouble setting up the connection to
-your server, please [contact us](/doc/studio/troubleshooting#support).
-
-## Error: No data found to visualize
-
-If you have connected to a non-DVC repository, then you need to specify custom
-files that contain the metrics and hyperparameters that you want to visualize.
-Otherwise, you will get this message when you try to add a project:
-`We could not find data to visualize in this repo`.
-
-For more details, refer to the section on how to [prepare your Git repositories]
-for use with Iterative Studio. Instructions on how to specify custom files can
-be found [here][project-settings].
-
-Note that if you're connecting to a repository just to fetch models for the
-model registry, and you are not working with DVC repositories, you can ignore
-this error.
-
-[prepare your git repositories]:
-  /doc/studio/user-guide/prepare-your-repositories
-[project-settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#configuring-project-settings
+your server, please
+[contact us](/doc/studio/user-guide/troubleshooting#support).
 
 ## Error: No DVC repo was found at the root
 
@@ -146,14 +127,8 @@ the root.
 This could be a typical situation when your DVC repository is part of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo).
 
-To solve this, you can either:
-
-- specify the full path to the sub-directory that contains the DVC repo, or
-- specify custom files that contain the metrics and hyperparameters that you
-  want to visualize.
-
-Instructions on how to specify the sub-directory or custom files can be found
-[here][project-settings].
+To solve this, you should [specify the full path to the
+sub-directory][project-settings] that contains the DVC repo.
 
 Note that if you're connecting to a repository just to fetch models for the
 model registry, and you are not working with DVC repositories, you can ignore
@@ -172,41 +147,26 @@ contains sub-directories A and B. If A contains the DVC repository which you
 want to connect from Iterative Studio, but you specify B when creating the
 project, then you will get the above error.
 
-To solve this, you can either:
-
-- specify the full path to the correct sub-directory that contains the DVC repo,
-  or
-- specify custom files that contain the metrics and hyperparameters that you
-  want to visualize.
-
-Instructions on how to specify the sub-directory or custom files can be found
-[here][project-settings].
+To solve this, you should [specify the full path to the correct
+sub-directory][project-settings] that contains the DVC repo.
 
 ## Error: No commits were found for the sub-directory
 
 If you get this message when you try to add a project, then it means that you
 have specified an empty or non-existent sub-directory.
 
-To solve this, you need to change the sub-directory and specify the full path to
-the correct sub-directory that contains the DVC repo.
-
-If you did not intend to work with a DVC repo, you can also specify custom files
-that contain the metrics and hyperparameters that you want to visualize.
-
-Instructions on how to specify the sub-directory or custom files can be found
-[here][project-settings].
+To solve this, you need to change the sub-directory and [specify the full path
+to the correct sub-directory][project-settings] that contains the DVC repo.
 
 ## Project got created, but does not contain any data
 
 If you initialized a DVC repository, but did not push any commit with data,
 metrics or hyperparameters, then even though you will be able to connect to this
 repository, the project will appear empty in Iterative Studio. To solve this,
-either make relevant commits to your DVC repository, or specify custom files
-with the metrics or hyperparameters that you want to visualize.
+make relevant commits to your DVC repository.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
-to a DVC repository. Instructions on how to specify custom files can be found
-[here][project-settings].
+to a DVC repository.
 
 Note that if you're connecting to a repository just to fetch models for the
 model registry, and your repository is not expected to contain experiment data,
@@ -219,7 +179,7 @@ There are two possible reasons for this:
 
 1. **The required columns were not imported:** Iterative Studio will only import
    columns that you select in the
-   [**Columns** setting](/doc/studio/user-guide/projects-and-experiments/configure-a-project#columns).
+   [**Columns** setting](/doc/studio/user-guide/experiments/configure-a-project#columns).
 
    **What if the repository has more than 500 columns?** Currently Iterative
    Studio does not import over 500 columns. If you have a large repository (with
@@ -236,7 +196,7 @@ There are two possible reasons for this:
    ticket in the [Iterative Studio support GitHub repository].
 
 [specify the project directory in project settings]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#project-directory
+  /doc/studio/user-guide/experiments/configure-a-project#project-directory
 [iterative studio support github repository]:
   https://github.com/iterative/studio-support
 
@@ -264,7 +224,7 @@ You can unhide commits and branches to display them. For details, refer to
 not in the hidden commits list, please [raise a support request](#support).
 
 [display preferences -> hide commits]:
-  /doc/studio/user-guide/projects-and-experiments/explore-ml-experiments#hide-commits
+  /doc/studio/user-guide/experiments/explore-ml-experiments#hide-commits
 
 ## Error: Missing metric or plot file(s)
 
@@ -294,7 +254,7 @@ check that:
   If your Git account does not have write access on the Git repository connected
   to a project, you cannot push changes (e.g., new experiments) to the
   repository even if the project belongs to a team
-  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/teams#roles).
+  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/team-collaboration#roles).
 
   </admon>
 
@@ -312,7 +272,7 @@ check that:
 [local-dvc-remotes]:
   /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
 [cloud-credentials]:
-  /doc/studio/user-guide/projects-and-experiments/configure-a-project#data-remotes--cloud-storage-credentials
+  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
 
 If you get this error and none of the above applies, please
 [get in touch with us](#support).
@@ -320,7 +280,7 @@ If you get this error and none of the above applies, please
 ## Project does not display live metrics and plots
 
 Confirm that you are correctly following the
-[procedure to send live metrics and plots](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+[procedure to send live metrics and plots](/doc/studio/user-guide/experiments/live-metrics-and-plots)
 to Iterative Studio.
 
 Note that a live experiment is nested under the parent Git commit in the project
@@ -394,5 +354,6 @@ please [contact us](#support).
 [gto]: /doc/gto
 [register the model]: /doc/studio/user-guide/model-registry/add-a-model
 [`gto` cli]: /doc/gto/command-reference
-[create a project]:
-  /doc/studio/user-guide/projects-and-experiments/create-a-project
+[create a project]: /doc/studio/user-guide/experiments/create-a-project
+[project-settings]:
+  /doc/studio/user-guide/experiments/configure-a-project#configuring-project-settings

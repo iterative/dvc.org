@@ -90,8 +90,7 @@ Experiments] guide.
 ![Studio run cloud experiments](/img/studio-run-cloud-experiments.gif)
 
 [studio]: https://studio.iterative.ai
-[run experiments]:
-  /doc/studio/user-guide/projects-and-experiments/run-experiments
+[run experiments]: /doc/studio/user-guide/experiments/run-experiments
 
 ## Experiment results
 

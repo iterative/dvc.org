@@ -64,7 +64,7 @@ from dvclive.keras import DVCLiveCallback
 
 ...
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
     live.log_params(trial.params)
     model.fit(
         x_train,

@@ -52,20 +52,13 @@ an example of how you can use [DVCLive] in your training code:
 ```py
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
   for i in range(params["epochs"]):
     ...
     live.log_metric("accuracy", accuracy)
     live.next_step()
   ...
 ```
-
-<admon type="tip">
-
-Using `save_dvc_exp=True` will ensure that
-[the results get saved as a DVC experiment](/doc/dvclive/how-it-works#git-integration).
-
-</admon>
 
 <admon type="tip">
 
@@ -82,7 +75,7 @@ Iterative Studio stores the live experiments data in its database. In the
 project table, the live experiments are displayed in experiment rows, which are
 nested under the parent Git commit. Updates to the live experiments are
 highlighted (in orange) in the project table and
-[compare pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#compare-experiments)
+[compare pane](/doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments)
 in real time.
 
 ![](https://static.iterative.ai/img/studio/live_metrics.gif)
@@ -92,7 +85,7 @@ icon, which can also be used to filter and show only live (running) experiments
 in the table.
 
 Live plots are displayed in the
-[plots pane](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare#how-to-generate-plots).
+[plots pane](/doc/studio/user-guide/experiments/visualize-and-compare#how-to-generate-plots).
 You can see them getting populated as Studio receives new updates.
 
 ![](https://static.iterative.ai/img/studio/live_plots.gif)
@@ -151,7 +144,7 @@ An experiment can have one of the following statuses:
 
 [dvclive]: /doc/dvclive
 [create your access token]:
-  /doc/studio/user-guide/account-management#studio-access-token
+  /doc/studio/user-guide/account-and-billing#studio-access-token
 [push]:
   /doc/user-guide/experiment-management/sharing-experiments#push-experiments
 [dvc config]: /docs/user-guide/project-structure/configuration#studio
