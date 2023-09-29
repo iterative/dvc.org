@@ -153,8 +153,8 @@ adding more heavyweight plots data to the cache:
 ```cli
 $ dvc stage add --name train \
   --deps data_dir --deps src/train.py \
-  --outs model.pt --outs dvclive/metrics.json \
-  --outs-no-cache dvclive/plots \
+  --outs model.pt --outs-no-cache dvclive/metrics.json \
+  --outs dvclive/plots \
   python train.py
 ```
 
