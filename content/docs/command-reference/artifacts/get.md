@@ -1,7 +1,7 @@
 ## artifacts get
 
-Download an <abbr>artifact</abbr> tracked in a DVC project into the current
-working directory.
+Download an <abbr>artifact</abbr> tracked in the <abbr>model registry</abbr>
+into the current working directory (with optional Studio support).
 
 ## Synopsis
 
@@ -20,22 +20,10 @@ positional arguments:
 
 ## Description
 
-Provides a way to download artifacts tracked in a DVC project. Unlike `dvc get`,
-`dvc artifacts get` supports downloading an artifact by name, rather than by
-path. Likewise, `dvc artifacts get` supports downloading a registered artifact
-version or stage, instead of requiring a specified Git revision.
-
-`dvc artifacts get` also supports downloading artifacts both from the
-<abbr>model registry</abbr> and from DVC remotes.
-
-<admon type="tip">
-
-Downloading an artifact from the <abbr>model registry</abbr> only requires a
-valid Studio
-[access token](/doc/studio/user-guide/account-management#studio-access-token).
-It does not require the client to have DVC remote credentials.
-
-</admon>
+Provides a way to download artifacts tracked in the model registry. Unlike
+`dvc get`, `dvc artifacts get` supports downloading an artifact by name, rather
+than by path. Likewise, `dvc artifacts get` supports downloading a registered
+artifact version or stage, instead of requiring a specified Git revision.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the artifact. Both HTTP and SSH protocols are supported (e.g.
@@ -48,14 +36,13 @@ of the DVC repository. Artifacts declared in other `dvc.yaml` files should be
 addressed in the form `path/to/dvc.yaml:artifact_name` or
 `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
-<admon type="info">
-
-`dvc artifacts get` will first try to download artifacts via the <abbr>model
-registry</abbr>. If you do not have a valid Studio token, or the artifact is not
-tracked in the model registry, DVC will fall back to downloading the artifact
-from the project's default DVC remote.
-
-</admon>
+`dvc artifacts get` will first try to download artifacts via the [Studio REST
+API]. Downloading an artifact using the Studio REST API only requires a valid
+Studio [access token] and a Studio project configured with your [remote storage
+credentials]. It does not require the client to have those credentials. If you
+do not have a valid Studio token, or the artifact is not tracked in the model
+registry, DVC will fall back to downloading the artifact from the project's
+default DVC remote.
 
 ## Options
 
@@ -132,3 +119,8 @@ case, the artifact is defined in `results/dvc.yaml` so we must include the path
 to the `dvc.yaml` file when addressing the artifact. Since we do not specify
 `--rev` or `--stage`, `dvc artifacts get` will download the latest version of
 the artifact by default.
+
+[studio rest api]: /doc/studio/rest-api
+[access token]: /doc/studio/user-guide/account-management#studio-access-token
+[remote storage credentials]:
+  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
