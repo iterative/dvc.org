@@ -109,9 +109,10 @@ with Git, in which case you can use
 
 ## Setup to Run with DVC
 
-To run experiments with DVC, define a <abbr>DVC pipeline</abbr> using
-`dvc stage add` or by editing `dvc.yaml`. A pipeline stage for model training
-might look like:
+Running experiments with DVC provides a structured and reproducible
+<abbr>pipeline</abbr> for end-to-end model training. To run experiments with
+DVC, define a pipeline using `dvc stage add` or by editing `dvc.yaml`. A
+pipeline stage for model training might look like:
 
 <toggle>
 <tab title="CLI">
