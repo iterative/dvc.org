@@ -12,7 +12,7 @@ usage: dvc exp rename [-h] [-q | -v]
 
 positional arguments:
    experiment    Experiment to rename
-   name          New name for the experiment
+   name          Name of new experiment
 ```
 
 ## Description
