@@ -45,14 +45,7 @@ the artifact. Both HTTP and SSH protocols are supported (e.g.
 The `name` argument specifies the name of the artifact to download. By default
 DVC will search for artifacts declared in a `dvc.yaml` file located at the root
 of the DVC repository. Artifacts declared in other `dvc.yaml` files should be
-addressed in the form `path/to/dvc.yaml:artifact_name`.
-
-<admon icon="tip">
-
-DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style names in the
-form `path/to:artifact_name` (where `dvc.yaml` is omitted).
-
-</admon>
+addressed in the form `path/to/dvc.yaml:artifact_name` or `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
 <admon type="info">
 

@@ -48,14 +48,7 @@ version of the model will be returned.
 - `name` (required) - name of the artifact. By default DVC will search for
   artifacts declared in a `dvc.yaml` file located at the root of the DVC
   repository. Artifacts declared in other `dvc.yaml` files should be addressed
-  in the form `path/to/dvc.yaml:artifact_name`.
-
-<admon icon="tip">
-
-DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style artifact
-names in the form `path/to:artifact_name` (where `dvc.yaml` is omitted).
-
-</admon>
+  in the form `path/to/dvc.yaml:artifact_name` or `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
 - `version` - version of the artifact (mutually exclusive with `stage`).
 
