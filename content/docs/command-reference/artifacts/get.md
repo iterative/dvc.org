@@ -1,7 +1,7 @@
 ## artifacts get
 
-Download an <abbr>artifact</abbr> tracked in a DVC project into the current working
-directory.
+Download an <abbr>artifact</abbr> tracked in a DVC project into the current
+working directory.
 
 ## Synopsis
 
@@ -26,13 +26,12 @@ path. Likewise, `dvc artifacts get` supports downloading a registered artifact
 version or stage, instead of requiring a specified Git revision.
 
 `dvc artifacts get` also supports downloading artifacts both from the
-<abbr>model registry</abbr> and from DVC
-remotes.
+<abbr>model registry</abbr> and from DVC remotes.
 
 <admon type="tip">
 
-Downloading an artifact from the <abbr>model registry</abbr> only requires a valid
-Studio
+Downloading an artifact from the <abbr>model registry</abbr> only requires a
+valid Studio
 [access token](/doc/studio/user-guide/account-management#studio-access-token).
 It does not require the client to have DVC remote credentials.
 
@@ -50,8 +49,8 @@ addressed in the form `path/to/dvc.yaml:artifact_name`.
 
 <admon icon="tip">
 
-DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style names in the form
-`path/to:artifact_name` (where `dvc.yaml` is omitted).
+DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style names in the
+form `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
 </admon>
 
@@ -59,8 +58,8 @@ DVC also accepts <abbr>model registry</abbr>/[GTO](/doc/gto) style names in the 
 
 `dvc artifacts get` will first try to download artifacts via the <abbr>model
 registry</abbr>. If you do not have a valid Studio token, or the artifact is not
-tracked in the model registry, DVC will fall back to downloading the
-artifact from the project's default DVC remote.
+tracked in the model registry, DVC will fall back to downloading the artifact
+from the project's default DVC remote.
 
 </admon>
 
@@ -124,8 +123,8 @@ Downloaded 1 file(s) to 'model.pkl'
 
 In this example, we download stage `prod` of the artifact. Since we have set our
 Studio access token in the `DVC_STUDIO_TOKEN` environment variable,
-`dvc artifacts get` will download the artifact via the <abbr>model registry</abbr>
-rather than from a DVC remote.
+`dvc artifacts get` will download the artifact via the <abbr>model
+registry</abbr> rather than from a DVC remote.
 
 ## Example: Download an artifact defined in a specific `dvc.yaml` file
 
