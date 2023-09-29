@@ -245,6 +245,17 @@
         "slug": "add"
       },
       {
+        "label": "artifacts",
+        "slug": "artifacts",
+        "source": "artifacts/index.md",
+        "children": [
+          {
+            "label": "artifacts get",
+            "slug": "get"
+          }
+        ]
+      },
+      {
         "label": "cache",
         "slug": "cache",
         "source": "cache/index.md",
@@ -570,6 +581,10 @@
       {
         "slug": "dvcfilesystem",
         "label": "DVCFileSystem"
+      },
+      {
+        "slug": "artifacts_show",
+        "label": "artifacts_show()"
       },
       {
         "slug": "exp_show",

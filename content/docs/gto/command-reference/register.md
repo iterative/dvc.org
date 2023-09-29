@@ -45,7 +45,9 @@ another Git commit if you provide it's hexsha as an additional argument, like
 - `--bump-major` - Bump major version
 - `--bump-minor` - Bump minor version
 - `--bump-patch` - Bump patch version
-- `--push` - Push created tag automatically (experimental)
+- `--push` - Push created git tag to `origin`. The value is ignored if the
+  `repo` option is set to a remote URL. In that case tags are pushed to or
+  created on the remote repo automatically.
 - `-h`, `--help` - Show this message and exit.
 
 ## Examples
