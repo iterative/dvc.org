@@ -1,8 +1,8 @@
 # artifacts
 
 Commands for working with DVC
-[artifacts](/doc/user-guide/project-structure/dvcyaml-files#artifacts) and the
-DVC [model registry](/doc/use-cases/model-registry).
+<abbr>artifacts</abbr> and the
+<abbr>model registry</abbr>.
 
 ## Synopsis
 
@@ -16,14 +16,8 @@ positional arguments:
 
 ## Description
 
-`dvc artifacts` subcommands provide a command line client for working with model
-registry artifacts.
-
-<admon icon="book">
-
-See [Model Registry](/doc/use-cases/model-registry) for more info.
-
-</admon>
+`dvc artifacts` subcommands provide a command line client for working with <abbr>model
+registry</abbr> artifacts.
 
 ## Options
 

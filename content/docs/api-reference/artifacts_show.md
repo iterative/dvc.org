@@ -1,7 +1,7 @@
 # dvc.api.artifacts_show()
 
 Get the path and Git revision for an
-[artifact](/doc/user-guide/project-structure/dvcyaml-files#artifacts) tracked in
+<abbr>artifact</abbr> tracked in
 a <abbr>DVC repository</abbr>.
 
 ```py
