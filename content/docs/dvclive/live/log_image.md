@@ -109,6 +109,7 @@ folders following this pattern will be rendered using an image slider:
 </tab>
 
 </toggle>
+
 ## Parameters
 
 - `name` - name of the image file that this command will output
