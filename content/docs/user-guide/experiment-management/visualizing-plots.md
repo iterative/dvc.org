@@ -172,6 +172,14 @@ file:///Users/usr/src/dvc_plots/index.html
 
 [template]: #plot-templates-data-series-only
 
+### VSCode Extension Plots Wizard
+
+Use the
+[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+to define plots inside your `dvc.yaml`.
+
+https://youtu.be/qG2gfTuQWtk?si=ffpkBLX-odowXK-G
+
 <admon icon="book">
 
 Refer to the [full format specification] and `dvc plots show` for more details.
