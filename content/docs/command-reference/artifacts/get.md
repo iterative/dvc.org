@@ -41,8 +41,7 @@ API]. Downloading an artifact using the Studio REST API only requires a valid
 Studio [access token] and a Studio project configured with your [remote storage
 credentials]. It does not require the client to have those credentials. If you
 do not have a valid Studio token, or the artifact is not tracked in the model
-registry, DVC will fall back to downloading the artifact from the project's
-default DVC remote.
+registry, DVC will fall back to its typical method to get files (see `dvc get`).
 
 ## Options
 
