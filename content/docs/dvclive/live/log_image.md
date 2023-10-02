@@ -96,9 +96,19 @@ In [Iterative Studio](https://studio.iterative.ai/) and the
 [DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
 folders following this pattern will be rendered using an image slider:
 
+<toggle>
+<tab title="Studio">
+
 ![DVCLive Studio Image Slider](/img/dvclive-studio-image-slider.gif)
+
+</tab>
+<tab title="VSCode Extension">
+
 ![DVCLive VSCode Image Slider](/img/dvclive-vscode-image-slider.gif)
 
+</tab>
+
+</toggle>
 ## Parameters
 
 - `name` - name of the image file that this command will output
