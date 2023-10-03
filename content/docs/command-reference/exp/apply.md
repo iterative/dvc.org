@@ -6,7 +6,7 @@ Put the results from an [experiment](/doc/command-reference/exp) in the
 ## Synopsis
 
 ```usage
-usage: dvc exp apply [-h] [-q | -v] experiment
+usage: dvc exp apply [-h] [-q | -v] experiment [-f]
 
 positional arguments:
   experiment     Experiment to be applied
@@ -68,6 +68,11 @@ Note that `git stash apply` my fail if you run Git commands which affect `HEAD`
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+- `-f`, `--force` - does not prompt when removing workspace files. Changing the
+  current set of DVC files with `git checkout` can result in the need for DVC to
+  remove files that don't match those references or are missing from cache.
+  (They are not "committed", in DVC terms.)
 
 ## Example: Make an experiment persistent
 
