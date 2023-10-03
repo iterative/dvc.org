@@ -34,6 +34,9 @@ The logged params can be visualized with `dvc params`:
 $ dvc params diff dvclive/params.yaml
 ```
 
+If you use <abbr>DVC pipelines</abbr>, [parameter dependencies] are tracked
+automatically, and you can skip logging them with DVCLive.
+
 </admon>
 
 ## Parameters
@@ -57,3 +60,6 @@ $ dvc params diff dvclive/params.yaml
       Dict[str, "ParamLike"]
   ]
   ```
+
+[parameter dependencies]:
+  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
