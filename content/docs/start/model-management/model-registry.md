@@ -18,40 +18,33 @@ speed things up, we will start from a git
 [repository](https://github.com/iterative/example-get-started-model-management)
 with a model training pipeline already set up and ready to use.
 
-To see how you can track experiments and set up training pipelines with DVC,
-have a look at our getting started guide for
-[experiment management](/doc/start/experiments).
+To see how you can track experiments and set up training pipelines with DVC and DVCLive,
+have a look at our getting started guide for [experiment management](/doc/start/experiments).
 
-## DVC Model registry
+## DVC Model registry overview
 
-- show where it is in Studio
+In DVC Studio we can access the model registry by clicking on Models in the top menu. This will show you a dashboard with all models from all projects you have access to. You can check out our [public model registry example](https://studio.iterative.ai/team/Iterative/models).
+
+From the dashboard you will have an overview of all models, latest model versions as well stages each of the model versions is assigned to. You can also see which git repository for each model and get more details for it by clicking on the model name.
+
+Here you will see some extra information about a particular model - a description of the model, any labels that were assigned and particularly the history of all model registry actions on that selected model. For each model version you can also have a look at its metrics tracked by the experiment tracked. 
+
+
 
 ## Adding models
 
-We have three options how to add a model to the model registry. We can:
+Let's now train a model and add it to the model registry.
 
-1. use DVCLive and add models using Python code
-1. Use the Studio's graphical user interface to add models interactively
-1. Manually edit `dvc.yaml` files to add information about model artifacts.
+We have three options how to add a model to the model registry. In this guide, we will be using DVCLive and add a model using Python code. This will also automatically save the model to DVC.
 
-Each of these methods creates an entry in the `dvc.yaml` file (in the last
-method this is done manually) which describes the model we are adding to the
-model registry and lists its properties for DVC to show in Studio.
-
-The DVCLive option also takes care of saving and versioning the model artifact
-with DVC which is why we will be using that in this guide. To get more details
-on how to use the other two options, have a look at the
-[Model registry documentation](/doc/studio/user-guide/model-registry/add-a-model).
-
-<toggle>
-
-<tab title="DVCLive">
+We use the [`log_artifact`](/doc/dvclive/live/log_artifact) method
+to save the model and add it to the model registry. Open the training notebook `notebooks/TrainSegModel.ipynb` in our example repository and in the last cell of the notebook add the method call inside the `with Live(...)` statement as follows. 
 
 ```python
-from dvclive import Live
+with Live(...) as live:
 
 ...
-with Live() as live:
+
     live.log_artifact(
         path="models/model.pkl",
         type="model",
@@ -61,77 +54,54 @@ with Live() as live:
     )
 ```
 
-</tab>
+Here the `path` parameter tells DVC that our model is to be found under `"models/model.pkl"`, the `type` parameter is `"model"` and so it will show up in the Studio registry (other artifact types will not) and the rest of the parameters are descriptive and optional and will also show up in the model registry.
 
-<tab title="Studio">
-
-![Adding models in Studio](/img/mr-add-model-placeholder.gif)
-
-</tab>
-
-<tab title="Manualy editing dvc.yaml">
-
-```yaml
-artifacts:
-  pool-segmentation: # artifact ID (name)
-    path: models/model.pkl
-    type: model
-    desc:
-      "This is a Computer Vision (CV) model that's segmenting out swimming pools
-      from satellite images."
-    labels:
-      - cv
-      - segmentation
-      - sattelite-images
-```
-
-</tab>
-
-</toggle>
-
-With DVCLive, we use the [`log_artifact`](/doc/dvclive/live/log_artifact) method
-to save the model and add it to the model registry.
-
-To see the model in registry, we need to fill in `path` and `type` parameters.
-`path` is the path to our model and by setting `type` to `"model"` we let the
-model registry in Studio know to pick up the artifact and show in the GUI.
-
-The rest of the parameters are optional and descriptive. They add information
-that will be visible in Studio like in the following example
+If we now run the code and commit the result to git (and push it to our git remote), the new model will show up in the model registry in Studio. You should see something like the following picture.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
-## Versioning models
+<details id="push-click-to-see-other-ways-to-add-models">
 
-Once we have an artifact in the model registry, we can start registering model
-versions. This can be done using the Studio UI as follows
+#### 💡 Expand to see other ways to add models
+
+The other two options are to use the Studio's graphical user interface to add models interactively or to manually edit `dvc.yaml` files to add information about model artifacts. To get more details on the ways to add models have a look at the [Model registry documentation](/doc/studio/user-guide/model-registry/add-a-model).
+
+</details>
+
+## TODO Versioning models
+
+Now that we have our first model in the model registry, we can start registering model
+versions for the model. This really amounts to choosing specific commit in our model development history and attaching a version to it to keep an easier track of it. We will do that directly in the Studio UI as follows
 
 ![Registering model versions](/img/placeholder-cat.gif)
 
-- TODO - for a model version we can see the experiment metadata and observe the
+
+Once we register our first model version, the model registry will also automatically connect with the experiment tracking and all metrics which are tracked for our model version will also show up in the model registry. We can even explore the experiment directly by clicking on the "Open in Project" button on the model detail page.
+
+- TODO - for a model version we can view the experiment metadata and observe the
   associated experiment directly
 
-## Assigning lifecycle stages
+## TODO Assigning lifecycle stages
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua.
 
-## Removing stage assignments
+## TODO Removing stage assignments
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex
 
-## De-registering model versions
+## TODO De-registering model versions
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex
 
-## Deprecating models
+## TODO Deprecating models
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 nostrud exercitation ullamco laboris nisi ut aliquip ex
 
-## Auditing model history
+## TODO Auditing model history
