@@ -94,53 +94,92 @@ at the
 
 ## Versioning models
 
-Now that we have our first model in the model registry, we can start registering model
-versions for the model. We do it by choosing a specific commit in our model development history and attaching a version to it to keep an easier track of it. We will do that directly in the Studio UI as follows
+Now that we have our first model in the model registry, we can start registering
+model versions for the model. We do it by choosing a specific commit in our
+model development history and attaching a version to it to keep an easier track
+of it. We will do that directly in the Studio UI as follows
 
 ![Registering model versions](/img/mr-register-model-version.gif)
 
-Since we just saved our model to dvc and added it to the model registry in the previous commit, we can just keep the commit which was selected automatically. We will also keep the suggested version number. For more details and other way of registering model versions you can have a look at the corresponding [documentation](/doc/studio/user-guide/model-registry/register-version).
+Since we just saved our model to dvc and added it to the model registry in the
+previous commit, we can just keep the commit which was selected automatically.
+We will also keep the suggested version number. For more details and other way
+of registering model versions you can have a look at the corresponding
+[documentation](/doc/studio/user-guide/model-registry/register-version).
 
-Once we register our first model version, the model registry will also automatically connect with the experiment tracking and all metrics which are tracked for each model version will also show up in the model registry. We can even explore the experiment directly by clicking on the "Open in Project" button on the model detail page.
+Once we register our first model version, the model registry will also
+automatically connect with the experiment tracking and all metrics which are
+tracked for each model version will also show up in the model registry. We can
+even explore the experiment directly by clicking on the "Open in Project" button
+on the model detail page.
 
 ## Assigning lifecycle stages
 
-We have a first version for our model and now it is a good time to assign a model lifecycle stage to it. You can create any number of lifecycle stages with any names you wish but in this example we will only create two stages called "dev" and "staging".
+We have a first version for our model and now it is a good time to assign a
+model lifecycle stage to it. You can create any number of lifecycle stages with
+any names you wish but in this example we will only create two stages called
+"dev" and "staging".
 
-Stages are created whenever a model version is assigned to them. We will now assign our model to the "dev" stage as follows.
+Stages are created whenever a model version is assigned to them. We will now
+assign our model to the "dev" stage as follows.
 
 ![Assigning model stages](/img/mr-assign-model-stage.gif)
 
 ## Removing stage assignments
 
-Let's say that we've tested our model a bit and decided to promote its version 1.0.0. to the next stage. In the "staging" stage the model will be ready for deployment to production but not deployed yet (we will explore model deployment in the next chapter).
+Let's say that we've tested our model a bit and decided to promote its version
+1.0.0. to the next stage. In the "staging" stage the model will be ready for
+deployment to production but not deployed yet (we will explore model deployment
+in the next chapter).
 
-We will assign it to the "staging" stage but we also want our team to know that this model is no longer in the "dev" stage.
+We will assign it to the "staging" stage but we also want our team to know that
+this model is no longer in the "dev" stage.
 
-To do that, we can remove the "dev" stage from the model version 1.0.0. like this:
+To do that, we can remove the "dev" stage from the model version 1.0.0. like
+this:
 
 ![Removing model stages](/img/mr-remove-model-stage.gif)
+
 ## De-registering model versions and deprecating models
 
-Sometimes we find that a particular model version becomes obsolete. This can happen in a production environment with a lot of data drift or simply because we've developed a strictly better model and have no need to keep the older version. Similarly, sometimes this happens to an entire model perhaps because its intended use-case is no longer needed.
+Sometimes we find that a particular model version becomes obsolete. This can
+happen in a production environment with a lot of data drift or simply because
+we've developed a strictly better model and have no need to keep the older
+version. Similarly, sometimes this happens to an entire model perhaps because
+its intended use-case is no longer needed.
 
-In these situations we can remove model versions or the entire models from the model registry. We will not actually do that just yet, since we first want to download and deploy our model in the next chapter.
+In these situations we can remove model versions or the entire models from the
+model registry. We will not actually do that just yet, since we first want to
+download and deploy our model in the next chapter.
 
-TODO: This is a bit clumsy, people who use the guide should not have to go back and forth between chapters...Maybe deprecation should be moved to a short third chapter and only mentioned here? Auditing could them also be moved there.
+TODO: This is a bit clumsy, people who use the guide should not have to go back
+and forth between chapters...Maybe deprecation should be moved to a short third
+chapter and only mentioned here? Auditing could them also be moved there.
 
-If you don't want to continue with model deployment or if you have already done that you can deprecating a model version now. All we need to do is to click on the **Deregister model version** button in the model details stage and confirm it in a pop-up window.
+If you don't want to continue with model deployment or if you have already done
+that you can deprecating a model version now. All we need to do is to click on
+the **Deregister model version** button in the model details stage and confirm
+it in a pop-up window.
 
 ![De-registering model versions](/img/mr-deregister-model-version.png)
 
-To remove the model entirely, we can click on the three dots next to the model name and then select **Deprecate model**. Here, we need to confirm it by typing in the model name to avoid removing models by mistake.
+To remove the model entirely, we can click on the three dots next to the model
+name and then select **Deprecate model**. Here, we need to confirm it by typing
+in the model name to avoid removing models by mistake.
 
-If we remove the model entirely, we will also lose the ability to view its history. Even in that case are ways to bring it back but they are out of scope of this guide.
+If we remove the model entirely, we will also lose the ability to view its
+history. Even in that case are ways to bring it back but they are out of scope
+of this guide.
 
 ## Auditing model history
 
-Every action we performe in our model registry leaves a trace so that the model history can be audited. If we now look at the model details page of our model, we should see something like this:
+Every action we performe in our model registry leaves a trace so that the model
+history can be audited. If we now look at the model details page of our model,
+we should see something like this:
 
 ![Model history](/img/mr-model-history.png)
 
-
-Under the hood DVC uses special git tags to keep track of model registry actions, so all of this history is actually stored directly in your git repository. DVC Studio can parse these tags and show them to us in a user-friendly way.
+Under the hood DVC uses special git tags to keep track of model registry
+actions, so all of this history is actually stored directly in your git
+repository. DVC Studio can parse these tags and show them to us in a
+user-friendly way.
