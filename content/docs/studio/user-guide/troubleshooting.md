@@ -314,12 +314,12 @@ issue for any future commits in your repository.
 When there are updates (new commits, branches, etc.) in your Git repository,
 your project in Iterative Studio gets reflected to include those updates. If the
 project has stopped receiving updates from the Git repository and you have to
-`force import` the project each time to get any new commit, then it is possible
+`re-import` the project each time to get any new commit, then it is possible
 that the Iterative Studio webhook in your repository got deleted or messed up.
 
 Iterative Studio periodically checks for any missing or messed up webhooks, and
 attempts to re-create them. Currently, this happens every 2 hours. The webhook
-also gets re-created every time you create a new project or force import a
+also gets re-created every time you create a new project or re-import a
 repository.
 
 ## I cannot find my desired Git repository in the form to add a model
