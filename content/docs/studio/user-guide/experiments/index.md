@@ -113,15 +113,6 @@ To set up, run and track
   as Git commits and PRs as well as
   [remove unnecessary experiments](/doc/start/experiments/experiment-collaboration#removing).
 
-<admon type="tip">
-
-If you are working with a **non-DVC repository**, you can
-[indicate which files contain metrics and hyperparameters](/doc/studio/user-guide/experiments/configure-a-project#custom-metrics-and-parameters)
-that Iterative Studio should display in the project. However, we strongly
-recommend using DVC to avail of all the features of Iterative Studio.
-
-</admon>
-
 ## Visualize, compare and run experiments
 
 Within a project, you can:
