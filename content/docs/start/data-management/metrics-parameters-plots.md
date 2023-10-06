@@ -264,11 +264,11 @@ commit.
 
 ```cli
 $ dvc metrics diff
-Path                    Metric          HEAD     workspace    Change
-eval/live/metrics.json  avg_prec.test   0.9014   0.925        0.0236
-eval/live/metrics.json  avg_prec.train  0.95704  0.97437      0.01733
-eval/live/metrics.json  roc_auc.test    0.93196  0.94602      0.01406
-eval/live/metrics.json  roc_auc.train   0.97743  0.98667      0.00924
+Path               Metric          HEAD     workspace    Change
+eval/metrics.json  avg_prec.test   0.9014   0.925        0.0236
+eval/metrics.json  avg_prec.train  0.95704  0.97437      0.01733
+eval/metrics.json  roc_auc.test    0.93196  0.94602      0.01406
+eval/metrics.json  roc_auc.train   0.97743  0.98667      0.00924
 ```
 
 And finally, we can compare all plots with a single command (we show only some
