@@ -77,7 +77,7 @@ even if the project belongs to a team where you are an `Editor` or `Admin`.
 | View CML reports                              | No      | No     | Yes    | Yes   |
 | Share a project                               | No      | No     | Yes    | Yes   |
 | Add a new project                             | No      | No     | Yes    | Yes   |
-| Force repository import                       | No      | No     | Yes    | Yes   |
+| Re-import repository                          | No      | No     | Yes    | Yes   |
 | Delete a project                              | No      | No     | Yes    | Yes   |
 
 \*Visitors can access only the public projects of the team.
