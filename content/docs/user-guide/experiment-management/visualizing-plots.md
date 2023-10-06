@@ -1,5 +1,11 @@
 # Visualizing Plots
 
+Use the
+[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+to define plots inside your `dvc.yaml`.
+
+https://youtu.be/qG2gfTuQWtk?si=ffpkBLX-odowXK-G
+
 DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
@@ -171,14 +177,6 @@ file:///Users/usr/src/dvc_plots/index.html
 ![](/img/plots_show_spec_roc_train_test.svg)
 
 [template]: #plot-templates-data-series-only
-
-### VSCode Extension Plots Wizard
-
-Use the
-[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
-to define plots inside your `dvc.yaml`.
-
-https://youtu.be/qG2gfTuQWtk?si=ffpkBLX-odowXK-G
 
 <admon icon="book">
 
