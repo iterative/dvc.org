@@ -22,24 +22,6 @@ To see how you can track experiments and set up training pipelines with DVC and
 DVCLive, have a look at our getting started guide for
 [experiment management](/doc/start/experiments).
 
-## DVC Model registry overview
-
-In DVC Studio we can access the model registry by clicking on Models in the top
-menu. This will show you a dashboard with all models from all projects you have
-access to. You can check out our
-[public model registry example](https://studio.iterative.ai/team/Iterative/models).
-
-From the dashboard you will have an overview of all models, latest model
-versions as well stages each of the model versions is assigned to. You can also
-see which git repository for each model and get more details for it by clicking
-on the model name.
-
-Here you will see some extra information about a particular model - a
-description of the model, any labels that were assigned and particularly the
-history of all model registry actions on that selected model. For each model
-version you can also have a look at its metrics tracked by the experiment
-tracked.
-
 ## Adding models
 
 Let's now train a model and add it to the model registry. We will be using
