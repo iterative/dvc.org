@@ -42,7 +42,9 @@ tracked.
 
 ## Adding models
 
-Let's now train a model and add it to the model registry. We will be using DVCLive and add a model using Python code. This will also automatically save the model to DVC.
+Let's now train a model and add it to the model registry. We will be using
+DVCLive and add a model using Python code. This will also automatically save the
+model to DVC.
 
 We use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to save the
 model and add it to the model registry. Open the training notebook
@@ -76,7 +78,8 @@ see something like the following picture.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
-To get acquainted with how DVC stores and shares data, see our [Get Started guide on Data Versioning](/doc/start/data-management/data-versioning).
+To get acquainted with how DVC stores and shares data, see our
+[Get Started guide on Data Versioning](/doc/start/data-management/data-versioning).
 
 <details id="push-click-to-see-other-ways-to-add-models">
 
@@ -92,24 +95,36 @@ at the
 
 ## DVC Model registry overview
 
-In DVC Studio we can access the model registry by clicking on Models in the top bar
-menu. This will show us a dashboard with all models from all projects we have
-access to.
+In DVC Studio we can access the model registry by clicking on Models in the top
+bar menu. This will show us a dashboard with all models from all projects we
+have access to.
 
-From the dashboard we will have an overview of all models, latest model
-versions as well stages each of the model versions is assigned to. We can get more details for each model by clicking on the model name.
+From the dashboard we will have an overview of all models, latest model versions
+as well stages each of the model versions is assigned to. We can get more
+details for each model by clicking on the model name.
 
 <details id="under-the-hood-model-registry">
 
 #### 💡 Expand to see how the model registry works under the hood
 
-The DVC Model registry uses the GTO library to manage model versions and model lifecycle stages. GTO assign [particularly formatted](/doc/gto/user-guide#git-tags-format) git [tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits and these are then parsed by the model registry to keep track of the model lifecycle history.
+The DVC Model registry uses the GTO library to manage model versions and model
+lifecycle stages. GTO assign
+[particularly formatted](/doc/gto/user-guide#git-tags-format) git
+[tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
+and these are then parsed by the model registry to keep track of the model
+lifecycle history.
 
-This means that all the metadata used by the model registry is actually stored in your git repo!
+This means that all the metadata used by the model registry is actually stored
+in your git repo!
 
-It also allows you to use GTO directly instead of the Studio UI to manage your model lifecycle. That can be useful for example if you want to trigger certain model registry actions programmatically. You can learn more about the details of GTO in its [documentation](/docs/gto).
+It also allows you to use GTO directly instead of the Studio UI to manage your
+model lifecycle. That can be useful for example if you want to trigger certain
+model registry actions programmatically. You can learn more about the details of
+GTO in its [documentation](/docs/gto).
 
-We recommend most users to interact with the model registry using the Studio GUI as it is easier to use and also has some exclusive features such as the ability to view models from multiple git repositories in one place.
+We recommend most users to interact with the model registry using the Studio GUI
+as it is easier to use and also has some exclusive features such as the ability
+to view models from multiple git repositories in one place.
 
 </details>
 
@@ -138,17 +153,19 @@ on the model detail page.
 
 #### 💡 Expand to see how registering models works under the hood
 
-Registering the model version as we just did using DVC Studio is equivalent to the following GTO command
+Registering the model version as we just did using DVC Studio is equivalent to
+the following GTO command
 
 ```
-gto register pool-segmentation [ref] --version v1.0.0 
+gto register pool-segmentation [ref] --version v1.0.0
 ```
-Here, `[ref]` is the git reference/hash we selected from the menu in Studio. 
 
-For more details you can have a look at the [gto register command reference](doc/gto/command-reference/register).
+Here, `[ref]` is the git reference/hash we selected from the menu in Studio.
+
+For more details you can have a look at the
+[gto register command reference](doc/gto/command-reference/register).
 
 </details>
-
 
 ## Assigning lifecycle stages
 
@@ -166,13 +183,15 @@ assign our model to the "dev" stage as follows.
 
 #### 💡 Expand to see how assigning model stages works under the hood
 
-Assigning the "dev" stage to the model as we just did using DVC Studio is equivalent to the following GTO command
+Assigning the "dev" stage to the model as we just did using DVC Studio is
+equivalent to the following GTO command
 
 ```
 gto assign pool-segmentation --version v1.0.0 --stage dev
 ```
 
-For more details you can have a look at the [gto assign command reference](doc/gto/command-reference/assign).
+For more details you can have a look at the
+[gto assign command reference](doc/gto/command-reference/assign).
 
 </details>
 
@@ -183,28 +202,33 @@ Let's say that we've tested our model a bit and decided to promote its version
 deployment to production but not deployed yet (we will explore model deployment
 in the next chapter).
 
-We will assign it to the "staging" stage just like we did with the "dev" stage in the previous section but we also want our team to know that this model is no longer in the "dev" stage.
+We will assign it to the "staging" stage just like we did with the "dev" stage
+in the previous section but we also want our team to know that this model is no
+longer in the "dev" stage.
 
 To do that, we can remove the "dev" stage from the model version 1.0.0. like
 this:
 
 ![Removing model stages](/img/mr-remove-model-stage.gif)
 
-It is also possible to de-register model versions or deprecate and remove models from the registry entirely. We will not do that in this guide, but [here](user-guide/model-registry/remove-a-model-or-its-details) you can have a look at how to do that.
+It is also possible to de-register model versions or deprecate and remove models
+from the registry entirely. We will not do that in this guide, but
+[here](user-guide/model-registry/remove-a-model-or-its-details) you can have a
+look at how to do that.
 
 <details id="under-the-hood-removing-stages">
 
 #### 💡 Expand to see how removing model stages works under the hood
 
-
-Un-assigning the "dev" stage from the model as we just did using DVC Studio is equivalent to the following GTO command
+Un-assigning the "dev" stage from the model as we just did using DVC Studio is
+equivalent to the following GTO command
 
 ```
 gto deprecate pool-segmentation v1.0.0 dev
 ```
 
-For more details you can have a look at the [gto deprecate command reference](doc/gto/command-reference/deprecate).
-
+For more details you can have a look at the
+[gto deprecate command reference](doc/gto/command-reference/deprecate).
 
 </details>
 
@@ -216,7 +240,8 @@ we should see something like this:
 
 ![Model history](/img/mr-model-history.png)
 
-As we noted [above](/docs/start/model-management/model-registry#under-the-hood-model-registry"), DVC uses special git tags to keep track of model registry
-actions, so all of this history is actually stored directly in your git
-repository. DVC Studio can parse these tags and show them to us in a
-user-friendly way.
+As we noted
+[above](/docs/start/model-management/model-registry#under-the-hood-model-registry"),
+DVC uses special git tags to keep track of model registry actions, so all of
+this history is actually stored directly in your git repository. DVC Studio can
+parse these tags and show them to us in a user-friendly way.
