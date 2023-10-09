@@ -90,8 +90,8 @@ details for each model by clicking on the model name.
 The DVC Model registry uses the GTO library to manage model versions and model
 lifecycle stages by particularly formatted git tags.
 
-To see how it all works and how you can use GTO directly, you can explore the "under the hood" expandable content in this guide!
-
+To see how it all works and how you can use GTO directly, you can explore the
+"under the hood" expandable content in this guide!
 
 </admon>
 
@@ -99,8 +99,8 @@ To see how it all works and how you can use GTO directly, you can explore the "u
 
 #### 💡 Expand to see how the model registry works under the hood
 
-When you register model versions, assign or remove stages or deprecate models, GTO assign
-[particularly formatted](/doc/gto/user-guide#git-tags-format) git
+When you register model versions, assign or remove stages or deprecate models,
+GTO assign [particularly formatted](/doc/gto/user-guide#git-tags-format) git
 [tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
 and these are then parsed by the model registry to keep track of the model
 lifecycle history.
