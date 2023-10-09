@@ -85,12 +85,21 @@ From the dashboard we will have an overview of all models, latest model versions
 as well stages each of the model versions is assigned to. We can get more
 details for each model by clicking on the model name.
 
+<admon type="tip">
+
+The DVC Model registry uses the GTO library to manage model versions and model
+lifecycle stages by particularly formatted git tags.
+
+To see how it all works and how you can use GTO directly, you can explore the "under the hood" expandable content in this guide!
+
+
+</admon>
+
 <details id="under-the-hood-model-registry">
 
 #### 💡 Expand to see how the model registry works under the hood
 
-The DVC Model registry uses the GTO library to manage model versions and model
-lifecycle stages. GTO assign
+When you register model versions, assign or remove stages or deprecate models, GTO assign
 [particularly formatted](/doc/gto/user-guide#git-tags-format) git
 [tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
 and these are then parsed by the model registry to keep track of the model
@@ -223,7 +232,7 @@ we should see something like this:
 ![Model history](/img/mr-model-history.png)
 
 As we noted
-[above](/docs/start/model-management/model-registry#under-the-hood-model-registry"),
+[above](/docs/start/model-management/model-registry#under-the-hood-model-registry),
 DVC uses special git tags to keep track of model registry actions, so all of
 this history is actually stored directly in your git repository. DVC Studio can
 parse these tags and show them to us in a user-friendly way.
