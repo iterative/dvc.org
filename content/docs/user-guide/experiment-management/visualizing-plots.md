@@ -99,16 +99,16 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ## Defining plots
 
-Use the
+In order to create visualizations, users need to provide the data and
+(optionally) configuration that will help customize the plot in a `dvc.yaml`
+file. If you are using [DVCLive](/doc/dvclive/), it will configure plots, but
+you can also add your own custom plots. The easiest way is to use the
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 to define plots inside your `dvc.yaml`.
 
 https://youtu.be/qG2gfTuQWtk?si=ffpkBLX-odowXK-G
 
-In order to create visualizations, users need to provide the data and
-(optionally) configuration that will help customize the plot in a `dvc.yaml`
-file. If you are using [DVCLive](/doc/dvclive/), it will configure plots, but
-you can also add your own custom plots like this example:
+You can also manually edit `dvc.yaml` to configure plots like this:
 
 ```yaml
 plots:
