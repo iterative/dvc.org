@@ -1,7 +1,7 @@
 # Remove a model, version, or stage assignment
 
 When you remove (deprecate) a model, deregister a version or unassign a stage,
-Iterative Studio
+DVC Studio
 [creates Git tags that indicate the action](/doc/gto/command-reference/deprecate)
 and saves the tags in your Git repository.
 
@@ -32,7 +32,7 @@ These actions are also available in the model details page:
 </p>
 
 <admon type="tip">
-To remove all of a project's models from Iterative Studio without deprecating them, you can simply delete the project.
+To remove all of a project's models from DVC Studio without deprecating them, you can simply delete the project.
 </admon>
 
 <admon type="info">

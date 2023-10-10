@@ -1,6 +1,6 @@
 # Model Registry
 
-Iterative Studio Model Registry is a central registry of all your Machine
+DVC Studio Model Registry is a central registry of all your Machine
 Learning models. It enables ML teams to collaborate on models by providing model
 organization, discovery, versioning, lineage (tracing the origin of the model)
 and the ability to manage production statuses (eg, `dev`, `shadow`, `prod`,

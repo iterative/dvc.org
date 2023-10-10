@@ -1,6 +1,6 @@
-# Iterative Studio
+# DVC Studio
 
-[Iterative Studio](https://studio.iterative.ai/) is a web application that
+[DVC Studio](https://studio.iterative.ai/) is a web application that
 enables Machine Learning teams to seamlessly
 
 - [Run and track experiments](/doc/studio/experiments)
@@ -11,7 +11,7 @@ It works on top of [DVC](https://dvc.org/) and [Git](https://git-scm.com/),
 maintaining Git as the single-source-of-truth for your data, experiments and
 models.
 
-Sign in to [Iterative Studio](https://studio.iterative.ai/) using your
+Sign in to [DVC Studio](https://studio.iterative.ai/) using your
 GitHub.com, GitLab.com, or Bitbucket.org account, or with your email address.
 Explore the demo projects and models, and
 [let us know](/doc/studio/user-guide/troubleshooting#support) if you need any
@@ -19,7 +19,7 @@ help getting started.
 
 https://www.youtube.com/watch?v=w-UjAbdpRY4
 
-## Why Iterative Studio?
+## Why DVC Studio?
 
 - Simplify ML experiment tracking, visualization, and collaboration on top of
   Git.

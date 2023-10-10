@@ -43,7 +43,7 @@ details]).
 For Basic plans, invoice amount is calculated based on the number of seats in
 the team. All invoice amounts are calculated for one billing period at a time. A
 billing period is one month long. The price per seat can be found in the
-Iterative Studio [pricing page](https://studio.iterative.ai/pricing).
+DVC Studio [pricing page](https://studio.iterative.ai/pricing).
 
 For example, suppose you have a team with 5 seats. At a monthly rate of $40 per
 seat, the total payable amount for the team would be $40 x 5 = $200 per month.
@@ -107,7 +107,7 @@ subscription at the end of the billing period.
 
 At the end of your billing period, if we are unable to process your payment, you
 will enter a grace period of 5 days during which you must provide valid payment.
-During this time you will continue to have full access to Iterative Studio.
+During this time you will continue to have full access to DVC Studio.
 
 Your account's primary email address will be notified after each failed payment.
 Payments may be retried up to 4 times. To provide a new payment method, go to
@@ -139,6 +139,6 @@ you see your payment history and get a copy of your invoices.
 
 ## Other questions
 
-You can find answers to other frequently asked questions in the Iterative Studio
+You can find answers to other frequently asked questions in the DVC Studio
 [FAQ page](https://studio.iterative.ai/faq). If you have any other questions,
 please [contact us].

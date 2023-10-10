@@ -1,14 +1,14 @@
 # Manage models
 
-Iterative Studio provides a model registry that you can access by clicking on
+DVC Studio provides a model registry that you can access by clicking on
 the [`Models` tab](https://studio.iterative.ai/user/-/models). Your project's
 `dvc.yaml` files are used to identify ML models and
 [specially formatted Git tags](/doc/gto/user-guide#git-tags-format) are used to
 identify model versions and stage assignments.
 
-To quickly start tracking your models in the Iterative Studio model registry:
+To quickly start tracking your models in the DVC Studio model registry:
 
-- Click on `Add a project` to connect Iterative Studio to your ML project's Git
+- Click on `Add a project` to connect DVC Studio to your ML project's Git
   repository.
 
 - In your model training environment, install [DVCLive](/doc/dvclive):
@@ -49,10 +49,10 @@ To quickly start tracking your models in the Iterative Studio model registry:
 
 ## More ways to add models
 
-Iterative Studio offers more ways to add models to the model registry - you can:
+DVC Studio offers more ways to add models to the model registry - you can:
 
 - edit `dvc.yaml` directly and add your model to artifacts section, or
-- add models from the Iterative Studio interface.
+- add models from the DVC Studio interface.
 
 Find the complete tutorial
 [here](/doc/studio/user-guide/model-registry/add-a-model).

@@ -1,7 +1,7 @@
 # Use models
 
 Whether you need to download your models to use them, or you're looking to set
-up some automation in CI/CD to deploy them, Iterative Studio provides these
+up some automation in CI/CD to deploy them, DVC Studio provides these
 capabilities.
 
 ## Download models

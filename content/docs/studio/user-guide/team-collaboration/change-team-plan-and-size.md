@@ -7,7 +7,7 @@ To change the plan for your team, go to the `Plan and billing` section within
 
 ![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing_v2.png)
 
-Click on `Change plan` (under `Current plan`). An Iterative Studio plan
+Click on `Change plan` (under `Current plan`). An DVC Studio plan
 comparison page will open. Your current plan will be marked.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features_v2.png)
@@ -21,7 +21,7 @@ You can upgrade to the Basic or Enterprise plan.
 **To upgrade to the Basic plan**, click on the `Upgrade` button. Then select the
 number of seats (collaborators) you need in your team.
 
-![](https://static.iterative.ai/img/studio/team_settings_select_seats.png)
+![](https://static.dvc.ai/img/studio/team_settings_select_seats.png)
 
 The total payable amount will be shown. See
 [Billing and Payment](/doc/studio/user-guide/account-and-billing/billing-and-payment)
@@ -30,7 +30,7 @@ for details.
 Click on `Confirm` to provide payment and upgrade the plan. You will be
 redirected to our payment processor, [Stripe](https://stripe.com/). Once your
 payment is successful, you will be redirected back to the team settings page in
-Iterative Studio. Here you can confirm your updated plan.
+DVC Studio. Here you can confirm your updated plan.
 
 <admon>
 

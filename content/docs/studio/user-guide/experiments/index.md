@@ -3,15 +3,15 @@
 You can submit your experiments from your favorite interface - whether it is
 Jupyter Notebooks, a code editor or IDE like [VS Code](/doc/vs-code-extension),
 the Python cli, the bash terminal, etc. You can also [submit new experiments
-from Iterative Studio][run-experiments].
+from DVC Studio][run-experiments].
 
-You can track live as well as completed experiments in Iterative Studio. First,
-click on `Add a project` to connect Iterative Studio to your ML project's Git
+You can track live as well as completed experiments in DVC Studio. First,
+click on `Add a project` to connect DVC Studio to your ML project's Git
 repository. Then, follow the instructions presented below.
 
 ## Track experiments in real-time
 
-To quickly start tracking your experiments with Iterative Studio:
+To quickly start tracking your experiments with DVC Studio:
 
 - In your model training environment, install [DVCLive]:
 
@@ -54,7 +54,7 @@ To quickly start tracking your experiments with Iterative Studio:
   ```
 
 - The metrics and plots will be [tracked live][live-metrics-and-plots] in the
-  project in Iterative Studio.
+  project in DVC Studio.
 
 ## Track reproducible pipelines
 
@@ -103,7 +103,7 @@ To set up, run and track
   dvc exp push origin <exp_name>
   ```
 
-- Iterative Studio reads the values of metrics, plots and other details from
+- DVC Studio reads the values of metrics, plots and other details from
   your project's `dvc.yaml` file, and displays them in an experiment row in the
   project table. The experiment row will appear nested within the parent Git
   commit row.
@@ -122,9 +122,9 @@ Within a project, you can:
 - [Visualize the experiments][visualize] using plots and trend charts.
 - [Compare experiments][compare].
 - [Run new experiments][run-experiments], including on your own cloud instances,
-  directly from Iterative Studio.
+  directly from DVC Studio.
 - [Track live metrics and plots][live-metrics-and-plots] by sending them to
-  Iterative Studio by using [DVCLive].
+  DVC Studio by using [DVCLive].
 
 [explore-ml-experiments]:
   /doc/studio/user-guide/experiments/explore-ml-experiments

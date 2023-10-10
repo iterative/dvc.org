@@ -1,6 +1,6 @@
 ## Self-hosting Studio
 
-Studio Enterprise users can host Iterative Studio on their own infrastructure
+Studio Enterprise users can host DVC Studio on their own infrastructure
 (on-premises) or in their cloud accounts.
 
 Please note that our support is needed to make the Studio's cloud/Docker images

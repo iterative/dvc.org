@@ -41,7 +41,7 @@ during the initial [create project] flow.
 Here, the [data remotes](/doc/user-guide/data-management/remote-storage) (cloud
 storage or another location outside the Git repo) that are used in your DVC repo
 will be listed. If you want your project to include data stored in these data
-remotes, you will have to add credentials to grant Iterative Studio access to
+remotes, you will have to add credentials to grant DVC Studio access to
 the data remotes. Credentials that you have already added to your account are
 listed in this section, and you can select them to add them to the project.
 
@@ -65,7 +65,7 @@ Any credentials that you
 [add in your profile page](/doc/studio/user-guide/account-and-billing#cloud-credentials)
 are also available in your project settings page.
 
-Note that Iterative Studio uses the credentials only to read plots/metrics files
+Note that DVC Studio uses the credentials only to read plots/metrics files
 if they are not saved in Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
 is not used in your Git repository.
@@ -78,7 +78,7 @@ is not used in your Git repository.
 ## Commits and columns
 
 You can specify which Git commits and columns should be imported from your Git
-repository to your project in Iterative Studio, and which ones should be
+repository to your project in DVC Studio, and which ones should be
 excluded.
 
 ### Start date/time
@@ -107,8 +107,8 @@ If your project is missing some required columns, then it is likely that
 <admon type="warn">
 
 The **Columns** setting was earlier called **Tracking scope** or **Mandatory
-columns** and behaved slightly differently. Iterative Studio would always import
-up to 200 columns. This meant that if you selected only 5 columns, Iterative
+columns** and behaved slightly differently. DVC Studio would always import
+up to 200 columns. This meant that if you selected only 5 columns, DVC
 Studio would still import another 195 columns, unless your repository did not
 have so many columns. This behavior is now obsolete, and only selected columns
 are imported.

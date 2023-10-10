@@ -12,14 +12,14 @@ plot examples are AUC curves, loss functions, and confusion matrices. The
 easiest way to start is with [DVCLive], which will automatically generate plots
 data and configure them to be visualized.
 
-Iterative Studio supports all [DVC plots], which can plot two types of files in
+DVC Studio supports all [DVC plots], which can plot two types of files in
 your repository:
 
 1. Data series files, which can be JSON, YAML, CSV or TSV. Data from these files
    will populate your AUC curves, loss functions, confusion matrices and other
    metric plots.
 2. Image files in JPEG, GIF, or PNG format. These images will be displayed as-is
-   in Iterative Studio.
+   in DVC Studio.
 
 To open the `Plots` pane and display plots, select the plots toggle (highlighted
 in orange below) for one or more experiments and click on the `Plots` button
