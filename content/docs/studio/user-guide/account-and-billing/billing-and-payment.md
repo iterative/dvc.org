@@ -1,6 +1,6 @@
 # Billing and Payment
 
-Studio is free for individuals and teams with up to 2 members. The Free plan is
+DVC Studio is free for individuals and teams with up to 2 members. The Free plan is
 designed for teams that are starting out: you can invite one other team member
 and import as many repositories as you want.
 
@@ -21,7 +21,7 @@ billing and payment for them.
 
 ## Difference between Free, Basic, and Enterprise plans
 
-A detailed comparison of the different plans can be found in the Iterative
+A detailed comparison of the different plans can be found in the DVC
 Studio [pricing page](https://studio.iterative.ai/pricing).
 
 ## How to sign up for the Basic or Enterprise plans
