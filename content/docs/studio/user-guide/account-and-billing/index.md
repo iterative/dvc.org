@@ -1,8 +1,8 @@
 # Account Management
 
 To open your account settings, click on your user icon on the top right corner
-of DVC Studio, and go to your `Profile`. You can view and update the
-following settings:
+of DVC Studio, and go to your `Profile`. You can view and update the following
+settings:
 
 - [Personal details](#personal-details), including name, username and email
   addresses
@@ -34,9 +34,9 @@ You can edit your name as well as username.
 
 ### Managing email addresses
 
-You can add multiple email addresses to a single DVC Studio account. You
-can login to the account with any of your verified email addresses as long as
-you have set up a password for your account. This is true even if you signed up
+You can add multiple email addresses to a single DVC Studio account. You can
+login to the account with any of your verified email addresses as long as you
+have set up a password for your account. This is true even if you signed up
 using your GitHub, GitLab, or Bitbucket.
 
 One of your email addresses must be designated as primary. This is the address
@@ -208,11 +208,11 @@ In this section, you can,
 
 - Connect to GitHub.com, GitLab.com or Bitbucket.org.
 
-  When you connect to a Git hosting provider, you will be prompted to grant
-  DVC Studio access to your account.
+  When you connect to a Git hosting provider, you will be prompted to grant DVC
+  Studio access to your account.
 
-  To connect to your GitHub repositories, you must install the DVC Studio
-  GitHub app. Refer to the section on
+  To connect to your GitHub repositories, you must install the DVC Studio GitHub
+  app. Refer to the section on
   [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
   for more details.
 
@@ -227,9 +227,9 @@ In this section, you can,
   in the [team settings].
 
 - Disconnect from your GitHub, GitLab, or Bitbucket accounts.
-- Configure your GitHub account connection. That is, install the DVC
-  Studio GitHub app on additional organizations or repositories, or even remove
-  the app from organizations or repositories where you no longer need it.
+- Configure your GitHub account connection. That is, install the DVC Studio
+  GitHub app on additional organizations or repositories, or even remove the app
+  from organizations or repositories where you no longer need it.
 
 ## Delete account
 

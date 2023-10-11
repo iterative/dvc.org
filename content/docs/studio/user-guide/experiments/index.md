@@ -5,9 +5,9 @@ Jupyter Notebooks, a code editor or IDE like [VS Code](/doc/vs-code-extension),
 the Python cli, the bash terminal, etc. You can also [submit new experiments
 from DVC Studio][run-experiments].
 
-You can track live as well as completed experiments in DVC Studio. First,
-click on `Add a project` to connect DVC Studio to your ML project's Git
-repository. Then, follow the instructions presented below.
+You can track live as well as completed experiments in DVC Studio. First, click
+on `Add a project` to connect DVC Studio to your ML project's Git repository.
+Then, follow the instructions presented below.
 
 ## Track experiments in real-time
 
@@ -103,8 +103,8 @@ To set up, run and track
   dvc exp push origin <exp_name>
   ```
 
-- DVC Studio reads the values of metrics, plots and other details from
-  your project's `dvc.yaml` file, and displays them in an experiment row in the
+- DVC Studio reads the values of metrics, plots and other details from your
+  project's `dvc.yaml` file, and displays them in an experiment row in the
   project table. The experiment row will appear nested within the parent Git
   commit row.
 
@@ -123,8 +123,8 @@ Within a project, you can:
 - [Compare experiments][compare].
 - [Run new experiments][run-experiments], including on your own cloud instances,
   directly from DVC Studio.
-- [Track live metrics and plots][live-metrics-and-plots] by sending them to
-  DVC Studio by using [DVCLive].
+- [Track live metrics and plots][live-metrics-and-plots] by sending them to DVC
+  Studio by using [DVCLive].
 
 [explore-ml-experiments]:
   /doc/studio/user-guide/experiments/explore-ml-experiments

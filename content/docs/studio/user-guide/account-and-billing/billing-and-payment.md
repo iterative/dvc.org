@@ -1,8 +1,8 @@
 # Billing and Payment
 
-DVC Studio is free for individuals and teams with up to 2 members. The Free plan is
-designed for teams that are starting out: you can invite one other team member
-and import as many repositories as you want.
+DVC Studio is free for individuals and teams with up to 2 members. The Free plan
+is designed for teams that are starting out: you can invite one other team
+member and import as many repositories as you want.
 
 For more advanced collaboration, you can switch to the Basic or Enterprise
 plans. These are paid plans, and in this page you will learn how to manage
@@ -21,8 +21,8 @@ billing and payment for them.
 
 ## Difference between Free, Basic, and Enterprise plans
 
-A detailed comparison of the different plans can be found in the DVC
-Studio [pricing page](https://studio.iterative.ai/pricing).
+A detailed comparison of the different plans can be found in the DVC Studio
+[pricing page](https://studio.iterative.ai/pricing).
 
 ## How to sign up for the Basic or Enterprise plans
 
@@ -42,8 +42,8 @@ details]).
 
 For Basic plans, invoice amount is calculated based on the number of seats in
 the team. All invoice amounts are calculated for one billing period at a time. A
-billing period is one month long. The price per seat can be found in the
-DVC Studio [pricing page](https://studio.iterative.ai/pricing).
+billing period is one month long. The price per seat can be found in the DVC
+Studio [pricing page](https://studio.iterative.ai/pricing).
 
 For example, suppose you have a team with 5 seats. At a monthly rate of $40 per
 seat, the total payable amount for the team would be $40 x 5 = $200 per month.

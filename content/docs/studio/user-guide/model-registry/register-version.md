@@ -22,8 +22,8 @@ You can register a version in any of the following ways:
    [`gto register cv:pool-segmentation --version v0.0.1`][register] (here, `cv`
    is the parent directory). To get a better idea about this case, check out
    this [example monorepo][monorepo].
-2. To register versions using DVC Studio, watch this tutorial video or
-   read on below.
+2. To register versions using DVC Studio, watch this tutorial video or read on
+   below.
 
 https://www.youtube.com/watch?v=eA70puzOp1o
 

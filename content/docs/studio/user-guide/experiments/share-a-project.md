@@ -6,9 +6,9 @@ also [make a project public](#make-a-project-public) to share it on the web.
 ## Share a project within a team
 
 Each team that you
-[create in DVC Studio](/doc/studio/user-guide/team-collaboration) will
-have its own projects dashboard. All the projects that you create in the team's
-dashboard will be accessible to all members (collaborators) of the team.
+[create in DVC Studio](/doc/studio/user-guide/team-collaboration) will have its
+own projects dashboard. All the projects that you create in the team's dashboard
+will be accessible to all members (collaborators) of the team.
 
 To add more than 2 collaborators in your team,
 [upgrade to the **Basic** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
@@ -38,9 +38,9 @@ repository is public, it will continue to remain public.
 </admon>
 
 Projects that are shared on the web can be opened by anyone, including people
-who are not logged in to DVC Studio. These anonymous users have the
-`Visitor` role. Their access is limited to opening the project's experiment
-table, applying filters, and showing/hiding columns for themselves without
-saving any changes permanently. Refer to the
+who are not logged in to DVC Studio. These anonymous users have the `Visitor`
+role. Their access is limited to opening the project's experiment table,
+applying filters, and showing/hiding columns for themselves without saving any
+changes permanently. Refer to the
 [Roles](/doc/studio/user-guide/team-collaboration#roles) section for details on
 the features available for different roles.

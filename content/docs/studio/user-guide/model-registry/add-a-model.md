@@ -7,8 +7,7 @@ repository. You can add a model in any of the following ways:
 1. Log your model during the training process using [dvclive] by calling
    [`live.log_artifact(path, type="model")`][log_artifact] method.
 2. Edit `dvc.yaml` directly and add your model to [`artifacts`] section.
-3. Use the DVC Studio interface (watch this tutorial video or read on
-   below).
+3. Use the DVC Studio interface (watch this tutorial video or read on below).
 
 https://www.youtube.com/watch?v=szzv4ZXmYAs
 
@@ -34,9 +33,9 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
    - If the model file is in the Git repository or is in the cloud but is
      tracked by DVC, enter the relative path of the model (from the repository
      root).
-   - Otherwise, enter the URL to the model file in the cloud. DVC Studio
-     will ask you for the repository path where the dvc reference to the model
-     should be saved.
+   - Otherwise, enter the URL to the model file in the cloud. DVC Studio will
+     ask you for the repository path where the dvc reference to the model should
+     be saved.
 
 5. Provide labels for your model. For example, if your model is about reviewing
    sentiment analysis using natural language processing, one of the labels may
@@ -45,10 +44,9 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
 6. Optionally, add a brief description for your model.
 
 7. Enter a Git commit message. Then, select the branch to commit to. You can
-   commit to either the base branch or a new branch. DVC Studio will
-   commit the changes to the selected branch. If you commit to a new branch,
-   DVC Studio will also create a Git pull request from the new branch to
-   the base branch.
+   commit to either the base branch or a new branch. DVC Studio will commit the
+   changes to the selected branch. If you commit to a new branch, DVC Studio
+   will also create a Git pull request from the new branch to the base branch.
 
 8. Now, click on `Commit changes`.
 
@@ -62,8 +60,8 @@ have been created to merge the new branch into the base branch.
 If you had added a model from a cloud storage, the following will also happen
 before the commit is created:
 
-- If the repository does not contain DVC, DVC Studio will run `dvc init`.
-  It is needed to version the model in the git repository.
+- If the repository does not contain DVC, DVC Studio will run `dvc init`. It is
+  needed to version the model in the git repository.
   [Learn more](/doc/command-reference/init).
 - If the specified directory does not exist yet, it will be created.
 - DVC Studio will import the model to the repository by executing

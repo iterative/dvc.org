@@ -45,8 +45,7 @@ https://www.youtube.com/watch?v=Vrp1O5lkWBo
 
    - GTO config files with stage names are specific to a Git repository. So,
      they apply only to models within one repository.
-   - Currently, you cannot make entries to the GTO config file from DVC
-     Studio.
+   - Currently, you cannot make entries to the GTO config file from DVC Studio.
    - If you define stages in the config file at any point, any stage assignments
      after that point can use only the names defined in the config file.
 

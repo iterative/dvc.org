@@ -12,8 +12,8 @@ plot examples are AUC curves, loss functions, and confusion matrices. The
 easiest way to start is with [DVCLive], which will automatically generate plots
 data and configure them to be visualized.
 
-DVC Studio supports all [DVC plots], which can plot two types of files in
-your repository:
+DVC Studio supports all [DVC plots], which can plot two types of files in your
+repository:
 
 1. Data series files, which can be JSON, YAML, CSV or TSV. Data from these files
    will populate your AUC curves, loss functions, confusion matrices and other
