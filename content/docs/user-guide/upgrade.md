@@ -71,3 +71,15 @@ data will be copied from the old cache location into the DVC 3.0 location
 (resulting in no de-duplication).
 
 </admon>
+
+By default, `dvc cache migrate` only migrates cache data and does not modify
+<abbr>DVC files</abbr> in the <abbr>DVC repository</abbr>.
+`dvc cache migrate --dvc-files` will migrate entries in all DVC files in the
+repository so that DVC will only use data from the DVC 3.0 cache location.
+
+<admon type="info">
+
+Note that when using `--dvc-files` option, DVC will only migrate DVC files in
+<abbr>workspace</abbr> (and Git history will not be re-written).
+
+</admon>
