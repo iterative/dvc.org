@@ -14,9 +14,16 @@ from dvclive.xgb import DVCLiveCallback
 
 ...
 
+params = {
+  "eval_metric": "rmse"
+}
+
 xgboost.train(
-    param, dtrain, num_round=5, evals=[(dval, "eval_data")]
+    params,
+    dtrain,
+    num_round=5,
     callbacks=[DVCLiveCallback("eval_data")],
+    evals=[(dval, "eval_data")],
 )
 ```
 
@@ -36,9 +43,11 @@ xgboost.train(
 from dvclive import Live
 from dvclive.xgb import DVCLiveCallback
 
+...
+
 with Live("custom_dir") as live:
     xgboost.train(
-        param,
+        params,
         dtrain,
         num_round=5,
         callbacks=[DVCLiveCallback("eval_data", live=live)],
@@ -52,7 +61,7 @@ with Live("custom_dir") as live:
 
 ```python
 xgboost.train(
-    param,
+    params,
     dtrain,
     num_round=5,
     callbacks=[
