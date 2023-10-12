@@ -83,3 +83,9 @@ Note that when using `--dvc-files` option, DVC will only migrate DVC files in
 <abbr>workspace</abbr> (and Git history will not be re-written).
 
 </admon>
+
+For [DVC remotes](/doc/user-guide/data-magement/remote-storage), there is no
+equivalent migration command since it is not possible to link between old and
+new locations on many remote filesystems. Instead, once you have migrated data
+locally and pushed to the remote, you may use `dvc gc -c` commands to remove
+outdated data from the remote.
