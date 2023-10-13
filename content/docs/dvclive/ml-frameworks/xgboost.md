@@ -53,7 +53,7 @@ with Live("custom_dir") as live:
         eval_metric=["merror", "mlogloss"],
         callbacks=[DVCLiveCallback()]
     )
-    
+
     model.fit(
         X_train,
         y_train,
