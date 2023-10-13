@@ -217,6 +217,10 @@
           {
             "label": "Databricks",
             "slug": "databricks"
+          },
+          {
+            "label": "Evidently",
+            "slug": "evidently"
           }
         ]
       },
