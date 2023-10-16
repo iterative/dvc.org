@@ -1,7 +1,7 @@
 # Evidently
 
-DVCLive can be used to track the results
-of[Evidently](https://www.evidentlyai.com/). In the following we demonstrate it
+[DVCLive](/doc/dvclive) can be used to track the results of
+[Evidently](https://www.evidentlyai.com/). In the following we demonstrate it
 through an example.
 
 [📖 Google Colab notebook](https://colab.research.google.com/drive/14usegPOSArF9tdO7NUOPndNk5vuUaYaX?usp=sharing)
@@ -115,8 +115,8 @@ There are two ways to track the results of Evidently with DVCLive:
 2. or you can save the result of each item in the batch as a separate experiment
 
 We will demonstrate both, and show you how to inspect the results regardless of
-your IDE. However, if you are using VSCode, we recommend using
-[our awesome VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+your IDE. However, if you are using VSCode, we recommend using the
+[DVC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 to inspect the results.
 
 ### 1. One single experiment
