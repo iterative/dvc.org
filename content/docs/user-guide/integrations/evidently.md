@@ -4,7 +4,11 @@
 [Evidently](https://www.evidentlyai.com/). In the following we demonstrate it
 through an example.
 
-[📖 Google Colab notebook](https://colab.research.google.com/drive/14usegPOSArF9tdO7NUOPndNk5vuUaYaX?usp=sharing)
+<p align='center'>
+  <a href="https://colab.research.google.com/drive/14usegPOSArF9tdO7NUOPndNk5vuUaYaX?usp=sharing">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" />
+  </a>
+</p>
 
 ## Setup
 
@@ -150,6 +154,13 @@ $ dvc plots show
 and inspecting the resulting `dvc_plots/index.html`, which should look like
 this: ![DVC plot show](/img/evidently-dvc-plot-show.png)
 
+<admon icon="book">
+
+In a Jupyter notebook environment, you can show the plots as a cell output
+simply by using `Live(report="notebook")`.
+
+</admon>
+
 ### 2. Multiple experiments
 
 ```python
@@ -190,3 +201,16 @@ $ dvc exp show
   └── d0ddb8d [osmic-impi]   10:02 AM        0.985       1       1       1           1      0.98        0.851   0      2011-01-01 00:00:00   2011-01-29 23:00:00
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
+
+<admon icon="book">
+
+In a Jupyter notebook environment, you can access the experiments results using
+the [Python DVC api](/doc/api-reference):
+
+```python
+import dvc.api
+
+dvc.api.exp_show()
+```
+
+</admon>
