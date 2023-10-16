@@ -38,9 +38,7 @@ the latest version is returned.
 
 When your model is annotated in non-root [`dvc.yaml`] file (typical for monorepo
 case), model name will be constructed from two parts separated by colon:
-`path/to/dvc/yaml:model_name`. For example, take a look at this
-[model from example-get-started-experiments repo](https://studio.iterative.ai/user/aguschin/models/VtQdva13kMSPsN_N8004aQ==/pool-segmentation/v1.0.1).
-Its full name that you need to use in API is `results/train:pool-segmentation`.
+`path/to/dvc/yaml:model_name`.
 
 | header        | desc            | example value |
 | ------------- | --------------- | ------------- |
