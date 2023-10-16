@@ -281,6 +281,18 @@ $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
+<details>
+
+### Sort Commits And Experiments With the DVC Extension for VS Code
+
+While `--sort-by` sorts experiments only, you can sort both experiment and
+commit rows with the
+[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
+
+https://youtu.be/Flpu_-D_zDI?si=8G1NgC4n1RqfrIXg
+
+</details>
+
 To see all experiments throughout the Git history:
 
 ```cli
