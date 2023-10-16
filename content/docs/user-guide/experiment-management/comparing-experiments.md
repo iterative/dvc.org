@@ -84,10 +84,14 @@ filter columns, sort rows, and otherwise customize the table.
 
 <tab title="VSCode Extension">
 
-You can hide and move columns and sort and filter rows in the `Show Experiments`
-action in the [DVC extension for VS Code].
+You can hide and move columns and filter rows in the `Show Experiments` action
+in the [DVC extension for VS Code].
 
 ![VS Code Customize Table](/img/vscode-customize-table.gif)
+
+You can also sort both experiment and commit rows in the extension.
+
+https://youtu.be/Flpu_-D_zDI?si=8G1NgC4n1RqfrIXg
 
 </tab>
 
