@@ -60,7 +60,7 @@ appropriate library, such as [`boto3`] or [`paramiko`].
 [`boto3`]:
   https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj
 [`paramiko`]:
-  https://docs.paramiko.org/en/stable/api/sftp.html#paramiko.sftp_client.SFTPClient.get
+  https://docs.paramiko.org/en/latest/api/sftp.html#paramiko.sftp_client.SFTPClient.get
 
 </admon>
 
