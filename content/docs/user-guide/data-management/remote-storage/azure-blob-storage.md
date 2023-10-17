@@ -205,3 +205,16 @@ See `dvc remote modify` for more command usage details.
 
 - `url` - modify the remote location ([scroll up](#microsoft-azure-blob-storage)
   for details)
+
+- `timeout` - the server-side timeout. Defaults to 30 seconds. See [docs](https://learn.microsoft.com/en-us/rest/api/storageservices/setting-timeouts-for-blob-service-operations)
+
+- `read_timeout` - the number of seconds the client will wait, between
+  consecutive read operations, for a response from the server while uploading
+  or downloading a file. Defaults to 60 seconds. See [Azure documentation]
+
+- `connection_timeout` - the number of seconds the client will wait to
+  establish a connection to the server when uploading or downloading a file.
+  Defaults to 20 seconds. See [Azure documentation]
+
+[Azure documentation]:
+  https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob#other-client--per-operation-configuration
