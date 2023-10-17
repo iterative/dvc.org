@@ -1,5 +1,7 @@
 # move
 
+> Aliased to `dvc exp mv`.
+
 Rename a file or directory tracked with a `.dvc` file, and modify the `.dvc`
 file to reflect the change. The `.dvc` file is renamed if the file or directory
 has the same base name (typical).

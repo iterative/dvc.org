@@ -1,5 +1,7 @@
 # remove
 
+> Aliased to `dvc rm`.
+
 Remove stages from `dvc.yaml` and/or stop tracking files or directories (and
 optionally delete them).
 
