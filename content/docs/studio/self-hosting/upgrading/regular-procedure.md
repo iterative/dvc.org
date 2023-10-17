@@ -11,7 +11,7 @@ $ helm repo update
 3. Upgrade Studio to the latest version
 
 ```cli
-$ helm upgrade --atomic studio iterative/studio --namespace studio -f values.yaml
+$ helm upgrade --atomic studio iterative/studio --namespace studio --values values.yaml
 ```
 
 <admon type="info">
