@@ -23,4 +23,14 @@ differently, please update the file name in the command accordingly.
 
 Once the upgrade succeds, you should see output such as this:
 
-![](/img/studio-selfhosted-successful-upgrade.png)
+```
+Release "studio" has been upgraded. Happy Helming!
+NAME: studio
+LAST DEPLOYED: Tue Oct 17 17:51:53 2023
+NAMESPACE: studio
+STATUS: deployed
+REVISION: 5
+NOTES:
+Application URL:
+  http://192.168.1.1/
+```

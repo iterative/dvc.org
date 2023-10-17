@@ -60,7 +60,9 @@ any method that you deem acceptable will do.
 4. Loading the Docker images into the container runtime
 
 ```cli
-$ k3s import
+$ docker load -i studio-frontend-$STUDIO_VERSION.tar
+$ docker load -i studio-backend-$STUDIO_VERSION.tar
+$ docker load -i studio-dvcx-worker-$STUDIO_VERSION.tar
 ```
 
 5. Upgrading Studio
@@ -86,4 +88,14 @@ differently, please update the file name in the command accordingly.
 
 Once the upgrade succeds, you should see output such as this:
 
-![](/img/studio-selfhosted-successful-upgrade.png)
+```
+Release "studio" has been upgraded. Happy Helming!
+NAME: studio
+LAST DEPLOYED: Tue Oct 17 17:51:53 2023
+NAMESPACE: studio
+STATUS: deployed
+REVISION: 5
+NOTES:
+Application URL:
+  http://192.168.1.1/
+```
