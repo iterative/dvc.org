@@ -76,7 +76,7 @@ $ tar zxvf studio-0.7.0.tgz
 Finally, we'll execute the upgrade:
 
 ```cli
-$ helm upgrade --atomic studio studio --namespace studio -f values.yaml
+$ helm upgrade --atomic studio studio --namespace studio --values values.yaml
 ```
 
 <admon type="info">
