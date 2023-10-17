@@ -18,7 +18,7 @@ To change the project name, enter the new name for your project as shown below.
 ## Project directory
 
 If the DVC repo for which you are creating the project is not in the root of
-your Git repository but is in a [sub-directory] of a
+your Git repository but is in a [sub-directory](/doc/command-reference/init#initializing-dvc-in-subdirectories) of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo), then
 [specify the full path](/doc/studio/user-guide/experiments/configure-a-project#project-directory)
 to the sub-directory that contains the DVC repo to which you are trying to
