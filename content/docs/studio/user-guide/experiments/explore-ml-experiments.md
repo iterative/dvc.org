@@ -134,6 +134,17 @@ To reorder the columns, click and drag them in the table or from the Columns
 dropdown.
 ![Showing and hiding columns](https://static.iterative.ai/img/studio/reorder_columns.gif)
 
+**Columns menu and goals:** Click on the column header to open a context menu
+with actions such as sorting and filtering the project table by the column's
+values.
+
+For metrics, you can also specify goals, which indicate whether an increase or a
+decrease in the metric's value is desirable. Values better than that in the
+baseline row are highlighted in green, with the best one shown with a green
+border. Worse values are highlighted in pink.
+
+![Columns menu and goals](https://static.iterative.ai/img/studio/columns_menu_and_goals.gif)
+
 ### Hide commits:
 
 Commits can be hidden from the project table in the following ways:
