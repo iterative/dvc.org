@@ -26,7 +26,7 @@ You need to create a [`Live`](/doc/dvclive/live) instance and include calls to
 This snippet is used inside the Colab Notebook linked above:
 
 ```python
-from DVCLive import Live
+from dvclive import Live
 
 ...
 
@@ -76,4 +76,33 @@ with Live(report="notebook") as live:
         live.next_step()
 
     live.log_artifact("model.pt", type="model", name="pytorch-model")
+```
+
+## DistributedDataParallel
+
+If you are using
+[DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
+(DDP) to parallelize training over multiple processes, be sure to call DVCLive
+only in the rank 0 process. The
+[Lightning callback](/doc/dvclive/ml-frameworks/pytorch-lightning) will do this
+automatically. You can also write your own code so that it only calls DVCLive in
+the rank 0 process:
+
+```python
+from dvclive import Live
+from torch.distributed import get_rank
+
+...
+
+rank = torch.distributed.get_rank()
+
+if rank == 0:
+    # Train model and log with dvclive
+    with Live() as live:
+        train(...)
+        live.log_metric(...)
+
+else:
+    # Train model without dvclive
+    train(...)
 ```
