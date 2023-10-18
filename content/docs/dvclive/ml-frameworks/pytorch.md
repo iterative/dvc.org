@@ -82,8 +82,8 @@ with Live(report="notebook") as live:
 
 If you are using
 [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
-(DDP) to parallelize training over multiple processes, be sure to call DVCLive
-only in the rank 0 process. The
+(DDP) to parallelize training over multiple processes, call DVCLive only in the
+rank 0 process. The
 [Lightning callback](/doc/dvclive/ml-frameworks/pytorch-lightning) will do this
 automatically. You can also write your own code so that it only calls DVCLive in
 the rank 0 process:
