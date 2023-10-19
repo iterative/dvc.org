@@ -29,10 +29,8 @@ DVCLive and add a model using Python code. This will also automatically save the
 model to DVC.
 
 We use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to save the
-model and add it to the model registry. Open the training notebook
-`notebooks/TrainSegModel.ipynb` in our example repository and in the last cell
-of the notebook add the method call inside the `with Live(...)` statement as
-follows.
+model and add it to the model registry. Open the training script
+`src/train.py` in our example repository and you will see the following code under the `with Live(...)` context:
 
 ```python
 with Live(...) as live:
@@ -54,9 +52,34 @@ in the Studio registry (other artifact types will not) and the rest of the
 parameters are descriptive and optional and will also show up in the model
 registry.
 
-If we now run the code and commit the result to git (and push it to our git
-remote), the new model will show up in the model registry in Studio. You should
-see something like the following picture.
+The training script runs as a part of a dvc pipeline we prepared in the Experiment Management guide, so now we just call `dvc exp run` to run the experiment.
+
+We now commit the result to git (and push it to our git remote) and the new model will show up in the model registry in Studio. We will also push the resulting artifact to our DVC Remote by calling `dvc push`.
+
+<details id="push-click-to-see-how-artifacts-are-registered">
+
+#### 💡 Expand to see how adding models to the registry works under the hood
+
+When we call the `log_artifact()` method, DVC takes all the information we provided in the call and edits the `dvc.yaml` file which will now contain the following lines
+
+```yaml
+artifacts:
+  pool-segmentation:
+    path: models/model.pkl
+    type: model
+    desc: This is a Computer Vision (CV) model that's segmenting out swimming pools from satellite images.
+    labels:
+    - cv
+    - segmentation
+    - satellite-images
+```
+
+When you push the resulting file to your git remote it is parsed by Studio and it then shows all model artifacts from your `dvc.yaml` files in the model registry.
+
+</details>
+
+
+You should see something like the following picture in the Studio Model Registry.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
@@ -85,7 +108,7 @@ From the dashboard we will have an overview of all models, latest model versions
 as well stages each of the model versions is assigned to. We can get more
 details for each model by clicking on the model name.
 
-<admon type="tip">
+<admon type="tip" id="GTO-tip">
 
 The DVC Model registry uses the GTO library to manage model versions and model
 lifecycle stages by particularly formatted git tags.
@@ -93,7 +116,7 @@ lifecycle stages by particularly formatted git tags.
 To see how it all works and how you can use GTO directly, you can explore the
 "under the hood" expandable content in this guide!
 
-</admon>
+</>
 
 <details id="under-the-hood-model-registry">
 
@@ -163,7 +186,7 @@ For more details you can have a look at the
 We have a first version for our model and now it is a good time to assign a
 model lifecycle stage to it. You can create any number of lifecycle stages with
 any names you wish but in this example we will only create two stages called
-"dev" and "staging".
+"dev" and "test".
 
 Stages are created whenever a model version is assigned to them. We will now
 assign our model to the "dev" stage as follows.
@@ -188,12 +211,10 @@ For more details you can have a look at the
 
 ## Changing (and removing) stage assignments
 
-Let's say that we've tested our model a bit and decided to promote its version
-1.0.0. to the next stage. In the "staging" stage the model will be ready for
-deployment to production but not deployed yet (we will explore model deployment
-in the next chapter).
+Let's say that we've decided to promote our model version
+1.0.0. to the next stage. When we assing the model to the "test" stage, it will be automatically tested for its size (we will explore how this is done in the [Using and Deploying models] chapter (doc/start/model-management/model-cicd)).
 
-We will assign it to the "staging" stage just like we did with the "dev" stage
+We will assign it to the "test" stage just like we did with the "dev" stage
 in the previous section but we also want our team to know that this model is no
 longer in the "dev" stage.
 
@@ -232,7 +253,7 @@ we should see something like this:
 ![Model history](/img/mr-model-history.png)
 
 As we noted
-[above](/docs/start/model-management/model-registry#under-the-hood-model-registry),
+[above](/docs/start/model-management/model-registry#GTO-tip),
 DVC uses special git tags to keep track of model registry actions, so all of
 this history is actually stored directly in your git repository. DVC Studio can
 parse these tags and show them to us in a user-friendly way.
