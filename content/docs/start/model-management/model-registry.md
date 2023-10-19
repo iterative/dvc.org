@@ -124,8 +124,13 @@ details for each model by clicking on the model name.
 The DVC Model registry uses the [GTO library](/doc/gto) to manage model versions
 and model lifecycle stages by particularly formatted git tags.
 
+<<<<<<< Updated upstream
 To see how it all works and how you can use GTO directly without the Studio UI,
 you can explore the "under the hood" expandable content in this guide!
+=======
+To see how it all works and how you can use GTO directly without the Studio fUI, you can explore the
+"under the hood" expandable content in this guide!
+>>>>>>> Stashed changes
 
 </admon>
 
@@ -222,7 +227,7 @@ For more details you can have a look at the
 
 ## Changing (and removing) stage assignments
 
-Let's say that we've decided to promote our model version 1.0.0. to the next
+Let's say that we've decided to promote our model version 1.0.0 to the next
 stage. When we assing the model to the "test" stage, it will be automatically
 tested for its size (we will explore how this is done in the [Using and
 Deploying models] chapter (doc/start/model-management/model-cicd)).
@@ -231,7 +236,7 @@ We will assign it to the "test" stage just like we did with the "dev" stage in
 the previous section but we also want our team to know that this model is no
 longer in the "dev" stage.
 
-To do that, we can remove the "dev" stage from the model version 1.0.0. like
+To do that, we can remove the "dev" stage from the model version 1.0.0 like
 this:
 
 ![Removing model stages](/img/mr-remove-model-stage.gif)
