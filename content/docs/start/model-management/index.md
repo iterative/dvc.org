@@ -20,16 +20,12 @@ description:
   registry.
 
 [model registry]: /doc/start/model-management/model-registry
-[Using and deploying models]: /doc/start/model-management/model-deployment
+[Using and deploying models]: /doc/start/model-management/model-cicd
 
 <admon type="tip">
 
-<!---
-TODO: Replace the links to repos with MR getting-started repo
--->
-
 These are captured in our [example-get-started-experiments] repo (see its
-[tags][example-get-started-experiments-tags]).
+[tags][example-get-started-experiments-tags]). You should start the Model Managment guide from the tag called `2-dvc-pipeline`
 
 [example-get-started-experiments]:
   https://github.com/iterative/example-get-started-experiments

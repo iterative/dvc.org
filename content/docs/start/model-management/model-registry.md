@@ -127,7 +127,7 @@ lifecycle stages by particularly formatted git tags.
 To see how it all works and how you can use GTO directly, you can explore the
 "under the hood" expandable content in this guide!
 
-</>
+</admon>
 
 <details id="under-the-hood-model-registry">
 
