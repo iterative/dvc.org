@@ -12,7 +12,7 @@ usage: dvc gc [-h] [-q | -v]
               [--date <YYYY-MM-DD>] [--all-experiments]
               [-p [<path> [<path> ...]]]
               [--not-in-remote]
-              [-c] [-r <name>] [-j <number>] [-f]
+              [-c] [-r <name>] [-j <number>] [-f] [--dry]
 ```
 
 ## Description
@@ -165,6 +165,8 @@ project we want to clear.
   > For now only some phases of garbage collection are parallel.
 
 - `-f`, `--force` - force garbage collection. Skip confirmation prompt.
+
+- `--dry` - Only print what would get removed without actually removing.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
