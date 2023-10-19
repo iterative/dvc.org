@@ -13,7 +13,8 @@ registry to trigger automated CICD model workflows.
 
 ## Downloading models
 
-It is useful to download model artifacts for example for local testing or for use in CICD workflows. With models versioned by DVC this can be done easily by
+It is useful to download model artifacts for example for local testing or for
+use in CICD workflows. With models versioned by DVC this can be done easily by
 using the `dvc get` CLI command as follows
 
 ```bash
@@ -49,7 +50,9 @@ than 50 MB and fail if it isn't. To motivate the example, we can imagine that we
 are deploying models to edge devices where storage comes at a premium.
 
 Go to the `.github/workflows/test-model-artifact.yml`. This is the file that
-GitHub uses to run our CICD workflow. You can see [runs of this workflow](https://github.com/iterative/example-get-started-experiments/actions/workflows/test-model-artifact.yml) in our example repository.
+GitHub uses to run our CICD workflow. You can see
+[runs of this workflow](https://github.com/iterative/example-get-started-experiments/actions/workflows/test-model-artifact.yml)
+in our example repository.
 
 At the beginning of the workflow file you will see this code
 
