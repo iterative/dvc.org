@@ -9,9 +9,9 @@ description:
 
 Just as we use experiment tracking to manage model development, it is a good
 idea to keep a model registry to manage the lifecycle of the models we get from
-our experiments. Using DVC and DVC [Studio](/doc/studio) we will set up a model registry where we
-can discover, share, deploy and audit all our models and which will serve as the
-single source of truth for our model management.
+our experiments. Using DVC and DVC [Studio](/doc/studio) we will set up a model
+registry where we can discover, share, deploy and audit all our models and which
+will serve as the single source of truth for our model management.
 
 To make use of our model registry, we will need some trained models first. To
 speed things up, we will start from a git
@@ -25,8 +25,8 @@ DVCLive, have a look at our getting started guide for
 ## Adding models
 
 Let's now train a model and add it to the model registry. We will be using
-[DVCLive](/doc/dvclive) and add a model using Python code. This will also automatically save the
-model to DVC.
+[DVCLive](/doc/dvclive) and add a model using Python code. This will also
+automatically save the model to DVC.
 
 We use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to save the
 model and add it to the model registry. Open the training script `src/train.py`
@@ -53,9 +53,9 @@ in the Studio registry (other artifact types will not) and the rest of the
 parameters are descriptive and optional and will also show up in the model
 registry.
 
-The training script runs as a part of a dvc pipeline [we prepared](/doc/start/experiments/experiment-pipelines) in the
-Experiment Management guide, so now we just call `dvc exp run` to run the
-experiment.
+The training script runs as a part of a dvc pipeline
+[we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
+Management guide, so now we just call `dvc exp run` to run the experiment.
 
 We now commit the result to git (and push it to our git remote) and the new
 model will show up in the model registry in Studio. We will also push the
@@ -121,11 +121,11 @@ details for each model by clicking on the model name.
 
 <admon type="tip" id="GTO-tip">
 
-The DVC Model registry uses the [GTO library](/doc/gto) to manage model versions and model
-lifecycle stages by particularly formatted git tags.
+The DVC Model registry uses the [GTO library](/doc/gto) to manage model versions
+and model lifecycle stages by particularly formatted git tags.
 
-To see how it all works and how you can use GTO directly without the Studio UI, you can explore the
-"under the hood" expandable content in this guide!
+To see how it all works and how you can use GTO directly without the Studio UI,
+you can explore the "under the hood" expandable content in this guide!
 
 </admon>
 
