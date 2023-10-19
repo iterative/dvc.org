@@ -34,7 +34,7 @@ the steps here:
 
 ![Downloading models](/img/mr-download-model.gif)
 
-## Connecting model registry action to your CICD
+## Connecting model registry actions to your CICD
 
 As we [noted](/docs/start/model-management/model-registry#GTO-tip) in the model
 registry chapter, all DVC model registry actions are captured in your git
