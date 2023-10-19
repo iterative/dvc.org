@@ -21,6 +21,30 @@ which limits the number of remotes they're working with. You can learn more on
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference
 
+### Direct download from Studio
+
+You can download the files that make up your model directly from Studio. Before
+you start, make sure you have connected the correct credentials to the project
+that contains the model you would like to download. Head to the model detail
+page of the model you would like to download and click `Access Model`.
+
+![Screenshot of access model button on the model detail page](/img/mr-access-model.png)
+
+Click on the `Download` tab. If you have not yet created a Studio Access Token,
+please do so on this screen.
+
+![Screenshot of access model button on the model detail page](/img/mr-generate-access-token.png)
+
+When you have created the token, you can generate a direct download link for
+your model files.
+
+![Screenshot of access model button on the model detail page](/img/mr-generate-download-link.png)
+
+After generation, these download links are valid for 1 hour. You can click the
+link to directly download the file.
+
+![Screenshot of access model button on the model detail page](/img/mr-direct-download.png)
+
 ### Using `dvc get`
 
 #### Looking up the right command in Studio
