@@ -25,7 +25,8 @@ description:
 <admon type="tip">
 
 These are captured in our [example-get-started-experiments] repo (see its
-[tags][example-get-started-experiments-tags]). You should start the Model Managment guide from the tag called `2-dvc-pipeline`
+[tags][example-get-started-experiments-tags]). You should start the Model
+Managment guide from the tag called `2-dvc-pipeline`
 
 [example-get-started-experiments]:
   https://github.com/iterative/example-get-started-experiments
