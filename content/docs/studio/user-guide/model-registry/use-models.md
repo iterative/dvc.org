@@ -25,10 +25,10 @@ which limits the number of remotes they're working with. You can learn more on
 
 #### Looking up the right command in Studio
 
-The `Get the model file` section of a model's details page contains a `dvc get`
+The `Path to model file` section of a model's details page contains a `dvc get`
 command ready to copy and use.
 
-![](/img/mr-dvc-get.png)
+![Screenshot of path to model file section](/img/mr-dvc-get.png)
 
 #### Constructing the command manually
 
