@@ -78,7 +78,7 @@
           },
           {
             "label": "Using and deploying models",
-            "slug": "model-deployment"
+            "slug": "model-cicd"
           }
         ]
       }
