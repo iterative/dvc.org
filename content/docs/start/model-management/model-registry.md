@@ -124,13 +124,13 @@ details for each model by clicking on the model name.
 The DVC Model registry uses the [GTO library](/doc/gto) to manage model versions
 and model lifecycle stages by particularly formatted git tags.
 
-<<<<<<< Updated upstream
-To see how it all works and how you can use GTO directly without the Studio UI,
-you can explore the "under the hood" expandable content in this guide!
-=======
-To see how it all works and how you can use GTO directly without the Studio fUI, you can explore the
-"under the hood" expandable content in this guide!
->>>>>>> Stashed changes
+<<<<<<< Updated upstream To see how it all works and how you can use GTO
+directly without the Studio UI, you can explore the "under the hood" expandable
+content in this guide! ======= To see how it all works and how you can use GTO
+directly without the Studio fUI, you can explore the "under the hood" expandable
+content in this guide!
+
+> > > > > > > Stashed changes
 
 </admon>
 
