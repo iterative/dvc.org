@@ -158,9 +158,9 @@ will also display all the data logged by DVCLive:
 <tab title="DVC Studio">
 
 If you want to share live updates with others or monitor while away from your
-machine, follow the instructions in [Studio Live Experiments](/doc/DVC
-Studio/user-guide/experiments/live-metrics-and-plots) to display updates in the
-Studio web interface:
+machine, follow the instructions in
+[DVC Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
+to display updates in the Studio web interface:
 
 ![DVC Studio Report](/img/dvclive-studio.gif)
 

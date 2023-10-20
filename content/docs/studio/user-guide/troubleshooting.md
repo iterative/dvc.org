@@ -1,7 +1,7 @@
 # Troubleshooting
 
 Here we provide help for some of the problems that you may encounter when using
-DVC DVC Studio.
+DVC Studio.
 
 ## Support
 
