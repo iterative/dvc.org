@@ -15,8 +15,8 @@ Fill out the details as follows:
 
 ![](/img/studio-selfhosted-github-4.png)
 
-2. Replace [`localhost:8080`](http://localhost:8080) with your Studio domain and
-   port if applicable.
+2. Replace [`localhost:8080`](http://localhost:8080) with your DVC Studio domain
+   and port if applicable.
 
 3. Under permissions, set the following:
 
@@ -43,7 +43,7 @@ Click **Generate a new client secret**, copy the output
 6. Scroll down to **Private keys**, click **Generate a private key**, copy the
    output
 
-## Configuring Studio with the GitHub App
+## Configuring DVC Studio with the GitHub App
 
 Merge the `values.yaml` file with the following contents:
 
@@ -64,7 +64,7 @@ scmProviders:
     privateKey: <GitHub OAuth App Private Key>
 
     # Optional
-    # This is useful in cases where Studio is on an internal
+    # This is useful in cases where DVC Studio is on an internal
     # network, but the webhook endpoint is on an external network
     # webhookUrl: https://webhook.studio.company.com/webhook/github/
 ```

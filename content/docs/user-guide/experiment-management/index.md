@@ -87,4 +87,3 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
 [from the vs code ide]: /doc/vs-code-extension
 [dvc studio]: /doc/studio
-[studio model registry]: /doc/studio/user-guide/model-registry

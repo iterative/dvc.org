@@ -1,6 +1,6 @@
 # Configuration
 
-Studio gets provisioned by Helm, which uses a single YAML file for
+DVC Studio gets provisioned by Helm, which uses a single YAML file for
 configuration, often referred to as `values.yaml` in our documentation.
 
 To learn more about Helm's configuration format, refer to the page
@@ -11,15 +11,15 @@ Helm website.
 
 <admon type="info">
 
-If you've deployed Studio with the AMI, you'll need to SSH to the EC2 instance
-before continuing.
+If you've deployed DVC Studio with the AMI, you'll need to SSH to the EC2
+instance before continuing.
 
 </admon>
 
 To update the configuration and apply the changes, follow the instructions
 below:
 
-1. Update Studio's `values.yaml` config file
+1. Update DVC Studio's `values.yaml` config file
 
 **Example: Updating the hostname**
 
@@ -30,7 +30,7 @@ global:
   host: studio.company2.com
 ```
 
-3. Reload Studio
+3. Reload DVC Studio
 
 ```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
@@ -38,13 +38,13 @@ $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml
 
 ## More configuration options
 
-The previous chapter provided a basic example of updating the Studio
+The previous chapter provided a basic example of updating the DVC Studio
 configuration. In most cases, you'll likely need to do more configuration to set
-up Studio to your needs.
+up DVC Studio to your needs.
 
-To integrate Studio with your Git forge (GitHub, GitLab, Bitbucket), see the
+To integrate DVC Studio with your Git forge (GitHub, GitLab, Bitbucket), see the
 [Git Forges](/doc/studio/self-hosting/configuration/git-forges) section.
 
-To allow secure access to Studio, we highly recommend setting up a valid TLS
+To allow secure access to DVC Studio, we highly recommend setting up a valid TLS
 certificate. To set this up, check out the
 [TLS certificates](/doc/studio/self-hosting/configuration/tls) page.

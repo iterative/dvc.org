@@ -46,7 +46,7 @@ steps:
 In the training job (which has been configured as detailed above), whenever you
 log your metrics or plots using [DVCLive], they will be automatically sent to
 DVC Studio. See [DVC config] for how to enable/disable live experiment updates
-and how to configure a different Studio URL or Git repository. Here is an
+and how to configure a different DVC Studio URL or Git repository. Here is an
 example of how you can use [DVCLive] in your training code:
 
 ```py

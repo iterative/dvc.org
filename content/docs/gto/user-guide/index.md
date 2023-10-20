@@ -4,9 +4,9 @@ GTO lets you build an artifact registry or <abbr>model registry</abbr> out of
 your Git repository by creating annotated
 [Git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) with a
 [special format](#git-tags-format). To read more about building a Model
-Registry, read this [Studio User Guide].
+Registry, read this [DVC Studio User Guide].
 
-[Studio User Guide]: https://dvc.org/doc/studio/user-guide/model-registry
+[DVC Studio User Guide]: https://dvc.org/doc/studio/user-guide/model-registry
 
 ## Finding the right artifact version
 

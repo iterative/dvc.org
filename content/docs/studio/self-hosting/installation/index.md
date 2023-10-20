@@ -1,9 +1,9 @@
-## Self-hosting Studio
+## Self-hosting DVC Studio
 
-Studio Enterprise users can host DVC Studio on their own infrastructure
+DVC Studio Enterprise users can host DVC Studio on their own infrastructure
 (on-premises) or in their cloud accounts.
 
-Please note that our support is needed to make the Studio's cloud/Docker images
+Please note that our support is needed to make DVC Studio's cloud/Docker images
 available to you to enable installation. Please get in touch with our
 [sales team](https://calendly.com/gtm-2/studio-overview?month=2023-03) to
 coordinate a meeting.
@@ -27,22 +27,22 @@ Recommended requirements:
 </tab>
 <tab title="Helm">
 
-We recommend deploying Studio in an auto-scaling node group with a minimum of 2
-nodes.
+We recommend deploying DVC Studio in an auto-scaling node group with a minimum
+of 2 nodes.
 
 Each node should have at least 16 GB of RAM and 4 vCPUs.
 
-Additionally, you'll need 100 GB of block storage for Studio's
+Additionally, you'll need 100 GB of block storage for DVC Studio's
 `PersistentVolume`
 
 </tab>
 </toggle>
 
-## Studio's architecture
+## DVC Studio's architecture
 
 ![](/img/studio-architecture-diagram.svg)
 
-Studio is composed of four pieces:
+DVC Studio is composed of four pieces:
 
 - Frontend Server: Renders the web interface
 - Backend Server: Stores all user information

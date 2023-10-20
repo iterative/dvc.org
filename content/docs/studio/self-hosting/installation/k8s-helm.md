@@ -2,18 +2,18 @@
 
 ## Prerequisites
 
-### Studio Images
+### DVC Studio Images
 
-Access to the Studio Docker images need to be provided by the Iterative team to
-enable the installation.
+Access to the DVC Studio Docker images need to be provided by the Iterative team
+to enable the installation.
 
 ### Software
 
-You can deploy Studio Self-hosted on any Kubernetes cluster (version => 1.20)
-that has an ingress controller configured and installed.
+You can deploy DVC Studio Self-hosted on any Kubernetes cluster (version =>
+1.20) that has an ingress controller configured and installed.
 
 The choice of ingress controller is up to you. We recommend the
-[ingress-nginx](https://kubernetes.github.io/ingress-nginx/) controller, but
+[ingress-nginx](https://kubernetes.github.io/ingress-nginx/) controller, but DVC
 Studio will work on other ingress controllers as well.
 
 You'll also need to have the following CLI tools configured and installed:
@@ -24,12 +24,12 @@ You'll also need to have the following CLI tools configured and installed:
 ### DNS
 
 Create a DNS record pointing to the external IP address of your ingress
-controller. This hostname will be used for Studio.
+controller. This hostname will be used for DVC Studio.
 
 ## 1. Create a namespace
 
-We'll install Studio and related components in a dedicated `studio` namespace.
-Let's create it now:
+We'll install DVC Studio and related components in a dedicated `studio`
+namespace. Let's create it now:
 
 ```cli
 $ kubectl create namespace studio
@@ -37,8 +37,8 @@ $ kubectl create namespace studio
 
 <admon type="tip">
 
-If you want to install Studio in any other namespace, modify the `--namespace`
-flag in the following commands accordingly
+If you want to install DVC Studio in any other namespace, modify the
+`--namespace` flag in the following commands accordingly
 
 </admon>
 
@@ -62,14 +62,14 @@ Replace `<username>` and `<password>` with the credentials you've received.
 $ helm repo add iterative https://helm.iterative.ai
 ```
 
-## 3. Install the Studio Helm chart
+## 3. Install the DVC Studio Helm chart
 
-In this example, we'll configure Studio to integrate with GitLab and use the
+In this example, we'll configure DVC Studio to integrate with GitLab and use the
 built in Postgres, Redis, and Minio.
 
 <admon info="tip">
 
-For a comprehensive list on Studio's configuration options, please see the
+For a comprehensive list on DVC Studio's configuration options, please see the
 Configuration section in the sidebar.
 
 </admon>
@@ -82,7 +82,7 @@ imagePullSecrets:
   - name: iterativeai
 
 global:
-  host: '<Studio hostname>'
+  host: '<DVC Studio hostname>'
   scmProviders:
     gitlab:
       enabled: true
@@ -92,7 +92,7 @@ global:
       webhookSecret: '<GitLab Webhook Secret>'
 ```
 
-Now let's deploy Studio with the command:
+Now let's deploy DVC Studio with the command:
 
 ```cli
 $ helm install studio iterative/studio \
@@ -100,5 +100,5 @@ $ helm install studio iterative/studio \
     -f values.yaml
 ```
 
-🎉 You can now access Studio in your browser on the domain that you've
+🎉 You can now access DVC Studio in your browser on the domain that you've
 configured.

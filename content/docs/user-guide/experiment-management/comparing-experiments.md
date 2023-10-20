@@ -283,10 +283,10 @@ files, etc.) can be stored in Git.
 The methods above let you compare experiments from your local machine where you
 are working without any servers, logins, or infrastructure. However, sometimes
 you are away from your machine, or you want to share the results with others.
-[Studio] provides a web colleboration hub for [sharing experiments] and
+[DVC Studio] provides a web collaboration hub for [sharing experiments] and
 [visualizing and comparing experiments] for your entire project history.
 
-![Studio Compare Experiments Overview](/img/studio-compare-exps-overview.gif)
+![DVC Studio Compare Experiments Overview](/img/studio-compare-exps-overview.gif)
 
 ## Removing experiments
 
@@ -331,7 +331,7 @@ artifacts, etc. related with the experiments, you can use `dvc gc`.
 
 [dvc extension for vs code]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.iterative.ai
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 [visualizing and comparing experiments]:
   /doc/studio/user-guide/experiments/visualize-and-compare

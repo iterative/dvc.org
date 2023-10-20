@@ -1,9 +1,9 @@
-## Upgrading Studio (Air-gapped)
+## Upgrading DVC Studio (Air-gapped)
 
 <admon type="warn">
 
-These upgrade procedures are only applicable if you've deployed Studio in a VM
-on an air-gapped machine.
+These upgrade procedures are only applicable if you've deployed DVC Studio in a
+VM on an air-gapped machine.
 
 </admon>
 
@@ -24,8 +24,8 @@ $ ls -l studio-*.tgz
 -rw-r--r--. 1 username username 392409 Oct 11 14:30 studio-0.7.0.tgz
 ```
 
-Now, we'll retrieve the Studio application version embedded in the Helm chart.
-Use the filename from before in the following command:
+Now, we'll retrieve the DVC Studio application version embedded in the Helm
+chart. Use the filename from before in the following command:
 
 ```cli
 $ export STUDIO_VERSION=$(tar zxf studio-0.7.0.tgz -O studio/Chart.yaml | grep -Po '(?<=appVersion: )v[\d.]+')
@@ -65,7 +65,7 @@ $ docker load -i studio-backend-$STUDIO_VERSION.tar
 $ docker load -i studio-dvcx-worker-$STUDIO_VERSION.tar
 ```
 
-5. Upgrading Studio
+5. Upgrading DVC Studio
 
 We'll start by extracting the archive containing the Helm chart:
 

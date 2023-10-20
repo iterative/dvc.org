@@ -1,7 +1,7 @@
 # Troubleshooting
 
 Here we provide help for some of the problems that you may encounter when using
-DVC Studio.
+DVC DVC Studio.
 
 ## Support
 
@@ -181,9 +181,9 @@ There are two possible reasons for this:
    columns that you select in the
    [**Columns** setting](/doc/studio/user-guide/experiments/configure-a-project#columns).
 
-   **What if the repository has more than 500 columns?** Currently Iterative
-   Studio does not import over 500 columns. If you have a large repository (with
-   more than 500 columns), one solution is to split the
+   **What if the repository has more than 500 columns?** Currently DVC Studio
+   does not import over 500 columns. If you have a large repository (with more
+   than 500 columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
    multiple subdirectories in your Git repository. For each subdirectory, you
    can create a new project in DVC Studio and limit it to that subdirectory.

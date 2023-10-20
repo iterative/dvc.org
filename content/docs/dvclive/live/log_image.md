@@ -97,7 +97,7 @@ In [DVC Studio](https://studio.iterative.ai/) and the
 folders following this pattern will be rendered using an image slider:
 
 <toggle>
-<tab title="Studio">
+<tab title="DVC Studio">
 
 ![DVCLive Studio Image Slider](/img/dvclive-studio-image-slider.gif)
 
