@@ -45,9 +45,16 @@ be triggered whenever.
 
 In the following, we will have a look at an example CICD workflow on GitHub
 which runs whenever we assign a version of our model to the "test" stage in the
-model registry. The workflow will check whether the model artifact size is less
-than 50 MB and fail if it isn't. To motivate the example, we can imagine that we
-are deploying models to edge devices where storage comes at a premium.
+model registry. The workflow simulates model deployment without the need to actually set up a deployment environment (so that you can test it easier) but it does include all the ingredients needed in an actual deployment job or any other CICD action.
+
+<admon type="tip>
+
+To see a real-world model deployment example you can check out a
+[similar workflow in our example repository](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
+which deploys a specific version of the model to an Amazon Sagemaker endpoint
+for inference whenever it is assigned to a stage.
+
+</admon>
 
 Go to the `.github/workflows/test-model-artifact.yml`. This is the file that
 GitHub uses to run our CICD workflow. You can see
@@ -166,14 +173,8 @@ jobs:
 
 <admon type="tip" id="sagemaker-and-gitlab">
 
-The same ingredients we will use to set up this workflow are be usable for any
-other CICD action. You can check out a
-[similar workflow in our example repository](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
-which deploys a specific version of the model to an Amazon Sagemaker endpoint
-for inference whenever it is assigned to a stage.
-
-With other git servers such as GitLab you can use the same logic (you will only
+With other git servers such as GitLab you can use the same logic. You will only
 have to adapt the syntax and use the GTO library manually to parse tags with the
-[`gto check-ref`](https://mlem.ai/doc/gto/command-reference/check-ref) command).
+[`gto check-ref`](https://mlem.ai/doc/gto/command-reference/check-ref) command.
 
 </admon>
