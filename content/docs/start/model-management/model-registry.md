@@ -13,7 +13,6 @@ our experiments. Using DVC and DVC [Studio](/doc/studio) we will set up a model
 registry where we can discover, share, deploy and audit all our models and which
 will serve as the single source of truth for our model management.
 
-
 ## Adding models
 
 Let's now train a model and add it to the model registry. We will be using
@@ -21,9 +20,10 @@ Let's now train a model and add it to the model registry. We will be using
 automatically save the model to DVC.
 
 We use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to cache the
-model with dvc and then add it to the dvc remote and the model registry once we call `dvc push`.
-Open the training script `src/train.py` in our example repository and you will see the following code under the
-`with Live(...)` context:
+model with dvc and then add it to the dvc remote and the model registry once we
+call `dvc push`. Open the training script `src/train.py` in our example
+repository and you will see the following code under the `with Live(...)`
+context:
 
 ```python
 with Live(...) as live:
@@ -45,11 +45,13 @@ in the Studio registry (other artifact types will not) and the rest of the
 parameters are descriptive and optional and will also show up in the model
 registry.
 
-Now we just need to run the python script which includes this code to cache and register the model.
+Now we just need to run the python script which includes this code to cache and
+register the model.
 
-If you are following our example repository then the training script is included in a dvc pipeline
-[we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
-Management guide, so there we just call `dvc exp run` to run the entire experiment pipeline.
+If you are following our example repository then the training script is included
+in a dvc pipeline [we prepared](/doc/start/experiments/experiment-pipelines) in
+the Experiment Management guide, so there we just call `dvc exp run` to run the
+entire experiment pipeline.
 
 We now commit the result to git (and push it to our git remote) and the new
 model will show up in the model registry in Studio. We will also push the
@@ -100,37 +102,43 @@ at the
 
 ## DVC Model registry overview
 
-In this guide, we will be using DVC Studio to manage our model registry. DVC Studio is a web application which integrates all Iterative tools like DVC and adds extra functionality aimed at sharing and collaboration. You can find out more about it [here](/doc/studio).
+In this guide, we will be using DVC Studio to manage our model registry. DVC
+Studio is a web application which integrates all Iterative tools like DVC and
+adds extra functionality aimed at sharing and collaboration. You can find out
+more about it [here](/doc/studio).
 
 In DVC Studio we can access the model registry by clicking on Models in the top
 bar menu. This will show us a dashboard with all models from all projects we
-have access to. 
+have access to.
 
 From the dashboard we will have an overview of all models, latest model versions
 as well stages each of the model versions is assigned to. We can get more
 details for each model by clicking on the model name.
 
-You can check out our [example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0) in the Studio model registry to see what it will look like once we finish all the steps in this guide.
+You can check out our
+[example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)
+in the Studio model registry to see what it will look like once we finish all
+the steps in this guide.
 
-
-Now that we have added a model and pushed it to dvc, we should see something like the following picture in the Studio Model
-Registry.
+Now that we have added a model and pushed it to dvc, we should see something
+like the following picture in the Studio Model Registry.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
 <admon type="tip" id="GTO-tip">
 
 The DVC Model registry uses the [GTO library](/doc/gto) to manage model versions
-and model lifecycle stages by particularly formatted git tags.
-GTO (Git Tag Ops) is a tool for creating an artifact registry in your Git repository.
+and model lifecycle stages by particularly formatted git tags. GTO (Git Tag Ops)
+is a tool for creating an artifact registry in your Git repository.
 
-To see how it all works and how you can use GTO
-directly without the Studio UI, you can explore the "under the hood" expandable
-content in this guide!
+To see how it all works and how you can use GTO directly without the Studio UI,
+you can explore the "under the hood" expandable content in this guide!
 
 </admon>
 
-You can also see the [state of the project at this point](https://github.com/iterative/example-get-started-experiments/releases/tag/2-dvc-pipeline) captured in our example repository.
+You can also see the
+[state of the project at this point](https://github.com/iterative/example-get-started-experiments/releases/tag/2-dvc-pipeline)
+captured in our example repository.
 
 <details id="under-the-hood-model-registry">
 
@@ -235,8 +243,7 @@ the previous section but we also want our team to know that this model is no
 longer in the "dev" stage.
 
 To do that, we can remove the "dev" stage from the model version 1.0.0 like
-this:
-tested for its size (we will explore how this is done in the [Using and
+this: tested for its size (we will explore how this is done in the [Using and
 Deploying models] (doc/start/model-management/model-cicd) chapter ).
 
 It is also possible to de-register model versions or deprecate and remove models
@@ -244,7 +251,8 @@ from the registry entirely. We will not do that in this guide, but
 [here](user-guide/model-registry/remove-a-model-or-its-details) you can have a
 look at how to do that.
 
-The detailed view of our model in the registry should now match what we see [in our example]((https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)).
+The detailed view of our model in the registry should now match what we see
+[in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)>).
 
 <details id="under-the-hood-removing-stages">
 
@@ -275,4 +283,7 @@ uses special git tags to keep track of model registry actions, so all of this
 history is actually stored directly in your git repository. DVC Studio can parse
 these tags and show them to us in a user-friendly way.
 
-If you look at the [tags in our example repository](https://github.com/iterative/example-get-started-experiments/tags), you can see that all the model registry actions that we performed are captured by such tags.
+If you look at the
+[tags in our example repository](https://github.com/iterative/example-get-started-experiments/tags),
+you can see that all the model registry actions that we performed are captured
+by such tags.
