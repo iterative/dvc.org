@@ -1,33 +1,32 @@
 # Use models
 
 Whether you need to download your models to use them, or you're looking to set
-up some automation in CI/CD to deploy them, Iterative Studio provides these
+up some automation in CI/CD to deploy them, DVC Studio provides these
 capabilities.
 
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions using the Iterative Studio [REST API], `dvc get`, or DVC [Python API].
+versions using the DVC Studio [REST API], `dvc get`, or DVC [Python API].
 
 ### Using Studio API
 
-Using the Iterative Studio API will require you to add your remote storage
-secrets to respective projects but downloading models can be easier than DVC
-since you only need to have the Studio API token. You do not need direct access
-to your remote storage, and you do not need to install DVC. Studio APIs rely on
-signing urls, which limits the number of remotes they're working with. You can
-learn more on [REST API] pages.
+Using the DVC Studio API will require you to add your remote storage secrets to
+respective projects but downloading models can be easier than DVC since you only
+need to have the Studio API token. You do not need direct access to your remote
+storage, and you do not need to install DVC. Studio APIs rely on signing urls,
+which limits the number of remotes they're working with. You can learn more on
+[REST API] pages.
 
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference
 
-### Direct download from Iterative Studio
+### Direct download from DVC Studio
 
-You can download the files that make up your model directly from Iterative
-Studio. Before you start, make sure you have connected the correct credentials
-to the project that contains the model you would like to download. Head to the
-model details page of the model you would like to download and click
-`Access Model`.
+You can download the files that make up your model directly from DVC Studio.
+Before you start, make sure you have connected the correct credentials to the
+project that contains the model you would like to download. Head to the model
+details page of the model you would like to download and click `Access Model`.
 
 ![Screenshot of access model button on the model details page](/img/mr-access-model.png)
 
@@ -48,7 +47,7 @@ link to directly download the file.
 
 ### Using `dvc get`
 
-#### Looking up the right command in Iterative Studio
+#### Looking up the right command in DVC Studio
 
 The `Path to model file` section of a model's details page contains a `dvc get`
 command ready to copy and use.
