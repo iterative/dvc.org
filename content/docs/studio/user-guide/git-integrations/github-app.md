@@ -1,7 +1,7 @@
 # Install the DVC Studio GitHub App
 
-If you are using a GitHub account, you can install the DVC Studio app on
-the repositories or organizations that you want to use it with.
+If you are using a GitHub account, you can install the DVC Studio app on the
+repositories or organizations that you want to use it with.
 
 When you try to create a project, if the app is not already installed, DVC
 Studio will not be able to fetch the list of your GitHub repositories. In this
@@ -21,8 +21,8 @@ to install and authorize the DVC Studio GitHub app.
 
 You can specify the level of authorization that you want to grant:
 
-- To authorize DVC Studio on all the repositories in your GitHub account,
-  select `All repositories`.
+- To authorize DVC Studio on all the repositories in your GitHub account, select
+  `All repositories`.
 - To limit access to only specific repositories, select
   `Only select repositories`. Then select the repositories which you want to use
   with DVC Studio.

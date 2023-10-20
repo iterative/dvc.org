@@ -45,8 +45,8 @@ If you need further help, you can send us a message using `Help` on the
 
 ## Errors accessing your Git repository
 
-When DVC Studio cannot access your Git repository, it can present one of
-the following errors:
+When DVC Studio cannot access your Git repository, it can present one of the
+following errors:
 
 - Repository not found or you don't have access to it
 - Unable to access repository due to stale authorization
@@ -63,8 +63,8 @@ you are connecting to a GitHub account, also make sure that the DVC Studio
 GitHub app is installed.
 
 Additionally, network or third party issues (such as GitHub, GitLab or Bitbucket
-outages) can also cause connection issues. In this case, DVC Studio can
-display an appropriate indication in the error message.
+outages) can also cause connection issues. In this case, DVC Studio can display
+an appropriate indication in the error message.
 
 ## Errors related to parsing the repository
 
@@ -144,8 +144,8 @@ have selected the incorrect sub-directory.
 This could be a typical situation when your DVC repository is part of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo). Suppose your Git repository
 contains sub-directories A and B. If A contains the DVC repository which you
-want to connect from DVC Studio, but you specify B when creating the
-project, then you will get the above error.
+want to connect from DVC Studio, but you specify B when creating the project,
+then you will get the above error.
 
 To solve this, you should [specify the full path to the correct
 sub-directory][project-settings] that contains the DVC repo.
@@ -162,8 +162,8 @@ to the correct sub-directory][project-settings] that contains the DVC repo.
 
 If you initialized a DVC repository, but did not push any commit with data,
 metrics or hyperparameters, then even though you will be able to connect to this
-repository, the project will appear empty in DVC Studio. To solve this,
-make relevant commits to your DVC repository.
+repository, the project will appear empty in DVC Studio. To solve this, make
+relevant commits to your DVC repository.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository.
@@ -186,8 +186,7 @@ There are two possible reasons for this:
    more than 500 columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
    multiple subdirectories in your Git repository. For each subdirectory, you
-   can create a new project in DVC Studio and limit it to that
-   subdirectory.
+   can create a new project in DVC Studio and limit it to that subdirectory.
 
    To create projects for subdirectories, [specify the project directory in
    project settings].
@@ -212,9 +211,9 @@ There are two possible reasons for this:
 
 ## Project does not contain some of my commits or branches
 
-This is likely not an error. DVC Studio identifies commits that do not
-change metrics, files or hyperparameters and will auto-hide such commits. It
-also auto-hides commits that contain the string `[skip studio]` in the commit
+This is likely not an error. DVC Studio identifies commits that do not change
+metrics, files or hyperparameters and will auto-hide such commits. It also
+auto-hides commits that contain the string `[skip studio]` in the commit
 message. You can also manually hide commits and branches, which means it is
 possible that the commits or branches you do not see in your project were
 manually hidden by you or someone else in your team.
@@ -291,10 +290,10 @@ live experiment will get nested under the parent commit as expected.
 
 ## Project does not display DVC experiments
 
-DVC Studio automatically checks for updates to your repository using
-webhooks, but it can not rely on this mechanism for custom Git objects, like
-<abbr>DVC experiment</abbr> references. So the experiments you push using
-`dvc exp push` may not automatically display in your project table.
+DVC Studio automatically checks for updates to your repository using webhooks,
+but it can not rely on this mechanism for custom Git objects, like <abbr>DVC
+experiment</abbr> references. So the experiments you push using `dvc exp push`
+may not automatically display in your project table.
 
 To manually check for updates in your repository, use the `Reload` button 🔄
 located above the project table.
@@ -324,26 +323,25 @@ repository.
 
 ## I cannot find my desired Git repository in the form to add a model
 
-Only repositories that you have connected to DVC Studio are available in
-the `Add a model` form. To connect your desired repository to DVC Studio,
-go to the `Projects` tab and [create a project that connects to this Git
+Only repositories that you have connected to DVC Studio are available in the
+`Add a model` form. To connect your desired repository to DVC Studio, go to the
+`Projects` tab and [create a project that connects to this Git
 repository][create a project]. Then you can come back to the model registry and
 add the model.
 
 ## Model registry does not display the models in my Git repositories
 
 For a model to be displayed in the model registry, it has to be registered using
-[GTO]. You can [register the model] from DVC Studio or with the [`gto`
-CLI].
+[GTO]. You can [register the model] from DVC Studio or with the [`gto` CLI].
 
 ## My models have disappeared even though I did not remove (deprecate) them
 
 When a project is deleted, all its models get automatically removed from the
 model registry. So check if the project has been removed. If yes, you can [add
-the project][create a project] again. Deleting a project from DVC Studio
-does not delete any commits or tags from the Git repository. So, adding the
-project back will restore all the models from the repository along with their
-details, including versions and stage assignments.
+the project][create a project] again. Deleting a project from DVC Studio does
+not delete any commits or tags from the Git repository. So, adding the project
+back will restore all the models from the repository along with their details,
+including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 

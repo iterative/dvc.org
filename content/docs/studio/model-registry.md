@@ -1,7 +1,7 @@
 # Manage models
 
-DVC Studio provides a model registry that you can access by clicking on
-the [`Models` tab](https://studio.iterative.ai/user/-/models). Your project's
+DVC Studio provides a model registry that you can access by clicking on the
+[`Models` tab](https://studio.iterative.ai/user/-/models). Your project's
 `dvc.yaml` files are used to identify ML models and
 [specially formatted Git tags](/doc/gto/user-guide#git-tags-format) are used to
 identify model versions and stage assignments.

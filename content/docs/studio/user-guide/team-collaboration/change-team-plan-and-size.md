@@ -7,8 +7,8 @@ To change the plan for your team, go to the `Plan and billing` section within
 
 ![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing_v2.png)
 
-Click on `Change plan` (under `Current plan`). An DVC Studio plan
-comparison page will open. Your current plan will be marked.
+Click on `Change plan` (under `Current plan`). An DVC Studio plan comparison
+page will open. Your current plan will be marked.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features_v2.png)
 
