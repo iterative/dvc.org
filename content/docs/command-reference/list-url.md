@@ -18,7 +18,7 @@ Useful to find data to `dvc get-url` or `dvc import-url`.
 ## Synopsis
 
 ```usage
-usage: dvc list-url [-h] [-q | -v] [-R] [--size] url
+usage: dvc list-url [-h] [-q | -v] [-R] [--size] [--fs-config <name>=<value>] url
 
 positional arguments:
   url              (See supported URLs in the description)
@@ -61,6 +61,8 @@ list files recursively.
 - `-R`, `--recursive` - recursively list files in all subdirectories.
 
 - `--size` - show sizes.
+
+- `--fs-config <name>=<value>` - `dvc remote` config options for the target url.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

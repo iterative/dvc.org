@@ -18,6 +18,7 @@ other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 usage: dvc import-url [-h] [-q | -v]
            [--to-remote] [-r <name>] [--no-exec | --no-download]
            [-j <number>] [-f] [--version-aware]
+           [--fs-config <name>=<value>]
            url [out]
 
 positional arguments:
@@ -196,6 +197,8 @@ produces a regular stage in `dvc.yaml`.
 `-f`, `--force` - when using `--out` to specify a local target file or
 directory, the operation will fail if those paths already exist. this flag will
 force the operation causing local files/dirs to be overwritten by the command.
+
+- `--fs-config <name>=<value>` - `dvc remote` config options for the target url.
 
 - `--version-aware` - capture [cloud versioning] information of the current
   version when importing the file. DVC will always
