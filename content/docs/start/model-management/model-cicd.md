@@ -86,7 +86,7 @@ parse:
         fetch-depth: 0
     - name: 'Parse GTO tag'
       id: gto
-      uses: iterative/gto-action@14723404a00bb0c1e759c02ffcd24279df5815c2
+      uses: iterative/gto-action@v2
   outputs:
     event: ${{ steps.gto.outputs.event }}
     name: ${{ steps.gto.outputs.name }}
@@ -148,7 +148,7 @@ jobs:
         fetch-depth: 0
     - name: "Parse GTO tag"
       id: gto
-      uses: iterative/gto-action@14723404a00bb0c1e759c02ffcd24279df5815c2
+      uses: iterative/gto-action@v2
     outputs:
       event: ${{ steps.gto.outputs.event }}
       name: ${{ steps.gto.outputs.name }}
