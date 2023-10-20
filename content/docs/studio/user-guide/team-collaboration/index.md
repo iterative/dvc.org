@@ -53,9 +53,9 @@ Team members or collaborators can have the following roles:
 - An additional role `Visitor` exists for anonymous users who can open a public
   project.
 
-Iterative Studio does not have the concept of an `Owner` role. The user who
-creates the team has the `Admin` role. The privileges of such an admin is the
-same as that of any other collaborator who has been assigned the `Admin` role.
+DVC Studio does not have the concept of an `Owner` role. The user who creates
+the team has the `Admin` role. The privileges of such an admin is the same as
+that of any other collaborator who has been assigned the `Admin` role.
 
 <admon>
 
@@ -100,7 +100,7 @@ even if the project belongs to a team where you are an `Editor` or `Admin`.
 | Access a team's model details page                                                                                                               | No      | Yes    | Yes    | Yes   |
 | Perform model actions in the team's model registry<br>- add / deprecate models<br>- register / deregsiter versions<br>- assign / unassign stages | No      | Yes\*  | Yes\*  | Yes\* |
 
-\*All team members can submit model actions in Iterative Studio. But for a team
+\*All team members can submit model actions in DVC Studio. But for a team
 member's actions to successfully complete, the team member must have write
 access in the Git repository from where the model was added. This is because any
 model action constitutes writing a Git commit, pull/merge request or tag to the
@@ -189,8 +189,7 @@ created teams are on the Free plan. This plan is designed for teams that are
 starting out: you can invite one other team member and import as many
 repositories as you want. For more advanced collaboration, you can switch to the
 Basic or Enterprise plans. A detailed comparison of the different plans can be
-found in the Iterative Studio
-[pricing page](https://studio.iterative.ai/pricing).
+found in the DVC Studio [pricing page](https://studio.iterative.ai/pricing).
 
 - **To upgrade** from the Free plan to the Basic or Enterprise plan or to
   downgrade your team plan, refer to the section on [changing your team plan].

@@ -16,7 +16,7 @@ facilitates search and discovery.
 You can sort the models in the dashboard by several criteria, including model
 framework, repository, etc.
 
-Iterative Studio consolidates the stages of all the models in the registry, and
+DVC Studio consolidates the stages of all the models in the registry, and
 provides a way to filter models by stages.
 
 You can take a look at the [models dashboard] in Iterative's public (read only)
@@ -38,8 +38,8 @@ A model details page is divided into the following sections:
   - a button to
     [register a new version](/doc/studio/user-guide/model-registry/register-version),
     and
-  - information about how many projects in Iterative Studio have been created
-    from the model’s Git repository.
+  - information about how many projects in DVC Studio have been created from the
+    model’s Git repository.
 - Left section: The left section contains information that is specific to a
   particular registered version of the model. It has a version picker, which you
   can use to switch between different registered versions of the model. For the

@@ -66,7 +66,7 @@ within:
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
 - [`studio`](#studio) - options for configuring
-  [Iterative Studio](https://studio.iterative.ai/) token
+  [DVC Studio](https://studio.iterative.ai/) token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 

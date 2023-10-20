@@ -138,7 +138,7 @@ Replace the strings marked with `< >`
 ubuntu@ami:~$ helm install --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 
-16. You're done! Access Iterative Studio by opening the configured hostname in
-    your browser
+16. You're done! Access DVC Studio by opening the configured hostname in your
+    browser
 
 ![](/img/studio-selfhosted-ami-9.png)

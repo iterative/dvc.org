@@ -10,8 +10,8 @@ In this section, you will learn how to:
 
 To add a new project, follow these steps.
 
-1. Sign in to [Iterative Studio](https://studio.iterative.ai/) using your
-   GitHub.com, GitLab.com, or Bitbucket.org account, or with your email address.
+1. Sign in to [DVC Studio](https://studio.iterative.ai/) using your GitHub.com,
+   GitLab.com, or Bitbucket.org account, or with your email address.
 
 2. Click on `Add a Project`. All the organizations that you have access to will
    be listed.
@@ -22,7 +22,7 @@ To add a new project, follow these steps.
    that
    [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
 
-   To connect to your GitHub repositories, you must install the Iterative Studio
+   To connect to your GitHub repositories, you must install the DVC Studio
    GitHub app. Refer to the section on
    [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
    for more details.
@@ -59,7 +59,7 @@ To add a new project, follow these steps.
    <admon type = "tip">
 
    You can create multiple projects at once by providing up to 10
-   comma-separated values. Iterative Studio will create one project for each
+   comma-separated values. DVC Studio will create one project for each
    sub-directory in the list.
 
    </admon>
@@ -70,8 +70,8 @@ You should now see that the project has been added in your dashboard.
 
 ## Create multiple projects from a single Git repository
 
-You can create multiple projects in Iterative Studio from a single Git
-repository and apply different settings to them.
+You can create multiple projects in DVC Studio from a single Git repository and
+apply different settings to them.
 
 One use case for this is if you have a
 **[monorepo](https://en.wikipedia.org/wiki/Monorepo)** with multiple ML
@@ -82,7 +82,7 @@ For each ML project in the monorepo, follow the
 the Git repository. On the additional settings page [specify the sub-directory]
 (or up to 10 comma-separated values) in which the desired ML project resides.
 
-This way, you will have multiple Iterative Studio projects for your single Git
+This way, you will have multiple DVC Studio projects for your single Git
 repository, with each project presenting values from a different sub-directory.
 
 [specify the sub-directory]:
