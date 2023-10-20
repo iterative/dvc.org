@@ -45,7 +45,10 @@ be triggered whenever.
 
 In the following, we will have a look at an example CICD workflow on GitHub
 which runs whenever we assign a version of our model to the "test" stage in the
-model registry. The workflow simulates model deployment without the need to actually set up a deployment environment (so that you can test it easier) but it does include all the ingredients needed in an actual deployment job or any other CICD action.
+model registry. The workflow simulates model deployment without the need to
+actually set up a deployment environment (so that you can test it easier) but it
+does include all the ingredients needed in an actual deployment job or any other
+CICD action.
 
 <admon type="tip>
 
