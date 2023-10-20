@@ -21,7 +21,7 @@ You can upgrade to the Basic or Enterprise plan.
 **To upgrade to the Basic plan**, click on the `Upgrade` button. Then select the
 number of seats (collaborators) you need in your team.
 
-![](https://static.dvc.ai/img/studio/team_settings_select_seats.png)
+![](https://static.iterative.ai/img/studio/team_settings_select_seats.png)
 
 The total payable amount will be shown. See
 [Billing and Payment](/doc/studio/user-guide/account-and-billing/billing-and-payment)
