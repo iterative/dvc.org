@@ -332,3 +332,32 @@ $ aws s3api list-object-versions --bucket mybucket
         }
     ]
 ```
+
+With `version_aware` enabled, `dvc push` will also modify <abbr>dvc files</abbr>
+to capture the version information:
+
+```cli
+...
+    outs:
+    - path: data/prepared
+      hash: md5
+      files:
+      - relpath: test.tsv
+        md5: b656f1a8273d0c541340cb129fd5d5a9
+        size: 1708591
+        cloud:
+          versioned_store:
+            etag: b656f1a8273d0c541340cb129fd5d5a9
+            version_id: T6rFr7NSHkL3v9tGStO7GTwsVaIFl42T
+      - relpath: train.tsv
+        md5: 9ca281786366acca17632c27c5c5cc75
+        size: 6728772
+        cloud:
+          versioned_store:
+            etag: 9ca281786366acca17632c27c5c5cc75
+            version_id: XaYsHQHWK219n5MoCRe.Rr7LeNbbder_
+...
+```
+
+Always `dvc push` before `git commit` so that the updated cloud version info is
+available in Git.

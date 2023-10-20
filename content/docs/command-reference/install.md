@@ -3,6 +3,15 @@
 Install Git hooks into the <abbr>DVC repository</abbr> to automate certain
 common actions.
 
+<admon type="warn">
+
+Do not use these Git hooks if you are using a
+[version-aware remote](/doc/user-guide/data-management/cloud-versioning#version-aware-remotes).
+Version-aware remotes require running `dvc push` before `git commit`, which is
+not supported by the included hooks.
+
+</admon>
+
 ## Synopsis
 
 ```usage
