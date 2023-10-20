@@ -194,9 +194,10 @@ produces a regular stage in `dvc.yaml`.
   from the source. The default value is `4 * cpu_count()`. Using more jobs may
   speed up the operation.
 
-`-f`, `--force` - when using `--out` to specify a local target file or
-directory, the operation will fail if those paths already exist. this flag will
-force the operation causing local files/dirs to be overwritten by the command.
+- `-f`, `--force` - when using `--out` to specify a local target file or
+  directory, the operation will fail if those paths already exist. this flag
+  will force the operation causing local files/dirs to be overwritten by the
+  command.
 
 - `--fs-config <name>=<value>` - `dvc remote` config options for the target url.
 
