@@ -1,12 +1,12 @@
 # Troubleshooting
 
 Here we provide help for some of the problems that you may encounter when using
-Iterative Studio.
+DVC Studio.
 
 ## Support
 
 If you need further help, you can send us a message using `Help` on the
-[Iterative Studio website](https://studio.iterative.ai). You can also
+[DVC Studio website](https://studio.iterative.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
 [Discord](https://discord.com/invite/dvwXA2N).
@@ -45,8 +45,8 @@ If you need further help, you can send us a message using `Help` on the
 
 ## Errors accessing your Git repository
 
-When Iterative Studio cannot access your Git repository, it can present one of
-the following errors:
+When DVC Studio cannot access your Git repository, it can present one of the
+following errors:
 
 - Repository not found or you don't have access to it
 - Unable to access repository due to stale authorization
@@ -59,12 +59,12 @@ the following errors:
 
 To fix this, make sure that the repository exists and you have access to it.
 Re-login to the correct Git account and try to import the repository again. If
-you are connecting to a GitHub account, also make sure that the Iterative Studio
+you are connecting to a GitHub account, also make sure that the DVC Studio
 GitHub app is installed.
 
 Additionally, network or third party issues (such as GitHub, GitLab or Bitbucket
-outages) can also cause connection issues. In this case, Iterative Studio can
-display an appropriate indication in the error message.
+outages) can also cause connection issues. In this case, DVC Studio can display
+an appropriate indication in the error message.
 
 ## Errors related to parsing the repository
 
@@ -77,7 +77,7 @@ import the repo again.
 
 ## Errors related to DVC remotes and credentials
 
-Iterative Studio can include data from
+DVC Studio can include data from
 [data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes-cloudremote-storage)
 in your project. However, it can access data from network-accessible remotes
 such as Amazon S3, Microsoft Azure, etc but not from [local DVC
@@ -144,8 +144,8 @@ have selected the incorrect sub-directory.
 This could be a typical situation when your DVC repository is part of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo). Suppose your Git repository
 contains sub-directories A and B. If A contains the DVC repository which you
-want to connect from Iterative Studio, but you specify B when creating the
-project, then you will get the above error.
+want to connect from DVC Studio, but you specify B when creating the project,
+then you will get the above error.
 
 To solve this, you should [specify the full path to the correct
 sub-directory][project-settings] that contains the DVC repo.
@@ -162,8 +162,8 @@ to the correct sub-directory][project-settings] that contains the DVC repo.
 
 If you initialized a DVC repository, but did not push any commit with data,
 metrics or hyperparameters, then even though you will be able to connect to this
-repository, the project will appear empty in Iterative Studio. To solve this,
-make relevant commits to your DVC repository.
+repository, the project will appear empty in DVC Studio. To solve this, make
+relevant commits to your DVC repository.
 
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository.
@@ -177,7 +177,7 @@ will still be able to work with your models in the model registry.
 
 There are two possible reasons for this:
 
-1. **The required columns were not imported:** Iterative Studio will only import
+1. **The required columns were not imported:** DVC Studio will only import
    columns that you select in the
    [**Columns** setting](/doc/studio/user-guide/experiments/configure-a-project#columns).
 
@@ -186,18 +186,17 @@ There are two possible reasons for this:
    more than 500 columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
    multiple subdirectories in your Git repository. For each subdirectory, you
-   can create a new project in Iterative Studio and limit it to that
-   subdirectory.
+   can create a new project in DVC Studio and limit it to that subdirectory.
 
    To create projects for subdirectories, [specify the project directory in
    project settings].
 
    If this solution does not work for your use case, please create a support
-   ticket in the [Iterative Studio support GitHub repository].
+   ticket in the [DVC Studio support GitHub repository].
 
 [specify the project directory in project settings]:
   /doc/studio/user-guide/experiments/configure-a-project#project-directory
-[iterative studio support github repository]:
+[DVC studio support github repository]:
   https://github.com/iterative/studio-support
 
 2. **The required columns are hidden:** In the project's experiment table, you
@@ -212,9 +211,9 @@ There are two possible reasons for this:
 
 ## Project does not contain some of my commits or branches
 
-This is likely not an error. Iterative Studio identifies commits that do not
-change metrics, files or hyperparameters and will auto-hide such commits. It
-also auto-hides commits that contain the string `[skip studio]` in the commit
+This is likely not an error. DVC Studio identifies commits that do not change
+metrics, files or hyperparameters and will auto-hide such commits. It also
+auto-hides commits that contain the string `[skip studio]` in the commit
 message. You can also manually hide commits and branches, which means it is
 possible that the commits or branches you do not see in your project were
 manually hidden by you or someone else in your team.
@@ -235,7 +234,7 @@ repository again.
 
 ## Error: Skipped big remote file(s)
 
-Files that are larger than 10 MB are currently skipped by Iterative Studio.
+Files that are larger than 10 MB are currently skipped by DVC Studio.
 
 ## Error: Base commit not found
 
@@ -281,7 +280,7 @@ If you get this error and none of the above applies, please
 
 Confirm that you are correctly following the
 [procedure to send live metrics and plots](/doc/studio/user-guide/experiments/live-metrics-and-plots)
-to Iterative Studio.
+to DVC Studio.
 
 Note that a live experiment is nested under the parent Git commit in the project
 table. If the parent Git commit is not pushed to the Git repository, the live
@@ -291,10 +290,10 @@ live experiment will get nested under the parent commit as expected.
 
 ## Project does not display DVC experiments
 
-Iterative Studio automatically checks for updates to your repository using
-webhooks, but it can not rely on this mechanism for custom Git objects, like
-<abbr>DVC experiment</abbr> references. So the experiments you push using
-`dvc exp push` may not automatically display in your project table.
+DVC Studio automatically checks for updates to your repository using webhooks,
+but it can not rely on this mechanism for custom Git objects, like <abbr>DVC
+experiment</abbr> references. So the experiments you push using `dvc exp push`
+may not automatically display in your project table.
 
 To manually check for updates in your repository, use the `Reload` button 🔄
 located above the project table.
@@ -312,38 +311,37 @@ issue for any future commits in your repository.
 ## Project does not reflect updates in the Git repository
 
 When there are updates (new commits, branches, etc.) in your Git repository,
-your project in Iterative Studio gets reflected to include those updates. If the
+your project in DVC Studio gets reflected to include those updates. If the
 project has stopped receiving updates from the Git repository and you have to
 `re-import` the project each time to get any new commit, then it is possible
-that the Iterative Studio webhook in your repository got deleted or messed up.
+that the DVC Studio webhook in your repository got deleted or messed up.
 
-Iterative Studio periodically checks for any missing or messed up webhooks, and
+DVC Studio periodically checks for any missing or messed up webhooks, and
 attempts to re-create them. Currently, this happens every 2 hours. The webhook
 also gets re-created every time you create a new project or re-import a
 repository.
 
 ## I cannot find my desired Git repository in the form to add a model
 
-Only repositories that you have connected to Iterative Studio are available in
-the `Add a model` form. To connect your desired repository to Iterative Studio,
-go to the `Projects` tab and [create a project that connects to this Git
+Only repositories that you have connected to DVC Studio are available in the
+`Add a model` form. To connect your desired repository to DVC Studio, go to the
+`Projects` tab and [create a project that connects to this Git
 repository][create a project]. Then you can come back to the model registry and
 add the model.
 
 ## Model registry does not display the models in my Git repositories
 
 For a model to be displayed in the model registry, it has to be registered using
-[GTO]. You can [register the model] from Iterative Studio or with the [`gto`
-CLI].
+[GTO]. You can [register the model] from DVC Studio or with the [`gto` CLI].
 
 ## My models have disappeared even though I did not remove (deprecate) them
 
 When a project is deleted, all its models get automatically removed from the
 model registry. So check if the project has been removed. If yes, you can [add
-the project][create a project] again. Deleting a project from Iterative Studio
-does not delete any commits or tags from the Git repository. So, adding the
-project back will restore all the models from the repository along with their
-details, including versions and stage assignments.
+the project][create a project] again. Deleting a project from DVC Studio does
+not delete any commits or tags from the Git repository. So, adding the project
+back will restore all the models from the repository along with their details,
+including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 

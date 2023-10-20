@@ -65,10 +65,10 @@ and declare metadata for the model registry in `dvc.yaml`.
 
 ## Work with DVC Experiments from a GUI
 
-DVC Experiments can be used directly [from the VS Code IDE] or online with
-[Iterative Studio], the web UI that integrates all of our data science tools.
+DVC Experiments can be used directly [from the VS Code IDE] or online with [DVC
+Studio], the web UI that integrates all of our data science tools.
 
-### Iterative Studio
+### DVC Studio
 
 https://www.youtube.com/watch?v=w-UjAbdpRY4
 
@@ -86,5 +86,5 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [plots]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
 [from the vs code ide]: /doc/vs-code-extension
-[iterative studio]: /doc/studio
+[dvc studio]: /doc/studio
 [studio model registry]: /doc/studio/user-guide/model-registry

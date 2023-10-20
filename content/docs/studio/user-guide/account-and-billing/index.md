@@ -1,8 +1,8 @@
 # Account Management
 
 To open your account settings, click on your user icon on the top right corner
-of Iterative Studio, and go to your `Profile`. You can view and update the
-following settings:
+of DVC Studio, and go to your `Profile`. You can view and update the following
+settings:
 
 - [Personal details](#personal-details), including name, username and email
   addresses
@@ -34,13 +34,13 @@ You can edit your name as well as username.
 
 ### Managing email addresses
 
-You can add multiple email addresses to a single Iterative Studio account. You
-can login to the account with any of your verified email addresses as long as
-you have set up a password for your account. This is true even if you signed up
+You can add multiple email addresses to a single DVC Studio account. You can
+login to the account with any of your verified email addresses as long as you
+have set up a password for your account. This is true even if you signed up
 using your GitHub, GitLab, or Bitbucket.
 
 One of your email addresses must be designated as primary. This is the address
-to which Iterative Studio will send all your account notification emails.
+to which DVC Studio will send all your account notification emails.
 
 You can change your primary email address by clicking on the `Primary` button
 next to the email address which you want to designate as primary.
@@ -54,8 +54,8 @@ page.
 
 ### Studio access token
 
-Iterative Studio uses access tokens to authorize [DVC] and [DVCLive] to send
-experiment updates, and to authenticate you in Studio
+DVC Studio uses access tokens to authorize [DVC] and [DVCLive] to send
+experiment updates, and to authenticate you in the DVC Studio
 [REST API](/doc/studio/rest-api).
 
 In the `Studio access token` section of your [Profile] page, you can generate a
@@ -209,15 +209,15 @@ In this section, you can,
 
 - Connect to GitHub.com, GitLab.com or Bitbucket.org.
 
-  When you connect to a Git hosting provider, you will be prompted to grant
-  Iterative Studio access to your account.
+  When you connect to a Git hosting provider, you will be prompted to grant DVC
+  Studio access to your account.
 
-  To connect to your GitHub repositories, you must install the Iterative Studio
-  GitHub app. Refer to the section on
+  To connect to your GitHub repositories, you must install the DVC Studio GitHub
+  app. Refer to the section on
   [GitHub app installation](/doc/studio/user-guide/git-integrations/github-app)
   for more details.
 
-  Note that if you signed up to use Iterative Studio using your GitHub, GitLb or
+  Note that if you signed up to use DVC Studio using your GitHub, GitLb or
   Bitbucket account, integration with that Git account will have been created
   during sign up.
 
@@ -228,9 +228,9 @@ In this section, you can,
   in the [team settings].
 
 - Disconnect from your GitHub, GitLab, or Bitbucket accounts.
-- Configure your GitHub account connection. That is, install the Iterative
-  Studio GitHub app on additional organizations or repositories, or even remove
-  the app from organizations or repositories where you no longer need it.
+- Configure your GitHub account connection. That is, install the DVC Studio
+  GitHub app on additional organizations or repositories, or even remove the app
+  from organizations or repositories where you no longer need it.
 
 ## Delete account
 
@@ -240,7 +240,7 @@ are absolutely sure that you do not need those projects or links anymore.
 
 <admon>
 
-Deleting your account in Iterative Studio does not delete your Git repositories.
+Deleting your account in DVC Studio does not delete your Git repositories.
 
 </admon>
 
