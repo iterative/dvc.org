@@ -7,9 +7,21 @@ capabilities.
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions using the DVC Studio [REST API], `dvc get`, or DVC [Python API].
+versions using the DVC Studio [REST API], DVC [Python API], use the
+`dvc artifacts get` command or directly download your model from DVC Studio.
 
-### Using Studio API
+Prerequisites:
+
+- The DVC Studio project you like to download your model from needs access to
+  your [remote storage credentials].
+- Access to your [DVC Studio Access token].
+
+[remote storage credentials]:
+  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
+[DVC Studio Access token]:
+  /doc/studio/user-guide/account-management#studio-access-token
+
+### Using DVC Studio API
 
 Using the DVC Studio API will require you to add your remote storage secrets to
 respective projects but downloading models can be easier than DVC since you only
@@ -20,6 +32,18 @@ which limits the number of remotes they're working with. You can learn more on
 
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference
+
+### dvc artifacts get
+
+Provides a way to download artifacts tracked in the model registry. Unlike
+`dvc get`, `dvc artifacts get` supports downloading an artifact by name, rather
+than by path. Likewise, dvc artifacts get supports downloading a registered
+artifact version or stage, instead of requiring a specified Git revision.
+
+You can learn more on the command reference page for `dvc artifacts get`.
+
+[dvc get]: /doc/command-reference/get
+[dvc artifacts get]: /doc/command-reference/artifacts/get
 
 ### Direct download from DVC Studio
 
@@ -44,56 +68,6 @@ After generation, these download links are valid for 1 hour. You can click the
 link to directly download the file.
 
 ![Screenshot of access model button on the model details page](/img/mr-direct-download.png)
-
-### Using `dvc get`
-
-#### Looking up the right command in DVC Studio
-
-The `Path to model file` section of a model's details page contains a `dvc get`
-command ready to copy and use.
-
-![Screenshot of path to model file section](/img/mr-dvc-get.png)
-
-#### Constructing the command manually
-
-You can also construct this command manually using this template:
-
-```cli
-$ dvc get ${GIT_REPO} ${MODEL_PATH} --rev ${GIT_REV}
-```
-
-Let's download the `text-classification` model in the
-[example-get-started](https://github.com/iterative/example-get-started)
-repository.
-
-To find out the model file path (that is, `model.pkl`) you can check the model's
-details page or check the `dvc.yaml` file to which the model annotation was
-written.
-
-To find out the Git revision, you can check the
-[list of Git tags](https://github.com/iterative/example-get-started/tags) or use
-[GTO](/doc/gto/command-reference/show/):
-
-```cli
-$ gto show text-classification@latest --ref
-text-classification@v1.2.0
-```
-
-Putting everything together, to download the model file, you can use the
-following dvc command:
-
-```cli
-$ dvc get https://github.com/iterative/example-get-started \
-    model.pkl \
-    --rev text-classification@v1.2.0
-```
-
-Note that `model.pkl` is the path that was specified in `dvc.yaml`, and not the
-physical path of the model file (in the remote storage).
-
-DVC will figure out the right file to download from the remote storage for you.
-Note that for running this command, you will need to have remote storage
-credentials set up in your environment.
 
 ## Deploying and publishing models in CI/CD
 
