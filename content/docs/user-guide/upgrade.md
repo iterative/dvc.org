@@ -2,8 +2,8 @@
 
 DVC 3.0 introduced changes to how DVC hashes files and to where DVC-tracked data
 is stored in the <abbr>cache</abbr>. DVC 3.0 remains compatible with
-pre-existing data tracked by older DVC releases, but there are a few important
-points that users should note when upgrading to DVC 3.0.
+pre-existing data tracked by DVC 2.0, but there are a few important points that
+users should note when upgrading to DVC 3.0.
 
 <admon type="info">
 
@@ -52,8 +52,8 @@ In order to avoid hash collisions between files tracked in DVC 3.0 and older
 releases, files tracked in DVC 3.0 are stored separately from files tracked in
 older releases. By default, DVC does not automatically de-duplicate any data
 between files tracked in DVC 3.0 and files tracked in older releases. DVC will
-still read cached files from older releases and will only duplicate for new or
-modified data.
+still read cached files from DVC 2.0 and will only duplicate for new or modified
+data.
 
 Users can manually migrate existing local DVC cache data to the DVC 3.0 location
 by running the `dvc cache migrate` command. On most local filesystems,
@@ -71,3 +71,21 @@ data will be copied from the old cache location into the DVC 3.0 location
 (resulting in no de-duplication).
 
 </admon>
+
+By default, `dvc cache migrate` only migrates cache data and does not modify
+<abbr>DVC files</abbr> in the <abbr>DVC repository</abbr>.
+`dvc cache migrate --dvc-files` will migrate entries in all DVC files in the
+repository so that DVC will only use data from the DVC 3.0 cache location.
+
+<admon type="info">
+
+Note that when using `--dvc-files` option, DVC will only migrate DVC files in
+<abbr>workspace</abbr> (and Git history will not be re-written).
+
+</admon>
+
+For [DVC remotes](/doc/user-guide/data-management/remote-storage), there is no
+equivalent migration command since it is not possible to link between old and
+new locations on many remote filesystems. Instead, once you have migrated data
+locally and pushed to the remote, you may use `dvc gc -c` commands to remove
+outdated data from the remote.

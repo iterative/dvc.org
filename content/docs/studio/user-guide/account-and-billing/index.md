@@ -55,7 +55,8 @@ page.
 ### Studio access token
 
 DVC Studio uses access tokens to authorize [DVC] and [DVCLive] to send
-experiment updates.
+experiment updates, and to authenticate you in the DVC Studio
+[REST API](/doc/studio/rest-api).
 
 In the `Studio access token` section of your [Profile] page, you can generate a
 new token as well as regenerate (replace) or delete your access token.
