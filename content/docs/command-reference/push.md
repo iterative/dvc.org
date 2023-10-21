@@ -1,7 +1,8 @@
 # push
 
 Upload tracked files or directories to [remote storage] based on the current
-`dvc.yaml` and `.dvc` files.
+<abbr>dvc files</abbr> files (and update the cloud info in those files if
+pushing to a [version-aware] remote).
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
