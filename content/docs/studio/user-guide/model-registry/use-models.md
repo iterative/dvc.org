@@ -16,9 +16,9 @@ Prerequisites:
   your [remote storage credentials].
 - Access to your [DVC Studio Access token].
 
-Without these prerequisites, you can still [download a model artifact with  DVC], but
-unlike using DVC Studio, the client where you download it will need DVC installed and
-need access to both the Git repository and remote storage. 
+Without these prerequisites, you can still [download a model artifact with DVC],
+but unlike using DVC Studio, the client where you download it will need DVC
+installed and need access to both the Git repository and remote storage.
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [remote storage credentials]:
