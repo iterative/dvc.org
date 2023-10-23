@@ -7,7 +7,7 @@ capabilities.
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions with DVC Studio from the web interface or in your code.
+versions with the DVC Studio API from the web interface or in your code.
 
 Prerequisites:
 
