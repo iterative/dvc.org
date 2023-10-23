@@ -3,6 +3,8 @@
 Download an <abbr>artifact</abbr> tracked in the <abbr>model registry</abbr>
 into the current working directory (with optional DVC Studio support).
 
+> See also our `dvc.api.artifacts_show()` Python API function.
+
 ## Synopsis
 
 ```usage
