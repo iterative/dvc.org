@@ -152,7 +152,7 @@ border. Values that are worse than that in the baseline row are marked in pink.
 To change the baseline row in your project, use the 3-dot menu of the row which
 you want to set as the new baseline.
 
-![Set baseline row](https://static.iterative.ai/img/studio/set-baseline-row)
+![Set baseline row](https://static.iterative.ai/img/studio/set-baseline-row.gif)
 
 </admon>
 
