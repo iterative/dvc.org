@@ -11,7 +11,7 @@ versions with DVC Studio from the web interface or in your code.
 
 Prerequisites:
 
-- Model stored with DVC with S3 or Azure [remote].
+- Model stored with DVC with S3, Azure, http or https [remote].
 - The DVC Studio project you like to download your model from needs access to
   your [remote storage credentials].
 - Access to your [DVC Studio Access token].

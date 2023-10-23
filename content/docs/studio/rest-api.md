@@ -13,8 +13,8 @@ To use API, you need to generate
 ## Download model
 
 Get signed URL to download the model binaries for a model from the <abbr>model
-registry</abbr>. Requires the model to be stored with DVC with S3 or Azure
-[remote]. Note, that you need to
+registry</abbr>. Requires the model to be stored with DVC with a S3, Azure, http
+or https [remote]. Note, that you need to
 [set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
 for Studio to have rights to the signed URLs. The signed URLs expire after one
 hour.
