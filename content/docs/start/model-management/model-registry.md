@@ -14,7 +14,14 @@ up a model registry where we can discover, share, deploy and audit all our
 models and which will serve as the single source of truth for our model
 management.
 
-If you'd like to follow along, you can fork our
+You can also set up the model registry locally without Studio, using a command
+line tool called [Git Tag Ops (GTO)]((/doc/gto)). We will see how this is done [later in this chapter](#GTO-tip).
+
+<details id="follow-along-instructions">
+
+#### 💡 Expand to see how to set things up to follow along with the guide
+
+You can fork our
 [example repository](https://github.com/iterative/example-get-started-experiments)
 and follow the
 [installation steps](https://github.com/iterative/example-get-started-experiments#installation)
@@ -23,8 +30,8 @@ up to Studio, connect Studio to your Git Repository and add the forked project
 using
 [this guide](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project).
 
-You can also set up the model registry locally without Studio, using a command
-line tool. We will see how this is done [later in this chapter](#GTO-tip).
+</details>
+
 
 ## Adding models
 
