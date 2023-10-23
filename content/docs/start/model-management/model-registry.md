@@ -8,14 +8,23 @@ description:
 # Get Started: Model Registry
 
 Just as we use experiment tracking to manage model development, it is a good
-idea to keep a <abbr>model registry</abbr> to manage the lifecycle of the models we get from
-our experiments. Using DVC and DVC [Studio](/doc/studio) we will set up a model
-registry where we can discover, share, deploy and audit all our models and which
-will serve as the single source of truth for our model management.
+idea to keep a <abbr>model registry</abbr> to manage the lifecycle of the models
+we get from our experiments. Using DVC and DVC [Studio](/doc/studio) we will set
+up a model registry where we can discover, share, deploy and audit all our
+models and which will serve as the single source of truth for our model
+management.
 
-If you'd like to follow along, you can fork our [example repository](https://github.com/iterative/example-get-started-experiments) and follow the [installation steps](https://github.com/iterative/example-get-started-experiments#installation) to set it up locally. To perform the model registry actions in this guide, sign up to Studio, connect Studio to your Git Repository and add the forked project using [this guide](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project).
+If you'd like to follow along, you can fork our
+[example repository](https://github.com/iterative/example-get-started-experiments)
+and follow the
+[installation steps](https://github.com/iterative/example-get-started-experiments#installation)
+to set it up locally. To perform the model registry actions in this guide, sign
+up to Studio, connect Studio to your Git Repository and add the forked project
+using
+[this guide](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project).
 
-You can also set up the model registry locally without Studio, using a command line tool. We will see how this is done [later in this chapter](#GTO-tip).
+You can also set up the model registry locally without Studio, using a command
+line tool. We will see how this is done [later in this chapter](#GTO-tip).
 
 ## Adding models
 
@@ -24,10 +33,9 @@ Let's now train a model and add it to the model registry. We will be using
 automatically save the model to DVC.
 
 We use the [`log_artifact`](/doc/dvclive/live/log_artifact) method to
-<abbr>cache</abbr> the model with DVC and add it to the the model registry. 
-Open the training script `src/train.py` in our example
-repository and you will see the following code under the `with Live(...)`
-context:
+<abbr>cache</abbr> the model with DVC and add it to the the model registry. Open
+the training script `src/train.py` in our example repository and you will see
+the following code under the `with Live(...)` context:
 
 ```python
 with Live(...) as live:
@@ -50,10 +58,11 @@ parameters are descriptive and optional and will also show up in the model
 registry.
 
 Now we just need to run the python script which includes this code to cache and
-register the model. If you are following our example repository then the training script is included
-in a DVC pipeline [we prepared](/doc/start/experiments/experiment-pipelines) in
-the Experiment Management guide. so we can just call `dvc exp run` to run the
-entire experiment pipeline.
+register the model. If you are following our example repository then the
+training script is included in a DVC pipeline
+[we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
+Management guide. so we can just call `dvc exp run` to run the entire experiment
+pipeline.
 
 We now commit the result to git (and push it to our git remote) and the new
 model will show up in the model registry in Studio.
@@ -103,11 +112,10 @@ at the
 
 ## DVC Model registry overview
 
-In this guide, we will be using [DVC Studio](https://studio.iterative.ai)
-to manage our model registry. Studio enables you to see models across all 
-projects, manage their lifecycle, and download them with only a token. 
-You can find out more about it [here](/doc/studio).
-have access to.
+In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
+manage our model registry. Studio enables you to see models across all projects,
+manage their lifecycle, and download them with only a token. You can find out
+more about it [here](/doc/studio). have access to.
 
 From the dashboard we will have an overview of all models, latest model versions
 as well stages each of the model versions is assigned to. We can get more
@@ -118,8 +126,8 @@ You can check out our
 in the Studio model registry to see what it will look like once we finish all
 the steps in this guide.
 
-Now that we have added a model, we should see something
-like the following picture in the Studio Model Registry.
+Now that we have added a model, we should see something like the following
+picture in the Studio Model Registry.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
@@ -227,21 +235,28 @@ For more details you can have a look at the
 
 ## Changing (and removing) stage assignments
 
-Let's say that we've decided to promote our model version 1.0.0 to production. We will assign the model version to the "prod" stage just like we did with the "dev" stage in
-the previous section.
-When we assing the model to a stage, it can automatically
-trigger actions in our CICD workflows, like deploying the model to a new
-environment (we will explore how this is done in the [Using and
-Deploying models] (doc/start/model-management/model-cicd) chapter).
+Let's say that we've decided to promote our model version 1.0.0 to production.
+We will assign the model version to the "prod" stage just like we did with the
+"dev" stage in the previous section. When we assing the model to a stage, it can
+automatically trigger actions in our CICD workflows, like deploying the model to
+a new environment (we will explore how this is done in the [Using and Deploying
+models] (doc/start/model-management/model-cicd) chapter).
 
-Let's say that after some additional experimentation, we've improved our model and we would like to register a new version and assign it to the "dev" stage instead of our current version 1.0.0. You can change some parameters
-We would do this just like before, registering the new commit as model version 1.1.0 and assigning it to the "dev" stage in Studio. This will also automatically replace the assignment onf version 1.0.0 to the "dev" stage by version 1.1.0. Since the steps we would take are the same as before, we omit this in our example repository but you can try it out yourself.
+Let's say that after some additional experimentation, we've improved our model
+and we would like to register a new version and assign it to the "dev" stage
+instead of our current version 1.0.0. You can change some parameters We would do
+this just like before, registering the new commit as model version 1.1.0 and
+assigning it to the "dev" stage in Studio. This will also automatically replace
+the assignment onf version 1.0.0 to the "dev" stage by version 1.1.0. Since the
+steps we would take are the same as before, we omit this in our example
+repository but you can try it out yourself.
 
 The detailed view of our model in the registry should now match what we see
 [in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)>).
 
-It is also possible to remove stage assignments manually, de-register model versions or deprecate and remove models
-from the registry entirely. We will not do that in this guide, but
+It is also possible to remove stage assignments manually, de-register model
+versions or deprecate and remove models from the registry entirely. We will not
+do that in this guide, but
 [here](user-guide/model-registry/remove-a-model-or-its-details) you can have a
 look at how to do that.
 
@@ -249,8 +264,9 @@ look at how to do that.
 
 #### 💡 Expand to see how removing model stages works under the hood
 
-Whenever we un-assign stages, de-register model versions and deprecate models, Studio uses the GTO library under the hood.
-It is also possible to use GTO manually to perform these actions. To see how, have a look at the
+Whenever we un-assign stages, de-register model versions and deprecate models,
+Studio uses the GTO library under the hood. It is also possible to use GTO
+manually to perform these actions. To see how, have a look at the
 [gto deprecate command reference](doc/gto/command-reference/deprecate).
 
 </details>
