@@ -16,9 +16,9 @@ Prerequisites:
   your [remote storage credentials].
 - Access to your [DVC Studio Access token].
 
-Without these prerequisites, you can still [download a model artifact with  DVC], but
-unlike using DVC Studio, the client where you download it will need DVC installed and
-need access to both the Git repository and remote storage. 
+Without these prerequisites, you can still [download a model artifact with DVC],
+but unlike using DVC Studio, the client where you download it will need DVC
+installed and need access to both the Git repository and remote storage.
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [remote storage credentials]:
@@ -39,41 +39,38 @@ which limits the number of remotes they're working with. You can learn more on
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference
 
-### dvc artifacts get
+You can download the files that make up your model directly from DVC Studio.
+Head to the model details page of the model you would like to download and click
+`Access Model`. Here, you find 4 different ways to download your model.
 
-Provides a way to download artifacts tracked in the model registry. Unlike
-`dvc get`, `dvc artifacts get` supports downloading an artifact by name, rather
-than by path. Likewise, dvc artifacts get supports downloading a registered
-artifact version or stage, instead of requiring a specified Git revision.
+<toggle>
+<tab title="CLI (DVC)">
 
-You can learn more on the command reference page for `dvc artifacts get`.
+Use the [dvc artifacts get] command to download an artifact by name. Learn more
+on the command reference page for `dvc artifacts get`.
 
-[dvc get]: /doc/command-reference/get
 [dvc artifacts get]: /doc/command-reference/artifacts/get
 
-### Direct download from DVC Studio
+</tab>
 
-You can download the files that make up your model directly from DVC Studio.
-Before you start, make sure you have connected the correct credentials to the
-project that contains the model you would like to download. Head to the model
-details page of the model you would like to download and click `Access Model`.
+<tab title="cURL / Python">
 
-![Screenshot of access model button on the model details page](/img/mr-access-model.png)
+Directly call the Studio [REST API] from your terminal using `cURL` or in your
+`Python` code.
 
-Click on the `Download` tab. If you have not yet created an access token, please
-do so on this screen.
+</tab>
 
-![Screenshot of access model button on the model details page](/img/mr-generate-access-token.png)
+<tab title="Direct Download">
 
-When you have created the token, you can generate a direct download link for
-your model files.
-
-![Screenshot of access model button on the model details page](/img/mr-generate-download-link.png)
-
-After generation, these download links are valid for 1 hour. You can click the
-link to directly download the file.
+Here you can generate download links for your model files. After generation,
+these download links are valid for 1 hour. You can click the link to directly
+download the file.
 
 ![Screenshot of access model button on the model details page](/img/mr-direct-download.png)
+
+</tab>
+
+</toggle>
 
 ## Deploying and publishing models in CI/CD
 
