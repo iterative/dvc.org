@@ -127,3 +127,24 @@ with dvc.api.open(
 ) as f:
     # f is a file-like object which can be processed normally
 ```
+
+## Artifacts
+
+You can add aliases and metadata for files and directories under the
+<abbr>artifacts</abbr> section of
+[`dvc.yaml`](/doc/user-guide/project-structure/dvcyaml-files#artifacts). This
+can help you organize your artifacts, and you can use `dvc artifacts get` and
+`dvc.api.artifacts_show()` to retrieve them by their alias rather than their
+path.
+
+## Model Registry
+
+Artifacts become more useful as part of the <abbr>model registry</abbr>, where
+semantic versions can be registered and lifecycle stages (think
+`dev`/`test`/`prod`) can be assigned using Git tags managed by [GTO](/doc/gto).
+These tags give you a full history of your model lifecycle in Git and enable you
+to trigger CICD workflows based on changes in the model registry. With
+[DVC Studio](https://studio.iterative.ai), you can see models and their metadata
+across all projects, and you can download artifacts by name, version, and
+lifecycle stage, without needing to configure access to the underlying Git
+repository or remote storage.
