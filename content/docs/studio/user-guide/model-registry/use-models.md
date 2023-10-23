@@ -11,14 +11,21 @@ versions with DVC Studio from the web interface or in your code.
 
 Prerequisites:
 
+- Model stored with DVC with S3 or Azure [remote].
 - The DVC Studio project you like to download your model from needs access to
   your [remote storage credentials].
 - Access to your [DVC Studio Access token].
 
+Without these prerequisites, you can still [download a model artifact with  DVC], but
+unlike using DVC Studio, the client where you download it will need DVC installed and
+need access to both the Git repository and remote storage. 
+
+[remote]: /doc/user-guide/data-management/remote-storage
 [remote storage credentials]:
   /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
 [DVC Studio Access token]:
   /doc/studio/user-guide/account-management#studio-access-token
+[download a model artifact with DVC]: /doc/command-reference/artifacts/get
 
 ### Using DVC Studio API
 
