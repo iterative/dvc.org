@@ -18,7 +18,10 @@ Prerequisites:
 
 Without these prerequisites, you can still [download a model artifact with DVC],
 but unlike using DVC Studio, the client where you download it will need DVC
-installed and need access to both the Git repository and remote storage.
+installed and need access to both the Git repository and remote storage. Thus,
+it can be easier to use the DVC Studio API since you only need to have the
+Studio API token. You do not need direct access to your remote storage, and you
+do not need to install DVC.
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [remote storage credentials]:
@@ -27,23 +30,12 @@ installed and need access to both the Git repository and remote storage.
   /doc/studio/user-guide/account-management#studio-access-token
 [download a model artifact with DVC]: /doc/command-reference/artifacts/get
 
-### Using DVC Studio API
-
-Using the DVC Studio API will require you to add your remote storage secrets to
-respective projects but downloading models can be easier than DVC since you only
-need to have the Studio API token. You do not need direct access to your remote
-storage, and you do not need to install DVC. Studio APIs rely on signing urls,
-which limits the number of remotes they're working with. You can learn more on
-[REST API] pages.
-
-[REST API]: /doc/studio/rest-api
-[Python API]: /doc/api-reference
-
 You can download the files that make up your model directly from DVC Studio.
 Head to the model details page of the model you would like to download and click
 `Access Model`. Here, you find 4 different ways to download your model.
 
 <toggle>
+
 <tab title="CLI (DVC)">
 
 Use the [dvc artifacts get] command to download an artifact by name. Learn more
