@@ -147,6 +147,15 @@ border. Values that are worse than that in the baseline row are marked in pink.
 
 ![Columns menu and goals](https://static.iterative.ai/img/studio/columns_menu_and_goals.gif)
 
+<admon type="info">
+
+To change the baseline row in your project, use the 3-dot menu of the row which
+you want to set as the new baseline.
+
+![Set baseline row](https://static.iterative.ai/img/studio/set-baseline-row)
+
+</admon>
+
 ### Hide commits:
 
 Commits can be hidden from the project table in the following ways:
