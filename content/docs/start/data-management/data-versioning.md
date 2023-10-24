@@ -126,7 +126,7 @@ $ dvc remote add -d myremote %TEMP%\dvcstore
 
 <admon icon="info">
 
-DVC supports many remote [storage types], including Amazon S3, NFS,SSH, Google
+DVC supports many remote [storage types], including Amazon S3, NFS, SSH, Google
 Drive, Azure Blob Storage, and HDFS.
 
 An example for a common use case is configuring an [Amazon S3] remote:
