@@ -53,19 +53,11 @@ should be displayed.
 Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
-metric or param.
-
-<details>
-
-### Sort Commits And Experiments With the DVC Extension for VS Code
-
-While `--sort-by` sorts experiments only, you can sort both experiment and
-commit rows with the
+metric or param. While these options sort experiments only, you can sort both
+experiment and commit rows with the
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 https://youtu.be/Flpu_-D_zDI?si=8G1NgC4n1RqfrIXg
-
-</details>
 
 ### Paginating the output
 
