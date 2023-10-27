@@ -8,31 +8,47 @@ description:
 
 # Get Started: Using and Deploying Models
 
-In this chapter, we will learn how to download and use models and use the model
+In this chapter, we will learn how to access and use models and how to use the model
 registry to trigger automated CICD model workflows.
+
+## Pushing model artifacts to the remote
+
+If you are following along from the [model registry chapter](/doc/start/model-management/model-registry), you have trained a model and registered it to the model registry. However, to start using and sharing the model artifacts we need to push them to our DVC remote.
+
+Provided that you have the [DVC remote set up](/doc/start/data-management/data-versioning#configuring-a-remote), you now just need to call
+
+```console
+dvc push
+```
+
+from our project's git repository. All data and artifacts (such as models) which we created and which are versioned by DVC will now be uploaded from our local DVC cache to the DVC Remote.
+
+<admon type="tip">
+
+To learn about how the DVC Remote works and how to set it up, have a look at the [Get Started guide on Data management](/doc/start/data-management/data-versioning) or the [Remote Storage Guide](/doc/user-guide/data-management/remote-storage) for even more detail.
+
+</admon>
 
 ## Downloading models
 
 It is useful to download model artifacts for example for local testing or for
 use in CICD workflows. With models versioned by DVC this can be done easily by
-using the `dvc get` CLI command as follows
+using the `dvc artifact get` CLI command as follows
 
 ```bash
-dvc get https://<path-to-my-git-forge-account>/example-get-started-experiments models/model.pth --rev v1.0.0
+dvc artifacts get https://<path-to-my-git-forge-account>/example-get-started-experiments.git pool-segmentation
 ```
 
 where you just need to replace `<path-to-my-git-forge-account>` with your
-GitHub/GitLab/Bitbucket account path. This will download the model version
-v1.0.0 to the location from where you are calling the `dvc get` command.
+GitHub/GitLab/Bitbucket account path. This will download the latest version of the `pool-segmentation` model which you are calling the `dvc artifacts get` command from. You can specify a different artifact version or a model registry stage. See the `dvc artifacts get` documentation for all options.
 
-If you're using Studio this is even easier. Go to the Models dashboard, click on
-the three dots next to the name of your model and select "Download model file".
-Then you can select the model version you're interested in and Studio will
-generate the correct call of the `dvc get` command for you. You then just need
-to copy it and run it where you want the model to be downloaded. You can see all
-the steps here:
+If you're using Studio this is even easier. Go to the detailed view of your model, select the desired model version under the "Version info" and then click on the "Access model" button.
 
-![Downloading models](/img/mr-download-model.gif)
+![Access model](/img/mr-studio-access-model.png)
+
+Studio will present you with several ways of downloading models. Click on the "Download" tab to download the model directly from your browser. Once you click on "Generate download links", you will be able to download your model (the link will be valid for 1 hour).
+
+![Download model](/img/mr-studio-download-model.png)
 
 ## Connecting model registry actions to your CICD
 
