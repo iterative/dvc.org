@@ -8,24 +8,34 @@ description:
 
 # Get Started: Using and Deploying Models
 
-In this chapter, we will learn how to access and use models and how to use the model
-registry to trigger automated CICD model workflows.
+In this chapter, we will learn how to access and use models and how to use the
+model registry to trigger automated CICD model workflows.
 
 ## Pushing model artifacts to the remote
 
-If you are following along from the [model registry chapter](/doc/start/model-management/model-registry), you have trained a model and registered it to the model registry. However, to start using and sharing the model artifacts we need to push them to our DVC remote.
+If you are following along from the
+[model registry chapter](/doc/start/model-management/model-registry), you have
+trained a model and registered it to the model registry. However, to start using
+and sharing the model artifacts we need to push them to our DVC remote.
 
-Provided that you have the [DVC remote set up](/doc/start/data-management/data-versioning#configuring-a-remote), you now just need to call
+Provided that you have the
+[DVC remote set up](/doc/start/data-management/data-versioning#configuring-a-remote),
+you now just need to call
 
 ```console
 dvc push
 ```
 
-from our project's git repository. All data and artifacts (such as models) which we created and which are versioned by DVC will now be uploaded from our local DVC cache to the DVC Remote.
+from our project's git repository. All data and artifacts (such as models) which
+we created and which are versioned by DVC will now be uploaded from our local
+DVC cache to the DVC Remote.
 
 <admon type="tip">
 
-To learn about how the DVC Remote works and how to set it up, have a look at the [Get Started guide on Data management](/doc/start/data-management/data-versioning) or the [Remote Storage Guide](/doc/user-guide/data-management/remote-storage) for even more detail.
+To learn about how the DVC Remote works and how to set it up, have a look at the
+[Get Started guide on Data management](/doc/start/data-management/data-versioning)
+or the [Remote Storage Guide](/doc/user-guide/data-management/remote-storage)
+for even more detail.
 
 </admon>
 
@@ -40,13 +50,21 @@ dvc artifacts get https://<path-to-my-git-forge-account>/example-get-started-exp
 ```
 
 where you just need to replace `<path-to-my-git-forge-account>` with your
-GitHub/GitLab/Bitbucket account path. This will download the latest version of the `pool-segmentation` model which you are calling the `dvc artifacts get` command from. You can specify a different artifact version or a model registry stage. See the `dvc artifacts get` documentation for all options.
+GitHub/GitLab/Bitbucket account path. This will download the latest version of
+the `pool-segmentation` model which you are calling the `dvc artifacts get`
+command from. You can specify a different artifact version or a model registry
+stage. See the `dvc artifacts get` documentation for all options.
 
-If you're using Studio this is even easier. Go to the detailed view of your model, select the desired model version under the "Version info" and then click on the "Access model" button.
+If you're using Studio this is even easier. Go to the detailed view of your
+model, select the desired model version under the "Version info" and then click
+on the "Access model" button.
 
 ![Access model](/img/mr-studio-access-model.png)
 
-Studio will present you with several ways of downloading models. Click on the "Download" tab to download the model directly from your browser. Once you click on "Generate download links", you will be able to download your model (the link will be valid for 1 hour).
+Studio will present you with several ways of downloading models. Click on the
+"Download" tab to download the model directly from your browser. Once you click
+on "Generate download links", you will be able to download your model (the link
+will be valid for 1 hour).
 
 ![Download model](/img/mr-studio-download-model.png)
 
