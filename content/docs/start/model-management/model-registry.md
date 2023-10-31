@@ -134,7 +134,7 @@ in Studio to see what it will look like once we finish all
 the steps in this guide.
 
 Now that we have added a model, we should see something like the following
-picture in the Studio Model Registry.
+picture in Studio.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
