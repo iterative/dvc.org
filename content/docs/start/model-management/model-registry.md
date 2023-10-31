@@ -80,7 +80,7 @@ model will show up in the model registry in Studio.
 
 When we call the `log_artifact()` method, DVC takes all the information we
 provided in the call and edits the `dvc.yaml` file which will now contain the
-following lines
+following lines:
 
 ```yaml
 artifacts:
