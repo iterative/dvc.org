@@ -68,7 +68,7 @@ Now we just need to run the python script which includes this code to cache and
 register the model. If you are following our example repository then the
 training script is included in a DVC pipeline
 [we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
-Management guide. so we can just call `dvc exp run` to run the entire experiment
+Management guide, so we can just call `dvc exp run` to run the entire experiment
 pipeline.
 
 We now commit the result to git (and push it to our git remote) and the new
