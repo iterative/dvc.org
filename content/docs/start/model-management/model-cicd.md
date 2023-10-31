@@ -71,8 +71,8 @@ will be valid for 1 hour).
 ## Connecting model registry actions to your CICD
 
 As we [noted](/docs/start/model-management/model-registry#GTO-tip) in the model
-registry chapter, all DVC model registry actions are captured in your git
-repository as git tags with a specific format.
+registry chapter, all DVC model registry actions are captured in your Git
+repository as Git tags with a specific format.
 
 This also means that we can create CICD actions in our git repository which will
 be triggered whenever versions are registered or stages are assigned.
