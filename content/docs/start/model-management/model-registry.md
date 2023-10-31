@@ -60,9 +60,8 @@ with Live(...) as live:
 
 Here the `path` parameter tells DVC that our model is to be found under
 `"models/model.pkl"`, the `type` parameter is `"model"` and so it will show up
-in Studio (other artifact types will not) and the rest of the
-parameters are descriptive and optional and will also show up in the model
-registry.
+in Studio (other artifact types will not) and the rest of the parameters are
+descriptive and optional and will also show up in the model registry.
 
 Now we just need to run the python script which includes this code to cache and
 register the model. If you are following our example repository then the
@@ -124,14 +123,14 @@ manage our model registry. Studio enables you to see models across all projects,
 manage their lifecycle, and download them with only a token. You can find out
 more about it [here](/doc/studio).
 
-From the Models tab we will have an overview of all models, latest model versions
-as well stages each of the model versions is assigned to. We can get more
-details for each model by clicking on the model name.
+From the Models tab we will have an overview of all models, latest model
+versions as well stages each of the model versions is assigned to. We can get
+more details for each model by clicking on the model name.
 
 You can check out our
 [example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)
-in Studio to see what it will look like once we finish all
-the steps in this guide.
+in Studio to see what it will look like once we finish all the steps in this
+guide.
 
 Now that we have added a model, we should see something like the following
 picture in Studio.
