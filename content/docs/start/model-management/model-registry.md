@@ -60,7 +60,7 @@ with Live(...) as live:
 
 Here the `path` parameter tells DVC that our model is to be found under
 `"models/model.pkl"`, the `type` parameter is `"model"` and so it will show up
-in the Studio registry (other artifact types will not) and the rest of the
+in Studio (other artifact types will not) and the rest of the
 parameters are descriptive and optional and will also show up in the model
 registry.
 
