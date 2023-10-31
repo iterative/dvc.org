@@ -27,7 +27,7 @@ You can fork our
 and follow the
 [installation steps](https://github.com/iterative/example-get-started-experiments#installation)
 to set it up locally. To perform the model registry actions in this guide, sign
-up to Studio, connect Studio to your Git Repository and add the forked project
+up to Studio, connect Studio to your GitHub account and add the forked project
 using
 [this guide](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project).
 
