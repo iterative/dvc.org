@@ -11,7 +11,7 @@ class Live:
         resume: bool = False,
         report: Optional[str] = None,
         save_dvc_exp: bool = True,
-        dvcyaml: bool = True,
+        dvcyaml: Union[str, bool] = "dvc.yaml",
         exp_message: Optional[str] = None,
     ):
 ```
@@ -78,10 +78,11 @@ You can use `Live()` as a context manager. When exiting the context manager,
   If you are using DVCLive inside a <abbr>DVC Pipeline</abbr> and running with
   `dvc exp run`, the option will be ignored.
 
-- `dvcyaml` - If `True` (default), DVCLive will write
+- `dvcyaml` - Where to write `dvc.yaml` file, which adds
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
-  metrics, plots, and parameters to `dvc.yaml` (at the root of the repository)
-  as part of `Live.next_step()` and `Live.end()`. See `Live.make_dvcyaml()`.
+  metrics, plots, and parameters as part of `Live.next_step()` and `Live.end()`.
+  If `None`, no `dvc.yaml` file is written. Defaults to `dvc.yaml`. See
+  `Live.make_dvcyaml()`.
 
   If a string like `subdir/dvc.yaml`, DVCLive will write the configuration to
   that path (file must be named `dvc.yaml`).
