@@ -75,7 +75,7 @@ registry chapter, all DVC model registry actions are captured in your git
 repository as git tags with a specific format.
 
 This also means that we can create CICD actions in our git repository which will
-be triggered whenever.
+be triggered whenever versions are registered or stages are assigned.
 
 In the following, we will have a look at an example CICD workflow on GitHub
 which runs whenever we assign a version of our model to the "test" stage in the
