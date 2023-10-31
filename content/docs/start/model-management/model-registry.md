@@ -130,7 +130,7 @@ details for each model by clicking on the model name.
 
 You can check out our
 [example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)
-in the Studio model registry to see what it will look like once we finish all
+in Studio to see what it will look like once we finish all
 the steps in this guide.
 
 Now that we have added a model, we should see something like the following
