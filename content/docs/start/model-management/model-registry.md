@@ -1,7 +1,7 @@
 ---
 title: 'Get Started: Model registry'
 description:
-  'Set up a git-based model registry with DVC to track and manage models, their
+  'Set up a Git-based model registry with DVC to track and manage models, their
   versions and lifecycle stages.'
 ---
 
