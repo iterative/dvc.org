@@ -71,7 +71,7 @@ training script is included in a DVC pipeline
 Management guide, so we can just call `dvc exp run` to run the entire experiment
 pipeline.
 
-We now commit the result to git (and push it to our git remote) and the new
+We now commit the result to Git (and push it to our Git remote) and the new
 model will show up in the model registry in Studio.
 
 <details id="push-click-to-see-how-artifacts-are-registered">
