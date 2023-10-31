@@ -26,8 +26,7 @@ $ brew install dvc
 
 ## Install from package
 
-Get the PKG (binary) from the big "Download" button on the [home page](/), or
-from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
+Get the PKG (binary) from the big "Download" button on the [home page](/).
 
 > Note that currently, in order to open the PKG file, you must go to the
 > **Downloads** directory in Finder and do a

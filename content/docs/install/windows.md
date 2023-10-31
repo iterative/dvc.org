@@ -102,9 +102,7 @@ In this case it installs the `boto3` library along with DVC.
 ## Windows installer
 
 A quick way is to use the self-contained, executable installer (binary), which
-is available from the big "Download" button on the [home page](/). You can also
-get it from the [release page](https://github.com/iterative/dvc/releases/) on
-GitHub.
+is available from the big "Download" button on the [home page](/).
 
 You'll need to download and run the installer again each time you want to update
 DVC. You may use Windows Uninstaller to
