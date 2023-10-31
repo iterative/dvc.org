@@ -731,8 +731,7 @@ stages:
 You can reference each variable in your stage definition using the `item`
 dictionary key. In the above example, you can access `item.model` and
 `item.feature`. Moreover, `matrix` exposes a `key` value, which combines the
-current `item` values into one expression (equal to the current stage name after
-the `@` – see example below).
+current `item` values into one expression (see example below).
 
 On `dvc repro`, dvc will expand the definition to multiple stages for each
 possible combination of the variables. In the above example, dvc will create six
