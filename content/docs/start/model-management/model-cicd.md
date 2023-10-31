@@ -43,7 +43,7 @@ for even more detail.
 
 It is useful to download model artifacts for example for local testing or for
 use in CICD workflows. With models versioned by DVC this can be done easily by
-using the `dvc artifact get` CLI command as follows
+using the `dvc artifacts get` CLI command as follows
 
 ```bash
 dvc artifacts get https://<path-to-my-git-forge-account>/example-get-started-experiments.git pool-segmentation
