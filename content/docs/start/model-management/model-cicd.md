@@ -84,7 +84,7 @@ actually set up a deployment environment (so that you can test it easier) but it
 does include all the ingredients needed in an actual deployment job or any other
 CICD action.
 
-<admon type="tip>
+<admon type="tip">
 
 To see a real-world model deployment example you can check out a
 [similar workflow in our example repository](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
