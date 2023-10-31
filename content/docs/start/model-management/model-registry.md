@@ -247,7 +247,7 @@ We will assign the model version to the "prod" stage just like we did with the
 "dev" stage in the previous section. When we assing the model to a stage, it can
 automatically trigger actions in our CICD workflows, like deploying the model to
 a new environment (we will explore how this is done in the [Using and Deploying
-models] (doc/start/model-management/model-cicd) chapter).
+models] (/doc/start/model-management/model-cicd) chapter).
 
 Let's say that after some additional experimentation, we've improved our model
 and we would like to register a new version and assign it to the "dev" stage
