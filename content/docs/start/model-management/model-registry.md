@@ -96,7 +96,7 @@ artifacts:
       - satellite-images
 ```
 
-When you push the resulting file to your git remote it is parsed by Studio and
+When you push the resulting file to your Git remote it is parsed by Studio and
 it then shows all model artifacts from your `dvc.yaml` files in the model
 registry.
 
