@@ -122,7 +122,7 @@ at the
 In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
 manage our model registry. Studio enables you to see models across all projects,
 manage their lifecycle, and download them with only a token. You can find out
-more about it [here](/doc/studio). have access to.
+more about it [here](/doc/studio).
 
 From the dashboard we will have an overview of all models, latest model versions
 as well stages each of the model versions is assigned to. We can get more
