@@ -26,7 +26,7 @@ you now just need to call
 dvc push
 ```
 
-from our project's git repository. All data and artifacts (such as models) which
+from our project's Git repository. All data and artifacts (such as models) which
 we created and which are versioned by DVC will now be uploaded from our local
 DVC cache to the DVC Remote.
 
