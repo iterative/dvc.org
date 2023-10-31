@@ -15,7 +15,7 @@ models and which will serve as the single source of truth for our model
 management.
 
 You can also set up the model registry locally without Studio, using a command
-line tool called [Git Tag Ops (GTO)](<(/doc/gto)>). We will see how this is done
+line tool called [GTO](<(/doc/gto)>). We will see how this is done
 [later in this chapter](#GTO-tip).
 
 <details id="follow-along-instructions">
