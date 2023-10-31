@@ -179,7 +179,7 @@ you can explore the "under the hood" expandable content in this guide!
 #### 💡 Expand to see how the model registry works under the hood
 
 When you register model versions, assign or remove stages or deprecate models,
-GTO assign [particularly formatted](/doc/gto/user-guide#git-tags-format) git
+GTO assigns [particularly formatted](/doc/gto/user-guide#git-tags-format) git
 [tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
 and these are then parsed by the model registry to keep track of the model
 lifecycle history.
