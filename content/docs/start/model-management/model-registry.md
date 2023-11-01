@@ -107,8 +107,7 @@ our example repository then this has already been done and we can continue to
 the next section.
 
 If you are building your own repository, you will need to run the script and
-push the result to your Git remote (GitHub) yourself. You can use `dvc exp run`
-to run the experiment pipeline which includes the training script. This is
+push the result to your Git remote (GitHub) yourself. This is
 covered in detail in our
 [Experiment Management guide](/doc/start/experiments/experiment-pipelines).
 
@@ -144,7 +143,7 @@ in DVC Studio to see what it will look like once we finish all the steps in this
 guide.
 
 Now that we have added a model, you should see something like the following
-picture in DVC Studio.
+picture in DVC Studio if you go to the Models tab and then select the `pool-segmentation` model.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
@@ -233,7 +232,7 @@ how this is done in the
 #### 💡 Expand to see how assigning model stages works under the hood
 
 Assigning the "dev" stage to the model as we just did using DVC Studio is
-equivalent to the following GTO command
+equivalent to the following GTO command.
 
 ```
 gto assign pool-segmentation --version v1.0.0 --stage dev
@@ -254,14 +253,14 @@ previous section.
 Now, to remove the "dev" stage from our model version 1.0.0 and it assigned only
 to "prod", follow these steps:
 
-![Un-assigning model stages](/img/placeholder-cat.gif)
+![Un-assigning model stages](/img/mr-unassign-model-stage.gif)
 
 It is also possible to de-register model versions or deprecate and remove models
 from the registry entirely. To see how, have a look at the
 [documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
 
 The detailed view of our model in the registry should now match what we see
-[in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)>).
+[in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)>).
 
 <details id="under-the-hood-removing-stages">
 
