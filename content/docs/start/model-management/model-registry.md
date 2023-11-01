@@ -14,16 +14,21 @@ up a model registry where we can discover, share, deploy and audit all our
 models and which will serve as the single source of truth for our model
 management.
 
-You can also set up the model registry locally without Studio, using a command
-line tool called [GTO](<(/doc/gto)>). We will see how this is done
-[later in this chapter](#GTO-tip).
+<admon type="tip" id="GTO-tip">
+
+Behind the scenes, Studio uses a command line tool called [GTO](<(/doc/gto)>)
+for most model registry actions.
+
+With GTO you can also set up the model registry locally without Studio (although some functionality is exclusive to Studio).
+You can see how this is done in expandable "Under the hood" sections which can be found throughout this chapter.
+
+</admon>
 
 <details id="follow-along-instructions">
 
 #### 💡 Expand to see how to set things up to follow along with the guide
 
-You can fork our
-[example repository](https://github.com/iterative/example-get-started-experiments)
+You can [fork our example repository](https://github.com/iterative/example-get-started-experiments/fork)
 and follow the
 [installation steps](https://github.com/iterative/example-get-started-experiments#installation)
 to set it up locally. To perform the model registry actions in this guide, sign
@@ -63,22 +68,12 @@ Here the `path` parameter tells DVC that our model is to be found under
 in Studio (other artifact types will not) and the rest of the parameters are
 descriptive and optional and will also show up in the model registry.
 
-Now we just need to run the python script which includes this code to cache and
-register the model. If you are following our example repository then the
-training script is included in a DVC pipeline
-[we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
-Management guide, so we can just call `dvc exp run` to run the entire experiment
-pipeline.
-
-We now commit the result to Git (and push it to our Git remote) and the new
-model will show up in the model registry in Studio.
-
 <details id="push-click-to-see-how-artifacts-are-registered">
 
 #### 💡 Expand to see how adding models to the registry works under the hood
 
 When we call the `log_artifact()` method, DVC takes all the information we
-provided in the call and edits the `dvc.yaml` file which will now contain the
+provide in the call and edits the `dvc.yaml` file which will now contain the
 following lines:
 
 ```yaml
@@ -100,6 +95,16 @@ it then shows all model artifacts from your `dvc.yaml` files in the model
 registry.
 
 </details>
+
+Now we just need to run the python script which includes this code to cache and
+register the model. If you are following our example repository then the
+training script is included in a DVC pipeline
+[we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
+Management guide, so we can just call `dvc exp run` to run the entire experiment
+pipeline.
+
+We now commit the result to Git (and push it to our Git remote) and the new
+model will show up in the model registry in Studio.
 
 To get acquainted with how DVC stores and shares data, see our
 [Get Started guide on Data Versioning](/doc/start/data-management/data-versioning).
@@ -162,17 +167,6 @@ tracked for each model version will also show up in the model registry. We can
 even explore the experiment directly by clicking on the "Open in Project" button
 on the model detail page.
 
-<admon type="tip" id="GTO-tip">
-
-The DVC Model registry uses the [GTO library](/doc/gto) to manage model versions
-and model lifecycle stages by particularly formatted Git tags. GTO (Git Tag Ops)
-is a tool for creating an artifact registry in your Git repository.
-
-To see how it all works and how you can use GTO directly without the Studio UI,
-you can explore the "under the hood" expandable content in this guide!
-
-</admon>
-
 <details id="under-the-hood-model-registry">
 
 #### 💡 Expand to see how the model registry works under the hood
@@ -216,7 +210,7 @@ For more details you can have a look at the
 We have a first version for our model and now it is a good time to assign a
 model lifecycle stage to it. You can create any number of lifecycle stages with
 any names you wish but in this example we will only create two stages called
-"dev" and "test".
+"dev" and "prod".
 
 Stages are created whenever a model version is assigned to them. We will now
 assign our model to the "dev" stage as follows.
@@ -248,23 +242,18 @@ automatically trigger actions in our CICD workflows, like deploying the model to
 a new environment (we will explore how this is done in the [Using and Deploying
 models] (/doc/start/model-management/model-cicd) chapter).
 
-Let's say that after some additional experimentation, we've improved our model
-and we would like to register a new version and assign it to the "dev" stage
-instead of our current version 1.0.0. You can change some parameters We would do
-this just like before, registering the new commit as model version 1.1.0 and
-assigning it to the "dev" stage in Studio. This will also automatically replace
-the assignment onf version 1.0.0 to the "dev" stage by version 1.1.0. Since the
-steps we would take are the same as before, we omit this in our example
-repository but you can try it out yourself.
-
 The detailed view of our model in the registry should now match what we see
 [in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)>).
 
-It is also possible to remove stage assignments manually, de-register model
-versions or deprecate and remove models from the registry entirely. We will not
-do that in this guide, but
-[here](user-guide/model-registry/remove-a-model-or-its-details) you can have a
-look at how to do that.
+It is also possible to remove stage assignments, de-register model
+versions or deprecate and remove models from the registry entirely.
+
+We will un-assign the "dev" stage from our model version 1.0.0 now:
+
+![Un-assigning model stages](/img/placeholder-cat.gif)
+
+To see how you can de-register model versions and deprecate models,
+have a look at the [documentation](user-guide/model-registry/remove-a-model-or-its-details).
 
 <details id="under-the-hood-removing-stages">
 
