@@ -49,8 +49,8 @@ using the `dvc artifacts get` CLI command as follows
 dvc artifacts get https://github.com/<user>/example-get-started-experiments.git pool-segmentation
 ```
 
-where you just need to replace `<path-to-my-git-forge-account>` with your
-GitHub/GitLab/Bitbucket account path. This will download the latest version of
+where you just need to replace `<user>` with your
+GitHub user. This will download the latest version of
 the `pool-segmentation` model which you are calling the `dvc artifacts get`
 command from. You can specify a different artifact version or a model registry
 stage. See the `dvc artifacts get` documentation for all options.
