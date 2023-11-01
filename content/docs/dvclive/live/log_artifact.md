@@ -44,11 +44,10 @@ If `cache=True` (which is the default), uses `dvc add` to [track] `path` with
 DVC, saving it to the DVC <abbr>cache</abbr> and generating a `{path}.dvc` file
 that acts as a pointer to the cached data.
 
-If `Live` was initialized with `dvcyaml=True` (which is the default) and you
-include any of the optional metadata fields (`type`, `name`, `desc`, `labels`,
-`meta`), it will add an <abbr>artifact</abbr> and all the metadata passed as
-arguments to the corresponding `dvc.yaml`. Passing `type="model"` will include
-it in the <abbr>model registry</abbr>.
+If you include any of the optional metadata fields (`type`, `name`, `desc`,
+`labels`, `meta`), it will add an <abbr>artifact</abbr> and all the metadata
+passed as arguments to the corresponding `dvc.yaml` (unless `dvcyaml=None`).
+Passing `type="model"` will include it in the <abbr>model registry</abbr>.
 
 ## Parameters
 
