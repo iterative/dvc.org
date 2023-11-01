@@ -19,8 +19,9 @@ management.
 Behind the scenes, Studio uses a command line tool called [GTO](<(/doc/gto)>)
 for most model registry actions.
 
-With GTO you can also set up the model registry locally without Studio (although some functionality is exclusive to Studio).
-You can see how this is done in expandable "Under the hood" sections which can be found throughout this chapter.
+With GTO you can also set up the model registry locally without Studio (although
+some functionality is exclusive to Studio). You can see how this is done in
+expandable "Under the hood" sections which can be found throughout this chapter.
 
 </admon>
 
@@ -28,7 +29,8 @@ You can see how this is done in expandable "Under the hood" sections which can b
 
 #### 💡 Expand to see how to set things up to follow along with the guide
 
-You can [fork our example repository](https://github.com/iterative/example-get-started-experiments/fork)
+You can
+[fork our example repository](https://github.com/iterative/example-get-started-experiments/fork)
 and follow the
 [installation steps](https://github.com/iterative/example-get-started-experiments#installation)
 to set it up locally. To perform the model registry actions in this guide, sign
@@ -245,15 +247,16 @@ models] (/doc/start/model-management/model-cicd) chapter).
 The detailed view of our model in the registry should now match what we see
 [in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v0.1.0)>).
 
-It is also possible to remove stage assignments, de-register model
-versions or deprecate and remove models from the registry entirely.
+It is also possible to remove stage assignments, de-register model versions or
+deprecate and remove models from the registry entirely.
 
 We will un-assign the "dev" stage from our model version 1.0.0 now:
 
 ![Un-assigning model stages](/img/placeholder-cat.gif)
 
-To see how you can de-register model versions and deprecate models,
-have a look at the [documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
+To see how you can de-register model versions and deprecate models, have a look
+at the
+[documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
 
 <details id="under-the-hood-removing-stages">
 
