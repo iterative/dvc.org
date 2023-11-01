@@ -233,7 +233,8 @@ assign the model version 1.0.0 to the "dev" stage as follows.
 
 When we assing the model to a stage, it can automatically trigger actions in our
 CICD workflows, like deploying the model to a new environment (we will explore
-how this is done in the [Using and Deploying models](/doc/start/model-management/model-cicd) chapter).
+how this is done in the
+[Using and Deploying models](/doc/start/model-management/model-cicd) chapter).
 
 <details id="under-the-hood-assigning-model-stages">
 
