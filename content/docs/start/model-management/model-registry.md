@@ -103,9 +103,14 @@ registry.
 Now we just need to run the Python script which includes this code to cache and
 register the model. If you are
 [following](/docs/start/model-management/model-registry#follow-along-instructions)
-our example repository then this has already been done and we can continue to the next section.
+our example repository then this has already been done and we can continue to
+the next section.
 
-If you are building your own repository, you will need to run the script and push the result to your Git remote (GitHub) yourself. You can use `dvc exp run` to run the experiment pipeline which includes the training script. This is covered in detail in our [Experiment Management guide](/doc/start/experiments/experiment-pipelines).
+If you are building your own repository, you will need to run the script and
+push the result to your Git remote (GitHub) yourself. You can use `dvc exp run`
+to run the experiment pipeline which includes the training script. This is
+covered in detail in our
+[Experiment Management guide](/doc/start/experiments/experiment-pipelines).
 
 For a general introduction of how DVC stores and shares data, see our
 [Get Started guide on Data Versioning](/doc/start/data-management/data-versioning).
