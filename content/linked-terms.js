@@ -30,5 +30,21 @@ module.exports = [
   {
     matches: 'dvc ls',
     url: '/doc/command-reference/list'
+  },
+  {
+    matches: 'dvc mv',
+    url: '/doc/command-reference/move'
+  },
+  {
+    matches: 'dvc rm',
+    url: '/doc/command-reference/remove'
+  },
+  {
+    matches: 'dvc exp ls',
+    url: '/doc/command-reference/exp/list'
+  },
+  {
+    matches: 'dvc exp rm',
+    url: '/doc/command-reference/exp/remove'
   }
 ]

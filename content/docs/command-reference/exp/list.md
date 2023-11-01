@@ -1,6 +1,6 @@
 # exp list
 
-> Aliased to `dvc ls`.
+> Aliased to `dvc exp ls`.
 
 List experiments in a <abbr>DVC repository</abbr> (remote or local).
 
