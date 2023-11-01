@@ -48,8 +48,8 @@ This command will also try to `dvc push` all <abbr>cached</abbr> data associated
 with the experiments to [remote storage], unless `--no-cache` is used.
 
 If `studio.token` config or `DVC_STUDIO_TOKEN` environment variable is set, DVC
-will notify Studio about new experiments, and display a Studio project URL to
-view experiments.
+will notify DVC Studio about new experiments, and display a DVC Studio project
+URL to view experiments.
 [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
 or check
 [this guide on how to create an access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).

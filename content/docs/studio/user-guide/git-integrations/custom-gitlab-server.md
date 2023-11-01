@@ -53,7 +53,7 @@ available to all DVC Studio teams (free and paid).
 ## My GitLab server is behind a firewall. What should I do?
 
 Firstly, the GitLab server must be exposed to the internet to enable remote
-access from the Studio. You can limit the traffic on the firewall to the server
+access from DVC Studio. You can limit the traffic on the firewall to the server
 to allow access from our IP addresses only, which are:
 
 ```

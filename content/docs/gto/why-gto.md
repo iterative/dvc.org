@@ -73,4 +73,4 @@ There are few limitations to the GTO approach to building an Artifact Registry:
   engineers, although for less technical folks a Visual UI may be required.
 
 If you hit the last two limitations, you may find
-[Studio](https://dvc.org/doc/studio) useful.
+[DVC Studio](https://dvc.org/doc/studio) useful.

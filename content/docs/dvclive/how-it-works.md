@@ -100,7 +100,7 @@ make Git ignore it. It will generate a `model.pt.dvc` metadata file, which can
 be tracked in Git and becomes part of the experiment. With this metadata file,
 you can [retrieve](/doc/start/data-management/data-versioning#retrieving) the
 versioned artifact from the Git commit. You can also use
-`Live.log_artifact("model.pt", type="model")` to add it to the [Studio Model
+`Live.log_artifact("model.pt", type="model")` to add it to the [DVC Studio Model
 Registry].
 
 Using `Live.log_image()` to log multiple images may also grow too large to track

@@ -14,10 +14,10 @@ def artifacts_show(
 
 <admon type="tip">
 
-If you have a Studio project configured with your [remote storage credentials],
-you may also use the Studio [REST API] to programmatically access artifacts. It
-does not require the client to have any credentials other than the Studio
-[access token] and does not require DVC to be installed.
+If you have a DVC Studio project configured with your [remote storage
+credentials], you may also use the DVC Studio [REST API] to programmatically
+access artifacts. It does not require the client to have any credentials other
+than the DVC Studio [access token] and does not require DVC to be installed.
 
 </admon>
 
