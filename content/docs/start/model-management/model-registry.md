@@ -107,8 +107,8 @@ our example repository then this has already been done and we can continue to
 the next section.
 
 If you are building your own repository, you will need to run the script and
-push the result to your Git remote (GitHub) yourself. This is
-covered in detail in our
+push the result to your Git remote (GitHub) yourself. This is covered in detail
+in our
 [Experiment Management guide](/doc/start/experiments/experiment-pipelines).
 
 For a general introduction of how DVC stores and shares data, see our
@@ -143,7 +143,8 @@ in DVC Studio to see what it will look like once we finish all the steps in this
 guide.
 
 Now that we have added a model, you should see something like the following
-picture in DVC Studio if you go to the Models tab and then select the `pool-segmentation` model.
+picture in DVC Studio if you go to the Models tab and then select the
+`pool-segmentation` model.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
