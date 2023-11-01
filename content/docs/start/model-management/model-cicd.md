@@ -8,9 +8,18 @@ description:
 
 # Get Started: Using and Deploying Models
 
-In the [model registry chapter](/doc/start/model-management/model-registry) we registered the model in the model registry and assigned it to some lifecycle stages. In this chapter, we will learn how to access and use models and how to use the model registry to trigger automated CICD model workflows.
+In the [model registry chapter](/doc/start/model-management/model-registry) we
+registered the model in the model registry and assigned it to some lifecycle
+stages. In this chapter, we will learn how to access and use models and how to
+use the model registry to trigger automated CICD model workflows.
 
-If you are using the example repository, the models are already versioned on a publicly readable DVC remote so you can access the model from there and use it. If you are instead using your own repository you need to set up your own DVC remote and push the data (including models) there. Have a look at our [Data management guide]((/doc/start/data-management/data-versioning#configuring-a-remote) to se how this is done.
+If you are using the example repository, the models are already versioned on a
+publicly readable DVC remote so you can access the model from there and use it.
+If you are instead using your own repository you need to set up your own DVC
+remote and push the data (including models) there. Have a look at our [Data
+management
+guide]((/doc/start/data-management/data-versioning#configuring-a-remote) to se
+how this is done.
 
 ## Downloading models
 
@@ -18,13 +27,15 @@ It is useful to download model artifacts for example for local testing or for
 use in CICD workflows. With models versioned by DVC this can be done easily by
 using the Studio UI.
 
-Go to the detailed view of your
-model, select the desired model version under the "Version info" and then click
-on the "Access model" button.
+Go to the detailed view of your model, select the desired model version under
+the "Version info" and then click on the "Access model" button.
 
 Studio will present you with several ways of downloading models. Click on the
-"Download" tab to download the model directly from your browser. If you haven't done that yet, click on "Generate new token" to generate a DVC Studio token used to access the model on a DVC Remote. Finally, click
-on "Generate download links" and you will be able to download the model (the link will be valid for 1 hour). You can see all the steps here:
+"Download" tab to download the model directly from your browser. If you haven't
+done that yet, click on "Generate new token" to generate a DVC Studio token used
+to access the model on a DVC Remote. Finally, click on "Generate download links"
+and you will be able to download the model (the link will be valid for 1 hour).
+You can see all the steps here:
 
 ![Download model](/img/mr-studio-download-model.gif)
 
@@ -34,10 +45,11 @@ Alternatively, you can also download the model with the following CLI command:
 dvc artifacts get https://github.com/<user>/example-get-started-experiments.git pool-segmentation
 ```
 
-where you just need to replace `<user>` with your
-GitHub user. This will download the latest version of
-the `pool-segmentation` model from the DVC Remote associated with the Git repository in the URL. You can also specify a different artifact version or a model registry
-stage. See the `dvc artifacts get` documentation for all options.
+where you just need to replace `<user>` with your GitHub user. This will
+download the latest version of the `pool-segmentation` model from the DVC Remote
+associated with the Git repository in the URL. You can also specify a different
+artifact version or a model registry stage. See the `dvc artifacts get`
+documentation for all options.
 
 ## Connecting model registry actions to your CICD
 
@@ -111,15 +123,15 @@ parse:
 
 <admon type="tip">
 
-If you cannot or don't want to use the GTO GitHub Action you can also use GTO directly with the <abbr>check-ref</abbr> command.
+If you cannot or don't want to use the GTO GitHub Action you can also use GTO
+directly with the <abbr>check-ref</abbr> command.
 
 </admon>
 
-The next job called "deploy-model" actually performs the action. First,
-it uses the outputs of the parse job and checks whether the action should be
-performed. If the tag was produced by the model registry and if the
-corresponding action was assignment to the "prod" stage, it proceeds with the
-rest of the workflow.
+The next job called "deploy-model" actually performs the action. First, it uses
+the outputs of the parse job and checks whether the action should be performed.
+If the tag was produced by the model registry and if the corresponding action
+was assignment to the "prod" stage, it proceeds with the rest of the workflow.
 
 ```yaml
 test-model-artifact:
@@ -129,20 +141,28 @@ test-model-artifact:
     needs.parse.outputs.stage == 'prod' }}"
 ```
 
-The next two steps step of the workflow checkout the git repository and set up DVC (using a GitHub Action, but this can also be done manually, for example with pip). 
+The next two steps step of the workflow checkout the git repository and set up
+DVC (using a GitHub Action, but this can also be done manually, for example with
+pip).
 
-This allows us to run `dvc artifacts get` in the last step of the workflow to download the correct version of the model which can then be deployed or otherwise used in our CICD.
-
+This allows us to run `dvc artifacts get` in the last step of the workflow to
+download the correct version of the model which can then be deployed or
+otherwise used in our CICD.
 
 ```yaml
-    - name: Get Model For Deployment
-      run: |
-        dvc artifacts get ${{ github.repositoryUrl }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
+- name: Get Model For Deployment
+  run: |
+    dvc artifacts get ${{ github.repositoryUrl }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
 ```
 
-Here, we are using the outputs of the `parse` job to specify the correct model version. Finally, [`github.repositoryUrl`](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) is a default environmental variable in GitHub which contains the URL of the current repository.
+Here, we are using the outputs of the `parse` job to specify the correct model
+version. Finally,
+[`github.repositoryUrl`](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
+is a default environmental variable in GitHub which contains the URL of the
+current repository.
 
-You can use the following template to create your own Model Registry CICD actions on GitHub!
+You can use the following template to create your own Model Registry CICD
+actions on GitHub!
 
 ```yaml
 name: Template CICD Action for DVC Model Registry
