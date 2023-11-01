@@ -201,7 +201,7 @@ gto register pool-segmentation [ref] --version v1.0.0
 Here, `[ref]` is the git reference/hash we selected from the menu in Studio.
 
 For more details you can have a look at the
-[gto register command reference](doc/gto/command-reference/register).
+[gto register command reference](/doc/gto/command-reference/register).
 
 </details>
 
@@ -229,7 +229,7 @@ gto assign pool-segmentation --version v1.0.0 --stage dev
 ```
 
 For more details you can have a look at the
-[gto assign command reference](doc/gto/command-reference/assign).
+[gto assign command reference](/doc/gto/command-reference/assign).
 
 </details>
 
@@ -253,7 +253,7 @@ We will un-assign the "dev" stage from our model version 1.0.0 now:
 ![Un-assigning model stages](/img/placeholder-cat.gif)
 
 To see how you can de-register model versions and deprecate models,
-have a look at the [documentation](user-guide/model-registry/remove-a-model-or-its-details).
+have a look at the [documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
 
 <details id="under-the-hood-removing-stages">
 
@@ -262,7 +262,7 @@ have a look at the [documentation](user-guide/model-registry/remove-a-model-or-i
 Whenever we un-assign stages, de-register model versions and deprecate models,
 Studio uses the GTO library under the hood. It is also possible to use GTO
 manually to perform these actions. To see how, have a look at the
-[gto deprecate command reference](doc/gto/command-reference/deprecate).
+[gto deprecate command reference](/doc/gto/command-reference/deprecate).
 
 </details>
 
