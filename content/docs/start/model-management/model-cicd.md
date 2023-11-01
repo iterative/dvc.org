@@ -57,7 +57,7 @@ As we [noted](/docs/start/model-management/model-registry#GTO-tip) in the model
 registry chapter, all DVC model registry actions are captured in your Git
 repository as Git tags with a specific format.
 
-This also means that we can create CICD actions in our git repository which will
+This also means that we can create CICD actions in our Git repository which will
 be triggered whenever versions are registered or stages are assigned.
 
 In the following, we will have a look at an example CICD workflow on GitHub
@@ -141,7 +141,7 @@ deploy-model:
     needs.parse.outputs.stage == 'prod' }}"
 ```
 
-The next two steps step of the workflow checkout the git repository and set up
+The next two steps step of the workflow checkout the Git repository and set up
 DVC (using a GitHub Action, but this can also be done manually, for example with
 pip).
 
