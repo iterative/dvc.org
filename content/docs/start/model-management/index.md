@@ -24,14 +24,13 @@ description:
 
 <admon type="tip">
 
-These are captured in our [example-get-started-experiments] repo (see its
-[tags][example-get-started-experiments-tags]). You should start the Model
-Managment guide from the tag called `2-dvc-pipeline`
+These are captured in our [example-get-started-experiments] repo
+(you can [fork it][example-get-started-experiments-fork] to follow along).
 
 [example-get-started-experiments]:
   https://github.com/iterative/example-get-started-experiments
-[example-get-started-experiments-tags]:
-  https://github.com/iterative/example-get-started-experiments/tags
+[example-get-started-experiments-fork]:
+  https://github.com/iterative/example-get-started-experiments/fork
 
 </admon>
 
