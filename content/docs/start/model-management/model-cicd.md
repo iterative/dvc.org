@@ -124,7 +124,7 @@ parse:
 <admon type="tip">
 
 If you cannot or don't want to use the GTO GitHub Action you can also use GTO
-directly with the <abbr>check-ref</abbr> command.
+directly with the [gto check-ref](/doc/gto/command-reference/check-ref) command.
 
 </admon>
 
@@ -134,7 +134,7 @@ If the tag was produced by the model registry and if the corresponding action
 was assignment to the "prod" stage, it proceeds with the rest of the workflow.
 
 ```yaml
-test-model-artifact:
+deploy-model:
   needs: parse
   if:
     "${{ needs.parse.outputs.event == 'assignment' }} && ${{
