@@ -69,8 +69,8 @@ with Live(...) as live:
 
 Here the `path` parameter tells DVC that our model is to be found under
 `"models/model.pkl"`, the `type` parameter is `"model"` and so it will show up
-in DVC Studio (other artifact types will not) and the rest of the parameters are
-descriptive and optional and will also show up in the model registry.
+in DVC Studio (other artifact types will not). The rest of the parameters are
+descriptive and optional and will also show up in DVC Studio.
 
 <details id="push-click-to-see-how-artifacts-are-registered">
 
@@ -100,7 +100,7 @@ registry.
 
 </details>
 
-Now we just need to run the python script which includes this code to cache and
+Now we just need to run the Python script which includes this code to cache and
 register the model. If you are
 [following](/docs/start/model-management/model-registry#follow-along-instructions)
 our example repository then the training script is included in a DVC pipeline
@@ -160,6 +160,26 @@ You can also see the
 [state of the project at this point](https://github.com/iterative/example-get-started-experiments/releases/tag/2-dvc-pipeline)
 captured in our example repository.
 
+<details id="under-the-hood-model-registry">
+
+#### 💡 Expand to see how the model registry works under the hood
+
+When you register model versions, assign or remove stages or deprecate models,
+GTO assigns [particularly formatted](/doc/gto/user-guide#git-tags-format) Git
+[tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
+and these are then parsed by the model registry to keep track of the model
+lifecycle history.
+
+This means that all the metadata used by the model registry is actually stored
+in your Git repository!
+
+It also allows you to use GTO directly instead of the DVC Studio UI to manage
+your model lifecycle. That can be useful for example if you want to trigger
+certain model registry actions programmatically. You can learn more about the
+details of GTO in its [documentation](/docs/gto).
+
+</details>
+
 ## Versioning models
 
 Now that we have our first model in the model registry, we can start registering
@@ -181,26 +201,6 @@ Once we register our first model version, DVC Studio will also automatically
 connect it to experiment tracking and all metrics which are tracked there will
 also show up in the model registry for each model version.
 
-<details id="under-the-hood-model-registry">
-
-#### 💡 Expand to see how the model registry works under the hood
-
-When you register model versions, assign or remove stages or deprecate models,
-GTO assigns [particularly formatted](/doc/gto/user-guide#git-tags-format) git
-[tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
-and these are then parsed by the model registry to keep track of the model
-lifecycle history.
-
-This means that all the metadata used by the model registry is actually stored
-in your Git repository!
-
-It also allows you to use GTO directly instead of the DVC Studio UI to manage
-your model lifecycle. That can be useful for example if you want to trigger
-certain model registry actions programmatically. You can learn more about the
-details of GTO in its [documentation](/docs/gto).
-
-</details>
-
 <details>
 
 #### 💡 Expand to see how registering models works under the hood
@@ -212,7 +212,7 @@ the following GTO command
 gto register pool-segmentation [ref] --version v1.0.0
 ```
 
-Here, `[ref]` is the git reference/hash we selected from the menu in DVC Studio.
+Here, `[ref]` is the Git reference/hash we selected from the menu in DVC Studio.
 
 For more details you can have a look at the
 [gto register command reference](/doc/gto/command-reference/register).
@@ -233,8 +233,7 @@ assign the model version 1.0.0 to the "dev" stage as follows.
 
 When we assing the model to a stage, it can automatically trigger actions in our
 CICD workflows, like deploying the model to a new environment (we will explore
-how this is done in the [Using and Deploying models]
-(/doc/start/model-management/model-cicd) chapter).
+how this is done in the [Using and Deploying models](/doc/start/model-management/model-cicd) chapter).
 
 <details id="under-the-hood-assigning-model-stages">
 
@@ -292,8 +291,8 @@ you should see something like this:
 
 As we noted
 [above](/docs/start/model-management/model-registry#under-the-hood-model-registry),
-DVC uses special git tags to keep track of model registry actions, so all of
-this history is actually stored directly in your git repository. DVC Studio can
+DVC uses special Git tags to keep track of model registry actions, so all of
+this history is actually stored directly in your Git repository. DVC Studio can
 parse these tags and show them to us in a user-friendly way.
 
 If you look at the
