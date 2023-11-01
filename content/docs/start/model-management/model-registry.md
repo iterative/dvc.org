@@ -16,10 +16,12 @@ management.
 
 <admon type="tip" id="GTO-tip">
 
-Behind the scenes, DVC Studio uses a command line tool called [GTO](<(/doc/gto)>)
-for most model registry actions.
+Behind the scenes, DVC Studio uses a command line tool called
+[GTO](<(/doc/gto)>) for most model registry actions.
 
-With GTO you can also set up the model registry locally without DVC Studio (some functionality is exclusive to DVC Studio, however). You can see how this is done in the expandable "Under the hood" sections in this chapter.
+With GTO you can also set up the model registry locally without DVC Studio (some
+functionality is exclusive to DVC Studio, however). You can see how this is done
+in the expandable "Under the hood" sections in this chapter.
 
 </admon>
 
@@ -31,10 +33,13 @@ You can
 [fork our example repository](https://github.com/iterative/example-get-started-experiments/fork)
 and follow the
 [installation steps](https://github.com/iterative/example-get-started-experiments#installation)
-to set it up locally. 
+to set it up locally.
 
-To then perform the model registry actions in this guide, follow [these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project) to sign
-in to DVC Studio, connect it to your GitHub account and add your forked repository as a DVC Studio project.
+To then perform the model registry actions in this guide, follow
+[these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
+to sign in to DVC Studio, connect it to your GitHub account and add your forked
+repository as a DVC Studio project.
+
 </details>
 
 ## Adding models
@@ -89,25 +94,25 @@ artifacts:
       - satellite-images
 ```
 
-When you push the resulting file to your Git remote it is parsed by DVC Studio and
-it then shows all model artifacts from your `dvc.yaml` files in the model
+When you push the resulting file to your Git remote it is parsed by DVC Studio
+and it then shows all model artifacts from your `dvc.yaml` files in the model
 registry.
 
 </details>
 
 Now we just need to run the python script which includes this code to cache and
-register the model. If you are [following](/docs/start/model-management/model-registry#follow-along-instructions) our example repository then the
-training script is included in a DVC pipeline
+register the model. If you are
+[following](/docs/start/model-management/model-registry#follow-along-instructions)
+our example repository then the training script is included in a DVC pipeline
 [we prepared](/doc/start/experiments/experiment-pipelines) in the Experiment
-Management guide. So now to run the entire experiment
-pipeline just call 
+Management guide. So now to run the entire experiment pipeline just call
 
 ```console
 dvc exp run
 ```
 
-Now commit the result to Git (and push it to our Git remote) and the new
-model will show up in the model registry in DVC Studio:
+Now commit the result to Git (and push it to our Git remote) and the new model
+will show up in the model registry in DVC Studio:
 
 ```console
 git add .
@@ -122,8 +127,8 @@ To get acquainted with how DVC stores and shares data, see our
 
 #### 💡 Expand to see other ways to add models
 
-The other two options are to use the DVC Studio's graphical user interface to add
-models interactively or to manually edit `dvc.yaml` files to add information
+The other two options are to use the DVC Studio's graphical user interface to
+add models interactively or to manually edit `dvc.yaml` files to add information
 about model artifacts. To get more details on the ways to add models have a look
 at the
 [Model registry documentation](/doc/studio/user-guide/model-registry/add-a-model).
@@ -133,13 +138,13 @@ at the
 ## DVC Model registry overview
 
 In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
-manage our model registry. DVC Studio enables you to see models across all projects,
-manage their lifecycle, and download them with only a token. You can find out
-more about it [here](/doc/studio).
+manage our model registry. DVC Studio enables you to see models across all
+projects, manage their lifecycle, and download them with only a token. You can
+find out more about it [here](/doc/studio).
 
-From the Models tab in DVC Studio we will have an overview of all models, latest model
-versions as well stages each of the model versions is assigned to. We can get
-more details for each model by clicking on the model name.
+From the Models tab in DVC Studio we will have an overview of all models, latest
+model versions as well stages each of the model versions is assigned to. We can
+get more details for each model by clicking on the model name.
 
 You can check out our
 [example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)
@@ -159,22 +164,22 @@ captured in our example repository.
 
 Now that we have our first model in the model registry, we can start registering
 model versions for the model. We do it by choosing a specific commit in our
-model development history and attaching a version to it to make it easier to keep track
-of it. You can now do that directly in the DVC Studio UI as follows.
+model development history and attaching a version to it to make it easier to
+keep track of it. You can now do that directly in the DVC Studio UI as follows.
 
 ![Registering model versions](/img/mr-register-model-version.gif)
 
-Since we saved our model to DVC and added it to the model registry in the
-latest commit, we can just keep the commit which was selected by DVC Studio automatically.
-We will also keep the suggested version number v1.0.0.
+Since we saved our model to DVC and added it to the model registry in the latest
+commit, we can just keep the commit which was selected by DVC Studio
+automatically. We will also keep the suggested version number v1.0.0.
 
-For more details and other ways
-of registering model versions you can have a look at the corresponding
+For more details and other ways of registering model versions you can have a
+look at the corresponding
 [documentation](/doc/studio/user-guide/model-registry/register-version).
 
-Once we register our first model version, DVC Studio will also
-automatically connect it to experiment tracking and all metrics which are
-tracked there will also show up in the model registry for each model version.
+Once we register our first model version, DVC Studio will also automatically
+connect it to experiment tracking and all metrics which are tracked there will
+also show up in the model registry for each model version.
 
 <details id="under-the-hood-model-registry">
 
@@ -186,12 +191,13 @@ GTO assigns [particularly formatted](/doc/gto/user-guide#git-tags-format) git
 and these are then parsed by the model registry to keep track of the model
 lifecycle history.
 
-This means that all the metadata used by the model registry is actually stored in your Git repository!
+This means that all the metadata used by the model registry is actually stored
+in your Git repository!
 
-It also allows you to use GTO directly instead of the DVC Studio UI to manage your
-model lifecycle. That can be useful for example if you want to trigger certain
-model registry actions programmatically. You can learn more about the details of
-GTO in its [documentation](/docs/gto).
+It also allows you to use GTO directly instead of the DVC Studio UI to manage
+your model lifecycle. That can be useful for example if you want to trigger
+certain model registry actions programmatically. You can learn more about the
+details of GTO in its [documentation](/docs/gto).
 
 </details>
 
@@ -225,10 +231,10 @@ assign the model version 1.0.0 to the "dev" stage as follows.
 
 ![Assigning model stages](/img/mr-assign-model-stage.gif)
 
-When we assing the model to a stage, it can
-automatically trigger actions in our CICD workflows, like deploying the model to
-a new environment (we will explore how this is done in the [Using and Deploying
-models] (/doc/start/model-management/model-cicd) chapter).
+When we assing the model to a stage, it can automatically trigger actions in our
+CICD workflows, like deploying the model to a new environment (we will explore
+how this is done in the [Using and Deploying models]
+(/doc/start/model-management/model-cicd) chapter).
 
 <details id="under-the-hood-assigning-model-stages">
 
@@ -248,16 +254,18 @@ For more details you can have a look at the
 
 ## Changing (and removing) stage assignments
 
-Let's say that we've decided to promote our model version 1.0.0 to production and denote that it is no longer in the "dev" stage.
-First, assign the model version to the "prod" stage just like we did with the
-"dev" stage in the previous section.
+Let's say that we've decided to promote our model version 1.0.0 to production
+and denote that it is no longer in the "dev" stage. First, assign the model
+version to the "prod" stage just like we did with the "dev" stage in the
+previous section.
 
-Now, to remove the "dev" stage from our model version 1.0.0 and it assigned only to "prod", follow these steps:
+Now, to remove the "dev" stage from our model version 1.0.0 and it assigned only
+to "prod", follow these steps:
 
 ![Un-assigning model stages](/img/placeholder-cat.gif)
 
-It is also possible to de-register model versions or deprecate and remove models from the registry entirely. To see how, have a look
-at the
+It is also possible to de-register model versions or deprecate and remove models
+from the registry entirely. To see how, have a look at the
 [documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
 
 The detailed view of our model in the registry should now match what we see
@@ -267,7 +275,8 @@ The detailed view of our model in the registry should now match what we see
 
 #### 💡 Expand to see how removing model stages works under the hood
 
-Whenever we un-assign stages, de-register model versions and deprecate models, DVC Studio uses the GTO library under the hood. It is also possible to use GTO
+Whenever we un-assign stages, de-register model versions and deprecate models,
+DVC Studio uses the GTO library under the hood. It is also possible to use GTO
 manually to perform these actions. To see how, have a look at the
 [gto deprecate command reference](/doc/gto/command-reference/deprecate).
 
@@ -281,10 +290,11 @@ you should see something like this:
 
 ![Model history](/img/mr-model-history.png)
 
-As we noted [above](/docs/start/model-management/model-registry#under-the-hood-model-registry), DVC
-uses special git tags to keep track of model registry actions, so all of this
-history is actually stored directly in your git repository. DVC Studio can parse
-these tags and show them to us in a user-friendly way.
+As we noted
+[above](/docs/start/model-management/model-registry#under-the-hood-model-registry),
+DVC uses special git tags to keep track of model registry actions, so all of
+this history is actually stored directly in your git repository. DVC Studio can
+parse these tags and show them to us in a user-friendly way.
 
 If you look at the
 [tags in our example repository](https://github.com/iterative/example-get-started-experiments/tags),

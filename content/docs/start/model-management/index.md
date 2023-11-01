@@ -24,8 +24,8 @@ description:
 
 <admon type="tip">
 
-These are captured in our [example-get-started-experiments] repo
-(you can [fork it][example-get-started-experiments-fork] to follow along).
+These are captured in our [example-get-started-experiments] repo (you can [fork
+it][example-get-started-experiments-fork] to follow along).
 
 [example-get-started-experiments]:
   https://github.com/iterative/example-get-started-experiments
