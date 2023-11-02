@@ -45,7 +45,7 @@ on the command reference page for `dvc artifacts get`.
 
 <tab title="cURL / Python">
 
-Directly call the Studio [REST API] from your terminal using `cURL` or in your
+Directly call the Studio [REST API](/doc/studio/rest-api) from your terminal using `cURL` or in your
 `Python` code.
 
 </tab>
