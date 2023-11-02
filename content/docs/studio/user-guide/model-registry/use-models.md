@@ -30,7 +30,7 @@ Git repository, and you do not need to install DVC.
 
 You can download the files that make up your model directly from DVC Studio.
 Head to the model details page of the model you would like to download and click
-`Access Model`. Here, you find 4 different ways to download your model.
+`Access Model`. Here, you find different ways to download your model.
 
 <toggle>
 
