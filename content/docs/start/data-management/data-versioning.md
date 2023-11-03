@@ -91,6 +91,21 @@ outs:
 
 </details>
 
+<admon type="info">
+
+### Do I have to download my data?
+
+`dvc add` enables you to track and manage files and directories that would be
+unmanageable in pure Git, but in some cases even tracking with DVC may be
+impractical. For example, if you run Spark-based workflows directly on massive
+amounts of data stored in the cloud, you may not want to download and save a
+copy of each version. On the next page, you will see tips for how you can still
+use DVC's pipelines to
+[detect changes to external data](/doc/start/data-management/data-pipelines#external-data-pipelines)
+not managed by DVC.
+
+</admon>
+
 ## Storing and sharing
 
 You can upload DVC-tracked data to a variety of storage systems (remote or

@@ -190,6 +190,38 @@ stages:
 
 </details>
 
+<details id="external-data-pipelines">
+
+### 💡 What if my dependencies and outputs aren't inside my project?
+
+DVC can help simplify your workflow by keeping all your data inside your
+project, but this isn't always practical if you already have a large dataset
+stored elsewhere that you don't want to copy, or your stage writes data directly
+to cloud storage. DVC can still detect when these external datasets change. Your
+pipeline dependencies can point anywhere, not only local paths inside your
+project. Same with outputs, except that you need to set `cache: false` to tell
+DVC not to make a local copy of these external outputs. See the example below or
+read more in
+[External Dependencies and Outputs](/doc/user-guide/pipelines/external-dependencies-and-outputs).
+
+```yaml
+stages:
+  prepare:
+    cmd:
+      - wget
+        https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip
+        -O bank-additional.zip
+      - python sm_prepare.py --bucket mybucket --prefix project-data
+    deps:
+      - sm_prepare.py
+      - https://sagemaker-sample-data-us-west-2.s3-us-west-2.amazonaws.com/autopilot/direct_marketing/bank-additional.zip
+    outs:
+      - s3://mybucket/project-data/input_data:
+          cache: false
+```
+
+</details>
+
 Once you've added a stage, you can run the pipeline with `dvc repro`.
 
 ## Dependency graphs
