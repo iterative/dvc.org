@@ -18,7 +18,7 @@ publicly readable DVC remote so you can access the model from there and use it.
 If you are instead using your own repository you need to set up your own DVC
 remote and push the data (including models) there. Have a look at our [Data
 management
-guide]((/doc/start/data-management/data-versioning#configuring-a-remote) to se
+guide](/doc/start/data-management/data-versioning#configuring-a-remote) to see
 how this is done.
 
 ## Downloading models
@@ -30,12 +30,7 @@ using the Studio UI.
 Go to the detailed view of your model, select the desired model version under
 the "Version info" and then click on the "Access model" button.
 
-Studio will present you with several ways of downloading models. Click on the
-"Download" tab to download the model directly from your browser. If you haven't
-done that yet, click on "Generate new token" to generate a DVC Studio token used
-to access the model on a DVC Remote. Finally, click on "Generate download links"
-and you will be able to download the model (the link will be valid for 1 hour).
-You can see all the steps here:
+Studio will present you with several ways of downloading models. You can see all the steps here:
 
 ![Download model](/img/mr-studio-download-model.gif)
 

@@ -19,9 +19,8 @@ management.
 Behind the scenes, DVC Studio uses a command line tool called
 [GTO](<(/doc/gto)>) for most model registry actions.
 
-With GTO you can also set up the model registry locally without DVC Studio (some
-functionality is exclusive to DVC Studio, however). You can see how this is done
-in the expandable "Under the hood" sections in this chapter.
+With GTO you can also set up the model registry locally without DVC Studio.
+You can see how this is done in the expandable "Under the hood" sections in this chapter.
 
 </admon>
 
@@ -107,12 +106,7 @@ our example repository then this has already been done and we can continue to
 the next section.
 
 If you are building your own repository, you will need to run the script and
-push the result to your Git remote (GitHub) yourself. This is covered in detail
-in our
-[Experiment Management guide](/doc/start/experiments/experiment-pipelines).
-
-For a general introduction of how DVC stores and shares data, see our
-[Get Started guide on Data Versioning](/doc/start/data-management/data-versioning).
+push the result to your Git remote (GitHub) yourself. 
 
 <details id="push-click-to-see-other-ways-to-add-models">
 
