@@ -164,6 +164,8 @@ your model lifecycle. That can be useful for example if you want to trigger
 certain model registry actions programmatically. You can learn more about the
 details of GTO in its [documentation](/docs/gto).
 
+If you don't have a Studio account at all, you will have to manage a model registry separately for each Git repository however.
+
 </details>
 
 ## Versioning models
