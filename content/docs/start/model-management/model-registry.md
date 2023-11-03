@@ -19,8 +19,9 @@ management.
 Behind the scenes, DVC Studio uses a command line tool called
 [GTO](<(/doc/gto)>) for most model registry actions.
 
-With GTO you can also set up the model registry locally without DVC Studio.
-You can see how this is done in the expandable "Under the hood" sections in this chapter.
+With GTO you can also set up the model registry locally without DVC Studio. You
+can see how this is done in the expandable "Under the hood" sections in this
+chapter.
 
 </admon>
 
@@ -106,7 +107,7 @@ our example repository then this has already been done and we can continue to
 the next section.
 
 If you are building your own repository, you will need to run the script and
-push the result to your Git remote (GitHub) yourself. 
+push the result to your Git remote (GitHub) yourself.
 
 <details id="push-click-to-see-other-ways-to-add-models">
 
@@ -164,7 +165,8 @@ your model lifecycle. That can be useful for example if you want to trigger
 certain model registry actions programmatically. You can learn more about the
 details of GTO in its [documentation](/docs/gto).
 
-If you don't have a Studio account at all, you will have to manage a model registry separately for each Git repository however.
+If you don't have a Studio account at all, you will have to manage a model
+registry separately for each Git repository however.
 
 </details>
 
