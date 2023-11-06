@@ -16,10 +16,9 @@ use the model registry to trigger automated CICD model workflows.
 If you are using the example repository, the models are already versioned on a
 publicly readable DVC remote so you can access the model from there and use it.
 If you are instead using your own repository you need to set up your own DVC
-remote and push the data (including models) there. Have a look at our [Data
-management
-guide](/doc/start/data-management/data-versioning#configuring-a-remote) to see
-how this is done.
+remote and push the data (including models) there. Have a look at our
+[Data management guide](/doc/start/data-management/data-versioning#configuring-a-remote)
+to see how this is done.
 
 ## Downloading models
 
@@ -30,13 +29,17 @@ using the Studio UI.
 Go to the detailed view of your model, select the desired model version under
 the "Version info" and then click on the "Access model" button.
 
-Studio will present you with several ways of downloading models - with the CLI, in Python code and directly from your web browser. You can see all the web browser downlaod steps here:
+Studio will present you with several ways of downloading models - with the CLI,
+in Python code and directly from your web browser. You can see all the web
+browser downlaod steps here:
 
 ![Download model](/img/mr-studio-download-model.gif)
 
 And here's how to do it with the CLI:
 
-First, configure the [DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token) (this only needs to be done once):
+First, configure the
+[DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+(this only needs to be done once):
 
 ```console
 dvc config --global studio.token <your Studio token>
@@ -48,14 +51,16 @@ Now you can use the following command to download the model:
 dvc artifacts get https://github.com/<user>/example-get-started-experiments.git pool-segmentation
 ```
 
-Here you just need to replace `<user>` with your GitHub user. This will
-download the latest version of the `pool-segmentation` model from the DVC Remote
+Here you just need to replace `<user>` with your GitHub user. This will download
+the latest version of the `pool-segmentation` model from the DVC Remote
 associated with the Git repository in the URL. You can also specify a different
 artifact version or a model registry stage. See the `dvc artifacts get`
 documentation for all options.
 
-If you don't have a Studio account at all, you can still use `dvc artifacts get` to download models, but you will need to provide the correct DVC Remote credentials manually. You can see more details in the [documentation](/doc/command-reference/artifacts/get#description)
-
+If you don't have a Studio account at all, you can still use `dvc artifacts get`
+to download models, but you will need to provide the correct DVC Remote
+credentials manually. You can see more details in the
+[documentation](/doc/command-reference/artifacts/get#description)
 
 ## Connecting model registry actions to your CICD
 
@@ -147,9 +152,8 @@ deploy-model:
     needs.parse.outputs.stage == 'prod' }}"
 ```
 
-The next step of the workflow sets up
-DVC (using a GitHub Action, but this can also be done manually, for example with
-pip).
+The next step of the workflow sets up DVC (using a GitHub Action, but this can
+also be done manually, for example with pip).
 
 This allows us to run `dvc artifacts get` in the last step of the workflow to
 download the correct version of the model which can then be deployed or
