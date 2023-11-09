@@ -586,6 +586,18 @@
           {
             "label": "studio login",
             "slug": "login"
+          },
+          {
+            "label": "studio logout",
+            "slug": "logout"
+          },
+          {
+            "label": "studio logout",
+            "slug": "logout"
+          },
+          {
+            "label": "studio token",
+            "slug": "token"
           }
         ]
       },

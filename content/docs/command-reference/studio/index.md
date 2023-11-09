@@ -1,7 +1,9 @@
 # studio
 
-Command to authorize DVC with Studio and save the token to global [DVC
-configuration].
+Set of commands to authorize DVC with Studio and save the token to global [DVC
+configuration]: [login](/doc/command-reference/studio/login),
+[logout](/doc/command-reference/studio/logout),
+[token](/doc/command-reference/studio/token),
 
 [dvc configuration]:
   /doc/user-guide/project-structure/configuration#config-file-locations
