@@ -561,7 +561,14 @@
       },
       {
         "label": "studio",
-        "slug": "studio"
+        "slug": "studio",
+        "source": "studio/index.md",
+        "children": [
+          {
+            "label": "studio login",
+            "slug": "login"
+          }
+        ]
       },
       {
         "label": "unfreeze",
