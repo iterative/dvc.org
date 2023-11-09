@@ -560,6 +560,10 @@
         "slug": "status"
       },
       {
+        "label": "studio",
+        "slug": "studio"
+      },
+      {
         "label": "unfreeze",
         "slug": "unfreeze"
       },
