@@ -35,26 +35,42 @@ Plot templates are [Vega-Lite](https://vega.github.io/vega-lite/) JSON
 specifications. They use predefined DVC anchors as placeholders for DVC to
 inject the plot values.
 
-- `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
-  files is converted to a single JSON array, and injected instead of this
-  anchor. Two additional fields will be added: `step` and `rev` (explained
-  below).
+#### **Required**
 
-- `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
-  with the `--title` option of the `dvc plots` subcommands.
+- `<DVC_METRIC_DATA>` - the plot data from any type of metrics files is
+  converted to a single JSON array, and injected instead of this anchor. Two
+  additional fields will be added: `step` and `rev` (explained below).
 
-- `<DVC_METRIC_X>` (optional) - field name of the data for the X axis. It can be
-  defined with the `-x` option of the `dvc plots` subcommands. The
-  auto-generated `step` field (explained below) is the default.
+#### Optional
 
-- `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
-  defined with the `-y` option of the `dvc plots` subcommands. It defaults to
-  the last header of the metrics file: the last column for CSV/TSV, or the last
-  field for JSON/YAML.
+- `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined with the
+  `--title` option of the `dvc plots` subcommands.
 
-- `<DVC_METRIC_X_LABEL>` (optional) - field name to display as the X axis label
+- `<DVC_METRIC_X>` - field name of the data for the X axis. It can be defined
+  with the `-x` option of the `dvc plots` subcommands. The auto-generated `step`
+  field (explained below) is the default.
 
-- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the Y axis label
+- `<DVC_METRIC_Y>` - field name of the data for the Y axis. It can be defined
+  with the `-y` option of the `dvc plots` subcommands. It defaults to the last
+  header of the metrics file: the last column for CSV/TSV, or the last field for
+  JSON/YAML.
+
+- `<DVC_METRIC_X_LABEL>` - field name to display as the X axis label
+
+- `<DVC_METRIC_Y_LABEL>` - field name to display as the Y axis label
+
+- `<DVC_METRIC_COLOR>` - used to group experiment/commit information across
+  separate plots by applying a static color to rev mapping. The mapping is
+  auto-generated in the case of the `dvc plots` subcommands but can be selected
+  through the UI in the VS Code extension amd Studio.
+
+- `<DVC_METRIC_PLOT_HEIGHT>`- used by the VS Code extension/Studio to
+  dynamically resize the height of plots.
+
+- `<DVC_METRIC_PLOT_WIDTH>` - used by the VS Code extension/Studio to
+  dynamically resize the width of plots.
+
+Please see the default templates for examples of how to use these anchors.
 
 <details>
 
