@@ -1,7 +1,7 @@
 # Explore ML Experiments
 
-The projects dashboard in Iterative Studio contains all your projects. Click on
-a project name to open the project table, which contains:
+The projects dashboard in DVC Studio contains all your projects. Click on a
+project name to open the project table, which contains:
 
 - [Git history and live experiments](#git-history-and-live-metrics) of the
   project
@@ -58,13 +58,13 @@ When a Git branch (e.g., `feature-branch-1`) is created from another branch
   - if the user has merged `feature-branch-1` into `main` and has not pushed any
     new commits to it after the merger.
 
-  Since the branch does not contain any new unique commits, Iterative Studio
-  considers `feature-branch-1` as **"nested"** within `main` and does not
-  display it as a separate branch. This helps to keep the project table concise
-  and reduce clutter that can accumulate over time when inactive branches are
-  not cleaned from the Git repository. After all, those inactive branches
-  usually carry no new information for the purpose of managing experiments. If
-  you would like to display all commits of such an inactive branch, use the
+  Since the branch does not contain any new unique commits, DVC Studio considers
+  `feature-branch-1` as **"nested"** within `main` and does not display it as a
+  separate branch. This helps to keep the project table concise and reduce
+  clutter that can accumulate over time when inactive branches are not cleaned
+  from the Git repository. After all, those inactive branches usually carry no
+  new information for the purpose of managing experiments. If you would like to
+  display all commits of such an inactive branch, use the
   [`Commits on branch = feature-branch-1` display filter](#filters).
 
 ## Display preferences
@@ -134,17 +134,39 @@ To reorder the columns, click and drag them in the table or from the Columns
 dropdown.
 ![Showing and hiding columns](https://static.iterative.ai/img/studio/reorder_columns.gif)
 
+**Columns menu and goals:** Click on the column header to open a context menu
+with actions such as sorting and filtering the project table by the column's
+values.
+
+For metrics, you can also specify goals, which indicate whether an increase or a
+decrease in the metric's value is desirable. Once a goal is set, the metric's
+values for all rows are compared against the value in the baseline row. Values
+that are better (higher or lower, depending on the goal) than that in the
+baseline row are highlighted in green, with the best one shown with a green
+border. Values that are worse than that in the baseline row are marked in pink.
+
+![Columns menu and goals](https://static.iterative.ai/img/studio/columns_menu_and_goals.gif)
+
+<admon type="info">
+
+To change the baseline row in your project, use the 3-dot menu of the row which
+you want to set as the new baseline.
+
+![Set baseline row](https://static.iterative.ai/img/studio/set-baseline-row.gif)
+
+</admon>
+
 ### Hide commits:
 
 Commits can be hidden from the project table in the following ways:
 
-- **Iterative Studio auto-hides irrelevant commits:** Iterative Studio
-  identifies commits where metrics, files and hyperparameters did not change and
-  hides them automatically.
-- **Iterative Studio auto-hides commits that contain `[skip studio]` in the
-  commit message:** This is particularly useful if your workflow creates
-  multiple commits per experiment and you would like to hide all those commits
-  except the final one.
+- **DVC Studio auto-hides irrelevant commits:** DVC Studio identifies commits
+  where metrics, files and hyperparameters did not change and hides them
+  automatically.
+- **DVC Studio auto-hides commits that contain `[skip studio]` in the commit
+  message:** This is particularly useful if your workflow creates multiple
+  commits per experiment and you would like to hide all those commits except the
+  final one.
 
   For example, suppose you create a Git commit with hyper-parameter changes for
   running a new experiment, and your training CI job creates a new Git commit
@@ -184,8 +206,8 @@ toggle between these two options, use the `Delta mode` button.
 
 Whenever you make any changes to your project's columns, commits or filters, a
 notification to save or discard your changes is displayed at the top of the
-project table. Saved changes remain intact even after you log out of Iterative
-Studio and log back in later.
+project table. Saved changes remain intact even after you log out of DVC Studio
+and log back in later.
 
 ![Save or discard changes](https://static.iterative.ai/img/studio/save_discard_changes.png)
 

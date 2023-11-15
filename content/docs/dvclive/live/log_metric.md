@@ -1,7 +1,7 @@
 # Live.log_metric()
 
 ```py
- def log_metric(name: str, val: float, plot: Optional[bool] = True):
+ def log_metric(name: str, val: Union[int, float, str], plot: Optional[bool] = True):
 ```
 
 ## Usage

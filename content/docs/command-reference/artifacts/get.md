@@ -1,7 +1,9 @@
 ## artifacts get
 
 Download an <abbr>artifact</abbr> tracked in the <abbr>model registry</abbr>
-into the current working directory (with optional Studio support).
+into the current working directory (with optional DVC Studio support).
+
+> See also our `dvc.api.artifacts_show()` Python API function.
 
 ## Synopsis
 
@@ -36,12 +38,13 @@ of the DVC repository. Artifacts declared in other `dvc.yaml` files should be
 addressed in the form `path/to/dvc.yaml:artifact_name` or
 `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
-`dvc artifacts get` will first try to download artifacts via the Studio [REST
-API]. Downloading an artifact using the Studio REST API only requires a valid
-Studio [access token] and a Studio project configured with your [remote storage
-credentials]. It does not require the client to have those credentials. If you
-do not have a valid Studio token, or the artifact is not tracked in the model
-registry, DVC will fall back to its typical method to get files (see `dvc get`).
+`dvc artifacts get` will first try to download artifacts via the DVC Studio
+[REST API]. Downloading an artifact using the Studio REST API only requires a
+valid DVC Studio [access token] and a Studio project configured with your
+[remote storage credentials]. It does not require the client to have those
+credentials. If you do not have a valid DVC Studio token, or the artifact is not
+tracked in the model registry, DVC will fall back to its typical method to get
+files (see `dvc get`).
 
 ## Options
 
@@ -91,10 +94,10 @@ Downloaded 1 file(s) to 'model.pkl'
 ```
 
 In this example, we download version `v1.0.0` of the artifact. Since we have no
-Studio credentials set in our environment, `dvc artifacts get` will download the
-artifact from the default DVC remote defined in the repository.
+DVC Studio credentials set in our environment, `dvc artifacts get` will download
+the artifact from the default DVC remote defined in the repository.
 
-## Example: Download an artifact using a Studio token
+## Example: Download an artifact using a DVC Studio token
 
 ```cli
 $ DVC_STUDIO_TOKEN=mytoken dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --stage=prod

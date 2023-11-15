@@ -2,7 +2,7 @@
 
 In your model training script, you can use [DVCLive] to send live updates for
 metrics and plots without writing them to your Git repository, so that you can
-track your experiments in real-time from Iterative Studio.
+track your experiments in real-time from DVC Studio.
 
 This requires a 2-step process:
 
@@ -11,12 +11,12 @@ This requires a 2-step process:
 
 ## Set up an access token
 
-Iterative Studio uses access tokens to authorize DVC and [DVCLive] to send live
+DVC Studio uses access tokens to authorize DVC and [DVCLive] to send live
 experiment updates. The access token must be present in any request that sends
-data to the Iterative Studio ingestion endpoint. Requests with missing or
-incorrect access tokens are rejected with an appropriate HTTP error code and
-error message. The access token is also used by DVC to notify Iterative Studio
-when you push experiments using `dvc exp push`.
+data to the DVC Studio ingestion endpoint. Requests with missing or incorrect
+access tokens are rejected with an appropriate HTTP error code and error
+message. The access token is also used by DVC to notify DVC Studio when you push
+experiments using `dvc exp push`.
 
 Once you [create your access token], pass it to your experiment. If you are
 running the experiment locally, you can set the token in your [DVC config]. For
@@ -45,9 +45,9 @@ steps:
 
 In the training job (which has been configured as detailed above), whenever you
 log your metrics or plots using [DVCLive], they will be automatically sent to
-Iterative Studio. See [DVC config] for how to enable/disable live experiment
-updates and how to configure a different Studio URL or Git repository. Here is
-an example of how you can use [DVCLive] in your training code:
+DVC Studio. See [DVC config] for how to enable/disable live experiment updates
+and how to configure a different DVC Studio URL or Git repository. Here is an
+example of how you can use [DVCLive] in your training code:
 
 ```py
 from dvclive import Live
@@ -69,12 +69,12 @@ automatically called when the experiment concludes successfully.
 
 </admon>
 
-### Live experiments in Iterative Studio
+### Live experiments in DVC Studio
 
-Iterative Studio stores the live experiments data in its database. In the
-project table, the live experiments are displayed in experiment rows, which are
-nested under the parent Git commit. Updates to the live experiments are
-highlighted (in orange) in the project table and
+DVC Studio stores the live experiments data in its database. In the project
+table, the live experiments are displayed in experiment rows, which are nested
+under the parent Git commit. Updates to the live experiments are highlighted (in
+orange) in the project table and
 [compare pane](/doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments)
 in real time.
 
@@ -119,26 +119,26 @@ You can also delete the detached experiments if they are no longer important.
 
 An experiment can have one of the following statuses:
 
-- **Running** - Iterative Studio expects to receive live metrics and plots for
-  these experiments.
+- **Running** - DVC Studio expects to receive live metrics and plots for these
+  experiments.
 
   <admon type="warn">
 
-  If the experiment stops due to any error, Iterative Studio will not be aware
-  of this and it will continue to wait for live updates. In this case, you can
-  delete the row from the project table.
+  If the experiment stops due to any error, DVC Studio will not be aware of this
+  and it will continue to wait for live updates. In this case, you can delete
+  the row from the project table.
 
   </admon>
 
-- **Completed** - Iterative Studio does not expect to receive any more updates
-  for these experiments. Once the experiment concludes, you can delete the row
-  from the project table.
+- **Completed** - DVC Studio does not expect to receive any more updates for
+  these experiments. Once the experiment concludes, you can delete the row from
+  the project table.
 
   <admon type="warn">
 
-  Iterative Studio does not automatically commit and push the final results of
-  your experiment to Git. You can [push] the experiment using appropriate DVC
-  and Git commands.
+  DVC Studio does not automatically commit and push the final results of your
+  experiment to Git. You can [push] the experiment using appropriate DVC and Git
+  commands.
 
   </admon>
 

@@ -7,8 +7,8 @@
 
 ![](/img/studio-selfhosted-gitlab-1.png)
 
-2. Replace [`localhost:8080`](http://localhost:8080) with your Studio domain and
-   port if applicable.
+2. Replace [`localhost:8080`](http://localhost:8080) with your DVC Studio domain
+   and port if applicable.
 3. Click **Save application**
 4. Copy the **Application ID** and **Secret**
 
@@ -21,11 +21,11 @@ got created:
 
 1. Go to repository **Settings -> Webhooks**
 2. Scroll down to see **Project Hooks**
-3. Check if there is a hook pointing to your Studio instance:
+3. Check if there is a hook pointing to your DVC Studio instance:
 
 ![](/img/studio-selfhosted-gitlab-3.png)
 
-## Configuring Studio with the GitLab App
+## Configuring DVC Studio with the GitLab App
 
 Merge the `values.yaml` file with the following contents:
 
@@ -43,7 +43,7 @@ scmProviders:
     webhookSecret: <GitLab Webhook Secret>
 
     # Optional
-    # This is useful in cases where Studio is on an internal
+    # This is useful in cases where DVC Studio is on an internal
     # network, but the webhook endpoint is on an external network
     # webhookUrl: https://webhook.studio.company.com/webhook/gitlab/
 ```
@@ -81,7 +81,7 @@ need to whitelist your domain in GitLab:
    - your studio domain, e.g. **studio.example.com**
    - IP network range, e.g. **10.0.0.0/16**
 
-   So if Studio is configured with
+   So if DVC Studio is configured with
    [https://studio.example.com](https://studio.example.com), write:
 
    ```bash

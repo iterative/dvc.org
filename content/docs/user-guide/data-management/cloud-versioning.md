@@ -82,6 +82,10 @@ When the `version_aware` option is enabled on a `dvc remote`:
 - `dvc fetch` and `dvc pull` will download the corresponding version of an
   object from cloud storage.
 
+With `version_aware` enabled, `dvc push` will modify <abbr>dvc files</abbr>.
+Always `dvc push` before `git commit` so that the updated cloud version info is
+available in Git.
+
 <admon type="warn">
 
 Note that when `version_aware` is in use, DVC does not delete current versions

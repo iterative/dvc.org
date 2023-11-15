@@ -27,8 +27,8 @@ parameters. DVC tools use this file to show reports and experiments tables.
 
 <admon type="info">
 
-If `Live(dvcyaml=True)`, `Live.next_step()` and `Live.end()` will call
-`Live.make_dvcyaml()` internally, so you don't need to call both.
+`Live.next_step()` and `Live.end()` will call `Live.make_dvcyaml()` internally,
+so you don't need to call both (unless `dvcyaml=None`).
 
 </admon>
 

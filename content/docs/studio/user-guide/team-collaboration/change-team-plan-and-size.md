@@ -7,8 +7,8 @@ To change the plan for your team, go to the `Plan and billing` section within
 
 ![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing_v2.png)
 
-Click on `Change plan` (under `Current plan`). An Iterative Studio plan
-comparison page will open. Your current plan will be marked.
+Click on `Change plan` (under `Current plan`). A DVC Studio plan comparison page
+will open. Your current plan will be marked.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features_v2.png)
 
@@ -30,7 +30,7 @@ for details.
 Click on `Confirm` to provide payment and upgrade the plan. You will be
 redirected to our payment processor, [Stripe](https://stripe.com/). Once your
 payment is successful, you will be redirected back to the team settings page in
-Iterative Studio. Here you can confirm your updated plan.
+DVC Studio. Here you can confirm your updated plan.
 
 <admon>
 

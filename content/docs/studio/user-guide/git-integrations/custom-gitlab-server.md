@@ -9,8 +9,8 @@ self-hosted GitLab servers.
 To connect to your self-hosted GitLab server, you will need the following:
 
 - A URL for your GitLab server. The URL should either be publicly accessible, or
-  in the same private network as Iterative Studio if Iterative Studio is
-  deployed on-premises.
+  in the same private network as DVC Studio if DVC Studio is deployed
+  on-premises.
 - A GitLab personal access token with the following roles: `api`, `read_user`,
   `read_repository`. If you do not have a personal access token yet, you can
   create one at
@@ -38,22 +38,22 @@ Connecting to a self-hosted GitLab server is different from connecting to your
 account on GitLab SaaS ([gitlab.com](http://gitlab.com/)). To connect to GitLab
 SaaS go to the `Git integrations` section in your
 [personal profile settings](https://studio.iterative.ai/user/_/profile). If you
-signed up to use Iterative Studio using your GitLab account, you may already
-have this connection.
+signed up to use DVC Studio using your GitLab account, you may already have this
+connection.
 
 </admon>
 
 <admon type ="info">
 
 Custom GitLab server support is available only within a team workspace, and is
-available to all Iterative Studio teams (free and paid).
+available to all DVC Studio teams (free and paid).
 
 </admon>
 
 ## My GitLab server is behind a firewall. What should I do?
 
 Firstly, the GitLab server must be exposed to the internet to enable remote
-access from the Studio. You can limit the traffic on the firewall to the server
+access from DVC Studio. You can limit the traffic on the firewall to the server
 to allow access from our IP addresses only, which are:
 
 ```

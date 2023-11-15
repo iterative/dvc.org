@@ -82,7 +82,7 @@ It includes information about the stage we added, like the executable command
 
 ```yaml
 stages:
-  prepare:
+  data_split:
     cmd: python src/data_split.py
     deps:
       - src/data_split.py

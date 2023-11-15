@@ -26,10 +26,10 @@ instead, and not as a separate system.
 
 ![](/img/vscode-live.gif) _DVC Experiments are organized along project versions
 (Git commits, branches, tags, etc.), and can be compared in the terminal, the
-[VS Code extension][ide] (shown) or [Studio]._
+[VS Code extension][ide] (shown) or [DVC Studio]._
 
-When you are ready to share, [Studio] can be the central hub for your team's
-projects, experiments, and models. Studio also gives you the power to run
+When you are ready to share, [DVC Studio] can be the central hub for your team's
+projects, experiments, and models. DVC Studio also gives you the power to run
 experiments in the cloud.
 
 Major benefits of tracking experiments with DVC:
@@ -89,4 +89,4 @@ Finally, DVC is completely language agnostic, offering the same functionality
 whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[studio]: /doc/studio
+[dvc studio]: /doc/studio

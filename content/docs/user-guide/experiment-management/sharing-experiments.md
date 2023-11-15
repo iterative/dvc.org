@@ -1,6 +1,6 @@
 # Sharing Experiments
 
-You can send [live metrics and plots] to [Studio], [push] entire completed
+You can send [live metrics and plots] to [DVC Studio], [push] entire completed
 <abbr>experiments</abbr> (including data, models, and code), and convert an
 experiment into a [persistent] branch or commit in your Git repo.
 
@@ -11,9 +11,9 @@ https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
 
 ## Live metrics and plots
 
-You can send [live experiments] to [Studio](https://studio.iterative.ai), which
-will show intermediate results for metrics and plots in any running experiments.
-To start sharing live metrics to [Studio],
+You can send [live experiments] to [DVC Studio], which will show intermediate
+results for metrics and plots in any running experiments. To start sharing live
+metrics to [DVC Studio],
 [get your Studio token](https://studio.iterative.ai/user/_/profile?section=accessToken)
 and save it in your
 [dvc config](/doc/user-guide/project-structure/configuration#studio) or
@@ -24,19 +24,19 @@ of a user's projects:
 $ dvc config --global studio.token ***
 ```
 
-While the experiment runs, you will see live updates like this in Studio (and so
-will anyone else with access to the project):
+While the experiment runs, you will see live updates like this in DVC Studio
+(and so will anyone else with access to the project):
 
-![Live metrics in Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
+![Live metrics in DVC Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
 
-![Live plots in Studio](https://static.iterative.ai/img/studio/live_plots.gif)
+![Live plots in DVC Studio](https://static.iterative.ai/img/studio/live_plots.gif)
 
 <details>
 
 ### Advanced options and troubleshooting for live metrics and plots
 
 See [DVC config] for how to enable/disable live metrics and how to configure a
-different Studio URL or Git repository, or see the Studio guide on [live
+different DVC Studio URL or Git repository, or see the DVC Studio guide on [live
 experiments] for more information on how to setup, view, and compare.
 
 </details>
@@ -125,11 +125,11 @@ the flags to select a different set of experiments to push.
 
 ## Find pushed experiments
 
-You can see pushed experiments in [Studio]. From there, you can make an
+You can see pushed experiments in [DVC Studio]. From there, you can make an
 experiment [persistent] by creating a Git branch, or you can [remove] it from
 your Git remote:
 
-![Studio Shared Experiments](/img/studio-shared-exps.png)
+![DVC Studio Shared Experiments](/img/studio-shared-exps.png)
 
 From your workspace, you can see pushed experiments if you provide a Git remote
 name to `dvc exp list`.
@@ -180,10 +180,10 @@ the flags to select a different set of experiments to push.
 DVC experiments run outside of the regular Git workflow for faster iteration and
 to avoid polluting your <abbr>repository</abbr>'s history, but you can easily
 bring back the most promising experiments into your regular Git workflow. You
-can convert any pushed experiment from [Studio] into a persistent Git branch and
-create a pull request to merge it into your main repo branch:
+can convert any pushed experiment from [DVC Studio] into a persistent Git branch
+and create a pull request to merge it into your main repo branch:
 
-![Studio Create a New Branch](/img/studio-branch.gif)
+![DVC Studio Create a New Branch](/img/studio-branch.gif)
 
 Alternatively, from your workspace, to share an individual experiment the same
 way you share [other Git commits][sharing-data], use `dvc exp branch` to create
@@ -216,12 +216,12 @@ results to your workspace].
 
 ## Remove pushed experiments
 
-As you share more experiments, [Studio] and Git remotes may be become cluttered
-with experiment references.
+As you share more experiments, [DVC Studio] and Git remotes may be become
+cluttered with experiment references.
 
-You can remove experiments in Studio:
+You can remove experiments in DVC Studio:
 
-![Studio Remove selected rows](/img/studio-remove.gif)
+![DVC Studio Remove selected rows](/img/studio-remove.gif)
 
 To remove pushed experiments using the command line, use `dvc exp remove -g`:
 
@@ -232,7 +232,7 @@ Removed experiments: unwet-jinn
 
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.iterative.ai
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
 [pull]: #pull-experiments

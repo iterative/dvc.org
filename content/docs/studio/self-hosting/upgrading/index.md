@@ -1,12 +1,12 @@
-# Upgrading Studio
+# Upgrading DVC Studio
 
-The procedure for upgrading Studio varies depends on the environment Studio is
-deployed onto.
+The procedure for upgrading DVC Studio varies depends on the environment DVC
+Studio is deployed onto.
 
-If you've deployed Studio in an environment with internet access (like most
+If you've deployed DVC Studio in an environment with internet access (like most
 users), follow this guide:
-[Upgrading Studio (Regular procedure)](/doc/studio/self-hosting/upgrading/regular-procedure)
+[Upgrading DVC Studio (Regular procedure)](/doc/studio/self-hosting/upgrading/regular-procedure)
 
-If, on the other hand, you've deployed Studio in an air-gapped environment,
+If, on the other hand, you've deployed DVC Studio in an air-gapped environment,
 follow this guide:
-[Upgrading Studio (Air-gap procedure)](/doc/studio/self-hosting/upgrading/airgap-procedure)
+[Upgrading DVC Studio (Air-gap procedure)](/doc/studio/self-hosting/upgrading/airgap-procedure)
