@@ -183,7 +183,8 @@ specify the URL manually.
 
 If you don't use Studio, you can still use `dvc artifacts get` but you will need
 to keep your remote storage credentials on GitHub and use them to configure DVC
-in the CICD workflow. You will also need to checkout the repository in the workflow. You can see more details in the
+in the CICD workflow. You will also need to checkout the repository in the
+workflow. You can see more details in the
 [documentation](/doc/command-reference/artifacts/get#description).
 
 You can now use the following template to create your own Model Registry CICD
