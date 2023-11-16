@@ -48,7 +48,7 @@ dvc config --global studio.token <your Studio token>
 Now you can use the following command to download the model:
 
 ```bash
-dvc artifacts get https://github.com/<user>/example-get-started-experiments.git pool-segmentation
+dvc artifacts get https://github.com/<user>/example-get-started-experiments pool-segmentation
 ```
 
 Here you just need to replace `<user>` with your GitHub user. This will download
@@ -81,7 +81,7 @@ CICD action.
 <admon type="tip">
 
 To see a real-world model deployment example you can check out a
-[similar workflow in our example repository](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
+[similar workflow in our example repository](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml)
 which deploys a specific version of the model to an Amazon Sagemaker endpoint
 for inference whenever it is assigned to a stage.
 
@@ -120,8 +120,6 @@ parse:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: 'Parse GTO tag'
       id: gto
       uses: iterative/gto-action@v2
@@ -147,11 +145,13 @@ was assignment to the "prod" stage, it proceeds with the rest of the workflow.
 ```yaml
 deploy-model:
   needs: parse
-  if:
-    "${{ needs.parse.outputs.event == 'assignment' }} && ${{
-    needs.parse.outputs.stage == 'prod' }}"
+  if: ${{ needs.parse.outputs.event == 'assignment' && needs.parse.outputs.stage == 'prod' }}
+
 ```
 
+The next step of the workflow sets up
+DVC (using a GitHub Action, but this can also be done manually, for example with
+pip).
 The next step of the workflow sets up DVC (using a GitHub Action, but this can
 also be done manually, for example with pip).
 
@@ -162,17 +162,20 @@ otherwise used in our CICD.
 ```yaml
 - name: Get Model For Deployment
   run: |
-    dvc artifacts get ${{ github.repositoryUrl }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
+    dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
+    dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
+    echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
+
 ```
 
 Here, we are using the outputs of the `parse` job to specify the correct model
-version. Finally,
-[`github.repositoryUrl`](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
-is a default environmental variable in GitHub which contains the URL of the
-current repository.
+version. We are then setting up the DVC Studio token which we stored in our GitHub repository as a [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) to manage authentication with the [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage). This way we only need to keep the Studio token saved on GitHub and let Studio manage the specific storage credentials for us.
 
-You can use the following template to create your own Model Registry CICD
-actions on GitHub!
+Finally, `github.server_url` and `github.repository` are [default environmental variables in GitHub](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context) which together form the URL of our repository on GitHub. We could of course also specify the URL manually.
+
+If you don't use Studio, you can still use `dvc artifacts get` but you will need to keep your remote storage credentials on GitHub and use them to configure DVC in the CICD workflow. 
+
+You can use the following template to create your own Model Registry CICD actions on GitHub!
 
 ```yaml
 name: Template CICD Action for DVC Model Registry
@@ -190,8 +193,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     - name: "Parse GTO tag"
       id: gto
       uses: iterative/gto-action@v2
@@ -201,10 +202,17 @@ jobs:
       stage: ${{ steps.gto.outputs.stage }}
       version: ${{ steps.gto.outputs.version }}
 
-  perform-action:
+  perform-action-with-model:
     needs: parse
     if: # here paste the model registry event condition you want to trigger your action
     steps:
+    - uses: iterative/setup-dvc@v1
+        # this step uses DVC to download the model artifact from our remote repository so we can perform CICD actions with it
+        # The DVC Studio token is used to avoid having to store specific remote storage credentials on GitHub
+        - name: Get Model For Deployment
+          run: |
+            dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
+            dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
 
     ...
 
