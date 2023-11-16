@@ -257,7 +257,7 @@ Now, to remove the "dev" stage from our model version 1.0.0 and it assigned only
 to "prod", follow these steps:
 
 <video width="99%" height="540" autoplay loop muted>
-    <source src="/img/mr-unassign-model-stage.webm" type="video/webm">
+    <source src="/img/mr-remove-model-stage.webm" type="video/webm">
 </video>
 
 It is also possible to de-register model versions or deprecate and remove models
