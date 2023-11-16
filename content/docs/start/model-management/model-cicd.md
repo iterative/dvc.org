@@ -200,17 +200,16 @@ on:
   # the workflow is triggered whenever a tag is pushed to the repository
   push:
     tags:
-      - "*"
+      - '*'
 jobs:
-
   # This job parses the git tag with the GTO GitHub Action to identify model registry actions
   parse:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: "Parse GTO tag"
-      id: gto
-      uses: iterative/gto-action@v2
+      - uses: actions/checkout@v3
+      - name: 'Parse GTO tag'
+        id: gto
+        uses: iterative/gto-action@v2
     outputs:
       event: ${{ steps.gto.outputs.event }}
       name: ${{ steps.gto.outputs.name }}
@@ -222,18 +221,18 @@ jobs:
     # using the outputs from the "parse" job, we run this job only for actions
     # in the model registry and only when the model was assigned to a stage called "prod"
     # You can replace this with your own conditions
-    if: ${{ needs.parse.outputs.event == 'assignment' && needs.parse.outputs.stage == 'prod' }}
+    if:
+      ${{ needs.parse.outputs.event == 'assignment' && needs.parse.outputs.stage
+      == 'prod' }}
     runs-on: ubuntu-latest
     steps:
-    - uses: iterative/setup-dvc@v1
-    # this step uses DVC to download the model from the remote repository and deploys the model
-    # Model deployment is mocked here as it is specific to each deployment environment
-    # The DVC Studio token is used to avoid having to store specific remote storage credentials on GitHub
-    - name: Get Model For Deployment
-      run: |
-        dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
-        dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
-        echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
-
-
+      - uses: iterative/setup-dvc@v1
+      # this step uses DVC to download the model from the remote repository and deploys the model
+      # Model deployment is mocked here as it is specific to each deployment environment
+      # The DVC Studio token is used to avoid having to store specific remote storage credentials on GitHub
+      - name: Get Model For Deployment
+        run: |
+          dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
+          dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
+          echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
 ```
