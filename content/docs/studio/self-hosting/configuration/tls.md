@@ -1,17 +1,17 @@
 # TLS certificates
 
-We strongly recommend deploying Studio with a TLS certificate.
+We strongly recommend deploying DVC Studio with a TLS certificate.
 
 ## Configuring up the TLS certificate and private key
 
-To configure TLS certificates to Studio, following the instructions below
+To configure TLS certificates to DVC Studio, following the instructions below
 according to your installation method:
 
 <admon type="info">
 
-If you've deployed Studio with the AMI, you'll need to copy your TLS certificate
-and private key to the EC2 instance and start an SSH session before continuing.
-Example:
+If you've deployed DVC Studio with the AMI, you'll need to copy your TLS
+certificate and private key to the EC2 instance and start an SSH session before
+continuing. Example:
 
 1. Transfer your TLS certificate and private key to the EC2 instance
 
@@ -36,7 +36,7 @@ $ kubectl create secret tls studio-ingress-tls \
       --key=studio.pem
 ```
 
-2. Update Studio's config file
+2. Update DVC Studio's config file
 
 Merge the `values.yaml` file with the following contents:
 
@@ -47,7 +47,7 @@ global:
     tlsSecretName: studio-ingress-tls
 ```
 
-3. Reload Studio
+3. Reload DVC Studio
 
 ```cli
 $ helm upgrade --wait studio iterative/studio --namespace studio -f values.yaml

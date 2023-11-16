@@ -64,6 +64,7 @@ See `Live.log_metric()`. </tab> <tab title="Parameters">
 <tab title="Parameters">
 ```python
 live.log_param("num_classes", 10)
+```
 
 ```python
 params = {

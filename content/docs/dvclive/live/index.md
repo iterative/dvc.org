@@ -12,6 +12,8 @@ class Live:
         report: Optional[str] = None,
         save_dvc_exp: bool = True,
         dvcyaml: Union[str, bool] = "dvc.yaml",
+        cache_images: bool = False,
+        exp_name: Optional[str] = None,
         exp_message: Optional[str] = None,
     ):
 ```
@@ -96,6 +98,13 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
   If running a <abbr>DVC pipeline</abbr>, `cache_images` will be ignored, and
   you should instead cache images as pipeline <abbr>outputs</abbr>.
+
+- `exp_name` - If not `None`, and `save_dvc_exp` is `True`, the provided string
+  will be passed to
+  [`dvc exp save --name`](/doc/command-reference/exp/save#--name).
+
+  If DVCLive is used inside `dvc exp run`, the option will be ignored, use
+  [`dvc exp run --name`](/doc/command-reference/exp/run#--name) instead.
 
 - `exp_message` - If not `None`, and `save_dvc_exp` is `True`, the provided
   string will be passed to

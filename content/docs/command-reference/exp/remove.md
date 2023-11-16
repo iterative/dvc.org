@@ -1,5 +1,7 @@
 # exp remove
 
+> Aliased to `dvc exp rm`.
+
 Delete specific experiments from the <abbr>project</abbr>.
 
 ## Synopsis

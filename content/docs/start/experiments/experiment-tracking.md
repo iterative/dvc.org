@@ -117,7 +117,7 @@ Framework and any
 also [log additional info](/doc/dvclive#log-data) to be included in the
 experiment. `live.log_artifact("mymodel", type="model")` will
 [track your model with DVC](/doc/dvclive/live/log_artifact) and enable managing
-it with [Studio Model Registry](/doc/studio/user-guide/model-registry).
+it with [DVC Studio Model Registry](/doc/studio/user-guide/model-registry).
 
 <admon type="info">
 
@@ -155,14 +155,14 @@ will also display all the data logged by DVCLive:
 
 </tab>
 
-<tab title="Studio">
+<tab title="DVC Studio">
 
 If you want to share live updates with others or monitor while away from your
 machine, follow the instructions in
-[Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
+[DVC Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
 to display updates in the Studio web interface:
 
-![Studio Report](/img/dvclive-studio.gif)
+![DVC Studio Report](/img/dvclive-studio.gif)
 
 </tab>
 
@@ -214,13 +214,13 @@ views.
 
 </tab>
 
-<tab title="Studio">
+<tab title="DVC Studio">
 
-Once you have [shared] the results to [Studio], you can
+Once you have [shared] the results to [DVC Studio], you can
 [compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
-![Studio view](/img/dvclive-studio.png)
+![DVC Studio view](/img/dvclive-studio.png)
 
 </tab>
 
@@ -235,4 +235,4 @@ Learn more about
 
 [dvclive]: /doc/dvclive
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.iterative.ai

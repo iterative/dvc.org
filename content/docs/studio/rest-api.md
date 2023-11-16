@@ -1,23 +1,23 @@
 # REST API
 
-The purpose of Studio REST API is to give programmatic access to information in
-Studio and executing actions in it.
+The purpose of the DVC Studio REST API is to give programmatic access to
+information in DVC Studio and executing actions in it.
 
-The API is hosted under the `/api` route on the Studio server:
+The API is hosted under the `/api` route on the DVC Studio server:
 https://studio.iterative.ai/api or https://your-domain/api in case of
-[self-hosted Studio](/doc/studio/self-hosting/installation).
+[self-hosted DVC Studio](/doc/studio/self-hosting/installation).
 
 To use API, you need to generate
-[Studio access token](/doc/studio/user-guide/account-management#studio-access-token).
+[DVC Studio access token](/doc/studio/user-guide/account-management#studio-access-token).
 
 ## Download model
 
 Get signed URL to download the model binaries for a model from the <abbr>model
-registry</abbr>. Requires the model to be stored with DVC with S3 or Azure
-[remote]. Note, that you need to
+registry</abbr>. Requires the model to be stored with DVC with a S3, Azure, http
+or https [remote]. Note, that you need to
 [set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
-for Studio to have rights to the signed URLs. The signed URLs expire after one
-hour.
+for DVC Studio to have rights to the signed URLs. The signed URLs expire after
+one hour.
 
 ```yaml
 Endpoint: api/model-registry/get-download-uris
@@ -52,8 +52,8 @@ actually download the model.
 
 ### Example
 
-First, you need your [Studio access token]. For this example, we set it in the
-`DVC_STUDIO_TOKEN` environment variable:
+First, you need your [DVC Studio access token]. For this example, we set it in
+the `DVC_STUDIO_TOKEN` environment variable:
 
 ```sh
 export DVC_STUDIO_TOKEN=<TOKEN>
@@ -101,13 +101,13 @@ $ curl "https://studio.iterative.ai/api/model-registry/get-download-uris?repo=gi
 <admon type="warn">
 
 Running this example will fail because it requires that you have [set up remote
-cloud credentials] in Studio to where the model is stored.
+cloud credentials] in DVC Studio to where the model is stored.
 
 </admon>
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [`dvc.yaml`]: /doc/user-guide/project-structure/dvcyaml-files
-[Studio access token]:
+[DVC Studio access token]:
   /doc/studio/user-guide/account-management#studio-access-token
 [set up remote cloud credentials]:
   /doc/studio/user-guide/account-management#cloud-credentials

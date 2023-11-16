@@ -1,4 +1,4 @@
-## Upgrading Studio (Regular procedure)
+## Upgrading DVC Studio (Regular procedure)
 
 1. Connect to the instance with SSH
 
@@ -8,7 +8,7 @@
 $ helm repo update
 ```
 
-3. Upgrade Studio to the latest version
+3. Upgrade DVC Studio to the latest version
 
 ```cli
 $ helm upgrade --atomic studio iterative/studio --namespace studio --values values.yaml
