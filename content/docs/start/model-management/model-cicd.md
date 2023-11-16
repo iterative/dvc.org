@@ -37,8 +37,6 @@ browser download steps here:
     <source src="/img/mr-studio-download-model.webm" type="video/webm">
 </video>
 
-![Download model](/img/mr-studio-download-model.gif)
-
 And here's how to do it with the CLI:
 
 First, configure the

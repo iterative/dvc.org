@@ -177,7 +177,9 @@ model versions for the model. We do it by choosing a specific commit in our
 model development history and attaching a version to it to make it easier to
 keep track of it. You can now do that directly in the DVC Studio UI as follows.
 
-![Registering model versions](/img/mr-register-model-version.gif)
+<video width="99%" height="540" autoplay loop muted>
+    <source src="/img/mr-register-model-version.webm" type="video/webm">
+</video>
 
 Since we saved our model to DVC and added it to the model registry in the latest
 commit, we can just keep the commit which was selected by DVC Studio
@@ -219,7 +221,9 @@ any names you wish but in this example we will only create two stages called
 Stages are created whenever a model version is assigned to them. You can now
 assign the model version 1.0.0 to the "dev" stage as follows.
 
-![Assigning model stages](/img/mr-assign-model-stage.gif)
+<video width="99%" height="540" autoplay loop muted>
+    <source src="/img/mr-assign-model-stage.webm" type="video/webm">
+</video>
 
 When we assign the model to a stage, it can automatically trigger actions in our
 CICD workflows, like deploying the model to a new environment (we will explore
@@ -252,7 +256,9 @@ previous section.
 Now, to remove the "dev" stage from our model version 1.0.0 and it assigned only
 to "prod", follow these steps:
 
-![Un-assigning model stages](/img/mr-unassign-model-stage.gif)
+<video width="99%" height="540" autoplay loop muted>
+    <source src="/img/mr-unassign-model-stage.webm" type="video/webm">
+</video>
 
 It is also possible to de-register model versions or deprecate and remove models
 from the registry entirely. To see how, have a look at the
