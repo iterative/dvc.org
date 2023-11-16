@@ -33,7 +33,7 @@ Studio will present you with several ways of downloading models - with the CLI,
 in Python code and directly from your web browser. You can see all the web
 browser download steps here:
 
-![Download model](/img/mr-studio-download-model.gif)
+![Download model](/img/mr-studio-download-model.webm)
 
 And here's how to do it with the CLI:
 
