@@ -134,8 +134,9 @@ parse:
 
 <admon type="tip">
 
-If you are not using GitHub or if you don't want to use the GTO GitHub Action you can also use GTO
-directly with the [gto check-ref](/doc/gto/command-reference/check-ref) command.
+If you are not using GitHub or if you don't want to use the GTO GitHub Action
+you can also use GTO directly with the
+[gto check-ref](/doc/gto/command-reference/check-ref) command.
 
 </admon>
 
@@ -160,13 +161,13 @@ download the correct version of the model which can then be deployed or
 otherwise used in our CICD.
 
 ```yaml
-    steps:
-    - uses: iterative/setup-dvc@v1
-    - name: Get Model For Deployment
-      run: |
-        dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
-        dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
-        echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
+steps:
+  - uses: iterative/setup-dvc@v1
+  - name: Get Model For Deployment
+    run: |
+      dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
+      dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
+      echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
 ```
 
 Here, we are using the outputs of the `parse` job to specify the correct model
