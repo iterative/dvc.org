@@ -31,7 +31,7 @@ the "Version info" and then click on the "Access model" button.
 
 Studio will present you with several ways of downloading models - with the CLI,
 in Python code and directly from your web browser. You can see all the web
-browser downlaod steps here:
+browser download steps here:
 
 ![Download model](/img/mr-studio-download-model.gif)
 
@@ -58,9 +58,9 @@ artifact version or a model registry stage. See the `dvc artifacts get`
 documentation for all options.
 
 If you don't have a Studio account at all, you can still use `dvc artifacts get`
-to download models, but you will need to provide the correct DVC Remote
+to download models, but you will need to provide the correct Git and DVC Remote
 credentials manually. You can see more details in the
-[documentation](/doc/command-reference/artifacts/get#description)
+[documentation](/doc/command-reference/artifacts/get#description).
 
 ## Connecting model registry actions to your CICD
 
@@ -183,9 +183,10 @@ specify the URL manually.
 
 If you don't use Studio, you can still use `dvc artifacts get` but you will need
 to keep your remote storage credentials on GitHub and use them to configure DVC
-in the CICD workflow.
+in the CICD workflow. You will also need to checkout the repository in the workflow. You can see more details in the
+[documentation](/doc/command-reference/artifacts/get#description).
 
-You can use the following template to create your own Model Registry CICD
+You can now use the following template to create your own Model Registry CICD
 actions on GitHub!
 
 ```yaml
