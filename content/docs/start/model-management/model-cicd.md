@@ -43,14 +43,14 @@ First, configure the
 [DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
 (this only needs to be done once):
 
-```console
-dvc config --global studio.token <your Studio token>
+```cli
+$ dvc config --global studio.token <your Studio token>
 ```
 
 Now you can use the following command to download the model:
 
-```bash
-dvc artifacts get https://github.com/<user>/example-get-started-experiments pool-segmentation
+```cli
+$ dvc artifacts get https://github.com/<user>/example-get-started-experiments pool-segmentation
 ```
 
 Here you just need to replace `<user>` with your GitHub user. This will download
