@@ -7,7 +7,7 @@ project name to open the project table, which contains:
   project
 - [Display preferences](#display-preferences)
 - Buttons to
-  [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
+  [visualize and compare experiments](#visualize-and-compare-experiments).
 - Button to [export project data](#export-project-data).
 
 ## Git history and live experiments
@@ -211,16 +211,14 @@ and log back in later.
 
 ![Save or discard changes](https://static.iterative.ai/img/studio/save_discard_changes.png)
 
-## Visualize, compare and run experiments
+## Visualize and compare experiments
 
-Use the following buttons to visualize, compare and run experiments:
+Use the following buttons to visualize and compare experiments:
 
 - **Plots:** Open the `Plots` pane and [display plots] for the selected commits.
 - **Trends:** [Generate trend charts] to see how the metrics have changed over
   time.
 - **Compare:** [Compare experiments] side by side.
-- **Run:** [Run experiments] and [track results in real
-  time][live-metrics-and-plots].
 
 These buttons appear above your project table as shown below.
 ![example export to csv](https://static.iterative.ai/img/studio/project_action_buttons_big_screen.png)
@@ -246,7 +244,6 @@ Below is an example of the downloaded CSV file.
   /doc/studio/user-guide/experiments/visualize-and-compare#display-plots-and-images
 [Compare experiments]:
   /doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments
-[run experiments]: /doc/studio/user-guide/experiments/run-experiments
 [live-metrics-and-plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
 [Generate trend charts]:

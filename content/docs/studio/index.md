@@ -25,8 +25,6 @@ https://www.youtube.com/watch?v=w-UjAbdpRY4
   Git.
 - Keep your code, data and model connected at all times.
 - Apply your existing software engineering stack for ML teams.
-- Automate your ML process by transitioning to a no-code interface for running
-  experiments on cloud resources of your choice.
 - Build an ML model registry for transparency and discovery across all your
   projects.
 - Because your model registry is built on top of Git, you can use
