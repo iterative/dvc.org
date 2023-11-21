@@ -2,8 +2,7 @@
 
 You can submit your experiments from your favorite interface - whether it is
 Jupyter Notebooks, a code editor or IDE like [VS Code](/doc/vs-code-extension),
-the Python cli, the bash terminal, etc. You can also [submit new experiments
-from DVC Studio][run-experiments].
+the Python cli, the bash terminal, etc.
 
 You can track live as well as completed experiments in DVC Studio. First, click
 on `Add a project` to connect DVC Studio to your ML project's Git repository.
@@ -121,8 +120,6 @@ Within a project, you can:
   have pushed to your Git repository.
 - [Visualize the experiments][visualize] using plots and trend charts.
 - [Compare experiments][compare].
-- [Run new experiments][run-experiments], including on your own cloud instances,
-  directly from DVC Studio.
 - [Track live metrics and plots][live-metrics-and-plots] by sending them to DVC
   Studio by using [DVCLive].
 
@@ -131,7 +128,6 @@ Within a project, you can:
 [visualize]: /doc/studio/user-guide/experiments/visualize-and-compare
 [compare]:
   /doc/studio/user-guide/experiments/visualize-and-compare#compare-experiments
-[run-experiments]: /doc/studio/user-guide/experiments/run-experiments
 [live-metrics-and-plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvclive]: /doc/dvclive

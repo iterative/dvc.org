@@ -49,9 +49,7 @@ experiments with DVC Studio:
 DVC Studio offers more ways to run and track experiments - you can:
 
 - set up reproducible pipelines with DVC,
-- submit new experiments from the VS Code IDE,
-- submit new experiments from DVC Studio, and have them run in your own cloud
-  infrastructure.
+- submit new experiments from the VS Code IDE.
 
 For details on all these, check out the
 [`experiment management user guide`](/doc/studio/user-guide/experiments).
