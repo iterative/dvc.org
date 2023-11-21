@@ -31,7 +31,7 @@ See [Get Started: Experimenting Using Pipelines] for an intro to this topic.
 
 </admon>
 
-### Running the pipeline(s) locally
+### Running the pipeline(s)
 
 You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
 `./dvc.yaml` (in the current directory) by default.
