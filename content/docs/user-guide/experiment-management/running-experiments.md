@@ -79,19 +79,6 @@ Pipelines] for differences between them.
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 [running pipelines]: /doc/user-guide/pipelines/running-pipelines
 
-### Running the pipeline(s) on cloud
-
-You can use [DVC Studio] to run the experiment pipeline on a remote compute
-instance using your own cloud infrastructure. This will spin up a cloud compute
-instance on your cloud provider, run a setup script, execute your pipeline using
-`dvc exp run`, and share the results back to DVC Studio. See the DVC Studio [Run
-Experiments] guide.
-
-![DVC Studio run cloud experiments](/img/studio-run-cloud-experiments.gif)
-
-[dvc studio]: https://studio.iterative.ai
-[run experiments]: /doc/studio/user-guide/experiments/run-experiments
-
 ## Experiment results
 
 The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
