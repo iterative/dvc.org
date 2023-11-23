@@ -17,21 +17,21 @@ If you are using the example repository, the models are already versioned on a
 publicly readable DVC remote so you can access the model from there and use it.
 If you are instead using your own repository you need to set up your own DVC
 remote and push the data (including models) there. Have a look at our
-[Data management guide](/doc/start/data-management/data-versioning#configuring-a-remote)
+[Data Management guide](/doc/start/data-management/data-versioning#configuring-a-remote)
 to see how this is done.
 
 ## Downloading models
 
 It is useful to download model artifacts for example for local testing or for
 use in CICD workflows. With models versioned by DVC this can be done easily by
-using the Studio UI.
+using the DVC Studio UI.
 
 Go to the detailed view of your model, select the desired model version under
 the "Version info" and then click on the "Access model" button.
 
-Studio will present you with several ways of downloading models - with the CLI,
-in Python code and directly from your web browser. You can see all the web
-browser download steps here:
+DVC Studio will present you with several ways of downloading models - with the
+CLI, in Python code and directly from your web browser. You can see all the
+steps to download the model from the web browser here:
 
 <video width="99%" height="540" autoplay loop muted>
     <source src="/img/mr-studio-download-model.webm" type="video/webm">
@@ -54,19 +54,19 @@ $ dvc artifacts get https://github.com/<user>/example-get-started-experiments po
 ```
 
 Here you just need to replace `<user>` with your GitHub user. This will download
-the latest version of the `pool-segmentation` model from the DVC Remote
+the latest version of the `pool-segmentation` model from the DVC remote
 associated with the Git repository in the URL. You can also specify a different
 artifact version or a model registry stage. See the `dvc artifacts get`
 documentation for all options.
 
-If you don't have a Studio account at all, you can still use `dvc artifacts get`
-to download models, but you will need to provide the correct Git and DVC Remote
-credentials manually. You can see more details in the
+If you don't have a DVC Studio account at all, you can still use
+`dvc artifacts get` to download models, but you will need to provide the correct
+Git and DVC remote credentials manually. You can see more details in the
 [documentation](/doc/command-reference/artifacts/get#description).
 
 ## Connecting model registry actions to your CICD
 
-As we [noted](/docs/start/model-management/model-registry#GTO-tip) in the model
+As we [noted](/doc/start/model-management/model-registry#GTO-tip) in the model
 registry chapter, all DVC model registry actions are captured in your Git
 repository as Git tags with a specific format.
 
@@ -176,17 +176,17 @@ GitHub repository as a
 [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 to manage authentication with the
 [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
-This way we only need to keep the Studio token saved on GitHub and let Studio
-manage the specific storage credentials for us.
+This way we only need to keep the DVC Studio token saved on GitHub and let
+Studio manage the specific storage credentials for us.
 
 Finally, `github.server_url` and `github.repository` are
 [default environmental variables in GitHub](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
 which together form the URL of our repository on GitHub. We could of course also
 specify the URL manually.
 
-If you don't use Studio, you can still use `dvc artifacts get` but you will need
-to keep your remote storage credentials on GitHub and use them to configure DVC
-in the CICD workflow. You will also need to checkout the repository in the
+If you don't use DVC Studio, you can still use `dvc artifacts get` but you will
+need to keep your remote storage credentials on GitHub and use them to configure
+DVC in the CICD workflow. You will also need to checkout the repository in the
 workflow. You can see more details in the
 [documentation](/doc/command-reference/artifacts/get#description).
 
