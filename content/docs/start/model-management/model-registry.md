@@ -14,10 +14,10 @@ up a model registry where we can discover, share, deploy and audit all our
 models and which will serve as the single source of truth for our model
 management.
 
-<admon type="tip" id="GTO-tip">
+<admon type="tip">
 
-Behind the scenes, DVC Studio uses a command line tool called
-[GTO](<(/doc/gto)>) for most model registry actions.
+Behind the scenes, DVC Studio uses a command line tool called [GTO](/doc/gto)
+for most model registry actions.
 
 With GTO you can also set up the model registry locally without DVC Studio. You
 can see how this is done in the expandable "Under the hood" sections in this
@@ -37,7 +37,7 @@ to set it up locally.
 
 To then perform the model registry actions in this guide, follow
 [these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
-to sign in to DVC Studio, connect it to your GitHub account and add your forked
+to sign in to DVC Studio, connect it to your Git account and add your forked
 repository as a DVC Studio project.
 
 </details>
@@ -102,12 +102,12 @@ registry.
 
 Now we just need to run the Python script which includes this code to cache and
 register the model. If you are
-[following](/docs/start/model-management/model-registry#follow-along-instructions)
+[following](/doc/start/model-management/model-registry#follow-along-instructions)
 our example repository then this has already been done and we can continue to
 the next section.
 
 If you are building your own repository, you will need to run the script and
-push the result to your Git remote (GitHub) yourself.
+push the result to your Git remote (e.g., GitHub) yourself.
 
 <details id="push-click-to-see-other-ways-to-add-models">
 
@@ -163,9 +163,9 @@ in your Git repository!
 It also allows you to use GTO directly instead of the DVC Studio UI to manage
 your model lifecycle. That can be useful for example if you want to trigger
 certain model registry actions programmatically. You can learn more about the
-details of GTO in its [documentation](/docs/gto).
+details of GTO in its [documentation](/doc/gto).
 
-If you don't have a Studio account at all, you will have to manage a model
+If you don't have a DVC Studio account at all, you will have to manage a model
 registry separately for each Git repository however.
 
 </details>
@@ -253,7 +253,7 @@ and denote that it is no longer in the "dev" stage. First, assign the model
 version to the "prod" stage just like we did with the "dev" stage in the
 previous section.
 
-Now, to remove the "dev" stage from our model version 1.0.0 and it assigned only
+Now, to remove the "dev" stage from our model version 1.0.0 and assign it only
 to "prod", follow these steps:
 
 <video width="99%" height="540" autoplay loop muted>
@@ -265,7 +265,7 @@ from the registry entirely. To see how, have a look at the
 [documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
 
 The detailed view of our model in the registry should now match what we see
-[in our example](<(https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)>).
+[in our example](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0).
 
 <details id="under-the-hood-removing-stages">
 
@@ -287,7 +287,7 @@ you should see something like this:
 ![Model history](/img/mr-model-history.png)
 
 As we noted
-[above](/docs/start/model-management/model-registry#under-the-hood-model-registry),
+[above](/doc/start/model-management/model-registry#under-the-hood-model-registry),
 DVC uses special Git tags to keep track of model registry actions, so all of
 this history is actually stored directly in your Git repository. DVC Studio can
 parse these tags and show them to us in a user-friendly way.
