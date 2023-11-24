@@ -66,9 +66,10 @@ Git and DVC remote credentials manually. You can see more details in the
 
 ## Connecting model registry actions to your CICD
 
-As we [noted](/doc/start/model-management/model-registry#GTO-tip) in the model
-registry chapter, all DVC model registry actions are captured in your Git
-repository as Git tags with a specific format.
+As we noted in the
+[model registry chapter](/doc/start/model-management/model-registry), all DVC
+model registry actions are captured in your Git repository as Git tags with a
+specific format.
 
 This also means that we can create CICD actions in our Git repository which will
 be triggered whenever versions are registered or stages are assigned.

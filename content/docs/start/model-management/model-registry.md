@@ -14,7 +14,7 @@ up a model registry where we can discover, share, deploy and audit all our
 models and which will serve as the single source of truth for our model
 management.
 
-<admon type="tip" id="GTO-tip">
+<admon type="tip">
 
 Behind the scenes, DVC Studio uses a command line tool called [GTO](/doc/gto)
 for most model registry actions.
