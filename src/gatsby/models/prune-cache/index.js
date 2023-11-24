@@ -56,7 +56,7 @@ exports.onPostBuild = async function pruneStalePageCache({ graphql }) {
     return pagePathSet.has(cachedPagePath)
       ? null
       : cachedPagePath === '/index'
-        ? null
-        : removeFile(pageDataPath)
+      ? null
+      : removeFile(pageDataPath)
   })
 }
