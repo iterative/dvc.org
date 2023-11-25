@@ -15,7 +15,7 @@ To quickly start tracking your experiments with DVC Studio:
 - In your model training environment, install [DVCLive]:
 
   ```cli
-  pip install dvclive
+  $ pip install dvclive
   ```
 
 - Copy your
@@ -23,7 +23,7 @@ To quickly start tracking your experiments with DVC Studio:
   and configure your model training environment to use the token:
 
   ```cli
-  dvc config --global studio.token ***
+  $ dvc config --global studio.token ***
   ```
 
 - Use the DVCLive [`log_metric()`](/doc/dvclive/live/log_metric#livelog_metric)
@@ -49,7 +49,7 @@ To quickly start tracking your experiments with DVC Studio:
 - Run the training job:
 
   ```cli
-  python train.py
+  $ python train.py
   ```
 
 - The metrics and plots will be [tracked live][live-metrics-and-plots] in the
