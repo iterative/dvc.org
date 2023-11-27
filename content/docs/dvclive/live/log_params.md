@@ -1,7 +1,7 @@
 # Live.log_params()
 
 ```py
- def log_params(params: Dict[ParamLike]):
+def log_params(params: Dict[ParamLike]):
 ```
 
 Also see `Live.log_param()`.
