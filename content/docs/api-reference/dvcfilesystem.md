@@ -43,7 +43,7 @@ stream from [supported remote storage].
   [revision](https://git-scm.com/docs/revisions) such as a branch or a tag name,
   a commit hash, or an [experiment name]).
 
-- `config` optional [config] dicctionary to pass through to the DVC project.
+- `config` optional [config] dictionary to pass through to the DVC project.
 
 [experiment name]: /doc/command-reference/exp/run#-n
 [config]: /doc/command-reference/config
@@ -166,10 +166,15 @@ subdirectory.
 
 As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
 it is compatible with most of the APIs that it offers. When DVC is installed in
-the same Python environment as any other fsspec-compatible library,
-DVCFileSystem will be used automatically when a `dvc://` filesystem URL is
-provided to fsspec function calls. For more details check out the fsspec's
-[API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem).
+the same Python environment as any other fsspec-compatible library (such as
+[Hugging Face Datasets][hf-datasets]), DVCFileSystem will be used automatically
+when a `dvc://` filesystem URL is provided to fsspec function calls. For more
+details check out the fsspec's [API Reference][fsspec-api].
+
+[fsspec]: https://filesystem-spec.readthedocs.io/
+[fsspec-api]:
+  https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem
+[hf-datasets]: /doc/user-guide/integrations/huggingface#hugging-face-datasets
 
 <admon type="tip">
 
@@ -184,3 +189,28 @@ or as keyword arguments, depending on the specific fsspec method behing called.
 Please refer to the fsspec documentation for specific details.
 
 </admon>
+
+### fsspec API examples:
+
+For methods which take filesystem arguments as additional keyword arguments:
+
+```python
+>>> import fsspec
+>>> fsspec.open(
+...   "dvc://workshop/satellite-data/jan_train.csv",
+...   url="https://github.com/iterative/dataset-registry.git",
+... )
+<OpenFile 'workshop/satellite-data/jan_train.csv'>
+```
+
+For methods which take filesystem arguments via the `storage_options`
+dictionary:
+
+```python
+>>> import fsspec
+>>> fsspec.get_fs_token_paths(
+...   "dvc://workshop/satellite-data/jan_train.csv",
+...   storage_options={"url": "https://github.com/iterative/dataset-registry.git"},
+... )
+(<dvc.fs.dvc._DVCFileSystem object at 0x113f7a290>, '06e54af48d3513bf33a8988c47e6fb47', ['workshop/satellite-data/jan_train.csv'])
+```
