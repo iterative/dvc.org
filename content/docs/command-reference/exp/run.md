@@ -179,6 +179,15 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `--allow-missing` - skip stages with no other changes than missing data.
 
+  <admon type="warn">
+
+  In DVC>=3.0, `--allow-missing` will not skip data saved with DVC<3.0 because
+  the hash type changed in DVC 3.0, which DVC considers a change to the data.
+  See more information about
+  [upgrading from DVC 2.x to 3.0](/doc/user-guide/upgrade).
+
+  </admon>
+
 - `-k`, `--keep-going` - Continue executing, skipping stages having dependencies
   on the failed stage. The other dependencies of the targets will still be
   executed.
