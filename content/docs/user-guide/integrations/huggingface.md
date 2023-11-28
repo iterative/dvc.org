@@ -43,8 +43,10 @@ $ pip install dvc
 
 ### Download data
 
-`dvc get` can be used to download data from Hugging Face Hub. Downloading both
-individual files and directories is supported.
+`dvc get` provides a way to download data from Hugging Face Hub, without needing
+to clone the Hugging Face Hub repository, and without requiring any additional
+dependencies (such as Git-LFS). Downloading both individual files and
+directories is supported.
 
 Download the `sd_xl_base_1.0` model from
 [Stable Diffusion XL 1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0):
@@ -55,11 +57,12 @@ $ dvc get https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 sd_xl_
 
 ### Import data
 
-`dvc import` can be used to import data from Hugging Face Hub into a <abbr>DVC
+`dvc import` provides a way to use data from Hugging Face Hub in a <abbr>DVC
 project</abbr>. Importing both individual files and directories is supported.
 
 Import the `sd_xl_base_1.0` model from
-[Stable Diffusion XL 1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0):
+[Stable Diffusion XL 1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0)
+into a <abbr>DVC project</abbr>:
 
 ```cli
 $ dvc import https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 sd_xl_base_1.0.safetensors
