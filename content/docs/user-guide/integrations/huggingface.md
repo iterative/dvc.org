@@ -99,21 +99,25 @@ separately, through the `storage_options` dictionary.
 
 </admon>
 
-Load metrics (`eval/metrics.json`) from the
-[example-get-started](https://github.com/iterative/example-get-started)
-repository in Hugging Face Datasets:
+Load the dataset (`workshop/satellite-data/jan_train.csv`) from the example
+[dataset-registry](https://github.com/iterative/dataset-registry) repository
+using Hugging Face Datasets:
 
 ```python
 >>> from datasets import load_dataset
 >>> load_dataset(
-...   "json",
-...   data_files="dvc://eval/metrics.json",
-...   storage_options={"url": "https://github.com/iterative/example-get-started.git"},
+...     "csv",
+...     data_files="dvc://workshop/satellite-data/jan_train.csv",
+...     storage_options={"url": "https://github.com/iterative/dataset-registry.git"}
 ... )
+Downloading data: 100%|███████████████████████████████| 132M/132M [00:30<00:00, 4.32MB/s]
+Downloading data files: 100%|██████████████████████████████| 1/1 [00:32<00:00, 32.17s/it]
+Extracting data files: 100%|██████████████████████████████| 1/1 [00:00<00:00, 443.84it/s]
+Generating train split: 503227 examples [00:00, 514266.75 examples/s]
 DatasetDict({
     train: Dataset({
-        features: ['avg_prec', 'roc_auc'],
-        num_rows: 1
+        features: ['id', 'epoch', 'sat_id', 'x', 'y', 'z', 'Vx', 'Vy', 'Vz', 'x_sim', 'y_sim', 'z_sim', 'Vx_sim', 'Vy_sim', 'Vz_sim'],
+        num_rows: 503227
     })
 })
 ```
