@@ -94,7 +94,7 @@
     "@typescript-eslint/parser": "6.4.0",
     "babel-jest": "29.6.2",
     "eslint": "8.47.0",
-    "eslint-config-prettier": "8.10.0",
+    "eslint-config-prettier": "9.0.0",
     "eslint-plugin-json": "3.1.0",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-prettier": "5.0.0",
