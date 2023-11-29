@@ -29,3 +29,9 @@ random name as token name.
 - `-d`, `--use-device-code` - Use authentication flow based on user code. You
   will be presented with user code to enter in browser. DVC will also use this
   if it cannot launch browser on your behalf.
+
+## Available scopes
+
+- `EXPERIMENTS` - Experiment operations
+- `DATASETS` - Dataset operations
+- `MODELS` - Model registry operations
