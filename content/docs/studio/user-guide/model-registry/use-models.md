@@ -7,7 +7,8 @@ capabilities.
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions using the DVC Studio [REST API], `dvc get`, or DVC [Python API].
+versions using the DVC Studio [REST API], `dvc artifacts get`, or DVC [Python
+API].
 
 Prerequisites:
 
