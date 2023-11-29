@@ -43,7 +43,10 @@ Supported values for `val` are:
 - A path to an image file (`str` or
   [`Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path)). It
   should be in a format that is readable by
-  [`PIL.Image.open()`](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open)
+  [`PIL.Image.open()`](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open).
+  `dvclive` does not install `Pillow` automatically, so you will need to make
+  sure `PIL` is available to import yourself. You can install it with
+  `pip install pillow`.
 
 The images will be saved in `{Live.plots_dir}/images/{name}`. When using
 [`Live(cache_images=True)`](/doc/dvclive/live#parameters), the images directory
