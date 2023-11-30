@@ -19,6 +19,11 @@ os.environ[env.DVCLIVE_OPEN] = "True"
   the script from within a repository connected to a project in your Studio
   account, DVCLive will automatically send live params, metrics, and plots at
   every step of training during the tracked experiment.
+
+  This overrides `studio.token` setting in `dvc config`. If you already have the
+  token set up in the configuration, you don't have to pass it as an environment
+  variable.
   [See more on live tracking in Studio](https://dvc.org/doc/studio/user-guide/experiments/live-metrics-and-plots).
+
 - `DVC_STUDIO_URL`: If set, DVCLive will use this URL to send live metrics to.
   Defaults to `https://studio.iterative.ai`.
