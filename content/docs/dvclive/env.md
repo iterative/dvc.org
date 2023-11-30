@@ -18,7 +18,7 @@ os.environ[env.DVCLIVE_OPEN] = "True"
 - `DVC_STUDIO_TOKEN`: If set to a valid Studio auth token, and you're running
   the script from within a repository connected to a project in your Studio
   account, DVCLive will automatically send live params, metrics, and plots at
-  every step of training during the tracked experiment. [See more on live
-  tracking in Studio](https://dvc.org/doc/studio/user-guide/experiments/live-metrics-and-plots).
+  every step of training during the tracked experiment.
+  [See more on live tracking in Studio](https://dvc.org/doc/studio/user-guide/experiments/live-metrics-and-plots).
 - `DVC_STUDIO_URL`: If set, DVCLive will use this URL to send live metrics to.
   Defaults to `https://studio.iterative.ai`.
