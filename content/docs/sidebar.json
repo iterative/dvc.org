@@ -592,10 +592,6 @@
             "slug": "logout"
           },
           {
-            "label": "studio logout",
-            "slug": "logout"
-          },
-          {
             "label": "studio token",
             "slug": "token"
           }
