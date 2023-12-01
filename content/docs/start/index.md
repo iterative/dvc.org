@@ -62,9 +62,10 @@ Now you're ready to DVC!
 
 ## Following This Guide
 
-To help you understand and use DVC better, consider the following two use-cases:
-**data management** and **experiment tracking**. You may pick either one to
-start learning about how DVC helps you "solve" that scenario!
+To help you understand and use DVC better, consider the following three
+use-cases: **data management**, **experiment tracking** and **model
+management**. You may pick any to start learning about how DVC helps you "solve"
+that scenario!
 
 Choose a trail to jump into its first chapter:
 
@@ -76,8 +77,13 @@ Choose a trail to jump into its first chapter:
   by only instrumenting your code, and collaborate on ML experiments like
   software engineers do for code.
 
+- **[Model Management]** - Use the DVC model registry to manage the lifecycle of
+  your models in an auditable way. Easily access your models and integrate your
+  model registry actions into CICD pipelines to follow GitOps best practices.
+
 [Data Management]: /doc/start/data-management/data-versioning
 [Experiment Management]: /doc/start/experiments/experiment-tracking
+[Model Management]: /doc/start/model-management/model-registry
 
 <admon type="tip">
 

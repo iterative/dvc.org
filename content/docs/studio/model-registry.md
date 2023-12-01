@@ -14,7 +14,7 @@ To quickly start tracking your models in the DVC Studio model registry:
 - In your model training environment, install [DVCLive](/doc/dvclive):
 
   ```cli
-  pip install dvclive
+  $ pip install dvclive
   ```
 
 - Copy your
@@ -22,7 +22,7 @@ To quickly start tracking your models in the DVC Studio model registry:
   and configure your model training environment to use the token:
 
   ```cli
-  dvc config --global studio.token ***
+  $ dvc config --global studio.token ***
   ```
 
 - Use the DVCLive [`log_artifact()`](/doc/dvclive/live/log_artifact) method in
@@ -37,7 +37,7 @@ To quickly start tracking your models in the DVC Studio model registry:
 - Run the training job:
 
   ```cli
-  python train.py
+  $ python train.py
   ```
 
 - Once the training completes, commit and push the resultant `dvc.yaml` file to
