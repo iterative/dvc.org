@@ -69,9 +69,9 @@ with Live(...) as live:
 
 Here the `path` parameter tells DVC that our model is to be found under
 `"models/model.pkl"`, the `type` parameter is `"model"` and so it will show up
-in DVC Studio as a model type artifact (you can show
-other artifact types using filters, but they are hidden by default). The rest of the
-parameters are descriptive and optional and will also show up in DVC Studio.
+in DVC Studio as a model type artifact (you can show other artifact types using
+filters, but they are hidden by default). The rest of the parameters are
+descriptive and optional and will also show up in DVC Studio.
 
 <details id="push-click-to-see-how-artifacts-are-registered">
 
