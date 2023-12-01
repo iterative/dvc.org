@@ -167,7 +167,7 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   ). This enables support for access to a WebHDFS cluster that is behind a High
   Availability proxy server and rewrites the URL used for connecting.
 
-  For example, if you access you provide the url `webhdfs://host:port/` and you
+  For example, if you provide the url `webhdfs://host:port/` and you
   provide the value `https://host:port/gateway/cluster` for the
   `data_proxy_target` parameter, then internally the fsspec WebHDFS will rewrite
   every occurrence of `https://host:port/webhdfs/v1` into
