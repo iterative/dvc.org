@@ -151,3 +151,28 @@ them with the `--local` option, so they're written to a Git-ignored config file.
     https://hadoop.apache.org/docs/stable/hadoop-aws/tools/hadoop-aws/delegation_tokens.html
   [webhdfs api]:
     https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delegation_Token_Operations
+
+- `password` - Password to use in combination with `user` for Basic
+  Authentication. If you provide `password` you must also provide `user`. Since
+  this is a password it is recommended to store this in your local config (i.e.
+  not in Git)
+
+  ```cli
+  $ dvc remote modify --local password "mypassword"
+  ```
+
+- `data_proxy_target` - Target mapping to be used in the call to the fsspec
+  WebHDFS constructor (see
+  https://filesystem-spec.readthedocs.io/en/latest/api.html?highlight=data_proxy#fsspec.implementations.webhdfs.WebHDFS.__init__
+  ). This enables support for access to a WebHDFS cluster that is behind a High
+  Availability proxy server and rewrites the URL used for connecting.
+
+  For example, if you provide the url `webhdfs://host:port/` and you provide the
+  value `https://host:port/gateway/cluster` for the `data_proxy_target`
+  parameter, then internally the fsspec WebHDFS will rewrite every occurrence of
+  `https://host:port/webhdfs/v1` into
+  `https://host:port/gateway/cluster/webhdfs/v1`
+
+  ```cli
+  $ dvc remote modify data_proxy_target "https://host:port/gateway/cluster"
+  ```

@@ -73,7 +73,6 @@ even if the project belongs to a team where you are an `Editor` or `Admin`.
 | Apply filters                                 | Yes\*   | Yes    | Yes    | Yes   |
 | Show / hide columns                           | Yes\*   | Yes    | Yes    | Yes   |
 | Save the project filters and columns settings | No      | No     | Yes    | Yes   |
-| Run experiments                               | No      | No     | Yes    | Yes   |
 | View CML reports                              | No      | No     | Yes    | Yes   |
 | Share a project                               | No      | No     | Yes    | Yes   |
 | Add a new project                             | No      | No     | Yes    | Yes   |

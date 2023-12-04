@@ -66,6 +66,21 @@
             "slug": "experiment-pipelines"
           }
         ]
+      },
+      {
+        "label": "Model Management",
+        "slug": "model-management",
+        "source": "model-management/index.md",
+        "children": [
+          {
+            "label": "Model registry",
+            "slug": "model-registry"
+          },
+          {
+            "label": "Using and deploying models",
+            "slug": "model-cicd"
+          }
+        ]
       }
     ]
   },
