@@ -179,9 +179,9 @@ details check out the fsspec's [API Reference][fsspec-api].
 <admon type="tip">
 
 Note that `dvc://` URLs contain the path to the file you wish to load, relative
-to the root of the DVC project. `dvc://` URLs should not contain a Git repository
-URL. The Git repository URL is provided separately via the `url` argument for
-DVCFileSystem.
+to the root of the DVC project. `dvc://` URLs should not contain a Git
+repository URL. The Git repository URL is provided separately via the `url`
+argument for DVCFileSystem.
 
 When using `dvc://` URLs, additional constructor arguments for DVCFileSystem
 (such as `url` or `rev`) should be passed via the `storage_options` dictionary

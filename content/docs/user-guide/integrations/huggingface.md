@@ -8,7 +8,10 @@ project</abbr> can also be loaded with the Hugging Face
 
 <admon type="info">
 
-Logging from [Hugging Face Transformers](https://huggingface.co/docs/transformers/index) is supported within [DVCLive](https://dvc.org/doc/dvclive/ml-frameworks/huggingface).
+Logging from
+[Hugging Face Transformers](https://huggingface.co/docs/transformers/index) is
+supported within
+[DVCLive](https://dvc.org/doc/dvclive/ml-frameworks/huggingface).
 
 </admon>
 
@@ -100,8 +103,8 @@ provided.
 <admon type="tip">
 
 Note that `dvc://` URLs contain the path to the file you wish to load, relative
-to the root of the DVC project. `dvc://` URLs should not contain a Git repository
-URL.
+to the root of the DVC project. `dvc://` URLs should not contain a Git
+repository URL.
 
 The Git repository URL and any additional DVCFileSystem parameters are provided
 separately, through the `storage_options` dictionary.
