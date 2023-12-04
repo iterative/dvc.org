@@ -71,7 +71,7 @@ $ dvc import https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 sd_
 ## Hugging Face Datasets
 
 [Hugging Face Datasets](https://huggingface.co/docs/datasets/index) is a Python
-library accessing and sharing datasets. The DVC Python API provides
+library for accessing and sharing datasets. The DVC Python API provides
 [DVCFileSystem](/doc/api-reference/dvcfilesystem), an fsspec-compatible
 filesystem which can be used with Hugging Face Datasets to load data from a
 <abbr>DVC project</abbr>. Please refer to the Hugging Face
