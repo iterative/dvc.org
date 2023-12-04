@@ -236,6 +236,10 @@
           {
             "label": "Evidently",
             "slug": "evidently"
+          },
+          {
+            "label": "Hugging Face",
+            "slug": "huggingface"
           }
         ]
       },
