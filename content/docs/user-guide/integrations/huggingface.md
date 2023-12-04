@@ -6,6 +6,12 @@ project</abbr> can also be loaded with the Hugging Face
 [Datasets](https://huggingface.co/docs/datasets/index) library via the DVC
 [Python API](/doc/api-reference).
 
+<admon type="info">
+
+Logging from [Hugging Face Transformers](https://huggingface.co/docs/transformers/index) is supported within [DVCLive](https://dvc.org/doc/dvclive/ml-frameworks/huggingface).
+
+</admon>
+
 ## Hugging Face Hub
 
 DVC supports importing or downloading data from any Git repository, even
@@ -94,7 +100,7 @@ provided.
 <admon type="tip">
 
 Note that `dvc://` URLs contain the path to the file you wish to load, relative
-the root of the DVC project. `dvc://` URLs should not contain a Git repository
+to the root of the DVC project. `dvc://` URLs should not contain a Git repository
 URL.
 
 The Git repository URL and any additional DVCFileSystem parameters are provided
