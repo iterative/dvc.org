@@ -44,6 +44,9 @@ experiments with DVC Studio:
 - The metrics and plots will be [tracked live][live-metrics-and-plots] in the
   project in DVC Studio.
 
+To walk through an example of how to get started with experiment tracking, see
+[Get Started: Experiment Tracking](/doc/start/experiments/experiment-tracking).
+
 ## More ways to run and track experiments
 
 DVC Studio offers more ways to run and track experiments - you can:

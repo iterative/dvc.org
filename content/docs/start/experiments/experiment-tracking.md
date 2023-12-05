@@ -10,10 +10,9 @@ description:
 Tools like [Jupyter Notebooks](https://jupyter.org/) are useful for rapid
 prototyping, but it's hard to keep track of changes and reproduce experiments.
 You can start using DVC to version your experiments without leaving your Jupyter
-Notebook. There are no logins, servers, databases, or UI to spin up. Every
-<abbr>DVC experiment</abbr> will be versioned **without cluttering your repo**,
-unlike saving each run to a separate directory or creating a Git branch for
-each.
+Notebook. Every <abbr>DVC experiment</abbr> will be versioned **without
+cluttering your repo**, unlike saving each run to a separate directory or
+creating a Git branch for each.
 
 ## Running
 
@@ -125,6 +124,52 @@ Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
 
 </admon>
 
+## Sharing
+
+You can start tracking experiments on your local machine, but often you will
+want to share results with others or persist them somewhere. Optionally follow
+this section to share, or skip to the next section if you want to start locally.
+
+If you have a Git remote (for example, GitHub) where you `git push`, you can set
+DVC to automatically push code changes and metadata there in a Git commit like
+this:
+
+```cli
+$ export DVC_EXP_AUTO_PUSH=true
+$ export DVC_EXP_GIT_REMOTE=origin
+```
+
+<details id="sharing-details">
+
+### 💡 Expand to see what these environment variables do
+
+`DVC_EXP_AUTO_PUSH` forces DVC to upload all experiments to the Git remote at
+the completion of the experiment using `dvc exp push`. DVC will also push all
+artifacts and other <abbr>cached</abbr> data to the
+[DVC remote](/doc/user-guide/data-management/remote-storage).
+
+`DVC_EXP_GIT_REMOTE` specifies the name of the Git remote where the experiment
+will be pushed (usually `origin`). Use `git remote -v` to see your available Git
+remotes, and adjust the value above if you want to push somewhere other than
+`origin`.
+
+</details>
+
+To see these pushed experiments, go to
+[DVC Studio](https://studio.iterative.ai), configure your Git provider, and add
+a project using the same Git remote from above. Then navigate to the settings
+page, copy your
+[DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token),
+and
+[configure your environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
+
+```cli
+$ export DVC_STUDIO_TOKEN=***
+```
+
+Once configured, DVC Studio will provide realtime updates for all running
+experiments and show all completed experiments that were pushed.
+
 ## Tracking
 
 By following the steps above, you enable different options to monitor the
@@ -157,10 +202,8 @@ will also display all the data logged by DVCLive:
 
 <tab title="DVC Studio">
 
-If you want to share live updates with others or monitor while away from your
-machine, follow the instructions in
-[DVC Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
-to display updates in the Studio web interface:
+If you followed the instructions above in [Sharing](#sharing), you will see
+updates in the DVC Studio web interface:
 
 ![DVC Studio Report](/img/dvclive-studio.gif)
 
