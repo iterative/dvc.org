@@ -33,7 +33,7 @@ const TerminalButtons = () => (
 const Slides = ({
   slides,
   terminalSide = 'right',
-  theme = 'light'
+  theme = 'dark'
 }: {
   slides: ISlide[]
   terminalSide?: 'right' | 'left'
@@ -78,7 +78,7 @@ const Slides = ({
     () =>
       window.setTimeout(() => {
         changeCurrentIndex(undefined)
-      }, 2000),
+      }, 2500),
     [changeCurrentIndex]
   )
 
