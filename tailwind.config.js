@@ -14,7 +14,10 @@ module.exports = {
       colors: {
         gray: { hover: '#40364d', dark: 'rgb(26, 30, 35)' },
         purple: { DEFAULT: '#945dd6' },
-        blue: { DEFAULT: 'rgb(56, 179, 220)' }
+        blue: { DEFAULT: 'rgb(56, 179, 220)' },
+        indigo: { DEFAULT: '#4B2E70' },
+        dark: { DEFAULT: '#1A1E23' },
+        light: { DEFAULT: '#EEF4F8' }
       },
       keyframes: {
         slide: {
@@ -25,6 +28,9 @@ module.exports = {
       animation: {
         slide: 'slide 80s linear infinite',
         'slide-fast': 'slide 40s linear infinite'
+      },
+      backgroundImage: {
+        'gradient-126': 'linear-gradient(126deg, var(--tw-gradient-stops))'
       }
     },
     fontFamily: {

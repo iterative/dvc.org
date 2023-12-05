@@ -5,6 +5,17 @@ DVCFileSystem provides a pythonic file interface (
 is a read-only filesystem, hence it does not support any write operations, like
 `put_file`, `cp`, `rm`, `mv`, `mkdir` etc.
 
+```py
+class DVCFileSystem(AbstractFileSystem):
+    def __init__(
+        self,
+        url: Optional[str] = None,
+        rev: Optional[str] = None,
+        config: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ):
+```
+
 DVCFileSystem provides a unified view of all the files/directories in your
 repository, be it Git-tracked or DVC-tracked, or untracked (in case of a local
 repository). It can reuse the files in DVC <abbr>cache</abbr> and can otherwise
@@ -22,16 +33,20 @@ stream from [supported remote storage].
 >>> fs = DVCFileSystem(url, rev="main")
 ```
 
-The optional positional argument can be a URL or a local path to the DVC
-project. If unspecified, the DVC project in current working directory is used.
+## Parameters
 
-The optional `rev` argument can be passed to open a filesystem from a certain
-Git commit (any [revision](https://git-scm.com/docs/revisions) such as a branch
-or a tag name, a commit hash, or an [experiment name]).
+- `url` - optional URL or local path to the DVC project. If unspecified, the DVC
+  project in current working directory is used. (Equivalent to the `repo`
+  argument in `dvc.api.open()` and `dvc.api.read()`)
 
-The optional `config` argument can be passed through to the DVC project.
+- `rev` - optional Git commit (any
+  [revision](https://git-scm.com/docs/revisions) such as a branch or a tag name,
+  a commit hash, or an [experiment name]).
+
+- `config` optional [config] dictionary to pass through to the DVC project.
 
 [experiment name]: /doc/command-reference/exp/run#-n
+[config]: /doc/command-reference/config
 
 ## Opening a file
 
@@ -147,9 +162,55 @@ subdirectory.
 ['nlp/data/data.xml', 'nlp/data/features/test.pkl', 'nlp/data/features/train.pkl', 'nlp/data/prepared/test.tsv', 'nlp/data/prepared/train.tsv', 'nlp/eval/importance.png', 'nlp/model.pkl']
 ```
 
-## API Reference
+## fsspec API Reference
 
 As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
-it is compatible with most of the APIs that it offers. For more details check
-out the fsspec's
-[API Reference](https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem).
+it is compatible with most of the APIs that it offers. When DVC is installed in
+the same Python environment as any other fsspec-compatible library (such as
+[Hugging Face Datasets][hf-datasets]), DVCFileSystem will be used automatically
+when a `dvc://` filesystem URL is provided to fsspec function calls. For more
+details check out the fsspec's [API Reference][fsspec-api].
+
+[fsspec]: https://filesystem-spec.readthedocs.io/
+[fsspec-api]:
+  https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem
+[hf-datasets]: /doc/user-guide/integrations/huggingface#hugging-face-datasets
+
+<admon type="tip">
+
+Note that `dvc://` URLs contain the path to the file you wish to load, relative
+to the root of the DVC project. `dvc://` URLs should not contain a Git
+repository URL. The Git repository URL is provided separately via the `url`
+argument for DVCFileSystem.
+
+When using `dvc://` URLs, additional constructor arguments for DVCFileSystem
+(such as `url` or `rev`) should be passed via the `storage_options` dictionary
+or as keyword arguments, depending on the specific fsspec method behing called.
+Please refer to the fsspec documentation for specific details.
+
+</admon>
+
+### fsspec API examples:
+
+For methods which take filesystem arguments as additional keyword arguments:
+
+```python
+>>> import fsspec
+>>> fsspec.open(
+...   "dvc://workshop/satellite-data/jan_train.csv",
+...   url="https://github.com/iterative/dataset-registry.git",
+... )
+<OpenFile 'workshop/satellite-data/jan_train.csv'>
+```
+
+For methods which take filesystem arguments via the `storage_options`
+dictionary:
+
+```python
+>>> import fsspec
+>>> fsspec.get_fs_token_paths(
+...   "dvc://workshop/satellite-data/jan_train.csv",
+...   storage_options={"url": "https://github.com/iterative/dataset-registry.git"},
+... )
+(<dvc.fs.dvc._DVCFileSystem object at 0x113f7a290>, '06e54af48d3513bf33a8988c47e6fb47', ['workshop/satellite-data/jan_train.csv'])
+```
