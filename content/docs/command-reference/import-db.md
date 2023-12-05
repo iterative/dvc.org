@@ -151,6 +151,9 @@ documentation for more details.
   and want to reuse _dbt_'s connection profile, you will need to provide a
   connection profile to use with `--profile`. You can also use a connection
   string set in config, with `--conn`.
+- `--output-format` - type of format to materialize into. `csv` (default) and
+  `json` is supported.
+
 - `--model <model_name>` - Model name of the _dbt model_ to download.
 - `--conn connection` - Name of the database connection to use. To be only used
   with `--sql` option. The connection has to be set in the
