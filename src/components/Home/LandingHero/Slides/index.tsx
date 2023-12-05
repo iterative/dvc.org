@@ -1,9 +1,8 @@
 import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
 import { MemoizedTypedTerminal } from '../Typed'
-import { graphql, useStaticQuery } from 'gatsby'
 
-interface ILandingPageSlide {
+export interface ISlide {
   title: string
   description: string
   terminal: string
@@ -31,24 +30,19 @@ const TerminalButtons = () => (
   </div>
 )
 
-export const HeroSlides = () => {
-  const {
-    landingPage: { slides }
-  } = useStaticQuery(graphql`
-    query {
-      landingPage {
-        slides {
-          title
-          description
-          terminal
-        }
-      }
-    }
-  `) as {
-    landingPage: {
-      slides: ILandingPageSlide[]
-    }
-  }
+const Slides = ({
+  slides,
+  terminalSide = 'right',
+  theme = 'dark'
+}: {
+  slides: ISlide[]
+  terminalSide?: 'right' | 'left'
+  theme?: 'light' | 'dark'
+}) => {
+  const leftTerminal = terminalSide === 'left'
+  const rightTerminal = terminalSide === 'right'
+  const lightTheme = theme === 'light'
+  const darkTheme = theme === 'dark'
 
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
     Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
@@ -84,7 +78,7 @@ export const HeroSlides = () => {
     () =>
       window.setTimeout(() => {
         changeCurrentIndex(undefined)
-      }, 2000),
+      }, 2500),
     [changeCurrentIndex]
   )
 
@@ -97,12 +91,22 @@ export const HeroSlides = () => {
   }, [terminal, currentIndex, onComplete])
 
   return (
-    <div className={cn('flex', 'flex-col', 'md:flex-row-reverse', 'my-6')}>
+    <div
+      className={cn(
+        'flex',
+        'flex-col',
+        {
+          'md:flex-row': leftTerminal,
+          'md:flex-row-reverse': rightTerminal
+        },
+        'my-6'
+      )}
+    >
       <div
         className={cn(
           'my-4',
           'rounded-lg',
-          'bg-gray-dark',
+          { 'bg-gray-dark': darkTheme, 'bg-light': lightTheme },
           'text-blue',
           'drop-shadow',
           'mx-auto',
@@ -113,7 +117,11 @@ export const HeroSlides = () => {
           'sm:w-[570px]',
           'sm:text-[12px]',
           'md:w-[480px]',
-          'md:text-[10px]'
+          'md:text-[10px]',
+          {
+            'md:mr-3': leftTerminal,
+            'md:ml-3': rightTerminal
+          }
         )}
       >
         <TerminalButtons />
@@ -127,24 +135,28 @@ export const HeroSlides = () => {
         {slides.map(({ title, description }, i) => {
           const active = currentIndex === i
           return (
-            <li className={cn('md:mr-3')} key={i}>
+            <li
+              className={cn({
+                'md:mr-3': leftTerminal,
+                'md:ml-3': rightTerminal
+              })}
+              key={i}
+            >
               <button
                 className={cn(
                   'w-full',
-                  'text-left',
-                  'px-3',
-                  'py-1',
+                  'px-3 py-1',
                   'my-1',
-                  'flex',
-                  'flex-col',
-                  'flex-nowrap',
-                  'justify-center',
-                  'md:pl-4',
-                  'md:py-2',
-                  'border-l-2',
+                  'flex flex-col flex-nowrap justify-center',
+                  'md:pl-4 md:py-2',
+                  'border-l-2 text-left',
+                  {
+                    'md:border-l-0 md:border-r-2 md:text-right md:items-end':
+                      leftTerminal
+                  },
                   'ease-in-out',
                   'duration-300',
-                  'hover:bg-gray-200',
+                  'hover:bg-light hover:bg-opacity-50',
                   active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
@@ -170,3 +182,5 @@ export const HeroSlides = () => {
     </div>
   )
 }
+
+export default Slides
