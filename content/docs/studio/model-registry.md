@@ -47,6 +47,9 @@ To quickly start tracking your models in the DVC Studio model registry:
   model's name to open its
   [details page](/doc/studio/user-guide/model-registry/view-and-compare-models#model-details-page).
 
+To walk through an example of how to get started with the model registry, see
+[Get Started: Model Registry](/doc/start/model-management/model-registry).
+
 ## More ways to add models
 
 DVC Studio offers more ways to add models to the model registry - you can:
