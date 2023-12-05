@@ -873,8 +873,12 @@
             "label": "Fast.ai"
           },
           {
+            "slug": "accelerate",
+            "label": "Hugging Face Accelerate"
+          },
+          {
             "slug": "huggingface",
-            "label": "Hugging Face"
+            "label": "Hugging Face Transformers"
           },
           {
             "slug": "keras",
