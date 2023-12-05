@@ -59,6 +59,7 @@ within:
 - [`remote`](#remote) - sections in the config file that describe [remote
   storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
+- [`db`](#db) - sections in the config file that describe [database connections]
 - [`hydra`](#hydra) - options around [Hydra Composition] for experiment
   configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
@@ -69,9 +70,11 @@ within:
   [DVC Studio](https://studio.iterative.ai/) token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
+- [`dbt`](#dbt) - options to configure dbt's connection profiles.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
+[database connections]: /doc/command-reference/import-db#database-connections
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
@@ -210,6 +213,50 @@ section):
   /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
 [sharing a cache]: /doc/user-guide/how-to/share-a-dvc-cache
 [`os.umask`]: https://docs.python.org/3/library/os.html#os.umask
+
+</details>
+
+<details>
+
+## db
+
+Similar to `remote`, configuration files may have more than one `'db'`. All of
+them require a unique `"name"` and a `url` value which is a connection string to
+connect to the database. They can also specify `username` and `password`
+options, which is used to combine with provided `url`, which is what is passed
+to the appropriate database drivers to connect to the database.
+
+For security reasons, it is recommended not to add password in the url, but
+instead set it separately in a local file.
+
+As an example, the following config file defines a `pg` database connection to
+connect to the `dbname` database as a user `user` hosted at `host` url. The
+`postgresql://` defines a driver to be used to connect to that database.
+
+```ini
+['db "pg"']
+  url = "postgresql://user@host/dbname
+```
+
+The name, `pg` for example, can be used to specify what database to connect to,
+in commands like `import-db`.
+
+</details>
+
+<details>
+
+## dbt
+
+Sets the defaults for dbt's database connection profile to use for importing
+dbt's model and/or running sql query results.
+
+- `dbt.profile`- name of the _dbt_'s connection profile to use
+- `dbt.target` - target to use - if unspecified, default target is used
+
+See [dbt's Connection Profile] for more details.
+
+[dbt's Connection Profile]:
+  /doc/command-reference/import-db#dbts-connection-profile
 
 </details>
 

@@ -409,6 +409,10 @@
         "slug": "get"
       },
       {
+        "label": "import-db",
+        "slug": "import-db"
+      },
+      {
         "label": "import-url",
         "slug": "import-url"
       },
