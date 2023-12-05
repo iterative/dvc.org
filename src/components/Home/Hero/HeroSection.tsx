@@ -167,7 +167,7 @@ const HeroSection = () => {
             }}
           >
             <span>
-              Download DVC<sup>X</sup>
+              Learn about DVC<sup>X</sup>
             </span>
             <ArrowDown className="w-4 md:w-6 animate-bounce" />
           </CTAButton>
