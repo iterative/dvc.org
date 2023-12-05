@@ -19,7 +19,7 @@ const CompanySlider = () => {
           styles.fade
         )}
       >
-        <div className="flex justify-between gap-8 animate-slide">
+        <div className="flex justify-between gap-8 animate-slide group">
           <CompanyLogos />
           <CompanyLogos />
           <CompanyLogos />

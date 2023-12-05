@@ -215,7 +215,7 @@ section):
 
 <details>
 
-### hydra
+## hydra
 
 Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra
 Composition].

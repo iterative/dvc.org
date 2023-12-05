@@ -4,7 +4,7 @@ import cn from 'classnames'
 import PageContent from '../PageContent'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import HeroSection from '../HeroSection'
+import HeroContainer from '../HeroContainer'
 import PromoSection from '../PromoSection'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import Popover from './Popover'
@@ -14,11 +14,11 @@ import * as styles from './styles.module.css'
 const SupportPage: React.FC = () => (
   <>
     <PageContent>
-      <HeroSection className={styles.supportHero}>
+      <HeroContainer className={styles.supportHero}>
         <h1 className={styles.heading}>
           Questions, feedback, or just need to get in touch?
         </h1>
-      </HeroSection>
+      </HeroContainer>
       <LayoutWidthContainer>
         <div className={styles.features}>
           <div className={cn(styles.feature, styles.chat)}>

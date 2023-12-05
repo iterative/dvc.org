@@ -3,17 +3,20 @@ import cn from 'classnames'
 
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 
-import * as styles from './styles.module.css'
-
-interface IHeroSectionProps {
+interface IHeroContainerProps {
   className?: string
   children: React.ReactNode
+  id?: HTMLDivElement['id']
 }
 
-const HeroSection: React.FC<IHeroSectionProps> = ({ className, children }) => (
-  <div className={cn(styles.heroSection, className)}>
+const HeroContainer: React.FC<IHeroContainerProps> = ({
+  className,
+  children,
+  id
+}) => (
+  <div className={cn('w-full', className)} id={id}>
     <LayoutWidthContainer>{children}</LayoutWidthContainer>
   </div>
 )
 
-export default HeroSection
+export default HeroContainer

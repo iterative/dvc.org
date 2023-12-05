@@ -9,7 +9,8 @@ import * as styles from './styles.module.css'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { HeroSlides } from './Slides'
+
+import DvcSlides from './DvcSlides'
 
 const logUseCasesEvent = () => {
   logEvent('Button', { Item: 'how-it-works' })
@@ -90,7 +91,7 @@ const LandingHero = () => {
         learning development, make your repo the backbone of your project, and
         instill best practices across your team.
       </p>
-      <HeroSlides />
+      <DvcSlides />
       <HeroButtons />
       <div className={styles.github}>
         <GithubLine />

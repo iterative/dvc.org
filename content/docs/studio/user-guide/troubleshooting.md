@@ -27,7 +27,6 @@ If you need further help, you can send us a message using `Help` on the
 
 - [Error: Missing metric or plot file(s)](#error-missing-metric-or-plot-files)
 - [Error: Base commit not found](#error-base-commit-not-found)
-- [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 - [Project does not display live metrics and plots](#project-does-not-display-live-metrics-and-plots)
 - [Project does not display DVC experiments](#project-does-not-display-dvc-experiments)
 - [Error: `dvc.lock` validation failed](#error-dvclock-validation-failed)
@@ -236,45 +235,10 @@ repository again.
 
 Files that are larger than 10 MB are currently skipped by DVC Studio.
 
-## Error: Base commit not found
-
-The base commit which you have selected cannot be found in your Git repository.
-Check if the commit has been removed from your Git repository.
-
-## Error: Failed to push experiment to repository
-
-This is a non-specific error with a range of possible causes. To resolve it,
-check that:
-
-- Your account is able to push to the Git repository.
-
-  <admon>
-
-  If your Git account does not have write access on the Git repository connected
-  to a project, you cannot push changes (e.g., new experiments) to the
-  repository even if the project belongs to a team
-  [where you are an `Editor` or `Admin`](/doc/studio/user-guide/team-collaboration#roles).
-
-  </admon>
-
-- The repository is **not** marked as archived / read only.
-- In case of GitHub/GitLab/BitBucket enterprise organizations: there is no IP
-  whitelisting policy in place which limits access to the organization's
-  resources.
-- Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
-  are experiencing service disruptions. In case of an on-premises deployment, do
-  check with your administrator.
-
-[gh-status]: https://www.githubstatus.com/
-[gl-status]: https://status.gitlab.com/
-[bb-status]: https://bitbucket.status.atlassian.com/
 [local-dvc-remotes]:
   /doc/user-guide/data-management/remote-storage#file-systems-local-remotes
 [cloud-credentials]:
   /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
-
-If you get this error and none of the above applies, please
-[get in touch with us](#support).
 
 ## Project does not display live metrics and plots
 
