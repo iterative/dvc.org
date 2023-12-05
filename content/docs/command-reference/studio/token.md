@@ -1,6 +1,6 @@
 ## studio token
 
-This command helps to log out user from DVC Studio.
+View the token dvc uses to contact Studio
 
 ## Synopsis
 

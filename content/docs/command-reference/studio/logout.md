@@ -1,6 +1,6 @@
 ## studio logout
 
-This command helps to log out user from DVC Studio.
+This command logs out user from DVC Studio.
 
 ## Synopsis
 
