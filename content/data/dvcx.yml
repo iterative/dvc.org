@@ -3,24 +3,24 @@
     Datasets are getting larger, but the ability to iterate rapidly and
     efficiently is as important as ever.
   terminal: |
-    $ dvcx --version
+    from dql.query import C, DatasetQuery
+    from dql.lib.webdataset import WebDataset
+    from dql.lib.gpt4_vision import DescribeImage
 
-    $ dvcx --help
+    prompt = "How many people in the image?"
 
-- title: Share datasets without duplication
+    people = Dataset("s3://my-storage/")                       \
+                  .filter(C.name.glob("*.jpg"))                \
+                  .map(DescribeImage(prompt, max_token = 300)) \
+                  .mutate(num_people = int(C.descr))
+
+    people.filter(C.num_people > 3)
+
+- title: Create datasets from queries
   description:
-    Keeping a single source of truth for data can save you money and simplify
-    your team's ability to collaborate.
+    Save the results of a query in a dataset that you can use to train your ML
+    models.
   terminal: |
-    $ dvcx pull
-
-    $ dvcx push
-
-- title: Enrich your dataset with embeddings
-  description:
-    Add whatever embeddings, auto-labels, or annotations are required by the
-    model you want to train.
-  terminal: |
-    $ dvcx add-embeddings
-
-    $ dvcx add-labels
+    $ dvcx query my-query.py my-dataset
+    ..........
+    Dataset 'my-dataset' created
