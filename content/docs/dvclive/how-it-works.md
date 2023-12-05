@@ -16,11 +16,11 @@ The contents of the directory will depend on the methods used:
 | `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
 | `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |
 | `Live.log_sklearn_plot()`                               | `dvclive/plots/sklearn`                                                              |
-| `Live.make_dvcyaml()`                                   | `dvclive/dvc.yaml`                                                                   |
+| `Live.make_dvcyaml()`                                   | `dvc.yaml`                                                                           |
 | `Live.make_report()`                                    | `dvclive/report.{md/html}`                                                           |
 | `Live.make_summary()`                                   | `dvclive/metrics.json`                                                               |
-| `Live.next_step()`                                      | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
-| `Live.end()`                                            | `dvclive/dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`           |
+| `Live.next_step()`                                      | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
+| `Live.end()`                                            | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
 
 ### Example
 
@@ -35,7 +35,7 @@ from PIL import Image
 
 EPOCHS = 2
 
-with Live(save_dvc_exp=True) as live:
+with Live(report="notebook") as live:
     live.log_param("epochs", EPOCHS)
 
     for i in range(EPOCHS):
@@ -54,8 +54,8 @@ with Live(save_dvc_exp=True) as live:
 The resulting structure will be:
 
 ```
+dvc.yaml
 dvclive
-├── dvc.yaml
 ├── metrics.json
 ├── params.yaml
 ├── plots
@@ -69,7 +69,7 @@ dvclive
 │   │       └── metric.tsv
 │   └── sklearn
 │       └── confusion_matrix.json
-└── report.html
+└── report.md
 model.pt
 model.pt.dvc
 ```
@@ -86,11 +86,11 @@ experiment tracker.
 DVCLive relies on Git to track the [directory] it generates, so it will save
 each run to the same path and overwrite the results each time. DVCLive uses Git
 to manage results, code changes, and data changes
-([with DVC](#track-large-artifacts-with-dvc)). Include
-[`save_dvc_exp=True`](/doc/dvclive/live#parameters) to auto-track as a <abbr>DVC
-experiment</abbr> so you don't need to worry about manually making Git commits
-or branches for each experiment. You can recover them using `dvc exp` commands
-or using Git.
+([with DVC](#track-large-artifacts-with-dvc)).
+
+By default, DVCLive will save a <abbr>DVC experiment</abbr> so you don't need to
+worry about manually making Git commits or branches for each experiment. You can
+recover them using `dvc exp` commands or using Git.
 
 ### Track large artifacts with DVC
 
@@ -100,8 +100,8 @@ make Git ignore it. It will generate a `model.pt.dvc` metadata file, which can
 be tracked in Git and becomes part of the experiment. With this metadata file,
 you can [retrieve](/doc/start/data-management/data-versioning#retrieving) the
 versioned artifact from the Git commit. You can also use
-`Live.log_artifact("model.pt", type="model")` to add it to the [Studio Model
-Registry].
+`Live.log_artifact("model.pt", type="model")` to add it to the
+[DVC Studio Model Registry](/doc/studio/model-registry).
 
 Using `Live.log_image()` to log multiple images may also grow too large to track
 with Git, in which case you can use
@@ -109,13 +109,23 @@ with Git, in which case you can use
 
 ## Setup to Run with DVC
 
-DVCLive by default [generates] its own `dvc.yaml` file to configure the
-experiment results, but you can create your own `dvc.yaml` file at the base of
-your repository (or elsewhere) to define a [pipeline](#setup-to-run-with-dvc) to
-run experiments with DVC or
-[customize plots](/doc/user-guide/experiment-management/visualizing-plots#defining-plots).
-Do not reuse the DVCLive `dvc.yaml` file since it gets overwritten during each
-experiment run. A pipeline stage for model training might look like:
+Running experiments with DVC provides a structured and reproducible
+<abbr>pipeline</abbr> for end-to-end model training. To run experiments with
+DVC, define a pipeline using `dvc stage add` or by editing `dvc.yaml`. A
+pipeline stage for model training might look like:
+
+<toggle>
+<tab title="CLI">
+
+```cli
+$ dvc stage add --name train \
+  --deps data_dir --deps src/train.py \
+  --outs model.pt --outs dvclive \
+  python train.py
+```
+
+</tab>
+<tab title="YAML">
 
 ```yaml
 stages:
@@ -123,9 +133,56 @@ stages:
     cmd: python train.py
     deps:
       - train.py
+      - data_dir
     outs:
       - model.pt
+      - dvclive
 ```
+
+</tab>
+</toggle>
+
+Adding the DVCLive [directory] to the [outputs] will add it to the DVC [cache]
+(if you previously tracked the directory in Git, you must first stop tracking it
+there). If you want to keep it in Git, you can disable the cache. You can also
+choose to cache only some paths, like keeping lightweight metrics in Git but
+adding more heavyweight plots data to the cache:
+
+<toggle>
+<tab title="CLI">
+
+```cli
+$ dvc stage add --name train \
+  --deps data_dir --deps src/train.py \
+  --outs model.pt --outs-no-cache dvclive/metrics.json \
+  --outs dvclive/plots \
+  python train.py
+```
+
+</tab>
+<tab title="YAML">
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - data_dir
+    outs:
+      - model.pt
+      - dvclive/metrics.json:
+          cache: false
+      - dvclive/plots
+```
+
+</tab>
+</toggle>
+
+Now you can run an experiment using `dvc exp run`. Instead of DVCLive handling
+caching and saving experiments, DVC will do this at the end of each run. See
+examples of how to [add DVCLive to a pipeline] or [add a pipeline to DVCLive
+code], including how to parametrize your code to iterate on experiments.
 
 <admon type="tip">
 
@@ -137,32 +194,11 @@ pipeline. You can optionally drop `Live.log_artifact()` from your code.
 
 </admon>
 
-Optionally add any subpaths of the DVCLive [directory] to the [outputs]. DVC
-will [cache] them by default, and you can use those paths as [dependencies]
-downstream in your pipeline. For example, to cache all DVCLive plots:
-
-```diff
-  stages:
-    train:
-      cmd: python train.py
-      deps:
-        - train.py
-      outs:
-        - model.pt
-+       - dvclive/plots
-```
-
-<admon type="warn">
-
-Do not add the entire DVCLive [directory] since DVC does not expect the DVCLive
-`dvc.yaml` file to be inside the [outputs].
-
-</admon>
-
 [directory]: /doc/dvclive/how-it-works#directory-structure
-[studio model registry]: /doc/studio/user-guide/model-registry
 [cache]: /doc/start/data-management/data-versioning
 [outputs]: /doc/user-guide/pipelines/defining-pipelines#outputs
 [dependencies]: /doc/user-guide/pipelines/defining-pipelines#simple-dependencies
-[pipelines]: /doc/start/experiments/experiment-pipelines
+[pipeline]: /doc/start/experiments/experiment-pipelines
 [generates]: /doc/dvclive/live/make_dvcyaml
+[add DVCLive to a pipeline]: /doc/start/data-management/metrics-parameters-plots
+[add a pipeline to DVCLive code]: /doc/start/experiments/experiment-pipelines

@@ -1,7 +1,7 @@
 # Live.log_param()
 
 ```py
- def log_param(name: str, val: ParamLike):
+def log_param(name: str, val: ParamLike):
 ```
 
 Also see `Live.log_params()`.
@@ -34,13 +34,16 @@ The logged params can be visualized with `dvc params`:
 $ dvc params diff dvclive/params.yaml
 ```
 
+If you use <abbr>DVC pipelines</abbr>, [parameter dependencies] are tracked
+automatically, and you can skip logging them with DVCLive.
+
 </admon>
 
 ## Parameters
 
-- `name` - Name of the parameter being logged.
+- `name` - name of the parameter being logged.
 
-- `val` - The value to be logged.
+- `val` - the value to be logged.
 
 ## Exceptions
 
@@ -57,3 +60,6 @@ $ dvc params diff dvclive/params.yaml
       Dict[str, "ParamLike"]
   ]
   ```
+
+[parameter dependencies]:
+  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies

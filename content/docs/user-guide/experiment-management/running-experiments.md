@@ -31,7 +31,7 @@ See [Get Started: Experimenting Using Pipelines] for an intro to this topic.
 
 </admon>
 
-### Running the pipeline(s) locally
+### Running the pipeline(s)
 
 You can run the experiment <abbr>pipelines</abbr> using `dvc exp run`. It uses
 `./dvc.yaml` (in the current directory) by default.
@@ -78,20 +78,6 @@ Pipelines] for differences between them.
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 [running pipelines]: /doc/user-guide/pipelines/running-pipelines
-
-### Running the pipeline(s) on cloud
-
-You can use [Studio] to run the experiment pipeline on a remote compute instance
-using your own cloud infrastructure. This will spin up a cloud compute instance
-on your cloud provider, run a setup script, execute your pipeline using
-`dvc exp run`, and share the results back to Studio. See the Studio [Run
-Experiments] guide.
-
-![Studio run cloud experiments](/img/studio-run-cloud-experiments.gif)
-
-[studio]: https://studio.iterative.ai
-[run experiments]:
-  /doc/studio/user-guide/projects-and-experiments/run-experiments
 
 ## Experiment results
 

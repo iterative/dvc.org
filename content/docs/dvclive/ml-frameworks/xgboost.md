@@ -14,16 +14,21 @@ from dvclive.xgb import DVCLiveCallback
 
 ...
 
-xgboost.train(
-    param, dtrain, num_round=5, evals=[(dval, "eval_data")]
-    callbacks=[DVCLiveCallback("eval_data", save_dvc_exp=True)],
+model = xgb.XGBClassifier(
+    n_estimators=100,
+    early_stopping_rounds=5,
+    eval_metric=["merror", "mlogloss"],
+    callbacks=[DVCLiveCallback()]
+)
+
+model.fit(
+    X_train,
+    y_train,
+    eval_set=[(X_test, y_test)]
 )
 ```
 
 ## Parameters
-
-- `model_file` - (`None` by default) - The name of the file where the model will
-  be saved at the end of each `step`.
 
 - `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
   instance will be created using `**kwargs`.
@@ -39,13 +44,21 @@ xgboost.train(
 from dvclive import Live
 from dvclive.xgb import DVCLiveCallback
 
-with Live("custom_dir", save_dvc_exp=True) as live:
-    xgboost.train(
-        param,
-        dtrain,
-        num_round=5,
-        callbacks=[DVCLiveCallback("eval_data", live=live)],
-        evals=[(dval, "eval_data")])
+...
+
+with Live("custom_dir") as live:
+    model = xgb.XGBClassifier(
+        n_estimators=100,
+        early_stopping_rounds=5,
+        eval_metric=["merror", "mlogloss"],
+        callbacks=[DVCLiveCallback()]
+    )
+
+    model.fit(
+        X_train,
+        y_train,
+        eval_set=[(X_test, y_test)]
+    )
 
     # Log additional metrics after training
     live.log_metric("summary_metric", 1.0, plot=False)
@@ -54,16 +67,10 @@ with Live("custom_dir", save_dvc_exp=True) as live:
 - Using `**kwargs` to customize [`Live`].
 
 ```python
-xgboost.train(
-    param,
-    dtrain,
-    num_round=5,
-    callbacks=[
-      DVCLiveCallback(
-        "eval_data",
-        save_dvc_exp=True,
-        dir="custom_dir")],
-    evals=[(dval, "eval_data")])
+model = xgb.XGBClassifier(
+    ...
+    callbacks=[DVCLiveCallback(dir="custom_dir")]
+)
 ```
 
 [`live`]: /doc/dvclive/live

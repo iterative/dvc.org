@@ -19,7 +19,7 @@ paradigm to track and version experiments.
 ## Sharing
 
 Unless you have enabled
-[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
+[DVC Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots),
 the <abbr>DVC experiments</abbr> only exist in your repo and people can't manage
 or view them from other machines.
 
@@ -52,11 +52,11 @@ You can right-click on the experiment row and select the `Push Selected` action:
 
 </tab>
 
-<tab title="Studio">
+<tab title="DVC Studio">
 
-Manage shared experiments from [Studio]:
+Manage shared experiments from [DVC Studio]:
 
-![Studio Shared Experiments](/img/studio-shared-exps.png)
+![DVC Studio Shared Experiments](/img/studio-shared-exps.png)
 
 </tab>
 
@@ -102,7 +102,7 @@ action:
 You can click to the right of the experiment and select the
 `Create branch/pull request` action:
 
-![Studio Create a New Branch](/img/studio-branch.gif)
+![DVC Studio Create a New Branch](/img/studio-branch.gif)
 
 </tab>
 
@@ -148,11 +148,11 @@ You can select multiple experiment rows and use the `Remove selected` action:
 
 </tab>
 
-<tab title="Studio">
+<tab title="DVC Studio">
 
 You can click to the right of the experiment and use the `Delete` action:
 
-![Studio Remove selected rows](/img/studio-remove.gif)
+![DVC Studio Remove selected rows](/img/studio-remove.gif)
 
 </tab>
 

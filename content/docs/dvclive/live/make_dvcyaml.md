@@ -22,24 +22,24 @@ live.make_dvcyaml()
 
 ## Description
 
-Creates `{Live.dir}/dvc.yaml`, which describes and configures metrics, plots,
-and parameters. DVC tools use this file to show reports and experiments tables.
+Creates `dvc.yaml`, which describes and configures metrics, plots, and
+parameters. DVC tools use this file to show reports and experiments tables.
 
 <admon type="info">
 
-If `Live(dvcyaml=True)`, `Live.next_step()` and `Live.end()` will call
-`Live.make_dvcyaml()` internally, so you don't need to call both.
+`Live.next_step()` and `Live.end()` will call `Live.make_dvcyaml()` internally,
+so you don't need to call both (unless `dvcyaml=None`).
 
 </admon>
 
 ```yaml
 params:
-  - params.yaml
+  - dvclive/params.yaml
 metrics:
-  - metrics.json
+  - dvclive/metrics.json
 plots:
-  - plots/metrics
-  - plots/sklearn/confusion_matrix.json:
+  - dvclive/plots/metrics
+  - dvclive/plots/sklearn/confusion_matrix.json:
       template: confusion
       x: actual
       y: predicted

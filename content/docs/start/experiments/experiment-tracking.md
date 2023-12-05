@@ -25,7 +25,7 @@ $ pip install dvclive
 ```
 
 In your Python code, you can start versioning your experiments in DVCLive's
-`Live` API or framework-specific callbacks with `save_dvc_exp=True`.
+`Live` API or framework-specific callbacks.
 
 There are some examples below
 ([other frameworks available](/doc/dvclive/ml-frameworks)):
@@ -40,10 +40,7 @@ from dvclive.lightning import DVCLiveLogger
 
 ...
     trainer = Trainer(
-        logger=DVCLiveLogger(
-            save_dvc_exp=True,
-            log_model=True
-        )
+        logger=DVCLiveLogger(log_model=True)
     )
     trainer.fit(model)
 ```
@@ -57,7 +54,7 @@ from dvclive import Live
 from dvclive.huggingface import DVCLiveCallback
 
 ...
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
     trainer.add_callback(
         DVCLiveCallback(live=live)
     )
@@ -75,7 +72,7 @@ from dvclive import Live
 from dvclive.keras import DVCLiveCallback
 
 ...
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
     model.fit(
         train_dataset,
         validation_data=validation_dataset,
@@ -94,7 +91,7 @@ with Live(save_dvc_exp=True) as live:
 ```python
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
     live.log_param("epochs", NUM_EPOCHS)
 
     for epoch in range(NUM_EPOCHS):
@@ -120,8 +117,7 @@ Framework and any
 also [log additional info](/doc/dvclive#log-data) to be included in the
 experiment. `live.log_artifact("mymodel", type="model")` will
 [track your model with DVC](/doc/dvclive/live/log_artifact) and enable managing
-it with
-[Studio Model Registry](/doc/studio/user-guide/model-registry/what-is-a-model-registry).
+it with [DVC Studio Model Registry](/doc/studio/user-guide/model-registry).
 
 <admon type="info">
 
@@ -159,14 +155,14 @@ will also display all the data logged by DVCLive:
 
 </tab>
 
-<tab title="Studio">
+<tab title="DVC Studio">
 
 If you want to share live updates with others or monitor while away from your
 machine, follow the instructions in
-[Studio Live Experiments](/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots)
+[DVC Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
 to display updates in the Studio web interface:
 
-![Studio Report](/img/dvclive-studio.gif)
+![DVC Studio Report](/img/dvclive-studio.gif)
 
 </tab>
 
@@ -218,13 +214,13 @@ views.
 
 </tab>
 
-<tab title="Studio">
+<tab title="DVC Studio">
 
-Once you have [shared] the results to [Studio], you can
-[compare experiments](/doc/studio/user-guide/projects-and-experiments/visualize-and-compare)
+Once you have [shared] the results to [DVC Studio], you can
+[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
-![Studio view](/img/dvclive-studio.png)
+![DVC Studio view](/img/dvclive-studio.png)
 
 </tab>
 
@@ -239,4 +235,4 @@ Learn more about
 
 [dvclive]: /doc/dvclive
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.iterative.ai

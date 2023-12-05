@@ -2,15 +2,15 @@
 
 ## Prerequisites
 
-### Studio Images
+### DVC Studio Images
 
-The Studio machine image (AMI) and access to the Studio Docker images need to be
-provided by the Iterative team to enable the installation.
+The DVC Studio machine image (AMI) and access to the DVC Studio Docker images
+need to be provided by the Iterative team to enable the installation.
 
 ### DNS
 
 Create a DNS record pointing to the IP address of the EC2 instance. This
-hostname will be used for Studio.
+hostname will be used for DVC Studio.
 
 ## Installation
 
@@ -132,13 +132,13 @@ Replace the strings marked with `< >`
 
 </admon>
 
-15. To install the Studio application using Helm, run the following command:
+15. To install the DVC Studio application using Helm, run the following command:
 
 ```cli
 ubuntu@ami:~$ helm install --wait studio iterative/studio --namespace studio -f values.yaml
 ```
 
-16. You're done! Access Iterative Studio by opening the configured hostname in
-    your browser
+16. You're done! Access DVC Studio by opening the configured hostname in your
+    browser
 
 ![](/img/studio-selfhosted-ami-9.png)

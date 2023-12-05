@@ -1,8 +1,8 @@
 # Remove a model, version, or stage assignment
 
 When you remove (deprecate) a model, deregister a version or unassign a stage,
-Iterative Studio
-[creates Git tags that indicate the action](https://mlem.ai/doc/gto/command-reference/deprecate)
+DVC Studio
+[creates Git tags that indicate the action](/doc/gto/command-reference/deprecate)
 and saves the tags in your Git repository.
 
 These actions can be found in the 3-dot menu next to the model name in the
@@ -24,15 +24,15 @@ These actions are also available in the model details page:
 <img src="https://static.iterative.ai/img/studio/model-registry-deregister.png" alt="Deprecate model" width="400px"/>
 </p>
 
-- Click on the the relevant stage assignment pill in the `Stages` section to
-  reveal the `Unassign stage` menu item.
+- Click on the relevant stage assignment pill in the `Stages` section to reveal
+  the `Unassign stage` menu item.
 
 <p align="center">
 <img src="https://static.iterative.ai/img/studio/model-registry-unassign.png" alt="Deprecate model" width="400px"/>
 </p>
 
 <admon type="tip">
-To remove all of a project's models from Iterative Studio without deprecating them, you can simply delete the project from your projects dashboard.
+To remove all of a project's models from DVC Studio without deprecating them, you can simply delete the project.
 </admon>
 
 <admon type="info">

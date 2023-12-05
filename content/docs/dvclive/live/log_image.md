@@ -11,7 +11,7 @@ def log_image(name: str, val):
 ```py
 from dvclive import Live
 
-with Live(cache_images=True, save_dvc_exp=True) as live:
+with Live(cache_images=True) as live:
     # 1. Log an image from a numpy array:
     import numpy as np
     img_numpy = np.ones((500, 500), np.uint8) * 255
@@ -84,7 +84,7 @@ images using the following pattern
 import numpy as np
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
     base_img = np.ones((500, 500), np.uint8)
     for i in range(10):
       live.log_image(
@@ -92,11 +92,23 @@ with Live(save_dvc_exp=True) as live:
       live.next_step()
 ```
 
-In the
+In [DVC Studio](https://studio.iterative.ai/) and the
 [DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
 folders following this pattern will be rendered using an image slider:
 
+<toggle>
+<tab title="DVC Studio">
+
+![DVCLive Studio Image Slider](/img/dvclive-studio-image-slider.gif)
+
+</tab>
+<tab title="VSCode Extension">
+
 ![DVCLive VSCode Image Slider](/img/dvclive-vscode-image-slider.gif)
+
+</tab>
+
+</toggle>
 
 ## Parameters
 

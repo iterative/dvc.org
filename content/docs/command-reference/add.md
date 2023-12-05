@@ -185,8 +185,8 @@ This is a standard `.dvc` file with only one output (`outs` field). The hash
 value (`md5` field) corresponds to a file path in the <abbr>cache</abbr>.
 
 ```cli
-$ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
-.dvc/cache/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
+$ file .dvc/cache/files/md5/d8/acabbfd4ee51c95da5d7628c7ef74b
+.dvc/cache/files/md5/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
 ```
 
 ⚠️ Tracking compressed files (e.g. ZIP or TAR archives) is not recommended, as
@@ -274,8 +274,8 @@ Data and pipelines are up to date.
 Let's have a look at cache directory:
 
 ```cli
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 0a
 │   └── ec3a687bd65c3e6a13e3cf20f3a6b2.dir
 └── 52

@@ -16,15 +16,8 @@ facilitates search and discovery.
 You can sort the models in the dashboard by several criteria, including model
 framework, repository, etc.
 
-Iterative Studio consolidates the stages of all the models in the registry, and
+DVC Studio consolidates the stages of all the models in the registry, and
 provides a way to filter models by stages.
-
-Iterative Studio also consolidates the frameworks of all the models in the
-registry and provides a way to filter models by framework. Note that the
-framework of a model is identified by Iterative’s model deployment tool [MLEM].
-If you have not used MLEM, then Iterative Studio will use a generic framework
-icon to indicate that the model framework was not identified, and that the model
-was registered using [GTO].
 
 You can take a look at the [models dashboard] in Iterative's public (read only)
 model registry.
@@ -45,8 +38,8 @@ A model details page is divided into the following sections:
   - a button to
     [register a new version](/doc/studio/user-guide/model-registry/register-version),
     and
-  - information about how many projects in Iterative Studio have been created
-    from the model’s Git repository.
+  - information about how many projects in DVC Studio have been created from the
+    model’s Git repository.
 - Left section: The left section contains information that is specific to a
   particular registered version of the model. It has a version picker, which you
   can use to switch between different registered versions of the model. For the
@@ -57,11 +50,7 @@ A model details page is divided into the following sections:
   - all assigned stages,
   - version description and labels,
   - path to the model,
-  - metrics, params and plots, and
-  - model requirements and methods. Note that the requirements and methods are
-    identified by Iterative’s model deployment tool [MLEM]. If you have not used
-    MLEM, then Iterative Studio will not display any requirements or methods for
-    the model.
+  - metrics, params and plots.
 - Right section: The right section contains information that is applicable
   across all the versions of the model. In particular, it displays
   - the assigned stages for the different versions, and
@@ -89,8 +78,7 @@ This way you can compare both registered model versions and unregistered
 experimental iterations and make a decision to register a new version out of the
 latter.
 
-[mlem]: https://mlem.ai/
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [models dashboard]: https://studio.iterative.ai/team/Iterative/models
 [model detail page]:
   https://studio.iterative.ai/team/Iterative/models/PTzV-9EJgmZ6TGspXtwKqw==/lightgbm-model/v2.0.1

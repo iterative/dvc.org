@@ -1,5 +1,11 @@
 # DVCLive Documentation
 
+<admon type="info">
+
+DVCLive 3.0 is now available. Go to the [release notes] to see what changed.
+
+</admon>
+
 This documentation provides the details about the `dvclive` Python API module,
 which can be imported regularly, for example:
 
@@ -19,17 +25,10 @@ can jump directly to its corresponding page.
 ### Initialize DVCLive
 
 ```python
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
 ```
 
 See [`Live()`](/doc/dvclive/live) for details.
-
-<admon type="info">
-
-Including `save_dvc_exp=True` will automatically
-[track the results](/doc/dvclive/how-it-works#git-integration).
-
-</admon>
 
 ### Log data
 
@@ -65,6 +64,7 @@ See `Live.log_metric()`. </tab> <tab title="Parameters">
 <tab title="Parameters">
 ```python
 live.log_param("num_classes", 10)
+```
 
 ```python
 params = {
@@ -120,6 +120,8 @@ See `Live.next_step()`.
 Under the hood, `Live.next_step()` calls `Live.make_summary()`,
 `Live.make_dvcyaml()`, and `Live.make_report()`.
 
+When access is enabled, updates will be sent to DVC Studio.
+
 If you want to decouple the `step` update from the rest of the calls, you can
 manually modify the `Live.step` property and call `Live.make_summary()` /
 `Live.make_dvcyaml()` / `Live.make_report()`.
@@ -133,7 +135,7 @@ Joining the above snippets, you can include DVCLive in your training code:
 
 from dvclive import Live
 
-with Live(save_dvc_exp=True) as live:
+with Live() as live:
 
     live.log_param("epochs", NUM_EPOCHS)
 
@@ -152,23 +154,20 @@ with Live(save_dvc_exp=True) as live:
 ## Outputs
 
 After you run your training code, all the logged data will be stored in the
-`dvclive` directory. Check the [DVCLive outputs](/doc/dvclive/how-it-works) page
-for more details.
+`dvclive` [directory] and [tracked] as a <abbr>DVC experiment</abbr> for
+analysis and comparison.
 
 ## Run with DVC
 
 Experimenting in Python interactively (like in notebooks) is great for
 exploration, but eventually you may need a more structured way to run
-reproducible experiments. By configuring DVC [pipelines], you can [run
-experiments] with `dvc exp run`. This will track the inputs and outputs of code,
-and enable more advanced workflows like multi-step pipelines and queueing
-multiple experiments or even an entire grid search. See examples of how to [add
-DVCLive to a pipeline] or [add a pipeline to DVCLive code], or get more
-information about how to [setup a pipeline] to work with DVCLive.
+reproducible experiments. By configuring <abbr>DVC pipelines</abbr>, you can
+[run experiments] with `dvc exp run`. Pipelines help you organize your ML
+workflow beyond a single notebook or script so you can modularize and
+parametrize your code. See how to [setup a pipeline] to work with DVCLive.
 
-[run experiments with DVC]:
-  /doc/user-guide/experiment-management/running-experiments
-[pipelines]: /doc/user-guide/pipelines
-[add DVCLive to a pipeline]: /doc/start/data-management/metrics-parameters-plots
-[add a pipeline to DVCLive code]: /doc/start/experiments/experiment-pipelines
+[release notes]: https://github.com/iterative/dvclive/releases/tag/3.0.0
+[directory]: /doc/dvclive/how-it-works
+[tracked]: /doc/start/experiments/experiment-tracking
+[run experiments]: /doc/user-guide/experiment-management/running-experiments
 [setup a pipeline]: /doc/dvclive/how-it-works#setup-to-run-with-dvc

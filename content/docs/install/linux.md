@@ -134,8 +134,7 @@ $ sudo yum install dvc
 
 ## Install from package
 
-Get the binary package from the big "Download" button on the [home page](/), or
-from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
+Get the binary package from the big "Download" button on the [home page](/).
 Then install it with the following command.
 
 <details id="from-pkg-on-debian-ubuntu">

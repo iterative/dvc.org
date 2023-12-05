@@ -28,7 +28,7 @@ from dvclive.huggingface import DVCLiveCallback
     tokenizer=tokenizer,
     compute_metrics=compute_metrics,
 )
-trainer.add_callback(DVCLiveCallback(save_dvc_exp=True))
+trainer.add_callback(DVCLiveCallback())
 trainer.train()
 ```
 
@@ -63,7 +63,7 @@ If `log_model=True` DVCLive will save a copy of the last checkpoint to the
 `dvclive/artifacts` directory and annotate it with name `last` or `best` (if
 [args.load_best_model_at_end](https://huggingface.co/docs/transformers/main_classes/trainer#transformers.TrainingArguments.load_best_model_at_end)).
 
-This is useful to be consumed in [Studio model registry] or automation
+This is useful to be consumed in the <abbr>model registry</abbr> or automation
 scenarios.
 
 - Save the `last` checkpoint at the end of training:
@@ -72,7 +72,7 @@ scenarios.
 from dvclive.huggingface import DVCLiveCallback
 
 trainer.add_callback(
-    DVCLiveCallback(save_dvc_exp=True, log_model=True))
+    DVCLiveCallback(log_model=True))
 ```
 
 - Save the `best` checkpoint at the end of training:
@@ -82,7 +82,7 @@ from dvclive.huggingface import DVCLiveCallback
 
 trainer.args.load_best_model_at_end = True
 trainer.add_callback(
-    DVCLiveCallback(save_dvc_exp=True, log_model=True))
+    DVCLiveCallback(log_model=True))
 ```
 
 - Save updates to the checkpoints directory whenever a new checkpoint is saved:
@@ -91,7 +91,7 @@ trainer.add_callback(
 from dvclive.huggingface import DVCLiveCallback
 
 trainer.add_callback(
-    DVCLiveCallback(save_dvc_exp=True, log_model="all"))
+    DVCLiveCallback(log_model="all"))
 ```
 
 ### Passing additional DVCLive arguments
@@ -102,7 +102,7 @@ trainer.add_callback(
 from dvclive import Live
 from dvclive.huggingface import DVCLiveCallback
 
-with Live("custom_dir", save_dvc_exp=True) as live:
+with Live("custom_dir") as live:
     trainer = Trainer(
         model, args,
         train_dataset=train_data, eval_dataset=eval_data, tokenizer=tokenizer)
@@ -117,7 +117,7 @@ with Live("custom_dir", save_dvc_exp=True) as live:
 
 ```python
 trainer.add_callback(
-    DVCLiveCallback(save_dvc_exp=True, dir="custom_dir"))
+    DVCLiveCallback(dir="custom_dir"))
 ```
 
 ## Output format
@@ -135,5 +135,4 @@ Where:
 - `{metric}` is the name provided by the framework.
 
 [`live`]: /doc/dvclive/live
-[studio model registry]:
-  /doc/studio/user-guide/model-registry/what-is-a-model-registry
+[studio model registry]: /doc/studio/user-guide/model-registry

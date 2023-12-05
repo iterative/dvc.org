@@ -44,12 +44,11 @@ The method will dump the provided `datapoints` to
 `{Live.dir}/plots/custom/{name}.json` and store the provided properties to be
 included in the `plots` section written by `Live.make_dvcyaml()`.
 
-The example snippet would produce the following `dvc.yaml` in
-`{Live.dir}/{Live.dvc_file}`:
+The example snippet would produce the following `dvc.yaml`:
 
 ```yaml
 plots:
-  - plots/custom/iris_feature_importance.json:
+  - dvclive/plots/custom/iris_feature_importance.json:
       template: bar_horizontal
       x: importance
       y: name
@@ -76,7 +75,7 @@ Which can be rendered by `dvc plots`:
   [DVC plots template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to use. Defaults to `linear`.
 
-- `tile` - Title to be displayed. Defaults to
+- `title` - Title to be displayed. Defaults to
   `{Live.dir}/plots/custom/{name}.json`.
 
 - `x_label` - Label for the `x` axis. Defaults to the name passed as `x`.

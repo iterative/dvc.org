@@ -15,7 +15,7 @@ log_config = dict(
     interval=100,
     hooks=[
         dict(type='TextLoggerHook'),
-        dict(type='DvcliveLoggerHook', save_dvc_exp=True)
+        dict(type='DvcliveLoggerHook')
     ]
 )
 ```
@@ -39,7 +39,6 @@ log_config = dict(
         dict(type='TextLoggerHook'),
         dict(
             type='DvcliveLoggerHook',
-            save_dvc_exp=True,
             dir="custom_dir"
         )
     ]

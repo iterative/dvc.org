@@ -82,7 +82,7 @@ It includes information about the stage we added, like the executable command
 
 ```yaml
 stages:
-  prepare:
+  data_split:
     cmd: python src/data_split.py
     deps:
       - src/data_split.py
@@ -113,7 +113,7 @@ $ dvc stage add -n train \
 $ dvc stage add -n evaluate \
   -p base,evaluate \
   -d src/evaluate.py -d models/model.pkl -d data/test_data \
-  python src/evaluate.py
+  -o results python src/evaluate.py
 ```
 
 The `dvc.yaml` file is updated automatically and should include all the stages
@@ -155,6 +155,8 @@ stages:
     params:
       - base
       - evaluate
+    outs:
+      - results
 ```
 
 </details>

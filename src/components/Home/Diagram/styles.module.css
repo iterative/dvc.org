@@ -31,8 +31,7 @@
   margin-top: 49px;
 
   @media screen(mdMax) {
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: scroll hidden;
   }
 }
 

@@ -103,11 +103,13 @@ const SupportPage: React.FC = () => (
               <h3 className={styles.featureName}>Email</h3>
             </div>
             <div className={styles.featureDescription}>
-              Don’t hesitate to shoot us an email at{' '}
+              Email us at{' '}
               <Link className={styles.accent} href="mailto:support@dvc.org">
                 support@dvc.org
-              </Link>{' '}
-              with any questions.
+              </Link>
+              . For help with debugging DVC commands, run the commands with the{' '}
+              <span className={styles.accent}>--verbose</span> flag and include
+              the output if possible.
             </div>
             <div className={styles.featureFooter}>
               <Link

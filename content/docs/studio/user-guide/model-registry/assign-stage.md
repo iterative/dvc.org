@@ -3,7 +3,7 @@
 To manage model lifecycle, you can assign stages (such as `dev`, `staging`,
 `prod`, etc.) to specific model versions.
 
-To assign a stage to a model version, Iterative Studio uses [GTO] to create an
+To assign a stage to a model version, DVC Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified stage and version number. Refer
 to the [GTO docs][gto-format] to see the exact format of the Git tag.
 
@@ -22,7 +22,7 @@ You can assign a stage in any of the following ways:
    [`gto assign cv:pool-segmentation --version v0.0.1 --stage dev`][assign]
    (here, `cv` is the parent directory). To get a better idea about this case,
    check out this [example monorepo][monorepo].
-2. To assign stages using Iterative Studio, watch this tutorial video or read on
+2. To assign stages using DVC Studio, watch this tutorial video or read on
    below.
 
 https://www.youtube.com/watch?v=Vrp1O5lkWBo
@@ -45,8 +45,7 @@ https://www.youtube.com/watch?v=Vrp1O5lkWBo
 
    - GTO config files with stage names are specific to a Git repository. So,
      they apply only to models within one repository.
-   - Currently, you cannot make entries to the GTO config file from Iterative
-     Studio.
+   - Currently, you cannot make entries to the GTO config file from DVC Studio.
    - If you define stages in the config file at any point, any stage assignments
      after that point can use only the names defined in the config file.
 
@@ -65,12 +64,12 @@ If you go to your Git repository, you will see that a new Git tag referencing
 the selected version and stage has been created, indicating the stage
 assignment.
 
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
-[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tags-format
+[gto-format]: /doc/gto/user-guide#git-tags-format
 [CI/CD]:
   /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
 [MLEM]: https://mlem.ai/
-[assign]: https://mlem.ai/doc/gto/command-reference/assign
+[assign]: /doc/gto/command-reference/assign
 [monorepo]:
   https://github.com/iterative/monorepo-example/blob/add-cv-model/cv/dvc.yaml

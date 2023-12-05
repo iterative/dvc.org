@@ -4,7 +4,7 @@ New model versions can signify an important, published or released iteration. To
 register version, you first need to
 [add a model to the model registry](/doc/studio/user-guide/model-registry/add-a-model).
 
-To register a new version of a model, Iterative Studio uses [GTO] to create an
+To register a new version of a model, DVC Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified version number. Refer to the
 [GTO docs][gto-format] to see the exact format of the Git tag.
 
@@ -22,8 +22,8 @@ You can register a version in any of the following ways:
    [`gto register cv:pool-segmentation --version v0.0.1`][register] (here, `cv`
    is the parent directory). To get a better idea about this case, check out
    this [example monorepo][monorepo].
-2. To register versions using Iterative Studio, watch this tutorial video or
-   read on below.
+2. To register versions using DVC Studio, watch this tutorial video or read on
+   below.
 
 https://www.youtube.com/watch?v=eA70puzOp1o
 
@@ -60,14 +60,14 @@ available in the model `History` section as well as in the versions drop down.
 If you go to your Git repository, you will see that a new Git tag referencing
 the selected commit has been created, representing the new version.
 
-[gto]: https://mlem.ai/doc/gto
+[gto]: /doc/gto
 [git tag]: https://git-scm.com/docs/git-tag
-[gto-format]: https://mlem.ai/doc/gto/user-guide#git-tags-format
-[`gto` cli]: https://mlem.ai/doc/gto/command-reference
+[gto-format]: /doc/gto/user-guide#git-tags-format
+[`gto` cli]: /doc/gto/command-reference
 [semver]: https://semver.org/
 [CI/CD]:
   /doc/studio/user-guide/model-registry/use-models#deploying-and-publishing-models-in-cicd
 [MLEM]: https://mlem.ai/
-[register]: https://mlem.ai/doc/gto/command-reference/register
+[register]: /doc/gto/command-reference/register
 [monorepo]:
   https://github.com/iterative/monorepo-example/blob/add-cv-model/cv/dvc.yaml

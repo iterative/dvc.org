@@ -21,20 +21,15 @@ iterations of your ML project.
 
 ## Collecting metrics and plots
 
-First, let's see the mechanism to capture values for these ML attributes. Add
-and run a final evaluation stage to our [earlier pipeline]:
+First, let's see the mechanism to capture values for these ML attributes. Add a
+final evaluation stage to our [earlier pipeline]:
 
 ```cli
 $ dvc stage add -n evaluate \
   -d src/evaluate.py -d model.pkl -d data/features \
+  -o eval \
   python src/evaluate.py model.pkl data/features
-
-$ dvc repro
 ```
-
-[`evaluate.py`] uses [DVCLive] to write scalar metrics values (e.g. `AUC`) and
-plots data (e.g. `ROC curve`) to files in the `eval` directory that DVC can
-parse to compare and visualize across iterations.
 
 [earlier pipeline]: /doc/start/data-management/data-pipelines
 
@@ -51,45 +46,31 @@ evaluate:
     - data/features
     - model.pkl
     - src/evaluate.py
+  outs:
+    - eval
 ```
 
-Note that there are no outputs in this stage! This is because our metrics and
-plots files are small enough to track in Git, and they are unlikely to be
-dependencies of downstream stages, so we can ignore them from our stage
-definition. If you want to cache your plots with DVC, add `eval/plots` to the
-stage outputs the same way outputs were added in previous stages.
-
-Let's save this iteration so we can compare it later:
-
-```cli
-$ git add .gitignore dvc.yaml dvc.lock eval
-$ git commit -a -m "Create evaluation stage"
-```
+We cache your metrics and plots files with DVC, by making `eval` directory as a
+stage output the same way outputs were added in previous stages. This is the
+easiest way to handle this, and if amount of files and size is growing it
+doesn't affect your Git history. Alternatively it could be setup in more
+granular way to track certain metrics files or plots in Git, while other files
+could still be tracked by DVC.
 
 </details>
 
-You can view metrics and plots from the command line, or you can load your
-project in VS Code and use the [DVC Extension] to view metrics, plots, and more.
-
-You can view tracked metrics with `dvc metrics show `:
-
-```dvc
-$ dvc metrics show
-Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_auc.train
-eval/metrics.json  0.94496          0.97723           0.96191         0.98737
-```
-
-You can view plots with `dvc plots show` (shown below), which generates an HTML
-file you can open in a browser.
+[`evaluate.py`] uses [DVCLive] to write scalar metrics values (e.g. `AUC`) and
+plots data (e.g. `ROC curve`) to files in the `eval` directory that DVC can
+parse to compare and visualize across iterations. By default, DVCLive will
+configure metrics and plots for you in `dvc.yaml`, but in this example we
+customize them by editing `dvc.yaml` to combine train and test plots.
 
 <details>
 
 ### 💡 Expand to see how to customize metrics and plots
 
-You can customize metrics and plots by [configuring them][plots files] in the
-same `dvc.yaml` file where your stage definitions are saved. For example, to
-combine train and test data, and to set other custom attributes like titles, add
-the following to `dvc.yaml`:
+To combine train and test data, and to set other custom attributes like titles,
+we add the following to `dvc.yaml`:
 
 ```yaml
 metrics:
@@ -116,22 +97,34 @@ plots:
   - eval/importance.png
 ```
 
-To avoid duplicating the plots already configured by DVCLive, we set
-`Live(dvcyaml=False)` in [`evaluate.py`], which prevents DVCLive from
-[automatically configuring] them for us (it's also why we also need to add
-`metrics` above since DVCLive will no longer configure these for us either).
 This flexibility to define your own metrics and plots configuration means that
 you can even [generate your own] metrics and plots data without using DVCLive!
 
-Let's run again and save these changes:
+</details>
+
+Let's run and save these changes:
 
 ```cli
 $ dvc repro
 $ git add .gitignore dvc.yaml dvc.lock eval
-$ git commit -a -m "Customize evaluation plots"
+$ git commit -a -m "Create evaluation stage"
 ```
 
-</details>
+## Viewing metrics and plots
+
+You can view metrics and plots from the command line, or you can load your
+project in VS Code and use the [DVC Extension] to view metrics, plots, and more.
+
+You can view tracked metrics with `dvc metrics show `:
+
+```dvc
+$ dvc metrics show
+Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_auc.train
+eval/metrics.json  0.94496          0.97723           0.96191         0.98737
+```
+
+You can view plots with `dvc plots show` (shown below), which generates an HTML
+file you can open in a browser.
 
 ```cli
 $ dvc plots show
@@ -145,12 +138,6 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 
 [`evaluate.py`]:
   https://github.com/iterative/example-get-started/blob/master/src/evaluate.py
-[roc-auc]:
-  https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc
-[average precision]:
-  https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures
-[metrics file]: /doc/command-reference/metrics#supported-file-formats
-[automatically configuring]: /doc/dvclive/live/make_dvcyaml
 [generate your own]: /doc/user-guide/experiment-management/visualizing-plots
 
 Later we will see how to
@@ -277,11 +264,11 @@ commit.
 
 ```cli
 $ dvc metrics diff
-Path                    Metric          HEAD     workspace    Change
-eval/live/metrics.json  avg_prec.test   0.9014   0.925        0.0236
-eval/live/metrics.json  avg_prec.train  0.95704  0.97437      0.01733
-eval/live/metrics.json  roc_auc.test    0.93196  0.94602      0.01406
-eval/live/metrics.json  roc_auc.train   0.97743  0.98667      0.00924
+Path               Metric          HEAD     workspace    Change
+eval/metrics.json  avg_prec.test   0.9014   0.925        0.0236
+eval/metrics.json  avg_prec.train  0.95704  0.97437      0.01733
+eval/metrics.json  roc_auc.test    0.93196  0.94602      0.01406
+eval/metrics.json  roc_auc.train   0.97743  0.98667      0.00924
 ```
 
 And finally, we can compare all plots with a single command (we show only some

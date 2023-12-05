@@ -29,7 +29,7 @@ from DVCLive import Live
 
 ...
 
-with Live(report=None, save_dvc_exp=True) as live:
+with Live() as live:
 
     live.log_param("n_estimators", n_estimators)
 

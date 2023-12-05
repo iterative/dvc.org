@@ -1,7 +1,8 @@
 # push
 
 Upload tracked files or directories to [remote storage] based on the current
-`dvc.yaml` and `.dvc` files.
+<abbr>dvc files</abbr> files (and update the cloud info in those files if
+pushing to a [version-aware] remote).
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -206,8 +207,8 @@ state. We can see exactly what that means by looking in the project's
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ```cli
-$ tree .dvc/cache
-.dvc/cache
+$ tree .dvc/cache/files/md5
+.dvc/cache/files/md5
 ├── 02
 │   └── 423d88d184649a7157a64f28af5a73
 ├── 0b
@@ -225,8 +226,8 @@ $ tree .dvc/cache
 
 10 directories, 9 files
 
-$ tree ~/vault/recursive
-~/vault/recursive
+$ tree ~/vault/recursive/files/md5
+~/vault/recursive/files/md5
 ├── 0b
 │   └── d48000c6a4e359f4b81285abf059b5
 ├── 4a
@@ -332,3 +333,32 @@ $ aws s3api list-object-versions --bucket mybucket
         }
     ]
 ```
+
+With `version_aware` enabled, `dvc push` will also modify <abbr>dvc files</abbr>
+to capture the version information:
+
+```cli
+...
+    outs:
+    - path: data/prepared
+      hash: md5
+      files:
+      - relpath: test.tsv
+        md5: b656f1a8273d0c541340cb129fd5d5a9
+        size: 1708591
+        cloud:
+          versioned_store:
+            etag: b656f1a8273d0c541340cb129fd5d5a9
+            version_id: T6rFr7NSHkL3v9tGStO7GTwsVaIFl42T
+      - relpath: train.tsv
+        md5: 9ca281786366acca17632c27c5c5cc75
+        size: 6728772
+        cloud:
+          versioned_store:
+            etag: 9ca281786366acca17632c27c5c5cc75
+            version_id: XaYsHQHWK219n5MoCRe.Rr7LeNbbder_
+...
+```
+
+Always `dvc push` before `git commit` so that the updated cloud version info is
+available in Git.
