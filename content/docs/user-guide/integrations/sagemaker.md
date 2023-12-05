@@ -133,10 +133,7 @@ your CI/CD workflow. To start with the model registry, see how to:
 - [start using the model registry]
 - [deploy models with CI/CD]
 
-Our example repos show how to deploy with SageMaker. See example scripts for:
-
-- [triggering SageMaker deployment]
-- [deploying SageMaker endpoints]
+For a full example of how to deploy with SageMaker, see our [blog post].
 
 [experiments]: /doc/start/experiments
 [clone]: https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-git.html
@@ -159,3 +156,4 @@ Our example repos show how to deploy with SageMaker. See example scripts for:
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
 [deploying sagemaker endpoints]:
   https://github.com/iterative/example-get-started-experiments/blob/main/sagemaker/deploy_model.py
+[blog post]: https://iterative.ai/blog/sagemaker-model-deployment
