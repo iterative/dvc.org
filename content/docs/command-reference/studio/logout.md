@@ -17,6 +17,8 @@ usage: dvc studio logout [-h] [-q | -v]
 
 ## Options
 
-- `-h`, `--help` - show this help message and exit
-- `-q`, `--quiet` - Be quiet.
-- `-v`, `--verbose` - Be verbose.
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output.
+
+- `-v`, `--verbose` - displays detailed tracing information.

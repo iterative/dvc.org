@@ -1,7 +1,7 @@
 # studio
 
-Set of commands to authorize DVC with Studio and save the token to global [DVC
-configuration]: [login](/doc/command-reference/studio/login),
+Set of commands to authenticate DVC with Studio and save the token to global
+[DVC configuration]: [login](/doc/command-reference/studio/login),
 [logout](/doc/command-reference/studio/logout),
 [token](/doc/command-reference/studio/token),
 
@@ -14,24 +14,23 @@ configuration]: [login](/doc/command-reference/studio/login),
 usage: dvc studio [-h] [-q | -v] {login,logout,token} ...
 
 positional arguments:
-  {login,logout,token}  Use `dvc studio CMD --help` to display command-specific help.
-    login               Authenticate DVC with Studio host
-    logout              Logout user from Studio
-    token               View the token dvc uses to contact Studio
-
-options:
-  -h, --help            show this help message and exit
-  -q, --quiet           Be quiet.
-  -v, --verbose         Be verbose.
+  COMMAND
+    login               Authenticate DVC with Studio host.
+    logout              Logout user from Studio.
+    token               View the token dvc uses to contact Studio.
 ```
 
 ## Description
 
-`dvc studio` authorize dvc with Studio and set the token. When this is set, DVC
-uses this to share live experiments and notify Studio about pushed experiments.
+`dvc studio` authenticate DVC with Studio and set the token. Once this token has
+been properly configured, DVC will utilize it for seamlessly sharing live
+experiments and sending notifications to Studio regarding any experiments that
+have been pushed.
 
 ## Options
 
-- `-h`, `--help` - show this help message and exit
-- `-q`, `--quiet` - Be quiet
-- `-v`, `--verbose` - Be verbose
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output.
+
+- `-v`, `--verbose` - displays detailed tracing information.
