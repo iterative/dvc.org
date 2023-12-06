@@ -901,6 +901,10 @@
             "label": "PyTorch Lightning"
           },
           {
+            "slug": "fabric",
+            "label": "PyTorch Lightning Fabric"
+          },
+          {
             "slug": "scikit-learn",
             "label": "Scikit-learn"
           },
