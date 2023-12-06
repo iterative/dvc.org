@@ -1,13 +1,58 @@
 # Sharing Experiments
 
-You can send [live metrics and plots] to [DVC Studio], [push] entire completed
-<abbr>experiments</abbr> (including data, models, and code), and convert an
-experiment into a [persistent] branch or commit in your Git repo.
+You can control exactly which information gets shared from your experiments:
+
+- keep it all local
+- send [live metrics and plots] to [DVC Studio]
+- push <abbr>experiment</abbr> code and metadata to your Git repo
+- push data, models, and other artifacts to your DVC [remote storage]
 
 See the video below for how it all works using the [DVC Extension] for VS Code,
 or keep reading to go deeper.
 
 https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
+
+## Share everything
+
+By default, your experiments are stored only where they were run. To
+automatically share all experiment info, you will need a Git remote (for
+example, GitHub), a [DVC Studio] project connected to that Git remote, and DVC
+[remote storage] for any large artifacts you want DVC to track.
+
+To automatically push code to the Git remote and artifacts to the DVC remote,
+set the following environment variables:
+
+```cli
+$ export DVC_EXP_AUTO_PUSH=true
+$ export DVC_EXP_GIT_REMOTE=origin
+```
+
+`DVC_EXP_AUTO_PUSH` forces DVC to [push] all experiments to the Git remote at
+the completion of the experiment. DVC will also push all artifacts and other
+<abbr>cached</abbr> data to the DVC remote.
+
+`DVC_EXP_GIT_REMOTE` specifies the name of the Git remote where the experiment
+will be pushed (usually `origin`). Use `git remote -v` to see your available Git
+remotes, and adjust the value above if you want to push somewhere other than
+`origin`.
+
+To see these pushed experiments, go to
+[DVC Studio](https://studio.iterative.ai), configure your Git provider, and add
+a project using the same Git remote from above. Then navigate to the settings
+page, copy your
+[DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token),
+and
+[configure your environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
+
+```cli
+$ export DVC_STUDIO_TOKEN=***
+```
+
+Once configured, DVC Studio will provide realtime updates for all running
+experiments and show all completed experiments that were pushed.
+
+Keep reading for how to granularly control what information gets shared and
+when.
 
 ## Live metrics and plots
 

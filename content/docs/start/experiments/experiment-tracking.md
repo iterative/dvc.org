@@ -170,6 +170,13 @@ $ export DVC_STUDIO_TOKEN=***
 Once configured, DVC Studio will provide realtime updates for all running
 experiments and show all completed experiments that were pushed.
 
+<admon type="info">
+
+Learn more about
+[how experiment sharing works](/doc/user-guide/experiment-management/sharing-experiments).
+
+</admon>
+
 ## Tracking
 
 By following the steps above, you enable different options to monitor the

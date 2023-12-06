@@ -58,10 +58,6 @@
         "children": [
           "experiment-tracking",
           {
-            "label": "Collaborating on Experiments",
-            "slug": "experiment-collaboration"
-          },
-          {
             "label": "Experimenting Using Pipelines",
             "slug": "experiment-pipelines"
           }
