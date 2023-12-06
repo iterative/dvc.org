@@ -148,14 +148,6 @@ const menuData: IMenuData = {
       href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
       img: '/img/dvc_icon-color--square_vector.svg',
       imgAlt: 'DVC logo'
-    },
-    {
-      title: 'CML',
-      description: 'Open-source CI/CD for ML projects',
-      iconClass: styles.cmlIcon,
-      href: 'https://cml.dev/',
-      img: '/img/cml_icon-color--square_vector.svg',
-      imgAlt: 'CML logo'
     }
   ]
 }

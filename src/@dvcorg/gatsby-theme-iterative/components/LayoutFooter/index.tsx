@@ -13,7 +13,6 @@ import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-co
 import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
-import { ReactComponent as CmlSVG } from '../../../../../static/img/cml_icon-color--square_vector.svg'
 import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_icon-color--square_vector.svg'
 import { ReactComponent as IterativeSVG } from '../../../../../static/img/iterative_icon-color--square_vector.svg'
 
@@ -107,12 +106,6 @@ const footerListsData: Array<IFooterListData> = [
         href: '/',
         text: 'DVC',
         icon: <LogoSVG className={styles.productIcon} />
-      },
-      {
-        href: 'https://cml.dev/',
-        text: 'CML',
-        icon: <CmlSVG className={styles.productIcon} />,
-        target: '_blank'
       },
       {
         href: 'https://studio.iterative.ai/',
