@@ -109,7 +109,7 @@ const footerListsData: Array<IFooterListData> = [
       },
       {
         href: 'https://studio.iterative.ai/',
-        text: 'Studio',
+        text: 'DVC Studio',
         icon: <StudioSVG className={styles.productIcon} />,
         target: '_blank'
       },

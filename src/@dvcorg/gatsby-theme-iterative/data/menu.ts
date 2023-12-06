@@ -125,7 +125,7 @@ const menuData: IMenuData = {
   ],
   products: [
     {
-      title: 'Studio',
+      title: 'DVC Studio',
       description: 'Track experiments and share insights from ML projects',
       iconClass: styles.studioIcon,
       href: 'https://studio.iterative.ai/',
