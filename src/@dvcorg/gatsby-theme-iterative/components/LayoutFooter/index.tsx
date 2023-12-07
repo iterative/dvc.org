@@ -14,9 +14,9 @@ import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
 import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_icon-color--square_vector.svg'
-import { ReactComponent as IterativeSVG } from '../../../../../static/img/iterative_icon-color--square_vector.svg'
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
+import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
 const docsPage = getFirstPage()
 
@@ -202,14 +202,9 @@ const LayoutFooter: React.FC = () => (
       <div className={styles.bottomRow}>
         <p className={styles.companyLabel}>
           By{' '}
-          <Link
-            className={styles.companyName}
-            href="https://iterative.ai/"
-            target="_blank"
-          >
-            <IterativeSVG className={styles.companyLogo} />
-            iterative.ai
-          </Link>
+          <LogoGradient className="font-extrabold" href="https://dvc.ai">
+            dvc.ai
+          </LogoGradient>
           <span className={styles.companyDescription}>
             <ShowOnly as="span" on="desktop">
               {' '}
