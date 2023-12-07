@@ -8,7 +8,7 @@ import BetterTogether from './BetterTogether'
 const Hero = () => {
   return (
     <>
-      <HeroTitleSection className="pt-14" />
+      <HeroTitleSection />
       <HeroSection />
       <GetStartedWithDvcX />
       <BetterTogether />

@@ -3,9 +3,9 @@
     Datasets are getting larger, but the ability to iterate rapidly and
     efficiently is as important as ever.
   terminal: |
-    from dql.query import C, DatasetQuery
-    from dql.lib.webdataset import WebDataset
-    from dql.lib.gpt4_vision import DescribeImage
+    from dvcx.query import C, DatasetQuery
+    from dvcx.lib.webdataset import WebDataset
+    from dvcx.lib.gpt4_vision import DescribeImage
 
     prompt = "How many people in the image?"
 
