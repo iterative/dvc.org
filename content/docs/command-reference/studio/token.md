@@ -1,6 +1,6 @@
 ## studio token
 
-View the token dvc uses to contact Studio
+View the token DVC uses to contact Studio
 
 ## Synopsis
 

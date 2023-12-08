@@ -1,9 +1,9 @@
 # studio
 
-Set of commands to authenticate DVC with Studio and save the token to global
+A set of commands to authenticate DVC with Studio and save the token to global
 [DVC configuration]: [login](/doc/command-reference/studio/login),
 [logout](/doc/command-reference/studio/logout),
-[token](/doc/command-reference/studio/token),
+[token](/doc/command-reference/studio/token).
 
 [dvc configuration]:
   /doc/user-guide/project-structure/configuration#config-file-locations
@@ -17,15 +17,15 @@ positional arguments:
   COMMAND
     login               Authenticate DVC with Studio host.
     logout              Logout user from Studio.
-    token               View the token dvc uses to contact Studio.
+    token               View the token DVC uses to contact Studio.
 ```
 
 ## Description
 
-`dvc studio` authenticate DVC with Studio and set the token. Once this token has
-been properly configured, DVC will utilize it for seamlessly sharing live
-experiments and sending notifications to Studio regarding any experiments that
-have been pushed.
+`dvc studio` authenticates DVC with Studio and sets the token. Once this token
+has been properly configured, DVC will utilize it for seamlessly sharing live
+experiments, sending notifications to Studio regarding any experiments that have
+been pushed and downloading artifacts using `dvc artifacts get`
 
 ## Options
 
