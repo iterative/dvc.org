@@ -19,7 +19,7 @@ and assigns a random name as the token name.
 ## Options
 
 - `-H <hostname>`, `--hostname <hostname>` - the hostname of the Studio instance
-  to authenticate with. Defaults to `https://studio.iterative.ai`
+  to authenticate with. Defaults to `https://studio.iterative.ai`.
 
 - `-s <scopes>`, `--scopes <scopes>` - comma separated
   [values of scopes](#available-scopes) for the authentication token. Defaults
