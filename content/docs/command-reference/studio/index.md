@@ -1,6 +1,6 @@
 # studio
 
-A set of commands to authenticate DVC with Studio and save the token to global
+A set of commands to authenticate DVC with [Studio](https://studio.iterative.ai) and save the token to global
 [DVC configuration]: [login](/doc/command-reference/studio/login),
 [logout](/doc/command-reference/studio/logout),
 [token](/doc/command-reference/studio/token).
