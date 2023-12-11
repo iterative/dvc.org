@@ -25,7 +25,7 @@ positional arguments:
 `dvc studio` authenticates DVC with Studio and sets the token. Once this token
 has been properly configured, DVC will utilize it for seamlessly sharing live
 experiments, sending notifications to Studio regarding any experiments that have
-been pushed and downloading artifacts using `dvc artifacts get`
+been pushed and downloading artifacts using `dvc artifacts get`.
 
 ## Options
 
