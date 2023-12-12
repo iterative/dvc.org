@@ -243,6 +243,10 @@
           }
         ]
       },
+      {
+        "label": "Environment Variables",
+        "slug": "env"
+      },
       "troubleshooting",
       {
         "label": "Anonymized Usage Analytics",
