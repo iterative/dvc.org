@@ -105,7 +105,8 @@ to [DVCLive] for a helper to log plots.
 
 - `y` (_string, list, dict_) - source for the Y axis data:
 
-  If plot ID is a path, one or more column/field names is expected. For example:
+  If plot ID is a path, one or more column/field names is expected, or the last
+  column/field is used by default. For example:
 
   ```yaml
   plots:
