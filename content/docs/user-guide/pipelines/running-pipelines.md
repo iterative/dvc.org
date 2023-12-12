@@ -119,7 +119,8 @@ data that is actually needed to run the changed stages.
 <admon type="warn">
 
 In DVC>=3.0, `--allow-missing` will not skip data saved with DVC<3.0 because the
-hash type changed in DVC 3.0, which DVC considers a change to the data. See more
+hash type changed in DVC 3.0, which DVC considers a change to the data. To
+migrate data to the new hash type, run `dvc cache migrate --dvc-files`. See more
 information about [upgrading from DVC 2.x to 3.0](/doc/user-guide/upgrade).
 
 </admon>
