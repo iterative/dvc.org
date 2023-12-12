@@ -2,10 +2,6 @@
 
 List of environment variables to configure DVC behavior.
 
-- `DVC_EXP_AUTO_PUSH`: If `true`, run `dvc exp push` at the end of a successful
-  <abbr>experiment</abbr>.
-- `DVC_EXP_GIT_REMOTE`: The name of the Git remote to use in `DVC_EXP_AUTO_PUSH`
-  (for example, `origin`).
 - `DVC_NO_ANALYTICS`: If `true`, disables
   [analytics](/doc/user-guide/analytics). Overrides `dvc config core.analytics`.
 - `DVC_PAGER`: Set what program DVC uses for paging output (for example,
