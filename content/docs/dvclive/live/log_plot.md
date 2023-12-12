@@ -75,7 +75,7 @@ Which can be rendered by `dvc plots`:
   [DVC plots template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to use. Defaults to `linear`.
 
-- `tile` - Title to be displayed. Defaults to
+- `title` - Title to be displayed. Defaults to
   `{Live.dir}/plots/custom/{name}.json`.
 
 - `x_label` - Label for the `x` axis. Defaults to the name passed as `x`.

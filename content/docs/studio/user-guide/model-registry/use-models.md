@@ -7,7 +7,8 @@ capabilities.
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions using the DVC Studio [REST API], `dvc get`, or DVC [Python API].
+versions using the DVC Studio [REST API], `dvc artifacts get`, or DVC [Python
+API].
 
 Prerequisites:
 
@@ -27,6 +28,8 @@ Git repository, and you do not need to install DVC.
 [DVC Studio Access token]:
   /doc/studio/user-guide/account-management#studio-access-token
 [download a model artifact with DVC]: /doc/command-reference/artifacts/get
+[REST API]: /doc/studio/rest-api
+[Python API]: /doc/api-reference
 
 You can download the files that make up your model directly from DVC Studio.
 Head to the model details page of the model you would like to download and click
@@ -70,7 +73,7 @@ and assigns stages by creating Git tags, you can set up a CI/CD pipeline to be
 triggered when the tags are pushed to the repository.
 
 **To see an example**, check out
-[the workflow in the `example-gto` repository](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml).
+[Get Started: Using and Deploying Models](/doc/start/model-management/model-cicd).
 This workflow uses
 [the GTO GitHub Action](https://github.com/iterative/gto-action) that interprets
 a Git tag to find out the model's version and stage assignment (if any), reads
@@ -78,7 +81,7 @@ annotation details such as `path`, `type` and `description`, and downloads the
 model binaries if needed.
 
 For help **building an end-to-flow from model training to deployment using the
-DVC model registry**, refer the
+DVC model registry**, refer to the
 [tutorial on automating model deployment to Sagemaker](https://iterative.ai/blog/sagemaker-model-deployment).
 [Here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
 is the complete workflow script.

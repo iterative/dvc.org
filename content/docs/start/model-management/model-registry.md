@@ -12,7 +12,9 @@ idea to keep a <abbr>model registry</abbr> to manage the lifecycle of the models
 we get from our experiments. Using DVC and [DVC Studio](/doc/studio) we will set
 up a model registry where we can discover, share, deploy and audit all our
 models and which will serve as the single source of truth for our model
-management.
+management. If you prefer to see how to start managing models in DVC Studio as
+quickly as possible without walking through an example, see
+[Manage Models](/doc/studio/model-registry).
 
 <admon type="tip">
 
@@ -69,7 +71,8 @@ with Live(...) as live:
 
 Here the `path` parameter tells DVC that our model is to be found under
 `"models/model.pkl"`, the `type` parameter is `"model"` and so it will show up
-in DVC Studio (other artifact types will not). The rest of the parameters are
+in DVC Studio as a model type artifact (you can show other artifact types using
+filters, but they are hidden by default). The rest of the parameters are
 descriptive and optional and will also show up in DVC Studio.
 
 <details id="push-click-to-see-how-artifacts-are-registered">

@@ -236,8 +236,16 @@
           {
             "label": "Evidently",
             "slug": "evidently"
+          },
+          {
+            "label": "Hugging Face",
+            "slug": "huggingface"
           }
         ]
+      },
+      {
+        "label": "Environment Variables",
+        "slug": "env"
       },
       "troubleshooting",
       {
