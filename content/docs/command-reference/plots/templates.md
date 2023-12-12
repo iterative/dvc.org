@@ -43,21 +43,18 @@ inject the plot values.
 
 #### Optional
 
-- `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined with the
-  `--title` option of the `dvc plots` subcommands.
+- `<DVC_METRIC_TITLE>` - a title for the plot.
 
-- `<DVC_METRIC_X>` - field name of the data for the X axis. It can be defined
-  with the `-x` option of the `dvc plots` subcommands. The auto-generated `step`
-  field (explained below) is the default.
+- `<DVC_METRIC_X>` - field name of the data for the X axis. The auto-generated
+  `step` field (explained below) is the default.
 
-- `<DVC_METRIC_Y>` - field name of the data for the Y axis. It can be defined
-  with the `-y` option of the `dvc plots` subcommands. It defaults to the last
-  header of the metrics file: the last column for CSV/TSV, or the last field for
-  JSON/YAML.
+- `<DVC_METRIC_Y>` - field name of the data for the Y axis. It defaults to the
+  last header of the metrics file: the last column for CSV/TSV, or the last
+  field for JSON/YAML.
 
-- `<DVC_METRIC_X_LABEL>` - field name to display as the X axis label
+- `<DVC_METRIC_X_LABEL>` - field name to display as the X axis label.
 
-- `<DVC_METRIC_Y_LABEL>` - field name to display as the Y axis label
+- `<DVC_METRIC_Y_LABEL>` - field name to display as the Y axis label.
 
 - `<DVC_METRIC_COLOR>` - used to group experiment/commit information across
   separate plots by applying a static color to rev mapping. The mapping is
