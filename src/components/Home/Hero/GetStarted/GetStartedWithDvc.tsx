@@ -1,6 +1,5 @@
 import React from 'react'
 import HeroContainer from '../../../HeroContainer'
-import { StaticImage } from 'gatsby-plugin-image'
 import { cn } from '../../../../utils'
 
 import TwoRowsButtonLink from '../../../TwoRowsButton/link'
@@ -55,12 +54,7 @@ const GetStartedWithDvc = () => {
     <HeroContainer className="py-10 px-6" id="get-started-dvc">
       <div className="flex items-center md:justify-center">
         <h1 className={cn('text-2xl font-medium')}>Get Started with</h1>
-        <StaticImage
-          height={48}
-          src="../../../../../static/img/dvc_icon-color--square_vector.svg"
-          alt="DVC Logo"
-          className="ml-2"
-        />
+        <img src="/img/logos/dvc.svg" alt="DVC Logo" className="h-12 ml-2" />
       </div>
       <DvcSlides />
       <HeroButtons />

@@ -127,9 +127,10 @@ const HeroSection = () => {
                 ) : (
                   <span className="animate-pulse">---</span>
                 )}
-                <StaticImage
-                  src="../../../../static/img/landing/star-github.svg"
-                  alt="Star Github"
+                <img
+                  src="/img/landing/github.svg"
+                  alt="Github Logo"
+                  className="h-5 w-5"
                 />
               </Badge>
             </Link>
@@ -140,6 +141,8 @@ const HeroSection = () => {
       <SectionWrapper maxWidth="2xl">
         <div className={cn(styles.gridContainer)}>
           <StaticImage
+            placeholder="none"
+            loading="eager"
             src={'../../../../static/img/landing/Hero Visualization.svg'}
             quality={100}
             formats={['avif', 'webp', 'auto']}
