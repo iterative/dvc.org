@@ -49,9 +49,9 @@ linefeed character for newlines in its files, whereas macOS and Linux systems
 use only the linefeed character.
 
 Since DVC is using content-based checksums for your pipeline dependencies,
-depending on your GIT configuration (see
+depending on your Git configuration (see
 [core.autocrlf and core.eol config options](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)),
-DVC might see GIT-tracked files as changed, thus triggering pipeline
+DVC might see Git-tracked files as changed, thus triggering pipeline
 reproduction on `dvc repro` on one system and not on another. Thus we strongly
 recommend sticking with LF line endings when doing cross-platform work.
 
