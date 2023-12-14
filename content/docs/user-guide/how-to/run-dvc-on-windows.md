@@ -58,7 +58,7 @@ recommend sticking with LF line endings when doing cross-platform work.
 ### Configure your editor to use LF line endings
 
 Many editors on Windows will use CRLF line endings by default or even replace
-existing LF with CRLF. It is recommended that you configure your editor to stick
+existing LF with CRLF. It is recommended that you configure your editor 
 to always stick to LF line endings.
 
 For VS Code, add
