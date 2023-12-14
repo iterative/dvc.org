@@ -45,7 +45,7 @@ alternatives:
 If you are using Windows and you are working with people or environments (e.g.
 production) that are not, you’ll probably run into line-ending issues at some
 point. This is because Windows uses both a carriage-return character and a
-linefeed character for newlines in its files (CLRF), whereas macOS and Linux systems
+linefeed character for newlines in its files (CRLF), whereas macOS and Linux systems
 use only the linefeed character (LF).
 
 Since DVC is using content-based checksums for your pipeline dependencies,
