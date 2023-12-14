@@ -1,6 +1,6 @@
 ## studio token
 
-View the token DVC uses to contact Studio
+View the token DVC uses to contact Studio.
 
 ## Synopsis
 
@@ -10,7 +10,7 @@ usage: dvc studio token [-h] [-q | -v]
 
 ## Description
 
-`dvc token` shows the studio token stored in global [DVC configuration].
+`dvc token` shows the Studio token stored in global [DVC configuration].
 
 [dvc configuration]:
   /doc/user-guide/project-structure/configuration#config-file-locations

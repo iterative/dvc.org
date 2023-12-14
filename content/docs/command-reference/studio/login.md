@@ -1,6 +1,8 @@
 ## studio login
 
-Authenticate DVC with Studio to save the token to global [DVC configuration].
+Authenticate DVC with Studio to save a
+[client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+to global [DVC configuration].
 
 [dvc configuration]:
   /doc/user-guide/project-structure/configuration#config-file-locations
@@ -21,9 +23,10 @@ and assigns a random name as the token name.
 - `-H <hostname>`, `--hostname <hostname>` - the hostname of the Studio instance
   to authenticate with. Defaults to `https://studio.iterative.ai`.
 
-- `-s <scopes>`, `--scopes <scopes>` - comma separated
-  [values of scopes](#available-scopes) for the authentication token. Defaults
-  to all available scopes.
+- `-s <scopes>`, `--scopes <scopes>` - comma separated values of
+  [scopes](/doc/studio/user-guide/account-and-billing#client-access-tokens) for
+  the authentication token. Accepted scope values are `EXPERIMENTS`, `MODELS`,
+  and `DATASETS`. Defaults to all available scopes.
 
 - `-n <name>`, `--name <name>` - the name of the authentication token. It will
   be used to identify token shown in Studio profile. Defaults to a random name.
@@ -37,16 +40,3 @@ and assigns a random name as the token name.
 - `-q`, `--quiet` - do not write anything to standard output.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-## Available scopes
-
-- `EXPERIMENTS` - Experiment operations. DVC uses this to share [live
-  experiments] and to notify [Studio](https://studio.iterative.ai/) about
-  [pushed experiments]
-- `MODELS` - Model registry operations like downloading model using
-  `dvc artifacts get`
-- `DATASETS` - Dataset operations. [Coming soon](https://cloud.dvc.ai).
-
-[live experiments]:
-  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
-[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiments

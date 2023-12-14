@@ -10,7 +10,7 @@ usage: dvc studio logout [-h] [-q | -v]
 
 ## Description
 
-`dvc logout` removes the studio token stored from global [DVC configuration].
+`dvc logout` removes the Studio token stored from global [DVC configuration].
 
 [dvc configuration]:
   /doc/user-guide/project-structure/configuration#config-file-locations
