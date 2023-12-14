@@ -3,7 +3,7 @@
 ```py
 def log_plot(
     name: str,
-    datapoints: List[Dict],
+    datapoints: pd.DataFrame | np.ndarray | List[Dict],
     x: str,
     y: str,
     template: Optional[str] = None,
@@ -57,7 +57,9 @@ plots:
       y_label: Feature Name
 ```
 
-Which can be rendered by `dvc plots`:
+The plot can be rendered with
+[DVC CLI, VSCode Extension](/doc/user-guide/experiment-management/visualizing-plots)
+or [DVC Studio](/doc/studio/user-guide/experiments/visualize-and-compare).
 
 ![dvc plots show](/img/dvclive-log_plot.png)
 
@@ -65,7 +67,8 @@ Which can be rendered by `dvc plots`:
 
 - `name` - Name of the output file.
 
-- `datapoints` - List of dictionaries containing the data for the plot.
+- `datapoints` - Pandas DataFrame, Numpy Array or List of dictionaries
+  containing the data for the plot.
 
 - `x` - Name of the key (present in the dictionaries) to use as the `x` axis.
 
@@ -84,8 +87,8 @@ Which can be rendered by `dvc plots`:
 
 ## Example: Plot from Pandas DataFrame
 
-You can get the `datapoints` in the expected format from a
-[Pandas](https://pandas.pydata.org/docs/index.html) DataFrame:
+You can plot data from the [Pandas](https://pandas.pydata.org/docs/index.html)
+DataFrame format:
 
 ```py
 import pandas as pd
@@ -93,9 +96,7 @@ from dvclive import Live
 from sklearn.datasets import load_iris
 
 iris = load_iris()
-df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-
-datapoints = df.to_dict("records")
+datapoints = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 
 with Live() as live:
     live.log_plot(
@@ -107,4 +108,116 @@ with Live() as live:
         title="Sepal width vs Sepal length")
 ```
 
+The example snippet would produce the following `dvc.yaml`:
+
+```yaml
+plots:
+  - dvclive/plots/custom/sepal.json:
+      template: scatter
+      x: sepal length (cm)
+      y: sepal width (cm)
+      title: Sepal width vs Sepal length
+```
+
+Rendered plot:
+
 ![dvc plots show](/img/dvclive-log_plot-dataframe.png)
+
+## Example: Plot from Numpy Array
+
+DVCLive supports both structured Numpy arrays with named columns for descriptive
+data visualization and unstructured arrays for straightforward numerical
+plotting.
+
+### Example with Structured Numpy Array
+
+In this example, the Iris dataset is loaded and then converted into a structured
+Numpy Array. Each column name corresponds to a feature of the Iris dataset.
+
+```py
+import numpy as np
+from dvclive import Live
+from sklearn.datasets import load_iris
+
+# Create a structured array
+iris = load_iris()
+dtypes = [(name, float) for name in iris.feature_names]
+data = np.array([tuple(row) for row in iris.data], dtype=dtypes)
+
+with Live() as live:
+
+    live.log_plot(
+        "sepal_array_named",
+        data,
+        x="sepal length (cm)",
+        y="sepal width (cm)",
+        template="smooth",
+        title="Numpy Array with Names"
+    )
+```
+
+The `log_plot()` method creates a `smooth` plot. Labels for `X`and `Y` extracted
+from column names automatically.
+
+The example snippet would produce the following `dvc.yaml`:
+
+```yaml
+plots:
+  - dvclive/plots/custom/sepal_array_named.json:
+      template: smooth
+      x: sepal length (cm)
+      y: sepal width (cm)
+      title: Numpy Array with Names
+```
+
+Rendered plot:
+
+![dvc plots show](/img/dvclive-log_plot-structured_array.png)
+
+### Example: Plot from Unstructured Numpy Array
+
+This example visualizes training loss over epochs using a two-column array
+without named columns. In unstructured arrays like this, DVCLive numerically
+indexes the columns, such as "0", "1", and so on.
+
+```py
+import numpy as np
+from dvclive import Live
+
+# Create an unstructured array
+epochs = np.arange(1, 16)
+values = np.sort(np.random.uniform(0.45, 0.965, 15))
+data = np.column_stack((epochs, values))
+
+with Live() as live:
+    live.log_plot(
+        "training_loss_plot",
+        data,
+        x="0",
+        y="1",
+        template="linear",
+        title="Training Loss",
+        x_label="Epochs",
+        y_label="Loss"
+    )
+```
+
+The log_plot() method generates a linear plot titled "Training Loss", utilizing
+the provided labels to name the x-axis and y-axis.
+
+The example snippet would produce the following `dvc.yaml`:
+
+```yaml
+plots:
+  - dvclive/plots/custom/training_loss_plot.json:
+      template: linear
+      x: '0'
+      y: '1'
+      title: Training Loss
+      x_label: Epochs
+      y_label: Loss
+```
+
+Rendered with `dvc plots`:
+
+![dvc plots show](/img/dvclive-log_plot-unstructured.png)
