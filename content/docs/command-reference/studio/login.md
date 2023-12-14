@@ -40,6 +40,13 @@ and assigns a random name as the token name.
 
 ## Available scopes
 
-- `EXPERIMENTS` - Experiment operations
-- `DATASETS` - Dataset operations
-- `MODELS` - Model registry operations
+- `EXPERIMENTS` - Experiment operations. DVC uses this to share [live
+  experiments] and to notify [Studio](https://studio.iterative.ai/) about
+  [pushed experiments]
+- `MODELS` - Model registry operations like downloading model using
+  `dvc artifacts get`
+- `DATASETS` - Dataset operations. [Coming soon](https://cloud.dvc.ai).
+
+[live experiments]:
+  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiments
