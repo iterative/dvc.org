@@ -74,10 +74,15 @@ granting full access to your Studio account.
 
 The available scopes are:
 
-- `Experiment operations` - DVC uses this to share <abbr>experiments</abbr>.
-- `Model Registry operations` - <abbr>Model registry</abbr> operations like
-  downloading models.
+- `Experiment operations` - DVC uses this to share [live experiments] and to
+  notify [Studio](https://studio.iterative.ai/) about [pushed experiments].
 - `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
+- `Model registry operations` - like downloading model using
+  `dvc artifacts get`.
+
+[live experiments]:
+  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiment
 
 ### Cloud credentials
 
