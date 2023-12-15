@@ -18,7 +18,7 @@ positional arguments:
 
 Parameters can be any values used inside your code to influence the results
 (e.g. machine learning [hyperparameters]). DVC can track these as key/value
-pairs from structured YAML 1.2, JSON, TOML 1.0,
+pairs from structured YAML 1.2, JSON, INI (`.ini` or `.cfg`), TOML 1.0,
 [or Python](#examples-python-parameters-file) files (`params.yaml` by default).
 Params usually have simple names like `epochs`, `learning-rate`, `batch_size`,
 etc. Example:
