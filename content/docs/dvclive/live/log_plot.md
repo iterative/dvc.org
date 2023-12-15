@@ -156,8 +156,8 @@ with Live() as live:
     )
 ```
 
-The `log_plot()` method creates a `smooth` plot. Labels for `X`and `Y`are  extracted
-from column names automatically.
+The `log_plot()` method creates a `smooth` plot. Labels for `X`and `Y`are
+extracted from column names automatically.
 
 The example snippet would produce the following `dvc.yaml`:
 
