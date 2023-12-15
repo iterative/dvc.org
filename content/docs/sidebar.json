@@ -583,6 +583,25 @@
         "slug": "status"
       },
       {
+        "label": "studio",
+        "slug": "studio",
+        "source": "studio/index.md",
+        "children": [
+          {
+            "label": "studio login",
+            "slug": "login"
+          },
+          {
+            "label": "studio logout",
+            "slug": "logout"
+          },
+          {
+            "label": "studio token",
+            "slug": "token"
+          }
+        ]
+      },
+      {
         "label": "unfreeze",
         "slug": "unfreeze"
       },

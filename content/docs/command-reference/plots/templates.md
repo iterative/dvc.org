@@ -44,25 +44,30 @@ inject the plot values.
 #### Optional
 
 - `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined with the
-  `--title` option of the `dvc plots` subcommands.
+  `title` [field] in `dvc.yaml` or the `--title` option of the `dvc plots`
+  subcommands.
 
 - `<DVC_METRIC_X>` - field name of the data for the X axis. It can be defined
-  with the `-x` option of the `dvc plots` subcommands. The auto-generated `step`
-  field (explained below) is the default.
+  with the `x` [field] in `dvc.yaml` or the `-x` option of the `dvc plots`
+  subcommands. The auto-generated `step` field (explained below) is the default.
 
 - `<DVC_METRIC_Y>` - field name of the data for the Y axis. It can be defined
-  with the `-y` option of the `dvc plots` subcommands. It defaults to the last
-  header of the metrics file: the last column for CSV/TSV, or the last field for
-  JSON/YAML.
+  with the `y` [field] in `dvc.yaml` or the `-y` option of the `dvc plots`
+  subcommands. It defaults to the last header of the metrics file: the last
+  column for CSV/TSV, or the last field for JSON/YAML.
 
-- `<DVC_METRIC_X_LABEL>` - field name to display as the X axis label
+- `<DVC_METRIC_X_LABEL>` - field name to display as the X axis label. It can be
+  defined with the `x_label` [field] in `dvc.yaml` or the `--x-label` option of
+  the `dvc plots` subcommands.
 
-- `<DVC_METRIC_Y_LABEL>` - field name to display as the Y axis label
+- `<DVC_METRIC_Y_LABEL>` - field name to display as the Y axis label. It can be
+  defined with the `y_label` [field] in `dvc.yaml` or the `--y-label` option of
+  the `dvc plots` subcommands.
 
 - `<DVC_METRIC_COLOR>` - used to group experiment/commit information across
   separate plots by applying a static color to rev mapping. The mapping is
   auto-generated in the case of the `dvc plots` subcommands but can be selected
-  through the UI in the VS Code extension amd Studio.
+  through the UI in the [DVC extension for VS Code] and [DVC Studio].
 
 - `<DVC_METRIC_PLOT_HEIGHT>`- used by the VS Code extension/Studio to
   dynamically resize the height of plots.
@@ -148,3 +153,8 @@ file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_templates_show_modified.svg)
+
+[field]:
+  /doc/user-guide/project-structure/dvcyaml-files#available-configuration-fields
+[DVC extension for VS Code]: /doc/vs-code-extension
+[DVC Studio]: /doc/studio
