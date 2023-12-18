@@ -136,7 +136,9 @@ cannot use the GitHub action. However, we can still use GTO directly with the
 same result.
 
 This is captured in the "parse" job which you can simply copy and paste into
-most CICD jobs of your own. <toggle>
+most CICD jobs of your own.
+
+<toggle>
 
 <tab title="GitHub">
 
