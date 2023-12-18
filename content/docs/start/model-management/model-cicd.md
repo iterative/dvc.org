@@ -74,12 +74,12 @@ specific format.
 This also means that we can create CICD actions in our Git repository which will
 be triggered whenever versions are registered or stages are assigned.
 
-In the following, we will have a look at an example CICD workflow on GitHub and
-GitLab which runs whenever we assign a version of our model to the "prod" stage
-in the model registry. The workflow simulates model deployment without the need
-to actually set up a deployment environment (so that you can test it easier) but
-it does include all the ingredients needed in an actual deployment job or any
-other CICD action.
+In the following, we will have a look at an example CICD workflow on GitHub and GitLab
+which runs whenever we assign a version of our model to the "prod" stage in the
+model registry. The workflow simulates model deployment without the need to
+actually set up a deployment environment (so that you can test it easier) but it
+does include all the ingredients needed in an actual deployment job or any other
+CICD action.
 
 <admon type="tip">
 
@@ -108,7 +108,6 @@ on:
     tags:
       - '*'
 ```
-
 </tab>
 
 <tab title="GitLab">
@@ -119,25 +118,22 @@ workflow:
     # the workflow is triggered whenever a tag is pushed to the repository
     - if: $CI_COMMIT_TAG
 ```
-
 </tab>
-
 </toggle>
 
-The code tells GitHub/GitLab to run the workflow every time a tag is pushed to
-the repository.
+The code tells GitHub/GitLab to run the workflow every time a tag is pushed to the
+repository.
 
 This means that the workflow will run whenever we run model registry actions,
 but we also want it to limit to specific ones for our specific workflow. That's
 where our GTO GitHub action comes into play - in the "parse" job of our workflow
 it parses all tags and if they are GTO tags, it gives us the name of the model,
-its version, stage (if any) and the event in the model registry. In GitLab CI we
-cannot use the GitHub action. However, we can still use GTO directly with the
-[gto check-ref](/doc/gto/command-reference/check-ref) command to achieve the
-same result.
+its version, stage (if any) and the event in the model registry. In GitLab CI we cannot use the GitHub action. However, we can still use GTO directly with the
+[gto check-ref](/doc/gto/command-reference/check-ref) command to achieve the same result.
 
 This is captured in the "parse" job which you can simply copy and paste into
-most CICD jobs of your own. <toggle>
+most CICD jobs of your own.
+<toggle>
 
 <tab title="GitHub">
 
@@ -156,34 +152,29 @@ parse:
     stage: ${{ steps.gto.outputs.stage }}
     version: ${{ steps.gto.outputs.version }}
 ```
-
 </tab>
-
 <tab title="GitLab">
 
 ```yaml
 parse:
   # This job parses the model tag to identify model registry actions
   image: python:3.11-slim
-  script:
-    # Install GTO to parse model tags
-    - pip install gto
-    # This job parses the model tags to identify model registry actions
-    - echo "CI_COMMIT_TAG - ${CI_COMMIT_TAG}"
-    - echo MODEL_NAME="$(gto check-ref ${CI_COMMIT_TAG} --name)" >> parse.env
-    - echo MODEL_VERSION="$(gto check-ref ${CI_COMMIT_TAG} --version)" >>
-      parse.env
-    - echo MODEL_EVENT="$(gto check-ref ${CI_COMMIT_TAG} --event)" >> parse.env
-    - echo MODEL_STAGE="$(gto check-ref ${CI_COMMIT_TAG} --stage)" >> parse.env
-    # Print variables saved to parse.env
-    - cat parse.env
+  script: 
+  # Install GTO to parse model tags
+  - pip install gto
+  # This job parses the model tags to identify model registry actions
+  - echo "CI_COMMIT_TAG - ${CI_COMMIT_TAG}" 
+  - echo MODEL_NAME="$(gto check-ref ${CI_COMMIT_TAG} --name)" >> parse.env
+  - echo MODEL_VERSION="$(gto check-ref ${CI_COMMIT_TAG} --version)" >> parse.env
+  - echo MODEL_EVENT="$(gto check-ref ${CI_COMMIT_TAG} --event)" >> parse.env
+  - echo MODEL_STAGE="$(gto check-ref ${CI_COMMIT_TAG} --stage)" >> parse.env
+  # Print variables saved to parse.env
+  - cat parse.env
   artifacts:
     reports:
       dotenv: parse.env
 ```
-
 </tab>
-
 </toggle>
 
 The next job called "deploy-model" actually performs the action. First, it uses
@@ -202,7 +193,6 @@ deploy-model:
     ${{ needs.parse.outputs.event == 'assignment' && needs.parse.outputs.stage
     == 'prod' }}
 ```
-
 </tab>
 
 <tab title="GitLab">
@@ -210,16 +200,16 @@ deploy-model:
 ```yaml
 deploy-model:
   needs:
-    - job: parse
-      artifacts: true
+  - job: parse
+    artifacts: true
   image: python:3.11-slim
-  script:
-    # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
-    - if [[ $MODEL_EVENT == 'assignment' && $MODEL_STAGE == 'prod' ]]; then echo
-      "Deploy model"; else exit 1; fi
+  script: 
+  # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
+  - if [[ $MODEL_EVENT == 'assignment' && $MODEL_STAGE == 'prod' ]]; then echo "Deploy model"; else exit 1; fi
 ```
-
+</tab>
 </toggle>
+
 
 The next step of the workflow sets up DVC (using a GitHub Action, but this can
 also be done manually as in the GitLab example below).
@@ -258,22 +248,20 @@ steps:
   - dvc artifacts get  ${CI_REPOSITORY_URL} ${MODEL_NAME} --rev ${MODEL_VERSION}
   - echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
 ```
+</tab>
+</toggle>
 
 Here, we are using the outputs of the `parse` job to specify the correct model
-version. We are then setting up the DVC Studio token which we stored in our
-repository as a
-[GitHub secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
-(or a [GitLab CI variable](https://docs.gitlab.com/ee/ci/variables/)) to manage
-authentication with the
+version. We are then setting up the DVC Studio token which we stored in our repository as a
+[GitHub secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) (or a [GitLab CI variable](https://docs.gitlab.com/ee/ci/variables/)) to manage authentication with the
 [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
-This way we only need to keep the DVC Studio token saved on GitHub/GitLab and
-let Studio manage the specific storage credentials for us.
+This way we only need to keep the DVC Studio token saved on GitHub/GitLab and let
+Studio manage the specific storage credentials for us.
 
 Finally, `github.server_url` and `github.repository` are
 [default environmental variables in GitHub](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
-which together form the URL of our repository on GitHub. On
-GitLab,`CI_REPOSITORY_URL` serves the same purpose. We could of course also
-specify the URL manually.
+which together form the URL of our repository on GitHub. On GitLab,`CI_REPOSITORY_URL` serves the same purpose. We could of course also
+specify the URL manually. 
 
 If you don't use DVC Studio, you can still use `dvc artifacts get` but you will
 need to keep your remote storage credentials on GitHub and use them to configure
@@ -331,7 +319,6 @@ jobs:
           dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
           echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
 ```
-
 </tab>
 
 <tab title="GitLab">
@@ -347,39 +334,35 @@ workflow:
 parse:
   # This job parses the model tag to identify model registry actions
   image: python:3.11-slim
-  script:
-    # Install GTO to parse model tags
-    - pip install gto
-    # This job parses the model tags to identify model registry actions
-    - echo "CI_COMMIT_TAG - ${CI_COMMIT_TAG}"
-    - echo MODEL_NAME="$(gto check-ref ${CI_COMMIT_TAG} --name)" >> parse.env
-    - echo MODEL_VERSION="$(gto check-ref ${CI_COMMIT_TAG} --version)" >>
-      parse.env
-    - echo MODEL_EVENT="$(gto check-ref ${CI_COMMIT_TAG} --event)" >> parse.env
-    - echo MODEL_STAGE="$(gto check-ref ${CI_COMMIT_TAG} --stage)" >> parse.env
-    # Print variables saved to parse.env
-    - cat parse.env
+  script: 
+  # Install GTO to parse model tags
+  - pip install gto
+  # This job parses the model tags to identify model registry actions
+  - echo "CI_COMMIT_TAG - ${CI_COMMIT_TAG}" 
+  - echo MODEL_NAME="$(gto check-ref ${CI_COMMIT_TAG} --name)" >> parse.env
+  - echo MODEL_VERSION="$(gto check-ref ${CI_COMMIT_TAG} --version)" >> parse.env
+  - echo MODEL_EVENT="$(gto check-ref ${CI_COMMIT_TAG} --event)" >> parse.env
+  - echo MODEL_STAGE="$(gto check-ref ${CI_COMMIT_TAG} --stage)" >> parse.env
+  # Print variables saved to parse.env
+  - cat parse.env
   artifacts:
     reports:
       dotenv: parse.env
 
 deploy-model:
   needs:
-    - job: parse
-      artifacts: true
+  - job: parse
+    artifacts: true
   image: python:3.11-slim
-  script:
-    # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
-    - if [[ $MODEL_EVENT == 'assignment' && $MODEL_STAGE == 'prod' ]]; then echo
-      "Deploy model"; else exit 1; fi
-    # Install DVC
-    - pip install dvc
-    # Build commands to download and deploy the model
-    - dvc config --global studio.token ${DVC_STUDIO_TOKEN}
-    - dvc artifacts get  ${CI_REPOSITORY_URL} ${MODEL_NAME} --rev
-      ${MODEL_VERSION}
-    - echo "The right model is available and you can use the rest of this
-      command to deploy it. Good job!"
+  script: 
+  # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
+  - if [[ $MODEL_EVENT == 'assignment' && $MODEL_STAGE == 'prod' ]]; then echo "Deploy model"; else exit 1; fi
+  # Install DVC
+  - pip install dvc
+  # Build commands to download and deploy the model
+  - dvc config --global studio.token ${DVC_STUDIO_TOKEN}
+  - dvc artifacts get  ${CI_REPOSITORY_URL} ${MODEL_NAME} --rev ${MODEL_VERSION}
+  - echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
 ```
-
 </tab>
+</toggle>
