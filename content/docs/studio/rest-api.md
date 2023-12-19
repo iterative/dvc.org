@@ -7,15 +7,14 @@ The API is hosted under the `/api` route on the DVC Studio server:
 https://studio.iterative.ai/api or https://your-domain/api in case of
 [self-hosted DVC Studio](/doc/studio/self-hosting/installation).
 
-To use API, you need to generate
-[DVC Studio access token](/doc/studio/user-guide/account-management#studio-access-token).
+To use API, you need to generate [DVC Studio tokens].
 
 ## Download model
 
 Get signed URL to download the model binaries for a model from the <abbr>model
 registry</abbr>. Requires the model to be stored with DVC with a S3, Azure, http
 or https [remote]. Note, that you need to
-[set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
+[set up remote cloud connections](/doc/studio/user-guide/account-and-billing#cloud-connections)
 for DVC Studio to have rights to the signed URLs. The signed URLs expire after
 one hour.
 
@@ -52,8 +51,8 @@ actually download the model.
 
 ### Example
 
-First, you need your [DVC Studio access token]. For this example, we set it in
-the `DVC_STUDIO_TOKEN` environment variable:
+First, you need your [DVC Studio tokens]. For this example, we set it in the
+`DVC_STUDIO_TOKEN` environment variable:
 
 ```sh
 export DVC_STUDIO_TOKEN=<TOKEN>
@@ -107,7 +106,6 @@ cloud credentials] in DVC Studio to where the model is stored.
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [`dvc.yaml`]: /doc/user-guide/project-structure/dvcyaml-files
-[DVC Studio access token]:
-  /doc/studio/user-guide/account-management#studio-access-token
+[DVC Studio tokens]: /doc/studio/user-guide/account-and-billing#tokens
 [set up remote cloud credentials]:
   /doc/studio/user-guide/account-management#cloud-credentials
