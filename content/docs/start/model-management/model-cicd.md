@@ -53,11 +53,13 @@ Now you can use the following command to download the model:
 $ dvc artifacts get https://github.com/<user>/example-get-started-experiments pool-segmentation
 ```
 
-Here you just need to replace `<user>` with your GitHub user (on GitLab the URL is analogous). This will download
-the latest version of the `pool-segmentation` model from the DVC remote
-associated with the Git repository in the URL. You can also specify a different
-artifact version or a model registry stage. See the `dvc artifacts get`
-documentation for all options. [Later in this guide](#deploy-the-model) we will see how to use this same command as a part of your CICD.
+Here you just need to replace `<user>` with your GitHub user (on GitLab the URL
+is analogous). This will download the latest version of the `pool-segmentation`
+model from the DVC remote associated with the Git repository in the URL. You can
+also specify a different artifact version or a model registry stage. See the
+`dvc artifacts get` documentation for all options.
+[Later in this guide](#deploy-the-model) we will see how to use this same
+command as a part of your CICD.
 
 If you don't have a DVC Studio account at all, you can still use
 `dvc artifacts get` to download models, but you will need to provide the correct
@@ -92,7 +94,9 @@ for inference whenever it is assigned to a stage.
 
 ### Setup the workflow
 
-In this subsection, we will set up a trigger for our CICD workflow and parse the information from model registry actions. This is also mostly boilerplate code which you can simply copy and paste verbatim into your own workflows.
+In this subsection, we will set up a trigger for our CICD workflow and parse the
+information from model registry actions. This is also mostly boilerplate code
+which you can simply copy and paste verbatim into your own workflows.
 
 Go to the `.github/workflows/deploy-model-template.yml`. This is the file that
 GitHub uses to run our CICD workflow. You can see
@@ -128,13 +132,18 @@ workflow:
 </toggle>
 
 The code tells GitHub/GitLab to run the workflow every time a tag is pushed to
-the repository. This means that the workflow will be triggered whenever we run model registry actions.
+the repository. This means that the workflow will be triggered whenever we run
+model registry actions.
 
-Next, we want our workflow to understand the model registry event so that we can use that information to modify its behaviour. This is where our GTO GitHub action comes into play - in the "parse" job of our workflow
-it parses all tags and if they are GTO tags, it gives us the name of the model,
-its version, stage (if any) and the event in the model registry. 
+Next, we want our workflow to understand the model registry event so that we can
+use that information to modify its behaviour. This is where our GTO GitHub
+action comes into play - in the "parse" job of our workflow it parses all tags
+and if they are GTO tags, it gives us the name of the model, its version, stage
+(if any) and the event in the model registry.
 
-In GitLab CI we cannot use the GitHub action. However, we can still use GTO directly with the [gto check-ref](/doc/gto/command-reference/check-ref) command to achieve the same result.
+In GitLab CI we cannot use the GitHub action. However, we can still use GTO
+directly with the [gto check-ref](/doc/gto/command-reference/check-ref) command
+to achieve the same result.
 
 <toggle>
 
@@ -186,7 +195,11 @@ parse:
 ### Deploy the model
 
 The next job called "deploy-model" actually performs the action. First, it uses
-the outputs of the "parse" job we defined in the previous subsection and checks whether the action should be performed. If the tag was produced by the model registry and if the corresponding action was assignment to the "prod" stage, it proceeds with the rest of the workflow. You can change these conditions to match your specific workflow.
+the outputs of the "parse" job we defined in the previous subsection and checks
+whether the action should be performed. If the tag was produced by the model
+registry and if the corresponding action was assignment to the "prod" stage, it
+proceeds with the rest of the workflow. You can change these conditions to match
+your specific workflow.
 
 <toggle>
 
@@ -224,9 +237,13 @@ deploy-model:
 </toggle>
 
 The next step of the workflow sets up DVC (using a GitHub Action, but this can
-also be done manually as in the GitLab example below). This allows us to run the same `dvc artifacts get` we used [at the start of this chapter](#downloading-models) to download models. 
+also be done manually as in the GitLab example below). This allows us to run the
+same `dvc artifacts get` we used
+[at the start of this chapter](#downloading-models) to download models.
 
-Finally, in the last step of the workflow, we use `dvc artifacts get` to download the correct version of the model which can then be deployed or otherwise used in our CICD.
+Finally, in the last step of the workflow, we use `dvc artifacts get` to
+download the correct version of the model which can then be deployed or
+otherwise used in our CICD.
 
 <toggle>
 
@@ -274,14 +291,14 @@ let Studio manage the specific storage credentials for us.
 
 Finally, `github.server_url` and `github.repository` are
 [default environmental variables in GitHub](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
-which together form the URL of our repository on GitHub. On
-GitLab, `CI_REPOSITORY_URL` serves the same purpose. We could of course also
-specify the URL manually.
+which together form the URL of our repository on GitHub. On GitLab,
+`CI_REPOSITORY_URL` serves the same purpose. We could of course also specify the
+URL manually.
 
 If you don't use DVC Studio, you can still use `dvc artifacts get` but you will
-need to keep your remote storage credentials on GitHub/GitLab and use them to configure
-DVC in the CICD workflow. You will also need to checkout the repository in the
-workflow. You can see more details in the
+need to keep your remote storage credentials on GitHub/GitLab and use them to
+configure DVC in the CICD workflow. You will also need to checkout the
+repository in the workflow. You can see more details in the
 [documentation](/doc/command-reference/artifacts/get#description).
 
 ### Complete CICD templates
