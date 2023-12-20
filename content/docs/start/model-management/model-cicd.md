@@ -83,6 +83,122 @@ to actually set up a deployment environment (so that you can test it easier) but
 it does include all the ingredients needed in an actual deployment job or any
 other CICD action.
 
+### Complete CICD templates
+
+You can simply re-use the CICD template below and copy it into your projects. Then all you need to do is to save the [DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token) as a
+[GitHub secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
+(or a [GitLab CI variable](https://docs.gitlab.com/ee/ci/variables/)) to manage
+authentication with the
+[DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
+This way we only need to keep the [DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token) saved on GitHub/GitLab and
+let Studio manage the specific storage credentials for us.
+
+In your own use-cases you might want to modify a few things about the workflow and you can find a more detailed explanation of the CICD workflow in the [following subsections](#setup-the-workflow). There you can also read about how you can set up these CICD jobs without DVC Studio.
+
+<toggle>
+
+<tab title="GitHub">
+
+```yaml
+name: Deploy Model (Template)
+
+on:
+  # the workflow is triggered whenever a tag is pushed to the repository
+  push:
+    tags:
+      - '*'
+jobs:
+  # This job parses the git tag with the GTO GitHub Action to identify model registry actions. You can most likely copy this job and what precedes it verbatim into your own workflow
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 'Parse GTO tag'
+        id: gto
+        uses: iterative/gto-action@v2
+    outputs:
+      event: ${{ steps.gto.outputs.event }}
+      name: ${{ steps.gto.outputs.name }}
+      stage: ${{ steps.gto.outputs.stage }}
+      version: ${{ steps.gto.outputs.version }}
+
+  deploy-model:
+    needs: parse
+    # using the outputs from the "parse" job, we run this job only for actions
+    # in the model registry and only when the model was assigned to a stage called "prod"
+    # You can replace the conditions with your own
+    if:
+      ${{ needs.parse.outputs.event == 'assignment' && needs.parse.outputs.stage
+      == 'prod' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: iterative/setup-dvc@v1
+      # this step uses DVC to download the model from the remote repository and deploys the model
+      # Model deployment is mocked here as it is specific to each deployment environment
+      # The DVC Studio token is used to avoid having to store specific remote storage credentials on GitHub
+      - name: Get Model For Deployment
+        run: |
+          dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
+          dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
+          echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
+```
+
+</tab>
+
+<tab title="GitLab">
+
+```yaml
+# Deploy Model (Template)
+
+workflow:
+  rules:
+    # Run the pipeline whenever a tag is pushed to the repository
+    - if: $CI_COMMIT_TAG
+
+parse:
+  # This job parses the model tag to identify model registry actions
+  # You can most likely copy this job and what precedes it verbatim into your own workflow
+  image: python:3.11-slim
+  script:
+    # Install GTO to parse model tags
+    - pip install gto
+    # This job parses the model tags to identify model registry actions
+    - echo "CI_COMMIT_TAG - ${CI_COMMIT_TAG}"
+    - echo MODEL_NAME="$(gto check-ref ${CI_COMMIT_TAG} --name)" >> parse.env
+    - echo MODEL_VERSION="$(gto check-ref ${CI_COMMIT_TAG} --version)" >>
+      parse.env
+    - echo MODEL_EVENT="$(gto check-ref ${CI_COMMIT_TAG} --event)" >> parse.env
+    - echo MODEL_STAGE="$(gto check-ref ${CI_COMMIT_TAG} --stage)" >> parse.env
+    # Print variables saved to parse.env
+    - cat parse.env
+  artifacts:
+    reports:
+      dotenv: parse.env
+
+deploy-model:
+  needs:
+    - job: parse
+      artifacts: true
+  image: python:3.11-slim
+  script:
+    # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
+    # You can replace the conditions with your own
+    - if [[ $MODEL_EVENT == 'assignment' && $MODEL_STAGE == 'prod' ]]; then echo
+      "Deploy model"; else exit 1; fi
+    # Install DVC
+    - pip install dvc
+    # Build commands to download and deploy the model
+    - dvc config --global studio.token ${DVC_STUDIO_TOKEN}
+    - dvc artifacts get  ${CI_REPOSITORY_URL} ${MODEL_NAME} --rev
+      ${MODEL_VERSION}
+    - echo "The right model is available and you can use the rest of this
+      command to deploy it. Good job!"
+```
+
+</tab>
+</toggle>
+
+
 <admon type="tip">
 
 To see a real-world model deployment example you can check out a
@@ -300,111 +416,3 @@ need to keep your remote storage credentials on GitHub/GitLab and use them to
 configure DVC in the CICD workflow. You will also need to checkout the
 repository in the workflow. You can see more details in the
 [documentation](/doc/command-reference/artifacts/get#description).
-
-### Complete CICD templates
-
-You can now use the following templates to create your own Model Registry CICD
-actions!
-
-<toggle>
-
-<tab title="GitHub">
-
-```yaml
-name: Deploy Model (Template)
-
-on:
-  # the workflow is triggered whenever a tag is pushed to the repository
-  push:
-    tags:
-      - '*'
-jobs:
-  # This job parses the git tag with the GTO GitHub Action to identify model registry actions. You can most likely copy this job and what precedes it verbatim into your own workflow
-  parse:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: 'Parse GTO tag'
-        id: gto
-        uses: iterative/gto-action@v2
-    outputs:
-      event: ${{ steps.gto.outputs.event }}
-      name: ${{ steps.gto.outputs.name }}
-      stage: ${{ steps.gto.outputs.stage }}
-      version: ${{ steps.gto.outputs.version }}
-
-  deploy-model:
-    needs: parse
-    # using the outputs from the "parse" job, we run this job only for actions
-    # in the model registry and only when the model was assigned to a stage called "prod"
-    # You can replace the conditions with your own
-    if:
-      ${{ needs.parse.outputs.event == 'assignment' && needs.parse.outputs.stage
-      == 'prod' }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: iterative/setup-dvc@v1
-      # this step uses DVC to download the model from the remote repository and deploys the model
-      # Model deployment is mocked here as it is specific to each deployment environment
-      # The DVC Studio token is used to avoid having to store specific remote storage credentials on GitHub
-      - name: Get Model For Deployment
-        run: |
-          dvc config --global studio.token ${{ secrets.DVC_STUDIO_TOKEN }}
-          dvc artifacts get  ${{ github.server_url }}/${{ github.repository }} ${{ needs.parse.outputs.name }} --rev ${{ needs.parse.outputs.version }}
-          echo "The right model is available and you can use the rest of this command to deploy it. Good job!"
-```
-
-</tab>
-
-<tab title="GitLab">
-
-```yaml
-# Deploy Model (Template)
-
-workflow:
-  rules:
-    # Run the pipeline whenever a tag is pushed to the repository
-    - if: $CI_COMMIT_TAG
-
-parse:
-  # This job parses the model tag to identify model registry actions
-  # You can most likely copy this job and what precedes it verbatim into your own workflow
-  image: python:3.11-slim
-  script:
-    # Install GTO to parse model tags
-    - pip install gto
-    # This job parses the model tags to identify model registry actions
-    - echo "CI_COMMIT_TAG - ${CI_COMMIT_TAG}"
-    - echo MODEL_NAME="$(gto check-ref ${CI_COMMIT_TAG} --name)" >> parse.env
-    - echo MODEL_VERSION="$(gto check-ref ${CI_COMMIT_TAG} --version)" >>
-      parse.env
-    - echo MODEL_EVENT="$(gto check-ref ${CI_COMMIT_TAG} --event)" >> parse.env
-    - echo MODEL_STAGE="$(gto check-ref ${CI_COMMIT_TAG} --stage)" >> parse.env
-    # Print variables saved to parse.env
-    - cat parse.env
-  artifacts:
-    reports:
-      dotenv: parse.env
-
-deploy-model:
-  needs:
-    - job: parse
-      artifacts: true
-  image: python:3.11-slim
-  script:
-    # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
-    # You can replace the conditions with your own
-    - if [[ $MODEL_EVENT == 'assignment' && $MODEL_STAGE == 'prod' ]]; then echo
-      "Deploy model"; else exit 1; fi
-    # Install DVC
-    - pip install dvc
-    # Build commands to download and deploy the model
-    - dvc config --global studio.token ${DVC_STUDIO_TOKEN}
-    - dvc artifacts get  ${CI_REPOSITORY_URL} ${MODEL_NAME} --rev
-      ${MODEL_VERSION}
-    - echo "The right model is available and you can use the rest of this
-      command to deploy it. Good job!"
-```
-
-</tab>
-</toggle>
