@@ -83,8 +83,6 @@ to actually set up a deployment environment (so that you can test it easier) but
 it does include all the ingredients needed in an actual deployment job or any
 other CICD action.
 
-### Complete CICD templates
-
 You can simply re-use the CICD template below and copy it into your projects.
 Then all you need to do is to save the
 [DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
@@ -95,13 +93,12 @@ authentication with the
 [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
 This way we only need to keep the
 [DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
-saved on GitHub/GitLab and let Studio manage the specific storage credentials
-for us.
+saved on GitHub/GitLab and let DVC Studio manage the specific storage
+credentials for us.
 
 In your own use-cases you might want to modify a few things about the workflow
-and you can find a more detailed explanation of the CICD workflow in the
-[following subsections](#setup-the-workflow). There you can also read about how
-you can set up these CICD jobs without DVC Studio.
+and you can find a more detailed explanation of the CICD templates in the
+[next section](#detailed-explanation-of-the-cicd-templates). There you can also read about how you can set up these CICD jobs without DVC Studio.
 
 <toggle>
 
@@ -214,6 +211,8 @@ which deploys a specific version of the model to an Amazon Sagemaker endpoint
 for inference whenever it is assigned to a stage.
 
 </admon>
+
+## Detailed explanation of the CICD templates
 
 ### Setup the workflow
 
