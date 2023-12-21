@@ -8,10 +8,9 @@ settings:
   - [Profile details](#profile-details) update your name and profile picture
   - [Account details](#account-details) manage your username, password, email
     addresses, and delete your account
-- [Login connections(Git integrations)](#login-connections-git-integrations)
-  with GitHub, GitLab and Bitbucket
-- [Cloud connections](#cloud-connections) for data remotes
-- [Manage teams](#manage-teams) that you own
+- [Git connections](#git-connections) with GitHub, GitLab and Bitbucket
+- [Cloud credentials](#cloud-credentials) for data remotes
+- [Teams](#teams) that you own
 - [Tokens](#tokens)
   - [Client access tokens](#client-access-tokens) for experiments, dataset and
     model registry operations
@@ -29,22 +28,24 @@ plans there and increase or decrease the number of seats in it.
 
 ## General settings
 
-In your settings page, the general tab includes your profile, account settings.
+In your settings page, the general tab includes your profile and account
+settings.
 
 ### Profile details
 
-You can update your first name, last name and profile picture from profile
-section.
+Here, you can update your first name, last name and profile picture.
 
 ### Account details
 
-In the account section, your username is displayed. You can also update your
-username.
+In the account section, your username is displayed. Here, you can also update
+your username, password and email addresses.
 
-You can also change your password and email address from this section.
+<admon>
 
 If you signed up with a GitHub, GitLab or Bitbucket account, these details are
 fetched from your connected Git hosting account.
+
+</admon>
 
 #### Managing email addresses
 
@@ -73,7 +74,7 @@ Deleting your account in DVC Studio does not delete your Git repositories.
 
 </admon>
 
-## Login Connections (Git integrations)
+## Git Connections
 
 In this section, you can,
 
@@ -102,7 +103,7 @@ In this section, you can,
   GitHub app on additional organizations or repositories, or even remove the app
   from organizations or repositories where you no longer need it.
 
-## Cloud connections
+## Cloud credentials
 
 In this section, you can view, add and update credentials for cloud resources.
 These credentials are used to
@@ -122,16 +123,16 @@ you can find more details about required permissions [here][data remote].
 
 Finally, click `Save credentials`.
 
-## Manage teams
+## Teams
 
-In this section, you can view and manage the teams that you own. You can also
-create new teams.
+In this section, you can view all the teams you are member of.
 
-You can click on `select` to switch to the team dashboard. Or, you can click on
-`manage` to go to the team settings page and manage the team.
+Click on `select` to switch to the team's dashboard. Or, click on `manage` to go
+to the team settings page and manage the team.
 
 To create a new team, click on `Create a team` and enter the team name. You can
-invite members to the team by entering their email addresses.
+invite members to the team by entering their email addresses. Find more details
+[here](/doc/studio/user-guide/team-collaboration#create-a-team).
 
 ## Tokens
 
