@@ -126,6 +126,8 @@
   "^/doc/studio/user-guide/teams$                                                         /doc/studio/user-guide/team-collaboration/teams",
   "^/doc/studio/user-guide/change-team-plan-and-size$                                     /doc/studio/user-guide/team-collaboration/change-team-plan-and-size",
 
+  "^/doc/studio/user-guide/git-integrations(/.*)?$                                        /doc/studio/user-guide/git-connections$1",
+
   "^/doc/studio/get-started$                                                              /doc/studio/experiments",
   "^/doc/studio/user-guide/projects-and-experiments/what-is-a-project$                    /doc/studio/user-guide/experiments",
   "^/doc/studio/user-guide/projects-and-experiments(/.*)?$                                /doc/studio/user-guide/experiments$1",

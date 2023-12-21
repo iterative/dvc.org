@@ -19,8 +19,9 @@ To quickly start tracking your experiments with DVC Studio:
   ```
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
-  and configure your model training environment to use the token:
+  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+  with Experiment operations scope, and configure your model training
+  environment to use the token:
 
   ```cli
   $ dvc config --global studio.token ***
@@ -75,8 +76,8 @@ To set up, run and track
   This will create a `dvc.yaml` file in the Git repository.
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
-  and
+  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+  with Experiment operations scope, and
   [configure your model training environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
 
   ```cli

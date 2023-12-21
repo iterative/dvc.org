@@ -40,7 +40,7 @@ addressed in the form `path/to/dvc.yaml:artifact_name` or
 
 `dvc artifacts get` will first try to download artifacts via the DVC Studio
 [REST API]. Downloading an artifact using the Studio REST API only requires a
-valid DVC Studio [access token] and a Studio project configured with your
+valid DVC Studio [client access token] and a Studio project configured with your
 [remote storage credentials]. It does not require the client to have those
 credentials. If you do not have a valid DVC Studio token, or the artifact is not
 tracked in the model registry, DVC will fall back to its typical method to get
@@ -123,6 +123,7 @@ to the `dvc.yaml` file when addressing the artifact. Since we do not specify
 the artifact by default.
 
 [rest api]: /doc/studio/rest-api
-[access token]: /doc/studio/user-guide/account-management#studio-access-token
+[client access token]:
+  /doc/studio/user-guide/account-and-billing#client-access-tokens
 [remote storage credentials]:
   /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials

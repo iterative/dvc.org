@@ -18,8 +18,9 @@ To quickly start tracking your models in the DVC Studio model registry:
   ```
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
-  and configure your model training environment to use the token:
+  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+  with Model registry operations scope, and configure your model training
+  environment to use the token:
 
   ```cli
   $ dvc config --global studio.token ***

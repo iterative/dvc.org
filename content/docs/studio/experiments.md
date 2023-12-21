@@ -15,8 +15,8 @@ experiments with DVC Studio:
   ```
 
 - Copy your
-  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
-  and
+  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+  with Experiment operations scope, and
   [configure your model training environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
 
   ```cli
