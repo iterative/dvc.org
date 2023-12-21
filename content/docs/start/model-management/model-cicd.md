@@ -98,7 +98,8 @@ credentials for us.
 
 In your own use-cases you might want to modify a few things about the workflow
 and you can find a more detailed explanation of the CICD templates in the
-[next section](#detailed-explanation-of-the-cicd-templates). There you can also read about how you can set up these CICD jobs without DVC Studio.
+[next section](#detailed-explanation-of-the-cicd-templates). There you can also
+read about how you can set up these CICD jobs without DVC Studio.
 
 <toggle>
 
