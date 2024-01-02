@@ -70,7 +70,6 @@ within:
   [DVC Studio](https://studio.iterative.ai/) token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
-- [`dbt`](#dbt) - options to configure dbt's connection profiles.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
@@ -240,23 +239,6 @@ connect to the `dbname` database as a user `user` hosted at `host` url. The
 
 The name, `pg` for example, can be used to specify what database to connect to,
 in commands like `import-db`.
-
-</details>
-
-<details>
-
-## dbt
-
-Sets the defaults for dbt's database connection profile to use for importing
-dbt's model and/or running sql query results.
-
-- `dbt.profile`- name of the _dbt_'s connection profile to use
-- `dbt.target` - target to use - if unspecified, default target is used
-
-See [dbt's Connection Profile] for more details.
-
-[dbt's Connection Profile]:
-  /doc/command-reference/import-db#dbts-connection-profile
 
 </details>
 
