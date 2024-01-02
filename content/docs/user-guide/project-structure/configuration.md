@@ -228,17 +228,17 @@ to the appropriate database drivers to connect to the database.
 For security reasons, it is recommended not to add password in the url, but
 instead set it separately in a local file.
 
-As an example, the following config file defines a `pg` database connection to
-connect to the `dbname` database as a user `user` hosted at `host` url. The
+As an example, the following config file defines a `pgsql` database connection
+to connect to the `dbname` database as a user `user` hosted at `host` url. The
 `postgresql://` defines a driver to be used to connect to that database.
 
 ```ini
-['db "pg"']
+['db "pgsql"']
   url = "postgresql://user@host/dbname
 ```
 
-The name, `pg` for example, can be used to specify what database to connect to,
-in commands like `import-db`.
+The name, `pgsql` for example, can be used to specify what database to connect
+to, in commands like `import-db`.
 
 </details>
 

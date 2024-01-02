@@ -39,8 +39,8 @@ connection string to connect to a database. This has to be configured in the
 [`db`] section.
 
 ```dvc
-dvc config db.pg.url postgresql://user@hostname:port/database
-dvc config --local db.pg.password password
+dvc config db.pgsql.url postgresql://user@hostname:port/database
+dvc config --local db.pgsql.password password
 ```
 
 <admon type="warn" title="Security Alert">
@@ -51,7 +51,7 @@ You can pass `--conn <name>` in addition with `--sql <query>` to use that
 database connection.
 
 ```dvc
-dvc import-db --sql 'select * from table' --conn pg
+dvc import-db --sql 'select * from table' --conn pgsql
 ```
 
 In addition to a connection string, DVC needs a driver to connect to the
