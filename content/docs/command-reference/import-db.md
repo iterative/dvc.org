@@ -121,9 +121,6 @@ documentation for more details.
 
 ## Examples
 
-To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/start).
-
 ### Downloading sql query result
 
 To import from a database using a `db` config set:
