@@ -14,7 +14,8 @@ With `import-db`, you can snapshot your ETL/database to a file to use in your
 data pipelines. This commands supports importing your sql query results into
 different file formats. To do so, you have to set connection strings to connect
 to a database to run your SQL query. The connection strings can be setup in
-config as `db.<name>`. Check [Database Connections] for more information.
+config as `db.<name>`. Check [Database Connections](#database-connections) for
+more information.
 
 At the moment, `import-db` supports two different output format:
 
@@ -55,8 +56,8 @@ dvc import-db --sql 'select * from table' --conn pgsql
 ```
 
 In addition to a connection string, DVC needs a driver to connect to the
-database. Check [Installing database drivers] for connection string format and
-necessary driver for your specific database.
+database. Check [Installing database drivers](#installing-database-drivers) for
+connection string format and necessary driver for your specific database.
 
 [`db`]: /doc/user-guide/project-structure/configuration#db
 
