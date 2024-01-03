@@ -36,8 +36,9 @@ mandatory):
 
 - `path` (_string_) - The path to the artifact, either relative to the root of
   the repository or a full path in an external storage such as S3.
-- `type` (_string_) - You can specify artifacts of any `type` and the DVC-based
-  <abbr>model registry</abbr> will pick up any artifacts with type `model`.
+- `type` (_string_) - You can specify artifacts of any `type`. By default, the
+  DVC-based <abbr>model registry</abbr> will show any artifacts with type
+  `model` (you can adjust the filters to also show artifacts of other types).
 - `desc` (_string_) - A description of your artifact
 - `labels` (_list_) - Any labels you want to add to the artifact
 - `meta` - Any extra extra information, the content of this element will be
@@ -104,7 +105,8 @@ to [DVCLive] for a helper to log plots.
 
 - `y` (_string, list, dict_) - source for the Y axis data:
 
-  If plot ID is a path, one or more column/field names is expected. For example:
+  If plot ID is a path, one or more column/field names is expected, or the last
+  column/field is used by default. For example:
 
   ```yaml
   plots:

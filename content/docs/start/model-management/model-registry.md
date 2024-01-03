@@ -12,7 +12,9 @@ idea to keep a <abbr>model registry</abbr> to manage the lifecycle of the models
 we get from our experiments. Using DVC and [DVC Studio](/doc/studio) we will set
 up a model registry where we can discover, share, deploy and audit all our
 models and which will serve as the single source of truth for our model
-management.
+management. If you prefer to see how to start managing models in DVC Studio as
+quickly as possible without walking through an example, see
+[Manage Models](/doc/studio/model-registry).
 
 <admon type="tip">
 

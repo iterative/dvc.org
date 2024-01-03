@@ -243,6 +243,10 @@
           }
         ]
       },
+      {
+        "label": "Environment Variables",
+        "slug": "env"
+      },
       "troubleshooting",
       {
         "label": "Anonymized Usage Analytics",
@@ -577,6 +581,25 @@
       {
         "label": "status",
         "slug": "status"
+      },
+      {
+        "label": "studio",
+        "slug": "studio",
+        "source": "studio/index.md",
+        "children": [
+          {
+            "label": "studio login",
+            "slug": "login"
+          },
+          {
+            "label": "studio logout",
+            "slug": "logout"
+          },
+          {
+            "label": "studio token",
+            "slug": "token"
+          }
+        ]
       },
       {
         "label": "unfreeze",

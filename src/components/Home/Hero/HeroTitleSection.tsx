@@ -9,7 +9,7 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
       <div
         className={cn(
           'text-center',
-          'px-6 py-10 md:py-24',
+          'px-6 py-10 md:pt-24 md:pb-12',
           'flex flex-col gap-6 md:flex-row md:gap-0 items-center',
           'max-w-screen-lg'
         )}

@@ -54,7 +54,7 @@ const Badge = ({ className, children }: ISectionProps) => (
   <div
     className={cn(
       'px-1.5 md:px-3 py-0 rounded-lg',
-      'w-fit',
+      'min-w-[95px] w-fit',
       'mx-auto',
       'flex items-center justify-center gap-2',
       'text-lg md:text-xl font-medium',
@@ -121,11 +121,16 @@ const HeroSection = () => {
               href="https://github.com/iterative/dvc"
               className="no-underline hover:opacity-80"
             >
-              <Badge className="bg-dark text-light">
-                {stars && shortenNumber(stars, 1)}
-                <StaticImage
-                  src="../../../../static/img/landing/star-github.svg"
-                  alt="Star Github"
+              <Badge className={cn('bg-dark text-light')}>
+                {stars ? (
+                  shortenNumber(stars, 1)
+                ) : (
+                  <span className="animate-pulse">---</span>
+                )}
+                <img
+                  src="/img/landing/github.svg"
+                  alt="Github Logo"
+                  className="h-5 w-5"
                 />
               </Badge>
             </Link>
@@ -136,6 +141,8 @@ const HeroSection = () => {
       <SectionWrapper maxWidth="2xl">
         <div className={cn(styles.gridContainer)}>
           <StaticImage
+            placeholder="none"
+            loading="eager"
             src={'../../../../static/img/landing/Hero Visualization.svg'}
             quality={100}
             formats={['avif', 'webp', 'auto']}

@@ -16,6 +16,7 @@ import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
 import menuData from '../../data/menu'
 import { cloudUrl } from '../../../../utils/externalUrls'
+import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
 const docsPage = getFirstPage()
 
@@ -74,13 +75,9 @@ export const HamburgerMenu: React.FC<
         >
           <LogoSVG />
         </Link>
-        <Link
-          className={styles.company}
-          href="https://iterative.ai/"
-          target="_blank"
-        >
-          by <span className={styles.companyName}>iterative.ai</span>
-        </Link>
+        <LogoGradient href="https://dvc.ai">
+          by <span className="font-extrabold">dvc.ai</span>
+        </LogoGradient>
       </div>
       <ul className={styles.sections}>
         <li className={styles.section}>

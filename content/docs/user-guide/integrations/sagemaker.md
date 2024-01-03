@@ -1,5 +1,7 @@
 # Amazon SageMaker
 
+## Development
+
 ## Setup
 
 Many DVC features rely on Git. To work with DVC in Amazon SageMaker, first setup
@@ -123,6 +125,16 @@ The end result of running the pipeline looks like this:
 
 ![Pipeline](/img/sagemaker-pipeline.png)
 
+## Deployment
+
+Use the <abbr>model registry</abbr> to automate deployment with SageMaker in
+your CI/CD workflow. To start with the model registry, see how to:
+
+- [start using the model registry]
+- [deploy models with CI/CD]
+
+For a full example of how to deploy with SageMaker, see our [blog post].
+
 [experiments]: /doc/start/experiments
 [clone]: https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-git.html
 [code-server]:
@@ -138,3 +150,10 @@ The end result of running the pipeline looks like this:
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py
 [training script]:
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py
+[start using the model registry]: /doc/start/model-management/model-registry
+[deploy models with ci/cd]: /doc/start/model-management/model-cicd
+[triggering sagemaker deployment]:
+  https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
+[deploying sagemaker endpoints]:
+  https://github.com/iterative/example-get-started-experiments/blob/main/sagemaker/deploy_model.py
+[blog post]: https://iterative.ai/blog/sagemaker-model-deployment

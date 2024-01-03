@@ -65,6 +65,25 @@ The option to delete the access token is also available when you change your
 password, so that you can reset all your access credentials at once. This is
 handy if you suspect that your account security may have been compromised.
 
+### Client access tokens
+
+In the `Studio access token` section of your [Profile] page, you can generate
+new client access tokens with specific scopes as well as delete existing access
+tokens. These tokens can be used to give limited permissions to a client without
+granting full access to your Studio account.
+
+The available scopes are:
+
+- `Experiment operations` - DVC uses this to share [live experiments] and to
+  notify [Studio](https://studio.iterative.ai/) about [pushed experiments].
+- `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
+- `Model registry operations` - like downloading model using
+  `dvc artifacts get`.
+
+[live experiments]:
+  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiment
+
 ### Cloud credentials
 
 In the `Cloud Credentials` section of your [Profile] page, you can view, add and

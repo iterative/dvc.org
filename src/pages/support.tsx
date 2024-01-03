@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
 
-import MainLayout from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+import MainLayout from '../components/MainLayout'
 import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import Support from '../components/Support'
 

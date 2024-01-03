@@ -159,9 +159,8 @@ final stage.
   option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage command(s) even if they have already been run
-  with the same dependencies and outputs (see the [details][run-cache]). Useful
-  for example if the stage command/s is/are non-deterministic ([not
-  recommended]).
+  with the same dependencies and outputs (see the [run cache]). Useful for
+  example if the stage command/s is/are non-deterministic ([not recommended]).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
