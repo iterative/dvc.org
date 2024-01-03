@@ -3,6 +3,13 @@
 DVCLive allows you to add experiment tracking capabilities to your
 [Hugging Face Transformers](https://huggingface.co/docs/transformers) projects.
 
+<admon type="tip">
+
+If you are using Hugging Face Accelerate, check the
+[DVCLive - Hugging Face Accelerate](/doc/dvclive/ml-frameworks/accelerate) page.
+
+</admon>
+
 ## Usage
 
 <p align='center'>
