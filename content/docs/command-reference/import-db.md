@@ -93,7 +93,8 @@ strings:
 
 DVC uses [`sqlalchemy`](https://www.sqlalchemy.org/) internally. So DVC should
 support any SQL databases that provide dialects for SQLAlchemy. Refer to their
-documentation for more details.
+[documentation](https://docs.sqlalchemy.org/en/20/core/engines.html#backend-specific-urls)
+for more details.
 
 ## Options
 
