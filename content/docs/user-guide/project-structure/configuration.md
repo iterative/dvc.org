@@ -225,8 +225,12 @@ connect to the database. They can also specify `username` and `password`
 options, which is used to combine with provided `url`, which is what is passed
 to the appropriate database drivers to connect to the database.
 
-For security reasons, it is recommended not to add password in the url, but
-instead set it separately in a local file.
+<admon type="warn">
+
+Set `password` to a Git-ignored local config file (`.dvc/config.local`) so that
+no secrets are leaked through Git.
+
+</admon>
 
 As an example, the following config file defines a `pgsql` database connection
 to connect to the `dbname` database as a user `user` hosted at `host` url. The

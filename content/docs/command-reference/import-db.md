@@ -1,21 +1,20 @@
 # import-db
 
-Snapshot SQL query results from a database into CSV/JSON format.
+Snapshot a table or a SQL query results from a database into CSV/JSON format.
 
 ```usage
 usage: dvc import-db [-h] [-q | -v]
-            [--sql SQL] [--conn [CONNECTION]]
+            [--table TABLE] [--sql SQL] [--conn [CONNECTION]]
             [--output-format [{csv,json}]] [-o [<path>]] [-f]
 ```
 
 ## Description
 
 With `import-db`, you can snapshot your ETL/database to a file to use in your
-data pipelines. This commands supports importing your sql query results into
-different file formats. To do so, you have to set connection strings to connect
-to a database to run your SQL query. The connection strings can be setup in
-config as `db.<name>`. Check [Database Connections](#database-connections) for
-more information.
+data pipelines. This commands supports importing your table or a sql query
+results into different file formats. To do so, you have to set connection
+strings to connect to a database, which can be setup in config as `db.<name>`.
+Check [Database Connections](#database-connections) for more information.
 
 At the moment, `import-db` supports two different output format:
 
@@ -35,9 +34,8 @@ remote storage normally.
 
 ## Database Connections
 
-For downloading sql query results with `--sql`, dvc needs to use a database
-connection string to connect to a database. This has to be configured in the
-[`db`] section.
+To connect to a database, dvc needs a database connection string URI. This has
+to be configured in the [`db`] section.
 
 ```dvc
 dvc config db.pgsql.url postgresql://user@hostname:port/database
@@ -45,14 +43,25 @@ dvc config --local db.pgsql.password password
 ```
 
 <admon type="warn" title="Security Alert">
-Configure password in a local config file, separately from the connection string.
+
+Configure `password` with `--local` option so they are written to a Git-ignored
+config file.
+
 </admon>
 
-You can pass `--conn <name>` in addition with `--sql <query>` to use that
-database connection.
+<admon type="warn" title="Security Alert">
+
+Use an user account with limited access to databases with read-only privileges,
+as `--sql` can run arbitrary queries. Different databases have different
+approaches to this. Refer to their documentation for more details.
+
+</admon>
+
+You need to specify the name of database connection to use, when using
+`import-db`.
 
 ```dvc
-dvc import-db --sql 'select * from table' --conn pgsql
+dvc import-db --table customers_table --conn pgsql
 ```
 
 In addition to a connection string, DVC needs a driver to connect to the
@@ -82,24 +91,20 @@ strings:
 | **SQL Server**      | `pyodbc`                          | `mssql+pyodbc://{username}:{password}@{hostname}:{port}/{database_name}`                            |
 | **Trino**           | `trino`                           | `trino://{username}:{password}@{hostname}:{port}/{catalog}`                                         |
 
-DVC uses `sqlalchemy` internally. So DVC should support any SQL databases that
-provide dialects for SQLAlchemy. Refer to their documentation for more details.
-
-## Database Permissions
-
-It is recommended to use an user account with limited access to databases and
-tables and one that only has minimal read-only privileges like running `SELECT`
-queries. Different databases have different approaches to this. Refer to their
+DVC uses [`sqlalchemy`](https://www.sqlalchemy.org/) internally. So DVC should
+support any SQL databases that provide dialects for SQLAlchemy. Refer to their
 documentation for more details.
 
 ## Options
 
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
-  workspace to place the file. The default filename will be `results`, with an
-  extension name added based on `--output-format`.
+  workspace to place the file. If not specified, the filename will be generated
+  using the arguments from `--output-format` and `--table`, or for `--sql`, it
+  starts with "results" by default.
 
-- `--sql <query>` - SQL query to run. You can also use a connection string set
-  in config, with `--conn`.
+- `--table <table>` - Table to snapshot.
+
+- `--sql <query>` - Execute SQL query and snapshot its result.
 
 - `--output-format` - type of format to materialize into. `csv` (default) and
   `json` is supported.
@@ -122,18 +127,18 @@ documentation for more details.
 
 ## Examples
 
-### Downloading sql query result
+### Downloading a table
 
-To import from a database using a `db` config set:
+To import a table from a database using a `db` config set:
 
 ```dvc
-$ dvc import-db --sql "select * from customers" --conn pgsql
+$ dvc import-db --table "customers_table" --conn pgsql
 ...
 ```
 
-`dvc import-db` will snapshot the query results, and save to a file named
-`results.csv`. It will also create a `results.csv.dvc` file with the following
-contents:
+`dvc import-db` will snapshot the complete table, and save to a file named
+`customers_table.csv`. It will also create a `customers_table.csv.dvc` file with
+the following contents:
 
 ```yaml
 md5: ddd4654188815dcae6ce4d4a37f83bde
@@ -141,13 +146,26 @@ frozen: true
 deps:
   - db:
       file_format: csv
-      query: select * from customers
       connection: pgsql
+      table: customers_table
 outs:
   - md5: 131543a828b297ce0a5925800bd88810
     size: 15084226
     hash: md5
-    path: results.csv
+    path: customers_table.csv
 ```
 
 You can use `dvc update` to update the snapshot.
+
+### Downloading sql query result
+
+Similarly, you can also snapshot a sql query result as follows:
+
+```dvc
+$ dvc import-db --sql "select * from customers" --conn pgsql
+...
+```
+
+`dvc import-db` will snapshot the query results, and save to a file named
+`results.csv`. Similarly, it will also create a `results.csv.dvc` file, which
+can be used to `dvc update` later.
