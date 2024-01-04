@@ -3,6 +3,13 @@
 DVCLive allows you to add experiment tracking capabilities to your
 [PyTorch Lightning](https://www.pytorchlightning.ai/) projects.
 
+<admon type="tip">
+
+If you are using Lightning Fabric, check the
+[DVCLive - Lightning Fabric](/doc/dvclive/ml-frameworks/fabric) page.
+
+</admon>
+
 ## Usage
 
 <p align='center'>

@@ -896,8 +896,12 @@
             "label": "Fast.ai"
           },
           {
+            "slug": "accelerate",
+            "label": "Hugging Face Accelerate"
+          },
+          {
             "slug": "huggingface",
-            "label": "Hugging Face"
+            "label": "Hugging Face Transformers"
           },
           {
             "slug": "keras",
@@ -922,6 +926,10 @@
           {
             "slug": "pytorch-lightning",
             "label": "PyTorch Lightning"
+          },
+          {
+            "slug": "fabric",
+            "label": "PyTorch Lightning Fabric"
           },
           {
             "slug": "scikit-learn",
