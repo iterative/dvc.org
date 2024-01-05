@@ -730,7 +730,7 @@
             "children": ["billing-and-payment"]
           },
           {
-            "slug": "git-integrations",
+            "slug": "git-connections",
             "children": ["github-app", "custom-gitlab-server"]
           },
           "troubleshooting"
