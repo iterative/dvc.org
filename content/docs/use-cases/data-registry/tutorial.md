@@ -180,3 +180,64 @@ others can obtain them!
 ```cli
 $ dvc push
 ```
+
+## Managing registries
+
+Now you know how to to build a lightweight data registry, update it, and get
+files from it. As your registry or team continues to grow, you may have trouble
+managing all artifacts across multiple projects. How do you keep them organized,
+or know which version to use, or share them with others outside your team? DVC
+along with [DVC Studio] can help you scale your registry and address these
+questions.
+
+### Adding metadata
+
+You can record additional metadata about data and model <abbr>artifacts</abbr>
+to help organize them and make it easy for others to discover them and
+understand basic info about them. Add aliases and other metadata to a `dvc.yaml`
+file in your project:
+
+```yaml
+# dvc.yaml
+artifacts:
+  get-started-data:
+    path: get-started/data.xml.dvc
+    type: data
+    desc: 'Stack Overflow questions'
+    labels:
+      - nlp
+      - classification
+```
+
+Once you `git commit` and `git push` this info to a project that's connected to
+[DVC Studio], anyone on your team can see it and filter or search across all
+your projects in the <abbr>model registry</abbr>. Although the artifact above is
+not a model, you can remove the models filter to use it for any type of
+artifact:
+
+### Assigning versions and stages
+
+You can use version numbers and stages to signal which artifact versions to use
+or to trigger automated workflows. Just like with software, you can use
+[semantic versioning] to tag releases of your artifacts and to mark artifact
+versions as in production, development, or other stages of their lifecycle:
+
+Versions and stages are saved as Git tags by [GTO]. This means that you have the
+full release history in Git, and you can [trigger] deployments, tests, or other
+actions in your CI/CD workflows when you register a version or assign a stage.
+
+### Accessing artifacts
+
+Others can download or stream artifacts by their version or stage without
+needing access to your Git repository or cloud storage. If you connect your
+[cloud credentials] in [DVC Studio], anyone on your team can access that
+artifact using only a [Studio token]:
+
+[remote storage]: /doc/user-guide/data-management/remote-storage
+[DVC Studio]: https://studio.iterative.ai
+[semantic versioning]: https://semver.org
+[GTO]: /doc/gto
+[trigger]: /doc/studio/user-guide/model-registry/use-models
+[cloud credentials]:
+  /doc/studio/user-guide/account-and-billing#cloud-credentials
+[Studio token]: /doc/studio/user-guide/account-and-billing#tokens
