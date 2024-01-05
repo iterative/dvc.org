@@ -103,6 +103,24 @@ const logos = [
     alt: 'XP Inc logo',
     src: 'logos/xp-inc-new.webp',
     className: cn(logoClass, md)
+  },
+  {
+    name: 'Kibsi',
+    alt: 'Kibsi logo',
+    src: 'logos/kibsi.png',
+    className: cn(logoClass, md)
+  },
+  {
+    name: 'Summer Sports',
+    alt: 'Summer Sports logo',
+    src: 'logos/summer-sports.png',
+    className: cn(logoClass, md)
+  },
+  {
+    name: 'Motorway',
+    alt: 'Motorway logo',
+    src: 'logos/motorway.png',
+    className: cn(logoClass, md)
   }
 ]
 
