@@ -2,8 +2,9 @@ import React from 'react'
 import cn from 'classnames'
 
 const logoClass =
-  'flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out'
-const logoImageClass = 'h-20 grayscale group-hover:grayscale-0'
+  'flex items-center justify-center opacity-75 hover:opacity-100 transition-opacity duration-300 ease-in-out'
+const logoImageClass =
+  'h-20 grayscale group-hover:grayscale-0 transition-[filter] duration-300 ease-in-out'
 const logoImageClassInverted = `${logoImageClass} invert`
 
 const sm = 'w-16'
@@ -76,13 +77,6 @@ const logos = [
     alt: 'Pieces logo',
     src: 'logos/pieces.png',
     className: cn(logoClass, md),
-    imageClassName: logoImageClassInverted
-  },
-  {
-    name: 'Plasmasolve',
-    alt: 'Plasmasolve logo',
-    src: 'logos/plasmasolve.png',
-    className: cn(logoClass, lg),
     imageClassName: logoImageClassInverted
   },
   {

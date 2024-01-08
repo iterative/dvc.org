@@ -12,9 +12,7 @@ const Home: React.FC = () => {
     <>
       <WhatsNewModal />
       <Hero />
-      <div className="mx-auto max-w-screen-2xl w-full">
-        <CompanySlider />
-      </div>
+      <CompanySlider />
       <SubscribeSection />
     </>
   )
