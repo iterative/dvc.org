@@ -59,6 +59,7 @@ within:
 - [`remote`](#remote) - sections in the config file that describe [remote
   storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
+- [`db`](#db) - sections in the config file that describe [database connections]
 - [`hydra`](#hydra) - options around [Hydra Composition] for experiment
   configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
@@ -72,6 +73,7 @@ within:
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
+[database connections]: /doc/command-reference/import-db#database-connections
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
@@ -210,6 +212,37 @@ section):
   /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
 [sharing a cache]: /doc/user-guide/how-to/share-a-dvc-cache
 [`os.umask`]: https://docs.python.org/3/library/os.html#os.umask
+
+</details>
+
+<details>
+
+## db
+
+Similar to `remote`, configuration files may have more than one `'db'`. All of
+them require a unique `"name"` and a `url` value which is a connection string to
+connect to the database. They can also specify `username` and `password`
+options, which is used to combine with provided `url`, which is what is passed
+to the appropriate database drivers to connect to the database.
+
+<admon type="warn">
+
+Set `password` to a Git-ignored local config file (`.dvc/config.local`) so that
+no secrets are leaked through Git.
+
+</admon>
+
+As an example, the following config file defines a `pgsql` database connection
+to connect to the `dbname` database as a user `user` hosted at `host` url. The
+`postgresql://` defines a driver to be used to connect to that database.
+
+```ini
+['db "pgsql"']
+  url = "postgresql://user@host/dbname
+```
+
+The name, `pgsql` for example, can be used to specify what database to connect
+to, in commands like `import-db`.
 
 </details>
 
