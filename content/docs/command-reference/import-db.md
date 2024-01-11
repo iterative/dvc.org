@@ -1,25 +1,31 @@
 # import-db
 
+<admon type="warn" title="Experimental">
+
+This is an experimental command, and is subject to breaking changes.
+
+</admon>
+
 Snapshot a table or a SQL query results from a database into CSV/JSON format.
 
 ```usage
 usage: dvc import-db [-h] [-q | -v]
-            [--table TABLE] [--sql SQL] [--conn [CONNECTION]]
+            [--sql SQL | --table TABLE] [--conn CONN]
             [--output-format [{csv,json}]] [-o [<path>]] [-f]
 ```
 
 ## Description
 
 With `import-db`, you can snapshot your ETL/database to a file to use in your
-data pipelines. This commands supports importing your table or a sql query
+data pipelines. This commands supports importing your table or a SQL query
 results into different file formats. To do so, you have to set connection
 strings to connect to a database, which can be setup in config as `db.<name>`.
 Check [Database Connections](#database-connections) for more information.
 
 At the moment, `import-db` supports two different output format:
 
-- json records
-- csv (with header, and no index)
+- JSON records
+- CSV (with header, and no index)
 
 An _import `.dvc` file_ is created in the same location e.g.
 `customers.txt.dvc`. This makes it possible to update the import later, if the
@@ -34,12 +40,12 @@ remote storage normally.
 
 ## Database Connections
 
-To connect to a database, dvc needs a database connection string URI. This has
+To connect to a database, DVC needs a database connection string URI. This has
 to be configured in the [`db`] section.
 
 ```dvc
-dvc config db.pgsql.url postgresql://user@hostname:port/database
-dvc config --local db.pgsql.password password
+$ dvc config db.pgsql.url postgresql://user@hostname:port/database
+$ dvc config --local db.pgsql.password password
 ```
 
 <admon type="warn" title="Security Alert">
@@ -61,7 +67,7 @@ You need to specify the name of database connection to use, when using
 `import-db`.
 
 ```dvc
-dvc import-db --table customers_table --conn pgsql
+$ dvc import-db --table customers_table --conn pgsql
 ```
 
 In addition to a connection string, DVC needs a driver to connect to the
@@ -103,14 +109,14 @@ for more details.
   using the arguments from `--output-format` and `--table`, or for `--sql`, it
   starts with "results" by default.
 
-- `--table <table>` - Table to snapshot.
+- `--table <table>` - table to snapshot.
 
-- `--sql <query>` - Execute SQL query and snapshot its result.
+- `--sql <query>` - execute SQL query and snapshot its result.
 
 - `--output-format` - type of format to materialize into. `csv` (default) and
   `json` is supported.
 
-- `--conn connection` - Name of the database connection to use. The connection
+- `--conn connection` - name of the database connection to use. The connection
   has to be set in the
   [config](/doc/user-guide/project-structure/configuration#db).
 
@@ -158,9 +164,9 @@ outs:
 
 You can use `dvc update` to update the snapshot.
 
-### Downloading sql query result
+### Downloading SQL query result
 
-Similarly, you can also snapshot a sql query result as follows:
+Similarly, you can also snapshot a SQL query result as follows:
 
 ```dvc
 $ dvc import-db --sql "select * from customers" --conn pgsql
