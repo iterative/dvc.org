@@ -10,7 +10,7 @@ Snapshot a table or a SQL query results from a database into CSV/JSON format.
 
 ```usage
 usage: dvc import-db [-h] [-q | -v]
-            [--sql SQL | --table TABLE] [--conn CONN]
+            [--sql sql | --table table] [--conn conn]
             [--output-format [{csv,json}]] [-o [<path>]] [-f]
 ```
 
