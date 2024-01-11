@@ -2,9 +2,10 @@
 
 Assuming you've learned the basics of how to
 [track and version data](/doc/start/data-management/data-versioning) with DVC,
-you might wonder: How can we access and use these artifacts _outside_ of the DVC
-project? How do we download a model to deploy it? How to download a specific
-version of a model? How to reuse datasets across different projects?
+you might wonder: How can we access and use these <abbr>artifacts</abbr>
+_outside_ of the DVC project? How do we download a model to deploy it? How to
+download a specific version of a model? How to reuse datasets across different
+projects?
 
 <admon type="tip">
 
@@ -137,7 +138,15 @@ can help you organize your artifacts, and you can use `dvc artifacts get` and
 `dvc.api.artifacts_show()` to retrieve them by their alias rather than their
 path.
 
-## Model Registry
+## Model/Artifact Registry
+
+<admon type="tip">
+
+The [DVC Studio model registry] was built for models but since DVC tracks all
+kinds of files, it can be used just as easily for other artifact types. See our
+[tutorial] for how to manage artifacts using the registry.
+
+</admon>
 
 Artifacts become more useful as part of the <abbr>model registry</abbr>, where
 semantic versions can be registered and lifecycle stages (think
@@ -148,3 +157,6 @@ to trigger CICD workflows based on changes in the model registry. With
 across all projects, and you can download artifacts by name, version, and
 lifecycle stage, without needing to configure access to the underlying Git
 repository or remote storage.
+
+[DVC Studio model registry]: /doc/studio/model-registry
+[tutorial]: /doc/use-cases/data-registry/tutorial#sharing-and-managing-artifacts
