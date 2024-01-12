@@ -1269,10 +1269,10 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@dvcorg/gatsby-theme-iterative@0.3.13":
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.13.tgz#6d12aa3f2a3a57b9faa19f5afd3e40433fccfe1c"
-  integrity sha512-sKcFQIfp0jRNYh6zSPkM6vxxMWklxE3mCb2Ax5ZNrq/t9KYk97Egu3LZ73vIAktvTXPFKqopsm/N2G7uP9Afow==
+"@dvcorg/gatsby-theme-iterative@0.3.14":
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.14.tgz#bf3df69c2d8b4ab9d596ba98e39aed048eee45e3"
+  integrity sha512-u9w4VqNInqjYu6qx5WBel8Ybia8l8epTs3xQfw4itcTIOVKtK0TUzmTQwvDx0yiTXn/GW8dkpGNPC7xtt20aJg==
   dependencies:
     "@reach/portal" "^0.18.0"
     "@reach/skip-nav" "^0.18.0"
