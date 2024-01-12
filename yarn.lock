@@ -1269,15 +1269,21 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@dvcorg/gatsby-theme-iterative@0.3.12":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.12.tgz#6784a557ba8fb9d8ddaeca59182869ce7c70eb12"
-  integrity sha512-D08zxXsebZxbZT4m50iW1vUMtoi+4e51cCzRNOLGaIx7JDVte8gvvSDLtZo4nuGaa+XOO2QOr/keMXa2M61RRw==
+"@dvcorg/gatsby-theme-iterative@0.3.13":
+  version "0.3.13"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.3.13.tgz#6d12aa3f2a3a57b9faa19f5afd3e40433fccfe1c"
+  integrity sha512-sKcFQIfp0jRNYh6zSPkM6vxxMWklxE3mCb2Ax5ZNrq/t9KYk97Egu3LZ73vIAktvTXPFKqopsm/N2G7uP9Afow==
   dependencies:
     "@reach/portal" "^0.18.0"
     "@reach/skip-nav" "^0.18.0"
     "@sentry/gatsby" "^7.57.0"
     "@svgr/webpack" "^8.0.0"
+    "@types/gatsbyjs__reach-router" "^2.0.0"
+    "@types/isomorphic-fetch" "^0.0.39"
+    "@types/promise-polyfill" "^6.0.4"
+    "@types/react-collapse" "^5.0.1"
+    "@types/react-helmet" "^6.1.6"
+    "@types/unist" "^3.0.0"
     autoprefixer "^10.4.4"
     classnames "^2.3.1"
     ease-component "^1.0.0"
@@ -3082,6 +3088,14 @@
     "@types/reach__router" "*"
     "@types/react" "*"
 
+"@types/gatsbyjs__reach-router@^2.0.0":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/gatsbyjs__reach-router/-/gatsbyjs__reach-router-2.0.4.tgz#34e270d0d6a51ca1e4e7d1d4cc63343f83eb8c46"
+  integrity sha512-zFfkh4ZkmQECqssiIqcBUjIZUJLW8yAmxmuukN3pUJ3SM22zI73TtivWMlIznZhy5Ja1NBOZ57onqupVljUTNQ==
+  dependencies:
+    "@types/reach__router" "*"
+    "@types/react" "*"
+
 "@types/get-port@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@types/get-port/-/get-port-3.2.0.tgz#f9e0a11443cc21336470185eae3dfba4495d29bc"
@@ -3136,7 +3150,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/isomorphic-fetch@0.0.39":
+"@types/isomorphic-fetch@0.0.39", "@types/isomorphic-fetch@^0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.39.tgz#889573a72ca637bc1a665910a41ff1cb3b52011f"
   integrity sha512-I0gou/ZdA1vMG7t7gMzL7VYu2xAKU78rW9U1l10MI0nn77pEHq3tQqHQ8hMmXdMpBlkxZOorjI4sO594Z3kKJw==
@@ -3268,7 +3282,7 @@
   resolved "https://registry.yarnpkg.com/@types/parse5/-/parse5-6.0.3.tgz#705bb349e789efa06f43f128cef51240753424cb"
   integrity sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==
 
-"@types/promise-polyfill@6.0.6":
+"@types/promise-polyfill@6.0.6", "@types/promise-polyfill@^6.0.4":
   version "6.0.6"
   resolved "https://registry.yarnpkg.com/@types/promise-polyfill/-/promise-polyfill-6.0.6.tgz#5503ff1a9cbf6feaa624de557a8ecf405624019d"
   integrity sha512-nKg0HIgdKRKfi5S3IlrpiNWqxiJOqYOV70jAtalqhvb5zJt5IoQMgy1QS3y5wsbUQPOCZHQxaPg+btBUVbA+hA==
@@ -3285,7 +3299,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-collapse@5.0.4":
+"@types/react-collapse@5.0.4", "@types/react-collapse@^5.0.1":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-collapse/-/react-collapse-5.0.4.tgz#1b3e52557c8f85b3d4c4a7d073d4c2437fa2e2a0"
   integrity sha512-tM5cVB6skGLneNYnRK2E3R56VOHguSeJQHslGPTIMC58ytL3oelT8L/l1onkwHGn5vSEs2BEq2Olzrur+YdliA==
@@ -3296,6 +3310,13 @@
   version "6.1.9"
   resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.1.9.tgz#e79e0def2ad4047cb67e83c5be7cfb3d2121615a"
   integrity sha512-nuOeTefP4yPTWHvjGksCBKb/4hsgJxSX7aSTjTIDFXJIkZ6Wo2Y4/cmE1FO9OlYBrHjKOer/0zLwY7s4qiQBtw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-helmet@^6.1.6":
+  version "6.1.11"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-6.1.11.tgz#8cafcafff38f75361f451563ba7b406b0c5d3907"
+  integrity sha512-0QcdGLddTERotCXo3VFlUSWO3ztraw8nZ6e3zJSgG7apwV5xt+pJUS8ewPBqT4NYB1optGLprNQzFleIY84u/g==
   dependencies:
     "@types/react" "*"
 
