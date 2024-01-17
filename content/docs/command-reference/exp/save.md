@@ -16,6 +16,10 @@ See also `dvc exp run`, which includes this operation.
 usage: dvc exp save [-h] [-q | -v] [-f]
                    [--json] [-n <name>]
                    [-I path] [-m <message>]
+                   [targets [targets ...]]
+
+positional arguments:
+  targets          Stages to save. 'dvc.yaml' by default.
 ```
 
 ## Description
