@@ -13,13 +13,15 @@ See also `dvc exp run`, which includes this operation.
 ## Synopsis
 
 ```usage
-usage: dvc exp save [-h] [-q | -v] [-f]
+usage: dvc exp save [-h] [-q | -v] [-R] [-f]
                    [--json] [-n <name>]
                    [-I path] [-m <message>]
                    [targets [targets ...]]
 
 positional arguments:
-  targets          Stages to save. 'dvc.yaml' by default.
+  targets        Limit DVC caching to these stages or .dvc files.
+                 Using -R, directories to search for stages or .dvc
+                 files can also be given.
 ```
 
 ## Description
@@ -71,6 +73,11 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-m <message>`, `--message <message>` - custom message to use when saving the
   experiment. If not provided, `dvc: commit experiment {hash}` will be used.
+
+- `-R`, `--recursive` - determines the files to cache by searching each target
+  directory and its subdirectories for stages (in `dvc.yaml`) or `.dvc` files to
+  inspect. If there are no directories among the `targets`, this option has no
+  effect.
 
 - `-f`, `--force` - rewrite the experiment if it already exists.
 
@@ -177,5 +184,32 @@ All changes, including untracked files, have been restored to the workspace.
 <admon type="info">
 
 See [our Get Started] guide, for more examples on how to use experiments.
+
+</admon>
+
+## Example: Specify targets to save
+
+Let's say a repository looks like this:
+
+```cli
+$ tree
+.
+├── dir_a
+│   └── dvc.yaml
+└── dir_b
+    └── dvc.yaml
+```
+
+`dvc repro dir_a/dvc.yaml` will reproduce stages in `dir_a/dvc.yaml`. If stages
+iin `dir_b/dvc.yaml` have not been run, `dvc exp save` will fail because the
+outputs for those stages do not exist. Running `dvc exp save dir_a/dvc.yaml`
+will ignore stages in `dir_b/dvc.yaml` and only cache changes to stages in
+`dir_a/dvc.yaml`.
+
+<admon type="info">
+
+Changes to Git-tracked files in `dir_b` (including `dir_b/dvc.yaml` itself) will
+be saved as part of the experiment since the entire repository is committed to
+Git.
 
 </admon>
