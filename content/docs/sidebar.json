@@ -737,6 +737,7 @@
             "slug": "git-connections",
             "children": ["github-app", "custom-gitlab-server"]
           },
+          "single-sign-on",
           "troubleshooting"
         ]
       },
