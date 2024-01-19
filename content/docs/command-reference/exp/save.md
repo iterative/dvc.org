@@ -201,7 +201,7 @@ $ tree
 ```
 
 `dvc repro dir_a/dvc.yaml` will reproduce stages in `dir_a/dvc.yaml`. If stages
-iin `dir_b/dvc.yaml` have not been run, `dvc exp save` will fail because the
+in `dir_b/dvc.yaml` have not been run, `dvc exp save` will fail because the
 outputs for those stages do not exist. Running `dvc exp save dir_a/dvc.yaml`
 will ignore stages in `dir_b/dvc.yaml` and only cache changes to stages in
 `dir_a/dvc.yaml`.
