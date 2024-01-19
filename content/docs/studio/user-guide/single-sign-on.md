@@ -21,18 +21,9 @@ will be auto-assigned the [`Viewer` role](#roles).
 
 ## Okta integration
 
-**Configure Okta in DVC Studio team settings**
+**Add integration with DVC Studio in Okta**
 
-In in SSO section of your team settings page, provide the following values:
-
-- `signOnUrl`: You can find this value in < >. Example:
-  "https://...okta.com/app/dev-..\_studiodevsaml_1/../sso/saml"
-- `issuer`: You can find this value in < >. Example: "http://www.okta.com/.."
-- `publicCert`: You can find this value in < >. Example: ".."
-
-<!-- TODO: Add screenshot/gif/video -->
-
-**Add integration with DVC Studio in Okta** In Okta, follow
+In Okta, follow
 [these steps](https://developer.okta.com/docs/guides/build-sso-integration/saml2/main/#create-your-integration-in-okta).
 In short, in the integration set-up page in Okta, provide the following values:
 
@@ -44,5 +35,16 @@ In short, in the integration set-up page in Okta, provide the following values:
 - `Update application username on`: "Create and update"
 - `Attribute Statements`: Add mapping of user email as `Name`: "email", `Value`:
   "user.email"
+
+<!-- TODO: Add screenshot/gif/video -->
+
+**Configure Okta in DVC Studio team settings**
+
+In the SSO section of your team settings page, provide the following values:
+
+- `signOnUrl`: You can find this value in < >. Example:
+  "https://...okta.com/app/dev-..\_studiodevsaml_1/../sso/saml"
+- `issuer`: You can find this value in < >. Example: "http://www.okta.com/.."
+- `publicCert`: You can find this value in < >. Example: ".."
 
 <!-- TODO: Add screenshot/gif/video -->
