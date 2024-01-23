@@ -400,6 +400,13 @@ Refer to `dvc dag` to explore other ways this command can visualize a pipeline.
 
 </admon>
 
+### Visualize in VS Code
+
+You can visualize the pipeline inside of VS Code with the
+[DVC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc):
+
+![Visualize the DAG in VS Code](/img/vscode-show-dag.gif)
+
 ## Summary
 
 DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc repro` commands) solve
