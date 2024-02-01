@@ -267,8 +267,6 @@ Composition].
 [config groups]:
   https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/
 [defaults list]: https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/
-[config module]:
-  https://hydra.cc/docs/1.3/advanced/compose_api/#initialization-methods
 [plugins]:
   https://hydra.cc/docs/advanced/plugins/develop/#automatic-plugin-discovery-process
 
