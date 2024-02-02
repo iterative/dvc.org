@@ -268,6 +268,10 @@ view.
 
 ![VS Code Comparison](/img/dvclive-vscode-compare.png)
 
+The extension can also make plots debugging easier.
+
+https://youtu.be/XH0v3x7lBDg?si=6YheW-ocPU9MMoIq
+
 </tab>
 
 <tab title="DVC Studio">
