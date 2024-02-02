@@ -282,7 +282,7 @@ Within that directory, DVC will look for [defaults list] in `config.yaml`, but
 you can set a different path using `dvc config hydra.config_name other.yaml`.
 This is equivalent to the `config_name` argument in `@hydra.main()`.
 
-Hydra will automatically discover plugins in the `hydra_plugins` directory. By
+Hydra will automatically discover [plugins] in the `hydra_plugins` directory. By
 default, DVC will look for `hydra_plugins` in the root directory of the DVC
 repository, but you can set a different path with
 `dvc config hydra.plugins_path other_path`.
