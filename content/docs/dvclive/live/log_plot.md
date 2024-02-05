@@ -65,25 +65,25 @@ or [DVC Studio](/doc/studio/user-guide/experiments/visualize-and-compare).
 
 ## Parameters
 
-- `name` - Name of the output file.
+- `name` - name of the output file.
 
-- `datapoints` - Pandas DataFrame, Numpy Array or List of dictionaries
+- `datapoints` - Pandas DataFrame, Numpy array or list of dictionaries
   containing the data for the plot.
 
-- `x` - Name of the key (present in the dictionaries) to use as the `x` axis.
+- `x` - name of the key (present in the dictionaries) to use as the `x` axis.
 
-- `y` - Name of the key (present in the dictionaries) to use the `y` axis.
+- `y` - name of the key (present in the dictionaries) to use as the `y` axis.
 
-- `template` - Name of the
+- `template` - name of the
   [DVC plots template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to use. Defaults to `linear`.
 
-- `title` - Title to be displayed. Defaults to
+- `title` - title to be displayed. Defaults to
   `{Live.dir}/plots/custom/{name}.json`.
 
-- `x_label` - Label for the `x` axis. Defaults to the name passed as `x`.
+- `x_label` - label for the `x` axis. Defaults to the name passed as `x`.
 
-- `y_label` - Label for the `y` axis. Defaults to the name passed as `y`.
+- `y_label` - label for the `y` axis. Defaults to the name passed as `y`.
 
 ## Example: Plot from Pandas DataFrame
 
@@ -221,3 +221,12 @@ plots:
 Rendered with `dvc plots`:
 
 ![dvc plots show](/img/dvclive-log_plot-unstructured.png)
+
+## Exceptions
+
+- `dvclive.error.InvalidDataTypeError` - thrown if the provided `datapoints`
+  does not have a supported type. Supported types include:
+
+  ```python
+  pd.DataFrame | np.ndarray | List[Dict]
+  ```

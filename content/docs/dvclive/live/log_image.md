@@ -112,7 +112,7 @@ folders following this pattern will be rendered using an image slider:
 
 ## Parameters
 
-- `name` - name of the image file that this command will output
+- `name` - name of the image file that this command will output.
 
 - `val` - image to be saved. See the list of supported values in the
   [Description](#description).
@@ -121,6 +121,3 @@ folders following this pattern will be rendered using an image slider:
 
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `val` does not
   have a supported type.
-
-- `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged within the same `step`.
