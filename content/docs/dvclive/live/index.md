@@ -9,9 +9,9 @@ class Live:
         self,
         dir: str = "dvclive",
         resume: bool = False,
-        report: Optional[str] = None,
+        report: Literal["md", "notebook", "html", None] = None,
         save_dvc_exp: bool = True,
-        dvcyaml: Union[str, bool] = "dvc.yaml",
+        dvcyaml: Optional[str] = "dvc.yaml",
         cache_images: bool = False,
         exp_name: Optional[str] = None,
         exp_message: Optional[str] = None,
@@ -44,14 +44,14 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 ## Properties
 
-- `step` - See `Live.next_step()`.
+- `step` - see `Live.next_step()`.
 
-- `summary` - See `Live.make_summary()`.
+- `summary` - see `Live.make_summary()`.
 
-- `dir` - Location of the directory to store
+- `dir` - location of the directory to store
   [outputs](/doc/dvclive/how-it-works).
 
-- `dvc_file` - Path for `dvc.yaml` file.
+- `dvc_file` - path for `dvc.yaml` file.
 
 - `metrics_file` - `{Live.dir}/metrics.json`.
 
@@ -65,22 +65,22 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 ## Parameters
 
-- `dir` - Where to save DVCLive's outputs. Defaults to `dvclive`.
+- `dir` - where to save DVCLive's outputs. Defaults to `dvclive`.
 
-- `resume` - If `True`, DVCLive will try to read the previous `step` from the
+- `resume` - if `True`, DVCLive will try to read the previous `step` from the
   `metrics_file` and start from that point. Defaults to `False`.
 
-- `report` - Any of `html`, `notebook`, `md` or `None`. See
+- `report` - any of `html`, `notebook`, `md` or `None`. See
   `Live.make_report()`. Defaults to `None`.
 
-- `save_dvc_exp` - If `True` , DVCLive will create a new
+- `save_dvc_exp` - if `True`, DVCLive will create a new
   [DVC experiment](/doc/dvclive/how-it-works#git-integration) as part of
   `Live.end()`. Defaults to `True`.
 
   If you are using DVCLive inside a <abbr>DVC Pipeline</abbr> and running with
   `dvc exp run`, the option will be ignored.
 
-- `dvcyaml` - Where to write `dvc.yaml` file, which adds
+- `dvcyaml` - where to write `dvc.yaml` file, which adds
   [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
   metrics, plots, and parameters as part of `Live.next_step()` and `Live.end()`.
   If `None`, no `dvc.yaml` file is written. Defaults to `dvc.yaml`. See
@@ -93,20 +93,20 @@ You can use `Live()` as a context manager. When exiting the context manager,
   DVCLive metrics, plots, and parameters independently and want to avoid
   duplication).
 
-- `cache_images` - If `True`, DVCLive will <abbr>cache</abbr> any images logged
+- `cache_images` - if `True`, DVCLive will <abbr>cache</abbr> any images logged
   with `Live.log_image()` as part of `Live.end()`. Defaults to `False`.
 
   If running a <abbr>DVC pipeline</abbr>, `cache_images` will be ignored, and
   you should instead cache images as pipeline <abbr>outputs</abbr>.
 
-- `exp_name` - If not `None`, and `save_dvc_exp` is `True`, the provided string
+- `exp_name` - if not `None`, and `save_dvc_exp` is `True`, the provided string
   will be passed to
   [`dvc exp save --name`](/doc/command-reference/exp/save#--name).
 
   If DVCLive is used inside `dvc exp run`, the option will be ignored, use
   [`dvc exp run --name`](/doc/command-reference/exp/run#--name) instead.
 
-- `exp_message` - If not `None`, and `save_dvc_exp` is `True`, the provided
+- `exp_message` - if not `None`, and `save_dvc_exp` is `True`, the provided
   string will be passed to
   [`dvc exp save --message`](/doc/command-reference/exp/save#--message).
 
