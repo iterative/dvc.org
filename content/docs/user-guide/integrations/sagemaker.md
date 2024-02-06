@@ -31,13 +31,9 @@ you would in any other environment. Take a look at DVC [experiments] for how to
 get started with DVC in notebooks (if you have setup [code-server] on SageMaker,
 you can also install the [DVC extension for VS Code]).
 
-If you would like to see live experiment updates in [DVC Studio], get your
-[token] and save it in your [dvc config] or `DVC_STUDIO_TOKEN` environment
-variable. For example, to set it globally for all of a user's projects:
-
-```cli
-$ dvc config --global studio.token ***
-```
+If you would like to see [live experiment updates] in [DVC Studio], first set
+your [token]. The simplest method to set the token is to run `dvc studio login`,
+which will save it globally for your user.
 
 While the experiment runs, you will see live updates like this in DVC Studio:
 
@@ -125,6 +121,50 @@ The end result of running the pipeline looks like this:
 
 ![Pipeline](/img/sagemaker-pipeline.png)
 
+### Live experiment updates in SageMaker jobs
+
+SageMaker jobs run outside of your Git repository, so experiment metrics and
+plots will not be automatically tracked in the repository. However, you can see
+[live experiment updates] in [DVC Studio].
+
+First, set the `DVC_STUDIO_TOKEN` and `DVC_STUDIO_REPO_URL` environment
+variables.
+
+```cli
+$ export DVC_STUDIO_TOKEN="<token>"
+$ export DVC_STUDIO_REPO_URL="https://github.com/<org>/<repo>"
+```
+
+<admon type="tip">
+
+If you are running DVC [pipelines] and logged in to Studio, these environment
+variables will be automatically set by DVC, and you can skip the first step. You
+still must pass the environment variables to the SageMaker job.
+
+</admon>
+
+Then pass them to the SageMaker job:
+
+```python
+import os
+from sagemaker.estimator import Estimator
+
+env = {name: value for name, value in os.environ.items() if name.startswith("DVC")}
+
+estimator = Estimator(
+    environment=env,
+    entry_point="train.py",
+    source_dir="src",
+    ...
+)
+```
+
+For any [DVCLive] metrics and plots logged in the `entry_point` script, you
+should now see live updates in Studio. To use DVCLive in the script, you must
+also include `dvclive` in a `requirements.txt` file inside your `source_dir`.
+
+[DVCLive]: /doc/dvclive
+
 ## Deployment
 
 Use the <abbr>model registry</abbr> to automate deployment with SageMaker in
@@ -140,8 +180,10 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [code-server]:
   https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/
 [dvc extension for vs code]: /doc/vs-code-extension
+[live experiment updates]:
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvc studio]: https://studio.iterative.ai
-[token]: https://studio.iterative.ai/user/_/profile?section=accessToken
+[token]: /doc/studio/user-guide/account-and-billing#client-access-tokens
 [dvc config]: /doc/user-guide/project-structure/configuration#studio
 [pipelines]: /doc/user-guide/pipelines
 [external dependencies and outputs]:
