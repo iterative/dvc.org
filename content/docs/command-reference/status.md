@@ -295,7 +295,7 @@ The imported data can be brought to its latest version by using `dvc update`.
 To skip this check (for example, to speed up status checks, or because you don't
 have permission to access the original source data), use `--no-updates`:
 
-```cli
+```dvc
 $ dvc status --no-updates
 Data and pipelines are up to date.
 ```
