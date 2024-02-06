@@ -18,7 +18,7 @@ For the status of tracked data, see
 
 ```usage
 usage: dvc status [-h] [-v] [-j <number>] [-q] [-c] [-r <name>] [-a] [-T]
-                  [--all-commits] [-d] [-R] [--json]
+                  [--all-commits] [-d] [-R] [--json] [--no-updates]
                   [targets [targets ...]]
 
 positional arguments:
@@ -149,6 +149,10 @@ that.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
+
+- `--no-updates` - ignore updates to <abbr>import stages</abbr>. By default,
+  `dvc status` will check whether there are updates available from the sources
+  of the imports. `--no-updates` will skip these checks.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a
@@ -287,3 +291,11 @@ data.csv.dvc:
 ```
 
 The imported data can be brought to its latest version by using `dvc update`.
+
+To skip this check (for example, to speed up status checks, or because you don't
+have permission to access the original source data), use `--no-updates`:
+
+```cli
+$ dvc status --no-updates
+Data and pipelines are up to date.
+```
