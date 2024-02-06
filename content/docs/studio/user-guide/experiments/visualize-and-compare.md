@@ -49,7 +49,7 @@ project table are excluded.
 
 ## Compare experiments
 
-Select two experiments and click on the `Compare` button. The metrics,
+Select up to seven experiments and click on the `Compare` button. The metrics,
 parameters and files in the selected experiments will be displayed side by side
 for easy comparison.
 
