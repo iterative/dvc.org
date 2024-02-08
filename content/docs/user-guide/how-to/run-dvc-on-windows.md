@@ -78,7 +78,7 @@ to your global `settings.json` or to your project's `.vscode/settings.json`.
 Add this to your `.pre-commit-config.yaml` hooks:
 
 ```
-      - id: mixed-line-endings
+      - id: mixed-line-ending
         args: [--fix=lf]
 ```
 
