@@ -17,13 +17,12 @@ To quickly start tracking your models in the DVC Studio model registry:
   $ pip install dvclive
   ```
 
-- Copy your
+- Set your
   [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
-  with Model registry operations scope, and configure your model training
-  environment to use the token:
+  and configure your model training environment to use the token:
 
   ```cli
-  $ dvc config --global studio.token ***
+  $ dvc studio login
   ```
 
 - Use the DVCLive [`log_artifact()`](/doc/dvclive/live/log_artifact) method in

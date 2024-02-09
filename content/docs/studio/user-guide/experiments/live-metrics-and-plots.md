@@ -25,7 +25,7 @@ the experiment locally, you can set the token in your [DVC config]. For example,
 to set it globally for all of a user's projects:
 
 ```cli
-$ dvc config --global studio.token ***
+$ dvc studio login
 ```
 
 If you are running the experiment as part of a CI job, a secure way to provide

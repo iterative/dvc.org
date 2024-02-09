@@ -44,7 +44,7 @@ First, configure the
 (this only needs to be done once):
 
 ```cli
-$ dvc config --global studio.token <your Studio token>
+$ dvc studio login
 ```
 
 Now you can use the following command to download the model:
@@ -186,6 +186,8 @@ deploy-model:
     - job: parse
       artifacts: true
   image: python:3.11-slim
+  env:
+    DVC_STUDIO_TOKEN: ${{ secrets.DVC_STUDIO_TOKEN }} # you can also use a GitLab CI variable
   script:
     # Check if the model is assigned to prod (variables from parse.env are only available in the 'script' section)
     # You can replace the conditions with your own
@@ -194,7 +196,6 @@ deploy-model:
     # Install DVC
     - pip install dvc
     # Build commands to download and deploy the model
-    - dvc config --global studio.token ${DVC_STUDIO_TOKEN}
     - dvc artifacts get  ${CI_REPOSITORY_URL} ${MODEL_NAME} --rev
       ${MODEL_VERSION}
     - echo "The right model is available and you can use the rest of this

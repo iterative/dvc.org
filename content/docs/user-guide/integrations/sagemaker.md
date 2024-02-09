@@ -36,7 +36,7 @@ If you would like to see live experiment updates in [DVC Studio], get your
 variable. For example, to set it globally for all of a user's projects:
 
 ```cli
-$ dvc config --global studio.token ***
+$ dvc studio login
 ```
 
 While the experiment runs, you will see live updates like this in DVC Studio:
