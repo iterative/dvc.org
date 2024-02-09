@@ -1,7 +1,6 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
 import ThemeMainLayout, {
-  // LayoutModifiers,
   ILayoutComponentProps
 } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 
