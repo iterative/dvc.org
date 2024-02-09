@@ -1,7 +1,7 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
 import ThemeMainLayout, {
-  LayoutModifiers,
+  // LayoutModifiers,
   ILayoutComponentProps
 } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 
@@ -11,7 +11,7 @@ interface IMainLayoutProps extends ILayoutComponentProps {
 
 const MainLayout = ({ children, ...props }: IMainLayoutProps) => {
   return (
-    <ThemeMainLayout {...props} modifiers={[LayoutModifiers.HideAlert]}>
+    <ThemeMainLayout {...props} modifiers={[]}>
       {children}
     </ThemeMainLayout>
   )
