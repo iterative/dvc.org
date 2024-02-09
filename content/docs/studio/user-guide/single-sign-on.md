@@ -21,30 +21,71 @@ will be auto-assigned the [`Viewer` role](#roles).
 
 ## Okta integration
 
-**Add integration with DVC Studio in Okta**
+1. **Create Enterprise account**: SSO is available for DVC Studio teams with
+   enterprise account subscriptions. If you are on the Free or Basic plan of DVC
+   Studio, [Contact us] to upgrade your account.
 
-In Okta, follow
-[these steps](https://developer.okta.com/docs/guides/build-sso-integration/saml2/main/#create-your-integration-in-okta).
-In short, in the integration set-up page in Okta, provide the following values:
+2. **Add integration with DVC Studio in Okta**: Follow the instructions from the
+   [Okta developer guide](https://developer.okta.com/docs/guides/build-sso-integration/saml2/main/#create-your-integration-in-okta).
+   In short, login to Okta with an admin account, and follow these steps:
 
-- `SP Entity ID`: "https://studio.iterative.ai/api/saml"
-- `Single sign-on URL`:
-  "https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume"
-- `Name ID Format`: "Persistent"
-- `Application username`: "Okta username"
-- `Update application username on`: "Create and update"
-- `Attribute Statements`: Add mapping of user email as `Name`: "email", `Value`:
-  "user.email"
+   1. In the admin console, create a private SSO integration.
+   2. Use `SAML 2.0` as the `Sign in method` (and not `OIDC` or some other
+      option).
+   3. `Single sign-on URL`:
+      [https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume](https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume)
+      (Replace <TEAM_NAME> with the name of your team in Studio.
+   4. `Audience URI (SP Entity ID)`: https://studio.iterative.ai/api/saml
+   5. `Name ID Format`: Persistent
+   6. `Application username (NameID)`: Okta username
+   7. `Attribute Statements (optional)`: 1. `Name`: email 2. `Name format`: URI
+   Reference 3. `Value`: user.email
+   <!-- TODO: Add screenshot/gif/video -->
+   8. Click on `Next` and `Finish`.
+   9. Once the integration is created, open the `Sign On` tab and expand the
+   `Hide Details` section. From here, copy the `Sign on URL`, `Issuer` and
+   `Signing Certificate`.
+   <!-- TODO: Add screenshot/gif/video -->
 
-<!-- TODO: Add screenshot/gif/video -->
+3. **Configure Okta in DVC Studio team settings**: Back in Studio, open your
+   enterprise team's `Settings` page. Go to the `SAML Single Sign-on` section
+   and enable SAML Authentication. Then, fill in the required details:
 
-**Configure Okta in DVC Studio team settings**
+   1. `Sign-on URL`: Paste the `Sign on URL` you copied from Okta
+   2. `Identity Provider Issuer URL`: Paste the `Issuer` you copied from Okta
+   3. `Public Certificate`: Paste the `Signing Certificate` you copied from
+      Okta. Remember to add `-----BEGIN CERTIFICATE-----` and
+      `-----END CERTIFICATE-----` at the beginning and end of the certificate.
+      Or, you can `Download` the `Signing Certificate` from Okta, open the
+      downloaded file with a text editor, and copy the value from here.
+      <!-- TODO: Add screenshot/gif/video -->
+      Then, click on `Save`. DVC Studio will generate the `SSO login URL` and
+      the `assertion consumer service URL` for your team and display their
+      values to use just below the `Save` button.
 
-In the SSO section of your team settings page, provide the following values:
+4. **Assign users**: Now, whenever you need to authorize users to access your
+   DVC Studio team, you should assign these users to the application that you
+   have configured. For this, open Okta and follow these steps:
 
-- `signOnUrl`: You can find this value in < >. Example:
-  "https://...okta.com/app/dev-..\_studiodevsaml_1/../sso/saml"
-- `issuer`: You can find this value in < >. Example: "http://www.okta.com/.."
-- `publicCert`: You can find this value in < >. Example: ".."
+   1. Open `Applications`
+   2. Click on `Assign Users to App`
+   3. Select your app, and select all the users you want to assign.
+   4. Click on `Next` and `Confirm Assignments`.
 
-<!-- TODO: Add screenshot/gif/video -->
+   <admon>
+
+   The Single Sing-on URL for your team is
+   [https://studio.iterative.ai/api/teams/<TEAM_NAME>/sso](https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume).
+   Users that you assign to your team can login to DVC Studio by opening the
+   Single Sign-on URL and providing their Okta login credentials.
+   <!-- TODO: Add screenshot/gif/video -->
+
+   </admon>
+
+   <admon>
+
+   If a user does not have a pre-assigned role when they sign in to a team, they
+   will be auto-assigned the `Viewer` role. If the role needs to be changed, it
+   has to be done in the `Collaborators` page in the DVC Studio team settings.
+
+   </admon>
