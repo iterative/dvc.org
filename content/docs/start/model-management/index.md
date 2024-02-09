@@ -11,6 +11,8 @@ description:
 
 ## Chapters
 
+- **[Add a model]** - Start tracking model artifacts with DVC.
+
 - **[Model registry]** - Set up a git-based model registry with DVC to track and
   manage models, their versions and lifecycle stages.
 
@@ -19,6 +21,7 @@ description:
   (such as assigning model stages) and deploy models directly form the model
   registry.
 
+[Add a model]: /doc/start/model-management/add-model
 [model registry]: /doc/start/model-management/model-registry
 [Using and deploying models]: /doc/start/model-management/model-cicd
 

@@ -26,7 +26,7 @@ experiments with DVC Studio:
 
   ```python
   from dvclive import Live
-  with Live(save_dvc_exp=True) as live:
+  with Live() as live:
     for epoch in range(epochs):
       live.log_metric("accuracy", accuracy)
       live.log_metric("loss", loss)

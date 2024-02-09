@@ -136,11 +136,9 @@ adding a project is the same as that for adding personal projects
 ## Models
 
 This is the models dashboard for the team. All the models on this dashboard are
-accessible to all members (collaborators) of the team.
-
-To add a model to this dashboard, click on `Add a model`. The process for adding
-a model is the same as that for adding personal models
-([instructions](/doc/studio/user-guide/model-registry/add-a-model)).
+accessible to all members (collaborators) of the team. The process for adding a
+model is the same as that for adding personal models
+([instructions](/doc/studio/model-registry/add-a-model)).
 
 ## Settings
 

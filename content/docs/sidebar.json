@@ -73,6 +73,10 @@
         "source": "model-management/index.md",
         "children": [
           {
+            "label": "Add a model",
+            "slug": "add-model"
+          },
+          {
             "label": "Model registry",
             "slug": "model-registry"
           },
@@ -717,7 +721,6 @@
           {
             "slug": "model-registry",
             "children": [
-              "add-a-model",
               "register-version",
               "assign-stage",
               "view-and-compare-models",

@@ -295,8 +295,8 @@ add the model.
 
 ## Model registry does not display the models in my Git repositories
 
-For a model to be displayed in the model registry, it has to be registered using
-[GTO]. You can [register the model] from DVC Studio or with the [`gto` CLI].
+For a model to be displayed in the model registry, it has to be [added] using
+DVC.
 
 ## My models have disappeared even though I did not remove (deprecate) them
 
@@ -313,9 +313,7 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[gto]: /doc/gto
-[register the model]: /doc/studio/user-guide/model-registry/add-a-model
-[`gto` cli]: /doc/gto/command-reference
+[added]: /doc/studio/model-registry/add-a-model
 [create a project]: /doc/studio/user-guide/experiments/create-a-project
 [project-settings]:
   /doc/studio/user-guide/experiments/configure-a-project#configuring-project-settings

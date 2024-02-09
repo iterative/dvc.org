@@ -17,21 +17,12 @@ To quickly start tracking your models in the DVC Studio model registry:
   $ pip install dvclive
   ```
 
-- Copy your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
-  with Model registry operations scope, and configure your model training
-  environment to use the token:
-
-  ```cli
-  $ dvc config --global studio.token ***
-  ```
-
 - Use the DVCLive [`log_artifact()`](/doc/dvclive/live/log_artifact) method in
   your model training code:
 
   ```python
   from dvclive import Live
-  with Live(save_dvc_exp=True) as live:
+  with Live() as live:
     live.log_artifact("model.pt", type="model", name="mymodel")
   ```
 
@@ -51,15 +42,8 @@ To quickly start tracking your models in the DVC Studio model registry:
 To walk through an example of how to get started with the model registry, see
 [Get Started: Model Registry](/doc/start/model-management/model-registry).
 
-## More ways to add models
-
-DVC Studio offers more ways to add models to the model registry - you can:
-
-- edit `dvc.yaml` directly and add your model to artifacts section, or
-- add models from the DVC Studio interface.
-
-Find the complete tutorial
-[here](/doc/studio/user-guide/model-registry/add-a-model).
+If you don't want to add the model from a Python script, you can also edit
+`dvc.yaml` directly and add your model to artifacts section.
 
 ## Manage model lifecycle
 
