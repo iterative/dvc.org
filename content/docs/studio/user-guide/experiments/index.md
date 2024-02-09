@@ -74,9 +74,7 @@ To set up, run and track
   This will create a `dvc.yaml` file in the Git repository.
 
 - Set your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
-  and
-  [configure your model training environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
+  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens):
 
   ```cli
   dvc studio login
