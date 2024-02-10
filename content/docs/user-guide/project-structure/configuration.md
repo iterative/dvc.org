@@ -258,12 +258,17 @@ Composition].
   groups]. Defaults to `conf`.
 - `hydra.config_name` - the name of the file containing the Hydra [defaults
   list] (located inside `hydra.config_dir`). Defaults to `config.yaml`.
+- `hydra.plugins_path` - location of the parent directory of `hydra_plugins`,
+  where Hydra will automatically discover [plugins]. Defaults to the root of the
+  DVC repository.
 
 [config composition]:
   https://hydra.cc/docs/tutorials/basic/your_first_app/composition/
 [config groups]:
   https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/
 [defaults list]: https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/
+[plugins]:
+  https://hydra.cc/docs/advanced/plugins/develop/#automatic-plugin-discovery-process
 
 </details>
 

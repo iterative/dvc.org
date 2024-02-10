@@ -111,7 +111,7 @@ Now git will handle line endings consistently.
 Add this to your `.pre-commit-config.yaml` hooks:
 
 ```
-      - id: mixed-line-endings
+      - id: mixed-line-ending
         args: [--fix=lf]
 ```
 
