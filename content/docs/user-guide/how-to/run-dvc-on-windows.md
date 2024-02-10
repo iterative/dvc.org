@@ -87,12 +87,14 @@ Add the following line to your .gitattributes:
 
 }
 ```
+
 This configuration tells Git to treat all files as text files and use LF line
 endings regardless of the platform.
 
 ### Configure Git for LF Line Endings
 
 Set core.autocrlf to false and core.eol to lf
+
 ```
 {
 
@@ -101,6 +103,7 @@ Set core.autocrlf to false and core.eol to lf
 
 }
 ```
+
 Now git will handle line endings consistently.
 
 ### Use pre-commit hook to check and fix line endings
