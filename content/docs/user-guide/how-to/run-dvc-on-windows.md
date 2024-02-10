@@ -73,6 +73,36 @@ For VS Code, add
 
 to your global `settings.json` or to your project's `.vscode/settings.json`.
 
+### Set up LF Line Endings with .gitattributes for DVC on Windows
+
+To enhance DVC compatibility on Windows, it is advisable to employ a
+.gitattributes file with the eol attribute to configure line endings.
+
+Add the following line to your .gitattributes:
+
+```
+{
+
+  * text=auto eol=lf
+
+}
+```
+This configuration tells Git to treat all files as text files and use LF line
+endings regardless of the platform.
+
+### Configure Git for LF Line Endings
+
+Set core.autocrlf to false and core.eol to lf
+```
+{
+
+  git config --global core.autocrlf false
+  git config --global core.eol lf
+
+}
+```
+Now git will handle line endings consistently.
+
 ### Use pre-commit hook to check and fix line endings
 
 Add this to your `.pre-commit-config.yaml` hooks:
