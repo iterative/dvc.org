@@ -89,7 +89,7 @@ Add the following line to your .gitattributes:
 ```
 
 This configuration tells Git to treat all files as text files and use LF line
-endings regardless of the platform.
+endings regardless of the platform.  
 
 ### Configure Git for LF Line Endings
 
