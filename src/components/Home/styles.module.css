@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 
-.heroSection {
+.heroContainer {
   @apply pt-14;
 
   position: relative;

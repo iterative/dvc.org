@@ -1,14 +1,19 @@
 # Account Management
 
 To open your account settings, click on your user icon on the top right corner
-of DVC Studio, and go to your `Profile`. You can view and update the following
+of DVC Studio, and go to your `Settings`. You can view and update the following
 settings:
 
-- [Personal details](#personal-details), including name, username and email
-  addresses
-- [Security details](#security-details), including password, access token, and
-  cloud credentials
-- [Git integrations](#git-integrations) with GitHub, GitLab and Bitbucket
+- [General settings](#general-settings)
+  - [Profile details](#profile-details) update your name and profile picture
+  - [Account details](#account-details) manage your username, password, email
+    addresses, and delete your account
+- [Git connections](#git-connections) with GitHub, GitLab and Bitbucket
+- [Cloud credentials](#cloud-credentials) for data remotes
+- [Teams](#teams) that you own
+- [Tokens](#tokens)
+  - [Client access tokens](#client-access-tokens) for experiments, dataset and
+    model registry operations
 
 <admon>
 
@@ -21,18 +26,28 @@ plans there and increase or decrease the number of seats in it.
 
 </admon>
 
-## Personal details
+## General settings
 
-In your profile page, the topmost section includes your first name, last name
-and profile picture. If you signed up with a GitHub, GitLab or Bitbucket
-account, these details are fetched from your connected Git hosting account.
+In your settings page, the general tab includes your profile and account
+settings.
 
-Your username is displayed next. This is also fetched from your connected Git
-hosting account if you signed up with a GitHub, GitLab or Bitbucket account.
+### Profile details
 
-You can edit your name as well as username.
+Here, you can update your first name, last name and profile picture.
 
-### Managing email addresses
+### Account details
+
+In the account section, your username is displayed. Here, you can also update
+your username, password and email addresses.
+
+<admon>
+
+If you signed up with a GitHub, GitLab or Bitbucket account, these details are
+fetched from your connected Git hosting account.
+
+</admon>
+
+#### Managing email addresses
 
 You can add multiple email addresses to a single DVC Studio account. You can
 login to the account with any of your verified email addresses as long as you
@@ -47,163 +62,19 @@ next to the email address which you want to designate as primary.
 
 You can delete your non-primary email addresses.
 
-## Security details
+#### Delete account
 
-Your password can be changed or reset from the `Account` section in your profile
-page.
+If you delete your account, all the projects you own and the links that you have
+shared will be permanently deleted. So, click on `Delete my account` only if you
+are absolutely sure that you do not need those projects or links anymore.
 
-### Studio access token
+<admon>
 
-DVC Studio uses access tokens to authorize [DVC] and [DVCLive] to send
-experiment updates, and to authenticate you in the DVC Studio
-[REST API](/doc/studio/rest-api).
+Deleting your account in DVC Studio does not delete your Git repositories.
 
-In the `Studio access token` section of your [Profile] page, you can generate a
-new token as well as regenerate (replace) or delete your access token.
+</admon>
 
-The option to delete the access token is also available when you change your
-password, so that you can reset all your access credentials at once. This is
-handy if you suspect that your account security may have been compromised.
-
-### Cloud credentials
-
-In the `Cloud Credentials` section of your [Profile] page, you can view, add and
-update credentials for cloud resources. These credentials are used to:
-
-- [fetch project data from data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials),
-  and
-- [create cloud resources for running experiments](/doc/studio/user-guide/experiments/run-experiments#cloud-experiments).
-
-To add new credentials, click `Add credentials` and select the cloud provider.
-Depending on the provider, you will be asked for more details. Note that
-[cloud experiments](/doc/studio/user-guide/experiments/run-experiments#cloud-experiments)
-currently support AWS and GCP.
-
-![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
-
-The credentials must have the required permissions. For
-[cloud experiments](/doc/studio/user-guide/experiments/run-experiments#cloud-experiments),
-the following permissions are needed:
-
-<details>
-
-#### AWS
-
-```
-"autoscaling:CreateAutoScalingGroup",
-"autoscaling:DeleteAutoScalingGroup",
-"autoscaling:DescribeAutoScalingGroups",
-"autoscaling:DescribeScalingActivities",
-"autoscaling:UpdateAutoScalingGroup",
-"ec2:AuthorizeSecurityGroupEgress",
-"ec2:AuthorizeSecurityGroupIngress",
-"ec2:CancelSpotInstanceRequests",
-"ec2:CreateKeyPair",
-"ec2:CreateLaunchTemplate",
-"ec2:CreateSecurityGroup",
-"ec2:CreateTags",
-"ec2:DeleteKeyPair",
-"ec2:DeleteLaunchTemplate",
-"ec2:DeleteSecurityGroup",
-"ec2:DescribeAutoScalingGroups",
-"ec2:DescribeImages",
-"ec2:DescribeInstanceTypeOfferings",
-"ec2:DescribeInstances",
-"ec2:DescribeKeyPairs",
-"ec2:DescribeLaunchTemplates",
-"ec2:DescribeScalingActivities",
-"ec2:DescribeSecurityGroups",
-"ec2:DescribeSpotInstanceRequests",
-"ec2:DescribeSubnets",
-"ec2:DescribeVpcs",
-"ec2:GetLaunchTemplateData",
-"ec2:ImportKeyPair",
-"ec2:ModifyImageAttribute",
-"ec2:ModifyLaunchTemplate",
-"ec2:RequestSpotInstances",
-"ec2:RevokeSecurityGroupEgress",
-"ec2:RevokeSecurityGroupIngress",
-"ec2:RunInstances",
-"ec2:TerminateInstances",
-"s3:CreateBucket",
-"s3:DeleteBucket",
-"s3:DeleteObject",
-"s3:GetObject",
-"s3:ListBucket",
-"s3:PutObject",
-```
-
-See
-https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/aws/main.tf
-
-</details>
-
-<details>
-
-#### GCP
-
-```
-"compute.acceleratorTypes.get",
-"compute.diskTypes.get",
-"compute.disks.create",
-"compute.firewalls.create",
-"compute.firewalls.delete",
-"compute.firewalls.get",
-"compute.globalOperations.get",
-"compute.instanceGroupManagers.create",
-"compute.instanceGroupManagers.delete",
-"compute.instanceGroupManagers.get",
-"compute.instanceGroupManagers.update",
-"compute.instanceGroups.create",
-"compute.instanceGroups.delete",
-"compute.instanceGroups.get",
-"compute.instanceTemplates.create",
-"compute.instanceTemplates.delete",
-"compute.instanceTemplates.get",
-"compute.instanceTemplates.useReadOnly",
-"compute.instances.create",
-"compute.instances.delete",
-"compute.instances.get",
-"compute.instances.setMetadata",
-"compute.instances.setServiceAccount",
-"compute.instances.setTags",
-"compute.machineTypes.get",
-"compute.networks.create",
-"compute.networks.get",
-"compute.networks.updatePolicy",
-"compute.subnetworks.use",
-"compute.subnetworks.useExternalIp",
-"compute.zoneOperations.get",
-"iam.serviceAccounts.actAs",
-"storage.buckets.create",
-"storage.buckets.delete",
-"storage.buckets.get",
-"storage.multipartUploads.abort",
-"storage.multipartUploads.create",
-"storage.multipartUploads.list",
-"storage.multipartUploads.listParts",
-"storage.objects.create",
-"storage.objects.delete",
-"storage.objects.get",
-"storage.objects.list",
-"storage.objects.update",
-```
-
-See
-https://github.com/iterative/terraform-provider-iterative/blob/a92499539f109821c021d1efb1fb01e51f1db47f/docs/guides/permissions/gcp/main.tf
-
-</details>
-
-For
-[data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials),
-you can find more details about required permissions [here][data remote].
-
-[data remote]: /doc/user-guide/data-management/remote-storage
-[profile]: https://studio.iterative.ai/user/_/profile
-
-Finally, click `Save credentials`.
-
-## Git integrations
+## Git Connections
 
 In this section, you can,
 
@@ -232,17 +103,56 @@ In this section, you can,
   GitHub app on additional organizations or repositories, or even remove the app
   from organizations or repositories where you no longer need it.
 
-## Delete account
+## Cloud credentials
 
-If you delete your account, all the projects you own and the links that you have
-shared will be permanently deleted. So, click on `Delete my account` only if you
-are absolutely sure that you do not need those projects or links anymore.
+In this section, you can view, add and update credentials for cloud resources.
+These credentials are used to
+[fetch project data from data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials).
 
-<admon>
+To add new credentials, click `Add credentials` and select the cloud provider.
+Depending on the provider, you will be asked for more details.
 
-Deleting your account in DVC Studio does not delete your Git repositories.
+![](https://static.iterative.ai/img/studio/s3_remote_settings_v2.png)
 
-</admon>
+The credentials must have the required permissions. For
+[data remotes](/doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials),
+you can find more details about required permissions [here][data remote].
 
+[data remote]: /doc/user-guide/data-management/remote-storage
+[settings]: https://studio.iterative.ai/user/_/settings
+
+Finally, click `Save credentials`.
+
+## Teams
+
+In this section, you can view all the teams you are member of.
+
+Click on `select` to switch to the team's dashboard. Or, click on `manage` to go
+to the team settings page and manage the team.
+
+To create a new team, click on `Create a team` and enter the team name. You can
+invite members to the team by entering their email addresses. Find more details
+[here](/doc/studio/user-guide/team-collaboration#create-a-team).
+
+## Tokens
+
+### Client access tokens
+
+In this tokens section of your [settings] page, you can generate new client
+access tokens with specific scopes as well as delete existing access tokens.
+These tokens can be used to give limited permissions to a client without
+granting full access to your Studio account.
+
+The available scopes are:
+
+- `Experiment operations` - DVC uses this scope to share [live experiments] and
+  to notify [Studio](https://studio.iterative.ai/) about [pushed experiments].
+- `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
+- `Model registry operations` - like downloading model using
+  `dvc artifacts get`.
+
+[live experiments]:
+  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiment
 [dvc]: /doc
 [dvclive]: /doc/dvclive

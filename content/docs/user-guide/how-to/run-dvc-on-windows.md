@@ -40,6 +40,50 @@ alternatives:
   [virtual machine](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/),
   or in an HD partition (dual boot).
 
+## Line endings
+
+If you are using Windows and you are working with people or environments (e.g.
+production) that are not, you’ll probably run into line-ending issues at some
+point. This is because Windows uses both a carriage-return character and a
+linefeed character for newlines in its files (CRLF), whereas macOS and Linux
+systems use only the linefeed character (LF).
+
+Since DVC is using content-based checksums for your pipeline dependencies,
+depending on your Git configuration (see
+[core.autocrlf and core.eol config options](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)),
+DVC might see Git-tracked files as changed, thus triggering pipeline
+reproduction on `dvc repro` on one system and not on another. Thus we strongly
+recommend sticking with LF line endings when doing cross-platform work.
+
+### Configure your editor to use LF line endings
+
+Many editors on Windows will use CRLF line endings by default or even replace
+existing LF with CRLF. It is recommended that you configure your editor to
+always stick to LF line endings.
+
+For VS Code, add
+
+```
+{
+
+    "files.eol": "\n",
+
+}
+```
+
+to your global `settings.json` or to your project's `.vscode/settings.json`.
+
+### Use pre-commit hook to check and fix line endings
+
+Add this to your `.pre-commit-config.yaml` hooks:
+
+```
+      - id: mixed-line-ending
+        args: [--fix=lf]
+```
+
+to make `pre-commit` check and automatically replace all line endings with LF.
+
 ## Enable symbolic links
 
 Symlinks are one of the possible file link types that DVC can use for

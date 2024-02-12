@@ -55,7 +55,7 @@ to establish GDrive remote connections (e.g. CI/CD).
 
 </admon>
 
-> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+> Note our [Privacy Policy for Google APIs](/doc/user-guide/privacy).
 
 ## URL format
 
@@ -259,7 +259,8 @@ $ dvc remote modify myremote gdrive_acknowledge_abuse true
 ```
 
 </admon>
-> Note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+> Note our [Privacy Policy for Google APIs](/doc/user-guide/privacy).
 
 ## Using service accounts
 

@@ -66,6 +66,21 @@
             "slug": "experiment-pipelines"
           }
         ]
+      },
+      {
+        "label": "Model Management",
+        "slug": "model-management",
+        "source": "model-management/index.md",
+        "children": [
+          {
+            "label": "Model registry",
+            "slug": "model-registry"
+          },
+          {
+            "label": "Using and deploying models",
+            "slug": "model-cicd"
+          }
+        ]
       }
     ]
   },
@@ -221,8 +236,16 @@
           {
             "label": "Evidently",
             "slug": "evidently"
+          },
+          {
+            "label": "Hugging Face",
+            "slug": "huggingface"
           }
         ]
+      },
+      {
+        "label": "Environment Variables",
+        "slug": "env"
       },
       "troubleshooting",
       {
@@ -384,6 +407,10 @@
       {
         "label": "get",
         "slug": "get"
+      },
+      {
+        "label": "import-db",
+        "slug": "import-db"
       },
       {
         "label": "import-url",
@@ -560,6 +587,25 @@
         "slug": "status"
       },
       {
+        "label": "studio",
+        "slug": "studio",
+        "source": "studio/index.md",
+        "children": [
+          {
+            "label": "studio login",
+            "slug": "login"
+          },
+          {
+            "label": "studio logout",
+            "slug": "logout"
+          },
+          {
+            "label": "studio token",
+            "slug": "token"
+          }
+        ]
+      },
+      {
         "label": "unfreeze",
         "slug": "unfreeze"
       },
@@ -688,7 +734,7 @@
             "children": ["billing-and-payment"]
           },
           {
-            "slug": "git-integrations",
+            "slug": "git-connections",
             "children": ["github-app", "custom-gitlab-server"]
           },
           "troubleshooting"
@@ -854,8 +900,12 @@
             "label": "Fast.ai"
           },
           {
+            "slug": "accelerate",
+            "label": "Hugging Face Accelerate"
+          },
+          {
             "slug": "huggingface",
-            "label": "Hugging Face"
+            "label": "Hugging Face Transformers"
           },
           {
             "slug": "keras",
@@ -880,6 +930,10 @@
           {
             "slug": "pytorch-lightning",
             "label": "PyTorch Lightning"
+          },
+          {
+            "slug": "fabric",
+            "label": "PyTorch Lightning Fabric"
           },
           {
             "slug": "scikit-learn",

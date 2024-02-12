@@ -1,9 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import { PageProps } from 'gatsby'
-import MainLayout, {
-  LayoutModifiers
-} from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+import MainLayout from '../../../components/MainLayout'
 import AutoLinkElement from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX/AutoLinkElement'
 import useGlossary from '@dvcorg/gatsby-theme-iterative/src/utils/front/glossary'
 
@@ -15,7 +13,7 @@ const Glossary = ({ location }: PageProps) => {
   const pagePath = '/doc/user-guide/glossary'
 
   return (
-    <MainLayout location={location} modifiers={[LayoutModifiers.HideAlert]}>
+    <MainLayout location={location}>
       <DocLayout currentPath={pagePath}>
         <DocWithJsx path={pagePath} headings={[]}>
           <div className={cn('markdown-body')}>

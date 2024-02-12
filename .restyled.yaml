@@ -2,13 +2,8 @@ restylers:
   - name: prettier
     arguments: ['--config=./.prettierrc', '--ignore-path=./.prettierignore']
     include:
-      - '**/*.css'
-      - '**/*.js'
       - '**/*.json'
-      - '**/*.jsx'
       - '**/*.md'
       - '**/*.mdx'
-      - '**/*.ts'
-      - '**/*.tsx'
       - '**/*.yaml'
       - '**/*.yml'

@@ -1,7 +1,7 @@
 # Live.log_param()
 
 ```py
- def log_param(name: str, val: ParamLike):
+def log_param(name: str, val: ParamLike):
 ```
 
 Also see `Live.log_params()`.
@@ -18,7 +18,7 @@ with Live() as live:
 
 ## Description
 
-On each `live.log_param(name, val)` call, DVCLive will write the `name`
+On each `Live.log_param(name, val)` call, DVCLive will write the `name`
 parameter to `{Live.dir}/params.yaml` with the corresponding `val`:
 
 ```yaml
@@ -41,9 +41,9 @@ automatically, and you can skip logging them with DVCLive.
 
 ## Parameters
 
-- `name` - Name of the parameter being logged.
+- `name` - name of the parameter being logged.
 
-- `val` - The value to be logged.
+- `val` - the value to be logged.
 
 ## Exceptions
 

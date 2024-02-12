@@ -1,7 +1,7 @@
 # Live.log_params()
 
 ```py
- def log_params(params: Dict[ParamLike]):
+def log_params(params: Dict[ParamLike]):
 ```
 
 Also see `Live.log_param()`.
@@ -31,7 +31,7 @@ live.log_params(params)
 
 ## Description
 
-On each `live.log_params(params)` call, DVCLive will write keys/values pairs in
+On each `Live.log_params(params)` call, DVCLive will write keys/values pairs in
 the `params` dict to `{Live.dir}/params.yaml`:
 
 ```yaml
@@ -54,7 +54,7 @@ automatically, and you can skip logging them with DVCLive.
 
 ## Parameters
 
-- `params` - Dictionary with name/value pairs of parameters to be logged.
+- `params` - dictionary with name/value pairs of parameters to be logged.
 
 ## Exceptions
 

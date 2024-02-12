@@ -120,7 +120,7 @@ See `Live.next_step()`.
 Under the hood, `Live.next_step()` calls `Live.make_summary()`,
 `Live.make_dvcyaml()`, and `Live.make_report()`.
 
-When access is enabled, updates will be sent to DVC Studio.
+When [access is enabled], updates will be sent to [DVC Studio].
 
 If you want to decouple the `step` update from the rest of the calls, you can
 manually modify the `Live.step` property and call `Live.make_summary()` /
@@ -171,3 +171,5 @@ parametrize your code. See how to [setup a pipeline] to work with DVCLive.
 [tracked]: /doc/start/experiments/experiment-tracking
 [run experiments]: /doc/user-guide/experiment-management/running-experiments
 [setup a pipeline]: /doc/dvclive/how-it-works#setup-to-run-with-dvc
+[access is enabled]: /doc/studio/experiments
+[dvc studio]: https://studio.iterative.ai

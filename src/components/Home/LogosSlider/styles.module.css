@@ -7,6 +7,8 @@
 
 .fade {
   &::before {
+    @apply bg-gradient-to-l from-purple-100/80 to-transparent;
+
     content: '';
     position: absolute;
     top: 0;
@@ -14,7 +16,6 @@
     z-index: 1;
     width: 50px;
     height: 100%;
-    background: linear-gradient(to left, var(--color-light-blue), transparent);
 
     @media screen(sm) {
       width: 100px;
@@ -22,6 +23,8 @@
   }
 
   &::after {
+    @apply bg-gradient-to-r from-purple-100/80 to-transparent;
+
     content: '';
     position: absolute;
     top: 0;
@@ -29,7 +32,6 @@
     z-index: 1;
     width: 50px;
     height: 100%;
-    background: linear-gradient(to right, var(--color-light-blue), transparent);
 
     @media screen(sm) {
       width: 100px;

@@ -59,6 +59,7 @@ within:
 - [`remote`](#remote) - sections in the config file that describe [remote
   storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
+- [`db`](#db) - sections in the config file that describe [database connections]
 - [`hydra`](#hydra) - options around [Hydra Composition] for experiment
   configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
@@ -72,6 +73,7 @@ within:
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
+[database connections]: /doc/command-reference/import-db#database-connections
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
@@ -215,7 +217,38 @@ section):
 
 <details>
 
-### hydra
+## db
+
+Similar to `remote`, configuration files may have more than one `'db'`. All of
+them require a unique `"name"` and a `url` value which is a connection string to
+connect to the database. They can also specify `username` and `password`
+options, which is used to combine with provided `url`, which is what is passed
+to the appropriate database drivers to connect to the database.
+
+<admon type="warn">
+
+Set `password` to a Git-ignored local config file (`.dvc/config.local`) so that
+no secrets are leaked through Git.
+
+</admon>
+
+As an example, the following config file defines a `pgsql` database connection
+to connect to the `dbname` database as a user `user` hosted at `host` url. The
+`postgresql://` defines a driver to be used to connect to that database.
+
+```ini
+['db "pgsql"']
+  url = "postgresql://user@host/dbname
+```
+
+The name, `pgsql` for example, can be used to specify what database to connect
+to, in commands like `import-db`.
+
+</details>
+
+<details>
+
+## hydra
 
 Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra
 Composition].
@@ -225,12 +258,17 @@ Composition].
   groups]. Defaults to `conf`.
 - `hydra.config_name` - the name of the file containing the Hydra [defaults
   list] (located inside `hydra.config_dir`). Defaults to `config.yaml`.
+- `hydra.plugins_path` - location of the parent directory of `hydra_plugins`,
+  where Hydra will automatically discover [plugins]. Defaults to the root of the
+  DVC repository.
 
 [config composition]:
   https://hydra.cc/docs/tutorials/basic/your_first_app/composition/
 [config groups]:
   https://hydra.cc/docs/tutorials/basic/your_first_app/config_groups/
 [defaults list]: https://hydra.cc/docs/tutorials/basic/your_first_app/defaults/
+[plugins]:
+  https://hydra.cc/docs/advanced/plugins/develop/#automatic-plugin-discovery-process
 
 </details>
 

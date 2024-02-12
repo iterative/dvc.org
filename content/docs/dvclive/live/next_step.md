@@ -40,7 +40,7 @@ from dvclive import Live
 live = Live()
 
 for custom_step in [0, 15, 20]:
-    live.step = step
+    live.step = custom_step
     live.log_metric("metric_1", 0.9)
     live.log_metric("metric_2", 0.7)
     live.make_summary()

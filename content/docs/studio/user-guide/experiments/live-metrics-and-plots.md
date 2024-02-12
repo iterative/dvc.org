@@ -18,12 +18,14 @@ access tokens are rejected with an appropriate HTTP error code and error
 message. The access token is also used by DVC to notify DVC Studio when you push
 experiments using `dvc exp push`.
 
-Once you [create your access token], pass it to your experiment. If you are
-running the experiment locally, you can set the token in your [DVC config]. For
-example, to set it globally for all of a user's projects:
+Once you create your
+[DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+with Experiment operations scope, pass it to your experiment. If you are running
+the experiment locally, you can set the token in your [DVC config]. For example,
+to set it globally for all of a user's projects:
 
 ```cli
-$ dvc config --global studio.token ***
+$ dvc studio login
 ```
 
 If you are running the experiment as part of a CI job, a secure way to provide
@@ -143,8 +145,6 @@ An experiment can have one of the following statuses:
   </admon>
 
 [dvclive]: /doc/dvclive
-[create your access token]:
-  /doc/studio/user-guide/account-and-billing#studio-access-token
 [push]:
   /doc/user-guide/experiment-management/sharing-experiments#push-experiments
 [dvc config]: /docs/user-guide/project-structure/configuration#studio

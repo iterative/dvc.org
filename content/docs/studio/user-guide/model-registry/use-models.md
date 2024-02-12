@@ -7,69 +7,64 @@ capabilities.
 ## Download models
 
 If your model file is DVC-tracked, you can download any of its registered
-versions using the DVC Studio [REST API], `dvc get`, or DVC [Python API].
+versions using the DVC Studio [REST API], `dvc artifacts get`, or DVC [Python
+API].
 
-### Using DVC Studio API
+Prerequisites:
 
-Using DVC Studio API will require you to add your remote storage secrets to
-respective projects but downloading models can be easier than DVC since you only
-need to have the DVC Studio API token. You do not need direct access to your
-remote storage, and you do not need to install DVC. DVC Studio APIs rely on
-signing urls, which limits the number of remotes they're working with. You can
-learn more on [REST API] pages.
+- Model stored with DVC with S3, Azure, http or https [remote].
+- The DVC Studio project you like to download your model from needs access to
+  your [remote storage credentials].
+- Access to your [DVC Studio client access token] with Model registry operations
+  scope.
 
+Without these prerequisites, you can still [download a model artifact with DVC].
+However, it can be easier to use the DVC Studio API since you only need to have
+the Studio access token. You do not need direct access to your remote storage or
+Git repository, and you do not need to install DVC.
+
+[remote]: /doc/user-guide/data-management/remote-storage
+[remote storage credentials]:
+  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
+[DVC Studio client access token]:
+  /doc/studio/user-guide/account-and-billing#client-access-tokens
+[download a model artifact with DVC]: /doc/command-reference/artifacts/get
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference
 
-### Using `dvc get`
+You can download the files that make up your model directly from DVC Studio.
+Head to the model details page of the model you would like to download and click
+`Access Model`. Here, you find different ways to download your model.
 
-#### Looking up the right command in DVC Studio
+<toggle>
 
-The `Get the model file` section of a model's details page contains a `dvc get`
-command ready to copy and use.
+<tab title="CLI (DVC)">
 
-![](/img/mr-dvc-get.png)
+Use the [dvc artifacts get] command to download an artifact by name. Learn more
+on the command reference page for `dvc artifacts get`.
 
-#### Constructing the command manually
+[dvc artifacts get]: /doc/command-reference/artifacts/get
 
-You can also construct this command manually using this template:
+</tab>
 
-```cli
-$ dvc get ${GIT_REPO} ${MODEL_PATH} --rev ${GIT_REV}
-```
+<tab title="cURL / Python">
 
-Let's download the `text-classification` model in the
-[example-get-started](https://github.com/iterative/example-get-started)
-repository.
+Directly call the Studio [REST API](/doc/studio/rest-api) from your terminal
+using `cURL` or in your `Python` code.
 
-To find out the model file path (that is, `model.pkl`) you can check the model's
-details page or check the `dvc.yaml` file to which the model annotation was
-written.
+</tab>
 
-To find out the Git revision, you can check the
-[list of Git tags](https://github.com/iterative/example-get-started/tags) or use
-[GTO](/doc/gto/command-reference/show/):
+<tab title="Direct Download">
 
-```cli
-$ gto show text-classification@latest --ref
-text-classification@v1.2.0
-```
+Here you can generate download links for your model files. After generation,
+these download links are valid for 1 hour. You can click the link to directly
+download the file.
 
-Putting everything together, to download the model file, you can use the
-following dvc command:
+![Screenshot of access model button on the model details page](/img/mr-direct-download.png)
 
-```cli
-$ dvc get https://github.com/iterative/example-get-started \
-    model.pkl \
-    --rev text-classification@v1.2.0
-```
+</tab>
 
-Note that `model.pkl` is the path that was specified in `dvc.yaml`, and not the
-physical path of the model file (in the remote storage).
-
-DVC will figure out the right file to download from the remote storage for you.
-Note that for running this command, you will need to have remote storage
-credentials set up in your environment.
+</toggle>
 
 ## Deploying and publishing models in CI/CD
 
@@ -79,7 +74,7 @@ and assigns stages by creating Git tags, you can set up a CI/CD pipeline to be
 triggered when the tags are pushed to the repository.
 
 **To see an example**, check out
-[the workflow in the `example-gto` repository](https://github.com/iterative/example-gto/blob/main/.github/workflows/gto-act-on-tags.yml).
+[Get Started: Using and Deploying Models](/doc/start/model-management/model-cicd).
 This workflow uses
 [the GTO GitHub Action](https://github.com/iterative/gto-action) that interprets
 a Git tag to find out the model's version and stage assignment (if any), reads
@@ -87,7 +82,7 @@ annotation details such as `path`, `type` and `description`, and downloads the
 model binaries if needed.
 
 For help **building an end-to-flow from model training to deployment using the
-DVC model registry**, refer the
+DVC model registry**, refer to the
 [tutorial on automating model deployment to Sagemaker](https://iterative.ai/blog/sagemaker-model-deployment).
 [Here](https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml)
 is the complete workflow script.

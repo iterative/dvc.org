@@ -330,8 +330,8 @@ You can remove any number of experiments in the [DVC extension for VS Code].
 </toggle>
 
 Removing an experiment does not delete any objects in the DVC
-<abbr>cache</abbr>. To remove the cache objects, e.g. model files, intermediate
-artifacts, etc. related with the experiments, you can use `dvc gc`.
+<abbr>cache</abbr>. To remove the cache objects (e.g. model files, intermediate
+artifacts, etc.) related with the experiments, you can use `dvc gc`.
 
 [dvc extension for vs code]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
