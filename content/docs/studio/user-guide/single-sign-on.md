@@ -82,7 +82,7 @@ will be auto-assigned the [`Viewer` role](#roles).
 
    <admon>
 
-   The Single Sing-on URL for your team is
+   The Single Sign-on URL for your team is
    [https://studio.iterative.ai/api/teams/<TEAM_NAME>/sso](https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume).
    Users that you assign to your team can login to DVC Studio by opening the
    Single Sign-on URL and providing their Okta login credentials.
