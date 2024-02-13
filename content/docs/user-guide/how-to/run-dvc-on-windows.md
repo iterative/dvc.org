@@ -65,7 +65,7 @@ For VS Code, add
 
 ```json
 {
-    "files.eol": "\n",
+  "files.eol": "\n"
 }
 ```
 
@@ -101,8 +101,8 @@ Now Git will handle line endings consistently.
 Add this to your `.pre-commit-config.yaml` hooks:
 
 ```yaml
-      - id: mixed-line-ending
-        args: [--fix=lf]
+- id: mixed-line-ending
+  args: [--fix=lf]
 ```
 
 to make `pre-commit` check and automatically replace all line endings with LF.
