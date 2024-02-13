@@ -107,10 +107,10 @@ cloud credentials] in DVC Studio to where the model is stored.
 
 ## Create new project
 
-To create a new project programmatically, you can integrate with the DVC Studio
-API. The API provides a POST request endpoint for creating projects.
-Authentication is required using a token, which can be generated from the user's
-profile settings in DVC Studio
+To create a new project programmatically, you can use with the DVC Studio API.
+The API provides a POST request endpoint for creating projects. Authentication
+is required using a token, which can be generated from the user's profile
+settings in DVC Studio
 
 ```yaml
 Endpoint: api/create-project
@@ -122,25 +122,25 @@ Content-Type: application/json
 
 Here are the possible values for each parameter in the request json:
 
-- `repo_url` (required): The URL of the repository where the project will be
+- `repo_url` (required) - the URL of the repository where the project will be
   created. This field is mandatory.
-- `public` (boolean, default: false): Specifies whether the project should be
+- `public` (boolean, default: `false`) - specifies whether the project should be
   public (`true`) or not (`false`).
-- `team_name`(string, default: none): The name of the team associated with the
-  project if we want to create the project in team space. This field is
-  optional. If team name is not specified, the project will be in user
-  namespace.
-- `subdir`(string, default: none): The subdirectory within the repository where
-  the project will be located, in case of a monorepo. This field is optional.
-- `name` (string, default: none): The name of the project to be defined. If no
-  name is specified, it will be extracted from repository name. This field is
-  optional.
+- `team_name`(string) - the name of the team associated with the project if we
+  want to create the project in team space. This field is optional. If team name
+  is not specified, the project will be in user namespace.
+- `subdir`(string) - the subdirectory within the repository where the project
+  will be located, in case of a monorepo. This field is optional.
+- `name` (string) - the name of the project to be defined. If no name is
+  specified, it will be extracted from repository name. This field is optional.
+
+The request should contain following header for authorization.
 
 | header        | desc            | example value |
 | ------------- | --------------- | ------------- |
 | Authorization | Header for auth | token abc123  |
 
-Accepted formats for repository urls are:
+Accepted formats for `repo_url` are:
 
 - `git@github.com:amritghimire/example-dvc-experiments.git`
 - `https://github.com/nimdraugsael/example-dvc-experiments.git`
@@ -180,8 +180,8 @@ This information can be used to access and reference the project in the future.
 
 ### Example
 
-First, you need your [DVC Studio access token]. For this example, we set it in
-the `DVC_STUDIO_TOKEN` environment variable:
+First, you need your [DVC Studio client access token] . For this example, we set
+it in the `DVC_STUDIO_TOKEN` environment variable:
 
 ```sh
 export DVC_STUDIO_TOKEN=<TOKEN>
@@ -237,9 +237,10 @@ $ curl --location 'https://studio.iterative.ai/api/create-project' \
 </tab>
 </toggle>
 
-<aside>
-💡 If you are interacting with Self hosted Studio, remember to replace the URL https://studio.iterative.ai with the URL of the self-hosted studio.
-</aside>
+<admon type="tip">
+  If you are interacting with Self hosted Studio, remember to replace the URL
+  https://studio.iterative.ai with the URL of the self-hosted studio.
+</admon>
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [`dvc.yaml`]: /doc/user-guide/project-structure/dvcyaml-files
