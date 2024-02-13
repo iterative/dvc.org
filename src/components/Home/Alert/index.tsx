@@ -10,19 +10,13 @@ const banner = {
 
 const Alert = () => (
   <>
-    <div
-      className={cn(
-        'py-2',
-        'bg-orange text-white',
-        `w-full transition-[height] ease-in-out delay-75 duration-300 text-right px-2`
-      )}
-    >
-      <div className="flex items-center gap-2 justify-center">
-        <div className="ml-2">
+    <div className={cn('py-2', 'bg-orange text-white', `w-full`)}>
+      <div className="flex items-center gap-3 justify-center">
+        <div className="text-right">
           <strong>{banner.title}</strong>
           <div>{banner.subtitle}</div>
         </div>
-        <div className="ml-2">
+        <div>
           <Link
             href={banner.link}
             className={cn(
