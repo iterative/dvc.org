@@ -125,8 +125,8 @@ There are two types of filters:
 
     </details>
 
-  - In addition, you can also toggle between the `Custom filters` and apply one
-    or more custom filters without having to define them again.
+  - The `Custom filters` can be un-applied without deletion, allowing you to
+    create the filters once and toggle them on and off as needed.
 
     <video width="99%" height="540" autoplay loop muted>
       <source src="https://static.iterative.ai/img/studio/project-custom-filters.mp4" type="video/mp4">
