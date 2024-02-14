@@ -1,9 +1,9 @@
 # Create a new project
 
-To create a new project programmatically, you can use with the DVC Studio API.
-The API provides a POST request endpoint for creating projects. Authentication
-is required using a token, which can be generated from the user's profile
-settings in DVC Studio
+To create a new project programmatically, you can use the DVC Studio
+`create-project` API. This API provides a POST request endpoint for creating
+projects. Authentication is required using a token, which can be generated from
+the user's profile settings in DVC Studio.
 
 ```yaml
 Endpoint: api/create-project
