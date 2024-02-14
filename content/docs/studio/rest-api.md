@@ -7,7 +7,8 @@ The API is hosted under the `/api` route on the DVC Studio server:
 https://studio.iterative.ai/api or https://your-domain/api in case of
 [self-hosted DVC Studio](/doc/studio/self-hosting/installation).
 
-To use API, you need to generate [DVC Studio tokens] with the necessary scopes.
+To use API, you need to generate [DVC Studio client access token] with the
+necessary scopes.
 
 ## Download model
 
@@ -54,8 +55,8 @@ actually download the model.
 First, you need your [DVC Studio client access token] with Model Registry scope.
 For this example, we set it in the `DVC_STUDIO_TOKEN` environment variable:
 
-```sh
-export DVC_STUDIO_TOKEN=<TOKEN>
+```cli
+$ export DVC_STUDIO_TOKEN=<TOKEN>
 ```
 
 <toggle>
@@ -87,7 +88,7 @@ for rel_path, obj_url in json.loads(response.content).items():
 
 <tab title="CLI">
 
-```sh
+```cli
 $ curl "https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0" --header "Authorization:token ${DVC_STUDIO_TOKEN}"
 
 {
@@ -107,10 +108,8 @@ cloud credentials] in DVC Studio to where the model is stored.
 
 ## Create new project
 
-To create a new project programmatically, you can use with the DVC Studio API.
-The API provides a POST request endpoint for creating projects. Authentication
-is required using a token, which can be generated from the user's profile
-settings in DVC Studio
+Create a new project programmatically. Authentication is required using a token,
+which can be generated from the user's profile settings in DVC Studio.
 
 ```yaml
 Endpoint: api/create-project
@@ -118,12 +117,12 @@ HTTP Method: POST
 Content-Type: application/json
 ```
 
-### Request
+### Parameters
 
 Here are the possible values for each parameter in the request json:
 
-- `repo_url` (required) - the URL of the repository where the project will be
-  created. This field is mandatory.
+- `repo_url` (required) - the URL of the repository to create the project from.
+  This field is mandatory.
 - `public` (boolean, default: `false`) - specifies whether the project should be
   public (`true`) or not (`false`). A public project, such as the
   [example-get-started](https://studio.iterative.ai/team/Iterative/projects/example-get-started-zde16i6c4g)
@@ -134,22 +133,26 @@ Here are the possible values for each parameter in the request json:
 - `subdir`(string) - the subdirectory within the repository where the project
   will be located, in case of a monorepo. This field is optional.
 - `name` (string) - the name of the project to be defined. If no name is
-  specified, it will be extracted from repository name. This field is optional.
+  specified, it will be extracted from the repository name. This field is
+  optional.
 
-The request should contain following header for authorization.
+### Authentication
 
-| header        | desc            | example value |
-| ------------- | --------------- | ------------- |
-| Authorization | Header for auth | token abc123  |
+The request should contain following header containing [DVC Studio client access
+token] with `PROJECT` scope for authorization.
+
+| header        | desc            | example value           |
+| ------------- | --------------- | ----------------------- |
+| Authorization | Header for auth | token isat_exampletoken |
 
 Accepted formats for `repo_url` are:
 
 - `git@github.com:amritghimire/example-dvc-experiments.git`
 - `https://github.com/nimdraugsael/example-dvc-experiments.git`
-- `https://gitlab.example.org/amritghimire/example.git` (For custom gitlab)
+- `https://gitlab.example.org/amritghimire/example.git` (For custom GitLab)
 - `ssh://git@gitlab.com/xxx/yyy/zzz/repo.git`
 
-Similar format is supported for Github, Bitbucket and Gitlab.
+Similar format is supported for GitHub, Bitbucket and GitLab.
 
 ### Response
 
@@ -185,8 +188,8 @@ This information can be used to access and reference the project in the future.
 First, you need your [DVC Studio client access token] . For this example, we set
 it in the `DVC_STUDIO_TOKEN` environment variable:
 
-```sh
-export DVC_STUDIO_TOKEN=<TOKEN>
+```cli
+$ export DVC_STUDIO_TOKEN=<TOKEN>
 ```
 
 <toggle>
@@ -223,7 +226,7 @@ for project in response.json()["projects"]:
 
 <tab title="CLI">
 
-```sh
+```cli
 $ curl --location 'https://studio.iterative.ai/api/create-project' \
 --header "Authorization:token ${DVC_STUDIO_TOKEN}" \
 --header 'Content-Type: application/json' \
