@@ -13,9 +13,10 @@ $ pip install dvclive
 Depending on the type of the [DVClive methods] you plan to use, you might need
 to install optional dependencies:
 
-- install `[image]` to use `log_image`
-- install `[sklearn]` to use `log_sklearn_plot`
-- install `[plots]` to use `log_plot`
+- install `[image]` to use [`log_image`]
+- install `[plots]` to use [`log_plot`]
+- install `[sklearn]` to use [`log_sklearn_plot`]
+- install `[markdown]` to use the [`make_report`]
 
 If you use one of the supported [ML frameworks], you can also install the
 optional dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`,
@@ -24,6 +25,12 @@ optional dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`,
 Use `[all]` to include them all.
 
 <details id="example-pip-with-support-for-tensorflow">
+
+
+[`log_image`]: (https://dvc.org/doc/dvclive/live/log_image)
+[`log_plot`]: (https://dvc.org/doc/dvclive/live/log_plot)
+[`log_sklearn_plot`]: (https://dvc.org/doc/dvclive/live/log_sklearn_plot)
+[`make_report`]: (https://dvc.org/doc/dvclive/live/make_report)
 
 ### Example: with support for Tensorflow
 
