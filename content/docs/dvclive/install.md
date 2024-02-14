@@ -26,7 +26,6 @@ Use `[all]` to include them all.
 
 <details id="example-pip-with-support-for-tensorflow">
 
-
 [`log_image`]: (https://dvc.org/doc/dvclive/live/log_image)
 [`log_plot`]: (https://dvc.org/doc/dvclive/live/log_plot)
 [`log_sklearn_plot`]: (https://dvc.org/doc/dvclive/live/log_sklearn_plot)
