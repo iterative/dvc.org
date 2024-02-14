@@ -125,7 +125,9 @@ Here are the possible values for each parameter in the request json:
 - `repo_url` (required) - the URL of the repository where the project will be
   created. This field is mandatory.
 - `public` (boolean, default: `false`) - specifies whether the project should be
-  public (`true`) or not (`false`).
+  public (`true`) or not (`false`). A public project, such as the
+  [example-get-started](https://studio.iterative.ai/team/Iterative/projects/example-get-started-zde16i6c4g)
+  demo project, can be accessed by anyone.
 - `team_name`(string) - the name of the team associated with the project if we
   want to create the project in team space. This field is optional. If team name
   is not specified, the project will be in user namespace.
