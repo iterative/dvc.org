@@ -1,12 +1,17 @@
 # Single Sign-on (SSO)
 
 Single Sign-on (SSO) allows your team members to authenticate to DVC Studio
-using your organization's identity Provider (IDP) such as Okta, LDAP, Microsoft
+using your organization's identity Provider (IdP) such as Okta, LDAP, Microsoft
 AD, etc.
 
+We support integration with Okta, and instructions are provided below; but other
+IdPs should also work in a similar manner. If you need any support setting up
+your IdP integration,
+[let us know](/doc/studio/user-guide/troubleshooting#support).
+
 SSO for teams can be configured by [team `admins`](#roles), and requires
-configuration on both DVC Studio and the IDP. The exact steps for this depend on
-the IDP.
+configuration on both DVC Studio and the IdP. The exact steps for this depend on
+the IdP.
 
 Once the SSO configuration is complete users can login to DVC Studio by opening
 their team's login page `http://studio.iterative.ai/api/teams/<TEAM_NAME>/sso`
@@ -20,7 +25,8 @@ will be auto-assigned the [`Viewer` role](#roles).
 
 1. **Create Enterprise account**: SSO is available for DVC Studio teams with
    enterprise account subscriptions. If you are on the Free or Basic plan of DVC
-   Studio, [Contact us] to upgrade your account.
+   Studio,
+   [contact us to upgrade your account](https://schedule.iterative.ai/studio-upgrade).
 
 2. **Add integration with DVC Studio in Okta**: Follow the instructions from the
    [Okta developer guide](https://developer.okta.com/docs/guides/build-sso-integration/saml2/main/#create-your-integration-in-okta).
@@ -60,9 +66,7 @@ will be auto-assigned the [`Viewer` role](#roles).
    1. `Sign-on URL`: Paste the `Sign on URL` you copied from Okta
    2. `Identity Provider Issuer URL`: Paste the `Issuer` you copied from Okta
    3. `Public Certificate`: Paste the `Signing Certificate` you copied from
-      Okta. Remember to add `-----BEGIN CERTIFICATE-----` and
-      `-----END CERTIFICATE-----` at the beginning and end of the certificate.
-      Or, you can `Download` the `Signing Certificate` from Okta, open the
+      Okta. Or, you can `Download` the `Signing Certificate` from Okta, open the
       downloaded file with a text editor, and copy the value from here.
 
       ![](https://static.iterative.ai/img/studio/sso_public_certificate.png)

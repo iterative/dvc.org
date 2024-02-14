@@ -167,7 +167,7 @@ can connect to the Git repositories on this server. For more details, refer to
 ### Configure Single Sign-on (SSO)
 
 Single Sign-on (SSO) allows your team members to authenticate to DVC Studio
-using your organization's identity Provider (IDP) such as Okta, LDAP, Microsoft
+using your organization's identity Provider (IdP) such as Okta, LDAP, Microsoft
 AD, etc.
 
 Details on how to configure SSO for your team can be found
