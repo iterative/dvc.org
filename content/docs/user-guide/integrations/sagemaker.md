@@ -31,9 +31,12 @@ you would in any other environment. Take a look at DVC [experiments] for how to
 get started with DVC in notebooks (if you have setup [code-server] on SageMaker,
 you can also install the [DVC extension for VS Code]).
 
-If you would like to see [live experiment updates] in [DVC Studio], first set
-your [token]. The simplest method to set the token is to run `dvc studio login`,
-which will save it globally for your user.
+If you would like to see live experiment updates in [DVC Studio], set your
+token:
+
+```cli
+$ dvc studio login
+```
 
 While the experiment runs, you will see live updates like this in DVC Studio:
 
@@ -183,7 +186,6 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [live experiment updates]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvc studio]: https://studio.iterative.ai
-[token]: /doc/studio/user-guide/account-and-billing#client-access-tokens
 [dvc config]: /doc/user-guide/project-structure/configuration#studio
 [pipelines]: /doc/user-guide/pipelines
 [external dependencies and outputs]:
