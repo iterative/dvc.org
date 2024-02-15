@@ -21,8 +21,8 @@ experiments using `dvc exp push`.
 Once you create your
 [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
 with Experiment operations scope, pass it to your experiment. If you are running
-the experiment locally, you can set the token in your [DVC config]. For example,
-to set it globally for all of a user's projects:
+the experiment locally, you can use `dvc studio login` to interactively set the
+token:
 
 ```cli
 $ dvc studio login
@@ -40,6 +40,23 @@ steps:
     env:
       DVC_STUDIO_TOKEN: ${{ secrets.DVC_STUDIO_TOKEN }}
 ```
+
+<admon type="tip">
+
+If the code is running outside of your Git repository (for example, in
+[Databricks] or [SageMaker jobs]), you lose the benefit of automatically
+tracking metrics and plots with Git, but you can send live updates to Studio if
+you set the `DVC_STUDIO_TOKEN` and `DVC_STUDIO_REPO_URL` environment variables:
+
+```cli
+$ export DVC_STUDIO_TOKEN="<token>"
+$ export DVC_STUDIO_REPO_URL="https://github.com/<org>/<repo>"
+```
+
+</admon>
+
+[Databricks]: /doc/user-guide/integrations/databricks
+[SageMaker jobs]: /doc/user-guide/integrations/sagemaker#pipelines
 
 ## Send and view live metrics and plots
 
