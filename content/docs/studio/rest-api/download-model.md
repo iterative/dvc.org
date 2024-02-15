@@ -44,8 +44,8 @@ actually download the model.
 First, you need your [DVC Studio client access token] with Model Registry scope.
 For this example, we set it in the `DVC_STUDIO_TOKEN` environment variable:
 
-```sh
-export DVC_STUDIO_TOKEN=<TOKEN>
+```cli
+$ export DVC_STUDIO_TOKEN=<TOKEN>
 ```
 
 <toggle>
@@ -77,7 +77,7 @@ for rel_path, obj_url in json.loads(response.content).items():
 
 <tab title="CLI">
 
-```sh
+```cli
 $ curl "https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0" --header "Authorization:token ${DVC_STUDIO_TOKEN}"
 
 {
