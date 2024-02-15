@@ -16,7 +16,7 @@ to install optional dependencies:
 - install `[image]` to use [`log_image`]
 - install `[plots]` to use [`log_plot`]
 - install `[sklearn]` to use [`log_sklearn_plot`]
-- install `[markdown]` to use the [`make_report`]
+- install `[markdown]` to use [`make_report`] when `report=md` or `report=notebook`
 
 If you use one of the supported [ML frameworks], you can also install the
 optional dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`,
