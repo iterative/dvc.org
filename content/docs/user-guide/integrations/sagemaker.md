@@ -193,17 +193,22 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 > > > > > > > main [dvc config]:
 > > > > > > > /doc/user-guide/project-structure/configuration#studio
 > > > > > > > [pipelines]: /doc/user-guide/pipelines [external dependencies and
+> > > > > > >
 > > > > > > > > > > > > > > outputs]:
-> > > > > > > /doc/user-guide/pipelines/external-dependencies-and-outputs
-> > > > > > > [preprocessing script]:
-> > > > > > > https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py > > > > > > >
-> > > > > > > [training script]:
-> > > > > > > https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py > > > > > > >
-> > > > > > > [start using the model registry]:
-> > > > > > > /doc/start/model-management/model-registry [deploy models with > >
-> > > > > > > > > > > > ci/cd]: /doc/start/model-management/model-cicd
-> > > > > > > [triggering > > > > > > > sagemaker deployment]:
-> > > > > > > https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml > > > > > > >
-> > > > > > > [deploying sagemaker endpoints]:
-> > > > > > > https://github.com/iterative/example-get-started-experiments/blob/main/sagemaker/deploy_model.py > > > > > > >
-> > > > > > > [blog post]: https://iterative.ai/blog/sagemaker-model-deployment
+> > > > > > > > > > > > > > /doc/user-guide/pipelines/external-dependencies-and-outputs
+> > > > > > > > > > > > > > [preprocessing script]:
+> > > > > > > > > > > > > > https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py > > > > > > >
+> > > > > > > > > > > > > > [training script]:
+> > > > > > > > > > > > > > https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py > > > > > > >
+> > > > > > > > > > > > > > [start using the model registry]:
+> > > > > > > > > > > > > > /doc/start/model-management/model-registry [deploy >
+> > > > > > > > > > > > > > > > > > > > > > > > > > > models with > > > > > > >
+> > > > > > > > > > > > > > > > > > > > > ci/cd]:
+> > > > > > > > > > > > > > /doc/start/model-management/model-cicd [triggering >
+> > > > > > > > > > > > > >
+> > > > > > > > > > > > > > > > > > > > sagemaker deployment]:
+> > > > > > > > > > > > > > > > > > > > https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml > > > > > > >
+> > > > > > > > > > > > > > > > > > > > [deploying sagemaker endpoints]:
+> > > > > > > > > > > > > > > > > > > > https://github.com/iterative/example-get-started-experiments/blob/main/sagemaker/deploy_model.py > > > > > > >
+> > > > > > > > > > > > > > > > > > > > [blog post]:
+> > > > > > > > > > > > > > > > > > > > https://iterative.ai/blog/sagemaker-model-deployment
