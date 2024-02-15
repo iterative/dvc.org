@@ -102,6 +102,12 @@ There are two types of filters:
     On the other hand, the `Commits on branch` filter will also display branches
     [inside which the specified branch is nested](#nested-branches).
 
+    </admon>
+
+    <details>
+
+    ### More details on nested branches
+
     When a Git branch is nested inside another branch, the project table
     [does not display the nested branch](#nested-branches). If
     `feature-branch-1` is nested within `main`, `feature-branch-1` is NOT
@@ -117,7 +123,14 @@ There are two types of filters:
 
     ![Result of commits on branch filter](https://static.iterative.ai/img/studio/commits_on_branch_filter.png)
 
-    </admon>
+    </details>
+
+  - The `Custom filters` can be un-applied without deletion, allowing you to
+    create the filters once and toggle them on and off as needed.
+
+    <video width="99%" height="540" autoplay loop muted>
+      <source src="https://static.iterative.ai/img/studio/project-custom-filters.mp4" type="video/mp4">
+    </video>
 
 ### Columns:
 

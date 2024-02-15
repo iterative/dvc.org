@@ -13,16 +13,9 @@ https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
 
 You can send [live experiments] to [DVC Studio], which will show intermediate
 results for metrics and plots in any running experiments. To start sharing live
-metrics to [DVC Studio],
-[get your Studio token](https://studio.iterative.ai/user/_/profile?section=accessToken)
-and save it in your
-[dvc config](/doc/user-guide/project-structure/configuration#studio) or
-`DVC_STUDIO_TOKEN` environment variable. For example, to set it globally for all
-of a user's projects:
-
-```cli
-$ dvc config --global studio.token ***
-```
+metrics to [DVC Studio], set your
+[access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
+The simplest way to set the token is to run `dvc studio login`.
 
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):

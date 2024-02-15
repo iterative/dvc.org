@@ -820,7 +820,10 @@
           }
         ]
       },
-      "rest-api"
+      {
+        "slug": "rest-api",
+        "children": ["create-project", "download-model"]
+      }
     ]
   },
   {

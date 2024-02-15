@@ -21,7 +21,7 @@ with Live() as live:
 
 ## Description
 
-On each `live.log_metric(name, val)` call DVCLive will create a _metrics
+On each `Live.log_metric(name, val)` call DVCLive will create a _metrics
 history_ file in `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```
@@ -51,7 +51,7 @@ $ dvc plots diff dvclive/plots
 
 </admon>
 
-Each subsequent call to `live.log_metric(name, val)` will add a new row to
+Each subsequent call to `Live.log_metric(name, val)` will add a new row to
 `{Live.plots_dir}/metrics/{name}.tsv`:
 
 ```python
@@ -67,7 +67,7 @@ timestamp      step  loss
 ```
 
 In addition, DVCLive will store the latest value logged in `Live.summary`, so it
-can be serialized with calls to `live.make_summary()`, `live.next_step()` or
+can be serialized with calls to `Live.make_summary()`, `Live.next_step()` or
 when exiting the `with` block:
 
 ```json
@@ -102,12 +102,9 @@ $ dvc metrics diff dvclive/metrics.json
   file.
 
 - `plot` - whether to add the metric value to the _metrics history_ file for
-  plotting. If `false`, the metric will only be saved to the metrics summary.
+  plotting. If `False`, the metric will only be saved to the metrics summary.
 
 ## Exceptions
 
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `val` does not
   have a supported type.
-
-- `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged within the same `step`.
