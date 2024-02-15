@@ -117,6 +117,16 @@ HTTP Method: POST
 Content-Type: application/json
 ```
 
+### Authentication
+
+The request should contain following header containing [DVC Studio client access
+token] with `PROJECT` scope for authorization.
+
+| header        | desc            | example value           |
+| ------------- | --------------- | ----------------------- |
+| Authorization | Header for auth | token isat_exampletoken |
+
+
 ### Parameters
 
 Here are the possible values for each parameter in the request json:
@@ -135,15 +145,6 @@ Here are the possible values for each parameter in the request json:
 - `name` (string) - the name of the project to be defined. If no name is
   specified, it will be extracted from the repository name. This field is
   optional.
-
-### Authentication
-
-The request should contain following header containing [DVC Studio client access
-token] with `PROJECT` scope for authorization.
-
-| header        | desc            | example value           |
-| ------------- | --------------- | ----------------------- |
-| Authorization | Header for auth | token isat_exampletoken |
 
 Accepted formats for `repo_url` are:
 
