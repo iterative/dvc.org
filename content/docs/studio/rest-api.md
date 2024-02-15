@@ -126,7 +126,6 @@ token] with `PROJECT` scope for authorization.
 | ------------- | --------------- | ----------------------- |
 | Authorization | Header for auth | token isat_exampletoken |
 
-
 ### Parameters
 
 Here are the possible values for each parameter in the request json:
