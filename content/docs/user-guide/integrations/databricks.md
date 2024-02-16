@@ -1,10 +1,10 @@
 # Databricks
 
-As of September 2023 [Databricks Repos] don't expose the underlying Git repo, so
-Git-related DVC functionality within Databricks Repos is not supported (e.g.
-[experiments], `--rev/--all-commits/--all-tags/etc`). Everything will operate as
-normal if you `git clone` a project yourself or [use remote projects](#dvc-api)
-with DVC directly.
+[Databricks Repos] don't expose the underlying Git repo, so Git-related DVC
+functionality within Databricks Repos is not supported (e.g. [experiments],
+`--rev/--all-commits/--all-tags/etc`). Everything will operate as normal if you
+`git clone` a project yourself or [use remote projects](#dvc-api) with DVC
+directly.
 
 ## Setup
 
@@ -84,6 +84,20 @@ entries to corresponding `.gitignore`s, so you'll need to do that manually.
 !dvc import-url https://archive.ics.uci.edu/static/public/186/wine+quality.zip
 ```
 
+## Live experiment updates
+
+If working with [Databricks Repos], you will need to set both the
+`DVC_STUDIO_TOKEN` and `DVC_STUDIO_REPO_URL` to see [live experiment updates] in
+[DVC Studio].
+
+```python
+import getpass
+import os
+
+os.environ["DVC_STUDIO_TOKEN"] = getpass.getpass()
+os.environ["DVC_STUDIO_REPO_URL"] = "https://github.com/<org>/<repo>"
+```
+
 [Databricks Repos]: https://docs.databricks.com/en/repos/index.html
 [experiments]: /doc/start/experiments
 [Python API]: /doc/api-reference
@@ -91,3 +105,6 @@ entries to corresponding `.gitignore`s, so you'll need to do that manually.
 [magic commands]:
   https://ipython.readthedocs.io/en/stable/interactive/magics.html
 [web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html
+[live experiment updates]:
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
+[DVC Studio]: https://studio.iterative.ai

@@ -218,6 +218,8 @@ data science experiments.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 [visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
+[external dependencies]:
+  /doc/user-guide/pipelines/external-dependencies-and-outputs
 
 ## Examples
 
