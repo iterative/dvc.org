@@ -3,7 +3,8 @@ import React from 'react'
 import { cn } from '../../../utils'
 
 const banner = {
-  title: 'DataComp Challenge: Computer Vision Annotation & Preparation Using DVCx',
+  title:
+    'DataComp Challenge: Computer Vision Annotation & Preparation Using DVCx',
   subtitle: 'Webinar | Wednesday, February 28th | 11 am ET',
   link: 'https://www.linkedin.com/events/7164027647038009344/about/'
 }
