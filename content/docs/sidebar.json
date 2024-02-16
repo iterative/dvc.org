@@ -720,6 +720,7 @@
           },
           {
             "slug": "model-registry",
+            "source": false,
             "children": [
               "add-a-model",
               "register-version",

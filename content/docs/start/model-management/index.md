@@ -9,12 +9,14 @@ description:
 
 # Get Started: Model Management
 
+https://www.youtube.com/watch?v=T7MBFpnSr9Q
+
 ## Chapters
 
 - **[Add a model]** - Start tracking model artifacts with DVC.
 
-- **[Model registry]** - Set up a git-based model registry with DVC to track and
-  manage models, their versions and lifecycle stages.
+- **[Model registry]** - Manage models, their versions and lifecycle stages in a
+  git-based model registry.
 
 - **[Using and deploying models]** - Easily download your models from the model
   registry. Set up your CICD pipelines to be trigger by model registry actions
@@ -27,8 +29,11 @@ description:
 
 <admon type="tip">
 
-These are captured in our [example-get-started-experiments] repo (you can [fork
-it][example-get-started-experiments-fork] to follow along).
+These are captured in our [example-get-started-experiments] repo. You can [fork
+it][example-get-started-experiments-fork] to follow along, or you can take a
+look at our
+[public model registry](https://studio.iterative.ai/team/Iterative/models) (read
+only) to get a feel for what's possible.
 
 [example-get-started-experiments]:
   https://github.com/iterative/example-get-started-experiments
