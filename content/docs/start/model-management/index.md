@@ -27,7 +27,7 @@ https://www.youtube.com/watch?v=T7MBFpnSr9Q
 [model registry]: /doc/start/model-management/model-registry
 [Using and deploying models]: /doc/start/model-management/model-cicd
 
-<admon type="tip">
+<admon type="info">
 
 These are captured in our [example-get-started-experiments] repo. You can [fork
 it][example-get-started-experiments-fork] to follow along, or you can take a

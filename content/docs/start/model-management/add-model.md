@@ -26,9 +26,7 @@ snippet is from the
 [training script](https://github.com/iterative/example-get-started-experiments/blob/main/src/train.py)
 in our example repository):
 
-<details id="follow-along-instructions">
-
-#### 💡 Expand to see how to set things up to follow along with the guide
+<admon type="info">
 
 You can
 [fork our example repository](https://github.com/iterative/example-get-started-experiments/fork)
@@ -36,12 +34,7 @@ and follow the
 [installation steps](https://github.com/iterative/example-get-started-experiments#installation)
 to set it up locally.
 
-To then perform the model registry actions in this guide, follow
-[these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
-to sign in to [DVC Studio](https://studio.iterative.ai), connect it to your Git
-account and add your forked repository as a DVC Studio project.
-
-</details>
+</admon>
 
 ```python
 from dvclive import Live

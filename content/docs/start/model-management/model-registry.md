@@ -17,13 +17,20 @@ In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
 manage our model registry. You can check out our
 [example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)
 in DVC Studio to see what it will look like once we finish all the steps in this
-guide, or you can
-[add a project](/doc/studio/user-guide/experiments/create-a-project) in DVC
-Studio to connect to your Git repository.
+guide.
 
-Now that we have added a model, you should see something like the following
-picture in DVC Studio if you go to the Models tab and then select the
-`pool-segmentation` model.
+<admon type="info">
+
+To perform the model registry actions in this guide, follow
+[these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
+to sign in to [DVC Studio](https://studio.iterative.ai), connect it to your Git
+account and add your repository as a DVC Studio project.
+
+</admon>
+
+Now that we have [added a model](/doc/start/model-management/add-model), you
+should see something like the following picture in DVC Studio if you go to the
+Models tab and then select the `pool-segmentation` model.
 
 ![Newly added model in the Model Registry](/img/mr-newly-added-model.png)
 
