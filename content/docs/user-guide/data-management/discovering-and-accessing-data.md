@@ -158,5 +158,5 @@ across all projects, and you can download artifacts by name, version, and
 lifecycle stage, without needing to configure access to the underlying Git
 repository or remote storage.
 
-[DVC Studio model registry]: /doc/studio/model-registry
+[DVC Studio model registry]: /doc/studio/user-guide/model-registry
 [tutorial]: /doc/use-cases/data-registry/tutorial#sharing-and-managing-artifacts

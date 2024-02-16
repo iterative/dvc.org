@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=DYeVI-QrHGI
 
 Model registry enables end-to-end workflows:
 
-- [Add models to the registry](/doc/studio/model-registry/add-a-model)
+- [Add models to the registry](/doc/studio/user-guide/model-registry/add-a-model)
 - [Register new versions of the models](/doc/studio/user-guide/model-registry/register-version)
 - [Assign stages to model versions](/doc/studio/user-guide/model-registry/assign-stage)
 - [View and compare model versions](/doc/studio/user-guide/model-registry/view-and-compare-models)

@@ -2,7 +2,7 @@
 
 New model versions can signify an important, published or released iteration. To
 register version, you first need to
-[add a model to the model registry](/doc/studio/model-registry/add-a-model).
+[add a model to the model registry](/doc/studio/user-guide/model-registry/add-a-model).
 
 To register a new version of a model, DVC Studio uses [GTO] to create an
 annotated [Git tag][git tag] with the specified version number. Refer to the

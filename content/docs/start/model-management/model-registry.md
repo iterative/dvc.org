@@ -17,7 +17,9 @@ In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
 manage our model registry. You can check out our
 [example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)
 in DVC Studio to see what it will look like once we finish all the steps in this
-guide.
+guide, or you can
+[add a project](/doc/studio/user-guide/experiments/create-a-project) in DVC
+Studio to connect to your Git repository.
 
 Now that we have added a model, you should see something like the following
 picture in DVC Studio if you go to the Models tab and then select the
@@ -188,6 +190,5 @@ parse these tags and show them to us in a user-friendly way.
 If you look at the
 [tags in our example repository](https://github.com/iterative/example-get-started-experiments/tags),
 you can see that all the model registry actions that we performed are captured
-by such tags. If you prefer to see how to start managing models in DVC Studio as
-quickly as possible without walking through an example, see
-[Manage Models](/doc/studio/model-registry).
+by such tags. In the next section, we will see how to use these tags to access
+model versions and trigger automated deployments or other CICD workflows.
