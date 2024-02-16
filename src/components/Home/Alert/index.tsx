@@ -3,9 +3,9 @@ import React from 'react'
 import { cn } from '../../../utils'
 
 const banner = {
-  title: 'Expert Insights on Developing Safe, Secure, and Trustworthy AI!',
-  subtitle: 'Webinar | Wednesday, February 14th | 11 am ET',
-  link: 'https://www.linkedin.com/events/expertinsightsondevelopingsafe-7158518681906413569/about'
+  title: 'DataComp Challenge: Computer Vision Annotation & Preparation Using DVCx',
+  subtitle: 'Webinar | Wednesday, February 28th | 11 am ET',
+  link: 'https://www.linkedin.com/events/7164027647038009344/about/'
 }
 
 const Alert = () => (
