@@ -20,7 +20,7 @@ To add a new project, follow these steps.
 
    If you do not see your desired organizations or Git repositories, make sure
    that
-   [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-integrations).
+   [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-connections).
 
    To connect to your GitHub repositories, you must install the DVC Studio
    GitHub app. Refer to the section on

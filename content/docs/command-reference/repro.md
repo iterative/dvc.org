@@ -159,9 +159,8 @@ final stage.
   option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage command(s) even if they have already been run
-  with the same dependencies and outputs (see the [details][run-cache]). Useful
-  for example if the stage command/s is/are non-deterministic ([not
-  recommended]).
+  with the same dependencies and outputs (see the [run cache]). Useful for
+  example if the stage command/s is/are non-deterministic ([not recommended]).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -188,6 +187,16 @@ final stage.
   [run cache] and the outputs of stages that are already present in it.
 
 - `--allow-missing` - skip stages with no other changes than missing data.
+
+  <admon type="warn">
+
+  In DVC>=3.0, `--allow-missing` will not skip data saved with DVC<3.0 because
+  the hash type changed in DVC 3.0, which DVC considers a change to the data. To
+  migrate data to the new hash type, run `dvc cache migrate --dvc-files`. See
+  more information about
+  [upgrading from DVC 2.x to 3.0](/doc/user-guide/upgrade).
+
+  </admon>
 
 - `-k`, `--keep-going` - Continue executing, skipping stages having dependencies
   on the failed stage. The other dependencies of the targets will still be

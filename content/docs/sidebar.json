@@ -405,6 +405,10 @@
         "slug": "get"
       },
       {
+        "label": "import-db",
+        "slug": "import-db"
+      },
+      {
         "label": "import-url",
         "slug": "import-url"
       },
@@ -579,6 +583,25 @@
         "slug": "status"
       },
       {
+        "label": "studio",
+        "slug": "studio",
+        "source": "studio/index.md",
+        "children": [
+          {
+            "label": "studio login",
+            "slug": "login"
+          },
+          {
+            "label": "studio logout",
+            "slug": "logout"
+          },
+          {
+            "label": "studio token",
+            "slug": "token"
+          }
+        ]
+      },
+      {
         "label": "unfreeze",
         "slug": "unfreeze"
       },
@@ -707,7 +730,7 @@
             "children": ["billing-and-payment"]
           },
           {
-            "slug": "git-integrations",
+            "slug": "git-connections",
             "children": ["github-app", "custom-gitlab-server"]
           },
           "troubleshooting"
@@ -793,7 +816,10 @@
           }
         ]
       },
-      "rest-api"
+      {
+        "slug": "rest-api",
+        "children": ["create-project", "download-model"]
+      }
     ]
   },
   {
@@ -801,6 +827,10 @@
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
+      {
+        "slug": "install",
+        "label": "Install"
+      },
       {
         "slug": "how-it-works",
         "label": "How it Works"
@@ -873,8 +903,12 @@
             "label": "Fast.ai"
           },
           {
+            "slug": "accelerate",
+            "label": "Hugging Face Accelerate"
+          },
+          {
             "slug": "huggingface",
-            "label": "Hugging Face"
+            "label": "Hugging Face Transformers"
           },
           {
             "slug": "keras",
@@ -899,6 +933,10 @@
           {
             "slug": "pytorch-lightning",
             "label": "PyTorch Lightning"
+          },
+          {
+            "slug": "fabric",
+            "label": "PyTorch Lightning Fabric"
           },
           {
             "slug": "scikit-learn",

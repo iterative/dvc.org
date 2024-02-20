@@ -108,6 +108,10 @@ to define plots inside your `dvc.yaml`.
 
 https://youtu.be/qG2gfTuQWtk?si=ffpkBLX-odowXK-G
 
+Along with defining plots, the extension can make plot debugging easier.
+
+https://youtu.be/XH0v3x7lBDg?si=6YheW-ocPU9MMoIq
+
 You can also manually edit `dvc.yaml` to configure plots like this:
 
 ```yaml

@@ -40,9 +40,10 @@ Model registry enables end-to-end workflows:
 These steps provide a streamlined workflow from model development to deployment,
 supporting all stages of ML model lifecycle.
 
-To begin with this integrated approach to managing your ML models, explore [DVC
-Studio model registry] docs and get started today!
+To begin with this integrated approach to managing your ML models, [start
+managing models] with DVC or explore [DVC Studio model registry] docs!
 
 [gitops]: https://www.gitops.tech/
 [DVC Studio model registry]: /doc/studio/user-guide/model-registry
 [versions]: /doc/use-cases/versioning-data-and-models
+[start managing models]: /doc/start/model-management

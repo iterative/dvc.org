@@ -1,7 +1,14 @@
-# Hugging Face
+# Hugging Face Transformers
 
 DVCLive allows you to add experiment tracking capabilities to your
-[Hugging Face](https://huggingface.co/) projects.
+[Hugging Face Transformers](https://huggingface.co/docs/transformers) projects.
+
+<admon type="tip">
+
+If you are using Hugging Face Accelerate, check the
+[DVCLive - Hugging Face Accelerate](/doc/dvclive/ml-frameworks/accelerate) page.
+
+</admon>
 
 ## Usage
 
@@ -11,55 +18,66 @@ DVCLive allows you to add experiment tracking capabilities to your
   </a>
 </p>
 
-Include the
-[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/huggingface.py)
-in the callbacks list passed to your
-[`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
+If you have `dvclive` installed, the [`DVCLiveCallback`] will be used for
+tracking experiments and logging metrics, parameters, and plots automatically
+for `transformers>=4.36.0`.
+
+To log the model, set `HF_DVCLIVE_LOG_MODEL=true` in your environment.
+
+```python
+os.environ["HF_DVCLIVE_LOG_MODEL"] = "true"
+
+from transformers import TrainingArguments, Trainer
+
+# optional, `report_to` defaults to "all"
+args = TrainingArguments(..., report_to="dvclive")
+trainer = Trainer(..., args=args)
+```
+
+To customize tracking, include the [`DVCLiveCallback`] in the callbacks list
+passed to your
+[`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html),
+along with a [`Live`] instance including additonal arguments:
+
+```python
+from dvclive import Live
+from transformers.integrations import DVCLiveCallback
+
+...
+
+trainer = Trainer(...)
+trainer.add_callback(DVCLiveCallback(Live(dir="custom_dir")))
+trainer.train()
+```
+
+For `transformers<4.36.0`, import the callback from `dvclive` instead of
+`transformers`:
 
 ```python
 from dvclive.huggingface import DVCLiveCallback
 
 ...
 
- trainer = Trainer(
-    model, args,
-    train_dataset=train_data,
-    eval_dataset=eval_data,
-    tokenizer=tokenizer,
-    compute_metrics=compute_metrics,
-)
+trainer = Trainer(...)
 trainer.add_callback(DVCLiveCallback())
 trainer.train()
 ```
 
-## Parameters
+<admon type="warn">
 
-- `live` - (`None` by default) - Optional [`Live`] instance. If `None`, a new
-  instance will be created using `**kwargs`.
+`dvclive.huggingface.DVCLiveCallback` will be deprecated in DVCLive 4.0 in favor
+of `transformers.integrations.DVCLiveCallback`.
 
-- `log_model` - (`None` by default) - use `Live.log_artifact()` to log
-  checkpoints created by the
-  [`Trainer`](https://huggingface.co/docs/transformers/main_classes/trainer#checkpoints).
-
-  - if `log_model is None` (default), no checkpoint is logged.
-
-  - if `log_model == 'True'`, the final checkpoint is logged at the end of
-    training.
-
-  - if `log_model == 'all'`, all checkpoints are logged during training.
-    `Live.log_artifact()` is called with `Trainer.output_dir`.
-
-- `**kwargs` - Any additional arguments will be used to instantiate a new
-  [`Live`] instance. If `live` is used, the arguments are ignored.
+</admon>
 
 ## Examples
 
 ### Log model checkpoints
 
-Use `log_model` to save the checkpoints (it will use `Live.log_artifact()`
-internally to save those).
+Use `HF_DVCLIVE_LOG_MODEL=true` or `log_model=True` to save the checkpoints (it
+will use `Live.log_artifact()` internally to save those).
 
-If `log_model=True` DVCLive will save a copy of the last checkpoint to the
+If true, DVCLive will save a copy of the last checkpoint to the
 `dvclive/artifacts` directory and annotate it with name `last` or `best` (if
 [args.load_best_model_at_end](https://huggingface.co/docs/transformers/main_classes/trainer#transformers.TrainingArguments.load_best_model_at_end)).
 
@@ -69,55 +87,51 @@ scenarios.
 - Save the `last` checkpoint at the end of training:
 
 ```python
-from dvclive.huggingface import DVCLiveCallback
+os.environ["HF_DVCLIVE_LOG_MODEL"] = "true"
 
-trainer.add_callback(
-    DVCLiveCallback(log_model=True))
+from transformers import TrainingArguments, Trainer
+
+args = TrainingArguments(..., report_to="dvclive")
+trainer = Trainer(..., args=args)
 ```
 
 - Save the `best` checkpoint at the end of training:
 
 ```python
-from dvclive.huggingface import DVCLiveCallback
+os.environ["HF_DVCLIVE_LOG_MODEL"] = "true"
 
+from transformers import TrainingArguments, Trainer
+
+args = TrainingArguments(..., report_to="dvclive")
+trainer = Trainer(..., args=args)
 trainer.args.load_best_model_at_end = True
-trainer.add_callback(
-    DVCLiveCallback(log_model=True))
 ```
 
 - Save updates to the checkpoints directory whenever a new checkpoint is saved:
 
 ```python
-from dvclive.huggingface import DVCLiveCallback
+os.environ["HF_DVCLIVE_LOG_MODEL"] = "all"
 
-trainer.add_callback(
-    DVCLiveCallback(log_model="all"))
+from transformers import TrainingArguments, Trainer
+
+args = TrainingArguments(..., report_to="dvclive")
+trainer = Trainer(..., args=args)
 ```
 
 ### Passing additional DVCLive arguments
 
-- Using `live` to pass an existing [`Live`] instance.
+Use `live` to pass an existing [`Live`] instance.
 
 ```python
 from dvclive import Live
-from dvclive.huggingface import DVCLiveCallback
+from transformers.integrations import DVCLiveCallback
 
 with Live("custom_dir") as live:
-    trainer = Trainer(
-        model, args,
-        train_dataset=train_data, eval_dataset=eval_data, tokenizer=tokenizer)
-    trainer.add_callback(
-        DVCLiveCallback(live=live))
+    trainer = Trainer(...)
+    trainer.add_callback(DVCLiveCallback(live=live))
 
     # Log additional metrics after training
     live.log_metric("summary_metric", 1.0, plot=False)
-```
-
-- Using `**kwargs` to customize the new [`Live`] instance.
-
-```python
-trainer.add_callback(
-    DVCLiveCallback(dir="custom_dir"))
 ```
 
 ## Output format
@@ -134,5 +148,6 @@ Where:
 - `{split}` can be either `train` or `eval`.
 - `{metric}` is the name provided by the framework.
 
-[`live`]: /doc/dvclive/live
-[studio model registry]: /doc/studio/user-guide/model-registry
+[`DVCLiveCallback`]:
+  https://huggingface.co/transformers/main_classes/callback.html#transformers.integrations.DVCLiveCallback
+[`Live`]: /doc/dvclive/live

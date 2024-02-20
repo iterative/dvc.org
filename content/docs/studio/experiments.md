@@ -14,13 +14,11 @@ experiments with DVC Studio:
   $ pip install dvclive
   ```
 
-- Copy your
-  [DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token)
-  and
-  [configure your model training environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
+- Set your
+  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens):
 
   ```cli
-  $ dvc config --global studio.token ***
+  $ dvc studio login
   ```
 
 - Use the DVCLive [`log_metric()`](/doc/dvclive/live/log_metric#livelog_metric)

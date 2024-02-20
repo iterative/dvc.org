@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
-import MainLayout from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+import MainLayout from '../components/MainLayout'
 import Typeform from '../components/Typeform'
 
 const EnterpriseTypeform = ({ location }: PageProps) => (
