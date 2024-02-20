@@ -9,7 +9,7 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 import * as styles from './styles.module.css'
 import { OS, useUserOS } from '../../utils/front/useUserOS'
 
-const VERSION = `3.45.0`
+const VERSION = `3.46.0`
 
 const dropdownItems = [
   OS.UNKNOWN,
