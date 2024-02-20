@@ -127,48 +127,23 @@ Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
 ## Sharing
 
 You can start tracking experiments on your local machine, but often you will
-want to share results with others or persist them somewhere. Optionally follow
-this section to share, or skip to the next section if you want to start locally.
+want to share results with others or back them up. Optionally follow this
+section to share, or skip to the next section if you want to start locally.
 
-If you have a Git remote (for example, GitHub) where you `git push`, you can set
-DVC to automatically push code changes and metadata there in a Git commit like
-this:
-
-```cli
-$ export DVC_EXP_AUTO_PUSH=true
-$ export DVC_EXP_GIT_REMOTE=origin
-```
-
-<details id="sharing-details">
-
-### 💡 Expand to see what these environment variables do
-
-`DVC_EXP_AUTO_PUSH` forces DVC to upload all experiments to the Git remote at
-the completion of the experiment using `dvc exp push`. DVC will also push all
-artifacts and other <abbr>cached</abbr> data to the
-[DVC remote](/doc/user-guide/data-management/remote-storage).
-
-`DVC_EXP_GIT_REMOTE` specifies the name of the Git remote where the experiment
-will be pushed (usually `origin`). Use `git remote -v` to see your available Git
-remotes, and adjust the value above if you want to push somewhere other than
-`origin`.
-
-</details>
-
-To see these pushed experiments, go to
+DVC tracks the code and metadata for each experiment in Git. If you have a Git
+remote (for example, GitHub) where you `git push`, go to
 [DVC Studio](https://studio.iterative.ai), configure your Git provider, and add
-a project using the same Git remote from above. Then navigate to the settings
-page, copy your
-[DVC Studio token](/doc/studio/user-guide/account-and-billing#studio-access-token),
-and
-[configure your environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
+your Git repository as a project.
 
-```cli
-$ export DVC_STUDIO_TOKEN=***
+Next, you can login to Studio from the command line:
+
+```dvc
+$ dvc studio login
 ```
 
 Once configured, DVC Studio will provide realtime updates for all running
-experiments and show all completed experiments that were pushed.
+experiments. Experiment results will also be pushed to your Git and DVC remotes
+so anyone can recover the entire state of your experiment.
 
 <admon type="info">
 
