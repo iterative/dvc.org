@@ -84,8 +84,9 @@ class SystemMonitor:
   directories to monitor. The `key` would be the name of the metric and the
   `value` is the path to the directory. The metric tracked concerns the
   partition that contains the directory. Default to `{"main": "/"}`.
-- `plot` - if `True` it will [log the metric](https://dvc.org/doc/dvclive/live/log_metric) as a
-  plot. The metric will then be available live in [DVC Studio](https://dvc.org/doc/studio)
+- `plot` - if `True` it will
+  [log the metric](https://dvc.org/doc/dvclive/live/log_metric) as a plot. The
+  metric will then be available live in [DVC Studio](https://dvc.org/doc/studio)
   and in our
   [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
