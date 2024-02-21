@@ -39,5 +39,6 @@ module.exports = {
       sans: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif'],
       mono: ['Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace']
     }
-  }
+  },
+  plugins: [...themeConfig.plugins, require(`tailwindcss-animate`)]
 }
