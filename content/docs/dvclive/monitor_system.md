@@ -59,7 +59,7 @@ The `SystemMonitor` class is used to configure the system logger. If you call
 `Live` with `monitor_system=True` it will create a `SystemMonitor` with default
 parameters. It works by sampling your system metrics at regular intervals and
 average them over a number of samples. The averaged data is then
-[logged as a metric](doc/dvclive/live/log_metric).
+[logged as a metric](https://dvc.org/doc/dvclive/live/log_metric).
 
 The `SystemMonitor` has the following parameters:
 
@@ -84,13 +84,13 @@ class SystemMonitor:
   directories to monitor. The `key` would be the name of the metric and the
   `value` is the path to the directory. The metric tracked concerns the
   partition that contains the directory. Default to `{"main": "/"}`.
-- `plot` - if `True` it will [log the metric](doc/dvclive/live/log_metric) as a
-  plot. The metric will then be available live in [DVC Studio](doc/dvc/studio)
+- `plot` - if `True` it will [log the metric](https://dvc.org/doc/dvclive/live/log_metric) as a
+  plot. The metric will then be available live in [DVC Studio](https://dvc.org/doc/studio)
   and in our
   [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 The `SystemMonitor` sampling terminates when you call
-[`live.end()`](doc/dvclive/live/end).
+[`live.end()`](https://dvc.org/doc/dvclive/live/end).
 
 ## List of metrics logged
 
