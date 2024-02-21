@@ -151,7 +151,7 @@ const SupportPage: React.FC = () => {
               <p className="before:content-['\201C'] after:content-['\201D']">
                 I can confidently say that DVC AI&apos;s Platinum Engineering
                 Services has been an invaluable asset to our team. Their expert
-                knowledge and hands-on keyboard support enabled us to quickly
+                knowledge and hands-on custom support enabled us to quickly
                 scale our ML operations and unlock value from the business.
                 Their team has been a pleasure to partner with. I highly
                 recommend their services!
