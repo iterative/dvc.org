@@ -963,6 +963,10 @@
       {
         "slug": "env",
         "label": "Environment Variables"
+      },
+      {
+        "slug": "monitor_system",
+        "label": "Monitoring System Metrics"
       }
     ]
   },

@@ -15,6 +15,7 @@ class Live:
         cache_images: bool = False,
         exp_name: Optional[str] = None,
         exp_message: Optional[str] = None,
+        monitor_system: bool = False,
     ):
 ```
 
@@ -62,6 +63,9 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `report_file` - `{Live.dir}/report.{format}`. The `format` can be HTML
   (`.html`) or Markdown (`.md`) depending on the value of the `report`
   parameter.
+
+- `system_monitor` - a [`SystemMonitor`](doc/dvclive/monitor_system) instance if 
+  the `monitor_system` parameter is `True`.
 
 ## Parameters
 
@@ -112,6 +116,11 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
   If DVCLive is used inside `dvc exp run`, the option will be ignored, use
   [`dvc exp run --message`](/doc/command-reference/exp/run#--message) instead.
+
+- `monitor_system` - if `True`, DVCLive will log
+  [system metrics](/doc/dvclive/monitor_system), including GPU, CPU, RAM, and disk 
+  usage. Defaults to `False`.
+
 
 ## Methods
 
