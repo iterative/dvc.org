@@ -18,8 +18,8 @@ to install optional dependencies:
 - install `[sklearn]` to use [`log_sklearn_plot`]
 - install `[markdown]` to use [`make_report`] when `report=md` or
   `report=notebook`
-- install `[system]` to use [`monitor_system`] to monitor your system metrics (GPU, CPU,
-  RAM, etc...)
+- install `[system]` to use [`monitor_system`] to monitor your system metrics
+  (GPU, CPU, RAM, etc...)
 
 If you use one of the supported [ML frameworks], you can also install the
 optional dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`,
