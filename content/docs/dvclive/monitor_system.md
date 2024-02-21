@@ -35,6 +35,23 @@ live.monitor_system = SystemMonitor(
 )
 ```
 
+<toggle>
+<tab title="DVC Studio">
+
+![DVCLive Studio System Metrics Plots](/img/dvclive-studio-system-metrics-plots.png)
+![DVCLive Studio System Metrics](/img/dvclive-studio-system-metrics.png)
+
+</tab>
+<tab title="VSCode Extension">
+
+![DVCLive VSCode System Metrics Plots](/img/dvclive-vscode-system-metrics-plots.png)
+![DVCLive VSCode System Metrics](/img/dvclive-vscode-system-metrics.png)
+
+</tab>
+
+</toggle>
+
+
 ## Description
 
 The `SystemMonitor` class is used to configure the system logger. If you call `Live`
@@ -103,7 +120,7 @@ the following conditions for a GPU to be detected:
 
 - Your GPU is supported by [NVIDIA](https://www.nvidia.com/en-gb/geforce/graphics-cards/)
   and the NVIDIA driver is installed.
-- You have install the `pynvml` package with with `pip install dvclive[system]` or
+- You have install the `pynvml` package with with `pip install "dvclive[system]"` or
   with `pip install pynvml`.
 
 </admon>
