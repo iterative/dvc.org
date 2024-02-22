@@ -115,8 +115,8 @@ You can use `Live()` as a context manager. When exiting the context manager,
   [`dvc exp run --message`](/doc/command-reference/exp/run#--message) instead.
 
 - `monitor_system` - if `True`, DVCLive will log
-  [system metrics](/doc/dvclive/live/monitor_system), including GPU, CPU, RAM, and
-  disk usage. Defaults to `False`.
+  [system metrics](/doc/dvclive/live/monitor_system), including GPU, CPU, RAM,
+  and disk usage. Defaults to `False`.
 
 ## Methods
 
