@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         gray: { hover: '#40364d', dark: 'rgb(26, 30, 35)' },
         purple: { DEFAULT: '#945dd6' },
-        blue: { DEFAULT: 'rgb(56, 179, 220)' },
+        blue: { DEFAULT: '#13ADC7', hover: '#13a3bd' },
         orange: { DEFAULT: '#F46737' },
         indigo: { DEFAULT: '#4B2E70' },
         dark: { DEFAULT: '#1A1E23' },
@@ -39,5 +39,6 @@ module.exports = {
       sans: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif'],
       mono: ['Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace']
     }
-  }
+  },
+  plugins: [...themeConfig.plugins, require(`tailwindcss-animate`)]
 }
