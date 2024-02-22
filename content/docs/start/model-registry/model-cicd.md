@@ -8,7 +8,7 @@ description:
 
 # Get Started: Using and Deploying Models
 
-In the [model registry chapter](/doc/start/model-management/model-registry) we
+In the [model registry chapter](/doc/start/model-registry/model-registry) we
 registered the model in the model registry and assigned it to some lifecycle
 stages. In this chapter, we will learn how to access and use models and how to
 use the model registry to trigger automated CICD model workflows.
@@ -69,7 +69,7 @@ Git and DVC remote credentials manually. You can see more details in the
 ## Connecting model registry actions to your CICD
 
 As we noted in the
-[model registry chapter](/doc/start/model-management/model-registry), all DVC
+[model registry chapter](/doc/start/model-registry/model-registry), all DVC
 model registry actions are captured in your Git repository as Git tags with a
 specific format.
 

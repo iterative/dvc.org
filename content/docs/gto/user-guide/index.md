@@ -6,7 +6,7 @@ your Git repository by creating annotated
 [special format](#git-tags-format). To read more about building a model
 registry, read this [get started guide].
 
-[get started guide]: /doc/start/model-management
+[get started guide]: /doc/start/model-registry
 
 ## Finding the right artifact version
 

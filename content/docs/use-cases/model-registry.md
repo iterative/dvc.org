@@ -46,4 +46,4 @@ managing models] with DVC!
 [DVC Studio]: https://studio.iterative.ai
 [gitops]: https://www.gitops.tech/
 [versions]: /doc/use-cases/versioning-data-and-models
-[start managing models]: /doc/start/model-management
+[start managing models]: /doc/start/model-registry

@@ -124,7 +124,7 @@ assign the model version 1.0.0 to the "dev" stage as follows.
 When we assign the model to a stage, it can automatically trigger actions in our
 CICD workflows, like deploying the model to a new environment (we will explore
 how this is done in the
-[Using and Deploying models](/doc/start/model-management/model-cicd) chapter).
+[Use and Deploy models](/doc/start/model-registry/model-cicd) chapter).
 
 <details id="under-the-hood-assigning-model-stages">
 
@@ -183,7 +183,7 @@ you should see something like this:
 ![Model history](/img/mr-model-history.png)
 
 As we noted
-[above](/doc/start/model-management/model-registry#under-the-hood-model-registry),
+[above](/doc/start/model-registry/model-registry#under-the-hood-model-registry),
 DVC uses special Git tags to keep track of model registry actions, so all of
 this history is actually stored directly in your Git repository. DVC Studio can
 parse these tags and show them to us in a user-friendly way.

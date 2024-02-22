@@ -24,7 +24,7 @@ https://www.youtube.com/watch?v=T7MBFpnSr9Q
 
 [Add a model]: /doc/start/model-registry/add-model
 [Manage models in a central registry]: /doc/start/model-registry/manage-models
-[Using and deploying models]: /doc/start/model-registry/model-cicd
+[Use and deploy models]: /doc/start/model-registry/model-cicd
 
 <admon type="info">
 
