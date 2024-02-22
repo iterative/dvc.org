@@ -61,12 +61,15 @@ $ tree
 
 </details>
 
-The DVC tracked data needed to run this example can be downloaded using
-`dvc get`:
+The data needed to run this example can be downloaded using `dvc get` and
+tracked with `dvc add` (if you are following from
+[Data Versioning](/doc/start/data-management/data-versioning), you may already
+have this data):
 
 ```cli
 $ dvc get https://github.com/iterative/dataset-registry \
           get-started/data.xml -o data/data.xml
+$ dvc add data/data.xml
 ```
 
 Now, let's go through some usual project setup steps (virtualenv, requirements,
