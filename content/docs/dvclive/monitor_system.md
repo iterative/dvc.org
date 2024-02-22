@@ -34,7 +34,6 @@ The system metric will then be available live in
 [DVC Studio](https://dvc.org/doc/studio) and in our
 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
-
 <toggle>
 <tab title="DVC Studio">
 
@@ -112,7 +111,7 @@ tracks the usage of the first GPU.
 
 If you have a GPU on your system, but DVCLive doesn't track these metrics,
 please check that your GPU is supported by
-[NVIDIA](https://www.nvidia.com/en-gb/geforce/graphics-cards/) and that the 
+[NVIDIA](https://www.nvidia.com/en-gb/geforce/graphics-cards/) and that the
 NVIDIA driver is installed.
 
 </admon>
