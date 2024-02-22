@@ -1,9 +1,18 @@
-# Monitoring System Metrics
+# Live.monitor_system()
+
 
 DVCLive can track and log your system metrics so you can see your hardware
 performance and limitations during your experiments. The metrics concerns your
-GPUs usage, if you have some, and your CPU and RAM memory usage. It can also
-monitor the disk usage.
+CPU, RAM and disk memory usage. It can also monitor your GPUs usage, if you have 
+some.
+
+```py
+def monitor_system(
+    interval: float = 0.05,
+    num_samples: int = 20,
+    directories_to_monitor: Optional[Dict[str, str]] = None,
+    ):
+```
 
 ## Usage
 
@@ -20,17 +29,16 @@ or you can specify additional parameters to configure the logger behavior:
 
 ```py
 from dvclive import Live
-from dvclive.monitor_system import SystemMonitor
 
 live = Live()
-live.monitor_system = SystemMonitor(
+live.monitor_system(
     interval = 0.01
     num_samples = 20,
     directories_to_monitor = {"data": "/data", "users": "/home"},
 )
 ```
 
-The system metric will then be available live in
+The system metrics will then be available live in
 [DVC Studio](https://dvc.org/doc/studio) and in our
 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
@@ -52,41 +60,43 @@ The system metric will then be available live in
 
 ## Description
 
-The `SystemMonitor` class is used to configure the system logger. If you call
-`Live` with `monitor_system=True` it will create a `SystemMonitor` with default
-parameters. It works by sampling your system metrics at regular intervals and
-average them over a number of samples. The averaged data is then
+The `Live.monitor_system()` method is used to configure how `Live` log your 
+system metrics. If you call `Live` with `monitor_system=True`, the 
+`Live.monitor_system()` will be called with default parameters. 
+
+`Live` will sample your system for metrics at regular intervals and average them
+over a number of samples. The averaged data is then
 [logged as a metric](https://dvc.org/doc/dvclive/live/log_metric).
 
-The `SystemMonitor` has the following parameters:
+The sampling terminates when you call
+[`live.end()`](https://dvc.org/doc/dvclive/live/end).
 
-```py
-class SystemMonitor:
-
-    def __init__(
-        self,
-        interval: float = 0.05,
-        num_samples: int = 20,
-        directories_to_monitor: Optional[Dict[str, str]] = None,
-        ):
-```
+## Parameters
 
 - `interval` - the time interval between samples in seconds. To keep the
   sampling interval small, the maximum value allowed is 0.1 seconds. Default to
   0.05.
+
 - `num_samples` - the number of samples to collect before the aggregation. The
   value should be between 1 and 30 samples. Default to 20.
+
 - `directories_to_monitor` - a dictionary with the information about which
   directories to monitor. The `key` would be the name of the metric and the
   `value` is the path to the directory. The metric tracked concerns the
   partition that contains the directory. Default to `{"main": "/"}`.
 
-The `SystemMonitor` sampling terminates when you call
-[`live.end()`](https://dvc.org/doc/dvclive/live/end).
+
+
+## Exceptions
+
+- `ValueError` - if the keys in `directories_to_monitor` contains invalid
+  characters as defined by
+  [`os.path.normpath`](https://docs.python.org/3/library/os.path.html#os.path.normpath)
+
 
 ## List of metrics logged
 
-The `SystemMonitor` logs the following metrics:
+`Live` logs the following metrics about your system:
 
 ### GPUs metrics
 
