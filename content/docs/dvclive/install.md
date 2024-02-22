@@ -18,8 +18,6 @@ to install optional dependencies:
 - install `[sklearn]` to use [`log_sklearn_plot`]
 - install `[markdown]` to use [`make_report`] when `report=md` or
   `report=notebook`
-- install `[system]` to use [`monitor_system`] to monitor your system metrics
-  (GPU, CPU, RAM, etc...)
 
 If you use one of the supported [ML frameworks], you can also install the
 optional dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`,
@@ -33,7 +31,6 @@ Use `[all]` to include them all.
 [`log_plot`]: (https://dvc.org/doc/dvclive/live/log_plot)
 [`log_sklearn_plot`]: (https://dvc.org/doc/dvclive/live/log_sklearn_plot)
 [`make_report`]: (https://dvc.org/doc/dvclive/live/make_report)
-[`monitor_system`]: (https://dvc.org/doc/dvclive/monitor_system)
 
 ### Example: with support for Tensorflow
 

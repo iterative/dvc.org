@@ -7,14 +7,8 @@ monitor the disk usage.
 
 ## Usage
 
-To monitor your system metrics you need to install the optional dependencies
-first:
-
-```cli
-$ pip install "dvclive[system]"
-```
-
-Then you can set the `monitor_system` parameter to `True` in `Live`:
+To monitor your system metrics you can set the `monitor_system` parameter to
+`True` in `Live`:
 
 ```py
 from dvclive import Live
@@ -33,9 +27,13 @@ live.monitor_system = SystemMonitor(
     interval = 0.01
     num_samples = 20,
     directories_to_monitor = {"data": "/data", "users": "/home"},
-    plot = True,
 )
 ```
+
+The system metric will then be available live in
+[DVC Studio](https://dvc.org/doc/studio) and in our
+[VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
+
 
 <toggle>
 <tab title="DVC Studio">
@@ -71,7 +69,6 @@ class SystemMonitor:
         interval: float = 0.05,
         num_samples: int = 20,
         directories_to_monitor: Optional[Dict[str, str]] = None,
-        plot: bool = True,
         ):
 ```
 
@@ -84,11 +81,6 @@ class SystemMonitor:
   directories to monitor. The `key` would be the name of the metric and the
   `value` is the path to the directory. The metric tracked concerns the
   partition that contains the directory. Default to `{"main": "/"}`.
-- `plot` - if `True` it will
-  [log the metric](https://dvc.org/doc/dvclive/live/log_metric) as a plot. The
-  metric will then be available live in [DVC Studio](https://dvc.org/doc/studio)
-  and in our
-  [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 The `SystemMonitor` sampling terminates when you call
 [`live.end()`](https://dvc.org/doc/dvclive/live/end).
@@ -106,12 +98,12 @@ If you have GPUs, the following metrics are logged:
 - `system/gpu/usage (%)/<gpu_index>` - the average usage of the GPUs in
   percentage.
 - `system/vram/usage (%)/<gpu_index>` - the average space used in the virtual
-  memory of each GPU, express as percent of the total virtual memory available
+  memory of each GPU, expressed as percent of the total virtual memory available
   on the GPU.
 - `system/vram/usage (GB)/<gpu_index>` - the average space used in the virtual
-  memory of each GPU, express as gigabytes.
+  memory of each GPU, expressed as gigabytes.
 - `system/vram/total (GB)/<gpu_index>` - the total virtual memory available in
-  each GPU, express as gigabytes.
+  each GPU, expressed as gigabytes.
 
 The `<gpu_index>` is the index of the GPU. For example `system/gpu/usage (%)/0`
 tracks the usage of the first GPU.
@@ -119,13 +111,9 @@ tracks the usage of the first GPU.
 <admon type="tip">
 
 If you have a GPU on your system, but DVCLive doesn't track these metrics,
-please check the following conditions for a GPU to be detected:
-
-- Your GPU is supported by
-  [NVIDIA](https://www.nvidia.com/en-gb/geforce/graphics-cards/) and the NVIDIA
-  driver is installed.
-- You have install the `pynvml` package with with
-  `pip install "dvclive[system]"` or with `pip install pynvml`.
+please check that your GPU is supported by
+[NVIDIA](https://www.nvidia.com/en-gb/geforce/graphics-cards/) and that the 
+NVIDIA driver is installed.
 
 </admon>
 
