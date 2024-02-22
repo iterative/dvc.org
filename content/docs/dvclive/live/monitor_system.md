@@ -143,9 +143,9 @@ NVIDIA driver is installed.
 
 ### Disk metrics
 
-These metrics track the disk memory of your system. The directory to monitor
-can be specified using the `directories_to_monitor` parameter. The metrics
-concern the partition of the disk that contains the directory.
+These metrics track the disk memory of your system. The directory to monitor can
+be specified using the `directories_to_monitor` parameter. The metrics concern
+the partition of the disk that contains the directory.
 
 - `system/disk/usage (%)/<name>` - the amount of memory used by the partition in
   percentage.
