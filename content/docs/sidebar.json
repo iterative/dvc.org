@@ -68,17 +68,17 @@
         ]
       },
       {
-        "label": "Model Management",
-        "slug": "model-management",
-        "source": "model-management/index.md",
+        "label": "Model Registry",
+        "slug": "model-registry",
+        "source": "model-registry/index.md",
         "children": [
           {
             "label": "Add a model",
             "slug": "add-model"
           },
           {
-            "label": "Model registry",
-            "slug": "model-registry"
+            "label": "Manage models",
+            "slug": "manage-models"
           },
           {
             "label": "Using and deploying models",

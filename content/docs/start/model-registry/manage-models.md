@@ -1,17 +1,11 @@
 ---
-title: 'Get Started: Model registry'
+title: 'Get Started: Manage models'
 description:
   'Set up a Git-based model registry with DVC to track and manage models, their
   versions and lifecycle stages.'
 ---
 
-# Get Started: Model Registry
-
-Using DVC and [DVC Studio](/doc/studio) we will set up a model registry where we
-can discover, share, deploy and audit all our models and which will serve as the
-single source of truth for our model management.
-
-## DVC Model registry overview
+# Get Started: Manage models
 
 In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
 manage our model registry. You can check out our
@@ -28,7 +22,7 @@ account and add your repository as a DVC Studio project.
 
 </admon>
 
-Now that we have [added a model](/doc/start/model-management/add-model), you
+Now that we have [added a model](/doc/start/model-registry/add-model), you
 should see something like the following picture in DVC Studio if you go to the
 Models tab and then select the `pool-segmentation` model.
 

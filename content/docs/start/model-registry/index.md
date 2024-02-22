@@ -1,13 +1,12 @@
 ---
-title: 'Get Started: Model Management'
+title: 'Get Started: Model Registry'
 description:
-  'Get started with DVC model management. Use the DVC model registry to manage
-  the lifecycle of your models in an auditable way. Easily access your models
-  and integrate your model registry actions into CICD pipelines to follow GitOps
-  best practices.'
+  'Get started with the DVC model registry to manage the lifecycle of your
+  models in an auditable way. Easily access your models and integrate your model
+  registry actions into CICD pipelines to follow GitOps best practices.'
 ---
 
-# Get Started: Model Management
+# Get Started: Model Registry
 
 https://www.youtube.com/watch?v=T7MBFpnSr9Q
 
@@ -15,17 +14,17 @@ https://www.youtube.com/watch?v=T7MBFpnSr9Q
 
 - **[Add a model]** - Start tracking model artifacts with DVC.
 
-- **[Model registry]** - Manage models, their versions and lifecycle stages in a
-  git-based model registry.
+- **[Manage models in a central registry]** - Manage models, their versions and
+  lifecycle stages in a git-based model registry.
 
-- **[Using and deploying models]** - Easily download your models from the model
+- **[Use and deploy models]** - Easily download your models from the model
   registry. Set up your CICD pipelines to be trigger by model registry actions
   (such as assigning model stages) and deploy models directly form the model
   registry.
 
-[Add a model]: /doc/start/model-management/add-model
-[model registry]: /doc/start/model-management/model-registry
-[Using and deploying models]: /doc/start/model-management/model-cicd
+[Add a model]: /doc/start/model-registry/add-model
+[Manage models in a central registry]: /doc/start/model-registry/manage-models
+[Using and deploying models]: /doc/start/model-registry/model-cicd
 
 <admon type="info">
 

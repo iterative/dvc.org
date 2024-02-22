@@ -48,6 +48,8 @@
   "^/doc/start/data-pipelines(/.*)?$                                                      /doc/start/data-management/data-pipelines 302",
   "^/doc/start/metrics-parameters-plots(/.*)?$                                            /doc/start/data-management/metrics-parameters-plots 302",
   "^/doc/start/experiment-management(/.*)?$                                               /doc/start/experiments",
+  "^/doc/start/model-management/model-registry$                                           /doc/start/model-registry/manage-models",
+  "^/doc/start/model-management(/.*)?$                                                    /doc/start/model-registry$1",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",

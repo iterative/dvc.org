@@ -313,7 +313,7 @@ Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 
-[added]: /doc/studio/model-registry/user-guide/add-a-model
+[added]: /doc/studio/user-guide/model-registry/add-a-model
 [create a project]: /doc/studio/user-guide/experiments/create-a-project
 [project-settings]:
   /doc/studio/user-guide/experiments/configure-a-project#configuring-project-settings
