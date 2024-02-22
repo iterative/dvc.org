@@ -10,6 +10,9 @@ idea to keep a <abbr>model registry</abbr> to manage the lifecycle of the models
 we get from our experiments. With DVC, we can start tracking models using our
 Git repository, which will serve as the single source of truth for our model
 registry and enable us to trigger automated CICD workflows.
+[DVC Studio](/doc/studio) will then provide a model registry on top of the Git
+repositories to
+[manage all our models](/doc/start/model-registry/manage-models).
 
 ## Log a model artifact
 
@@ -89,7 +92,7 @@ If you are building your own repository, you will need to:
 3. Push the result to your Git remote (e.g., GitHub)
 
 If you are
-[following](/doc/start/model-management/model-registry#follow-along-instructions)
+[following](/doc/start/model-registry/manage-models#follow-along-instructions)
 our example repository then this has already been done and we can continue to
 the next section to find out how to set up a <abbr>model registry</abbr> for all
 your models.
