@@ -92,8 +92,8 @@ with Live() as live:
       live.next_step()
 ```
 
-In [DVC Studio](https://studio.iterative.ai/) and the
-[DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
+In [DVC Studio] and the
+[DVC Extension for VSCode],
 folders following this pattern will be rendered using an image slider:
 
 <toggle>
@@ -110,6 +110,68 @@ folders following this pattern will be rendered using an image slider:
 
 </toggle>
 
+### Annotations on images
+
+You can also log bounding boxes with your image. To do so, you can use the
+`annotations` parameter:
+
+```py
+import numpy as np
+from dvclive import Live
+
+with Live() as live:
+    base_img = np.ones((500, 500), np.uint8)
+    live.log_image(
+      name=f"numpy.png", 
+      val=base_img, 
+      annotations={
+        "boxes": [[10, 20, 100, 200], [100, 120, 310, 400], [50, 40, 230, 400]],
+        "labels": ["cat", "dog", "cat"],
+        "scores": [0.9, 0.8, 0.7],
+        "box_format": "tlbr"
+        }
+      )
+```
+
+
+<details id="what-is-log-image-doing-under-the-hood">
+
+#### What is `log_image` doing under the hood?
+
+`log_image()` will store the annotations in a JSON file with the same path and 
+name as the image `{Live.plots_dir}/images/{name}.json`. For the given example 
+the  JSON file will contain the following structure:
+
+```json
+{
+  "annotations": {
+    "cat": [
+      {"box": {"top":10, "left":20, "bottom":100, "right":200}, "score": 0.9},
+      {"box": {"top":50, "left":40, "bottom":230, "right":400}, "score": 0.7}
+    ],
+    "dog": [
+      {"box": {"top":100, "left":120, "bottom":310, "right":400}, "score": 0.8}
+    ]
+  }
+}
+```
+
+If you don't want to use `log_image` to store the annotations, but you want to
+see the annotations on [DVC Studio] or on the [DVC Extension for VSCode], you can 
+save the JSON yourself, but it needs to respect this structure. 
+</details>
+
+
+<toggle>
+<tab title="VSCode Extension">
+
+![DVCLive VSCode Image Annotations](/img/dvclive-vscode-annotations.gif)
+
+</tab>
+
+</toggle>
+
+
 ## Parameters
 
 - `name` - name of the image file that this command will output.
@@ -117,7 +179,28 @@ folders following this pattern will be rendered using an image slider:
 - `val` - image to be saved. See the list of supported values in the
   [Description](#description).
 
+- `annotations` - a dictionnary with the keys "boxes", "labels", "scores", and
+  "box_format".
+  - `"boxes"` - contains a list of bounding boxes, each represented as a list
+    of four `int`. Example : `[[10, 20, 100, 200], [50, 40, 230, 400]]`.
+  - `"labels"` - contains a list of `str` representing the class of each
+    bounding box. Example : `["cat", "dog"]`.
+  - `"scores"` - contains a list of `float` representing the confidence score of
+    each bounding box. Example : `[0.9, 0.8]`.
+  - `"box_format"` - a `str` representing the format of the bounding boxes. It
+    supports `"tlbr"` for `[top, left, bottom tight]`, `"ltrb"` for
+    `[left, top, right, bottom]`, `"tlhw"` for `[top, left, height, width]`, and
+    `"xywh"` for `[center_x, center_y, width, height]`. Example : `"tlbr"` for
+    `[10, 20, 100, 200]` means that the box start at the 10th pixel from the top
+    and the 20th pixel from the left. The width of the bounding box is 90 pixels
+    and the height is 180 pixels.
+
 ## Exceptions
 
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `val` does not
   have a supported type.
+
+
+
+[DVC Studio]: https://studio.iterative.ai/
+[DVC Extension for VSCode]: https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
