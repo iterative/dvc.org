@@ -1,8 +1,8 @@
 # Live.monitor_system()
 
 DVCLive can track and log your system metrics so you can see your hardware
-performance and limitations during your experiments. The metrics concerns your
-CPU, RAM and disk memory usage. It can also monitor your GPUs usage, if you have
+performance and limitations during your experiments. The metrics concern your
+CPU, RAM and disk memory usage. It can also monitor your GPU usage, if you have
 some.
 
 ```py
@@ -59,8 +59,8 @@ The system metrics will then be available live in
 
 ## Description
 
-The `Live.monitor_system()` method is used to configure how `Live` log your
-system metrics. If you call `Live` with `monitor_system=True`, the
+The `Live.monitor_system()` method is used to configure how `Live` logs your
+system metrics. If you call `Live` with `monitor_system=True`,
 `Live.monitor_system()` will be called with default parameters.
 
 `Live` will sample your system for metrics at regular intervals and average them
@@ -94,7 +94,7 @@ The sampling terminates when you call
 
 `Live` logs the following metrics about your system:
 
-### GPUs metrics
+### GPU metrics
 
 If you have GPUs, the following metrics are logged:
 
@@ -122,7 +122,7 @@ NVIDIA driver is installed.
 
 </admon>
 
-### CPUs metrics
+### CPU metrics
 
 - `system/cpu/count` - the number of CPU cores available. This metric is not
   plotted since it is not expected to change during an experiment.
@@ -143,7 +143,7 @@ NVIDIA driver is installed.
 
 ### Disk metrics
 
-These metrics tracks the disk memory of your system. The directory to monitor
+These metrics track the disk memory of your system. The directory to monitor
 can be specified using the `directories_to_monitor` parameter. The metrics
 concern the partition of the disk that contains the directory.
 

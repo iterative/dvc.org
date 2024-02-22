@@ -889,12 +889,12 @@
             "label": "make_summary()"
           },
           {
-            "slug": "next_step",
-            "label": "next_step()"
+            "slug": "monitor_system",
+            "label": "monitor_system()"
           },
           {
-            "slug": "monitor_system",
-            "label": "Monitoring System Metrics"
+            "slug": "next_step",
+            "label": "next_step()"
           }
         ]
       },
