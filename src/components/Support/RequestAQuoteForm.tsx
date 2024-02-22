@@ -31,6 +31,12 @@ const ErrorMessage = ({
   )
 }
 
+const RequiredField = () => (
+  <span className="text-red-500" aria-hidden="true">
+    *
+  </span>
+)
+
 const RequestAQuoteForm = ({
   setOpenDialog,
   setPauseDialog
@@ -103,6 +109,7 @@ const RequestAQuoteForm = ({
     setErrors(newErrors)
 
     if (hasError) {
+      setSubmitting(false)
       return
     }
 
@@ -206,12 +213,16 @@ const RequestAQuoteForm = ({
   return (
     <form onSubmit={onSubmit} method="post" className="flex flex-col gap-4">
       <div>
-        <Label htmlFor="name">Full Name</Label>
+        <Label htmlFor="name">
+          Full Name <RequiredField />
+        </Label>
         <Input name="name" id="name" value={values.name} onChange={onChange} />
         <ErrorMessage name="name" errors={errors} />
       </div>
       <div>
-        <Label htmlFor="company">Company</Label>
+        <Label htmlFor="company">
+          Company <RequiredField />
+        </Label>
         <Input
           name="company"
           id="company"
@@ -221,7 +232,9 @@ const RequestAQuoteForm = ({
         <ErrorMessage name="company" errors={errors} />
       </div>
       <div>
-        <Label htmlFor="email">Business Email</Label>
+        <Label htmlFor="email">
+          Business Email <RequiredField />
+        </Label>
         <Input
           name="email"
           id="email"
@@ -247,7 +260,9 @@ const RequestAQuoteForm = ({
         <ErrorMessage name="teamSize" errors={errors} />
       </div>
       <div>
-        <Label htmlFor="message">How we can help?</Label>
+        <Label htmlFor="message">
+          How we can help? <RequiredField />
+        </Label>
         <Textarea
           name="message"
           id="message"
