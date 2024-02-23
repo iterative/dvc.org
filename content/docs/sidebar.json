@@ -894,6 +894,10 @@
             "label": "make_summary()"
           },
           {
+            "slug": "monitor_system",
+            "label": "monitor_system()"
+          },
+          {
             "slug": "next_step",
             "label": "next_step()"
           }

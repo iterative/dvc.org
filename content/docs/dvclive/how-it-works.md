@@ -12,6 +12,7 @@ The contents of the directory will depend on the methods used:
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [`Live.log_artifact()`](/doc/dvclive/live/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc` |
 | `Live.log_metric()`                                     | `dvclive/plots/metrics`                                                              |
+| `Live.monitor_system()`                                 | `dvclive/plots/metrics/system`                                                       |
 | `Live.log_image()`                                      | `dvclive/plots/images`                                                               |
 | `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
 | `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |

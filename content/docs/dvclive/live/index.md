@@ -15,6 +15,7 @@ class Live:
         cache_images: bool = False,
         exp_name: Optional[str] = None,
         exp_message: Optional[str] = None,
+        monitor_system: bool = False,
     ):
 ```
 
@@ -113,6 +114,10 @@ You can use `Live()` as a context manager. When exiting the context manager,
   If DVCLive is used inside `dvc exp run`, the option will be ignored, use
   [`dvc exp run --message`](/doc/command-reference/exp/run#--message) instead.
 
+- `monitor_system` - if `True`, DVCLive will log
+  [system metrics](/doc/dvclive/live/monitor_system), including GPU, CPU, RAM,
+  and disk usage. Defaults to `False`.
+
 ## Methods
 
 - `Live.log_artifact()`
@@ -126,3 +131,4 @@ You can use `Live()` as a context manager. When exiting the context manager,
 - `Live.make_report()`
 - `Live.make_summary()`
 - `Live.next_step()`
+- `Live.monitor_system()`
