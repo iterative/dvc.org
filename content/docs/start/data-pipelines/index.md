@@ -1,17 +1,13 @@
 ---
-title: 'Get Started: Data Management'
+title: 'Get Started: Data Pipelines'
 description:
-  'Get started with DVC data management. Version your data, build data pipelines
+  'Get started with DVC data pipelines. Version your data, build data pipelines
   and learn about pipeline metrics, parameters and plots.'
 ---
 
-# Get Started: Data Management
+# Get Started: Data Pipelines
 
 ## Chapters
-
-- **[Data and model versioning]** - Manage large files, datasets, and machine
-  learning models. Track your data and couple its versions to your code
-  versions, while keeping it stored properly outside of your Git repo.
 
 - **[Data pipelines]** - Use pipelines to describe how models and other data
   artifacts are built, and provide an efficient way to reproduce them. Think
@@ -20,7 +16,6 @@ description:
 - **[Metrics, parameters, and plots]** - These are first class citizens in DVC
   pipelines. Capture, evaluate, and visualize ML projects without leaving Git.
 
-[data and model versioning]: /doc/start/data-management/data-versioning
 [data pipelines]: /doc/start/data-management/data-pipelines
 [metrics, parameters, and plots]:
   /doc/start/data-management/metrics-parameters-plots

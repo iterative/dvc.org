@@ -72,9 +72,7 @@ See the full [specification] of stage entries.
 Each stage wraps around an executable shell [command] and specifies any
 file-based [dependencies](#simple-dependencies) as well as [outputs](#outputs).
 Let's look at a sample stage: it depends on a script file it runs as well as on
-a raw data input (ideally [tracked by DVC][data management] already):
-
-[data management]: /doc/start/data-management
+a raw data input (ideally [tracked by DVC](/doc/start) already):
 
 ```yaml
 stages:
