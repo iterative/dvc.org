@@ -8,7 +8,7 @@ description:
 
 # Get Started: Using and Deploying Models
 
-In the [model registry chapter](/doc/start/model-registry/model-registry) we
+In the previous two chapters we
 registered the model in the model registry and assigned it to some lifecycle
 stages. In this chapter, we will learn how to access and use models and how to
 use the model registry to trigger automated CICD model workflows.
