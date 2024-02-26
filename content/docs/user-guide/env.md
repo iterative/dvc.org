@@ -2,7 +2,7 @@
 
 List of environment variables to configure DVC behavior.
 
-- `DVC_EXP_BASELINE_REF`: Git revision for the baseline commit from which an
+- `DVC_EXP_BASELINE_REV`: Git revision for the baseline commit from which an
   <abbr>experiment</abbr> derives. Automatically set by DVC.
 - `DVC_EXP_NAME`: Name of the <abbr>experiment</abbr>. Automatically set by DVC.
 - `DVC_GLOBAL_CONFIG_DIR`: Directory in which DVC will look for global
