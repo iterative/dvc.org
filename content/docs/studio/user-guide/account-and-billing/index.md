@@ -150,7 +150,7 @@ The available scopes are:
 - `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
 - `Model registry operations` - like downloading model using
   `dvc artifacts get`.
-- `Admin operations` - This scope is utilized for SCIM operations and the
+- `Admin operations` - this scope is utilized for SCIM operations and the
   creation of projects.
 
 [live experiments]:
