@@ -63,17 +63,15 @@ always stick to LF line endings.
 
 For VS Code, add
 
-```
+```json
 {
-
-    "files.eol": "\n",
-
+  "files.eol": "\n"
 }
 ```
 
 to your global `settings.json` or to your project's `.vscode/settings.json`.
 
-### Set up LF Line Endings with `.gitattributes` for DVC on Windows
+### Set up LF Line Endings with `.gitattributes`
 
 To enhance DVC compatibility on Windows, it is advisable to employ a
 `.gitattributes` file with the eol attribute to configure line endings.
@@ -81,7 +79,7 @@ To enhance DVC compatibility on Windows, it is advisable to employ a
 Add the following line to your `.gitattributes`:
 
 ```
-  * text=auto eol=lf
+* text=auto eol=lf
 ```
 
 This configuration tells Git to treat all files as text files and use LF line
@@ -91,9 +89,9 @@ endings regardless of the platform.
 
 Set `core.autocrlf` to `false` and `core.eol` to `lf`
 
-```
-  $ git config --global core.autocrlf false
-  $ git config --global core.eol lf
+```cli
+$ git config --global core.autocrlf false
+$ git config --global core.eol lf
 ```
 
 Now Git will handle line endings consistently.
@@ -102,9 +100,9 @@ Now Git will handle line endings consistently.
 
 Add this to your `.pre-commit-config.yaml` hooks:
 
-```
-      - id: mixed-line-ending
-        args: [--fix=lf]
+```yaml
+- id: mixed-line-ending
+  args: [--fix=lf]
 ```
 
 to make `pre-commit` check and automatically replace all line endings with LF.

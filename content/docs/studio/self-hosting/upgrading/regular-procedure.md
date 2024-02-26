@@ -11,7 +11,7 @@ $ helm repo update
 3. Upgrade DVC Studio to the latest version
 
 ```cli
-$ helm upgrade --atomic studio iterative/studio --namespace studio --values values.yaml
+$ helm upgrade studio iterative/studio --namespace studio --values values.yaml
 ```
 
 <admon type="info">

@@ -820,7 +820,10 @@
           }
         ]
       },
-      "rest-api"
+      {
+        "slug": "rest-api",
+        "children": ["create-project", "download-model"]
+      }
     ]
   },
   {
@@ -828,6 +831,10 @@
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
+      {
+        "slug": "install",
+        "label": "Install"
+      },
       {
         "slug": "how-it-works",
         "label": "How it Works"
@@ -880,6 +887,10 @@
           {
             "slug": "make_summary",
             "label": "make_summary()"
+          },
+          {
+            "slug": "monitor_system",
+            "label": "monitor_system()"
           },
           {
             "slug": "next_step",
