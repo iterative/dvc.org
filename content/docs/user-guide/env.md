@@ -28,22 +28,4 @@ List of environment variables to configure DVC behavior.
 - `DVC_SYSTEM_CONFIG_DIR`: Directory in which DVC will look for system
   [configuration](/doc/user-guide/project-structure/configuration).
 
-## Azure Remote Configuration
-
-Configure Azure Remote by setting the following environment variables:
-
-- `"exclude_environment_credential"`: Bool. If `true`, excludes the environment credential source for Azure Remote.
-- `"exclude_visual_studio_code_credential"`: Bool. If `true`, excludes Visual Studio Code credential source for Azure Remote.
-- `"exclude_shared_token_cache_credential"`: Bool. If `true`, excludes the shared token cache credential source for Azure Remote.
-- `"exclude_managed_identity_credential"`: Bool. If `true`, excludes the managed identity credential source for Azure Remote.
-
-#### Sample Configuration
-
-```
-"exclude_environment_credential": Bool,
-"exclude_visual_studio_code_credential": Bool,
-"exclude_shared_token_cache_credential": Bool,
-"exclude_managed_identity_credential": Bool,
-```
-
 See also [DVCLive environment variables](/doc/dvclive/env).
