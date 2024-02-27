@@ -220,10 +220,10 @@ See `dvc remote modify` for more command usage details.
 [Azure documentation]:
   https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob#other-client--per-operation-configuration
 
-- `exclude_environment_credential` - `bool`
+- `exclude_environment_credential` - bool
 
-- `exclude_visual_studio_code_credential` - `bool`
+- `exclude_visual_studio_code_credential` - bool
 
-- `exclude_shared_token_cache_credential` - `bool`
+- `exclude_shared_token_cache_credential` - bool
 
-- `exclude_managed_identity_credential` - `bool`
+- `exclude_managed_identity_credential` - bool
