@@ -4,7 +4,7 @@
 Machine Learning teams to seamlessly
 
 - [Run and track experiments](/doc/studio/experiments)
-- [Manage model lifecycle](/doc/studio/model-registry)
+- [Manage model lifecycle](/doc/studio/user-guide/model-registry)
 - [Collaborate on Machine Learning projects](/doc/studio/user-guide/team-collaboration)
 
 It works on top of [DVC](https://dvc.org/) and [Git](https://git-scm.com/),
@@ -25,7 +25,7 @@ https://www.youtube.com/watch?v=w-UjAbdpRY4
   Git.
 - Keep your code, data and model connected at all times.
 - Apply your existing software engineering stack for ML teams.
-- Build an ML model registry for transparency and discovery across all your
-  projects.
+- Build an ML <abbr>model registry</abbr> for transparency and discovery across
+  all your projects.
 - Because your model registry is built on top of Git, you can use
   [GitOps](https://www.gitops.tech/) for model deployment.
