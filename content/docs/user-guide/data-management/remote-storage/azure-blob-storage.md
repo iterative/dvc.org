@@ -206,7 +206,7 @@ See `dvc remote modify` for more command usage details.
 - `url` - modify the remote location ([scroll up](#microsoft-azure-blob-storage)
   for details)
 
-- `timeout` - the server-side timeout. Defaults to 30 seconds. See
+- `timeout` - the server-side timeout. Defaults to 30 seconds. See  
   [docs](https://learn.microsoft.com/en-us/rest/api/storageservices/setting-timeouts-for-blob-service-operations)
 
 - `read_timeout` - the number of seconds the client will wait, between
@@ -220,13 +220,10 @@ See `dvc remote modify` for more command usage details.
 [Azure documentation]:
   https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob#other-client--per-operation-configuration
 
-### Azure Remote Configuration 
+- `exclude_environment_credential` - bool. If `true`, excludes the environment credential source for Azure Remote.
 
-- `"exclude_environment_credential"`: Bool. If `true`, excludes the environment credential source for Azure Remote.
+- `exclude_visual_studio_code_credential` - bool. If `true`, excludes Visual Studio Code credential source for Azure Remote.
 
-- `"exclude_visual_studio_code_credential"`: Bool. If `true`, excludes Visual Studio Code credential source for Azure Remote.
+- `exclude_shared_token_cache_credential` - bool. If `true`, excludes the shared token cache credential source for Azure Remote.
 
-- `"exclude_shared_token_cache_credential"`: Bool. If `true`, excludes the shared token cache credential source for Azure Remote.
-
-- `"exclude_managed_identity_credential"`: Bool. If `true`, excludes the managed identity credential source for Azure Remote. 
- 
+- `exclude_managed_identity_credential` - bool. If `true`, excludes the managed identity credential source for Azure Remote.
