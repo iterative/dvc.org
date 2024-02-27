@@ -195,26 +195,6 @@ from an [Azure CLI configuration file] (typically managed with [az config]):
   https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration#cli-configuration-file
 [az config]: https://docs.microsoft.com/en-us/cli/azure/config
 
-## Configure Azure Remote with environment variables
-
-- `"exclude_environment_credential"`: Bool. If `true`, excludes the environment
-  credential source for Azure Remote.
-- `"exclude_visual_studio_code_credential"`: Bool. If `true`, excludes Visual
-  Studio Code credential source for Azure Remote.
-- `"exclude_shared_token_cache_credential"`: Bool. If `true`, excludes the
-  shared token cache credential source for Azure Remote.
-- `"exclude_managed_identity_credential"`: Bool. If `true`, excludes the managed
-  identity credential source for Azure Remote.
-
-### Sample Configuration
-
-```
-"exclude_environment_credential": Bool,
-"exclude_visual_studio_code_credential": Bool,
-"exclude_shared_token_cache_credential": Bool,
-"exclude_managed_identity_credential": Bool,
-```
-
 ## More configuration parameters
 
 <admon type="info">
@@ -239,3 +219,14 @@ See `dvc remote modify` for more command usage details.
 
 [Azure documentation]:
   https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob#other-client--per-operation-configuration
+
+### Azure Remote Configuration 
+
+- `"exclude_environment_credential"`: Bool. If `true`, excludes the environment credential source for Azure Remote.
+
+- `"exclude_visual_studio_code_credential"`: Bool. If `true`, excludes Visual Studio Code credential source for Azure Remote.
+
+- `"exclude_shared_token_cache_credential"`: Bool. If `true`, excludes the shared token cache credential source for Azure Remote.
+
+- `"exclude_managed_identity_credential"`: Bool. If `true`, excludes the managed identity credential source for Azure Remote. 
+ 
