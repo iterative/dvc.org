@@ -730,14 +730,8 @@
               "remove-a-model-or-its-details"
             ]
           },
-          {
-            "slug": "team-collaboration",
-            "children": ["change-team-plan-and-size"]
-          },
-          {
-            "slug": "account-and-billing",
-            "children": ["billing-and-payment"]
-          },
+          "team-collaboration",
+          "account-management",
           {
             "slug": "git-connections",
             "children": ["github-app", "custom-gitlab-server"]

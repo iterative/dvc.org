@@ -27,7 +27,7 @@ Git repository, and you do not need to install DVC.
 [remote storage credentials]:
   /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
 [DVC Studio client access token]:
-  /doc/studio/user-guide/account-and-billing#client-access-tokens
+  /doc/studio/user-guide/account-management#client-access-tokens
 [download a model artifact with DVC]: /doc/command-reference/artifacts/get
 [REST API]: /doc/studio/rest-api
 [Python API]: /doc/api-reference

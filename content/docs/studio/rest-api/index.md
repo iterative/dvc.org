@@ -18,4 +18,4 @@ The following APIs are available:
 - [Download model files](/doc/studio/rest-api/download-model)
 
 [DVC Studio client access token]:
-  /doc/studio/user-guide/account-and-billing#client-access-tokens
+  /doc/studio/user-guide/account-management#client-access-tokens

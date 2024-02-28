@@ -40,7 +40,7 @@ steps to download the model from the web browser here:
 And here's how to do it with the CLI:
 
 First, configure the
-[DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+[DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
 (this only needs to be done once):
 
 ```cli
@@ -85,14 +85,14 @@ other CICD action.
 
 You can simply re-use the CICD template below and copy it into your projects.
 Then all you need to do is to save the
-[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
 as a
 [GitHub secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 (or a [GitLab CI variable](https://docs.gitlab.com/ee/ci/variables/)) to manage
 authentication with the
 [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
 This way we only need to keep the
-[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
 saved on GitHub/GitLab and let DVC Studio manage the specific storage
 credentials for us.
 

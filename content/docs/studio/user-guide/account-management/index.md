@@ -17,12 +17,9 @@ settings:
 
 <admon>
 
-This does not include managing your team plan (Free, Basic, or Enterprise). Team
-plans are defined for each team separately. To manage them, go to the [team
-settings] page and scroll to the `Plan and billing` section. You can change
-plans there and increase or decrease the number of seats in it.
-
-[team settings]: /doc/studio/user-guide/team-collaboration/teams#settings
+This does not include managing your team plan (Free or Enterprise). Team plans
+are defined for each team separately.
+[Get Enterprise](/doc/studio/user-guide/team-collaboration#get-enterprise).
 
 </admon>
 
@@ -102,6 +99,8 @@ In this section, you can,
 - Configure your GitHub account connection. That is, install the DVC Studio
   GitHub app on additional organizations or repositories, or even remove the app
   from organizations or repositories where you no longer need it.
+
+[team settings]: /doc/studio/user-guide/team-collaboration/teams#settings
 
 ## Cloud credentials
 

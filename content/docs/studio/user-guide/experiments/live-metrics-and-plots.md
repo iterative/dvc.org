@@ -19,7 +19,7 @@ message. The access token is also used by DVC to notify DVC Studio when you push
 experiments using `dvc exp push`.
 
 Once you create your
-[DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+[DVC Studio client access token](/doc/studio/user-guide/account-management#client-access-tokens)
 with Experiment operations scope, pass it to your experiment. If you are running
 the experiment locally, you can use `dvc studio login` to interactively set the
 token:
