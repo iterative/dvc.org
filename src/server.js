@@ -6,7 +6,8 @@ const app = server.app
 const helmetOptions = {
   contentSecurityPolicy: {
     directives: {
-      frameSrc: ['https://embed.testimonial.to']
+      frameSrc: ['https://embed.testimonial.to'],
+      mediaSrc: ['https://static.iterative.ai']
     }
   }
 }

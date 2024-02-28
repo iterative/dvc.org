@@ -12,6 +12,7 @@ The contents of the directory will depend on the methods used:
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [`Live.log_artifact()`](/doc/dvclive/live/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc` |
 | `Live.log_metric()`                                     | `dvclive/plots/metrics`                                                              |
+| `Live.monitor_system()`                                 | `dvclive/plots/metrics/system`                                                       |
 | `Live.log_image()`                                      | `dvclive/plots/images`                                                               |
 | `Live.log_param()`                                      | `dvclive/params.yaml`                                                                |
 | `Live.log_plot()`                                       | `dvclive/plots/custom`                                                               |
@@ -100,8 +101,8 @@ make Git ignore it. It will generate a `model.pt.dvc` metadata file, which can
 be tracked in Git and becomes part of the experiment. With this metadata file,
 you can [retrieve](/doc/start/data-management/data-versioning#retrieving) the
 versioned artifact from the Git commit. You can also use
-`Live.log_artifact("model.pt", type="model")` to add it to the
-[DVC Studio Model Registry](/doc/studio/model-registry).
+`Live.log_artifact("model.pt", type="model")` to add it to the <abbr>model
+registry</abbr>.
 
 Using `Live.log_image()` to log multiple images may also grow too large to track
 with Git, in which case you can use

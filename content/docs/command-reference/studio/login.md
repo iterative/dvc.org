@@ -1,7 +1,7 @@
 ## studio login
 
 Authenticate DVC with Studio to save a
-[client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
+[client access token](/doc/studio/user-guide/account-management#client-access-tokens)
 to global [DVC configuration].
 
 [dvc configuration]:
@@ -24,7 +24,7 @@ and assigns a random name as the token name.
   to authenticate with. Defaults to `https://studio.iterative.ai`.
 
 - `-s <scopes>`, `--scopes <scopes>` - comma separated values of
-  [scopes](/doc/studio/user-guide/account-and-billing#client-access-tokens) for
+  [scopes](/doc/studio/user-guide/account-management#client-access-tokens) for
   the authentication token. Accepted scope values are `EXPERIMENTS`, `MODELS`,
   and `DATASETS`. Defaults to all available scopes.
 

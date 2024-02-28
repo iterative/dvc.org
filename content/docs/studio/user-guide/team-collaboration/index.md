@@ -13,7 +13,7 @@ In this page, you will learn about:
 - [How to manage the team and its projects](#manage-your-team-and-its-projects)
 - [How to manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers)
 - [How to configure Single Sign-on (SSO)](#configure-single-sign-on-sso)
-- [Why and how to change your team plan and team size](#change-your-team-plan-and-team-size)
+- [How to upgrade to an Enterprise plan](#get-enterprise)
 
 ## Create a team
 
@@ -137,10 +137,8 @@ adding a project is the same as that for adding personal projects
 ## Models
 
 This is the models dashboard for the team. All the models on this dashboard are
-accessible to all members (collaborators) of the team.
-
-To add a model to this dashboard, click on `Add a model`. The process for adding
-a model is the same as that for adding personal models
+accessible to all members (collaborators) of the team. The process for adding a
+model is the same as that for adding personal models
 ([instructions](/doc/studio/user-guide/model-registry/add-a-model)).
 
 ## Settings
@@ -153,8 +151,7 @@ are applicable to the team and are thus different from
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),
 [configure sso](#configure-single-sign-on-sso),
-[edit collaborators](#edit-collaborators) and
-[change your team plan](#change-your-team-plan).
+[edit collaborators](#edit-collaborators).
 
 ### Manage connections to self-hosted GitLab servers
 
@@ -191,8 +188,7 @@ members.
 
 The number of collaborators in your team depends on your team plan. By default,
 all teams are on the Free plan, and can have 2 collaborators. To add more
-collaborators,
-[upgrade to the Basic or Enterprise plans](#change-your-team-plan).
+collaborators, [upgrade to the Enterprise plan](#get-enterprise).
 
 All collaborators and pending invites get counted in the subscription. Suppose
 you have subscribed for a 10 member team. If you have 5 members who have
@@ -201,22 +197,10 @@ seats. This means that you can invite 2 more collaborators. At this point, if
 you remove any one team member or pending invite, that seat becomes available
 and so you will have 3 remaining seats.
 
-### Change your team plan and team size
+## Get Enterprise
 
-Your team can be in the **Free**, **Basic** or **Enterprise** plan. All newly
-created teams are on the Free plan. This plan is designed for teams that are
-starting out: you can invite one other team member and import as many
-repositories as you want. For more advanced collaboration, you can switch to the
-Basic or Enterprise plans. A detailed comparison of the different plans can be
-found in the DVC Studio [pricing page](https://studio.iterative.ai/pricing).
+**To upgrade to the Enterprise plan**, [schedule a call] with our in-house
+experts. They will try to understand your needs and suggest a suitable plan and
+pricing.
 
-- **To upgrade** from the Free plan to the Basic or Enterprise plan or to
-  downgrade your team plan, refer to the section on [changing your team plan].
-
-- **To change the number of seats** in your Basic plan, refer to the section on
-  [changing your team size].
-
-[changing your team plan]:
-  /doc/studio/user-guide/change-team-plan-and-size#change-the-plan-your-team-is-on
-[changing your team size]:
-  /doc/studio/user-guide/change-team-plan-and-size#change-the-size-of-your-team
+[schedule a call]: https://calendly.com/gtm-2/studio-introduction

@@ -1,20 +1,10 @@
-# REST API
+# Download model
 
-The purpose of the DVC Studio REST API is to give programmatic access to
-information in DVC Studio and executing actions in it.
-
-The API is hosted under the `/api` route on the DVC Studio server:
-https://studio.iterative.ai/api or https://your-domain/api in case of
-[self-hosted DVC Studio](/doc/studio/self-hosting/installation).
-
-To use API, you need to generate [DVC Studio tokens] with the necessary scopes.
-
-## Download model
-
-Get signed URL to download the model binaries for a model from the <abbr>model
-registry</abbr>. Requires the model to be stored with DVC with a S3, Azure, http
-or https [remote]. Note, that you need to
-[set up remote cloud credentials](/doc/studio/user-guide/account-and-billing#cloud-credentials)
+To download model binaries for models in the <abbr>model registry</abbr>, you
+can programmatically generate signed URLs using the DVC Studio
+`get-download-uris` API. This API requires the model to be stored with DVC with
+a S3, Azure, http or https [remote]. Note that you need to
+[set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
 for DVC Studio to have rights to the signed URLs. The signed URLs expire after
 one hour.
 
@@ -23,7 +13,7 @@ Endpoint: api/model-registry/get-download-uris
 HTTP Method: GET
 ```
 
-### Request
+## Request
 
 | param   | desc          | type   | required | example value                      |
 | ------- | ------------- | ------ | -------- | ---------------------------------- |
@@ -43,19 +33,19 @@ case), model name will be constructed from two parts separated by colon:
 | ------------- | --------------- | ------------- |
 | Authorization | Header for auth | token abc123  |
 
-### Response
+## Response
 
 Response is a JSON-encoded dict. If the request was successful, keys will be
 paths to files inside the repo, and values will be signed URLs you can query to
 actually download the model.
 
-### Example
+## Example
 
 First, you need your [DVC Studio client access token] with Model Registry scope.
 For this example, we set it in the `DVC_STUDIO_TOKEN` environment variable:
 
-```sh
-export DVC_STUDIO_TOKEN=<TOKEN>
+```cli
+$ export DVC_STUDIO_TOKEN=<TOKEN>
 ```
 
 <toggle>
@@ -87,7 +77,7 @@ for rel_path, obj_url in json.loads(response.content).items():
 
 <tab title="CLI">
 
-```sh
+```cli
 $ curl "https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0" --header "Authorization:token ${DVC_STUDIO_TOKEN}"
 
 {
@@ -103,10 +93,11 @@ Running this example will fail because it requires that you have [set up remote
 cloud credentials] in DVC Studio to where the model is stored.
 
 </admon>
+</toggle>
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [`dvc.yaml`]: /doc/user-guide/project-structure/dvcyaml-files
 [DVC Studio client access token]:
-  /doc/studio/user-guide/account-and-billing#client-access-tokens
+  /doc/studio/user-guide/account-management#client-access-tokens
 [set up remote cloud credentials]:
-  /doc/studio/user-guide/account-and-billing#cloud-credentials
+  /doc/studio/user-guide/account-management#cloud-credentials

@@ -18,13 +18,11 @@ To quickly start tracking your experiments with DVC Studio:
   $ pip install dvclive
   ```
 
-- Copy your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
-  with Experiment operations scope, and configure your model training
-  environment to use the token:
+- Set your
+  [DVC Studio client access token](/doc/studio/user-guide/account-management#client-access-tokens):
 
   ```cli
-  $ dvc config --global studio.token ***
+  $ dvc studio login
   ```
 
 - Use the DVCLive [`log_metric()`](/doc/dvclive/live/log_metric#livelog_metric)
@@ -75,13 +73,11 @@ To set up, run and track
 
   This will create a `dvc.yaml` file in the Git repository.
 
-- Copy your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens)
-  with Experiment operations scope, and
-  [configure your model training environment to use the token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token):
+- Set your
+  [DVC Studio client access token](/doc/studio/user-guide/account-management#client-access-tokens):
 
   ```cli
-  dvc config --global studio.token ***
+  dvc studio login
   ```
 
 - [Set up the DVC pipeline](/doc/start/experiments/experiment-pipelines#creating-the-experiment-pipeline)

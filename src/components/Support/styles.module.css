@@ -1,17 +1,12 @@
 .supportHero {
   padding-top: 50px;
-  padding-bottom: 50px;
   overflow: hidden;
 }
 
 .heading {
-  max-width: 610px;
-  margin: 0 auto;
+  max-width: 410px;
   font-family: var(--font-base);
-  font-size: 40px;
-  font-weight: 500;
-  line-height: 1.4;
-  text-align: center;
+  line-height: 1.2;
   color: var(--color-gray-hover);
 }
 

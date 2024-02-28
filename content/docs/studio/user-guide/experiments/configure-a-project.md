@@ -63,7 +63,7 @@ permissions on the cloud / remote storage. Refer to the [DVC Remote config
 parameters] for more details about this.
 
 Any credentials that you
-[add in your profile page](/doc/studio/user-guide/account-and-billing#cloud-credentials)
+[add in your profile page](/doc/studio/user-guide/account-management#cloud-credentials)
 are also available in your project settings page.
 
 Note that DVC Studio uses the credentials only to read plots/metrics files if

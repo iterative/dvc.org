@@ -117,6 +117,6 @@ directory.
 
 [rest api]: /doc/studio/rest-api
 [client access token]:
-  /doc/studio/user-guide/account-and-billing#client-access-tokens
+  /doc/studio/user-guide/account-management#client-access-tokens
 [remote storage credentials]:
   /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
