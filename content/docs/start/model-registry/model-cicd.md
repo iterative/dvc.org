@@ -33,9 +33,7 @@ DVC Studio will present you with several ways of downloading models - with the
 CLI, in Python code and directly from your web browser. You can see all the
 steps to download the model from the web browser here:
 
-<video width="99%" height="540" autoplay loop muted>
-    <source src="/img/mr-studio-download-model.webm" type="video/webm">
-</video>
+![Studio download model](https://static.iterative.ai/img/mr-studio-download-model.gif)
 
 And here's how to do it with the CLI:
 
