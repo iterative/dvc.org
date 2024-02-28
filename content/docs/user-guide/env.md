@@ -2,12 +2,12 @@
 
 List of environment variables to configure DVC behavior.
 
-- `DVC_EXP_AUTO_PUSH`: If `true`, automatically [push the experiments]
-  to the git remote `DVC_EXP_GIT_REMOTE`. Overrides `dvc config exp.auto_push`.
+- `DVC_EXP_AUTO_PUSH`: If `true`, automatically [push the experiments] to the
+  git remote `DVC_EXP_GIT_REMOTE`. Overrides `dvc config exp.auto_push`.
 - `DVC_EXP_BASELINE_REV`: Git revision for the baseline commit from which an
   <abbr>experiment</abbr> derives. Automatically set by DVC.
-- `DVC_EXP_GIT_REMOTE`: Git remote used to [push the experiments]. If not specified, push to `origin`.
-  Overrides `dvc config exp.git_remote`.
+- `DVC_EXP_GIT_REMOTE`: Git remote used to [push the experiments]. If not
+  specified, push to `origin`. Overrides `dvc config exp.git_remote`.
 - `DVC_EXP_NAME`: Name of the <abbr>experiment</abbr>. Automatically set by DVC.
 - `DVC_GLOBAL_CONFIG_DIR`: Directory in which DVC will look for global
   [configuration](/doc/user-guide/project-structure/configuration).
@@ -34,4 +34,5 @@ List of environment variables to configure DVC behavior.
 
 See also [DVCLive environment variables](/doc/dvclive/env).
 
-[push the experiments]: doc/user-guide/experiment-management/sharing-experiments#push-experiments
+[push the experiments]:
+  doc/user-guide/experiment-management/sharing-experiments#push-experiments

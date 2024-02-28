@@ -120,8 +120,8 @@ the flags to select a different set of experiments to push.
 
 ### Push experiments automatically
 
-To push the experiment automatically at the end of a `dvc exp run` or 
-`dvc exp save`  set the configuration option `exp.auto_push` to `true`:
+To push the experiment automatically at the end of a `dvc exp run` or
+`dvc exp save` set the configuration option `exp.auto_push` to `true`:
 
 ```cli
 $ dvc config exp.auto_push true
@@ -129,10 +129,11 @@ $ dvc config exp.auto_push true
 
 or use the [environment variable](/doc/user-guide/env) `DVC_EXP_AUTO_PUSH`.
 
-By default, the experiments will be pushed to the remote `origin`. To change
-the default value, set the configuration option `exp.git_remote` or the [environment variable](/doc/user-guide/env) `DVC_EXP_GIT_REMOTE`.
+By default, the experiments will be pushed to the remote `origin`. To change the
+default value, set the configuration option `exp.git_remote` or the
+[environment variable](/doc/user-guide/env) `DVC_EXP_GIT_REMOTE`.
 
-```cli
+````cli
 
 </details>
 
@@ -152,7 +153,7 @@ $ dvc exp list origin
 refs/tags/baseline-experiment:
     cnn-32
     cnn-64
-```
+````
 
 <details>
 
