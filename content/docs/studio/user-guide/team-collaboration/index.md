@@ -12,6 +12,7 @@ In this page, you will learn about:
 - [The privileges (access permissions) of different roles](#roles)
 - [How to manage the team and its projects](#manage-your-team-and-its-projects)
 - [How to manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers)
+- [How to configure Single Sign-on (SSO)](#configure-single-sign-on-sso)
 - [How to upgrade to an Enterprise plan](#get-enterprise)
 
 ## Create a team
@@ -149,6 +150,7 @@ are applicable to the team and are thus different from
 
 Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),
+[configure sso](#configure-single-sign-on-sso),
 [edit collaborators](#edit-collaborators).
 
 ### Manage connections to self-hosted GitLab servers
@@ -158,6 +160,24 @@ to the `GitLab connections` section of the team settings page to set up a
 connection to this server. Once you set up the connection, all your team members
 can connect to the Git repositories on this server. For more details, refer to
 [Custom GitLab Server Connection](/doc/studio/user-guide/git-integrations/custom-gitlab-server).
+
+### Configure Single Sign-on (SSO)
+
+Single Sign-on (SSO) allows your team members to authenticate to DVC Studio
+using your organization's identity Provider (IdP) such as Okta, LDAP, Microsoft
+AD, etc.
+
+Details on how to configure SSO for your team can be found
+[here](/doc/studio/user-guide/single-sign-on).
+
+Once the SSO configuration is complete, users can login to DVC Studio using
+their team's login page at
+`http://studio.iterative.ai/api/teams/<TEAM_NAME>/sso`. They can also login
+directly from their Okta dashboards by clicking on the DVC Studio integration
+icon.
+
+If a user does not have a pre-assigned role when they sign in to a team, they
+will be auto-assigned the [`Viewer` role](#roles).
 
 ### Edit collaborators
 
