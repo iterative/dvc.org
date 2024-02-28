@@ -20,7 +20,7 @@ To add a new project, follow these steps.
 
    If you do not see your desired organizations or Git repositories, make sure
    that
-   [the connection to your Git server has been set up](/doc/studio/user-guide/account-and-billing#git-connections).
+   [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-connections).
 
    To connect to your GitHub repositories, you must install the DVC Studio
    GitHub app. Refer to the section on
@@ -97,4 +97,4 @@ Each team will have its own projects dashboard, and the projects that you create
 in the team's dashboard will be accessible to all members of the team.
 
 To add more than 2 collaborators in your team,
-[upgrade to the **Basic** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+[upgrade to the **Enterprise** plan](/doc/studio/user-guide/team-collaboration#get-enterprise).

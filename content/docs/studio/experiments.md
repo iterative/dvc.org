@@ -15,7 +15,7 @@ experiments with DVC Studio:
   ```
 
 - Set your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens):
+  [DVC Studio client access token](/doc/studio/user-guide/account-management#client-access-tokens):
 
   ```cli
   $ dvc studio login

@@ -141,4 +141,4 @@ $ curl --location 'https://studio.iterative.ai/api/create-project' \
 </admon>
 
 [DVC Studio client access token]:
-  /doc/studio/user-guide/account-and-billing#client-access-tokens
+  /doc/studio/user-guide/account-management#client-access-tokens

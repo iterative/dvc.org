@@ -4,7 +4,7 @@ To download model binaries for models in the <abbr>model registry</abbr>, you
 can programmatically generate signed URLs using the DVC Studio
 `get-download-uris` API. This API requires the model to be stored with DVC with
 a S3, Azure, http or https [remote]. Note that you need to
-[set up remote cloud credentials](/doc/studio/user-guide/account-and-billing#cloud-credentials)
+[set up remote cloud credentials](/doc/studio/user-guide/account-management#cloud-credentials)
 for DVC Studio to have rights to the signed URLs. The signed URLs expire after
 one hour.
 
@@ -98,6 +98,6 @@ cloud credentials] in DVC Studio to where the model is stored.
 [remote]: /doc/user-guide/data-management/remote-storage
 [`dvc.yaml`]: /doc/user-guide/project-structure/dvcyaml-files
 [DVC Studio client access token]:
-  /doc/studio/user-guide/account-and-billing#client-access-tokens
+  /doc/studio/user-guide/account-management#client-access-tokens
 [set up remote cloud credentials]:
-  /doc/studio/user-guide/account-and-billing#cloud-credentials
+  /doc/studio/user-guide/account-management#cloud-credentials
