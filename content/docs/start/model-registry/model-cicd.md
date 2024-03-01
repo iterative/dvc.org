@@ -16,9 +16,8 @@ CICD model workflows.
 If you are using the example repository, the models are already versioned on a
 publicly readable DVC remote so you can access the model from there and use it.
 If you are instead using your own repository you need to set up your own DVC
-remote and push the data (including models) there. Have a look at our
-[Data Management guide](/doc/start/data-management/data-versioning#configuring-a-remote)
-to see how this is done.
+remote and push the data (including models) there. Have a look at
+[configuring a remote](/doc/start#configuring-a-remote) to see how this is done.
 
 ## Downloading models
 

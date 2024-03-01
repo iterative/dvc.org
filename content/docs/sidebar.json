@@ -40,10 +40,9 @@
     "source": "start/index.md",
     "children": [
       {
-        "slug": "data-management",
-        "source": "data-management/index.md",
+        "slug": "data-pipelines",
+        "source": "data-pipelines/index.md",
         "children": [
-          "data-versioning",
           "data-pipelines",
           {
             "label": "Metrics, Parameters, and Plots",
