@@ -351,15 +351,6 @@ alongside it.
 
 </admon>
 
-### Discovering and accessing data
-
-Your tracked data can be imported and fetched from anywhere using DVC. For
-example, you may want to download a specific version of an ML model to a
-deployment server or import a dataset into another project like we did at the
-[top of this chapter](/doc/start/data-management/data-versioning?tab=Mac-Linux#tracking-data).
-To learn about how DVC allows you to do this, see
-[Discovering and Accessing Data Guide](/doc/user-guide/data-management/discovering-and-accessing-data).
-
 ## Following This Guide
 
 To help you understand and use DVC better, consider the following three
@@ -380,14 +371,6 @@ Choose a trail to jump into its first chapter:
   your models in an auditable way. Easily access your models and integrate your
   model registry actions into CICD pipelines to follow GitOps best practices.
 
-[Data Pipelines]: /doc/start/data-management/data-versioning
+[Data Pipelines]: /doc/start/data-management/data-pipelines
 [Experiment Management]: /doc/start/experiments/experiment-tracking
 [Model Management]: /doc/start/model-management/model-registry
-
-<admon type="tip">
-
-Feel free to "choose your own adventure" and follow the chapters which answer
-your specific needs. In case you're unsure where to start, we recommend starting
-with **data pipelines**.
-
-</admon>
