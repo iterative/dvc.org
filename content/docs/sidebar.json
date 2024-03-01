@@ -67,16 +67,20 @@
         ]
       },
       {
-        "label": "Model Management",
-        "slug": "model-management",
-        "source": "model-management/index.md",
+        "label": "Model Registry",
+        "slug": "model-registry",
+        "source": "model-registry/index.md",
         "children": [
           {
-            "label": "Model registry",
-            "slug": "model-registry"
+            "label": "Add a model",
+            "slug": "add-model"
           },
           {
-            "label": "Using and deploying models",
+            "label": "Manage models",
+            "slug": "manage-models"
+          },
+          {
+            "label": "Use and deploy models",
             "slug": "model-cicd"
           }
         ]
@@ -715,6 +719,7 @@
           },
           {
             "slug": "model-registry",
+            "source": false,
             "children": [
               "add-a-model",
               "register-version",
@@ -724,18 +729,13 @@
               "remove-a-model-or-its-details"
             ]
           },
-          {
-            "slug": "team-collaboration",
-            "children": ["change-team-plan-and-size"]
-          },
-          {
-            "slug": "account-and-billing",
-            "children": ["billing-and-payment"]
-          },
+          "team-collaboration",
+          "account-management",
           {
             "slug": "git-connections",
             "children": ["github-app", "custom-gitlab-server"]
           },
+          "single-sign-on",
           "troubleshooting"
         ]
       },

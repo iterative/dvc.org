@@ -245,6 +245,5 @@ artifact using only a [Studio token], either in the UI or programmatically:
 [GTO]: /doc/gto
 [trigger]: /doc/studio/user-guide/model-registry/use-models
 [download or stream artifacts]: /doc/studio/user-guide/model-registry/use-models
-[cloud credentials]:
-  /doc/studio/user-guide/account-and-billing#cloud-credentials
-[Studio token]: /doc/studio/user-guide/account-and-billing#tokens
+[cloud credentials]: /doc/studio/user-guide/account-management#cloud-credentials
+[Studio token]: /doc/studio/user-guide/account-management#tokens

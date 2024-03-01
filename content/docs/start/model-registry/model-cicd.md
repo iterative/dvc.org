@@ -8,10 +8,10 @@ description:
 
 # Get Started: Using and Deploying Models
 
-In the [model registry chapter](/doc/start/model-management/model-registry) we
-registered the model in the model registry and assigned it to some lifecycle
-stages. In this chapter, we will learn how to access and use models and how to
-use the model registry to trigger automated CICD model workflows.
+In the previous two chapters we registered the model in the model registry and
+assigned it to some lifecycle stages. In this chapter, we will learn how to
+access and use models and how to use the model registry to trigger automated
+CICD model workflows.
 
 If you are using the example repository, the models are already versioned on a
 publicly readable DVC remote so you can access the model from there and use it.
@@ -32,14 +32,12 @@ DVC Studio will present you with several ways of downloading models - with the
 CLI, in Python code and directly from your web browser. You can see all the
 steps to download the model from the web browser here:
 
-<video width="99%" height="540" autoplay loop muted>
-    <source src="/img/mr-studio-download-model.webm" type="video/webm">
-</video>
+![Studio download model](https://static.iterative.ai/img/mr-studio-download-model.gif)
 
 And here's how to do it with the CLI:
 
 First, configure the
-[DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+[DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
 (this only needs to be done once):
 
 ```cli
@@ -68,7 +66,7 @@ Git and DVC remote credentials manually. You can see more details in the
 ## Connecting model registry actions to your CICD
 
 As we noted in the
-[model registry chapter](/doc/start/model-management/model-registry), all DVC
+[model management chapter](/doc/start/model-registry/manage-models), all DVC
 model registry actions are captured in your Git repository as Git tags with a
 specific format.
 
@@ -84,14 +82,14 @@ other CICD action.
 
 You can simply re-use the CICD template below and copy it into your projects.
 Then all you need to do is to save the
-[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
 as a
 [GitHub secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 (or a [GitLab CI variable](https://docs.gitlab.com/ee/ci/variables/)) to manage
 authentication with the
 [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
 This way we only need to keep the
-[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-and-billing#studio-access-token)
+[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
 saved on GitHub/GitLab and let DVC Studio manage the specific storage
 credentials for us.
 
