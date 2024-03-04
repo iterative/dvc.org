@@ -254,9 +254,8 @@ to, in commands like `import-db`.
 
 Sets the defaults for <abbr>experiment</abbr> configuration.
 
-- `exp.auto_push` - [push experiment] automatically
-  after `dvc exp run` and `dvc exp save`.
-  Accepts values `true` and `false` (default).
+- `exp.auto_push` - [push experiment] automatically after `dvc exp run` and
+  `dvc exp save`. Accepts values `true` and `false` (default).
 - `exp.git_remote` - Git remote to [push experiment] to. Defaults to `origin`.
 
 [push experiment]: /doc/user-guide/experiment-management/sharing-experiments
