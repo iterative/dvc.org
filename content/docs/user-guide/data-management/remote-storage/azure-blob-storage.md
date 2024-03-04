@@ -206,7 +206,7 @@ See `dvc remote modify` for more command usage details.
 - `url` - modify the remote location ([scroll up](#microsoft-azure-blob-storage)
   for details)
 
-- `timeout` - the server-side timeout. Defaults to 30 seconds. See  
+- `timeout` - the server-side timeout. Defaults to 30 seconds. See
   [docs](https://learn.microsoft.com/en-us/rest/api/storageservices/setting-timeouts-for-blob-service-operations)
 
 - `read_timeout` - the number of seconds the client will wait, between
