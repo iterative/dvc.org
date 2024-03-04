@@ -51,8 +51,8 @@ You may also need to customize authentication or other config with
 
 ```cli
 $ dvc remote modify --local \
-                    mybucket credentialpath ~/.aws/alt
-$ dvc remote modify mybucket connect_timeout 300
+                    myremote credentialpath ~/.aws/alt
+$ dvc remote modify myremote connect_timeout 300
 ```
 
 <admon type="warn">
@@ -70,14 +70,14 @@ to re-configure these values.
 
 ```ini
 # .dvc/config
-['remote "mybucket"']
+['remote "myremote"']
     url = s3://my-bucket
     connect_timeout = 300
 ```
 
 ```ini
 # .dvc/config.local
-['remote "mybucket"']
+['remote "myremote"']
     credentialpath = ~/.aws/alt
 ```
 
