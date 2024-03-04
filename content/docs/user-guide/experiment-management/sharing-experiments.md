@@ -133,8 +133,6 @@ By default, the experiments will be pushed to the remote `origin`. To change the
 default value, set the configuration option `exp.git_remote` or the
 [environment variable](/doc/user-guide/env) `DVC_EXP_GIT_REMOTE`.
 
-````cli
-
 </details>
 
 ## Find pushed experiments
@@ -153,7 +151,7 @@ $ dvc exp list origin
 refs/tags/baseline-experiment:
     cnn-32
     cnn-64
-````
+```
 
 <details>
 
