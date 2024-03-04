@@ -211,23 +211,25 @@ See `dvc remote modify` for more command usage details.
 
 - `read_timeout` - the number of seconds the client will wait, between
   consecutive read operations, for a response from the server while uploading or
-  downloading a file. Defaults to 60 seconds. See [Azure documentation]
+  downloading a file. Defaults to 60 seconds. See [Azure documentation].
 
 - `connection_timeout` - the number of seconds the client will wait to establish
   a connection to the server when uploading or downloading a file. Defaults to
-  20 seconds. See [Azure documentation]
+  20 seconds. See [Azure documentation].
 
 - `exclude_environment_credential` - If `true`, excludes the environment credential source for Azure Remote. 
-   See details [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python)
+   See [Azure credentials documentation]. Default is `false`.
 
 - `exclude_visual_studio_code_credential` - If `true`, excludes Visual Studio Code credential source for Azure Remote. 
-   See details [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python)
+   See [Azure credentials documentation]. Default is `false`.
 
 - `exclude_shared_token_cache_credential` - If `true`, excludes the shared token cache credential source for Azure Remote. 
-   See details [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python)
+   See [Azure credentials documentation]. Default is `false`.
 
 - `exclude_managed_identity_credential` - If `true`, excludes the managed identity credential source for Azure Remote. 
-   See details [here](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python)
+   See [Azure credentials documentation]. Default is `false`.
 
+[Azure credentials documentation]:
+  https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python
 [Azure documentation]:
   https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob#other-client--per-operation-configuration
