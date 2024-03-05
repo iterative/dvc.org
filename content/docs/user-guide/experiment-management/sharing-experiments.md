@@ -1,13 +1,7 @@
 # Sharing Experiments
 
-You can control exactly which information gets shared from your experiments:
-
-- keep it all local
-- automatically share experiments
-- granularly control what gets shared
-
-See the video below for how it all works using the [DVC Extension] for VS Code,
-or keep reading to go deeper.
+See the video below for how to share experiments using the [DVC Extension] for
+VS Code, or keep reading to go deeper.
 
 https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
 
@@ -26,10 +20,10 @@ To automatically share your experiments, run:
 $ dvc studio login
 ```
 
-Once configured, DVC Studio will:
+Once configured, DVC will:
 
 - send [live metrics and plots] to [DVC Studio]
-- push <abbr>experiment</abbr> code and metadata to your Git repo
+- push experiment code and metadata to your Git repo
 - push data, models, and other artifacts to your DVC [remote storage]
 
 Keep reading for how to granularly control what information gets shared and
@@ -37,11 +31,16 @@ when.
 
 ## Live metrics and plots
 
+<admon type="tip">
+
+`dvc studio login` will set your [access token] to automatically send live
+metrics and plots.
+
+</admon>
+
 You can send [live experiments] to [DVC Studio], which will show intermediate
 results for metrics and plots in any running experiments. To start sharing live
-metrics to [DVC Studio], set your
-[access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
-The simplest way to set the token is to run `dvc studio login`.
+metrics to [DVC Studio], set your [access token].
 
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):
@@ -61,6 +60,13 @@ experiments] for more information on how to setup, view, and compare.
 </details>
 
 ## Push experiments
+
+<admon type="tip">
+
+`dvc studio login` will configure DVC to
+[push experiments automatically](#push-experiments-automatically).
+
+</admon>
 
 <details>
 
@@ -139,6 +145,25 @@ flag to exclude sharing cached data.
 By default, `dvc exp push origin` will push all experiments derived from your
 current Git commit, but you may specify specific experiments as arguments or use
 the flags to select a different set of experiments to push.
+
+</details>
+
+<details>
+
+### Push experiments automatically
+
+To push the experiment automatically at the end of a `dvc exp run` or
+`dvc exp save` set the configuration option `exp.auto_push` to `true`:
+
+```cli
+$ dvc config exp.auto_push true
+```
+
+or use the [environment variable](/doc/user-guide/env) `DVC_EXP_AUTO_PUSH`.
+
+By default, the experiments will be pushed to the remote `origin`. To change the
+default value, set the configuration option `exp.git_remote` or the
+[environment variable](/doc/user-guide/env) `DVC_EXP_GIT_REMOTE`.
 
 </details>
 
@@ -264,3 +289,5 @@ Removed experiments: unwet-jinn
 [bring experiment results to your workspace]:
   /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 [remove]: #remove-pushed-experiments
+[access token]:
+  /doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token

@@ -11,7 +11,7 @@ own projects dashboard. All the projects that you create in the team's dashboard
 will be accessible to all members (collaborators) of the team.
 
 To add more than 2 collaborators in your team,
-[upgrade to the **Basic** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+[upgrade to the **Enterprise** plan](/doc/studio/user-guide/team-collaboration#get-enterprise).
 
 ## Make a project public
 

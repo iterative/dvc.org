@@ -17,12 +17,9 @@ settings:
 
 <admon>
 
-This does not include managing your team plan (Free, Basic, or Enterprise). Team
-plans are defined for each team separately. To manage them, go to the [team
-settings] page and scroll to the `Plan and billing` section. You can change
-plans there and increase or decrease the number of seats in it.
-
-[team settings]: /doc/studio/user-guide/team-collaboration/teams#settings
+This does not include managing your team plan (Free or Enterprise). Team plans
+are defined for each team separately.
+[Get Enterprise](/doc/studio/user-guide/team-collaboration#get-enterprise).
 
 </admon>
 
@@ -103,6 +100,8 @@ In this section, you can,
   GitHub app on additional organizations or repositories, or even remove the app
   from organizations or repositories where you no longer need it.
 
+[team settings]: /doc/studio/user-guide/team-collaboration/teams#settings
+
 ## Cloud credentials
 
 In this section, you can view, add and update credentials for cloud resources.
@@ -150,6 +149,8 @@ The available scopes are:
 - `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
 - `Model registry operations` - like downloading model using
   `dvc artifacts get`.
+- `Admin operations` - this scope is utilized for SCIM operations and the
+  creation of projects.
 
 [live experiments]:
   /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots

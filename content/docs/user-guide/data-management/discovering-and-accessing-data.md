@@ -142,7 +142,7 @@ path.
 
 <admon type="tip">
 
-The [DVC Studio model registry] was built for models but since DVC tracks all
+The [DVC Studio] model registry was built for models but since DVC tracks all
 kinds of files, it can be used just as easily for other artifact types. See our
 [tutorial] for how to manage artifacts using the registry.
 
@@ -152,11 +152,10 @@ Artifacts become more useful as part of the <abbr>model registry</abbr>, where
 semantic versions can be registered and lifecycle stages (think
 `dev`/`test`/`prod`) can be assigned using Git tags managed by [GTO](/doc/gto).
 These tags give you a full history of your model lifecycle in Git and enable you
-to trigger CICD workflows based on changes in the model registry. With
-[DVC Studio](https://studio.iterative.ai), you can see models and their metadata
-across all projects, and you can download artifacts by name, version, and
-lifecycle stage, without needing to configure access to the underlying Git
-repository or remote storage.
+to trigger CICD workflows based on changes in the model registry. With [DVC
+Studio], you can see models and their metadata across all projects, and you can
+download artifacts by name, version, and lifecycle stage, without needing to
+configure access to the underlying Git repository or remote storage.
 
-[DVC Studio model registry]: /doc/studio/model-registry
+[DVC Studio]: https://studio.iterative.ai
 [tutorial]: /doc/use-cases/data-registry/tutorial#sharing-and-managing-artifacts

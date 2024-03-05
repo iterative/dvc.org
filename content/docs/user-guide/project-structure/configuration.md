@@ -60,6 +60,7 @@ within:
   storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`db`](#db) - sections in the config file that describe [database connections]
+- [`exp`](#exp) - options around [experiments] configuration.
 - [`hydra`](#hydra) - options around [Hydra Composition] for experiment
   configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
@@ -77,6 +78,7 @@ within:
 [dictionary unpacking]:
   /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 [internals]: /doc/user-guide/project-structure/internal-files
+[dvc experiments]: /doc/user-guide/experiment-management
 
 <details>
 
@@ -243,6 +245,20 @@ to connect to the `dbname` database as a user `user` hosted at `host` url. The
 
 The name, `pgsql` for example, can be used to specify what database to connect
 to, in commands like `import-db`.
+
+</details>
+
+<details>
+
+## exp
+
+Sets the defaults for <abbr>experiment</abbr> configuration.
+
+- `exp.auto_push` - [push experiment] automatically after `dvc exp run` and
+  `dvc exp save`. Accepts values `true` and `false` (default).
+- `exp.git_remote` - Git remote to [push experiment] to. Defaults to `origin`.
+
+[push experiment]: /doc/user-guide/experiment-management/sharing-experiments
 
 </details>
 

@@ -19,7 +19,7 @@ To quickly start tracking your experiments with DVC Studio:
   ```
 
 - Set your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens):
+  [DVC Studio client access token](/doc/studio/user-guide/account-management#client-access-tokens):
 
   ```cli
   $ dvc studio login
@@ -74,7 +74,7 @@ To set up, run and track
   This will create a `dvc.yaml` file in the Git repository.
 
 - Set your
-  [DVC Studio client access token](/doc/studio/user-guide/account-and-billing#client-access-tokens):
+  [DVC Studio client access token](/doc/studio/user-guide/account-management#client-access-tokens):
 
   ```cli
   dvc studio login
