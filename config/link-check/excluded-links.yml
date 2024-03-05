@@ -10,3 +10,5 @@
 - 'http://localhost:8080'
 - 'https://studio.example.com'
 - 'https://twitter.com/DVCorg'
+- 'https://api.hsforms.com/submissions/v3/integration/submit/'
+- 'https://studio.iterative.ai/api/*'
