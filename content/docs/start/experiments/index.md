@@ -15,17 +15,12 @@ description:
   experiments. Manage changes to code, data, metrics, parameters and plots
   associated with each experiment without bloating your Git repo.
 
-- **[Collaborating on experiments]** - Manage experiments the same way
-  developers manage code. Share experiments with your team over git, create
-  branches and pull requests, and compare results.
-
 - **[Experimenting using pipelines]** - Leverage DVC data pipelines as an
   experiment management system. Split your workflow into stages, track
   dependencies and outputs, and natively inject parameters and hyper-parameters
   to experiment runs.
 
 [experiment tracking]: /doc/start/experiments/experiment-tracking
-[collaborating on experiments]: /doc/start/experiments/experiment-collaboration
 [experimenting using pipelines]: /doc/start/experiments/experiment-pipelines
 
 <admon type="tip">
