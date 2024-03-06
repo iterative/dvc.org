@@ -4,9 +4,9 @@ import { cn } from '../../../utils'
 
 const banner = {
   title:
-    'DataComp Challenge: Computer Vision Annotation & Preparation Using DVCx',
-  subtitle: 'Webinar | Wednesday, February 28th | 11 am ET',
-  link: 'https://www.linkedin.com/events/7164027647038009344/about/'
+    'Panel Discussion: Regulation and the need for Reproducibility and Standards in AI/ML',
+  subtitle: 'Webinar | Wednesday, March 13th | 11 am ET',
+  link: 'https://www.linkedin.com/events/regulationandtheneedforreproduc7170514648180482051/about/'
 }
 
 const Alert = () => (
