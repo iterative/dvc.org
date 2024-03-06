@@ -176,11 +176,10 @@ you should see something like this:
 
 ![Model history](/img/mr-model-history.png)
 
-As we noted
-[above](/doc/start/model-registry/model-registry#under-the-hood-model-registry),
-DVC uses special Git tags to keep track of model registry actions, so all of
-this history is actually stored directly in your Git repository. DVC Studio can
-parse these tags and show them to us in a user-friendly way.
+As we noted [above](#under-the-hood-model-registry), DVC uses special Git tags
+to keep track of model registry actions, so all of this history is actually
+stored directly in your Git repository. DVC Studio can parse these tags and show
+them to us in a user-friendly way.
 
 If you look at the
 [tags in our example repository](https://github.com/iterative/example-get-started-experiments/tags),

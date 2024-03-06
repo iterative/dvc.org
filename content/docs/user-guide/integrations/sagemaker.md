@@ -194,7 +194,7 @@ For a full example of how to deploy with SageMaker, see our [blog post].
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py
 [training script]:
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py
-[start using the model registry]: /doc/start/model-registry/model-registry
+[start using the model registry]: /doc/start/model-registry
 [deploy models with ci/cd]: /doc/start/model-registry/model-cicd
 [triggering sagemaker deployment]:
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml

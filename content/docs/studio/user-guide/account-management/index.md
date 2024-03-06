@@ -153,7 +153,7 @@ The available scopes are:
   creation of projects.
 
 [live experiments]:
-  /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
-[pushed experiments]: /docs/user-guide/experiment-management/sharing-experiment
+  /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
+[pushed experiments]: /doc/start/experiments/experiment-collaboration#sharing
 [dvc]: /doc
 [dvclive]: /doc/dvclive
