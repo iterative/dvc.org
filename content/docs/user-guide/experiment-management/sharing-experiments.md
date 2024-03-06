@@ -1,21 +1,46 @@
 # Sharing Experiments
 
-You can send [live metrics and plots] to [DVC Studio], [push] entire completed
-<abbr>experiments</abbr> (including data, models, and code), and convert an
-experiment into a [persistent] branch or commit in your Git repo.
-
-See the video below for how it all works using the [DVC Extension] for VS Code,
-or keep reading to go deeper.
+See the video below for how to share experiments using the [DVC Extension] for
+VS Code, or keep reading to go deeper.
 
 https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
 
+## Share automatically
+
+By default, your experiments are stored only where they were run. To
+automatically share all experiment info, you will need a:
+
+- Git remote (for example, GitHub)
+- DVC [remote storage] for any large artifacts you want DVC to track
+- [DVC Studio] project [connected to that Git remote]
+
+To automatically share your experiments, run:
+
+```dvc
+$ dvc studio login
+```
+
+Once configured, DVC will:
+
+- send [live metrics and plots] to [DVC Studio]
+- push experiment code and metadata to your Git repo
+- push data, models, and other artifacts to your DVC [remote storage]
+
+Keep reading for how to granularly control what information gets shared and
+when.
+
 ## Live metrics and plots
+
+<admon type="tip">
+
+`dvc studio login` will set your [access token] to automatically send live
+metrics and plots.
+
+</admon>
 
 You can send [live experiments] to [DVC Studio], which will show intermediate
 results for metrics and plots in any running experiments. To start sharing live
-metrics to [DVC Studio], set your
-[access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
-The simplest way to set the token is to run `dvc studio login`.
+metrics to [DVC Studio], set your [access token].
 
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):
@@ -35,6 +60,13 @@ experiments] for more information on how to setup, view, and compare.
 </details>
 
 ## Push experiments
+
+<admon type="tip">
+
+`dvc studio login` will configure DVC to
+[push experiments automatically](#push-experiments-automatically).
+
+</admon>
 
 <details>
 
@@ -257,3 +289,7 @@ Removed experiments: unwet-jinn
 [bring experiment results to your workspace]:
   /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 [remove]: #remove-pushed-experiments
+[access token]:
+  /doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token
+[connected to that Git remote]:
+  /doc/studio/user-guide/experiments/create-a-project

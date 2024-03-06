@@ -20,7 +20,7 @@ artifacts that result from your experiments, along with fragile links to code
 revisions. DVC's approach guarantees reproducibility by working on top of Git
 instead, and not as a separate system.
 
-[experiment management]: /doc/user-guide/experiment-management
+[experiment management]: /doc/start/experiments
 [codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
 [versioning everything]: /doc/use-cases/versioning-data-and-models
 

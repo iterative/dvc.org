@@ -57,10 +57,6 @@
         "children": [
           "experiment-tracking",
           {
-            "label": "Collaborating on Experiments",
-            "slug": "experiment-collaboration"
-          },
-          {
             "label": "Experimenting Using Pipelines",
             "slug": "experiment-pipelines"
           }
@@ -699,14 +695,13 @@
     "slug": "studio",
     "icon": "studio",
     "children": [
-      "experiments",
-      "model-registry",
       {
         "slug": "user-guide",
         "source": false,
         "children": [
           {
             "slug": "experiments",
+            "source": false,
             "children": [
               "create-a-project",
               "configure-a-project",

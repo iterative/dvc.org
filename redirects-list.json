@@ -47,6 +47,7 @@
   "^/doc/start/data-and-model-access(/.*)?$                                               /doc/user-guide/data-management/discovering-and-accessing-data 302",
   "^/doc/start/metrics-parameters-plots(/.*)?$                                            /doc/start/data-pipelines/metrics-parameters-plots 302",
   "^/doc/start/experiment-management(/.*)?$                                               /doc/start/experiments",
+  "^/doc/start/experiments/experiment-collaboration(/.*)?$                                /doc/start/experiments/experiment-tracking",
   "^/doc/start/data-management$                                                           /doc/start",
   "^/doc/start/data-management/data-versioning(/.*)?$                                     /doc/start",
   "^/doc/start/data-management/data-pipelines(/.*)?$                                      /doc/start/data-pipelines/data-pipelines",
@@ -132,7 +133,8 @@
 
   "^/doc/studio/user-guide/git-integrations(/.*)?$                                        /doc/studio/user-guide/git-connections$1",
 
-  "^/doc/studio/get-started$                                                              /doc/studio/experiments",
+  "^/doc/studio/get-started$                                                              /doc/studio",
+  "^/doc/studio/experiments$                                                              /doc/studio/user-guide/experiments/create-a-project",
   "^/doc/studio/model-registry$                                                           /doc/studio/user-guide/model-registry/add-a-model",
   "^/doc/studio/user-guide/projects-and-experiments/what-is-a-project$                    /doc/studio/user-guide/experiments",
   "^/doc/studio/user-guide/projects-and-experiments(/.*)?$                                /doc/studio/user-guide/experiments$1",

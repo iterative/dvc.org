@@ -10,10 +10,9 @@ description:
 Tools like [Jupyter Notebooks](https://jupyter.org/) are useful for rapid
 prototyping, but it's hard to keep track of changes and reproduce experiments.
 You can start using DVC to version your experiments without leaving your Jupyter
-Notebook. There are no logins, servers, databases, or UI to spin up. Every
-<abbr>DVC experiment</abbr> will be versioned **without cluttering your repo**,
-unlike saving each run to a separate directory or creating a Git branch for
-each.
+Notebook. Every <abbr>DVC experiment</abbr> will be versioned **without
+cluttering your repo**, unlike saving each run to a separate directory or
+creating a Git branch for each.
 
 ## Running
 
@@ -125,6 +124,34 @@ Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
 
 </admon>
 
+## Sharing
+
+You can start tracking experiments on your local machine, but often you will
+want to share results with others or back them up. Optionally follow this
+section to share, or skip to the next section if you want to start locally.
+
+DVC tracks the code and metadata for each experiment in Git. If you have a Git
+remote (for example, GitHub) where you `git push`, go to
+[DVC Studio](https://studio.iterative.ai), configure your Git provider, and
+[add your Git repository as a project](/doc/studio/user-guide/experiments/create-a-project).
+
+Next, you can login to Studio from the command line:
+
+```dvc
+$ dvc studio login
+```
+
+Once configured, DVC Studio will provide realtime updates for all running
+experiments. Experiment results will also be pushed to your Git and DVC remotes
+so anyone can recover the entire state of your experiment.
+
+<admon type="info">
+
+Learn more about
+[how experiment sharing works](/doc/user-guide/experiment-management/sharing-experiments).
+
+</admon>
+
 ## Tracking
 
 By following the steps above, you enable different options to monitor the
@@ -157,10 +184,8 @@ will also display all the data logged by DVCLive:
 
 <tab title="DVC Studio">
 
-If you want to share live updates with others or monitor while away from your
-machine, follow the instructions in
-[DVC Studio Live Experiments](/doc/studio/user-guide/experiments/live-metrics-and-plots)
-to display updates in the Studio web interface:
+If you followed the instructions above in [Sharing](#sharing), you will see
+updates in the DVC Studio web interface:
 
 ![DVC Studio Report](/img/dvclive-studio.gif)
 
@@ -216,7 +241,7 @@ views.
 
 <tab title="DVC Studio">
 
-Once you have [shared] the results to [DVC Studio], you can
+If you followed the instructions above in [Sharing](#sharing), you can
 [compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
