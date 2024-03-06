@@ -17,15 +17,9 @@ const services = [
     icon: BrainIcon,
     title: 'MLOps and DVC experts',
     points: [
-      <>
-        5+ years <span>experience</span>.
-      </>,
-      <>
-        Strong MLOps <span>technical</span> background.
-      </>,
-      <>
-        <span>Hands on</span> implementation and development.
-      </>
+      '5+ years experience.',
+      'Strong MLOps technical background.',
+      'Hands on implementation and development.'
     ]
   },
 
@@ -33,48 +27,26 @@ const services = [
     icon: RouteIcon,
     title: 'Coverage for all MLOps operations',
     points: [
-      <>
-        <span>End to end solution: </span>
-        Data version control, project architecture, data pipelines, and data
-        curation
-      </>,
-      <>
-        By removing your teams from toil-laden work, you{' '}
-        <span>accelerate model development</span> and{' '}
-        <span>project delivery</span>.
-      </>
+      'End to end solution: Data version control, project architecture, data pipelines, and data curation',
+      'By removing your teams from toil-laden work, you accelerate model development and project delivery.'
     ]
   },
   {
     icon: NotebookPenIcon,
     title: 'Project planning and execution',
     points: [
-      <>
-        Assist with <span>design</span> and <span>architecture</span>.
-      </>,
-      <>
-        Help align projects to <span>platform capabilities</span>.
-      </>,
-      <>
-        {' '}
-        Provide inputs to <span>project timelines</span> and{' '}
-        <span>resource needs</span>.
-      </>
+      'Assist with design and architecture.',
+      'Help align projects to platform capabilities.',
+      ' Provide inputs to project timelines and resource needs.'
     ]
   },
   {
     icon: TargetIcon,
     title: 'Best practices and standards',
     points: [
-      <>
-        <span>Architect</span> solutions for scalability.
-      </>,
-      <>
-        <span>Develop</span> common standards and frameworks.
-      </>,
-      <>
-        <span>Assist</span> with prototype development.
-      </>
+      'Architect solutions for scalability.',
+      'Develop common standards and frameworks.',
+      'Assist with prototype development.'
     ]
   }
 ]
@@ -83,15 +55,6 @@ const colors = ['text-purple', 'text-blue', 'text-orange']
 
 const getAccentColor = (index: number) => {
   return colors[index % colors.length]
-}
-
-const getSpanAccentColor = (index: number) => {
-  const spanColors = [
-    '[&>span:nth-child(3n-2)]:text-purple [&>span:nth-child(3n-1)]:text-blue [&>span:nth-child(3n)]:text-orange',
-    '[&>span:nth-child(3n-2)]:text-blue [&>span:nth-child(3n-1)]:text-orange [&>span:nth-child(3n)]:text-purple',
-    '[&>span:nth-child(3n-2)]:text-orange [&>span:nth-child(3n-1)]:text-purple [&>span:nth-child(3n)]:text-blue'
-  ]
-  return spanColors[index % colors.length]
 }
 
 const SupportPage: React.FC = () => {
@@ -107,13 +70,21 @@ const SupportPage: React.FC = () => {
               'font-extrabold text-5xl text-center'
             )}
           >
-            Platinum Services for ML Operations
+            <img
+              aria-hidden
+              className="inline-block h-32"
+              src="/img/support/DVC Platinum Services.svg"
+              alt="DVC Platinum Services "
+            />{' '}
+            <span className="sr-only">DVC Platinum Services </span>
+            <span className="inline-block">for ML Operations</span>
           </h1>
+
           <p
             className={cn(
               'text-center',
               'text-xl',
-              'mt-5',
+              'mt-6',
               'mx-auto',
               'max-w-2xl',
               'text-gray-500'
@@ -190,9 +161,7 @@ const SupportPage: React.FC = () => {
                 </h3>
                 <ul className="mt-4 list-disc list-inside text-lg text-gray-600">
                   {service.points.map((point, index) => (
-                    <li key={index} className={cn(getSpanAccentColor(index))}>
-                      {point}
-                    </li>
+                    <li key={index}>{point}</li>
                   ))}
                 </ul>
               </div>
