@@ -4,7 +4,7 @@
 Machine Learning teams to seamlessly
 
 - [Run and track experiments](/doc/use-cases/experiment-tracking)
-- [Manage model lifecycle](/doc/studio/use-cases/model-registry)
+- [Manage model lifecycle](/doc/use-cases/model-registry)
 - [Collaborate on Machine Learning projects](/doc/studio/user-guide/team-collaboration)
 
 It works on top of [DVC](https://dvc.org/) and [Git](https://git-scm.com/),
