@@ -132,8 +132,8 @@ section to share, or skip to the next section if you want to start locally.
 
 DVC tracks the code and metadata for each experiment in Git. If you have a Git
 remote (for example, GitHub) where you `git push`, go to
-[DVC Studio](https://studio.iterative.ai), configure your Git provider, and add
-your Git repository as a project.
+[DVC Studio](https://studio.iterative.ai), configure your Git provider, and
+[add your Git repository as a project](/doc/studio/user-guide/experiments/create-a-project).
 
 Next, you can login to Studio from the command line:
 
@@ -241,7 +241,7 @@ views.
 
 <tab title="DVC Studio">
 
-Once you have [shared] the results to [DVC Studio], you can
+If you followed the instructions above in [Sharing](#sharing), you can
 [compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
