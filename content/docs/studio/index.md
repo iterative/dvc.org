@@ -3,8 +3,8 @@
 [DVC Studio](https://studio.iterative.ai/) is a web application that enables
 Machine Learning teams to seamlessly
 
-- [Run and track experiments](/doc/studio/experiments)
-- [Manage model lifecycle](/doc/studio/user-guide/model-registry)
+- [Run and track experiments](/doc/use-cases/experiment-tracking)
+- [Manage model lifecycle](/doc/use-cases/model-registry)
 - [Collaborate on Machine Learning projects](/doc/studio/user-guide/team-collaboration)
 
 It works on top of [DVC](https://dvc.org/) and [Git](https://git-scm.com/),
