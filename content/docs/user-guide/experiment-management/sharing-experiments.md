@@ -11,8 +11,8 @@ By default, your experiments are stored only where they were run. To
 automatically share all experiment info, you will need a:
 
 - Git remote (for example, GitHub)
-- [DVC Studio] project connected to that Git remote
 - DVC [remote storage] for any large artifacts you want DVC to track
+- [DVC Studio] project [connected to that Git remote]
 
 To automatically share your experiments, run:
 
@@ -291,3 +291,5 @@ Removed experiments: unwet-jinn
 [remove]: #remove-pushed-experiments
 [access token]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token
+[connected to that Git remote]:
+  /doc/studio/user-guide/experiments/create-a-project
