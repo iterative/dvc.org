@@ -373,4 +373,4 @@ Choose a trail to jump into its first chapter:
 
 [Data Pipelines]: /doc/start/data-management/data-pipelines
 [Experiment Management]: /doc/start/experiments/experiment-tracking
-[Model Registry]: /doc/start/model-registry/model-registry
+[Model Registry]: /doc/start/model-registry
