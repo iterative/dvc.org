@@ -6,7 +6,6 @@
 .heading {
   max-width: 410px;
   font-family: var(--font-base);
-  line-height: 1.2;
   color: var(--color-gray-hover);
 }
 

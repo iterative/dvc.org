@@ -78,15 +78,5 @@ export const checkErrors = (
     newErrors.teamSize = ''
   }
 
-  if (!values.message) {
-    newErrors.message = 'Message is required'
-    hasError = true
-  } else if (values.message.length < 10) {
-    newErrors.message = 'Message is too short'
-    hasError = true
-  } else {
-    newErrors.message = ''
-  }
-
   return { hasError, newErrors }
 }

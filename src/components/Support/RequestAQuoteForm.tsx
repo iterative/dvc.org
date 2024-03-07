@@ -260,9 +260,7 @@ const RequestAQuoteForm = ({
         <ErrorMessage name="teamSize" errors={errors} />
       </div>
       <div>
-        <Label htmlFor="message">
-          How we can help? <RequiredField />
-        </Label>
+        <Label htmlFor="message">How we can help?</Label>
         <Textarea
           name="message"
           id="message"
