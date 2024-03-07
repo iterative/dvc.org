@@ -130,12 +130,12 @@ SageMaker jobs run outside of your Git repository, so experiment metrics and
 plots will not be automatically tracked in the repository. However, you can see
 [live experiment updates] in [DVC Studio].
 
-First, set the `DVC_STUDIO_TOKEN` and `DVC_STUDIO_REPO_URL` environment
+First, set the `DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` environment
 variables.
 
 ```cli
 $ export DVC_STUDIO_TOKEN="<token>"
-$ export DVC_STUDIO_REPO_URL="https://github.com/<org>/<repo>"
+$ export DVC_EXP_GIT_REMOTE="https://github.com/<org>/<repo>"
 ```
 
 <admon type="tip">

@@ -46,11 +46,11 @@ steps:
 If the code is running outside of your Git repository (for example, in
 [Databricks] or [SageMaker jobs]), you lose the benefit of automatically
 tracking metrics and plots with Git, but you can send live updates to Studio if
-you set the `DVC_STUDIO_TOKEN` and `DVC_STUDIO_REPO_URL` environment variables:
+you set the `DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` environment variables:
 
 ```cli
 $ export DVC_STUDIO_TOKEN="<token>"
-$ export DVC_STUDIO_REPO_URL="https://github.com/<org>/<repo>"
+$ export DVC_EXP_GIT_REMOTE="https://github.com/<org>/<repo>"
 ```
 
 </admon>
