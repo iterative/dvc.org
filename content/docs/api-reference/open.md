@@ -7,9 +7,10 @@ def open(path: str,
          repo: str = None,
          rev: str = None,
          remote: str = None,
+         remote_config: dict = None,
+         config: dict = None,
          mode: str = "r",
-         encoding: str = None,
-         config: dict = None)
+         encoding: str = None)
 ```
 
 ## Usage
@@ -78,16 +79,19 @@ call – no _context manager_ involved. Neither function utilizes disc space.
   The [default remote] of `repo` is used if a `remote` argument is not given.
   For local projects, the <abbr>cache</abbr> is tried before the default remote.
 
+- `remote_config` - Dictionary of options to pass to the DVC remote. This can be
+  used to, for example, provide credentials to the `remote`.
+
+- `config` - [config] dictionary to pass to the DVC project. This is merged with
+  the existing project config and can be used to, for example, add an entirely
+  new `remote`.
+
 - `mode` - specifies the mode in which the file is opened. Defaults to `"r"`
   (read). Mirrors the namesake parameter in builtin [`open()`].
 
 - `encoding` - [codec] used to decode the file contents to a string. This should
   only be used in text mode. Defaults to `"utf-8"`. Mirrors the namesake
   parameter in builtin `open()`.
-
-- `config` - [config] dictionary to pass to the DVC project. This is merged with
-  the existing project config and can be used to, for example, provide
-  credentials to the `remote`.
 
 [revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
@@ -195,18 +199,7 @@ with dvc.api.open('activity.log', remote='my-s3-bucket') as f:
         # ... Process users activity log
 ```
 
-## Example: Specify the text encoding
-
-To chose which codec to open a text file with, send an `encoding` argument:
-
-```py
-import dvc.api
-
-with dvc.api.open('data/nlp/words_ru.txt', encoding='koi8_r') as f:
-    # ... Process Russian words
-```
-
-## Example: Specify credentials for specific remote
+## Example: Specify credentials for remote
 
 See [remote modify](/doc/command-reference/remote/modify) for full list of
 remote-specific config options.
@@ -214,17 +207,13 @@ remote-specific config options.
 ```py
 import dvc.api
 
-config = {
-    'remote': {
-        'myremote': {
-            'access_key_id': 'mykey',
-            'secret_access_key': 'mysecretkey',
-            'session_token': 'mytoken',
-        },
-    },
+remote_config = {
+    'access_key_id': 'mykey',
+    'secret_access_key': 'mysecretkey',
+    'session_token': 'mytoken',
 }
 
-with dvc.api.open('data', config=config) as f:
+with dvc.api.open('data', remote_config=remote_config) as f:
     # ... Process data
 ```
 
@@ -249,4 +238,15 @@ config = {
 
 with dvc.api.open('data', config=config) as f:
     # ... Process data
+```
+
+## Example: Specify the text encoding
+
+To chose which codec to open a text file with, send an `encoding` argument:
+
+```py
+import dvc.api
+
+with dvc.api.open('data/nlp/words_ru.txt', encoding='koi8_r') as f:
+    # ... Process Russian words
 ```
