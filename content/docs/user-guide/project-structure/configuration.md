@@ -256,9 +256,13 @@ Sets the defaults for <abbr>experiment</abbr> configuration.
 
 - `exp.auto_push` - [push experiment] automatically after `dvc exp run` and
   `dvc exp save`. Accepts values `true` and `false` (default).
-- `exp.git_remote` - Git remote to [push experiment] to. Defaults to `origin`.
+- `exp.git_remote` - Git remote name or URL used to [push experiment] and [send
+  live metrics and plots] to [DVC Studio]. Defaults to `origin`.
 
 [push experiment]: /doc/user-guide/experiment-management/sharing-experiments
+[send live metrics and plots]:
+  /doc/studio/user-guide/experiments/live-metrics-and-plots
+[dvc studio]: https://studio.iterative.ai
 
 </details>
 
@@ -432,15 +436,9 @@ have no effect.
   variable, which will override any value in `studio.url`. If not set,
   `https://studio.iterative.ai` is used.
 
-- `studio.repo_url` - URL of Git remote associated with the DVC Studio project.
-  This can also be specified through `DVC_STUDIO_REPO_URL` environment variable,
-  which will override any value in `studio.repo_url`. If not set, the URL is set
-  to the [upstream remote] or, failing that, the `origin` remote.
-
 [live experiments]:
   /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [pushed experiments]: /docs/user-guide/experiment-management/sharing-experiments
-[upstream remote]: https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches
 
 </details>
 
