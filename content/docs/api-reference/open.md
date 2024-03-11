@@ -79,7 +79,7 @@ call – no _context manager_ involved. Neither function utilizes disc space.
   The [default remote] of `repo` is used if a `remote` argument is not given.
   For local projects, the <abbr>cache</abbr> is tried before the default remote.
 
-- `remote_config` - Dictionary of options to pass to the DVC remote. This can be
+- `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.
 
 - `config` - [config] dictionary to pass to the DVC project. This is merged with
