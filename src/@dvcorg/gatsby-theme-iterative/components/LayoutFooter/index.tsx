@@ -142,7 +142,7 @@ const footerSocialIconsData: Array<ISocialIcon> = [
   {
     site: 'linkedinNoBg',
     label: 'Iterative LinkedIn',
-    url: 'https://www.linkedin.com/company/iterative-ai'
+    url: 'https://www.linkedin.com/company/dvc-ai'
   },
   {
     site: 'discord',
