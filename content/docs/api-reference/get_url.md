@@ -7,8 +7,12 @@ Returns the URL to the storage location of a data file or directory tracked in a
 def get_url(path: str,
             repo: str = None,
             rev: str = None,
-            remote: str = None) -> str
+            remote: str = None,
+            remote_config: dict = None,
+            config: dict = None) -> str
 ```
+
+See `dvc.api.open()` for examples of how to use these arguments.
 
 ## Usage
 
@@ -82,6 +86,13 @@ appropriate library, such as [`boto3`] or [`paramiko`].
 - `remote` - name of the [DVC remote] to use to form the returned URL string.
   _Default_: The [default remote](/doc/command-reference/remote/default) of
   `repo` is used.
+
+- `remote_config` - Dictionary of options to pass to the DVC remote. This can be
+  used to, for example, provide credentials to the `remote`.
+
+- `config` - [config] dictionary to pass to the DVC project. This is merged with
+  the existing project config and can be used to, for example, add an entirely
+  new `remote`.
 
 [experiment name]: /doc/command-reference/exp/run#-n
 

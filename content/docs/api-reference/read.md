@@ -13,9 +13,10 @@ def read(path: str,
          repo: str = None,
          rev: str = None,
          remote: str = None,
+         remote_config: dict = None,
+         config: dict = None,
          mode: str = "r",
-         encoding: str = None,
-         config: dict = None)
+         encoding: str = None)
 ```
 
 ## Usage
@@ -69,17 +70,24 @@ Python's [`open()`] built-in, which is used under the hood.
   The [default remote] of `repo` is used if a `remote` argument is not given.
   For local projects, the <abbr>cache</abbr> is tried before the default remote.
 
+- `config` - [config] dictionary to pass to the DVC project. This is merged with
+  the existing project config and can be used to, for example, provide
+  credentials to the `remote`. See [dvc.api.open](/doc/api-reference/open) for
+  examples.
+
+- `remote_config` - Dictionary of options to pass to the DVC remote. This can be
+  used to, for example, provide credentials to the `remote`.
+
+- `config` - [config] dictionary to pass to the DVC project. This is merged with
+  the existing project config and can be used to, for example, add an entirely
+  new `remote`.
+
 - `mode` - specifies the mode in which the file is opened. Defaults to `"r"`
   (read). Mirrors the namesake parameter in builtin [`open()`].
 
 - `encoding` - [codec] used to decode the file contents to a string. This should
   only be used in text mode. Defaults to `"utf-8"`. Mirrors the namesake
   parameter in builtin `open()`.
-
-- `config` - [config] dictionary to pass to the DVC project. This is merged with
-  the existing project config and can be used to, for example, provide
-  credentials to the `remote`. See [dvc.api.open](/doc/api-reference/open) for
-  examples.
 
 [revision]: https://git-scm.com/docs/revisions
 [experiment name]: /doc/command-reference/exp/run#-n
