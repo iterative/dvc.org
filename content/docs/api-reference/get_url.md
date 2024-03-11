@@ -87,7 +87,7 @@ appropriate library, such as [`boto3`] or [`paramiko`].
   _Default_: The [default remote](/doc/command-reference/remote/default) of
   `repo` is used.
 
-- `remote_config` - Dictionary of options to pass to the DVC remote. This can be
+- `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.
 
 - `config` - [config] dictionary to pass to the DVC project. This is merged with

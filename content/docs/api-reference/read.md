@@ -70,12 +70,7 @@ Python's [`open()`] built-in, which is used under the hood.
   The [default remote] of `repo` is used if a `remote` argument is not given.
   For local projects, the <abbr>cache</abbr> is tried before the default remote.
 
-- `config` - [config] dictionary to pass to the DVC project. This is merged with
-  the existing project config and can be used to, for example, provide
-  credentials to the `remote`. See [dvc.api.open](/doc/api-reference/open) for
-  examples.
-
-- `remote_config` - Dictionary of options to pass to the DVC remote. This can be
+- `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.
 
 - `config` - [config] dictionary to pass to the DVC project. This is merged with
