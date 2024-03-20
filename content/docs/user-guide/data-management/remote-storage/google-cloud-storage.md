@@ -36,25 +36,6 @@ service account or other ways to authenticate ([more info]).
 To use [custom auth](#custom-authentication) or further configure your DVC
 remote, set any supported config param with `dvc remote modify`.
 
-## Cloud versioning
-
-<admon type="info">
-
-Requires [Object versioning] enabled on the bucket.
-
-</admon>
-
-```cli
-$ dvc remote modify myremote version_aware true
-```
-
-`version_aware` (`true` or `false`) enables [cloud versioning] features for this
-remote. This lets you explore the bucket files under the same structure you see
-in your project directory locally.
-
-[object versioning]: https://cloud.google.com/storage/docs/object-versioning
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-
 ## Custom authentication
 
 For [service accounts] (a Google account associated to your GCP project instead

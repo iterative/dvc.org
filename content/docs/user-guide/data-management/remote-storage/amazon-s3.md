@@ -36,28 +36,6 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 To use [custom auth](#custom-authentication) or further configure your DVC
 remote, set any supported config param with `dvc remote modify`.
 
-## Cloud versioning
-
-<admon type="info">
-
-Requires [S3 Versioning] enabled on the bucket and the following AWS user
-permissions: `s3:ListBucketVersions`, `s3:GetObjectVersion`,
-`s3:DeleteObjectVersion`.
-
-</admon>
-
-```cli
-$ dvc remote modify myremote version_aware true
-```
-
-`version_aware` (`true` or `false`) enables [cloud versioning] features for this
-remote. This lets you explore the bucket files under the same structure you see
-in your project directory locally.
-
-[s3 versioning]:
-  https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-
 ## Custom authentication
 
 Use these configuration options if you don't have the AWS CLI setup in your
