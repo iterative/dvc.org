@@ -30,6 +30,8 @@ List of environment variables to configure DVC behavior.
   Studio instance). Overrides `dvc config studio.url`.
 - `DVC_SYSTEM_CONFIG_DIR`: Directory in which DVC will look for system
   [configuration](/doc/user-guide/project-structure/configuration).
+- `DVC_STAGE`: Contains the stage name for the current DVC stage. Automatically
+  set by DVC.
 
 See also [DVCLive environment variables](/doc/dvclive/env).
 
