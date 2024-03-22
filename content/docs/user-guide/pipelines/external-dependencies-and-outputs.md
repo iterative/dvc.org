@@ -188,9 +188,6 @@ change, but not saved in the <abbr>cache</abbr> for
 
 Saving external outputs to an external cache has been deprecated in DVC 3.0.
 
-Stay tuned as we work on versioning external outputs using
-[cloud versioning](/doc/user-guide/data-management/cloud-versioning).
-
 </admon>
 
 To define files or directories in an external location as <stage> outputs, give

@@ -24,26 +24,6 @@ $ dvc remote add -d myremote azure://<mycontainer>/<path>
 To set up authentication or other configuration, set any supported config param
 with `dvc remote modify`.
 
-## Cloud versioning
-
-<admon type="info">
-
-Requires [Blob versioning] enabled on the storage account and container.
-
-</admon>
-
-```cli
-$ dvc remote modify myremote version_aware true
-```
-
-`version_aware` (`true` or `false`) enables [cloud versioning] features for this
-remote. This lets you explore the bucket files under the same structure you see
-in your project directory locally.
-
-[blob versioning]:
-  https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
-[cloud versioning]: /docs/user-guide/data-management/cloud-versioning
-
 ## Authentication
 
 <admon type="info">
