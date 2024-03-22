@@ -12,7 +12,6 @@ const Home: React.FC = () => {
   return (
     <>
       <WhatsNewModal />
-      <Alert />
       <Hero />
       <CompanySlider />
       <SubscribeSection />
