@@ -65,7 +65,7 @@
     "isomorphic-fetch": "3.0.0",
     "lucide-react": "0.334.0",
     "moment": "2.29.4",
-    "nanoid": "4.0.2",
+    "nanoid": "5.0.6",
     "promise-polyfill": "8.3.0",
     "prop-types": "15.8.1",
     "raf-polyfill": "1.0.0",
