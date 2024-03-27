@@ -48,25 +48,26 @@ Click **Generate a new client secret**, copy the output
 Merge the `values.yaml` file with the following contents:
 
 ```yaml
-scmProviders:
-  github:
-    enabled: true
-
-    # Set this if you're using the selfhosted version
-    url: <GitHub Enterprise URL>
-    # Set this if you're using the selfhosted version
-    apiUrl: <GitHub Enterprise API URL>
-
-    appName: <GitHub OAuth App Name>
-    appId: <GitHub OAuth App ID>
-    clientId: <GitHub OAuth App Client ID>
-    clientSecret: <GitHub OAuth App Client Secret>
-    privateKey: <GitHub OAuth App Private Key>
-
-    # Optional
-    # This is useful in cases where DVC Studio is on an internal
-    # network, but the webhook endpoint is on an external network
-    # webhookUrl: https://webhook.studio.company.com/webhook/github/
+global:
+  scmProviders:
+    github:
+      enabled: true
+   
+      # Set this if you're using the selfhosted version
+      url: <GitHub Enterprise URL>
+      # Set this if you're using the selfhosted version
+      apiUrl: <GitHub Enterprise API URL>
+   
+      appName: <GitHub OAuth App Name>
+      appId: <GitHub OAuth App ID>
+      clientId: <GitHub OAuth App Client ID>
+      clientSecret: <GitHub OAuth App Client Secret>
+      privateKey: <GitHub OAuth App Private Key>
+   
+      # Optional
+      # This is useful in cases where DVC Studio is on an internal
+      # network, but the webhook endpoint is on an external network
+      # webhookUrl: https://webhook.studio.company.com/webhook/github/
 ```
 
 <admon type="info">
