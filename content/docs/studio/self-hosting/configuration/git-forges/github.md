@@ -57,10 +57,10 @@ scmProviders:
     # Set this if you're using the selfhosted version
     apiUrl: <GitHub Enterprise API URL>
 
-    clientId: <GitHub OAuth App Client ID>
     appName: <GitHub OAuth App Name>
     appId: <GitHub OAuth App ID>
-    appSecret: <GitHub OAuth App Secret>
+    clientId: <GitHub OAuth App Client ID>
+    clientSecret: <GitHub OAuth App Client Secret>
     privateKey: <GitHub OAuth App Private Key>
 
     # Optional
