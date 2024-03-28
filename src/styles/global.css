@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#markdown-root {
+  font-family: jost, ui-sans-serif, system-ui, sans-serif;
+
+  .markdown-body {
+    color: #2c3e50;
+  }
+}
