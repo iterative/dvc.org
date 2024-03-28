@@ -36,8 +36,14 @@ module.exports = {
     },
     fontFamily: {
       ...themeConfig.theme.fontFamily,
-      sans: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif'],
-      mono: ['Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace']
+      sans: ['Roboto', 'Tahoma', 'Arial', 'sans-serif'],
+      mono: [
+        '"Roboto Mono"',
+        '"Liberation Mono"',
+        'Menlo',
+        'Courier',
+        'monospace'
+      ]
     }
   },
   plugins: [...themeConfig.plugins, require(`tailwindcss-animate`)]
