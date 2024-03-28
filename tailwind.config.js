@@ -36,7 +36,7 @@ module.exports = {
     },
     fontFamily: {
       ...themeConfig.theme.fontFamily,
-      sans: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif'],
+      sans: ['Jost', 'Arial', 'sans-serif'],
       mono: ['Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace']
     }
   },
