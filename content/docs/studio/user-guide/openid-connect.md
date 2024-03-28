@@ -1,24 +1,38 @@
 # OpenID Connect (OIDC)
 
-OpenID Connect allows you to authenticate with your cloud provider
-to access e.g. object storage without having to provide static credentials.
+OpenID Connect allows you to authenticate with your cloud provider to access
+e.g. object storage without having to provide static credentials.
 
 # Documentation
 
-* OpenID Connect Discovery at https://studio.iterative.ai/api/.well-known/openid-configuration
-* Credentials configuration at https://studio.iterative.ai/user/.../settings?section=cloud-credentials&flags=oidc
-* Subject claim format: `credentials:{owner}/{name}` where `{owner}` is the name of the DVC Studio user or team owning the credentials, and `{name}` is the name of the credentials.
+- OpenID Connect Discovery at
+  https://studio.iterative.ai/api/.well-known/openid-configuration
+- Credentials configuration at
+  https://studio.iterative.ai/user/.../settings?section=cloud-credentials&flags=oidc
+- Subject claim format: `credentials:{owner}/{name}` where `{owner}` is the name
+  of the DVC Studio user or team owning the credentials, and `{name}` is the
+  name of the credentials.
 
 ## Guide
 
-1. Follow the cloud-specific instructions below after modifying the `condition` as you see fit; e.g. `credentials:0x2b3bfa0/example-credentials` will only allow access to credentials named `example-credentials` on the `0x2b3bfa0` team.
-2. Visit https://studio.iterative.ai/team/motorway/settings?section=cloud-credentials&flags=oidc and click on **add new credentials**; then choose **Amazon Web Services (OIDC)** as the provider and input both the crendentials name — `example-credentials` — and the **role ARN** from step **1.**
-3. Always use `?flags=oidc` at the end of the Studio URL to enable OpenID Connect features; you’ll also need to specify it when selecting the credentials for a project; otherwise, OpenID Connect credentials won’t show up.
+1. Follow the cloud-specific instructions below after modifying the `condition`
+   as you see fit; e.g. `credentials:0x2b3bfa0/example-credentials` will only
+   allow access to credentials named `example-credentials` on the `0x2b3bfa0`
+   team.
+2. Visit
+   https://studio.iterative.ai/team/motorway/settings?section=cloud-credentials&flags=oidc
+   and click on **add new credentials**; then choose **Amazon Web Services
+   (OIDC)** as the provider and input both the crendentials name —
+   `example-credentials` — and the **role ARN** from step **1.**
+3. Always use `?flags=oidc` at the end of the Studio URL to enable OpenID
+   Connect features; you’ll also need to specify it when selecting the
+   credentials for a project; otherwise, OpenID Connect credentials won’t show
+   up.
 
 # Cloud-specific configuration
 
-The following Terraform samples illustrate how to configure the cloud provider to enable
-OpenID Connect access for Studio.
+The following Terraform samples illustrate how to configure the cloud provider
+to enable OpenID Connect access for Studio.
 
 <details>
 
