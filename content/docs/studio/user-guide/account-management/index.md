@@ -124,8 +124,9 @@ Finally, click `Save credentials`.
 
 <admon type="tip">
 
-DVC Studio also supports OpenID Connect authentication on some cloud providers.
-Check [this page](/doc/studio/user-guide/openid-connect) for more information.
+DVC Studio also supports
+[OpenID Connect authentication](/doc/studio/user-guide/openid-connect) for some
+cloud providers.
 
 </admon>
 
