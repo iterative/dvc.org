@@ -122,7 +122,7 @@ you can find more details about required permissions [here][data remote].
 
 Finally, click `Save credentials`.
 
-<admon tyle="tip>
+<admon type="tip">
 
 DVC Studio also supports OpenID Connect authentication on some cloud providers.
 Check [this page](/doc/studio/user-guide/openid-connect) for more information.
