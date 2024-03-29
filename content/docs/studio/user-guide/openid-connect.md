@@ -1,44 +1,36 @@
 # OpenID Connect (OIDC)
 
-OpenID Connect allows you to authenticate with your cloud provider to access
-e.g. object storage without having to provide static credentials.
+OpenID Connect allows DVC Studio to authenticate with your cloud provider, to
+access cloud resources securely without static credentials.
 
-# Documentation
+## Cloud configuration
 
-- OpenID Connect Discovery at
+- OpenID Connect Discovery URL:
   https://studio.iterative.ai/api/.well-known/openid-configuration
-- Credentials configuration at
-  https://studio.iterative.ai/user/.../settings?section=cloud-credentials&flags=oidc
+
 - Subject claim format: `credentials:{owner}/{name}` where `{owner}` is the name
-  of the DVC Studio user or team owning the credentials, and `{name}` is the
-  name of the credentials.
+  of the DVC Studio **user** or **team** owning the credentials, and `{name}` is
+  the name of the DVC Studio
+  [credentials](/doc/studio/user-guide/account-management#cloud-credentials).
 
-## Guide
+### Terraform examples
 
-1. Follow the cloud-specific instructions below after modifying the `condition`
-   as you see fit; e.g. `credentials:0x2b3bfa0/example-credentials` will only
-   allow access to credentials named `example-credentials` on the `0x2b3bfa0`
-   team.
-2. Visit
-   https://studio.iterative.ai/team/motorway/settings?section=cloud-credentials&flags=oidc
-   and click on **add new credentials**; then choose **Amazon Web Services
-   (OIDC)** as the provider and input both the crendentials name —
-   `example-credentials` — and the **role ARN** from step **1.**
-3. Always use `?flags=oidc` at the end of the Studio URL to enable OpenID
-   Connect features; you’ll also need to specify it when selecting the
-   credentials for a project; otherwise, OpenID Connect credentials won’t show
-   up.
+The following Terraform examples illustrate how to configure the supported cloud
+providers to grant DVC Studio access to object storage resources through OpenID
+Connect.
 
-# Cloud-specific configuration
+<admon type="tip">
 
-The following Terraform samples illustrate how to configure the cloud provider
-to enable OpenID Connect access for Studio.
+Replace the sample `credentials:example-team/example-credentials` subject claim
+condition with your own value, following the format detailed above.
+
+</admon>
 
 <details>
 
 ### Amazon Web Services
 
-```terraform
+```hcl
 terraform {
   required_providers {
     aws = {
@@ -56,7 +48,7 @@ provider "aws" {
 
 locals {
   provider  = "studio.iterative.ai/api"
-  condition = "credentials:0x2b3bfa0/example-credentials"
+  condition = "credentials:example-team/example-credentials"
 }
 
 data "tls_certificate" "studio" {
@@ -114,7 +106,7 @@ output "role_arn" {
 
 ### Google Cloud
 
-```terraform
+```hcl
 terraform {
   required_providers {
     google = {
@@ -131,7 +123,7 @@ provider "google" {
 
 locals {
   provider  = "studio.iterative.ai/api"
-  condition = "credentials:0x2b3bfa0/example-credentials"
+  condition = "credentials:example-team/example-credentials"
 }
 
 data "google_project" "current" {}
@@ -198,7 +190,7 @@ output "project_id" {
 
 ### Microsoft Azure
 
-```terraform
+```hcl
 terraform {
   required_providers {
     azurerm = {
@@ -220,7 +212,7 @@ provider "azurerm" {
 
 locals {
   provider  = "studio.iterative.ai/api"
-  condition = "credentials:0x2b3bfa0/example-credentials"
+  condition = "credentials:example-team/example-credentials"
 }
 
 data "azuread_client_config" "current" {}
@@ -279,3 +271,13 @@ output "azure_client_id" {
 ```
 
 </details>
+
+## Studio configuration
+
+[Create new credentials](/doc/studio/user-guide/account-management#cloud-credentials),
+configuring them as follows:
+
+1. Choose an adequate OIDC variant on the provider field; e.g. _Amazon Web
+   Services (OIDC)_.
+2. Fill the remaining fields with the outputs of the cloud configuration
+   procedure detailed above.
