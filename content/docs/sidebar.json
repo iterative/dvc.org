@@ -731,6 +731,10 @@
             "children": ["github-app", "custom-gitlab-server"]
           },
           "single-sign-on",
+          {
+            "label": "OpenID Connect",
+            "slug": "openid-connect"
+          },
           "troubleshooting"
         ]
       },
