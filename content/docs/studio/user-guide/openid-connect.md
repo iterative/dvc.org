@@ -1,7 +1,7 @@
 # OpenID Connect (OIDC)
 
-OpenID Connect allows DVC Studio to authenticate with your cloud provider, to
-access cloud resources securely without static credentials.
+DVC Studio can use OpenID Connect to access cloud resources securely, without
+requiring manual configuration of static credentials.
 
 ## Cloud configuration
 
@@ -16,7 +16,7 @@ access cloud resources securely without static credentials.
 ### Terraform examples
 
 The following Terraform examples illustrate how to configure the supported cloud
-providers to grant DVC Studio access to object storage resources through OpenID
+providers, granting DVC Studio access to object storage resources through OpenID
 Connect.
 
 <admon type="tip">
@@ -274,10 +274,10 @@ output "azure_client_id" {
 
 ## Studio configuration
 
-[Create new credentials](/doc/studio/user-guide/account-management#cloud-credentials),
-configuring them as follows:
+[Create new credentials](/doc/studio/user-guide/account-management#cloud-credentials)
+and configure them as follows:
 
 1. Choose an adequate OIDC variant on the provider field; e.g. _Amazon Web
    Services (OIDC)_.
 2. Fill the remaining fields with the outputs of the cloud configuration
-   procedure detailed above.
+   described above.
