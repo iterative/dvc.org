@@ -3,7 +3,14 @@
 DVC Studio can use OpenID Connect to access cloud resources securely, without
 requiring manual configuration of static credentials.
 
+To use OIDC, first follow the [cloud configuration](#cloud-configuration) instructions and then
+the [Studio configuration](#studio-configuration) instructions.
+
 ## Cloud configuration
+
+<details>
+
+### Generic configuration options
 
 - OpenID Connect Discovery URL:
   https://studio.iterative.ai/api/.well-known/openid-configuration
@@ -13,16 +20,23 @@ requiring manual configuration of static credentials.
   the name of the DVC Studio
   [credentials](/doc/studio/user-guide/account-management#cloud-credentials).
 
+</details>
+
 ### Terraform examples
 
 The following Terraform examples illustrate how to configure the supported cloud
 providers, granting DVC Studio access to object storage resources through OpenID
-Connect.
+Connect. Update the fields as described below and then apply the Terraform
+configuration. Make note of the outputs of `terraform apply`, since you will
+need to enter those for [Studio configuration](#studio-configuration).
 
 <admon type="tip">
 
 Replace the sample `credentials:example-team/example-credentials` subject claim
-condition with your own value, following the format detailed above.
+condition. Replace `example-team` with the Studio **user** or **team** owning
+the credentials, and replace `example-credentials` with any name you want to use
+for those credentials. This name must match what you enter during
+[Studio configuration](#studio-configuration).
 
 </admon>
 
@@ -279,5 +293,7 @@ and configure them as follows:
 
 1. Choose an adequate OIDC variant on the provider field; e.g. _Amazon Web
    Services (OIDC)_.
-2. Fill the remaining fields with the outputs of the cloud configuration
+2. Enter the name for the credentials. This must match the name used during
+   [cloud configuration](#cloud-configuration).
+3. Fill the remaining fields with the outputs of the cloud configuration
    described above.
