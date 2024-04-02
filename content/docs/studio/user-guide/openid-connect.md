@@ -265,7 +265,7 @@ resource "azurerm_role_definition" "studio" {
   }
 }
 
-resource "azurerm_role_assignment" "example" {
+resource "azurerm_role_assignment" "studio" {
   name               = azurerm_role_definition.studio.role_definition_id
   scope              = data.azurerm_subscription.current.id
   role_definition_id = azurerm_role_definition.studio.role_definition_resource_id
