@@ -11,7 +11,7 @@ instructions.
 
 <details>
 
-### Generic configuration options
+### Generic configuration details
 
 - OpenID Connect Discovery URL:
   https://studio.iterative.ai/api/.well-known/openid-configuration
