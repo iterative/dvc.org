@@ -122,6 +122,14 @@ you can find more details about required permissions [here][data remote].
 
 Finally, click `Save credentials`.
 
+<admon type="tip">
+
+DVC Studio also supports
+[OpenID Connect authentication](/doc/studio/user-guide/openid-connect) for some
+cloud providers.
+
+</admon>
+
 ## Teams
 
 In this section, you can view all the teams you are member of.
