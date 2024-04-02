@@ -3,14 +3,14 @@
 DVC Studio can use OpenID Connect to access cloud resources securely, without
 requiring manual configuration of static credentials.
 
-To use OIDC, first setup [cloud configuration](#cloud-configuration) and then
-setup [Studio configuration](#studio-configuration).
+To use OIDC, first follow the [cloud configuration](#cloud-configuration) instructions and then
+the [Studio configuration](#studio-configuration) instructions.
 
 ## Cloud configuration
 
 <details>
 
-### Expand to see technical details.
+### Generic configuration options
 
 - OpenID Connect Discovery URL:
   https://studio.iterative.ai/api/.well-known/openid-configuration
