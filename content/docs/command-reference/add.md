@@ -63,7 +63,7 @@ You can also [undo `dvc add`](/doc/user-guide/how-to/stop-tracking-data) to stop
 tracking files or directories.
 
 By default, DVC tries to use reflinks (see
-[File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
 to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
