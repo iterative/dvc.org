@@ -242,21 +242,22 @@ resource "azuread_application" "studio" {
 }
 
 resource "azuread_service_principal" "studio" {
-  application_id = azuread_application.studio.application_id
-  owners         = [data.azuread_client_config.current.object_id]
+  client_id = azuread_application.studio.client_id
+  owners    = [data.azuread_client_config.current.object_id]
 }
 
 resource "azuread_application_federated_identity_credential" "studio" {
-  application_object_id = azuread_application.studio.object_id
-  display_name          = azuread_application.studio.display_name
-  audiences             = ["api://AzureADTokenExchange"]
-  issuer                = "https://${local.provider}"
-  subject               = local.condition
+  application_id = azuread_application.studio.id
+  display_name   = azuread_application.studio.display_name
+  audiences      = ["api://AzureADTokenExchange"]
+  issuer         = "https://${local.provider}"
+  subject        = local.condition
 }
 
 resource "azurerm_role_definition" "studio" {
   name  = azuread_application.studio.display_name
   scope = data.azurerm_subscription.current.id
+
   permissions {
     actions = [
       "Microsoft.Storage/storageAccounts/listKeys/action",
@@ -281,7 +282,7 @@ output "azure_tenant_id" {
 }
 
 output "azure_client_id" {
-  value = azuread_application.studio.application_id
+  value = azuread_application.studio.client_id
 }
 ```
 
