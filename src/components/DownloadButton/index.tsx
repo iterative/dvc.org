@@ -11,14 +11,7 @@ import { OS, useUserOS } from '../../utils/front/useUserOS'
 
 const VERSION = `3.50.0`
 
-const dropdownItems = [
-  OS.UNKNOWN,
-  null,
-  OS.OSX,
-  OS.WINDOWS,
-  OS.LINUX,
-  OS.LINUX_RPM
-]
+const dropdownItems = [OS.UNKNOWN, null, OS.WINDOWS, OS.LINUX, OS.LINUX_RPM]
 
 interface IDownloadButtonDropdownItemsProps {
   userOS: OS
@@ -40,11 +33,6 @@ const itemsByOs: Record<OS, IOSDescription> = {
     title: 'pip, conda, brew',
     url: `/doc/install`,
     download: false
-  },
-  [OS.OSX]: {
-    title: 'macOS',
-    url: `/download/osx/dvc-${VERSION}`,
-    download: true
   },
   [OS.WINDOWS]: {
     title: 'Windows',
