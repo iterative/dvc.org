@@ -84,9 +84,9 @@ global:
   envVars:
     SELF_HOSTED_LICENSE_KEY: '<License key provided by the Iterative team>'
 ```
+Here, the `SELF_HOSTED_LICENSE_KEY` is needed for Studio to correctly recognize your license and allow you to create [teams]('/doc/studio/user-guide/team-collaboration') in Studio with a number of available seats equivalent to your purchased seat limit.
 
-Next, we need to integrate your Git Forge with your Studio instance. Depending on the Git Forge you are using follow the corresponding instructions in the [Git Forges Configuration documentation](/doc/studio/self-hosting/configuration/git-forges).
-
+Next, you need to integrate our Git Forge with your Studio instance. Depending on the Git Forge you are using follow the corresponding instructions in the [Git Forges Configuration documentation](/doc/studio/self-hosting/configuration/git-forges).
 
 
 Finally, deploy DVC Studio with the command:
@@ -97,4 +97,4 @@ $ helm install studio iterative/studio \
     -f values.yaml
 ```
 
-🎉 You can now access DVC Studio in your browser on the domain that you've configured.
+🎉 You can now access DVC Studio in your browser on the domain (hostname) that you've configured.
