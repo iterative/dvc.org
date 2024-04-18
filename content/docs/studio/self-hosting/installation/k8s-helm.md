@@ -90,7 +90,7 @@ global:
 
 Here, the `SELF_HOSTED_LICENSE_KEY` is needed for Studio to correctly recognize
 your license and allow you to create
-[teams]('/doc/studio/user-guide/team-collaboration') in Studio with a number of
+[teams](/doc/studio/user-guide/team-collaboration) in Studio with a number of
 available seats equivalent to your purchased seat limit.
 
 Next, you need to integrate our Git Forge with your Studio instance. Depending
