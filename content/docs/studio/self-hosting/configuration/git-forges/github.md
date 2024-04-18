@@ -44,7 +44,8 @@
 
 ## Configuring DVC Studio with the GitHub App
 
-Merge the `values.yaml` file with the following contents, replacing the strings marked with `<>` with the values the steps above:
+Merge the `values.yaml` file with the following contents, replacing the strings
+marked with `<>` with the values the steps above:
 
 ```yaml
 global:
