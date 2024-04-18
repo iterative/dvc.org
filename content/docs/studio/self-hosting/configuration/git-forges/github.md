@@ -5,20 +5,18 @@
 1. Go to **Organization settings** -> **Developer settings** -> **Github Apps**
    -> **New Github App**
 
-Fill out the details as follows:
+   Fill out the details as follows, replacing [`localhost:8080`](http://localhost:8080) with your DVC Studio domain
+      and port if applicable:
 
-![](/img/studio-selfhosted-github-1.png)
+   ![](/img/studio-selfhosted-github-1.png)
 
-![](/img/studio-selfhosted-github-2.png)
+   ![](/img/studio-selfhosted-github-2.png)
 
-![](/img/studio-selfhosted-github-3.png)
+   ![](/img/studio-selfhosted-github-3.png)
 
-![](/img/studio-selfhosted-github-4.png)
+   ![](/img/studio-selfhosted-github-4.png)
 
-2. Replace [`localhost:8080`](http://localhost:8080) with your DVC Studio domain
-   and port if applicable.
-
-3. Under permissions, set the following:
+1. Under permissions, set the following:
 
    **Repository permissions:**
 
@@ -32,15 +30,15 @@ Fill out the details as follows:
 
    - Email addresses: Read
 
-4. Click **Create Github App**
+1. Click **Create Github App**
 
-5. Copy the **App ID** and **Client ID**
+1. Copy the **App ID** and **Client ID**
 
-Click **Generate a new client secret**, copy the output
+   Click **Generate a new client secret**, copy the output
 
-![](/img/studio-selfhosted-github-5.png)
+   ![](/img/studio-selfhosted-github-5.png)
 
-6. Scroll down to **Private keys**, click **Generate a private key**, copy the
+1. Scroll down to **Private keys**, click **Generate a private key**, copy the
    output
 
 ## Configuring DVC Studio with the GitHub App
