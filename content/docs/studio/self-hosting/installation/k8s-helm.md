@@ -54,7 +54,7 @@ $ kubectl create secret docker-registry iterativeai \
     --docker-password=<password>
 ```
 
-Replace `<username>` and `<password>` with the credentials you've received.
+Replace `<username>` and `<password>` with the credentials you've received from the Iterative team.
 
 ## 3. Add the Iterative Helm repository
 
@@ -64,13 +64,11 @@ $ helm repo add iterative https://helm.iterative.ai
 
 ## 3. Install the DVC Studio Helm chart
 
-In this example, we'll configure DVC Studio to integrate with GitLab and use the
-built in Postgres, Redis, and Minio.
+In this example, we'll configure DVC Studio to integrate with your Git Forge of choice and use the built-in Postgres, Redis, and Minio.
 
 <admon info="tip">
 
-For a comprehensive list on DVC Studio's configuration options, please see the
-Configuration section in the sidebar.
+For a comprehensive list on DVC Studio's configuration options, please see the [Configuration documentation](/doc/studio/self-hosting/configuration).
 
 </admon>
 
@@ -83,16 +81,15 @@ imagePullSecrets:
 
 global:
   host: '<DVC Studio hostname>'
-  scmProviders:
-    gitlab:
-      enabled: true
-      url: '<GitLab URL>'
-      clientId: '<GitLab OAuth App Client ID>'
-      secretKey: '<GitLab OAuth App Secret Key>'
-      webhookSecret: '<GitLab Webhook Secret>'
+  envVars:
+    SELF_HOSTED_LICENSE_KEY: '<License key provided by the Iterative team>'
 ```
 
-Now let's deploy DVC Studio with the command:
+Next, we need to integrate your Git Forge with your Studio instance. Depending on the Git Forge you are using follow the corresponding instructions in the [Git Forges Configuration documentation](/doc/studio/self-hosting/configuration/git-forges).
+
+
+
+Finally, deploy DVC Studio with the command:
 
 ```cli
 $ helm install studio iterative/studio \
@@ -100,5 +97,4 @@ $ helm install studio iterative/studio \
     -f values.yaml
 ```
 
-🎉 You can now access DVC Studio in your browser on the domain that you've
-configured.
+🎉 You can now access DVC Studio in your browser on the domain that you've configured.
