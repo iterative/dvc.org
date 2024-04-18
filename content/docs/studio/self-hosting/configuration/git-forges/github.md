@@ -5,8 +5,9 @@
 1. Go to **Organization settings** -> **Developer settings** -> **Github Apps**
    -> **New Github App**
 
-   Fill out the details as follows, replacing [`localhost:8080`](http://localhost:8080) with your DVC Studio domain
-      and port if applicable:
+   Fill out the details as follows, replacing
+   [`localhost:8080`](http://localhost:8080) with your DVC Studio domain and
+   port if applicable:
 
    ![](/img/studio-selfhosted-github-1.png)
 
