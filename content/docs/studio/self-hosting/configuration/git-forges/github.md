@@ -44,7 +44,7 @@
 
 ## Configuring DVC Studio with the GitHub App
 
-Merge the `values.yaml` file with the following contents:
+Merge the `values.yaml` file with the following contents, replacing the strings marked with `<>` with the values the steps above:
 
 ```yaml
 global:
@@ -68,9 +68,3 @@ global:
       # network, but the webhook endpoint is on an external network
       # webhookUrl: https://webhook.studio.company.com/webhook/github/
 ```
-
-<admon type="info">
-
-Replace the strings marked with `< >`
-
-</admon>
