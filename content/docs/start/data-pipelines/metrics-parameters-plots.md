@@ -75,6 +75,7 @@ finding `with Live(EVAL_PATH) as live:`, and modifying it to
 `with Live(EVAL_PATH, dvcyaml=False) as live:`. Then add the following custom
 configuration to `dvc.yaml`:
 
+<!-- prettier-ignore-start -->
 ```yaml
 metrics:
 - eval/metrics.json
@@ -99,6 +100,7 @@ plots:
       eval/plots/sklearn/prc/test.json: precision
 - eval/plots/images/importance.png
 ```
+<!-- prettier-ignore-end -->
 
 This flexibility to define your own metrics and plots configuration means that
 you can even [generate your own] metrics and plots data without using DVCLive!
