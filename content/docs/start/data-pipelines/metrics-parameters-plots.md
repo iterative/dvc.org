@@ -77,27 +77,27 @@ configuration to `dvc.yaml`:
 
 ```yaml
 metrics:
-  - eval/metrics.json
+- eval/metrics.json
 plots:
-  - ROC:
-      template: simple
-      x: fpr
-      y:
-        eval/plots/sklearn/roc/train.json: tpr
-        eval/plots/sklearn/roc/test.json: tpr
-  - Confusion-Matrix:
-      template: confusion
-      x: actual
-      y:
-        eval/plots/sklearn/cm/train.json: predicted
-        eval/plots/sklearn/cm/test.json: predicted
-  - Precision-Recall:
-      template: simple
-      x: recall
-      y:
-        eval/plots/sklearn/prc/train.json: precision
-        eval/plots/sklearn/prc/test.json: precision
-  - eval/plots/images/importance.png
+- ROC:
+    template: simple
+    x: fpr
+    y:
+      eval/plots/sklearn/roc/train.json: tpr
+      eval/plots/sklearn/roc/test.json: tpr
+- Confusion-Matrix:
+    template: confusion
+    x: actual
+    y:
+      eval/plots/sklearn/cm/train.json: predicted
+      eval/plots/sklearn/cm/test.json: predicted
+- Precision-Recall:
+    template: simple
+    x: recall
+    y:
+      eval/plots/sklearn/prc/train.json: precision
+      eval/plots/sklearn/prc/test.json: precision
+- eval/plots/images/importance.png
 ```
 
 This flexibility to define your own metrics and plots configuration means that
