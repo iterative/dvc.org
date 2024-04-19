@@ -70,7 +70,10 @@ customize them by editing `dvc.yaml` to combine train and test plots.
 ### 💡 Expand to see how to customize metrics and plots
 
 To combine train and test data, and to set other custom attributes like titles,
-we add the following to `dvc.yaml`:
+first disable DVCLive's default configuration by opening `src/evaluate.py`,
+finding `with Live(EVAL_PATH) as live:`, and modifying it to
+`with Live(EVAL_PATH, dvcyaml=False) as live:`. Then add the following custom
+configuration to `dvc.yaml`:
 
 ```yaml
 metrics:
@@ -92,9 +95,9 @@ plots:
       template: simple
       x: recall
       y:
-        eval/prc/train.json: precision
-        eval/prc/test.json: precision
-  - eval/importance.png
+        eval/plots/sklearn/prc/train.json: precision
+        eval/plots/sklearn/prc/test.json: precision
+  - eval/plots/images/importance.png
 ```
 
 This flexibility to define your own metrics and plots configuration means that
