@@ -117,7 +117,7 @@ with DVC, includes the `open` function to load/stream data directly from
 external <abbr>DVC projects</abbr>:
 
 ```python
-import dvc.api.open
+import dvc.api
 
 model_path = 'model.pkl'
 repo_url = 'https://github.com/example/registry'
