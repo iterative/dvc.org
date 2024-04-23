@@ -1,7 +1,7 @@
 # Databricks
 
-[Databricks Repos] don't expose the underlying Git repo, so Git-related DVC
-functionality within Databricks Repos is not supported (e.g. [experiments],
+[Databricks Git folders] don't expose the underlying Git repo, so Git-related
+DVC functionality within Databricks Repos is not supported (e.g. [experiments],
 `--rev/--all-commits/--all-tags/etc`). Everything will operate as normal if you
 `git clone` a project yourself or [use remote projects](#dvc-api) with DVC
 directly.
@@ -98,7 +98,7 @@ os.environ["DVC_STUDIO_TOKEN"] = getpass.getpass()
 os.environ["DVC_EXP_GIT_REMOTE"] = "https://github.com/<org>/<repo>"
 ```
 
-[Databricks Repos]: https://docs.databricks.com/en/repos/index.html
+[Databricks Git folders]: https://docs.databricks.com/en/repos/index.html
 [experiments]: /doc/start/experiments
 [Python API]: /doc/api-reference
 [Databricks secrets]: https://docs.databricks.com/en/security/secrets/index.html
