@@ -4,6 +4,7 @@ import { useEffect, useReducer } from 'react'
 
 export enum OS {
   UNKNOWN = 'unknown',
+  OSX = 'osx',
   WINDOWS = 'win',
   LINUX = 'linux',
   LINUX_RPM = 'linux_rpm'
@@ -17,6 +18,7 @@ const getUserOS = (): OS => {
 
   if (!isClient) return OSName
   if (userAgentIs('Win')) OSName = OS.WINDOWS
+  if (userAgentIs('Mac')) OSName = OS.OSX
   if (userAgentIs('Linux')) OSName = OS.LINUX
 
   return OSName
