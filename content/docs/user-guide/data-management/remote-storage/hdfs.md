@@ -47,6 +47,13 @@ them with the `--local` option, so they're written to a Git-ignored config file.
                               kerb_ticket /path/to/ticket/cache
   ```
 
+- `replication` - replication factor for write operations on HDFS cluster.
+  Default value is 3.
+
+  ```cli
+  $ dvc remote modify myremote replication 2
+  ```
+
 ## WebHDFS
 
 Using an HDFS cluster as remote storage is also supported via the WebHDFS API.
