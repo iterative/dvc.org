@@ -187,6 +187,9 @@ See `dvc remote modify` for more command usage details.
 - `grant_full_control` - grant `FULL_CONTROL` permissions at object-level ACL to
   specific grantees. Cannot be used with `acl`.
 
+- `allow_anonymous_login` (`true` or `false`) - whether to allow anonymous
+  access. `false` by default.
+
 [server-side encryption]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html
 [sse-kms]:
