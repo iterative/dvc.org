@@ -49,4 +49,5 @@ To allow secure access to DVC Studio, we highly recommend setting up a valid TLS
 certificate. To set this up, check out the
 [TLS certificates](/doc/studio/self-hosting/configuration/tls) page.
 
-If you use HTTPS to connect to your Studio instance, check out how to [set up your SSL certificate](/doc/studio/self-hosting/configuration/ssl).
+If you use HTTPS to connect to your Studio instance, check out how to
+[set up your SSL certificate](/doc/studio/self-hosting/configuration/ssl).
