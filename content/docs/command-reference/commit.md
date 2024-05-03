@@ -6,7 +6,7 @@ Record changes to files or directories tracked by DVC.
 
 ```usage
 usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
-                  [targets [targets ...]]
+                  [--no-relink] [targets [targets ...]]
 
 positional arguments:
   targets        Limit command scope to these stages or .dvc files.
@@ -82,6 +82,12 @@ guarantee reproducibility in those cases.
 
 - `-f`, `--force` - commit data even if hash values for dependencies or outputs
   did not change.
+
+- `--no-relink` - Don't recreate
+  [file link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
+  from the cache to the workspace. This saves time when working with a large
+  number of files, but the files may be reflinked or copied from the cache even
+  if another link type is configured.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
