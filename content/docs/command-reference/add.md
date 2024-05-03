@@ -8,6 +8,7 @@ Track data files or directories with DVC.
 usage: dvc add [-h] [-q | -v] [-f] [--no-commit]
                [--glob] [-o <path>]
                [--to-remote] [-r <name>] [--remote-jobs <number>]
+               [--no-relink]
                targets [targets ...]
 positional arguments:
   targets               Files or directories to add or update
@@ -145,6 +146,12 @@ not.
   directory, the operation will fail if those paths already exist. this flag
   will force the operation causing local files/dirs to be overwritten by the
   command.
+
+- `--no-relink` - Don't recreate
+  [file link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
+  from the cache to the workspace. This saves time when working with a large
+  number of files, but the files may be reflinked or copied from the cache even
+  if another link type is configured.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
