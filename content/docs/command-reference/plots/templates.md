@@ -32,8 +32,13 @@ Note that templates can only be used with [data-series plots].
 ### Custom templates
 
 Plot templates are [Vega-Lite](https://vega.github.io/vega-lite/) JSON
-specifications. They use predefined DVC anchors as placeholders for DVC to
-inject the plot values.
+specifications. Save custom templates as JSON files under `.dvc/plots`, like
+`.dvc/plots/custom.json`. Then you can refer to that custom template like
+`dvc plots show --template custom`. In `dvc.yaml`, you can set the template like
+`template: custom`.
+
+Templates use predefined DVC anchors as placeholders for DVC to inject the plot
+values.
 
 #### **Required**
 
@@ -126,7 +131,8 @@ file:///Users/usr/src/dvc_plots/index.html
 Let's dump the `simple` template to `bars_template.json`:
 
 ```cli
-$ dvc plots templates simple > bars_template.json
+$ mkdir .dvc/plots
+$ dvc plots templates simple > .dvc/plots/bars_template.json
 ```
 
 Now, let's modify the `bars_template.json` file to display the bars (instead of
@@ -148,7 +154,7 @@ a line):
 And this is how the data looks like using our custom template:
 
 ```cli
-$ dvc plots show data.csv --template bars_template.json
+$ dvc plots show data.csv --template bars_template
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
