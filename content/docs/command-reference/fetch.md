@@ -8,7 +8,7 @@ Download files or directories from [remote storage] to the <abbr>cache</abbr>.
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                 [--all-commits] [-d] [-R] [--run-cache | --no-run-cache]
+                 [--all-commits] [-d] [-R] [--run-cache]
                  [--max-size <bytes>] [--type {metrics,plots}]
                  [targets [targets ...]]
 
@@ -86,10 +86,8 @@ The `dvc remote` used is determined in order, based on
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
   If there are no directories among the `targets`, this option has no effect.
 
-- `--run-cache`, `--no-run-cache` - downloads all available history of [stage
-  runs] from the remote repository. See the same option in `dvc push`.
-  `--run-cache` is set by default in DVC > 3.50.3 and off by default in earlier
-  versions.
+- `--run-cache` - downloads all available history of [stage runs] from the
+  remote repository. See the same option in `dvc push`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. Note that the
