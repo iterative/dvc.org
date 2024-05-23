@@ -68,7 +68,8 @@ Studio project URL to view experiments.
   to.
 
 - `--run-cache`, `--no-run-cache` - uploads all available history of [stage
-  runs] to the `dvc remote`.
+  runs] to the `dvc remote`. `--run-cache` is set by default in DVC > 3.50.3 and
+  off by default in earlier versions.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. Note that the default

@@ -88,6 +88,8 @@ The `dvc remote` used is determined in order, based on
 
 - `--run-cache`, `--no-run-cache` - downloads all available history of [stage
   runs] from the remote repository. See the same option in `dvc push`.
+  `--run-cache` is set by default in DVC > 3.50.3 and off by default in earlier
+  versions.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. Note that the
