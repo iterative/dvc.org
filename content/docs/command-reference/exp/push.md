@@ -9,7 +9,8 @@ to [remote storage].
 
 ```usage
 usage: dvc exp push [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
-                    [--no-cache] [-r <name>] [-j <number>] [--run-cache]
+                    [--no-cache] [-r <name>] [-j <number>]
+                    [--run-cache | --no-run-cache]
                     git_remote [experiment ...]
 
 positional arguments:
@@ -66,8 +67,9 @@ Studio project URL to view experiments.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to push cached files
   to.
 
-- `--run-cache` - uploads all available history of [stage runs] to the
-  `dvc remote`.
+- `--run-cache`, `--no-run-cache` - uploads all available history of [stage
+  runs] to the `dvc remote`. `--run-cache` is set by default in DVC > 3.50.3 and
+  off by default in earlier versions.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. Note that the default
