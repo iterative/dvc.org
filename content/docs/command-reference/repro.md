@@ -182,9 +182,10 @@ final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - attempts to download the missing dependencies of stages that need
-  to be run. Unless `--no-run-cache` is passed, it will also try to download the
-  [run cache] and the outputs of stages that are already present in it.
+- `--pull` - attempts to download missing data as needed. This includes (1)
+  dependencies of stages to be run, (2) outputs of otherwise unchanged stages to
+  be skipped, (3) [run cache] for stages to be checked out from cache (unless
+  `--no-run-cache` is passed).
 
 - `--allow-missing` - skip stages with no other changes than missing data.
 
@@ -378,39 +379,60 @@ Given the pipeline used in
 
 ```cli
 $ dvc dag
-    +--------------------+
-    | data/pool_data.dvc |
-    +--------------------+
-               *
-               *
-               *
-        +------------+
-        | data_split |
-        +------------+
-         **        **
-       **            **
-      *                **
-+-------+                *
-| train |              **
-+-------+            **
-         **        **
-           **    **
-             *  *
-         +----------+
-         | evaluate |
-         +----------+
+      +--------------------+
+      | data/pool_data.dvc |
+      +--------------------+
+                 *
+                 *
+                 *
+          +------------+
+          | data_split |
+          +------------+
+           **         **
+         **             **
+        *                 **
+  +-------+                 *
+  | train |*                *
+  +-------+ ****            *
+      *         ***         *
+      *            ****     *
+      *                **   *
++-----------+         +----------+
+| sagemaker |         | evaluate |
++-----------+         +----------+
 ```
 
 If we are in a machine where all the data is missing:
 
 ```cli
 $ dvc status
-Not in cache:
-  (use "dvc fetch <file>..." to download files)
-        models/model.pkl
-        data/pool_data/
-        data/test_data/
-        data/train_data/
+data_split:
+        changed deps:
+                deleted:            data/pool_data
+        changed outs:
+                not in cache:       data/test_data
+                not in cache:       data/train_data
+train:
+        changed deps:
+                deleted:            data/train_data
+        changed outs:
+                not in cache:       models/model.pkl
+                not in cache:       models/model.pth
+                not in cache:       results/train
+evaluate:
+        changed deps:
+                deleted:            data/test_data
+                deleted:            models/model.pkl
+        changed outs:
+                not in cache:       results/evaluate
+sagemaker:
+        changed deps:
+                deleted:            models/model.pth
+        changed outs:
+                not in cache:       model.tar.gz
+data/pool_data.dvc:
+        changed outs:
+                not in cache:       data/pool_data
 ```
 
 We can modify the `evaluate` stage and DVC will only pull the necessary data to
@@ -425,3 +447,8 @@ Stage 'train' didn't change, skipping
 Running stage 'evaluate':
 ...
 ```
+
+See [pull missing data] in the user guide for more details.
+
+[pull missing data]:
+  /doc/user-guide/pipelines/running-pipelines#pull-missing-data
