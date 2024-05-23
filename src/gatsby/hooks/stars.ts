@@ -18,6 +18,8 @@ export default function useStars(): number | null {
   // Run an IIFE to update from the server on the client side.
   useEffect(() => {
     ;(async (): Promise<void> => {
+      setStars(staticStars)
+      return
       const res = await fetch(`/api/github/stars?repo=dvc`)
       if (res.status === 200) {
         const json = await res.json()
