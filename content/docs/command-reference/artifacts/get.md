@@ -10,7 +10,7 @@ into the current working directory (with optional DVC Studio support).
 ```usage
 usage: dvc artifacts get [-h] [-q | -v]
                          [--rev [<version>]] [--stage [<stage>]]
-                         [-o [<path>]] [-j <number>] [-f]
+                         [-o [<path>]] [--show-url] [-j <number>] [-f]
                          [--config CONFIG]
                          [--remote REMOTE] [--remote-config [REMOTE_CONFIG ...]]
                          url name
@@ -58,6 +58,9 @@ files (see `dvc get`).
   workspace to place the downloaded file or directory (instead of using the
   current working directory). Directories specified in the path will be created
   by this command.
+
+- `--show-url` - instead of downloading the file or directory, just print the
+  storage location (URL) of the target data.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. Using more jobs may
@@ -121,6 +124,16 @@ case, the artifact is defined in `results/dvc.yaml` so we must include the path
 to the `dvc.yaml` file when addressing the artifact. Since we do not specify
 `--rev` or `--stage`, `dvc artifacts get` will download the latest version of
 the artifact by default.
+
+## Example: Getting the storage URL of an artifact
+
+We can use `dvc artifacts get --show-url` to get the actual location where the
+model is stored:
+
+```cli
+$ dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --rev=v1.0.0 --show-url
+https://remote.dvc.org/get-started/files/md5/cf/a72ff6e2575c44f78f423cada5b783
+```
 
 [rest api]: /doc/studio/rest-api
 [client access token]:
