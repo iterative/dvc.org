@@ -42,11 +42,11 @@ module.exports = {
           type: 'StaticGithubData',
           async resolve() {
             const { GITHUB_TOKEN } = process.env
-            if (GITHUB_TOKEN) {
+            if (GITHUB_TOKEN && false) {
               const stars = await getStars({ owner: 'iterative', repo: 'dvc' })
               return { stars }
             }
-            return { stars: 8888 }
+            return { stars: 12915 }
           }
         }
       }
