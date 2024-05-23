@@ -9,8 +9,7 @@ Upload tracked files or directories to [remote storage] based on the current
 
 ```usage
 usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [--all-commits] [--glob] [-d] [-R]
-                [--run-cache | --no-run-cache]
+                [--all-commits] [--glob] [-d] [-R] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -90,10 +89,9 @@ in the cache (compared to the default remote.) It can be used to see what files
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to push to (see
   `dvc remote list`).
 
-- `--run-cache`, `--no-run-cache` - uploads all available history of
+- `--run-cache` - uploads all available history of
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
-  the `dvc remote`. `--run-cache` is set by default in DVC > 3.50.3 and off by
-  default in earlier versions.
+  the `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. Note that the default
