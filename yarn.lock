@@ -2079,10 +2079,10 @@
     unist-util-remove-position "^5.0.0"
     unist-util-visit "^5.0.0"
 
-"@dvcorg/websites-server@0.2.0-beta.1":
-  version "0.2.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.2.0-beta.1.tgz#fe7e960a55ca24b0d3d42c853e043d837d91e64c"
-  integrity sha512-R+HG4h4UV6NX0ap3KEMOdEf21Pal6kHxLrHNPY5tM9MwdhaZeJulafcQOd3D06tiBD87GWC2dGpDIQa7dy1lNg==
+"@dvcorg/websites-server@0.2.0-beta.2":
+  version "0.2.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@dvcorg/websites-server/-/websites-server-0.2.0-beta.2.tgz#fb44d980b9faf28877f06a0bdab8863b12ef390f"
+  integrity sha512-Y004IDSVxTfE1qYWMIgWXEKTYojZYR6uWH/mKmOuq4HvfEYcC7P+IQnle3imSxZrDa5G//hRrznJOdLkyTrhQQ==
   dependencies:
     "@aws-sdk/client-s3" "^3.583.0"
     "@dvcorg/gatsby-theme-iterative" "^0.3.18"
