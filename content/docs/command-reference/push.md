@@ -9,7 +9,8 @@ Upload tracked files or directories to [remote storage] based on the current
 
 ```usage
 usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [--all-commits] [--glob] [-d] [-R] [--run-cache]
+                [--all-commits] [--glob] [-d] [-R]
+                [--run-cache | --no-run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -89,7 +90,7 @@ in the cache (compared to the default remote.) It can be used to see what files
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to push to (see
   `dvc remote list`).
 
-- `--run-cache` - uploads all available history of
+- `--run-cache`, `--no-run-cache` - uploads all available history of
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
   the `dvc remote`.
 
