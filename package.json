@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "0.3.14",
-    "@dvcorg/websites-server": "0.2.0-beta.3",
+    "@dvcorg/websites-server": "0.2.0",
     "@octokit/request": "8.1.6",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-label": "2.0.2",
