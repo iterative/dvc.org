@@ -109,12 +109,15 @@ stages:
 
 By default, DVC expects that all data to run the pipeline is available locally.
 Any missing data will be considered deleted and may cause the pipeline to fail.
-`--pull` will download missing dependencies (and will download the cached
-outputs of previous runs saved in the [run cache]), so you don't need to pull
-all data for your project before running the pipeline. `--allow-missing` will
-skip stages with no other changes than missing data. You can combine the
-`--pull` and `--allow-missing` flags to run a pipeline while only pulling the
-data that is actually needed to run the changed stages.
+To avoid this, use the following flags:
+
+- `--pull` will download missing data as needed, so you don't need to pull all
+  data beforehand.
+- `--allow-missing` will skip stages with no other changes than missing data, so
+  you don't need to download unnecessary data.
+
+You can combine the `--pull` and `--allow-missing` flags to run a pipeline while
+only pulling the data that is actually needed to run the changed stages.
 
 <admon type="warn">
 
@@ -130,39 +133,60 @@ Given the pipeline used in
 
 ```cli
 $ dvc dag
-    +--------------------+
-    | data/pool_data.dvc |
-    +--------------------+
-               *
-               *
-               *
-        +------------+
-        | data_split |
-        +------------+
-         **        **
-       **            **
-      *                **
-+-------+                *
-| train |              **
-+-------+            **
-         **        **
-           **    **
-             *  *
-         +----------+
-         | evaluate |
-         +----------+
+      +--------------------+
+      | data/pool_data.dvc |
+      +--------------------+
+                 *
+                 *
+                 *
+          +------------+
+          | data_split |
+          +------------+
+           **         **
+         **             **
+        *                 **
+  +-------+                 *
+  | train |*                *
+  +-------+ ****            *
+      *         ***         *
+      *            ****     *
+      *                **   *
++-----------+         +----------+
+| sagemaker |         | evaluate |
++-----------+         +----------+
 ```
 
 If we are in a machine where all the data is missing:
 
 ```cli
 $ dvc status
-Not in cache:
-  (use "dvc fetch <file>..." to download files)
-        models/model.pkl
-        data/pool_data/
-        data/test_data/
-        data/train_data/
+data_split:
+        changed deps:
+                deleted:            data/pool_data
+        changed outs:
+                not in cache:       data/test_data
+                not in cache:       data/train_data
+train:
+        changed deps:
+                deleted:            data/train_data
+        changed outs:
+                not in cache:       models/model.pkl
+                not in cache:       models/model.pth
+                not in cache:       results/train
+evaluate:
+        changed deps:
+                deleted:            data/test_data
+                deleted:            models/model.pkl
+        changed outs:
+                not in cache:       results/evaluate
+sagemaker:
+        changed deps:
+                deleted:            models/model.pth
+        changed outs:
+                not in cache:       model.tar.gz
+data/pool_data.dvc:
+        changed outs:
+                not in cache:       data/pool_data
 ```
 
 We can modify the `evaluate` stage and DVC will only pull the necessary data to
@@ -177,6 +201,46 @@ Stage 'data_split' didn't change, skipping
 Stage 'train' didn't change, skipping
 Running stage 'evaluate':
 ...
+```
+
+After the pipeline completes, the `evaluate` stage is updated but all other
+stages still have missing data:
+
+```cli
+$ dvc status
+data_split:
+        changed deps:
+                deleted:            data/pool_data
+        changed outs:
+                not in cache:       data/train_data
+train:
+        changed deps:
+                deleted:            data/train_data
+        changed outs:
+                not in cache:       models/model.pth
+                not in cache:       results/train
+sagemaker:
+        changed deps:
+                deleted:            models/model.pth
+        changed outs:
+                not in cache:       model.tar.gz
+data/pool_data.dvc:
+        changed outs:
+                not in cache:       data/pool_data
+```
+
+We can run again with `--pull` but not `--allow-missing` to download data for
+unchanged stages in the pipeline:
+
+```cli
+$ dvc exp run --pull
+```
+
+After the pipeline completes, all stages are up to date:
+
+```cli
+$ dvc status
+Data and pipelines are up to date.
 ```
 
 ## Verify Pipeline Status
