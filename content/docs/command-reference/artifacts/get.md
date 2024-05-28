@@ -131,7 +131,8 @@ We can use `dvc artifacts get --show-url` to get the actual location where the
 model is stored:
 
 ```cli
-$ dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --rev=v1.0.0 --show-url
+$ dvc artifacts get https://github.com/iterative/example-get-started.git \
+  text-classification --rev=v1.0.0 --show-url
 https://remote.dvc.org/get-started/files/md5/cf/a72ff6e2575c44f78f423cada5b783
 ```
 
