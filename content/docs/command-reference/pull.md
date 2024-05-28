@@ -10,7 +10,8 @@ Download tracked files or directories from [remote storage] based on the current
 
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [-d] [-f] [-R] [--all-commits] [--run-cache] [--allow-missing]
+                [-d] [-f] [-R] [--all-commits]
+                [--run-cache | --no-run-cache] [--allow-missing]
                 [targets [targets ...]]
 
 positional arguments:
@@ -115,10 +116,10 @@ used to see what files `dvc pull` would download.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to pull from (see
   `dvc remote list`).
 
-- `--run-cache` - downloads all available history of [stage runs] from the
-  `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
-  `dvc repro <stage_name>` is necessary to checkout these files (into the
-  workspace) and update `dvc.lock`.
+- `--run-cache`, `--no-run-cache` - downloads all available history of [stage
+  runs] from the `dvc remote` (to the cache only, like `dvc fetch --run-cache`).
+  Note that `dvc repro <stage_name>` is necessary to checkout these files (into
+  the workspace) and update `dvc.lock`.
 
 - `--allow-missing` - allows the command to succeed even if some files or
   directories are missing.

@@ -46,7 +46,7 @@ module.exports = {
               const stars = await getStars({ owner: 'iterative', repo: 'dvc' })
               return { stars }
             }
-            return { stars: 8888 }
+            return { stars: 12915 }
           }
         }
       }
