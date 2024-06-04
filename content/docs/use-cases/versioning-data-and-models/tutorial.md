@@ -144,13 +144,13 @@ serves as a pointer to the cache.
 Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
 reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
-bunch of files, among them `model.h5` and `metrics.csv`, weights of the trained
+bunch of files, among them `model.weights.h5` and `metrics.csv`, weights of the trained
 model, and [metrics](/doc/command-reference/metrics) history. The simplest way
 to capture the current version of the model is to use `dvc add` again:
 
 ```cli
 $ python train.py
-$ dvc add model.h5
+$ dvc add model.weights.h5
 ```
 
 > We manually added the model output here, which isn't ideal. The preferred way
@@ -159,7 +159,7 @@ $ dvc add model.h5
 Let's commit the current state:
 
 ```cli
-$ git add data.dvc model.h5.dvc metrics.csv .gitignore
+$ git add data.dvc model.weights.h5.dvc metrics.csv .gitignore
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
@@ -169,10 +169,10 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ### Expand to learn more about how DVC works
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
-`model.h5` file with Git. Instead, `dvc add` stores them in the
+`model.weights.h5` file with Git. Instead, `dvc add` stores them in the
 <abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`.
 
-In this case, we created `data.dvc` and `model.h5.dvc`, which contain file
+In this case, we created `data.dvc` and `model.weights.h5.dvc`, which contain file
 hashes that point to cached data. We then `git commit` these `.dvc` files.
 
 </details>
@@ -230,13 +230,13 @@ We will now want to leverage these new labels and retrain the model:
 ```cli
 $ dvc add data
 $ python train.py
-$ dvc add model.h5
+$ dvc add model.weights.h5
 ```
 
 Let's commit the second version:
 
 ```cli
-$ git add data.dvc model.h5.dvc metrics.csv
+$ git add data.dvc model.weights.h5.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
@@ -286,7 +286,7 @@ above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are the result of running some code. In
 our example, `train.py` produces binary files (e.g.
-`bottleneck_features_train.npy`), the model file `model.h5`, and the
+`bottleneck_features_train.npy`), the model file `model.weights.h5`, and the
 [metrics](/doc/command-reference/metrics) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data
@@ -295,17 +295,17 @@ When you have a script that takes some data as an input and produces other data
 > If you tried the commands in the
 > [Switching between workspace versions](#switching-between-workspace-versions)
 > section, go back to the master branch code and data, and remove the
-> `model.h5.dvc` file with:
+> `model.weights.h5.dvc` file with:
 >
 > ```cli
 > $ git checkout master
 > $ dvc checkout
-> $ dvc remove model.h5.dvc
+> $ dvc remove model.weights.h5.dvc
 > ```
 
 ```cli
 $ dvc stage add -n train -d train.py -d data \
-          -o model.h5 -o bottleneck_features_train.npy \
+          -o model.weights.h5 -o bottleneck_features_train.npy \
           -o bottleneck_features_validation.npy -M metrics.csv \
           python train.py
 $ dvc repro
