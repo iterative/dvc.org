@@ -144,9 +144,10 @@ serves as a pointer to the cache.
 Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
 reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
-bunch of files, among them `model.weights.h5` and `metrics.csv`, weights of the trained
-model, and [metrics](/doc/command-reference/metrics) history. The simplest way
-to capture the current version of the model is to use `dvc add` again:
+bunch of files, among them `model.weights.h5` and `metrics.csv`, weights of the
+trained model, and [metrics](/doc/command-reference/metrics) history. The
+simplest way to capture the current version of the model is to use `dvc add`
+again:
 
 ```cli
 $ python train.py
@@ -172,8 +173,8 @@ As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.weights.h5` file with Git. Instead, `dvc add` stores them in the
 <abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`.
 
-In this case, we created `data.dvc` and `model.weights.h5.dvc`, which contain file
-hashes that point to cached data. We then `git commit` these `.dvc` files.
+In this case, we created `data.dvc` and `model.weights.h5.dvc`, which contain
+file hashes that point to cached data. We then `git commit` these `.dvc` files.
 
 </details>
 
