@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroTitleSection from './HeroTitleSection'
 import HeroSection from './HeroSection'
-import GetStartedWithDvcX from './GetStarted/GetStartedWithDvcX'
+import GetStartedWithDatachain from './GetStarted/GetStartedWithDatachain'
 import GetStartedWithDvc from './GetStarted/GetStartedWithDvc'
 import BetterTogether from './BetterTogether'
 
@@ -10,7 +10,7 @@ const Hero = () => {
     <>
       <HeroTitleSection />
       <HeroSection />
-      <GetStartedWithDvcX />
+      <GetStartedWithDatachain />
       <BetterTogether />
       <GetStartedWithDvc />
     </>

@@ -1,17 +1,17 @@
 import React from 'react'
 import HeroContainer from '../../../HeroContainer'
 import { cn } from '../../../../utils'
-import DvcxSlides from '../../LandingHero/DvcxSlides'
+import DatachainSlides from '../../LandingHero/DatachainSlides'
 import GetOnTheWaitlistForm from '../GetOnTheWaitlist/Form'
 
-const GetStartedWithDvcX = () => {
+const GetStartedWithDatachain = () => {
   return (
-    <HeroContainer className="py-10 px-6" id="get-started-dvcx">
-      <div className="flex items-end md:justify-center">
+    <HeroContainer className="py-10 px-6" id="get-started-datachain">
+      <div className="flex items-center md:justify-center">
         <h1 className={cn('text-2xl font-medium')}>Get Started with</h1>
-        <img src="/img/logos/dvcx.svg" alt="DVCx Logo" className="h-12 -ml-1" />
+        <span className="inline-block text-5xl ml-1">🔗</span>
       </div>
-      <DvcxSlides />
+      <DatachainSlides />
       <div className={cn('flex flex-col items-center justify-center w-full')}>
         <GetOnTheWaitlistForm />
       </div>
@@ -19,4 +19,4 @@ const GetStartedWithDvcX = () => {
   )
 }
 
-export default GetStartedWithDvcX
+export default GetStartedWithDatachain
