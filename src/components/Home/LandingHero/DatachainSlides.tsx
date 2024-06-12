@@ -4,10 +4,10 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 const DatachainSlides = () => {
   const {
-    dvcxSlide: { slides }
+    datachainSlide: { slides }
   } = useStaticQuery(graphql`
     query {
-      dvcxSlide {
+      datachainSlide {
         slides {
           title
           description
@@ -16,7 +16,7 @@ const DatachainSlides = () => {
       }
     }
   `) as {
-    dvcxSlide: {
+    datachainSlide: {
       slides: ISlide[]
     }
   }
