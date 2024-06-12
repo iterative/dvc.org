@@ -30,22 +30,23 @@ got created:
 Merge the `values.yaml` file with the following contents:
 
 ```yaml
-scmProviders:
-  gitlab:
-    enabled: true
-
-    # Set this if you're hosting GitLab on a
-    # custom domain
-    url: ''
-
-    clientId: <GitLab OAuth App Client ID>
-    secretKey: <GitLab OAuth App Secret Key>
-    webhookSecret: <GitLab Webhook Secret>
-
+global:
+  scmProviders:
     # Optional
     # This is useful in cases where DVC Studio is on an internal
-    # network, but the webhook endpoint is on an external network
-    # webhookUrl: https://webhook.studio.company.com/webhook/gitlab/
+    # network, but the webhook endpoint is on an external network.
+    # Default: `global.host` value.
+    #webhookHost: ""
+    gitlab:
+      enabled: true
+
+      # Set this if you're hosting GitLab on a
+      # custom domain
+      url: <GitLab URL>
+
+      clientId: <GitLab OAuth App Client ID>
+      secretKey: <GitLab OAuth App Secret Key>
+      webhookSecret: <GitLab Webhook Secret>
 ```
 
 <admon type="info">

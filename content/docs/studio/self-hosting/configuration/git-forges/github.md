@@ -50,6 +50,12 @@ marked with `<>` with the values the steps above:
 ```yaml
 global:
   scmProviders:
+    # Optional
+    # This is useful in cases where DVC Studio is on an internal
+    # network, but the webhook endpoint is on an external network.
+    # Default: `global.host` value.
+    #webhookHost: ""
+
     github:
       enabled: true
 
@@ -63,9 +69,4 @@ global:
       clientId: <GitHub OAuth App Client ID>
       clientSecret: <GitHub OAuth App Client Secret>
       privateKey: <GitHub OAuth App Private Key>
-
-      # Optional
-      # This is useful in cases where DVC Studio is on an internal
-      # network, but the webhook endpoint is on an external network
-      # webhookUrl: https://webhook.studio.company.com/webhook/github/
 ```
