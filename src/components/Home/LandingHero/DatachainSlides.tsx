@@ -2,12 +2,12 @@ import React from 'react'
 import Slides, { ISlide } from './Slides'
 import { graphql, useStaticQuery } from 'gatsby'
 
-const DvcxSlides = () => {
+const DatachainSlides = () => {
   const {
-    dvcxSlide: { slides }
+    datachainSlide: { slides }
   } = useStaticQuery(graphql`
     query {
-      dvcxSlide {
+      datachainSlide {
         slides {
           title
           description
@@ -16,7 +16,7 @@ const DvcxSlides = () => {
       }
     }
   `) as {
-    dvcxSlide: {
+    datachainSlide: {
       slides: ISlide[]
     }
   }
@@ -24,4 +24,4 @@ const DvcxSlides = () => {
   return <Slides slides={slides} terminalSide="left" />
 }
 
-export default DvcxSlides
+export default DatachainSlides

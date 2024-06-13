@@ -96,7 +96,7 @@ const HeroSection = () => {
       {/* Title Section */}
       <SectionWrapper>
         <Section>
-          <img src="/img/logos/dvcx.svg" alt="DVCx Logo" className="h-28" />
+          <span className="inline-block text-8xl">🔗</span>
           <div
             className={cn(
               'flex flex-col gap-4 flex-1 justify-between',
@@ -149,7 +149,7 @@ const HeroSection = () => {
             className={styles.heroViz}
             alt="Visualization"
           />
-          <div className={cn(styles.heroDesc, styles.dvcxDesc)}>
+          <div className={cn(styles.heroDesc, styles.datachainDesc)}>
             <strong>Explore</strong> and <strong>enrich</strong> annotated
             datasets with custom embeddings, auto-labeling, and bias removal at
             billion-file scale — without modifying your data.
@@ -170,12 +170,12 @@ const HeroSection = () => {
           <CTAButton
             className="bg-dark text-light"
             onClick={() => {
-              navigate('#get-started-dvcx', { state: { focusInput: true } })
+              navigate('#get-started-datachain', {
+                state: { focusInput: true }
+              })
             }}
           >
-            <span>
-              Learn about DVC<sup>X</sup>
-            </span>
+            <span>Learn about Datachain</span>
             <ArrowDown className="w-4 md:w-6 animate-bounce" />
           </CTAButton>
         </Section>

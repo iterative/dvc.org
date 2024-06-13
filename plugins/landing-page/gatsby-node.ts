@@ -50,7 +50,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
   if (
     node.internal.type === 'File' &&
     node.sourceInstanceName === 'data' &&
-    (node.relativePath === 'dvc.yml' || node.relativePath === 'dvcx.yml')
+    (node.relativePath === 'dvc.yml' || node.relativePath === 'datachain.yml')
   ) {
     const fileContent = await loadNodeContent(node)
     const homeSlides = yaml.load(fileContent)
@@ -74,19 +74,19 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
       }
       createNode(DvcSlide)
       createParentChildLink({ child: DvcSlide, parent: node })
-    } else if (node.relativePath === 'dvcx.yml') {
-      const DvcxSlide = {
-        id: createNodeId('DvcxSlide'),
+    } else if (node.relativePath === 'datachain.yml') {
+      const DatachainSlide = {
+        id: createNodeId('DatachainSlide'),
         parent: node.id,
         children: [],
         internal: {
-          type: 'DvcxSlide',
+          type: 'DatachainSlide',
           contentDigest: node.internal.contentDigest
         },
         slides: processedSlides
       }
-      createNode(DvcxSlide)
-      createParentChildLink({ child: DvcxSlide, parent: node })
+      createNode(DatachainSlide)
+      createParentChildLink({ child: DatachainSlide, parent: node })
     }
   }
 }
