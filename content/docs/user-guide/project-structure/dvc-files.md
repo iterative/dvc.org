@@ -57,6 +57,7 @@ The following subfields may be present under `outs` entries:
 | `remote`                        | Name of the remote to use for pushing/fetching                                                                                                                                                                            |
 | `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                               |
 | `push`                          | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                              |
+| `explicit`                      | Whether this file or directory should be be affected by `dvc fetch`, `dvc checkout`, or `dvc pull` only when explicitly referenced on the command line (`false` by default)                                               |
 
 [etag]: https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation
 [external outputs]: /doc/user-guide/pipelines/external-dependencies-and-outputs
