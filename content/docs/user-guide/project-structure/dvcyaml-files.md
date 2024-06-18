@@ -94,8 +94,8 @@ If the ID is an arbitrary string, a file path must be provided in the `y` field
 
 <admon icon="book">
 
-Refer to [Visualizing Plots] and `dvc plots show` for more examples, and refer
-to [DVCLive] for a helper to log plots.
+Refer to [Visualizing Plots] and `dvc plots show` for more examples, and refer to
+[DVCLive] for a helper to log plots.
 
 [visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
 
@@ -330,10 +330,9 @@ the same params file, but only certain values will affect their state (see
 
 #### Parameters files
 
-The supported params file formats are YAML 1.2, JSON, TOML 1.0, [and Python].
-[Parameter](#parameters) key/value pairs should be organized in tree-like
-hierarchies inside. Supported value types are: string, integer, float, boolean,
-and arrays (groups of params).
+The supported params file formats are YAML 1.2, JSON, TOML 1.0, [and Python]. [Parameter](#parameters)
+key/value pairs should be organized in tree-like hierarchies inside. Supported value
+types are: string, integer, float, boolean, and arrays (groups of params).
 
 These files are typically written manually (or generated) and they can be
 versioned directly with Git along with other <abbr>workspace</abbr> files.
@@ -711,8 +710,9 @@ $ R train.r --foo 'foo' --bar 1 --bool \
 
 <admon type="tip">
 
-You can combine this with argument parsing libraries such as [R argparse] or
-[Julia ArgParse] to do all the work for you.
+You can combine this with argument parsing libraries such as [R argparse] or [Julia
+ArgParse]
+to do all the work for you.
 
 [r argparse]:
   https://cran.r-project.org/web/packages/argparse/vignettes/argparse.html

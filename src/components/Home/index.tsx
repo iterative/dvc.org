@@ -1,5 +1,3 @@
-import React from 'react'
-
 import WhatsNewModal from './WhatsNewModal'
 
 import SubscribeSection from '../SubscribeSection'

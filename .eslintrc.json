@@ -12,7 +12,9 @@
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
   "env": {
     "browser": true,
@@ -24,6 +26,8 @@
     }
   },
   "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {

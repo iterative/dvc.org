@@ -101,10 +101,9 @@ train:
 
 ### Expand to set up a DVC pipeline.
 
-Let's build an [experimental pipeline] with 2 stages. The first one downloads a
-dataset and uses the parameters defined in the `dataset` section of
-`params.yaml`. The second stage trains an ML model and uses the rest of the
-parameters (entire `train` group).
+Let's build an [experimental pipeline] with 2 stages. The first one downloads a dataset
+and uses the parameters defined in the `dataset` section of `params.yaml`. The second
+stage trains an ML model and uses the rest of the parameters (entire `train` group).
 
 ```yaml
 stages:
@@ -274,13 +273,13 @@ You can run the same code with or without Hydra (or DVC). You can also reuse
 
 You can configure how DVC works with Hydra.
 
-By default, DVC will look for Hydra [config groups] in a `conf` directory, but
-you can set a different directory using `dvc config hydra.config_dir other_dir`.
-This is equivalent to the `config_path` argument in `@hydra.main()`.
+By default, DVC will look for Hydra [config groups] in a `conf` directory, but you
+can set a different directory using `dvc config hydra.config_dir other_dir`. This
+is equivalent to the `config_path` argument in `@hydra.main()`.
 
-Within that directory, DVC will look for [defaults list] in `config.yaml`, but
-you can set a different path using `dvc config hydra.config_name other.yaml`.
-This is equivalent to the `config_name` argument in `@hydra.main()`.
+Within that directory, DVC will look for [defaults list] in `config.yaml`, but you
+can set a different path using `dvc config hydra.config_name other.yaml`. This is
+equivalent to the `config_name` argument in `@hydra.main()`.
 
 Hydra will automatically discover [plugins] in the `hydra_plugins` directory. By
 default, DVC will look for `hydra_plugins` in the root directory of the DVC

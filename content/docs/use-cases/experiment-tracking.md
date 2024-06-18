@@ -11,9 +11,9 @@ resume a line of work.
 (usually with notebooks or speadsheets)_
 
 DVC provides a layer of [experiment management] features out-of-the-box (no need
-for special servers or websites). Running **DVC Experiments** in your workspace
-captures relevant changesets automatically (input data, source code,
-hyperparameters, artifacts, etc.).
+for special servers or websites). Running **DVC Experiments** in your workspace captures
+relevant changesets automatically (input data, source code, hyperparameters, artifacts,
+etc.).
 
 Other tools tend to focus on experiment navigation by saving metrics and
 artifacts that result from your experiments, along with fragile links to code
@@ -29,8 +29,8 @@ instead, and not as a separate system.
 [VS Code extension][ide] (shown) or [DVC Studio]._
 
 When you are ready to share, [DVC Studio] can be the central hub for your team's
-projects, experiments, and models. DVC Studio also gives you the power to run
-experiments in the cloud.
+projects, experiments, and models. DVC Studio also gives you the power to run experiments
+in the cloud.
 
 Major benefits of tracking experiments with DVC:
 

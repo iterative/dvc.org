@@ -1,8 +1,8 @@
 # DVC Configuration
 
 Once initialized in a <abbr>project</abbr>, DVC populates its installation
-directory with [internal files], which include `.dvc/config`, the default
-configuration file.
+directory with [internal files], which include `.dvc/config`, the default configuration
+file.
 
 Config files can be composed manually (or programmatically), or managed with the
 helper command `dvc config`.
@@ -56,13 +56,11 @@ config file (`.dvc/config` by default), supporting different config options
 within:
 
 - [`core`](#core) - main section with the general config options
-- [`remote`](#remote) - sections in the config file that describe [remote
-  storage]
+- [`remote`](#remote) - sections in the config file that describe [remote storage]
 - [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`db`](#db) - sections in the config file that describe [database connections]
 - [`exp`](#exp) - options around [experiments] configuration.
-- [`hydra`](#hydra) - options around [Hydra Composition] for experiment
-  configuration.
+- [`hydra`](#hydra) - options around [Hydra Composition] for experiment configuration.
 - [`parsing`](#parsing) - options around the parsing of [dictionary unpacking].
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
@@ -254,10 +252,11 @@ to, in commands like `import-db`.
 
 Sets the defaults for <abbr>experiment</abbr> configuration.
 
-- `exp.auto_push` - [push experiment] automatically after `dvc exp run` and
-  `dvc exp save`. Accepts values `true` and `false` (default).
+- `exp.auto_push` - [push experiment] automatically after `dvc exp run` and `dvc exp save`.
+  Accepts values `true` and `false` (default).
 - `exp.git_remote` - Git remote name or URL used to [push experiment] and [send
-  live metrics and plots] to [DVC Studio]. Defaults to `origin`.
+  live
+  metrics and plots] to [DVC Studio]. Defaults to `origin`.
 
 [push experiment]: /doc/user-guide/experiment-management/sharing-experiments
 [send live metrics and plots]:
@@ -270,8 +269,7 @@ Sets the defaults for <abbr>experiment</abbr> configuration.
 
 ## hydra
 
-Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra
-Composition].
+Sets the defaults for <abbr>experiment</abbr> configuration via [Hydra Composition].
 
 - `hydra.enabled` - enables Hydra [config composition].
 - `hydra.config_dir` - location of the directory containing Hydra [config
@@ -425,11 +423,10 @@ have no effect.
   or check
   [this guide on how to create an access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
 
-- `studio.offline` - Disables sharing [live experiments] even if `studio.token`
-  is set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can
-  also be specified through `DVC_STUDIO_OFFLINE` environment variable, which
-  will override any value in `studio.offline`. Accepts values `true` and
-  `false`.
+- `studio.offline` - Disables sharing [live experiments] even if `studio.token` is
+  set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can also
+  be specified through `DVC_STUDIO_OFFLINE` environment variable, which will override
+  any value in `studio.offline`. Accepts values `true` and `false`.
 
 - `studio.url` - URL of Studio to use (in case of self-hosted DVC Studio
   instance). This can also be specified through `DVC_STUDIO_URL` environment

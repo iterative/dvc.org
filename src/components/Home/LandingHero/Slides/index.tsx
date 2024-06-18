@@ -1,4 +1,4 @@
-import React, { Reducer, useCallback, useMemo, useReducer } from 'react'
+import { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
 import { MemoizedTypedTerminal } from '../Typed'
 

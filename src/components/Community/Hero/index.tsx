@@ -1,5 +1,3 @@
-import React from 'react'
-
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'

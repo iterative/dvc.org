@@ -1,7 +1,7 @@
 # push
 
-Upload tracked files or directories to [remote storage] based on the current
-<abbr>dvc files</abbr> files.
+Upload tracked files or directories to [remote storage] based on the current <abbr>dvc
+files</abbr> files.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -21,9 +21,9 @@ positional arguments:
 ## Description
 
 The `dvc push` and `dvc pull` commands are the means for uploading and
-downloading data to and from [remote storage] (S3, SSH, GCS, etc.). These
-commands are similar to `git push` and `git pull`, respectively. [Data sharing]
-across environments, and preserving data versions (input datasets, intermediate
+downloading data to and from [remote storage] (S3, SSH, GCS, etc.). These commands
+are similar to `git push` and `git pull`, respectively. [Data sharing] across
+environments, and preserving data versions (input datasets, intermediate
 results, models, `dvc metrics`, etc.) remotely are the most common use cases for
 these commands.
 
@@ -153,8 +153,7 @@ a [pipeline](/doc/command-reference/dag) has been set up with these
 `matrix-train`
 
 Imagine the <abbr>project</abbr> has been modified such that the
-<abbr>outputs</abbr> of some of these stages need to be uploaded to [remote
-storage].
+<abbr>outputs</abbr> of some of these stages need to be uploaded to [remote storage].
 
 ```cli
 $ dvc status --cloud
@@ -193,10 +192,9 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 
 https://www.youtube.com/watch?v=FYmmiAz81G4
 
-Let's take a detailed look at what happens to the [cache directory] as you run
-an experiment locally and push data to remote storage. To set the example
-consider having created a <abbr>project</abbr> with some code, data, and a
-`dvc remote` setup.
+Let's take a detailed look at what happens to the [cache directory] as you run an
+experiment locally and push data to remote storage. To set the example consider having
+created a <abbr>project</abbr> with some code, data, and a `dvc remote` setup.
 
 Some work has been performed in the workspace, and new data is ready for
 uploading to the remote. `dvc status --cloud` will list several files in `new`

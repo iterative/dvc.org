@@ -29,13 +29,13 @@ resource_url = dvc.api.get_url(
 ## Description
 
 Returns the URL string of the storage location (in a [DVC remote] where a target
-file or directory, specified by its `path` in a `repo` (<abbr>DVC
-project</abbr>), is stored.
+file or directory, specified by its `path` in a `repo` (<abbr>DVC project</abbr>),
+is stored.
 
-The URL is formed by reading the project's [remote configuration] and the
-`dvc.yaml` or `.dvc` file where the given `path` is found (`outs` field). The
-schema of the URL returned depends on the [storage type] of the `remote` (see
-the [Parameters](#parameters) section).
+The URL is formed by reading the project's [remote configuration] and the `dvc.yaml`
+or `.dvc` file where the given `path` is found (`outs` field). The schema of the
+URL returned depends on the [storage type] of the `remote` (see the
+[Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
 [Structure of cache directory] and `dvc add` to learn more about how DVC handles
@@ -79,13 +79,11 @@ appropriate library, such as [`boto3`] or [`paramiko`].
   walking up from the current working directory tree).
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, commit hash, or [experiment name]). If `repo` is not a
-  Git repo, this option is ignored. _Default_: `None` (current working tree will
-  be used)
+  a branch or tag name, commit hash, or [experiment name]). If `repo` is not a Git
+  repo, this option is ignored. _Default_: `None` (current working tree will be used)
 
-- `remote` - name of the [DVC remote] to use to form the returned URL string.
-  _Default_: The [default remote](/doc/command-reference/remote/default) of
-  `repo` is used.
+- `remote` - name of the [DVC remote] to use to form the returned URL string. _Default_:
+  The [default remote](/doc/command-reference/remote/default) of `repo` is used.
 
 - `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.

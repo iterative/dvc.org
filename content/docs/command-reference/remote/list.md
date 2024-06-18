@@ -11,9 +11,9 @@ usage: dvc remote list [-h] [--global | --system | --project | --local]
 
 ## Description
 
-Reads [DVC configuration] and prints the list of available remotes, including
-their names and URLs/paths. Remotes are read from the system, global, project,
-and local config files (in that order).
+Reads [DVC configuration] and prints the list of available remotes, including their
+names and URLs/paths. Remotes are read from the system, global, project, and local
+config files (in that order).
 
 [dvc configuration]: /doc/user-guide/project-structure/configuration#remote
 

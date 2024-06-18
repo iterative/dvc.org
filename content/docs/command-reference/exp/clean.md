@@ -14,10 +14,10 @@ Runs housekeeping tasks within the <abbr>DVC repository</abbr>, such as removing
 outdated internal experiments queue message files (to reduce disk space and
 improve performance).
 
-This is done automatically when running [queued experiments]. Running
-`dvc exp clean` manually should not be required for typical use cases, but it
-may be needed in the event that a queue worker unexpectedly crashed, or was
-forcefully killed by something other than DVC commands.
+This is done automatically when running [queued experiments]. Running `dvc exp clean`
+manually should not be required for typical use cases, but it may be needed in the
+event that a queue worker unexpectedly crashed, or was forcefully killed by something
+other than DVC commands.
 
 [queued experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue

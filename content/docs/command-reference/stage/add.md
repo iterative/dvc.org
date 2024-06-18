@@ -73,19 +73,19 @@ is reproduced (see also `dvc gc`). Relevant notes:
   source code changes, DVC knows that the stage needs to be reproduced. (You can
   chose whether to do this.)
 
-- `dvc stage add` checks the [dependency graph] integrity before creating a new
-  stage. For example: two stage cannot specify the same output or overlapping
-  output paths, there should be no cycles, etc.
+- `dvc stage add` checks the [dependency graph] integrity before creating a new stage.
+  For example: two stage cannot specify the same output or overlapping output paths,
+  there should be no cycles, etc.
 
 - DVC does not feed dependency files to the command being run. The program will
   have to read the files itself.
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
-  which generates a single `.dir` entry in the cache (refer to [Structure of
-  cache directory] for more info.)
+  which generates a single `.dir` entry in the cache (refer to [Structure
+  of cache directory] for more info.)
 
-- [external dependencies and outputs] (outside of the <abbr>workspace</abbr>)
-  are also supported (except metrics and plots).
+- [external dependencies and outputs] (outside of the <abbr>workspace</abbr>) are
+  also supported (except metrics and plots).
 
 - Since <abbr>outputs</abbr> are deleted from the workspace before executing
   stage commands, the underlying code should create any directory structures
@@ -95,8 +95,8 @@ is reproduced (see also `dvc gc`). Relevant notes:
   some of the dependencies or outputs are missing from `dvc.yaml`. It is
   possible to [add them to an existing stage].
 
-- Renaming dependencies or outputs requires a [manual process] to update
-  `dvc.yaml` and the project's cache accordingly.
+- Renaming dependencies or outputs requires a [manual process] to update `dvc.yaml`
+  and the project's cache accordingly.
 
 [add them to an existing stage]:
   /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
@@ -397,8 +397,8 @@ We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 
 <admon type="tip">
 
-You can also [use templating] to parse parameters directly from `params.yaml`
-into the stage.
+You can also [use templating] to parse parameters directly from `params.yaml` into
+the stage.
 
 [use templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
 

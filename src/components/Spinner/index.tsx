@@ -1,4 +1,3 @@
-import React from 'react'
 import { cn } from '../../utils'
 
 const Spinner = ({ className }: { className?: string }) => {

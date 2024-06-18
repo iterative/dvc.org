@@ -1,12 +1,9 @@
 # remote
 
-A set of commands to set up and manage [remote storage]:
-[add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename).
+A set of commands to set up and manage [remote storage]: [add](/doc/command-reference/remote/add),
+[default](/doc/command-reference/remote/default), [list](/doc/command-reference/remote/list),
+[modify](/doc/command-reference/remote/modify), [remove](/doc/command-reference/remote/remove),
+and [rename](/doc/command-reference/remote/rename).
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -41,8 +38,8 @@ Learn more about [remote storage].
 
 </admon>
 
-`dvc remote` subcommands read or modify DVC [config files] (`.dvc/config` by
-default). Alternatively, the config files can be edited manually.
+`dvc remote` subcommands read or modify DVC [config files] (`.dvc/config` by default).
+Alternatively, the config files can be edited manually.
 
 [types of storage]:
   /doc/user-guide/data-management/remote-storage#supported-storage-types

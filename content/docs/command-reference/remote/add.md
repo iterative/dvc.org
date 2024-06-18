@@ -27,10 +27,10 @@ positional arguments:
 
 ## Description
 
-Registers a [remote storage] location to save data files (besides the
-<abbr>cache</abbr>) and optionally sets it as the `--default` remote. DVC
-remotes can point to a cloud storage service, an SSH server, network-attached
-storage, or even a directory in the local file system.
+Registers a [remote storage] location to save data files (besides the <abbr>cache</abbr>)
+and optionally sets it as the `--default` remote. DVC remotes can point to a cloud
+storage service, an SSH server, network-attached storage, or even a directory in
+the local file system.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -72,10 +72,9 @@ $ dvc remote add -d temp /tmp/dvcstore
 
 <admon type="info">
 
-If you [installed DVC] via `pip` and plan to use cloud services as remote
-storage, you might need to install these optional dependencies: `[s3]`,
-`[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them
-all. For example:
+If you [installed DVC] via `pip` and plan to use cloud services as remote storage,
+you might need to install these optional dependencies: `[s3]`, `[azure]`, `[gdrive]`,
+`[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all. For example:
 
 ```cli
 $ pip install "dvc[s3]"

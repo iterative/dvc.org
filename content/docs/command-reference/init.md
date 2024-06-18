@@ -134,8 +134,8 @@ revisions to compare.
 
 DVC sets the `core.no_scm` config option value to `true` in the [DVC
 configuration] when initialized this way. This means that even if the project is
-tracked by Git, or if Git is initialized in it later, DVC will keep operating
-detached from Git in this project.
+tracked by Git, or if Git is initialized in it later, DVC will keep operating detached
+from Git in this project.
 
 [dvc configuration]: /doc/user-guide/project-structure/configuration
 

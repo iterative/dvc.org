@@ -1,4 +1,3 @@
-import React from 'react'
 import { PageProps } from 'gatsby'
 
 import MainLayout from '../components/MainLayout'

@@ -162,9 +162,9 @@ analysis and comparison.
 Experimenting in Python interactively (like in notebooks) is great for
 exploration, but eventually you may need a more structured way to run
 reproducible experiments. By configuring <abbr>DVC pipelines</abbr>, you can
-[run experiments] with `dvc exp run`. Pipelines help you organize your ML
-workflow beyond a single notebook or script so you can modularize and
-parametrize your code. See how to [setup a pipeline] to work with DVCLive.
+[run experiments] with `dvc exp run`. Pipelines help you organize your ML workflow
+beyond a single notebook or script so you can modularize and parametrize your code.
+See how to [setup a pipeline] to work with DVCLive.
 
 [release notes]: https://github.com/iterative/dvclive/releases/tag/3.0.0
 [directory]: /doc/dvclive/how-it-works

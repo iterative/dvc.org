@@ -160,9 +160,9 @@ The workspace looks like this:
     └── <code files here>
 ```
 
-This project comes with a predefined HTTP [remote storage]. We can now just run
-`dvc fetch` to download the most recent `model.pkl`, `data.xml`, and other
-DVC-tracked files into our local <abbr>cache</abbr>.
+This project comes with a predefined HTTP [remote storage]. We can now just run `dvc fetch`
+to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
+into our local <abbr>cache</abbr>.
 
 ```cli
 $ dvc status --cloud

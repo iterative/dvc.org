@@ -41,8 +41,8 @@ For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
 command will halt the remaining stage execution and raise an error.
 
-Stages without dependencies nor outputs are considered [always changed], so
-`dvc repro` always runs them.
+Stages without dependencies nor outputs are considered [always changed], so `dvc repro`
+always runs them.
 
 </admon>
 
@@ -159,8 +159,8 @@ final stage.
   option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage command(s) even if they have already been run
-  with the same dependencies and outputs (see the [run cache]). Useful for
-  example if the stage command/s is/are non-deterministic ([not recommended]).
+  with the same dependencies and outputs (see the [run cache]). Useful for example
+  if the stage command/s is/are non-deterministic ([not recommended]).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -184,8 +184,8 @@ final stage.
 
 - `--pull` - attempts to download missing data as needed. This includes (1)
   dependencies of stages to be run, (2) outputs of otherwise unchanged stages to
-  be skipped, (3) [run cache] for stages to be checked out from cache (unless
-  `--no-run-cache` is passed).
+  be skipped, (3) [run cache] for stages to be checked out from cache (unless `--no-run-cache`
+  is passed).
 
 - `--allow-missing` - skip stages with no other changes than missing data.
 

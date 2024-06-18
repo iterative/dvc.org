@@ -1,4 +1,4 @@
-import React from 'react'
+import { Dispatch, useState } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -15,9 +15,9 @@ const RequestAQuoteDialog = ({
   setOpenDialog
 }: {
   openDialog: boolean
-  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenDialog: Dispatch<React.SetStateAction<boolean>>
 }) => {
-  const [pauseDialog, setPauseDialog] = React.useState(false)
+  const [pauseDialog, setPauseDialog] = useState(false)
   const title = 'Request a Quote'
   const description =
     "Fill out the form below and we'll reach out to find a time that works for you!"

@@ -1,8 +1,7 @@
 # pull
 
 Download tracked files or directories from [remote storage] based on the current
-`dvc.yaml` and `.dvc` files, and make them visible in the
-<abbr>workspace</abbr>.
+`dvc.yaml` and `.dvc` files, and make them visible in the <abbr>workspace</abbr>.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -22,11 +21,11 @@ positional arguments:
 ## Description
 
 The `dvc push` and `dvc pull` commands are the means for uploading and
-downloading data to and from [remote storage] (S3, SSH, GCS, etc.). These
-commands are similar to `git push` and `git pull`, respectively. [Data sharing]
-across environments and preserving data versions (input datasets, intermediate
-results, models, `dvc metrics`, etc.) remotely are the most common use cases for
-these commands.
+downloading data to and from [remote storage] (S3, SSH, GCS, etc.). These commands
+are similar to `git push` and `git pull`, respectively. [Data sharing] across
+environments and preserving data versions (input datasets, intermediate results,
+models, `dvc metrics`, etc.) remotely are the most common use cases for these
+commands.
 
 `dvc pull` downloads tracked data from a `dvc remote` to the <abbr>cache</abbr>,
 and links (or copies) the files or directories to the <abbr>workspace</abbr>
@@ -118,8 +117,8 @@ used to see what files `dvc pull` would download.
 
 - `--run-cache`, `--no-run-cache` - downloads all available history of [stage
   runs] from the `dvc remote` (to the cache only, like `dvc fetch --run-cache`).
-  Note that `dvc repro <stage_name>` is necessary to checkout these files (into
-  the workspace) and update `dvc.lock`.
+  Note that `dvc repro <stage_name>` is necessary to checkout these files (into the
+  workspace) and update `dvc.lock`.
 
 - `--allow-missing` - allows the command to succeed even if some files or
   directories are missing.

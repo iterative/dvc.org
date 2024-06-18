@@ -29,8 +29,8 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
 
 The actual data is stored in the project's <abbr>cache</abbr>, and can be
-[pushed](/doc/command-reference/push) to one or more [remote storage] locations
-so the registry can be accessed from other locations and by other people:
+[pushed](/doc/command-reference/push) to one or more [remote storage] locations so
+the registry can be accessed from other locations and by other people:
 
 ```cli
 $ dvc remote add -d myremote s3://mybucket/dvcstore
@@ -174,8 +174,8 @@ $ tree --filelimit=10
 ...
 ```
 
-And let's not forget to `dvc push` data changes to the [remote storage], so
-others can obtain them!
+And let's not forget to `dvc push` data changes to the [remote storage], so others
+can obtain them!
 
 ```cli
 $ dvc push
@@ -187,8 +187,7 @@ Now you know how to to build a lightweight data registry, update it, and get
 files from it. As your registry or team continues to grow, you may have trouble
 managing all artifacts across multiple projects. How do you keep them organized,
 or know which version to use, or share them with others outside your team? DVC
-along with [DVC Studio] can help you scale your registry and address these
-questions.
+along with [DVC Studio] can help you scale your registry and address these questions.
 
 ### Adding metadata
 
@@ -209,18 +208,18 @@ artifacts:
 ```
 
 Once you `git commit` and `git push` this info to a project that's connected to
-[DVC Studio], anyone on your team can see it and filter or search across all
-your projects in the <abbr>model registry</abbr>. Although the artifact above is
-not a model, you can change the filters to use it for any type of artifact:
+[DVC Studio], anyone on your team can see it and filter or search across all your
+projects in the <abbr>model registry</abbr>. Although the artifact above is not a
+model, you can change the filters to use it for any type of artifact:
 
 ![Show Registry Datasets](https://static.iterative.ai/img/registry-show-datasets.gif)
 
 ### Registering versions and assigning stages
 
-[Version numbers] and [stages] signal the commit to use and can trigger
-automated workflows. Just like with software, you can use [semantic versioning]
-to tag releases of your artifacts and to mark artifact versions as in
-production, development, or other stages of their lifecycle:
+[Version numbers] and [stages] signal the commit to use and can trigger automated
+workflows. Just like with software, you can use [semantic versioning] to tag
+releases of your artifacts and to mark artifact versions as in production,
+development, or other stages of their lifecycle:
 
 ![Assign Registry Datasets](https://static.iterative.ai/img/registry-assign-datasets.gif)
 
@@ -230,10 +229,12 @@ actions in your CI/CD workflows when you register a version or assign a stage.
 
 ### Accessing artifacts
 
-Others can [download or stream artifacts] by their version or stage without
-needing access to your Git repository or cloud storage. If you connect your
-[cloud credentials] in [DVC Studio], anyone on your team can access that
-artifact using only a [Studio token], either in the UI or programmatically:
+Others can [download or stream artifacts] by their version or stage without needing
+access to your Git repository or cloud storage. If you connect your [cloud
+credentials]
+in [DVC Studio], anyone on your team can access that artifact using only a [Studio
+token],
+either in the UI or programmatically:
 
 ![Download Registry Datasets](https://static.iterative.ai/img/registry-download-datasets.gif)
 
