@@ -11,7 +11,7 @@
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "heroku-deploy",
+    "heroku-postbuild": "bash node_modules/.bin/heroku-deploy",
     "test": "jest",
     "format": "prettier --write",
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
