@@ -1,4 +1,3 @@
-import React from 'react'
 import cn from 'classnames'
 import { PageProps } from 'gatsby'
 import MainLayout from '../../../components/MainLayout'

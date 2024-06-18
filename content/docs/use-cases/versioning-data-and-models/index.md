@@ -88,7 +88,8 @@ enforce them.
 
 And this is just the beginning. DVC supports multiple advanced features
 out-of-the-box: Build, run, and versioning [data pipelines], [manage
-experiments] effectively, and more.
+experiments]
+effectively, and more.
 
 [data pipelines]: /doc/command-reference/dag
 [manage experiments]: /doc/start/experiments

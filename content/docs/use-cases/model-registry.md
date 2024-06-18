@@ -2,9 +2,9 @@
 
 A **model registry** is a tool to catalog ML models and their versions. Models
 from your data science projects can be discovered, tested, shared, deployed, and
-audited from there. [DVC Studio] model registry enables these capabilities [on
-top of Git][gitops], so you can stick to an existing software engineering stack.
-No more division between ML engineering and operations!
+audited from there. [DVC Studio] model registry enables these capabilities [on top
+of Git][gitops], so you can stick to an existing software engineering stack. No more
+division between ML engineering and operations!
 
 ![](/img/ml_model_registry.jpg) _MLOps from modeling to production_
 

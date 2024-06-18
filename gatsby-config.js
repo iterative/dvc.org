@@ -138,5 +138,6 @@ module.exports = {
   developMiddleware: app => {
     app.use(redirectsMiddleware)
     app.use('/api', apiMiddleware)
-  }
+  },
+  jsxRuntime: 'automatic'
 }

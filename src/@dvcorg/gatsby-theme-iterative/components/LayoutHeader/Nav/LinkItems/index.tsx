@@ -1,4 +1,3 @@
-import React from 'react'
 import cn from 'classnames'
 
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'

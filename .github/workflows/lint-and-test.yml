@@ -21,7 +21,7 @@ jobs:
           cache: 'yarn'
 
       - name: Install All Dependencies
-        run: yarn
+        run: yarn install --immutable
 
       - name: Check Formatting with Prettier
         run: yarn format-check-all

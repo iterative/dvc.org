@@ -10,8 +10,8 @@ Not to be confused with `.dvc` files.
 
 </admon>
 
-- `.dvc/config`: This is the default [DVC configuration] file. It can be edited
-  by hand or with the `dvc config` command.
+- `.dvc/config`: This is the default [DVC configuration] file. It can be edited by
+  hand or with the `dvc config` command.
 
 - `.dvc/config.local`: This is an optional Git-ignored configuration file, that
   will overwrite options in `.dvc/config`. This is useful when you need to
@@ -72,8 +72,8 @@ Not to be confused with `.dvc` files.
 
 ## Structure of the cache directory
 
-The DVC cache is a [content-addressable storage] (by default in `.dvc/cache`),
-which adds a layer of indirection between code and data.
+The DVC cache is a [content-addressable storage] (by default in `.dvc/cache`), which
+adds a layer of indirection between code and data.
 
 There are two ways in which the data is <abbr>cached</abbr>, depending on
 whether it's a single file, or a directory (which may contain multiple files).

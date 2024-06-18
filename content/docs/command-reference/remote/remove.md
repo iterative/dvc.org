@@ -4,8 +4,8 @@ Remove a `dvc remote`.
 
 <admon type="info">
 
-This command affects [DVC configuration] files only. It does not physically
-remove data files stored remotely. See `dvc gc --cloud` for that.
+This command affects [DVC configuration] files only. It does not physically remove
+data files stored remotely. See `dvc gc --cloud` for that.
 
 </admon>
 
@@ -23,8 +23,8 @@ positional arguments:
 
 ## Description
 
-This command removes a section in the [DVC configuration] file. Alternatively,
-it is possible to edit config files manually.
+This command removes a section in the [DVC configuration] file. Alternatively, it
+is possible to edit config files manually.
 
 The `name` argument is required.
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'

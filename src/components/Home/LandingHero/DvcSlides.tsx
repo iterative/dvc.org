@@ -1,4 +1,3 @@
-import React from 'react'
 import Slides, { ISlide } from './Slides'
 import { graphql, useStaticQuery } from 'gatsby'
 

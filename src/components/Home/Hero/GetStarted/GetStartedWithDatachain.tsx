@@ -1,4 +1,3 @@
-import React from 'react'
 import HeroContainer from '../../../HeroContainer'
 import { cn } from '../../../../utils'
 import DatachainSlides from '../../LandingHero/DatachainSlides'

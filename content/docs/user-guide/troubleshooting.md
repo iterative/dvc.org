@@ -12,8 +12,9 @@ custom anchor link is used. Just add {#custom-anchor} after each title:
 Users may encounter errors when running `dvc pull` and `dvc fetch`, like
 `WARNING: Cache 'xxxx' not found.` or
 `ERROR: failed to pull data from the cloud`. The most common cause is changes
-pushed to Git without the corresponding data being uploaded to the [DVC remote].
-Make sure to `dvc push` from the original <abbr>project</abbr>, and try again.
+pushed to Git without the corresponding data being uploaded to the [DVC
+remote]. Make sure to `dvc push` from the original <abbr>project</abbr>, and try
+again.
 
 [dvc remote]: /doc/user-guide/data-management/remote-storage
 
@@ -131,8 +132,8 @@ ssh-add --apple-load-keychain ~/.ssh/ed255
 You may encounter this error when using DVC on different Python versions with
 the same <abbr>DVC project</abbr> directory, for example having created the
 project on Python 3.8. in one environment and later attempting to update it from
-a Python 3.7 env. This is due to temporary [internal directories] that can be
-incompatible with older Python versions once created.
+a Python 3.7 env. This is due to temporary [internal directories] that can be incompatible
+with older Python versions once created.
 
 In these rare situations, it is safe to remove the corresponding tmp directory
 and retry the DVC command. Specifically, one of:

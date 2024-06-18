@@ -239,7 +239,8 @@ When you run [experiments] or otherwise update the data in the plots files,
 those updates will be automatically reflected in your visualizations. To
 [compare between experiments] or Git [revisions], you can use `dvc plots diff`,
 the [plots dashboard] from the [VS Code Extension][dvc extension], or [DVC
-Studio] to share with others.
+Studio]
+to share with others.
 
 ![](/img/plots_compare_vs_code.png)
 
@@ -276,8 +277,7 @@ view.
 
 <tab title="DVC Studio">
 
-Once you have [shared] the results to [DVC Studio], you can
-[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
+Once you have [shared] the results to [DVC Studio], you can [compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
 ![DVC Studio view](/img/dvclive-studio.png)

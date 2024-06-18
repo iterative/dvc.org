@@ -18,10 +18,9 @@ positional arguments:
 By default, lists the names of all available built-in templates.
 
 Sometimes you may need to customize the way `dvc plots` are rendered beyond what
-the built-in [plot templates] allow. You can get the JSON specification for a
-specific built-in template by providing it's name as argument, for example
-`dvc plots templates confusion`. To modify them, use any valid elements of the
-[Vega-Lite specification].
+the built-in [plot templates] allow. You can get the JSON specification for a specific
+built-in template by providing it's name as argument, for example `dvc plots templates confusion`.
+To modify them, use any valid elements of the [Vega-Lite specification].
 
 <admon type="note">
 

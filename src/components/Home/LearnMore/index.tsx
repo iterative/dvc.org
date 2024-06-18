@@ -1,7 +1,6 @@
 import * as styles from './styles.module.css'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import cn from 'classnames'
-import React from 'react'
 
 const logLearnMoreEvent = () => {
   logEvent('Hero', { Item: 'learn-more' })

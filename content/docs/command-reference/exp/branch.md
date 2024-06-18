@@ -15,8 +15,8 @@ positional arguments:
 
 ## Description
 
-Creates a new [Git branch] containing the target `experiment` from the
-experiment's baseline (`HEAD` at the time the experiment was run).
+Creates a new [Git branch] containing the target `experiment` from the experiment's
+baseline (`HEAD` at the time the experiment was run).
 
 If you don't provide a `branch` name, the default one will be based on the name
 of the `experiment`.

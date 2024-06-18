@@ -110,9 +110,9 @@ it is.
 
 ## Modifying remote datasets
 
-If your dataset is in [remote storage] but not downloaded to your workspace,
-it's inconvenient to `dvc pull` the entire dataset to update only one or a few
-files. Instead, you can pull only the files you want to update:
+If your dataset is in [remote storage] but not downloaded to your workspace, it's
+inconvenient to `dvc pull` the entire dataset to update only one or a few files.
+Instead, you can pull only the files you want to update:
 
 ```cli
 $ tree

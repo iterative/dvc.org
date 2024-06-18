@@ -10,8 +10,8 @@ Note that Python 3.8+ is needed to get the latest version of DVClive.
 $ pip install dvclive
 ```
 
-Depending on the type of the [DVClive methods] you plan to use, you might need
-to install optional dependencies:
+Depending on the type of the [DVClive methods] you plan to use, you might need to
+install optional dependencies:
 
 - install `[image]` to use [`log_image`]
 - install `[plots]` to use [`log_plot`]
@@ -19,9 +19,9 @@ to install optional dependencies:
 - install `[markdown]` to use [`make_report`] when `report=md` or
   `report=notebook`
 
-If you use one of the supported [ML frameworks], you can also install the
-optional dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`,
-`[optuna]`, `[xgb]`, `[catalyst]`, `[lgbm]`, `[mmcv]`.
+If you use one of the supported [ML frameworks], you can also install the optional
+dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`, `[optuna]`, `[xgb]`,
+`[catalyst]`, `[lgbm]`, `[mmcv]`.
 
 Use `[all]` to include them all.
 
