@@ -12638,6 +12638,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-google-tagmanager-cookie-consent@npm:0.1.4":
+  version: 0.1.4
+  resolution: "gatsby-plugin-google-tagmanager-cookie-consent@npm:0.1.4"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+    vanilla-cookieconsent: "npm:^3.0.1"
+    web-vitals: "npm:^1.1.2"
+  peerDependencies:
+    gatsby: ^5.0.0
+    react: ^18.0.0 || ^0.0.0
+    react-dom: ^18.0.0 || ^0.0.0
+  checksum: 10c0/011534b759d69f0095b3645222de3f0e598206c87f292b2341da13e43d1b2dc6b8d36658312aaf567f6aabe7289cb49a768197cd99b1aab2b0225569321188d8
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-image@npm:3.13.1, gatsby-plugin-image@npm:^3.13.1":
   version: 3.13.1
   resolution: "gatsby-plugin-image@npm:3.13.1"
@@ -24795,6 +24810,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vanilla-cookieconsent@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "vanilla-cookieconsent@npm:3.0.1"
+  checksum: 10c0/dfb91004aaa14575561c6e6d8dd885b4cb9a867f99cce204802392e2ce725674b6b544b8af39e3eed2c25a9d30357c9ea45dbcef552a49c8445c6b4b0abd7db0
+  languageName: node
+  linkType: hard
+
 "vary@npm:^1, vary@npm:~1.1.2":
   version: 1.1.2
   resolution: "vary@npm:1.1.2"
@@ -24991,6 +25013,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"web-vitals@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "web-vitals@npm:1.1.2"
+  checksum: 10c0/9521ea2e8ca2e4446ba8e3d5430b0c9a9a07e0d6f468a90dc5fab2bab524fb1a699f3874ea392c9e35a63dcf3651b40130d58ebd78e53a406cb9622049bf1403
+  languageName: node
+  linkType: hard
+
 "webidl-conversions@npm:^3.0.0":
   version: 3.0.1
   resolution: "webidl-conversions@npm:3.0.1"
@@ -25158,6 +25187,7 @@ __metadata:
     eslint-plugin-react: "npm:7.34.3"
     gatsby: "npm:5.13.6"
     gatsby-plugin-catch-links: "npm:5.13.1"
+    gatsby-plugin-google-tagmanager-cookie-consent: "npm:0.1.4"
     gatsby-plugin-image: "npm:3.13.1"
     gatsby-plugin-manifest: "npm:5.13.1"
     gatsby-plugin-postcss: "npm:6.13.1"

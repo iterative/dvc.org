@@ -5,6 +5,10 @@ const path = require('path')
 
 const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
 const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
+const {
+  cookieConsentConfig,
+  googleGtagPluginConfig
+} = require('./cookie-config')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -116,6 +120,16 @@ const plugins = [
     }
   }
 ]
+
+if (process.env.GATSBY_GTM_ID) {
+  plugins.push({
+    resolve: `gatsby-plugin-google-tagmanager-cookie-consent`,
+    options: {
+      cookieConsentConfig,
+      ...googleGtagPluginConfig
+    }
+  })
+}
 
 if (process.env.ANALYZE) {
   plugins.push({
