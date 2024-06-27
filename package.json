@@ -54,6 +54,7 @@
     "dotenv": "16.4.5",
     "gatsby": "5.13.6",
     "gatsby-plugin-catch-links": "5.13.1",
+    "gatsby-plugin-google-tagmanager": "5.13.1",
     "gatsby-plugin-image": "3.13.1",
     "gatsby-plugin-manifest": "5.13.1",
     "gatsby-plugin-postcss": "6.13.1",
