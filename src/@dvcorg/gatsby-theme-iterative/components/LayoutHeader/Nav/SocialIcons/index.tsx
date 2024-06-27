@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SocialIcon, {
   ISocialIconProps
 } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'

@@ -106,8 +106,8 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   $ dvc remote modify myremote kerberos true
   ```
 
-- `kerberos_principal` - [Kerberos principal] to use, in case you have multiple
-  ones (for example service accounts). Only used if `kerberos` is `true`.
+- `kerberos_principal` - [Kerberos principal] to use, in case you have multiple ones
+  (for example service accounts). Only used if `kerberos` is `true`.
 
   ```cli
   $ dvc remote modify myremote kerberos_principal myprincipal

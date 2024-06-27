@@ -145,8 +145,8 @@ See `dvc remote modify` for more command usage details.
                       ssl_verify 'path/to/ca_bundle.pem'
   ```
 
-- `sse` (`AES256` or `aws:kms`) - [server-side encryption] algorithm to use.
-  None by default
+- `sse` (`AES256` or `aws:kms`) - [server-side encryption] algorithm to use. None
+  by default
 
   ```cli
   $ dvc remote modify myremote sse 'AES256'

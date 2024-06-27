@@ -1,5 +1,4 @@
 /* eslint jsx-a11y/html-has-lang:0 */
-import React from 'react'
 
 interface IHTMLProps {
   htmlAttributes: Record<string, unknown>

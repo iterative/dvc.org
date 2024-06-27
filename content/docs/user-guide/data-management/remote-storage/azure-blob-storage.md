@@ -36,9 +36,8 @@ account.
 </admon>
 
 A storage account name (`account_name`) is always needed. DVC tries to
-authenticate with its [default credential] by default. This uses environment
-variables (usually set during [Azure CLI configuration]) or data from certain
-Microsoft applications.
+authenticate with its [default credential] by default. This uses environment variables
+(usually set during [Azure CLI configuration]) or data from certain Microsoft applications.
 
 ```cli
 $ dvc remote modify myremote account_name 'mystorage'
@@ -82,8 +81,8 @@ order).
 
 The following params are listed in the order in which they are tried.
 
-- A [connection string] (`connection_string`) is used if given (recommended)
-  (`account_name` is ignored since it's included in the connection string).
+- A [connection string] (`connection_string`) is used if given (recommended) (`account_name`
+  is ignored since it's included in the connection string).
 
   ```cli
   $ dvc remote modify --local myremote \
@@ -202,16 +201,16 @@ See `dvc remote modify` for more command usage details.
   Default is `false`.
 
 - `exclude_visual_studio_code_credential` - If `true`, excludes Visual Studio
-  Code credential source for Azure Remote. See [Azure credentials
-  documentation]. Default is `false`.
+  Code credential source for Azure Remote. See [Azure
+  credentials documentation]. Default is `false`.
 
 - `exclude_shared_token_cache_credential` - If `true`, excludes the shared token
-  cache credential source for Azure Remote. See [Azure credentials
-  documentation]. Default is `false`.
+  cache credential source for Azure Remote. See [Azure
+  credentials documentation]. Default is `false`.
 
 - `exclude_managed_identity_credential` - If `true`, excludes the managed
-  identity credential source for Azure Remote. See [Azure credentials
-  documentation]. Default is `false`.
+  identity credential source for Azure Remote. See [Azure
+  credentials documentation]. Default is `false`.
 
 [Azure credentials documentation]:
   https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python

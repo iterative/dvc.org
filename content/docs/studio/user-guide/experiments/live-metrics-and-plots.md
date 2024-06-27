@@ -44,9 +44,9 @@ steps:
 <admon type="tip">
 
 If the code is running outside of your Git repository (for example, in
-[Databricks] or [SageMaker jobs]), you lose the benefit of automatically
-tracking metrics and plots with Git, but you can send live updates to Studio if
-you set the `DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` environment variables:
+[Databricks] or [SageMaker jobs]), you lose the benefit of automatically tracking
+metrics and plots with Git, but you can send live updates to Studio if you set the
+`DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` environment variables:
 
 ```cli
 $ export DVC_STUDIO_TOKEN="<token>"
@@ -64,9 +64,9 @@ $ export DVC_EXP_GIT_REMOTE="https://github.com/<org>/<repo>"
 
 In the training job (which has been configured as detailed above), whenever you
 log your metrics or plots using [DVCLive], they will be automatically sent to
-DVC Studio. See [DVC config] for how to enable/disable live experiment updates
-and how to configure a different DVC Studio URL or Git repository. Here is an
-example of how you can use [DVCLive] in your training code:
+DVC Studio. See [DVC config] for how to enable/disable live experiment updates and
+how to configure a different DVC Studio URL or Git repository. Here is an example
+of how you can use [DVCLive] in your training code:
 
 ```py
 from dvclive import Live

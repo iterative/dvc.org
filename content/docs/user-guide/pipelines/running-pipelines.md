@@ -346,9 +346,8 @@ true
 ## Debugging Stages
 
 If you are using advanced features to interpolate values for your pipeline, like
-[templating] or [Hydra composition], you can get the interpolated values by
-running `dvc repro -vv` or `dvc exp run -vv`, which will include information
-like:
+[templating] or [Hydra composition], you can get the interpolated values by running
+`dvc repro -vv` or `dvc exp run -vv`, which will include information like:
 
 ```cli
 2023-05-18 07:38:43,955 TRACE: Hydra composition enabled.

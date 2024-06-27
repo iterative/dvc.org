@@ -100,10 +100,10 @@ DVC supports several types of external locations (protocols):
 <admon type="info">
 
 If you installed DVC via `pip` and plan to use cloud services as [remote
-storage], you might need to install these optional dependencies: `[s3]`,
-`[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them
-all. The command should look like this: `pip install "dvc[s3]"`. (This example
-installs `boto3` library along with DVC to support S3 storage.)
+storage], you might need to install these optional dependencies: `[s3]`, `[azure]`,
+`[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include them all. The command
+should look like this: `pip install "dvc[s3]"`. (This example installs `boto3` library
+along with DVC to support S3 storage.)
 
 </admon>
 
@@ -116,10 +116,9 @@ installs `boto3` library along with DVC to support S3 storage.)
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
 
-DVC also supports capturing [cloud versioning] information from certain cloud
-storage providers. When the `--version-aware` option is provided or when the
-`url` argument includes a supported cloud versioning ID, DVC will import the
-specified version.
+DVC also supports capturing [cloud versioning] information from certain cloud storage
+providers. When the `--version-aware` option is provided or when the `url` argument
+includes a supported cloud versioning ID, DVC will import the specified version.
 
 [cloud versioning]: /doc/user-guide/data-management/cloud-versioning
 
@@ -201,11 +200,10 @@ produces a regular stage in `dvc.yaml`.
 
 - `--fs-config <name>=<value>` - `dvc remote` config options for the target url.
 
-- `--version-aware` - capture [cloud versioning] information of the current
-  version when importing the file. DVC will always
-  [pull](/doc/command-reference/pull) the versioned data from the source and
-  will not [push](/doc/command-reference/push) an additional copy to remote
-  storage.
+- `--version-aware` - capture [cloud versioning] information of the current version
+  when importing the file. DVC will always [pull](/doc/command-reference/pull) the
+  versioned data from the source and will not [push](/doc/command-reference/push)
+  an additional copy to remote storage.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -238,8 +236,8 @@ $ git checkout 3-config-remote
 
 ## Example: Tracking a file from the web
 
-An advanced alternate to the intro of the [Versioning Basics] part of the _Get
-Started_ is to use `dvc import-url`:
+An advanced alternate to the intro of the [Versioning Basics] part of the _Get Started_
+is to use `dvc import-url`:
 
 ```cli
 $ dvc import-url https://data.dvc.org/get-started/data.xml \

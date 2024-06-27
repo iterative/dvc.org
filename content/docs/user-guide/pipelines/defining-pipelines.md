@@ -4,8 +4,8 @@ Pipelines represent data workflows that you want to **reproduce** reliably -- so
 the results are consistent. The typical pipelining process involves:
 
 - Obtain and `dvc add` or `dvc import` the project's initial data requirements
-  (see [Data Versioning]). This <abbr>caches</abbr> the data and generates
-  `.dvc` files.
+  (see [Data Versioning]). This <abbr>caches</abbr> the data and generates `.dvc`
+  files.
 
 - Define the pipeline [stages](#stages) in `dvc.yaml` files (more on this
   later). Example structure:
@@ -169,14 +169,13 @@ the previous section's example).
 A more granular type of dependency is the parameter (`params` field of
 `dvc.yaml`), or _hyperparameters_ in machine learning. These are any values used
 inside your code to tune data processing, or that affect stage execution in any
-other way. For example, training a [Neural Network] usually requires _batch
-size_ and _epoch_ values.
+other way. For example, training a [Neural Network] usually requires _batch size_
+and _epoch_ values.
 
 Instead of hard-coding param values, your code can read them from a structured
 file (e.g. YAML format). DVC can track any key/value pair in a supported
-[parameters file] (`params.yaml` by default). Params are granular dependencies
-because DVC only invalidates stages when the corresponding part of the params
-file has changed.
+[parameters file] (`params.yaml` by default). Params are granular dependencies because
+DVC only invalidates stages when the corresponding part of the params file has changed.
 
 ```yaml
 stages:

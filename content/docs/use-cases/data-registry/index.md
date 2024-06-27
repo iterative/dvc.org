@@ -28,16 +28,15 @@ cloud storage. Advantages:
 - **Data as code**: Leverage Git workflow benefits such as having a commit
   history, branching, pull requests, reviews, and even [CI/CD for your data and
   models lifecycle]. Think "Git for cloud storage".
-- **Security**: DVC-controlled [remote storage] (e.g. Amazon S3) can be
-  configured to limit data access. For example, you can setup read-only
-  endpoints (e.g. an HTTP server) to prevent data deletions or alterations.
+- **Security**: DVC-controlled [remote storage] (e.g. Amazon S3) can be configured
+  to limit data access. For example, you can setup read-only endpoints (e.g. an HTTP
+  server) to prevent data deletions or alterations.
 
 [ci/cd for your data and models lifecycle]:
   /doc/use-cases/ci-cd-for-machine-learning
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
-👩‍💻 Intrigued? Try our [registry tutorial] to learn how DVC looks and feels
-firsthand.
+👩‍💻 Intrigued? Try our [registry tutorial] to learn how DVC looks and feels firsthand.
 
 [registry tutorial]: /doc/use-cases/data-registry/tutorial
 

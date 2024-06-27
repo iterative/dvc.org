@@ -19,16 +19,15 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize [certain data] such as loss
-functions, AUC curves, confusion matrices, etc.
+This command provides a quick way to visualize [certain data] such as loss functions,
+AUC curves, confusion matrices, etc.
 
 All plots defined in `dvc.yaml` are used by default, but you can specify any
-`targets`, which can be plots files or non-file [plot IDs] defined anywhere in
-`dvc.yaml`, or any other files (they don't necessarily have to be defined in
-`dvc.yaml`).
+`targets`, which can be plots files or non-file [plot IDs] defined anywhere in `dvc.yaml`,
+or any other files (they don't necessarily have to be defined in `dvc.yaml`).
 
-The plot style can be customized with [plot templates], using the `--template`
-option. To learn more about plots file formats and templates, see `dvc plots`.
+The plot style can be customized with [plot templates], using the `--template` option.
+To learn more about plots file formats and templates, see `dvc plots`.
 
 [certain data]:
   /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats

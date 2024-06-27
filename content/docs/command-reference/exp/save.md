@@ -46,9 +46,8 @@ use `--include-untracked` (`-I`) on untracked files explicitly (see an
 </admon>
 
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
-persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
-committing them to the Git repo. Unnecessary ones can be [cleared] with
-`dvc exp remove`.
+persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and committing
+them to the Git repo. Unnecessary ones can be [cleared] with `dvc exp remove`.
 
 [review]: /doc/user-guide/experiment-management/comparing-experiments
 [made persistent]:
@@ -58,8 +57,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Options
 
-- `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
-  default one will be generated otherwise, such as `urban-sign`.
+- `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A default
+  one will be generated otherwise, such as `urban-sign`.
 
   <admon type="tip">
 
@@ -123,8 +122,8 @@ Untracked files:
 
 We can inspect results with `dvc metrics show` (or other means) after running
 the experiment (in this case we can do so with `dvc repro` since the example
-project uses a [DVC pipeline]). We are not quite ready for a Git commit, but we
-want to save the results in the repo nonetheless:
+project uses a [DVC pipeline]). We are not quite ready for a Git commit, but we want
+to save the results in the repo nonetheless:
 
 ```cli
 dvc exp save --name extra-trees \

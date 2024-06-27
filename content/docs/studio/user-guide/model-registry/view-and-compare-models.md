@@ -19,8 +19,8 @@ framework, repository, etc.
 DVC Studio consolidates the stages of all the models in the registry, and
 provides a way to filter models by stages.
 
-You can take a look at the [models dashboard] in Iterative's public (read only)
-model registry.
+You can take a look at the [models dashboard] in Iterative's public (read only) model
+registry.
 
 ## Model details page:
 

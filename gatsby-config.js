@@ -117,6 +117,26 @@ const plugins = [
   }
 ]
 
+if (process.env.GATSBY_GTM_ID) {
+  plugins.push({
+    resolve: `gatsby-plugin-google-tagmanager`,
+    options: {
+      id: process.env.GATSBY_GTM_ID,
+
+      // Include GTM in development.
+      //
+      // Defaults to false meaning GTM will only be loaded in production.
+      includeInDevelopment: process.env.GTM_INCLUDE_IN_DEV === `true`,
+
+      // datalayer to be set before GTM is loaded
+      // should be an object or a function that is executed in the browser
+      //
+      // Defaults to null
+      defaultDataLayer: { platform: `gatsby` }
+    }
+  })
+}
+
 if (process.env.ANALYZE) {
   plugins.push({
     resolve: 'gatsby-plugin-webpack-bundle-analyser-v2'
@@ -138,5 +158,6 @@ module.exports = {
   developMiddleware: app => {
     app.use(redirectsMiddleware)
     app.use('/api', apiMiddleware)
-  }
+  },
+  jsxRuntime: 'automatic'
 }

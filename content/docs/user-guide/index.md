@@ -4,9 +4,9 @@
 ## What is DVC?
 -->
 
-**Data Version Control** is a [free], open-source tool for [data management],
-[ML pipeline][ml pipelines] automation, and [experiment management]. This helps
-data science and machine learning teams manage **large datasets**, make projects
+**Data Version Control** is a [free], open-source tool for [data management], [ML
+pipeline][ml pipelines] automation, and [experiment management]. This helps data
+science and machine learning teams manage **large datasets**, make projects
 **reproducible**, and **collaborate** better.
 
 DVC takes advantage of the existing software engineering toolset your team
@@ -32,9 +32,10 @@ this set of principles:
 
 ## Characteristics
 
-- DVC comes as a [VS Code Extension], as a [command line] interface, and as a
-  [Python API]. These options provide a familiar an intuitive **user
-  experience** to a broad range of users.
+- DVC comes as a [VS Code Extension], as a [command line] interface, and as a [Python
+  API].
+  These options provide a familiar an intuitive **user experience** to a broad
+  range of users.
 - **Easy to use**: DVC is quick to [install](/doc/install) and works out of the
   box. It doesn't require special infrastructure, nor does it depend on APIs or
   external services.
@@ -100,9 +101,8 @@ DVC is not fundamentally bound to Git, and can work without it (except
 
 **DVC does not replace Git!** DVC [metafiles] such as `dvc.yaml` and `.dvc`
 files serve as placeholders to version data and ML pipelines. These files change
-along with your data, and you can use Git to place them under [version control]
-as a proxy to the actual data, which is stored in a <abbr>cache</abbr> (outside
-of Git).
+along with your data, and you can use Git to place them under [version control] as
+a proxy to the actual data, which is stored in a <abbr>cache</abbr> (outside of Git).
 
 DVC does, however, provide several commands similar to Git such as `dvc init`,
 `dvc add`, `dvc checkout`, or `dvc push`, which interact with the underlying Git
@@ -125,8 +125,7 @@ repo (if one is being used, which is not required).
   [available]).
 
 - Git-LFS was not made with data science in mind, so it doesn't provide related
-  features (e.g. [ML pipelines], [metrics](/doc/command-reference/metrics),
-  etc.).
+  features (e.g. [ML pipelines], [metrics](/doc/command-reference/metrics), etc.).
 
 - GitHub (common Git hosting service) has a limit of 2 GB per repository.
 
@@ -183,8 +182,8 @@ hard links or symlinks, editing reflinks is always safe, as the original
 
 ### Workflow management systems
 
-Systems to manage data pipelines and [dependency graphs] such as _Airflow_,
-_Luigi_, etc.
+Systems to manage data pipelines and [dependency graphs] such as _Airflow_, _Luigi_,
+etc.
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
   lightweight and easy to create and modify. However, DVC lacks advanced

@@ -28,8 +28,8 @@ with dvc.api.open(
 ## Description
 
 Open a data or model file tracked in a <abbr>DVC project</abbr> and generate a
-corresponding [file object]. The file can be tracked by DVC (as an
-<abbr>output</abbr>) or by Git.
+corresponding [file object]. The file can be tracked by DVC (as an <abbr>output</abbr>)
+or by Git.
 
 [file object]: https://docs.python.org/3/glossary.html#term-file-object
 
@@ -38,9 +38,9 @@ corresponding [file object]. The file can be tracked by DVC (as an
 The exact type of file object depends on the `mode` used. For more details,
 please refer to Python's [`open()`] built-in, which is used under the hood.
 
-This function makes a direct connection to [remote storage], so the file
-contents can be streamed. Your code can process the data [buffer] as it's
-streamed, which optimizes memory usage.
+This function makes a direct connection to [remote storage], so the file contents
+can be streamed. Your code can process the data [buffer] as it's streamed, which
+optimizes memory usage.
 
 [`open()`]: https://docs.python.org/3/library/functions.html#open
 [remote storage]: /doc/user-guide/data-management/remote-storage
@@ -48,8 +48,8 @@ streamed, which optimizes memory usage.
 
 </admon>
 
-`dvc.api.open()` may only be used as a [context manager] (using the `with`
-keyword, as shown in the examples).
+`dvc.api.open()` may only be used as a [context manager] (using the `with` keyword,
+as shown in the examples).
 
 [context manager]:
   https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library
@@ -72,12 +72,12 @@ call – no _context manager_ involved. Neither function utilizes disc space.
   (the current working directory tree is walked up to find it).
 
 - `rev` - Git commit (any [revision] such as a branch or tag name, commit hash,
-  or [experiment name]). If `repo` is not a Git repo, this option is ignored.
-  _Default_: `None` (current working tree will be used)
+  or [experiment name]). If `repo` is not a Git repo, this option is ignored. _Default_:
+  `None` (current working tree will be used)
 
-- `remote` - name of the [DVC remote] to look for the target data. _Default_:
-  The [default remote] of `repo` is used if a `remote` argument is not given.
-  For local projects, the <abbr>cache</abbr> is tried before the default remote.
+- `remote` - name of the [DVC remote] to look for the target data. _Default_: The
+  [default remote] of `repo` is used if a `remote` argument is not given. For
+  local projects, the <abbr>cache</abbr> is tried before the default remote.
 
 - `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.
@@ -186,9 +186,9 @@ directory tree, and look for the file contents of `clean.csv` in its local
 
 ## Example: Choose a specific remote as the data source
 
-Sometimes we may want to choose a specific [remote storage] as source, for
-example if the `repo` has no default remote set. This can be done by providing a
-`remote` argument:
+Sometimes we may want to choose a specific [remote storage] as source, for example
+if the `repo` has no default remote set. This can be done by providing a `remote`
+argument:
 
 ```py
 import dvc.api

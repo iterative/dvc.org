@@ -1,4 +1,3 @@
-import React from 'react'
 import HeroTitleSection from './HeroTitleSection'
 import HeroSection from './HeroSection'
 import GetStartedWithDatachain from './GetStarted/GetStartedWithDatachain'

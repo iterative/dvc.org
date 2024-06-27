@@ -9,12 +9,12 @@ description:
 
 ## Chapters
 
-- **[Data pipelines]** - Use pipelines to describe how models and other data
-  artifacts are built, and provide an efficient way to reproduce them. Think
-  "Makefiles for data and ML projects" done right.
+- **[Data pipelines]** - Use pipelines to describe how models and other data artifacts
+  are built, and provide an efficient way to reproduce them. Think "Makefiles for
+  data and ML projects" done right.
 
-- **[Metrics, parameters, and plots]** - These are first class citizens in DVC
-  pipelines. Capture, evaluate, and visualize ML projects without leaving Git.
+- **[Metrics, parameters, and plots]** - These are first class citizens in DVC pipelines.
+  Capture, evaluate, and visualize ML projects without leaving Git.
 
 [data pipelines]: /doc/start/data-management/data-pipelines
 [metrics, parameters, and plots]:
