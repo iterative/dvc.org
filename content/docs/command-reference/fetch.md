@@ -59,9 +59,10 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
-the workspace. Any `targets` given to this command limit what to fetch. It
-accepts paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and <abbr>stage</abbr> names (found in `dvc.yaml`).
+the workspace (except for outputs with `pull: false` set, see `.dvc` files). Any
+`targets` given to this command limit what to fetch. It accepts paths to tracked
+files or directories (including paths inside tracked directories), `.dvc` files,
+and <abbr>stage</abbr> names (found in `dvc.yaml`).
 
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching
 files/dirs referenced in multiple Git commits.

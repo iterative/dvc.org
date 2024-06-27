@@ -68,9 +68,10 @@ The `dvc remote` used is determined in order, based on
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
-the workspace. Any `targets` given to this command limit what to pull. It
-accepts paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+the workspace (except for outputs with `pull: false` set, see `.dvc` files). Any
+`targets` given to this command limit what to pull. It accepts paths to tracked
+files or directories (including paths inside tracked directories), `.dvc` files,
+and stage names (found in `dvc.yaml`).
 
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable pulling
 files/dirs referenced in multiple Git commits.
