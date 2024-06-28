@@ -217,7 +217,7 @@ $ dvc push
 set up earlier. The remote storage directory should look like this:
 
 ```
-.../dvcstore
+.../dvcstore/files/md5
 └── 22
     └── a1a2931c8370d3aeedd7183606fd7f
 ```
