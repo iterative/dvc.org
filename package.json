@@ -46,8 +46,8 @@
     "@dvcorg/gatsby-theme-iterative": "0.3.18",
     "@dvcorg/websites-server": "0.2.1",
     "@octokit/request": "8.4.0",
-    "@radix-ui/react-dialog": "1.0.5",
-    "@radix-ui/react-label": "2.0.2",
+    "@radix-ui/react-dialog": "1.1.1",
+    "@radix-ui/react-label": "2.1.0",
     "@reach/router": "1.3.4",
     "clsx": "2.1.1",
     "date-fns": "2.30.0",
@@ -64,7 +64,7 @@
     "gatsby-source-rss-feed": "1.2.2",
     "iframe-resizer-react": "1.0.13",
     "isomorphic-fetch": "3.0.0",
-    "lucide-react": "0.395.0",
+    "lucide-react": "0.396.0",
     "moment": "2.30.1",
     "nanoid": "4.0.2",
     "promise-polyfill": "8.3.0",
@@ -102,7 +102,7 @@
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-json": "3.1.0",
-    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-jsx-a11y": "6.9.0",
     "eslint-plugin-prettier": "5.1.3",
     "eslint-plugin-react": "7.34.3",
     "gatsby-plugin-react-helmet": "^6.13.1",
@@ -115,7 +115,7 @@
     "remark-html": "16.0.1",
     "stylelint": "15.11.0",
     "stylelint-config-standard": "34.0.0",
-    "typescript": "5.4.5"
+    "typescript": "5.5.2"
   },
   "cacheDirectories": [
     "node_modules"
