@@ -47,8 +47,8 @@ $ docker save docker.iterative.ai/studio-frontend:$STUDIO_VERSION > studio-front
 $ docker pull docker.iterative.ai/studio-backend:$STUDIO_VERSION
 $ docker save docker.iterative.ai/studio-backend:$STUDIO_VERSION > studio-backend-$STUDIO_VERSION.tar
 
-$ docker pull docker.iterative.ai/studio-dvcx-worker:$STUDIO_VERSION
-$ docker save docker.iterative.ai/studio-dvcx-worker:$STUDIO_VERSION > studio-dvcx-worker-$STUDIO_VERSION.tar
+$ docker pull docker.iterative.ai/studio-datachain-worker:$STUDIO_VERSION
+$ docker save docker.iterative.ai/studio-datachain-worker:$STUDIO_VERSION > studio-datachain-worker-$STUDIO_VERSION.tar
 ```
 
 3. Transfer the Helm chart and Docker images to the instance
@@ -62,7 +62,7 @@ any method that you deem acceptable will do.
 ```cli
 $ docker load -i studio-frontend-$STUDIO_VERSION.tar
 $ docker load -i studio-backend-$STUDIO_VERSION.tar
-$ docker load -i studio-dvcx-worker-$STUDIO_VERSION.tar
+$ docker load -i studio-datachain-worker-$STUDIO_VERSION.tar
 ```
 
 5. Upgrading DVC Studio
