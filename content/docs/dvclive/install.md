@@ -21,7 +21,7 @@ install optional dependencies:
 
 If you use one of the supported [ML frameworks], you can also install the optional
 dependencies: `[huggingface]`, `[lightning]`, `[tf]`, `[fastai]`, `[optuna]`, `[xgb]`,
-`[catalyst]`, `[lgbm]`, `[mmcv]`.
+`[lgbm]`, `[mmcv]`.
 
 Use `[all]` to include them all.
 

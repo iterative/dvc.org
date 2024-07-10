@@ -2,7 +2,6 @@
 
 We currently support the following _ML Frameworks_:
 
-- [Catalyst](/doc/dvclive/ml-frameworks/catalyst)
 - [Fast.ai](/doc/dvclive/ml-frameworks/fastai)
 - [Hugging Face](/doc/dvclive/ml-frameworks/huggingface)
 - [Keras](/doc/dvclive/ml-frameworks/keras)
