@@ -901,10 +901,6 @@
         "source": "ml-frameworks/index.md",
         "children": [
           {
-            "slug": "catalyst",
-            "label": "Catalyst"
-          },
-          {
             "slug": "fastai",
             "label": "Fast.ai"
           },
