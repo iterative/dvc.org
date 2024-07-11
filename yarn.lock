@@ -12820,7 +12820,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-react-helmet@npm:^6.13.1":
+"gatsby-plugin-react-helmet@npm:6.13.1, gatsby-plugin-react-helmet@npm:^6.13.1":
   version: 6.13.1
   resolution: "gatsby-plugin-react-helmet@npm:6.13.1"
   dependencies:
@@ -25128,7 +25128,7 @@ __metadata:
     gatsby-plugin-image: "npm:3.13.1"
     gatsby-plugin-manifest: "npm:5.13.1"
     gatsby-plugin-postcss: "npm:6.13.1"
-    gatsby-plugin-react-helmet: "npm:^6.13.1"
+    gatsby-plugin-react-helmet: "npm:6.13.1"
     gatsby-plugin-sharp: "npm:5.13.1"
     gatsby-plugin-twitter: "npm:5.13.1"
     gatsby-plugin-webpack-bundle-analyser-v2: "npm:1.1.32"
