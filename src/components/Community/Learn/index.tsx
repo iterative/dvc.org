@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import cn from 'classnames'
-import format from 'date-fns/format'
+import { format } from 'date-fns/format'
 
 import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
