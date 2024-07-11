@@ -87,7 +87,7 @@
     "webpack-filter-warnings-plugin": "1.2.1"
   },
   "devDependencies": {
-    "@babel/core": "7.24.7",
+    "@babel/core": "7.24.8",
     "@types/gatsbyjs__reach-router": "2.0.4",
     "@types/isomorphic-fetch": "0.0.39",
     "@types/promise-polyfill": "6.0.6",
