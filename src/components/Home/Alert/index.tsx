@@ -3,9 +3,9 @@ import { cn } from '../../../utils'
 
 const banner = {
   title:
-    'Panel Discussion: Regulation and the need for Reproducibility and Standards in AI/ML',
-  subtitle: 'Webinar | Wednesday, March 13th | 11 am ET',
-  link: 'https://www.linkedin.com/events/regulationandtheneedforreproduc7170514648180482051/about/'
+    'DataChain Open-Source Release - A New Way to Manage your Unstructured Data',
+  subtitle: 'Webinar | Wednesday, July 24th | 11 am ET',
+  link: 'https://www.linkedin.com/events/7217199578704445442/about/'
 }
 
 const Alert = () => (
