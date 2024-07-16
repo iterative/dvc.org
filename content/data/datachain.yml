@@ -3,9 +3,9 @@
     Datasets are getting larger, but the ability to iterate rapidly and
     efficiently is as important as ever.
   terminal: |
-    from datachain.query import C, DatasetQuery
-    from datachain.lib.webdataset import WebDataset
-    from datachain.lib.gpt4_vision import DescribeImage
+    from dvcx.query import C, DatasetQuery
+    from dvcx.lib.webdataset import WebDataset
+    from dvcx.lib.gpt4_vision import DescribeImage
 
     prompt = "How many people in the image?"
 
@@ -21,6 +21,6 @@
     Save the results of a query in a dataset that you can use to train your ML
     models.
   terminal: |
-    $ datachain query my-query.py my-dataset
+    $ dvcx query my-query.py my-dataset
     ..........
     Dataset 'my-dataset' created
