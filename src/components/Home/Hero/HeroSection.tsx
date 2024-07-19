@@ -104,7 +104,7 @@ const HeroSection = () => {
             )}
           >
             <h2 className="text-2xl md:text-3xl font-medium">
-              GenAI data chain
+              GenAI dataset management
             </h2>
             <Badge className="bg-dark text-light">Coming soon</Badge>
           </div>
@@ -175,7 +175,7 @@ const HeroSection = () => {
               })
             }}
           >
-            <span>Learn about Datachain</span>
+            <span>Learn about DVCx</span>
             <ArrowDown className="w-4 md:w-6 animate-bounce" />
           </CTAButton>
         </Section>
