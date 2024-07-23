@@ -10,6 +10,10 @@ export const studioUrl = 'https://studio.iterative.ai'
 // export const cloudUrl = 'https://cloud.dvc.ai'
 export const cloudUrl = studioUrl
 
+// Github Urls
+export const githubDatachainUrl = `https://github.com/iterative/datachain`
+export const githubDvcUrl = `https://github.com/iterative/dvc`
+
 // HubSpot Forms
 interface IHubSpotFormUrlOptions {
   portalId?: string

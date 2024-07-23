@@ -9,6 +9,7 @@ import useStars from '../../../gatsby/hooks/stars'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { navigate } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
+import { githubDatachainUrl, githubDvcUrl } from '../../../utils/externalUrls'
 
 interface ISectionProps {
   className?: string
@@ -90,6 +91,7 @@ export const CTAButton = ({
 
 const HeroSection = () => {
   const stars = useStars()
+  const datachainStars = useStars('datachain')
 
   return (
     <div className="md:border-y-2 md:border-solid md:border-y-light">
@@ -106,7 +108,23 @@ const HeroSection = () => {
             <h2 className="text-2xl md:text-3xl font-medium">
               GenAI data chain
             </h2>
-            <Badge className="bg-dark text-light">Coming soon</Badge>
+            <Link
+              href={githubDatachainUrl}
+              className="no-underline hover:opacity-80"
+            >
+              <Badge className="bg-dark text-light">
+                {datachainStars ? (
+                  shortenNumber(datachainStars, 1)
+                ) : (
+                  <span className="animate-pulse">---</span>
+                )}
+                <img
+                  src="/img/landing/github.svg"
+                  alt="Github Logo"
+                  className="h-5 w-5"
+                />
+              </Badge>
+            </Link>
           </div>
         </Section>
         <Section>
@@ -117,10 +135,7 @@ const HeroSection = () => {
             <h2 className="text-2xl md:text-3xl font-medium">
               Data and model versioning
             </h2>
-            <Link
-              href="https://github.com/iterative/dvc"
-              className="no-underline hover:opacity-80"
-            >
+            <Link href={githubDvcUrl} className="no-underline hover:opacity-80">
               <Badge className={cn('bg-dark text-light')}>
                 {stars ? (
                   shortenNumber(stars, 1)
