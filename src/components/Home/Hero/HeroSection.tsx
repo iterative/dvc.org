@@ -190,7 +190,7 @@ const HeroSection = () => {
               })
             }}
           >
-            <span>Learn about Datachain</span>
+            <span>Learn about DataChain</span>
             <ArrowDown className="w-4 md:w-6 animate-bounce" />
           </CTAButton>
         </Section>
