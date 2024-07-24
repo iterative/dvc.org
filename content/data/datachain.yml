@@ -9,10 +9,10 @@
 
     prompt = "How many people in the image?"
 
-    people = Dataset("s3://my-storage/")                       \
-                  .filter(C.name.glob("*.jpg"))                \
-                  .map(DescribeImage(prompt, max_token = 300)) \
-                  .mutate(num_people = int(C.descr))
+    people = DataChain.from_storage("s3://my-storage/", type="image") \
+                      .filter(C.name.glob("*.jpg"))                   \
+                      .map(DescribeImage(prompt, max_token = 300))    \
+                      .mutate(num_people = int(C.descr))
 
     people.filter(C.num_people > 3)
 
@@ -21,6 +21,9 @@
     Save the results of a query in a dataset that you can use to train your ML
     models.
   terminal: |
-    $ datachain query my-query.py my-dataset
-    ..........
-    Dataset 'my-dataset' created
+    from datachain.lib.dc import C, DataChain
+
+    images = DataChain.from_storage("s3://my-storage/", type="image") \
+                      .filter(C.name.glob("*.jpg"))
+
+    images.save("fashion-product-images")
