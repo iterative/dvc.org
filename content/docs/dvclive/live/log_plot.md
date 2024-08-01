@@ -5,7 +5,7 @@ def log_plot(
     name: str,
     datapoints: pd.DataFrame | np.ndarray | List[Dict],
     x: str,
-    y: str,
+    y: Union[str, list[str]],
     template: Optional[str] = None,
     title: Optional[str] = None,
     x_label: Optional[str] = None,
@@ -72,7 +72,8 @@ or [DVC Studio](/doc/studio/user-guide/experiments/visualize-and-compare).
 
 - `x` - name of the key (present in the dictionaries) to use as the `x` axis.
 
-- `y` - name of the key (present in the dictionaries) to use as the `y` axis.
+- `y` - name of the key or keys (present in the dictionaries) to use as the `y`
+  axis.
 
 - `template` - name of the
   [DVC plots template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
