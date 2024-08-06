@@ -30,7 +30,8 @@ The execution of `dvc checkout` does the following:
 
 - Checks `dvc.lock` and `.dvc` files to compare the hash values of their
   <abbr>outputs</abbr> against the actual files or directories in the
-  <abbr>workspace</abbr> (similar to `dvc status`).
+  <abbr>workspace</abbr> (similar to `dvc status`). Outputs with `pull: false`
+  are not updated unless explicitly mentioned in `targets` (see `.dvc` files).
 
   > Stage outputs must be defined in `dvc.yaml` (and `dvc.lock` contain their
   > hash values), or they'll be skipped with a warning.
