@@ -1,11 +1,5 @@
 # import-db
 
-<admon type="warn" title="Experimental">
-
-This is an experimental command, and is subject to breaking changes.
-
-</admon>
-
 Snapshot a table or a SQL query results from a database into CSV/JSON format.
 
 ```usage
