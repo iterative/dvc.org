@@ -20,8 +20,8 @@ positional arguments:
 
 ## Description
 
-After creating import stages (`.dvc` files) with `dvc import` or
-`dvc import-url`, the data source can change. Use `dvc update` to bring these
+After creating import stages (`.dvc` files) with `dvc import`, `dvc import-url`,
+or `dvc import-db`, the data source can change. Use `dvc update` to bring these
 imported files or directories up to date.
 
 To indicate which import stages to update, we can specify the corresponding
