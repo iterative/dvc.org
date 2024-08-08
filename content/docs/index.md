@@ -2,9 +2,11 @@
 
 <admon type="info">
 
-DVC is a tool for data science that takes advantage of existing software
-engineering toolset. It helps machine learning teams manage large datasets, make
-projects reproducible, and collaborate better.
+🚀 Check out our new sister product
+[DataChain](https://github.com/iterative/datachain)` and give it a ⭐. It works
+upstream and overlaps with DVC if you need to version and process a large number
+of files. Contact us at support@iterative.ai to discuss commercial solutions and
+support for reproducibility and data management for AI.
 
 </admon>
 
@@ -29,8 +31,8 @@ as a [Python library].
     Non-exhaustive list of scenarios DVC can help with
   </card>
 
-  <card href="/doc/command-reference" heading="Command Reference">
-    Manuals for all of DVC's commands
+  <card href="https://github.com/iterative/datachain" heading="🔗 DataChain">
+    Sister and upstream tool to version and wrangle data at scale
   </card>
 
 </cards>
@@ -39,8 +41,9 @@ as a [Python library].
 [community](/community) or use the [support](/support) channels. We are very
 responsive⚡.
 
-✅ Check out our [GitHub repository](https://github.com/iterative/dvc) and give
-us a ⭐ if you like the project!
+✅ Check out our GitHub repositories: [DVC](https://github.com/iterative/dvc)
+and [🔗 DataChain](https://github.com/iterative/datachain) give us a ⭐ if you
+like the projects!
 
 ✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
 improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
