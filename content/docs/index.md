@@ -3,7 +3,7 @@
 <admon type="info">
 
 🚀 Check out our new sister product
-[DataChain](https://github.com/iterative/datachain)` and give it a ⭐. It works
+[DataChain](https://github.com/iterative/datachain) and give it a ⭐. It works
 upstream and overlaps with DVC if you need to version and process a large number
 of files. Contact us at support@iterative.ai to discuss commercial solutions and
 support for reproducibility and data management for AI.
