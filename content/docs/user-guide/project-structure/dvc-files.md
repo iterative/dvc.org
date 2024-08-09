@@ -74,6 +74,7 @@ The following subfields may be present under `deps` entries:
 | `size`                          | Size of the file or directory (sum of all files).                                                                                                                                                                                                |
 | `nfiles`                        | If this dependency is a directory, the number of files inside (recursive).                                                                                                                                                                       |
 | `repo`                          | Only in external dependencies created with `dvc import`: It can contain `url`, `rev`, `rev_lock`, `config` and `remote` (detailed below).                                                                                                        |
+| `db`                            | Only in db dependencies created with `dvc import-db`: It can contain `connection`, `file_format`, `query` and `table` (detailed below).                                                                                                          |
 
 ### Dependency `repo` subfields:
 
@@ -84,5 +85,14 @@ The following subfields may be present under `deps` entries:
 | `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)                                                                                                                                                                                             |
 | `config`   | When `dvc import --config` is used: Path to a [config file](/doc/command-reference/config) that will be merged with the config in the target repository. When both `--remote` and `--remote-config` are used: config options that will be merged with the config in the target repository. See examples section in`dvc import`. |
 | `remote`   | Only when `dvc import --remote` or `--remote-config` is used: name of the `dvc remote` to set as a default or remote config options to merge with a default remote's config in the target repository. See examples section in `dvc import`.                                                                                     |
+
+### Dependency `db` subfields:
+
+| Field         | Description                                                                                                                                                              |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `connection`  | Name of the connection to use. The connection has to be set in the config before use. See [Database Connections](/doc/command-reference/import-db#database-connections). |
+| `query`       | SQL query to snapshot. It is only set if `--sql` option was used on `dvc import-db`. `dvc update` will use this field to re-import.                                      |
+| `table`       | Name of the database table to snapshot. It is only set if `--table` option was used on `dvc import-db`. `dvc update` will use this field to re-import.                   |
+| `file_format` | Export format to use. At the moment, it can be set to either `csv` or `json`.                                                                                            |
 
 [git revision]: https://git-scm.com/docs/revisions
