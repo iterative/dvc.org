@@ -73,7 +73,10 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
 }) => (
   <BasePopup className={styles.otherToolsPopup} isVisible={isVisible}>
     {menuData.products.map(
-      ({ title, iconClass, description, href, target, titleImgClass }, i) => (
+      (
+        { title, icon, iconClass, description, href, target, titleImgClass },
+        i
+      ) => (
         <Link
           className={styles.link}
           href={href}
@@ -81,9 +84,18 @@ export const OtherToolsPopup: React.FC<IPopupProps> = ({
           target={target}
           onClick={closePopup}
         >
-          <div className={cn(styles.linkIcon, iconClass)} />
+          {icon ? (
+            <div
+              className="h-8 w-8 flex justify-end"
+              style={{ gridArea: 'icon' }}
+            >
+              {icon}
+            </div>
+          ) : (
+            <div className={cn(styles.linkIcon, iconClass)} />
+          )}
           <p className={styles.title}>
-            {title}
+            {title} {href === '/' ? ' 👈' : null}
             {titleImgClass && (
               <span className={cn(styles.titleIcon, titleImgClass)}></span>
             )}

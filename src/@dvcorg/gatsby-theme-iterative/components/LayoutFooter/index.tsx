@@ -17,6 +17,8 @@ import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_ic
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
 import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
+import { githubDatachainUrl } from '../../../../utils/externalUrls'
+
 const docsPage = getFirstPage()
 
 interface IFooterLinkData {
@@ -99,12 +101,12 @@ const footerListsData: Array<IFooterListData> = [
     ]
   },
   {
-    header: 'Other Tools',
+    header: 'More Tools',
     links: [
       {
-        href: '/',
-        text: 'DVC',
-        icon: <LogoSVG className={styles.productIcon} />
+        href: githubDatachainUrl,
+        text: 'DataChain',
+        icon: <span className={styles.productIcon}>🔗</span>
       },
       {
         href: 'https://studio.iterative.ai/',

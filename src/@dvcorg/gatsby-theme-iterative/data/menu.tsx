@@ -11,6 +11,8 @@ import {
   INavLinkData,
   INavLinkPopupData
 } from '../components/LayoutHeader/Nav/LinkItems'
+import { githubDatachainUrl } from '../../../utils/externalUrls'
+import { ReactNode } from 'react'
 
 interface ICommunityData {
   title: string
@@ -26,6 +28,7 @@ interface IProductsData {
   description: string
   iconClass: string | null
   href: string
+  icon?: ReactNode
   img: string
   imgAlt: string
   target?: '_blank'
@@ -73,7 +76,7 @@ const menuData: IMenuData = {
       text: 'Support'
     },
     {
-      text: 'Other Tools',
+      text: 'More Tools',
       popupName: 'otherToolsPopup',
       Popup: OtherToolsPopup
     },
@@ -125,6 +128,16 @@ const menuData: IMenuData = {
   ],
   products: [
     {
+      title: 'DataChain',
+      description:
+        'Wrangle unstructured data in Python using AI helpers at scale',
+      href: githubDatachainUrl,
+      iconClass: '',
+      img: '',
+      imgAlt: '',
+      icon: <span className="inline-block text-2xl">🔗</span>
+    },
+    {
       title: 'DVC Studio',
       description: 'Track experiments and share insights from ML projects',
       iconClass: styles.studioIcon,
@@ -133,18 +146,10 @@ const menuData: IMenuData = {
       imgAlt: 'Studio logo'
     },
     {
-      title: 'DVC',
-      description: 'Open-source version control system for ML projects',
-      iconClass: styles.dvcIcon,
-      href: '/',
-      img: '/img/dvc_icon-color--square_vector.svg',
-      imgAlt: 'DVC logo'
-    },
-    {
       title: 'VS Code Extension',
       titleImgClass: styles.vscodeIcon,
       description: 'Local ML model development and experiment tracking',
-      iconClass: null,
+      iconClass: styles.dvcIcon,
       href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
       img: '/img/dvc_icon-color--square_vector.svg',
       imgAlt: 'DVC logo'
