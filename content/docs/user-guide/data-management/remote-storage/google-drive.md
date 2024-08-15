@@ -4,6 +4,15 @@
 ## Google Drive
 -->
 
+<admon type="warn">
+
+There is an ongoing issue and the default Google DVC app is affected. If you see
+"This app is blocked" message, check this
+[ticket](https://github.com/iterative/dvc/issues/10516) for a workaround and
+more details.
+
+</admon>
+
 To start using a Google Drive remote, you only need to add it with a
 [valid URL format](#url-format). Then use any DVC command that needs to connect
 to it (e.g. `dvc pull` or `dvc push` once there's tracked data to synchronize).
