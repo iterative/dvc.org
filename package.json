@@ -43,7 +43,7 @@
     "node": ">=18.x <=21.x"
   },
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "0.3.18",
+    "@dvcorg/gatsby-theme-iterative": "0.3.21",
     "@dvcorg/websites-server": "0.2.1",
     "@iframe-resizer/react": "5.1.5",
     "@octokit/request": "8.4.0",
