@@ -204,7 +204,7 @@ const LayoutFooter: React.FC = () => (
         <p className={styles.companyLabel}>
           By{' '}
           <LogoGradient className="font-extrabold" href="https://dvc.ai">
-            dvc.ai
+            Iterative
           </LogoGradient>
           <span className={styles.companyDescription}>
             <ShowOnly as="span" on="desktop">
