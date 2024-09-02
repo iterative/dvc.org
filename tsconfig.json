@@ -24,6 +24,7 @@
   "include": [
     "node_modules/@dvcorg/gatsby-theme-iterative",
     "./src/**/*",
-    "./*.js"
+    "./*.js",
+    "./*.tsx"
   ]
 }
