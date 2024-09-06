@@ -13,6 +13,7 @@ import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
 import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_icon-color--square_vector.svg'
+import { ReactComponent as DatachainSVG } from '../../../../../static/img/logos/datachain.svg'
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
 import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
@@ -106,7 +107,7 @@ const footerListsData: Array<IFooterListData> = [
       {
         href: githubDatachainUrl,
         text: 'DataChain',
-        icon: <span className={styles.productIcon}>🔗</span>
+        icon: <DatachainSVG className={styles.productIcon} />
       },
       {
         href: 'https://studio.iterative.ai/',

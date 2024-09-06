@@ -12,7 +12,11 @@ const GetStartedWithDatachain = () => {
     <HeroContainer className="py-10 px-6" id="get-started-datachain">
       <div className="flex items-center md:justify-center">
         <h1 className={cn('text-2xl font-medium')}>Get Started with</h1>
-        <span className="inline-block text-5xl ml-1">🔗</span>
+        <img
+          src="/img/logos/datachain.svg"
+          className="ml-2 inline-block h-12"
+          alt="Datachain Logo"
+        />
       </div>
       <DatachainSlides />
       <div className={cn('flex flex-col items-center justify-center w-full')}>

@@ -98,7 +98,7 @@ const HeroSection = () => {
       {/* Title Section */}
       <SectionWrapper>
         <Section>
-          <span className="inline-block text-8xl">🔗</span>
+          <img src="/img/logos/datachain.svg" alt="DVC Logo" className="h-28" />
           <div
             className={cn(
               'flex flex-col gap-4 flex-1 justify-between',
