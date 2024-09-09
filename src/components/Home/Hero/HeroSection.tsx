@@ -98,7 +98,13 @@ const HeroSection = () => {
       {/* Title Section */}
       <SectionWrapper>
         <Section>
-          <img src="/img/logos/datachain.svg" alt="DVC Logo" className="h-28" />
+          <div className="h-28 flex items-center justify-center">
+            <img
+              src="/img/logos/datachain-black.svg"
+              alt="DVC Logo"
+              className="h-16"
+            />
+          </div>
           <div
             className={cn(
               'flex flex-col gap-4 flex-1 justify-between',
@@ -106,7 +112,7 @@ const HeroSection = () => {
             )}
           >
             <h2 className="text-2xl md:text-3xl font-medium">
-              GenAI data chain
+              GenAI DataChain
             </h2>
             <Link
               href={githubDatachainUrl}

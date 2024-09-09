@@ -13,8 +13,8 @@ const GetStartedWithDatachain = () => {
       <div className="flex items-center md:justify-center">
         <h1 className={cn('text-2xl font-medium')}>Get Started with</h1>
         <img
-          src="/img/logos/datachain.svg"
-          className="ml-2 inline-block h-12"
+          src="/img/logos/datachain-black.svg"
+          className="ml-2 inline-block h-8"
           alt="Datachain Logo"
         />
       </div>
