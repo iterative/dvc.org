@@ -14,6 +14,10 @@
   background-image: url('../../../../static/img/vscode-icon.svg');
 }
 
+.datachainIcon {
+  background-image: url('../../../../static/img/logos/datachain-logo.svg');
+}
+
 .other {
   font-weight: 600;
   letter-spacing: 2px;

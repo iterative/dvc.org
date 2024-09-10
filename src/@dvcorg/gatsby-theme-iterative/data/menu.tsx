@@ -132,10 +132,9 @@ const menuData: IMenuData = {
       description:
         'Wrangle unstructured data in Python using AI helpers at scale',
       href: githubDatachainUrl,
-      iconClass: '',
-      img: '',
-      imgAlt: '',
-      icon: <span className="inline-block text-2xl">🔗</span>
+      iconClass: styles.datachainIcon,
+      img: '/img/logos/datachain-logo.svg',
+      imgAlt: 'Datachain logo'
     },
     {
       title: 'DVC Studio',

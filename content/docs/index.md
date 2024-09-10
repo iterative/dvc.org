@@ -31,7 +31,7 @@ as a [Python library].
     Non-exhaustive list of scenarios DVC can help with
   </card>
 
-  <card href="https://github.com/iterative/datachain" heading="🔗 DataChain">
+  <card href="https://github.com/iterative/datachain" heading=" " headingicon="/img/logos/datachain-black.svg">
     Sister and upstream tool to version and wrangle data at scale
   </card>
 
@@ -42,8 +42,9 @@ as a [Python library].
 responsive⚡.
 
 ✅ Check out our GitHub repositories: [DVC](https://github.com/iterative/dvc)
-and [🔗 DataChain](https://github.com/iterative/datachain) give us a ⭐ if you
-like the projects!
+and
+[<img class="inline" width="20px"  src="/img/logos/datachain-logo.svg" /> DataChain](https://github.com/iterative/datachain)
+give us a ⭐ if you like the projects!
 
 ✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
 improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
