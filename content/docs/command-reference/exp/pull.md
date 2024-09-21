@@ -63,9 +63,10 @@ used.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to pull cached files
   from.
 
-- `--run-cache`, `--no-run-cache` - downloads all available history of [stage
-  runs] from the `dvc remote` (to the cache only, like `dvc fetch --run-cache`).
-  Note that `dvc exp run <stage_name>` is necessary to checkout these files.
+- `--run-cache`, `--no-run-cache` - whether to download all available history of
+  [stage runs] from the `dvc remote` (to the cache only, like `dvc fetch --run-cache`).
+  Note that `dvc exp run <stage_name>` is necessary to checkout these files. Default
+  is `--no-run-cache`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. Note that the default
