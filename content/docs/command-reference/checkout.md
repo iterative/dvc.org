@@ -7,7 +7,7 @@ current `dvc.lock` and `.dvc` files.
 
 ```usage
 usage: dvc checkout [-h] [-q | -v] [--summary] [-d] [-R] [-f]
-                    [--relink]
+                    [--relink] [--allow-missing]
                     [targets [targets ...]]
 
 positional arguments:
@@ -102,6 +102,9 @@ its outputs.
   [`cache.type`](/doc/user-guide/project-structure/configuration#cache). This is
   achieved by restoring **all data files or directories** referenced in current
   DVC files (regardless of whether the files/dirs were already present).
+
+- `--allow-missing` - allows the command to succeed even if some files or
+  directories are missing.
 
 - `-h`, `--help` - shows the help message and exit.
 
