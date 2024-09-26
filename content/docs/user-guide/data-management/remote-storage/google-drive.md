@@ -159,12 +159,12 @@ API connections, and its
    ![](/img/gdrive-enable-apis-and-services.png)
 
 4. Go back to **APIs & Services** in the left sidebar, and select **OAuth
-   consent screen**. Chose a **User Type** and click **CREATE**. On the next
+   consent screen**. Choose a **User Type** and click **CREATE**. On the next
    screen, enter an **Application name** e.g. "DVC remote storage", and click
    the **Save** (scroll to bottom).
 
 5. From the left sidebar, select **Credentials**, and click the **Create
-   credentials** dropdown to select **OAuth client ID**. Chose **Desktop app**
+   credentials** dropdown to select **OAuth client ID**. Choose **Desktop app**
    and click **Create** to proceed with a default client name.
 
    ![](/img/gdrive-create-credentials.png)
@@ -304,7 +304,7 @@ heavy usage, it is recommended to rely on
 
    ⚠️ Be careful about sharing the key file with others.
 
-2. Configure the remote to use the service account and tell if where to find the
+2. Configure the remote to use the service account and tell it where to find the
    key file:
 
    ```cli
