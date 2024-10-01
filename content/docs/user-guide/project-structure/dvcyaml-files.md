@@ -773,6 +773,10 @@ vars:
   - config/myapp.yaml
 ```
 
+If you have multiple pipelines in your repository, or if your `params.yaml` file is not in the same
+directory as the `dvc.yaml` file, you must specify the params file path in `vars` in order to use the
+values for templating.
+
 <admon type="info" title="Notes">
 
 Param file paths will be evaluated relative to the directory the `dvc.yaml` file
