@@ -125,16 +125,6 @@
   }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: center;
-  }
-
-  50% {
-    background-position: right center;
-  }
-}
-
 .modal {
   box-sizing: border-box;
   position: absolute;
