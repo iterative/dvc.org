@@ -28,12 +28,7 @@
   width: 154px;
   height: 62px;
   padding: 16px 24px;
-  background: linear-gradient(
-    102.58deg,
-    #945dd6 22.89%,
-    #17d5f5 24.16%,
-    #945dd6 25.62%
-  );
+  background: #945dd6;
   background-size: 600% auto;
   color: #fff;
   border: none;
@@ -43,7 +38,6 @@
   border-radius: 99px;
   font-family: var(--font-base);
   transition: all 0.25s ease-in-out;
-  animation: gradient 2s infinite ease-in-out;
 
   @media screen(xsMax) {
     left: 15px;
