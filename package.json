@@ -46,7 +46,7 @@
     "@dvcorg/gatsby-theme-iterative": "0.3.23",
     "@dvcorg/websites-server": "0.2.1",
     "@iframe-resizer/react": "5.2.6",
-    "@octokit/request": "8.4.0",
+    "@octokit/request": "9.1.3",
     "@radix-ui/react-dialog": "1.1.1",
     "@radix-ui/react-label": "2.1.0",
     "@reach/router": "1.3.4",
