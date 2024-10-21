@@ -43,7 +43,7 @@
   border-radius: 99px;
   font-family: var(--font-base);
   transition: all 0.25s ease-in-out;
-  animation: gradient 2s infinite ease-in-out;
+  animation: gradient 2s 1 ease-in-out;
 
   @media screen(xsMax) {
     left: 15px;
