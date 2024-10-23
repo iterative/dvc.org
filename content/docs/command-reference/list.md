@@ -10,11 +10,11 @@ and by Git.
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--dvc-only]
+usage: dvc list [-h] [-q | -v] [-R|-T] [-L depth] [--dvc-only]
                 [--json] [--rev [<commit>]]
                 [--config <path>] [--remote <name>]
                 [--remote-config [<name>=<value> ...]]
-                [--size]
+                [--size] [--show-hash]
                 url [path]
 
 positional arguments:
@@ -63,6 +63,10 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 - `-R`, `--recursive` - recursively list files in all subdirectories.
 
+- `-T`, `--tree` - recurse into directories as a tree.
+
+- `-L`, `--level <depth>` - limit the depth of recursion.
+
 - `--dvc-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
 
@@ -85,6 +89,8 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
   repository.
 
 - `--size` - show sizes.
+
+- `--show-hash` - show hash value of each item.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
