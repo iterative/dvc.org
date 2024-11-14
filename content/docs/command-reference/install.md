@@ -89,20 +89,20 @@ repos:
       - id: dvc-pre-commit
         language_version: python3
         stages:
-          - commit
+          - pre-commit
       - id: dvc-pre-push
         # use s3/gs/etc instead of all to only install specific cloud support
         additional_dependencies: ['.[all]']
         language_version: python3
         stages:
-          - push
+          - pre-push
       - always_run: true
         id: dvc-post-checkout
         language_version: python3
         stages:
           - post-checkout
     repo: https://github.com/iterative/dvc
-    rev: main
+    rev: 3.56.0
     # rev should be set to a specific revision (e.g. 2.9.5) since pre-commit
     # does not allow using mutable references.
     # If using `main`, see pre-commit guide:
