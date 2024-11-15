@@ -103,7 +103,7 @@ repos:
           - post-checkout
     repo: https://github.com/iterative/dvc
     rev: 3.56.0
-    # rev should be set to a specific revision (e.g. 2.9.5) since pre-commit
+    # rev should be set to a specific revision (e.g. 3.56.0) since pre-commit
     # does not allow using mutable references.
     # If using `main`, see pre-commit guide:
     #    https://pre-commit.com/#using-the-latest-version-for-a-repository
