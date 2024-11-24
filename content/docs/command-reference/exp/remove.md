@@ -8,7 +8,7 @@ Delete specific experiments from the <abbr>project</abbr>.
 
 ```usage
 usage: dvc exp remove [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>]
-                      [--queue | -g <git_remote>]
+                      [--queue | -g <git_remote>] [--keep]
                       [<name> [<name> ...]]
 
 positional arguments:
@@ -39,6 +39,8 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
+
+- `--keep` - keep only the selected experiments and remove all others
 
 - `-h`, `--help` - shows the help message and exit.
 
