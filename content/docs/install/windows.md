@@ -24,6 +24,12 @@ command:
 $ choco install dvc
 ```
 
+## Install with winget
+
+```cli
+$ winget install --id Iterative.DVC -e --source winget
+```
+
 ## Install with conda
 
 <admon type="info">
