@@ -40,7 +40,9 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
 
-- `--keep` - keep only the selected experiments and remove all others
+- `--keep` - changes the default behavior to the opposite for options like -n, --rev.
+   For example -n <num> --keep keeps experiments from the last num commits and removes
+   all other experiments.
 
 - `-h`, `--help` - shows the help message and exit.
 
