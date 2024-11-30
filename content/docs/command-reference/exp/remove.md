@@ -125,3 +125,24 @@ $ dvc exp list myremote
 master:
         conic-ease
 ```
+
+Conversely, to keep only specific experiments (and remove all others), give their names to `dvc exp remove` with the `--keep` flag :
+
+```cli
+$ dvc exp list
+master:
+        major-mela
+        conic-ease
+        lucid-lair
+
+$ dvc exp remove --keep major-mela
+
+$ dvc exp list
+master:
+        major-mela
+
+```
+In this case, the experiments named `conic-ease` and `lucid-lair` are removed, and only `major-mela` is kept.
+The `--keep` flag also works with `--num` (`-n`) and `--rev`, but *not* with `--queue`.
+
+
