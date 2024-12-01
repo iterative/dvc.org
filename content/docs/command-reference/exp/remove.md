@@ -40,9 +40,9 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
 
-- `--keep` - changes the default behavior to the opposite for options like -n, --rev.
-   For example -n <num> --keep keeps experiments from the last num commits and removes
-   all other experiments.
+- `--keep` - changes the default behavior to the opposite for options like `-n`,
+  `--rev`. For example `-n <num> --keep` keeps experiments from the last `num`
+  commits and removes all other experiments.
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -126,7 +126,8 @@ master:
         conic-ease
 ```
 
-Conversely, to keep only specific experiments (and remove all others), give their names to `dvc exp remove` with the `--keep` flag :
+Conversely, to keep only specific experiments (and remove all others), give
+their names to `dvc exp remove` with the `--keep` flag :
 
 ```cli
 $ dvc exp list
@@ -142,7 +143,7 @@ master:
         major-mela
 
 ```
-In this case, the experiments named `conic-ease` and `lucid-lair` are removed, and only `major-mela` is kept.
-The `--keep` flag also works with `--num` (`-n`) and `--rev`, but *not* with `--queue`.
 
-
+In this case, the experiments named `conic-ease` and `lucid-lair` are removed,
+and only `major-mela` is kept. The `--keep` flag also works with `--num` (`-n`)
+and `--rev`, but _not_ with `--queue`.
