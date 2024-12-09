@@ -27,3 +27,15 @@
                       .filter(C.name.glob("*.jpg"))
 
     images.save("fashion-product-images")
+
+- title: Version datasets without copying data
+  description:
+    No expensive data copies, hash calculations, or data movement. Capture and
+    save metadata instead of data.
+  terminal: |
+    from datachain.lib.dc import C, DataChain
+
+    images = DataChain.from_storage("s3://my-storage/", type="image") \
+                      .filter(C.name.glob("*.jpg"))
+
+    images.save("fashion-product-images")

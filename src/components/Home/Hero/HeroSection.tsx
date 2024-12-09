@@ -112,7 +112,7 @@ const HeroSection = () => {
             )}
           >
             <h2 className="text-2xl md:text-3xl font-medium">
-              GenAI DataChain
+              Data management at scale
             </h2>
             <Link
               href={githubDatachainUrl}
@@ -139,7 +139,7 @@ const HeroSection = () => {
             className={cn('flex flex-col gap-4', 'lg:flex-row lg:items-center')}
           >
             <h2 className="text-2xl md:text-3xl font-medium">
-              Data and model versioning
+              Reproducibility with Git
             </h2>
             <Link href={githubDvcUrl} className="no-underline hover:opacity-80">
               <Badge className={cn('bg-dark text-light')}>
@@ -171,15 +171,16 @@ const HeroSection = () => {
             alt="Visualization"
           />
           <div className={cn(styles.heroDesc, styles.datachainDesc)}>
-            <strong>Explore</strong> and <strong>enrich</strong> annotated
-            datasets with custom embeddings, auto-labeling, and bias removal at
-            billion-file scale — without modifying your data.
+            Perfect fit for <strong>processing</strong> and{' '}
+            <strong>versioning</strong> of millions of files in cloud storages.{' '}
+            <strong>Explore</strong> and <strong>enrich</strong> datasets. Build
+            semantic layer for your unstructured data.
           </div>
 
           <div className={cn(styles.heroDesc, styles.dvcDesc)}>
-            <strong>Connect</strong> to versioned data sources and code with
-            pipelines, <strong>track</strong> experiments,{' '}
-            <strong>register</strong> models — all based on GitOps principles.
+            <strong>Version</strong> and save data, <strong>connect</strong> to
+            code, <strong>track</strong> experiments, <strong>register</strong>{' '}
+            models — all based on GitOps principles.
           </div>
         </div>
       </SectionWrapper>
