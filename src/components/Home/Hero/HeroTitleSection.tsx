@@ -31,7 +31,7 @@ const HeroTitleSection = ({ className }: { className?: string }) => {
               </em>
               <br />
             </span>
-            for the <strong className="font-medium">GenAI</strong> era
+            for <strong className="font-medium">AI</strong> projects
           </h1>
           <p className="text-2xl mt-4 leading-normal">
             Free and open source, forever.
