@@ -5,7 +5,6 @@ import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import SocialIcon, {
   ISocialIcon
 } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
@@ -16,7 +15,6 @@ import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_ic
 import { ReactComponent as DatachainSVG } from '../../../../../static/img/logos/datachain-logo.svg'
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
-import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
 import { githubDatachainUrl } from '../../../../utils/externalUrls'
 
@@ -201,23 +199,7 @@ const LayoutFooter: React.FC = () => (
         </Link>
       </div>
       <FooterLists />
-      <div className={styles.bottomRow}>
-        <p className={styles.companyLabel}>
-          By{' '}
-          <LogoGradient className="font-extrabold" href="https://dvc.ai">
-            Iterative
-          </LogoGradient>
-          <span className={styles.companyDescription}>
-            <ShowOnly as="span" on="desktop">
-              {' '}
-              - an open platform to operationalize AI
-            </ShowOnly>
-            <ShowOnly as="span" on="mobile">
-              {' '}
-              An open platform to operationalize AI
-            </ShowOnly>
-          </span>
-        </p>
+      <div className="mx-auto mt-6">
         <FooterSocialIcons />
       </div>
     </LayoutWidthContainer>

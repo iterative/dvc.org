@@ -2813,9 +2813,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dvcorg/gatsby-theme-iterative@npm:0.3.23":
-  version: 0.3.23
-  resolution: "@dvcorg/gatsby-theme-iterative@npm:0.3.23"
+"@dvcorg/gatsby-theme-iterative@npm:0.3.24":
+  version: 0.3.24
+  resolution: "@dvcorg/gatsby-theme-iterative@npm:0.3.24"
   dependencies:
     "@babel/plugin-transform-react-jsx": "npm:^7.23.4"
     "@reach/portal": "npm:^0.18.0"
@@ -2884,7 +2884,7 @@ __metadata:
   peerDependencies:
     gatsby: ^5.0.0
     react: ^18.0.0
-  checksum: 10c0/b067116c5d75e8dc221e7f7b44cbfdcb12a858e95f56df5d0dda0e5820325e8be36653c1137ddd03488b14cd5880bf400b7fab1b75abc668f57bf3b7fe264b16
+  checksum: 10c0/cec8bc7e0d230a5fd1624ad931f4b491ae4546f1887bf25bdd221e082e74098d63efcc4cdd7e4843f74117fa3af2f79a5c352a3c922cab63e7f0c7ecc6efe0be
   languageName: node
   linkType: hard
 
@@ -25447,7 +25447,7 @@ __metadata:
   resolution: "website@workspace:."
   dependencies:
     "@babel/core": "npm:7.25.8"
-    "@dvcorg/gatsby-theme-iterative": "npm:0.3.23"
+    "@dvcorg/gatsby-theme-iterative": "npm:0.3.24"
     "@dvcorg/websites-server": "npm:0.2.1"
     "@iframe-resizer/react": "npm:5.3.1"
     "@octokit/request": "npm:8.4.0"
