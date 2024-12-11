@@ -8,7 +8,7 @@ information.
 
 ## Supported storage providers
 
-Cloud versioning features are only avaible for certain storage providers.
+Cloud versioning features are only available for certain storage providers.
 Currently, it is supported on the following storage types:
 
 - [Amazon S3] (requires [S3 Versioning] enabled buckets)
