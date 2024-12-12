@@ -50,7 +50,7 @@ const plugins = [
   {
     resolve: `gatsby-source-rss-feed`,
     options: {
-      url: `https://iterative.ai/blog/rss.xml`,
+      url: `https://datachain.ai/blog/rss.xml`,
       name: `IterativeBlog`
     }
   },
