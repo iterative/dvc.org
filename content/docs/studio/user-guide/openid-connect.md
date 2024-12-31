@@ -14,7 +14,7 @@ instructions.
 ### Generic configuration details
 
 - OpenID Connect Discovery URL:
-  https://studio.dvc.ai/api/.well-known/openid-configuration
+  https://studio.datachain.ai/api/.well-known/openid-configuration
 
 - Subject claim format: `credentials:{owner}/{name}` where `{owner}` is the name
   of the DVC Studio **user** or **team** owning the credentials, and `{name}` is
@@ -62,7 +62,7 @@ provider "aws" {
 }
 
 locals {
-  provider  = "studio.dvc.ai/api"
+  provider  = "studio.datachain.ai/api"
   condition = "credentials:example-team/example-credentials"
 }
 
@@ -137,7 +137,7 @@ provider "google" {
 }
 
 locals {
-  provider  = "studio.dvc.ai/api"
+  provider  = "studio.datachain.ai/api"
   condition = "credentials:example-team/example-credentials"
 }
 
@@ -226,7 +226,7 @@ provider "azurerm" {
 }
 
 locals {
-  provider  = "studio.dvc.ai/api"
+  provider  = "studio.datachain.ai/api"
   condition = "credentials:example-team/example-credentials"
 }
 
