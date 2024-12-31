@@ -103,4 +103,4 @@ os.environ["DVC_EXP_GIT_REMOTE"] = "https://github.com/<org>/<repo>"
 [web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html
 [live experiment updates]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[DVC Studio]: https://studio.iterative.ai
+[DVC Studio]: https://studio.datachain.ai

@@ -5,7 +5,7 @@ information in DVC Studio and executing actions in it.
 
 The API is hosted under the `/api` route on the DVC Studio server:
 
-- https://studio.iterative.ai/api, or
+- https://studio.datachain.ai/api, or
 - https://your-domain/api in case of
   [self-hosted DVC Studio](/doc/studio/self-hosting/installation).
 

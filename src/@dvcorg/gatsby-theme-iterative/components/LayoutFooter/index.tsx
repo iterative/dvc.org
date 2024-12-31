@@ -108,7 +108,7 @@ const footerListsData: Array<IFooterListData> = [
         icon: <DatachainSVG className={styles.productIcon} />
       },
       {
-        href: 'https://studio.iterative.ai/',
+        href: 'https://studio.datachain.ai/',
         text: 'DVC Studio',
         icon: <StudioSVG className={styles.productIcon} />,
         target: '_blank'

@@ -92,7 +92,7 @@ with Live() as live:
       live.next_step()
 ```
 
-In [DVC Studio](https://studio.iterative.ai/) and the
+In [DVC Studio](https://studio.datachain.ai/) and the
 [DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
 folders following this pattern will be rendered using an image slider:
 

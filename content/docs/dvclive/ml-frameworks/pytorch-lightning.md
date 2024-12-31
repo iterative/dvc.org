@@ -188,4 +188,4 @@ dvclive/metrics/train/epoch/metric.tsv
 [`live`]: /doc/dvclive/live
 [`ModelCheckpoint`]:
   https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html
-[DVC Studio]: https://studio.iterative.ai
+[DVC Studio]: https://studio.datachain.ai

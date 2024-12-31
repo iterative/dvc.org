@@ -58,7 +58,7 @@ import os
 import requests
 
 
-url = "https://studio.iterative.ai/api/model-registry/get-download-uris"
+url = "https://studio.datachain.ai/api/model-registry/get-download-uris"
 token = os.environ["DVC_STUDIO_TOKEN"]
 headers = {"Authorization": f"token {token}"}
 params = {
@@ -78,7 +78,7 @@ for rel_path, obj_url in json.loads(response.content).items():
 <tab title="CLI">
 
 ```cli
-$ curl "https://studio.iterative.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0" --header "Authorization:token ${DVC_STUDIO_TOKEN}"
+$ curl "https://studio.datachain.ai/api/model-registry/get-download-uris?repo=git@github.com:iterative/demo-bank-customer-churn.git&name=randomforest-model&version=v2.0.0" --header "Authorization:token ${DVC_STUDIO_TOKEN}"
 
 {
     ".mlem/model/clf-model": "https://sandbox-datasets-iterative.s3.amazonaws.com/bank-customer-churn/86/bd02376ac675568ba2fac566169ef9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU7UXIWDIQFPCO76Q%2F20230706%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230706T134619Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6807259ddd1f4448ed1e3c5d4503039884f7779381ee556175096b0a884ba1a6"

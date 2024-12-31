@@ -276,7 +276,7 @@ Removed experiments: unwet-jinn
 
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
 [pull]: #pull-experiments

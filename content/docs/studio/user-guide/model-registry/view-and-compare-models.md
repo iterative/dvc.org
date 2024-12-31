@@ -79,6 +79,6 @@ experimental iterations and make a decision to register a new version out of the
 latter.
 
 [gto]: /doc/gto
-[models dashboard]: https://studio.iterative.ai/team/Iterative/models
+[models dashboard]: https://studio.datachain.ai/team/Iterative/models
 [model detail page]:
-  https://studio.iterative.ai/team/Iterative/models/PTzV-9EJgmZ6TGspXtwKqw==/lightgbm-model/v2.0.1
+  https://studio.datachain.ai/team/Iterative/models/PTzV-9EJgmZ6TGspXtwKqw==/lightgbm-model/v2.0.1

@@ -239,7 +239,7 @@ either in the UI or programmatically:
 ![Download Registry Datasets](https://static.iterative.ai/img/registry-download-datasets.gif)
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
-[DVC Studio]: https://studio.iterative.ai
+[DVC Studio]: https://studio.datachain.ai
 [Version numbers]: /doc/studio/user-guide/model-registry/register-version
 [stages]: /doc/studio/user-guide/model-registry/assign-stage
 [semantic versioning]: https://semver.org

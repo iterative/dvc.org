@@ -172,4 +172,4 @@ See how to [setup a pipeline] to work with DVCLive.
 [run experiments]: /doc/user-guide/experiment-management/running-experiments
 [setup a pipeline]: /doc/dvclive/how-it-works#setup-to-run-with-dvc
 [access is enabled]: /doc/start/experiments/experiment-tracking#sharing
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai

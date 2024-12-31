@@ -181,7 +181,7 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [dvc extension for vs code]: /doc/vs-code-extension
 [live experiment updates]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai
 [dvc config]: /doc/user-guide/project-structure/configuration#studio
 [pipelines]: /doc/user-guide/pipelines
 [external dependencies and outputs]:

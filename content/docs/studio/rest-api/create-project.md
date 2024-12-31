@@ -27,7 +27,7 @@ Here are the possible values for each parameter in the request json:
   This field is mandatory.
 - `public` (boolean, default: `false`) - specifies whether the project should be
   public (`true`) or not (`false`). A public project, such as the
-  [example-get-started](https://studio.iterative.ai/team/Iterative/projects/example-get-started-zde16i6c4g)
+  [example-get-started](https://studio.datachain.ai/team/Iterative/projects/example-get-started-zde16i6c4g)
   demo project, can be accessed by anyone.
 - `team_name`(string) - the name of the team associated with the project if we
   want to create the project in team space. This field is optional. If team name
@@ -56,7 +56,7 @@ Here is an example JSON response from the API request:
   "projects": [
     {
       "id": "tsanhawn9y",
-      "url": "https://studio.iterative.ai/user/amritghimire/projects/example-get-started-tsanhawn9y",
+      "url": "https://studio.datachain.ai/user/amritghimire/projects/example-get-started-tsanhawn9y",
       "name": "example-get-started"
     }
   ]
@@ -70,7 +70,7 @@ the necessary information about the created project:
   "tsanhawn9y".
 - `url`: The URL of the created project. You can access the project using this
   URL. In this example, the project URL is
-  `https://studio.iterative.ai/user/amritghimire/projects/example-get-started-tsanhawn9y`.
+  `https://studio.datachain.ai/user/amritghimire/projects/example-get-started-tsanhawn9y`.
 - `name`: The name of the created project. In this example, the project name is
   "example-get-started".
 
@@ -95,7 +95,7 @@ import os
 import requests
 
 
-url = "https://studio.iterative.ai/api/create-project"
+url = "https://studio.datachain.ai/api/create-project"
 token = os.environ["DVC_STUDIO_TOKEN"]
 payload = json.dumps({
   "repo_url": "https://github.com/amritghimire/monorepo-model-registry-fixture",
@@ -120,7 +120,7 @@ for project in response.json()["projects"]:
 <tab title="CLI">
 
 ```cli
-$ curl --location 'https://studio.iterative.ai/api/create-project' \
+$ curl --location 'https://studio.datachain.ai/api/create-project' \
 --header "Authorization:token ${DVC_STUDIO_TOKEN}" \
 --header 'Content-Type: application/json' \
 --data '{
@@ -137,7 +137,7 @@ $ curl --location 'https://studio.iterative.ai/api/create-project' \
 
 <admon type="tip">
   If you are interacting with Self hosted Studio, remember to replace the URL
-  https://studio.iterative.ai with the URL of the self-hosted studio.
+  https://studio.datachain.ai with the URL of the self-hosted studio.
 </admon>
 
 [DVC Studio client access token]:

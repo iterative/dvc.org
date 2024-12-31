@@ -1,6 +1,6 @@
 # DVC Studio
 
-[DVC Studio](https://studio.iterative.ai/) is a web application that enables
+[DVC Studio](https://studio.datachain.ai/) is a web application that enables
 Machine Learning teams to seamlessly
 
 - [Run and track experiments](/doc/use-cases/experiment-tracking)
@@ -11,7 +11,7 @@ It works on top of [DVC](https://dvc.org/) and [Git](https://git-scm.com/),
 maintaining Git as the single-source-of-truth for your data, experiments and
 models.
 
-Sign in to [DVC Studio](https://studio.iterative.ai/) using your GitHub.com,
+Sign in to [DVC Studio](https://studio.datachain.ai/) using your GitHub.com,
 GitLab.com, or Bitbucket.org account, or with your email address. Explore the
 demo projects and models, and
 [let us know](/doc/studio/user-guide/troubleshooting#support) if you need any

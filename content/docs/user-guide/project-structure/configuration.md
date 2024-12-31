@@ -66,7 +66,7 @@ within:
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
 - [`studio`](#studio) - options for configuring
-  [DVC Studio](https://studio.iterative.ai/) token
+  [DVC Studio](https://studio.datachain.ai/) token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
@@ -261,7 +261,7 @@ Sets the defaults for <abbr>experiment</abbr> configuration.
 [push experiment]: /doc/user-guide/experiment-management/sharing-experiments
 [send live metrics and plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai
 
 </details>
 
@@ -419,7 +419,7 @@ have no effect.
   config. This can also be specified through `DVC_STUDIO_TOKEN` environment
   variable, which will override any value in `studio.token`.
 
-  [Get the token](https://studio.iterative.ai/user/_/profile?section=accessToken)
+  [Get the token](https://studio.datachain.ai/user/_/profile?section=accessToken)
   or check
   [this guide on how to create an access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
 
@@ -431,7 +431,7 @@ have no effect.
 - `studio.url` - URL of Studio to use (in case of self-hosted DVC Studio
   instance). This can also be specified through `DVC_STUDIO_URL` environment
   variable, which will override any value in `studio.url`. If not set,
-  `https://studio.iterative.ai` is used.
+  `https://studio.datachain.ai` is used.
 
 [live experiments]:
   /docs/studio/user-guide/projects-and-experiments/live-metrics-and-plots

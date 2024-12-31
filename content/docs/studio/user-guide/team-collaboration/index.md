@@ -172,7 +172,7 @@ Details on how to configure SSO for your team can be found
 
 Once the SSO configuration is complete, users can login to DVC Studio using
 their team's login page at
-`http://studio.iterative.ai/api/teams/<TEAM_NAME>/sso`. They can also login
+`http://studio.datachain.ai/api/teams/<TEAM_NAME>/sso`. They can also login
 directly from their Okta dashboards by clicking on the DVC Studio integration
 icon.
 
