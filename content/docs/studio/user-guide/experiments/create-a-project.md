@@ -10,7 +10,7 @@ In this section, you will learn how to:
 
 To add a new project, follow these steps.
 
-1. Sign in to [DVC Studio](https://studio.iterative.ai/) using your GitHub.com,
+1. Sign in to [DVC Studio](https://studio.datachain.ai/) using your GitHub.com,
    GitLab.com, or Bitbucket.org account, or with your email address.
 
 2. Click on `Add a Project`. All the organizations that you have access to will

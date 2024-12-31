@@ -43,7 +43,7 @@ supporting all stages of ML model lifecycle.
 To begin with this integrated approach to managing your ML models, [start
 managing models] with DVC!
 
-[DVC Studio]: https://studio.iterative.ai
+[DVC Studio]: https://studio.datachain.ai
 [gitops]: https://www.gitops.tech/
 [versions]: /doc/use-cases/versioning-data-and-models
 [start managing models]: /doc/start/model-registry

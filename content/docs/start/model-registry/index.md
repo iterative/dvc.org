@@ -30,7 +30,7 @@ https://www.youtube.com/watch?v=T7MBFpnSr9Q
 These are captured in our [example-get-started-experiments] repo. You can [fork
 it][example-get-started-experiments-fork] to follow along, or you can take a
 look at our
-[public model registry](https://studio.iterative.ai/team/Iterative/models) (read
+[public model registry](https://studio.datachain.ai/team/Iterative/models) (read
 only) to get a feel for what's possible.
 
 [example-get-started-experiments]:

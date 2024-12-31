@@ -1,6 +1,6 @@
-// studio.iterative.ai
+// studio.datachain.ai
 
-export const studioUrl = 'https://studio.iterative.ai'
+export const studioUrl = 'https://studio.datachain.ai'
 
 // cloud.dvc.ai
 

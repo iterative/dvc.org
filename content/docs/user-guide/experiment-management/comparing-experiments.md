@@ -335,7 +335,7 @@ artifacts, etc.) related with the experiments, you can use `dvc gc`.
 
 [dvc extension for vs code]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 [visualizing and comparing experiments]:
   /doc/studio/user-guide/experiments/visualize-and-compare

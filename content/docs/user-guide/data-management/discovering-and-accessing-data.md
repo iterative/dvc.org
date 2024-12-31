@@ -155,5 +155,5 @@ Studio], you can see models and their metadata across all projects, and you can 
 artifacts by name, version, and lifecycle stage, without needing to configure access
 to the underlying Git repository or remote storage.
 
-[DVC Studio]: https://studio.iterative.ai
+[DVC Studio]: https://studio.datachain.ai
 [tutorial]: /doc/use-cases/data-registry/tutorial#sharing-and-managing-artifacts

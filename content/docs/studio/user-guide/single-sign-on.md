@@ -14,7 +14,7 @@ configuration on both DVC Studio and the IdP. The exact steps for this depend on
 the IdP.
 
 Once the SSO configuration is complete users can login to DVC Studio by opening
-their team's login page `http://studio.iterative.ai/api/teams/<TEAM_NAME>/sso`
+their team's login page `http://studio.datachain.ai/api/teams/<TEAM_NAME>/sso`
 in their browser. They can also login directly from their Okta end-user
 dashboards by clicking on the DVC Studio integration icon.
 
@@ -38,9 +38,9 @@ will be auto-assigned the [`Viewer` role](#roles).
       option).
    3. Enter any name (eg, `DVC Studio`) as the `App name`.
    4. `Single sign-on URL`:
-      [https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume](https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume)
+      [https://studio.datachain.ai/api/teams/<TEAM_NAME>/saml/consume](https://studio.datachain.ai/api/teams/<TEAM_NAME>/saml/consume)
       (Replace <TEAM_NAME> with the name of your team in Studio.
-   5. `Audience URI (SP Entity ID)`: https://studio.iterative.ai/api/saml
+   5. `Audience URI (SP Entity ID)`: https://studio.datachain.ai/api/saml
    6. `Name ID Format`: Persistent
    7. `Application username (NameID)`: Okta username
    8. `Attribute Statements (optional)`: 1. `Name`: email 2. `Name format`: URI
@@ -87,7 +87,7 @@ will be auto-assigned the [`Viewer` role](#roles).
    <admon>
 
    The Single Sign-on URL for your team is
-   [https://studio.iterative.ai/api/teams/<TEAM_NAME>/sso](https://studio.iterative.ai/api/teams/<TEAM_NAME>/saml/consume).
+   [https://studio.datachain.ai/api/teams/<TEAM_NAME>/sso](https://studio.datachain.ai/api/teams/<TEAM_NAME>/saml/consume).
    Users that you assign to your team can login to DVC Studio by opening the
    Single Sign-on URL and providing their Okta login credentials.
 

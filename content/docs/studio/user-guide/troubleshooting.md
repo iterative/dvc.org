@@ -6,7 +6,7 @@ DVC Studio.
 ## Support
 
 If you need further help, you can send us a message using `Help` on the
-[DVC Studio website](https://studio.iterative.ai). You can also
+[DVC Studio website](https://studio.datachain.ai). You can also
 [email us](mailto:support@iterative.ai), create a support ticket on
 [GitHub](https://github.com/iterative/studio-support) or join the discussion in
 [Discord](https://discord.com/invite/dvwXA2N).
@@ -309,7 +309,7 @@ including versions and stage assignments.
 
 ## Questions or problems with billing and payment
 
-Check out the [Frequently Asked Questions](https://studio.iterative.ai/faq) to
+Check out the [Frequently Asked Questions](https://studio.datachain.ai/faq) to
 see if your questions have already been answered. If you still have problems,
 please [contact us](#support).
 

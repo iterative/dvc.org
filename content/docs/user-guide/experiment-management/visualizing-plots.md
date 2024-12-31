@@ -288,4 +288,4 @@ against the entire repo history:
 
 [dvclive]: /doc/dvclive
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai

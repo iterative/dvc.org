@@ -38,4 +38,4 @@ See also [DVCLive environment variables](/doc/dvclive/env).
   /doc/user-guide/experiment-management/sharing-experiments#push-experiments
 [send live metrics and plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvc studio]: https://studio.iterative.ai
+[dvc studio]: https://studio.datachain.ai

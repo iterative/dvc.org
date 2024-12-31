@@ -7,9 +7,9 @@ description:
 
 # Get Started: Manage models
 
-In this guide, we will be using [DVC Studio](https://studio.iterative.ai) to
+In this guide, we will be using [DVC Studio](https://studio.datachain.ai) to
 manage our model registry. You can check out our
-[example model](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)
+[example model](https://studio.datachain.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)
 in DVC Studio to see what it will look like once we finish all the steps in this
 guide.
 
@@ -17,7 +17,7 @@ guide.
 
 To perform the model registry actions in this guide, follow
 [these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
-to sign in to [DVC Studio](https://studio.iterative.ai), connect it to your Git
+to sign in to [DVC Studio](https://studio.datachain.ai), connect it to your Git
 account and add your repository as a DVC Studio project.
 
 </admon>
@@ -155,7 +155,7 @@ from the registry entirely. To see how, have a look at the
 [documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
 
 The detailed view of our model in the registry should now match what we see
-[in our example](https://studio.iterative.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0).
+[in our example](https://studio.datachain.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0).
 
 <details id="under-the-hood-removing-stages">
 

@@ -118,7 +118,7 @@ The credentials must have the required permissions. For
 you can find more details about required permissions [here][data remote].
 
 [data remote]: /doc/user-guide/data-management/remote-storage
-[settings]: https://studio.iterative.ai/user/_/settings
+[settings]: https://studio.datachain.ai/user/_/settings
 
 Finally, click `Save credentials`.
 
@@ -153,7 +153,7 @@ granting full access to your Studio account.
 The available scopes are:
 
 - `Experiment operations` - DVC uses this scope to share [live experiments] and to
-  notify [Studio](https://studio.iterative.ai/) about [pushed experiments].
+  notify [Studio](https://studio.datachain.ai/) about [pushed experiments].
 - `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
 - `Model registry operations` - like downloading model using
   `dvc artifacts get`.

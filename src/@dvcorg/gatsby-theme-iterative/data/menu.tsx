@@ -140,7 +140,7 @@ const menuData: IMenuData = {
       title: 'DVC Studio',
       description: 'Track experiments and share insights from ML projects',
       iconClass: styles.studioIcon,
-      href: 'https://studio.iterative.ai/',
+      href: 'https://studio.datachain.ai/',
       img: '/img/studio_icon-color--square_vector.svg',
       imgAlt: 'Studio logo'
     },

@@ -21,7 +21,7 @@ Once you have obtained the URL and Personal Access Token for your GitLab server,
 do the following:
 
 - Go to you team’s settings at
-  `https://studio.iterative.ai/team/<your team name>/settings`
+  `https://studio.datachain.ai/team/<your team name>/settings`
 - In the `GitLab connections` section, click on the `Connect GitLab server`
   button
 - Enter the URL and token in the form that opens up
@@ -37,7 +37,7 @@ you have any trouble setting up the connection to your GitLab server, please
 Connecting to a self-hosted GitLab server is different from connecting to your
 account on GitLab SaaS ([gitlab.com](http://gitlab.com/)). To connect to GitLab
 SaaS go to the `Git integrations` section in your
-[personal profile settings](https://studio.iterative.ai/user/_/profile). If you
+[personal profile settings](https://studio.datachain.ai/user/_/profile). If you
 signed up to use DVC Studio using your GitLab account, you may already have this
 connection.
 
