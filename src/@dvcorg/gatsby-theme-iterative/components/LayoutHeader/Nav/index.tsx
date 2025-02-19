@@ -7,7 +7,7 @@ import { ReactComponent as ExternalLinkIcon } from '../../../../../../static/img
 import * as styles from './styles.module.css'
 import PseudoButton from '@dvcorg/gatsby-theme-iterative/src/components/PseudoButton'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { cloudUrl } from '../../../../../utils/externalUrls'
+import { studioUrl } from '../../../../../utils/externalUrls'
 
 const Nav: React.FC = () => (
   <div className={styles.wrapper}>
@@ -23,7 +23,7 @@ const Nav: React.FC = () => (
     </PseudoButton>
     <div className="text-dark hidden md:flex items-center">
       <div className="mx-3 select-none">|</div>
-      <Link className="no-underline hover" href={cloudUrl}>
+      <Link className="no-underline hover" href={studioUrl}>
         Get Enterprise{` `}
         <ExternalLinkIcon className="ml-0.5 inline-block w-4 h-4" />
       </Link>
