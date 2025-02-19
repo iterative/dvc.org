@@ -15,7 +15,7 @@ import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
 import menuData from '../../data/menu'
-import { cloudUrl } from '../../../../utils/externalUrls'
+import { studioUrl } from '../../../../utils/externalUrls'
 import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
 const docsPage = getFirstPage()
@@ -236,7 +236,7 @@ export const HamburgerMenu: React.FC<
         Get started
       </Link>
       <Link
-        href={cloudUrl}
+        href={studioUrl}
         className={cn(styles.linkButton)}
         onClick={() => handleItemClick('get-enterprise')}
       >

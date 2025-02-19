@@ -6,15 +6,17 @@ import { Textarea } from '../base/textarea'
 import Button from '../base/button'
 import { cn } from '../../utils'
 import { Loader2Icon } from 'lucide-react'
-import { getHubSpotFormUrl } from '../../utils/externalUrls'
+
 import {
   FormField,
   FromErrors,
   checkErrors,
   defaultValues,
   emptyValues,
+  refreshStudioCSRFToken,
   teamSize
 } from './utils'
+import { studioContactUsApi } from '../../utils/externalUrls'
 
 const ErrorMessage = ({
   name,
@@ -114,68 +116,31 @@ const RequestAQuoteForm = ({
     }
 
     try {
-      const formId = `50ebdb54-825e-436f-9afc-6c6fa4b2d865`
-      /**
-       * NOTE: For Testing, simply call getHubSpotFormUrl() i.e without parameters
-       * it defaults to test form id
-       */
-      const response = await fetch(getHubSpotFormUrl({ formId }), {
+      const csrfToken = await refreshStudioCSRFToken()
+      const response = await fetch(studioContactUsApi, {
         method: `POST`,
         headers: {
-          'Content-Type': `application/json`
+          'Content-Type': `application/json`,
+          'X-CsrfToken': csrfToken
         },
+        credentials: `include`,
+        mode: `cors`,
         body: JSON.stringify({
-          fields: [
-            {
-              objectTypeId: `0-1`,
-              name: `full_name`,
-              value: values.name
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `company`,
-              value: values.company
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `email`,
-              value: values.email
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `team_size`,
-              value: values.teamSize
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `area_of_interest`,
-              value: values.areaOfInterest
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `phone`,
-              value: values.phone
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `message`,
-              value: values.message
-            },
-            {
-              objectTypeId: `0-1`,
-              name: `purpose`,
-              value: values.purpose
-            }
-          ],
-          context: {
-            pageName: `Platinum Services (Request a Quote)`,
-            pageUri: `https://dvc.org/support`
-          }
+          area_of_interest: values.areaOfInterest,
+          company: values.company,
+          email: values.email,
+          info: values.message,
+          name: values.name,
+          phone: values.phone,
+          purpose: values.purpose,
+          site: window.location.href,
+          team_size: values.teamSize
         }),
         signal: newAbortController.signal
       })
+      if (!response.ok) throw new Error(response.statusText)
       const data = await response.json()
-      if (data.status === `error`) throw new Error(data)
+      if (data.error) throw new Error(data.error)
 
       setSubmitting(false)
       setValues(defaultValues)
