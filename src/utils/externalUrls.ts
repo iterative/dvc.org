@@ -4,7 +4,6 @@ export const studioUrl = 'https://studio.datachain.ai'
 
 // Studio API Urls
 const studioApi = `${studioUrl}/api`
-export const studioRefreshCsfrApi = `${studioApi}/refresh-csrf`
 export const studioContactUsApi = `${studioApi}/contacts`
 
 // Github Urls
