@@ -13,7 +13,6 @@ import {
   checkErrors,
   defaultValues,
   emptyValues,
-  refreshStudioCSRFToken,
   teamSize
 } from './utils'
 import { studioContactUsApi } from '../../utils/externalUrls'
@@ -116,12 +115,10 @@ const RequestAQuoteForm = ({
     }
 
     try {
-      const csrfToken = await refreshStudioCSRFToken()
       const response = await fetch(studioContactUsApi, {
         method: `POST`,
         headers: {
-          'Content-Type': `application/json`,
-          'X-CsrfToken': csrfToken
+          'Content-Type': `application/json`
         },
         credentials: `include`,
         mode: `cors`,
