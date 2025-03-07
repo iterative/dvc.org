@@ -105,12 +105,11 @@ $ snap install --classic dvc
 ### On Debian/Ubuntu
 
 ```cli
-$ sudo wget \
-       https://dvc.org/deb/dvc.list \
-       -O /etc/apt/sources.list.d/dvc.list
-$ wget -qO - https://dvc.org/deb/iterative.asc | gpg --dearmor > packages.iterative.gpg
-$ sudo install -o root -g root -m 644 packages.iterative.gpg /etc/apt/trusted.gpg.d/
-$ rm -f packages.iterative.gpg
+$ sudo apt install wget gpg
+$ sudo mkdir -p /etc/apt/keyrings
+$ wget -qO - https://dvc.org/deb/iterative.asc | sudo gpg --dearmor -o /etc/apt/keyrings/packages.iterative.gpg
+$ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.iterative.gpg] https://dvc.org/deb/ stable main" | sudo tee /etc/apt/sources.list.d/dvc.list
+$ sudo chmod 644 /etc/apt/keyrings/packages.iterative.gpg /etc/apt/sources.list.d/dvc.list
 $ sudo apt update
 $ sudo apt install dvc
 ```
