@@ -216,7 +216,7 @@ this set of commands:
 $ dvc commit
 $ dvc status
 Data and pipelines are up to date.
-$ ls .dvc/cache/files/md5/70
+$ ls .dvc/cache/files/md5/9a
 ba000ba83b341a423a81eed8ff9238
 ```
 
