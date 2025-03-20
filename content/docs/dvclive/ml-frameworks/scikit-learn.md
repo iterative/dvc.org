@@ -25,7 +25,7 @@ DVCLive provides built-in functions to generate
 The following snippet is used inside the Colab Notebook linked above:
 
 ```python
-from DVCLive import Live
+from dvclive import Live
 
 ...
 
