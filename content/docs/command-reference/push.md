@@ -127,8 +127,10 @@ use `dvc remote list` to check them:
 
 ```cli
 $ dvc remote list
-r1	ssh://user@example.com/path/to/dvc/cache/directory
+* r1	ssh://user@example.com/path/to/dvc/cache/directory
 ```
+
+(The prefixed `*` indicates r1 is the default remote.)
 
 </admon>
 

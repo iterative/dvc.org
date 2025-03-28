@@ -82,9 +82,12 @@ The <abbr>project</abbr>'s config file should now look like this:
 
 ```cli
 $ dvc remote list
-myremote	/path/to/remote
-newremote	s3://mybucket/path
+* myremote	/path/to/remote
+  newremote	s3://mybucket/path
 ```
+
+The remote prefixed with a `*` indicates it is the default remote, see
+[`dvc remote default`](/doc/command-reference/remote/default)
 
 ## Example: Customize an additional S3 remote
 

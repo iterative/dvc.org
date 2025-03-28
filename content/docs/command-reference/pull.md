@@ -237,8 +237,10 @@ context for the example, let's define a default SSH remote:
 ```cli
 $ dvc remote add -d r1 ssh://user@example.com/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://user@example.com/path/to/dvc/remote/storage
+* r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
+
+(The prefixed `*` indicates `r1` is the default remote)
 
 <admon type="info">
 
