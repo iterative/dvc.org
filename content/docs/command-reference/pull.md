@@ -242,7 +242,8 @@ r1    ssh://user@example.com/project/data/cache   (default)
 r2    ssh://user@example.com/other/storage
 ```
 
-Note that the default remote (if set) is also indicated when you run `dvc remote list`.
+Note that the default remote (if set) is also indicated when you run
+`dvc remote list`.
 
 <admon type="info">
 
