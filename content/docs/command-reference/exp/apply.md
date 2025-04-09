@@ -110,7 +110,7 @@ We can inspect what changed in the workspace with Git,
 
 ```cli
 $ git status
-On branch master
+On branch main
 Changes not staged for commit:
         modified:   dvc.lock
         modified:   params.yaml
@@ -147,7 +147,7 @@ $ git add .
 $ git commit -m "persist gluey-leak"
 ```
 
-We can now see that the experiment is the new tip of our master branch:
+We can now see that the experiment is the new tip of our main branch:
 
 ```cli
 $ dvc exp show
@@ -158,7 +158,7 @@ $ dvc exp show
   neutral:**Experiment**   neutral:**Created**        metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ─────────────────────────────────────────────────────────────────────────────
   workspace    -          0.69830   2000                     2
-  master       04:31 PM   0.69830   2000                     2
+  main       04:31 PM   0.69830   2000                     2
  ─────────────────────────────────────────────────────────────────────────────
 ```
 

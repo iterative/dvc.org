@@ -218,7 +218,7 @@ DVC went through the stages (in `dvc.yaml`) and adjusted the current set of
 `targets`:
 
 ```cli
-$ git checkout master
+$ git checkout main
 $ dvc checkout            # Start with latest version of everything.
 
 $ git checkout baseline-experiment -- dvc.lock
@@ -247,7 +247,7 @@ $ dvc install
 `dvc install` installs Git hooks to automate common operations, including
 running `dvc checkout` when needed.
 
-(Having followed the previous example) we can then checkout the master branch
+(Having followed the previous example) we can then checkout the main branch
 again:
 
 ```cli

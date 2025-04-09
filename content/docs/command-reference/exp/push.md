@@ -117,7 +117,7 @@ We can now see that the experiment exists in the remote repo:
 
 ```cli
 $ dvc exp list --all origin
-master:
+main:
     conic-ease
     lucid-lair
     major-mela

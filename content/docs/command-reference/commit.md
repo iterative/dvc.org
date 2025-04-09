@@ -268,7 +268,7 @@ execute.
 $ git add src/train.py
 
 $ git commit -m "CHANGED"
-[master 72327bd] CHANGED
+[main 72327bd] CHANGED
 1 file changed, 2 insertions(+)
 
 $ dvc commit

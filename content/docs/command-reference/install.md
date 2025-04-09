@@ -214,7 +214,7 @@ Data and pipelines are up to date.
 
 After running `git checkout` we are also shown a message saying _You are in
 'detached HEAD' state_. Returning the workspace to a normal state requires
-running `git checkout master`.
+running `git checkout main`.
 
 We also see that the first `dvc status` tells us about differences between the
 project's <abbr>cache</abbr> and the data files currently in the workspace. Git
@@ -225,10 +225,10 @@ Running `dvc checkout` then brings them up to date, and a second `dvc status`
 tells us that the data files now do match the DVC files.
 
 ```cli
-$ git checkout master
+$ git checkout main
 Previous HEAD position was 6666298 Create ML pipeline stages
-Switched to branch 'master'
-Your branch is up to date with 'origin/master'.
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
 
 $ dvc checkout
 ```
@@ -271,7 +271,7 @@ matching what is referenced in the <abbr>DVC files</abbr>.
 ## Example: Showing DVC status when committing with Git
 
 To follow this example, start with the same workspace as before, making sure it
-is not in a _detached HEAD_ state by running `git checkout master`.
+is not in a _detached HEAD_ state by running `git checkout main`.
 
 If we simply edit one of the code files:
 
@@ -283,7 +283,7 @@ $ git commit -a -m "modified featurization"
 featurize:
     changed deps:
         modified:           src/featurization.py
-[master 1116ddc] modified featurization
+[main 1116ddc] modified featurization
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
@@ -305,7 +305,7 @@ M dvc.lock
 $ git commit -a -m "updated data after modified featurization"
 Data and pipelines are up to date.
 
-[master 78d0c44] modified featurization
+[main 78d0c44] modified featurization
  5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 

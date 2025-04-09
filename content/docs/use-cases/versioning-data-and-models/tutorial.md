@@ -295,11 +295,11 @@ When you have a script that takes some data as an input and produces other data
 
 > If you tried the commands in the
 > [Switching between workspace versions](#switching-between-workspace-versions)
-> section, go back to the master branch code and data, and remove the
+> section, go back to the main branch code and data, and remove the
 > `model.weights.h5.dvc` file with:
 >
 > ```cli
-> $ git checkout master
+> $ git checkout main
 > $ dvc checkout
 > $ dvc remove model.weights.h5.dvc
 > ```

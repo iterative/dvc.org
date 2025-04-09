@@ -33,7 +33,7 @@ alternatives:
 - The full [Cmder](https://cmder.app/) console emulator is another good option.
   It combines several useful tools like [ConEmu](https://conemu.github.io/)
   terminal and [Git for Windows](https://gitforwindows.org/) (Git Bash), among
-  [other shells](https://github.com/cmderdev/cmder/blob/master/README.md#features).
+  [other shells](https://github.com/cmderdev/cmder/blob/main/README.md#features).
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
   is also popular.
 - Install an actual Linux distro (e.g. Ubuntu) on a

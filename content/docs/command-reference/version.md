@@ -48,7 +48,7 @@ The detail of DVC version depends upon the way of installing DVC.
   If there are any issues reported with the official build, they can be traced
   using the official version number.
 
-- **Development version**: contains all the changes done to the `master` branch
+- **Development version**: contains all the changes done to the `main` branch
   of DVC's repository, following the latest official release. It can be
   [installed](/doc/user-guide/contributing/core#development-environment) after
   cloning DVC's repo. Running this setup may result in usage issues, as it
@@ -57,7 +57,7 @@ The detail of DVC version depends upon the way of installing DVC.
   Any errors reported with the development version can be traced using the Git
   commit hash displayed in the output of `dvc version`, for example:
   `1.10.0+292cab.mod`. The part before `+` is the official version number, and
-  the following part is the commit hash of the tip of the `master` branch. The
+  the following part is the commit hash of the tip of the `main` branch. The
   optional suffix `.mod` means that code is modified.
 
 - **Binary or Package manager**: shows how DVC was downloaded and

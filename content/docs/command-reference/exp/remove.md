@@ -58,7 +58,7 @@ Let's say we have `dvc exp run` 3 experiments in our project:
 
 ```cli
 $ dvc exp list
-master:
+main:
         major-mela
         conic-ease
         lucid-lair
@@ -71,7 +71,7 @@ To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
 $ dvc exp remove conic-ease lucid-lair
 
 $ dvc exp list
-master:
+main:
         major-mela
 
 $ dvc exp remove -A
@@ -104,7 +104,7 @@ $ dvc exp show
   neutral:**Experiment**              neutral:**Created**        neutral:**State**    metric:**avg_prec**   metric:**roc_auc**   metric:**train.min_split**
  ──────────────────────────────────────────────────────────────────────────────────────
   workspace               -              -         0.57553   0.94652   2
-  master                  Aug 02, 2021   -         0.53252    0.9107   2
+  main                  Aug 02, 2021   -         0.53252    0.9107   2
   └── 5751540 [split32]   04:57 PM       Queued          -         -   32
  ──────────────────────────────────────────────────────────────────────────────────────
 ```
@@ -115,14 +115,14 @@ We can also remove experiments from a remote Git repository:
 $ dvc exp push myremote
 
 $ dvc exp list myremote
-master:
+main:
         conic-ease
         urban-sign
         major-mela
 
 $ dvc exp remove -g myremote urban-sign major-mela
 $ dvc exp list myremote
-master:
+main:
         conic-ease
 ```
 
@@ -131,7 +131,7 @@ their names to `dvc exp remove` with the `--keep` flag :
 
 ```cli
 $ dvc exp list
-master:
+main:
         major-mela
         conic-ease
         lucid-lair
@@ -139,7 +139,7 @@ master:
 $ dvc exp remove --keep major-mela
 
 $ dvc exp list
-master:
+main:
         major-mela
 
 ```

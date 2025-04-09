@@ -39,7 +39,7 @@ Let's say we have created 3 experiments in our project using `dvc exp run`:
 
 ```cli
 $ dvc exp list
-master:
+main:
         major-mela
         conic-ease
         lucid-lair
@@ -52,7 +52,7 @@ To rename any of them, pass the original and new experiment names to
 $ dvc exp rename conic-ease renamed-exp
 
 $ dvc exp list
-master:
+main:
         major-mela
         renamed-exp
         lucid-lair
@@ -66,14 +66,14 @@ We can also rename an experiment from a remote Git repository:
 $ dvc exp push myremote
 
 $ dvc exp list myremote
-master:
+main:
         conic-ease
         urban-sign
         major-mela
 
 $ dvc exp rename -g myremote urban-sign renamed-exp
 $ dvc exp list myremote
-master:
+main:
         conic-ease
         renamed-exp
         major-mela
