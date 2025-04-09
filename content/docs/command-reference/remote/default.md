@@ -41,6 +41,9 @@ is omitted.
 You can also use `dvc config`, `dvc remote add`, or `dvc remote modify` commands
 to set/unset/change the default remote.
 
+If a default remote is set, the output of the `dvc remote list` command will
+specify it, see [the examples below](#examples).
+
 Remotes are read from the system, global, project, and local config files (in
 that order).
 
@@ -83,6 +86,14 @@ Get default remote:
 $ dvc remote default
 
 myremote
+```
+
+See the default remote (if set) by listing all remotes:
+
+```cli
+$ dvc remote list
+myremote    /path/to/remote    (default)
+otherremote    /path/to/other/remote
 ```
 
 Change default remote value:

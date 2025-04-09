@@ -117,7 +117,7 @@ also `dvc remote add --default`). Let's see an SSH remote example:
 
 ```cli
 $ dvc remote add --default r1 \
-                 ssh://user@example.com/path/to/dvc/cache/directory
+                 ssh://user@example.com/project/data/cache
 ```
 
 <admon type="info">
@@ -127,7 +127,8 @@ use `dvc remote list` to check them:
 
 ```cli
 $ dvc remote list
-r1	ssh://user@example.com/path/to/dvc/cache/directory
+r1    ssh://user@example.com/project/data/cache   (default)
+r2    ssh://user@example.com/other/storage
 ```
 
 </admon>
