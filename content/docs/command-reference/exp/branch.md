@@ -94,7 +94,7 @@ And inspect the result with Git:
 
 ```cli
 $ git branch
-* master
+* main
   gluey-leak-branch
 ```
 

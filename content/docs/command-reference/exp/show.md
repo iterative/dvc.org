@@ -170,7 +170,7 @@ code.
 </admon>
 
 Let's say we have run 3 experiments in our project. The basic usage shows the
-workspace (Git working tree) and experiments derived from `HEAD` (`master`
+workspace (Git working tree) and experiments derived from `HEAD` (`main`
 branch in this case), and all of their metrics, parameters and dependencies
 (scroll right to see all):
 

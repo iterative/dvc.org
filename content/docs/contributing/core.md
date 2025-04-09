@@ -90,7 +90,7 @@ as expected.
 For specific functionality, you will need to use functional tests alongside
 [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
 directory, Git and/or DVC repo, and bootstrap some files. See the
-[`dir_helpers` module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
+[`dir_helpers` module](https://github.com/iterative/dvc/blob/main/tests/dir_helpers.py)
 docstring for some usage examples.
 
 ## Running tests

@@ -176,7 +176,7 @@ outs:
 ```
 
 Several of the values above are pulled from the original `.dvc` file
-[in the external DVC repository](https://github.com/iterative/example-get-started/blob/master/data/data.xml.dvc).
+[in the external DVC repository](https://github.com/iterative/example-get-started/blob/main/data/data.xml.dvc).
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 version of the dependency, respectively.
 
@@ -217,7 +217,7 @@ $ dvc update --rev cats-dogs-v2 cats-dogs.dvc
 ```
 
 > In the above example, the value for `rev` in the new `.dvc` file will be
-> `master` (a branch) so it will be able update normally going forward.
+> `main` (a branch) so it will be able update normally going forward.
 
 ## Example: Data registry
 

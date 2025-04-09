@@ -163,7 +163,7 @@ directory. Then make sure that you have the latest code and data with the
 following commands:
 
 ```cli
-$ git checkout master
+$ git checkout main
 $ dvc checkout
 ```
 
@@ -233,7 +233,7 @@ Having followed the previous examples' setup, move into the
 and data with the following commands:
 
 ```cli
-$ git checkout master
+$ git checkout main
 $ dvc checkout
 ```
 
