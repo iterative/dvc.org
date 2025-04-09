@@ -132,6 +132,6 @@ url = https://remote.dvc.org/dataset-registry
 ```
 
 [`.dvc/config`]:
-  https://github.com/iterative/dataset-registry/blob/main/.dvc/config
+  https://github.com/iterative/dataset-registry/blob/master/.dvc/config
 [`get-started/data.xml.dvc`]:
-  https://github.com/iterative/dataset-registry/blob/main/get-started/data.xml.dvc
+  https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc
