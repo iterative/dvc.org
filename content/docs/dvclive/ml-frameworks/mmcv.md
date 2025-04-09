@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Register the
-[`DvcliveLoggerHook`](https://github.com/open-mmlab/mmcv/blob/main/mmcv/runner/hooks/logger/dvclive.py)
+[`DvcliveLoggerHook`](https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/logger/dvclive.py)
 the following in the config file of your
 [OpenMMlab](https://github.com/open-mmlab) project:
 
