@@ -73,7 +73,7 @@ this set of principles:
   R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow, PyTorch,
   Scipy, etc.).
 
-[free]: https://github.com/iterative/dvc/blob/main/LICENSE
+[free]: https://github.com/iterative/dvc/blob/master/LICENSE
 [vs code extension]: /doc/vs-code-extension
 [python api]: /doc/api-reference
 [command line]: /doc/command-reference
