@@ -88,7 +88,8 @@ const Slides = ({
       strings: Array.isArray(terminal) ? terminal : [terminal],
       onComplete
     }
-  }, [terminal, onComplete])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [terminal, currentIndex, onComplete])
 
   return (
     <div
