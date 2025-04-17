@@ -101,8 +101,8 @@ You'll need a [GitHub account](https://github.com/signup)) for this.
 
 </admon>
 
-1. [Fork the example repo]. Make sure you uncheck "Copy the `main` branch only" to
-   preserve the repo's tags.
+1. [Fork the example repo]. Make sure you uncheck "Copy the `main` branch only"
+   to preserve the repo's tags.
 
 2. Enable the [workflows] in your fork's **Settings** -> **Actions** page. Now
    its [preconfigured jobs] will trigger when Git tags are pushed.

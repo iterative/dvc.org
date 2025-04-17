@@ -19,9 +19,9 @@ until either `dvc queue stop` is used or the queue is empty.
 
 <admon type="info">
 
-Due to [internal limitations], when the queue is empty a worker may be idle for up
-to 10 seconds before exiting. If new experiment tasks are added to the queue during
-this time, workers will resume processing them instead.
+Due to [internal limitations], when the queue is empty a worker may be idle for
+up to 10 seconds before exiting. If new experiment tasks are added to the queue
+during this time, workers will resume processing them instead.
 
 [internal limitations]:
   /doc/user-guide/experiment-management/running-experiments#how-are-experiments-queued

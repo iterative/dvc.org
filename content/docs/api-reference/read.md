@@ -63,12 +63,12 @@ Python's [`open()`] built-in, which is used under the hood.
   (the current working directory tree is walked up to find it).
 
 - `rev` - Git commit (any [revision] such as a branch or tag name, commit hash,
-  or [experiment name]). If `repo` is not a Git repo, this option is ignored. _Default_:
-  `None` (current working tree will be used)
+  or [experiment name]). If `repo` is not a Git repo, this option is ignored.
+  _Default_: `None` (current working tree will be used)
 
-- `remote` - name of the [DVC remote] to look for the target data. _Default_: The
-  [default remote] of `repo` is used if a `remote` argument is not given. For
-  local projects, the <abbr>cache</abbr> is tried before the default remote.
+- `remote` - name of the [DVC remote] to look for the target data. _Default_:
+  The [default remote] of `repo` is used if a `remote` argument is not given.
+  For local projects, the <abbr>cache</abbr> is tried before the default remote.
 
 - `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.

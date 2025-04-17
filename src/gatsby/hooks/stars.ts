@@ -37,7 +37,7 @@ export default function useStars(repo = 'dvc'): number | null {
         setStars(defaultStars)
       }
     })()
-  }, [])
+  }, [defaultStars, repo])
 
   return stars
 }

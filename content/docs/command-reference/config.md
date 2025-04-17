@@ -17,9 +17,9 @@ positional arguments:
 
 ## Description
 
-You can query/set/replace/unset [DVC configuration] options with this command. It
-takes a config option `name` (a [config section] and a key, separated by a dot)
-and its `value` (any valid alpha-numeric string generally).
+You can query/set/replace/unset [DVC configuration] options with this command.
+It takes a config option `name` (a [config section] and a key, separated by a
+dot) and its `value` (any valid alpha-numeric string generally).
 
 When reading config options (no `value` is given or `--list` is used), the
 values are read from a combined set of values from the system, global, project,

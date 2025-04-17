@@ -30,10 +30,10 @@ details.
 The data kept is determined by reading the <abbr>DVC files</abbr> in the set of
 commits of the given scope.
 
-> Note that `dvc gc` tries to fetch missing [`.dir` files] from remote storage to
-> local cache in order to determine which files should exist inside cached directories.
-> These files may be missing if the cache was previously garbage collected, in a
-> newly cloned copy of the repo, etc.
+> Note that `dvc gc` tries to fetch missing [`.dir` files] from remote storage
+> to local cache in order to determine which files should exist inside cached
+> directories. These files may be missing if the cache was previously garbage
+> collected, in a newly cloned copy of the repo, etc.
 
 Unless the `--cloud` option is used, any files collected from the cache can be
 restored using `dvc fetch`, as long as they have been previously uploaded with
@@ -112,14 +112,14 @@ project we want to clear.
 - `--date <YYYY-MM-DD>` - Keep experiments from any commits on of after a
   certain date. Argument `<YYYY-MM-DD>` expects a date in the [ISO 8601] format.
 
-- `--all-experiments` keep cached objects referenced in all [DVC experiments], as
-  well as in the workspace (implying `-w`). This preserves the project's [experimental]
-  data.
+- `--all-experiments` keep cached objects referenced in all [DVC experiments],
+  as well as in the workspace (implying `-w`). This preserves the project's
+  [experimental] data.
 
-- `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache
-  is shared] among different projects, this option can be used to specify a list
-  of them (each project is a path) to keep data that is currently referenced
-  from them.
+- `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache is
+  shared] among different projects, this option can be used to specify a list of
+  them (each project is a path) to keep data that is currently referenced from
+  them.
 
 - `--not-in-remote` - keep cached objects that are _not_ in the remote. This
   will remove the objects from the local cache that have been pushed and are

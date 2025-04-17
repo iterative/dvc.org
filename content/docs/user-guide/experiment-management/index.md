@@ -12,9 +12,10 @@ Git tree. This prevents bloating your repo with temporary commits and branches.
 
 ### ⚙️ How does DVC track experiments?
 
-Experiments are custom [Git references] (found in `.git/refs/exps`) with one or more
-commits based on `HEAD`. These commits are hidden and not checked out by DVC. Note
-that these are not pushed to Git remotes by default either (see `dvc exp push`).
+Experiments are custom [Git references] (found in `.git/refs/exps`) with one or
+more commits based on `HEAD`. These commits are hidden and not checked out by
+DVC. Note that these are not pushed to Git remotes by default either (see
+`dvc exp push`).
 
 Note that DVC Experiments require a unique name to identify them. DVC will
 auto-generate one by default, such as `puffy-daks`. A custom name can be set

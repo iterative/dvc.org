@@ -52,9 +52,9 @@ configuration. Here are a few feature highlights:
 **Models, Data, and Metrics as Code**: DVC removes the need to create versioning
 databases, use special file/folder structures, or write bespoke interfacing
 code. Instead, DVC stores meta-information in Git ("codifying" data and ML
-models) while pushing the actual data content to [cloud storage]. DVC also provides
-metrics-driven navigation in Git repositories -- [tabulating and plotting] model
-metrics changes across commits.
+models) while pushing the actual data content to [cloud storage]. DVC also
+provides metrics-driven navigation in Git repositories -- [tabulating and
+plotting] model metrics changes across commits.
 
 [cloud storage]: /doc/user-guide/data-management/remote-storage
 [tabulating and plotting]: /doc/start/data-management/metrics-parameters-plots

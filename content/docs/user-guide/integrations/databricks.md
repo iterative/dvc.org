@@ -12,7 +12,8 @@ directly.
 %pip install dvc
 ```
 
-In order to be able to work in [Databricks Repos], you'll need to use this workaround:
+In order to be able to work in [Databricks Repos], you'll need to use this
+workaround:
 
 ```bash
 !dvc config core.no_scm true --local
@@ -20,7 +21,8 @@ In order to be able to work in [Databricks Repos], you'll need to use this worka
 
 ## DVC API
 
-You can use your existing DVC projects through the [Python API] as normal, for example:
+You can use your existing DVC projects through the [Python API] as normal, for
+example:
 
 ```python
 import dvc.api
@@ -56,8 +58,9 @@ with dvc.api.open(
 ## Running DVC commands
 
 Databricks doesn't provide a classic terminal by default, so you'll need to use
-[magic commands] to run DVC commands in your notebook. If your workspace does have
-[web terminal] enabled, you can also run DVC commands in the terminal as normal.
+[magic commands] to run DVC commands in your notebook. If your workspace does
+have [web terminal] enabled, you can also run DVC commands in the terminal as
+normal.
 
 ### Example: set up shared DVC cache on dbfs
 
@@ -71,9 +74,9 @@ Databricks doesn't provide a classic terminal by default, so you'll need to use
 !dvc add data
 ```
 
-If working with [Databricks Repos], due to the limitations described in the beginning
-and `noscm` workaround, DVC won't be able to automatically add new entries to corresponding
-`.gitignore`s, so you'll need to do that manually.
+If working with [Databricks Repos], due to the limitations described in the
+beginning and `noscm` workaround, DVC won't be able to automatically add new
+entries to corresponding `.gitignore`s, so you'll need to do that manually.
 
 ### Example: import data
 
@@ -83,8 +86,9 @@ and `noscm` workaround, DVC won't be able to automatically add new entries to co
 
 ## Live experiment updates
 
-If working with [Databricks Repos], you will need to set both the `DVC_STUDIO_TOKEN`
-and `DVC_EXP_GIT_REMOTE` to see [live experiment updates] in [DVC Studio].
+If working with [Databricks Repos], you will need to set both the
+`DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` to see [live experiment updates] in
+[DVC Studio].
 
 ```python
 import getpass

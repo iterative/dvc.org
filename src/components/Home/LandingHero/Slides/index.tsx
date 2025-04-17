@@ -88,7 +88,7 @@ const Slides = ({
       strings: Array.isArray(terminal) ? terminal : [terminal],
       onComplete
     }
-  }, [terminal, currentIndex, onComplete])
+  }, [terminal, onComplete])
 
   return (
     <div

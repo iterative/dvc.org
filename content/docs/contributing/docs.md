@@ -55,7 +55,8 @@ formatted and linted as well, which is also ensured by the full setup below.
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=18.0.0`, `<=20.x`), and install [Yarn](https://yarnpkg.com/):
 
-> In Windows, you may need to install [Visual Studio Build Tools], and the [Windows
+> In Windows, you may need to install [Visual Studio Build Tools], and the
+> [Windows
 >
 > > SDK] first.
 

@@ -146,5 +146,6 @@ Model Registries work.
   for each version. -1 for all [default: -1]
 - `--vs <integer>`, `--versions-per-stage <integer>` - Show N last versions for
   each stage. -1 for all. Applied after 'assignments-per-version' [default: 1]
-- `--sort <text>` - Order assignments by timestamp or semver [default: timestamp]
+- `--sort <text>` - Order assignments by timestamp or semver [default:
+  timestamp]
 - `-h`, `--help` - Show this message and exit.

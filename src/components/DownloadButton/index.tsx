@@ -119,7 +119,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
 
         return !prev
       }),
-    [isOpened, isClicked]
+    [isClicked]
   )
 
   const download = (os: OS): void => {
@@ -137,7 +137,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
     document.addEventListener('mousedown', onOutsideClick)
 
     return (): void => document.removeEventListener('mousedown', onOutsideClick)
-  }, [isOpened, containerRef.current])
+  }, [isOpened])
 
   return (
     <span className={styles.container} ref={containerRef}>

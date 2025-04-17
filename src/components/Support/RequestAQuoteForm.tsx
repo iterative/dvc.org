@@ -79,7 +79,7 @@ const RequestAQuoteForm = ({
     } else {
       setPauseDialog(false)
     }
-  }, [submitting])
+  }, [setPauseDialog, submitting])
 
   const onChange = (
     e: React.ChangeEvent<

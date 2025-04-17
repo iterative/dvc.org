@@ -58,7 +58,6 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      /* eslint-disable @typescript-eslint/naming-convention */
       background_color: '#eff4f8',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
@@ -113,7 +112,6 @@ const plugins = [
           type: 'image/png'
         }
       ]
-      /* eslint-enable @typescript-eslint/naming-convention */
     }
   }
 ]
