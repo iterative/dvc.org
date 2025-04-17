@@ -19,6 +19,7 @@ const keywords = [
 ]
 
 const plugins = [
+  'gatsby-plugin-sharp',
   'gatsby-plugin-twitter',
   'landing-page',
   {
