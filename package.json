@@ -4,6 +4,7 @@
   "description": "dvc.org – website source code",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node .husky/install.mjs",
     "develop": "gatsby develop",
     "dev": "gatsby develop",
     "clean": "gatsby clean",
@@ -26,8 +27,7 @@
     "link-check-diff": "repo-link-check -c config/link-check/config.yml -d main",
     "link-check-dev-server": "repo-link-check -c config/link-check/config.yml -r http://localhost:3000",
     "link-check-exclude": "repo-link-check -c config/link-check/config.yml --unused-patterns-only",
-    "format-staged": "lint-staged",
-    "prepare": "husky install"
+    "format-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "0.3.25",
-    "@dvcorg/websites-server": "0.3.0-beta.0",
+    "@dvcorg/websites-server": "0.3.0-beta.1",
     "@iframe-resizer/react": "5.4.5",
     "@octokit/request": "8.4.1",
     "@radix-ui/react-dialog": "1.1.7",
