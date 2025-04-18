@@ -18,10 +18,10 @@ Prerequisites:
 - Access to your [DVC Studio client access token] with Model registry operations
   scope.
 
-Without these prerequisites, you can still [download a model artifact with
-DVC]. However, it can be easier to use the DVC Studio API since you only need to
-have the Studio access token. You do not need direct access to your remote storage
-or Git repository, and you do not need to install DVC.
+Without these prerequisites, you can still [download a model artifact with DVC].
+However, it can be easier to use the DVC Studio API since you only need to have
+the Studio access token. You do not need direct access to your remote storage or
+Git repository, and you do not need to install DVC.
 
 [remote]: /doc/user-guide/data-management/remote-storage
 [remote storage credentials]:

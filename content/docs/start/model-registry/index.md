@@ -14,12 +14,13 @@ https://www.youtube.com/watch?v=T7MBFpnSr9Q
 
 - **[Add a model]** - Start tracking model artifacts with DVC.
 
-- **[Manage models in a central registry]** - Manage models, their versions and lifecycle
-  stages in a git-based model registry.
+- **[Manage models in a central registry]** - Manage models, their versions and
+  lifecycle stages in a git-based model registry.
 
-- **[Use and deploy models]** - Easily download your models from the model registry.
-  Set up your CICD pipelines to be trigger by model registry actions (such as assigning
-  model stages) and deploy models directly form the model registry.
+- **[Use and deploy models]** - Easily download your models from the model
+  registry. Set up your CICD pipelines to be trigger by model registry actions
+  (such as assigning model stages) and deploy models directly form the model
+  registry.
 
 [Add a model]: /doc/start/model-registry/add-model
 [Manage models in a central registry]: /doc/start/model-registry/manage-models

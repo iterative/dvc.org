@@ -92,8 +92,8 @@ $ mv keras.h5 model.h5
 <admon type="info">
 
 Often the output of a stage is a dependency in another stage, creating a
-[dependency graph]. In this case, you may want to also update the `path` in the `deps`
-field of `dvc.yaml`.
+[dependency graph]. In this case, you may want to also update the `path` in the
+`deps` field of `dvc.yaml`.
 
 [dependency graph]: /doc/user-guide/pipelines/defining-pipelines
 

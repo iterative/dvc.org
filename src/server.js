@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const server = require('@dvcorg/websites-server')
 
 const app = server.app

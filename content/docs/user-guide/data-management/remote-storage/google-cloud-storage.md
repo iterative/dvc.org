@@ -19,8 +19,8 @@ Upon `dvc push` (or when needed), DVC will try to authenticate using your
 
 <admon type="warn">
 
-Make sure to run [gcloud auth application-default login] unless you use a service
-account or other ways to authenticate ([more info]).
+Make sure to run [gcloud auth application-default login] unless you use a
+service account or other ways to authenticate ([more info]).
 
 </admon>
 
@@ -38,8 +38,9 @@ remote, set any supported config param with `dvc remote modify`.
 
 ## Custom authentication
 
-For [service accounts] (a Google account associated to your GCP project instead of
-a user), you can set the path to the file that contains a [service account key]:
+For [service accounts] (a Google account associated to your GCP project instead
+of a user), you can set the path to the file that contains a [service account
+key]:
 
 [service accounts]: https://cloud.google.com/iam/docs/service-accounts
 [service account key]:

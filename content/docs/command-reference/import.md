@@ -43,8 +43,8 @@ e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
 <admon type="info">
 
-DVC won't push data imported from other DVC repos to [remote storage]. `dvc pull`
-will download from the original source.
+DVC won't push data imported from other DVC repos to [remote storage].
+`dvc pull` will download from the original source.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 

@@ -32,8 +32,8 @@ Searches for changes in the existing tracked data and pipelines. In local mode,
 it shows which files or directories have changed in the <abbr>workspace</abbr>
 (thus could be [added](/doc/command-reference/add) or
 [reproduced](/doc/command-reference/repro) again). In remote mode, it reports
-the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or `dvc pull`
-could be used to synchronize these).
+the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
+`dvc pull` could be used to synchronize these).
 
 | Mode   | Option            | Description                                                                                                                 |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -99,8 +99,8 @@ detailed bellow.
 - _missing_ means that the file/directory doesn't exist neither in cache, nor in
   remote storage.
 
-For _new_ and _deleted_ data, the cache is different from [remote storage]. Bringing
-the two into sync requires `dvc pull` or `dvc push`.
+For _new_ and _deleted_ data, the cache is different from [remote storage].
+Bringing the two into sync requires `dvc pull` or `dvc push`.
 
 For _missing_ data, there's nothing to retrieve from storage. This can happen
 for example in fresh <abbr>DVC repository</abbr> clones if the data wasn't

@@ -55,9 +55,9 @@ This includes committing any changed data <abbr>dependencies</abbr> to the
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
-It's possible to [queue experiments] for later execution with the `--queue` flag.
-Queued experiments can be run with `dvc queue start` and managed with other `dvc queue`
-commands.
+It's possible to [queue experiments] for later execution with the `--queue`
+flag. Queued experiments can be run with `dvc queue start` and managed with
+other `dvc queue` commands.
 
 <admon icon="book">
 
@@ -66,8 +66,9 @@ See the [Running Experiments] guide for more details on these features and more.
 </admon>
 
 [Review] your experiments with `dvc exp show`. Successful ones can be [made
-persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and committing
-them to the Git repo. Unnecessary ones can be [cleared] with `dvc exp remove`.
+persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
+committing them to the Git repo. Unnecessary ones can be [cleared] with
+`dvc exp remove`.
 
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
@@ -87,13 +88,14 @@ them to the Git repo. Unnecessary ones can be [cleared] with `dvc exp remove`.
   default) before running the experiment. Use the optional `[<filename>:]`
   prefix to use a custom params file.
 
-  Valid `<override_pattern>` values can be defined in Hydra's [basic override] syntax
-  (see [example](#example-modify-parameters-on-the-fly)). Hydra's [choice] and [range]
-  sweep overrides are also supported, but these require the `--queue` flag to be
-  provided as well (see [example](#example-run-a-grid-search)).
+  Valid `<override_pattern>` values can be defined in Hydra's [basic override]
+  syntax (see [example](#example-modify-parameters-on-the-fly)). Hydra's
+  [choice] and [range] sweep overrides are also supported, but these require the
+  `--queue` flag to be provided as well (see
+  [example](#example-run-a-grid-search)).
 
-- `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A default
-  one will be generated otherwise, such as `puffy-daks`.
+- `-n <name>`, `--name <name>` - specify a [unique name] for this experiment. A
+  default one will be generated otherwise, such as `puffy-daks`.
 
   <admon type="tip">
 
@@ -173,8 +175,8 @@ them to the Git repo. Unnecessary ones can be [cleared] with `dvc exp remove`.
 
 - `--pull` - attempts to download missing data as needed. This includes (1)
   dependencies of stages to be run, (2) outputs of otherwise unchanged stages to
-  be skipped, (3) [run cache] for stages to be checked out from cache (unless `--no-run-cache`
-  is passed).
+  be skipped, (3) [run cache] for stages to be checked out from cache (unless
+  `--no-run-cache` is passed).
 
 - `--allow-missing` - skip stages with no other changes than missing data.
 
@@ -278,9 +280,9 @@ experiment we just ran (`puffy-daks`).
 `dvc exp run --set-param` (`-S`) saves you the need to manually edit a params
 file (see `dvc params`) before running an experiment.
 
-This option accepts Hydra's [basic override] syntax. For example, it can override
-(`train.epochs=10`), append (`+train.weight_decay=0.01`), or remove (`~model.dropout`)
-<abbr>parameters</abbr>:
+This option accepts Hydra's [basic override] syntax. For example, it can
+override (`train.epochs=10`), append (`+train.weight_decay=0.01`), or remove
+(`~model.dropout`) <abbr>parameters</abbr>:
 
 ```cli
 dvc exp run -S 'prepare.split=0.1' -S 'featurize.max_features=100'

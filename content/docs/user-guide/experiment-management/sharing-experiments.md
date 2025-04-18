@@ -1,7 +1,7 @@
 # Sharing Experiments
 
-See the video below for how to share experiments using the [DVC Extension] for VS
-Code, or keep reading to go deeper.
+See the video below for how to share experiments using the [DVC Extension] for
+VS Code, or keep reading to go deeper.
 
 https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
 
@@ -33,8 +33,8 @@ when.
 
 <admon type="tip">
 
-`dvc studio login` will set your [access token] to automatically send live metrics
-and plots.
+`dvc studio login` will set your [access token] to automatically send live
+metrics and plots.
 
 </admon>
 
@@ -53,10 +53,9 @@ While the experiment runs, you will see live updates like this in DVC Studio
 
 ### Advanced options and troubleshooting for live metrics and plots
 
-See [DVC config] for how to enable/disable live metrics and how to configure a different
-DVC Studio URL or Git repository, or see the DVC Studio guide on [live
-experiments]
-for more information on how to setup, view, and compare.
+See [DVC config] for how to enable/disable live metrics and how to configure a
+different DVC Studio URL or Git repository, or see the DVC Studio guide on [live
+experiments] for more information on how to setup, view, and compare.
 
 </details>
 
@@ -140,8 +139,8 @@ If you don't know your Git remote, check with `git remote -v` or see
 [troubleshooting] for problems.
 
 By default, DVC will also share <abbr>cached</abbr> data that is tracked by DVC,
-which requires [remote storage] (e.g. Amazon S3 or SSH). Add the `--no-cache` flag
-to exclude sharing cached data.
+which requires [remote storage] (e.g. Amazon S3 or SSH). Add the `--no-cache`
+flag to exclude sharing cached data.
 
 By default, `dvc exp push origin` will push all experiments derived from your
 current Git commit, but you may specify specific experiments as arguments or use
@@ -170,8 +169,9 @@ default value, set the configuration option `exp.git_remote` or the
 
 ## Find pushed experiments
 
-You can see pushed experiments in [DVC Studio]. From there, you can make an experiment
-[persistent] by creating a Git branch, or you can [remove] it from your Git remote:
+You can see pushed experiments in [DVC Studio]. From there, you can make an
+experiment [persistent] by creating a Git branch, or you can [remove] it from
+your Git remote:
 
 ![DVC Studio Shared Experiments](/img/studio-shared-exps.png)
 
@@ -255,13 +255,13 @@ $ dvc push
 ```
 
 If you don't want to create a new Git branch and instead want to commit the
-experiment directly on top of your current Git branch, you can [bring
-experiment results to your workspace].
+experiment directly on top of your current Git branch, you can [bring experiment
+results to your workspace].
 
 ## Remove pushed experiments
 
-As you share more experiments, [DVC Studio] and Git remotes may be become cluttered
-with experiment references.
+As you share more experiments, [DVC Studio] and Git remotes may be become
+cluttered with experiment references.
 
 You can remove experiments in DVC Studio:
 

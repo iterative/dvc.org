@@ -10,8 +10,8 @@ support for reproducibility and data management for AI.
 
 </admon>
 
-**DVC** can be installed on [Visual Studio Code], any [system terminal], and used
-as a [Python library].
+**DVC** can be installed on [Visual Studio Code], any [system terminal], and
+used as a [Python library].
 
 [visual studio code]: /doc/vs-code-extension
 [system terminal]: /doc/install

@@ -49,8 +49,8 @@ $ mamba install -c conda-forge dvc
 ```
 
 Depending on the type of the [remote storage] you plan to use, you might need to
-install optional dependencies: `dvc-s3`, `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`,
-`dvc-ssh`.
+install optional dependencies: `dvc-s3`, `dvc-azure`, `dvc-gdrive`, `dvc-gs`,
+`dvc-oss`, `dvc-ssh`.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -90,8 +90,8 @@ $ pip install dvc
 ```
 
 Depending on the type of the [remote storage] you plan to use, you might need to
-install optional dependencies: `[s3]`, `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`.
-Use `[all]` to include them all.
+install optional dependencies: `[s3]`, `[azure]`, `[gdrive]`, `[gs]`, `[oss]`,
+`[ssh]`. Use `[all]` to include them all.
 
 <details id="example-pip-with-support-for-amazon-s3-storage">
 

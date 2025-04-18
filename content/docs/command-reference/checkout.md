@@ -45,14 +45,14 @@ after `git checkout`. See the
 for more details.
 
 By default, this command tries not make copies of cached files in the workspace,
-using reflinks instead when supported by the file system (refer to [File
-link types]). The next linking strategy default value is `copy` though, so
-unless other file link types are manually configured in [`cache.type`]), files
-will be copied. Keep in mind that having file copies doesn't present much of a
-negative impact unless the project uses very large data (several GBs or more).
-But leveraging file links is crucial with large files, for example when checking
-out a 50Gb file by copying might take a few minutes whereas, with links,
-restoring any file size will be almost instantaneous.
+using reflinks instead when supported by the file system (refer to [File link
+types]). The next linking strategy default value is `copy` though, so unless
+other file link types are manually configured in [`cache.type`]), files will be
+copied. Keep in mind that having file copies doesn't present much of a negative
+impact unless the project uses very large data (several GBs or more). But
+leveraging file links is crucial with large files, for example when checking out
+a 50Gb file by copying might take a few minutes whereas, with links, restoring
+any file size will be almost instantaneous.
 
 [File link types]:
   /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
@@ -68,9 +68,9 @@ such a case, `dvc checkout` prints a warning message. It also lists the partial
 progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases, the data can be pulled from [remote storage] using `dvc pull`.
-In other cases, the [pipeline] must be reproduced (using `dvc repro`) to regenerate
-its outputs.
+situation. In some cases, the data can be pulled from [remote storage] using
+`dvc pull`. In other cases, the [pipeline] must be reproduced (using
+`dvc repro`) to regenerate its outputs.
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [pipeline]: /doc/command-reference/dag

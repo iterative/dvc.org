@@ -12,8 +12,8 @@ Cloud versioning features are only available for certain storage providers.
 Currently, it is supported on the following storage types:
 
 - [Amazon S3] (requires [S3 Versioning] enabled buckets)
-- Microsoft [Azure Blob Storage] (requires [Blob versioning] enabled storage accounts
-  and containers)
+- Microsoft [Azure Blob Storage] (requires [Blob versioning] enabled storage
+  accounts and containers)
 - [Google Cloud Storage] (requires [Object versioning] enabled buckets)
 
 [amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3

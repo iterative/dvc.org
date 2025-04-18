@@ -36,10 +36,6 @@ const smoothScrollTag = (
 const Paginator: React.FC<IPaginatorProps> = ({
   pageInfo: { nextPage, previousPage }
 }) => {
-  if (!previousPage && !nextPage) {
-    return null
-  }
-
   const { state } = usePaginatorContext() as IPaginatorLocationContextValue
 
   const fromPaginator = Boolean(state?.fromPaginator)

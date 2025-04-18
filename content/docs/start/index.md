@@ -91,7 +91,8 @@ $ dvc get https://github.com/iterative/dataset-registry \
 <admon type="info">
 
 We used `dvc get` above to show how DVC can turn any Git repo into a "[data
-registry]". `dvc get` can download any file or directory tracked in a <abbr>DVC repository</abbr>.
+registry]". `dvc get` can download any file or directory tracked in a <abbr>DVC
+repository</abbr>.
 
 [data registry]: /doc/use-cases/data-registry
 
@@ -178,8 +179,8 @@ $ dvc remote add -d myremote %TEMP%\dvcstore
 
 <admon icon="info">
 
-DVC supports many remote [storage types], including Amazon S3, NFS, SSH, Google Drive,
-Azure Blob Storage, and HDFS.
+DVC supports many remote [storage types], including Amazon S3, NFS, SSH, Google
+Drive, Azure Blob Storage, and HDFS.
 
 An example for a common use case is configuring an [Amazon S3] remote:
 
@@ -363,12 +364,12 @@ Choose a trail to jump into its first chapter:
   pipelines.
 
 - **[Experiment Management]** - Easily track your experiments and their progress
-  by only instrumenting your code, and collaborate on ML experiments like software
-  engineers do for code.
+  by only instrumenting your code, and collaborate on ML experiments like
+  software engineers do for code.
 
-- **[Model Registry]** - Use the DVC model registry to manage the lifecycle of your
-  models in an auditable way. Easily access your models and integrate your model
-  registry actions into CICD pipelines to follow GitOps best practices.
+- **[Model Registry]** - Use the DVC model registry to manage the lifecycle of
+  your models in an auditable way. Easily access your models and integrate your
+  model registry actions into CICD pipelines to follow GitOps best practices.
 
 [Data Pipelines]: /doc/start/data-management/data-pipelines
 [Experiment Management]: /doc/start/experiments/experiment-tracking

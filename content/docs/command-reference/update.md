@@ -41,9 +41,9 @@ $ dvc update --rev master
 
 ## Options
 
-- `--rev <version>` - commit hash, branch or tag name, etc. (any [Git
-  revision]) of the repository to update the file or directory from. The latest commit
-  (in the default branch) is used by default.
+- `--rev <version>` - commit hash, branch or tag name, etc. (any [Git revision])
+  of the repository to update the file or directory from. The latest commit (in
+  the default branch) is used by default.
 
   For data obtained with `dvc import-url --version-aware`, this option can be
   used to specify an object version ID. By default, the current version from

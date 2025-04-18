@@ -27,9 +27,9 @@ to
 
 ![](/img/storage-layers.png) _Data storage middleware for multiple projects_
 
-You can have a single storage for all you projects by setting up a [shared
-DVC cache] in a near location (network, external drive, etc.). This
-de-duplicates files across datasets and prevents repetitive transfers by
+You can have a single storage for all you projects by setting up a [shared DVC
+cache] in a near location (network, external drive, etc.). This de-duplicates
+files across datasets and prevents repetitive transfers by
 [linking](/doc/user-guide/data-management/large-dataset-optimization) your
 working files and directories. Data security policies can be implemented
 reliably, as data never leaves the central storage. DVC can also help you back
@@ -45,8 +45,8 @@ without having to change the directory structures or code of your projects.
 
 ### What's next?
 
-For details about how DVC caches your files and directories, see [Structure
-of the cache directory]. If you're completely new to DVC, see our
+For details about how DVC caches your files and directories, see [Structure of
+the cache directory]. If you're completely new to DVC, see our
 [Get Started](/doc/start) pages to get familiar with the main features that
 structured storage and
 [data versioning](/doc/use-cases/versioning-data-and-models) allow. And check

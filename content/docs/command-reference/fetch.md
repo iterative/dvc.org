@@ -87,8 +87,8 @@ The `dvc remote` used is determined in order, based on
   If there are no directories among the `targets`, this option has no effect.
 
 - `--run-cache`, `--no-run-cache` - whether to download all available history of
-  [stage runs] from the remote repository. See the same option in `dvc push`. Default
-  is ``--no-run-cache`.
+  [stage runs] from the remote repository. See the same option in `dvc push`.
+  Default is ``--no-run-cache`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. Note that the
@@ -161,9 +161,9 @@ The workspace looks like this:
     └── <code files here>
 ```
 
-This project comes with a predefined HTTP [remote storage]. We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
-into our local <abbr>cache</abbr>.
+This project comes with a predefined HTTP [remote storage]. We can now just run
+`dvc fetch` to download the most recent `model.pkl`, `data.xml`, and other
+DVC-tracked files into our local <abbr>cache</abbr>.
 
 ```cli
 $ dvc status --cloud

@@ -20,8 +20,9 @@ positional arguments:
 
 ## Description
 
-This command is a way to visualize the "difference" between [certain metrics] among
-versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
+This command is a way to visualize the "difference" between [certain metrics]
+among versions of the <abbr>repository</abbr>, by overlaying them in a single
+plot.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between plots file values.
@@ -37,8 +38,8 @@ all of them in a single image).
 All plots defined in `dvc.yaml` are used by default, but specific files can be
 specified with the `--targets` option (any valid plots file is accepted).
 
-The plot style can be customized with [plot templates], using the `--template` option.
-See `dvc plots` to learn more about plots files and templates.
+The plot style can be customized with [plot templates], using the `--template`
+option. See `dvc plots` to learn more about plots files and templates.
 
 Another way to display plots is the `dvc plots show` command, which just lists
 all the current plots, without comparisons.

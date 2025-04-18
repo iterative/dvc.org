@@ -7,10 +7,11 @@ Adding versioning needs and dependency management can easily turn this near
 impossible.
 
 A <abbr>DVC project</abbr> structure is simplified by encapsulating [data
-versioning] and [pipelining] (e.g. machine learning workflows), among other features.
-This leaves a _workspace_ directory with a clean view of your working raw data, source
-code, data artifacts, etc. and a few [metafiles](/doc/user-guide/project-structure)
-that enable these features. A single version of the project is visible at a time.
+versioning] and [pipelining] (e.g. machine learning workflows), among other
+features. This leaves a _workspace_ directory with a clean view of your working
+raw data, source code, data artifacts, etc. and a few
+[metafiles](/doc/user-guide/project-structure) that enable these features. A
+single version of the project is visible at a time.
 
 [data versioning]: /doc/start/data-management/data-versioning
 [pipelining]: /doc/start/data-management/data-pipelines

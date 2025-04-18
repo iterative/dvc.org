@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react'
+import { RefObject, useCallback, useEffect } from 'react'
 
 const events = [`mousedown`, `touchstart`]
 
@@ -7,17 +7,21 @@ const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
   onClickOutside: (event: Event) => void,
   cleanup = true
 ) => {
-  const isOutside = (element: Node | null) =>
-    !ref.current || !ref.current.contains(element)
+  const onClick = useCallback(
+    (event: Event) => {
+      const isOutside = (element: Node | null) =>
+        !ref.current || !ref.current.contains(element)
 
-  const onClick = (event: Event) => {
-    if (isOutside(event.target as Node)) {
-      onClickOutside(event)
-      if (cleanup) {
-        for (const event of events) document.removeEventListener(event, onClick)
+      if (isOutside(event.target as Node)) {
+        onClickOutside(event)
+        if (cleanup) {
+          for (const event of events)
+            document.removeEventListener(event, onClick)
+        }
       }
-    }
-  }
+    },
+    [cleanup, onClickOutside, ref]
+  )
 
   useEffect(() => {
     for (const event of events) {
@@ -27,6 +31,6 @@ const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
     return () => {
       for (const event of events) document.removeEventListener(event, onClick)
     }
-  }, [ref, onClickOutside])
+  }, [ref, onClickOutside, onClick])
 }
 export default useOnClickOutside

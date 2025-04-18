@@ -22,7 +22,7 @@ export const TypedTerminal = ({
         typed.current?.destroy()
       }
     }
-  }, [typedOptions, el.current, typed.current])
+  }, [typedOptions])
 
   return <pre className={cn(className, codeStyles.code)} ref={el} />
 }

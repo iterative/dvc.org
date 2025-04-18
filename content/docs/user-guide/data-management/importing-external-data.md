@@ -2,8 +2,8 @@
 
 To version data that lives outside of your local <abbr>project</abbr>, you can
 import it. You can choose whether to download that data and whether to push
-copies to your [DVC remote]. This makes importing the data useful even if you want
-to track the data in-place at its original source location.
+copies to your [DVC remote]. This makes importing the data useful even if you
+want to track the data in-place at its original source location.
 
 <admon type="tip">
 
@@ -57,8 +57,8 @@ $ dvc update data.xml.dvc
 ```
 
 During `dvc push`, DVC will upload the version of the data tracked by
-`data.xml.dvc` to the [DVC remote] so that it is backed up in case you need to recover
-it.
+`data.xml.dvc` to the [DVC remote] so that it is backed up in case you need to
+recover it.
 
 DVC will never overwrite the source location of the data. Instead, DVC can
 checkout any version of that data locally. DVC is designed to protect the
@@ -108,11 +108,12 @@ Everything is up to date.
 
 ### Example: Cloud versioning
 
-If you are importing from a supported [cloud versioning] provider, `dvc import-url --no-download --version-aware`
-will not download the data locally but will track the cloud provider's version IDs
-for the data. `dvc pull` will try to download those version IDs as long as they are
-available. `dvc push` will not upload anything because DVC assumes the versions are
-available at the source location:
+If you are importing from a supported [cloud versioning] provider,
+`dvc import-url --no-download --version-aware` will not download the data
+locally but will track the cloud provider's version IDs for the data. `dvc pull`
+will try to download those version IDs as long as they are available. `dvc push`
+will not upload anything because DVC assumes the versions are available at the
+source location:
 
 ```cli
 $ dvc import-url --no-download --version-aware s3://myversionedbucket/data.xml

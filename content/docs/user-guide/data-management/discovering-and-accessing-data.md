@@ -10,8 +10,9 @@ projects?
 <admon type="tip">
 
 These questions tend to come up when you browse the files that DVC saves to
-[remote storage] (e.g. `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673`
-😱 instead of the original file name such as `model.pkl` or `data.xml`).
+[remote storage] (e.g.
+`s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
+instead of the original file name such as `model.pkl` or `data.xml`).
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 
@@ -85,8 +86,9 @@ bring in changes from the data source later using `dvc update`.
 
 <admon type="info">
 
-The [dataset registry] repository doesn't actually contain a `get-started/data.xml`
-file. Like `dvc get`, `dvc import` downloads from [remote storage].
+The [dataset registry] repository doesn't actually contain a
+`get-started/data.xml` file. Like `dvc get`, `dvc import` downloads from [remote
+storage].
 
 [dataset registry]: https://github.com/iterative/dataset-registry
 
@@ -140,9 +142,9 @@ path.
 
 <admon type="tip">
 
-The [DVC Studio] model registry was built for models but since DVC tracks all kinds
-of files, it can be used just as easily for other artifact types. See our [tutorial]
-for how to manage artifacts using the registry.
+The [DVC Studio] model registry was built for models but since DVC tracks all
+kinds of files, it can be used just as easily for other artifact types. See our
+[tutorial] for how to manage artifacts using the registry.
 
 </admon>
 
@@ -151,9 +153,9 @@ semantic versions can be registered and lifecycle stages (think
 `dev`/`test`/`prod`) can be assigned using Git tags managed by [GTO](/doc/gto).
 These tags give you a full history of your model lifecycle in Git and enable you
 to trigger CICD workflows based on changes in the model registry. With [DVC
-Studio], you can see models and their metadata across all projects, and you can download
-artifacts by name, version, and lifecycle stage, without needing to configure access
-to the underlying Git repository or remote storage.
+Studio], you can see models and their metadata across all projects, and you can
+download artifacts by name, version, and lifecycle stage, without needing to
+configure access to the underlying Git repository or remote storage.
 
 [DVC Studio]: https://studio.datachain.ai
 [tutorial]: /doc/use-cases/data-registry/tutorial#sharing-and-managing-artifacts

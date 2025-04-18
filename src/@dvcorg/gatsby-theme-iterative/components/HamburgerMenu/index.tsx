@@ -33,7 +33,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
 
   const handleToggle = useCallback(() => setOpened(!opened), [opened])
 
-  const handleClose = useCallback(() => setOpened(false), [opened])
+  const handleClose = useCallback(() => setOpened(false), [])
 
   const handleItemClick = useCallback(
     (item?: string) => (): void => {
@@ -42,7 +42,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
         logEvent('Hamburger Menu', { Item: item })
       }
     },
-    []
+    [handleClose]
   )
 
   useEffect(() => {

@@ -61,8 +61,9 @@ Multiple stages of a <abbr>pipeline</abbr> can [use the same params file] as
 <abbr>stage</abbr>.
 
 Parameters can also be used for [templating] `dvc.yaml` itself (see also **Dict
-Unpacking**), which means you can pass them to your [stage commands] as command-line
-arguments. You can also load them in Python code with `dvc.api.params_show()`.
+Unpacking**), which means you can pass them to your [stage commands] as
+command-line arguments. You can also load them in Python code with
+`dvc.api.params_show()`.
 
 The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.

@@ -31,7 +31,8 @@ you would in any other environment. Take a look at DVC [experiments] for how to
 get started with DVC in notebooks (if you have setup [code-server] on SageMaker,
 you can also install the [DVC extension for VS Code]).
 
-If you would like to see live experiment updates in [DVC Studio], set your token:
+If you would like to see live experiment updates in [DVC Studio], set your
+token:
 
 ```cli
 $ dvc studio login
@@ -76,10 +77,11 @@ prepare:
         cache: false
 ```
 
-The [preprocessing script] takes `bucket` and `prefix` as arguments and otherwise
-is copied directly from the original notebook code, which uses a SageMaker Processing
-job. The DVC pipeline stage tracks the command, scripts, input paths, and outputs
-paths, so that this stage will only be run again if any of those change:
+The [preprocessing script] takes `bucket` and `prefix` as arguments and
+otherwise is copied directly from the original notebook code, which uses a
+SageMaker Processing job. The DVC pipeline stage tracks the command, scripts,
+input paths, and outputs paths, so that this stage will only be run again if any
+of those change:
 
 ```yaml
 preprocessing:
@@ -98,11 +100,13 @@ preprocessing:
 ```
 
 Finally, the [training script] uses the SageMaker Estimator for XGBoost to train
-a model. We add all the model hyperparameters as arguments to make it easy to tune
-hyperparameters and track what changed. Hyperparameters are added under the `train`
-key in `params.yaml`. The DVC pipeline stage `cmd` includes `${train}` to [unpack and pass](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
-all those arguments and track them as parameters, in addition to tracking the other
-inputs and outputs:
+a model. We add all the model hyperparameters as arguments to make it easy to
+tune hyperparameters and track what changed. Hyperparameters are added under the
+`train` key in `params.yaml`. The DVC pipeline stage `cmd` includes `${train}`
+to
+[unpack and pass](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
+all those arguments and track them as parameters, in addition to tracking the
+other inputs and outputs:
 
 ```yaml
 training:

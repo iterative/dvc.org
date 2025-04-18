@@ -59,10 +59,10 @@ run:
 
 </toggle>
 
-DVC observes the [dependency graph] between stages, so it only runs the ones with
-changed dependencies or outputs missing from the <abbr>cache</abbr>. You can limit
-this to certain [reproduction targets] or even single stages (`--single-item`
-flag).
+DVC observes the [dependency graph] between stages, so it only runs the ones
+with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
+can limit this to certain [reproduction targets] or even single stages
+(`--single-item` flag).
 
 <abbr>DVC projects</abbr> actually support more than one pipeline, in one or
 more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
@@ -106,15 +106,15 @@ files cannot be restored.
 ## Tuning (hyper)parameters
 
 Parameters are any values used inside your code to tune modeling attributes, or
-that affect experiment results in any other way. For example, a [random
-forest classifier] may require a _maximum depth_ value. Machine learning
+that affect experiment results in any other way. For example, a [random forest
+classifier] may require a _maximum depth_ value. Machine learning
 experimentation often involves defining and searching hyperparameter spaces to
 improve the resulting model metrics.
 
-Your source code should read params from structured [parameters files] (`params.yaml`
-by default). Define them with the `params` field of `dvc.yaml` for DVC to track them.
-When a param value has changed, `dvc exp run` invalidates any stages that depend
-on it, and reproduces them.
+Your source code should read params from structured [parameters files]
+(`params.yaml` by default). Define them with the `params` field of `dvc.yaml`
+for DVC to track them. When a param value has changed, `dvc exp run` invalidates
+any stages that depend on it, and reproduces them.
 
 <admon icon="book">
 
@@ -318,7 +318,8 @@ To clear the experiments queue and start over, use `dvc queue remove --queued`.
 
 <admon icon="book">
 
-For more advanced grid searches, DVC supports complex config via [Hydra composition].
+For more advanced grid searches, DVC supports complex config via [Hydra
+composition].
 
 [hydra composition]: /doc/user-guide/experiment-management/hydra-composition
 

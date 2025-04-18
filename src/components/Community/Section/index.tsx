@@ -42,7 +42,7 @@ const Section: React.FC<ICommunitySection> = ({
     if (anchor && location.hash === `#${anchor}`) {
       setIsContentVisible(true)
     }
-  }, [location.hash])
+  }, [anchor, location.hash])
 
   useEffect(() => setIsTablet(width <= 768), [width])
 

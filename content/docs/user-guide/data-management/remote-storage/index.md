@@ -8,8 +8,8 @@ regenerate them locally. See also `dvc push` and `dvc pull`.
 
 <admon type="info">
 
-DVC remotes are similar to [Git remotes] (e.g. GitHub or GitLab hosting), but for
-<abbr>cached</abbr> data instead of code.
+DVC remotes are similar to [Git remotes] (e.g. GitHub or GitLab hosting), but
+for <abbr>cached</abbr> data instead of code.
 
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 

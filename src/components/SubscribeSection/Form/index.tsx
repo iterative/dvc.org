@@ -8,17 +8,14 @@ import * as styles from './styles.module.css'
 const Form: React.FC = () => {
   const hiddenInputRef = useRef<HTMLInputElement>(null)
   const honeypotNameRef = useRef(nanoid())
-  const sendGAEvent = useCallback(
-    (e: React.FormEvent) => {
-      if (hiddenInputRef.current?.value) {
-        // It's a bot.
-        return e.preventDefault()
-      }
+  const sendGAEvent = useCallback((e: React.FormEvent) => {
+    if (hiddenInputRef.current?.value) {
+      // It's a bot.
+      return e.preventDefault()
+    }
 
-      logEvent('Subscribe Form')
-    },
-    [hiddenInputRef?.current]
-  )
+    logEvent('Subscribe Form')
+  }, [])
   return (
     <form
       className={styles.form}
