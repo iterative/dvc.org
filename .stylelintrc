@@ -21,6 +21,12 @@
         "ignoreAtRules": ["mixin", "tailwind", "screen"]
       }
     ],
+    "at-rule-no-deprecated": [
+      true,
+      {
+        "ignoreAtRules": ["apply"]
+      }
+    ],
     "custom-property-pattern": null,
     "selector-id-pattern": null,
     "selector-class-pattern": null,

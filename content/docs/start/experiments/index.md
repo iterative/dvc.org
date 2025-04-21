@@ -11,9 +11,9 @@ description:
 
 ## Chapters
 
-- **[Experiment tracking]** - Instrument your code to quickly start tracking experiments.
-  Manage changes to code, data, metrics, parameters and plots associated with each
-  experiment without bloating your Git repo.
+- **[Experiment tracking]** - Instrument your code to quickly start tracking
+  experiments. Manage changes to code, data, metrics, parameters and plots
+  associated with each experiment without bloating your Git repo.
 
 - **[Experimenting using pipelines]** - Leverage DVC data pipelines as an
   experiment management system. Split your workflow into stages, track

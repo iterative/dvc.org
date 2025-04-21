@@ -357,8 +357,8 @@ Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metrics file with the `-M` option of `dvc stage add`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See
-`dvc metrics`, [Comparing Changes], and [Comparing Many Experiments] to learn more
-about managing metrics with DVC.
+`dvc metrics`, [Comparing Changes], and [Comparing Many Experiments] to learn
+more about managing metrics with DVC.
 
 [comparing changes]:
   /doc/start/data-management/metrics-parameters-plots#comparing-iterations

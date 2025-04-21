@@ -12,7 +12,7 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
 import { useCommunityData } from '../../../utils/front/community'
-import getPosts from '../../../queries/posts'
+import usePosts from '../../../queries/usePosts'
 import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
 
 import * as sharedStyles from '../styles.module.css'
@@ -175,7 +175,7 @@ const Documentation: React.FC<ICommunityDocumentationProps> = ({
 }
 
 const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
-  const posts = getPosts()
+  const posts = usePosts()
   const {
     rest: {
       documentation,

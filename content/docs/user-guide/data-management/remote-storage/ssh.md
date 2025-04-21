@@ -20,9 +20,9 @@ SSH, like FTP (simple file transfer protocol) which becomes secure or [SFTP].
 </details>
 
 DVC will act as an SSH/SFTP client, which means that the remote storage should
-be located in an [SSH server]. Use `dvc remote add` to define the remote by setting
-a name and valid [SSH URL] (which may include some auth info. like user name or
-port):
+be located in an [SSH server]. Use `dvc remote add` to define the remote by
+setting a name and valid [SSH URL] (which may include some auth info. like user
+name or port):
 
 ```cli
 $ dvc remote add -d myremote ssh://user@example.com:2222/path
@@ -99,9 +99,9 @@ $ dvc remote modify myremote ask_password true
 
 - `url` - modify the remote location ([scroll up](#amazon-s3) for details)
 
-- `allow_agent` - whether to use [SSH agents] (`true` by default). Setting this to
-  `false` is useful when `ssh-agent` is causing problems, e.g. "No existing session"
-  errors.
+- `allow_agent` - whether to use [SSH agents] (`true` by default). Setting this
+  to `false` is useful when `ssh-agent` is causing problems, e.g. "No existing
+  session" errors.
 
 - `gss_auth` - use Generic Security Service auth if available on host (for
   example, [with Kerberos]). `false` by default

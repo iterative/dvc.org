@@ -18,7 +18,6 @@ const indexName = 'dvc'
 const SearchForm: React.FC = props => {
   const [searchAvailable, setSearchAvailable] = useState<boolean>(false)
   useEffect(() => {
-    console.log({ window, docSearch: window?.docsearch })
     if (window) {
       if (!window.docsearch) {
         Promise.all([

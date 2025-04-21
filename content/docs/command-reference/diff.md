@@ -123,8 +123,8 @@ $ dvc diff
 
 ### Click and expand to set up the example
 
-Let's checkout the [2-track-data] tag, corresponding to the [Data Versioning] _Get
-Started_ chapter, right after we added `data.xml` file with DVC:
+Let's checkout the [2-track-data] tag, corresponding to the [Data Versioning]
+_Get Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```cli
 $ git checkout 2-track-data

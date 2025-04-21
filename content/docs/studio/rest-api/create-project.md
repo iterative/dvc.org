@@ -12,8 +12,8 @@ Content-Type: application/json
 
 ## Authentication
 
-The request should contain following header containing [DVC Studio client
-access token] with `PROJECT` scope for authorization.
+The request should contain following header containing [DVC Studio client access
+token] with `PROJECT` scope for authorization.
 
 | header        | desc            | example value           |
 | ------------- | --------------- | ----------------------- |

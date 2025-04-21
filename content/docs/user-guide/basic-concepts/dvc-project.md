@@ -15,10 +15,10 @@ considered part of the project (e.g.
 ## DVC repository
 
 A DVC project in a Git repository can also be called a _DVC repository_ or "the
-repo". This setup enables the [versioning features] of DVC (recommended). Files tracked
-by Git are considered part of the DVC project when referenced from DVC metafiles
-such as `dvc.lock`; for example source code that is used as a <abbr>stage</abbr>
-command (`cmd` field in `dvc.yaml`).
+repo". This setup enables the [versioning features] of DVC (recommended). Files
+tracked by Git are considered part of the DVC project when referenced from DVC
+metafiles such as `dvc.lock`; for example source code that is used as a
+<abbr>stage</abbr> command (`cmd` field in `dvc.yaml`).
 
 [versioning features]: /doc/start/data-management/data-versioning
 
