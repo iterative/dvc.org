@@ -206,25 +206,6 @@ export const HamburgerMenu: React.FC<
             </li>
           </ul>
         </li>
-        <li className={styles.section}>
-          <p className={styles.sectionHeading}>All Tools</p>
-          <ul className={styles.subSections}>
-            {menuData.products.map(item => (
-              <li className={styles.subSection} key={item.href}>
-                <Link href={item.href} className={styles.subSectionLink}>
-                  <img
-                    className={styles.subSectionLinkImage}
-                    src={item.img}
-                    alt={item.imgAlt}
-                  />
-                  <span className={styles.subSectionLinkTitle}>
-                    {item.title}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
       </ul>
       <Link
         href="/doc/start"
