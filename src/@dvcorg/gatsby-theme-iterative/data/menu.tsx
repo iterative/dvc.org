@@ -3,7 +3,6 @@ import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/si
 import * as styles from './styles.module.css'
 import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
 import {
-  OtherToolsPopup,
   CommunityPopup,
   OtherPopup
 } from '../components/LayoutHeader/Nav/Popup'
@@ -11,8 +10,6 @@ import {
   INavLinkData,
   INavLinkPopupData
 } from '../components/LayoutHeader/Nav/LinkItems'
-import { githubDatachainUrl } from '../../../utils/externalUrls'
-import { ReactNode } from 'react'
 
 interface ICommunityData {
   title: string
@@ -22,21 +19,8 @@ interface ICommunityData {
   imgAlt: string
 }
 
-interface IProductsData {
-  title: string
-  titleImgClass?: string
-  description: string
-  iconClass: string | null
-  href: string
-  icon?: ReactNode
-  img: string
-  imgAlt: string
-  target?: '_blank'
-}
-
 interface IMenuData {
   community: Array<ICommunityData>
-  products: Array<IProductsData>
   nav: Array<INavLinkData | INavLinkPopupData>
 }
 
@@ -55,11 +39,6 @@ const menuData: IMenuData = {
       text: 'Doc'
     },
     {
-      href: 'https://iterative.ai/blog/',
-      eventType: 'blog',
-      text: 'Blog'
-    },
-    {
       href: 'https://learn.iterative.ai/',
       eventType: 'course',
       text: 'Course'
@@ -74,11 +53,6 @@ const menuData: IMenuData = {
       href: '/support',
       eventType: 'support',
       text: 'Support'
-    },
-    {
-      text: 'More Tools',
-      popupName: 'otherToolsPopup',
-      Popup: OtherToolsPopup
     },
     {
       text: EllipsisIcon,
@@ -124,34 +98,6 @@ const menuData: IMenuData = {
       href: '/community#events',
       img: '/img/community/icon-events.svg',
       imgAlt: ''
-    }
-  ],
-  products: [
-    {
-      title: 'DataChain',
-      description:
-        'Wrangle unstructured data in Python using AI helpers at scale',
-      href: githubDatachainUrl,
-      iconClass: styles.datachainIcon,
-      img: '/img/logos/datachain-logo.svg',
-      imgAlt: 'Datachain logo'
-    },
-    {
-      title: 'DVC Studio',
-      description: 'Track experiments and share insights from ML projects',
-      iconClass: styles.studioIcon,
-      href: 'https://studio.datachain.ai/',
-      img: '/img/studio_icon-color--square_vector.svg',
-      imgAlt: 'Studio logo'
-    },
-    {
-      title: 'VS Code Extension',
-      titleImgClass: styles.vscodeIcon,
-      description: 'Local ML model development and experiment tracking',
-      iconClass: styles.dvcIcon,
-      href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
-      img: '/img/dvc_icon-color--square_vector.svg',
-      imgAlt: 'DVC logo'
     }
   ]
 }

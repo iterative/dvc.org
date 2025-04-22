@@ -8,14 +8,12 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.svg'
-import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-icon.svg'
 
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
 import menuData from '../../data/menu'
-import { studioUrl } from '../../../../utils/externalUrls'
 import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
 const docsPage = getFirstPage()
@@ -208,25 +206,6 @@ export const HamburgerMenu: React.FC<
             </li>
           </ul>
         </li>
-        <li className={styles.section}>
-          <p className={styles.sectionHeading}>All Tools</p>
-          <ul className={styles.subSections}>
-            {menuData.products.map(item => (
-              <li className={styles.subSection} key={item.href}>
-                <Link href={item.href} className={styles.subSectionLink}>
-                  <img
-                    className={styles.subSectionLinkImage}
-                    src={item.img}
-                    alt={item.imgAlt}
-                  />
-                  <span className={styles.subSectionLinkTitle}>
-                    {item.title}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
       </ul>
       <Link
         href="/doc/start"
@@ -234,14 +213,6 @@ export const HamburgerMenu: React.FC<
         onClick={() => handleItemClick('get-started')}
       >
         Get started
-      </Link>
-      <Link
-        href={studioUrl}
-        className={cn(styles.linkButton)}
-        onClick={() => handleItemClick('get-enterprise')}
-      >
-        Get Enterprise
-        <ExternalLinkIcon className="ml-0.5 inline-block w-4 h-4" />
       </Link>
     </div>
   )
