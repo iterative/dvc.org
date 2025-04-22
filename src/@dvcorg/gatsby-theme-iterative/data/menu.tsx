@@ -3,7 +3,6 @@ import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/si
 import * as styles from './styles.module.css'
 import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
 import {
-  OtherToolsPopup,
   CommunityPopup,
   OtherPopup
 } from '../components/LayoutHeader/Nav/Popup'
@@ -74,11 +73,6 @@ const menuData: IMenuData = {
       href: '/support',
       eventType: 'support',
       text: 'Support'
-    },
-    {
-      text: 'More Tools',
-      popupName: 'otherToolsPopup',
-      Popup: OtherToolsPopup
     },
     {
       text: EllipsisIcon,

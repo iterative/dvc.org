@@ -11,12 +11,8 @@ import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-co
 import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
-import { ReactComponent as StudioSVG } from '../../../../../static/img/studio_icon-color--square_vector.svg'
-import { ReactComponent as DatachainSVG } from '../../../../../static/img/logos/datachain-logo.svg'
 
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
-
-import { githubDatachainUrl } from '../../../../utils/externalUrls'
 
 const docsPage = getFirstPage()
 
@@ -74,50 +70,6 @@ const footerListsData: Array<IFooterListData> = [
         href: '/chat',
         text: 'Discord',
         icon: <DiscordSVG className={styles.icon} />
-      }
-    ]
-  },
-  {
-    header: 'Company',
-    links: [
-      {
-        href: '/blog',
-        text: 'Blog'
-      },
-      {
-        href: '/doc/user-guide/privacy',
-        text: 'Privacy Policy'
-      },
-      {
-        href: 'https://iterative.ai/about#career',
-        text: 'Career',
-        target: '_blank'
-      },
-      {
-        href: 'https://iterative.ai/brand',
-        text: 'Media Kit'
-      }
-    ]
-  },
-  {
-    header: 'More Tools',
-    links: [
-      {
-        href: githubDatachainUrl,
-        text: 'DataChain',
-        icon: <DatachainSVG className={styles.productIcon} />
-      },
-      {
-        href: 'https://studio.datachain.ai/',
-        text: 'DVC Studio',
-        icon: <StudioSVG className={styles.productIcon} />,
-        target: '_blank'
-      },
-      {
-        href: 'https://marketplace.visualstudio.com/items?itemName=Iterative.dvc',
-        text: 'VS Code Extension',
-        icon: <LogoSVG className={styles.productIcon} />,
-        target: '_blank'
       }
     ]
   }
@@ -199,6 +151,7 @@ const LayoutFooter: React.FC = () => (
         </Link>
       </div>
       <FooterLists />
+
       <div className="mx-auto mt-6">
         <FooterSocialIcons />
       </div>
