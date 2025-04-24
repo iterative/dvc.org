@@ -92,11 +92,6 @@ const footerSocialIconsData: Array<ISocialIcon> = [
     url: 'https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ'
   },
   {
-    site: 'linkedinNoBg',
-    label: 'Iterative LinkedIn',
-    url: 'https://www.linkedin.com/company/dvc-ai'
-  },
-  {
     site: 'discord',
     label: 'DVC Discord chat',
     url: 'https://www.dvc.org/chat'
