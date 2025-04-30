@@ -1,4 +1,5 @@
 import { PageProps } from 'gatsby'
+
 import MainLayout from '../components/MainLayout'
 import ThankYou from '../components/ThankYou'
 

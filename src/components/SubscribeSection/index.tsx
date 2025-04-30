@@ -3,7 +3,6 @@ import cn from 'classnames'
 import SubscribeForm from './Form'
 import { default as Glyph1Src } from './glyph-1.svg'
 import { default as Glyph2Src } from './glyph-2.svg'
-
 import * as styles from './styles.module.css'
 
 const SubscribeSection: React.FC = () => (

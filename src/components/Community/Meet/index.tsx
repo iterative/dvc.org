@@ -1,22 +1,22 @@
-import React, { useCallback } from 'react'
-import { formatDistanceToNow } from 'date-fns/formatDistanceToNow'
-
-import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Block from '../Block'
-import Section from '../Section'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import {
   useIssues,
   useTopics,
   IGithubIssue,
   IDiscussTopic
 } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow'
+import { useCallback } from 'react'
 
+import { ICommunitySectionTheme } from '../'
 import { useCommunityData } from '../../../utils/front/community'
+import Block from '../Block'
+import Section from '../Section'
 import * as sharedStyles from '../styles.module.css'
+
 import * as styles from './styles.module.css'
 
 const log = (section: string, eventType: string): void =>

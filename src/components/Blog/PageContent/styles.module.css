@@ -1,0 +1,17 @@
+.pageContent {
+  padding-bottom: 50px;
+}
+
+.wrapper {
+  overflow: hidden;
+  padding: 0;
+  margin: 0 auto;
+
+  @media screen(md) {
+    max-width: 650px;
+  }
+
+  @media screen(lg) {
+    max-width: 1005px;
+  }
+}

@@ -1,11 +1,10 @@
-import React, { forwardRef } from 'react'
-import YoutubeVideo from './Video'
-import CollapsibleText from './CollapsibleText'
-
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import { forwardRef } from 'react'
 
+import CollapsibleText from './CollapsibleText'
 import * as styles from './styles.module.css'
+import YoutubeVideo from './Video'
 
 const Heading1: React.FC = () => (
   <div className={styles.caseHeader}>

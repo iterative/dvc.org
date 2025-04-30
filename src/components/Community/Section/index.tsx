@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import cn from 'classnames'
 import { useLocation } from '@reach/router'
+import cn from 'classnames'
+import { useCallback, useEffect, useState } from 'react'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 

@@ -1,19 +1,17 @@
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import cn from 'classnames'
 
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { IPopupProps } from '../Popup'
-
-import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
-
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
+import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
 import usePopup, {
   IUsePopupReturn
 } from '../../../../../../gatsby/hooks/usePopup'
+import menuData from '../../../../data/menu'
+import { IPopupProps } from '../Popup'
 
 import * as styles from './styles.module.css'
-import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
-import menuData from '../../../../data/menu'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 

@@ -1,18 +1,18 @@
-import cn from 'classnames'
-
+import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import SocialIcon, {
   ISocialIcon
 } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
-import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-
-import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
+import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
 import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
-import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/discord.svg'
+import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
+import cn from 'classnames'
 
-import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
+import { blogsPageLink } from '@/constants/internalLinks'
+
+import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
 
 const docsPage = getFirstPage()
 
@@ -39,6 +39,10 @@ const footerListsData: Array<IFooterListData> = [
       {
         href: '/doc/use-cases',
         text: 'Use Cases'
+      },
+      {
+        href: blogsPageLink,
+        text: 'Blog'
       }
     ]
   },

@@ -1,10 +1,11 @@
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Section from '../Section'
 import IframeResizer from '@iframe-resizer/react'
 
-import * as styles from './styles.module.css'
-import * as sharedStyles from '../styles.module.css'
 import { ICommunitySectionTheme } from '..'
+import Section from '../Section'
+import * as sharedStyles from '../styles.module.css'
+
+import * as styles from './styles.module.css'
 
 const description = 'See what people have to say about DVC'
 

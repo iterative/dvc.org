@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import * as Sentry from '@sentry/gatsby'
 import { useStaticQuery, graphql } from 'gatsby'
 import fetch from 'isomorphic-fetch'
-import * as Sentry from '@sentry/gatsby'
+import { useEffect, useState } from 'react'
 
 export default function useStars(repo = 'dvc'): number | null {
   // Get the amount of stars from build time

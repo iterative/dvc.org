@@ -1,7 +1,6 @@
-import React, { useState, PropsWithChildren } from 'react'
-import ReactPopover from 'react-popover'
-
 import { isTriggeredFromKB } from '@dvcorg/gatsby-theme-iterative/src/utils/front/keyboard'
+import { useState, PropsWithChildren } from 'react'
+import ReactPopover from 'react-popover'
 
 import './styles.module.css'
 

@@ -1,0 +1,27 @@
+.searchContainer {
+  margin: 0 auto;
+
+  /* padding: 0 15px; */
+
+  @media screen(md) {
+    max-width: 650px;
+  }
+
+  @media screen(lg) {
+    max-width: 1005px;
+  }
+
+  .search {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.searchDiv {
+  transition: flex-grow 0.3s;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}

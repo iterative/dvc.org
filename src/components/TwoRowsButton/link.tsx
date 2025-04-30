@@ -1,7 +1,7 @@
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import cn from 'classnames'
 
 import * as styles from './styles.module.css'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 type ITwoRowsButtonLinkProps = {
   mode: 'azure' | 'purple' | 'outline' | 'vscode'

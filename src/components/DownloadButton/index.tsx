@@ -1,13 +1,12 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react'
-import cn from 'classnames'
-
-import TwoRowsButton from '../TwoRowsButton'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import cn from 'classnames'
+import { useRef, useEffect, useCallback, useState } from 'react'
+
+import { OS, useUserOS } from '../../utils/front/useUserOS'
+import TwoRowsButton from '../TwoRowsButton'
 
 import * as styles from './styles.module.css'
-import { OS, useUserOS } from '../../utils/front/useUserOS'
 
 const VERSION = `3.59.1`
 

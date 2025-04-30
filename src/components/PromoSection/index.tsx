@@ -1,7 +1,6 @@
-import React, { cloneElement } from 'react'
-import cn from 'classnames'
-
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import cn from 'classnames'
+import { cloneElement } from 'react'
 
 import * as styles from './styles.module.css'
 

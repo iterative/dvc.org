@@ -1,16 +1,16 @@
-import React, { useCallback } from 'react'
-import cn from 'classnames'
-import { format } from 'date-fns/format'
-
-import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import cn from 'classnames'
+import { format } from 'date-fns/format'
+import { useCallback } from 'react'
+
+import { ICommunitySectionTheme } from '../'
+import { useCommunityData } from '../../../utils/front/community'
 import Block from '../Block'
 import Section from '../Section'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import { useCommunityData } from '../../../utils/front/community'
-
 import * as sharedStyles from '../styles.module.css'
+
 import * as styles from './styles.module.css'
 
 export interface IEvent {

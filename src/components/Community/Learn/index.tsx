@@ -1,21 +1,20 @@
-import React, { useCallback } from 'react'
-import cn from 'classnames'
-import { format } from 'date-fns/format'
-
-import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import Block from '../Block'
-import Section from '../Section'
-
+import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
+import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
-import { useCommunityData } from '../../../utils/front/community'
-import usePosts from '../../../queries/usePosts'
-import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
+import cn from 'classnames'
+import { format } from 'date-fns/format'
+import { useCallback } from 'react'
 
+import { ICommunitySectionTheme } from '../'
+import usePosts from '../../../queries/usePosts'
+import { useCommunityData } from '../../../utils/front/community'
+import Block from '../Block'
+import Section from '../Section'
 import * as sharedStyles from '../styles.module.css'
+
 import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()

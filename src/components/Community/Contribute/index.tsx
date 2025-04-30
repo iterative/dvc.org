@@ -1,11 +1,11 @@
-import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import CommunityBlock from '../Block'
-import CommunitySection from '../Section'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
+import { ICommunitySectionTheme } from '../'
 import { useCommunityData } from '../../../utils/front/community'
+import CommunityBlock from '../Block'
+import CommunitySection from '../Section'
 import * as sharedStyles from '../styles.module.css'
 
 const log = (type: string): void =>

@@ -19,13 +19,9 @@ const keywords = [
 ]
 
 const plugins = [
-  'gatsby-plugin-sharp',
-  'gatsby-plugin-twitter',
-  'landing-page',
   {
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
-      remark: false,
       simpleLinkerTerms: require('./content/linked-terms'),
       glossaryPath: path.resolve('content', 'basic-concepts')
     }
@@ -44,9 +40,33 @@ const plugins = [
       path: path.join(__dirname, 'static', 'img')
     }
   },
-  'community-page',
   {
-    resolve: 'gatsby-plugin-catch-links'
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `authors`,
+      path: path.join(__dirname, `content`, `authors`)
+    }
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `blogs`,
+      path: path.join(__dirname, `content`, `blogs`)
+    }
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `authors-avatars`,
+      path: path.join(__dirname, `content`, `uploads`, `avatars`)
+    }
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `uploads-images`,
+      path: path.join(__dirname, `content`, `uploads`, `images`)
+    }
   },
   {
     resolve: `gatsby-source-rss-feed`,
@@ -55,6 +75,10 @@ const plugins = [
       name: `IterativeBlog`
     }
   },
+  `gatsby-plugin-catch-links`,
+  `gatsby-plugin-sharp`,
+  'gatsby-plugin-twitter',
+  `gatsby-transformer-remark-frontmatter`,
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
@@ -113,7 +137,12 @@ const plugins = [
         }
       ]
     }
-  }
+  },
+  // local plugins
+  'landing-page',
+  `authors`,
+  `blogs`,
+  'community-page'
 ]
 
 if (process.env.GATSBY_GTM_ID) {
@@ -146,6 +175,8 @@ module.exports = {
   trailingSlash: 'never',
   plugins,
   siteMetadata: {
+    siteName: 'DVC',
+    twitterUsername: `DVCorg`,
     description,
     author: 'Iterative',
     keywords,

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import Promise from 'promise-polyfill'
-import { loadResource } from '@dvcorg/gatsby-theme-iterative/src/utils/front/resources'
-
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout/SearchForm/styles.module.css'
+import { loadResource } from '@dvcorg/gatsby-theme-iterative/src/utils/front/resources'
+import Promise from 'promise-polyfill'
+import { useEffect, useState } from 'react'
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
     docsearch?: (opts: Record<string, unknown>) => void
   }

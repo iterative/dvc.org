@@ -1,20 +1,18 @@
-import cn from 'classnames'
-import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
-
 import HamburgerIcon from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerIcon'
+import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
+import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
+import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
+import cn from 'classnames'
+import { useEffect, useState, useCallback, MouseEvent } from 'react'
+
+import { blogsPageLink } from '@/constants/internalLinks'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.svg'
-
-import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
-import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
-
-import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
 import menuData from '../../data/menu'
-import LogoGradient from '@dvcorg/gatsby-theme-iterative/src/components/LogoGradient'
 
 const docsPage = getFirstPage()
 
@@ -98,7 +96,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href="https://iterative.ai/blog"
+            href={blogsPageLink}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('blog')}
           >

@@ -1,7 +1,7 @@
 import SubscribeSection from '../SubscribeSection'
 
-import CompanySlider from './LogosSlider'
 import Hero from './Hero'
+import CompanySlider from './LogosSlider'
 
 const Home: React.FC = () => {
   return (

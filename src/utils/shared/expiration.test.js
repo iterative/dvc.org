@@ -1,10 +1,10 @@
+const moment = require('moment')
+
 const {
   dateIsExpired,
   getExpirationFields,
   getExpirationDate
-} = require('./expiration.js')
-
-const moment = require('moment')
+} = require('./expiration')
 
 const now = moment()
 const tomorrow = moment(now).add(1, 'days')

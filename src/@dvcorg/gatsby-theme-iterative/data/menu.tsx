@@ -1,15 +1,18 @@
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
-import * as styles from './styles.module.css'
+import { blogsPageLink } from '@/constants/internalLinks'
+
 import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
-import {
-  CommunityPopup,
-  OtherPopup
-} from '../components/LayoutHeader/Nav/Popup'
 import {
   INavLinkData,
   INavLinkPopupData
 } from '../components/LayoutHeader/Nav/LinkItems'
+import {
+  CommunityPopup,
+  OtherPopup
+} from '../components/LayoutHeader/Nav/Popup'
+
+import * as styles from './styles.module.css'
 
 interface ICommunityData {
   title: string
@@ -37,6 +40,11 @@ const menuData: IMenuData = {
       href: docsPage,
       eventType: 'doc',
       text: 'Doc'
+    },
+    {
+      href: blogsPageLink,
+      eventType: 'blog',
+      text: 'Blog'
     },
     {
       href: 'https://learn.iterative.ai/',

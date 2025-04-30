@@ -1,7 +1,7 @@
 import cn from 'classnames'
 
-import * as styles from './styles.module.css'
 import CompanyLogos from './CompanyLogos'
+import * as styles from './styles.module.css'
 
 const CompanySlider = () => {
   return (
