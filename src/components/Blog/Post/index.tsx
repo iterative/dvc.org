@@ -11,7 +11,6 @@ import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { Button } from '@/components/base/button'
 import FeedMeta from '@/components/Blog/FeedMeta'
-import PageContent from '@/components/Blog/PageContent'
 import Typography from '@/components/Typography'
 
 import { IBlogPostData } from '@/templates/blog-post'
@@ -55,66 +54,64 @@ const Post = ({
   const { error, ready, result } = useCommentsCount(commentsUrl || ``)
   return (
     <TogglesProvider>
-      <PageContent>
-        <div className={styles.wrapper} ref={wrapperRef}>
-          <Share
-            className={cn(styles.share, isFixed && styles.fixed)}
-            text={description}
-            slug={slug}
-          />
-          <div className={styles.head}>
-            <div className={styles.headContent}>
-              <Typography variant="h2" as="h1">
-                {title}
-              </Typography>
-              {descriptionLong ? (
-                <div
-                  className={styles.description}
-                  dangerouslySetInnerHTML={{ __html: descriptionLong.html }}
-                />
-              ) : (
-                <div className={styles.description}>{description}</div>
-              )}
-              <FeedMeta
-                author={author}
-                contributors={contributors || []}
-                commentsCount={result}
-                commentsUrl={commentsUrl}
-                date={date}
-                timeToRead={timeToRead}
+      <div className={styles.wrapper} ref={wrapperRef}>
+        <Share
+          className={cn(styles.share, isFixed && styles.fixed)}
+          text={description}
+          slug={slug}
+        />
+        <div className={styles.head}>
+          <div className={styles.headContent}>
+            <Typography variant="h2" as="h1">
+              {title}
+            </Typography>
+            {descriptionLong ? (
+              <div
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: descriptionLong.html }}
               />
-            </div>
+            ) : (
+              <div className={styles.description}>{description}</div>
+            )}
+            <FeedMeta
+              author={author}
+              contributors={contributors || []}
+              commentsCount={result}
+              commentsUrl={commentsUrl}
+              date={date}
+              timeToRead={timeToRead}
+            />
           </div>
-          <HeroPic picture={picture} pictureComment={pictureComment?.html} />
-
-          <div className={styles.content}>
-            <Markdown htmlAst={patchedHtmlAst} />
-          </div>
-          {tags && (
-            <div className={styles.tags}>
-              {tags.map(tag => (
-                <Link
-                  href={`/blog/tags/${tagToSlug(tag)}`}
-                  className={styles.tag}
-                  key={tag}
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
-          )}
-          {commentsUrl && ready && !error && (
-            <div className={styles.comments}>
-              <Button variant="outline" size="lg" asChild>
-                <Link href={commentsUrl}>Discuss this post</Link>
-              </Button>
-              <Link href={commentsUrl} className={styles.count} target="_blank">
-                {pluralizeComments(result || 0)}
-              </Link>
-            </div>
-          )}
         </div>
-      </PageContent>
+        <HeroPic picture={picture} pictureComment={pictureComment?.html} />
+
+        <div className={styles.content}>
+          <Markdown htmlAst={patchedHtmlAst} />
+        </div>
+        {tags && (
+          <div className={styles.tags}>
+            {tags.map(tag => (
+              <Link
+                href={`/blog/tags/${tagToSlug(tag)}`}
+                className={styles.tag}
+                key={tag}
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
+        )}
+        {commentsUrl && ready && !error && (
+          <div className={styles.comments}>
+            <Button variant="outline" size="lg" asChild>
+              <Link href={commentsUrl}>Discuss this post</Link>
+            </Button>
+            <Link href={commentsUrl} className={styles.count} target="_blank">
+              {pluralizeComments(result || 0)}
+            </Link>
+          </div>
+        )}
+      </div>
     </TogglesProvider>
   )
 }

@@ -1,5 +1,6 @@
 import { HeadProps, PageProps, graphql } from 'gatsby'
 
+import BackSection from '@/components/BackSection'
 import Feed, { IBlogFeedPostList } from '@/components/Blog/Feed'
 import BlogLayout from '@/components/Blog/Layout'
 import PageContent from '@/components/Blog/PageContent'
@@ -9,6 +10,8 @@ import {
   PaginatorLocationContext
 } from '@/components/Blog/Paginator/LocationContext'
 import SEO from '@/components/SEO'
+
+import { blogsPageLink } from '@/constants/internalLinks'
 
 interface IBlogTagsPageData {
   data: { posts: IBlogFeedPostList }
@@ -30,7 +33,10 @@ const BlogTagsPage: React.FC<IBlogTagsPageData> = ({
     <BlogLayout location={location}>
       <PaginatorLocationContext.Provider value={paginatorLocation}>
         <PageContent>
-          <div className="flex w-full items-center justify-center rounded bg-slate-900 p-4 text-gray-100">
+          <BackSection link={blogsPageLink} section="top">
+            Back to blogs
+          </BackSection>
+          <div className="flex w-full items-center justify-center rounded bg-slate-200 p-4 text-gray-900">
             <h1 className="text-4xl font-medium">{pageContext.tag}</h1>
           </div>
           <Feed

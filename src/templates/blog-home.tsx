@@ -2,7 +2,6 @@ import { graphql, HeadProps, PageProps } from 'gatsby'
 
 import Feed, { IBlogFeedPostList } from '@/components/Blog/Feed'
 import BlogLayout from '@/components/Blog/Layout'
-import PageContent from '@/components/Blog/PageContent'
 import { IPaginatorPageInfo } from '@/components/Blog/Paginator'
 import {
   IPaginatorLocationContextValue,
@@ -26,25 +25,23 @@ const BlogHomePage = ({
   pageContext
 }: IBlogHomePageProps) => {
   return (
-    <BlogLayout location={location}>
-      <PaginatorLocationContext.Provider value={paginatorLocation}>
-        <PageContent>
-          <Feed
-            feedPostList={data.posts}
-            pageInfo={pageContext.pageInfo}
-            header="Data Version Control Blog"
-            leadParagraph={
-              <>
-                Insights and updates from the DVC team. Explore best practices
-                in data versioning, machine learning workflows, and model
-                management. Stay informed with our latest news, tutorials, and
-                community highlights.
-              </>
-            }
-          />
-        </PageContent>
-      </PaginatorLocationContext.Provider>
-    </BlogLayout>
+    <PaginatorLocationContext.Provider value={paginatorLocation}>
+      <BlogLayout location={location}>
+        <Feed
+          feedPostList={data.posts}
+          pageInfo={pageContext.pageInfo}
+          header="Data Version Control Blog"
+          leadParagraph={
+            <>
+              Insights and updates from the DVC team. Explore best practices in
+              data versioning, machine learning workflows, and model management.
+              Stay informed with our latest news, tutorials, and community
+              highlights.
+            </>
+          }
+        />
+      </BlogLayout>
+    </PaginatorLocationContext.Provider>
   )
 }
 

@@ -7,7 +7,6 @@ import { useEffect } from 'react'
 import BackSection from '@/components/BackSection'
 import BlogLayout from '@/components/Blog/Layout'
 import Post from '@/components/Blog/Post'
-import PageMainSection from '@/components/PageMainSection'
 import SEO from '@/components/SEO'
 
 import { blogsPageLink } from '@/constants/internalLinks'
@@ -92,17 +91,15 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data, location }) => {
   return (
     <BlogLayout location={location}>
       <Script src="//embed.redditmedia.com/widgets/platform.js" />
-      <PageMainSection>
-        <article>
-          <BackSection link={blogsPageLink} section="top">
-            Back to blogs
-          </BackSection>
-          <Post {...post} />
-          <BackSection link={blogsPageLink} section="bottom">
-            Back to blogs
-          </BackSection>
-        </article>
-      </PageMainSection>
+      <BackSection link={blogsPageLink} section="top">
+        Back to blogs
+      </BackSection>
+      <article>
+        <Post {...post} />
+      </article>
+      <BackSection link={blogsPageLink} section="bottom">
+        Back to blogs
+      </BackSection>
     </BlogLayout>
   )
 }
