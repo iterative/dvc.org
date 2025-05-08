@@ -12,7 +12,7 @@
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true dvc pull && gatsby develop",
     "build": "dvc pull --force && gatsby build",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "bash node_modules/.bin/heroku-deploy-dvc-ai",
+    "heroku-postbuild": "bash node_modules/.bin/heroku-deploy-with-dvc",
     "test": "jest",
     "format": "prettier --write",
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "0.3.25",
-    "@dvcorg/websites-server": "0.3.0",
+    "@dvcorg/websites-server": "0.3.1",
     "@iframe-resizer/react": "5.4.5",
     "@octokit/request": "8.4.1",
     "@radix-ui/react-dialog": "1.1.7",

@@ -3076,9 +3076,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dvcorg/websites-server@npm:0.3.0":
-  version: 0.3.0
-  resolution: "@dvcorg/websites-server@npm:0.3.0"
+"@dvcorg/websites-server@npm:0.3.1":
+  version: 0.3.1
+  resolution: "@dvcorg/websites-server@npm:0.3.1"
   dependencies:
     "@aws-sdk/client-s3": "npm:^3.787.0"
     "@dvcorg/gatsby-theme-iterative": "npm:^0.3.25"
@@ -3103,7 +3103,7 @@ __metadata:
     heroku-deploy: scripts/heroku-deploy.sh
     heroku-deploy-dvc-ai: scripts/heroku-deploy-dvc-ai.sh
     heroku-deploy-iterative-ai: scripts/heroku-deploy-iterative-ai.sh
-  checksum: 10c0/fdd990f287a6f55b650d3f26c630981537cecdf746b39bd1e23b4fe78ef6a733a17a48d2013a0a27b101c76dfda621e47b650f4251a64021e6b877111280aa12
+  checksum: 10c0/dad36d2d435aa67691cdecc5d211216f97fdb8910781457b514059f8ff9711377e9700867714ea05bb5166bce9b499989c92c7cd8c7a8d30712de474c45d2ef2
   languageName: node
   linkType: hard
 
@@ -27451,7 +27451,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.26.10"
     "@dvcorg/gatsby-theme-iterative": "npm:0.3.25"
-    "@dvcorg/websites-server": "npm:0.3.0"
+    "@dvcorg/websites-server": "npm:0.3.1"
     "@eslint/js": "npm:9.24.0"
     "@eslint/json": "npm:0.11.0"
     "@iframe-resizer/react": "npm:5.4.5"
