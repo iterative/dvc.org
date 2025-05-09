@@ -1,15 +1,14 @@
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import cn from 'classnames'
 
-import TwoRowsButtonLink from '../../TwoRowsButton/link'
-import GithubLine from './GithubLine'
 import DownloadButton from '../../DownloadButton'
-
-import * as styles from './styles.module.css'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import TwoRowsButtonLink from '../../TwoRowsButton/link'
 
 import DvcSlides from './DvcSlides'
+import GithubLine from './GithubLine'
+import * as styles from './styles.module.css'
 
 const logUseCasesEvent = () => {
   logEvent('Button', { Item: 'how-it-works' })

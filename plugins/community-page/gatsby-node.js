@@ -1,7 +1,8 @@
 const moment = require('moment')
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
-const { getExpirationFields } = require('../../src/utils/shared/expiration')
+
 const content = require('../../content/community.json')
+const { getExpirationFields } = require('../../src/utils/shared/expiration')
 
 function expiredNodesLog(typeName, nodes) {
   if (nodes.length > 0) {

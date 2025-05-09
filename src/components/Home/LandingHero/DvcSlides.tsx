@@ -1,5 +1,6 @@
-import Slides, { ISlide } from './Slides'
 import { graphql, useStaticQuery } from 'gatsby'
+
+import Slides, { ISlide } from './Slides'
 
 const DvcSlides = () => {
   const {

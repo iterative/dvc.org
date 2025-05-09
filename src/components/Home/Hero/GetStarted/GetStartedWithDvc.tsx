@@ -1,17 +1,14 @@
-import HeroContainer from '../../../HeroContainer'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+
 import { cn } from '../../../../utils'
-
-import TwoRowsButtonLink from '../../../TwoRowsButton/link'
-
 import DownloadButton from '../../../DownloadButton'
-
+import HeroContainer from '../../../HeroContainer'
+import TwoRowsButtonLink from '../../../TwoRowsButton/link'
 import DvcSlides from '../../LandingHero/DvcSlides'
 
 import * as styles from './styles.module.css'
-
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 const logVSCodeEvent = () => {
   logEvent('Button', { Item: 'vscode-dvc-ext' })

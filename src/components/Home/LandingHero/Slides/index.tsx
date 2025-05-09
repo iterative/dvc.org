@@ -1,5 +1,6 @@
-import { Reducer, useCallback, useMemo, useReducer } from 'react'
 import cn from 'classnames'
+import { Reducer, useCallback, useMemo, useReducer } from 'react'
+
 import { MemoizedTypedTerminal } from '../Typed'
 
 export interface ISlide {

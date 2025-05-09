@@ -1,11 +1,11 @@
-import cn from 'classnames'
-import { PageProps } from 'gatsby'
-import MainLayout from '../../../components/MainLayout'
-import AutoLinkElement from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX/AutoLinkElement'
-import useGlossary from '@dvcorg/gatsby-theme-iterative/src/utils/front/glossary'
-
 import DocLayout from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout'
 import DocWithJsx from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX'
+import AutoLinkElement from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX/AutoLinkElement'
+import useGlossary from '@dvcorg/gatsby-theme-iterative/src/utils/front/glossary'
+import cn from 'classnames'
+import { PageProps } from 'gatsby'
+
+import MainLayout from '../../../components/MainLayout'
 
 const Glossary = ({ location }: PageProps) => {
   const { contents } = useGlossary()

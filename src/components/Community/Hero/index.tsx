@@ -1,8 +1,9 @@
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { useCommunityData } from '../../../utils/front/community'
+import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+
+import { useCommunityData } from '../../../utils/front/community'
 
 import * as styles from './styles.module.css'
 

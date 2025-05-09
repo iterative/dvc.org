@@ -1,14 +1,10 @@
-import React, { useState } from 'react'
-
-import PageContent from '../PageContent'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-
-import PromoSection from '../PromoSection'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-
 import { BrainIcon, NotebookPenIcon, RouteIcon, TargetIcon } from 'lucide-react'
+
 import { cn } from '../../utils'
-import RequestAQuoteDialog from './RequestAQuoteDialog'
+import PageContent from '../PageContent'
+import PromoSection from '../PromoSection'
 
 const services = [
   {
@@ -56,7 +52,6 @@ const getAccentColor = (index: number) => {
 }
 
 const SupportPage: React.FC = () => {
-  const [openDialog, setOpenDialog] = useState(false)
   return (
     <>
       <PageContent>
@@ -104,10 +99,6 @@ const SupportPage: React.FC = () => {
             Join Our Community
           </Link>
         ]}
-      />
-      <RequestAQuoteDialog
-        openDialog={openDialog}
-        setOpenDialog={setOpenDialog}
       />
     </>
   )

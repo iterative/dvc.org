@@ -1,0 +1,179 @@
+.wrapper {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin: 0;
+
+  &.big {
+    width: auto;
+  }
+
+  & + & {
+    margin-top: 10px;
+  }
+
+  @apply rounded-xl bg-slate-100;
+
+  @media screen(md) {
+    & + & {
+      margin-top: 0;
+    }
+
+    width: 300px;
+    height: 500px;
+    margin: 0 50px 50px 0;
+
+    &.big {
+      width: 650px;
+      height: auto;
+    }
+  }
+
+  @media screen(lg) {
+    &.big {
+      width: 1005px;
+      height: 450px;
+    }
+  }
+}
+
+.pictureLink {
+  display: block;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+    left: 1px;
+  }
+}
+
+.picture {
+  background-color: #dee8ed;
+
+  @apply rounded-t-xl;
+
+  display: block;
+  width: 100%;
+  height: auto;
+
+  .big & {
+    width: 100%;
+    height: auto;
+  }
+
+  @media screen(md) {
+    .big & {
+      width: 650px;
+      height: 450px;
+    }
+  }
+
+  @media screen(lg) {
+    width: calc(650px / 13 * 6);
+    height: calc(450px / 13 * 6);
+
+    .big & {
+      @apply rounded-none rounded-l-xl;
+
+      float: left;
+      width: 650px;
+      height: 450px;
+      margin-right: 50px;
+    }
+  }
+}
+
+.body {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+  max-height: 210px;
+
+  .placeholder & {
+    padding-top: 30px;
+  }
+
+  &.overflown::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    background: linear-gradient(
+      0deg,
+      rgb(238 244 248 / 100%) 0%,
+      rgb(238 244 248 / 0%) 100%
+    );
+  }
+
+  @media screen(md) {
+    .big & {
+      padding-top: 30px;
+    }
+  }
+
+  @media screen(lg) {
+    .big & {
+      max-height: 350px;
+      padding: 30px 30px 30px 0;
+    }
+  }
+}
+
+.title {
+  @apply inline-block text-lg font-medium text-gray-900 no-underline hover:text-black focus:text-black;
+
+  @media screen(md) {
+    @apply text-xl;
+  }
+
+  @media screen(lg) {
+    .big & {
+      @apply text-2xl;
+    }
+  }
+}
+
+.description {
+  margin-top: 10px;
+
+  @apply text-sm text-gray-800;
+
+  @media screen(lg) {
+    .big & {
+      margin-top: 40px;
+    }
+  }
+}
+
+.meta {
+  position: static;
+  padding: 0 30px 15px;
+
+  @media screen(md) {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    left: 20px;
+    padding: 0;
+
+    .big & {
+      position: static;
+      padding: 0 30px 15px;
+    }
+  }
+
+  @media screen(lg) {
+    .big & {
+      position: absolute;
+      left: 700px;
+      padding: 0;
+    }
+  }
+}

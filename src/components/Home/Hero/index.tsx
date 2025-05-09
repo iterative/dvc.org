@@ -1,5 +1,5 @@
-import HeroTitleSection from './HeroTitleSection'
 import GetStartedWithDvc from './GetStarted/GetStartedWithDvc'
+import HeroTitleSection from './HeroTitleSection'
 
 const Hero = () => {
   return (

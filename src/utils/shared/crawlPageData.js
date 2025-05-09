@@ -1,4 +1,5 @@
 const fs = require('fs')
+
 const path = require('upath')
 
 async function crawlPageData(dataPath, onPageData) {

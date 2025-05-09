@@ -1,13 +1,14 @@
-import globals from 'globals'
 import eslint from '@eslint/js'
 import json from '@eslint/json'
-
-import tseslint from 'typescript-eslint'
-
-import react from 'eslint-plugin-react'
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
+import * as pluginImportX from 'eslint-plugin-import-x'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import react from 'eslint-plugin-react'
+// eslint-disable-next-line import-x/default
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
+import globals from 'globals'
+import * as tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   {
@@ -43,8 +44,7 @@ export default tseslint.config(
         'error',
         {
           selector: 'interface',
-          format: ['PascalCase'],
-          prefix: ['I']
+          format: ['PascalCase']
         },
         {
           selector: 'variableLike',
@@ -53,6 +53,50 @@ export default tseslint.config(
         }
       ],
       '@typescript-eslint/no-unused-vars': 'error'
+    }
+  },
+  pluginImportX.flatConfigs.recommended,
+  pluginImportX.flatConfigs.typescript,
+  {
+    settings: {
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          project: './tsconfig.json',
+          alwaysTryTypes: true // Always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        })
+      ]
+    },
+    rules: {
+      'import-x/prefer-default-export': 'off',
+      'import-x/extensions': [
+        'error',
+        'ignorePackages',
+        { ts: 'never', tsx: 'never', js: 'never', jsx: 'never' }
+      ],
+      'import-x/order': [
+        'error',
+        {
+          alphabetize: { caseInsensitive: true, order: 'asc' },
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object'
+          ],
+          pathGroups: [
+            {
+              pattern: '@/components/**',
+              group: 'external',
+              position: 'after'
+            },
+            { pattern: '@/composites/**', group: 'external', position: 'after' }
+          ],
+          'newlines-between': 'always'
+        }
+      ]
     }
   },
   react.configs.flat.recommended,

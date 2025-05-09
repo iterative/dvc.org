@@ -1,11 +1,11 @@
-import React, { PropsWithChildren } from 'react'
-import cn from 'classnames'
-
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import cn from 'classnames'
+import { PropsWithChildren } from 'react'
+
+import menuData from '../../../../data/menu'
 
 import * as styles from './styles.module.css'
-import menuData from '../../../../data/menu'
 
 export interface IPopupProps {
   isVisible: boolean

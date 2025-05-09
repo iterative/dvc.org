@@ -1,16 +1,14 @@
 import type { GatsbyNode } from 'gatsby'
+import * as yaml from 'js-yaml'
+import Prism from 'prismjs'
+
+import '@dvcorg/gatsby-theme-iterative/config/prismjs/dvc'
 
 const isTypedLine = (line: string) => line.startsWith('$')
 
 const wrapWithBackticks = (line: string) => `\`${line}\``
 
 const DEFAULT_TYPED_LINE_PAUSE = '^250'
-
-import Prism from 'prismjs'
-
-import '@dvcorg/gatsby-theme-iterative/config/prismjs/dvc'
-
-import yaml from 'js-yaml'
 
 const processSplitTerminalLine = (
   line: string,

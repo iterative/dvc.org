@@ -1,10 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react'
-
-import TwoRowsButton from '../../../TwoRowsButton'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import safeLocalStorage from '@dvcorg/gatsby-theme-iterative/src/utils/front/safeLocalStorage'
+import { useState, useCallback, useEffect } from 'react'
 
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import TwoRowsButton from '../../../TwoRowsButton'
 
 import * as styles from './styles.module.css'
 

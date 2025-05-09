@@ -1,9 +1,10 @@
 require('dotenv').config()
 global.__basedir = __dirname
 
-const { setPageContext } = require('./src/gatsby/common')
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 
-const models = require('./src/gatsby/models.js')
+const { setPageContext } = require('./src/gatsby/common')
+const models = require('./src/gatsby/models')
 const callOnModels = require('./src/gatsby/utils/models')
 
 exports.createSchemaCustomization = api =>
@@ -41,4 +42,9 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     }
     actions.replaceWebpackConfig(config)
   }
+  actions.setWebpackConfig({
+    resolve: {
+      plugins: [new TsconfigPathsPlugin()]
+    }
+  })
 }

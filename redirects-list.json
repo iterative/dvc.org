@@ -3,16 +3,15 @@
   "^https://discuss\\.dataversioncontrol\\.com(.*)?                                       https://discuss.dvc.org$1",
   "^https://blog\\.dataversioncontrol\\.com/data-version-control-tutorial-9146715eda46    https://dvc.org/doc/start",
   "^https://blog\\.dataversioncontrol\\.com/data-version-control-beta-release-iterative-machine-learning-a7faf7c8be67 https://dvc.org/doc/start",
-  "^https://blog\\.dataversioncontrol\\.com/dvc-heartbeat-6301aebf5c96                    https://datachain.ai/blog/march-19-dvc-heartbeat",
-  "^https://blog\\.dataversioncontrol\\.com/april19-dvc-heartbeat-296c71a59be4            https://datachain.ai/blog/april-19-dvc-heartbeat",
+  "^https://blog\\.dataversioncontrol\\.com/dvc-heartbeat-6301aebf5c96                    https://dvc.org/blog/march-19-dvc-heartbeat",
+  "^https://blog\\.dataversioncontrol\\.com/april19-dvc-heartbeat-296c71a59be4            https://dvc.org/blog/april-19-dvc-heartbeat",
   "^https://blog\\.dataversioncontrol\\.com/dvc-0-8-5-release-f66ef3b10684                https://github.com/iterative/dvc/releases",
-  "^https://blog\\.dataversioncontrol\\.com(.+)-[a-z0-9]{12}$                             https://datachain.ai/blog$1",
-  "^https://blog\\.dataversioncontrol.com(.*)?                                            https://datachain.ai/blog$1",
+  "^https://blog\\.dataversioncontrol\\.com(.+)-[a-z0-9]{12}$                             https://dvc.org/blog$1",
+  "^https://blog\\.dataversioncontrol.com(.*)?                                            https://dvc.org/blog$1",
   "/blog/how-a-data-scientist-can-improve-his-productivity                                /blog/how-data-scientists-can-improve-their-productivity",
 
-  "^https://dvc\\.org/blog(.*)?                                                           https://datachain.ai/blog$1 302",
-  "^https://blog\\.dvc\\.org/blog/(.*)?$                                                  https://datachain.ai/blog/$1",
-  "^https://blog\\.dvc\\.org(.*)?$                                                        https://datachain.ai/blog$1",
+  "^https://blog\\.dvc\\.org/blog/(.*)?$                                                  https://dvc.org/blog/$1",
+  "^https://blog\\.dvc\\.org(.*)?$                                                        https://dvc.org/blog$1",
   "^https://www\\.dvc\\.org(.*)?                                                          https://dvc.org$1",
   "^https://man\\.dvc\\.org(.*)?                                                          https://dvc.org/doc/command-reference$1 303",
   "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/troubleshooting#$1 303",
@@ -143,6 +142,14 @@
   "^/doc/studio/user-guide/install-github-app$                                            /doc/studio/user-guide/git-integrations/github-app",
   "^/doc/studio/user-guide/connect-custom-gitlab-server$                                  /doc/studio/user-guide/git-integrations/custom-gitlab-server",
   "^/doc/studio/troubleshooting$                                                          /doc/studio/user-guide/troubleshooting",
+
+  "^/blog/dvcx-dataset-factory-paper$                                                     https://datachain.ai/blog/dvcx-dataset-factory",
+  "^/blog/datachain-release$                                                              https://datachain.ai/blog/datachain-release",
+  "^/blog/enforcing-json-outputs-in-commercial-llms$                                      https://datachain.ai/blog/enforcing-json-outputs-in-commercial-llms",
+  "^/blog/multimodal-clip-fine-tuning$                                                    https://datachain.ai/blog/multimodal-clip-fine-tuning",
+  "^/blog/post-modern-ai-data-stack$                                                      https://datachain.ai/blog/post-modern-ai-data-stack",
+  "^/blog/datachain-unstructured-pdf-processing$                                          https://datachain.ai/blog/datachain-unstructured-pdf-processing",
+  "^/blog/robust-engineering-over-overblown-promises$                                     https://datachain.ai/blog/robust-engineering-over-overblown-promises",
 
   "^/(.+)/$                                                                               /$1"
 ]

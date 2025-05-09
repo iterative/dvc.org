@@ -1,5 +1,6 @@
 const fs = require('fs')
-const crawlPageData = require('../../../utils/shared/crawlPageData.js')
+
+const crawlPageData = require('../../../utils/shared/crawlPageData')
 
 async function removeFile(filePath) {
   return new Promise((resolve, reject) =>

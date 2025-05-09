@@ -1,12 +1,11 @@
 import PageContent from '../PageContent'
-
 import SubscribeSection from '../SubscribeSection'
-import Hero from './Hero'
-import Meet from './Meet'
-import Contribute from './Contribute'
-import Learn from './Learn'
-import Events from './Events'
 
+import Contribute from './Contribute'
+import Events from './Events'
+import Hero from './Hero'
+import Learn from './Learn'
+import Meet from './Meet'
 import * as styles from './styles.module.css'
 import Testimonial from './Testimonial'
 

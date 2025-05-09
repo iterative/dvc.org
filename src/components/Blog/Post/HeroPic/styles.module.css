@@ -1,0 +1,61 @@
+.pictureWrapper {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  margin: 10px 15px 0;
+
+  @media screen(lg) {
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      bottom: 50%;
+    }
+  }
+}
+
+.picture {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  @media screen(lg) {
+    max-width: 850px;
+  }
+}
+
+.pictureBackground {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+  background-color: #dee8ed;
+}
+
+.pictureComment {
+  @apply text-base text-gray-600;
+
+  margin-top: 5px;
+  font-style: italic;
+  text-align: center;
+
+  & p {
+    margin: 0;
+
+    + p {
+      margin-top: 5px;
+    }
+  }
+
+  & a {
+    @apply text-cyan-400;
+
+    text-decoration: underline;
+  }
+}

@@ -1,7 +1,7 @@
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import { PageProps } from 'gatsby'
 
 import MainLayout from '../components/MainLayout'
-import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import Support from '../components/Support'
 
 const SupportPage = ({ location }: PageProps) => (

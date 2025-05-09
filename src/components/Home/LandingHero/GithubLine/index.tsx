@@ -1,4 +1,5 @@
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+
 import useStars from '../../../../gatsby/hooks/stars'
 
 import * as styles from './styles.module.css'

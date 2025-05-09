@@ -1,7 +1,8 @@
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { cn } from '../../../utils'
-import { githubDatachainUrl } from '../../../utils/externalUrls'
 import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
+
+import { githubDatachainUrl } from '../../../constants/externalUrls'
+import { cn } from '../../../utils'
 
 const banner = {
   title: 'DataChain Open-Source Release',

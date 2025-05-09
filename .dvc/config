@@ -1,0 +1,5 @@
+[core]
+    remote = storage
+    autostage = true
+['remote "storage"']
+    url = s3://dvc-public/remote/dvc-org/blogs-media

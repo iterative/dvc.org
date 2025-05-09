@@ -1,13 +1,13 @@
-import { useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useMemo } from 'react'
 
-import { ICommunitySection } from '../../components/Community/Section'
 import { IEvent } from '../../components/Community/Events'
 import { IHero } from '../../components/Community/Hero'
 import {
   ICommunityUserContentProps,
   ICommunityDocumentationProps
 } from '../../components/Community/Learn'
+import { ICommunitySection } from '../../components/Community/Section'
 
 export interface ICommunityData {
   rest: {
