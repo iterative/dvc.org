@@ -1,7 +1,7 @@
 # DVC Studio
 
-[DVC Studio](https://studio.datachain.ai/) is a web application that enables
-Machine Learning teams to seamlessly
+DVC Studio is a web application that enables Machine Learning teams to
+seamlessly
 
 - [Run and track experiments](/doc/use-cases/experiment-tracking)
 - [Manage model lifecycle](/doc/use-cases/model-registry)
@@ -11,9 +11,8 @@ It works on top of [DVC](https://dvc.org/) and [Git](https://git-scm.com/),
 maintaining Git as the single-source-of-truth for your data, experiments and
 models.
 
-Sign in to [DVC Studio](https://studio.datachain.ai/) using your GitHub.com,
-GitLab.com, or Bitbucket.org account, or with your email address. Explore the
-demo projects and models, and
+Sign in to DVC Studio using your GitHub.com, GitLab.com, or Bitbucket.org
+account, or with your email address. Explore the demo projects and models, and
 [let us know](/doc/studio/user-guide/troubleshooting#support) if you need any
 help getting started.
 

@@ -93,7 +93,7 @@ checkpointing at all as described in the
 Use `log_model` to save the checkpoints (it will use `Live.log_artifact()`
 internally to save those). At the end of training, DVCLive will copy the
 [`best_model_path`][`ModelCheckpoint`] to the `dvclive/artifacts` directory and
-annotate it with name `best` (for example, to be consumed in [DVC Studio]
+annotate it with name `best` (for example, to be consumed in DVC Studio
 <abbr>model registry</abbr> or automation scenarios).
 
 - Save updates to the checkpoints directory at the end of training:
@@ -188,4 +188,3 @@ dvclive/metrics/train/epoch/metric.tsv
 [`live`]: /doc/dvclive/live
 [`ModelCheckpoint`]:
   https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html
-[DVC Studio]: https://studio.datachain.ai

@@ -12,7 +12,7 @@ automatically share all experiment info, you will need a:
 
 - Git remote (for example, GitHub)
 - DVC [remote storage] for any large artifacts you want DVC to track
-- [DVC Studio] project [connected to that Git remote]
+- DVC Studio project [connected to that Git remote]
 
 To automatically share your experiments, run:
 
@@ -22,7 +22,7 @@ $ dvc studio login
 
 Once configured, DVC will:
 
-- send [live metrics and plots] to [DVC Studio]
+- send [live metrics and plots] to DVC Studio
 - push experiment code and metadata to your Git repo
 - push data, models, and other artifacts to your DVC [remote storage]
 
@@ -38,9 +38,9 @@ metrics and plots.
 
 </admon>
 
-You can send [live experiments] to [DVC Studio], which will show intermediate
+You can send [live experiments] to DVC Studio, which will show intermediate
 results for metrics and plots in any running experiments. To start sharing live
-metrics to [DVC Studio], set your [access token].
+metrics to DVC Studio, set your [access token].
 
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):
@@ -169,7 +169,7 @@ default value, set the configuration option `exp.git_remote` or the
 
 ## Find pushed experiments
 
-You can see pushed experiments in [DVC Studio]. From there, you can make an
+You can see pushed experiments in DVC Studio. From there, you can make an
 experiment [persistent] by creating a Git branch, or you can [remove] it from
 your Git remote:
 
@@ -224,7 +224,7 @@ the flags to select a different set of experiments to push.
 DVC experiments run outside of the regular Git workflow for faster iteration and
 to avoid polluting your <abbr>repository</abbr>'s history, but you can easily
 bring back the most promising experiments into your regular Git workflow. You
-can convert any pushed experiment from [DVC Studio] into a persistent Git branch
+can convert any pushed experiment from DVC Studio into a persistent Git branch
 and create a pull request to merge it into your main repo branch:
 
 ![DVC Studio Create a New Branch](/img/studio-branch.gif)
@@ -260,7 +260,7 @@ results to your workspace].
 
 ## Remove pushed experiments
 
-As you share more experiments, [DVC Studio] and Git remotes may be become
+As you share more experiments, DVC Studio and Git remotes may be become
 cluttered with experiment references.
 
 You can remove experiments in DVC Studio:
@@ -276,7 +276,6 @@ Removed experiments: unwet-jinn
 
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[dvc studio]: https://studio.datachain.ai
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
 [pull]: #pull-experiments

@@ -131,8 +131,8 @@ want to share results with others or back them up. Optionally follow this
 section to share, or skip to the next section if you want to start locally.
 
 DVC tracks the code and metadata for each experiment in Git. If you have a Git
-remote (for example, GitHub) where you `git push`, go to
-[DVC Studio](https://studio.datachain.ai), configure your Git provider, and
+remote (for example, GitHub) where you `git push`, go to DVC Studio, configure
+your Git provider, and
 [add your Git repository as a project](/doc/studio/user-guide/experiments/create-a-project).
 
 Next, you can login to Studio from the command line:
@@ -260,4 +260,3 @@ Learn more about
 
 [dvclive]: /doc/dvclive
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[dvc studio]: https://studio.datachain.ai

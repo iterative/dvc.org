@@ -7,8 +7,8 @@ description:
 
 # Get Started: Manage models
 
-In this guide, we will be using [DVC Studio](https://studio.datachain.ai) to
-manage our model registry. You can check out our
+In this guide, we will be using DVC Studio to manage our model registry. You can
+check out our
 [example model](https://studio.datachain.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0)
 in DVC Studio to see what it will look like once we finish all the steps in this
 guide.
@@ -17,8 +17,8 @@ guide.
 
 To perform the model registry actions in this guide, follow
 [these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
-to sign in to [DVC Studio](https://studio.datachain.ai), connect it to your Git
-account and add your repository as a DVC Studio project.
+to sign in to DVC Studio, connect it to your Git account and add your repository
+as a DVC Studio project.
 
 </admon>
 

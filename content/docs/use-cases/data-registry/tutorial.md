@@ -187,7 +187,7 @@ Now you know how to to build a lightweight data registry, update it, and get
 files from it. As your registry or team continues to grow, you may have trouble
 managing all artifacts across multiple projects. How do you keep them organized,
 or know which version to use, or share them with others outside your team? DVC
-along with [DVC Studio] can help you scale your registry and address these
+along with DVC Studio can help you scale your registry and address these
 questions.
 
 ### Adding metadata
@@ -209,9 +209,9 @@ artifacts:
 ```
 
 Once you `git commit` and `git push` this info to a project that's connected to
-[DVC Studio], anyone on your team can see it and filter or search across all
-your projects in the <abbr>model registry</abbr>. Although the artifact above is
-not a model, you can change the filters to use it for any type of artifact:
+DVC Studio, anyone on your team can see it and filter or search across all your
+projects in the <abbr>model registry</abbr>. Although the artifact above is not
+a model, you can change the filters to use it for any type of artifact:
 
 ![Show Registry Datasets](https://static.iterative.ai/img/registry-show-datasets.gif)
 
@@ -232,13 +232,12 @@ actions in your CI/CD workflows when you register a version or assign a stage.
 
 Others can [download or stream artifacts] by their version or stage without
 needing access to your Git repository or cloud storage. If you connect your
-[cloud credentials] in [DVC Studio], anyone on your team can access that
-artifact using only a [Studio token], either in the UI or programmatically:
+[cloud credentials] in DVC Studio, anyone on your team can access that artifact
+using only a [Studio token], either in the UI or programmatically:
 
 ![Download Registry Datasets](https://static.iterative.ai/img/registry-download-datasets.gif)
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
-[DVC Studio]: https://studio.datachain.ai
 [Version numbers]: /doc/studio/user-guide/model-registry/register-version
 [stages]: /doc/studio/user-guide/model-registry/assign-stage
 [semantic versioning]: https://semver.org

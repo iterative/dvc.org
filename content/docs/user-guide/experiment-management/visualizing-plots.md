@@ -276,7 +276,7 @@ view.
 
 <tab title="DVC Studio">
 
-Once you have [shared] the results to [DVC Studio], you can
+Once you have [shared] the results to DVC Studio, you can
 [compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
 against the entire repo history:
 
@@ -288,4 +288,3 @@ against the entire repo history:
 
 [dvclive]: /doc/dvclive
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[dvc studio]: https://studio.datachain.ai

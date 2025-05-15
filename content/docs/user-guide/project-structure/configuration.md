@@ -67,8 +67,7 @@ within:
 - [`plots`](#plots) - options for configuring `dvc plots`.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
-- [`studio`](#studio) - options for configuring
-  [DVC Studio](https://studio.datachain.ai/) token
+- [`studio`](#studio) - options for configuring DVC Studio token
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
@@ -257,12 +256,11 @@ Sets the defaults for <abbr>experiment</abbr> configuration.
 - `exp.auto_push` - [push experiment] automatically after `dvc exp run` and
   `dvc exp save`. Accepts values `true` and `false` (default).
 - `exp.git_remote` - Git remote name or URL used to [push experiment] and [send
-  live metrics and plots] to [DVC Studio]. Defaults to `origin`.
+  live metrics and plots] to DVC Studio. Defaults to `origin`.
 
 [push experiment]: /doc/user-guide/experiment-management/sharing-experiments
 [send live metrics and plots]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvc studio]: https://studio.datachain.ai
 
 </details>
 
