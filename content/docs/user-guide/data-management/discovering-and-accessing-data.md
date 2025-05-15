@@ -142,7 +142,7 @@ path.
 
 <admon type="tip">
 
-The [DVC Studio] model registry was built for models but since DVC tracks all
+The DVC Studio model registry was built for models but since DVC tracks all
 kinds of files, it can be used just as easily for other artifact types. See our
 [tutorial] for how to manage artifacts using the registry.
 
@@ -157,5 +157,4 @@ Studio], you can see models and their metadata across all projects, and you can
 download artifacts by name, version, and lifecycle stage, without needing to
 configure access to the underlying Git repository or remote storage.
 
-[DVC Studio]: https://studio.datachain.ai
 [tutorial]: /doc/use-cases/data-registry/tutorial#sharing-and-managing-artifacts

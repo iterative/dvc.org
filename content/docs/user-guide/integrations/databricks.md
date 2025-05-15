@@ -88,7 +88,7 @@ entries to corresponding `.gitignore`s, so you'll need to do that manually.
 
 If working with [Databricks Repos], you will need to set both the
 `DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` to see [live experiment updates] in
-[DVC Studio].
+DVC Studio.
 
 ```python
 import getpass
@@ -107,4 +107,3 @@ os.environ["DVC_EXP_GIT_REMOTE"] = "https://github.com/<org>/<repo>"
 [web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html
 [live experiment updates]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[DVC Studio]: https://studio.datachain.ai

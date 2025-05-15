@@ -153,7 +153,7 @@ granting full access to your Studio account.
 The available scopes are:
 
 - `Experiment operations` - DVC uses this scope to share [live experiments] and
-  to notify [Studio](https://studio.datachain.ai/) about [pushed experiments].
+  to notify Studio about [pushed experiments].
 - `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
 - `Model registry operations` - like downloading model using
   `dvc artifacts get`.

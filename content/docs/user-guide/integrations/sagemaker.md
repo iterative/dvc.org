@@ -31,8 +31,7 @@ you would in any other environment. Take a look at DVC [experiments] for how to
 get started with DVC in notebooks (if you have setup [code-server] on SageMaker,
 you can also install the [DVC extension for VS Code]).
 
-If you would like to see live experiment updates in [DVC Studio], set your
-token:
+If you would like to see live experiment updates in DVC Studio, set your token:
 
 ```cli
 $ dvc studio login
@@ -128,7 +127,7 @@ The end result of running the pipeline looks like this:
 
 SageMaker jobs run outside of your Git repository, so experiment metrics and
 plots will not be automatically tracked in the repository. However, you can see
-[live experiment updates] in [DVC Studio].
+[live experiment updates] in DVC Studio.
 
 First, set the `DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` environment
 variables.
@@ -185,7 +184,6 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [dvc extension for vs code]: /doc/vs-code-extension
 [live experiment updates]:
   /doc/studio/user-guide/experiments/live-metrics-and-plots
-[dvc studio]: https://studio.datachain.ai
 [dvc config]: /doc/user-guide/project-structure/configuration#studio
 [pipelines]: /doc/user-guide/pipelines
 [external dependencies and outputs]:

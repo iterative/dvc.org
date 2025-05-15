@@ -1,7 +1,6 @@
 # studio
 
-A set of commands to authenticate DVC with [Studio](https://studio.datachain.ai)
-and save a
+A set of commands to authenticate DVC with Studio and save a
 [client access token](/doc/studio/user-guide/account-management#client-access-tokens)
 to global [DVC configuration]: [login](/doc/command-reference/studio/login),
 [logout](/doc/command-reference/studio/logout),
