@@ -143,13 +143,5 @@
   "^/doc/studio/user-guide/connect-custom-gitlab-server$                                  /doc/studio/user-guide/git-integrations/custom-gitlab-server",
   "^/doc/studio/troubleshooting$                                                          /doc/studio/user-guide/troubleshooting",
 
-  "^/blog/dvcx-dataset-factory-paper$                                                     https://datachain.ai/blog/dvcx-dataset-factory",
-  "^/blog/datachain-release$                                                              https://datachain.ai/blog/datachain-release",
-  "^/blog/enforcing-json-outputs-in-commercial-llms$                                      https://datachain.ai/blog/enforcing-json-outputs-in-commercial-llms",
-  "^/blog/multimodal-clip-fine-tuning$                                                    https://datachain.ai/blog/multimodal-clip-fine-tuning",
-  "^/blog/post-modern-ai-data-stack$                                                      https://datachain.ai/blog/post-modern-ai-data-stack",
-  "^/blog/datachain-unstructured-pdf-processing$                                          https://datachain.ai/blog/datachain-unstructured-pdf-processing",
-  "^/blog/robust-engineering-over-overblown-promises$                                     https://datachain.ai/blog/robust-engineering-over-overblown-promises",
-
   "^/(.+)/$                                                                               /$1"
 ]
