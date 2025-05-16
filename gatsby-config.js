@@ -78,7 +78,7 @@ const plugins = [
           output: '/blog/rss.xml',
           query: `
             {
-              allBlogPost( sort: { date: DESC }) {
+              allBlogPost(sort: { date: DESC }) {
                 nodes {
                   htmlAst
                   slug
