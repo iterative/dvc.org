@@ -68,6 +68,13 @@ const plugins = [
       path: path.join(__dirname, `content`, `uploads`, `images`)
     }
   },
+  {
+    resolve: `gatsby-source-rss-feed`,
+    options: {
+      url: `https://datachain.ai/blog/rss.xml`,
+      name: `IterativeBlog`
+    }
+  },
   `gatsby-plugin-catch-links`,
   `gatsby-plugin-sharp`,
   'gatsby-plugin-twitter',
