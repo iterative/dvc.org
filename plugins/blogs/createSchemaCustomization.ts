@@ -1,4 +1,5 @@
 import { GatsbyNode } from 'gatsby'
+import { parentResolverPassthrough } from 'gatsby-plugin-parent-resolvers'
 
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
   async api => {
@@ -15,6 +16,10 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
           infer: false
         },
         fields: {
+          htmlAst: {
+            type: 'JSON!',
+            resolve: parentResolverPassthrough()
+          },
           commentsUrl: `String`,
           date: { type: `Date`, extensions: { dateformat: {} } },
           description: `String`,
