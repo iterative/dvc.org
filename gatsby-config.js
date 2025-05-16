@@ -3,6 +3,7 @@
 require('dotenv').config()
 const path = require('path')
 
+const makeFeedHtml = require('@dvcorg/gatsby-theme-iterative/plugins/utils/makeFeedHtml')
 const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
 const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
 
@@ -66,6 +67,64 @@ const plugins = [
     options: {
       name: `uploads-images`,
       path: path.join(__dirname, `content`, `uploads`, `images`)
+    }
+  },
+  {
+    resolve: `gatsby-plugin-feed`,
+    options: {
+      feeds: [
+        {
+          description,
+          output: '/blog/rss.xml',
+          query: `
+            {
+              allBlogPost(sort: { date: DESC }) {
+                nodes {
+                  htmlAst
+                  slug
+                  title
+                  date
+                  description
+                }
+              }
+            }
+          `,
+          serialize: ({ query: { site, allBlogPost } }) => {
+            return Promise.all(
+              allBlogPost.nodes.map(async node => {
+                const html = await makeFeedHtml(
+                  node.htmlAst,
+                  site.siteMetadata.siteUrl
+                )
+                return Object.assign(
+                  {},
+                  {
+                    custom_elements: [{ 'content:encoded': html }],
+                    title: node.title,
+                    date: node.date,
+                    description: node.description,
+                    guid: site.siteMetadata.siteUrl + node.slug,
+                    url: site.siteMetadata.siteUrl + node.slug
+                  }
+                )
+              })
+            )
+          },
+          title
+        }
+      ],
+      query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+    `
     }
   },
   `gatsby-plugin-catch-links`,

@@ -95,7 +95,7 @@ const SEO = ({
   description,
   canonicalUrl,
   keywords,
-  image = `/datachain-social-share.png`,
+  image = `/social-share.png`,
   imageAlt,
   imageHeight = 630,
   imageWidth = 1200,

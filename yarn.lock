@@ -9901,24 +9901,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001538, caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001636
-  resolution: "caniuse-lite@npm:1.0.30001636"
-  checksum: 10c0/e5f965b4da7bae1531fd9f93477d015729ff9e3fa12670ead39a9e6cdc4c43e62c272d47857c5cc332e7b02d697cb3f2f965a1030870ac7476da60c2fc81ee94
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001663":
-  version: 1.0.30001669
-  resolution: "caniuse-lite@npm:1.0.30001669"
-  checksum: 10c0/f125f23440d3dbb6c25ffb8d55f4ce48af36a84d0932b152b3b74f143a4170cbe92e02b0a9676209c86609bf7bf34119ff10cc2bc7c1b7ea40e936cc16598408
-  languageName: node
-  linkType: hard
-
-"caniuse-lite@npm:^1.0.30001688, caniuse-lite@npm:^1.0.30001702":
-  version: 1.0.30001713
-  resolution: "caniuse-lite@npm:1.0.30001713"
-  checksum: 10c0/f5468abfe73ce30e29cc8bde2ea67df2aab69032bdd93345e0640efefb76b7901c84fe1d28d591a797e65fe52fc24cae97060bb5552f9f9740322aff95ce2f9d
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001538, caniuse-lite@npm:^1.0.30001541, caniuse-lite@npm:^1.0.30001663, caniuse-lite@npm:^1.0.30001688, caniuse-lite@npm:^1.0.30001702":
+  version: 1.0.30001718
+  resolution: "caniuse-lite@npm:1.0.30001718"
+  checksum: 10c0/67f9ad09bc16443e28d14f265d6e468480cd8dc1900d0d8b982222de80c699c4f2306599c3da8a3fa7139f110d4b30d49dbac78f215470f479abb6ffe141d5d3
   languageName: node
   linkType: hard
 
@@ -14156,6 +14142,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gatsby-plugin-feed@npm:5.14.0":
+  version: 5.14.0
+  resolution: "gatsby-plugin-feed@npm:5.14.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+    common-tags: "npm:^1.8.2"
+    fs-extra: "npm:^11.2.0"
+    gatsby-plugin-utils: "npm:^4.14.0"
+    lodash.merge: "npm:^4.6.2"
+    rss: "npm:^1.2.2"
+  peerDependencies:
+    gatsby: ^5.0.0-next
+    react: ^18.0.0 || ^0.0.0
+    react-dom: ^18.0.0 || ^0.0.0
+  checksum: 10c0/945180b92b5439849ed98f75bbe7b6e407ddc9e3754241721f5564b6b2ca81ab8249dcad4f185a0eec91495b67b820337ef785dea271b9f8ec6d4a7ad39cc9b4
+  languageName: node
+  linkType: hard
+
 "gatsby-plugin-google-tagmanager@npm:5.14.0":
   version: 5.14.0
   resolution: "gatsby-plugin-google-tagmanager@npm:5.14.0"
@@ -14237,6 +14241,13 @@ __metadata:
   peerDependencies:
     gatsby: ^5.0.0-next
   checksum: 10c0/219bd6a9b4bb4df096955387e1d8e516e408973e596da23159fe6d31a61315d082b7c090fcb5347f4a1b910e9f3be56c9533fc7b0919cc466d8dd0f34ac144b0
+  languageName: node
+  linkType: hard
+
+"gatsby-plugin-parent-resolvers@npm:1.0.2":
+  version: 1.0.2
+  resolution: "gatsby-plugin-parent-resolvers@npm:1.0.2"
+  checksum: 10c0/909ce99e0596aa558661991b6f6f4f44a75d7b3d27ee949f48eccdffb7f4009ff72af835db1a822d4b62cc80eef12a816dbc9231dc4d6569953fe27a21cc0813
   languageName: node
   linkType: hard
 
@@ -19684,10 +19695,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mime-db@npm:~1.25.0":
+  version: 1.25.0
+  resolution: "mime-db@npm:1.25.0"
+  checksum: 10c0/a90951c80700314d6131e106cbf56ae94718d046e9669a5afd7f91e603248da328aad5b63314865fd9547f4688465ac62d1ace59e1ffdb73688452a28a9c3622
+  languageName: node
+  linkType: hard
+
 "mime-db@npm:~1.33.0":
   version: 1.33.0
   resolution: "mime-db@npm:1.33.0"
   checksum: 10c0/79172ce5468c8503b49dddfdddc18d3f5fe2599f9b5fe1bc321a8cbee14c96730fc6db22f907b23701b05b2936f865795f62ec3a78a7f3c8cb2450bb68c6763e
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:2.1.13":
+  version: 2.1.13
+  resolution: "mime-types@npm:2.1.13"
+  dependencies:
+    mime-db: "npm:~1.25.0"
+  checksum: 10c0/a53a0453f7863fa2d823025ce92978f5142a18528316caa53cbb1d4212be847973e9a5f2466362cbd2351a512e369252fc2c88c9c5bbc85df4bd8b42214f1785
   languageName: node
   linkType: hard
 
@@ -23752,6 +23779,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rss@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "rss@npm:1.2.2"
+  dependencies:
+    mime-types: "npm:2.1.13"
+    xml: "npm:1.0.1"
+  checksum: 10c0/7e37a6ed1820b69476c76e4fefe09f69dd7505408e9fc7690441a5190aca2e2e2faf8d19575fd1efd66debfb178893374fbff9abf68e5416f5e4d4cccb7ae8b9
+  languageName: node
+  linkType: hard
+
 "rtl-css-js@npm:^1.16.1":
   version: 1.16.1
   resolution: "rtl-css-js@npm:1.16.1"
@@ -27484,9 +27521,11 @@ __metadata:
     eslint-plugin-react-hooks: "npm:5.2.0"
     gatsby: "npm:5.14.3"
     gatsby-plugin-catch-links: "npm:5.14.0"
+    gatsby-plugin-feed: "npm:5.14.0"
     gatsby-plugin-google-tagmanager: "npm:5.14.0"
     gatsby-plugin-image: "npm:3.14.0"
     gatsby-plugin-manifest: "npm:5.14.0"
+    gatsby-plugin-parent-resolvers: "npm:1.0.2"
     gatsby-plugin-postcss: "npm:6.14.0"
     gatsby-plugin-react-helmet: "npm:6.14.0"
     gatsby-plugin-sharp: "npm:5.14.0"
@@ -27858,6 +27897,13 @@ __metadata:
   version: 4.0.0
   resolution: "xdg-basedir@npm:4.0.0"
   checksum: 10c0/1b5d70d58355af90363a4e0a51c992e77fc5a1d8de5822699c7d6e96a6afea9a1e048cb93312be6870f338ca45ebe97f000425028fa149c1e87d1b5b8b212a06
+  languageName: node
+  linkType: hard
+
+"xml@npm:1.0.1":
+  version: 1.0.1
+  resolution: "xml@npm:1.0.1"
+  checksum: 10c0/04bcc9b8b5e7b49392072fbd9c6b0f0958bd8e8f8606fee460318e43991349a68cbc5384038d179ff15aef7d222285f69ca0f067f53d071084eb14c7fdb30411
   languageName: node
   linkType: hard
 
