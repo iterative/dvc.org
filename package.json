@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/iterative/dvc.org#readme",
   "engines": {
-    "node": ">=18.x <=21.x"
+    "node": ">=18.x <=22.x"
   },
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "0.3.25",
