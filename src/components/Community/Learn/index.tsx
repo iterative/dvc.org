@@ -233,7 +233,7 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               title={
                 <Link
                   className={sharedStyles.headerLink}
-                  href="https://iterative.ai/blog"
+                  href="https://dvc.org/blog"
                   onClick={() => logBlog('all')}
                 >
                   DVC Blog
@@ -244,7 +244,7 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                   <Link
                     className={sharedStyles.button}
                     style={theme}
-                    href="https://iterative.ai/blog"
+                    href="https://dvc.org/blog"
                     onClick={() => logBlog('all')}
                   >
                     See all Posts

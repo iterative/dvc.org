@@ -66,7 +66,7 @@ export const Head = ({
   <>
     <SEO
       pathname={location.pathname}
-      title="Blog | DataChain | DVC"
+      title="Blog | DVC"
       description={description}
       keywords={keywords}
       pageInfo={pageContext?.pageInfo}
