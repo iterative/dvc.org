@@ -16,7 +16,7 @@ usage: dvc data status [-h] [-q | -v]
                        [--granular] [--unchanged]
                        [--untracked-files [{no,all}]]
                        [--json]
-                       [--not-in-remote] [--no-remote-refresh]
+                       [--not-in-remote] [--no-remote-refresh] [--respect-no-push]
 ```
 
 ## Description
@@ -101,6 +101,8 @@ default but this can be enabled with the `--granular` flag.
 
 - `--no-remote-refresh` - use cached <abbr>remote</abbr> index (don't check
   remote). Only has an effect along with `--not-in-remote`.
+
+- `--respect-no-push` - do not include outputs of stages in <abbr>data pipelines</abbr> where `push: false` in the _not in remote_ section.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable output.
@@ -199,6 +201,12 @@ Now there's more information in _DVC committed changes_ regarding the changes in
 `data/features`: `data/features/foo`.
 
 ## Example: Remote status
+
+<admon type="tip">
+
+For stages with outputs where `push: false`, setting `--respect-no-push` will remove these files from _Not in remote_.
+
+</admon>
 
 ```cli
 $ dvc data status --not-in-remote
