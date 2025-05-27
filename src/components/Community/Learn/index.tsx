@@ -45,7 +45,10 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
 }) => {
   const logPost = useCallback(() => logBlog(title), [title])
 
-  const { error, ready, result } = useCommentsCount(commentsUrl || '')
+  let error, ready, result
+  if (commentsUrl) {
+      ({ error, ready, result } = useCommentsCount(commentsUrl))
+  }
 
   return (
     <div className={cn(sharedStyles.line, sharedStyles.image)} key={url}>

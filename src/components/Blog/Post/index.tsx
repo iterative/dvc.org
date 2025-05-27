@@ -51,7 +51,11 @@ const Post = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wrapperRef, width, height, y])
 
-  const { error, ready, result } = useCommentsCount(commentsUrl || ``)
+  let error, ready, result
+  if (commentsUrl) {
+      ({ error, ready, result } = useCommentsCount(commentsUrl))
+  }
+
   return (
     <TogglesProvider>
       <div className={styles.wrapper} ref={wrapperRef}>
