@@ -43,6 +43,6 @@ module.exports = async (_, res) => {
 
     res.status(200).json({ topics })
   } catch {
-    res.status(404)
+    res.sendStatus(404)
   }
 }

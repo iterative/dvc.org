@@ -99,7 +99,7 @@ export function useCommentsCount(
   commentsUrl: string
 ): UseApiResult<IDiscussCommentsCountResponse, number> {
   const response = useAPICall<IDiscussCommentsCountResponse>(
-    `/api/comments?url=${commentsUrl}`
+    commentsUrl ? `/api/comments?url=${commentsUrl}` : ``
   )
 
   return { ...response, result: response.result?.count }

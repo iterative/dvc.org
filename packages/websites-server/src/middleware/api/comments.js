@@ -25,7 +25,7 @@ const getCommentCount = async (req, res) => {
   const url = getUrlWithoutParams(queryUrl)
 
   if (!(url && url.startsWith(forumUrl))) {
-    res.status(400)
+    res.sendStatus(400)
 
     return
   }
@@ -64,7 +64,7 @@ const getCommentCount = async (req, res) => {
 
     res.status(200).json({ count })
   } catch {
-    res.status(404)
+    res.sendStatus(404)
   }
 }
 
