@@ -1,15 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-// We do not need to consider the position of the AST nodes
-const buildAst = async mdToBuild => {
-  const { unified } = await import('unified')
-  const remarkHtml = await import('remark-html')
-  const remarkParse = await import('remark-parse')
-  const removePosition = await import('unist-util-remove-position')
-
-  return removePosition(
-    unified().use(remarkHtml).use(remarkParse).parse(mdToBuild)
-  )
-}
 
 const useMatcher = (matcher, item) => {
   switch (typeof matcher) {
@@ -35,4 +24,4 @@ const createLinkNode = (url, [node, index, parent]) =>
     position: node.position
   })
 
-module.exports = { buildAst, createLinkNode, useMatcher }
+module.exports = { createLinkNode, useMatcher }
