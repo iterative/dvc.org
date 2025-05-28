@@ -1,0 +1,21 @@
+module.exports = [
+  'apply-remote',
+  'apply',
+  'build',
+  'checkenv',
+  'clone',
+  'declare',
+  'deployment apply',
+  'deployment run',
+  'deployment status',
+  'deployment remove',
+  'deployment wait',
+  'deployment',
+  'import',
+  'init',
+  'link',
+  'pprint',
+  'serve',
+  'types',
+  'ls'
+]

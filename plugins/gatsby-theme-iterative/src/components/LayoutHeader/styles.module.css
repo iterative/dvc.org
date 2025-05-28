@@ -1,0 +1,38 @@
+html {
+  @apply scroll-pt-14;
+}
+
+.headerContainer {
+  @apply flex flex-col flex-nowrap fixed top-0 left-0 right-0 w-full justify-center z-30 bg-white;
+
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
+}
+
+.header {
+  @apply h-14;
+
+  width: 100%;
+  z-index: 3;
+  color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  transition: height 0.2s linear;
+  will-change: height;
+  padding: 0 24px;
+
+  @media screen(xsMax) {
+    padding: 0 16px;
+  }
+}
+
+.gitHubAlertLink {
+  vertical-align: middle;
+  margin-left: 0.1em;
+
+  svg {
+    color: inherit;
+  }
+}

@@ -42,8 +42,12 @@
   "engines": {
     "node": ">=18.x <=22.x"
   },
+  "private": true,
+  "workspaces": [
+    "plugins/gatsby-theme-iterative"
+  ],
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "0.3.25",
+    "@dvcorg/gatsby-theme-iterative": "workspace:^",
     "@dvcorg/websites-server": "0.3.2",
     "@iframe-resizer/react": "5.4.6",
     "@octokit/request": "8.4.1",

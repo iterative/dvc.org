@@ -1,0 +1,23 @@
+.socialIcons {
+  flex-direction: row;
+  display: flex;
+}
+
+.socialIcon {
+  @apply p-1;
+
+  display: block;
+  color: #6f7685;
+
+  svg {
+    @apply w-5 h-5;
+
+    @media screen(md) {
+      @apply w-6 h-6;
+    }
+
+    @media screen(lg) {
+      @apply w-7 h-7;
+    }
+  }
+}

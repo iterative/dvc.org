@@ -1,0 +1,66 @@
+.linksList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  @apply active;
+  @apply hover;
+  @apply focus;
+
+  font-family: var(--font-base);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #353940;
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.open {
+    opacity: 0.7;
+
+    .arrowDownIcon {
+      display: none;
+    }
+
+    .arrowUpIcon {
+      display: inline-block;
+    }
+  }
+
+  .linkIcon {
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+  }
+
+  .arrowUpIcon {
+    display: none;
+  }
+
+  @media screen(mdMax) {
+    font-size: 17px;
+    line-height: 20px;
+
+    .linkIcon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+button.link:focus {
+  color: #353940;
+}

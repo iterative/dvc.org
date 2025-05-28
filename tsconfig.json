@@ -23,11 +23,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/static/*": ["./static/*"]
+      "@/static/*": ["./static/*"],
+      "@dvcorg/gatsby-theme-iterative": ["plugins/gatsby-theme-iterative", "src/@dvcorg/gatsby-theme-iterative"]
     }
   },
   "include": [
-    "node_modules/@dvcorg/gatsby-theme-iterative",
+    "plugins/gatsby-theme-iterative",
     "./src/**/*",
     "./*.js",
     "./*.tsx"

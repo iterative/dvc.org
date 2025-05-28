@@ -1,0 +1,10 @@
+.alert {
+  background-color: #dee;
+  transition: 0.5s all;
+  overflow: hidden;
+
+  &.collapsed {
+    height: 0;
+    transform: translateY(-100%);
+  }
+}

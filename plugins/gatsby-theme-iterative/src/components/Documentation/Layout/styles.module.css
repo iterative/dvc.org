@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  z-index: 2;
+  height: 100%;
+
+  @media screen(xsMax) {
+    padding: 0 15px;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    pointer-events: none;
+    background-color: var(--color-light-blue);
+
+    @media screen(xsMax) {
+      display: none;
+    }
+  }
+}
+
+.backdrop {
+  display: none;
+
+  @media screen(xsMax) {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s linear;
+
+    &.opened {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      opacity: 1;
+      pointer-events: all;
+      background-color: rgb(0 0 0 / 40%);
+    }
+  }
+}
+
+.side {
+  @apply flex flex-col w-72
+    sm:py-0;
+
+  background-color: var(--color-light-blue);
+  flex-shrink: 0;
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  box-shadow:
+    rgb(0 0 0 / 14%) 0 0 4px,
+    rgb(0 0 0 / 28%) 0 4px 8px;
+  transform: translateX(-110%);
+  transition: transform 0.35s ease;
+
+  &.opened {
+    transform: translateX(0);
+  }
+
+  @media screen(xs) {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    width: 280px;
+  }
+}
+
+.innerSidebar {
+  @apply flex flex-col h-screen pt-14 xs:sticky xs:h-auto xs:max-h-screen xs:top-0 z-20;
+}
+
+.sideToggle {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 3;
+  left: 8px;
+  bottom: 20px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 90%);
+  box-shadow: 0 0 9px 0 rgb(0 0 0 / 15%);
+  transition: transform 0.3s ease;
+
+  &.opened {
+    transform: translateX(calc(100vw - 60px));
+  }
+
+  @media screen(xsMax) {
+    display: flex;
+
+    > * {
+      transform: scale(0.75);
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  max-width: calc(100% - 280px);
+  background-color: #fff;
+  flex: 1;
+
+  @media screen(xsMax) {
+    max-width: 100%;
+  }
+}

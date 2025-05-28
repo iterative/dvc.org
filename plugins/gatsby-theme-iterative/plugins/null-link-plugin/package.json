@@ -1,0 +1,7 @@
+{
+  "name": "null-link-plugin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "yathomasi",
+  "license": "Apache-2.0"
+}

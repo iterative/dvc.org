@@ -1,0 +1,58 @@
+.logoLink {
+  @apply hover active;
+
+  height: 40px;
+  width: 40px;
+
+  &:focus {
+    opacity: 0.7;
+  }
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.logo {
+  display: block;
+}
+
+.company {
+  @apply active hover;
+
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  background: linear-gradient(
+    270deg,
+    var(--color-purple) 0%,
+    var(--color-orange-bright) 100%
+  );
+  background-size: 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  margin-left: 6px;
+  margin-right: auto;
+  padding: 10px;
+
+  &:focus {
+    opacity: 0.7;
+  }
+
+  @media screen(smMax) {
+    margin-left: 2px;
+  }
+
+  @media screen(xsMax) {
+    padding: 10px 0;
+    margin-left: 8px;
+  }
+
+  .companyName {
+    font-weight: 800;
+  }
+}
