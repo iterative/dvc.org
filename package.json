@@ -44,11 +44,12 @@
   },
   "private": true,
   "workspaces": [
-    "plugins/gatsby-theme-iterative"
+    "plugins/gatsby-theme-iterative",
+    "packages/websites-server"
   ],
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "workspace:^",
-    "@dvcorg/websites-server": "0.3.2",
+    "@dvcorg/websites-server": "workspace:^",
     "@iframe-resizer/react": "5.4.6",
     "@octokit/request": "8.4.1",
     "@radix-ui/react-dialog": "1.1.13",

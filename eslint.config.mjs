@@ -52,7 +52,7 @@ export default tseslint.config(
           leadingUnderscore: 'allow'
         }
       ],
-      '@typescript-eslint/no-unused-vars': 'error'
+      '@typescript-eslint/no-unused-vars': ['error', { "argsIgnorePattern": "^_" }]
     }
   },
   pluginImportX.flatConfigs.recommended,
