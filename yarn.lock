@@ -3137,9 +3137,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dvcorg/gatsby-theme-iterative@workspace:^, @dvcorg/gatsby-theme-iterative@workspace:plugins/gatsby-theme-iterative":
+"@dvcorg/gatsby-theme-iterative@workspace:^, @dvcorg/gatsby-theme-iterative@workspace:packages/gatsby-theme-iterative":
   version: 0.0.0-use.local
-  resolution: "@dvcorg/gatsby-theme-iterative@workspace:plugins/gatsby-theme-iterative"
+  resolution: "@dvcorg/gatsby-theme-iterative@workspace:packages/gatsby-theme-iterative"
   dependencies:
     "@babel/plugin-transform-react-jsx": "npm:^7.25.9"
     "@reach/portal": "npm:^0.18.0"

@@ -25,14 +25,14 @@
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"],
       "@dvcorg/gatsby-theme-iterative": [
-        "plugins/gatsby-theme-iterative",
+        "packages/gatsby-theme-iterative",
         "src/@dvcorg/gatsby-theme-iterative"
       ],
       "@dvcorg/websites-server": ["packages/websites-server"]
     }
   },
   "include": [
-    "plugins/gatsby-theme-iterative",
+    "packages/gatsby-theme-iterative",
     "packages/websites-server",
     "./src/**/*",
     "./*.js",

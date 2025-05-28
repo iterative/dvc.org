@@ -44,8 +44,7 @@
   },
   "private": true,
   "workspaces": [
-    "plugins/gatsby-theme-iterative",
-    "packages/websites-server"
+    "packages/*"
   ],
   "dependencies": {
     "@dvcorg/gatsby-theme-iterative": "workspace:^",

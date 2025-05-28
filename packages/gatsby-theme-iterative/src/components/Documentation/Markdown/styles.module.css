@@ -44,7 +44,7 @@
   flex-flow: column nowrap;
   margin: 1rem -0.5rem;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (width >= 1024px) {
     margin: 2rem -0.5rem;
     flex-flow: row wrap;
 
