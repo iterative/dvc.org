@@ -3,7 +3,7 @@ import { PageProps } from 'gatsby'
 import ThemeMainLayout, {
   LayoutModifiers,
   ILayoutComponentProps
-} from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+} from '@dvcorg/gatsby-theme/src/components/MainLayout'
 
 interface IMainLayoutProps extends ILayoutComponentProps {
   location: PageProps['location']

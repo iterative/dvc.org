@@ -1,6 +1,6 @@
 import IframeResizer from '@iframe-resizer/react'
 
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
 
 import { ICommunitySectionTheme } from '..'
 import Section from '../Section'

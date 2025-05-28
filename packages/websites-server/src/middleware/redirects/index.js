@@ -2,7 +2,7 @@ const { stringify } = require('querystring')
 
 const {
   getRedirect
-} = require('@dvcorg/gatsby-theme-iterative/src/utils/shared/redirects')
+} = require('@dvcorg/gatsby-theme/src/utils/shared/redirects')
 
 const { isProduction } = require('../../utils')
 

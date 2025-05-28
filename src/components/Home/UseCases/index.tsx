@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import ShowOnly from '@dvcorg/gatsby-theme/src/components/ShowOnly'
 
 import CollapsibleText from './CollapsibleText'
 import * as styles from './styles.module.css'

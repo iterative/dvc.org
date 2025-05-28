@@ -1,6 +1,6 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import ShowOnly from '@dvcorg/gatsby-theme/src/components/ShowOnly'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import { cn } from '../../../../utils'
 import DownloadButton from '../../../DownloadButton'

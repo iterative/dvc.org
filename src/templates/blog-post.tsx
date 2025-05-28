@@ -10,7 +10,7 @@ import SEO from '@/components/SEO'
 
 import { blogsPageLink } from '@/constants/internalLinks'
 import { isProduction } from '@/utils'
-import { ISocialIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
+import { ISocialIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon'
 
 export interface IBlogPostHeroPic {
   picture?: {

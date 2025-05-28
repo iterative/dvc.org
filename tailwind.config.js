@@ -1,4 +1,4 @@
-const themeConfig = require('@dvcorg/gatsby-theme-iterative/tailwind.config')
+const themeConfig = require('@dvcorg/gatsby-theme/tailwind.config')
 
 module.exports = {
   ...themeConfig,

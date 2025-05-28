@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Collapse } from 'react-collapse'
 
-import { isTriggeredFromKB } from '@dvcorg/gatsby-theme-iterative/src/utils/front/keyboard'
+import { isTriggeredFromKB } from '@dvcorg/gatsby-theme/src/utils/front/keyboard'
 
 import * as styles from './styles.module.css'
 

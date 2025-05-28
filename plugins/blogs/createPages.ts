@@ -1,6 +1,6 @@
 import path from 'path'
 
-import tagToSlug from '@dvcorg/gatsby-theme-iterative/src/utils/shared/tagToSlug'
+import tagToSlug from '@dvcorg/gatsby-theme/src/utils/shared/tagToSlug'
 import { GatsbyNode } from 'gatsby'
 
 import { IBlogsPluginOptions, blogPluginOptions } from './plugin-options'

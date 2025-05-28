@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react'
 
-import isClient from '@dvcorg/gatsby-theme-iterative/src/utils/front/isClient'
-import safeLocalStorage from '@dvcorg/gatsby-theme-iterative/src/utils/front/safeLocalStorage'
+import isClient from '@dvcorg/gatsby-theme/src/utils/front/isClient'
+import safeLocalStorage from '@dvcorg/gatsby-theme/src/utils/front/safeLocalStorage'
 
 export enum OS {
   UNKNOWN = 'unknown',

@@ -47,7 +47,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "workspace:^",
+    "@dvcorg/gatsby-theme": "workspace:^",
     "@dvcorg/websites-server": "workspace:^",
     "@iframe-resizer/react": "5.4.6",
     "@octokit/request": "8.4.1",

@@ -1,7 +1,7 @@
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import ShowOnly from '@dvcorg/gatsby-theme/src/components/ShowOnly'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import { useCommunityData } from '../../../utils/front/community'
 

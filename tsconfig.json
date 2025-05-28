@@ -24,15 +24,15 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"],
-      "@dvcorg/gatsby-theme-iterative": [
-        "packages/gatsby-theme-iterative",
-        "src/@dvcorg/gatsby-theme-iterative"
+      "@dvcorg/gatsby-theme": [
+        "packages/gatsby-theme",
+        "src/@dvcorg/gatsby-theme"
       ],
       "@dvcorg/websites-server": ["packages/websites-server"]
     }
   },
   "include": [
-    "packages/gatsby-theme-iterative",
+    "packages/gatsby-theme",
     "packages/websites-server",
     "./src/**/*",
     "./*.js",

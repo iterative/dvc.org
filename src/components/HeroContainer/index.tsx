@@ -1,6 +1,6 @@
 import cn from 'classnames'
 
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
 
 interface IHeroContainerProps {
   className?: string

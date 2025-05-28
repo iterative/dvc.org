@@ -4,8 +4,8 @@ import { ArrowRightIcon } from 'lucide-react'
 
 import Paginator, { IPaginatorPageInfo } from '@/components/Blog/Paginator'
 
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import tagToSlug from '@dvcorg/gatsby-theme-iterative/src/utils/shared/tagToSlug'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import tagToSlug from '@dvcorg/gatsby-theme/src/utils/shared/tagToSlug'
 
 import Item, { IBlogPostData } from './Item'
 import * as styles from './styles.module.css'

@@ -3,7 +3,7 @@
 require('dotenv').config()
 const path = require('path')
 
-const makeFeedHtml = require('@dvcorg/gatsby-theme-iterative/plugins/utils/makeFeedHtml')
+const makeFeedHtml = require('@dvcorg/gatsby-theme/plugins/utils/makeFeedHtml')
 const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
 const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
 
@@ -21,7 +21,7 @@ const keywords = [
 
 const plugins = [
   {
-    resolve: '@dvcorg/gatsby-theme-iterative',
+    resolve: '@dvcorg/gatsby-theme',
     options: {
       simpleLinkerTerms: require('./content/linked-terms'),
       glossaryPath: path.resolve('content', 'basic-concepts')

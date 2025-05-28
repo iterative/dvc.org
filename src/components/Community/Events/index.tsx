@@ -2,9 +2,9 @@ import cn from 'classnames'
 import { format } from 'date-fns/format'
 import { useCallback } from 'react'
 
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import { ICommunitySectionTheme } from '../'
 import { useCommunityData } from '../../../utils/front/community'

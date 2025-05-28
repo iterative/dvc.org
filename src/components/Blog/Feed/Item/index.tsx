@@ -7,7 +7,7 @@ import { useRafState, useWindowSize } from 'react-use'
 import FeedMeta from '@/components/Blog/FeedMeta'
 
 import { IAuthor } from '@/templates/blog-post'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
 
 import { ReactComponent as Placeholder } from './placeholder.svg'
 import * as styles from './styles.module.css'
