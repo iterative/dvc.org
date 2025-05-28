@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
 import includes from 'lodash/includes'
-
-import ShowOnly from '../../../ShowOnly'
-import DesktopView from './DesktopView'
-import MobileView from './MobileView'
+import { useState, useEffect } from 'react'
 
 import useGlossary from '../../../../utils/front/glossary'
+import ShowOnly from '../../../ShowOnly'
+
+import DesktopView from './DesktopView'
+import MobileView from './MobileView'
 
 const Tooltip: React.FC<{ text: string }> = ({ text }) => {
   const glossary = useGlossary()

@@ -1,13 +1,13 @@
-import React, { PropsWithChildren, Reducer, useEffect, useReducer } from 'react'
-import cn from 'classnames'
 import { SkipNavContent } from '@reach/skip-nav'
+import cn from 'classnames'
+import { PropsWithChildren, Reducer, useEffect, useReducer } from 'react'
 
-import LayoutWidthContainer from '../../LayoutWidthContainer'
+import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
 import HamburgerIcon from '../../HamburgerIcon'
+import LayoutWidthContainer from '../../LayoutWidthContainer'
+
 import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
-import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
-
 import * as styles from './styles.module.css'
 
 const toggleReducer: Reducer<boolean, void> = state => !state

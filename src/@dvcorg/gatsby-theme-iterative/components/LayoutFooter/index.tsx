@@ -1,3 +1,6 @@
+import cn from 'classnames'
+
+import { blogsPageLink } from '@/constants/internalLinks'
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/LayoutFooter/styles.module.css'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
@@ -8,9 +11,6 @@ import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme-iterative/src
 import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-import cn from 'classnames'
-
-import { blogsPageLink } from '@/constants/internalLinks'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
 

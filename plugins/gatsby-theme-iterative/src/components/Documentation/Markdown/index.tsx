@@ -1,21 +1,20 @@
-import React from 'react'
 import { Element } from 'hast'
+import { createElement, Fragment } from 'react'
 import rehypeReact from 'rehype-react'
 
-import Main from './Main'
-
-import { TogglesProvider } from './ToggleProvider'
-
-import Slugger from '../../../utils/front/Slugger'
 import patchHtmlAst from '../../../utils/front/patchHtmlAst'
+import Slugger from '../../../utils/front/Slugger'
+
 import { getComponents } from './components'
+import Main from './Main'
+import { TogglesProvider } from './ToggleProvider'
 
 // Rehype's typedefs don't allow for custom components, even though they work
 const renderAst = (slugger: Slugger) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return new (rehypeReact as any)({
-    createElement: React.createElement,
-    Fragment: React.Fragment,
+    createElement: createElement,
+    Fragment,
     components: getComponents(slugger)
   }).Compiler
 }

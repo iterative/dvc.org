@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from '@gatsbyjs/reach-router'
 import cn from 'classnames'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { getParentsListFromPath } from '../../../../utils/shared/sidebar'
 
-import * as styles from './styles.module.css'
-
 import InnerSidebar from './InnerSidebar'
+import * as styles from './styles.module.css'
 
 export type SidebarItemClickHandler = (isLeafItemClicked: boolean) => void
 

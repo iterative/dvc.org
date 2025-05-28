@@ -1,3 +1,7 @@
+import cn from 'classnames'
+import { useEffect, useState, useCallback, MouseEvent } from 'react'
+
+import { blogsPageLink } from '@/constants/internalLinks'
 import HamburgerIcon from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerIcon'
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/HamburgerMenu/styles.module.css'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
@@ -6,10 +10,6 @@ import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-import cn from 'classnames'
-import { useEffect, useState, useCallback, MouseEvent } from 'react'
-
-import { blogsPageLink } from '@/constants/internalLinks'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.svg'
 import menuData from '../../data/menu'

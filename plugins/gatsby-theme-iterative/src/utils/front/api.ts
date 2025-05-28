@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import fetch from 'isomorphic-fetch'
+import { useEffect, useState } from 'react'
 
 type IApiCallResult<T> = {
   error: string | null

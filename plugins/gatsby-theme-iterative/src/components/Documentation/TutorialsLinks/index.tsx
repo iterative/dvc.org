@@ -1,11 +1,10 @@
-import React from 'react'
 import cn from 'classnames'
-import topairs from 'lodash/toPairs'
 import startCase from 'lodash/startCase'
+import topairs from 'lodash/toPairs'
 
 import Link from '../../Link'
-
 import * as sharedStyles from '../styles.module.css'
+
 import * as styles from './styles.module.css'
 
 interface ITutorialsLinksProps {

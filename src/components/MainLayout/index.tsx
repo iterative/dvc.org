@@ -1,8 +1,9 @@
+import { PageProps } from 'gatsby'
+
 import ThemeMainLayout, {
   LayoutModifiers,
   ILayoutComponentProps
 } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
-import { PageProps } from 'gatsby'
 
 interface IMainLayoutProps extends ILayoutComponentProps {
   location: PageProps['location']

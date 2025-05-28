@@ -1,13 +1,16 @@
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
-import React, {
+import {
   createContext,
+  FC,
+  Fragment,
   PropsWithChildren,
   useContext,
   useEffect,
   useRef,
   useState
 } from 'react'
+
 import * as styles from './styles.module.css'
 
 interface ITogglesData {
@@ -222,8 +225,8 @@ export const Toggle: React.FC<{
   )
 }
 
-export const Tab: React.FC<PropsWithChildren<Record<never, never>>> = ({
+export const Tab: FC<PropsWithChildren<Record<never, never>>> = ({
   children
 }) => {
-  return <React.Fragment>{children}</React.Fragment>
+  return <Fragment>{children}</Fragment>
 }

@@ -1,8 +1,10 @@
 /* eslint-env node */
 
 const { navigate } = require('gatsby')
-const { structure, findChildWithSource } = require('./sidebar')
+
 const redirects = require('@dvcorg/gatsby-theme-iterative/redirects')
+
+const { structure, findChildWithSource } = require('./sidebar')
 
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {
@@ -78,11 +80,11 @@ const handleFrontRedirect = (host, pathname, clickEvent) => {
     }
 
     if (redirectUrl.startsWith('/')) {
-      redirectUrl = redirectUrl + location.search
+      redirectUrl = redirectUrl + window.location.search
 
       // If it's trailing slash redirect we should save hash in the url
       if (pathname === `${redirectUrl}/`) {
-        redirectUrl = redirectUrl + location.hash
+        redirectUrl = redirectUrl + window.location.hash
       }
     }
 

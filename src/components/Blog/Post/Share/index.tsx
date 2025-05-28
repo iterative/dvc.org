@@ -1,8 +1,9 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { graphql, useStaticQuery } from 'gatsby'
 import { useCallback } from 'react'
 
 import Tooltip from '@/components/Blog/Post/Tooltip'
+
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 import { ReactComponent as Facebook } from './icons/facebook.svg'
 import { ReactComponent as Subscribe } from './icons/subscribe.svg'

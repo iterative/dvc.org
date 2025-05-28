@@ -1,11 +1,10 @@
-import React from 'react'
 import { Element } from 'hast'
+
+import getEditLink from '../../getEditLink'
+import { getItemByPath } from '../../utils/shared/sidebar'
 
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
-
-import { getItemByPath } from '../../utils/shared/sidebar'
-import getEditLink from '../../getEditLink'
 
 export interface IHeading {
   slug: string

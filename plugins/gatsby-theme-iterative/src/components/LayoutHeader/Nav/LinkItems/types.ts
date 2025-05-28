@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+
 import { ScreenSize } from './getShowOnClass'
 
 export type PopupName = 'CommunityPopup' | 'OtherToolsPopup'

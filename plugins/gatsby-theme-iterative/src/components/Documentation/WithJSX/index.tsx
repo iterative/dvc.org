@@ -1,11 +1,10 @@
-import React, { PropsWithChildren } from 'react'
-
-import MarkdownMain from '../Markdown/Main'
-import RightPanel from '../RightPanel'
+import { PropsWithChildren } from 'react'
 
 import { IHeading } from '../'
-import { getItemByPath } from '../../../utils/shared/sidebar'
 import getEditLink from '../../../getEditLink'
+import { getItemByPath } from '../../../utils/shared/sidebar'
+import MarkdownMain from '../Markdown/Main'
+import RightPanel from '../RightPanel'
 
 interface IWithJSXProps {
   path: string

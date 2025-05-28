@@ -1,8 +1,8 @@
-import { getFirstPage } from '../utils/shared/sidebar'
 import {
   INavLinkData,
   INavLinkPopupData
 } from '../components/LayoutHeader/Nav/LinkItems/types'
+import { getFirstPage } from '../utils/shared/sidebar'
 
 const docsPage = getFirstPage()
 

@@ -8,10 +8,10 @@ require('prismjs/components/prism-bash')
 require('./dvc-hook')
 const { bash } = Prism.languages
 
-const dvc = require('./dvc-commands')
 const cml = require('./cml-commands')
-const mlem = require('./mlem-commands')
+const dvc = require('./dvc-commands')
 const gto = require('./gto-commands')
+const mlem = require('./mlem-commands')
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones

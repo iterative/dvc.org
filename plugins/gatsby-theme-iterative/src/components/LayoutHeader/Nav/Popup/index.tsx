@@ -1,10 +1,9 @@
-import React, { PropsWithChildren } from 'react'
 import cn from 'classnames'
-
-import Link from '../../../Link'
-import { logEvent } from '../../../../utils/front/plausible'
+import { PropsWithChildren } from 'react'
 
 import { ReactComponent as ExternalLinkIcon } from '../../../../images/external-link-icon.svg'
+import { logEvent } from '../../../../utils/front/plausible'
+import Link from '../../../Link'
 
 import * as styles from './styles.module.css'
 

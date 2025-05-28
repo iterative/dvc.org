@@ -1,4 +1,5 @@
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
+
 import * as styles from './styles.module.css'
 
 interface IElementProps {

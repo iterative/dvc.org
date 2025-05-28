@@ -1,9 +1,9 @@
-import React from 'react'
 import includes from 'lodash/includes'
-import * as styles from '../styles.module.css'
+
+import { SidebarItemClickHandler } from '..'
 import { structure } from '../../../../../utils/shared/sidebar'
 import SidebarMenuItem from '../Item'
-import { SidebarItemClickHandler } from '..'
+import * as styles from '../styles.module.css'
 
 export interface IInnerSidebarProps {
   activePaths?: string[]

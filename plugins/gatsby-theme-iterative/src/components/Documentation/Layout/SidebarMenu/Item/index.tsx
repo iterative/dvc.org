@@ -1,14 +1,14 @@
-import React, { SyntheticEvent, useEffect, useState } from 'react'
-import { Collapse } from 'react-collapse'
 import cn from 'classnames'
 import includes from 'lodash/includes'
+import { SyntheticEvent, useEffect, useState } from 'react'
+import { Collapse } from 'react-collapse'
 
+import { getPathWithSource } from '../../../../../utils/shared/sidebar'
 import Link from '../../../../Link'
-import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
+import ICONS from '../icons'
 import * as styles from '../styles.module.css'
 
-import ICONS from '../icons'
-import { getPathWithSource } from '../../../../../utils/shared/sidebar'
+import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 
 interface ISidebarMenuItemProps {
   children?: Array<{ label: string; path: string; source: boolean | string }>

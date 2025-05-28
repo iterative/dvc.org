@@ -1,6 +1,7 @@
 const path = require('path')
-const { name: packageName } = require('./package.json')
+
 const defaults = require('./config-defaults')
+const { name: packageName } = require('./package.json')
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
@@ -104,6 +105,6 @@ exports.onCreateBabelConfig = ({ actions }) => {
   })
 }
 
-exports.createPages = require('./createPages.js')
+exports.createPages = require('./createPages')
 
-exports.onCreateNode = require('./onCreateNode.js')
+exports.onCreateNode = require('./onCreateNode')

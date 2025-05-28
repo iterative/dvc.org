@@ -1,5 +1,6 @@
 const { imageWrapperClass } = require('gatsby-remark-images/constants')
-const { convertHastToHtml } = require('./convertHast.js')
+
+const { convertHastToHtml } = require('./convertHast')
 
 const rootToAbsolute = siteUrl => async tree => {
   const { selectAll } = await import('hast-util-select')

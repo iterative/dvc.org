@@ -1,5 +1,3 @@
-import React from 'react'
-
 enum KEYS {
   RETURN = 13,
   SPACE = 32

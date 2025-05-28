@@ -1,7 +1,7 @@
 /* eslint-env node */
 
-const flow = require('lodash/flow')
 const constant = require('lodash/constant')
+const flow = require('lodash/flow')
 
 const apiLinker = require('./apiLinker')
 const commandLinker = require('./commandLinker')

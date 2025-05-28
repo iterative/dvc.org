@@ -17,13 +17,13 @@ const {
 
 const imageMaxWidth = 700
 
+const { convertHtmlToHast, convertHastToHtml } = require('../utils/convertHast')
+
 const {
   imageWrapClassPrefix,
   imageWrapStopClass,
   stopWrapTag
 } = require('./constants')
-
-const { convertHtmlToHast, convertHastToHtml } = require('../utils/convertHast')
 
 const extractInstructions = titleString => {
   const regexResize = /=\d{2,4}/g

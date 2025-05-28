@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+
 import safeLocalStorage from './safeLocalStorage'
 
 const hideAllEmbedOverlays = (embeds: NodeListOf<Element>) => {

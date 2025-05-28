@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
 import Promise from 'promise-polyfill'
+import { useEffect, useState } from 'react'
+
 import { loadResource } from '../../../../utils/front/resources'
 
 import * as styles from './styles.module.css'
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
     docsearch?: (opts: Record<string, unknown>) => void
   }

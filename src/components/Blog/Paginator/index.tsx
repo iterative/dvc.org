@@ -1,9 +1,9 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { useLocation } from '@gatsbyjs/reach-router'
 import { useLayoutEffect, useState } from 'react'
 import ReactHelmet from 'react-helmet'
 
 import { cn } from '@/utils'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 import { ReactComponent as ArrowSVG } from './arrow.svg'
 import { IPaginatorLocationContextValue } from './LocationContext'

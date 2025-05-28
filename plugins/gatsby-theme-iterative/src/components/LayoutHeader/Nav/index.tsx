@@ -1,12 +1,10 @@
-import React from 'react'
 import cn from 'classnames'
 
-import PseudoButton from '../../PseudoButton'
-import SocialIcons from './SocialIcons'
-import LinkItems from './LinkItems'
-
 import { logEvent } from '../../../utils/front/plausible'
+import PseudoButton from '../../PseudoButton'
 
+import LinkItems from './LinkItems'
+import SocialIcons from './SocialIcons'
 import * as styles from './styles.module.css'
 
 const Nav: React.FC = () => (

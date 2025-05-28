@@ -1,8 +1,10 @@
-import React, { useMemo } from 'react'
-import Helmet from 'react-helmet'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { useMemo } from 'react'
+// eslint-disable-next-line import-x/no-named-as-default
+import Helmet from 'react-helmet'
 
 import useSiteMeta from '../../queries/useSiteMeta'
+
 import { buildMetadata, MetaProps, LinkProps } from './helper'
 
 export interface IPaginatorPageInfo {

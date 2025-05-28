@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react'
-import cn from 'classnames'
 import { Portal } from '@reach/portal'
+import cn from 'classnames'
 import throttle from 'lodash/throttle'
+import { useRef, useState, useEffect } from 'react'
 
 import * as styles from './styles.module.css'
 

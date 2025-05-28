@@ -1,18 +1,16 @@
-import React from 'react'
 import cn from 'classnames'
 
+import { ReactComponent as CmlSVG } from '../../images/cml_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
+import { ReactComponent as MlemSVG } from '../../images/mlem-icon.svg'
+import { ReactComponent as StudioSVG } from '../../images/studio_icon-color--square_vector.svg'
+import { getFirstPage } from '../../utils/shared/sidebar'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import SocialIcon, { ISocialIcon } from '../SocialIcon'
-import { getFirstPage } from '../../utils/shared/sidebar'
-
-import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
+import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
 import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
-import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
-import { ReactComponent as CmlSVG } from '../../images/cml_icon-color--square_vector.svg'
-import { ReactComponent as StudioSVG } from '../../images/studio_icon-color--square_vector.svg'
-import { ReactComponent as MlemSVG } from '../../images/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
 

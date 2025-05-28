@@ -1,19 +1,16 @@
-import React, { useRef, useState } from 'react'
 import cn from 'classnames'
+import { useRef, useState } from 'react'
 
+import navLinkItemsData from '../../../../data/headerNav'
+import { ReactComponent as ArrowDownSVG } from '../../../../images/arrow-down-icon.svg'
+import { ReactComponent as ArrowUpSVG } from '../../../../images/arrow-up-icon.svg'
+import { logEvent } from '../../../../utils/front/plausible'
 import Link from '../../../Link'
 import { OtherToolsPopup, CommunityPopup } from '../Popup'
 
-import { ReactComponent as ArrowUpSVG } from '../../../../images/arrow-up-icon.svg'
-import { ReactComponent as ArrowDownSVG } from '../../../../images/arrow-down-icon.svg'
-
-import { logEvent } from '../../../../utils/front/plausible'
-
+import { getShowOnClass } from './getShowOnClass'
 import * as styles from './styles.module.css'
 import { INavLinkData, INavLinkPopupData } from './types'
-
-import navLinkItemsData from '../../../../data/headerNav'
-import { getShowOnClass } from './getShowOnClass'
 
 const LinkItems: React.FC = () => {
   const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)

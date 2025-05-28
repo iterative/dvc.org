@@ -1,10 +1,10 @@
-import React from 'react'
 import Link from '../Link'
-import { ReactComponent as TwitterIcon } from './twitter.svg'
-import { ReactComponent as GithubIcon } from './github.svg'
-import { ReactComponent as LinkedInIcon } from './linkedin.svg'
-import { ReactComponent as LinkedInNoBgIcon } from './linkedin-no-bg.svg'
+
 import { ReactComponent as DiscordIcon } from './discord.svg'
+import { ReactComponent as GithubIcon } from './github.svg'
+import { ReactComponent as LinkedInNoBgIcon } from './linkedin-no-bg.svg'
+import { ReactComponent as LinkedInIcon } from './linkedin.svg'
+import { ReactComponent as TwitterIcon } from './twitter.svg'
 import { ReactComponent as YoutubeIcon } from './youtube.svg'
 
 const icons: { [site: string]: JSX.Element } = {

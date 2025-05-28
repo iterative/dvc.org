@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useLocation } from '@gatsbyjs/reach-router'
+import { useEffect } from 'react'
 
 import { handleFrontRedirect } from '../../utils/shared/redirects'
 

@@ -1,12 +1,13 @@
+import cn from 'classnames'
+import { format } from 'date-fns/format'
+import { useCallback } from 'react'
+
 import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { useCommentsCount } from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
 import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-import cn from 'classnames'
-import { format } from 'date-fns/format'
-import { useCallback } from 'react'
 
 import { ICommunitySectionTheme } from '../'
 import usePosts from '../../../queries/usePosts'

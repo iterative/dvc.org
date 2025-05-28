@@ -1,6 +1,5 @@
-import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-
 import { blogsPageLink } from '@/constants/internalLinks'
+import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 
 import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
 import {

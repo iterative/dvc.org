@@ -1,12 +1,12 @@
-const flow = require('lodash/flow')
 const constant = require('lodash/constant')
+const flow = require('lodash/flow')
 
-const gatsbyRemarkDvcLinker = require('.')
 const apiLinker = require('./apiLinker')
 const commandLinker = require('./commandLinker')
+const { buildAst } = require('./helpers')
 const liveLinker = require('./liveLinker')
 
-const { buildAst } = require('./helpers')
+const gatsbyRemarkDvcLinker = require('.')
 
 describe('gatsby-remark-dvc-linker', async () => {
   const { visit } = await import('unist-util-visit')

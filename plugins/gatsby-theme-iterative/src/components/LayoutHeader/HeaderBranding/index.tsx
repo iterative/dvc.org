@@ -1,7 +1,9 @@
-import Link from '../../Link'
-import { ReactComponent as LogoSVG } from '../../../images/dvc_icon-color--square_vector.svg'
-import * as styles from './styles.module.css'
 import cn from 'classnames'
+
+import { ReactComponent as LogoSVG } from '../../../images/dvc_icon-color--square_vector.svg'
+import Link from '../../Link'
+
+import * as styles from './styles.module.css'
 
 export const HeaderBranding = () => (
   <>

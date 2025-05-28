@@ -1,8 +1,8 @@
-import React from 'react'
+import cn from 'classnames'
+
 import Link from '../Link'
 
 import * as styles from './styles.module.css'
-import cn from 'classnames'
 
 const LogoGradient = ({
   href,

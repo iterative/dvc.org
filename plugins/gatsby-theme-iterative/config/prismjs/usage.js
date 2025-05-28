@@ -1,10 +1,11 @@
 /* eslint-env node */
 
-const dvc = require('./dvc-commands')
-const cml = require('./cml-commands')
-const mlem = require('./mlem-commands')
-const gto = require('./gto-commands')
 const Prism = require('prismjs')
+
+const cml = require('./cml-commands')
+const dvc = require('./dvc-commands')
+const gto = require('./gto-commands')
+const mlem = require('./mlem-commands')
 
 Prism.languages.usage = {
   dvc: {

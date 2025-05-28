@@ -1,4 +1,5 @@
-import React, {
+import { useLocation } from '@gatsbyjs/reach-router'
+import {
   PropsWithChildren,
   ReactElement,
   ReactNode,
@@ -6,13 +7,13 @@ import React, {
   useMemo,
   useState
 } from 'react'
-import { useLocation } from '@gatsbyjs/reach-router'
 import Collapsible from 'react-collapsible'
-import Slugger from '../../../../utils/front/Slugger'
+
 import { ReactComponent as LinkIcon } from '../../../../images/linkIcon.svg'
+import Slugger from '../../../../utils/front/Slugger'
 import Link from '../../../Link'
-import Tooltip from '../Tooltip'
 import * as styles from '../styles.module.css'
+import Tooltip from '../Tooltip'
 
 type RemarkNode = { props: { children: RemarkNode[] } } | string
 

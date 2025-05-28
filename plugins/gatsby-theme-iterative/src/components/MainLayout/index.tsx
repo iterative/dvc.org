@@ -1,15 +1,16 @@
-import { ReactNode, useEffect } from 'react'
-import { PageProps } from 'gatsby'
 import cn from 'classnames'
+import { PageProps } from 'gatsby'
+import { ReactNode, useEffect } from 'react'
 
 import 'reset-css'
 import './base.css'
 import './fonts.css'
-import LayoutHeader from '../LayoutHeader'
-import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
-import { useRedirects } from './utils'
+import LayoutFooter from '../LayoutFooter'
+import LayoutHeader from '../LayoutHeader'
 import SEO from '../SEO'
+
+import { useRedirects } from './utils'
 
 export enum LayoutModifiers {
   Wide,

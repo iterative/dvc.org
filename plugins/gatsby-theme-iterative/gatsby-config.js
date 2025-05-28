@@ -4,20 +4,18 @@ const path = require('path')
 
 const autoprefixer = require('autoprefixer')
 
+require('./config/prismjs/dvc')
+require('./config/prismjs/usage')
+require('./config/prismjs/dvctable')
 const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
+const defaults = require('./config-defaults')
+const sentryConfig = require('./sentry-config')
 
 const linkIcon = fs
   .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
   .toString()
 
-require('./config/prismjs/dvc')
-require('./config/prismjs/usage')
-require('./config/prismjs/dvctable')
-
 const imageMaxWidth = 700
-
-const defaults = require('./config-defaults')
-const sentryConfig = require('./sentry-config')
 
 module.exports = ({
   simpleLinkerTerms,

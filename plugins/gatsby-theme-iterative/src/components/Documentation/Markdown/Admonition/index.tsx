@@ -1,5 +1,6 @@
-import React, { PropsWithChildren } from 'react'
 import cn from 'classnames'
+import { PropsWithChildren } from 'react'
+
 import * as styles from './styles.module.css'
 
 const icons: { [key: string]: string } = {

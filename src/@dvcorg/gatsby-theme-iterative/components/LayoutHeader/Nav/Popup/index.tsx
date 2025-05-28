@@ -1,7 +1,8 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import cn from 'classnames'
 import { PropsWithChildren } from 'react'
+
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import menuData from '../../../../data/menu'
 

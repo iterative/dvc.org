@@ -1,13 +1,11 @@
-import React from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { Element } from 'hast'
-import { getItemByPath } from '../utils/shared/sidebar'
-
-import SEO from '../components/SEO'
 
 import Documentation from '../components/Documentation'
 import DocumentationLayout from '../components/Documentation/Layout'
 import MainLayout, { LayoutModifiers } from '../components/MainLayout'
+import SEO from '../components/SEO'
+import { getItemByPath } from '../utils/shared/sidebar'
 
 const DocPage: React.FC<
   PageProps<

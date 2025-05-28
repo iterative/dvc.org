@@ -21,7 +21,9 @@
 */
 
 const { titleCase } = require('title-case')
+
 const sidebar = require('@dvcorg/gatsby-theme-iterative/sidebar')
+
 const {
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX,
   SIDEBAR_PATH_ROOT,

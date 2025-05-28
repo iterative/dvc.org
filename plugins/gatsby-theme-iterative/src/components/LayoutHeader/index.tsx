@@ -1,21 +1,19 @@
 import cn from 'classnames'
-import React from 'react'
 import includes from 'lodash/includes'
+import { useInView } from 'react-intersection-observer'
 
-import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
-import LayoutWidthContainer from '../LayoutWidthContainer'
-import Nav from './Nav'
 import {
   HamburgerMenu,
   HamburgerButton,
   useHamburgerMenu
 } from '../HamburgerMenu'
-
-import * as styles from './styles.module.css'
+import LayoutWidthContainer from '../LayoutWidthContainer'
+import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 
 import LayoutAlert from './Alert'
-import { useInView } from 'react-intersection-observer'
 import { HeaderBranding } from './HeaderBranding'
+import Nav from './Nav'
+import * as styles from './styles.module.css'
 
 const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
   const { ref, inView } = useInView({ rootMargin: '20px 0px 0px 0px' })

@@ -1,4 +1,3 @@
-import { ISocialIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
 import { HeadProps, PageProps, Script, graphql } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import type { Element } from 'hast'
@@ -11,6 +10,7 @@ import SEO from '@/components/SEO'
 
 import { blogsPageLink } from '@/constants/internalLinks'
 import { isProduction } from '@/utils'
+import { ISocialIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
 
 export interface IBlogPostHeroPic {
   picture?: {

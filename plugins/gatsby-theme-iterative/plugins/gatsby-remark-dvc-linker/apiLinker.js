@@ -1,8 +1,9 @@
 /* eslint-env node */
 
-const { createLinkNode } = require('./helpers')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
 const consts = require('../../consts')
+const { getItemByPath } = require('../../src/utils/shared/sidebar')
+
+const { createLinkNode } = require('./helpers')
 
 const { CLI_API_REGEXP, METHOD_REGEXP, API_ROOT } = consts
 

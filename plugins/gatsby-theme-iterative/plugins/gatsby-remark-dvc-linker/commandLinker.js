@@ -1,8 +1,9 @@
 /* eslint-env node */
 
-const { createLinkNode, useMatcher } = require('./helpers')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
 const consts = require('../../consts')
+const { getItemByPath } = require('../../src/utils/shared/sidebar')
+
+const { createLinkNode, useMatcher } = require('./helpers')
 
 const {
   ARGS_REGEXP,

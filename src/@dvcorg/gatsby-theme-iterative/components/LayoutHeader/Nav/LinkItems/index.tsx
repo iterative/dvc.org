@@ -1,6 +1,7 @@
+import cn from 'classnames'
+
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import cn from 'classnames'
 
 import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
 import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'

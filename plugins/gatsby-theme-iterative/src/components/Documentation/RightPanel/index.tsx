@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 import { IHeading } from '../'
+import { allImagesLoadedInContainer } from '../../../utils/front/images'
+import { getScrollPosition } from '../../../utils/front/scroll'
 import Link from '../../Link'
+import * as sharedStyles from '../styles.module.css'
 import Tutorials from '../TutorialsLinks'
 
-import { getScrollPosition } from '../../../utils/front/scroll'
-import { allImagesLoadedInContainer } from '../../../utils/front/images'
-
-import * as sharedStyles from '../styles.module.css'
 import * as styles from './styles.module.css'
 
 interface IRightPanelProps {
