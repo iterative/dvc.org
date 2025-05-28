@@ -11,6 +11,7 @@ const { move } = require('fs-extra')
 
 const { productionPrefix, s3Prefix } = require('../src/config')
 
+// eslint-disable-next-line import-x/order
 const clearCloudflareCache = require('./clear-cloudflare-cache')
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
 // env var. If DEPLOY_OPTIONS isn't set, use a default setting.

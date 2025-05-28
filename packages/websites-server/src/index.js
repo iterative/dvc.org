@@ -27,6 +27,7 @@ const permissionsPolicy = require('permissions-policy')
 
 require('dotenv').config()
 
+// eslint-disable-next-line import-x/order
 const { s3Url } = require('./config')
 
 const port = process.env.PORT || 3000

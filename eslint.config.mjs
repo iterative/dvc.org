@@ -20,7 +20,6 @@ export default tseslint.config(
       '.log/**',
       '**/.yarn/**',
       '**/tmp/**',
-      'packages/websites-server'
     ]
   },
   eslint.configs.recommended,
