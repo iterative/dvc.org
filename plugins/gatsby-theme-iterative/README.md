@@ -1,11 +1,5 @@
 # Gatsby Theme: Iterative
 
-This Gatsby theme is what [Iterative, inc.](https://iterative.ai) uses to power
-all of our Gatsby websites! It contains all of our shared utility code, as well
-as our full docs engine. This project is still evolving, and while it's
-currently very specific to iterative.ai websites we hope to make it usable for
-others in the future.
-
 ## Usage
 
 ### Options
@@ -79,7 +73,7 @@ others in the future.
   If specified, this array will completely replace plugins this theme passes to
   PostCSS. This is mostly an escape hatch for if styles are broken with the
   default plugins. Check out
-  [the theme's `gatsby-config`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/gatsby-theme-iterative/gatsby-config.js)
+  [the theme's `gatsby-config`](https://github.com/iterative/dvc.org/blob/main/plugins/gatsby-theme-iterative/gatsby-config.js)
   to see the default plugins, as not having them in this option will very likely
   break core functionality.
 
@@ -126,19 +120,3 @@ others in the future.
   overridden by creating a
   [Sentry configuration file](https://docs.sentry.io/platforms/javascript/guides/gatsby/#sentry-configuration-file)
   in your project's root.
-
-### Examples
-
-Check out the example project in this project's monorepo, particularly
-[`gatsby-config.js`](https://github.com/iterative/gatsby-theme-iterative/blob/main/packages/example/gatsby-config.js).
-
-### Linking the local theme
-
-If you want to test the changes to the theme locally without publishing, you can
-run `yarn add @dvcorg/gatsby-theme-iterative@[/path/to/theme]` in your project,
-or simply update the package.json file and change the version to
-`[/path/to/theme]`, and then run `yarn develop` as normal. This will use the
-local version of the theme instead of the published version.
-
-Note: Get the absolute theme path from `packages/gatsby-theme-iterative`
-directory. You can use `pwd` command to get the absolute path.
