@@ -6,7 +6,7 @@ const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommen
 const globals = require('globals')
 
 module.exports = [
-  { ignores: ['**/node_modules', 'examples/example-server', '**/.yarn/**'] },
+  { ignores: ['**/node_modules', '**/.yarn/**'] },
   { plugins: { json } },
   eslint.configs.recommended,
   nodePlugin.configs['flat/recommended-script'],

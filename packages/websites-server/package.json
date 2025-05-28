@@ -8,9 +8,6 @@
     "scripts/**/*",
     "postinstall.js"
   ],
-  "workspaces": [
-    "examples/*"
-  ],
   "bin": {
     "deploy-with-s3": "scripts/deploy-with-s3.js",
     "heroku-deploy": "scripts/heroku-deploy.sh",
@@ -24,9 +21,6 @@
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx,json}\"",
     "lint-fix": "eslint --fix \"**/*.{js,jsx,ts,tsx,json}\"",
-    "build": "yarn workspace example-server build",
-    "start": "yarn workspace example-server start",
-    "clean": "yarn workspace example-server clean",
     "build:start": "yarn build && yarn start"
   },
   "dependencies": {
