@@ -17,7 +17,6 @@
     "heroku-deploy-with-dvc": "scripts/heroku-deploy-with-dvc.sh"
   },
   "scripts": {
-    "postinstall": "node postinstall.js",
     "dev": "nodemon",
     "fix-all": "yarn format-all && yarn lint-fix",
     "format": "prettier --write",
