@@ -3252,7 +3252,7 @@ __metadata:
     react-helmet: "npm:6.1.0"
     react-intersection-observer: "npm:9.16.0"
     react-use: "npm:17.6.0"
-    rehype-parse: "npm:8.0.5"
+    rehype-parse: "npm:9.0.1"
     rehype-react: "npm:7.2.0"
     rehype-stringify: "npm:10.0.1"
     remark: "npm:15.0.1"
@@ -11927,7 +11927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devlop@npm:^1.0.0":
+"devlop@npm:^1.0.0, devlop@npm:^1.1.0":
   version: 1.1.0
   resolution: "devlop@npm:1.1.0"
   dependencies:
@@ -15940,6 +15940,20 @@ __metadata:
     unist-util-is: "npm:^4.0.0"
     web-namespaces: "npm:^1.0.0"
   checksum: 10c0/630f0db8e1c78d8d6e4f8bd19dec4b6ff6c3048ba0b07b8e34bb812dfbbdc96f4c16abca16c3bfc64e7757921f42790a7bd4a693d6ce99375f99dead65a19a12
+  languageName: node
+  linkType: hard
+
+"hast-util-from-html@npm:^2.0.0":
+  version: 2.0.3
+  resolution: "hast-util-from-html@npm:2.0.3"
+  dependencies:
+    "@types/hast": "npm:^3.0.0"
+    devlop: "npm:^1.1.0"
+    hast-util-from-parse5: "npm:^8.0.0"
+    parse5: "npm:^7.0.0"
+    vfile: "npm:^6.0.0"
+    vfile-message: "npm:^4.0.0"
+  checksum: 10c0/993ef707c1a12474c8d4094fc9706a72826c660a7e308ea54c50ad893353d32e139b7cbc67510c2e82feac572b320e3b05aeb13d0f9c6302d61261f337b46764
   languageName: node
   linkType: hard
 
@@ -23156,15 +23170,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rehype-parse@npm:8.0.5":
-  version: 8.0.5
-  resolution: "rehype-parse@npm:8.0.5"
+"rehype-parse@npm:9.0.1":
+  version: 9.0.1
+  resolution: "rehype-parse@npm:9.0.1"
   dependencies:
-    "@types/hast": "npm:^2.0.0"
-    hast-util-from-parse5: "npm:^7.0.0"
-    parse5: "npm:^6.0.0"
-    unified: "npm:^10.0.0"
-  checksum: 10c0/6ab741830d74d381ae46849a61edb9539b16667ed03c4cf74d4aa6003947e14d35398f745649dd2b83cc1c6de8db1f9dbd46cbb76048c22bbb3d1200967ac1e3
+    "@types/hast": "npm:^3.0.0"
+    hast-util-from-html: "npm:^2.0.0"
+    unified: "npm:^11.0.0"
+  checksum: 10c0/efa9ca17673fe70e2d322a1d262796bbed5f6a89382f8f8393352bbd6f6bbf1d4d1d050984b86ff9cb6c0fa2535175ab0829e53c94b1e38fc3c158e6c0ad90bc
   languageName: node
   linkType: hard
 

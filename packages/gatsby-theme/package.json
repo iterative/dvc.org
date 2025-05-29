@@ -60,7 +60,7 @@
     "react-helmet": "6.1.0",
     "react-intersection-observer": "9.16.0",
     "react-use": "17.6.0",
-    "rehype-parse": "8.0.5",
+    "rehype-parse": "9.0.1",
     "rehype-react": "7.2.0",
     "rehype-stringify": "10.0.1",
     "remark": "15.0.1",
