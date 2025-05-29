@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: iterative/setup-cml@v1
       - name: Update
         id: update
         shell: bash
@@ -19,11 +18,9 @@ jobs:
           sed -i "s/^const VERSION = .*$/const VERSION = \`$version\`/g" $path
           echo "changes=$(git diff | tr '\n' ' ')" >> $GITHUB_OUTPUT
           echo "version=$version" >> $GITHUB_OUTPUT
-      - name: Create PR
+      - name: create PR
         if: ${{ steps.update.outputs.changes != '' }}
-        run: |
-          cml pr create \
-            --token="${{ secrets.GITHUB_TOKEN }}" \
-            --message="dvc ${{ steps.update.outputs.version }}" \
-            --title="dvc ${{ steps.update.outputs.version }}" . \
-            --body="Ping @iterative/dvc"
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: dvc ${{ steps.update.outputs.version }}
+          title: dvc ${{ steps.update.outputs.version }}
