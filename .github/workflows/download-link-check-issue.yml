@@ -46,7 +46,7 @@ jobs:
 
       - name: Run Lychee
         id: lychee
-        uses: lycheeverse/lychee-action@v2.4.1
+        uses: lycheeverse/lychee-action@v2
         with:
           args: ${{ inputs.lychee_args }}
           fail: false
@@ -86,10 +86,11 @@ jobs:
           labels: ${{ inputs.labels }}
 
       - name: Close if Check Passes
-        uses: peter-evans/close-issue@v3.0.1
         if: >-
           steps.lychee.outputs.exit_code == 0 &&
           steps.find-existing-comment.outputs.result
-        with:
-          issue-number: ${{ steps.find-existing-comment.outputs.result }}
-          comment: The most recent link check passed!
+        run:
+          gh issue close --comment "The most recent link check passed!" "${{
+          steps.find-existing-comment.outputs.result }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

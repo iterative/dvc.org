@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download Link Checker
-        uses: lycheeverse/lychee-action@v2.4.1
+        uses: lycheeverse/lychee-action@v2
         with:
           args:
             --verbose "${{ github.event.deployment.payload.web_url }}" --base
