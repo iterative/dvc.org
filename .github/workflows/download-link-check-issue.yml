@@ -42,7 +42,7 @@ jobs:
     name: Check Download Links and Raise Issue
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Run Lychee
         id: lychee
