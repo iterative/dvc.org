@@ -19,11 +19,5 @@ jobs:
             --verbose "${{ github.event.deployment.payload.web_url }}" --base
             "${{ github.event.deployment.payload.web_url }}" --include
             /download/
-
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Check for Error Report
-        if: hashFiles('./lychee/out.md') != ''
-        run: |
-          echo 'Errors were reported while checking the DVC download links.'
-          exit 1

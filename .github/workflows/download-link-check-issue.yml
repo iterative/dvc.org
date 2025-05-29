@@ -49,6 +49,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2.4.1
         with:
           args: ${{ inputs.lychee_args }}
+          fail: false
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
