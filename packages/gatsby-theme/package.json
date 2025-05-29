@@ -13,7 +13,7 @@
     "@babel/plugin-transform-react-jsx": "7.27.1",
     "@reach/portal": "0.18.0",
     "@reach/skip-nav": "0.18.0",
-    "@sentry/gatsby": "9.22.0",
+    "@sentry/gatsby": "9.23.0",
     "@svgr/webpack": "8.1.0",
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/isomorphic-fetch": "0.0.39",
