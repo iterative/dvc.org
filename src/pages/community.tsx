@@ -1,5 +1,6 @@
-import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
 import { PageProps } from 'gatsby'
+
+import SEO from '@dvcorg/gatsby-theme/src/components/SEO'
 
 import Community from '../components/Community'
 import MainLayout from '../components/MainLayout'

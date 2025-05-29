@@ -1,6 +1,7 @@
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { BrainIcon, NotebookPenIcon, RouteIcon, TargetIcon } from 'lucide-react'
+
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
 
 import { cn } from '../../utils'
 import PageContent from '../PageContent'

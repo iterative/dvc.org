@@ -1,7 +1,8 @@
-import * as codeStyles from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Markdown/Main/theme.module.css'
 import cn from 'classnames'
 import { useEffect, useRef, memo } from 'react'
 import Typed, { TypedOptions } from 'typed.js'
+
+import * as codeStyles from '@dvcorg/gatsby-theme/src/components/Documentation/Markdown/Main/theme.module.css'
 
 export const TypedTerminal = ({
   typedOptions,

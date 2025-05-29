@@ -1,7 +1,8 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import cn from 'classnames'
 import { useLayoutEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
+
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
 
 import { ReactComponent as ArrowSVG } from './arrow.svg'
 import {

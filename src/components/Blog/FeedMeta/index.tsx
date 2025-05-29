@@ -1,9 +1,9 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import SocialIcon from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
-import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { IAuthor } from '@/templates/blog-post'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import SocialIcon from '@dvcorg/gatsby-theme/src/components/SocialIcon'
+import { pluralizeComments } from '@dvcorg/gatsby-theme/src/utils/front/i18n'
 
 import * as styles from './styles.module.css'
 

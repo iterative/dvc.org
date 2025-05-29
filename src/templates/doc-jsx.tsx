@@ -1,7 +1,8 @@
-import Documentation from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout'
-import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
-import { getItemByPath } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
 import { PropsWithChildren } from 'react'
+
+import Documentation from '@dvcorg/gatsby-theme/src/components/Documentation/Layout'
+import SEO from '@dvcorg/gatsby-theme/src/components/SEO'
+import { getItemByPath } from '@dvcorg/gatsby-theme/src/utils/shared/sidebar'
 
 interface IJSXDocPageProps {
   title?: string

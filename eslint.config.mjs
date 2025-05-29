@@ -19,7 +19,7 @@ export default tseslint.config(
       '**/.cache/**',
       '.log/**',
       '**/.yarn/**',
-      '**/tmp/**'
+      '**/tmp/**',
     ]
   },
   eslint.configs.recommended,
@@ -52,7 +52,10 @@ export default tseslint.config(
           leadingUnderscore: 'allow'
         }
       ],
-      '@typescript-eslint/no-unused-vars': 'error'
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' }
+      ]
     }
   },
   pluginImportX.flatConfigs.recommended,

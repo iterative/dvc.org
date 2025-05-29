@@ -1,0 +1,124 @@
+:global {
+  .Collapsible {
+    margin-bottom: 10px;
+    background-color: rgb(36 173 197 / 20%);
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .Collapsible__trigger {
+    font-family: var(--font-base);
+    font-weight: 500;
+    display: block;
+    position: relative;
+    opacity: 0.9;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      display: inline-block;
+      background-size: 20px 20px;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background-image: url('../../../images/click.png');
+      content: '';
+      font-family: monospace;
+      transition: transform 200ms;
+    }
+
+    &.is-open::after {
+      opacity: 0.5;
+    }
+  }
+
+  .Collapsible__contentInner {
+    background-color: rgb(36 173 197 / 0%);
+    border-radius: 15px;
+    padding: 10px;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1rem -0.5rem;
+
+  @media screen and (width >= 1024px) {
+    margin: 2rem -0.5rem;
+    flex-flow: row wrap;
+
+    .cardWrapper {
+      flex: 1 0 50%;
+      min-height: 7rem;
+    }
+
+    .card {
+      height: 100%;
+    }
+  }
+}
+
+.cardWrapper {
+  margin: 0.5rem 0;
+  display: flex;
+}
+
+.card {
+  flex: 1 0;
+  border: 1px solid #d6d6d6;
+  margin: 0 0.5rem;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+
+  .cardIcon {
+    display: block;
+    padding: 0;
+    padding-right: 0.75rem;
+    flex: 0 0 75px;
+
+    * {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+  }
+
+  .cardHeadingIcon {
+    display: inline-block;
+    height: 1em;
+    padding-right: 0.75rem;
+  }
+
+  .cardHeading {
+    margin: 0;
+    margin-bottom: 0.25em;
+    font-weight: bold;
+    color: var(--color-gray-dark);
+  }
+
+  .cardContent {
+    flex: 1;
+  }
+}
+
+a.card {
+  color: inherit;
+  text-decoration: inherit;
+  transition: background-color 0.3s ease-in-out;
+  background-color: #fff;
+
+  &:hover {
+    text-decoration: inherit;
+    background-color: var(--color-light-blue);
+  }
+}

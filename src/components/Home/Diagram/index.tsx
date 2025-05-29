@@ -1,9 +1,10 @@
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
 import cn from 'classnames'
 import { forwardRef } from 'react'
 import Slider from 'react-slick'
+
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import ShowOnly from '@dvcorg/gatsby-theme/src/components/ShowOnly'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'

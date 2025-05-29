@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import cn from 'classnames'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { useEffect, useState } from 'react'
 import FocusLock from 'react-focus-lock'
+
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
 
 import { ReactComponent as CloseSvg } from '../../../../static/img/close-icon.svg'
 

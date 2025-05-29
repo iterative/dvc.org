@@ -1,0 +1,11 @@
+.logoGradient {
+  background: linear-gradient(
+    270deg,
+    var(--color-purple) 0%,
+    var(--color-orange-bright) 100%
+  );
+  background-size: 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}

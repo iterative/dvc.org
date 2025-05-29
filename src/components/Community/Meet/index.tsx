@@ -1,15 +1,16 @@
-import LayoutWidthContainer from '@dvcorg/gatsby-theme-iterative/src/components/LayoutWidthContainer'
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
+import { formatDistanceToNow } from 'date-fns/formatDistanceToNow'
+import { useCallback } from 'react'
+
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
 import {
   useIssues,
   useTopics,
   IGithubIssue,
   IDiscussTopic
-} from '@dvcorg/gatsby-theme-iterative/src/utils/front/api'
-import { pluralizeComments } from '@dvcorg/gatsby-theme-iterative/src/utils/front/i18n'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import { formatDistanceToNow } from 'date-fns/formatDistanceToNow'
-import { useCallback } from 'react'
+} from '@dvcorg/gatsby-theme/src/utils/front/api'
+import { pluralizeComments } from '@dvcorg/gatsby-theme/src/utils/front/i18n'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import { ICommunitySectionTheme } from '../'
 import { useCommunityData } from '../../../utils/front/community'

@@ -1,8 +1,7 @@
-import { ILayoutComponentProps } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
-
 import MainLayout from '@/components/MainLayout'
 
 import { cn } from '@/utils'
+import { ILayoutComponentProps } from '@dvcorg/gatsby-theme/src/components/MainLayout'
 
 import PageContent from '../PageContent'
 

@@ -1,5 +1,6 @@
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import cn from 'classnames'
+
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 

@@ -42,9 +42,13 @@
   "engines": {
     "node": ">=18.x <=22.x"
   },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "@dvcorg/gatsby-theme-iterative": "0.3.25",
-    "@dvcorg/websites-server": "0.3.2",
+    "@dvcorg/gatsby-theme": "workspace:^",
+    "@dvcorg/websites-server": "workspace:^",
     "@iframe-resizer/react": "5.4.6",
     "@octokit/request": "8.4.1",
     "@radix-ui/react-dialog": "1.1.13",

@@ -1,0 +1,300 @@
+:global {
+  #markdown-root {
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    animation-duration: 1s;
+    animation-fill-mode: both;
+
+    :local {
+      animation-name: fadeIn;
+    }
+  }
+
+  .markdown-body {
+    font-family: inherit;
+    font-size: 18px;
+
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style: decimal;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    h1:first-child {
+      @apply pb-2 min-h-[3.5rem];
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply scroll-mt-5;
+
+      font-weight: 500;
+      word-wrap: normal;
+    }
+
+    img + em,
+    :global(.gatsby-resp-image-wrapper) + em {
+      color: #6a737d;
+      font-size: 0.9em;
+      display: block;
+      margin-top: -6px;
+      text-align: center;
+    }
+
+    :global(.gatsby-resp-image-wrapper) + em {
+      margin-top: 0;
+    }
+
+    a[target='_blank'] {
+      white-space: nowrap;
+
+      &::after {
+        position: relative;
+        top: 1px;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        margin-left: 1px;
+        content: url('../../../../images/external-link.svg');
+      }
+    }
+
+    a.token.arg {
+      color: var(--color-light-blue);
+      outline-color: var(--color-light-blue-hover);
+    }
+
+    :global(a.gatsby-resp-image-link)::after {
+      content: unset;
+    }
+
+    .collapsableDiv .anchor svg {
+      visibility: hidden;
+    }
+
+    .collapsableDiv .anchor:focus svg {
+      visibility: visible;
+    }
+
+    .collapsableDiv:hover .anchor svg {
+      visibility: visible;
+    }
+
+    .collapsableDiv .anchor {
+      line-height: 2.5;
+    }
+
+    li .anchor svg {
+      visibility: hidden;
+    }
+
+    li .anchor:focus svg {
+      visibility: visible;
+    }
+
+    li:hover .anchor svg {
+      visibility: visible;
+    }
+
+    li .anchor {
+      line-height: unset;
+      margin-left: -17px;
+    }
+
+    .anchor {
+      margin-left: -24px;
+
+      svg {
+        display: inline;
+      }
+    }
+
+    li {
+      margin: 16px 0;
+    }
+  }
+
+  details p {
+    font-size: 17px;
+    color: var(--color-gray-dark);
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  details pre {
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  .yt-embed-wrapper {
+    position: relative;
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 16px;
+
+    &:hover &__tooltip {
+      opacity: 1;
+    }
+
+    &__overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    &__tooltip {
+      padding: 10px;
+      color: #fff;
+      opacity: 0;
+      width: 100%;
+      font-size: 16px;
+      background-color: rgb(23 23 23 / 59%);
+      text-shadow: 0 1px 0 rgb(33 45 69 / 25%);
+      transition: opacity 0.2s ease-in-out;
+
+      &:hover {
+        cursor: auto;
+      }
+
+      a {
+        @apply focus;
+
+        color: #fff;
+        text-decoration: underline;
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.content {
+  @apply py-7 xs:px-7 mt-14;
+
+  min-width: 200px;
+  flex: 1;
+  background-color: #fff;
+}
+
+.tutorialsWrapper {
+  position: relative;
+  z-index: 1;
+  float: right;
+  margin: 5px 0 0 10px;
+
+  @media screen(mdMax) {
+    margin: 0 0 15px;
+  }
+
+  @media only screen and (width >= 1200px) {
+    display: none;
+  }
+}
+
+.githubLink {
+  display: none;
+  float: right;
+  margin: 5px 0 10px 10px;
+  z-index: 1;
+  position: relative;
+
+  @media screen(mdMax) {
+    float: none;
+    margin: 0 0 15px;
+  }
+
+  @media only screen and (width <= 1200px) {
+    display: inline-flex;
+  }
+}
+
+.githubIcon {
+  background-image: url('../../../../images/github_icon.svg');
+}
+
+.navButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navButton {
+  text-decoration: none;
+  background: white;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: #333;
+  border-bottom: 3px solid #13adc7;
+  display: inline-flex;
+  align-items: center;
+  transition: 0.2s border-color ease-out;
+
+  &:hover {
+    border-bottom: 3px solid #11849b;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.navButtonIcon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  background-image: url('../../../../images/arrow.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s;
+
+  &.next {
+    margin-left: 7px;
+  }
+
+  &.prev {
+    margin-right: 7px;
+    mask-position: center;
+    transform: rotate(180deg);
+    margin-top: 2px;
+  }
+}

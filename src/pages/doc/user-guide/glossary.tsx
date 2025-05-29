@@ -1,9 +1,10 @@
-import DocLayout from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout'
-import DocWithJsx from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX'
-import AutoLinkElement from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/WithJSX/AutoLinkElement'
-import useGlossary from '@dvcorg/gatsby-theme-iterative/src/utils/front/glossary'
 import cn from 'classnames'
 import { PageProps } from 'gatsby'
+
+import DocLayout from '@dvcorg/gatsby-theme/src/components/Documentation/Layout'
+import DocWithJsx from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX'
+import AutoLinkElement from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX/AutoLinkElement'
+import useGlossary from '@dvcorg/gatsby-theme/src/utils/front/glossary'
 
 import MainLayout from '../../../components/MainLayout'
 

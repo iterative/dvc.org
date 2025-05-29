@@ -1,0 +1,315 @@
+:root {
+  --bg-dark: #1a1e23;
+  --yellow-one: #ffc66d;
+  --default-blue: #38b3dc;
+  --hl-green: #09b43930;
+  --hl-red: #ff6a6930;
+  --hl-white: #ffffff25;
+}
+
+.code {
+  /* prism theme */
+
+  :global {
+    /**
+  * Prismjs Code Syntax Highlighting
+  */
+
+    /**
+  * Add back the container background-color, border-radius, padding, margin
+  * and overflow that we removed from <pre>.
+  */
+    .gatsby-highlight {
+      background-color: var(--bg-dark);
+      border-radius: 0.3em;
+      margin: 0.5em 0;
+      overflow: auto;
+    }
+
+    /**
+  * Remove the default PrismJS theme background-color, border-radius, margin,
+  * padding and overflow.
+  * 1. Make the element just wide enough to fit its content.
+  * 2. Always fill the visible space in .gatsby-highlight.
+  * 3. Adjust the position of the line numbers
+  */
+    .gatsby-highlight pre[class*='language-'] {
+      display: inline-block;
+      background-color: transparent;
+      margin: 0;
+      padding: 1em;
+      overflow: initial;
+      float: left; /* 1 */
+      min-width: 100%; /* 2 */
+    }
+
+    code[class*='language-'],
+    pre[class*='language-'] {
+      @apply font-mono;
+
+      font-size: 1rem;
+      line-height: 1.5rem;
+      color: var(--default-blue);
+      direction: ltr;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      tab-size: 4;
+      hyphens: none;
+      letter-spacing: 0.5px;
+      text-shadow: 0 1px #222245;
+    }
+
+    pre[class*='language-']::selection,
+    pre[class*='language-'] ::selection,
+    code[class*='language-']::selection,
+    code[class*='language-'] ::selection,
+    pre[class*='language-']::selection,
+    pre[class*='language-'] ::selection,
+    code[class*='language-']::selection,
+    code[class*='language-'] ::selection {
+      color: inherit;
+      background: #445262;
+    }
+
+    /* Code blocks. */
+    pre[class*='language-'] {
+      padding: 2em;
+      margin: 0.5em 0;
+      overflow: auto;
+    }
+
+    :not(pre) > code[class*='language-'],
+    pre[class*='language-'] {
+      background: var(--bg-dark);
+    }
+
+    /* Inline code */
+    :not(pre) > code[class*='language-'] {
+      padding: 0.1em;
+      border-radius: 0.3em;
+    }
+
+    .token {
+      font-weight: 400;
+    }
+
+    .token.comment,
+    .token.prolog,
+    .token.cdata {
+      color: #676e95;
+    }
+
+    .token.command,
+    .token.delimiter,
+    .token.keyword,
+    .token.selector,
+    .token.important,
+    .token.atrule {
+      color: #ff9d00;
+    }
+
+    .token.operator,
+    .token.attr-name {
+      color: #a074c4;
+    }
+
+    .token.punctuation {
+      color: #fff;
+    }
+
+    .token.boolean {
+      color: rgb(255 98 140);
+    }
+
+    .token.tag,
+    .token.tag .punctuation,
+    .token.doctype,
+    .token.builtin {
+      color: #a074c4;
+    }
+
+    .token.entity,
+    .token.symbol {
+      color: #6897bb;
+    }
+
+    .token.number {
+      color: #ff628c;
+    }
+
+    .token.property,
+    .token.constant,
+    .token.variable {
+      color: #ff628c;
+    }
+
+    .token.string,
+    .token.char {
+      color: #a5ff90;
+    }
+
+    .token.attr-value,
+    .token.attr-value .punctuation {
+      color: #a5c261;
+    }
+
+    .token.attr-value .punctuation:first-child {
+      color: #a9b7c6;
+    }
+
+    .token.url {
+      color: #287bde;
+      text-decoration: underline;
+    }
+
+    .token.function {
+      color: rgb(250 208 0);
+    }
+
+    .token.regex {
+      background: #364135;
+    }
+
+    .token.bold {
+      font-weight: bold;
+    }
+
+    .token.italic {
+      font-style: italic;
+    }
+
+    .token.inserted {
+      background: var(--hl-green);
+    }
+
+    .token.deleted {
+      background: var(--hl-red);
+    }
+
+    code.language-css .token.property,
+    code.language-css .token.property + .token.punctuation {
+      color: #a9b7c6;
+    }
+
+    code.language-css .token.id {
+      color: var(--yellow-one);
+    }
+
+    code.language-css .token.selector > .token.class,
+    code.language-css .token.selector > .token.attribute,
+    code.language-css .token.selector > .token.pseudo-class,
+    code.language-css .token.selector > .token.pseudo-element {
+      color: var(--yellow-one);
+    }
+
+    .token.class-name {
+      color: #c792ea;
+    }
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string {
+      background: none;
+    }
+
+    .line-highlight.line-highlight {
+      margin-top: 36px;
+      background: linear-gradient(to right, rgb(179 98 255 / 17%), transparent);
+    }
+
+    .line-highlight.line-highlight::before,
+    .line-highlight.line-highlight[data-end]::after {
+      content: '';
+    }
+
+    .token.entity {
+      cursor: help;
+    }
+
+    .token.namespace {
+      opacity: 0.7;
+    }
+
+    .gatsby-highlight-code-line {
+      background-color: var(--hl-white);
+      display: block;
+      margin-right: -1em;
+      margin-left: -1em;
+      padding-right: 1em;
+      padding-left: 0.75em;
+      border-left: 0.25em solid var(--yellow-one);
+    }
+
+    /* Iterative Customization */
+
+    .token.input {
+      user-select: none;
+    }
+
+    .token.dvc,
+    .token.cml,
+    .token.mlem,
+    .token.gto {
+      color: #6ceb2c;
+      font-weight: bold;
+    }
+
+    .token.usage,
+    .token.git {
+      color: #ff8e78;
+    }
+
+    .token.hide {
+      display: none;
+    }
+
+    .token.bg-white,
+    .token.bg-blue,
+    .token.bg-yellow,
+    .token.bg-violet {
+      letter-spacing: 0.1px;
+    }
+
+    .token.bg-white {
+      color: #000;
+      background-color: #eee;
+    }
+
+    .token.bg-yellow {
+      color: #000;
+      background-color: #fffed7;
+    }
+
+    .token.bg-blue {
+      color: #000;
+      background-color: #d7feff;
+    }
+
+    .token.bg-violet {
+      color: #000;
+      background-color: #d7afff;
+    }
+
+    pre[class*='language-dvctable'] {
+      code {
+        display: inline-block;
+        line-height: 20px;
+      }
+
+      .token.rows {
+        background-image: linear-gradient(
+          transparent 50%,
+          rgb(256 256 256 / 10%) 50%
+        );
+        background-size: 100% 40px;
+        display: block;
+        background-origin: content-box;
+        background-attachment: local;
+      }
+    }
+  }
+}

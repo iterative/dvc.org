@@ -2,7 +2,7 @@ import type { GatsbyNode } from 'gatsby'
 import * as yaml from 'js-yaml'
 import Prism from 'prismjs'
 
-import '@dvcorg/gatsby-theme-iterative/config/prismjs/dvc'
+import '@dvcorg/gatsby-theme/config/prismjs/dvc'
 
 const isTypedLine = (line: string) => line.startsWith('$')
 

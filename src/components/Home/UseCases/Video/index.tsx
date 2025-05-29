@@ -1,7 +1,8 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
-import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
-import safeLocalStorage from '@dvcorg/gatsby-theme-iterative/src/utils/front/safeLocalStorage'
 import { useState, useCallback, useEffect } from 'react'
+
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
+import safeLocalStorage from '@dvcorg/gatsby-theme/src/utils/front/safeLocalStorage'
 
 import TwoRowsButton from '../../../TwoRowsButton'
 

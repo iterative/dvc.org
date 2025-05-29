@@ -1,0 +1,65 @@
+{
+  "name": "@dvcorg/websites-server",
+  "version": "0.3.2",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src/**/*",
+    "scripts/**/*",
+    "postinstall.js"
+  ],
+  "bin": {
+    "deploy-with-s3": "scripts/deploy-with-s3.js",
+    "heroku-deploy": "scripts/heroku-deploy.sh",
+    "heroku-deploy-with-dvc": "scripts/heroku-deploy-with-dvc.sh"
+  },
+  "scripts": {
+    "dev": "nodemon",
+    "fix-all": "yarn format-all && yarn lint-fix",
+    "format": "prettier --write",
+    "format-all": "prettier --write \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
+    "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx,json}\"",
+    "lint-fix": "eslint --fix \"**/*.{js,jsx,ts,tsx,json}\"",
+    "build:start": "yarn build && yarn start"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.787.0",
+    "@dvcorg/gatsby-theme": "workspace:^",
+    "@hapi/wreck": "^18.1.0",
+    "@octokit/request": "9.2.3",
+    "@sentry/node": "^9.13.0",
+    "compression": "^1.8.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "helmet": "^8.1.0",
+    "http-proxy-middleware": "^3.0.5",
+    "isomorphic-fetch": "^3.0.0",
+    "lodash": "^4.17.21",
+    "mime-types": "^3.0.1",
+    "node-cache": "^5.1.2",
+    "permissions-policy": "^0.6.0",
+    "s3-sync-client": "^4.3.1",
+    "serve-handler": "^6.1.6"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.1",
+    "@eslint/js": "9.25.1",
+    "@eslint/json": "0.12.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "17.17.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "16.0.0",
+    "husky": "9.1.7",
+    "lint-staged": "^15.5.1",
+    "nodemon": "^3.1.9",
+    "prettier": "^3.5.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "yarn@4.9.1"
+}

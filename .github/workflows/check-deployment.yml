@@ -10,7 +10,14 @@ on:
     types: [opened, synchronize, reopened, labeled]
 
 jobs:
-  check-deployment:
-    uses: iterative/gatsby-theme-iterative/.github/workflows/check-deployment.yml@main
-    with:
-      passci: ${{ inputs.passci || false }}
+  check-branches:
+    if:
+      startsWith(github.head_ref, 'renovate/') || contains(github.head_ref,
+      'no-deploy')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if no passci inputs or pass-ci label
+        if:
+          ${{ !inputs.passci &&
+          !contains(github.event.pull_request.labels.*.name, 'pass-ci') }}
+        run: exit 1

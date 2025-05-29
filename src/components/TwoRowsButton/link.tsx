@@ -1,5 +1,6 @@
-import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import cn from 'classnames'
+
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
 
 import * as styles from './styles.module.css'
 
