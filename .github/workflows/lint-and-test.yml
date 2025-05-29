@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Node.js and use yarn
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18.20.8'
           cache: 'yarn'
