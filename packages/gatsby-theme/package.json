@@ -10,10 +10,10 @@
     "get-commands": "node config/prismjs/get-commands.js"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "7.25.9",
+    "@babel/plugin-transform-react-jsx": "7.27.1",
     "@reach/portal": "0.18.0",
     "@reach/skip-nav": "0.18.0",
-    "@sentry/gatsby": "9.12.0",
+    "@sentry/gatsby": "9.22.0",
     "@svgr/webpack": "8.1.0",
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/isomorphic-fetch": "0.0.39",
@@ -37,7 +37,7 @@
     "gatsby-remark-embedder": "7.0.0",
     "gatsby-remark-external-links": "0.0.4",
     "gatsby-remark-images": "7.14.0",
-    "gatsby-remark-prismjs": "7.13.1",
+    "gatsby-remark-prismjs": "7.14.0",
     "gatsby-remark-responsive-iframe": "6.14.0",
     "gatsby-remark-smartypants": "6.14.0",
     "gatsby-source-filesystem": "5.14.0",
@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "@types/hast": "3.0.4",
-    "stylelint": "16.18.0",
+    "stylelint": "16.19.1",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
