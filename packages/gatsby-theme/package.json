@@ -70,7 +70,7 @@
     "reset-css": "5.0.2",
     "scroll": "3.0.1",
     "tailwindcss": "3.4.17",
-    "title-case": "3.0.3",
+    "title-case": "4.3.2",
     "unified": "11.0.5",
     "unist-util-remove-position": "5.0.0",
     "unist-util-visit": "5.0.0"

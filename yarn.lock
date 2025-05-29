@@ -3263,7 +3263,7 @@ __metadata:
     scroll: "npm:3.0.1"
     stylelint: "npm:16.19.1"
     tailwindcss: "npm:3.4.17"
-    title-case: "npm:3.0.3"
+    title-case: "npm:4.3.2"
     typescript: "npm:5.8.3"
     unified: "npm:11.0.5"
     unist-util-remove-position: "npm:5.0.0"
@@ -26362,7 +26362,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"title-case@npm:3.0.3, title-case@npm:^3.0.3":
+"title-case@npm:4.3.2":
+  version: 4.3.2
+  resolution: "title-case@npm:4.3.2"
+  checksum: 10c0/f040c5b0586e3a4ac5881e59ac060ebfa56dae611b0d513ad211fa7f92597d418395fa902fe9d7ee49f98e557e88421e274680b22a3b04dd1ce1c577225444d3
+  languageName: node
+  linkType: hard
+
+"title-case@npm:^3.0.3":
   version: 3.0.3
   resolution: "title-case@npm:3.0.3"
   dependencies:
