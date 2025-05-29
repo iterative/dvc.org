@@ -62,7 +62,7 @@
     "react-use": "17.6.0",
     "rehype-parse": "8.0.5",
     "rehype-react": "7.2.0",
-    "rehype-stringify": "9.0.4",
+    "rehype-stringify": "10.0.1",
     "remark": "15.0.1",
     "remark-html": "16.0.1",
     "remark-parse": "11.0.0",
