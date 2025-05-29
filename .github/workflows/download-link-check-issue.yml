@@ -46,7 +46,7 @@ jobs:
 
       - name: Run Lychee
         id: lychee
-        uses: lycheeverse/lychee-action@v1.6.1
+        uses: lycheeverse/lychee-action@v1.10.0
         with:
           args: ${{ inputs.lychee_args }}
         env:
