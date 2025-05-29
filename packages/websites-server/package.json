@@ -27,7 +27,7 @@
     "@aws-sdk/client-s3": "3.817.0",
     "@dvcorg/gatsby-theme": "workspace:^",
     "@hapi/wreck": "18.1.0",
-    "@octokit/request": "9.2.3",
+    "@octokit/request": "10.0.2",
     "@sentry/node": "9.23.0",
     "compression": "1.8.0",
     "dotenv": "16.5.0",
