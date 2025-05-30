@@ -179,7 +179,7 @@ show up in AI companies in the product development process. See his breakdown of
 the roles above, with rows defining the stage, and columns, the aspects the
 roles focus on. If you find you are drawn to the space where the DS prototypes
 become the software product, then you may want to check out
-[our new course!](https://learn.iterative.ai) 😉
+[our new course!](https://learn.dvc.org) 😉
 
 ## Engineering Best Practices for Machine Learning
 

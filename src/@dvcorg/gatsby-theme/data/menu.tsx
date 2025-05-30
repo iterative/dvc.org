@@ -46,7 +46,7 @@ const menuData: IMenuData = {
       text: 'Blog'
     },
     {
-      href: 'https://learn.iterative.ai/',
+      href: 'https://learn.dvc.org/',
       eventType: 'course',
       text: 'Course'
     },

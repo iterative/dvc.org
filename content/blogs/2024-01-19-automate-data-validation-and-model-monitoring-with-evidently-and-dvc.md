@@ -66,7 +66,7 @@ _Core features of DVC and Evidently for MLOps practices_
 
 > 💡 **Want to learn more about DVC and Evidently?**
 >
-> - [Iterative Tools for Data Scientists & Analysts course](https://learn.iterative.ai/)
+> - [Iterative Tools for Data Scientists & Analysts course](https://learn.dvc.org/)
 >   with DVC
 > - [Open-source ML observability course](https://www.evidentlyai.com/ml-observability-course)
 >   with Evidently

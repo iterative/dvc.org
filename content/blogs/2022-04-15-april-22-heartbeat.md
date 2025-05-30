@@ -249,8 +249,7 @@ Community in person again!
 ![Surprised Owl GIF](https://media.giphy.com/media/EdRgVzb2X3iJW/giphy.gif)
 
 We've grown from 250 students last month to 450 right now!🎉 We are so happy to
-see you all in the [platform](https://learn.iterative.ai) learning! What's
-coming:
+see you all in the [platform](https://learn.dvc.org) learning! What's coming:
 
 - We have heard from some of you that you would like captions. We are working on
   it!

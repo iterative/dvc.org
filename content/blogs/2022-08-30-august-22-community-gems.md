@@ -222,8 +222,8 @@ The key concept to have into account here is that you should concatenate the
 output of one stage as the dependency of the other among all pipeline stages.
 
 As an example, added some schema from our learning
-[course](https://learn.iterative.ai/): check out the `-o` and `-d` config flags
-. Those will be key for concatenating your stages.
+[course](https://learn.dvc.org/): check out the `-o` and `-d` config flags .
+Those will be key for concatenating your stages.
 
 Let's also thank @daavoo for helping you out pointing to the docs on this one!
 

@@ -236,9 +236,9 @@ so too.
 ## Our Online Course is Live! 🎉
 
 You can register for the FREE new course
-[here on the Iterative website](https://learn.iterative.ai). The course is
-currently in beta mode. We already have some things we are working on to make it
-even better, but we would love your feedback! 🙏🏼 So far we have had some minor
+[here on the Iterative website](https://learn.dvc.org). The course is currently
+in beta mode. We already have some things we are working on to make it even
+better, but we would love your feedback! 🙏🏼 So far we have had some minor
 glitches and a lot of positive feedback! But we want your critiques too!
 
 **Whoever can give us feedback on any three modules by February 6th will receive

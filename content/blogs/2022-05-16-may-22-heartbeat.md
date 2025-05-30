@@ -360,7 +360,7 @@ for our tools!
 
 - [New Awesome list](https://github.com/gaocegege/awesome-open-source-mlops)
 - [New Udemy Course including DVC](https://www.udemy.com/course/dvc-and-git-for-data-science/)
-  (But don't forget [our online course!](https://learn.iterative.ai))
+  (But don't forget [our online course!](https://learn.dvc.org))
 - Would you like to get some good practice in? Join this
   [Kaggle competition](https://www.the-odd-dataguy.com/2022/04/28/dvc_kaggle/)
   created by

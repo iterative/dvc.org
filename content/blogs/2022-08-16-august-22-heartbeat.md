@@ -258,7 +258,7 @@ https://www.youtube.com/watch?v=J6fduKE1j1g
 
 [**Gema Parreño Piqueras**](https://twitter.com/SoyGema) joins our team from
 Madrid, Spain as a Developer Advocate. You may have already been familiar with
-Gema if you've been taking our [online course](https://learn.iterative.ai) this
+Gema if you've been taking our [online course](https://learn.dvc.org) this
 summer because of the
 [gorgeous notes](https://twitter.com/SoyGema/status/1558135976698028034?s=20&t=pJAfd-S4aoKGf4UhsnlgCw)
 she contributed per module. Gema was born and raised as an Architect (of

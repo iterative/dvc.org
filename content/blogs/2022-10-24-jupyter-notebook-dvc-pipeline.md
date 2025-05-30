@@ -465,7 +465,7 @@ $ dvc dag
 
 If you want to learn how to transform a notebook into a multi-stage pipeline, I
 recommend taking a look at our course:
-[Iterative tools for Data Scientists and Analysts](https://learn.iterative.ai/course/data-scientist-path).
+[Iterative tools for Data Scientists and Analysts](https://learn.dvc.org/course/data-scientist-path).
 It is completely free to follow, and module 3 covers this process in depth.
 
 We might also write a future guide about this, so let us know if you would be

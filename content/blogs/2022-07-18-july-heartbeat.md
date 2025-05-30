@@ -302,7 +302,7 @@ Gems. 💎
 ## 🧑🏽‍💻 Online Course Updates
 
 We have surpassed 1300 students in our
-[Iterative Tools School!](https://learn.iterative.ai) 🎉 We now have in place:
+[Iterative Tools School!](https://learn.dvc.org) 🎉 We now have in place:
 
 - Closed captions
 - Course guides for each lesson. For some of these, you will find the video
