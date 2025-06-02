@@ -81,7 +81,7 @@ data "aws_iam_policy_document" "studio_assume_role" {
     }
 
     condition {
-      test     = "ForAnyValue:StringLike"
+      test     = "StringLike"
       variable = "${aws_iam_openid_connect_provider.studio.url}:sub"
       values   = [local.condition]
     }
