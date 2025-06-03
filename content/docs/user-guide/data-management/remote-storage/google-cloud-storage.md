@@ -79,3 +79,6 @@ See `dvc remote modify` for more command usage details.
 
 - `projectname` - override or provide a project name to use if a default one is
   not set.
+
+- `allow_anonymous_login` (`true` or `false`) - whether to allow anonymous
+  access. `false` by default.
