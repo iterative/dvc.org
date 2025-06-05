@@ -9,7 +9,7 @@ is a read-only filesystem, hence it does not support any write operations, like
 class DVCFileSystem(AbstractFileSystem):
     def __init__(
         self,
-        url: Optional[str] = None,
+        repo: Optional[str] = None,
         rev: Optional[str] = None,
         config: Optional[Dict[str, Any]] = None,
         **kwargs,
@@ -29,15 +29,23 @@ stream from [supported remote storage].
 # opening a local repository
 >>> fs = DVCFileSystem("/path/to/local/repository")
 # opening a remote repository
->>> url = "https://github.com/iterative/example-get-started.git"
->>> fs = DVCFileSystem(url, rev="main")
+>>> repo = "https://github.com/iterative/example-get-started.git"
+>>> fs = DVCFileSystem(repo, rev="main")
 ```
 
 ## Parameters
 
-- `url` - optional URL or local path to the DVC project. If unspecified, the DVC
-  project in current working directory is used. (Equivalent to the `repo`
+- `repo` - optional URL or local path to the DVC project. If unspecified, the
+  DVC project in current working directory is used. (Equivalent to the `repo`
   argument in `dvc.api.open()` and `dvc.api.read()`)
+
+  <admon type="info">
+
+  The parameter was renamed from `url` to `repo` in `dvc>=3.60`. If you are
+  using an older version and passing arguments by keyword, replace use of `url`
+  with `repo`.
+
+  </admon>
 
 - `rev` - optional Git commit (any
   [revision](https://git-scm.com/docs/revisions) such as a branch or a tag name,
@@ -146,18 +154,18 @@ remote if they don't exist in the cache.
 
 If you have
 [initialized DVC in a subdirectory](https://dvc.org/doc/command-reference/init#initializing-dvc-in-subdirectories)
-of the Git repository, use `DVCFileSystem(url, subrepos=True)` to access the
+of the Git repository, use `DVCFileSystem(repo, subrepos=True)` to access the
 subdirectory.
 
 ```py
 >>> from dvc.api import DVCFileSystem
->>> url = "https://github.com/iterative/monorepo-example.git"
+>>> repo = "https://github.com/iterative/monorepo-example.git"
 # by default, DVC initialized in a subdirectory will be ignored
->>> fs = DVCFileSystem(url, rev="develop")
+>>> fs = DVCFileSystem(repo, rev="develop")
 >>> fs.find("nlp", detail=False, dvc_only=True)
 []
 # use subrepos=True to list those files
->>> fs = DVCFileSystem(url, subrepos=True, rev="develop")
+>>> fs = DVCFileSystem(repo, subrepos=True, rev="develop")
 >>> fs.find("nlp", detail=False, dvc_only=True)
 ['nlp/data/data.xml', 'nlp/data/features/test.pkl', 'nlp/data/features/train.pkl', 'nlp/data/prepared/test.tsv', 'nlp/data/prepared/train.tsv', 'nlp/eval/importance.png', 'nlp/model.pkl']
 ```
@@ -180,11 +188,11 @@ details check out the fsspec's [API Reference][fsspec-api].
 
 Note that `dvc://` URLs contain the path to the file you wish to load, relative
 to the root of the DVC project. `dvc://` URLs should not contain a Git
-repository URL. The Git repository URL is provided separately via the `url`
+repository URL. The Git repository URL is provided separately via the `repo`
 argument for DVCFileSystem.
 
 When using `dvc://` URLs, additional constructor arguments for DVCFileSystem
-(such as `url` or `rev`) should be passed via the `storage_options` dictionary
+(such as `repo` or `rev`) should be passed via the `storage_options` dictionary
 or as keyword arguments, depending on the specific fsspec method behing called.
 Please refer to the fsspec documentation for specific details.
 
@@ -198,7 +206,7 @@ For methods which take filesystem arguments as additional keyword arguments:
 >>> import fsspec
 >>> fsspec.open(
 ...   "dvc://workshop/satellite-data/jan_train.csv",
-...   url="https://github.com/iterative/dataset-registry.git",
+...   repo="https://github.com/iterative/dataset-registry.git",
 ... )
 <OpenFile 'workshop/satellite-data/jan_train.csv'>
 ```
@@ -210,7 +218,7 @@ dictionary:
 >>> import fsspec
 >>> fsspec.get_fs_token_paths(
 ...   "dvc://workshop/satellite-data/jan_train.csv",
-...   storage_options={"url": "https://github.com/iterative/dataset-registry.git"},
+...   storage_options={"repo": "https://github.com/iterative/dataset-registry.git"},
 ... )
 (<dvc.fs.dvc._DVCFileSystem object at 0x113f7a290>, '06e54af48d3513bf33a8988c47e6fb47', ['workshop/satellite-data/jan_train.csv'])
 ```
