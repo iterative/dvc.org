@@ -51,7 +51,7 @@ with Live("custom_dir") as live:
         n_estimators=100,
         early_stopping_rounds=5,
         eval_metric=["merror", "mlogloss"],
-        callbacks=[DVCLiveCallback()]
+        callbacks=[DVCLiveCallback(live)]
     )
 
     model.fit(
