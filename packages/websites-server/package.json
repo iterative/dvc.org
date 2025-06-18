@@ -24,6 +24,7 @@
     "build:start": "yarn build && yarn start"
   },
   "dependencies": {
+    "@aws-sdk/client-cloudfront": "3.830.0",
     "@aws-sdk/client-s3": "3.821.0",
     "@dvcorg/gatsby-theme": "workspace:^",
     "@hapi/wreck": "18.1.0",

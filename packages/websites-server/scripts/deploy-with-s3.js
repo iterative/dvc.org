@@ -11,8 +11,9 @@ const { move } = require('fs-extra')
 
 const { productionPrefix, s3Prefix } = require('../src/config')
 
-// eslint-disable-next-line import-x/order
 const clearCloudflareCache = require('./clear-cloudflare-cache')
+// eslint-disable-next-line import-x/order
+const clearCloudfrontCache = require('./clear-cloudfront-cache')
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
 // env var. If DEPLOY_OPTIONS isn't set, use a default setting.
 const deployOptions = DEPLOY_OPTIONS
@@ -29,7 +30,8 @@ const deployOptions = DEPLOY_OPTIONS
       retry: true,
       upload: true,
       clean: true,
-      clearCloudflareCache: true
+      clearCloudflareCache: true,
+      clearCloudfrontCache: true
     }
 
 if (deployOptions.logSteps) {
@@ -142,6 +144,10 @@ async function main() {
 
   if (deployOptions.clearCloudflareCache) {
     await clearCloudflareCache()
+  }
+
+  if (deployOptions.clearCloudfrontCache) {
+    await clearCloudfrontCache()
   }
 }
 
