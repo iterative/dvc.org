@@ -67,7 +67,8 @@ const run = config => {
             'https://platform.twitter.com',
             'https://*.youtube.com',
             'https://*.youtube-nocookie.com',
-            'https://*.clickagy.com'
+            'https://*.clickagy.com',
+            'https://*.hubspot.com'
           ],
           connectSrc: ["'self'", 'https:'],
           imgSrc: ["'self'", 'data:', 'https:'],
