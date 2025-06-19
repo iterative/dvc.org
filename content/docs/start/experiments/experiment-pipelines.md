@@ -113,7 +113,8 @@ $ dvc stage add -n train \
 $ dvc stage add -n evaluate \
   -p base,evaluate \
   -d src/evaluate.py -d models/model.pkl -d data/test_data \
-  -o results python src/evaluate.py
+  -o results \
+  python src/evaluate.py
 ```
 
 The `dvc.yaml` file is updated automatically and should include all the stages
