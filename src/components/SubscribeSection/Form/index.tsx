@@ -12,23 +12,28 @@ const Form: React.FC = () => {
 
   useEffect(() => {
     if (scriptLoaded) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(window as any).hbspt.forms.create({
-        portalId: '8040338',
-        formId: '2912f9fd-d4db-40c2-9f57-b9c30fa57ef2',
-        region: 'na1',
-        target: '#email-subscription-form-hbspot',
-        cssRequired: false,
-        cssClass: 'email-subscription-form',
-        submitText: 'Subscribe',
-        submitButtonClass: 'email-subscribe-btn',
-        errorClass: 'email-subscribe-error',
-        errorMessageClass: 'email-subscribe-error-message',
-        onFormReady: () => setFormLoaded(true),
-        onFormSubmitted: () => {
-          logEvent('Subscribe Form')
-        }
-      })
+      try {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ;(window as any).hbspt.forms.create({
+          portalId: '8040338',
+          formId: '2912f9fd-d4db-40c2-9f57-b9c30fa57ef2',
+          region: 'na1',
+          target: '#email-subscription-form-hbspot',
+          cssRequired: false,
+          cssClass: 'email-subscription-form',
+          submitText: 'Subscribe',
+          submitButtonClass: 'email-subscribe-btn',
+          errorClass: 'email-subscribe-error',
+          errorMessageClass: 'email-subscribe-error-message',
+          onFormReady: () => setFormLoaded(true),
+          onFormSubmitted: () => {
+            logEvent('Subscribe Form')
+          }
+        })
+      } catch (e) {
+        console.error('Error creating HubSpot form:', e)
+        setError(true)
+      }
     }
   }, [scriptLoaded])
 
