@@ -1,0 +1,115 @@
+.email-subscription-form {
+  width: 100%;
+  min-height: 60px;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  align-items: flex-start;
+  gap: 0;
+  font-size: 0;
+  background-color: #13acc7;
+}
+
+.email-subscription-form .hs_email {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.email-subscription-form .hs_email .input {
+  flex: 1;
+  display: flex;
+  order: 1;
+}
+
+.email-subscription-form .hs_email .email-subscribe-error-message {
+  order: 2;
+  margin-top: 0;
+  font-size: 14px;
+  font-weight: bold;
+  list-style: none;
+  padding: 8px 16px;
+  border-radius: 0 0 8px 8px;
+  margin-left: 0;
+  color: rgb(0 0 0);
+
+  li label::before {
+    content: '* ';
+  }
+}
+
+/* hide rolled up error messages */
+.email-subscription-form .hs_error_rollup {
+  display: none;
+}
+
+.email-subscription-form .hs-input {
+  font-family: var(--font-base);
+  width: 100%;
+  flex: 1;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 20px;
+  font-weight: 500;
+  box-sizing: border-box;
+  min-height: 60px;
+  margin: 0;
+
+  &:focus {
+    background: var(--color-light-blue);
+    outline: none;
+  }
+}
+
+.email-subscription-form .email-subscribe-btn {
+  font-family: var(--font-base);
+  width: 115px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #e4fbff;
+  font-size: 20px;
+  font-weight: 500;
+  color: #13adc7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 auto;
+
+  &:hover {
+    background-color: #daf1f5;
+  }
+
+  @media screen(xsMax) {
+    min-height: 60px;
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
+#email-subscription-form-hbspot > .submitted-message {
+  font-size: 1.4rem;
+  color: green;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.hubspot-form-message {
+  font-size: 1.3rem;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.hubspot-form-loading-failed-message {
+  color: red;
+}
