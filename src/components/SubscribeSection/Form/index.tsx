@@ -1,64 +1,57 @@
-import { nanoid } from 'nanoid'
-import { useCallback, useRef } from 'react'
+import { Script } from 'gatsby'
+import { useEffect, useState } from 'react'
 
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
-import * as styles from './styles.module.css'
+import './hubspot.css'
 
 const Form: React.FC = () => {
-  const hiddenInputRef = useRef<HTMLInputElement>(null)
-  const honeypotNameRef = useRef(nanoid())
-  const sendGAEvent = useCallback((e: React.FormEvent) => {
-    if (hiddenInputRef.current?.value) {
-      // It's a bot.
-      return e.preventDefault()
+  const [scriptLoaded, setScriptLoaded] = useState(false)
+  const [formLoaded, setFormLoaded] = useState(false)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    if (scriptLoaded) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ;(window as any).hbspt.forms.create({
+        portalId: '8040338',
+        formId: '2912f9fd-d4db-40c2-9f57-b9c30fa57ef2',
+        region: 'na1',
+        target: '#email-subscription-form-hbspot',
+        cssRequired: false,
+        cssClass: 'email-subscription-form',
+        submitText: 'Subscribe',
+        submitButtonClass: 'email-subscribe-btn',
+        errorClass: 'email-subscribe-error',
+        errorMessageClass: 'email-subscribe-error-message',
+        onFormReady: () => setFormLoaded(true),
+        onFormSubmitted: () => {
+          logEvent('Subscribe Form')
+        }
+      })
     }
+  }, [scriptLoaded])
 
-    logEvent('Subscribe Form')
-  }, [])
   return (
-    <form
-      className={styles.form}
-      action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a"
-      method="post"
-      id="mc-embedded-subscribe-form"
-      name="mc-embedded-subscribe-form"
-      target="_blank"
-      onSubmit={sendGAEvent}
-    >
-      <input
-        className={styles.input}
-        type="email"
-        name="EMAIL"
-        id="mce-EMAIL"
-        placeholder="email address"
-        required={true}
-        aria-label="Enter your email"
+    <>
+      {!formLoaded && !error && (
+        <div className="hubspot-form-loading-message hubspot-form-message">
+          Loading form...
+        </div>
+      )}
+      {error && (
+        <div className="hubspot-form-loading-failed-message hubspot-form-message">
+          There was an error loading the form. Please try again later.
+        </div>
+      )}
+      <Script
+        type="text/javascript"
+        src="//js.hsforms.net/forms/embed/v2.js"
+        onLoad={() => setScriptLoaded(true)}
+        onError={() => setError(true)}
       />
-
-      <div hidden>
-        <input type="hidden" name="tags" value="6537593" />
-      </div>
-
-      {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
-      <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
-        <input
-          type="text"
-          name={honeypotNameRef.current}
-          ref={hiddenInputRef}
-          tabIndex={-1}
-        />
-      </div>
-
-      <button
-        className={`${styles.button} btn-with-focus`}
-        type="submit"
-        name="subscribe"
-        id="mc-embedded-subscribe"
-      >
-        Subscribe
-      </button>
-    </form>
+      <div id="email-subscription-form-hbspot"></div>
+    </>
   )
 }
 

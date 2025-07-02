@@ -68,15 +68,12 @@ const run = config => {
             'https://*.youtube.com',
             'https://*.youtube-nocookie.com',
             'https://*.clickagy.com',
-            'https://*.hubspot.com'
+            'https://*.hubspot.com',
+            'https://forms.hsforms.com'
           ],
           connectSrc: ["'self'", 'https:'],
           imgSrc: ["'self'", 'data:', 'https:'],
-          formAction: [
-            "'self'",
-            'https://dvc.us10.list-manage.com',
-            'https://dvc.org'
-          ]
+          formAction: ["'self'", 'https://forms.hsforms.com', 'https://dvc.org']
         }
       }
     },
