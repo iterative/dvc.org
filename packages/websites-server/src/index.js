@@ -68,7 +68,8 @@ const run = config => {
             'https://*.youtube.com',
             'https://*.youtube-nocookie.com',
             'https://*.clickagy.com',
-            'https://*.hubspot.com'
+            'https://*.hubspot.com',
+            'https://forms.hsforms.com'
           ],
           connectSrc: ["'self'", 'https:'],
           imgSrc: ["'self'", 'data:', 'https:'],
