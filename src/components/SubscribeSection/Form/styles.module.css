@@ -1,4 +1,4 @@
-.email-subscription-form {
+.emailSubscriptionForm {
   width: 100%;
   min-height: 60px;
   border-radius: 8px;
@@ -12,19 +12,19 @@
   background-color: #13acc7;
 }
 
-.email-subscription-form .hs_email {
+.emailSubscriptionForm :global(.hs_email) {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.email-subscription-form .hs_email .input {
+.emailSubscriptionForm :global(.hs_email) :global(.input) {
   flex: 1;
   display: flex;
   order: 1;
 }
 
-.email-subscription-form .hs_email .email-subscribe-error-message {
+.emailSubscriptionForm :global(.hs_email) .emailSubscribeErrorMessage {
   order: 2;
   margin-top: 0;
   font-size: 14px;
@@ -41,11 +41,11 @@
 }
 
 /* hide rolled up error messages */
-.email-subscription-form .hs_error_rollup {
+.emailSubscriptionForm :global(.hs_error_rollup) {
   display: none;
 }
 
-.email-subscription-form .hs-input {
+.emailSubscriptionForm :global(.hs-input) {
   font-family: var(--font-base);
   width: 100%;
   flex: 1;
@@ -64,7 +64,7 @@
   }
 }
 
-.email-subscription-form .email-subscribe-btn {
+.emailSubscriptionForm .emailSubscribeBtn {
   font-family: var(--font-base);
   width: 115px;
   border: none;
@@ -95,7 +95,7 @@
   }
 }
 
-#email-subscription-form-hbspot > .submitted-message {
+#emailSubscriptionFormHubspotTarget > :global(.submitted-message) {
   font-size: 1.4rem;
   color: green;
   text-align: center;
@@ -103,13 +103,13 @@
   padding-bottom: 15px;
 }
 
-.hubspot-form-message {
+.hubspotFormMessage {
   font-size: 1.3rem;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.hubspot-form-loading-failed-message {
+.hubspotFormLoadingFailedMessage {
   color: red;
 }
