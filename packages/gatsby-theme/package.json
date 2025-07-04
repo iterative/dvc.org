@@ -13,7 +13,7 @@
     "@babel/plugin-transform-react-jsx": "7.27.1",
     "@reach/portal": "0.18.0",
     "@reach/skip-nav": "0.18.0",
-    "@sentry/gatsby": "9.28.1",
+    "@sentry/gatsby": "9.33.0",
     "@svgr/webpack": "8.1.0",
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/isomorphic-fetch": "0.0.39",
@@ -51,7 +51,7 @@
     "lodash": "4.17.21",
     "nanoid": "5.1.5",
     "perfect-scrollbar": "1.5.6",
-    "postcss": "8.5.4",
+    "postcss": "8.5.6",
     "postcss-nested": "7.0.2",
     "prismjs": "1.30.0",
     "promise-polyfill": "8.3.0",
@@ -77,7 +77,7 @@
   },
   "devDependencies": {
     "@types/hast": "3.0.4",
-    "stylelint": "16.20.0",
+    "stylelint": "16.21.0",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
