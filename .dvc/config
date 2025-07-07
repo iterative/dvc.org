@@ -2,4 +2,4 @@
     remote = storage
     autostage = true
 ['remote "storage"']
-    url = s3://dvc-public/remote/dvc-org/blogs-media
+    url = https://remote.dvc.org/dvc-org/blogs-media
