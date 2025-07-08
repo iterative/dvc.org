@@ -35,7 +35,6 @@ important characteristics (dependencies, outputs, or metrics).
 
 - `targets` (optional command argument) - location of the stages to list
   (`./dvc.yaml` by default). Examples:
-
   - `dvc stage list linear/dvc.yaml`: A `dvc.yaml` file
   - `dvc stage list -R pipelines/`: Directory to explore recursively for stages
   - `dvc stage list train-model`: Specific stage(s) from `./dvc.yaml`

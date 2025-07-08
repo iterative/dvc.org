@@ -38,7 +38,6 @@ https://www.youtube.com/watch?v=eA70puzOp1o
 3. Enter a version name. Version names must start with the letter `v` and should
    follow the [SemVer] format after the letter `v`. Below are some examples of
    valid and invalid version names:
-
    - Valid: v0.0.1, v1.0.0, v12.5.7
    - Invalid: 0.0.1 (missing `v` in the beginning), v1.0 (missing the patch
      segment of the [Semver], v1.0.new (using an invalid value `new` as the

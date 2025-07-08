@@ -42,7 +42,6 @@ https://www.youtube.com/watch?v=Vrp1O5lkWBo
    If you have defined the stages in this file, then you can assign to these
    stages only. But if you have not defined the list of stages, you can enter
    any string as the stage name. Note the following:
-
    - GTO config files with stage names are specific to a Git repository. So,
      they apply only to models within one repository.
    - Currently, you cannot make entries to the GTO config file from DVC Studio.

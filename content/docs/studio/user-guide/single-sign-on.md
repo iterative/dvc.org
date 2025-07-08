@@ -31,7 +31,6 @@ will be auto-assigned the [`Viewer` role](#roles).
 2. **Add integration with DVC Studio in Okta**: Follow the instructions from the
    [Okta developer guide](https://developer.okta.com/docs/guides/build-sso-integration/saml2/main/#create-your-integration-in-okta).
    In short, login to Okta with an admin account, and follow these steps:
-
    1. In the admin console, go to `Applications` -> `Create App Integration` to
       create a private SSO integration.
    2. Use `SAML 2.0` as the `Sign in method` (and not `OIDC` or some other
@@ -46,12 +45,10 @@ will be auto-assigned the [`Viewer` role](#roles).
    8. `Attribute Statements (optional)`: 1. `Name`: email 2. `Name format`: URI
       Reference 3. `Value`: user.email
 
-   ![](https://static.iterative.ai/img/studio/sso_okta_configure_saml.png)
-
-   8. Click on `Next` and `Finish`.
-   9. Once the integration is created, open the `Sign On` tab and expand the
-      `Hide Details` section. From here, copy the `Sign on URL`, `Issuer` and
-      `Signing Certificate`.
+   ![](https://static.iterative.ai/img/studio/sso_okta_configure_saml.png) 8.
+   Click on `Next` and `Finish`. 9. Once the integration is created, open the
+   `Sign On` tab and expand the `Hide Details` section. From here, copy the
+   `Sign on URL`, `Issuer` and `Signing Certificate`.
 
    ![](https://static.iterative.ai/img/studio/sso_okta_sign_on_details.png)
 
@@ -62,7 +59,6 @@ will be auto-assigned the [`Viewer` role](#roles).
    ![](https://static.iterative.ai/img/studio/sso_enable_saml_authentication.png)
 
    Then, fill in the required details:
-
    1. `Sign-on URL`: Paste the `Sign on URL` you copied from Okta
    2. `Identity Provider Issuer URL`: Paste the `Issuer` you copied from Okta
    3. `Public Certificate`: Paste the `Signing Certificate` you copied from
@@ -78,7 +74,6 @@ will be auto-assigned the [`Viewer` role](#roles).
 4. **Assign users**: Now, whenever you need to authorize users to access your
    DVC Studio team, you should assign these users to the application that you
    have configured. For this, open Okta and follow these steps:
-
    1. Open `Applications`
    2. Click on `Assign Users to App`
    3. Select your app, and select all the users you want to assign.

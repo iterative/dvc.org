@@ -78,7 +78,6 @@ need to whitelist your domain in GitLab:
    hooks**
 3. In the textbox, **Local IP addresses and domain names that hooks and services
    may access,** either write:
-
    - your studio domain, e.g. **studio.example.com**
    - IP network range, e.g. **10.0.0.0/16**
 

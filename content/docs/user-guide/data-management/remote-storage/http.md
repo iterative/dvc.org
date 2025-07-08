@@ -30,7 +30,6 @@ them with the `--local` option, so they're written to a Git-ignored config file.
 
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
-
   - `basic` -
     [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
@@ -72,7 +71,6 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   ```
 
   The order in which DVC picks the user name:
-
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `http://user@example.com/path`);
 
