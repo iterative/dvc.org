@@ -25,13 +25,12 @@
   "^https://s\\.dvc\\.org/c/(.*)?$                                                       https://dvc.org/doc/use-cases/$1 302",
   "^https://s\\.dvc\\.org/r/(.*)?$                                                       https://dvc.org/doc/command-reference/$1 302",
 
-  "^/((?:exe|osxpkg)/.+)                                                                  https://r2.dvc.org/dvc-pkgs/$1 303",
-  "^/((?:deb|rpm)/.+)                                                                     https://r2.dvc.org/dvc-pkgs/$1 303",
+  "^/((?:exe|osxpkg|deb|rpm)/.+)                                                          https://downloads.dvc.org/$1 303",
   "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
-  "^/download/osx/dvc-(.+)$                                                               https://r2.dvc.org/dvc-pkgs/osxpkg/dvc-$1.pkg 303",
-  "^/download/win/dvc-(.+)$                                                               https://r2.dvc.org/dvc-pkgs/exe/dvc-$1.exe 303",
-  "^/download/linux-deb/dvc-(.+)$                                                         https://r2.dvc.org/dvc-pkgs/deb/pool/stable/d/dv/dvc_$1_amd64.deb 303",
-  "^/download/linux-rpm/dvc-(.+)$                                                         https://r2.dvc.org/dvc-pkgs/rpm/dvc-$1-1.x86_64.rpm 303",
+  "^/download/osx/dvc-(.+)$                                                               https://downloads.dvc.org/osxpkg/dvc-$1.pkg 303",
+  "^/download/win/dvc-(.+)$                                                               https://downloads.dvc.org/exe/dvc-$1.exe 303",
+  "^/download/linux-deb/dvc-(.+)$                                                         https://downloads.dvc.org/deb/pool/stable/d/dv/dvc_$1_amd64.deb 303",
+  "^/download/linux-rpm/dvc-(.+)$                                                         https://downloads.dvc.org/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
   "^/features$                                                                            /doc/use-cases 302",
