@@ -46,14 +46,12 @@ Data Scientist work is to do raw data pre-processing. It usually translates to
 the challenges to
 
 1.  **Pull all kinds of necessary data from a variety of sources**
-
     - Internal data sources like ERP, CRM, POS systems, or data from online
       e-commerce platforms
 
     - External data, like weather, public holidays, Google trends etc.
 
 2.  **Extract, transform, and load the data**
-
     - Relate and join the data sources
 
     - Aggregate and transform the data
@@ -63,7 +61,6 @@ the challenges to
 
 4.  **Facilitate continuous machine learning and decision-making in a
     business-ready framework**
-
     - Utilize historic data to train the machine learning models and algorithms
 
     - Use the current, up-to-date data for decision-making

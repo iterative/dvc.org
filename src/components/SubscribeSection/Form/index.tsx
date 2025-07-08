@@ -1,64 +1,120 @@
-import { nanoid } from 'nanoid'
-import { useCallback, useRef } from 'react'
+import { Script } from 'gatsby'
+import { useEffect, useState } from 'react'
 
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
-const Form: React.FC = () => {
-  const hiddenInputRef = useRef<HTMLInputElement>(null)
-  const honeypotNameRef = useRef(nanoid())
-  const sendGAEvent = useCallback((e: React.FormEvent) => {
-    if (hiddenInputRef.current?.value) {
-      // It's a bot.
-      return e.preventDefault()
+const supportRedirect = false
+
+interface SubmissionValue {
+  name: 'email'
+  value: string
+}
+
+interface HubSpotFormConfig {
+  // https://developers.hubspot.com/docs/reference/cms/forms/legacy-forms
+  portalId: string
+  formId: string
+  region: string
+  target: string
+  redirectUrl?: string
+  inlineMessage?: string
+  pageId?: number | string
+  cssRequired?: boolean
+  cssClass?: string
+  css?: string
+  submitText?: string
+  submitButtonClass?: string
+  errorClass?: string
+  errorMessageClass?: string
+  locale?: string
+  translations?: object
+  manuallyBlockedEmailDomain?: string[]
+  formInstanceId?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onBeforeFormInit?: (ctx: any) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onFormReady?: ($form: any) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onFormSubmit?: ($form: any) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onBeforeFormSubmit?: ($form: any, submissionValues: SubmissionValue[]) => void
+  onFormSubmitted?: (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    $form: any,
+    data: { redirectUrl?: string; submissionValues: SubmissionValue[] }
+  ) => void
+}
+
+declare global {
+  interface Window {
+    hbspt?: {
+      forms?: {
+        create: (config: HubSpotFormConfig) => void
+      }
     }
+  }
+}
 
-    logEvent('Subscribe Form')
-  }, [])
+const Form: React.FC = () => {
+  const [scriptLoaded, setScriptLoaded] = useState(false)
+  const [formLoaded, setFormLoaded] = useState(false)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    if (scriptLoaded) {
+      try {
+        if (!window.hbspt?.forms?.create) {
+          throw new Error('HubSpot forms API not available')
+        }
+
+        window.hbspt.forms.create({
+          portalId: '8040338',
+          formId: '2912f9fd-d4db-40c2-9f57-b9c30fa57ef2',
+          region: 'na1',
+          target: `#${styles.emailSubscriptionFormHubspotTarget}`,
+          cssRequired: false,
+          cssClass: styles.emailSubscriptionForm,
+          submitText: 'Subscribe',
+          submitButtonClass: styles.emailSubscribeBtn,
+          errorClass: 'email-subscribe-error',
+          errorMessageClass: styles.emailSubscribeErrorMessage,
+          onBeforeFormInit: () => setFormLoaded(true),
+          onFormSubmitted: (_, data) => {
+            logEvent('Subscribe Form')
+            if (supportRedirect && data.redirectUrl) {
+              window.location.href = data.redirectUrl
+            }
+          }
+        })
+      } catch (e) {
+        console.error('Error creating HubSpot form:', e)
+        setError(true)
+      }
+    }
+  }, [scriptLoaded])
+
   return (
-    <form
-      className={styles.form}
-      action="https://dvc.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a"
-      method="post"
-      id="mc-embedded-subscribe-form"
-      name="mc-embedded-subscribe-form"
-      target="_blank"
-      onSubmit={sendGAEvent}
-    >
-      <input
-        className={styles.input}
-        type="email"
-        name="EMAIL"
-        id="mce-EMAIL"
-        placeholder="email address"
-        required={true}
-        aria-label="Enter your email"
+    <>
+      {!formLoaded && !error && (
+        <div className={styles.hubspotFormMessage}>&nbsp;</div>
+      )}
+      {error && (
+        <div
+          className={`${styles.hubspotFormLoadingFailedMessage} ${styles.hubspotFormMessage}`}
+        >
+          There was an error loading the form. Please try again later.
+        </div>
+      )}
+      <Script
+        type="text/javascript"
+        src="//js.hsforms.net/forms/embed/v2.js"
+        onLoad={() => setScriptLoaded(true)}
+        onError={() => setError(true)}
       />
-
-      <div hidden>
-        <input type="hidden" name="tags" value="6537593" />
-      </div>
-
-      {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
-      <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
-        <input
-          type="text"
-          name={honeypotNameRef.current}
-          ref={hiddenInputRef}
-          tabIndex={-1}
-        />
-      </div>
-
-      <button
-        className={`${styles.button} btn-with-focus`}
-        type="submit"
-        name="subscribe"
-        id="mc-embedded-subscribe"
-      >
-        Subscribe
-      </button>
-    </form>
+      <div id={styles.emailSubscriptionFormHubspotTarget}></div>
+    </>
   )
 }
 

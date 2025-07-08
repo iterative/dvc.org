@@ -9,7 +9,7 @@ import TwoRowsButton from '../TwoRowsButton'
 
 import * as styles from './styles.module.css'
 
-const VERSION = `3.59.2`
+const VERSION = `3.61.0`
 
 const dropdownItems = [
   OS.UNKNOWN,

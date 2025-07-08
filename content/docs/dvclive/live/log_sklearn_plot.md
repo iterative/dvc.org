@@ -158,7 +158,6 @@ live.log_sklearn_plot("roc", y_true, y_score)
   the scikit-learn function (e.g. `drop_intermediate=True` for the
   [`roc`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
   type). Plus extra arguments supported by the type of a plot are:
-
   - `normalized` - _default_: `False`. `confusion_matrix` with values normalized
     to `<0, 1>` range.
 

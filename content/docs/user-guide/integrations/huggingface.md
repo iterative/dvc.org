@@ -120,7 +120,7 @@ using Hugging Face Datasets:
 >>> load_dataset(
 ...     "csv",
 ...     data_files="dvc://workshop/satellite-data/jan_train.csv",
-...     storage_options={"url": "https://github.com/iterative/dataset-registry.git"}
+...     storage_options={"repo": "https://github.com/iterative/dataset-registry.git"}
 ... )
 Downloading data: 100%|███████████████████████████████| 132M/132M [00:30<00:00, 4.32MB/s]
 Downloading data files: 100%|██████████████████████████████| 1/1 [00:32<00:00, 32.17s/it]

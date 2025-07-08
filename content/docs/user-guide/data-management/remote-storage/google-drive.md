@@ -452,7 +452,6 @@ more information.
   ```
 
   ⚠️ DVC requires the following OAuth Scopes:
-
   - `https://www.googleapis.com/auth/drive`
   - `https://www.googleapis.com/auth/drive.appdata`
 

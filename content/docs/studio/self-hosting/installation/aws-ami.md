@@ -29,7 +29,6 @@ hostname will be used for DVC Studio.
 ![](/img/studio-selfhosted-ami-2.png)
 
 6. Select an appropriate instance type.
-
    - Minimum requirements: 16 GB RAM, 4 vCPUs
    - Recommended requirements: 32 GB RAM, 8 vCPUs
 

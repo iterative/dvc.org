@@ -20,7 +20,6 @@
 1. Under permissions, set the following:
 
    **Repository permissions:**
-
    - Contents: Read / Write
    - Issues: Read / Write
    - Metadata: Read
@@ -28,7 +27,6 @@
    - Webhooks: Read / Write
 
    **User permissions:**
-
    - Email addresses: Read
 
 1. Click **Create Github App**

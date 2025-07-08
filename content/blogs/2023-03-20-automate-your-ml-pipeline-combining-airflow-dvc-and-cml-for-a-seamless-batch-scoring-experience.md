@@ -385,7 +385,6 @@ following actions:
 
 3. Runs a python script located at `src/stages/scoring.py` with the following
    command line arguments:
-
    - `--config` specifies the path to the parameters file in YAML format,
 
    - `--scoring-date` specifies the date for which the scoring should be

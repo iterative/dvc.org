@@ -72,7 +72,6 @@ checkpointing at all as described in the
   [`live.log_artifact()`](/doc/dvclive/live/log_artifact) to log checkpoints
   created by [`ModelCheckpoint`]. See
   [Log model checkpoints](#log-model-checkpoints).
-
   - if `log_model == False` (default), no checkpoint is logged.
 
   - if `log_model == True`, checkpoints are logged at the end of training,

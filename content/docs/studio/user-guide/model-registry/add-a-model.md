@@ -29,7 +29,6 @@ https://www.youtube.com/watch?v=szzv4ZXmYAs
    [monorepo](/doc/studio/user-guide/experiments/configure-a-project#monorepo).
 
 4. Enter the path of the model file as follows:
-
    - If the model file is in the Git repository or is in the cloud but is
      tracked by DVC, enter the relative path of the model (from the repository
      root).
