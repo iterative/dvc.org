@@ -7,8 +7,8 @@ module.exports = async function () {
   const {
     CLOUDFRONT_DISTRIBUTION_ID,
     CONTEXT,
-    DVCORG_AWS_ACCESS_KEY_ID,
-    DVCORG_AWS_SECRET_ACCESS_KEY
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY
   } = process.env
   if (CONTEXT !== 'production') {
     console.log(
@@ -27,8 +27,8 @@ module.exports = async function () {
   const client = new CloudFrontClient({
     region: 'us-east-1',
     credentials: {
-      accessKeyId: DVCORG_AWS_ACCESS_KEY_ID,
-      secretAccessKey: DVCORG_AWS_SECRET_ACCESS_KEY
+      accessKeyId: AWS_ACCESS_KEY_ID,
+      secretAccessKey: AWS_SECRET_ACCESS_KEY
     }
   })
   const input = {
