@@ -50,7 +50,6 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   ```
 
   The order in which DVC searches for user name is:
-
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
 

@@ -73,7 +73,6 @@ detailed bellow.
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
   commands like `dvc commit`, `dvc repro`, or `dvc exp run` can be used to
   update the file. Possible states are:
-
   - _new_: An <abbr>output</abbr> is found in the <abbr>workspace</abbr>, but
     there is no corresponding file hash saved in the `dvc.lock` or `.dvc` file
     yet.
@@ -115,7 +114,6 @@ that.
   `dvc config core.remote`).
 
   The `dvc remote` used is determined in order, based on
-
   1. the `remote` fields in the `dvc.yaml` or `.dvc` files.
   2. the value passed to the `--remote` option via CLI.
   3. the value of the `core.remote` config option (see `dvc remote default`).

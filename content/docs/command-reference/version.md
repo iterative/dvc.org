@@ -64,7 +64,6 @@ The detail of DVC version depends upon the way of installing DVC.
   [installed](/doc/install).
 
   DVC can be installed from one of the binary releases:
-
   - Debian package (`.deb`) - file used to install packages in several Linux
     distributions, like Ubuntu
   - Red Hat package (`.rpm`) - file used to install packages in some Linux based
@@ -81,7 +80,6 @@ The detail of DVC version depends upon the way of installing DVC.
   > source code into the binary package app.
 
   DVC can also be downloaded and installed using a package manager:
-
   - [DVC's GitHub repository](https://github.com/iterative/dvc) - where core
     source code is hosted
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source

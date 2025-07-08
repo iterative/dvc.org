@@ -41,7 +41,6 @@ When a Git branch (e.g., `feature-branch-1`) is created from another branch
 
 - `feature-branch-1` is still active (contains commits that are not present in
   `main`). This can happen if the user has pushed new commits to this branch and
-
   - either hasn't merged it into `main` yet
   - or has merged it into `main` but has continued to push more new commits to
     it after the merger.
@@ -53,7 +52,6 @@ When a Git branch (e.g., `feature-branch-1`) is created from another branch
 
 - `feature-branch-1` is inactive (does not contain any commits that are not
   present in `main`). This can happen in two cases:
-
   - if the user has not pushed any new commits to `feature-branch-1`
   - if the user has merged `feature-branch-1` into `main` and has not pushed any
     new commits to it after the merger.
@@ -83,7 +81,6 @@ There are two types of filters:
 
 - **Quick filters** (highlighted in orange above): Use the quick filter buttons
   to
-
   - Show only DVC experiments
   - Show only selected experiments
   - Toggle hidden commits (include or exclude hidden commits in the project
@@ -91,7 +88,6 @@ There are two types of filters:
 
 - **Custom filters** (highlighted in purple above): Filter commits by one or
   more of the following fields:
-
   - Column values (values of metrics, hyperparameters, etc.) and their deltas
   - Git related fields such as Git branch, commit message, tag and author
 
