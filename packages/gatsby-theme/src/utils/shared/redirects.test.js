@@ -83,9 +83,14 @@ describe('getRedirects', () => {
 
       // Detect redirect loops.
       const secondUrl = url.parse(addHost(rLocation))
-      const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
-
+      if (secondUrl.hostname === 'downloads.dvc.org') {
+        // downloads.dvc.org redirects are handled externally and does not redirect back to dvc.org.
+        // Return to prevent endless redirects since some rules redirect to downloads.dvc.org
+        // and would otherwise match the same redirect rule again.
+        return
+      }
       // allow second redirect only if it removes trailing slash
+      const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
       if (secondRedirect.length) {
         const thirdUrl = url.parse(addHost(secondRedirect[1]))
         expect(secondUrl.host).toEqual(thirdUrl.host)
@@ -191,11 +196,30 @@ describe('getRedirects', () => {
       303
     )
 
-    itRedirects('/exe/foo', 'https://r2.dvc.org/dvc-pkgs/exe/foo', 303)
-
-    itRedirects('/deb/foo', 'https://r2.dvc.org/dvc-pkgs/deb/foo', 303)
-
-    itRedirects('/rpm/foo', 'https://r2.dvc.org/dvc-pkgs/rpm/foo', 303)
+    itRedirects('/exe/foo', 'https://downloads.dvc.org/exe/foo', 303)
+    itRedirects('/osxpkg/foo', 'https://downloads.dvc.org/osxpkg/foo', 303)
+    itRedirects('/deb/foo', 'https://downloads.dvc.org/deb/foo', 303)
+    itRedirects('/rpm/foo', 'https://downloads.dvc.org/rpm/foo', 303)
+    itRedirects(
+      '/download/osx/dvc-3.60.0',
+      'https://downloads.dvc.org/osxpkg/dvc-3.60.0.pkg',
+      303
+    )
+    itRedirects(
+      '/download/win/dvc-3.60.0',
+      'https://downloads.dvc.org/exe/dvc-3.60.0.exe',
+      303
+    )
+    itRedirects(
+      '/download/linux-deb/dvc-3.60.0',
+      'https://downloads.dvc.org/deb/pool/stable/d/dv/dvc_3.60.0_amd64.deb',
+      303
+    )
+    itRedirects(
+      '/download/linux-rpm/dvc-3.60.0',
+      'https://downloads.dvc.org/rpm/dvc-3.60.0-1.x86_64.rpm',
+      303
+    )
   })
 
   describe('toDiscord', () => {
