@@ -7,6 +7,5 @@ mv $OLDPWD $NEWPWD
 ln -s $NEWPWD $OLDPWD
 cd $NEWPWD
 dvc config core.no_scm true
-chmod +x ./node_modules/@dvcorg/websites-server/scripts/deploy-with-s3.js
-./node_modules/@dvcorg/websites-server/scripts/deploy-with-s3.js
+./scripts/deploy-with-s3.js
 rm -rf static .dvc .heroku/python contents content

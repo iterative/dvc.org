@@ -5,14 +5,8 @@
   "main": "src/index.js",
   "files": [
     "src/**/*",
-    "scripts/**/*",
     "postinstall.js"
   ],
-  "bin": {
-    "deploy-with-s3": "scripts/deploy-with-s3.js",
-    "heroku-deploy": "scripts/heroku-deploy.sh",
-    "heroku-deploy-with-dvc": "scripts/heroku-deploy-with-dvc.sh"
-  },
   "scripts": {
     "dev": "nodemon",
     "fix-all": "yarn format-all && yarn lint-fix",
