@@ -24,8 +24,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"],
-      "@dvcorg/gatsby-theme": ["packages/gatsby-theme"],
-      "@dvcorg/websites-server": ["packages/websites-server"]
+      "@dvcorg/gatsby-theme": ["packages/gatsby-theme"]
     }
   },
   "include": [

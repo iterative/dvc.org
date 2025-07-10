@@ -9,10 +9,7 @@ const path = require('path')
 const { DEPLOY_OPTIONS, USE_PRODUCTION_CACHE } = process.env
 const { move } = require('fs-extra')
 
-const {
-  productionPrefix,
-  s3Prefix
-} = require('@dvcorg/websites-server/src/config')
+const { productionPrefix, s3Prefix } = require('../src/server/config')
 
 // eslint-disable-next-line import-x/order
 const clearCloudfrontCache = require('./clear-cloudfront-cache')

@@ -4,8 +4,9 @@ require('dotenv').config()
 const path = require('path')
 
 const makeFeedHtml = require('@dvcorg/gatsby-theme/plugins/utils/makeFeedHtml')
-const apiMiddleware = require('@dvcorg/websites-server/src/middleware/api')
-const redirectsMiddleware = require('@dvcorg/websites-server/src/middleware/redirects')
+
+const apiMiddleware = require('./src/server/middleware/api')
+const redirectsMiddleware = require('./src/server/middleware/redirects')
 
 const title = 'Data Version Control · DVC'
 const description =
