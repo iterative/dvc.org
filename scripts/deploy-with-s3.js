@@ -9,9 +9,11 @@ const path = require('path')
 const { DEPLOY_OPTIONS, USE_PRODUCTION_CACHE } = process.env
 const { move } = require('fs-extra')
 
-const { productionPrefix, s3Prefix } = require('../src/config')
+const {
+  productionPrefix,
+  s3Prefix
+} = require('@dvcorg/websites-server/src/config')
 
-const clearCloudflareCache = require('./clear-cloudflare-cache')
 // eslint-disable-next-line import-x/order
 const clearCloudfrontCache = require('./clear-cloudfront-cache')
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
@@ -30,7 +32,6 @@ const deployOptions = DEPLOY_OPTIONS
       retry: true,
       upload: true,
       clean: true,
-      clearCloudflareCache: true,
       clearCloudfrontCache: true
     }
 
@@ -140,10 +141,6 @@ async function main() {
   if (deployOptions.clean) {
     console.log('Cleaning all local cache!')
     await cleanAllLocal()
-  }
-
-  if (deployOptions.clearCloudflareCache) {
-    await clearCloudflareCache()
   }
 
   if (deployOptions.clearCloudfrontCache) {

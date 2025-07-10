@@ -3422,10 +3422,6 @@ __metadata:
     prettier: "npm:3.6.2"
     s3-sync-client: "npm:4.3.1"
     serve-handler: "npm:6.1.6"
-  bin:
-    deploy-with-s3: scripts/deploy-with-s3.js
-    heroku-deploy: scripts/heroku-deploy.sh
-    heroku-deploy-with-dvc: scripts/heroku-deploy-with-dvc.sh
   languageName: unknown
   linkType: soft
 
@@ -27980,6 +27976,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "website@workspace:."
   dependencies:
+    "@aws-sdk/client-cloudfront": "npm:3.840.0"
+    "@aws-sdk/client-s3": "npm:3.840.0"
     "@babel/core": "npm:7.27.7"
     "@dvcorg/gatsby-theme": "workspace:^"
     "@dvcorg/websites-server": "workspace:^"
@@ -28015,6 +28013,7 @@ __metadata:
     eslint-plugin-prettier: "npm:5.5.1"
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-hooks: "npm:5.2.0"
+    fs-extra: "npm:11.3.0"
     gatsby: "npm:5.14.5"
     gatsby-plugin-catch-links: "npm:5.14.0"
     gatsby-plugin-feed: "npm:5.14.0"
@@ -28056,6 +28055,7 @@ __metadata:
     remark: "npm:15.0.1"
     remark-html: "npm:16.0.1"
     repo-link-check: "npm:0.14.2"
+    s3-sync-client: "npm:4.3.1"
     slick-carousel: "npm:1.8.1"
     stylelint: "npm:16.21.0"
     stylelint-config-standard: "npm:38.0.0"

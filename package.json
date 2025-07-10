@@ -12,7 +12,7 @@
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true dvc pull && gatsby develop",
     "build": "dvc pull --force && gatsby build",
     "start": "node ./src/server.js",
-    "heroku-postbuild": "bash node_modules/.bin/heroku-deploy-with-dvc",
+    "heroku-postbuild": "./scripts/heroku-deploy.sh",
     "test": "jest",
     "format": "prettier --write",
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
@@ -47,6 +47,8 @@
     "packages/*"
   ],
   "dependencies": {
+    "@aws-sdk/client-cloudfront": "3.840.0",
+    "@aws-sdk/client-s3": "3.840.0",
     "@dvcorg/gatsby-theme": "workspace:^",
     "@dvcorg/websites-server": "workspace:^",
     "@iframe-resizer/react": "5.4.6",
@@ -59,6 +61,7 @@
     "clsx": "2.1.1",
     "date-fns": "4.1.0",
     "dotenv": "16.6.1",
+    "fs-extra": "11.3.0",
     "gatsby": "5.14.5",
     "gatsby-plugin-catch-links": "5.14.0",
     "gatsby-plugin-feed": "5.14.0",
@@ -91,6 +94,7 @@
     "react-slick": "0.30.3",
     "react-use": "17.6.0",
     "repo-link-check": "0.14.2",
+    "s3-sync-client": "4.3.1",
     "slick-carousel": "1.8.1",
     "tailwind-merge": "3.3.1",
     "tailwindcss-animate": "1.0.7",
