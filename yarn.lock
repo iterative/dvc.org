@@ -3386,45 +3386,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@dvcorg/websites-server@workspace:^, @dvcorg/websites-server@workspace:packages/websites-server":
-  version: 0.0.0-use.local
-  resolution: "@dvcorg/websites-server@workspace:packages/websites-server"
-  dependencies:
-    "@aws-sdk/client-cloudfront": "npm:3.840.0"
-    "@aws-sdk/client-s3": "npm:3.840.0"
-    "@dvcorg/gatsby-theme": "workspace:^"
-    "@eslint/eslintrc": "npm:3.3.1"
-    "@eslint/js": "npm:9.30.0"
-    "@eslint/json": "npm:0.12.0"
-    "@hapi/wreck": "npm:18.1.0"
-    "@octokit/request": "npm:9.2.4"
-    "@sentry/node": "npm:9.33.0"
-    compression: "npm:1.8.0"
-    dotenv: "npm:16.6.1"
-    eslint: "npm:9.30.0"
-    eslint-config-prettier: "npm:10.1.5"
-    eslint-plugin-import: "npm:2.32.0"
-    eslint-plugin-n: "npm:17.20.0"
-    eslint-plugin-prettier: "npm:5.5.1"
-    express: "npm:5.1.0"
-    fs-extra: "npm:11.3.0"
-    globals: "npm:16.3.0"
-    helmet: "npm:8.1.0"
-    http-proxy-middleware: "npm:3.0.5"
-    husky: "npm:9.1.7"
-    isomorphic-fetch: "npm:3.0.0"
-    lint-staged: "npm:16.1.2"
-    lodash: "npm:4.17.21"
-    mime-types: "npm:3.0.1"
-    node-cache: "npm:5.1.2"
-    nodemon: "npm:3.1.10"
-    permissions-policy: "npm:0.6.0"
-    prettier: "npm:3.6.2"
-    s3-sync-client: "npm:4.3.1"
-    serve-handler: "npm:6.1.6"
-  languageName: unknown
-  linkType: soft
-
 "@emnapi/core@npm:^1.4.3":
   version: 1.4.3
   resolution: "@emnapi/core@npm:1.4.3"
@@ -4655,38 +4616,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/endpoint@npm:^9.0.6":
-  version: 9.0.6
-  resolution: "@octokit/endpoint@npm:9.0.6"
-  dependencies:
-    "@octokit/types": "npm:^13.1.0"
-    universal-user-agent: "npm:^6.0.0"
-  checksum: 10c0/8e06197b21869aeb498e0315093ca6fbee12bd1bdcfc1667fcd7d79d827d84f2c5a30702ffd28bba7879780e367d14c30df5b20d47fcaed5de5fdc05f5d4e013
-  languageName: node
-  linkType: hard
-
-"@octokit/openapi-types@npm:^22.2.0":
-  version: 22.2.0
-  resolution: "@octokit/openapi-types@npm:22.2.0"
-  checksum: 10c0/a45bfc735611e836df0729f5922bbd5811d401052b972d1e3bc1278a2d2403e00f4552ce9d1f2793f77f167d212da559c5cb9f1b02c935114ad6d898779546ee
-  languageName: node
-  linkType: hard
-
-"@octokit/openapi-types@npm:^25.0.0":
-  version: 25.0.0
-  resolution: "@octokit/openapi-types@npm:25.0.0"
-  checksum: 10c0/59c9e5998e08cecec155b776c93d8f6f88ab1a812add61cc65f3de8f3744201565545eac308083d18c9fa330a4381a27bcd771a311ac0348d3590a00f333f233
-  languageName: node
-  linkType: hard
-
-"@octokit/request-error@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@octokit/request-error@npm:5.1.1"
-  dependencies:
-    "@octokit/types": "npm:^13.1.0"
-    deprecation: "npm:^2.0.0"
-    once: "npm:^1.4.0"
-  checksum: 10c0/dc9fc76ea5e4199273e4665ce9ddf345fe8f25578d9999c9a16f276298e61ee6fe0e6f5a6147b91ba3b34fdf5b9e6b7af6ae13d6333175e95b30c574088f7a2d
+"@octokit/openapi-types@npm:^25.1.0":
+  version: 25.1.0
+  resolution: "@octokit/openapi-types@npm:25.1.0"
+  checksum: 10c0/b5b1293b11c6ec7112c7a2713f8507c2696d5db8902ce893b594080ab0329f5a6fcda1b5ac6fe6eed9425e897f4d03326c1bdf5c337e35d324e7b925e52a2661
   languageName: node
   linkType: hard
 
@@ -4696,18 +4629,6 @@ __metadata:
   dependencies:
     "@octokit/types": "npm:^14.0.0"
   checksum: 10c0/02aa5bfebb5b1b9e152558b4a6f4f7dcb149b41538778ffe0fce3395fd0da5c0862311a78e94723435667581b2a58a7cefa458cf7aa19ae2948ae419276f7ee1
-  languageName: node
-  linkType: hard
-
-"@octokit/request@npm:8.4.1":
-  version: 8.4.1
-  resolution: "@octokit/request@npm:8.4.1"
-  dependencies:
-    "@octokit/endpoint": "npm:^9.0.6"
-    "@octokit/request-error": "npm:^5.1.1"
-    "@octokit/types": "npm:^13.1.0"
-    universal-user-agent: "npm:^6.0.0"
-  checksum: 10c0/1a69dcb7336de708a296db9e9a58040e5b284a87495a63112f80eb0007da3fc96a9fadecb9e875fc63cf179c23a0f81031fbef2a6f610a219e45805ead03fcf3
   languageName: node
   linkType: hard
 
@@ -4724,21 +4645,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^13.1.0":
-  version: 13.5.0
-  resolution: "@octokit/types@npm:13.5.0"
-  dependencies:
-    "@octokit/openapi-types": "npm:^22.2.0"
-  checksum: 10c0/355ebc6776ce23feace1b1be0927cdda758790fda83068109c4f27b354dcd43d0447d4dc24e5eafdb596465469ea1baed23f3fd63adfec508cc375ccd1dcb0a3
-  languageName: node
-  linkType: hard
-
 "@octokit/types@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "@octokit/types@npm:14.0.0"
+  version: 14.1.0
+  resolution: "@octokit/types@npm:14.1.0"
   dependencies:
-    "@octokit/openapi-types": "npm:^25.0.0"
-  checksum: 10c0/c82da635fe99f265dbef7bf954d45a23ca7ce9c6fc9a8478c247b5435799e5d0eab3ff42f085785ee0882b2de293cab0ab831b379c66f41d00b78412df850ba4
+    "@octokit/openapi-types": "npm:^25.1.0"
+  checksum: 10c0/4640a6c0a95386be4d015b96c3a906756ea657f7df3c6e706d19fea6bf3ac44fd2991c8c817afe1e670ff9042b85b0e06f7fd373f6bbd47da64208701bb46d5b
   languageName: node
   linkType: hard
 
@@ -12086,13 +11998,6 @@ __metadata:
   version: 0.11.0
   resolution: "dependency-graph@npm:0.11.0"
   checksum: 10c0/9e6968d1534fdb502f7f3a25a3819b499f9d60f8389193950ed0b4d1618f1341b36b5d039f2cee256cfe10c9e8198ace16b271e370df06a93fac206e81602e7c
-  languageName: node
-  linkType: hard
-
-"deprecation@npm:^2.0.0":
-  version: 2.3.1
-  resolution: "deprecation@npm:2.3.1"
-  checksum: 10c0/23d688ba66b74d09b908c40a76179418acbeeb0bfdf218c8075c58ad8d0c315130cb91aa3dffb623aa3a411a3569ce56c6460de6c8d69071c17fe6dd2442f032
   languageName: node
   linkType: hard
 
@@ -27303,17 +27208,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"universal-user-agent@npm:^6.0.0":
-  version: 6.0.1
-  resolution: "universal-user-agent@npm:6.0.1"
-  checksum: 10c0/5c9c46ffe19a975e11e6443640ed4c9e0ce48fcc7203325757a8414ac49940ebb0f4667f2b1fa561489d1eb22cb2d05a0f7c82ec20c5cba42e58e188fb19b187
-  languageName: node
-  linkType: hard
-
 "universal-user-agent@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "universal-user-agent@npm:7.0.2"
-  checksum: 10c0/e60517ee929813e6b3ac0ceb3c66deccafadc71341edca160279ff046319c684fd7090a60d63aa61cd34a06c2d2acebeb8c2f8d364244ae7bf8ab788e20cd8c8
+  version: 7.0.3
+  resolution: "universal-user-agent@npm:7.0.3"
+  checksum: 10c0/6043be466a9bb96c0ce82392842d9fddf4c37e296f7bacc2cb25f47123990eb436c82df824644f9c5070a94dbdb117be17f66d54599ab143648ec57ef93dbcc8
   languageName: node
   linkType: hard
 
@@ -27980,15 +27878,17 @@ __metadata:
     "@aws-sdk/client-s3": "npm:3.840.0"
     "@babel/core": "npm:7.27.7"
     "@dvcorg/gatsby-theme": "workspace:^"
-    "@dvcorg/websites-server": "workspace:^"
+    "@eslint/eslintrc": "npm:3.3.1"
     "@eslint/js": "npm:9.30.0"
     "@eslint/json": "npm:0.12.0"
+    "@hapi/wreck": "npm:18.1.0"
     "@iframe-resizer/react": "npm:5.4.6"
-    "@octokit/request": "npm:8.4.1"
+    "@octokit/request": "npm:9.2.4"
     "@radix-ui/react-dialog": "npm:1.1.14"
     "@radix-ui/react-label": "npm:2.1.7"
     "@reach/router": "npm:1.3.4"
     "@reach/tooltip": "npm:0.18.0"
+    "@sentry/node": "npm:9.33.0"
     "@types/gatsbyjs__reach-router": "npm:2.0.5"
     "@types/isomorphic-fetch": "npm:0.0.39"
     "@types/jest": "npm:29.5.14"
@@ -28003,16 +27903,20 @@ __metadata:
     babel-jest: "npm:29.7.0"
     class-variance-authority: "npm:0.7.1"
     clsx: "npm:2.1.1"
+    compression: "npm:1.8.0"
     date-fns: "npm:4.1.0"
     dotenv: "npm:16.6.1"
     eslint: "npm:9.30.0"
     eslint-config-prettier: "npm:10.1.5"
     eslint-import-resolver-typescript: "npm:4.4.4"
+    eslint-plugin-import: "npm:2.32.0"
     eslint-plugin-import-x: "npm:4.16.1"
     eslint-plugin-jsx-a11y: "npm:6.10.2"
+    eslint-plugin-n: "npm:17.20.0"
     eslint-plugin-prettier: "npm:5.5.1"
     eslint-plugin-react: "npm:7.37.5"
     eslint-plugin-react-hooks: "npm:5.2.0"
+    express: "npm:5.1.0"
     fs-extra: "npm:11.3.0"
     gatsby: "npm:5.14.5"
     gatsby-plugin-catch-links: "npm:5.14.0"
@@ -28031,14 +27935,20 @@ __metadata:
     gatsby-transformer-remark-frontmatter: "npm:1.1.0"
     gatsby-transformer-sharp: "npm:5.14.0"
     globals: "npm:16.3.0"
+    helmet: "npm:8.1.0"
+    http-proxy-middleware: "npm:3.0.5"
     husky: "npm:9.1.7"
     isomorphic-fetch: "npm:3.0.0"
     jest: "npm:29.7.0"
     lint-staged: "npm:16.1.2"
     lucide-react: "npm:0.525.0"
+    mime-types: "npm:3.0.1"
     mkdirp: "npm:3.0.1"
     moment: "npm:2.30.1"
     nanoid: "npm:5.1.5"
+    node-cache: "npm:5.1.2"
+    nodemon: "npm:3.1.10"
+    permissions-policy: "npm:0.6.0"
     prettier: "npm:3.6.2"
     promise-polyfill: "npm:8.3.0"
     prop-types: "npm:15.8.1"
@@ -28056,6 +27966,7 @@ __metadata:
     remark-html: "npm:16.0.1"
     repo-link-check: "npm:0.14.2"
     s3-sync-client: "npm:4.3.1"
+    serve-handler: "npm:6.1.6"
     slick-carousel: "npm:1.8.1"
     stylelint: "npm:16.21.0"
     stylelint-config-standard: "npm:38.0.0"

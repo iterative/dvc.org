@@ -6,7 +6,7 @@ const { S3Client, HeadObjectCommand } = require(`@aws-sdk/client-s3`)
 const { remove } = require(`fs-extra`)
 const { S3SyncClient } = require(`s3-sync-client`)
 
-const { s3Prefix, s3Bucket } = require('@dvcorg/websites-server/src/config')
+const { s3Prefix, s3Bucket } = require('../src/server/config')
 
 const {
   AWS_REGION,
