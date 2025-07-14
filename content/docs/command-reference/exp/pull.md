@@ -57,7 +57,7 @@ used.
 - `-f`, `--force` - rewrite the experiment if it already exists in the local
   repo.
 
-- `--no-cache` - do not pull cached files files associated with this experiment
+- `--no-cache` - do not pull cached files associated with this experiment
   from DVC remote storage.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to pull cached files
