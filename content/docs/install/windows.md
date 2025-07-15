@@ -14,20 +14,31 @@ important tips to improve your experience on Windows.
 
 </admon>
 
-## Install with choco
+## Install with winget
 
-The easiest way to install from command line for most cases is to install
-[Chocolatey](https://chocolatey.org/) on your machine, and use the `choco`
-command:
+Install
+[winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/) if
+you don't have it. Then run the following command in command prompt or
+Powershell.
+
+```cli
+$ winget install --id Iterative.DVC
+```
+
+### Install with choco
+
+You can also use [Chocolatey](https://chocolatey.org) to install dvc.
 
 ```cli
 $ choco install dvc
 ```
 
-## Install with winget
+## Install with scoop
+
+Install dvc using [scoop](https://scoop.sh/):
 
 ```cli
-$ winget install --id Iterative.DVC
+$ scoop install dvc
 ```
 
 ## Install with conda
