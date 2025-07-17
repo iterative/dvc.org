@@ -14,7 +14,7 @@ helper command `dvc config`.
 <admon type="warn">
 
 `.dvc/config` is meant to be tracked by Git and should not contain sensitive
-user info or secrets (passwords, SHH keys, etc).
+user info or secrets (passwords, SSH keys, etc).
 
 </admon>
 
