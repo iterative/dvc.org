@@ -1,4 +1,3 @@
-import * as Sentry from '@sentry/react'
 import { Script } from 'gatsby'
 import { useEffect, useState } from 'react'
 
@@ -90,7 +89,6 @@ const Form: React.FC = () => {
           }
         })
       } catch (e) {
-        Sentry.captureException(e)
         console.error('Error creating HubSpot form:', e)
         setError(true)
       }
@@ -113,10 +111,7 @@ const Form: React.FC = () => {
         type="text/javascript"
         src="//js.hsforms.net/forms/embed/v2.js"
         onLoad={() => setScriptLoaded(true)}
-        onError={ev => {
-          Sentry.captureException(ev)
-          setError(true)
-        }}
+        onError={() => setError(true)}
       />
       <div id={styles.emailSubscriptionFormHubspotTarget}></div>
     </>
