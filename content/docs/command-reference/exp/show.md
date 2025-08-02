@@ -158,6 +158,8 @@ $ dvc exp show ...
   `--force` is specified, DVC will reload all experiment data and ignore any
   previously cached results.
 
+- `--hide-workspace` - hide workspace row in the table.
+
 ## Examples
 
 <admon type="info">
