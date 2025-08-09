@@ -70,7 +70,7 @@
     code[class*='language-']::selection,
     code[class*='language-'] ::selection {
       color: inherit;
-      background: #445262;
+      background: #445262fe;
     }
 
     /* Code blocks. */
