@@ -134,11 +134,11 @@ $ dvc exp show ...
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
   experiment names.
 
--  `--hide-failed` - hide failed experiments in the table.
+- `--hide-failed` - hide failed experiments in the table.
 
--  `--hide-queued` - hide queued experiments in the table.
+- `--hide-queued` - hide queued experiments in the table.
 
--  `--hide-workspace` - hide workspace row in the table.
+- `--hide-workspace` - hide workspace row in the table.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
