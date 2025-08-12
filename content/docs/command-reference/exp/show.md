@@ -12,6 +12,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [--rev <commit>]
                     [--keep <regex>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--sha]
+                    [--hide-failed] [--hide-queued] [--hide-workspace]
                     [--json] [--csv] [--md] [--precision <n>]
                     [--only-changed] [-f]
 ```
@@ -133,6 +134,12 @@ $ dvc exp show ...
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
   experiment names.
 
+- `--hide-failed` - hide failed experiments in the table.
+
+- `--hide-queued` - hide queued experiments in the table.
+
+- `--hide-workspace` - hide workspace row in the table.
+
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
 
@@ -157,8 +164,6 @@ $ dvc exp show ...
   experiments to improve performance of subsequent `exp show` calls. When
   `--force` is specified, DVC will reload all experiment data and ignore any
   previously cached results.
-
-- `--hide-workspace` - hide workspace row in the table.
 
 ## Examples
 
