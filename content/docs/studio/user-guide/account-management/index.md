@@ -148,20 +148,25 @@ invite members to the team by entering their email addresses. Find more details
 In this tokens section of your [settings] page, you can generate new client
 access tokens with specific scopes as well as delete existing access tokens.
 These tokens can be used to give limited permissions to a client without
-granting full access to your Studio account.
+granting full access to your Studio account. You can restrict the access token
+to a certain team or allow it to access all teams as well.
 
 The available scopes are:
 
 - `Experiment operations` - DVC uses this scope to share [live experiments] and
   to notify Studio about [pushed experiments].
-- `Dataset operations` - [Coming soon](https://cloud.dvc.ai).
-- `Model registry operations` - like downloading model using
-  `dvc artifacts get`.
-- `Admin operations` - this scope is utilized for SCIM operations and the
-  creation of projects.
+- `Dataset operations` - Used for managing datasets and related operations.
+- `Model Registry operations` - Used for model registry operations like
+  downloading models using `dvc artifacts get`.
+- `Admin operations` - Used for SCIM operations and project creation.
+- `Storage related operations` - Used for managing storage and related
+  operations.
+- `Job related operations` - Used for managing jobs and related operations for
+  [DataChain]
 
 [live experiments]:
   /doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [pushed experiments]: /doc/start/experiments/experiment-collaboration#sharing
 [dvc]: /doc
 [dvclive]: /doc/dvclive
+[datachain]: https://datachain.ai
