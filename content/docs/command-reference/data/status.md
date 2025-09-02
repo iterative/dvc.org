@@ -16,7 +16,7 @@ usage: dvc data status [-h] [-q | -v]
                        [--granular] [--unchanged]
                        [--untracked-files [{no,all}]]
                        [--json]
-                       [--not-in-remote] [--no-remote-refresh]
+                       [--not-in-remote] [-r <name>] [--no-remote-refresh]
 ```
 
 ## Description
@@ -66,12 +66,12 @@ DVC uncommitted changes:
   happen after adding new files into dvc but before using `dvc push` to upload
   the data; or after using `dvc gc -c`.
 
-- _DVC committed changes_ are new, modified, or deleted tracked files or
+- _DVC committed changes_ are new, modified, deleted or renamed tracked files or
   directories that have been [committed to DVC]. These may be ready for
   committing to Git.
 
-- _DVC uncommitted changes_ are new, modified, or deleted tracked files or
-  directories that have not been [committed to DVC] yet. You can `dvc add` or
+- _DVC uncommitted changes_ are new, modified, deleted or renamed tracked files
+  or directories that have not been [committed to DVC] yet. You can `dvc add` or
   `dvc commit` these.
 
 - _Untracked files_ have not been added to DVC (nor Git). Only shown if the
@@ -98,6 +98,9 @@ default but this can be enabled with the `--granular` flag.
 - `--unchanged` - show unchanged DVC-tracked files.
 
 - `--not-in-remote` - show files that are missing from the <abbr>remote</abbr>.
+
+- `-r <name>`, `--remote <name>` - name of the `dvc remote` to check for missing
+  files from the remote (only applicable with `--not-in-remote`).
 
 - `--no-remote-refresh` - use cached <abbr>remote</abbr> index (don't check
   remote). Only has an effect along with `--not-in-remote`.

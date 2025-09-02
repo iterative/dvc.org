@@ -1,11 +1,12 @@
 # init
 
-Initialize a <abbr>DVC project</abbr> in the current working directory.
+Initialize a <abbr>DVC project</abbr> in the given directory. Defaults to the
+current working directory.
 
 ## Synopsis
 
 ```usage
-usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir]
+usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir] [directory]
 ```
 
 ## Description
@@ -27,6 +28,10 @@ advanced scenarios:
 - [Initializing DVC without Git](#initializing-dvc-without-git) (`--no-scm`) -
   for very simple projects, version control systems other than Git, deployment
   automation, among other uses
+
+By default, the command initializes a repository in the current working
+directory. If you specify `<directory>`, the repository is initialized in that
+location. If this directory does not exist, it is created.
 
 ### Initializing DVC in subdirectories
 
@@ -145,9 +150,9 @@ detached from Git in this project.
   remove any existing local cache. Useful when a previous `dvc init` has been
   corrupted.
 
-- `--subdir` - initialize the DVC project in the current working directory,
-  _even if it's not the Git repository root_. (If run in a project root, this
-  option is ignored.) It affects how other DVC commands behave afterwards, see
+- `--subdir` - initialize the DVC project in the given working directory, _even
+  if it's not the Git repository root_. (If run in a project root, this option
+  is ignored.) It affects how other DVC commands behave afterwards, see
   [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) for
   more details.
 
