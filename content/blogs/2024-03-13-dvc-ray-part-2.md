@@ -30,12 +30,12 @@ tags:
   - Tutorial
 ---
 
-In [Part 1](https://dvc.ai/blog/dvc-ray) of the tutorial, we explored the basics
-of setting up and integrating DVC with Ray for distributed machine learning
-workflows. By leveraging Ray's distributed computing capabilities and DVC's data
-version control, we establish a robust framework for managing complex ML
-experiments. This combination allows for enhanced scalability, reproducibility,
-and collaboration in ML projects.
+In [Part 1](/blog/dvc-ray) of the tutorial, we explored the basics of setting up
+and integrating DVC with Ray for distributed machine learning workflows. By
+leveraging Ray's distributed computing capabilities and DVC's data version
+control, we establish a robust framework for managing complex ML experiments.
+This combination allows for enhanced scalability, reproducibility, and
+collaboration in ML projects.
 
 In Part 2, we extend the solution to a Ray Cluster on AWS, demonstrating how to
 adapt the setup for cloud-based distributed computing. This part involves

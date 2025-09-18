@@ -5,7 +5,6 @@ import { blogsPageLink } from '@/constants/internalLinks'
 import HamburgerIcon from '@dvcorg/gatsby-theme/src/components/HamburgerIcon'
 import * as styles from '@dvcorg/gatsby-theme/src/components/HamburgerMenu/styles.module.css'
 import Link from '@dvcorg/gatsby-theme/src/components/Link'
-import LogoGradient from '@dvcorg/gatsby-theme/src/components/LogoGradient'
 import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
@@ -71,9 +70,6 @@ export const HamburgerMenu: React.FC<
         >
           <LogoSVG />
         </Link>
-        <LogoGradient href="https://dvc.ai">
-          by <span className="font-extrabold">Iterative</span>
-        </LogoGradient>
       </div>
       <ul className={styles.sections}>
         <li className={styles.section}>

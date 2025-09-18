@@ -5,4 +5,4 @@ links:
   - https://www.linkedin.com/in/danielkharitonov/
 ---
 
-Technical Product Manager at [DVC.ai}(https://dvc.ai)]
+Technical Product Manager at [Iterative.ai}(https://iterative.ai)]
