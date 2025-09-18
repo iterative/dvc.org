@@ -284,9 +284,10 @@ $ gto show --repo $REPO
 ╘════════════╧══════════╧════════╛
 ```
 
-When running `gto show` for a specific model, we will get all of its registered
-versions. Notice that the stage is marked at the latest version that was
-assigned to it - to signal the currently deployed model version in that stage:
+When running [`gto show`](https://mlem.ai/doc/gto/command-reference/show) for a
+specific model, we will get all of its registered versions. Notice that the
+stage is marked at the latest version that was assigned to it - to signal the
+currently deployed model version in that stage:
 
 ```
 $ gto show classifier --repo $REPO
@@ -348,13 +349,11 @@ in and add the repo:
 Besides the `classifier` model that we just registered, you can also see three
 other models from our example `demo-bank-customer-churn` repo.
 
-Behind the scenes,
-[Iterative Studio just uses GTO API](https://dvc.org/doc/studio), so there are
-no new magic tricks here (and you can also use GTO API from your automation
-Python code if you wish). Feel free to play around to register more versions,
-assign stages or annotate the other models you have, and see how Studio can help
-you track model lineage, audit events, and connect model versions to DVC
-experiments.
+Behind the scenes, DVC Studio just uses GTO API, so there are no new magic
+tricks here (and you can also use GTO API from your automation Python code if
+you wish). Feel free to play around to register more versions, assign stages or
+annotate the other models you have, and see how Studio can help you track model
+lineage, audit events, and connect model versions to DVC experiments.
 
 ## What’s next?
 

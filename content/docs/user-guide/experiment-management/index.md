@@ -86,4 +86,3 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [plots]: /doc/user-guide/project-structure/dvcyaml-files#plots
 [visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
 [from the vs code ide]: /doc/vs-code-extension
-[dvc studio]: /doc/studio

@@ -38,13 +38,13 @@ of the DVC repository. Artifacts declared in other `dvc.yaml` files should be
 addressed in the form `path/to/dvc.yaml:artifact_name` or
 `path/to:artifact_name` (where `dvc.yaml` is omitted).
 
-`dvc artifacts get` will first try to download artifacts via the DVC Studio
-[REST API]. Downloading an artifact using the Studio REST API only requires a
-valid DVC Studio [client access token] and a Studio project configured with your
-[remote storage credentials]. It does not require the client to have those
-credentials. If you do not have a valid DVC Studio token, or the artifact is not
-tracked in the model registry, DVC will fall back to its typical method to get
-files (see `dvc get`).
+`dvc artifacts get` will first try to download artifacts via the DVC Studio REST
+API. Downloading an artifact using the Studio REST API only requires a valid DVC
+Studio [client access token] and a Studio project configured with your remote
+storage credentials. It does not require the client to have those credentials.
+If you do not have a valid DVC Studio token, or the artifact is not tracked in
+the model registry, DVC will fall back to its typical method to get files (see
+`dvc get`).
 
 ## Options
 
@@ -136,8 +136,4 @@ $ dvc artifacts get https://github.com/iterative/example-get-started.git \
 https://remote.dvc.org/get-started/files/md5/cf/a72ff6e2575c44f78f423cada5b783
 ```
 
-[rest api]: /doc/studio/rest-api
-[client access token]:
-  /doc/studio/user-guide/account-management#client-access-tokens
-[remote storage credentials]:
-  /doc/studio/user-guide/experiments/configure-a-project#data-remotes--cloud-storage-credentials
+[client access token]: https://docs.datachain.ai/studio/api#authorization

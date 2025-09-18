@@ -169,8 +169,7 @@ export const Head = ({
             ],
             image: {
               '@type': `ImageObject`,
-              url:
-                picture && `https://dvc.ai/blog/images/${picture.relativePath}`
+              url: picture && `/blog/images/${picture.relativePath}`
             }
           })}
         </script>

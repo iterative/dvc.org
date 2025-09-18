@@ -5,14 +5,7 @@ const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const { createLinkNode, useMatcher } = require('./helpers')
 
-const {
-  ARGS_REGEXP,
-  CLI_REGEXP,
-  COMMAND_REGEXP,
-  COMMAND_ROOT,
-  CML_COMMAND_ROOT,
-  GTO_COMMAND_ROOT
-} = consts
+const { ARGS_REGEXP, CLI_REGEXP, COMMAND_REGEXP, COMMAND_ROOT } = consts
 
 module.exports = aliasEntries => astNode => {
   const node = astNode[0]
@@ -21,15 +14,9 @@ module.exports = aliasEntries => astNode => {
     const parts = node.value.split(/\s+/)
     const index = parts.findIndex(part => {
       const cli = String(part).trim()
-      return ['dvc', 'cml', 'mlem', 'gto'].includes(cli)
+      return cli === 'dvc'
     })
     const cli = parts[index]
-    const commandRoot =
-      cli === 'cml'
-        ? CML_COMMAND_ROOT
-        : cli === 'gto'
-          ? GTO_COMMAND_ROOT
-          : COMMAND_ROOT
     const command = parts[index + 1]
     const aliasEntry =
       aliasEntries &&
@@ -37,7 +24,9 @@ module.exports = aliasEntries => astNode => {
         useMatcher(matches, `${cli} ${command}`)
       )
     const baseUrl =
-      aliasEntry && aliasEntry.url ? aliasEntry.url : `${commandRoot}${command}`
+      aliasEntry && aliasEntry.url
+        ? aliasEntry.url
+        : `${COMMAND_ROOT}${command}`
     let url
     const isCommandPageExists = getItemByPath(baseUrl)
     if (isCommandPageExists) {

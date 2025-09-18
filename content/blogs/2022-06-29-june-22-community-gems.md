@@ -44,13 +44,8 @@ Good question about [Iterative Studio](https://studio.datachain.ai/) from
 @LilDataScientist!
 
 This is something that our users asked quite a bit, so we wrote up a whole guide
-about
-[custom GitLab server connections](https://dvc.org/doc/studio/user-guide/connect-custom-gitlab-server).
-It's a quick walkthrough of how to set up the permissions you'll need and
-connecting your team to Studio.
-
-You can find lots of great guides and explanations about everything Studio in
-the [User Guide](https://dvc.org/doc/studio/user-guide) section of the docs!
+about custom GitLab server connections. It's a quick walkthrough of how to set
+up the permissions you'll need and connecting your team to Studio.
 
 ## [How does `dvc get-url` interact with the cache compared to `dvc import-url`?](https://discord.com/channels/485586884165107732/563406153334128681/981862313076346920)
 

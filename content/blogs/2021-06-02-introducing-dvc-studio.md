@@ -7,9 +7,8 @@ description: >
   on top of DVC and Git. Read all about the exciting features and watch videos
   to get started quickly.
 descriptionLong: >
-  With [DVC Studio](https://studio.datachain.ai), you can use Git and
-  [DVC](https://dvc.org) to track your code, ML models, metrics,
-  hyperparameters, and data, all together.
+  With DVC Studio, you can use Git and [DVC](https://dvc.org) to track your
+  code, ML models, metrics, hyperparameters, and data, all together.
 
   Experiment tracking, visualization and collaboration can be done through a
   visual UI. Even running new iterations becomes a matter of clicking a few
@@ -47,10 +46,9 @@ journeys even more smooth.
 
 ## How does DVC Studio work?
 
-DVC Studio is a web application that you can
-[access online](https://studio.datachain.ai/) or even host on-prem. It works
-with the data, metrics and hyperparameters that you add to your ML project
-repositories.
+DVC Studio is a web application that you can access online or even host on-prem.
+It works with the data, metrics and hyperparameters that you add to your ML
+project repositories.
 
 ![](../uploads/images/2021-06-02/dvc-studio-view.png)_Each experiment,
 represented by a commit in your Git history, is presented along with its data,
@@ -152,9 +150,6 @@ magical. Right?
 Get started at [https://studio.datachain.ai](https://studio.datachain.ai).
 Simply connect with your GitHub, GitLab or Bitbucket account. No additional
 sign-ups are required.
-
-For more information on how to use DVC Studio, please check out the
-[docs](https://dvc.org/doc/studio).
 
 DVC Studio is completely free for individuals and small teams. Let us know if
 you would like to set up DVC Studio

@@ -189,8 +189,8 @@ incorporated in Studio in a web UI. This release took the work of half the
 people in the company and we are proud of the steps we are taking to meet people
 where they are and round out your options whether you are comfortable in the
 CLI, API, or web UI. Be sure to try it out and give us your feedback. Learn more
-[in the blog post](https://dvc.org/blog/iterative-studio-model-registry) and
-[in the docs](https://dvc.org/doc/studio/user-guide/model-registry/what-is-a-model-registry).
+[in the blog post](https://dvc.org/blog/iterative-studio-model-registry).
+
 Look out for a full tutorial coming soon!
 
 https://www.youtube.com/watch?v=DYeVI-QrHGI
@@ -322,8 +322,6 @@ _Iterative is Hiring
 
 ### ✍🏼 Doc Updates
 
-- As noted above there are
-  [new docs for Iterative Studio's Model Registry](https://dvc.org/doc/studio/user-guide/model-registry/what-is-a-model-registry)
 - In case you missed it, CML now supports
   [Bitbucket](https://bitbucket.org/product)! You can find the
   [docs for the Bitbucket integration here](https://cml.dev/doc/start/bitbucket#get-started-with-cml-on-bitbucket).

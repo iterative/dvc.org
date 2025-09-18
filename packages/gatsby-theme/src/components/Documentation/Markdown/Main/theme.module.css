@@ -250,10 +250,7 @@
       user-select: none;
     }
 
-    .token.dvc,
-    .token.cml,
-    .token.mlem,
-    .token.gto {
+    .token.dvc {
       color: #6ceb2c;
       font-weight: bold;
     }

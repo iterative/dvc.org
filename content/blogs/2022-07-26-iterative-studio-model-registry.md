@@ -177,10 +177,6 @@ Start using [Iterative Studio Model Registry] today. And answer all the who,
 what, why, where and when questions of your team's model production directly
 from the information in your Git repository.
 
-Refer to the [documentation and tutorials][docs] to get started. To request
-support or share feedback, you can [email me] or create a support ticket on
-[GitHub][github support repo].
-
 https://www.youtube.com/watch?v=DYeVI-QrHGI
 
 [iterative studio model registry]: https://studio.datachain.ai/
@@ -190,6 +186,5 @@ https://www.youtube.com/watch?v=DYeVI-QrHGI
 [gto]: https://github.com/iterative/gto
 [mlem]: https://mlem.ai/
 [semver]: https://semver.org/
-[docs]: https://dvc.org/doc/studio/user-guide/model-registry
 [email me]: mailto:tapa@iterative.ai
 [github support repo]: https://github.com/iterative/studio-support

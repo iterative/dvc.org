@@ -2,23 +2,11 @@
 
 const Prism = require('prismjs')
 
-const cml = require('./cml-commands')
 const dvc = require('./dvc-commands')
-const gto = require('./gto-commands')
-const mlem = require('./mlem-commands')
 
 Prism.languages.usage = {
   dvc: {
     pattern: new RegExp(`dvc (?:${dvc.join('|')})`)
-  },
-  cml: {
-    pattern: new RegExp(`cml (?:${cml.join('|')})`)
-  },
-  mlem: {
-    pattern: new RegExp(`mlem (?:${mlem.join('|')})`)
-  },
-  gto: {
-    pattern: new RegExp(`gto (?:${gto.join('|')})`)
   },
   usage: {
     pattern:

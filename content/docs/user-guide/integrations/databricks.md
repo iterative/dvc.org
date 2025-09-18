@@ -87,7 +87,7 @@ entries to corresponding `.gitignore`s, so you'll need to do that manually.
 ## Live experiment updates
 
 If working with [Databricks Repos], you will need to set both the
-`DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` to see [live experiment updates] in
+`DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` to see live experiment updates in
 DVC Studio.
 
 ```python
@@ -105,5 +105,3 @@ os.environ["DVC_EXP_GIT_REMOTE"] = "https://github.com/<org>/<repo>"
 [magic commands]:
   https://ipython.readthedocs.io/en/stable/interactive/magics.html
 [web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html
-[live experiment updates]:
-  /doc/studio/user-guide/experiments/live-metrics-and-plots

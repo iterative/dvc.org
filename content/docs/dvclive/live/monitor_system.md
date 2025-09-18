@@ -37,8 +37,7 @@ live.monitor_system(
 )
 ```
 
-The system metrics will then be available live in
-[DVC Studio](https://dvc.org/doc/studio) and in our
+The system metrics will then be available live in DVC Studio and in our
 [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 <toggle>

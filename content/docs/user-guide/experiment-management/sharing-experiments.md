@@ -12,7 +12,7 @@ automatically share all experiment info, you will need a:
 
 - Git remote (for example, GitHub)
 - DVC [remote storage] for any large artifacts you want DVC to track
-- DVC Studio project [connected to that Git remote]
+- DVC Studio project connected to that Git remote
 
 To automatically share your experiments, run:
 
@@ -38,7 +38,7 @@ metrics and plots.
 
 </admon>
 
-You can send [live experiments] to DVC Studio, which will show intermediate
+You can send live experiments to DVC Studio, which will show intermediate
 results for metrics and plots in any running experiments. To start sharing live
 metrics to DVC Studio, set your [access token].
 
@@ -279,7 +279,6 @@ Removed experiments: unwet-jinn
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
 [pull]: #pull-experiments
-[live experiments]: /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvc config]: /docs/user-guide/project-structure/configuration#studio
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
@@ -288,7 +287,4 @@ Removed experiments: unwet-jinn
 [bring experiment results to your workspace]:
   /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 [remove]: #remove-pushed-experiments
-[access token]:
-  /doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token
-[connected to that Git remote]:
-  /doc/studio/user-guide/experiments/create-a-project
+[access token]: https://docs.datachain.ai/studio/api#authorization

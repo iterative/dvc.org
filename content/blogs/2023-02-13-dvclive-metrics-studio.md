@@ -136,24 +136,22 @@ to optimize the training process and improve the performance of the model.
 ```
 
 Additionally, we can also use Studio to analyze and visualize the results of our
-experiments, making it easy to share and collaborate with others.
-[By providing the STUDIO_TOKEN](https://dvc.org/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
-DVCLive will automatically post the results of the experiment to Studio. To do
-this, first, let’s obtain an individual token from the user profile page in
-Studio.
+experiments, making it easy to share and collaborate with others. By providing
+the STUDIO_TOKEN, DVCLive will automatically post the results of the experiment
+to Studio. To do this, first, let’s obtain an individual token from the user
+profile page in Studio.
 
 ![Generate Iterative Studio Access token](../uploads/images/2023-02-13/studio-access-token.png '=800')
 _Generating Studio Access Token in the Iterative Studio Profile page
 ([Source link](https://studio.datachain.ai))_
 
 By providing this token as an environment variable, we can access the results of
-our experiments in an
-[Iterative Studio project](https://dvc.org/doc/studio/get-started). The project
-lets you compare them with previous experiments, helps you find insights to
-improve our model and share it with others.
+our experiments in an DVC Studio project. The project lets you compare them with
+previous experiments, helps you find insights to improve our model and share it
+with others.
 
-![Comparison in Iterative Studio](../uploads/images/2023-02-13/iterative-studio-live-metrics.png '=800')
-_Compare with previous experiments in Iterative Studio
+![Comparison in DVC Studio](../uploads/images/2023-02-13/iterative-studio-live-metrics.png '=800')
+_Compare with previous experiments in DVC Studio
 ([Source link](https://studio.datachain.ai))_
 
 To export the token run the command below with the token obtained from your

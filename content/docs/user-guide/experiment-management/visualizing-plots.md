@@ -276,8 +276,7 @@ view.
 
 <tab title="DVC Studio">
 
-Once you have [shared] the results to DVC Studio, you can
-[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
+Once you have [shared] the results to DVC Studio, you can compare experiments
 against the entire repo history:
 
 ![DVC Studio view](/img/dvclive-studio.png)

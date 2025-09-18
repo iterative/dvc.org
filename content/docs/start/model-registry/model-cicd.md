@@ -37,7 +37,7 @@ steps to download the model from the web browser here:
 And here's how to do it with the CLI:
 
 First, configure the
-[DVC Studio Access Token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
+[DVC Studio Access Token](https://docs.datachain.ai/studio/api#authorization)
 (this only needs to be done once):
 
 ```cli
@@ -82,16 +82,14 @@ other CICD action.
 
 You can simply re-use the CICD template below and copy it into your projects.
 Then all you need to do is to save the
-[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
-as a
+[DVC Studio token](https://docs.datachain.ai/studio/api#authorization) as a
 [GitHub secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 (or a [GitLab CI variable](https://docs.gitlab.com/ee/ci/variables/)) to manage
 authentication with the
 [DVC remote storage](https://dvc.org/doc/user-guide/data-management/remote-storage#remote-storage).
 This way we only need to keep the
-[DVC Studio token](https://dvc.org/doc/studio/user-guide/account-management#studio-access-token)
-saved on GitHub/GitLab and let DVC Studio manage the specific storage
-credentials for us.
+[DVC Studio token](https://docs.datachain.ai/studio/api#authorization) saved on
+GitHub/GitLab and let DVC Studio manage the specific storage credentials for us.
 
 In your own use-cases you might want to modify a few things about the workflow
 and you can find a more detailed explanation of the CICD templates in the
@@ -262,8 +260,9 @@ and if they are GTO tags, it gives us the name of the model, its version, stage
 (if any) and the event in the model registry.
 
 In GitLab CI we cannot use the GitHub action. However, we can still use GTO
-directly with the [gto check-ref](/doc/gto/command-reference/check-ref) command
-to achieve the same result.
+directly with the
+[gto check-ref](https://mlem.ai/doc/gto/command-reference/check-ref) command to
+achieve the same result.
 
 <toggle>
 

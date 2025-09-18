@@ -1,8 +1,8 @@
 ## studio login
 
 Authenticate DVC with Studio to save a
-[client access token](/doc/studio/user-guide/account-management#client-access-tokens)
-to global [DVC configuration].
+[client access token](https://docs.datachain.ai/studio/api#authorization) to
+global [DVC configuration].
 
 [dvc configuration]:
   /doc/user-guide/project-structure/configuration#config-file-locations
@@ -24,9 +24,9 @@ and assigns a random name as the token name.
   to authenticate with. Defaults to `https://studio.datachain.ai`.
 
 - `-s <scopes>`, `--scopes <scopes>` - comma separated values of
-  [scopes](/doc/studio/user-guide/account-management#client-access-tokens) for
-  the authentication token. Accepted scope values are `EXPERIMENTS`, `MODELS`,
-  and `DATASETS`. Defaults to all available scopes.
+  [scopes](https://docs.datachain.ai/studio/api#authorization) for the
+  authentication token. Accepted scope values are `EXPERIMENTS`, `MODELS`, and
+  `DATASETS`. Defaults to all available scopes.
 
 - `-n <name>`, `--name <name>` - the name of the authentication token. It will
   be used to identify token shown in Studio profile. Defaults to a random name.
