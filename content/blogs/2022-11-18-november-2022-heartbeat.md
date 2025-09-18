@@ -381,11 +381,8 @@ greatest updates below.
 ### Iterative Studio docs
 
 - DataChain Studio now supports adding a model from a remote location in
-  Iterative Studio. Find out more
-  [here](https://dvc.org/doc/studio/user-guide/model-registry/add-a-model).
-- Use the new Iterative Studio Wizard to set up CML in your CI. More on the
-  process and parameters
-  [here in the docs.](https://dvc.org/doc/studio/user-guide/projects-and-experiments/run-experiments#use-the-iterative-studio-wizard-to-set-up-your-ci-action)
+  Iterative Studio.
+- Use the new Iterative Studio Wizard to set up CML in your CI.
 
 ---
 

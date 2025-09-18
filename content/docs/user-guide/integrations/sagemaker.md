@@ -127,7 +127,7 @@ The end result of running the pipeline looks like this:
 
 SageMaker jobs run outside of your Git repository, so experiment metrics and
 plots will not be automatically tracked in the repository. However, you can see
-[live experiment updates] in DVC Studio.
+live experiment updates in DVC Studio.
 
 First, set the `DVC_STUDIO_TOKEN` and `DVC_EXP_GIT_REMOTE` environment
 variables.
@@ -182,8 +182,6 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [code-server]:
   https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/
 [dvc extension for vs code]: /doc/vs-code-extension
-[live experiment updates]:
-  /doc/studio/user-guide/experiments/live-metrics-and-plots
 [dvc config]: /doc/user-guide/project-structure/configuration#studio
 [pipelines]: /doc/user-guide/pipelines
 [external dependencies and outputs]:

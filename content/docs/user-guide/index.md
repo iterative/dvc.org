@@ -213,7 +213,7 @@ _Luigi_, etc.
   external databases or APIs, so no additional services are required.
 
 - DVC doesn't need to run any services. There's no built-in GUI as a result, but
-  we also have our sister project [DVC Studio](/doc/studio) to fill that gap.
+  we also have our sister project: DVC Studio to fill that gap.
 
 - DVC can generate images with experiment workflow visualizations.
 

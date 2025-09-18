@@ -59,7 +59,7 @@ plots:
 
 The plot can be rendered with
 [DVC CLI, VSCode Extension](/doc/user-guide/experiment-management/visualizing-plots)
-or [DVC Studio](/doc/studio/user-guide/experiments/visualize-and-compare).
+or DVC Studio.
 
 ![dvc plots show](/img/dvclive-log_plot.png)
 

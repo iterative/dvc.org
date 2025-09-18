@@ -15,10 +15,9 @@ guide.
 
 <admon type="info">
 
-To perform the model registry actions in this guide, follow
-[these steps](/doc/studio/user-guide/experiments/create-a-project#connect-to-a-git-repository-and-add-a-project)
-to sign in to DVC Studio, connect it to your Git account and add your repository
-as a DVC Studio project.
+To perform the model registry actions in this guide, follow these steps to sign
+in to DVC Studio, connect it to your Git account and add your repository as a
+DVC Studio project.
 
 </admon>
 
@@ -79,10 +78,6 @@ keep track of it. You can now do that directly in the DVC Studio UI as follows.
 Since we saved our model to DVC and added it to the model registry in the latest
 commit, we can just keep the commit which was selected by DVC Studio
 automatically. We will also keep the suggested version number v1.0.0.
-
-For more details and other ways of registering model versions you can have a
-look at the corresponding
-[documentation](/doc/studio/user-guide/model-registry/register-version).
 
 Once we register our first model version, DVC Studio will also automatically
 connect it to experiment tracking and all metrics which are tracked there will
@@ -152,8 +147,7 @@ to "prod", follow these steps:
 ![Remove model stage](https://static.iterative.ai/img/mr-remove-model-stage.gif)
 
 It is also possible to de-register model versions or deprecate and remove models
-from the registry entirely. To see how, have a look at the
-[documentation](/doc/studio/user-guide/model-registry/remove-a-model-or-its-details).
+from the registry entirely. To see how, have a look at the documentation.
 
 The detailed view of our model in the registry should now match what we see
 [in our example](https://studio.datachain.ai/team/Iterative/models/b3P4bcYIrGYdzyjqzsf9Xw==/pool-segmentation/v1.0.0).

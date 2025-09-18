@@ -153,9 +153,6 @@ Get started at [https://studio.datachain.ai](https://studio.datachain.ai).
 Simply connect with your GitHub, GitLab or Bitbucket account. No additional
 sign-ups are required.
 
-For more information on how to use DVC Studio, please check out the
-[docs](https://dvc.org/doc/studio).
-
 DVC Studio is completely free for individuals and small teams. Let us know if
 you would like to set up DVC Studio
 for[ 5+ member teams](https://form.typeform.com/to/nydf3Oys?typeform-medium=embed-snippet)

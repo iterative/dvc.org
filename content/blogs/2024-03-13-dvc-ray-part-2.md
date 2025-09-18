@@ -293,11 +293,9 @@ aws_session_token = IQoJb3JpZ...
 " > ~/.aws/ray-credentials
 ```
 
-To track metrics with DVC Studio, Save
-your [DVC Studio client access token](https://dvc.org/doc/studio/user-guide/account-and-billing#client-access-tokens) to
-a `.dvc/config.local` file. Git or DVC does not track this file. In the next
-step, you’ll configure Ray to use this file to provision the head and worker
-nodes.
+To track metrics with DVC Studio, Save your DVC Studio client access token to a
+`.dvc/config.local` file. Git or DVC does not track this file. In the next step,
+you’ll configure Ray to use this file to provision the head and worker nodes.
 
 ```bash
 dvc config --local studio.token isat_2BlrAu0aileSH...
@@ -682,7 +680,6 @@ covered:
 
 ## References
 
-- [DVC Studio: Explore ML Experiments](https://dvc.org/doc/studio/user-guide/experiments/explore-ml-experiments)
 - [Ray docs: Getting Started](https://docs.ray.io/en/latest/ray-overview/getting-started.html)
 - [How Ray solves common production challenges for Generative AI infrastructure](https://www.anyscale.com/blog/ray-common-production-challenges-for-generative-ai-infrastructure)
 - [Building a Modern Machine Learning Platform with Ray](https://medium.com/samsara-engineering/building-a-modern-machine-learning-platform-with-ray-eb0271f9cbcf)
