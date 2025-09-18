@@ -241,7 +241,7 @@ using only a [Studio token], either in the UI or programmatically:
 [Version numbers]: /doc/studio/user-guide/model-registry/register-version
 [stages]: /doc/studio/user-guide/model-registry/assign-stage
 [semantic versioning]: https://semver.org
-[GTO]: /doc/gto
+[GTO]: https://mlem.ai/doc/gto
 [trigger]: /doc/studio/user-guide/model-registry/use-models
 [download or stream artifacts]: /doc/studio/user-guide/model-registry/use-models
 [cloud credentials]: /doc/studio/user-guide/account-management#cloud-credentials

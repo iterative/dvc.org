@@ -262,8 +262,9 @@ and if they are GTO tags, it gives us the name of the model, its version, stage
 (if any) and the event in the model registry.
 
 In GitLab CI we cannot use the GitHub action. However, we can still use GTO
-directly with the [gto check-ref](/doc/gto/command-reference/check-ref) command
-to achieve the same result.
+directly with the
+[gto check-ref](https://mlem.ai/doc/gto/command-reference/check-ref) command to
+achieve the same result.
 
 <toggle>
 

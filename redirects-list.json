@@ -110,6 +110,7 @@
   "^/doc/dvclive/api-reference/ml-frameworks(/.*)?$                                       /doc/dvclive/ml-frameworks$1",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
+  "^/doc/gto(/.*)?$                                                                       https://mlem.ai/doc/gto$1",
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 

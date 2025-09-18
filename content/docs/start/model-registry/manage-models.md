@@ -34,8 +34,8 @@ captured in our example repository.
 
 <admon type="tip">
 
-Behind the scenes, DVC Studio uses a command line tool called [GTO](/doc/gto)
-for most model registry actions.
+Behind the scenes, DVC Studio uses a command line tool called
+[GTO](https://mlem.ai/doc/gto) for most model registry actions.
 
 With GTO you can also set up the model registry locally without DVC Studio. You
 can see how this is done in the expandable "Under the hood" sections in this
@@ -48,7 +48,8 @@ chapter.
 #### 💡 Expand to see how the model registry works under the hood
 
 When you register model versions, assign or remove stages or deprecate models,
-GTO assigns [particularly formatted](/doc/gto/user-guide#git-tags-format) Git
+GTO assigns
+[particularly formatted](https://mlem.ai/doc/gto/user-guide#git-tags-format) Git
 [tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) to selected commits
 and these are then parsed by the model registry to keep track of the model
 lifecycle history.
@@ -59,7 +60,7 @@ in your Git repository!
 It also allows you to use GTO directly instead of the DVC Studio UI to manage
 your model lifecycle. That can be useful for example if you want to trigger
 certain model registry actions programmatically. You can learn more about the
-details of GTO in its [documentation](/doc/gto).
+details of GTO in its [documentation](https://mlem.ai/doc/gto).
 
 If you don't have a DVC Studio account at all, you will have to manage a model
 registry separately for each Git repository however.
@@ -101,7 +102,7 @@ gto register pool-segmentation [ref] --version v1.0.0
 Here, `[ref]` is the Git reference/hash we selected from the menu in DVC Studio.
 
 For more details you can have a look at the
-[gto register command reference](/doc/gto/command-reference/register).
+[gto register command reference](https://mlem.ai/doc/gto/command-reference/register).
 
 </details>
 
@@ -134,7 +135,7 @@ gto assign pool-segmentation --version v1.0.0 --stage dev
 ```
 
 For more details you can have a look at the
-[gto assign command reference](/doc/gto/command-reference/assign).
+[gto assign command reference](https://mlem.ai/doc/gto/command-reference/assign).
 
 </details>
 
@@ -164,7 +165,7 @@ The detailed view of our model in the registry should now match what we see
 Whenever we un-assign stages, de-register model versions and deprecate models,
 DVC Studio uses the GTO library under the hood. It is also possible to use GTO
 manually to perform these actions. To see how, have a look at the
-[gto deprecate command reference](/doc/gto/command-reference/deprecate).
+[gto deprecate command reference](https://mlem.ai/doc/gto/command-reference/deprecate).
 
 </details>
 

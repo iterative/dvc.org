@@ -284,9 +284,10 @@ $ gto show --repo $REPO
 ╘════════════╧══════════╧════════╛
 ```
 
-When running `gto show` for a specific model, we will get all of its registered
-versions. Notice that the stage is marked at the latest version that was
-assigned to it - to signal the currently deployed model version in that stage:
+When running [`gto show`](https://mlem.ai/doc/gto/command-reference/show) for a
+specific model, we will get all of its registered versions. Notice that the
+stage is marked at the latest version that was assigned to it - to signal the
+currently deployed model version in that stage:
 
 ```
 $ gto show classifier --repo $REPO
