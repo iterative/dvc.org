@@ -11,7 +11,7 @@ jobs:
       github.event.deployment.ref != 'main' &&
       github.event.deployment_status.state == 'success'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Download Link Checker
         uses: lycheeverse/lychee-action@v2
         with:
