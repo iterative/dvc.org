@@ -21,13 +21,12 @@ $ pip install dvclive ultralytics
 $ yolo train model=yolov8n.pt data=coco8.yaml epochs=5 imgsz=640
 ```
 
-Here is how the logged [metrics], [parameters], and [model] look in the
-[DVC Studio Project Table](/doc/studio/user-guide/experiments/explore-ml-experiments):
+Here is how the logged [metrics], [parameters], and [model] look in the DVC
+Studio Project Table:
 
 ![YOLO Studio Table](/img/yolo-studio-table.png)
 
-And the [plots] in the
-[DVC Studio Plots Panel](/doc/studio/user-guide/experiments/visualize-and-compare):
+And the [plots] in the DVC Studio Plots Panel:
 
 ![YOLO Studio Plots](/img/yolo-studio-plots.gif)
 

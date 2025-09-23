@@ -72,7 +72,7 @@ values.
 - `<DVC_METRIC_COLOR>` - used to group experiment/commit information across
   separate plots by applying a static color to rev mapping. The mapping is
   auto-generated in the case of the `dvc plots` subcommands but can be selected
-  through the UI in the [DVC extension for VS Code] and [DVC Studio].
+  through the UI in the [DVC extension for VS Code] and DVC Studio.
 
 - `<DVC_METRIC_PLOT_HEIGHT>`- used by the VS Code extension/Studio to
   dynamically resize the height of plots.
@@ -163,4 +163,3 @@ file:///Users/usr/src/dvc_plots/index.html
 [field]:
   /doc/user-guide/project-structure/dvcyaml-files#available-configuration-fields
 [DVC extension for VS Code]: /doc/vs-code-extension
-[DVC Studio]: /doc/studio

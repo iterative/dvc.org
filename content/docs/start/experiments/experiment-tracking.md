@@ -132,8 +132,7 @@ section to share, or skip to the next section if you want to start locally.
 
 DVC tracks the code and metadata for each experiment in Git. If you have a Git
 remote (for example, GitHub) where you `git push`, go to DVC Studio, configure
-your Git provider, and
-[add your Git repository as a project](/doc/studio/user-guide/experiments/create-a-project).
+your Git provider, and add your Git repository as a project.
 
 Next, you can login to Studio from the command line:
 
@@ -236,16 +235,6 @@ and
 views.
 
 ![VS Code Comparison](/img/dvclive-vscode-compare.png)
-
-</tab>
-
-<tab title="DVC Studio">
-
-If you followed the instructions above in [Sharing](#sharing), you can
-[compare experiments](/doc/studio/user-guide/experiments/visualize-and-compare)
-against the entire repo history:
-
-![DVC Studio view](/img/dvclive-studio.png)
 
 </tab>
 

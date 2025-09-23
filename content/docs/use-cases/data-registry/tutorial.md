@@ -217,32 +217,27 @@ a model, you can change the filters to use it for any type of artifact:
 
 ### Registering versions and assigning stages
 
-[Version numbers] and [stages] signal the commit to use and can trigger
-automated workflows. Just like with software, you can use [semantic versioning]
-to tag releases of your artifacts and to mark artifact versions as in
-production, development, or other stages of their lifecycle:
+Version numbers and stages signal the commit to use and can trigger automated
+workflows. Just like with software, you can use [semantic versioning] to tag
+releases of your artifacts and to mark artifact versions as in production,
+development, or other stages of their lifecycle:
 
 ![Assign Registry Datasets](https://static.iterative.ai/img/registry-assign-datasets.gif)
 
 Versions and stages are saved as Git tags by [GTO]. This means that you have the
-full release history in Git, and you can [trigger] deployments, tests, or other
+full release history in Git, and you can trigger deployments, tests, or other
 actions in your CI/CD workflows when you register a version or assign a stage.
 
 ### Accessing artifacts
 
-Others can [download or stream artifacts] by their version or stage without
+Others can download or stream artifacts by their version or stage without
 needing access to your Git repository or cloud storage. If you connect your
-[cloud credentials] in DVC Studio, anyone on your team can access that artifact
+cloud credentials in DVC Studio, anyone on your team can access that artifact
 using only a [Studio token], either in the UI or programmatically:
 
 ![Download Registry Datasets](https://static.iterative.ai/img/registry-download-datasets.gif)
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
-[Version numbers]: /doc/studio/user-guide/model-registry/register-version
-[stages]: /doc/studio/user-guide/model-registry/assign-stage
 [semantic versioning]: https://semver.org
-[GTO]: /doc/gto
-[trigger]: /doc/studio/user-guide/model-registry/use-models
-[download or stream artifacts]: /doc/studio/user-guide/model-registry/use-models
-[cloud credentials]: /doc/studio/user-guide/account-management#cloud-credentials
-[Studio token]: /doc/studio/user-guide/account-management#tokens
+[GTO]: https://mlem.ai/doc/gto
+[Studio token]: https://docs.datachain.ai/studio/api#authorization

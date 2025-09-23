@@ -408,10 +408,9 @@ $ dvc exp pull origin
 - You can change the cloud provider and instance type in the `resources` section
   of `sky-training.yaml` or `sky-vscode.yaml`.
 
-- To enable
-  [DVC Studio integration](https://dvc.org/doc/studio/user-guide/projects-and-experiments/live-metrics-and-plots),
-  for real-time monitoring of metrics and plots, add the
-  `--env DVC_STUDIO_TOKEN` option to the `sky launch` commands above.
+- To enable DVC Studio integration, for real-time monitoring of metrics and
+  plots, add the `--env DVC_STUDIO_TOKEN` option to the `sky launch` commands
+  above.
 
   ![DVC Studio integration](../uploads/images/2023-09-08/dvc_studio.png)
 

@@ -259,8 +259,6 @@ Sets the defaults for <abbr>experiment</abbr> configuration.
   live metrics and plots] to DVC Studio. Defaults to `origin`.
 
 [push experiment]: /doc/user-guide/experiment-management/sharing-experiments
-[send live metrics and plots]:
-  /doc/studio/user-guide/experiments/live-metrics-and-plots
 
 </details>
 
@@ -421,7 +419,7 @@ have no effect.
 
   [Get the token](https://studio.datachain.ai/user/_/profile?section=accessToken)
   or check
-  [this guide on how to create an access token](/doc/studio/user-guide/experiments/live-metrics-and-plots#set-up-an-access-token).
+  [this guide on how to create an access token](https://docs.datachain.ai/studio/api#authorization).
 
 - `studio.offline` - Disables sharing [live experiments] even if `studio.token`
   is set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can

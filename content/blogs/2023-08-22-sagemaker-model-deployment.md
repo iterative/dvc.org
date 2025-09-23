@@ -115,16 +115,15 @@ artifacts:
     ...
 ```
 
-Because of this, when we [add the project to DVC Studio], the model appears in
-the [model registry].
+Because of this, when we add the project to DVC Studio, the model appears in the
+[model registry].
 
 Note that there are other ways to register the model in the model registry - you
-can [add the model from the Studio UI] or manually add it to the `dvc.yaml`
-file.
+can add the model from the Studio UI or manually add it to the `dvc.yaml` file.
 
 Once the model is registered in the model registry, you can assign version
 numbers every time your ML experiment produces a model version that you like.
-Use the [`Register version`] option to select the Git commit for the experiment
+Use the Register version option to select the Git commit for the experiment
 which produced the desired model version, and assign it a [semantic version].
 Every version registration is saved using specially formatted Git tags, which
 you can find in the [Git repository].
@@ -177,7 +176,7 @@ This action is available only in GitHub though; if you’re using GitLab,
 Bitbucket or some other provider, you can use the [`gto check-ref`
 command][gto check-ref] to parse the Git tags, which follow [this format].
 
-Now, whenever you [`Assign stage`] to a model version, your CI/CD action
+Now, whenever you `Assign stage` to a model version, your CI/CD action
 understands which version of which model was assigned which stage. Then, it can
 use the [`dvc get –show-url`] command to determine the S3 path of the tar file
 for the model version.
@@ -284,13 +283,7 @@ figure it out!
 [dvclive `log_artifact()` method]: https://dvc.org/doc/dvclive/live/log_artifact
 [artifact entry]:
   https://github.com/iterative/example-get-started-experiments/blob/main/results/train/dvc.yaml#L8
-[add the project to DVC Studio]:
-  https://dvc.org/doc/studio/user-guide/projects-and-experiments/create-a-project#connect-to-a-git-repository-and-add-a-project
 [model registry]: https://studio.datachain.ai/user/~/models
-[add the model from the studio ui]:
-  https://dvc.org/doc/studio/user-guide/model-registry/add-a-model
-[`register version`]:
-  https://dvc.org/doc/studio/user-guide/model-registry/register-version
 [semantic version]: https://semver.org/
 [git repository]:
   https://github.com/iterative/example-get-started-experiments/tags
@@ -300,8 +293,6 @@ figure it out!
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml
 [gto check-ref]: https://mlem.ai/doc/gto/command-reference/check-ref
 [this format]: https://mlem.ai/doc/gto/user-guide#git-tags-format
-[`assign stage`]:
-  https://dvc.org/doc/studio/user-guide/model-registry/assign-stage
 [github workflow file]:
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model.yml
 [`dvc get –show-url`]:
