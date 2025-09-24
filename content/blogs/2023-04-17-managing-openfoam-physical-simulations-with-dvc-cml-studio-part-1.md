@@ -590,3 +590,8 @@ Overall, DVC can help OpenFOAM users to:
 
 In the next post, we will discuss how to utilize cloud computing resources and
 visualize and compare simulation data with CML and Iterative Studio.
+
+---
+
+[Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq) 
+to stay up to date with news and contributions from the Community!

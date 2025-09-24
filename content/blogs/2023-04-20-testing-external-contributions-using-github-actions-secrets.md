@@ -154,3 +154,8 @@ and
 
 _Do you have any better alternative or maybe a similar use case and want to
 discuss more? Join us in [Discord](https://discord.com/invite/dvwXA2N)!_
+
+---
+
+[Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq) 
+to stay up to date with news and contributions from the Community!

@@ -105,3 +105,8 @@ workflows. For more information:
 - GitHub repository: https://github.com/iterative/vscode-dvc
 - DVC documentation: https://dvc.org/
 - DVC community forum: https://dvc.org/chat
+
+---
+
+[Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq) 
+to stay up to date with news and contributions from the Community!
