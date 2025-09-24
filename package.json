@@ -58,7 +58,7 @@
     "@radix-ui/react-label": "2.1.7",
     "@reach/router": "1.3.4",
     "@reach/tooltip": "0.18.0",
-    "@sentry/node": "9.42.0",
+    "@sentry/node": "10.12.0",
     "algoliasearch": "4.25.2",
     "clsx": "2.1.1",
     "compression": "1.8.1",
