@@ -210,13 +210,11 @@ of, you'll need to Git commit them to your project.
 
 ![Duck Dynasty GIF by DefyTV](https://media.giphy.com/media/pdSncNyYgaH0wqaCqp/giphy.gif)
 
-Keep an eye out for our next Office Hours Meetup! Make sure you stay up to date
-with us to find out what it is!
-[Join our group](https://www.meetup.com/machine-learning-engineer-community-virtual-meetups/)
-to stay up to date with specifics as we get closer to the event!
-
 Check out [our docs](https://dvc.org/doc) to get all your DVC, CML, and MLEM
 questions answered!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to chat with the
 community!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

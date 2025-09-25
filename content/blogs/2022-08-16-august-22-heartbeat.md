@@ -103,10 +103,9 @@ _DVC with Kaggle
 Mikołaj explains how DVC's project structure ensures reproducible results and
 develops habits on best practices. One drawback he noted was the lack of an
 experimentation UI, but we just introduced the DVC extension for VS Code to help
-with that, and there’s always Iterative Studio. Look out for improvement to the
-experiment features in both tools in the coming months! Also, experimenting with
-DVC in Kaggle may give you some good practice for things we are cooking up
-internally! 😉🤫
+with that. Look out for improvement to the experiment features in both tools in
+the coming months! Also, experimenting with DVC in Kaggle may give you some good
+practice for things we are cooking up internally! 😉🤫
 
 ## **Shambhavi Mishra** - Searching for Semantic Similarity
 
@@ -192,8 +191,6 @@ CLI, API, or web UI. Be sure to try it out and give us your feedback. Learn more
 [in the blog post](https://dvc.org/blog/iterative-studio-model-registry).
 
 Look out for a full tutorial coming soon!
-
-https://www.youtube.com/watch?v=DYeVI-QrHGI
 
 ### 🧑🏽‍💻 Iterative's First Internal Hackathon
 
@@ -360,3 +357,6 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

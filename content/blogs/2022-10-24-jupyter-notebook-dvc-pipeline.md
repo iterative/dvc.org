@@ -472,3 +472,8 @@ We might also write a future guide about this, so let us know if you would be
 interested in seeing this content. Make sure to join
 [our Discord server](https://dvc.org/chat) if you have any questions or want to
 discuss this post further!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
