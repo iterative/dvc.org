@@ -320,3 +320,8 @@ of DVC not only enhances the development process but also brings about
 reproducible experiments. Given the similarities that most LLM applications
 share, it's safe to conclude that they could benefit immensely from
 incorporating DVC in their workflows.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

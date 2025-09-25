@@ -683,3 +683,8 @@ covered:
 - [Ray docs: Getting Started](https://docs.ray.io/en/latest/ray-overview/getting-started.html)
 - [How Ray solves common production challenges for Generative AI infrastructure](https://www.anyscale.com/blog/ray-common-production-challenges-for-generative-ai-infrastructure)
 - [Building a Modern Machine Learning Platform with Ray](https://medium.com/samsara-engineering/building-a-modern-machine-learning-platform-with-ray-eb0271f9cbcf)
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

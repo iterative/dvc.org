@@ -182,3 +182,8 @@ efficiently combine Hydra and DVC in your projects.
 To get a deeper understanding of all the parts involved, you can read the
 [Hydra Composition](https://dvc.org/doc/user-guide/experiment-management/hydra-composition)
 page of the DVC user guide.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
