@@ -283,3 +283,8 @@ validation, collaborating with team members, and it can help you see if there
 are any underlying issues in your overall deployment process before you hear
 about them from users. MLEM can also be used to create a model registry so you
 can store and switch between models whenever you need to.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

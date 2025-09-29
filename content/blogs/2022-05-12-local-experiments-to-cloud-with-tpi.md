@@ -340,3 +340,8 @@ In many cases, deploying your pipelines would be easier with your own Docker
 image (both for prototyping and for production) and CI/CD workflows. If you'd
 like to learn how to create your own Docker images and use them with TPI, see
 [part 2](/blog/local-experiments-to-cloud-with-tpi-docker) of this blog post!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -37,7 +37,6 @@ tags:
   - Computer Vision
   - DVC
   - CML
-  - Studio
   - CI/CD
   - Experiment Tracking
   - Tutorial
@@ -299,3 +298,8 @@ Pipelines][part 1] and [Part 2: Local Experiments][part 2].
 - Apply this approach to a different Computer Vision problem using a different
   dataset or different problem type (image classification, object detection,
   etc.)
+
+  ***
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

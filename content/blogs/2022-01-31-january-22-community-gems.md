@@ -3,15 +3,14 @@ title: January '22 Community Gems
 date: 2022-01-31
 description: >
   A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
-  Studio data, DVC for non-ML projects, getting started with CML, and more.
+  for non-ML projects, getting started with CML, and more.
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
-  Studio data, DVC for non-ML projects, getting started with CML, and more.
+  for non-ML projects, getting started with CML, and more.
 picture: 2022-01-31/jan-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/january-22-community-gems/1020
 tags:
-  - DataChain Studio
   - CML
   - DVC Remotes
   - Pipelines
@@ -174,23 +173,12 @@ Or you can check out the videos on
 
 And of course, you can always ask questions in the Discord community!
 
-### [I understand that DVC Studio is a discoverability layer over my DVC repo in GitHub. Will any of my data be stored on your servers?](https://discord.com/channels/485586884165107732/841856466897469441/923714473603256420)
-
-This is a great question about DVC Studio from @johnnyaug!
-
-DVC Studio only stores metrics, plots, and metadata about your pipelines in the
-databases to be able to serve this as a table. We don't read actual data and we
-don't store code.
-
-An important thing to note is that if you have plots from `dvc plots show` that
-are images, JSON files, or vega specs, those could be saved on our end as well
-to serve them to UI.
-
-We're working on documentation for this as well!
-
 ---
 
 ![The Lord Of The Rings GIF](https://media.giphy.com/media/zCME2Cd20Czvy/giphy.gif)
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

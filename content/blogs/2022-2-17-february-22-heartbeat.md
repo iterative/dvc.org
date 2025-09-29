@@ -29,7 +29,6 @@ tags:
   - Heartbeat
   - DVC
   - CML
-  - DataChain Studio
   - FuzzyLabs
   - Twine.net
   - Scientiometrics
@@ -100,7 +99,7 @@ next level automating parts of the process with CML.
 They begin with the all-important setups of AWS IAM user with EC2 & S3 Developer
 access, the S3 bucket to store the dataset, and requesting an EC2 spot instance.
 They then continue into a detailed description of all the stages of the project,
-outlining the use of all the tools including DVC Studio. You can find
+outlining the use of all the tools including DVC. You can find
 [the repo for the project here.](https://github.com/nabarunbaruaAIML/CML_with_DVC_on_Transformer_NLP)
 Looking forward to the next installment from Nabarun and Arjun on a Dockerized
 Container Application cluster with Kubernetes Orchestration. 🍿
@@ -368,3 +367,6 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

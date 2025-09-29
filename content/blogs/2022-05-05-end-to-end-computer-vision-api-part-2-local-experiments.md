@@ -39,7 +39,6 @@ tags:
   - Computer Vision
   - DVC
   - CML
-  - Studio
   - CI/CD
   - Experiment Tracking
   - Tutorial
@@ -222,3 +221,8 @@ advantage of our cloud infrastructure? What if we'd like to have a custom report
 GitHub? The third (and last) part of this series of posts will demonstrate how
 another open-source tool from the Iterative ecosystem, [CML](https://cml.dev/),
 addresses these issues.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

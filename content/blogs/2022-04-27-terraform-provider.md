@@ -125,3 +125,8 @@ If you’d like to try the Iterative Provider in your project, check out the
 documentation on the provider’s page in the Terraform registry, and if you have
 any questions or suggestions, we welcome them in our
 [GitHub repository.](https://github.com/iterative/terraform-provider-iterative)
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

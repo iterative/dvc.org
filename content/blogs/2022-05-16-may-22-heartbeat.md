@@ -107,9 +107,8 @@ a frequent contributor to the MLOps Community in general, often driving
 discussions and helping others in the
 [MLOps Community Slack channel,](https://mlops-community.slack.com/join/shared_invite/zt-178s99cyv-Q~whRpqbhgMTBrOcbjnDIQ#/shared-invite/email)
 posed an interesting point about code quality on LinkedIn. Join the discussion
-and weigh in at this post:
-
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6931541880090324992" height="800" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+and weigh in at
+[this post](https://www.linkedin.com/embed/feed/update/urn:li:share:6931541880090324992).
 
 # Company News
 
@@ -395,3 +394,6 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
