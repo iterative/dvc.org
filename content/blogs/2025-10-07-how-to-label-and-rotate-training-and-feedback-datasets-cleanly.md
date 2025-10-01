@@ -11,12 +11,14 @@ picture: 2025-10-07/label-rotate-training-feedback-cover.png
 pictureComment:
   Community Member Akash Mane contributed this solution using DVC.
 authors:
-  - Akash Mane
+  - akash_mane
 tags:
   - Open Source
   - Labeling
   - DVC
   - Tutorial
+  - Guide
+  - Label Studio
 ---
 
 _This tutorial has been re-posted with permission from the author,
