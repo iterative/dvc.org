@@ -9,7 +9,7 @@ descriptionLong: >
 
 picture: 2025-10-07/label-rotate-training-feedback-cover.png
 pictureComment:
-  Community Member Akash Mane contributes this solution using DVC.
+  Community Member Akash Mane contributed this solution using DVC.
 authors:
   - Akash Mane
 tags:
@@ -81,7 +81,7 @@ labels.
 Lint training manifests: fail the job if class names don’t match the registry.
 
 ![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
-_Challenges of running DVC in a distributed Ray Cluster_
+_Labeling Quality Assurance Checklist_
 
 ### Risks of mislabeled data in production AI systems
 
@@ -166,6 +166,9 @@ codify them in the repo, and make every new sample earn its place.
 A taxonomy is your contract with the model-and with future you.
 
 ### How to design a taxonomy that survives contact with reality
+
+![Label Mapping and Taxonomy](../uploads/images/2025-10-07/label-mapping.png '=600')
+_Label Mapping and Taxonomy_
 
 - Start from decisions, not data. List the business decisions your model must
   support (refund approve/deny, safety allow/filter, route to tier-2). Backsolve
@@ -401,6 +404,9 @@ human error.
 schemas, label maps, and promotion gates.)
 
 ## Dataset Rotation: Why It Matters
+
+![Dataset Rotation](../uploads/images/2025-10-07/rotate-data.png '=600') _Rotate
+data seasonally with 60-180 day rolling window_
 
 Models age. User behavior shifts with seasonality, pricing, new UX flows, and
 market shocks. Dataset rotation keeps your training distribution close to
@@ -718,6 +724,9 @@ data flows out, and your models move forward without weekend fire drills.
   ≤15% of train.
 
 ### Pipelines that rotate datasets without downtime
+
+![Pipline dataset rotation](../uploads/images/2025-10-07/pipeline-dataset-rotation.png '=600')
+_Pipelines that rotate datasets without downtime_
 
 - **Blue/green datasets:** Keep train@green serving production; build train@blue
   in parallel. Only flip the pointer after eval passes. Revert by swapping back.
