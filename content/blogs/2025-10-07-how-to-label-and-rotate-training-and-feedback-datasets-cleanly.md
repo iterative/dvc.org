@@ -21,11 +21,9 @@ tags:
   - Label Studio
 ---
 
-_This tutorial has been re-posted with permission from the author,
+\_This tutorial has been re-posted with permission from the author,
 [Akash Mane](https://www.reddit.com/user/Cute_Surround_5480/). You can find
-[the original post here](https://www.reddit.com/r/AiReviewInsider/comments/1nhnbtr/how_to_label_and_rotate_training_feedback/)
-the original post
-[here](https://www.reddit.com/r/AiReviewInsider/comments/1nhnbtr/how_to_label_and_rotate_training_feedback/?utm_medium=email&_hsenc=p2ANqtz--R5ouNUVl3bt9ZIvv2BA1fZnfTFT20hpkI3cuHTz-SNVlqnBPYP5gAZfWfTqzW5dkNSwaESg-yX0ci1dQmPsk1ZZpEea5u6pyPyuXpkHheB3Tb4cY&_hsmi=2&utm_content=2&utm_source=hs_email)_
+[the original post here](https://www.reddit.com/r/AiReviewInsider/comments/1nhnbtr/how_to_label_and_rotate_training_feedback/).
 
 Cash burns quietly in AI teams. Not always on GPUs-often in mislabeled tickets,
 mismatched taxonomies, and stale feedback queues. One wrong label today
@@ -73,14 +71,15 @@ export; half don’t. Your model learns two partial distributions. Accuracy look
 correlates with one spelling. A single alias rule or migration script would have
 prevented weeks of noisy firefighting.
 
-\*\*Tactical checklist (use in PRs):
+### Tactical checklist (use in PRs)
 
-Enforce a **label map** (YAML/JSON) with canonical names and deprecated aliases.
+- Enforce a **label map** (YAML/JSON) with canonical names and deprecated
+  aliases.
 
-Add **schema validation** at ingest; reject events with unknown or deprecated
-labels.
+- Add **schema validation** at ingest; reject events with unknown or deprecated
+  labels.
 
-Lint training manifests: fail the job if class names don’t match the registry.
+- Lint training manifests: fail the job if class names don’t match the registry.
 
 ![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
 _Labeling Quality Assurance Checklist_
@@ -616,8 +615,8 @@ domains and internal trust.
 - **Rollback drills:** Practice reverting the last promoted tag and re-deploying
   the previous model. Document the steps so on-call can do it half-asleep.
 
-- 88Data diffs you can read:\*\* Summaries should include row deltas, class
-  prior changes, drift metrics, and top schema violations fixed. Humans approve
+- **Data diffs you can read:** Summaries should include row deltas, class prior
+  changes, drift metrics, and top schema violations fixed. Humans approve
   merges; robots only assist.
 
 **Personal experience (short & honest):** We once shipped a quiet regression
@@ -908,6 +907,8 @@ sped up.
 Test”). Gawande stresses that consistency in critical tests saves lives. In AI
 ops, your canary set is that checklist: unchanged, reliable, and the yardstick
 for every candidate model.
+
+---
 
 **Author Insight:**
 _[Akash Mane](https://www.linkedin.com/in/akash-mane-0a7109229/)_ is an author
