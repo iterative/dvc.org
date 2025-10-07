@@ -29,8 +29,8 @@ tags:
 ---
 
 \_This tutorial has been re-posted with permission from the author,
-[Akash Mane](https://www.reddit.com/user/Cute_Surround_5480/). You can find
-[the original post here](https://www.reddit.com/r/AiReviewInsider/comments/1nhnbtr/how_to_label_and_rotate_training_feedback/).
+[Akash Mane](https://www.reddit.com/user/Cute_Surround_5480/). This post
+originally appeared on Reddit.
 
 Cash burns quietly in AI teams. Not always on GPUs-often in mislabeled tickets,
 mismatched taxonomies, and stale feedback queues. One wrong label today
