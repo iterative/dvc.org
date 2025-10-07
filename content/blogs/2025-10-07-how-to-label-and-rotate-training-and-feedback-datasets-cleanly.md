@@ -1,15 +1,22 @@
 ---
 title:
-  'Community Spotlight: Akash Mane - How to Label and Rotate Training and Feedback Datasets Cleanly
+  'Community Spotlight: Akash Mane - How to Label and Rotate Training and
+  Feedback Datasets Cleanly'
 date: 2025-10-07
 description: >
- Raise your labeling standards with this great guide from Community member, Akash Mane!
+  Raise your labeling standards with this great guide from Community member,
+  Akash Mane!
 descriptionLong: >
- A very thorough guide on robust practices for clean dataset labeling and rotation, stressing that mislabeled data silently erodes accuracy, trust, and budgets. It details taxonomy governance, metadata standards, annotation tooling, and integration of labeling workflows into MLOps pipelines. It advocates using DVC for dataset versioning to ensure reproducibility, auditability, and safe rollbacks, and promotes concepts like canary sets, shadow validation, blue/green datasets, and ethics canaries.
+  A very thorough guide on robust practices for clean dataset labeling and
+  rotation, stressing that mislabeled data silently erodes accuracy, trust, and
+  budgets. It details taxonomy governance, metadata standards, annotation
+  tooling, and integration of labeling workflows into MLOps pipelines. It
+  advocates using DVC for dataset versioning to ensure reproducibility,
+  auditability, and safe rollbacks, and promotes concepts like canary sets,
+  shadow validation, blue/green datasets, and ethics canaries.
 
-picture: 2025-10-07/label-rotate-training-feedback-cover.png
-pictureComment:
-  Community Member Akash Mane contributed this solution using DVC.
+picture: 2025-10-07/label-rotate-training-feedback.png
+pictureComment: Community Member Akash Mane contributed this solution using DVC.
 authors:
   - akash_mane
 tags:
