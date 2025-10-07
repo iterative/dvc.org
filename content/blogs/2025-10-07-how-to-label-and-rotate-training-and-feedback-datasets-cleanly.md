@@ -133,8 +133,8 @@ explain a number to leadership or to an auditor.
   same rows unless you freeze a snapshot.
 
 - Change logs for labels: Treat labels like code. Changes require PRs, diffs,
-  reviewers, and semantic versioning (labels@v1.3.0). Note the reason for every
-  change.
+  reviewers, and semantic versioning (`labels@v1.3.0`). Note the reason for
+  every change.
 
 - Feature + label lineage: Track upstream source (form field, API endpoint,
   country/locale), transformation (regex, normalization), and policy (retention
@@ -239,9 +239,9 @@ _Label Mapping and Taxonomy_
 - Label Council: A small rotating group (PM, DS, ops lead) meets weekly to
   approve taxonomy changes. No ad-hoc edits in DMs.
 
-- Semantic versioning: labels@v1.4.2 for patches (typos), v1.5.0 for new labels,
-  v2.0.0 for breaking changes (merges/splits). Training runs record the exact
-  version.
+- Semantic versioning: `labels@v1.4.2` for patches (typos), v1.5.0 for new
+  labels, v2.0.0 for breaking changes (merges/splits). Training runs record the
+  exact version.
 
 - Deprecation path: Announce, alias, migrate, then remove. Keep a 30–60 day
   grace window where old labels are auto-mapped but flagged.
@@ -606,7 +606,7 @@ domains and internal trust.
 
 - Pre-commit hook to prevent untracked files from sneaking into train.
 
-- Exporters that write DATASET_CARD.md and bump labels@vX.Y.Z.
+- Exporters that write DATASET_CARD.md and bump `labels@vX.Y.Z`.
 
 ### Best practices for dataset rollback and branching
 
@@ -716,8 +716,8 @@ data flows out, and your models move forward without weekend fire drills.
   → monthly/quarterly.
 
 - **Windows with guardrails:** Define a rolling time window (e.g., last 120
-  days) and pin label_map@vX.Y.Z. Add blackout dates (major promos, outages) you
-  don’t want sampled.
+  days) and pin `label_map@vX.Y.Z`. Add blackout dates (major promos, outages)
+  you don’t want sampled.
 
 - **Calendar + ownership:** Create a shared “Data Rotation” calendar entry with
   owner, checklist, and runbook link. If the owner is OOO, rotation is
@@ -845,7 +845,7 @@ constraints you’ll enforce.
 
 ## How do I prevent label sprawl as my taxonomy grows?
 
-Adopt **semantic versioning** (labels@v1.4.0) and a single source of truth
+Adopt **semantic versioning** (`labels@v1.4.0`) and a single source of truth
 (label_map.yaml). For every new class, require: inclusion/exclusion rules, 3
 positive/3 negative examples, and migration notes if it replaces an old class.
 Alias maps auto-migrate legacy labels; CI blocks unknowns.
