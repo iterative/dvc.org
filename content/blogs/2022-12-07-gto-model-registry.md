@@ -372,3 +372,8 @@ software engineering stack. No more divide between ML engineering and
 operations!
 
 [discord]: https://discord.com/channels/485586884165107732/903647230655881226
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

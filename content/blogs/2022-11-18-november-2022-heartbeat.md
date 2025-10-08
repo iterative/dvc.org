@@ -34,7 +34,6 @@ tags:
   - DVC
   - CML
   - MLEM
-  - DataChain Studio
   - GitHub Universe
   - SOC 2
   - Sagemaker
@@ -378,12 +377,6 @@ greatest updates below.
   [GTO](https://github.com/iterative/gto) on the [MLEM](https://mlem.ai/doc)
   website.
 
-### Iterative Studio docs
-
-- DataChain Studio now supports adding a model from a remote location in
-  Iterative Studio.
-- Use the new Iterative Studio Wizard to set up CML in your CI.
-
 ---
 
 _Have something great to say about our tools? We'd love to hear it! Head to
@@ -396,3 +389,8 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

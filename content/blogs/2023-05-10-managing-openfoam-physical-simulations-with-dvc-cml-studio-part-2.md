@@ -294,3 +294,8 @@ Overall, DVC, CML, and Iterative Studio can help OpenFOAM users:
 - [Walkthrough and tutorial for `scalarTransportFoam`: a solver for advection-diffusion of a passive scalar](https://www.researchgate.net/profile/Ingo-Riess/post/How_to_model_smoke_propagation_for_an_existing_velocity_field_using_scalarTransportFoam_in_OpenFOAM/attachment/5cee6f723843b0b98254daac/AS%3A763860613099524%401559129970722/download/5-scalarTransportFoamTutorial.pdf),
   _Eric Paterson and Kevin T. Crofton Department of Aerospace and Ocean
   Engineering Virginia Polytechnic Institute and State University_
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

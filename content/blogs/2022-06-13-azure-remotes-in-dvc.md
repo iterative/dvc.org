@@ -232,3 +232,8 @@ That’s it! Now you can connect any DVC project to an Azure blob storage
 container. If you run into any issues, makes sure to check that your credentials
 are valid, check if your user has MFA enabled, and check that the user has the
 right level of permissions.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

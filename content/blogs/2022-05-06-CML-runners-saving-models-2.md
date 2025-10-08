@@ -242,3 +242,8 @@ version of our model into production. This step might be conditional on the
 performance of the model; we could decide to only start using it in production
 if it performs better than previous iterations. All of this warrants a guide of
 its own, however, so look out for that in the future! 😉
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

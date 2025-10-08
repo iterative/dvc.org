@@ -271,3 +271,8 @@ your changes or worrying about your storage growing into an unmanageable mess.
 
 Special thanks to [Peter Rowlands](https://github.com/pmrowla) for leading the
 development of this new capability!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

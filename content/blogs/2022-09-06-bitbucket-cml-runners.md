@@ -234,3 +234,8 @@ These topics warrant their own guides, however. Keep an eye out for these
 follow-ups on our blog, and make sure to let us know what you would like us to
 cover next! You can let us know in the comments or by
 [joining our Discord server](https://dvc.org/chat).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

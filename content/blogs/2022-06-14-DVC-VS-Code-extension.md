@@ -178,3 +178,8 @@ Want to read more about DVC or the extension? Check out the following pages:
 - [Iterative community on Discord](https://dvc.org/chat)
 
 https://youtu.be/LHi3SWGD9nc
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

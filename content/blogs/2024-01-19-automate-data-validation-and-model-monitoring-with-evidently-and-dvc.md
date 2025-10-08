@@ -562,3 +562,8 @@ community support! Stay tuned!
 
 - [How to break a model in 20 days. A tutorial on production model analytics](https://www.evidentlyai.com/blog/tutorial-1-model-analytics-in-production)
 - [Turn Your Favorite IDE into a Full Machine Learning Experimentation Platform](https://iterative.ai/blog/turn-vs-code-into-ml-platform)
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

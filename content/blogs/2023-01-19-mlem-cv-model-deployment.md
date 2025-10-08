@@ -167,3 +167,8 @@ steps. What's next?
 Feel free to drop us a line in
 [GH issues](https://github.com/iterative/mlem/issues) if you'd like something
 specific! See you next time 🐶
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

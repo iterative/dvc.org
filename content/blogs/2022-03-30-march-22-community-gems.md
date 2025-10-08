@@ -98,3 +98,6 @@ within the
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

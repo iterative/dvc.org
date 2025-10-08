@@ -21,7 +21,6 @@ tags:
   - Git
   - MLEM
   - GTO
-  - DataChain Studio
   - Release
 ---
 
@@ -188,3 +187,8 @@ https://www.youtube.com/watch?v=DYeVI-QrHGI
 [semver]: https://semver.org/
 [email me]: mailto:tapa@iterative.ai
 [github support repo]: https://github.com/iterative/studio-support
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -48,9 +48,8 @@ production, preventing stale ones from lingering too long.
 We'll be working with a project from
 [Evidently.ai](https://evidentlyai.com/blog/tutorial-1-model-analytics-in-production)
 that demonstrates what it would be like to work with a production model that
-experiences data drift over time. We'll take this to the next level by adding
-some automation with a DVC pipeline and share the results with others using DVC
-Studio.
+experiences data drift over time. Then we'll take this to the next level by
+adding some automation with a DVC pipeline.
 
 So we'll start by cloning
 [this repo for the project](https://github.com/iterative/stale-model-example).
@@ -58,12 +57,11 @@ This project is based on the one created by
 [evidently.ai](https://github.com/evidentlyai/evidently/blob/main/examples/data_stories/bicycle_demand_monitoring.ipynb)
 with some modifications to work with DVC and different datasets.
 
-The reason we're adding DVC and Studio to this project is to automate the way
-our model evaluation pipeline runs and to version our data as we get new data.
-We'll be able to share and review the results for each experiment run we do. One
-of the big problems in machine learning is collaboration, so making it easier to
-share models, data, and results can save your team a lot of time and
-frustration.
+The reason we're adding DVC to this project is to automate the way our model
+evaluation pipeline runs and to version our data as we get new data. We'll be
+able to share and review the results for each experiment run we do. One of the
+big problems in machine learning is collaboration, so making it easier to share
+models, data, and results can save your team a lot of time and frustration.
 
 ## Set up data drift reports
 
@@ -200,20 +198,6 @@ like this model has a different set of hyperparameters that perform well. Now
 that we have all of the experiments with both the old and new datasets, this is
 a good time to share the results with your coworkers and get some feedback.
 
-## Viewing experiment results in DVC Studio
-
-Because we already have DVC set up in this project, we can run as many
-experiments as we need to, and it will track which datasets we're working with,
-the code changes that we make, and it'll let us look at all the results from
-each experiment in Studio.
-
-If you go to [Iterative Studio](https://studio.datachain.ai/), you'll be
-prompted to connect to your GitHub/GitLab account and you'll be able to choose
-the repo for this project. Once you're connected, you should be able to see all
-the experiments you've pushed to your Git history.
-
-![example of plots and results in DVC Studio](../uploads/images/2022-03-31/stale_models_in_studio.png)
-
 You can give others on your team access to this, and they'll be able to run new
 experiments and see the results right in the browser. This is a great tool to
 use to discuss the next best steps in your model training before you're ready to
@@ -233,3 +217,8 @@ Now you just have to keep an eye on this new model to make sure that it does
 stray too far from the results you expect. This is one of the processes you can
 use to keep your production models from going stale. You could even automate
 some parts of this process if you know what your thresholds are!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

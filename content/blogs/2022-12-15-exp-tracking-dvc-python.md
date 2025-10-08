@@ -75,7 +75,7 @@ push existing experiments to your Git provider (GitHub/GitLab). When you need
 artifact
 [storage](https://dvc.org/doc/start/data-management/data-versioning#storing-and-sharing),
 add your own cloud provider and push your existing artifacts. When you need a
-UI, use VS Code or add [Iterative Studio] for a collaborative interface.
+UI, use VS Code for a collaborative interface.
 
 # How to start
 
@@ -212,8 +212,8 @@ including:
 - **Showing you where to go from here**. Share your experiments, add data or
   pipelines, and use DVC without ever leaving your notebook or Python IDE.
 
-- **Adding more DVCLive features**. Share realtime updates to [Iterative
-  Studio], log data and model artifacts, and compare experiments in Python.
+- **Adding more DVCLive features**. Share realtime updates , log data and model
+  artifacts, and compare experiments in Python.
 
 Try out the [repo] or [colab notebook] and let us know what you think in
 [Discord](https://discordapp.com/invite/dvwXA2N) or
@@ -226,3 +226,8 @@ Try out the [repo] or [colab notebook] and let us know what you think in
 [repo]: https://github.com/iterative/dvclive-exp-tracking
 [colab notebook]:
   https://colab.research.google.com/drive/1VKEBdSgFdEjg-k6FqNXX-0o83QWcpmN_?usp=sharing
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

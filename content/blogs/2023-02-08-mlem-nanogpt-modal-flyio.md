@@ -131,3 +131,8 @@ Nowadays it’s really easy to recreate someone else’s work thanks to open sou
 software. And thanks to folks like Andrej and companies like Modal and Fly now
 it becomes much faster to build and deploy ML models. We are happy to be part of
 this, with tools like MLEM, DVC, CML and others. Long live the open source!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

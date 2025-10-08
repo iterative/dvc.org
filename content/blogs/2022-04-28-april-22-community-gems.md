@@ -76,20 +76,6 @@ that the restarted workflow will use previous results (e.g. use
 https://dvc.org/doc/user-guide/experiment-management/checkpoints#caching-checkpoints
 and https://github.com/iterative/dvc/issues/6823)
 
-### [When running an experiment from the web interface with DVC, is there any way to get the new metrics to show on the commit created by Iterative Studio for the experiment?](https://discord.com/channels/485586884165107732/841856466897469441/957931058639306772)
-
-Awesome question about Studio from @Benjamin-Etheredge!
-
-In order to show the experiment results in Studio, you would have to commit and
-push the results as part of your CI (continuous integration) action. Here's an
-[example GitHub action script](https://github.com/iterative/demo-fashion-mnist/blob/main/.github/workflows/cml.yaml)
-that does this.
-
-We do understand that it is not ideal that there are 2 commits, one with your
-changes and one with the results. We have been thinking about how this can be
-improved and it would be great to hear if you have
-[any thoughts/ideas](https://github.com/iterative/studio-support/)!
-
 ### [Is there a way to get DVC to import from a private repository?](https://discord.com/channels/485586884165107732/485596304961962003/964204106824695868)
 
 Good question from @qubvel!
@@ -126,3 +112,6 @@ to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

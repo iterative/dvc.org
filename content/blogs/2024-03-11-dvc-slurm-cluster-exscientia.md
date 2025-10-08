@@ -342,3 +342,8 @@ We shared two repositories: a simple DVC project and a tool for remote execution
 on SLURM clusters. The latter is universal - it knows nothing about the
 project! - and easily hackable. We highly recommend to fork and customise it to
 your team’s needs.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

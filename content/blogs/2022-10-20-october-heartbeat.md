@@ -136,14 +136,12 @@ https://youtu.be/FKdVSNfnD_M
 Join us for our next meetup on November 16th. We will have
 [**Dmytro Filatov**](https://www.linkedin.com/in/dim25/) of
 [DeepX](https://deepxhub.com/) presenting _Continous Computer Vision with DVC
-and CML_ and [**Jelle Bouwman**](https://www.linkedin.com/in/jelle-bouwman/)
-demoing Iterative Studio Model Registry. Be sure to register
-[here!](https://www.meetup.com/machine-learning-engineer-community-virtual-meetups/events/289088542/)
+and CML_
 
 <external-link
 href="https://www.meetup.com/machine-learning-engineer-community-virtual-meetups/events/289088542/"
-title="Continuous Computer Vision with DVC and CML plus Iterative Studio Model Registry Demo"
-description="Join us on November 16th. Come see the possibilities with DVC, CML, and Iterative Studio Model Registry!"
+title="Continuous Computer Vision with DVC and CML"
+description="Join us on November 16th. Come see the possibilities with DVC, CML for Computer Vision!"
 link="https://meetup.com"
 image="../uploads/images/2022-10-20/meetup.png"/>
 
@@ -303,3 +301,8 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

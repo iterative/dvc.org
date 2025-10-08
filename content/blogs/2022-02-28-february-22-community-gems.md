@@ -57,18 +57,6 @@ Check out
 [this open issue with experiments](https://github.com/iterative/dvc/issues/6181)
 for more details and to provide feedback.
 
-### [Is there an easy way to visualize DVC experiment results without using the command line?](https://discord.com/channels/485586884165107732/485596304961962003/930150143259459644)
-
-Good question @LucZ[Mad]!
-
-If you bring those experiments into your regular Git workflow, e.g. using
-`dvc exp branch` to create a branch for any experiment you want to share, you
-could use [DVC Studio](https://studio.datachain.ai/) to visualize them.
-
-We're working on support for viewing any pushed experiments in Studio right now
-so if there's anything you want to see, make sure to comment on and follow
-[this issue](https://github.com/iterative/studio-support/issues/45).
-
 ### [Can CML self-hosted runners stop the instance after the idle timeout instead of terminating?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
 
 This is another fantastic question from @jotsif!
@@ -82,23 +70,6 @@ It's best to let the CML runner terminate and create new instances, running
 However, if you're trying to preserve data (e.g. cache dependencies to speed up
 experimentation time) on an AWS EC2 instance, you could
 [connect persistent AWS S3 remote storage](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/).
-
-### [What's the difference between DVC Studio free and enterprise versions?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
-
-Thanks for asking @Abdi!
-
-You can find more info about the different
-[DVC Studio tiers here](https://studio.datachain.ai/#pricing).
-
-The _Free_ tier has all the features most individual users need, like connecting
-to ML repositories, creating views, submitting experiments, and generating
-plots. The _Teams_ tier allows you to create large teams for better
-collaboration and sharing of views and settings with everyone. The _Enterprise_
-tier is more for needs around compliance, dedicated support, and on-premise
-installation.
-
-If you are trying to decide which plan to select, please email us at
-`support@iterative.ai` and we'll help you figure it out based on your needs.
 
 ### [How can I use one `dvc.yaml` file with multiple pipeline folders with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
 
@@ -122,26 +93,6 @@ stages:
         - ${item}.cln
 ```
 
-### [Is it possible to change the x-label in DVC Studio?](https://discord.com/channels/485586884165107732/841856466897469441/938857004187943003)
-
-A great question about Studio from @PythonF!
-
-You can set custom properties for your plot in your `dvc.yaml` like this:
-
-```yaml
-plots:
-  - plots_no_cache.csv:
-      cache: false
-      x: r
-```
-
-You can also use `dvc plots modify` to change the x-label or y-label for your
-plots using commands similar to the following.
-
-```dvc
-$ dvc plots modify plots_no_cache.csv -x r -y q
-```
-
 ---
 
 ![Done Tyler The Creator GIF](https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif)
@@ -153,3 +104,6 @@ to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

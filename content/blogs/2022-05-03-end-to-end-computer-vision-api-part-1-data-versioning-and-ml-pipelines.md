@@ -35,7 +35,6 @@ tags:
   - Computer Vision
   - DVC
   - CML
-  - Studio
   - CI/CD
   - Experiment Tracking
   - Tutorial
@@ -311,3 +310,8 @@ In the second part, we’ll see how to get the most out of experiment tracking a
 management by seamlessly integrating [DVC](https://github.com/iterative/dvc),
 [DVCLive](https://github.com/iterative/dvclive), and
 [Iterative Studio](https://studio.datachain.ai/).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

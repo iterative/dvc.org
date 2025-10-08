@@ -38,15 +38,6 @@ added data. If you're working with remotes using the `--to-remote` option, you
 can skip the local cache entirely and move the file contents directly to your
 remote storage.
 
-## [How can I connect Iterative Studio to a remote repo on a private network, like a GitLab server?](https://discord.com/channels/485586884165107732/563406153334128681/981543978644172830)
-
-Good question about [Iterative Studio](https://studio.datachain.ai/) from
-@LilDataScientist!
-
-This is something that our users asked quite a bit, so we wrote up a whole guide
-about custom GitLab server connections. It's a quick walkthrough of how to set
-up the permissions you'll need and connecting your team to Studio.
-
 ## [How does `dvc get-url` interact with the cache compared to `dvc import-url`?](https://discord.com/channels/485586884165107732/563406153334128681/981862313076346920)
 
 This is an awesome question from @Gema Parreno!
@@ -133,8 +124,6 @@ This will produce a table similar to this one:
 
 You can also look at/edit these tables with the
 [DVC VS Code extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)!
-If you're interested in more advanced visualizations, you should try out
-[Iterative Studio](https://studio.datachain.ai/#features).
 
 ## [Is it possible to create, commit, and push updates to datasets using DVC with Python instead of the command line?](https://discord.com/channels/485586884165107732/563406153334128681/988895726257991740)
 
