@@ -173,3 +173,8 @@ As always, if you have any use case questions or need support, join us in
 
 And, you can follow us on [Twitter](https://twitter.com/dvcorg) and
 [LinkedIn](https://www.linkedin.com/company/iterative-ai)!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

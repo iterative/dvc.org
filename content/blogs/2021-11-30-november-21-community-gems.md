@@ -6,13 +6,12 @@ description: >
   runners, working with data, DVC Studio, and more.
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community. This month: CML
-  runners, working with data, DVC Studio, and more.
+  runners, working with data, and more.
 picture: 2021-11-30/nov-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/november-21-community-gems/964
 tags:
   - Data Versioning
-  - DataChain Studio
   - DVC
   - CML
   - Community Gems
@@ -151,18 +150,6 @@ You can remove it and stop tracking in Git with a command like:
 $ git rm -r folder_name
 ```
 
-### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
-
-Very good question about Studio @Sra!
-
-Right now this only works if it's an on-premises network or a private VPC
-network.
-
-We are working on bringing custom-domain GitLab as a feature very soon! You can
-follow
-[this GitHub issue](https://github.com/iterative/studio-support/issues/12) and
-leave comments for anything you'd like to see!
-
 ### [Is there a way to extend default job execution time for a CML runner?](https://discord.com/channels/485586884165107732/728693131557732403/904660123161600021)
 
 There is definitely a way to do this!
@@ -194,3 +181,6 @@ to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

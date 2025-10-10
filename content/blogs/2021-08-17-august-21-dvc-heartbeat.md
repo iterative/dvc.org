@@ -183,10 +183,8 @@ you can see [João Santiago](https://twitter.com/jcpsantiago) shares about
 {dvthis}, and how his team at [Billie.io](https://www.billie.io/) uses DVC to
 productionize rstats.
 
-Also in the Meetup is a DVC Studio demo by
-[Tapa Dipti Situala](https://www.linkedin.com/in/tapa-dipti-sitaula/), Senior
-Product Engineer for Studio. You can catch the presentations along with great
-questions and discussion from the Community!
+You can catch the presentation along with great questions and discussion from
+the Community!
 
 https://www.youtube.com/watch?v=H22j1lWIvMw&t=1546s
 
@@ -253,3 +251,6 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

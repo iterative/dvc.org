@@ -276,3 +276,8 @@ the new capabilities provided in our 2.0 release. And as always, if you have any
 questions, comments or suggestions, please feel free to connect with the DVC
 community on [Discourse](https://discuss.dvc.org/),
 [Discord](https://dvc.org/chat) and [GitHub](https://github.com/iterative/dvc).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -572,3 +572,8 @@ make it more stable.
 
 Please be in touch with us on [Twitter](https://twitter.com/DVCorg) and our
 [Discord channel](https://dvc.org/chat).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

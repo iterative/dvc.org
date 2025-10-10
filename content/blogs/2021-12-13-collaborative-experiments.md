@@ -162,3 +162,8 @@ It's a lot easier to get help from someone on a project when you can share
 everything with them. When you use DVC, you can bundle your data and code
 changes for each experiment and push those to a remote for somebody else to
 check out.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
