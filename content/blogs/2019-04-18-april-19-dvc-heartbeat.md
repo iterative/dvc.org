@@ -262,3 +262,8 @@ There are two options:
 If you have any questions, concerns or ideas, let us know
 [here](https://dvc.org/support) and our stellar team will get back to you in no
 time.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
