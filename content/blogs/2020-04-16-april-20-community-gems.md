@@ -149,3 +149,7 @@ conversions between the filenames in your local workspace and these hashes.
 To get some more intuition about this, check out some of our
 [docs](https://dvc.org/doc/user-guide/dvc-internals) about how DVC organizes
 files.
+
+---📰
+[Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq) to
+stay up to date with news and contributions from the Community!

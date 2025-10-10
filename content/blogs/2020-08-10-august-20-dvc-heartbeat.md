@@ -214,3 +214,8 @@ Thanks everyone, that's it for this month. We hope you're staying safe and
 making cool things!
 
 ![Reaction GIF by MOODMAN](https://media.giphy.com/media/35EsMpEfGHkVoHbNTU/giphy.gif)
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

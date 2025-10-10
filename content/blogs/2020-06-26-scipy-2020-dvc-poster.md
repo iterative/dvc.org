@@ -229,3 +229,8 @@ comment, reach out on Twitter, or send an email.
 _Check out our
 [tutorial about creating a data registry](https://dvc.org/doc/use-cases/data-registries)
 for more code examples._
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

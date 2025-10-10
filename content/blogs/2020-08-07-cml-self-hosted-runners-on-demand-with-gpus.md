@@ -176,3 +176,8 @@ Treating experiments like potential new features in a software project opens up
 many possibilities for improving our engineering practices. We’re looking
 forward to an era when ML experiments can be created, logged, and merged into
 production-ready code in minutes, not days or weeks.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

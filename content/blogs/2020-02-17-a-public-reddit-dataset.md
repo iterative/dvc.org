@@ -325,3 +325,8 @@ already-processed and cleaned version of the data that can be downloaded with a
 line of code; pushshift takes some work). You might use pushshift's API and/or
 praw to augment this dataset in some way- perhaps to compare activity in this
 subreddit with another, or broader patterns on Reddit.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

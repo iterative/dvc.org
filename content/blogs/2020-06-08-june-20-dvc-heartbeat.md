@@ -212,3 +212,8 @@ about DVC. Look for more updates this summer!
 
 Thanks for reading this month. As always, we're proud of the ways our community
 works for better, more rigorous ML.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

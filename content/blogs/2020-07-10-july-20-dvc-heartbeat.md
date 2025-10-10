@@ -95,10 +95,7 @@ shortage of speaking engagements. Here's a recap.
   [Making Data Science Work](https://hasgeek.com/fifthelephant/making-data-science-work-session-3/)
   to discuss engineering for data science with hosts
   [Venkata Pingali](https://www.linkedin.com/in/pingali/) and
-  [Indrayudh Ghoshal](https://www.linkedin.com/in/indrayudhghoshal/). The
-  livestream is available for viewing on YouTube!
-
-https://www.youtube.com/watch?v=EWcpALbzZRg
+  [Indrayudh Ghoshal](https://www.linkedin.com/in/indrayudhghoshal/).
 
 - Dmitry appeared on the [MLOps.community](https://mlops.community/) meetup to
   chat with host [Demetrios Brinkmann](https://www.linkedin.com/in/dpbrinkm/).
@@ -193,3 +190,8 @@ us and reading. There are lots of ways to stay in touch and we always love to
 hear from you. Follow us on [Twitter](twitter.com/dvcorg), join our
 [Discord server](https://discordapp.com/invite/dvwXA2N), or leave a blog
 comment. Until next time! 😎
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

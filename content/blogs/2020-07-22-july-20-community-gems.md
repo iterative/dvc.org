@@ -190,3 +190,8 @@ If you have a suggestion or idea, no matter how small, we want to know. Leave a
 [comment on our videos](https://youtu.be/9BgIDqAzfuA),
 [reach out on Twitter](https://twitter.com/dvcorg), or
 [ping us in Discord](https://discord.gg/bzA6uY7).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

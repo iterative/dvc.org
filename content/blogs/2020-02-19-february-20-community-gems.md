@@ -150,3 +150,8 @@ files with the dataset versions they were trained on.
 To summarize, DVC is not the only way to version your data. But we think it's
 one way to reduce the overhead of managing data infrastructure when your project
 involves experimentation or collaboration.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

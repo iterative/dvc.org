@@ -161,3 +161,8 @@ the cloud).
 One other approach worth mentioning is that you can manually edit your
 `dvc.yaml` file to add a stage. If you add a stage this way, pipeline commands
 won't be executed until you run `dvc repro`.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

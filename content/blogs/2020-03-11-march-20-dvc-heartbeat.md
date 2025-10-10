@@ -136,3 +136,8 @@ That's all for now—thanks for reading, and be in touch on our
 [GitHub](https://github.com/iterative/dvc),
 [Twitter](https://twitter.com/dvcorg), and
 [Discord channel](https://dvc.org/chat).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

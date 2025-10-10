@@ -192,3 +192,8 @@ This covers a lot of cases, but if the files you wish to publish can't be shared
 with our service for security or privacy reasons, you can emulate the
 `cml publish` function with your own storage. You would push your file to
 storage and include a link to its address in your markdown report.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -194,3 +194,8 @@ to play on your runner!
 
 Note that you can also install pre-release versions of DVC- check out our
 [docs about installing the latest stable version ahead of official releases](https://dvc.org/doc/install/pre-release).
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

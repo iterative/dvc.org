@@ -144,3 +144,8 @@ Here are a few more stories on our radar:
   (pretty neat mission). The decorations on the job posting are ours 😎
 
 ![](../uploads/images/2020-02-10/elvie.png)_A job advertisement featuring DVC._
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
