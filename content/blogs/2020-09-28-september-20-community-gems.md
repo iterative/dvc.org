@@ -206,3 +206,8 @@ Circle CI, Jenkins, Bamboo, Azure DevOps Pipelines, and Travis CI. Feel free to
 [open a feature request ticket](https://github.com/iterative/cml/issues), or
 leave a 👍 on open requests, to "vote" for the integrations you'd like to see
 most.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

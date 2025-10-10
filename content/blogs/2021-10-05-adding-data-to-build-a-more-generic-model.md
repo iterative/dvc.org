@@ -261,3 +261,6 @@ individual experiments.
 If you need help with anything DVC or CML, make sure to
 [join our Discord community](https://discord.com/invite/dvwXA2N)! We're always
 answering questions and having good conversations with everybody that shows up.
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

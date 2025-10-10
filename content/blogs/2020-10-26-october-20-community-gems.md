@@ -168,3 +168,6 @@ your metric in `dvc.yaml`. Be sure to remove your metrics from any `.gitignore`
 files, and commit and push them to your Git repository.
 
 That's all for this month- Happy Halloween! Watch out for scary bugs. 🐛
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

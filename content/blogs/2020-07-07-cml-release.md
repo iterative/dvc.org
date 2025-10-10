@@ -186,3 +186,8 @@ think this is the future of MLOps.
 As always, thanks for reading and for being part of the DVC community. We'd love
 to hear what you think about CML. Please be in touch on
 [Twitter](https://twitter.com/dvcorg) and [Discord](https://dvc.org/chat)!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

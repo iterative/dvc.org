@@ -225,3 +225,8 @@ From April 30, 2019 you can see the list of participating open source
 organizations on the [Season of Docs website](https://g.co/seasonofdocs). The
 application period for technical writers opens on **May 29, 2019** and ends on
 June 28, 2019.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

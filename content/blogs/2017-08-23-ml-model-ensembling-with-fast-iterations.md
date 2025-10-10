@@ -238,3 +238,8 @@ quickly iterate through the entire ML pipeline.
 3. [Using DVC in Machine Learning projects in R](https://blog.dataversioncontrol.com/r-code-and-reproducible-model-development-with-dvc-1507a0e3687b)
 
 4. [Kaggle Ensembling Guide](https://mlwave.com/kaggle-ensembling-guide/)
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

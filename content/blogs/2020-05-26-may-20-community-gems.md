@@ -130,3 +130,8 @@ an example of sharing artifacts across projects.
 
 ![](../uploads/images/2020-05-26/data-registry.png) _Using DVC for sharing
 artifacts like datasets and models across projects and teammates._
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

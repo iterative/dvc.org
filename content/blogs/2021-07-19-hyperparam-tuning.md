@@ -304,3 +304,8 @@ reproducibility can help you find the best model for your project. You'll be
 able to see all of the hyperparameter changes and code changes that created each
 model. This gives you the ability to fine tune your model because you can go to
 any experiment and resume training with different values, code, or data.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

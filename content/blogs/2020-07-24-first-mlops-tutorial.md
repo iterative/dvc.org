@@ -65,3 +65,8 @@ the blog, video, or our [Discord channel](https://discord.gg/bzA6uY7). And,
 we're especially interested to hear what use cases you'd like to see covered in
 future videos- tell us about your data science project and how you could imagine
 using continuous integration, and we might be able to create a video!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

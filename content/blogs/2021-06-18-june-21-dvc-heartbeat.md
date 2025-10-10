@@ -3,8 +3,8 @@ title: June '21 Heartbeat
 date: 2021-06-18
 description: >
   Monthly updates are here! Making sense of the MLOps Landscape, Community love,
-  our MLOps philosophy, DVC Studio, R for DVC, new learning opportunities, team
-  members and more!
+  our MLOps philosophy, R for DVC, new learning opportunities, team members and
+  more!
 descriptionLong: |
   This month you will find:
   🗺 Navigating the MLOps Landscape,
@@ -60,10 +60,9 @@ be. You can join their Slack
 
 > I have recently came across with DVC by listening to MLOps Coffee Sessions #6
 > with David Aponte and Elle O'Brien (Such an interesting talk! 💯). This tool
-> integrates smoothly with Git, tracks models & datasets, and also has an online
-> UI DVC Studio 🚀. Is there any use case of MLflow that DVC can't handle? I
-> find DVC to give more rise to creativity as it integrates really well with
-> Git. - André Godinho
+> integrates smoothly with Git, tracks models & datasets... Is there any use
+> case of MLflow that DVC can't handle? I find DVC to give more rise to
+> creativity as it integrates really well with Git. - André Godinho
 
 ## Neda Sultova's Tutorial and Tool Rubric
 
@@ -105,16 +104,6 @@ title="The Road to AI Hell Starts with Good MLOps Intentions"
 description="Dmitry Petrov explains the journey and philosophy at the heart of Iterative.ai's MLOps tools."
 link="https://thenewstack.io"
 image="../uploads/images/2021-06-18/ai-hell.png"/>
-
-# Big News! 🚀🚀🚀
-
-In case you missed it, June 3rd we introduced our latest tool: DVC Studio! A web
-application that GUI display your team's work with DVC and CML. We know this has
-been on our Community's wishlist and now it's here! You can check out all its
-features and [give it a try here](https://studio.datachain.ai/). Or check out
-the introduction video below.
-
-https://youtu.be/hKf4twg832g
 
 # Learning Opportunities
 
@@ -239,3 +228,6 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

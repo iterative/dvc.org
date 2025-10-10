@@ -223,3 +223,8 @@ jobs that are related to the latest changes. It can also work in multi-user
 environment where dependency graphs, codes and data can be shared among multiple
 users. Because it is language agnostic, DVC allows us to work with multiple
 programming languages within a single data science project.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

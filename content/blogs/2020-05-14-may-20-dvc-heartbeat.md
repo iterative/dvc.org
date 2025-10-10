@@ -178,3 +178,8 @@ As always, we want to hear what you're making with DVC and what you're reading.
 Tell us in the blog comments, and be in touch on
 [Twitter](https://twitter.com/DVCorg) and
 [Discord channel](https://dvc.org/chat). Happy coding!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -212,11 +212,14 @@ announcements about:
 
 - Deep learning features like [live monitoring](https://dvc.org/doc/dvclive) and
   [checkpointing](https://dvc.org/doc/user-guide/experiment-management/checkpoints).
-- Visualizing and comparing experiment results in other tools like VS Code and
-  [DVC Studio](https://studio.datachain.ai/).
 
 What do you want to see for the next generation of experiment tracking? Join our
 upcoming
 [meetup](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/)
 to discuss, join our [Discord community](https://discord.com/invite/dvwXA2N), or
 let us know in the comments!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

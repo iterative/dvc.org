@@ -210,3 +210,8 @@ spending days to get right yet only takes seconds to install.
 [`git`]: https://git-scm.com
 [`make`]: https://en.wikipedia.org/wiki/Make_(software)
 [`shtab`]: https://github.com/iterative/shtab
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

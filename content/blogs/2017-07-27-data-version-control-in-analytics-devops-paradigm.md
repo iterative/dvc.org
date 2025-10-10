@@ -186,3 +186,8 @@ By any mean, DVC is going to be a useful instrument to fill the multiple gaps
 between the classical in-lab old-school data science practices and growing
 demands of business to build solid DevOps processes and workflows to streamline
 mature and persistent data analytics.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

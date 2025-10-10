@@ -167,3 +167,8 @@ here or contact us on Twitter — [FullStackML](https://twitter.com/FullStackML)
 
 If you found this tool useful, **please “star” the
 [DVC Github repository](https://github.com/iterative/dvc)**.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

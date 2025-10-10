@@ -166,3 +166,8 @@ raise an issue on [GitHub](https://github.com/iterative/studio-support).
 We are super excited to have you use DVC Studio. We’re confident that it’ll make
 your Machine Learning journeys so much easier. We can’t wait to hear how it
 goes.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

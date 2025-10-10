@@ -379,3 +379,8 @@ efficient. Using DVC to help with this kind of experimentation will give you the
 ability to reproduce any experiment you run, making it easier to collaborate
 with others on a project. It will also help you keep track of what you've
 already tried in previous experiments.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

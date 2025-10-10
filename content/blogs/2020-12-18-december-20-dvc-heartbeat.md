@@ -168,3 +168,8 @@ about MLOps, is a wonderful encapsulation of the many considerations (at many
 scales) that go into ML engineering. Do you see DVC in there? 🕵️
 
 Thank you for reading, and happy holidays to you! ❄️ 🎁 ☃️
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

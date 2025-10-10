@@ -162,3 +162,8 @@ of the ideas and technical challenges our community thinks about every day. Read
 and reflect!
 
 https://twitter.com/sh_reya/status/1314338372073263112
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -188,3 +188,8 @@ If any of this sounds fun to you, please be in touch over
 [Twitter](https://twitter.com/dvcorg) and our
 [Discord Channel](https://discordapp.com/invite/dvwXA2N)). We look forward to
 connecting with you!
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

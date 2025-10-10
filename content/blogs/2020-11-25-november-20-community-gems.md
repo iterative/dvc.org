@@ -210,3 +210,8 @@ She stayed home and made mashed potatoes.
 
 That's all for now, everyone! As always, keep in touch with all your questions
 big and small.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

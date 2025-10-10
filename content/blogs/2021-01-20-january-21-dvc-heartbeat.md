@@ -160,3 +160,8 @@ book, gave us a shoutout for being an interesting data engineering project
 think you're very interesting too!
 
 https://twitter.com/bibryam/status/1341777034448650242
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

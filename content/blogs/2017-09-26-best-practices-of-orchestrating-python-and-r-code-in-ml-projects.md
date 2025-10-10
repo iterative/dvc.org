@@ -260,3 +260,8 @@ Additional tools beside git and shell scripting are developed to facilitate the
 development of predictive model in a multi-language environments. Using data
 version control system for reproducibility and Feather for data interoperability
 helps you orchestrate R and Python code in a single environment.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -57,16 +57,17 @@ continuous integration/continuous delivery (CI/CD) platforms to meet the needs
 of both developers and ML engineers. The entire ML stack needs to be reinvented
 in a way that makes it accessible to every developer.
 
-![DVC Studio](../uploads/images/2021-09-07/dvc-studio.png)
+![DVC Extension for VS Code](../uploads/images/2022-12-15/dvclive_exp_tracking.png)\_Check
+out the [DVC Extension for VS
+Code(https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
-DVC and CML are open source tools, that now along with DVC Studio, streamline
-the workflow of data scientists. They integrate ML workflows into current
-practices for software development in a way that eliminates the need for many
-features of proprietary AI platforms such as AWS SageMaker, Microsoft Azure ML
-and Google Vertex AI by extending traditional software tools like Git and CI/CD
-platforms to meet the needs of ML researchers and ML engineers. In essence, they
-provide an open platform based on best DevOps practices to operationalize ML and
-AI.
+DVC and CML are open source tools to streamline the workflow of data scientists.
+They integrate ML workflows into current practices for software development in a
+way that eliminates the need for many features of proprietary AI platforms such
+as AWS SageMaker, Microsoft Azure ML and Google Vertex AI by extending
+traditional software tools like Git and CI/CD platforms to meet the needs of ML
+researchers and ML engineers. In essence, they provide an open platform based on
+best DevOps practices to operationalize ML and AI.
 
 > "DVC and CML are open source tools that streamline the workflow of data
 > scientists. They integrate ML workflows into current practices for software
@@ -142,3 +143,6 @@ and, best of all, the road to AI hell is not taken.
 
 _This post originally appeared in_
 [The New Stack.](https://thenewstack.io/the-road-to-ai-hell-starts-with-good-mlops-intentions/)
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

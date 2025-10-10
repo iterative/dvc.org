@@ -224,14 +224,10 @@ functions for DVC pipelines using R scripts. Additionally the project aims to
 document the usual workflows of a DVC pipeline using these scripts and create
 templates for the use of DVC and R together.
 
-Following Santiago, team member
-[Tapa Dipti Sitaula](https://www.linkedin.com/in/tapa-dipti-sitaula/) will give
-a demo of DVC Studio! Bring your questions; we look forward to seeing you!
-
 <external-link
 href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/"
 title="DVThis"
-description="July DVC Office Hours with João Santiago of Billie shows us how to use R with DVC, presenting DVThis and Tapa Dipti Sitaula shares a demo of DVC Studio."
+description="July DVC Office Hours with João Santiago of Billie shows us how to use R with DVC, presenting DVThis."
 link="https://meetup.com"
 image="../uploads/images/2021-07-16/office-hours-meetup.png"/>
 
@@ -246,3 +242,9 @@ _Do you have any use case questions or need support? Join us in
 
 _Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
 best practices._
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

@@ -170,3 +170,6 @@ mentioned in the same tweet as some of our heroes :)
 https://twitter.com/ethanjb/status/1316833012676354048
 
 Thanks for reading this month!
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

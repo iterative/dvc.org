@@ -148,3 +148,8 @@ can read more about this
 This means that even though you and users from the public are accessing the
 stored dataset by different protocols (S3 and HTTPS), you'll all run the same
 command: `dvc pull`.
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

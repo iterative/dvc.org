@@ -178,3 +178,8 @@ the data and code that produced them. It's a little more work to set up, but
 Future You will thank you!
 
 ![Tim Robinson Reaction GIF by The Lonely Island](https://media.giphy.com/media/l0LEIXSRRuv9QQIRNI/giphy.gif)
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!

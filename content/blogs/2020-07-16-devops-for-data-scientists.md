@@ -377,3 +377,8 @@ You will feel so cool.
   or not)
 
 _**Note:** This article has been cross-posted on Medium._
+
+---
+
+📰 [Join our Newsletter](https://share.hsforms.com/1KRL5_dTbQMKfV7nDD6V-8g4sbyq)
+to stay up to date with news and contributions from the Community!
