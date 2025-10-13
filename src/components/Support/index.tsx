@@ -1,108 +1,137 @@
-import { BrainIcon, NotebookPenIcon, RouteIcon, TargetIcon } from 'lucide-react'
+import cn from 'classnames'
 
 import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import ShowOnly from '@dvcorg/gatsby-theme/src/components/ShowOnly'
 
-import { cn } from '../../utils'
+import HeroContainer from '../HeroContainer'
 import PageContent from '../PageContent'
 import PromoSection from '../PromoSection'
 
-const services = [
-  {
-    icon: BrainIcon,
-    title: 'MLOps and DVC experts',
-    points: [
-      '5+ years experience.',
-      'Strong MLOps technical background.',
-      'Hands on implementation and development.'
-    ]
-  },
+import Popover from './Popover'
+import * as styles from './styles.module.css'
 
-  {
-    icon: RouteIcon,
-    title: 'Coverage for all MLOps operations',
-    points: [
-      'End to end solution: Data version control, project architecture, data pipelines, and data curation',
-      'By removing your teams from toil-laden work, you accelerate model development and project delivery.'
-    ]
-  },
-  {
-    icon: NotebookPenIcon,
-    title: 'Project planning and execution',
-    points: [
-      'Assist with design and architecture.',
-      'Help align projects to platform capabilities.',
-      ' Provide inputs to project timelines and resource needs.'
-    ]
-  },
-  {
-    icon: TargetIcon,
-    title: 'Best practices and standards',
-    points: [
-      'Architect solutions for scalability.',
-      'Develop common standards and frameworks.',
-      'Assist with prototype development.'
-    ]
-  }
-]
-
-const colors = ['text-purple', 'text-blue', 'text-orange']
-
-const getAccentColor = (index: number) => {
-  return colors[index % colors.length]
-}
-
-const SupportPage: React.FC = () => {
-  return (
-    <>
-      <PageContent>
-        <LayoutWidthContainer>
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="mt-14 text-3xl font-bold">How We Can Help</h1>
-            <hr className="mt-14 border-t border-gray-200" />
-            <p className="mt-6 text-xl text-gray-500">
-              Successful ML projects are covered in challenges, roadblocks, and
-              problems --- and we are here to address them with industry best
-              practices
-            </p>
-          </div>
-          <div className="p-4 mt-14 grid gap-8 grid-cols-1 md:grid-cols-2">
-            {services.map((service, index) => (
-              <div key={index}>
-                <h3 className="text-2xl font-medium">
-                  {service.icon && (
-                    <service.icon
-                      size={48}
-                      strokeWidth={1.5}
-                      className={cn(
-                        getAccentColor(index),
-                        'inline-block',
-                        'mr-2'
-                      )}
+const SupportPage: React.FC = () => (
+  <>
+    <PageContent>
+      <HeroContainer className={styles.supportHero}>
+        <h1 className={styles.heading}>
+          Questions, feedback, or just need to get in touch?
+        </h1>
+      </HeroContainer>
+      <LayoutWidthContainer>
+        <div className={styles.features}>
+          <div className={cn(styles.feature, styles.chat)}>
+            <div className={styles.featureHeader}>
+              <div className={styles.featureIcon} />
+              <h3 className={styles.featureName}>Slack-like Chat</h3>
+            </div>
+            <div className={styles.featureDescription}>
+              Join data science practitioners in our welcoming{' '}
+              <span className={styles.accent}>DVC Community</span>. It’s the
+              fastest way to get help.
+            </div>
+            <div className={styles.featureFooter}>
+              <Link
+                className={styles.featureButton}
+                href="/chat"
+                target="_blank"
+              >
+                Discord Chat
+              </Link>
+              <ShowOnly on="desktop">
+                <Popover
+                  body={
+                    <iframe
+                      title="Discord Members Online"
+                      src="https://discordapp.com/widget?id=485586884165107732&theme=light"
+                      width="350"
+                      height="500"
+                      style={{ border: 0 }}
                     />
-                  )}
-                  {service.title}
-                </h3>
-                <ul className="mt-4 list-disc list-inside text-lg text-gray-600">
-                  {service.points.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                  }
+                  enterExitTransitionDurationMs={200}
+                >
+                  <div className={styles.discordWidget} />
+                </Popover>
+              </ShowOnly>
+            </div>
           </div>
-        </LayoutWidthContainer>
-      </PageContent>
-      <PromoSection
-        title="Feel free to join the best community of MLOps experts and enthusiasts !"
-        buttons={[
-          <Link href="/community" key="get-started">
-            Join Our Community
-          </Link>
-        ]}
-      />
-    </>
-  )
-}
+          <div className={cn(styles.feature, styles.bugs)}>
+            <div className={styles.featureHeader}>
+              <div className={styles.featureIcon} />
+              <h3 className={styles.featureName}>Bugs & Feature Requests</h3>
+            </div>
+            <div className={styles.featureDescription}>
+              Found an issue or have an idea? Check our GitHub{' '}
+              <span className={styles.accent}>issues tracker</span> to see if
+              there is already a fix or report a new one.
+            </div>
+            <div className={styles.featureFooter}>
+              <Link
+                className={styles.featureButton}
+                href="https://github.com/iterative/dvc/issues"
+                target="_blank"
+              >
+                Open GitHub
+              </Link>
+            </div>
+          </div>
+          <div className={cn(styles.feature, styles.forum)}>
+            <div className={styles.featureHeader}>
+              <div className={styles.featureIcon} />
+              <h3 className={styles.featureName}>Forum</h3>
+            </div>
+            <div className={styles.featureDescription}>
+              Discuss your ideas or{' '}
+              <span className={styles.accent}>best practices</span> in the DVC
+              forum.
+            </div>
+            <div className={styles.featureFooter}>
+              <Link
+                className={styles.featureButton}
+                href="https://discuss.dvc.org"
+                target="_blank"
+              >
+                Go To Forum
+              </Link>
+            </div>
+          </div>
+          {/* <div className={cn(styles.feature, styles.email)}> */}
+          {/*   <div className={styles.featureHeader}> */}
+          {/*     <div className={styles.featureIcon} /> */}
+          {/*     <h3 className={styles.featureName}>Email</h3> */}
+          {/*   </div> */}
+          {/*   <div className={styles.featureDescription}> */}
+          {/*     Email us at{' '} */}
+          {/*     <Link className={styles.accent} href="mailto:support@dvc.org"> */}
+          {/*       support@dvc.org */}
+          {/*     </Link> */}
+          {/*     . For help with debugging DVC commands, run the commands with the{' '} */}
+          {/*     <span className={styles.accent}>--verbose</span> flag and include */}
+          {/*     the output if possible. */}
+          {/*   </div> */}
+          {/*   <div className={styles.featureFooter}> */}
+          {/*     <Link */}
+          {/*       className={styles.featureButton} */}
+          {/*       href="mailto:support@dvc.org" */}
+          {/*     > */}
+          {/*       Drop Us a Line */}
+          {/*     </Link> */}
+          {/*   </div> */}
+          {/* </div> */}
+        </div>
+      </LayoutWidthContainer>
+    </PageContent>
+    <PromoSection
+      title="Don't know where to start?"
+      buttons={[
+        <Link href="/doc/start" key="get-started">
+          Get Started
+        </Link>
+      ]}
+    />
+  </>
+)
 
 export default SupportPage

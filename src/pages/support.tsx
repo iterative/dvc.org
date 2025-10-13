@@ -7,7 +7,7 @@ import Support from '../components/Support'
 
 const SupportPage = ({ location }: PageProps) => (
   <MainLayout location={location} className="mt-14">
-    <SEO title="Support | Platinum Services For MLOps" />
+    <SEO title="Support" />
     <Support />
   </MainLayout>
 )

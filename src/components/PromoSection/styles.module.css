@@ -61,8 +61,9 @@
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
+  min-width: 186px;
   height: 60px;
-  padding: 0 25px 0 10px;
+  padding: 0 21px;
   border-radius: 4px;
   border: solid 2px rgb(255 255 255 / 30%);
   font-family: var(--font-base);
@@ -74,7 +75,7 @@
   color: #fff;
   background: var(--color-purple) url('/img/arrow_right_white.svg') right center
     no-repeat;
-  background-position-x: 182px;
+  background-position-x: 147px;
   transition: 0.2s background-color ease-out;
 
   &:focus {
