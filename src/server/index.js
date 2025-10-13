@@ -72,7 +72,9 @@ const helmetOptions = {
         'https://*.clickagy.com',
         'https://*.hubspot.com',
         'https://forms.hsforms.com',
-        'https://embed.testimonial.to'
+        'https://embed.testimonial.to',
+        'https://discordapp.com',
+        'https://discord.com'
       ],
       connectSrc: ["'self'", 'https:'],
       imgSrc: ["'self'", 'data:', 'https:'],
