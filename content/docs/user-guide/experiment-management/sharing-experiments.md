@@ -45,9 +45,9 @@ metrics to DVC Studio, set your [access token].
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):
 
-![Live metrics in DVC Studio](https://static.iterative.ai/img/studio/live_metrics.gif)
+![Live metrics in DVC Studio](../../../uploads/images/studio/live_metrics.gif)
 
-![Live plots in DVC Studio](https://static.iterative.ai/img/studio/live_plots.gif)
+![Live plots in DVC Studio](../../../uploads/images/studio/live_plots.gif)
 
 <details>
 

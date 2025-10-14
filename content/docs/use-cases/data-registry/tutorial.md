@@ -213,7 +213,7 @@ DVC Studio, anyone on your team can see it and filter or search across all your
 projects in the <abbr>model registry</abbr>. Although the artifact above is not
 a model, you can change the filters to use it for any type of artifact:
 
-![Show Registry Datasets](https://static.iterative.ai/img/registry-show-datasets.gif)
+![Show Registry Datasets](../../../uploads/images/studio/registry-show-datasets.gif)
 
 ### Registering versions and assigning stages
 
@@ -222,7 +222,7 @@ workflows. Just like with software, you can use [semantic versioning] to tag
 releases of your artifacts and to mark artifact versions as in production,
 development, or other stages of their lifecycle:
 
-![Assign Registry Datasets](https://static.iterative.ai/img/registry-assign-datasets.gif)
+![Assign Registry Datasets](../../../uploads/images/studio/registry-assign-datasets.gif)
 
 Versions and stages are saved as Git tags by [GTO]. This means that you have the
 full release history in Git, and you can trigger deployments, tests, or other
@@ -235,7 +235,7 @@ needing access to your Git repository or cloud storage. If you connect your
 cloud credentials in DVC Studio, anyone on your team can access that artifact
 using only a [Studio token], either in the UI or programmatically:
 
-![Download Registry Datasets](https://static.iterative.ai/img/registry-download-datasets.gif)
+![Download Registry Datasets](../../../uploads/images/studio/registry-download-datasets.gif)
 
 [remote storage]: /doc/user-guide/data-management/remote-storage
 [semantic versioning]: https://semver.org

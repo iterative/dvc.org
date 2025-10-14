@@ -95,6 +95,6 @@ research and run [experiments](/doc/start/experiments) in the cloud -- such as
 an entire hyperparameter search!
 
 <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 32px">
-  <img src="https://static.iterative.ai/logo/dvc.svg" alt="DVC" />+
-  <img src="https://static.iterative.ai/logo/cml.svg" alt="CML" />= ❤️
+  <img src="/logos/dvc.svg" alt="DVC" />+
+  <img src="/logos/cml.svg" alt="CML" />= ❤️
 </p>
