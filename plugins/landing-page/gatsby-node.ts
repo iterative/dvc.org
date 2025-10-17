@@ -59,19 +59,18 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async api => {
         terminal: terminal.split('\n').map(processTerminalLine).join('\n')
       }
     })
-    if (node.relativePath === 'dvc.yml') {
-      const DvcSlide = {
-        id: createNodeId('DvcSlide'),
-        parent: node.id,
-        children: [],
-        internal: {
-          type: 'DvcSlide',
-          contentDigest: node.internal.contentDigest
-        },
-        slides: processedSlides
+    const landingPageNode = {
+      slides: processedSlides,
+
+      id: createNodeId('LandingPage'),
+      parent: node.id,
+      children: [],
+      internal: {
+        type: 'LandingPage',
+        contentDigest: node.internal.contentDigest
       }
-      createNode(DvcSlide)
-      createParentChildLink({ child: DvcSlide, parent: node })
     }
+    createNode(landingPageNode)
+    createParentChildLink({ child: landingPageNode, parent: node })
   }
 }

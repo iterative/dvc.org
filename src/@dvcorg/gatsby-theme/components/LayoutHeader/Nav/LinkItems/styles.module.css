@@ -50,11 +50,11 @@
 
   font-family: var(--font-base);
   font-weight: 400;
-  font-size: 17px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 24px;
   text-decoration: none;
   color: #353940;
-  padding: 20px 5px;
+  padding: 20px 10px;
   display: flex;
   align-items: flex-end;
   border: none;
@@ -88,8 +88,8 @@
   }
 
   .linkIcon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     margin-left: 4px;
   }
 
@@ -97,14 +97,13 @@
     display: none;
   }
 
-  @media screen(xl) {
-    font-size: 20px;
-    line-height: 24px;
-    padding: 20px 10px;
+  @media screen(mdMax) {
+    font-size: 17px;
+    line-height: 20px;
 
     .linkIcon {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
   }
 }

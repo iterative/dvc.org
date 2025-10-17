@@ -1,9 +1,10 @@
 import cn from 'classnames'
+import { graphql, useStaticQuery } from 'gatsby'
 import { Reducer, useCallback, useMemo, useReducer } from 'react'
 
 import { MemoizedTypedTerminal } from '../Typed'
 
-export interface ISlide {
+interface ILandingPageSlide {
   title: string
   description: string
   terminal: string
@@ -31,19 +32,24 @@ const TerminalButtons = () => (
   </div>
 )
 
-const Slides = ({
-  slides,
-  terminalSide = 'right',
-  theme = 'dark'
-}: {
-  slides: ISlide[]
-  terminalSide?: 'right' | 'left'
-  theme?: 'light' | 'dark'
-}) => {
-  const leftTerminal = terminalSide === 'left'
-  const rightTerminal = terminalSide === 'right'
-  const lightTheme = theme === 'light'
-  const darkTheme = theme === 'dark'
+export const HeroSlides = () => {
+  const {
+    landingPage: { slides }
+  } = useStaticQuery(graphql`
+    query {
+      landingPage {
+        slides {
+          title
+          description
+          terminal
+        }
+      }
+    }
+  `) as {
+    landingPage: {
+      slides: ILandingPageSlide[]
+    }
+  }
 
   const [{ currentIndex }, changeCurrentIndex] = useReducer<
     Reducer<{ currentIndex: number; paused: boolean }, number | undefined>
@@ -79,7 +85,7 @@ const Slides = ({
     () =>
       window.setTimeout(() => {
         changeCurrentIndex(undefined)
-      }, 2500),
+      }, 2000),
     [changeCurrentIndex]
   )
 
@@ -93,22 +99,12 @@ const Slides = ({
   }, [terminal, currentIndex, onComplete])
 
   return (
-    <div
-      className={cn(
-        'flex',
-        'flex-col',
-        {
-          'md:flex-row': leftTerminal,
-          'md:flex-row-reverse': rightTerminal
-        },
-        'my-6'
-      )}
-    >
+    <div className={cn('flex', 'flex-col', 'md:flex-row-reverse', 'my-6')}>
       <div
         className={cn(
           'my-4',
           'rounded-lg',
-          { 'bg-gray-dark': darkTheme, 'bg-light': lightTheme },
+          'bg-gray-dark',
           'text-blue',
           'drop-shadow',
           'mx-auto',
@@ -119,11 +115,7 @@ const Slides = ({
           'sm:w-[570px]',
           'sm:text-[12px]',
           'md:w-[480px]',
-          'md:text-[10px]',
-          {
-            'md:mr-3': leftTerminal,
-            'md:ml-3': rightTerminal
-          }
+          'md:text-[10px]'
         )}
       >
         <TerminalButtons />
@@ -137,28 +129,24 @@ const Slides = ({
         {slides.map(({ title, description }, i) => {
           const active = currentIndex === i
           return (
-            <li
-              className={cn({
-                'md:mr-3': leftTerminal,
-                'md:ml-3': rightTerminal
-              })}
-              key={i}
-            >
+            <li className={cn('md:mr-3')} key={i}>
               <button
                 className={cn(
                   'w-full',
-                  'px-3 py-1',
+                  'text-left',
+                  'px-3',
+                  'py-1',
                   'my-1',
-                  'flex flex-col flex-nowrap justify-center',
-                  'md:pl-4 md:py-2',
-                  'border-l-2 text-left',
-                  {
-                    'md:border-l-0 md:border-r-2 md:text-right md:items-end':
-                      leftTerminal
-                  },
+                  'flex',
+                  'flex-col',
+                  'flex-nowrap',
+                  'justify-center',
+                  'md:pl-4',
+                  'md:py-2',
+                  'border-l-2',
                   'ease-in-out',
                   'duration-300',
-                  'hover:bg-light hover:bg-opacity-50',
+                  'hover:bg-gray-200',
                   active ? 'border-sky-500' : 'border-transparent'
                 )}
                 onClick={() => {
@@ -184,5 +172,3 @@ const Slides = ({
     </div>
   )
 }
-
-export default Slides

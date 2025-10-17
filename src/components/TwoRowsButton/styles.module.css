@@ -48,14 +48,13 @@
   }
 
   &.outline {
-    @apply border-light;
-
+    border-color: rgb(176 184 197 / 47%);
     color: var(--color-gray-hover);
-    background-color: transparent;
+    background-color: var(--color-light-blue);
 
     &.active,
     &:hover {
-      @apply bg-light;
+      background-color: var(--color-light-blue-hover);
     }
   }
 

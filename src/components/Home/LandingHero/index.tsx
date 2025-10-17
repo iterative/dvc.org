@@ -7,8 +7,8 @@ import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 import DownloadButton from '../../DownloadButton'
 import TwoRowsButtonLink from '../../TwoRowsButton/link'
 
-import DvcSlides from './DvcSlides'
 import GithubLine from './GithubLine'
+import { HeroSlides } from './Slides'
 import * as styles from './styles.module.css'
 
 const logUseCasesEvent = () => {
@@ -90,7 +90,7 @@ const LandingHero = () => {
         learning development, make your repo the backbone of your project, and
         instill best practices across your team.
       </p>
-      <DvcSlides />
+      <HeroSlides />
       <HeroButtons />
       <div className={styles.github}>
         <GithubLine />
