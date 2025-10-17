@@ -14,12 +14,8 @@ const CompanySlider = () => {
           </h2>
         </div>
       </div>
-      <div
-        className={cn(
-          'mb-8 w-full grid place-items-center overflow-hidden relative'
-        )}
-      >
-        <div className="flex justify-between gap-8 animate-slide">
+      <div className={cn('mb-8 w-full grid place-items-center relative')}>
+        <div className="flex justify-between gap-8 animate-slide group">
           <CompanyLogos />
           <CompanyLogos />
           <CompanyLogos />
