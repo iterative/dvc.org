@@ -86,7 +86,6 @@
         "slug": "fast-data-caching-hub"
       },
       "experiment-tracking",
-      "model-registry",
       {
         "slug": "data-registry",
         "children": [
