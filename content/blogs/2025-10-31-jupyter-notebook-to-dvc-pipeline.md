@@ -40,6 +40,8 @@ of Large Language Models) to demonstrate how I approach turning one-off
 prototypes into structured, reproducible pipelines using versioned data,
 parameters, and experiments.
 
+![Pokémon image generated with LoRA](../uploads/images/2025-10-31/pokemon-generator-output.png '=600')
+
 ## Why Reproducibility Matters
 
 Reproducibility is the backbone of science, and machine learning is no
@@ -68,7 +70,7 @@ these benefits can lead to a breakdown in your ability to accurately reproduce
 results. Notebooks are also challenging to test, scale, and manage dependencies.
 So how can we set up our pipeline for reproducible success?
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![Git plus DVC](../uploads/images/2025-10-31/git-plus-dvc.png '=600')
 
 ## Enter DVC
 
@@ -80,21 +82,23 @@ hood.
 
 ## How DVC tracks your Data
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![DVC dataset tracking](../uploads/images/2025-10-31/dataset-images.png '=600')
 
 In your Git repository, you have a main branch with commits and a branch with a
 dataset, in this case a dataset of Pokémon images.
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![DVC metadata](../uploads/images/2025-10-31/dataset-metadata.png '=600')
 
 As image data are large, we do not want to keep them in Git so DVC replaces them
 with a metadata file. The metadata for the dataset contains the hash, the size,
 number of files, and other data.
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![DVC dataset hash](../uploads/images/2025-10-31/dataset-hash.png '=600')
 
 The hash in Git points to the .dvc/cache, which is where the physical images are
 actually stored on your file system.
+
+![DVC new dataset hash](../uploads/images/2025-10-31/new-dataset-hash.png '=600')
 
 If you create another commit with a different dataset (noted by a different font
 on the left in the Git repo). A new hash will point to the new dataset in the
@@ -106,12 +110,12 @@ the same.
 Below you will find the sections of the Jupyter Notebook on the left. Each of
 these stages produces outputs as seen on the right.
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![Machine learning stages and outputs](../uploads/images/2025-10-31/pipeline-outputs.png '=600')
 
 As these are now specified, they can be used as downstream dependencies for
 other stages.
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![Pipeline dependencies](../uploads/images/2025-10-31/pipeline-dependencies.png '=600')
 
 So if the `train_lora` stage is dependent on the processed images, we can ensure
 that the stage only triggers once there are new images in the processed
@@ -124,14 +128,14 @@ you development time.
 In addition to your data and pipeline, DVC can version your experiments along
 with Git. We use DVC for larger files and Git for the smaller files.
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![Experiment tracking with Git and DVC](../uploads/images/2025-10-31/track-experiments-dvc-git.png '=600')
 
 All of these things together represent an experiment and can be recorded as a
 git commit with a hash. This way this experiment and all its modifications will
 be able to be reproduced using a `git checkout` and `dvc checkout` with its hash
 (See experiment hash noted at bottom.)
 
-![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
+![Each experiment can receive a hash](../uploads/images/2025-10-31/experiment-commit-hash.png '=600')
 
 ## Converting from a Jupyter Notebook to a DVC Project
 
