@@ -34,23 +34,26 @@ That’s how progress is made, but without structure, reproducibility, and
 tracking, you risk losing valuable results or being unable to explain why a
 model worked (or failed).
 
-In this post, I use a Pokémon generator I created with LoRA to demonstrate how I
-approach turning one-off prototypes into structured, reproducible pipelines
-using versioned data, parameters, and experiments.
+In this post, I use a Pokémon generator I created with
+[LoRA](https://huggingface.co/docs/diffusers/training/lora) (Low-Rank Adaptation
+of Large Language Models) to demonstrate how I approach turning one-off
+prototypes into structured, reproducible pipelines using versioned data,
+parameters, and experiments.
 
 ## Why Reproducibility Matters
 
 Reproducibility is the backbone of science, and machine learning is no
 different. A reproducible experiment means:
 
-- The same combination of data, code, and parameters produces the same result.
-- You can trace back decisions: which dataset, which hyperparameters, which
-  preprocessing steps.
-- Your colleagues (and your future self) can understand and build upon your
-  work.
+- The same combination of **data, code, and parameters** produces the same
+  result.
+- You can trace back decisions: **which dataset, which hyperparameters, which
+  preprocessing steps**.
+- **Collaboration** can be acheived. Your colleagues (and your future self!) can
+  understand and build upon your work.
 
 When I worked on earlier projects, we often had to reconstruct models after the
-fact—trying to remember what went into training them. That experience convinced
+fact, trying to remember what went into training them. That experience convinced
 me that reproducibility should be built into every pipeline from day one. That’s
 why I treat every experiment as a **deterministic combination of code + data +
 parameters**, and I build pipelines that make this explicit.
@@ -112,7 +115,7 @@ other stages.
 
 So if the `train_lora` stage is dependent on the processed images, we can ensure
 that the stage only triggers once there are new images in the processed
-directory. Additionally if we make a change in the `train_lora` stage, none of
+directory. Additionally, if we make a change in the `train_lora` stage, none of
 the previous stages that were not changed will need to be run with DVC, saving
 you development time.
 
@@ -126,7 +129,7 @@ with Git. We use DVC for larger files and Git for the smaller files.
 All of these things together represent an experiment and can be recorded as a
 git commit with a hash. This way this experiment and all its modifications will
 be able to be reproduced using a `git checkout` and `dvc checkout` with its hash
-(See experiment has noted at bottom.)
+(See experiment hash noted at bottom.)
 
 ![Labeling Quality Assurance Checklist](../uploads/images/2025-10-07/label-quality-assurance.png '=600')
 
@@ -138,28 +141,28 @@ We will set up our Pokemon generator as a DVC project.
 
 Here’s the approach I’ve taken to bring structure into experimentation:
 
-1. **Start with a Base Model** Use an off-the-shelf model as your foundation.
-   Fine-tune it, adapt it, and make it your own—but always know what version you
-   started from.
-2. **Track Everything** Every dataset, parameter, and code change should be
+1. **Start with a Base Model.** Use an off-the-shelf model as your foundation.
+   Fine-tune it, adapt it, and make it your own, but always know what version
+   you started from.
+2. **Track Everything.** Every dataset, parameter, and code change should be
    versioned. We can use DVC for this. Think of it like Git for your machine
    learning workflow: commits that point not just to code, but to data and model
    states.
-3. **Modularize the Workflow** Break experiments into stages: data prep,
+3. **Modularize the Workflow.** Break experiments into stages: data prep,
    training, evaluation, etc. That way, you can rerun only what changes instead
    of starting from scratch every time.
-4. **Run Reproducible Experiments** Each experiment should be captured so you
+4. **Run Reproducible Experiments.** Each experiment should be captured so you
    can roll back, compare results, and build confidence in the best-performing
    model.
-5. **Move Toward Production** Once an experiment proves itself, package it into
+5. **Move Toward Production.** Once an experiment proves itself, package it into
    a pipeline that can run with a single command. That pipeline is what bridges
    the gap between “something interesting in a notebook” and “a reliable system
    in production.”
 
 ### Step 1: Define the Pipeline
 
-Start by breaking your workflow into stages. For example, in this project:
-stages:
+Start by breaking your workflow into stages. For example, in this project the
+dvc.yaml looks like this:
 
 ```yaml
 stages:
@@ -230,7 +233,7 @@ Each stage declares:
 
 - **Command (cmd)** – what to run
 - **Dependencies (deps)** – inputs the stage needs
-- **Outputs (outs)** – files the stage produces This way, when you change a
+- **Outputs (outs)** – files the stage produces. This way, when you change a
   dependency (e.g., a new dataset or updated parameter), only the affected
   stages re-run.
 
@@ -269,19 +272,21 @@ generate_text_to_image:
 Now you can run controlled experiments:
 
 ```bash
-dvc exp run -S training.learning_rate=0.01
+$ dvc exp run -S training.learning_rate=0.01
 ```
 
 This will execute the pipeline with the updated parameter, track the run, and
 save results.
 
-###Step 3: Track Experiments For this Pokémon project, it’s not as relevant
-because the results are images with subjective grading. But with projects where
-you’re tracking metrics, with pipelines defined and parameters externalized, you
-can now compare experiments systematically:
+### Step 3: Track Experiments
+
+For this Pokémon project, it’s not as relevant because the results are images
+with subjective grading. But with projects where you’re tracking metrics, with
+pipelines defined and parameters externalized, you can now compare experiments
+systematically:
 
 ```bash
-dvc exp show
+$ dvc exp show
 ```
 
 Example output:
@@ -306,7 +311,7 @@ Once you’re confident in a pipeline:
    registry. Then your entire workflow can be reproduced with a single command:
 
 ```bash
-dvc repro
+$ dvc repro
 ```
 
 That runs the whole pipeline—data prep, training, evaluation—with the exact same
