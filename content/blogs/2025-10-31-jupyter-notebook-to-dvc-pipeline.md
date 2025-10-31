@@ -139,7 +139,7 @@ be able to be reproduced using a `git checkout` and `dvc checkout` with its hash
 
 ## Converting from a Jupyter Notebook to a DVC Project
 
-We will set up our Pokemon generator as a DVC project.
+We will set up our Pokémon generator as a DVC project.
 
 ### Building the Pipeline
 
