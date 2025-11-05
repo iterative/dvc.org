@@ -5,7 +5,8 @@ title:
 date: 2025-10-31
 description: >
   Rob De Wit shares his Pokémon Generator project to demonstrate how you can
-  move from Jupyter Notebook prototype to a production-ready pipeline with DVC.
+  move from a Jupyter Notebook prototype to a production-ready pipeline with
+  DVC.
 descriptionLong: >
   This blog post is an adaptation of Rob De Wit’s presentation on the subject
   using his Pokémon Generator project at PyData USA 2023. You can find [the
