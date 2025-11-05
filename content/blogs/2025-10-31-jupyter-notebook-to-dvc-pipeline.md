@@ -42,7 +42,7 @@ prototypes into structured, reproducible pipelines using versioned data,
 parameters, and experiments.
 
 ![Pokémon image generated with LoRA](../uploads/images/2025-10-31/pokemon-generator-output.png '=600')
-  
+
 ## Why Reproducibility Matters
 
 Reproducibility is the backbone of science, and machine learning is no
