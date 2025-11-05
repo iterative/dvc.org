@@ -4,7 +4,7 @@ title:
   with DVC'
 date: 2025-10-31
 description: >
-  Rob De De Wit shares his Pokémon Generator project to demonstrate how you can
+  Rob De Wit shares his Pokémon Generator project to demonstrate how you can
   move from Jupyter Notebook prototype to a production-ready pipeline with DVC.
 descriptionLong: >
   This blog post is an adaptation of Rob De Wit’s presentation on the subject
