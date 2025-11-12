@@ -9,6 +9,8 @@ interface IHTMLProps {
   postBodyComponents: Array<React.ReactNode>
 }
 
+const DISABLE_INDEXING = process.env.DISABLE_INDEXING === 'true'
+
 const HTML: React.FC<IHTMLProps> = props => {
   return (
     <html {...props.htmlAttributes}>
@@ -19,6 +21,7 @@ const HTML: React.FC<IHTMLProps> = props => {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        {DISABLE_INDEXING && <meta name="robots" content="noindex, nofollow" />}
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
