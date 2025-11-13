@@ -126,7 +126,7 @@ const SupportPage: React.FC = () => (
     <PromoSection
       title="Don't know where to start?"
       buttons={[
-        <Link href="/doc/start" key="get-started">
+        <Link href="/start" key="get-started">
           Get Started
         </Link>
       ]}

@@ -3,21 +3,21 @@
 **DVC** can be installed on [Visual Studio Code], any [system terminal], and
 used as a [Python library].
 
-[visual studio code]: /doc/vs-code-extension
-[system terminal]: /doc/install
-[python library]: /doc/api-reference
+[visual studio code]: /vs-code-extension
+[system terminal]: /install
+[python library]: /api-reference
 
 <cards>
 
-  <card href="/doc/start" heading="Get Started">
+  <card href="/start" heading="Get Started">
     A step-by-step introduction to basic DVC features
   </card>
 
-  <card href="/doc/user-guide" heading="User Guide">
+  <card href="/user-guide" heading="User Guide">
     Learn more details about the principles, features, and mechanisms of DVC.
   </card>
 
-  <card href="/doc/use-cases" heading="Use Cases">
+  <card href="/use-cases" heading="Use Cases">
     Non-exhaustive list of scenarios DVC can help with
   </card>
 

@@ -114,5 +114,10 @@
 
   "^/doc/vs-code-extension$                                                               https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
 
+  "^/doc/(.*)$                                                                            /$1",
+  "^/doc$                                                                                 /",
+
+  "^/vs-code-extension$                                                                   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
+
   "^/(.+)/$                                                                               /$1"
 ]

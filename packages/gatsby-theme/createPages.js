@@ -75,9 +75,13 @@ const createPages = async (
     const headings = parseHeadings(rawMarkdownBody, slugger)
 
     if (slug !== undefined) {
+      let pagePath = path.posix.join(docsPrefix, slug)
+      if (pagePath === '.') {
+        pagePath = '/'
+      }
       actions.createPage({
         component: getTemplate(template, defaultTemplate),
-        path: path.posix.join(docsPrefix, slug),
+        path: pagePath,
         context: {
           id,
           slug,

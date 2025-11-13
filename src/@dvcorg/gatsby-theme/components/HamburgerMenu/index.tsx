@@ -1,19 +1,20 @@
 import cn from 'classnames'
 import { useEffect, useState, useCallback, MouseEvent } from 'react'
 
-import { blogsPageLink } from '@/constants/internalLinks'
+import {
+  blogsPageLink,
+  homePageLink,
+  mainSiteURL
+} from '@/constants/internalLinks'
 import HamburgerIcon from '@dvcorg/gatsby-theme/src/components/HamburgerIcon'
 import * as styles from '@dvcorg/gatsby-theme/src/components/HamburgerMenu/styles.module.css'
 import Link from '@dvcorg/gatsby-theme/src/components/Link'
 import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
-import { getFirstPage } from '@dvcorg/gatsby-theme/src/utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.svg'
 import menuData from '../../data/menu'
-
-const docsPage = getFirstPage()
 
 export type HamburgerHelpers = {
   opened: boolean
@@ -64,7 +65,7 @@ export const HamburgerMenu: React.FC<
       <div className={styles.logoRow}>
         <Link
           onClick={() => handleItemClick()}
-          href="/"
+          href={mainSiteURL}
           className={styles.logo}
           aria-label="Home"
         >
@@ -74,7 +75,7 @@ export const HamburgerMenu: React.FC<
       <ul className={styles.sections}>
         <li className={styles.section}>
           <Link
-            href="/doc/use-cases"
+            href="/use-cases"
             className={styles.sectionHeading}
             onClick={() => handleItemClick('use-cases')}
           >
@@ -83,7 +84,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href={docsPage}
+            href={homePageLink}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('doc')}
           >
@@ -110,7 +111,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href="/community"
+            href={`${mainSiteURL}/community`}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('community')}
           >
@@ -202,7 +203,7 @@ export const HamburgerMenu: React.FC<
         </li>
       </ul>
       <Link
-        href="/doc/start"
+        href="/start"
         className={styles.linkButton}
         onClick={() => handleItemClick('get-started')}
       >

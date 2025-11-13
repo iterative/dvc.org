@@ -13,7 +13,7 @@ const Nav: React.FC = () => (
     <SocialIcons />
     <PseudoButton
       className={cn(styles.getStartedButton, 'btn-with-focus')}
-      href="/doc/start"
+      href="/start"
       onClick={(): void => logEvent('Nav', { Item: 'get-started' })}
       size="none"
     >

@@ -19,7 +19,7 @@ const HeroButtons = () => (
     <ShowOnly on="mobile">
       <Link
         className={cn(styles.actionButton, styles.getStartedButton)}
-        href="/doc/start"
+        href="/start"
       >
         Get started
       </Link>

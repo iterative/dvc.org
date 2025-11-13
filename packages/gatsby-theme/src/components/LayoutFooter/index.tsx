@@ -32,7 +32,7 @@ const footerListsData: Array<IFooterListData> = [
   {
     header: 'Help',
     links: [
-      { href: '/doc/start', text: 'Get started' },
+      { href: '/start', text: 'Get started' },
       { href: docsPage, text: 'Documentation' }
     ]
   },

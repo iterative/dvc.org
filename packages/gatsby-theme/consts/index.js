@@ -12,9 +12,11 @@ const consts = {
   API_ROOT: '/doc/api-reference/',
 
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX: /dvc|api/g,
-  SIDEBAR_PATH_ROOT: '/doc',
+  SIDEBAR_PATH_ROOT: '',
   SIDEBAR_FILE_ROOT: '/docs/',
-  SIDEBAR_FILE_EXTENSION: '.md'
+  SIDEBAR_FILE_EXTENSION: '.md',
+  DOCS_PREFIX: '',
+  MAIN_SITE_URL: 'https://dvc.org'
 }
 
 module.exports = consts

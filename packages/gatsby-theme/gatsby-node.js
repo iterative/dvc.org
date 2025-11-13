@@ -1,12 +1,15 @@
 const path = require('path')
 
 const defaults = require('./config-defaults')
+const { DOCS_PREFIX } = require('./consts')
 const { name: packageName } = require('./package.json')
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
     ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
     : defaultTemplate
+
+const docsPrefix = DOCS_PREFIX
 
 exports.pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
@@ -25,7 +28,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
       .default('iterative-glossary')
       .allow(false),
     docsInstanceName: Joi.string().default('iterative-docs').allow(false),
-    docsPrefix: Joi.string().default('doc'),
+    docsPrefix: Joi.string().default(docsPrefix),
     simpleLinkerTerms: Joi.array().items(
       Joi.object({
         matches: Joi.string(),
