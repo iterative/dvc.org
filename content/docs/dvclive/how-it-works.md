@@ -99,7 +99,7 @@ Models and data are often large and aren't easily tracked in Git.
 `Live.log_artifact("model.pt")` will [cache] the `model.pt` file with DVC and
 make Git ignore it. It will generate a `model.pt.dvc` metadata file, which can
 be tracked in Git and becomes part of the experiment. With this metadata file,
-you can [retrieve](/doc/start/data-management/data-versioning#retrieving) the
+you can [retrieve](/start/data-management/data-versioning#retrieving) the
 versioned artifact from the Git commit. You can also use
 `Live.log_artifact("model.pt", type="model")` to add it to the <abbr>model
 registry</abbr>.

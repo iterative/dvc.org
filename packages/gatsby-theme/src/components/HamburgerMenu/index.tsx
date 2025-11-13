@@ -192,7 +192,7 @@ export const HamburgerMenu: React.FC<
         </li>
       </ul>
       <Link
-        href="/doc/start"
+        href="/start"
         className={styles.linkButton}
         onClick={() => handleItemClick('get-started')}
       >

@@ -1,6 +1,7 @@
 import cn from 'classnames'
 
-import { blogsPageLink } from '@/constants/internalLinks'
+import { blogsURL } from '@/constants/internalLinks'
+import { MAIN_SITE_URL } from '@dvcorg/gatsby-theme/consts'
 import * as styles from '@dvcorg/gatsby-theme/src/components/LayoutFooter/styles.module.css'
 import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
 import Link from '@dvcorg/gatsby-theme/src/components/Link'
@@ -33,15 +34,15 @@ const footerListsData: Array<IFooterListData> = [
     header: 'Product',
     links: [
       {
-        href: '/',
+        href: MAIN_SITE_URL,
         text: 'Overview'
       },
       {
-        href: '/doc/use-cases',
+        href: '/use-cases',
         text: 'Use Cases'
       },
       {
-        href: blogsPageLink,
+        href: blogsURL,
         text: 'Blog'
       }
     ]
@@ -49,9 +50,9 @@ const footerListsData: Array<IFooterListData> = [
   {
     header: 'Help',
     links: [
-      { href: '/support', text: 'Support' },
-      { href: '/doc/start', text: 'Get started' },
-      { href: '/community', text: 'Community' },
+      { href: `${MAIN_SITE_URL}/support`, text: 'Support' },
+      { href: '/start', text: 'Get started' },
+      { href: `${MAIN_SITE_URL}/community`, text: 'Community' },
       { href: docsPage, text: 'Documentation' }
     ]
   },
@@ -71,7 +72,7 @@ const footerListsData: Array<IFooterListData> = [
         target: '_blank'
       },
       {
-        href: '/chat',
+        href: `${MAIN_SITE_URL}/chat`,
         text: 'Discord',
         icon: <DiscordSVG className={styles.icon} />
       }
@@ -98,7 +99,7 @@ const footerSocialIconsData: Array<ISocialIcon> = [
   {
     site: 'discord',
     label: 'DVC Discord chat',
-    url: 'https://www.dvc.org/chat'
+    url: `${MAIN_SITE_URL}/chat`
   }
 ]
 
@@ -145,7 +146,7 @@ const LayoutFooter: React.FC = () => (
       <div
       //  className={styles.top}
       >
-        <Link className={styles.logo} href="/" title="dvc.org">
+        <Link className={styles.logo} href={MAIN_SITE_URL} title="dvc.org">
           <LogoSVG />
         </Link>
       </div>

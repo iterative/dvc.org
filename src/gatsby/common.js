@@ -20,10 +20,14 @@ async function markdownToHtml(input) {
 
 const setPageContext = (page, actions) =>
   new Promise(resolve => {
+    let pPath = page.path
+    if (pPath == '/.') {
+      pPath = '/'
+    }
     const pagePath =
-      page.path !== '/' && trailingSlashRegexp.test(page.path)
-        ? page.path.replace(trailingSlashRegexp, '')
-        : page.path
+      pPath !== '/' && trailingSlashRegexp.test(pPath)
+        ? pPath.replace(trailingSlashRegexp, '')
+        : pPath
 
     const isAlertLanding = alertLandingArray.includes(pagePath)
 

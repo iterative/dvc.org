@@ -2,7 +2,9 @@ import { useLocation } from '@gatsbyjs/reach-router'
 import { Link as GatsbyLink } from 'gatsby'
 import { URL } from 'iso-url'
 
+import { MAIN_SITE_URL } from '../../../consts'
 import { getRedirect } from '../../utils/shared/redirects'
+
 export type ILinkProps = {
   children: React.ReactNode
   className?: string
@@ -34,6 +36,8 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   // that have anchors should be okay.
   const hrefIsRelativeFragment = href.startsWith('#')
 
+  const url = new URL(href)
+
   if (
     download ||
     !hrefIsRelative ||
@@ -46,7 +50,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
        noreferrer', but leave explicitly defined rels alone.
        Do the same with `target=_blank`
     */
-    if (!hrefIsRelative) {
+    if (!hrefIsRelative && url.origin !== MAIN_SITE_URL) {
       if (typeof rel !== 'string') {
         rel = 'noopener noreferrer'
       }

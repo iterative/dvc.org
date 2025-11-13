@@ -117,13 +117,9 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
 
       const sourceFileName = source ? source : slug + SIDEBAR_FILE_EXTENSION
       const sourcePath = SIDEBAR_FILE_ROOT + parentPath + sourceFileName
-
       const relativePath = parentPath + slug
-
       return {
-        path: relativePath
-          ? `${SIDEBAR_PATH_ROOT}/${relativePath}`
-          : SIDEBAR_PATH_ROOT,
+        path: relativePath ? `${SIDEBAR_PATH_ROOT}/${relativePath}` : '/',
         source: source === false ? false : sourcePath,
         label: label ? label : slugTitleCase(slug),
         tutorials: tutorials || {},
