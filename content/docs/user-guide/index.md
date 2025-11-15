@@ -24,8 +24,8 @@ this set of principles:
 1. **Secure collaboration**: Control the access to all aspects of your project
    and share them with the people and teams you choose.
 
-[data management]: /user-guide/data-management
-[manage data]: /user-guide/data-management
+[data management]: /user-guide/data-management/remote-storage
+[manage data]: /user-guide/data-management/remote-storage
 [ml pipelines]: /user-guide/pipelines
 [experiment management]: /user-guide/experiment-management
 [metafiles]: /user-guide/project-structure
