@@ -58,4 +58,4 @@ lightgbm.train(
     callbacks=[DVCLiveCallback(dir="custom_dir")])
 ```
 
-[`live`]: /dvclivelive
+[`live`]: /dvclive/live

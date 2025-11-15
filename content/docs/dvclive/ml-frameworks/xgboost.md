@@ -73,4 +73,4 @@ model = xgb.XGBClassifier(
 )
 ```
 
-[`live`]: /dvclivelive
+[`live`]: /dvclive/live

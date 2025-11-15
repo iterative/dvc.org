@@ -32,7 +32,7 @@ List of environment variables to configure DVC behavior.
 - `DVC_STAGE`: Contains the stage name for the current DVC stage. Automatically
   set by DVC.
 
-See also [DVCLive environment variables](/dvcliveenv).
+See also [DVCLive environment variables](/dvclive/env).
 
 [push the experiments]:
   /user-guide/experiment-management/sharing-experiments#push-experiments

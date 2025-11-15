@@ -27,7 +27,7 @@ In your Python code, you can start versioning your experiments in DVCLive's
 `Live` API or framework-specific callbacks.
 
 There are some examples below
-([other frameworks available](/dvcliveml-frameworks)):
+([other frameworks available](/dvclive/ml-frameworks)):
 
 <toggle>
 
@@ -114,12 +114,12 @@ containing the results and the changes needed to reproduce it.
 Framework and any [data tracked by DVC](/start/data-management/data-versioning)
 but you can also [log additional info](/dvclive#log-data) to be included in the
 experiment. `live.log_artifact("mymodel", type="model")` will
-[track your model with DVC](/dvclivelive/log_artifact) and enable managing it
+[track your model with DVC](/dvclive/live/log_artifact) and enable managing it
 with the <abbr>model registry</abbr>.
 
 <admon type="info">
 
-Learn more about [how DVCLive works](/dvclivehow-it-works)
+Learn more about [how DVCLive works](/dvclive/how-it-works)
 
 </admon>
 
@@ -159,8 +159,9 @@ training progress:
 
 <tab title="DVCLive Report">
 
-By default, DVCLive will [generate or update a report](/dvclivelive/make_report)
-displaying all the logged data.
+By default, DVCLive will
+[generate or update a report](/dvclive/live/make_report) displaying all the
+logged data.
 
 If you pass `report="notebook"` to DVCLive, the report will be displayed and
 updated inside the output of the cell:

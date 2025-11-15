@@ -45,4 +45,4 @@ log_config = dict(
 )
 ```
 
-[`live`]: /dvclivelive
+[`live`]: /dvclive/live

@@ -3,24 +3,24 @@
 ## Directory structure
 
 DVCLive will store the logged data under the directory (`dir`) passed to
-[`Live()`](/dvclivelive). If not provided, `dvclive` will be used by default.
+[`Live()`](/dvclive/live). If not provided, `dvclive` will be used by default.
 
 The contents of the directory will depend on the methods used:
 
-| Method                                             | Writes to                                                                            |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [`Live.log_artifact()`](/dvclivelive/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc` |
-| `Live.log_metric()`                                | `dvclive/plots/metrics`                                                              |
-| `Live.monitor_system()`                            | `dvclive/plots/metrics/system`                                                       |
-| `Live.log_image()`                                 | `dvclive/plots/images`                                                               |
-| `Live.log_param()`                                 | `dvclive/params.yaml`                                                                |
-| `Live.log_plot()`                                  | `dvclive/plots/custom`                                                               |
-| `Live.log_sklearn_plot()`                          | `dvclive/plots/sklearn`                                                              |
-| `Live.make_dvcyaml()`                              | `dvc.yaml`                                                                           |
-| `Live.make_report()`                               | `dvclive/report.{md/html}`                                                           |
-| `Live.make_summary()`                              | `dvclive/metrics.json`                                                               |
-| `Live.next_step()`                                 | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
-| `Live.end()`                                       | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
+| Method                                              | Writes to                                                                            |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`Live.log_artifact()`](/dvclive/live/log_artifact) | `{path}.dvc`<br>_or_<br>`dvclive/artifacts/{path}`<br>`dvclive/artifacts/{path}.dvc` |
+| `Live.log_metric()`                                 | `dvclive/plots/metrics`                                                              |
+| `Live.monitor_system()`                             | `dvclive/plots/metrics/system`                                                       |
+| `Live.log_image()`                                  | `dvclive/plots/images`                                                               |
+| `Live.log_param()`                                  | `dvclive/params.yaml`                                                                |
+| `Live.log_plot()`                                   | `dvclive/plots/custom`                                                               |
+| `Live.log_sklearn_plot()`                           | `dvclive/plots/sklearn`                                                              |
+| `Live.make_dvcyaml()`                               | `dvc.yaml`                                                                           |
+| `Live.make_report()`                                | `dvclive/report.{md/html}`                                                           |
+| `Live.make_summary()`                               | `dvclive/metrics.json`                                                               |
+| `Live.next_step()`                                  | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
+| `Live.end()`                                        | `dvc.yaml`<br>`dvclive/metrics.json`<br>`dvclive/report.{md/html}`                   |
 
 ### Example
 
@@ -105,7 +105,7 @@ registry</abbr>.
 
 Using `Live.log_image()` to log multiple images may also grow too large to track
 with Git, in which case you can use
-[`Live(cache_images=True)`](/dvclivelive#parameters) to cache them.
+[`Live(cache_images=True)`](/dvclive/live#parameters) to cache them.
 
 ## Setup to Run with DVC
 
@@ -194,11 +194,11 @@ pipeline. You can optionally drop `Live.log_artifact()` from your code.
 
 </admon>
 
-[directory]: /dvclivehow-it-works#directory-structure
+[directory]: /dvclive/how-it-works#directory-structure
 [cache]: /start/data-management/data-versioning
 [outputs]: /user-guide/pipelines/defining-pipelines#outputs
 [dependencies]: /user-guide/pipelines/defining-pipelines#simple-dependencies
 [pipeline]: /start/experiments/experiment-pipelines
-[generates]: /dvclivelive/make_dvcyaml
+[generates]: /dvclive/live/make_dvcyaml
 [add DVCLive to a pipeline]: /start/data-management/metrics-parameters-plots
 [add a pipeline to DVCLive code]: /start/experiments/experiment-pipelines

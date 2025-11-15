@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 <admon type="tip">
 
 If you are using Hugging Face Accelerate, check the
-[DVCLive - Hugging Face Accelerate](/dvcliveml-frameworks/accelerate) page.
+[DVCLive - Hugging Face Accelerate](/dvclive/ml-frameworks/accelerate) page.
 
 </admon>
 
@@ -150,4 +150,4 @@ Where:
 
 [`DVCLiveCallback`]:
   https://huggingface.co/transformers/main_classes/callback.html#transformers.integrations.DVCLiveCallback
-[`Live`]: /dvclivelive
+[`Live`]: /dvclive/live

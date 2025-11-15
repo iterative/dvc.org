@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 <admon type="tip">
 
 If you are using Lightning Fabric, check the
-[DVCLive - Lightning Fabric](/dvcliveml-frameworks/fabric) page.
+[DVCLive - Lightning Fabric](/dvclive/ml-frameworks/fabric) page.
 
 </admon>
 
@@ -69,7 +69,7 @@ checkpointing at all as described in the
 - `prefix` - (`None` by default) - string that adds to each metric name.
 
 - `log_model` - (`False` by default) - use
-  [`live.log_artifact()`](/dvclivelive/log_artifact) to log checkpoints created
+  [`live.log_artifact()`](/dvclive/live/log_artifact) to log checkpoints created
   by [`ModelCheckpoint`]. See [Log model checkpoints](#log-model-checkpoints).
   - if `log_model == False` (default), no checkpoint is logged.
 
@@ -78,7 +78,7 @@ checkpointing at all as described in the
 
   - if `log_model == 'all'`, checkpoints are logged during training.
 
-- `experiment` - (`None` by default) - [`Live`](/dvclivelive) object to be used
+- `experiment` - (`None` by default) - [`Live`](/dvclive/live) object to be used
   instead of initializing a new one.
 
 - `**kwargs` - Any additional arguments will be used to instantiate a new
@@ -183,6 +183,6 @@ Will be stored in:
 dvclive/metrics/train/epoch/metric.tsv
 ```
 
-[`live`]: /dvclivelive
+[`live`]: /dvclive/live
 [`ModelCheckpoint`]:
   https://lightning.ai/docs/pytorch/stable/api/lightning.pytorch.callbacks.ModelCheckpoint.html

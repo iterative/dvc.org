@@ -22,9 +22,9 @@ ability to mark [structured files](#supported-file-formats) containing key/value
 pairs as metrics. These metrics are project-specific floating-point, integer, or
 string values e.g. AUC, ROC, false positives, etc.
 
-If using [DVCLive](/dvclivelive/log_metric), the files are generated and metrics
-are configured automatically. Metrics files also may be manually added to
-[`dvc.yaml`](/user-guide/project-structure/dvcyaml-files).
+If using [DVCLive](/dvclive/live/log_metric), the files are generated and
+metrics are configured automatically. Metrics files also may be manually added
+to [`dvc.yaml`](/user-guide/project-structure/dvcyaml-files).
 
 In contrast to `dvc plots`, these metrics should be stored in hierarchical
 files. Unlike its `dvc plots` counterpart, `dvc metrics diff` can report the
