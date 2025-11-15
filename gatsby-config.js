@@ -155,7 +155,7 @@ module.exports = {
     keywords,
     siteUrl: process.env.HEROKU_APP_NAME
       ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
-      : 'https://dvc.org',
+      : 'https://doc.dvc.org',
     title
   },
   developMiddleware: app => {

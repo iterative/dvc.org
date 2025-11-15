@@ -76,7 +76,11 @@ const helmetOptions = {
       ],
       connectSrc: ["'self'", 'https:'],
       imgSrc: ["'self'", 'data:', 'https:'],
-      formAction: ["'self'", 'https://forms.hsforms.com', 'https://dvc.org'],
+      formAction: [
+        "'self'",
+        'https://forms.hsforms.com',
+        'https://doc.dvc.org'
+      ],
       mediaSrc: ['https://static.iterative.ai']
     }
   }
