@@ -8,7 +8,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 <admon type="tip">
 
 If you prefer the Keras API, check the
-[DVCLive - Keras](/doc/dvclive/ml-frameworks/keras) page.
+[DVCLive - Keras](/dvcliveml-frameworks/keras) page.
 
 </admon>
 

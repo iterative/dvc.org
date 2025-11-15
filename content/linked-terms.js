@@ -1,50 +1,50 @@
 module.exports = [
   {
     matches: 'dvc.yaml',
-    url: '/doc/user-guide/project-structure/dvcyaml-files'
+    url: '/user-guide/project-structure/dvcyaml-files'
   },
   {
     matches: 'dvc.lock',
-    url: '/doc/user-guide/project-structure/dvcyaml-files#dvclock-file'
+    url: '/user-guide/project-structure/dvcyaml-files#dvclock-file'
   },
   {
     matches: '.dvc',
-    url: '/doc/user-guide/project-structure/dvc-files'
+    url: '/user-guide/project-structure/dvc-files'
   },
   {
     matches: '.dvcignore',
-    url: '/doc/user-guide/project-structure/dvcignore-files'
+    url: '/user-guide/project-structure/dvcignore-files'
   },
   {
     matches: '.dvc/',
-    url: '/doc/user-guide/project-structure/internal-files'
+    url: '/user-guide/project-structure/internal-files'
   },
   {
     matches: 'dvc experiments',
-    url: '/doc/command-reference/exp'
+    url: '/command-reference/exp'
   },
   {
     matches: 'dvc ls-url',
-    url: '/doc/command-reference/list-url'
+    url: '/command-reference/list-url'
   },
   {
     matches: 'dvc ls',
-    url: '/doc/command-reference/list'
+    url: '/command-reference/list'
   },
   {
     matches: 'dvc mv',
-    url: '/doc/command-reference/move'
+    url: '/command-reference/move'
   },
   {
     matches: 'dvc rm',
-    url: '/doc/command-reference/remove'
+    url: '/command-reference/remove'
   },
   {
     matches: 'dvc exp ls',
-    url: '/doc/command-reference/exp/list'
+    url: '/command-reference/exp/list'
   },
   {
     matches: 'dvc exp rm',
-    url: '/doc/command-reference/exp/remove'
+    url: '/command-reference/exp/remove'
   }
 ]

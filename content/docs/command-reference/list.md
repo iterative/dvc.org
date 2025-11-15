@@ -31,8 +31,8 @@ with `git ls-remote`), you only see the `dvc.yaml` and `.dvc` files with your
 code (files tracked by Git).
 
 This command's output is equivalent to cloning the repo and
-[pulling](/doc/command-reference/pull) the data (except that nothing is
-downloaded), like this:
+[pulling](/command-reference/pull) the data (except that nothing is downloaded),
+like this:
 
 ```cli
 $ git clone <url> example
@@ -78,8 +78,8 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
 
-- `--config <path>` - path to a [config file](/doc/command-reference/config)
-  that will be merged with the config in the target repository.
+- `--config <path>` - path to a [config file](/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `--remote <name>` - name of the `dvc remote` to set as a default in the target
   repository.
@@ -136,7 +136,7 @@ $ dvc get https://github.com/iterative/example-get-started model.pkl
 ## Example: List all files in a data registry
 
 Let's imagine a DVC repo used as a
-[data registry](/doc/use-cases/data-registry#using-registries), structured with
+[data registry](/use-cases/data-registry#using-registries), structured with
 different datasets in separate directories. We can do this recursively, using
 `-R` option:
 
@@ -175,9 +175,8 @@ $ git archive -o code.zip HEAD
 $ dvc list . -R --dvc-only | zip -@ data.zip
 ```
 
-ZIP alternative for
-[POSIX on Windows](/doc/user-guide/how-to/run-dvc-on-windows) (Python
-installed):
+ZIP alternative for [POSIX on Windows](/user-guide/how-to/run-dvc-on-windows)
+(Python installed):
 
 ```cli
 $ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip

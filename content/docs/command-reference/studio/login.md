@@ -5,7 +5,7 @@ Authenticate DVC with Studio to save a
 global [DVC configuration].
 
 [dvc configuration]:
-  /doc/user-guide/project-structure/configuration#config-file-locations
+  /user-guide/project-structure/configuration#config-file-locations
 
 ## Synopsis
 

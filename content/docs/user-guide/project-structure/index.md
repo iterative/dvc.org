@@ -20,7 +20,7 @@ will create and manage different DVC metafiles (below), and populate the
   file(s), default local cache location, and other utilities that DVC needs to
   operate.
 
-[configuration]: /doc/user-guide/project-structure/configuration
+[configuration]: /user-guide/project-structure/configuration
 
 <admon type="info">
 

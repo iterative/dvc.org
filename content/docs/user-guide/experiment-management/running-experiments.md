@@ -10,8 +10,8 @@ This page is not applicable if you are [saving experiments] without a pipeline.
 If this is the first time you are introduced to DVC experimentation, you may
 want to check the basics in [Get Started: Experiments] first.
 
-[saving experiments]: /doc/user-guide/experiment-management#save-experiments
-[get started: experiments]: /doc/start/experiments
+[saving experiments]: /user-guide/experiment-management#save-experiments
+[get started: experiments]: /start/experiments
 
 </admon>
 
@@ -27,7 +27,7 @@ experiment(s). These files codify _pipelines_ that specify one or more
 See [Get Started: Experimenting Using Pipelines] for an intro to this topic.
 
 [get started: experimenting using pipelines]:
-  /doc/start/experiments/experiment-pipelines
+  /start/experiments/experiment-pipelines
 
 </admon>
 
@@ -75,9 +75,9 @@ Pipelines] for differences between them.
 
 </admon>
 
-[reproduction targets]: /doc/command-reference/repro#options
-[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
-[running pipelines]: /doc/user-guide/pipelines/running-pipelines
+[reproduction targets]: /command-reference/repro#options
+[dependency graph]: /user-guide/pipelines/defining-pipelines
+[running pipelines]: /user-guide/pipelines/running-pipelines
 
 ## Experiment results
 
@@ -99,9 +99,9 @@ files cannot be restored.
 
 </admon>
 
-[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
+[reviewing]: /user-guide/experiment-management/comparing-experiments
 [apply]:
-  /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
+  /user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 
 ## Tuning (hyper)parameters
 
@@ -163,14 +163,13 @@ $ dvc exp run -S train.img_size=1024 -S train.batch_size=512  # set multiple par
 
 [random forest classifier]:
   https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
-[parameters files]:
-  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
+[parameters files]: /user-guide/project-structure/dvcyaml-files#parameters-files
 
 <admon icon="book">
 
-See [Hydra composition](/doc/user-guide/experiment-management/hydra-composition)
-for more advanced configuration options via parameter overrides (change, append,
-or remove, or use "choice" sets and ranges).
+See [Hydra composition](/user-guide/experiment-management/hydra-composition) for
+more advanced configuration options via parameter overrides (change, append, or
+remove, or use "choice" sets and ranges).
 
 </admon>
 
@@ -306,7 +305,7 @@ committing unwanted files into Git (e.g. once successful experiments are
 (before `dvc exp run`) and `git reset` them afterwards.
 
 [persisted]:
-  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+  /user-guide/experiment-management/sharing-experiments#persist-experiment
 
 </details>
 
@@ -321,6 +320,6 @@ To clear the experiments queue and start over, use `dvc queue remove --queued`.
 For more advanced grid searches, DVC supports complex config via [Hydra
 composition].
 
-[hydra composition]: /doc/user-guide/experiment-management/hydra-composition
+[hydra composition]: /user-guide/experiment-management/hydra-composition
 
 </admon>

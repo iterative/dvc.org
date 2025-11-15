@@ -61,8 +61,8 @@ initializing DVC in the Git repo root:
   results if not constrained to a single project scope.
 
 [monorepo]: https://en.wikipedia.org/wiki/Monorepo
-[internals]: /doc/user-guide/project-structure/internal-files
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[internals]: /user-guide/project-structure/internal-files
+[remote storage]: /user-guide/data-management/remote-storage
 
 <details>
 
@@ -125,7 +125,7 @@ include:
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
   control systems. Since DVC relies on simple `dvc.yaml` files to manage
-  [pipelines](/doc/command-reference/dag), data, etc, they can be added into any
+  [pipelines](/command-reference/dag), data, etc, they can be added into any
   version control system, thus providing large data files and directories
   versioning.
 
@@ -142,7 +142,7 @@ configuration] when initialized this way. This means that even if the project is
 tracked by Git, or if Git is initialized in it later, DVC will keep operating
 detached from Git in this project.
 
-[dvc configuration]: /doc/user-guide/project-structure/configuration
+[dvc configuration]: /user-guide/project-structure/configuration
 
 ## Options
 

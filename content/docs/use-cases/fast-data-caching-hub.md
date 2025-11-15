@@ -23,17 +23,17 @@ to
   [shared development server](#example-shared-development-server)).
 
 - switch data inputs quickly (without re-downloading) on a shared server used
-  for machine learning [experiments](/doc/user-guide/experiment-management).
+  for machine learning [experiments](/user-guide/experiment-management).
 
 ![](/img/storage-layers.png) _Data storage middleware for multiple projects_
 
 You can have a single storage for all you projects by setting up a [shared DVC
 cache] in a near location (network, external drive, etc.). This de-duplicates
 files across datasets and prevents repetitive transfers by
-[linking](/doc/user-guide/data-management/large-dataset-optimization) your
-working files and directories. Data security policies can be implemented
-reliably, as data never leaves the central storage. DVC can also help you back
-up and [share data and ML models] on external/remote locations.
+[linking](/user-guide/data-management/large-dataset-optimization) your working
+files and directories. Data security policies can be implemented reliably, as
+data never leaves the central storage. DVC can also help you back up and [share
+data and ML models] on external/remote locations.
 
 Now that your team shares a primary storage, it can be managed independently as
 part of your infrastructure; provisioned depending on data access speed and cost
@@ -41,20 +41,19 @@ requirements. You have the flexibility to switch storage providers at any time,
 without having to change the directory structures or code of your projects.
 
 [share data and ml models]:
-  /doc/start/data-management/data-versioning#storing-and-sharing
+  /start/data-management/data-versioning#storing-and-sharing
 
 ### What's next?
 
 For details about how DVC caches your files and directories, see [Structure of
 the cache directory]. If you're completely new to DVC, see our
-[Get Started](/doc/start) pages to get familiar with the main features that
-structured storage and
-[data versioning](/doc/use-cases/versioning-data-and-models) allow. And check
-out the following example for a specific solution provided by a layered storage
-architecture.
+[Get Started](/start) pages to get familiar with the main features that
+structured storage and [data versioning](/use-cases/versioning-data-and-models)
+allow. And check out the following example for a specific solution provided by a
+layered storage architecture.
 
 [structure of the cache directory]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+  /user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ## Example: Shared development server
 
@@ -70,7 +69,7 @@ the project, you can get the latest results with `dvc checkout`. DVC links data
 files and directories to your workspace instantly, so data artifacts are never
 moved or copied.
 
-[shared dvc cache]: /doc/user-guide/how-to/share-a-dvc-cache
+[shared dvc cache]: /user-guide/how-to/share-a-dvc-cache
 
 ```cli
 $ git pull

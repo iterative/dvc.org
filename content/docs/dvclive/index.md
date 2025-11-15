@@ -15,8 +15,8 @@ from dvclive import Live
 
 <admon type="tip">
 
-If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
-can jump directly to its corresponding page.
+If you use one of the supported [ML Frameworks](/dvcliveml-frameworks), you can
+jump directly to its corresponding page.
 
 </admon>
 
@@ -28,7 +28,7 @@ can jump directly to its corresponding page.
 with Live() as live:
 ```
 
-See [`Live()`](/doc/dvclive/live) for details.
+See [`Live()`](/dvclivelive) for details.
 
 ### Log data
 
@@ -167,8 +167,8 @@ workflow beyond a single notebook or script so you can modularize and
 parametrize your code. See how to [setup a pipeline] to work with DVCLive.
 
 [release notes]: https://github.com/iterative/dvclive/releases/tag/3.0.0
-[directory]: /doc/dvclive/how-it-works
-[tracked]: /doc/start/experiments/experiment-tracking
-[run experiments]: /doc/user-guide/experiment-management/running-experiments
-[setup a pipeline]: /doc/dvclive/how-it-works#setup-to-run-with-dvc
-[access is enabled]: /doc/start/experiments/experiment-tracking#sharing
+[directory]: /dvclivehow-it-works
+[tracked]: /start/experiments/experiment-tracking
+[run experiments]: /user-guide/experiment-management/running-experiments
+[setup a pipeline]: /dvclivehow-it-works#setup-to-run-with-dvc
+[access is enabled]: /start/experiments/experiment-tracking#sharing

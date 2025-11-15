@@ -2,7 +2,7 @@
 
 Show status of tasks and workers for the [DVC experiment] task queue.
 
-[dvc experiment]: /doc/user-guide/experiment-management
+[dvc experiment]: /user-guide/experiment-management
 
 ## Synopsis
 

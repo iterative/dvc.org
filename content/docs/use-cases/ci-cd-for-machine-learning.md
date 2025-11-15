@@ -56,8 +56,8 @@ models) while pushing the actual data content to [cloud storage]. DVC also
 provides metrics-driven navigation in Git repositories -- [tabulating and
 plotting] model metrics changes across commits.
 
-[cloud storage]: /doc/user-guide/data-management/remote-storage
-[tabulating and plotting]: /doc/start/data-management/metrics-parameters-plots
+[cloud storage]: /user-guide/data-management/remote-storage
+[tabulating and plotting]: /start/data-management/metrics-parameters-plots
 
 **Low friction**: Our sister project CML provides
 [lightweight machine resource orchestration](https://cml.dev/doc/self-hosted-runners)
@@ -67,7 +67,7 @@ abstraction/codification and require no external services.
 **Data Validation**: It is common practice for tests to be triggered each time a
 code change is pushed to a repository branch. DVC can be used in a similar
 manner to checkout
-[different data versions](/doc/use-cases/versioning-data-and-models) for the
+[different data versions](/use-cases/versioning-data-and-models) for the
 purposes of testing and running sanity checks. Mistakes can be caught
 automatically without requiring contributors to set up complicated tests
 locally. Instead, embrace agile development so you can confidently package,
@@ -75,13 +75,13 @@ deploy and deliver new versions several times a day -- and even before the
 weekend -- without fear of bugs/regressions.
 
 **Metrics (Model Validation)**: Whenever a change is committed, DVC can check
-that the [pipeline](/doc/start/data-management/data-pipelines) (including data,
+that the [pipeline](/start/data-management/data-pipelines) (including data,
 parameters, code, and metrics) is up to date, thereby ensuring that Git commits
 and model artifacts are in sync. DVC can also run benchmarks against previously
 deployed models before a new one is
-[released into production](/doc/use-cases/data-registry). CML provides useful
-tools to make this process easy -- including reporting metric changes with
-interactive graphs and tables in pull request comments.
+[released into production](/use-cases/data-registry). CML provides useful tools
+to make this process easy -- including reporting metric changes with interactive
+graphs and tables in pull request comments.
 
 **Refine in the Cloud**: Rather than frequently updating models locally (e.g.
 based on new data from regular feeds), DVC and CML let you retrain/refine in the
@@ -91,8 +91,8 @@ a regularly updated source, checkout a pre-existing model, and then deploy an
 updated model refined on the additional data.
 
 **Experiment in the Cloud**: Alternatively, DVC and CML can be used to do
-research and run [experiments](/doc/start/experiments) in the cloud -- such as
-an entire hyperparameter search!
+research and run [experiments](/start/experiments) in the cloud -- such as an
+entire hyperparameter search!
 
 <p style="display: inline-flex; align-items: center; gap: 8px; font-size: 32px">
   <img src="/logos/dvc.svg" alt="DVC" />+

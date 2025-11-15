@@ -97,7 +97,7 @@ If the ID is an arbitrary string, a file path must be provided in the `y` field
 Refer to [Visualizing Plots] and `dvc plots show` for more examples, and refer
 to [DVCLive] for a helper to log plots.
 
-[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
+[visualizing plots]: /user-guide/experiment-management/visualizing-plots
 
 </admon>
 
@@ -177,17 +177,17 @@ to [DVCLive] for a helper to log plots.
 - `template` (_string_) - [plot template]. Defaults to `linear`.
 
 [plot template]:
-  https://dvc.org/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+  https://doc.dvc.org/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## Stages
 
 You can construct machine learning pipelines by defining individual
-[stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
+[stages](/command-reference/run) in one or more `dvc.yaml` files. Stages
 constitute a pipeline when they connect with each other (forming a [dependency
 graph], see `dvc dag`).
 
 [dependency graph]:
-  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+  /user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 The list of `stages` contains one or more user-defined <abbr>stages</abbr>.
 Here's a simple one named `transpose`:
@@ -338,7 +338,7 @@ and arrays (groups of params).
 These files are typically written manually (or generated) and they can be
 versioned directly with Git along with other <abbr>workspace</abbr> files.
 
-[and python]: /doc/command-reference/params#examples-python-parameters-file
+[and python]: /command-reference/params#examples-python-parameters-file
 
 <admon type="tip">
 
@@ -462,8 +462,8 @@ and `dvc stage list`.
 </admon>
 
 Importantly, dictionaries from
-[parameters files](/doc/command-reference/params#examples) can be used in
-`foreach` stages as well:
+[parameters files](/command-reference/params#examples) can be used in `foreach`
+stages as well:
 
 ```yaml
 stages:
@@ -584,7 +584,7 @@ These are the fields that are accepted in each stage:
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                                 |
 | `desc`           | (Optional) user description. This doesn't affect any DVC operations.                                                                                                                                                                                                                            |
 
-[changed]: /doc/command-reference/status#local-workspace-status
+[changed]: /command-reference/status#local-workspace-status
 
 `dvc.yaml` files also support `# comments`.
 
@@ -594,15 +594,14 @@ We maintain a `dvc.yaml` [schema] that can be used by editors like [VSCode] or
 [PyCharm] to enable automatic syntax validation and auto-completion.
 
 [schema]: https://github.com/iterative/dvcyaml-schema
-[vscode]: /doc/install/plugins#visual-studio-code
-[pycharm]: /doc/install/plugins#pycharmintellij
+[vscode]: /install/plugins#visual-studio-code
+[pycharm]: /install/plugins#pycharmintellij
 
 </admon>
 
 <admon type="info">
 
-See also
-[How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+See also [How to Merge Conflicts](/user-guide/how-to/merge-conflicts#dvcyaml).
 
 </admon>
 
@@ -611,7 +610,7 @@ See also
 <admon type="info">
 
 These include a subset of the fields in `.dvc` file
-[output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
+[output entries](/user-guide/project-structure/dvc-files#output-entries).
 
 </admon>
 
@@ -627,8 +626,8 @@ These include a subset of the fields in `.dvc` file
 
 `dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. These sources can be
-[parameters files](/doc/command-reference/params), or `vars` defined in
-`dvc.yaml` instead.
+[parameters files](/command-reference/params), or `vars` defined in `dvc.yaml`
+instead.
 
 Let's say we have `params.yaml` (default params file) with the following
 contents:
@@ -867,11 +866,11 @@ Stages are listed again in `dvc.lock`, in order to know if their definitions
 change in `dvc.yaml`.
 
 Regular
-[dependency entries](/doc/user-guide/project-structure/dvc-files#dependency-entries)
+[dependency entries](/user-guide/project-structure/dvc-files#dependency-entries)
 and all forms of
-[output entries](/doc/user-guide/project-structure/dvc-files#output-entries)
-(including [metrics](/doc/command-reference/metrics) and
-[plots](/doc/command-reference/plots) files) are also listed (per stage) in
+[output entries](/user-guide/project-structure/dvc-files#output-entries)
+(including [metrics](/command-reference/metrics) and
+[plots](/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, including a content hash field (`md5`, `etag`, or `checksum`).
 
 Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
@@ -881,4 +880,4 @@ Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
 [`matrix` stages](#matrix-stages), individual stages are expanded (no `foreach`
 or `matrix` structures are preserved).
 
-[DVCLive]: /doc/dvclive
+[DVCLive]: /dvclive

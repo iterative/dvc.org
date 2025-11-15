@@ -103,7 +103,7 @@ a model. We add all the model hyperparameters as arguments to make it easy to
 tune hyperparameters and track what changed. Hyperparameters are added under the
 `train` key in `params.yaml`. The DVC pipeline stage `cmd` includes `${train}`
 to
-[unpack and pass](https://dvc.org/doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
+[unpack and pass](https://doc.dvc.org/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
 all those arguments and track them as parameters, in addition to tracking the
 other inputs and outputs:
 
@@ -165,7 +165,7 @@ For any [DVCLive] metrics and plots logged in the `entry_point` script, you
 should now see live updates in Studio. To use DVCLive in the script, you must
 also include `dvclive` in a `requirements.txt` file inside your `source_dir`.
 
-[DVCLive]: /doc/dvclive
+[DVCLive]: /dvclive
 
 ## Deployment
 
@@ -177,21 +177,21 @@ your CI/CD workflow. To start with the model registry, see how to:
 
 For a full example of how to deploy with SageMaker, see our [blog post].
 
-[experiments]: /doc/start/experiments
+[experiments]: /start/experiments
 [clone]: https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-git.html
 [code-server]:
   https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/
-[dvc extension for vs code]: /doc/vs-code-extension
-[dvc config]: /doc/user-guide/project-structure/configuration#studio
-[pipelines]: /doc/user-guide/pipelines
+[dvc extension for vs code]: /vs-code-extension
+[dvc config]: /user-guide/project-structure/configuration#studio
+[pipelines]: /user-guide/pipelines
 [external dependencies and outputs]:
-  /doc/user-guide/pipelines/external-dependencies-and-outputs
+  /user-guide/pipelines/external-dependencies-and-outputs
 [preprocessing script]:
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py
 [training script]:
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py
-[start using the model registry]: /doc/start/model-registry
-[deploy models with ci/cd]: /doc/start/model-registry/model-cicd
+[start using the model registry]: /start/model-registry
+[deploy models with ci/cd]: /start/model-registry/model-cicd
 [triggering sagemaker deployment]:
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
 [deploying sagemaker endpoints]:

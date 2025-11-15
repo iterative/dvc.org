@@ -22,7 +22,7 @@ etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 Namely:
 
 **Checkout**: For any commit hash, branch or tag, `git checkout` restores the
-[DVC project files](/doc/user-guide/project-structure) corresponding to that
+[DVC project files](/user-guide/project-structure) corresponding to that
 version. Some of these files, in turn refer to data stored in
 <abbr>cache</abbr>, but not necessarily current in the <abbr>workspace</abbr>.
 Normally, it's necessary to use `dvc checkout` to also update the workspace
@@ -33,7 +33,7 @@ This hook automates `dvc checkout` after `git checkout`.
 **Commit/Reproduce**: Before committing DVC changes with Git, it may be
 necessary using `dvc commit` to store new data files not yet in cache. Or the
 changes might require reproducing the corresponding
-[pipeline](/doc/command-reference/dag) (with `dvc repro`) to regenerate the
+[pipeline](/command-reference/dag) (with `dvc repro`) to regenerate the
 project's results (which implicitly commits them to DVC as well).
 
 This hook automates `dvc status` before `git commit` when needed, to remind the
@@ -45,7 +45,7 @@ files and directories tracked by DVC to [remote storage].
 
 This hook automates `dvc push` before `git push`.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Installed Git hooks
 
@@ -134,8 +134,8 @@ $ pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type 
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/start) section. Then we can see what happens with
-`dvc install` in different situations.
+[Get Started](/start) section. Then we can see what happens with `dvc install`
+in different situations.
 
 <details>
 

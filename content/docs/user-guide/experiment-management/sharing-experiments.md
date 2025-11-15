@@ -159,11 +159,11 @@ To push the experiment automatically at the end of a `dvc exp run` or
 $ dvc config exp.auto_push true
 ```
 
-or use the [environment variable](/doc/user-guide/env) `DVC_EXP_AUTO_PUSH`.
+or use the [environment variable](/user-guide/env) `DVC_EXP_AUTO_PUSH`.
 
 By default, the experiments will be pushed to the remote `origin`. To change the
 default value, set the configuration option `exp.git_remote` or the
-[environment variable](/doc/user-guide/env) `DVC_EXP_GIT_REMOTE`.
+[environment variable](/user-guide/env) `DVC_EXP_GIT_REMOTE`.
 
 </details>
 
@@ -279,12 +279,12 @@ Removed experiments: unwet-jinn
 [live metrics and plots]: #live-metrics-and-plots
 [push]: #push-experiments
 [pull]: #pull-experiments
-[dvc config]: /docs/user-guide/project-structure/configuration#studio
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[sharing-data]: /doc/start/data-management/data-versioning#storing-and-sharing
-[troubleshooting]: /doc/user-guide/troubleshooting#git-auth
+[dvc config]: /user-guide/project-structure/configuration#studio
+[remote storage]: /user-guide/data-management/remote-storage
+[sharing-data]: /start/data-management/data-versioning#storing-and-sharing
+[troubleshooting]: /user-guide/troubleshooting#git-auth
 [persistent]: #persist-experiment
 [bring experiment results to your workspace]:
-  /doc/user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
+  /user-guide/experiment-management/comparing-experiments#bring-experiment-results-to-your-workspace
 [remove]: #remove-pushed-experiments
 [access token]: https://docs.datachain.ai/studio/api#authorization

@@ -3,12 +3,12 @@
 [![Link Check](https://github.com/iterative/dvc.org/workflows/Check%20all%20links%20in%20the%20repository/badge.svg)](https://github.com/iterative/dvc.org/actions?query=workflow%3A%22Check+all+links+in+the+repository%22)
 
 [DVC](https://github.com/iterative/dvc) project website's source code.
-[Documentation](https://dvc.org/doc) content. Contributions are welcome!
+[Documentation](https://doc.dvc.org) content. Contributions are welcome!
 
 # Contributing Docs
 
 Please see our
-[Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
+[Contributing guide](https://doc.dvc.org/user-guide/contributing/docs) for more
 details. Thanks to all our contributors!
 
 [![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/iterative/dvc.org/graphs/contributors)

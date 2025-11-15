@@ -22,7 +22,7 @@ repository). It can reuse the files in DVC <abbr>cache</abbr> and can otherwise
 stream from [supported remote storage].
 
 [supported remote storage]:
-  /doc/user-guide/data-management/remote-storage#supported-storage-types
+  /user-guide/data-management/remote-storage#supported-storage-types
 
 ```py
 >>> from dvc.api import DVCFileSystem
@@ -53,8 +53,8 @@ stream from [supported remote storage].
 
 - `config` optional [config] dictionary to pass through to the DVC project.
 
-[experiment name]: /doc/command-reference/exp/run#-n
-[config]: /doc/command-reference/config
+[experiment name]: /command-reference/exp/run#-n
+[config]: /command-reference/config
 
 ## Opening a file
 
@@ -153,7 +153,7 @@ remote if they don't exist in the cache.
 ## Using subrepos
 
 If you have
-[initialized DVC in a subdirectory](https://dvc.org/doc/command-reference/init#initializing-dvc-in-subdirectories)
+[initialized DVC in a subdirectory](https://doc.dvc.org/command-reference/init#initializing-dvc-in-subdirectories)
 of the Git repository, use `DVCFileSystem(repo, subrepos=True)` to access the
 subdirectory.
 
@@ -182,7 +182,7 @@ details check out the fsspec's [API Reference][fsspec-api].
 [fsspec]: https://filesystem-spec.readthedocs.io/
 [fsspec-api]:
   https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem
-[hf-datasets]: /doc/user-guide/integrations/huggingface#hugging-face-datasets
+[hf-datasets]: /user-guide/integrations/huggingface#hugging-face-datasets
 
 <admon type="tip">
 

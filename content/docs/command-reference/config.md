@@ -30,9 +30,9 @@ When writing (a `value` is given or `--unset` is used), the new value is written
 to the project-level config file by default (`.dvc/config`). Options `--system`,
 `--global` and `--local` can be used to write to that location instead.
 
-[dvc configuration]: /doc/user-guide/project-structure/configuration
+[dvc configuration]: /user-guide/project-structure/configuration
 [config section]:
-  /doc/user-guide/project-structure/configuration#configuration-sections
+  /user-guide/project-structure/configuration#configuration-sections
 
 <admon type="warn">
 

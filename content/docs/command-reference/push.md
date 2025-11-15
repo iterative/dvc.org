@@ -3,7 +3,7 @@
 Upload tracked files or directories to [remote storage] based on the current
 <abbr>dvc files</abbr> files.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -33,7 +33,7 @@ these commands.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
 
-[data sharing]: /doc/start/data-management/data-versioning#storing-and-sharing
+[data sharing]: /start/data-management/data-versioning#storing-and-sharing
 
 The `dvc remote` used is determined in order, based on
 
@@ -91,8 +91,8 @@ in the cache (compared to the default remote.) It can be used to see what files
   `dvc remote list`).
 
 - `--run-cache`, `--no-run-cache` - whether to upload all available history of
-  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
-  the `dvc remote`. Default is `--no-run-cache`.
+  [stage runs](/user-guide/project-structure/internal-files#run-cache) to the
+  `dvc remote`. Default is `--no-run-cache`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. Note that the default
@@ -149,8 +149,8 @@ $ dvc push data.zip.dvc
 ## Example: With dependencies
 
 Demonstrating the `--with-deps` option requires a larger example. First, assume
-a [pipeline](/doc/command-reference/dag) has been set up with these
-[stages](/doc/command-reference/run): `clean-posts`, `featurize`, `test-posts`,
+a [pipeline](/command-reference/dag) has been set up with these
+[stages](/command-reference/run): `clean-posts`, `featurize`, `test-posts`,
 `matrix-train`
 
 Imagine the <abbr>project</abbr> has been modified such that the
@@ -205,7 +205,7 @@ state. We can see exactly what that means by looking in the project's
 <abbr>cache</abbr>:
 
 [cache directory]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+  /user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ```cli
 $ tree .dvc/cache/files/md5
@@ -245,7 +245,7 @@ the cache having more files in it than the remote – which is what the `new`
 state means.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+> [Structure of cache directory](/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > for more info.
 
 Next we can copy the remaining data from the cache to the remote using

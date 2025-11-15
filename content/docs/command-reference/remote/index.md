@@ -1,14 +1,14 @@
 # remote
 
 A set of commands to set up and manage [remote storage]:
-[add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename).
+[add](/command-reference/remote/add),
+[default](/command-reference/remote/default),
+[list](/command-reference/remote/list),
+[modify](/command-reference/remote/modify),
+[remove](/command-reference/remote/remove), and
+[rename](/command-reference/remote/rename).
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -33,7 +33,7 @@ data. Several types are supported: Amazon S3, Google Drive, SSH, HTTP, local
 file systems, [among others].
 
 [among others]:
-  /doc/user-guide/data-management/remote-storage#supported-storage-types
+  /user-guide/data-management/remote-storage#supported-storage-types
 
 <admon icon="book">
 
@@ -45,8 +45,8 @@ Learn more about [remote storage].
 default). Alternatively, the config files can be edited manually.
 
 [types of storage]:
-  /doc/user-guide/data-management/remote-storage#supported-storage-types
-[config files]: /doc/user-guide/project-structure/configuration
+  /user-guide/data-management/remote-storage#supported-storage-types
+[config files]: /user-guide/project-structure/configuration
 
 ## Options
 
@@ -62,7 +62,7 @@ default). Alternatively, the config files can be edited manually.
 <admon type="tip">
 
 Learn more about
-[local remotes](/doc/user-guide/data-management/remote-storage#file-systems-local-remotes).
+[local remotes](/user-guide/data-management/remote-storage#file-systems-local-remotes).
 
 </admon>
 

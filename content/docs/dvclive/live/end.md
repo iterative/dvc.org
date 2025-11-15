@@ -19,7 +19,7 @@ with Live() as live:
 ```
 
 It is also called when the training ends for each of the supported
-[ML Frameworks](/doc/dvclive/ml-frameworks)
+[ML Frameworks](/dvcliveml-frameworks)
 
 ```py
 from dvclive.keras import DVCLiveCallback
@@ -38,6 +38,6 @@ By default, `Live.end()` will call `Live.make_summary()`, `Live.make_dvcyaml()`,
 and `Live.make_report()`.
 
 If `save_dvc_exp=True`, it will
-[save a new DVC experiment](/doc/dvclive/how-it-works#git-integration) and write
-a `dvc.yaml` file configuring what DVC will show for logged plots, metrics, and
+[save a new DVC experiment](/dvclivehow-it-works#git-integration) and write a
+`dvc.yaml` file configuring what DVC will show for logged plots, metrics, and
 parameters.

@@ -99,9 +99,9 @@ important fields that DVC adds to the plot data:
 </details>
 
 [plot templates]:
-  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+  /user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 [vega-lite specification]: https://vega.github.io/vega-lite/
-[data-series plots]: /doc/user-guide/experiment-management/visualizing-plots
+[data-series plots]: /user-guide/experiment-management/visualizing-plots
 
 ## Example: Modifying the `simple` template
 
@@ -161,5 +161,5 @@ file:///Users/usr/src/dvc_plots/index.html
 ![](/img/plots_templates_show_modified.svg)
 
 [field]:
-  /doc/user-guide/project-structure/dvcyaml-files#available-configuration-fields
-[DVC extension for VS Code]: /doc/vs-code-extension
+  /user-guide/project-structure/dvcyaml-files#available-configuration-fields
+[DVC extension for VS Code]: /vs-code-extension

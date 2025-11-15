@@ -1,7 +1,7 @@
 # plots diff
 
-Show multiple versions of [plots](/doc/command-reference/plots) by overlaying
-them in a single image. This allows to compare them easily.
+Show multiple versions of [plots](/command-reference/plots) by overlaying them
+in a single image. This allows to compare them easily.
 
 ## Synopsis
 
@@ -45,9 +45,9 @@ Another way to display plots is the `dvc plots show` command, which just lists
 all the current plots, without comparisons.
 
 [certain metrics]:
-  /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
+  /user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
-  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+  /user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## Options
 
@@ -64,19 +64,19 @@ all the current plots, without comparisons.
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
   containing the plots. The default is `dvc_plots` or the value set with the
-  [`plots.out_dir`](/doc/user-guide/project-structure/configuration#plots)
-  config option.
+  [`plots.out_dir`](/user-guide/project-structure/configuration#plots) config
+  option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+  [plot template](/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to be injected with data. The default template is `.dvc/plots/default.json`.
   See more details in `dvc plots`.
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
-  [Custom templates](/doc/command-reference/plots/templates) for more
-  information on this `index` field. Column names or numbers are expected for
-  tabular metrics files.
+  [Custom templates](/command-reference/plots/templates) for more information on
+  this `index` field. Column names or numbers are expected for tabular metrics
+  files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `--targets` is used by default. Column names or numbers are
@@ -99,7 +99,7 @@ all the current plots, without comparisons.
   names.
 
 - `--html-template <path>` - path to a
-  [custom HTML template](/doc/command-reference/plots/show#custom-html-templates).
+  [custom HTML template](/command-reference/plots/show#custom-html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -149,7 +149,7 @@ cat,turtle
 ```
 
 The predefined confusion matrix
-[template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+[template](/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 (in `.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 

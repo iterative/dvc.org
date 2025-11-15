@@ -64,10 +64,10 @@ system metrics. If you call `Live` with `monitor_system=True`,
 
 `Live` will sample your system for metrics at regular intervals and average them
 over a number of samples. The averaged data is then
-[logged as a metric](https://dvc.org/doc/dvclive/live/log_metric).
+[logged as a metric](https://doc.dvc.org/dvclive/live/log_metric).
 
 The sampling terminates when you call
-[`live.end()`](https://dvc.org/doc/dvclive/live/end).
+[`live.end()`](https://doc.dvc.org/dvclive/live/end).
 
 ## Parameters
 

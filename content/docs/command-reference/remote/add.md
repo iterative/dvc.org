@@ -9,7 +9,7 @@ other remote parameters. See [Remote storage configuration] for more
 information.
 
 [remote storage configuration]:
-  /doc/user-guide/data-management/remote-storage#configuration
+  /user-guide/data-management/remote-storage#configuration
 
 </admon>
 
@@ -32,7 +32,7 @@ Registers a [remote storage] location to save data files (besides the
 remotes can point to a cloud storage service, an SSH server, network-attached
 storage, or even a directory in the local file system.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 <admon type="tip">
 
@@ -67,8 +67,8 @@ $ dvc remote add -d temp /tmp/dvcstore
     remote = myremote
 ```
 
-[`remote`]: /doc/user-guide/project-structure/configuration#remote
-[`core`]: /doc/user-guide/project-structure/configuration#core
+[`remote`]: /user-guide/project-structure/configuration#remote
+[`core`]: /user-guide/project-structure/configuration#core
 
 <admon type="info">
 
@@ -81,7 +81,7 @@ all. For example:
 $ pip install "dvc[s3]"
 ```
 
-[installed dvc]: /doc/install
+[installed dvc]: /install
 
 </admon>
 
@@ -128,15 +128,15 @@ The following are the supported types of storage protocols and platforms.
 - [Google Drive]
 - [Aliyun OSS]
 
-[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[amazon s3]: /user-guide/data-management/remote-storage/amazon-s3
 [s3-compatible]:
-  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
+  /user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 [azure blob storage]:
-  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+  /user-guide/data-management/remote-storage/azure-blob-storage
 [google cloud storage]:
-  /doc/user-guide/data-management/remote-storage/google-cloud-storage
-[google drive]: /doc/user-guide/data-management/remote-storage/google-drive
-[aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
+  /user-guide/data-management/remote-storage/google-cloud-storage
+[google drive]: /user-guide/data-management/remote-storage/google-drive
+[aliyun oss]: /user-guide/data-management/remote-storage/aliyun-oss
 
 ### Self-hosted / On-premises
 
@@ -145,8 +145,8 @@ The following are the supported types of storage protocols and platforms.
 - [HTTP]
 - [WebDAV]
 
-[ssh]: /doc/user-guide/data-management/remote-storage/ssh
-[hdfs]: /doc/user-guide/data-management/remote-storage/hdfs
-[webhdfs]: /doc/user-guide/data-management/remote-storage/hdfs#webhdfs
-[http]: /doc/user-guide/data-management/remote-storage/http
-[webdav]: /doc/user-guide/data-management/remote-storage/webdav
+[ssh]: /user-guide/data-management/remote-storage/ssh
+[hdfs]: /user-guide/data-management/remote-storage/hdfs
+[webhdfs]: /user-guide/data-management/remote-storage/hdfs#webhdfs
+[http]: /user-guide/data-management/remote-storage/http
+[webdav]: /user-guide/data-management/remote-storage/webdav

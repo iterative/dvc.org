@@ -2,12 +2,12 @@
 
 A set of commands to authenticate DVC with Studio and save a
 [client access token](https://docs.datachain.ai/studio/api#authorization) to
-global [DVC configuration]: [login](/doc/command-reference/studio/login),
-[logout](/doc/command-reference/studio/logout),
-[token](/doc/command-reference/studio/token).
+global [DVC configuration]: [login](/command-reference/studio/login),
+[logout](/command-reference/studio/logout),
+[token](/command-reference/studio/token).
 
 [dvc configuration]:
-  /doc/user-guide/project-structure/configuration#config-file-locations
+  /user-guide/project-structure/configuration#config-file-locations
 
 ## Synopsis
 

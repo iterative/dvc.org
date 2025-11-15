@@ -4,7 +4,7 @@ Removes non-active tasks from the [DVC experiment] queue.
 
 > See `dvc queue kill` to interrupt active ones.
 
-[dvc experiment]: /doc/user-guide/experiment-management
+[dvc experiment]: /user-guide/experiment-management
 
 ## Synopsis
 

@@ -27,7 +27,7 @@ We call this file-based definition _codification_ (YAML format in our case). It
 has the added benefit of allowing you to develop pipelines on standard Git
 workflows (and [GitOps]).
 
-[gitops]: /doc/use-cases/versioning-data-and-model-files
+[gitops]: /use-cases/versioning-data-and-model-files
 
 </admon>
 
@@ -40,9 +40,9 @@ Note that while each pipeline is a graph, this doesn't mean a single `dvc.yaml`
 file. DVC checks the entire <abbr>project</abbr> tree and validates all such
 files to find stages, rebuilding all the pipelines that these may define.
 
-[data versioning]: /doc/start/data-management/data-versioning
-[metrics]: /doc/command-reference/metrics
-[plots]: /doc/user-guide/experiment-management/visualizing-plots
+[data versioning]: /start/data-management/data-versioning
+[metrics]: /command-reference/metrics
+[plots]: /user-guide/experiment-management/visualizing-plots
 
 <details>
 
@@ -55,7 +55,7 @@ run a pipeline, its topology should be _acyclic_ -- because executing cycles
 
 Use `dvc dag` to visualize (or export) them.
 
-[more about dags]: /doc/user-guide/pipelines/running-pipelines#dag
+[more about dags]: /user-guide/pipelines/running-pipelines#dag
 
 </details>
 
@@ -65,14 +65,14 @@ Use `dvc dag` to visualize (or export) them.
 
 See the full [specification] of stage entries.
 
-[specification]: /doc/user-guide/project-structure/dvcyaml-files#stage-entries
+[specification]: /user-guide/project-structure/dvcyaml-files#stage-entries
 
 </admon>
 
 Each stage wraps around an executable shell [command] and specifies any
 file-based [dependencies](#simple-dependencies) as well as [outputs](#outputs).
 Let's look at a sample stage: it depends on a script file it runs as well as on
-a raw data input (ideally [tracked by DVC](/doc/start) already):
+a raw data input (ideally [tracked by DVC](/start) already):
 
 ```yaml
 stages:
@@ -127,8 +127,8 @@ the arguments provided (otherwise stage definition won't be checked until
 execution). A disadvantage is that some advanced features such as [templating]
 are not available this way.
 
-[command]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
-[templating]: /doc/user-guide/project-structure/pipelines-files#templating
+[command]: /user-guide/project-structure/dvcyaml-files#stage-commands
+[templating]: /user-guide/project-structure/pipelines-files#templating
 
 </admon>
 
@@ -156,7 +156,7 @@ DVC [calculates a hash] of file/dir contents to compare vs. previous versions.
 This is a distinctive mechanism over traditional build tools like `make`.
 
 [calculates a hash]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+  /user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 </admon>
 
@@ -198,11 +198,10 @@ See [more details] about this syntax.
 
 Use `dvc params diff` to compare parameters across project versions.
 
-[parameters file]:
-  /doc/user-guide/project-structure/dvcyaml-files#parameters-files
+[parameters file]: /user-guide/project-structure/dvcyaml-files#parameters-files
 [neural network]:
   https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/
-[more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
+[more details]: /user-guide/project-structure/dvcyaml-files#parameters
 
 ## Outputs
 

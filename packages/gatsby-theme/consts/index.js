@@ -3,13 +3,13 @@ const consts = {
   COMMAND_REGEXP: /^[a-z][a-z-]*$/,
   ARGS_REGEXP: new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig'),
 
-  COMMAND_ROOT: '/doc/command-reference/',
+  COMMAND_ROOT: '/command-reference/',
   CML_COMMAND_ROOT: '/doc/ref/',
 
   CLI_API_REGEXP: /dvc.api([a-z-._]*\(\)$)?/,
   METHOD_REGEXP: /^[a-z-._]*\(\)$/,
 
-  API_ROOT: '/doc/api-reference/',
+  API_ROOT: '/api-reference/',
 
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX: /dvc|api/g,
   SIDEBAR_PATH_ROOT: '',

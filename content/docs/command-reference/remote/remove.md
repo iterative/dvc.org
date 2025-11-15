@@ -28,7 +28,7 @@ it is possible to edit config files manually.
 
 The `name` argument is required.
 
-[dvc configuration]: /doc/user-guide/project-structure/configuration
+[dvc configuration]: /user-guide/project-structure/configuration
 
 ## Options
 

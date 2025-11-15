@@ -24,19 +24,19 @@ this set of principles:
 1. **Secure collaboration**: Control the access to all aspects of your project
    and share them with the people and teams you choose.
 
-[data management]: /doc/user-guide/data-management
-[manage data]: /doc/user-guide/data-management
-[ml pipelines]: /doc/user-guide/pipelines
-[experiment management]: /doc/user-guide/experiment-management
-[metafiles]: /doc/user-guide/project-structure
+[data management]: /user-guide/data-management
+[manage data]: /user-guide/data-management
+[ml pipelines]: /user-guide/pipelines
+[experiment management]: /user-guide/experiment-management
+[metafiles]: /user-guide/project-structure
 
 ## Characteristics
 
 - DVC comes as a [VS Code Extension], as a [command line] interface, and as a
   [Python API]. These options provide a familiar an intuitive **user
   experience** to a broad range of users.
-- **Easy to use**: DVC is quick to [install](/doc/install) and works out of the
-  box. It doesn't require special infrastructure, nor does it depend on APIs or
+- **Easy to use**: DVC is quick to [install](/install) and works out of the box.
+  It doesn't require special infrastructure, nor does it depend on APIs or
   external services.
 
   <admon type="tip">
@@ -53,7 +53,7 @@ this set of principles:
   <admon type="info">
 
   DVC can also work stand-alone, but without
-  [versioning](/doc/use-cases/versioning-data-and-models) capabilities.
+  [versioning](/use-cases/versioning-data-and-models) capabilities.
 
   </admon>
 
@@ -73,9 +73,9 @@ this set of principles:
   Scipy, etc.).
 
 [free]: https://github.com/iterative/dvc/blob/master/LICENSE
-[vs code extension]: /doc/vs-code-extension
-[python api]: /doc/api-reference
-[command line]: /doc/command-reference
+[vs code extension]: /vs-code-extension
+[python api]: /api-reference
+[command line]: /command-reference
 
 ## Comparison with Related Technologies
 
@@ -94,7 +94,7 @@ versions of data, data pipelines, and experiments.
 <admon type="info">
 
 DVC is not fundamentally bound to Git, and can work without it (except
-[versioning-related](/doc/use-cases/versioning-data-and-models) features).
+[versioning-related](/use-cases/versioning-data-and-models) features).
 
 </admon>
 
@@ -125,15 +125,14 @@ repo (if one is being used, which is not required).
   [available]).
 
 - Git-LFS was not made with data science in mind, so it doesn't provide related
-  features (e.g. [ML pipelines], [metrics](/doc/command-reference/metrics),
-  etc.).
+  features (e.g. [ML pipelines], [metrics](/command-reference/metrics), etc.).
 
 - GitHub (common Git hosting service) has a limit of 2 GB per repository.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[available]: /doc/command-reference/install
-[pipelines]: /doc/command-reference/dag
-[metrics]: /doc/command-reference/metrics
+[remote storage]: /user-guide/data-management/remote-storage
+[available]: /command-reference/install
+[pipelines]: /command-reference/dag
+[metrics]: /command-reference/metrics
 
 </details>
 
@@ -198,7 +197,7 @@ _Luigi_, etc.
 - See also our sister project, [CML](https://cml.dev/), that helps fill some of
   these gaps.
 
-[dependency graphs]: /doc/user-guide/pipelines/defining-pipelines
+[dependency graphs]: /user-guide/pipelines/defining-pipelines
 
 </details>
 
@@ -240,8 +239,8 @@ _Luigi_, etc.
 
 - DVC utilizes a [directed acyclic graph] (DAG):
   - The dependency graph is defined implicitly by the connections between
-    [stages](/doc/command-reference/run), based on their
-    <abbr>dependencies</abbr> and <abbr>outputs</abbr>.
+    [stages](/command-reference/run), based on their <abbr>dependencies</abbr>
+    and <abbr>outputs</abbr>.
 
   - Each stage defines one node in the DAG, and `dvc.yaml` files contain these
     stage definitions (think Makefiles). All stages (and corresponding
@@ -258,6 +257,6 @@ _Luigi_, etc.
 > for technical details (Linux).
 
 [directed acyclic graph]:
-  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+  /user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 </details>

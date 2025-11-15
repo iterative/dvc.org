@@ -17,7 +17,7 @@ default, see `dvc config cache` for more info.), updating tracked files has to
 be carried out with caution, to avoid data corruption. This is due to the way in
 which DVC handles linking data files between the <abbr>cache</abbr> and the
 <abbr>workspace</abbr> (refer to
-[Large Dataset Optimization](/doc/user-guide/data-management/large-dataset-optimization)
+[Large Dataset Optimization](/user-guide/data-management/large-dataset-optimization)
 for details).
 
 If you use `dvc.yaml` files and `dvc repro`, there is no need to manage stage
@@ -57,9 +57,9 @@ $ git push # If you have an upstream repo.
 
 If you want to replace the file altogether, you can take the following steps.
 
-First, [stop tracking](/doc/user-guide/how-to/stop-tracking-data) the file by
-using `dvc remove` on the `.dvc` file. This will remove `train.tsv` from the
-workspace (and unlink it from the <abbr>cache</abbr>):
+First, [stop tracking](/user-guide/how-to/stop-tracking-data) the file by using
+`dvc remove` on the `.dvc` file. This will remove `train.tsv` from the workspace
+(and unlink it from the <abbr>cache</abbr>):
 
 ```cli
 $ dvc remove train.tsv.dvc

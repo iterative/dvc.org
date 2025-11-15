@@ -11,15 +11,15 @@ List of environment variables to configure DVC behavior.
   `origin`. Overrides `dvc config exp.git_remote`.
 - `DVC_EXP_NAME`: Name of the <abbr>experiment</abbr>. Automatically set by DVC.
 - `DVC_GLOBAL_CONFIG_DIR`: Directory in which DVC will look for global
-  [configuration](/doc/user-guide/project-structure/configuration).
-- `DVC_NO_ANALYTICS`: If `true`, disables
-  [analytics](/doc/user-guide/analytics). Overrides `dvc config core.analytics`.
+  [configuration](/user-guide/project-structure/configuration).
+- `DVC_NO_ANALYTICS`: If `true`, disables [analytics](/user-guide/analytics).
+  Overrides `dvc config core.analytics`.
 - `DVC_PAGER`: Set what program DVC uses for paging output (for example,
   `more`).
 - `DVC_ROOT`: Root directory of your <abbr>DVC repository</abbr>. Automatically
   set by DVC.
 - `DVC_SITE_CACHE_DIR`: Directory for the
-  [site cache dir](/doc/user-guide/project-structure/internal-files#site-cache-dir).
+  [site cache dir](/user-guide/project-structure/internal-files#site-cache-dir).
   Overrides `dvc config core.site_cache_dir`.
 - `DVC_STUDIO_OFFLINE`: If `true`, disables sharing live experiments even if the
   DVC Studio token is set. Overrides `dvc config studio.offline`.
@@ -28,11 +28,11 @@ List of environment variables to configure DVC behavior.
 - `DVC_STUDIO_URL`: Set URL of DVC Studio to use (in case of self-hosted DVC
   Studio instance). Overrides `dvc config studio.url`.
 - `DVC_SYSTEM_CONFIG_DIR`: Directory in which DVC will look for system
-  [configuration](/doc/user-guide/project-structure/configuration).
+  [configuration](/user-guide/project-structure/configuration).
 - `DVC_STAGE`: Contains the stage name for the current DVC stage. Automatically
   set by DVC.
 
-See also [DVCLive environment variables](/doc/dvclive/env).
+See also [DVCLive environment variables](/dvcliveenv).
 
 [push the experiments]:
-  /doc/user-guide/experiment-management/sharing-experiments#push-experiments
+  /user-guide/experiment-management/sharing-experiments#push-experiments

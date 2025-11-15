@@ -66,7 +66,7 @@ the new one. This may take a long time.
 <admon type="warn">
 
 On filesystems that do not support any type of
-[linking](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache),
+[linking](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache),
 data will be copied from the old cache location into the DVC 3.0 location
 (resulting in no de-duplication).
 
@@ -84,7 +84,7 @@ Note that when using `--dvc-files` option, DVC will only migrate DVC files in
 
 </admon>
 
-For [DVC remotes](/doc/user-guide/data-management/remote-storage), there is no
+For [DVC remotes](/user-guide/data-management/remote-storage), there is no
 equivalent migration command since it is not possible to link between old and
 new locations on many remote filesystems. Instead, once you have migrated data
 locally and pushed to the remote, you may use `dvc gc -c` commands to remove

@@ -7,10 +7,10 @@
 
   {
     label: "Add Files or Directories",
-    path: "/doc/start/add-files",
-    source: "/doc/start/add-files.md",
-    prev: "/doc/start/configure",
-    next: "/doc/start/share-data",
+    path: "/start/add-files",
+    source: "/start/add-files.md",
+    prev: "/start/configure",
+    next: "/start/share-data",
     icon: "house",
     style: "customClass",
     tutorials: {

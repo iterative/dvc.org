@@ -3,15 +3,12 @@
 > Alias of `dvc experiments`.
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
-[run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
-[diff](/doc/command-reference/exp/diff),
-[apply](/doc/command-reference/exp/apply),
-[branch](/doc/command-reference/exp/branch),
-[remove](/doc/command-reference/exp/remove),
-[push](/doc/command-reference/exp/push),
-[pull](/doc/command-reference/exp/pull),
-[list](/doc/command-reference/exp/list), and
-[clean](/doc/command-reference/exp/clean).
+[run](/command-reference/exp/run), [show](/command-reference/exp/show),
+[diff](/command-reference/exp/diff), [apply](/command-reference/exp/apply),
+[branch](/command-reference/exp/branch),
+[remove](/command-reference/exp/remove), [push](/command-reference/exp/push),
+[pull](/command-reference/exp/pull), [list](/command-reference/exp/list), and
+[clean](/command-reference/exp/clean).
 
 > Requires that Git is being used to version the project.
 
@@ -44,8 +41,7 @@ science/ machine learning experiments.
 
 <admon icon="book">
 
-See [Experiment Management](/doc/user-guide/experiment-management) for more
-info.
+See [Experiment Management](/user-guide/experiment-management) for more info.
 
 </admon>
 
@@ -55,7 +51,7 @@ Note that DVC assumes that experiments are deterministic (see [Avoiding
 unexpected behavior]).
 
 [avoiding unexpected behavior]:
-  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+  /user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
 
 </admon>
 

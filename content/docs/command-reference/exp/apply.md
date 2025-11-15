@@ -1,6 +1,6 @@
 # exp apply
 
-Put the results from an [experiment](/doc/command-reference/exp) in the
+Put the results from an [experiment](/command-reference/exp) in the
 <abbr>workspace</abbr>.
 
 ## Synopsis
@@ -57,7 +57,7 @@ Note that `git stash apply` my fail if you run Git commands which affect `HEAD`
 </details>
 
 [persistent]:
-  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+  /user-guide/experiment-management/sharing-experiments#persist-experiment
 
 ## Options
 
@@ -76,7 +76,7 @@ Note that `git stash apply` my fail if you run Git commands which affect `HEAD`
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 

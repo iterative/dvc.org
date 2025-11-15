@@ -99,8 +99,8 @@ os.environ["DVC_EXP_GIT_REMOTE"] = "https://github.com/<org>/<repo>"
 ```
 
 [Databricks Git folders]: https://docs.databricks.com/en/repos/index.html
-[experiments]: /doc/start/experiments
-[Python API]: /doc/api-reference
+[experiments]: /start/experiments
+[Python API]: /api-reference
 [Databricks secrets]: https://docs.databricks.com/en/security/secrets/index.html
 [magic commands]:
   https://ipython.readthedocs.io/en/stable/interactive/magics.html

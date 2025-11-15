@@ -5,7 +5,7 @@ You can use `dvc add` to track data files or directories located in your current
 you bring data from external locations to your project, and start tracking it
 locally. See [Data Versioning] for more info.
 
-[data versioning]: /doc/start/data-management/data-versioning
+[data versioning]: /start/data-management/data-versioning
 
 Files ending with the `.dvc` extension ("dot DVC file") are created by these
 commands as data placeholders that can be versioned with Git. They contain the
@@ -24,7 +24,7 @@ human-friendly schema described below. We encourage you to get familiar with it
 so you may modify, write, or generate `.dvc` files on your own.
 
 > See also
-> [How to Merge Conflicts](/doc/user-guide/how-to/resolve-merge-conflicts#dvc-files).
+> [How to Merge Conflicts](/user-guide/how-to/resolve-merge-conflicts#dvc-files).
 
 ## Specification
 
@@ -59,8 +59,8 @@ The following subfields may be present under `outs` entries:
 | `push`                          | Whether or not this file or directory, when previously <abbr>cached</abbr>, is uploaded to remote storage by `dvc push` (`true` by default).                                                                              |
 
 [etag]: https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation
-[external outputs]: /doc/user-guide/pipelines/external-dependencies-and-outputs
-[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
+[external outputs]: /user-guide/pipelines/external-dependencies-and-outputs
+[cloud versioning]: /user-guide/data-management/cloud-versioning
 
 ## Dependency entries
 
@@ -78,21 +78,21 @@ The following subfields may be present under `deps` entries:
 
 ### Dependency `repo` subfields:
 
-| Field      | Description                                                                                                                                                                                                                                                                                                                     |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `url`      | URL of Git repository with source DVC project                                                                                                                                                                                                                                                                                   |
-| `rev`      | Only when `dvc import --rev` is used: Specific commit hash, branch or tag name, etc. (a [Git revision]) used to import the dependency from.                                                                                                                                                                                     |
-| `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)                                                                                                                                                                                             |
-| `config`   | When `dvc import --config` is used: Path to a [config file](/doc/command-reference/config) that will be merged with the config in the target repository. When both `--remote` and `--remote-config` are used: config options that will be merged with the config in the target repository. See examples section in`dvc import`. |
-| `remote`   | Only when `dvc import --remote` or `--remote-config` is used: name of the `dvc remote` to set as a default or remote config options to merge with a default remote's config in the target repository. See examples section in `dvc import`.                                                                                     |
+| Field      | Description                                                                                                                                                                                                                                                                                                                 |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `url`      | URL of Git repository with source DVC project                                                                                                                                                                                                                                                                               |
+| `rev`      | Only when `dvc import --rev` is used: Specific commit hash, branch or tag name, etc. (a [Git revision]) used to import the dependency from.                                                                                                                                                                                 |
+| `rev_lock` | Git commit hash of the external <abbr>DVC repository</abbr> at the time of importing or updating the dependency (with `dvc update`)                                                                                                                                                                                         |
+| `config`   | When `dvc import --config` is used: Path to a [config file](/command-reference/config) that will be merged with the config in the target repository. When both `--remote` and `--remote-config` are used: config options that will be merged with the config in the target repository. See examples section in`dvc import`. |
+| `remote`   | Only when `dvc import --remote` or `--remote-config` is used: name of the `dvc remote` to set as a default or remote config options to merge with a default remote's config in the target repository. See examples section in `dvc import`.                                                                                 |
 
 ### Dependency `db` subfields:
 
-| Field         | Description                                                                                                                                                              |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `connection`  | Name of the connection to use. The connection has to be set in the config before use. See [Database Connections](/doc/command-reference/import-db#database-connections). |
-| `query`       | SQL query to snapshot. It is only set if `--sql` option was used on `dvc import-db`. `dvc update` will use this field to re-import.                                      |
-| `table`       | Name of the database table to snapshot. It is only set if `--table` option was used on `dvc import-db`. `dvc update` will use this field to re-import.                   |
-| `file_format` | Export format to use. At the moment, it can be set to either `csv` or `json`.                                                                                            |
+| Field         | Description                                                                                                                                                          |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `connection`  | Name of the connection to use. The connection has to be set in the config before use. See [Database Connections](/command-reference/import-db#database-connections). |
+| `query`       | SQL query to snapshot. It is only set if `--sql` option was used on `dvc import-db`. `dvc update` will use this field to re-import.                                  |
+| `table`       | Name of the database table to snapshot. It is only set if `--table` option was used on `dvc import-db`. `dvc update` will use this field to re-import.               |
+| `file_format` | Export format to use. At the moment, it can be set to either `csv` or `json`.                                                                                        |
 
 [git revision]: https://git-scm.com/docs/revisions

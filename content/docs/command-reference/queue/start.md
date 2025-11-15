@@ -3,7 +3,7 @@
 Start running all [queued experiments], possibly in parallel.
 
 [queued experiments]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+  /user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Synopsis
 
@@ -24,7 +24,7 @@ up to 10 seconds before exiting. If new experiment tasks are added to the queue
 during this time, workers will resume processing them instead.
 
 [internal limitations]:
-  /doc/user-guide/experiment-management/running-experiments#how-are-experiments-queued
+  /user-guide/experiment-management/running-experiments#how-are-experiments-queued
 
 </admon>
 

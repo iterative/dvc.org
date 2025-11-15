@@ -1,8 +1,7 @@
 # Live.make_dvcyaml()
 
-Writes [DVC configuration](/doc/user-guide/project-structure/dvcyaml-files) for
-metrics, plots, and parameters to
-[`Live.dvc_file`](/doc/dvclive/live#properties).
+Writes [DVC configuration](/user-guide/project-structure/dvcyaml-files) for
+metrics, plots, and parameters to [`Live.dvc_file`](/dvclivelive#properties).
 
 ```py
 def make_dvcyaml()

@@ -2,7 +2,7 @@
 
 Kill actively running [DVC experiment] tasks (see `dvc queue start`).
 
-[dvc experiment]: /doc/user-guide/experiment-management
+[dvc experiment]: /user-guide/experiment-management
 
 ## Synopsis
 

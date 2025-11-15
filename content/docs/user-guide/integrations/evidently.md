@@ -1,6 +1,6 @@
 # Evidently
 
-[DVCLive](/doc/dvclive) can be used to track the results of
+[DVCLive](/dvclive) can be used to track the results of
 [Evidently](https://www.evidentlyai.com/). In the following we demonstrate it
 through an example.
 
@@ -205,7 +205,7 @@ $ dvc exp show
 <admon icon="book">
 
 In a Jupyter notebook environment, you can access the experiments results using
-the [Python DVC api](/doc/api-reference):
+the [Python DVC api](/api-reference):
 
 ```python
 import dvc.api

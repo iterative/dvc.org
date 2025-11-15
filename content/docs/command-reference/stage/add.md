@@ -54,12 +54,11 @@ See the guide on [defining pipeline stages] for more details.
 
 `dvc repro` can be used to rebuild this [dependency graph] and run stages.
 
-[`command` argument]:
-  /doc/user-guide/project-structure/dvcyaml-files#stage-commands
+[`command` argument]: /user-guide/project-structure/dvcyaml-files#stage-commands
 [defining pipeline stages]:
-  /doc/user-guide/pipelines/defining-pipelines#dvcyaml-metafiles
+  /user-guide/pipelines/defining-pipelines#dvcyaml-metafiles
 [dependency graph]:
-  /doc/user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
+  /user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 ### Dependencies and outputs
 
@@ -98,13 +97,12 @@ is reproduced (see also `dvc gc`). Relevant notes:
 - Renaming dependencies or outputs requires a [manual process] to update
   `dvc.yaml` and the project's cache accordingly.
 
-[add them to an existing stage]:
-  /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
+[add them to an existing stage]: /user-guide/how-to/add-deps-or-outs-to-a-stage
 [structure of cache directory]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+  /user-guide/project-structure/internal-files#structure-of-the-cache-directory
 [external dependencies and outputs]:
-  /doc/user-guide/pipelines/external-dependencies-and-outputs
-[manual process]: /doc/command-reference/move#renaming-stage-outputs
+  /user-guide/pipelines/external-dependencies-and-outputs
+[manual process]: /command-reference/move#renaming-stage-outputs
 
 ### For displaying and comparing data science experiments
 
@@ -113,14 +111,13 @@ key/value dependencies. Multiple params can be specified from within one or more
 structured files (`params.yaml` by default). This allows tracking experimental
 hyperparameters easily in ML.
 
-Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
-and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
+Special types of output files, [metrics](/command-reference/metrics) (`-m` and
+`-M` options) and [plots](/command-reference/plots) (`--plots` and
 `--plots-no-cache` options), are also supported. Metrics and plots files have
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
 
-[param-deps]:
-  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
+[param-deps]: /user-guide/pipelines/defining-pipelines#parameter-dependencies
 
 ## Options
 
@@ -217,9 +214,8 @@ data science experiments.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
-[external dependencies]:
-  /doc/user-guide/pipelines/external-dependencies-and-outputs
+[visualizing plots]: /user-guide/experiment-management/visualizing-plots
+[external dependencies]: /user-guide/pipelines/external-dependencies-and-outputs
 
 ## Examples
 
@@ -303,7 +299,7 @@ $ tree ..
 
 ## Example: Chaining stages
 
-DVC [pipelines](/doc/command-reference/dag) are constructed by connecting the
+DVC [pipelines](/command-reference/dag) are constructed by connecting the
 outputs of a stage to the dependencies of the following one(s).
 
 Let's create a stage that extracts an XML file from an archive to the `data/`
@@ -400,7 +396,7 @@ We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
 You can also [use templating] to parse parameters directly from `params.yaml`
 into the stage.
 
-[use templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
+[use templating]: /user-guide/project-structure/dvcyaml-files#templating
 
 </admon>
 

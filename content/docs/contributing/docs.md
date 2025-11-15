@@ -191,8 +191,8 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
   - `dvc` can be used to show examples of commands and their output in a
     terminal session.
   - `dvctable` is used for creating colored, bold, or italic table cells. (You
-    can see an [example](/doc/start/experiments) of `dvctable` in our "Get
-    Started" section.)
+    can see an [example](/start/experiments) of `dvctable` in our "Get Started"
+    section.)
   - `yaml` is used to show samples of <abbr>DVC files</abbr>, or other YAML
     contents.
   - `diff` is used mainly for examples of `git diff` output.
@@ -211,9 +211,9 @@ We prefer general, human-friendly language rather than exact jargon as long as
 it's correct. Example: avoid Git jargon such as _revision_ or _reference_,
 preferring the more basic terms _commit_ or _version_.
 
-The [command reference](/doc/command-reference) contains some of our most
-technical documents where specialized language is used the most, but even there,
-we use expandable sections for complex implementation details.
+The [command reference](/command-reference) contains some of our most technical
+documents where specialized language is used the most, but even there, we use
+expandable sections for complex implementation details.
 
 Start by writing the essence in simple terms, and complete it with
 clarifications, edge cases, or other precisions in a separate iteration.

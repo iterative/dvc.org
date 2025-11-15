@@ -4,7 +4,7 @@ Download tracked files or directories from [remote storage] based on the current
 `dvc.yaml` and `.dvc` files, and make them visible in the
 <abbr>workspace</abbr>.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -32,7 +32,7 @@ these commands.
 and links (or copies) the files or directories to the <abbr>workspace</abbr>
 (refer to `dvc config cache.type`).
 
-[data sharing]: /doc/start/data-management/data-versioning#storing-and-sharing
+[data sharing]: /start/data-management/data-versioning#storing-and-sharing
 
 <admon type="info">
 
@@ -137,13 +137,13 @@ used to see what files `dvc pull` would download.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[stage runs]: /doc/user-guide/project-structure/internal-files#run-cache
+[stage runs]: /user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/start). Then we can see what happens with `dvc pull`.
+[Get Started](/start). Then we can see what happens with `dvc pull`.
 
 <details>
 
@@ -195,9 +195,8 @@ $ dvc pull train
 > Delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to follow
 > this example if you tried the previous ones.
 
-Our [pipeline](/doc/command-reference/dag) has been set up with these
-[stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
-`evaluate`.
+Our [pipeline](/command-reference/dag) has been set up with these
+[stages](/command-reference/run): `prepare`, `featurize`, `train`, `evaluate`.
 
 Imagine the `dvc remote` has been modified such that the data in some of these
 stages should be updated in the <abbr>workspace</abbr>.
@@ -252,7 +251,7 @@ Note that the default remote (if set) is also indicated when you run
 DVC supports [several storage types].
 
 [several storage types]:
-  /doc/user-guide/data-management/remote-storage#supported-storage-types
+  /user-guide/data-management/remote-storage#supported-storage-types
 
 </admon>
 

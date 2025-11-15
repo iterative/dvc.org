@@ -1,7 +1,7 @@
 # params
 
 Contains a command to show changes in <abbr>parameters</abbr>:
-[diff](/doc/command-reference/params/diff).
+[diff](/command-reference/params/diff).
 
 ## Synopsis
 
@@ -73,12 +73,12 @@ time. They will be compared to the latest params files to determine if the stage
 is outdated upon `dvc repro` (or `dvc status`).
 
 [hyperparameters]:
-  /doc/user-guide/experiment-management/running-experiments#tuning-hyperparameters
+  /user-guide/experiment-management/running-experiments#tuning-hyperparameters
 [use the same params file]:
-  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
-[more details]: /doc/user-guide/project-structure/dvcyaml-files#parameters
-[templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
-[stage commands]: /doc/user-guide/project-structure/dvcyaml-files#stage-commands
+  /user-guide/pipelines/defining-pipelines#parameter-dependencies
+[more details]: /user-guide/project-structure/dvcyaml-files#parameters
+[templating]: /user-guide/project-structure/dvcyaml-files#templating
+[stage commands]: /user-guide/project-structure/dvcyaml-files#stage-commands
 
 ## Options
 

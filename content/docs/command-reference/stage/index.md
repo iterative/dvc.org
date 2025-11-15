@@ -1,8 +1,7 @@
 # stage
 
 A set of commands to add and list <abbr>stages</abbr>:
-[add](/doc/command-reference/stage/add),
-[list](/doc/command-reference/stage/list).
+[add](/command-reference/stage/add), [list](/command-reference/stage/list).
 
 ## Synopsis
 
@@ -26,4 +25,4 @@ organize data science projects, or build detailed machine learning pipelines.
 examine `dvc.yaml` files manually.
 
 Learn more about
-[defining stages](/doc/user-guide/pipelines/defining-pipelines#stages).
+[defining stages](/user-guide/pipelines/defining-pipelines#stages).

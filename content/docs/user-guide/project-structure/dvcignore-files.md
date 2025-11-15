@@ -32,7 +32,7 @@ DVC-handled directories.
 <admon type="warning">
 
 `dvc exp run` and `dvc repro` might remove ignored files. If they are not
-produced by a pipeline [stage](/doc/command-reference/run), they can be lost
+produced by a pipeline [stage](/command-reference/run), they can be lost
 permanently.
 
 </admon>
@@ -103,7 +103,7 @@ starting with `26`) is for `data2`. There is no cache entry for the `data1` file
 `data1`.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+> [Structure of cache directory](/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > for more info.
 
 ## Example: Ignore file state changes

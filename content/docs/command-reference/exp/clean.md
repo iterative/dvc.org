@@ -20,7 +20,7 @@ may be needed in the event that a queue worker unexpectedly crashed, or was
 forcefully killed by something other than DVC commands.
 
 [queued experiments]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+  /user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Options
 

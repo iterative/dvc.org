@@ -7,7 +7,7 @@ with or without executing them."
 # How to Add Dependencies or Outputs
 
 To add <abbr>dependencies</abbr> or <abbr>outputs</abbr> to a
-[stage](/doc/command-reference/run), edit the `dvc.yaml` file (by hand or using
+[stage](/command-reference/run), edit the `dvc.yaml` file (by hand or using
 `dvc stage add` with the `-f` flag). `dvc repro` will execute it and
 <abbr>cache</abbr> the output files when ready.
 

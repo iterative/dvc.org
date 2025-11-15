@@ -107,26 +107,31 @@ describe('getRedirects', () => {
     itRedirects('https://www.dvc.org/foo', 'https://dvc.org/foo')
 
     itRedirects(
+      'https://man.dvc.org',
+      'https://doc.dvc.org/command-reference',
+      303
+    )
+    itRedirects(
       'https://man.dvc.org/',
-      'https://dvc.org/doc/command-reference/',
+      'https://doc.dvc.org/command-reference',
       303
     )
 
     itRedirects(
       'https://man.dvc.org/foo',
-      'https://dvc.org/doc/command-reference/foo',
+      'https://doc.dvc.org/command-reference/foo',
       303
     )
 
     itRedirects(
       'https://error.dvc.org/',
-      'https://dvc.org/doc/user-guide/troubleshooting#',
+      'https://doc.dvc.org/user-guide/troubleshooting#',
       303
     )
 
     itRedirects(
       'https://error.dvc.org/foo',
-      'https://dvc.org/doc/user-guide/troubleshooting#foo',
+      'https://doc.dvc.org/user-guide/troubleshooting#foo',
       303
     )
 
@@ -229,24 +234,24 @@ describe('getRedirects', () => {
   })
 
   describe('fromPaths', () => {
-    itRedirects('/docs/x', '/doc/x')
+    itRedirects('/doc/x', '/x')
+    itRedirects('/docs/x', '/x')
+    itRedirects('/documentation/x', '/x')
 
-    itRedirects('/documentation/x', '/doc/x')
+    itRedirects('/commands-reference/foo', '/command-reference/foo')
 
-    itRedirects('/doc/commands-reference/foo', '/doc/command-reference/foo')
+    itRedirects('/tutorial', '/start')
+    itRedirects('/tutorial/', '/start')
+    itRedirects('/tutorials', '/start')
+    itRedirects('/tutorials/', '/start')
+    itRedirects('/tutorials/deep', '/start')
+    itRedirects('/tutorials/versioning', '/start')
 
-    itRedirects('/doc/tutorial', '/doc/start')
-    itRedirects('/doc/tutorial/', '/doc/start')
-    itRedirects('/doc/tutorials', '/doc/start')
-    itRedirects('/doc/tutorials/', '/doc/start')
-    itRedirects('/doc/tutorials/deep', '/doc/start')
-    itRedirects('/doc/tutorials/versioning', '/doc/start')
-
-    itRedirects('/doc/tutorial/bar', '/doc/start')
+    itRedirects('/tutorial/bar', '/start')
 
     itRedirects(
-      '/doc/use-cases/data-and-model-files-versioning',
-      '/doc/use-cases/versioning-data-and-models'
+      '/use-cases/data-and-model-files-versioning',
+      '/use-cases/versioning-data-and-models'
     )
   })
 

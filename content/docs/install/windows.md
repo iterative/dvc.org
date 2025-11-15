@@ -2,14 +2,14 @@
 
 <admon type="tip">
 
-To use DVC [as a Python library](/doc/api-reference), you can install it
+To use DVC [as a Python library](/api-reference), you can install it
 [with `conda`](#install-with-conda) or [with `pip`](#install-with-pip).
 
 </admon>
 
 <admon type="tip">
 
-See [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+See [Running DVC on Windows](/user-guide/how-to/run-dvc-on-windows) for
 important tips to improve your experience on Windows.
 
 </admon>
@@ -63,7 +63,7 @@ Depending on the type of the [remote storage] you plan to use, you might need to
 install optional dependencies: `dvc-s3`, `dvc-azure`, `dvc-gdrive`, `dvc-gs`,
 `dvc-oss`, `dvc-ssh`.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 <details id="example-conda-with-support-for-amazon-s3-storage">
 
@@ -127,5 +127,5 @@ DVC. You may use Windows Uninstaller to
 
 > Note that this method by default enables symlink permissions for all users, so
 > they can use them to
-> [optimize DVC](/doc/user-guide/data-management/large-dataset-optimization)
+> [optimize DVC](/user-guide/data-management/large-dataset-optimization)
 > operations.

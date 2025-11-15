@@ -1,6 +1,6 @@
 # exp branch
 
-Commit the results from an [experiment](/doc/command-reference/exp) in a new Git
+Commit the results from an [experiment](/command-reference/exp) in a new Git
 branch.
 
 ## Synopsis
@@ -38,9 +38,8 @@ version.
 [git branch]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [persistent]:
-  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
-[stored and shared]:
-  /doc/start/data-management/data-versioning#storing-and-sharing
+  /user-guide/experiment-management/sharing-experiments#persist-experiment
+[stored and shared]: /start/data-management/data-versioning#storing-and-sharing
 
 ## Options
 
@@ -59,7 +58,7 @@ version.
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 

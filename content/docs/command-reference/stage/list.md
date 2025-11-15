@@ -62,7 +62,7 @@ important characteristics (dependencies, outputs, or metrics).
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
+[foreach]: /user-guide/project-structure/dvcyaml-files#foreach-stages
 
 ## Examples:
 

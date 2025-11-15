@@ -20,9 +20,9 @@ artifacts that result from your experiments, along with fragile links to code
 revisions. DVC's approach guarantees reproducibility by working on top of Git
 instead, and not as a separate system.
 
-[experiment management]: /doc/start/experiments
-[codified with dvc]: /doc/user-guide/project-structure/dvcyaml-files
-[versioning everything]: /doc/use-cases/versioning-data-and-models
+[experiment management]: /start/experiments
+[codified with dvc]: /user-guide/project-structure/dvcyaml-files
+[versioning everything]: /use-cases/versioning-data-and-models
 
 ![](/img/vscode-live.gif) \_DVC Experiments are organized along project versions
 (Git commits, branches, tags, etc.), and can be compared in the terminal, the
@@ -39,7 +39,7 @@ Major benefits of tracking experiments with DVC:
   <abbr>metrics</abbr>.
 - Use a controlled [execution mechanism]; Run one or queue many experiments (and
   run them in parallel if needed).
-- Track [live metrics](/doc/dvclive).
+- Track [live metrics](/dvclive).
 - [Review and compare] results based on params or metrics; Restore them from
   <abbr>cache</abbr> or reproduce them from scratch.
 - Adopt or stay on a Git workflow ([distributed collaboration][shared]) and
@@ -47,9 +47,8 @@ Major benefits of tracking experiments with DVC:
 - Submit pull requests for your experiments, conduct reviews in services like
   GitHub, and otherwise collaborate on experiments like teams do for code.
 
-[execution mechanism]: /doc/user-guide/experiment-management/running-experiments
-[review and compare]:
-  /doc/user-guide/experiment-management/comparing-experiments
+[execution mechanism]: /user-guide/experiment-management/running-experiments
+[review and compare]: /user-guide/experiment-management/comparing-experiments
 [experiment versioning]: /blog/ml-experiment-versioning
 
 <br/>
@@ -58,7 +57,7 @@ Major benefits of tracking experiments with DVC:
 
 Ready to dive in? [Get started with experiments]!
 
-[get started with experiments]: /doc/start/experiments
+[get started with experiments]: /start/experiments
 
 </admon>
 
@@ -76,9 +75,9 @@ repetitive data transfers or having to retrain models on-the-fly.
 | **Execution**     | `dvc exp run`        | Code API (usually Python)     |
 | **Collaboration** | Distributed          | Centralized                   |
 
-[data versioning]: /doc/use-cases/versioning-data-and-models
-[ide]: /doc/vs-code-extension
-[terminal]: /doc/command-reference
+[data versioning]: /use-cases/versioning-data-and-models
+[ide]: /vs-code-extension
+[terminal]: /command-reference
 
 > 💡 Note that other experiment tracking tools can be complementary to DVC, for
 > example for detailed experiment environment logging with specialized
@@ -87,4 +86,4 @@ repetitive data transfers or having to retrain models on-the-fly.
 Finally, DVC is completely language agnostic, offering the same functionality
 whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
-[shared]: /doc/user-guide/experiment-management/sharing-experiments
+[shared]: /user-guide/experiment-management/sharing-experiments

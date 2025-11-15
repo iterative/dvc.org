@@ -26,8 +26,8 @@ tags:
 [DVC](https://dvc.org) or Data Version Control tool — its idea is to track
 files/data dependencies during model development in order to facilitate
 reproducibility and track data files versioning. Most of the
-[DVC tutorials](https://dvc.org/doc/tutorials) provide good examples of using
-DVC with Python language. However, I realized that DVC is a
+[DVC tutorials](https://doc.dvc.org/doc/tutorials) provide good examples of
+using DVC with Python language. However, I realized that DVC is a
 [language agnostic](https://en.wikipedia.org/wiki/Language-agnostic) tool and
 can be used with any programming language. In this blog post, we will see how to
 use DVC in R projects.

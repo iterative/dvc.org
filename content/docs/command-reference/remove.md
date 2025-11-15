@@ -24,7 +24,7 @@ the corresponding `.gitignore` entries (based on the `outs` fields removed).
 `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or [remote
 storage]. Use `dvc gc` for that.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 </admon>
 
@@ -39,8 +39,8 @@ Note that the actual <abbr>output</abbr> files or directories of the stage
 (`outs` field) are not removed by this command, unless the `--outs` option is
 used.
 
-💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/stop-tracking-data) to see
-how it helps replace data that is tracked by DVC.
+💡 Refer to [Undo Adding Data](/user-guide/how-to/stop-tracking-data) to see how
+it helps replace data that is tracked by DVC.
 
 ## Options
 
@@ -58,7 +58,7 @@ how it helps replace data that is tracked by DVC.
 ## Example: remove a .dvc file
 
 Let's imagine we have `foo.csv` and `bar.csv` files, that are already
-[tracked](/doc/command-reference/add) by DVC:
+[tracked](/command-reference/add) by DVC:
 
 ```cli
 $ ls

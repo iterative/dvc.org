@@ -70,15 +70,15 @@ All the data files, intermediate or final results are <abbr>cached</abbr>
 (unless the `--no-commit` option is used), and the hash values of changed
 dependencies and outputs are updated in `dvc.lock` and `.dvc` files, as needed.
 
-[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
-[their commands]: /doc/user-guide/pipelines/defining-pipelines#stage-commands
-[always changed]: /doc/command-reference/status#local-workspace-status
+[dependency graph]: /user-guide/pipelines/defining-pipelines
+[their commands]: /user-guide/pipelines/defining-pipelines#stage-commands
+[always changed]: /command-reference/status#local-workspace-status
 
 ### Parallel stage execution
 
 If you need to parallelize stage execution, you can launch `dvc repro` multiple
 times concurrently (e.g. in separate terminals). For example, let's say a
-[pipelines](/doc/command-reference/dag) graph looks something like this:
+[pipelines](/command-reference/dag) graph looks something like this:
 
 ```cli
 $ dvc dag
@@ -193,8 +193,7 @@ final stage.
   In DVC>=3.0, `--allow-missing` will not skip data saved with DVC<3.0 because
   the hash type changed in DVC 3.0, which DVC considers a change to the data. To
   migrate data to the new hash type, run `dvc cache migrate --dvc-files`. See
-  more information about
-  [upgrading from DVC 2.x to 3.0](/doc/user-guide/upgrade).
+  more information about [upgrading from DVC 2.x to 3.0](/user-guide/upgrade).
 
   </admon>
 
@@ -215,15 +214,15 @@ final stage.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[foreach]: /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
-[run cache]: /doc/user-guide/project-structure/internal-files#run-cache
+[foreach]: /user-guide/project-structure/dvcyaml-files#foreach-stages
+[run cache]: /user-guide/project-structure/internal-files#run-cache
 [not recommended]:
-  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+  /user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
 
 ## Examples
 
 > To get hands-on experience with data science and machine learning pipelines,
-> see [Get Started: Data Pipelines](/doc/start/data-management/data-pipelines).
+> see [Get Started: Data Pipelines](/start/data-management/data-pipelines).
 
 Let's build and reproduce a simple pipeline. It takes this `text.txt` file:
 
@@ -449,5 +448,4 @@ Running stage 'evaluate':
 
 See [pull missing data] in the user guide for more details.
 
-[pull missing data]:
-  /doc/user-guide/pipelines/running-pipelines#pull-missing-data
+[pull missing data]: /user-guide/pipelines/running-pipelines#pull-missing-data

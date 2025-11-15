@@ -55,7 +55,7 @@ options below).
   `dvc pull` command.
 
 [names of the experiments]:
-  https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
+  https://doc.dvc.org/user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
@@ -64,7 +64,7 @@ options below).
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 
@@ -80,7 +80,7 @@ $ dvc exp list --all-commits
 ```
 
 > Contrast this with the full table
-> [displayed by `dvc exp show`](/doc/command-reference/exp/show#examples).
+> [displayed by `dvc exp show`](/command-reference/exp/show#examples).
 
 You can also list experiments in any DVC repo with `dvc exp list`:
 

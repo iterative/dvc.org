@@ -4,14 +4,14 @@ DVC includes native support for importing and downloading data hosted on the
 [Hugging Face Hub](https://huggingface.co/docs/hub/index). Data from a <abbr>DVC
 project</abbr> can also be loaded with the Hugging Face
 [Datasets](https://huggingface.co/docs/datasets/index) library via the DVC
-[Python API](/doc/api-reference).
+[Python API](/api-reference).
 
 <admon type="info">
 
 Logging from
 [Hugging Face Transformers](https://huggingface.co/docs/transformers/index) is
 supported within
-[DVCLive](https://dvc.org/doc/dvclive/ml-frameworks/huggingface).
+[DVCLive](https://doc.dvc.org/dvclive/ml-frameworks/huggingface).
 
 </admon>
 
@@ -81,9 +81,9 @@ $ dvc import https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 sd_
 
 [Hugging Face Datasets](https://huggingface.co/docs/datasets/index) is a Python
 library for accessing and sharing datasets. The DVC Python API provides
-[DVCFileSystem](/doc/api-reference/dvcfilesystem), an fsspec-compatible
-filesystem which can be used with Hugging Face Datasets to load data from a
-<abbr>DVC project</abbr>. Please refer to the Hugging Face
+[DVCFileSystem](/api-reference/dvcfilesystem), an fsspec-compatible filesystem
+which can be used with Hugging Face Datasets to load data from a <abbr>DVC
+project</abbr>. Please refer to the Hugging Face
 [documentation](https://huggingface.co/docs/datasets/main/en/filesystems) for
 more detailed information on using fsspec filesystems with Hugging Face
 Datasets.

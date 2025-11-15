@@ -41,13 +41,12 @@ If the target is a directory, the returned URL will end in `.dir`. Refer to
 [Structure of cache directory] and `dvc add` to learn more about how DVC handles
 data directories.
 
-[dvc remote]: /doc/user-guide/data-management/remote-storage
-[remote configuration]:
-  /doc/user-guide/data-management/remote-storage#configuration
+[dvc remote]: /user-guide/data-management/remote-storage
+[remote configuration]: /user-guide/data-management/remote-storage#configuration
 [storage type]:
-  /doc/user-guide/data-management/remote-storage#supported-storage-types
+  /user-guide/data-management/remote-storage#supported-storage-types
 [structure of cache directory]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+  /user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 <admon type="warn">
 
@@ -84,8 +83,8 @@ appropriate library, such as [`boto3`] or [`paramiko`].
   be used)
 
 - `remote` - name of the [DVC remote] to use to form the returned URL string.
-  _Default_: The [default remote](/doc/command-reference/remote/default) of
-  `repo` is used.
+  _Default_: The [default remote](/command-reference/remote/default) of `repo`
+  is used.
 
 - `remote_config` - dictionary of options to pass to the DVC remote. This can be
   used to, for example, provide credentials to the `remote`.
@@ -94,7 +93,7 @@ appropriate library, such as [`boto3`] or [`paramiko`].
   the existing project config and can be used to, for example, add an entirely
   new `remote`.
 
-[experiment name]: /doc/command-reference/exp/run#-n
+[experiment name]: /command-reference/exp/run#-n
 
 ## Exceptions
 

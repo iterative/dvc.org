@@ -68,7 +68,7 @@ In addition to a connection string, DVC needs a driver to connect to the
 database. Check [Installing database drivers](#installing-database-drivers) for
 connection string format and necessary driver for your specific database.
 
-[`db`]: /doc/user-guide/project-structure/configuration#db
+[`db`]: /user-guide/project-structure/configuration#db
 
 ## Installing database drivers
 
@@ -111,8 +111,7 @@ for more details.
   `json` is supported.
 
 - `--conn connection` - name of the database connection to use. The connection
-  has to be set in the
-  [config](/doc/user-guide/project-structure/configuration#db).
+  has to be set in the [config](/user-guide/project-structure/configuration#db).
 
 - `-f`, `--force` - when using `--out` to specify a local target file or
   directory, the operation will fail if those paths already exist. this flag

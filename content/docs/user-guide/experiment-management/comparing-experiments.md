@@ -4,7 +4,7 @@ Once you have [saved] several experiments, DVC provides commands to review,
 compare, and manage those experiments. Let's see how they can help you
 streamline the experimentation process.
 
-[saved]: /doc/user-guide/experiment-management#save-experiments
+[saved]: /user-guide/experiment-management#save-experiments
 
 ## Show a table of experiments
 
@@ -77,7 +77,7 @@ $ dvc exp show --only-changed
 ```
 
 See more examples in the
-[`dvc exp show` reference](/doc/command-reference/exp/show#examples) for how to
+[`dvc exp show` reference](/command-reference/exp/show#examples) for how to
 filter columns, sort rows, and otherwise customize the table.
 
 </tab>
@@ -238,7 +238,7 @@ In the [DVC extension for VS Code], select any experiments in the table to plot.
 
 </toggle>
 
-[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
+[visualizing plots]: /user-guide/experiment-management/visualizing-plots
 
 ## Bring experiment results to your workspace
 
@@ -250,7 +250,7 @@ results to your workspace.
 [recovered].
 
 [recovered]:
-  /doc/command-reference/exp/apply#expand-for-details-on-reverting-object-object
+  /command-reference/exp/apply#expand-for-details-on-reverting-object-object
 
 <toggle>
 
@@ -335,6 +335,6 @@ artifacts, etc.) related with the experiments, you can use `dvc gc`.
 
 [dvc extension for vs code]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
+[sharing experiments]: /user-guide/experiment-management/sharing-experiments
 [persist]:
-  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+  /user-guide/experiment-management/sharing-experiments#persist-experiment

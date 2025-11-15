@@ -15,7 +15,7 @@ Users may encounter errors when running `dvc pull` and `dvc fetch`, like
 pushed to Git without the corresponding data being uploaded to the [DVC remote].
 Make sure to `dvc push` from the original <abbr>project</abbr>, and try again.
 
-[dvc remote]: /doc/user-guide/data-management/remote-storage
+[dvc remote]: /user-guide/data-management/remote-storage
 
 ## Too many open files error {#many-files}
 
@@ -51,7 +51,7 @@ in the correct `region` and/or `endpointurl` (see `dvc remote modify`).
 ## Unable to detect cache type {#no-dvc-cache}
 
 Unable to detect supported link types, as the
-[cache directory](/doc/user-guide/project-structure/configuration#cache) doesn't
+[cache directory](/user-guide/project-structure/configuration#cache) doesn't
 exist. It is usually created automatically by DVC commands that need it, but you
 can create it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
@@ -72,18 +72,17 @@ $ dvc config core.hardlink_lock true
 
 ## Cannot add files in symlinked directory {#add-symlink}
 
-DVC only supports [symlinked files](/doc/command-reference/add#add-symlink) as
-valid targets for `dvc add`. If the target path is a directory symlink, or if
-the target path contains any intermediate directory symlinks, `dvc add` will
-fail.
+DVC only supports [symlinked files](/command-reference/add#add-symlink) as valid
+targets for `dvc add`. If the target path is a directory symlink, or if the
+target path contains any intermediate directory symlinks, `dvc add` will fail.
 
 ## No possible cache types {#cache-types}
 
 You may encounter this error if DVC cannot find a valid
-[file link type](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link type](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to use when linking data files from cache into your workspace. To resolve the
 issue, you may need to
-[reconfigure](/doc/user-guide/data-management/large-dataset-optimization#configuring-dvc-cache-file-link-type)
+[reconfigure](/user-guide/data-management/large-dataset-optimization#configuring-dvc-cache-file-link-type)
 DVC to use alternative link types which are supported on your machine.
 
 After reconfiguring cache types, you can re-link data files in your workspace
@@ -96,7 +95,7 @@ $ dvc checkout --relink
 ## DVC cannot authenticate to Git remote {#git-auth}
 
 Some commands require authenticating to a Git remote (for example,
-[experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)).
+[experiment sharing](/user-guide/experiment-management/sharing-experiments)).
 You may need _write_ (`dvc exp push`) or _read_ (`dvc exp list`, `dvc exp pull`)
 permissions.
 
@@ -142,7 +141,7 @@ and retry the DVC command. Specifically, one of:
 - `.dvc/tmp/links`
 
 [internal directories]:
-  https://dvc.org/doc/user-guide/project-structure/internal-files
+  https://doc.dvc.org/user-guide/project-structure/internal-files
 
 ## DVC Experiments may fail in Git shallow clones {#git-shallow}
 
