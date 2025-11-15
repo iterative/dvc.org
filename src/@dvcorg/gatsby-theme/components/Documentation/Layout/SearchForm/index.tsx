@@ -12,7 +12,7 @@ declare global {
 
 const apiKey = '5341554faa7a8255d383af495c6d3ed2'
 const appId = '98DVTFT919'
-const indexName = 'dvc'
+const indexName = 'dvc-docs'
 
 const SearchForm: React.FC = props => {
   const [searchAvailable, setSearchAvailable] = useState<boolean>(false)
