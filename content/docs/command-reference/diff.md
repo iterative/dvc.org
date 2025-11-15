@@ -76,11 +76,11 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[not in cache]: /doc/command-reference/status#local-workspace-status
+[not in cache]: /command-reference/status#local-workspace-status
 
 ## Examples
 
-For these examples we can use the [Get Started](/doc/start) project.
+For these examples we can use the [Get Started](/start) project.
 
 <details>
 
@@ -146,7 +146,7 @@ files summary: 1 added, 0 deleted, 0 modified
 
 [2-track-data]:
   https://github.com/iterative/example-get-started/releases/tag/2-track-data
-[data versioning]: /doc/start/data-management/data-versioning
+[data versioning]: /start/data-management/data-versioning
 
 ## Example: Comparing tags or branches
 

@@ -13,7 +13,7 @@ usage: dvc studio token [-h] [-q | -v]
 `dvc token` shows the Studio token stored in global [DVC configuration].
 
 [dvc configuration]:
-  /doc/user-guide/project-structure/configuration#config-file-locations
+  /user-guide/project-structure/configuration#config-file-locations
 
 ## Options
 

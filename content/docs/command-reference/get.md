@@ -85,8 +85,8 @@ name.
   storage location (URL) of the target data. If `path` is a Git-tracked file,
   this option is ignored.
 
-- `--config <path>` - path to a [config file](/doc/command-reference/config)
-  that will be merged with the config in the target repository.
+- `--config <path>` - path to a [config file](/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `--remote <name>` - name of the `dvc remote` to set as a default in the target
   repository.
@@ -105,7 +105,7 @@ name.
 ## Example: Get a DVC-tracked model
 
 > Note that `dvc get` can be used from anywhere in the file system, as long as
-> DVC is [installed](/doc/install).
+> DVC is [installed](/install).
 
 We can use `dvc get` to download the resulting model file from our
 [get started example repo](https://github.com/iterative/example-get-started), a
@@ -136,7 +136,7 @@ predictions upon request. This can be automated by leveraging DVC with [CI/CD]
 tools.
 
 [etl]: https://en.wikipedia.org/wiki/Extract,_transform,_load
-[ci/cd]: /doc/use-cases/ci-cd-for-machine-learning
+[ci/cd]: /use-cases/ci-cd-for-machine-learning
 
 </admon>
 
@@ -188,12 +188,12 @@ $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
-If you are familiar with the project in our [Get Started](/doc/start) (used in
-these examples), you may remember that the chapter where we train a first
-version of the model corresponds to the `baseline-experiment` tag in the repo.
-Similarly `bigrams-experiment` points to an improved model (trained using
-bigrams). What if we wanted to have both versions of the model "checked out" at
-the same time? `dvc get` provides an easy way to do this:
+If you are familiar with the project in our [Get Started](/start) (used in these
+examples), you may remember that the chapter where we train a first version of
+the model corresponds to the `baseline-experiment` tag in the repo. Similarly
+`bigrams-experiment` points to an improved model (trained using bigrams). What
+if we wanted to have both versions of the model "checked out" at the same time?
+`dvc get` provides an easy way to do this:
 
 ```cli
 $ dvc get . model.pkl --rev baseline-experiment \
@@ -231,7 +231,7 @@ Untracked files:
 
 [get started example repo]: https://github.com/iterative/example-get-started
 [switching between versions]:
-  /doc/start/data-management/data-versioning#switching-between-versions
+  /start/data-management/data-versioning#switching-between-versions
 
 ## Example: Set AWS profile for default remote
 

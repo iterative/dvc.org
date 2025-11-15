@@ -1,16 +1,15 @@
 # status
 
-Show changes in the <abbr>project</abbr> [pipelines](/doc/user-guide/pipelines),
-as well as file mismatches either between the <abbr>cache</abbr> and
+Show changes in the <abbr>project</abbr> [pipelines](/user-guide/pipelines), as
+well as file mismatches either between the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, or between the cache and [remote storage].
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 <admon type="tip">
 
 For the status of tracked data, see
-[`dvc data status`](/doc/command-reference/data/status) (similar to
-`git status`).
+[`dvc data status`](/command-reference/data/status) (similar to `git status`).
 
 </admon>
 
@@ -30,9 +29,9 @@ positional arguments:
 
 Searches for changes in the existing tracked data and pipelines. In local mode,
 it shows which files or directories have changed in the <abbr>workspace</abbr>
-(thus could be [added](/doc/command-reference/add) or
-[reproduced](/doc/command-reference/repro) again). In remote mode, it reports
-the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
+(thus could be [added](/command-reference/add) or
+[reproduced](/command-reference/repro) again). In remote mode, it reports the
+differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
 `dvc pull` could be used to synchronize these).
 
 | Mode   | Option            | Description                                                                                                                 |

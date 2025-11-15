@@ -8,7 +8,7 @@ want to track the data in-place at its original source location.
 <admon type="tip">
 
 See
-[external dependencies and outputs](/doc/user-guide/pipelines/external-dependencies-and-outputs)
+[external dependencies and outputs](/user-guide/pipelines/external-dependencies-and-outputs)
 if you want to work with external data in a <abbr>pipeline</abbr>.
 
 </admon>
@@ -126,5 +126,5 @@ $ dvc push
 Everything is up to date.
 ```
 
-[dvc remote]: /doc/user-guide/data-management/remote-storage
-[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
+[dvc remote]: /user-guide/data-management/remote-storage
+[cloud versioning]: /user-guide/data-management/cloud-versioning

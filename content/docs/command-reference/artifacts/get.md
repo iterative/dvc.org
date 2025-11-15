@@ -72,8 +72,8 @@ the model registry, DVC will fall back to its typical method to get files (see
   will force the operation causing local files/dirs to be overwritten by the
   command.
 
-- `--config <path>` - path to a [config file](/doc/command-reference/config)
-  that will be merged with the config in the target repository.
+- `--config <path>` - path to a [config file](/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `--remote <name>` - name of the `dvc remote` to set as a default in the target
   repository. Only applicable when downloading artifacts from a DVC remote.

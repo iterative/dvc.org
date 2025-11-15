@@ -58,7 +58,7 @@ plots:
 ```
 
 The plot can be rendered with
-[DVC CLI, VSCode Extension](/doc/user-guide/experiment-management/visualizing-plots)
+[DVC CLI, VSCode Extension](/user-guide/experiment-management/visualizing-plots)
 or DVC Studio.
 
 ![dvc plots show](/img/dvclive-log_plot.png)
@@ -76,7 +76,7 @@ or DVC Studio.
   axis.
 
 - `template` - name of the
-  [DVC plots template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+  [DVC plots template](/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to use. Defaults to `linear`.
 
 - `title` - title to be displayed. Defaults to

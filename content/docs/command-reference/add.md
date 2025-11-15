@@ -39,13 +39,12 @@ Leveraging the metadata in `.dvc` files and the <abbr>cache</abbr> structure,
 datasets don't need to exist completely in your workspace to update. You can
 pull a dataset partially and operate on it. DVC will automatically update the
 relevant `.dvc` file to reflect the changes. This capability allows you to
-[work with large datasets without having to download the entire dataset](/docs/user-guide/data-management/modifying-large-datasets#modifying-remote-datasets)
+[work with large datasets without having to download the entire dataset](/user-guide/data-management/modifying-large-datasets#modifying-remote-datasets)
 to your local machine.
 
 This command can be used to track large files, models, dataset directories, etc.
 that are too big for Git to handle directly. This enables
-[versioning](/doc/use-cases/versioning-data-and-models) them indirectly with
-Git.
+[versioning](/use-cases/versioning-data-and-models) them indirectly with Git.
 
 > See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and
 > version intermediate and final results (like ML models).
@@ -55,16 +54,16 @@ committed to the Git repository (unless `dvc init --no-scm` was used when
 initializing the <abbr>DVC project</abbr>). The generated `.dvc` files can be
 staged automatically if [`core.autostage`] is set.
 
-[`core.autostage`]: /doc/user-guide/project-structure/configuration#core
+[`core.autostage`]: /user-guide/project-structure/configuration#core
 
 To exclude specific files or directories from being added, you can add
 corresponding patterns to a `.dvcignore` file.
 
-You can also [undo `dvc add`](/doc/user-guide/how-to/stop-tracking-data) to stop
+You can also [undo `dvc add`](/user-guide/how-to/stop-tracking-data) to stop
 tracking files or directories.
 
 By default, DVC tries to use reflinks (see
-[File link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
+[File link types](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
 to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
@@ -82,7 +81,7 @@ the single `.dvc` file references a special JSON file in the cache (with `.dir`
 extension), that in turn points to the added files.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+> [Structure of cache directory](/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > for more info. on `.dir` cache entries.
 
 Note that DVC commands that use tracked data support granular targeting of files
@@ -148,7 +147,7 @@ not.
   command.
 
 - `--no-relink` - Don't recreate
-  [file link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
+  [file link types](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
   from the cache to the workspace. This saves time when working with a large
   number of files, but the files may be reflinked or copied from the cache even
   if another link type is configured.
@@ -248,7 +247,7 @@ $ dvc stage add -n train \
 ```
 
 > To try this example, see the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial).
+> [versioning tutorial](/use-cases/versioning-data-and-models/tutorial).
 
 ## Example .dvcignore
 
@@ -327,6 +326,6 @@ benefit of keeping a connection to the data source so it can be updated later
 (with `dvc update`).
 
 [with `dvc import-url`]:
-  /doc/command-reference/import-url#example-transfer-to-remote-storage
+  /command-reference/import-url#example-transfer-to-remote-storage
 
 </admon>

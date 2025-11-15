@@ -5,7 +5,7 @@ stage run (in `.dvc/cache/runs`). If it never happened before, its command(s)
 are executed normally. Every subsequent time a <abbr>stage</abbr> runs under the
 same conditions, the previous results can be restored instantly -- without
 wasting time or computing resources.
-[More details](/doc/user-guide/project-structure/internal-files#run-cache)
+[More details](/user-guide/project-structure/internal-files#run-cache)
 
 ✅ This built-in feature is called **run cache** and it can dramatically improve
 performance. It's enabled out-of-the-box (can be disabled), which means DVC is
@@ -19,4 +19,4 @@ for that stage.
 </admon>
 
 The run cache is also enabled when you use `dvc exp run` (see
-[DVC Experiments](/doc/user-guide/experiment-management)).
+[DVC Experiments](/user-guide/experiment-management)).

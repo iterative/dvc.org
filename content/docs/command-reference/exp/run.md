@@ -2,8 +2,8 @@
 
 Run or resume a [DVC experiment] based on a [DVC pipeline].
 
-[dvc experiment]: /doc/user-guide/experiment-management
-[dvc pipeline]: /doc/user-guide/pipelines
+[dvc experiment]: /user-guide/experiment-management
+[dvc pipeline]: /user-guide/pipelines
 
 <admon type="info">
 
@@ -72,13 +72,13 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
-[running experiments]: /doc/user-guide/experiment-management/running-experiments
-[review]: /doc/user-guide/experiment-management/comparing-experiments
+  /user-guide/experiment-management/running-experiments#the-experiments-queue
+[running experiments]: /user-guide/experiment-management/running-experiments
+[review]: /user-guide/experiment-management/comparing-experiments
 [made persistent]:
-  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+  /user-guide/experiment-management/sharing-experiments#persist-experiment
 [cleared]:
-  /doc/user-guide/experiment-management/comparing-experiments#clean-up-experiments
+  /user-guide/experiment-management/comparing-experiments#clean-up-experiments
 
 ## Options
 
@@ -185,8 +185,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   In DVC>=3.0, `--allow-missing` will not skip data saved with DVC<3.0 because
   the hash type changed in DVC 3.0, which DVC considers a change to the data. To
   migrate data to the new hash type, run `dvc cache migrate --dvc-files`. See
-  more information about
-  [upgrading from DVC 2.x to 3.0](/doc/user-guide/upgrade).
+  more information about [upgrading from DVC 2.x to 3.0](/user-guide/upgrade).
 
   </admon>
 
@@ -211,7 +210,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 [choice]: https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep
 [range]: https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep
 [unique name]:
-  https://dvc.org/doc/user-guide/experiment-management#how-does-dvc-track-experiments
+  https://doc.dvc.org/user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
@@ -220,7 +219,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 
@@ -317,7 +316,7 @@ update the [`params` section] accordingly.
 Similarly, when using custom param files, check that these are defined in
 `dvc.yaml`.
 
-[`params` section]: /doc/user-guide/project-structure/dvcyaml-files#parameters
+[`params` section]: /user-guide/project-structure/dvcyaml-files#parameters
 
 </admon>
 
@@ -438,8 +437,7 @@ Running stage 'evaluate':
 
 See [pull missing data] in the user guide for more details.
 
-[pull missing data]:
-  /doc/user-guide/pipelines/running-pipelines#pull-missing-data
+[pull missing data]: /user-guide/pipelines/running-pipelines#pull-missing-data
 
 ## Example: Include untracked or ignored paths
 

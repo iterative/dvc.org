@@ -10,11 +10,11 @@ A <abbr>DVC project</abbr> structure is simplified by encapsulating [data
 versioning] and [pipelining] (e.g. machine learning workflows), among other
 features. This leaves a _workspace_ directory with a clean view of your working
 raw data, source code, data artifacts, etc. and a few
-[metafiles](/doc/user-guide/project-structure) that enable these features. A
-single version of the project is visible at a time.
+[metafiles](/user-guide/project-structure) that enable these features. A single
+version of the project is visible at a time.
 
-[data versioning]: /doc/start/data-management/data-versioning
-[pipelining]: /doc/start/data-management/data-pipelines
+[data versioning]: /start/data-management/data-versioning
+[pipelining]: /start/data-management/data-pipelines
 
 <admon type="info">
 
@@ -33,5 +33,5 @@ from the workspace.
 
 ## Further Reading
 
-- [Get Started](/doc/start) with DVC
-- DVC [Project Structure](/doc/user-guide/project-structure)
+- [Get Started](/start) with DVC
+- DVC [Project Structure](/user-guide/project-structure)

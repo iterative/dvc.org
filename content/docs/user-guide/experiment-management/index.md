@@ -76,13 +76,13 @@ https://www.youtube.com/watch?v=w-UjAbdpRY4
 
 https://www.youtube.com/watch?v=LHi3SWGD9nc
 
-[get started: experiments]: /doc/start/experiments
-[dvclive]: /doc/dvclive
-[pipeline]: /doc/user-guide/pipelines
-[run]: /doc/user-guide/experiment-management/running-experiments
-[share]: /doc/user-guide/experiment-management/sharing-experiments
-[parameters]: /doc/user-guide/project-structure/dvcyaml-files#params
-[metrics]: /doc/user-guide/project-structure/dvcyaml-files#metrics
-[plots]: /doc/user-guide/project-structure/dvcyaml-files#plots
-[visualize plots]: /doc/user-guide/experiment-management/visualizing-plots
-[from the vs code ide]: /doc/vs-code-extension
+[get started: experiments]: /start/experiments
+[dvclive]: /dvclive
+[pipeline]: /user-guide/pipelines
+[run]: /user-guide/experiment-management/running-experiments
+[share]: /user-guide/experiment-management/sharing-experiments
+[parameters]: /user-guide/project-structure/dvcyaml-files#params
+[metrics]: /user-guide/project-structure/dvcyaml-files#metrics
+[plots]: /user-guide/project-structure/dvcyaml-files#plots
+[visualize plots]: /user-guide/experiment-management/visualizing-plots
+[from the vs code ide]: /vs-code-extension

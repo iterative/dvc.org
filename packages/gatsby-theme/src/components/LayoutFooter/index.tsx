@@ -62,7 +62,7 @@ const footerListsData: Array<IFooterListData> = [
     header: 'Company',
     links: [
       {
-        href: '/doc/user-guide/privacy',
+        href: '/user-guide/privacy',
         text: 'Privacy Policy'
       },
       {

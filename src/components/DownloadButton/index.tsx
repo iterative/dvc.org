@@ -38,7 +38,7 @@ interface IOSDescription {
 const itemsByOs: Record<OS, IOSDescription> = {
   [OS.UNKNOWN]: {
     title: 'pip, conda, brew',
-    url: `/doc/install`,
+    url: `/install`,
     download: false
   },
   [OS.OSX]: {

@@ -2,7 +2,7 @@
 
 Capture the current state of the <abbr>workspace</abbr> as a [DVC experiment].
 
-[dvc experiment]: /doc/user-guide/experiment-management
+[dvc experiment]: /user-guide/experiment-management
 
 <admon type="info">
 
@@ -33,9 +33,9 @@ directories, etc.
 This lets you start tracking, [comparing], [plotting], and [sharing] experiments
 quickly after making any project changes (e.g. retrain an ML model).
 
-[comparing]: /doc/user-guide/experiment-management/comparing-experiments
-[plotting]: /doc/user-guide/experiment-management/visualizing-plots
-[sharing]: /doc/user-guide/experiment-management/sharing-experiments
+[comparing]: /user-guide/experiment-management/comparing-experiments
+[plotting]: /user-guide/experiment-management/visualizing-plots
+[sharing]: /user-guide/experiment-management/sharing-experiments
 
 <admon type="tip">
 
@@ -50,11 +50,11 @@ persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
 committing them to the Git repo. Unnecessary ones can be [cleared] with
 `dvc exp remove`.
 
-[review]: /doc/user-guide/experiment-management/comparing-experiments
+[review]: /user-guide/experiment-management/comparing-experiments
 [made persistent]:
-  /doc/user-guide/experiment-management/sharing-experiments#persist-experiment
+  /user-guide/experiment-management/sharing-experiments#persist-experiment
 [cleared]:
-  /doc/user-guide/experiment-management/comparing-experiments#clean-up-experiments
+  /user-guide/experiment-management/comparing-experiments#clean-up-experiments
 
 ## Options
 
@@ -90,8 +90,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[unique name]:
-  /doc/user-guide/experiment-management#how-does-dvc-track-experiments
+[unique name]: /user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
@@ -100,7 +99,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 
@@ -131,7 +130,7 @@ dvc exp save --name extra-trees \
              -I data/new.xml.dvc -I src/extra_trees.py
 ```
 
-[dvc pipeline]: /doc/user-guide/pipelines
+[dvc pipeline]: /user-guide/pipelines
 
 <admon type="info">
 

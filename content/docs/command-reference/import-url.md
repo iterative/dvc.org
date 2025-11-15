@@ -3,7 +3,7 @@
 Track a file or directory found in an external location (`s3://`, `/local/path`,
 etc.), and download it to the local project, or make a copy in [remote storage].
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 <admon type="info">
 
@@ -74,8 +74,8 @@ remote storage normally (unlike for `dvc import`).
 </admon>
 
 `.dvc` files support references to data in an external location, see
-[External Dependencies](/doc/user-guide/data-management/importing-external-data).
-In such an import `.dvc` file, the `deps` field stores the external URL, and the
+[External Dependencies](/user-guide/data-management/importing-external-data). In
+such an import `.dvc` file, the `deps` field stores the external URL, and the
 `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC efficiently determining whether the local copy is out of date.
@@ -121,15 +121,15 @@ storage providers. When the `--version-aware` option is provided or when the
 `url` argument includes a supported cloud versioning ID, DVC will import the
 specified version.
 
-[cloud versioning]: /doc/user-guide/data-management/cloud-versioning
+[cloud versioning]: /user-guide/data-management/cloud-versioning
 
 <admon type="info">
 
 When using versioned storage, DVC will always [pull] the versioned data from
 source. This will not [push] an additional version to remote storage.
 
-[pull]: https://dvc.org/doc/command-reference/pull
-[push]: https://dvc.org/doc/command-reference/push
+[pull]: https://doc.dvc.org/command-reference/pull
+[push]: https://doc.dvc.org/command-reference/push
 
 </admon>
 
@@ -140,11 +140,11 @@ source. This will not [push] an additional version to remote storage.
 | `gs`    | Google Cloud Storage         | `gs://bucket/data#1360887697105000`                    |
 
 Another way to understand the `dvc import-url` command is as a shortcut for
-generating a pipeline [stage](/doc/command-reference/run) with an external
+generating a pipeline [stage](/command-reference/run) with an external
 dependency.
 
 > This is discussed in the
-> [External Dependencies](/doc/user-guide/data-management/importing-external-data)
+> [External Dependencies](/user-guide/data-management/importing-external-data)
 > documentation, where an alternative is demonstrated for each of these schemes.
 
 Instead of:
@@ -175,9 +175,9 @@ produces a regular stage in `dvc.yaml`.
   the operation(s)).
 
 - `--no-download` - create the import `.dvc` file including
-  [hash values](/doc/user-guide/project-structure/dvc-files#dependency-entries)
-  for the external dependency but without downloading the associated data. This
-  is useful if you need track changes in remote data without using local storage
+  [hash values](/user-guide/project-structure/dvc-files#dependency-entries) for
+  the external dependency but without downloading the associated data. This is
+  useful if you need track changes in remote data without using local storage
   space (yet). The data can be downloaded later using `dvc pull`, but this will
   fail if the `url` no longer matches the hash values. File hashes can be
   updated using `dvc update --no-download`.
@@ -203,9 +203,8 @@ produces a regular stage in `dvc.yaml`.
 
 - `--version-aware` - capture [cloud versioning] information of the current
   version when importing the file. DVC will always
-  [pull](/doc/command-reference/pull) the versioned data from the source and
-  will not [push](/doc/command-reference/push) an additional copy to remote
-  storage.
+  [pull](/command-reference/pull) the versioned data from the source and will
+  not [push](/command-reference/push) an additional copy to remote storage.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -217,7 +216,7 @@ produces a regular stage in `dvc.yaml`.
 ## Examples
 
 To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/start).
+in the [Get Started](/start).
 
 <details>
 
@@ -275,16 +274,16 @@ allows DVC to determine whether it's necessary to download it again.
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
 
-[versioning basics]: /doc/start/data-management/data-versioning
+[versioning basics]: /start/data-management/data-versioning
 
 ## Example: Detecting external file changes
 
 What if an imported file is updated regularly at it's source? The project goals
 might include regenerating some results based on the updated data source.
-[Pipeline](/doc/command-reference/dag) reproduction can be triggered based on a
+[Pipeline](/command-reference/dag) reproduction can be triggered based on a
 changed external dependency.
 
-Let's use the [Get Started](/doc/start) project again, simulating an updated
+Let's use the [Get Started](/start) project again, simulating an updated
 external data source. (Remember to prepare the <abbr>workspace</abbr>, as
 explained in [Examples](#examples))
 
@@ -336,7 +335,7 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-[data processing section]: /doc/start/data-management/data-pipelines
+[data processing section]: /start/data-management/data-pipelines
 
 <details>
 
@@ -418,7 +417,7 @@ Running stage 'prepare' with command:
 
 Sometimes there's not enough space in the local environment to import a large
 dataset, but you still want to track it in the <abbr>project</abbr> so it can be
-[pulled](/doc/command-reference/plots) later.
+[pulled](/command-reference/plots) later.
 
 As long as you have setup a `dvc remote` that can handle the data, this can be
 achieved with the `--to-remote` flag. It creates an import `.dvc` file without

@@ -3,7 +3,7 @@
 Stop running queued [DVC experiments] (see `dvc queue start`) after the current
 ones are finished running.
 
-[dvc experiments]: /doc/user-guide/experiment-management
+[dvc experiments]: /user-guide/experiment-management
 
 ## Synopsis
 

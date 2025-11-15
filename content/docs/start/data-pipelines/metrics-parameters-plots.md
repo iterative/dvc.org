@@ -6,8 +6,8 @@ capture, evaluate, and visualize ML projects without leaving Git.'
 
 # Get Started: Metrics, Plots, and Parameters
 
-DVC makes it easy to track [metrics](/doc/command-reference/metrics), visualize
-performance with [plots](/doc/command-reference/plots), and update
+DVC makes it easy to track [metrics](/command-reference/metrics), visualize
+performance with [plots](/command-reference/plots), and update
 <abbr>parameters</abbr>. These concepts are introduced below.
 
 <admon type="tip">
@@ -15,7 +15,7 @@ performance with [plots](/doc/command-reference/plots), and update
 All of the above can be combined into [experiments] to run and compare many
 iterations of your ML project.
 
-[experiments]: /doc/start/experiments
+[experiments]: /start/experiments
 
 </admon>
 
@@ -31,7 +31,7 @@ $ dvc stage add -n evaluate \
   python src/evaluate.py model.pkl data/features
 ```
 
-[earlier pipeline]: /doc/start/data-management/data-pipelines
+[earlier pipeline]: /start/data-management/data-pipelines
 
 <details>
 
@@ -143,19 +143,19 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 
 [`evaluate.py`]:
   https://github.com/iterative/example-get-started/blob/master/src/evaluate.py
-[generate your own]: /doc/user-guide/experiment-management/visualizing-plots
+[generate your own]: /user-guide/experiment-management/visualizing-plots
 
 Later we will see how to
 [compare and visualize different pipeline iterations](#comparing-iterations).
 For now, let's see how to capture another important piece of information which
 will be useful for comparison: parameters.
 
-[dvclive]: /doc/dvclive
+[dvclive]: /dvclive
 [`roc_curve`]:
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html
 [`confusion_matrix`]:
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
-[plots files]: /doc/user-guide/project-structure/dvcyaml-files#plots
+[plots files]: /user-guide/project-structure/dvcyaml-files#plots
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 
@@ -167,7 +167,7 @@ provides a mechanism for stages to depend on the values of specific sections of
 such a config file (YAML, JSON, TOML, and Python formats are supported).
 
 Luckily, we should already have a stage with
-[parameters](/doc/command-reference/params) in `dvc.yaml`:
+[parameters](/command-reference/params) in `dvc.yaml`:
 
 ```yaml
 featurize:

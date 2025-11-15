@@ -10,7 +10,7 @@ import MainLayout from '../../../components/MainLayout'
 
 const Glossary = ({ location }: PageProps) => {
   const { contents } = useGlossary()
-  const pagePath = '/doc/user-guide/glossary'
+  const pagePath = '/user-guide/glossary'
 
   return (
     <MainLayout location={location}>

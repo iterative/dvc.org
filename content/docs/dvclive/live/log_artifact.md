@@ -67,10 +67,10 @@ Passing `type="model"` will include it in the <abbr>model registry</abbr>.
 - `meta` - optional metainformation in `key: value` format.
 
 - `copy` - copy a directory or file at `path` into the `dvclive/artifacts`
-  location ([default](/doc/dvclive/how-it-works#directory-structure)) before
-  tracking it. The new path is used instead of the original one to track the
-  artifact. Useful if you don't want to track the original path in your repo
-  (for example, it is outside the repo or in a Git-ignored directory).
+  location ([default](/dvclivehow-it-works#directory-structure)) before tracking
+  it. The new path is used instead of the original one to track the artifact.
+  Useful if you don't want to track the original path in your repo (for example,
+  it is outside the repo or in a Git-ignored directory).
 
 - `cache` - <abbr>cache</abbr> the files with DVC to [track] them outside of
   Git. Defaults to `True`, but set to `False` if you want to annotate metadata
@@ -84,4 +84,4 @@ Passing `type="model"` will include it in the <abbr>model registry</abbr>.
 - `dvclive.error.InvalidDataTypeError` - thrown if the provided `path` does not
   have a supported type.
 
-[track]: /doc/dvclive/how-it-works#track-large-artifacts-with-dvc
+[track]: /dvclivehow-it-works#track-large-artifacts-with-dvc

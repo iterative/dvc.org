@@ -11,7 +11,7 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'Item Name',
-          path: '/doc/item-name',
+          path: '/item-name',
           source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
@@ -30,7 +30,7 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'Item Name',
-          path: '/doc/item-name',
+          path: '/item-name',
           source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
@@ -49,7 +49,7 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'Custom Label',
-          path: '/doc/item-name',
+          path: '/item-name',
           source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
@@ -68,7 +68,7 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'Item Name',
-          path: '/doc/item-name',
+          path: '/item-name',
           source: '/docs/item-name/index.md',
           tutorials: {},
           prev: undefined,
@@ -94,7 +94,7 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'Item Name',
-          path: '/doc/item-name',
+          path: '/item-name',
           source: '/docs/item-name.md',
           tutorials: {
             katacoda: 'https://www.katacoda.com/dvc/courses/get-started'
@@ -120,26 +120,26 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'Item Name',
-          path: '/doc/item-name',
+          path: '/item-name',
           source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
-          next: '/doc/item-name/nested-item',
+          next: '/item-name/nested-item',
           children: [
             {
               label: 'Nested Item',
-              path: '/doc/item-name/nested-item',
+              path: '/item-name/nested-item',
               source: '/docs/item-name/nested-item.md',
               tutorials: {},
-              prev: '/doc/item-name',
-              next: '/doc/item-name/nested-item/subnested-item',
+              prev: '/item-name',
+              next: '/item-name/nested-item/subnested-item',
               children: [
                 {
                   label: 'Subnested Item',
-                  path: '/doc/item-name/nested-item/subnested-item',
+                  path: '/item-name/nested-item/subnested-item',
                   source: '/docs/item-name/nested-item/subnested-item.md',
                   tutorials: {},
-                  prev: '/doc/item-name/nested-item',
+                  prev: '/item-name/nested-item',
                   next: undefined
                 }
               ]
@@ -172,43 +172,43 @@ describe('normalizeSidebar', () => {
 
       const result = [
         {
-          path: '/doc/first-item',
+          path: '/first-item',
           source: '/docs/first-item.md',
           label: 'First Item',
           tutorials: {},
           prev: undefined,
-          next: '/doc/first-item/nested-item-first',
+          next: '/first-item/nested-item-first',
           style: undefined,
           icon: undefined,
           children: [
             {
-              path: '/doc/first-item/nested-item-first',
+              path: '/first-item/nested-item-first',
               source: '/docs/first-item/nested-item-first.md',
               label: 'Nested Item First',
               tutorials: {},
-              prev: '/doc/first-item',
-              next: '/doc/first-item/nested-item-second',
+              prev: '/first-item',
+              next: '/first-item/nested-item-second',
               style: undefined,
               icon: undefined
             },
             {
-              path: '/doc/first-item/nested-item-second',
+              path: '/first-item/nested-item-second',
               source: '/docs/first-item/nested-item-second/index.md',
               label: 'Nested Item Second',
               tutorials: {},
-              prev: '/doc/first-item/nested-item-first',
-              next: '/doc/first-item/nested-item-second/nested-nested-item',
+              prev: '/first-item/nested-item-first',
+              next: '/first-item/nested-item-second/nested-nested-item',
               style: undefined,
               icon: undefined,
               children: [
                 {
-                  path: '/doc/first-item/nested-item-second/nested-nested-item',
+                  path: '/first-item/nested-item-second/nested-nested-item',
                   source:
                     '/docs/first-item/nested-item-second/nested-nested-item.md',
                   label: 'Nested Nested Item',
                   tutorials: {},
-                  prev: '/doc/first-item/nested-item-second',
-                  next: '/doc/second-item',
+                  prev: '/first-item/nested-item-second',
+                  next: '/second-item',
                   style: undefined,
                   icon: undefined
                 }
@@ -217,11 +217,11 @@ describe('normalizeSidebar', () => {
           ]
         },
         {
-          path: '/doc/second-item',
+          path: '/second-item',
           source: '/docs/second-item.md',
           label: 'Second Item',
           tutorials: {},
-          prev: '/doc/first-item/nested-item-second/nested-nested-item',
+          prev: '/first-item/nested-item-second/nested-nested-item',
           next: undefined,
           style: undefined,
           icon: undefined
@@ -242,26 +242,26 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'First Item',
-          path: '/doc/first-item',
+          path: '/first-item',
           source: '/docs/first-item.md',
           tutorials: {},
           prev: undefined,
-          next: '/doc/second-item'
+          next: '/second-item'
         },
         {
           label: 'Second Item',
-          path: '/doc/second-item',
+          path: '/second-item',
           source: false,
           tutorials: {},
-          prev: '/doc/first-item',
-          next: '/doc/second-item/nested-item',
+          prev: '/first-item',
+          next: '/second-item/nested-item',
           children: [
             {
               label: 'Nested Item',
-              path: '/doc/second-item/nested-item',
+              path: '/second-item/nested-item',
               source: '/docs/second-item/nested-item.md',
               tutorials: {},
-              prev: '/doc/first-item',
+              prev: '/first-item',
               next: undefined
             }
           ]
@@ -288,34 +288,34 @@ describe('normalizeSidebar', () => {
       const result = [
         {
           label: 'First Item',
-          path: '/doc/first-item',
+          path: '/first-item',
           source: '/docs/first-item.md',
           tutorials: {},
           prev: undefined,
-          next: '/doc/second-item'
+          next: '/second-item'
         },
         {
           label: 'Second Item',
-          path: '/doc/second-item',
+          path: '/second-item',
           source: false,
           tutorials: {},
-          prev: '/doc/first-item',
-          next: '/doc/second-item/nested-item',
+          prev: '/first-item',
+          next: '/second-item/nested-item',
           children: [
             {
               label: 'Nested Item',
-              path: '/doc/second-item/nested-item',
+              path: '/second-item/nested-item',
               source: false,
               tutorials: {},
-              prev: '/doc/first-item',
-              next: '/doc/second-item/nested-item/subnested-item',
+              prev: '/first-item',
+              next: '/second-item/nested-item/subnested-item',
               children: [
                 {
                   label: 'Subnested Item',
-                  path: '/doc/second-item/nested-item/subnested-item',
+                  path: '/second-item/nested-item/subnested-item',
                   source: '/docs/second-item/nested-item/subnested-item.md',
                   tutorials: {},
-                  prev: '/doc/first-item',
+                  prev: '/first-item',
                   next: undefined
                 }
               ]
@@ -368,7 +368,7 @@ describe('normalizeSidebar', () => {
       const rawData = ['item-name']
       const result = {
         label: 'Item Name',
-        path: '/doc/item-name',
+        path: '/item-name',
         source: '/docs/item-name.md',
         tutorials: {},
         prev: undefined,
@@ -378,7 +378,7 @@ describe('normalizeSidebar', () => {
       jest.doMock('../../../sidebar', () => rawData)
       const { getItemByPath } = require('./sidebar')
 
-      expect(getItemByPath('/doc')).toEqual(result)
+      expect(getItemByPath('/')).toEqual(result)
     })
 
     it('Returns first child with source for all parents with source:false', () => {
@@ -403,7 +403,7 @@ describe('normalizeSidebar', () => {
       ]
       const result = {
         label: 'Leaf Item',
-        path: '/doc/item/nested/subnested/leaf-item',
+        path: '/item/nested/subnested/leaf-item',
         source: '/docs/item/nested/subnested/leaf-item.md',
         tutorials: {},
         prev: undefined,
@@ -413,20 +413,20 @@ describe('normalizeSidebar', () => {
       jest.doMock('../../../sidebar', () => rawData)
       const { getItemByPath } = require('./sidebar')
 
-      expect(getItemByPath('/doc/item')).toEqual(result)
-      expect(getItemByPath('/doc/item/nested')).toEqual(result)
-      expect(getItemByPath('/doc/item/nested/subnested')).toEqual(result)
+      expect(getItemByPath('/item')).toEqual(result)
+      expect(getItemByPath('/item/nested')).toEqual(result)
+      expect(getItemByPath('/item/nested/subnested')).toEqual(result)
     })
   })
 
   describe('getParentsListFromPath', () => {
     it("Returns array of current and parent's paths", () => {
       const rawData = []
-      const path = '/doc/item-name/nested-item/subnested-item'
+      const path = '/item-name/nested-item/subnested-item'
       const result = [
-        '/doc/item-name',
-        '/doc/item-name/nested-item',
-        '/doc/item-name/nested-item/subnested-item'
+        '/item-name',
+        '/item-name/nested-item',
+        '/item-name/nested-item/subnested-item'
       ]
 
       jest.doMock('../../../sidebar', () => rawData)

@@ -5,7 +5,7 @@ We provide short articles on common data science scenarios where DVC can help.
 <admon info="tip">
 
 Our use cases are not written to be run end-to-end like tutorials. For more
-hands-on experience with DVC, see [Get Started](/doc/start).
+hands-on experience with DVC, see [Get Started](/start).
 
 </admon>
 
@@ -24,7 +24,7 @@ learning models, and you want to
 
 - track and save data and machine learning models the same way you capture code;
 - create and switch between
-  [versions of data and ML models](/doc/use-cases/versioning-data-and-models)
+  [versions of data and ML models](/use-cases/versioning-data-and-models)
   easily;
 - understand how datasets and ML artifacts were built in the first place;
 - compare model metrics among <abbr>experiments</abbr>;

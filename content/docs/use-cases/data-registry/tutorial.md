@@ -29,8 +29,8 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
 
 The actual data is stored in the project's <abbr>cache</abbr>, and can be
-[pushed](/doc/command-reference/push) to one or more [remote storage] locations
-so the registry can be accessed from other locations and by other people:
+[pushed](/command-reference/push) to one or more [remote storage] locations so
+the registry can be accessed from other locations and by other people:
 
 ```cli
 $ dvc remote add -d myremote s3://mybucket/dvcstore
@@ -80,8 +80,8 @@ $ dvc get https://github.com/example/registry music/songs
 ```
 
 This downloads `music/songs` from the <abbr>project</abbr>'s
-[default remote](/doc/command-reference/remote/default) and places it in the
-current working directory.
+[default remote](/command-reference/remote/default) and places it in the current
+working directory.
 
 ### Data import workflow
 
@@ -112,9 +112,9 @@ latest commit in the source repo; And it updates the `.dvc` file accordingly.
 
 ### Using DVC data from Python code
 
-Our [Python API](/doc/api-reference), included with the `dvc` package installed
-with DVC, includes the `open` function to load/stream data directly from
-external <abbr>DVC projects</abbr>:
+Our [Python API](/api-reference), included with the `dvc` package installed with
+DVC, includes the `open` function to load/stream data directly from external
+<abbr>DVC projects</abbr>:
 
 ```python
 import dvc.api
@@ -155,7 +155,7 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 
 Iterating on this process for several datasets can give shape to a robust
 registry. The result is basically a repo that versions a set of
-[metafiles](/doc/user-guide/project-structure). Let's see an example:
+[metafiles](/user-guide/project-structure). Let's see an example:
 
 ```cli
 $ tree --filelimit=10
@@ -237,7 +237,7 @@ using only a [Studio token], either in the UI or programmatically:
 
 ![Download Registry Datasets](../../../uploads/images/studio/registry-download-datasets.gif)
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 [semantic versioning]: https://semver.org
 [GTO]: https://mlem.ai/doc/gto
 [Studio token]: https://docs.datachain.ai/studio/api#authorization

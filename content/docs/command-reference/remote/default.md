@@ -27,7 +27,7 @@ $ dvc remote default myremote
 This command assigns the default remote in the [`core`] section of the DVC
 config file.
 
-[`core`]: /doc/user-guide/project-structure/configuration#core
+[`core`]: /user-guide/project-structure/configuration#core
 
 ```ini
 [core]

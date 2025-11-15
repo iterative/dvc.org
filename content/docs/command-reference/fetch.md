@@ -2,7 +2,7 @@
 
 Download files or directories from [remote storage] to the <abbr>cache</abbr>.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -54,8 +54,8 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 - To use comparison commands across different Git commits, for example
   `dvc metrics show` with its `--all-branches` option, or `dvc plots diff`.
 - If you want to avoid
-  [linking](/doc/user-guide/data-management/large-dataset-optimization) files
-  from the cache, or keep the <abbr>workspace</abbr> clean for any other reason.
+  [linking](/user-guide/data-management/large-dataset-optimization) files from
+  the cache, or keep the <abbr>workspace</abbr> clean for any other reason.
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
@@ -124,13 +124,13 @@ The `dvc remote` used is determined in order, based on
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[stage runs]: /doc/user-guide/project-structure/internal-files#run-cache
+[stage runs]: /user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/start). Then we can see what `dvc fetch` does in different
+[Get Started](/start). Then we can see what `dvc fetch` does in different
 scenarios.
 
 <details>
@@ -187,7 +187,7 @@ $ tree .dvc/cache/files/md5
 > Refer to `dvc status`.
 
 Note that the
-[`.dvc/cache`](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+[`.dvc/cache`](/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 directory was created and populated.
 
 All the data needed in this version of the project is now in your cache: File

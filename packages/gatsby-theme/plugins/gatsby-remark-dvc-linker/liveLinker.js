@@ -6,7 +6,7 @@ const { createLinkNode } = require('./helpers')
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
-const API_ROOT = '/doc/dvclive/live/'
+const API_ROOT = '/dvclive/live/'
 
 module.exports = astNode => {
   const node = astNode[0]

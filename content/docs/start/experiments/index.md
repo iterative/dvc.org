@@ -20,8 +20,8 @@ description:
   dependencies and outputs, and natively inject parameters and hyper-parameters
   to experiment runs.
 
-[experiment tracking]: /doc/start/experiments/experiment-tracking
-[experimenting using pipelines]: /doc/start/experiments/experiment-pipelines
+[experiment tracking]: /start/experiments/experiment-tracking
+[experimenting using pipelines]: /start/experiments/experiment-pipelines
 
 <admon type="tip">
 
@@ -40,4 +40,4 @@ These are captured in our [example-get-started-experiments] repo (see its
 Pick a page from the list above, the left-side navigation bar, or just click
 `NEXT` below!
 
-Click [here](/doc/start/) to jump back to the Get Started landing page.
+Click [here](/start/) to jump back to the Get Started landing page.

@@ -46,7 +46,7 @@ e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 DVC won't push data imported from other DVC repos to [remote storage].
 `dvc pull` will download from the original source.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 </admon>
 
@@ -85,7 +85,7 @@ file.
   `dvc freeze`), use `dvc update` to bring the import up to date from the data
   source.
 
-[version the data]: /doc/start/data-management/data-versioning
+[version the data]: /start/data-management/data-versioning
 
 ## Options
 
@@ -125,8 +125,8 @@ file.
   speed up the operation. Note that the default value can be set in the source
   repo using the `jobs` config option of `dvc remote modify`.
 
-- `--config <path>` - path to a [config file](/doc/command-reference/config)
-  that will be merged with the config in the target repository.
+- `--config <path>` - path to a [config file](/command-reference/config) that
+  will be merged with the config in the target repository.
 
 - `--remote <name>` - name of the `dvc remote` to set as a default in the target
   repository.
@@ -158,7 +158,7 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import `.dvc` file with a link to the data source (as
 explained in the description above). (This `.dvc` file can later be used to
-[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
+[update](/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
@@ -235,7 +235,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > Used in our
-> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial)
+> [versioning tutorial](/use-cases/versioning-data-and-models/tutorial)
 
 Or
 
@@ -248,9 +248,9 @@ $ dvc import git@github.com:iterative/dataset-registry.git \
 <abbr>DVC repositories</abbr> because it saves the connection between the
 current project and the source repo. This means that enough information is
 recorded in an import `.dvc` file in order to
-[reproduce](/doc/command-reference/repro) downloading of this same data version
-in the future, where and when needed. This is achieved with the `repo` field,
-for example (matching the import command above):
+[reproduce](/command-reference/repro) downloading of this same data version in
+the future, where and when needed. This is achieved with the `repo` field, for
+example (matching the import command above):
 
 ```yaml
 frozen: true
@@ -265,7 +265,7 @@ outs:
     cache: true
 ```
 
-See a full explanation in our [Data Registry](/doc/use-cases/data-registry) use
+See a full explanation in our [Data Registry](/use-cases/data-registry) use
 case.
 
 ## Example: Importing from any Git repository

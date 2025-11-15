@@ -112,7 +112,7 @@ This is a powerful way of quickly iterating through your pipeline.
 
 The pipeline might have a lot of steps and forms of acyclic dependencies between
 the steps. Below is an example of a canonical machine learning pipeline (more
-details in [the DVC tutorials](https://dvc.org/doc/tutorials):
+details in [the DVC tutorials](https://doc.dvc.org/tutorials):
 
 `gist:dmpetrov/7704a5156bdc32c7379580a61e2fe3b6#dvc_pipeline.sh`
 

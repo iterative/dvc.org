@@ -9,7 +9,7 @@
 **New!** DVC is also available [for the VS Code IDE], which adds many DVC
 operations [to the Command Palette].
 
-[for the vs code ide]: /doc/vs-code-extension
+[for the vs code ide]: /vs-code-extension
 [to the command palette]:
   https://github.com/iterative/vscode-dvc#useful-commands
 
@@ -32,11 +32,11 @@ and its options/arguments (does not change directories in your terminal).
 - Copy data files or dataset directories for modeling into the project and use
   `dvc add` to tell DVC to <abbr>cache</abbr> and track them.
 - Create a simple `dvc.yaml` file to codify a data processing
-  [pipeline](/doc/command-reference/dag). It uses your own source code and
-  specifies further data <abbr>outputs</abbr> for DVC to control.
+  [pipeline](/command-reference/dag). It uses your own source code and specifies
+  further data <abbr>outputs</abbr> for DVC to control.
 - Execute or restore any version of your pipeline using `dvc repro`, or
   experiment on it with `dvc exp` features.
 - Sharing the <abbr>repository</abbr> will not include locally cached data. Use
   [remote storage] with `dvc push` and `dvc pull` to share data artifacts.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage

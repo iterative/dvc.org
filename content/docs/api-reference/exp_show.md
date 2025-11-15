@@ -64,16 +64,16 @@ the Git `HEAD`.
 
 - `revs` - List of Git commits (any
   [revision](https://git-scm.com/docs/revisions) such as a branch or tag name, a
-  commit hash or an [experiment](/doc/command-reference/exp) name). _Default_:
+  commit hash or an [experiment](/command-reference/exp) name). _Default_:
   `None` (current working tree will be used)
 
 - `param_deps` - whether to retrieve only params that are stage dependencies.
   _Default_: `False`.
 
-- `config` - [config](/doc/command-reference/config) dictionary to pass to the
-  DVC project. This is merged with the existing project config and can be used
-  to, for example, provide credentials to the `remote`. See
-  [dvc.api.open](/doc/api-reference/open) for examples.
+- `config` - [config](/command-reference/config) dictionary to pass to the DVC
+  project. This is merged with the existing project config and can be used to,
+  for example, provide credentials to the `remote`. See
+  [dvc.api.open](/api-reference/open) for examples.
 
 ## Example: Create a Pandas DataFrame
 
@@ -120,4 +120,4 @@ all_tags = dvc.api.scm.all_tags()
 exps = dvc.api.exp_show(revs=all_tags)
 ```
 
-[`dvc.api.scm`]: /doc/api-reference/scm
+[`dvc.api.scm`]: /api-reference/scm

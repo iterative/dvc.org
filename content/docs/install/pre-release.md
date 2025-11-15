@@ -19,8 +19,8 @@ $ pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
 ```
 
 > For information on our versioning convention, refer to
-> [Components of DVC version](/doc/command-reference/version#components-of-dvc-version).
+> [Components of DVC version](/command-reference/version#components-of-dvc-version).
 
 To install a development version for contributing to the project, see the
-[Development environment](/doc/user-guide/contributing/core#development-environment)
+[Development environment](/user-guide/contributing/core#development-environment)
 guide.

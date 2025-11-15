@@ -15,7 +15,7 @@ $ dvc config hydra.enabled True
 
 [config composition]:
   https://hydra.cc/docs/tutorials/basic/your_first_app/composition/
-[experiment runs]: /doc/user-guide/experiment-management/running-experiments
+[experiment runs]: /user-guide/experiment-management/running-experiments
 
 ## How it works
 
@@ -29,10 +29,9 @@ executing the experiment. Its <abbr>parameters</abbr> will configure the
 a single script, and offer advanced features like [templating] and [`foreach`
 stages].
 
-[dvc pipelines]: /doc/user-guide/pipelines/defining-pipelines
-[templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
-[`foreach` stages]:
-  /doc/user-guide/project-structure/dvcyaml-files#foreach-stages
+[dvc pipelines]: /user-guide/pipelines/defining-pipelines
+[templating]: /user-guide/project-structure/dvcyaml-files#templating
+[`foreach` stages]: /user-guide/project-structure/dvcyaml-files#foreach-stages
 
 </admon>
 
@@ -125,7 +124,7 @@ stages:
 ```
 
 [experimental pipeline]:
-  /doc/user-guide/experiment-management/running-experiments#running-the-pipelines
+  /user-guide/experiment-management/running-experiments#running-the-pipelines
 
 <admon type="info">
 
@@ -133,7 +132,7 @@ We parametrize the shell commands above (`mkdir`, `tar`, `wget`) as well as
 <abbr>output</abbr> and <abbr>dependency</abbr> paths (`outs`, `deps`) using
 [templating] (`${}` _expression_).
 
-[templating]: /doc/user-guide/project-structure/dvcyaml-files#templating
+[templating]: /user-guide/project-structure/dvcyaml-files#templating
 
 </admon>
 
@@ -144,7 +143,7 @@ the built-in `dvc.api.params_show()` or `OmegaConf.load("params.yaml")` (which
 comes with Hydra).
 
 [dictionary unpacking]:
-  /doc/user-guide/project-structure/dvcyaml-files#dictionary-unpacking
+  /user-guide/project-structure/dvcyaml-files#dictionary-unpacking
 
 </admon>
 
@@ -202,7 +201,7 @@ $ dvc queue start
 ```
 
 [experiments queue]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+  /user-guide/experiment-management/running-experiments#the-experiments-queue
 [grid search]:
   https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
 
@@ -226,7 +225,7 @@ Stage 'train' didn't change, skipping
 not a reliable way to reproduce past experiments. Instead, use `dvc repro` when
 you want to reproduce a previously run experiment.
 
-[debug]: /doc/user-guide/pipelines/running-pipelines#debugging-stages
+[debug]: /user-guide/pipelines/running-pipelines#debugging-stages
 
 ## Migrating Hydra Projects
 

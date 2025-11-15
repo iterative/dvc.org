@@ -11,8 +11,8 @@ DVCLive allows you to add experiment tracking capabilities to your
   </a>
 </p>
 
-You need to create a [`Live`](/doc/dvclive/live) instance and include calls to
-[log data](/doc/dvclive#log-data).
+You need to create a [`Live`](/dvclive/live) instance and include calls to
+[log data](/dvclive#log-data).
 
 <admon type="tip">
 

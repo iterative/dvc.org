@@ -1,6 +1,6 @@
 # metrics diff
 
-Compare [metrics](/doc/command-reference/metrics) between two commits in the
+Compare [metrics](/command-reference/metrics) between two commits in the
 <abbr>DVC repository</abbr>, or between a commit and the <abbr>workspace</abbr>.
 
 > Requires that Git is being used to version the project.

@@ -61,17 +61,17 @@ The function parameters (below) let you restrict what's retrieved.
   `../dvc.yaml:stage-1`.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, a commit hash or an
-  [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
-  this option is ignored. _Default_: `None` (current working tree will be used)
+  a branch or tag name, a commit hash or an [experiment](/command-reference/exp)
+  name). If `repo` is not a Git repo, this option is ignored. _Default_: `None`
+  (current working tree will be used)
 
 - `deps` - whether to retrieve only params that are stage dependencies. Accepts
   `True` or `False` (_default_).
 
-- `config` - [config](/doc/command-reference/config) dictionary to pass to the
-  DVC project. This is merged with the existing project config and can be used
-  to, for example, provide credentials to the `remote`. See
-  [dvc.api.open](/doc/api-reference/open) for examples.
+- `config` - [config](/command-reference/config) dictionary to pass to the DVC
+  project. This is merged with the existing project config and can be used to,
+  for example, provide credentials to the `remote`. See
+  [dvc.api.open](/api-reference/open) for examples.
 
 ## Example: Filter by stage name(s)
 

@@ -42,7 +42,7 @@ For the full list of configuration parameters, see
 ### DVC verifies Google Drive files by default
 
 GDrive remotes are not "trusted" by default. This means that the
-[`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
+[`verify`](/command-reference/remote/modify#available-parameters-for-all-remotes)
 parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
@@ -64,7 +64,7 @@ to establish GDrive remote connections (e.g. CI/CD).
 
 </admon>
 
-> Note our [Privacy Policy for Google APIs](/doc/user-guide/privacy).
+> Note our [Privacy Policy for Google APIs](/user-guide/privacy).
 
 ## URL format
 
@@ -269,7 +269,7 @@ $ dvc remote modify myremote gdrive_acknowledge_abuse true
 
 </admon>
 
-> Note our [Privacy Policy for Google APIs](/doc/user-guide/privacy).
+> Note our [Privacy Policy for Google APIs](/user-guide/privacy).
 
 ## Using service accounts
 

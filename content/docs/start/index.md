@@ -62,8 +62,8 @@ project:
 $ dvc init
 ```
 
-A few [internal files](/doc/user-guide/project-structure/internal-files) are
-created that should be added to Git:
+A few [internal files](/user-guide/project-structure/internal-files) are created
+that should be added to Git:
 
 ```cli
 $ git status
@@ -78,7 +78,7 @@ Now you're ready to DVC!
 
 ## Tracking data
 
-Working inside an [initialized project](/doc/start#initializing-a-project)
+Working inside an [initialized project](/start#initializing-a-project)
 directory, let's pick a piece of data to work with. We'll use an example
 `data.xml` file, though any text or binary file (or directory) will do. Start by
 running:
@@ -94,7 +94,7 @@ We used `dvc get` above to show how DVC can turn any Git repo into a "[data
 registry]". `dvc get` can download any file or directory tracked in a <abbr>DVC
 repository</abbr>.
 
-[data registry]: /doc/use-cases/data-registry
+[data registry]: /use-cases/data-registry
 
 </admon>
 
@@ -147,10 +147,9 @@ outs:
 ## Storing and sharing
 
 You can upload DVC-tracked data to a variety of storage systems (remote or
-local) referred to as
-["remotes"](/doc/user-guide/data-management/remote-storage). For simplicity, we
-will use a "local remote" for this guide, which is just a directory in the local
-file system.
+local) referred to as ["remotes"](/user-guide/data-management/remote-storage).
+For simplicity, we will use a "local remote" for this guide, which is just a
+directory in the local file system.
 
 ### Configuring a remote
 
@@ -193,10 +192,10 @@ access.
 
 To learn more about storage remotes, see the [Remote Storage Guide].
 
-[Amazon S3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[Amazon S3]: /user-guide/data-management/remote-storage/amazon-s3
 [storage types]:
-  /doc/user-guide/data-management/remote-storage#supported-storage-types
-[Remote Storage Guide]: /doc/user-guide/data-management/remote-storage
+  /user-guide/data-management/remote-storage#supported-storage-types
+[Remote Storage Guide]: /user-guide/data-management/remote-storage
 
 </admon>
 
@@ -371,6 +370,6 @@ Choose a trail to jump into its first chapter:
   your models in an auditable way. Easily access your models and integrate your
   model registry actions into CICD pipelines to follow GitOps best practices.
 
-[Data Pipelines]: /doc/start/data-management/data-pipelines
-[Experiment Management]: /doc/start/experiments/experiment-tracking
-[Model Registry]: /doc/start/model-registry
+[Data Pipelines]: /start/data-management/data-pipelines
+[Experiment Management]: /start/experiments/experiment-tracking
+[Model Registry]: /start/model-registry

@@ -6,8 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 <admon type="tip">
 
 If you are using PyTorch Lightning, check the
-[DVCLive - PyTorch Lightning](/doc/dvclive/ml-frameworks/pytorch-lightning)
-page.
+[DVCLive - PyTorch Lightning](/dvcliveml-frameworks/pytorch-lightning) page.
 
 </admon>
 
@@ -19,9 +18,9 @@ page.
   </a>
 </p>
 
-You need to create a [`Live`](/doc/dvclive/live) instance and include calls to
-[log data](/doc/dvclive#log-data) and
-[update the step number](/doc/dvclive#optionally-update-the-step-number).
+You need to create a [`Live`](/dvclivelive) instance and include calls to
+[log data](/dvclive#log-data) and
+[update the step number](/dvclive#optionally-update-the-step-number).
 
 This snippet is used inside the Colab Notebook linked above:
 
@@ -84,7 +83,7 @@ If you are using
 [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html)
 (DDP) to parallelize training over multiple processes, call DVCLive only in the
 rank 0 process. The
-[Lightning callback](/doc/dvclive/ml-frameworks/pytorch-lightning) will do this
+[Lightning callback](/dvcliveml-frameworks/pytorch-lightning) will do this
 automatically. You can also write your own code so that it only calls DVCLive in
 the rank 0 process:
 

@@ -1,9 +1,9 @@
 # Data Registry
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
-[versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
+[versioning of data and model files](/use-cases/data-and-model-files-versioning).
 DVC also enables cross-project
-[reusability](/doc/user-guide/data-management/discovering-and-accessing-data) of
+[reusability](/user-guide/data-management/discovering-and-accessing-data) of
 these <abbr>data artifacts</abbr>. This means that your projects can depend on
 data from other repositories — like a **package management system for data
 science**.
@@ -11,7 +11,7 @@ science**.
 ![](/img/data-registry.png) _Data management middleware_
 
 We can build a <abbr>DVC project</abbr> dedicated to versioning _datasets_ (or
-data features, [ML models](/doc/use-cases/model-registry), etc.). The repository
+data features, [ML models](/use-cases/model-registry), etc.). The repository
 contains the necessary metadata, as well as the entire change history. The data
 itself is stored in one or more [DVC remotes][remote storage]. This is what we
 call a **data registry** -- data management _middleware_ between ML projects and
@@ -33,16 +33,16 @@ cloud storage. Advantages:
   endpoints (e.g. an HTTP server) to prevent data deletions or alterations.
 
 [ci/cd for your data and models lifecycle]:
-  /doc/use-cases/ci-cd-for-machine-learning
-[remote storage]: /doc/user-guide/data-management/remote-storage
+  /use-cases/ci-cd-for-machine-learning
+[remote storage]: /user-guide/data-management/remote-storage
 
 👩‍💻 Intrigued? Try our [registry tutorial] to learn how DVC looks and feels
 firsthand.
 
-[registry tutorial]: /doc/use-cases/data-registry/tutorial
+[registry tutorial]: /use-cases/data-registry/tutorial
 
 <admon type="info">
 
-See also [Model Registry](/doc/use-cases/model-registry).
+See also [Model Registry](/use-cases/model-registry).
 
 </admon>

@@ -41,7 +41,7 @@ const ColumnOne: React.FC = () => (
         back and forth between experiments.
       </p>
     </div>
-    <LearnMore href={'/doc/use-cases'} />
+    <LearnMore href={'/use-cases'} />
   </div>
 )
 
@@ -64,7 +64,7 @@ const ColumnTwo: React.FC = () => (
         intermediate artifact caching.
       </p>
     </div>
-    <LearnMore href={'/doc/use-cases'} />
+    <LearnMore href={'/use-cases'} />
   </div>
 )
 
@@ -86,7 +86,7 @@ const ColumnThree: React.FC = () => (
         production.
       </p>
     </div>
-    <LearnMore href={'/doc/use-cases'} />
+    <LearnMore href={'/use-cases'} />
   </div>
 )
 

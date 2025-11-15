@@ -62,4 +62,4 @@ automatically, and you can skip logging them with DVCLive.
   ```
 
 [parameter dependencies]:
-  /doc/user-guide/pipelines/defining-pipelines#parameter-dependencies
+  /user-guide/pipelines/defining-pipelines#parameter-dependencies

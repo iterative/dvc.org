@@ -16,15 +16,15 @@ Currently, it is supported on the following storage types:
   accounts and containers)
 - [Google Cloud Storage] (requires [Object versioning] enabled buckets)
 
-[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[amazon s3]: /user-guide/data-management/remote-storage/amazon-s3
 [s3 versioning]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/Versioning.html
 [azure blob storage]:
-  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+  /user-guide/data-management/remote-storage/azure-blob-storage
 [blob versioning]:
   https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
 [google cloud storage]:
-  /doc/user-guide/data-management/remote-storage/google-cloud-storage
+  /user-guide/data-management/remote-storage/google-cloud-storage
 [object versioning]: https://cloud.google.com/storage/docs/object-versioning
 
 Lifecycle management policies may delete object versions, in which case DVC will

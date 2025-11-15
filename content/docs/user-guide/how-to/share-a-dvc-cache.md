@@ -7,10 +7,10 @@ description: >-
 
 # How to Share a DVC Cache
 
-[Configuring](/doc/user-guide/project-structure/configuration#cache) the
-project's <abbr>cache</abbr> in a location shared by other projects helps avoid
-file duplication and can reduce data transfers between different data locations.
-Some scenarios:
+[Configuring](/user-guide/project-structure/configuration#cache) the project's
+<abbr>cache</abbr> in a location shared by other projects helps avoid file
+duplication and can reduce data transfers between different data locations. Some
+scenarios:
 
 - Multiple users have copies of the same project on a single machine.
 - Different projects use the same data, so it makes sense to centralize its
@@ -74,8 +74,8 @@ enable symlinks to avoid having copies from the external cache to the
 <abbr>workspace</abbr>.
 
 > See `dvc config cache` and
-> [File link types](/doc/user-guide/data-management/large-dataset-optimization)
-> for more info.
+> [File link types](/user-guide/data-management/large-dataset-optimization) for
+> more info.
 
 <admon type="warn">
 
@@ -97,7 +97,6 @@ $ git commit -m "config external/shared DVC cache"
 Using `dvc gc` with a shared cache may delete data needed in another project!
 See more info. about [cleaning a shared cache] safely.
 
-[cleaning a shared cache]:
-  /doc/command-reference/gc#cleaning-shared-cache-or-remote
+[cleaning a shared cache]: /command-reference/gc#cleaning-shared-cache-or-remote
 
 </admon>

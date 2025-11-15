@@ -2,18 +2,18 @@
 
 We currently support the following _ML Frameworks_:
 
-- [Fast.ai](/doc/dvclive/ml-frameworks/fastai)
-- [Hugging Face](/doc/dvclive/ml-frameworks/huggingface)
-- [Keras](/doc/dvclive/ml-frameworks/keras)
-- [LightGBM](/doc/dvclive/ml-frameworks/lightgbm)
-- [MMCV](/doc/dvclive/ml-frameworks/mmcv)
-- [Optuna](/doc/dvclive/ml-frameworks/optuna)
-- [PyTorch](/doc/dvclive/ml-frameworks/pytorch)
-- [PyTorch Lightning](/doc/dvclive/ml-frameworks/pytorch-lightning)
-- [Scikit-learn](/doc/dvclive/ml-frameworks/scikit-learn)
-- [TensorFlow](/doc/dvclive/ml-frameworks/tensorflow)
-- [XGBoost](/doc/dvclive/ml-frameworks/xgboost)
-- [Ultralytics YOLO v8](/doc/dvclive/ml-frameworks/yolo)
+- [Fast.ai](/dvcliveml-frameworks/fastai)
+- [Hugging Face](/dvcliveml-frameworks/huggingface)
+- [Keras](/dvcliveml-frameworks/keras)
+- [LightGBM](/dvcliveml-frameworks/lightgbm)
+- [MMCV](/dvcliveml-frameworks/mmcv)
+- [Optuna](/dvcliveml-frameworks/optuna)
+- [PyTorch](/dvcliveml-frameworks/pytorch)
+- [PyTorch Lightning](/dvcliveml-frameworks/pytorch-lightning)
+- [Scikit-learn](/dvcliveml-frameworks/scikit-learn)
+- [TensorFlow](/dvcliveml-frameworks/tensorflow)
+- [XGBoost](/dvcliveml-frameworks/xgboost)
+- [Ultralytics YOLO v8](/dvcliveml-frameworks/yolo)
 
 The DVCLive team is happy to extend the list with more _ML Frameworks_ as
 needed. Check the

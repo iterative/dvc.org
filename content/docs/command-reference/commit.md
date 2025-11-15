@@ -65,7 +65,7 @@ Note that it's best to try avoiding these scenarios, where the
 <abbr>cache</abbr>, `dvc.lock`, and `.dvc` files are force-updated. DVC can't
 guarantee reproducibility in those cases.
 
-[add the missing deps/outs]: /doc/user-guide/how-to/add-deps-or-outs-to-a-stage
+[add the missing deps/outs]: /user-guide/how-to/add-deps-or-outs-to-a-stage
 
 ## Options
 
@@ -84,7 +84,7 @@ guarantee reproducibility in those cases.
   did not change.
 
 - `--no-relink` - Don't recreate
-  [file link types](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
+  [file link types](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache))
   from the cache to the workspace. This saves time when working with a large
   number of files, but the files may be reflinked or copied from the cache even
   if another link type is configured.
@@ -101,7 +101,7 @@ guarantee reproducibility in those cases.
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/start). Then we can see what happens with `git commit` and
+[Get Started](/start). Then we can see what happens with `git commit` and
 `dvc commit` in different situations.
 
 <details>

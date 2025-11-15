@@ -67,4 +67,4 @@ the active user or for everyone in the system, respectively.
 Another way to disable analytics is to set the environment variable
 `DVC_NO_ANALYTICS` (will override config).
 
-[`core.analytics`]: /doc/user-guide/project-structure/configuration#core
+[`core.analytics`]: /user-guide/project-structure/configuration#core

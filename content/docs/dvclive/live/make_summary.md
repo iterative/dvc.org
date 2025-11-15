@@ -1,7 +1,7 @@
 # Live.make_summary()
 
 Serializes a summary of the logged metrics (`Live.summary`) to
-[`Live.metrics_file`](/doc/dvclive/live#properties).
+[`Live.metrics_file`](/dvclivelive#properties).
 
 ```py
 def make_summary()

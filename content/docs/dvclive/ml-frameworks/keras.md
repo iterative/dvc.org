@@ -73,4 +73,4 @@ model.fit(
     callbacks=[DVCLiveCallback(dir="custom_dir")])
 ```
 
-[`live`]: /doc/dvclive/live
+[`live`]: /dvclivelive

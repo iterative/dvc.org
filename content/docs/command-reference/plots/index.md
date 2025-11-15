@@ -1,9 +1,9 @@
 # plots
 
 A set of commands to visualize and compare data series or images from ML
-projects: [show](/doc/command-reference/plots/show),
-[diff](/doc/command-reference/plots/diff), and
-[templates](/doc/command-reference/plots/templates).
+projects: [show](/command-reference/plots/show),
+[diff](/command-reference/plots/diff), and
+[templates](/command-reference/plots/templates).
 
 ## Synopsis
 
@@ -26,15 +26,15 @@ You can visualize and compare JSON, YAML 1.2, CSV, TSV data files or JPEG, GIF,
 PNG, or SVG images found in your project. Typically these are artifacts of an
 [ML pipeline] or performance logs produced by [DVCLive].
 
-[ml pipeline]: /doc/start/data-management/data-pipelines
-[dvclive]: /doc/dvclive
+[ml pipeline]: /start/data-management/data-pipelines
+[dvclive]: /dvclive
 
 <admon icon="book">
 
 See [Visualizing Plots] and the [plots schema] for more details
 
-[visualizing plots]: /doc/user-guide/experiment-management/visualizing-plots
-[plots schema]: /doc/user-guide/project-structure/dvcyaml-files#plots
+[visualizing plots]: /user-guide/experiment-management/visualizing-plots
+[plots schema]: /user-guide/project-structure/dvcyaml-files#plots
 
 </admon>
 

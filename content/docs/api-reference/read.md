@@ -85,11 +85,11 @@ Python's [`open()`] built-in, which is used under the hood.
   parameter in builtin `open()`.
 
 [revision]: https://git-scm.com/docs/revisions
-[experiment name]: /doc/command-reference/exp/run#-n
-[dvc remote]: /doc/user-guide/data-management/remote-storage
-[default remote]: /doc/command-reference/remote/default
+[experiment name]: /command-reference/exp/run#-n
+[dvc remote]: /user-guide/data-management/remote-storage
+[default remote]: /command-reference/remote/default
 [codec]: https://docs.python.org/3/library/codecs.html#standard-encodings
-[config]: /doc/command-reference/config
+[config]: /command-reference/config
 
 ## Exceptions
 

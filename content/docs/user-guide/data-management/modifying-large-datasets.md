@@ -146,4 +146,4 @@ $ dvc push
 2 files were pushed: the new file and the updated directory listing. You can
 add, modify, and delete files from a remote dataset in this way.
 
-[remote storage]: /doc/user-guide/data-management/modifying-large-datasets
+[remote storage]: /user-guide/data-management/modifying-large-datasets

@@ -3,9 +3,9 @@
 Enjoy working with DVC faster and with fewer typos!
 
 Shell completion is automatically enabled when DVC is installed on macOS
-[with Homebrew](/doc/install/macos#install-with-brew), or on Linux
-[from **deb** or **rpm** repositories](/doc/install/linux#install-from-repository)
-or via [**snap**](/doc/install/linux#install-with-snap).
+[with Homebrew](/install/macos#install-with-brew), or on Linux
+[from **deb** or **rpm** repositories](/install/linux#install-from-repository)
+or via [**snap**](/install/linux#install-with-snap).
 
 See below for other DVC installation methods.
 

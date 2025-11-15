@@ -22,7 +22,7 @@ tracked in DVC 3.0 and files tracked in older releases.
 <admon type="warn">
 
 On filesystems that do not support any type of
-[linking](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache),
+[linking](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache),
 data will be copied from the old cache location into the DVC 3.0 location
 (resulting in no de-duplication).
 

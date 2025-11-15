@@ -23,9 +23,9 @@ usage: dvc version [-h] [-q | -v]
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 [types of links]:
-  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
+  /user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
 
 > No info about `Cache` or `Workspace directory` is printed if `dvc version` is
 > used outside a DVC project.
@@ -40,7 +40,7 @@ usage: dvc version [-h] [-q | -v]
 The detail of DVC version depends upon the way of installing DVC.
 
 - **Official release**: a stable version of DVC (for example `1.10.0`), that can
-  be [installed](/doc/install) using the official package stored in
+  be [installed](/install) using the official package stored in
   [Python Packaging Authority](https://www.pypa.io/) or with a binary. These
   releases are tagged in the DVC repository (see
   [changelog](https://github.com/iterative/dvc/releases) for release history).
@@ -50,7 +50,7 @@ The detail of DVC version depends upon the way of installing DVC.
 
 - **Development version**: contains all the changes done to the `master` branch
   of DVC's repository, following the latest official release. It can be
-  [installed](/doc/user-guide/contributing/core#development-environment) after
+  [installed](/user-guide/contributing/core#development-environment) after
   cloning DVC's repo. Running this setup may result in usage issues, as it
   contains changes that might not be ready to release yet.
 
@@ -61,7 +61,7 @@ The detail of DVC version depends upon the way of installing DVC.
   optional suffix `.mod` means that code is modified.
 
 - **Binary or Package manager**: shows how DVC was downloaded and
-  [installed](/doc/install).
+  [installed](/install).
 
   DVC can be installed from one of the binary releases:
   - Debian package (`.deb`) - file used to install packages in several Linux
@@ -89,7 +89,7 @@ The detail of DVC version depends upon the way of installing DVC.
 
   This method of installation involves downloading DVC source code, and
   following certain setup instructions (see the
-  [development](/doc/install/pre-release) guide) to build the application before
+  [development](/install/pre-release) guide) to build the application before
   being able to it.
 
 ## Options

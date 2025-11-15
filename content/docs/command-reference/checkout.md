@@ -55,8 +55,8 @@ a 50Gb file by copying might take a few minutes whereas, with links, restoring
 any file size will be almost instantaneous.
 
 [File link types]:
-  /doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
-[`cache.type`]: /doc/user-guide/project-structure/configuration#cache
+  /user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache
+[`cache.type`]: /user-guide/project-structure/configuration#cache
 
 > When linking files takes longer than expected (10 seconds for any one file)
 > and `cache.type` is not set, a warning will be displayed reminding users about
@@ -72,8 +72,8 @@ situation. In some cases, the data can be pulled from [remote storage] using
 `dvc pull`. In other cases, the [pipeline] must be reproduced (using
 `dvc repro`) to regenerate its outputs.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[pipeline]: /doc/command-reference/dag
+[remote storage]: /user-guide/data-management/remote-storage
+[pipeline]: /command-reference/dag
 
 ## Options
 
@@ -98,10 +98,9 @@ situation. In some cases, the data can be pulled from [remote storage] using
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
-  project's
-  [`cache.type`](/doc/user-guide/project-structure/configuration#cache). This is
-  achieved by restoring **all data files or directories** referenced in current
-  DVC files (regardless of whether the files/dirs were already present).
+  project's [`cache.type`](/user-guide/project-structure/configuration#cache).
+  This is achieved by restoring **all data files or directories** referenced in
+  current DVC files (regardless of whether the files/dirs were already present).
 
 - `--allow-missing` - allows the command to succeed even if some files or
   directories are missing.
@@ -118,7 +117,7 @@ situation. In some cases, the data can be pulled from [remote storage] using
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/start). Then we can see what happens with `git checkout` and
+[Get Started](/start). Then we can see what happens with `git checkout` and
 `dvc checkout` as we switch from tag to tag.
 
 <details>

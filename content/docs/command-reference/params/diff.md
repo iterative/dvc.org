@@ -93,8 +93,7 @@ process:
   bow: 15000
 ```
 
-Define a pipeline [stage](/doc/command-reference/run) with parameter
-dependencies:
+Define a pipeline [stage](/command-reference/run) with parameter dependencies:
 
 ```cli
 $ dvc stage add -n train \

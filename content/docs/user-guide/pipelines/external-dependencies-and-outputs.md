@@ -7,7 +7,7 @@ directly to some external location, like cloud storage or HDFS.
 <admon type="tip">
 
 To version external data without a pipeline, see
-[importing external data](/doc/user-guide/data-management/importing-external-data).
+[importing external data](/user-guide/data-management/importing-external-data).
 
 </admon>
 
@@ -152,9 +152,9 @@ be managed independently. This is useful if the connection requires
 authentication, if multiple dependencies (or stages) reuse the same location, or
 if the URL is likely to change in the future.
 
-[DVC remotes](/doc/user-guide/data-management/remote-storage) can do just this.
-You may use `dvc remote add` to define them, and then use a special URL with
-format `remote://{remote_name}/{path}` (remote alias) to define the external
+[DVC remotes](/user-guide/data-management/remote-storage) can do just this. You
+may use `dvc remote add` to define them, and then use a special URL with format
+`remote://{remote_name}/{path}` (remote alias) to define the external
 dependency.
 
 Let's see an example using SSH. First, register and configure the remote:
@@ -182,7 +182,7 @@ $ dvc stage add -n download_file \
 
 External <abbr>outputs</abbr> will be tracked by DVC, detecting when they
 change, but not saved in the <abbr>cache</abbr> for
-[versioning](/doc/use-cases/versioning-data-and-models).
+[versioning](/use-cases/versioning-data-and-models).
 
 <admon type="warn">
 

@@ -2,7 +2,7 @@
 
 Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -40,7 +40,7 @@ restored using `dvc fetch`, as long as they have been previously uploaded with
 `dvc push`.
 
 [`.dir` files]:
-  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+  /user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ### Removing data in remote storage
 
@@ -72,7 +72,7 @@ longer need that project), we would first clone all the other projects, fetch
 all their branches, and pass their paths to the `dvc gc -p` command from the
 project we want to clear.
 
-[cache is shared]: /doc/user-guide/how-to/share-a-dvc-cache
+[cache is shared]: /user-guide/how-to/share-a-dvc-cache
 
 ## Options
 
@@ -126,13 +126,13 @@ project we want to clear.
   present in the remote.
 
   For objects using the
-  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
-  the check will be against that remote.
+  [`remote` field](/user-guide/project-structure/dvc-files#output-entries), the
+  check will be against that remote.
 
   For objects not using the
-  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
-  the check will be against the default remote unless a specific one is given
-  with `-r`.
+  [`remote` field](/user-guide/project-structure/dvc-files#output-entries), the
+  check will be against the default remote unless a specific one is given with
+  `-r`.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
 
@@ -143,15 +143,15 @@ project we want to clear.
   </admon>
 
   For objects **using** the
-  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
-  the check will be against that remote. Any other files **not using** the
-  `remote` field may be deleted from that remote.
+  [`remote` field](/user-guide/project-structure/dvc-files#output-entries), the
+  check will be against that remote. Any other files **not using** the `remote`
+  field may be deleted from that remote.
 
   For objects **not using** the
-  [`remote` field](/doc/user-guide/project-structure/dvc-files#output-entries),
-  the check will be against the default remote unless a specific one is given
-  with `-r`. Any other files **using** the `remote` field may be deleted from
-  that remote.
+  [`remote` field](/user-guide/project-structure/dvc-files#output-entries), the
+  check will be against the default remote unless a specific one is given with
+  `-r`. Any other files **using** the `remote` field may be deleted from that
+  remote.
 
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to collect unused
   objects from if `-c` option is specified (see `dvc remote list`).
@@ -175,9 +175,9 @@ project we want to clear.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[dvc experiments]: /doc/user-guide/experiment-management#experiments
+[dvc experiments]: /user-guide/experiment-management#experiments
 [iso 8601]: https://www.iso.org/iso-8601-date-and-time-format.html
-[experimental]: /doc/user-guide/experiment-management
+[experimental]: /user-guide/experiment-management
 
 ## Examples
 

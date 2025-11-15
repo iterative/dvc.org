@@ -3,7 +3,7 @@
 Update files or directories imported from external <abbr>DVC repositories</abbr>
 or [URLs], and the corresponding import `.dvc` files.
 
-[urls]: /doc/command-reference/import-url
+[urls]: /command-reference/import-url
 
 ## Synopsis
 
@@ -81,7 +81,7 @@ $ dvc update --rev master
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-[transfer]: /doc/command-reference/import-url#example-transfer-to-remote-storage
+[transfer]: /command-reference/import-url#example-transfer-to-remote-storage
 
 ## Example
 
@@ -95,10 +95,10 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 ```
 
 As DVC mentions, the import stage (`.dvc` file) `model.pkl.dvc` is created. This
-[stage](/doc/command-reference/run) is frozen by default though, so to
-[reproduce](/doc/command-reference/repro) it, we would need to run
-`dvc unfreeze` on it first, then `dvc repro` (and `dvc freeze` again). Let's
-just run `dvc update` on it instead:
+[stage](/command-reference/run) is frozen by default though, so to
+[reproduce](/command-reference/repro) it, we would need to run `dvc unfreeze` on
+it first, then `dvc repro` (and `dvc freeze` again). Let's just run `dvc update`
+on it instead:
 
 ```cli
 $ dvc update model.pkl.dvc
@@ -115,7 +115,7 @@ stable.
 ## Example: Updating fixed revisions to a different version
 
 > See also
-> [Importing and updating fixed revisions](/doc/command-reference/import#example-importing-and-updating-fixed-revisions).
+> [Importing and updating fixed revisions](/command-reference/import#example-importing-and-updating-fixed-revisions).
 
 Let's import a model from a specific version of our
 [get started example repo](https://github.com/iterative/example-get-started)

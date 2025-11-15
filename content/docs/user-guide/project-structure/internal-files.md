@@ -22,7 +22,7 @@ Not to be confused with `.dvc` files.
   <admon type="tip">
 
   See more
-  [config file locations](/doc/user-guide/project-structure/configuration#config-file-locations).
+  [config file locations](/user-guide/project-structure/configuration#config-file-locations).
 
   </admon>
 
@@ -31,7 +31,7 @@ Not to be confused with `.dvc` files.
   [structure](#structure-of-the-cache-directory). The data files and directories
   in the <abbr>workspace</abbr> will only contain links to the data files in the
   cache (refer to
-  [Large Dataset Optimization](/doc/user-guide/data-management/large-dataset-optimization).
+  [Large Dataset Optimization](/user-guide/data-management/large-dataset-optimization).
   See `dvc config cache` for related configuration options, including changing
   its location.
 
@@ -47,7 +47,7 @@ Not to be confused with `.dvc` files.
 - `.dvc/cache/runs`: Default location of the [run cache](#run-cache).
 
 - `.dvc/plots`: Directory for
-  [plot templates](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+  [plot templates](/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
@@ -66,9 +66,9 @@ Not to be confused with `.dvc` files.
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
   temporary or [queued experiments].
 
-[dvc configuration]: /doc/user-guide/project-structure/configuration
+[dvc configuration]: /user-guide/project-structure/configuration
 [queued experiments]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+  /user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Structure of the cache directory
 
@@ -100,7 +100,7 @@ hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
 
 ### Directories
 
-Let's imagine [adding](/doc/command-reference/add) a directory with 2 images:
+Let's imagine [adding](/command-reference/add) a directory with 2 images:
 
 ```cli
 $ tree data/images/
@@ -148,9 +148,9 @@ the cache (or [remote storage]).
 combinations are represented by special hashes that translate to the file paths
 inside the run cache dir:
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
-[runs]: /doc/user-guide/pipelines/run-cache
-[parameter]: /doc/command-reference/params
+[remote storage]: /user-guide/data-management/remote-storage
+[runs]: /user-guide/pipelines/run-cache
+[parameter]: /command-reference/params
 
 ```cli
 $ tree .dvc/cache/runs
@@ -185,7 +185,7 @@ unexpected behavior]).
 </admon>
 
 [avoiding unexpected behavior]:
-  /doc/user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
+  /user-guide/project-structure/dvcyaml-files#avoiding-unexpected-behavior
 
 ## Site cache dir
 

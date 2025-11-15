@@ -1,7 +1,7 @@
 # exp diff
 
-Show changes in [metrics](/doc/command-reference/metrics) and
-[parameters](/doc/command-reference/params) between experiments.
+Show changes in [metrics](/command-reference/metrics) and
+[parameters](/command-reference/params) between experiments.
 
 ## Synopsis
 
@@ -80,7 +80,7 @@ all the current experiments (without comparisons).
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 

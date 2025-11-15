@@ -8,9 +8,9 @@ description:
 # Get Started: Experimenting Using Pipelines
 
 If you've been following the guide in order, you might have gone through the
-chapter about [data pipelines](/doc/start/data-management/data-pipelines)
-already. Here, we will use the same functionality as a basis for an
-experimentation build system.
+chapter about [data pipelines](/start/data-management/data-pipelines) already.
+Here, we will use the same functionality as a basis for an experimentation build
+system.
 
 Running an <Abbr>experiment</abbr> is achieved by executing <abbr>DVC
 pipelines</abbr>, and the term refers to the set of trackable changes associated
@@ -203,7 +203,7 @@ to work with parameters and hyper-parameters.
 ## Modifying parameters
 
 You can modify <abbr>parameters</abbr> from the CLI using
-[`--set-param`](/doc/command-reference/exp/run#--set-param):
+[`--set-param`](/command-reference/exp/run#--set-param):
 
 ```cli
 $ dvc exp run --set-param "train.img_size=128"
@@ -232,7 +232,7 @@ Queueing with overrides '{'params.yaml': ['train.batch_size=24']}'.
 
 You can build a grid search by modifying multiple parameters. To better identify
 the experiments from the grid search, you can also provide a
-[`--name`](/doc/command-reference/exp/run#--name):
+[`--name`](/command-reference/exp/run#--name):
 
 ```cli
 $ dvc exp run --name "arch-size" --queue \
@@ -250,14 +250,14 @@ Queued experiment 'arch-size-3' for future execution.
 <admon type="info">
 
 Learn more about
-[Running Experiments](/doc/user-guide/experiment-management/running-experiments)
+[Running Experiments](/user-guide/experiment-management/running-experiments)
 
 </admon>
 
 ## Queuing experiments
 
 You can enqueue experiments for later execution using
-[`--queue`](/doc/command-reference/exp/run#--queue):
+[`--queue`](/command-reference/exp/run#--queue):
 
 ```cli
 $ dvc exp run --queue --set-param "train.img_size=512"
@@ -273,6 +273,6 @@ $ dvc exp run --run-all
 <admon type="info">
 
 Learn more about
-[The experiments queue](/doc/user-guide/experiment-management/running-experiments#the-experiments-queue)
+[The experiments queue](/user-guide/experiment-management/running-experiments#the-experiments-queue)
 
 </admon>

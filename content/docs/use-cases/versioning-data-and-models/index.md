@@ -23,30 +23,30 @@ work!
 and models for you 💘._
 
 DVC enables data _versioning through codification_. You produce simple
-[metafiles](/doc/user-guide/project-structure) once, describing what datasets,
-ML artifacts, etc. to track. This metadata can be put in Git in lieu of large
-files. Now you can use DVC to create [snapshots](/doc/command-reference/add) of
-the data, [restore](/doc/command-reference/checkout) previous versions,
-[reproduce](/doc/command-reference/repro) experiments, record evolving
-[metrics](/doc/command-reference/metrics), and more!
+[metafiles](/user-guide/project-structure) once, describing what datasets, ML
+artifacts, etc. to track. This metadata can be put in Git in lieu of large
+files. Now you can use DVC to create [snapshots](/command-reference/add) of the
+data, [restore](/command-reference/checkout) previous versions,
+[reproduce](/command-reference/repro) experiments, record evolving
+[metrics](/command-reference/metrics), and more!
 
 👩‍💻 **Intrigued?** Try our
-[versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial) to
-learn how DVC looks and feels firsthand.
+[versioning tutorial](/use-cases/versioning-data-and-models/tutorial) to learn
+how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
-[cached](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+[cached](/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 in a systematic way (preventing file duplication). The working data store is
 separated from your <abbr>workspace</abbr> to keep the project light, but stays
 connected via file
-[links](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[links](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 handled automatically by DVC.
 
 Benefits of our approach include:
 
 - **Lightweight**: DVC is a
   [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
-  [command line](/doc/command-reference) tool that doesn't require databases,
+  [command line](/command-reference) tool that doesn't require databases,
   servers, or any other special services.
 
 - **Consistency**: Keep your projects readable with stable file names — they
@@ -59,17 +59,17 @@ Benefits of our approach include:
   Git hosting [constraints]. DVC [optimizes] storing and transferring large
   files.
 
-  [etc.]: /doc/user-guide/data-management/remote-storage#supported-storage-types
+  [etc.]: /user-guide/data-management/remote-storage#supported-storage-types
   [constraints]:
     https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota
-  [optimizes]: /doc/user-guide/data-management/large-dataset-optimization
+  [optimizes]: /user-guide/data-management/large-dataset-optimization
 
 - **Collaboration**: Easily distribute your project development and share its
   data [internally] and [remotely], or [reuse] it in other places.
 
-  [remotely]: /doc/user-guide/data-management/remote-storage
-  [internally]: /doc/user-guide/how-to/share-a-dvc-cache
-  [reuse]: /doc/user-guide/data-management/discovering-and-accessing-data
+  [remotely]: /user-guide/data-management/remote-storage
+  [internally]: /user-guide/how-to/share-a-dvc-cache
+  [reuse]: /user-guide/data-management/discovering-and-accessing-data
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).
@@ -78,9 +78,9 @@ Benefits of our approach include:
 
 - [**GitOps**](https://www.gitops.tech/): Connect your data science projects
   with the Git ecosystem. Git workflows open the door to advanced
-  [CI/CD](/doc/use-cases/ci-cd-for-machine-learning) tools (like
+  [CI/CD](/use-cases/ci-cd-for-machine-learning) tools (like
   [CML](https://cml.dev)), specialized patterns such as
-  [data registries](/doc/use-cases/data-registry), and other best practices.
+  [data registries](/use-cases/data-registry), and other best practices.
 
 In summary, data science and ML are iterative processes where the lifecycles of
 data, models, and code happen at different paces. DVC helps you manage, and
@@ -90,5 +90,5 @@ And this is just the beginning. DVC supports multiple advanced features
 out-of-the-box: Build, run, and versioning [data pipelines], [manage
 experiments] effectively, and more.
 
-[data pipelines]: /doc/command-reference/dag
-[manage experiments]: /doc/start/experiments
+[data pipelines]: /command-reference/dag
+[manage experiments]: /start/experiments

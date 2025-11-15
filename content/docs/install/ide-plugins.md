@@ -29,7 +29,7 @@ To make `dvc.lock` and `.dvc` files recognized as YAML, add this to
 
 </admon>
 
-[dvc extension]: /doc/vs-code-extension
+[dvc extension]: /vs-code-extension
 [intellisense]: https://code.visualstudio.com/docs/editor/intellisense
 [yaml extension]:
   https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml

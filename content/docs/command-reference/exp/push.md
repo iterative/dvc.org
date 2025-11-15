@@ -1,9 +1,9 @@
 # exp push
 
-Upload [experiments](/doc/command-reference/exp) to a Git remote, and their data
-to [remote storage].
+Upload [experiments](/command-reference/exp) to a Git remote, and their data to
+[remote storage].
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 ## Synopsis
 
@@ -23,11 +23,11 @@ positional arguments:
 The `dvc exp push` and `dvc exp pull` commands are the means for [sharing
 experiments] across <abbr>repository</abbr> copies via Git and [remote storage].
 
-[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
+[sharing experiments]: /user-guide/experiment-management/sharing-experiments
 
 > Plain `git push` and `git fetch` don't work with experiments because these are
 > saved under custom Git references. See
-> [**How does DVC track experiments?**](/doc/user-guide/experiment-management#how-does-dvc-track-experiments)
+> [**How does DVC track experiments?**](/user-guide/experiment-management#how-does-dvc-track-experiments)
 > in **DVC Experiments Overview** to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required. Experiments
@@ -83,7 +83,7 @@ URL to view experiments.
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
 
-[stage runs]: /doc/user-guide/project-structure/internal-files#run-cache
+[stage runs]: /user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 
@@ -92,7 +92,7 @@ URL to view experiments.
 This example is based on [our Get Started], where you can find the actual source
 code.
 
-[our get started]: /doc/start/experiments
+[our get started]: /start/experiments
 
 </admon>
 

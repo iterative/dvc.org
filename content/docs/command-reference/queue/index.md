@@ -1,14 +1,12 @@
 # queue
 
 A set of commands to manage the [DVC experiments] task queue:
-[start](/doc/command-reference/queue/start),
-[stop](/doc/command-reference/queue/stop),
-[status](/doc/command-reference/queue/status),
-[logs](/doc/command-reference/queue/logs),
-[remove](/doc/command-reference/queue/remove),
-[kill](/doc/command-reference/queue/kill)
+[start](/command-reference/queue/start), [stop](/command-reference/queue/stop),
+[status](/command-reference/queue/status),
+[logs](/command-reference/queue/logs),
+[remove](/command-reference/queue/remove), [kill](/command-reference/queue/kill)
 
-[dvc experiments]: /doc/user-guide/experiment-management
+[dvc experiments]: /user-guide/experiment-management
 
 ## Synopsis
 
@@ -36,7 +34,7 @@ an interface to process and manage these queued tasks.
 See [this guide] for more information on experiment queues.
 
 [this guide]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+  /user-guide/experiment-management/running-experiments#the-experiments-queue
 
 </admon>
 

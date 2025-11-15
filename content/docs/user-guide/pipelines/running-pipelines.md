@@ -2,8 +2,8 @@
 
 To run a pipeline, you can use either `dvc repro` or `dvc exp run`. Either will
 run the pipeline, and `dvc exp run` will save the results as an
-[experiment](/doc/user-guide/experiment-management) (and has other
-[experiment-related features](/doc/user-guide/experiment-management/running-experiments)
+[experiment](/user-guide/experiment-management) (and has other
+[experiment-related features](/user-guide/experiment-management/running-experiments)
 like modifying parameters from the command line):
 
 ```cli
@@ -39,9 +39,9 @@ stage commands that produce them (unless `persist: true` is used in `dvc.yaml`).
 
 DVC runs the [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) stages
 sequentially, in the order defined by the
-[dependencies](/doc/user-guide/pipelines/defining-pipelines#simple-dependencies)
-and [outputs](/doc/user-guide/pipelines/defining-pipelines#outputs). Consider
-this example `dvc.yaml`:
+[dependencies](/user-guide/pipelines/defining-pipelines#simple-dependencies) and
+[outputs](/user-guide/pipelines/defining-pipelines#outputs). Consider this
+example `dvc.yaml`:
 
 ```yaml
 stages:
@@ -75,9 +75,8 @@ The `prepare` stage will always precede the `featurize` stage because
 
 DVC will try to avoid recomputing stages that have been run before. If you run a
 stage without changing its commands,
-[dependencies](/doc/user-guide/pipelines/defining-pipelines#simple-dependencies),
-or
-[parameters](/doc/user-guide/pipelines/defining-pipelines#parameter-dependencies),
+[dependencies](/user-guide/pipelines/defining-pipelines#simple-dependencies), or
+[parameters](/user-guide/pipelines/defining-pipelines#parameter-dependencies),
 DVC will skip that stage:
 
 ```cli
@@ -91,8 +90,8 @@ Stage 'prepare' is cached - skipping run, checking out outputs
 ```
 
 If you want a stage to run every time, you can use
-[always changed](/doc/user-guide/project-structure/dvcyaml-files#stage-entries)
-in `dvc.yaml`:
+[always changed](/user-guide/project-structure/dvcyaml-files#stage-entries) in
+`dvc.yaml`:
 
 ```yaml
 stages:
@@ -124,7 +123,7 @@ only pulling the data that is actually needed to run the changed stages.
 In DVC>=3.0, `--allow-missing` will not skip data saved with DVC<3.0 because the
 hash type changed in DVC 3.0, which DVC considers a change to the data. To
 migrate data to the new hash type, run `dvc cache migrate --dvc-files`. See more
-information about [upgrading from DVC 2.x to 3.0](/doc/user-guide/upgrade).
+information about [upgrading from DVC 2.x to 3.0](/user-guide/upgrade).
 
 </admon>
 
@@ -366,6 +365,6 @@ stage train: {'model': {'batch_size': 512, 'latent_dim': 8,
 'data_path': 'fra.txt', 'num_samples': 100000, 'seed': 423}
 ```
 
-[templating]: /doc/user-guide/project-structure/pipelines-files#templating
-[hydra composition]: /docs/user-guide/experiment-management/hydra-composition
-[run cache]: /doc/user-guide/pipelines/run-cache
+[templating]: /user-guide/project-structure/pipelines-files#templating
+[hydra composition]: /user-guide/experiment-management/hydra-composition
+[run cache]: /user-guide/pipelines/run-cache

@@ -1,6 +1,6 @@
 # plots show
 
-Generate [plots](/doc/command-reference/plots) from any `plots` defined in
+Generate [plots](/command-reference/plots) from any `plots` defined in
 `dvc.yaml` (or any other target files).
 
 ## Synopsis
@@ -31,29 +31,29 @@ The plot style can be customized with [plot templates], using the `--template`
 option. To learn more about plots file formats and templates, see `dvc plots`.
 
 [certain data]:
-  /doc/user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
+  /user-guide/experiment-management/visualizing-plots#supported-plot-file-formats
 [plot templates]:
-  /doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
-[plot ids]: /doc/user-guide/project-structure/dvcyaml-files#plots
-[stage plot]: /doc/user-guide/experiment-management/visualizing-plots
+  /user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+[plot ids]: /user-guide/project-structure/dvcyaml-files#plots
+[stage plot]: /user-guide/experiment-management/visualizing-plots
 
 ## Options
 
 - `-o <path>, --out <path>` - specify a directory to write the HTML file
   containing the plots. The default is `dvc_plots` or the value set with the
-  [`plots.out_dir`](/doc/user-guide/project-structure/configuration#plots)
-  config option.
+  [`plots.out_dir`](/user-guide/project-structure/configuration#plots) config
+  option.
 
 - `-t <name_or_path>, --template <name_or_path>` -
-  [plot template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+  [plot template](/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
   to be injected with data. The default template is `.dvc/plots/default.json`.
   See more details in `dvc plots`.
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
-  [Custom templates](/doc/command-reference/plots/templates) for more
-  information on this `index` field. Column names or numbers are expected for
-  tabular plots files.
+  [Custom templates](/command-reference/plots/templates) for more information on
+  this `index` field. Column names or numbers are expected for tabular plots
+  files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `targets` is used by default. Column names or numbers are
@@ -387,7 +387,7 @@ file:///Users/usr/src/dvc_plots/index.html
 ## Example: Vega-Lite specification file
 
 In many automation scenarios (like
-[CI/CD for ML](/doc/use-cases/ci-cd-for-machine-learning)), it is convenient to
+[CI/CD for ML](/use-cases/ci-cd-for-machine-learning)), it is convenient to
 output the [Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of
 rendering an HTML plot. For example, to generating another image format like PNG
 or JPEG, or to include it differently into a web/mobile app. The `--show-vega`
@@ -415,7 +415,7 @@ using the `--html-template` option. This allows you to customize the container
 where DVC will inject plots it generates.
 
 > ⚠️ This is a separate feature from
-> [custom Vega-Lite templates](/doc/command-reference/plots/templates).
+> [custom Vega-Lite templates](/command-reference/plots/templates).
 
 The only requirement for this HTML file is to specify the place to inject plots
 with a `{plot_divs}` marker. See an [example](#example-offline-html-template)
@@ -472,7 +472,7 @@ $ dvc config plots.html_template plots/mypage.html
 Note that the path supplied to `dvc config plots.html_template` is relative to
 `.dvc/` directory.
 
-[`plots.html_template`]: /doc/user-guide/project-structure/configuration#plots
+[`plots.html_template`]: /user-guide/project-structure/configuration#plots
 
 ## Example: Smooth plot
 
@@ -525,7 +525,7 @@ file:///Users/usr/src/dvc_plots/index.html
 ![](/img/plots_show_confusion.svg)
 
 > A confusion matrix
-> [template](/doc/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
+> [template](/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only)
 > is predefined in DVC.
 
 We can use `confusion_normalized` template to normalize the results:

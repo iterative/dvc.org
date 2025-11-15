@@ -43,7 +43,7 @@ contents can be streamed. Your code can process the data [buffer] as it's
 streamed, which optimizes memory usage.
 
 [`open()`]: https://docs.python.org/3/library/functions.html#open
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 [buffer]: https://docs.python.org/3/c-api/buffer.html
 
 </admon>
@@ -94,11 +94,11 @@ call – no _context manager_ involved. Neither function utilizes disc space.
   parameter in builtin `open()`.
 
 [revision]: https://git-scm.com/docs/revisions
-[experiment name]: /doc/command-reference/exp/run#-n
-[dvc remote]: /doc/user-guide/data-management/remote-storage
-[default remote]: /doc/command-reference/remote/default
+[experiment name]: /command-reference/exp/run#-n
+[dvc remote]: /user-guide/data-management/remote-storage
+[default remote]: /command-reference/remote/default
 [codec]: https://docs.python.org/3/library/codecs.html#standard-encodings
-[config]: /doc/command-reference/config
+[config]: /command-reference/config
 
 ## Exceptions
 
@@ -201,7 +201,7 @@ with dvc.api.open('activity.log', remote='my-s3-bucket') as f:
 
 ## Example: Specify credentials for remote
 
-See [remote modify](/doc/command-reference/remote/modify) for full list of
+See [remote modify](/command-reference/remote/modify) for full list of
 remote-specific config options.
 
 ```py
@@ -219,7 +219,7 @@ with dvc.api.open('data', remote_config=remote_config) as f:
 
 ## Example: Change default remote and specify credentials for it
 
-See [remote modify](/doc/command-reference/remote/modify) for full list of
+See [remote modify](/command-reference/remote/modify) for full list of
 remote-specific config options.
 
 ```py

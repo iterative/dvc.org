@@ -2,7 +2,7 @@
 
 <admon type="tip">
 
-To use DVC [as a Python library](/doc/api-reference), you can install it
+To use DVC [as a Python library](/api-reference), you can install it
 [with `pip`](#install-with-pip) or [with `conda`](#install-with-conda).
 
 </admon>
@@ -33,7 +33,7 @@ Depending on the type of the [remote storage] you plan to use, you might need to
 install optional dependencies: `[s3]`, `[gdrive]`, `[gs]`, `[azure]`, `[ssh]`,
 `[hdfs]`, `[webdav]`, `[oss]`. Use `[all]` to include them all.
 
-[remote storage]: /doc/user-guide/data-management/remote-storage
+[remote storage]: /user-guide/data-management/remote-storage
 
 <details id="example-pip-with-support-for-amazon-s3-storage">
 

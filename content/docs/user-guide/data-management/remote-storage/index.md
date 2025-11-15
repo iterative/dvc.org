@@ -33,7 +33,7 @@ read and write to the [`remote`] section of the project's config file
 
 For example, let's define a remote storage location on an S3 bucket:
 
-[`remote`]: /doc/user-guide/project-structure/configuration#remote
+[`remote`]: /user-guide/project-structure/configuration#remote
 
 ```cli
 $ dvc remote add myremote s3://mybucket
@@ -101,15 +101,15 @@ team.
 - [Google Drive]
 - [Aliyun OSS]
 
-[amazon s3]: /doc/user-guide/data-management/remote-storage/amazon-s3
+[amazon s3]: /user-guide/data-management/remote-storage/amazon-s3
 [s3-compatible]:
-  /doc/user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
+  /user-guide/data-management/remote-storage/amazon-s3#s3-compatible-servers-non-amazon
 [azure blob storage]:
-  /doc/user-guide/data-management/remote-storage/azure-blob-storage
+  /user-guide/data-management/remote-storage/azure-blob-storage
 [google cloud storage]:
-  /doc/user-guide/data-management/remote-storage/google-cloud-storage
-[google drive]: /doc/user-guide/data-management/remote-storage/google-drive
-[aliyun oss]: /doc/user-guide/data-management/remote-storage/aliyun-oss
+  /user-guide/data-management/remote-storage/google-cloud-storage
+[google drive]: /user-guide/data-management/remote-storage/google-drive
+[aliyun oss]: /user-guide/data-management/remote-storage/aliyun-oss
 
 ### Self-hosted / On-premises
 
@@ -118,11 +118,11 @@ team.
 - [HTTP]
 - [WebDAV]
 
-[ssh]: /doc/user-guide/data-management/remote-storage/ssh
-[hdfs]: /doc/user-guide/data-management/remote-storage/hdfs
-[webhdfs]: /doc/user-guide/data-management/remote-storage/hdfs#webhdfs
-[http]: /doc/user-guide/data-management/remote-storage/http
-[webdav]: /doc/user-guide/data-management/remote-storage/webdav
+[ssh]: /user-guide/data-management/remote-storage/ssh
+[hdfs]: /user-guide/data-management/remote-storage/hdfs
+[webhdfs]: /user-guide/data-management/remote-storage/hdfs#webhdfs
+[http]: /user-guide/data-management/remote-storage/http
+[webdav]: /user-guide/data-management/remote-storage/webdav
 
 ## File systems (local remotes)
 

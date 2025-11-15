@@ -4,8 +4,8 @@ In order to track the data files and directories added with `dvc add`,
 `dvc repro`, etc. DVC moves all these files to the project's <abbr>cache</abbr>.
 
 However, the versions of the tracked files that
-[match the current code](/doc/user-guide/project-structure) are also needed in
-the <abbr>workspace</abbr>, so a subset of the cached files can be kept in the
+[match the current code](/user-guide/project-structure) are also needed in the
+<abbr>workspace</abbr>, so a subset of the cached files can be kept in the
 working directory (using `dvc checkout`). Does this mean that some files will be
 duplicated between the workspace and the cache? **That would not be efficient!**
 Especially with large files (several Gigabytes or larger).
@@ -96,7 +96,7 @@ efficiency:
    <abbr>workspace</abbr>. Suitable for scenarios with relatively small data
    files, where copying them is not a storage performance concern.
 
-[replace them]: /doc/user-guide/how-to/update-tracked-files
+[replace them]: /user-guide/how-to/update-tracked-files
 
 <admon type="tip">
 
@@ -120,7 +120,7 @@ $ dvc config cache.type hardlink,symlink
 
 Note that with this `cache.type`, your workspace files will be in read-only mode
 in order to protect the cache from corruption. Refer to
-[Update a Tracked File](/doc/user-guide/how-to/update-tracked-files) on how to
+[Update a Tracked File](/user-guide/how-to/update-tracked-files) on how to
 manage tracked files under these cache configurations.
 
 To make sure that the data files in the workspace are consistent with the

@@ -28,12 +28,12 @@ ETL workflow, organize your project, or build a complex DAG (Directed Acyclic
 Graph) pipeline.
 
 Later, we will find DVC allows you to manage
-[machine learning experiments](/doc/start/experiments/experiment-pipelines) on
-top of these pipelines - controlling their execution, injecting parameters, etc.
+[machine learning experiments](/start/experiments/experiment-pipelines) on top
+of these pipelines - controlling their execution, injecting parameters, etc.
 
 ## Setup
 
-Working inside an [initialized DVC project](/doc/start#initializing-a-project),
+Working inside an [initialized DVC project](/start#initializing-a-project),
 let's get some sample code for the next steps:
 
 ```cli
@@ -63,8 +63,8 @@ $ tree
 
 The data needed to run this example can be downloaded using `dvc get` and
 tracked with `dvc add` (if you are following from
-[Data Versioning](/doc/start/data-management/data-versioning), you may already
-have this data):
+[Data Versioning](/start/data-management/data-versioning), you may already have
+this data):
 
 ```cli
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -102,7 +102,7 @@ $ git commit -m "Initial commit"
 Use `dvc stage add` to create _stages_. These represent processing steps
 (usually scripts/code tracked with Git) and combine to form the _pipeline_.
 Stages allow connecting code to its corresponding data _input_ and _output_.
-Let's transform a Python script into a [stage](/doc/command-reference/stage):
+Let's transform a Python script into a [stage](/command-reference/stage):
 
 ```cli
 $ dvc stage add -n prepare \
@@ -134,10 +134,10 @@ Details on the command options used above:
   you will see a section named `prepare`.
 
 - `-p prepare.seed,prepare.split` defines special types of dependencies —
-  [parameters](/doc/command-reference/params). Any stage can depend on parameter
+  [parameters](/command-reference/params). Any stage can depend on parameter
   values from a parameters file (`params.yaml` by default). We'll discuss those
   more in the
-  [Metrics, Parameters, and Plots](/doc/start/data-management/metrics-parameters-plots)
+  [Metrics, Parameters, and Plots](/start/data-management/metrics-parameters-plots)
   page.
 
 ```yaml
@@ -205,7 +205,7 @@ pipeline dependencies can point anywhere, not only local paths inside your
 project. Same with outputs, except that you need to set `cache: false` to tell
 DVC not to make a local copy of these external outputs. See the example below or
 read more in
-[External Dependencies and Outputs](/doc/user-guide/pipelines/external-dependencies-and-outputs).
+[External Dependencies and Outputs](/user-guide/pipelines/external-dependencies-and-outputs).
 
 ```yaml
 stages:
@@ -325,7 +325,7 @@ state of the workspace.
 
 </admon>
 
-[dependency graph]: /doc/user-guide/pipelines/defining-pipelines
+[dependency graph]: /user-guide/pipelines/defining-pipelines
 
 </details>
 
@@ -415,7 +415,7 @@ a few important problems:
 - _Reproducibility_: `dvc.yaml` and `dvc.lock` files describe what data to use
   and which commands will generate the pipeline results (such as an ML model).
   Storing these files in Git makes it easy to version and share.
-- [_Continuous Delivery and Continuous Integration (CI/CD) for ML_](/doc/use-cases/ci-cd-for-machine-learning):
+- [_Continuous Delivery and Continuous Integration (CI/CD) for ML_](/use-cases/ci-cd-for-machine-learning):
   describing projects in a way that can be built and reproduced is the first
   necessary step before introducing CI/CD systems. See our sister project
   [CML](https://cml.dev) for some examples.

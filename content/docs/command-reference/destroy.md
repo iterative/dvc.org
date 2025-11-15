@@ -1,7 +1,7 @@
 # destroy
 
 Remove all <abbr>DVC files</abbr> and
-[internals](/doc/user-guide/project-structure/internal-files) from a <abbr>DVC
+[internals](/user-guide/project-structure/internal-files) from a <abbr>DVC
 project</abbr>.
 
 ## Synopsis
@@ -16,13 +16,13 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 directory from the <abbr>project</abbr>.
 
 Note that the <abbr>cache directory</abbr> will be removed as well. If you have
-setup [symlinks](/doc/user-guide/data-management/large-dataset-optimization)
-(from cache to workspace) in your project, DVC will replace them with the latest
+setup [symlinks](/user-guide/data-management/large-dataset-optimization) (from
+cache to workspace) in your project, DVC will replace them with the latest
 versions of the actual files and directories first, so that your data is intact
 after destruction.
 
-> Refer to [Project Structure](/doc/user-guide/project-structure) for more
-> details on the directories and files deleted by this command.
+> Refer to [Project Structure](/user-guide/project-structure) for more details
+> on the directories and files deleted by this command.
 
 ## Options
 

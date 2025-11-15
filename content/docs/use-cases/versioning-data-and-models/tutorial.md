@@ -35,10 +35,10 @@ model file.
 > We have last tested this tutorial with Python 3.7.
 
 You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
-Also, [follow these instructions to install DVC](/doc/install) if it's not
-already installed.
+Also, [follow these instructions to install DVC](/install) if it's not already
+installed.
 
-> See [Running DVC on Windows](/doc/user-guide/how-to/run-dvc-on-windows) for
+> See [Running DVC on Windows](/user-guide/how-to/run-dvc-on-windows) for
 > important tips to improve your experience on Windows.
 
 Okay! Let's first download the code and set up a Git repository:
@@ -76,7 +76,7 @@ interact with them directly.
 
 Now that we're done with preparations, let's add some data and then train the
 first model. We'll capture everything with DVC, including the input dataset and
-model [metrics](/doc/command-reference/metrics).
+model [metrics](/command-reference/metrics).
 
 ```cli
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -92,9 +92,9 @@ repository</abbr> (and stored [remotely]). It's like `wget`, but for DVC or Git
 repos. In this case we use our [dataset registry] repo as the data source (refer
 to [Data Registry] for more info.)
 
-[remotely]: /doc/user-guide/data-management/remote-storage
+[remotely]: /user-guide/data-management/remote-storage
 [dataset registry]: https://github.com/iterative/dataset-registry
-[data registry]: /doc/use-cases/data-registry
+[data registry]: /use-cases/data-registry
 
 </admon>
 
@@ -136,7 +136,7 @@ You can use this command instead of `git add` on files or directories that are
 too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
-[file link](/doc/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[file link](/user-guide/data-management/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a tiny, human-readable `.dvc` file that
 serves as a pointer to the cache.
@@ -145,9 +145,8 @@ Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
 reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
 bunch of files, among them `model.weights.h5` and `metrics.csv`, weights of the
-trained model, and [metrics](/doc/command-reference/metrics) history. The
-simplest way to capture the current version of the model is to use `dvc add`
-again:
+trained model, and [metrics](/command-reference/metrics) history. The simplest
+way to capture the current version of the model is to use `dvc add` again:
 
 ```cli
 $ python train.py
@@ -288,7 +287,7 @@ above (with cats and dogs images) is a good example.
 On the other hand, there are files that are the result of running some code. In
 our example, `train.py` produces binary files (e.g.
 `bottleneck_features_train.npy`), the model file `model.weights.h5`, and the
-[metrics](/doc/command-reference/metrics) file `metrics.csv`.
+[metrics](/command-reference/metrics) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc stage add`:
@@ -345,11 +344,11 @@ Features are written into files. The intention was probably that the
 `save_bottleneck_feature` can be commented out after the first run, but it's not
 very convenient having to remember to do so every time the dataset changes.
 
-Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
+Here's where the [pipelines](/command-reference/dag) feature of DVC comes in
 handy. We touched on it briefly when we described `dvc stage add` and
 `dvc repro`. The next step would be splitting the script into two parts and
 utilizing pipelines. See
-[Get Started: Data Pipelines](/doc/start/data-management/data-pipelines) to get
+[Get Started: Data Pipelines](/start/data-management/data-pipelines) to get
 hands-on experience with pipelines, and try to apply it here. Don't hesitate to
 join our [community](/chat) and ask any questions!
 
@@ -361,6 +360,6 @@ or branches (for example, representing different experiments). See
 more about managing metrics with DVC.
 
 [comparing changes]:
-  /doc/start/data-management/metrics-parameters-plots#comparing-iterations
+  /start/data-management/metrics-parameters-plots#comparing-iterations
 [comparing many experiments]:
-  /doc/user-guide/experiment-management/comparing-experiments
+  /user-guide/experiment-management/comparing-experiments

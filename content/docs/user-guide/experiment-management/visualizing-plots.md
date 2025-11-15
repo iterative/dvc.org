@@ -4,10 +4,10 @@ DVC can generate and render plots based on your project's data. A typical
 workflow is:
 
 1. Save plots data and [define](#defining-plots) how to visualize the plot. The
-   simplest way is to use [DVCLive](/doc/dvclive/), which will save and define
-   plots for you.
+   simplest way is to use [DVCLive](/dvclive), which will save and define plots
+   for you.
 
-2. Run [experiments](/doc/user-guide/experiment-management) and
+2. Run [experiments](/user-guide/experiment-management) and
    [compare](#comparing-plots) the resulting plots (the image below uses the [VS
    Code Extension][dvc extension]).
 
@@ -17,8 +17,8 @@ workflow is:
 
 To create valid plots files, you can:
 
-- Use [DVCLive](/doc/dvclive/) in your Python code to log the data automatically
-  in a DVC-compatible format.
+- Use [DVCLive](/dvclive) in your Python code to log the data automatically in a
+  DVC-compatible format.
 - Generate a JSON, YAML 1.2, CSV, or TSV data series file yourself.
 - Save an JPEG, GIF, PNG, or SVG image file to render directly in your reports
   (helpful for custom visualizations that would be hard to configure in DVC).
@@ -31,7 +31,7 @@ saved as SVG or PNG image files from there).
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[tracking]: /doc/start/data-management/data-versioning
+[tracking]: /start/data-management/data-versioning
 
 For data-series plots, DVC expects to see one or more arrays of objects (usually
 _float numbers_) in the file. These are rendered using
@@ -95,14 +95,14 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show_json.svg)
 
-[dvc template anchors]: /doc/command-reference/plots/templates#custom-templates
+[dvc template anchors]: /command-reference/plots/templates#custom-templates
 
 ## Defining plots
 
 In order to create visualizations, users need to provide the data and
 (optionally) configuration that will help customize the plot in a `dvc.yaml`
-file. If you are using [DVCLive](/doc/dvclive/), it will configure plots, but
-you can also add your own custom plots. The easiest way is to use the
+file. If you are using [DVCLive](/dvclive), it will configure plots, but you can
+also add your own custom plots. The easiest way is to use the
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 to define plots inside your `dvc.yaml`.
 
@@ -186,8 +186,7 @@ file:///Users/usr/src/dvc_plots/index.html
 
 Refer to the [full format specification] and `dvc plots show` for more details.
 
-[full format specification]:
-  /doc/user-guide/project-structure/dvcyaml-files#plots
+[full format specification]: /user-guide/project-structure/dvcyaml-files#plots
 
 </admon>
 
@@ -216,13 +215,13 @@ DVC has the following built-in plot templates:
   [custom templates].
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see
-  [example](/doc/command-reference/plots/show#example-smooth-plot)
+  [example](/command-reference/plots/show#example-smooth-plot)
 - `confusion` - confusion matrix, see
-  [example](/doc/command-reference/plots/show#example-confusion-matrix)
+  [example](/command-reference/plots/show#example-confusion-matrix)
 - `confusion_normalized` - confusion matrix with values normalized to <0, 1>
   range
 - `bar_horizontal` - horizontal bar plot, see
-  [example](/doc/command-reference/plots/show#example-horizontal-bar-plot)
+  [example](/command-reference/plots/show#example-horizontal-bar-plot)
 - `bar_horizontal_sorted` - horizontal bar plot sorted by bar size
 
 Note that in the case of CSV/TSV metrics files, column names from the table
@@ -231,7 +230,7 @@ header (first row) are equivalent to field names.
 Refer to `dvc plots templates` for more information on how to prepare your own
 template from pre-defined ones.
 
-[custom templates]: /doc/command-reference/plots/templates#custom-templates
+[custom templates]: /command-reference/plots/templates#custom-templates
 
 ## Comparing plots
 
@@ -243,9 +242,9 @@ Studio] to share with others.
 
 ![](/img/plots_compare_vs_code.png)
 
-[experiments]: /doc/user-guide/experiment-management
+[experiments]: /user-guide/experiment-management
 [compare between experiments]:
-  /doc/user-guide/experiment-management/comparing-experiments
+  /user-guide/experiment-management/comparing-experiments
 [revisions]: https://git-scm.com/docs/revisions
 
 <toggle>
@@ -285,5 +284,5 @@ against the entire repo history:
 
 </toggle>
 
-[dvclive]: /doc/dvclive
-[shared]: /doc/user-guide/experiment-management/sharing-experiments
+[dvclive]: /dvclive
+[shared]: /user-guide/experiment-management/sharing-experiments

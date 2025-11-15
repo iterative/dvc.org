@@ -27,7 +27,7 @@ In your Python code, you can start versioning your experiments in DVCLive's
 `Live` API or framework-specific callbacks.
 
 There are some examples below
-([other frameworks available](/doc/dvclive/ml-frameworks)):
+([other frameworks available](/dvcliveml-frameworks)):
 
 <toggle>
 
@@ -111,16 +111,15 @@ After this, each execution of the code will create a <abbr>DVC experiment</abbr>
 containing the results and the changes needed to reproduce it.
 
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
-Framework and any
-[data tracked by DVC](/doc/start/data-management/data-versioning) but you can
-also [log additional info](/doc/dvclive#log-data) to be included in the
+Framework and any [data tracked by DVC](/start/data-management/data-versioning)
+but you can also [log additional info](/dvclive#log-data) to be included in the
 experiment. `live.log_artifact("mymodel", type="model")` will
-[track your model with DVC](/doc/dvclive/live/log_artifact) and enable managing
-it with the <abbr>model registry</abbr>.
+[track your model with DVC](/dvclivelive/log_artifact) and enable managing it
+with the <abbr>model registry</abbr>.
 
 <admon type="info">
 
-Learn more about [how DVCLive works](/doc/dvclive/how-it-works)
+Learn more about [how DVCLive works](/dvclivehow-it-works)
 
 </admon>
 
@@ -147,7 +146,7 @@ so anyone can recover the entire state of your experiment.
 <admon type="info">
 
 Learn more about
-[how experiment sharing works](/doc/user-guide/experiment-management/sharing-experiments).
+[how experiment sharing works](/user-guide/experiment-management/sharing-experiments).
 
 </admon>
 
@@ -160,9 +159,8 @@ training progress:
 
 <tab title="DVCLive Report">
 
-By default, DVCLive will
-[generate or update a report](/doc/dvclive/live/make_report) displaying all the
-logged data.
+By default, DVCLive will [generate or update a report](/dvclivelive/make_report)
+displaying all the logged data.
 
 If you pass `report="notebook"` to DVCLive, the report will be displayed and
 updated inside the output of the cell:
@@ -243,9 +241,9 @@ views.
 <admon type="info">
 
 Learn more about
-[Comparing Experiments](/doc/user-guide/experiment-management/comparing-experiments)
+[Comparing Experiments](/user-guide/experiment-management/comparing-experiments)
 
 </admon>
 
-[dvclive]: /doc/dvclive
-[shared]: /doc/user-guide/experiment-management/sharing-experiments
+[dvclive]: /dvclive
+[shared]: /user-guide/experiment-management/sharing-experiments

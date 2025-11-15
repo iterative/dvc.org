@@ -1,6 +1,6 @@
 # metrics show
 
-Print [metrics](/doc/command-reference/metrics), with optional formatting.
+Print [metrics](/command-reference/metrics), with optional formatting.
 
 ## Synopsis
 
@@ -66,8 +66,8 @@ compares them with a previous version.
 
 ## Examples
 
-Let's imagine we have a simple [stage](/doc/command-reference/run) that produces
-an `eval.json` metrics file. The basic use case shows the values in the current
+Let's imagine we have a simple [stage](/command-reference/run) that produces an
+`eval.json` metrics file. The basic use case shows the values in the current
 workspace:
 
 ```cli
