@@ -366,10 +366,9 @@ Choose a trail to jump into its first chapter:
   by only instrumenting your code, and collaborate on ML experiments like
   software engineers do for code.
 
-- **[Model Registry]** - Use the DVC model registry to manage the lifecycle of
+- **Model Registry** - Use the DVC model registry to manage the lifecycle of
   your models in an auditable way. Easily access your models and integrate your
   model registry actions into CICD pipelines to follow GitOps best practices.
 
 [Data Pipelines]: /start/data-management/data-pipelines
 [Experiment Management]: /start/experiments/experiment-tracking
-[Model Registry]: /start/model-registry
