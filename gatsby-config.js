@@ -3,9 +3,6 @@
 require('dotenv').config()
 const path = require('path')
 
-const makeFeedHtml = require('@dvcorg/gatsby-theme/plugins/utils/makeFeedHtml')
-
-const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
 const title = 'Data Version Control · DVC'
@@ -45,20 +42,6 @@ const plugins = [
   {
     resolve: `gatsby-source-filesystem`,
     options: {
-      name: `authors`,
-      path: path.join(__dirname, `content`, `authors`)
-    }
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `blogs`,
-      path: path.join(__dirname, `content`, `blogs`)
-    }
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
       name: `authors-avatars`,
       path: path.join(__dirname, `content`, `uploads`, `avatars`)
     }
@@ -68,64 +51,6 @@ const plugins = [
     options: {
       name: `uploads-images`,
       path: path.join(__dirname, `content`, `uploads`, `images`)
-    }
-  },
-  {
-    resolve: `gatsby-plugin-feed`,
-    options: {
-      feeds: [
-        {
-          description,
-          output: '/blog/rss.xml',
-          query: `
-            {
-              allBlogPost(sort: { date: DESC }) {
-                nodes {
-                  htmlAst
-                  slug
-                  title
-                  date
-                  description
-                }
-              }
-            }
-          `,
-          serialize: ({ query: { site, allBlogPost } }) => {
-            return Promise.all(
-              allBlogPost.nodes.map(async node => {
-                const html = await makeFeedHtml(
-                  node.htmlAst,
-                  site.siteMetadata.siteUrl
-                )
-                return Object.assign(
-                  {},
-                  {
-                    custom_elements: [{ 'content:encoded': html }],
-                    title: node.title,
-                    date: node.date,
-                    description: node.description,
-                    guid: site.siteMetadata.siteUrl + node.slug,
-                    url: site.siteMetadata.siteUrl + node.slug
-                  }
-                )
-              })
-            )
-          },
-          title
-        }
-      ],
-      query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-    `
     }
   },
   `gatsby-plugin-catch-links`,
@@ -190,12 +115,7 @@ const plugins = [
         }
       ]
     }
-  },
-  // local plugins
-  'landing-page',
-  `authors`,
-  `blogs`,
-  'community-page'
+  }
 ]
 
 if (process.env.GATSBY_GTM_ID) {
@@ -240,7 +160,6 @@ module.exports = {
   },
   developMiddleware: app => {
     app.use(redirectsMiddleware)
-    app.use('/api', apiMiddleware)
   },
   jsxRuntime: 'automatic'
 }

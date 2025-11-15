@@ -32,7 +32,6 @@ const { s3Url } = require('./config')
 const port = process.env.PORT || 3000
 const app = express()
 
-const apiMiddleware = require('./middleware/api')
 const redirectsMiddleware = require('./middleware/redirects')
 const serveMiddleware = require('./middleware/serve')
 const { isProduction } = require('./utils')
@@ -49,7 +48,6 @@ app.use(
   })
 )
 app.use(express.json())
-app.use('/api', apiMiddleware)
 
 // we can also extend to add further custom routes
 app.get('/api/status', (req, res) => {
