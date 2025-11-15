@@ -6,7 +6,7 @@ import DocWithJsx from '@dvcorg/gatsby-theme/src/components/Documentation/WithJS
 import AutoLinkElement from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX/AutoLinkElement'
 import useGlossary from '@dvcorg/gatsby-theme/src/utils/front/glossary'
 
-import MainLayout from '../../../components/MainLayout'
+import MainLayout from '../../components/MainLayout'
 
 const Glossary = ({ location }: PageProps) => {
   const { contents } = useGlossary()
