@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { IGatsbyImageData, getSrc } from 'gatsby-plugin-image'
 import { useMemo } from 'react'
 
-import { IPaginatorPageInfo } from '@/components/Blog/Paginator'
+import { IPaginatorPageInfo } from '@/components/Paginator'
 
 const MetaTitle = ({ title }: { title: string }) => {
   return (
