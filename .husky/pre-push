@@ -1,4 +1,0 @@
-#!/bin/sh
-if [[ `git --no-pager diff --name-only main '*.dvc'` ]]; then
-  exec dvc push
-fi
