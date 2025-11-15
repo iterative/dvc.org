@@ -1,5 +1,7 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 
+import config from './config'
+
 interface IHTMLProps {
   htmlAttributes: Record<string, unknown>
   headComponents: Array<React.ReactNode>
@@ -22,6 +24,7 @@ const HTML: React.FC<IHTMLProps> = props => {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {DISABLE_INDEXING && <meta name="robots" content="noindex, nofollow" />}
+        <meta name="algolia-site-verification" content={config.algolia.appId} />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
