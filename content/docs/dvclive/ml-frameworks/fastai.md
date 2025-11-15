@@ -67,4 +67,4 @@ learn.fit_one_cycle(
   cbs=[DVCLiveCallback(dir="custom_dir")])
 ```
 
-[`live`]: /dvclivelive
+[`live`]: /dvclive/live

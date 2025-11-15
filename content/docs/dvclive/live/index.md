@@ -49,7 +49,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
 
 - `summary` - see `Live.make_summary()`.
 
-- `dir` - location of the directory to store [outputs](/dvclivehow-it-works).
+- `dir` - location of the directory to store [outputs](/dvclive/how-it-works).
 
 - `dvc_file` - path for `dvc.yaml` file.
 
@@ -74,7 +74,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
   `Live.make_report()`. Defaults to `None`.
 
 - `save_dvc_exp` - if `True`, DVCLive will create a new
-  [DVC experiment](/dvclivehow-it-works#git-integration) as part of
+  [DVC experiment](/dvclive/how-it-works#git-integration) as part of
   `Live.end()`. Defaults to `True`.
 
   If you are using DVCLive inside a <abbr>DVC Pipeline</abbr> and running with
@@ -113,7 +113,7 @@ You can use `Live()` as a context manager. When exiting the context manager,
   [`dvc exp run --message`](/command-reference/exp/run#--message) instead.
 
 - `monitor_system` - if `True`, DVCLive will log
-  [system metrics](/dvclivelive/monitor_system), including GPU, CPU, RAM, and
+  [system metrics](/dvclive/live/monitor_system), including GPU, CPU, RAM, and
   disk usage. Defaults to `False`.
 
 ## Methods

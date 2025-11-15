@@ -115,4 +115,4 @@ logger.finalize("success")
 
 `"success"` is passed as the `status` and is a required argument.
 
-[`Live`]: /dvclivelive
+[`Live`]: /dvclive/live

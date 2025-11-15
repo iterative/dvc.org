@@ -46,9 +46,9 @@ Supported values for `val` are:
   [`PIL.Image.open()`](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open)
 
 The images will be saved in `{Live.plots_dir}/images/{name}`. When using
-[`Live(cache_images=True)`](/dvclivelive#parameters), the images directory will
+[`Live(cache_images=True)`](/dvclive/live#parameters), the images directory will
 also be <abbr>cached</abbr> as part of `Live.end()`. In that case, a `.dvc` file
-will be saved to [track](/dvclivehow-it-works#track-large-artifacts-with-dvc)
+will be saved to [track](/dvclive/how-it-works#track-large-artifacts-with-dvc)
 it, and the directory will be added to a `.gitignore` file to prevent Git
 tracking:
 

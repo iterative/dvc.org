@@ -103,6 +103,6 @@ Finally, end the experiment to trigger `Live.end()`:
 accelerator.end_training()
 ```
 
-[callback]: /dvcliveml-frameworks/huggingface
-[`Live`]: /dvclivelive
+[callback]: /dvclive/ml-frameworks/huggingface
+[`Live`]: /dvclive/live
 [`Tracker`]: https://huggingface.co/docs/accelerate/usage_guides/tracking
