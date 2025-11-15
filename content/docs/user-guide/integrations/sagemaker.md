@@ -172,8 +172,8 @@ also include `dvclive` in a `requirements.txt` file inside your `source_dir`.
 Use the <abbr>model registry</abbr> to automate deployment with SageMaker in
 your CI/CD workflow. To start with the model registry, see how to:
 
-- [start using the model registry]
-- [deploy models with CI/CD]
+- start using the model registry
+- deploy models with CI/CD
 
 For a full example of how to deploy with SageMaker, see our [blog post].
 
@@ -190,8 +190,6 @@ For a full example of how to deploy with SageMaker, see our [blog post].
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py
 [training script]:
   https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py
-[start using the model registry]: /start/model-registry
-[deploy models with ci/cd]: /start/model-registry/model-cicd
 [triggering sagemaker deployment]:
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
 [deploying sagemaker endpoints]:
