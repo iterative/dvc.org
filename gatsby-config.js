@@ -39,20 +39,6 @@ const plugins = [
       path: path.join(__dirname, 'static', 'img')
     }
   },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `authors-avatars`,
-      path: path.join(__dirname, `content`, `uploads`, `avatars`)
-    }
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `uploads-images`,
-      path: path.join(__dirname, `content`, `uploads`, `images`)
-    }
-  },
   `gatsby-plugin-catch-links`,
   `gatsby-plugin-sharp`,
   'gatsby-plugin-twitter',

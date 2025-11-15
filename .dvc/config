@@ -1,5 +1,0 @@
-[core]
-    remote = storage
-    autostage = true
-['remote "storage"']
-    url = https://remote.dvc.org/dvc-org/blogs-media
