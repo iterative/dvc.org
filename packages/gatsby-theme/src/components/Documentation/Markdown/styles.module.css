@@ -62,6 +62,18 @@
 .cardWrapper {
   margin: 0.5rem 0;
   display: flex;
+
+  a.card {
+    color: inherit;
+    text-decoration: inherit;
+    transition: background-color 0.3s ease-in-out;
+    background-color: #fff;
+
+    &:hover {
+      text-decoration: inherit;
+      background-color: var(--color-light-blue);
+    }
+  }
 }
 
 .card {
@@ -108,17 +120,5 @@
 
   .cardContent {
     flex: 1;
-  }
-}
-
-a.card {
-  color: inherit;
-  text-decoration: inherit;
-  transition: background-color 0.3s ease-in-out;
-  background-color: #fff;
-
-  &:hover {
-    text-decoration: inherit;
-    background-color: var(--color-light-blue);
   }
 }
