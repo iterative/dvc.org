@@ -3,7 +3,8 @@
 **DVC** can be installed on [Visual Studio Code], any [system terminal], and
 used as a [Python library].
 
-[visual studio code]: /vs-code-extension
+[visual studio code]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [system terminal]: /install
 [python library]: /api-reference
 

@@ -73,7 +73,8 @@ this set of principles:
   Scipy, etc.).
 
 [free]: https://github.com/iterative/dvc/blob/master/LICENSE
-[vs code extension]: /vs-code-extension
+[vs code extension]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [python api]: /api-reference
 [command line]: /command-reference
 

@@ -76,7 +76,7 @@ repetitive data transfers or having to retrain models on-the-fly.
 | **Collaboration** | Distributed          | Centralized                   |
 
 [data versioning]: /use-cases/versioning-data-and-models
-[ide]: /vs-code-extension
+[ide]: https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [terminal]: /command-reference
 
 > 💡 Note that other experiment tracking tools can be complementary to DVC, for

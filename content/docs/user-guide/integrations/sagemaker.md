@@ -181,7 +181,8 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [clone]: https://docs.aws.amazon.com/sagemaker/latest/dg/studio-tasks-git.html
 [code-server]:
   https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/
-[dvc extension for vs code]: /vs-code-extension
+[dvc extension for vs code]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [dvc config]: /user-guide/project-structure/configuration#studio
 [pipelines]: /user-guide/pipelines
 [external dependencies and outputs]:

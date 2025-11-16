@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/iterative/dvc.org#readme",
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "private": true,
   "workspaces": [

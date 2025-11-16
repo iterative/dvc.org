@@ -85,4 +85,5 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [metrics]: /user-guide/project-structure/dvcyaml-files#metrics
 [plots]: /user-guide/project-structure/dvcyaml-files#plots
 [visualize plots]: /user-guide/experiment-management/visualizing-plots
-[from the vs code ide]: /vs-code-extension
+[from the vs code ide]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc

@@ -9,7 +9,8 @@
 **New!** DVC is also available [for the VS Code IDE], which adds many DVC
 operations [to the Command Palette].
 
-[for the vs code ide]: /vs-code-extension
+[for the vs code ide]:
+  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [to the command palette]:
   https://github.com/iterative/vscode-dvc#useful-commands
 
