@@ -8,7 +8,7 @@ const path = require('path')
 
 const { s3Prefix } = require('../src/server/config')
 
-const { clearCloudfrontCache } = './clear-cloudfront-cache'
+const clearCloudfrontCache = './clear-cloudfront-cache'
 const { uploadToS3 } = require('./s3-utils')
 
 const rootDir = process.cwd()
