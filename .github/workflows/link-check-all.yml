@@ -43,7 +43,7 @@ jobs:
       - name: Close if Check Passes
         if: >-
           steps.lychee.outputs.exit_code == 0 &&
-          steps.find-existing-comment.outputs.result &&
+          steps.find-existing-comment.outputs.result
         run:
           gh issue close --comment "The most recent link check passed!" "${{
           steps.find-existing-comment.outputs.result }}"
