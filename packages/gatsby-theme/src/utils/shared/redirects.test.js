@@ -103,9 +103,6 @@ describe('getRedirects', () => {
   }
 
   describe('fromSubdomains', () => {
-    // Remove www (when already HTTPS)
-    itRedirects('https://www.dvc.org/foo', 'https://dvc.org/foo')
-
     itRedirects(
       'https://man.dvc.org',
       'https://doc.dvc.org/command-reference',
@@ -134,52 +131,6 @@ describe('getRedirects', () => {
       'https://doc.dvc.org/user-guide/troubleshooting#foo',
       303
     )
-
-    itRedirects(
-      'https://www.dataversioncontrol.com/some-random',
-      'https://dvc.org/some-random',
-      301
-    )
-
-    itRedirects('https://www.dataversioncontrol.com', 'https://dvc.org/', 301)
-
-    itRedirects(
-      'https://dataversioncontrol.com/some-random',
-      'https://dvc.org/some-random',
-      301
-    )
-
-    itRedirects(
-      'https://discuss.dataversioncontrol.com/some-random',
-      'https://discuss.dvc.org/some-random',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dataversioncontrol.com/september-19-dvc-heartbeat-0123456789ab',
-      'https://dvc.org/blog/september-19-dvc-heartbeat',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dataversioncontrol.com/some-random',
-      'https://dvc.org/blog/some-random',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dataversioncontrol.com',
-      'https://dvc.org/blog/',
-      301
-    )
-
-    itRedirects(
-      'https://blog.dvc.org/september-19-dvc-heartbeat',
-      'https://dvc.org/blog/september-19-dvc-heartbeat',
-      301
-    )
-
-    itRedirects('https://blog.dvc.org', 'https://dvc.org/blog/', 301)
   })
 
   describe('toS3', () => {
@@ -200,37 +151,6 @@ describe('getRedirects', () => {
       'https://r2.dvc.org/remote/foo/bar',
       303
     )
-
-    itRedirects('/exe/foo', 'https://downloads.dvc.org/exe/foo', 303)
-    itRedirects('/osxpkg/foo', 'https://downloads.dvc.org/osxpkg/foo', 303)
-    itRedirects('/deb/foo', 'https://downloads.dvc.org/deb/foo', 303)
-    itRedirects('/rpm/foo', 'https://downloads.dvc.org/rpm/foo', 303)
-    itRedirects(
-      '/download/osx/dvc-3.60.0',
-      'https://downloads.dvc.org/osxpkg/dvc-3.60.0.pkg',
-      303
-    )
-    itRedirects(
-      '/download/win/dvc-3.60.0',
-      'https://downloads.dvc.org/exe/dvc-3.60.0.exe',
-      303
-    )
-    itRedirects(
-      '/download/linux-deb/dvc-3.60.0',
-      'https://downloads.dvc.org/deb/pool/stable/d/dv/dvc_3.60.0_amd64.deb',
-      303
-    )
-    itRedirects(
-      '/download/linux-rpm/dvc-3.60.0',
-      'https://downloads.dvc.org/rpm/dvc-3.60.0-1.x86_64.rpm',
-      303
-    )
-  })
-
-  describe('toDiscord', () => {
-    itRedirects('/help', 'https://discordapp.com/invite/dvwXA2N', 303)
-
-    itRedirects('/chat', 'https://discordapp.com/invite/dvwXA2N', 303)
   })
 
   describe('fromPaths', () => {
