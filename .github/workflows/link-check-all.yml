@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   check:
-    name: Check Download Links and Raise Issue
+    name: Check all links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -15,8 +15,8 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .lycheecache
-          key: cache-lychee-${{ github.event.name }}-${{ github.sha }}
-          restore-keys: cache-lychee-${{ github.event.name }}-
+          key: cache-lychee-${{ github.sha }}
+          restore-keys: cache-lychee-
 
       - name: Run Lychee
         id: lychee
