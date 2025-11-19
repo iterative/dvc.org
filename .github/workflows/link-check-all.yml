@@ -23,8 +23,8 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --verbose --no-progress --include-fragments --max-concurrency 8
-            --retry-wait-time 20 --cache --max-cache-age 2d --base-url ${{
+            --verbose --no-progress --max-concurrency 8 --retry-wait-time 20
+            --cache --max-cache-age 2d --base-url ${{
             github.event.deployment.payload.web_url || 'https://doc.dvc.org' }}
             '.github/**/*' 'content/**/*' 'src/**/*'
           fail: true
