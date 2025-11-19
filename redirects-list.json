@@ -1,26 +1,10 @@
 [
-  "^https://(?:www\\.)?dataversioncontrol\\.com(.*)?                                      https://dvc.org$1",
-  "^https://discuss\\.dataversioncontrol\\.com(.*)?                                       https://discuss.dvc.org$1",
-  "^https://blog\\.dataversioncontrol\\.com/data-version-control-tutorial-9146715eda46    https://doc.dvc.org/start",
-  "^https://blog\\.dataversioncontrol\\.com/data-version-control-beta-release-iterative-machine-learning-a7faf7c8be67 https://doc.dvc.org/start",
-  "^https://blog\\.dataversioncontrol\\.com/dvc-heartbeat-6301aebf5c96                    https://dvc.org/blog/march-19-dvc-heartbeat",
-  "^https://blog\\.dataversioncontrol\\.com/april19-dvc-heartbeat-296c71a59be4            https://dvc.org/blog/april-19-dvc-heartbeat",
-  "^https://blog\\.dataversioncontrol\\.com/dvc-0-8-5-release-f66ef3b10684                https://github.com/iterative/dvc/releases",
-  "^https://blog\\.dataversioncontrol\\.com(.+)-[a-z0-9]{12}$                             https://dvc.org/blog$1",
-  "^https://blog\\.dataversioncontrol.com(.*)?                                            https://dvc.org/blog$1",
-  "/blog/how-a-data-scientist-can-improve-his-productivity                                /blog/how-data-scientists-can-improve-their-productivity",
-
-  "^https://blog\\.dvc\\.org/blog/(.*)?$                                                  https://dvc.org/blog/$1",
-  "^https://blog\\.dvc\\.org(.*)?$                                                        https://dvc.org/blog$1",
-  "^https://www\\.dvc\\.org(.*)?                                                          https://dvc.org$1",
   "^https://man\\.dvc\\.org/$                                                             https://doc.dvc.org/command-reference 303",
   "^https://man\\.dvc\\.org(.*)?                                                          https://doc.dvc.org/command-reference$1 303",
 
   "^https://error\\.dvc\\.org/(.*)?                                                       https://doc.dvc.org/user-guide/troubleshooting#$1 303",
   "^https://docs\\.dvc\\.org(.*)?                                                         https://doc.dvc.org$1",
   "^https://(code|data|remote)\\.dvc\\.org/(.+)                                           https://r2.dvc.org/$1/$2 303",
-
-  "^https://blog\\.dataversioncontrol.com(.*)?                                            https://dvc.org/blog$1",
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                 https://doc.dvc.org/user-guide/experiment-management/running-experiments$1 302",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                    https://doc.dvc.org/user-guide/experiment-management/$1 302",
@@ -30,15 +14,7 @@
   "^https://s\\.dvc\\.org/c/(.*)?$                                                        https://doc.dvc.org/use-cases/$1 302",
   "^https://s\\.dvc\\.org/r/(.*)?$                                                        https://doc.dvc.org/command-reference/$1 302",
 
-  "^/((?:exe|osxpkg|deb|rpm)/.+)                                                          https://downloads.dvc.org/$1 303",
-  "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
-  "^/download/osx/dvc-(.+)$                                                               https://downloads.dvc.org/osxpkg/dvc-$1.pkg 303",
-  "^/download/win/dvc-(.+)$                                                               https://downloads.dvc.org/exe/dvc-$1.exe 303",
-  "^/download/linux-deb/dvc-(.+)$                                                         https://downloads.dvc.org/deb/pool/stable/d/dv/dvc_$1_amd64.deb 303",
-  "^/download/linux-rpm/dvc-(.+)$                                                         https://downloads.dvc.org/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation|doc)(/.*)?$                                                    /$1",
-
-  "^/features$                                                                            /use-cases 302",
 
   "^/install/plugins(/.*)?$                                                               /install/ide-plugins$1",
 
