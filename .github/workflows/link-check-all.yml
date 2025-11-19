@@ -24,7 +24,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Find latest open Link Check issue
-        if: github.event != "deployment_status"
+        if: github.event != 'deployment_status'
         id: find-existing-comment
         run: |
           gh issue list -R ${{ github.repository }} --author "github-actions[bot]" -l "link-check-all"  --json "number" --jq ".[].number"
