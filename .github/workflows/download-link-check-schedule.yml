@@ -41,7 +41,7 @@ jobs:
           issue-number: ${{ steps.find-existing-comment.outputs.result }}
           title: 'DVC Download Link Checker Report'
           content-filepath: ./lychee/out.md
-          labels: ${{ inputs.labels }}
+          labels: link-checker
 
       - name: Close if Check Passes
         if: >-
