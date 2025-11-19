@@ -31,6 +31,8 @@ jobs:
         id: find-existing-comment
         run: |
           gh issue list -R ${{ github.repository }} --author "github-actions[bot]" -l "link-checker"  --json "number" --jq ".[].number"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create or Update Issue
         uses: peter-evans/create-issue-from-file@v6
