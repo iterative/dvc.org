@@ -62,26 +62,10 @@ const helmetOptions = {
   contentSecurityPolicy: {
     directives: {
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https:'],
-      frameSrc: [
-        'https://giphy.com',
-        'https://platform.twitter.com',
-        'https://*.youtube.com',
-        'https://*.youtube-nocookie.com',
-        'https://*.clickagy.com',
-        'https://*.hubspot.com',
-        'https://forms.hsforms.com',
-        'https://embed.testimonial.to',
-        'https://discordapp.com',
-        'https://discord.com'
-      ],
+      frameSrc: ['https://*.youtube.com', 'https://*.youtube-nocookie.com'],
       connectSrc: ["'self'", 'https:'],
       imgSrc: ["'self'", 'data:', 'https:'],
-      formAction: [
-        "'self'",
-        'https://forms.hsforms.com',
-        'https://doc.dvc.org'
-      ],
-      mediaSrc: ['https://static.iterative.ai']
+      formAction: ["'self'", 'https://doc.dvc.org']
     }
   }
 }

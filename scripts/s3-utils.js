@@ -1,9 +1,7 @@
 'use strict'
 
-const path = require(`path`)
-
-const { S3Client } = require(`@aws-sdk/client-s3`)
-const { S3SyncClient } = require(`s3-sync-client`)
+const { S3Client } = require('@aws-sdk/client-s3')
+const { S3SyncClient } = require('s3-sync-client')
 
 const { s3Prefix, s3Bucket } = require('../src/server/config')
 
@@ -32,19 +30,13 @@ console.log({
   hasCreds: Boolean(AWS_ACCESS_KEY_ID && AWS_SECRET_ACCESS_KEY)
 })
 
-const rootDir = process.cwd()
-
-function localPath(dirName) {
-  return path.join(rootDir, dirName)
-}
-
 async function uploadToS3(dir, childPrefix, basePrefix = s3Prefix) {
   const prefix = basePrefix + childPrefix
   const s3FullPath = `s3://${s3Bucket}/${prefix}`
   console.log(`Syncing "${dir}" to ${s3FullPath}`)
   const timeString = `"${dir}" synced in`
   console.time(timeString)
-  await sync(localPath(dir), s3FullPath, {
+  await sync(dir, s3FullPath, {
     del: true,
     // For some reason, the s3-sync-client add an extra `/` to the path when syncing to s3
     // https://github.com/jeanbmar/s3-sync-client/issues/64
@@ -54,8 +46,5 @@ async function uploadToS3(dir, childPrefix, basePrefix = s3Prefix) {
 }
 
 module.exports = {
-  s3Bucket,
-  s3Prefix,
-  s3Client,
   uploadToS3
 }
