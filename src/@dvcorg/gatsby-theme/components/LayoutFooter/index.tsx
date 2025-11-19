@@ -13,7 +13,7 @@ import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme/src/components
 import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
 import { getFirstPage } from '@dvcorg/gatsby-theme/src/utils/shared/sidebar'
 
-import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_by_lakefs_white.svg'
 
 const docsPage = getFirstPage()
 
@@ -76,6 +76,12 @@ const footerListsData: Array<IFooterListData> = [
         text: 'Discord',
         icon: <DiscordSVG className={styles.icon} />
       }
+    ]
+  },
+  {
+    header: 'Legal',
+    links: [
+      { href: 'https://lakefs.io/privacy-policy', text: 'Privacy Policy' }
     ]
   }
 ]

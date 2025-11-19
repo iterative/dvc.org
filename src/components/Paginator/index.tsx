@@ -60,6 +60,8 @@ const Paginator: React.FC<IPaginatorProps> = ({
             <ArrowSVG />
             <span>Newer posts</span>
           </Link>
+
+          {/* @ts-expect-error react-helmet types incompatible with React types */}
           <Helmet>
             <link rel="prev" href={previousPage} />
           </Helmet>
@@ -75,6 +77,7 @@ const Paginator: React.FC<IPaginatorProps> = ({
             <span>Older posts</span>
             <ArrowSVG />
           </Link>
+          {/* @ts-expect-error react-helmet types incompatible with React types */}
           <Helmet>
             <link rel="next" href={nextPage} />
           </Helmet>

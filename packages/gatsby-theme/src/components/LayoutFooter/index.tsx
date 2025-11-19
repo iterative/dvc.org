@@ -1,7 +1,7 @@
 import cn from 'classnames'
 
 import { ReactComponent as CmlSVG } from '../../images/cml_icon-color--square_vector.svg'
-import { ReactComponent as LogoSVG } from '../../images/dvc_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../images/dvc_by_lakefs_white.svg'
 import { ReactComponent as MlemSVG } from '../../images/mlem-icon.svg'
 import { ReactComponent as StudioSVG } from '../../images/studio_icon-color--square_vector.svg'
 import { getFirstPage } from '../../utils/shared/sidebar'

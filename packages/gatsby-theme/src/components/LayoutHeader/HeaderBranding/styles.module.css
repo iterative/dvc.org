@@ -1,15 +1,12 @@
 .logoLink {
   @apply hover active;
 
-  height: 40px;
-  width: 40px;
-
   &:focus {
     opacity: 0.7;
   }
 
   svg {
-    width: inherit;
+    width: 100%;
     height: inherit;
   }
 }

@@ -1,7 +1,7 @@
 import cn from 'classnames'
 
 import { MAIN_SITE_URL } from '../../../../consts'
-import { ReactComponent as LogoSVG } from '../../../images/dvc_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../../images/dvc_by_lakefs.svg'
 import Link from '../../Link'
 
 import * as styles from './styles.module.css'

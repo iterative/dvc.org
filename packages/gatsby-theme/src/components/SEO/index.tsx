@@ -1,7 +1,6 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { useMemo } from 'react'
-// eslint-disable-next-line import-x/no-named-as-default
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 
 import useSiteMeta from '../../queries/useSiteMeta'
 
@@ -84,6 +83,7 @@ const SEO: React.FC<ISEOProps> = ({
   ])
 
   return (
+    /* @ts-expect-error react-helmet types incompatible with React types */
     <Helmet
       htmlAttributes={{
         lang: 'en'

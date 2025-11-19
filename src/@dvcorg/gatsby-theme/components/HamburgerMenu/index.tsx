@@ -13,7 +13,6 @@ import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme/src/component
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
-import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.svg'
 import menuData from '../../data/menu'
 
 export type HamburgerHelpers = {
@@ -69,7 +68,7 @@ export const HamburgerMenu: React.FC<
           className={styles.logo}
           aria-label="Home"
         >
-          <LogoSVG />
+          <img src="/img/dvc_by_lakefs_white.svg" alt="DVC Logo" />
         </Link>
       </div>
       <ul className={styles.sections}>
