@@ -11,14 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Install Node.js and use yarn
-        uses: actions/setup-node@v6
-        with:
-          node-version: '24'
-          cache: 'yarn'
-
-      - run: yarn install --immutable && yarn build
-
       - name: Restore lychee cache
         uses: actions/cache@v4
         with:
@@ -35,7 +27,7 @@ jobs:
             --retry-wait-time 20 --cache --max-cache-age 2d --base-url ${{
             github.event.deployment.payload.web_url || 'https://doc.dvc.org' }}
             {.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}
-          fail: false
+          fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
