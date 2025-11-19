@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 'use strict'
 require('dotenv').config()
+const { rm, rename } = require('node:fs/promises')
 const { exit } = require('node:process')
 const path = require('path')
 
 const { DEPLOY_OPTIONS } = process.env
-const { move } = require('fs-extra')
 
 const { s3Prefix } = require('../src/server/config')
 
@@ -60,31 +60,26 @@ if (deployOptions.logSteps) {
 
 const rootDir = process.cwd()
 const publicDirName = 'public'
-const cacheDirs = [
-  [publicDirName, '/'],
-  ['.cache', '-cache/']
-]
 
-const { withEntries } = require('./s3-utils')
-const { uploadAllToS3 } = withEntries(cacheDirs)
-const { cleanAllLocal } = withEntries([cacheDirs[0]])
+const { uploadToS3 } = require('./s3-utils')
 
 async function main() {
   if (deployOptions.upload) {
-    await uploadAllToS3(s3Prefix)
+    await uploadToS3(publicDirName, '/', s3Prefix)
     // Move the 404 HTML file from public into the root dir for Heroku
-    await move(
+    await rename(
       path.join(rootDir, publicDirName, '404.html'),
-      path.join(rootDir, '404.html'),
-      {
-        overwrite: true
-      }
+      path.join(rootDir, '404.html')
     )
   }
 
   if (deployOptions.clean) {
     console.log('Cleaning all local cache!')
-    await cleanAllLocal()
+    await rm(path.join(rootDir, publicDirName), {
+      recursive: true,
+      force: true
+    })
+    await rm(path.join(rootDir, '.cache'), { recursive: true, force: true })
   }
 
   if (deployOptions.clearCloudfrontCache) {
