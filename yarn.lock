@@ -2764,7 +2764,6 @@ __metadata:
     isomorphic-fetch: "npm:3.0.0"
     lodash: "npm:4.17.21"
     nanoid: "npm:5.1.6"
-    perfect-scrollbar: "npm:1.5.6"
     postcss: "npm:8.5.6"
     postcss-nested: "npm:7.0.2"
     prismjs: "npm:1.30.0"
@@ -18995,13 +18994,6 @@ __metadata:
   version: 4.1.0
   resolution: "peek-readable@npm:4.1.0"
   checksum: 10c0/f9b81ce3eed185cc9ebbf7dff0b6e130dd6da7b05f1802bbf726a78e4d84990b0a65f8e701959c50eb1124cc2ad352205147954bf39793faba29bb00ce742a44
-  languageName: node
-  linkType: hard
-
-"perfect-scrollbar@npm:1.5.6":
-  version: 1.5.6
-  resolution: "perfect-scrollbar@npm:1.5.6"
-  checksum: 10c0/57d3070a33a204953f5093221aa126975ae69b8cf8857a123ccf17344f4cb5c676b00868528517f33120393d66df3140df911b9ef25f3f67835b70c6f0d77139
   languageName: node
   linkType: hard
 
