@@ -103,7 +103,7 @@ a model. We add all the model hyperparameters as arguments to make it easy to
 tune hyperparameters and track what changed. Hyperparameters are added under the
 `train` key in `params.yaml`. The DVC pipeline stage `cmd` includes `${train}`
 to
-[unpack and pass](https://doc.dvc.org/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
+[unpack and pass](/user-guide/project-structure/dvcyaml-files#dictionary-unpacking)
 all those arguments and track them as parameters, in addition to tracking the
 other inputs and outputs:
 

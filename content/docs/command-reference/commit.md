@@ -117,7 +117,7 @@ $ cd example-get-started
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
+[virtual environment](https://docs.python.org/3/library/venv.html):
 
 ```cli
 $ python3 -m venv .env

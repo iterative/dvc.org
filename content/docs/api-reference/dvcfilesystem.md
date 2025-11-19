@@ -153,7 +153,7 @@ remote if they don't exist in the cache.
 ## Using subrepos
 
 If you have
-[initialized DVC in a subdirectory](https://doc.dvc.org/command-reference/init#initializing-dvc-in-subdirectories)
+[initialized DVC in a subdirectory](/command-reference/init#initializing-dvc-in-subdirectories)
 of the Git repository, use `DVCFileSystem(repo, subrepos=True)` to access the
 subdirectory.
 

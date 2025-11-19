@@ -79,3 +79,5 @@ tmp
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.lycheecache

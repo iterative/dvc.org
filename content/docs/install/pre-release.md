@@ -4,8 +4,7 @@ If you want to test the latest stable version of DVC, ahead of official
 releases, you can install it from our code repository GitHub.
 
 > We **strongly** recommend creating a
-> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-> or using
+> [virtual environment](https://docs.python.org/3/library/venv.html) or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.8+) to encapsulate your local environment.
 

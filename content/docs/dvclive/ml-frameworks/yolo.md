@@ -30,7 +30,7 @@ And the [plots] in the DVC Studio Plots Panel:
 
 ![YOLO Studio Plots](/img/yolo-studio-plots.gif)
 
-[metrics]: (/command-reference/metrics)
-[parameters]: (/command-reference/metrics)
-[plots]: (/command-reference/metrics)
-[model]: (/user-guide/project-structure/dvcyaml-files#artifacts)
+[metrics]: /command-reference/metrics
+[parameters]: /command-reference/metrics
+[plots]: /command-reference/metrics
+[model]: /user-guide/project-structure/dvcyaml-files#artifacts

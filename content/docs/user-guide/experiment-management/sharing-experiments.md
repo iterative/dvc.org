@@ -1,12 +1,5 @@
 # Sharing Experiments
 
-See the video below for how to share experiments using the [DVC Extension] for
-VS Code, or keep reading to go deeper.
-
-https://www.youtube.com/watch?v=UMVYjwJtRj0&autoplay=1&mute=1
-
-## Share automatically
-
 By default, your experiments are stored only where they were run. To
 automatically share all experiment info, you will need a:
 
@@ -44,10 +37,6 @@ metrics to DVC Studio, set your [access token].
 
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):
-
-![Live metrics in DVC Studio](../../../uploads/images/studio/live_metrics.gif)
-
-![Live plots in DVC Studio](../../../uploads/images/studio/live_plots.gif)
 
 <details>
 

@@ -27,10 +27,10 @@ Use `[all]` to include them all.
 
 <details id="example-pip-with-support-for-tensorflow">
 
-[`log_image`]: (https://doc.dvc.org/dvclive/live/log_image)
-[`log_plot`]: (https://doc.dvc.org/dvclive/live/log_plot)
-[`log_sklearn_plot`]: (https://doc.dvc.org/dvclive/live/log_sklearn_plot)
-[`make_report`]: (https://doc.dvc.org/dvclive/live/make_report)
+[`log_image`]: /dvclive/live/log_image
+[`log_plot`]: /dvclive/live/log_plot
+[`log_sklearn_plot`]: /dvclive/live/log_sklearn_plot
+[`make_report`]: /dvclive/live/make_report
 
 ### Example: with support for Tensorflow
 
@@ -42,5 +42,5 @@ In this case it installs the `tensorflow` library along with DVClive.
 
 </details>
 
-[DVClive methods]: https://doc.dvc.org/dvclive/live#methods
-[ML frameworks]: https://doc.dvc.org/dvclive/ml-frameworks
+[DVClive methods]: /dvclive/live#methods
+[ML frameworks]: /dvclive/ml-frameworks

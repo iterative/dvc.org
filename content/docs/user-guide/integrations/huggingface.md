@@ -10,8 +10,7 @@ project</abbr> can also be loaded with the Hugging Face
 
 Logging from
 [Hugging Face Transformers](https://huggingface.co/docs/transformers/index) is
-supported within
-[DVCLive](https://doc.dvc.org/dvclive/ml-frameworks/huggingface).
+supported within [DVCLive](/dvclive/ml-frameworks/huggingface).
 
 </admon>
 

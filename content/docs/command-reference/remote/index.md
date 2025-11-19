@@ -92,7 +92,7 @@ newremote    s3://mybucket/path
 ## Example: Customize an additional S3 remote
 
 > 💡 Before adding an S3 remote, be sure to
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html).
 
 ```cli
 $ dvc remote add newremote s3://mybucket/path

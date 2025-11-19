@@ -211,18 +211,14 @@ artifacts:
 Once you `git commit` and `git push` this info to a project that's connected to
 DVC Studio, anyone on your team can see it and filter or search across all your
 projects in the <abbr>model registry</abbr>. Although the artifact above is not
-a model, you can change the filters to use it for any type of artifact:
-
-![Show Registry Datasets](../../../uploads/images/studio/registry-show-datasets.gif)
+a model, you can change the filters to use it for any type of artifact.
 
 ### Registering versions and assigning stages
 
 Version numbers and stages signal the commit to use and can trigger automated
 workflows. Just like with software, you can use [semantic versioning] to tag
 releases of your artifacts and to mark artifact versions as in production,
-development, or other stages of their lifecycle:
-
-![Assign Registry Datasets](../../../uploads/images/studio/registry-assign-datasets.gif)
+development, or other stages of their lifecycle.
 
 Versions and stages are saved as Git tags by [GTO]. This means that you have the
 full release history in Git, and you can trigger deployments, tests, or other
@@ -233,9 +229,7 @@ actions in your CI/CD workflows when you register a version or assign a stage.
 Others can download or stream artifacts by their version or stage without
 needing access to your Git repository or cloud storage. If you connect your
 cloud credentials in DVC Studio, anyone on your team can access that artifact
-using only a [Studio token], either in the UI or programmatically:
-
-![Download Registry Datasets](../../../uploads/images/studio/registry-download-datasets.gif)
+using only a [Studio token], either in the UI or programmatically.
 
 [remote storage]: /user-guide/data-management/remote-storage
 [semantic versioning]: https://semver.org

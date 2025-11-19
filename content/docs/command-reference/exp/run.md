@@ -209,8 +209,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 [basic override]: https://hydra.cc/docs/advanced/override_grammar/basic/
 [choice]: https://hydra.cc/docs/advanced/override_grammar/extended/#choice-sweep
 [range]: https://hydra.cc/docs/advanced/override_grammar/extended/#range-sweep
-[unique name]:
-  https://doc.dvc.org/user-guide/experiment-management#how-does-dvc-track-experiments
+[unique name]: /user-guide/experiment-management#how-does-dvc-track-experiments
 
 ## Examples
 
@@ -238,8 +237,7 @@ $ dvc pull
 Let's also install the Python requirements:
 
 > We **strongly** recommend creating a
-> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-> first.
+> [virtual environment](https://docs.python.org/3/library/venv.html) first.
 
 ```cli
 $ pip install -r src/requirements.txt

@@ -76,8 +76,8 @@ Now, let's go through some usual project setup steps (virtualenv, requirements,
 Git).
 
 First, create and use a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-(it's not a must, but we **strongly** recommend it):
+[virtual environment](https://docs.python.org/3/library/venv.html) (it's not a
+must, but we **strongly** recommend it):
 
 ```cli
 $ virtualenv venv && echo "venv" > .gitignore

@@ -177,7 +177,7 @@ to [DVCLive] for a helper to log plots.
 - `template` (_string_) - [plot template]. Defaults to `linear`.
 
 [plot template]:
-  https://doc.dvc.org/user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
+  /user-guide/experiment-management/visualizing-plots#plot-templates-data-series-only
 
 ## Stages
 

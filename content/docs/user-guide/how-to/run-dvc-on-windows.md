@@ -26,9 +26,8 @@ alternatives:
 
 - [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) with
   [Windows Terminal](https://devblogs.microsoft.com/commandline/) supports the
-  most CLI features (e.g. `\` line continuation). It has
-  [good performance](https://itigic.com/wsl-vs-wsl2-performance-in-windows-10-update/)
-  (and can even
+  most CLI features (e.g. `\` line continuation). It has good performance (and
+  can even
   [access GPUs](https://channel9.msdn.com/Shows/Tabs-vs-Spaces/GPU-Accelerated-Machine-Learning-with-WSL-2)).
 - The full [Cmder](https://cmder.app/) console emulator is another good option.
   It combines several useful tools like [ConEmu](https://conemu.github.io/)

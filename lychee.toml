@@ -1,0 +1,4 @@
+exclude_path = [
+    "src/@dvcorg/gatsby-theme/getEditLink.ts",
+    "src/server/index.js",
+]

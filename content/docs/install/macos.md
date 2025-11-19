@@ -41,8 +41,7 @@ Get the PKG (binary) from the big "Download" button on the [home page](/).
 <admon type="tip">
 
 We **strongly** recommend creating a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-or using
+[virtual environment](https://docs.python.org/3/library/venv.html) or using
 [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 to encapsulate your local environment.
 

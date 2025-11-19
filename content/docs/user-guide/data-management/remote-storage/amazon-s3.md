@@ -29,7 +29,7 @@ The AWS user needs the following permissions: `s3:ListBucket`, `s3:GetObject`,
 
 [s3]: https://aws.amazon.com/s3/
 [existing s3 bucket]:
-  https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html
 [folder key]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html
 

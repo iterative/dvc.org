@@ -140,8 +140,7 @@ and retry the DVC command. Specifically, one of:
 - `.dvc/tmp/md5s`
 - `.dvc/tmp/links`
 
-[internal directories]:
-  https://doc.dvc.org/user-guide/project-structure/internal-files
+[internal directories]: /user-guide/project-structure/internal-files
 
 ## DVC Experiments may fail in Git shallow clones {#git-shallow}
 

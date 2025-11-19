@@ -128,8 +128,8 @@ specified version.
 When using versioned storage, DVC will always [pull] the versioned data from
 source. This will not [push] an additional version to remote storage.
 
-[pull]: https://doc.dvc.org/command-reference/pull
-[push]: https://doc.dvc.org/command-reference/push
+[pull]: /command-reference/pull
+[push]: /command-reference/push
 
 </admon>
 
@@ -342,8 +342,7 @@ $ rm -f code.zip
 ### Click and expand to set up the environment
 
 Let's install the requirements. But before we do that, we **strongly** recommend
-creating a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
+creating a [virtual environment](https://docs.python.org/3/library/venv.html):
 
 ```cli
 $ python3 -m venv .env

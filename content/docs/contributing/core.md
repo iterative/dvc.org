@@ -54,7 +54,7 @@ Note that `pip` version 21.3+ is required.
 
 Install DVC in editable mode with `pip install -e ".[dev]"`. But before we do
 that, we **strongly** recommend creating a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
+[virtual environment](https://docs.python.org/3/library/venv.html):
 
 ```cli
 $ cd dvc
@@ -72,7 +72,8 @@ $ pre-commit install
 ```
 
 That's it. You should be ready to make changes, run tests, and make commits! If
-you experience any problems, don't hesitate to ping us in our [chat](/chat).
+you experience any problems, don't hesitate to ping us in our
+[chat](https://dvc.org/chat).
 
 ## Debugging
 

@@ -53,7 +53,7 @@ that will train the model.
 
 Let's now install the requirements. But before we do that, we **strongly**
 recommend creating a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
+[virtual environment](https://docs.python.org/3/library/venv.html):
 
 ```cli
 $ python3 -m venv .env
@@ -350,7 +350,7 @@ handy. We touched on it briefly when we described `dvc stage add` and
 utilizing pipelines. See
 [Get Started: Data Pipelines](/start/data-management/data-pipelines) to get
 hands-on experience with pipelines, and try to apply it here. Don't hesitate to
-join our [community](/chat) and ask any questions!
+join our [community](https://dvc.org/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metrics file with the `-M` option of `dvc stage add`. Marking this

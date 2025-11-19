@@ -420,8 +420,8 @@ have no effect.
   or check
   [this guide on how to create an access token](https://docs.datachain.ai/studio/api#authorization).
 
-- `studio.offline` - Disables sharing [live experiments] even if `studio.token`
-  is set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can
+- `studio.offline` - Disables sharing live experiments even if `studio.token` is
+  set or the token has been specified in `DVC_STUDIO_TOKEN`. Offline mode can
   also be specified through `DVC_STUDIO_OFFLINE` environment variable, which
   will override any value in `studio.offline`. Accepts values `true` and
   `false`.
@@ -431,8 +431,6 @@ have no effect.
   variable, which will override any value in `studio.url`. If not set,
   `https://studio.datachain.ai` is used.
 
-[live experiments]:
-  /studio/user-guide/projects-and-experiments/live-metrics-and-plots
 [pushed experiments]: /user-guide/experiment-management/sharing-experiments
 
 </details>
