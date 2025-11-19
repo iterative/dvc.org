@@ -26,7 +26,7 @@ jobs:
             --verbose --no-progress --include-fragments --max-concurrency 8
             --retry-wait-time 20 --cache --max-cache-age 2d --base-url ${{
             github.event.deployment.payload.web_url || 'https://doc.dvc.org' }}
-            {.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}
+            '.github/**/*' 'content/**/*' 'src/**/*'
           fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
