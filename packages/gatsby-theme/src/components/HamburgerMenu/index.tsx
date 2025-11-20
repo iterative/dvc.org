@@ -217,13 +217,9 @@ export const HamburgerButton: React.FC<{
   opened: boolean
   collapsed: boolean
   handleClick: (e: MouseEvent) => void
-}> = ({ opened, collapsed, handleClick }) => (
+}> = ({ opened, handleClick }) => (
   <button
-    className={cn(
-      styles.toggleButton,
-      collapsed || styles.expanded,
-      opened && styles.opened
-    )}
+    className={cn(styles.toggleButton, opened && styles.opened)}
     onClick={handleClick}
     aria-label="Toggle Mobile Menu"
   >

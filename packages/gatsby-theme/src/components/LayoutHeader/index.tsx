@@ -42,8 +42,7 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
             'ease-in-out',
             'delay-150',
             'py-2',
-            'px-3',
-            collapsed && styles.collapsed
+            'px-3'
           )}
           wide
         >

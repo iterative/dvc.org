@@ -1,7 +1,5 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 
-import config from './config'
-
 interface IHTMLProps {
   htmlAttributes: Record<string, unknown>
   headComponents: Array<React.ReactNode>
@@ -10,8 +8,6 @@ interface IHTMLProps {
   body: string
   postBodyComponents: Array<React.ReactNode>
 }
-
-const DISABLE_INDEXING = process.env.DISABLE_INDEXING === 'true'
 
 const HTML: React.FC<IHTMLProps> = props => {
   return (
@@ -23,8 +19,6 @@ const HTML: React.FC<IHTMLProps> = props => {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        {DISABLE_INDEXING && <meta name="robots" content="noindex, nofollow" />}
-        <meta name="algolia-site-verification" content={config.algolia.appId} />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

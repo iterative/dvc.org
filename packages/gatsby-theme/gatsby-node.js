@@ -99,3 +99,15 @@ exports.onCreateBabelConfig = ({ actions }) => {
 exports.createPages = require('./createPages')
 
 exports.onCreateNode = require('./onCreateNode')
+
+// Ignore warnings about CSS inclusion order, because we use CSS modules.
+// https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
+exports.onCreateWebpackConfig = ({ getConfig }) => {
+  const config = getConfig()
+  const miniCssExtractPlugin = config.plugins.find(
+    plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
+  )
+  if (miniCssExtractPlugin) {
+    miniCssExtractPlugin.options.ignoreOrder = true
+  }
+}
