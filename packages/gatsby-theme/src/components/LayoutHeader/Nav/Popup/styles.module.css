@@ -1,22 +1,22 @@
 .popup {
-  display: none;
-  visibility: hidden;
+  display: grid;
   padding: 8px;
   opacity: 0;
   position: absolute;
   left: 10px;
-  top: calc(100% + 4px);
+  top: calc(100% - 4px);
+  visibility: hidden;
   z-index: 2;
   background-color: #fff;
   filter: drop-shadow(0 2px 8px rgb(0 0 0 / 15%));
   border-radius: 12px;
+  box-sizing: border-box;
   transition:
     opacity 0.2s ease-in-out,
     visibility 0.2s ease-in-out;
 
   &.visible {
     opacity: 1;
-    display: grid;
     visibility: visible;
   }
 }
@@ -36,19 +36,19 @@
 }
 
 .cmlIcon {
-  background-image: url('../../../../images/cml_icon-color--square_vector.svg');
+  background-image: url('../../../../../../../static/img/cml_icon-color--square_vector.svg');
 }
 
 .dvcIcon {
-  background-image: url('../../../../images/dvc_icon-color--square_vector.svg');
+  background-image: url('../../../../../../../static/img/dvc_icon-color--square_vector.svg');
 }
 
 .studioIcon {
-  background-image: url('../../../../images/studio_icon-color--square_vector.svg');
+  background-image: url('../../../../../../../static/img/studio_icon-color--square_vector.svg');
 }
 
-.mlemIcon {
-  background-image: url('../../../../images/mlem-icon.svg');
+.vscodeIcon {
+  background-image: url('../../../../../../../static/img/vscode-icon.svg');
 }
 
 .communityPopup {
@@ -71,7 +71,7 @@
     grid-template-columns: 32px 216px;
     column-gap: 16px;
 
-    &:hover .titleIcon {
+    &:hover .titleExternalIcon {
       opacity: 1;
     }
 
@@ -92,9 +92,18 @@
       line-height: 24px;
       display: flex;
       align-items: center;
+
+      &Icon {
+        margin-left: 4px;
+        margin-bottom: 2px;
+        width: 14px;
+        height: 14px;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
 
-    .titleIcon {
+    .titleExternalIcon {
       opacity: 0;
       width: 16px;
       height: 16px;
@@ -106,6 +115,39 @@
       color: rgb(15 22 36 / 50%);
       font-size: 16px;
       line-height: 20px;
+    }
+  }
+}
+
+.otherPopup {
+  padding: 10px;
+
+  .link {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(5),
+    &:nth-child(6) {
+      display: none;
+    }
+
+    @media screen(mdMax) {
+      font-size: 17px;
+      line-height: 20px;
+
+      &:nth-child(6) {
+        display: initial;
+      }
+    }
+
+    @media screen(smMax) {
+      &:nth-child(5) {
+        display: initial;
+      }
     }
   }
 }

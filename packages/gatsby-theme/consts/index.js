@@ -16,7 +16,9 @@ const consts = {
   SIDEBAR_FILE_ROOT: '/docs/',
   SIDEBAR_FILE_EXTENSION: '.md',
   DOCS_PREFIX: '',
-  MAIN_SITE_URL: 'https://dvc.org'
+  MAIN_SITE_URL: 'https://dvc.org',
+  BLOGS_URL: 'https://dvc.org/blog',
+  HOME_PAGE_LINK: '/'
 }
 
 module.exports = consts

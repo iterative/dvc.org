@@ -2,7 +2,6 @@ const path = require('path')
 
 const defaults = require('./config-defaults')
 const { DOCS_PREFIX } = require('./consts')
-const { name: packageName } = require('./package.json')
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
@@ -86,17 +85,6 @@ exports.createSchemaCustomization = async api => {
       }
     })
   ])
-}
-
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        [`${packageName}/sidebar$`]: require.resolve('./src/sidebar'),
-        [`${packageName}/redirects$`]: require.resolve('./src/redirects')
-      }
-    }
-  })
 }
 
 exports.onCreateBabelConfig = ({ actions }) => {

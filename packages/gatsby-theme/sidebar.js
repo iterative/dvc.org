@@ -1,2 +1,1 @@
-const pseudoShadow = require('./pseudo-shadow')
-module.exports = pseudoShadow('sidebar')
+module.exports = require('../../content/docs/sidebar.json')

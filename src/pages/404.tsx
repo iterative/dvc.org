@@ -1,8 +1,8 @@
 import { PageProps } from 'gatsby'
 
+import MainLayout from '@dvcorg/gatsby-theme/src/components/MainLayout'
 import SEO from '@dvcorg/gatsby-theme/src/components/SEO'
 
-import MainLayout from '../components/MainLayout'
 import NotFound from '../components/NotFound'
 
 const NotFoundPage = ({ location }: PageProps) => (

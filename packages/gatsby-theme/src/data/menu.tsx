@@ -1,5 +1,8 @@
-import { blogsURL, homePageLink } from '@/constants/internalLinks'
-import { MAIN_SITE_URL } from '@dvcorg/gatsby-theme/consts'
+import {
+  MAIN_SITE_URL,
+  BLOGS_URL,
+  HOME_PAGE_LINK
+} from '@dvcorg/gatsby-theme/consts'
 
 import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
 import {
@@ -34,12 +37,12 @@ const menuData: IMenuData = {
       text: 'Use Cases'
     },
     {
-      href: homePageLink,
+      href: HOME_PAGE_LINK,
       eventType: 'doc',
       text: 'Doc'
     },
     {
-      href: blogsURL,
+      href: BLOGS_URL,
       eventType: 'blog',
       text: 'Blog'
     },

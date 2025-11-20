@@ -1,18 +1,18 @@
 import cn from 'classnames'
 
-import { ReactComponent as CmlSVG } from '../../images/cml_icon-color--square_vector.svg'
-import { ReactComponent as LogoSVG } from '../../images/dvc_by_lakefs_white.svg'
-import { ReactComponent as MlemSVG } from '../../images/mlem-icon.svg'
-import { ReactComponent as StudioSVG } from '../../images/studio_icon-color--square_vector.svg'
-import { getFirstPage } from '../../utils/shared/sidebar'
-import LayoutWidthContainer from '../LayoutWidthContainer'
-import Link from '../Link'
-import SocialIcon, { ISocialIcon } from '../SocialIcon'
-import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
-import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
-import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
+import { MAIN_SITE_URL, BLOGS_URL } from '@dvcorg/gatsby-theme/consts'
+import * as styles from '@dvcorg/gatsby-theme/src/components/LayoutFooter/styles.module.css'
+import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import SocialIcon, {
+  ISocialIcon
+} from '@dvcorg/gatsby-theme/src/components/SocialIcon'
+import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/discord.svg'
+import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/github.svg'
+import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
+import { getFirstPage } from '@dvcorg/gatsby-theme/src/utils/shared/sidebar'
 
-import * as styles from './styles.module.css'
+import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_by_lakefs_white.svg'
 
 const docsPage = getFirstPage()
 
@@ -30,9 +30,28 @@ interface IFooterListData {
 
 const footerListsData: Array<IFooterListData> = [
   {
+    header: 'Product',
+    links: [
+      {
+        href: MAIN_SITE_URL,
+        text: 'Overview'
+      },
+      {
+        href: '/use-cases',
+        text: 'Use Cases'
+      },
+      {
+        href: BLOGS_URL,
+        text: 'Blog'
+      }
+    ]
+  },
+  {
     header: 'Help',
     links: [
+      { href: `${MAIN_SITE_URL}/support`, text: 'Support' },
       { href: '/start', text: 'Get started' },
+      { href: `${MAIN_SITE_URL}/community`, text: 'Community' },
       { href: docsPage, text: 'Documentation' }
     ]
   },
@@ -52,56 +71,16 @@ const footerListsData: Array<IFooterListData> = [
         target: '_blank'
       },
       {
-        href: '/chat',
+        href: `${MAIN_SITE_URL}/chat`,
         text: 'Discord',
         icon: <DiscordSVG className={styles.icon} />
       }
     ]
   },
   {
-    header: 'Company',
+    header: 'Legal',
     links: [
-      {
-        href: '/user-guide/privacy',
-        text: 'Privacy Policy'
-      },
-      {
-        href: 'https://iterative.ai/about#career',
-        text: 'Career',
-        target: '_blank'
-      },
-      {
-        href: 'https://iterative.ai/brand',
-        text: 'Media Kit'
-      }
-    ]
-  },
-  {
-    header: 'Other Tools',
-    links: [
-      {
-        href: '/',
-        text: 'DVC',
-        icon: <LogoSVG className={styles.productIcon} />
-      },
-      {
-        href: 'https://cml.dev/',
-        text: 'CML',
-        icon: <CmlSVG className={styles.productIcon} />,
-        target: '_blank'
-      },
-      {
-        href: 'https://studio.iterative.ai/',
-        text: 'Studio',
-        icon: <StudioSVG className={styles.productIcon} />,
-        target: '_blank'
-      },
-      {
-        href: 'https://mlem.ai/',
-        text: 'MLEM',
-        icon: <MlemSVG className={styles.productIcon} />,
-        target: '_blank'
-      }
+      { href: 'https://lakefs.io/privacy-policy', text: 'Privacy Policy' }
     ]
   }
 ]
@@ -123,14 +102,9 @@ const footerSocialIconsData: Array<ISocialIcon> = [
     url: 'https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ'
   },
   {
-    site: 'linkedinNoBg',
-    label: 'Iterative LinkedIn',
-    url: 'https://www.linkedin.com/company/iterative-ai'
-  },
-  {
     site: 'discord',
     label: 'DVC Discord chat',
-    url: 'https://www.dvc.org/chat'
+    url: `${MAIN_SITE_URL}/chat`
   }
 ]
 
@@ -177,12 +151,13 @@ const LayoutFooter: React.FC = () => (
       <div
       //  className={styles.top}
       >
-        <Link className={styles.logo} href="/" title="dvc.org">
+        <Link className={styles.logo} href={MAIN_SITE_URL} title="dvc.org">
           <LogoSVG />
         </Link>
       </div>
       <FooterLists />
-      <div className={styles.bottomRow}>
+
+      <div className="mx-auto mt-6">
         <FooterSocialIcons />
       </div>
     </LayoutWidthContainer>

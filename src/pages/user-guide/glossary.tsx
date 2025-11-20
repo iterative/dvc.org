@@ -4,9 +4,8 @@ import { PageProps } from 'gatsby'
 import DocLayout from '@dvcorg/gatsby-theme/src/components/Documentation/Layout'
 import DocWithJsx from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX'
 import AutoLinkElement from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX/AutoLinkElement'
+import MainLayout from '@dvcorg/gatsby-theme/src/components/MainLayout'
 import useGlossary from '@dvcorg/gatsby-theme/src/utils/front/glossary'
-
-import MainLayout from '../../components/MainLayout'
 
 const Glossary = ({ location }: PageProps) => {
   const { contents } = useGlossary()

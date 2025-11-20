@@ -1,23 +1,18 @@
 import cn from 'classnames'
 import { useEffect, useState, useCallback, MouseEvent } from 'react'
 
-import cmlLogo from '../../images/cml_icon-color--square_vector.svg'
-import { ReactComponent as LogoSVG } from '../../images/dvc_by_lakefs_white.svg'
-import dvcLogo from '../../images/dvc_icon-color--square_vector.svg'
-import discordLogo from '../../images/icon-discord.svg'
-import mailIcon from '../../images/icon-mail.svg'
-import mlemLogo from '../../images/mlem-icon.svg'
-import studioLogo from '../../images/studio_icon-color--square_vector.svg'
-import { logEvent } from '../../utils/front/plausible'
-import { getFirstPage } from '../../utils/shared/sidebar'
-import HamburgerIcon from '../HamburgerIcon'
-import Link from '../Link'
-import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
-import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
-
-import * as styles from './styles.module.css'
-
-const docsPage = getFirstPage()
+import {
+  BLOGS_URL,
+  HOME_PAGE_LINK,
+  MAIN_SITE_URL
+} from '@dvcorg/gatsby-theme/consts'
+import HamburgerIcon from '@dvcorg/gatsby-theme/src/components/HamburgerIcon'
+import * as styles from '@dvcorg/gatsby-theme/src/components/HamburgerMenu/styles.module.css'
+import Link from '@dvcorg/gatsby-theme/src/components/Link'
+import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/github.svg'
+import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
+import menuData from '@dvcorg/gatsby-theme/src/data/menu'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 export type HamburgerHelpers = {
   opened: boolean
@@ -34,8 +29,8 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
 
   const handleClose = useCallback(() => setOpened(false), [])
 
-  const handleItemClick = useCallback<(item?: string) => void>(
-    item => (): void => {
+  const handleItemClick = useCallback(
+    (item?: string) => (): void => {
       handleClose()
       if (item) {
         logEvent('Hamburger Menu', { Item: item })
@@ -55,7 +50,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
     handleToggle,
     handleClose,
     handleItemClick
-  } as HamburgerHelpers
+  }
 }
 
 export const HamburgerMenu: React.FC<
@@ -68,17 +63,26 @@ export const HamburgerMenu: React.FC<
       <div className={styles.logoRow}>
         <Link
           onClick={() => handleItemClick()}
-          href="/"
+          href={MAIN_SITE_URL}
           className={styles.logo}
           aria-label="Home"
         >
-          <LogoSVG />
+          <img src="/img/dvc_by_lakefs_white.svg" alt="DVC Logo" />
         </Link>
       </div>
       <ul className={styles.sections}>
         <li className={styles.section}>
           <Link
-            href={docsPage}
+            href="/use-cases"
+            className={styles.sectionHeading}
+            onClick={() => handleItemClick('use-cases')}
+          >
+            Use Cases
+          </Link>
+        </li>
+        <li className={styles.section}>
+          <Link
+            href={HOME_PAGE_LINK}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('doc')}
           >
@@ -86,7 +90,60 @@ export const HamburgerMenu: React.FC<
           </Link>
         </li>
         <li className={styles.section}>
-          <div className={styles.sectionHeading}>Support</div>
+          <Link
+            href={BLOGS_URL}
+            className={styles.sectionHeading}
+            onClick={() => handleItemClick('blog')}
+          >
+            Blog
+          </Link>
+        </li>
+        <li className={styles.section}>
+          <Link
+            href="https://learn.dvc.org/"
+            className={styles.sectionHeading}
+            onClick={() => handleItemClick('course')}
+          >
+            Course
+          </Link>
+        </li>
+        <li className={styles.section}>
+          <Link
+            href={`${MAIN_SITE_URL}/community`}
+            className={styles.sectionHeading}
+            onClick={() => handleItemClick('community')}
+          >
+            Community
+          </Link>
+          <ul className={styles.subSections}>
+            {menuData.community.map(item => (
+              <li className={styles.subSection} key={item.href}>
+                <Link
+                  href={item.href}
+                  className={styles.subSectionLink}
+                  onClick={() => handleItemClick('community')}
+                >
+                  <img
+                    className={styles.subSectionLinkImage}
+                    src={item.img}
+                    alt={item.imgAlt}
+                  />
+                  <span className={styles.subSectionLinkTitle}>
+                    {item.title}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li className={styles.section}>
+          <Link
+            href="/support"
+            className={styles.sectionHeading}
+            onClick={() => handleItemClick('support')}
+          >
+            Support
+          </Link>
           <ul className={styles.subSections}>
             <li className={styles.subSection}>
               <Link
@@ -97,7 +154,7 @@ export const HamburgerMenu: React.FC<
               >
                 <img
                   className={styles.subSectionLinkImage}
-                  src={mailIcon}
+                  src="/img/community/icon-mail.svg"
                   alt=""
                 />
                 <span className={styles.subSectionLinkTitle}>E-Mail</span>
@@ -123,7 +180,7 @@ export const HamburgerMenu: React.FC<
               >
                 <img
                   className={styles.subSectionLinkImage}
-                  src={discordLogo}
+                  src="/img/community/icon-discord.svg"
                   alt=""
                 />
                 <span className={styles.subSectionLinkTitle}>Discord</span>
@@ -138,54 +195,6 @@ export const HamburgerMenu: React.FC<
               >
                 <TwitterIcon className={styles.subSectionLinkImage} />
                 <span className={styles.subSectionLinkTitle}>Twitter</span>
-              </Link>
-            </li>
-          </ul>
-        </li>
-        <li className={styles.section}>
-          <p className={styles.sectionHeading}>All Tools</p>
-          <ul className={styles.subSections}>
-            <li className={styles.subSection}>
-              <Link
-                href="https://studio.iterative.ai/"
-                className={styles.subSectionLink}
-              >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src={studioLogo}
-                  alt="Studio logo"
-                />
-                <span className={styles.subSectionLinkTitle}>Studio</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link href="/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src={dvcLogo}
-                  alt="DVC logo"
-                />
-                <span className={styles.subSectionLinkTitle}>DVC</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link href="https://cml.dev/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src={cmlLogo}
-                  alt="CML logo"
-                />
-                <span className={styles.subSectionLinkTitle}>CML</span>
-              </Link>
-            </li>
-            <li className={styles.subSection}>
-              <Link href="https://mlem.ai/" className={styles.subSectionLink}>
-                <img
-                  className={styles.subSectionLinkImage}
-                  src={mlemLogo}
-                  alt="MLEM logo"
-                />
-                <span className={styles.subSectionLinkTitle}>MLEM</span>
               </Link>
             </li>
           </ul>

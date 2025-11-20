@@ -1,10 +1,8 @@
-import cn from 'classnames'
+import LinkItems from '@dvcorg/gatsby-theme/src/components/LayoutHeader/Nav/LinkItems'
+import SocialIcons from '@dvcorg/gatsby-theme/src/components/LayoutHeader/Nav/SocialIcons'
+import PseudoButton from '@dvcorg/gatsby-theme/src/components/PseudoButton'
+import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
-import { logEvent } from '../../../utils/front/plausible'
-import PseudoButton from '../../PseudoButton'
-
-import LinkItems from './LinkItems'
-import SocialIcons from './SocialIcons'
 import * as styles from './styles.module.css'
 
 const Nav: React.FC = () => (
@@ -12,7 +10,7 @@ const Nav: React.FC = () => (
     <LinkItems />
     <SocialIcons />
     <PseudoButton
-      className={cn(styles.getStartedButton, 'btn-with-focus')}
+      className={`${styles.getStartedButton} btn-with-focus`}
       href="/start"
       onClick={(): void => logEvent('Nav', { Item: 'get-started' })}
       size="none"

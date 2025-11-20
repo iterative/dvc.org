@@ -1,2 +1,1 @@
-const pseudoShadow = require('./pseudo-shadow')
-module.exports = pseudoShadow('redirects')
+module.exports = require('../../redirects-list.json')

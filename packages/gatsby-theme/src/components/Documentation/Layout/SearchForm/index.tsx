@@ -1,15 +1,18 @@
 import Promise from 'promise-polyfill'
 import { useEffect, useState } from 'react'
 
-import { loadResource } from '../../../../utils/front/resources'
-
-import * as styles from './styles.module.css'
+import * as styles from '@dvcorg/gatsby-theme/src/components/Documentation/Layout/SearchForm/styles.module.css'
+import { loadResource } from '@dvcorg/gatsby-theme/src/utils/front/resources'
 
 declare global {
   interface Window {
     docsearch?: (opts: Record<string, unknown>) => void
   }
 }
+
+const apiKey = '5341554faa7a8255d383af495c6d3ed2'
+const appId = '98DVTFT919'
+const indexName = 'dvc-docs'
 
 const SearchForm: React.FC = props => {
   const [searchAvailable, setSearchAvailable] = useState<boolean>(false)
@@ -26,8 +29,9 @@ const SearchForm: React.FC = props => {
         ]).then(() => {
           if (window.docsearch) {
             window.docsearch({
-              apiKey: '755929839e113a981f481601c4f52082',
-              indexName: 'dvc',
+              appId,
+              apiKey,
+              indexName,
               inputSelector: '#doc-search',
               debug: false // Set to `true` if you want to inspect the dropdown
             })
@@ -36,8 +40,9 @@ const SearchForm: React.FC = props => {
         })
       } else {
         window.docsearch({
-          apiKey: '755929839e113a981f481601c4f52082',
-          indexName: 'dvc',
+          appId,
+          apiKey,
+          indexName,
           inputSelector: '#doc-search',
           debug: false // Set to `true` if you want to inspect the dropdown
         })
