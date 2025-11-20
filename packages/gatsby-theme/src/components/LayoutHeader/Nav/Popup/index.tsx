@@ -1,9 +1,10 @@
 import cn from 'classnames'
 import { PropsWithChildren } from 'react'
 
-import Link from '@dvcorg/gatsby-theme/src/components/Link'
 import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
+
+import Link from '../../../Link'
 
 import * as styles from './styles.module.css'
 

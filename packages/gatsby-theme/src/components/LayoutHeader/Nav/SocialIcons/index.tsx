@@ -1,6 +1,4 @@
-import SocialIcon, {
-  ISocialIconProps
-} from '@dvcorg/gatsby-theme/src/components/SocialIcon'
+import SocialIcon, { ISocialIconProps } from '../../../SocialIcon'
 
 import * as styles from './styles.module.css'
 

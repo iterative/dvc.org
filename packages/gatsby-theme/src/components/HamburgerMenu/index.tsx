@@ -6,13 +6,15 @@ import {
   HOME_PAGE_LINK,
   MAIN_SITE_URL
 } from '@dvcorg/gatsby-theme/consts'
-import HamburgerIcon from '@dvcorg/gatsby-theme/src/components/HamburgerIcon'
-import * as styles from '@dvcorg/gatsby-theme/src/components/HamburgerMenu/styles.module.css'
-import Link from '@dvcorg/gatsby-theme/src/components/Link'
-import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/github.svg'
-import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
 import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
+
+import HamburgerIcon from '../HamburgerIcon'
+import Link from '../Link'
+import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
+import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
+
+import * as styles from './styles.module.css'
 
 export type HamburgerHelpers = {
   opened: boolean

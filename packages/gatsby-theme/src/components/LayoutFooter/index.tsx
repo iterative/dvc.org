@@ -1,18 +1,19 @@
 import cn from 'classnames'
 
 import { MAIN_SITE_URL, BLOGS_URL } from '@dvcorg/gatsby-theme/consts'
-import * as styles from '@dvcorg/gatsby-theme/src/components/LayoutFooter/styles.module.css'
-import LayoutWidthContainer from '@dvcorg/gatsby-theme/src/components/LayoutWidthContainer'
-import Link from '@dvcorg/gatsby-theme/src/components/Link'
 import SocialIcon, {
   ISocialIcon
 } from '@dvcorg/gatsby-theme/src/components/SocialIcon'
-import { ReactComponent as DiscordSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/discord.svg'
-import { ReactComponent as GithubSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/github.svg'
-import { ReactComponent as TwitterSVG } from '@dvcorg/gatsby-theme/src/components/SocialIcon/twitter.svg'
 import { getFirstPage } from '@dvcorg/gatsby-theme/src/utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_by_lakefs_white.svg'
+import LayoutWidthContainer from '../LayoutWidthContainer'
+import Link from '../Link'
+import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
+import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
+import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
+
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 

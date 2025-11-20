@@ -1,8 +1,9 @@
 import Promise from 'promise-polyfill'
 import { useEffect, useState } from 'react'
 
-import * as styles from '@dvcorg/gatsby-theme/src/components/Documentation/Layout/SearchForm/styles.module.css'
 import { loadResource } from '@dvcorg/gatsby-theme/src/utils/front/resources'
+
+import * as styles from './styles.module.css'
 
 declare global {
   interface Window {

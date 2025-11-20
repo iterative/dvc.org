@@ -1,7 +1,5 @@
 import cn from 'classnames'
 
-import { IPopupProps } from '@dvcorg/gatsby-theme/src/components/LayoutHeader/Nav/Popup'
-import Link from '@dvcorg/gatsby-theme/src/components/Link'
 import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
@@ -11,6 +9,8 @@ import usePopup, {
 import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
 import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
+import Link from '../../../Link'
+import { IPopupProps } from '../Popup'
 
 import * as styles from './styles.module.css'
 

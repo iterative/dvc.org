@@ -1,6 +1,6 @@
 import cn from 'classnames'
 
-import Link, { ILinkProps } from '@dvcorg/gatsby-theme/src/components/Link'
+import Link, { ILinkProps } from '../Link'
 
 import * as styles from './styles.module.css'
 
