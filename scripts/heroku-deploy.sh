@@ -8,4 +8,4 @@ ln -s $NEWPWD $OLDPWD
 cd $NEWPWD
 yarn build
 ./scripts/deploy-with-s3.js
-rm -rf static .dvc .heroku/python contents content
+rm -rf static
