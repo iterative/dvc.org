@@ -84,7 +84,8 @@ app.use(
 )
 app.use(helmet(helmetOptions))
 
-const mustRevalidate = 'public, max-age=0, must-revalidate'
+const mustRevalidate =
+  'public, max-age=0, must-revalidate, s-maxage=60, stale-while-revalidate=240'
 const cacheForever = 'public, max-age=31536000, immutable'
 const serveMiddleware = async (req, res) => {
   await serveHandler(req, res, {
