@@ -46,5 +46,6 @@ async function uploadToS3(dir, childPrefix, basePrefix = s3Prefix) {
 }
 
 module.exports = {
+  s3Prefix,
   uploadToS3
 }

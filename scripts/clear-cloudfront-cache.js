@@ -1,9 +1,12 @@
-const {
+#!/usr/bin/env node
+'use strict'
+
+import {
   CloudFrontClient,
   CreateInvalidationCommand
-} = require('@aws-sdk/client-cloudfront')
+} from '@aws-sdk/client-cloudfront'
 
-module.exports = async function () {
+async function clearCloudfrontCache() {
   const {
     CLOUDFRONT_DISTRIBUTION_ID,
     CONTEXT,
@@ -47,3 +50,5 @@ module.exports = async function () {
     `Cleared CloudFront cache successfully: ${response.Invalidation.Id}`
   )
 }
+
+await clearCloudfrontCache()

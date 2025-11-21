@@ -2,18 +2,10 @@
 'use strict'
 
 require('dotenv').config()
-const { rm, rename } = require('node:fs/promises')
 const { exit } = require('node:process')
 const path = require('path')
 
-const { s3Prefix } = require('../src/server/config')
-
-const clearCloudfrontCache = require('./clear-cloudfront-cache')
-const { uploadToS3 } = require('./s3-utils')
-
-const rootDir = process.cwd()
-const publicDir = path.join(rootDir, 'public')
-const cacheDir = path.join(rootDir, '.cache')
+const { uploadToS3, s3Prefix } = require('./s3-utils')
 
 /**
  * Deploy public/ to s3.
@@ -31,16 +23,9 @@ const cacheDir = path.join(rootDir, '.cache')
  *  - AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY: auth token to access the bucket.
  *  - HEROKU_APP_NAME: (optional) app name to specify the ID of the PR if any.
  **/
-async function main() {
-  await uploadToS3(publicDir, '/', s3Prefix)
-  // Move the 404 HTML file from public into the root dir for Heroku
-  await rename(path.join(publicDir, '404.html'), '404.html')
-  // await rm(publicDir, { recursive: true, force: true })
-  await rm(cacheDir, { recursive: true, force: true })
-  await clearCloudfrontCache()
-}
-
-main().catch(e => {
+const rootDir = process.cwd()
+const publicDir = path.join(rootDir, 'public')
+uploadToS3(publicDir, '/', s3Prefix).catch(e => {
   console.error(e)
   exit(1)
 })
