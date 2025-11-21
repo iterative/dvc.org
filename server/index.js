@@ -84,12 +84,36 @@ app.use(
 )
 app.use(helmet(helmetOptions))
 
+const mustRevalidate = 'public, max-age=0, must-revalidate'
+const cacheForever = 'public, max-age=31536000, immutable'
 const serveMiddleware = async (req, res) => {
   await serveHandler(req, res, {
     public: 'public',
     cleanUrls: true,
     trailingSlash: false,
-    directoryListing: false
+    directoryListing: false,
+    headers: [
+      {
+        source: '**/*.html',
+        headers: [{ key: 'Cache-Control', value: mustRevalidate }]
+      },
+      {
+        source: 'page-data/**',
+        headers: [{ key: 'Cache-Control', value: mustRevalidate }]
+      },
+      {
+        source: 'static/**',
+        headers: [{ key: 'Cache-Control', value: cacheForever }]
+      },
+      {
+        source: '**/*.@(css|js)',
+        headers: [{ key: 'Cache-Control', value: cacheForever }]
+      },
+      {
+        source: '**/*.@(jpg|jpeg|gif|png|svg)',
+        headers: [{ key: 'Cache-Control', value: 'max-age=86400' }]
+      }
+    ]
   })
 }
 app.use(serveMiddleware)

@@ -9,8 +9,10 @@ import {
 import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
+import { ReactComponent as MailIcon } from '../../../../../static/img/community/icon-mail.svg'
 import HamburgerIcon from '../HamburgerIcon'
 import Link from '../Link'
+import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
 import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
 import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
 
@@ -154,11 +156,7 @@ export const HamburgerMenu: React.FC<
                 target="_blank"
                 onClick={() => handleItemClick('mail')}
               >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-mail.svg"
-                  alt=""
-                />
+                <MailIcon className={styles.subSectionLinkImage} />
                 <span className={styles.subSectionLinkTitle}>E-Mail</span>
               </Link>
             </li>
@@ -180,11 +178,7 @@ export const HamburgerMenu: React.FC<
                 onClick={() => handleItemClick('chat')}
                 target="_blank"
               >
-                <img
-                  className={styles.subSectionLinkImage}
-                  src="/img/community/icon-discord.svg"
-                  alt=""
-                />
+                <DiscordSVG className={styles.subSectionLinkImage} />
                 <span className={styles.subSectionLinkTitle}>Discord</span>
               </Link>
             </li>
