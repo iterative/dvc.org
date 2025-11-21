@@ -10,7 +10,7 @@ import {
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 
-import LayoutAlert from './Alert'
+// import LayoutAlert from './Alert'
 import { HeaderBranding } from './HeaderBranding'
 import Nav from './Nav'
 import * as styles from './styles.module.css'
@@ -21,7 +21,7 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
 
   const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
-  const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
+  // const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
   const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
@@ -32,9 +32,9 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
         data-collapsed={collapsed}
         className={cn(styles.headerContainer)}
       >
-        {!hasHideAlertModifier && LayoutAlert && (
-          <LayoutAlert collapsed={collapsed} />
-        )}
+        {/* {!hasHideAlertModifier && LayoutAlert && ( */}
+        {/*   <LayoutAlert collapsed={collapsed} /> */}
+        {/* )} */}
         <LayoutWidthContainer
           className={cn(
             styles.header,
