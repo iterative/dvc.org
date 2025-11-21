@@ -4,18 +4,11 @@ const {
   getRedirect
 } = require('@dvcorg/gatsby-theme/src/utils/shared/redirects')
 
-const { isProduction } = require('../../utils')
-
-const OLD_BLOG_URL_REGEXP = /dataversioncontrol\.com/
+const isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = (req, res, next) => {
   const host = req.headers.host
   let pathname = req.baseUrl + req.path
-  // Remove invisible emoji from URL. It's was an old medium blog
-  if (OLD_BLOG_URL_REGEXP.test(host)) {
-    pathname = pathname.replace(/%EF%B8%8F/, '')
-  }
-
   const [code, location] = getRedirect(host, pathname, {
     req,
     dev: !isProduction

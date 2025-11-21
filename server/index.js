@@ -1,6 +1,5 @@
 /*
- * Production server. Proxies to S3 depending on HEROKU_APP_NAME (see
- * scripts/deploy-with-s3.js)
+ * Production server.
  *
  * NOTE: This file doesn't go through babel or webpack. Make sure the syntax and
  * sources this file requires are compatible with the current node version you
@@ -8,14 +7,11 @@
  *
  * Required environment variables:
  *
- *  - S3_BUCKET: name of the bucket
- *  - AWS_REGION: region of the bucket
- *  - AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY: IAM token to access bucket
  *  - HEROKU_APP_NAME: If this is a PR, an ID of the PR. Don't add this for
  *    production.
  */
-
 require('./instrument')
+require('dotenv').config()
 
 const Sentry = require('@sentry/node')
 const compression = require('compression')
@@ -23,18 +19,12 @@ const express = require('express')
 const helmet = require('helmet')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const permissionsPolicy = require('permissions-policy')
+const serveHandler = require('serve-handler')
 
-require('dotenv').config()
-
-// eslint-disable-next-line import-x/order
-const { s3Url } = require('./config')
+const redirectsMiddleware = require('./redirect')
 
 const port = process.env.PORT || 3000
 const app = express()
-
-const redirectsMiddleware = require('./middleware/redirects')
-const serveMiddleware = require('./middleware/serve')
-const { isProduction } = require('./utils')
 
 app.use(compression())
 app.use(redirectsMiddleware)
@@ -93,6 +83,15 @@ app.use(
   })
 )
 app.use(helmet(helmetOptions))
+
+const serveMiddleware = async (req, res) => {
+  await serveHandler(req, res, {
+    public: 'public',
+    cleanUrls: true,
+    trailingSlash: false,
+    directoryListing: false
+  })
+}
 app.use(serveMiddleware)
 Sentry.setupExpressErrorHandler(app)
 
@@ -117,10 +116,5 @@ app.use((req, res, _next) => {
 })
 app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}/`)
-
-  if (isProduction) {
-    console.log(`Proxying to ${s3Url}`)
-  } else {
-    console.log('Serving static files from local')
-  }
+  console.log('Serving static files from local')
 })

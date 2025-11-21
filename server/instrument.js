@@ -1,6 +1,8 @@
 const Sentry = require('@sentry/node')
 
-const { parseBoolean } = require('./utils')
+const parseBoolean = str => {
+  return ['True', 'true', '1', true].includes(str)
+}
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,

@@ -3,7 +3,7 @@
 require('dotenv').config()
 const path = require('path')
 
-const redirectsMiddleware = require('./src/server/middleware/redirects')
+const redirectsMiddleware = require('./server/redirect')
 
 const title = 'Data Version Control · DVC'
 const description =
