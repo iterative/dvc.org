@@ -1,4 +1,4 @@
-![owl logo](https://dvc.org/img/logo-github-readme.png)
+![owl logo](https://doc.dvc.org/img/logo-github-readme.png)
 
 [![Link Check](https://github.com/iterative/dvc.org/workflows/Check%20all%20links%20in%20the%20repository/badge.svg)](https://github.com/iterative/dvc.org/actions?query=workflow%3A%22Check+all+links+in+the+repository%22)
 
