@@ -1,10 +1,10 @@
 # Discovering and accessing data
 
-Assuming you've learned the basics of how to
-[track and version data](/start/data-management/data-versioning) with DVC, you
-might wonder: How can we access and use these <abbr>artifacts</abbr> _outside_
-of the DVC project? How do we download a model to deploy it? How to download a
-specific version of a model? How to reuse datasets across different projects?
+Assuming you've learned the basics of how to [track and version data](/start)
+with DVC, you might wonder: How can we access and use these
+<abbr>artifacts</abbr> _outside_ of the DVC project? How do we download a model
+to deploy it? How to download a specific version of a model? How to reuse
+datasets across different projects?
 
 <admon type="tip">
 

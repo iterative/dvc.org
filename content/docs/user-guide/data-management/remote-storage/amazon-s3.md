@@ -18,7 +18,7 @@ CLI config]. This reads the default AWS credentials file (if available) or
 [env vars](#environment-variables).
 
 [aws cli config]:
-  https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
+  https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
 
 <admon type="info">
 
@@ -100,10 +100,10 @@ they're effective depends on each storage platform.
 
 </admon>
 
-[minio]: https://min.io/
+[minio]: https://www.min.io/
 [digitalocean space]: https://www.digitalocean.com/products/spaces
-[ibm cloud object storage]: https://www.ibm.com/cloud/object-storage
-[nebius]: https://nebius.ai/docs/storage/tutorials/dvc
+[ibm cloud object storage]: https://www.ibm.com/products/cloud-object-storage
+[nebius]: https://docs.nebius.com/object-storage
 
 ## More configuration parameters
 
@@ -197,7 +197,7 @@ See `dvc remote modify` for more command usage details.
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html
 [sse-c]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html
-[acl]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html
+[acl]: https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html
 [grantees]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#specifying-grantee
 [permissions]:

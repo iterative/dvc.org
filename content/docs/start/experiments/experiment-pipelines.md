@@ -8,7 +8,7 @@ description:
 # Get Started: Experimenting Using Pipelines
 
 If you've been following the guide in order, you might have gone through the
-chapter about [data pipelines](/start/data-management/data-pipelines) already.
+chapter about [data pipelines](/start/data-pipelines/data-pipelines) already.
 Here, we will use the same functionality as a basis for an experimentation build
 system.
 
@@ -27,7 +27,7 @@ After some time spent in your IPython notebook (e.g.
 exploration and basic modeling, managing your notebook cells may start to feel
 fragile, and you may want to structure your project and code for reproducible
 execution, testing and further automation. When you are ready to
-[migrate from notebooks to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c),
+[migrate from notebooks to scripts](https://towardsdatascience.com/from-jupyter-notebook-to-sc-582978d3c0c/),
 DVC <abbr>Pipelines</abbr> help you standardize your workflow following software
 engineering best practices:
 

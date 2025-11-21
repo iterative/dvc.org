@@ -7,9 +7,8 @@
 
 # Contributing Docs
 
-Please see our
-[Contributing guide](https://doc.dvc.org/user-guide/contributing/docs) for more
-details. Thanks to all our contributors!
+Please see our [Contributing guide](https://doc.dvc.org/contributing/docs) for
+more details. Thanks to all our contributors!
 
 [![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/iterative/dvc.org/graphs/contributors)
 

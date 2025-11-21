@@ -32,7 +32,7 @@ DVC-handled directories.
 <admon type="warning">
 
 `dvc exp run` and `dvc repro` might remove ignored files. If they are not
-produced by a pipeline [stage](/command-reference/run), they can be lost
+produced by a pipeline [stage](/command-reference/stage/add), they can be lost
 permanently.
 
 </admon>

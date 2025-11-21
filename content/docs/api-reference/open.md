@@ -149,7 +149,7 @@ usage), and is typically faster than loading the whole data into memory.
 
 This is just a matter of using the right `repo` argument, for example an SSH URL
 (requires that the
-[credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+[credentials are configured](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
 locally):
 
 ```py

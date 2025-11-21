@@ -111,9 +111,9 @@ After this, each execution of the code will create a <abbr>DVC experiment</abbr>
 containing the results and the changes needed to reproduce it.
 
 [DVCLive] will automatically log some metrics, parameters and plots from the ML
-Framework and any [data tracked by DVC](/start/data-management/data-versioning)
-but you can also [log additional info](/dvclive#log-data) to be included in the
-experiment. `live.log_artifact("mymodel", type="model")` will
+Framework and any [data tracked by DVC](/start) but you can also
+[log additional info](/dvclive#log-data) to be included in the experiment.
+`live.log_artifact("mymodel", type="model")` will
 [track your model with DVC](/dvclive/live/log_artifact) and enable managing it
 with the <abbr>model registry</abbr>.
 

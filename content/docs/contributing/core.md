@@ -1,9 +1,8 @@
 # Contributing to DVC
 
 We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
-community. See the
-[Contributing to the Documentation](/user-guide/contributing/docs) guide if you
-want to fix or update the documentation or this website.
+community. See the [Contributing to the Documentation](/contributing/docs) guide
+if you want to fix or update the documentation or this website.
 
 ## How to report a problem
 
@@ -23,8 +22,7 @@ paragraphs below to learn how to submit your changes.
   [issue tracker](https://github.com/iterative/dvc/issues).
 - Setup the [development environment](#development-environment) if you need to
   run tests or [run](#running-development-version) the DVC with your changes.
-- Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
-  changes.
+- Fork [DVC](https://github.com/iterative/dvc) and prepare necessary changes.
 - [Add tests](#writing-tests) for your changes to `tests/`. You can skip this
   step if the effort to create tests for your change is unreasonable. Changes
   without tests are still going to be considered by us.
@@ -91,7 +89,7 @@ as expected.
 For specific functionality, you will need to use functional tests alongside
 [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
 directory, Git and/or DVC repo, and bootstrap some files. See the
-[`dir_helpers` module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
+[`dir_helpers` module](https://github.com/iterative/dvc/blob/main/tests/dir_helpers.py)
 docstring for some usage examples.
 
 ## Running tests
@@ -152,8 +150,8 @@ $ python -m tests --pdb
 
 ## Code style guidelines (Python)
 
-We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
-that our code is formatted with [black](https://github.com/ambv/black).
+We are using [PEP8](https://peps.python.org/pep-0008/) and checking that our
+code is formatted with [ruff](https://github.com/astral-sh/ruff).
 
 For [docstrings](https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring),
 we try to adhere by the

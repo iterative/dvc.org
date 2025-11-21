@@ -182,7 +182,7 @@ to [DVCLive] for a helper to log plots.
 ## Stages
 
 You can construct machine learning pipelines by defining individual
-[stages](/command-reference/run) in one or more `dvc.yaml` files. Stages
+[stages](/command-reference/stage/add) in one or more `dvc.yaml` files. Stages
 constitute a pipeline when they connect with each other (forming a [dependency
 graph], see `dvc dag`).
 

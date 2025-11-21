@@ -1,8 +1,9 @@
 # Privacy Policy for Access to Google APIs
 
-DVC is using the [Google Drive API](https://developers.google.com/drive/) to
-make it easier to store files on Google Drive. For more details on how to set it
-up, refer to how to setup
+DVC is using the
+[Google Drive API](https://developers.google.com/workspace/drive) to make it
+easier to store files on Google Drive. For more details on how to set it up,
+refer to how to setup
 [Google Drive](/user-guide/data-management/remote-storage/google-drive).
 
 DVC uses the _DVC_ Application on Google Cloud Platform. (That is the name you
@@ -87,4 +88,4 @@ credentials associated with your project or user.
 ## Acknowledgments
 
 This document is based on Tidyverse's
-[Privacy policy for packages that access Google APIs](https://www.tidyverse.org/google_privacy_policy/).
+[Privacy policy for packages that access Google APIs](https://tidyverse.org/google_privacy_policy/).

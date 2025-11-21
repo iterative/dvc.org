@@ -98,10 +98,9 @@ Models and data are often large and aren't easily tracked in Git.
 `Live.log_artifact("model.pt")` will [cache] the `model.pt` file with DVC and
 make Git ignore it. It will generate a `model.pt.dvc` metadata file, which can
 be tracked in Git and becomes part of the experiment. With this metadata file,
-you can [retrieve](/start/data-management/data-versioning#retrieving) the
-versioned artifact from the Git commit. You can also use
-`Live.log_artifact("model.pt", type="model")` to add it to the <abbr>model
-registry</abbr>.
+you can [retrieve](/start#retrieving-data) the versioned artifact from the Git
+commit. You can also use `Live.log_artifact("model.pt", type="model")` to add it
+to the <abbr>model registry</abbr>.
 
 Using `Live.log_image()` to log multiple images may also grow too large to track
 with Git, in which case you can use
@@ -195,10 +194,10 @@ pipeline. You can optionally drop `Live.log_artifact()` from your code.
 </admon>
 
 [directory]: /dvclive/how-it-works#directory-structure
-[cache]: /start/data-management/data-versioning
+[cache]: /start
 [outputs]: /user-guide/pipelines/defining-pipelines#outputs
 [dependencies]: /user-guide/pipelines/defining-pipelines#simple-dependencies
 [pipeline]: /start/experiments/experiment-pipelines
 [generates]: /dvclive/live/make_dvcyaml
-[add DVCLive to a pipeline]: /start/data-management/metrics-parameters-plots
+[add DVCLive to a pipeline]: /start/data-pipelines/metrics-parameters-plots
 [add a pipeline to DVCLive code]: /start/experiments/experiment-pipelines

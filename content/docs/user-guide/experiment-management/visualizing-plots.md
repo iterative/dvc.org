@@ -31,7 +31,7 @@ saved as SVG or PNG image files from there).
   https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[tracking]: /start/data-management/data-versioning
+[tracking]: /start
 
 For data-series plots, DVC expects to see one or more arrays of objects (usually
 _float numbers_) in the file. These are rendered using

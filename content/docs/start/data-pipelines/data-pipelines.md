@@ -62,9 +62,8 @@ $ tree
 </details>
 
 The data needed to run this example can be downloaded using `dvc get` and
-tracked with `dvc add` (if you are following from
-[Data Versioning](/start/data-management/data-versioning), you may already have
-this data):
+tracked with `dvc add` (if you are following from [Data Versioning](/start), you
+may already have this data):
 
 ```cli
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -137,7 +136,7 @@ Details on the command options used above:
   [parameters](/command-reference/params). Any stage can depend on parameter
   values from a parameters file (`params.yaml` by default). We'll discuss those
   more in the
-  [Metrics, Parameters, and Plots](/start/data-management/metrics-parameters-plots)
+  [Metrics, Parameters, and Plots](/start/data-pipelines/metrics-parameters-plots)
   page.
 
 ```yaml

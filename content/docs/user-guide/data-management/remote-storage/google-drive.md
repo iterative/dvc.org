@@ -114,7 +114,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    > many other reasons, and pushing data with DVC here can make it messy.
 
 3. `appDataFolder` -
-   [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
+   [special hidden folder](https://developers.google.com/workspace/drive/api/guides/appdata)
    (unique per user) meant to store application-specific data. This is a good
    choice to prevent accidentally deleting remote storage data from the Google
    Drive web UI.
@@ -137,13 +137,13 @@ We highly recommend this for heavy use and advanced needs because:
 - [Using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
 
-DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
-to your Google Drive. This requires a Google Cloud _project_ that allows Drive
-API connections, and its
-[OAuth](https://developers.google.com/identity/protocols/OAuth2) credentials
+DVC uses the [Google Drive API](https://developers.google.com/workspace/drive)
+to connect to your Google Drive. This requires a Google Cloud _project_ that
+allows Drive API connections, and its
+[OAuth](https://developers.google.com/identity/protocols/oauth2) credentials
 (**client ID** and **client secret**).
 
-1. Sign into the [Google API Console](https://console.developers.google.com).
+1. Sign into the [Google API Console](https://console.cloud.google.com/apis).
 
    > Double check you're using the intended Google account (upper-right corner).
 
@@ -151,7 +151,7 @@ API connections, and its
    [Create](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
    a project for DVC remote connections.
 
-3. [Enable the Drive API](https://developers.google.com/drive/api/v2/about-sdk)
+3. [Enable the Drive API](https://developers.google.com/workspace/drive/api/guides/about-sdk)
    from the **APIs & Services** **Dashboard** (left sidebar), click on **+
    ENABLE APIS AND SERVICES**. Find and select the "Google Drive API" in the API
    Library, and click on the **ENABLE** button.
@@ -187,7 +187,7 @@ $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 
 > Note that Google Drive API usage limits/quotas apply per _project_ client and
 > can be reviewed in the
-> [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent).
+> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent).
 > Do keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
@@ -213,7 +213,8 @@ necessary credentials will be cached globally, for example in
 `gdrive_user_credentials_file`]), and used automatically next time DVC needs
 them.
 
-[auth process]: https://developers.google.com/drive/api/v2/about-auth
+[auth process]:
+  https://developers.google.com/workspace/drive/api/guides/api-specific-auth
 [see `gdrive_user_credentials_file`]: #configuration-parameters
 
 <admin type="warn">
@@ -273,11 +274,12 @@ $ dvc remote modify myremote gdrive_acknowledge_abuse true
 
 ## Using service accounts
 
-A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
-Google account associated with your GCP project, and not a specific user. They
-are intended for scenarios where your code needs to access data on its own, e.g.
-running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
-authentication is needed.
+A
+[service account](https://docs.cloud.google.com/iam/docs/service-account-overview)
+is a Google account associated with your GCP project, and not a specific user.
+They are intended for scenarios where your code needs to access data on its own,
+e.g. running inside a Compute Engine, automatic CI/CD, etc. No interactive user
+OAuth authentication is needed.
 
 <admon type="info">
 
@@ -398,9 +400,9 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   See [Authorization](#authorization) for more details.
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
-  [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
+  [trash](https://developers.google.com/workspace/drive/api/reference/rest/v2/files/trash)
   instead of
-  [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
+  [deleting](https://developers.google.com/workspace/drive/api/reference/rest/v2/files/delete)
   them permanently. `false` by default, meaning "delete". Useful for shared
   drives/folders, where delete permissions may not be given.
 
@@ -409,7 +411,7 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   ```
 
 - `gdrive_acknowledge_abuse` - acknowledge the risk of downloading potentially
-  [abusive](https://support.google.com/docs/answer/148505) files. Anything
+  [abusive](https://support.google.com/a/users/answer/7338880) files. Anything
   identified as such (malware, personal info., etc.) can only be downloaded by
   their owner (with this param enabled).
 
@@ -421,8 +423,8 @@ them with the `--local` option, so they're written to a Git-ignored config file.
 
 A service account is a Google account associated with your GCP project, and not
 a specific user. Please refer to
-[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
-more information.
+[Using service accounts](https://docs.cloud.google.com/iam/docs/service-account-overview)
+for more information.
 
 - `gdrive_use_service_account` - authenticate using a service account. Make sure
   that the service account has read/write access (as needed) to the file

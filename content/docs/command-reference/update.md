@@ -95,7 +95,7 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 ```
 
 As DVC mentions, the import stage (`.dvc` file) `model.pkl.dvc` is created. This
-[stage](/command-reference/run) is frozen by default though, so to
+[stage](/command-reference/stage/add) is frozen by default though, so to
 [reproduce](/command-reference/repro) it, we would need to run `dvc unfreeze` on
 it first, then `dvc repro` (and `dvc freeze` again). Let's just run `dvc update`
 on it instead:

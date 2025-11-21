@@ -27,11 +27,12 @@ service account or other ways to authenticate ([more info]).
 [google cloud storage]: https://cloud.google.com/storage
 [existing storage bucket]:
   https://cloud.google.com/storage/docs/creating-buckets
-[folder]: https://cloud.google.com/storage/docs/folders
+[folder]: https://docs.cloud.google.com/storage/docs/objects#namespace
 [gcloud cli authorization]: https://cloud.google.com/sdk/docs/authorizing
 [gcloud auth application-default login]:
   https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
-[more info]: https://stackoverflow.com/a/53307505/298182
+[more info]:
+  https://stackoverflow.com/questions/53306131/difference-between-gcloud-auth-application-default-login-and-gcloud-auth-logi/53307505#53307505
 
 To use [custom auth](#custom-authentication) or further configure your DVC
 remote, set any supported config param with `dvc remote modify`.
@@ -42,9 +43,9 @@ For [service accounts] (a Google account associated to your GCP project instead
 of a user), you can set the path to the file that contains a [service account
 key]:
 
-[service accounts]: https://cloud.google.com/iam/docs/service-accounts
-[service account key]:
-  https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+[service accounts]:
+  https://docs.cloud.google.com/iam/docs/service-account-overview
+[service account key]: https://docs.cloud.google.com/iam/docs/keys-create-delete
 
 ```cli
 $ dvc remote modify --local myremote \

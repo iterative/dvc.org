@@ -44,8 +44,9 @@ outs:
 
 DVC checks the headers returned by the server, looking for an
 [HTTP ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
-[Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to
-determine whether the source has changed and we need to download the file again.
+[Content-MD5](https://datatracker.ietf.org/doc/html/rfc1864) header, and uses it
+to determine whether the source has changed and we need to download the file
+again.
 
 </details>
 

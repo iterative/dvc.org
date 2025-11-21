@@ -45,7 +45,7 @@ handled automatically by DVC.
 Benefits of our approach include:
 
 - **Lightweight**: DVC is a
-  [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
+  [free](https://github.com/iterative/dvc/blob/main/LICENSE), open-source
   [command line](/command-reference) tool that doesn't require databases,
   servers, or any other special services.
 
@@ -61,7 +61,7 @@ Benefits of our approach include:
 
   [etc.]: /user-guide/data-management/remote-storage#supported-storage-types
   [constraints]:
-    https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota
+    https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
   [optimizes]: /user-guide/data-management/large-dataset-optimization
 
 - **Collaboration**: Easily distribute your project development and share its
@@ -72,7 +72,7 @@ Benefits of our approach include:
   [reuse]: /user-guide/data-management/discovering-and-accessing-data
 
 - **Data compliance**: Review data modification attempts as Git
-  [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).
+  [pull requests](https://www.dummies.com/article/technology/programming-web-design/general-programming-web-design/what-are-github-pull-requests-264741/).
   Audit the project's immutable history to learn when datasets or models were
   approved, and why.
 

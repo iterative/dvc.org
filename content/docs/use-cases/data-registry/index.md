@@ -1,8 +1,8 @@
 # Data Registry
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
-[versioning of data and model files](/use-cases/data-and-model-files-versioning).
-DVC also enables cross-project
+[versioning of data and model files](/use-cases/versioning-data-and-models). DVC
+also enables cross-project
 [reusability](/user-guide/data-management/discovering-and-accessing-data) of
 these <abbr>data artifacts</abbr>. This means that your projects can depend on
 data from other repositories — like a **package management system for data

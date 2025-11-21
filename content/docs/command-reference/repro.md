@@ -222,7 +222,7 @@ final stage.
 ## Examples
 
 > To get hands-on experience with data science and machine learning pipelines,
-> see [Get Started: Data Pipelines](/start/data-management/data-pipelines).
+> see [Get Started: Data Pipelines](/start/data-pipelines/data-pipelines).
 
 Let's build and reproduce a simple pipeline. It takes this `text.txt` file:
 

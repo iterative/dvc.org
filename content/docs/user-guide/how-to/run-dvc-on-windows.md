@@ -24,11 +24,11 @@ The regular Command Prompt (`cmd`) in Windows will most likely not help you use
 DVC effectively, nor help you follow the examples in our docs. Here are some
 alternatives:
 
-- [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) with
+- [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install) with
   [Windows Terminal](https://devblogs.microsoft.com/commandline/) supports the
   most CLI features (e.g. `\` line continuation). It has good performance (and
   can even
-  [access GPUs](https://channel9.msdn.com/Shows/Tabs-vs-Spaces/GPU-Accelerated-Machine-Learning-with-WSL-2)).
+  [access GPUs](https://learn.microsoft.com/en-us/shows/tabs-vs-spaces/gpu-accelerated-machine-learning-with-wsl-2)).
 - The full [Cmder](https://cmder.app/) console emulator is another good option.
   It combines several useful tools like [ConEmu](https://conemu.github.io/)
   terminal and [Git for Windows](https://gitforwindows.org/) (Git Bash), among
@@ -36,7 +36,7 @@ alternatives:
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
   is also popular.
 - Install an actual Linux distro (e.g. Ubuntu) on a
-  [virtual machine](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/),
+  [virtual machine](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/),
   or in an HD partition (dual boot).
 
 ## Line endings
@@ -117,16 +117,16 @@ it can be granted using the Local policy settings.
 
 This is done automatically by DVC's [Windows installer](/install/windows), but
 you may want to
-[do it manually](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/create-symbolic-links)
+[do it manually](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/create-symbolic-links)
 after any other installation method (`choco`, `conda`, `pip`).
 
 ## Whitelist in Windows Security
 
 Windows 10 includes the
-[Windows Security](https://support.microsoft.com/en-us/help/4013263/windows-10-stay-protected-with-windows-security)
+[Windows Security](https://support.microsoft.com/en-us/windows/stay-protected-with-the-windows-security-app-2ae0363d-0ada-c064-8b56-6a39afb6a963)
 antivirus. If user wants to avoid antivirus scans on specific folders or files
 to improve the performance, then whitelist them in Windows Security as per
-[this](https://support.microsoft.com/en-in/help/4028485/windows-10-add-an-exclusion-to-windows-security)
+[this](https://support.microsoft.com/en-us/windows/virus-and-threat-protection-in-the-windows-security-app-1362f4cd-d71a-b52a-0b66-c2820032b65e)
 guide. For example, we can whitelist DVC binary files on Windows to speed up the
 processes.
 
@@ -145,13 +145,13 @@ guide.
 
 Search Indexing can also slow down file I/O operations on Windows. Try
 [fixing](https://www.groovypost.com/howto/fix-windows-10-search-index/) or
-[disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
+[disabling](https://winaero.com/disable-search-indexing-windows-10/) this
 feature if you don't need it.
 
 ## Disable short-file name generation
 
 With NTFS, users may want to disable `8dot3` as per
-[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
+[this article](https://learn.microsoft.com/en-us/previous-versions/troubleshoot/windows-server/stop-error-code-0x00000019)
 to disable the short-file name generation. It is important to do so for better
 performance when the user has over 300K files in a single directory.
 

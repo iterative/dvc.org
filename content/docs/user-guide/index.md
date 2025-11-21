@@ -72,7 +72,7 @@ this set of principles:
   R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow, PyTorch,
   Scipy, etc.).
 
-[free]: https://github.com/iterative/dvc/blob/master/LICENSE
+[free]: https://github.com/iterative/dvc/blob/main/LICENSE
 [vs code extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [python api]: /api-reference
@@ -240,8 +240,8 @@ _Luigi_, etc.
 
 - DVC utilizes a [directed acyclic graph] (DAG):
   - The dependency graph is defined implicitly by the connections between
-    [stages](/command-reference/run), based on their <abbr>dependencies</abbr>
-    and <abbr>outputs</abbr>.
+    [stages](/command-reference/stage/add), based on their
+    <abbr>dependencies</abbr> and <abbr>outputs</abbr>.
 
   - Each stage defines one node in the DAG, and `dvc.yaml` files contain these
     stage definitions (think Makefiles). All stages (and corresponding
@@ -254,7 +254,7 @@ _Luigi_, etc.
 
 > \* **Inodes** are metadata file records to locate and store permissions to the
 > actual file contents. See **Linking files** in
-> [this doc](https://devconnected.com/understanding-hard-and-soft-links-on-linux)
+> [this doc](https://devconnected.com/understanding-hard-and-soft-links-on-linux/)
 > for technical details (Linux).
 
 [directed acyclic graph]:

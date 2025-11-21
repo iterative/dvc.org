@@ -5,7 +5,7 @@ releases, you can install it from our code repository GitHub.
 
 > We **strongly** recommend creating a
 > [virtual environment](https://docs.python.org/3/library/venv.html) or using
-> [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+> [pipx](https://packaging.python.org/en/latest/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.8+) to encapsulate your local environment.
 
 ```cli

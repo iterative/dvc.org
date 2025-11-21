@@ -370,5 +370,5 @@ Choose a trail to jump into its first chapter:
   your models in an auditable way. Easily access your models and integrate your
   model registry actions into CICD pipelines to follow GitOps best practices.
 
-[Data Pipelines]: /start/data-management/data-pipelines
+[Data Pipelines]: /start/data-pipelines/data-pipelines
 [Experiment Management]: /start/experiments/experiment-tracking

@@ -30,10 +30,12 @@ Get the PKG (binary) from the big "Download" button on the [home page](/).
 
 > Note that currently, in order to open the PKG file, you must go to the
 > **Downloads** directory in Finder and do a
-> [secondary click](https://support.apple.com/en-us/HT207700) on it, then select
-> "Open With" > **Installer.app**, and click the **Open** button.
+> [secondary click](https://support.apple.com/guide/mac-help/right-click-mh35853/mac)
+> on it, then select "Open With" > **Installer.app**, and click the **Open**
+> button.
 
-> You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
+> You may try
+> [these instructions](https://stackoverflow.com/questions/25925752/uninstall-packages-in-mac-os-x/42120328#42120328)
 > to uninstall the macOS package.
 
 ## Install with pip
@@ -42,7 +44,7 @@ Get the PKG (binary) from the big "Download" button on the [home page](/).
 
 We **strongly** recommend creating a
 [virtual environment](https://docs.python.org/3/library/venv.html) or using
-[pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+[pipx](https://packaging.python.org/en/latest/guides/installing-stand-alone-command-line-tools/)
 to encapsulate your local environment.
 
 </admon>
@@ -80,7 +82,7 @@ In this case it installs the `boto3` library along with DVC.
 <admon type="info">
 
 Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
-[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+[Anaconda Distribution](https://www.anaconda.com/docs/getting-started/anaconda/main).
 
 </admon>
 

@@ -27,7 +27,7 @@ be reached, causing this error.
 
 To solve this, it's often possible to increase the open file descriptors limit,
 with `ulimit` on UNIX-like system (for example `ulimit -n 1024`), or
-[increasing Handles limit](https://blogs.technet.microsoft.com/markrussinovich/2009/09/29/pushing-the-limits-of-windows-handles/)
+[increasing Handles limit](https://learn.microsoft.com/en-us/archive/blogs/markrussinovich/pushing-the-limits-of-windows-handles)
 on Windows. Otherwise, try using a lower `JOBS` value.
 
 ## Unable to find credentials {#no-credentials}
@@ -45,7 +45,7 @@ Make sure you are online and able to access your
 ## Bucket does not exist {#no-bucket}
 
 Make sure your bucket
-[exists](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
+[exists](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
 in the correct `region` and/or `endpointurl` (see `dvc remote modify`).
 
 ## Unable to detect cache type {#no-dvc-cache}
@@ -122,7 +122,7 @@ ssh-add --apple-load-keychain ~/.ssh/ed255
 [git credential helper]:
   https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage
 [git credential manager]:
-  https://github.com/GitCredentialManager/git-credential-manager
+  https://github.com/git-ecosystem/git-credential-manager
 [usekeychain]: https://github.com/iterative/dvc-ssh/issues/20
 
 ## Could not open pickled 'index/md5/links' cache {#pickle}

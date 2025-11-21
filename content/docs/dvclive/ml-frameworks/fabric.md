@@ -1,7 +1,7 @@
 # Lightning Fabric
 
 DVCLive allows you to add experiment tracking capabilities to your
-[Lightning Fabric](https://lightning.ai/docs/fabric) projects.
+[Lightning Fabric](https://lightning.ai/docs/fabric/stable/) projects.
 
 ## Usage
 

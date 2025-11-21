@@ -31,10 +31,11 @@ them with the `--local` option, so they're written to a Git-ignored config file.
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
   - `basic` -
-    [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
-    and `password` (or `ask_password`) parameters should also be configured.
+    [basic authentication scheme](https://datatracker.ietf.org/doc/html/rfc7617).
+    `user` and `password` (or `ask_password`) parameters should also be
+    configured.
   - `digest` (**removed** in 2.7.1) -
-    [digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
+    [digest Access Authentication Scheme](https://datatracker.ietf.org/doc/html/rfc7616).
     `user` and `password` (or `ask_password`) parameters should also be
     configured.
   - `custom` - an additional HTTP header field will be set for all HTTP requests
@@ -47,9 +48,9 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   ```
 
 - `method` - override the
-  [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
-  use for file uploads (e.g. `PUT` should be used for
-  [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
+  [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods)
+  to use for file uploads (e.g. `PUT` should be used for
+  [Artifactory](https://jfrog.com/help/r/jfrog-rest-apis/artifactory-rest-apis)).
   By default, `POST` is used.
 
   ```cli

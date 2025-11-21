@@ -270,7 +270,7 @@ Removed experiments: unwet-jinn
 [pull]: #pull-experiments
 [dvc config]: /user-guide/project-structure/configuration#studio
 [remote storage]: /user-guide/data-management/remote-storage
-[sharing-data]: /start/data-management/data-versioning#storing-and-sharing
+[sharing-data]: /start#storing-and-sharing
 [troubleshooting]: /user-guide/troubleshooting#git-auth
 [persistent]: #persist-experiment
 [bring experiment results to your workspace]:

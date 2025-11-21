@@ -140,7 +140,7 @@ source. This will not [push] an additional version to remote storage.
 | `gs`    | Google Cloud Storage         | `gs://bucket/data#1360887697105000`                    |
 
 Another way to understand the `dvc import-url` command is as a shortcut for
-generating a pipeline [stage](/command-reference/run) with an external
+generating a pipeline [stage](/command-reference/stage/add) with an external
 dependency.
 
 > This is discussed in the
@@ -274,7 +274,7 @@ allows DVC to determine whether it's necessary to download it again.
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
 
-[versioning basics]: /start/data-management/data-versioning
+[versioning basics]: /start
 
 ## Example: Detecting external file changes
 
@@ -335,7 +335,7 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-[data processing section]: /start/data-management/data-pipelines
+[data processing section]: /start/data-pipelines/data-pipelines
 
 <details>
 

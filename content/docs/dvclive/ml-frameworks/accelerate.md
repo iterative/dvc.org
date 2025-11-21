@@ -1,7 +1,8 @@
 # Hugging Face Accelerate
 
 DVCLive allows you to add experiment tracking capabilities to your
-[Hugging Face Accelerate](https://huggingface.co/docs/accelerate) projects.
+[Hugging Face Accelerate](https://huggingface.co/docs/accelerate/index)
+projects.
 
 ## Usage
 

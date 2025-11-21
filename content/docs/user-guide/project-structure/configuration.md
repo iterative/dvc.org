@@ -86,9 +86,9 @@ within:
 - [`core.remote`](#remote) - name of the default remote storage
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
-  each [stage](/command-reference/run) in `dvc repro`. (Normally, this behavior
-  requires using the `-i` option of that command.) Accepts values: `true` and
-  `false`.
+  each [stage](/command-reference/stage/add) in `dvc repro`. (Normally, this
+  behavior requires using the `-i` option of that command.) Accepts values:
+  `true` and `false`.
 
 - `core.analytics` - used to turn off
   [anonymized usage statistics](/user-guide/analytics). Accepts values `true`
@@ -101,7 +101,7 @@ within:
   based on [`flock`](https://linux.die.net/man/2/flock) (i.e. project lock file
   `.dvc/lock`). Accepts values `true` and `false` (default). Useful when the DVC
   project is on a file system that doesn't properly support file locking (e.g.
-  [NFS v3 and older](http://nfs.sourceforge.net/)).
+  [NFS v3 and older](https://nfs.sourceforge.net)).
 
 - `core.no_scm` - tells DVC to not expect or integrate with Git (even if the
   <abbr>project</abbr> is initialized inside a Git repo). Accepts values `true`

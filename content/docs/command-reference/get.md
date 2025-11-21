@@ -123,9 +123,9 @@ the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
 `dvc pull` the file from the `dvc remote default` of the source DVC project
 (found in [its config file]).
 
-[root directory]: https://github.com/iterative/example-get-started/tree/master/
+[root directory]: https://github.com/iterative/example-get-started/tree/main/
 [its config file]:
-  https://github.com/iterative/example-get-started/blob/master/.dvc/config
+  https://github.com/iterative/example-get-started/blob/main/.dvc/config
 
 <admon type="info">
 
@@ -230,8 +230,7 @@ Untracked files:
 ```
 
 [get started example repo]: https://github.com/iterative/example-get-started
-[switching between versions]:
-  /start/data-management/data-versioning#switching-between-versions
+[switching between versions]: /start#switching-between-versions
 
 ## Example: Set AWS profile for default remote
 

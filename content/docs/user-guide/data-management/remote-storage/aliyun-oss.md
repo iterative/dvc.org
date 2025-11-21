@@ -2,7 +2,7 @@
 
 First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
 for OSS storage, and configure the
-[endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
+[endpoint](https://www.alibabacloud.com/help/en/oss/user-guide/regions-and-endpoints):
 
 ```cli
 $ dvc remote add -d myremote oss://mybucket/path
@@ -52,8 +52,8 @@ them with the `--local` option, so they're written to a Git-ignored config file.
   ```
 
 - `oss_endpoint` -
-  [OSS endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html) values
-  for accessing the remote container.
+  [OSS endpoint](https://www.alibabacloud.com/help/en/oss/user-guide/regions-and-endpoints)
+  values for accessing the remote container.
 
   ```cli
   $ dvc remote modify myremote oss_endpoint endpoint

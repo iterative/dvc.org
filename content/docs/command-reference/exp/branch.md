@@ -39,7 +39,7 @@ version.
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [persistent]:
   /user-guide/experiment-management/sharing-experiments#persist-experiment
-[stored and shared]: /start/data-management/data-versioning#storing-and-sharing
+[stored and shared]: /start#storing-and-sharing
 
 ## Options
 

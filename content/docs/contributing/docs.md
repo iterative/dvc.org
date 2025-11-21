@@ -15,12 +15,12 @@ To contribute documentation, these are the relevant locations:
 
 - [Content](https://github.com/iterative/dvc.org/tree/main/content/docs)
   (`content/docs/`):
-  [Markdown](https://guides.github.com/features/mastering-markdown/) files. One
-  file — one page of the documentation.
+  [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+  files. One file — one page of the documentation.
 - [Images](https://github.com/iterative/dvc.org/tree/main/static/img)
   (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
   Markdown files like this: `![](/img/<filename>.gif)`.
-- [Navigation](https://github.com/iterative/dvc.org/tree/main/content/docs/sidebar.json)
+- [Navigation](https://github.com/iterative/dvc.org/blob/main/content/docs/sidebar.json)
   (`content/docs/sidebar.json`): Edit it to add or change entries in the
   navigation sidebar.
 
@@ -40,7 +40,7 @@ to update the docs and redeploy the website.
   other things, it can help format the documentation and JS code automatically.
 
 - Push the changes to your fork of
-  [dvc.org](https://github.com/iterative/dvc.org.git) and submit a PR to the
+  [dvc.org](https://github.com/iterative/dvc.org) and submit a PR to the
   upstream repo.
 
 We will review your PR as soon as possible. Thank you for contributing!
@@ -98,9 +98,9 @@ To build the project and run it:
 - `yarn start` - run production static server over the `public` directory.
 
 > All the tests, formatting, and linters below will be automatically enforced
-> before every commit with [Husky](https://typicode.github.io/husky) and
-> [lint-staged](https://github.com/okonet/lint-staged) before each commit, as
-> well as with [GitHub Actions](https://github.com/features/actions) upon
+> before every commit with [Husky](https://typicode.github.io/husky/) and
+> [lint-staged](https://github.com/lint-staged/lint-staged) before each commit,
+> as well as with [GitHub Actions](https://github.com/features/actions) upon
 > [submitting PRs](#submitting-changes).
 
 If you change source code files, run tests:
@@ -147,8 +147,8 @@ Some available variables:
 
 - `GA_ID` – ID of the Google Analytics counter.
 - `ANALYZE` - boolean property to run
-  [webpack-analyzer](https://www.gatsbyjs.org/packages/gatsby-plugin-webpack-bundle-analyzer/).
-- `SENTRY_DSN` - [Sentry](https://sentry.io/) URL for errors tracking.
+  [webpack-analyzer](https://www.gatsbyjs.com/plugins/gatsby-plugin-webpack-bundle-analyser-v2/).
+- `SENTRY_DSN` - [Sentry](https://sentry.io/welcome/) URL for errors tracking.
 
 ## Doc style guidelines (JavaScript and Markdown)
 
@@ -166,8 +166,8 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
 - You can see the configuration of our formatter tool (Prettier)
   [here](https://github.com/iterative/dvc.org/blob/main/.prettierrc). You may
   also run the formatting [commands](#all-commands) manually.
-  ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
-  available through `yarn prettier ...`)
+  ([Advanced usage](https://prettier.io/docs/cli.html) of Prettier is available
+  through `yarn prettier ...`)
 
 - Markdown: Using `dvc <command>`, the docs engine will create a link to that
   command automatically. (No need to use `[]()` explicitly to create them.)

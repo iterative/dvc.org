@@ -57,7 +57,7 @@ provides metrics-driven navigation in Git repositories -- [tabulating and
 plotting] model metrics changes across commits.
 
 [cloud storage]: /user-guide/data-management/remote-storage
-[tabulating and plotting]: /start/data-management/metrics-parameters-plots
+[tabulating and plotting]: /start/data-pipelines/metrics-parameters-plots
 
 **Low friction**: Our sister project CML provides
 [lightweight machine resource orchestration](https://cml.dev/doc/self-hosted-runners)
@@ -75,7 +75,7 @@ deploy and deliver new versions several times a day -- and even before the
 weekend -- without fear of bugs/regressions.
 
 **Metrics (Model Validation)**: Whenever a change is committed, DVC can check
-that the [pipeline](/start/data-management/data-pipelines) (including data,
+that the [pipeline](/start/data-pipelines/data-pipelines) (including data,
 parameters, code, and metrics) is up to date, thereby ensuring that Git commits
 and model artifacts are in sync. DVC can also run benchmarks against previously
 deployed models before a new one is

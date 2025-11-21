@@ -67,7 +67,7 @@ $ dvc exp show ...
   [fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
 
   This can be used to combine `dvc dag` with
-  [`cml send-comment`](https://cml.dev/doc/ref/send-comment)
+  [`cml comment create`](https://cml.dev/doc/ref/comment#create)
 
 - `--mermaid` - show DAG in [Mermaid](https://mermaid-js.github.io) format. It
   can be passed to third party visualization utilities.
@@ -166,13 +166,13 @@ When the `--md` flag is passed, the mermaid output will be wrapped inside a
 Markdown
 [fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
 Note that this output is automatically rendered as a diagram
-[in GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+[in GitHub](https://github.blog/developer-skills/github/include-diagrams-markdown-files-mermaid/)
 and [in GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid).
 
 <admon type="tip">
 
 You can combine `dvc dag --md` with the
-[`cml send-comment`](https://cml.dev/doc/ref/send-comment) of CML:
+[`cml comment create`](https://cml.dev/doc/ref/comment#create) of CML:
 
 ```cli
 dvc dag --md >> dag.md

@@ -27,7 +27,7 @@ We call this file-based definition _codification_ (YAML format in our case). It
 has the added benefit of allowing you to develop pipelines on standard Git
 workflows (and [GitOps]).
 
-[gitops]: /use-cases/versioning-data-and-model-files
+[gitops]: /use-cases/versioning-data-and-models
 
 </admon>
 
@@ -40,7 +40,7 @@ Note that while each pipeline is a graph, this doesn't mean a single `dvc.yaml`
 file. DVC checks the entire <abbr>project</abbr> tree and validates all such
 files to find stages, rebuilding all the pipelines that these may define.
 
-[data versioning]: /start/data-management/data-versioning
+[data versioning]: /start
 [metrics]: /command-reference/metrics
 [plots]: /user-guide/experiment-management/visualizing-plots
 

@@ -1,9 +1,9 @@
 # DVCFileSystem
 
 DVCFileSystem provides a pythonic file interface (
-[fsspec-compatible](https://filesystem-spec.readthedocs.io/)) for a DVC repo. It
-is a read-only filesystem, hence it does not support any write operations, like
-`put_file`, `cp`, `rm`, `mv`, `mkdir` etc.
+[fsspec-compatible](https://filesystem-spec.readthedocs.io/en/latest/)) for a
+DVC repo. It is a read-only filesystem, hence it does not support any write
+operations, like `put_file`, `cp`, `rm`, `mv`, `mkdir` etc.
 
 ```py
 class DVCFileSystem(AbstractFileSystem):
@@ -172,14 +172,15 @@ subdirectory.
 
 ## fsspec API Reference
 
-As DVCFileSystem is based on [fsspec](https://filesystem-spec.readthedocs.io/),
-it is compatible with most of the APIs that it offers. When DVC is installed in
-the same Python environment as any other fsspec-compatible library (such as
-[Hugging Face Datasets][hf-datasets]), DVCFileSystem will be used automatically
-when a `dvc://` filesystem URL is provided to fsspec function calls. For more
-details check out the fsspec's [API Reference][fsspec-api].
+As DVCFileSystem is based on
+[fsspec](https://filesystem-spec.readthedocs.io/en/latest/), it is compatible
+with most of the APIs that it offers. When DVC is installed in the same Python
+environment as any other fsspec-compatible library (such as [Hugging Face
+Datasets][hf-datasets]), DVCFileSystem will be used automatically when a
+`dvc://` filesystem URL is provided to fsspec function calls. For more details
+check out the fsspec's [API Reference][fsspec-api].
 
-[fsspec]: https://filesystem-spec.readthedocs.io/
+[fsspec]: https://filesystem-spec.readthedocs.io/en/latest/
 [fsspec-api]:
   https://filesystem-spec.readthedocs.io/en/latest/api.html#fsspec.spec.AbstractFileSystem
 [hf-datasets]: /user-guide/integrations/huggingface#hugging-face-datasets

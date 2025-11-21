@@ -46,7 +46,7 @@ $ scoop install dvc
 <admon type="info">
 
 Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
-[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+[Anaconda Distribution](https://www.anaconda.com/docs/getting-started/anaconda/main).
 
 </admon>
 
@@ -84,7 +84,7 @@ In this case it installs the `boto3` library along with DVC.
 
 We **strongly** recommend creating a
 [virtual environment](https://docs.python.org/3/library/venv.html) or using
-[pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+[pipx](https://packaging.python.org/en/latest/guides/installing-stand-alone-command-line-tools/)
 to encapsulate your local environment.
 
 </admon>
@@ -122,7 +122,7 @@ is available from the big "Download" button on the [home page](/).
 
 You'll need to download and run the installer again each time you want to update
 DVC. You may use Windows Uninstaller to
-[remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
+[remove the program](https://support.microsoft.com/en-us/windows/repair-apps-and-programs-in-windows-e90eefe4-d0a2-7c1b-dd59-949a9030f317).
 
 > Note that this method by default enables symlink permissions for all users, so
 > they can use them to

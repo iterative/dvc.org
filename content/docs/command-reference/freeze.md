@@ -1,7 +1,7 @@
 # freeze
 
-Freeze [stages](/command-reference/run) until `dvc unfreeze` is used on them.
-Frozen stages are never executed by `dvc repro`.
+Freeze [stages](/command-reference/stage/add) until `dvc unfreeze` is used on
+them. Frozen stages are never executed by `dvc repro`.
 
 ## Synopsis
 
@@ -14,8 +14,8 @@ positional arguments:
 
 ## Description
 
-`dvc freeze` causes the [stages](/command-reference/run) indicated as `targets`
-to be considered _not changed_ by `dvc status` and `dvc repro`. Stage
+`dvc freeze` causes the [stages](/command-reference/stage/add) indicated as
+`targets` to be considered _not changed_ by `dvc status` and `dvc repro`. Stage
 reproduction will not regenerate <abbr>outputs</abbr> of frozen stages, even if
 their <abbr>dependencies</abbr> have changed, and even if `--force` is used.
 

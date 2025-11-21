@@ -33,7 +33,7 @@ these commands.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
 
-[data sharing]: /start/data-management/data-versioning#storing-and-sharing
+[data sharing]: /start#storing-and-sharing
 
 The `dvc remote` used is determined in order, based on
 
@@ -150,8 +150,8 @@ $ dvc push data.zip.dvc
 
 Demonstrating the `--with-deps` option requires a larger example. First, assume
 a [pipeline](/command-reference/dag) has been set up with these
-[stages](/command-reference/run): `clean-posts`, `featurize`, `test-posts`,
-`matrix-train`
+[stages](/command-reference/stage/add): `clean-posts`, `featurize`,
+`test-posts`, `matrix-train`
 
 Imagine the <abbr>project</abbr> has been modified such that the
 <abbr>outputs</abbr> of some of these stages need to be uploaded to [remote

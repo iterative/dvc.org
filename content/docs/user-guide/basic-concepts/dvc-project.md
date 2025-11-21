@@ -20,7 +20,7 @@ tracked by Git are considered part of the DVC project when referenced from DVC
 metafiles such as `dvc.lock`; for example source code that is used as a
 <abbr>stage</abbr> command (`cmd` field in `dvc.yaml`).
 
-[versioning features]: /start/data-management/data-versioning
+[versioning features]: /start
 
 ## Further Reading
 

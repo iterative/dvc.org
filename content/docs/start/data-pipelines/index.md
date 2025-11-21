@@ -16,9 +16,8 @@ description:
 - **[Metrics, parameters, and plots]** - These are first class citizens in DVC
   pipelines. Capture, evaluate, and visualize ML projects without leaving Git.
 
-[data pipelines]: /start/data-management/data-pipelines
-[metrics, parameters, and plots]:
-  /start/data-management/metrics-parameters-plots
+[data pipelines]: /start/data-pipelines/data-pipelines
+[metrics, parameters, and plots]: /start/data-pipelines/metrics-parameters-plots
 
 <admon type="tip">
 
@@ -37,4 +36,4 @@ The steps and results of some of these chapters are captured in our
 Pick a page from the list above, the left-side navigation bar, or just click
 `NEXT` below!
 
-Click [here](/start/) to jump back to the Get Started landing page.
+Click [here](/start) to jump back to the Get Started landing page.

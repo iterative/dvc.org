@@ -85,7 +85,7 @@ file.
   `dvc freeze`), use `dvc update` to bring the import up to date from the data
   source.
 
-[version the data]: /start/data-management/data-versioning
+[version the data]: /start
 
 ## Options
 
@@ -176,7 +176,7 @@ outs:
 ```
 
 Several of the values above are pulled from the original `.dvc` file
-[in the external DVC repository](https://github.com/iterative/example-get-started/blob/master/data/data.xml.dvc).
+[in the external DVC repository](https://github.com/iterative/example-get-started/blob/main/data/data.xml.dvc).
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 version of the dependency, respectively.
 

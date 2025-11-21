@@ -25,8 +25,8 @@ used as a [Python library].
 </cards>
 
 ✅ If you have any questions or need specific help, feel free to join our
-[community](https://dvc.org/community) or use the
-[support](https://dvc.org/support) channels. We are very responsive⚡.
+[community](https://dvc.org/community/) or use the
+[support](https://dvc.org/support/) channels. We are very responsive⚡.
 
 ✅ Check out our GitHub repositories: [DVC](https://github.com/iterative/dvc)
 give us a ⭐ if you like the project!

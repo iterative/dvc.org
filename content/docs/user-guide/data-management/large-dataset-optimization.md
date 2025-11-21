@@ -25,7 +25,7 @@ in the system.
 
 > **Inodes** are metadata file records to locate and store permissions to the
 > actual file contents. See **Linking files** in
-> [this doc](https://devconnected.com/understanding-hard-and-soft-links-on-linux)
+> [this doc](https://devconnected.com/understanding-hard-and-soft-links-on-linux/)
 > for technical details (Linux). Use `ls -i` to list inodes on Linux.
 
 There are pros and cons to the 3 supported link types: Hard links, Soft or
@@ -43,9 +43,9 @@ or more).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
 > support hard or soft links on the
-> [NTFS](https://support.microsoft.com/en-us/help/100108/overview-of-fat-hpfs-and-ntfs-file-systems)
+> [NTFS](https://learn.microsoft.com/en-us/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems)
 > and
-> [ReFS](https://docs.microsoft.com/en-us/windows-server/storage/refs/refs-overview)
+> [ReFS](https://learn.microsoft.com/en-us/windows-server/storage/refs/refs-overview)
 > file systems.
 
 File link type benefits summary:
@@ -96,7 +96,7 @@ efficiency:
    <abbr>workspace</abbr>. Suitable for scenarios with relatively small data
    files, where copying them is not a storage performance concern.
 
-[replace them]: /user-guide/how-to/update-tracked-files
+[replace them]: /user-guide/how-to/update-tracked-data
 
 <admon type="tip">
 
@@ -120,8 +120,8 @@ $ dvc config cache.type hardlink,symlink
 
 Note that with this `cache.type`, your workspace files will be in read-only mode
 in order to protect the cache from corruption. Refer to
-[Update a Tracked File](/user-guide/how-to/update-tracked-files) on how to
-manage tracked files under these cache configurations.
+[Update a Tracked File](/user-guide/how-to/update-tracked-data) on how to manage
+tracked files under these cache configurations.
 
 To make sure that the data files in the workspace are consistent with the
 <abbr>project</abbr>'s `cache.type` config value, you may use
@@ -130,7 +130,7 @@ To make sure that the data files in the workspace are consistent with the
 ---
 
 <admon>
-   
+
 \* ([copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write)) links or
 **reflinks** are a type of file linking available in modern file systems. Unlike
 hard links or symlinks, editing reflinks is always safe, as the original

@@ -33,5 +33,5 @@ upgrading to DVC 3.0 from an older release.
   it does not work for you, see [these instructions](/install/completion) to set
   it up.
 
-- Additionally, you might find these 3rd-party tool [plugins](/install/plugins)
-  useful.
+- Additionally, you might find these 3rd-party tool
+  [plugins](/install/ide-plugins) useful.

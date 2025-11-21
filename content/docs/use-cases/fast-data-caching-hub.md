@@ -40,8 +40,7 @@ part of your infrastructure; provisioned depending on data access speed and cost
 requirements. You have the flexibility to switch storage providers at any time,
 without having to change the directory structures or code of your projects.
 
-[share data and ml models]:
-  /start/data-management/data-versioning#storing-and-sharing
+[share data and ml models]: /start#storing-and-sharing
 
 ### What's next?
 

@@ -98,10 +98,10 @@ os.environ["DVC_STUDIO_TOKEN"] = getpass.getpass()
 os.environ["DVC_EXP_GIT_REMOTE"] = "https://github.com/<org>/<repo>"
 ```
 
-[Databricks Git folders]: https://docs.databricks.com/en/repos/index.html
+[Databricks Git folders]: https://docs.databricks.com/aws/en/repos
 [experiments]: /start/experiments
 [Python API]: /api-reference
-[Databricks secrets]: https://docs.databricks.com/en/security/secrets/index.html
+[Databricks secrets]: https://docs.databricks.com/aws/en/security/secrets
 [magic commands]:
   https://ipython.readthedocs.io/en/stable/interactive/magics.html
-[web terminal]: https://docs.databricks.com/en/clusters/web-terminal.html
+[web terminal]: https://docs.databricks.com/aws/en/compute/web-terminal

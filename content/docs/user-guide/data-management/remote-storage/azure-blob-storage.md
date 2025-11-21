@@ -45,9 +45,9 @@ $ dvc remote modify myremote account_name 'mystorage'
 ```
 
 [default credential]:
-  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
+  https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python
 [azure cli configuration]:
-  https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration
+  https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration?view=azure-cli-latest
 
 <details>
 
@@ -121,9 +121,9 @@ The following params are listed in the order in which they are tried.
 [connection string]:
   https://learn.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string
 [service principal]:
-  https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+  https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal
 [anonymous read access]:
-  https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure
+  https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure
 
 ### Authenticate with environment variables
 
@@ -173,7 +173,8 @@ from an [Azure CLI configuration file] (typically managed with [az config]):
 
 [azure cli configuration file]:
   https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration#cli-configuration-file
-[az config]: https://docs.microsoft.com/en-us/cli/azure/config
+[az config]:
+  https://learn.microsoft.com/en-us/cli/azure/config?view=azure-cli-latest
 
 ## More configuration parameters
 

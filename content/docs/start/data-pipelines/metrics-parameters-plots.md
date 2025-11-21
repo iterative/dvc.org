@@ -31,7 +31,7 @@ $ dvc stage add -n evaluate \
   python src/evaluate.py model.pkl data/features
 ```
 
-[earlier pipeline]: /start/data-management/data-pipelines
+[earlier pipeline]: /start/data-pipelines/data-pipelines
 
 <details>
 
@@ -142,7 +142,7 @@ file:///Users/dvc/example-get-started/dvc_plots/index.html
 ![](/img/plots_cm_get_started_show.svg)
 
 [`evaluate.py`]:
-  https://github.com/iterative/example-get-started/blob/master/src/evaluate.py
+  https://github.com/iterative/example-get-started/blob/main/src/evaluate.py
 [generate your own]: /user-guide/experiment-management/visualizing-plots
 
 Later we will see how to

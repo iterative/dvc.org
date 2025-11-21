@@ -31,7 +31,7 @@ To make `dvc.lock` and `.dvc` files recognized as YAML, add this to
 
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
-[intellisense]: https://code.visualstudio.com/docs/editor/intellisense
+[intellisense]: https://code.visualstudio.com/docs/editing/intellisense
 [yaml extension]:
   https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
 

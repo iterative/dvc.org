@@ -1,7 +1,8 @@
 # Hugging Face Transformers
 
 DVCLive allows you to add experiment tracking capabilities to your
-[Hugging Face Transformers](https://huggingface.co/docs/transformers) projects.
+[Hugging Face Transformers](https://huggingface.co/docs/transformers/index)
+projects.
 
 <admon type="tip">
 
@@ -36,7 +37,7 @@ trainer = Trainer(..., args=args)
 
 To customize tracking, include the [`DVCLiveCallback`] in the callbacks list
 passed to your
-[`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html),
+[`Trainer`](https://huggingface.co/docs/transformers/main_classes/trainer),
 along with a [`Live`] instance including additonal arguments:
 
 ```python

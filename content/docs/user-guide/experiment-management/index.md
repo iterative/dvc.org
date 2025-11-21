@@ -24,7 +24,7 @@ names can be used to reference experiments in other `dvc exp` subcommands.
 
 </details>
 
-[git references]: https://iterative.ai/blog/experiment-refs/
+[git references]: https://dvc.org/blog/experiment-refs/
 
 ## Save experiments
 

@@ -1,7 +1,7 @@
 # PyTorch Lightning
 
 DVCLive allows you to add experiment tracking capabilities to your
-[PyTorch Lightning](https://www.pytorchlightning.ai/) projects.
+[PyTorch Lightning](https://lightning.ai/) projects.
 
 <admon type="tip">
 

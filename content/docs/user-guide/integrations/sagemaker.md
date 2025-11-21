@@ -195,4 +195,4 @@ For a full example of how to deploy with SageMaker, see our [blog post].
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
 [deploying sagemaker endpoints]:
   https://github.com/iterative/example-get-started-experiments/blob/main/sagemaker/deploy_model.py
-[blog post]: https://iterative.ai/blog/sagemaker-model-deployment
+[blog post]: https://dvc.org/blog/sagemaker-model-deployment/

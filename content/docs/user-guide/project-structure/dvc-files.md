@@ -5,7 +5,7 @@ You can use `dvc add` to track data files or directories located in your current
 you bring data from external locations to your project, and start tracking it
 locally. See [Data Versioning] for more info.
 
-[data versioning]: /start/data-management/data-versioning
+[data versioning]: /start
 
 Files ending with the `.dvc` extension ("dot DVC file") are created by these
 commands as data placeholders that can be versioned with Git. They contain the

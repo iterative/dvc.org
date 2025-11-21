@@ -41,7 +41,7 @@ The detail of DVC version depends upon the way of installing DVC.
 
 - **Official release**: a stable version of DVC (for example `1.10.0`), that can
   be [installed](/install) using the official package stored in
-  [Python Packaging Authority](https://www.pypa.io/) or with a binary. These
+  [Python Package Index (PyPI)](https://pypi.org/) or with a binary. These
   releases are tagged in the DVC repository (see
   [changelog](https://github.com/iterative/dvc/releases) for release history).
 
@@ -76,7 +76,7 @@ The detail of DVC version depends upon the way of installing DVC.
   meaning that it will run natively on a specific platform (Linux, Windows,
   macOS).
 
-  > We use [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our
+  > We use [PyInstaller](https://pyinstaller.org/en/stable/) to bundle our
   > source code into the binary package app.
 
   DVC can also be downloaded and installed using a package manager:

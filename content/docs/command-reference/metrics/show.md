@@ -66,9 +66,9 @@ compares them with a previous version.
 
 ## Examples
 
-Let's imagine we have a simple [stage](/command-reference/run) that produces an
-`eval.json` metrics file. The basic use case shows the values in the current
-workspace:
+Let's imagine we have a simple [stage](/command-reference/stage/add) that
+produces an `eval.json` metrics file. The basic use case shows the values in the
+current workspace:
 
 ```cli
 $ dvc metrics show
