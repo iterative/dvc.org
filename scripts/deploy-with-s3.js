@@ -35,7 +35,7 @@ async function main() {
   await uploadToS3(publicDir, '/', s3Prefix)
   // Move the 404 HTML file from public into the root dir for Heroku
   await rename(path.join(publicDir, '404.html'), '404.html')
-  await rm(publicDir, { recursive: true, force: true })
+  // await rm(publicDir, { recursive: true, force: true })
   await rm(cacheDir, { recursive: true, force: true })
   await clearCloudfrontCache()
 }
