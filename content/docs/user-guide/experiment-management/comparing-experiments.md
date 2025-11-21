@@ -282,16 +282,6 @@ files, etc.) can be stored in Git.
 > Note that you need to `dvc push` in order to share or backup the DVC cache
 > contents.
 
-## Compare outside your workspace
-
-The methods above let you compare experiments from your local machine where you
-are working without any servers, logins, or infrastructure. However, sometimes
-you are away from your machine, or you want to share the results with others.
-DVC Studio provides a web collaboration hub for [sharing experiments] and
-visualizing and comparing experiments for your entire project history.
-
-![DVC Studio Compare Experiments Overview](/img/studio-compare-exps-overview.gif)
-
 ## Removing experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
