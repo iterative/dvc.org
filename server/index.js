@@ -52,7 +52,11 @@ const helmetOptions = {
   contentSecurityPolicy: {
     directives: {
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https:'],
-      frameSrc: ['https://*.youtube.com', 'https://*.youtube-nocookie.com'],
+      frameSrc: [
+        'https://*.youtube.com',
+        'https://*.youtube-nocookie.com',
+        'https://web.cmp.usercentrics.eu'
+      ],
       connectSrc: ["'self'", 'https:'],
       imgSrc: ["'self'", 'data:', 'https:'],
       formAction: ["'self'", 'https://doc.dvc.org']
