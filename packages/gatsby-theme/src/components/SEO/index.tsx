@@ -30,6 +30,9 @@ interface ISEOProps {
   children?: React.ReactNode
 }
 
+const GATSBY_USERCENTRICS_SETTINGS_ID =
+  process.env.GATSBY_USERCENTRICS_SETTINGS_ID
+
 const SEO: React.FC<ISEOProps> = ({
   title,
   defaultMetaTitle,
@@ -125,6 +128,18 @@ const SEO: React.FC<ISEOProps> = ({
           src={siteMeta.plausibleSrc}
         />
       ) : null}
+
+      {GATSBY_USERCENTRICS_SETTINGS_ID && (
+        <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js" />
+      )}
+      {GATSBY_USERCENTRICS_SETTINGS_ID && (
+        <script
+          id="usercentrics-cmp"
+          src="https://web.cmp.usercentrics.eu/ui/loader.js"
+          data-settings-id={GATSBY_USERCENTRICS_SETTINGS_ID}
+          async
+        />
+      )}
       {children}
     </Helmet>
   )
