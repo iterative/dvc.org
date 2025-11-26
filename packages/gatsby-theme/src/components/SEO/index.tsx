@@ -118,17 +118,6 @@ const SEO: React.FC<ISEOProps> = ({
         ...link
       ]}
     >
-      {siteMeta.plausibleSrc ? (
-        <script
-          defer
-          data-domain={
-            siteMeta.plausibleDomain || new URL(siteMeta.siteUrl).hostname
-          }
-          data-api={siteMeta.plausibleAPI || undefined}
-          src={siteMeta.plausibleSrc}
-        />
-      ) : null}
-
       {GATSBY_USERCENTRICS_SETTINGS_ID && (
         <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js" />
       )}
@@ -140,6 +129,16 @@ const SEO: React.FC<ISEOProps> = ({
           async
         />
       )}
+      {siteMeta.plausibleSrc ? (
+        <script
+          defer
+          data-domain={
+            siteMeta.plausibleDomain || new URL(siteMeta.siteUrl).hostname
+          }
+          data-api={siteMeta.plausibleAPI || undefined}
+          src={siteMeta.plausibleSrc}
+        />
+      ) : null}
       {children}
     </Helmet>
   )
