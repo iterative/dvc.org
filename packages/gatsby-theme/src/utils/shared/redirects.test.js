@@ -83,7 +83,10 @@ describe('getRedirects', () => {
 
       // Detect redirect loops.
       const secondUrl = url.parse(addHost(rLocation))
-      if (secondUrl.hostname === 'downloads.dvc.org') {
+      if (
+        secondUrl.hostname === 'downloads.dvc.org' ||
+        secondUrl.hostname === 'r2.dvc.org'
+      ) {
         // downloads.dvc.org redirects are handled externally and does not redirect back to dvc.org.
         // Return to prevent endless redirects since some rules redirect to downloads.dvc.org
         // and would otherwise match the same redirect rule again.
@@ -134,6 +137,12 @@ describe('getRedirects', () => {
   })
 
   describe('toS3', () => {
+    itRedirects('https://code.dvc.org', 'https://r2.dvc.org/code/', 303)
+
+    itRedirects('https://data.dvc.org', 'https://r2.dvc.org/data/', 303)
+
+    itRedirects('https://remote.dvc.org', 'https://r2.dvc.org/remote/', 303)
+
     itRedirects(
       'https://code.dvc.org/foo/bar',
       'https://r2.dvc.org/code/foo/bar',

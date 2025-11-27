@@ -4,7 +4,7 @@
 
   "^https://error\\.dvc\\.org/(.*)?                                                       https://doc.dvc.org/user-guide/troubleshooting#$1 303",
   "^https://docs\\.dvc\\.org(.*)?                                                         https://doc.dvc.org$1",
-  "^https://(code|data|remote)\\.dvc\\.org/(.+)                                           https://r2.dvc.org/$1/$2 303",
+  "^https://(code|data|remote)\\.dvc\\.org(/.*)?$                                         https://r2.dvc.org/$1$2 303",
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                 https://doc.dvc.org/user-guide/experiment-management/running-experiments$1 302",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                    https://doc.dvc.org/user-guide/experiment-management/$1 302",
