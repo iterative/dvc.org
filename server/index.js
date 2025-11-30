@@ -10,18 +10,18 @@
  *  - HEROKU_APP_NAME: If this is a PR, an ID of the PR. Don't add this for
  *    production.
  */
-require('./instrument')
-require('dotenv').config()
+import './instrument.js'
+import 'dotenv/config'
 
-const Sentry = require('@sentry/node')
-const compression = require('compression')
-const express = require('express')
-const helmet = require('helmet')
-const { createProxyMiddleware } = require('http-proxy-middleware')
-const permissionsPolicy = require('permissions-policy')
-const serveHandler = require('serve-handler')
+import * as Sentry from '@sentry/node'
+import compression from 'compression'
+import express from 'express'
+import helmet from 'helmet'
+import { createProxyMiddleware } from 'http-proxy-middleware'
+import permissionsPolicy from 'permissions-policy'
+import serveHandler from 'serve-handler'
 
-const redirectsMiddleware = require('./redirect')
+import redirectsMiddleware from './redirect.js'
 
 const port = process.env.PORT || 3000
 const app = express()
@@ -122,7 +122,7 @@ const serveMiddleware = async (req, res) => {
   })
 }
 app.use(serveMiddleware)
-Sentry.setupExpressErrorHandler(app)
+Sentry.setupExpressErrorHandler(app, { telemetry: false })
 
 // Error handler
 app.use(function onError(err, req, res, _next) {

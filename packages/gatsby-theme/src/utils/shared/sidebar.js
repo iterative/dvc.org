@@ -20,16 +20,16 @@
   }
 */
 
-const { titleCase } = require('title-case')
+import { titleCase } from 'title-case'
 
-const sidebar = require('@dvcorg/gatsby-theme/sidebar')
+import sidebar from '@dvcorg/gatsby-theme/sidebar.js'
 
-const {
+import {
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX,
   SIDEBAR_PATH_ROOT,
   SIDEBAR_FILE_ROOT,
   SIDEBAR_FILE_EXTENSION
-} = require('../../../consts')
+} from '../../../consts/index.js'
 
 function uppercaseSlugKeywords(slug) {
   return slug.replace(SIDEBAR_UPPERCASE_KEYWORDS_REGEX, match => {
@@ -236,8 +236,10 @@ function getParentsListFromPath(path) {
     })
 }
 
-module.exports = {
-  structure: normalizedSidebar,
+const structure = normalizedSidebar
+
+export {
+  structure,
   findChildWithSource,
   getItemByPath,
   getItemBySource,

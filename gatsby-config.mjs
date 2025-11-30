@@ -1,9 +1,13 @@
 /* eslint-env node */
 
-require('dotenv').config()
-const path = require('path')
+import 'dotenv/config'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import  simpleLinkerTerms from './content/linked-terms.mjs'
 
-const redirectsMiddleware = require('./server/redirect')
+import redirectsMiddleware from './server/redirect.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -25,7 +29,7 @@ const plugins = [
   {
     resolve: '@dvcorg/gatsby-theme',
     options: {
-      simpleLinkerTerms: require('./content/linked-terms'),
+      simpleLinkerTerms,
       glossaryPath: path.resolve('content', 'basic-concepts')
     }
   },
@@ -151,7 +155,7 @@ if (process.env.ANALYZE) {
   })
 }
 
-module.exports = {
+export default {
   trailingSlash: 'never',
   plugins,
   siteMetadata: {

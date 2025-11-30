@@ -24,7 +24,12 @@
     within a regular gatsby-node function.
 */
 
-async function callOnModels(models, name, api, modelOptions = { models }) {
+export default async function callOnModels(
+  models,
+  name,
+  api,
+  modelOptions = { models }
+) {
   return Promise.all(
     models.map(
       model =>
@@ -32,5 +37,3 @@ async function callOnModels(models, name, api, modelOptions = { models }) {
     )
   )
 }
-
-module.exports = callOnModels

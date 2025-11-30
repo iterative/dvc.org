@@ -1,5 +1,3 @@
-const path = require('upath')
-
 /** Source Path Resolver Builder
    This function makes Gatsby resolvers that connect a node to another node via
    frontmatter fields. Each relation is slightly different, but only slightly different.
@@ -21,7 +19,7 @@ const path = require('upath')
    }
 */
 
-function sourcePathResolver({
+export function sourcePathResolver({
   type, // string
   resolvePath, // function?
   makeFilter // function?
@@ -53,16 +51,4 @@ function sourcePathResolver({
       type
     })
   }
-}
-
-// Pre-made fields
-
-const resolvePostAuthor = sourcePathResolver({
-  type: 'Author',
-  resolvePath: value => path.join('authors', value) + '.md'
-})
-
-module.exports = {
-  sourcePathResolver,
-  resolvePostAuthor
 }

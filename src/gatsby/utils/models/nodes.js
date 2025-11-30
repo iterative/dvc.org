@@ -1,4 +1,4 @@
-function childNodeCreator({
+export function childNodeCreator({
   node,
   actions: { createNode, createParentChildLink }
 }) {
@@ -12,8 +12,4 @@ function childNodeCreator({
     await createNode(newNode)
     await createParentChildLink({ parent: node, child: newNode })
   }
-}
-
-module.exports = {
-  childNodeCreator
 }

@@ -1,4 +1,4 @@
-const Sentry = require('@sentry/node')
+import * as Sentry from '@sentry/node'
 
 const parseBoolean = str => {
   return ['True', 'true', '1', true].includes(str)
@@ -6,5 +6,6 @@ const parseBoolean = str => {
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
-  debug: parseBoolean(process.env.SENTRY_DEBUG)
+  debug: parseBoolean(process.env.SENTRY_DEBUG),
+  telemetry: false
 })

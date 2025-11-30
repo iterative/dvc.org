@@ -1,15 +1,23 @@
-require('dotenv').config()
-const fs = require('fs')
-const path = require('path')
+import 'dotenv/config'
 
-const autoprefixer = require('autoprefixer')
+import fs from 'fs'
+import { createRequire } from 'module'
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-require('./config/prismjs/dvc')
-require('./config/prismjs/usage')
-require('./config/prismjs/dvctable')
-const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
-const defaults = require('./config-defaults')
-const sentryConfig = require('./sentry-config')
+import autoprefixer from 'autoprefixer'
+
+import './config/prismjs/dvc.js'
+import './config/prismjs/usage.js'
+import './config/prismjs/dvctable.js'
+
+import customYoutubeTransformer from './config/gatsby-remark-embedder/custom-yt-embedder.js'
+import defaults from './config-defaults.js'
+import sentryConfig from './sentry-config.js'
+
+const require = createRequire(import.meta.url)
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const linkIcon = fs
   .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
@@ -17,7 +25,7 @@ const linkIcon = fs
 
 const imageMaxWidth = 700
 
-module.exports = ({
+export default ({
   simpleLinkerTerms,
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),

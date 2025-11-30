@@ -14,11 +14,11 @@ const getMarkdownProcessor = async () => {
   return markdownProcessor
 }
 
-async function markdownToHtml(input) {
+export async function markdownToHtml(input) {
   return (await getMarkdownProcessor())(input).toString()
 }
 
-const setPageContext = (page, actions) =>
+export const setPageContext = (page, actions) =>
   new Promise(resolve => {
     let pPath = page.path
     if (pPath == '/.') {
@@ -44,6 +44,3 @@ const setPageContext = (page, actions) =>
     })
     resolve()
   })
-
-exports.setPageContext = setPageContext
-exports.markdownToHtml = markdownToHtml

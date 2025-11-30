@@ -1,7 +1,10 @@
-const fs = require('fs')
-const vm = require('node:vm')
+import fs from 'fs'
+import vm from 'node:vm'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import 'isomorphic-fetch'
 
-require('isomorphic-fetch')
+const _dirname = dirname(fileURLToPath(import.meta.url))
 
 const repoList = {
   dvc: { repo: 'dvc.org', branch: 'main' }
@@ -35,7 +38,7 @@ const getAliasList = async (repo, branch = 'main', tool) => {
 }
 
 const writeCommandsToFile = async (commands, tool) => {
-  const file = `${__dirname}/${tool}-commands.js`
+  const file = `${_dirname}/${tool}-commands.js`
 
   const start = 'module.exports = [\n'
   const end = ']\n'

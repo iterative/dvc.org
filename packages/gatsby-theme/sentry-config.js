@@ -2,7 +2,7 @@
  * Much of this is lifted from Sentry's docs
  * see https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
  */
-module.exports = {
+export default {
   dsn: process.env.SENTRY_DSN,
   environment: process.env.NODE_ENV,
   release: process.env.SOURCE_VERSION,
@@ -52,5 +52,6 @@ module.exports = {
     /127\.0\.0\.1:4001\/isrunning/i, // Cacaoweb
     /webappstoolbarba\.texthelp\.com\//i,
     /metrics\.itunes\.apple\.com\.edgesuite\.net\//i
-  ]
+  ],
+  telemetry: false
 }

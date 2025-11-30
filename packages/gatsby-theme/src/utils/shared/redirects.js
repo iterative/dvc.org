@@ -1,10 +1,10 @@
 /* eslint-env node */
 
-const { navigate } = require('gatsby')
+import { navigate } from 'gatsby'
 
-const redirects = require('@dvcorg/gatsby-theme/redirects')
+import redirects from '@dvcorg/gatsby-theme/redirects.js'
 
-const { structure, findChildWithSource } = require('./sidebar')
+import { structure, findChildWithSource } from './sidebar.js'
 
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {
@@ -92,7 +92,9 @@ const handleFrontRedirect = (host, pathname, clickEvent) => {
   }
 }
 
-exports.buildSidebarRedirects = buildSidebarRedirects
-exports.processRedirectString = processRedirectString
-exports.getRedirect = getRedirect
-exports.handleFrontRedirect = handleFrontRedirect
+export {
+  buildSidebarRedirects,
+  processRedirectString,
+  getRedirect,
+  handleFrontRedirect
+}

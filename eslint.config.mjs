@@ -72,7 +72,7 @@ export default tseslint.config(
     rules: {
       'import-x/prefer-default-export': 'off',
       'import-x/extensions': [
-        'error',
+        'off',
         'ignorePackages',
         { ts: 'never', tsx: 'never', js: 'never', jsx: 'never' }
       ],

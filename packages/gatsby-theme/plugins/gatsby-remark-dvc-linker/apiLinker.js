@@ -1,13 +1,11 @@
 /* eslint-env node */
 
-const consts = require('../../consts')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
+import { CLI_API_REGEXP, METHOD_REGEXP, API_ROOT } from '../../consts/index.js'
+import { getItemByPath } from '../../src/utils/shared/sidebar.js'
 
-const { createLinkNode } = require('./helpers')
+import { createLinkNode } from './helpers.js'
 
-const { CLI_API_REGEXP, METHOD_REGEXP, API_ROOT } = consts
-
-module.exports = astNode => {
+export default astNode => {
   const node = astNode[0]
   const parent = astNode[2]
 

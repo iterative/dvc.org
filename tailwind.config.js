@@ -1,6 +1,8 @@
-const themeConfig = require('@dvcorg/gatsby-theme/tailwind.config')
+import tailwindAnimate from 'tailwindcss-animate'
 
-module.exports = {
+import themeConfig from '@dvcorg/gatsby-theme/tailwind.config'
+
+export default {
   ...themeConfig,
   content: [
     ...themeConfig.content,
@@ -40,5 +42,5 @@ module.exports = {
       mono: ['Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace']
     }
   },
-  plugins: [...themeConfig.plugins, require(`tailwindcss-animate`)]
+  plugins: [...themeConfig.plugins, tailwindAnimate]
 }

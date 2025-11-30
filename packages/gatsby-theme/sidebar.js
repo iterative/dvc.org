@@ -1,1 +1,3 @@
-module.exports = require('../../content/docs/sidebar.json')
+import sidebar from '../../content/docs/sidebar.json' with { type: 'json' }
+
+export default sidebar

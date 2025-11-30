@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = {
+export default {
   docsPath: path.resolve('content', 'docs'),
   docsInstanceName: 'iterative-docs',
   glossaryPath: path.resolve('content', 'docs', 'user-guide', 'basic-concepts'),

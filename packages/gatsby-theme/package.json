@@ -3,6 +3,7 @@
   "version": "0.3.25",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "types": "src/typings.d.ts",
   "author": "Roger Parent (@rogermparent)",
   "license": "MIT",

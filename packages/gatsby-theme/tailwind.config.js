@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   content: [`${__dirname}/src/**/*.{ts,js,tsx,jsx}`],
   theme: {
     extend: {

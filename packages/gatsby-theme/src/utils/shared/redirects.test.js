@@ -1,10 +1,10 @@
-const url = require('url')
+import url from 'url'
 
-const {
+import {
   buildSidebarRedirects,
   processRedirectString,
   getRedirect
-} = require('./redirects')
+} from './redirects.js'
 
 describe('buildRedirectsList', () => {
   it('builds correct redirects list', () => {

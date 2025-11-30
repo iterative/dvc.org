@@ -3,12 +3,12 @@
 // we require prism and load its bash module so we have
 // Prism.languages.bash to embed into our DVC language.
 
-const Prism = require('prismjs')
-require('prismjs/components/prism-bash')
-require('./dvc-hook')
-const { bash } = Prism.languages
+import Prism from 'prismjs'
 
-const dvc = require('./dvc-commands')
+import './dvc-hook.js'
+import dvc from './dvc-commands.js'
+
+const { bash } = Prism.languages
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones

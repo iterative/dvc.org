@@ -1,28 +1,32 @@
-require('dotenv').config()
-global.__basedir = __dirname
+import 'dotenv/config'
 
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-const { setPageContext } = require('./src/gatsby/common')
-const models = require('./src/gatsby/models')
-const callOnModels = require('./src/gatsby/utils/models')
+global.__basedir = dirname(fileURLToPath(import.meta.url))
 
-exports.createSchemaCustomization = api =>
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
+
+import { setPageContext } from './src/gatsby/common.js'
+import models from './src/gatsby/models.js'
+import callOnModels from './src/gatsby/utils/models/index.js'
+
+export const createSchemaCustomization = api =>
   callOnModels(models, 'createSchemaCustomization', api)
-exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
+export const sourceNodes = api => callOnModels(models, 'sourceNodes', api)
 
-exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
-exports.createPages = api => callOnModels(models, 'createPages', api)
-exports.createResolvers = api => callOnModels(models, 'createResolvers', api)
-exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
+export const onCreateNode = api => callOnModels(models, 'onCreateNode', api)
+export const createPages = api => callOnModels(models, 'createPages', api)
+export const createResolvers = api => callOnModels(models, 'createResolvers', api)
+export const onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
-exports.onCreatePage = ({ page, actions }) => {
+export const onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)
 }
 
 // Ignore warnings about CSS inclusion order, because we use CSS modules.
 // https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
-exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+export const onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === 'build-javascript') {
     const config = getConfig()
 

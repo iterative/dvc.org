@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { URL } from 'iso-url'
 
 import { MAIN_SITE_URL } from '../../../consts'
-import { getRedirect } from '../../utils/shared/redirects'
+import { getRedirect } from '../../utils/shared/redirects.js'
 
 export type ILinkProps = {
   children: React.ReactNode

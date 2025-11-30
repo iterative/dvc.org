@@ -1,24 +1,16 @@
-const consts = {
-  CLI_REGEXP: /dvc\s+[a-z][a-z-.]*/,
-  COMMAND_REGEXP: /^[a-z][a-z-]*$/,
-  ARGS_REGEXP: new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig'),
-
-  COMMAND_ROOT: '/command-reference/',
-  CML_COMMAND_ROOT: '/doc/ref/',
-
-  CLI_API_REGEXP: /dvc.api([a-z-._]*\(\)$)?/,
-  METHOD_REGEXP: /^[a-z-._]*\(\)$/,
-
-  API_ROOT: '/api-reference/',
-
-  SIDEBAR_UPPERCASE_KEYWORDS_REGEX: /dvc|api/g,
-  SIDEBAR_PATH_ROOT: '',
-  SIDEBAR_FILE_ROOT: '/docs/',
-  SIDEBAR_FILE_EXTENSION: '.md',
-  DOCS_PREFIX: '',
-  MAIN_SITE_URL: 'https://dvc.org',
-  BLOGS_URL: 'https://dvc.org/blog',
-  HOME_PAGE_LINK: '/'
-}
-
-module.exports = consts
+export const CLI_REGEXP = /dvc\s+[a-z][a-z-.]*/
+export const COMMAND_REGEXP = /^[a-z][a-z-]*$/
+export const ARGS_REGEXP = new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig')
+export const COMMAND_ROOT = '/command-reference/'
+export const CML_COMMAND_ROOT = '/doc/ref/'
+export const CLI_API_REGEXP = /dvc.api([a-z-._]*\(\)$)?/
+export const METHOD_REGEXP = /^[a-z-._]*\(\)$/
+export const API_ROOT = '/api-reference/'
+export const SIDEBAR_UPPERCASE_KEYWORDS_REGEX = /dvc|api/g
+export const SIDEBAR_PATH_ROOT = ''
+export const SIDEBAR_FILE_ROOT = '/docs/'
+export const SIDEBAR_FILE_EXTENSION = '.md'
+export const DOCS_PREFIX = ''
+export const MAIN_SITE_URL = 'https://dvc.org'
+export const BLOGS_URL = 'https://dvc.org/blog'
+export const HOME_PAGE_LINK = '/'

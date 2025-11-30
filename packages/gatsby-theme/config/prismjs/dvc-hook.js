@@ -1,6 +1,7 @@
 /* eslint-env node */
 
-const Prism = require('prismjs')
+import Prism from 'prismjs'
+
 const argsRegex = new RegExp(/-{1,2}[a-zA-Z-]*/, 'ig')
 
 // Make sure the $ part of the command prompt in shell

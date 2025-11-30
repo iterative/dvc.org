@@ -1,4 +1,4 @@
-const { extractInstructions } = require('.')
+import { extractInstructions } from './index.js'
 
 describe('extractInstructions', () => {
   it('extracts the title if no instructions are found', () => {

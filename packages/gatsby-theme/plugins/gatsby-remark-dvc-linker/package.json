@@ -3,5 +3,6 @@
   "version": "1.0.1",
   "main": "index.js",
   "author": "Ivan Shcheklein",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "type": "module"
 }

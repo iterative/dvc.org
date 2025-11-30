@@ -1,7 +1,12 @@
-const path = require('path')
+import { createRequire } from 'module'
+import path from 'path'
 
-const defaults = require('./config-defaults')
-const { DOCS_PREFIX } = require('./consts')
+import defaults from './config-defaults.js'
+import { DOCS_PREFIX } from './consts/index.js'
+import createPages from './createPages.js'
+import onCreateNode from './onCreateNode.js'
+
+const require = createRequire(import.meta.url)
 
 const defaultGetTemplate = (template, defaultTemplate) =>
   template
@@ -10,7 +15,7 @@ const defaultGetTemplate = (template, defaultTemplate) =>
 
 const docsPrefix = DOCS_PREFIX
 
-exports.pluginOptionsSchema = ({ Joi }) => {
+const pluginOptionsSchema = ({ Joi }) => {
   return Joi.object({
     disable: Joi.boolean().default(Boolean(process.env.SKIP_DOCS)),
     getTemplate: Joi.function().default(() => defaultGetTemplate),
@@ -42,7 +47,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
   })
 }
 
-exports.createSchemaCustomization = async api => {
+const createSchemaCustomization = async api => {
   const {
     actions: { createTypes },
     schema: { buildObjectType }
@@ -81,7 +86,7 @@ exports.createSchemaCustomization = async api => {
   ])
 }
 
-exports.onCreateBabelConfig = ({ actions }) => {
+const onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: '@babel/plugin-transform-react-jsx',
     options: {
@@ -90,13 +95,9 @@ exports.onCreateBabelConfig = ({ actions }) => {
   })
 }
 
-exports.createPages = require('./createPages')
-
-exports.onCreateNode = require('./onCreateNode')
-
 // Ignore warnings about CSS inclusion order, because we use CSS modules.
 // https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
-exports.onCreateWebpackConfig = ({ getConfig }) => {
+const onCreateWebpackConfig = ({ getConfig }) => {
   const config = getConfig()
   const miniCssExtractPlugin = config.plugins.find(
     plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
@@ -104,4 +105,13 @@ exports.onCreateWebpackConfig = ({ getConfig }) => {
   if (miniCssExtractPlugin) {
     miniCssExtractPlugin.options.ignoreOrder = true
   }
+}
+
+export {
+  pluginOptionsSchema,
+  createSchemaCustomization,
+  onCreateBabelConfig,
+  createPages,
+  onCreateNode,
+  onCreateWebpackConfig
 }
