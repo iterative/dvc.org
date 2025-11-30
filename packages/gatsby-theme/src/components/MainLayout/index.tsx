@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import { PageProps } from 'gatsby'
 import { ReactNode, useEffect } from 'react'
 
 import 'reset-css'
@@ -8,7 +7,6 @@ import './fonts.css'
 import { handleFirstTab } from '../../utils/front/accessibility'
 import LayoutFooter from '../LayoutFooter'
 import LayoutHeader from '../LayoutHeader'
-import SEO from '../SEO'
 
 import { useRedirects } from './utils'
 
@@ -23,7 +21,6 @@ export interface ILayoutModifiable {
 }
 
 export interface ILayoutComponentProps extends ILayoutModifiable {
-  location: PageProps['location']
   className?: string
   children?: ReactNode
 }
@@ -31,8 +28,7 @@ export interface ILayoutComponentProps extends ILayoutModifiable {
 const MainLayout = ({
   className,
   children,
-  modifiers = [],
-  location
+  modifiers = []
 }: ILayoutComponentProps) => {
   useRedirects()
 
@@ -55,7 +51,6 @@ const MainLayout = ({
         'items-center'
       )}
     >
-      <SEO pathname={location.pathname} />
       <LayoutHeader modifiers={modifiers} />
       <main
         className={cn(

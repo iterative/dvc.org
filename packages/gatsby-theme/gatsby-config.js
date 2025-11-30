@@ -19,9 +19,6 @@ const imageMaxWidth = 700
 
 module.exports = ({
   simpleLinkerTerms,
-  plausibleSrc = '/pl/js/plausible.outbound-links.js',
-  plausibleAPI = '/pl/api/event',
-  plausibleDomain,
   postCssPlugins = [
     require('tailwindcss/nesting')(require('postcss-nested')),
     autoprefixer,
@@ -41,7 +38,6 @@ module.exports = ({
         postCssPlugins
       }
     },
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     glossaryInstanceName && {
       resolve: 'gatsby-source-filesystem',
@@ -166,10 +162,7 @@ module.exports = ({
     author: 'Iterative',
     titleTemplate: '',
     twitterUsername: '',
-    imageAlt: '',
-    plausibleSrc,
-    plausibleAPI,
-    plausibleDomain
+    imageAlt: ''
   },
   trailingSlash: 'never',
   jsxRuntime: 'automatic'

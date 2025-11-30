@@ -38,9 +38,6 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     argsLinkerPath: Joi.alternatives()
       .try(Joi.string(), Joi.array().items(Joi.string()))
       .default(defaults.argsLinkerPath),
-    plausibleSrc: [Joi.string().optional(), Joi.allow(null)],
-    plausibleAPI: [Joi.string().optional(), Joi.allow(null)],
-    plausibleDomain: [Joi.string().optional(), Joi.allow(null)],
     sentry: Joi.boolean().default(defaults.sentry)
   })
 }
@@ -78,10 +75,7 @@ exports.createSchemaCustomization = async api => {
       fields: {
         author: 'String',
         siteUrl: 'String',
-        titleTemplate: 'String',
-        plausibleSrc: 'String',
-        plausibleDomain: 'String',
-        plausibleAPI: 'String'
+        titleTemplate: 'String'
       }
     })
   ])

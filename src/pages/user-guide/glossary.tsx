@@ -1,18 +1,19 @@
 import cn from 'classnames'
-import { PageProps } from 'gatsby'
+import { HeadProps } from 'gatsby'
 
 import DocLayout from '@dvcorg/gatsby-theme/src/components/Documentation/Layout'
 import DocWithJsx from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX'
 import AutoLinkElement from '@dvcorg/gatsby-theme/src/components/Documentation/WithJSX/AutoLinkElement'
 import MainLayout from '@dvcorg/gatsby-theme/src/components/MainLayout'
 import useGlossary from '@dvcorg/gatsby-theme/src/utils/front/glossary'
+import SEO from 'packages/gatsby-theme/src/components/SEO'
 
-const Glossary = ({ location }: PageProps) => {
+const Glossary = () => {
   const { contents } = useGlossary()
   const pagePath = '/user-guide/glossary'
 
   return (
-    <MainLayout location={location}>
+    <MainLayout>
       <DocLayout currentPath={pagePath}>
         <DocWithJsx path={pagePath} headings={[]}>
           <div className={cn('markdown-body')}>
@@ -56,3 +57,7 @@ const Glossary = ({ location }: PageProps) => {
 }
 
 export default Glossary
+
+export const Head = ({ location }: HeadProps) => (
+  <SEO title="Glossary" pathname={location.pathname} />
+)

@@ -1,10 +1,9 @@
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { useMemo } from 'react'
-import { Helmet } from 'react-helmet'
 
 import useSiteMeta from '../../queries/useSiteMeta'
 
-import { buildMetadata, MetaProps, LinkProps } from './helper'
+import { buildMetadata } from './helper'
 
 export interface IPaginatorPageInfo {
   currentPage: number
@@ -12,39 +11,30 @@ export interface IPaginatorPageInfo {
   previousPage?: string
 }
 
-interface ISEOProps {
+export interface ISEOProps {
   title?: string
   defaultMetaTitle?: boolean
-  skipTitleTemplate?: boolean
   description?: string
   keywords?: string
   imageAlt?: string
   image?: IGatsbyImageData | string
   imageHeight?: number
   imageWidth?: number
-  meta?: MetaProps[]
-  link?: LinkProps[]
   canonicalUrl?: string
   pathname?: string
   pageInfo?: IPaginatorPageInfo
   children?: React.ReactNode
 }
 
-const GATSBY_USERCENTRICS_SETTINGS_ID =
-  process.env.GATSBY_USERCENTRICS_SETTINGS_ID
-
 const SEO: React.FC<ISEOProps> = ({
   title,
   defaultMetaTitle,
-  skipTitleTemplate,
   description,
   keywords,
   image = '/social-share.png',
   imageAlt = '',
   imageHeight = 630,
   imageWidth = 1200,
-  meta = [],
-  link = [],
   canonicalUrl,
   pathname,
   pageInfo,
@@ -84,63 +74,19 @@ const SEO: React.FC<ISEOProps> = ({
     imageHeight,
     pathname
   ])
-
+  const canonical = canonicalUrl || fullUrl
   return (
-    /* @ts-expect-error react-helmet types incompatible with React types */
-    <Helmet
-      htmlAttributes={{
-        lang: 'en'
-      }}
-      defaultTitle={siteMeta.title}
-      title={pageTitle}
-      titleTemplate={
-        skipTitleTemplate
-          ? ''
-          : siteMeta.titleTemplate || `%s | ${siteMeta.title}`
-      }
-      meta={[...prebuildMeta, ...meta]}
-      link={[
-        ...(canonicalUrl
-          ? [
-              {
-                rel: 'canonical',
-                href: canonicalUrl
-              }
-            ]
-          : pathname
-            ? [
-                {
-                  rel: 'canonical',
-                  href: fullUrl
-                }
-              ]
-            : []),
-        ...link
-      ]}
-    >
-      {GATSBY_USERCENTRICS_SETTINGS_ID && (
-        <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js" />
-      )}
-      {GATSBY_USERCENTRICS_SETTINGS_ID && (
-        <script
-          id="usercentrics-cmp"
-          src="https://web.cmp.usercentrics.eu/ui/loader.js"
-          data-settings-id={GATSBY_USERCENTRICS_SETTINGS_ID}
-          async
-        />
-      )}
-      {siteMeta.plausibleSrc ? (
-        <script
-          defer
-          data-domain={
-            siteMeta.plausibleDomain || new URL(siteMeta.siteUrl).hostname
-          }
-          data-api={siteMeta.plausibleAPI || undefined}
-          src={siteMeta.plausibleSrc}
-        />
-      ) : null}
+    <>
+      <html lang="en" />
+      {canonical && <link rel="canonical" href={canonical} />}
+      <title>
+        {pageTitle ? `${pageTitle} | ${siteMeta.title}` : siteMeta.title}
+      </title>
+      {prebuildMeta.map((m, i) => (
+        <meta key={i} {...m} />
+      ))}
       {children}
-    </Helmet>
+    </>
   )
 }
 
