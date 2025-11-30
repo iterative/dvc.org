@@ -38,7 +38,6 @@ module.exports = ({
         postCssPlugins
       }
     },
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     glossaryInstanceName && {
       resolve: 'gatsby-source-filesystem',

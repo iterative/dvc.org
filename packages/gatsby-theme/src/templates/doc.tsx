@@ -1,9 +1,10 @@
-import { graphql, PageProps } from 'gatsby'
+import { graphql, HeadProps, PageProps } from 'gatsby'
 import { Element } from 'hast'
 
 import Documentation from '../components/Documentation'
 import DocumentationLayout from '../components/Documentation/Layout'
 import MainLayout, { LayoutModifiers } from '../components/MainLayout'
+import SEO from '../components/SEO'
 import { getItemByPath } from '../utils/shared/sidebar'
 
 const DocPage: React.FC<
@@ -33,20 +34,12 @@ const DocPage: React.FC<
   const { pathname } = location
   const {
     page: {
-      description,
-      title,
       parent: { htmlAst }
     }
   } = data
 
-  const { label } = getItemByPath(pathname)
-
   return (
-    <MainLayout
-      location={location}
-      modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}
-      seo={{ title: title || label, description }}
-    >
+    <MainLayout modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}>
       <DocumentationLayout currentPath={pathname}>
         <Documentation htmlAst={htmlAst} path={pathname} headings={headings} />
       </DocumentationLayout>
@@ -69,3 +62,21 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export const Head: React.FC<
+  HeadProps<{
+    page: {
+      description?: string
+      title?: string
+    }
+  }>
+> = ({ location, data }) => {
+  const { label } = getItemByPath(location.pathname)
+  return (
+    <SEO
+      title={data.page.title || label}
+      description={data.page.description}
+      pathname={location.pathname}
+    />
+  )
+}
