@@ -1,7 +1,7 @@
 import {
-  MAIN_SITE_URL,
-  BLOGS_URL,
-  HOME_PAGE_LINK
+  externalUrls,
+  mainSiteUrls,
+  docUrls
 } from '@dvcorg/gatsby-theme/consts'
 
 import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
@@ -32,33 +32,33 @@ interface IMenuData {
 const menuData: IMenuData = {
   nav: [
     {
-      href: '/use-cases',
+      href: docUrls.useCases,
       eventType: 'use-cases',
       text: 'Use Cases'
     },
     {
-      href: HOME_PAGE_LINK,
+      href: docUrls.home,
       eventType: 'doc',
       text: 'Doc'
     },
     {
-      href: BLOGS_URL,
+      href: mainSiteUrls.blog,
       eventType: 'blog',
       text: 'Blog'
     },
     {
-      href: 'https://learn.dvc.org/',
+      href: externalUrls.course,
       eventType: 'course',
       text: 'Course'
     },
     {
       text: 'Community',
       Popup: CommunityPopup,
-      href: `${MAIN_SITE_URL}/community`,
+      href: mainSiteUrls.community,
       popupName: 'communityPopup'
     },
     {
-      href: `${MAIN_SITE_URL}/support`,
+      href: mainSiteUrls.support,
       eventType: 'support',
       text: 'Support'
     },
@@ -75,35 +75,35 @@ const menuData: IMenuData = {
     {
       title: 'Meet Us',
       text: 'Meet the Community',
-      href: `${MAIN_SITE_URL}/community`,
+      href: mainSiteUrls.community,
       img: '/img/community/icon-community.svg',
       imgAlt: ''
     },
     {
       title: 'Testimonials',
       text: '',
-      href: `${MAIN_SITE_URL}/community#testimonial`,
+      href: `${mainSiteUrls.community}#testimonials`,
       img: '/img/community/icon-community.svg',
       imgAlt: ''
     },
     {
       title: 'Contribute',
       text: '',
-      href: `${MAIN_SITE_URL}/community#contribute`,
+      href: `${mainSiteUrls.community}#contribute`,
       img: '/img/community/icon-contribute.svg',
       imgAlt: ''
     },
     {
       title: 'Learn',
       text: '',
-      href: `${MAIN_SITE_URL}/community#learn`,
+      href: `${mainSiteUrls.community}#learn`,
       img: '/img/community/icon-learn.svg',
       imgAlt: ''
     },
     {
       title: 'Events',
       text: '',
-      href: `${MAIN_SITE_URL}/community#events`,
+      href: `${mainSiteUrls.community}#events`,
       img: '/img/community/icon-events.svg',
       imgAlt: ''
     }

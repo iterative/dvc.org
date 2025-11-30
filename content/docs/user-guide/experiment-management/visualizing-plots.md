@@ -28,7 +28,7 @@ view in VS Code via the [Plots Dashboard] of the [DVC Extension]. (they can be
 saved as SVG or PNG image files from there).
 
 [plots dashboard]:
-  https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
+  https://github.com/treeverse/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [tracking]: /start
@@ -266,7 +266,7 @@ $ dvc plots diff $(dvc exp list --name-only)
 Inside the
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
 you can compare in the
-[`Plots`](https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
+[`Plots`](https://github.com/treeverse/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
 view.
 
 ![VS Code Comparison](/img/dvclive-vscode-compare.png)

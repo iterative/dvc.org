@@ -123,7 +123,7 @@ ssh-add --apple-load-keychain ~/.ssh/ed255
   https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage
 [git credential manager]:
   https://github.com/git-ecosystem/git-credential-manager
-[usekeychain]: https://github.com/iterative/dvc-ssh/issues/20
+[usekeychain]: https://github.com/treeverse/dvc-ssh/issues/20
 
 ## Could not open pickled 'index/md5/links' cache {#pickle}
 

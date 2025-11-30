@@ -228,9 +228,9 @@ $ dvc plots diff $(dvc exp list --name-only)
 Inside the
 [DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
 you can compare and visualize results using the
-[`Experiments`](https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/experiments-table.md)
+[`Experiments`](https://github.com/treeverse/vscode-dvc/blob/main/extension/resources/walkthrough/experiments-table.md)
 and
-[`Plots`](https://github.com/iterative/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
+[`Plots`](https://github.com/treeverse/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
 views.
 
 ![VS Code Comparison](/img/dvclive-vscode-compare.png)

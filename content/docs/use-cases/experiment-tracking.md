@@ -49,7 +49,7 @@ Major benefits of tracking experiments with DVC:
 
 [execution mechanism]: /user-guide/experiment-management/running-experiments
 [review and compare]: /user-guide/experiment-management/comparing-experiments
-[experiment versioning]: /blog/ml-experiment-versioning
+[experiment versioning]: https://dvc.org/blog/ml-experiment-versioning
 
 <br/>
 

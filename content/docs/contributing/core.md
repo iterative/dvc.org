@@ -1,17 +1,17 @@
 # Contributing to DVC
 
-We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
+We welcome contributions to [DVC](https://github.com/treeverse/dvc) by the
 community. See the [Contributing to the Documentation](/contributing/docs) guide
 if you want to fix or update the documentation or this website.
 
 ## How to report a problem
 
-Please search the [issue tracker](https://github.com/iterative/dvc/issues)
+Please search the [issue tracker](https://github.com/treeverse/dvc/issues)
 before creating a new issue (problem or an improvement request). Feel free to
 add issues related to the project.
 
 For problems with the [dvc.org](https://dvc.org) site, use this
-[GitHub repository](https://github.com/iterative/dvc.org/).
+[GitHub repository](https://github.com/treeverse/dvc.org/).
 
 If you feel that you can fix or implement it yourself, please read a few
 paragraphs below to learn how to submit your changes.
@@ -19,10 +19,10 @@ paragraphs below to learn how to submit your changes.
 ## Submitting changes
 
 - Open a new issue in the
-  [issue tracker](https://github.com/iterative/dvc/issues).
+  [issue tracker](https://github.com/treeverse/dvc/issues).
 - Setup the [development environment](#development-environment) if you need to
   run tests or [run](#running-development-version) the DVC with your changes.
-- Fork [DVC](https://github.com/iterative/dvc) and prepare necessary changes.
+- Fork [DVC](https://github.com/treeverse/dvc) and prepare necessary changes.
 - [Add tests](#writing-tests) for your changes to `tests/`. You can skip this
   step if the effort to create tests for your change is unreasonable. Changes
   without tests are still going to be considered by us.
@@ -77,7 +77,7 @@ you experience any problems, don't hesitate to ping us in our
 
 The DVC command line interface has several debugging tools that are hidden by
 default in the `--help`, but will be shown if `--verbose` is also specified. See
-[The DVC Debugging Wiki](https://github.com/iterative/dvc/wiki/Debugging,-Profiling-and-Benchmarking-DVC)
+[The DVC Debugging Wiki](https://github.com/treeverse/dvc/wiki/Debugging,-Profiling-and-Benchmarking-DVC)
 for more information on these debugging options.
 
 ## Writing tests
@@ -89,7 +89,7 @@ as expected.
 For specific functionality, you will need to use functional tests alongside
 [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
 directory, Git and/or DVC repo, and bootstrap some files. See the
-[`dir_helpers` module](https://github.com/iterative/dvc/blob/main/tests/dir_helpers.py)
+[`dir_helpers` module](https://github.com/treeverse/dvc/blob/main/tests/dir_helpers.py)
 docstring for some usage examples.
 
 ## Running tests

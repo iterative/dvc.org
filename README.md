@@ -1,8 +1,8 @@
 ![owl logo](https://doc.dvc.org/img/logo-github-readme.png)
 
-[![Link Check](https://github.com/iterative/dvc.org/workflows/Check%20all%20links%20in%20the%20repository/badge.svg)](https://github.com/iterative/dvc.org/actions?query=workflow%3A%22Check+all+links+in+the+repository%22)
+[![Link Check](https://github.com/treeverse/dvc.org/workflows/Check%20all%20links%20in%20the%20repository/badge.svg)](https://github.com/treeverse/dvc.org/actions?query=workflow%3A%22Check+all+links+in+the+repository%22)
 
-[DVC](https://github.com/iterative/dvc) project website's source code.
+[DVC](https://github.com/treeverse/dvc) project website's source code.
 [Documentation](https://doc.dvc.org) content. Contributions are welcome!
 
 # Contributing Docs
@@ -10,7 +10,7 @@
 Please see our [Contributing guide](https://doc.dvc.org/contributing/docs) for
 more details. Thanks to all our contributors!
 
-[![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/iterative/dvc.org/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/treeverse/dvc.org/graphs/contributors)
 
 # Getting help
 

@@ -10,11 +10,11 @@ releases, you can install it from our code repository GitHub.
 
 ```cli
 # Plain DVC
-$ pip install git+https://github.com/iterative/dvc
+$ pip install git+https://github.com/treeverse/dvc
 
 # For cloud storage support, add `egg=dvc[option]` e.g. `s3`.
 # Use `all` to include all available clouds.
-$ pip install "git+https://github.com/iterative/dvc#egg=dvc[s3]"
+$ pip install "git+https://github.com/treeverse/dvc#egg=dvc[s3]"
 ```
 
 > For information on our versioning convention, refer to

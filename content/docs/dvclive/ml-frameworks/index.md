@@ -17,5 +17,5 @@ We currently support the following _ML Frameworks_:
 
 The DVCLive team is happy to extend the list with more _ML Frameworks_ as
 needed. Check the
-[existing issues](https://github.com/iterative/dvclive/issues?q=is%3Aissue+is%3Aopen+label%3Aintegrations)
+[existing issues](https://github.com/treeverse/dvclive/issues?q=is%3Aissue+is%3Aopen+label%3Aintegrations)
 or create a new issue to start a discussion!

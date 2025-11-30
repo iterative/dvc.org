@@ -5,7 +5,7 @@ const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const { createLinkNode } = require('./helpers')
 
-const { CLI_API_REGEXP, METHOD_REGEXP, API_ROOT } = consts
+const { CLI_API_REGEXP, METHOD_REGEXP, docUrls } = consts
 
 module.exports = astNode => {
   const node = astNode[0]
@@ -23,9 +23,9 @@ module.exports = astNode => {
       !parts[2]
 
     if (isRoot) {
-      url = `${API_ROOT}`
+      url = `${docUrls.apiReference}`
     } else {
-      url = `${API_ROOT}${method}`
+      url = `${docUrls.apiReference}${method}`
     }
 
     const isMethodPageExists = getItemByPath(url)

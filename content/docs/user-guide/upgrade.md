@@ -8,7 +8,7 @@ users should note when upgrading to DVC 3.0.
 <admon type="info">
 
 For a full list of breaking changes in DVC 3.0, please refer to the
-[release notes](https://github.com/iterative/dvc/releases/tag/3.0.0).
+[release notes](https://github.com/treeverse/dvc/releases/tag/3.0.0).
 
 </admon>
 

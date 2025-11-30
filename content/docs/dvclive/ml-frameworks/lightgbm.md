@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lgbm.py)
+[`DVCLiveCallback`](https://github.com/treeverse/dvclive/blob/main/src/dvclive/lgbm.py)
 in the callbacks list passed to the `lightgbm.train` call:
 
 ```python

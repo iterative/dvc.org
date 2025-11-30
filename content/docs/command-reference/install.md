@@ -101,7 +101,7 @@ repos:
         language_version: python3
         stages:
           - post-checkout
-    repo: https://github.com/iterative/dvc
+    repo: https://github.com/treeverse/dvc
     rev: 3.56.0
     # rev should be set to a specific revision (e.g. 3.56.0) since pre-commit
     # does not allow using mutable references.

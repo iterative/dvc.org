@@ -1,4 +1,4 @@
-Sitemap: https://blog.dvc.org/sitemap.xml
+Sitemap: https://doc.dvc.org/sitemap-index.xml
 
 User-agent: *
 Disallow:

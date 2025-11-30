@@ -33,7 +33,7 @@ usage: dvc version [-h] [-q | -v]
 > Note that if you've installed DVC using `pip`, you will need to install
 > `psutil` manually with `pip install psutil` in order for `dvc version` to
 > report file system information. See the original
-> [issue on GitHub](https://github.com/iterative/dvc/issues/2284) for more info.
+> [issue on GitHub](https://github.com/treeverse/dvc/issues/2284) for more info.
 
 ### Components of DVC version
 
@@ -43,7 +43,7 @@ The detail of DVC version depends upon the way of installing DVC.
   be [installed](/install) using the official package stored in
   [Python Package Index (PyPI)](https://pypi.org/) or with a binary. These
   releases are tagged in the DVC repository (see
-  [changelog](https://github.com/iterative/dvc/releases) for release history).
+  [changelog](https://github.com/treeverse/dvc/releases) for release history).
 
   If there are any issues reported with the official build, they can be traced
   using the official version number.
@@ -80,7 +80,7 @@ The detail of DVC version depends upon the way of installing DVC.
   > source code into the binary package app.
 
   DVC can also be downloaded and installed using a package manager:
-  - [DVC's GitHub repository](https://github.com/iterative/dvc) - where core
+  - [DVC's GitHub repository](https://github.com/treeverse/dvc) - where core
     source code is hosted
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
     code is stored as a Python package

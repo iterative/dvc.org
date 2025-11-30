@@ -12,7 +12,7 @@ operations [to the Command Palette].
 [for the vs code ide]:
   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
 [to the command palette]:
-  https://github.com/iterative/vscode-dvc#useful-commands
+  https://github.com/treeverse/vscode-dvc#useful-commands
 
 </admon>
 

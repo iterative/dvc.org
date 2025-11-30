@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 Include the
-[`DVCLiveCallback`](https://github.com/iterative/dvclive/blob/main/src/dvclive/fastai.py)
+[`DVCLiveCallback`](https://github.com/treeverse/dvclive/blob/main/src/dvclive/fastai.py)
 in the callbacks list passed to your
 [`Learner`](https://docs.fast.ai/learner.html#Learner):
 

@@ -1,3 +1,4 @@
+import { externalUrls, mainSiteUrls } from '../../../../../consts'
 import SocialIcon, { ISocialIconProps } from '../../../SocialIcon'
 
 import * as styles from './styles.module.css'
@@ -6,12 +7,12 @@ const socialIconData: Array<ISocialIconProps> = [
   {
     site: 'github',
     label: 'Go to DVC Github page',
-    url: 'https://github.com/iterative/dvc'
+    url: externalUrls.dvcRepo
   },
   {
     site: 'discord',
     label: 'Go to DVC Discord page',
-    url: '/chat'
+    url: mainSiteUrls.chat
   }
 ]
 

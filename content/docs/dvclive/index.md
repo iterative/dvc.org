@@ -166,7 +166,7 @@ reproducible experiments. By configuring <abbr>DVC pipelines</abbr>, you can
 workflow beyond a single notebook or script so you can modularize and
 parametrize your code. See how to [setup a pipeline] to work with DVCLive.
 
-[release notes]: https://github.com/iterative/dvclive/releases/tag/3.0.0
+[release notes]: https://github.com/treeverse/dvclive/releases/tag/3.0.0
 [directory]: /dvclive/how-it-works
 [tracked]: /start/experiments/experiment-tracking
 [run experiments]: /user-guide/experiment-management/running-experiments

@@ -8,7 +8,7 @@
 
 There is an ongoing issue and the default Google DVC app is affected. If you see
 "This app is blocked" message, check this
-[ticket](https://github.com/iterative/dvc/issues/10516) for a workaround and
+[ticket](https://github.com/treeverse/dvc/issues/10516) for a workaround and
 more details.
 
 </admon>

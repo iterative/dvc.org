@@ -4,7 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please report issues about DVC itself to the https://github.com/iterative/dvc repo instead.
+        Please report issues about DVC itself to the https://github.com/treeverse/dvc repo instead.
   - type: textarea
     id: report
     attributes:

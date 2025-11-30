@@ -245,7 +245,7 @@ Queueing with overrides '{'params.yaml': ['train.arch=shufflenet_v2_x2_0', 'trai
 
 Queued experiments are managed using [dvc-task] and [Celery].
 
-[dvc-task]: https://github.com/iterative/dvc-task
+[dvc-task]: https://github.com/treeverse/dvc-task
 [celery]: https://docs.celeryq.dev/en/stable/index.html
 
 </details>

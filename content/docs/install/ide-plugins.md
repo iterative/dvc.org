@@ -5,7 +5,7 @@ When files or directories are added to the project, or stages to a pipeline,
 format.
 
 In the case of `dvc.yaml`, we maintain a
-[schema description](https://github.com/iterative/dvcyaml-schema) that can
+[schema description](https://github.com/treeverse/dvcyaml-schema) that can
 enable IDE syntax checks and auto-completion.
 
 ## Visual Studio Code
@@ -44,7 +44,7 @@ to set them manually.
 
 PyCharm should provide auto-completion and syntax checks for `dvc.yaml` files
 out of the box. If not, refer to
-[these instructions](https://github.com/iterative/dvcyaml-schema).
+[these instructions](https://github.com/treeverse/dvcyaml-schema).
 
 ## Vim
 
