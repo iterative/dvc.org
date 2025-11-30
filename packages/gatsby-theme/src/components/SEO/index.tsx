@@ -12,7 +12,7 @@ export interface IPaginatorPageInfo {
   previousPage?: string
 }
 
-interface ISEOProps {
+export interface ISEOProps {
   title?: string
   defaultMetaTitle?: boolean
   skipTitleTemplate?: boolean
@@ -29,9 +29,6 @@ interface ISEOProps {
   pageInfo?: IPaginatorPageInfo
   children?: React.ReactNode
 }
-
-const GATSBY_USERCENTRICS_SETTINGS_ID =
-  process.env.GATSBY_USERCENTRICS_SETTINGS_ID
 
 const SEO: React.FC<ISEOProps> = ({
   title,
@@ -118,27 +115,6 @@ const SEO: React.FC<ISEOProps> = ({
         ...link
       ]}
     >
-      {GATSBY_USERCENTRICS_SETTINGS_ID && (
-        <script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js" />
-      )}
-      {GATSBY_USERCENTRICS_SETTINGS_ID && (
-        <script
-          id="usercentrics-cmp"
-          src="https://web.cmp.usercentrics.eu/ui/loader.js"
-          data-settings-id={GATSBY_USERCENTRICS_SETTINGS_ID}
-          async
-        />
-      )}
-      {siteMeta.plausibleSrc ? (
-        <script
-          defer
-          data-domain={
-            siteMeta.plausibleDomain || new URL(siteMeta.siteUrl).hostname
-          }
-          data-api={siteMeta.plausibleAPI || undefined}
-          src={siteMeta.plausibleSrc}
-        />
-      ) : null}
       {children}
     </Helmet>
   )

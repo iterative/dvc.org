@@ -8,7 +8,7 @@ import './fonts.css'
 import { handleFirstTab } from '../../utils/front/accessibility'
 import LayoutFooter from '../LayoutFooter'
 import LayoutHeader from '../LayoutHeader'
-import SEO from '../SEO'
+import SEO, { ISEOProps } from '../SEO'
 
 import { useRedirects } from './utils'
 
@@ -26,13 +26,15 @@ export interface ILayoutComponentProps extends ILayoutModifiable {
   location: PageProps['location']
   className?: string
   children?: ReactNode
+  seo?: ISEOProps
 }
 
 const MainLayout = ({
   className,
   children,
   modifiers = [],
-  location
+  location,
+  seo
 }: ILayoutComponentProps) => {
   useRedirects()
 
@@ -55,7 +57,11 @@ const MainLayout = ({
         'items-center'
       )}
     >
-      <SEO pathname={location.pathname} />
+      <SEO
+        title={seo?.title}
+        description={seo?.description}
+        pathname={seo?.pathname ?? location.pathname}
+      />
       <LayoutHeader modifiers={modifiers} />
       <main
         className={cn(

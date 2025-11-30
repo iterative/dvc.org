@@ -2,14 +2,16 @@ import { PageProps } from 'gatsby'
 
 import MainLayout from '@dvcorg/gatsby-theme/src/components/MainLayout'
 import NotFound from '@dvcorg/gatsby-theme/src/components/NotFound'
-import SEO from '@dvcorg/gatsby-theme/src/components/SEO'
 
 const NotFoundPage = ({ location }: PageProps) => (
-  <MainLayout location={location} className="mt-14">
-    <SEO
-      title="404 | This page could not be found"
-      description="404 | This page could not be found"
-    />
+  <MainLayout
+    location={location}
+    className="mt-14"
+    seo={{
+      title: '404 | This page could not be found',
+      description: '404 | This page could not be found'
+    }}
+  >
     <NotFound />
   </MainLayout>
 )

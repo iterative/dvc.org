@@ -7,9 +7,6 @@ interface ISiteMeta {
   siteUrl: string
   titleTemplate: string
   imageAlt?: string
-  plausibleDomain: string | null
-  plausibleSrc: string | null
-  plausibleAPI: string | null
   twitterUsername?: string
 }
 
@@ -26,9 +23,6 @@ export default function useSiteMeta(): ISiteMeta {
           siteUrl
           titleTemplate
           imageAlt
-          plausibleDomain
-          plausibleSrc
-          plausibleAPI
           twitterUsername
         }
       }

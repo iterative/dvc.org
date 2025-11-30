@@ -4,7 +4,6 @@ import { Element } from 'hast'
 import Documentation from '../components/Documentation'
 import DocumentationLayout from '../components/Documentation/Layout'
 import MainLayout, { LayoutModifiers } from '../components/MainLayout'
-import SEO from '../components/SEO'
 import { getItemByPath } from '../utils/shared/sidebar'
 
 const DocPage: React.FC<
@@ -46,9 +45,9 @@ const DocPage: React.FC<
     <MainLayout
       location={location}
       modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}
+      seo={{ title: title || label, description }}
     >
       <DocumentationLayout currentPath={pathname}>
-        <SEO title={title || label} description={description} />
         <Documentation htmlAst={htmlAst} path={pathname} headings={headings} />
       </DocumentationLayout>
     </MainLayout>

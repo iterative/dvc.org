@@ -17,6 +17,10 @@ const keywords = [
   'models management'
 ]
 
+const siteUrl = process.env.HEROKU_APP_NAME
+  ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
+  : 'https://doc.dvc.org'
+
 const plugins = [
   {
     resolve: '@dvcorg/gatsby-theme',
@@ -104,6 +108,23 @@ const plugins = [
   }
 ]
 
+// keep usercentrics plugin before plausible
+let usercentricsSettingsId = process.env.GATSBY_USERCENTRICS_SETTINGS_ID
+if (usercentricsSettingsId) {
+  plugins.push({
+    resolve: 'gatsby-plugin-usercentrics',
+    options: { settingsId: usercentricsSettingsId }
+  })
+}
+plugins.push({
+  resolve: 'gatsby-plugin-plausible',
+  options: {
+    domain: new URL(siteUrl).hostname,
+    apiEndpoint: '/pl/api/event',
+    scriptSrc: '/pl/js/plausible.outbound-links.js'
+  }
+})
+
 if (process.env.GATSBY_GTM_ID) {
   plugins.push({
     resolve: `gatsby-plugin-google-tagmanager`,
@@ -139,9 +160,7 @@ module.exports = {
     description,
     author: 'Iterative',
     keywords,
-    siteUrl: process.env.HEROKU_APP_NAME
-      ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
-      : 'https://doc.dvc.org',
+    siteUrl,
     title
   },
   developMiddleware: app => {
