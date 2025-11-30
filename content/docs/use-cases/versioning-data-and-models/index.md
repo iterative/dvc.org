@@ -45,7 +45,7 @@ handled automatically by DVC.
 Benefits of our approach include:
 
 - **Lightweight**: DVC is a
-  [free](https://github.com/iterative/dvc/blob/main/LICENSE), open-source
+  [free](https://github.com/treeverse/dvc/blob/main/LICENSE), open-source
   [command line](/command-reference) tool that doesn't require databases,
   servers, or any other special services.
 

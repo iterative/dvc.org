@@ -1,10 +1,13 @@
 import cn from 'classnames'
 
-import { MAIN_SITE_URL, BLOGS_URL } from '@dvcorg/gatsby-theme/consts'
+import {
+  externalUrls,
+  mainSiteUrls,
+  docUrls
+} from '@dvcorg/gatsby-theme/consts'
 import SocialIcon, {
   ISocialIcon
 } from '@dvcorg/gatsby-theme/src/components/SocialIcon'
-import { getFirstPage } from '@dvcorg/gatsby-theme/src/utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_by_lakefs_white.svg'
 import LayoutWidthContainer from '../LayoutWidthContainer'
@@ -14,8 +17,6 @@ import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
 
 import * as styles from './styles.module.css'
-
-const docsPage = getFirstPage()
 
 interface IFooterLinkData {
   href: string
@@ -34,15 +35,15 @@ const footerListsData: Array<IFooterListData> = [
     header: 'Product',
     links: [
       {
-        href: MAIN_SITE_URL,
+        href: mainSiteUrls.home,
         text: 'Overview'
       },
       {
-        href: '/use-cases',
+        href: docUrls.useCases,
         text: 'Use Cases'
       },
       {
-        href: BLOGS_URL,
+        href: mainSiteUrls.blog,
         text: 'Blog'
       }
     ]
@@ -50,29 +51,29 @@ const footerListsData: Array<IFooterListData> = [
   {
     header: 'Help',
     links: [
-      { href: `${MAIN_SITE_URL}/support`, text: 'Support' },
-      { href: '/start', text: 'Get started' },
-      { href: `${MAIN_SITE_URL}/community`, text: 'Community' },
-      { href: docsPage, text: 'Documentation' }
+      { href: mainSiteUrls.support, text: 'Support' },
+      { href: docUrls.getStarted, text: 'Get started' },
+      { href: mainSiteUrls.community, text: 'Community' },
+      { href: docUrls.home, text: 'Documentation' }
     ]
   },
   {
     header: 'Community',
     links: [
       {
-        href: 'https://twitter.com/DVCorg',
+        href: externalUrls.twitter,
         text: 'Twitter',
         icon: <TwitterSVG className={styles.icon} />,
         target: '_blank'
       },
       {
-        href: 'https://github.com/iterative/dvc',
+        href: externalUrls.dvcRepo,
         text: 'Github',
         icon: <GithubSVG className={styles.icon} />,
         target: '_blank'
       },
       {
-        href: `${MAIN_SITE_URL}/chat`,
+        href: mainSiteUrls.chat,
         text: 'Discord',
         icon: <DiscordSVG className={styles.icon} />
       }
@@ -80,9 +81,7 @@ const footerListsData: Array<IFooterListData> = [
   },
   {
     header: 'Legal',
-    links: [
-      { href: 'https://lakefs.io/privacy-policy', text: 'Privacy Policy' }
-    ]
+    links: [{ href: externalUrls.privacyPolicy, text: 'Privacy Policy' }]
   }
 ]
 
@@ -90,22 +89,22 @@ const footerSocialIconsData: Array<ISocialIcon> = [
   {
     site: 'github',
     label: 'DVC Github Page',
-    url: 'https://github.com/iterative/dvc'
+    url: externalUrls.dvcRepo
   },
   {
     site: 'twitter',
     label: 'DVC Twitter',
-    url: 'https://twitter.com/DVCorg'
+    url: externalUrls.twitter
   },
   {
     site: 'youtube',
     label: 'DVC.org Youtube Channel',
-    url: 'https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ'
+    url: externalUrls.youtube
   },
   {
     site: 'discord',
     label: 'DVC Discord chat',
-    url: `${MAIN_SITE_URL}/chat`
+    url: mainSiteUrls.chat
   }
 ]
 
@@ -152,7 +151,7 @@ const LayoutFooter: React.FC = () => (
       <div
       //  className={styles.top}
       >
-        <Link className={styles.logo} href={MAIN_SITE_URL} title="dvc.org">
+        <Link className={styles.logo} href={mainSiteUrls.home} title="dvc.org">
           <LogoSVG />
         </Link>
       </div>

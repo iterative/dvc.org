@@ -593,7 +593,7 @@ These are the fields that are accepted in each stage:
 We maintain a `dvc.yaml` [schema] that can be used by editors like [VSCode] or
 [PyCharm] to enable automatic syntax validation and auto-completion.
 
-[schema]: https://github.com/iterative/dvcyaml-schema
+[schema]: https://github.com/treeverse/dvcyaml-schema
 [vscode]: /install/plugins#visual-studio-code
 [pycharm]: /install/plugins#pycharmintellij
 

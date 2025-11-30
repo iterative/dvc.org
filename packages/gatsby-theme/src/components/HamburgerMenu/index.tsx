@@ -2,9 +2,9 @@ import cn from 'classnames'
 import { useEffect, useState, useCallback, MouseEvent } from 'react'
 
 import {
-  BLOGS_URL,
-  HOME_PAGE_LINK,
-  MAIN_SITE_URL
+  docUrls,
+  externalUrls,
+  mainSiteUrls
 } from '@dvcorg/gatsby-theme/consts'
 import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
@@ -67,7 +67,7 @@ export const HamburgerMenu: React.FC<
       <div className={styles.logoRow}>
         <Link
           onClick={() => handleItemClick()}
-          href={MAIN_SITE_URL}
+          href={mainSiteUrls.home}
           className={styles.logo}
           aria-label="Home"
         >
@@ -86,7 +86,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href={HOME_PAGE_LINK}
+            href={docUrls.home}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('doc')}
           >
@@ -95,7 +95,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href={BLOGS_URL}
+            href={mainSiteUrls.blog}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('blog')}
           >
@@ -104,7 +104,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href="https://learn.dvc.org/"
+            href={externalUrls.course}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('course')}
           >
@@ -113,7 +113,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href={`${MAIN_SITE_URL}/community`}
+            href={mainSiteUrls.community}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('community')}
           >
@@ -142,7 +142,7 @@ export const HamburgerMenu: React.FC<
         </li>
         <li className={styles.section}>
           <Link
-            href="/support"
+            href={mainSiteUrls.support}
             className={styles.sectionHeading}
             onClick={() => handleItemClick('support')}
           >
@@ -152,7 +152,7 @@ export const HamburgerMenu: React.FC<
             <li className={styles.subSection}>
               <Link
                 className={styles.subSectionLink}
-                href="mailto:support@dvc.org"
+                href={externalUrls.mail}
                 target="_blank"
                 onClick={() => handleItemClick('mail')}
               >
@@ -163,7 +163,7 @@ export const HamburgerMenu: React.FC<
             <li className={styles.subSection}>
               <Link
                 className={styles.subSectionLink}
-                href="https://github.com/iterative/dvc"
+                href={externalUrls.dvcRepo}
                 onClick={() => handleItemClick('github')}
                 target="_blank"
               >
@@ -174,7 +174,7 @@ export const HamburgerMenu: React.FC<
             <li className={styles.subSection}>
               <Link
                 className={styles.subSectionLink}
-                href="/chat"
+                href={mainSiteUrls.chat}
                 onClick={() => handleItemClick('chat')}
                 target="_blank"
               >
@@ -185,7 +185,7 @@ export const HamburgerMenu: React.FC<
             <li className={styles.subSection}>
               <Link
                 className={styles.subSectionLink}
-                href="https://twitter.com/DVCorg"
+                href={externalUrls.twitter}
                 onClick={() => handleItemClick('twitter')}
                 target="_blank"
               >
@@ -197,7 +197,7 @@ export const HamburgerMenu: React.FC<
         </li>
       </ul>
       <Link
-        href="/start"
+        href={docUrls.getStarted}
         className={styles.linkButton}
         onClick={() => handleItemClick('get-started')}
       >

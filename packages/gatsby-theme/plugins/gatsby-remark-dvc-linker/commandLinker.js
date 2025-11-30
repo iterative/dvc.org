@@ -5,7 +5,7 @@ const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const { createLinkNode, useMatcher } = require('./helpers')
 
-const { ARGS_REGEXP, CLI_REGEXP, COMMAND_REGEXP, COMMAND_ROOT } = consts
+const { docUrls, ARGS_REGEXP, CLI_REGEXP, COMMAND_REGEXP } = consts
 
 module.exports = aliasEntries => astNode => {
   const node = astNode[0]
@@ -26,7 +26,7 @@ module.exports = aliasEntries => astNode => {
     const baseUrl =
       aliasEntry && aliasEntry.url
         ? aliasEntry.url
-        : `${COMMAND_ROOT}${command}`
+        : `${docUrls.commandReference}${command}`
     let url
     const isCommandPageExists = getItemByPath(baseUrl)
     if (isCommandPageExists) {

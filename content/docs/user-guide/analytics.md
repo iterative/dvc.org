@@ -43,7 +43,7 @@ accurately measure user counts vs. event counts.
 ## Implementation
 
 The code is viewable in
-[`analytics.py`](https://github.com/iterative/dvc/blob/main/dvc/analytics.py).
+[`analytics.py`](https://github.com/treeverse/dvc/blob/main/dvc/analytics.py).
 They are done in a separate background process and fail fast to avoid delaying
 any execution. They will fail immediately and silently if you have no network
 connection.

@@ -1,7 +1,7 @@
 # Contributing to the Documentation
 
 We welcome any contributions to our documentation repository,
-[dvc.org](https://github.com/iterative/dvc.org). Contributions can be updates to
+[dvc.org](https://github.com/treeverse/dvc.org). Contributions can be updates to
 the documentation content, or (rare) changes to the JS engine we use to run the
 website.
 
@@ -13,14 +13,14 @@ and then **Commit changes** from the bottom of the page.
 
 To contribute documentation, these are the relevant locations:
 
-- [Content](https://github.com/iterative/dvc.org/tree/main/content/docs)
+- [Content](https://github.com/treeverse/dvc.org/tree/main/content/docs)
   (`content/docs/`):
   [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
   files. One file — one page of the documentation.
-- [Images](https://github.com/iterative/dvc.org/tree/main/static/img)
+- [Images](https://github.com/treeverse/dvc.org/tree/main/static/img)
   (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
   Markdown files like this: `![](/img/<filename>.gif)`.
-- [Navigation](https://github.com/iterative/dvc.org/blob/main/content/docs/sidebar.json)
+- [Navigation](https://github.com/treeverse/dvc.org/blob/main/content/docs/sidebar.json)
   (`content/docs/sidebar.json`): Edit it to add or change entries in the
   navigation sidebar.
 
@@ -30,7 +30,7 @@ to update the docs and redeploy the website.
 ## Submitting changes
 
 - Find or open a new issue in the
-  [issue tracker](https://github.com/iterative/dvc.org/issues) to let us know
+  [issue tracker](https://github.com/treeverse/dvc.org/issues) to let us know
   that you are working on this.
 
 - Format the source code by following the
@@ -40,7 +40,7 @@ to update the docs and redeploy the website.
   other things, it can help format the documentation and JS code automatically.
 
 - Push the changes to your fork of
-  [dvc.org](https://github.com/iterative/dvc.org) and submit a PR to the
+  [dvc.org](https://github.com/treeverse/dvc.org) and submit a PR to the
   upstream repo.
 
 We will review your PR as soon as possible. Thank you for contributing!
@@ -164,7 +164,7 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
   > plugin for help with this.
 
 - You can see the configuration of our formatter tool (Prettier)
-  [here](https://github.com/iterative/dvc.org/blob/main/.prettierrc). You may
+  [here](https://github.com/treeverse/dvc.org/blob/main/.prettierrc). You may
   also run the formatting [commands](#all-commands) manually.
   ([Advanced usage](https://prettier.io/docs/cli.html) of Prettier is available
   through `yarn prettier ...`)

@@ -19,7 +19,7 @@ If you are using Lightning Fabric, check the
 </p>
 
 If you pass the
-[`DVCLiveLogger`](https://github.com/iterative/dvclive/blob/main/src/dvclive/lightning.py)
+[`DVCLiveLogger`](https://github.com/treeverse/dvclive/blob/main/src/dvclive/lightning.py)
 to your
 [`Trainer`](https://lightning.ai/docs/pytorch/stable/common/trainer.html),
 DVCLive will automatically log the

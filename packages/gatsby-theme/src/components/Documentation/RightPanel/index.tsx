@@ -3,6 +3,7 @@ import throttle from 'lodash/throttle'
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 import { IHeading } from '../'
+import { mainSiteUrls } from '../../../../consts'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 import { getScrollPosition } from '../../../utils/front/scroll'
 import Link from '../../Link'
@@ -203,7 +204,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
           <Link
             className={cn(sharedStyles.button, styles.button)}
-            href="/chat"
+            href={mainSiteUrls.chat}
             target="_blank"
           >
             <i className={cn(sharedStyles.buttonIcon, styles.discordIcon)} />

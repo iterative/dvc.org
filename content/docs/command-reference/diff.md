@@ -43,7 +43,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 > data data tracked by DVC can come in many possible formats e.g. structured
 > text, or binary blobs, etc. For an example on how to create line-to-line text
 > file comparison, refer to this
-> [comment](https://github.com/iterative/dvc/issues/770#issuecomment-512693256).
+> [comment](https://github.com/treeverse/dvc/issues/770#issuecomment-512693256).
 
 ## Options
 

@@ -28,8 +28,8 @@ used as a [Python library].
 [community](https://dvc.org/community/) or use the
 [support](https://dvc.org/support/) channels. We are very responsive⚡.
 
-✅ Check out our GitHub repositories: [DVC](https://github.com/iterative/dvc)
+✅ Check out our GitHub repositories: [DVC](https://github.com/treeverse/dvc)
 give us a ⭐ if you like the project!
 
-✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
-improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
+✅ Contribute to DVC [on GitHub](https://github.com/treeverse/dvc) or help us
+improve this [documentation](https://github.com/treeverse/dvc.org) 🙏.

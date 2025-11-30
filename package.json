@@ -26,14 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iterative/dvc.org"
+    "url": "https://github.com/treeverse/dvc.org"
   },
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/iterative/dvc.org/issues"
+    "url": "https://github.com/treeverse/dvc.org/issues"
   },
-  "homepage": "https://github.com/iterative/dvc.org#readme",
+  "homepage": "https://github.com/treeverse/dvc.org#readme",
   "engines": {
     "node": "24.x"
   },

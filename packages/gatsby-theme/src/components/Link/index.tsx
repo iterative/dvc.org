@@ -2,7 +2,7 @@ import { useLocation } from '@gatsbyjs/reach-router'
 import { Link as GatsbyLink } from 'gatsby'
 import { URL } from 'iso-url'
 
-import { MAIN_SITE_URL } from '../../../consts'
+import { mainSiteUrls } from '../../../consts'
 import { getRedirect } from '../../utils/shared/redirects'
 
 export type ILinkProps = {
@@ -50,7 +50,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
        noreferrer', but leave explicitly defined rels alone.
        Do the same with `target=_blank`
     */
-    if (!hrefIsRelative && url.origin !== MAIN_SITE_URL) {
+    if (!hrefIsRelative && url.origin !== mainSiteUrls.home) {
       if (typeof rel !== 'string') {
         rel = 'noopener noreferrer'
       }
