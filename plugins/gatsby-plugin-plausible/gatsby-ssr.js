@@ -5,14 +5,14 @@ export const onRenderBody = (
   setHeadComponents([
     <script
       key="plausible"
-      defer
+      async
       data-domain={domain}
       data-api={apiEndpoint}
       src={scriptSrc}
     />,
     <script
-      key="gtag-consent"
-      id="gtag-consent"
+      key="plausible-init"
+      id="plausible-init"
       dangerouslySetInnerHTML={{
         __html: `
 window.plausible = window.plausible || function() {
