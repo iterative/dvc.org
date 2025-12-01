@@ -121,7 +121,7 @@ plugins.push({
   options: {
     domain: new URL(siteUrl).hostname,
     apiEndpoint: '/pl/api/event',
-    scriptSrc: '/pl/js/plausible.outbound-links.js'
+    scriptSrc: '/pl/js/pa-MFZCoVaRDCFH3aTEbZ2Ld.js'
   }
 })
 
