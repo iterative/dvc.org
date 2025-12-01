@@ -116,14 +116,17 @@ if (usercentricsSettingsId) {
     options: { settingsId: usercentricsSettingsId }
   })
 }
-plugins.push({
-  resolve: 'gatsby-plugin-plausible',
-  options: {
-    domain: new URL(siteUrl).hostname,
-    apiEndpoint: '/pl/api/event',
-    scriptSrc: '/pl/js/pa-MFZCoVaRDCFH3aTEbZ2Ld.js'
-  }
-})
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push({
+    resolve: 'gatsby-plugin-plausible',
+    options: {
+      domain: new URL(siteUrl).hostname,
+      apiEndpoint: '/pl/api/event',
+      scriptSrc: '/pl/js/pa-MFZCoVaRDCFH3aTEbZ2Ld.js'
+    }
+  })
+}
 
 if (process.env.GATSBY_GTM_ID) {
   plugins.push({
