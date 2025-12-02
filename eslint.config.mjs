@@ -145,5 +145,21 @@ export default tseslint.config(
       '@typescript-eslint/no-require-imports': 'off'
     }
   },
+  // Cypress-specific rules
+  {
+    files: ['cypress/**/*.{js,ts}'],
+    languageOptions: {
+      globals: {
+        cy: 'readonly',
+        Cypress: 'readonly'
+      }
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' }
+      ]
+    }
+  },
   eslintPluginPrettierRecommended
 )

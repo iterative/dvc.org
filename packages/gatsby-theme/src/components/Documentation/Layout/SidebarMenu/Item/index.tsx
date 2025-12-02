@@ -105,7 +105,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         ) : (
           <span className={bulletIconClassName}></span>
         )}
-        {label} <ExternalLinkIcon />
+        {label} <ExternalLinkIcon aria-label="External Link" />
       </Link>
     ) : (
       <Link

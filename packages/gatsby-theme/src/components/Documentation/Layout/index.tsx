@@ -37,6 +37,7 @@ const Layout: React.FC<PropsWithChildren<{ currentPath: string }>> = ({
       <button
         className={cn(styles.sideToggle, isMenuOpen && styles.opened)}
         onClick={toggleMenu}
+        aria-label="Toggle documentation sidebar"
       >
         <HamburgerIcon />
       </button>

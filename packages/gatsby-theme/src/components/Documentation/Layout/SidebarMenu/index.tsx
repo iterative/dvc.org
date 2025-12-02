@@ -52,12 +52,13 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   }, [scrollToActiveItem, location])
 
   return (
-    <div
+    <nav
       className={cn(styles.menu, isScrollHidden && styles.isScrollHidden)}
       ref={rootRef}
+      aria-label="Documentation Navigation"
     >
       <InnerSidebar onClick={onClick} activePaths={activePaths} />
-    </div>
+    </nav>
   )
 }
 

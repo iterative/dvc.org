@@ -81,3 +81,7 @@ tmp
 !.yarn/versions
 
 .lycheecache
+
+# Cypress
+cypress/screenshots
+cypress/videos
