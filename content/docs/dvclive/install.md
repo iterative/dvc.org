@@ -2,7 +2,7 @@
 
 <admon type="info">
 
-Note that Python 3.8+ is needed to get the latest version of DVClive.
+Note that Python 3.9+ is needed to get the latest version of DVClive.
 
 </admon>
 

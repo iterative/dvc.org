@@ -91,7 +91,7 @@ to encapsulate your local environment.
 
 <admon type="info">
 
-Note that Python 3.8+ is needed to get the latest version of DVC.
+Note that Python 3.9+ is needed to get the latest version of DVC.
 
 </admon>
 
@@ -118,7 +118,7 @@ In this case it installs the `boto3` library along with DVC.
 ## Windows installer
 
 A quick way is to use the self-contained, executable installer (binary), which
-is available from the big "Download" button on the [home page](/).
+is available from the big "Download" button on the [home page](https://dvc.org).
 
 You'll need to download and run the installer again each time you want to update
 DVC. You may use Windows Uninstaller to

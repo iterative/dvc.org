@@ -26,7 +26,8 @@ $ brew install dvc
 
 ## Install from package
 
-Get the PKG (binary) from the big "Download" button on the [home page](/).
+Get the PKG (binary) from the big "Download" button on the
+[home page](https://dvc.org).
 
 > Note that currently, in order to open the PKG file, you must go to the
 > **Downloads** directory in Finder and do a
@@ -51,7 +52,7 @@ to encapsulate your local environment.
 
 <admon type="info">
 
-Note that Python 3.8+ is needed to get the latest version of DVC.
+Note that Python 3.9+ is needed to get the latest version of DVC.
 
 </admon>
 

@@ -20,7 +20,7 @@ to encapsulate your local environment.
 
 <admon type="info">
 
-Note that Python 3.8+ is needed to get the latest version of DVC.
+Note that Python 3.9+ is needed to get the latest version of DVC.
 
 </admon>
 
@@ -132,8 +132,8 @@ $ sudo yum install dvc
 
 ## Install from package
 
-Get the binary package from the big "Download" button on the [home page](/).
-Then install it with the following command.
+Get the binary package from the big "Download" button on the
+[home page](https://dvc.org). Then install it with the following command.
 
 <details id="from-pkg-on-debian-ubuntu">
 

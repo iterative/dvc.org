@@ -40,7 +40,7 @@ Get the latest development version. Fork and clone the repo:
 $ git clone git@github.com:<your-username>/dvc.git
 ```
 
-Make sure that you have Python 3.8 or higher installed. On macOS, we recommend
+Make sure that you have Python 3.9 or higher installed. On macOS, we recommend
 using `brew` to install Python. For Windows, we recommend an official
 [python.org release](https://www.python.org/downloads/windows/).
 
