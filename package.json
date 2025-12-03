@@ -51,7 +51,7 @@
     "algoliasearch": "4.25.2",
     "compression": "1.8.1",
     "dotenv": "17.2.3",
-    "express": "5.1.0",
+    "express": "5.2.0",
     "gatsby": "5.15.0",
     "gatsby-plugin-catch-links": "5.15.0",
     "gatsby-plugin-google-tagmanager": "5.15.0",
