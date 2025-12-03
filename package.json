@@ -110,7 +110,7 @@
     "eslint-plugin-n": "17.23.1",
     "eslint-plugin-prettier": "5.5.4",
     "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-hooks": "7.0.1",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.32",
     "gatsby-source-filesystem": "5.15.0",
     "globals": "16.4.0",
@@ -122,7 +122,7 @@
     "remark": "15.0.1",
     "remark-html": "16.0.1",
     "stylelint": "16.25.0",
-    "stylelint-config-standard": "38.0.0",
+    "stylelint-config-standard": "39.0.1",
     "ts-jest": "29.4.4",
     "typescript": "5.9.3",
     "typescript-eslint": "8.46.0"
