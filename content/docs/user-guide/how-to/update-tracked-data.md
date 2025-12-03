@@ -58,8 +58,8 @@ $ git push # If you have an upstream repo.
 If you want to replace the file altogether, you can take the following steps.
 
 First, [stop tracking](/user-guide/how-to/stop-tracking-data) the file by using
-`dvc remove` on the `.dvc` file. This will remove the `train.tsv.dvc` file, and it 
-will unlink `train.tsv` from the <abbr>cache</abbr>:
+`dvc remove` on the `.dvc` file. This will remove the `train.tsv.dvc` file, and
+it will unlink `train.tsv` from the <abbr>cache</abbr>:
 
 ```cli
 $ dvc remove train.tsv.dvc
