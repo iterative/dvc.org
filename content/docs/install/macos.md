@@ -24,21 +24,6 @@ Recommended. Requires [Homebrew](https://brew.sh/).
 $ brew install dvc
 ```
 
-## Install from package
-
-Get the PKG (binary) from the big "Download" button on the
-[home page](https://dvc.org).
-
-> Note that currently, in order to open the PKG file, you must go to the
-> **Downloads** directory in Finder and do a
-> [secondary click](https://support.apple.com/guide/mac-help/right-click-mh35853/mac)
-> on it, then select "Open With" > **Installer.app**, and click the **Open**
-> button.
-
-> You may try
-> [these instructions](https://stackoverflow.com/questions/25925752/uninstall-packages-in-mac-os-x/42120328#42120328)
-> to uninstall the macOS package.
-
 ## Install with pip
 
 <admon type="tip">
@@ -108,3 +93,17 @@ $ mamba install -c conda-forge dvc-s3
 In this case it installs the `boto3` library along with DVC.
 
 </details>
+
+## Install from package
+
+[Download the macOS PKG installer directly](https://dvc.org/download/osx/dvc-3.64.1).
+
+> Note that currently, in order to open the PKG file, you must go to the
+> **Downloads** directory in Finder and do a
+> [secondary click](https://support.apple.com/guide/mac-help/right-click-mh35853/mac)
+> on it, then select "Open With" > **Installer.app**, and click the **Open**
+> button.
+
+> You may try
+> [these instructions](https://stackoverflow.com/questions/25925752/uninstall-packages-in-mac-os-x/42120328#42120328)
+> to uninstall the macOS package.
