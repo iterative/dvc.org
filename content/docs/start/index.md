@@ -27,6 +27,30 @@ a 100Gb file in less than a second with a `git checkout`.
 
 _💫 DVC is your *"Git for data"*!_
 
+## Installing DVC
+
+First things first, let's install DVC. The easiest way to install dvc is with
+[`uv`](https://docs.astral.sh/uv/) or [`pipx`](https://pipx.pypa.io/stable/):
+
+```cli
+$ uv tool install dvc  # or,
+$ pipx install dvc
+```
+
+Once it's installed, verify dvc is available by running:
+
+```cli
+$ dvc --help
+```
+
+If you see a help message listing dvc commands, you are good to continue!
+
+<admon type="tip">
+
+See the [Installation Guide](/install) for more installation options.
+
+</admon>
+
 ## Initializing a project
 
 Before we begin, settle on a directory for this guide. Everything we will do

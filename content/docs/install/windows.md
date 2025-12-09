@@ -117,8 +117,8 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Windows installer
 
-A quick way is to use the self-contained, executable installer (binary), which
-is available from the big "Download" button on the [home page](https://dvc.org).
+A quick option on Windows is to install DVC using the self-contained executable
+installer. [Download the latest version here][windows-installer-download-link].
 
 You'll need to download and run the installer again each time you want to update
 DVC. You may use Windows Uninstaller to
@@ -128,3 +128,5 @@ DVC. You may use Windows Uninstaller to
 > they can use them to
 > [optimize DVC](/user-guide/data-management/large-dataset-optimization)
 > operations.
+
+[windows-installer-download-link]: https://dvc.org/download/win/dvc-3.64.1
