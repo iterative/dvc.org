@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react'
 
 import Slugger from '../../../../utils/front/Slugger'
-import { NoPreRedirectLink } from '../../../Link'
+import { DownloadLink, NoPreRedirectLink } from '../../../Link'
 import Admonition from '../Admonition'
 import { Tab, Toggle } from '../ToggleProvider'
 
@@ -20,5 +20,6 @@ export const getComponents = (slugger: Slugger) => ({
   toggle: Toggle,
   tab: Tab,
   admon: Admonition,
-  admonition: Admonition
+  admonition: Admonition,
+  downloadlink: DownloadLink
 })

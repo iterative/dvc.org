@@ -96,7 +96,7 @@ In this case it installs the `boto3` library along with DVC.
 
 ## Install from package
 
-[Download the macOS PKG installer directly](https://dvc.org/download/osx/dvc-3.64.1).
+<downloadlink kind="osx" />Download the macOS PKG installer.</downloadlink>
 
 > Note that currently, in order to open the PKG file, you must go to the
 > **Downloads** directory in Finder and do a
