@@ -118,9 +118,7 @@ In this case it installs the `boto3` library along with DVC.
 ## Windows installer
 
 A quick option on Windows is to install DVC using the self-contained executable
-installer.
-
-<downloadlink kind="win"/>Download the latest Windows installer
+installer. <downloadlink kind="win"/>Download the latest Windows installer
 here.</downloadlink>
 
 You'll need to download and run the installer again each time you want to update
