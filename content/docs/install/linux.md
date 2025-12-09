@@ -136,8 +136,8 @@ $ sudo yum install dvc
 
 ### On Debian/Ubuntu
 
-[Download the debian package first](https://dvc.org/download/linux-deb/dvc-3.64.1).
-Then install it with `apt`:
+<downloadlink kind="linux-deb" />Download the debian package
+first.</downloadlink> Then install it with `apt`:
 
 ```cli
 $ sudo apt install ./dvc_0.62.1_amd64.deb
@@ -149,7 +149,7 @@ $ sudo apt install ./dvc_0.62.1_amd64.deb
 
 ### On Fedora/CentOS
 
-[Download the RPM package directly](https://dvc.org/download/linux-rpm/dvc-3.64.1).
+<downloadlink kind="linux-rpm" />Download the RPM package first.</downloadlink>
 Then install it with `yum`:
 
 ```cli

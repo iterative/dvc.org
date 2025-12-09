@@ -19,6 +19,8 @@ const PROTOCOL_REGEXP = /^https?:\/\//
 const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
 const isMailto = (url: string): boolean => url.startsWith('mailto:')
 
+const VERSION = '3.64.2'
+
 const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
@@ -113,6 +115,15 @@ const Link: React.FC<ILinkProps> = ({
 export const NoPreRedirectLink: React.FC<ILinkProps> = props => (
   <Link {...props} optOutPreRedirect>
     {props.children}
+  </Link>
+)
+
+export const DownloadLink: React.FC<{
+  kind: string
+  children: React.ReactNode
+}> = ({ kind, children }) => (
+  <Link href={`${mainSiteUrls.home}/download/${kind}/dvc-${VERSION}`}>
+    {children}
   </Link>
 )
 
