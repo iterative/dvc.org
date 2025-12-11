@@ -110,10 +110,14 @@ const plugins = [
 
 // keep usercentrics plugin before plausible
 let usercentricsSettingsId = process.env.GATSBY_USERCENTRICS_SETTINGS_ID
-if (usercentricsSettingsId) {
+let usercentricsRulesetId = process.env.GATSBY_USERCENTRICS_RULESET_ID
+if (usercentricsSettingsId || usercentricsRulesetId) {
   plugins.push({
     resolve: 'gatsby-plugin-usercentrics',
-    options: { settingsId: usercentricsSettingsId }
+    options: {
+      settingsId: usercentricsSettingsId,
+      rulesetId: usercentricsRulesetId
+    }
   })
 }
 
