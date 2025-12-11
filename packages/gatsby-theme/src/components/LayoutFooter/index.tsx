@@ -18,6 +18,14 @@ import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
 
 import * as styles from './styles.module.css'
 
+declare global {
+  interface Window {
+    __ucCmp?: {
+      showSecondLayer?: () => void
+    }
+  }
+}
+
 interface IFooterLinkData {
   href: string
   text: string
@@ -25,9 +33,15 @@ interface IFooterLinkData {
   target?: '_blank'
 }
 
+interface IFooterButtonData {
+  text: string
+  icon?: JSX.Element
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+}
+
 interface IFooterListData {
   header: string
-  links: Array<IFooterLinkData>
+  links: Array<IFooterLinkData | IFooterButtonData>
 }
 
 const footerListsData: Array<IFooterListData> = [
@@ -81,7 +95,22 @@ const footerListsData: Array<IFooterListData> = [
   },
   {
     header: 'Legal',
-    links: [{ href: externalUrls.privacyPolicy, text: 'Privacy Policy' }]
+    links: [
+      {
+        href: externalUrls.privacyPolicy,
+        text: 'Privacy Policy'
+      },
+      {
+        text: 'Privacy Settings',
+        onClick: function () {
+          if (window.__ucCmp?.showSecondLayer) {
+            window.__ucCmp.showSecondLayer()
+          } else {
+            console.log('Privacy Settings not available')
+          }
+        }
+      }
+    ]
   }
 ]
 
@@ -114,17 +143,31 @@ const FooterLists: React.FC = () => (
       <div className={styles.column} key={index}>
         <h2 className={styles.heading}>{header}</h2>
         <ul className={styles.links}>
-          {links.map(({ text, target, href, icon }, i) => (
-            <li
-              // className={styles.linkItem}
-              key={i}
-            >
-              <Link target={target} href={href} className={styles.link}>
-                {icon}
-                {text}
-              </Link>
-            </li>
-          ))}
+          {links.map((link, i) => {
+            const isButton = 'onClick' in link && !('href' in link)
+            return (
+              <li
+                // className={styles.linkItem}
+                key={i}
+              >
+                {isButton ? (
+                  <button className={styles.link} onClick={link.onClick}>
+                    {link.icon}
+                    {link.text}
+                  </button>
+                ) : (
+                  <Link
+                    target={link.target}
+                    href={link.href}
+                    className={styles.link}
+                  >
+                    {link.icon}
+                    {link.text}
+                  </Link>
+                )}
+              </li>
+            )
+          })}
         </ul>
       </div>
     ))}
