@@ -1,4 +1,7 @@
-export const onRenderBody = ({ setHeadComponents }, { settingsId }) =>
+export const onRenderBody = (
+  { setHeadComponents },
+  { settingsId, rulesetId }
+) =>
   setHeadComponents([
     <script
       key="usercentrics-autoblocker"
@@ -9,6 +12,7 @@ export const onRenderBody = ({ setHeadComponents }, { settingsId }) =>
       id="usercentrics-cmp"
       src="https://web.cmp.usercentrics.eu/ui/loader.js"
       data-settings-id={settingsId}
+      data-ruleset-id={rulesetId}
       async
     />,
     <script
