@@ -24,12 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-// Custom command to find the docs sidebar hamburger button
-// Uses aria-label to reliably identify the button in both dev and production
-Cypress.Commands.add('getSidebarToggleButton', () => {
-  return cy.findByRole('button', { name: /toggle documentation sidebar/i })
-})
-
 // Custom command to find the docs sidebar backdrop element
 // The backdrop is a full-screen overlay (position: fixed, inset: 0) that appears when sidebar is open
 Cypress.Commands.add('getSidebarBackdrop', () => {

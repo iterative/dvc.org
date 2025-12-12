@@ -18,15 +18,14 @@ describe('Sidebar', () => {
       // Initially, sidebar should not be visible on mobile
       cy.findByPlaceholderText(/search docs/i).should('not.be.visible')
 
-      // Find the docs sidebar hamburger button (positioned at bottom-left)
-      cy.getSidebarToggleButton().as('sidebarButton')
-
       // Click to open sidebar
-      cy.get('@sidebarButton').click()
+      cy.findByRole('button', { name: 'Open documentation sidebar' })
+        .click()
+        .should('have.attr', 'aria-label', 'Close documentation sidebar')
       cy.findByPlaceholderText(/search docs/i).should('be.visible')
 
       // Click again to close
-      cy.get('@sidebarButton').click()
+      cy.findByRole('button', { name: 'Close documentation sidebar' }).click()
       cy.findByPlaceholderText(/search docs/i).should('not.be.visible')
     })
 
@@ -35,7 +34,9 @@ describe('Sidebar', () => {
       cy.viewport(375, 667)
 
       // Open sidebar first - find the docs sidebar hamburger button
-      cy.getSidebarToggleButton().click()
+      cy.findByRole('button', { name: 'Open documentation sidebar' })
+        .click()
+        .should('have.attr', 'aria-label', 'Close documentation sidebar')
       cy.findByPlaceholderText(/search docs/i).should('be.visible')
 
       // Click on the actual backdrop element (full-screen overlay)
@@ -112,8 +113,9 @@ describe('Sidebar', () => {
       cy.findByRole('main').should('exist')
 
       // Open sidebar - find the docs sidebar hamburger button
-      cy.getSidebarToggleButton().should('be.enabled')
-      cy.getSidebarToggleButton().click({ force: true })
+      cy.findByRole('button', { name: 'Open documentation sidebar' })
+        .click()
+        .should('have.attr', 'aria-label', 'Close documentation sidebar')
       cy.findByPlaceholderText(/search docs/i).should('be.visible')
 
       // Find and click a leaf item within the sidebar menu
